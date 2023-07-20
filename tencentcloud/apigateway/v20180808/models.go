@@ -134,6 +134,7 @@ type ApiAppInfo struct {
 	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
 
 	// 应用SECRET
+	// 注意:此字段可能返回null，表示取不到有效值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiAppSecret *string `json:"ApiAppSecret,omitempty" name:"ApiAppSecret"`
 
@@ -150,6 +151,7 @@ type ApiAppInfo struct {
 	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
 
 	// 应用KEY
+	// 注意:此字段可能返回null，表示取不到有效值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiAppKey *string `json:"ApiAppKey,omitempty" name:"ApiAppKey"`
 }

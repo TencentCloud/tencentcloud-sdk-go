@@ -1090,6 +1090,9 @@ type RunApplicationRequestParams struct {
 
 	// 批量投递表格行UUID。不填表示表格全部行。
 	TableRowUuids []*string `json:"TableRowUuids,omitempty" name:"TableRowUuids"`
+
+	// 应用版本ID。不填表示使用当前最新版本。
+	ApplicationVersionId *string `json:"ApplicationVersionId,omitempty" name:"ApplicationVersionId"`
 }
 
 type RunApplicationRequest struct {
@@ -1124,6 +1127,9 @@ type RunApplicationRequest struct {
 
 	// 批量投递表格行UUID。不填表示表格全部行。
 	TableRowUuids []*string `json:"TableRowUuids,omitempty" name:"TableRowUuids"`
+
+	// 应用版本ID。不填表示使用当前最新版本。
+	ApplicationVersionId *string `json:"ApplicationVersionId,omitempty" name:"ApplicationVersionId"`
 }
 
 func (r *RunApplicationRequest) ToJsonString() string {
@@ -1148,6 +1154,7 @@ func (r *RunApplicationRequest) FromJsonString(s string) error {
 	delete(f, "Description")
 	delete(f, "TableId")
 	delete(f, "TableRowUuids")
+	delete(f, "ApplicationVersionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunApplicationRequest has unknown keys!", "")
 	}

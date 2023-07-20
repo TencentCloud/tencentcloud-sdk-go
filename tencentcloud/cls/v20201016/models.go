@@ -5770,7 +5770,7 @@ type KafkaRechargeInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 导入数据位置，-1:最早（默认），-2：最晚，大于等于0: 指定offset
+	// 导入数据位置，-2:最早（默认），-1：最晚
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 

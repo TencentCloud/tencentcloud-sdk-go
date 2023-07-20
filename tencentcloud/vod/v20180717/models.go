@@ -4503,11 +4503,11 @@ type CreateQualityInspectTemplateRequestParams struct {
 	// 视频画面二维码检测的控制参数。
 	QRCodeConfigure *QRCodeConfigureInfo `json:"QRCodeConfigure,omitempty" name:"QRCodeConfigure"`
 
-	// 视频画面质量评价的控制参数。
-	QualityEvaluationConfigure *QualityEvaluationConfigureInfo `json:"QualityEvaluationConfigure,omitempty" name:"QualityEvaluationConfigure"`
-
 	// 音频（静音、低音、爆音）检测的控制参数。
 	VoiceConfigure *VoiceConfigureInfo `json:"VoiceConfigure,omitempty" name:"VoiceConfigure"`
+
+	// 视频画面质量评价的控制参数。
+	QualityEvaluationConfigure *QualityEvaluationConfigureInfo `json:"QualityEvaluationConfigure,omitempty" name:"QualityEvaluationConfigure"`
 }
 
 type CreateQualityInspectTemplateRequest struct {
@@ -4549,11 +4549,11 @@ type CreateQualityInspectTemplateRequest struct {
 	// 视频画面二维码检测的控制参数。
 	QRCodeConfigure *QRCodeConfigureInfo `json:"QRCodeConfigure,omitempty" name:"QRCodeConfigure"`
 
-	// 视频画面质量评价的控制参数。
-	QualityEvaluationConfigure *QualityEvaluationConfigureInfo `json:"QualityEvaluationConfigure,omitempty" name:"QualityEvaluationConfigure"`
-
 	// 音频（静音、低音、爆音）检测的控制参数。
 	VoiceConfigure *VoiceConfigureInfo `json:"VoiceConfigure,omitempty" name:"VoiceConfigure"`
+
+	// 视频画面质量评价的控制参数。
+	QualityEvaluationConfigure *QualityEvaluationConfigureInfo `json:"QualityEvaluationConfigure,omitempty" name:"QualityEvaluationConfigure"`
 }
 
 func (r *CreateQualityInspectTemplateRequest) ToJsonString() string {
@@ -4580,8 +4580,8 @@ func (r *CreateQualityInspectTemplateRequest) FromJsonString(s string) error {
 	delete(f, "NoiseConfigure")
 	delete(f, "MosaicConfigure")
 	delete(f, "QRCodeConfigure")
-	delete(f, "QualityEvaluationConfigure")
 	delete(f, "VoiceConfigure")
+	delete(f, "QualityEvaluationConfigure")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateQualityInspectTemplateRequest has unknown keys!", "")
 	}
@@ -16654,11 +16654,11 @@ type ModifyQualityInspectTemplateRequestParams struct {
 	// 视频画面二维码检测的控制参数。
 	QRCodeConfigure *QRCodeConfigureInfoForUpdate `json:"QRCodeConfigure,omitempty" name:"QRCodeConfigure"`
 
-	// 视频画面质量评价的控制参数。
-	QualityEvaluationConfigure *QualityEvaluationConfigureInfoForUpdate `json:"QualityEvaluationConfigure,omitempty" name:"QualityEvaluationConfigure"`
-
 	// 音频（静音、低音、爆音）检测的控制参数。
 	VoiceConfigure *VoiceConfigureInfoForUpdate `json:"VoiceConfigure,omitempty" name:"VoiceConfigure"`
+
+	// 视频画面质量评价的控制参数。
+	QualityEvaluationConfigure *QualityEvaluationConfigureInfoForUpdate `json:"QualityEvaluationConfigure,omitempty" name:"QualityEvaluationConfigure"`
 }
 
 type ModifyQualityInspectTemplateRequest struct {
@@ -16703,11 +16703,11 @@ type ModifyQualityInspectTemplateRequest struct {
 	// 视频画面二维码检测的控制参数。
 	QRCodeConfigure *QRCodeConfigureInfoForUpdate `json:"QRCodeConfigure,omitempty" name:"QRCodeConfigure"`
 
-	// 视频画面质量评价的控制参数。
-	QualityEvaluationConfigure *QualityEvaluationConfigureInfoForUpdate `json:"QualityEvaluationConfigure,omitempty" name:"QualityEvaluationConfigure"`
-
 	// 音频（静音、低音、爆音）检测的控制参数。
 	VoiceConfigure *VoiceConfigureInfoForUpdate `json:"VoiceConfigure,omitempty" name:"VoiceConfigure"`
+
+	// 视频画面质量评价的控制参数。
+	QualityEvaluationConfigure *QualityEvaluationConfigureInfoForUpdate `json:"QualityEvaluationConfigure,omitempty" name:"QualityEvaluationConfigure"`
 }
 
 func (r *ModifyQualityInspectTemplateRequest) ToJsonString() string {
@@ -16735,8 +16735,8 @@ func (r *ModifyQualityInspectTemplateRequest) FromJsonString(s string) error {
 	delete(f, "NoiseConfigure")
 	delete(f, "MosaicConfigure")
 	delete(f, "QRCodeConfigure")
-	delete(f, "QualityEvaluationConfigure")
 	delete(f, "VoiceConfigure")
+	delete(f, "QualityEvaluationConfigure")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyQualityInspectTemplateRequest has unknown keys!", "")
 	}
@@ -19898,14 +19898,6 @@ type QualityEvaluationConfigureInfoForUpdate struct {
 }
 
 type QualityInspectItem struct {
-	// 置信度，取值范围：[0, 100]。
-	// <font color=red>注意：</font> 仅当 Type 取值为下列之一时，本字段取值有效：
-	// <li>Mosaic：马赛克；</li>
-	// <li>QRCode：二维码；</li>
-	// <li>AppletCode：小程序码；</li>
-	// <li>BarCode：条形码。</li>
-	Confidence *uint64 `json:"Confidence,omitempty" name:"Confidence"`
-
 	// 异常片段起始的偏移时间，单位：秒。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
@@ -19920,6 +19912,14 @@ type QualityInspectItem struct {
 	// <li>AppletCode：小程序码；</li>
 	// <li>BarCode：条形码。</li>
 	AreaCoordSet []*int64 `json:"AreaCoordSet,omitempty" name:"AreaCoordSet"`
+
+	// 置信度，取值范围：[0, 100]。
+	// <font color=red>注意：</font> 仅当 Type 取值为下列之一时，本字段取值有效：
+	// <li>Mosaic：马赛克；</li>
+	// <li>QRCode：二维码；</li>
+	// <li>AppletCode：小程序码；</li>
+	// <li>BarCode：条形码。</li>
+	Confidence *uint64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
 type QualityInspectResultItem struct {

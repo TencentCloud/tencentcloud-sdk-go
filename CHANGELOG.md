@@ -1,3 +1,387 @@
+# Release v1.0.705
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 138 次发布
+
+发布时间：2023-07-20 01:13:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* ModifyCDBProxyDesc
+
+
+
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+
+### 第 13 次发布
+
+发布时间：2023-07-20 01:14:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/1299/83429#InstanceInfo)
+
+	* 新增成员：EsIndexId, EsIndexUsername, EsIndexPassword, HasEsIndex
+
+	* <font color="#dd0000">**修改成员**：</font>MountDiskType, CHProxyVip, CosBucketName, CanAttachCbs, CanAttachCbsLvm, CanAttachCos, Components, UpgradeVersions
+
+* [InstanceStateInfo](https://cloud.tencent.com/document/api/1299/83429#InstanceStateInfo)
+
+	* 新增成员：ProcessSubName
+
+	* <font color="#dd0000">**修改成员**：</font>RequestId
+
+
+
+
+## Cloud Studio（云端 IDE）(cloudstudio) 版本：2023-05-08
+
+### 第 3 次发布
+
+发布时间：2023-07-20 01:17:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateWorkspaceToken](https://cloud.tencent.com/document/api/1039/94095)
+
+	* <font color="#dd0000">**修改入参**：</font>SpaceKey
+
+
+
+
+## Cloud Studio（云端 IDE）(cloudstudio) 版本：2021-05-24
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 57 次发布
+
+发布时间：2023-07-20 01:17:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KafkaRechargeInfo](https://cloud.tencent.com/document/api/614/56471#KafkaRechargeInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>KafkaType, KafkaInstance, IsEncryptionAddr, Protocol, Offset
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 56 次发布
+
+发布时间：2023-07-20 01:23:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SparkJobInfo](https://cloud.tencent.com/document/api/1342/53778#SparkJobInfo)
+
+	* 新增成员：IsSessionStarted
+
+	* <font color="#dd0000">**修改成员**：</font>JobExecutorMaxNumbers, SparkImageVersion, SessionId, DataEngineClusterType, DataEngineImageVersion, IsInherit
+
+
+
+
+## 腾讯健康组学平台(omics) 版本：2022-11-28
+
+### 第 5 次发布
+
+发布时间：2023-07-20 01:37:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RunApplication](https://cloud.tencent.com/document/api/1643/89094)
+
+	* 新增入参：ApplicationVersionId
+
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 57 次发布
+
+发布时间：2023-07-20 01:39:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNamespace](https://cloud.tencent.com/document/api/583/37160)
+
+	* 新增入参：ResourceEnv
+
+
+新增数据结构：
+
+* [K8SLabel](https://cloud.tencent.com/document/api/583/17244#K8SLabel)
+* [K8SToleration](https://cloud.tencent.com/document/api/583/17244#K8SToleration)
+* [NamespaceResourceEnv](https://cloud.tencent.com/document/api/583/17244#NamespaceResourceEnv)
+* [NamespaceResourceEnvTKE](https://cloud.tencent.com/document/api/583/17244#NamespaceResourceEnvTKE)
+
+
+
+## 腾讯云区块链服务平台 TBaaS(tbaas) 版本：2018-04-16
+
+### 第 18 次发布
+
+发布时间：2023-07-20 01:41:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateChaincodeAndInstallForUser
+* GetChaincodeCompileLogForUser
+* GetChaincodeInitializeResultForUser
+* GetChaincodeLogForUser
+* GetChannelListForUser
+* GetClusterListForUser
+* GetPeerLogForUser
+* InitializeChaincodeForUser
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* ChannelDetailForUser
+* ClusterDetailForUser
+* GroupDetailForUser
+* LogDetailForUser
+* PeerDetailForUser
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 161 次发布
+
+发布时间：2023-07-20 01:50:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [QualityInspectItem](https://cloud.tencent.com/document/api/266/31773#QualityInspectItem)
+
+	* <font color="#dd0000">**修改成员**：</font>StartTimeOffset, EndTimeOffset, AreaCoordSet, Confidence
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 37 次发布
+
+发布时间：2023-07-20 01:54:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BatchDeleteOpsTasks](https://cloud.tencent.com/document/api/1267/95234)
+* [BatchModifyOpsOwners](https://cloud.tencent.com/document/api/1267/95258)
+* [BatchRunOpsTask](https://cloud.tencent.com/document/api/1267/95233)
+* [BatchStopOpsTasks](https://cloud.tencent.com/document/api/1267/95257)
+* [BatchStopWorkflowsByIds](https://cloud.tencent.com/document/api/1267/95232)
+* [CountOpsInstanceState](https://cloud.tencent.com/document/api/1267/95256)
+* [CreateBaseline](https://cloud.tencent.com/document/api/1267/95249)
+* [CreateOpsMakePlan](https://cloud.tencent.com/document/api/1267/95231)
+* [DagInstances](https://cloud.tencent.com/document/api/1267/95230)
+* [DeleteBaseline](https://cloud.tencent.com/document/api/1267/95229)
+* [DeleteFile](https://cloud.tencent.com/document/api/1267/95250)
+* [DeleteResourceFile](https://cloud.tencent.com/document/api/1267/95236)
+* [DeleteWorkflowById](https://cloud.tencent.com/document/api/1267/95228)
+* [DescribeAllByFolderNew](https://cloud.tencent.com/document/api/1267/95227)
+* [DescribeAllTaskType](https://cloud.tencent.com/document/api/1267/95226)
+* [DescribeAllUsedVersionSon](https://cloud.tencent.com/document/api/1267/95225)
+* [DescribeBaselineAllTaskDag](https://cloud.tencent.com/document/api/1267/95248)
+* [DescribeBaselineById](https://cloud.tencent.com/document/api/1267/95247)
+* [DescribeBaselineInstanceDag](https://cloud.tencent.com/document/api/1267/95246)
+* [DescribeBaselineInstanceGantt](https://cloud.tencent.com/document/api/1267/95245)
+* [DescribeBaselineInstances](https://cloud.tencent.com/document/api/1267/95244)
+* [DescribeBaselines](https://cloud.tencent.com/document/api/1267/95243)
+* [DescribeBelongTo](https://cloud.tencent.com/document/api/1267/95224)
+* [DescribeDependOpsTaskList](https://cloud.tencent.com/document/api/1267/95223)
+* [DescribeDependOpsTasks](https://cloud.tencent.com/document/api/1267/95255)
+* [DescribeDependTaskLists](https://cloud.tencent.com/document/api/1267/95222)
+* [DescribeDiagnosticInfoByBaselineId](https://cloud.tencent.com/document/api/1267/95242)
+* [DescribeDrInstancePage](https://cloud.tencent.com/document/api/1267/95221)
+* [DescribeDrInstanceScriptContent](https://cloud.tencent.com/document/api/1267/95220)
+* [DescribeDrSonInstance](https://cloud.tencent.com/document/api/1267/95219)
+* [DescribeEvent](https://cloud.tencent.com/document/api/1267/95218)
+* [DescribeEventCases](https://cloud.tencent.com/document/api/1267/95217)
+* [DescribeEventConsumeTasks](https://cloud.tencent.com/document/api/1267/95216)
+* [DescribeEventDetail](https://cloud.tencent.com/document/api/1267/95215)
+* [DescribeEventIsAlarmTypes](https://cloud.tencent.com/document/api/1267/95214)
+* [DescribeEventTypes](https://cloud.tencent.com/document/api/1267/95213)
+* [DescribeEvents](https://cloud.tencent.com/document/api/1267/95212)
+* [DescribeFathers](https://cloud.tencent.com/document/api/1267/95211)
+* [DescribeInstanceByCycle](https://cloud.tencent.com/document/api/1267/95210)
+* [DescribeInstanceByCycleReport](https://cloud.tencent.com/document/api/1267/95209)
+* [DescribeInstanceLogDetail](https://cloud.tencent.com/document/api/1267/95235)
+* [DescribeInstanceLogFile](https://cloud.tencent.com/document/api/1267/95208)
+* [DescribeInstancesInfoWithTaskInfo](https://cloud.tencent.com/document/api/1267/95207)
+* [DescribeOperateOpsTaskDatasource](https://cloud.tencent.com/document/api/1267/95206)
+* [DescribeOperateOpsTaskDatasourceType](https://cloud.tencent.com/document/api/1267/95205)
+* [DescribeOperateOpsTasks](https://cloud.tencent.com/document/api/1267/95254)
+* [DescribeOpsInstanceLogList](https://cloud.tencent.com/document/api/1267/95204)
+* [DescribeOpsMakePlanInstances](https://cloud.tencent.com/document/api/1267/95203)
+* [DescribeOpsMakePlanTasks](https://cloud.tencent.com/document/api/1267/95202)
+* [DescribeOpsMakePlans](https://cloud.tencent.com/document/api/1267/95201)
+* [DescribeOpsWorkflows](https://cloud.tencent.com/document/api/1267/95200)
+* [DescribeScheduleInstance](https://cloud.tencent.com/document/api/1267/95241)
+* [DescribeScheduleInstances](https://cloud.tencent.com/document/api/1267/95199)
+* [DescribeSchedulerInstanceStatus](https://cloud.tencent.com/document/api/1267/95198)
+* [DescribeSchedulerRunTimeInstanceCntByStatus](https://cloud.tencent.com/document/api/1267/95197)
+* [DescribeSchedulerTaskCntByStatus](https://cloud.tencent.com/document/api/1267/95196)
+* [DescribeSchedulerTaskTypeCnt](https://cloud.tencent.com/document/api/1267/95195)
+* [DescribeSonInstances](https://cloud.tencent.com/document/api/1267/95194)
+* [DescribeStatisticInstanceStatusTrendOps](https://cloud.tencent.com/document/api/1267/95193)
+* [DescribeSuccessorOpsTaskInfos](https://cloud.tencent.com/document/api/1267/95253)
+* [DescribeTaskByCycle](https://cloud.tencent.com/document/api/1267/95192)
+* [DescribeTaskByCycleReport](https://cloud.tencent.com/document/api/1267/95191)
+* [DescribeTaskByStatusReport](https://cloud.tencent.com/document/api/1267/95190)
+* [DescribeTaskRunHistory](https://cloud.tencent.com/document/api/1267/95189)
+* [DescribeThirdTaskRunLog](https://cloud.tencent.com/document/api/1267/95188)
+* [DescribeWorkflowCanvasInfo](https://cloud.tencent.com/document/api/1267/95187)
+* [DescribeWorkflowExecuteById](https://cloud.tencent.com/document/api/1267/95186)
+* [DescribeWorkflowInfoById](https://cloud.tencent.com/document/api/1267/95185)
+* [DescribeWorkflowListByProjectId](https://cloud.tencent.com/document/api/1267/95184)
+* [DescribeWorkflowOpsCanvasInfo](https://cloud.tencent.com/document/api/1267/95183)
+* [DescribeWorkflowTaskCount](https://cloud.tencent.com/document/api/1267/95182)
+* [DiagnosePlus](https://cloud.tencent.com/document/api/1267/95181)
+* [EditBaseline](https://cloud.tencent.com/document/api/1267/95240)
+* [ForceSucScheduleInstances](https://cloud.tencent.com/document/api/1267/95180)
+* [FreezeOpsTasks](https://cloud.tencent.com/document/api/1267/95252)
+* [FreezeTasksByWorkflowIds](https://cloud.tencent.com/document/api/1267/95179)
+* [KillOpsMakePlanInstances](https://cloud.tencent.com/document/api/1267/95178)
+* [KillScheduleInstances](https://cloud.tencent.com/document/api/1267/95177)
+* [MakeUpOpsTasks](https://cloud.tencent.com/document/api/1267/95251)
+* [MakeUpTasksByWorkflow](https://cloud.tencent.com/document/api/1267/95176)
+* [ModifyBaselineAlarmStatus](https://cloud.tencent.com/document/api/1267/95175)
+* [ModifyBaselineTaskAlarmStatus](https://cloud.tencent.com/document/api/1267/95174)
+* [RerunOpsMakePlanInstances](https://cloud.tencent.com/document/api/1267/95173)
+* [RerunScheduleInstances](https://cloud.tencent.com/document/api/1267/95172)
+* [RunTasksByMultiWorkflow](https://cloud.tencent.com/document/api/1267/95171)
+* [StopBaseline](https://cloud.tencent.com/document/api/1267/95239)
+* [SubmitBaseline](https://cloud.tencent.com/document/api/1267/95238)
+* [UpdateWorkflowOwner](https://cloud.tencent.com/document/api/1267/95170)
+
+新增数据结构：
+
+* [AlarmRuleDto](https://cloud.tencent.com/document/api/1267/76336#AlarmRuleDto)
+* [BaselineDetailResponse](https://cloud.tencent.com/document/api/1267/76336#BaselineDetailResponse)
+* [BaselineDto](https://cloud.tencent.com/document/api/1267/76336#BaselineDto)
+* [BaselineInstanceVo](https://cloud.tencent.com/document/api/1267/76336#BaselineInstanceVo)
+* [BaselineTaskDto](https://cloud.tencent.com/document/api/1267/76336#BaselineTaskDto)
+* [BaselineTaskInfo](https://cloud.tencent.com/document/api/1267/76336#BaselineTaskInfo)
+* [BaselineTaskInstanceDto](https://cloud.tencent.com/document/api/1267/76336#BaselineTaskInstanceDto)
+* [BatchOperateResultOpsDto](https://cloud.tencent.com/document/api/1267/76336#BatchOperateResultOpsDto)
+* [BatchOperationOpsDto](https://cloud.tencent.com/document/api/1267/76336#BatchOperationOpsDto)
+* [BooleanResponse](https://cloud.tencent.com/document/api/1267/76336#BooleanResponse)
+* [CollectionFolderOpsDto](https://cloud.tencent.com/document/api/1267/76336#CollectionFolderOpsDto)
+* [CollectionInstanceOpsDto](https://cloud.tencent.com/document/api/1267/76336#CollectionInstanceOpsDto)
+* [CollectionTaskOpsDto](https://cloud.tencent.com/document/api/1267/76336#CollectionTaskOpsDto)
+* [CommonIdOpsDto](https://cloud.tencent.com/document/api/1267/76336#CommonIdOpsDto)
+* [CreateAlarmRuleRequest](https://cloud.tencent.com/document/api/1267/76336#CreateAlarmRuleRequest)
+* [CreateMakeDatetimeInfo](https://cloud.tencent.com/document/api/1267/76336#CreateMakeDatetimeInfo)
+* [DatasourceTypeByTaskType](https://cloud.tencent.com/document/api/1267/76336#DatasourceTypeByTaskType)
+* [DescribeBaselineResponse](https://cloud.tencent.com/document/api/1267/76336#DescribeBaselineResponse)
+* [DescribeBaselineTaskDagResponse](https://cloud.tencent.com/document/api/1267/76336#DescribeBaselineTaskDagResponse)
+* [DescribeDiagnosticInfoResponse](https://cloud.tencent.com/document/api/1267/76336#DescribeDiagnosticInfoResponse)
+* [DrInstanceOpsDto](https://cloud.tencent.com/document/api/1267/76336#DrInstanceOpsDto)
+* [DrInstanceOpsDtoPage](https://cloud.tencent.com/document/api/1267/76336#DrInstanceOpsDtoPage)
+* [EventCaseAuditLogOptDto](https://cloud.tencent.com/document/api/1267/76336#EventCaseAuditLogOptDto)
+* [EventCaseAuditLogVOCollection](https://cloud.tencent.com/document/api/1267/76336#EventCaseAuditLogVOCollection)
+* [EventCaseConsumeLogOptDto](https://cloud.tencent.com/document/api/1267/76336#EventCaseConsumeLogOptDto)
+* [EventCaseConsumeLogOptDtoCollection](https://cloud.tencent.com/document/api/1267/76336#EventCaseConsumeLogOptDtoCollection)
+* [EventCaseOpsDto](https://cloud.tencent.com/document/api/1267/76336#EventCaseOpsDto)
+* [EventDto](https://cloud.tencent.com/document/api/1267/76336#EventDto)
+* [EventListenerOpsDto](https://cloud.tencent.com/document/api/1267/76336#EventListenerOpsDto)
+* [EventOpsDto](https://cloud.tencent.com/document/api/1267/76336#EventOpsDto)
+* [EventPage](https://cloud.tencent.com/document/api/1267/76336#EventPage)
+* [FolderOpsDto](https://cloud.tencent.com/document/api/1267/76336#FolderOpsDto)
+* [InstanceApiOpsRequest](https://cloud.tencent.com/document/api/1267/76336#InstanceApiOpsRequest)
+* [InstanceCondition](https://cloud.tencent.com/document/api/1267/76336#InstanceCondition)
+* [InstanceDownloadLogInfo](https://cloud.tencent.com/document/api/1267/76336#InstanceDownloadLogInfo)
+* [InstanceLogInfo](https://cloud.tencent.com/document/api/1267/76336#InstanceLogInfo)
+* [InstanceLogInfoOpsDto](https://cloud.tencent.com/document/api/1267/76336#InstanceLogInfoOpsDto)
+* [InstanceOpsDto](https://cloud.tencent.com/document/api/1267/76336#InstanceOpsDto)
+* [InstanceOpsInfoPage](https://cloud.tencent.com/document/api/1267/76336#InstanceOpsInfoPage)
+* [InstanceSearchCondition](https://cloud.tencent.com/document/api/1267/76336#InstanceSearchCondition)
+* [InstanceStatisticInfo](https://cloud.tencent.com/document/api/1267/76336#InstanceStatisticInfo)
+* [LinkOpsDto](https://cloud.tencent.com/document/api/1267/76336#LinkOpsDto)
+* [MakePlanInstanceOpsDtoCollection](https://cloud.tencent.com/document/api/1267/76336#MakePlanInstanceOpsDtoCollection)
+* [MakePlanOpsDto](https://cloud.tencent.com/document/api/1267/76336#MakePlanOpsDto)
+* [MakePlanOpsDtoCollection](https://cloud.tencent.com/document/api/1267/76336#MakePlanOpsDtoCollection)
+* [MakePlanTaskOpsDto](https://cloud.tencent.com/document/api/1267/76336#MakePlanTaskOpsDto)
+* [MakePlanTaskOpsDtoCollection](https://cloud.tencent.com/document/api/1267/76336#MakePlanTaskOpsDtoCollection)
+* [ModifyAlarmRuleRequest](https://cloud.tencent.com/document/api/1267/76336#ModifyAlarmRuleRequest)
+* [OperationOpsDto](https://cloud.tencent.com/document/api/1267/76336#OperationOpsDto)
+* [OpsTaskCanvasDto](https://cloud.tencent.com/document/api/1267/76336#OpsTaskCanvasDto)
+* [OpsTaskCanvasInfoList](https://cloud.tencent.com/document/api/1267/76336#OpsTaskCanvasInfoList)
+* [OpsTaskInfoPage](https://cloud.tencent.com/document/api/1267/76336#OpsTaskInfoPage)
+* [OpsTaskLinkInfoDto](https://cloud.tencent.com/document/api/1267/76336#OpsTaskLinkInfoDto)
+* [PairDto](https://cloud.tencent.com/document/api/1267/76336#PairDto)
+* [ProjectBaseInfoOpsRequest](https://cloud.tencent.com/document/api/1267/76336#ProjectBaseInfoOpsRequest)
+* [RuntimeInstanceCntTop](https://cloud.tencent.com/document/api/1267/76336#RuntimeInstanceCntTop)
+* [ScreenInstanceInfo](https://cloud.tencent.com/document/api/1267/76336#ScreenInstanceInfo)
+* [ScreenTaskInfo](https://cloud.tencent.com/document/api/1267/76336#ScreenTaskInfo)
+* [SimpleDataSourceInfo](https://cloud.tencent.com/document/api/1267/76336#SimpleDataSourceInfo)
+* [StrToStrMap](https://cloud.tencent.com/document/api/1267/76336#StrToStrMap)
+* [StringListNode](https://cloud.tencent.com/document/api/1267/76336#StringListNode)
+* [TaskByCycle](https://cloud.tencent.com/document/api/1267/76336#TaskByCycle)
+* [TaskByStatus](https://cloud.tencent.com/document/api/1267/76336#TaskByStatus)
+* [TaskInstanceCountDto](https://cloud.tencent.com/document/api/1267/76336#TaskInstanceCountDto)
+* [TaskOpsDto](https://cloud.tencent.com/document/api/1267/76336#TaskOpsDto)
+* [TaskTypeCnt](https://cloud.tencent.com/document/api/1267/76336#TaskTypeCnt)
+* [TaskTypeMap](https://cloud.tencent.com/document/api/1267/76336#TaskTypeMap)
+* [TaskTypeOpsDto](https://cloud.tencent.com/document/api/1267/76336#TaskTypeOpsDto)
+* [WorkFlowExecuteDto](https://cloud.tencent.com/document/api/1267/76336#WorkFlowExecuteDto)
+* [WorkFlowExecuteDtoByPage](https://cloud.tencent.com/document/api/1267/76336#WorkFlowExecuteDtoByPage)
+* [WorkflowCanvasOpsDto](https://cloud.tencent.com/document/api/1267/76336#WorkflowCanvasOpsDto)
+* [WorkflowExtOpsDto](https://cloud.tencent.com/document/api/1267/76336#WorkflowExtOpsDto)
+* [WorkflowExtOpsDtoPage](https://cloud.tencent.com/document/api/1267/76336#WorkflowExtOpsDtoPage)
+* [WorkflowSchedulerOpsDto](https://cloud.tencent.com/document/api/1267/76336#WorkflowSchedulerOpsDto)
+* [WorkflowTaskCountOpsDto](https://cloud.tencent.com/document/api/1267/76336#WorkflowTaskCountOpsDto)
+
+
+
 # Release v1.0.704
 
 ## 弹性伸缩(as) 版本：2018-04-19

@@ -7373,62 +7373,6 @@ func (c *Client) ModifyCDBProxyConnectionPoolWithContext(ctx context.Context, re
     return
 }
 
-func NewModifyCDBProxyDescRequest() (request *ModifyCDBProxyDescRequest) {
-    request = &ModifyCDBProxyDescRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdb", APIVersion, "ModifyCDBProxyDesc")
-    
-    
-    return
-}
-
-func NewModifyCDBProxyDescResponse() (response *ModifyCDBProxyDescResponse) {
-    response = &ModifyCDBProxyDescResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifyCDBProxyDesc
-// 当前接口已经废弃，请使用+ModifyCdbProxyAddressDesc+进行替代。
-//
-// 
-//
-// 修改数据库代理描述
-//
-// 可能返回的错误码:
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-func (c *Client) ModifyCDBProxyDesc(request *ModifyCDBProxyDescRequest) (response *ModifyCDBProxyDescResponse, err error) {
-    return c.ModifyCDBProxyDescWithContext(context.Background(), request)
-}
-
-// ModifyCDBProxyDesc
-// 当前接口已经废弃，请使用+ModifyCdbProxyAddressDesc+进行替代。
-//
-// 
-//
-// 修改数据库代理描述
-//
-// 可能返回的错误码:
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-func (c *Client) ModifyCDBProxyDescWithContext(ctx context.Context, request *ModifyCDBProxyDescRequest) (response *ModifyCDBProxyDescResponse, err error) {
-    if request == nil {
-        request = NewModifyCDBProxyDescRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyCDBProxyDesc require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyCDBProxyDescResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyCDBProxyVipVPortRequest() (request *ModifyCDBProxyVipVPortRequest) {
     request = &ModifyCDBProxyVipVPortRequest{
         BaseRequest: &tchttp.BaseRequest{},

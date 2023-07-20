@@ -2332,7 +2332,7 @@ func NewDescribeApiAppResponse() (response *DescribeApiAppResponse) {
 }
 
 // DescribeApiApp
-// 本接口（DescribeApiApp）用于根据应用ID搜索应用。
+// 本接口（DescribeApiApp）用于根据应用ID搜索应用。此接口已下线，如需使用功能请使用DescribeApiAppsStatus接口。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
@@ -2343,7 +2343,7 @@ func (c *Client) DescribeApiApp(request *DescribeApiAppRequest) (response *Descr
 }
 
 // DescribeApiApp
-// 本接口（DescribeApiApp）用于根据应用ID搜索应用。
+// 本接口（DescribeApiApp）用于根据应用ID搜索应用。此接口已下线，如需使用功能请使用DescribeApiAppsStatus接口。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"

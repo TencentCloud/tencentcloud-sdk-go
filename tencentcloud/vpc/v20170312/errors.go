@@ -206,6 +206,9 @@ const (
 	// IPv6规则没有更改。
 	INVALIDPARAMETERVALUE_IPV6RULENOTCHANGE = "InvalidParameterValue.IPv6RuleNotChange"
 
+	// 资源格式错误
+	INVALIDPARAMETERVALUE_ILLEGAL = "InvalidParameterValue.Illegal"
+
 	// 该实例的计费方式与其他实例不同。
 	INVALIDPARAMETERVALUE_INCONSISTENTINSTANCEINTERNETCHARGETYPE = "InvalidParameterValue.InconsistentInstanceInternetChargeType"
 

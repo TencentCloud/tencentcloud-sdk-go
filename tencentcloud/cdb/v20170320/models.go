@@ -10906,74 +10906,6 @@ func (r *ModifyCDBProxyConnectionPoolResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type ModifyCDBProxyDescRequestParams struct {
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 数据库代理ID
-	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
-
-	// 数据库代理描述
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
-}
-
-type ModifyCDBProxyDescRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// 数据库代理ID
-	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
-
-	// 数据库代理描述
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
-}
-
-func (r *ModifyCDBProxyDescRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyCDBProxyDescRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "ProxyGroupId")
-	delete(f, "Desc")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCDBProxyDescRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type ModifyCDBProxyDescResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type ModifyCDBProxyDescResponse struct {
-	*tchttp.BaseResponse
-	Response *ModifyCDBProxyDescResponseParams `json:"Response"`
-}
-
-func (r *ModifyCDBProxyDescResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *ModifyCDBProxyDescResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type ModifyCDBProxyVipVPortRequestParams struct {
 	// 代理组ID
 	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
@@ -14719,7 +14651,7 @@ type UpgradeDBInstanceRequestParams struct {
 	// 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
 
-	// 升级后的实例cpu核数，如果不传将根据 Memory 指定的内存值自动填充对应的cpu值。
+	// 升级后的实例cpu核数，如果不传将根据 Memory 指定的内存值自动填充最小允许规格的cpu值。
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
 	// 是否极速变配。0-普通升级，1-极速变配，2 极速优先。选择极速变配会根据资源状况校验是否可以进行极速变配，满足条件则进行极速变配，不满足条件会返回报错信息。
@@ -14774,7 +14706,7 @@ type UpgradeDBInstanceRequest struct {
 	// 实例隔离类型。支持值包括： "UNIVERSAL" - 通用型实例， "EXCLUSIVE" - 独享型实例， "BASIC" - 基础版实例。
 	DeviceType *string `json:"DeviceType,omitempty" name:"DeviceType"`
 
-	// 升级后的实例cpu核数，如果不传将根据 Memory 指定的内存值自动填充对应的cpu值。
+	// 升级后的实例cpu核数，如果不传将根据 Memory 指定的内存值自动填充最小允许规格的cpu值。
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
 	// 是否极速变配。0-普通升级，1-极速变配，2 极速优先。选择极速变配会根据资源状况校验是否可以进行极速变配，满足条件则进行极速变配，不满足条件会返回报错信息。

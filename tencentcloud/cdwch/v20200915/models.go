@@ -1467,6 +1467,22 @@ type InstanceInfo struct {
 	// 可升级的内核版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpgradeVersions *string `json:"UpgradeVersions,omitempty" name:"UpgradeVersions"`
+
+	// ex-index
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsIndexId *string `json:"EsIndexId,omitempty" name:"EsIndexId"`
+
+	// username
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsIndexUsername *string `json:"EsIndexUsername,omitempty" name:"EsIndexUsername"`
+
+	// password
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EsIndexPassword *string `json:"EsIndexPassword,omitempty" name:"EsIndexPassword"`
+
+	// true
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasEsIndex *bool `json:"HasEsIndex,omitempty" name:"HasEsIndex"`
 }
 
 type InstanceStateInfo struct {
@@ -1501,6 +1517,10 @@ type InstanceStateInfo struct {
 	// 请求id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+
+	// 流程的二级名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessSubName *string `json:"ProcessSubName,omitempty" name:"ProcessSubName"`
 }
 
 type MapConfigItem struct {

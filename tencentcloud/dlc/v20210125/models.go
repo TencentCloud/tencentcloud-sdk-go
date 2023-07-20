@@ -8710,6 +8710,10 @@ type SparkJobInfo struct {
 	// 任务资源配置是否继承集群模板，0（默认）不继承，1：继承
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsInherit *uint64 `json:"IsInherit,omitempty" name:"IsInherit"`
+
+	// 是否使用session脚本的sql运行任务：false：否，true：是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSessionStarted *bool `json:"IsSessionStarted,omitempty" name:"IsSessionStarted"`
 }
 
 type SparkMonitorMetrics struct {

@@ -12207,9 +12207,11 @@ type OverrideTranscodeParameter struct {
 	AudioTemplate *AudioTemplateInfoForUpdate `json:"AudioTemplate,omitempty" name:"AudioTemplate"`
 
 	// 极速高清转码参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TEHDConfig *TEHDConfigForUpdate `json:"TEHDConfig,omitempty" name:"TEHDConfig"`
 
 	// 字幕流配置参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SubtitleTemplate *SubtitleTemplate `json:"SubtitleTemplate,omitempty" name:"SubtitleTemplate"`
 
 	// 外挂音轨参数。
@@ -14627,7 +14629,7 @@ type VideoTemplateInfoForUpdate struct {
 	// 注意：av1 编码容器目前只支持 mp4 。
 	Codec *string `json:"Codec,omitempty" name:"Codec"`
 
-	// 视频帧率，取值范围：[0, 100]，单位：Hz。
+	// 视频帧率，取值范围：[0, 120]，单位：Hz。
 	// 当取值为 0，表示帧率和原始视频保持一致。
 	Fps *uint64 `json:"Fps,omitempty" name:"Fps"`
 

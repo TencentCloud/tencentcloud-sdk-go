@@ -118,7 +118,7 @@ func NewCreateWorkspaceTokenResponse() (response *CreateWorkspaceTokenResponse) 
 }
 
 // CreateWorkspaceToken
-// 为工作空间创建临时访问凭证，重复调用会创建新的 Token，旧的 Token 将会自动失效
+// 创建工作空间临时访问凭证，重复调用会创建新的 Token，旧的 Token 将会自动失效
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -127,7 +127,7 @@ func (c *Client) CreateWorkspaceToken(request *CreateWorkspaceTokenRequest) (res
 }
 
 // CreateWorkspaceToken
-// 为工作空间创建临时访问凭证，重复调用会创建新的 Token，旧的 Token 将会自动失效
+// 创建工作空间临时访问凭证，重复调用会创建新的 Token，旧的 Token 将会自动失效
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

@@ -637,6 +637,9 @@ type CreateNamespaceRequestParams struct {
 
 	// 命名空间描述
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 资源池配置
+	ResourceEnv *NamespaceResourceEnv `json:"ResourceEnv,omitempty" name:"ResourceEnv"`
 }
 
 type CreateNamespaceRequest struct {
@@ -647,6 +650,9 @@ type CreateNamespaceRequest struct {
 
 	// 命名空间描述
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 资源池配置
+	ResourceEnv *NamespaceResourceEnv `json:"ResourceEnv,omitempty" name:"ResourceEnv"`
 }
 
 func (r *CreateNamespaceRequest) ToJsonString() string {
@@ -663,6 +669,7 @@ func (r *CreateNamespaceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Namespace")
 	delete(f, "Description")
+	delete(f, "ResourceEnv")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNamespaceRequest has unknown keys!", "")
 	}
@@ -2704,6 +2711,35 @@ func (r *InvokeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type K8SLabel struct {
+	// label的名称
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// label的值
+	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type K8SToleration struct {
+	// 匹配的污点名
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 匹配方式，默认值为: Equal
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Operator *string `json:"Operator,omitempty" name:"Operator"`
+
+	// 执行策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Effect *string `json:"Effect,omitempty" name:"Effect"`
+
+	// 匹配的污点值，当Operator为Equal时必填
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 当污点不被容忍时，Pod还能在节点上运行多久
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TolerationSeconds *uint64 `json:"TolerationSeconds,omitempty" name:"TolerationSeconds"`
+}
+
 type LayerVersionInfo struct {
 	// 版本适用的运行时
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3603,6 +3639,39 @@ type NamespaceLimit struct {
 
 	// 异步重试消息保留时间上限
 	MaxMsgTTL *int64 `json:"MaxMsgTTL,omitempty" name:"MaxMsgTTL"`
+}
+
+type NamespaceResourceEnv struct {
+	// 基于TKE集群的资源池
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TKE *NamespaceResourceEnvTKE `json:"TKE,omitempty" name:"TKE"`
+}
+
+type NamespaceResourceEnvTKE struct {
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 子网ID
+	SubnetID *string `json:"SubnetID,omitempty" name:"SubnetID"`
+
+	// 命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// 数据存储地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataPath *string `json:"DataPath,omitempty" name:"DataPath"`
+
+	// node选择器
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeSelector []*K8SLabel `json:"NodeSelector,omitempty" name:"NodeSelector"`
+
+	// 污点容忍
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tolerations []*K8SToleration `json:"Tolerations,omitempty" name:"Tolerations"`
+
+	// scf组件将占用的节点端口起始号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *uint64 `json:"Port,omitempty" name:"Port"`
 }
 
 type NamespaceUsage struct {
