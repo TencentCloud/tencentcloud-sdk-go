@@ -77,7 +77,7 @@ const (
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
-	// 对不起您的帐号已欠费，欠费状态下无法开通产品，请您先行充值。
+	// 对不起您的账号已欠费，欠费状态下无法开通产品，请您先行充值。
 	RESOURCEUNAVAILABLE_INSUFFICIENTBALANCE = "ResourceUnavailable.InsufficientBalance"
 
 	// 未授权操作。

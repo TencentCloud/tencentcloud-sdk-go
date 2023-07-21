@@ -386,7 +386,7 @@ type AddDomainWhiteRuleRequestParams struct {
 	// 规则的方法
 	Function *string `json:"Function,omitempty" name:"Function"`
 
-	// 规则的开关
+	// 规则的开关，0表示规则关闭，1表示规则打开
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
@@ -405,7 +405,7 @@ type AddDomainWhiteRuleRequest struct {
 	// 规则的方法
 	Function *string `json:"Function,omitempty" name:"Function"`
 
-	// 规则的开关
+	// 规则的开关，0表示规则关闭，1表示规则打开
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 }
 
@@ -1970,7 +1970,7 @@ type DescribeCustomWhiteRuleRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 偏移
+	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 容量
@@ -1992,7 +1992,7 @@ type DescribeCustomWhiteRuleRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 偏移
+	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 容量
@@ -4778,7 +4778,7 @@ type ModifyWafAutoDenyRulesRequestParams struct {
 	// 触发IP封禁后的封禁时间，范围为5~360分钟
 	DenyTimeThreshold *int64 `json:"DenyTimeThreshold,omitempty" name:"DenyTimeThreshold"`
 
-	// 自动封禁状态
+	// 自动封禁状态，0表示关闭，1表示打开
 	DefenseStatus *int64 `json:"DefenseStatus,omitempty" name:"DefenseStatus"`
 }
 
@@ -4797,7 +4797,7 @@ type ModifyWafAutoDenyRulesRequest struct {
 	// 触发IP封禁后的封禁时间，范围为5~360分钟
 	DenyTimeThreshold *int64 `json:"DenyTimeThreshold,omitempty" name:"DenyTimeThreshold"`
 
-	// 自动封禁状态
+	// 自动封禁状态，0表示关闭，1表示打开
 	DefenseStatus *int64 `json:"DefenseStatus,omitempty" name:"DefenseStatus"`
 }
 
@@ -5485,10 +5485,11 @@ type SwitchDomainRulesRequestParams struct {
 	// 规则列表
 	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 
-	// 开关状态
+	// 开关状态，0表示关闭，1表示开启，2表示只观察
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 设置为观察模式原因
+	// 设置为观察模式原因，
+	// 1表示业务自身原因观察，2表示系统规则误报上报，3表示核心业务灰度观察，4表示其他
 	Reason *uint64 `json:"Reason,omitempty" name:"Reason"`
 }
 
@@ -5501,10 +5502,11 @@ type SwitchDomainRulesRequest struct {
 	// 规则列表
 	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
 
-	// 开关状态
+	// 开关状态，0表示关闭，1表示开启，2表示只观察
 	Status *uint64 `json:"Status,omitempty" name:"Status"`
 
-	// 设置为观察模式原因
+	// 设置为观察模式原因，
+	// 1表示业务自身原因观察，2表示系统规则误报上报，3表示核心业务灰度观察，4表示其他
 	Reason *uint64 `json:"Reason,omitempty" name:"Reason"`
 }
 

@@ -1,3 +1,202 @@
+# Release v1.0.706
+
+## 多媒体创作引擎(cme) 版本：2019-10-29
+
+### 第 55 次发布
+
+发布时间：2023-07-21 01:14:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaCastProjectInfo](https://cloud.tencent.com/document/api/1156/40360#MediaCastProjectInfo)
+
+	* 新增成员：Duration
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 90 次发布
+
+发布时间：2023-07-21 01:23:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSchemeUrl](https://cloud.tencent.com/document/api/1323/70359)
+
+	* 新增入参：Hides
+
+
+修改数据结构：
+
+* [RegisterInfo](https://cloud.tencent.com/document/api/1323/70369#RegisterInfo)
+
+	* 新增成员：UnifiedSocialCreditCode
+
+	* <font color="#dd0000">**修改成员**：</font>Uscc
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 96 次发布
+
+发布时间：2023-07-21 01:23:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSignUrls](https://cloud.tencent.com/document/api/1420/61522)
+
+	* 新增入参：Hides
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 31 次发布
+
+发布时间：2023-07-21 01:29:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+
+	* 新增入参：IsGradingRequiredPostClass
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：IsGradingRequiredPostClass
+
+* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
+
+	* 新增入参：IsGradingRequiredPostClass
+
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 38 次发布
+
+发布时间：2023-07-21 01:35:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CloneDBInstance](https://cloud.tencent.com/document/api/409/68071)
+
+	* 新增入参：SyncMode
+
+
+
+
+## 云压测(pts) 版本：2021-07-28
+
+### 第 12 次发布
+
+发布时间：2023-07-21 01:35:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Scenario](https://cloud.tencent.com/document/api/1484/78100#Scenario)
+
+	* <font color="#dd0000">**修改成员**：</font>ScenarioId, Name, Description, Type, Status, Load, EncodedScripts, Configs, Extensions, Datasets, SLAId, CronId, CreatedAt, UpdatedAt, ProjectId, AppId, Uin, SubAccountUin, TestScripts, Protocols, RequestFiles, SLAPolicy, Plugins, DomainNameConfig, NotificationHooks, Owner, ProjectName
+
+
+
+
+## 分布式身份(tdid) 版本：2021-05-19
+
+### 第 9 次发布
+
+发布时间：2023-07-21 01:42:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* GetConsortiumClusterList
+* GetConsortiumList
+* GetCredentialCptRank
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* BcosClusterItem
+* ConsortiumItem
+* CptIssueRank
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 32 次发布
+
+发布时间：2023-07-21 01:44:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTranscode](https://cloud.tencent.com/document/api/1137/40059)
+
+	* 新增出参：CreateTime, AssignTime, FinishedTime
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 38 次发布
+
+发布时间：2023-07-21 01:50:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddDomainWhiteRule](https://cloud.tencent.com/document/api/627/72650)
+
+	* <font color="#dd0000">**修改出参**：</font>Id
+
+
+
+
 # Release v1.0.705
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

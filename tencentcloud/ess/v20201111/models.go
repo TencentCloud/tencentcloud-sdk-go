@@ -2901,6 +2901,14 @@ type CreateSchemeUrlRequestParams struct {
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 生成的签署链接在签署过程隐藏的按钮列表, 可以设置隐藏的按钮列表如下
+	// 
+	// 0:合同签署页面更多操作按钮
+	// 1:合同签署页面更多操作的拒绝签署按钮
+	// 2:合同签署页面更多操作的转他人处理按钮
+	// 3:签署成功页的查看详情按钮
+	Hides []*int64 `json:"Hides,omitempty" name:"Hides"`
 }
 
 type CreateSchemeUrlRequest struct {
@@ -2938,6 +2946,14 @@ type CreateSchemeUrlRequest struct {
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 生成的签署链接在签署过程隐藏的按钮列表, 可以设置隐藏的按钮列表如下
+	// 
+	// 0:合同签署页面更多操作按钮
+	// 1:合同签署页面更多操作的拒绝签署按钮
+	// 2:合同签署页面更多操作的转他人处理按钮
+	// 3:签署成功页的查看详情按钮
+	Hides []*int64 `json:"Hides,omitempty" name:"Hides"`
 }
 
 func (r *CreateSchemeUrlRequest) ToJsonString() string {
@@ -2962,6 +2978,7 @@ func (r *CreateSchemeUrlRequest) FromJsonString(s string) error {
 	delete(f, "PathType")
 	delete(f, "AutoJumpBack")
 	delete(f, "Agent")
+	delete(f, "Hides")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSchemeUrlRequest has unknown keys!", "")
 	}
@@ -5466,7 +5483,7 @@ type FlowCreateApprover struct {
 	// 签署人用户来源,企微侧用户请传入：WEWORKAPP
 	ApproverSource *string `json:"ApproverSource,omitempty" name:"ApproverSource"`
 
-	// 客户自定义签署人标识，64位长度，保证唯一。非企微场景不使用此字段
+	// 客户自定义签署人标识，64位长度，保证唯一。用于发起含有或签签署人的合同。或签参与人必须有此字段。不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
 	CustomApproverTag *string `json:"CustomApproverTag,omitempty" name:"CustomApproverTag"`
 
 	// 快速注册相关信息，目前暂未开放！
@@ -6173,7 +6190,12 @@ type RegisterInfo struct {
 	LegalName *string `json:"LegalName,omitempty" name:"LegalName"`
 
 	// 社会统一信用代码
+	//
+	// Deprecated: Uscc is deprecated.
 	Uscc *string `json:"Uscc,omitempty" name:"Uscc"`
+
+	// 社会统一信用代码
+	UnifiedSocialCreditCode *string `json:"UnifiedSocialCreditCode,omitempty" name:"UnifiedSocialCreditCode"`
 }
 
 type ReleasedApprover struct {

@@ -2413,6 +2413,18 @@ type DescribeTranscodeResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ext *string `json:"Ext,omitempty" name:"Ext"`
 
+	// 文档转码任务创建时间，单位s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 文档转码任务分配时间，单位s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssignTime *uint64 `json:"AssignTime,omitempty" name:"AssignTime"`
+
+	// 文档转码任务完成时间，单位s
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishedTime *uint64 `json:"FinishedTime,omitempty" name:"FinishedTime"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

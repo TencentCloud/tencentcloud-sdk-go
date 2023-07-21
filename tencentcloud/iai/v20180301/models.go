@@ -1717,7 +1717,7 @@ type FaceAttributesInfo struct {
 
 type FaceDetailAttributesInfo struct {
 	// 年龄 [0,65]，其中65代表“65岁及以上”。 
-	// FaceAttributesType 不为含Age 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
+	// FaceAttributesType 不含Age 或检测超过 5 张人脸时，此参数仍返回，但不具备参考意义。
 	Age *int64 `json:"Age,omitempty" name:"Age"`
 
 	// 美丑打分[0,100]。 
@@ -2580,7 +2580,7 @@ type Hat struct {
 	Style *AttributeItem `json:"Style,omitempty" name:"Style"`
 
 	// 帽子颜色。
-	// AttributeItem对应的Type为 —— 0：不戴帽子，1：红色系，2：黄色系，3：蓝色系，4：黑色系，5：灰白色系，6：混色系子。
+	// AttributeItem对应的Type为 —— 0：不戴帽子，1：红色系，2：黄色系，3：蓝色系，4：黑色系，5：灰白色系，6：混色系。
 	Color *AttributeItem `json:"Color,omitempty" name:"Color"`
 }
 

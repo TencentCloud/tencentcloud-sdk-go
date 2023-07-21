@@ -267,6 +267,10 @@ type AgentDealNewElem struct {
 	// 资源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+
+	// 退款单的原订单信息。当前仅 DescribeClientDealsByCache 接口会返回该字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundMap []*RefundMap `json:"RefundMap,omitempty" name:"RefundMap"`
 }
 
 // Predefined struct for user
@@ -1919,6 +1923,16 @@ type RebateInfoElemNew struct {
 
 	// NORMAL(正常)/HAS_OVERDUE_BILL(欠费)/NO_CONTRACT(缺合同)
 	ExceptionFlag *string `json:"ExceptionFlag,omitempty" name:"ExceptionFlag"`
+}
+
+type RefundMap struct {
+	// 退款单关联的原始子订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+
+	// 退款金额，单位分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RefundAmount *int64 `json:"RefundAmount,omitempty" name:"RefundAmount"`
 }
 
 // Predefined struct for user

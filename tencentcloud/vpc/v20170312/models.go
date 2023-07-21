@@ -11606,7 +11606,7 @@ type DescribeNatGatewayDestinationIpPortTranslationNatRulesRequestParams struct 
 	NatGatewayIds []*string `json:"NatGatewayIds,omitempty" name:"NatGatewayIds"`
 
 	// 过滤条件:
-	// 参数不支持同时指定NatGatewayIds和Filters。
+	// 参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5
 	// <li> nat-gateway-id，NAT网关的ID，如`nat-0yi4hekt`</li>
 	// <li> vpc-id，私有网络VPC的ID，如`vpc-0yi4hekt`</li>
 	// <li> public-ip-address， 弹性IP，如`139.199.232.238`。</li>
@@ -11630,7 +11630,7 @@ type DescribeNatGatewayDestinationIpPortTranslationNatRulesRequest struct {
 	NatGatewayIds []*string `json:"NatGatewayIds,omitempty" name:"NatGatewayIds"`
 
 	// 过滤条件:
-	// 参数不支持同时指定NatGatewayIds和Filters。
+	// 参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5
 	// <li> nat-gateway-id，NAT网关的ID，如`nat-0yi4hekt`</li>
 	// <li> vpc-id，私有网络VPC的ID，如`vpc-0yi4hekt`</li>
 	// <li> public-ip-address， 弹性IP，如`139.199.232.238`。</li>
@@ -11868,10 +11868,10 @@ func (r *DescribeNatGatewaySourceIpTranslationNatRulesResponse) FromJsonString(s
 
 // Predefined struct for user
 type DescribeNatGatewaysRequestParams struct {
-	// NAT网关统一 ID，形如：`nat-123xx454`。
+	// NAT网关统一 ID，形如：`nat-123xx454`。每次请求的实例上限为100。参数不支持同时指定NatGatewayIds和Filters。
 	NatGatewayIds []*string `json:"NatGatewayIds,omitempty" name:"NatGatewayIds"`
 
-	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。
+	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。
 	// <li>nat-gateway-id - String - （过滤条件）协议端口模板实例ID，形如：`nat-123xx454`。</li>
 	// <li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li>
 	// <li>nat-gateway-name - String - （过滤条件）协议端口模板实例ID，形如：`test_nat`。</li>
@@ -11888,10 +11888,10 @@ type DescribeNatGatewaysRequestParams struct {
 type DescribeNatGatewaysRequest struct {
 	*tchttp.BaseRequest
 	
-	// NAT网关统一 ID，形如：`nat-123xx454`。
+	// NAT网关统一 ID，形如：`nat-123xx454`。每次请求的实例上限为100。参数不支持同时指定NatGatewayIds和Filters。
 	NatGatewayIds []*string `json:"NatGatewayIds,omitempty" name:"NatGatewayIds"`
 
-	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。
+	// 过滤条件，参数不支持同时指定NatGatewayIds和Filters。每次请求的Filters的上限为10，Filter.Values的上限为5。
 	// <li>nat-gateway-id - String - （过滤条件）协议端口模板实例ID，形如：`nat-123xx454`。</li>
 	// <li>vpc-id - String - （过滤条件）私有网络 唯一ID，形如：`vpc-123xx454`。</li>
 	// <li>nat-gateway-name - String - （过滤条件）协议端口模板实例ID，形如：`test_nat`。</li>

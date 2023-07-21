@@ -180,6 +180,7 @@ type CreateAsyncRecognitionTaskRequestParams struct {
 	// • 16k_pt：葡萄牙语；
 	// • 16k_tr：土耳其语；
 	// • 16k_ar：阿拉伯语；
+	// • 16k_es：西班牙语；
 	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 
 	// 语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
@@ -226,6 +227,7 @@ type CreateAsyncRecognitionTaskRequest struct {
 	// • 16k_pt：葡萄牙语；
 	// • 16k_tr：土耳其语；
 	// • 16k_ar：阿拉伯语；
+	// • 16k_es：西班牙语；
 	EngineType *string `json:"EngineType,omitempty" name:"EngineType"`
 
 	// 语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
@@ -414,6 +416,7 @@ type CreateRecTaskRequestParams struct {
 	// • 16k_pt：葡萄牙语；
 	// • 16k_tr：土耳其语；
 	// • 16k_ar：阿拉伯语；
+	// • 16k_es：西班牙语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 
@@ -505,6 +508,7 @@ type CreateRecTaskRequest struct {
 	// • 16k_pt：葡萄牙语；
 	// • 16k_tr：土耳其语；
 	// • 16k_ar：阿拉伯语；
+	// • 16k_es：西班牙语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngineModelType *string `json:"EngineModelType,omitempty" name:"EngineModelType"`
 
@@ -1504,6 +1508,7 @@ type SentenceRecognitionRequestParams struct {
 	// • 16k_pt：葡萄牙语；
 	// • 16k_tr：土耳其语；
 	// • 16k_ar：阿拉伯语；
+	// • 16k_es：西班牙语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 
@@ -1593,6 +1598,7 @@ type SentenceRecognitionRequest struct {
 	// • 16k_pt：葡萄牙语；
 	// • 16k_tr：土耳其语；
 	// • 16k_ar：阿拉伯语；
+	// • 16k_es：西班牙语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitempty" name:"EngSerViceType"`
 

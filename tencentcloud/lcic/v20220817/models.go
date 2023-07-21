@@ -1085,6 +1085,9 @@ type CreateRoomRequestParams struct {
 
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
 	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+
+	// 开启课后评分。 0：不开启(默认)  1：开启
+	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
 }
 
 type CreateRoomRequest struct {
@@ -1167,6 +1170,9 @@ type CreateRoomRequest struct {
 
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
 	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+
+	// 开启课后评分。 0：不开启(默认)  1：开启
+	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -1201,6 +1207,7 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "EnableDirectControl")
 	delete(f, "InteractionMode")
 	delete(f, "VideoOrientation")
+	delete(f, "IsGradingRequiredPostClass")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoomRequest has unknown keys!", "")
 	}
@@ -2729,6 +2736,9 @@ type DescribeRoomResponseParams struct {
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
 	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
 
+	// 开启课后评分。 0：不开启(默认)  1：开启
+	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -4124,6 +4134,9 @@ type ModifyRoomRequestParams struct {
 
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
 	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+
+	// 开启课后评分。 0：不开启(默认)  1：开启
+	IsGradingRequiredPostClass *uint64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
 }
 
 type ModifyRoomRequest struct {
@@ -4198,6 +4211,9 @@ type ModifyRoomRequest struct {
 
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
 	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+
+	// 开启课后评分。 0：不开启(默认)  1：开启
+	IsGradingRequiredPostClass *uint64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
 }
 
 func (r *ModifyRoomRequest) ToJsonString() string {
@@ -4229,6 +4245,7 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	delete(f, "EnableDirectControl")
 	delete(f, "InteractionMode")
 	delete(f, "VideoOrientation")
+	delete(f, "IsGradingRequiredPostClass")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
 	}

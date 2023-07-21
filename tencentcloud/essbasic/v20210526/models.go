@@ -3574,6 +3574,14 @@ type CreateSignUrlsRequestParams struct {
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 生成的签署链接在签署过程隐藏的按钮列表, 可以设置隐藏的按钮列表如下
+	// 
+	// 0:合同签署页面更多操作按钮
+	// 1:合同签署页面更多操作的拒绝签署按钮
+	// 2:合同签署页面更多操作的转他人处理按钮
+	// 3:签署成功页的查看详情按钮
+	Hides []*int64 `json:"Hides,omitempty" name:"Hides"`
 }
 
 type CreateSignUrlsRequest struct {
@@ -3623,6 +3631,14 @@ type CreateSignUrlsRequest struct {
 
 	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 生成的签署链接在签署过程隐藏的按钮列表, 可以设置隐藏的按钮列表如下
+	// 
+	// 0:合同签署页面更多操作按钮
+	// 1:合同签署页面更多操作的拒绝签署按钮
+	// 2:合同签署页面更多操作的转他人处理按钮
+	// 3:签署成功页的查看详情按钮
+	Hides []*int64 `json:"Hides,omitempty" name:"Hides"`
 }
 
 func (r *CreateSignUrlsRequest) ToJsonString() string {
@@ -3650,6 +3666,7 @@ func (r *CreateSignUrlsRequest) FromJsonString(s string) error {
 	delete(f, "AutoJumpBack")
 	delete(f, "JumpUrl")
 	delete(f, "Operator")
+	delete(f, "Hides")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSignUrlsRequest has unknown keys!", "")
 	}
