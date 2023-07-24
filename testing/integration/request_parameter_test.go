@@ -103,32 +103,6 @@ func TestBoolAndDatetimeIsoType(t *testing.T) {
 	}
 }
 
-func TestDateType(t *testing.T) {
-	// Set the interface parameter to Date type
-	credential := common.NewCredential(
-		os.Getenv("TENCENTCLOUD_SECRET_ID"),
-		os.Getenv("TENCENTCLOUD_SECRET_KEY"),
-	)
-	cpf := profile.NewClientProfile()
-	client, _ := cbs.NewClient(credential, "ap-guangzhou", cpf)
-
-	request := cbs.NewDescribeSnapshotOperationLogsRequest()
-	request.Filters = []*cbs.Filter{
-		{
-			Name:   common.StringPtr("snapshot-id"),
-			Values: common.StringPtrs([]string{"invalid-snp-id"}),
-		},
-	}
-	request.BeginTime = common.StringPtr("2021-05-21")
-	request.EndTime = common.StringPtr("2021-05-21")
-
-	// not a good api design, the api responses successully with wrong input
-	_, err := client.DescribeSnapshotOperationLogs(request)
-	if err == nil {
-		t.Logf("unexpected success")
-	}
-}
-
 func TestDatetimeType(t *testing.T) {
 	// Set the interface parameter to Datetime type
 	credential := common.NewCredential(
