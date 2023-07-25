@@ -213,6 +213,7 @@ func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = "FailedOperation.DuplicateOrderNotAllowed"
+//  FAILEDOPERATION_GETCVMSERVERFAILED = "FailedOperation.GetCvmServerFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
@@ -296,6 +297,7 @@ func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *Creat
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = "FailedOperation.DuplicateOrderNotAllowed"
+//  FAILEDOPERATION_GETCVMSERVERFAILED = "FailedOperation.GetCvmServerFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
@@ -667,6 +669,7 @@ func NewDescribeHiveQueriesResponse() (response *DescribeHiveQueriesResponse) {
 // 获取hive查询信息
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_IMPALAQUERYEXCEPTION = "InvalidParameter.ImpalaQueryException"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) DescribeHiveQueries(request *DescribeHiveQueriesRequest) (response *DescribeHiveQueriesResponse, err error) {
     return c.DescribeHiveQueriesWithContext(context.Background(), request)
@@ -676,6 +679,7 @@ func (c *Client) DescribeHiveQueries(request *DescribeHiveQueriesRequest) (respo
 // 获取hive查询信息
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_IMPALAQUERYEXCEPTION = "InvalidParameter.ImpalaQueryException"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) DescribeHiveQueriesWithContext(ctx context.Context, request *DescribeHiveQueriesRequest) (response *DescribeHiveQueriesResponse, err error) {
     if request == nil {
@@ -1229,10 +1233,7 @@ func NewDescribeYarnApplicationsResponse() (response *DescribeYarnApplicationsRe
 // DescribeYarnApplications
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
-//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
-//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  INVALIDPARAMETER_IMPALAQUERYEXCEPTION = "InvalidParameter.ImpalaQueryException"
 func (c *Client) DescribeYarnApplications(request *DescribeYarnApplicationsRequest) (response *DescribeYarnApplicationsResponse, err error) {
     return c.DescribeYarnApplicationsWithContext(context.Background(), request)
 }
@@ -1241,10 +1242,7 @@ func (c *Client) DescribeYarnApplications(request *DescribeYarnApplicationsReque
 // DescribeYarnApplications
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER_INVALIDINSTANCENAME = "InvalidParameter.InvalidInstanceName"
-//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
-//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  INVALIDPARAMETER_IMPALAQUERYEXCEPTION = "InvalidParameter.ImpalaQueryException"
 func (c *Client) DescribeYarnApplicationsWithContext(ctx context.Context, request *DescribeYarnApplicationsRequest) (response *DescribeYarnApplicationsResponse, err error) {
     if request == nil {
         request = NewDescribeYarnApplicationsRequest()

@@ -2860,6 +2860,7 @@ func NewModifyMaterialResponse() (response *ModifyMaterialResponse) {
 //  INVALIDPARAMETERVALUE_OWNERID = "InvalidParameterValue.OwnerId"
 //  INVALIDPARAMETERVALUE_OWNERTYPE = "InvalidParameterValue.OwnerType"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyMaterial(request *ModifyMaterialRequest) (response *ModifyMaterialResponse, err error) {
@@ -2875,6 +2876,7 @@ func (c *Client) ModifyMaterial(request *ModifyMaterialRequest) (response *Modif
 //  INVALIDPARAMETERVALUE_OWNERID = "InvalidParameterValue.OwnerId"
 //  INVALIDPARAMETERVALUE_OWNERTYPE = "InvalidParameterValue.OwnerType"
 //  OPERATIONDENIED_PERMISSIONDENY = "OperationDenied.PermissionDeny"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_PLATFORM = "ResourceNotFound.Platform"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ModifyMaterialWithContext(ctx context.Context, request *ModifyMaterialRequest) (response *ModifyMaterialResponse, err error) {

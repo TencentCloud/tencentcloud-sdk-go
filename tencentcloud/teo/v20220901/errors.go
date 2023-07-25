@@ -32,6 +32,9 @@ const (
 	// 站点状态不正确。
 	FAILEDOPERATION_INVALIDZONESTATUS = "FailedOperation.InvalidZoneStatus"
 
+	// 操作失败。
+	FAILEDOPERATION_MODIFYFAILED = "FailedOperation.ModifyFailed"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -355,6 +358,9 @@ const (
 
 	// 不支持智能路由
 	INVALIDPARAMETER_MULTIPLYLAYERNOTSUPPORTSMARTROUTING = "InvalidParameter.MultiplyLayerNotSupportSmartRouting"
+
+	// 操作配置存在不支持的预设变量。
+	INVALIDPARAMETER_NOTSUPPORTTHISPRESET = "InvalidParameter.NotSupportThisPreset"
 
 	// 源站是内网IP。
 	INVALIDPARAMETER_ORIGINISINNERIP = "InvalidParameter.OriginIsInnerIp"

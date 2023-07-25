@@ -2283,6 +2283,7 @@ func NewDeletePrometheusConfigResponse() (response *DeletePrometheusConfigRespon
 // 删除Prometheus配置，如果目标不存在，将返回成功
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -2297,6 +2298,7 @@ func (c *Client) DeletePrometheusConfig(request *DeletePrometheusConfigRequest) 
 // 删除Prometheus配置，如果目标不存在，将返回成功
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -3453,8 +3455,6 @@ func NewDescribeBaseMetricsResponse() (response *DescribeBaseMetricsResponse) {
 // 获取基础指标属性
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBaseMetrics(request *DescribeBaseMetricsRequest) (response *DescribeBaseMetricsResponse, err error) {
     return c.DescribeBaseMetricsWithContext(context.Background(), request)
@@ -3464,8 +3464,6 @@ func (c *Client) DescribeBaseMetrics(request *DescribeBaseMetricsRequest) (respo
 // 获取基础指标属性
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_DOHTTPTRANSFERFAILED = "FailedOperation.DoHTTPTransferFailed"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeBaseMetricsWithContext(ctx context.Context, request *DescribeBaseMetricsRequest) (response *DescribeBaseMetricsResponse, err error) {
     if request == nil {

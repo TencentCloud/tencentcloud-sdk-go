@@ -3291,6 +3291,7 @@ func NewUpdateFunctionCodeResponse() (response *UpdateFunctionCodeResponse) {
 //  UNAUTHORIZEDOPERATION_TEMPCOSAPPID = "UnauthorizedOperation.TempCosAppid"
 //  UNAUTHORIZEDOPERATION_UPDATEFUNCTIONCODE = "UnauthorizedOperation.UpdateFunctionCode"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_UPDATEFUNCTIONCODE = "UnsupportedOperation.UpdateFunctionCode"
 func (c *Client) UpdateFunctionCode(request *UpdateFunctionCodeRequest) (response *UpdateFunctionCodeResponse, err error) {
     return c.UpdateFunctionCodeWithContext(context.Background(), request)
 }
@@ -3343,6 +3344,7 @@ func (c *Client) UpdateFunctionCode(request *UpdateFunctionCodeRequest) (respons
 //  UNAUTHORIZEDOPERATION_TEMPCOSAPPID = "UnauthorizedOperation.TempCosAppid"
 //  UNAUTHORIZEDOPERATION_UPDATEFUNCTIONCODE = "UnauthorizedOperation.UpdateFunctionCode"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_UPDATEFUNCTIONCODE = "UnsupportedOperation.UpdateFunctionCode"
 func (c *Client) UpdateFunctionCodeWithContext(ctx context.Context, request *UpdateFunctionCodeRequest) (response *UpdateFunctionCodeResponse, err error) {
     if request == nil {
         request = NewUpdateFunctionCodeRequest()
@@ -3437,6 +3439,7 @@ func NewUpdateFunctionConfigurationResponse() (response *UpdateFunctionConfigura
 //  LIMITEXCEEDED_MEMORY = "LimitExceeded.Memory"
 //  LIMITEXCEEDED_TIMEOUT = "LimitExceeded.Timeout"
 //  RESOURCENOTFOUND_CFSPROTOCOLERROR = "ResourceNotFound.CfsProtocolError"
+//  RESOURCENOTFOUND_CFSSTATUSERROR = "ResourceNotFound.CfsStatusError"
 //  RESOURCENOTFOUND_CFSVPCNOTMATCH = "ResourceNotFound.CfsVpcNotMatch"
 //  RESOURCENOTFOUND_CMQ = "ResourceNotFound.Cmq"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
@@ -3516,6 +3519,7 @@ func (c *Client) UpdateFunctionConfiguration(request *UpdateFunctionConfiguratio
 //  LIMITEXCEEDED_MEMORY = "LimitExceeded.Memory"
 //  LIMITEXCEEDED_TIMEOUT = "LimitExceeded.Timeout"
 //  RESOURCENOTFOUND_CFSPROTOCOLERROR = "ResourceNotFound.CfsProtocolError"
+//  RESOURCENOTFOUND_CFSSTATUSERROR = "ResourceNotFound.CfsStatusError"
 //  RESOURCENOTFOUND_CFSVPCNOTMATCH = "ResourceNotFound.CfsVpcNotMatch"
 //  RESOURCENOTFOUND_CMQ = "ResourceNotFound.Cmq"
 //  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"

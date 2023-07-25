@@ -136,6 +136,9 @@ type CreateWorkspaceTokenRequestParams struct {
 
 	// token过期时间，单位是秒，默认 3600
 	TokenExpiredLimitSec *uint64 `json:"TokenExpiredLimitSec,omitempty" name:"TokenExpiredLimitSec"`
+
+	// token 授权策略，可选值为 workspace-run-only, all。默认为 all
+	Policies []*string `json:"Policies,omitempty" name:"Policies"`
 }
 
 type CreateWorkspaceTokenRequest struct {
@@ -146,6 +149,9 @@ type CreateWorkspaceTokenRequest struct {
 
 	// token过期时间，单位是秒，默认 3600
 	TokenExpiredLimitSec *uint64 `json:"TokenExpiredLimitSec,omitempty" name:"TokenExpiredLimitSec"`
+
+	// token 授权策略，可选值为 workspace-run-only, all。默认为 all
+	Policies []*string `json:"Policies,omitempty" name:"Policies"`
 }
 
 func (r *CreateWorkspaceTokenRequest) ToJsonString() string {
@@ -162,6 +168,7 @@ func (r *CreateWorkspaceTokenRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SpaceKey")
 	delete(f, "TokenExpiredLimitSec")
+	delete(f, "Policies")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWorkspaceTokenRequest has unknown keys!", "")
 	}

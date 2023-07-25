@@ -140,7 +140,7 @@ const (
 	// Bcos无效的私钥用户信息。
 	FAILEDOPERATION_INVALIDKEYUSER = "FailedOperation.InvalidKeyUser"
 
-	// 无效操作。
+	// 用户非法操作。
 	FAILEDOPERATION_INVALIDOPERATION = "FailedOperation.InvalidOperation"
 
 	// 交易请求异常。
@@ -212,7 +212,7 @@ const (
 	// 错误码未定义。
 	INTERNALERROR_NODEFINEERROR = "InternalError.NoDefineError"
 
-	// Bcos服务器异常，请重试。
+	// 内部错误，请稍后重试或者联系技术人员
 	INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 
 	// 服务器异常。
@@ -302,7 +302,7 @@ const (
 	// 参数格式不正确。
 	INVALIDPARAMETERVALUE_ILLEGALFORMAT = "InvalidParameterValue.IllegalFormat"
 
-	// 参数取值不合法。
+	// 请求参数错误。
 	INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 
 	// 参数值为空。

@@ -886,15 +886,17 @@ func NewCreateFlowApproversResponse() (response *CreateFlowApproversResponse) {
 }
 
 // CreateFlowApprovers
-// 补充签署流程本企业签署人信息
+// ### 适用场景
 //
-// 适用场景：在通过模板或者文件发起合同时，若未指定本企业签署人信息，则流程发起后，可以调用此接口补充签署人。
+// 在通过模板或者文件发起合同时，若未指定企业签署人信息，则流程发起后，可以调用此接口补充或签签署人。
 //
-// 同一签署人可以补充多个员工作为候选签署人,最终签署人取决于谁先领取合同完成签署。
+// 同一签署人可以补充多个员工作为或签签署人,最终实际签署人取决于谁先领取合同完成签署。
 //
-// 
+// ### 限制条件
 //
-// 注：目前暂时只支持补充来源于企业微信的员工作为候选签署人
+// -  本企业(发起方企业)支持通过企业微信UserId 或者 姓名+手机号补充
+//
+// - 他方企业仅支持通过姓名+手机号补充
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -972,15 +974,17 @@ func (c *Client) CreateFlowApprovers(request *CreateFlowApproversRequest) (respo
 }
 
 // CreateFlowApprovers
-// 补充签署流程本企业签署人信息
+// ### 适用场景
 //
-// 适用场景：在通过模板或者文件发起合同时，若未指定本企业签署人信息，则流程发起后，可以调用此接口补充签署人。
+// 在通过模板或者文件发起合同时，若未指定企业签署人信息，则流程发起后，可以调用此接口补充或签签署人。
 //
-// 同一签署人可以补充多个员工作为候选签署人,最终签署人取决于谁先领取合同完成签署。
+// 同一签署人可以补充多个员工作为或签签署人,最终实际签署人取决于谁先领取合同完成签署。
 //
-// 
+// ### 限制条件
 //
-// 注：目前暂时只支持补充来源于企业微信的员工作为候选签署人
+// -  本企业(发起方企业)支持通过企业微信UserId 或者 姓名+手机号补充
+//
+// - 他方企业仅支持通过姓名+手机号补充
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3198,6 +3202,7 @@ func NewCreateSchemeUrlResponse() (response *CreateSchemeUrlResponse) {
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
@@ -3247,6 +3252,7 @@ func (c *Client) CreateSchemeUrl(request *CreateSchemeUrlRequest) (response *Cre
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"

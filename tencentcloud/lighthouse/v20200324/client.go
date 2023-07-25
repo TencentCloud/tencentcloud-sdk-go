@@ -2305,6 +2305,310 @@ func (c *Client) DescribeDisksReturnableWithContext(ctx context.Context, request
     return
 }
 
+func NewDescribeDockerActivitiesRequest() (request *DescribeDockerActivitiesRequest) {
+    request = &DescribeDockerActivitiesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeDockerActivities")
+    
+    
+    return
+}
+
+func NewDescribeDockerActivitiesResponse() (response *DescribeDockerActivitiesResponse) {
+    response = &DescribeDockerActivitiesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDockerActivities
+// 查询实例内的Docker活动列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIELDSCOMPARE = "InvalidParameterValue.FieldsCompare"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) DescribeDockerActivities(request *DescribeDockerActivitiesRequest) (response *DescribeDockerActivitiesResponse, err error) {
+    return c.DescribeDockerActivitiesWithContext(context.Background(), request)
+}
+
+// DescribeDockerActivities
+// 查询实例内的Docker活动列表。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_FIELDSCOMPARE = "InvalidParameterValue.FieldsCompare"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) DescribeDockerActivitiesWithContext(ctx context.Context, request *DescribeDockerActivitiesRequest) (response *DescribeDockerActivitiesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDockerActivitiesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDockerActivities require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDockerActivitiesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDockerContainerConfigurationRequest() (request *DescribeDockerContainerConfigurationRequest) {
+    request = &DescribeDockerContainerConfigurationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeDockerContainerConfiguration")
+    
+    
+    return
+}
+
+func NewDescribeDockerContainerConfigurationResponse() (response *DescribeDockerContainerConfigurationResponse) {
+    response = &DescribeDockerContainerConfigurationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDockerContainerConfiguration
+// 查询实例内的Docker容器配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOCKERCONTAINERSLISTTOOLARGE = "FailedOperation.DockerContainersListTooLarge"
+//  FAILEDOPERATION_DOCKEROPERATIONFAILED = "FailedOperation.DockerOperationFailed"
+//  FAILEDOPERATION_TATINVOCATIONNOTFINISHED = "FailedOperation.TATInvocationNotFinished"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) DescribeDockerContainerConfiguration(request *DescribeDockerContainerConfigurationRequest) (response *DescribeDockerContainerConfigurationResponse, err error) {
+    return c.DescribeDockerContainerConfigurationWithContext(context.Background(), request)
+}
+
+// DescribeDockerContainerConfiguration
+// 查询实例内的Docker容器配置信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOCKERCONTAINERSLISTTOOLARGE = "FailedOperation.DockerContainersListTooLarge"
+//  FAILEDOPERATION_DOCKEROPERATIONFAILED = "FailedOperation.DockerOperationFailed"
+//  FAILEDOPERATION_TATINVOCATIONNOTFINISHED = "FailedOperation.TATInvocationNotFinished"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) DescribeDockerContainerConfigurationWithContext(ctx context.Context, request *DescribeDockerContainerConfigurationRequest) (response *DescribeDockerContainerConfigurationResponse, err error) {
+    if request == nil {
+        request = NewDescribeDockerContainerConfigurationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDockerContainerConfiguration require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDockerContainerConfigurationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDockerContainerDetailRequest() (request *DescribeDockerContainerDetailRequest) {
+    request = &DescribeDockerContainerDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeDockerContainerDetail")
+    
+    
+    return
+}
+
+func NewDescribeDockerContainerDetailResponse() (response *DescribeDockerContainerDetailResponse) {
+    response = &DescribeDockerContainerDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDockerContainerDetail
+// 查询实例内的Docker容器详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOCKERCONTAINERSLISTTOOLARGE = "FailedOperation.DockerContainersListTooLarge"
+//  FAILEDOPERATION_DOCKEROPERATIONFAILED = "FailedOperation.DockerOperationFailed"
+//  FAILEDOPERATION_TATINVOCATIONNOTFINISHED = "FailedOperation.TATInvocationNotFinished"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) DescribeDockerContainerDetail(request *DescribeDockerContainerDetailRequest) (response *DescribeDockerContainerDetailResponse, err error) {
+    return c.DescribeDockerContainerDetailWithContext(context.Background(), request)
+}
+
+// DescribeDockerContainerDetail
+// 查询实例内的Docker容器详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOCKERCONTAINERSLISTTOOLARGE = "FailedOperation.DockerContainersListTooLarge"
+//  FAILEDOPERATION_DOCKEROPERATIONFAILED = "FailedOperation.DockerOperationFailed"
+//  FAILEDOPERATION_TATINVOCATIONNOTFINISHED = "FailedOperation.TATInvocationNotFinished"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) DescribeDockerContainerDetailWithContext(ctx context.Context, request *DescribeDockerContainerDetailRequest) (response *DescribeDockerContainerDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeDockerContainerDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDockerContainerDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDockerContainerDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDockerContainersRequest() (request *DescribeDockerContainersRequest) {
+    request = &DescribeDockerContainersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeDockerContainers")
+    
+    
+    return
+}
+
+func NewDescribeDockerContainersResponse() (response *DescribeDockerContainersResponse) {
+    response = &DescribeDockerContainersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDockerContainers
+// 查询实例内的容器列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOCKERCONTAINERSLISTTOOLARGE = "FailedOperation.DockerContainersListTooLarge"
+//  FAILEDOPERATION_DOCKEROPERATIONFAILED = "FailedOperation.DockerOperationFailed"
+//  FAILEDOPERATION_TATINVOCATIONNOTFINISHED = "FailedOperation.TATInvocationNotFinished"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) DescribeDockerContainers(request *DescribeDockerContainersRequest) (response *DescribeDockerContainersResponse, err error) {
+    return c.DescribeDockerContainersWithContext(context.Background(), request)
+}
+
+// DescribeDockerContainers
+// 查询实例内的容器列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOCKERCONTAINERSLISTTOOLARGE = "FailedOperation.DockerContainersListTooLarge"
+//  FAILEDOPERATION_DOCKEROPERATIONFAILED = "FailedOperation.DockerOperationFailed"
+//  FAILEDOPERATION_TATINVOCATIONNOTFINISHED = "FailedOperation.TATInvocationNotFinished"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) DescribeDockerContainersWithContext(ctx context.Context, request *DescribeDockerContainersRequest) (response *DescribeDockerContainersResponse, err error) {
+    if request == nil {
+        request = NewDescribeDockerContainersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDockerContainers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDockerContainersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeFirewallRulesRequest() (request *DescribeFirewallRulesRequest) {
     request = &DescribeFirewallRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4473,6 +4777,7 @@ func NewModifyDisksAttributeResponse() (response *ModifyDisksAttributeResponse) 
 // 本接口(ModifyDisksAttribute)用于修改云硬盘属性。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MODIFYRESOURCESATTRIBUTEFAILED = "FailedOperation.ModifyResourcesAttributeFailed"
 //  INTERNALERROR_TRADECALLBILLINGGATEWAYFAILED = "InternalError.TradeCallBillingGatewayFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
@@ -4489,6 +4794,7 @@ func (c *Client) ModifyDisksAttribute(request *ModifyDisksAttributeRequest) (res
 // 本接口(ModifyDisksAttribute)用于修改云硬盘属性。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_MODIFYRESOURCESATTRIBUTEFAILED = "FailedOperation.ModifyResourcesAttributeFailed"
 //  INTERNALERROR_TRADECALLBILLINGGATEWAYFAILED = "InternalError.TradeCallBillingGatewayFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_INVALIDDISKIDMALFORMED = "InvalidParameterValue.InvalidDiskIdMalformed"
@@ -4569,6 +4875,86 @@ func (c *Client) ModifyDisksRenewFlagWithContext(ctx context.Context, request *M
     request.SetContext(ctx)
     
     response = NewModifyDisksRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDockerContainerRequest() (request *ModifyDockerContainerRequest) {
+    request = &ModifyDockerContainerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ModifyDockerContainer")
+    
+    
+    return
+}
+
+func NewModifyDockerContainerResponse() (response *ModifyDockerContainerResponse) {
+    response = &ModifyDockerContainerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDockerContainer
+// 修改实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重建情况。
+//
+// 请注意：本接口会重新创建并运行实例内的Docker容器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOCKERCONTAINERSLISTTOOLARGE = "FailedOperation.DockerContainersListTooLarge"
+//  FAILEDOPERATION_DOCKEROPERATIONFAILED = "FailedOperation.DockerOperationFailed"
+//  FAILEDOPERATION_TATINVOCATIONNOTFINISHED = "FailedOperation.TATInvocationNotFinished"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) ModifyDockerContainer(request *ModifyDockerContainerRequest) (response *ModifyDockerContainerResponse, err error) {
+    return c.ModifyDockerContainerWithContext(context.Background(), request)
+}
+
+// ModifyDockerContainer
+// 修改实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重建情况。
+//
+// 请注意：本接口会重新创建并运行实例内的Docker容器。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DOCKERCONTAINERSLISTTOOLARGE = "FailedOperation.DockerContainersListTooLarge"
+//  FAILEDOPERATION_DOCKEROPERATIONFAILED = "FailedOperation.DockerOperationFailed"
+//  FAILEDOPERATION_TATINVOCATIONNOTFINISHED = "FailedOperation.TATInvocationNotFinished"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) ModifyDockerContainerWithContext(ctx context.Context, request *ModifyDockerContainerRequest) (response *ModifyDockerContainerResponse, err error) {
+    if request == nil {
+        request = NewModifyDockerContainerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDockerContainer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDockerContainerResponse()
     err = c.Send(request, response)
     return
 }
@@ -5275,6 +5661,148 @@ func (c *Client) RebootInstancesWithContext(ctx context.Context, request *Reboot
     return
 }
 
+func NewRemoveDockerContainersRequest() (request *RemoveDockerContainersRequest) {
+    request = &RemoveDockerContainersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "RemoveDockerContainers")
+    
+    
+    return
+}
+
+func NewRemoveDockerContainersResponse() (response *RemoveDockerContainersResponse) {
+    response = &RemoveDockerContainersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RemoveDockerContainers
+// 删除实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询删除情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) RemoveDockerContainers(request *RemoveDockerContainersRequest) (response *RemoveDockerContainersResponse, err error) {
+    return c.RemoveDockerContainersWithContext(context.Background(), request)
+}
+
+// RemoveDockerContainers
+// 删除实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询删除情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) RemoveDockerContainersWithContext(ctx context.Context, request *RemoveDockerContainersRequest) (response *RemoveDockerContainersResponse, err error) {
+    if request == nil {
+        request = NewRemoveDockerContainersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveDockerContainers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveDockerContainersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRenameDockerContainerRequest() (request *RenameDockerContainerRequest) {
+    request = &RenameDockerContainerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "RenameDockerContainer")
+    
+    
+    return
+}
+
+func NewRenameDockerContainerResponse() (response *RenameDockerContainerResponse) {
+    response = &RenameDockerContainerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RenameDockerContainer
+// 重命名实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重命名情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) RenameDockerContainer(request *RenameDockerContainerRequest) (response *RenameDockerContainerResponse, err error) {
+    return c.RenameDockerContainerWithContext(context.Background(), request)
+}
+
+// RenameDockerContainer
+// 重命名实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重命名情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) RenameDockerContainerWithContext(ctx context.Context, request *RenameDockerContainerRequest) (response *RenameDockerContainerResponse, err error) {
+    if request == nil {
+        request = NewRenameDockerContainerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenameDockerContainer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenameDockerContainerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRenewDisksRequest() (request *RenewDisksRequest) {
     request = &RenewDisksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5451,6 +5979,72 @@ func (c *Client) RenewInstancesWithContext(ctx context.Context, request *RenewIn
     return
 }
 
+func NewRerunDockerContainerRequest() (request *RerunDockerContainerRequest) {
+    request = &RerunDockerContainerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "RerunDockerContainer")
+    
+    
+    return
+}
+
+func NewRerunDockerContainerResponse() (response *RerunDockerContainerResponse) {
+    response = &RerunDockerContainerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RerunDockerContainer
+// 重新创建并运行实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重建情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) RerunDockerContainer(request *RerunDockerContainerRequest) (response *RerunDockerContainerResponse, err error) {
+    return c.RerunDockerContainerWithContext(context.Background(), request)
+}
+
+// RerunDockerContainer
+// 重新创建并运行实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重建情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) RerunDockerContainerWithContext(ctx context.Context, request *RerunDockerContainerRequest) (response *RerunDockerContainerResponse, err error) {
+    if request == nil {
+        request = NewRerunDockerContainerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RerunDockerContainer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRerunDockerContainerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewResetAttachCcnRequest() (request *ResetAttachCcnRequest) {
     request = &ResetAttachCcnRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5553,6 +6147,7 @@ func NewResetInstanceResponse() (response *ResetInstanceResponse) {
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPASSWORD = "InvalidParameterValue.InvalidPassword"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_NOTALLOWTOCHANGEPLATFORMTYPE = "InvalidParameterValue.NotAllowToChangePlatformType"
 //  INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
@@ -5596,6 +6191,7 @@ func (c *Client) ResetInstance(request *ResetInstanceRequest) (response *ResetIn
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INSTANCEIDMALFORMED = "InvalidParameterValue.InstanceIdMalformed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERCOMBINATION = "InvalidParameterValue.InvalidParameterCombination"
+//  INVALIDPARAMETERVALUE_INVALIDPASSWORD = "InvalidParameterValue.InvalidPassword"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_NOTALLOWTOCHANGEPLATFORMTYPE = "InvalidParameterValue.NotAllowToChangePlatformType"
 //  INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
@@ -5731,6 +6327,220 @@ func (c *Client) ResetInstancesPasswordWithContext(ctx context.Context, request 
     return
 }
 
+func NewRestartDockerContainersRequest() (request *RestartDockerContainersRequest) {
+    request = &RestartDockerContainersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "RestartDockerContainers")
+    
+    
+    return
+}
+
+func NewRestartDockerContainersResponse() (response *RestartDockerContainersResponse) {
+    response = &RestartDockerContainersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RestartDockerContainers
+// 重启实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重启情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) RestartDockerContainers(request *RestartDockerContainersRequest) (response *RestartDockerContainersResponse, err error) {
+    return c.RestartDockerContainersWithContext(context.Background(), request)
+}
+
+// RestartDockerContainers
+// 重启实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询重启情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) RestartDockerContainersWithContext(ctx context.Context, request *RestartDockerContainersRequest) (response *RestartDockerContainersResponse, err error) {
+    if request == nil {
+        request = NewRestartDockerContainersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RestartDockerContainers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRestartDockerContainersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRunDockerContainersRequest() (request *RunDockerContainersRequest) {
+    request = &RunDockerContainersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "RunDockerContainers")
+    
+    
+    return
+}
+
+func NewRunDockerContainersResponse() (response *RunDockerContainersResponse) {
+    response = &RunDockerContainersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RunDockerContainers
+// 创建并运行多个Docker容器，之后可以通过返回的ActivityIds调用DescribeDockerActivities接口查询创建情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) RunDockerContainers(request *RunDockerContainersRequest) (response *RunDockerContainersResponse, err error) {
+    return c.RunDockerContainersWithContext(context.Background(), request)
+}
+
+// RunDockerContainers
+// 创建并运行多个Docker容器，之后可以通过返回的ActivityIds调用DescribeDockerActivities接口查询创建情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) RunDockerContainersWithContext(ctx context.Context, request *RunDockerContainersRequest) (response *RunDockerContainersResponse, err error) {
+    if request == nil {
+        request = NewRunDockerContainersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunDockerContainers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRunDockerContainersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStartDockerContainersRequest() (request *StartDockerContainersRequest) {
+    request = &StartDockerContainersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "StartDockerContainers")
+    
+    
+    return
+}
+
+func NewStartDockerContainersResponse() (response *StartDockerContainersResponse) {
+    response = &StartDockerContainersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartDockerContainers
+// 启动实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询启动情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) StartDockerContainers(request *StartDockerContainersRequest) (response *StartDockerContainersResponse, err error) {
+    return c.StartDockerContainersWithContext(context.Background(), request)
+}
+
+// StartDockerContainers
+// 启动实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询启动情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) StartDockerContainersWithContext(ctx context.Context, request *StartDockerContainersRequest) (response *StartDockerContainersResponse, err error) {
+    if request == nil {
+        request = NewStartDockerContainersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartDockerContainers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartDockerContainersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartInstancesRequest() (request *StartInstancesRequest) {
     request = &StartInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5821,6 +6631,78 @@ func (c *Client) StartInstancesWithContext(ctx context.Context, request *StartIn
     request.SetContext(ctx)
     
     response = NewStartInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopDockerContainersRequest() (request *StopDockerContainersRequest) {
+    request = &StopDockerContainersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "StopDockerContainers")
+    
+    
+    return
+}
+
+func NewStopDockerContainersResponse() (response *StopDockerContainersResponse) {
+    response = &StopDockerContainersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopDockerContainers
+// 停止实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询停止情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) StopDockerContainers(request *StopDockerContainersRequest) (response *StopDockerContainersResponse, err error) {
+    return c.StopDockerContainersWithContext(context.Background(), request)
+}
+
+// StopDockerContainers
+// 停止实例内的Docker容器，之后可以通过返回的ActivityId调用DescribeDockerActivities接口查询停止情况。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  RESOURCEUNAVAILABLE_BLUEPRINTINVALID = "ResourceUnavailable.BlueprintInvalid"
+//  RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
+//  RESOURCEUNAVAILABLE_TATAGENTUNAVAILABLE = "ResourceUnavailable.TATAgentUnavailable"
+//  RESOURCEUNAVAILABLE_TATSERVICEERROR = "ResourceUnavailable.TATServiceError"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION_INVALIDINSTANCESTATE = "UnsupportedOperation.InvalidInstanceState"
+//  UNSUPPORTEDOPERATION_LATESTOPERATIONUNFINISHED = "UnsupportedOperation.LatestOperationUnfinished"
+func (c *Client) StopDockerContainersWithContext(ctx context.Context, request *StopDockerContainersRequest) (response *StopDockerContainersResponse, err error) {
+    if request == nil {
+        request = NewStopDockerContainersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopDockerContainers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopDockerContainersResponse()
     err = c.Send(request, response)
     return
 }

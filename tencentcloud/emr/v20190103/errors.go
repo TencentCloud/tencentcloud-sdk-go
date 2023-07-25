@@ -122,6 +122,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER_HALESSMASTERCOUNT = "InvalidParameter.HALessMasterCount"
 
+	// impala查询参数异常。
+	INVALIDPARAMETER_IMPALAQUERYEXCEPTION = "InvalidParameter.ImpalaQueryException"
+
 	// Common节点数量无效。
 	INVALIDPARAMETER_INCORRECTCOMMONCOUNT = "InvalidParameter.IncorrectCommonCount"
 

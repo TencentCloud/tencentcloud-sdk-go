@@ -821,6 +821,9 @@ const (
 	// 账户不支持修改公网IP的该属性。
 	UNSUPPORTEDOPERATION_MODIFYADDRESSATTRIBUTE = "UnsupportedOperation.ModifyAddressAttribute"
 
+	// VPC实例内部有帐号纬度的IPv6白名单，不支持关联多云联网。
+	UNSUPPORTEDOPERATION_MULTIPLEVPCNOTSUPPORTATTACHACCOUNTHASIPV6 = "UnsupportedOperation.MultipleVpcNotSupportAttachAccountHasIpv6"
+
 	// 资源互斥操作任务正在执行。
 	UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
 
@@ -922,6 +925,9 @@ const (
 
 	// 路由表绑定了子网。
 	UNSUPPORTEDOPERATION_ROUTETABLEHASSUBNETRULE = "UnsupportedOperation.RouteTableHasSubnetRule"
+
+	// SSL客户端状态不可用，不支持下载
+	UNSUPPORTEDOPERATION_SSLCLIENTCERTDISABLEUNSUPPORTEDDOWNLOADSSLCLIENTCERT = "UnsupportedOperation.SSLClientCertDisableUnsupportedDownloadSSLClientCert"
 
 	// 实例已关联快照策略。
 	UNSUPPORTEDOPERATION_SNAPSHOTATTACHED = "UnsupportedOperation.SnapshotAttached"

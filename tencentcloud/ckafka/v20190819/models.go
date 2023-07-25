@@ -7940,6 +7940,94 @@ type InstanceResponse struct {
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 }
 
+// Predefined struct for user
+type InstanceScalingDownRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 缩容模式  1:稳定变配 
+	// 2.高速变配
+	UpgradeStrategy *int64 `json:"UpgradeStrategy,omitempty" name:"UpgradeStrategy"`
+
+	// 磁盘大小 单位 GB
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 峰值带宽 单位 MB/s
+	BandWidth *int64 `json:"BandWidth,omitempty" name:"BandWidth"`
+
+	// 分区上限
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+}
+
+type InstanceScalingDownRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 缩容模式  1:稳定变配 
+	// 2.高速变配
+	UpgradeStrategy *int64 `json:"UpgradeStrategy,omitempty" name:"UpgradeStrategy"`
+
+	// 磁盘大小 单位 GB
+	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+
+	// 峰值带宽 单位 MB/s
+	BandWidth *int64 `json:"BandWidth,omitempty" name:"BandWidth"`
+
+	// 分区上限
+	Partition *int64 `json:"Partition,omitempty" name:"Partition"`
+}
+
+func (r *InstanceScalingDownRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InstanceScalingDownRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UpgradeStrategy")
+	delete(f, "DiskSize")
+	delete(f, "BandWidth")
+	delete(f, "Partition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InstanceScalingDownRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InstanceScalingDownResponseParams struct {
+	// 缩容应答
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *ScalingDownResp `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type InstanceScalingDownResponse struct {
+	*tchttp.BaseResponse
+	Response *InstanceScalingDownResponseParams `json:"Response"`
+}
+
+func (r *InstanceScalingDownResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InstanceScalingDownResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type JgwOperateResponse struct {
 	// 返回的code，0为正常，非0为错误
 	ReturnCode *string `json:"ReturnCode,omitempty" name:"ReturnCode"`
@@ -9854,6 +9942,12 @@ type SaleInfo struct {
 	// 售罄标志：true售罄
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SoldOut *bool `json:"SoldOut,omitempty" name:"SoldOut"`
+}
+
+type ScalingDownResp struct {
+	// 订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
 }
 
 type ScfParam struct {

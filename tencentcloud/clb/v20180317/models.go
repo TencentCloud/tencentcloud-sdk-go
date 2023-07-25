@@ -7620,7 +7620,7 @@ type RuleInput struct {
 	// 分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。
 	Scheduler *string `json:"Scheduler,omitempty" name:"Scheduler"`
 
-	// 负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/TRPC，TRPC暂未对外开放。
+	// 负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/GRPC/TRPC，TRPC暂未对外开放，默认HTTP。
 	ForwardType *string `json:"ForwardType,omitempty" name:"ForwardType"`
 
 	// 是否将该域名设为默认域名，注意，一个监听器下只能设置一个默认域名。

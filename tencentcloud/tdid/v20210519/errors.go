@@ -53,9 +53,6 @@ const (
 	// 请求参数格式错误，请按照格式要求重新填写
 	INVALIDPARAMETERVALUE_ILLEGALVALUE = "InvalidParameterValue.IllegalValue"
 
-	// 缺少参数错误。
-	MISSINGPARAMETER = "MissingParameter"
-
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 

@@ -5212,8 +5212,7 @@ type SearchAccessLogRequestParams struct {
 	// 单次查询返回的日志条数，最大值为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。
-	// 新版本此字段填空填
+	// 新版本此字段失效，填空字符串，翻页使用Page
 	Context *string `json:"Context,omitempty" name:"Context"`
 
 	// 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
@@ -5241,8 +5240,7 @@ type SearchAccessLogRequest struct {
 	// 单次查询返回的日志条数，最大值为100
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容。
-	// 新版本此字段填空填
+	// 新版本此字段失效，填空字符串，翻页使用Page
 	Context *string `json:"Context,omitempty" name:"Context"`
 
 	// 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
@@ -5280,7 +5278,7 @@ func (r *SearchAccessLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchAccessLogResponseParams struct {
-	// 加载后续内容的Context
+	// 新接口此字段失效，默认返回空字符串
 	Context *string `json:"Context,omitempty" name:"Context"`
 
 	// 日志查询结果是否全部返回，其中，“true”表示结果返回，“false”表示结果为返回
@@ -5335,7 +5333,7 @@ type SearchAttackLogRequestParams struct {
 	// 查询结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 查询的游标。第一次请求使用空字符串即可，后续请求使用上一次请求返回的最后一条记录的context的值即可。
+	// 接口升级，这个字段传空字符串,翻页使用Page字段
 	Context *string `json:"Context,omitempty" name:"Context"`
 
 	// Lucene语法
@@ -5363,7 +5361,7 @@ type SearchAttackLogRequest struct {
 	// 查询结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 查询的游标。第一次请求使用空字符串即可，后续请求使用上一次请求返回的最后一条记录的context的值即可。
+	// 接口升级，这个字段传空字符串,翻页使用Page字段
 	Context *string `json:"Context,omitempty" name:"Context"`
 
 	// Lucene语法
@@ -5410,7 +5408,7 @@ type SearchAttackLogResponseParams struct {
 	// 当前返回的攻击日志条数
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 
-	// 翻页游标，如果没有下一页了，这个参数为空""
+	// 接口升级，此字段无效，默认返回空字符串
 	Context *string `json:"Context,omitempty" name:"Context"`
 
 	// 攻击日志数组条目内容

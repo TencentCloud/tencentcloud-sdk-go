@@ -1204,6 +1204,10 @@ func NewDescribeAutoDenyIPResponse() (response *DescribeAutoDenyIPResponse) {
 }
 
 // DescribeAutoDenyIP
+// 接口已废弃
+//
+// 
+//
 // 描述WAF自动封禁IP详情,对齐自动封堵状态
 //
 // 可能返回的错误码:
@@ -1214,6 +1218,10 @@ func (c *Client) DescribeAutoDenyIP(request *DescribeAutoDenyIPRequest) (respons
 }
 
 // DescribeAutoDenyIP
+// 接口已废弃
+//
+// 
+//
 // 描述WAF自动封禁IP详情,对齐自动封堵状态
 //
 // 可能返回的错误码:
@@ -1676,6 +1684,7 @@ func NewDescribeIpAccessControlResponse() (response *DescribeIpAccessControlResp
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 func (c *Client) DescribeIpAccessControl(request *DescribeIpAccessControlRequest) (response *DescribeIpAccessControlResponse, err error) {
     return c.DescribeIpAccessControlWithContext(context.Background(), request)
 }
@@ -1685,6 +1694,7 @@ func (c *Client) DescribeIpAccessControl(request *DescribeIpAccessControlRequest
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 func (c *Client) DescribeIpAccessControlWithContext(ctx context.Context, request *DescribeIpAccessControlRequest) (response *DescribeIpAccessControlResponse, err error) {
     if request == nil {
         request = NewDescribeIpAccessControlRequest()
@@ -3039,6 +3049,7 @@ func NewSearchAccessLogResponse() (response *SearchAccessLogResponse) {
 //  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
 //  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
 //  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
+//  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -3070,6 +3081,7 @@ func (c *Client) SearchAccessLog(request *SearchAccessLogRequest) (response *Sea
 //  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
 //  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
 //  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
+//  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"

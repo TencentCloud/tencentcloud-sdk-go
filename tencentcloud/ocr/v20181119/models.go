@@ -994,7 +994,7 @@ type CarInvoiceInfo struct {
 	// 字段在旋转纠正之后的图像中的像素坐标。
 	Rect *Rect `json:"Rect,omitempty" name:"Rect"`
 
-	// 字段在原图中的中的四点坐标。
+	// 字段在原图中的四点坐标。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Polygon *Polygon `json:"Polygon,omitempty" name:"Polygon"`
@@ -1799,7 +1799,7 @@ func (r *EnglishOCRResponse) FromJsonString(s string) error {
 
 type EnterpriseLicenseInfo struct {
 	// 识别出的字段名称（关键字），不同证件类型可能不同，证件类型包含企业登记证书、许可证书、企业执照、三证合一类证书；
-	// 支持以下字段：统一社会信用代码、法定代表人、公司名称、公司地址、注册资金、企业关型、经营范围、成立日期、有效期、开办资金、经费来源、举办单位等；
+	// 支持以下字段：统一社会信用代码、法定代表人、公司名称、公司地址、注册资金、企业类型、经营范围、成立日期、有效期、开办资金、经费来源、举办单位等；
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。

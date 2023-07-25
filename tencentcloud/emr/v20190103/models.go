@@ -1580,7 +1580,7 @@ type DescribeHiveQueriesRequestParams struct {
 	// 起始时间秒
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间秒，EndTime-StartTime不得超过31天秒数31*24*3600
+	// 结束时间秒，EndTime-StartTime不得超过1天秒数86400
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 分页起始偏移，从0开始
@@ -1599,7 +1599,7 @@ type DescribeHiveQueriesRequest struct {
 	// 起始时间秒
 	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间秒，EndTime-StartTime不得超过31天秒数31*24*3600
+	// 结束时间秒，EndTime-StartTime不得超过1天秒数86400
 	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 分页起始偏移，从0开始
@@ -1668,7 +1668,7 @@ type DescribeImpalaQueriesRequestParams struct {
 	// 起始时间秒
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间秒，EndTime-StartTime不得超过31天秒数31243600
+	// 结束时间秒，EndTime-StartTime不得超过1天秒数86400
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 分页起始偏移，从0开始
@@ -1687,7 +1687,7 @@ type DescribeImpalaQueriesRequest struct {
 	// 起始时间秒
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间秒，EndTime-StartTime不得超过31天秒数31243600
+	// 结束时间秒，EndTime-StartTime不得超过1天秒数86400
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 分页起始偏移，从0开始
@@ -2265,7 +2265,7 @@ type DescribeYarnApplicationsRequestParams struct {
 	// 起始时间秒
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间秒，EndTime-StartTime不得超过31天秒数31243600
+	// 结束时间秒，EndTime-StartTime不得超过1天秒数86400
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 分页起始偏移，从0开始
@@ -2284,7 +2284,7 @@ type DescribeYarnApplicationsRequest struct {
 	// 起始时间秒
 	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间秒，EndTime-StartTime不得超过31天秒数31243600
+	// 结束时间秒，EndTime-StartTime不得超过1天秒数86400
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 分页起始偏移，从0开始
@@ -2791,7 +2791,7 @@ type ImpalaQuery struct {
 
 // Predefined struct for user
 type InquirePriceRenewEmrRequestParams struct {
-	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月
+	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费一个月
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 待续费集群ID列表。
@@ -2815,7 +2815,7 @@ type InquirePriceRenewEmrRequestParams struct {
 type InquirePriceRenewEmrRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费1一个月
+	// 实例续费的时长。需要结合TimeUnit一起使用。1表示续费一个月
 	TimeSpan *uint64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
 
 	// 待续费集群ID列表。

@@ -10139,8 +10139,10 @@ func NewEnableEncryptionProtectionResponse() (response *EnableEncryptionProtecti
 // 开启加密数据保护
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
 func (c *Client) EnableEncryptionProtection(request *EnableEncryptionProtectionRequest) (response *EnableEncryptionProtectionResponse, err error) {
     return c.EnableEncryptionProtectionWithContext(context.Background(), request)
 }
@@ -10149,8 +10151,10 @@ func (c *Client) EnableEncryptionProtection(request *EnableEncryptionProtectionR
 // 开启加密数据保护
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
 func (c *Client) EnableEncryptionProtectionWithContext(ctx context.Context, request *EnableEncryptionProtectionRequest) (response *EnableEncryptionProtectionResponse, err error) {
     if request == nil {
         request = NewEnableEncryptionProtectionRequest()

@@ -6847,7 +6847,7 @@ type ModifyHostsCertificateRequestParams struct {
 
 	// 托管类型，取值有：
 	// <li>apply：托管EO；</li>
-	// <li>none：不托管EO；</li>不填，默认取值为apply。
+	// <li>none：不托管EO；</li>不填，默认取值为none。
 	ApplyType *string `json:"ApplyType,omitempty" name:"ApplyType"`
 }
 
@@ -6865,7 +6865,7 @@ type ModifyHostsCertificateRequest struct {
 
 	// 托管类型，取值有：
 	// <li>apply：托管EO；</li>
-	// <li>none：不托管EO；</li>不填，默认取值为apply。
+	// <li>none：不托管EO；</li>不填，默认取值为none。
 	ApplyType *string `json:"ApplyType,omitempty" name:"ApplyType"`
 }
 

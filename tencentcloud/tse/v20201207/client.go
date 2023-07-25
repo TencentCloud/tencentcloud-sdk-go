@@ -1259,6 +1259,7 @@ func NewDescribeCloudNativeAPIGatewayPortsResponse() (response *DescribeCloudNat
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"
@@ -1272,6 +1273,7 @@ func (c *Client) DescribeCloudNativeAPIGatewayPorts(request *DescribeCloudNative
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"

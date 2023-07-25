@@ -533,6 +533,60 @@ func (r *CreateDomainBatchResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDomainRedemptionRequestParams struct {
+	// 域名 ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+type CreateDomainRedemptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名 ID
+	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+}
+
+func (r *CreateDomainRedemptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDomainRedemptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DomainId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainRedemptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDomainRedemptionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateDomainRedemptionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDomainRedemptionResponseParams `json:"Response"`
+}
+
+func (r *CreateDomainRedemptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDomainRedemptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePhoneEmailRequestParams struct {
 	// 手机号或者邮箱
 	Code *string `json:"Code,omitempty" name:"Code"`

@@ -1455,79 +1455,6 @@ func (r *DescribeDiskConfigQuotaResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeDiskOperationLogsRequestParams struct {
-	// 过滤条件。支持以下条件：
-	// <li>disk-id - Array of String - 是否必填：是 - 按云盘ID过滤，每个请求最多可指定10个云盘ID。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
-
-	// 要查询的操作日志的截止时间，例如：“2019-11-22 23:59:59"
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
-}
-
-type DescribeDiskOperationLogsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 过滤条件。支持以下条件：
-	// <li>disk-id - Array of String - 是否必填：是 - 按云盘ID过滤，每个请求最多可指定10个云盘ID。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
-
-	// 要查询的操作日志的截止时间，例如：“2019-11-22 23:59:59"
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
-}
-
-func (r *DescribeDiskOperationLogsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDiskOperationLogsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Filters")
-	delete(f, "EndTime")
-	delete(f, "BeginTime")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDiskOperationLogsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeDiskOperationLogsResponseParams struct {
-	// 云盘的操作日志列表。
-	DiskOperationLogSet []*DiskOperationLog `json:"DiskOperationLogSet,omitempty" name:"DiskOperationLogSet"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeDiskOperationLogsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeDiskOperationLogsResponseParams `json:"Response"`
-}
-
-func (r *DescribeDiskOperationLogsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDiskOperationLogsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeDiskStoragePoolRequestParams struct {
 	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](/document/product/362/15633)中的相关小节。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
@@ -1767,79 +1694,6 @@ func (r *DescribeInstancesDiskNumResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstancesDiskNumResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeSnapshotOperationLogsRequestParams struct {
-	// 过滤条件。支持以下条件：
-	// <li>snapshot-id - Array of String - 是否必填：是 - 按快照ID过滤，每个请求最多可指定10个快照ID。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
-
-	// 要查询的操作日志的截止时间，例如：“2019-11-22 23:59:59"
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
-}
-
-type DescribeSnapshotOperationLogsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 过滤条件。支持以下条件：
-	// <li>snapshot-id - Array of String - 是否必填：是 - 按快照ID过滤，每个请求最多可指定10个快照ID。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
-
-	// 要查询的操作日志的截止时间，例如：“2019-11-22 23:59:59"
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 要查询的操作日志的起始时间，例如：“2019-11-22 00:00:00"
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
-}
-
-func (r *DescribeSnapshotOperationLogsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSnapshotOperationLogsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Filters")
-	delete(f, "EndTime")
-	delete(f, "BeginTime")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSnapshotOperationLogsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeSnapshotOperationLogsResponseParams struct {
-	// 快照操作日志列表。
-	SnapshotOperationLogSet []*SnapshotOperationLog `json:"SnapshotOperationLogSet,omitempty" name:"SnapshotOperationLogSet"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeSnapshotOperationLogsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeSnapshotOperationLogsResponseParams `json:"Response"`
-}
-
-func (r *DescribeSnapshotOperationLogsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSnapshotOperationLogsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2330,38 +2184,6 @@ type DiskConfig struct {
 	// 描述预付费或后付费云盘的价格。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Price *Price `json:"Price,omitempty" name:"Price"`
-}
-
-type DiskOperationLog struct {
-	// 操作的状态。取值范围：
-	// SUCCESS :表示操作成功 
-	// FAILED :表示操作失败 
-	// PROCESSING :表示操作中。
-	OperationState *string `json:"OperationState,omitempty" name:"OperationState"`
-
-	// 开始时间。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 操作者的UIN。
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
-
-	// 操作类型。取值范围：
-	// CBS_OPERATION_ATTACH：挂载云硬盘
-	// CBS_OPERATION_DETACH：解挂云硬盘
-	// CBS_OPERATION_RENEW：续费
-	// CBS_OPERATION_EXPAND：扩容
-	// CBS_OPERATION_CREATE：创建
-	// CBS_OPERATION_ISOLATE：隔离
-	// CBS_OPERATION_MODIFY：修改云硬盘属性
-	// ASP_OPERATION_BIND：关联定期快照策略
-	// ASP_OPERATION_UNBIND：取消关联定期快照策略
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
-
-	// 结束时间。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 操作的云盘ID。
-	DiskId *string `json:"DiskId,omitempty" name:"DiskId"`
 }
 
 type Filter struct {
@@ -3784,37 +3606,6 @@ type SnapshotCopyResult struct {
 
 	// 跨地复制的目标地域。
 	DestinationRegion *string `json:"DestinationRegion,omitempty" name:"DestinationRegion"`
-}
-
-type SnapshotOperationLog struct {
-	// 操作的状态。取值范围：
-	// SUCCESS :表示操作成功 
-	// FAILED :表示操作失败 
-	// PROCESSING :表示操作中。
-	OperationState *string `json:"OperationState,omitempty" name:"OperationState"`
-
-	// 开始时间。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 操作者的UIN。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
-
-	// 操作的快照ID。
-	SnapshotId *string `json:"SnapshotId,omitempty" name:"SnapshotId"`
-
-	// 操作类型。取值范围：
-	// SNAP_OPERATION_DELETE：删除快照
-	// SNAP_OPERATION_ROLLBACK：回滚快照
-	// SNAP_OPERATION_MODIFY：修改快照属性
-	// SNAP_OPERATION_CREATE：创建快照
-	// SNAP_OPERATION_COPY：跨地域复制快照
-	// ASP_OPERATION_CREATE_SNAP：由定期快照策略创建快照
-	// ASP_OPERATION_DELETE_SNAP：由定期快照策略删除快照
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
-
-	// 结束时间。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 }
 
 type Tag struct {

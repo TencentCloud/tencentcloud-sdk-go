@@ -5319,6 +5319,7 @@ func NewDescribeBaselineItemListResponse() (response *DescribeBaselineItemListRe
 // 获取基线项检测结果列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBaselineItemList(request *DescribeBaselineItemListRequest) (response *DescribeBaselineItemListResponse, err error) {
@@ -5329,6 +5330,7 @@ func (c *Client) DescribeBaselineItemList(request *DescribeBaselineItemListReque
 // 获取基线项检测结果列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBaselineItemListWithContext(ctx context.Context, request *DescribeBaselineItemListRequest) (response *DescribeBaselineItemListResponse, err error) {

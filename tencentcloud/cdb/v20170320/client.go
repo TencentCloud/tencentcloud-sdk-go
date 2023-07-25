@@ -960,6 +960,7 @@ func NewCreateBackupResponse() (response *CreateBackupResponse) {
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  OPERATIONDENIED_ACTIONINPROCESS = "OperationDenied.ActionInProcess"
 //  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 //  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
@@ -985,6 +986,7 @@ func (c *Client) CreateBackup(request *CreateBackupRequest) (response *CreateBac
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 //  OPERATIONDENIED_ACTIONINPROCESS = "OperationDenied.ActionInProcess"
 //  OPERATIONDENIED_ACTIONNOTSUPPORT = "OperationDenied.ActionNotSupport"
 //  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
@@ -1081,6 +1083,7 @@ func NewCreateCdbProxyAddressResponse() (response *CreateCdbProxyAddressResponse
 // 数据库代理增加代理地址
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  FAILEDOPERATION_VPCIPINUSEERROR = "FailedOperation.VpcIpInUseError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
@@ -1094,6 +1097,7 @@ func (c *Client) CreateCdbProxyAddress(request *CreateCdbProxyAddressRequest) (r
 // 数据库代理增加代理地址
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  FAILEDOPERATION_VPCIPINUSEERROR = "FailedOperation.VpcIpInUseError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
@@ -3525,68 +3529,6 @@ func (c *Client) DescribeBinlogsWithContext(ctx context.Context, request *Descri
     return
 }
 
-func NewDescribeCDBProxyRequest() (request *DescribeCDBProxyRequest) {
-    request = &DescribeCDBProxyRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdb", APIVersion, "DescribeCDBProxy")
-    
-    
-    return
-}
-
-func NewDescribeCDBProxyResponse() (response *DescribeCDBProxyResponse) {
-    response = &DescribeCDBProxyResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeCDBProxy
-// 接口已经废弃，请使用+DescribeCdbProxyInfo+进行替换。
-//
-// 
-//
-// 查询数据库代理（待下线，替换接口QueryCDBProxy）
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
-//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-func (c *Client) DescribeCDBProxy(request *DescribeCDBProxyRequest) (response *DescribeCDBProxyResponse, err error) {
-    return c.DescribeCDBProxyWithContext(context.Background(), request)
-}
-
-// DescribeCDBProxy
-// 接口已经废弃，请使用+DescribeCdbProxyInfo+进行替换。
-//
-// 
-//
-// 查询数据库代理（待下线，替换接口QueryCDBProxy）
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
-//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-func (c *Client) DescribeCDBProxyWithContext(ctx context.Context, request *DescribeCDBProxyRequest) (response *DescribeCDBProxyResponse, err error) {
-    if request == nil {
-        request = NewDescribeCDBProxyRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeCDBProxy require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeCDBProxyResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewDescribeCdbProxyInfoRequest() (request *DescribeCdbProxyInfoRequest) {
     request = &DescribeCdbProxyInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3769,6 +3711,7 @@ func NewDescribeDBFeaturesResponse() (response *DescribeDBFeaturesResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_JSONERROR = "InternalError.JSONError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -3783,6 +3726,7 @@ func (c *Client) DescribeDBFeatures(request *DescribeDBFeaturesRequest) (respons
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_JSONERROR = "InternalError.JSONError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
@@ -4072,6 +4016,7 @@ func NewDescribeDBInstanceInfoResponse() (response *DescribeDBInstanceInfoRespon
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_JSONERROR = "InternalError.JSONError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
@@ -4084,6 +4029,7 @@ func (c *Client) DescribeDBInstanceInfo(request *DescribeDBInstanceInfoRequest) 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR_JSONERROR = "InternalError.JSONError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_RESOURCENOTEXISTS = "InvalidParameter.ResourceNotExists"
@@ -5173,64 +5119,6 @@ func (c *Client) DescribeProjectSecurityGroupsWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeProjectSecurityGroupsResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewDescribeProxyConnectionPoolConfRequest() (request *DescribeProxyConnectionPoolConfRequest) {
-    request = &DescribeProxyConnectionPoolConfRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdb", APIVersion, "DescribeProxyConnectionPoolConf")
-    
-    
-    return
-}
-
-func NewDescribeProxyConnectionPoolConfResponse() (response *DescribeProxyConnectionPoolConfResponse) {
-    response = &DescribeProxyConnectionPoolConfResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// DescribeProxyConnectionPoolConf
-// 当前接口已经废弃，请使用+DescribeCdbProxyInfo+替代。
-//
-// 
-//
-// 获取数据库代理连接池相关规格配置
-//
-// 可能返回的错误码:
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-func (c *Client) DescribeProxyConnectionPoolConf(request *DescribeProxyConnectionPoolConfRequest) (response *DescribeProxyConnectionPoolConfResponse, err error) {
-    return c.DescribeProxyConnectionPoolConfWithContext(context.Background(), request)
-}
-
-// DescribeProxyConnectionPoolConf
-// 当前接口已经废弃，请使用+DescribeCdbProxyInfo+替代。
-//
-// 
-//
-// 获取数据库代理连接池相关规格配置
-//
-// 可能返回的错误码:
-//  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-func (c *Client) DescribeProxyConnectionPoolConfWithContext(ctx context.Context, request *DescribeProxyConnectionPoolConfRequest) (response *DescribeProxyConnectionPoolConfResponse, err error) {
-    if request == nil {
-        request = NewDescribeProxyConnectionPoolConfRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("DescribeProxyConnectionPoolConf require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewDescribeProxyConnectionPoolConfResponse()
     err = c.Send(request, response)
     return
 }
@@ -7315,124 +7203,6 @@ func (c *Client) ModifyBackupEncryptionStatusWithContext(ctx context.Context, re
     return
 }
 
-func NewModifyCDBProxyConnectionPoolRequest() (request *ModifyCDBProxyConnectionPoolRequest) {
-    request = &ModifyCDBProxyConnectionPoolRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdb", APIVersion, "ModifyCDBProxyConnectionPool")
-    
-    
-    return
-}
-
-func NewModifyCDBProxyConnectionPoolResponse() (response *ModifyCDBProxyConnectionPoolResponse) {
-    response = &ModifyCDBProxyConnectionPoolResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifyCDBProxyConnectionPool
-// 当前接口已经废弃，请使用+AdjustCdbProxyAddress+进行替代。
-//
-// 
-//
-// 请求该接口配置数据库连接池；支持的连接池配置请求DescribeProxyConnectionPoolConf接口获取。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-func (c *Client) ModifyCDBProxyConnectionPool(request *ModifyCDBProxyConnectionPoolRequest) (response *ModifyCDBProxyConnectionPoolResponse, err error) {
-    return c.ModifyCDBProxyConnectionPoolWithContext(context.Background(), request)
-}
-
-// ModifyCDBProxyConnectionPool
-// 当前接口已经废弃，请使用+AdjustCdbProxyAddress+进行替代。
-//
-// 
-//
-// 请求该接口配置数据库连接池；支持的连接池配置请求DescribeProxyConnectionPoolConf接口获取。
-//
-// 可能返回的错误码:
-//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-func (c *Client) ModifyCDBProxyConnectionPoolWithContext(ctx context.Context, request *ModifyCDBProxyConnectionPoolRequest) (response *ModifyCDBProxyConnectionPoolResponse, err error) {
-    if request == nil {
-        request = NewModifyCDBProxyConnectionPoolRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyCDBProxyConnectionPool require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyCDBProxyConnectionPoolResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewModifyCDBProxyVipVPortRequest() (request *ModifyCDBProxyVipVPortRequest) {
-    request = &ModifyCDBProxyVipVPortRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdb", APIVersion, "ModifyCDBProxyVipVPort")
-    
-    
-    return
-}
-
-func NewModifyCDBProxyVipVPortResponse() (response *ModifyCDBProxyVipVPortResponse) {
-    response = &ModifyCDBProxyVipVPortResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// ModifyCDBProxyVipVPort
-// 当前接口已经废弃，请使用+ModifyCdbProxyAddressVipAndVPort+进行替代。
-//
-// 
-//
-// 修改数据库代理VIP或端口
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-func (c *Client) ModifyCDBProxyVipVPort(request *ModifyCDBProxyVipVPortRequest) (response *ModifyCDBProxyVipVPortResponse, err error) {
-    return c.ModifyCDBProxyVipVPortWithContext(context.Background(), request)
-}
-
-// ModifyCDBProxyVipVPort
-// 当前接口已经废弃，请使用+ModifyCdbProxyAddressVipAndVPort+进行替代。
-//
-// 
-//
-// 修改数据库代理VIP或端口
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
-func (c *Client) ModifyCDBProxyVipVPortWithContext(ctx context.Context, request *ModifyCDBProxyVipVPortRequest) (response *ModifyCDBProxyVipVPortResponse, err error) {
-    if request == nil {
-        request = NewModifyCDBProxyVipVPortRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("ModifyCDBProxyVipVPort require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewModifyCDBProxyVipVPortResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewModifyCdbProxyAddressDescRequest() (request *ModifyCdbProxyAddressDescRequest) {
     request = &ModifyCdbProxyAddressDescRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8783,68 +8553,6 @@ func (c *Client) OpenWanServiceWithContext(ctx context.Context, request *OpenWan
     request.SetContext(ctx)
     
     response = NewOpenWanServiceResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewQueryCDBProxyRequest() (request *QueryCDBProxyRequest) {
-    request = &QueryCDBProxyRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("cdb", APIVersion, "QueryCDBProxy")
-    
-    
-    return
-}
-
-func NewQueryCDBProxyResponse() (response *QueryCDBProxyResponse) {
-    response = &QueryCDBProxyResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// QueryCDBProxy
-// 当前接口已经废弃，请使用+DescribeCdbProxyInfo+进行替代。
-//
-// 
-//
-// 查询代理详情
-//
-// 可能返回的错误码:
-//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
-//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
-func (c *Client) QueryCDBProxy(request *QueryCDBProxyRequest) (response *QueryCDBProxyResponse, err error) {
-    return c.QueryCDBProxyWithContext(context.Background(), request)
-}
-
-// QueryCDBProxy
-// 当前接口已经废弃，请使用+DescribeCdbProxyInfo+进行替代。
-//
-// 
-//
-// 查询代理详情
-//
-// 可能返回的错误码:
-//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
-//  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
-func (c *Client) QueryCDBProxyWithContext(ctx context.Context, request *QueryCDBProxyRequest) (response *QueryCDBProxyResponse, err error) {
-    if request == nil {
-        request = NewQueryCDBProxyRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("QueryCDBProxy require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewQueryCDBProxyResponse()
     err = c.Send(request, response)
     return
 }

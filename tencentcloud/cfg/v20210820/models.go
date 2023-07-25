@@ -20,6 +20,14 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ActionFilter struct {
+	// 关键字
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 搜索内容值
+	Values []*string `json:"Values,omitempty" name:"Values"`
+}
+
 // Predefined struct for user
 type CreateTaskFromTemplateRequestParams struct {
 	// 从经验库中查询到的经验模板ID
@@ -249,6 +257,9 @@ type DescribeTaskListRequestParams struct {
 
 	// 标签对
 	Tags []*TagWithDescribe `json:"Tags,omitempty" name:"Tags"`
+
+	// 筛选条件
+	Filters []*ActionFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeTaskListRequest struct {
@@ -277,6 +288,9 @@ type DescribeTaskListRequest struct {
 
 	// 标签对
 	Tags []*TagWithDescribe `json:"Tags,omitempty" name:"Tags"`
+
+	// 筛选条件
+	Filters []*ActionFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeTaskListRequest) ToJsonString() string {
@@ -299,6 +313,7 @@ func (r *DescribeTaskListRequest) FromJsonString(s string) error {
 	delete(f, "TaskStartTime")
 	delete(f, "TaskEndTime")
 	delete(f, "Tags")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskListRequest has unknown keys!", "")
 	}
@@ -419,6 +434,9 @@ type DescribeTemplateListRequestParams struct {
 
 	// 经验ID
 	TemplateIdList []*int64 `json:"TemplateIdList,omitempty" name:"TemplateIdList"`
+
+	// 过滤参数
+	Filters []*ActionFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeTemplateListRequest struct {
@@ -447,6 +465,9 @@ type DescribeTemplateListRequest struct {
 
 	// 经验ID
 	TemplateIdList []*int64 `json:"TemplateIdList,omitempty" name:"TemplateIdList"`
+
+	// 过滤参数
+	Filters []*ActionFilter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeTemplateListRequest) ToJsonString() string {
@@ -469,6 +490,7 @@ func (r *DescribeTemplateListRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "TemplateSource")
 	delete(f, "TemplateIdList")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTemplateListRequest has unknown keys!", "")
 	}

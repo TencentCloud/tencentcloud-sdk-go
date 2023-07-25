@@ -53,6 +53,9 @@ const (
 	// 域名过户失败。
 	FAILEDOPERATION_MODIFYDOMAINOWNERFAILED = "FailedOperation.ModifyDomainOwnerFailed"
 
+	// 权限不足。
+	FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+
 	// 禁止的手机或邮箱。
 	FAILEDOPERATION_PROHIBITPHONEEMAIL = "FailedOperation.ProhibitPhoneEmail"
 
@@ -73,6 +76,9 @@ const (
 
 	// 信息模板超过可用数量上限，建议删除已有模板后重试。
 	FAILEDOPERATION_TEMPLATEMAXNUMFAILED = "FailedOperation.TemplateMaxNumFailed"
+
+	// 域名提交转入失败，请稍后重试。
+	FAILEDOPERATION_TRANSFERINDOMAINFAILED = "FailedOperation.TransferInDomainFailed"
 
 	// 上传图片操作失败。
 	FAILEDOPERATION_UPLOADIMAGEFAILED = "FailedOperation.UploadImageFailed"

@@ -106,13 +106,13 @@ type ApproverInfo struct {
 	// 签署人查看合同时认证方式, 
 	// 1-实名查看 2-短信验证码查看(企业签署方不支持该方式)
 	// 如果不传默认为1
-	// 模板发起的时候,认证方式以模版配置为主
+	// 模板发起的时候,认证方式以模板配置为主
 	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitempty" name:"ApproverVerifyTypes"`
 
 	// 签署人签署合同时的认证方式
 	// 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
 	// 合同签署认证方式的优先级 verifyChannel>approverSignTypes
-	// 模板发起的时候,认证方式以模版配置为主
+	// 模板发起的时候,认证方式以模板配置为主
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitempty" name:"ApproverSignTypes"`
 
 	// 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。	
@@ -176,6 +176,9 @@ type BindEmployeeUserIdWithClientOpenIdRequestParams struct {
 
 	// 客户系统OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type BindEmployeeUserIdWithClientOpenIdRequest struct {
@@ -189,6 +192,9 @@ type BindEmployeeUserIdWithClientOpenIdRequest struct {
 
 	// 客户系统OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *BindEmployeeUserIdWithClientOpenIdRequest) ToJsonString() string {
@@ -206,6 +212,7 @@ func (r *BindEmployeeUserIdWithClientOpenIdRequest) FromJsonString(s string) err
 	delete(f, "Operator")
 	delete(f, "UserId")
 	delete(f, "OpenId")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindEmployeeUserIdWithClientOpenIdRequest has unknown keys!", "")
 	}
@@ -1080,6 +1087,10 @@ type CreateFlowApproversRequestParams struct {
 
 	// 企微消息中的发起人
 	Initiator *string `json:"Initiator,omitempty" name:"Initiator"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作
+	// 
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateFlowApproversRequest struct {
@@ -1096,6 +1107,10 @@ type CreateFlowApproversRequest struct {
 
 	// 企微消息中的发起人
 	Initiator *string `json:"Initiator,omitempty" name:"Initiator"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作
+	// 
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreateFlowApproversRequest) ToJsonString() string {
@@ -1114,6 +1129,7 @@ func (r *CreateFlowApproversRequest) FromJsonString(s string) error {
 	delete(f, "FlowId")
 	delete(f, "Approvers")
 	delete(f, "Initiator")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowApproversRequest has unknown keys!", "")
 	}
@@ -3306,6 +3322,9 @@ type CreateUserAutoSignEnableUrlRequestParams struct {
 
 	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为30天。如果不传，默认有效期为7天。
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateUserAutoSignEnableUrlRequest struct {
@@ -3332,6 +3351,9 @@ type CreateUserAutoSignEnableUrlRequest struct {
 
 	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为30天。如果不传，默认有效期为7天。
 	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreateUserAutoSignEnableUrlRequest) ToJsonString() string {
@@ -3353,6 +3375,7 @@ func (r *CreateUserAutoSignEnableUrlRequest) FromJsonString(s string) error {
 	delete(f, "NotifyType")
 	delete(f, "NotifyAddress")
 	delete(f, "ExpiredTime")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateUserAutoSignEnableUrlRequest has unknown keys!", "")
 	}
@@ -4949,6 +4972,12 @@ func (r *DescribeOrganizationSealsResponse) FromJsonString(s string) error {
 type DescribeThirdPartyAuthCodeRequestParams struct {
 	// 电子签小程序跳转客户小程序时携带的授权查看码
 	AuthCode *string `json:"AuthCode,omitempty" name:"AuthCode"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type DescribeThirdPartyAuthCodeRequest struct {
@@ -4956,6 +4985,12 @@ type DescribeThirdPartyAuthCodeRequest struct {
 	
 	// 电子签小程序跳转客户小程序时携带的授权查看码
 	AuthCode *string `json:"AuthCode,omitempty" name:"AuthCode"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *DescribeThirdPartyAuthCodeRequest) ToJsonString() string {
@@ -4971,6 +5006,8 @@ func (r *DescribeThirdPartyAuthCodeRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "AuthCode")
+	delete(f, "Operator")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeThirdPartyAuthCodeRequest has unknown keys!", "")
 	}
@@ -5013,6 +5050,9 @@ type DescribeUserAutoSignStatusRequestParams struct {
 
 	// 查询开启状态的用户信息
 	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type DescribeUserAutoSignStatusRequest struct {
@@ -5027,6 +5067,9 @@ type DescribeUserAutoSignStatusRequest struct {
 
 	// 查询开启状态的用户信息
 	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *DescribeUserAutoSignStatusRequest) ToJsonString() string {
@@ -5044,6 +5087,7 @@ func (r *DescribeUserAutoSignStatusRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "SceneKey")
 	delete(f, "UserInfo")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserAutoSignStatusRequest has unknown keys!", "")
 	}
@@ -5092,6 +5136,9 @@ type DisableUserAutoSignRequestParams struct {
 
 	// 关闭自动签的个人的三要素
 	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type DisableUserAutoSignRequest struct {
@@ -5106,6 +5153,9 @@ type DisableUserAutoSignRequest struct {
 
 	// 关闭自动签的个人的三要素
 	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *DisableUserAutoSignRequest) ToJsonString() string {
@@ -5123,6 +5173,7 @@ func (r *DisableUserAutoSignRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "SceneKey")
 	delete(f, "UserInfo")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableUserAutoSignRequest has unknown keys!", "")
 	}
@@ -5268,6 +5319,12 @@ type FillApproverInfo struct {
 	// 企业自定义账号ID
 	// WEWORKAPP场景下指企业自有应用获取企微明文的userid
 	CustomUserId *string `json:"CustomUserId,omitempty" name:"CustomUserId"`
+
+	// 补充签署人姓名
+	ApproverName *string `json:"ApproverName,omitempty" name:"ApproverName"`
+
+	// 补充签署人手机号
+	ApproverMobile *string `json:"ApproverMobile,omitempty" name:"ApproverMobile"`
 }
 
 type FilledComponent struct {
@@ -5874,6 +5931,9 @@ type ModifyApplicationCallbackInfoRequestParams struct {
 
 	// 回调信息
 	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitempty" name:"CallbackInfo"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type ModifyApplicationCallbackInfoRequest struct {
@@ -5887,6 +5947,9 @@ type ModifyApplicationCallbackInfoRequest struct {
 
 	// 回调信息
 	CallbackInfo *CallbackInfo `json:"CallbackInfo,omitempty" name:"CallbackInfo"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *ModifyApplicationCallbackInfoRequest) ToJsonString() string {
@@ -5904,6 +5967,7 @@ func (r *ModifyApplicationCallbackInfoRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "OperateType")
 	delete(f, "CallbackInfo")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApplicationCallbackInfoRequest has unknown keys!", "")
 	}
@@ -6559,6 +6623,9 @@ type UnbindEmployeeUserIdWithClientOpenIdRequestParams struct {
 
 	// 客户系统OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type UnbindEmployeeUserIdWithClientOpenIdRequest struct {
@@ -6572,6 +6639,9 @@ type UnbindEmployeeUserIdWithClientOpenIdRequest struct {
 
 	// 客户系统OpenId
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *UnbindEmployeeUserIdWithClientOpenIdRequest) ToJsonString() string {
@@ -6589,6 +6659,7 @@ func (r *UnbindEmployeeUserIdWithClientOpenIdRequest) FromJsonString(s string) e
 	delete(f, "Operator")
 	delete(f, "UserId")
 	delete(f, "OpenId")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UnbindEmployeeUserIdWithClientOpenIdRequest has unknown keys!", "")
 	}

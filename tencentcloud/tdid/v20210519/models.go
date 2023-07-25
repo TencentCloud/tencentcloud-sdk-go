@@ -21,67 +21,6 @@ import (
 )
 
 // Predefined struct for user
-type AddLabelRequestParams struct {
-	// 标签ID
-	LabelId *uint64 `json:"LabelId,omitempty" name:"LabelId"`
-
-	// tdid
-	Did *string `json:"Did,omitempty" name:"Did"`
-}
-
-type AddLabelRequest struct {
-	*tchttp.BaseRequest
-	
-	// 标签ID
-	LabelId *uint64 `json:"LabelId,omitempty" name:"LabelId"`
-
-	// tdid
-	Did *string `json:"Did,omitempty" name:"Did"`
-}
-
-func (r *AddLabelRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *AddLabelRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "LabelId")
-	delete(f, "Did")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddLabelRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type AddLabelResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type AddLabelResponse struct {
-	*tchttp.BaseResponse
-	Response *AddLabelResponseParams `json:"Response"`
-}
-
-func (r *AddLabelResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *AddLabelResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type CheckChainRequestParams struct {
 	// 群组ID
 	GroupId *int64 `json:"GroupId,omitempty" name:"GroupId"`
@@ -558,66 +497,6 @@ type FunctionArg struct {
 }
 
 // Predefined struct for user
-type GetAgencyTDidRequestParams struct {
-	// 网络ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-}
-
-type GetAgencyTDidRequest struct {
-	*tchttp.BaseRequest
-	
-	// 网络ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-}
-
-func (r *GetAgencyTDidRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetAgencyTDidRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ClusterId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAgencyTDidRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GetAgencyTDidResponseParams struct {
-	// 固定前缀
-	Prefix *string `json:"Prefix,omitempty" name:"Prefix"`
-
-	// did详情
-	Identity []*Identity `json:"Identity,omitempty" name:"Identity"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type GetAgencyTDidResponse struct {
-	*tchttp.BaseResponse
-	Response *GetAgencyTDidResponseParams `json:"Response"`
-}
-
-func (r *GetAgencyTDidResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GetAgencyTDidResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type GetAuthorityIssuerRequestParams struct {
 	// tdid
 	Did *string `json:"Did,omitempty" name:"Did"`
@@ -864,23 +743,6 @@ func (r *GetDidDocumentResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetDidDocumentResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type Identity struct {
-	// 账户标识符
-	AccountIdentifier *string `json:"AccountIdentifier,omitempty" name:"AccountIdentifier"`
-
-	// 链ID
-	ChainID *string `json:"ChainID,omitempty" name:"ChainID"`
-
-	// 完整tdid
-	Did *string `json:"Did,omitempty" name:"Did"`
-
-	// 群组ID
-	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
-
-	// 群组名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
 }
 
 type Proof struct {

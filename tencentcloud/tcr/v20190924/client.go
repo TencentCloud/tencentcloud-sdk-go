@@ -516,6 +516,7 @@ func NewCreateImmutableTagRulesResponse() (response *CreateImmutableTagRulesResp
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateImmutableTagRules(request *CreateImmutableTagRulesRequest) (response *CreateImmutableTagRulesResponse, err error) {
     return c.CreateImmutableTagRulesWithContext(context.Background(), request)
 }
@@ -531,6 +532,7 @@ func (c *Client) CreateImmutableTagRules(request *CreateImmutableTagRulesRequest
 //  INTERNALERROR_UNKNOWN = "InternalError.Unknown"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateImmutableTagRulesWithContext(ctx context.Context, request *CreateImmutableTagRulesRequest) (response *CreateImmutableTagRulesResponse, err error) {
     if request == nil {
         request = NewCreateImmutableTagRulesRequest()
@@ -5320,6 +5322,7 @@ func NewDescribeTagRetentionExecutionResponse() (response *DescribeTagRetentionE
 //  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
 //  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -5340,6 +5343,7 @@ func (c *Client) DescribeTagRetentionExecution(request *DescribeTagRetentionExec
 //  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
 //  INTERNALERROR_ERROROVERLIMIT = "InternalError.ErrorOverLimit"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ERRORTCRINVALIDPARAMETER = "InvalidParameter.ErrorTcrInvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"

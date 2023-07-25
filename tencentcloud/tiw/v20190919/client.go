@@ -1717,6 +1717,66 @@ func (c *Client) DescribeTranscodeWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeTranscodeByUrlRequest() (request *DescribeTranscodeByUrlRequest) {
+    request = &DescribeTranscodeByUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tiw", APIVersion, "DescribeTranscodeByUrl")
+    
+    
+    return
+}
+
+func NewDescribeTranscodeByUrlResponse() (response *DescribeTranscodeByUrlResponse) {
+    response = &DescribeTranscodeByUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTranscodeByUrl
+// 通过文档URL查询转码任务，返回最近的一次转码结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_TRANSCODESERVERERROR = "FailedOperation.TranscodeServerError"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeTranscodeByUrl(request *DescribeTranscodeByUrlRequest) (response *DescribeTranscodeByUrlResponse, err error) {
+    return c.DescribeTranscodeByUrlWithContext(context.Background(), request)
+}
+
+// DescribeTranscodeByUrl
+// 通过文档URL查询转码任务，返回最近的一次转码结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_TRANSCODESERVERERROR = "FailedOperation.TranscodeServerError"
+//  INVALIDPARAMETER_BODYPARAMETERTYPEUNMATCHED = "InvalidParameter.BodyParameterTypeUnmatched"
+//  INVALIDPARAMETER_TASKNOTFOUND = "InvalidParameter.TaskNotFound"
+//  RESOURCEUNAVAILABLE_NOTREGISTERED = "ResourceUnavailable.NotRegistered"
+//  RESOURCEUNAVAILABLE_SERVICEEXPIRED = "ResourceUnavailable.ServiceExpired"
+//  UNAUTHORIZEDOPERATION_SDKAPPID = "UnauthorizedOperation.SdkAppId"
+func (c *Client) DescribeTranscodeByUrlWithContext(ctx context.Context, request *DescribeTranscodeByUrlRequest) (response *DescribeTranscodeByUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeTranscodeByUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTranscodeByUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTranscodeByUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTranscodeCallbackRequest() (request *DescribeTranscodeCallbackRequest) {
     request = &DescribeTranscodeCallbackRequest{
         BaseRequest: &tchttp.BaseRequest{},

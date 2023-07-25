@@ -186,7 +186,7 @@ func NewTextToImageResponse() (response *TextToImageResponse) {
 // TextToImage
 // 智能文生图接口将根据输入的描述文本，智能生成与之相关的结果图。
 //
-// 输入：512个字符以内的描述性文本，推荐使用中文。
+// 输入：256个字符以内的描述性文本，推荐使用中文。
 //
 // 输出：对应风格及分辨率的 AI 生成图。
 //
@@ -228,7 +228,7 @@ func (c *Client) TextToImage(request *TextToImageRequest) (response *TextToImage
 // TextToImage
 // 智能文生图接口将根据输入的描述文本，智能生成与之相关的结果图。
 //
-// 输入：512个字符以内的描述性文本，推荐使用中文。
+// 输入：256个字符以内的描述性文本，推荐使用中文。
 //
 // 输出：对应风格及分辨率的 AI 生成图。
 //

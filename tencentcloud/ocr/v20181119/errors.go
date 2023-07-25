@@ -17,7 +17,7 @@ package v20181119
 const (
 	// 此产品的特有错误码
 
-	// 帐号已欠费。
+	// 账号已欠费。
 	FAILEDOPERATION_ARREARSERROR = "FailedOperation.ArrearsError"
 
 	// 身份证CardSide类型错误

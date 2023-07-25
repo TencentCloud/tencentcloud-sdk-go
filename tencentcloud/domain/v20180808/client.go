@@ -303,6 +303,54 @@ func (c *Client) CreateDomainBatchWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateDomainRedemptionRequest() (request *CreateDomainRedemptionRequest) {
+    request = &CreateDomainRedemptionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("domain", APIVersion, "CreateDomainRedemption")
+    
+    
+    return
+}
+
+func NewCreateDomainRedemptionResponse() (response *CreateDomainRedemptionResponse) {
+    response = &CreateDomainRedemptionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDomainRedemption
+// 创建赎回订单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+func (c *Client) CreateDomainRedemption(request *CreateDomainRedemptionRequest) (response *CreateDomainRedemptionResponse, err error) {
+    return c.CreateDomainRedemptionWithContext(context.Background(), request)
+}
+
+// CreateDomainRedemption
+// 创建赎回订单。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_PERMISSIONDENIED = "FailedOperation.PermissionDenied"
+func (c *Client) CreateDomainRedemptionWithContext(ctx context.Context, request *CreateDomainRedemptionRequest) (response *CreateDomainRedemptionResponse, err error) {
+    if request == nil {
+        request = NewCreateDomainRedemptionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDomainRedemption require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDomainRedemptionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePhoneEmailRequest() (request *CreatePhoneEmailRequest) {
     request = &CreatePhoneEmailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1442,6 +1490,7 @@ func NewTransferInDomainBatchResponse() (response *TransferInDomainBatchResponse
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRANSFERINDOMAINFAILED = "FailedOperation.TransferInDomainFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1464,6 +1513,7 @@ func (c *Client) TransferInDomainBatch(request *TransferInDomainBatchRequest) (r
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TRANSFERINDOMAINFAILED = "FailedOperation.TransferInDomainFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DOMAININTERNALERROR = "InternalError.DomainInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"

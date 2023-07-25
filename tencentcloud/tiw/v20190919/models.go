@@ -2266,6 +2266,80 @@ func (r *DescribeTIWRoomDailyUsageResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTranscodeByUrlRequestParams struct {
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。	
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type DescribeTranscodeByUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 客户的SdkAppId
+	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。	
+	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+func (r *DescribeTranscodeByUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTranscodeByUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "Url")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTranscodeByUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTranscodeByUrlResponseParams struct {
+	// 转码的当前进度,取值范围为0~100
+	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 任务的当前状态
+	// - QUEUED: 正在排队等待转换
+	// - PROCESSING: 转换中
+	// - FINISHED: 转换完成
+	// - EXCEPTION: 转换异常
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 转码任务的唯一标识Id
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTranscodeByUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTranscodeByUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeTranscodeByUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTranscodeByUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTranscodeCallbackRequestParams struct {
 	// 应用的SdkAppId
 	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
