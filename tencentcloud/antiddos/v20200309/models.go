@@ -3529,6 +3529,105 @@ func (r *DescribeBizHttpStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBizMonitorTrendRequestParams struct {
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 统计开始时间。 例：“2020-09-22 00:00:00”
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间。 例：“2020-09-22 00:00:00”
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 统计纬度，可取值intraffic outtraffic inpkg outpkg
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 时间粒度 60 300 3600 21600 86400
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+}
+
+type DescribeBizMonitorTrendRequest struct {
+	*tchttp.BaseRequest
+	
+	// 大禹子产品代号（bgpip表示高防IP）
+	Business *string `json:"Business,omitempty" name:"Business"`
+
+	// 统计开始时间。 例：“2020-09-22 00:00:00”
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 统计结束时间。 例：“2020-09-22 00:00:00”
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 资源实例ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 统计纬度，可取值intraffic outtraffic inpkg outpkg
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 时间粒度 60 300 3600 21600 86400
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+}
+
+func (r *DescribeBizMonitorTrendRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBizMonitorTrendRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Business")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Id")
+	delete(f, "MetricName")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBizMonitorTrendRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBizMonitorTrendResponseParams struct {
+	// 曲线图各个时间点的值
+	DataList []*float64 `json:"DataList,omitempty" name:"DataList"`
+
+	// 统计纬度
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+
+	// 返回DataList中的最大值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxData *uint64 `json:"MaxData,omitempty" name:"MaxData"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBizMonitorTrendResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBizMonitorTrendResponseParams `json:"Response"`
+}
+
+func (r *DescribeBizMonitorTrendResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBizMonitorTrendResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBizTrendRequestParams struct {
 	// 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max
 	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`

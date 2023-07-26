@@ -1,3 +1,264 @@
+# Release v1.0.708
+
+## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09
+
+### 第 58 次发布
+
+发布时间：2023-07-26 01:01:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBizMonitorTrend](https://cloud.tencent.com/document/api/297/95517)
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 58 次发布
+
+发布时间：2023-07-26 01:10:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteScheduledSql](https://cloud.tencent.com/document/api/614/95520)
+* [DescribeScheduledSqlInfo](https://cloud.tencent.com/document/api/614/95519)
+* [ModifyScheduledSql](https://cloud.tencent.com/document/api/614/95518)
+
+新增数据结构：
+
+* [ScheduledSqlTaskInfo](https://cloud.tencent.com/document/api/614/56471#ScheduledSqlTaskInfo)
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 22 次发布
+
+发布时间：2023-07-26 01:17:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRecordFilterList](https://cloud.tencent.com/document/api/1427/95521)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 93 次发布
+
+发布时间：2023-07-26 01:19:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeIntegrationMainOrganizationUser
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 15 次发布
+
+发布时间：2023-07-26 01:24:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteCloudStorageEvent](https://cloud.tencent.com/document/api/1131/95523)
+* [DescribeDevicePackages](https://cloud.tencent.com/document/api/1131/95522)
+
+修改接口：
+
+* [DescribeCloudStorageThumbnail](https://cloud.tencent.com/document/api/1131/77499)
+
+	* 新增出参：ExpireTime
+
+
+新增数据结构：
+
+* [PackageInfo](https://cloud.tencent.com/document/api/1131/76635#PackageInfo)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 32 次发布
+
+发布时间：2023-07-26 01:25:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+
+	* 新增入参：RoomType
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：RoomType
+
+* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
+
+	* 新增入参：RoomType
+
+
+修改数据结构：
+
+* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
+
+	* 新增成员：IsGradingRequiredPostClass, RoomType
+
+
+
+
+## 移动应用安全(ms) 版本：2018-04-08
+
+### 第 15 次发布
+
+发布时间：2023-07-26 01:29:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelEncryptTask](https://cloud.tencent.com/document/api/283/95529)
+* [CreateEncryptInstance](https://cloud.tencent.com/document/api/283/95528)
+* [CreateOrderInstance](https://cloud.tencent.com/document/api/283/95527)
+* [DescribeEncryptInstances](https://cloud.tencent.com/document/api/283/95526)
+* [DescribeEncryptPlan](https://cloud.tencent.com/document/api/283/95525)
+* [DescribeOrderInstances](https://cloud.tencent.com/document/api/283/95524)
+
+新增数据结构：
+
+* [AndroidAppInfo](https://cloud.tencent.com/document/api/283/17759#AndroidAppInfo)
+* [AndroidPlan](https://cloud.tencent.com/document/api/283/17759#AndroidPlan)
+* [AndroidResult](https://cloud.tencent.com/document/api/283/17759#AndroidResult)
+* [AppletInfo](https://cloud.tencent.com/document/api/283/17759#AppletInfo)
+* [AppletPlan](https://cloud.tencent.com/document/api/283/17759#AppletPlan)
+* [AppletResult](https://cloud.tencent.com/document/api/283/17759#AppletResult)
+* [EncryptResults](https://cloud.tencent.com/document/api/283/17759#EncryptResults)
+* [IOSPlan](https://cloud.tencent.com/document/api/283/17759#IOSPlan)
+* [IOSResult](https://cloud.tencent.com/document/api/283/17759#IOSResult)
+* [Orders](https://cloud.tencent.com/document/api/283/17759#Orders)
+* [SDKPlan](https://cloud.tencent.com/document/api/283/17759#SDKPlan)
+* [SDKResult](https://cloud.tencent.com/document/api/283/17759#SDKResult)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 107 次发布
+
+发布时间：2023-07-26 01:30:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OtherInvoice](https://cloud.tencent.com/document/api/866/33527#OtherInvoice)
+
+	* 新增成员：Date
+
+	* <font color="#dd0000">**修改成员**：</font>Title, Total, OtherInvoiceListItems, OtherInvoiceTableItems
+
+* [SingleInvoiceItem](https://cloud.tencent.com/document/api/866/33527#SingleInvoiceItem)
+
+	* 新增成员：VatSalesList
+
+	* <font color="#dd0000">**修改成员**：</font>VatElectronicSpecialInvoice, VatElectronicInvoiceBlockchain, VatElectronicInvoiceToll, VatElectronicSpecialInvoiceFull, VatElectronicInvoiceFull, MachinePrintedInvoice, BusInvoice, ShippingInvoice, TollInvoice, OtherInvoice, MotorVehicleSaleInvoice, UsedCarPurchaseInvoice, VatInvoiceRoll, TaxiTicket, QuotaInvoice, AirTransport, NonTaxIncomeGeneralBill, NonTaxIncomeElectronicBill, TrainTicket, MedicalOutpatientInvoice, MedicalHospitalizedInvoice
+
+* [VatInvoiceInfo](https://cloud.tencent.com/document/api/866/33527#VatInvoiceInfo)
+
+	* 新增成员：BlockChainMark, AcquisitionMark, SubTotal, SubTax
+
+	* <font color="#dd0000">**修改成员**：</font>CheckCode, FormType, TravelTax, BuyerAddrTel, BuyerBankAccount, CompanySealContent, TaxSealContent, ServiceName, City, QRCodeMark, AgentMark, TransitMark, OilMark, Title, Kind, Code, Number, NumberConfirm, Date, Total, TotalCn, PretaxAmount, Tax, MachineCode, Ciphertext, Remark, Seller, SellerTaxID, SellerAddrTel, SellerBankAccount, Buyer, BuyerTaxID, CompanySealMark, Issuer, Reviewer, Province, VatInvoiceItemInfos, CodeConfirm, Receiptor, ElectronicFullMark, ElectronicFullNumber, FormName
+
+* [VatInvoiceItemInfo](https://cloud.tencent.com/document/api/866/33527#VatInvoiceItemInfo)
+
+	* 新增成员：SerialNumber
+
+	* <font color="#dd0000">**修改成员**：</font>Name, Specification, Unit, Quantity, Price, Total, TaxRate, Tax, DateStart, DateEnd, LicensePlate, VehicleType
+
+* [VatInvoiceRoll](https://cloud.tencent.com/document/api/866/33527#VatInvoiceRoll)
+
+	* <font color="#dd0000">**修改成员**：</font>Title, Code, Number, NumberConfirm, Date, CheckCode, Seller, SellerTaxID, Buyer, BuyerTaxID, Category, Total, TotalCn, Kind, Province, City, CompanySealMark, QRCodeMark, ServiceName, CompanySealContent, TaxSealContent, VatRollItems
+
+
+
+
+## 安全运营中心(ssa) 版本：2018-06-08
+
+### 第 18 次发布
+
+发布时间：2023-07-26 01:34:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ConcernInfo](https://cloud.tencent.com/document/api/664/51406#ConcernInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>IpCountry, IpProvince, Result, Confidence, IpIsp, IpInfrastructure, ThreatType, Groups, Status, Tags, VictimAssetType, VictimAssetName, DomainRegistrant, DomainRegisteredInstitution, DomainRegistrationTime, FileName, FileMd5, VirusName, FilePath, FileSize, ProcName, Pid, ProcPath, ProcUser, DefendedCount, DetectedCount
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 69 次发布
+
+发布时间：2023-07-26 01:38:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RabbitMQClusterInfo](https://cloud.tencent.com/document/api/1179/46089#RabbitMQClusterInfo)
+
+	* 新增成员：ZoneIds
+
+	* <font color="#dd0000">**修改成员**：</font>ExceptionInformation, ClusterStatus
+
+
+
+
 # Release v1.0.707
 
 ## AI 绘画(aiart) 版本：2022-12-29

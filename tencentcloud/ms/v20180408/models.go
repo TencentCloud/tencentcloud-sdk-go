@@ -20,6 +20,259 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type AndroidAppInfo struct {
+	// app文件的md5算法值，需要正确传递，在线加固必输。
+	// 例如linux环境下执行算法命令md5sum ：
+	// #md5sum test.apk 
+	// d40cc11e4bddd643ecdf29cde729a12b
+	AppMd5 *string `json:"AppMd5,omitempty" name:"AppMd5"`
+
+	// app的大小，非必输。
+	AppSize *int64 `json:"AppSize,omitempty" name:"AppSize"`
+
+	// app下载链接，在线加固必输。
+	AppUrl *string `json:"AppUrl,omitempty" name:"AppUrl"`
+
+	// app名称，非必输
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// app的包名，本次操作的包名。
+	// 当安卓是按年收费、免费试用加固时，在线加固和输出工具要求该字段必输，且与AndroidPlan.AppPkgName值相等。
+	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
+
+	// app的文件名，非必输。
+	AppFileName *string `json:"AppFileName,omitempty" name:"AppFileName"`
+
+	// app版本号，非必输。
+	AppVersion *string `json:"AppVersion,omitempty" name:"AppVersion"`
+
+	// 安卓app的文件类型，本次加固操作的应用类型 。
+	// 安卓在线加固和输出工具加固必输，其值需等于“apk”或“aab”，且与AndroidAppInfo.AppType值相等。
+	AppType *string `json:"AppType,omitempty" name:"AppType"`
+}
+
+type AndroidPlan struct {
+	// 非必输字段，PlanId 是指本次加固使用的配置策略Id，可通过载入上次配置接口获取。其值非0时，代表引用对应的策略。
+	PlanId *int64 `json:"PlanId,omitempty" name:"PlanId"`
+
+	// 本次操作的包名。
+	// 当收费模式是安卓按年收费和安卓免费试用的在线加固和输出工具加固时，要求该字段必输，且与AndroidAppInfo.AppPkgName值相等。
+	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
+
+	// 安卓app的文件类型，本次加固操作的应用类型 。 
+	// 安卓在线加固和输出工具加固必输，其值需等于“apk”或“aab”，且与AndroidAppInfo.AppType值相等。
+	AppType *string `json:"AppType,omitempty" name:"AppType"`
+
+	// 安卓加固必输字段。
+	// 加固策略，json格式字符串。
+	// 字段说明（0-关闭，1-开启）：
+	//         "enable"=1 #DEX整体加固;
+	//         "antiprotect"=1 #反调试;
+	//         "antirepack"=1 #防重打包、防篡改;
+	//         "dexsig"=1       #签名校验;
+	//         "antimonitor"=1 #防模拟器运行保护;
+	//         "ptrace"=1 #防动态注入、动态调试;
+	//         "so"."enable" = 1 #文件加密;
+	//         "vmp"."enable" = 1 #VMP虚拟化保护;
+	//         "respro"."assets"."enable" = 1 #assets资源文件加密
+	//        "respro"."res"."enable" = 1 #res资源文件加密
+	// 
+	// so文件加密：
+	// 支持5种架构:
+	// apk 格式: /lib/armeabi/libxxx.so,/lib/arm64-v8a/libxxx.so,/lib/armeabi-v7a/libxxx.so,/lib/x86/libxxx.so,/lib/x86_64/libxxx.so
+	// aab格式: /base/lib/armeabi/libxxx.so,/base/lib/arm64-v8a/libxxx.so,/base/lib/armeabi-v7a/libxxx.so,/base/lib/x86/libxxx.so,/base/lib/x86_64/libxxx.so
+	// 请列举 SO 库在 apk 文件解压后的完整有效路径，如:/lib/armeabi/libxxx.so；
+	// 需要加固的 SO 库需确认为自研的 SO 库，不要加固第三方 SO 库，否则会增加 crash 风险
+	// 
+	// res资源文件加密注意事项：
+	// 请指定需要加密的文件全路径，如：res/layout/1.xml;
+	// res资源文件加密不能加密APP图标
+	// res目录文件，不能加密以下后缀规则的文件".wav", ".mp2", ".mp3", ".ogg", ".aac", ".mpg",".mpeg", ".mid", ".midi", ".smf", ".jet", ".rtttl", ".imy", ".xmf", ".mp4", ".m4a", ".m4v", ".3gp",".3gpp", ".3g2", ".3gpp2", ".amr", ".awb", ".wma", ".wmv"
+	// 
+	// assets资源文件加密注意事项:
+	// 请指定需要加密的文件全路径，如：assets/main.js；可以完整路径，也可以相对路径。
+	// 如果有通配符需要完整路径 ":all"或者"*"代表所有文件
+	// assets资源文件加密不能加密APP图标
+	// assets目录文件，不能加密以下后缀规则的文件".wav", ".mp2", ".mp3", ".ogg", ".aac", ".mpg",".mpeg", ".mid", ".midi", ".smf", ".jet", ".rtttl", ".imy", ".xmf", ".mp4", ".m4a", ".m4v", ".3gp",".3gpp", ".3g2", ".3gpp2", ".amr", ".awb", ".wma", ".wmv"
+	// 
+	// 
+	// apk[dex+so+vmp+res+assets]加固参数示例：
+	// ‘{
+	//     "dex": {
+	//         "enable": 1,
+	//         "antiprotect": 1,
+	//         "antirepack": 1,
+	//         "dexsig": 1,
+	//         "antimonitor": 1,
+	//         "ptrace": 1
+	//     },
+	//     "so": {
+	//         "enable": 1,
+	//         "ver": "1.3.3",
+	//         "file": [
+	//             "/lib/armeabi/libtest.so"
+	//         ]
+	//     },
+	//     "vmp": {
+	//         "enable": 1,
+	//         "ndkpath": "/xxx/android-ndk-r10e",
+	//         "profile": "/xxx/vmpprofile.txt",
+	//         "mapping": "/xxx/mapping.txt"
+	//     },
+	//     "respro": {
+	//         "assets": {
+	//             "enable": 1,
+	//             "file": [
+	//                 "assets/1.js",
+	//                 "assets/2.jpg"
+	//             ]
+	//         },
+	//         "res": {
+	//             "enable": 1,
+	//             "file": [
+	//                 "res/layout/1.xml",
+	//                 "res/layout/2.xml"
+	//             ]
+	//         }
+	//     }
+	// }’
+	// 
+	// aab加固方案一 
+	// [dex+res+assets]加固json字符串：
+	// ‘{
+	//     "dex": {
+	//         "enable": 1,
+	//         "antiprotect": 1,
+	//         "antimonitor": 1
+	//     },
+	//     "respro": {
+	//         "assets": {
+	//             "enable": 1,
+	//             "file": [
+	//                 "assets/1.js",
+	//                 "assets/2.jpg"
+	//             ]
+	//         },
+	//         "res": {
+	//             "enable": 1,
+	//             "file": [
+	//                 "res/layout/1.xml",
+	//                 "res/layout/2.xml"
+	//             ]
+	//         }
+	//     }
+	// }’
+	// 
+	// aab加固方案二
+	// 单独vmp加固：
+	// ‘{
+	//     "vmp": {
+	//         "enable": 1,
+	//         "ndkpath": "/xxx/android-ndk-r10e",
+	//         "profile": "/xxx/vmpprofile.txt",
+	//         "mapping": "/xxx/mapping.txt",
+	//         "antiprotect": 1,
+	//         "antimonitor": 1
+	//     }
+	// }’
+	EncryptParam *string `json:"EncryptParam,omitempty" name:"EncryptParam"`
+}
+
+type AndroidResult struct {
+	// 结果Id,用于查询加固结果
+	ResultId *string `json:"ResultId,omitempty" name:"ResultId"`
+
+	// 与当前任务关联的订单id
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 与当前任务关联的资源Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 本次任务发起者
+	OpUin *int64 `json:"OpUin,omitempty" name:"OpUin"`
+
+	// 应用类型：安卓-apk; 安卓-aab;
+	AppType *string `json:"AppType,omitempty" name:"AppType"`
+
+	// 应用包名
+	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
+
+	// 后台资源绑定的包名
+	BindAppPkgName *string `json:"BindAppPkgName,omitempty" name:"BindAppPkgName"`
+
+	// 加固结果
+	EncryptState *int64 `json:"EncryptState,omitempty" name:"EncryptState"`
+
+	// 加固结果描述
+	EncryptStateDesc *string `json:"EncryptStateDesc,omitempty" name:"EncryptStateDesc"`
+
+	// 加固失败错误码
+	EncryptErrCode *int64 `json:"EncryptErrCode,omitempty" name:"EncryptErrCode"`
+
+	// 加固失败原因
+	EncryptErrDesc *string `json:"EncryptErrDesc,omitempty" name:"EncryptErrDesc"`
+
+	// 加固失败解决方案
+	EncryptErrRef *string `json:"EncryptErrRef,omitempty" name:"EncryptErrRef"`
+
+	// 任务创建时间
+	CreatTime *string `json:"CreatTime,omitempty" name:"CreatTime"`
+
+	// 任务开始处理时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务处理结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 加固耗时（秒单位）
+	CostTime *int64 `json:"CostTime,omitempty" name:"CostTime"`
+
+	// 在线加固-安卓应用原包下载链接
+	AppUrl *string `json:"AppUrl,omitempty" name:"AppUrl"`
+
+	// 在线加固-安卓应用文件MD5算法值
+	AppMd5 *string `json:"AppMd5,omitempty" name:"AppMd5"`
+
+	// 在线加固-安卓应用应用名称
+	AppName *string `json:"AppName,omitempty" name:"AppName"`
+
+	// 在线加固-安卓应用版本；
+	AppVersion *string `json:"AppVersion,omitempty" name:"AppVersion"`
+
+	// 在线加固-安卓应用大小
+	AppSize *int64 `json:"AppSize,omitempty" name:"AppSize"`
+
+	// 在线加固-安卓加固-腾讯云应用加固工具版本
+	OnlineToolVersion *string `json:"OnlineToolVersion,omitempty" name:"OnlineToolVersion"`
+
+	// 在线加固-安卓加固，加固成功后文件md5算法值
+	EncryptAppMd5 *string `json:"EncryptAppMd5,omitempty" name:"EncryptAppMd5"`
+
+	// 在线加固-安卓加固，加固成功后应用大小
+	EncryptAppSize *int64 `json:"EncryptAppSize,omitempty" name:"EncryptAppSize"`
+
+	// 在线加固-安卓加固，加固包下载链接。
+	EncryptPkgUrl *string `json:"EncryptPkgUrl,omitempty" name:"EncryptPkgUrl"`
+
+	// 输出工具-安卓加固-腾讯云输出工具版本
+	OutputToolVersion *string `json:"OutputToolVersion,omitempty" name:"OutputToolVersion"`
+
+	// 输出工具-安卓加固-工具大小
+	OutputToolSize *int64 `json:"OutputToolSize,omitempty" name:"OutputToolSize"`
+
+	// 输出工具-安卓加固-工具输出时间
+	ToolOutputTime *string `json:"ToolOutputTime,omitempty" name:"ToolOutputTime"`
+
+	// 输出工具-安卓加固-工具到期时间
+	ToolExpireTime *string `json:"ToolExpireTime,omitempty" name:"ToolExpireTime"`
+
+	// 输出工具-安卓加固-输出工具下载链接
+	OutputToolUrl *string `json:"OutputToolUrl,omitempty" name:"OutputToolUrl"`
+
+	// 本次安卓加固策略信息
+	AndroidPlan *AndroidPlan `json:"AndroidPlan,omitempty" name:"AndroidPlan"`
+}
+
 type AppDetailInfo struct {
 	// app的名称
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
@@ -116,6 +369,75 @@ type AppSetInfo struct {
 	ShieldSize *uint64 `json:"ShieldSize,omitempty" name:"ShieldSize"`
 }
 
+type AppletInfo struct {
+	// 客户JS包
+	AppletJsUrl *string `json:"AppletJsUrl,omitempty" name:"AppletJsUrl"`
+
+	// 小程序加固等级配置
+	// 1 - 开启代码混淆、代码压缩、代码反调试保护。 2 - 开启字符串编码和代码变换，代码膨胀，随机插入冗余代码，开启代码控制流平坦化，保证业务逻辑正常前提下，扁平化代码逻辑分支，破坏代码简单的线性结构。 3 - 开启代码加密，对字符串、函数、变量、属性、类、数组等结构进行加密保护，更多得代码控制流平坦化，扁平化逻辑分支。
+	AppletLevel *int64 `json:"AppletLevel,omitempty" name:"AppletLevel"`
+
+	// 本次加固输出产物名称，如”test.zip“,非空必须是 ”.zip“结尾
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+type AppletPlan struct {
+	// 策略Id
+	PlanId *int64 `json:"PlanId,omitempty" name:"PlanId"`
+
+	// 1 - 开启代码混淆、代码压缩、代码反调试保护。
+	// 2 - 开启字符串编码和代码变换，代码膨胀，随机插入冗余代码，开启代码控制流平坦化，保证业务逻辑正常前提下，扁平化代码逻辑分支，破坏代码简单的线性结构。
+	// 3 - 开启代码加密，对字符串、函数、变量、属性、类、数组等结构进行加密保护，更多得代码控制流平坦化，扁平化逻辑分支。
+	AppletLevel *int64 `json:"AppletLevel,omitempty" name:"AppletLevel"`
+}
+
+type AppletResult struct {
+	// 加固任务结果id
+	ResultId *string `json:"ResultId,omitempty" name:"ResultId"`
+
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 订单id
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 操作账号
+	OpUin *int64 `json:"OpUin,omitempty" name:"OpUin"`
+
+	// 加固结果
+	EncryptState *int64 `json:"EncryptState,omitempty" name:"EncryptState"`
+
+	// 加固结果描述
+	EncryptStateDesc *string `json:"EncryptStateDesc,omitempty" name:"EncryptStateDesc"`
+
+	// 失败错误码
+	EncryptErrCode *int64 `json:"EncryptErrCode,omitempty" name:"EncryptErrCode"`
+
+	// 失败原因
+	EncryptErrDesc *string `json:"EncryptErrDesc,omitempty" name:"EncryptErrDesc"`
+
+	// 解决方案
+	EncryptErrRef *string `json:"EncryptErrRef,omitempty" name:"EncryptErrRef"`
+
+	// 任务创建时间
+	CreatTime *string `json:"CreatTime,omitempty" name:"CreatTime"`
+
+	// 任务开始处理时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务处理结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 加固耗时（秒单位）
+	CostTime *int64 `json:"CostTime,omitempty" name:"CostTime"`
+
+	// 在线加固成功下载包
+	EncryptPkgUrl *string `json:"EncryptPkgUrl,omitempty" name:"EncryptPkgUrl"`
+
+	// 本次加固配置
+	AppletInfo *AppletInfo `json:"AppletInfo,omitempty" name:"AppletInfo"`
+}
+
 type BindInfo struct {
 	// app的icon的url
 	AppIconUrl *string `json:"AppIconUrl,omitempty" name:"AppIconUrl"`
@@ -125,6 +447,63 @@ type BindInfo struct {
 
 	// app的包名
 	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
+}
+
+// Predefined struct for user
+type CancelEncryptTaskRequestParams struct {
+	// 加固任务结果Id 
+	ResultId *string `json:"ResultId,omitempty" name:"ResultId"`
+}
+
+type CancelEncryptTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 加固任务结果Id 
+	ResultId *string `json:"ResultId,omitempty" name:"ResultId"`
+}
+
+func (r *CancelEncryptTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelEncryptTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResultId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelEncryptTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelEncryptTaskResponseParams struct {
+	// 1: 取消任务成功 ； -1 ：取消任务失败，原因为任务进程已结束，不能取消。
+	State *int64 `json:"State,omitempty" name:"State"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CancelEncryptTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelEncryptTaskResponseParams `json:"Response"`
+}
+
+func (r *CancelEncryptTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelEncryptTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -292,6 +671,181 @@ func (r *CreateCosSecKeyInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCosSecKeyInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEncryptInstanceRequestParams struct {
+	// 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// 订单采购类型 1-免费试用 2-按年收费 3-按次收费
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 1-在线加固、  2-输出工具加固
+	EncryptOpType *int64 `json:"EncryptOpType,omitempty" name:"EncryptOpType"`
+
+	// 本次加固使用的资源id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 渠道合作安卓加固App信息 
+	AndroidAppInfo *AndroidAppInfo `json:"AndroidAppInfo,omitempty" name:"AndroidAppInfo"`
+
+	// 渠道合作安卓加固策略信息
+	AndroidPlan *AndroidPlan `json:"AndroidPlan,omitempty" name:"AndroidPlan"`
+
+	// 小程序加固信息
+	AppletInfo *AppletInfo `json:"AppletInfo,omitempty" name:"AppletInfo"`
+}
+
+type CreateEncryptInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// 订单采购类型 1-免费试用 2-按年收费 3-按次收费
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 1-在线加固、  2-输出工具加固
+	EncryptOpType *int64 `json:"EncryptOpType,omitempty" name:"EncryptOpType"`
+
+	// 本次加固使用的资源id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 渠道合作安卓加固App信息 
+	AndroidAppInfo *AndroidAppInfo `json:"AndroidAppInfo,omitempty" name:"AndroidAppInfo"`
+
+	// 渠道合作安卓加固策略信息
+	AndroidPlan *AndroidPlan `json:"AndroidPlan,omitempty" name:"AndroidPlan"`
+
+	// 小程序加固信息
+	AppletInfo *AppletInfo `json:"AppletInfo,omitempty" name:"AppletInfo"`
+}
+
+func (r *CreateEncryptInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEncryptInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlatformType")
+	delete(f, "OrderType")
+	delete(f, "EncryptOpType")
+	delete(f, "ResourceId")
+	delete(f, "AndroidAppInfo")
+	delete(f, "AndroidPlan")
+	delete(f, "AppletInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEncryptInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEncryptInstanceResponseParams struct {
+	// 加固任务Id
+	ResultId *string `json:"ResultId,omitempty" name:"ResultId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateEncryptInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEncryptInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateEncryptInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEncryptInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOrderInstanceRequestParams struct {
+	// 平台类型枚举值：1-android安卓加固  ；2-ios源码混淆 ； 3-sdk加固 ； 4-applet小程序加固
+	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// 订单采购类型 1-免费试用 ；2-按年收费 ；3-按次收费
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 代表应用包名列表，值为单个包名（例如：“a.b.xxx”）或多个包名用逗号隔开(例如：“a.b.xxx,b.c.xxx”)。
+	// 当安卓按年收费加固或安卓免费试用加固时，该字段要求非空，即PlatformType=1 并且 OrderType=2时，AppPkgNameList必传值。
+	AppPkgNameList *string `json:"AppPkgNameList,omitempty" name:"AppPkgNameList"`
+}
+
+type CreateOrderInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 平台类型枚举值：1-android安卓加固  ；2-ios源码混淆 ； 3-sdk加固 ； 4-applet小程序加固
+	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// 订单采购类型 1-免费试用 ；2-按年收费 ；3-按次收费
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 代表应用包名列表，值为单个包名（例如：“a.b.xxx”）或多个包名用逗号隔开(例如：“a.b.xxx,b.c.xxx”)。
+	// 当安卓按年收费加固或安卓免费试用加固时，该字段要求非空，即PlatformType=1 并且 OrderType=2时，AppPkgNameList必传值。
+	AppPkgNameList *string `json:"AppPkgNameList,omitempty" name:"AppPkgNameList"`
+}
+
+func (r *CreateOrderInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrderInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlatformType")
+	delete(f, "OrderType")
+	delete(f, "AppPkgNameList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrderInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOrderInstanceResponseParams struct {
+	// 订单Id
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 与订单关联的资源id
+	ResourceId []*string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateOrderInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOrderInstanceResponseParams `json:"Response"`
+}
+
+func (r *CreateOrderInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrderInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -638,6 +1192,418 @@ func (r *DescribeApkDetectionResultResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeApkDetectionResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEncryptInstancesRequestParams struct {
+	// 多记录查询时使用，页码
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 多记录每页展示数量
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 多记录查询时排序使用  仅支持CreateTime 任务创建时间排序
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 升序（asc）还是降序（desc），默认：desc。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+
+	// (条件过滤字段) 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// (条件过滤字段) 订单采购类型 1-免费试用 2-按年收费 3-按次收费
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// (条件过滤字段) 1-在线加固 或 2-输出工具加固
+	EncryptOpType *int64 `json:"EncryptOpType,omitempty" name:"EncryptOpType"`
+
+	// (条件过滤字段) 单记录查询时使用，结果ID该字段非空时，结构会根据结果ID进行单记录查询，符合查询条件时，只返回一条记录。
+	ResultId *string `json:"ResultId,omitempty" name:"ResultId"`
+
+	// (条件过滤字段) 查询与订单Id关联的任务
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// (条件过滤字段) 查询与资源Id关联的任务
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// (条件过滤字段) 安卓应用类型：安卓-apk; 安卓-aab;
+	AppType *string `json:"AppType,omitempty" name:"AppType"`
+
+	// （条件过滤字段）安卓应用的包名
+	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
+
+	// 加固结果，
+	// 0：正在排队；
+	// 1：加固成功；
+	// 2：加固中；
+	// 3：加固失败；
+	// 5：重试；
+	// 多记录查询时，根据查询结果进行检索使用。
+	EncryptState []*int64 `json:"EncryptState,omitempty" name:"EncryptState"`
+}
+
+type DescribeEncryptInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 多记录查询时使用，页码
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 多记录每页展示数量
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 多记录查询时排序使用  仅支持CreateTime 任务创建时间排序
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 升序（asc）还是降序（desc），默认：desc。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+
+	// (条件过滤字段) 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// (条件过滤字段) 订单采购类型 1-免费试用 2-按年收费 3-按次收费
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// (条件过滤字段) 1-在线加固 或 2-输出工具加固
+	EncryptOpType *int64 `json:"EncryptOpType,omitempty" name:"EncryptOpType"`
+
+	// (条件过滤字段) 单记录查询时使用，结果ID该字段非空时，结构会根据结果ID进行单记录查询，符合查询条件时，只返回一条记录。
+	ResultId *string `json:"ResultId,omitempty" name:"ResultId"`
+
+	// (条件过滤字段) 查询与订单Id关联的任务
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// (条件过滤字段) 查询与资源Id关联的任务
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// (条件过滤字段) 安卓应用类型：安卓-apk; 安卓-aab;
+	AppType *string `json:"AppType,omitempty" name:"AppType"`
+
+	// （条件过滤字段）安卓应用的包名
+	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
+
+	// 加固结果，
+	// 0：正在排队；
+	// 1：加固成功；
+	// 2：加固中；
+	// 3：加固失败；
+	// 5：重试；
+	// 多记录查询时，根据查询结果进行检索使用。
+	EncryptState []*int64 `json:"EncryptState,omitempty" name:"EncryptState"`
+}
+
+func (r *DescribeEncryptInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEncryptInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "OrderField")
+	delete(f, "OrderDirection")
+	delete(f, "PlatformType")
+	delete(f, "OrderType")
+	delete(f, "EncryptOpType")
+	delete(f, "ResultId")
+	delete(f, "OrderId")
+	delete(f, "ResourceId")
+	delete(f, "AppType")
+	delete(f, "AppPkgName")
+	delete(f, "EncryptState")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEncryptInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEncryptInstancesResponseParams struct {
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 渠道合作加固信息数组
+	EncryptResults []*EncryptResults `json:"EncryptResults,omitempty" name:"EncryptResults"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeEncryptInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEncryptInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeEncryptInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEncryptInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEncryptPlanRequestParams struct {
+	// 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// 订单采购类型 1-免费试用 2-按年收费 3-按次收费
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 1-在线加固；2-输出工具
+	EncryptOpType *int64 `json:"EncryptOpType,omitempty" name:"EncryptOpType"`
+
+	// 本次加固使用的资源id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// （条件过滤字段）安卓加固查询时，根据包名查询
+	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
+
+	// （条件过滤字段）安卓加固查询时，根据应用格式查询，枚举值：“apk”、“aab”
+	AppType *string `json:"AppType,omitempty" name:"AppType"`
+}
+
+type DescribeEncryptPlanRequest struct {
+	*tchttp.BaseRequest
+	
+	// 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// 订单采购类型 1-免费试用 2-按年收费 3-按次收费
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 1-在线加固；2-输出工具
+	EncryptOpType *int64 `json:"EncryptOpType,omitempty" name:"EncryptOpType"`
+
+	// 本次加固使用的资源id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// （条件过滤字段）安卓加固查询时，根据包名查询
+	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
+
+	// （条件过滤字段）安卓加固查询时，根据应用格式查询，枚举值：“apk”、“aab”
+	AppType *string `json:"AppType,omitempty" name:"AppType"`
+}
+
+func (r *DescribeEncryptPlanRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEncryptPlanRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PlatformType")
+	delete(f, "OrderType")
+	delete(f, "EncryptOpType")
+	delete(f, "ResourceId")
+	delete(f, "AppPkgName")
+	delete(f, "AppType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEncryptPlanRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeEncryptPlanResponseParams struct {
+	// 平台类型整型值  
+	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// 平台类型描述 1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	PlatformTypeDesc *string `json:"PlatformTypeDesc,omitempty" name:"PlatformTypeDesc"`
+
+	// 1- 在线加固 2-输出工具加固
+	EncryptOpType *int64 `json:"EncryptOpType,omitempty" name:"EncryptOpType"`
+
+	// 1- 在线加固 2-输出工具加固
+	EncryptOpTypeDesc *string `json:"EncryptOpTypeDesc,omitempty" name:"EncryptOpTypeDesc"`
+
+	// 订单收费类型枚举值
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 订单收费类型描述
+	OrderTypeDesc *string `json:"OrderTypeDesc,omitempty" name:"OrderTypeDesc"`
+
+	// 资源id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 上次安卓加固策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AndroidPlan *AndroidPlan `json:"AndroidPlan,omitempty" name:"AndroidPlan"`
+
+	// 上次小程序加固策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppletPlan *AppletPlan `json:"AppletPlan,omitempty" name:"AppletPlan"`
+
+	// 上次ios源码混淆加固配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IOSPlan *IOSPlan `json:"IOSPlan,omitempty" name:"IOSPlan"`
+
+	// 上次sdk加固配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SDKPlan *SDKPlan `json:"SDKPlan,omitempty" name:"SDKPlan"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeEncryptPlanResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeEncryptPlanResponseParams `json:"Response"`
+}
+
+func (r *DescribeEncryptPlanResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeEncryptPlanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrderInstancesRequestParams struct {
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页展示数量
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 按某个字段排序，目前仅支持CreateTime排序。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 升序（asc）还是降序（desc），默认：desc。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+
+	// （条件过滤字段）平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// （条件过滤字段）订单采购类型 1-免费试用 2-按年收费 3-按次收费
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// （条件过滤字段）订单审批状态：
+	ApprovalStatus *int64 `json:"ApprovalStatus,omitempty" name:"ApprovalStatus"`
+
+	// （条件过滤字段）资源状态：
+	ResourceStatus *int64 `json:"ResourceStatus,omitempty" name:"ResourceStatus"`
+
+	// （条件过滤字段）订单ID
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// （条件过滤字段）资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// （条件过滤字段）安卓包名，查询android安卓加固订单时使用
+	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
+}
+
+type DescribeOrderInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页展示数量
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 按某个字段排序，目前仅支持CreateTime排序。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 升序（asc）还是降序（desc），默认：desc。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+
+	// （条件过滤字段）平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// （条件过滤字段）订单采购类型 1-免费试用 2-按年收费 3-按次收费
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// （条件过滤字段）订单审批状态：
+	ApprovalStatus *int64 `json:"ApprovalStatus,omitempty" name:"ApprovalStatus"`
+
+	// （条件过滤字段）资源状态：
+	ResourceStatus *int64 `json:"ResourceStatus,omitempty" name:"ResourceStatus"`
+
+	// （条件过滤字段）订单ID
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// （条件过滤字段）资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// （条件过滤字段）安卓包名，查询android安卓加固订单时使用
+	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
+}
+
+func (r *DescribeOrderInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrderInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "OrderField")
+	delete(f, "OrderDirection")
+	delete(f, "PlatformType")
+	delete(f, "OrderType")
+	delete(f, "ApprovalStatus")
+	delete(f, "ResourceStatus")
+	delete(f, "OrderId")
+	delete(f, "ResourceId")
+	delete(f, "AppPkgName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrderInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrderInstancesResponseParams struct {
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 订单信息
+	Orders []*Orders `json:"Orders,omitempty" name:"Orders"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeOrderInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeOrderInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeOrderInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrderInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1136,12 +2102,64 @@ func (r *DescribeUserBaseInfoInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EncryptResults struct {
+	// 平台类型枚举值  1-android安卓加固   2-ios源码混淆  3-sdk加固  4-applet小程序加固
+	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// 平台类型描述  1-android安卓加固   2-ios源码混淆  3-sdk加固  4-applet小程序加固
+	PlatformDesc *string `json:"PlatformDesc,omitempty" name:"PlatformDesc"`
+
+	// 订单采购类型枚举值， 1-免费试用 2-按年收费 3-按次收费
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 订单采购类型 描述：1-免费试用 2-按年收费 3-按次收费
+	OrderTypeDesc *string `json:"OrderTypeDesc,omitempty" name:"OrderTypeDesc"`
+
+	// 枚举值：1-在线加固 或 2-输出工具加固
+	EncryptOpType *int64 `json:"EncryptOpType,omitempty" name:"EncryptOpType"`
+
+	// 描述：1-在线加固 或 2-输出工具加固
+	EncryptOpTypeDesc *string `json:"EncryptOpTypeDesc,omitempty" name:"EncryptOpTypeDesc"`
+
+	// 与当前任务关联的资源Id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 与当前任务关联的订单Id
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 对应PlatformType平台类型值   1-android安卓加固结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AndroidResult *AndroidResult `json:"AndroidResult,omitempty" name:"AndroidResult"`
+
+	// 对应PlatformType平台类型值   2-ios源码混淆加固结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IOSResult *IOSResult `json:"IOSResult,omitempty" name:"IOSResult"`
+
+	// 对应PlatformType平台类型值   3-sdk加固结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SDKResult *SDKResult `json:"SDKResult,omitempty" name:"SDKResult"`
+
+	// 对应PlatformType平台类型值   4-applet小程序加固结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppletResult *AppletResult `json:"AppletResult,omitempty" name:"AppletResult"`
+}
+
 type Filter struct {
 	// 需要过滤的字段
 	Name *string `json:"Name,omitempty" name:"Name"`
 
 	// 需要过滤字段的值
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type IOSPlan struct {
+	// 策略id
+	PlanId *int64 `json:"PlanId,omitempty" name:"PlanId"`
+}
+
+type IOSResult struct {
+	// 加固任务结果Id
+	ResultId *string `json:"ResultId,omitempty" name:"ResultId"`
 }
 
 type OptPluginListItem struct {
@@ -1153,6 +2171,69 @@ type OptPluginListItem struct {
 
 	// 非广告插件描述
 	PluginDesc *string `json:"PluginDesc,omitempty" name:"PluginDesc"`
+}
+
+type Orders struct {
+	// 订单号
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 平台类型整型值 
+	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
+
+	// 平台类型描述：  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	PlatformTypeDesc *string `json:"PlatformTypeDesc,omitempty" name:"PlatformTypeDesc"`
+
+	// 订单采购类型整型值
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 订单采购类型描述： 1-免费试用 2-按年收费 3-按次收费
+	OrderTypeDesc *string `json:"OrderTypeDesc,omitempty" name:"OrderTypeDesc"`
+
+	// 安卓包年收费加固的包名
+	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
+
+	// 资源号
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源状态整型值
+	ResourceStatus *int64 `json:"ResourceStatus,omitempty" name:"ResourceStatus"`
+
+	// 资源状态描述
+	// 0-未生效、1-生效中、2-已失效。
+	ResourceStatusDesc *string `json:"ResourceStatusDesc,omitempty" name:"ResourceStatusDesc"`
+
+	// 订单类型为免费试用时的免费加固次数。
+	TestTimes *int64 `json:"TestTimes,omitempty" name:"TestTimes"`
+
+	// 资源生效时间
+	ValidTime *string `json:"ValidTime,omitempty" name:"ValidTime"`
+
+	// 资源过期时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 资源创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 订单审批人
+	Approver *string `json:"Approver,omitempty" name:"Approver"`
+
+	// 订单审批状态整型值
+	ApprovalStatus *int64 `json:"ApprovalStatus,omitempty" name:"ApprovalStatus"`
+
+	// 订单审批状态整型值描述：0-未审批、1-审批通过、2-驳回。
+	ApprovalStatusDesc *string `json:"ApprovalStatusDesc,omitempty" name:"ApprovalStatusDesc"`
+
+	// 订单审批时间
+	ApprovalTime *string `json:"ApprovalTime,omitempty" name:"ApprovalTime"`
+
+	// 按次收费加固资源，其关联的总任务数
+	TimesTaskTotalCount *int64 `json:"TimesTaskTotalCount,omitempty" name:"TimesTaskTotalCount"`
+
+	// 按次收费加固资源，其关联的任务成功数
+	TimesTaskSuccessCount *int64 `json:"TimesTaskSuccessCount,omitempty" name:"TimesTaskSuccessCount"`
+
+	// 按次收费加固资源，其关联的任务失败数
+	TimesTaskFailCount *int64 `json:"TimesTaskFailCount,omitempty" name:"TimesTaskFailCount"`
 }
 
 type PlanDetailInfo struct {
@@ -1340,6 +2421,16 @@ type ResultListItem struct {
 
 	// 对应errno的错误信息描述
 	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+}
+
+type SDKPlan struct {
+	// 策略id
+	PlanId *int64 `json:"PlanId,omitempty" name:"PlanId"`
+}
+
+type SDKResult struct {
+	// 加固任务结果Id
+	ResultId *string `json:"ResultId,omitempty" name:"ResultId"`
 }
 
 type ServiceInfo struct {

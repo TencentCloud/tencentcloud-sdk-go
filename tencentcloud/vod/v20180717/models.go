@@ -14889,6 +14889,7 @@ type MediaTranscodeItem struct {
 	Url *string `json:"Url,omitempty" name:"Url"`
 
 	// 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/266/33476)。
+	// <font color=red>注意：取值 0 表示原始文件。</font> 
 	Definition *int64 `json:"Definition,omitempty" name:"Definition"`
 
 	// 视频流码率平均值与音频流码率平均值之和， 单位：bps。
@@ -21228,10 +21229,10 @@ type ResourceTag struct {
 
 // Predefined struct for user
 type RestoreMediaRequestParams struct {
-	// 媒体文件唯一标识列表。
+	// 媒体文件唯一标识列表，最大长度：100。
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
-	// 解冻出的临时媒体文件的可访问持续时长，单位为“天”。
+	// 解冻出的临时媒体文件的可访问持续时长，必须大于0，单位为“天”。
 	RestoreDay *uint64 `json:"RestoreDay,omitempty" name:"RestoreDay"`
 
 	// 解冻模式。当媒体文件当前的存储类型为归档存储时，有以下取值：
@@ -21250,10 +21251,10 @@ type RestoreMediaRequestParams struct {
 type RestoreMediaRequest struct {
 	*tchttp.BaseRequest
 	
-	// 媒体文件唯一标识列表。
+	// 媒体文件唯一标识列表，最大长度：100。
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
-	// 解冻出的临时媒体文件的可访问持续时长，单位为“天”。
+	// 解冻出的临时媒体文件的可访问持续时长，必须大于0，单位为“天”。
 	RestoreDay *uint64 `json:"RestoreDay,omitempty" name:"RestoreDay"`
 
 	// 解冻模式。当媒体文件当前的存储类型为归档存储时，有以下取值：

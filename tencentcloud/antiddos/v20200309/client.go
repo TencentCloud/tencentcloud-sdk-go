@@ -2491,6 +2491,72 @@ func (c *Client) DescribeBizHttpStatusWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeBizMonitorTrendRequest() (request *DescribeBizMonitorTrendRequest) {
+    request = &DescribeBizMonitorTrendRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("antiddos", APIVersion, "DescribeBizMonitorTrend")
+    
+    
+    return
+}
+
+func NewDescribeBizMonitorTrendResponse() (response *DescribeBizMonitorTrendResponse) {
+    response = &DescribeBizMonitorTrendResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBizMonitorTrend
+// 获取高防IP业务监控流量曲线
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeBizMonitorTrend(request *DescribeBizMonitorTrendRequest) (response *DescribeBizMonitorTrendResponse, err error) {
+    return c.DescribeBizMonitorTrendWithContext(context.Background(), request)
+}
+
+// DescribeBizMonitorTrend
+// 获取高防IP业务监控流量曲线
+//
+// 可能返回的错误码:
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeBizMonitorTrendWithContext(ctx context.Context, request *DescribeBizMonitorTrendRequest) (response *DescribeBizMonitorTrendResponse, err error) {
+    if request == nil {
+        request = NewDescribeBizMonitorTrendRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBizMonitorTrend require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBizMonitorTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBizTrendRequest() (request *DescribeBizTrendRequest) {
     request = &DescribeBizTrendRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -2858,6 +2858,247 @@ func (r *DescribeRecordExistExceptDefaultNSResponse) FromJsonString(s string) er
 }
 
 // Predefined struct for user
+type DescribeRecordFilterListRequestParams struct {
+	// 要获取的解析记录所属的域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 要获取的解析记录所属的域名 Id，如果传了 DomainId，系统将会忽略 Domain 参数。 可以通过接口 DescribeDomainList 查到所有的 Domain 以及 DomainId。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 根据解析记录的主机头获取解析记录。默认模糊匹配。可以通过设置 IsExactSubdomain 参数为 true 进行精确查找。
+	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+
+	// 获取某些类型的解析记录，如 A，CNAME，NS，AAAA，显性URL，隐性URL，CAA，SPF等。
+	RecordType []*string `json:"RecordType,omitempty" name:"RecordType"`
+
+	// 获取某些线路ID的解析记录。可以通过接口 DescribeRecordLineList 查看当前域名允许的线路信息。
+	RecordLine []*string `json:"RecordLine,omitempty" name:"RecordLine"`
+
+	// 获取某些分组下的解析记录时，传这个分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+	GroupId []*uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 通过关键字搜索解析记录，当前支持搜索主机头和记录值
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 排序字段，支持 NAME，LINE，TYPE，VALUE，WEIGHT，MX，TTL，UPDATED_ON 几个字段。
+	// NAME：解析记录的主机头
+	// LINE：解析记录线路
+	// TYPE：解析记录类型
+	// VALUE：解析记录值
+	// WEIGHT：权重
+	// MX：MX 优先级
+	// TTL：解析记录缓存时间
+	// UPDATED_ON：解析记录更新时间
+	SortField *string `json:"SortField,omitempty" name:"SortField"`
+
+	// 排序方式，升序：ASC，降序：DESC。默认值为ASC。
+	SortType *string `json:"SortType,omitempty" name:"SortType"`
+
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数量，当前Limit最大支持3000。默认值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 根据解析记录的值获取解析记录
+	RecordValue *string `json:"RecordValue,omitempty" name:"RecordValue"`
+
+	// 根据解析记录的状态获取解析记录。可取值为 ENABLE，DISABLE。
+	// ENABLE：正常 
+	// DISABLE：暂停 
+	RecordStatus []*string `json:"RecordStatus,omitempty" name:"RecordStatus"`
+
+	// 要获取解析记录权重查询区间起点。
+	WeightBegin *uint64 `json:"WeightBegin,omitempty" name:"WeightBegin"`
+
+	// 要获取解析记录权重查询区间终点。
+	WeightEnd *uint64 `json:"WeightEnd,omitempty" name:"WeightEnd"`
+
+	// 要获取解析记录 MX 优先级查询区间起点。
+	MXBegin *uint64 `json:"MXBegin,omitempty" name:"MXBegin"`
+
+	// 要获取解析记录 MX 优先级查询区间终点。
+	MXEnd *uint64 `json:"MXEnd,omitempty" name:"MXEnd"`
+
+	// 要获取解析记录 TTL 查询区间起点。
+	TTLBegin *uint64 `json:"TTLBegin,omitempty" name:"TTLBegin"`
+
+	// 要获取解析记录 TTL 查询区间终点。
+	TTLEnd *uint64 `json:"TTLEnd,omitempty" name:"TTLEnd"`
+
+	// 要获取解析记录更新时间查询区间起点。
+	UpdatedAtBegin *string `json:"UpdatedAtBegin,omitempty" name:"UpdatedAtBegin"`
+
+	// 要获取解析记录更新时间查询区间终点。
+	UpdatedAtEnd *string `json:"UpdatedAtEnd,omitempty" name:"UpdatedAtEnd"`
+
+	// 根据解析记录的备注获取解析记录。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 是否根据 Subdomain 参数进行精确查找。
+	IsExactSubDomain *bool `json:"IsExactSubDomain,omitempty" name:"IsExactSubDomain"`
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+type DescribeRecordFilterListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要获取的解析记录所属的域名。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 要获取的解析记录所属的域名 Id，如果传了 DomainId，系统将会忽略 Domain 参数。 可以通过接口 DescribeDomainList 查到所有的 Domain 以及 DomainId。
+	DomainId *uint64 `json:"DomainId,omitempty" name:"DomainId"`
+
+	// 根据解析记录的主机头获取解析记录。默认模糊匹配。可以通过设置 IsExactSubdomain 参数为 true 进行精确查找。
+	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+
+	// 获取某些类型的解析记录，如 A，CNAME，NS，AAAA，显性URL，隐性URL，CAA，SPF等。
+	RecordType []*string `json:"RecordType,omitempty" name:"RecordType"`
+
+	// 获取某些线路ID的解析记录。可以通过接口 DescribeRecordLineList 查看当前域名允许的线路信息。
+	RecordLine []*string `json:"RecordLine,omitempty" name:"RecordLine"`
+
+	// 获取某些分组下的解析记录时，传这个分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+	GroupId []*uint64 `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 通过关键字搜索解析记录，当前支持搜索主机头和记录值
+	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// 排序字段，支持 NAME，LINE，TYPE，VALUE，WEIGHT，MX，TTL，UPDATED_ON 几个字段。
+	// NAME：解析记录的主机头
+	// LINE：解析记录线路
+	// TYPE：解析记录类型
+	// VALUE：解析记录值
+	// WEIGHT：权重
+	// MX：MX 优先级
+	// TTL：解析记录缓存时间
+	// UPDATED_ON：解析记录更新时间
+	SortField *string `json:"SortField,omitempty" name:"SortField"`
+
+	// 排序方式，升序：ASC，降序：DESC。默认值为ASC。
+	SortType *string `json:"SortType,omitempty" name:"SortType"`
+
+	// 偏移量，默认值为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 限制数量，当前Limit最大支持3000。默认值为100。
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 根据解析记录的值获取解析记录
+	RecordValue *string `json:"RecordValue,omitempty" name:"RecordValue"`
+
+	// 根据解析记录的状态获取解析记录。可取值为 ENABLE，DISABLE。
+	// ENABLE：正常 
+	// DISABLE：暂停 
+	RecordStatus []*string `json:"RecordStatus,omitempty" name:"RecordStatus"`
+
+	// 要获取解析记录权重查询区间起点。
+	WeightBegin *uint64 `json:"WeightBegin,omitempty" name:"WeightBegin"`
+
+	// 要获取解析记录权重查询区间终点。
+	WeightEnd *uint64 `json:"WeightEnd,omitempty" name:"WeightEnd"`
+
+	// 要获取解析记录 MX 优先级查询区间起点。
+	MXBegin *uint64 `json:"MXBegin,omitempty" name:"MXBegin"`
+
+	// 要获取解析记录 MX 优先级查询区间终点。
+	MXEnd *uint64 `json:"MXEnd,omitempty" name:"MXEnd"`
+
+	// 要获取解析记录 TTL 查询区间起点。
+	TTLBegin *uint64 `json:"TTLBegin,omitempty" name:"TTLBegin"`
+
+	// 要获取解析记录 TTL 查询区间终点。
+	TTLEnd *uint64 `json:"TTLEnd,omitempty" name:"TTLEnd"`
+
+	// 要获取解析记录更新时间查询区间起点。
+	UpdatedAtBegin *string `json:"UpdatedAtBegin,omitempty" name:"UpdatedAtBegin"`
+
+	// 要获取解析记录更新时间查询区间终点。
+	UpdatedAtEnd *string `json:"UpdatedAtEnd,omitempty" name:"UpdatedAtEnd"`
+
+	// 根据解析记录的备注获取解析记录。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 是否根据 Subdomain 参数进行精确查找。
+	IsExactSubDomain *bool `json:"IsExactSubDomain,omitempty" name:"IsExactSubDomain"`
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+}
+
+func (r *DescribeRecordFilterListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordFilterListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "DomainId")
+	delete(f, "SubDomain")
+	delete(f, "RecordType")
+	delete(f, "RecordLine")
+	delete(f, "GroupId")
+	delete(f, "Keyword")
+	delete(f, "SortField")
+	delete(f, "SortType")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "RecordValue")
+	delete(f, "RecordStatus")
+	delete(f, "WeightBegin")
+	delete(f, "WeightEnd")
+	delete(f, "MXBegin")
+	delete(f, "MXEnd")
+	delete(f, "TTLBegin")
+	delete(f, "TTLEnd")
+	delete(f, "UpdatedAtBegin")
+	delete(f, "UpdatedAtEnd")
+	delete(f, "Remark")
+	delete(f, "IsExactSubDomain")
+	delete(f, "ProjectId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordFilterListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordFilterListResponseParams struct {
+	// 记录的数量统计信息
+	RecordCountInfo *RecordCountInfo `json:"RecordCountInfo,omitempty" name:"RecordCountInfo"`
+
+	// 获取的记录列表
+	RecordList []*RecordListItem `json:"RecordList,omitempty" name:"RecordList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRecordFilterListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordFilterListResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordFilterListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordFilterListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRecordGroupListRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`

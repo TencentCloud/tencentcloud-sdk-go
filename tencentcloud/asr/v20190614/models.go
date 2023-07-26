@@ -1261,9 +1261,11 @@ func (r *GetModelInfoResponse) FromJsonString(s string) error {
 
 type HotWord struct {
 	// 热词
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Word *string `json:"Word,omitempty" name:"Word"`
 
 	// 权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
 }
 

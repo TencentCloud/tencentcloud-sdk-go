@@ -45,6 +45,68 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCancelEncryptTaskRequest() (request *CancelEncryptTaskRequest) {
+    request = &CancelEncryptTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ms", APIVersion, "CancelEncryptTask")
+    
+    
+    return
+}
+
+func NewCancelEncryptTaskResponse() (response *CancelEncryptTaskResponse) {
+    response = &CancelEncryptTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelEncryptTask
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，取消渠道合作加固中的任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_RESULTIDNOTFOUND = "ResourceNotFound.ResultIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelEncryptTask(request *CancelEncryptTaskRequest) (response *CancelEncryptTaskResponse, err error) {
+    return c.CancelEncryptTaskWithContext(context.Background(), request)
+}
+
+// CancelEncryptTask
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，取消渠道合作加固中的任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_RESULTIDNOTFOUND = "ResourceNotFound.ResultIdNotFound"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CancelEncryptTaskWithContext(ctx context.Context, request *CancelEncryptTaskRequest) (response *CancelEncryptTaskResponse, err error) {
+    if request == nil {
+        request = NewCancelEncryptTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelEncryptTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelEncryptTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBindInstanceRequest() (request *CreateBindInstanceRequest) {
     request = &CreateBindInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -157,6 +219,172 @@ func (c *Client) CreateCosSecKeyInstanceWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewCreateCosSecKeyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateEncryptInstanceRequest() (request *CreateEncryptInstanceRequest) {
+    request = &CreateEncryptInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ms", APIVersion, "CreateEncryptInstance")
+    
+    
+    return
+}
+
+func NewCreateEncryptInstanceResponse() (response *CreateEncryptInstanceResponse) {
+    response = &CreateEncryptInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateEncryptInstance
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于创建加固任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ANDROIDAPPMD5ERROR = "InvalidParameterValue.AndroidAppMd5Error"
+//  INVALIDPARAMETERVALUE_ANDROIDAPPPKGNAMEERROR = "InvalidParameterValue.AndroidAppPkgNameError"
+//  INVALIDPARAMETERVALUE_ANDROIDAPPPKGNAMELISTERROR = "InvalidParameterValue.AndroidAppPkgNameListError"
+//  INVALIDPARAMETERVALUE_ANDROIDAPPTYPEERROR = "InvalidParameterValue.AndroidAppTypeError"
+//  INVALIDPARAMETERVALUE_ANDROIDAPPURLERROR = "InvalidParameterValue.AndroidAppUrlError"
+//  INVALIDPARAMETERVALUE_ANDROIDASSETSERROR = "InvalidParameterValue.AndroidAssetsError"
+//  INVALIDPARAMETERVALUE_ANDROIDENCRYPTPARAMERROR = "InvalidParameterValue.AndroidEncryptParamError"
+//  INVALIDPARAMETERVALUE_ANDROIDRESERROR = "InvalidParameterValue.AndroidResError"
+//  INVALIDPARAMETERVALUE_ANDROIDSOERROR = "InvalidParameterValue.AndroidSoError"
+//  INVALIDPARAMETERVALUE_ANDROIDVMPERROR = "InvalidParameterValue.AndroidVMPError"
+//  INVALIDPARAMETERVALUE_APPLETENCRYPTPARAMERROR = "InvalidParameterValue.AppletEncryptParamError"
+//  INVALIDPARAMETERVALUE_CHECKURLERROR = "InvalidParameterValue.CheckUrlError"
+//  INVALIDPARAMETERVALUE_ENCRYPTPARAMAPPTYPEERROR = "InvalidParameterValue.EncryptParamAppTypeError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ENCRYPTTASKLIMITEXCEEDED = "LimitExceeded.EncryptTaskLimitExceeded"
+//  RESOURCENOTFOUND_RESULTIDNOTFOUND = "ResourceNotFound.ResultIdNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEncryptInstance(request *CreateEncryptInstanceRequest) (response *CreateEncryptInstanceResponse, err error) {
+    return c.CreateEncryptInstanceWithContext(context.Background(), request)
+}
+
+// CreateEncryptInstance
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于创建加固任务。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ANDROIDAPPMD5ERROR = "InvalidParameterValue.AndroidAppMd5Error"
+//  INVALIDPARAMETERVALUE_ANDROIDAPPPKGNAMEERROR = "InvalidParameterValue.AndroidAppPkgNameError"
+//  INVALIDPARAMETERVALUE_ANDROIDAPPPKGNAMELISTERROR = "InvalidParameterValue.AndroidAppPkgNameListError"
+//  INVALIDPARAMETERVALUE_ANDROIDAPPTYPEERROR = "InvalidParameterValue.AndroidAppTypeError"
+//  INVALIDPARAMETERVALUE_ANDROIDAPPURLERROR = "InvalidParameterValue.AndroidAppUrlError"
+//  INVALIDPARAMETERVALUE_ANDROIDASSETSERROR = "InvalidParameterValue.AndroidAssetsError"
+//  INVALIDPARAMETERVALUE_ANDROIDENCRYPTPARAMERROR = "InvalidParameterValue.AndroidEncryptParamError"
+//  INVALIDPARAMETERVALUE_ANDROIDRESERROR = "InvalidParameterValue.AndroidResError"
+//  INVALIDPARAMETERVALUE_ANDROIDSOERROR = "InvalidParameterValue.AndroidSoError"
+//  INVALIDPARAMETERVALUE_ANDROIDVMPERROR = "InvalidParameterValue.AndroidVMPError"
+//  INVALIDPARAMETERVALUE_APPLETENCRYPTPARAMERROR = "InvalidParameterValue.AppletEncryptParamError"
+//  INVALIDPARAMETERVALUE_CHECKURLERROR = "InvalidParameterValue.CheckUrlError"
+//  INVALIDPARAMETERVALUE_ENCRYPTPARAMAPPTYPEERROR = "InvalidParameterValue.EncryptParamAppTypeError"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_ENCRYPTTASKLIMITEXCEEDED = "LimitExceeded.EncryptTaskLimitExceeded"
+//  RESOURCENOTFOUND_RESULTIDNOTFOUND = "ResourceNotFound.ResultIdNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateEncryptInstanceWithContext(ctx context.Context, request *CreateEncryptInstanceRequest) (response *CreateEncryptInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateEncryptInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEncryptInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEncryptInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateOrderInstanceRequest() (request *CreateOrderInstanceRequest) {
+    request = &CreateOrderInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ms", APIVersion, "CreateOrderInstance")
+    
+    
+    return
+}
+
+func NewCreateOrderInstanceResponse() (response *CreateOrderInstanceResponse) {
+    response = &CreateOrderInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOrderInstance
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。
+//
+// 订单类型有：免费试用、按年收费、按次收费。
+//
+// 应用加固支持的平台类型有：android安卓加固 、ios源码混淆 、sdk加固、applet小程序加固。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ANDROIDAPPPKGNAMELISTERROR = "InvalidParameterValue.AndroidAppPkgNameListError"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateOrderInstance(request *CreateOrderInstanceRequest) (response *CreateOrderInstanceResponse, err error) {
+    return c.CreateOrderInstanceWithContext(context.Background(), request)
+}
+
+// CreateOrderInstance
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。
+//
+// 订单类型有：免费试用、按年收费、按次收费。
+//
+// 应用加固支持的平台类型有：android安卓加固 、ios源码混淆 、sdk加固、applet小程序加固。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ANDROIDAPPPKGNAMELISTERROR = "InvalidParameterValue.AndroidAppPkgNameListError"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateOrderInstanceWithContext(ctx context.Context, request *CreateOrderInstanceRequest) (response *CreateOrderInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateOrderInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrderInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOrderInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -469,6 +697,198 @@ func (c *Client) DescribeApkDetectionResultWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeApkDetectionResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEncryptInstancesRequest() (request *DescribeEncryptInstancesRequest) {
+    request = &DescribeEncryptInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ms", APIVersion, "DescribeEncryptInstances")
+    
+    
+    return
+}
+
+func NewDescribeEncryptInstancesResponse() (response *DescribeEncryptInstancesResponse) {
+    response = &DescribeEncryptInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEncryptInstances
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于查询加固任务，入参中的条件过滤字段均为精准匹配。支持功能点：1. 多任务分页查询  2.根据任务Id唯一值查询单记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+func (c *Client) DescribeEncryptInstances(request *DescribeEncryptInstancesRequest) (response *DescribeEncryptInstancesResponse, err error) {
+    return c.DescribeEncryptInstancesWithContext(context.Background(), request)
+}
+
+// DescribeEncryptInstances
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于查询加固任务，入参中的条件过滤字段均为精准匹配。支持功能点：1. 多任务分页查询  2.根据任务Id唯一值查询单记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+func (c *Client) DescribeEncryptInstancesWithContext(ctx context.Context, request *DescribeEncryptInstancesRequest) (response *DescribeEncryptInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeEncryptInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEncryptInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEncryptInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeEncryptPlanRequest() (request *DescribeEncryptPlanRequest) {
+    request = &DescribeEncryptPlanRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ms", APIVersion, "DescribeEncryptPlan")
+    
+    
+    return
+}
+
+func NewDescribeEncryptPlanResponse() (response *DescribeEncryptPlanResponse) {
+    response = &DescribeEncryptPlanResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeEncryptPlan
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。入参中的条件过滤字段均为精准匹配。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEncryptPlan(request *DescribeEncryptPlanRequest) (response *DescribeEncryptPlanResponse, err error) {
+    return c.DescribeEncryptPlanWithContext(context.Background(), request)
+}
+
+// DescribeEncryptPlan
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。入参中的条件过滤字段均为精准匹配。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeEncryptPlanWithContext(ctx context.Context, request *DescribeEncryptPlanRequest) (response *DescribeEncryptPlanResponse, err error) {
+    if request == nil {
+        request = NewDescribeEncryptPlanRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeEncryptPlan require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeEncryptPlanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeOrderInstancesRequest() (request *DescribeOrderInstancesRequest) {
+    request = &DescribeOrderInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ms", APIVersion, "DescribeOrderInstances")
+    
+    
+    return
+}
+
+func NewDescribeOrderInstancesResponse() (response *DescribeOrderInstancesResponse) {
+    response = &DescribeOrderInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeOrderInstances
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。 接口返回的结果为：创建订单后，订单审批状态信息，以及与订单关联的资源状态等信息，入参中的条件过滤字段均为精准匹配。
+//
+// 接口功能点：
+//
+// 1.支持多订单分页查询；
+//
+// 2.支持唯一订单号精准匹配查询；
+//
+// 3.支持唯一资源号精准匹配查询；
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOrderInstances(request *DescribeOrderInstancesRequest) (response *DescribeOrderInstancesResponse, err error) {
+    return c.DescribeOrderInstancesWithContext(context.Background(), request)
+}
+
+// DescribeOrderInstances
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。 接口返回的结果为：创建订单后，订单审批状态信息，以及与订单关联的资源状态等信息，入参中的条件过滤字段均为精准匹配。
+//
+// 接口功能点：
+//
+// 1.支持多订单分页查询；
+//
+// 2.支持唯一订单号精准匹配查询；
+//
+// 3.支持唯一资源号精准匹配查询；
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
+//  INTERNALERROR = "InternalError"
+//  UNAUTHORIZEDOPERATION_AUTHFAILED = "UnauthorizedOperation.AuthFailed"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeOrderInstancesWithContext(ctx context.Context, request *DescribeOrderInstancesRequest) (response *DescribeOrderInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeOrderInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeOrderInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeOrderInstancesResponse()
     err = c.Send(request, response)
     return
 }

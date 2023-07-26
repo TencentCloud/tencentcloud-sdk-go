@@ -1750,6 +1750,95 @@ type DataForward struct {
 }
 
 // Predefined struct for user
+type DeleteCloudStorageEventRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 事件id
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 开始时间，unix时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，unix时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
+type DeleteCloudStorageEventRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 事件id
+	EventId *string `json:"EventId,omitempty" name:"EventId"`
+
+	// 开始时间，unix时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，unix时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 用户ID
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+}
+
+func (r *DeleteCloudStorageEventRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudStorageEventRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "EventId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudStorageEventRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudStorageEventResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteCloudStorageEventResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCloudStorageEventResponseParams `json:"Response"`
+}
+
+func (r *DeleteCloudStorageEventResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudStorageEventResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteDeviceRequestParams struct {
 	// 产品ID。
 	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
@@ -3328,6 +3417,9 @@ type DescribeCloudStorageThumbnailResponseParams struct {
 	// 缩略图访问地址
 	ThumbnailURL *string `json:"ThumbnailURL,omitempty" name:"ThumbnailURL"`
 
+	// 缩略图访问地址的过期时间
+	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -4167,6 +4259,88 @@ func (r *DescribeDeviceEventHistoryResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDeviceEventHistoryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDevicePackagesRequestParams struct {
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 分页拉取数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页拉取偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+type DescribeDevicePackagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+
+	// 设备名称
+	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+
+	// 分页拉取数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 分页拉取偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+}
+
+func (r *DescribeDevicePackagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDevicePackagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductId")
+	delete(f, "DeviceName")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDevicePackagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDevicePackagesResponseParams struct {
+	// 有效云存套餐数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 有效云存套餐列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Packages []*PackageInfo `json:"Packages,omitempty" name:"Packages"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDevicePackagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDevicePackagesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDevicePackagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDevicePackagesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7206,6 +7380,21 @@ type PackageConsumeTask struct {
 
 	// 任务状态，1待处理，2处理中，3已完成
 	State *int64 `json:"State,omitempty" name:"State"`
+}
+
+type PackageInfo struct {
+	// 云存开启状态，0为未开启，2为正在生效，1为已过期
+	// 注：这里只返回状态为0的数据
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 云存类型，1为全时云存，2为事件云存
+	CSType *uint64 `json:"CSType,omitempty" name:"CSType"`
+
+	// 云存回看时长
+	CSShiftDuration *uint64 `json:"CSShiftDuration,omitempty" name:"CSShiftDuration"`
+
+	// 云存套餐过期时间
+	CSExpiredTime *int64 `json:"CSExpiredTime,omitempty" name:"CSExpiredTime"`
 }
 
 type ProductModelDefinition struct {

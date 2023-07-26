@@ -1359,6 +1359,7 @@ type CreateLivePullStreamTaskRequestParams struct {
 	// 4. 视频编码格式仅支持: H264, H265。
 	// 5. 音频编码格式仅支持: AAC。
 	// 6. 点播源请使用小文件，尽量时长保持在1小时内，较大文件打开和续播耗时较久，耗时超过15秒会有无法正常转推风险。
+	// 7. 避免使用低频存储的文件，该类文件因低频存储，拉取时容易出现慢速，影响拉转推质量。
 	SourceUrls []*string `json:"SourceUrls,omitempty" name:"SourceUrls"`
 
 	// 推流域名。
@@ -1498,6 +1499,7 @@ type CreateLivePullStreamTaskRequest struct {
 	// 4. 视频编码格式仅支持: H264, H265。
 	// 5. 音频编码格式仅支持: AAC。
 	// 6. 点播源请使用小文件，尽量时长保持在1小时内，较大文件打开和续播耗时较久，耗时超过15秒会有无法正常转推风险。
+	// 7. 避免使用低频存储的文件，该类文件因低频存储，拉取时容易出现慢速，影响拉转推质量。
 	SourceUrls []*string `json:"SourceUrls,omitempty" name:"SourceUrls"`
 
 	// 推流域名。

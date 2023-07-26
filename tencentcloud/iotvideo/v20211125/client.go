@@ -971,6 +971,58 @@ func (c *Client) CreateTaskFileUrlWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewDeleteCloudStorageEventRequest() (request *DeleteCloudStorageEventRequest) {
+    request = &DeleteCloudStorageEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DeleteCloudStorageEvent")
+    
+    
+    return
+}
+
+func NewDeleteCloudStorageEventResponse() (response *DeleteCloudStorageEventResponse) {
+    response = &DeleteCloudStorageEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCloudStorageEvent
+// 删除云存事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCloudStorageEvent(request *DeleteCloudStorageEventRequest) (response *DeleteCloudStorageEventResponse, err error) {
+    return c.DeleteCloudStorageEventWithContext(context.Background(), request)
+}
+
+// DeleteCloudStorageEvent
+// 删除云存事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCloudStorageEventWithContext(ctx context.Context, request *DeleteCloudStorageEventRequest) (response *DeleteCloudStorageEventResponse, err error) {
+    if request == nil {
+        request = NewDeleteCloudStorageEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCloudStorageEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCloudStorageEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteDeviceRequest() (request *DeleteDeviceRequest) {
     request = &DeleteDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2641,6 +2693,58 @@ func (c *Client) DescribeDeviceEventHistoryWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeDeviceEventHistoryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDevicePackagesRequest() (request *DescribeDevicePackagesRequest) {
+    request = &DescribeDevicePackagesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeDevicePackages")
+    
+    
+    return
+}
+
+func NewDescribeDevicePackagesResponse() (response *DescribeDevicePackagesResponse) {
+    response = &DescribeDevicePackagesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDevicePackages
+// 根据设备信息拉取有效套餐列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDevicePackages(request *DescribeDevicePackagesRequest) (response *DescribeDevicePackagesResponse, err error) {
+    return c.DescribeDevicePackagesWithContext(context.Background(), request)
+}
+
+// DescribeDevicePackages
+// 根据设备信息拉取有效套餐列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDevicePackagesWithContext(ctx context.Context, request *DescribeDevicePackagesRequest) (response *DescribeDevicePackagesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDevicePackagesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDevicePackages require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDevicePackagesResponse()
     err = c.Send(request, response)
     return
 }

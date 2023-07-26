@@ -2874,9 +2874,9 @@ type Component struct {
 	// CreateFlowByTemplates发起合同时优先以ComponentId（不为空）填充；否则以ComponentName填充
 	// 
 	// 注：
-	// 当GenerateMode=3时，通过"^"来决定是否使用关键字整词匹配能力。
+	// 当GenerateMode=KEYWORD时，通过"^"来决定是否使用关键字整词匹配能力。
 	// 例：
-	// 当GenerateMode=3时，如果传入关键字"^甲方签署^"，则会在PDF文件中有且仅有"甲方签署"关键字的地方进行对应操作。
+	// 当GenerateMode=KEYWORD时，如果传入关键字"^甲方签署^"，则会在PDF文件中有且仅有"甲方签署"关键字的地方进行对应操作。
 	// 如传入的关键字为"甲方签署"，则PDF文件中每个出现关键字的位置都会执行相应操作。
 	// 
 	// 创建控件时，此值为空
@@ -4453,10 +4453,10 @@ type FlowApproverInfo struct {
 	// Deprecated: CallbackUrl is deprecated.
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 使用PDF文件直接发起合同时，签署人指定的签署控件
+	// 使用PDF文件直接发起合同时，签署人指定的签署控件；<br/>使用模板发起合同时，指定本企业印章签署控件的印章ID: <br/>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。
 	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
 
-	// 	签署方控件类型为 SIGN_SIGNATURE时，可以指定签署方签名方式
+	// 签署方控件类型为 SIGN_SIGNATURE时，可以指定签署方签名方式
 	// 	HANDWRITE – 手写签名
 	// 	OCR_ESIGN -- AI智能识别手写签名
 	// 	ESIGN -- 个人印章类型

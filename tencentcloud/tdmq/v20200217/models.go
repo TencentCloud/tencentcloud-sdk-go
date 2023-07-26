@@ -8666,6 +8666,10 @@ type RabbitMQClusterInfo struct {
 	// VPC及网络信息
 	Vpcs []*VpcEndpointInfo `json:"Vpcs,omitempty" name:"Vpcs"`
 
+	// 可用区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneIds []*int64 `json:"ZoneIds,omitempty" name:"ZoneIds"`
+
 	// 虚拟主机数量
 	VirtualHostNumber *int64 `json:"VirtualHostNumber,omitempty" name:"VirtualHostNumber"`
 
@@ -8698,7 +8702,6 @@ type RabbitMQClusterInfo struct {
 	ExceptionInformation *string `json:"ExceptionInformation,omitempty" name:"ExceptionInformation"`
 
 	// 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterStatus *int64 `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
 }
 

@@ -189,7 +189,7 @@ type AuthorizationInfo struct {
 	Authorizee *Entity `json:"Authorizee,omitempty" name:"Authorizee"`
 
 	// 详细授权值。 取值有：
-	// <li>R：可读，可以浏览素材，但不能使用该素材（将其添加到 Project），或复制到自己的媒资库中</li>
+	// <li>R：可读，可以浏览素材，但不能使用该素材（将其添加到 Project），或复制到自己的媒资库中。</li>
 	// <li>X：可用，可以使用该素材（将其添加到 Project），但不能将其复制到自己的媒资库中，意味着被授权者无法将该资源进一步扩散给其他个人或团队。</li>
 	// <li>C：可复制，既可以使用该素材（将其添加到 Project），也可以将其复制到自己的媒资库中。</li>
 	// <li>W：可修改、删除媒资。</li>

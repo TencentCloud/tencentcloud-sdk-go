@@ -5233,6 +5233,9 @@ type OtherInvoice struct {
 
 	// 表格
 	OtherInvoiceTableItems []*OtherInvoiceList `json:"OtherInvoiceTableItems,omitempty" name:"OtherInvoiceTableItems"`
+
+	// 发票日期
+	Date *string `json:"Date,omitempty" name:"Date"`
 }
 
 type OtherInvoiceItem struct {
@@ -8333,6 +8336,10 @@ type SingleInvoiceItem struct {
 	// 医疗住院收费票据（电子）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MedicalHospitalizedInvoice *MedicalInvoice `json:"MedicalHospitalizedInvoice,omitempty" name:"MedicalHospitalizedInvoice"`
+
+	// 增值税销货清单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VatSalesList *VatInvoiceInfo `json:"VatSalesList,omitempty" name:"VatSalesList"`
 }
 
 type SmartFormFileUrl struct {
@@ -10243,6 +10250,18 @@ type VatInvoiceInfo struct {
 
 	// 发票联名
 	FormName *string `json:"FormName,omitempty" name:"FormName"`
+
+	// 是否有区块链标记（0：没有，1：有）	
+	BlockChainMark *int64 `json:"BlockChainMark,omitempty" name:"BlockChainMark"`
+
+	// 是否有收购标记（0：没有，1：有）	
+	AcquisitionMark *int64 `json:"AcquisitionMark,omitempty" name:"AcquisitionMark"`
+
+	// 小计金额
+	SubTotal *string `json:"SubTotal,omitempty" name:"SubTotal"`
+
+	// 小计税额
+	SubTax *string `json:"SubTax,omitempty" name:"SubTax"`
 }
 
 type VatInvoiceItem struct {
@@ -10334,6 +10353,9 @@ type VatInvoiceItemInfo struct {
 
 	// 车辆类型
 	VehicleType *string `json:"VehicleType,omitempty" name:"VehicleType"`
+
+	// 序号
+	SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
 }
 
 // Predefined struct for user

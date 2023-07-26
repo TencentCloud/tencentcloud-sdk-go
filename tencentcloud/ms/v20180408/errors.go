@@ -23,6 +23,9 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 
+	// 操作失败。
+	FAILEDOPERATION = "FailedOperation"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -46,6 +49,45 @@ const (
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
+	// 安卓在线加固任务,入参字段AppMd5必输。
+	INVALIDPARAMETERVALUE_ANDROIDAPPMD5ERROR = "InvalidParameterValue.AndroidAppMd5Error"
+
+	// 安卓应用包名必输,请求参数中的AppPkgName值要相等。
+	INVALIDPARAMETERVALUE_ANDROIDAPPPKGNAMEERROR = "InvalidParameterValue.AndroidAppPkgNameError"
+
+	// AppPkgNameList字段检查不通过，必输字段，值可为单个包年或多个包名时。值为多个包名时，包名需用逗号隔开，其数量不能超过10个。
+	INVALIDPARAMETERVALUE_ANDROIDAPPPKGNAMELISTERROR = "InvalidParameterValue.AndroidAppPkgNameListError"
+
+	// 安卓应用类型必输,请求参数中的AppType值要相等，其值需等于“apk”或“aab”。
+	INVALIDPARAMETERVALUE_ANDROIDAPPTYPEERROR = "InvalidParameterValue.AndroidAppTypeError"
+
+	// 安卓在线加固任务,入参字段AppUrl必输。
+	INVALIDPARAMETERVALUE_ANDROIDAPPURLERROR = "InvalidParameterValue.AndroidAppUrlError"
+
+	// 安卓加固配置错误,assets资源文件路径格式错误。
+	INVALIDPARAMETERVALUE_ANDROIDASSETSERROR = "InvalidParameterValue.AndroidAssetsError"
+
+	// 安卓加固配置参数不正确
+	INVALIDPARAMETERVALUE_ANDROIDENCRYPTPARAMERROR = "InvalidParameterValue.AndroidEncryptParamError"
+
+	// 安卓加固配置错误,res资源文件路径格式错误。
+	INVALIDPARAMETERVALUE_ANDROIDRESERROR = "InvalidParameterValue.AndroidResError"
+
+	// 安卓加固配置错误,so库文件路径格式错误。
+	INVALIDPARAMETERVALUE_ANDROIDSOERROR = "InvalidParameterValue.AndroidSoError"
+
+	// 安卓加固配置错误,vmp加固profile文件必输
+	INVALIDPARAMETERVALUE_ANDROIDVMPERROR = "InvalidParameterValue.AndroidVMPError"
+
+	// 小程序加固配置错误,请检查相关配置。
+	INVALIDPARAMETERVALUE_APPLETENCRYPTPARAMERROR = "InvalidParameterValue.AppletEncryptParamError"
+
+	// 请求参数中值为Url下载链接的相关字段检查不通过。
+	INVALIDPARAMETERVALUE_CHECKURLERROR = "InvalidParameterValue.CheckUrlError"
+
+	// 安卓加固配置错误,入参字段AppType必输。
+	INVALIDPARAMETERVALUE_ENCRYPTPARAMAPPTYPEERROR = "InvalidParameterValue.EncryptParamAppTypeError"
 
 	// 不能同时指定ItemIds和Filters。
 	INVALIDPARAMETERVALUE_INVALIDCOEXISTITEMIDSFILTERS = "InvalidParameterValue.InvalidCoexistItemIdsFilters"
@@ -71,6 +113,12 @@ const (
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
+	// 加固任务超过配额限制。
+	LIMITEXCEEDED_ENCRYPTTASKLIMITEXCEEDED = "LimitExceeded.EncryptTaskLimitExceeded"
+
+	// 缺少参数错误。
+	MISSINGPARAMETER = "MissingParameter"
+
 	// AppInfo结构体参数缺失。
 	MISSINGPARAMETER_MISSINGAPPINFO = "MissingParameter.MissingAppInfo"
 
@@ -88,6 +136,9 @@ const (
 
 	// 无法找到指定的加固策略。
 	RESOURCENOTFOUND_PLANIDNOTFOUND = "ResourceNotFound.PlanIdNotFound"
+
+	// 加固任务id不存在。
+	RESOURCENOTFOUND_RESULTIDNOTFOUND = "ResourceNotFound.ResultIdNotFound"
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"

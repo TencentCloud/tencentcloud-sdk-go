@@ -97,7 +97,7 @@ type ApproverInfo struct {
 	// 签署人用户来源，企微侧用户请传入：WEWORKAPP
 	ApproverSource *string `json:"ApproverSource,omitempty" name:"ApproverSource"`
 
-	// 客户自定义签署人标识，64位长度，保证唯一，非企微场景不使用此字段
+	// 企业签署方或签标识，客户自定义，64位长度。用于发起含有或签签署人的合同。或签参与人必须有此字段。合同内不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
 	CustomApproverTag *string `json:"CustomApproverTag,omitempty" name:"CustomApproverTag"`
 
 	// 签署人个性化能力值
@@ -3136,7 +3136,10 @@ type CreateSealRequestParams struct {
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 电子印章类型，PERSONAL-个人私章,OFFICIAL-公章,SPECIAL_FINANCIAL-财务专用章,CONTRACT-合同专用章,LEGAL_REPRESENTATIVE-法定代表人章,SPECIAL_NATIONWIDE_INVOICE-发票专用章
+	// 本接口支持上传图片印章及系统直接生成印章；如果要使用系统生成印章，此值传：SealGenerateSourceSystem；如果要使用图片上传请传字段 Image
+	GenerateSource *string `json:"GenerateSource,omitempty" name:"GenerateSource"`
+
+	// 电子印章类型，OFFICIAL-公章,CONTRACT-合同专用章
 	SealType *string `json:"SealType,omitempty" name:"SealType"`
 
 	// 电子印章图片文件名称
@@ -3159,23 +3162,17 @@ type CreateSealRequestParams struct {
 	// 系统目前只支持红色印章创建。
 	Color *string `json:"Color,omitempty" name:"Color"`
 
-	// 电子印章生成时的横向文字。
+	// 暂时不支持横向文字设置
 	SealHorizontalText *string `json:"SealHorizontalText,omitempty" name:"SealHorizontalText"`
 
-	// 电子印章下弦文字
+	// 暂时不支持下弦文字设置
 	SealChordText *string `json:"SealChordText,omitempty" name:"SealChordText"`
 
-	// 电子印章中心图案类型,STAR-圆形有五角星,NONE-圆形无五角星
 	// 系统生成的印章只支持STAR
 	SealCentralType *string `json:"SealCentralType,omitempty" name:"SealCentralType"`
 
 	// 通过文件上传时，服务端生成的电子印章上传图片的token
 	FileToken *string `json:"FileToken,omitempty" name:"FileToken"`
-
-	// 印章生成来源方式
-	// 取值：
-	// SealGenerateSourceSystem 表示系统生成企业印章
-	GenerateSource *string `json:"GenerateSource,omitempty" name:"GenerateSource"`
 }
 
 type CreateSealRequest struct {
@@ -3190,7 +3187,10 @@ type CreateSealRequest struct {
 	// 应用相关信息
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 电子印章类型，PERSONAL-个人私章,OFFICIAL-公章,SPECIAL_FINANCIAL-财务专用章,CONTRACT-合同专用章,LEGAL_REPRESENTATIVE-法定代表人章,SPECIAL_NATIONWIDE_INVOICE-发票专用章
+	// 本接口支持上传图片印章及系统直接生成印章；如果要使用系统生成印章，此值传：SealGenerateSourceSystem；如果要使用图片上传请传字段 Image
+	GenerateSource *string `json:"GenerateSource,omitempty" name:"GenerateSource"`
+
+	// 电子印章类型，OFFICIAL-公章,CONTRACT-合同专用章
 	SealType *string `json:"SealType,omitempty" name:"SealType"`
 
 	// 电子印章图片文件名称
@@ -3213,23 +3213,17 @@ type CreateSealRequest struct {
 	// 系统目前只支持红色印章创建。
 	Color *string `json:"Color,omitempty" name:"Color"`
 
-	// 电子印章生成时的横向文字。
+	// 暂时不支持横向文字设置
 	SealHorizontalText *string `json:"SealHorizontalText,omitempty" name:"SealHorizontalText"`
 
-	// 电子印章下弦文字
+	// 暂时不支持下弦文字设置
 	SealChordText *string `json:"SealChordText,omitempty" name:"SealChordText"`
 
-	// 电子印章中心图案类型,STAR-圆形有五角星,NONE-圆形无五角星
 	// 系统生成的印章只支持STAR
 	SealCentralType *string `json:"SealCentralType,omitempty" name:"SealCentralType"`
 
 	// 通过文件上传时，服务端生成的电子印章上传图片的token
 	FileToken *string `json:"FileToken,omitempty" name:"FileToken"`
-
-	// 印章生成来源方式
-	// 取值：
-	// SealGenerateSourceSystem 表示系统生成企业印章
-	GenerateSource *string `json:"GenerateSource,omitempty" name:"GenerateSource"`
 }
 
 func (r *CreateSealRequest) ToJsonString() string {
@@ -3247,6 +3241,7 @@ func (r *CreateSealRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "SealName")
 	delete(f, "Agent")
+	delete(f, "GenerateSource")
 	delete(f, "SealType")
 	delete(f, "FileName")
 	delete(f, "Image")
@@ -3257,7 +3252,6 @@ func (r *CreateSealRequest) FromJsonString(s string) error {
 	delete(f, "SealChordText")
 	delete(f, "SealCentralType")
 	delete(f, "FileToken")
-	delete(f, "GenerateSource")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSealRequest has unknown keys!", "")
 	}
@@ -5540,7 +5534,7 @@ type FlowCreateApprover struct {
 	// 签署人用户来源,企微侧用户请传入：WEWORKAPP
 	ApproverSource *string `json:"ApproverSource,omitempty" name:"ApproverSource"`
 
-	// 客户自定义签署人标识，64位长度，保证唯一。用于发起含有或签签署人的合同。或签参与人必须有此字段。不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
+	// 企业签署方或签标识，客户自定义，64位长度。用于发起含有或签签署人的合同。或签参与人必须有此字段。合同内不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
 	CustomApproverTag *string `json:"CustomApproverTag,omitempty" name:"CustomApproverTag"`
 
 	// 快速注册相关信息，目前暂未开放！

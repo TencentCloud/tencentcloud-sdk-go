@@ -1088,6 +1088,9 @@ type CreateRoomRequestParams struct {
 
 	// 开启课后评分。 0：不开启(默认)  1：开启
 	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+
+	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
+	RoomType *int64 `json:"RoomType,omitempty" name:"RoomType"`
 }
 
 type CreateRoomRequest struct {
@@ -1173,6 +1176,9 @@ type CreateRoomRequest struct {
 
 	// 开启课后评分。 0：不开启(默认)  1：开启
 	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+
+	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
+	RoomType *int64 `json:"RoomType,omitempty" name:"RoomType"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -1208,6 +1214,7 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "InteractionMode")
 	delete(f, "VideoOrientation")
 	delete(f, "IsGradingRequiredPostClass")
+	delete(f, "RoomType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoomRequest has unknown keys!", "")
 	}
@@ -2739,6 +2746,9 @@ type DescribeRoomResponseParams struct {
 	// 开启课后评分。 0：不开启(默认)  1：开启
 	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
 
+	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
+	RoomType *int64 `json:"RoomType,omitempty" name:"RoomType"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -4137,6 +4147,9 @@ type ModifyRoomRequestParams struct {
 
 	// 开启课后评分。 0：不开启(默认)  1：开启
 	IsGradingRequiredPostClass *uint64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+
+	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
+	RoomType *uint64 `json:"RoomType,omitempty" name:"RoomType"`
 }
 
 type ModifyRoomRequest struct {
@@ -4214,6 +4227,9 @@ type ModifyRoomRequest struct {
 
 	// 开启课后评分。 0：不开启(默认)  1：开启
 	IsGradingRequiredPostClass *uint64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+
+	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
+	RoomType *uint64 `json:"RoomType,omitempty" name:"RoomType"`
 }
 
 func (r *ModifyRoomRequest) ToJsonString() string {
@@ -4246,6 +4262,7 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	delete(f, "InteractionMode")
 	delete(f, "VideoOrientation")
 	delete(f, "IsGradingRequiredPostClass")
+	delete(f, "RoomType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
 	}
@@ -4498,6 +4515,12 @@ type RoomInfo struct {
 
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
 	VideoOrientation *int64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+
+	// 开启课后评分。 0：不开启(默认)  1：开启
+	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+
+	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
+	RoomType *int64 `json:"RoomType,omitempty" name:"RoomType"`
 }
 
 type RoomItem struct {
