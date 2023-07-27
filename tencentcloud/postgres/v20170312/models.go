@@ -1395,129 +1395,159 @@ func (r *CreateParameterTemplateResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateReadOnlyDBInstanceRequestParams struct {
-	// 售卖规格ID。该参数可以通过调用DescribeClasses的返回值中的SpecCode字段来获取。
+	// 实例所属主可用区， 如：ap-guangzhou-3；
+	// 可用区信息可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/409/16769) 接口的返回值中的Zone字段来获取。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 只读实例的主实例ID。
+	MasterDBInstanceId *string `json:"MasterDBInstanceId,omitempty" name:"MasterDBInstanceId"`
+
+	// 售卖规格码。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
 	// 实例容量大小，单位：GB。
 	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
 
-	// 一次性购买的实例数量。取值1-100
+	// 购买实例数量，取值范围：[1-10]。一次性购买支持最大数量10个，若超过该数量，可进行多次调用进行购买。
 	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 
-	// 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。
+	// 购买时长，单位：月。
+	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
+	// <li>后付费：只支持1
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
-	// 只读实例的主实例ID
-	MasterDBInstanceId *string `json:"MasterDBInstanceId,omitempty" name:"MasterDBInstanceId"`
+	// 私有网络ID，形如vpc-xxxxxxxx。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	// 私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 项目ID。
-	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
-
-	// 【废弃】不再需要指定，内核版本号与主实例保持一致
-	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
-
-	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。默认值：PREPAID。如果主实例为后付费，只读实例必须也为后付费。
+	// 实例计费类型，目前支持：
+	// <li>PREPAID：预付费，即包年包月。
+	// <li>POSTPAID_BY_HOUR：后付费，即按量计费。
+	// 默认值：PREPAID。如果主实例为后付费，只读实例必须也为后付费。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
-	// 是否自动使用代金券。1（是），0（否），默认不使用。
+	// 是否自动使用代金券：
+	// <li>0：否
+	// <li>1：是
+	// 默认值：0
 	AutoVoucher *uint64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表，目前仅支持指定一张代金券。
 	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
 
-	// 续费标记：0-正常续费（默认）；1-自动续费；
+	// 续费标记：
+	// <li>0：手动续费
+	// <li>1：自动续费
+	// 默认值：0
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 私有网络ID。
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
-
-	// 私有网络子网ID。
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	// 项目ID。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 优惠活动ID
 	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
 
-	// 实例名(后续支持)
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 是否需要支持Ipv6，1：是，0：否
-	NeedSupportIpv6 *uint64 `json:"NeedSupportIpv6,omitempty" name:"NeedSupportIpv6"`
-
 	// 只读组ID。
 	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
 
-	// 实例需要绑定的Tag信息，默认为空（该类型为Tag数组类型）
+	// 实例需要绑定的Tag信息，默认为空；可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
 	TagList *Tag `json:"TagList,omitempty" name:"TagList"`
 
-	// 安全组id
+	// 实例所属安全组，该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// 是否需要支持Ipv6：
+	// <li>0：否
+	// <li>1：是
+	// 默认值：0
+	NeedSupportIpv6 *uint64 `json:"NeedSupportIpv6,omitempty" name:"NeedSupportIpv6"`
+
+	// 实例名(后续支持)
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 【废弃】不再需要指定，内核版本号与主实例保持一致
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 }
 
 type CreateReadOnlyDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 售卖规格ID。该参数可以通过调用DescribeClasses的返回值中的SpecCode字段来获取。
+	// 实例所属主可用区， 如：ap-guangzhou-3；
+	// 可用区信息可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/409/16769) 接口的返回值中的Zone字段来获取。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 只读实例的主实例ID。
+	MasterDBInstanceId *string `json:"MasterDBInstanceId,omitempty" name:"MasterDBInstanceId"`
+
+	// 售卖规格码。该参数可以通过调用[DescribeClasses](https://cloud.tencent.com/document/api/409/89019)的返回值中的SpecCode字段来获取。
 	SpecCode *string `json:"SpecCode,omitempty" name:"SpecCode"`
 
 	// 实例容量大小，单位：GB。
 	Storage *uint64 `json:"Storage,omitempty" name:"Storage"`
 
-	// 一次性购买的实例数量。取值1-100
+	// 购买实例数量，取值范围：[1-10]。一次性购买支持最大数量10个，若超过该数量，可进行多次调用进行购买。
 	InstanceCount *uint64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
 
-	// 购买时长，单位：月。目前只支持1,2,3,4,5,6,7,8,9,10,11,12,24,36这些值，按量计费模式下该参数传1。
+	// 购买时长，单位：月。
+	// <li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36
+	// <li>后付费：只支持1
 	Period *uint64 `json:"Period,omitempty" name:"Period"`
 
-	// 只读实例的主实例ID
-	MasterDBInstanceId *string `json:"MasterDBInstanceId,omitempty" name:"MasterDBInstanceId"`
+	// 私有网络ID，形如vpc-xxxxxxxx。有效的VpcId可通过登录控制台查询；也可以调用接口 [DescribeVpcEx](https://cloud.tencent.com/document/api/215/1372) ，从接口返回中的unVpcId字段获取。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
 
-	// 可用区ID。该参数可以通过调用 DescribeZones 接口的返回值中的Zone字段来获取。
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	// 私有网络子网ID，形如subnet-xxxxxxxx。有效的私有网络子网ID可通过登录控制台查询；也可以调用接口 [DescribeSubnets ](https://cloud.tencent.com/document/api/215/15784)，从接口返回中的unSubnetId字段获取。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
-	// 项目ID。
-	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
-
-	// 【废弃】不再需要指定，内核版本号与主实例保持一致
-	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
-
-	// 实例计费类型。目前支持：PREPAID（预付费，即包年包月），POSTPAID_BY_HOUR（后付费，即按量计费）。默认值：PREPAID。如果主实例为后付费，只读实例必须也为后付费。
+	// 实例计费类型，目前支持：
+	// <li>PREPAID：预付费，即包年包月。
+	// <li>POSTPAID_BY_HOUR：后付费，即按量计费。
+	// 默认值：PREPAID。如果主实例为后付费，只读实例必须也为后付费。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
-	// 是否自动使用代金券。1（是），0（否），默认不使用。
+	// 是否自动使用代金券：
+	// <li>0：否
+	// <li>1：是
+	// 默认值：0
 	AutoVoucher *uint64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 
 	// 代金券ID列表，目前仅支持指定一张代金券。
 	VoucherIds []*string `json:"VoucherIds,omitempty" name:"VoucherIds"`
 
-	// 续费标记：0-正常续费（默认）；1-自动续费；
+	// 续费标记：
+	// <li>0：手动续费
+	// <li>1：自动续费
+	// 默认值：0
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
 
-	// 私有网络ID。
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
-
-	// 私有网络子网ID。
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	// 项目ID。
+	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 优惠活动ID
 	ActivityId *int64 `json:"ActivityId,omitempty" name:"ActivityId"`
 
-	// 实例名(后续支持)
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 是否需要支持Ipv6，1：是，0：否
-	NeedSupportIpv6 *uint64 `json:"NeedSupportIpv6,omitempty" name:"NeedSupportIpv6"`
-
 	// 只读组ID。
 	ReadOnlyGroupId *string `json:"ReadOnlyGroupId,omitempty" name:"ReadOnlyGroupId"`
 
-	// 实例需要绑定的Tag信息，默认为空（该类型为Tag数组类型）
+	// 实例需要绑定的Tag信息，默认为空；可以通过调用 [DescribeTags](https://cloud.tencent.com/document/api/651/35316) 返回值中的 Tags 字段来获取。
 	TagList *Tag `json:"TagList,omitempty" name:"TagList"`
 
-	// 安全组id
+	// 实例所属安全组，该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// 是否需要支持Ipv6：
+	// <li>0：否
+	// <li>1：是
+	// 默认值：0
+	NeedSupportIpv6 *uint64 `json:"NeedSupportIpv6,omitempty" name:"NeedSupportIpv6"`
+
+	// 实例名(后续支持)
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 【废弃】不再需要指定，内核版本号与主实例保持一致
+	DBVersion *string `json:"DBVersion,omitempty" name:"DBVersion"`
 }
 
 func (r *CreateReadOnlyDBInstanceRequest) ToJsonString() string {
@@ -1532,26 +1562,26 @@ func (r *CreateReadOnlyDBInstanceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "Zone")
+	delete(f, "MasterDBInstanceId")
 	delete(f, "SpecCode")
 	delete(f, "Storage")
 	delete(f, "InstanceCount")
 	delete(f, "Period")
-	delete(f, "MasterDBInstanceId")
-	delete(f, "Zone")
-	delete(f, "ProjectId")
-	delete(f, "DBVersion")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
 	delete(f, "InstanceChargeType")
 	delete(f, "AutoVoucher")
 	delete(f, "VoucherIds")
 	delete(f, "AutoRenewFlag")
-	delete(f, "VpcId")
-	delete(f, "SubnetId")
+	delete(f, "ProjectId")
 	delete(f, "ActivityId")
-	delete(f, "Name")
-	delete(f, "NeedSupportIpv6")
 	delete(f, "ReadOnlyGroupId")
 	delete(f, "TagList")
 	delete(f, "SecurityGroupIds")
+	delete(f, "NeedSupportIpv6")
+	delete(f, "Name")
+	delete(f, "DBVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReadOnlyDBInstanceRequest has unknown keys!", "")
 	}

@@ -220,6 +220,9 @@ type FaceFusionRequestParams struct {
 
 	// 图片Url地址
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 融合参数
+	FuseParam *FuseParam `json:"FuseParam,omitempty" name:"FuseParam"`
 }
 
 type FaceFusionRequest struct {
@@ -246,6 +249,9 @@ type FaceFusionRequest struct {
 
 	// 图片Url地址
 	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 融合参数
+	FuseParam *FuseParam `json:"FuseParam,omitempty" name:"FuseParam"`
 }
 
 func (r *FaceFusionRequest) ToJsonString() string {
@@ -267,6 +273,7 @@ func (r *FaceFusionRequest) FromJsonString(s string) error {
 	delete(f, "PornDetect")
 	delete(f, "CelebrityIdentify")
 	delete(f, "Url")
+	delete(f, "FuseParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FaceFusionRequest has unknown keys!", "")
 	}
@@ -354,6 +361,9 @@ type FuseFaceRequestParams struct {
 	// 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
 	// 请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
 	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
+
+	// 融合参数
+	FuseParam *FuseParam `json:"FuseParam,omitempty" name:"FuseParam"`
 }
 
 type FuseFaceRequest struct {
@@ -382,6 +392,9 @@ type FuseFaceRequest struct {
 	// 0表示不需要不适宜内容识别，1表示需要不适宜内容识别。默认值为0。
 	// 请注意，不适宜内容识别服务开启后，您需要根据返回结果自行判断是否调整您的业务逻辑。例如提示您的用户图片非法，请更换图片。
 	CelebrityIdentify *int64 `json:"CelebrityIdentify,omitempty" name:"CelebrityIdentify"`
+
+	// 融合参数
+	FuseParam *FuseParam `json:"FuseParam,omitempty" name:"FuseParam"`
 }
 
 func (r *FuseFaceRequest) ToJsonString() string {
@@ -403,6 +416,7 @@ func (r *FuseFaceRequest) FromJsonString(s string) error {
 	delete(f, "FuseProfileDegree")
 	delete(f, "FuseFaceDegree")
 	delete(f, "CelebrityIdentify")
+	delete(f, "FuseParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FuseFaceRequest has unknown keys!", "")
 	}
@@ -478,6 +492,16 @@ type FuseFaceReviewResult struct {
 	DetailSet []*FuseFaceReviewDetail `json:"DetailSet,omitempty" name:"DetailSet"`
 }
 
+type FuseParam struct {
+	// 图片编码参数
+	ImageCodecParam *ImageCodecParam `json:"ImageCodecParam,omitempty" name:"ImageCodecParam"`
+}
+
+type ImageCodecParam struct {
+	// 元数据
+	MetaData []*MetaData `json:"MetaData,omitempty" name:"MetaData"`
+}
+
 type MaterialFaceList struct {
 	// 人脸序号
 	FaceId *string `json:"FaceId,omitempty" name:"FaceId"`
@@ -498,6 +522,14 @@ type MergeInfo struct {
 
 	// 控制台上传的素材人脸ID，不填默认取最大人脸
 	TemplateFaceID *string `json:"TemplateFaceID,omitempty" name:"TemplateFaceID"`
+}
+
+type MetaData struct {
+	// MetaData的Key
+	MetaKey *string `json:"MetaKey,omitempty" name:"MetaKey"`
+
+	// MetaData的Value
+	MetaValue *string `json:"MetaValue,omitempty" name:"MetaValue"`
 }
 
 type PublicMaterialInfos struct {

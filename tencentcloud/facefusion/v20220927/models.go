@@ -161,6 +161,9 @@ type FuseFaceRequestParams struct {
 	// 标识内容设置。
 	// 默认在融合结果图右下角添加“本图片为AI合成图片”字样，您可根据自身需要替换为其他的Logo图片。
 	LogoParam *LogoParam `json:"LogoParam,omitempty" name:"LogoParam"`
+
+	// 融合参数。
+	FuseParam *FuseParam `json:"FuseParam,omitempty" name:"FuseParam"`
 }
 
 type FuseFaceRequest struct {
@@ -196,6 +199,9 @@ type FuseFaceRequest struct {
 	// 标识内容设置。
 	// 默认在融合结果图右下角添加“本图片为AI合成图片”字样，您可根据自身需要替换为其他的Logo图片。
 	LogoParam *LogoParam `json:"LogoParam,omitempty" name:"LogoParam"`
+
+	// 融合参数。
+	FuseParam *FuseParam `json:"FuseParam,omitempty" name:"FuseParam"`
 }
 
 func (r *FuseFaceRequest) ToJsonString() string {
@@ -218,6 +224,7 @@ func (r *FuseFaceRequest) FromJsonString(s string) error {
 	delete(f, "FuseFaceDegree")
 	delete(f, "LogoAdd")
 	delete(f, "LogoParam")
+	delete(f, "FuseParam")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FuseFaceRequest has unknown keys!", "")
 	}
@@ -247,6 +254,16 @@ func (r *FuseFaceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *FuseFaceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type FuseParam struct {
+	// 图片编码参数
+	ImageCodecParam *ImageCodecParam `json:"ImageCodecParam,omitempty" name:"ImageCodecParam"`
+}
+
+type ImageCodecParam struct {
+	// 元数据
+	MetaData []*MetaData `json:"MetaData,omitempty" name:"MetaData"`
 }
 
 type LogoParam struct {
@@ -280,6 +297,14 @@ type MergeInfo struct {
 
 	// 控制台上传的素材人脸ID，不填默认取最大人脸
 	TemplateFaceID *string `json:"TemplateFaceID,omitempty" name:"TemplateFaceID"`
+}
+
+type MetaData struct {
+	// MetaData的Key
+	MetaKey *string `json:"MetaKey,omitempty" name:"MetaKey"`
+
+	// MetaData的Value
+	MetaValue *string `json:"MetaValue,omitempty" name:"MetaValue"`
 }
 
 type PublicMaterialInfos struct {

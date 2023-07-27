@@ -661,6 +661,68 @@ func (c *Client) CreateDocumentWithContext(ctx context.Context, request *CreateD
     return
 }
 
+func NewCreateEmbedWebUrlRequest() (request *CreateEmbedWebUrlRequest) {
+    request = &CreateEmbedWebUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateEmbedWebUrl")
+    
+    
+    return
+}
+
+func NewCreateEmbedWebUrlResponse() (response *CreateEmbedWebUrlResponse) {
+    response = &CreateEmbedWebUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateEmbedWebUrl
+// 本接口（CreateEmbedWebUrl）用于创建嵌入web的链接 本接口支持创建：创建印章，创建模板，修改模板，预览模板，预览合同流程的web链接 进入web连接后与当前控制台操作保持一致
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+func (c *Client) CreateEmbedWebUrl(request *CreateEmbedWebUrlRequest) (response *CreateEmbedWebUrlResponse, err error) {
+    return c.CreateEmbedWebUrlWithContext(context.Background(), request)
+}
+
+// CreateEmbedWebUrl
+// 本接口（CreateEmbedWebUrl）用于创建嵌入web的链接 本接口支持创建：创建印章，创建模板，修改模板，预览模板，预览合同流程的web链接 进入web连接后与当前控制台操作保持一致
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+func (c *Client) CreateEmbedWebUrlWithContext(ctx context.Context, request *CreateEmbedWebUrlRequest) (response *CreateEmbedWebUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateEmbedWebUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateEmbedWebUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateEmbedWebUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateFlowRequest() (request *CreateFlowRequest) {
     request = &CreateFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2703,6 +2765,70 @@ func (c *Client) CreateMultiFlowSignQRCodeWithContext(ctx context.Context, reque
     return
 }
 
+func NewCreateOrganizationBatchSignUrlRequest() (request *CreateOrganizationBatchSignUrlRequest) {
+    request = &CreateOrganizationBatchSignUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateOrganizationBatchSignUrl")
+    
+    
+    return
+}
+
+func NewCreateOrganizationBatchSignUrlResponse() (response *CreateOrganizationBatchSignUrlResponse) {
+    response = &CreateOrganizationBatchSignUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOrganizationBatchSignUrl
+// 通过此接口，创建企业批量签署链接，企业员工点击链接即可跳转控制台进行批量签署。
+//
+// 如果没有UserId，Name和Mobile必填，对应的员工必须在企业下已经实名，且该员工为批量签署合同中的签署方。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateOrganizationBatchSignUrl(request *CreateOrganizationBatchSignUrlRequest) (response *CreateOrganizationBatchSignUrlResponse, err error) {
+    return c.CreateOrganizationBatchSignUrlWithContext(context.Background(), request)
+}
+
+// CreateOrganizationBatchSignUrl
+// 通过此接口，创建企业批量签署链接，企业员工点击链接即可跳转控制台进行批量签署。
+//
+// 如果没有UserId，Name和Mobile必填，对应的员工必须在企业下已经实名，且该员工为批量签署合同中的签署方。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateOrganizationBatchSignUrlWithContext(ctx context.Context, request *CreateOrganizationBatchSignUrlRequest) (response *CreateOrganizationBatchSignUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateOrganizationBatchSignUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrganizationBatchSignUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOrganizationBatchSignUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrepareFlowRequest() (request *CreatePrepareFlowRequest) {
     request = &CreatePrepareFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3495,6 +3621,56 @@ func (c *Client) CreateUserAutoSignEnableUrlWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewCreateUserAutoSignEnableUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateWebThemeConfigRequest() (request *CreateWebThemeConfigRequest) {
+    request = &CreateWebThemeConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateWebThemeConfig")
+    
+    
+    return
+}
+
+func NewCreateWebThemeConfigResponse() (response *CreateWebThemeConfigResponse) {
+    response = &CreateWebThemeConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateWebThemeConfig
+// 用来创建页面主题配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateWebThemeConfig(request *CreateWebThemeConfigRequest) (response *CreateWebThemeConfigResponse, err error) {
+    return c.CreateWebThemeConfigWithContext(context.Background(), request)
+}
+
+// CreateWebThemeConfig
+// 用来创建页面主题配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateWebThemeConfigWithContext(ctx context.Context, request *CreateWebThemeConfigRequest) (response *CreateWebThemeConfigResponse, err error) {
+    if request == nil {
+        request = NewCreateWebThemeConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateWebThemeConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateWebThemeConfigResponse()
     err = c.Send(request, response)
     return
 }

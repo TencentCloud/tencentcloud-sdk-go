@@ -119,9 +119,6 @@ const (
 	// 域名格式错误。
 	FAILEDOPERATION_FORMATERROR = "FailedOperation.FormatError"
 
-	// API文档生成失败。
-	FAILEDOPERATION_GENERATEAPIDOCUMENTERROR = "FailedOperation.GenerateApiDocumentError"
-
 	// 获取角色失败，请确认完成API网关相关服务接口授权。
 	FAILEDOPERATION_GETROLEERROR = "FailedOperation.GetRoleError"
 
@@ -247,9 +244,6 @@ const (
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
-
-	// 参数GenLanguage取值错误。
-	INVALIDPARAMETERVALUE_INVALIDGENLANGUAGE = "InvalidParameterValue.InvalidGenLanguage"
 
 	// 参数后端地址取值错误。
 	INVALIDPARAMETERVALUE_INVALIDIPADDRESS = "InvalidParameterValue.InvalidIPAddress"

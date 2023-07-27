@@ -3333,6 +3333,9 @@ type IDCardOCRRequestParams struct {
 	// API 3.0 Explorer 设置方式参考：
 	// Config = {"CropIdCard":true,"CropPortrait":true}
 	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。
+	EnableRecognitionRectify *bool `json:"EnableRecognitionRectify,omitempty" name:"EnableRecognitionRectify"`
 }
 
 type IDCardOCRRequest struct {
@@ -3369,6 +3372,9 @@ type IDCardOCRRequest struct {
 	// API 3.0 Explorer 设置方式参考：
 	// Config = {"CropIdCard":true,"CropPortrait":true}
 	Config *string `json:"Config,omitempty" name:"Config"`
+
+	// 默认值为true，打开识别结果纠正开关。开关开启后，身份证号、出生日期、性别，三个字段会进行矫正补齐，统一结果输出；若关闭此开关，以上三个字段不会进行矫正补齐，保持原始识别结果输出，若原图出现篡改情况，这三个字段的识别结果可能会不统一。
+	EnableRecognitionRectify *bool `json:"EnableRecognitionRectify,omitempty" name:"EnableRecognitionRectify"`
 }
 
 func (r *IDCardOCRRequest) ToJsonString() string {
@@ -3387,6 +3393,7 @@ func (r *IDCardOCRRequest) FromJsonString(s string) error {
 	delete(f, "ImageUrl")
 	delete(f, "CardSide")
 	delete(f, "Config")
+	delete(f, "EnableRecognitionRectify")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "IDCardOCRRequest has unknown keys!", "")
 	}

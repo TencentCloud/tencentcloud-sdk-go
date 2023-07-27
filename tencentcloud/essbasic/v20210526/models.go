@@ -1983,6 +1983,76 @@ func (r *ChannelCreateUserRolesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChannelCreateWebThemeConfigRequestParams struct {
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 主题类型<br/>EMBED_WEB_THEME：嵌入式主题
+	// <br/>目前只支持EMBED_WEB_THEME，web页面嵌入的主题风格配置
+	ThemeType *string `json:"ThemeType,omitempty" name:"ThemeType"`
+
+	// 主题配置
+	WebThemeConfig *WebThemeConfig `json:"WebThemeConfig,omitempty" name:"WebThemeConfig"`
+}
+
+type ChannelCreateWebThemeConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 主题类型<br/>EMBED_WEB_THEME：嵌入式主题
+	// <br/>目前只支持EMBED_WEB_THEME，web页面嵌入的主题风格配置
+	ThemeType *string `json:"ThemeType,omitempty" name:"ThemeType"`
+
+	// 主题配置
+	WebThemeConfig *WebThemeConfig `json:"WebThemeConfig,omitempty" name:"WebThemeConfig"`
+}
+
+func (r *ChannelCreateWebThemeConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateWebThemeConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "ThemeType")
+	delete(f, "WebThemeConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateWebThemeConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateWebThemeConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateWebThemeConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateWebThemeConfigResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateWebThemeConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateWebThemeConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelDeleteRoleUsersRequestParams struct {
 	// 代理信息此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -5838,4 +5908,15 @@ type UserInfo struct {
 	//
 	// Deprecated: ProxyIp is deprecated.
 	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
+}
+
+type WebThemeConfig struct {
+	// 页面底部是否显示电子签logo
+	// <br/>true：允许在页面底部隐藏电子签logo 
+	// <br/>默认false，不允许允许在页面底部隐藏电子签logo
+	DisplaySignBrandLogo *bool `json:"DisplaySignBrandLogo,omitempty" name:"DisplaySignBrandLogo"`
+
+	// 嵌入式主题颜色
+	// <br/>支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
+	WebEmbedThemeColor *string `json:"WebEmbedThemeColor,omitempty" name:"WebEmbedThemeColor"`
 }

@@ -7428,6 +7428,12 @@ type ExportInstanceSlowQueriesRequestParams struct {
 
 	// 文件类型，可选值：csv, original
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 排序字段，可选值： QueryTime,LockTime,RowsExamined,RowsSent
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序类型，可选值：asc,desc
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 }
 
 type ExportInstanceSlowQueriesRequest struct {
@@ -7459,6 +7465,12 @@ type ExportInstanceSlowQueriesRequest struct {
 
 	// 文件类型，可选值：csv, original
 	FileType *string `json:"FileType,omitempty" name:"FileType"`
+
+	// 排序字段，可选值： QueryTime,LockTime,RowsExamined,RowsSent
+	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+
+	// 排序类型，可选值：asc,desc
+	OrderByType *string `json:"OrderByType,omitempty" name:"OrderByType"`
 }
 
 func (r *ExportInstanceSlowQueriesRequest) ToJsonString() string {
@@ -7482,6 +7494,8 @@ func (r *ExportInstanceSlowQueriesRequest) FromJsonString(s string) error {
 	delete(f, "Host")
 	delete(f, "Database")
 	delete(f, "FileType")
+	delete(f, "OrderBy")
+	delete(f, "OrderByType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExportInstanceSlowQueriesRequest has unknown keys!", "")
 	}

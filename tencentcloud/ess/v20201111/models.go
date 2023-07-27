@@ -1075,6 +1075,102 @@ func (r *CreateDocumentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateEmbedWebUrlRequestParams struct {
+	// 操作者信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// WEB嵌入资源类型。
+	// <br/>CREATE_SEAL: 创建印章
+	// <br/>PREVIEW_SEAL_LIST：预览印章列表
+	// <br/>PREVIEW_SEAL_DETAIL：预览印章详情
+	// <br/>EXTEND_SERVICE：拓展服务
+	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
+
+	// WEB嵌入的业务资源ID
+	// <br/>PREVIEW_SEAL_DETAIL，必填，取值为印章id
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 抄送方信息
+	Reviewer *ReviewerInfo `json:"Reviewer,omitempty" name:"Reviewer"`
+}
+
+type CreateEmbedWebUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作者信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// WEB嵌入资源类型。
+	// <br/>CREATE_SEAL: 创建印章
+	// <br/>PREVIEW_SEAL_LIST：预览印章列表
+	// <br/>PREVIEW_SEAL_DETAIL：预览印章详情
+	// <br/>EXTEND_SERVICE：拓展服务
+	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
+
+	// WEB嵌入的业务资源ID
+	// <br/>PREVIEW_SEAL_DETAIL，必填，取值为印章id
+	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 抄送方信息
+	Reviewer *ReviewerInfo `json:"Reviewer,omitempty" name:"Reviewer"`
+}
+
+func (r *CreateEmbedWebUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEmbedWebUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "EmbedType")
+	delete(f, "BusinessId")
+	delete(f, "Agent")
+	delete(f, "Reviewer")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmbedWebUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateEmbedWebUrlResponseParams struct {
+	// 嵌入的web链接，有效期：5分钟
+	// EmbedType=PREVIEW_CC_FLOW，该url为h5链接
+	WebUrl *string `json:"WebUrl,omitempty" name:"WebUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateEmbedWebUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateEmbedWebUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateEmbedWebUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateEmbedWebUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateFlowApproversRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -2510,6 +2606,101 @@ func (r *CreateMultiFlowSignQRCodeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateOrganizationBatchSignUrlRequestParams struct {
+	// 调用方用户信息，UserId 必填，支持填入集团子公司经办人UserId。
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 指定需要进行批量签署的流程id，数量1-100，填写后用户将通过链接对这些合同进行批量签署。
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 员工的UserId，该UserId对应的员工必须已经加入企业并实名，Name和Mobile为空时该字段不能为空。（优先使用UserId对应的员工）
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 员工姓名，该字段需要与Mobile组合使用，UserId为空时该字段不能为空。（UserId为空时，使用Name和Mbile对应的员工）
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 员工手机号码，该字段需要与Name组合使用，UserId为空时该字段不能为空。（UserId为空时，使用Name和Mbile对应的员工）
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+}
+
+type CreateOrganizationBatchSignUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 调用方用户信息，UserId 必填，支持填入集团子公司经办人UserId。
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 指定需要进行批量签署的流程id，数量1-100，填写后用户将通过链接对这些合同进行批量签署。
+	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 员工的UserId，该UserId对应的员工必须已经加入企业并实名，Name和Mobile为空时该字段不能为空。（优先使用UserId对应的员工）
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 员工姓名，该字段需要与Mobile组合使用，UserId为空时该字段不能为空。（UserId为空时，使用Name和Mbile对应的员工）
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 员工手机号码，该字段需要与Name组合使用，UserId为空时该字段不能为空。（UserId为空时，使用Name和Mbile对应的员工）
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+}
+
+func (r *CreateOrganizationBatchSignUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationBatchSignUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "FlowIds")
+	delete(f, "Agent")
+	delete(f, "UserId")
+	delete(f, "Name")
+	delete(f, "Mobile")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationBatchSignUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOrganizationBatchSignUrlResponseParams struct {
+	// 批量签署入口链接
+	SignUrl *string `json:"SignUrl,omitempty" name:"SignUrl"`
+
+	// 链接过期时间戳
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateOrganizationBatchSignUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOrganizationBatchSignUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateOrganizationBatchSignUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationBatchSignUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePrepareFlowRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -2535,6 +2726,9 @@ type CreatePrepareFlowRequestParams struct {
 
 	// 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
 	IntelligentStatus *string `json:"IntelligentStatus,omitempty" name:"IntelligentStatus"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填	
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreatePrepareFlowRequest struct {
@@ -2564,6 +2758,9 @@ type CreatePrepareFlowRequest struct {
 
 	// 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
 	IntelligentStatus *string `json:"IntelligentStatus,omitempty" name:"IntelligentStatus"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填	
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreatePrepareFlowRequest) ToJsonString() string {
@@ -2586,6 +2783,7 @@ func (r *CreatePrepareFlowRequest) FromJsonString(s string) error {
 	delete(f, "UserFlowTypeId")
 	delete(f, "Approvers")
 	delete(f, "IntelligentStatus")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrepareFlowRequest has unknown keys!", "")
 	}
@@ -3413,6 +3611,78 @@ func (r *CreateUserAutoSignEnableUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateUserAutoSignEnableUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWebThemeConfigRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 主题类型
+	// <br/>EMBED_WEB_THEME：嵌入式主题
+	// <br/>目前只支持EMBED_WEB_THEME，web页面嵌入的主题风格配置
+	ThemeType *string `json:"ThemeType,omitempty" name:"ThemeType"`
+
+	// 主题配置
+	WebThemeConfig *WebThemeConfig `json:"WebThemeConfig,omitempty" name:"WebThemeConfig"`
+}
+
+type CreateWebThemeConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 主题类型
+	// <br/>EMBED_WEB_THEME：嵌入式主题
+	// <br/>目前只支持EMBED_WEB_THEME，web页面嵌入的主题风格配置
+	ThemeType *string `json:"ThemeType,omitempty" name:"ThemeType"`
+
+	// 主题配置
+	WebThemeConfig *WebThemeConfig `json:"WebThemeConfig,omitempty" name:"WebThemeConfig"`
+}
+
+func (r *CreateWebThemeConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWebThemeConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ThemeType")
+	delete(f, "WebThemeConfig")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWebThemeConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateWebThemeConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateWebThemeConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateWebThemeConfigResponseParams `json:"Response"`
+}
+
+func (r *CreateWebThemeConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateWebThemeConfigResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5568,6 +5838,12 @@ type FlowCreateApprover struct {
 	// 	ESIGN -- 个人印章类型
 	// 	SYSTEM_ESIGN -- 系统签名（该类型可以在用户签署时根据用户姓名一键生成一个签名来进行签署）
 	ComponentLimitType []*string `json:"ComponentLimitType,omitempty" name:"ComponentLimitType"`
+
+	// 合同查看方式<br/>默认1 -实名查看 <br/>2-短信验证码查看(企业签署方暂不支持该方式)
+	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitempty" name:"ApproverVerifyTypes"`
+
+	// 合同签署方式(默认1,2) <br/>1-人脸认证 <br/>2-签署密码 <br/>3-运营商三要素
+	ApproverSignTypes []*uint64 `json:"ApproverSignTypes,omitempty" name:"ApproverSignTypes"`
 }
 
 type FlowDetailInfo struct {
@@ -6308,6 +6584,14 @@ type RemindFlowRecords struct {
 	RemindMessage *string `json:"RemindMessage,omitempty" name:"RemindMessage"`
 }
 
+type ReviewerInfo struct {
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 手机号
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+}
+
 type SealInfo struct {
 
 }
@@ -6994,4 +7278,16 @@ func (r *VerifyPdfResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *VerifyPdfResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type WebThemeConfig struct {
+	// 是否页面底部显示电子签logo
+	// <br/>true：允许在页面底部隐藏电子签logo
+	// <br/>false：不允许允许在页面底部隐藏电子签logo
+	// <br/>默认false，不隐藏logo
+	DisplaySignBrandLogo *bool `json:"DisplaySignBrandLogo,omitempty" name:"DisplaySignBrandLogo"`
+
+	// 主题颜色
+	// <br/>支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
+	WebEmbedThemeColor *string `json:"WebEmbedThemeColor,omitempty" name:"WebEmbedThemeColor"`
 }

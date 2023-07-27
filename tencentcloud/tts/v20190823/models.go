@@ -40,7 +40,7 @@ type CreateTtsTaskRequestParams struct {
 	// 音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
 	VoiceType *int64 `json:"VoiceType,omitempty" name:"VoiceType"`
 
-	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
+	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitempty" name:"PrimaryLanguage"`
 
 	// 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
@@ -77,7 +77,7 @@ type CreateTtsTaskRequest struct {
 	// 音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
 	VoiceType *int64 `json:"VoiceType,omitempty" name:"VoiceType"`
 
-	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
+	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitempty" name:"PrimaryLanguage"`
 
 	// 音频采样率：<li>16000：16k（默认）</li><li>8000：8k</li>
@@ -271,7 +271,7 @@ type TextToVoiceRequestParams struct {
 	// 音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
 	VoiceType *int64 `json:"VoiceType,omitempty" name:"VoiceType"`
 
-	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
+	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitempty" name:"PrimaryLanguage"`
 
 	// 音频采样率：
@@ -321,7 +321,7 @@ type TextToVoiceRequest struct {
 	// 音色 ID，包括标准音色与精品音色，精品音色拟真度更高，价格不同于标准音色，请参见[购买指南](https://cloud.tencent.com/document/product/1073/34112)。完整的音色 ID 列表请参见[音色列表](https://cloud.tencent.com/document/product/1073/92668)。
 	VoiceType *int64 `json:"VoiceType,omitempty" name:"VoiceType"`
 
-	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li>
+	// 主语言类型：<li>1-中文（默认）</li><li>2-英文</li><li>3-日文</li>
 	PrimaryLanguage *int64 `json:"PrimaryLanguage,omitempty" name:"PrimaryLanguage"`
 
 	// 音频采样率：

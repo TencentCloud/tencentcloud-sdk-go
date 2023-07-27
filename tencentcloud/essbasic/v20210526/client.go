@@ -1681,6 +1681,56 @@ func (c *Client) ChannelCreateUserRolesWithContext(ctx context.Context, request 
     return
 }
 
+func NewChannelCreateWebThemeConfigRequest() (request *ChannelCreateWebThemeConfigRequest) {
+    request = &ChannelCreateWebThemeConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateWebThemeConfig")
+    
+    
+    return
+}
+
+func NewChannelCreateWebThemeConfigResponse() (response *ChannelCreateWebThemeConfigResponse) {
+    response = &ChannelCreateWebThemeConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateWebThemeConfig
+// 生成页面主题配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateWebThemeConfig(request *ChannelCreateWebThemeConfigRequest) (response *ChannelCreateWebThemeConfigResponse, err error) {
+    return c.ChannelCreateWebThemeConfigWithContext(context.Background(), request)
+}
+
+// ChannelCreateWebThemeConfig
+// 生成页面主题配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateWebThemeConfigWithContext(ctx context.Context, request *ChannelCreateWebThemeConfigRequest) (response *ChannelCreateWebThemeConfigResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateWebThemeConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateWebThemeConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateWebThemeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelDeleteRoleUsersRequest() (request *ChannelDeleteRoleUsersRequest) {
     request = &ChannelDeleteRoleUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},

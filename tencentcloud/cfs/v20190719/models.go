@@ -1657,6 +1657,12 @@ type DescribeCfsFileSystemsRequestParams struct {
 
 	// 子网 ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// Offset 分页码
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// Limit 页面大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 type DescribeCfsFileSystemsRequest struct {
@@ -1670,6 +1676,12 @@ type DescribeCfsFileSystemsRequest struct {
 
 	// 子网 ID
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// Offset 分页码
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// Limit 页面大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *DescribeCfsFileSystemsRequest) ToJsonString() string {
@@ -1687,6 +1699,8 @@ func (r *DescribeCfsFileSystemsRequest) FromJsonString(s string) error {
 	delete(f, "FileSystemId")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfsFileSystemsRequest has unknown keys!", "")
 	}

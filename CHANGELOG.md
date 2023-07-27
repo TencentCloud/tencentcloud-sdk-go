@@ -1,3 +1,295 @@
+# Release v1.0.709
+
+## API 网关(apigateway) 版本：2018-08-08
+
+### 第 42 次发布
+
+发布时间：2023-07-27 01:06:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* GenerateApiDocument
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* DocumentSDK
+
+
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 25 次发布
+
+发布时间：2023-07-27 01:09:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCfsFileSystems](https://cloud.tencent.com/document/api/582/38170)
+
+	* 新增入参：Offset, Limit
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 59 次发布
+
+发布时间：2023-07-27 01:09:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MachineGroupTypeInfo](https://cloud.tencent.com/document/api/614/56471#MachineGroupTypeInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>Values
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 62 次发布
+
+发布时间：2023-07-27 01:11:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ExportInstanceSlowQueries](https://cloud.tencent.com/document/api/1003/76368)
+
+	* 新增入参：OrderBy, OrderByType
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 97 次发布
+
+发布时间：2023-07-26 17:55:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateOrganizationBatchSignUrl](https://cloud.tencent.com/document/api/1323/95598)
+
+### 第 96 次发布
+
+发布时间：2023-07-26 16:20:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateWebThemeConfig](https://cloud.tencent.com/document/api/1323/95592)
+
+新增数据结构：
+
+* [WebThemeConfig](https://cloud.tencent.com/document/api/1323/70369#WebThemeConfig)
+
+### 第 95 次发布
+
+发布时间：2023-07-26 16:06:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateEmbedWebUrl](https://cloud.tencent.com/document/api/1323/95590)
+
+新增数据结构：
+
+* [ReviewerInfo](https://cloud.tencent.com/document/api/1323/70369#ReviewerInfo)
+
+### 第 94 次发布
+
+发布时间：2023-07-26 11:26:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePrepareFlow](https://cloud.tencent.com/document/api/1323/83412)
+
+	* 新增入参：Agent
+
+
+修改数据结构：
+
+* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
+
+	* 新增成员：ApproverVerifyTypes, ApproverSignTypes
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 97 次发布
+
+发布时间：2023-07-26 16:20:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateWebThemeConfig](https://cloud.tencent.com/document/api/1420/95591)
+
+新增数据结构：
+
+* [WebThemeConfig](https://cloud.tencent.com/document/api/1420/61525#WebThemeConfig)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 人脸融合(facefusion) 版本：2022-09-27
+
+### 第 5 次发布
+
+发布时间：2023-07-27 01:13:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [FuseFace](https://cloud.tencent.com/document/api/670/85618)
+
+	* 新增入参：FuseParam
+
+
+新增数据结构：
+
+* [FuseParam](https://cloud.tencent.com/document/api/670/85619#FuseParam)
+* [ImageCodecParam](https://cloud.tencent.com/document/api/670/85619#ImageCodecParam)
+* [MetaData](https://cloud.tencent.com/document/api/670/85619#MetaData)
+
+
+
+## 人脸融合(facefusion) 版本：2018-12-01
+
+### 第 7 次发布
+
+发布时间：2023-07-27 01:13:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [FaceFusion](https://cloud.tencent.com/document/api/670/31061)
+
+	* 新增入参：FuseParam
+
+* [FuseFace](https://cloud.tencent.com/document/api/670/37736)
+
+	* 新增入参：FuseParam
+
+
+新增数据结构：
+
+* [FuseParam](https://cloud.tencent.com/document/api/670/31062#FuseParam)
+* [ImageCodecParam](https://cloud.tencent.com/document/api/670/31062#ImageCodecParam)
+* [MetaData](https://cloud.tencent.com/document/api/670/31062#MetaData)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 16 次发布
+
+发布时间：2023-07-27 01:14:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PackageInfo](https://cloud.tencent.com/document/api/1131/76635#PackageInfo)
+
+	* 新增成员：CreatedAt, UpdatedAt
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 33 次发布
+
+发布时间：2023-07-27 01:15:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EventInfo](https://cloud.tencent.com/document/api/1639/81423#EventInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>Timestamp, EventType, EventData
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 108 次发布
+
+发布时间：2023-07-27 01:16:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [IDCardOCR](https://cloud.tencent.com/document/api/866/33524)
+
+	* 新增入参：EnableRecognitionRectify
+
+
+
+
 # Release v1.0.708
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09

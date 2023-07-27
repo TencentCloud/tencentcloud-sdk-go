@@ -6796,14 +6796,6 @@ func (r *DisableApiKeyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type DocumentSDK struct {
-	// 生成的 document 会存放到 COS 中，此出参返回产生文件的下载链接。
-	DocumentURL *string `json:"DocumentURL,omitempty" name:"DocumentURL"`
-
-	// 生成的 SDK 会存放到 COS 中，此出参返回产生 SDK 文件的下载链接。
-	SdkURL *string `json:"SdkURL,omitempty" name:"SdkURL"`
-}
-
 type DomainSetList struct {
 	// 域名名称。
 	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
@@ -6946,77 +6938,6 @@ type Filter struct {
 
 	// 字段的过滤值。
 	Values []*string `json:"Values,omitempty" name:"Values"`
-}
-
-// Predefined struct for user
-type GenerateApiDocumentRequestParams struct {
-	// 待创建文档的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
-
-	// 待创建 SDK 的服务所在环境。
-	GenEnvironment *string `json:"GenEnvironment,omitempty" name:"GenEnvironment"`
-
-	// 待创建 SDK 的语言。当前只支持 Python 和 JavaScript。
-	GenLanguage *string `json:"GenLanguage,omitempty" name:"GenLanguage"`
-}
-
-type GenerateApiDocumentRequest struct {
-	*tchttp.BaseRequest
-	
-	// 待创建文档的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
-
-	// 待创建 SDK 的服务所在环境。
-	GenEnvironment *string `json:"GenEnvironment,omitempty" name:"GenEnvironment"`
-
-	// 待创建 SDK 的语言。当前只支持 Python 和 JavaScript。
-	GenLanguage *string `json:"GenLanguage,omitempty" name:"GenLanguage"`
-}
-
-func (r *GenerateApiDocumentRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GenerateApiDocumentRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ServiceId")
-	delete(f, "GenEnvironment")
-	delete(f, "GenLanguage")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateApiDocumentRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type GenerateApiDocumentResponseParams struct {
-	// api文档&sdk链接。
-	Result *DocumentSDK `json:"Result,omitempty" name:"Result"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type GenerateApiDocumentResponse struct {
-	*tchttp.BaseResponse
-	Response *GenerateApiDocumentResponseParams `json:"Response"`
-}
-
-func (r *GenerateApiDocumentResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *GenerateApiDocumentResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type HealthCheckConf struct {

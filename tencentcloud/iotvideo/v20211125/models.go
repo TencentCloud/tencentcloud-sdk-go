@@ -7395,6 +7395,14 @@ type PackageInfo struct {
 
 	// 云存套餐过期时间
 	CSExpiredTime *int64 `json:"CSExpiredTime,omitempty" name:"CSExpiredTime"`
+
+	// 云存套餐创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *int64 `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 云存套餐更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedAt *int64 `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
 }
 
 type ProductModelDefinition struct {

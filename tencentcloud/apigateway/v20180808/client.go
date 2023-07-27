@@ -4605,68 +4605,6 @@ func (c *Client) EnableApiKeyWithContext(ctx context.Context, request *EnableApi
     return
 }
 
-func NewGenerateApiDocumentRequest() (request *GenerateApiDocumentRequest) {
-    request = &GenerateApiDocumentRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("apigateway", APIVersion, "GenerateApiDocument")
-    
-    
-    return
-}
-
-func NewGenerateApiDocumentResponse() (response *GenerateApiDocumentResponse) {
-    response = &GenerateApiDocumentResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// GenerateApiDocument
-// 接口已废弃
-//
-// 
-//
-// 本接口（GenerateApiDocument）用于自动生成 API 文档和 SDK，一个服务的一个环境生成一份文档和 SDK。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_GENERATEAPIDOCUMENTERROR = "FailedOperation.GenerateApiDocumentError"
-//  FAILEDOPERATION_SERVICENOTEXIST = "FailedOperation.ServiceNotExist"
-//  INVALIDPARAMETERVALUE_INVALIDGENLANGUAGE = "InvalidParameterValue.InvalidGenLanguage"
-//  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
-func (c *Client) GenerateApiDocument(request *GenerateApiDocumentRequest) (response *GenerateApiDocumentResponse, err error) {
-    return c.GenerateApiDocumentWithContext(context.Background(), request)
-}
-
-// GenerateApiDocument
-// 接口已废弃
-//
-// 
-//
-// 本接口（GenerateApiDocument）用于自动生成 API 文档和 SDK，一个服务的一个环境生成一份文档和 SDK。
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION_GENERATEAPIDOCUMENTERROR = "FailedOperation.GenerateApiDocumentError"
-//  FAILEDOPERATION_SERVICENOTEXIST = "FailedOperation.ServiceNotExist"
-//  INVALIDPARAMETERVALUE_INVALIDGENLANGUAGE = "InvalidParameterValue.InvalidGenLanguage"
-//  INVALIDPARAMETERVALUE_NOTINOPTIONS = "InvalidParameterValue.NotInOptions"
-func (c *Client) GenerateApiDocumentWithContext(ctx context.Context, request *GenerateApiDocumentRequest) (response *GenerateApiDocumentResponse, err error) {
-    if request == nil {
-        request = NewGenerateApiDocumentRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("GenerateApiDocument require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewGenerateApiDocumentResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewImportOpenApiRequest() (request *ImportOpenApiRequest) {
     request = &ImportOpenApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
