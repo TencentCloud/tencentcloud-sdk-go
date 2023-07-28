@@ -2537,6 +2537,57 @@ type CsvInfo struct {
 	NonExistingField *string `json:"NonExistingField,omitempty" name:"NonExistingField"`
 }
 
+type DashboardInfo struct {
+	// 仪表盘id
+	DashboardId *string `json:"DashboardId,omitempty" name:"DashboardId"`
+
+	// 仪表盘名字
+	DashboardName *string `json:"DashboardName,omitempty" name:"DashboardName"`
+
+	// 仪表盘数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 创建仪表盘的时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// AssumerUin非空则表示创建该日志主题的服务方Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssumerUin *uint64 `json:"AssumerUin,omitempty" name:"AssumerUin"`
+
+	// RoleName非空则表示创建该日志主题的服务方使用的角色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// AssumerName非空则表示创建该日志主题的服务方名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssumerName *string `json:"AssumerName,omitempty" name:"AssumerName"`
+
+	// 日志主题绑定的标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 仪表盘所在地域： 为了兼容老的地域。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DashboardRegion *string `json:"DashboardRegion,omitempty" name:"DashboardRegion"`
+
+	// 修改仪表盘的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 仪表盘对应的topic相关信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DashboardTopicInfos []*DashboardTopicInfo `json:"DashboardTopicInfos,omitempty" name:"DashboardTopicInfos"`
+}
+
+type DashboardTopicInfo struct {
+	// 主题id
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// topic所在的地域
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
 type DataTransformResouceInfo struct {
 	// 目标主题id
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
@@ -4181,6 +4232,161 @@ func (r *DescribeCosRechargesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCosRechargesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDashboardsRequestParams struct {
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// <br><li> dashboardId
+	// 
+	// 按照【仪表盘id】进行过滤。
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// <br><li> dashboardName
+	// 
+	// 按照【仪表盘名字】进行模糊搜索过滤。
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// <br><li> dashboardRegion
+	// 
+	// 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// <br><li> tagKey
+	// 
+	// 按照【标签键】进行过滤。
+	// 
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// <br><li> tag:tagKey
+	// 
+	// 按照【标签键值对】进行过滤。tag-key使用具体的标签键进行替换。使用请参考示例2。
+	// 
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 按照topicId和regionId过滤。
+	TopicIdRegionFilter []*TopicIdAndRegion `json:"TopicIdRegionFilter,omitempty" name:"TopicIdRegionFilter"`
+}
+
+type DescribeDashboardsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页单页限制数目，默认值为20，最大值100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// <br><li> dashboardId
+	// 
+	// 按照【仪表盘id】进行过滤。
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// <br><li> dashboardName
+	// 
+	// 按照【仪表盘名字】进行模糊搜索过滤。
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// <br><li> dashboardRegion
+	// 
+	// 按照【仪表盘地域】进行过滤，为了兼容老的仪表盘，通过云API创建的仪表盘没有地域属性
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// <br><li> tagKey
+	// 
+	// 按照【标签键】进行过滤。
+	// 
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// <br><li> tag:tagKey
+	// 
+	// 按照【标签键值对】进行过滤。tag-key使用具体的标签键进行替换。使用请参考示例2。
+	// 
+	// 类型：String
+	// 
+	// 必选：否
+	// 
+	// 每次请求的Filters的上限为10，Filter.Values的上限为100。
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 按照topicId和regionId过滤。
+	TopicIdRegionFilter []*TopicIdAndRegion `json:"TopicIdRegionFilter,omitempty" name:"TopicIdRegionFilter"`
+}
+
+func (r *DescribeDashboardsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDashboardsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "TopicIdRegionFilter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDashboardsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDashboardsResponseParams struct {
+	// 仪表盘的数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 仪表盘详细明细
+	DashboardInfos []*DashboardInfo `json:"DashboardInfos,omitempty" name:"DashboardInfos"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDashboardsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDashboardsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDashboardsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDashboardsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8166,8 +8372,14 @@ type ScheduledSqlResouceInfo struct {
 	// 目标主题id
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// topic的地域信息
+	// 主题的的地域信息
 	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 主题类型：0为日志主题，1为指标主题
+	BizType *int64 `json:"BizType,omitempty" name:"BizType"`
+
+	// 指标名称
+	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 }
 
 type ScheduledSqlTaskInfo struct {
@@ -8625,6 +8837,15 @@ type Tag struct {
 	// 标签值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type TopicIdAndRegion struct {
+	// 日志主题id
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志主题id 所在的地域id
+	// 地域ID - 访问链接查看详情：https://iwiki.woa.com/pages/viewpage.action?pageId=780556968#id-地域码表-一.region大区（标准地域）
+	RegionId *uint64 `json:"RegionId,omitempty" name:"RegionId"`
 }
 
 type TopicInfo struct {

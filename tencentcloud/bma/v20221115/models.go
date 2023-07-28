@@ -997,11 +997,11 @@ type FakeURLData struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Heat *int64 `json:"Heat,omitempty" name:"Heat"`
 
-	// 协助处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
+	// 拦截处置状态：0-未处置 1-处置中 2-处置成功 3-处置失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockStatus *int64 `json:"BlockStatus,omitempty" name:"BlockStatus"`
 
-	// 协助处置状态说明
+	// 拦截处置状态说明
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BlockNote *string `json:"BlockNote,omitempty" name:"BlockNote"`
 
@@ -1060,6 +1060,10 @@ type FakeURLData struct {
 	// 账户资源状态：0-不可用 1-可用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AccountStatus *int64 `json:"AccountStatus,omitempty" name:"AccountStatus"`
+
+	// 审核状态：0-未审核 1-审核中 2-审核成功 3-审核失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AuditStatus *int64 `json:"AuditStatus,omitempty" name:"AuditStatus"`
 }
 
 type Filter struct {

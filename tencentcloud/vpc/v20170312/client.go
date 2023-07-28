@@ -11573,6 +11573,64 @@ func (c *Client) DescribeSnapshotPoliciesWithContext(ctx context.Context, reques
     return
 }
 
+func NewDescribeSpecificTrafficPackageUsedDetailsRequest() (request *DescribeSpecificTrafficPackageUsedDetailsRequest) {
+    request = &DescribeSpecificTrafficPackageUsedDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeSpecificTrafficPackageUsedDetails")
+    
+    
+    return
+}
+
+func NewDescribeSpecificTrafficPackageUsedDetailsResponse() (response *DescribeSpecificTrafficPackageUsedDetailsResponse) {
+    response = &DescribeSpecificTrafficPackageUsedDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSpecificTrafficPackageUsedDetails
+// 本接口 (DescribeSpecificTrafficPackageUsedDetails) 用于查询指定 共享流量包 的用量明细。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
+//  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGEID = "InvalidParameterValue.TrafficPackageId"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGEIDMALFORMED = "InvalidParameterValue.TrafficPackageIdMalformed"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGENOTFOUND = "InvalidParameterValue.TrafficPackageNotFound"
+func (c *Client) DescribeSpecificTrafficPackageUsedDetails(request *DescribeSpecificTrafficPackageUsedDetailsRequest) (response *DescribeSpecificTrafficPackageUsedDetailsResponse, err error) {
+    return c.DescribeSpecificTrafficPackageUsedDetailsWithContext(context.Background(), request)
+}
+
+// DescribeSpecificTrafficPackageUsedDetails
+// 本接口 (DescribeSpecificTrafficPackageUsedDetails) 用于查询指定 共享流量包 的用量明细。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
+//  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGEID = "InvalidParameterValue.TrafficPackageId"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGEIDMALFORMED = "InvalidParameterValue.TrafficPackageIdMalformed"
+//  INVALIDPARAMETERVALUE_TRAFFICPACKAGENOTFOUND = "InvalidParameterValue.TrafficPackageNotFound"
+func (c *Client) DescribeSpecificTrafficPackageUsedDetailsWithContext(ctx context.Context, request *DescribeSpecificTrafficPackageUsedDetailsRequest) (response *DescribeSpecificTrafficPackageUsedDetailsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSpecificTrafficPackageUsedDetailsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSpecificTrafficPackageUsedDetails require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSpecificTrafficPackageUsedDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSubnetResourceDashboardRequest() (request *DescribeSubnetResourceDashboardRequest) {
     request = &DescribeSubnetResourceDashboardRequest{
         BaseRequest: &tchttp.BaseRequest{},

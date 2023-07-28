@@ -2933,6 +2933,76 @@ func (c *Client) DescribeCosRechargesWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeDashboardsRequest() (request *DescribeDashboardsRequest) {
+    request = &DescribeDashboardsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeDashboards")
+    
+    
+    return
+}
+
+func NewDescribeDashboardsResponse() (response *DescribeDashboardsResponse) {
+    response = &DescribeDashboardsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDashboards
+// 本接口用于获取仪表盘
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_TAG = "LimitExceeded.Tag"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeDashboards(request *DescribeDashboardsRequest) (response *DescribeDashboardsResponse, err error) {
+    return c.DescribeDashboardsWithContext(context.Background(), request)
+}
+
+// DescribeDashboards
+// 本接口用于获取仪表盘
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_TAGQPSLIMIT = "FailedOperation.TagQpsLimit"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_TAG = "LimitExceeded.Tag"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeDashboardsWithContext(ctx context.Context, request *DescribeDashboardsRequest) (response *DescribeDashboardsResponse, err error) {
+    if request == nil {
+        request = NewDescribeDashboardsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDashboards require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDashboardsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDataTransformInfoRequest() (request *DescribeDataTransformInfoRequest) {
     request = &DescribeDataTransformInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

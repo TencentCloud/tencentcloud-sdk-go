@@ -2400,7 +2400,7 @@ type McuLayout struct {
 	// 子画面在输出时的层级，不填默认为0。
 	ZOrder *uint64 `json:"ZOrder,omitempty" name:"ZOrder"`
 
-	// 子画面在输出时的显示模式：0为裁剪，1为缩放，2为缩放并显示黑底。不填默认为0。
+	// 子画面在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底。不填默认为0。
 	RenderMode *uint64 `json:"RenderMode,omitempty" name:"RenderMode"`
 
 	// 【此参数配置无效，暂不支持】子画面的背景颜色，常用的颜色有：
@@ -2418,6 +2418,9 @@ type McuLayout struct {
 
 	// 客户自定义裁剪，针对原始输入流裁剪
 	CustomCrop *McuCustomCrop `json:"CustomCrop,omitempty" name:"CustomCrop"`
+
+	// 子背景图在输出时的显示模式：0为裁剪，1为缩放并显示背景，2为缩放并显示黑底，3为变比例伸缩。不填默认为3。
+	BackgroundRenderMode *uint64 `json:"BackgroundRenderMode,omitempty" name:"BackgroundRenderMode"`
 }
 
 type McuLayoutParams struct {
@@ -2511,6 +2514,9 @@ type McuVideoParams struct {
 
 	// 混流布局的水印参数。
 	WaterMarkList []*McuWaterMarkParams `json:"WaterMarkList,omitempty" name:"WaterMarkList"`
+
+	// 背景图在输出时的显示模式：0为裁剪，1为缩放并显示黑底，2为变比例伸缩。后台默认为变比例伸缩。
+	BackgroundRenderMode *uint64 `json:"BackgroundRenderMode,omitempty" name:"BackgroundRenderMode"`
 }
 
 type McuWaterMarkImage struct {

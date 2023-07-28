@@ -1013,6 +1013,9 @@ type CreateRecordRequestParams struct {
 
 	// 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 type CreateRecordRequest struct {
@@ -1050,6 +1053,9 @@ type CreateRecordRequest struct {
 
 	// 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 func (r *CreateRecordRequest) ToJsonString() string {
@@ -1075,6 +1081,7 @@ func (r *CreateRecordRequest) FromJsonString(s string) error {
 	delete(f, "TTL")
 	delete(f, "Weight")
 	delete(f, "Status")
+	delete(f, "Remark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRecordRequest has unknown keys!", "")
 	}

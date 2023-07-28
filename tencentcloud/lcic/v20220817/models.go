@@ -3263,6 +3263,14 @@ type GetRoomEventRequestParams struct {
 	// MemberJoin:成员加入
 	// MemberQuit:成员退出
 	// RecordFinish:录制结束
+	// CameraOn: 摄像头打开
+	// CameraOff: 摄像头关闭
+	// MicOn: 麦克风打开
+	// MicOff: 麦克风关闭
+	// ScreenOn: 屏幕共享打开
+	// ScreenOff: 屏幕共享关闭
+	// VisibleOn: 页面可见
+	// VisibleOff: 页面不可见
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 }
 
@@ -3287,6 +3295,14 @@ type GetRoomEventRequest struct {
 	// MemberJoin:成员加入
 	// MemberQuit:成员退出
 	// RecordFinish:录制结束
+	// CameraOn: 摄像头打开
+	// CameraOff: 摄像头关闭
+	// MicOn: 麦克风打开
+	// MicOff: 麦克风关闭
+	// ScreenOn: 屏幕共享打开
+	// ScreenOff: 屏幕共享关闭
+	// VisibleOn: 页面可见
+	// VisibleOff: 页面不可见
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
 }
 
@@ -4585,6 +4601,14 @@ type RoomItem struct {
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoOrientation *int64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+
+	// 开启课后评分。 0：不开启(默认)  1：开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+
+	// 房间类型。0:小班课（默认值）；1:大班课；2:1V1（后续扩展）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoomType *int64 `json:"RoomType,omitempty" name:"RoomType"`
 }
 
 type SceneItem struct {

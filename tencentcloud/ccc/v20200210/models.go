@@ -3425,6 +3425,10 @@ type SdkAppIdBuyInfo struct {
 
 	// 号码购买列表
 	PhoneNumBuyList []*PhoneNumBuyInfo `json:"PhoneNumBuyList,omitempty" name:"PhoneNumBuyList"`
+
+	// 办公电话购买数（还在有效期内）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SipBuyNum *int64 `json:"SipBuyNum,omitempty" name:"SipBuyNum"`
 }
 
 type SeatUserInfo struct {
@@ -3580,6 +3584,10 @@ type StaffBuyInfo struct {
 
 	// 截止时间戳
 	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 购买办公电话数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SipNum *int64 `json:"SipNum,omitempty" name:"SipNum"`
 }
 
 type StaffInfo struct {

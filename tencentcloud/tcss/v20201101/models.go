@@ -775,6 +775,9 @@ type AddAssetImageRegistryRegistryDetailRequestParams struct {
 
 	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
 	Insecure *uint64 `json:"Insecure,omitempty" name:"Insecure"`
+
+	// 联通性检测的记录ID
+	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitempty" name:"ConnDetectConfig"`
 }
 
 type AddAssetImageRegistryRegistryDetailRequest struct {
@@ -809,6 +812,9 @@ type AddAssetImageRegistryRegistryDetailRequest struct {
 
 	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
 	Insecure *uint64 `json:"Insecure,omitempty" name:"Insecure"`
+
+	// 联通性检测的记录ID
+	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitempty" name:"ConnDetectConfig"`
 }
 
 func (r *AddAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -833,6 +839,7 @@ func (r *AddAssetImageRegistryRegistryDetailRequest) FromJsonString(s string) er
 	delete(f, "RegistryRegion")
 	delete(f, "SpeedLimit")
 	delete(f, "Insecure")
+	delete(f, "ConnDetectConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddAssetImageRegistryRegistryDetailRequest has unknown keys!", "")
 	}
@@ -2993,6 +3000,14 @@ func (r *ConfirmNetworkFirewallPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ConnDetectConfig struct {
+	// 主机quuid
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 主机uuid
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+}
+
 type ContainerInfo struct {
 	// 容器id
 	ContainerID *string `json:"ContainerID,omitempty" name:"ContainerID"`
@@ -3355,6 +3370,9 @@ func (r *CreateAssetImageRegistryScanTaskOneKeyRequest) FromJsonString(s string)
 
 // Predefined struct for user
 type CreateAssetImageRegistryScanTaskOneKeyResponseParams struct {
+	// 扫描任务id
+	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -3451,6 +3469,9 @@ func (r *CreateAssetImageRegistryScanTaskRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateAssetImageRegistryScanTaskResponseParams struct {
+	// 返回的任务ID
+	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -10981,7 +11002,7 @@ type DescribeAssetImageRegistryRegistryDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryVersion *string `json:"RegistryVersion,omitempty" name:"RegistryVersion"`
 
-	// 网络类型，列表：public（公网）
+	// 网络类型，列表：public（公网）,private（私网）
 	NetType *string `json:"NetType,omitempty" name:"NetType"`
 
 	// 区域，列表:default（默认）
@@ -10995,6 +11016,12 @@ type DescribeAssetImageRegistryRegistryDetailResponseParams struct {
 	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Insecure *uint64 `json:"Insecure,omitempty" name:"Insecure"`
+
+	// 联通性检测结果详情
+	ConnDetectDetail []*RegistryConnDetectResult `json:"ConnDetectDetail,omitempty" name:"ConnDetectDetail"`
+
+	// tcr情况下instance_id
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -11282,6 +11309,9 @@ type DescribeAssetImageRegistryScanStatusOneKeyRequestParams struct {
 
 	// 需要获取进度的镜像列表Id
 	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 获取进度的任务ID
+	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
 }
 
 type DescribeAssetImageRegistryScanStatusOneKeyRequest struct {
@@ -11295,6 +11325,9 @@ type DescribeAssetImageRegistryScanStatusOneKeyRequest struct {
 
 	// 需要获取进度的镜像列表Id
 	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 获取进度的任务ID
+	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
 }
 
 func (r *DescribeAssetImageRegistryScanStatusOneKeyRequest) ToJsonString() string {
@@ -11312,6 +11345,7 @@ func (r *DescribeAssetImageRegistryScanStatusOneKeyRequest) FromJsonString(s str
 	delete(f, "Images")
 	delete(f, "All")
 	delete(f, "Id")
+	delete(f, "TaskID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetImageRegistryScanStatusOneKeyRequest has unknown keys!", "")
 	}
@@ -26024,6 +26058,9 @@ type ModifyAssetImageRegistryScanStopOneKeyRequestParams struct {
 
 	// 扫描的镜像列表Id
 	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 停止的任务ID
+	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
 }
 
 type ModifyAssetImageRegistryScanStopOneKeyRequest struct {
@@ -26037,6 +26074,9 @@ type ModifyAssetImageRegistryScanStopOneKeyRequest struct {
 
 	// 扫描的镜像列表Id
 	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 停止的任务ID
+	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
 }
 
 func (r *ModifyAssetImageRegistryScanStopOneKeyRequest) ToJsonString() string {
@@ -26054,6 +26094,7 @@ func (r *ModifyAssetImageRegistryScanStopOneKeyRequest) FromJsonString(s string)
 	delete(f, "All")
 	delete(f, "Images")
 	delete(f, "Id")
+	delete(f, "TaskID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAssetImageRegistryScanStopOneKeyRequest has unknown keys!", "")
 	}
@@ -26101,6 +26142,9 @@ type ModifyAssetImageRegistryScanStopRequestParams struct {
 
 	// 是否仅扫描各repository最新版本的镜像
 	OnlyScanLatest *bool `json:"OnlyScanLatest,omitempty" name:"OnlyScanLatest"`
+
+	// 停止的任务ID
+	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
 }
 
 type ModifyAssetImageRegistryScanStopRequest struct {
@@ -26123,6 +26167,9 @@ type ModifyAssetImageRegistryScanStopRequest struct {
 
 	// 是否仅扫描各repository最新版本的镜像
 	OnlyScanLatest *bool `json:"OnlyScanLatest,omitempty" name:"OnlyScanLatest"`
+
+	// 停止的任务ID
+	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
 }
 
 func (r *ModifyAssetImageRegistryScanStopRequest) ToJsonString() string {
@@ -26143,6 +26190,7 @@ func (r *ModifyAssetImageRegistryScanStopRequest) FromJsonString(s string) error
 	delete(f, "Filters")
 	delete(f, "ExcludeImageList")
 	delete(f, "OnlyScanLatest")
+	delete(f, "TaskID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAssetImageRegistryScanStopRequest has unknown keys!", "")
 	}
@@ -28752,6 +28800,26 @@ type RegionInfo struct {
 	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
 }
 
+type RegistryConnDetectResult struct {
+	// 联通性检测的主机quuid 或者 backend
+	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+
+	// 联通性检测的主机uuid 或者 backend
+	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+
+	// 检测结果状态
+	ConnDetectStatus *string `json:"ConnDetectStatus,omitempty" name:"ConnDetectStatus"`
+
+	// 检测结果信息
+	ConnDetectMessage *string `json:"ConnDetectMessage,omitempty" name:"ConnDetectMessage"`
+
+	// 失败的解决方案
+	Solution *string `json:"Solution,omitempty" name:"Solution"`
+
+	// 失败原因
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+}
+
 // Predefined struct for user
 type RemoveAssetImageRegistryRegistryDetailRequestParams struct {
 	// 仓库唯一id
@@ -30530,6 +30598,9 @@ type UpdateAssetImageRegistryRegistryDetailRequestParams struct {
 
 	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
 	Insecure *uint64 `json:"Insecure,omitempty" name:"Insecure"`
+
+	// 联通性检测的配置
+	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitempty" name:"ConnDetectConfig"`
 }
 
 type UpdateAssetImageRegistryRegistryDetailRequest struct {
@@ -30564,6 +30635,9 @@ type UpdateAssetImageRegistryRegistryDetailRequest struct {
 
 	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
 	Insecure *uint64 `json:"Insecure,omitempty" name:"Insecure"`
+
+	// 联通性检测的配置
+	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitempty" name:"ConnDetectConfig"`
 }
 
 func (r *UpdateAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -30588,6 +30662,7 @@ func (r *UpdateAssetImageRegistryRegistryDetailRequest) FromJsonString(s string)
 	delete(f, "RegistryRegion")
 	delete(f, "SpeedLimit")
 	delete(f, "Insecure")
+	delete(f, "ConnDetectConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAssetImageRegistryRegistryDetailRequest has unknown keys!", "")
 	}

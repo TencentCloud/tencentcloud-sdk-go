@@ -1,49 +1,87 @@
 # 本版本更新包含以下内容：
 
-## API 网关(apigateway) 版本：2018-08-08
+## 品牌经营管家(bma) 版本：2022-11-15
 
-### 第 42 次发布
+### 第 9 次发布
 
-发布时间：2023-07-27 01:06:01
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* GenerateApiDocument
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* DocumentSDK
-
-
-
-## 文件存储(cfs) 版本：2019-07-19
-
-### 第 25 次发布
-
-发布时间：2023-07-27 01:09:08
+发布时间：2023-07-28 01:09:00
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [DescribeCfsFileSystems](https://cloud.tencent.com/document/api/582/38170)
+* [FakeURLData](https://cloud.tencent.com/document/api/1296/86604#FakeURLData)
 
-	* 新增入参：Offset, Limit
+	* 新增成员：AuditStatus
+
+	* <font color="#dd0000">**修改成员**：</font>FakeURLId, BrandName, Origin, FakeURL, FakeDomain, Heat, BlockStatus, BlockNote, OfflineStatus, OfflineNote, IP, IPLocation, WebCompany, WebAttribute, WebName, WebICP, WebCreateTime, WebExpireTime, InsertTime, CertificationStatus, Snapshot, AccountStatus
+
+
+
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+
+
+## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 52 次发布
+
+发布时间：2023-07-28 01:10:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SdkAppIdBuyInfo](https://cloud.tencent.com/document/api/679/47715#SdkAppIdBuyInfo)
+
+	* 新增成员：SipBuyNum
+
+* [StaffBuyInfo](https://cloud.tencent.com/document/api/679/47715#StaffBuyInfo)
+
+	* 新增成员：SipNum
 
 
 
 
 ## 日志服务(cls) 版本：2020-10-16
 
-### 第 59 次发布
+### 第 60 次发布
 
-发布时间：2023-07-27 01:09:55
+发布时间：2023-07-28 01:15:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDashboards](https://cloud.tencent.com/document/api/614/95636)
+
+新增数据结构：
+
+* [DashboardInfo](https://cloud.tencent.com/document/api/614/56471#DashboardInfo)
+* [DashboardTopicInfo](https://cloud.tencent.com/document/api/614/56471#DashboardTopicInfo)
+* [TopicIdAndRegion](https://cloud.tencent.com/document/api/614/56471#TopicIdAndRegion)
+
+修改数据结构：
+
+* [ScheduledSqlResouceInfo](https://cloud.tencent.com/document/api/614/56471#ScheduledSqlResouceInfo)
+
+	* 新增成员：BizType, MetricName
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 92 次发布
+
+发布时间：2023-07-28 01:18:37
 
 本次发布包含了以下内容：
 
@@ -51,81 +89,26 @@
 
 修改数据结构：
 
-* [MachineGroupTypeInfo](https://cloud.tencent.com/document/api/614/56471#MachineGroupTypeInfo)
+* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
 
-	* <font color="#dd0000">**修改成员**：</font>Values
+	* <font color="#dd0000">**修改成员**：</font>MachineName, MachinePublicIp, MachinePrivateIp, MachineTag, Quuid, Uuid, KernelVersion, MachineStatus, LicenseOrder, VulNum, CloudTags, InstanceID
 
+* [LicenseDetail](https://cloud.tencent.com/document/api/296/19867#LicenseDetail)
 
+	* 新增成员：FreezeNum
 
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
 
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
-
-### 第 62 次发布
-
-发布时间：2023-07-27 01:11:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ExportInstanceSlowQueries](https://cloud.tencent.com/document/api/1003/76368)
-
-	* 新增入参：OrderBy, OrderByType
+	* <font color="#dd0000">**修改成员**：</font>MachineName, MachineOs, MachineStatus, Uuid, Quuid, VulNum, MachineIp, IsProVersion, MachineWanIp, PayMode, MalwareNum, Tag, BaselineNum, CyberAttackNum, SecurityStatus, InvasionNum, RegionInfo, InstanceState, LicenseStatus, ProjectId, HasAssetScan, MachineType, KernelVersion, ProtectType, CloudTags, IsAddedOnTheFifteen, IpList, VpcId, MachineExtraInfo, InstanceId
 
 
 
 
-## 腾讯电子签企业版(ess) 版本：2020-11-11
+## DNSPod(dnspod) 版本：2021-03-23
 
-### 第 97 次发布
+### 第 23 次发布
 
-发布时间：2023-07-26 17:55:39
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateOrganizationBatchSignUrl](https://cloud.tencent.com/document/api/1323/95598)
-
-### 第 96 次发布
-
-发布时间：2023-07-26 16:20:57
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateWebThemeConfig](https://cloud.tencent.com/document/api/1323/95592)
-
-新增数据结构：
-
-* [WebThemeConfig](https://cloud.tencent.com/document/api/1323/70369#WebThemeConfig)
-
-### 第 95 次发布
-
-发布时间：2023-07-26 16:06:53
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateEmbedWebUrl](https://cloud.tencent.com/document/api/1323/95590)
-
-新增数据结构：
-
-* [ReviewerInfo](https://cloud.tencent.com/document/api/1323/70369#ReviewerInfo)
-
-### 第 94 次发布
-
-发布时间：2023-07-26 11:26:03
+发布时间：2023-07-28 01:23:03
 
 本次发布包含了以下内容：
 
@@ -133,130 +116,18 @@
 
 修改接口：
 
-* [CreatePrepareFlow](https://cloud.tencent.com/document/api/1323/83412)
+* [CreateRecord](https://cloud.tencent.com/document/api/1427/56180)
 
-	* 新增入参：Agent
+	* 新增入参：Remark
 
-
-修改数据结构：
-
-* [FlowCreateApprover](https://cloud.tencent.com/document/api/1323/70369#FlowCreateApprover)
-
-	* 新增成员：ApproverVerifyTypes, ApproverSignTypes
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 97 次发布
-
-发布时间：2023-07-26 16:20:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ChannelCreateWebThemeConfig](https://cloud.tencent.com/document/api/1420/95591)
-
-新增数据结构：
-
-* [WebThemeConfig](https://cloud.tencent.com/document/api/1420/61525#WebThemeConfig)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 人脸融合(facefusion) 版本：2022-09-27
-
-### 第 5 次发布
-
-发布时间：2023-07-27 01:13:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [FuseFace](https://cloud.tencent.com/document/api/670/85618)
-
-	* 新增入参：FuseParam
-
-
-新增数据结构：
-
-* [FuseParam](https://cloud.tencent.com/document/api/670/85619#FuseParam)
-* [ImageCodecParam](https://cloud.tencent.com/document/api/670/85619#ImageCodecParam)
-* [MetaData](https://cloud.tencent.com/document/api/670/85619#MetaData)
-
-
-
-## 人脸融合(facefusion) 版本：2018-12-01
-
-### 第 7 次发布
-
-发布时间：2023-07-27 01:13:26
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [FaceFusion](https://cloud.tencent.com/document/api/670/31061)
-
-	* 新增入参：FuseParam
-
-* [FuseFace](https://cloud.tencent.com/document/api/670/37736)
-
-	* 新增入参：FuseParam
-
-
-新增数据结构：
-
-* [FuseParam](https://cloud.tencent.com/document/api/670/31062#FuseParam)
-* [ImageCodecParam](https://cloud.tencent.com/document/api/670/31062#ImageCodecParam)
-* [MetaData](https://cloud.tencent.com/document/api/670/31062#MetaData)
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2021-11-25
-
-### 第 16 次发布
-
-发布时间：2023-07-27 01:14:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [PackageInfo](https://cloud.tencent.com/document/api/1131/76635#PackageInfo)
-
-	* 新增成员：CreatedAt, UpdatedAt
-
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2020-12-15
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
 
 
 ## 低代码互动课堂(lcic) 版本：2022-08-17
 
-### 第 33 次发布
+### 第 34 次发布
 
-发布时间：2023-07-27 01:15:22
+发布时间：2023-07-28 01:32:25
 
 本次发布包含了以下内容：
 
@@ -264,18 +135,18 @@
 
 修改数据结构：
 
-* [EventInfo](https://cloud.tencent.com/document/api/1639/81423#EventInfo)
+* [RoomItem](https://cloud.tencent.com/document/api/1639/81423#RoomItem)
 
-	* <font color="#dd0000">**修改成员**：</font>Timestamp, EventType, EventData
-
-
+	* 新增成员：IsGradingRequiredPostClass, RoomType
 
 
-## 文字识别(ocr) 版本：2018-11-19
 
-### 第 108 次发布
 
-发布时间：2023-07-27 01:16:57
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 48 次发布
+
+发布时间：2023-07-28 01:47:50
 
 本次发布包含了以下内容：
 
@@ -283,10 +154,114 @@
 
 修改接口：
 
-* [IDCardOCR](https://cloud.tencent.com/document/api/866/33524)
+* [AddAssetImageRegistryRegistryDetail](https://cloud.tencent.com/document/api/1285/65560)
 
-	* 新增入参：EnableRecognitionRectify
+	* 新增入参：ConnDetectConfig
 
+* [CreateAssetImageRegistryScanTask](https://cloud.tencent.com/document/api/1285/65517)
+
+	* 新增出参：TaskID
+
+* [CreateAssetImageRegistryScanTaskOneKey](https://cloud.tencent.com/document/api/1285/65516)
+
+	* 新增出参：TaskID
+
+* [DescribeAssetImageRegistryRegistryDetail](https://cloud.tencent.com/document/api/1285/65539)
+
+	* 新增出参：ConnDetectDetail, InstanceID
+
+* [DescribeAssetImageRegistryScanStatusOneKey](https://cloud.tencent.com/document/api/1285/65495)
+
+	* 新增入参：TaskID
+
+* [ModifyAssetImageRegistryScanStop](https://cloud.tencent.com/document/api/1285/65462)
+
+	* 新增入参：TaskID
+
+* [ModifyAssetImageRegistryScanStopOneKey](https://cloud.tencent.com/document/api/1285/65461)
+
+	* 新增入参：TaskID
+
+* [UpdateAssetImageRegistryRegistryDetail](https://cloud.tencent.com/document/api/1285/65519)
+
+	* 新增入参：ConnDetectConfig
+
+
+新增数据结构：
+
+* [ConnDetectConfig](https://cloud.tencent.com/document/api/1285/65614#ConnDetectConfig)
+* [RegistryConnDetectResult](https://cloud.tencent.com/document/api/1285/65614#RegistryConnDetectResult)
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 56 次发布
+
+发布时间：2023-07-28 01:54:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [McuLayout](https://cloud.tencent.com/document/api/647/44055#McuLayout)
+
+	* 新增成员：BackgroundRenderMode
+
+* [McuVideoParams](https://cloud.tencent.com/document/api/647/44055#McuVideoParams)
+
+	* 新增成员：BackgroundRenderMode
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 162 次发布
+
+发布时间：2023-07-28 01:57:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSpecificTrafficPackageUsedDetails](https://cloud.tencent.com/document/api/215/95637)
+
+修改接口：
+
+* [DescribeVpcEndPointService](https://cloud.tencent.com/document/api/215/54678)
+
+	* 新增入参：IsListAuthorizedEndPointService
+
+
+新增数据结构：
+
+* [TrafficFlow](https://cloud.tencent.com/document/api/215/15824#TrafficFlow)
+* [UsedDetail](https://cloud.tencent.com/document/api/215/15824#UsedDetail)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 40 次发布
+
+发布时间：2023-07-28 01:59:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAccessHistogram](https://cloud.tencent.com/document/api/627/95638)
+
+新增数据结构：
+
+* [AccessHistogramItem](https://cloud.tencent.com/document/api/627/53609#AccessHistogramItem)
 
 
 
@@ -9855,6 +9830,23 @@
 
 ## 品牌经营管家(bma) 版本：2022-11-15
 
+### 第 9 次发布
+
+发布时间：2023-07-28 01:09:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FakeURLData](https://cloud.tencent.com/document/api/1296/86604#FakeURLData)
+
+	* 新增成员：AuditStatus
+
+	* <font color="#dd0000">**修改成员**：</font>FakeURLId, BrandName, Origin, FakeURL, FakeDomain, Heat, BlockStatus, BlockNote, OfflineStatus, OfflineNote, IP, IPLocation, WebCompany, WebAttribute, WebName, WebICP, WebCreateTime, WebExpireTime, InsertTime, CertificationStatus, Snapshot, AccountStatus
+
+
 ### 第 8 次发布
 
 发布时间：2023-05-18 01:05:33
@@ -13553,6 +13545,25 @@
 
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 52 次发布
+
+发布时间：2023-07-28 01:10:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SdkAppIdBuyInfo](https://cloud.tencent.com/document/api/679/47715#SdkAppIdBuyInfo)
+
+	* 新增成员：SipBuyNum
+
+* [StaffBuyInfo](https://cloud.tencent.com/document/api/679/47715#StaffBuyInfo)
+
+	* 新增成员：SipNum
+
 
 ### 第 51 次发布
 
@@ -27205,6 +27216,31 @@
 
 ## 日志服务(cls) 版本：2020-10-16
 
+### 第 60 次发布
+
+发布时间：2023-07-28 01:15:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDashboards](https://cloud.tencent.com/document/api/614/95636)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DashboardInfo](https://cloud.tencent.com/document/api/614/56471#DashboardInfo)](https://cloud.tencent.com/document/api/614/56471#[DashboardInfo](https://cloud.tencent.com/document/api/614/56471#DashboardInfo))
+* [[DashboardTopicInfo](https://cloud.tencent.com/document/api/614/56471#DashboardTopicInfo)](https://cloud.tencent.com/document/api/614/56471#[DashboardTopicInfo](https://cloud.tencent.com/document/api/614/56471#DashboardTopicInfo))
+* [[TopicIdAndRegion](https://cloud.tencent.com/document/api/614/56471#TopicIdAndRegion)](https://cloud.tencent.com/document/api/614/56471#[TopicIdAndRegion](https://cloud.tencent.com/document/api/614/56471#TopicIdAndRegion))
+
+修改数据结构：
+
+* [ScheduledSqlResouceInfo](https://cloud.tencent.com/document/api/614/56471#ScheduledSqlResouceInfo)
+
+	* 新增成员：BizType, MetricName
+
+
 ### 第 59 次发布
 
 发布时间：2023-07-27 01:09:55
@@ -35131,6 +35167,29 @@
 
 
 ## 主机安全(cwp) 版本：2018-02-28
+
+### 第 92 次发布
+
+发布时间：2023-07-28 01:18:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [EffectiveMachineInfo](https://cloud.tencent.com/document/api/296/19867#EffectiveMachineInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>MachineName, MachinePublicIp, MachinePrivateIp, MachineTag, Quuid, Uuid, KernelVersion, MachineStatus, LicenseOrder, VulNum, CloudTags, InstanceID
+
+* [LicenseDetail](https://cloud.tencent.com/document/api/296/19867#LicenseDetail)
+
+	* 新增成员：FreezeNum
+
+* [Machine](https://cloud.tencent.com/document/api/296/19867#Machine)
+
+	* <font color="#dd0000">**修改成员**：</font>MachineName, MachineOs, MachineStatus, Uuid, Quuid, VulNum, MachineIp, IsProVersion, MachineWanIp, PayMode, MalwareNum, Tag, BaselineNum, CyberAttackNum, SecurityStatus, InvasionNum, RegionInfo, InstanceState, LicenseStatus, ProjectId, HasAssetScan, MachineType, KernelVersion, ProtectType, CloudTags, IsAddedOnTheFifteen, IpList, VpcId, MachineExtraInfo, InstanceId
+
 
 ### 第 91 次发布
 
@@ -43931,6 +43990,21 @@
 
 ## DNSPod(dnspod) 版本：2021-03-23
 
+### 第 23 次发布
+
+发布时间：2023-07-28 01:23:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRecord](https://cloud.tencent.com/document/api/1427/56180)
+
+	* 新增入参：Remark
+
+
 ### 第 22 次发布
 
 发布时间：2023-07-26 01:17:12
@@ -50659,7 +50733,7 @@
 
 新增接口：
 
-* [[CreateOrganizationBatchSignUrl](https://cloud.tencent.com/document/api/1323/95598)](https://cloud.tencent.com/document/api/#/#)
+* [CreateOrganizationBatchSignUrl](https://cloud.tencent.com/document/api/1323/95598)
 
 ### 第 96 次发布
 
@@ -50671,11 +50745,11 @@
 
 新增接口：
 
-* [[CreateWebThemeConfig](https://cloud.tencent.com/document/api/1323/95592)](https://cloud.tencent.com/document/api/#/#)
+* [CreateWebThemeConfig](https://cloud.tencent.com/document/api/1323/95592)
 
 新增数据结构：
 
-* [[WebThemeConfig](https://cloud.tencent.com/document/api/1323/70369#WebThemeConfig)](https://cloud.tencent.com/document/api/1323/70369#[WebThemeConfig](https://cloud.tencent.com/document/api/1323/70369#WebThemeConfig))
+* [WebThemeConfig](https://cloud.tencent.com/document/api/1323/70369#WebThemeConfig)
 
 ### 第 95 次发布
 
@@ -50687,11 +50761,11 @@
 
 新增接口：
 
-* [[CreateEmbedWebUrl](https://cloud.tencent.com/document/api/1323/95590)](https://cloud.tencent.com/document/api/#/#)
+* [CreateEmbedWebUrl](https://cloud.tencent.com/document/api/1323/95590)
 
 新增数据结构：
 
-* [[ReviewerInfo](https://cloud.tencent.com/document/api/1323/70369#ReviewerInfo)](https://cloud.tencent.com/document/api/1323/70369#[ReviewerInfo](https://cloud.tencent.com/document/api/1323/70369#ReviewerInfo))
+* [ReviewerInfo](https://cloud.tencent.com/document/api/1323/70369#ReviewerInfo)
 
 ### 第 94 次发布
 
@@ -52573,11 +52647,11 @@
 
 新增接口：
 
-* [[ChannelCreateWebThemeConfig](https://cloud.tencent.com/document/api/1420/95591)](https://cloud.tencent.com/document/api/#/#)
+* [ChannelCreateWebThemeConfig](https://cloud.tencent.com/document/api/1420/95591)
 
 新增数据结构：
 
-* [[WebThemeConfig](https://cloud.tencent.com/document/api/1420/61525#WebThemeConfig)](https://cloud.tencent.com/document/api/1420/61525#[WebThemeConfig](https://cloud.tencent.com/document/api/1420/61525#WebThemeConfig))
+* [WebThemeConfig](https://cloud.tencent.com/document/api/1420/61525#WebThemeConfig)
 
 ### 第 96 次发布
 
@@ -54371,9 +54445,9 @@
 
 新增数据结构：
 
-* [[FuseParam](https://cloud.tencent.com/document/api/670/31062#FuseParam)](https://cloud.tencent.com/document/api/670/31062#[FuseParam](https://cloud.tencent.com/document/api/670/31062#FuseParam))
-* [[ImageCodecParam](https://cloud.tencent.com/document/api/670/31062#ImageCodecParam)](https://cloud.tencent.com/document/api/670/31062#[ImageCodecParam](https://cloud.tencent.com/document/api/670/31062#ImageCodecParam))
-* [[MetaData](https://cloud.tencent.com/document/api/670/31062#MetaData)](https://cloud.tencent.com/document/api/670/31062#[MetaData](https://cloud.tencent.com/document/api/670/31062#MetaData))
+* [FuseParam](https://cloud.tencent.com/document/api/670/31062#FuseParam)
+* [ImageCodecParam](https://cloud.tencent.com/document/api/670/31062#ImageCodecParam)
+* [MetaData](https://cloud.tencent.com/document/api/670/31062#MetaData)
 
 ### 第 6 次发布
 
@@ -54494,9 +54568,9 @@
 
 新增数据结构：
 
-* [[FuseParam](https://cloud.tencent.com/document/api/670/85619#FuseParam)](https://cloud.tencent.com/document/api/670/85619#[FuseParam](https://cloud.tencent.com/document/api/670/85619#FuseParam))
-* [[ImageCodecParam](https://cloud.tencent.com/document/api/670/85619#ImageCodecParam)](https://cloud.tencent.com/document/api/670/85619#[ImageCodecParam](https://cloud.tencent.com/document/api/670/85619#ImageCodecParam))
-* [[MetaData](https://cloud.tencent.com/document/api/670/85619#MetaData)](https://cloud.tencent.com/document/api/670/85619#[MetaData](https://cloud.tencent.com/document/api/670/85619#MetaData))
+* [FuseParam](https://cloud.tencent.com/document/api/670/85619#FuseParam)
+* [ImageCodecParam](https://cloud.tencent.com/document/api/670/85619#ImageCodecParam)
+* [MetaData](https://cloud.tencent.com/document/api/670/85619#MetaData)
 
 ### 第 4 次发布
 
@@ -65605,6 +65679,21 @@
 
 
 ## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 34 次发布
+
+发布时间：2023-07-28 01:32:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RoomItem](https://cloud.tencent.com/document/api/1639/81423#RoomItem)
+
+	* 新增成员：IsGradingRequiredPostClass, RoomType
+
 
 ### 第 33 次发布
 
@@ -95872,6 +95961,54 @@
 
 ## 容器安全服务(tcss) 版本：2020-11-01
 
+### 第 48 次发布
+
+发布时间：2023-07-28 01:47:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddAssetImageRegistryRegistryDetail](https://cloud.tencent.com/document/api/1285/65560)
+
+	* 新增入参：ConnDetectConfig
+
+* [CreateAssetImageRegistryScanTask](https://cloud.tencent.com/document/api/1285/65517)
+
+	* 新增出参：TaskID
+
+* [CreateAssetImageRegistryScanTaskOneKey](https://cloud.tencent.com/document/api/1285/65516)
+
+	* 新增出参：TaskID
+
+* [DescribeAssetImageRegistryRegistryDetail](https://cloud.tencent.com/document/api/1285/65539)
+
+	* 新增出参：ConnDetectDetail, InstanceID
+
+* [DescribeAssetImageRegistryScanStatusOneKey](https://cloud.tencent.com/document/api/1285/65495)
+
+	* 新增入参：TaskID
+
+* [ModifyAssetImageRegistryScanStop](https://cloud.tencent.com/document/api/1285/65462)
+
+	* 新增入参：TaskID
+
+* [ModifyAssetImageRegistryScanStopOneKey](https://cloud.tencent.com/document/api/1285/65461)
+
+	* 新增入参：TaskID
+
+* [UpdateAssetImageRegistryRegistryDetail](https://cloud.tencent.com/document/api/1285/65519)
+
+	* 新增入参：ConnDetectConfig
+
+
+新增数据结构：
+
+* [[ConnDetectConfig](https://cloud.tencent.com/document/api/1285/65614#ConnDetectConfig)](https://cloud.tencent.com/document/api/1285/65614#[ConnDetectConfig](https://cloud.tencent.com/document/api/1285/65614#ConnDetectConfig))
+* [[RegistryConnDetectResult](https://cloud.tencent.com/document/api/1285/65614#RegistryConnDetectResult)](https://cloud.tencent.com/document/api/1285/65614#[RegistryConnDetectResult](https://cloud.tencent.com/document/api/1285/65614#RegistryConnDetectResult))
+
 ### 第 47 次发布
 
 发布时间：2023-06-30 01:45:16
@@ -110913,6 +111050,25 @@
 
 ## 实时音视频(trtc) 版本：2019-07-22
 
+### 第 56 次发布
+
+发布时间：2023-07-28 01:54:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [McuLayout](https://cloud.tencent.com/document/api/647/44055#McuLayout)
+
+	* 新增成员：BackgroundRenderMode
+
+* [McuVideoParams](https://cloud.tencent.com/document/api/647/44055#McuVideoParams)
+
+	* 新增成员：BackgroundRenderMode
+
+
 ### 第 55 次发布
 
 发布时间：2023-07-11 01:48:58
@@ -120192,6 +120348,30 @@
 
 ## 私有网络(vpc) 版本：2017-03-12
 
+### 第 162 次发布
+
+发布时间：2023-07-28 01:57:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeSpecificTrafficPackageUsedDetails](https://cloud.tencent.com/document/api/215/95637)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeVpcEndPointService](https://cloud.tencent.com/document/api/215/54678)
+
+	* 新增入参：IsListAuthorizedEndPointService
+
+
+新增数据结构：
+
+* [[TrafficFlow](https://cloud.tencent.com/document/api/215/15824#TrafficFlow)](https://cloud.tencent.com/document/api/215/15824#[TrafficFlow](https://cloud.tencent.com/document/api/215/15824#TrafficFlow))
+* [[UsedDetail](https://cloud.tencent.com/document/api/215/15824#UsedDetail)](https://cloud.tencent.com/document/api/215/15824#[UsedDetail](https://cloud.tencent.com/document/api/215/15824#UsedDetail))
+
 ### 第 161 次发布
 
 发布时间：2023-07-12 01:51:01
@@ -123880,6 +124060,22 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 40 次发布
+
+发布时间：2023-07-28 01:59:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAccessHistogram](https://cloud.tencent.com/document/api/627/95638)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AccessHistogramItem](https://cloud.tencent.com/document/api/627/53609#AccessHistogramItem)](https://cloud.tencent.com/document/api/627/53609#[AccessHistogramItem](https://cloud.tencent.com/document/api/627/53609#AccessHistogramItem))
 
 ### 第 39 次发布
 

@@ -2131,7 +2131,9 @@ type CreateFlowSignUrlRequestParams struct {
 	// 流程编号
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 流程签署人，其中ApproverName，ApproverMobile和ApproverType必传，其他可不传，ApproverType目前只支持个人类型的签署人。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
+	// 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，其他可不传，ApproverType目前只支持个人类型的签署人。
+	// 
+	// 签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
 	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitempty" name:"FlowApproverInfos"`
 
 	// 用户信息，此结构体UserId必填
@@ -2155,7 +2157,9 @@ type CreateFlowSignUrlRequest struct {
 	// 流程编号
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 流程签署人，其中ApproverName，ApproverMobile和ApproverType必传，其他可不传，ApproverType目前只支持个人类型的签署人。还需注意签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
+	// 流程签署人列表，其中结构体的ApproverName，ApproverMobile和ApproverType必传，其他可不传，ApproverType目前只支持个人类型的签署人。
+	// 
+	// 签署人只能有手写签名和时间类型的签署控件，其他类型的填写控件和签署控件暂时都未支持。
 	FlowApproverInfos []*FlowCreateApprover `json:"FlowApproverInfos,omitempty" name:"FlowApproverInfos"`
 
 	// 用户信息，此结构体UserId必填
@@ -4537,24 +4541,32 @@ func (r *DescribeFlowInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowTemplatesRequestParams struct {
-	// 调用方用户信息，userId 必填
+	// 调用方员工/经办人信息
+	// UserId 必填，在企业控制台组织架构中可以查到员工的UserId
+	// 注：请保证对应
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理相关应用信息
+	// 如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
+	// 查询内容类型
+	// 0-模板列表及详情（默认）
+	// 1-仅模板列表
 	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 
-	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
+	// 搜索条件，本字段用于指定模板Id进行查询。
+	// Key：template-id
+	// Values：需要查询的模板Id列表
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 查询偏移位置，默认0
+	// 查询结果分页返回，此处指定第几页，如果不传默从第一页返回。页码从0开始，即首页为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询个数，默认20，最大200
+	// 指定每页多少条数据，如果不传默认为20，单页最大200。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
+	// 用于查询指定应用号下单模板列表。
 	// ApplicationId不为空，查询指定应用下的模板列表
 	// ApplicationId为空，查询所有应用下的模板列表
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
@@ -4579,24 +4591,32 @@ type DescribeFlowTemplatesRequestParams struct {
 type DescribeFlowTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方用户信息，userId 必填
+	// 调用方员工/经办人信息
+	// UserId 必填，在企业控制台组织架构中可以查到员工的UserId
+	// 注：请保证对应
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理相关应用信息
+	// 如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
+	// 查询内容类型
+	// 0-模板列表及详情（默认）
+	// 1-仅模板列表
 	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 
-	// 搜索条件，具体参考Filter结构体。本接口取值：template-id：按照【 **模板唯一标识** 】进行过滤
+	// 搜索条件，本字段用于指定模板Id进行查询。
+	// Key：template-id
+	// Values：需要查询的模板Id列表
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 查询偏移位置，默认0
+	// 查询结果分页返回，此处指定第几页，如果不传默从第一页返回。页码从0开始，即首页为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询个数，默认20，最大200
+	// 指定每页多少条数据，如果不传默认为20，单页最大200。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
+	// 用于查询指定应用号下单模板列表。
 	// ApplicationId不为空，查询指定应用下的模板列表
 	// ApplicationId为空，查询所有应用下的模板列表
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`

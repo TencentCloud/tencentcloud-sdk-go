@@ -3201,6 +3201,7 @@ func NewListAttachedGroupPoliciesResponse() (response *ListAttachedGroupPolicies
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SEARCHKEYWORDLENGTHERROR = "InvalidParameter.SearchKeywordLengthError"
 func (c *Client) ListAttachedGroupPolicies(request *ListAttachedGroupPoliciesRequest) (response *ListAttachedGroupPoliciesResponse, err error) {
     return c.ListAttachedGroupPoliciesWithContext(context.Background(), request)
 }
@@ -3211,6 +3212,7 @@ func (c *Client) ListAttachedGroupPolicies(request *ListAttachedGroupPoliciesReq
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETER_SEARCHKEYWORDLENGTHERROR = "InvalidParameter.SearchKeywordLengthError"
 func (c *Client) ListAttachedGroupPoliciesWithContext(ctx context.Context, request *ListAttachedGroupPoliciesRequest) (response *ListAttachedGroupPoliciesResponse, err error) {
     if request == nil {
         request = NewListAttachedGroupPoliciesRequest()

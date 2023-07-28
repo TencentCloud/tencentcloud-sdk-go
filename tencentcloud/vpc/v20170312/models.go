@@ -13672,6 +13672,115 @@ func (r *DescribeSnapshotPoliciesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSpecificTrafficPackageUsedDetailsRequestParams struct {
+	// 共享流量包唯一ID
+	TrafficPackageId *string `json:"TrafficPackageId,omitempty" name:"TrafficPackageId"`
+
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。详细的过滤条件如下：<li> resource-id - String - 是否必填：否 - （过滤条件）按照抵扣流量资源的唯一 ID 过滤。</li><li> resource-type - String - 是否必填：否 - （过滤条件）按照资源类型过滤，资源类型包括 CVM 和 EIP </li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序条件。该参数仅支持根据抵扣量排序，传值为 deduction
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序类型，仅支持0和1，0-降序，1-升序。不传默认为0
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 开始时间。不传默认为当前时间往前推30天
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。不传默认为当前时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeSpecificTrafficPackageUsedDetailsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享流量包唯一ID
+	TrafficPackageId *string `json:"TrafficPackageId,omitempty" name:"TrafficPackageId"`
+
+	// 每次请求的`Filters`的上限为10，`Filter.Values`的上限为5。详细的过滤条件如下：<li> resource-id - String - 是否必填：否 - （过滤条件）按照抵扣流量资源的唯一 ID 过滤。</li><li> resource-type - String - 是否必填：否 - （过滤条件）按照资源类型过滤，资源类型包括 CVM 和 EIP </li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序条件。该参数仅支持根据抵扣量排序，传值为 deduction
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序类型，仅支持0和1，0-降序，1-升序。不传默认为0
+	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
+
+	// 开始时间。不传默认为当前时间往前推30天
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间。不传默认为当前时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 分页参数
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分页参数
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeSpecificTrafficPackageUsedDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpecificTrafficPackageUsedDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TrafficPackageId")
+	delete(f, "Filters")
+	delete(f, "OrderField")
+	delete(f, "OrderType")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSpecificTrafficPackageUsedDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSpecificTrafficPackageUsedDetailsResponseParams struct {
+	// 符合查询条件的共享流量包用量明细的总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 共享流量包用量明细列表
+	UsedDetailSet []*UsedDetail `json:"UsedDetailSet,omitempty" name:"UsedDetailSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSpecificTrafficPackageUsedDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSpecificTrafficPackageUsedDetailsResponseParams `json:"Response"`
+}
+
+func (r *DescribeSpecificTrafficPackageUsedDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSpecificTrafficPackageUsedDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSubnetResourceDashboardRequestParams struct {
 	// Subnet实例ID，例如：subnet-f1xjkw1b。
 	SubnetIds []*string `json:"SubnetIds,omitempty" name:"SubnetIds"`
@@ -14318,6 +14427,9 @@ type DescribeVpcEndPointServiceRequestParams struct {
 
 	// 终端节点服务ID。不支持同时传入参数 EndPointServiceIds and Filters。
 	EndPointServiceIds []*string `json:"EndPointServiceIds,omitempty" name:"EndPointServiceIds"`
+
+	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，那些终端节点服务授权了该账户。</li>
+	IsListAuthorizedEndPointService *bool `json:"IsListAuthorizedEndPointService,omitempty" name:"IsListAuthorizedEndPointService"`
 }
 
 type DescribeVpcEndPointServiceRequest struct {
@@ -14338,6 +14450,9 @@ type DescribeVpcEndPointServiceRequest struct {
 
 	// 终端节点服务ID。不支持同时传入参数 EndPointServiceIds and Filters。
 	EndPointServiceIds []*string `json:"EndPointServiceIds,omitempty" name:"EndPointServiceIds"`
+
+	// <li>不支持同时传入参数 Filters 。</li> <li>列出授权给当前账号的的终端节点服务信息。可以配合EndPointServiceIds参数进行过滤，那些终端节点服务授权了该账户。</li>
+	IsListAuthorizedEndPointService *bool `json:"IsListAuthorizedEndPointService,omitempty" name:"IsListAuthorizedEndPointService"`
 }
 
 func (r *DescribeVpcEndPointServiceRequest) ToJsonString() string {
@@ -14356,6 +14471,7 @@ func (r *DescribeVpcEndPointServiceRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "EndPointServiceIds")
+	delete(f, "IsListAuthorizedEndPointService")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpcEndPointServiceRequest has unknown keys!", "")
 	}
@@ -24723,6 +24839,19 @@ type TemplateLimit struct {
 	ServiceTemplateGroupMemberLimit *uint64 `json:"ServiceTemplateGroupMemberLimit,omitempty" name:"ServiceTemplateGroupMemberLimit"`
 }
 
+type TrafficFlow struct {
+	// 实际流量，单位为 字节
+	Value *uint64 `json:"Value,omitempty" name:"Value"`
+
+	// 格式化后的流量，单位见参数 FormatUnit
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FormatValue *float64 `json:"FormatValue,omitempty" name:"FormatValue"`
+
+	// 格式化后流量的单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FormatUnit *string `json:"FormatUnit,omitempty" name:"FormatUnit"`
+}
+
 type TrafficPackage struct {
 	// 流量包唯一ID
 	TrafficPackageId *string `json:"TrafficPackageId,omitempty" name:"TrafficPackageId"`
@@ -25171,6 +25300,39 @@ func (r *UnlockCcnsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UnlockCcnsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UsedDetail struct {
+	// 流量包唯一ID
+	TrafficPackageId *string `json:"TrafficPackageId,omitempty" name:"TrafficPackageId"`
+
+	// 流量包名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TrafficPackageName *string `json:"TrafficPackageName,omitempty" name:"TrafficPackageName"`
+
+	// 流量包总量
+	TotalAmount *TrafficFlow `json:"TotalAmount,omitempty" name:"TotalAmount"`
+
+	// 本次抵扣
+	Deduction *TrafficFlow `json:"Deduction,omitempty" name:"Deduction"`
+
+	// 本次抵扣后剩余量
+	RemainingAmount *TrafficFlow `json:"RemainingAmount,omitempty" name:"RemainingAmount"`
+
+	// 抵扣时间
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 资源类型。可能的值: CVM, LB, NAT, HAVIP, EIP
+	ResourceType *string `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源名称
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 流量包到期时间
+	Deadline *string `json:"Deadline,omitempty" name:"Deadline"`
 }
 
 type Vpc struct {

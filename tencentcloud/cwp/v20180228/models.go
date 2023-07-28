@@ -22369,6 +22369,10 @@ type LicenseDetail struct {
 	// 平台标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+
+	// 冻结数,当为0时 为未冻结,非0 则表示冻结授权数额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreezeNum *int64 `json:"FreezeNum,omitempty" name:"FreezeNum"`
 }
 
 type LicenseOrder struct {
