@@ -379,6 +379,160 @@ func (c *Client) CreateModelServiceWithContext(ctx context.Context, request *Cre
     return
 }
 
+func NewCreateNotebookRequest() (request *CreateNotebookRequest) {
+    request = &CreateNotebookRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "CreateNotebook")
+    
+    
+    return
+}
+
+func NewCreateNotebookResponse() (response *CreateNotebookResponse) {
+    response = &CreateNotebookResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateNotebook
+// 创建Notebook
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  FAILEDOPERATION_FREEZEBILLFAILED = "FailedOperation.FreezeBillFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
+//  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CODEREPODUPLICATED = "InvalidParameterValue.CodeRepoDuplicated"
+//  INVALIDPARAMETERVALUE_CODEREPONOTFOUND = "InvalidParameterValue.CodeRepoNotFound"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_LIFECYCLENOTFOUND = "InvalidParameterValue.LifecycleNotFound"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateNotebookWithBareMetalResourceGroup"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
+//  OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
+//  OPERATIONDENIED_NETWORKCIDRILLEGAL = "OperationDenied.NetworkCidrIllegal"
+//  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateNotebook(request *CreateNotebookRequest) (response *CreateNotebookResponse, err error) {
+    return c.CreateNotebookWithContext(context.Background(), request)
+}
+
+// CreateNotebook
+// 创建Notebook
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  FAILEDOPERATION_FREEZEBILLFAILED = "FailedOperation.FreezeBillFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
+//  INTERNALERROR_QUERYSUBNETINFOFAILED = "InternalError.QuerySubnetInfoFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CODEREPODUPLICATED = "InvalidParameterValue.CodeRepoDuplicated"
+//  INVALIDPARAMETERVALUE_CODEREPONOTFOUND = "InvalidParameterValue.CodeRepoNotFound"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_LIFECYCLENOTFOUND = "InvalidParameterValue.LifecycleNotFound"
+//  INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateNotebookWithBareMetalResourceGroup"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
+//  OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
+//  OPERATIONDENIED_NETWORKCIDRILLEGAL = "OperationDenied.NetworkCidrIllegal"
+//  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) CreateNotebookWithContext(ctx context.Context, request *CreateNotebookRequest) (response *CreateNotebookResponse, err error) {
+    if request == nil {
+        request = NewCreateNotebookRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNotebook require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNotebookResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateNotebookImageRequest() (request *CreateNotebookImageRequest) {
+    request = &CreateNotebookImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "CreateNotebookImage")
+    
+    
+    return
+}
+
+func NewCreateNotebookImageResponse() (response *CreateNotebookImageResponse) {
+    response = &CreateNotebookImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateNotebookImage
+// 保存镜像
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateNotebookImage(request *CreateNotebookImageRequest) (response *CreateNotebookImageResponse, err error) {
+    return c.CreateNotebookImageWithContext(context.Background(), request)
+}
+
+// CreateNotebookImage
+// 保存镜像
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateNotebookImageWithContext(ctx context.Context, request *CreateNotebookImageRequest) (response *CreateNotebookImageResponse, err error) {
+    if request == nil {
+        request = NewCreateNotebookImageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNotebookImage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNotebookImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOptimizedModelRequest() (request *CreateOptimizedModelRequest) {
     request = &CreateOptimizedModelRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1039,6 +1193,154 @@ func (c *Client) DeleteModelServiceGroupWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeleteModelServiceGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNotebookRequest() (request *DeleteNotebookRequest) {
+    request = &DeleteNotebookRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DeleteNotebook")
+    
+    
+    return
+}
+
+func NewDeleteNotebookResponse() (response *DeleteNotebookResponse) {
+    response = &DeleteNotebookResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteNotebook
+// 删除Notebook
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETENOTEBOOKSTORAGEFAILED = "FailedOperation.DeleteNotebookStorageFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_UNBINDINGTAGSFAILED = "FailedOperation.UnBindingTagsFailed"
+//  FAILEDOPERATION_UNSUBMITNOTALLOWTOSTOP = "FailedOperation.UnSubmitNotAllowToStop"
+//  FAILEDOPERATION_UNFREEZEBILLFAILED = "FailedOperation.UnfreezeBillFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteNotebook(request *DeleteNotebookRequest) (response *DeleteNotebookResponse, err error) {
+    return c.DeleteNotebookWithContext(context.Background(), request)
+}
+
+// DeleteNotebook
+// 删除Notebook
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETENOTEBOOKSTORAGEFAILED = "FailedOperation.DeleteNotebookStorageFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_UNBINDINGTAGSFAILED = "FailedOperation.UnBindingTagsFailed"
+//  FAILEDOPERATION_UNSUBMITNOTALLOWTOSTOP = "FailedOperation.UnSubmitNotAllowToStop"
+//  FAILEDOPERATION_UNFREEZEBILLFAILED = "FailedOperation.UnfreezeBillFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteNotebookWithContext(ctx context.Context, request *DeleteNotebookRequest) (response *DeleteNotebookResponse, err error) {
+    if request == nil {
+        request = NewDeleteNotebookRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNotebook require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNotebookResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNotebookImageRecordRequest() (request *DeleteNotebookImageRecordRequest) {
+    request = &DeleteNotebookImageRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DeleteNotebookImageRecord")
+    
+    
+    return
+}
+
+func NewDeleteNotebookImageRecordResponse() (response *DeleteNotebookImageRecordResponse) {
+    response = &DeleteNotebookImageRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteNotebookImageRecord
+// 删除notebook镜像保存记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETENOTEBOOKSTORAGEFAILED = "FailedOperation.DeleteNotebookStorageFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_UNBINDINGTAGSFAILED = "FailedOperation.UnBindingTagsFailed"
+//  FAILEDOPERATION_UNSUBMITNOTALLOWTOSTOP = "FailedOperation.UnSubmitNotAllowToStop"
+//  FAILEDOPERATION_UNFREEZEBILLFAILED = "FailedOperation.UnfreezeBillFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteNotebookImageRecord(request *DeleteNotebookImageRecordRequest) (response *DeleteNotebookImageRecordResponse, err error) {
+    return c.DeleteNotebookImageRecordWithContext(context.Background(), request)
+}
+
+// DeleteNotebookImageRecord
+// 删除notebook镜像保存记录
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DELETENOTEBOOKSTORAGEFAILED = "FailedOperation.DeleteNotebookStorageFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_UNBINDINGTAGSFAILED = "FailedOperation.UnBindingTagsFailed"
+//  FAILEDOPERATION_UNSUBMITNOTALLOWTOSTOP = "FailedOperation.UnSubmitNotAllowToStop"
+//  FAILEDOPERATION_UNFREEZEBILLFAILED = "FailedOperation.UnfreezeBillFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DeleteNotebookImageRecordWithContext(ctx context.Context, request *DeleteNotebookImageRecordRequest) (response *DeleteNotebookImageRecordResponse, err error) {
+    if request == nil {
+        request = NewDeleteNotebookImageRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNotebookImageRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNotebookImageRecordResponse()
     err = c.Send(request, response)
     return
 }
@@ -3057,6 +3359,238 @@ func (c *Client) DescribeModelServicesWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeNotebookRequest() (request *DescribeNotebookRequest) {
+    request = &DescribeNotebookRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeNotebook")
+    
+    
+    return
+}
+
+func NewDescribeNotebookResponse() (response *DescribeNotebookResponse) {
+    response = &DescribeNotebookResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNotebook
+// Notebook详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYBINDINGTAGSFAILED = "FailedOperation.QueryBindingTagsFailed"
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
+//  FAILEDOPERATION_QUERYRESOURCEGROUPNAMESFAILED = "FailedOperation.QueryResourceGroupNamesFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeNotebook(request *DescribeNotebookRequest) (response *DescribeNotebookResponse, err error) {
+    return c.DescribeNotebookWithContext(context.Background(), request)
+}
+
+// DescribeNotebook
+// Notebook详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYBINDINGTAGSFAILED = "FailedOperation.QueryBindingTagsFailed"
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
+//  FAILEDOPERATION_QUERYRESOURCEGROUPNAMESFAILED = "FailedOperation.QueryResourceGroupNamesFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeNotebookWithContext(ctx context.Context, request *DescribeNotebookRequest) (response *DescribeNotebookResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotebookRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebook require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotebookResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNotebookImageKernelsRequest() (request *DescribeNotebookImageKernelsRequest) {
+    request = &DescribeNotebookImageKernelsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeNotebookImageKernels")
+    
+    
+    return
+}
+
+func NewDescribeNotebookImageKernelsResponse() (response *DescribeNotebookImageKernelsResponse) {
+    response = &DescribeNotebookImageKernelsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNotebookImageKernels
+// 查询镜像kernel
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEIMAGEFAILED = "FailedOperation.CreateImageFailed"
+//  OPERATIONDENIED_NOTSUPPORTSAVEIMAGE = "OperationDenied.NotSupportSaveImage"
+func (c *Client) DescribeNotebookImageKernels(request *DescribeNotebookImageKernelsRequest) (response *DescribeNotebookImageKernelsResponse, err error) {
+    return c.DescribeNotebookImageKernelsWithContext(context.Background(), request)
+}
+
+// DescribeNotebookImageKernels
+// 查询镜像kernel
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEIMAGEFAILED = "FailedOperation.CreateImageFailed"
+//  OPERATIONDENIED_NOTSUPPORTSAVEIMAGE = "OperationDenied.NotSupportSaveImage"
+func (c *Client) DescribeNotebookImageKernelsWithContext(ctx context.Context, request *DescribeNotebookImageKernelsRequest) (response *DescribeNotebookImageKernelsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotebookImageKernelsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebookImageKernels require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotebookImageKernelsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNotebookImageRecordsRequest() (request *DescribeNotebookImageRecordsRequest) {
+    request = &DescribeNotebookImageRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeNotebookImageRecords")
+    
+    
+    return
+}
+
+func NewDescribeNotebookImageRecordsResponse() (response *DescribeNotebookImageRecordsResponse) {
+    response = &DescribeNotebookImageRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNotebookImageRecords
+// 查看notebook镜像保存记录
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNotebookImageRecords(request *DescribeNotebookImageRecordsRequest) (response *DescribeNotebookImageRecordsResponse, err error) {
+    return c.DescribeNotebookImageRecordsWithContext(context.Background(), request)
+}
+
+// DescribeNotebookImageRecords
+// 查看notebook镜像保存记录
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeNotebookImageRecordsWithContext(ctx context.Context, request *DescribeNotebookImageRecordsRequest) (response *DescribeNotebookImageRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotebookImageRecordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebookImageRecords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotebookImageRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNotebooksRequest() (request *DescribeNotebooksRequest) {
+    request = &DescribeNotebooksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "DescribeNotebooks")
+    
+    
+    return
+}
+
+func NewDescribeNotebooksResponse() (response *DescribeNotebooksResponse) {
+    response = &DescribeNotebooksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNotebooks
+// Notebook列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CHECKBILLINGWHITELISTFAILED = "FailedOperation.CheckBillingWhiteListFailed"
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
+//  FAILEDOPERATION_QUERYRESOURCEGROUPNAMESFAILED = "FailedOperation.QueryResourceGroupNamesFailed"
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERKEYSTATUSCONFLICTWITHCHARGESTATUS = "InvalidParameter.FilterKeyStatusConflictWithChargeStatus"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeNotebooks(request *DescribeNotebooksRequest) (response *DescribeNotebooksResponse, err error) {
+    return c.DescribeNotebooksWithContext(context.Background(), request)
+}
+
+// DescribeNotebooks
+// Notebook列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_CHECKBILLINGWHITELISTFAILED = "FailedOperation.CheckBillingWhiteListFailed"
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
+//  FAILEDOPERATION_QUERYRESOURCEGROUPNAMESFAILED = "FailedOperation.QueryResourceGroupNamesFailed"
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_FILTERKEYSTATUSCONFLICTWITHCHARGESTATUS = "InvalidParameter.FilterKeyStatusConflictWithChargeStatus"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeNotebooksWithContext(ctx context.Context, request *DescribeNotebooksRequest) (response *DescribeNotebooksResponse, err error) {
+    if request == nil {
+        request = NewDescribeNotebooksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNotebooks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNotebooksResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTrainingFrameworksRequest() (request *DescribeTrainingFrameworksRequest) {
     request = &DescribeTrainingFrameworksRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3701,6 +4235,148 @@ func (c *Client) ModifyModelServicePartialConfigWithContext(ctx context.Context,
     return
 }
 
+func NewModifyNotebookRequest() (request *ModifyNotebookRequest) {
+    request = &ModifyNotebookRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ModifyNotebook")
+    
+    
+    return
+}
+
+func NewModifyNotebookResponse() (response *ModifyNotebookResponse) {
+    response = &ModifyNotebookResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyNotebook
+// 修改Notebook
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  FAILEDOPERATION_MODIFYRESOURCEBILLINGTAGSFAILED = "FailedOperation.ModifyResourceBillingTagsFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_UNBINDINGTAGSFAILED = "FailedOperation.UnBindingTagsFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CODEREPONOTFOUND = "InvalidParameterValue.CodeRepoNotFound"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_LIFECYCLENOTFOUND = "InvalidParameterValue.LifecycleNotFound"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
+//  INVALIDPARAMETERVALUE_VOLUMESHRINKNOTALLOW = "InvalidParameterValue.VolumeShrinkNotAllow"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyNotebook(request *ModifyNotebookRequest) (response *ModifyNotebookResponse, err error) {
+    return c.ModifyNotebookWithContext(context.Background(), request)
+}
+
+// ModifyNotebook
+// 修改Notebook
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  FAILEDOPERATION_MODIFYRESOURCEBILLINGTAGSFAILED = "FailedOperation.ModifyResourceBillingTagsFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_UNBINDINGTAGSFAILED = "FailedOperation.UnBindingTagsFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_CODEREPONOTFOUND = "InvalidParameterValue.CodeRepoNotFound"
+//  INVALIDPARAMETERVALUE_DUPLICATENAME = "InvalidParameterValue.DuplicateName"
+//  INVALIDPARAMETERVALUE_LIFECYCLENOTFOUND = "InvalidParameterValue.LifecycleNotFound"
+//  INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+//  INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
+//  INVALIDPARAMETERVALUE_VOLUMESHRINKNOTALLOW = "InvalidParameterValue.VolumeShrinkNotAllow"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyNotebookWithContext(ctx context.Context, request *ModifyNotebookRequest) (response *ModifyNotebookResponse, err error) {
+    if request == nil {
+        request = NewModifyNotebookRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNotebook require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNotebookResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNotebookTagsRequest() (request *ModifyNotebookTagsRequest) {
+    request = &ModifyNotebookTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ModifyNotebookTags")
+    
+    
+    return
+}
+
+func NewModifyNotebookTagsResponse() (response *ModifyNotebookTagsResponse) {
+    response = &ModifyNotebookTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyNotebookTags
+// 修改Notebook标签
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ModifyNotebookTags(request *ModifyNotebookTagsRequest) (response *ModifyNotebookTagsResponse, err error) {
+    return c.ModifyNotebookTagsWithContext(context.Background(), request)
+}
+
+// ModifyNotebookTags
+// 修改Notebook标签
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_BINDINGTAGSFAILED = "FailedOperation.BindingTagsFailed"
+//  INTERNALERROR_BINDINGTAGSFAILED = "InternalError.BindingTagsFailed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) ModifyNotebookTagsWithContext(ctx context.Context, request *ModifyNotebookTagsRequest) (response *ModifyNotebookTagsResponse, err error) {
+    if request == nil {
+        request = NewModifyNotebookTagsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNotebookTags require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNotebookTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyServiceGroupWeightsRequest() (request *ModifyServiceGroupWeightsRequest) {
     request = &ModifyServiceGroupWeightsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3915,6 +4591,92 @@ func (c *Client) RestartModelAccelerateTaskWithContext(ctx context.Context, requ
     return
 }
 
+func NewStartNotebookRequest() (request *StartNotebookRequest) {
+    request = &StartNotebookRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "StartNotebook")
+    
+    
+    return
+}
+
+func NewStartNotebookResponse() (response *StartNotebookResponse) {
+    response = &StartNotebookResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartNotebook
+// 启动Notebook
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MODIFYBILLINGINSTANCEBATCHFAILED = "FailedOperation.ModifyBillingInstanceBatchFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
+//  OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
+//  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
+//  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) StartNotebook(request *StartNotebookRequest) (response *StartNotebookResponse, err error) {
+    return c.StartNotebookWithContext(context.Background(), request)
+}
+
+// StartNotebook
+// 启动Notebook
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MODIFYBILLINGINSTANCEBATCHFAILED = "FailedOperation.ModifyBillingInstanceBatchFailed"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
+//  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
+//  OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
+//  OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
+//  OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
+//  OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
+//  OPERATIONDENIED_WHITELISTQUOTAEXCEED = "OperationDenied.WhitelistQuotaExceed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) StartNotebookWithContext(ctx context.Context, request *StartNotebookRequest) (response *StartNotebookResponse, err error) {
+    if request == nil {
+        request = NewStartNotebookRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartNotebook require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartNotebookResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartTrainingTaskRequest() (request *StartTrainingTaskRequest) {
     request = &StartTrainingTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4065,6 +4827,74 @@ func (c *Client) StopBatchTaskWithContext(ctx context.Context, request *StopBatc
     return
 }
 
+func NewStopCreatingImageRequest() (request *StopCreatingImageRequest) {
+    request = &StopCreatingImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "StopCreatingImage")
+    
+    
+    return
+}
+
+func NewStopCreatingImageResponse() (response *StopCreatingImageResponse) {
+    response = &StopCreatingImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopCreatingImage
+// 停止保存镜像
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) StopCreatingImage(request *StopCreatingImageRequest) (response *StopCreatingImageResponse, err error) {
+    return c.StopCreatingImageWithContext(context.Background(), request)
+}
+
+// StopCreatingImage
+// 停止保存镜像
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CAMEXCEPTION = "AuthFailure.CamException"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
+//  FAILEDOPERATION_QUERYTAGFAIL = "FailedOperation.QueryTagFail"
+//  FAILEDOPERATION_UNMARSHALDATA = "FailedOperation.UnmarshalData"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) StopCreatingImageWithContext(ctx context.Context, request *StopCreatingImageRequest) (response *StopCreatingImageResponse, err error) {
+    if request == nil {
+        request = NewStopCreatingImageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopCreatingImage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopCreatingImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopModelAccelerateTaskRequest() (request *StopModelAccelerateTaskRequest) {
     request = &StopModelAccelerateTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4121,6 +4951,76 @@ func (c *Client) StopModelAccelerateTaskWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewStopModelAccelerateTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopNotebookRequest() (request *StopNotebookRequest) {
+    request = &StopNotebookRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "StopNotebook")
+    
+    
+    return
+}
+
+func NewStopNotebookResponse() (response *StopNotebookResponse) {
+    response = &StopNotebookResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopNotebook
+// 停止Notebook
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_STOPJOBINSTANCEFAILED = "FailedOperation.StopJobInstanceFailed"
+//  FAILEDOPERATION_UNSUBMITNOTALLOWTOSTOP = "FailedOperation.UnSubmitNotAllowToStop"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) StopNotebook(request *StopNotebookRequest) (response *StopNotebookResponse, err error) {
+    return c.StopNotebookWithContext(context.Background(), request)
+}
+
+// StopNotebook
+// 停止Notebook
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_STOPJOBINSTANCEFAILED = "FailedOperation.StopJobInstanceFailed"
+//  FAILEDOPERATION_UNSUBMITNOTALLOWTOSTOP = "FailedOperation.UnSubmitNotAllowToStop"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) StopNotebookWithContext(ctx context.Context, request *StopNotebookRequest) (response *StopNotebookResponse, err error) {
+    if request == nil {
+        request = NewStopNotebookRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopNotebook require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopNotebookResponse()
     err = c.Send(request, response)
     return
 }

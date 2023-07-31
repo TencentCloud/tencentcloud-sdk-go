@@ -2686,6 +2686,9 @@ type DescribeRoomResponseParams struct {
 	// 低代码互动课堂的SdkAppId。
 	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
 
+	// 观看类型。互动观看 （默认）	
+	AudienceType *uint64 `json:"AudienceType,omitempty" name:"AudienceType"`
+
 	// 分辨率。可以有如下取值：
 	// 1 标清
 	// 2 高清

@@ -2531,6 +2531,68 @@ func (c *Client) GetAttackDownloadRecordsWithContext(ctx context.Context, reques
     return
 }
 
+func NewGetAttackHistogramRequest() (request *GetAttackHistogramRequest) {
+    request = &GetAttackHistogramRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "GetAttackHistogram")
+    
+    
+    return
+}
+
+func NewGetAttackHistogramResponse() (response *GetAttackHistogramResponse) {
+    response = &GetAttackHistogramResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetAttackHistogram
+// 生成攻击日志的产生时间柱状图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSDBOPERATIONFAILED = "FailedOperation.CLSDBOperationFailed"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
+//  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
+//  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
+func (c *Client) GetAttackHistogram(request *GetAttackHistogramRequest) (response *GetAttackHistogramResponse, err error) {
+    return c.GetAttackHistogramWithContext(context.Background(), request)
+}
+
+// GetAttackHistogram
+// 生成攻击日志的产生时间柱状图
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSDBOPERATIONFAILED = "FailedOperation.CLSDBOperationFailed"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
+//  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
+//  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
+func (c *Client) GetAttackHistogramWithContext(ctx context.Context, request *GetAttackHistogramRequest) (response *GetAttackHistogramResponse, err error) {
+    if request == nil {
+        request = NewGetAttackHistogramRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAttackHistogram require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetAttackHistogramResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAccessPeriodRequest() (request *ModifyAccessPeriodRequest) {
     request = &ModifyAccessPeriodRequest{
         BaseRequest: &tchttp.BaseRequest{},

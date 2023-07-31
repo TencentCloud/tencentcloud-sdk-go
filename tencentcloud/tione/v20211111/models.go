@@ -1130,6 +1130,290 @@ func (r *CreateModelServiceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateNotebookImageRequestParams struct {
+	// 要保存的kernel数组
+	Kernels []*string `json:"Kernels,omitempty" name:"Kernels"`
+
+	// 镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// notebook id
+	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
+}
+
+type CreateNotebookImageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要保存的kernel数组
+	Kernels []*string `json:"Kernels,omitempty" name:"Kernels"`
+
+	// 镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// notebook id
+	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
+}
+
+func (r *CreateNotebookImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNotebookImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Kernels")
+	delete(f, "ImageInfo")
+	delete(f, "NotebookId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNotebookImageResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateNotebookImageResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateNotebookImageResponseParams `json:"Response"`
+}
+
+func (r *CreateNotebookImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNotebookImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNotebookRequestParams struct {
+	// 名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 计算资源付费模式 ，可选值为：
+	// PREPAID：预付费，即包年包月
+	// POSTPAID_BY_HOUR：按小时后付费
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 计算资源配置
+	ResourceConf *ResourceConf `json:"ResourceConf,omitempty" name:"ResourceConf"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
+
+	// 是否ROOT权限
+	RootAccess *bool `json:"RootAccess,omitempty" name:"RootAccess"`
+
+	// 是否自动停止
+	AutoStopping *bool `json:"AutoStopping,omitempty" name:"AutoStopping"`
+
+	// 是否访问公网
+	DirectInternetAccess *bool `json:"DirectInternetAccess,omitempty" name:"DirectInternetAccess"`
+
+	// 资源组ID(for预付费)
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// Vpc-Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 存储的类型。取值包含： 
+	//     FREE:    预付费的免费存储
+	//     CLOUD_PREMIUM： 高性能云硬盘
+	//     CLOUD_SSD： SSD云硬盘
+	//     CFS:     CFS存储，包含NFS和turbo
+	VolumeSourceType *string `json:"VolumeSourceType,omitempty" name:"VolumeSourceType"`
+
+	// 存储卷大小，单位GB
+	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitempty" name:"VolumeSizeInGB"`
+
+	// CFS存储的配置
+	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitempty" name:"VolumeSourceCFS"`
+
+	// 日志配置
+	LogConfig *LogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
+
+	// 生命周期脚本的ID
+	LifecycleScriptId *string `json:"LifecycleScriptId,omitempty" name:"LifecycleScriptId"`
+
+	// 默认GIT存储库的ID
+	DefaultCodeRepoId *string `json:"DefaultCodeRepoId,omitempty" name:"DefaultCodeRepoId"`
+
+	// 其他GIT存储库的ID，最多3个
+	AdditionalCodeRepoIds []*string `json:"AdditionalCodeRepoIds,omitempty" name:"AdditionalCodeRepoIds"`
+
+	// 自动停止时间，单位小时
+	AutomaticStopTime *uint64 `json:"AutomaticStopTime,omitempty" name:"AutomaticStopTime"`
+
+	// 标签配置
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 数据配置
+	DataConfigs []*DataConfig `json:"DataConfigs,omitempty" name:"DataConfigs"`
+
+	// 镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 镜像类型
+	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+}
+
+type CreateNotebookRequest struct {
+	*tchttp.BaseRequest
+	
+	// 名称。不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 计算资源付费模式 ，可选值为：
+	// PREPAID：预付费，即包年包月
+	// POSTPAID_BY_HOUR：按小时后付费
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 计算资源配置
+	ResourceConf *ResourceConf `json:"ResourceConf,omitempty" name:"ResourceConf"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
+
+	// 是否ROOT权限
+	RootAccess *bool `json:"RootAccess,omitempty" name:"RootAccess"`
+
+	// 是否自动停止
+	AutoStopping *bool `json:"AutoStopping,omitempty" name:"AutoStopping"`
+
+	// 是否访问公网
+	DirectInternetAccess *bool `json:"DirectInternetAccess,omitempty" name:"DirectInternetAccess"`
+
+	// 资源组ID(for预付费)
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// Vpc-Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 存储的类型。取值包含： 
+	//     FREE:    预付费的免费存储
+	//     CLOUD_PREMIUM： 高性能云硬盘
+	//     CLOUD_SSD： SSD云硬盘
+	//     CFS:     CFS存储，包含NFS和turbo
+	VolumeSourceType *string `json:"VolumeSourceType,omitempty" name:"VolumeSourceType"`
+
+	// 存储卷大小，单位GB
+	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitempty" name:"VolumeSizeInGB"`
+
+	// CFS存储的配置
+	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitempty" name:"VolumeSourceCFS"`
+
+	// 日志配置
+	LogConfig *LogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
+
+	// 生命周期脚本的ID
+	LifecycleScriptId *string `json:"LifecycleScriptId,omitempty" name:"LifecycleScriptId"`
+
+	// 默认GIT存储库的ID
+	DefaultCodeRepoId *string `json:"DefaultCodeRepoId,omitempty" name:"DefaultCodeRepoId"`
+
+	// 其他GIT存储库的ID，最多3个
+	AdditionalCodeRepoIds []*string `json:"AdditionalCodeRepoIds,omitempty" name:"AdditionalCodeRepoIds"`
+
+	// 自动停止时间，单位小时
+	AutomaticStopTime *uint64 `json:"AutomaticStopTime,omitempty" name:"AutomaticStopTime"`
+
+	// 标签配置
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 数据配置
+	DataConfigs []*DataConfig `json:"DataConfigs,omitempty" name:"DataConfigs"`
+
+	// 镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 镜像类型
+	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+}
+
+func (r *CreateNotebookRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNotebookRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "ChargeType")
+	delete(f, "ResourceConf")
+	delete(f, "LogEnable")
+	delete(f, "RootAccess")
+	delete(f, "AutoStopping")
+	delete(f, "DirectInternetAccess")
+	delete(f, "ResourceGroupId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "VolumeSourceType")
+	delete(f, "VolumeSizeInGB")
+	delete(f, "VolumeSourceCFS")
+	delete(f, "LogConfig")
+	delete(f, "LifecycleScriptId")
+	delete(f, "DefaultCodeRepoId")
+	delete(f, "AdditionalCodeRepoIds")
+	delete(f, "AutomaticStopTime")
+	delete(f, "Tags")
+	delete(f, "DataConfigs")
+	delete(f, "ImageInfo")
+	delete(f, "ImageType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNotebookResponseParams struct {
+	// notebook标志
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateNotebookResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateNotebookResponseParams `json:"Response"`
+}
+
+func (r *CreateNotebookResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNotebookResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOptimizedModelRequestParams struct {
 	// 模型加速任务ID
 	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
@@ -2247,6 +2531,114 @@ func (r *DeleteModelServiceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteModelServiceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNotebookImageRecordRequestParams struct {
+	// 记录id
+	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+}
+
+type DeleteNotebookImageRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 记录id
+	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+}
+
+func (r *DeleteNotebookImageRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNotebookImageRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RecordId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNotebookImageRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNotebookImageRecordResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteNotebookImageRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteNotebookImageRecordResponseParams `json:"Response"`
+}
+
+func (r *DeleteNotebookImageRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNotebookImageRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNotebookRequestParams struct {
+	// notebook id
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+type DeleteNotebookRequest struct {
+	*tchttp.BaseRequest
+	
+	// notebook id
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DeleteNotebookRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNotebookRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNotebookRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNotebookResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteNotebookResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteNotebookResponseParams `json:"Response"`
+}
+
+func (r *DeleteNotebookResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNotebookResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4296,6 +4688,318 @@ func (r *DescribeModelServicesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeNotebookImageKernelsRequestParams struct {
+	// notebook id
+	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
+}
+
+type DescribeNotebookImageKernelsRequest struct {
+	*tchttp.BaseRequest
+	
+	// notebook id
+	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
+}
+
+func (r *DescribeNotebookImageKernelsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookImageKernelsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotebookId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookImageKernelsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookImageKernelsResponseParams struct {
+	// 镜像kernel数组
+	Kernels []*string `json:"Kernels,omitempty" name:"Kernels"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNotebookImageKernelsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotebookImageKernelsResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotebookImageKernelsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookImageKernelsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookImageRecordsRequestParams struct {
+	// notebook id
+	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
+
+	// 位移值
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 日志限制
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 状态筛选
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeNotebookImageRecordsRequest struct {
+	*tchttp.BaseRequest
+	
+	// notebook id
+	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
+
+	// 位移值
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 日志限制
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 状态筛选
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeNotebookImageRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookImageRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NotebookId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookImageRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookImageRecordsResponseParams struct {
+	// 总条数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 镜像保存记录
+	NotebookImageRecords []*NotebookImageRecord `json:"NotebookImageRecords,omitempty" name:"NotebookImageRecords"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNotebookImageRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotebookImageRecordsResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotebookImageRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookImageRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookRequestParams struct {
+	// notebook id
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+type DescribeNotebookRequest struct {
+	*tchttp.BaseRequest
+	
+	// notebook id
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *DescribeNotebookRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebookRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebookResponseParams struct {
+	// 详情
+	NotebookDetail *NotebookDetail `json:"NotebookDetail,omitempty" name:"NotebookDetail"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNotebookResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotebookResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotebookResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebookResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebooksRequestParams struct {
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页返回的实例数，默认为10
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列。默认为DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 根据哪个字段排序，如：CreateTime、UpdateTime，默认为UpdateTime
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 过滤器，eg：[{ "Name": "Id", "Values": ["nb-123456789"] }]
+	// 
+	// 取值范围
+	// Name（名称）：notebook1
+	// Id（notebook ID）：nb-123456789
+	// Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed
+	// ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
+	// ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）
+	// DefaultCodeRepoId（默认代码仓库ID）：cr-123456789
+	// AdditionalCodeRepoId（关联代码仓库ID）：cr-123456789
+	// LifecycleScriptId（生命周期ID）：ls-12312312311312
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+}
+
+type DescribeNotebooksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页返回的实例数，默认为10
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列。默认为DESC
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 根据哪个字段排序，如：CreateTime、UpdateTime，默认为UpdateTime
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 过滤器，eg：[{ "Name": "Id", "Values": ["nb-123456789"] }]
+	// 
+	// 取值范围
+	// Name（名称）：notebook1
+	// Id（notebook ID）：nb-123456789
+	// Status（状态）：Starting / Running / Stopped / Stopping / Failed / SubmitFailed
+	// ChargeType（计费类型）：PREPAID（预付费）/ POSTPAID_BY_HOUR（后付费）
+	// ChargeStatus（计费状态）：NOT_BILLING（未开始计费）/ BILLING（计费中）/ BILLING_STORAGE（存储计费中）/ARREARS_STOP（欠费停止）
+	// DefaultCodeRepoId（默认代码仓库ID）：cr-123456789
+	// AdditionalCodeRepoId（关联代码仓库ID）：cr-123456789
+	// LifecycleScriptId（生命周期ID）：ls-12312312311312
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 标签过滤器，eg：[{ "TagKey": "TagKeyA", "TagValue": ["TagValueA"] }]
+	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+}
+
+func (r *DescribeNotebooksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebooksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Order")
+	delete(f, "OrderField")
+	delete(f, "Filters")
+	delete(f, "TagFilters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNotebooksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNotebooksResponseParams struct {
+	// 详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotebookSet []*NotebookSetItem `json:"NotebookSet,omitempty" name:"NotebookSet"`
+
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNotebooksResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNotebooksResponseParams `json:"Response"`
+}
+
+func (r *DescribeNotebooksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNotebooksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTrainingFrameworksRequestParams struct {
 
 }
@@ -5798,6 +6502,287 @@ func (r *ModifyModelServiceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyNotebookRequestParams struct {
+	// notebook id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 计算资源付费模式 ，可选值为：
+	// PREPAID：预付费，即包年包月
+	// POSTPAID_BY_HOUR：按小时后付费
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 计算资源配置
+	ResourceConf *ResourceConf `json:"ResourceConf,omitempty" name:"ResourceConf"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
+
+	// 是否自动停止
+	AutoStopping *bool `json:"AutoStopping,omitempty" name:"AutoStopping"`
+
+	// 是否访问公网
+	DirectInternetAccess *bool `json:"DirectInternetAccess,omitempty" name:"DirectInternetAccess"`
+
+	// 是否ROOT权限
+	RootAccess *bool `json:"RootAccess,omitempty" name:"RootAccess"`
+
+	// 资源组ID(for预付费)
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// Vpc-Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 存储卷大小，单位GB
+	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitempty" name:"VolumeSizeInGB"`
+
+	// 存储的类型。取值包含： 
+	//     FREE:    预付费的免费存储
+	//     CLOUD_PREMIUM： 高性能云硬盘
+	//     CLOUD_SSD： SSD云硬盘
+	//     CFS:     CFS存储，包含NFS和turbo
+	VolumeSourceType *string `json:"VolumeSourceType,omitempty" name:"VolumeSourceType"`
+
+	// CFS存储的配置
+	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitempty" name:"VolumeSourceCFS"`
+
+	// 日志配置
+	LogConfig *LogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
+
+	// 生命周期脚本的ID
+	LifecycleScriptId *string `json:"LifecycleScriptId,omitempty" name:"LifecycleScriptId"`
+
+	// 默认GIT存储库的ID
+	DefaultCodeRepoId *string `json:"DefaultCodeRepoId,omitempty" name:"DefaultCodeRepoId"`
+
+	// 其他GIT存储库的ID，最多3个
+	AdditionalCodeRepoIds []*string `json:"AdditionalCodeRepoIds,omitempty" name:"AdditionalCodeRepoIds"`
+
+	// 自动停止时间，单位小时
+	AutomaticStopTime *int64 `json:"AutomaticStopTime,omitempty" name:"AutomaticStopTime"`
+
+	// 标签配置
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 数据配置
+	DataConfigs []*DataConfig `json:"DataConfigs,omitempty" name:"DataConfigs"`
+
+	// 镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 镜像类型
+	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+}
+
+type ModifyNotebookRequest struct {
+	*tchttp.BaseRequest
+	
+	// notebook id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 计算资源付费模式 ，可选值为：
+	// PREPAID：预付费，即包年包月
+	// POSTPAID_BY_HOUR：按小时后付费
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 计算资源配置
+	ResourceConf *ResourceConf `json:"ResourceConf,omitempty" name:"ResourceConf"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
+
+	// 是否自动停止
+	AutoStopping *bool `json:"AutoStopping,omitempty" name:"AutoStopping"`
+
+	// 是否访问公网
+	DirectInternetAccess *bool `json:"DirectInternetAccess,omitempty" name:"DirectInternetAccess"`
+
+	// 是否ROOT权限
+	RootAccess *bool `json:"RootAccess,omitempty" name:"RootAccess"`
+
+	// 资源组ID(for预付费)
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// Vpc-Id
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网Id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 存储卷大小，单位GB
+	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitempty" name:"VolumeSizeInGB"`
+
+	// 存储的类型。取值包含： 
+	//     FREE:    预付费的免费存储
+	//     CLOUD_PREMIUM： 高性能云硬盘
+	//     CLOUD_SSD： SSD云硬盘
+	//     CFS:     CFS存储，包含NFS和turbo
+	VolumeSourceType *string `json:"VolumeSourceType,omitempty" name:"VolumeSourceType"`
+
+	// CFS存储的配置
+	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitempty" name:"VolumeSourceCFS"`
+
+	// 日志配置
+	LogConfig *LogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
+
+	// 生命周期脚本的ID
+	LifecycleScriptId *string `json:"LifecycleScriptId,omitempty" name:"LifecycleScriptId"`
+
+	// 默认GIT存储库的ID
+	DefaultCodeRepoId *string `json:"DefaultCodeRepoId,omitempty" name:"DefaultCodeRepoId"`
+
+	// 其他GIT存储库的ID，最多3个
+	AdditionalCodeRepoIds []*string `json:"AdditionalCodeRepoIds,omitempty" name:"AdditionalCodeRepoIds"`
+
+	// 自动停止时间，单位小时
+	AutomaticStopTime *int64 `json:"AutomaticStopTime,omitempty" name:"AutomaticStopTime"`
+
+	// 标签配置
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 数据配置
+	DataConfigs []*DataConfig `json:"DataConfigs,omitempty" name:"DataConfigs"`
+
+	// 镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 镜像类型
+	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+}
+
+func (r *ModifyNotebookRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotebookRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Name")
+	delete(f, "ChargeType")
+	delete(f, "ResourceConf")
+	delete(f, "LogEnable")
+	delete(f, "AutoStopping")
+	delete(f, "DirectInternetAccess")
+	delete(f, "RootAccess")
+	delete(f, "ResourceGroupId")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "VolumeSizeInGB")
+	delete(f, "VolumeSourceType")
+	delete(f, "VolumeSourceCFS")
+	delete(f, "LogConfig")
+	delete(f, "LifecycleScriptId")
+	delete(f, "DefaultCodeRepoId")
+	delete(f, "AdditionalCodeRepoIds")
+	delete(f, "AutomaticStopTime")
+	delete(f, "Tags")
+	delete(f, "DataConfigs")
+	delete(f, "ImageInfo")
+	delete(f, "ImageType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNotebookRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNotebookResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyNotebookResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNotebookResponseParams `json:"Response"`
+}
+
+func (r *ModifyNotebookResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotebookResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNotebookTagsRequestParams struct {
+	// Notebook Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// Notebook修改标签集合
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+type ModifyNotebookTagsRequest struct {
+	*tchttp.BaseRequest
+	
+	// Notebook Id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// Notebook修改标签集合
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+}
+
+func (r *ModifyNotebookTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotebookTagsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "Tags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNotebookTagsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNotebookTagsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyNotebookTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNotebookTagsResponseParams `json:"Response"`
+}
+
+func (r *ModifyNotebookTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNotebookTagsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyServiceGroupWeightsRequestParams struct {
 	// 服务组id
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
@@ -5860,6 +6845,276 @@ func (r *ModifyServiceGroupWeightsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyServiceGroupWeightsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type NotebookDetail struct {
+	// notebook  ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// notebook 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 生命周期脚本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifecycleScriptId *string `json:"LifecycleScriptId,omitempty" name:"LifecycleScriptId"`
+
+	// Pod-Name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// Update-Time
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 是否访问公网
+	DirectInternetAccess *bool `json:"DirectInternetAccess,omitempty" name:"DirectInternetAccess"`
+
+	// 预付费专用资源组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// 标签配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 是否自动停止
+	AutoStopping *bool `json:"AutoStopping,omitempty" name:"AutoStopping"`
+
+	// 其他GIT存储库，最多3个，单个
+	// 长度不超过512字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdditionalCodeRepoIds []*string `json:"AdditionalCodeRepoIds,omitempty" name:"AdditionalCodeRepoIds"`
+
+	// 自动停止时间，单位小时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutomaticStopTime *int64 `json:"AutomaticStopTime,omitempty" name:"AutomaticStopTime"`
+
+	// 资源配置
+	ResourceConf *ResourceConf `json:"ResourceConf,omitempty" name:"ResourceConf"`
+
+	// 默认GIT存储库，长度不超过512字符
+	DefaultCodeRepoId *string `json:"DefaultCodeRepoId,omitempty" name:"DefaultCodeRepoId"`
+
+	// 训练输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
+
+	// 日志配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogConfig *LogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
+
+	// VPC ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 任务状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 运行时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeInSeconds *uint64 `json:"RuntimeInSeconds,omitempty" name:"RuntimeInSeconds"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 训练开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeStatus *string `json:"ChargeStatus,omitempty" name:"ChargeStatus"`
+
+	// 是否ROOT权限
+	RootAccess *bool `json:"RootAccess,omitempty" name:"RootAccess"`
+
+	// 计贺金额信息，eg:2.00元/小时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingInfos []*string `json:"BillingInfos,omitempty" name:"BillingInfos"`
+
+	// 存储卷大小 （单位时GB，最小10GB，必须是10G的倍数）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitempty" name:"VolumeSizeInGB"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailureReason *string `json:"FailureReason,omitempty" name:"FailureReason"`
+
+	// 计算资源付费模式 (- PREPAID：预付费，即包年包月 - POSTPAID_BY_HOUR：按小时后付费)
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 后付费资源规格说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceTypeAlias *string `json:"InstanceTypeAlias,omitempty" name:"InstanceTypeAlias"`
+
+	// 预付费资源组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" name:"ResourceGroupName"`
+
+	// 存储的类型。取值包含： 
+	//     FREE:        预付费的免费存储
+	//     CLOUD_PREMIUM： 高性能云硬盘
+	//     CLOUD_SSD： SSD云硬盘
+	//     CFS:     CFS存储，包含NFS和turbo
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeSourceType *string `json:"VolumeSourceType,omitempty" name:"VolumeSourceType"`
+
+	// CFS存储的配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitempty" name:"VolumeSourceCFS"`
+
+	// 数据配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataConfigs []*DataConfig `json:"DataConfigs,omitempty" name:"DataConfigs"`
+
+	// notebook 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 数据源来源，eg：WeData_HDFS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSource *string `json:"DataSource,omitempty" name:"DataSource"`
+
+	// 镜像信息
+	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+
+	// 镜像类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+}
+
+type NotebookImageRecord struct {
+	// 保存记录ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+
+	// 镜像地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 状态信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// kernel数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Kernels []*string `json:"Kernels,omitempty" name:"Kernels"`
+}
+
+type NotebookSetItem struct {
+	// notebook ID
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// notebook 名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 计费模式
+	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+
+	// 资源配置
+	ResourceConf *ResourceConf `json:"ResourceConf,omitempty" name:"ResourceConf"`
+
+	// 预付费资源组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" name:"ResourceGroupId"`
+
+	// 存储卷大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeSizeInGB *uint64 `json:"VolumeSizeInGB,omitempty" name:"VolumeSizeInGB"`
+
+	// 计费金额信息，eg：2.00元/小时 (for后付费)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingInfos []*string `json:"BillingInfos,omitempty" name:"BillingInfos"`
+
+	// 标签配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 启动时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 运行时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuntimeInSeconds *uint64 `json:"RuntimeInSeconds,omitempty" name:"RuntimeInSeconds"`
+
+	// 计费状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeStatus *string `json:"ChargeStatus,omitempty" name:"ChargeStatus"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 错误原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailureReason *string `json:"FailureReason,omitempty" name:"FailureReason"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// Pod名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// 后付费资源规格名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceTypeAlias *string `json:"InstanceTypeAlias,omitempty" name:"InstanceTypeAlias"`
+
+	// 预付费资源组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" name:"ResourceGroupName"`
+
+	// 是否自动终止
+	AutoStopping *bool `json:"AutoStopping,omitempty" name:"AutoStopping"`
+
+	// 自动停止时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutomaticStopTime *uint64 `json:"AutomaticStopTime,omitempty" name:"AutomaticStopTime"`
+
+	// 存储的类型。取值包含： 
+	//     FREE:        预付费的免费存储
+	//     CLOUD_PREMIUM： 高性能云硬盘
+	//     CLOUD_SSD： SSD云硬盘
+	//     CFS:     CFS存储，包含NFS和turbo
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeSourceType *string `json:"VolumeSourceType,omitempty" name:"VolumeSourceType"`
+
+	// CFS存储的配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeSourceCFS *CFSConfig `json:"VolumeSourceCFS,omitempty" name:"VolumeSourceCFS"`
+
+	// notebook 信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// notebook用户类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserTypes []*string `json:"UserTypes,omitempty" name:"UserTypes"`
 }
 
 type OcrLabelInfo struct {
@@ -6017,6 +7272,44 @@ type RDMAConfig struct {
 	// 是否开启RDMA
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+}
+
+type ResourceConf struct {
+	// cpu 处理器资源, 单位为1/1000核 (for预付费)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *uint64 `json:"Cpu,omitempty" name:"Cpu"`
+
+	// memory 内存资源, 单位为1M (for预付费)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *uint64 `json:"Memory,omitempty" name:"Memory"`
+
+	// gpu Gpu卡资源，单位为1单位的GpuType，例如GpuType=T4时，1 Gpu = 1/100 T4卡，GpuType=vcuda时，1 Gpu = 1/100 vcuda-core (for预付费)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gpu *uint64 `json:"Gpu,omitempty" name:"Gpu"`
+
+	// GpuType 卡类型 vcuda, T4,P4,V100等 (for预付费)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GpuType *string `json:"GpuType,omitempty" name:"GpuType"`
+
+	// 计算规格 (for后付费)，可选值如下：
+	// TI.S.LARGE.POST: 4C8G 
+	// TI.S.2XLARGE16.POST:  8C16G 
+	// TI.S.2XLARGE32.POST:  8C32G 
+	// TI.S.4XLARGE32.POST:  16C32G
+	// TI.S.4XLARGE64.POST:  16C64G
+	// TI.S.6XLARGE48.POST:  24C48G
+	// TI.S.6XLARGE96.POST:  24C96G
+	// TI.S.8XLARGE64.POST:  32C64G
+	// TI.S.8XLARGE128.POST : 32C128G
+	// TI.GN10.2XLARGE40.POST: 8C40G V100*1 
+	// TI.GN10.5XLARGE80.POST:  18C80G V100*2 
+	// TI.GN10.10XLARGE160.POST :  32C160G V100*4
+	// TI.GN10.20XLARGE320.POST :  72C320G V100*8
+	// TI.GN7.8XLARGE128.POST: 32C128G T4*1 
+	// TI.GN7.10XLARGE160.POST: 40C160G T4*2 
+	// TI.GN7.20XLARGE320.POST: 80C320G T4*4
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
 }
 
 type ResourceConfigInfo struct {
@@ -6805,6 +8098,60 @@ type StartCmdInfo struct {
 }
 
 // Predefined struct for user
+type StartNotebookRequestParams struct {
+	// notebook id
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+type StartNotebookRequest struct {
+	*tchttp.BaseRequest
+	
+	// notebook id
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *StartNotebookRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartNotebookRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartNotebookRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartNotebookResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StartNotebookResponse struct {
+	*tchttp.BaseResponse
+	Response *StartNotebookResponseParams `json:"Response"`
+}
+
+func (r *StartNotebookResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartNotebookResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StartTrainingTaskRequestParams struct {
 	// 训练任务ID
 	Id *string `json:"Id,omitempty" name:"Id"`
@@ -6935,6 +8282,60 @@ func (r *StopBatchTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type StopCreatingImageRequestParams struct {
+	// 镜像保存记录ID
+	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+}
+
+type StopCreatingImageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 镜像保存记录ID
+	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+}
+
+func (r *StopCreatingImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopCreatingImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RecordId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopCreatingImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopCreatingImageResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StopCreatingImageResponse struct {
+	*tchttp.BaseResponse
+	Response *StopCreatingImageResponseParams `json:"Response"`
+}
+
+func (r *StopCreatingImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopCreatingImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StopModelAccelerateTaskRequestParams struct {
 	// 模型加速任务ID
 	ModelAccTaskId *string `json:"ModelAccTaskId,omitempty" name:"ModelAccTaskId"`
@@ -6993,6 +8394,60 @@ func (r *StopModelAccelerateTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopModelAccelerateTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopNotebookRequestParams struct {
+	// notebook id
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+type StopNotebookRequest struct {
+	*tchttp.BaseRequest
+	
+	// notebook id
+	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+func (r *StopNotebookRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopNotebookRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopNotebookRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopNotebookResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type StopNotebookResponse struct {
+	*tchttp.BaseResponse
+	Response *StopNotebookResponseParams `json:"Response"`
+}
+
+func (r *StopNotebookResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopNotebookResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

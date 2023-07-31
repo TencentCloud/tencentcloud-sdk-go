@@ -1326,14 +1326,6 @@ func (r *CreateAIFormTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type Detail struct {
-	// 企业四要素核验结果状态码
-	Result *int64 `json:"Result,omitempty" name:"Result"`
-
-	// 企业四要素核验结果描述
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
-}
-
 type DetectedWordCoordPoint struct {
 	// 单字在原图中的坐标，以四个顶点坐标表示，以左上角为起点，顺时针返回。
 	WordCoordinate []*Coord `json:"WordCoordinate,omitempty" name:"WordCoordinate"`
@@ -5507,72 +5499,6 @@ type Polygon struct {
 	LeftBottom *Coord `json:"LeftBottom,omitempty" name:"LeftBottom"`
 }
 
-type ProductDataRecord struct {
-	// 产品名称
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
-
-	// 产品名称(英文)
-	EnName *string `json:"EnName,omitempty" name:"EnName"`
-
-	// 品牌名称
-	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
-
-	// 规格型号
-	Type *string `json:"Type,omitempty" name:"Type"`
-
-	// 宽度，单位毫米
-	Width *string `json:"Width,omitempty" name:"Width"`
-
-	// 高度，单位毫米
-	Height *string `json:"Height,omitempty" name:"Height"`
-
-	// 深度，单位毫米
-	Depth *string `json:"Depth,omitempty" name:"Depth"`
-
-	// 关键字
-	KeyWord *string `json:"KeyWord,omitempty" name:"KeyWord"`
-
-	// 简短描述
-	Description *string `json:"Description,omitempty" name:"Description"`
-
-	// 图片链接
-	ImageLink []*string `json:"ImageLink,omitempty" name:"ImageLink"`
-
-	// 厂家名称
-	ManufacturerName *string `json:"ManufacturerName,omitempty" name:"ManufacturerName"`
-
-	// 厂家地址
-	ManufacturerAddress *string `json:"ManufacturerAddress,omitempty" name:"ManufacturerAddress"`
-
-	// 企业社会信用代码
-	FirmCode *string `json:"FirmCode,omitempty" name:"FirmCode"`
-
-	// 表示数据查询状态
-	// checkResult	状态说明
-	// 1	 经查，该商品条码已在中国物品编码中心注册
-	// 2	经查，该厂商识别代码已在中国物品编码中心注册，但编码信息未按规定通报。
-	// 3	经查，该厂商识别代码已于xxxxx注销，请关注产品生产日期。
-	// 4	经查，该企业以及条码未经条码中心注册，属于违法使用
-	// -1	经查，该商品条码被冒用
-	// -2	经查，该厂商识别代码已在中国物品编码中心注册，但该产品已经下市
-	// S001                未找到该厂商识别代码的注册信息。
-	// S002		该厂商识别代码已经在GS1注册，但编码信息未通报
-	// S003		该商品条码已在GS1通报
-	// S004		该商品条码已注销
-	// S005		数字不正确。GS1前缀（3位国家/地区代码）用于特殊用途。
-	// E001		完整性失败：此GTIN的长度无效。
-	// E002		完整性失败：校验位不正确。
-	// E003		完整性失败：字符串包含字母数字字符。
-	// E004		数字不正确。GS1前缀（3位国家/地区代码）不存在。
-	// E005		数字不正确。GS1前缀（3位国家/地区代码）用于特殊用途。
-	// E006		数字不正确。尚未分配该GS1公司前缀。
-	// E008	        经查，该企业厂商识别代码以及条码尚未通报
-	CheckResult *string `json:"CheckResult,omitempty" name:"CheckResult"`
-
-	// UNSPSC分类码
-	CategoryCode *string `json:"CategoryCode,omitempty" name:"CategoryCode"`
-}
-
 // Predefined struct for user
 type PropOwnerCertOCRRequestParams struct {
 	// 图片的 Base64 值。
@@ -5768,66 +5694,6 @@ type QrcodeResultsInfo struct {
 
 	// 二维码/条形码坐标
 	Position *QrcodePositionObj `json:"Position,omitempty" name:"Position"`
-}
-
-// Predefined struct for user
-type QueryBarCodeRequestParams struct {
-	// 条形码
-	BarCode *string `json:"BarCode,omitempty" name:"BarCode"`
-}
-
-type QueryBarCodeRequest struct {
-	*tchttp.BaseRequest
-	
-	// 条形码
-	BarCode *string `json:"BarCode,omitempty" name:"BarCode"`
-}
-
-func (r *QueryBarCodeRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *QueryBarCodeRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "BarCode")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryBarCodeRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type QueryBarCodeResponseParams struct {
-	// 条码
-	BarCode *string `json:"BarCode,omitempty" name:"BarCode"`
-
-	// 条码信息数组
-	ProductDataRecords []*ProductDataRecord `json:"ProductDataRecords,omitempty" name:"ProductDataRecords"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type QueryBarCodeResponse struct {
-	*tchttp.BaseResponse
-	Response *QueryBarCodeResponseParams `json:"Response"`
-}
-
-func (r *QueryBarCodeResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *QueryBarCodeResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
 }
 
 type QuestionBlockObj struct {
@@ -11546,89 +11412,6 @@ func (r *VerifyBizLicenseResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *VerifyBizLicenseResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type VerifyEnterpriseFourFactorsRequestParams struct {
-	// 姓名
-	RealName *string `json:"RealName,omitempty" name:"RealName"`
-
-	// 证件号码（公司注册证件号）
-	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
-
-	// 企业全称
-	EnterpriseName *string `json:"EnterpriseName,omitempty" name:"EnterpriseName"`
-
-	// 企业标识（注册号，统一社会信用代码）
-	EnterpriseMark *string `json:"EnterpriseMark,omitempty" name:"EnterpriseMark"`
-}
-
-type VerifyEnterpriseFourFactorsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 姓名
-	RealName *string `json:"RealName,omitempty" name:"RealName"`
-
-	// 证件号码（公司注册证件号）
-	IdCard *string `json:"IdCard,omitempty" name:"IdCard"`
-
-	// 企业全称
-	EnterpriseName *string `json:"EnterpriseName,omitempty" name:"EnterpriseName"`
-
-	// 企业标识（注册号，统一社会信用代码）
-	EnterpriseMark *string `json:"EnterpriseMark,omitempty" name:"EnterpriseMark"`
-}
-
-func (r *VerifyEnterpriseFourFactorsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *VerifyEnterpriseFourFactorsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "RealName")
-	delete(f, "IdCard")
-	delete(f, "EnterpriseName")
-	delete(f, "EnterpriseMark")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyEnterpriseFourFactorsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type VerifyEnterpriseFourFactorsResponseParams struct {
-	// 核验一致性（1:一致，2:不一致，3:查询无记录）
-	State *int64 `json:"State,omitempty" name:"State"`
-
-	// 核验结果明细，7：企业法人/负责人，6：企业股东，5：企
-	// 业管理人员，-21：企业名称与企业标识不符，-22：姓名不一致，-23：证件号码不一致，-24：企业名称不一致，-25：企业标识不一致
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Detail *Detail `json:"Detail,omitempty" name:"Detail"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type VerifyEnterpriseFourFactorsResponse struct {
-	*tchttp.BaseResponse
-	Response *VerifyEnterpriseFourFactorsResponseParams `json:"Response"`
-}
-
-func (r *VerifyEnterpriseFourFactorsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *VerifyEnterpriseFourFactorsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

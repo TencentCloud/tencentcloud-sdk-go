@@ -62,6 +62,9 @@ const (
 	// 语法错误：逻辑表达式语法解析出错
 	INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
 
+	// 语法错误：SQL检索语句必须遵循特定的语法规则，如果语法错误，就会导致SQL语句无法执行。例如，缺少关键字、拼写错误、缺少分号等。
+	INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
+
 	// 数据类型错误：SQL检索语句中的数据类型必须与数据库中的数据类型匹配，否则会导致错误。例如，将字符串与整数进行比较、将日期格式不正确等。
 	INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
 

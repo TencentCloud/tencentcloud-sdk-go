@@ -3901,6 +3901,90 @@ func (r *GetAttackDownloadRecordsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type GetAttackHistogramRequestParams struct {
+	// 查询的域名，所有域名使用all
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 查询起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// Lucene语法
+	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+}
+
+type GetAttackHistogramRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询的域名，所有域名使用all
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 查询起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// Lucene语法
+	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+}
+
+func (r *GetAttackHistogramRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAttackHistogramRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "QueryString")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAttackHistogramRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetAttackHistogramResponseParams struct {
+	// 统计详情
+	Data []*LogHistogramInfo `json:"Data,omitempty" name:"Data"`
+
+	// 时间段大小
+	Period *uint64 `json:"Period,omitempty" name:"Period"`
+
+	// 统计的条目数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetAttackHistogramResponse struct {
+	*tchttp.BaseResponse
+	Response *GetAttackHistogramResponseParams `json:"Response"`
+}
+
+func (r *GetAttackHistogramResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAttackHistogramResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type HostRecord struct {
 	// 域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -4203,6 +4287,14 @@ type LoadBalancerPackageNew struct {
 	// CLB类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerType *string `json:"LoadBalancerType,omitempty" name:"LoadBalancerType"`
+}
+
+type LogHistogramInfo struct {
+	// 日志条数
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 时间戳
+	TimeStamp *int64 `json:"TimeStamp,omitempty" name:"TimeStamp"`
 }
 
 // Predefined struct for user

@@ -1029,7 +1029,7 @@ type CreateAclRequestParams struct {
 	// 资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称，当resourceType为CLUSTER时，该字段可为空。
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
-	// 默认为\*，表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
+	// 默认为*，表示任何host都可以访问。支持填写IP或网段，支持“;”分隔。
 	Host *string `json:"Host,omitempty" name:"Host"`
 
 	// 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入时需要加 User: 前缀,如用户A则传入User:A。
@@ -1057,7 +1057,7 @@ type CreateAclRequest struct {
 	// 资源名称，和resourceType相关，如当resourceType为TOPIC时，则该字段表示topic名称，当resourceType为GROUP时，该字段表示group名称，当resourceType为CLUSTER时，该字段可为空。
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
-	// 默认为\*，表示任何host都可以访问，当前ckafka不支持host为\*，但是后面开源kafka的产品化会直接支持
+	// 默认为*，表示任何host都可以访问。支持填写IP或网段，支持“;”分隔。
 	Host *string `json:"Host,omitempty" name:"Host"`
 
 	// 用户列表，默认为User:*，表示任何user都可以访问，当前用户只能是用户列表中包含的用户。传入时需要加 User: 前缀,如用户A则传入User:A。

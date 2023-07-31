@@ -76,6 +76,7 @@ type BaseFlowInfo struct {
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
 	// 合同流程类型
+	// <br/>客户自定义，用于合同分类展示
 	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
 	// 合同流程描述信息
@@ -85,6 +86,7 @@ type BaseFlowInfo struct {
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
 	// 是否顺序签署(true:无序签,false:顺序签)
+	// <br/>默认false，有序签署合同
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
 	// 是否打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
@@ -93,7 +95,10 @@ type BaseFlowInfo struct {
 	// 填写控件内容
 	FormFields []*FormField `json:"FormFields,omitempty" name:"FormFields"`
 
-	// 本企业(发起方企业)是否需要签署审批，true：开启本企业签署审批。使用ChannelCreateFlowSignReview接口提交审批结果，才能继续完成签署
+	// 本企业(发起方企业)是否需要签署审批
+	// <br/>true：开启发起方签署审批
+	// <br/>false：不开启发起方签署审批
+	// <br/>开启后，使用ChannelCreateFlowSignReview接口提交审批结果，才能继续完成签署
 	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
 
 	// 用户流程自定义数据参数
@@ -102,7 +107,10 @@ type BaseFlowInfo struct {
 	// 抄送人信息
 	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
 
-	// 是否需要发起前审核，当指定NeedCreateReview=true，则发起后，需要使用接口：ChannelCreateFlowSignReview，来完成发起前审核，审核通过后，可以继续查看，签署合同
+	// 是否需要开启发起方发起前审核
+	// <br/>true：开启发起方发起前审核
+	// <br/>false：不开启发起方发起前审核
+	// <br/>当指定NeedCreateReview=true，则提交审核后，需要使用接口：ChannelCreateFlowSignReview，来完成发起前审核，审核通过后，可以继续查看，签署合同
 	NeedCreateReview *bool `json:"NeedCreateReview,omitempty" name:"NeedCreateReview"`
 }
 
@@ -135,10 +143,11 @@ type ChannelBatchCancelFlowsRequestParams struct {
 	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
 
 	// 撤销理由自定义格式；选项：
-	// 0 默认格式
-	// 1 只保留身份信息：展示为【发起方】
-	// 2 保留身份信息+企业名称：展示为【发起方xxx公司】
-	// 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
+	// 
+	// - 0 默认格式
+	// - 1 只保留身份信息：展示为【发起方】
+	// - 2 保留身份信息+企业名称：展示为【发起方xxx公司】
+	// - 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
 	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitempty" name:"CancelMessageFormat"`
 
 	// 暂未开放
@@ -160,10 +169,11 @@ type ChannelBatchCancelFlowsRequest struct {
 	CancelMessage *string `json:"CancelMessage,omitempty" name:"CancelMessage"`
 
 	// 撤销理由自定义格式；选项：
-	// 0 默认格式
-	// 1 只保留身份信息：展示为【发起方】
-	// 2 保留身份信息+企业名称：展示为【发起方xxx公司】
-	// 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
+	// 
+	// - 0 默认格式
+	// - 1 只保留身份信息：展示为【发起方】
+	// - 2 保留身份信息+企业名称：展示为【发起方xxx公司】
+	// - 3 保留身份信息+企业名称+经办人名称：展示为【发起方xxxx公司-经办人姓名】
 	CancelMessageFormat *int64 `json:"CancelMessageFormat,omitempty" name:"CancelMessageFormat"`
 
 	// 暂未开放
@@ -632,22 +642,24 @@ type ChannelCreateEmbedWebUrlRequestParams struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// WEB嵌入资源类型。
-	// CREATE_SEAL: 创建印章
-	// CREATE_TEMPLATE：创建模板
-	// MODIFY_TEMPLATE：修改模板
-	// PREVIEW_TEMPLATE：预览模板
-	// PREVIEW_FLOW：预览合同文档
-	// PREVIEW_FLOW_DETAIL：预览合同详情
-	// PREVIEW_SEAL_LIST：预览印章列表
-	// PREVIEW_SEAL_DETAIL：预览印章详情
-	// EXTEND_SERVICE：扩展服务
+	// 要生成WEB嵌入界面的类型, 可以选择的值如下: 
+	// 
+	// - CREATE_SEAL: 生成创建印章的嵌入页面
+	// - CREATE_TEMPLATE：生成创建模板的嵌入页面
+	// - MODIFY_TEMPLATE：生成修改模板的嵌入页面
+	// - PREVIEW_TEMPLATE：生成预览模板的嵌入页面
+	// - PREVIEW_FLOW：生成预览合同文档的嵌入页面
+	// - PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面
+	// - PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面
+	// - PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面
+	// - EXTEND_SERVICE：生成扩展服务的嵌入页面
 	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
-	// EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时必填，取值为模板id
-	// PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时必填，取值为合同id
-	// PREVIEW_SEAL_DETAIL，必填，取值为印章id
+	// 
+	// - 当EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时需要填写模板id作为BusinessId
+	// - 当EmbedType取值PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时需要填写合同id作为BusinessId
+	// - 当EmbedType取值PREVIEW_SEAL_DETAIL需要填写印章id作为BusinessId
 	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
 
 	// 是否隐藏控件，只有预览模板时生效
@@ -665,22 +677,24 @@ type ChannelCreateEmbedWebUrlRequest struct {
 	// 渠道应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// WEB嵌入资源类型。
-	// CREATE_SEAL: 创建印章
-	// CREATE_TEMPLATE：创建模板
-	// MODIFY_TEMPLATE：修改模板
-	// PREVIEW_TEMPLATE：预览模板
-	// PREVIEW_FLOW：预览合同文档
-	// PREVIEW_FLOW_DETAIL：预览合同详情
-	// PREVIEW_SEAL_LIST：预览印章列表
-	// PREVIEW_SEAL_DETAIL：预览印章详情
-	// EXTEND_SERVICE：扩展服务
+	// 要生成WEB嵌入界面的类型, 可以选择的值如下: 
+	// 
+	// - CREATE_SEAL: 生成创建印章的嵌入页面
+	// - CREATE_TEMPLATE：生成创建模板的嵌入页面
+	// - MODIFY_TEMPLATE：生成修改模板的嵌入页面
+	// - PREVIEW_TEMPLATE：生成预览模板的嵌入页面
+	// - PREVIEW_FLOW：生成预览合同文档的嵌入页面
+	// - PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面
+	// - PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面
+	// - PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面
+	// - EXTEND_SERVICE：生成扩展服务的嵌入页面
 	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
-	// EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时必填，取值为模板id
-	// PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时必填，取值为合同id
-	// PREVIEW_SEAL_DETAIL，必填，取值为印章id
+	// 
+	// - 当EmbedType取值MODIFY_TEMPLATE，PREVIEW_TEMPLATE时需要填写模板id作为BusinessId
+	// - 当EmbedType取值PREVIEW_FLOW，PREVIEW_FLOW_DETAIL时需要填写合同id作为BusinessId
+	// - 当EmbedType取值PREVIEW_SEAL_DETAIL需要填写印章id作为BusinessId
 	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
 
 	// 是否隐藏控件，只有预览模板时生效
@@ -1195,7 +1209,7 @@ type ChannelCreateFlowSignReviewRequestParams struct {
 	// 注：接口通过该字段区分操作类型
 	// 该字段不传或者为空，则默认为SignReview签署审核，走签署审核流程
 	// 若想使用发起审核，请指定该字段为：CreateReview
-	// 若发起个人审核，则指定该字段为：SignReview（注意，给个人审核时，需联系客户经理开白使用）
+	// 若发起个人审核，则指定该字段为：SignReview
 	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
 }
 
@@ -1225,7 +1239,7 @@ type ChannelCreateFlowSignReviewRequest struct {
 	// 注：接口通过该字段区分操作类型
 	// 该字段不传或者为空，则默认为SignReview签署审核，走签署审核流程
 	// 若想使用发起审核，请指定该字段为：CreateReview
-	// 若发起个人审核，则指定该字段为：SignReview（注意，给个人审核时，需联系客户经理开白使用）
+	// 若发起个人审核，则指定该字段为：SignReview
 	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
 }
 
@@ -1575,14 +1589,14 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// 合同流程基础信息
 	FlowInfo *BaseFlowInfo `json:"FlowInfo,omitempty" name:"FlowInfo"`
 
-	// 合同签署人信息
-	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitempty" name:"FlowApproverList"`
-
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 合同流程配置信息，用于配置发起合同时定制化
 	FlowOption *CreateFlowOption `json:"FlowOption,omitempty" name:"FlowOption"`
+
+	// 合同签署人信息
+	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitempty" name:"FlowApproverList"`
 
 	// 通过flowid快速获得之前成功通过页面发起的合同生成链接
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
@@ -1615,14 +1629,14 @@ type ChannelCreatePrepareFlowRequest struct {
 	// 合同流程基础信息
 	FlowInfo *BaseFlowInfo `json:"FlowInfo,omitempty" name:"FlowInfo"`
 
-	// 合同签署人信息
-	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitempty" name:"FlowApproverList"`
-
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 合同流程配置信息，用于配置发起合同时定制化
 	FlowOption *CreateFlowOption `json:"FlowOption,omitempty" name:"FlowOption"`
+
+	// 合同签署人信息
+	FlowApproverList []*CommonFlowApprover `json:"FlowApproverList,omitempty" name:"FlowApproverList"`
 
 	// 通过flowid快速获得之前成功通过页面发起的合同生成链接
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
@@ -1652,9 +1666,9 @@ func (r *ChannelCreatePrepareFlowRequest) FromJsonString(s string) error {
 	delete(f, "ResourceId")
 	delete(f, "ResourceType")
 	delete(f, "FlowInfo")
-	delete(f, "FlowApproverList")
 	delete(f, "Agent")
 	delete(f, "FlowOption")
+	delete(f, "FlowApproverList")
 	delete(f, "FlowId")
 	delete(f, "NeedPreview")
 	delete(f, "Organization")
@@ -3216,13 +3230,16 @@ func (r *CreateChannelFlowEvidenceReportRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreateChannelFlowEvidenceReportResponseParams struct {
-	// 出证报告 ID，用于查询出证报告接口DescribeChannelFlowEvidenceReport时用到
+	// 出证报告 ID，可用户DescribeChannelFlowEvidenceReport接口查询出证PDF的下载地址
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
 
-	// 执行中：EvidenceStatusExecuting
-	// 成功：EvidenceStatusSuccess
-	// 失败：EvidenceStatusFailed
+	// 出征任务的执行状态,状态列表如下
+	// 
+	// - EvidenceStatusExecuting : 出征任务正在执行中
+	// - EvidenceStatusSuccess : 出征任务执行成功
+	// - EvidenceStatusFailed : 出征任务执行失败
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 废除，字段无效
@@ -3831,13 +3848,15 @@ func (r *DescribeChannelFlowEvidenceReportRequest) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeChannelFlowEvidenceReportResponseParams struct {
-	// 出证报告 URL
+	// 出证报告下载 URL
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
 
-	// 执行中：EvidenceStatusExecuting
-	// 成功：EvidenceStatusSuccess
-	// 失败：EvidenceStatusFailed
+	// 出征任务的执行状态,状态列表如下
+	// 
+	// - EvidenceStatusExecuting : 出征任务正在执行中
+	// - EvidenceStatusSuccess : 出征任务执行成功
+	// - EvidenceStatusFailed : 出征任务执行失败
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -3928,7 +3947,7 @@ type DescribeFlowDetailInfoRequestParams struct {
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 合同(流程)编号数组，最多支持100个。
-	// （备注：该参数和合同组编号必须二选一）
+	// （备注：该参数和合同组编号必须二选一, 如果填写FlowGroupId则忽略此FlowIds的入参）
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
 	// 合同组编号（备注：该参数和合同(流程)编号数组必须二选一）
@@ -3947,7 +3966,7 @@ type DescribeFlowDetailInfoRequest struct {
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 合同(流程)编号数组，最多支持100个。
-	// （备注：该参数和合同组编号必须二选一）
+	// （备注：该参数和合同组编号必须二选一, 如果填写FlowGroupId则忽略此FlowIds的入参）
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
 	// 合同组编号（备注：该参数和合同(流程)编号数组必须二选一）

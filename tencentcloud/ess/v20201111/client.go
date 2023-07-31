@@ -279,8 +279,6 @@ func NewCancelUserAutoSignEnableUrlResponse() (response *CancelUserAutoSignEnabl
 // 可能返回的错误码:
 //  FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = "FailedOperation.UserAutoSignEnableAlready"
 //  FAILEDOPERATION_USERAUTOSIGNENABLEURLNOTEXIST = "FailedOperation.UserAutoSignEnableUrlNotExist"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) CancelUserAutoSignEnableUrl(request *CancelUserAutoSignEnableUrlRequest) (response *CancelUserAutoSignEnableUrlResponse, err error) {
@@ -293,8 +291,6 @@ func (c *Client) CancelUserAutoSignEnableUrl(request *CancelUserAutoSignEnableUr
 // 可能返回的错误码:
 //  FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = "FailedOperation.UserAutoSignEnableAlready"
 //  FAILEDOPERATION_USERAUTOSIGNENABLEURLNOTEXIST = "FailedOperation.UserAutoSignEnableUrlNotExist"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) CancelUserAutoSignEnableUrlWithContext(ctx context.Context, request *CancelUserAutoSignEnableUrlRequest) (response *CancelUserAutoSignEnableUrlResponse, err error) {
@@ -3121,13 +3117,8 @@ func NewCreateReleaseFlowResponse() (response *CreateReleaseFlowResponse) {
 //  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
 //  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
 //  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
-//  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
-//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
 //  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
@@ -3202,13 +3193,8 @@ func (c *Client) CreateReleaseFlow(request *CreateReleaseFlowRequest) (response 
 //  FAILEDOPERATION_ORGANIZATIONNAMENEEDCHANGE = "FailedOperation.OrganizationNameNeedChange"
 //  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
 //  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
-//  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
-//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_APPROVERTYPE = "InvalidParameter.ApproverType"
 //  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
@@ -3564,17 +3550,7 @@ func NewCreateUserAutoSignEnableUrlResponse() (response *CreateUserAutoSignEnabl
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_CACHE = "InternalError.Cache"
 //  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
-//  INTERNALERROR_DBREAD = "InternalError.DbRead"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
-//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
-//  INTERNALERROR_PDF = "InternalError.Pdf"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
@@ -3596,17 +3572,7 @@ func (c *Client) CreateUserAutoSignEnableUrl(request *CreateUserAutoSignEnableUr
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_CACHE = "InternalError.Cache"
 //  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
-//  INTERNALERROR_DBREAD = "InternalError.DbRead"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
-//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
-//  INTERNALERROR_PDF = "InternalError.Pdf"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
@@ -4088,11 +4054,11 @@ func NewDescribeFlowBriefsResponse() (response *DescribeFlowBriefsResponse) {
 }
 
 // DescribeFlowBriefs
-// 查询流程摘要
+// 查询流程基础信息
 //
 // 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
 //
-// 日调用量限制：10W
+// 每个企业限制日调用量限制：10W,  当当日超过此限制后再调用接口返回错误
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
@@ -4144,11 +4110,11 @@ func (c *Client) DescribeFlowBriefs(request *DescribeFlowBriefsRequest) (respons
 }
 
 // DescribeFlowBriefs
-// 查询流程摘要
+// 查询流程基础信息
 //
 // 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
 //
-// 日调用量限制：10W
+// 每个企业限制日调用量限制：10W,  当当日超过此限制后再调用接口返回错误
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
@@ -4428,6 +4394,8 @@ func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse
 //
 // > **适用场景** 
 //
+// >
+//
 // >  该接口常用来配合“模板发起合同-创建电子文档”接口作为前置的接口使用。 
 //
 // >  一个模板通常会包含以下结构信息
@@ -4479,6 +4447,8 @@ func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (r
 // 
 //
 // > **适用场景** 
+//
+// >
 //
 // >  该接口常用来配合“模板发起合同-创建电子文档”接口作为前置的接口使用。 
 //
@@ -5006,21 +4976,12 @@ func NewDescribeUserAutoSignStatusResponse() (response *DescribeUserAutoSignStat
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_CACHE = "InternalError.Cache"
 //  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
 //  INTERNALERROR_CALLBACK = "InternalError.Callback"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
-//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
-//  INTERNALERROR_DBREAD = "InternalError.DbRead"
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
-//  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
-//  INTERNALERROR_PDF = "InternalError.Pdf"
-//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
@@ -5039,21 +5000,12 @@ func (c *Client) DescribeUserAutoSignStatus(request *DescribeUserAutoSignStatusR
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_CACHE = "InternalError.Cache"
 //  INTERNALERROR_CALLOPENCLOUDAPIERROR = "InternalError.CallOpenCloudApiError"
 //  INTERNALERROR_CALLBACK = "InternalError.Callback"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
-//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
-//  INTERNALERROR_DBREAD = "InternalError.DbRead"
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
-//  INTERNALERROR_JSONMARSHAL = "InternalError.JsonMarshal"
-//  INTERNALERROR_PDF = "InternalError.Pdf"
-//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
@@ -5192,9 +5144,9 @@ func NewGetTaskResultApiResponse() (response *GetTaskResultApiResponse) {
 }
 
 // GetTaskResultApi
-// 通过发起转换任务接口（CreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。<br/>
+// 查询转换任务的状态。转换任务Id通过发起转换任务接口（CreateConvertTaskApi）获取。
 //
-// 大文件转换所需的时间可能会比较长。
+// 注意：大文件转换所需的时间可能会比较长。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -5208,9 +5160,9 @@ func (c *Client) GetTaskResultApi(request *GetTaskResultApiRequest) (response *G
 }
 
 // GetTaskResultApi
-// 通过发起转换任务接口（CreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。<br/>
+// 查询转换任务的状态。转换任务Id通过发起转换任务接口（CreateConvertTaskApi）获取。
 //
-// 大文件转换所需的时间可能会比较长。
+// 注意：大文件转换所需的时间可能会比较长。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"

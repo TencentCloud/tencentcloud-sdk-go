@@ -70,6 +70,12 @@ func NewChannelBatchCancelFlowsResponse() (response *ChannelBatchCancelFlowsResp
 //
 // 
 //
+// 可以撤回：未全部签署完成
+//
+//  不可以撤回：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
+//
+// 
+//
 // **满足撤销条件的合同会发起异步撤销流程，不满足撤销条件的合同返回失败原因。**
 //
 // 
@@ -101,6 +107,12 @@ func (c *Client) ChannelBatchCancelFlows(request *ChannelBatchCancelFlowsRequest
 // 指定需要批量撤销的签署流程Id，批量撤销合同
 //
 // 客户指定需要撤销的签署流程Id，最多100个，超过100不处理；
+//
+// 
+//
+// 可以撤回：未全部签署完成
+//
+//  不可以撤回：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
 //
 // 
 //
@@ -316,7 +328,13 @@ func NewChannelCreateBatchCancelFlowUrlResponse() (response *ChannelCreateBatchC
 //
 // 接口调用成功返回批量撤销合同的链接，通过链接跳转到电子签小程序完成批量撤销;
 //
-// 可以撤回：未全部签署完成；不可以撤回（终态）：已全部签署完成、已拒签、已过期、已撤回。
+// 
+//
+// 可以撤回：未全部签署完成
+//
+//  不可以撤回：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
+//
+// 
 //
 // 注意:
 //
@@ -338,7 +356,13 @@ func (c *Client) ChannelCreateBatchCancelFlowUrl(request *ChannelCreateBatchCanc
 //
 // 接口调用成功返回批量撤销合同的链接，通过链接跳转到电子签小程序完成批量撤销;
 //
-// 可以撤回：未全部签署完成；不可以撤回（终态）：已全部签署完成、已拒签、已过期、已撤回。
+// 
+//
+// 可以撤回：未全部签署完成
+//
+//  不可以撤回：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
+//
+// 
 //
 // 注意:
 //
@@ -3003,7 +3027,6 @@ func NewDescribeFlowDetailInfoResponse() (response *DescribeFlowDetailInfoRespon
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
@@ -3034,7 +3057,6 @@ func (c *Client) DescribeFlowDetailInfo(request *DescribeFlowDetailInfoRequest) 
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"

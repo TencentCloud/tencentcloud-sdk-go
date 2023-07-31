@@ -2116,7 +2116,7 @@ type CreateScheduledSqlRequestParams struct {
 	// 任务名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 任务启动状态.  1正常开启,  2关闭
+	// 任务启动状态.  1开启,  2关闭
 	EnableFlag *int64 `json:"EnableFlag,omitempty" name:"EnableFlag"`
 
 	// 定时SQL分析目标日志主题
@@ -2128,7 +2128,7 @@ type CreateScheduledSqlRequestParams struct {
 	// 调度开始时间,Unix时间戳，单位ms
 	ProcessStartTime *uint64 `json:"ProcessStartTime,omitempty" name:"ProcessStartTime"`
 
-	// 调度类型，1:持续运行 2:指定调度结束时间
+	// 调度类型，1:持续运行 2:指定时间范围
 	ProcessType *int64 `json:"ProcessType,omitempty" name:"ProcessType"`
 
 	// 调度周期(分钟)
@@ -2146,7 +2146,7 @@ type CreateScheduledSqlRequestParams struct {
 	// 调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
 	ProcessEndTime *uint64 `json:"ProcessEndTime,omitempty" name:"ProcessEndTime"`
 
-	// 语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
+	// 查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
 	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
 }
 
@@ -2159,7 +2159,7 @@ type CreateScheduledSqlRequest struct {
 	// 任务名称
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 任务启动状态.  1正常开启,  2关闭
+	// 任务启动状态.  1开启,  2关闭
 	EnableFlag *int64 `json:"EnableFlag,omitempty" name:"EnableFlag"`
 
 	// 定时SQL分析目标日志主题
@@ -2171,7 +2171,7 @@ type CreateScheduledSqlRequest struct {
 	// 调度开始时间,Unix时间戳，单位ms
 	ProcessStartTime *uint64 `json:"ProcessStartTime,omitempty" name:"ProcessStartTime"`
 
-	// 调度类型，1:持续运行 2:指定调度结束时间
+	// 调度类型，1:持续运行 2:指定时间范围
 	ProcessType *int64 `json:"ProcessType,omitempty" name:"ProcessType"`
 
 	// 调度周期(分钟)
@@ -2189,7 +2189,7 @@ type CreateScheduledSqlRequest struct {
 	// 调度结束时间，当ProcessType=2时为必传字段, Unix时间戳，单位ms
 	ProcessEndTime *uint64 `json:"ProcessEndTime,omitempty" name:"ProcessEndTime"`
 
-	// 语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
+	// 查询语法规则。 默认值为0。0：Lucene语法，1：CQL语法  
 	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
 }
 
@@ -7606,7 +7606,7 @@ type ModifyScheduledSqlRequestParams struct {
 	// 源日志主题
 	SrcTopicId *string `json:"SrcTopicId,omitempty" name:"SrcTopicId"`
 
-	// 任务启动状态.   1正常开启,  2关闭
+	// 任务启动状态.   1开启,  2关闭
 	EnableFlag *int64 `json:"EnableFlag,omitempty" name:"EnableFlag"`
 
 	// 定时SQL分析的目标日志主题
@@ -7643,7 +7643,7 @@ type ModifyScheduledSqlRequest struct {
 	// 源日志主题
 	SrcTopicId *string `json:"SrcTopicId,omitempty" name:"SrcTopicId"`
 
-	// 任务启动状态.   1正常开启,  2关闭
+	// 任务启动状态.   1开启,  2关闭
 	EnableFlag *int64 `json:"EnableFlag,omitempty" name:"EnableFlag"`
 
 	// 定时SQL分析的目标日志主题
@@ -8418,7 +8418,7 @@ type ScheduledSqlTaskInfo struct {
 	// 调度开始时间
 	ProcessStartTime *string `json:"ProcessStartTime,omitempty" name:"ProcessStartTime"`
 
-	// 调度类型，1:持续运行 2:指定调度结束时间
+	// 调度类型，1:持续运行 2:指定时间范围
 	ProcessType *int64 `json:"ProcessType,omitempty" name:"ProcessType"`
 
 	// 调度结束时间，当process_type=2时为必传字段

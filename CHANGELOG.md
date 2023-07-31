@@ -1,3 +1,203 @@
+# Release v1.0.711
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 140 次发布
+
+发布时间：2023-07-31 01:10:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RoInstanceInfo](https://cloud.tencent.com/document/api/236/15878#RoInstanceInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>MasterInstanceId, RoStatus, OfflineTime, Weight, Region, Zone, InstanceId, Status, InstanceType, InstanceName, HourFeeStatus, TaskStatus, Memory, Volume, Qps, Vip, Vport, VpcId, SubnetId, DeviceType, EngineVersion, DeadlineTime, PayType
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 98 次发布
+
+发布时间：2023-07-31 01:23:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowBrief](https://cloud.tencent.com/document/api/1323/70369#FlowBrief)
+
+	* <font color="#dd0000">**修改成员**：</font>Creator, Deadline
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 98 次发布
+
+发布时间：2023-07-28 17:50:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreatePrepareFlow](https://cloud.tencent.com/document/api/1420/87897)
+
+	* <font color="#dd0000">**修改入参**：</font>FlowApproverList
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 35 次发布
+
+发布时间：2023-07-31 01:30:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：AudienceType
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 109 次发布
+
+发布时间：2023-07-31 01:34:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* QueryBarCode
+* VerifyEnterpriseFourFactors
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* Detail
+* ProductDataRecord
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 46 次发布
+
+发布时间：2023-07-31 01:43:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApplicationProxy](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxy)
+
+	* <font color="#dd0000">**修改成员**：</font>ProxyId, AccelerateMainland
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 30 次发布
+
+发布时间：2023-07-28 15:36:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteNotebook](https://cloud.tencent.com/document/api/851/95663)
+* [DescribeNotebook](https://cloud.tencent.com/document/api/851/95662)
+* [StopCreatingImage](https://cloud.tencent.com/document/api/851/95661)
+* [StopNotebook](https://cloud.tencent.com/document/api/851/95660)
+
+新增数据结构：
+
+* [NotebookDetail](https://cloud.tencent.com/document/api/851/75051#NotebookDetail)
+
+### 第 29 次发布
+
+发布时间：2023-07-28 15:25:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateNotebook](https://cloud.tencent.com/document/api/851/95658)
+* [CreateNotebookImage](https://cloud.tencent.com/document/api/851/95657)
+* [DeleteNotebookImageRecord](https://cloud.tencent.com/document/api/851/95656)
+* [DescribeNotebookImageKernels](https://cloud.tencent.com/document/api/851/95655)
+* [DescribeNotebookImageRecords](https://cloud.tencent.com/document/api/851/95654)
+* [DescribeNotebooks](https://cloud.tencent.com/document/api/851/95653)
+* [ModifyNotebook](https://cloud.tencent.com/document/api/851/95652)
+* [ModifyNotebookTags](https://cloud.tencent.com/document/api/851/95651)
+* [StartNotebook](https://cloud.tencent.com/document/api/851/95650)
+
+新增数据结构：
+
+* [NotebookImageRecord](https://cloud.tencent.com/document/api/851/75051#NotebookImageRecord)
+* [NotebookSetItem](https://cloud.tencent.com/document/api/851/75051#NotebookSetItem)
+* [ResourceConf](https://cloud.tencent.com/document/api/851/75051#ResourceConf)
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 41 次发布
+
+发布时间：2023-07-31 01:50:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetAttackHistogram](https://cloud.tencent.com/document/api/627/95692)
+
+新增数据结构：
+
+* [LogHistogramInfo](https://cloud.tencent.com/document/api/627/53609#LogHistogramInfo)
+
+
+
 # Release v1.0.710
 
 ## 品牌经营管家(bma) 版本：2022-11-15

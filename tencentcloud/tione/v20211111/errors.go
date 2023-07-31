@@ -50,11 +50,17 @@ const (
 	// 调用集群失败。
 	FAILEDOPERATION_CALLCLUSTERFAIL = "FailedOperation.CallClusterFail"
 
+	// 查询计费白名单失败
+	FAILEDOPERATION_CHECKBILLINGWHITELISTFAILED = "FailedOperation.CheckBillingWhiteListFailed"
+
 	// 尚未开通CLS日志服务，请开前往开通。
 	FAILEDOPERATION_CLSSERVICENOTACTIVED = "FailedOperation.ClsServiceNotActived"
 
 	// 集群访问失败。
 	FAILEDOPERATION_CLUSTERQUERYFAILED = "FailedOperation.ClusterQueryFailed"
+
+	// 导出Notebook镜像失败
+	FAILEDOPERATION_CREATEIMAGEFAILED = "FailedOperation.CreateImageFailed"
 
 	// 启动实例失败。
 	FAILEDOPERATION_CREATEJOBINSTANCEFAILED = "FailedOperation.CreateJobInstanceFailed"
@@ -95,6 +101,9 @@ const (
 	// 数据集操作不支持。
 	FAILEDOPERATION_DCUNSUPPORTEDOPERATION = "FailedOperation.DCUnsupportedOperation"
 
+	// 删除Notebook实例存储失败。
+	FAILEDOPERATION_DELETENOTEBOOKSTORAGEFAILED = "FailedOperation.DeleteNotebookStorageFailed"
+
 	// 名称重复。
 	FAILEDOPERATION_DUPLICATENAME = "FailedOperation.DuplicateName"
 
@@ -118,6 +127,12 @@ const (
 
 	// 密钥管理系统服务未开通，请先开通腾讯云密钥管理系统服务。
 	FAILEDOPERATION_KMSKEYNOTOPEN = "FailedOperation.KmsKeyNotOpen"
+
+	// 变更计费配置失败。
+	FAILEDOPERATION_MODIFYBILLINGINSTANCEBATCHFAILED = "FailedOperation.ModifyBillingInstanceBatchFailed"
+
+	// 修改计费统计的资源关联标签失败
+	FAILEDOPERATION_MODIFYRESOURCEBILLINGTAGSFAILED = "FailedOperation.ModifyResourceBillingTagsFailed"
 
 	// 移动模型目录失败。
 	FAILEDOPERATION_MOVEMODELDIRFAILED = "FailedOperation.MoveModelDirFailed"
@@ -146,6 +161,9 @@ const (
 	// 查询计费价格失败。
 	FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
 
+	// 查询资源组名称失败。
+	FAILEDOPERATION_QUERYRESOURCEGROUPNAMESFAILED = "FailedOperation.QueryResourceGroupNamesFailed"
+
 	// 查询计费项详情失败。
 	FAILEDOPERATION_QUERYRESOURCESPECFAILED = "FailedOperation.QueryResourceSpecFailed"
 
@@ -161,11 +179,23 @@ const (
 	// 存储库有绑定的实例，请先删除绑定的实例。
 	FAILEDOPERATION_REPOBINDBYINSTANCE = "FailedOperation.RepoBindByInstance"
 
+	// 停止实例失败。
+	FAILEDOPERATION_STOPJOBINSTANCEFAILED = "FailedOperation.StopJobInstanceFailed"
+
 	// 密钥服务访问失败，请重试。
 	FAILEDOPERATION_STSQUERYFAILED = "FailedOperation.StsQueryFailed"
 
 	// 实例启动失败。
 	FAILEDOPERATION_TIMEDOUT = "FailedOperation.Timedout"
+
+	// 解绑标签失败。
+	FAILEDOPERATION_UNBINDINGTAGSFAILED = "FailedOperation.UnBindingTagsFailed"
+
+	// 当前任务后台提交重试中，不允许操作停止，请稍后再试。
+	FAILEDOPERATION_UNSUBMITNOTALLOWTOSTOP = "FailedOperation.UnSubmitNotAllowToStop"
+
+	// 解冻失败。
+	FAILEDOPERATION_UNFREEZEBILLFAILED = "FailedOperation.UnfreezeBillFailed"
 
 	// 未知的实例规格。
 	FAILEDOPERATION_UNKNOWNINSTANCETYPE = "FailedOperation.UnknownInstanceType"
@@ -221,6 +251,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 接口过滤条件"运行状态"与"计费状态"不能同时存在。
+	INVALIDPARAMETER_FILTERKEYSTATUSCONFLICTWITHCHARGESTATUS = "InvalidParameter.FilterKeyStatusConflictWithChargeStatus"
+
 	// 模型包不符合规范。
 	INVALIDPARAMETER_MODELFILEINVALID = "InvalidParameter.ModelFileInvalid"
 
@@ -244,6 +277,9 @@ const (
 
 	// 请设置日志集、日志主题ID。
 	INVALIDPARAMETERVALUE_CLSCONFIGREQUIRED = "InvalidParameterValue.ClsConfigRequired"
+
+	// 存储库重复配置，请移除重复的存储库配置后重试。
+	INVALIDPARAMETERVALUE_CODEREPODUPLICATED = "InvalidParameterValue.CodeRepoDuplicated"
 
 	// 存储库不存在。
 	INVALIDPARAMETERVALUE_CODEREPONOTFOUND = "InvalidParameterValue.CodeRepoNotFound"
@@ -287,11 +323,17 @@ const (
 	// 无效的过滤器。
 	INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
 
+	// 生命周期脚本无效。
+	INVALIDPARAMETERVALUE_LIFECYCLENOTFOUND = "InvalidParameterValue.LifecycleNotFound"
+
 	// 参数值数量超过限制。
 	INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 
 	// 操作不允许。
 	INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
+
+	// 裸金属资源组不支持创建Notebook
+	INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateNotebookWithBareMetalResourceGroup"
 
 	// 分页查询limit超出限制
 	INVALIDPARAMETERVALUE_PAGELIMITEXCEEDED = "InvalidParameterValue.PageLimitExceeded"
@@ -302,8 +344,17 @@ const (
 	// 资源配置不合法
 	INVALIDPARAMETERVALUE_RESOURCECONFIGILLEGAL = "InvalidParameterValue.ResourceConfigIllegal"
 
+	// 子网不存在。
+	INVALIDPARAMETERVALUE_SUBNETNOTFOUND = "InvalidParameterValue.SubnetNotFound"
+
+	// 未找到当前日志主题。
+	INVALIDPARAMETERVALUE_TOPICNOTFOUND = "InvalidParameterValue.TopicNotFound"
+
 	// 裸金属类型资源组不支持配置输入数据
 	INVALIDPARAMETERVALUE_UNSUPPORTEDDATACONFIG = "InvalidParameterValue.UnsupportedDataConfig"
+
+	// Notebook卷大小只能增加，如需减小容量请重新创建实例。
+	INVALIDPARAMETERVALUE_VOLUMESHRINKNOTALLOW = "InvalidParameterValue.VolumeShrinkNotAllow"
 
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
@@ -323,6 +374,9 @@ const (
 	// 按量计费资源售罄。
 	OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
 
+	// IP不合法。
+	OPERATIONDENIED_IPILLEGAL = "OperationDenied.IpIllegal"
+
 	// 觅影资源包余额不足，请先充值。
 	OPERATIONDENIED_MIYINGBALANCEINSUFFICIENT = "OperationDenied.MIYINGBalanceInsufficient"
 
@@ -331,6 +385,9 @@ const (
 
 	// 操作不允许
 	OPERATIONDENIED_NOTALLOW = "OperationDenied.NotAllow"
+
+	// 存量Notebook不支持保存
+	OPERATIONDENIED_NOTSUPPORTSAVEIMAGE = "OperationDenied.NotSupportSaveImage"
 
 	// 预付费资源组余量不足。
 	OPERATIONDENIED_RESOURCEGROUPINSUFFICIENT = "OperationDenied.ResourceGroupInsufficient"
