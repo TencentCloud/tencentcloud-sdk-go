@@ -3247,6 +3247,7 @@ func NewDescribeMigrationDetailResponse() (response *DescribeMigrationDetailResp
 // 本接口（DescribeMigrationDetail）用于查询迁移任务的详细情况
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -3263,6 +3264,7 @@ func (c *Client) DescribeMigrationDetail(request *DescribeMigrationDetailRequest
 // 本接口（DescribeMigrationDetail）用于查询迁移任务的详细情况
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -4824,6 +4826,7 @@ func NewModifyDBEncryptAttributesResponse() (response *ModifyDBEncryptAttributes
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -4840,6 +4843,7 @@ func (c *Client) ModifyDBEncryptAttributes(request *ModifyDBEncryptAttributesReq
 //  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
@@ -5607,6 +5611,7 @@ func NewModifyInstanceEncryptAttributesResponse() (response *ModifyInstanceEncry
 // 本接口（ModifyInstanceEncryptAttributes）用于开通实例的TDE加密功能。
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = "UnsupportedOperation.NotSupportRepeat"
 func (c *Client) ModifyInstanceEncryptAttributes(request *ModifyInstanceEncryptAttributesRequest) (response *ModifyInstanceEncryptAttributesResponse, err error) {
     return c.ModifyInstanceEncryptAttributesWithContext(context.Background(), request)
@@ -5616,6 +5621,7 @@ func (c *Client) ModifyInstanceEncryptAttributes(request *ModifyInstanceEncryptA
 // 本接口（ModifyInstanceEncryptAttributes）用于开通实例的TDE加密功能。
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = "UnsupportedOperation.NotSupportRepeat"
 func (c *Client) ModifyInstanceEncryptAttributesWithContext(ctx context.Context, request *ModifyInstanceEncryptAttributesRequest) (response *ModifyInstanceEncryptAttributesResponse, err error) {
     if request == nil {
@@ -6025,6 +6031,7 @@ func NewQueryMigrationCheckProcessResponse() (response *QueryMigrationCheckProce
 // 本接口（QueryMigrationCheckProcess）的作用是查询迁移检查任务的进度，适用于迁移源的类型为TencentDB for SQLServer 的迁移方式
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBCONNECTERROR = "InternalError.DBConnectError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -6043,6 +6050,7 @@ func (c *Client) QueryMigrationCheckProcess(request *QueryMigrationCheckProcessR
 // 本接口（QueryMigrationCheckProcess）的作用是查询迁移检查任务的进度，适用于迁移源的类型为TencentDB for SQLServer 的迁移方式
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBCONNECTERROR = "InternalError.DBConnectError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -6863,6 +6871,7 @@ func NewStartInstanceXEventResponse() (response *StartInstanceXEventResponse) {
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 func (c *Client) StartInstanceXEvent(request *StartInstanceXEventRequest) (response *StartInstanceXEventResponse, err error) {
@@ -6877,6 +6886,7 @@ func (c *Client) StartInstanceXEvent(request *StartInstanceXEventRequest) (respo
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 func (c *Client) StartInstanceXEventWithContext(ctx context.Context, request *StartInstanceXEventRequest) (response *StartInstanceXEventResponse, err error) {

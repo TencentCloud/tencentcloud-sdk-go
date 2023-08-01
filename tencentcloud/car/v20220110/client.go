@@ -131,6 +131,7 @@ func NewCreateSessionResponse() (response *CreateSessionResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LOCKTIMEOUT = "FailedOperation.LockTimeout"
+//  FAILEDOPERATION_PATHNOTFOUND = "FailedOperation.PathNotFound"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
 //  INTERNALERROR = "InternalError"
@@ -152,6 +153,7 @@ func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateS
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LOCKTIMEOUT = "FailedOperation.LockTimeout"
+//  FAILEDOPERATION_PATHNOTFOUND = "FailedOperation.PathNotFound"
 //  FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 //  FAILEDOPERATION_SLOWDOWN = "FailedOperation.SlowDown"
 //  INTERNALERROR = "InternalError"

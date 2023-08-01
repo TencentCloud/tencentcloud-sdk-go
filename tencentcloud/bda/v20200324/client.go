@@ -1411,6 +1411,7 @@ func NewSegmentPortraitPicResponse() (response *SegmentPortraitPicResponse) {
 // 即二分类人像分割，识别传入图片中人体的完整轮廓，进行抠像。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"
@@ -1442,6 +1443,7 @@ func (c *Client) SegmentPortraitPic(request *SegmentPortraitPicRequest) (respons
 // 即二分类人像分割，识别传入图片中人体的完整轮廓，进行抠像。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownloadError"
 //  FAILEDOPERATION_IMAGEDECODEFAILED = "FailedOperation.ImageDecodeFailed"
 //  FAILEDOPERATION_IMAGEDOWNLOADERROR = "FailedOperation.ImageDownloadError"

@@ -418,8 +418,6 @@ func NewRunWorkspaceResponse() (response *RunWorkspaceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_WORKSPACENAMEDUPLICATE = "FailedOperation.WorkspaceNameDuplicate"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) RunWorkspace(request *RunWorkspaceRequest) (response *RunWorkspaceResponse, err error) {
     return c.RunWorkspaceWithContext(context.Background(), request)
 }
@@ -429,8 +427,6 @@ func (c *Client) RunWorkspace(request *RunWorkspaceRequest) (response *RunWorksp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_WORKSPACENAMEDUPLICATE = "FailedOperation.WorkspaceNameDuplicate"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) RunWorkspaceWithContext(ctx context.Context, request *RunWorkspaceRequest) (response *RunWorkspaceResponse, err error) {
     if request == nil {
         request = NewRunWorkspaceRequest()
@@ -470,8 +466,6 @@ func NewStopWorkspaceResponse() (response *StopWorkspaceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_WORKSPACENAMEDUPLICATE = "FailedOperation.WorkspaceNameDuplicate"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) StopWorkspace(request *StopWorkspaceRequest) (response *StopWorkspaceResponse, err error) {
     return c.StopWorkspaceWithContext(context.Background(), request)
 }
@@ -481,8 +475,6 @@ func (c *Client) StopWorkspace(request *StopWorkspaceRequest) (response *StopWor
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_WORKSPACENAMEDUPLICATE = "FailedOperation.WorkspaceNameDuplicate"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) StopWorkspaceWithContext(ctx context.Context, request *StopWorkspaceRequest) (response *StopWorkspaceResponse, err error) {
     if request == nil {
         request = NewStopWorkspaceRequest()

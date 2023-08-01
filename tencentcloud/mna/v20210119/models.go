@@ -759,6 +759,12 @@ type GetDevicesRequestParams struct {
 
 	// 搜索设备的关键字（ID或者设备名），为空时匹配所有设备
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// DeviceType
+	// 不传：返回所有设备；
+	// 1:自有设备；
+	// 2:三方设备
+	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
 }
 
 type GetDevicesRequest struct {
@@ -772,6 +778,12 @@ type GetDevicesRequest struct {
 
 	// 搜索设备的关键字（ID或者设备名），为空时匹配所有设备
 	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+
+	// DeviceType
+	// 不传：返回所有设备；
+	// 1:自有设备；
+	// 2:三方设备
+	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
 }
 
 func (r *GetDevicesRequest) ToJsonString() string {
@@ -789,6 +801,7 @@ func (r *GetDevicesRequest) FromJsonString(s string) error {
 	delete(f, "PageSize")
 	delete(f, "PageNumber")
 	delete(f, "Keyword")
+	delete(f, "DeviceType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDevicesRequest has unknown keys!", "")
 	}

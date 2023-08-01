@@ -746,6 +746,9 @@ const (
 	// 文件配置项已经发布。
 	INVALIDPARAMETERVALUE_FILECONFIGALREADYRELEASED = "InvalidParameterValue.FileConfigAlreadyReleased"
 
+	// 文件配置项编码方式不支持。
+	INVALIDPARAMETERVALUE_FILECONFIGCODEUNSUPPORTED = "InvalidParameterValue.FileConfigCodeUnsupported"
+
 	// 文件配置项已存在。
 	INVALIDPARAMETERVALUE_FILECONFIGEXISTS = "InvalidParameterValue.FileConfigExists"
 

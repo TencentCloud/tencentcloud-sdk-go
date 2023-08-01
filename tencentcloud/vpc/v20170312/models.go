@@ -5913,7 +5913,7 @@ type CreateVpnGatewayRequestParams struct {
 	// VPN网关名称，最大长度不能超过60个字节。
 	VpnGatewayName *string `json:"VpnGatewayName,omitempty" name:"VpnGatewayName"`
 
-	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps
+	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
@@ -5925,16 +5925,16 @@ type CreateVpnGatewayRequestParams struct {
 	// 可用区，如：ap-guangzhou-2。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// VPN网关类型。值“CCN”云联网类型VPN网关，值SSL为SSL-VPN
+	// VPN网关类型，默认为IPSEC。值“IPSEC”为VPC型IPSEC VPN网关，值“SSL”为VPC型SSL VPN网关，值“CCN”为云联网型IPSEC VPN网关，值“SSL_CCN”为云联网型SSL VPN网关。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
-	// CDC实例ID
+	// CDC实例ID。
 	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 
-	// SSL-VPN 最大CLIENT 连接数。可选 [5, 10, 20, 50, 100]。仅SSL-VPN 需要选这个参数。
+	// SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：个。仅 SSL / SSL_CCN 类型需要选这个参数。
 	MaxConnection *uint64 `json:"MaxConnection,omitempty" name:"MaxConnection"`
 }
 
@@ -5947,7 +5947,7 @@ type CreateVpnGatewayRequest struct {
 	// VPN网关名称，最大长度不能超过60个字节。
 	VpnGatewayName *string `json:"VpnGatewayName,omitempty" name:"VpnGatewayName"`
 
-	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100；单位：Mbps
+	// 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。
 	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
 
 	// VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
@@ -5959,16 +5959,16 @@ type CreateVpnGatewayRequest struct {
 	// 可用区，如：ap-guangzhou-2。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// VPN网关类型。值“CCN”云联网类型VPN网关，值SSL为SSL-VPN
+	// VPN网关类型，默认为IPSEC。值“IPSEC”为VPC型IPSEC VPN网关，值“SSL”为VPC型SSL VPN网关，值“CCN”为云联网型IPSEC VPN网关，值“SSL_CCN”为云联网型SSL VPN网关。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
 	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
 
-	// CDC实例ID
+	// CDC实例ID。
 	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 
-	// SSL-VPN 最大CLIENT 连接数。可选 [5, 10, 20, 50, 100]。仅SSL-VPN 需要选这个参数。
+	// SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：个。仅 SSL / SSL_CCN 类型需要选这个参数。
 	MaxConnection *uint64 `json:"MaxConnection,omitempty" name:"MaxConnection"`
 }
 
@@ -25528,10 +25528,10 @@ type VpnGateway struct {
 	// 网关实例名称。
 	VpnGatewayName *string `json:"VpnGatewayName,omitempty" name:"VpnGatewayName"`
 
-	// 网关实例类型：'IPSEC', 'SSL','CCN'。
+	// 网关实例类型：'IPSEC', 'SSL','CCN','SSL_CCN'。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
-	// 网关实例状态， 'PENDING'：生产中，'DELETING'：删除中，'AVAILABLE'：运行中。
+	// 网关实例状态， 'PENDING'：生产中，'PENDING_ERROR'：生产失败，'DELETING'：删除中，'DELETING_ERROR'：删除失败，'AVAILABLE'：运行中。
 	State *string `json:"State,omitempty" name:"State"`
 
 	// 网关公网IP。
@@ -25540,7 +25540,7 @@ type VpnGateway struct {
 	// 网关续费类型：'NOTIFY_AND_MANUAL_RENEW'：手动续费，'NOTIFY_AND_AUTO_RENEW'：自动续费，'NOT_NOTIFY_AND_NOT_RENEW'：到期不续费。
 	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
-	// 网关付费类型：POSTPAID_BY_HOUR：按小时后付费，PREPAID：包年包月预付费，
+	// 网关付费类型：POSTPAID_BY_HOUR：按量计费，PREPAID：包年包月预付费。
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 
 	// 网关出带宽。
@@ -25558,22 +25558,22 @@ type VpnGateway struct {
 	// 计费模式变更，PREPAID_TO_POSTPAID：包年包月预付费到期转按小时后付费。
 	NewPurchasePlan *string `json:"NewPurchasePlan,omitempty" name:"NewPurchasePlan"`
 
-	// 网关计费装，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。
+	// 网关计费状态，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。
 	RestrictState *string `json:"RestrictState,omitempty" name:"RestrictState"`
 
-	// 可用区，如：ap-guangzhou-2
+	// 可用区，如：ap-guangzhou-2。
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
 
-	// 网关带宽配额信息
+	// 网关带宽配额信息。
 	VpnGatewayQuotaSet []*VpnGatewayQuota `json:"VpnGatewayQuotaSet,omitempty" name:"VpnGatewayQuotaSet"`
 
-	// 网关实例版本信息
+	// 网关实例版本信息。
 	Version *string `json:"Version,omitempty" name:"Version"`
 
-	// Type值为CCN时，该值表示云联网实例ID
+	// Type值为CCN时，该值表示云联网实例ID。
 	NetworkInstanceId *string `json:"NetworkInstanceId,omitempty" name:"NetworkInstanceId"`
 
-	// CDC 实例ID
+	// CDC 实例ID。
 	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 
 	// SSL-VPN 客户端连接数。

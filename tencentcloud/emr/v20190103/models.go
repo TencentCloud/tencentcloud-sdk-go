@@ -4133,6 +4133,10 @@ type NodeHardwareInfo struct {
 	// 0表示老计费，1表示新计费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TradeVersion *int64 `json:"TradeVersion,omitempty" name:"TradeVersion"`
+
+	// 各组件状态，Zookeeper:STARTED,ResourceManager:STARTED，STARTED已启动，STOPED已停止
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServicesStatus *string `json:"ServicesStatus,omitempty" name:"ServicesStatus"`
 }
 
 type NodeResourceSpec struct {

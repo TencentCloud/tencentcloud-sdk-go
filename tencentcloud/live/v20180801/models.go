@@ -731,6 +731,9 @@ type CommonMixInputParam struct {
 
 	// 输入流裁剪参数。
 	CropParams *CommonMixCropParams `json:"CropParams,omitempty" name:"CropParams"`
+
+	// 抠图参数。
+	PortraitSegmentParams *MixPortraitSegmentParams `json:"PortraitSegmentParams,omitempty" name:"PortraitSegmentParams"`
 }
 
 type CommonMixLayoutParams struct {
@@ -1945,6 +1948,7 @@ type CreateLiveRecordTemplateRequestParams struct {
 	Mp3Param *RecordParam `json:"Mp3Param,omitempty" name:"Mp3Param"`
 
 	// 是否去除水印，类型为慢直播时此参数无效。
+	// 如果为false，则录制水印流或转码流；如果为true，则录制原始流。
 	RemoveWatermark *bool `json:"RemoveWatermark,omitempty" name:"RemoveWatermark"`
 
 	// FLV 录制特殊参数。
@@ -1984,6 +1988,7 @@ type CreateLiveRecordTemplateRequest struct {
 	Mp3Param *RecordParam `json:"Mp3Param,omitempty" name:"Mp3Param"`
 
 	// 是否去除水印，类型为慢直播时此参数无效。
+	// 如果为false，则录制水印流或转码流；如果为true，则录制原始流。
 	RemoveWatermark *bool `json:"RemoveWatermark,omitempty" name:"RemoveWatermark"`
 
 	// FLV 录制特殊参数。
@@ -11688,6 +11693,19 @@ type MPSResult struct {
 	// 智能文字识别结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AiOcrResults []*string `json:"AiOcrResults,omitempty" name:"AiOcrResults"`
+}
+
+type MixPortraitSegmentParams struct {
+	// 抠图背景颜色，
+	// 常用的颜色有：
+	// 红色：0xcc0033。
+	// 黄色：0xcc9900。
+	// 绿色：0xcccc33。
+	// 蓝色：0x99CCFF。
+	// 黑色：0x000000。
+	// 白色：0xFFFFFF。
+	// 灰色：0x999999。
+	Color *string `json:"Color,omitempty" name:"Color"`
 }
 
 // Predefined struct for user

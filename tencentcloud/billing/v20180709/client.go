@@ -645,11 +645,7 @@ func NewDescribeCostDetailResponse() (response *DescribeCostDetailResponse) {
 // 查询消耗明细
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) DescribeCostDetail(request *DescribeCostDetailRequest) (response *DescribeCostDetailResponse, err error) {
     return c.DescribeCostDetailWithContext(context.Background(), request)
 }
@@ -658,11 +654,7 @@ func (c *Client) DescribeCostDetail(request *DescribeCostDetailRequest) (respons
 // 查询消耗明细
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 func (c *Client) DescribeCostDetailWithContext(ctx context.Context, request *DescribeCostDetailRequest) (response *DescribeCostDetailResponse, err error) {
     if request == nil {
         request = NewDescribeCostDetailRequest()

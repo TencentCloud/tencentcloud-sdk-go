@@ -2959,8 +2959,7 @@ type Component struct {
 	// 
 	// 注：
 	// 当GenerateMode=KEYWORD时，通过"^"来决定是否使用关键字整词匹配能力。
-	// 例：
-	// 当GenerateMode=KEYWORD时，如果传入关键字"^甲方签署^"，则会在PDF文件中有且仅有"甲方签署"关键字的地方进行对应操作。
+	// 例：当GenerateMode=KEYWORD时，如果传入关键字"^甲方签署^"，则会在PDF文件中有且仅有"甲方签署"关键字的地方进行对应操作。
 	// 如传入的关键字为"甲方签署"，则PDF文件中每个出现关键字的位置都会执行相应操作。
 	// 
 	// 创建控件时，此值为空
@@ -2990,13 +2989,14 @@ type Component struct {
 	// 表单域的控件不能作为印章和签名控件
 	ComponentType *string `json:"ComponentType,omitempty" name:"ComponentType"`
 
-	// 控件简称，不能超过30个字符
+	// 控件简称，不超过30个字符
 	ComponentName *string `json:"ComponentName,omitempty" name:"ComponentName"`
 
-	// 定义控件是否为必填项，默认为false
+	// 控件是否为必填项，
+	// 默认为false-非必填
 	ComponentRequired *bool `json:"ComponentRequired,omitempty" name:"ComponentRequired"`
 
-	// 控件关联的签署方id
+	// 控件关联的参与方ID，对应Recipient结构体中的RecipientId	
 	ComponentRecipientId *string `json:"ComponentRecipientId,omitempty" name:"ComponentRecipientId"`
 
 	// 控件所属文件的序号 (文档中文件的排列序号，从0开始)
@@ -3146,10 +3146,10 @@ type Component struct {
 	// 签署区日期控件会转换成图片格式并带存证，需要通过字体决定图片大小
 	ComponentDateFontSize *int64 `json:"ComponentDateFontSize,omitempty" name:"ComponentDateFontSize"`
 
-	// 控件所属文档的Id, 模块相关接口为空值
+	// 控件所属文档的Id, 模板相关接口为空值
 	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
 
-	// 控件描述，不能超过30个字符
+	// 控件描述，不超过30个字符
 	ComponentDescription *string `json:"ComponentDescription,omitempty" name:"ComponentDescription"`
 
 	// 指定关键字时横坐标偏移量，单位pt
@@ -3162,17 +3162,28 @@ type Component struct {
 	// 如果不为空，属于平台企业预设控件；
 	ChannelComponentId *string `json:"ChannelComponentId,omitempty" name:"ChannelComponentId"`
 
-	// 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
+	// 指定关键字排序规则，
+	// Positive-正序，
+	// Reverse-倒序。
+	// 传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
 	// 传入Reverse时会根据关键字在PDF文件内的反序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的最后一个关键字。
 	KeywordOrder *string `json:"KeywordOrder,omitempty" name:"KeywordOrder"`
 
-	// 指定关键字页码，可选参数，指定页码后，将只在指定的页码内查找关键字，非该页码的关键字将不会查询出来
+	// 指定关键字页码。
+	// 指定页码后，将只在指定的页码内查找关键字，非该页码的关键字将不会查询出来
 	KeywordPage *int64 `json:"KeywordPage,omitempty" name:"KeywordPage"`
 
-	// 关键字位置模式，Middle-居中，Below-正下方，Right-正右方，LowerRight-右上角，UpperRight-右下角。示例：如果设置Middle的关键字盖章，则印章的中心会和关键字的中心重合，如果设置Below，则印章在关键字的正下方
+	// 关键字位置模式，
+	// Middle-居中，
+	// Below-正下方，
+	// Right-正右方，
+	// LowerRight-右上角，
+	// UpperRight-右下角。
+	// 示例：如果设置Middle的关键字盖章，则印章的中心会和关键字的中心重合，如果设置Below，则印章在关键字的正下方
 	RelativeLocation *string `json:"RelativeLocation,omitempty" name:"RelativeLocation"`
 
-	// 关键字索引，可选参数，如果一个关键字在PDF文件中存在多个，可以通过关键字索引指定使用第几个关键字作为最后的结果，可指定多个索引。示例[0,2]，说明使用PDF文件内第1个和第3个关键字位置。
+	// 关键字索引，如果一个关键字在PDF文件中存在多个，可以通过关键字索引指定使用第几个关键字作为最后的结果，可指定多个索引。
+	// 示例[0,2]，说明使用PDF文件内第1个和第3个关键字位置。
 	KeywordIndexes []*int64 `json:"KeywordIndexes,omitempty" name:"KeywordIndexes"`
 
 	// 填写提示的内容
@@ -4119,31 +4130,41 @@ func (r *DescribeResourceUrlsByFlowsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTemplatesRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId必填。
+	// 应用相关信息。 
+	// 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 模板唯一标识，查询单个模板时使用
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
+	// 查询内容：
+	// 0-模板列表及详情（默认），
+	// 1-仅模板列表
 	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 
-	// 查询个数，默认20，最大100；在查询列表的时候有效
+	// 指定每页多少条数据，如果不传默认为20，单页最大100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 查询偏移位置，默认0；在查询列表的时候有效
+	// 查询结果分页返回，此处指定第几页，如果不传默从第一页返回。页码从0开始，即首页为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 是否返回所有组件信息。默认false，只返回发起方控件；true，返回所有签署方控件
+	// 是否返回所有组件信息。
+	// 默认false，只返回发起方控件；
+	// true，返回所有签署方控件
 	QueryAllComponents *bool `json:"QueryAllComponents,omitempty" name:"QueryAllComponents"`
 
 	// 模糊搜索模板名称，最大长度200
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
-	// 是否获取模板预览链接
+	// 是否获取模板预览链接，
+	// 默认false-不获取
+	// true-获取
 	WithPreviewUrl *bool `json:"WithPreviewUrl,omitempty" name:"WithPreviewUrl"`
 
-	// 是否获取模板的PDF文件链接- 第三方应用集成需要开启白名单时才能使用。
+	// 是否获取模板的PDF文件链接。
+	// 默认false-不获取
+	// true-获取
+	// 请联系客户经理开白后使用。
 	WithPdfUrl *bool `json:"WithPdfUrl,omitempty" name:"WithPdfUrl"`
 
 	// 对应第三方应用平台企业的模板ID
@@ -4158,31 +4179,41 @@ type DescribeTemplatesRequestParams struct {
 type DescribeTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId必填。
+	// 应用相关信息。 
+	// 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 模板唯一标识，查询单个模板时使用
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 查询内容：0-模板列表及详情（默认），1-仅模板列表
+	// 查询内容：
+	// 0-模板列表及详情（默认），
+	// 1-仅模板列表
 	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
 
-	// 查询个数，默认20，最大100；在查询列表的时候有效
+	// 指定每页多少条数据，如果不传默认为20，单页最大100。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 查询偏移位置，默认0；在查询列表的时候有效
+	// 查询结果分页返回，此处指定第几页，如果不传默从第一页返回。页码从0开始，即首页为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 是否返回所有组件信息。默认false，只返回发起方控件；true，返回所有签署方控件
+	// 是否返回所有组件信息。
+	// 默认false，只返回发起方控件；
+	// true，返回所有签署方控件
 	QueryAllComponents *bool `json:"QueryAllComponents,omitempty" name:"QueryAllComponents"`
 
 	// 模糊搜索模板名称，最大长度200
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
-	// 是否获取模板预览链接
+	// 是否获取模板预览链接，
+	// 默认false-不获取
+	// true-获取
 	WithPreviewUrl *bool `json:"WithPreviewUrl,omitempty" name:"WithPreviewUrl"`
 
-	// 是否获取模板的PDF文件链接- 第三方应用集成需要开启白名单时才能使用。
+	// 是否获取模板的PDF文件链接。
+	// 默认false-不获取
+	// true-获取
+	// 请联系客户经理开白后使用。
 	WithPdfUrl *bool `json:"WithPdfUrl,omitempty" name:"WithPdfUrl"`
 
 	// 对应第三方应用平台企业的模板ID
@@ -4223,16 +4254,16 @@ func (r *DescribeTemplatesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTemplatesResponseParams struct {
-	// 模板详情
+	// 模板列表
 	Templates []*TemplateInfo `json:"Templates,omitempty" name:"Templates"`
 
-	// 查询总数
+	// 查询到的总数
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
-	// 查询数量
+	// 每页多少条数据
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 查询起始偏移
+	// 查询结果分页返回，此处指定第几页。页码从0开始，即首页为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4967,55 +4998,75 @@ type OccupiedSeal struct {
 
 // Predefined struct for user
 type OperateChannelTemplateRequestParams struct {
-	// 应用相关信息。 此接口Agent.AppId必填。
+	// 应用相关信息。 
+	// 此接口Agent.AppId必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"
+	// 操作类型，
+	// 查询:"SELECT"，
+	// 删除:"DELETE"，
+	// 更新:"UPDATE"
 	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
 
 	// 第三方应用平台模板库模板唯一标识
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 合作企业方第三方机构唯一标识数据，支持多个， 用","进行分隔
+	// 合作企业方第三方机构唯一标识数据.
+	// 支持多个， 用","进行分隔
 	ProxyOrganizationOpenIds *string `json:"ProxyOrganizationOpenIds,omitempty" name:"ProxyOrganizationOpenIds"`
 
-	// 模板可见性, 全部可见-"all", 部分可见-"part"
+	// 模板可见性, 
+	// 全部可见-"all",
+	//  部分可见-"part"
 	AuthTag *string `json:"AuthTag,omitempty" name:"AuthTag"`
+
+	// 当OperateType=UPADATE时，可以通过设置此字段对模板启停用状态进行操作。
+	// 若此字段值为0，则不会修改模板Available，
+	// 1为启用模板，
+	// 2为停用模板。
+	// 启用后模板可以正常领取。停用后，推送方式为【自动推送】的模板则无法被子客使用，推送方式为【手动领取】的模板则无法出现被模板库被子客领用。如果Available更新失败，会直接返回错误。
+	Available *int64 `json:"Available,omitempty" name:"Available"`
 
 	// 暂未开放
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 当OperateType=UPADATE时，可以通过设置此字段对模板启停用状态进行操作。若此字段值为0，则不会修改模板Available，1为启用模板，2为停用模板。
-	// 启用后模板可以正常领取。停用后，推送方式为【自动推送】的模板则无法被子客使用，推送方式为【手动领取】的模板则无法出现被模板库被子客领用。如果Available更新失败，会直接返回错误。
-	Available *int64 `json:"Available,omitempty" name:"Available"`
 }
 
 type OperateChannelTemplateRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.AppId必填。
+	// 应用相关信息。 
+	// 此接口Agent.AppId必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 操作类型，查询:"SELECT"，删除:"DELETE"，更新:"UPDATE"
+	// 操作类型，
+	// 查询:"SELECT"，
+	// 删除:"DELETE"，
+	// 更新:"UPDATE"
 	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
 
 	// 第三方应用平台模板库模板唯一标识
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 合作企业方第三方机构唯一标识数据，支持多个， 用","进行分隔
+	// 合作企业方第三方机构唯一标识数据.
+	// 支持多个， 用","进行分隔
 	ProxyOrganizationOpenIds *string `json:"ProxyOrganizationOpenIds,omitempty" name:"ProxyOrganizationOpenIds"`
 
-	// 模板可见性, 全部可见-"all", 部分可见-"part"
+	// 模板可见性, 
+	// 全部可见-"all",
+	//  部分可见-"part"
 	AuthTag *string `json:"AuthTag,omitempty" name:"AuthTag"`
+
+	// 当OperateType=UPADATE时，可以通过设置此字段对模板启停用状态进行操作。
+	// 若此字段值为0，则不会修改模板Available，
+	// 1为启用模板，
+	// 2为停用模板。
+	// 启用后模板可以正常领取。停用后，推送方式为【自动推送】的模板则无法被子客使用，推送方式为【手动领取】的模板则无法出现被模板库被子客领用。如果Available更新失败，会直接返回错误。
+	Available *int64 `json:"Available,omitempty" name:"Available"`
 
 	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
-
-	// 当OperateType=UPADATE时，可以通过设置此字段对模板启停用状态进行操作。若此字段值为0，则不会修改模板Available，1为启用模板，2为停用模板。
-	// 启用后模板可以正常领取。停用后，推送方式为【自动推送】的模板则无法被子客使用，推送方式为【手动领取】的模板则无法出现被模板库被子客领用。如果Available更新失败，会直接返回错误。
-	Available *int64 `json:"Available,omitempty" name:"Available"`
 }
 
 func (r *OperateChannelTemplateRequest) ToJsonString() string {
@@ -5035,8 +5086,8 @@ func (r *OperateChannelTemplateRequest) FromJsonString(s string) error {
 	delete(f, "TemplateId")
 	delete(f, "ProxyOrganizationOpenIds")
 	delete(f, "AuthTag")
-	delete(f, "Operator")
 	delete(f, "Available")
+	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OperateChannelTemplateRequest has unknown keys!", "")
 	}
@@ -5053,11 +5104,16 @@ type OperateChannelTemplateResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 描述模板可见性更改的结果，和参数中Available无关，全部成功-"all-success",部分成功-"part-success", 全部失败-"fail"失败的会在FailMessageList中展示。
+	// 描述模板可见性更改的结果，和参数中Available无关。
+	// 全部成功-"all-success",
+	// 部分成功-"part-success", 
+	// 全部失败-"fail"，失败的会在FailMessageList中展示。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OperateResult *string `json:"OperateResult,omitempty" name:"OperateResult"`
 
-	// 模板可见性, 全部可见-"all", 部分可见-"part"
+	// 模板可见性, 
+	// 全部可见-"all", 
+	// 部分可见-"part"
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AuthTag *string `json:"AuthTag,omitempty" name:"AuthTag"`
 
@@ -5261,31 +5317,40 @@ type ProxyOrganizationOperator struct {
 }
 
 type Recipient struct {
-	// 签署人唯一标识，在通过模板发起合同的时候对应签署方Id
+	// 签署人唯一标识，在通过模板发起合同的时候对应签署方ID
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 
-	// 参与者类型。默认为空。ENTERPRISE-企业；INDIVIDUAL-个人；PROMOTER-发起方
+	// 参与者类型，默认为空。
+	// ENTERPRISE-企业；
+	// INDIVIDUAL-个人；
+	// PROMOTER-发起方
 	RecipientType *string `json:"RecipientType,omitempty" name:"RecipientType"`
 
-	// 描述
+	// 描述信息	
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 签署方备注角色名
+	// 角色名称	
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 
-	// 是否需要校验，true-是，false-否
+	// 是否需要校验，
+	// true-是，
+	// false-否
 	RequireValidation *bool `json:"RequireValidation,omitempty" name:"RequireValidation"`
 
-	// 是否必须填写，true-是，false-否
+	// 是否必须填写，
+	// true-是，
+	// false-否
 	RequireSign *bool `json:"RequireSign,omitempty" name:"RequireSign"`
 
-	// 签署类型
+	// 内部字段，签署类型
 	SignType *int64 `json:"SignType,omitempty" name:"SignType"`
 
 	// 签署顺序：数字越小优先级越高
 	RoutingOrder *int64 `json:"RoutingOrder,omitempty" name:"RoutingOrder"`
 
-	// 是否是发起方
+	// 是否是发起方，
+	// true-是 
+	// false-否
 	IsPromoter *bool `json:"IsPromoter,omitempty" name:"IsPromoter"`
 }
 
@@ -5722,22 +5787,22 @@ type TaskInfo struct {
 }
 
 type TemplateInfo struct {
-	// 模板ID
+	// 模板ID，模板的唯一标识
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 模板名字
+	// 模板名
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
 	// 模板描述信息
 	Description *string `json:"Description,omitempty" name:"Description"`
 
-	// 模板的填充控件信息结构
+	// 模板的填充控件列表
 	Components []*Component `json:"Components,omitempty" name:"Components"`
 
-	// 模板中的流程参与人信息
+	// 模板中的签署参与方列表
 	Recipients []*Recipient `json:"Recipients,omitempty" name:"Recipients"`
 
-	// 模板中的签署控件信息结构
+	// 模板中的签署控件列表
 	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
 
 	// 模板类型：1-静默签；3-普通模板
@@ -5751,33 +5816,41 @@ type TemplateInfo struct {
 	// 模板的创建者信息，电子签系统用户ID
 	Creator *string `json:"Creator,omitempty" name:"Creator"`
 
-	// 模板创建的时间戳，单位秒
+	// 模板创建的时间戳，格式为Unix标准时间戳（秒）
 	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
 
-	// 模板的H5预览链接,可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。请求参数WithPreviewUrl=true时返回，有效期5分钟。
+	// 模板的H5预览链接,有效期5分钟。
+	// 可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
+	// （此功能开放需要联系客户经理）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
 
-	// 第三方应用集成-模板PDF文件链接。请求参数WithPdfUrl=true时返回（此功能开放需要联系客户经理），有效期5分钟。
+	// 第三方应用集成-模板PDF文件链接，有效期5分钟。
+	// 请求参数WithPdfUrl=true时返回
+	// （此功能开放需要联系客户经理）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PdfUrl *string `json:"PdfUrl,omitempty" name:"PdfUrl"`
 
-	// 关联的第三方应用平台企业模板ID
+	// 本模板关联的第三方应用平台企业模板ID
 	ChannelTemplateId *string `json:"ChannelTemplateId,omitempty" name:"ChannelTemplateId"`
 
-	// 关联的三方应用平台平台企业模板名称
+	// 本模板关联的三方应用平台平台企业模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelTemplateName *string `json:"ChannelTemplateName,omitempty" name:"ChannelTemplateName"`
 
-	// 0-需要子客企业手动领取平台企业的模板(默认); 1-平台自动设置子客模板
+	// 0-需要子客企业手动领取平台企业的模板(默认); 
+	// 1-平台自动设置子客模板
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ChannelAutoSave *int64 `json:"ChannelAutoSave,omitempty" name:"ChannelAutoSave"`
 
-	// 模板版本，全数字字符。默认为空，初始版本为yyyyMMdd001。
+	// 模板版本，全数字字符。
+	// 默认为空，初始版本为yyyyMMdd001。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateVersion *string `json:"TemplateVersion,omitempty" name:"TemplateVersion"`
 
-	// 模板可用状态，取值：1启用（默认），2停用
+	// 模板可用状态：
+	// 1启用（默认）
+	// 2停用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Available *int64 `json:"Available,omitempty" name:"Available"`
 }

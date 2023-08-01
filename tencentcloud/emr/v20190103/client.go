@@ -1234,6 +1234,7 @@ func NewDescribeYarnApplicationsResponse() (response *DescribeYarnApplicationsRe
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_IMPALAQUERYEXCEPTION = "InvalidParameter.ImpalaQueryException"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) DescribeYarnApplications(request *DescribeYarnApplicationsRequest) (response *DescribeYarnApplicationsResponse, err error) {
     return c.DescribeYarnApplicationsWithContext(context.Background(), request)
 }
@@ -1243,6 +1244,7 @@ func (c *Client) DescribeYarnApplications(request *DescribeYarnApplicationsReque
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_IMPALAQUERYEXCEPTION = "InvalidParameter.ImpalaQueryException"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
 func (c *Client) DescribeYarnApplicationsWithContext(ctx context.Context, request *DescribeYarnApplicationsRequest) (response *DescribeYarnApplicationsResponse, err error) {
     if request == nil {
         request = NewDescribeYarnApplicationsRequest()

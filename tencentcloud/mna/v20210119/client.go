@@ -737,6 +737,7 @@ func NewUpdateDeviceResponse() (response *UpdateDeviceResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_DUPLICATEDEVICENAME = "InternalError.DuplicateDeviceName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) UpdateDevice(request *UpdateDeviceRequest) (response *UpdateDeviceResponse, err error) {
     return c.UpdateDeviceWithContext(context.Background(), request)
@@ -748,6 +749,7 @@ func (c *Client) UpdateDevice(request *UpdateDeviceRequest) (response *UpdateDev
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
+//  INTERNALERROR_DUPLICATEDEVICENAME = "InternalError.DuplicateDeviceName"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 func (c *Client) UpdateDeviceWithContext(ctx context.Context, request *UpdateDeviceRequest) (response *UpdateDeviceResponse, err error) {
     if request == nil {

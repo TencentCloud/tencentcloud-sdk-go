@@ -2854,9 +2854,9 @@ func NewCreatePrepareFlowResponse() (response *CreatePrepareFlowResponse) {
 // CreatePrepareFlow
 // 创建快速发起流程
 //
-// 适用场景：用户通过API 合同文件及签署信息，并可通过我们返回的URL在页面完成签署控件等信息的编辑与确认，快速发起合同.
+// <br/>适用场景：用户通过API 合同文件及签署信息，并可通过我们返回的URL在页面完成签署控件等信息的编辑与确认，快速发起合同.
 //
-// 注：该接口文件的resourceId 是通过上传文件之后获取的。
+// <br/>注：该接口文件的resourceId 是通过上传文件之后获取的。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2938,9 +2938,9 @@ func (c *Client) CreatePrepareFlow(request *CreatePrepareFlowRequest) (response 
 // CreatePrepareFlow
 // 创建快速发起流程
 //
-// 适用场景：用户通过API 合同文件及签署信息，并可通过我们返回的URL在页面完成签署控件等信息的编辑与确认，快速发起合同.
+// <br/>适用场景：用户通过API 合同文件及签署信息，并可通过我们返回的URL在页面完成签署控件等信息的编辑与确认，快速发起合同.
 //
-// 注：该接口文件的resourceId 是通过上传文件之后获取的。
+// <br/>注：该接口文件的resourceId 是通过上传文件之后获取的。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4415,6 +4415,7 @@ func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse
 //  FAILEDOPERATION_NOTFOUNDSHADOWUSER = "FailedOperation.NotFoundShadowUser"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -4469,6 +4470,7 @@ func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (r
 //  FAILEDOPERATION_NOTFOUNDSHADOWUSER = "FailedOperation.NotFoundShadowUser"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -5524,7 +5526,9 @@ func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmploye
 }
 
 // UpdateIntegrationEmployees
-// 更新员工信息(姓名，手机号，邮件、部门)，用户实名后无法更改姓名与手机号
+// 更新员工信息(姓名，手机号，邮件、部门)，用户实名后无法更改姓名与手机号。
+//
+// 可进行批量操作，Employees中的userID与openID二选一必填
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5536,7 +5540,9 @@ func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesR
 }
 
 // UpdateIntegrationEmployees
-// 更新员工信息(姓名，手机号，邮件、部门)，用户实名后无法更改姓名与手机号
+// 更新员工信息(姓名，手机号，邮件、部门)，用户实名后无法更改姓名与手机号。
+//
+// 可进行批量操作，Employees中的userID与openID二选一必填
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

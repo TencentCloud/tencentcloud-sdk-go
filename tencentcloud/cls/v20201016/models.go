@@ -478,14 +478,14 @@ type Ckafka struct {
 
 // Predefined struct for user
 type CloseKafkaConsumerRequestParams struct {
-	// CLS对应的topic标识
+	// 日志主题ID
 	FromTopicId *string `json:"FromTopicId,omitempty" name:"FromTopicId"`
 }
 
 type CloseKafkaConsumerRequest struct {
 	*tchttp.BaseRequest
 	
-	// CLS对应的topic标识
+	// 日志主题ID
 	FromTopicId *string `json:"FromTopicId,omitempty" name:"FromTopicId"`
 }
 
@@ -612,6 +612,14 @@ type ConfigExtraInfo struct {
 	// 日志主题name
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 高级采集配置。 Json字符串， Key/Value定义为如下：
+	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" name:"AdvancedConfig"`
 }
 
 type ConfigInfo struct {
@@ -655,6 +663,14 @@ type ConfigInfo struct {
 	// 用户自定义解析字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserDefineRule *string `json:"UserDefineRule,omitempty" name:"UserDefineRule"`
+
+	// 高级采集配置。 Json字符串， Key/Value定义为如下：
+	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" name:"AdvancedConfig"`
 }
 
 type ConsumerContent struct {
@@ -1093,6 +1109,13 @@ type CreateConfigExtraRequestParams struct {
 
 	// 绑定的机器组id列表
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+
+	// 高级采集配置。 Json字符串， Key/Value定义为如下：
+	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" name:"AdvancedConfig"`
 }
 
 type CreateConfigExtraRequest struct {
@@ -1148,6 +1171,13 @@ type CreateConfigExtraRequest struct {
 
 	// 绑定的机器组id列表
 	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+
+	// 高级采集配置。 Json字符串， Key/Value定义为如下：
+	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" name:"AdvancedConfig"`
 }
 
 func (r *CreateConfigExtraRequest) ToJsonString() string {
@@ -1179,6 +1209,7 @@ func (r *CreateConfigExtraRequest) FromJsonString(s string) error {
 	delete(f, "UserDefineRule")
 	delete(f, "GroupId")
 	delete(f, "GroupIds")
+	delete(f, "AdvancedConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateConfigExtraRequest has unknown keys!", "")
 	}
@@ -1233,7 +1264,11 @@ type CreateConfigRequestParams struct {
 	// 用户自定义采集规则，Json格式序列化的字符串
 	UserDefineRule *string `json:"UserDefineRule,omitempty" name:"UserDefineRule"`
 
-	// 高级采集配置
+	// 高级采集配置。 Json字符串， Key/Value定义为如下：
+	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
 	AdvancedConfig *string `json:"AdvancedConfig,omitempty" name:"AdvancedConfig"`
 }
 
@@ -1261,7 +1296,11 @@ type CreateConfigRequest struct {
 	// 用户自定义采集规则，Json格式序列化的字符串
 	UserDefineRule *string `json:"UserDefineRule,omitempty" name:"UserDefineRule"`
 
-	// 高级采集配置
+	// 高级采集配置。 Json字符串， Key/Value定义为如下：
+	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
 	AdvancedConfig *string `json:"AdvancedConfig,omitempty" name:"AdvancedConfig"`
 }
 
@@ -4675,6 +4714,69 @@ func (r *DescribeIndexResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeKafkaConsumerRequestParams struct {
+	// 日志主题ID
+	FromTopicId *string `json:"FromTopicId,omitempty" name:"FromTopicId"`
+}
+
+type DescribeKafkaConsumerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题ID
+	FromTopicId *string `json:"FromTopicId,omitempty" name:"FromTopicId"`
+}
+
+func (r *DescribeKafkaConsumerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaConsumerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FromTopicId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKafkaConsumerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKafkaConsumerResponseParams struct {
+	// Kafka协议消费是否打开
+	Status *bool `json:"Status,omitempty" name:"Status"`
+
+	// KafkaConsumer 消费时使用的Topic参数
+	TopicID *string `json:"TopicID,omitempty" name:"TopicID"`
+
+	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeKafkaConsumerResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKafkaConsumerResponseParams `json:"Response"`
+}
+
+func (r *DescribeKafkaConsumerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKafkaConsumerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeKafkaRechargesRequestParams struct {
 	// 日志主题 ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
@@ -6734,6 +6836,13 @@ type ModifyConfigExtraRequestParams struct {
 
 	// 日志主题name
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 高级采集配置。 Json字符串， Key/Value定义为如下：
+	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" name:"AdvancedConfig"`
 }
 
 type ModifyConfigExtraRequest struct {
@@ -6789,6 +6898,13 @@ type ModifyConfigExtraRequest struct {
 
 	// 日志主题name
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// 高级采集配置。 Json字符串， Key/Value定义为如下：
+	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" name:"AdvancedConfig"`
 }
 
 func (r *ModifyConfigExtraRequest) ToJsonString() string {
@@ -6820,6 +6936,7 @@ func (r *ModifyConfigExtraRequest) FromJsonString(s string) error {
 	delete(f, "LogsetId")
 	delete(f, "LogsetName")
 	delete(f, "TopicName")
+	delete(f, "AdvancedConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConfigExtraRequest has unknown keys!", "")
 	}
@@ -6873,6 +6990,13 @@ type ModifyConfigRequestParams struct {
 
 	// 用户自定义解析字符串，Json格式序列化的字符串
 	UserDefineRule *string `json:"UserDefineRule,omitempty" name:"UserDefineRule"`
+
+	// 高级采集配置。 Json字符串， Key/Value定义为如下：
+	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" name:"AdvancedConfig"`
 }
 
 type ModifyConfigRequest struct {
@@ -6901,6 +7025,13 @@ type ModifyConfigRequest struct {
 
 	// 用户自定义解析字符串，Json格式序列化的字符串
 	UserDefineRule *string `json:"UserDefineRule,omitempty" name:"UserDefineRule"`
+
+	// 高级采集配置。 Json字符串， Key/Value定义为如下：
+	// - ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
+	// - ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
+	// - ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
+	// 样例：{"ClsAgentFileTimeout":0,"ClsAgentMaxDepth":10,"ClsAgentParseFailMerge":true}
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" name:"AdvancedConfig"`
 }
 
 func (r *ModifyConfigRequest) ToJsonString() string {
@@ -6923,6 +7054,7 @@ func (r *ModifyConfigRequest) FromJsonString(s string) error {
 	delete(f, "ExcludePaths")
 	delete(f, "Output")
 	delete(f, "UserDefineRule")
+	delete(f, "AdvancedConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyConfigRequest has unknown keys!", "")
 	}
@@ -7286,6 +7418,67 @@ func (r *ModifyIndexResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyIndexResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyKafkaConsumerRequestParams struct {
+	// 日志主题ID
+	FromTopicId *string `json:"FromTopicId,omitempty" name:"FromTopicId"`
+
+	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
+}
+
+type ModifyKafkaConsumerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题ID
+	FromTopicId *string `json:"FromTopicId,omitempty" name:"FromTopicId"`
+
+	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
+}
+
+func (r *ModifyKafkaConsumerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyKafkaConsumerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FromTopicId")
+	delete(f, "Compression")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyKafkaConsumerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyKafkaConsumerResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyKafkaConsumerResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyKafkaConsumerResponseParams `json:"Response"`
+}
+
+func (r *ModifyKafkaConsumerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyKafkaConsumerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8019,7 +8212,7 @@ type NoticeReceiver struct {
 
 // Predefined struct for user
 type OpenKafkaConsumerRequestParams struct {
-	// CLS控制台创建的TopicId
+	// 日志主题ID
 	FromTopicId *string `json:"FromTopicId,omitempty" name:"FromTopicId"`
 
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
@@ -8032,7 +8225,7 @@ type OpenKafkaConsumerRequestParams struct {
 type OpenKafkaConsumerRequest struct {
 	*tchttp.BaseRequest
 	
-	// CLS控制台创建的TopicId
+	// 日志主题ID
 	FromTopicId *string `json:"FromTopicId,omitempty" name:"FromTopicId"`
 
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
@@ -8065,7 +8258,7 @@ func (r *OpenKafkaConsumerRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type OpenKafkaConsumerResponseParams struct {
-	// 待消费TopicId
+	// KafkaConsumer 消费时使用的Topic参数
 	TopicID *string `json:"TopicID,omitempty" name:"TopicID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

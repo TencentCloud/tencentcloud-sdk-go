@@ -37,7 +37,7 @@ type AndroidAppInfo struct {
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
 	// app的包名，本次操作的包名。
-	// 当安卓是按年收费、免费试用加固时，在线加固和输出工具要求该字段必输，且与AndroidPlan.AppPkgName值相等。
+	// 当Android是按年收费、免费试用加固时，在线加固和输出工具要求该字段必输，且与AndroidPlan.AppPkgName值相等。
 	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
 
 	// app的文件名，非必输。
@@ -46,8 +46,8 @@ type AndroidAppInfo struct {
 	// app版本号，非必输。
 	AppVersion *string `json:"AppVersion,omitempty" name:"AppVersion"`
 
-	// 安卓app的文件类型，本次加固操作的应用类型 。
-	// 安卓在线加固和输出工具加固必输，其值需等于“apk”或“aab”，且与AndroidAppInfo.AppType值相等。
+	// Android app的文件类型，本次加固操作的应用类型 。
+	// Android在线加固和输出工具加固必输，其值需等于“apk”或“aab”，且与AndroidAppInfo.AppType值相等。
 	AppType *string `json:"AppType,omitempty" name:"AppType"`
 }
 
@@ -676,7 +676,7 @@ func (r *CreateCosSecKeyInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateEncryptInstanceRequestParams struct {
-	// 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	// 平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
 	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
 
 	// 订单采购类型 1-免费试用 2-按年收费 3-按次收费
@@ -688,10 +688,10 @@ type CreateEncryptInstanceRequestParams struct {
 	// 本次加固使用的资源id
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 渠道合作安卓加固App信息 
+	// 渠道合作android加固App信息 
 	AndroidAppInfo *AndroidAppInfo `json:"AndroidAppInfo,omitempty" name:"AndroidAppInfo"`
 
-	// 渠道合作安卓加固策略信息
+	// 渠道合作android加固策略信息
 	AndroidPlan *AndroidPlan `json:"AndroidPlan,omitempty" name:"AndroidPlan"`
 
 	// 小程序加固信息
@@ -701,7 +701,7 @@ type CreateEncryptInstanceRequestParams struct {
 type CreateEncryptInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	// 平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
 	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
 
 	// 订单采购类型 1-免费试用 2-按年收费 3-按次收费
@@ -713,10 +713,10 @@ type CreateEncryptInstanceRequest struct {
 	// 本次加固使用的资源id
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 渠道合作安卓加固App信息 
+	// 渠道合作android加固App信息 
 	AndroidAppInfo *AndroidAppInfo `json:"AndroidAppInfo,omitempty" name:"AndroidAppInfo"`
 
-	// 渠道合作安卓加固策略信息
+	// 渠道合作android加固策略信息
 	AndroidPlan *AndroidPlan `json:"AndroidPlan,omitempty" name:"AndroidPlan"`
 
 	// 小程序加固信息
@@ -775,28 +775,28 @@ func (r *CreateEncryptInstanceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateOrderInstanceRequestParams struct {
-	// 平台类型枚举值：1-android安卓加固  ；2-ios源码混淆 ； 3-sdk加固 ； 4-applet小程序加固
+	// 平台类型枚举值：1-android加固  ；2-ios源码混淆 ； 3-sdk加固 ； 4-applet小程序加固
 	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
 
 	// 订单采购类型 1-免费试用 ；2-按年收费 ；3-按次收费
 	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
 
 	// 代表应用包名列表，值为单个包名（例如：“a.b.xxx”）或多个包名用逗号隔开(例如：“a.b.xxx,b.c.xxx”)。
-	// 当安卓按年收费加固或安卓免费试用加固时，该字段要求非空，即PlatformType=1 并且 OrderType=2时，AppPkgNameList必传值。
+	// 当android按年收费加固或android免费试用加固时，该字段要求非空，即PlatformType=1 并且 OrderType=2时，AppPkgNameList必传值。
 	AppPkgNameList *string `json:"AppPkgNameList,omitempty" name:"AppPkgNameList"`
 }
 
 type CreateOrderInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 平台类型枚举值：1-android安卓加固  ；2-ios源码混淆 ； 3-sdk加固 ； 4-applet小程序加固
+	// 平台类型枚举值：1-android加固  ；2-ios源码混淆 ； 3-sdk加固 ； 4-applet小程序加固
 	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
 
 	// 订单采购类型 1-免费试用 ；2-按年收费 ；3-按次收费
 	OrderType *int64 `json:"OrderType,omitempty" name:"OrderType"`
 
 	// 代表应用包名列表，值为单个包名（例如：“a.b.xxx”）或多个包名用逗号隔开(例如：“a.b.xxx,b.c.xxx”)。
-	// 当安卓按年收费加固或安卓免费试用加固时，该字段要求非空，即PlatformType=1 并且 OrderType=2时，AppPkgNameList必传值。
+	// 当android按年收费加固或android免费试用加固时，该字段要求非空，即PlatformType=1 并且 OrderType=2时，AppPkgNameList必传值。
 	AppPkgNameList *string `json:"AppPkgNameList,omitempty" name:"AppPkgNameList"`
 }
 
@@ -1209,7 +1209,7 @@ type DescribeEncryptInstancesRequestParams struct {
 	// 升序（asc）还是降序（desc），默认：desc。
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 
-	// (条件过滤字段) 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	// (条件过滤字段) 平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
 	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
 
 	// (条件过滤字段) 订单采购类型 1-免费试用 2-按年收费 3-按次收费
@@ -1227,10 +1227,10 @@ type DescribeEncryptInstancesRequestParams struct {
 	// (条件过滤字段) 查询与资源Id关联的任务
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// (条件过滤字段) 安卓应用类型：安卓-apk; 安卓-aab;
+	// (条件过滤字段) 应用类型：android-apk; android-aab;
 	AppType *string `json:"AppType,omitempty" name:"AppType"`
 
-	// （条件过滤字段）安卓应用的包名
+	// （条件过滤字段）应用的包名
 	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
 
 	// 加固结果，
@@ -1258,7 +1258,7 @@ type DescribeEncryptInstancesRequest struct {
 	// 升序（asc）还是降序（desc），默认：desc。
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 
-	// (条件过滤字段) 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	// (条件过滤字段) 平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
 	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
 
 	// (条件过滤字段) 订单采购类型 1-免费试用 2-按年收费 3-按次收费
@@ -1276,10 +1276,10 @@ type DescribeEncryptInstancesRequest struct {
 	// (条件过滤字段) 查询与资源Id关联的任务
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// (条件过滤字段) 安卓应用类型：安卓-apk; 安卓-aab;
+	// (条件过滤字段) 应用类型：android-apk; android-aab;
 	AppType *string `json:"AppType,omitempty" name:"AppType"`
 
-	// （条件过滤字段）安卓应用的包名
+	// （条件过滤字段）应用的包名
 	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
 
 	// 加固结果，
@@ -1353,7 +1353,7 @@ func (r *DescribeEncryptInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEncryptPlanRequestParams struct {
-	// 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	// 平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
 	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
 
 	// 订单采购类型 1-免费试用 2-按年收费 3-按次收费
@@ -1365,17 +1365,17 @@ type DescribeEncryptPlanRequestParams struct {
 	// 本次加固使用的资源id
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// （条件过滤字段）安卓加固查询时，根据包名查询
+	// （条件过滤字段）加固查询时，根据包名查询
 	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
 
-	// （条件过滤字段）安卓加固查询时，根据应用格式查询，枚举值：“apk”、“aab”
+	// （条件过滤字段）加固查询时，根据应用格式查询，枚举值：“apk”、“aab”
 	AppType *string `json:"AppType,omitempty" name:"AppType"`
 }
 
 type DescribeEncryptPlanRequest struct {
 	*tchttp.BaseRequest
 	
-	// 平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	// 平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
 	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
 
 	// 订单采购类型 1-免费试用 2-按年收费 3-按次收费
@@ -1387,10 +1387,10 @@ type DescribeEncryptPlanRequest struct {
 	// 本次加固使用的资源id
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// （条件过滤字段）安卓加固查询时，根据包名查询
+	// （条件过滤字段）加固查询时，根据包名查询
 	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
 
-	// （条件过滤字段）安卓加固查询时，根据应用格式查询，枚举值：“apk”、“aab”
+	// （条件过滤字段）加固查询时，根据应用格式查询，枚举值：“apk”、“aab”
 	AppType *string `json:"AppType,omitempty" name:"AppType"`
 }
 
@@ -1423,7 +1423,7 @@ type DescribeEncryptPlanResponseParams struct {
 	// 平台类型整型值  
 	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
 
-	// 平台类型描述 1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	// 平台类型描述 1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
 	PlatformTypeDesc *string `json:"PlatformTypeDesc,omitempty" name:"PlatformTypeDesc"`
 
 	// 1- 在线加固 2-输出工具加固
@@ -1441,7 +1441,7 @@ type DescribeEncryptPlanResponseParams struct {
 	// 资源id
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 上次安卓加固策略
+	// 上次加固策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidPlan *AndroidPlan `json:"AndroidPlan,omitempty" name:"AndroidPlan"`
 
@@ -1491,7 +1491,7 @@ type DescribeOrderInstancesRequestParams struct {
 	// 升序（asc）还是降序（desc），默认：desc。
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 
-	// （条件过滤字段）平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	// （条件过滤字段）平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
 	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
 
 	// （条件过滤字段）订单采购类型 1-免费试用 2-按年收费 3-按次收费
@@ -1509,7 +1509,7 @@ type DescribeOrderInstancesRequestParams struct {
 	// （条件过滤字段）资源ID
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// （条件过滤字段）安卓包名，查询android安卓加固订单时使用
+	// （条件过滤字段）包名，查询android加固订单时使用
 	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
 }
 
@@ -1528,7 +1528,7 @@ type DescribeOrderInstancesRequest struct {
 	// 升序（asc）还是降序（desc），默认：desc。
 	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
 
-	// （条件过滤字段）平台类型  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	// （条件过滤字段）平台类型  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
 	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
 
 	// （条件过滤字段）订单采购类型 1-免费试用 2-按年收费 3-按次收费
@@ -1546,7 +1546,7 @@ type DescribeOrderInstancesRequest struct {
 	// （条件过滤字段）资源ID
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// （条件过滤字段）安卓包名，查询android安卓加固订单时使用
+	// （条件过滤字段）包名，查询android加固订单时使用
 	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
 }
 

@@ -1051,6 +1051,54 @@ func (c *Client) CreateRocketMQTopicWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateRocketMQVipInstanceRequest() (request *CreateRocketMQVipInstanceRequest) {
+    request = &CreateRocketMQVipInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "CreateRocketMQVipInstance")
+    
+    
+    return
+}
+
+func NewCreateRocketMQVipInstanceResponse() (response *CreateRocketMQVipInstanceResponse) {
+    response = &CreateRocketMQVipInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRocketMQVipInstance
+// 创建RocketMQ专享实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLTRADE = "FailedOperation.CallTrade"
+func (c *Client) CreateRocketMQVipInstance(request *CreateRocketMQVipInstanceRequest) (response *CreateRocketMQVipInstanceResponse, err error) {
+    return c.CreateRocketMQVipInstanceWithContext(context.Background(), request)
+}
+
+// CreateRocketMQVipInstance
+// 创建RocketMQ专享实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CALLTRADE = "FailedOperation.CallTrade"
+func (c *Client) CreateRocketMQVipInstanceWithContext(ctx context.Context, request *CreateRocketMQVipInstanceRequest) (response *CreateRocketMQVipInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateRocketMQVipInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRocketMQVipInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRocketMQVipInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateRoleRequest() (request *CreateRoleRequest) {
     request = &CreateRoleRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -38,6 +38,9 @@ const (
 	// base64编码后的图片数据大小不超过10M。
 	FAILEDOPERATION_IMAGESIZEEXCEED = "FailedOperation.ImageSizeExceed"
 
+	// 服务内部错误，请稍后重试。
+	FAILEDOPERATION_INNERERROR = "FailedOperation.InnerError"
+
 	// 整个请求体太大（通常主要是图片）。
 	FAILEDOPERATION_REQUESTENTITYTOOLARGE = "FailedOperation.RequestEntityTooLarge"
 

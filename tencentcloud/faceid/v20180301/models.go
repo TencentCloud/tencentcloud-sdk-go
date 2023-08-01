@@ -88,6 +88,7 @@ type BankCard2EVerificationResponseParams struct {
 	//   '-2': '姓名校验不通过'
 	//   '-3': '银行卡号码有误'
 	//   '-16': '验证中心服务繁忙'
+	//   '-17': '验证次数超限，请次日重试'
 	Result *string `json:"Result,omitempty" name:"Result"`
 
 	// 业务结果描述。
@@ -206,6 +207,7 @@ type BankCard4EVerificationResponseParams struct {
 	// '-4': '银行卡号码有误'
 	// '-5': '手机号码不合法'
 	// '-18': '验证中心服务繁忙'
+	// '-19': '验证次数超限，请次日重试'
 	Result *string `json:"Result,omitempty" name:"Result"`
 
 	// 业务结果描述。
@@ -316,6 +318,7 @@ type BankCardVerificationResponseParams struct {
 	// '-3': '身份证号码有误'
 	// '-4': '银行卡号码有误'
 	// '-17': '验证中心服务繁忙'
+	// '-18': '验证次数超限，请次日重试'
 	Result *string `json:"Result,omitempty" name:"Result"`
 
 	// 业务结果描述。

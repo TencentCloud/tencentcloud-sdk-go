@@ -1,48 +1,23 @@
 # 本版本更新包含以下内容：
 
-## 云数据库 MySQL(cdb) 版本：2017-03-20
+## 日志服务(cls) 版本：2020-10-16
 
-### 第 140 次发布
+### 第 62 次发布
 
-发布时间：2023-07-31 01:10:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RoInstanceInfo](https://cloud.tencent.com/document/api/236/15878#RoInstanceInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>MasterInstanceId, RoStatus, OfflineTime, Weight, Region, Zone, InstanceId, Status, InstanceType, InstanceName, HourFeeStatus, TaskStatus, Memory, Volume, Qps, Vip, Vport, VpcId, SubnetId, DeviceType, EngineVersion, DeadlineTime, PayType
-
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 98 次发布
-
-发布时间：2023-07-31 01:23:57
+发布时间：2023-08-01 01:11:03
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [FlowBrief](https://cloud.tencent.com/document/api/1323/70369#FlowBrief)
+* [DescribeKafkaConsumer](https://cloud.tencent.com/document/api/614/95719)
+* [ModifyKafkaConsumer](https://cloud.tencent.com/document/api/614/95720)
 
-	* <font color="#dd0000">**修改成员**：</font>Creator, Deadline
+### 第 61 次发布
 
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 98 次发布
-
-发布时间：2023-07-28 17:50:48
+发布时间：2023-07-31 16:20:55
 
 本次发布包含了以下内容：
 
@@ -50,9 +25,158 @@
 
 修改接口：
 
-* [ChannelCreatePrepareFlow](https://cloud.tencent.com/document/api/1420/87897)
+* [CreateConfigExtra](https://cloud.tencent.com/document/api/614/71166)
 
-	* <font color="#dd0000">**修改入参**：</font>FlowApproverList
+	* 新增入参：AdvancedConfig
+
+* [ModifyConfig](https://cloud.tencent.com/document/api/614/58614)
+
+	* 新增入参：AdvancedConfig
+
+* [ModifyConfigExtra](https://cloud.tencent.com/document/api/614/71163)
+
+	* 新增入参：AdvancedConfig
+
+
+修改数据结构：
+
+* [ConfigExtraInfo](https://cloud.tencent.com/document/api/614/56471#ConfigExtraInfo)
+
+	* 新增成员：AdvancedConfig
+
+* [ConfigInfo](https://cloud.tencent.com/document/api/614/56471#ConfigInfo)
+
+	* 新增成员：AdvancedConfig
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 63 次发布
+
+发布时间：2023-08-01 01:15:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAccounts](https://cloud.tencent.com/document/api/1003/48075)
+
+	* 新增入参：AccountRegular
+
+
+修改数据结构：
+
+* [ClusterInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#ClusterInstanceDetail)
+
+	* 新增成员：MaintainStartTime, MaintainDuration, MaintainWeekDays
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 57 次发布
+
+发布时间：2023-08-01 01:17:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CommonMetrics](https://cloud.tencent.com/document/api/1342/53778#CommonMetrics)
+
+	* <font color="#dd0000">**修改成员**：</font>CreateTaskTime, ProcessTime, QueueTime, ExecutionTime, IsResultCacheHit, MatchedMVBytes, MatchedMVs, AffectedBytes, AffectedRows, ProcessedBytes, ProcessedRows
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 49 次发布
+
+发布时间：2023-08-01 01:21:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+
+	* 新增成员：ServicesStatus
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 99 次发布
+
+发布时间：2023-08-01 01:22:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEmbedWebUrl](https://cloud.tencent.com/document/api/1323/95590)
+
+	* 新增入参：Option
+
+* [CreatePrepareFlow](https://cloud.tencent.com/document/api/1323/83412)
+
+	* 新增入参：ResourceType, Components, FlowOption, NeedSignReview, NeedCreateReview, UserData, FlowId, FlowType
+
+
+新增数据结构：
+
+* [CreateFlowOption](https://cloud.tencent.com/document/api/1323/70369#CreateFlowOption)
+* [EmbedUrlOption](https://cloud.tencent.com/document/api/1323/70369#EmbedUrlOption)
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1323/70369#Component)
+
+	* 新增成员：LockComponentValue, ForbidMoveAndDelete
+
+* [Department](https://cloud.tencent.com/document/api/1323/70369#Department)
+
+	* <font color="#dd0000">**修改成员**：</font>DepartmentId, DepartmentName
+
+* [SealInfo](https://cloud.tencent.com/document/api/1323/70369#SealInfo)
+
+	* 新增成员：SealId, SealType, SealName
+
+* [StaffRole](https://cloud.tencent.com/document/api/1323/70369#StaffRole)
+
+	* <font color="#dd0000">**修改成员**：</font>RoleId, RoleName
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 99 次发布
+
+发布时间：2023-08-01 01:24:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/1420/61525#TemplateInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>IsPromoter, Available
 
 
 
@@ -61,11 +185,34 @@
 
 
 
-## 低代码互动课堂(lcic) 版本：2022-08-17
+## 云直播CSS(live) 版本：2018-08-01
 
-### 第 35 次发布
+### 第 109 次发布
 
-发布时间：2023-07-31 01:30:04
+发布时间：2023-08-01 01:30:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [MixPortraitSegmentParams](https://cloud.tencent.com/document/api/267/20474#MixPortraitSegmentParams)
+
+修改数据结构：
+
+* [CommonMixInputParam](https://cloud.tencent.com/document/api/267/20474#CommonMixInputParam)
+
+	* 新增成员：PortraitSegmentParams
+
+
+
+
+## 多网聚合加速(mna) 版本：2021-01-19
+
+### 第 12 次发布
+
+发布时间：2023-08-01 01:32:11
 
 本次发布包含了以下内容：
 
@@ -73,40 +220,18 @@
 
 修改接口：
 
-* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+* [GetDevices](https://cloud.tencent.com/document/api/1385/80480)
 
-	* 新增出参：AudienceType
-
-
-
-
-## 文字识别(ocr) 版本：2018-11-19
-
-### 第 109 次发布
-
-发布时间：2023-07-31 01:34:27
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**删除接口**：</font>
-
-* QueryBarCode
-* VerifyEnterpriseFourFactors
-
-<font color="#dd0000">**删除数据结构**：</font>
-
-* Detail
-* ProductDataRecord
+	* 新增入参：DeviceType
 
 
 
-## 边缘安全加速平台(teo) 版本：2022-09-01
 
-### 第 46 次发布
+## 媒体处理(mps) 版本：2019-06-12
 
-发布时间：2023-07-31 01:43:23
+### 第 65 次发布
+
+发布时间：2023-08-01 01:33:24
 
 本次发布包含了以下内容：
 
@@ -114,22 +239,55 @@
 
 修改数据结构：
 
-* [ApplicationProxy](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxy)
+* [OverrideTranscodeParameter](https://cloud.tencent.com/document/api/862/37615#OverrideTranscodeParameter)
 
-	* <font color="#dd0000">**修改成员**：</font>ProxyId, AccelerateMainland
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
+	* 新增成员：StdExtInfo
 
 
 
-## TI-ONE 训练平台(tione) 版本：2021-11-11
 
-### 第 30 次发布
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
-发布时间：2023-07-28 15:36:37
+### 第 36 次发布
+
+发布时间：2023-08-01 01:34:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+
+	* 新增入参：ClazzLevels, ExpertModeOn, ExpertModeConfiguration
+
+
+新增数据结构：
+
+* [ClazzLevel](https://cloud.tencent.com/document/api/849/52010#ClazzLevel)
+* [ExpertModeConfiguration](https://cloud.tencent.com/document/api/849/52010#ExpertModeConfiguration)
+* [JobGraph](https://cloud.tencent.com/document/api/849/52010#JobGraph)
+* [JobGraphEdge](https://cloud.tencent.com/document/api/849/52010#JobGraphEdge)
+* [JobGraphNode](https://cloud.tencent.com/document/api/849/52010#JobGraphNode)
+* [NodeConfig](https://cloud.tencent.com/document/api/849/52010#NodeConfig)
+* [SlotSharingGroup](https://cloud.tencent.com/document/api/849/52010#SlotSharingGroup)
+* [SlotSharingGroupSpec](https://cloud.tencent.com/document/api/849/52010#SlotSharingGroupSpec)
+
+修改数据结构：
+
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
+
+	* 新增成员：ClazzLevels, ExpertModeOn, ExpertModeConfiguration
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 70 次发布
+
+发布时间：2023-08-01 01:43:47
 
 本次发布包含了以下内容：
 
@@ -137,64 +295,11 @@
 
 新增接口：
 
-* [DeleteNotebook](https://cloud.tencent.com/document/api/851/95663)
-* [DescribeNotebook](https://cloud.tencent.com/document/api/851/95662)
-* [StopCreatingImage](https://cloud.tencent.com/document/api/851/95661)
-* [StopNotebook](https://cloud.tencent.com/document/api/851/95660)
+* [CreateRocketMQVipInstance](https://cloud.tencent.com/document/api/1179/95721)
 
 新增数据结构：
 
-* [NotebookDetail](https://cloud.tencent.com/document/api/851/75051#NotebookDetail)
-
-### 第 29 次发布
-
-发布时间：2023-07-28 15:25:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateNotebook](https://cloud.tencent.com/document/api/851/95658)
-* [CreateNotebookImage](https://cloud.tencent.com/document/api/851/95657)
-* [DeleteNotebookImageRecord](https://cloud.tencent.com/document/api/851/95656)
-* [DescribeNotebookImageKernels](https://cloud.tencent.com/document/api/851/95655)
-* [DescribeNotebookImageRecords](https://cloud.tencent.com/document/api/851/95654)
-* [DescribeNotebooks](https://cloud.tencent.com/document/api/851/95653)
-* [ModifyNotebook](https://cloud.tencent.com/document/api/851/95652)
-* [ModifyNotebookTags](https://cloud.tencent.com/document/api/851/95651)
-* [StartNotebook](https://cloud.tencent.com/document/api/851/95650)
-
-新增数据结构：
-
-* [NotebookImageRecord](https://cloud.tencent.com/document/api/851/75051#NotebookImageRecord)
-* [NotebookSetItem](https://cloud.tencent.com/document/api/851/75051#NotebookSetItem)
-* [ResourceConf](https://cloud.tencent.com/document/api/851/75051#ResourceConf)
-
-
-
-## TI-ONE 训练平台(tione) 版本：2019-10-22
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 41 次发布
-
-发布时间：2023-07-31 01:50:43
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GetAttackHistogram](https://cloud.tencent.com/document/api/627/95692)
-
-新增数据结构：
-
-* [LogHistogramInfo](https://cloud.tencent.com/document/api/627/53609#LogHistogramInfo)
+* [VpcInfo](https://cloud.tencent.com/document/api/1179/46089#VpcInfo)
 
 
 
@@ -27164,6 +27269,53 @@
 
 ## 日志服务(cls) 版本：2020-10-16
 
+### 第 62 次发布
+
+发布时间：2023-08-01 01:11:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeKafkaConsumer](https://cloud.tencent.com/document/api/614/95719)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyKafkaConsumer](https://cloud.tencent.com/document/api/614/95720)](https://cloud.tencent.com/document/api/#/#)
+
+### 第 61 次发布
+
+发布时间：2023-07-31 16:20:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConfigExtra](https://cloud.tencent.com/document/api/614/71166)
+
+	* 新增入参：AdvancedConfig
+
+* [ModifyConfig](https://cloud.tencent.com/document/api/614/58614)
+
+	* 新增入参：AdvancedConfig
+
+* [ModifyConfigExtra](https://cloud.tencent.com/document/api/614/71163)
+
+	* 新增入参：AdvancedConfig
+
+
+修改数据结构：
+
+* [ConfigExtraInfo](https://cloud.tencent.com/document/api/614/56471#ConfigExtraInfo)
+
+	* 新增成员：AdvancedConfig
+
+* [ConfigInfo](https://cloud.tencent.com/document/api/614/56471#ConfigInfo)
+
+	* 新增成员：AdvancedConfig
+
+
 ### 第 60 次发布
 
 发布时间：2023-07-28 01:15:40
@@ -37929,6 +38081,28 @@
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
 
+### 第 63 次发布
+
+发布时间：2023-08-01 01:15:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAccounts](https://cloud.tencent.com/document/api/1003/48075)
+
+	* 新增入参：AccountRegular
+
+
+修改数据结构：
+
+* [ClusterInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#ClusterInstanceDetail)
+
+	* 新增成员：MaintainStartTime, MaintainDuration, MaintainWeekDays
+
+
 ### 第 62 次发布
 
 发布时间：2023-07-27 01:11:21
@@ -42646,6 +42820,21 @@
 
 
 ## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 57 次发布
+
+发布时间：2023-08-01 01:17:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CommonMetrics](https://cloud.tencent.com/document/api/1342/53778#CommonMetrics)
+
+	* <font color="#dd0000">**修改成员**：</font>CreateTaskTime, ProcessTime, QueueTime, ExecutionTime, IsResultCacheHit, MatchedMVBytes, MatchedMVs, AffectedBytes, AffectedRows, ProcessedBytes, ProcessedRows
+
 
 ### 第 56 次发布
 
@@ -48504,6 +48693,21 @@
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
+### 第 49 次发布
+
+发布时间：2023-08-01 01:21:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+
+	* 新增成员：ServicesStatus
+
+
 ### 第 48 次发布
 
 发布时间：2023-07-05 01:26:25
@@ -50671,6 +50875,49 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 99 次发布
+
+发布时间：2023-08-01 01:22:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEmbedWebUrl](https://cloud.tencent.com/document/api/1323/95590)
+
+	* 新增入参：Option
+
+* [CreatePrepareFlow](https://cloud.tencent.com/document/api/1323/83412)
+
+	* 新增入参：ResourceType, Components, FlowOption, NeedSignReview, NeedCreateReview, UserData, FlowId, FlowType
+
+
+新增数据结构：
+
+* [[CreateFlowOption](https://cloud.tencent.com/document/api/1323/70369#CreateFlowOption)](https://cloud.tencent.com/document/api/1323/70369#[CreateFlowOption](https://cloud.tencent.com/document/api/1323/70369#CreateFlowOption))
+* [[EmbedUrlOption](https://cloud.tencent.com/document/api/1323/70369#EmbedUrlOption)](https://cloud.tencent.com/document/api/1323/70369#[EmbedUrlOption](https://cloud.tencent.com/document/api/1323/70369#EmbedUrlOption))
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1323/70369#Component)
+
+	* 新增成员：LockComponentValue, ForbidMoveAndDelete
+
+* [Department](https://cloud.tencent.com/document/api/1323/70369#Department)
+
+	* <font color="#dd0000">**修改成员**：</font>DepartmentId, DepartmentName
+
+* [SealInfo](https://cloud.tencent.com/document/api/1323/70369#SealInfo)
+
+	* 新增成员：SealId, SealType, SealName
+
+* [StaffRole](https://cloud.tencent.com/document/api/1323/70369#StaffRole)
+
+	* <font color="#dd0000">**修改成员**：</font>RoleId, RoleName
+
+
 ### 第 98 次发布
 
 发布时间：2023-07-31 01:23:57
@@ -52599,6 +52846,21 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 99 次发布
+
+发布时间：2023-08-01 01:24:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/1420/61525#TemplateInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>IsPromoter, Available
+
 
 ### 第 98 次发布
 
@@ -67360,6 +67622,25 @@
 
 ## 云直播CSS(live) 版本：2018-08-01
 
+### 第 109 次发布
+
+发布时间：2023-08-01 01:30:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[MixPortraitSegmentParams](https://cloud.tencent.com/document/api/267/20474#MixPortraitSegmentParams)](https://cloud.tencent.com/document/api/267/20474#[MixPortraitSegmentParams](https://cloud.tencent.com/document/api/267/20474#MixPortraitSegmentParams))
+
+修改数据结构：
+
+* [CommonMixInputParam](https://cloud.tencent.com/document/api/267/20474#CommonMixInputParam)
+
+	* 新增成员：PortraitSegmentParams
+
+
 ### 第 108 次发布
 
 发布时间：2023-07-05 01:34:10
@@ -71167,7 +71448,22 @@
 
 
 
-## 移动网络加速(mna) 版本：2021-01-19
+## 多网聚合加速(mna) 版本：2021-01-19
+
+### 第 12 次发布
+
+发布时间：2023-08-01 01:32:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetDevices](https://cloud.tencent.com/document/api/1385/80480)
+
+	* 新增入参：DeviceType
+
 
 ### 第 11 次发布
 
@@ -73971,6 +74267,21 @@
 
 
 ## 媒体处理(mps) 版本：2019-06-12
+
+### 第 65 次发布
+
+发布时间：2023-08-01 01:33:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OverrideTranscodeParameter](https://cloud.tencent.com/document/api/862/37615#OverrideTranscodeParameter)
+
+	* 新增成员：StdExtInfo
+
 
 ### 第 64 次发布
 
@@ -77450,6 +77761,39 @@
 
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 36 次发布
+
+发布时间：2023-08-01 01:34:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+
+	* 新增入参：ClazzLevels, ExpertModeOn, ExpertModeConfiguration
+
+
+新增数据结构：
+
+* [[ClazzLevel](https://cloud.tencent.com/document/api/849/52010#ClazzLevel)](https://cloud.tencent.com/document/api/849/52010#[ClazzLevel](https://cloud.tencent.com/document/api/849/52010#ClazzLevel))
+* [[ExpertModeConfiguration](https://cloud.tencent.com/document/api/849/52010#ExpertModeConfiguration)](https://cloud.tencent.com/document/api/849/52010#[ExpertModeConfiguration](https://cloud.tencent.com/document/api/849/52010#ExpertModeConfiguration))
+* [[JobGraph](https://cloud.tencent.com/document/api/849/52010#JobGraph)](https://cloud.tencent.com/document/api/849/52010#[JobGraph](https://cloud.tencent.com/document/api/849/52010#JobGraph))
+* [[JobGraphEdge](https://cloud.tencent.com/document/api/849/52010#JobGraphEdge)](https://cloud.tencent.com/document/api/849/52010#[JobGraphEdge](https://cloud.tencent.com/document/api/849/52010#JobGraphEdge))
+* [[JobGraphNode](https://cloud.tencent.com/document/api/849/52010#JobGraphNode)](https://cloud.tencent.com/document/api/849/52010#[JobGraphNode](https://cloud.tencent.com/document/api/849/52010#JobGraphNode))
+* [[NodeConfig](https://cloud.tencent.com/document/api/849/52010#NodeConfig)](https://cloud.tencent.com/document/api/849/52010#[NodeConfig](https://cloud.tencent.com/document/api/849/52010#NodeConfig))
+* [[SlotSharingGroup](https://cloud.tencent.com/document/api/849/52010#SlotSharingGroup)](https://cloud.tencent.com/document/api/849/52010#[SlotSharingGroup](https://cloud.tencent.com/document/api/849/52010#SlotSharingGroup))
+* [[SlotSharingGroupSpec](https://cloud.tencent.com/document/api/849/52010#SlotSharingGroupSpec)](https://cloud.tencent.com/document/api/849/52010#[SlotSharingGroupSpec](https://cloud.tencent.com/document/api/849/52010#SlotSharingGroupSpec))
+
+修改数据结构：
+
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
+
+	* 新增成员：ClazzLevels, ExpertModeOn, ExpertModeConfiguration
+
 
 ### 第 35 次发布
 
@@ -98103,6 +98447,22 @@
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
+### 第 70 次发布
+
+发布时间：2023-08-01 01:43:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateRocketMQVipInstance](https://cloud.tencent.com/document/api/1179/95721)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[VpcInfo](https://cloud.tencent.com/document/api/1179/46089#VpcInfo)](https://cloud.tencent.com/document/api/1179/46089#[VpcInfo](https://cloud.tencent.com/document/api/1179/46089#VpcInfo))
+
 ### 第 69 次发布
 
 发布时间：2023-07-26 01:38:18
@@ -105412,14 +105772,14 @@
 
 新增接口：
 
-* [[DeleteNotebook](https://cloud.tencent.com/document/api/851/95663)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeNotebook](https://cloud.tencent.com/document/api/851/95662)](https://cloud.tencent.com/document/api/#/#)
-* [[StopCreatingImage](https://cloud.tencent.com/document/api/851/95661)](https://cloud.tencent.com/document/api/#/#)
-* [[StopNotebook](https://cloud.tencent.com/document/api/851/95660)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteNotebook](https://cloud.tencent.com/document/api/851/95663)
+* [DescribeNotebook](https://cloud.tencent.com/document/api/851/95662)
+* [StopCreatingImage](https://cloud.tencent.com/document/api/851/95661)
+* [StopNotebook](https://cloud.tencent.com/document/api/851/95660)
 
 新增数据结构：
 
-* [[NotebookDetail](https://cloud.tencent.com/document/api/851/75051#NotebookDetail)](https://cloud.tencent.com/document/api/851/75051#[NotebookDetail](https://cloud.tencent.com/document/api/851/75051#NotebookDetail))
+* [NotebookDetail](https://cloud.tencent.com/document/api/851/75051#NotebookDetail)
 
 ### 第 29 次发布
 
@@ -105431,21 +105791,21 @@
 
 新增接口：
 
-* [[CreateNotebook](https://cloud.tencent.com/document/api/851/95658)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateNotebookImage](https://cloud.tencent.com/document/api/851/95657)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteNotebookImageRecord](https://cloud.tencent.com/document/api/851/95656)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeNotebookImageKernels](https://cloud.tencent.com/document/api/851/95655)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeNotebookImageRecords](https://cloud.tencent.com/document/api/851/95654)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeNotebooks](https://cloud.tencent.com/document/api/851/95653)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyNotebook](https://cloud.tencent.com/document/api/851/95652)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyNotebookTags](https://cloud.tencent.com/document/api/851/95651)](https://cloud.tencent.com/document/api/#/#)
-* [[StartNotebook](https://cloud.tencent.com/document/api/851/95650)](https://cloud.tencent.com/document/api/#/#)
+* [CreateNotebook](https://cloud.tencent.com/document/api/851/95658)
+* [CreateNotebookImage](https://cloud.tencent.com/document/api/851/95657)
+* [DeleteNotebookImageRecord](https://cloud.tencent.com/document/api/851/95656)
+* [DescribeNotebookImageKernels](https://cloud.tencent.com/document/api/851/95655)
+* [DescribeNotebookImageRecords](https://cloud.tencent.com/document/api/851/95654)
+* [DescribeNotebooks](https://cloud.tencent.com/document/api/851/95653)
+* [ModifyNotebook](https://cloud.tencent.com/document/api/851/95652)
+* [ModifyNotebookTags](https://cloud.tencent.com/document/api/851/95651)
+* [StartNotebook](https://cloud.tencent.com/document/api/851/95650)
 
 新增数据结构：
 
-* [[NotebookImageRecord](https://cloud.tencent.com/document/api/851/75051#NotebookImageRecord)](https://cloud.tencent.com/document/api/851/75051#[NotebookImageRecord](https://cloud.tencent.com/document/api/851/75051#NotebookImageRecord))
-* [[NotebookSetItem](https://cloud.tencent.com/document/api/851/75051#NotebookSetItem)](https://cloud.tencent.com/document/api/851/75051#[NotebookSetItem](https://cloud.tencent.com/document/api/851/75051#NotebookSetItem))
-* [[ResourceConf](https://cloud.tencent.com/document/api/851/75051#ResourceConf)](https://cloud.tencent.com/document/api/851/75051#[ResourceConf](https://cloud.tencent.com/document/api/851/75051#ResourceConf))
+* [NotebookImageRecord](https://cloud.tencent.com/document/api/851/75051#NotebookImageRecord)
+* [NotebookSetItem](https://cloud.tencent.com/document/api/851/75051#NotebookSetItem)
+* [ResourceConf](https://cloud.tencent.com/document/api/851/75051#ResourceConf)
 
 ### 第 28 次发布
 
@@ -124142,11 +124502,11 @@
 
 新增接口：
 
-* [[GetAttackHistogram](https://cloud.tencent.com/document/api/627/95692)](https://cloud.tencent.com/document/api/#/#)
+* [GetAttackHistogram](https://cloud.tencent.com/document/api/627/95692)
 
 新增数据结构：
 
-* [[LogHistogramInfo](https://cloud.tencent.com/document/api/627/53609#LogHistogramInfo)](https://cloud.tencent.com/document/api/627/53609#[LogHistogramInfo](https://cloud.tencent.com/document/api/627/53609#LogHistogramInfo))
+* [LogHistogramInfo](https://cloud.tencent.com/document/api/627/53609#LogHistogramInfo)
 
 ### 第 40 次发布
 

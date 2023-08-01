@@ -50,34 +50,34 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
-	// 安卓在线加固任务,入参字段AppMd5必输。
+	// Android在线加固任务,入参字段AppMd5必输。
 	INVALIDPARAMETERVALUE_ANDROIDAPPMD5ERROR = "InvalidParameterValue.AndroidAppMd5Error"
 
-	// 安卓应用包名必输,请求参数中的AppPkgName值要相等。
+	// Android应用包名必输,请求参数中的AppPkgName值要相等。
 	INVALIDPARAMETERVALUE_ANDROIDAPPPKGNAMEERROR = "InvalidParameterValue.AndroidAppPkgNameError"
 
 	// AppPkgNameList字段检查不通过，必输字段，值可为单个包年或多个包名时。值为多个包名时，包名需用逗号隔开，其数量不能超过10个。
 	INVALIDPARAMETERVALUE_ANDROIDAPPPKGNAMELISTERROR = "InvalidParameterValue.AndroidAppPkgNameListError"
 
-	// 安卓应用类型必输,请求参数中的AppType值要相等，其值需等于“apk”或“aab”。
+	// Android应用类型必输,请求参数中的AppType值要相等，其值需等于“apk”或“aab”。
 	INVALIDPARAMETERVALUE_ANDROIDAPPTYPEERROR = "InvalidParameterValue.AndroidAppTypeError"
 
-	// 安卓在线加固任务,入参字段AppUrl必输。
+	// Android在线加固任务,入参字段AppUrl必输。
 	INVALIDPARAMETERVALUE_ANDROIDAPPURLERROR = "InvalidParameterValue.AndroidAppUrlError"
 
-	// 安卓加固配置错误,assets资源文件路径格式错误。
+	// Android加固配置错误,assets资源文件路径格式错误。
 	INVALIDPARAMETERVALUE_ANDROIDASSETSERROR = "InvalidParameterValue.AndroidAssetsError"
 
-	// 安卓加固配置参数不正确
+	// Android加固配置参数不正确
 	INVALIDPARAMETERVALUE_ANDROIDENCRYPTPARAMERROR = "InvalidParameterValue.AndroidEncryptParamError"
 
-	// 安卓加固配置错误,res资源文件路径格式错误。
+	// Android加固配置错误,res资源文件路径格式错误。
 	INVALIDPARAMETERVALUE_ANDROIDRESERROR = "InvalidParameterValue.AndroidResError"
 
-	// 安卓加固配置错误,so库文件路径格式错误。
+	// Android加固配置错误,so库文件路径格式错误。
 	INVALIDPARAMETERVALUE_ANDROIDSOERROR = "InvalidParameterValue.AndroidSoError"
 
-	// 安卓加固配置错误,vmp加固profile文件必输
+	// Android加固配置错误,vmp加固profile文件必输
 	INVALIDPARAMETERVALUE_ANDROIDVMPERROR = "InvalidParameterValue.AndroidVMPError"
 
 	// 小程序加固配置错误,请检查相关配置。
@@ -86,7 +86,7 @@ const (
 	// 请求参数中值为Url下载链接的相关字段检查不通过。
 	INVALIDPARAMETERVALUE_CHECKURLERROR = "InvalidParameterValue.CheckUrlError"
 
-	// 安卓加固配置错误,入参字段AppType必输。
+	// Android加固配置错误,入参字段AppType必输。
 	INVALIDPARAMETERVALUE_ENCRYPTPARAMAPPTYPEERROR = "InvalidParameterValue.EncryptParamAppTypeError"
 
 	// 不能同时指定ItemIds和Filters。

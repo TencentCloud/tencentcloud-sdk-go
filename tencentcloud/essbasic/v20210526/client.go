@@ -589,6 +589,7 @@ func NewChannelCreateEmbedWebUrlResponse() (response *ChannelCreateEmbedWebUrlRe
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
     return c.ChannelCreateEmbedWebUrlWithContext(context.Background(), request)
 }
@@ -607,6 +608,7 @@ func (c *Client) ChannelCreateEmbedWebUrl(request *ChannelCreateEmbedWebUrlReque
 //  OPERATIONDENIED = "OperationDenied"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelCreateEmbedWebUrlWithContext(ctx context.Context, request *ChannelCreateEmbedWebUrlRequest) (response *ChannelCreateEmbedWebUrlResponse, err error) {
     if request == nil {
         request = NewChannelCreateEmbedWebUrlRequest()
@@ -2026,6 +2028,7 @@ func NewChannelDescribeOrganizationSealsResponse() (response *ChannelDescribeOrg
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
@@ -2044,6 +2047,7 @@ func (c *Client) ChannelDescribeOrganizationSeals(request *ChannelDescribeOrgani
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
@@ -2156,7 +2160,9 @@ func NewChannelGetTaskResultApiResponse() (response *ChannelGetTaskResultApiResp
 }
 
 // ChannelGetTaskResultApi
-// 通过发起转换任务接口（ChannelCreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。大文件转换所需的时间可能会比较长。
+// 查询转换任务的状态。转换任务Id通过发起转换任务接口（ChannelCreateConvertTaskApi）获取。
+//
+// 注意：大文件转换所需的时间可能会比较长。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -2166,7 +2172,9 @@ func (c *Client) ChannelGetTaskResultApi(request *ChannelGetTaskResultApiRequest
 }
 
 // ChannelGetTaskResultApi
-// 通过发起转换任务接口（ChannelCreateConvertTaskApi）返回的任务Id查询转换任务状态，通过本接口确认转换任务是否完成。大文件转换所需的时间可能会比较长。
+// 查询转换任务的状态。转换任务Id通过发起转换任务接口（ChannelCreateConvertTaskApi）获取。
+//
+// 注意：大文件转换所需的时间可能会比较长。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -3210,15 +3218,31 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 }
 
 // DescribeTemplates
-// 通过此接口（DescribeTemplates）查询该第三方平台子客企业在电子签拥有的有效模板，不包括第三方平台模板
+// 通过此接口（DescribeTemplates）查询该第三方平台子客企业在电子签拥有的有效模板，不包括第三方平台模板。
+//
+// 
+//
+// > **适用场景** 
+//
+// >
+//
+// >  该接口常用来配合“使用模板创建签署流程”接口作为前置的接口使用。 
+//
+// >  一个模板通常会包含以下结构信息
+//
+// >- 模板基本信息
+//
+// >- 发起方参与信息Promoter、签署参与方 Recipients，后者会在模板发起合同时用于指定参与方
+//
+// >- 填写控件 Components
+//
+// >- 签署控件 SignComponents
+//
+// >- 生成模板的文件基础信息 FileInfos
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBREAD = "InternalError.DbRead"
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
@@ -3242,15 +3266,31 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 }
 
 // DescribeTemplates
-// 通过此接口（DescribeTemplates）查询该第三方平台子客企业在电子签拥有的有效模板，不包括第三方平台模板
+// 通过此接口（DescribeTemplates）查询该第三方平台子客企业在电子签拥有的有效模板，不包括第三方平台模板。
+//
+// 
+//
+// > **适用场景** 
+//
+// >
+//
+// >  该接口常用来配合“使用模板创建签署流程”接口作为前置的接口使用。 
+//
+// >  一个模板通常会包含以下结构信息
+//
+// >- 模板基本信息
+//
+// >- 发起方参与信息Promoter、签署参与方 Recipients，后者会在模板发起合同时用于指定参与方
+//
+// >- 填写控件 Components
+//
+// >- 签署控件 SignComponents
+//
+// >- 生成模板的文件基础信息 FileInfos
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBREAD = "InternalError.DbRead"
-//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
@@ -3574,13 +3614,10 @@ func NewOperateChannelTemplateResponse() (response *OperateChannelTemplateRespon
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_STAFFALREADYVERIFY = "FailedOperation.StaffAlreadyVerify"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
 //  INTERNALERROR_DBUPDATE = "InternalError.DbUpdate"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
@@ -3621,13 +3658,10 @@ func (c *Client) OperateChannelTemplate(request *OperateChannelTemplateRequest) 
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_STAFFALREADYVERIFY = "FailedOperation.StaffAlreadyVerify"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
 //  INTERNALERROR_DBREAD = "InternalError.DbRead"
 //  INTERNALERROR_DBUPDATE = "InternalError.DbUpdate"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"

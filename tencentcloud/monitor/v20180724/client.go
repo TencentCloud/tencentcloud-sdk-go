@@ -219,6 +219,7 @@ func NewCheckIsPrometheusNewUserResponse() (response *CheckIsPrometheusNewUserRe
 // 判断用户是否为云原生监控新用户，即在任何地域下均未创建过监控实例的用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
@@ -232,6 +233,7 @@ func (c *Client) CheckIsPrometheusNewUser(request *CheckIsPrometheusNewUserReque
 // 判断用户是否为云原生监控新用户，即在任何地域下均未创建过监控实例的用户
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"

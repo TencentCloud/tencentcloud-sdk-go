@@ -1016,6 +1016,18 @@ type ClusterInstanceDetail struct {
 
 	// 实例角色
 	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
+
+	// 执行开始时间(距离0点的秒数)	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaintainStartTime *int64 `json:"MaintainStartTime,omitempty" name:"MaintainStartTime"`
+
+	// 持续的时间(单位：秒)	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaintainDuration *int64 `json:"MaintainDuration,omitempty" name:"MaintainDuration"`
+
+	// 可以执行的时间，枚举值：["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaintainWeekDays []*string `json:"MaintainWeekDays,omitempty" name:"MaintainWeekDays"`
 }
 
 type ClusterParamModifyLog struct {
@@ -3780,6 +3792,9 @@ type DescribeAccountsRequestParams struct {
 
 	// 偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 模糊匹配关键字(同时匹配AccountName和AccountHost，返回并集结果，支持正则)
+	AccountRegular *string `json:"AccountRegular,omitempty" name:"AccountRegular"`
 }
 
 type DescribeAccountsRequest struct {
@@ -3804,6 +3819,9 @@ type DescribeAccountsRequest struct {
 
 	// 偏移量
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 模糊匹配关键字(同时匹配AccountName和AccountHost，返回并集结果，支持正则)
+	AccountRegular *string `json:"AccountRegular,omitempty" name:"AccountRegular"`
 }
 
 func (r *DescribeAccountsRequest) ToJsonString() string {
@@ -3824,6 +3842,7 @@ func (r *DescribeAccountsRequest) FromJsonString(s string) error {
 	delete(f, "Hosts")
 	delete(f, "Limit")
 	delete(f, "Offset")
+	delete(f, "AccountRegular")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccountsRequest has unknown keys!", "")
 	}
@@ -11788,9 +11807,11 @@ type RollbackTable struct {
 
 type RollbackTableInfo struct {
 	// 旧表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OldTable *string `json:"OldTable,omitempty" name:"OldTable"`
 
 	// 新表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	NewTable *string `json:"NewTable,omitempty" name:"NewTable"`
 }
 

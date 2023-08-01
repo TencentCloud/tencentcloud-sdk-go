@@ -23,6 +23,9 @@ const (
 	// 未申请并发或申请后超时。
 	FAILEDOPERATION_LOCKTIMEOUT = "FailedOperation.LockTimeout"
 
+	// 路径无法找到
+	FAILEDOPERATION_PATHNOTFOUND = "FailedOperation.PathNotFound"
+
 	// 处理超时。
 	FAILEDOPERATION_PROCESSTIMEOUT = "FailedOperation.ProcessTimeout"
 

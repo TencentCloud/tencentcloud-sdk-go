@@ -629,6 +629,7 @@ func NewCreateLaunchConfigurationResponse() (response *CreateLaunchConfiguration
 // * 每个项目最多只能创建20个启动配置，详见[使用限制](https://cloud.tencent.com/document/product/377/3120)。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CALLSTSERROR = "InternalError.CallStsError"
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"
@@ -682,6 +683,7 @@ func (c *Client) CreateLaunchConfiguration(request *CreateLaunchConfigurationReq
 // * 每个项目最多只能创建20个启动配置，详见[使用限制](https://cloud.tencent.com/document/product/377/3120)。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_CALLSTSERROR = "InternalError.CallStsError"
 //  INTERNALERROR_CALLEEERROR = "InternalError.CalleeError"
 //  INVALIDPARAMETER_ACTIONNOTFOUND = "InvalidParameter.ActionNotFound"
 //  INVALIDPARAMETER_CONFLICT = "InvalidParameter.Conflict"

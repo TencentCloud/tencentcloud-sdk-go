@@ -170,6 +170,9 @@ const (
 	// 无效的邮箱。
 	INVALIDPARAMETER_INVALIDEMAIL = "InvalidParameter.InvalidEmail"
 
+	// 组织成员不存在。
+	INVALIDPARAMETER_ORGANIZATIONMEMBERNOTEXIST = "InvalidParameter.OrganizationMemberNotExist"
+
 	// 密码不合法。
 	INVALIDPARAMETER_PASSWORDILLEGAL = "InvalidParameter.PasswordIllegal"
 

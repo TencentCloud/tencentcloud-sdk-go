@@ -166,7 +166,6 @@ func NewBatchDeleteOpsTasksResponse() (response *BatchDeleteOpsTasksResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 func (c *Client) BatchDeleteOpsTasks(request *BatchDeleteOpsTasksRequest) (response *BatchDeleteOpsTasksResponse, err error) {
     return c.BatchDeleteOpsTasksWithContext(context.Background(), request)
 }
@@ -176,7 +175,6 @@ func (c *Client) BatchDeleteOpsTasks(request *BatchDeleteOpsTasksRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 func (c *Client) BatchDeleteOpsTasksWithContext(ctx context.Context, request *BatchDeleteOpsTasksRequest) (response *BatchDeleteOpsTasksResponse, err error) {
     if request == nil {
         request = NewBatchDeleteOpsTasksRequest()
@@ -216,7 +214,6 @@ func NewBatchDeleteTasksDsResponse() (response *BatchDeleteTasksDsResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 func (c *Client) BatchDeleteTasksDs(request *BatchDeleteTasksDsRequest) (response *BatchDeleteTasksDsResponse, err error) {
     return c.BatchDeleteTasksDsWithContext(context.Background(), request)
 }
@@ -226,7 +223,6 @@ func (c *Client) BatchDeleteTasksDs(request *BatchDeleteTasksDsRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 func (c *Client) BatchDeleteTasksDsWithContext(ctx context.Context, request *BatchDeleteTasksDsRequest) (response *BatchDeleteTasksDsResponse, err error) {
     if request == nil {
         request = NewBatchDeleteTasksDsRequest()
@@ -268,7 +264,6 @@ func NewBatchDeleteTasksNewResponse() (response *BatchDeleteTasksNewResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 func (c *Client) BatchDeleteTasksNew(request *BatchDeleteTasksNewRequest) (response *BatchDeleteTasksNewResponse, err error) {
     return c.BatchDeleteTasksNewWithContext(context.Background(), request)
 }
@@ -280,7 +275,6 @@ func (c *Client) BatchDeleteTasksNew(request *BatchDeleteTasksNewRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
 func (c *Client) BatchDeleteTasksNewWithContext(ctx context.Context, request *BatchDeleteTasksNewRequest) (response *BatchDeleteTasksNewResponse, err error) {
     if request == nil {
         request = NewBatchDeleteTasksNewRequest()
@@ -3533,6 +3527,7 @@ func NewDeleteTaskAlarmRegularResponse() (response *DeleteTaskAlarmRegularRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteTaskAlarmRegular(request *DeleteTaskAlarmRegularRequest) (response *DeleteTaskAlarmRegularResponse, err error) {
@@ -3549,6 +3544,7 @@ func (c *Client) DeleteTaskAlarmRegular(request *DeleteTaskAlarmRegularRequest) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteTaskAlarmRegularWithContext(ctx context.Context, request *DeleteTaskAlarmRegularRequest) (response *DeleteTaskAlarmRegularResponse, err error) {

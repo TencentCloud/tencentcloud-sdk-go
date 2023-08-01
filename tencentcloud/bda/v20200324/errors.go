@@ -23,6 +23,9 @@ const (
 	// 音频编码失败。
 	FAILEDOPERATION_AUDIOENCODEFAILED = "FailedOperation.AudioEncodeFailed"
 
+	// 余额不足，开通失败，请充值后再开通。
+	FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
+
 	// 人体特征检测失败。
 	FAILEDOPERATION_BODYFEATUREFAIL = "FailedOperation.BodyFeatureFail"
 

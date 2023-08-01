@@ -67,6 +67,7 @@ func NewCheckSavepointResponse() (response *CheckSavepointResponse) {
 // 检查快照是否可用
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CheckSavepoint(request *CheckSavepointRequest) (response *CheckSavepointResponse, err error) {
     return c.CheckSavepointWithContext(context.Background(), request)
@@ -76,6 +77,7 @@ func (c *Client) CheckSavepoint(request *CheckSavepointRequest) (response *Check
 // 检查快照是否可用
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CheckSavepointWithContext(ctx context.Context, request *CheckSavepointRequest) (response *CheckSavepointResponse, err error) {
     if request == nil {

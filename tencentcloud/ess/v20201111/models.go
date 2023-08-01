@@ -553,7 +553,8 @@ type Component struct {
 	// 表单域的控件不能作为印章和签名控件
 	ComponentType *string `json:"ComponentType,omitempty" name:"ComponentType"`
 
-	// 控件所属文件的序号（取值为：0-N）。目前单文件的情况下，值是0
+	// 控件所属文件的序号（取值为：0-N）。
+	// 目前单文件的情况下，值是0
 	FileIndex *int64 `json:"FileIndex,omitempty" name:"FileIndex"`
 
 	// 参数控件高度，单位pt
@@ -571,16 +572,18 @@ type Component struct {
 	// 参数控件Y位置，单位pt
 	ComponentPosY *float64 `json:"ComponentPosY,omitempty" name:"ComponentPosY"`
 
-	// 查询时返回控件唯一Id。使用文件发起合同时用于GenerateMode==KEYWORD 指定关键字
+	// 控件唯一ID。
+	// 或使用文件发起合同时用于GenerateMode==KEYWORD 指定关键字
 	ComponentId *string `json:"ComponentId,omitempty" name:"ComponentId"`
 
-	// 查询时返回控件名。使用文件发起合同时用于GenerateMode==FIELD 指定表单域名称
+	// 控件名。
+	// 或使用文件发起合同时用于GenerateMode==FIELD 指定表单域名称
 	ComponentName *string `json:"ComponentName,omitempty" name:"ComponentName"`
 
-	// 是否必选，默认为false
+	// 是否必选，默认为false-非必选
 	ComponentRequired *bool `json:"ComponentRequired,omitempty" name:"ComponentRequired"`
 
-	// 控件关联的签署人ID
+	// 控件关联的参与方ID，对应Recipient结构体中的RecipientId
 	ComponentRecipientId *string `json:"ComponentRecipientId,omitempty" name:"ComponentRecipientId"`
 
 	// 扩展参数：
@@ -614,7 +617,7 @@ type Component struct {
 	// 参数样例："ComponentExtra":"{\"PageRanges\":[{\"BeginPage\":1,\"EndPage\":-1}]}"
 	ComponentExtra *string `json:"ComponentExtra,omitempty" name:"ComponentExtra"`
 
-	// 是否是表单域类型，默认不false-不是
+	// 是否是表单域类型，默认false-不是
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsFormType *bool `json:"IsFormType,omitempty" name:"IsFormType"`
 
@@ -704,7 +707,7 @@ type Component struct {
 	// 日期签署控件的字号，默认为 12
 	ComponentDateFontSize *int64 `json:"ComponentDateFontSize,omitempty" name:"ComponentDateFontSize"`
 
-	// 第三方应用集成平台模板控件 id 标识
+	// 第三方应用集成平台模板控件 ID 标识
 	ChannelComponentId *string `json:"ChannelComponentId,omitempty" name:"ChannelComponentId"`
 
 	// 指定关键字时横坐标偏移量，单位pt
@@ -715,21 +718,43 @@ type Component struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OffsetY *float64 `json:"OffsetY,omitempty" name:"OffsetY"`
 
-	// 第三方应用集成中子客企业控件来源。0-平台指定；1-用户自定义
+	// 第三方应用集成中子客企业控件来源。
+	// 0-平台指定；
+	// 1-用户自定义
 	ChannelComponentSource *uint64 `json:"ChannelComponentSource,omitempty" name:"ChannelComponentSource"`
 
-	// 指定关键字排序规则，Positive-正序，Reverse-倒序。传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
+	// 指定关键字排序规则，Positive-正序，Reverse-倒序。
+	// 传入Positive时会根据关键字在PDF文件内的顺序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的第一个关键字。
 	// 传入Reverse时会根据关键字在PDF文件内的反序进行排列。在指定KeywordIndexes时，0代表在PDF内查找内容时，查找到的最后一个关键字。
 	KeywordOrder *string `json:"KeywordOrder,omitempty" name:"KeywordOrder"`
 
-	// 指定关键字页码，可选参数，指定页码后，将只在指定的页码内查找关键字，非该页码的关键字将不会查询出来
+	// 指定关键字页码。
+	// 指定页码后，将只在指定的页码内查找关键字，非该页码的关键字将不会查询出来
 	KeywordPage *int64 `json:"KeywordPage,omitempty" name:"KeywordPage"`
 
-	// 关键字位置模式，Middle-居中，Below-正下方，Right-正右方，LowerRight-右上角，UpperRight-右下角。示例：如果设置Middle的关键字盖章，则印章的中心会和关键字的中心重合，如果设置Below，则印章在关键字的正下方
+	// 关键字位置模式，
+	// Middle-居中，
+	// Below-正下方，
+	// Right-正右方，
+	// LowerRight-右上角，
+	// UpperRight-右下角。
+	// 示例：如果设置Middle的关键字盖章，则印章的中心会和关键字的中心重合，如果设置Below，则印章在关键字的正下方
 	RelativeLocation *string `json:"RelativeLocation,omitempty" name:"RelativeLocation"`
 
-	// 关键字索引，可选参数，如果一个关键字在PDF文件中存在多个，可以通过关键字索引指定使用第几个关键字作为最后的结果，可指定多个索引。示例：[0,2]，说明使用PDF文件内第1个和第3个关键字位置。
+	// 关键字索引。
+	// 如果一个关键字在PDF文件中存在多个，可以通过关键字索引指定使用第几个关键字作为最后的结果，可指定多个索引。
+	// 示例：[0,2]，说明使用PDF文件内第1个和第3个关键字位置。
 	KeywordIndexes []*int64 `json:"KeywordIndexes,omitempty" name:"KeywordIndexes"`
+
+	// 是否锁定控件值不允许编辑（嵌入式发起使用）
+	// <br/>默认false：不锁定控件值，允许在页面编辑控件值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LockComponentValue *bool `json:"LockComponentValue,omitempty" name:"LockComponentValue"`
+
+	// 是否禁止移动和删除控件
+	// <br/>默认false，不禁止移动和删除控件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForbidMoveAndDelete *bool `json:"ForbidMoveAndDelete,omitempty" name:"ForbidMoveAndDelete"`
 }
 
 // Predefined struct for user
@@ -1106,6 +1131,8 @@ type CreateEmbedWebUrlRequestParams struct {
 	// <br/>PREVIEW_SEAL_LIST：预览印章列表
 	// <br/>PREVIEW_SEAL_DETAIL：预览印章详情
 	// <br/>EXTEND_SERVICE：拓展服务
+	// <br/>PREVIEW_FLOW：预览合同
+	// <br/>PREVIEW_FLOW_DETAIL：查看合同详情
 	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
@@ -1117,6 +1144,9 @@ type CreateEmbedWebUrlRequestParams struct {
 
 	// 抄送方信息
 	Reviewer *ReviewerInfo `json:"Reviewer,omitempty" name:"Reviewer"`
+
+	// 个性化参数
+	Option *EmbedUrlOption `json:"Option,omitempty" name:"Option"`
 }
 
 type CreateEmbedWebUrlRequest struct {
@@ -1130,6 +1160,8 @@ type CreateEmbedWebUrlRequest struct {
 	// <br/>PREVIEW_SEAL_LIST：预览印章列表
 	// <br/>PREVIEW_SEAL_DETAIL：预览印章详情
 	// <br/>EXTEND_SERVICE：拓展服务
+	// <br/>PREVIEW_FLOW：预览合同
+	// <br/>PREVIEW_FLOW_DETAIL：查看合同详情
 	EmbedType *string `json:"EmbedType,omitempty" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
@@ -1141,6 +1173,9 @@ type CreateEmbedWebUrlRequest struct {
 
 	// 抄送方信息
 	Reviewer *ReviewerInfo `json:"Reviewer,omitempty" name:"Reviewer"`
+
+	// 个性化参数
+	Option *EmbedUrlOption `json:"Option,omitempty" name:"Option"`
 }
 
 func (r *CreateEmbedWebUrlRequest) ToJsonString() string {
@@ -1160,6 +1195,7 @@ func (r *CreateEmbedWebUrlRequest) FromJsonString(s string) error {
 	delete(f, "BusinessId")
 	delete(f, "Agent")
 	delete(f, "Reviewer")
+	delete(f, "Option")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmbedWebUrlRequest has unknown keys!", "")
 	}
@@ -1768,6 +1804,57 @@ func (r *CreateFlowGroupByTemplatesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateFlowGroupByTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type CreateFlowOption struct {
+	// 是否允许修改发起合同时确认弹窗的合同信息（合同名称、合同类型、签署截止时间），若不允许编辑，则表单字段将被禁止输入。
+	// <br/>true：允许编辑（默认），<br/>false：不允许编辑<br/>默认：false：不允许编辑
+	CanEditFlow *bool `json:"CanEditFlow,omitempty" name:"CanEditFlow"`
+
+	// 是否允许编辑模版控件
+	// <br/>true:允许编辑模版控件信息
+	// <br/>false:不允许编辑模版控件信息
+	// <br/>默认false:不允许编辑模版控件信息
+	CanEditFormField *bool `json:"CanEditFormField,omitempty" name:"CanEditFormField"`
+
+	// 发起页面隐藏合同名称展示
+	// <br/>true:发起页面隐藏合同名称展示
+	// <br/>false:发起页面不隐藏合同名称展示
+	// <br/>默认false:发起页面不隐藏合同名称展示
+	HideShowFlowName *bool `json:"HideShowFlowName,omitempty" name:"HideShowFlowName"`
+
+	// 发起页面隐藏合同类型展示
+	// <br/>true:发起页面隐藏合同类型展示
+	// <br/>false:发起页面不隐藏合同类型展示
+	// <br/>默认false:发起页面不隐藏合同类型展示
+	HideShowFlowType *bool `json:"HideShowFlowType,omitempty" name:"HideShowFlowType"`
+
+	// 发起页面隐藏合同截止日期展示
+	// <br/>true:发起页面隐藏合同截止日期展示
+	// <br/>false:发起页面不隐藏合同截止日期展示
+	// <br/>默认false:发起页面不隐藏合同截止日期展示
+	HideShowDeadline *bool `json:"HideShowDeadline,omitempty" name:"HideShowDeadline"`
+
+	// 发起页面允许跳过添加签署人环节
+	// <br/>true:发起页面允许跳过添加签署人环节
+	// <br/>false:发起页面不允许跳过添加签署人环节
+	// <br/>默认false:发起页面不允许跳过添加签署人环节
+	CanSkipAddApprover *bool `json:"CanSkipAddApprover,omitempty" name:"CanSkipAddApprover"`
+
+	// 文件发起页面跳过文件上传步骤
+	// <br/>true:文件发起页面跳过文件上传步骤
+	// <br/>false:文件发起页面不跳过文件上传步骤
+	// <br/>默认false:文件发起页面不跳过文件上传步骤
+	SkipUploadFile *bool `json:"SkipUploadFile,omitempty" name:"SkipUploadFile"`
+
+	// 禁止编辑填写控件
+	// <br/>true:禁止编辑填写控件
+	// <br/>false:允许编辑填写控件
+	// <br/>默认false:允许编辑填写控件
+	ForbidEditFillComponent *bool `json:"ForbidEditFillComponent,omitempty" name:"ForbidEditFillComponent"`
+
+	// 定制化发起合同弹窗的描述信息，描述信息最长500
+	CustomCreateFlowDescription *string `json:"CustomCreateFlowDescription,omitempty" name:"CustomCreateFlowDescription"`
 }
 
 // Predefined struct for user
@@ -2737,21 +2824,66 @@ type CreatePrepareFlowRequestParams struct {
 	// 合同名称
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
-	// 是否顺序签署(true:无序签,false:顺序签)
+	// 是否顺序签署
+	// true:无序签
+	// false:顺序签
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
 	// 签署流程的签署截止时间。
-	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
+	// 值为unix时间戳,精确到秒
+	// 不传默认为当前时间一年后
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
-	// 用户自定义合同类型
+	// 用户自定义合同类型Id
+	// 该id为电子签企业内的合同类型id
 	UserFlowTypeId *string `json:"UserFlowTypeId,omitempty" name:"UserFlowTypeId"`
 
 	// 签署流程参与者信息，最大限制50方
 	Approvers []*FlowCreateApprover `json:"Approvers,omitempty" name:"Approvers"`
 
-	// 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
+	// 打开智能添加填写区
+	// (默认开启，打开:"OPEN"
+	//  关闭："CLOSE"
 	IntelligentStatus *string `json:"IntelligentStatus,omitempty" name:"IntelligentStatus"`
+
+	// 资源类型，
+	// 1：文件，
+	// 2：模板
+	// 不传默认为1：文件
+	// 目前仅支持文件
+	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 发起方填写控件
+	// 该类型控件由发起方完成填写
+	Components *Component `json:"Components,omitempty" name:"Components"`
+
+	// 发起合同个性化参数
+	// 用于满足创建及页面操作过程中的个性化要求
+	// 具体定制化内容详见数据接口说明
+	FlowOption *CreateFlowOption `json:"FlowOption,omitempty" name:"FlowOption"`
+
+	// 是否开启发起方签署审核
+	// true:开启发起方签署审核
+	// false:不开启发起方签署审核
+	// 默认false:不开启发起方签署审核
+	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
+
+	// 开启发起方发起合同审核
+	// true:开启发起方发起合同审核
+	// false:不开启发起方发起合同审核
+	// 默认false:不开启发起方发起合同审核
+	NeedCreateReview *bool `json:"NeedCreateReview,omitempty" name:"NeedCreateReview"`
+
+	// 用户自定义参数
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
+	// 合同id,用于通过已web页面发起的合同id快速生成一个web发起合同链接
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 合同类型名称
+	// 该字段用于客户自定义合同类型
+	// 建议使用时指定合同类型，便于之后合同分类以及查看
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填	
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -2769,21 +2901,66 @@ type CreatePrepareFlowRequest struct {
 	// 合同名称
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
-	// 是否顺序签署(true:无序签,false:顺序签)
+	// 是否顺序签署
+	// true:无序签
+	// false:顺序签
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
 	// 签署流程的签署截止时间。
-	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
+	// 值为unix时间戳,精确到秒
+	// 不传默认为当前时间一年后
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
-	// 用户自定义合同类型
+	// 用户自定义合同类型Id
+	// 该id为电子签企业内的合同类型id
 	UserFlowTypeId *string `json:"UserFlowTypeId,omitempty" name:"UserFlowTypeId"`
 
 	// 签署流程参与者信息，最大限制50方
 	Approvers []*FlowCreateApprover `json:"Approvers,omitempty" name:"Approvers"`
 
-	// 打开智能添加填写区(默认开启，打开:"OPEN" 关闭："CLOSE")
+	// 打开智能添加填写区
+	// (默认开启，打开:"OPEN"
+	//  关闭："CLOSE"
 	IntelligentStatus *string `json:"IntelligentStatus,omitempty" name:"IntelligentStatus"`
+
+	// 资源类型，
+	// 1：文件，
+	// 2：模板
+	// 不传默认为1：文件
+	// 目前仅支持文件
+	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
+
+	// 发起方填写控件
+	// 该类型控件由发起方完成填写
+	Components *Component `json:"Components,omitempty" name:"Components"`
+
+	// 发起合同个性化参数
+	// 用于满足创建及页面操作过程中的个性化要求
+	// 具体定制化内容详见数据接口说明
+	FlowOption *CreateFlowOption `json:"FlowOption,omitempty" name:"FlowOption"`
+
+	// 是否开启发起方签署审核
+	// true:开启发起方签署审核
+	// false:不开启发起方签署审核
+	// 默认false:不开启发起方签署审核
+	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
+
+	// 开启发起方发起合同审核
+	// true:开启发起方发起合同审核
+	// false:不开启发起方发起合同审核
+	// 默认false:不开启发起方发起合同审核
+	NeedCreateReview *bool `json:"NeedCreateReview,omitempty" name:"NeedCreateReview"`
+
+	// 用户自定义参数
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
+	// 合同id,用于通过已web页面发起的合同id快速生成一个web发起合同链接
+	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+
+	// 合同类型名称
+	// 该字段用于客户自定义合同类型
+	// 建议使用时指定合同类型，便于之后合同分类以及查看
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填	
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -2809,6 +2986,14 @@ func (r *CreatePrepareFlowRequest) FromJsonString(s string) error {
 	delete(f, "UserFlowTypeId")
 	delete(f, "Approvers")
 	delete(f, "IntelligentStatus")
+	delete(f, "ResourceType")
+	delete(f, "Components")
+	delete(f, "FlowOption")
+	delete(f, "NeedSignReview")
+	delete(f, "NeedCreateReview")
+	delete(f, "UserData")
+	delete(f, "FlowId")
+	delete(f, "FlowType")
 	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrepareFlowRequest has unknown keys!", "")
@@ -4589,7 +4774,7 @@ func (r *DescribeFlowInfoResponse) FromJsonString(s string) error {
 type DescribeFlowTemplatesRequestParams struct {
 	// 调用方员工/经办人信息
 	// UserId 必填，在企业控制台组织架构中可以查到员工的UserId
-	// 注：请保证对应
+	// 注：请保证员工有相关的角色权限
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 代理相关应用信息
@@ -4639,7 +4824,7 @@ type DescribeFlowTemplatesRequest struct {
 	
 	// 调用方员工/经办人信息
 	// UserId 必填，在企业控制台组织架构中可以查到员工的UserId
-	// 注：请保证对应
+	// 注：请保证员工有相关的角色权限
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 代理相关应用信息
@@ -5535,6 +5720,20 @@ func (r *DisableUserAutoSignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EmbedUrlOption struct {
+	// 合同详情预览，允许展示控件信息
+	// <br/>true：允许在合同详情页展示控件
+	// <br/>false：不允许在合同详情页展示控件
+	// <br/>默认false，合同详情页不展示控件
+	ShowFlowDetailComponent *bool `json:"ShowFlowDetailComponent,omitempty" name:"ShowFlowDetailComponent"`
+
+	// 模版预览，允许展示模版控件信息
+	// <br/>true：允许在模版预览页展示控件
+	// <br/>false：不允许在模版预览页展示控件
+	// <br/>默认false，模版预览页不展示控件
+	ShowTemplateComponent *bool `json:"ShowTemplateComponent,omitempty" name:"ShowTemplateComponent"`
+}
+
 type ExtendAuthInfo struct {
 	// 授权服务类型
 	// OPEN_SERVER_SIGN：开通企业静默签署
@@ -5619,7 +5818,7 @@ type FailedUpdateStaffData struct {
 }
 
 type FileInfo struct {
-	// 文件Id
+	// 文件ID
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
 
 	// 文件名
@@ -5628,7 +5827,7 @@ type FileInfo struct {
 	// 文件大小，单位为Byte
 	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
 
-	// 文件上传时间，10位时间戳（精确到秒）
+	// 文件上传时间，格式为Unix标准时间戳（秒）
 	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
 }
 
@@ -5647,10 +5846,11 @@ type FillApproverInfo struct {
 
 	// 签署人来源
 	// WEWORKAPP: 企业微信
+	// <br/>仅【企微或签】时指定WEWORKAPP
 	ApproverSource *string `json:"ApproverSource,omitempty" name:"ApproverSource"`
 
 	// 企业自定义账号ID
-	// WEWORKAPP场景下指企业自有应用获取企微明文的userid
+	// <br/>当ApproverSource为WEWORKAPP的企微或签场景下，必须指企业自有应用获取企微明文的userid
 	CustomUserId *string `json:"CustomUserId,omitempty" name:"CustomUserId"`
 
 	// 补充签署人姓名
@@ -5834,13 +6034,17 @@ type FlowCreateApprover struct {
 	// 注：类型为3（企业静默签署）时，会默认完成该签署方的签署。静默签署仅进行盖章操作，不能是手写签名。
 	ApproverType *int64 `json:"ApproverType,omitempty" name:"ApproverType"`
 
-	// 如果签署方为企业，需要填入企业全称
+	// 签署人企业名称
+	// <br/>当approverType=1 或 approverType=3时，必须指定
+	// 
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
 	// 签署方经办人姓名
+	// <br/>在未指定签署人电子签UserId情况下，为必填参数
 	ApproverName *string `json:"ApproverName,omitempty" name:"ApproverName"`
 
 	// 签署方经办人手机号码
+	// <br/>在未指定签署人电子签UserId情况下，为必填参数
 	ApproverMobile *string `json:"ApproverMobile,omitempty" name:"ApproverMobile"`
 
 	// 签署方经办人证件类型ID_CARD 身份证
@@ -5852,12 +6056,18 @@ type FlowCreateApprover struct {
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitempty" name:"ApproverIdCardNumber"`
 
 	// 签署方经办人在模板中的参与方ID
+	// <br/>模版发起合同时，该参数为必填项
+	// <br/>文件发起合同是，该参数无序传值
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 
 	// 签署意愿确认渠道,WEIXINAPP:人脸识别
 	VerifyChannel []*string `json:"VerifyChannel,omitempty" name:"VerifyChannel"`
 
-	// 是否发送短信，sms--短信通知，none--不通知，默认为sms；发起方=签署方时不发送短信
+	// 是否发送短信
+	// <br/>sms--短信通知
+	// <br/>none--不通知
+	// <br/>默认为sms
+	// <br/>发起方=签署方时不发送短信
 	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
 
 	// 合同强制需要阅读全文，无需传此参数
@@ -5866,16 +6076,21 @@ type FlowCreateApprover struct {
 	// 合同的强制预览时间：3~300s，未指定则按合同页数计算
 	PreReadTime *uint64 `json:"PreReadTime,omitempty" name:"PreReadTime"`
 
-	// 签署方经办人的用户ID,和签署方经办人姓名+手机号+证件必须有一个。
+	// 签署方经办人的电子签用户ID
+	// <br/>当未指定签署人姓名+手机号的情况下，该字段毕传
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
 	// 当前只支持true，默认为true
 	Required *bool `json:"Required,omitempty" name:"Required"`
 
-	// 签署人用户来源,企微侧用户请传入：WEWORKAPP
+	// 签署人用户来源
+	// <br/>企微侧用户请传入：WEWORKAPP
 	ApproverSource *string `json:"ApproverSource,omitempty" name:"ApproverSource"`
 
-	// 企业签署方或签标识，客户自定义，64位长度。用于发起含有或签签署人的合同。或签参与人必须有此字段。合同内不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
+	// 企业签署方或签标识，客户自定义，64位长度
+	// <br>用于发起含有或签签署人的合同。或签参与人必须有此字段。
+	// <br/>合同内不同或签参与人CustomApproverTag需要保证唯一。
+	// <br/>如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
 	CustomApproverTag *string `json:"CustomApproverTag,omitempty" name:"CustomApproverTag"`
 
 	// 快速注册相关信息，目前暂未开放！
@@ -5894,13 +6109,18 @@ type FlowCreateApprover struct {
 	// - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
 	SignId *string `json:"SignId,omitempty" name:"SignId"`
 
-	// 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。
+	// 当前签署方进行签署操作是否需要企业内部审批
+	// <br>true 则为需要
+	// <br/>false,无序企业内部审批（默认）
+	// <br/>为个人签署方时则由发起方企业审核。
 	ApproverNeedSignReview *bool `json:"ApproverNeedSignReview,omitempty" name:"ApproverNeedSignReview"`
 
 	// 签署人签署控件
+	// <br/>文件发起时，可通过该参数为签署人指定签署控件类型以及位置
 	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
 
 	// 签署人填写控件
+	// <br/>文件发起时，可通过该参数为签署人指定填写控件类型以及位置
 	Components []*Component `json:"Components,omitempty" name:"Components"`
 
 	// 签署方控件类型为 SIGN_SIGNATURE时，可以指定签署方签名方式
@@ -6509,10 +6729,10 @@ type PdfVerifyResult struct {
 	// 签名证书序列号
 	CertSn *string `json:"CertSn,omitempty" name:"CertSn"`
 
-	// 证书起始时间戳，单位秒
+	// 证书起始时间戳，单位毫秒
 	CertNotBefore *int64 `json:"CertNotBefore,omitempty" name:"CertNotBefore"`
 
-	// 证书过期时间戳，单位秒
+	// 证书过期时间戳，单位毫秒
 	CertNotAfter *int64 `json:"CertNotAfter,omitempty" name:"CertNotAfter"`
 
 	// 签名域横坐标，单位pt
@@ -6532,10 +6752,14 @@ type PdfVerifyResult struct {
 }
 
 type Recipient struct {
-	// 签署参与者ID
+	// 签署参与者ID，唯一标识
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 
-	// 参与者类型。默认为空。ENTERPRISE-企业；INDIVIDUAL-个人；PROMOTER-发起方
+	// 参与者类型。
+	// 默认为空。
+	// ENTERPRISE-企业；
+	// INDIVIDUAL-个人；
+	// PROMOTER-发起方
 	RecipientType *string `json:"RecipientType,omitempty" name:"RecipientType"`
 
 	// 描述信息
@@ -6544,16 +6768,19 @@ type Recipient struct {
 	// 角色名称
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 
-	// 是否需要验证，默认为false
+	// 是否需要验证，
+	// 默认为false-不需要验证
 	RequireValidation *bool `json:"RequireValidation,omitempty" name:"RequireValidation"`
 
-	// 是否需要签署，默认为true
+	// 是否需要签署，
+	// 默认为true-需要签署
 	RequireSign *bool `json:"RequireSign,omitempty" name:"RequireSign"`
 
-	// 添加序列，0～N
+	// 此参与方添加的顺序，从0～N
 	RoutingOrder *int64 `json:"RoutingOrder,omitempty" name:"RoutingOrder"`
 
-	// 是否需要发送，默认为true
+	// 是否需要发送，
+	// 默认为true-需要发送
 	RequireDelivery *bool `json:"RequireDelivery,omitempty" name:"RequireDelivery"`
 
 	// 邮箱地址
@@ -6562,13 +6789,16 @@ type Recipient struct {
 	// 电话号码
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 关联的用户ID
+	// 关联的用户ID，电子签系统的用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 发送方式。默认为EMAIL。EMAIL-邮件；MOBILE-手机短信；WECHAT-微信通知
+	// 发送方式，默认为EMAIL。
+	// EMAIL-邮件；
+	// MOBILE-手机短信；
+	// WECHAT-微信通知
 	DeliveryMethod *string `json:"DeliveryMethod,omitempty" name:"DeliveryMethod"`
 
-	// 附属信息
+	// 参与方的一些附属信息，json格式
 	RecipientExtra *string `json:"RecipientExtra,omitempty" name:"RecipientExtra"`
 }
 
@@ -6664,7 +6894,20 @@ type ReviewerInfo struct {
 }
 
 type SealInfo struct {
+	// 印章ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
 
+	// 印章类型。LEGAL_PERSON_SEAL: 法定代表人章；
+	// ORGANIZATIONSEAL：企业印章；
+	// OFFICIAL：企业公章；
+	// CONTRACT：合同专用章
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SealType *string `json:"SealType,omitempty" name:"SealType"`
+
+	// 印章名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SealName *string `json:"SealName,omitempty" name:"SealName"`
 }
 
 type SignQrCode struct {
@@ -6885,10 +7128,10 @@ type SuccessUpdateStaffData struct {
 }
 
 type TemplateInfo struct {
-	// 模板ID
+	// 模板ID，模板的唯一标识
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 模板名字
+	// 模板名
 	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 
 	// 模板描述信息
@@ -6897,46 +7140,52 @@ type TemplateInfo struct {
 	// 模板关联的资源ID列表
 	DocumentResourceIds []*string `json:"DocumentResourceIds,omitempty" name:"DocumentResourceIds"`
 
-	// 返回的文件信息结构
+	// 生成模板的文件基础信息
 	FileInfos []*FileInfo `json:"FileInfos,omitempty" name:"FileInfos"`
 
 	// 附件关联的资源ID
 	AttachmentResourceIds []*string `json:"AttachmentResourceIds,omitempty" name:"AttachmentResourceIds"`
 
 	// 签署顺序
+	// 无序 -1
+	// 有序为序列数字 0,1,2
 	SignOrder []*int64 `json:"SignOrder,omitempty" name:"SignOrder"`
 
-	// 签署参与者的信息
+	// 模板中的签署参与方列表
 	Recipients []*Recipient `json:"Recipients,omitempty" name:"Recipients"`
 
-	// 模板信息结构
+	// 模板的填充控件列表
 	Components []*Component `json:"Components,omitempty" name:"Components"`
 
-	// 签署区模板信息结构
+	// 模板中的签署控件列表
 	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
 
-	// 模板状态(-1:不可用；0:草稿态；1:正式态)
+	// 模板状态
+	// -1:不可用
+	// 0:草稿态
+	// 1:正式态，可以正常使用
 	Status *int64 `json:"Status,omitempty" name:"Status"`
 
-	// 模板的创建人UserId
+	// 模板的创建者信息，电子签系统用户ID
 	Creator *string `json:"Creator,omitempty" name:"Creator"`
 
-	// 模板创建的时间戳，单位秒
+	// 模板创建的时间戳，格式为Unix标准时间戳（秒）
 	CreatedOn *int64 `json:"CreatedOn,omitempty" name:"CreatedOn"`
 
-	// 发起人角色信息
+	// 发起方参与信息Promoter
 	Promoter *Recipient `json:"Promoter,omitempty" name:"Promoter"`
 
-	// 模板类型
-	// 取值：
+	// 模板类型：
 	// 1  静默签,
 	// 3  普通模板
 	TemplateType *int64 `json:"TemplateType,omitempty" name:"TemplateType"`
 
-	// 模板可用状态，取值：1启用（默认），2停用
+	// 模板可用状态：
+	// 1 启用（默认）
+	// 2 停用
 	Available *int64 `json:"Available,omitempty" name:"Available"`
 
-	// 创建模板的机构id
+	// 创建模板的企业ID，电子签的机构ID
 	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
 
 	// 模板预览链接，有效时间5分钟
@@ -6947,7 +7196,9 @@ type TemplateInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateVersion *string `json:"TemplateVersion,omitempty" name:"TemplateVersion"`
 
-	// 模板是否已发布。true-已发布；false-未发布
+	// 模板是否已发布：
+	// true-已发布
+	// false-未发布
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Published *bool `json:"Published,omitempty" name:"Published"`
 
@@ -7042,7 +7293,7 @@ func (r *UnbindEmployeeUserIdWithClientOpenIdResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type UpdateIntegrationEmployeesRequestParams struct {
-	// 操作人信息，userId必填
+	// 当前用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为YUFU；
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 员工信息，不超过100个。
@@ -7057,7 +7308,7 @@ type UpdateIntegrationEmployeesRequestParams struct {
 type UpdateIntegrationEmployeesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息，userId必填
+	// 当前用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为YUFU；
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 员工信息，不超过100个。

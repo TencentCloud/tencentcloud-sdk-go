@@ -41,6 +41,12 @@ const (
 	// 当前API正在操作中，请稍后再试。
 	FAILEDOPERATION_APIINOPERATION = "FailedOperation.ApiInOperation"
 
+	// 返回域名错误
+	FAILEDOPERATION_BACKENDDOMAINERROR = "FailedOperation.BackendDomainError"
+
+	// CAM异常
+	FAILEDOPERATION_CAMEXCEPTION = "FailedOperation.CamException"
+
 	// 证书绑定错误。
 	FAILEDOPERATION_CERTIFICATEIDBINDERROR = "FailedOperation.CertificateIdBindError"
 
@@ -178,6 +184,9 @@ const (
 
 	// oss内部请求错误，请稍后重试。若无法解决，请联系智能客服或提交工单。
 	INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+
+	// 标签回调失败。
+	INTERNALERROR_RETURNABLEEXCEPTION = "InternalError.ReturnableException"
 
 	// SCF内部请求错误，请稍后重试。若无法解决，请联系智能客服或提交工单。
 	INTERNALERROR_SCFEXCEPTION = "InternalError.ScfException"
@@ -458,6 +467,9 @@ const (
 	// 基础版服务不能创建超过一个API。
 	UNSUPPORTEDOPERATION_BASICSERVICENOMOREAPI = "UnsupportedOperation.BasicServiceNoMoreApi"
 
+	// 基础服务不允许连接插件
+	UNSUPPORTEDOPERATION_BASICSERVICENOTALLOWATTACHPLUGIN = "UnsupportedOperation.BasicServiceNotAllowAttachPlugin"
+
 	// 日志检索起始时间间隔。
 	UNSUPPORTEDOPERATION_CLSSEARCHTIME = "UnsupportedOperation.ClsSearchTime"
 
@@ -496,6 +508,9 @@ const (
 
 	// 不支持减少网络类型的操作。
 	UNSUPPORTEDOPERATION_REDUCENETTYPES = "UnsupportedOperation.ReduceNetTypes"
+
+	// 请求Post失败
+	UNSUPPORTEDOPERATION_REQUESTPOSTERROR = "UnsupportedOperation.RequestPostError"
 
 	// 资源已关联，请先解除。
 	UNSUPPORTEDOPERATION_RESOURCEASSOCIATED = "UnsupportedOperation.ResourceAssociated"

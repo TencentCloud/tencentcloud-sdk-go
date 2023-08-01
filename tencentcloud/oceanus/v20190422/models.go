@@ -119,6 +119,16 @@ func (r *CheckSavepointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ClazzLevel struct {
+	// java类全路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Clazz *string `json:"Clazz,omitempty" name:"Clazz"`
+
+	// 日志级别  TRACE，DEBUG、INFO、WARN、ERROR
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *string `json:"Level,omitempty" name:"Level"`
+}
+
 type Cluster struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -588,6 +598,15 @@ type CreateJobConfigRequestParams struct {
 
 	// Oceanus 平台恢复作业开关 1:开启 -1: 关闭
 	AutoRecover *int64 `json:"AutoRecover,omitempty" name:"AutoRecover"`
+
+	// 类日志级别
+	ClazzLevels []*ClazzLevel `json:"ClazzLevels,omitempty" name:"ClazzLevels"`
+
+	// 是否打开专家模式
+	ExpertModeOn *bool `json:"ExpertModeOn,omitempty" name:"ExpertModeOn"`
+
+	// 专家模式的配置
+	ExpertModeConfiguration *ExpertModeConfiguration `json:"ExpertModeConfiguration,omitempty" name:"ExpertModeConfiguration"`
 }
 
 type CreateJobConfigRequest struct {
@@ -649,6 +668,15 @@ type CreateJobConfigRequest struct {
 
 	// Oceanus 平台恢复作业开关 1:开启 -1: 关闭
 	AutoRecover *int64 `json:"AutoRecover,omitempty" name:"AutoRecover"`
+
+	// 类日志级别
+	ClazzLevels []*ClazzLevel `json:"ClazzLevels,omitempty" name:"ClazzLevels"`
+
+	// 是否打开专家模式
+	ExpertModeOn *bool `json:"ExpertModeOn,omitempty" name:"ExpertModeOn"`
+
+	// 专家模式的配置
+	ExpertModeConfiguration *ExpertModeConfiguration `json:"ExpertModeConfiguration,omitempty" name:"ExpertModeConfiguration"`
 }
 
 func (r *CreateJobConfigRequest) ToJsonString() string {
@@ -682,6 +710,9 @@ func (r *CreateJobConfigRequest) FromJsonString(s string) error {
 	delete(f, "WorkSpaceId")
 	delete(f, "LogLevel")
 	delete(f, "AutoRecover")
+	delete(f, "ClazzLevels")
+	delete(f, "ExpertModeOn")
+	delete(f, "ExpertModeConfiguration")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateJobConfigRequest has unknown keys!", "")
 	}
@@ -2405,6 +2436,20 @@ func (r *DescribeWorkSpacesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ExpertModeConfiguration struct {
+	// Job graph
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JobGraph *JobGraph `json:"JobGraph,omitempty" name:"JobGraph"`
+
+	// Node configuration
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeConfig []*NodeConfig `json:"NodeConfig,omitempty" name:"NodeConfig"`
+
+	// Slot sharing groups
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlotSharingGroups []*SlotSharingGroup `json:"SlotSharingGroups,omitempty" name:"SlotSharingGroups"`
+}
+
 type Filter struct {
 	// 要过滤的字段
 	Name *string `json:"Name,omitempty" name:"Name"`
@@ -2494,6 +2539,56 @@ type JobConfig struct {
 	// 日志级别
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogLevel *string `json:"LogLevel,omitempty" name:"LogLevel"`
+
+	// 类日志级别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClazzLevels []*ClazzLevel `json:"ClazzLevels,omitempty" name:"ClazzLevels"`
+
+	// 是否开启专家模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpertModeOn *bool `json:"ExpertModeOn,omitempty" name:"ExpertModeOn"`
+
+	// 专家模式的配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpertModeConfiguration *ExpertModeConfiguration `json:"ExpertModeConfiguration,omitempty" name:"ExpertModeConfiguration"`
+}
+
+type JobGraph struct {
+	// 运行图的点集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nodes []*JobGraphNode `json:"Nodes,omitempty" name:"Nodes"`
+
+	// 运行图的边集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Edges []*JobGraphEdge `json:"Edges,omitempty" name:"Edges"`
+}
+
+type JobGraphEdge struct {
+	// 边的起始节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *int64 `json:"Source,omitempty" name:"Source"`
+
+	// 边的目标节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Target *int64 `json:"Target,omitempty" name:"Target"`
+}
+
+type JobGraphNode struct {
+	// 节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// 节点描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 节点并行度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Parallelism *int64 `json:"Parallelism,omitempty" name:"Parallelism"`
 }
 
 type JobInstanceForSubmissionLog struct {
@@ -2738,6 +2833,28 @@ func (r *ModifyJobResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type NodeConfig struct {
+	// Node ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *int64 `json:"Id,omitempty" name:"Id"`
+
+	// Node parallelism
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Parallelism *int64 `json:"Parallelism,omitempty" name:"Parallelism"`
+
+	// Slot sharing group
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlotSharingGroup *string `json:"SlotSharingGroup,omitempty" name:"SlotSharingGroup"`
+
+	// Configuration properties
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Configuration []*Property `json:"Configuration,omitempty" name:"Configuration"`
+
+	// 节点的状态ttl配置, 多个用 ; 分割
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StateTTL *string `json:"StateTTL,omitempty" name:"StateTTL"`
 }
 
 type Property struct {
@@ -3105,6 +3222,38 @@ type Savepoint struct {
 	// 快照路径状态 1：可用；2：不可用；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PathStatus *int64 `json:"PathStatus,omitempty" name:"PathStatus"`
+}
+
+type SlotSharingGroup struct {
+	// SlotSharingGroup的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// SlotSharingGroup的规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Spec *SlotSharingGroupSpec `json:"Spec,omitempty" name:"Spec"`
+
+	// SlotSharingGroup的描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
+type SlotSharingGroupSpec struct {
+	// 适用的cpu
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CPU *float64 `json:"CPU,omitempty" name:"CPU"`
+
+	// 默认为b, 支持单位有 b, kb, mb, gb
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeapMemory *string `json:"HeapMemory,omitempty" name:"HeapMemory"`
+
+	// 默认为b, 支持单位有 b, kb, mb, gb
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OffHeapMemory *string `json:"OffHeapMemory,omitempty" name:"OffHeapMemory"`
+
+	// 默认为b, 支持单位有 b, kb, mb, gb
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManagedMemory *string `json:"ManagedMemory,omitempty" name:"ManagedMemory"`
 }
 
 type StopJobDescription struct {

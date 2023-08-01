@@ -1,3 +1,308 @@
+# Release v1.0.712
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 62 次发布
+
+发布时间：2023-08-01 01:11:03
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeKafkaConsumer](https://cloud.tencent.com/document/api/614/95719)
+* [ModifyKafkaConsumer](https://cloud.tencent.com/document/api/614/95720)
+
+### 第 61 次发布
+
+发布时间：2023-07-31 16:20:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateConfigExtra](https://cloud.tencent.com/document/api/614/71166)
+
+	* 新增入参：AdvancedConfig
+
+* [ModifyConfig](https://cloud.tencent.com/document/api/614/58614)
+
+	* 新增入参：AdvancedConfig
+
+* [ModifyConfigExtra](https://cloud.tencent.com/document/api/614/71163)
+
+	* 新增入参：AdvancedConfig
+
+
+修改数据结构：
+
+* [ConfigExtraInfo](https://cloud.tencent.com/document/api/614/56471#ConfigExtraInfo)
+
+	* 新增成员：AdvancedConfig
+
+* [ConfigInfo](https://cloud.tencent.com/document/api/614/56471#ConfigInfo)
+
+	* 新增成员：AdvancedConfig
+
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 63 次发布
+
+发布时间：2023-08-01 01:15:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAccounts](https://cloud.tencent.com/document/api/1003/48075)
+
+	* 新增入参：AccountRegular
+
+
+修改数据结构：
+
+* [ClusterInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#ClusterInstanceDetail)
+
+	* 新增成员：MaintainStartTime, MaintainDuration, MaintainWeekDays
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 57 次发布
+
+发布时间：2023-08-01 01:17:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CommonMetrics](https://cloud.tencent.com/document/api/1342/53778#CommonMetrics)
+
+	* <font color="#dd0000">**修改成员**：</font>CreateTaskTime, ProcessTime, QueueTime, ExecutionTime, IsResultCacheHit, MatchedMVBytes, MatchedMVs, AffectedBytes, AffectedRows, ProcessedBytes, ProcessedRows
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 49 次发布
+
+发布时间：2023-08-01 01:21:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NodeHardwareInfo](https://cloud.tencent.com/document/api/589/33981#NodeHardwareInfo)
+
+	* 新增成员：ServicesStatus
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 99 次发布
+
+发布时间：2023-08-01 01:22:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEmbedWebUrl](https://cloud.tencent.com/document/api/1323/95590)
+
+	* 新增入参：Option
+
+* [CreatePrepareFlow](https://cloud.tencent.com/document/api/1323/83412)
+
+	* 新增入参：ResourceType, Components, FlowOption, NeedSignReview, NeedCreateReview, UserData, FlowId, FlowType
+
+
+新增数据结构：
+
+* [CreateFlowOption](https://cloud.tencent.com/document/api/1323/70369#CreateFlowOption)
+* [EmbedUrlOption](https://cloud.tencent.com/document/api/1323/70369#EmbedUrlOption)
+
+修改数据结构：
+
+* [Component](https://cloud.tencent.com/document/api/1323/70369#Component)
+
+	* 新增成员：LockComponentValue, ForbidMoveAndDelete
+
+* [Department](https://cloud.tencent.com/document/api/1323/70369#Department)
+
+	* <font color="#dd0000">**修改成员**：</font>DepartmentId, DepartmentName
+
+* [SealInfo](https://cloud.tencent.com/document/api/1323/70369#SealInfo)
+
+	* 新增成员：SealId, SealType, SealName
+
+* [StaffRole](https://cloud.tencent.com/document/api/1323/70369#StaffRole)
+
+	* <font color="#dd0000">**修改成员**：</font>RoleId, RoleName
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 99 次发布
+
+发布时间：2023-08-01 01:24:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/1420/61525#TemplateInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>IsPromoter, Available
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 109 次发布
+
+发布时间：2023-08-01 01:30:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [MixPortraitSegmentParams](https://cloud.tencent.com/document/api/267/20474#MixPortraitSegmentParams)
+
+修改数据结构：
+
+* [CommonMixInputParam](https://cloud.tencent.com/document/api/267/20474#CommonMixInputParam)
+
+	* 新增成员：PortraitSegmentParams
+
+
+
+
+## 多网聚合加速(mna) 版本：2021-01-19
+
+### 第 12 次发布
+
+发布时间：2023-08-01 01:32:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetDevices](https://cloud.tencent.com/document/api/1385/80480)
+
+	* 新增入参：DeviceType
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 65 次发布
+
+发布时间：2023-08-01 01:33:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OverrideTranscodeParameter](https://cloud.tencent.com/document/api/862/37615#OverrideTranscodeParameter)
+
+	* 新增成员：StdExtInfo
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 36 次发布
+
+发布时间：2023-08-01 01:34:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateJobConfig](https://cloud.tencent.com/document/api/849/52004)
+
+	* 新增入参：ClazzLevels, ExpertModeOn, ExpertModeConfiguration
+
+
+新增数据结构：
+
+* [ClazzLevel](https://cloud.tencent.com/document/api/849/52010#ClazzLevel)
+* [ExpertModeConfiguration](https://cloud.tencent.com/document/api/849/52010#ExpertModeConfiguration)
+* [JobGraph](https://cloud.tencent.com/document/api/849/52010#JobGraph)
+* [JobGraphEdge](https://cloud.tencent.com/document/api/849/52010#JobGraphEdge)
+* [JobGraphNode](https://cloud.tencent.com/document/api/849/52010#JobGraphNode)
+* [NodeConfig](https://cloud.tencent.com/document/api/849/52010#NodeConfig)
+* [SlotSharingGroup](https://cloud.tencent.com/document/api/849/52010#SlotSharingGroup)
+* [SlotSharingGroupSpec](https://cloud.tencent.com/document/api/849/52010#SlotSharingGroupSpec)
+
+修改数据结构：
+
+* [JobConfig](https://cloud.tencent.com/document/api/849/52010#JobConfig)
+
+	* 新增成员：ClazzLevels, ExpertModeOn, ExpertModeConfiguration
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 70 次发布
+
+发布时间：2023-08-01 01:43:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateRocketMQVipInstance](https://cloud.tencent.com/document/api/1179/95721)
+
+新增数据结构：
+
+* [VpcInfo](https://cloud.tencent.com/document/api/1179/46089#VpcInfo)
+
+
+
 # Release v1.0.711
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
