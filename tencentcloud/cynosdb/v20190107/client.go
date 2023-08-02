@@ -6785,6 +6785,64 @@ func (c *Client) OpenClusterPasswordComplexityWithContext(ctx context.Context, r
     return
 }
 
+func NewOpenClusterReadOnlyInstanceGroupAccessRequest() (request *OpenClusterReadOnlyInstanceGroupAccessRequest) {
+    request = &OpenClusterReadOnlyInstanceGroupAccessRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cynosdb", APIVersion, "OpenClusterReadOnlyInstanceGroupAccess")
+    
+    
+    return
+}
+
+func NewOpenClusterReadOnlyInstanceGroupAccessResponse() (response *OpenClusterReadOnlyInstanceGroupAccessResponse) {
+    response = &OpenClusterReadOnlyInstanceGroupAccessResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// OpenClusterReadOnlyInstanceGroupAccess
+// 开启只读实例组接入
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) OpenClusterReadOnlyInstanceGroupAccess(request *OpenClusterReadOnlyInstanceGroupAccessRequest) (response *OpenClusterReadOnlyInstanceGroupAccessResponse, err error) {
+    return c.OpenClusterReadOnlyInstanceGroupAccessWithContext(context.Background(), request)
+}
+
+// OpenClusterReadOnlyInstanceGroupAccess
+// 开启只读实例组接入
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+//  INVALIDPARAMETERVALUE_PARAMERROR = "InvalidParameterValue.ParamError"
+//  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
+func (c *Client) OpenClusterReadOnlyInstanceGroupAccessWithContext(ctx context.Context, request *OpenClusterReadOnlyInstanceGroupAccessRequest) (response *OpenClusterReadOnlyInstanceGroupAccessResponse, err error) {
+    if request == nil {
+        request = NewOpenClusterReadOnlyInstanceGroupAccessRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("OpenClusterReadOnlyInstanceGroupAccess require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewOpenClusterReadOnlyInstanceGroupAccessResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewOpenReadOnlyInstanceExclusiveAccessRequest() (request *OpenReadOnlyInstanceExclusiveAccessRequest) {
     request = &OpenReadOnlyInstanceExclusiveAccessRequest{
         BaseRequest: &tchttp.BaseRequest{},

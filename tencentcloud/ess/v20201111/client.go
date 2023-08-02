@@ -2833,6 +2833,66 @@ func (c *Client) CreateOrganizationBatchSignUrlWithContext(ctx context.Context, 
     return
 }
 
+func NewCreatePersonAuthCertificateImageRequest() (request *CreatePersonAuthCertificateImageRequest) {
+    request = &CreatePersonAuthCertificateImageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreatePersonAuthCertificateImage")
+    
+    
+    return
+}
+
+func NewCreatePersonAuthCertificateImageResponse() (response *CreatePersonAuthCertificateImageResponse) {
+    response = &CreatePersonAuthCertificateImageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreatePersonAuthCertificateImage
+// 本接口（CreatePersonAuthCertificateImage）用于创建个人用户证书证明图片
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreatePersonAuthCertificateImage(request *CreatePersonAuthCertificateImageRequest) (response *CreatePersonAuthCertificateImageResponse, err error) {
+    return c.CreatePersonAuthCertificateImageWithContext(context.Background(), request)
+}
+
+// CreatePersonAuthCertificateImage
+// 本接口（CreatePersonAuthCertificateImage）用于创建个人用户证书证明图片
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreatePersonAuthCertificateImageWithContext(ctx context.Context, request *CreatePersonAuthCertificateImageRequest) (response *CreatePersonAuthCertificateImageResponse, err error) {
+    if request == nil {
+        request = NewCreatePersonAuthCertificateImageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreatePersonAuthCertificateImage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreatePersonAuthCertificateImageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrepareFlowRequest() (request *CreatePrepareFlowRequest) {
     request = &CreatePrepareFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},

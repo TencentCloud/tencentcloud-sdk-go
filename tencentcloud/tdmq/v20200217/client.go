@@ -2059,6 +2059,54 @@ func (c *Client) DeleteRocketMQTopicWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDeleteRocketMQVipInstanceRequest() (request *DeleteRocketMQVipInstanceRequest) {
+    request = &DeleteRocketMQVipInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DeleteRocketMQVipInstance")
+    
+    
+    return
+}
+
+func NewDeleteRocketMQVipInstanceResponse() (response *DeleteRocketMQVipInstanceResponse) {
+    response = &DeleteRocketMQVipInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRocketMQVipInstance
+// 删除RocketMQ专享实例
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteRocketMQVipInstance(request *DeleteRocketMQVipInstanceRequest) (response *DeleteRocketMQVipInstanceResponse, err error) {
+    return c.DeleteRocketMQVipInstanceWithContext(context.Background(), request)
+}
+
+// DeleteRocketMQVipInstance
+// 删除RocketMQ专享实例
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteRocketMQVipInstanceWithContext(ctx context.Context, request *DeleteRocketMQVipInstanceRequest) (response *DeleteRocketMQVipInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteRocketMQVipInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRocketMQVipInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRocketMQVipInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteRolesRequest() (request *DeleteRolesRequest) {
     request = &DeleteRolesRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -3349,6 +3349,72 @@ func (c *Client) DescribeKafkaRechargesWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeKafkaUserRequest() (request *DescribeKafkaUserRequest) {
+    request = &DescribeKafkaUserRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "DescribeKafkaUser")
+    
+    
+    return
+}
+
+func NewDescribeKafkaUserResponse() (response *DescribeKafkaUserResponse) {
+    response = &DescribeKafkaUserResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKafkaUser
+// 本接口用于获取kafka用户信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeKafkaUser(request *DescribeKafkaUserRequest) (response *DescribeKafkaUserResponse, err error) {
+    return c.DescribeKafkaUserWithContext(context.Background(), request)
+}
+
+// DescribeKafkaUser
+// 本接口用于获取kafka用户信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+func (c *Client) DescribeKafkaUserWithContext(ctx context.Context, request *DescribeKafkaUserRequest) (response *DescribeKafkaUserResponse, err error) {
+    if request == nil {
+        request = NewDescribeKafkaUserRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKafkaUser require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKafkaUserResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLogContextRequest() (request *DescribeLogContextRequest) {
     request = &DescribeLogContextRequest{
         BaseRequest: &tchttp.BaseRequest{},

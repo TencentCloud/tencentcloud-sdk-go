@@ -10523,6 +10523,57 @@ func (r *OpenClusterPasswordComplexityResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type OpenClusterReadOnlyInstanceGroupAccessRequestParams struct {
+
+}
+
+type OpenClusterReadOnlyInstanceGroupAccessRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *OpenClusterReadOnlyInstanceGroupAccessRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenClusterReadOnlyInstanceGroupAccessRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenClusterReadOnlyInstanceGroupAccessRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type OpenClusterReadOnlyInstanceGroupAccessResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type OpenClusterReadOnlyInstanceGroupAccessResponse struct {
+	*tchttp.BaseResponse
+	Response *OpenClusterReadOnlyInstanceGroupAccessResponseParams `json:"Response"`
+}
+
+func (r *OpenClusterReadOnlyInstanceGroupAccessResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *OpenClusterReadOnlyInstanceGroupAccessResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type OpenReadOnlyInstanceExclusiveAccessRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`

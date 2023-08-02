@@ -56,14 +56,14 @@ type AndroidPlan struct {
 	PlanId *int64 `json:"PlanId,omitempty" name:"PlanId"`
 
 	// 本次操作的包名。
-	// 当收费模式是安卓按年收费和安卓免费试用的在线加固和输出工具加固时，要求该字段必输，且与AndroidAppInfo.AppPkgName值相等。
+	// 当收费模式是android按年收费和android免费试用的在线加固和输出工具加固时，要求该字段必输，且与AndroidAppInfo.AppPkgName值相等。
 	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
 
-	// 安卓app的文件类型，本次加固操作的应用类型 。 
-	// 安卓在线加固和输出工具加固必输，其值需等于“apk”或“aab”，且与AndroidAppInfo.AppType值相等。
+	// android app的文件类型，本次加固操作的应用类型 。 
+	// android在线加固和输出工具加固必输，其值需等于“apk”或“aab”，且与AndroidAppInfo.AppType值相等。
 	AppType *string `json:"AppType,omitempty" name:"AppType"`
 
-	// 安卓加固必输字段。
+	// android加固必输字段。
 	// 加固策略，json格式字符串。
 	// 字段说明（0-关闭，1-开启）：
 	//         "enable"=1 #DEX整体加固;
@@ -191,7 +191,7 @@ type AndroidResult struct {
 	// 本次任务发起者
 	OpUin *int64 `json:"OpUin,omitempty" name:"OpUin"`
 
-	// 应用类型：安卓-apk; 安卓-aab;
+	// 应用类型：android-apk; android-aab;
 	AppType *string `json:"AppType,omitempty" name:"AppType"`
 
 	// 应用包名
@@ -227,49 +227,49 @@ type AndroidResult struct {
 	// 加固耗时（秒单位）
 	CostTime *int64 `json:"CostTime,omitempty" name:"CostTime"`
 
-	// 在线加固-安卓应用原包下载链接
+	// 在线加固-android应用原包下载链接
 	AppUrl *string `json:"AppUrl,omitempty" name:"AppUrl"`
 
-	// 在线加固-安卓应用文件MD5算法值
+	// 在线加固-android应用文件MD5算法值
 	AppMd5 *string `json:"AppMd5,omitempty" name:"AppMd5"`
 
-	// 在线加固-安卓应用应用名称
+	// 在线加固-android应用应用名称
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 
-	// 在线加固-安卓应用版本；
+	// 在线加固-android应用版本；
 	AppVersion *string `json:"AppVersion,omitempty" name:"AppVersion"`
 
-	// 在线加固-安卓应用大小
+	// 在线加固-android应用大小
 	AppSize *int64 `json:"AppSize,omitempty" name:"AppSize"`
 
-	// 在线加固-安卓加固-腾讯云应用加固工具版本
+	// 在线加固-android加固-腾讯云应用加固工具版本
 	OnlineToolVersion *string `json:"OnlineToolVersion,omitempty" name:"OnlineToolVersion"`
 
-	// 在线加固-安卓加固，加固成功后文件md5算法值
+	// 在线加固-android加固，加固成功后文件md5算法值
 	EncryptAppMd5 *string `json:"EncryptAppMd5,omitempty" name:"EncryptAppMd5"`
 
-	// 在线加固-安卓加固，加固成功后应用大小
+	// 在线加固-android加固，加固成功后应用大小
 	EncryptAppSize *int64 `json:"EncryptAppSize,omitempty" name:"EncryptAppSize"`
 
-	// 在线加固-安卓加固，加固包下载链接。
+	// 在线加固-android加固，加固包下载链接。
 	EncryptPkgUrl *string `json:"EncryptPkgUrl,omitempty" name:"EncryptPkgUrl"`
 
-	// 输出工具-安卓加固-腾讯云输出工具版本
+	// 输出工具-android加固-腾讯云输出工具版本
 	OutputToolVersion *string `json:"OutputToolVersion,omitempty" name:"OutputToolVersion"`
 
-	// 输出工具-安卓加固-工具大小
+	// 输出工具-android加固-工具大小
 	OutputToolSize *int64 `json:"OutputToolSize,omitempty" name:"OutputToolSize"`
 
-	// 输出工具-安卓加固-工具输出时间
+	// 输出工具-android加固-工具输出时间
 	ToolOutputTime *string `json:"ToolOutputTime,omitempty" name:"ToolOutputTime"`
 
-	// 输出工具-安卓加固-工具到期时间
+	// 输出工具-android加固-工具到期时间
 	ToolExpireTime *string `json:"ToolExpireTime,omitempty" name:"ToolExpireTime"`
 
-	// 输出工具-安卓加固-输出工具下载链接
+	// 输出工具-android加固-输出工具下载链接
 	OutputToolUrl *string `json:"OutputToolUrl,omitempty" name:"OutputToolUrl"`
 
-	// 本次安卓加固策略信息
+	// 本次android加固策略信息
 	AndroidPlan *AndroidPlan `json:"AndroidPlan,omitempty" name:"AndroidPlan"`
 }
 
@@ -2103,10 +2103,10 @@ func (r *DescribeUserBaseInfoInstanceResponse) FromJsonString(s string) error {
 }
 
 type EncryptResults struct {
-	// 平台类型枚举值  1-android安卓加固   2-ios源码混淆  3-sdk加固  4-applet小程序加固
+	// 平台类型枚举值  1-android加固   2-ios源码混淆  3-sdk加固  4-applet小程序加固
 	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
 
-	// 平台类型描述  1-android安卓加固   2-ios源码混淆  3-sdk加固  4-applet小程序加固
+	// 平台类型描述  1-android加固   2-ios源码混淆  3-sdk加固  4-applet小程序加固
 	PlatformDesc *string `json:"PlatformDesc,omitempty" name:"PlatformDesc"`
 
 	// 订单采购类型枚举值， 1-免费试用 2-按年收费 3-按次收费
@@ -2127,7 +2127,7 @@ type EncryptResults struct {
 	// 与当前任务关联的订单Id
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 
-	// 对应PlatformType平台类型值   1-android安卓加固结果
+	// 对应PlatformType平台类型值   1-android加固结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AndroidResult *AndroidResult `json:"AndroidResult,omitempty" name:"AndroidResult"`
 
@@ -2180,7 +2180,7 @@ type Orders struct {
 	// 平台类型整型值 
 	PlatformType *int64 `json:"PlatformType,omitempty" name:"PlatformType"`
 
-	// 平台类型描述：  1.android安卓加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
+	// 平台类型描述：  1.android加固   2.ios源码混淆  3.sdk加固  4.applet小程序加固
 	PlatformTypeDesc *string `json:"PlatformTypeDesc,omitempty" name:"PlatformTypeDesc"`
 
 	// 订单采购类型整型值
@@ -2189,7 +2189,7 @@ type Orders struct {
 	// 订单采购类型描述： 1-免费试用 2-按年收费 3-按次收费
 	OrderTypeDesc *string `json:"OrderTypeDesc,omitempty" name:"OrderTypeDesc"`
 
-	// 安卓包年收费加固的包名
+	// android包年收费加固的包名
 	AppPkgName *string `json:"AppPkgName,omitempty" name:"AppPkgName"`
 
 	// 资源号

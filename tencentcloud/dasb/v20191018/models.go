@@ -3236,6 +3236,10 @@ type Device struct {
 	// 资产所属部门
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Department *Department `json:"Department,omitempty" name:"Department"`
+
+	// 数据库资产的多节点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpPortSet []*string `json:"IpPortSet,omitempty" name:"IpPortSet"`
 }
 
 type DeviceAccount struct {
@@ -3270,6 +3274,9 @@ type ExternalDevice struct {
 
 	// 资产所属的部门ID
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+
+	// 资产多节点：字段ip和端口
+	IpPortSet []*string `json:"IpPortSet,omitempty" name:"IpPortSet"`
 }
 
 type Filter struct {

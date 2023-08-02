@@ -590,6 +590,10 @@ type CmqSubscription struct {
 	// 推送内容的格式。取值：（1）JSON；（2）SIMPLIFIED，即 raw 格式。如果 protocol 是 queue，则取值必须为 SIMPLIFIED。如果 protocol 是 HTTP，两个值均可以，默认值是 JSON。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" name:"NotifyContentFormat"`
+
+	// 订阅所属的主题名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 }
 
 type CmqTopic struct {
@@ -658,6 +662,10 @@ type CmqTopic struct {
 	// 0表示pulsar，1表示rocketmq
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BrokerType *int64 `json:"BrokerType,omitempty" name:"BrokerType"`
+
+	// 订阅数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscriptionCount *int64 `json:"SubscriptionCount,omitempty" name:"SubscriptionCount"`
 }
 
 type CmqTransactionPolicy struct {
@@ -3211,6 +3219,60 @@ func (r *DeleteRocketMQTopicResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteRocketMQVipInstanceRequestParams struct {
+	// 实例的集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+type DeleteRocketMQVipInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例的集群ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+}
+
+func (r *DeleteRocketMQVipInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRocketMQVipInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRocketMQVipInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRocketMQVipInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteRocketMQVipInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRocketMQVipInstanceResponseParams `json:"Response"`
+}
+
+func (r *DeleteRocketMQVipInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRocketMQVipInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteRolesRequestParams struct {
 	// 角色名称数组。
 	RoleNames []*string `json:"RoleNames,omitempty" name:"RoleNames"`
@@ -4165,6 +4227,13 @@ type DescribeCmqSubscriptionDetailRequestParams struct {
 
 	// 根据SubscriptionName进行模糊搜索
 	SubscriptionName *string `json:"SubscriptionName,omitempty" name:"SubscriptionName"`
+
+	// 队列名称，订阅绑定的endpoint
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+
+	// 查询类型。取值：（1）topic；（2）queue。
+	// 默认值是topic。如果 queryType 是 topic，则查询主题下的订阅列表；如果 queryType 是 queue，则查询队列绑定的订阅列表。
+	QueryType *string `json:"QueryType,omitempty" name:"QueryType"`
 }
 
 type DescribeCmqSubscriptionDetailRequest struct {
@@ -4181,6 +4250,13 @@ type DescribeCmqSubscriptionDetailRequest struct {
 
 	// 根据SubscriptionName进行模糊搜索
 	SubscriptionName *string `json:"SubscriptionName,omitempty" name:"SubscriptionName"`
+
+	// 队列名称，订阅绑定的endpoint
+	QueueName *string `json:"QueueName,omitempty" name:"QueueName"`
+
+	// 查询类型。取值：（1）topic；（2）queue。
+	// 默认值是topic。如果 queryType 是 topic，则查询主题下的订阅列表；如果 queryType 是 queue，则查询队列绑定的订阅列表。
+	QueryType *string `json:"QueryType,omitempty" name:"QueryType"`
 }
 
 func (r *DescribeCmqSubscriptionDetailRequest) ToJsonString() string {
@@ -4199,6 +4275,8 @@ func (r *DescribeCmqSubscriptionDetailRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "SubscriptionName")
+	delete(f, "QueueName")
+	delete(f, "QueryType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCmqSubscriptionDetailRequest has unknown keys!", "")
 	}

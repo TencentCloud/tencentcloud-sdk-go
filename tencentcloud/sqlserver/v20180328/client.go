@@ -2969,6 +2969,58 @@ func (c *Client) DescribeIncrementalMigrationWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeInstanceByOrdersRequest() (request *DescribeInstanceByOrdersRequest) {
+    request = &DescribeInstanceByOrdersRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("sqlserver", APIVersion, "DescribeInstanceByOrders")
+    
+    
+    return
+}
+
+func NewDescribeInstanceByOrdersResponse() (response *DescribeInstanceByOrdersResponse) {
+    response = &DescribeInstanceByOrdersResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstanceByOrders
+// 本接口（DescribeInstanceByOrders）用于根据订单号查询资源ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+func (c *Client) DescribeInstanceByOrders(request *DescribeInstanceByOrdersRequest) (response *DescribeInstanceByOrdersResponse, err error) {
+    return c.DescribeInstanceByOrdersWithContext(context.Background(), request)
+}
+
+// DescribeInstanceByOrders
+// 本接口（DescribeInstanceByOrders）用于根据订单号查询资源ID
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
+//  RESOURCENOTFOUND_PARAMSNOTFOUND = "ResourceNotFound.ParamsNotFound"
+func (c *Client) DescribeInstanceByOrdersWithContext(ctx context.Context, request *DescribeInstanceByOrdersRequest) (response *DescribeInstanceByOrdersResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceByOrdersRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceByOrders require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceByOrdersResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceParamRecordsRequest() (request *DescribeInstanceParamRecordsRequest) {
     request = &DescribeInstanceParamRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},

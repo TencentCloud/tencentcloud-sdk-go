@@ -2762,6 +2762,14 @@ type DealInfo struct {
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 }
 
+type DealInstance struct {
+	// 实例ID
+	InstanceId []*string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 订单号
+	DealName *string `json:"DealName,omitempty" name:"DealName"`
+}
+
 // Predefined struct for user
 type DeleteAccountRequestParams struct {
 	// 数据库实例ID，形如mssql-njj2mtpl
@@ -4938,6 +4946,63 @@ func (r *DescribeIncrementalMigrationResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIncrementalMigrationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceByOrdersRequestParams struct {
+	// 订单号集合
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+}
+
+type DescribeInstanceByOrdersRequest struct {
+	*tchttp.BaseRequest
+	
+	// 订单号集合
+	DealNames []*string `json:"DealNames,omitempty" name:"DealNames"`
+}
+
+func (r *DescribeInstanceByOrdersRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceByOrdersRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DealNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceByOrdersRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceByOrdersResponseParams struct {
+	// 资源ID集合
+	DealInstance []*DealInstance `json:"DealInstance,omitempty" name:"DealInstance"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceByOrdersResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceByOrdersResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceByOrdersResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceByOrdersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

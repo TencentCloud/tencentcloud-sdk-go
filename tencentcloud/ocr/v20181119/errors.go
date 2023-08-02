@@ -71,7 +71,7 @@ const (
 	// 图片中未检测到文本。
 	FAILEDOPERATION_IMAGENOTEXT = "FailedOperation.ImageNoText"
 
-	// 图片尺寸过大，请参考输出参数中关于图片大小限制的说明。
+	// 图片尺寸过大，请参考输入参数中关于图片大小限制的说明。
 	FAILEDOPERATION_IMAGESIZETOOLARGE = "FailedOperation.ImageSizeTooLarge"
 
 	// 发票数据不一致。温馨提示：新版发票核验接口功能更完整，请尽快切换，如已切换请忽略。

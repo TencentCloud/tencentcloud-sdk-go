@@ -7076,6 +7076,9 @@ type DeployGroupRequestParams struct {
 
 	// 预热参数配置
 	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitempty" name:"WarmupSetting"`
+
+	// 开启分批健康检查
+	EnableBatchHealthCheck *bool `json:"EnableBatchHealthCheck,omitempty" name:"EnableBatchHealthCheck"`
 }
 
 type DeployGroupRequest struct {
@@ -7137,6 +7140,9 @@ type DeployGroupRequest struct {
 
 	// 预热参数配置
 	WarmupSetting *WarmupSetting `json:"WarmupSetting,omitempty" name:"WarmupSetting"`
+
+	// 开启分批健康检查
+	EnableBatchHealthCheck *bool `json:"EnableBatchHealthCheck,omitempty" name:"EnableBatchHealthCheck"`
 }
 
 func (r *DeployGroupRequest) ToJsonString() string {
@@ -7170,6 +7176,7 @@ func (r *DeployGroupRequest) FromJsonString(s string) error {
 	delete(f, "JdkVersion")
 	delete(f, "AgentProfileList")
 	delete(f, "WarmupSetting")
+	delete(f, "EnableBatchHealthCheck")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeployGroupRequest has unknown keys!", "")
 	}
@@ -22608,6 +22615,10 @@ type VmGroup struct {
 	// Envoy网关配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayConfig *GatewayConfig `json:"GatewayConfig,omitempty" name:"GatewayConfig"`
+
+	// 批次是否开启健康检查
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableBatchHealthCheck *bool `json:"EnableBatchHealthCheck,omitempty" name:"EnableBatchHealthCheck"`
 }
 
 type VmGroupOther struct {

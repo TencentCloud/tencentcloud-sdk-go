@@ -20,6 +20,286 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+// Predefined struct for user
+type AddCrossVpcSubnetSupportForClientNodeRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 子网信息
+	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitempty" name:"SubnetInfo"`
+}
+
+type AddCrossVpcSubnetSupportForClientNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 子网信息
+	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitempty" name:"SubnetInfo"`
+}
+
+func (r *AddCrossVpcSubnetSupportForClientNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCrossVpcSubnetSupportForClientNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "SubnetInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddCrossVpcSubnetSupportForClientNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddCrossVpcSubnetSupportForClientNodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AddCrossVpcSubnetSupportForClientNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *AddCrossVpcSubnetSupportForClientNodeResponseParams `json:"Response"`
+}
+
+func (r *AddCrossVpcSubnetSupportForClientNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddCrossVpcSubnetSupportForClientNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AttachFileSystemBucketRequestParams struct {
+	// 无
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 关联新Bucket
+	Bucket *MappedBucket `json:"Bucket,omitempty" name:"Bucket"`
+}
+
+type AttachFileSystemBucketRequest struct {
+	*tchttp.BaseRequest
+	
+	// 无
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 关联新Bucket
+	Bucket *MappedBucket `json:"Bucket,omitempty" name:"Bucket"`
+}
+
+func (r *AttachFileSystemBucketRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachFileSystemBucketRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "Bucket")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachFileSystemBucketRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AttachFileSystemBucketResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AttachFileSystemBucketResponse struct {
+	*tchttp.BaseResponse
+	Response *AttachFileSystemBucketResponseParams `json:"Response"`
+}
+
+func (r *AttachFileSystemBucketResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AttachFileSystemBucketResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchAddClientNodesRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 添加客户端节点列表
+	ClientNodes []*LinuxNodeAttribute `json:"ClientNodes,omitempty" name:"ClientNodes"`
+
+	// 是否单集群默认是false	
+	SingleClusterFlag *bool `json:"SingleClusterFlag,omitempty" name:"SingleClusterFlag"`
+}
+
+type BatchAddClientNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 添加客户端节点列表
+	ClientNodes []*LinuxNodeAttribute `json:"ClientNodes,omitempty" name:"ClientNodes"`
+
+	// 是否单集群默认是false	
+	SingleClusterFlag *bool `json:"SingleClusterFlag,omitempty" name:"SingleClusterFlag"`
+}
+
+func (r *BatchAddClientNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchAddClientNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "ClientNodes")
+	delete(f, "SingleClusterFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchAddClientNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchAddClientNodesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchAddClientNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchAddClientNodesResponseParams `json:"Response"`
+}
+
+func (r *BatchAddClientNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchAddClientNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchDeleteClientNodesRequestParams struct {
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 删除的客户端节点列表
+	ClientNodes []*LinuxNodeAttribute `json:"ClientNodes,omitempty" name:"ClientNodes"`
+
+	// 是否单集群，默认是false
+	SingleClusterFlag *bool `json:"SingleClusterFlag,omitempty" name:"SingleClusterFlag"`
+}
+
+type BatchDeleteClientNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 删除的客户端节点列表
+	ClientNodes []*LinuxNodeAttribute `json:"ClientNodes,omitempty" name:"ClientNodes"`
+
+	// 是否单集群，默认是false
+	SingleClusterFlag *bool `json:"SingleClusterFlag,omitempty" name:"SingleClusterFlag"`
+}
+
+func (r *BatchDeleteClientNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteClientNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "ClientNodes")
+	delete(f, "SingleClusterFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDeleteClientNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchDeleteClientNodesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchDeleteClientNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchDeleteClientNodesResponseParams `json:"Response"`
+}
+
+func (r *BatchDeleteClientNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchDeleteClientNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ClientClusterManagerNodeInfo struct {
+	// 客户端节点IP
+	NodeIp *string `json:"NodeIp,omitempty" name:"NodeIp"`
+
+	// 节点Instance Id
+	NodeInstanceId *string `json:"NodeInstanceId,omitempty" name:"NodeInstanceId"`
+
+	// 初始密码
+	InitialPassword *string `json:"InitialPassword,omitempty" name:"InitialPassword"`
+}
+
+type ClientNodeAttribute struct {
+	// 客户端节点IP
+	ClientNodeIp *string `json:"ClientNodeIp,omitempty" name:"ClientNodeIp"`
+
+	// 客户端节点服务状态, Active(运行中), Adding(添加中), Destroying(销毁中), Down(已停止)
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 客户端节点类型，extend(扩展节点)，manager(管理节点)
+	ClientType *string `json:"ClientType,omitempty" name:"ClientType"`
+}
+
 type ClientToken struct {
 	// 节点 IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -148,6 +428,281 @@ func (r *CreateDataRepositoryTaskResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateDataRepositoryTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFileSystemRequestParams struct {
+	// 文件系统类型, 可填goosefs和goosefsx
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 文件系统名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 文件系统备注描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// vpc网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 子网所在的可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 文件系统关联的tag
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
+
+	// GooseFSx构建时要传递的参数
+	GooseFSxBuildElements *GooseFSxBuildElement `json:"GooseFSxBuildElements,omitempty" name:"GooseFSxBuildElements"`
+}
+
+type CreateFileSystemRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统类型, 可填goosefs和goosefsx
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 文件系统名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 文件系统备注描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// vpc网络ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 子网所在的可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 文件系统关联的tag
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
+
+	// GooseFSx构建时要传递的参数
+	GooseFSxBuildElements *GooseFSxBuildElement `json:"GooseFSxBuildElements,omitempty" name:"GooseFSxBuildElements"`
+}
+
+func (r *CreateFileSystemRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFileSystemRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Type")
+	delete(f, "Name")
+	delete(f, "Description")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "Zone")
+	delete(f, "Tag")
+	delete(f, "GooseFSxBuildElements")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFileSystemRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateFileSystemResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateFileSystemResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateFileSystemResponseParams `json:"Response"`
+}
+
+func (r *CreateFileSystemResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateFileSystemResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCrossVpcSubnetSupportForClientNodeRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 子网信息
+	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitempty" name:"SubnetInfo"`
+}
+
+type DeleteCrossVpcSubnetSupportForClientNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 子网信息
+	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitempty" name:"SubnetInfo"`
+}
+
+func (r *DeleteCrossVpcSubnetSupportForClientNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCrossVpcSubnetSupportForClientNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "SubnetInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCrossVpcSubnetSupportForClientNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCrossVpcSubnetSupportForClientNodeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteCrossVpcSubnetSupportForClientNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCrossVpcSubnetSupportForClientNodeResponseParams `json:"Response"`
+}
+
+func (r *DeleteCrossVpcSubnetSupportForClientNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCrossVpcSubnetSupportForClientNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteFileSystemRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+type DeleteFileSystemRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *DeleteFileSystemRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFileSystemRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteFileSystemRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteFileSystemResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteFileSystemResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteFileSystemResponseParams `json:"Response"`
+}
+
+func (r *DeleteFileSystemResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteFileSystemResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClientNodesRequestParams struct {
+	// 文件系统Id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+type DescribeClientNodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统Id
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *DescribeClientNodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientNodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeClientNodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeClientNodesResponseParams struct {
+	// 客户端节点数组
+	ClientNodes []*ClientNodeAttribute `json:"ClientNodes,omitempty" name:"ClientNodes"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeClientNodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeClientNodesResponseParams `json:"Response"`
+}
+
+func (r *DescribeClientNodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeClientNodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -409,6 +964,539 @@ func (r *DescribeDataRepositoryTaskStatusResponse) FromJsonString(s string) erro
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DescribeFileSystemBucketsRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+type DescribeFileSystemBucketsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *DescribeFileSystemBucketsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileSystemBucketsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileSystemBucketsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFileSystemBucketsResponseParams struct {
+	// bucket列表
+	BucketList []*MappedBucket `json:"BucketList,omitempty" name:"BucketList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeFileSystemBucketsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFileSystemBucketsResponseParams `json:"Response"`
+}
+
+func (r *DescribeFileSystemBucketsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileSystemBucketsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFileSystemsRequestParams struct {
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页的数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeFileSystemsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 每页的数量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeFileSystemsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileSystemsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFileSystemsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFileSystemsResponseParams struct {
+	// 文件系统列表
+	FSAttributeList []*FSAttribute `json:"FSAttributeList,omitempty" name:"FSAttributeList"`
+
+	// 总共的文件系统数量
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeFileSystemsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFileSystemsResponseParams `json:"Response"`
+}
+
+func (r *DescribeFileSystemsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFileSystemsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DetachFileSystemBucketRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 要解绑的Bucket名
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+}
+
+type DetachFileSystemBucketRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 要解绑的Bucket名
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+}
+
+func (r *DetachFileSystemBucketRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachFileSystemBucketRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "BucketName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachFileSystemBucketRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DetachFileSystemBucketResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DetachFileSystemBucketResponse struct {
+	*tchttp.BaseResponse
+	Response *DetachFileSystemBucketResponseParams `json:"Response"`
+}
+
+func (r *DetachFileSystemBucketResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DetachFileSystemBucketResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExpandCapacityRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 新增扩容的系统容量
+	ExpandedCapacity *uint64 `json:"ExpandedCapacity,omitempty" name:"ExpandedCapacity"`
+}
+
+type ExpandCapacityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 新增扩容的系统容量
+	ExpandedCapacity *uint64 `json:"ExpandedCapacity,omitempty" name:"ExpandedCapacity"`
+}
+
+func (r *ExpandCapacityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExpandCapacityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "ExpandedCapacity")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExpandCapacityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExpandCapacityResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ExpandCapacityResponse struct {
+	*tchttp.BaseResponse
+	Response *ExpandCapacityResponseParams `json:"Response"`
+}
+
+func (r *ExpandCapacityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExpandCapacityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type FSAttribute struct {
+	// 文件系统类型, 可填goosefs和goosefsx
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// GooseFSx文件系统属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GooseFSxAttribute *GooseFSxAttribute `json:"GooseFSxAttribute,omitempty" name:"GooseFSxAttribute"`
+
+	// 文件系统状态 ACTIVE(运行中), CREATING(创建中), DESTROYING(销毁中), FAIL(创建失败),EXPANDING(扩容中),PROBING(容灾中)
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 文件系统名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 文件系统备注描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// vpc ID
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 子网所在的可用区
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// Tag数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
+
+	// 更新属性时间
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+}
+
+type GooseFSxAttribute struct {
+	// GooseFSx的型号
+	Model *string `json:"Model,omitempty" name:"Model"`
+
+	// 容量单位是GB, 比如4608(4.5TB)
+	Capacity *uint64 `json:"Capacity,omitempty" name:"Capacity"`
+
+	// 要关联映射的bucket列表
+	MappedBucketList []*MappedBucket `json:"MappedBucketList,omitempty" name:"MappedBucketList"`
+
+	// 客户侧管理节点信息
+	ClientManagerNodeList []*ClientClusterManagerNodeInfo `json:"ClientManagerNodeList,omitempty" name:"ClientManagerNodeList"`
+}
+
+type GooseFSxBuildElement struct {
+	// GooseFSx的型号
+	Model *string `json:"Model,omitempty" name:"Model"`
+
+	// 容量单位是GB, 比如4608(4.5TB)
+	Capacity *uint64 `json:"Capacity,omitempty" name:"Capacity"`
+
+	// 要关联映射的bucket列表
+	MappedBucketList []*MappedBucket `json:"MappedBucketList,omitempty" name:"MappedBucketList"`
+}
+
+type LinuxNodeAttribute struct {
+	// cvmId
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 节点所属vpcid
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 节点所属子网id
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// linux客户端节点地址
+	LinuxClientNodeIp *string `json:"LinuxClientNodeIp,omitempty" name:"LinuxClientNodeIp"`
+}
+
+type MappedBucket struct {
+	// 对象存储Bucket名
+	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+
+	// 映射到的文件系统路径, 默认为/
+	FileSystemPath *string `json:"FileSystemPath,omitempty" name:"FileSystemPath"`
+
+	// 数据流动的自动策略, 包含加载与沉降。策略可以是多种的组合
+	// 按需加载(OnDemandImport)
+	// 自动加载元数据(AutoImportMeta)
+	// 自动加载数据(AutoImportData)
+	// 周期加载(PeriodImport)
+	// 
+	// 周期沉降(PeriodExport)
+	// 立即沉降(ImmediateExport)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataRepositoryTaskAutoStrategy []*string `json:"DataRepositoryTaskAutoStrategy,omitempty" name:"DataRepositoryTaskAutoStrategy"`
+
+	// 绑定bucket的数据流动策略ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 规则备注与描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleDescription *string `json:"RuleDescription,omitempty" name:"RuleDescription"`
+}
+
+// Predefined struct for user
+type ModifyDataRepositoryBandwidthRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 带宽, 单位MB/S
+	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+}
+
+type ModifyDataRepositoryBandwidthRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// 带宽, 单位MB/S
+	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+}
+
+func (r *ModifyDataRepositoryBandwidthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataRepositoryBandwidthRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	delete(f, "Bandwidth")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDataRepositoryBandwidthRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDataRepositoryBandwidthResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyDataRepositoryBandwidthResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDataRepositoryBandwidthResponseParams `json:"Response"`
+}
+
+func (r *ModifyDataRepositoryBandwidthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataRepositoryBandwidthResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryCrossVpcSubnetSupportForClientNodeRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+type QueryCrossVpcSubnetSupportForClientNodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *QueryCrossVpcSubnetSupportForClientNodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCrossVpcSubnetSupportForClientNodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryCrossVpcSubnetSupportForClientNodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryCrossVpcSubnetSupportForClientNodeResponseParams struct {
+	// 支持的子网信息集合
+	SubnetInfoCollection []*SubnetInfo `json:"SubnetInfoCollection,omitempty" name:"SubnetInfoCollection"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryCrossVpcSubnetSupportForClientNodeResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryCrossVpcSubnetSupportForClientNodeResponseParams `json:"Response"`
+}
+
+func (r *QueryCrossVpcSubnetSupportForClientNodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryCrossVpcSubnetSupportForClientNodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryDataRepositoryBandwidthRequestParams struct {
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+type QueryDataRepositoryBandwidthRequest struct {
+	*tchttp.BaseRequest
+	
+	// 文件系统ID
+	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+}
+
+func (r *QueryDataRepositoryBandwidthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryDataRepositoryBandwidthRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileSystemId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryDataRepositoryBandwidthRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryDataRepositoryBandwidthResponseParams struct {
+	// 数据流动带宽, 单位MB/s
+	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+
+	// 带宽状态。1:待扩容;2:运行中;3:扩容中
+	BandwidthStatus *uint64 `json:"BandwidthStatus,omitempty" name:"BandwidthStatus"`
+
+	// 能设置的最小带宽, 单位MB/s
+	MinBandwidth *uint64 `json:"MinBandwidth,omitempty" name:"MinBandwidth"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type QueryDataRepositoryBandwidthResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryDataRepositoryBandwidthResponseParams `json:"Response"`
+}
+
+func (r *QueryDataRepositoryBandwidthResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryDataRepositoryBandwidthResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type RoleToken struct {
 	// 角色名
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
@@ -416,4 +1504,22 @@ type RoleToken struct {
 	// 用于goosefs client/sdk等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Token *string `json:"Token,omitempty" name:"Token"`
+}
+
+type SubnetInfo struct {
+	// vpc id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+type Tag struct {
+	// 标签键
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 标签值
+	Value *string `json:"Value,omitempty" name:"Value"`
 }

@@ -1937,6 +1937,7 @@ type CreateFlowRequestParams struct {
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
 	// 签署流程参与者信息，最大限制50方
+	// 注意 approver中的顺序需要和模板中的顺序保持一致， 否则会导致模板中配置的信息无效。
 	Approvers []*FlowCreateApprover `json:"Approvers,omitempty" name:"Approvers"`
 
 	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
@@ -2004,6 +2005,7 @@ type CreateFlowRequest struct {
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
 	// 签署流程参与者信息，最大限制50方
+	// 注意 approver中的顺序需要和模板中的顺序保持一致， 否则会导致模板中配置的信息无效。
 	Approvers []*FlowCreateApprover `json:"Approvers,omitempty" name:"Approvers"`
 
 	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
@@ -2590,24 +2592,27 @@ type CreateMultiFlowSignQRCodeRequestParams struct {
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
 	// 最大可发起签署流程份数，默认5份 
-	// 发起流程数量超过此上限后二维码自动失效
+	// <br/>发起流程数量超过此上限后二维码自动失效
 	MaxFlowNum *int64 `json:"MaxFlowNum,omitempty" name:"MaxFlowNum"`
 
-	// 签署流程有效天数 默认7天 最高设置不超过30天
+	// 签署流程有效天数 
+	// <br/>默认7天 
+	// <br/>最高设置不超过30天
 	FlowEffectiveDay *int64 `json:"FlowEffectiveDay,omitempty" name:"FlowEffectiveDay"`
 
 	// 二维码有效天数 默认7天 最高设置不超过90天
 	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitempty" name:"QrEffectiveDay"`
 
-	// 限制二维码用户条件
+	// 指定的签署人信息
+	// <br/>指定后，则只允许指定的签署人扫码签署
 	Restrictions []*ApproverRestriction `json:"Restrictions,omitempty" name:"Restrictions"`
 
-	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
+	// 用户自定义字段
+	// <br/>回调的时候会进行透传，长度需要小于20480
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
 
 	// 回调地址,最大长度1000字符串
-	// 回调时机：
-	// 用户通过签署二维码发起签署流程时，企业额度不足导致失败
+	// <br/>回调时机：用户通过签署二维码发起签署流程时，企业额度不足导致失败
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 应用信息
@@ -2634,24 +2639,27 @@ type CreateMultiFlowSignQRCodeRequest struct {
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
 	// 最大可发起签署流程份数，默认5份 
-	// 发起流程数量超过此上限后二维码自动失效
+	// <br/>发起流程数量超过此上限后二维码自动失效
 	MaxFlowNum *int64 `json:"MaxFlowNum,omitempty" name:"MaxFlowNum"`
 
-	// 签署流程有效天数 默认7天 最高设置不超过30天
+	// 签署流程有效天数 
+	// <br/>默认7天 
+	// <br/>最高设置不超过30天
 	FlowEffectiveDay *int64 `json:"FlowEffectiveDay,omitempty" name:"FlowEffectiveDay"`
 
 	// 二维码有效天数 默认7天 最高设置不超过90天
 	QrEffectiveDay *int64 `json:"QrEffectiveDay,omitempty" name:"QrEffectiveDay"`
 
-	// 限制二维码用户条件
+	// 指定的签署人信息
+	// <br/>指定后，则只允许指定的签署人扫码签署
 	Restrictions []*ApproverRestriction `json:"Restrictions,omitempty" name:"Restrictions"`
 
-	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
+	// 用户自定义字段
+	// <br/>回调的时候会进行透传，长度需要小于20480
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
 
 	// 回调地址,最大长度1000字符串
-	// 回调时机：
-	// 用户通过签署二维码发起签署流程时，企业额度不足导致失败
+	// <br/>回调时机：用户通过签署二维码发起签署流程时，企业额度不足导致失败
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 应用信息
@@ -2810,6 +2818,94 @@ func (r *CreateOrganizationBatchSignUrlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateOrganizationBatchSignUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePersonAuthCertificateImageRequestParams struct {
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 个人用户名称
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 身份证件类型取值：
+	// ID_CARD 身居民身份证
+	// PASSPORT 护照
+	// HONGKONG_AND_MACAO 港澳居民来往内地通行证
+	// FOREIGN_ID_CARD 外国人永久居留身份证
+	// HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 身份证件号码
+	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
+}
+
+type CreatePersonAuthCertificateImageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 个人用户名称
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 身份证件类型取值：
+	// ID_CARD 身居民身份证
+	// PASSPORT 护照
+	// HONGKONG_AND_MACAO 港澳居民来往内地通行证
+	// FOREIGN_ID_CARD 外国人永久居留身份证
+	// HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 身份证件号码
+	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
+}
+
+func (r *CreatePersonAuthCertificateImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePersonAuthCertificateImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "UserName")
+	delete(f, "IdCardType")
+	delete(f, "IdCardNumber")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePersonAuthCertificateImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreatePersonAuthCertificateImageResponseParams struct {
+	// 个人用户证明证书的下载链接
+	AuthCertUrl *string `json:"AuthCertUrl,omitempty" name:"AuthCertUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreatePersonAuthCertificateImageResponse struct {
+	*tchttp.BaseResponse
+	Response *CreatePersonAuthCertificateImageResponseParams `json:"Response"`
+}
+
+func (r *CreatePersonAuthCertificateImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreatePersonAuthCertificateImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6030,8 +6126,11 @@ type FlowCreateApprover struct {
 	// 参与者类型：
 	// 0：企业
 	// 1：个人
-	// 3：企业静默签署
-	// 注：类型为3（企业静默签署）时，会默认完成该签署方的签署。静默签署仅进行盖章操作，不能是手写签名。
+	// 3：企业自动签署
+	// 注：类型为3（企业自动签署）时，会自动完成该签署方的签署。
+	// 自动签署仅进行盖章操作，不能是手写签名。
+	// 本方企业自动签署的签署人会默认是当前的发起人
+	// 他方企业自动签署的签署人是自动签模板的他方企业授权人
 	ApproverType *int64 `json:"ApproverType,omitempty" name:"ApproverType"`
 
 	// 签署人企业名称

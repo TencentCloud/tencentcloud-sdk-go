@@ -30062,7 +30062,7 @@ type SoftQuotaDayInfo struct {
 	// 扣费时间
 	PayTime *string `json:"PayTime,omitempty" name:"PayTime"`
 
-	// 计费核数
+	// 计费核数(已废弃)
 	CoresCnt *uint64 `json:"CoresCnt,omitempty" name:"CoresCnt"`
 }
 
