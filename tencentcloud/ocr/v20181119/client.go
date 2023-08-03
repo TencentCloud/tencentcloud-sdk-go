@@ -508,7 +508,7 @@ func NewBusinessCardOCRResponse() (response *BusinessCardOCRResponse) {
 }
 
 // BusinessCardOCR
-// 本接口支持名片各字段的自动定位与识别，包含姓名、电话、手机号、邮箱、公司、部门、职位、网址、地址、QQ、微信、MSN等。
+// 本接口支持中英文名片各字段的自动定位与识别，包含姓名、电话、手机号、邮箱、公司、部门、职位、网址、地址、QQ、微信、MSN等。
 //
 // 
 //
@@ -530,7 +530,7 @@ func (c *Client) BusinessCardOCR(request *BusinessCardOCRRequest) (response *Bus
 }
 
 // BusinessCardOCR
-// 本接口支持名片各字段的自动定位与识别，包含姓名、电话、手机号、邮箱、公司、部门、职位、网址、地址、QQ、微信、MSN等。
+// 本接口支持中英文名片各字段的自动定位与识别，包含姓名、电话、手机号、邮箱、公司、部门、职位、网址、地址、QQ、微信、MSN等。
 //
 // 
 //
@@ -2900,7 +2900,11 @@ func NewIDCardOCRResponse() (response *IDCardOCRResponse) {
 //
 //           <td rowspan="9">告警功能</td>
 //
-//           <td>身份证有效日期不合法告警</td>
+//           <td>身份证有效日期不合法，即有效日期不符合5年、10年、20年、长期期限
+//
+// 
+//
+// </td>
 //
 //         </tr>
 //
@@ -3019,7 +3023,11 @@ func (c *Client) IDCardOCR(request *IDCardOCRRequest) (response *IDCardOCRRespon
 //
 //           <td rowspan="9">告警功能</td>
 //
-//           <td>身份证有效日期不合法告警</td>
+//           <td>身份证有效日期不合法，即有效日期不符合5年、10年、20年、长期期限
+//
+// 
+//
+// </td>
 //
 //         </tr>
 //

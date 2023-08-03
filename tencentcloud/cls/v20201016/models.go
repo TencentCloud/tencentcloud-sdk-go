@@ -4756,6 +4756,9 @@ type DescribeKafkaConsumerResponseParams struct {
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
 	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
 
+	// kafka协议消费数据格式
+	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitempty" name:"ConsumerContent"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -7485,6 +7488,9 @@ type ModifyKafkaConsumerRequestParams struct {
 
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
 	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
+
+	// kafka协议消费数据格式
+	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitempty" name:"ConsumerContent"`
 }
 
 type ModifyKafkaConsumerRequest struct {
@@ -7495,6 +7501,9 @@ type ModifyKafkaConsumerRequest struct {
 
 	// 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
 	Compression *int64 `json:"Compression,omitempty" name:"Compression"`
+
+	// kafka协议消费数据格式
+	ConsumerContent *KafkaConsumerContent `json:"ConsumerContent,omitempty" name:"ConsumerContent"`
 }
 
 func (r *ModifyKafkaConsumerRequest) ToJsonString() string {
@@ -7511,6 +7520,7 @@ func (r *ModifyKafkaConsumerRequest) FromJsonString(s string) error {
 	}
 	delete(f, "FromTopicId")
 	delete(f, "Compression")
+	delete(f, "ConsumerContent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyKafkaConsumerRequest has unknown keys!", "")
 	}
@@ -8622,7 +8632,7 @@ type ScheduledSqlResouceInfo struct {
 	// 目标主题id
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 主题的的地域信息
+	// 主题的地域信息
 	Region *string `json:"Region,omitempty" name:"Region"`
 
 	// 主题类型：0为日志主题，1为指标主题

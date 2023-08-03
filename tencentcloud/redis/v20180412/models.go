@@ -8179,10 +8179,10 @@ type SourceCommand struct {
 }
 
 type SourceInfo struct {
-	// 来源IP
+	// 来源 IP 地址。
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
-	// 连接数
+	// 客户端连接数量。
 	Conn *int64 `json:"Conn,omitempty" name:"Conn"`
 
 	// 命令

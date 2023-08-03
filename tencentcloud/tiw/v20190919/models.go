@@ -4842,7 +4842,7 @@ func (r *SetWhiteboardPushCallbackResponse) FromJsonString(s string) error {
 }
 
 type SnapshotCOS struct {
-	// cos所在腾讯云帐号uin
+	// cos所在腾讯云账号uin
 	Uin *uint64 `json:"Uin,omitempty" name:"Uin"`
 
 	// cos所在地区

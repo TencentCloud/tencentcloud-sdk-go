@@ -1,3 +1,47 @@
+# Release v1.0.714
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 64 次发布
+
+发布时间：2023-08-03 01:03:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeKafkaConsumer](https://cloud.tencent.com/document/api/614/95719)
+
+	* 新增出参：ConsumerContent
+
+* [ModifyKafkaConsumer](https://cloud.tencent.com/document/api/614/95720)
+
+	* 新增入参：ConsumerContent
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 101 次发布
+
+发布时间：2023-08-03 01:06:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeOrganizationGroupOrganizations](https://cloud.tencent.com/document/api/1323/86114)
+
+	* 新增出参：ActivatedTotal
+
+
+
+
 # Release v1.0.713
 
 ## 日志服务(cls) 版本：2020-10-16

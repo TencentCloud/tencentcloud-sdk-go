@@ -3600,15 +3600,39 @@ func NewOperateChannelTemplateResponse() (response *OperateChannelTemplateRespon
 }
 
 // OperateChannelTemplate
-// 此接口（OperateChannelTemplate）用于针对第三方应用平台模板库中的模板对子客企业可见性的查询和设置，不会直接分配第三方应用平台模板给子客企业。
+// 此接口（OperateChannelTemplate）用于针对第三方应用平台模板库中的模板对子客企业可见性的查询和设置。
 //
-// 1、OperateType=select时：
+// 
 //
-// 查询第三方应用平台模板库
+// > **使用场景**
 //
-// 2、OperateType=update或者delete时：
+// >
 //
-// 对子客企业进行模板库中模板可见性的修改、删除操作。
+// >  1：查询 OperateType=SELECT
+//
+// > - 查询第三方应用平台模板库的可见性以及授权的子客列表。
+//
+// >
+//
+// >  2：修改部分子客授权 OperateType=UPDATE
+//
+// > - 对子客企业进行模板库中模板可见性的进行修改操作。
+//
+// >- 当模板未发布时，可以修改可见性AuthTag（part/all），当模板发布后，不可做此修改
+//
+// > - 若模板已发布且可见性AuthTag是part，可以通过ProxyOrganizationOpenIds增加子客的授权范围。如果是自动领取的模板，增加授权范围后会自动下发。
+//
+// >
+//
+// >  3：取消部分子客授权 OperateType=DELETE
+//
+// > - 对子客企业进行模板库中模板可见性的进行删除操作。
+//
+// > - 主要对于手动领取的模板，去除授权后子客在在模板库中看不到，就无法再领取了。但是已经领取过成为自有模板的不会同步删除。
+//
+// > - 对于自动领取的模板，由于已经下发，更改授权不会影响。
+//
+// > - 如果要同步删除子客自有模板库中的模板，请使用OperateType=UPDATE+Available参数处理。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3644,15 +3668,39 @@ func (c *Client) OperateChannelTemplate(request *OperateChannelTemplateRequest) 
 }
 
 // OperateChannelTemplate
-// 此接口（OperateChannelTemplate）用于针对第三方应用平台模板库中的模板对子客企业可见性的查询和设置，不会直接分配第三方应用平台模板给子客企业。
+// 此接口（OperateChannelTemplate）用于针对第三方应用平台模板库中的模板对子客企业可见性的查询和设置。
 //
-// 1、OperateType=select时：
+// 
 //
-// 查询第三方应用平台模板库
+// > **使用场景**
 //
-// 2、OperateType=update或者delete时：
+// >
 //
-// 对子客企业进行模板库中模板可见性的修改、删除操作。
+// >  1：查询 OperateType=SELECT
+//
+// > - 查询第三方应用平台模板库的可见性以及授权的子客列表。
+//
+// >
+//
+// >  2：修改部分子客授权 OperateType=UPDATE
+//
+// > - 对子客企业进行模板库中模板可见性的进行修改操作。
+//
+// >- 当模板未发布时，可以修改可见性AuthTag（part/all），当模板发布后，不可做此修改
+//
+// > - 若模板已发布且可见性AuthTag是part，可以通过ProxyOrganizationOpenIds增加子客的授权范围。如果是自动领取的模板，增加授权范围后会自动下发。
+//
+// >
+//
+// >  3：取消部分子客授权 OperateType=DELETE
+//
+// > - 对子客企业进行模板库中模板可见性的进行删除操作。
+//
+// > - 主要对于手动领取的模板，去除授权后子客在在模板库中看不到，就无法再领取了。但是已经领取过成为自有模板的不会同步删除。
+//
+// > - 对于自动领取的模板，由于已经下发，更改授权不会影响。
+//
+// > - 如果要同步删除子客自有模板库中的模板，请使用OperateType=UPDATE+Available参数处理。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

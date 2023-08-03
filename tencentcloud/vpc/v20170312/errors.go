@@ -824,7 +824,7 @@ const (
 	// 账户不支持修改公网IP的该属性。
 	UNSUPPORTEDOPERATION_MODIFYADDRESSATTRIBUTE = "UnsupportedOperation.ModifyAddressAttribute"
 
-	// VPC实例内部有帐号纬度的IPv6白名单，不支持关联多云联网。
+	// VPC实例内部有账号纬度的IPv6白名单，不支持关联多云联网。
 	UNSUPPORTEDOPERATION_MULTIPLEVPCNOTSUPPORTATTACHACCOUNTHASIPV6 = "UnsupportedOperation.MultipleVpcNotSupportAttachAccountHasIpv6"
 
 	// 资源互斥操作任务正在执行。

@@ -1736,7 +1736,7 @@ func NewDescribeTranscodeByUrlResponse() (response *DescribeTranscodeByUrlRespon
 }
 
 // DescribeTranscodeByUrl
-// 通过文档URL查询转码任务，返回最近的一次转码结果
+// 通过文档URL查询转码任务，返回最近一次的转码任务状态
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -1751,7 +1751,7 @@ func (c *Client) DescribeTranscodeByUrl(request *DescribeTranscodeByUrlRequest) 
 }
 
 // DescribeTranscodeByUrl
-// 通过文档URL查询转码任务，返回最近的一次转码结果
+// 通过文档URL查询转码任务，返回最近一次的转码任务状态
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

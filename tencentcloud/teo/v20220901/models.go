@@ -808,20 +808,20 @@ type CachePrefresh struct {
 
 // Predefined struct for user
 type CheckCnameStatusRequestParams struct {
-	// 站点ID。
+	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 记录名称列表。
+	// 加速域名列表。
 	RecordNames []*string `json:"RecordNames,omitempty" name:"RecordNames"`
 }
 
 type CheckCnameStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点ID。
+	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
 
-	// 记录名称列表。
+	// 加速域名列表。
 	RecordNames []*string `json:"RecordNames,omitempty" name:"RecordNames"`
 }
 
@@ -847,7 +847,7 @@ func (r *CheckCnameStatusRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CheckCnameStatusResponseParams struct {
-	// 域名Cname状态信息列表。
+	// 加速域名 CNAME 状态信息列表。
 	CnameStatus []*CnameStatus `json:"CnameStatus,omitempty" name:"CnameStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

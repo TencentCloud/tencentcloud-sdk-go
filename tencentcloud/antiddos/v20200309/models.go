@@ -893,7 +893,7 @@ func (r *CreateBlackWhiteIpListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBoundIPRequestParams struct {
-	// 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）
+	// DDoS防护子产品代号（bgp表示独享包；bgp-multip表示共享包）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源实例ID
@@ -915,7 +915,7 @@ type CreateBoundIPRequestParams struct {
 type CreateBoundIPRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgp表示独享包；bgp-multip表示共享包）
+	// DDoS防护子产品代号（bgp表示独享包；bgp-multip表示共享包）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源实例ID
@@ -1840,7 +1840,7 @@ type CreateNewL7RulesRequestParams struct {
 	// 规则列表
 	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules"`
 
-	// 大禹子产品代号（bgpip表示高防IP）
+	// DDoS防护子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID列表
@@ -1856,7 +1856,7 @@ type CreateNewL7RulesRequest struct {
 	// 规则列表
 	Rules []*L7RuleEntry `json:"Rules,omitempty" name:"Rules"`
 
-	// 大禹子产品代号（bgpip表示高防IP）
+	// DDoS防护子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID列表
@@ -3323,7 +3323,7 @@ func (r *DescribeBasicDeviceStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBgpBizTrendRequestParams struct {
-	// 大禹子产品代号（bgp-multip表示高防包）
+	// DDoS防护子产品代号（bgp-multip表示高防包）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 统计开始时间。 例：“2020-09-22 00:00:00”
@@ -3345,7 +3345,7 @@ type DescribeBgpBizTrendRequestParams struct {
 type DescribeBgpBizTrendRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgp-multip表示高防包）
+	// DDoS防护子产品代号（bgp-multip表示高防包）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 统计开始时间。 例：“2020-09-22 00:00:00”
@@ -3427,7 +3427,7 @@ type DescribeBizHttpStatusRequestParams struct {
 	// 统计方式，仅支持sum
 	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`
 
-	// 大禹子产品代号（bgpip表示高防IP）
+	// DDoS防护子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 统计周期，可取值60，300，1800，3600， 21600，86400，单位秒
@@ -3455,7 +3455,7 @@ type DescribeBizHttpStatusRequest struct {
 	// 统计方式，仅支持sum
 	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`
 
-	// 大禹子产品代号（bgpip表示高防IP）
+	// DDoS防护子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 统计周期，可取值60，300，1800，3600， 21600，86400，单位秒
@@ -3530,7 +3530,7 @@ func (r *DescribeBizHttpStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeBizMonitorTrendRequestParams struct {
-	// 大禹子产品代号（bgpip表示高防IP）
+	// DDoS防护子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 统计开始时间。 例：“2020-09-22 00:00:00”
@@ -3552,7 +3552,7 @@ type DescribeBizMonitorTrendRequestParams struct {
 type DescribeBizMonitorTrendRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgpip表示高防IP）
+	// DDoS防护子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 统计开始时间。 例：“2020-09-22 00:00:00”
@@ -3632,7 +3632,7 @@ type DescribeBizTrendRequestParams struct {
 	// 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max
 	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`
 
-	// 大禹子产品代号（bgpip表示高防IP）
+	// DDoS防护子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 统计周期，可取值60，300，1800，3600，21600，86400，单位秒
@@ -3668,7 +3668,7 @@ type DescribeBizTrendRequest struct {
 	// 统计方式，可取值max, min, avg, sum, 如统计纬度是流量速率或包量速率，仅可取值max
 	Statistics *string `json:"Statistics,omitempty" name:"Statistics"`
 
-	// 大禹子产品代号（bgpip表示高防IP）
+	// DDoS防护子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 统计周期，可取值60，300，1800，3600，21600，86400，单位秒
@@ -3820,7 +3820,7 @@ func (r *DescribeBlackWhiteIpListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCCLevelListRequestParams struct {
-	// 大禹子产品代号（bgp-multip表示高防包）
+	// DDoS防护子产品代号（bgp-multip表示高防包）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -3836,7 +3836,7 @@ type DescribeCCLevelListRequestParams struct {
 type DescribeCCLevelListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgp-multip表示高防包）
+	// DDoS防护子产品代号（bgp-multip表示高防包）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -3979,7 +3979,7 @@ func (r *DescribeCCLevelPolicyResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCCPrecisionPlyListRequestParams struct {
-	// 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
+	// DDoS防护子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -4004,7 +4004,7 @@ type DescribeCCPrecisionPlyListRequestParams struct {
 type DescribeCCPrecisionPlyListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
+	// DDoS防护子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -4081,7 +4081,7 @@ func (r *DescribeCCPrecisionPlyListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCCReqLimitPolicyListRequestParams struct {
-	// 大禹子产品代号（bgp-multip表示高防包，bgpip表示高防IP）
+	// DDoS防护子产品代号（bgp-multip表示高防包，bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -4106,7 +4106,7 @@ type DescribeCCReqLimitPolicyListRequestParams struct {
 type DescribeCCReqLimitPolicyListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgp-multip表示高防包，bgpip表示高防IP）
+	// DDoS防护子产品代号（bgp-multip表示高防包，bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -4183,7 +4183,7 @@ func (r *DescribeCCReqLimitPolicyListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCCThresholdListRequestParams struct {
-	// 大禹子产品代号（bgp-multip表示高防包）
+	// DDoS防护子产品代号（bgp-multip表示高防包）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -4199,7 +4199,7 @@ type DescribeCCThresholdListRequestParams struct {
 type DescribeCCThresholdListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgp-multip表示高防包）
+	// DDoS防护子产品代号（bgp-multip表示高防包）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -4264,7 +4264,7 @@ func (r *DescribeCCThresholdListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCCTrendRequestParams struct {
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源的IP
@@ -4292,7 +4292,7 @@ type DescribeCCTrendRequestParams struct {
 type DescribeCCTrendRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版；basic表示DDoS基础防护）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源的IP
@@ -4395,7 +4395,7 @@ func (r *DescribeCCTrendResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCcBlackWhiteIpListRequestParams struct {
-	// 大禹子产品代号（bgp-multip：表示高防包；bgpip：表示高防IP）
+	// DDoS防护子产品代号（bgp-multip：表示高防包；bgpip：表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 指定特定实例Id
@@ -4426,7 +4426,7 @@ type DescribeCcBlackWhiteIpListRequestParams struct {
 type DescribeCcBlackWhiteIpListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgp-multip：表示高防包；bgpip：表示高防IP）
+	// DDoS防护子产品代号（bgp-multip：表示高防包；bgpip：表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 指定特定实例Id
@@ -4511,7 +4511,7 @@ func (r *DescribeCcBlackWhiteIpListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCcGeoIPBlockConfigListRequestParams struct {
-	// 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
+	// DDoS防护子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -4536,7 +4536,7 @@ type DescribeCcGeoIPBlockConfigListRequestParams struct {
 type DescribeCcGeoIPBlockConfigListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
+	// DDoS防护子产品代号（bgpip-multip：表示高防包；bgpip：表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 页起始偏移，取值为(页码-1)*一页条数
@@ -6363,7 +6363,7 @@ func (r *DescribeListWaterPrintConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNewL7RulesErrHealthRequestParams struct {
-	// 大禹子产品代号(bgpip表示高防IP)
+	// DDoS防护子产品代号(bgpip表示高防IP)
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 规则Id列表
@@ -6373,7 +6373,7 @@ type DescribeNewL7RulesErrHealthRequestParams struct {
 type DescribeNewL7RulesErrHealthRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号(bgpip表示高防IP)
+	// DDoS防护子产品代号(bgpip表示高防IP)
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 规则Id列表
@@ -6430,7 +6430,7 @@ func (r *DescribeNewL7RulesErrHealthResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeNewL7RulesRequestParams struct {
-	// 大禹子产品代号（bgpip表示高防IP）
+	// DDoS防护子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
@@ -6461,7 +6461,7 @@ type DescribeNewL7RulesRequestParams struct {
 type DescribeNewL7RulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgpip表示高防IP）
+	// DDoS防护子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 状态搜索，选填，取值[0(规则配置成功)，1(规则配置生效中)，2(规则配置失败)，3(规则删除生效中)，5(规则删除失败)，6(规则等待配置)，7(规则等待删除)，8(规则待配置证书)]
@@ -6661,7 +6661,7 @@ type DescribeOverviewCCTrendRequestParams struct {
 	// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))，incount(请求次数), dropcount(攻击次数)]
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示共享包；basic表示DDoS基础防护）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp-multip表示共享包；basic表示DDoS基础防护）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源的IP
@@ -6686,7 +6686,7 @@ type DescribeOverviewCCTrendRequest struct {
 	// 指标，取值[inqps(总请求峰值，dropqps(攻击请求峰值))，incount(请求次数), dropcount(攻击次数)]
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示共享包；basic表示DDoS基础防护）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp-multip表示共享包；basic表示DDoS基础防护）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源的IP
@@ -6851,7 +6851,7 @@ type DescribeOverviewDDoSTrendRequestParams struct {
 	// 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示高防包；basic表示DDoS基础防护）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp-multip表示高防包；basic表示DDoS基础防护）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源实例的IP列表
@@ -6876,7 +6876,7 @@ type DescribeOverviewDDoSTrendRequest struct {
 	// 指标，取值[bps(攻击流量带宽，pps(攻击包速率))]
 	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp-multip表示高防包；basic表示DDoS基础防护）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp-multip表示高防包；basic表示DDoS基础防护）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源实例的IP列表
@@ -8076,7 +8076,7 @@ type ModifyDDoSLevelRequestParams struct {
 	// 资源ID
 	Id *string `json:"Id,omitempty" name:"Id"`
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// =get表示读取防护等级；=set表示修改防护等级
@@ -8092,7 +8092,7 @@ type ModifyDDoSLevelRequest struct {
 	// 资源ID
 	Id *string `json:"Id,omitempty" name:"Id"`
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// =get表示读取防护等级；=set表示修改防护等级
@@ -8222,7 +8222,7 @@ type ModifyDDoSThresholdRequestParams struct {
 	// 资源ID
 	Id *string `json:"Id,omitempty" name:"Id"`
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 配置其他阈值标志位，1表示配置其他阈值
@@ -8269,7 +8269,7 @@ type ModifyDDoSThresholdRequest struct {
 	// 资源ID
 	Id *string `json:"Id,omitempty" name:"Id"`
 
-	// 大禹子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
+	// DDoS防护子产品代号（bgpip表示高防IP；bgp表示独享包；bgp-multip表示共享包；net表示高防IP专业版）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 配置其他阈值标志位，1表示配置其他阈值
@@ -8426,7 +8426,7 @@ func (r *ModifyDomainUsrNameResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyNewDomainRulesRequestParams struct {
-	// 大禹子产品代号（bgpip表示高防IP）
+	// DDoS防护子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID
@@ -8439,7 +8439,7 @@ type ModifyNewDomainRulesRequestParams struct {
 type ModifyNewDomainRulesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 大禹子产品代号（bgpip表示高防IP）
+	// DDoS防护子产品代号（bgpip表示高防IP）
 	Business *string `json:"Business,omitempty" name:"Business"`
 
 	// 资源ID

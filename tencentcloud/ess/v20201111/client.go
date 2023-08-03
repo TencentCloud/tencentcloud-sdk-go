@@ -4118,7 +4118,7 @@ func NewDescribeFlowBriefsResponse() (response *DescribeFlowBriefsResponse) {
 //
 // 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
 //
-// 每个企业限制日调用量限制：10W,  当当日超过此限制后再调用接口返回错误
+// 每个企业限制日调用量限制：10W，当日超过此限制后再调用接口返回错误
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
@@ -4174,7 +4174,7 @@ func (c *Client) DescribeFlowBriefs(request *DescribeFlowBriefsRequest) (respons
 //
 // 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
 //
-// 每个企业限制日调用量限制：10W,  当当日超过此限制后再调用接口返回错误
+// 每个企业限制日调用量限制：10W，当日超过此限制后再调用接口返回错误
 //
 // 可能返回的错误码:
 //  DRYRUNOPERATION = "DryRunOperation"
@@ -4310,7 +4310,7 @@ func NewDescribeFlowEvidenceReportResponse() (response *DescribeFlowEvidenceRepo
 }
 
 // DescribeFlowEvidenceReport
-// 查询出证报告，返回报告 URL。
+// 查询出证报告，返回报告 URL。出证报告编号通过CreateFlowEvidenceReport接口获取。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -4330,7 +4330,7 @@ func (c *Client) DescribeFlowEvidenceReport(request *DescribeFlowEvidenceReportR
 }
 
 // DescribeFlowEvidenceReport
-// 查询出证报告，返回报告 URL。
+// 查询出证报告，返回报告 URL。出证报告编号通过CreateFlowEvidenceReport接口获取。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
