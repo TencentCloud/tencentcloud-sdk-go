@@ -159,6 +159,7 @@ import (
 	iotvideoindustryv20201201 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iotvideoindustry/v20201201"
 	irpv20220324 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/irp/v20220324"
 	irpv20220805 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/irp/v20220805"
+	issv20230517 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/iss/v20230517"
 	ivldv20210903 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ivld/v20210903"
 	keewidbv20220308 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/keewidb/v20220308"
 	kmsv20190118 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms/v20190118"
@@ -2093,6 +2094,19 @@ func TestIrpv20220805Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init irp_v20220805 client: %v", err)
+    }
+}
+
+func TestIssv20230517Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := issv20230517.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init iss_v20230517 client: %v", err)
     }
 }
 

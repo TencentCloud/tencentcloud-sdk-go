@@ -3672,6 +3672,13 @@ type NamespaceResourceEnvTKE struct {
 	// scf组件将占用的节点端口起始号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *uint64 `json:"Port,omitempty" name:"Port"`
+
+	// yaml格式的pod patch内容，例如
+	// metadata:
+	//   labels:
+	//     key: value
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodTemplatePatch *string `json:"PodTemplatePatch,omitempty" name:"PodTemplatePatch"`
 }
 
 type NamespaceUsage struct {

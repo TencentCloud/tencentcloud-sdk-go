@@ -3678,6 +3678,89 @@ func (r *DescribeDBInstanceAttributeResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDBInstanceHAConfigRequestParams struct {
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+}
+
+type DescribeDBInstanceHAConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+}
+
+func (r *DescribeDBInstanceHAConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceHAConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstanceHAConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDBInstanceHAConfigResponseParams struct {
+	// 主从同步方式：
+	// <li>Semi-sync：半同步
+	// <li>Async：异步
+	SyncMode *string `json:"SyncMode,omitempty" name:"SyncMode"`
+
+	// 高可用备机最大延迟数据量。备节点延迟数据量小于等于该值，且备节点延迟时间小于等于MaxStandbyLag时，可以切换为主节点。
+	// <li>单位：byte
+	// <li>参数范围：[1073741824, 322122547200]
+	MaxStandbyLatency *uint64 `json:"MaxStandbyLatency,omitempty" name:"MaxStandbyLatency"`
+
+	// 高可用备机最大延迟时间。备节点延迟时间小于等于该值，且备节点延迟数据量小于等于MaxStandbyLatency时，可以切换为主节点。
+	// <li>单位：s
+	// <li>参数范围：[5, 10]
+	MaxStandbyLag *uint64 `json:"MaxStandbyLag,omitempty" name:"MaxStandbyLag"`
+
+	// 同步备机最大延迟数据量。备机延迟数据量小于等于该值，且该备机延迟时间小于等于MaxSyncStandbyLag时，则该备机采用同步复制；否则，采用异步复制。
+	// 该参数值针对SyncMode设置为Semi-sync的实例有效。
+	// 异步实例该字段返回null。
+	// 半同步实例禁止退化为异步复制时，该字段返回null。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxSyncStandbyLatency *uint64 `json:"MaxSyncStandbyLatency,omitempty" name:"MaxSyncStandbyLatency"`
+
+	// 同步备机最大延迟时间。备机延迟时间小于等于该值，且该备机延迟数据量小于等于MaxSyncStandbyLatency时，则该备机采用同步复制；否则，采用异步复制。
+	// 该参数值针对SyncMode设置为Semi-sync的实例有效。
+	// 异步实例不返回该字段。
+	// 半同步实例禁止退化为异步复制时，不返回该字段。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxSyncStandbyLag *uint64 `json:"MaxSyncStandbyLag,omitempty" name:"MaxSyncStandbyLag"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDBInstanceHAConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDBInstanceHAConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeDBInstanceHAConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDBInstanceHAConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDBInstanceParametersRequestParams struct {
 	// 实例ID
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
@@ -6523,6 +6606,119 @@ func (r *ModifyDBInstanceDeploymentResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDBInstanceHAConfigRequestParams struct {
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 主从同步方式：
+	// <li>Semi-sync：半同步
+	// <li>Async：异步
+	SyncMode *string `json:"SyncMode,omitempty" name:"SyncMode"`
+
+	// 高可用备机最大延迟数据量。备节点延迟数据量小于等于该值，且备节点延迟时间小于等于MaxStandbyLag时，可以切换为主节点。
+	// <li>单位：byte
+	// <li>参数范围：[1073741824, 322122547200]
+	MaxStandbyLatency *uint64 `json:"MaxStandbyLatency,omitempty" name:"MaxStandbyLatency"`
+
+	// 高可用备机最大延迟时间。备节点延迟时间小于等于该值，且备节点延迟数据量小于等于MaxStandbyLatency时，可以切换为主节点。
+	// <li>单位：s
+	// <li>参数范围：[5, 10]
+	MaxStandbyLag *uint64 `json:"MaxStandbyLag,omitempty" name:"MaxStandbyLag"`
+
+	// 同步备机最大延迟数据量。备机延迟数据量小于等于该值，且该备机延迟时间小于等于MaxSyncStandbyLag时，则该备机采用同步复制；否则，采用异步复制。
+	// 该参数值针对SyncMode设置为Semi-sync的实例有效。
+	// 半同步实例禁止退化为异步复制时，不设置MaxSyncStandbyLatency、MaxSyncStandbyLag。
+	// 半同步实例允许退化异步复制时，PostgreSQL 9版本的实例须设置MaxSyncStandbyLatency且不设置MaxSyncStandbyLag，PostgreSQL 10及以上版本的实例须设置MaxSyncStandbyLatency、MaxSyncStandbyLag。
+	MaxSyncStandbyLatency *uint64 `json:"MaxSyncStandbyLatency,omitempty" name:"MaxSyncStandbyLatency"`
+
+	// 同步备机最大延迟时间。备机延迟时间小于等于该值，且该备机延迟数据量小于等于MaxSyncStandbyLatency时，则该备机采用同步复制；否则，采用异步复制。
+	// 该参数值针对SyncMode设置为Semi-sync的实例有效。
+	// 半同步实例禁止退化为异步复制时，不设置MaxSyncStandbyLatency、MaxSyncStandbyLag。
+	// 半同步实例允许退化异步复制时，PostgreSQL 9版本的实例须设置MaxSyncStandbyLatency且不设置MaxSyncStandbyLag，PostgreSQL 10及以上版本的实例须设置MaxSyncStandbyLatency、MaxSyncStandbyLag，
+	MaxSyncStandbyLag *uint64 `json:"MaxSyncStandbyLag,omitempty" name:"MaxSyncStandbyLag"`
+}
+
+type ModifyDBInstanceHAConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 主从同步方式：
+	// <li>Semi-sync：半同步
+	// <li>Async：异步
+	SyncMode *string `json:"SyncMode,omitempty" name:"SyncMode"`
+
+	// 高可用备机最大延迟数据量。备节点延迟数据量小于等于该值，且备节点延迟时间小于等于MaxStandbyLag时，可以切换为主节点。
+	// <li>单位：byte
+	// <li>参数范围：[1073741824, 322122547200]
+	MaxStandbyLatency *uint64 `json:"MaxStandbyLatency,omitempty" name:"MaxStandbyLatency"`
+
+	// 高可用备机最大延迟时间。备节点延迟时间小于等于该值，且备节点延迟数据量小于等于MaxStandbyLatency时，可以切换为主节点。
+	// <li>单位：s
+	// <li>参数范围：[5, 10]
+	MaxStandbyLag *uint64 `json:"MaxStandbyLag,omitempty" name:"MaxStandbyLag"`
+
+	// 同步备机最大延迟数据量。备机延迟数据量小于等于该值，且该备机延迟时间小于等于MaxSyncStandbyLag时，则该备机采用同步复制；否则，采用异步复制。
+	// 该参数值针对SyncMode设置为Semi-sync的实例有效。
+	// 半同步实例禁止退化为异步复制时，不设置MaxSyncStandbyLatency、MaxSyncStandbyLag。
+	// 半同步实例允许退化异步复制时，PostgreSQL 9版本的实例须设置MaxSyncStandbyLatency且不设置MaxSyncStandbyLag，PostgreSQL 10及以上版本的实例须设置MaxSyncStandbyLatency、MaxSyncStandbyLag。
+	MaxSyncStandbyLatency *uint64 `json:"MaxSyncStandbyLatency,omitempty" name:"MaxSyncStandbyLatency"`
+
+	// 同步备机最大延迟时间。备机延迟时间小于等于该值，且该备机延迟数据量小于等于MaxSyncStandbyLatency时，则该备机采用同步复制；否则，采用异步复制。
+	// 该参数值针对SyncMode设置为Semi-sync的实例有效。
+	// 半同步实例禁止退化为异步复制时，不设置MaxSyncStandbyLatency、MaxSyncStandbyLag。
+	// 半同步实例允许退化异步复制时，PostgreSQL 9版本的实例须设置MaxSyncStandbyLatency且不设置MaxSyncStandbyLag，PostgreSQL 10及以上版本的实例须设置MaxSyncStandbyLatency、MaxSyncStandbyLag，
+	MaxSyncStandbyLag *uint64 `json:"MaxSyncStandbyLag,omitempty" name:"MaxSyncStandbyLag"`
+}
+
+func (r *ModifyDBInstanceHAConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceHAConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "SyncMode")
+	delete(f, "MaxStandbyLatency")
+	delete(f, "MaxStandbyLag")
+	delete(f, "MaxSyncStandbyLatency")
+	delete(f, "MaxSyncStandbyLag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDBInstanceHAConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDBInstanceHAConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyDBInstanceHAConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDBInstanceHAConfigResponseParams `json:"Response"`
+}
+
+func (r *ModifyDBInstanceHAConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDBInstanceHAConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDBInstanceNameRequestParams struct {
 	// 数据库实例ID，形如postgres-6fego161
 	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
@@ -8321,6 +8517,98 @@ type SpecItemInfo struct {
 	// 是否支持TDE数据加密功能，0-不支持，1-支持
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsSupportTDE *int64 `json:"IsSupportTDE,omitempty" name:"IsSupportTDE"`
+}
+
+// Predefined struct for user
+type SwitchDBInstancePrimaryRequestParams struct {
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 是否强制切换。强制切换时只要备节点可访问，无论主备延迟多大都会发起切换。只有SwitchTag为0时，才可使用立即切换。
+	// <li>默认：false
+	Force *bool `json:"Force,omitempty" name:"Force"`
+
+	// 指定实例配置完成变更后的切换时间。
+	// <li>0：立即切换 
+	// <li>1：指定时间切换
+	// <li>2：维护时间窗口内切换
+	// <li>默认值：0 
+	SwitchTag *uint64 `json:"SwitchTag,omitempty" name:"SwitchTag"`
+
+	// 切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
+	SwitchStartTime *string `json:"SwitchStartTime,omitempty" name:"SwitchStartTime"`
+
+	// 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。SwitchStartTime和SwitchEndTime时间窗口不能小于30分钟。
+	SwitchEndTime *string `json:"SwitchEndTime,omitempty" name:"SwitchEndTime"`
+}
+
+type SwitchDBInstancePrimaryRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	DBInstanceId *string `json:"DBInstanceId,omitempty" name:"DBInstanceId"`
+
+	// 是否强制切换。强制切换时只要备节点可访问，无论主备延迟多大都会发起切换。只有SwitchTag为0时，才可使用立即切换。
+	// <li>默认：false
+	Force *bool `json:"Force,omitempty" name:"Force"`
+
+	// 指定实例配置完成变更后的切换时间。
+	// <li>0：立即切换 
+	// <li>1：指定时间切换
+	// <li>2：维护时间窗口内切换
+	// <li>默认值：0 
+	SwitchTag *uint64 `json:"SwitchTag,omitempty" name:"SwitchTag"`
+
+	// 切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
+	SwitchStartTime *string `json:"SwitchStartTime,omitempty" name:"SwitchStartTime"`
+
+	// 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。SwitchStartTime和SwitchEndTime时间窗口不能小于30分钟。
+	SwitchEndTime *string `json:"SwitchEndTime,omitempty" name:"SwitchEndTime"`
+}
+
+func (r *SwitchDBInstancePrimaryRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchDBInstancePrimaryRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "Force")
+	delete(f, "SwitchTag")
+	delete(f, "SwitchStartTime")
+	delete(f, "SwitchEndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchDBInstancePrimaryRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchDBInstancePrimaryResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SwitchDBInstancePrimaryResponse struct {
+	*tchttp.BaseResponse
+	Response *SwitchDBInstancePrimaryResponseParams `json:"Response"`
+}
+
+func (r *SwitchDBInstancePrimaryResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchDBInstancePrimaryResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Tag struct {

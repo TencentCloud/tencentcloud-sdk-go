@@ -2187,11 +2187,11 @@ type DiskConfig struct {
 }
 
 type Filter struct {
-	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values"`
-
 	// 过滤键的名称。
 	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 一个或者多个过滤值。
+	Values []*string `json:"Values,omitempty" name:"Values"`
 }
 
 // Predefined struct for user

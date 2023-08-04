@@ -1,10 +1,257 @@
 # 本版本更新包含以下内容：
 
-## 日志服务(cls) 版本：2020-10-16
+## 业务风险情报(bri) 版本：2019-03-28
 
-### 第 64 次发布
+### 第 4 次发布
 
-发布时间：2023-08-03 01:03:31
+发布时间：2023-08-03 12:20:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BRIRequest](https://cloud.tencent.com/document/api/1064/35632#BRIRequest)
+
+	* 新增成员：SubAppid
+
+
+
+
+## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 1 次发布
+
+发布时间：2023-08-03 16:25:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddAITask](https://cloud.tencent.com/document/api/1344/95951)
+* [AddOrganization](https://cloud.tencent.com/document/api/1344/95894)
+* [AddRecordBackupPlan](https://cloud.tencent.com/document/api/1344/95929)
+* [AddRecordBackupTemplate](https://cloud.tencent.com/document/api/1344/95913)
+* [AddRecordPlan](https://cloud.tencent.com/document/api/1344/95928)
+* [AddRecordRetrieveTask](https://cloud.tencent.com/document/api/1344/95941)
+* [AddRecordTemplate](https://cloud.tencent.com/document/api/1344/95912)
+* [AddStreamAuth](https://cloud.tencent.com/document/api/1344/95902)
+* [AddUserDevice](https://cloud.tencent.com/document/api/1344/95876)
+* [CheckDomain](https://cloud.tencent.com/document/api/1344/95901)
+* [ControlDevicePTZ](https://cloud.tencent.com/document/api/1344/95880)
+* [ControlDevicePreset](https://cloud.tencent.com/document/api/1344/95879)
+* [ControlDeviceStream](https://cloud.tencent.com/document/api/1344/95943)
+* [ControlRecord](https://cloud.tencent.com/document/api/1344/95936)
+* [ControlRecordTimeline](https://cloud.tencent.com/document/api/1344/95935)
+* [DeleteAITask](https://cloud.tencent.com/document/api/1344/95950)
+* [DeleteDomain](https://cloud.tencent.com/document/api/1344/95900)
+* [DeleteGateway](https://cloud.tencent.com/document/api/1344/95889)
+* [DeleteOrganization](https://cloud.tencent.com/document/api/1344/95893)
+* [DeleteRecordBackupPlan](https://cloud.tencent.com/document/api/1344/95927)
+* [DeleteRecordBackupTemplate](https://cloud.tencent.com/document/api/1344/95911)
+* [DeleteRecordPlan](https://cloud.tencent.com/document/api/1344/95926)
+* [DeleteRecordRetrieveTask](https://cloud.tencent.com/document/api/1344/95940)
+* [DeleteRecordTemplate](https://cloud.tencent.com/document/api/1344/95910)
+* [DeleteUserDevice](https://cloud.tencent.com/document/api/1344/95875)
+* [DescribeAITask](https://cloud.tencent.com/document/api/1344/95949)
+* [DescribeAITaskResult](https://cloud.tencent.com/document/api/1344/95948)
+* [DescribeCNAME](https://cloud.tencent.com/document/api/1344/95899)
+* [DescribeDeviceChannel](https://cloud.tencent.com/document/api/1344/95874)
+* [DescribeDevicePreset](https://cloud.tencent.com/document/api/1344/95878)
+* [DescribeDeviceRegion](https://cloud.tencent.com/document/api/1344/95873)
+* [DescribeDomain](https://cloud.tencent.com/document/api/1344/95898)
+* [DescribeDomainRegion](https://cloud.tencent.com/document/api/1344/95897)
+* [DescribeGateway](https://cloud.tencent.com/document/api/1344/95888)
+* [DescribeGatewayMonitor](https://cloud.tencent.com/document/api/1344/95887)
+* [DescribeGatewayProtocol](https://cloud.tencent.com/document/api/1344/95886)
+* [DescribeGatewayVersion](https://cloud.tencent.com/document/api/1344/95885)
+* [DescribeOrganization](https://cloud.tencent.com/document/api/1344/95892)
+* [DescribeRecordBackupPlan](https://cloud.tencent.com/document/api/1344/95925)
+* [DescribeRecordBackupTemplate](https://cloud.tencent.com/document/api/1344/95909)
+* [DescribeRecordFile](https://cloud.tencent.com/document/api/1344/95934)
+* [DescribeRecordPlan](https://cloud.tencent.com/document/api/1344/95924)
+* [DescribeRecordPlaybackUrl](https://cloud.tencent.com/document/api/1344/95933)
+* [DescribeRecordRetrieveTask](https://cloud.tencent.com/document/api/1344/95939)
+* [DescribeRecordTemplate](https://cloud.tencent.com/document/api/1344/95908)
+* [DescribeStreamAuth](https://cloud.tencent.com/document/api/1344/95896)
+* [DescribeUserDevice](https://cloud.tencent.com/document/api/1344/95872)
+* [DescribeVideoDownloadUrl](https://cloud.tencent.com/document/api/1344/95932)
+* [ListAITasks](https://cloud.tencent.com/document/api/1344/95947)
+* [ListDevices](https://cloud.tencent.com/document/api/1344/95871)
+* [ListGateways](https://cloud.tencent.com/document/api/1344/95884)
+* [ListOrganizationChannelNumbers](https://cloud.tencent.com/document/api/1344/95923)
+* [ListOrganizationChannels](https://cloud.tencent.com/document/api/1344/95922)
+* [ListRecordBackupPlanDevices](https://cloud.tencent.com/document/api/1344/95921)
+* [ListRecordBackupPlans](https://cloud.tencent.com/document/api/1344/95920)
+* [ListRecordBackupTemplates](https://cloud.tencent.com/document/api/1344/95907)
+* [ListRecordPlanChannels](https://cloud.tencent.com/document/api/1344/95919)
+* [ListRecordPlanDevices](https://cloud.tencent.com/document/api/1344/95918)
+* [ListRecordPlans](https://cloud.tencent.com/document/api/1344/95917)
+* [ListRecordRetrieveTasks](https://cloud.tencent.com/document/api/1344/95938)
+* [ListRecordTemplates](https://cloud.tencent.com/document/api/1344/95906)
+* [PlayRecord](https://cloud.tencent.com/document/api/1344/95931)
+* [RefreshDeviceChannel](https://cloud.tencent.com/document/api/1344/95870)
+* [UpdateAITask](https://cloud.tencent.com/document/api/1344/95946)
+* [UpdateAITaskStatus](https://cloud.tencent.com/document/api/1344/95945)
+* [UpdateDeviceOrganization](https://cloud.tencent.com/document/api/1344/95869)
+* [UpdateDeviceStatus](https://cloud.tencent.com/document/api/1344/95868)
+* [UpdateGateway](https://cloud.tencent.com/document/api/1344/95883)
+* [UpdateOrganization](https://cloud.tencent.com/document/api/1344/95891)
+* [UpdateRecordBackupPlan](https://cloud.tencent.com/document/api/1344/95916)
+* [UpdateRecordBackupTemplate](https://cloud.tencent.com/document/api/1344/95905)
+* [UpdateRecordPlan](https://cloud.tencent.com/document/api/1344/95915)
+* [UpdateRecordTemplate](https://cloud.tencent.com/document/api/1344/95904)
+* [UpdateUserDevice](https://cloud.tencent.com/document/api/1344/95867)
+* [UpgradeGateway](https://cloud.tencent.com/document/api/1344/95882)
+
+新增数据结构：
+
+* [AIConfig](https://cloud.tencent.com/document/api/1344/95952#AIConfig)
+* [AITaskInfo](https://cloud.tencent.com/document/api/1344/95952#AITaskInfo)
+* [AITaskResultInfo](https://cloud.tencent.com/document/api/1344/95952#AITaskResultInfo)
+* [AITaskResultResponse](https://cloud.tencent.com/document/api/1344/95952#AITaskResultResponse)
+* [AITemplates](https://cloud.tencent.com/document/api/1344/95952#AITemplates)
+* [AddDeviceResponse](https://cloud.tencent.com/document/api/1344/95952#AddDeviceResponse)
+* [AddOrgResponse](https://cloud.tencent.com/document/api/1344/95952#AddOrgResponse)
+* [BaseAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#BaseAIResultInfo)
+* [BodyAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#BodyAIResultInfo)
+* [CarAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#CarAIResultInfo)
+* [ChannelInfo](https://cloud.tencent.com/document/api/1344/95952#ChannelInfo)
+* [ChefClothAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#ChefClothAIResultInfo)
+* [ChefHatAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#ChefHatAIResultInfo)
+* [DescribeDeviceRegion](https://cloud.tencent.com/document/api/1344/95952#DescribeDeviceRegion)
+* [DescribeDeviceResponse](https://cloud.tencent.com/document/api/1344/95952#DescribeDeviceResponse)
+* [DescribeGatewayMonitor](https://cloud.tencent.com/document/api/1344/95952#DescribeGatewayMonitor)
+* [DescribeGatewayVersion](https://cloud.tencent.com/document/api/1344/95952#DescribeGatewayVersion)
+* [FaceMaskAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#FaceMaskAIResultInfo)
+* [GatewayVersion](https://cloud.tencent.com/document/api/1344/95952#GatewayVersion)
+* [GatewaysData](https://cloud.tencent.com/document/api/1344/95952#GatewaysData)
+* [LifeCycleData](https://cloud.tencent.com/document/api/1344/95952#LifeCycleData)
+* [ListAITaskData](https://cloud.tencent.com/document/api/1344/95952#ListAITaskData)
+* [ListDeviceInfo](https://cloud.tencent.com/document/api/1344/95952#ListDeviceInfo)
+* [ListRecordBackupPlanResponse](https://cloud.tencent.com/document/api/1344/95952#ListRecordBackupPlanResponse)
+* [Location](https://cloud.tencent.com/document/api/1344/95952#Location)
+* [OperTimeSlot](https://cloud.tencent.com/document/api/1344/95952#OperTimeSlot)
+* [OrganizationChannelInfo](https://cloud.tencent.com/document/api/1344/95952#OrganizationChannelInfo)
+* [PetAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#PetAIResultInfo)
+* [PhoneCallAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#PhoneCallAIResultInfo)
+* [PlateContent](https://cloud.tencent.com/document/api/1344/95952#PlateContent)
+* [RecordPlanBaseInfo](https://cloud.tencent.com/document/api/1344/95952#RecordPlanBaseInfo)
+* [RecordPlanChannelInfo](https://cloud.tencent.com/document/api/1344/95952#RecordPlanChannelInfo)
+* [RecordPlanOptResponse](https://cloud.tencent.com/document/api/1344/95952#RecordPlanOptResponse)
+* [RecordPlaybackUrl](https://cloud.tencent.com/document/api/1344/95952#RecordPlaybackUrl)
+* [RecordRetrieveTaskChannelInfo](https://cloud.tencent.com/document/api/1344/95952#RecordRetrieveTaskChannelInfo)
+* [RecordRetrieveTaskDetailsInfo](https://cloud.tencent.com/document/api/1344/95952#RecordRetrieveTaskDetailsInfo)
+* [RecordTemplateInfo](https://cloud.tencent.com/document/api/1344/95952#RecordTemplateInfo)
+* [RecordTemplateTimeSections](https://cloud.tencent.com/document/api/1344/95952#RecordTemplateTimeSections)
+* [RecordTimeLine](https://cloud.tencent.com/document/api/1344/95952#RecordTimeLine)
+* [SmokingAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#SmokingAIResultInfo)
+* [SnapshotConfig](https://cloud.tencent.com/document/api/1344/95952#SnapshotConfig)
+* [Timeline](https://cloud.tencent.com/document/api/1344/95952#Timeline)
+* [UpdateDeviceResponse](https://cloud.tencent.com/document/api/1344/95952#UpdateDeviceResponse)
+* [UpdateOrgResponse](https://cloud.tencent.com/document/api/1344/95952#UpdateOrgResponse)
+* [UpdateRecordBackupPlanModify](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordBackupPlanModify)
+* [UpdateRecordBackupTemplateModify](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordBackupTemplateModify)
+* [UpdateRecordPlanData](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordPlanData)
+* [UpdateRecordTemplateData](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordTemplateData)
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 39 次发布
+
+发布时间：2023-08-04 01:15:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDBInstanceHAConfig](https://cloud.tencent.com/document/api/409/95970)
+* [ModifyDBInstanceHAConfig](https://cloud.tencent.com/document/api/409/95969)
+* [SwitchDBInstancePrimary](https://cloud.tencent.com/document/api/409/95968)
+
+
+
+## 云函数(scf) 版本：2018-04-16
+
+### 第 59 次发布
+
+发布时间：2023-08-04 01:16:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NamespaceResourceEnvTKE](https://cloud.tencent.com/document/api/583/17244#NamespaceResourceEnvTKE)
+
+	* 新增成员：PodTemplatePatch
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 49 次发布
+
+发布时间：2023-08-04 01:16:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/238/19976#DBInstance)
+
+	* <font color="#dd0000">**修改成员**：</font>Architecture, Style
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 47 次发布
+
+发布时间：2023-08-04 01:18:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [L4OfflineLog](https://cloud.tencent.com/document/api/1552/80721#L4OfflineLog)
+
+	* 新增成员：LogStartTime, LogEndTime
+
+* [L7OfflineLog](https://cloud.tencent.com/document/api/1552/80721#L7OfflineLog)
+
+	* 新增成员：LogStartTime, LogEndTime
+
+* [Resource](https://cloud.tencent.com/document/api/1552/80721#Resource)
+
+	* <font color="#dd0000">**修改成员**：</font>Group, ZoneNumber
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 38 次发布
+
+发布时间：2023-08-04 01:21:15
 
 本次发布包含了以下内容：
 
@@ -12,32 +259,35 @@
 
 修改接口：
 
-* [DescribeKafkaConsumer](https://cloud.tencent.com/document/api/614/95719)
+* [BatchDeleteIntegrationTasks](https://cloud.tencent.com/document/api/1267/82540)
 
-	* 新增出参：ConsumerContent
+	* 新增入参：DeleteKFFlag
 
-* [ModifyKafkaConsumer](https://cloud.tencent.com/document/api/614/95720)
+* [CommitIntegrationTask](https://cloud.tencent.com/document/api/1267/82526)
 
-	* 新增入参：ConsumerContent
+	* 新增入参：VersionDesc, InstanceVersion
+
+* [DeleteIntegrationTask](https://cloud.tencent.com/document/api/1267/82516)
+
+	* 新增出参：DeleteFlag, DeleteErrInfo
+
+* [DescribeIntegrationTask](https://cloud.tencent.com/document/api/1267/82495)
+
+	* 新增入参：InstanceVersion
+
+	* 新增出参：AgentStatus, TaskVersion
 
 
+新增数据结构：
 
+* [AgentStatus](https://cloud.tencent.com/document/api/1267/76336#AgentStatus)
+* [TaskVersionInstance](https://cloud.tencent.com/document/api/1267/76336#TaskVersionInstance)
 
-## 腾讯电子签企业版(ess) 版本：2020-11-11
+修改数据结构：
 
-### 第 101 次发布
+* [IntegrationTaskInfo](https://cloud.tencent.com/document/api/1267/76336#IntegrationTaskInfo)
 
-发布时间：2023-08-03 01:06:38
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeOrganizationGroupOrganizations](https://cloud.tencent.com/document/api/1323/86114)
-
-	* 新增出参：ActivatedTotal
+	* 新增成员：SwitchResource, ReadPhase, InstanceVersion
 
 
 
@@ -10374,6 +10624,21 @@
 
 
 ## 业务风险情报(bri) 版本：2019-03-28
+
+### 第 4 次发布
+
+发布时间：2023-08-03 12:20:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BRIRequest](https://cloud.tencent.com/document/api/1064/35632#BRIRequest)
+
+	* 新增成员：SubAppid
+
 
 ### 第 3 次发布
 
@@ -64992,6 +65257,148 @@
 
 
 
+## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 1 次发布
+
+发布时间：2023-08-03 16:25:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddAITask](https://cloud.tencent.com/document/api/1344/95951)](https://cloud.tencent.com/document/api/#/#)
+* [[AddOrganization](https://cloud.tencent.com/document/api/1344/95894)](https://cloud.tencent.com/document/api/#/#)
+* [[AddRecordBackupPlan](https://cloud.tencent.com/document/api/1344/95929)](https://cloud.tencent.com/document/api/#/#)
+* [[AddRecordBackupTemplate](https://cloud.tencent.com/document/api/1344/95913)](https://cloud.tencent.com/document/api/#/#)
+* [[AddRecordPlan](https://cloud.tencent.com/document/api/1344/95928)](https://cloud.tencent.com/document/api/#/#)
+* [[AddRecordRetrieveTask](https://cloud.tencent.com/document/api/1344/95941)](https://cloud.tencent.com/document/api/#/#)
+* [[AddRecordTemplate](https://cloud.tencent.com/document/api/1344/95912)](https://cloud.tencent.com/document/api/#/#)
+* [[AddStreamAuth](https://cloud.tencent.com/document/api/1344/95902)](https://cloud.tencent.com/document/api/#/#)
+* [[AddUserDevice](https://cloud.tencent.com/document/api/1344/95876)](https://cloud.tencent.com/document/api/#/#)
+* [[CheckDomain](https://cloud.tencent.com/document/api/1344/95901)](https://cloud.tencent.com/document/api/#/#)
+* [[ControlDevicePTZ](https://cloud.tencent.com/document/api/1344/95880)](https://cloud.tencent.com/document/api/#/#)
+* [[ControlDevicePreset](https://cloud.tencent.com/document/api/1344/95879)](https://cloud.tencent.com/document/api/#/#)
+* [[ControlDeviceStream](https://cloud.tencent.com/document/api/1344/95943)](https://cloud.tencent.com/document/api/#/#)
+* [[ControlRecord](https://cloud.tencent.com/document/api/1344/95936)](https://cloud.tencent.com/document/api/#/#)
+* [[ControlRecordTimeline](https://cloud.tencent.com/document/api/1344/95935)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAITask](https://cloud.tencent.com/document/api/1344/95950)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteDomain](https://cloud.tencent.com/document/api/1344/95900)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteGateway](https://cloud.tencent.com/document/api/1344/95889)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteOrganization](https://cloud.tencent.com/document/api/1344/95893)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRecordBackupPlan](https://cloud.tencent.com/document/api/1344/95927)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRecordBackupTemplate](https://cloud.tencent.com/document/api/1344/95911)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRecordPlan](https://cloud.tencent.com/document/api/1344/95926)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRecordRetrieveTask](https://cloud.tencent.com/document/api/1344/95940)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRecordTemplate](https://cloud.tencent.com/document/api/1344/95910)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteUserDevice](https://cloud.tencent.com/document/api/1344/95875)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAITask](https://cloud.tencent.com/document/api/1344/95949)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeAITaskResult](https://cloud.tencent.com/document/api/1344/95948)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCNAME](https://cloud.tencent.com/document/api/1344/95899)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDeviceChannel](https://cloud.tencent.com/document/api/1344/95874)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDevicePreset](https://cloud.tencent.com/document/api/1344/95878)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDeviceRegion](https://cloud.tencent.com/document/api/1344/95873)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDomain](https://cloud.tencent.com/document/api/1344/95898)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDomainRegion](https://cloud.tencent.com/document/api/1344/95897)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeGateway](https://cloud.tencent.com/document/api/1344/95888)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeGatewayMonitor](https://cloud.tencent.com/document/api/1344/95887)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeGatewayProtocol](https://cloud.tencent.com/document/api/1344/95886)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeGatewayVersion](https://cloud.tencent.com/document/api/1344/95885)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeOrganization](https://cloud.tencent.com/document/api/1344/95892)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecordBackupPlan](https://cloud.tencent.com/document/api/1344/95925)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecordBackupTemplate](https://cloud.tencent.com/document/api/1344/95909)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecordFile](https://cloud.tencent.com/document/api/1344/95934)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecordPlan](https://cloud.tencent.com/document/api/1344/95924)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecordPlaybackUrl](https://cloud.tencent.com/document/api/1344/95933)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecordRetrieveTask](https://cloud.tencent.com/document/api/1344/95939)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRecordTemplate](https://cloud.tencent.com/document/api/1344/95908)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeStreamAuth](https://cloud.tencent.com/document/api/1344/95896)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUserDevice](https://cloud.tencent.com/document/api/1344/95872)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeVideoDownloadUrl](https://cloud.tencent.com/document/api/1344/95932)](https://cloud.tencent.com/document/api/#/#)
+* [[ListAITasks](https://cloud.tencent.com/document/api/1344/95947)](https://cloud.tencent.com/document/api/#/#)
+* [[ListDevices](https://cloud.tencent.com/document/api/1344/95871)](https://cloud.tencent.com/document/api/#/#)
+* [[ListGateways](https://cloud.tencent.com/document/api/1344/95884)](https://cloud.tencent.com/document/api/#/#)
+* [[ListOrganizationChannelNumbers](https://cloud.tencent.com/document/api/1344/95923)](https://cloud.tencent.com/document/api/#/#)
+* [[ListOrganizationChannels](https://cloud.tencent.com/document/api/1344/95922)](https://cloud.tencent.com/document/api/#/#)
+* [[ListRecordBackupPlanDevices](https://cloud.tencent.com/document/api/1344/95921)](https://cloud.tencent.com/document/api/#/#)
+* [[ListRecordBackupPlans](https://cloud.tencent.com/document/api/1344/95920)](https://cloud.tencent.com/document/api/#/#)
+* [[ListRecordBackupTemplates](https://cloud.tencent.com/document/api/1344/95907)](https://cloud.tencent.com/document/api/#/#)
+* [[ListRecordPlanChannels](https://cloud.tencent.com/document/api/1344/95919)](https://cloud.tencent.com/document/api/#/#)
+* [[ListRecordPlanDevices](https://cloud.tencent.com/document/api/1344/95918)](https://cloud.tencent.com/document/api/#/#)
+* [[ListRecordPlans](https://cloud.tencent.com/document/api/1344/95917)](https://cloud.tencent.com/document/api/#/#)
+* [[ListRecordRetrieveTasks](https://cloud.tencent.com/document/api/1344/95938)](https://cloud.tencent.com/document/api/#/#)
+* [[ListRecordTemplates](https://cloud.tencent.com/document/api/1344/95906)](https://cloud.tencent.com/document/api/#/#)
+* [[PlayRecord](https://cloud.tencent.com/document/api/1344/95931)](https://cloud.tencent.com/document/api/#/#)
+* [[RefreshDeviceChannel](https://cloud.tencent.com/document/api/1344/95870)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateAITask](https://cloud.tencent.com/document/api/1344/95946)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateAITaskStatus](https://cloud.tencent.com/document/api/1344/95945)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateDeviceOrganization](https://cloud.tencent.com/document/api/1344/95869)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateDeviceStatus](https://cloud.tencent.com/document/api/1344/95868)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateGateway](https://cloud.tencent.com/document/api/1344/95883)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateOrganization](https://cloud.tencent.com/document/api/1344/95891)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateRecordBackupPlan](https://cloud.tencent.com/document/api/1344/95916)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateRecordBackupTemplate](https://cloud.tencent.com/document/api/1344/95905)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateRecordPlan](https://cloud.tencent.com/document/api/1344/95915)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateRecordTemplate](https://cloud.tencent.com/document/api/1344/95904)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateUserDevice](https://cloud.tencent.com/document/api/1344/95867)](https://cloud.tencent.com/document/api/#/#)
+* [[UpgradeGateway](https://cloud.tencent.com/document/api/1344/95882)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AIConfig](https://cloud.tencent.com/document/api/1344/95952#AIConfig)](https://cloud.tencent.com/document/api/1344/95952#[AIConfig](https://cloud.tencent.com/document/api/1344/95952#AIConfig))
+* [[AITaskInfo](https://cloud.tencent.com/document/api/1344/95952#AITaskInfo)](https://cloud.tencent.com/document/api/1344/95952#[AITaskInfo](https://cloud.tencent.com/document/api/1344/95952#AITaskInfo))
+* [[AITaskResultInfo](https://cloud.tencent.com/document/api/1344/95952#AITaskResultInfo)](https://cloud.tencent.com/document/api/1344/95952#[AITaskResultInfo](https://cloud.tencent.com/document/api/1344/95952#AITaskResultInfo))
+* [[AITaskResultResponse](https://cloud.tencent.com/document/api/1344/95952#AITaskResultResponse)](https://cloud.tencent.com/document/api/1344/95952#[AITaskResultResponse](https://cloud.tencent.com/document/api/1344/95952#AITaskResultResponse))
+* [[AITemplates](https://cloud.tencent.com/document/api/1344/95952#AITemplates)](https://cloud.tencent.com/document/api/1344/95952#[AITemplates](https://cloud.tencent.com/document/api/1344/95952#AITemplates))
+* [[AddDeviceResponse](https://cloud.tencent.com/document/api/1344/95952#AddDeviceResponse)](https://cloud.tencent.com/document/api/1344/95952#[AddDeviceResponse](https://cloud.tencent.com/document/api/1344/95952#AddDeviceResponse))
+* [[AddOrgResponse](https://cloud.tencent.com/document/api/1344/95952#AddOrgResponse)](https://cloud.tencent.com/document/api/1344/95952#[AddOrgResponse](https://cloud.tencent.com/document/api/1344/95952#AddOrgResponse))
+* [[BaseAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#BaseAIResultInfo)](https://cloud.tencent.com/document/api/1344/95952#[BaseAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#BaseAIResultInfo))
+* [[BodyAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#BodyAIResultInfo)](https://cloud.tencent.com/document/api/1344/95952#[BodyAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#BodyAIResultInfo))
+* [[CarAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#CarAIResultInfo)](https://cloud.tencent.com/document/api/1344/95952#[CarAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#CarAIResultInfo))
+* [[ChannelInfo](https://cloud.tencent.com/document/api/1344/95952#ChannelInfo)](https://cloud.tencent.com/document/api/1344/95952#[ChannelInfo](https://cloud.tencent.com/document/api/1344/95952#ChannelInfo))
+* [[ChefClothAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#ChefClothAIResultInfo)](https://cloud.tencent.com/document/api/1344/95952#[ChefClothAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#ChefClothAIResultInfo))
+* [[ChefHatAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#ChefHatAIResultInfo)](https://cloud.tencent.com/document/api/1344/95952#[ChefHatAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#ChefHatAIResultInfo))
+* [[DescribeDeviceRegion](https://cloud.tencent.com/document/api/1344/95952#DescribeDeviceRegion)](https://cloud.tencent.com/document/api/1344/95952#[DescribeDeviceRegion](https://cloud.tencent.com/document/api/1344/95952#DescribeDeviceRegion))
+* [[DescribeDeviceResponse](https://cloud.tencent.com/document/api/1344/95952#DescribeDeviceResponse)](https://cloud.tencent.com/document/api/1344/95952#[DescribeDeviceResponse](https://cloud.tencent.com/document/api/1344/95952#DescribeDeviceResponse))
+* [[DescribeGatewayMonitor](https://cloud.tencent.com/document/api/1344/95952#DescribeGatewayMonitor)](https://cloud.tencent.com/document/api/1344/95952#[DescribeGatewayMonitor](https://cloud.tencent.com/document/api/1344/95952#DescribeGatewayMonitor))
+* [[DescribeGatewayVersion](https://cloud.tencent.com/document/api/1344/95952#DescribeGatewayVersion)](https://cloud.tencent.com/document/api/1344/95952#[DescribeGatewayVersion](https://cloud.tencent.com/document/api/1344/95952#DescribeGatewayVersion))
+* [[FaceMaskAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#FaceMaskAIResultInfo)](https://cloud.tencent.com/document/api/1344/95952#[FaceMaskAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#FaceMaskAIResultInfo))
+* [[GatewayVersion](https://cloud.tencent.com/document/api/1344/95952#GatewayVersion)](https://cloud.tencent.com/document/api/1344/95952#[GatewayVersion](https://cloud.tencent.com/document/api/1344/95952#GatewayVersion))
+* [[GatewaysData](https://cloud.tencent.com/document/api/1344/95952#GatewaysData)](https://cloud.tencent.com/document/api/1344/95952#[GatewaysData](https://cloud.tencent.com/document/api/1344/95952#GatewaysData))
+* [[LifeCycleData](https://cloud.tencent.com/document/api/1344/95952#LifeCycleData)](https://cloud.tencent.com/document/api/1344/95952#[LifeCycleData](https://cloud.tencent.com/document/api/1344/95952#LifeCycleData))
+* [[ListAITaskData](https://cloud.tencent.com/document/api/1344/95952#ListAITaskData)](https://cloud.tencent.com/document/api/1344/95952#[ListAITaskData](https://cloud.tencent.com/document/api/1344/95952#ListAITaskData))
+* [[ListDeviceInfo](https://cloud.tencent.com/document/api/1344/95952#ListDeviceInfo)](https://cloud.tencent.com/document/api/1344/95952#[ListDeviceInfo](https://cloud.tencent.com/document/api/1344/95952#ListDeviceInfo))
+* [[ListRecordBackupPlanResponse](https://cloud.tencent.com/document/api/1344/95952#ListRecordBackupPlanResponse)](https://cloud.tencent.com/document/api/1344/95952#[ListRecordBackupPlanResponse](https://cloud.tencent.com/document/api/1344/95952#ListRecordBackupPlanResponse))
+* [[Location](https://cloud.tencent.com/document/api/1344/95952#Location)](https://cloud.tencent.com/document/api/1344/95952#[Location](https://cloud.tencent.com/document/api/1344/95952#Location))
+* [[OperTimeSlot](https://cloud.tencent.com/document/api/1344/95952#OperTimeSlot)](https://cloud.tencent.com/document/api/1344/95952#[OperTimeSlot](https://cloud.tencent.com/document/api/1344/95952#OperTimeSlot))
+* [[OrganizationChannelInfo](https://cloud.tencent.com/document/api/1344/95952#OrganizationChannelInfo)](https://cloud.tencent.com/document/api/1344/95952#[OrganizationChannelInfo](https://cloud.tencent.com/document/api/1344/95952#OrganizationChannelInfo))
+* [[PetAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#PetAIResultInfo)](https://cloud.tencent.com/document/api/1344/95952#[PetAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#PetAIResultInfo))
+* [[PhoneCallAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#PhoneCallAIResultInfo)](https://cloud.tencent.com/document/api/1344/95952#[PhoneCallAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#PhoneCallAIResultInfo))
+* [[PlateContent](https://cloud.tencent.com/document/api/1344/95952#PlateContent)](https://cloud.tencent.com/document/api/1344/95952#[PlateContent](https://cloud.tencent.com/document/api/1344/95952#PlateContent))
+* [[RecordPlanBaseInfo](https://cloud.tencent.com/document/api/1344/95952#RecordPlanBaseInfo)](https://cloud.tencent.com/document/api/1344/95952#[RecordPlanBaseInfo](https://cloud.tencent.com/document/api/1344/95952#RecordPlanBaseInfo))
+* [[RecordPlanChannelInfo](https://cloud.tencent.com/document/api/1344/95952#RecordPlanChannelInfo)](https://cloud.tencent.com/document/api/1344/95952#[RecordPlanChannelInfo](https://cloud.tencent.com/document/api/1344/95952#RecordPlanChannelInfo))
+* [[RecordPlanOptResponse](https://cloud.tencent.com/document/api/1344/95952#RecordPlanOptResponse)](https://cloud.tencent.com/document/api/1344/95952#[RecordPlanOptResponse](https://cloud.tencent.com/document/api/1344/95952#RecordPlanOptResponse))
+* [[RecordPlaybackUrl](https://cloud.tencent.com/document/api/1344/95952#RecordPlaybackUrl)](https://cloud.tencent.com/document/api/1344/95952#[RecordPlaybackUrl](https://cloud.tencent.com/document/api/1344/95952#RecordPlaybackUrl))
+* [[RecordRetrieveTaskChannelInfo](https://cloud.tencent.com/document/api/1344/95952#RecordRetrieveTaskChannelInfo)](https://cloud.tencent.com/document/api/1344/95952#[RecordRetrieveTaskChannelInfo](https://cloud.tencent.com/document/api/1344/95952#RecordRetrieveTaskChannelInfo))
+* [[RecordRetrieveTaskDetailsInfo](https://cloud.tencent.com/document/api/1344/95952#RecordRetrieveTaskDetailsInfo)](https://cloud.tencent.com/document/api/1344/95952#[RecordRetrieveTaskDetailsInfo](https://cloud.tencent.com/document/api/1344/95952#RecordRetrieveTaskDetailsInfo))
+* [[RecordTemplateInfo](https://cloud.tencent.com/document/api/1344/95952#RecordTemplateInfo)](https://cloud.tencent.com/document/api/1344/95952#[RecordTemplateInfo](https://cloud.tencent.com/document/api/1344/95952#RecordTemplateInfo))
+* [[RecordTemplateTimeSections](https://cloud.tencent.com/document/api/1344/95952#RecordTemplateTimeSections)](https://cloud.tencent.com/document/api/1344/95952#[RecordTemplateTimeSections](https://cloud.tencent.com/document/api/1344/95952#RecordTemplateTimeSections))
+* [[RecordTimeLine](https://cloud.tencent.com/document/api/1344/95952#RecordTimeLine)](https://cloud.tencent.com/document/api/1344/95952#[RecordTimeLine](https://cloud.tencent.com/document/api/1344/95952#RecordTimeLine))
+* [[SmokingAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#SmokingAIResultInfo)](https://cloud.tencent.com/document/api/1344/95952#[SmokingAIResultInfo](https://cloud.tencent.com/document/api/1344/95952#SmokingAIResultInfo))
+* [[SnapshotConfig](https://cloud.tencent.com/document/api/1344/95952#SnapshotConfig)](https://cloud.tencent.com/document/api/1344/95952#[SnapshotConfig](https://cloud.tencent.com/document/api/1344/95952#SnapshotConfig))
+* [[Timeline](https://cloud.tencent.com/document/api/1344/95952#Timeline)](https://cloud.tencent.com/document/api/1344/95952#[Timeline](https://cloud.tencent.com/document/api/1344/95952#Timeline))
+* [[UpdateDeviceResponse](https://cloud.tencent.com/document/api/1344/95952#UpdateDeviceResponse)](https://cloud.tencent.com/document/api/1344/95952#[UpdateDeviceResponse](https://cloud.tencent.com/document/api/1344/95952#UpdateDeviceResponse))
+* [[UpdateOrgResponse](https://cloud.tencent.com/document/api/1344/95952#UpdateOrgResponse)](https://cloud.tencent.com/document/api/1344/95952#[UpdateOrgResponse](https://cloud.tencent.com/document/api/1344/95952#UpdateOrgResponse))
+* [[UpdateRecordBackupPlanModify](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordBackupPlanModify)](https://cloud.tencent.com/document/api/1344/95952#[UpdateRecordBackupPlanModify](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordBackupPlanModify))
+* [[UpdateRecordBackupTemplateModify](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordBackupTemplateModify)](https://cloud.tencent.com/document/api/1344/95952#[UpdateRecordBackupTemplateModify](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordBackupTemplateModify))
+* [[UpdateRecordPlanData](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordPlanData)](https://cloud.tencent.com/document/api/1344/95952#[UpdateRecordPlanData](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordPlanData))
+* [[UpdateRecordTemplateData](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordTemplateData)](https://cloud.tencent.com/document/api/1344/95952#[UpdateRecordTemplateData](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordTemplateData))
+
+
+
+
 ## 媒体智能标签(ivld) 版本：2021-09-03
 
 ### 第 8 次发布
@@ -81669,6 +82076,20 @@
 
 ## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
 
+### 第 39 次发布
+
+发布时间：2023-08-04 01:15:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDBInstanceHAConfig](https://cloud.tencent.com/document/api/409/95970)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDBInstanceHAConfig](https://cloud.tencent.com/document/api/409/95969)](https://cloud.tencent.com/document/api/#/#)
+* [[SwitchDBInstancePrimary](https://cloud.tencent.com/document/api/409/95968)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 38 次发布
 
 发布时间：2023-07-21 01:35:07
@@ -85172,6 +85593,21 @@
 
 ## 云函数(scf) 版本：2018-04-16
 
+### 第 59 次发布
+
+发布时间：2023-08-04 01:16:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NamespaceResourceEnvTKE](https://cloud.tencent.com/document/api/583/17244#NamespaceResourceEnvTKE)
+
+	* 新增成员：PodTemplatePatch
+
+
 ### 第 58 次发布
 
 发布时间：2023-08-02 01:20:41
@@ -87519,6 +87955,21 @@
 
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 49 次发布
+
+发布时间：2023-08-04 01:16:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DBInstance](https://cloud.tencent.com/document/api/238/19976#DBInstance)
+
+	* <font color="#dd0000">**修改成员**：</font>Architecture, Style
+
 
 ### 第 48 次发布
 
@@ -102294,6 +102745,29 @@
 
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 47 次发布
+
+发布时间：2023-08-04 01:18:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [L4OfflineLog](https://cloud.tencent.com/document/api/1552/80721#L4OfflineLog)
+
+	* 新增成员：LogStartTime, LogEndTime
+
+* [L7OfflineLog](https://cloud.tencent.com/document/api/1552/80721#L7OfflineLog)
+
+	* 新增成员：LogStartTime, LogEndTime
+
+* [Resource](https://cloud.tencent.com/document/api/1552/80721#Resource)
+
+	* <font color="#dd0000">**修改成员**：</font>Group, ZoneNumber
+
 
 ### 第 46 次发布
 
@@ -125686,6 +126160,47 @@
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 38 次发布
+
+发布时间：2023-08-04 01:21:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BatchDeleteIntegrationTasks](https://cloud.tencent.com/document/api/1267/82540)
+
+	* 新增入参：DeleteKFFlag
+
+* [CommitIntegrationTask](https://cloud.tencent.com/document/api/1267/82526)
+
+	* 新增入参：VersionDesc, InstanceVersion
+
+* [DeleteIntegrationTask](https://cloud.tencent.com/document/api/1267/82516)
+
+	* 新增出参：DeleteFlag, DeleteErrInfo
+
+* [DescribeIntegrationTask](https://cloud.tencent.com/document/api/1267/82495)
+
+	* 新增入参：InstanceVersion
+
+	* 新增出参：AgentStatus, TaskVersion
+
+
+新增数据结构：
+
+* [[AgentStatus](https://cloud.tencent.com/document/api/1267/76336#AgentStatus)](https://cloud.tencent.com/document/api/1267/76336#[AgentStatus](https://cloud.tencent.com/document/api/1267/76336#AgentStatus))
+* [[TaskVersionInstance](https://cloud.tencent.com/document/api/1267/76336#TaskVersionInstance)](https://cloud.tencent.com/document/api/1267/76336#[TaskVersionInstance](https://cloud.tencent.com/document/api/1267/76336#TaskVersionInstance))
+
+修改数据结构：
+
+* [IntegrationTaskInfo](https://cloud.tencent.com/document/api/1267/76336#IntegrationTaskInfo)
+
+	* 新增成员：SwitchResource, ReadPhase, InstanceVersion
+
 
 ### 第 37 次发布
 

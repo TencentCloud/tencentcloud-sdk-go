@@ -6331,7 +6331,7 @@ type FlowGroupInfo struct {
 	// 合同（流程）的签署是否是无序签, true - 无序。 false - 有序, 默认 
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
-	// 合同（流程）发起方的填写控件，用户
+	// 合同（流程）发起方的填写控件, 由发起方进行在发起时进行填充
 	Components []*Component `json:"Components,omitempty" name:"Components"`
 
 	// 本企业（发起方）是否需要签署审批，若需要审批则只允许查看不允许签署，需要您调用接口CreateFlowSignReview提交审批结果。

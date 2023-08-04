@@ -2865,6 +2865,74 @@ func (c *Client) DescribeDBInstanceAttributeWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeDBInstanceHAConfigRequest() (request *DescribeDBInstanceHAConfigRequest) {
+    request = &DescribeDBInstanceHAConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "DescribeDBInstanceHAConfig")
+    
+    
+    return
+}
+
+func NewDescribeDBInstanceHAConfigResponse() (response *DescribeDBInstanceHAConfigResponse) {
+    response = &DescribeDBInstanceHAConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDBInstanceHAConfig
+// 本接口（DescribeDBInstanceHAConfig）用于查询实例HA配置信息。其中HA配置信息包括：
+//
+// <li>允许备节点切换为主节点的条件配置
+//
+// <li>半同步实例使用同步复制或异步复制的条件配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeDBInstanceHAConfig(request *DescribeDBInstanceHAConfigRequest) (response *DescribeDBInstanceHAConfigResponse, err error) {
+    return c.DescribeDBInstanceHAConfigWithContext(context.Background(), request)
+}
+
+// DescribeDBInstanceHAConfig
+// 本接口（DescribeDBInstanceHAConfig）用于查询实例HA配置信息。其中HA配置信息包括：
+//
+// <li>允许备节点切换为主节点的条件配置
+//
+// <li>半同步实例使用同步复制或异步复制的条件配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) DescribeDBInstanceHAConfigWithContext(ctx context.Context, request *DescribeDBInstanceHAConfigRequest) (response *DescribeDBInstanceHAConfigResponse, err error) {
+    if request == nil {
+        request = NewDescribeDBInstanceHAConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDBInstanceHAConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDBInstanceHAConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBInstanceParametersRequest() (request *DescribeDBInstanceParametersRequest) {
     request = &DescribeDBInstanceParametersRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5431,6 +5499,78 @@ func (c *Client) ModifyDBInstanceDeploymentWithContext(ctx context.Context, requ
     return
 }
 
+func NewModifyDBInstanceHAConfigRequest() (request *ModifyDBInstanceHAConfigRequest) {
+    request = &ModifyDBInstanceHAConfigRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "ModifyDBInstanceHAConfig")
+    
+    
+    return
+}
+
+func NewModifyDBInstanceHAConfigResponse() (response *ModifyDBInstanceHAConfigResponse) {
+    response = &ModifyDBInstanceHAConfigResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDBInstanceHAConfig
+// 本接口（ModifyDBInstanceHAConfig）用于修改实例HA配置信息。其中HA配置信息包括：
+//
+// <li>允许备节点切换为主节点的条件配置
+//
+// <li>半同步实例使用同步复制或异步复制的条件配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETER_PARAMETERSNOTSET = "InvalidParameter.ParametersNotSet"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMETEROUTOFRANGE = "InvalidParameterValue.ParameterOutOfRange"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyDBInstanceHAConfig(request *ModifyDBInstanceHAConfigRequest) (response *ModifyDBInstanceHAConfigResponse, err error) {
+    return c.ModifyDBInstanceHAConfigWithContext(context.Background(), request)
+}
+
+// ModifyDBInstanceHAConfig
+// 本接口（ModifyDBInstanceHAConfig）用于修改实例HA配置信息。其中HA配置信息包括：
+//
+// <li>允许备节点切换为主节点的条件配置
+//
+// <li>半同步实例使用同步复制或异步复制的条件配置
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETER_PARAMETERSNOTSET = "InvalidParameter.ParametersNotSet"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  INVALIDPARAMETERVALUE_PARAMETEROUTOFRANGE = "InvalidParameterValue.ParameterOutOfRange"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) ModifyDBInstanceHAConfigWithContext(ctx context.Context, request *ModifyDBInstanceHAConfigRequest) (response *ModifyDBInstanceHAConfigResponse, err error) {
+    if request == nil {
+        request = NewModifyDBInstanceHAConfigRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDBInstanceHAConfig require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDBInstanceHAConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDBInstanceNameRequest() (request *ModifyDBInstanceNameRequest) {
     request = &ModifyDBInstanceNameRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6823,6 +6963,84 @@ func (c *Client) SetAutoRenewFlagWithContext(ctx context.Context, request *SetAu
     request.SetContext(ctx)
     
     response = NewSetAutoRenewFlagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSwitchDBInstancePrimaryRequest() (request *SwitchDBInstancePrimaryRequest) {
+    request = &SwitchDBInstancePrimaryRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "SwitchDBInstancePrimary")
+    
+    
+    return
+}
+
+func NewSwitchDBInstancePrimaryResponse() (response *SwitchDBInstancePrimaryResponse) {
+    response = &SwitchDBInstancePrimaryResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SwitchDBInstancePrimary
+// 本接口（SwitchDBInstancePrimary）用于切换实例主备关系。
+//
+// <li>通过主动发起切换，可以验证业务能否正确处理实例主备切换的场景
+//
+// <li>通过使用强制切换，可以在备节点延迟不满足切换条件时，强制发起主从切换
+//
+// <li>只有主实例可以执行该操作
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_NOAVAILABLESTANDBY = "FailedOperation.NoAvailableStandby"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_INSTANCETYPEDENIED = "OperationDenied.InstanceTypeDenied"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) SwitchDBInstancePrimary(request *SwitchDBInstancePrimaryRequest) (response *SwitchDBInstancePrimaryResponse, err error) {
+    return c.SwitchDBInstancePrimaryWithContext(context.Background(), request)
+}
+
+// SwitchDBInstancePrimary
+// 本接口（SwitchDBInstancePrimary）用于切换实例主备关系。
+//
+// <li>通过主动发起切换，可以验证业务能否正确处理实例主备切换的场景
+//
+// <li>通过使用强制切换，可以在备节点延迟不满足切换条件时，强制发起主从切换
+//
+// <li>只有主实例可以执行该操作
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_NOAVAILABLESTANDBY = "FailedOperation.NoAvailableStandby"
+//  INVALIDPARAMETER_PARAMETERCHECKERROR = "InvalidParameter.ParameterCheckError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
+//  OPERATIONDENIED_INSTANCESTATUSLIMITERROR = "OperationDenied.InstanceStatusLimitError"
+//  OPERATIONDENIED_INSTANCETYPEDENIED = "OperationDenied.InstanceTypeDenied"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) SwitchDBInstancePrimaryWithContext(ctx context.Context, request *SwitchDBInstancePrimaryRequest) (response *SwitchDBInstancePrimaryResponse, err error) {
+    if request == nil {
+        request = NewSwitchDBInstancePrimaryRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchDBInstancePrimary require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSwitchDBInstancePrimaryResponse()
     err = c.Send(request, response)
     return
 }

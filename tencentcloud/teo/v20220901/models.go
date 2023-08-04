@@ -85,7 +85,8 @@ type AclCondition struct {
 	// <li>idcid：IDC 规则，仅bot自定义规则可用；</li>
 	// <li>sipbot：搜索引擎规则，仅bot自定义规则可用；</li>
 	// <li>portrait：画像分析，仅bot自定义规则可用；</li>
-	// <li>header_seq：请求头顺序，仅bot自定义规则可用。</li>
+	// <li>header_seq：请求头顺序，仅bot自定义规则可用；</li>
+	// <li>hdr：请求正文，仅Web防护自定义规则可用。</li>
 	MatchFrom *string `json:"MatchFrom,omitempty" name:"MatchFrom"`
 
 	// 匹配字符串。当 MatchFrom 为 header 时，可以填入 header 的 key 作为参数。
@@ -5372,16 +5373,16 @@ type DownloadL4LogsRequestParams struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 站点集合，不填默认选择全部站点。
+	// 站点集合，此参数必填，不填默认查询为空。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
-	// 四层实例ID集合。
+	// 四层实例 ID 集合。
 	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
 
-	// 分页查询的限制数目，默认值为20，最大查询条目为1000。
+	// 分页查询的限制数目，默认值为 20，最大查询条目为 1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页的偏移量，默认值为0。
+	// 分页的偏移量，默认值为 0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -5394,16 +5395,16 @@ type DownloadL4LogsRequest struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 站点集合，不填默认选择全部站点。
+	// 站点集合，此参数必填，不填默认查询为空。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
-	// 四层实例ID集合。
+	// 四层实例 ID 集合。
 	ProxyIds []*string `json:"ProxyIds,omitempty" name:"ProxyIds"`
 
-	// 分页查询的限制数目，默认值为20，最大查询条目为1000。
+	// 分页查询的限制数目，默认值为 20，最大查询条目为 1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页的偏移量，默认值为0。
+	// 分页的偏移量，默认值为 0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -5433,12 +5434,11 @@ func (r *DownloadL4LogsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DownloadL4LogsResponseParams struct {
-	// 四层离线日志数据列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*L4OfflineLog `json:"Data,omitempty" name:"Data"`
-
 	// 查询结果的总条数。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 四层离线日志数据列表。
+	Data []*L4OfflineLog `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -5468,16 +5468,16 @@ type DownloadL7LogsRequestParams struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 站点集合，不填默认选择全部站点。
+	// 站点集合，此参数必填，不填默认查询为空。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
 	// 子域名集合，不填默认选择全部子域名。
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
-	// 分页查询的限制数目，默认值为20，最大查询条目为1000。
+	// 分页查询的限制数目，默认值为 20，最大查询条目为 1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页的偏移量，默认值为0。
+	// 分页的偏移量，默认值为 0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -5490,16 +5490,16 @@ type DownloadL7LogsRequest struct {
 	// 结束时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
-	// 站点集合，不填默认选择全部站点。
+	// 站点集合，此参数必填，不填默认查询为空。
 	ZoneIds []*string `json:"ZoneIds,omitempty" name:"ZoneIds"`
 
 	// 子域名集合，不填默认选择全部子域名。
 	Domains []*string `json:"Domains,omitempty" name:"Domains"`
 
-	// 分页查询的限制数目，默认值为20，最大查询条目为1000。
+	// 分页查询的限制数目，默认值为 20，最大查询条目为 1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 分页的偏移量，默认值为0。
+	// 分页的偏移量，默认值为 0。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -5529,12 +5529,11 @@ func (r *DownloadL7LogsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DownloadL7LogsResponseParams struct {
-	// 七层离线日志数据列表。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*L7OfflineLog `json:"Data,omitempty" name:"Data"`
-
 	// 查询结果的总条数。
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 七层离线日志数据列表。
+	Data []*L7OfflineLog `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6053,48 +6052,59 @@ type Ipv6 struct {
 }
 
 type L4OfflineLog struct {
-	// 日志打包开始时间。
-	LogTime *int64 `json:"LogTime,omitempty" name:"LogTime"`
-
-	// 四层实例ID。
-	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 四层代理实例 ID。
 	ProxyId *string `json:"ProxyId,omitempty" name:"ProxyId"`
 
-	// 原始大小 单位byte。
-	Size *int64 `json:"Size,omitempty" name:"Size"`
-
-	// 下载地址。
-	Url *string `json:"Url,omitempty" name:"Url"`
-
-	// 日志数据包名。
-	LogPacketName *string `json:"LogPacketName,omitempty" name:"LogPacketName"`
-
-	// 加速区域，取值有：
+	// 日志所属区域，取值有：
 	// <li>mainland：中国大陆境内;</li>
 	// <li>overseas：全球（不含中国大陆）。</li>
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 离线日志数据包名。
+	LogPacketName *string `json:"LogPacketName,omitempty" name:"LogPacketName"`
+
+	// 离线日志下载地址。
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 日志打包时间，此参数已经废弃。
+	LogTime *int64 `json:"LogTime,omitempty" name:"LogTime"`
+
+	// 日志打包开始时间。
+	LogStartTime *string `json:"LogStartTime,omitempty" name:"LogStartTime"`
+
+	// 日志打包结束时间。
+	LogEndTime *string `json:"LogEndTime,omitempty" name:"LogEndTime"`
+
+	// 日志大小，单位为 Byte。
+	Size *int64 `json:"Size,omitempty" name:"Size"`
 }
 
 type L7OfflineLog struct {
-	// 日志打包开始时间。
-	LogTime *int64 `json:"LogTime,omitempty" name:"LogTime"`
-
-	// 子域名。
+	// 离线日志域名。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
-	// 原始大小，单位byte。
-	Size *int64 `json:"Size,omitempty" name:"Size"`
-
-	// 下载地址。
-	Url *string `json:"Url,omitempty" name:"Url"`
-
-	// 日志数据包名。
-	LogPacketName *string `json:"LogPacketName,omitempty" name:"LogPacketName"`
-
-	// 加速区域，取值有：
+	// 日志所属区域，取值有：
 	// <li>mainland：中国大陆境内; </li>
 	// <li>overseas：全球（不含中国大陆）。</li>
 	Area *string `json:"Area,omitempty" name:"Area"`
+
+	// 离线日志数据包名。	
+	LogPacketName *string `json:"LogPacketName,omitempty" name:"LogPacketName"`
+
+	// 离线日志下载地址。	
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 日志打包时间，此参数已经废弃。
+	LogTime *int64 `json:"LogTime,omitempty" name:"LogTime"`
+
+	// 日志打包开始时间。
+	LogStartTime *string `json:"LogStartTime,omitempty" name:"LogStartTime"`
+
+	// 日志打包结束时间。
+	LogEndTime *string `json:"LogEndTime,omitempty" name:"LogEndTime"`
+
+	// 日志原始大小，单位 Byte。
+	Size *int64 `json:"Size,omitempty" name:"Size"`
 }
 
 type MaxAge struct {
@@ -8114,10 +8124,7 @@ type RateLimitUserRule struct {
 	// 规则名，只能以英文字符，数字，下划线组合，且不能以下划线开头。
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
-	// 处置动作，取值有：
-	// <li>monitor：观察；</li>
-	// <li>drop：拦截；</li>
-	// <li>alg：JavaScript挑战。</li>
+	// 处置动作，取值有： <li>monitor：观察；</li> <li>drop：拦截；</li> <li>alg：JavaScript挑战。</li>	
 	Action *string `json:"Action,omitempty" name:"Action"`
 
 	// 惩罚时长，0-2天。
@@ -8140,7 +8147,7 @@ type RateLimitUserRule struct {
 	// 规则权重，取值范围0-100。
 	RulePriority *int64 `json:"RulePriority,omitempty" name:"RulePriority"`
 
-	// 规则id。仅出参使用。
+	// 规则 Id。仅出参使用。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleID *int64 `json:"RuleID,omitempty" name:"RuleID"`
 
@@ -8153,7 +8160,7 @@ type RateLimitUserRule struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
-	// 统计范围，字段为null时，代表source_to_eo。取值有：
+	// 统计范围，字段为 null 时，代表 source_to_eo。取值有：
 	// <li>source_to_eo：（响应）源站到EdgeOne。</li>
 	// <li>client_to_eo：（请求）客户端到EdgeOne；</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。

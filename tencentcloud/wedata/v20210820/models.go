@@ -64,6 +64,20 @@ type AdhocRecord struct {
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 }
 
+type AgentStatus struct {
+	// 运行中的数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Running *int64 `json:"Running,omitempty" name:"Running"`
+
+	// 异常的数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Abnormal *int64 `json:"Abnormal,omitempty" name:"Abnormal"`
+
+	// 操作中的数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InOperation *int64 `json:"InOperation,omitempty" name:"InOperation"`
+}
+
 type AlarmEventInfo struct {
 	// 告警ID
 	AlarmId *string `json:"AlarmId,omitempty" name:"AlarmId"`
@@ -729,6 +743,9 @@ type BatchDeleteIntegrationTasksRequestParams struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 是否删除开发态任务。默认不删除开发态，为 0 不删除 , 为 1 删除
+	DeleteKFFlag *int64 `json:"DeleteKFFlag,omitempty" name:"DeleteKFFlag"`
 }
 
 type BatchDeleteIntegrationTasksRequest struct {
@@ -742,6 +759,9 @@ type BatchDeleteIntegrationTasksRequest struct {
 
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 是否删除开发态任务。默认不删除开发态，为 0 不删除 , 为 1 删除
+	DeleteKFFlag *int64 `json:"DeleteKFFlag,omitempty" name:"DeleteKFFlag"`
 }
 
 func (r *BatchDeleteIntegrationTasksRequest) ToJsonString() string {
@@ -759,6 +779,7 @@ func (r *BatchDeleteIntegrationTasksRequest) FromJsonString(s string) error {
 	delete(f, "TaskIds")
 	delete(f, "TaskType")
 	delete(f, "ProjectId")
+	delete(f, "DeleteKFFlag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchDeleteIntegrationTasksRequest has unknown keys!", "")
 	}
@@ -3020,6 +3041,12 @@ type CommitIntegrationTaskRequestParams struct {
 
 	// 额外参数
 	ExtConfig []*RecordField `json:"ExtConfig,omitempty" name:"ExtConfig"`
+
+	// 提交版本描述
+	VersionDesc *string `json:"VersionDesc,omitempty" name:"VersionDesc"`
+
+	// 提交版本号
+	InstanceVersion *int64 `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
 }
 
 type CommitIntegrationTaskRequest struct {
@@ -3039,6 +3066,12 @@ type CommitIntegrationTaskRequest struct {
 
 	// 额外参数
 	ExtConfig []*RecordField `json:"ExtConfig,omitempty" name:"ExtConfig"`
+
+	// 提交版本描述
+	VersionDesc *string `json:"VersionDesc,omitempty" name:"VersionDesc"`
+
+	// 提交版本号
+	InstanceVersion *int64 `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
 }
 
 func (r *CommitIntegrationTaskRequest) ToJsonString() string {
@@ -3058,6 +3091,8 @@ func (r *CommitIntegrationTaskRequest) FromJsonString(s string) error {
 	delete(f, "CommitType")
 	delete(f, "TaskType")
 	delete(f, "ExtConfig")
+	delete(f, "VersionDesc")
+	delete(f, "InstanceVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CommitIntegrationTaskRequest has unknown keys!", "")
 	}
@@ -6483,6 +6518,17 @@ func (r *DeleteIntegrationTaskRequest) FromJsonString(s string) error {
 type DeleteIntegrationTaskResponseParams struct {
 	// 任务删除成功与否标识
 	Data *bool `json:"Data,omitempty" name:"Data"`
+
+	// 任务删除成功与否标识
+	// 0表示删除成功
+	// 1 表示失败，失败原因见 DeleteErrInfo
+	// 100 表示running or suspend task can't be deleted失败，失败原因也会写到DeleteErrInfo里面
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteFlag *int64 `json:"DeleteFlag,omitempty" name:"DeleteFlag"`
+
+	// 删除失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeleteErrInfo *string `json:"DeleteErrInfo,omitempty" name:"DeleteErrInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -13270,6 +13316,9 @@ type DescribeIntegrationTaskRequestParams struct {
 
 	// 任务类型：201. stream,   202. offline
 	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 提交版本号
+	InstanceVersion *int64 `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
 }
 
 type DescribeIntegrationTaskRequest struct {
@@ -13283,6 +13332,9 @@ type DescribeIntegrationTaskRequest struct {
 
 	// 任务类型：201. stream,   202. offline
 	TaskType *uint64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 提交版本号
+	InstanceVersion *int64 `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
 }
 
 func (r *DescribeIntegrationTaskRequest) ToJsonString() string {
@@ -13300,6 +13352,7 @@ func (r *DescribeIntegrationTaskRequest) FromJsonString(s string) error {
 	delete(f, "TaskId")
 	delete(f, "ProjectId")
 	delete(f, "TaskType")
+	delete(f, "InstanceVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationTaskRequest has unknown keys!", "")
 	}
@@ -13311,6 +13364,14 @@ type DescribeIntegrationTaskResponseParams struct {
 	// 任务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskInfo *IntegrationTaskInfo `json:"TaskInfo,omitempty" name:"TaskInfo"`
+
+	// 采集器统计信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AgentStatus *AgentStatus `json:"AgentStatus,omitempty" name:"AgentStatus"`
+
+	// 任务版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskVersion *TaskVersionInstance `json:"TaskVersion,omitempty" name:"TaskVersion"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -24036,6 +24097,18 @@ type IntegrationTaskInfo struct {
 	// 该任务关联的告警规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskAlarmRegularList []*string `json:"TaskAlarmRegularList,omitempty" name:"TaskAlarmRegularList"`
+
+	// 资源分层情况： 0：进行中,1：成功 ,2：失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SwitchResource *int64 `json:"SwitchResource,omitempty" name:"SwitchResource"`
+
+	// 读取阶段：0：全部全量,1：部分全量,2：全部增量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReadPhase *int64 `json:"ReadPhase,omitempty" name:"ReadPhase"`
+
+	// 版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceVersion *int64 `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
 }
 
 // Predefined struct for user
@@ -33051,6 +33124,32 @@ type TaskTypeOpsDto struct {
 	// 任务类型归类
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TypeSort *string `json:"TypeSort,omitempty" name:"TypeSort"`
+}
+
+type TaskVersionInstance struct {
+	// 实例版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceVersion *int64 `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
+
+	// 实例描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VersionDesc *string `json:"VersionDesc,omitempty" name:"VersionDesc"`
+
+	// 0, "新增"，1, "修改"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChangeType *int64 `json:"ChangeType,omitempty" name:"ChangeType"`
+
+	// 版本提交人UIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubmitterUin *string `json:"SubmitterUin,omitempty" name:"SubmitterUin"`
+
+	// 提交日期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceDate *string `json:"InstanceDate,omitempty" name:"InstanceDate"`
+
+	// 0, "未启用"，1, "启用(生产态)"
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStatus *int64 `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
 }
 
 type ThresholdValue struct {

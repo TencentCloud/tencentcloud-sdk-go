@@ -89,26 +89,26 @@ func (r *AddProjectResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddResourceTagRequestParams struct {
-	// 标签键
+	// 需要绑定的标签键，取值规范参考：https://cloud.tencent.com/document/product/651/13354
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
-	// 标签值
+	// 需要绑定的标签值，取值规范参考：https://cloud.tencent.com/document/product/651/13354
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 
-	// [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
+	// 待关联的资源，用标准的资源六段式表示。正确的资源六段式请参考：https://cloud.tencent.com/document/product/651/89122
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 }
 
 type AddResourceTagRequest struct {
 	*tchttp.BaseRequest
 	
-	// 标签键
+	// 需要绑定的标签键，取值规范参考：https://cloud.tencent.com/document/product/651/13354
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
-	// 标签值
+	// 需要绑定的标签值，取值规范参考：https://cloud.tencent.com/document/product/651/13354
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 
-	// [ 资源六段式描述 ](https://cloud.tencent.com/document/product/598/10606)
+	// 待关联的资源，用标准的资源六段式表示。正确的资源六段式请参考：https://cloud.tencent.com/document/product/651/89122
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 }
 
@@ -157,19 +157,19 @@ func (r *AddResourceTagResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AttachResourcesTagRequestParams struct {
-	// 资源所属业务名称（资源六段式中的第三段）
+	// 业务的英文简称，即资源六段式第三段。资源六段式的描述方式参考：https://cloud.tencent.com/document/product/651/89122
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
 	// 资源ID数组，资源个数最多为50
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
-	// 标签键
+	// 需要绑定的标签键，取值规范参考：https://cloud.tencent.com/document/product/651/13354
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
-	// 标签值
+	// 需要绑定的标签值，取值规范参考：https://cloud.tencent.com/document/product/651/13354
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 
-	// 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填
+	// 资源所在地域，区分地域的资源必填，不区分地域的资源不需要传入该字段。注意该地域必须为资源ID参数ResourceIds对应的地域
 	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
 
 	// 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填
@@ -179,19 +179,19 @@ type AttachResourcesTagRequestParams struct {
 type AttachResourcesTagRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源所属业务名称（资源六段式中的第三段）
+	// 业务的英文简称，即资源六段式第三段。资源六段式的描述方式参考：https://cloud.tencent.com/document/product/651/89122
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
 	// 资源ID数组，资源个数最多为50
 	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
-	// 标签键
+	// 需要绑定的标签键，取值规范参考：https://cloud.tencent.com/document/product/651/13354
 	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
 
-	// 标签值
+	// 需要绑定的标签值，取值规范参考：https://cloud.tencent.com/document/product/651/13354
 	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 
-	// 资源所在地域，不区分地域的资源不需要传入该字段，区分地域的资源必填
+	// 资源所在地域，区分地域的资源必填，不区分地域的资源不需要传入该字段。注意该地域必须为资源ID参数ResourceIds对应的地域
 	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
 
 	// 资源前缀（资源六段式中最后一段"/"前面的部分），cos存储桶不需要传入该字段，其他云资源必填

@@ -46,7 +46,6 @@ type BRIRequest struct {
 	Scene *string `json:"Scene,omitempty" name:"Scene"`
 
 	// 电话号码 (业务名为bri_num时必填)
-	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
 
 	// Apk文件大小  (业务名为bri_apk时必填，除非已填FileMd5)
@@ -63,6 +62,9 @@ type BRIRequest struct {
 
 	// 微信号的可疑标签
 	WechatTag *string `json:"WechatTag,omitempty" name:"WechatTag"`
+
+	// 子客户ID
+	SubAppid *string `json:"SubAppid,omitempty" name:"SubAppid"`
 }
 
 type BRIResponse struct {
