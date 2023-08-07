@@ -3689,6 +3689,62 @@ func (c *Client) DescribeCloneListWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeCpuExpandStrategyRequest() (request *DescribeCpuExpandStrategyRequest) {
+    request = &DescribeCpuExpandStrategyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "DescribeCpuExpandStrategy")
+    
+    
+    return
+}
+
+func NewDescribeCpuExpandStrategyResponse() (response *DescribeCpuExpandStrategyResponse) {
+    response = &DescribeCpuExpandStrategyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCpuExpandStrategy
+// 通过该 API 可以查询实例的 CPU 弹性扩容策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REMOTECALLUNMARSHALERROR = "FailedOperation.RemoteCallUnmarshalError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
+func (c *Client) DescribeCpuExpandStrategy(request *DescribeCpuExpandStrategyRequest) (response *DescribeCpuExpandStrategyResponse, err error) {
+    return c.DescribeCpuExpandStrategyWithContext(context.Background(), request)
+}
+
+// DescribeCpuExpandStrategy
+// 通过该 API 可以查询实例的 CPU 弹性扩容策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_REMOTECALLUNMARSHALERROR = "FailedOperation.RemoteCallUnmarshalError"
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_EXECHTTPREQUESTERROR = "InternalError.ExecHttpRequestError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_JSONUNMARSHALERROR = "InvalidParameter.JsonUnmarshalError"
+func (c *Client) DescribeCpuExpandStrategyWithContext(ctx context.Context, request *DescribeCpuExpandStrategyRequest) (response *DescribeCpuExpandStrategyResponse, err error) {
+    if request == nil {
+        request = NewDescribeCpuExpandStrategyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCpuExpandStrategy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCpuExpandStrategyResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDBFeaturesRequest() (request *DescribeDBFeaturesRequest) {
     request = &DescribeDBFeaturesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8945,6 +9001,58 @@ func (c *Client) StartBatchRollbackWithContext(ctx context.Context, request *Sta
     return
 }
 
+func NewStartCpuExpandRequest() (request *StartCpuExpandRequest) {
+    request = &StartCpuExpandRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "StartCpuExpand")
+    
+    
+    return
+}
+
+func NewStartCpuExpandResponse() (response *StartCpuExpandResponse) {
+    response = &StartCpuExpandResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartCpuExpand
+// 通过该API，可以开启CPU弹性扩容，包括一次性的手动扩容以及自动弹性扩容。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTCHANGESTRATEGY = "FailedOperation.NotChangeStrategy"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTNORMALINSTANCE = "UnsupportedOperation.NotSupportNormalInstance"
+func (c *Client) StartCpuExpand(request *StartCpuExpandRequest) (response *StartCpuExpandResponse, err error) {
+    return c.StartCpuExpandWithContext(context.Background(), request)
+}
+
+// StartCpuExpand
+// 通过该API，可以开启CPU弹性扩容，包括一次性的手动扩容以及自动弹性扩容。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_NOTCHANGESTRATEGY = "FailedOperation.NotChangeStrategy"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTNORMALINSTANCE = "UnsupportedOperation.NotSupportNormalInstance"
+func (c *Client) StartCpuExpandWithContext(ctx context.Context, request *StartCpuExpandRequest) (response *StartCpuExpandResponse, err error) {
+    if request == nil {
+        request = NewStartCpuExpandRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartCpuExpand require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartCpuExpandResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartReplicationRequest() (request *StartReplicationRequest) {
     request = &StartReplicationRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8999,6 +9107,58 @@ func (c *Client) StartReplicationWithContext(ctx context.Context, request *Start
     request.SetContext(ctx)
     
     response = NewStartReplicationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewStopCpuExpandRequest() (request *StopCpuExpandRequest) {
+    request = &StopCpuExpandRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdb", APIVersion, "StopCpuExpand")
+    
+    
+    return
+}
+
+func NewStopCpuExpandResponse() (response *StopCpuExpandResponse) {
+    response = &StopCpuExpandResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StopCpuExpand
+// 通过该API，可以关闭 CPU 弹性扩容。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+func (c *Client) StopCpuExpand(request *StopCpuExpandRequest) (response *StopCpuExpandResponse, err error) {
+    return c.StopCpuExpandWithContext(context.Background(), request)
+}
+
+// StopCpuExpand
+// 通过该API，可以关闭 CPU 弹性扩容。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
+func (c *Client) StopCpuExpandWithContext(ctx context.Context, request *StopCpuExpandRequest) (response *StopCpuExpandResponse, err error) {
+    if request == nil {
+        request = NewStopCpuExpandRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StopCpuExpand require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStopCpuExpandResponse()
     err = c.Send(request, response)
     return
 }

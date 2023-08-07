@@ -1,3 +1,107 @@
+# Release v1.0.716
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 141 次发布
+
+发布时间：2023-08-07 01:07:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCpuExpandStrategy](https://cloud.tencent.com/document/api/236/96018)
+* [StartCpuExpand](https://cloud.tencent.com/document/api/236/96017)
+* [StopCpuExpand](https://cloud.tencent.com/document/api/236/96016)
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 58 次发布
+
+发布时间：2023-08-07 01:10:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeUserRoles](https://cloud.tencent.com/document/api/1342/96019)
+
+新增数据结构：
+
+* [CosPermission](https://cloud.tencent.com/document/api/1342/53778#CosPermission)
+* [UserRole](https://cloud.tencent.com/document/api/1342/53778#UserRole)
+
+
+
+## 容器服务(tke) 版本：2018-05-25
+
+### 第 160 次发布
+
+发布时间：2023-08-07 01:18:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyClusterAttribute](https://cloud.tencent.com/document/api/457/42938)
+
+	* 新增入参：ClusterProperty
+
+	* 新增出参：ClusterProperty
+
+
+新增数据结构：
+
+* [ClusterProperty](https://cloud.tencent.com/document/api/457/31866#ClusterProperty)
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 37 次发布
+
+发布时间：2023-08-07 01:19:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KongRoutePreview](https://cloud.tencent.com/document/api/1364/54942#KongRoutePreview)
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 163 次发布
+
+发布时间：2023-08-07 01:19:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AcceptVpcPeeringConnection](https://cloud.tencent.com/document/api/215/96026)
+* [CreateVpcPeeringConnection](https://cloud.tencent.com/document/api/215/96025)
+* [DeleteVpcPeeringConnection](https://cloud.tencent.com/document/api/215/96024)
+* [DescribeVpcPeeringConnections](https://cloud.tencent.com/document/api/215/96023)
+* [ModifyVpcPeeringConnection](https://cloud.tencent.com/document/api/215/96022)
+* [RejectVpcPeeringConnection](https://cloud.tencent.com/document/api/215/96021)
+
+
+
 # Release v1.0.715
 
 ## 业务风险情报(bri) 版本：2019-03-28

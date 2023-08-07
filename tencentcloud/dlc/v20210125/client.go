@@ -3965,6 +3965,54 @@ func (c *Client) DescribeTasksWithContext(ctx context.Context, request *Describe
     return
 }
 
+func NewDescribeUserRolesRequest() (request *DescribeUserRolesRequest) {
+    request = &DescribeUserRolesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeUserRoles")
+    
+    
+    return
+}
+
+func NewDescribeUserRolesResponse() (response *DescribeUserRolesResponse) {
+    response = &DescribeUserRolesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserRoles
+// 列举用户角色信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeUserRoles(request *DescribeUserRolesRequest) (response *DescribeUserRolesResponse, err error) {
+    return c.DescribeUserRolesWithContext(context.Background(), request)
+}
+
+// DescribeUserRoles
+// 列举用户角色信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeUserRolesWithContext(ctx context.Context, request *DescribeUserRolesRequest) (response *DescribeUserRolesResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserRolesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserRoles require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUsersRequest() (request *DescribeUsersRequest) {
     request = &DescribeUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},

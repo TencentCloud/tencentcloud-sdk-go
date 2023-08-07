@@ -194,6 +194,9 @@ const (
 	// 参数值存在重复。
 	INVALIDPARAMETERVALUE_DUPLICATEPARA = "InvalidParameterValue.DuplicatePara"
 
+	// 本端地域和端地域重复。
+	INVALIDPARAMETERVALUE_DUPLICATEREGION = "InvalidParameterValue.DuplicateRegion"
+
 	// 值超过上限。
 	INVALIDPARAMETERVALUE_EIPBRANDWIDTHOUTINVALID = "InvalidParameterValue.EIPBrandWidthOutInvalid"
 
@@ -560,6 +563,12 @@ const (
 	// 流量包配额超过限制。
 	LIMITEXCEEDED_TRAFFICPACKAGEQUOTA = "LimitExceeded.TrafficPackageQuota"
 
+	// 有效的对等个数超过配额上限。
+	LIMITEXCEEDED_VPCPEERAVALIMITEXCEEDED = "LimitExceeded.VpcPeerAvaLimitExceeded"
+
+	// 可创建的对等连接个数超过总上限。
+	LIMITEXCEEDED_VPCPEERTOTALLIMITEXCEEDED = "LimitExceeded.VpcPeerTotalLimitExceeded"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
@@ -613,6 +622,9 @@ const (
 
 	// 主IP不支持指定操作。
 	UNAUTHORIZEDOPERATION_PRIMARYIP = "UnauthorizedOperation.PrimaryIp"
+
+	// 对等连接本端VPC与对端VPC存在CIDR冲突,或一端与已建立的对等连接某一端冲突。
+	UNAUTHORIZEDOPERATION_VPCPEERCIDRCONFLICT = "UnauthorizedOperation.VpcPeerCidrConflict"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"
@@ -872,6 +884,9 @@ const (
 	// 不支持删除默认路由表。
 	UNSUPPORTEDOPERATION_NOTSUPPORTDELETEDEFAULTROUTETABLE = "UnsupportedOperation.NotSupportDeleteDefaultRouteTable"
 
+	// 公有云到黑石的对等连接不支持删除。
+	UNSUPPORTEDOPERATION_NOTSUPPORTDELETEVPCBMPEER = "UnsupportedOperation.NotSupportDeleteVpcBmPeer"
+
 	// 该地址类型不支持释放操作。
 	UNSUPPORTEDOPERATION_NOTSUPPORTEDADDRESSIPSCHARGETYPE = "UnsupportedOperation.NotSupportedAddressIpsChargeType"
 
@@ -1018,6 +1033,18 @@ const (
 
 	// 资源不属于同一个VPC。
 	UNSUPPORTEDOPERATION_VPCMISMATCH = "UnsupportedOperation.VpcMismatch"
+
+	// 对等连接已存在。
+	UNSUPPORTEDOPERATION_VPCPEERALREADYEXIST = "UnsupportedOperation.VpcPeerAlreadyExist"
+
+	// VPC网段存在CIDR冲突。
+	UNSUPPORTEDOPERATION_VPCPEERCIDRCONFLICT = "UnsupportedOperation.VpcPeerCidrConflict"
+
+	// 对等连接状态错误。
+	UNSUPPORTEDOPERATION_VPCPEERINVALIDSTATECHANGE = "UnsupportedOperation.VpcPeerInvalidStateChange"
+
+	// 该账不能发起操作。
+	UNSUPPORTEDOPERATION_VPCPEERPURVIEWERROR = "UnsupportedOperation.VpcPeerPurviewError"
 
 	// 当前通道为非可用状态，不支持该操作。
 	UNSUPPORTEDOPERATION_VPNCONNINVALIDSTATE = "UnsupportedOperation.VpnConnInvalidState"

@@ -1282,6 +1282,12 @@ type ClusterNetworkSettings struct {
 	CiliumMode *string `json:"CiliumMode,omitempty" name:"CiliumMode"`
 }
 
+type ClusterProperty struct {
+	// 节点hostname命名模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeNameType *string `json:"NodeNameType,omitempty" name:"NodeNameType"`
+}
+
 type ClusterPublicLB struct {
 	// 是否开启公网访问LB
 	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
@@ -14516,6 +14522,9 @@ type ModifyClusterAttributeRequestParams struct {
 
 	// 是否开启QGPU共享
 	QGPUShareEnable *bool `json:"QGPUShareEnable,omitempty" name:"QGPUShareEnable"`
+
+	// 集群属性
+	ClusterProperty *ClusterProperty `json:"ClusterProperty,omitempty" name:"ClusterProperty"`
 }
 
 type ModifyClusterAttributeRequest struct {
@@ -14541,6 +14550,9 @@ type ModifyClusterAttributeRequest struct {
 
 	// 是否开启QGPU共享
 	QGPUShareEnable *bool `json:"QGPUShareEnable,omitempty" name:"QGPUShareEnable"`
+
+	// 集群属性
+	ClusterProperty *ClusterProperty `json:"ClusterProperty,omitempty" name:"ClusterProperty"`
 }
 
 func (r *ModifyClusterAttributeRequest) ToJsonString() string {
@@ -14562,6 +14574,7 @@ func (r *ModifyClusterAttributeRequest) FromJsonString(s string) error {
 	delete(f, "ClusterLevel")
 	delete(f, "AutoUpgradeClusterLevel")
 	delete(f, "QGPUShareEnable")
+	delete(f, "ClusterProperty")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterAttributeRequest has unknown keys!", "")
 	}
@@ -14593,6 +14606,10 @@ type ModifyClusterAttributeResponseParams struct {
 	// 是否开启QGPU共享
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QGPUShareEnable *bool `json:"QGPUShareEnable,omitempty" name:"QGPUShareEnable"`
+
+	// 集群属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterProperty *ClusterProperty `json:"ClusterProperty,omitempty" name:"ClusterProperty"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

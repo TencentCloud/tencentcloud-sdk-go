@@ -115,6 +115,64 @@ func (c *Client) AcceptAttachCcnInstancesWithContext(ctx context.Context, reques
     return
 }
 
+func NewAcceptVpcPeeringConnectionRequest() (request *AcceptVpcPeeringConnectionRequest) {
+    request = &AcceptVpcPeeringConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "AcceptVpcPeeringConnection")
+    
+    
+    return
+}
+
+func NewAcceptVpcPeeringConnectionResponse() (response *AcceptVpcPeeringConnectionResponse) {
+    response = &AcceptVpcPeeringConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AcceptVpcPeeringConnection
+// 本接口（AcceptVpcPeeringConnection）用于接受对等连接请求。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_VPCPEERINVALIDSTATECHANGE = "UnsupportedOperation.VpcPeerInvalidStateChange"
+//  UNSUPPORTEDOPERATION_VPCPEERPURVIEWERROR = "UnsupportedOperation.VpcPeerPurviewError"
+func (c *Client) AcceptVpcPeeringConnection(request *AcceptVpcPeeringConnectionRequest) (response *AcceptVpcPeeringConnectionResponse, err error) {
+    return c.AcceptVpcPeeringConnectionWithContext(context.Background(), request)
+}
+
+// AcceptVpcPeeringConnection
+// 本接口（AcceptVpcPeeringConnection）用于接受对等连接请求。
+//
+// 可能返回的错误码:
+//  INTERNALSERVERERROR = "InternalServerError"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_VPCPEERINVALIDSTATECHANGE = "UnsupportedOperation.VpcPeerInvalidStateChange"
+//  UNSUPPORTEDOPERATION_VPCPEERPURVIEWERROR = "UnsupportedOperation.VpcPeerPurviewError"
+func (c *Client) AcceptVpcPeeringConnectionWithContext(ctx context.Context, request *AcceptVpcPeeringConnectionRequest) (response *AcceptVpcPeeringConnectionResponse, err error) {
+    if request == nil {
+        request = NewAcceptVpcPeeringConnectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AcceptVpcPeeringConnection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAcceptVpcPeeringConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddBandwidthPackageResourcesRequest() (request *AddBandwidthPackageResourcesRequest) {
     request = &AddBandwidthPackageResourcesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5491,6 +5549,84 @@ func (c *Client) CreateVpcEndPointServiceWhiteListWithContext(ctx context.Contex
     return
 }
 
+func NewCreateVpcPeeringConnectionRequest() (request *CreateVpcPeeringConnectionRequest) {
+    request = &CreateVpcPeeringConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateVpcPeeringConnection")
+    
+    
+    return
+}
+
+func NewCreateVpcPeeringConnectionResponse() (response *CreateVpcPeeringConnectionResponse) {
+    response = &CreateVpcPeeringConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateVpcPeeringConnection
+// 本接口（CreateVpcPeeringConnection）用于创建私有网络对等连接。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
+//  INVALIDPARAMETERVALUE_DUPLICATEREGION = "InvalidParameterValue.DuplicateRegion"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED_VPCPEERAVALIMITEXCEEDED = "LimitExceeded.VpcPeerAvaLimitExceeded"
+//  LIMITEXCEEDED_VPCPEERTOTALLIMITEXCEEDED = "LimitExceeded.VpcPeerTotalLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_VPCPEERCIDRCONFLICT = "UnauthorizedOperation.VpcPeerCidrConflict"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PURCHASELIMIT = "UnsupportedOperation.PurchaseLimit"
+//  UNSUPPORTEDOPERATION_VPCPEERALREADYEXIST = "UnsupportedOperation.VpcPeerAlreadyExist"
+//  UNSUPPORTEDOPERATION_VPCPEERCIDRCONFLICT = "UnsupportedOperation.VpcPeerCidrConflict"
+func (c *Client) CreateVpcPeeringConnection(request *CreateVpcPeeringConnectionRequest) (response *CreateVpcPeeringConnectionResponse, err error) {
+    return c.CreateVpcPeeringConnectionWithContext(context.Background(), request)
+}
+
+// CreateVpcPeeringConnection
+// 本接口（CreateVpcPeeringConnection）用于创建私有网络对等连接。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
+//  INVALIDPARAMETERVALUE_DUPLICATEREGION = "InvalidParameterValue.DuplicateRegion"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED_VPCPEERAVALIMITEXCEEDED = "LimitExceeded.VpcPeerAvaLimitExceeded"
+//  LIMITEXCEEDED_VPCPEERTOTALLIMITEXCEEDED = "LimitExceeded.VpcPeerTotalLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_VPCPEERCIDRCONFLICT = "UnauthorizedOperation.VpcPeerCidrConflict"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PURCHASELIMIT = "UnsupportedOperation.PurchaseLimit"
+//  UNSUPPORTEDOPERATION_VPCPEERALREADYEXIST = "UnsupportedOperation.VpcPeerAlreadyExist"
+//  UNSUPPORTEDOPERATION_VPCPEERCIDRCONFLICT = "UnsupportedOperation.VpcPeerCidrConflict"
+func (c *Client) CreateVpcPeeringConnectionWithContext(ctx context.Context, request *CreateVpcPeeringConnectionRequest) (response *CreateVpcPeeringConnectionResponse, err error) {
+    if request == nil {
+        request = NewCreateVpcPeeringConnectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVpcPeeringConnection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVpcPeeringConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateVpnConnectionRequest() (request *CreateVpnConnectionRequest) {
     request = &CreateVpnConnectionRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7919,6 +8055,64 @@ func (c *Client) DeleteVpcEndPointServiceWhiteListWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewDeleteVpcEndPointServiceWhiteListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteVpcPeeringConnectionRequest() (request *DeleteVpcPeeringConnectionRequest) {
+    request = &DeleteVpcPeeringConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteVpcPeeringConnection")
+    
+    
+    return
+}
+
+func NewDeleteVpcPeeringConnectionResponse() (response *DeleteVpcPeeringConnectionResponse) {
+    response = &DeleteVpcPeeringConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteVpcPeeringConnection
+// 本接口（DeleteVpcPeeringConnection）用于删除私有网络对等连接。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTDELETEVPCBMPEER = "UnsupportedOperation.NotSupportDeleteVpcBmPeer"
+//  UNSUPPORTEDOPERATION_VPCPEERPURVIEWERROR = "UnsupportedOperation.VpcPeerPurviewError"
+func (c *Client) DeleteVpcPeeringConnection(request *DeleteVpcPeeringConnectionRequest) (response *DeleteVpcPeeringConnectionResponse, err error) {
+    return c.DeleteVpcPeeringConnectionWithContext(context.Background(), request)
+}
+
+// DeleteVpcPeeringConnection
+// 本接口（DeleteVpcPeeringConnection）用于删除私有网络对等连接。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_MUTEXOPERATIONTASKRUNNING = "UnsupportedOperation.MutexOperationTaskRunning"
+//  UNSUPPORTEDOPERATION_NOTSUPPORTDELETEVPCBMPEER = "UnsupportedOperation.NotSupportDeleteVpcBmPeer"
+//  UNSUPPORTEDOPERATION_VPCPEERPURVIEWERROR = "UnsupportedOperation.VpcPeerPurviewError"
+func (c *Client) DeleteVpcPeeringConnectionWithContext(ctx context.Context, request *DeleteVpcPeeringConnectionRequest) (response *DeleteVpcPeeringConnectionResponse, err error) {
+    if request == nil {
+        request = NewDeleteVpcPeeringConnectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVpcPeeringConnection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVpcPeeringConnectionResponse()
     err = c.Send(request, response)
     return
 }
@@ -12547,6 +12741,76 @@ func (c *Client) DescribeVpcLimitsWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeVpcLimitsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVpcPeeringConnectionsRequest() (request *DescribeVpcPeeringConnectionsRequest) {
+    request = &DescribeVpcPeeringConnectionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DescribeVpcPeeringConnections")
+    
+    
+    return
+}
+
+func NewDescribeVpcPeeringConnectionsResponse() (response *DescribeVpcPeeringConnectionsResponse) {
+    response = &DescribeVpcPeeringConnectionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVpcPeeringConnections
+// 查询私有网络对等连接。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeVpcPeeringConnections(request *DescribeVpcPeeringConnectionsRequest) (response *DescribeVpcPeeringConnectionsResponse, err error) {
+    return c.DescribeVpcPeeringConnectionsWithContext(context.Background(), request)
+}
+
+// DescribeVpcPeeringConnections
+// 查询私有网络对等连接。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETER_FILTERNOTDICT = "InvalidParameter.FilterNotDict"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeVpcPeeringConnectionsWithContext(ctx context.Context, request *DescribeVpcPeeringConnectionsRequest) (response *DescribeVpcPeeringConnectionsResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcPeeringConnectionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpcPeeringConnections require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVpcPeeringConnectionsResponse()
     err = c.Send(request, response)
     return
 }
@@ -18023,6 +18287,84 @@ func (c *Client) ModifyVpcEndPointServiceWhiteListWithContext(ctx context.Contex
     return
 }
 
+func NewModifyVpcPeeringConnectionRequest() (request *ModifyVpcPeeringConnectionRequest) {
+    request = &ModifyVpcPeeringConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "ModifyVpcPeeringConnection")
+    
+    
+    return
+}
+
+func NewModifyVpcPeeringConnectionResponse() (response *ModifyVpcPeeringConnectionResponse) {
+    response = &ModifyVpcPeeringConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyVpcPeeringConnection
+// 本接口（ModifyVpcPeeringConnection）用于修改私有网络对等连接属性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
+//  INVALIDPARAMETERVALUE_DUPLICATEREGION = "InvalidParameterValue.DuplicateRegion"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED_VPCPEERAVALIMITEXCEEDED = "LimitExceeded.VpcPeerAvaLimitExceeded"
+//  LIMITEXCEEDED_VPCPEERTOTALLIMITEXCEEDED = "LimitExceeded.VpcPeerTotalLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_VPCPEERCIDRCONFLICT = "UnauthorizedOperation.VpcPeerCidrConflict"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PURCHASELIMIT = "UnsupportedOperation.PurchaseLimit"
+//  UNSUPPORTEDOPERATION_VPCPEERALREADYEXIST = "UnsupportedOperation.VpcPeerAlreadyExist"
+//  UNSUPPORTEDOPERATION_VPCPEERCIDRCONFLICT = "UnsupportedOperation.VpcPeerCidrConflict"
+func (c *Client) ModifyVpcPeeringConnection(request *ModifyVpcPeeringConnectionRequest) (response *ModifyVpcPeeringConnectionResponse, err error) {
+    return c.ModifyVpcPeeringConnectionWithContext(context.Background(), request)
+}
+
+// ModifyVpcPeeringConnection
+// 本接口（ModifyVpcPeeringConnection）用于修改私有网络对等连接属性。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_COMBINATION = "InvalidParameterValue.Combination"
+//  INVALIDPARAMETERVALUE_DUPLICATEREGION = "InvalidParameterValue.DuplicateRegion"
+//  INVALIDPARAMETERVALUE_EMPTY = "InvalidParameterValue.Empty"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  LIMITEXCEEDED_VPCPEERAVALIMITEXCEEDED = "LimitExceeded.VpcPeerAvaLimitExceeded"
+//  LIMITEXCEEDED_VPCPEERTOTALLIMITEXCEEDED = "LimitExceeded.VpcPeerTotalLimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION_VPCPEERCIDRCONFLICT = "UnauthorizedOperation.VpcPeerCidrConflict"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  UNSUPPORTEDOPERATION_PURCHASELIMIT = "UnsupportedOperation.PurchaseLimit"
+//  UNSUPPORTEDOPERATION_VPCPEERALREADYEXIST = "UnsupportedOperation.VpcPeerAlreadyExist"
+//  UNSUPPORTEDOPERATION_VPCPEERCIDRCONFLICT = "UnsupportedOperation.VpcPeerCidrConflict"
+func (c *Client) ModifyVpcPeeringConnectionWithContext(ctx context.Context, request *ModifyVpcPeeringConnectionRequest) (response *ModifyVpcPeeringConnectionResponse, err error) {
+    if request == nil {
+        request = NewModifyVpcPeeringConnectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVpcPeeringConnection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVpcPeeringConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyVpnConnectionAttributeRequest() (request *ModifyVpnConnectionAttributeRequest) {
     request = &ModifyVpnConnectionAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -18427,6 +18769,62 @@ func (c *Client) RejectAttachCcnInstancesWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewRejectAttachCcnInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRejectVpcPeeringConnectionRequest() (request *RejectVpcPeeringConnectionRequest) {
+    request = &RejectVpcPeeringConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "RejectVpcPeeringConnection")
+    
+    
+    return
+}
+
+func NewRejectVpcPeeringConnectionResponse() (response *RejectVpcPeeringConnectionResponse) {
+    response = &RejectVpcPeeringConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RejectVpcPeeringConnection
+// 本接口（RejectVpcPeeringConnection）用于驳回对等连接请求。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_VPCPEERINVALIDSTATECHANGE = "UnsupportedOperation.VpcPeerInvalidStateChange"
+//  UNSUPPORTEDOPERATION_VPCPEERPURVIEWERROR = "UnsupportedOperation.VpcPeerPurviewError"
+func (c *Client) RejectVpcPeeringConnection(request *RejectVpcPeeringConnectionRequest) (response *RejectVpcPeeringConnectionResponse, err error) {
+    return c.RejectVpcPeeringConnectionWithContext(context.Background(), request)
+}
+
+// RejectVpcPeeringConnection
+// 本接口（RejectVpcPeeringConnection）用于驳回对等连接请求。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_VPCPEERINVALIDSTATECHANGE = "UnsupportedOperation.VpcPeerInvalidStateChange"
+//  UNSUPPORTEDOPERATION_VPCPEERPURVIEWERROR = "UnsupportedOperation.VpcPeerPurviewError"
+func (c *Client) RejectVpcPeeringConnectionWithContext(ctx context.Context, request *RejectVpcPeeringConnectionRequest) (response *RejectVpcPeeringConnectionResponse, err error) {
+    if request == nil {
+        request = NewRejectVpcPeeringConnectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RejectVpcPeeringConnection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRejectVpcPeeringConnectionResponse()
     err = c.Send(request, response)
     return
 }

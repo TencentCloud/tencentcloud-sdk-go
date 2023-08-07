@@ -81,6 +81,57 @@ func (r *AcceptAttachCcnInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type AcceptVpcPeeringConnectionRequestParams struct {
+
+}
+
+type AcceptVpcPeeringConnectionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *AcceptVpcPeeringConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AcceptVpcPeeringConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AcceptVpcPeeringConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AcceptVpcPeeringConnectionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type AcceptVpcPeeringConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *AcceptVpcPeeringConnectionResponseParams `json:"Response"`
+}
+
+func (r *AcceptVpcPeeringConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AcceptVpcPeeringConnectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AccessPolicy struct {
 	// 目的CIDR
 	TargetCidr *string `json:"TargetCidr,omitempty" name:"TargetCidr"`
@@ -5643,6 +5694,57 @@ func (r *CreateVpcEndPointServiceWhiteListResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type CreateVpcPeeringConnectionRequestParams struct {
+
+}
+
+type CreateVpcPeeringConnectionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CreateVpcPeeringConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVpcPeeringConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpcPeeringConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateVpcPeeringConnectionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateVpcPeeringConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateVpcPeeringConnectionResponseParams `json:"Response"`
+}
+
+func (r *CreateVpcPeeringConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateVpcPeeringConnectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateVpcRequestParams struct {
 	// vpc名称，最大长度不能超过60个字节。
 	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
@@ -8328,6 +8430,57 @@ func (r *DeleteVpcEndPointServiceWhiteListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteVpcEndPointServiceWhiteListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVpcPeeringConnectionRequestParams struct {
+
+}
+
+type DeleteVpcPeeringConnectionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DeleteVpcPeeringConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVpcPeeringConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVpcPeeringConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteVpcPeeringConnectionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteVpcPeeringConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteVpcPeeringConnectionResponseParams `json:"Response"`
+}
+
+func (r *DeleteVpcPeeringConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteVpcPeeringConnectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -14806,6 +14959,101 @@ func (r *DescribeVpcLimitsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeVpcLimitsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVpcPeeringConnectionsRequestParams struct {
+	// 对等连接唯一ID数组。
+	PeeringConnectionIds []*string `json:"PeeringConnectionIds,omitempty" name:"PeeringConnectionIds"`
+
+	// 过滤条件，参数不支持同时指定PeeringConnectionIds和Filters。
+	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+	// <li>state String - （过滤条件）对等连接状态，可选值有：PENDING，投放中；ACTIVE，使用中；EXPIRED，已过期；REJECTED，拒绝。</li>
+	// <li>peering-connection-name - String - （过滤条件）对等连接名称。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 请求对象个数。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段，可选值有：CreatedTime，PeeringConnectionName。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方式：DESC，降序；ASC，升序。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
+type DescribeVpcPeeringConnectionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 对等连接唯一ID数组。
+	PeeringConnectionIds []*string `json:"PeeringConnectionIds,omitempty" name:"PeeringConnectionIds"`
+
+	// 过滤条件，参数不支持同时指定PeeringConnectionIds和Filters。
+	// <li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
+	// <li>state String - （过滤条件）对等连接状态，可选值有：PENDING，投放中；ACTIVE，使用中；EXPIRED，已过期；REJECTED，拒绝。</li>
+	// <li>peering-connection-name - String - （过滤条件）对等连接名称。</li>
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 请求对象个数。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 排序字段，可选值有：CreatedTime，PeeringConnectionName。
+	OrderField *string `json:"OrderField,omitempty" name:"OrderField"`
+
+	// 排序方式：DESC，降序；ASC，升序。
+	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+}
+
+func (r *DescribeVpcPeeringConnectionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVpcPeeringConnectionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PeeringConnectionIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderField")
+	delete(f, "OrderDirection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVpcPeeringConnectionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVpcPeeringConnectionsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeVpcPeeringConnectionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVpcPeeringConnectionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeVpcPeeringConnectionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVpcPeeringConnectionsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -21769,6 +22017,57 @@ func (r *ModifyVpcEndPointServiceWhiteListResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type ModifyVpcPeeringConnectionRequestParams struct {
+
+}
+
+type ModifyVpcPeeringConnectionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ModifyVpcPeeringConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVpcPeeringConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpcPeeringConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyVpcPeeringConnectionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyVpcPeeringConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyVpcPeeringConnectionResponseParams `json:"Response"`
+}
+
+func (r *ModifyVpcPeeringConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyVpcPeeringConnectionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyVpnConnectionAttributeRequestParams struct {
 	// VPN通道实例ID。形如：vpnx-f49l6u0z。
 	VpnConnectionId *string `json:"VpnConnectionId,omitempty" name:"VpnConnectionId"`
@@ -22786,6 +23085,57 @@ func (r *RejectAttachCcnInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RejectAttachCcnInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RejectVpcPeeringConnectionRequestParams struct {
+
+}
+
+type RejectVpcPeeringConnectionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *RejectVpcPeeringConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RejectVpcPeeringConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RejectVpcPeeringConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RejectVpcPeeringConnectionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RejectVpcPeeringConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *RejectVpcPeeringConnectionResponseParams `json:"Response"`
+}
+
+func (r *RejectVpcPeeringConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RejectVpcPeeringConnectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

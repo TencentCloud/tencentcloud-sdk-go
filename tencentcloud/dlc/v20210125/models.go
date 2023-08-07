@@ -1104,6 +1104,16 @@ type CommonMetrics struct {
 	ProcessedRows *int64 `json:"ProcessedRows,omitempty" name:"ProcessedRows"`
 }
 
+type CosPermission struct {
+	// cos路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosPath *string `json:"CosPath,omitempty" name:"CosPath"`
+
+	// 权限【"read","write"】
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Permissions []*string `json:"Permissions,omitempty" name:"Permissions"`
+}
+
 // Predefined struct for user
 type CreateDMSDatabaseRequestParams struct {
 	// 基础元数据对象
@@ -6545,6 +6555,94 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeUserRolesRequestParams struct {
+	// 列举的数量限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 列举的偏移位置
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 按照arn模糊列举
+	Fuzzy *string `json:"Fuzzy,omitempty" name:"Fuzzy"`
+
+	// 返回结果按照该字段排序
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 正序或者倒序，例如：desc
+	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
+}
+
+type DescribeUserRolesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 列举的数量限制
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 列举的偏移位置
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 按照arn模糊列举
+	Fuzzy *string `json:"Fuzzy,omitempty" name:"Fuzzy"`
+
+	// 返回结果按照该字段排序
+	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+
+	// 正序或者倒序，例如：desc
+	Sorting *string `json:"Sorting,omitempty" name:"Sorting"`
+}
+
+func (r *DescribeUserRolesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserRolesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Fuzzy")
+	delete(f, "SortBy")
+	delete(f, "Sorting")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserRolesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserRolesResponseParams struct {
+	// 符合列举条件的总数量
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 用户角色信息
+	UserRoles []*UserRole `json:"UserRoles,omitempty" name:"UserRoles"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeUserRolesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserRolesResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserRolesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserRolesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUsersRequestParams struct {
 	// 指定查询的子用户uin，用户需要通过CreateUser接口创建。
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
@@ -9596,6 +9694,42 @@ type UserMessage struct {
 
 	// 用户别名
 	UserAlias *string `json:"UserAlias,omitempty" name:"UserAlias"`
+}
+
+type UserRole struct {
+	// 角色ID
+	RoleId *int64 `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 用户app ID
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 用户ID
+	Uin *string `json:"Uin,omitempty" name:"Uin"`
+
+	// 角色权限
+	Arn *string `json:"Arn,omitempty" name:"Arn"`
+
+	// 最近修改时间戳
+	ModifyTime *int64 `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 角色描述信息
+	Desc *string `json:"Desc,omitempty" name:"Desc"`
+
+	// 角色名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+
+	// 创建者UIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Creator *string `json:"Creator,omitempty" name:"Creator"`
+
+	// cos授权路径列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosPermissionList []*CosPermission `json:"CosPermissionList,omitempty" name:"CosPermissionList"`
+
+	// cam策略json
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PermissionJson *string `json:"PermissionJson,omitempty" name:"PermissionJson"`
 }
 
 type ViewBaseInfo struct {

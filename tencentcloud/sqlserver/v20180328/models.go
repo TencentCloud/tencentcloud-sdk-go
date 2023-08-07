@@ -2521,7 +2521,7 @@ type DBInstance struct {
 	// 实例版本代号
 	Version *string `json:"Version,omitempty" name:"Version"`
 
-	// 物理机代号
+	// 实例类型代号："TS85"-物理机，本地SSD硬盘；"Z3"-物理机早期版本，本地SSD硬盘；"CLOUD_BASIC"-虚拟机，普通云硬盘；"CLOUD_PREMIUM"-虚拟机，高性能云硬盘；"CLOUD_SSD"-虚拟机，云SSD硬盘；"CLOUD_HSSD"-虚拟机，增强型SSD云硬盘；"CLOUD_TSSD"-虚拟机，极速型SSD云硬盘；"CLOUD_BSSD"-虚拟机，通用型SSD云硬盘
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 计费ID

@@ -276,7 +276,7 @@ func NewCreateScanUserResponse() (response *CreateScanUserResponse) {
 }
 
 // CreateScanUser
-// 新增自定义送检用户
+// 新增自定义送检用户。**接口使用前提**：目前 CreateScanUser 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -285,7 +285,7 @@ func (c *Client) CreateScanUser(request *CreateScanUserRequest) (response *Creat
 }
 
 // CreateScanUser
-// 新增自定义送检用户
+// 新增自定义送检用户。**接口使用前提**：目前 CreateScanUser 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -430,7 +430,7 @@ func NewDeleteScanUserResponse() (response *DeleteScanUserResponse) {
 }
 
 // DeleteScanUser
-// 删除自定义送检用户
+// 删除自定义送检用户。**接口使用前提**：目前 DeleteScanUser 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -443,7 +443,7 @@ func (c *Client) DeleteScanUser(request *DeleteScanUserRequest) (response *Delet
 }
 
 // DeleteScanUser
-// 删除自定义送检用户
+// 删除自定义送检用户。**接口使用前提**：目前 DeleteScanUser 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -722,7 +722,7 @@ func NewDescribeRealtimeScanConfigResponse() (response *DescribeRealtimeScanConf
 }
 
 // DescribeRealtimeScanConfig
-// 获取用户自定义送检信息
+// 获取用户自定义送检信息。**接口使用前提**：目前 DescribeRealtimeScanConfig 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -731,7 +731,7 @@ func (c *Client) DescribeRealtimeScanConfig(request *DescribeRealtimeScanConfigR
 }
 
 // DescribeRealtimeScanConfig
-// 获取用户自定义送检信息
+// 获取用户自定义送检信息。**接口使用前提**：目前 DescribeRealtimeScanConfig 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 //
 // 可能返回的错误码:
 //  OPERATIONDENIED = "OperationDenied"
@@ -2202,7 +2202,7 @@ func NewUpdateScanRoomsResponse() (response *UpdateScanRoomsResponse) {
 }
 
 // UpdateScanRooms
-// 更新自定义送检房间号
+// 更新自定义送检房间号。**接口使用前提**：目前 UpdateScanRooms 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2218,7 +2218,7 @@ func (c *Client) UpdateScanRooms(request *UpdateScanRoomsRequest) (response *Upd
 }
 
 // UpdateScanRooms
-// 更新自定义送检房间号
+// 更新自定义送检房间号。**接口使用前提**：目前 UpdateScanRooms 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2264,7 +2264,9 @@ func NewUpdateScanUsersResponse() (response *UpdateScanUsersResponse) {
 }
 
 // UpdateScanUsers
-// 更新自定义送检用户号
+// 更新自定义送检用户号。
+//
+// **接口使用前提**：目前 UpdateScanUsers 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2280,7 +2282,9 @@ func (c *Client) UpdateScanUsers(request *UpdateScanUsersRequest) (response *Upd
 }
 
 // UpdateScanUsers
-// 更新自定义送检用户号
+// 更新自定义送检用户号。
+//
+// **接口使用前提**：目前 UpdateScanUsers 接口通过白名单开放，如需使用，需要 [提交工单申请](https://console.cloud.tencent.com/workorder/category?level1_id=438&level2_id=445&source=0&data_title=%E6%B8%B8%E6%88%8F%E5%A4%9A%E5%AA%92%E4%BD%93%E5%BC%95%E6%93%8EGME&step=1)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
