@@ -1,3 +1,313 @@
+# Release v1.0.717
+
+## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 2 次发布
+
+发布时间：2023-08-07 15:48:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddOrganization](https://cloud.tencent.com/document/api/1344/95894)
+
+	* <font color="#dd0000">**修改出参**：</font>Data
+
+* [AddRecordBackupPlan](https://cloud.tencent.com/document/api/1344/95929)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>PlanId, PlanName, TemplateId, Describe, LifeCycle, Status, ChannelCount, CreateAt, UpdateAt
+
+* [AddRecordBackupTemplate](https://cloud.tencent.com/document/api/1344/95913)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>TemplateId, TemplateName, TimeSections, DevTimeSections, Scale, CreateAt, UpdateAt
+
+* [AddRecordPlan](https://cloud.tencent.com/document/api/1344/95928)
+
+	* <font color="#dd0000">**修改出参**：</font>Data
+
+* [AddRecordRetrieveTask](https://cloud.tencent.com/document/api/1344/95941)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>TaskId, TaskName, StartTime, EndTime, Mode, Expiration, Status, Capacity, Describe
+
+* [AddStreamAuth](https://cloud.tencent.com/document/api/1344/95902)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>Id, PullState, PullSecret, PullExpired, PushState, PushSecret, PushExpired, AppId
+
+* [AddUserDevice](https://cloud.tencent.com/document/api/1344/95876)
+
+	* <font color="#dd0000">**修改出参**：</font>Data
+
+* [ControlDeviceStream](https://cloud.tencent.com/document/api/1344/95943)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>Flv, Hls, Rtmp
+
+* [DescribeAITaskResult](https://cloud.tencent.com/document/api/1344/95948)
+
+	* <font color="#dd0000">**修改出参**：</font>Data
+
+* [DescribeDeviceChannel](https://cloud.tencent.com/document/api/1344/95874)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>DeviceId, ChannelId, ChannelCode, Name, Status, PTZType, Manufacturer, Resolution, State, Region
+
+* [DescribeDevicePreset](https://cloud.tencent.com/document/api/1344/95878)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>Index, Name
+
+* [DescribeDomain](https://cloud.tencent.com/document/api/1344/95898)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>Id, PlayDomain, InternalDomain, HaveCert, ClusterId, ClusterName, AppId
+
+* [DescribeDomainRegion](https://cloud.tencent.com/document/api/1344/95897)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>Label, Value, Region
+
+* [DescribeGateway](https://cloud.tencent.com/document/api/1344/95888)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>GatewayId, GwId, Name, Description, ClusterId, ClusterName, Status, Version, DeviceNum, CreatedAt, Region
+
+* [DescribeGatewayProtocol](https://cloud.tencent.com/document/api/1344/95886)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>TypeCode, Value, Label
+
+* [DescribeGatewayVersion](https://cloud.tencent.com/document/api/1344/95885)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>Services
+
+* [DescribeOrganization](https://cloud.tencent.com/document/api/1344/95892)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>OrganizationId, Name, ParentId, Level, AppId, ParentIds, Total, Online
+
+* [DescribeRecordBackupPlan](https://cloud.tencent.com/document/api/1344/95925)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>PlanId, PlanName, TemplateId, Describe, LifeCycle, Status, ChannelCount, CreateAt, UpdateAt
+
+* [DescribeRecordBackupTemplate](https://cloud.tencent.com/document/api/1344/95909)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>TemplateId, TemplateName, TimeSections, DevTimeSections, Scale, CreateAt, UpdateAt
+
+* [DescribeRecordFile](https://cloud.tencent.com/document/api/1344/95934)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>Tips, List
+
+* [DescribeRecordRetrieveTask](https://cloud.tencent.com/document/api/1344/95939)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>TaskId, TaskName, StartTime, EndTime, Mode, Expiration, Status, Capacity, Channels, Describe, ChannelCount
+
+* [DescribeStreamAuth](https://cloud.tencent.com/document/api/1344/95896)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>Id, PullState, PullSecret, PullExpired, PushState, PushSecret, PushExpired, AppId
+
+* [DescribeUserDevice](https://cloud.tencent.com/document/api/1344/95872)
+
+	* <font color="#dd0000">**修改出参**：</font>Data
+
+* [DescribeVideoDownloadUrl](https://cloud.tencent.com/document/api/1344/95932)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>Url, ActualBeginTime, ActualEndTime
+
+* [ListGateways](https://cloud.tencent.com/document/api/1344/95884)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>List, TotalCount
+
+* [ListOrganizationChannelNumbers](https://cloud.tencent.com/document/api/1344/95923)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>TotalCount, NotInPlanCount
+
+* [ListOrganizationChannels](https://cloud.tencent.com/document/api/1344/95922)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>PageNumber, PageSize, TotalCount, List
+
+* [ListRecordBackupPlanDevices](https://cloud.tencent.com/document/api/1344/95921)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>PageNumber, PageSize, TotalCount, List
+
+* [ListRecordBackupPlans](https://cloud.tencent.com/document/api/1344/95920)
+
+	* <font color="#dd0000">**修改出参**：</font>Data
+
+* [ListRecordBackupTemplates](https://cloud.tencent.com/document/api/1344/95907)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>TemplateId, TemplateName, TimeSections, DevTimeSections, Scale, CreateAt, UpdateAt
+
+* [ListRecordPlanChannels](https://cloud.tencent.com/document/api/1344/95919)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>List
+
+* [ListRecordPlanDevices](https://cloud.tencent.com/document/api/1344/95918)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>PageNumber, PageSize, TotalCount, List
+
+* [PlayRecord](https://cloud.tencent.com/document/api/1344/95931)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>Flv
+
+* [UpdateGateway](https://cloud.tencent.com/document/api/1344/95883)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>GatewayId, GwId, Name, Description, ClusterId, ClusterName, Status, CreatedAt, Secret, Version
+
+* [UpdateOrganization](https://cloud.tencent.com/document/api/1344/95891)
+
+	* <font color="#dd0000">**修改出参**：</font>Data
+
+* [UpdateRecordBackupPlan](https://cloud.tencent.com/document/api/1344/95916)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>PlanId, PlanName, TemplateId, Describe, LifeCycle, Status, ChannelCount, CreateAt, UpdateAt
+
+* [UpdateRecordBackupTemplate](https://cloud.tencent.com/document/api/1344/95905)
+
+	* 新增出参：Data, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>TemplateId, TemplateName, TimeSections, DevTimeSections, Scale, CreateAt, UpdateAt
+
+* [UpdateRecordPlan](https://cloud.tencent.com/document/api/1344/95915)
+
+	* <font color="#dd0000">**修改出参**：</font>Data
+
+* [UpdateUserDevice](https://cloud.tencent.com/document/api/1344/95867)
+
+	* <font color="#dd0000">**修改出参**：</font>Data
+
+
+新增数据结构：
+
+* [AITaskResultData](https://cloud.tencent.com/document/api/1344/95952#AITaskResultData)
+* [AddDeviceData](https://cloud.tencent.com/document/api/1344/95952#AddDeviceData)
+* [AddOrgData](https://cloud.tencent.com/document/api/1344/95952#AddOrgData)
+* [AddRecordBackupPlanData](https://cloud.tencent.com/document/api/1344/95952#AddRecordBackupPlanData)
+* [AddRecordBackupTemplateData](https://cloud.tencent.com/document/api/1344/95952#AddRecordBackupTemplateData)
+* [AddRecordRetrieveTaskData](https://cloud.tencent.com/document/api/1344/95952#AddRecordRetrieveTaskData)
+* [AddStreamAuthData](https://cloud.tencent.com/document/api/1344/95952#AddStreamAuthData)
+* [ControlDeviceStreamData](https://cloud.tencent.com/document/api/1344/95952#ControlDeviceStreamData)
+* [DescribeDeviceChannelData](https://cloud.tencent.com/document/api/1344/95952#DescribeDeviceChannelData)
+* [DescribeDeviceData](https://cloud.tencent.com/document/api/1344/95952#DescribeDeviceData)
+* [DescribeDevicePresetData](https://cloud.tencent.com/document/api/1344/95952#DescribeDevicePresetData)
+* [DescribeDomainData](https://cloud.tencent.com/document/api/1344/95952#DescribeDomainData)
+* [DescribeDomainRegionData](https://cloud.tencent.com/document/api/1344/95952#DescribeDomainRegionData)
+* [DescribeGatewayData](https://cloud.tencent.com/document/api/1344/95952#DescribeGatewayData)
+* [DescribeGatewayProtocolData](https://cloud.tencent.com/document/api/1344/95952#DescribeGatewayProtocolData)
+* [DescribeGatewayVersionData](https://cloud.tencent.com/document/api/1344/95952#DescribeGatewayVersionData)
+* [DescribeOrganizationData](https://cloud.tencent.com/document/api/1344/95952#DescribeOrganizationData)
+* [DescribeRecordBackupPlanData](https://cloud.tencent.com/document/api/1344/95952#DescribeRecordBackupPlanData)
+* [DescribeRecordBackupTemplateData](https://cloud.tencent.com/document/api/1344/95952#DescribeRecordBackupTemplateData)
+* [DescribeRecordFileData](https://cloud.tencent.com/document/api/1344/95952#DescribeRecordFileData)
+* [DescribeRecordRetrieveTaskData](https://cloud.tencent.com/document/api/1344/95952#DescribeRecordRetrieveTaskData)
+* [DescribeStreamAuthData](https://cloud.tencent.com/document/api/1344/95952#DescribeStreamAuthData)
+* [DescribeVideoDownloadUrlData](https://cloud.tencent.com/document/api/1344/95952#DescribeVideoDownloadUrlData)
+* [ListGatewaysData](https://cloud.tencent.com/document/api/1344/95952#ListGatewaysData)
+* [ListOrganizationChannelNumbersData](https://cloud.tencent.com/document/api/1344/95952#ListOrganizationChannelNumbersData)
+* [ListOrganizationChannelsData](https://cloud.tencent.com/document/api/1344/95952#ListOrganizationChannelsData)
+* [ListRecordBackupPlanData](https://cloud.tencent.com/document/api/1344/95952#ListRecordBackupPlanData)
+* [ListRecordBackupPlanDevicesData](https://cloud.tencent.com/document/api/1344/95952#ListRecordBackupPlanDevicesData)
+* [ListRecordBackupTemplatesData](https://cloud.tencent.com/document/api/1344/95952#ListRecordBackupTemplatesData)
+* [ListRecordPlanChannelsData](https://cloud.tencent.com/document/api/1344/95952#ListRecordPlanChannelsData)
+* [ListRecordPlanDevicesData](https://cloud.tencent.com/document/api/1344/95952#ListRecordPlanDevicesData)
+* [PlayRecordData](https://cloud.tencent.com/document/api/1344/95952#PlayRecordData)
+* [RecordPlanOptData](https://cloud.tencent.com/document/api/1344/95952#RecordPlanOptData)
+* [UpdateDeviceData](https://cloud.tencent.com/document/api/1344/95952#UpdateDeviceData)
+* [UpdateGatewayData](https://cloud.tencent.com/document/api/1344/95952#UpdateGatewayData)
+* [UpdateOrgData](https://cloud.tencent.com/document/api/1344/95952#UpdateOrgData)
+* [UpdateRecordBackupPlanData](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordBackupPlanData)
+* [UpdateRecordBackupTemplateData](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordBackupTemplateData)
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* AITaskResultResponse
+* AddDeviceResponse
+* AddOrgResponse
+* DescribeDeviceResponse
+* ListRecordBackupPlanResponse
+* RecordPlanOptResponse
+* UpdateDeviceResponse
+* UpdateOrgResponse
+
+
+
+## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
+
+### 第 1 次发布
+
+发布时间：2023-08-07 10:45:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstanceList](https://cloud.tencent.com/document/api/1493/96028)
+* [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030)
+
+新增数据结构：
+
+* [Filter](https://cloud.tencent.com/document/api/1493/96031#Filter)
+* [InstanceItem](https://cloud.tencent.com/document/api/1493/96031#InstanceItem)
+* [Tag](https://cloud.tencent.com/document/api/1493/96031#Tag)
+* [TagFilter](https://cloud.tencent.com/document/api/1493/96031#TagFilter)
+* [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem)
+
+
+
 # Release v1.0.716
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

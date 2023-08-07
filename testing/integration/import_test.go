@@ -262,6 +262,7 @@ import (
 	tmtv20180321 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tmt/v20180321"
 	tourismv20230215 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/tourism/v20230215"
 	trdpv20220726 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trdp/v20220726"
+	trocketv20230308 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trocket/v20230308"
 	trpv20210515 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trp/v20210515"
 	trrov20220325 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trro/v20220325"
 	trtcv20190722 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/trtc/v20190722"
@@ -3433,6 +3434,19 @@ func TestTrdpv20220726Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init trdp_v20220726 client: %v", err)
+    }
+}
+
+func TestTrocketv20230308Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := trocketv20230308.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init trocket_v20230308 client: %v", err)
     }
 }
 

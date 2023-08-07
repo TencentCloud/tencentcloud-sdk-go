@@ -60,6 +60,18 @@ type AITaskInfo struct {
 	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
 }
 
+type AITaskResultData struct {
+	// AI 任务 ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 在 BeginTime 和 EndTime 时间之内，有识别结果的 AI 调用次数（分页依据此数值）
+	AIResultCount *uint64 `json:"AIResultCount,omitempty" name:"AIResultCount"`
+
+	// AI 任务执行结果详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AIResults *AITaskResultInfo `json:"AIResults,omitempty" name:"AIResults"`
+}
+
 type AITaskResultInfo struct {
 	// 人体识别结果列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -92,18 +104,6 @@ type AITaskResultInfo struct {
 	// 接打电话识别结果列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PhoneCall []*PhoneCallAIResultInfo `json:"PhoneCall,omitempty" name:"PhoneCall"`
-}
-
-type AITaskResultResponse struct {
-	// AI 任务 ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
-
-	// 在 BeginTime 和 EndTime 时间之内，有识别结果的 AI 调用次数（分页依据此数值）
-	AIResultCount *uint64 `json:"AIResultCount,omitempty" name:"AIResultCount"`
-
-	// AI 任务执行结果详情
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AIResults *AITaskResultInfo `json:"AIResults,omitempty" name:"AIResults"`
 }
 
 type AITemplates struct {
@@ -210,7 +210,7 @@ func (r *AddAITaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type AddDeviceResponse struct {
+type AddDeviceData struct {
 	// 设备iD
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
@@ -285,7 +285,7 @@ type AddDeviceResponse struct {
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
 }
 
-type AddOrgResponse struct {
+type AddOrgData struct {
 	// 组织 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
@@ -361,7 +361,7 @@ func (r *AddOrganizationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddOrganizationResponseParams struct {
 	// 增加组织接口返回数据
-	Data *AddOrgResponse `json:"Data,omitempty" name:"Data"`
+	Data *AddOrgData `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -381,6 +381,35 @@ func (r *AddOrganizationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *AddOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddRecordBackupPlanData struct {
+	// 录像上云计划ID
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+
+	// 录像上云计划名称
+	PlanName *string `json:"PlanName,omitempty" name:"PlanName"`
+
+	// 录像上云模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 录像上云计划描述
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
+
+	// 云文件生命周期
+	LifeCycle *LifeCycleData `json:"LifeCycle,omitempty" name:"LifeCycle"`
+
+	// 录像上云计划状态，1:正常使用中，0:删除中，无法使用
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 通道数量
+	ChannelCount *int64 `json:"ChannelCount,omitempty" name:"ChannelCount"`
+
+	// 创建时间
+	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
+
+	// 修改时间
+	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
 }
 
 // Predefined struct for user
@@ -452,32 +481,11 @@ func (r *AddRecordBackupPlanRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddRecordBackupPlanResponseParams struct {
-	// 录像上云计划ID
-	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+	// 返回数据
+	Data *AddRecordBackupPlanData `json:"Data,omitempty" name:"Data"`
 
-	// 录像上云计划名称
-	PlanName *string `json:"PlanName,omitempty" name:"PlanName"`
-
-	// 录像上云模板ID
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
-
-	// 录像上云计划描述
-	Describe *string `json:"Describe,omitempty" name:"Describe"`
-
-	// 云文件生命周期
-	LifeCycle *LifeCycleData `json:"LifeCycle,omitempty" name:"LifeCycle"`
-
-	// 录像上云计划状态，1:正常使用中，0:删除中，无法使用
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 通道数量
-	ChannelCount *int64 `json:"ChannelCount,omitempty" name:"ChannelCount"`
-
-	// 创建时间
-	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
-
-	// 修改时间
-	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type AddRecordBackupPlanResponse struct {
@@ -494,6 +502,36 @@ func (r *AddRecordBackupPlanResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *AddRecordBackupPlanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddRecordBackupTemplateData struct {
+	// 模板ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 模板名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitempty" name:"TimeSections"`
+
+	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitempty" name:"DevTimeSections"`
+
+	// 上云倍速（支持1，2，4倍速）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scale *int64 `json:"Scale,omitempty" name:"Scale"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
 }
 
 // Predefined struct for user
@@ -551,33 +589,11 @@ func (r *AddRecordBackupTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddRecordBackupTemplateResponseParams struct {
-	// 模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	// 返回数据
+	Data *AddRecordBackupTemplateData `json:"Data,omitempty" name:"Data"`
 
-	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
-
-	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitempty" name:"TimeSections"`
-
-	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitempty" name:"DevTimeSections"`
-
-	// 上云倍速（支持1，2，4倍速）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Scale *int64 `json:"Scale,omitempty" name:"Scale"`
-
-	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
-
-	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type AddRecordBackupTemplateResponse struct {
@@ -673,7 +689,7 @@ func (r *AddRecordPlanRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddRecordPlanResponseParams struct {
 	// 返回结果
-	Data *RecordPlanOptResponse `json:"Data,omitempty" name:"Data"`
+	Data *RecordPlanOptData `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -693,6 +709,36 @@ func (r *AddRecordPlanResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *AddRecordPlanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type AddRecordRetrieveTaskData struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 取回录像的开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 取回录像的结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 取回模式，1:极速模式，其他暂不支持
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 副本有效期
+	Expiration *int64 `json:"Expiration,omitempty" name:"Expiration"`
+
+	// 任务状态，0:已取回，1:取回中，2:待取回
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 取回容量，单位MB
+	Capacity *float64 `json:"Capacity,omitempty" name:"Capacity"`
+
+	// 任务描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
 }
 
 // Predefined struct for user
@@ -771,33 +817,11 @@ func (r *AddRecordRetrieveTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddRecordRetrieveTaskResponseParams struct {
-	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	// 返回结果
+	Data *AddRecordRetrieveTaskData `json:"Data,omitempty" name:"Data"`
 
-	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
-
-	// 取回录像的开始时间
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 取回录像的结束时间
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 取回模式，1:极速模式，其他暂不支持
-	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
-
-	// 副本有效期
-	Expiration *int64 `json:"Expiration,omitempty" name:"Expiration"`
-
-	// 任务状态，0:已取回，1:取回中，2:待取回
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 取回容量，单位MB
-	Capacity *float64 `json:"Capacity,omitempty" name:"Capacity"`
-
-	// 任务描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Describe *string `json:"Describe,omitempty" name:"Describe"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type AddRecordRetrieveTaskResponse struct {
@@ -880,6 +904,40 @@ func (r *AddRecordTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AddStreamAuthData struct {
+	// 鉴权配置ID（uuid）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 是否开播放鉴权（1:开启,0:关闭）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PullState *int64 `json:"PullState,omitempty" name:"PullState"`
+
+	// 播放密钥（仅支持字母数字，长度0-10位）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PullSecret *string `json:"PullSecret,omitempty" name:"PullSecret"`
+
+	// 播放过期时间（单位：分钟）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PullExpired *int64 `json:"PullExpired,omitempty" name:"PullExpired"`
+
+	// 是否开启推流鉴权（1:开启,0:关闭）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PushState *int64 `json:"PushState,omitempty" name:"PushState"`
+
+	// 推流密钥（仅支持字母数字，长度0-10位）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PushSecret *string `json:"PushSecret,omitempty" name:"PushSecret"`
+
+	// 推流过期时间（单位：分钟）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PushExpired *int64 `json:"PushExpired,omitempty" name:"PushExpired"`
+
+	// 用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+}
+
 // Predefined struct for user
 type AddStreamAuthRequestParams struct {
 	// 鉴权配置ID（uuid）
@@ -956,37 +1014,11 @@ func (r *AddStreamAuthRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddStreamAuthResponseParams struct {
-	// 鉴权配置ID（uuid）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *string `json:"Id,omitempty" name:"Id"`
+	// 设置推拉流鉴权返回数据
+	Data *AddStreamAuthData `json:"Data,omitempty" name:"Data"`
 
-	// 是否开播放鉴权（1:开启,0:关闭）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PullState *int64 `json:"PullState,omitempty" name:"PullState"`
-
-	// 播放密钥（仅支持字母数字，长度0-10位）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PullSecret *string `json:"PullSecret,omitempty" name:"PullSecret"`
-
-	// 播放过期时间（单位：分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PullExpired *int64 `json:"PullExpired,omitempty" name:"PullExpired"`
-
-	// 是否开启推流鉴权（1:开启,0:关闭）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PushState *int64 `json:"PushState,omitempty" name:"PushState"`
-
-	// 推流密钥（仅支持字母数字，长度0-10位）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PushSecret *string `json:"PushSecret,omitempty" name:"PushSecret"`
-
-	// 推流过期时间（单位：分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PushExpired *int64 `json:"PushExpired,omitempty" name:"PushExpired"`
-
-	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type AddStreamAuthResponse struct {
@@ -1124,7 +1156,7 @@ func (r *AddUserDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddUserDeviceResponseParams struct {
 	// 增加设备返回数据
-	Data *AddDeviceResponse `json:"Data,omitempty" name:"Data"`
+	Data *AddDeviceData `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -1436,6 +1468,20 @@ func (r *ControlDevicePresetResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ControlDeviceStreamData struct {
+	// flv 流地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Flv *string `json:"Flv,omitempty" name:"Flv"`
+
+	// hls 流地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hls *string `json:"Hls,omitempty" name:"Hls"`
+
+	// rtmp 流地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rtmp *string `json:"Rtmp,omitempty" name:"Rtmp"`
+}
+
 // Predefined struct for user
 type ControlDeviceStreamRequestParams struct {
 	// 通道 ID（从通道查询接口DescribeDeviceChannel中获取）
@@ -1498,17 +1544,11 @@ func (r *ControlDeviceStreamRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ControlDeviceStreamResponseParams struct {
-	// flv 流地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Flv *string `json:"Flv,omitempty" name:"Flv"`
+	// 返回数据
+	Data *ControlDeviceStreamData `json:"Data,omitempty" name:"Data"`
 
-	// hls 流地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Hls *string `json:"Hls,omitempty" name:"Hls"`
-
-	// rtmp 流地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rtmp *string `json:"Rtmp,omitempty" name:"Rtmp"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type ControlDeviceStreamResponse struct {
@@ -2364,7 +2404,7 @@ func (r *DescribeAITaskResultRequest) FromJsonString(s string) error {
 type DescribeAITaskResultResponseParams struct {
 	// AI识别结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *AITaskResultResponse `json:"Data,omitempty" name:"Data"`
+	Data *AITaskResultData `json:"Data,omitempty" name:"Data"`
 
 	// AI识别结果数量
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
@@ -2446,40 +2486,7 @@ func (r *DescribeCNAMEResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type DescribeDeviceChannelRequestParams struct {
-	// 设备ID（从获取设备列表接口ListDevices中获取）
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
-}
-
-type DescribeDeviceChannelRequest struct {
-	*tchttp.BaseRequest
-	
-	// 设备ID（从获取设备列表接口ListDevices中获取）
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
-}
-
-func (r *DescribeDeviceChannelRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDeviceChannelRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "DeviceId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceChannelRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeDeviceChannelResponseParams struct {
+type DescribeDeviceChannelData struct {
 	// 设备 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
@@ -2521,6 +2528,47 @@ type DescribeDeviceChannelResponseParams struct {
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
+// Predefined struct for user
+type DescribeDeviceChannelRequestParams struct {
+	// 设备ID（从获取设备列表接口ListDevices中获取）
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
+type DescribeDeviceChannelRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备ID（从获取设备列表接口ListDevices中获取）
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+}
+
+func (r *DescribeDeviceChannelRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceChannelRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceChannelRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceChannelResponseParams struct {
+	// 返回结果
+	Data []*DescribeDeviceChannelData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeDeviceChannelResponse struct {
 	*tchttp.BaseResponse
 	Response *DescribeDeviceChannelResponseParams `json:"Response"`
@@ -2537,134 +2585,7 @@ func (r *DescribeDeviceChannelResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type DescribeDevicePresetRequestParams struct {
-	// 通道ID（从通道查询接口DescribeDeviceChannel中获取）
-	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
-}
-
-type DescribeDevicePresetRequest struct {
-	*tchttp.BaseRequest
-	
-	// 通道ID（从通道查询接口DescribeDeviceChannel中获取）
-	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
-}
-
-func (r *DescribeDevicePresetRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDevicePresetRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "ChannelId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDevicePresetRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeDevicePresetResponseParams struct {
-	// 预置位索引    只支持1-10的索引
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index *int64 `json:"Index,omitempty" name:"Index"`
-
-	// 预置位名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
-}
-
-type DescribeDevicePresetResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeDevicePresetResponseParams `json:"Response"`
-}
-
-func (r *DescribeDevicePresetResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDevicePresetResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeDeviceRegion struct {
-	// 服务节点描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Label *string `json:"Label,omitempty" name:"Label"`
-
-	// 服务节点 ID（对应为其他接口中所需的 ClusterId）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitempty" name:"Value"`
-
-	// 地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitempty" name:"Region"`
-}
-
-// Predefined struct for user
-type DescribeDeviceRegionRequestParams struct {
-
-}
-
-type DescribeDeviceRegionRequest struct {
-	*tchttp.BaseRequest
-	
-}
-
-func (r *DescribeDeviceRegionRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDeviceRegionRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceRegionRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeDeviceRegionResponseParams struct {
-	// 返回数据
-	Data []*DescribeDeviceRegion `json:"Data,omitempty" name:"Data"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeDeviceRegionResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeDeviceRegionResponseParams `json:"Response"`
-}
-
-func (r *DescribeDeviceRegionResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeDeviceRegionResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type DescribeDeviceResponse struct {
+type DescribeDeviceData struct {
 	// 设备ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
@@ -2771,6 +2692,185 @@ type DescribeDeviceResponse struct {
 	Manufacturer *string `json:"Manufacturer,omitempty" name:"Manufacturer"`
 }
 
+type DescribeDevicePresetData struct {
+	// 预置位索引    只支持1-10的索引
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *int64 `json:"Index,omitempty" name:"Index"`
+
+	// 预置位名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+}
+
+// Predefined struct for user
+type DescribeDevicePresetRequestParams struct {
+	// 通道ID（从通道查询接口DescribeDeviceChannel中获取）
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+}
+
+type DescribeDevicePresetRequest struct {
+	*tchttp.BaseRequest
+	
+	// 通道ID（从通道查询接口DescribeDeviceChannel中获取）
+	ChannelId *string `json:"ChannelId,omitempty" name:"ChannelId"`
+}
+
+func (r *DescribeDevicePresetRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDevicePresetRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDevicePresetRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDevicePresetResponseParams struct {
+	// 返回数据
+	Data []*DescribeDevicePresetData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDevicePresetResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDevicePresetResponseParams `json:"Response"`
+}
+
+func (r *DescribeDevicePresetResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDevicePresetResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDeviceRegion struct {
+	// 服务节点描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 服务节点 ID（对应为其他接口中所需的 ClusterId）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 地域信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
+// Predefined struct for user
+type DescribeDeviceRegionRequestParams struct {
+
+}
+
+type DescribeDeviceRegionRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeDeviceRegionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceRegionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeviceRegionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeviceRegionResponseParams struct {
+	// 返回数据
+	Data []*DescribeDeviceRegion `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDeviceRegionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeviceRegionResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeviceRegionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeviceRegionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeDomainData struct {
+	// 域名ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 播放域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PlayDomain *string `json:"PlayDomain,omitempty" name:"PlayDomain"`
+
+	// CNAME 记录值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalDomain *string `json:"InternalDomain,omitempty" name:"InternalDomain"`
+
+	// 是否上传证书（0：否，1：是）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HaveCert *int64 `json:"HaveCert,omitempty" name:"HaveCert"`
+
+	// 服务节点 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 服务节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+}
+
+type DescribeDomainRegionData struct {
+	// 服务节点描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+
+	// 服务节点 ID（对应为其他接口中所需的 ClusterId）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitempty" name:"Value"`
+
+	// 地域信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+}
+
 // Predefined struct for user
 type DescribeDomainRegionRequestParams struct {
 
@@ -2802,17 +2902,11 @@ func (r *DescribeDomainRegionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainRegionResponseParams struct {
-	// 服务节点描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Label *string `json:"Label,omitempty" name:"Label"`
+	// 返回数据
+	Data []*DescribeDomainRegionData `json:"Data,omitempty" name:"Data"`
 
-	// 服务节点 ID（对应为其他接口中所需的 ClusterId）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitempty" name:"Value"`
-
-	// 地域信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitempty" name:"Region"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type DescribeDomainRegionResponse struct {
@@ -2862,33 +2956,11 @@ func (r *DescribeDomainRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainResponseParams struct {
-	// 域名ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *string `json:"Id,omitempty" name:"Id"`
+	// 返回数据
+	Data []*DescribeDomainData `json:"Data,omitempty" name:"Data"`
 
-	// 播放域名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PlayDomain *string `json:"PlayDomain,omitempty" name:"PlayDomain"`
-
-	// CNAME 记录值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	InternalDomain *string `json:"InternalDomain,omitempty" name:"InternalDomain"`
-
-	// 是否上传证书（0：否，1：是）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	HaveCert *int64 `json:"HaveCert,omitempty" name:"HaveCert"`
-
-	// 服务节点 ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-
-	// 服务节点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
-
-	// 用户ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type DescribeDomainResponse struct {
@@ -2905,6 +2977,52 @@ func (r *DescribeDomainResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeGatewayData struct {
+	// 网关索引ID，用于网关查询，更新，删除操作
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 网关编码，由网关设备生成的唯一编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GwId *string `json:"GwId,omitempty" name:"GwId"`
+
+	// 网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 服务节点id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 服务节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 网关状态，0：离线，1:在线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 网关版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version []*GatewayVersion `json:"Version,omitempty" name:"Version"`
+
+	// 网关下挂设备数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceNum *int64 `json:"DeviceNum,omitempty" name:"DeviceNum"`
+
+	// 激活时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 所属地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
 type DescribeGatewayMonitor struct {
@@ -3002,6 +3120,20 @@ func (r *DescribeGatewayMonitorResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeGatewayProtocolData struct {
+	// 接入协议的字典码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TypeCode *string `json:"TypeCode,omitempty" name:"TypeCode"`
+
+	// 接入协议类型值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *int64 `json:"Value,omitempty" name:"Value"`
+
+	// 接入协议的类型描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Label *string `json:"Label,omitempty" name:"Label"`
+}
+
 // Predefined struct for user
 type DescribeGatewayProtocolRequestParams struct {
 
@@ -3033,17 +3165,11 @@ func (r *DescribeGatewayProtocolRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGatewayProtocolResponseParams struct {
-	// 接入协议的字典码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TypeCode *string `json:"TypeCode,omitempty" name:"TypeCode"`
+	// 返回数据
+	Data []*DescribeGatewayProtocolData `json:"Data,omitempty" name:"Data"`
 
-	// 接入协议类型值
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *int64 `json:"Value,omitempty" name:"Value"`
-
-	// 接入协议的类型描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Label *string `json:"Label,omitempty" name:"Label"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type DescribeGatewayProtocolResponse struct {
@@ -3096,49 +3222,11 @@ func (r *DescribeGatewayRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGatewayResponseParams struct {
-	// 网关索引ID，用于网关查询，更新，删除操作
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+	// 返回数据
+	Data *DescribeGatewayData `json:"Data,omitempty" name:"Data"`
 
-	// 网关编码，由网关设备生成的唯一编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	GwId *string `json:"GwId,omitempty" name:"GwId"`
-
-	// 网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
-
-	// 服务节点id
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-
-	// 服务节点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
-
-	// 网关状态，0：离线，1:在线
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 网关版本
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Version []*GatewayVersion `json:"Version,omitempty" name:"Version"`
-
-	// 网关下挂设备数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeviceNum *int64 `json:"DeviceNum,omitempty" name:"DeviceNum"`
-
-	// 激活时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
-
-	// 所属地域
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitempty" name:"Region"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type DescribeGatewayResponse struct {
@@ -3179,6 +3267,12 @@ type DescribeGatewayVersion struct {
 	UpgradeInfo []*string `json:"UpgradeInfo,omitempty" name:"UpgradeInfo"`
 }
 
+type DescribeGatewayVersionData struct {
+	// 网关服务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Services []*DescribeGatewayVersion `json:"Services,omitempty" name:"Services"`
+}
+
 // Predefined struct for user
 type DescribeGatewayVersionRequestParams struct {
 	// 网关索引ID（从获取网关列表接口ListGateways中获取）
@@ -3213,9 +3307,11 @@ func (r *DescribeGatewayVersionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGatewayVersionResponseParams struct {
-	// 网关服务列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Services []*DescribeGatewayVersion `json:"Services,omitempty" name:"Services"`
+	// 返回数据
+	Data *DescribeGatewayVersionData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type DescribeGatewayVersionResponse struct {
@@ -3234,37 +3330,7 @@ func (r *DescribeGatewayVersionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type DescribeOrganizationRequestParams struct {
-
-}
-
-type DescribeOrganizationRequest struct {
-	*tchttp.BaseRequest
-	
-}
-
-func (r *DescribeOrganizationRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeOrganizationRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeOrganizationResponseParams struct {
+type DescribeOrganizationData struct {
 	// 组织 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
@@ -3298,6 +3364,44 @@ type DescribeOrganizationResponseParams struct {
 	Online *int64 `json:"Online,omitempty" name:"Online"`
 }
 
+// Predefined struct for user
+type DescribeOrganizationRequestParams struct {
+
+}
+
+type DescribeOrganizationRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeOrganizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeOrganizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeOrganizationResponseParams struct {
+	// 返回数据
+	Data []*DescribeOrganizationData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
 type DescribeOrganizationResponse struct {
 	*tchttp.BaseResponse
 	Response *DescribeOrganizationResponseParams `json:"Response"`
@@ -3312,6 +3416,35 @@ func (r *DescribeOrganizationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRecordBackupPlanData struct {
+	// 录像上云计划ID
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+
+	// 录像上云计划名称
+	PlanName *string `json:"PlanName,omitempty" name:"PlanName"`
+
+	// 录像上云模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 录像上云计划描述
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
+
+	// 云文件生命周期
+	LifeCycle *LifeCycleData `json:"LifeCycle,omitempty" name:"LifeCycle"`
+
+	// 录像上云计划状态，1:正常使用中，0:删除中，无法使用
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 通道数量
+	ChannelCount *int64 `json:"ChannelCount,omitempty" name:"ChannelCount"`
+
+	// 创建时间
+	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
+
+	// 修改时间
+	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
 }
 
 // Predefined struct for user
@@ -3348,32 +3481,11 @@ func (r *DescribeRecordBackupPlanRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRecordBackupPlanResponseParams struct {
-	// 录像上云计划ID
-	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+	// 返回数据
+	Data *DescribeRecordBackupPlanData `json:"Data,omitempty" name:"Data"`
 
-	// 录像上云计划名称
-	PlanName *string `json:"PlanName,omitempty" name:"PlanName"`
-
-	// 录像上云模板ID
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
-
-	// 录像上云计划描述
-	Describe *string `json:"Describe,omitempty" name:"Describe"`
-
-	// 云文件生命周期
-	LifeCycle *LifeCycleData `json:"LifeCycle,omitempty" name:"LifeCycle"`
-
-	// 录像上云计划状态，1:正常使用中，0:删除中，无法使用
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 通道数量
-	ChannelCount *int64 `json:"ChannelCount,omitempty" name:"ChannelCount"`
-
-	// 创建时间
-	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
-
-	// 修改时间
-	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type DescribeRecordBackupPlanResponse struct {
@@ -3390,6 +3502,36 @@ func (r *DescribeRecordBackupPlanResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeRecordBackupPlanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRecordBackupTemplateData struct {
+	// 模板ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 模板名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitempty" name:"TimeSections"`
+
+	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitempty" name:"DevTimeSections"`
+
+	// 上云倍速（支持1，2，4倍速）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scale *int64 `json:"Scale,omitempty" name:"Scale"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
 }
 
 // Predefined struct for user
@@ -3426,33 +3568,11 @@ func (r *DescribeRecordBackupTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRecordBackupTemplateResponseParams struct {
-	// 模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	// 返回数据
+	Data *DescribeRecordBackupTemplateData `json:"Data,omitempty" name:"Data"`
 
-	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
-
-	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitempty" name:"TimeSections"`
-
-	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitempty" name:"DevTimeSections"`
-
-	// 上云倍速（支持1，2，4倍速）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Scale *int64 `json:"Scale,omitempty" name:"Scale"`
-
-	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
-
-	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type DescribeRecordBackupTemplateResponse struct {
@@ -3469,6 +3589,15 @@ func (r *DescribeRecordBackupTemplateResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeRecordBackupTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeRecordFileData struct {
+	// 提示类型，0:时间段内无归档录像，1:时间段内有归档录像
+	Tips *int64 `json:"Tips,omitempty" name:"Tips"`
+
+	// 存在为数组格式，不存在字段内容为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*RecordTimeLine `json:"List,omitempty" name:"List"`
 }
 
 // Predefined struct for user
@@ -3526,12 +3655,11 @@ func (r *DescribeRecordFileRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRecordFileResponseParams struct {
-	// 提示类型，0:时间段内无归档录像，1:时间段内有归档录像
-	Tips *int64 `json:"Tips,omitempty" name:"Tips"`
+	// 返回结果
+	Data *DescribeRecordFileData `json:"Data,omitempty" name:"Data"`
 
-	// 存在为数组格式，不存在字段内容为空
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*RecordTimeLine `json:"List,omitempty" name:"List"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type DescribeRecordFileResponse struct {
@@ -3678,6 +3806,42 @@ func (r *DescribeRecordPlaybackUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DescribeRecordRetrieveTaskData struct {
+	// 取回任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 取回任务名称
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 取回录像的开始时间
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 取回录像的结束时间
+	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 取回模式，1:极速模式，其他暂不支持
+	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+
+	// 副本有效期
+	Expiration *int64 `json:"Expiration,omitempty" name:"Expiration"`
+
+	// 任务状态，0:已取回，1:取回中，2:待取回
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 取回容量，单位MB
+	Capacity *float64 `json:"Capacity,omitempty" name:"Capacity"`
+
+	// 任务的设备通道id
+	Channels []*RecordRetrieveTaskChannelInfo `json:"Channels,omitempty" name:"Channels"`
+
+	// 任务描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
+
+	// 任务通道数量
+	ChannelCount *int64 `json:"ChannelCount,omitempty" name:"ChannelCount"`
+}
+
 // Predefined struct for user
 type DescribeRecordRetrieveTaskRequestParams struct {
 	// 云录像取回任务ID
@@ -3712,39 +3876,11 @@ func (r *DescribeRecordRetrieveTaskRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRecordRetrieveTaskResponseParams struct {
-	// 取回任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	// 返回结果
+	Data *DescribeRecordRetrieveTaskData `json:"Data,omitempty" name:"Data"`
 
-	// 取回任务名称
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
-
-	// 取回录像的开始时间
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
-
-	// 取回录像的结束时间
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
-
-	// 取回模式，1:极速模式，其他暂不支持
-	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
-
-	// 副本有效期
-	Expiration *int64 `json:"Expiration,omitempty" name:"Expiration"`
-
-	// 任务状态，0:已取回，1:取回中，2:待取回
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 取回容量，单位MB
-	Capacity *float64 `json:"Capacity,omitempty" name:"Capacity"`
-
-	// 任务的设备通道id
-	Channels []*RecordRetrieveTaskChannelInfo `json:"Channels,omitempty" name:"Channels"`
-
-	// 任务描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Describe *string `json:"Describe,omitempty" name:"Describe"`
-
-	// 任务通道数量
-	ChannelCount *int64 `json:"ChannelCount,omitempty" name:"ChannelCount"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type DescribeRecordRetrieveTaskResponse struct {
@@ -3820,37 +3956,7 @@ func (r *DescribeRecordTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type DescribeStreamAuthRequestParams struct {
-
-}
-
-type DescribeStreamAuthRequest struct {
-	*tchttp.BaseRequest
-	
-}
-
-func (r *DescribeStreamAuthRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeStreamAuthRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamAuthRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeStreamAuthResponseParams struct {
+type DescribeStreamAuthData struct {
 	// 鉴权配置ID（uuid）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Id *string `json:"Id,omitempty" name:"Id"`
@@ -3882,6 +3988,44 @@ type DescribeStreamAuthResponseParams struct {
 	// 用户ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+}
+
+// Predefined struct for user
+type DescribeStreamAuthRequestParams struct {
+
+}
+
+type DescribeStreamAuthRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeStreamAuthRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeStreamAuthRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStreamAuthRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeStreamAuthResponseParams struct {
+	// 返回结果
+	Data *DescribeStreamAuthData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type DescribeStreamAuthResponse struct {
@@ -3935,7 +4079,7 @@ func (r *DescribeUserDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserDeviceResponseParams struct {
 	// 返回结果
-	Data *DescribeDeviceResponse `json:"Data,omitempty" name:"Data"`
+	Data *DescribeDeviceData `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3955,6 +4099,23 @@ func (r *DescribeUserDeviceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DescribeUserDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVideoDownloadUrlData struct {
+	// 录像文件下载 URL
+	// 注意：
+	// URL 有效期是10分钟，过期后将拒绝访问，若需再用请重新获取 
+	// 录像文件下载采用分块传输编码，响应头Transfer-Encoding:chunked 
+	// 下载文件命名格式为{ChannelId}-{BeginTime}-{EndTime}.{FileType} 
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 实际下载录像的开始时间
+	// 注意：当请求中指定IsRespActualTime参数为true时，才有该字段
+	ActualBeginTime *string `json:"ActualBeginTime,omitempty" name:"ActualBeginTime"`
+
+	// 实际下载录像的结束时间
+	// 注意：当请求中指定IsRespActualTime参数为true时，才有该字段
+	ActualEndTime *string `json:"ActualEndTime,omitempty" name:"ActualEndTime"`
 }
 
 // Predefined struct for user
@@ -4019,20 +4180,11 @@ func (r *DescribeVideoDownloadUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVideoDownloadUrlResponseParams struct {
-	// 录像文件下载 URL
-	// 注意：
-	// URL 有效期是10分钟，过期后将拒绝访问，若需再用请重新获取 
-	// 录像文件下载采用分块传输编码，响应头Transfer-Encoding:chunked 
-	// 下载文件命名格式为{ChannelId}-{BeginTime}-{EndTime}.{FileType} 
-	Url *string `json:"Url,omitempty" name:"Url"`
+	// 返回的数据结构
+	Data *DescribeVideoDownloadUrlData `json:"Data,omitempty" name:"Data"`
 
-	// 实际下载录像的开始时间
-	// 注意：当请求中指定IsRespActualTime参数为true时，才有该字段
-	ActualBeginTime *string `json:"ActualBeginTime,omitempty" name:"ActualBeginTime"`
-
-	// 实际下载录像的结束时间
-	// 注意：当请求中指定IsRespActualTime参数为true时，才有该字段
-	ActualEndTime *string `json:"ActualEndTime,omitempty" name:"ActualEndTime"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type DescribeVideoDownloadUrlResponse struct {
@@ -4375,6 +4527,16 @@ func (r *ListDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListGatewaysData struct {
+	// 网关列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*GatewaysData `json:"List,omitempty" name:"List"`
+
+	// 网关数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+}
+
 // Predefined struct for user
 type ListGatewaysRequestParams struct {
 	// 页码，默认为1
@@ -4437,13 +4599,11 @@ func (r *ListGatewaysRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListGatewaysResponseParams struct {
-	// 网关列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*GatewaysData `json:"List,omitempty" name:"List"`
+	// 返回数据
+	Data *ListGatewaysData `json:"Data,omitempty" name:"Data"`
 
-	// 网关数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type ListGatewaysResponse struct {
@@ -4460,6 +4620,14 @@ func (r *ListGatewaysResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ListGatewaysResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListOrganizationChannelNumbersData struct {
+	// 组织下通道总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 组织下未添加到计划的通道总数
+	NotInPlanCount *int64 `json:"NotInPlanCount,omitempty" name:"NotInPlanCount"`
 }
 
 // Predefined struct for user
@@ -4496,11 +4664,11 @@ func (r *ListOrganizationChannelNumbersRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListOrganizationChannelNumbersResponseParams struct {
-	// 组织下通道总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	// 返回结果
+	Data *ListOrganizationChannelNumbersData `json:"Data,omitempty" name:"Data"`
 
-	// 组织下未添加到计划的通道总数
-	NotInPlanCount *int64 `json:"NotInPlanCount,omitempty" name:"NotInPlanCount"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type ListOrganizationChannelNumbersResponse struct {
@@ -4517,6 +4685,21 @@ func (r *ListOrganizationChannelNumbersResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ListOrganizationChannelNumbersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListOrganizationChannelsData struct {
+	// 第几页
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 当前页的设备数量
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 本次查询的设备通道总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 设备通道信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*OrganizationChannelInfo `json:"List,omitempty" name:"List"`
 }
 
 // Predefined struct for user
@@ -4585,18 +4768,11 @@ func (r *ListOrganizationChannelsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListOrganizationChannelsResponseParams struct {
-	// 第几页
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	// 返回结果
+	Data *ListOrganizationChannelsData `json:"Data,omitempty" name:"Data"`
 
-	// 当前页的设备数量
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
-
-	// 本次查询的设备通道总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 设备通道信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*OrganizationChannelInfo `json:"List,omitempty" name:"List"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type ListOrganizationChannelsResponse struct {
@@ -4613,6 +4789,53 @@ func (r *ListOrganizationChannelsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ListOrganizationChannelsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListRecordBackupPlanData struct {
+	// 录像上云计划ID
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+
+	// 录像上云计划名称
+	PlanName *string `json:"PlanName,omitempty" name:"PlanName"`
+
+	// 录像上云模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 录像上云计划描述
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
+
+	// 云文件生命周期
+	LifeCycle *LifeCycleData `json:"LifeCycle,omitempty" name:"LifeCycle"`
+
+	// 录像上云计划状态，1:正常使用中，0:删除中，无法使用
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 通道数量
+	ChannelCount *int64 `json:"ChannelCount,omitempty" name:"ChannelCount"`
+
+	// 创建时间
+	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
+
+	// 修改时间
+	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
+}
+
+type ListRecordBackupPlanDevicesData struct {
+	// 第几页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 当前页的设备数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 本次查询的设备通道总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 设备通道信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List *RecordPlanChannelInfo `json:"List,omitempty" name:"List"`
 }
 
 // Predefined struct for user
@@ -4684,21 +4907,11 @@ func (r *ListRecordBackupPlanDevicesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRecordBackupPlanDevicesResponseParams struct {
-	// 第几页
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	// 返回数据
+	Data *ListRecordBackupPlanDevicesData `json:"Data,omitempty" name:"Data"`
 
-	// 当前页的设备数量
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
-
-	// 本次查询的设备通道总数
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 设备通道信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	List *RecordPlanChannelInfo `json:"List,omitempty" name:"List"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type ListRecordBackupPlanDevicesResponse struct {
@@ -4715,35 +4928,6 @@ func (r *ListRecordBackupPlanDevicesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ListRecordBackupPlanDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
-}
-
-type ListRecordBackupPlanResponse struct {
-	// 录像上云计划ID
-	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
-
-	// 录像上云计划名称
-	PlanName *string `json:"PlanName,omitempty" name:"PlanName"`
-
-	// 录像上云模板ID
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
-
-	// 录像上云计划描述
-	Describe *string `json:"Describe,omitempty" name:"Describe"`
-
-	// 云文件生命周期
-	LifeCycle *LifeCycleData `json:"LifeCycle,omitempty" name:"LifeCycle"`
-
-	// 录像上云计划状态，1:正常使用中，0:删除中，无法使用
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 通道数量
-	ChannelCount *int64 `json:"ChannelCount,omitempty" name:"ChannelCount"`
-
-	// 创建时间
-	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
-
-	// 修改时间
-	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
 }
 
 // Predefined struct for user
@@ -4778,7 +4962,7 @@ func (r *ListRecordBackupPlansRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListRecordBackupPlansResponseParams struct {
 	// 返回数据
-	Data []*ListRecordBackupPlanResponse `json:"Data,omitempty" name:"Data"`
+	Data []*ListRecordBackupPlanData `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4798,6 +4982,36 @@ func (r *ListRecordBackupPlansResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ListRecordBackupPlansResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListRecordBackupTemplatesData struct {
+	// 模板ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 模板名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitempty" name:"TimeSections"`
+
+	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitempty" name:"DevTimeSections"`
+
+	// 上云倍速（支持1，2，4倍速）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scale *int64 `json:"Scale,omitempty" name:"Scale"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
 }
 
 // Predefined struct for user
@@ -4831,33 +5045,11 @@ func (r *ListRecordBackupTemplatesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRecordBackupTemplatesResponseParams struct {
-	// 模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	// 返回数据
+	Data []*ListRecordBackupTemplatesData `json:"Data,omitempty" name:"Data"`
 
-	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
-
-	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitempty" name:"TimeSections"`
-
-	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitempty" name:"DevTimeSections"`
-
-	// 上云倍速（支持1，2，4倍速）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Scale *int64 `json:"Scale,omitempty" name:"Scale"`
-
-	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
-
-	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type ListRecordBackupTemplatesResponse struct {
@@ -4874,6 +5066,12 @@ func (r *ListRecordBackupTemplatesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ListRecordBackupTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListRecordPlanChannelsData struct {
+	// 用户所有计划下通道id，存在通道是为数组格式，不存在时，字段数据为空 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*string `json:"List,omitempty" name:"List"`
 }
 
 // Predefined struct for user
@@ -4907,9 +5105,11 @@ func (r *ListRecordPlanChannelsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRecordPlanChannelsResponseParams struct {
-	// 用户所有计划下通道id，存在通道是为数组格式，不存在时，字段数据为空 
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*string `json:"List,omitempty" name:"List"`
+	// 返回结果
+	Data *ListRecordPlanChannelsData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type ListRecordPlanChannelsResponse struct {
@@ -4926,6 +5126,21 @@ func (r *ListRecordPlanChannelsResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ListRecordPlanChannelsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListRecordPlanDevicesData struct {
+	// 第几页
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 当前页的设备数量
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 本次查询的设备通道总数
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 设备通道信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*RecordPlanChannelInfo `json:"List,omitempty" name:"List"`
 }
 
 // Predefined struct for user
@@ -5003,18 +5218,11 @@ func (r *ListRecordPlanDevicesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ListRecordPlanDevicesResponseParams struct {
-	// 第几页
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	// 返回结果
+	Data *ListRecordPlanDevicesData `json:"Data,omitempty" name:"Data"`
 
-	// 当前页的设备数量
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
-
-	// 本次查询的设备通道总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 设备通道信息列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*RecordPlanChannelInfo `json:"List,omitempty" name:"List"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type ListRecordPlanDevicesResponse struct {
@@ -5275,6 +5483,12 @@ type PlateContent struct {
 	Location *Location `json:"Location,omitempty" name:"Location"`
 }
 
+type PlayRecordData struct {
+	// 录像播放地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Flv *string `json:"Flv,omitempty" name:"Flv"`
+}
+
 // Predefined struct for user
 type PlayRecordRequestParams struct {
 	// 通道 ID（从查询通道DescribeDeviceChannel接口中获取）
@@ -5337,9 +5551,11 @@ func (r *PlayRecordRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type PlayRecordResponseParams struct {
-	// 录像播放地址
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Flv *string `json:"Flv,omitempty" name:"Flv"`
+	// 返回结果
+	Data *PlayRecordData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type PlayRecordResponse struct {
@@ -5406,7 +5622,7 @@ type RecordPlanChannelInfo struct {
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 }
 
-type RecordPlanOptResponse struct {
+type RecordPlanOptData struct {
 	// 上云计划ID
 	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
 
@@ -5757,68 +5973,7 @@ func (r *UpdateAITaskStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type UpdateDeviceOrganizationRequestParams struct {
-	// 设备 ID 数组（从获取设备列表接口ListDevices中获取）
-	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
-
-	// 组织 ID（从查询组织接口DescribeOrganization中获取）
-	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
-}
-
-type UpdateDeviceOrganizationRequest struct {
-	*tchttp.BaseRequest
-	
-	// 设备 ID 数组（从获取设备列表接口ListDevices中获取）
-	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
-
-	// 组织 ID（从查询组织接口DescribeOrganization中获取）
-	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
-}
-
-func (r *UpdateDeviceOrganizationRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UpdateDeviceOrganizationRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "DeviceIds")
-	delete(f, "OrganizationId")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDeviceOrganizationRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type UpdateDeviceOrganizationResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type UpdateDeviceOrganizationResponse struct {
-	*tchttp.BaseResponse
-	Response *UpdateDeviceOrganizationResponseParams `json:"Response"`
-}
-
-func (r *UpdateDeviceOrganizationResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *UpdateDeviceOrganizationResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-type UpdateDeviceResponse struct {
+type UpdateDeviceData struct {
 	// 设备ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
@@ -5894,6 +6049,67 @@ type UpdateDeviceResponse struct {
 }
 
 // Predefined struct for user
+type UpdateDeviceOrganizationRequestParams struct {
+	// 设备 ID 数组（从获取设备列表接口ListDevices中获取）
+	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
+
+	// 组织 ID（从查询组织接口DescribeOrganization中获取）
+	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
+}
+
+type UpdateDeviceOrganizationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备 ID 数组（从获取设备列表接口ListDevices中获取）
+	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
+
+	// 组织 ID（从查询组织接口DescribeOrganization中获取）
+	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
+}
+
+func (r *UpdateDeviceOrganizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDeviceOrganizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceIds")
+	delete(f, "OrganizationId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDeviceOrganizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDeviceOrganizationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateDeviceOrganizationResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateDeviceOrganizationResponseParams `json:"Response"`
+}
+
+func (r *UpdateDeviceOrganizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDeviceOrganizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateDeviceStatusRequestParams struct {
 	// 设备 ID（从获取设备列表接口ListDevices中获取）
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
@@ -5954,6 +6170,48 @@ func (r *UpdateDeviceStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type UpdateGatewayData struct {
+	// 网关索引ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 网关编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GwId *string `json:"GwId,omitempty" name:"GwId"`
+
+	// 网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 服务节点ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 服务节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 网关状态，0：离线，1:在线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 激活时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedAt *int64 `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 网关密钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Secret *string `json:"Secret,omitempty" name:"Secret"`
+
+	// 网关版本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitempty" name:"Version"`
+}
+
 // Predefined struct for user
 type UpdateGatewayRequestParams struct {
 	// 网关索引ID（从获取网关列表ListGateways接口中获取）	
@@ -6002,45 +6260,11 @@ func (r *UpdateGatewayRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateGatewayResponseParams struct {
-	// 网关索引ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+	// 返回数据
+	Data *UpdateGatewayData `json:"Data,omitempty" name:"Data"`
 
-	// 网关编码
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	GwId *string `json:"GwId,omitempty" name:"GwId"`
-
-	// 网关名称，仅支持中文、英文、数字、_、-，长度不超过32个字符
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
-
-	// 网关描述，仅支持中文、英文、数字、_、-，长度不超过128个字符
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
-
-	// 服务节点ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
-
-	// 服务节点名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
-
-	// 网关状态，0：离线，1:在线
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 激活时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedAt *int64 `json:"CreatedAt,omitempty" name:"CreatedAt"`
-
-	// 网关密钥
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Secret *string `json:"Secret,omitempty" name:"Secret"`
-
-	// 网关版本信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Version *string `json:"Version,omitempty" name:"Version"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type UpdateGatewayResponse struct {
@@ -6059,7 +6283,7 @@ func (r *UpdateGatewayResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-type UpdateOrgResponse struct {
+type UpdateOrgData struct {
 	// 组织 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *string `json:"OrganizationId,omitempty" name:"OrganizationId"`
@@ -6135,7 +6359,7 @@ func (r *UpdateOrganizationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateOrganizationResponseParams struct {
 	// 返回结果
-	Data *UpdateOrgResponse `json:"Data,omitempty" name:"Data"`
+	Data *UpdateOrgData `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6155,6 +6379,35 @@ func (r *UpdateOrganizationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateRecordBackupPlanData struct {
+	// 录像上云计划ID
+	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+
+	// 录像上云计划名称
+	PlanName *string `json:"PlanName,omitempty" name:"PlanName"`
+
+	// 录像上云模板ID
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 录像上云计划描述
+	Describe *string `json:"Describe,omitempty" name:"Describe"`
+
+	// 云文件生命周期
+	LifeCycle *LifeCycleData `json:"LifeCycle,omitempty" name:"LifeCycle"`
+
+	// 录像上云计划状态，1:正常使用中，0:删除中，无法使用
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 通道数量
+	ChannelCount *int64 `json:"ChannelCount,omitempty" name:"ChannelCount"`
+
+	// 创建时间
+	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
+
+	// 修改时间
+	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
 }
 
 type UpdateRecordBackupPlanModify struct {
@@ -6221,32 +6474,11 @@ func (r *UpdateRecordBackupPlanRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateRecordBackupPlanResponseParams struct {
-	// 录像上云计划ID
-	PlanId *string `json:"PlanId,omitempty" name:"PlanId"`
+	// 返回数据
+	Data *UpdateRecordBackupPlanData `json:"Data,omitempty" name:"Data"`
 
-	// 录像上云计划名称
-	PlanName *string `json:"PlanName,omitempty" name:"PlanName"`
-
-	// 录像上云模板ID
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
-
-	// 录像上云计划描述
-	Describe *string `json:"Describe,omitempty" name:"Describe"`
-
-	// 云文件生命周期
-	LifeCycle *LifeCycleData `json:"LifeCycle,omitempty" name:"LifeCycle"`
-
-	// 录像上云计划状态，1:正常使用中，0:删除中，无法使用
-	Status *int64 `json:"Status,omitempty" name:"Status"`
-
-	// 通道数量
-	ChannelCount *int64 `json:"ChannelCount,omitempty" name:"ChannelCount"`
-
-	// 创建时间
-	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
-
-	// 修改时间
-	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type UpdateRecordBackupPlanResponse struct {
@@ -6263,6 +6495,36 @@ func (r *UpdateRecordBackupPlanResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateRecordBackupPlanResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type UpdateRecordBackupTemplateData struct {
+	// 模板ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 模板名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitempty" name:"TimeSections"`
+
+	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitempty" name:"DevTimeSections"`
+
+	// 上云倍速（支持1，2，4倍速）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scale *int64 `json:"Scale,omitempty" name:"Scale"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
 }
 
 type UpdateRecordBackupTemplateModify struct {
@@ -6320,33 +6582,11 @@ func (r *UpdateRecordBackupTemplateRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateRecordBackupTemplateResponseParams struct {
-	// 模板ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	// 返回数据
+	Data *UpdateRecordBackupTemplateData `json:"Data,omitempty" name:"Data"`
 
-	// 模板名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
-
-	// 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeSections []*RecordTemplateTimeSections `json:"TimeSections,omitempty" name:"TimeSections"`
-
-	// 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	DevTimeSections []*RecordTemplateTimeSections `json:"DevTimeSections,omitempty" name:"DevTimeSections"`
-
-	// 上云倍速（支持1，2，4倍速）
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Scale *int64 `json:"Scale,omitempty" name:"Scale"`
-
-	// 创建时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateAt *string `json:"CreateAt,omitempty" name:"CreateAt"`
-
-	// 更新时间
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateAt *string `json:"UpdateAt,omitempty" name:"UpdateAt"`
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type UpdateRecordBackupTemplateResponse struct {
@@ -6433,7 +6673,7 @@ func (r *UpdateRecordPlanRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateRecordPlanResponseParams struct {
 	// 返回结果
-	Data *RecordPlanOptResponse `json:"Data,omitempty" name:"Data"`
+	Data *RecordPlanOptData `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -6611,7 +6851,7 @@ func (r *UpdateUserDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateUserDeviceResponseParams struct {
 	// 返回数据
-	Data *UpdateDeviceResponse `json:"Data,omitempty" name:"Data"`
+	Data *UpdateDeviceData `json:"Data,omitempty" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

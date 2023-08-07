@@ -122,7 +122,7 @@
 | iotvideo | [物联网智能视频服务](https://cloud.tencent.com/document/product/1131) | 2023-07-27 01:14:43 |
 | iotvideoindustry | [物联网智能视频服务（行业版）](https://cloud.tencent.com/document/product/1361) | 2023-05-18 01:34:37 |
 | irp | [智能推荐平台](https://cloud.tencent.com/document/product/1541) | 2023-06-13 01:25:28 |
-| iss | [智能视图计算平台](https://cloud.tencent.com/document/product/1344) | 2023-08-03 16:25:45 |
+| iss | [智能视图计算平台](https://cloud.tencent.com/document/product/1344) | 2023-08-07 15:48:42 |
 | ivld | [媒体智能标签](https://cloud.tencent.com/document/product/1509) | 2023-05-18 01:35:21 |
 | keewidb | [云数据库 KeeWiDB](https://cloud.tencent.com/document/product/1520) | 2023-07-19 01:29:34 |
 | kms | [密钥管理系统](https://cloud.tencent.com/document/product/573) | 2023-05-18 01:35:58 |
@@ -214,6 +214,7 @@
 | tmt | [机器翻译](https://cloud.tencent.com/document/product/551) | 2023-07-28 01:54:14 |
 | tourism | [文旅客情平台](https://cloud.tencent.com/document/product/1684) | 2023-05-18 02:01:16 |
 | trdp | [流量风险决策平台](https://cloud.tencent.com/document/product/1604) | 2023-05-18 02:01:19 |
+| trocket | [消息队列 RocketMQ 版](https://cloud.tencent.com/document/product/1493) | 2023-08-07 10:45:38 |
 | trp | [T-Sec-安心平台(RP)](https://cloud.tencent.com/document/product/1458) | 2023-07-10 01:51:20 |
 | trro | [远程实时操控](https://cloud.tencent.com/document/product/1584) | 2023-07-18 01:53:24 |
 | trtc | [实时音视频](https://cloud.tencent.com/document/product/647) | 2023-08-04 01:19:38 |
