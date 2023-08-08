@@ -2066,6 +2066,9 @@ type CreateMachineGroupRequestParams struct {
 
 	// 机器组元数据信息列表
 	MetaTags []*MetaTagInfo `json:"MetaTags,omitempty" name:"MetaTags"`
+
+	// 系统类型，默认0，0：Linux，1: windows
+	OSType *uint64 `json:"OSType,omitempty" name:"OSType"`
 }
 
 type CreateMachineGroupRequest struct {
@@ -2094,6 +2097,9 @@ type CreateMachineGroupRequest struct {
 
 	// 机器组元数据信息列表
 	MetaTags []*MetaTagInfo `json:"MetaTags,omitempty" name:"MetaTags"`
+
+	// 系统类型，默认0，0：Linux，1: windows
+	OSType *uint64 `json:"OSType,omitempty" name:"OSType"`
 }
 
 func (r *CreateMachineGroupRequest) ToJsonString() string {
@@ -2116,6 +2122,7 @@ func (r *CreateMachineGroupRequest) FromJsonString(s string) error {
 	delete(f, "UpdateEndTime")
 	delete(f, "ServiceLogging")
 	delete(f, "MetaTags")
+	delete(f, "OSType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMachineGroupRequest has unknown keys!", "")
 	}
@@ -5294,6 +5301,11 @@ type DescribeMachineGroupsRequestParams struct {
 	// - 类型：String
 	// - 必选：否
 	// 
+	// osType
+	// - 按照【操作系统类型】进行过滤。
+	// - 类型：Int
+	// - 必选：否
+	// 
 	// tagKey
 	// - 按照【标签键】进行过滤。
 	// - 类型：String
@@ -5325,6 +5337,11 @@ type DescribeMachineGroupsRequest struct {
 	// machineGroupId
 	// - 按照【机器组ID】进行过滤。
 	// - 类型：String
+	// - 必选：否
+	// 
+	// osType
+	// - 按照【操作系统类型】进行过滤。
+	// - 类型：Int
 	// - 必选：否
 	// 
 	// tagKey
@@ -5868,6 +5885,20 @@ type DynamicIndex struct {
 	Status *bool `json:"Status,omitempty" name:"Status"`
 }
 
+type EventLog struct {
+	// 事件通道，支持Application，Security，Setup，System，ALL
+	EventChannel *string `json:"EventChannel,omitempty" name:"EventChannel"`
+
+	// 时间类型，1:用户自定义，2:当前时间
+	TimeType *uint64 `json:"TimeType,omitempty" name:"TimeType"`
+
+	// 时间，用户选择自定义时间类型时，需要指定时间
+	Timestamp *uint64 `json:"Timestamp,omitempty" name:"Timestamp"`
+
+	// 事件ID过滤列表
+	EventIDs []*string `json:"EventIDs,omitempty" name:"EventIDs"`
+}
+
 type ExcludePathInfo struct {
 	// 类型，选填File或Path
 	Type *string `json:"Type,omitempty" name:"Type"`
@@ -5992,6 +6023,9 @@ type ExtractRuleInfo struct {
 
 	// 用户自定义元数据信息，MetadataType为2时必填
 	MetaTags []*MetaTagInfo `json:"MetaTags,omitempty" name:"MetaTags"`
+
+	// windows事件日志采集
+	EventLogRules []*EventLog `json:"EventLogRules,omitempty" name:"EventLogRules"`
 }
 
 type Filter struct {
@@ -6517,6 +6551,9 @@ type MachineGroupInfo struct {
 
 	// 机器组元数据信息列表
 	MetaTags []*MetaTagInfo `json:"MetaTags,omitempty" name:"MetaTags"`
+
+	// 操作系统类型，0: Linux，1: windows
+	OSType *uint64 `json:"OSType,omitempty" name:"OSType"`
 }
 
 type MachineGroupTypeInfo struct {

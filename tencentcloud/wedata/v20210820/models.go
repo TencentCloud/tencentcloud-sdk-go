@@ -8423,6 +8423,22 @@ type DescribeBatchOperateTaskDTO struct {
 	// 创造时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 周期类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CycleUnit *string `json:"CycleUnit,omitempty" name:"CycleUnit"`
+
+	// 调度计划
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScheduleDesc *string `json:"ScheduleDesc,omitempty" name:"ScheduleDesc"`
+
+	// 数据源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceId *string `json:"DatasourceId,omitempty" name:"DatasourceId"`
+
+	// 数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceType *string `json:"DatasourceType,omitempty" name:"DatasourceType"`
 }
 
 type DescribeBatchOperateTaskPage struct {
@@ -8502,6 +8518,18 @@ type DescribeBatchOperateTaskRequestParams struct {
 
 	// 1
 	TenantId *string `json:"TenantId,omitempty" name:"TenantId"`
+
+	// 数据源ID列表
+	DatasourceIdList []*string `json:"DatasourceIdList,omitempty" name:"DatasourceIdList"`
+
+	// 数据源类型列表
+	DatasourceTypeList []*string `json:"DatasourceTypeList,omitempty" name:"DatasourceTypeList"`
+
+	// 调度单位类型列表
+	CycleUnitList []*string `json:"CycleUnitList,omitempty" name:"CycleUnitList"`
+
+	// 是否筛选出可提交的任务
+	CanSubmit *bool `json:"CanSubmit,omitempty" name:"CanSubmit"`
 }
 
 type DescribeBatchOperateTaskRequest struct {
@@ -8568,6 +8596,18 @@ type DescribeBatchOperateTaskRequest struct {
 
 	// 1
 	TenantId *string `json:"TenantId,omitempty" name:"TenantId"`
+
+	// 数据源ID列表
+	DatasourceIdList []*string `json:"DatasourceIdList,omitempty" name:"DatasourceIdList"`
+
+	// 数据源类型列表
+	DatasourceTypeList []*string `json:"DatasourceTypeList,omitempty" name:"DatasourceTypeList"`
+
+	// 调度单位类型列表
+	CycleUnitList []*string `json:"CycleUnitList,omitempty" name:"CycleUnitList"`
+
+	// 是否筛选出可提交的任务
+	CanSubmit *bool `json:"CanSubmit,omitempty" name:"CanSubmit"`
 }
 
 func (r *DescribeBatchOperateTaskRequest) ToJsonString() string {
@@ -8599,6 +8639,10 @@ func (r *DescribeBatchOperateTaskRequest) FromJsonString(s string) error {
 	delete(f, "UserId")
 	delete(f, "OwnerId")
 	delete(f, "TenantId")
+	delete(f, "DatasourceIdList")
+	delete(f, "DatasourceTypeList")
+	delete(f, "CycleUnitList")
+	delete(f, "CanSubmit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBatchOperateTaskRequest has unknown keys!", "")
 	}

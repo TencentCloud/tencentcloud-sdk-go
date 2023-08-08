@@ -10381,6 +10381,7 @@ func NewUpdateDeviceGroupResponse() (response *UpdateDeviceGroupResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_GROUPPARMSERROR = "InvalidParameterValue.GroupParmsError"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_GROUPEXIST = "UnsupportedOperation.GroupExist"
 func (c *Client) UpdateDeviceGroup(request *UpdateDeviceGroupRequest) (response *UpdateDeviceGroupResponse, err error) {
     return c.UpdateDeviceGroupWithContext(context.Background(), request)
@@ -10392,6 +10393,7 @@ func (c *Client) UpdateDeviceGroup(request *UpdateDeviceGroupRequest) (response 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_GROUPPARMSERROR = "InvalidParameterValue.GroupParmsError"
 //  RESOURCENOTFOUND_GROUPNOTEXIST = "ResourceNotFound.GroupNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_GROUPEXIST = "UnsupportedOperation.GroupExist"
 func (c *Client) UpdateDeviceGroupWithContext(ctx context.Context, request *UpdateDeviceGroupRequest) (response *UpdateDeviceGroupResponse, err error) {
     if request == nil {

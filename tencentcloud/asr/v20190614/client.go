@@ -953,6 +953,7 @@ func NewGetAsrVocabListResponse() (response *GetAsrVocabListResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
 //  INTERNALERROR_FAILACCESSREDIS = "InternalError.FailAccessRedis"
+//  INTERNALERROR_TAGREQUESTERROR = "InternalError.TagRequestError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -970,6 +971,7 @@ func (c *Client) GetAsrVocabList(request *GetAsrVocabListRequest) (response *Get
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
 //  INTERNALERROR_FAILACCESSREDIS = "InternalError.FailAccessRedis"
+//  INTERNALERROR_TAGREQUESTERROR = "InternalError.TagRequestError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -1465,6 +1467,56 @@ func (c *Client) UpdateAsrVocabWithContext(ctx context.Context, request *UpdateA
     request.SetContext(ctx)
     
     response = NewUpdateAsrVocabResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVoicePrintCountRequest() (request *VoicePrintCountRequest) {
+    request = &VoicePrintCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("asr", APIVersion, "VoicePrintCount")
+    
+    
+    return
+}
+
+func NewVoicePrintCountResponse() (response *VoicePrintCountResponse) {
+    response = &VoicePrintCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// VoicePrintCount
+// 统计并返回注册的说话人id总数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) VoicePrintCount(request *VoicePrintCountRequest) (response *VoicePrintCountResponse, err error) {
+    return c.VoicePrintCountWithContext(context.Background(), request)
+}
+
+// VoicePrintCount
+// 统计并返回注册的说话人id总数
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) VoicePrintCountWithContext(ctx context.Context, request *VoicePrintCountRequest) (response *VoicePrintCountResponse, err error) {
+    if request == nil {
+        request = NewVoicePrintCountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VoicePrintCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVoicePrintCountResponse()
     err = c.Send(request, response)
     return
 }

@@ -188,6 +188,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 至少需要提供一个参数。
+	INVALIDPARAMETERVALUE_ATLEASTONE = "InvalidParameterValue.AtLeastOne"
+
 	// 与现有集群名称重复。
 	INVALIDPARAMETERVALUE_CLUSTERNAMEDUPLICATION = "InvalidParameterValue.ClusterNameDuplication"
 

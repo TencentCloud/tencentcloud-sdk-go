@@ -2057,6 +2057,7 @@ func NewDescribeZookeeperServerInterfacesResponse() (response *DescribeZookeeper
 // 查询zookeeper服务接口列表
 //
 // 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"
@@ -2069,6 +2070,7 @@ func (c *Client) DescribeZookeeperServerInterfaces(request *DescribeZookeeperSer
 // 查询zookeeper服务接口列表
 //
 // 可能返回的错误码:
+//  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_QUERYERROR = "InvalidParameterValue.QueryError"

@@ -2464,6 +2464,9 @@ type DescribeDevicesRequestParams struct {
 	// 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
 	KindSet []*uint64 `json:"KindSet,omitempty" name:"KindSet"`
 
+	// 资产是否包含托管账号。1，包含；0，不包含
+	ManagedAccount *string `json:"ManagedAccount,omitempty" name:"ManagedAccount"`
+
 	// 过滤条件，可按照部门ID进行过滤
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 
@@ -2508,6 +2511,9 @@ type DescribeDevicesRequest struct {
 	// 可提供按照多种类型过滤, 1 - Linux, 2 - Windows, 3 - MySQL, 4 - SQLServer
 	KindSet []*uint64 `json:"KindSet,omitempty" name:"KindSet"`
 
+	// 资产是否包含托管账号。1，包含；0，不包含
+	ManagedAccount *string `json:"ManagedAccount,omitempty" name:"ManagedAccount"`
+
 	// 过滤条件，可按照部门ID进行过滤
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
 
@@ -2541,6 +2547,7 @@ func (r *DescribeDevicesRequest) FromJsonString(s string) error {
 	delete(f, "AuthorizedUserIdSet")
 	delete(f, "ResourceIdSet")
 	delete(f, "KindSet")
+	delete(f, "ManagedAccount")
 	delete(f, "DepartmentId")
 	delete(f, "TagFilters")
 	delete(f, "Filters")

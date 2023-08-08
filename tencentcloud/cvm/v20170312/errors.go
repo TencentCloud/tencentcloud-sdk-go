@@ -638,6 +638,9 @@ const (
 	// 预付费实例已购买数量已达到最大配额，请提升配额后重试。
 	LIMITEXCEEDED_PREPAYQUOTA = "LimitExceeded.PrepayQuota"
 
+	// 包销付费实例已购买数量已达到最大配额。
+	LIMITEXCEEDED_PREPAYUNDERWRITEQUOTA = "LimitExceeded.PrepayUnderwriteQuota"
+
 	// 安全组限额不足
 	LIMITEXCEEDED_SINGLEUSGQUOTA = "LimitExceeded.SingleUSGQuota"
 

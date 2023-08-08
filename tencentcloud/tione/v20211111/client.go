@@ -505,6 +505,7 @@ func NewCreateNotebookImageResponse() (response *CreateNotebookImageResponse) {
 // 保存镜像
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEIMAGEFAILED = "FailedOperation.CreateImageFailed"
 //  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateNotebookImage(request *CreateNotebookImageRequest) (response *CreateNotebookImageResponse, err error) {
@@ -515,6 +516,7 @@ func (c *Client) CreateNotebookImage(request *CreateNotebookImageRequest) (respo
 // 保存镜像
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CREATEIMAGEFAILED = "FailedOperation.CreateImageFailed"
 //  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateNotebookImageWithContext(ctx context.Context, request *CreateNotebookImageRequest) (response *CreateNotebookImageResponse, err error) {

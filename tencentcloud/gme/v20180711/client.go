@@ -380,6 +380,7 @@ func NewDeleteRoomMemberResponse() (response *DeleteRoomMemberResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDDELETETYPE = "InvalidParameterValue.InvalidDeleteType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRoomMember(request *DeleteRoomMemberRequest) (response *DeleteRoomMemberResponse, err error) {
@@ -393,6 +394,7 @@ func (c *Client) DeleteRoomMember(request *DeleteRoomMemberRequest) (response *D
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDDELETETYPE = "InvalidParameterValue.InvalidDeleteType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteRoomMemberWithContext(ctx context.Context, request *DeleteRoomMemberRequest) (response *DeleteRoomMemberResponse, err error) {
@@ -436,6 +438,7 @@ func NewDeleteScanUserResponse() (response *DeleteScanUserResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDDELETETYPE = "InvalidParameterValue.InvalidDeleteType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteScanUser(request *DeleteScanUserRequest) (response *DeleteScanUserResponse, err error) {
@@ -449,6 +452,7 @@ func (c *Client) DeleteScanUser(request *DeleteScanUserRequest) (response *Delet
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDDELETETYPE = "InvalidParameterValue.InvalidDeleteType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteScanUserWithContext(ctx context.Context, request *DeleteScanUserRequest) (response *DeleteScanUserResponse, err error) {

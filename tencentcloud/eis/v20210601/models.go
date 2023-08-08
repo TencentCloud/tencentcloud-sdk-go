@@ -51,6 +51,10 @@ type AbstractRuntimeMC struct {
 	// 是否已在当前环境发布
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Deployed *bool `json:"Deployed,omitempty" name:"Deployed"`
+
+	// 环境扩展组件是否满足应用要求：0=true, 1=false 表示该应用需要扩展组件0(cdc)以及1(java)，但是独立环境有cdc无java，不满足发布要求
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MatchExtensions *string `json:"MatchExtensions,omitempty" name:"MatchExtensions"`
 }
 
 // Predefined struct for user
@@ -236,6 +240,9 @@ type ListDeployableRuntimesMCRequestParams struct {
 
 	// 版本类型 0-pro 1-lite
 	PlanType *int64 `json:"PlanType,omitempty" name:"PlanType"`
+
+	// 0：应用集成，1：API，2：ETL
+	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
 }
 
 type ListDeployableRuntimesMCRequest struct {
@@ -249,6 +256,9 @@ type ListDeployableRuntimesMCRequest struct {
 
 	// 版本类型 0-pro 1-lite
 	PlanType *int64 `json:"PlanType,omitempty" name:"PlanType"`
+
+	// 0：应用集成，1：API，2：ETL
+	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
 }
 
 func (r *ListDeployableRuntimesMCRequest) ToJsonString() string {
@@ -266,6 +276,7 @@ func (r *ListDeployableRuntimesMCRequest) FromJsonString(s string) error {
 	delete(f, "ProjectId")
 	delete(f, "InstanceId")
 	delete(f, "PlanType")
+	delete(f, "RuntimeClass")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListDeployableRuntimesMCRequest has unknown keys!", "")
 	}
@@ -532,7 +543,7 @@ type RuntimeDeployedInstanceMC struct {
 }
 
 type RuntimeExtensionMC struct {
-	// 扩展组件类型：0:cdc
+	// 扩展组件类型：0:cdc 1:dataway-java
 	Type *int64 `json:"Type,omitempty" name:"Type"`
 
 	// 部署规格vcore数
@@ -624,7 +635,7 @@ type RuntimeMC struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuntimeType *int64 `json:"RuntimeType,omitempty" name:"RuntimeType"`
 
-	// 环境运行类型：0:运行时类型、1:api类型
+	// 环境运行类型：0:运行时类型、1:api类型、2:etl环境
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
 

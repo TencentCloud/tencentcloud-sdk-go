@@ -362,6 +362,9 @@ const (
 	// 操作配置存在不支持的预设变量。
 	INVALIDPARAMETER_NOTSUPPORTTHISPRESET = "InvalidParameter.NotSupportThisPreset"
 
+	// 域名处于直接回源架构，需要保持智能加速功能的开启。
+	INVALIDPARAMETER_OCDIRECTORIGINREQUIRESSMARTROUTING = "InvalidParameter.OCDirectOriginRequiresSmartRouting"
+
 	// 源站是内网IP。
 	INVALIDPARAMETER_ORIGINISINNERIP = "InvalidParameter.OriginIsInnerIp"
 
@@ -425,6 +428,9 @@ const (
 	// DNS 记录名称错误。
 	INVALIDPARAMETERVALUE_INVALIDDNSNAME = "InvalidParameterValue.InvalidDNSName"
 
+	// 加速域名名称不合法，加速域名应该由数字、英文字母、连词符组成，且连词符不能位于开头和结尾处。
+	INVALIDPARAMETERVALUE_INVALIDDOMAINNAME = "InvalidParameterValue.InvalidDomainName"
+
 	// 加速域名状态不符合要求。
 	INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
 
@@ -469,6 +475,9 @@ const (
 
 	// 域名尚未备案。
 	OPERATIONDENIED_DOMAINNOICP = "OperationDenied.DomainNoICP"
+
+	// 站点下有域名时不允许修改服务区域。
+	OPERATIONDENIED_DOMAINNUMBERISNOTZERO = "OperationDenied.DomainNumberIsNotZero"
 
 	// 站点处于停用状态，请开启后重试。
 	OPERATIONDENIED_ERRZONEISALREADYPAUSED = "OperationDenied.ErrZoneIsAlreadyPaused"

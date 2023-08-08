@@ -1419,6 +1419,7 @@ func NewDeleteRecordBatchResponse() (response *DeleteRecordBatchResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
+//  INVALIDPARAMETER_BATCHTASKCOUNTLIMIT = "InvalidParameter.BatchTaskCountLimit"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
 //  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"
@@ -1438,6 +1439,7 @@ func (c *Client) DeleteRecordBatch(request *DeleteRecordBatchRequest) (response 
 // 可能返回的错误码:
 //  FAILEDOPERATION_UNKNOWERROR = "FailedOperation.UnknowError"
 //  INVALIDPARAMETER_BATCHRECORDREMOVEACTIONERROR = "InvalidParameter.BatchRecordRemoveActionError"
+//  INVALIDPARAMETER_BATCHTASKCOUNTLIMIT = "InvalidParameter.BatchTaskCountLimit"
 //  INVALIDPARAMETER_DOMAINIDINVALID = "InvalidParameter.DomainIdInvalid"
 //  INVALIDPARAMETER_DOMAININVALID = "InvalidParameter.DomainInvalid"
 //  INVALIDPARAMETER_DOMAINISALIASER = "InvalidParameter.DomainIsAliaser"

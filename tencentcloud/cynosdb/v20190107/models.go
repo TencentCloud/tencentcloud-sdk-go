@@ -370,7 +370,7 @@ func (r *AddInstancesResponse) FromJsonString(s string) error {
 }
 
 type Addr struct {
-	// IP
+	// IP地址
 	IP *string `json:"IP,omitempty" name:"IP"`
 
 	// 端口
@@ -1559,11 +1559,11 @@ type CreateClustersRequestParams struct {
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
 	// 当DbMode为NORMAL或不填时必选
-	// 普通实例内存,单位G
+	// 普通实例内存,单位GB
 	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 该参数无实际意义，已废弃。
-	// 存储大小，单位G。
+	// 存储大小，单位GB。
 	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
 
 	// 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
@@ -1707,11 +1707,11 @@ type CreateClustersRequest struct {
 	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
 
 	// 当DbMode为NORMAL或不填时必选
-	// 普通实例内存,单位G
+	// 普通实例内存,单位GB
 	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
 
 	// 该参数无实际意义，已废弃。
-	// 存储大小，单位G。
+	// 存储大小，单位GB。
 	Storage *int64 `json:"Storage,omitempty" name:"Storage"`
 
 	// 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
@@ -2731,7 +2731,7 @@ type CynosdbClusterDetail struct {
 	// vport端口
 	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
 
-	// 读写分离Vport
+	// 集群只读实例的vip地址和vport端口
 	RoAddr []*Addr `json:"RoAddr,omitempty" name:"RoAddr"`
 
 	// 集群支持的功能

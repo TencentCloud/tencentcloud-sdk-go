@@ -1986,6 +1986,66 @@ type VoicePrintBaseData struct {
 	SpeakerNick *string `json:"SpeakerNick,omitempty" name:"SpeakerNick"`
 }
 
+type VoicePrintCountData struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+}
+
+// Predefined struct for user
+type VoicePrintCountRequestParams struct {
+
+}
+
+type VoicePrintCountRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *VoicePrintCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VoicePrintCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VoicePrintCountResponseParams struct {
+	// 统计数据
+	Data *VoicePrintCountData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type VoicePrintCountResponse struct {
+	*tchttp.BaseResponse
+	Response *VoicePrintCountResponseParams `json:"Response"`
+}
+
+func (r *VoicePrintCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VoicePrintCountResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 // Predefined struct for user
 type VoicePrintDeleteRequestParams struct {
 	// 说话人id，说话人唯一标识

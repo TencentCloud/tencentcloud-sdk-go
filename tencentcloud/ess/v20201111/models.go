@@ -2517,10 +2517,10 @@ type CreateIntegrationUserRolesRequestParams struct {
 	// 操作人信息，UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 绑定角色的用户id列表
+	// 绑定角色的用户id列表，不能重复，不能大于 100 个
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
-	// 绑定角色的角色id列表
+	// 绑定角色的角色id列表，不能重复，不能大于 100，可以通过DescribeIntegrationRoles接口获取
 	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -2533,10 +2533,10 @@ type CreateIntegrationUserRolesRequest struct {
 	// 操作人信息，UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 绑定角色的用户id列表
+	// 绑定角色的用户id列表，不能重复，不能大于 100 个
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
-	// 绑定角色的角色id列表
+	// 绑定角色的角色id列表，不能重复，不能大于 100，可以通过DescribeIntegrationRoles接口获取
 	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -3188,6 +3188,9 @@ type CreatePreparedPersonalEsignRequestParams struct {
 	// 取值：
 	// 填写的FileId通过UploadFiles接口上传文件获取。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreatePreparedPersonalEsignRequest struct {
@@ -3245,6 +3248,9 @@ type CreatePreparedPersonalEsignRequest struct {
 	// 取值：
 	// 填写的FileId通过UploadFiles接口上传文件获取。
 	FileId *string `json:"FileId,omitempty" name:"FileId"`
+
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreatePreparedPersonalEsignRequest) ToJsonString() string {
@@ -3271,6 +3277,7 @@ func (r *CreatePreparedPersonalEsignRequest) FromJsonString(s string) error {
 	delete(f, "SealColor")
 	delete(f, "ProcessSeal")
 	delete(f, "FileId")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePreparedPersonalEsignRequest has unknown keys!", "")
 	}
@@ -3412,10 +3419,10 @@ type CreateSchemeUrlRequestParams struct {
 	// 手机号，大陆手机号11位
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 链接类型
-	// HTTP：跳转电子签小程序的http_url，
-	// APP：第三方APP或小程序跳转电子签小程序的path。
-	// 默认为HTTP类型
+	// 要跳转的链接类型
+	// 
+	// - HTTP：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  (默认)
+	// - APP： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型
 	EndPoint *string `json:"EndPoint,omitempty" name:"EndPoint"`
 
 	// 签署流程编号 (PathType=1时必传)
@@ -3424,7 +3431,11 @@ type CreateSchemeUrlRequestParams struct {
 	// 合同组ID 
 	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
 
-	// 跳转页面 1: 小程序合同详情 2: 小程序合同列表页 0: 不传, 默认主页
+	// 要跳转到的页面类型 
+	// 
+	// - 0: 不传, 主页 (默认)
+	// - 1: 小程序合同详情 
+	// - 2: 小程序合同列表页 
 	PathType *uint64 `json:"PathType,omitempty" name:"PathType"`
 
 	// 是否自动回跳
@@ -3438,10 +3449,10 @@ type CreateSchemeUrlRequestParams struct {
 
 	// 生成的签署链接在签署过程隐藏的按钮列表, 可以设置隐藏的按钮列表如下
 	// 
-	// 0:合同签署页面更多操作按钮
-	// 1:合同签署页面更多操作的拒绝签署按钮
-	// 2:合同签署页面更多操作的转他人处理按钮
-	// 3:签署成功页的查看详情按钮
+	// - 0:合同签署页面更多操作按钮
+	// - 1:合同签署页面更多操作的拒绝签署按钮
+	// - 2:合同签署页面更多操作的转他人处理按钮
+	// - 3:签署成功页的查看详情按钮
 	Hides []*int64 `json:"Hides,omitempty" name:"Hides"`
 }
 
@@ -3460,10 +3471,10 @@ type CreateSchemeUrlRequest struct {
 	// 手机号，大陆手机号11位
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 链接类型
-	// HTTP：跳转电子签小程序的http_url，
-	// APP：第三方APP或小程序跳转电子签小程序的path。
-	// 默认为HTTP类型
+	// 要跳转的链接类型
+	// 
+	// - HTTP：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  (默认)
+	// - APP： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型
 	EndPoint *string `json:"EndPoint,omitempty" name:"EndPoint"`
 
 	// 签署流程编号 (PathType=1时必传)
@@ -3472,7 +3483,11 @@ type CreateSchemeUrlRequest struct {
 	// 合同组ID 
 	FlowGroupId *string `json:"FlowGroupId,omitempty" name:"FlowGroupId"`
 
-	// 跳转页面 1: 小程序合同详情 2: 小程序合同列表页 0: 不传, 默认主页
+	// 要跳转到的页面类型 
+	// 
+	// - 0: 不传, 主页 (默认)
+	// - 1: 小程序合同详情 
+	// - 2: 小程序合同列表页 
 	PathType *uint64 `json:"PathType,omitempty" name:"PathType"`
 
 	// 是否自动回跳
@@ -3486,10 +3501,10 @@ type CreateSchemeUrlRequest struct {
 
 	// 生成的签署链接在签署过程隐藏的按钮列表, 可以设置隐藏的按钮列表如下
 	// 
-	// 0:合同签署页面更多操作按钮
-	// 1:合同签署页面更多操作的拒绝签署按钮
-	// 2:合同签署页面更多操作的转他人处理按钮
-	// 3:签署成功页的查看详情按钮
+	// - 0:合同签署页面更多操作按钮
+	// - 1:合同签署页面更多操作的拒绝签署按钮
+	// - 2:合同签署页面更多操作的转他人处理按钮
+	// - 3:签署成功页的查看详情按钮
 	Hides []*int64 `json:"Hides,omitempty" name:"Hides"`
 }
 
@@ -4024,7 +4039,7 @@ type DeleteIntegrationDepartmentRequestParams struct {
 	// 操作人信息，UserId必填且需拥有组织架构管理权限
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 电子签中的部门id
+	// 电子签中的部门id,通过DescribeIntegrationDepartments接口可获得
 	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
 
 	// 交接部门ID。待删除部门中的合同、印章和模板数据，交接至该部门ID下，未填写交接至公司根部门。
@@ -4037,7 +4052,7 @@ type DeleteIntegrationDepartmentRequest struct {
 	// 操作人信息，UserId必填且需拥有组织架构管理权限
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 电子签中的部门id
+	// 电子签中的部门id,通过DescribeIntegrationDepartments接口可获得
 	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
 
 	// 交接部门ID。待删除部门中的合同、印章和模板数据，交接至该部门ID下，未填写交接至公司根部门。
@@ -4092,7 +4107,7 @@ type DeleteIntegrationEmployeesRequestParams struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 待移除员工的信息，userId和openId二选一，必填一个
+	// 待移除员工的信息，userId和openId二选一，必填一个，如果需要指定交接人的话，ReceiveUserId或者ReceiveOpenId字段二选一
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
@@ -4105,7 +4120,7 @@ type DeleteIntegrationEmployeesRequest struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 待移除员工的信息，userId和openId二选一，必填一个
+	// 待移除员工的信息，userId和openId二选一，必填一个，如果需要指定交接人的话，ReceiveUserId或者ReceiveOpenId字段二选一
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
@@ -4166,7 +4181,7 @@ type DeleteIntegrationRoleUsersRequestParams struct {
 	// 角色id
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
-	// 用户信息
+	// 用户信息,最多 200 个用户，并且 UserId 和 OpenId 二选一，其他字段不需要传
 	Users []*UserInfo `json:"Users,omitempty" name:"Users"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -4182,7 +4197,7 @@ type DeleteIntegrationRoleUsersRequest struct {
 	// 角色id
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
-	// 用户信息
+	// 用户信息,最多 200 个用户，并且 UserId 和 OpenId 二选一，其他字段不需要传
 	Users []*UserInfo `json:"Users,omitempty" name:"Users"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -4640,10 +4655,10 @@ type DescribeFlowComponentsRequestParams struct {
 	// 操作者信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 电子签流程的Id
+	// 流程(合同)的编号
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -4653,10 +4668,10 @@ type DescribeFlowComponentsRequest struct {
 	// 操作者信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 电子签流程的Id
+	// 流程(合同)的编号
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 应用相关信息
+	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -4683,7 +4698,7 @@ func (r *DescribeFlowComponentsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowComponentsResponseParams struct {
-	// 流程关联的填写控件信息
+	// 流程关联的填写控件信息，按照参与方进行分类返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientComponentInfos []*RecipientComponentInfo `json:"RecipientComponentInfos,omitempty" name:"RecipientComponentInfos"`
 
@@ -5108,7 +5123,7 @@ type DescribeIntegrationEmployeesRequestParams struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 返回最大数量，最大为20
+	// 指定每页多少条数据，单页最大20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -5118,7 +5133,7 @@ type DescribeIntegrationEmployeesRequestParams struct {
 	// 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0，最大为20000
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大20000
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -5128,7 +5143,7 @@ type DescribeIntegrationEmployeesRequest struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 返回最大数量，最大为20
+	// 指定每页多少条数据，单页最大20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -5138,7 +5153,7 @@ type DescribeIntegrationEmployeesRequest struct {
 	// 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0，最大为20000
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大20000
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -5171,11 +5186,11 @@ type DescribeIntegrationEmployeesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
 
-	// 偏移量，默认为0，最大为20000
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大20000
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回最大数量，最大为20
+	// 指定每页多少条数据，单页最大20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 符合条件的员工数量
@@ -5264,7 +5279,7 @@ type DescribeIntegrationRolesRequestParams struct {
 	// 操作人信息，UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 返回最大数量，最大为200
+	// 指定每页多少条数据，单页最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -5276,7 +5291,7 @@ type DescribeIntegrationRolesRequestParams struct {
 	// Key:"IsGroupRole"，Values:["0"],查询非集团角色，Values:["1"]表示查询集团角色
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0，最大为2000
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -5286,7 +5301,7 @@ type DescribeIntegrationRolesRequest struct {
 	// 操作人信息，UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 返回最大数量，最大为200
+	// 指定每页多少条数据，单页最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
@@ -5298,7 +5313,7 @@ type DescribeIntegrationRolesRequest struct {
 	// Key:"IsGroupRole"，Values:["0"],查询非集团角色，Values:["1"]表示查询集团角色
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0，最大为2000
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 }
 
@@ -5327,10 +5342,10 @@ func (r *DescribeIntegrationRolesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIntegrationRolesResponseParams struct {
-	// 偏移量，默认为0，最大为2000
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回最大数量，最大为200
+	// 指定每页多少条数据，单页最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 符合查询条件的总的角色数
@@ -5364,10 +5379,10 @@ type DescribeOrganizationGroupOrganizationsRequestParams struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 单次查询成员企业最大返回数量
+	// 指定每页多少条数据，单页最大1000
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 页面偏移量
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 查询成员企业的企业名，模糊匹配
@@ -5379,7 +5394,7 @@ type DescribeOrganizationGroupOrganizationsRequestParams struct {
 	// 是否导出当前成员企业数据
 	Export *bool `json:"Export,omitempty" name:"Export"`
 
-	// 成员企业id
+	// 成员企业机构 ID，在PC控制台 集团管理可获取
 	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
@@ -5389,10 +5404,10 @@ type DescribeOrganizationGroupOrganizationsRequest struct {
 	// 操作人信息，userId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 单次查询成员企业最大返回数量
+	// 指定每页多少条数据，单页最大1000
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 页面偏移量
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 查询成员企业的企业名，模糊匹配
@@ -5404,7 +5419,7 @@ type DescribeOrganizationGroupOrganizationsRequest struct {
 	// 是否导出当前成员企业数据
 	Export *bool `json:"Export,omitempty" name:"Export"`
 
-	// 成员企业id
+	// 成员企业机构 ID，在PC控制台 集团管理可获取
 	Id *string `json:"Id,omitempty" name:"Id"`
 }
 
@@ -5449,7 +5464,7 @@ type DescribeOrganizationGroupOrganizationsResponseParams struct {
 	// Deprecated: ActivedTotal is deprecated.
 	ActivedTotal *uint64 `json:"ActivedTotal,omitempty" name:"ActivedTotal"`
 
-	// 导出文件的url
+	// 如果入参Export为 true 时使用，表示导出Excel的url
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExportUrl *string `json:"ExportUrl,omitempty" name:"ExportUrl"`
 
@@ -6522,7 +6537,7 @@ type GroupOrganization struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JoinTime *uint64 `json:"JoinTime,omitempty" name:"JoinTime"`
 
-	// 是否使用审批流引擎，true-是，false-否
+	// 是否使用自建审批流引擎（即不是企微审批流引擎），true-是，false-否
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowEngineEnable *bool `json:"FlowEngineEnable,omitempty" name:"FlowEngineEnable"`
 }
@@ -6677,10 +6692,10 @@ type ModifyIntegrationDepartmentRequestParams struct {
 	// 操作人信息，UserId必填且需拥有组织架构管理权限
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 电子签部门ID
+	// 电子签部门ID,通过DescribeIntegrationDepartments接口可以获取
 	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
 
-	// 电子签父部门ID
+	// 电子签父部门ID，通过DescribeIntegrationDepartments接口可以获取
 	ParentDeptId *string `json:"ParentDeptId,omitempty" name:"ParentDeptId"`
 
 	// 部门名称，不超过50个字符
@@ -6699,10 +6714,10 @@ type ModifyIntegrationDepartmentRequest struct {
 	// 操作人信息，UserId必填且需拥有组织架构管理权限
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 电子签部门ID
+	// 电子签部门ID,通过DescribeIntegrationDepartments接口可以获取
 	DeptId *string `json:"DeptId,omitempty" name:"DeptId"`
 
-	// 电子签父部门ID
+	// 电子签父部门ID，通过DescribeIntegrationDepartments接口可以获取
 	ParentDeptId *string `json:"ParentDeptId,omitempty" name:"ParentDeptId"`
 
 	// 部门名称，不超过50个字符
@@ -6923,14 +6938,16 @@ type RecipientComponentInfo struct {
 	RecipientId *string `json:"RecipientId,omitempty" name:"RecipientId"`
 
 	// 参与方填写状态
+	// 0-未填写
+	// 1-已填写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientFillStatus *string `json:"RecipientFillStatus,omitempty" name:"RecipientFillStatus"`
 
-	// 是否发起方
+	// 是否为发起方
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsPromoter *bool `json:"IsPromoter,omitempty" name:"IsPromoter"`
 
-	// 填写控件内容
+	// 填写控件列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Components []*FilledComponent `json:"Components,omitempty" name:"Components"`
 }
@@ -7408,7 +7425,7 @@ func (r *UnbindEmployeeUserIdWithClientOpenIdResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type UpdateIntegrationEmployeesRequestParams struct {
-	// 当前用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为YUFU；
+	// 当前用户信息，UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 员工信息，不超过100个。
@@ -7423,7 +7440,7 @@ type UpdateIntegrationEmployeesRequestParams struct {
 type UpdateIntegrationEmployeesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 当前用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为YUFU；
+	// 当前用户信息，UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 员工信息，不超过100个。

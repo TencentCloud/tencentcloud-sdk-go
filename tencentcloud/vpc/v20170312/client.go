@@ -6241,6 +6241,7 @@ func NewDeleteBandwidthPackageResponse() (response *DeleteBandwidthPackageRespon
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEINUSE = "InvalidParameterValue.BandwidthPackageInUse"
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
 //  INVALIDPARAMETERVALUE_STOPCHARGINGINSTANCEINUSE = "InvalidParameterValue.StopChargingInstanceInUse"
+//  LIMITEXCEEDED_ACCOUNTRETURNQUOTA = "LimitExceeded.AccountReturnQuota"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDADDRESSSTATE = "UnsupportedOperation.InvalidAddressState"
 //  UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = "UnsupportedOperation.UnpaidOrderAlreadyExists"
@@ -6258,6 +6259,7 @@ func (c *Client) DeleteBandwidthPackage(request *DeleteBandwidthPackageRequest) 
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGEINUSE = "InvalidParameterValue.BandwidthPackageInUse"
 //  INVALIDPARAMETERVALUE_BANDWIDTHPACKAGENOTFOUND = "InvalidParameterValue.BandwidthPackageNotFound"
 //  INVALIDPARAMETERVALUE_STOPCHARGINGINSTANCEINUSE = "InvalidParameterValue.StopChargingInstanceInUse"
+//  LIMITEXCEEDED_ACCOUNTRETURNQUOTA = "LimitExceeded.AccountReturnQuota"
 //  UNSUPPORTEDOPERATION_BANDWIDTHPACKAGEIDNOTSUPPORTED = "UnsupportedOperation.BandwidthPackageIdNotSupported"
 //  UNSUPPORTEDOPERATION_INVALIDADDRESSSTATE = "UnsupportedOperation.InvalidAddressState"
 //  UNSUPPORTEDOPERATION_UNPAIDORDERALREADYEXISTS = "UnsupportedOperation.UnpaidOrderAlreadyExists"
@@ -19064,6 +19066,7 @@ func NewRemoveIp6RulesResponse() (response *RemoveIp6RulesResponse) {
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_IP6RULENOTFOUND = "InvalidParameterValue.Ip6RuleNotFound"
+//  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
 func (c *Client) RemoveIp6Rules(request *RemoveIp6RulesRequest) (response *RemoveIp6RulesResponse, err error) {
     return c.RemoveIp6RulesWithContext(context.Background(), request)
 }
@@ -19077,6 +19080,7 @@ func (c *Client) RemoveIp6Rules(request *RemoveIp6RulesRequest) (response *Remov
 //  INTERNALSERVERERROR = "InternalServerError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_IP6RULENOTFOUND = "InvalidParameterValue.Ip6RuleNotFound"
+//  OPERATIONDENIED_MUTEXTASKRUNNING = "OperationDenied.MutexTaskRunning"
 func (c *Client) RemoveIp6RulesWithContext(ctx context.Context, request *RemoveIp6RulesRequest) (response *RemoveIp6RulesResponse, err error) {
     if request == nil {
         request = NewRemoveIp6RulesRequest()

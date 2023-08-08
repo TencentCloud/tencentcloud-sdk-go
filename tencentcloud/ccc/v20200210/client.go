@@ -147,6 +147,60 @@ func (c *Client) BindStaffSkillGroupListWithContext(ctx context.Context, request
     return
 }
 
+func NewCreateAdminURLRequest() (request *CreateAdminURLRequest) {
+    request = &CreateAdminURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "CreateAdminURL")
+    
+    
+    return
+}
+
+func NewCreateAdminURLResponse() (response *CreateAdminURLResponse) {
+    response = &CreateAdminURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAdminURL
+// 创建管理端访问链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) CreateAdminURL(request *CreateAdminURLRequest) (response *CreateAdminURLResponse, err error) {
+    return c.CreateAdminURLWithContext(context.Background(), request)
+}
+
+// CreateAdminURL
+// 创建管理端访问链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) CreateAdminURLWithContext(ctx context.Context, request *CreateAdminURLRequest) (response *CreateAdminURLResponse, err error) {
+    if request == nil {
+        request = NewCreateAdminURLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAdminURL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAdminURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateAutoCalloutTaskRequest() (request *CreateAutoCalloutTaskRequest) {
     request = &CreateAutoCalloutTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

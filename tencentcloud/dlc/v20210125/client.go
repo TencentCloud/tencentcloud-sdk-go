@@ -472,6 +472,7 @@ func NewBindWorkGroupsToUserResponse() (response *BindWorkGroupsToUserResponse) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  UNAUTHORIZEDOPERATION_BINDWORKGROUPSTOUSER = "UnauthorizedOperation.BindWorkgroupsToUser"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
@@ -484,6 +485,7 @@ func (c *Client) BindWorkGroupsToUser(request *BindWorkGroupsToUserRequest) (res
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
 //  UNAUTHORIZEDOPERATION_BINDWORKGROUPSTOUSER = "UnauthorizedOperation.BindWorkgroupsToUser"
 //  UNSUPPORTEDOPERATION_MODIFYOWNERUNSUPPORTED = "UnsupportedOperation.ModifyOwnerUnsupported"
@@ -2310,6 +2312,7 @@ func NewDeleteUserResponse() (response *DeleteUserResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
 //  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"
@@ -2326,6 +2329,7 @@ func (c *Client) DeleteUser(request *DeleteUserRequest) (response *DeleteUserRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
 //  FAILEDOPERATION_REVOKEPOLICYFAILED = "FailedOperation.RevokePolicyFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDUSERNAME = "InvalidParameter.InvalidUserName"

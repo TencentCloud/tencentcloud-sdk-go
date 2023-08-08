@@ -4113,6 +4113,7 @@ func NewDescribeRocketMQVipInstanceDetailResponse() (response *DescribeRocketMQV
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeRocketMQVipInstanceDetail(request *DescribeRocketMQVipInstanceDetailRequest) (response *DescribeRocketMQVipInstanceDetailResponse, err error) {
     return c.DescribeRocketMQVipInstanceDetailWithContext(context.Background(), request)
 }
@@ -4127,6 +4128,7 @@ func (c *Client) DescribeRocketMQVipInstanceDetail(request *DescribeRocketMQVipI
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeRocketMQVipInstanceDetailWithContext(ctx context.Context, request *DescribeRocketMQVipInstanceDetailRequest) (response *DescribeRocketMQVipInstanceDetailResponse, err error) {
     if request == nil {
         request = NewDescribeRocketMQVipInstanceDetailRequest()
@@ -4171,6 +4173,7 @@ func NewDescribeRocketMQVipInstancesResponse() (response *DescribeRocketMQVipIns
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeRocketMQVipInstances(request *DescribeRocketMQVipInstancesRequest) (response *DescribeRocketMQVipInstancesResponse, err error) {
     return c.DescribeRocketMQVipInstancesWithContext(context.Background(), request)
 }
@@ -4185,6 +4188,7 @@ func (c *Client) DescribeRocketMQVipInstances(request *DescribeRocketMQVipInstan
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeRocketMQVipInstancesWithContext(ctx context.Context, request *DescribeRocketMQVipInstancesRequest) (response *DescribeRocketMQVipInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeRocketMQVipInstancesRequest()
@@ -5099,6 +5103,7 @@ func NewModifyRocketMQInstanceSpecResponse() (response *ModifyRocketMQInstanceSp
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLTRADE = "FailedOperation.CallTrade"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  INVALIDPARAMETERVALUE_ATLEASTONE = "InvalidParameterValue.AtLeastOne"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  UNSUPPORTEDOPERATION_INSTANCEDOWNGRADE = "UnsupportedOperation.InstanceDowngrade"
 func (c *Client) ModifyRocketMQInstanceSpec(request *ModifyRocketMQInstanceSpecRequest) (response *ModifyRocketMQInstanceSpecResponse, err error) {
@@ -5111,6 +5116,7 @@ func (c *Client) ModifyRocketMQInstanceSpec(request *ModifyRocketMQInstanceSpecR
 // 可能返回的错误码:
 //  FAILEDOPERATION_CALLTRADE = "FailedOperation.CallTrade"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  INVALIDPARAMETERVALUE_ATLEASTONE = "InvalidParameterValue.AtLeastOne"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  UNSUPPORTEDOPERATION_INSTANCEDOWNGRADE = "UnsupportedOperation.InstanceDowngrade"
 func (c *Client) ModifyRocketMQInstanceSpecWithContext(ctx context.Context, request *ModifyRocketMQInstanceSpecRequest) (response *ModifyRocketMQInstanceSpecResponse, err error) {

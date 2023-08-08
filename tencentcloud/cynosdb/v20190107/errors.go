@@ -215,6 +215,9 @@ const (
 	// 预付费类型不允许该操作。
 	INVALIDPARAMETERVALUE_PREPAYPAYMODEERROR = "InvalidParameterValue.PrePayPayModeError"
 
+	// 找不到该ProjectId
+	INVALIDPARAMETERVALUE_PROJECTIDNOTFOUND = "InvalidParameterValue.ProjectIdNotFound"
+
 	// 所选地域和可用区不可用。
 	INVALIDPARAMETERVALUE_REGIONZONEUNAVAILABLE = "InvalidParameterValue.RegionZoneUnavailable"
 

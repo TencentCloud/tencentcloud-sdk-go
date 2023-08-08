@@ -8339,6 +8339,7 @@ func NewDescribeMalWareListResponse() (response *DescribeMalWareListResponse) {
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMalWareList(request *DescribeMalWareListRequest) (response *DescribeMalWareListResponse, err error) {
     return c.DescribeMalWareListWithContext(context.Background(), request)
 }
@@ -8355,6 +8356,7 @@ func (c *Client) DescribeMalWareList(request *DescribeMalWareListRequest) (respo
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeMalWareListWithContext(ctx context.Context, request *DescribeMalWareListRequest) (response *DescribeMalWareListResponse, err error) {
     if request == nil {
         request = NewDescribeMalWareListRequest()

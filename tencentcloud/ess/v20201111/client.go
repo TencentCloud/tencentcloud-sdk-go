@@ -472,6 +472,8 @@ func NewCreateConvertTaskApiResponse() (response *CreateConvertTaskApiResponse) 
 // CreateConvertTaskApi
 // 上传了word、excel、图片文件后，通过该接口发起文件转换任务，将word、excel、图片文件转换为pdf文件。
 //
+// 注：如果是集团代子企业发起任务场景，可以通过对Agent参数（未列在入参列表）设置代理的相关应用信息来支持，Agent参数设置可以参考CreateFlow接口的Agent相关说明。
+//
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
@@ -487,6 +489,8 @@ func (c *Client) CreateConvertTaskApi(request *CreateConvertTaskApiRequest) (res
 
 // CreateConvertTaskApi
 // 上传了word、excel、图片文件后，通过该接口发起文件转换任务，将word、excel、图片文件转换为pdf文件。
+//
+// 注：如果是集团代子企业发起任务场景，可以通过对Agent参数（未列在入参列表）设置代理的相关应用信息来支持，Agent参数设置可以参考CreateFlow接口的Agent相关说明。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
@@ -2475,6 +2479,7 @@ func NewCreateIntegrationDepartmentResponse() (response *CreateIntegrationDepart
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 func (c *Client) CreateIntegrationDepartment(request *CreateIntegrationDepartmentRequest) (response *CreateIntegrationDepartmentResponse, err error) {
@@ -2491,6 +2496,7 @@ func (c *Client) CreateIntegrationDepartment(request *CreateIntegrationDepartmen
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
+//  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 func (c *Client) CreateIntegrationDepartmentWithContext(ctx context.Context, request *CreateIntegrationDepartmentRequest) (response *CreateIntegrationDepartmentResponse, err error) {
@@ -2528,7 +2534,9 @@ func NewCreateIntegrationEmployeesResponse() (response *CreateIntegrationEmploye
 }
 
 // CreateIntegrationEmployees
-// 创建员工,此接口会发送提醒员工实名的短信
+// 创建员工,此接口会发送提醒员工实名的短信，如果通过手机号发现员工已经创建，则不会重新创建，会发送短信提醒员工实名
+//
+// 注意：此接口支持企微组织架构的 openid 创建员工，这种场景下传递明文的企微 openid 到WeworkOpenId字段即可（企微明文的 openid 一定要在应用的可见范围内才行），通过企微创建的员工，会发送企微消息去提醒实名
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2546,7 +2554,9 @@ func (c *Client) CreateIntegrationEmployees(request *CreateIntegrationEmployeesR
 }
 
 // CreateIntegrationEmployees
-// 创建员工,此接口会发送提醒员工实名的短信
+// 创建员工,此接口会发送提醒员工实名的短信，如果通过手机号发现员工已经创建，则不会重新创建，会发送短信提醒员工实名
+//
+// 注意：此接口支持企微组织架构的 openid 创建员工，这种场景下传递明文的企微 openid 到WeworkOpenId字段即可（企微明文的 openid 一定要在应用的可见范围内才行），通过企微创建的员工，会发送企微消息去提醒实名
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2597,7 +2607,7 @@ func NewCreateIntegrationUserRolesResponse() (response *CreateIntegrationUserRol
 // 绑定员工与对应角色
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DB = "InternalError.Db"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -2614,7 +2624,7 @@ func (c *Client) CreateIntegrationUserRoles(request *CreateIntegrationUserRolesR
 // 绑定员工与对应角色
 //
 // 可能返回的错误码:
-//  INTERNALERROR_DB = "InternalError.Db"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -2855,13 +2865,7 @@ func NewCreatePersonAuthCertificateImageResponse() (response *CreatePersonAuthCe
 // 本接口（CreatePersonAuthCertificateImage）用于创建个人用户证书证明图片
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreatePersonAuthCertificateImage(request *CreatePersonAuthCertificateImageRequest) (response *CreatePersonAuthCertificateImageResponse, err error) {
     return c.CreatePersonAuthCertificateImageWithContext(context.Background(), request)
 }
@@ -2870,13 +2874,7 @@ func (c *Client) CreatePersonAuthCertificateImage(request *CreatePersonAuthCerti
 // 本接口（CreatePersonAuthCertificateImage）用于创建个人用户证书证明图片
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreatePersonAuthCertificateImageWithContext(ctx context.Context, request *CreatePersonAuthCertificateImageRequest) (response *CreatePersonAuthCertificateImageResponse, err error) {
     if request == nil {
         request = NewCreatePersonAuthCertificateImageRequest()
@@ -3732,6 +3730,7 @@ func NewDeleteIntegrationDepartmentResponse() (response *DeleteIntegrationDepart
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -3744,6 +3743,7 @@ func (c *Client) DeleteIntegrationDepartment(request *DeleteIntegrationDepartmen
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_SERIALIZE = "InternalError.Serialize"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
@@ -3784,6 +3784,12 @@ func NewDeleteIntegrationEmployeesResponse() (response *DeleteIntegrationEmploye
 // DeleteIntegrationEmployees
 // 移除员工
 //
+// 这里分两个场景
+//
+// 如果不传交接人的ReceiveUserId或者ReceiveOpenId，则会直接把这个人进行离职
+//
+// 如果传了交接人，会把离职人未处理完的合同交接给交接人后再离职
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -3799,6 +3805,12 @@ func (c *Client) DeleteIntegrationEmployees(request *DeleteIntegrationEmployeesR
 
 // DeleteIntegrationEmployees
 // 移除员工
+//
+// 这里分两个场景
+//
+// 如果不传交接人的ReceiveUserId或者ReceiveOpenId，则会直接把这个人进行离职
+//
+// 如果传了交接人，会把离职人未处理完的合同交接给交接人后再离职
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4256,7 +4268,9 @@ func NewDescribeFlowComponentsResponse() (response *DescribeFlowComponentsRespon
 }
 
 // DescribeFlowComponents
-// 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息
+// 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息和填写内容。
+//
+// 注意：使用此接口前，需要在【企业应用管理】-【应用集成】-【第三方应用管理】中开通【下载应用内全量合同文件及内容数据】功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
@@ -4268,7 +4282,9 @@ func (c *Client) DescribeFlowComponents(request *DescribeFlowComponentsRequest) 
 }
 
 // DescribeFlowComponents
-// 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息
+// 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息和填写内容。
+//
+// 注意：使用此接口前，需要在【企业应用管理】-【应用集成】-【第三方应用管理】中开通【下载应用内全量合同文件及内容数据】功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
@@ -4391,6 +4407,7 @@ func NewDescribeFlowInfoResponse() (response *DescribeFlowInfoResponse) {
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeFlowInfo(request *DescribeFlowInfoRequest) (response *DescribeFlowInfoResponse, err error) {
     return c.DescribeFlowInfoWithContext(context.Background(), request)
@@ -4408,6 +4425,7 @@ func (c *Client) DescribeFlowInfo(request *DescribeFlowInfoRequest) (response *D
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeFlowInfoWithContext(ctx context.Context, request *DescribeFlowInfoRequest) (response *DescribeFlowInfoResponse, err error) {
     if request == nil {
@@ -4774,11 +4792,11 @@ func NewDescribeIntegrationRolesResponse() (response *DescribeIntegrationRolesRe
 }
 
 // DescribeIntegrationRoles
-// 查询企业角色列表
+// 分页查询企业角色列表，法人的角色是系统保留角色，不会返回，按照角色创建时间升序排列
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
 //  INVALIDPARAMETER_OFFSET = "InvalidParameter.Offset"
@@ -4792,11 +4810,11 @@ func (c *Client) DescribeIntegrationRoles(request *DescribeIntegrationRolesReque
 }
 
 // DescribeIntegrationRoles
-// 查询企业角色列表
+// 分页查询企业角色列表，法人的角色是系统保留角色，不会返回，按照角色创建时间升序排列
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_LIMIT = "InvalidParameter.Limit"
 //  INVALIDPARAMETER_OFFSET = "InvalidParameter.Offset"
@@ -4845,7 +4863,6 @@ func NewDescribeOrganizationGroupOrganizationsResponse() (response *DescribeOrga
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
@@ -4860,7 +4877,6 @@ func (c *Client) DescribeOrganizationGroupOrganizations(request *DescribeOrganiz
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_DB = "InternalError.Db"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
@@ -5594,6 +5610,7 @@ func NewUpdateIntegrationEmployeesResponse() (response *UpdateIntegrationEmploye
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
 func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesRequest) (response *UpdateIntegrationEmployeesResponse, err error) {
     return c.UpdateIntegrationEmployeesWithContext(context.Background(), request)
@@ -5608,6 +5625,7 @@ func (c *Client) UpdateIntegrationEmployees(request *UpdateIntegrationEmployeesR
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOAPIAUTH = "OperationDenied.NoApiAuth"
 func (c *Client) UpdateIntegrationEmployeesWithContext(ctx context.Context, request *UpdateIntegrationEmployeesRequest) (response *UpdateIntegrationEmployeesResponse, err error) {
     if request == nil {

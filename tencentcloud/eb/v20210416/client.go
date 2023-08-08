@@ -986,6 +986,7 @@ func NewGetEventBusResponse() (response *GetEventBusResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) GetEventBus(request *GetEventBusRequest) (response *GetEventBusResponse, err error) {
     return c.GetEventBusWithContext(context.Background(), request)
@@ -996,6 +997,7 @@ func (c *Client) GetEventBus(request *GetEventBusRequest) (response *GetEventBus
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) GetEventBusWithContext(ctx context.Context, request *GetEventBusRequest) (response *GetEventBusResponse, err error) {
     if request == nil {
@@ -1150,6 +1152,7 @@ func NewListConnectionsResponse() (response *ListConnectionsResponse) {
 //  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
 //  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
 //  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.OrderBy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) ListConnections(request *ListConnectionsRequest) (response *ListConnectionsResponse, err error) {
     return c.ListConnectionsWithContext(context.Background(), request)
@@ -1164,6 +1167,7 @@ func (c *Client) ListConnections(request *ListConnectionsRequest) (response *Lis
 //  INVALIDPARAMETERVALUE_OFFSET = "InvalidParameterValue.Offset"
 //  INVALIDPARAMETERVALUE_ORDER = "InvalidParameterValue.Order"
 //  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.OrderBy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 func (c *Client) ListConnectionsWithContext(ctx context.Context, request *ListConnectionsRequest) (response *ListConnectionsResponse, err error) {
     if request == nil {
@@ -1328,6 +1332,7 @@ func NewListTargetsResponse() (response *ListTargetsResponse) {
 //  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.OrderBy"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
 //  INVALIDPARAMETERVALUE_TARGETID = "InvalidParameterValue.TargetId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 func (c *Client) ListTargets(request *ListTargetsRequest) (response *ListTargetsResponse, err error) {
@@ -1345,6 +1350,7 @@ func (c *Client) ListTargets(request *ListTargetsRequest) (response *ListTargets
 //  INVALIDPARAMETERVALUE_ORDERBY = "InvalidParameterValue.OrderBy"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
 //  INVALIDPARAMETERVALUE_TARGETID = "InvalidParameterValue.TargetId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 func (c *Client) ListTargetsWithContext(ctx context.Context, request *ListTargetsRequest) (response *ListTargetsResponse, err error) {

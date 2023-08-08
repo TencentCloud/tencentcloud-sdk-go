@@ -115,6 +115,7 @@ func NewDescribeFraudPremiumResponse() (response *DescribeFraudPremiumResponse) 
 // 查询设备标识及风险
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeFraudPremium(request *DescribeFraudPremiumRequest) (response *DescribeFraudPremiumResponse, err error) {
     return c.DescribeFraudPremiumWithContext(context.Background(), request)
@@ -124,6 +125,7 @@ func (c *Client) DescribeFraudPremium(request *DescribeFraudPremiumRequest) (res
 // 查询设备标识及风险
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeFraudPremiumWithContext(ctx context.Context, request *DescribeFraudPremiumRequest) (response *DescribeFraudPremiumResponse, err error) {
     if request == nil {

@@ -1920,13 +1920,13 @@ type ChannelCreateUserRolesRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 绑定角色的角色id列表
+	// 绑定角色的角色id列表，最多 100 个
 	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
 
-	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数
+	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多 100 个
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
-	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数
+	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多 100 个
 	OpenIds []*string `json:"OpenIds,omitempty" name:"OpenIds"`
 
 	// 操作者信息
@@ -1941,13 +1941,13 @@ type ChannelCreateUserRolesRequest struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 绑定角色的角色id列表
+	// 绑定角色的角色id列表，最多 100 个
 	RoleIds []*string `json:"RoleIds,omitempty" name:"RoleIds"`
 
-	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数
+	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多 100 个
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
-	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数
+	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多 100 个
 	OpenIds []*string `json:"OpenIds,omitempty" name:"OpenIds"`
 
 	// 操作者信息
@@ -2080,7 +2080,7 @@ type ChannelDeleteRoleUsersRequestParams struct {
 	// 角色Id（非超管或法人角色Id）
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
-	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数
+	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多两百
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 操作人信息
@@ -2088,7 +2088,7 @@ type ChannelDeleteRoleUsersRequestParams struct {
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数
+	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多两百
 	OpenIds []*string `json:"OpenIds,omitempty" name:"OpenIds"`
 }
 
@@ -2101,13 +2101,13 @@ type ChannelDeleteRoleUsersRequest struct {
 	// 角色Id（非超管或法人角色Id）
 	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
 
-	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数
+	// 电子签用户ID列表，与OpenIds参数二选一,优先UserIds参数，最多两百
 	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
 
 	// 操作人信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数
+	// 客户系统用户ID列表，与UserIds参数二选一,优先UserIds参数，最多两百
 	OpenIds []*string `json:"OpenIds,omitempty" name:"OpenIds"`
 }
 
@@ -2249,18 +2249,18 @@ func (r *ChannelDeleteSealPoliciesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelDescribeEmployeesRequestParams struct {
-	// 返回最大数量，最大为20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 指定每页多少条数据，单页最大20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]
 	// 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
 	// 查询离职员工时，Key为Status，Values为["QuiteJob"]
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0，最大为20000
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0,最大为20000
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 暂未开放
@@ -2272,18 +2272,18 @@ type ChannelDescribeEmployeesRequestParams struct {
 type ChannelDescribeEmployeesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 返回最大数量，最大为20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 指定每页多少条数据，单页最大20
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]
 	// 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
 	// 查询离职员工时，Key为Status，Values为["QuiteJob"]
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
-	// 偏移量，默认为0，最大为20000
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0,最大为20000
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 暂未开放
@@ -2302,8 +2302,8 @@ func (r *ChannelDescribeEmployeesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Limit")
 	delete(f, "Agent")
+	delete(f, "Limit")
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Operator")
@@ -2319,11 +2319,11 @@ type ChannelDescribeEmployeesResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Employees []*Staff `json:"Employees,omitempty" name:"Employees"`
 
-	// 偏移量，默认为0，最大为20000
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大20000
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 返回最大数量，最大为20
+	// 指定每页多少条数据，单页最大20
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 符合条件的员工数量
@@ -2390,7 +2390,7 @@ func (r *ChannelDescribeFlowComponentsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelDescribeFlowComponentsResponseParams struct {
-	// 流程关联的填写控件信息
+	// 流程关联的填写控件信息，控件会按照参与方进行分类。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecipientComponentInfos []*RecipientComponentInfo `json:"RecipientComponentInfos,omitempty" name:"RecipientComponentInfos"`
 
@@ -2526,10 +2526,10 @@ type ChannelDescribeRolesRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 查询起始偏移，最大2000
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询数量，最大200
+	// 指定每页多少条数据，单页最大200
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询的关键字段:
@@ -2549,10 +2549,10 @@ type ChannelDescribeRolesRequest struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 查询起始偏移，最大2000
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询数量，最大200
+	// 指定每页多少条数据，单页最大200
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询的关键字段:
@@ -2589,10 +2589,10 @@ func (r *ChannelDescribeRolesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelDescribeRolesResponseParams struct {
-	// 页面偏移量，最大2000
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
-	// 查询数量，最大200
+	// 指定每页多少条数据，单页最大200
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 
 	// 查询角色的总数量

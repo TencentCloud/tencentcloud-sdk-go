@@ -79,6 +79,7 @@ func NewAttachPluginResponse() (response *AttachPluginResponse) {
 //  LIMITEXCEEDED_SERVICECOUNTFORPLUGINLIMITEXCEEDED = "LimitExceeded.ServiceCountForPluginLimitExceeded"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 //  UNSUPPORTEDOPERATION_ATTACHPLUGIN = "UnsupportedOperation.AttachPlugin"
 //  UNSUPPORTEDOPERATION_BASICSERVICENOTALLOWATTACHPLUGIN = "UnsupportedOperation.BasicServiceNotAllowAttachPlugin"
@@ -104,6 +105,7 @@ func (c *Client) AttachPlugin(request *AttachPluginRequest) (response *AttachPlu
 //  LIMITEXCEEDED_SERVICECOUNTFORPLUGINLIMITEXCEEDED = "LimitExceeded.ServiceCountForPluginLimitExceeded"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 //  UNSUPPORTEDOPERATION_ATTACHPLUGIN = "UnsupportedOperation.AttachPlugin"
 //  UNSUPPORTEDOPERATION_BASICSERVICENOTALLOWATTACHPLUGIN = "UnsupportedOperation.BasicServiceNotAllowAttachPlugin"
@@ -2671,6 +2673,7 @@ func NewDescribeApiKeyResponse() (response *DescribeApiKeyResponse) {
 // 用户在创建密钥后，可用此接口查询一个 API 密钥的详情，该接口会显示密钥 Key。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CAMEXCEPTION = "FailedOperation.CamException"
 //  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
 func (c *Client) DescribeApiKey(request *DescribeApiKeyRequest) (response *DescribeApiKeyResponse, err error) {
     return c.DescribeApiKeyWithContext(context.Background(), request)
@@ -2682,6 +2685,7 @@ func (c *Client) DescribeApiKey(request *DescribeApiKeyRequest) (response *Descr
 // 用户在创建密钥后，可用此接口查询一个 API 密钥的详情，该接口会显示密钥 Key。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CAMEXCEPTION = "FailedOperation.CamException"
 //  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
 func (c *Client) DescribeApiKeyWithContext(ctx context.Context, request *DescribeApiKeyRequest) (response *DescribeApiKeyResponse, err error) {
     if request == nil {
@@ -3042,6 +3046,7 @@ func NewDescribeExclusiveInstancesStatusResponse() (response *DescribeExclusiveI
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+//  UNSUPPORTEDOPERATION_REQUESTPOSTERROR = "UnsupportedOperation.RequestPostError"
 func (c *Client) DescribeExclusiveInstancesStatus(request *DescribeExclusiveInstancesStatusRequest) (response *DescribeExclusiveInstancesStatusResponse, err error) {
     return c.DescribeExclusiveInstancesStatusWithContext(context.Background(), request)
 }
@@ -3061,6 +3066,7 @@ func (c *Client) DescribeExclusiveInstancesStatus(request *DescribeExclusiveInst
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
+//  UNSUPPORTEDOPERATION_REQUESTPOSTERROR = "UnsupportedOperation.RequestPostError"
 func (c *Client) DescribeExclusiveInstancesStatusWithContext(ctx context.Context, request *DescribeExclusiveInstancesStatusRequest) (response *DescribeExclusiveInstancesStatusResponse, err error) {
     if request == nil {
         request = NewDescribeExclusiveInstancesStatusRequest()
@@ -3256,6 +3262,7 @@ func NewDescribeLogSearchResponse() (response *DescribeLogSearchResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_CLSSEARCHTIME = "UnsupportedOperation.ClsSearchTime"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeLogSearch(request *DescribeLogSearchRequest) (response *DescribeLogSearchResponse, err error) {
@@ -3267,6 +3274,7 @@ func (c *Client) DescribeLogSearch(request *DescribeLogSearchRequest) (response 
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
+//  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_CLSSEARCHTIME = "UnsupportedOperation.ClsSearchTime"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 func (c *Client) DescribeLogSearchWithContext(ctx context.Context, request *DescribeLogSearchRequest) (response *DescribeLogSearchResponse, err error) {
@@ -3536,6 +3544,7 @@ func NewDescribeServiceResponse() (response *DescribeServiceResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CAMEXCEPTION = "FailedOperation.CamException"
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMEXCEPTION = "InternalError.CamException"
@@ -3545,6 +3554,7 @@ func NewDescribeServiceResponse() (response *DescribeServiceResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+//  UNSUPPORTEDOPERATION_REQUESTPOSTERROR = "UnsupportedOperation.RequestPostError"
 //  UNSUPPORTEDOPERATION_UNPACKERROR = "UnsupportedOperation.UnpackError"
 func (c *Client) DescribeService(request *DescribeServiceRequest) (response *DescribeServiceResponse, err error) {
     return c.DescribeServiceWithContext(context.Background(), request)
@@ -3557,6 +3567,7 @@ func (c *Client) DescribeService(request *DescribeServiceRequest) (response *Des
 //  AUTHFAILURE = "AuthFailure"
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CAMEXCEPTION = "FailedOperation.CamException"
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMEXCEPTION = "InternalError.CamException"
@@ -3566,6 +3577,7 @@ func (c *Client) DescribeService(request *DescribeServiceRequest) (response *Des
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
+//  UNSUPPORTEDOPERATION_REQUESTPOSTERROR = "UnsupportedOperation.RequestPostError"
 //  UNSUPPORTEDOPERATION_UNPACKERROR = "UnsupportedOperation.UnpackError"
 func (c *Client) DescribeServiceWithContext(ctx context.Context, request *DescribeServiceRequest) (response *DescribeServiceResponse, err error) {
     if request == nil {
@@ -4038,6 +4050,7 @@ func NewDescribeServicesStatusResponse() (response *DescribeServicesStatusRespon
 //  AUTHFAILURE = "AuthFailure"
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CAMEXCEPTION = "FailedOperation.CamException"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMEXCEPTION = "InternalError.CamException"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
@@ -4068,6 +4081,7 @@ func (c *Client) DescribeServicesStatus(request *DescribeServicesStatusRequest) 
 //  AUTHFAILURE = "AuthFailure"
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CAMEXCEPTION = "FailedOperation.CamException"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMEXCEPTION = "InternalError.CamException"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
@@ -4194,6 +4208,7 @@ func NewDescribeUpstreamsResponse() (response *DescribeUpstreamsResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CAMEXCEPTION = "FailedOperation.CamException"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMEXCEPTION = "InternalError.CamException"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -4214,6 +4229,7 @@ func (c *Client) DescribeUpstreams(request *DescribeUpstreamsRequest) (response 
 //  AUTHFAILURE = "AuthFailure"
 //  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CAMEXCEPTION = "FailedOperation.CamException"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMEXCEPTION = "InternalError.CamException"
 //  INVALIDPARAMETER = "InvalidParameter"
