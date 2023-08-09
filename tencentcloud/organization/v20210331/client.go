@@ -417,6 +417,68 @@ func (c *Client) CreateOrganizationMemberWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateOrganizationMemberAuthIdentityRequest() (request *CreateOrganizationMemberAuthIdentityRequest) {
+    request = &CreateOrganizationMemberAuthIdentityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "CreateOrganizationMemberAuthIdentity")
+    
+    
+    return
+}
+
+func NewCreateOrganizationMemberAuthIdentityResponse() (response *CreateOrganizationMemberAuthIdentityResponse) {
+    response = &CreateOrganizationMemberAuthIdentityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOrganizationMemberAuthIdentity
+// 添加组织成员访问授权
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEROLE = "FailedOperation.CreateRole"
+//  FAILEDOPERATION_ORGANIZATIONIDENTITYPOLICYERROR = "FailedOperation.OrganizationIdentityPolicyError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONIDENTITYNOTEXIST = "ResourceNotFound.OrganizationIdentityNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONMEMBERNOTEXIST = "ResourceNotFound.OrganizationMemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateOrganizationMemberAuthIdentity(request *CreateOrganizationMemberAuthIdentityRequest) (response *CreateOrganizationMemberAuthIdentityResponse, err error) {
+    return c.CreateOrganizationMemberAuthIdentityWithContext(context.Background(), request)
+}
+
+// CreateOrganizationMemberAuthIdentity
+// 添加组织成员访问授权
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CREATEROLE = "FailedOperation.CreateRole"
+//  FAILEDOPERATION_ORGANIZATIONIDENTITYPOLICYERROR = "FailedOperation.OrganizationIdentityPolicyError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_ORGANIZATIONIDENTITYNOTEXIST = "ResourceNotFound.OrganizationIdentityNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONMEMBERNOTEXIST = "ResourceNotFound.OrganizationMemberNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateOrganizationMemberAuthIdentityWithContext(ctx context.Context, request *CreateOrganizationMemberAuthIdentityRequest) (response *CreateOrganizationMemberAuthIdentityResponse, err error) {
+    if request == nil {
+        request = NewCreateOrganizationMemberAuthIdentityRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrganizationMemberAuthIdentity require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOrganizationMemberAuthIdentityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOrganizationMemberPolicyRequest() (request *CreateOrganizationMemberPolicyRequest) {
     request = &CreateOrganizationMemberPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -551,6 +613,62 @@ func (c *Client) DeleteOrganizationMembersWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDeleteOrganizationMembersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteOrganizationMembersPolicyRequest() (request *DeleteOrganizationMembersPolicyRequest) {
+    request = &DeleteOrganizationMembersPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DeleteOrganizationMembersPolicy")
+    
+    
+    return
+}
+
+func NewDeleteOrganizationMembersPolicyResponse() (response *DeleteOrganizationMembersPolicyResponse) {
+    response = &DeleteOrganizationMembersPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteOrganizationMembersPolicy
+// 删除组织成员访问策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETEPOLICY = "FailedOperation.DeletePolicy"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = "ResourceNotFound.MemberPolicyNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) DeleteOrganizationMembersPolicy(request *DeleteOrganizationMembersPolicyRequest) (response *DeleteOrganizationMembersPolicyResponse, err error) {
+    return c.DeleteOrganizationMembersPolicyWithContext(context.Background(), request)
+}
+
+// DeleteOrganizationMembersPolicy
+// 删除组织成员访问策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DELETEPOLICY = "FailedOperation.DeletePolicy"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERPOLICYNOTEXIST = "ResourceNotFound.MemberPolicyNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) DeleteOrganizationMembersPolicyWithContext(ctx context.Context, request *DeleteOrganizationMembersPolicyRequest) (response *DeleteOrganizationMembersPolicyResponse, err error) {
+    if request == nil {
+        request = NewDeleteOrganizationMembersPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOrganizationMembersPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteOrganizationMembersPolicyResponse()
     err = c.Send(request, response)
     return
 }

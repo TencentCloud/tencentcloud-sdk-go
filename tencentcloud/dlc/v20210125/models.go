@@ -1957,6 +1957,9 @@ type CreateNotebookSessionRequestParams struct {
 
 	// 指定spark版本名称，当前任务使用该spark镜像运行
 	SparkImage *string `json:"SparkImage,omitempty" name:"SparkImage"`
+
+	// 是否继承集群的资源类配置：0：自定义（默认），1：继承集群；
+	IsInherit *int64 `json:"IsInherit,omitempty" name:"IsInherit"`
 }
 
 type CreateNotebookSessionRequest struct {
@@ -2009,6 +2012,9 @@ type CreateNotebookSessionRequest struct {
 
 	// 指定spark版本名称，当前任务使用该spark镜像运行
 	SparkImage *string `json:"SparkImage,omitempty" name:"SparkImage"`
+
+	// 是否继承集群的资源类配置：0：自定义（默认），1：继承集群；
+	IsInherit *int64 `json:"IsInherit,omitempty" name:"IsInherit"`
 }
 
 func (r *CreateNotebookSessionRequest) ToJsonString() string {
@@ -2038,6 +2044,7 @@ func (r *CreateNotebookSessionRequest) FromJsonString(s string) error {
 	delete(f, "TimeoutInSecond")
 	delete(f, "ExecutorMaxNumbers")
 	delete(f, "SparkImage")
+	delete(f, "IsInherit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookSessionRequest has unknown keys!", "")
 	}
@@ -2725,6 +2732,9 @@ type CreateSparkSessionBatchSQLRequestParams struct {
 	// 2.dlc.role.arn：用户配置的roleArn鉴权策略配置信息，可以用过该字段设置；
 	// 3.dlc.sql.set.config：用户配置的集群配置信息，可以用过该字段设置；
 	Arguments []*KVPair `json:"Arguments,omitempty" name:"Arguments"`
+
+	// 是否继承集群的资源类配置：0：自定义（默认），1：继承集群；
+	IsInherit *int64 `json:"IsInherit,omitempty" name:"IsInherit"`
 }
 
 type CreateSparkSessionBatchSQLRequest struct {
@@ -2761,6 +2771,9 @@ type CreateSparkSessionBatchSQLRequest struct {
 	// 2.dlc.role.arn：用户配置的roleArn鉴权策略配置信息，可以用过该字段设置；
 	// 3.dlc.sql.set.config：用户配置的集群配置信息，可以用过该字段设置；
 	Arguments []*KVPair `json:"Arguments,omitempty" name:"Arguments"`
+
+	// 是否继承集群的资源类配置：0：自定义（默认），1：继承集群；
+	IsInherit *int64 `json:"IsInherit,omitempty" name:"IsInherit"`
 }
 
 func (r *CreateSparkSessionBatchSQLRequest) ToJsonString() string {
@@ -2785,6 +2798,7 @@ func (r *CreateSparkSessionBatchSQLRequest) FromJsonString(s string) error {
 	delete(f, "SessionId")
 	delete(f, "SessionName")
 	delete(f, "Arguments")
+	delete(f, "IsInherit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSparkSessionBatchSQLRequest has unknown keys!", "")
 	}

@@ -336,6 +336,114 @@ type CFSTurbo struct {
 	Path *string `json:"Path,omitempty" name:"Path"`
 }
 
+// Predefined struct for user
+type ChatCompletionRequestParams struct {
+	// 部署好的模型服务Id。
+	Model *string `json:"Model,omitempty" name:"Model"`
+
+	// 输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
+	Messages []*Message `json:"Messages,omitempty" name:"Messages"`
+
+	// 采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+	Temperature *float64 `json:"Temperature,omitempty" name:"Temperature"`
+
+	// 核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
+	TopP *float64 `json:"TopP,omitempty" name:"TopP"`
+
+	// 最大生成的token数目。默认为无限大。
+	MaxTokens *int64 `json:"MaxTokens,omitempty" name:"MaxTokens"`
+}
+
+type ChatCompletionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 部署好的模型服务Id。
+	Model *string `json:"Model,omitempty" name:"Model"`
+
+	// 输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
+	Messages []*Message `json:"Messages,omitempty" name:"Messages"`
+
+	// 采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+	Temperature *float64 `json:"Temperature,omitempty" name:"Temperature"`
+
+	// 核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
+	TopP *float64 `json:"TopP,omitempty" name:"TopP"`
+
+	// 最大生成的token数目。默认为无限大。
+	MaxTokens *int64 `json:"MaxTokens,omitempty" name:"MaxTokens"`
+}
+
+func (r *ChatCompletionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChatCompletionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Model")
+	delete(f, "Messages")
+	delete(f, "Temperature")
+	delete(f, "TopP")
+	delete(f, "MaxTokens")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChatCompletionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChatCompletionResponseParams struct {
+	// 部署好的服务Id
+	Model *string `json:"Model,omitempty" name:"Model"`
+
+	// 本次问答的答案。
+	Choices []*Choice `json:"Choices,omitempty" name:"Choices"`
+
+	// 会话Id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// token统计
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Usage *Usage `json:"Usage,omitempty" name:"Usage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChatCompletionResponse struct {
+	*tchttp.BaseResponse
+	Response *ChatCompletionResponseParams `json:"Response"`
+}
+
+func (r *ChatCompletionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChatCompletionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type Choice struct {
+	// 对话结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *Message `json:"Message,omitempty" name:"Message"`
+
+	// 结束理由: stop, length, content_filter, null
+	FinishReason *string `json:"FinishReason,omitempty" name:"FinishReason"`
+
+	// 序号
+	Index *int64 `json:"Index,omitempty" name:"Index"`
+}
+
 type Container struct {
 	// 名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5984,6 +6092,16 @@ type LogIdentity struct {
 	Timestamp *string `json:"Timestamp,omitempty" name:"Timestamp"`
 }
 
+type Message struct {
+	// 角色名。支持三个角色：system、user、assistant，其中system仅开头可出现一次，也可忽略。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Role *string `json:"Role,omitempty" name:"Role"`
+
+	// 对话输入内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
 type MetricData struct {
 	// 训练任务id
 	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
@@ -9003,6 +9121,20 @@ type TrainingTaskSetItem struct {
 	// 回调地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+}
+
+type Usage struct {
+	// 生成的token数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompletionTokens *int64 `json:"CompletionTokens,omitempty" name:"CompletionTokens"`
+
+	// 输入的token数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PromptTokens *int64 `json:"PromptTokens,omitempty" name:"PromptTokens"`
+
+	// 总共token数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalTokens *int64 `json:"TotalTokens,omitempty" name:"TotalTokens"`
 }
 
 type VolumeMount struct {

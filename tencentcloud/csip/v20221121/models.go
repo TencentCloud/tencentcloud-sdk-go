@@ -640,6 +640,56 @@ type CVMAssetVO struct {
 	IsNewAsset *uint64 `json:"IsNewAsset,omitempty" name:"IsNewAsset"`
 }
 
+type ClbListenerListInfo struct {
+	// 监听器id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+
+	// 监听器名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
+
+	// 负载均衡Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+
+	// 负载均衡名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
+
+	// 协议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 负载均衡ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitempty" name:"Vip"`
+
+	// 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VPort *int64 `json:"VPort,omitempty" name:"VPort"`
+
+	// 区域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 私有网络id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NumericalVpcId *int64 `json:"NumericalVpcId,omitempty" name:"NumericalVpcId"`
+
+	// 负载均衡类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerType *string `json:"LoadBalancerType,omitempty" name:"LoadBalancerType"`
+
+	// 监听器域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+}
+
 // Predefined struct for user
 type CreateDomainAndIpRequestParams struct {
 	// -
@@ -1395,6 +1445,68 @@ func (r *DescribeDomainAssetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDomainAssetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeListenerListRequestParams struct {
+	// -
+	Filter *Filter `json:"Filter,omitempty" name:"Filter"`
+}
+
+type DescribeListenerListRequest struct {
+	*tchttp.BaseRequest
+	
+	// -
+	Filter *Filter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *DescribeListenerListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeListenerListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeListenerListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeListenerListResponseParams struct {
+	// 总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitempty" name:"Total"`
+
+	// 监听器列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*ClbListenerListInfo `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeListenerListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeListenerListResponseParams `json:"Response"`
+}
+
+func (r *DescribeListenerListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeListenerListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

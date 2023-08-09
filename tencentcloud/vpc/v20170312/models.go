@@ -83,12 +83,15 @@ func (r *AcceptAttachCcnInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AcceptVpcPeeringConnectionRequestParams struct {
-
+	// 对等连接唯一ID。
+	PeeringConnectionId *string `json:"PeeringConnectionId,omitempty" name:"PeeringConnectionId"`
 }
 
 type AcceptVpcPeeringConnectionRequest struct {
 	*tchttp.BaseRequest
 	
+	// 对等连接唯一ID。
+	PeeringConnectionId *string `json:"PeeringConnectionId,omitempty" name:"PeeringConnectionId"`
 }
 
 func (r *AcceptVpcPeeringConnectionRequest) ToJsonString() string {
@@ -103,7 +106,7 @@ func (r *AcceptVpcPeeringConnectionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "PeeringConnectionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AcceptVpcPeeringConnectionRequest has unknown keys!", "")
 	}
@@ -8435,12 +8438,15 @@ func (r *DeleteVpcEndPointServiceWhiteListResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type DeleteVpcPeeringConnectionRequestParams struct {
-
+	// 对等连接唯一ID。
+	PeeringConnectionId *string `json:"PeeringConnectionId,omitempty" name:"PeeringConnectionId"`
 }
 
 type DeleteVpcPeeringConnectionRequest struct {
 	*tchttp.BaseRequest
 	
+	// 对等连接唯一ID。
+	PeeringConnectionId *string `json:"PeeringConnectionId,omitempty" name:"PeeringConnectionId"`
 }
 
 func (r *DeleteVpcPeeringConnectionRequest) ToJsonString() string {
@@ -8455,7 +8461,7 @@ func (r *DeleteVpcPeeringConnectionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "PeeringConnectionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteVpcPeeringConnectionRequest has unknown keys!", "")
 	}

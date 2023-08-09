@@ -364,7 +364,7 @@ func NewCreateOrderInstanceResponse() (response *CreateOrderInstanceResponse) {
 //
 // 订单类型有：免费试用、按年收费、按次收费。
 //
-// 应用加固支持的平台类型有：android加固 、ios源码混淆 、sdk加固、applet小程序加固。
+// 应用加固支持的平台类型有：android加固 、ios源码混淆 、sdk加固、applet小程序加固
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
@@ -388,7 +388,7 @@ func (c *Client) CreateOrderInstance(request *CreateOrderInstanceRequest) (respo
 //
 // 订单类型有：免费试用、按年收费、按次收费。
 //
-// 应用加固支持的平台类型有：android加固 、ios源码混淆 、sdk加固、applet小程序加固。
+// 应用加固支持的平台类型有：android加固 、ios源码混淆 、sdk加固、applet小程序加固
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"

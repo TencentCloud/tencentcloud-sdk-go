@@ -317,6 +317,67 @@ func (r *CancelOrganizationMemberAuthAccountResponse) FromJsonString(s string) e
 }
 
 // Predefined struct for user
+type CreateOrganizationMemberAuthIdentityRequestParams struct {
+	// 成员uin列表。最多10个
+	MemberUins []*uint64 `json:"MemberUins,omitempty" name:"MemberUins"`
+
+	// 身份Id列表。最多5个
+	IdentityIds []*uint64 `json:"IdentityIds,omitempty" name:"IdentityIds"`
+}
+
+type CreateOrganizationMemberAuthIdentityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 成员uin列表。最多10个
+	MemberUins []*uint64 `json:"MemberUins,omitempty" name:"MemberUins"`
+
+	// 身份Id列表。最多5个
+	IdentityIds []*uint64 `json:"IdentityIds,omitempty" name:"IdentityIds"`
+}
+
+func (r *CreateOrganizationMemberAuthIdentityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationMemberAuthIdentityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberUins")
+	delete(f, "IdentityIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationMemberAuthIdentityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOrganizationMemberAuthIdentityResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateOrganizationMemberAuthIdentityResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOrganizationMemberAuthIdentityResponseParams `json:"Response"`
+}
+
+func (r *CreateOrganizationMemberAuthIdentityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationMemberAuthIdentityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOrganizationMemberPolicyRequestParams struct {
 	// 成员Uin。
 	MemberUin *int64 `json:"MemberUin,omitempty" name:"MemberUin"`
@@ -513,6 +574,60 @@ func (r *CreateOrganizationMemberResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateOrganizationMemberResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOrganizationMembersPolicyRequestParams struct {
+	// 访问策略ID。
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
+type DeleteOrganizationMembersPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 访问策略ID。
+	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+}
+
+func (r *DeleteOrganizationMembersPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOrganizationMembersPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PolicyId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOrganizationMembersPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOrganizationMembersPolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteOrganizationMembersPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteOrganizationMembersPolicyResponseParams `json:"Response"`
+}
+
+func (r *DeleteOrganizationMembersPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOrganizationMembersPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -45,6 +45,58 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewChatCompletionRequest() (request *ChatCompletionRequest) {
+    request = &ChatCompletionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "ChatCompletion")
+    
+    
+    return
+}
+
+func NewChatCompletionResponse() (response *ChatCompletionResponse) {
+    response = &ChatCompletionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChatCompletion
+// 与大模型聊天
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ChatCompletion(request *ChatCompletionRequest) (response *ChatCompletionResponse, err error) {
+    return c.ChatCompletionWithContext(context.Background(), request)
+}
+
+// ChatCompletion
+// 与大模型聊天
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) ChatCompletionWithContext(ctx context.Context, request *ChatCompletionRequest) (response *ChatCompletionResponse, err error) {
+    if request == nil {
+        request = NewChatCompletionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChatCompletion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChatCompletionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateBatchModelAccTasksRequest() (request *CreateBatchModelAccTasksRequest) {
     request = &CreateBatchModelAccTasksRequest{
         BaseRequest: &tchttp.BaseRequest{},

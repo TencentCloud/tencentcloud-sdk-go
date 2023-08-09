@@ -17692,6 +17692,15 @@ type DescribeSchedulerInstanceStatusRequestParams struct {
 
 	// 执行资源组名字
 	ExecutionGroupName *string `json:"ExecutionGroupName,omitempty" name:"ExecutionGroupName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 责任人
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
 }
 
 type DescribeSchedulerInstanceStatusRequest struct {
@@ -17708,6 +17717,15 @@ type DescribeSchedulerInstanceStatusRequest struct {
 
 	// 执行资源组名字
 	ExecutionGroupName *string `json:"ExecutionGroupName,omitempty" name:"ExecutionGroupName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 责任人
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
 }
 
 func (r *DescribeSchedulerInstanceStatusRequest) ToJsonString() string {
@@ -17726,6 +17744,9 @@ func (r *DescribeSchedulerInstanceStatusRequest) FromJsonString(s string) error 
 	delete(f, "TaskTypeId")
 	delete(f, "ExecutionGroupId")
 	delete(f, "ExecutionGroupName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "InCharge")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSchedulerInstanceStatusRequest has unknown keys!", "")
 	}
@@ -17774,6 +17795,12 @@ type DescribeSchedulerRunTimeInstanceCntByStatusRequestParams struct {
 
 	// 结束日前：2023-03-20
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 1
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 1
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
 }
 
 type DescribeSchedulerRunTimeInstanceCntByStatusRequest struct {
@@ -17793,6 +17820,12 @@ type DescribeSchedulerRunTimeInstanceCntByStatusRequest struct {
 
 	// 结束日前：2023-03-20
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 1
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 1
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
 }
 
 func (r *DescribeSchedulerRunTimeInstanceCntByStatusRequest) ToJsonString() string {
@@ -17812,6 +17845,8 @@ func (r *DescribeSchedulerRunTimeInstanceCntByStatusRequest) FromJsonString(s st
 	delete(f, "TimeUnit")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "TaskType")
+	delete(f, "InCharge")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSchedulerRunTimeInstanceCntByStatusRequest has unknown keys!", "")
 	}
@@ -17854,6 +17889,9 @@ type DescribeSchedulerTaskCntByStatusRequestParams struct {
 
 	// 111
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 1
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
 }
 
 type DescribeSchedulerTaskCntByStatusRequest struct {
@@ -17867,6 +17905,9 @@ type DescribeSchedulerTaskCntByStatusRequest struct {
 
 	// 111
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 1
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
 }
 
 func (r *DescribeSchedulerTaskCntByStatusRequest) ToJsonString() string {
@@ -17884,6 +17925,7 @@ func (r *DescribeSchedulerTaskCntByStatusRequest) FromJsonString(s string) error
 	delete(f, "TaskType")
 	delete(f, "TypeName")
 	delete(f, "ProjectId")
+	delete(f, "InCharge")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSchedulerTaskCntByStatusRequest has unknown keys!", "")
 	}
@@ -17920,6 +17962,9 @@ func (r *DescribeSchedulerTaskCntByStatusResponse) FromJsonString(s string) erro
 type DescribeSchedulerTaskTypeCntRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 1
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
 }
 
 type DescribeSchedulerTaskTypeCntRequest struct {
@@ -17927,6 +17972,9 @@ type DescribeSchedulerTaskTypeCntRequest struct {
 	
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 1
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
 }
 
 func (r *DescribeSchedulerTaskTypeCntRequest) ToJsonString() string {
@@ -17942,6 +17990,7 @@ func (r *DescribeSchedulerTaskTypeCntRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ProjectId")
+	delete(f, "InCharge")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSchedulerTaskTypeCntRequest has unknown keys!", "")
 	}
@@ -18240,6 +18289,21 @@ type DescribeStatisticInstanceStatusTrendOpsRequestParams struct {
 
 	// 资源组名称
 	ExecutionGroupName *string `json:"ExecutionGroupName,omitempty" name:"ExecutionGroupName"`
+
+	// 1
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
+
+	// 1
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 1
+	StateList []*int64 `json:"StateList,omitempty" name:"StateList"`
+
+	// D代表天，H代表小时
+	AggregationUnit *string `json:"AggregationUnit,omitempty" name:"AggregationUnit"`
+
+	// 1
+	AverageWindowSize *int64 `json:"AverageWindowSize,omitempty" name:"AverageWindowSize"`
 }
 
 type DescribeStatisticInstanceStatusTrendOpsRequest struct {
@@ -18268,6 +18332,21 @@ type DescribeStatisticInstanceStatusTrendOpsRequest struct {
 
 	// 资源组名称
 	ExecutionGroupName *string `json:"ExecutionGroupName,omitempty" name:"ExecutionGroupName"`
+
+	// 1
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
+
+	// 1
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 1
+	StateList []*int64 `json:"StateList,omitempty" name:"StateList"`
+
+	// D代表天，H代表小时
+	AggregationUnit *string `json:"AggregationUnit,omitempty" name:"AggregationUnit"`
+
+	// 1
+	AverageWindowSize *int64 `json:"AverageWindowSize,omitempty" name:"AverageWindowSize"`
 }
 
 func (r *DescribeStatisticInstanceStatusTrendOpsRequest) ToJsonString() string {
@@ -18290,6 +18369,11 @@ func (r *DescribeStatisticInstanceStatusTrendOpsRequest) FromJsonString(s string
 	delete(f, "EndTime")
 	delete(f, "ExecutionGroupId")
 	delete(f, "ExecutionGroupName")
+	delete(f, "InCharge")
+	delete(f, "TaskType")
+	delete(f, "StateList")
+	delete(f, "AggregationUnit")
+	delete(f, "AverageWindowSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeStatisticInstanceStatusTrendOpsRequest has unknown keys!", "")
 	}
@@ -19142,6 +19226,9 @@ func (r *DescribeTaskByCycleReportResponse) FromJsonString(s string) error {
 type DescribeTaskByCycleRequestParams struct {
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 1
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
 }
 
 type DescribeTaskByCycleRequest struct {
@@ -19149,6 +19236,9 @@ type DescribeTaskByCycleRequest struct {
 	
 	// 项目ID
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 1
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
 }
 
 func (r *DescribeTaskByCycleRequest) ToJsonString() string {
@@ -19164,6 +19254,7 @@ func (r *DescribeTaskByCycleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ProjectId")
+	delete(f, "InCharge")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskByCycleRequest has unknown keys!", "")
 	}
@@ -19214,6 +19305,18 @@ type DescribeTaskByStatusReportRequestParams struct {
 
 	// 结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 无
+	AggregationUnit *string `json:"AggregationUnit,omitempty" name:"AggregationUnit"`
+
+	// 无
+	CycleUnit *string `json:"CycleUnit,omitempty" name:"CycleUnit"`
+
+	// 无
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 无
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
 }
 
 type DescribeTaskByStatusReportRequest struct {
@@ -19236,6 +19339,18 @@ type DescribeTaskByStatusReportRequest struct {
 
 	// 结束时间
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 无
+	AggregationUnit *string `json:"AggregationUnit,omitempty" name:"AggregationUnit"`
+
+	// 无
+	CycleUnit *string `json:"CycleUnit,omitempty" name:"CycleUnit"`
+
+	// 无
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 无
+	InCharge *string `json:"InCharge,omitempty" name:"InCharge"`
 }
 
 func (r *DescribeTaskByStatusReportRequest) ToJsonString() string {
@@ -19256,6 +19371,10 @@ func (r *DescribeTaskByStatusReportRequest) FromJsonString(s string) error {
 	delete(f, "TypeName")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
+	delete(f, "AggregationUnit")
+	delete(f, "CycleUnit")
+	delete(f, "Status")
+	delete(f, "InCharge")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskByStatusReportRequest has unknown keys!", "")
 	}
@@ -23790,6 +23909,14 @@ type InstanceStatisticInfo struct {
 	// 当前展示时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ShowTime *string `json:"ShowTime,omitempty" name:"ShowTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportTime *string `json:"ReportTime,omitempty" name:"ReportTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
 }
 
 type IntegrationInstanceLog struct {
@@ -31981,6 +32108,12 @@ type TaskByStatus struct {
 	// 周期单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CycleUnit *string `json:"CycleUnit,omitempty" name:"CycleUnit"`
+
+	// 1
+	ReportTime *string `json:"ReportTime,omitempty" name:"ReportTime"`
+
+	// 1
+	Count *uint64 `json:"Count,omitempty" name:"Count"`
 }
 
 type TaskCanvasInfo struct {

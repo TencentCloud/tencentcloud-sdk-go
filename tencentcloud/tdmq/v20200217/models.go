@@ -5690,6 +5690,16 @@ type DescribeRabbitMQVirtualHostRequestParams struct {
 
 	// search-virtual-host：vhost名称模糊查询，之前前缀和后缀匹配
 	Filters *Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序依据的字段：
+	// MessageHeapCount - 消息堆积数；
+	// MessageRateInOut - 生产消费速率之和；
+	// MessageRateIn - 生产速率；
+	// MessageRateOut - 消费速率；
+	SortElement *string `json:"SortElement,omitempty" name:"SortElement"`
+
+	// 排序顺序，ascend 或 descend
+	SortOrder *string `json:"SortOrder,omitempty" name:"SortOrder"`
 }
 
 type DescribeRabbitMQVirtualHostRequest struct {
@@ -5709,6 +5719,16 @@ type DescribeRabbitMQVirtualHostRequest struct {
 
 	// search-virtual-host：vhost名称模糊查询，之前前缀和后缀匹配
 	Filters *Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序依据的字段：
+	// MessageHeapCount - 消息堆积数；
+	// MessageRateInOut - 生产消费速率之和；
+	// MessageRateIn - 生产速率；
+	// MessageRateOut - 消费速率；
+	SortElement *string `json:"SortElement,omitempty" name:"SortElement"`
+
+	// 排序顺序，ascend 或 descend
+	SortOrder *string `json:"SortOrder,omitempty" name:"SortOrder"`
 }
 
 func (r *DescribeRabbitMQVirtualHostRequest) ToJsonString() string {
@@ -5728,6 +5748,8 @@ func (r *DescribeRabbitMQVirtualHostRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "SortElement")
+	delete(f, "SortOrder")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRabbitMQVirtualHostRequest has unknown keys!", "")
 	}
@@ -9076,6 +9098,22 @@ type RabbitMQVirtualHostInfo struct {
 	// vhost概览统计信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VirtualHostStatistics *RabbitMQVirtualHostStatistics `json:"VirtualHostStatistics,omitempty" name:"VirtualHostStatistics"`
+
+	// vhost状态，与原生控制台对应，有running、partial、stopped、unknown
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 消息堆积数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageHeapCount *int64 `json:"MessageHeapCount,omitempty" name:"MessageHeapCount"`
+
+	// 输入消息速率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageRateIn *float64 `json:"MessageRateIn,omitempty" name:"MessageRateIn"`
+
+	// 输出消息速率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MessageRateOut *float64 `json:"MessageRateOut,omitempty" name:"MessageRateOut"`
 }
 
 type RabbitMQVirtualHostStatistics struct {

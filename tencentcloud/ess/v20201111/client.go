@@ -1006,7 +1006,6 @@ func NewCreateFlowApproversResponse() (response *CreateFlowApproversResponse) {
 //  MISSINGPARAMETER_APPROVERORGANIZATIONINFO = "MissingParameter.ApproverOrganizationInfo"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
-//  OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"
 //  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
 //  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
@@ -1016,10 +1015,8 @@ func NewCreateFlowApproversResponse() (response *CreateFlowApproversResponse) {
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
 //  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
-//  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
 //  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
 //  OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
-//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -1094,7 +1091,6 @@ func (c *Client) CreateFlowApprovers(request *CreateFlowApproversRequest) (respo
 //  MISSINGPARAMETER_APPROVERORGANIZATIONINFO = "MissingParameter.ApproverOrganizationInfo"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_APPROVERREPEAT = "OperationDenied.ApproverRepeat"
-//  OPERATIONDENIED_BRANCHSENDFLOWTOPARENTNOTALLOW = "OperationDenied.BranchSendFlowToParentNotAllow"
 //  OPERATIONDENIED_CCFORBID = "OperationDenied.CcForbid"
 //  OPERATIONDENIED_CCUSERREPEAT = "OperationDenied.CcUserRepeat"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
@@ -1104,10 +1100,8 @@ func (c *Client) CreateFlowApprovers(request *CreateFlowApproversRequest) (respo
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  OPERATIONDENIED_ORGUNIFORMSOCIALCREDITCODEERR = "OperationDenied.OrgUniformSocialCreditCodeErr"
 //  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
-//  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
 //  OPERATIONDENIED_OVERSEAFORBID = "OperationDenied.OverSeaForbid"
 //  OPERATIONDENIED_PERSONHASNOSIGNATURE = "OperationDenied.PersonHasNoSignature"
-//  OPERATIONDENIED_PERSONNOOPENSERVERSIGN = "OperationDenied.PersonNoOpenServerSign"
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -2210,7 +2204,6 @@ func NewCreateFlowRemindsResponse() (response *CreateFlowRemindsResponse) {
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowReminds(request *CreateFlowRemindsRequest) (response *CreateFlowRemindsResponse, err error) {
     return c.CreateFlowRemindsWithContext(context.Background(), request)
@@ -2235,7 +2228,6 @@ func (c *Client) CreateFlowReminds(request *CreateFlowRemindsRequest) (response 
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowRemindsWithContext(ctx context.Context, request *CreateFlowRemindsRequest) (response *CreateFlowRemindsResponse, err error) {
     if request == nil {
@@ -2295,14 +2287,12 @@ func NewCreateFlowSignReviewResponse() (response *CreateFlowSignReviewResponse) 
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowSignReview(request *CreateFlowSignReviewRequest) (response *CreateFlowSignReviewResponse, err error) {
     return c.CreateFlowSignReviewWithContext(context.Background(), request)
@@ -2332,14 +2322,12 @@ func (c *Client) CreateFlowSignReview(request *CreateFlowSignReviewRequest) (res
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
 //  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowSignReviewWithContext(ctx context.Context, request *CreateFlowSignReviewRequest) (response *CreateFlowSignReviewResponse, err error) {
     if request == nil {
@@ -4130,12 +4118,10 @@ func NewDescribeFlowBriefsResponse() (response *DescribeFlowBriefsResponse) {
 //
 // 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
 //
-// 每个企业限制日调用量限制：10W，当日超过此限制后再调用接口返回错误
+// 每个企业限制日调用量限制：100W，当日超过此限制后再调用接口返回错误
 //
 // 可能返回的错误码:
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CACHE = "InternalError.Cache"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -4146,17 +4132,11 @@ func NewDescribeFlowBriefsResponse() (response *DescribeFlowBriefsResponse) {
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATAEXISTS = "InvalidParameter.DataExists"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
-//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
-//  INVALIDPARAMETER_INVALIDOPENID = "InvalidParameter.InvalidOpenId"
 //  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
 //  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
-//  INVALIDPARAMETER_INVALIDORGANIZATIONNAME = "InvalidParameter.InvalidOrganizationName"
 //  INVALIDPARAMETER_INVALIDROLEID = "InvalidParameter.InvalidRoleId"
 //  INVALIDPARAMETER_INVALIDROLENAME = "InvalidParameter.InvalidRoleName"
-//  INVALIDPARAMETER_INVALIDVERIFYCHANNEL = "InvalidParameter.InvalidVerifyChannel"
-//  INVALIDPARAMETER_INVALIDVERIFYCODE = "InvalidParameter.InvalidVerifyCode"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -4169,7 +4149,6 @@ func NewDescribeFlowBriefsResponse() (response *DescribeFlowBriefsResponse) {
 //  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
 //  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -4186,12 +4165,10 @@ func (c *Client) DescribeFlowBriefs(request *DescribeFlowBriefsRequest) (respons
 //
 // 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
 //
-// 每个企业限制日调用量限制：10W，当日超过此限制后再调用接口返回错误
+// 每个企业限制日调用量限制：100W，当日超过此限制后再调用接口返回错误
 //
 // 可能返回的错误码:
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_ACCOUNTVERIFYFAIL = "FailedOperation.AccountVerifyFail"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CACHE = "InternalError.Cache"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -4202,17 +4179,11 @@ func (c *Client) DescribeFlowBriefs(request *DescribeFlowBriefsRequest) (respons
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_DATAEXISTS = "InvalidParameter.DataExists"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
-//  INVALIDPARAMETER_INVALIDCHANNEL = "InvalidParameter.InvalidChannel"
-//  INVALIDPARAMETER_INVALIDOPENID = "InvalidParameter.InvalidOpenId"
 //  INVALIDPARAMETER_INVALIDOPERATORID = "InvalidParameter.InvalidOperatorId"
 //  INVALIDPARAMETER_INVALIDORGANIZATIONID = "InvalidParameter.InvalidOrganizationId"
-//  INVALIDPARAMETER_INVALIDORGANIZATIONNAME = "InvalidParameter.InvalidOrganizationName"
 //  INVALIDPARAMETER_INVALIDROLEID = "InvalidParameter.InvalidRoleId"
 //  INVALIDPARAMETER_INVALIDROLENAME = "InvalidParameter.InvalidRoleName"
-//  INVALIDPARAMETER_INVALIDVERIFYCHANNEL = "InvalidParameter.InvalidVerifyChannel"
-//  INVALIDPARAMETER_INVALIDVERIFYCODE = "InvalidParameter.InvalidVerifyCode"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -4225,7 +4196,6 @@ func (c *Client) DescribeFlowBriefs(request *DescribeFlowBriefsRequest) (respons
 //  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
 //  OPERATIONDENIED_OUTQUERYLIMIT = "OperationDenied.OutQueryLimit"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"

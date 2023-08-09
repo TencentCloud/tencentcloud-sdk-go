@@ -375,7 +375,7 @@ type ConfigureSyncJobRequestParams struct {
 	// 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
 	DstNodeType *string `json:"DstNodeType,omitempty" name:"DstNodeType"`
 
-	// 同步任务选项
+	// 同步任务选项；该字段下的RateLimitOption暂时无法生效、如果需要修改限速、可通过ModifySyncRateLimit接口完成限速
 	Options *Options `json:"Options,omitempty" name:"Options"`
 
 	// 自动重试的时间段、可设置5至720分钟、0表示不重试
@@ -427,7 +427,7 @@ type ConfigureSyncJobRequest struct {
 	// 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
 	DstNodeType *string `json:"DstNodeType,omitempty" name:"DstNodeType"`
 
-	// 同步任务选项
+	// 同步任务选项；该字段下的RateLimitOption暂时无法生效、如果需要修改限速、可通过ModifySyncRateLimit接口完成限速
 	Options *Options `json:"Options,omitempty" name:"Options"`
 
 	// 自动重试的时间段、可设置5至720分钟、0表示不重试
@@ -2060,6 +2060,13 @@ type DescribeMigrationDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ErrorInfo []*ErrorInfoItem `json:"ErrorInfo,omitempty" name:"ErrorInfo"`
 
+	// 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+	DumperResumeCtrl *string `json:"DumperResumeCtrl,omitempty" name:"DumperResumeCtrl"`
+
+	// 任务的限速信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RateLimitOption *RateLimitOption `json:"RateLimitOption,omitempty" name:"RateLimitOption"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2768,6 +2775,23 @@ type Endpoint struct {
 	// 数据库所属网络环境，AccessType为云联网(ccn)时必填， UserIDC表示用户IDC、TencentVPC表示腾讯云VPC；
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseNetEnv *string `json:"DatabaseNetEnv,omitempty" name:"DatabaseNetEnv"`
+
+	// 数据库为跨账号云联网下的实例时、表示云联网所属主账号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CcnOwnerUin *string `json:"CcnOwnerUin,omitempty" name:"CcnOwnerUin"`
+}
+
+type ErrInfo struct {
+	// 错误原因
+	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitempty" name:"Message"`
+
+	// 解决方案
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Solution *string `json:"Solution,omitempty" name:"Solution"`
 }
 
 type ErrorInfoItem struct {
@@ -2970,6 +2994,10 @@ type JobItem struct {
 	// 自动重试时间段信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitempty" name:"AutoRetryTimeRangeMinutes"`
+
+	// 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DumperResumeCtrl *string `json:"DumperResumeCtrl,omitempty" name:"DumperResumeCtrl"`
 }
 
 type KafkaOption struct {
@@ -3366,7 +3394,7 @@ type ModifyMigrationJobRequestParams struct {
 	// 运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
 	RunMode *string `json:"RunMode,omitempty" name:"RunMode"`
 
-	// 迁移任务配置选项，描述任务如何执行迁移等一系列配置信息
+	// 迁移任务配置选项，描述任务如何执行迁移等一系列配置信息；字段下的RateLimitOption不可配置、如果需要修改任务的限速信息、请在任务运行后通过ModifyMigrateRateLimit接口修改
 	MigrateOption *MigrateOption `json:"MigrateOption,omitempty" name:"MigrateOption"`
 
 	// 源实例信息
@@ -3397,7 +3425,7 @@ type ModifyMigrationJobRequest struct {
 	// 运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
 	RunMode *string `json:"RunMode,omitempty" name:"RunMode"`
 
-	// 迁移任务配置选项，描述任务如何执行迁移等一系列配置信息
+	// 迁移任务配置选项，描述任务如何执行迁移等一系列配置信息；字段下的RateLimitOption不可配置、如果需要修改任务的限速信息、请在任务运行后通过ModifyMigrateRateLimit接口修改
 	MigrateOption *MigrateOption `json:"MigrateOption,omitempty" name:"MigrateOption"`
 
 	// 源实例信息
@@ -3592,6 +3620,14 @@ type Options struct {
 	// kafka同步选项
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KafkaOption *KafkaOption `json:"KafkaOption,omitempty" name:"KafkaOption"`
+
+	// 任务限速信息、该字段仅用作出参、入参该字段无效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RateLimitOption *RateLimitOption `json:"RateLimitOption,omitempty" name:"RateLimitOption"`
+
+	// 自动重试的时间窗口设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitempty" name:"AutoRetryTimeRangeMinutes"`
 }
 
 // Predefined struct for user
@@ -3740,6 +3776,52 @@ type ProcessStepTip struct {
 	// 文档提示
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HelpDoc *string `json:"HelpDoc,omitempty" name:"HelpDoc"`
+}
+
+type RateLimitOption struct {
+	// 当前生效的全量导出线程数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentDumpThread *int64 `json:"CurrentDumpThread,omitempty" name:"CurrentDumpThread"`
+
+	// 默认的全量导出线程数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultDumpThread *int64 `json:"DefaultDumpThread,omitempty" name:"DefaultDumpThread"`
+
+	// 当前生效的全量导出Rps	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentDumpRps *int64 `json:"CurrentDumpRps,omitempty" name:"CurrentDumpRps"`
+
+	// 默认的全量导出Rps	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultDumpRps *int64 `json:"DefaultDumpRps,omitempty" name:"DefaultDumpRps"`
+
+	// 当前生效的全量导入线程数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentLoadThread *int64 `json:"CurrentLoadThread,omitempty" name:"CurrentLoadThread"`
+
+	// 默认的全量导入线程数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultLoadThread *int64 `json:"DefaultLoadThread,omitempty" name:"DefaultLoadThread"`
+
+	// 当前生效的全量导入Rps	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentLoadRps *int64 `json:"CurrentLoadRps,omitempty" name:"CurrentLoadRps"`
+
+	// 默认的全量导入Rps	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultLoadRps *int64 `json:"DefaultLoadRps,omitempty" name:"DefaultLoadRps"`
+
+	// 当前生效的增量导入线程数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentSinkerThread *int64 `json:"CurrentSinkerThread,omitempty" name:"CurrentSinkerThread"`
+
+	// 默认的增量导入线程数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultSinkerThread *int64 `json:"DefaultSinkerThread,omitempty" name:"DefaultSinkerThread"`
+
+	// enum:"no"/"yes"、no表示用户未设置过限速、yes表示设置过限速
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasUserSetRateLimit *string `json:"HasUserSetRateLimit,omitempty" name:"HasUserSetRateLimit"`
 }
 
 // Predefined struct for user
@@ -4710,7 +4792,7 @@ type SyncDetailInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
 
-	// 当前步骤进度
+	// 当前步骤进度，范围为[0-100]，若为-1表示当前步骤不支持查看进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CurrentStepProgress *int64 `json:"CurrentStepProgress,omitempty" name:"CurrentStepProgress"`
 
@@ -4733,6 +4815,10 @@ type SyncDetailInfo struct {
 	// 不能发起一致性校验的原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CauseOfCompareDisable *string `json:"CauseOfCompareDisable,omitempty" name:"CauseOfCompareDisable"`
+
+	// 任务的错误和解决方案信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrInfo *ErrInfo `json:"ErrInfo,omitempty" name:"ErrInfo"`
 }
 
 type SyncJobInfo struct {
@@ -4796,6 +4882,14 @@ type SyncJobInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SrcInfo *Endpoint `json:"SrcInfo,omitempty" name:"SrcInfo"`
 
+	// 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcNodeType *string `json:"SrcNodeType,omitempty" name:"SrcNodeType"`
+
+	// 源端信息，多节点数据库使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SrcInfos *SyncDBEndpointInfos `json:"SrcInfos,omitempty" name:"SrcInfos"`
+
 	// 目标端地域，如：ap-guangzhou等
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstRegion *string `json:"DstRegion,omitempty" name:"DstRegion"`
@@ -4811,6 +4905,14 @@ type SyncJobInfo struct {
 	// 目标端信息，单节点数据库使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DstInfo *Endpoint `json:"DstInfo,omitempty" name:"DstInfo"`
+
+	// 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstNodeType *string `json:"DstNodeType,omitempty" name:"DstNodeType"`
+
+	// 目标端信息，多节点数据库使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DstInfos *SyncDBEndpointInfos `json:"DstInfos,omitempty" name:"DstInfos"`
 
 	// 创建时间，格式为 yyyy-mm-dd hh:mm:ss
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4855,6 +4957,10 @@ type SyncJobInfo struct {
 	// 自动重试时间段设置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRetryTimeRangeMinutes *int64 `json:"AutoRetryTimeRangeMinutes,omitempty" name:"AutoRetryTimeRangeMinutes"`
+
+	// 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DumperResumeCtrl *string `json:"DumperResumeCtrl,omitempty" name:"DumperResumeCtrl"`
 }
 
 type Table struct {

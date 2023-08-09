@@ -5358,10 +5358,16 @@ func (r *DescribeDeliverBandwidthListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeGroupProIspPlayInfoListRequestParams struct {
-	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	// 起始时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS
+	// 结束时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 时间跨度在（0,3小时]，支持最近1个月数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -5381,10 +5387,16 @@ type DescribeGroupProIspPlayInfoListRequestParams struct {
 type DescribeGroupProIspPlayInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	// 起始时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS
+	// 结束时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 时间跨度在（0,3小时]，支持最近1个月数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -5452,13 +5464,16 @@ func (r *DescribeGroupProIspPlayInfoListResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeHttpStatusInfoListRequestParams struct {
-	// 起始时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 起始时间，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM:SS。
-	// 注：最大时间跨度支持1天，支持最近3个月的数据查询。
+	// 结束时间，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 播放域名列表。
@@ -5468,13 +5483,16 @@ type DescribeHttpStatusInfoListRequestParams struct {
 type DescribeHttpStatusInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 起始时间，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM:SS。
-	// 注：最大时间跨度支持1天，支持最近3个月的数据查询。
+	// 结束时间，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 播放域名列表。
@@ -9007,12 +9025,16 @@ func (r *DescribeMonitorReportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePlayErrorCodeDetailInfoListRequestParams struct {
-	// 起始时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 起始时间，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 结束时间，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 注：EndTime 和 StartTime 只支持最近1天的数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -9033,12 +9055,16 @@ type DescribePlayErrorCodeDetailInfoListRequestParams struct {
 type DescribePlayErrorCodeDetailInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 起始时间，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 结束时间，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 注：EndTime 和 StartTime 只支持最近1天的数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -9252,12 +9278,16 @@ func (r *DescribePlayErrorCodeSumInfoListResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type DescribeProIspPlaySumInfoListRequestParams struct {
-	// 起始时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 起始时间，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 结束时间，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 注：EndTime 和 StartTime 只支持最近1天的数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -9283,12 +9313,16 @@ type DescribeProIspPlaySumInfoListRequestParams struct {
 type DescribeProIspPlaySumInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 起始时间，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，北京时间，
-	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 结束时间，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 注：EndTime 和 StartTime 只支持最近1天的数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -9388,12 +9422,16 @@ func (r *DescribeProIspPlaySumInfoListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProvinceIspPlayInfoListRequestParams struct {
-	// 起始时间点，当前使用北京时间，
-	// 例：2019-02-21 10:00:00。
+	// 起始时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间点，当前使用北京时间，
-	// 例：2019-02-21 12:00:00。
+	// 结束时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 注：EndTime 和 StartTime 只支持最近1天的数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -9430,12 +9468,16 @@ type DescribeProvinceIspPlayInfoListRequestParams struct {
 type DescribeProvinceIspPlayInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间点，当前使用北京时间，
-	// 例：2019-02-21 10:00:00。
+	// 起始时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间点，当前使用北京时间，
-	// 例：2019-02-21 12:00:00。
+	// 结束时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 注：EndTime 和 StartTime 只支持最近1天的数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -10243,10 +10285,17 @@ type DescribeStreamPushInfoListRequestParams struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 起始时间点，北京时间，格式为yyyy-mm-dd HH:MM:SS。
+	// 起始时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间点，北京时间，格式为yyyy-mm-dd HH:MM:SS，支持查询最近7天数据，建议查询时间跨度在3小时之内。
+	// 结束时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// 支持查询最近7天数据，建议查询时间跨度在3小时之内。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 推流域名。
@@ -10262,10 +10311,17 @@ type DescribeStreamPushInfoListRequest struct {
 	// 流名称。
 	StreamName *string `json:"StreamName,omitempty" name:"StreamName"`
 
-	// 起始时间点，北京时间，格式为yyyy-mm-dd HH:MM:SS。
+	// 起始时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间点，北京时间，格式为yyyy-mm-dd HH:MM:SS，支持查询最近7天数据，建议查询时间跨度在3小时之内。
+	// 结束时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// 支持查询最近7天数据，建议查询时间跨度在3小时之内。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 推流域名。
@@ -10530,10 +10586,16 @@ func (r *DescribeTimeShiftStreamListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeTopClientIpSumInfoListRequestParams struct {
-	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	// 起始时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS
+	// 结束时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 时间跨度在[0,4小时]，支持最近1天数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -10559,10 +10621,16 @@ type DescribeTopClientIpSumInfoListRequestParams struct {
 type DescribeTopClientIpSumInfoListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 起始时间点，格式为yyyy-mm-dd HH:MM:SS。
+	// 起始时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间点，格式为yyyy-mm-dd HH:MM:SS
+	// 结束时间点，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	// 时间跨度在[0,4小时]，支持最近1天数据查询。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
@@ -11401,7 +11469,10 @@ type HttpCodeInfo struct {
 }
 
 type HttpCodeValue struct {
-	// 时间，格式：yyyy-mm-dd HH:MM:SS。
+	// 时间，
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	Time *string `json:"Time,omitempty" name:"Time"`
 
 	// 次数。
@@ -11413,7 +11484,9 @@ type HttpCodeValue struct {
 
 type HttpStatusData struct {
 	// 数据时间点，
-	// 格式：yyyy-mm-dd HH:MM:SS。
+	// 使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	Time *string `json:"Time,omitempty" name:"Time"`
 
 	// 播放状态码详细信息。
@@ -14072,7 +14145,9 @@ type PushDataInfo struct {
 }
 
 type PushQualityData struct {
-	// 数据时间，格式: %Y-%m-%d %H:%M:%S.%ms，精确到毫秒级。
+	// 数据时间，使用UTC格式时间，
+	// 例如：2019-01-08T10:00:00Z。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
 	Time *string `json:"Time,omitempty" name:"Time"`
 
 	// 推流域名。

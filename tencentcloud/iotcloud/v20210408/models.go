@@ -274,7 +274,12 @@ type CLSLogItem struct {
 	Time *string `json:"Time,omitempty" name:"Time"`
 
 	// 腾讯云账号
+	//
+	// Deprecated: Userid is deprecated.
 	Userid *string `json:"Userid,omitempty" name:"Userid"`
+
+	// 腾讯云账号
+	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
 // Predefined struct for user
@@ -1654,7 +1659,7 @@ type DescribeDeviceResponseParams struct {
 	// 设备名
 	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
 
-	// 设备是否在线，0不在线，1在线
+	// 设备是否在线，0不在线，1在线，3未激活
 	Online *uint64 `json:"Online,omitempty" name:"Online"`
 
 	// 设备登录时间
@@ -1688,6 +1693,8 @@ type DescribeDeviceResponseParams struct {
 	ConnIP *uint64 `json:"ConnIP,omitempty" name:"ConnIP"`
 
 	// NB IoT运营商处的DeviceID
+	//
+	// Deprecated: NbiotDeviceID is deprecated.
 	NbiotDeviceID *string `json:"NbiotDeviceID,omitempty" name:"NbiotDeviceID"`
 
 	// Lora设备的dev eui
@@ -1735,6 +1742,9 @@ type DescribeDeviceResponseParams struct {
 	// 创建者账号ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUserId *uint64 `json:"CreateUserId,omitempty" name:"CreateUserId"`
+
+	// NB IoT运营商处的DeviceID
+	NBIoTDeviceID *string `json:"NBIoTDeviceID,omitempty" name:"NBIoTDeviceID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -3371,6 +3381,8 @@ type DeviceInfo struct {
 	Isp *uint64 `json:"Isp,omitempty" name:"Isp"`
 
 	// NB IOT运营商处的DeviceID
+	//
+	// Deprecated: NbiotDeviceID is deprecated.
 	NbiotDeviceID *string `json:"NbiotDeviceID,omitempty" name:"NbiotDeviceID"`
 
 	// IP地址
@@ -3424,6 +3436,9 @@ type DeviceInfo struct {
 	// 创建者 Uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateUserId *uint64 `json:"CreateUserId,omitempty" name:"CreateUserId"`
+
+	// NB IOT运营商处的DeviceID
+	NBIoTDeviceID *string `json:"NBIoTDeviceID,omitempty" name:"NBIoTDeviceID"`
 }
 
 type DeviceLabel struct {
@@ -4516,6 +4531,8 @@ type ProductProperties struct {
 	Platform *string `json:"Platform,omitempty" name:"Platform"`
 
 	// LoRa产品运营侧APPEUI，只有LoRa产品需要填写
+	//
+	// Deprecated: Appeui is deprecated.
 	Appeui *string `json:"Appeui,omitempty" name:"Appeui"`
 
 	// 产品绑定的物模型ID，-1表示不绑定
@@ -4550,6 +4567,9 @@ type ProductProperties struct {
 
 	// 产品禁用状态
 	ForbiddenStatus *uint64 `json:"ForbiddenStatus,omitempty" name:"ForbiddenStatus"`
+
+	// LoRa产品运营侧APPEUI，只有LoRa产品需要填写
+	AppEUI *string `json:"AppEUI,omitempty" name:"AppEUI"`
 }
 
 type ProductResourceInfo struct {

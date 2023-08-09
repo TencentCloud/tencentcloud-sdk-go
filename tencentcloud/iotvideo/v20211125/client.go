@@ -4775,6 +4775,58 @@ func (c *Client) ResetCloudStorageWithContext(ctx context.Context, request *Rese
     return
 }
 
+func NewResetCloudStorageEventRequest() (request *ResetCloudStorageEventRequest) {
+    request = &ResetCloudStorageEventRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "ResetCloudStorageEvent")
+    
+    
+    return
+}
+
+func NewResetCloudStorageEventResponse() (response *ResetCloudStorageEventResponse) {
+    response = &ResetCloudStorageEventResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ResetCloudStorageEvent
+// 重置云存事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResetCloudStorageEvent(request *ResetCloudStorageEventRequest) (response *ResetCloudStorageEventResponse, err error) {
+    return c.ResetCloudStorageEventWithContext(context.Background(), request)
+}
+
+// ResetCloudStorageEvent
+// 重置云存事件
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ResetCloudStorageEventWithContext(ctx context.Context, request *ResetCloudStorageEventRequest) (response *ResetCloudStorageEventResponse, err error) {
+    if request == nil {
+        request = NewResetCloudStorageEventRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetCloudStorageEvent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetCloudStorageEventResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRetryDeviceFirmwareTaskRequest() (request *RetryDeviceFirmwareTaskRequest) {
     request = &RetryDeviceFirmwareTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

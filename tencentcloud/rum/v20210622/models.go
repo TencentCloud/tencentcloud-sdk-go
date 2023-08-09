@@ -3622,6 +3622,10 @@ type DescribeDataPvUrlStatisticsRequestParams struct {
 
 	// 环境
 	Env *string `json:"Env,omitempty" name:"Env"`
+
+	// group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
+	//  5:1d
+	GroupByType *int64 `json:"GroupByType,omitempty" name:"GroupByType"`
 }
 
 type DescribeDataPvUrlStatisticsRequest struct {
@@ -3689,6 +3693,10 @@ type DescribeDataPvUrlStatisticsRequest struct {
 
 	// 环境
 	Env *string `json:"Env,omitempty" name:"Env"`
+
+	// group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
+	//  5:1d
+	GroupByType *int64 `json:"GroupByType,omitempty" name:"GroupByType"`
 }
 
 func (r *DescribeDataPvUrlStatisticsRequest) ToJsonString() string {
@@ -3724,6 +3732,7 @@ func (r *DescribeDataPvUrlStatisticsRequest) FromJsonString(s string) error {
 	delete(f, "Os")
 	delete(f, "Browser")
 	delete(f, "Env")
+	delete(f, "GroupByType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataPvUrlStatisticsRequest has unknown keys!", "")
 	}

@@ -1405,6 +1405,18 @@ type DeployRecordDetail struct {
 	// 端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// TCB环境ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// 部署的TCB类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TCBType *string `json:"TCBType,omitempty" name:"TCBType"`
+
+	// 部署的TCB地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
 type DeployRecordInfo struct {
@@ -1990,6 +2002,9 @@ type DescribeCertificatesRequestParams struct {
 
 	// 筛选证书是否即将过期，传1是筛选，0不筛选
 	FilterExpiring *uint64 `json:"FilterExpiring,omitempty" name:"FilterExpiring"`
+
+	// 是否可托管，可选值：1 = 可托管，0 =  不可托管。
+	Hostable *uint64 `json:"Hostable,omitempty" name:"Hostable"`
 }
 
 type DescribeCertificatesRequest struct {
@@ -2033,6 +2048,9 @@ type DescribeCertificatesRequest struct {
 
 	// 筛选证书是否即将过期，传1是筛选，0不筛选
 	FilterExpiring *uint64 `json:"FilterExpiring,omitempty" name:"FilterExpiring"`
+
+	// 是否可托管，可选值：1 = 可托管，0 =  不可托管。
+	Hostable *uint64 `json:"Hostable,omitempty" name:"Hostable"`
 }
 
 func (r *DescribeCertificatesRequest) ToJsonString() string {
@@ -2060,6 +2078,7 @@ func (r *DescribeCertificatesRequest) FromJsonString(s string) error {
 	delete(f, "FilterSource")
 	delete(f, "IsSM")
 	delete(f, "FilterExpiring")
+	delete(f, "Hostable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificatesRequest has unknown keys!", "")
 	}
@@ -2745,7 +2764,7 @@ func (r *DescribeHostDdosInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostDeployRecordDetailRequestParams struct {
-	// 待部署的证书ID
+	// 部署记录ID
 	DeployRecordId *string `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
 
 	// 分页偏移量，从0开始。
@@ -2758,7 +2777,7 @@ type DescribeHostDeployRecordDetailRequestParams struct {
 type DescribeHostDeployRecordDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待部署的证书ID
+	// 部署记录ID
 	DeployRecordId *string `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
 
 	// 分页偏移量，从0开始。
@@ -3290,7 +3309,7 @@ func (r *DescribeHostTkeInstanceListResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeHostUpdateRecordDetailRequestParams struct {
-	// 待部署的证书ID
+	// 一键更新记录ID
 	DeployRecordId *string `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
 
 	// 每页数量，默认10。
@@ -3303,7 +3322,7 @@ type DescribeHostUpdateRecordDetailRequestParams struct {
 type DescribeHostUpdateRecordDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 待部署的证书ID
+	// 一键更新记录ID
 	DeployRecordId *string `json:"DeployRecordId,omitempty" name:"DeployRecordId"`
 
 	// 每页数量，默认10。
@@ -5234,10 +5253,12 @@ type UpdateCertificateInstanceRequestParams struct {
 	// 一键更新原证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
 
-	// 需要部署的资源类型
+	// 需要部署的资源类型，参数值可选：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" name:"ResourceTypes"`
 
 	// 需要部署的地域列表（废弃）
+	//
+	// Deprecated: Regions is deprecated.
 	Regions []*string `json:"Regions,omitempty" name:"Regions"`
 
 	// 云资源需要部署的地域列表
@@ -5253,7 +5274,7 @@ type UpdateCertificateInstanceRequest struct {
 	// 一键更新原证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitempty" name:"OldCertificateId"`
 
-	// 需要部署的资源类型
+	// 需要部署的资源类型，参数值可选：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb
 	ResourceTypes []*string `json:"ResourceTypes,omitempty" name:"ResourceTypes"`
 
 	// 需要部署的地域列表（废弃）
@@ -5506,6 +5527,14 @@ type UpdateRecordDetail struct {
 	// secret名称（TKE专用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+
+	// 环境ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+
+	// TCB部署类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TCBType *string `json:"TCBType,omitempty" name:"TCBType"`
 }
 
 type UpdateRecordDetails struct {
@@ -5566,6 +5595,9 @@ type UploadCertificateRequestParams struct {
 	// 证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
 	CertificateUse *string `json:"CertificateUse,omitempty" name:"CertificateUse"`
 
+	// 标签列表
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+
 	// 相同的证书是否允许重复上传
 	Repeatable *bool `json:"Repeatable,omitempty" name:"Repeatable"`
 }
@@ -5591,6 +5623,9 @@ type UploadCertificateRequest struct {
 	// 证书用途/证书来源。“CLB，CDN，WAF，LIVE，DDOS”
 	CertificateUse *string `json:"CertificateUse,omitempty" name:"CertificateUse"`
 
+	// 标签列表
+	Tags []*Tags `json:"Tags,omitempty" name:"Tags"`
+
 	// 相同的证书是否允许重复上传
 	Repeatable *bool `json:"Repeatable,omitempty" name:"Repeatable"`
 }
@@ -5613,6 +5648,7 @@ func (r *UploadCertificateRequest) FromJsonString(s string) error {
 	delete(f, "Alias")
 	delete(f, "ProjectId")
 	delete(f, "CertificateUse")
+	delete(f, "Tags")
 	delete(f, "Repeatable")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadCertificateRequest has unknown keys!", "")
