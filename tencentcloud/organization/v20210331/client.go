@@ -541,6 +541,64 @@ func (c *Client) CreateOrganizationMemberPolicyWithContext(ctx context.Context, 
     return
 }
 
+func NewDeleteOrganizationMemberAuthIdentityRequest() (request *DeleteOrganizationMemberAuthIdentityRequest) {
+    request = &DeleteOrganizationMemberAuthIdentityRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("organization", APIVersion, "DeleteOrganizationMemberAuthIdentity")
+    
+    
+    return
+}
+
+func NewDeleteOrganizationMemberAuthIdentityResponse() (response *DeleteOrganizationMemberAuthIdentityResponse) {
+    response = &DeleteOrganizationMemberAuthIdentityResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteOrganizationMemberAuthIdentity
+// 删除组织成员访问授权
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MEMBERIDENTITYAUTHUSED = "FailedOperation.MemberIdentityAuthUsed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERIDENTITYNOTEXIST = "ResourceNotFound.MemberIdentityNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONIDENTITYNOTEXIST = "ResourceNotFound.OrganizationIdentityNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) DeleteOrganizationMemberAuthIdentity(request *DeleteOrganizationMemberAuthIdentityRequest) (response *DeleteOrganizationMemberAuthIdentityResponse, err error) {
+    return c.DeleteOrganizationMemberAuthIdentityWithContext(context.Background(), request)
+}
+
+// DeleteOrganizationMemberAuthIdentity
+// 删除组织成员访问授权
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_MEMBERIDENTITYAUTHUSED = "FailedOperation.MemberIdentityAuthUsed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_MEMBERIDENTITYNOTEXIST = "ResourceNotFound.MemberIdentityNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONIDENTITYNOTEXIST = "ResourceNotFound.OrganizationIdentityNotExist"
+//  RESOURCENOTFOUND_ORGANIZATIONNOTEXIST = "ResourceNotFound.OrganizationNotExist"
+func (c *Client) DeleteOrganizationMemberAuthIdentityWithContext(ctx context.Context, request *DeleteOrganizationMemberAuthIdentityRequest) (response *DeleteOrganizationMemberAuthIdentityResponse, err error) {
+    if request == nil {
+        request = NewDeleteOrganizationMemberAuthIdentityRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteOrganizationMemberAuthIdentity require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteOrganizationMemberAuthIdentityResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteOrganizationMembersRequest() (request *DeleteOrganizationMembersRequest) {
     request = &DeleteOrganizationMembersRequest{
         BaseRequest: &tchttp.BaseRequest{},

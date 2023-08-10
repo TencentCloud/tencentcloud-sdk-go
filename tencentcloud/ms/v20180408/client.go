@@ -64,10 +64,6 @@ func NewCancelEncryptTaskResponse() (response *CancelEncryptTaskResponse) {
 }
 
 // CancelEncryptTask
-// 上错服务器了
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，取消渠道合作加固中的任务。
 //
 // 可能返回的错误码:
@@ -84,10 +80,6 @@ func (c *Client) CancelEncryptTask(request *CancelEncryptTaskRequest) (response 
 }
 
 // CancelEncryptTask
-// 上错服务器了
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，取消渠道合作加固中的任务。
 //
 // 可能返回的错误码:
@@ -250,10 +242,6 @@ func NewCreateEncryptInstanceResponse() (response *CreateEncryptInstanceResponse
 }
 
 // CreateEncryptInstance
-// 上错服务器了
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于创建加固任务。
 //
 // 可能返回的错误码:
@@ -288,10 +276,6 @@ func (c *Client) CreateEncryptInstance(request *CreateEncryptInstanceRequest) (r
 }
 
 // CreateEncryptInstance
-// 上错服务器了
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于创建加固任务。
 //
 // 可能返回的错误码:
@@ -356,10 +340,6 @@ func NewCreateOrderInstanceResponse() (response *CreateOrderInstanceResponse) {
 }
 
 // CreateOrderInstance
-// 上错服务器了
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。
 //
 // 订单类型有：免费试用、按年收费、按次收费。
@@ -380,10 +360,6 @@ func (c *Client) CreateOrderInstance(request *CreateOrderInstanceRequest) (respo
 }
 
 // CreateOrderInstance
-// 上错服务器了
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。
 //
 // 订单类型有：免费试用、按年收费、按次收费。
@@ -746,10 +722,6 @@ func NewDescribeEncryptInstancesResponse() (response *DescribeEncryptInstancesRe
 }
 
 // DescribeEncryptInstances
-// 上错服务器了
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于查询加固任务，入参中的条件过滤字段均为精准匹配。支持功能点：1. 多任务分页查询  2.根据任务Id唯一值查询单记录
 //
 // 可能返回的错误码:
@@ -765,10 +737,6 @@ func (c *Client) DescribeEncryptInstances(request *DescribeEncryptInstancesReque
 }
 
 // DescribeEncryptInstances
-// 上错服务器了
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于查询加固任务，入参中的条件过滤字段均为精准匹配。支持功能点：1. 多任务分页查询  2.根据任务Id唯一值查询单记录
 //
 // 可能返回的错误码:
@@ -874,10 +842,6 @@ func NewDescribeOrderInstancesResponse() (response *DescribeOrderInstancesRespon
 }
 
 // DescribeOrderInstances
-// 上错服务器了
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。 接口返回的结果为：创建订单后，订单审批状态信息，以及与订单关联的资源状态等信息，入参中的条件过滤字段均为精准匹配。
 //
 // 接口功能点：
@@ -899,10 +863,6 @@ func (c *Client) DescribeOrderInstances(request *DescribeOrderInstancesRequest) 
 }
 
 // DescribeOrderInstances
-// 上错服务器了
-//
-// 
-//
 // 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。 接口返回的结果为：创建订单后，订单审批状态信息，以及与订单关联的资源状态等信息，入参中的条件过滤字段均为精准匹配。
 //
 // 接口功能点：

@@ -1148,7 +1148,7 @@ func NewCreateScheduledSqlResponse() (response *CreateScheduledSqlResponse) {
 }
 
 // CreateScheduledSql
-// 本接口用于创建ScheduledSql任务
+// 本接口用于创建定时SQL分析任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1169,7 +1169,7 @@ func (c *Client) CreateScheduledSql(request *CreateScheduledSqlRequest) (respons
 }
 
 // CreateScheduledSql
-// 本接口用于创建ScheduledSql任务
+// 本接口用于创建定时SQL分析任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2216,7 +2216,7 @@ func NewDeleteScheduledSqlResponse() (response *DeleteScheduledSqlResponse) {
 }
 
 // DeleteScheduledSql
-// 本接口用于删除ScheduledSql任务
+// 本接口用于删除定时SQL分析任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2236,7 +2236,7 @@ func (c *Client) DeleteScheduledSql(request *DeleteScheduledSqlRequest) (respons
 }
 
 // DeleteScheduledSql
-// 本接口用于删除ScheduledSql任务
+// 本接口用于删除定时SQL分析任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3936,7 +3936,7 @@ func NewDescribeScheduledSqlInfoResponse() (response *DescribeScheduledSqlInfoRe
 }
 
 // DescribeScheduledSqlInfo
-// 本接口用于获取ScheduledSql任务列表
+// 本接口用于获取定时SQL分析任务列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3955,7 +3955,7 @@ func (c *Client) DescribeScheduledSqlInfo(request *DescribeScheduledSqlInfoReque
 }
 
 // DescribeScheduledSqlInfo
-// 本接口用于获取ScheduledSql任务列表
+// 本接口用于获取定时SQL分析任务列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5220,7 +5220,7 @@ func NewModifyScheduledSqlResponse() (response *ModifyScheduledSqlResponse) {
 }
 
 // ModifyScheduledSql
-// 本接口用于修改ScheduledSql任务
+// 本接口用于修改定时SQL分析任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5241,7 +5241,7 @@ func (c *Client) ModifyScheduledSql(request *ModifyScheduledSqlRequest) (respons
 }
 
 // ModifyScheduledSql
-// 本接口用于修改ScheduledSql任务
+// 本接口用于修改定时SQL分析任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

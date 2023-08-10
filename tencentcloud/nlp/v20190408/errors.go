@@ -113,7 +113,7 @@ const (
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
-	// 帐号已被冻结。
+	// 账号已被冻结。
 	RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
 
 	// 账号已欠费。
@@ -131,6 +131,6 @@ const (
 	// 您的账号尚未开通NLP服务，请登录腾讯云NLP控制台进行服务开通后再使用
 	RESOURCEUNAVAILABLE_SERVICENOTOPENEDERROR = "ResourceUnavailable.ServiceNotOpenedError"
 
-	// 帐号已停服。
+	// 账号已停服。
 	RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
 )

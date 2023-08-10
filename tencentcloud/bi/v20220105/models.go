@@ -122,7 +122,7 @@ type ApplyEmbedTokenInfo struct {
 
 // Predefined struct for user
 type CreateEmbedTokenRequestParams struct {
-	// 分享项目id，必选
+	// 分享项目id
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 分享页面id，嵌出看板时此为空值0
@@ -141,7 +141,7 @@ type CreateEmbedTokenRequestParams struct {
 type CreateEmbedTokenRequest struct {
 	*tchttp.BaseRequest
 	
-	// 分享项目id，必选
+	// 分享项目id
 	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 分享页面id，嵌出看板时此为空值0

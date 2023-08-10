@@ -150,6 +150,9 @@ type GetRuntimeResourceMonitorMetricMCRequestParams struct {
 
 	// 环境运行类型：0:运行时类型、1:api类型
 	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
+
+	// 资源指标聚合类型：0: 环境维度 1:执行引擎维度 2:datatwaypy维度 3.datawayjava维度
+	AggregationType *int64 `json:"AggregationType,omitempty" name:"AggregationType"`
 }
 
 type GetRuntimeResourceMonitorMetricMCRequest struct {
@@ -175,6 +178,9 @@ type GetRuntimeResourceMonitorMetricMCRequest struct {
 
 	// 环境运行类型：0:运行时类型、1:api类型
 	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
+
+	// 资源指标聚合类型：0: 环境维度 1:执行引擎维度 2:datatwaypy维度 3.datawayjava维度
+	AggregationType *int64 `json:"AggregationType,omitempty" name:"AggregationType"`
 }
 
 func (r *GetRuntimeResourceMonitorMetricMCRequest) ToJsonString() string {
@@ -196,6 +202,7 @@ func (r *GetRuntimeResourceMonitorMetricMCRequest) FromJsonString(s string) erro
 	delete(f, "RateType")
 	delete(f, "Interval")
 	delete(f, "RuntimeClass")
+	delete(f, "AggregationType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetRuntimeResourceMonitorMetricMCRequest has unknown keys!", "")
 	}
@@ -339,6 +346,11 @@ type ListRuntimeDeployedInstancesMCRequestParams struct {
 	// 0: 运行中
 	// 2: 已停止
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 0: 应用集成
+	// 1: API管理
+	// 2: ETL
+	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
 }
 
 type ListRuntimeDeployedInstancesMCRequest struct {
@@ -373,6 +385,11 @@ type ListRuntimeDeployedInstancesMCRequest struct {
 	// 0: 运行中
 	// 2: 已停止
 	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 0: 应用集成
+	// 1: API管理
+	// 2: ETL
+	RuntimeClass *int64 `json:"RuntimeClass,omitempty" name:"RuntimeClass"`
 }
 
 func (r *ListRuntimeDeployedInstancesMCRequest) ToJsonString() string {
@@ -396,6 +413,7 @@ func (r *ListRuntimeDeployedInstancesMCRequest) FromJsonString(s string) error {
 	delete(f, "ApiVersion")
 	delete(f, "GroupId")
 	delete(f, "Status")
+	delete(f, "RuntimeClass")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListRuntimeDeployedInstancesMCRequest has unknown keys!", "")
 	}

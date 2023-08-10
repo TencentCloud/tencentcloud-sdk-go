@@ -71,6 +71,26 @@ type AuthorizedUser struct {
 	OpenId *string `json:"OpenId,omitempty" name:"OpenId"`
 }
 
+type AutoSignConfig struct {
+	// 自动签开通个人用户的三要素
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 是否回调证书信息
+	CertInfoCallback *bool `json:"CertInfoCallback,omitempty" name:"CertInfoCallback"`
+
+	// 是否支持用户自定义签名印章
+	UserDefineSeal *bool `json:"UserDefineSeal,omitempty" name:"UserDefineSeal"`
+
+	// 是否需要回调的时候返回印章(签名) 图片的 base64
+	SealImgCallback *bool `json:"SealImgCallback,omitempty" name:"SealImgCallback"`
+
+	// 回调链接，如果渠道已经配置了，可以不传
+	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+
+	// 开通时候的验证方式，取值：WEIXINAPP（微信人脸识别），INSIGHT（慧眼人脸认别），TELECOM（运营商三要素验证）。如果是小程序开通链接，支持传 WEIXINAPP / TELECOM。如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
+	VerifyChannels []*string `json:"VerifyChannels,omitempty" name:"VerifyChannels"`
+}
+
 type BaseFlowInfo struct {
 	// 合同流程名称
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
@@ -387,6 +407,81 @@ func (r *ChannelCancelMultiFlowSignQRCodeResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ChannelCancelMultiFlowSignQRCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCancelUserAutoSignEnableUrlRequestParams struct {
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 自动签场景: E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+}
+
+type ChannelCancelUserAutoSignEnableUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 自动签场景: E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 指定撤销链接的用户信息，包含姓名、证件类型、证件号码。
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+}
+
+func (r *ChannelCancelUserAutoSignEnableUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCancelUserAutoSignEnableUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "Operator")
+	delete(f, "SceneKey")
+	delete(f, "UserInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCancelUserAutoSignEnableUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCancelUserAutoSignEnableUrlResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCancelUserAutoSignEnableUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCancelUserAutoSignEnableUrlResponseParams `json:"Response"`
+}
+
+func (r *ChannelCancelUserAutoSignEnableUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCancelUserAutoSignEnableUrlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -760,6 +855,9 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 签署流程名称，长度不超过200个字符
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
+	// 签署流程的描述，长度不超过1000个字符
+	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
+
 	// 签署流程签约方列表，最多不超过50个参与方
 	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitempty" name:"FlowApprovers"`
 
@@ -769,20 +867,24 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 签署文件中的发起方的填写控件，需要在发起的时候进行填充
 	Components []*Component `json:"Components,omitempty" name:"Components"`
 
-	// 签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年
+	// 签署流程的签署截止时间。
+	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
+	// 不能早于当前时间
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
 	// 签署流程回调地址，长度不超过255个字符
+	// 如果不传递回调地址， 则默认是配置应用号时候使用的回调地址
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署。有序签署时以传入FlowApprovers数组的顺序作为签署顺序
+	// 合同签署顺序类型
+	// true - 无序签,
+	// false - 顺序签，
+	// 默认为false，即有序签署。
+	// 有序签署时以传入FlowApprovers数组的顺序作为签署顺序
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
 	// 签署流程的类型，长度不超过255个字符
 	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
-
-	// 签署流程的描述，长度不超过1000个字符
-	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
 	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
@@ -799,13 +901,18 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
 
-	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+	// 标识是否允许发起后添加控件。
+	// 0为不允许
+	// 1为允许。
+	// 如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
 	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
 
 	// 被抄送人信息列表
 	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
 
-	// 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+	// 给关注人发送短信通知的类型，
+	// 0-合同发起时通知 
+	// 1-签署完成后通知
 	CcNotifyType *int64 `json:"CcNotifyType,omitempty" name:"CcNotifyType"`
 
 	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
@@ -826,6 +933,9 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 签署流程名称，长度不超过200个字符
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
+	// 签署流程的描述，长度不超过1000个字符
+	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
+
 	// 签署流程签约方列表，最多不超过50个参与方
 	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitempty" name:"FlowApprovers"`
 
@@ -835,20 +945,24 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 签署文件中的发起方的填写控件，需要在发起的时候进行填充
 	Components []*Component `json:"Components,omitempty" name:"Components"`
 
-	// 签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年
+	// 签署流程的签署截止时间。
+	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
+	// 不能早于当前时间
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
 	// 签署流程回调地址，长度不超过255个字符
+	// 如果不传递回调地址， 则默认是配置应用号时候使用的回调地址
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
-	// 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署。有序签署时以传入FlowApprovers数组的顺序作为签署顺序
+	// 合同签署顺序类型
+	// true - 无序签,
+	// false - 顺序签，
+	// 默认为false，即有序签署。
+	// 有序签署时以传入FlowApprovers数组的顺序作为签署顺序
 	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
 
 	// 签署流程的类型，长度不超过255个字符
 	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
-
-	// 签署流程的描述，长度不超过1000个字符
-	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
 	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
 	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
@@ -865,13 +979,18 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
 
-	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+	// 标识是否允许发起后添加控件。
+	// 0为不允许
+	// 1为允许。
+	// 如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
 	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
 
 	// 被抄送人信息列表
 	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
 
-	// 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+	// 给关注人发送短信通知的类型，
+	// 0-合同发起时通知 
+	// 1-签署完成后通知
 	CcNotifyType *int64 `json:"CcNotifyType,omitempty" name:"CcNotifyType"`
 
 	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
@@ -895,6 +1014,7 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Agent")
 	delete(f, "FlowName")
+	delete(f, "FlowDescription")
 	delete(f, "FlowApprovers")
 	delete(f, "FileIds")
 	delete(f, "Components")
@@ -902,7 +1022,6 @@ func (r *ChannelCreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "CallbackUrl")
 	delete(f, "Unordered")
 	delete(f, "FlowType")
-	delete(f, "FlowDescription")
 	delete(f, "CustomShowMap")
 	delete(f, "CustomerData")
 	delete(f, "NeedSignReview")
@@ -1916,6 +2035,129 @@ func (r *ChannelCreateSealPolicyResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChannelCreateUserAutoSignEnableUrlRequestParams struct {
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 自动签场景:
+	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 自动签开通，签署相关配置
+	AutoSignConfig *AutoSignConfig `json:"AutoSignConfig,omitempty" name:"AutoSignConfig"`
+
+	// 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
+	UrlType *string `json:"UrlType,omitempty" name:"UrlType"`
+
+	// 通知类型，默认不填为不通知开通方，填写 SMS 为短信通知。
+	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
+
+	// 若上方填写为 SMS，则此处为手机号
+	NotifyAddress *string `json:"NotifyAddress,omitempty" name:"NotifyAddress"`
+
+	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为30天。如果不传，默认有效期为7天。
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+}
+
+type ChannelCreateUserAutoSignEnableUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 自动签场景:
+	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 自动签开通，签署相关配置
+	AutoSignConfig *AutoSignConfig `json:"AutoSignConfig,omitempty" name:"AutoSignConfig"`
+
+	// 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
+	UrlType *string `json:"UrlType,omitempty" name:"UrlType"`
+
+	// 通知类型，默认不填为不通知开通方，填写 SMS 为短信通知。
+	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
+
+	// 若上方填写为 SMS，则此处为手机号
+	NotifyAddress *string `json:"NotifyAddress,omitempty" name:"NotifyAddress"`
+
+	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为30天。如果不传，默认有效期为7天。
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+}
+
+func (r *ChannelCreateUserAutoSignEnableUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateUserAutoSignEnableUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "SceneKey")
+	delete(f, "Operator")
+	delete(f, "AutoSignConfig")
+	delete(f, "UrlType")
+	delete(f, "NotifyType")
+	delete(f, "NotifyAddress")
+	delete(f, "ExpiredTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateUserAutoSignEnableUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateUserAutoSignEnableUrlResponseParams struct {
+	// 跳转短链
+	Url *string `json:"Url,omitempty" name:"Url"`
+
+	// 小程序AppId
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 小程序 原始 Id
+	AppOriginalId *string `json:"AppOriginalId,omitempty" name:"AppOriginalId"`
+
+	// 跳转路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// base64格式跳转二维码
+	QrCode *string `json:"QrCode,omitempty" name:"QrCode"`
+
+	// 链接类型，空-默认小程序端链接，H5SIGN-h5端链接
+	UrlType *string `json:"UrlType,omitempty" name:"UrlType"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreateUserAutoSignEnableUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateUserAutoSignEnableUrlResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateUserAutoSignEnableUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateUserAutoSignEnableUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelCreateUserRolesRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -2619,6 +2861,169 @@ func (r *ChannelDescribeRolesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ChannelDescribeRolesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDescribeUserAutoSignStatusRequestParams struct {
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 自动签场景:
+	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 查询开启状态的用户信息
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type ChannelDescribeUserAutoSignStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 自动签场景:
+	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 查询开启状态的用户信息
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ChannelDescribeUserAutoSignStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDescribeUserAutoSignStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "SceneKey")
+	delete(f, "UserInfo")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDescribeUserAutoSignStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDescribeUserAutoSignStatusResponseParams struct {
+	// 是否开通
+	IsOpen *bool `json:"IsOpen,omitempty" name:"IsOpen"`
+
+	// 自动签许可生效时间。当且仅当已开通自动签时有值。
+	LicenseFrom *int64 `json:"LicenseFrom,omitempty" name:"LicenseFrom"`
+
+	// 自动签许可到期时间。当且仅当已开通自动签时有值。
+	LicenseTo *int64 `json:"LicenseTo,omitempty" name:"LicenseTo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelDescribeUserAutoSignStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelDescribeUserAutoSignStatusResponseParams `json:"Response"`
+}
+
+func (r *ChannelDescribeUserAutoSignStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDescribeUserAutoSignStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDisableUserAutoSignRequestParams struct {
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 自动签场景:
+	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 关闭自动签的个人的三要素
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+type ChannelDisableUserAutoSignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道应用相关信息
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 自动签场景:
+	// E_PRESCRIPTION_AUTO_SIGN 电子处方
+	SceneKey *string `json:"SceneKey,omitempty" name:"SceneKey"`
+
+	// 关闭自动签的个人的三要素
+	UserInfo *UserThreeFactor `json:"UserInfo,omitempty" name:"UserInfo"`
+
+	// 操作人信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+}
+
+func (r *ChannelDisableUserAutoSignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDisableUserAutoSignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "SceneKey")
+	delete(f, "UserInfo")
+	delete(f, "Operator")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDisableUserAutoSignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDisableUserAutoSignResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelDisableUserAutoSignResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelDisableUserAutoSignResponseParams `json:"Response"`
+}
+
+func (r *ChannelDisableUserAutoSignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDisableUserAutoSignResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6010,6 +6415,20 @@ type UserInfo struct {
 	//
 	// Deprecated: ProxyIp is deprecated.
 	ProxyIp *string `json:"ProxyIp,omitempty" name:"ProxyIp"`
+}
+
+type UserThreeFactor struct {
+	// 姓名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 证件类型: 
+	// ID_CARD 身份证
+	// HONGKONG_AND_MACAO 港澳居民来往内地通行证
+	// HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 证件号，如果有 X 请大写
+	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
 }
 
 type WebThemeConfig struct {

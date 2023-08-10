@@ -35,7 +35,7 @@ const (
 	// 账号因为欠费停止服务，请在腾讯云账户充值。
 	FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 
-	// 帐号已停服。
+	// 账号已停服。
 	FAILEDOPERATION_STOPUSING = "FailedOperation.StopUsing"
 
 	// 服务未开通，请在腾讯云官网机器翻译控制台开通服务。

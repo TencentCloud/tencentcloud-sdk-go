@@ -77,6 +77,9 @@ const (
 	// 对实例的操作失败。
 	FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
 
+	// 账户余额不足, 请及时充值。
+	FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
+
 	// 命令无法找到。
 	FAILEDOPERATION_INVALIDCOMMANDNOTFOUND = "FailedOperation.InvalidCommandNotFound"
 

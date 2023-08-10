@@ -578,6 +578,67 @@ func (r *CreateOrganizationMemberResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteOrganizationMemberAuthIdentityRequestParams struct {
+	// 成员uin。
+	MemberUin *uint64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 身份Id。
+	IdentityId *uint64 `json:"IdentityId,omitempty" name:"IdentityId"`
+}
+
+type DeleteOrganizationMemberAuthIdentityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 成员uin。
+	MemberUin *uint64 `json:"MemberUin,omitempty" name:"MemberUin"`
+
+	// 身份Id。
+	IdentityId *uint64 `json:"IdentityId,omitempty" name:"IdentityId"`
+}
+
+func (r *DeleteOrganizationMemberAuthIdentityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOrganizationMemberAuthIdentityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MemberUin")
+	delete(f, "IdentityId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOrganizationMemberAuthIdentityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOrganizationMemberAuthIdentityResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteOrganizationMemberAuthIdentityResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteOrganizationMemberAuthIdentityResponseParams `json:"Response"`
+}
+
+func (r *DeleteOrganizationMemberAuthIdentityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOrganizationMemberAuthIdentityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteOrganizationMembersPolicyRequestParams struct {
 	// 访问策略ID。
 	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`

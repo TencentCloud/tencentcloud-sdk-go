@@ -526,6 +526,7 @@ func NewCreateBlueprintResponse() (response *CreateBlueprintResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEBLUEPRINTFAILED = "FailedOperation.CreateBlueprintFailed"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_UNABLETOCREATEBLUEPRINT = "FailedOperation.UnableToCreateBlueprint"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
@@ -545,6 +546,7 @@ func (c *Client) CreateBlueprint(request *CreateBlueprintRequest) (response *Cre
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEBLUEPRINTFAILED = "FailedOperation.CreateBlueprintFailed"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_UNABLETOCREATEBLUEPRINT = "FailedOperation.UnableToCreateBlueprint"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
@@ -666,6 +668,7 @@ func NewCreateDisksResponse() (response *CreateDisksResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEDISKSFAILED = "FailedOperation.CreateDisksFailed"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  INVALIDPARAMETERVALUE_DISKINSTANCEZONENOTMATCH = "InvalidParameterValue.DiskInstanceZoneNotMatch"
 //  INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
 //  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
@@ -686,6 +689,7 @@ func (c *Client) CreateDisks(request *CreateDisksRequest) (response *CreateDisks
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEDISKSFAILED = "FailedOperation.CreateDisksFailed"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  INVALIDPARAMETERVALUE_DISKINSTANCEZONENOTMATCH = "InvalidParameterValue.DiskInstanceZoneNotMatch"
 //  INVALIDPARAMETERVALUE_INVALIDDISKTYPE = "InvalidParameterValue.InvalidDiskType"
 //  INVALIDPARAMETERVALUE_INVALIDZONE = "InvalidParameterValue.InvalidZone"
@@ -934,6 +938,7 @@ func NewCreateInstancesResponse() (response *CreateInstancesResponse) {
 //  AUTHFAILURE_INVALIDREGION = "AuthFailure.InvalidRegion"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATEINSTANCESFAILED = "FailedOperation.CreateInstancesFailed"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_UNABLETOCREATEINSTANCES = "FailedOperation.UnableToCreateInstances"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_INVALIDACTIONNOTFOUND = "InternalError.InvalidActionNotFound"
@@ -973,6 +978,7 @@ func (c *Client) CreateInstances(request *CreateInstancesRequest) (response *Cre
 //  AUTHFAILURE_INVALIDREGION = "AuthFailure.InvalidRegion"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATEINSTANCESFAILED = "FailedOperation.CreateInstancesFailed"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_UNABLETOCREATEINSTANCES = "FailedOperation.UnableToCreateInstances"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_INVALIDACTIONNOTFOUND = "InternalError.InvalidActionNotFound"
@@ -5300,6 +5306,7 @@ func NewModifyInstancesBundleResponse() (response *ModifyInstancesBundleResponse
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_MODIFYINSTANCESBUNDLEFAILED = "FailedOperation.ModifyInstancesBundleFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
@@ -5329,6 +5336,7 @@ func (c *Client) ModifyInstancesBundle(request *ModifyInstancesBundleRequest) (r
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_MODIFYINSTANCESBUNDLEFAILED = "FailedOperation.ModifyInstancesBundleFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
@@ -5835,6 +5843,7 @@ func NewRenewDisksResponse() (response *RenewDisksResponse) {
 // 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。云硬盘操作结果可以通过调用 [DescribeDisks](https://cloud.tencent.com/document/product/1207/66093) 接口查询，如果云硬盘的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_RENEWRESOURCESFAILED = "FailedOperation.RenewResourcesFailed"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDCURINSTANCEDEADLINE = "InvalidParameterValue.InvalidCurInstanceDeadline"
@@ -5860,6 +5869,7 @@ func (c *Client) RenewDisks(request *RenewDisksRequest) (response *RenewDisksRes
 // 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。云硬盘操作结果可以通过调用 [DescribeDisks](https://cloud.tencent.com/document/product/1207/66093) 接口查询，如果云硬盘的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_RENEWRESOURCESFAILED = "FailedOperation.RenewResourcesFailed"
 //  INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 //  INVALIDPARAMETERVALUE_INVALIDCURINSTANCEDEADLINE = "InvalidParameterValue.InvalidCurInstanceDeadline"
@@ -5914,6 +5924,7 @@ func NewRenewInstancesResponse() (response *RenewInstancesResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_RENEWRESOURCESFAILED = "FailedOperation.RenewResourcesFailed"
 //  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
 //  INVALIDPARAMETER_INVALIDFILTERINVALIDKEY = "InvalidParameter.InvalidFilterInvalidKey"
@@ -5947,6 +5958,7 @@ func (c *Client) RenewInstances(request *RenewInstancesRequest) (response *Renew
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_RENEWRESOURCESFAILED = "FailedOperation.RenewResourcesFailed"
 //  INVALIDPARAMETER_INVALIDFILTER = "InvalidParameter.InvalidFilter"
 //  INVALIDPARAMETER_INVALIDFILTERINVALIDKEY = "InvalidParameter.InvalidFilterInvalidKey"

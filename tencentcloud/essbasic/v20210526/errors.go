@@ -56,6 +56,12 @@ const (
 	// 员工已实名。
 	FAILEDOPERATION_STAFFALREADYVERIFY = "FailedOperation.StaffAlreadyVerify"
 
+	// 无法撤销，用户已开通自动签。
+	FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = "FailedOperation.UserAutoSignEnableAlready"
+
+	// 无法撤销，用户未生成开通链接。
+	FAILEDOPERATION_USERAUTOSIGNENABLEURLNOTEXIST = "FailedOperation.UserAutoSignEnableUrlNotExist"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
@@ -130,6 +136,9 @@ const (
 
 	// 撤销理由填写格式错误。
 	INVALIDPARAMETER_CANCELREASON = "InvalidParameter.CancelReason"
+
+	// 证件号码错误。
+	INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
 
 	// 证件类型错误。
 	INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"

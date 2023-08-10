@@ -257,19 +257,19 @@ const (
 	// 请求的次数超过了频率限制。
 	REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 
-	// 帐号已欠费。
+	// 账号已欠费。
 	RESOURCEUNAVAILABLE_CHARGESTATUSEXCEPTION = "ResourceUnavailable.ChargeStatusException"
 
 	// 资源正在发货中。
 	RESOURCEUNAVAILABLE_DELIVERING = "ResourceUnavailable.Delivering"
 
-	// 帐号已被冻结。
+	// 账号已被冻结。
 	RESOURCEUNAVAILABLE_FREEZE = "ResourceUnavailable.Freeze"
 
 	// 获取认证信息失败。
 	RESOURCEUNAVAILABLE_GETAUTHINFOERROR = "ResourceUnavailable.GetAuthInfoError"
 
-	// 帐号已欠费。
+	// 账号已欠费。
 	RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 
 	// 余额不足。
@@ -284,7 +284,7 @@ const (
 	// 资源已被回收。
 	RESOURCEUNAVAILABLE_RECOVER = "ResourceUnavailable.Recover"
 
-	// 帐号已停服。
+	// 账号已停服。
 	RESOURCEUNAVAILABLE_STOPUSING = "ResourceUnavailable.StopUsing"
 
 	// 计费状态未知。

@@ -303,6 +303,66 @@ func (c *Client) ChannelCancelMultiFlowSignQRCodeWithContext(ctx context.Context
     return
 }
 
+func NewChannelCancelUserAutoSignEnableUrlRequest() (request *ChannelCancelUserAutoSignEnableUrlRequest) {
+    request = &ChannelCancelUserAutoSignEnableUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCancelUserAutoSignEnableUrl")
+    
+    
+    return
+}
+
+func NewChannelCancelUserAutoSignEnableUrlResponse() (response *ChannelCancelUserAutoSignEnableUrlResponse) {
+    response = &ChannelCancelUserAutoSignEnableUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCancelUserAutoSignEnableUrl
+// 此接口（ChannelCancelUserAutoSignEnableUrl）用来撤销发送给个人用户的自动签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = "FailedOperation.UserAutoSignEnableAlready"
+//  FAILEDOPERATION_USERAUTOSIGNENABLEURLNOTEXIST = "FailedOperation.UserAutoSignEnableUrlNotExist"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCancelUserAutoSignEnableUrl(request *ChannelCancelUserAutoSignEnableUrlRequest) (response *ChannelCancelUserAutoSignEnableUrlResponse, err error) {
+    return c.ChannelCancelUserAutoSignEnableUrlWithContext(context.Background(), request)
+}
+
+// ChannelCancelUserAutoSignEnableUrl
+// 此接口（ChannelCancelUserAutoSignEnableUrl）用来撤销发送给个人用户的自动签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = "FailedOperation.UserAutoSignEnableAlready"
+//  FAILEDOPERATION_USERAUTOSIGNENABLEURLNOTEXIST = "FailedOperation.UserAutoSignEnableUrlNotExist"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCancelUserAutoSignEnableUrlWithContext(ctx context.Context, request *ChannelCancelUserAutoSignEnableUrlRequest) (response *ChannelCancelUserAutoSignEnableUrlResponse, err error) {
+    if request == nil {
+        request = NewChannelCancelUserAutoSignEnableUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCancelUserAutoSignEnableUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCancelUserAutoSignEnableUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateBatchCancelFlowUrlRequest() (request *ChannelCreateBatchCancelFlowUrlRequest) {
     request = &ChannelCreateBatchCancelFlowUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1649,6 +1709,76 @@ func (c *Client) ChannelCreateSealPolicyWithContext(ctx context.Context, request
     return
 }
 
+func NewChannelCreateUserAutoSignEnableUrlRequest() (request *ChannelCreateUserAutoSignEnableUrlRequest) {
+    request = &ChannelCreateUserAutoSignEnableUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateUserAutoSignEnableUrl")
+    
+    
+    return
+}
+
+func NewChannelCreateUserAutoSignEnableUrlResponse() (response *ChannelCreateUserAutoSignEnableUrlResponse) {
+    response = &ChannelCreateUserAutoSignEnableUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateUserAutoSignEnableUrl
+// 企业方可以通过此接口获取个人用户开启自动签的跳转链接
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
+func (c *Client) ChannelCreateUserAutoSignEnableUrl(request *ChannelCreateUserAutoSignEnableUrlRequest) (response *ChannelCreateUserAutoSignEnableUrlResponse, err error) {
+    return c.ChannelCreateUserAutoSignEnableUrlWithContext(context.Background(), request)
+}
+
+// ChannelCreateUserAutoSignEnableUrl
+// 企业方可以通过此接口获取个人用户开启自动签的跳转链接
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_INVALIDAPPROVERAGE = "OperationDenied.InvalidApproverAge"
+func (c *Client) ChannelCreateUserAutoSignEnableUrlWithContext(ctx context.Context, request *ChannelCreateUserAutoSignEnableUrlRequest) (response *ChannelCreateUserAutoSignEnableUrlResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateUserAutoSignEnableUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateUserAutoSignEnableUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateUserAutoSignEnableUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateUserRolesRequest() (request *ChannelCreateUserRolesRequest) {
     request = &ChannelCreateUserRolesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2133,6 +2263,136 @@ func (c *Client) ChannelDescribeRolesWithContext(ctx context.Context, request *C
     request.SetContext(ctx)
     
     response = NewChannelDescribeRolesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelDescribeUserAutoSignStatusRequest() (request *ChannelDescribeUserAutoSignStatusRequest) {
+    request = &ChannelDescribeUserAutoSignStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelDescribeUserAutoSignStatus")
+    
+    
+    return
+}
+
+func NewChannelDescribeUserAutoSignStatusResponse() (response *ChannelDescribeUserAutoSignStatusResponse) {
+    response = &ChannelDescribeUserAutoSignStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelDescribeUserAutoSignStatus
+// 企业方可以通过此接口查询个人用户自动签开启状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelDescribeUserAutoSignStatus(request *ChannelDescribeUserAutoSignStatusRequest) (response *ChannelDescribeUserAutoSignStatusResponse, err error) {
+    return c.ChannelDescribeUserAutoSignStatusWithContext(context.Background(), request)
+}
+
+// ChannelDescribeUserAutoSignStatus
+// 企业方可以通过此接口查询个人用户自动签开启状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelDescribeUserAutoSignStatusWithContext(ctx context.Context, request *ChannelDescribeUserAutoSignStatusRequest) (response *ChannelDescribeUserAutoSignStatusResponse, err error) {
+    if request == nil {
+        request = NewChannelDescribeUserAutoSignStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelDescribeUserAutoSignStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelDescribeUserAutoSignStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelDisableUserAutoSignRequest() (request *ChannelDisableUserAutoSignRequest) {
+    request = &ChannelDisableUserAutoSignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelDisableUserAutoSign")
+    
+    
+    return
+}
+
+func NewChannelDisableUserAutoSignResponse() (response *ChannelDisableUserAutoSignResponse) {
+    response = &ChannelDisableUserAutoSignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelDisableUserAutoSign
+// 企业方可以通过此接口关闭个人的自动签功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelDisableUserAutoSign(request *ChannelDisableUserAutoSignRequest) (response *ChannelDisableUserAutoSignResponse, err error) {
+    return c.ChannelDisableUserAutoSignWithContext(context.Background(), request)
+}
+
+// ChannelDisableUserAutoSign
+// 企业方可以通过此接口关闭个人的自动签功能
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
+//  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelDisableUserAutoSignWithContext(ctx context.Context, request *ChannelDisableUserAutoSignRequest) (response *ChannelDisableUserAutoSignResponse, err error) {
+    if request == nil {
+        request = NewChannelDisableUserAutoSignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelDisableUserAutoSign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelDisableUserAutoSignResponse()
     err = c.Send(request, response)
     return
 }

@@ -2060,7 +2060,7 @@ func NewDescribeImageQuotaResponse() (response *DescribeImageQuotaResponse) {
 }
 
 // DescribeImageQuota
-// 本接口(DescribeImageQuota)用于查询用户帐号的镜像配额。
+// 本接口(DescribeImageQuota)用于查询用户账号的镜像配额。
 //
 // 可能返回的错误码:
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
@@ -2070,7 +2070,7 @@ func (c *Client) DescribeImageQuota(request *DescribeImageQuotaRequest) (respons
 }
 
 // DescribeImageQuota
-// 本接口(DescribeImageQuota)用于查询用户帐号的镜像配额。
+// 本接口(DescribeImageQuota)用于查询用户账号的镜像配额。
 //
 // 可能返回的错误码:
 //  INVALIDZONE_MISMATCHREGION = "InvalidZone.MismatchRegion"
@@ -7420,7 +7420,7 @@ func NewResetInstancesPasswordResponse() (response *ResetInstancesPasswordRespon
 //
 // 
 //
-// *如果是修改系统管理云密码：实例的操作系统不同，管理员帐号也会不一样(`Windows`为`Administrator`，`Ubuntu`为`ubuntu`，其它系统为`root`)。
+// *如果是修改系统管理云密码：实例的操作系统不同，管理员账号也会不一样(`Windows`为`Administrator`，`Ubuntu`为`ubuntu`，其它系统为`root`)。
 //
 // * 重置处于运行中状态的实例密码，需要设置关机参数`ForceStop`为`TRUE`。如果没有显式指定强制关机参数，则只有处于关机状态的实例才允许执行重置密码操作。
 //
@@ -7468,7 +7468,7 @@ func (c *Client) ResetInstancesPassword(request *ResetInstancesPasswordRequest) 
 //
 // 
 //
-// *如果是修改系统管理云密码：实例的操作系统不同，管理员帐号也会不一样(`Windows`为`Administrator`，`Ubuntu`为`ubuntu`，其它系统为`root`)。
+// *如果是修改系统管理云密码：实例的操作系统不同，管理员账号也会不一样(`Windows`为`Administrator`，`Ubuntu`为`ubuntu`，其它系统为`root`)。
 //
 // * 重置处于运行中状态的实例密码，需要设置关机参数`ForceStop`为`TRUE`。如果没有显式指定强制关机参数，则只有处于关机状态的实例才允许执行重置密码操作。
 //
@@ -8464,7 +8464,7 @@ func NewSyncImagesResponse() (response *SyncImagesResponse) {
 //
 // * 该接口支持多个同步地域。
 //
-// * 单个帐号在每个地域最多支持存在10个自定义镜像。
+// * 单个账号在每个地域最多支持存在10个自定义镜像。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDIMAGESTATE = "FailedOperation.InvalidImageState"
@@ -8496,7 +8496,7 @@ func (c *Client) SyncImages(request *SyncImagesRequest) (response *SyncImagesRes
 //
 // * 该接口支持多个同步地域。
 //
-// * 单个帐号在每个地域最多支持存在10个自定义镜像。
+// * 单个账号在每个地域最多支持存在10个自定义镜像。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_INVALIDIMAGESTATE = "FailedOperation.InvalidImageState"
