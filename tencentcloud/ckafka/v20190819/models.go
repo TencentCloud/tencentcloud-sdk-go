@@ -6835,6 +6835,9 @@ type EsParam struct {
 
 	// 消息要映射为 es 索引中 @timestamp 的字段，如果当前配置为空，则使用消息的时间戳进行映射
 	DateField *string `json:"DateField,omitempty" name:"DateField"`
+
+	// 用来区分当前索引映射，属于新建索引还是存量索引。"EXIST_MAPPING"：从存量索引中选择；"NEW_MAPPING"：新建索引
+	RecordMappingMode *string `json:"RecordMappingMode,omitempty" name:"RecordMappingMode"`
 }
 
 type EsRecordMapping struct {
@@ -7780,6 +7783,10 @@ type InstanceAttributesResponse struct {
 	// 动态硬盘扩容策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DynamicDiskConfig *DynamicDiskConfig `json:"DynamicDiskConfig,omitempty" name:"DynamicDiskConfig"`
+
+	// 实例计费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
 }
 
 type InstanceChargeParam struct {
@@ -9723,8 +9730,7 @@ func (r *RenewCkafkaInstanceRequest) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
-// Predefined struct for user
-type RenewCkafkaInstanceResponseParams struct {
+type RenewCkafkaInstanceResp struct {
 	// 订单号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BigDealId *string `json:"BigDealId,omitempty" name:"BigDealId"`
@@ -9732,6 +9738,15 @@ type RenewCkafkaInstanceResponseParams struct {
 	// 子订单号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealName *string `json:"DealName,omitempty" name:"DealName"`
+}
+
+// Predefined struct for user
+type RenewCkafkaInstanceResponseParams struct {
+	// 返回值
+	Result *RenewCkafkaInstanceResp `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
 
 type RenewCkafkaInstanceResponse struct {

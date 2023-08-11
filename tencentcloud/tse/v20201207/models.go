@@ -2705,7 +2705,7 @@ type KongRoutePreview struct {
 
 	// 路由的Headers
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Headers *KVMapping `json:"Headers,omitempty" name:"Headers"`
+	Headers []*KVMapping `json:"Headers,omitempty" name:"Headers"`
 }
 
 type KongServiceDetail struct {

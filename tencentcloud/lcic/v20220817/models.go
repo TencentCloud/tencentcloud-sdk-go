@@ -1067,7 +1067,7 @@ type CreateRoomRequestParams struct {
 	// 观看类型。互动观看 （默认）
 	AudienceType *uint64 `json:"AudienceType,omitempty" name:"AudienceType"`
 
-	// 录制布局。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+	// 录制模板。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
 	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
 
 	// 房间绑定的群组ID,非空时限制组成员进入
@@ -1155,7 +1155,7 @@ type CreateRoomRequest struct {
 	// 观看类型。互动观看 （默认）
 	AudienceType *uint64 `json:"AudienceType,omitempty" name:"AudienceType"`
 
-	// 录制布局。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+	// 录制模板。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
 	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
 
 	// 房间绑定的群组ID,非空时限制组成员进入
@@ -2751,6 +2751,9 @@ type DescribeRoomResponseParams struct {
 
 	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
 	RoomType *int64 `json:"RoomType,omitempty" name:"RoomType"`
+
+	// 录制时长
+	VideoDuration *uint64 `json:"VideoDuration,omitempty" name:"VideoDuration"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

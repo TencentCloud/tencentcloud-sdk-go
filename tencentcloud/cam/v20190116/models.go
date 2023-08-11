@@ -736,6 +736,88 @@ func (r *CreateGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateMessageReceiverRequestParams struct {
+	// 消息接收人的用户名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 手机号国际区号，国内为86
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
+
+	// 手机号码, 例如：132****2492
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 邮箱，例如：57*****@qq.com
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 消息接收人的备注，选填
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+type CreateMessageReceiverRequest struct {
+	*tchttp.BaseRequest
+	
+	// 消息接收人的用户名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 手机号国际区号，国内为86
+	CountryCode *string `json:"CountryCode,omitempty" name:"CountryCode"`
+
+	// 手机号码, 例如：132****2492
+	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+
+	// 邮箱，例如：57*****@qq.com
+	Email *string `json:"Email,omitempty" name:"Email"`
+
+	// 消息接收人的备注，选填
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+}
+
+func (r *CreateMessageReceiverRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMessageReceiverRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "CountryCode")
+	delete(f, "PhoneNumber")
+	delete(f, "Email")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMessageReceiverRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateMessageReceiverResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateMessageReceiverResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateMessageReceiverResponseParams `json:"Response"`
+}
+
+func (r *CreateMessageReceiverResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateMessageReceiverResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateOIDCConfigRequestParams struct {
 	// 身份提供商URL
 	IdentityUrl *string `json:"IdentityUrl,omitempty" name:"IdentityUrl"`

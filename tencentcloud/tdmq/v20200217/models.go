@@ -4216,7 +4216,7 @@ func (r *DescribeCmqQueuesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCmqSubscriptionDetailRequestParams struct {
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
 	// 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0
@@ -4239,7 +4239,7 @@ type DescribeCmqSubscriptionDetailRequestParams struct {
 type DescribeCmqSubscriptionDetailRequest struct {
 	*tchttp.BaseRequest
 	
-	// 主题名字，在单个地域同一帐号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
+	// 主题名字，在单个地域同一账号下唯一。主题名称是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线（-）。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
 	// 分页时本页获取主题列表的起始位置。如果填写了该值，必须也要填写 limit 。该值缺省时，后台取默认值 0

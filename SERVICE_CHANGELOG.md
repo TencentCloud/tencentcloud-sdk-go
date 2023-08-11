@@ -1,75 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 商业智能分析 BI(bi) 版本：2022-01-05
+## 访问管理(cam) 版本：2019-01-16
 
-### 第 2 次发布
+### 第 55 次发布
 
-发布时间：2023-08-10 01:03:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [EmbedTokenInfo](https://cloud.tencent.com/document/api/590/73726#EmbedTokenInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>Id, BIToken, ProjectId, CreatedUser, CreatedAt, UpdatedUser, UpdatedAt, PageId, ExtraParam
-
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 113 次发布
-
-发布时间：2023-08-10 01:11:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [SyncImages](https://cloud.tencent.com/document/api/213/15711)
-
-	* <font color="#dd0000">**修改出参**：</font>ImageSet
-
-
-
-
-## 数据连接器(eis) 版本：2021-06-01
-
-### 第 9 次发布
-
-发布时间：2023-08-10 01:17:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [GetRuntimeResourceMonitorMetricMC](https://cloud.tencent.com/document/api/1270/57966)
-
-	* 新增入参：AggregationType
-
-* [ListRuntimeDeployedInstancesMC](https://cloud.tencent.com/document/api/1270/57964)
-
-	* 新增入参：RuntimeClass
-
-
-
-
-## 数据连接器(eis) 版本：2020-07-15
-
-
-
-## 集团账号管理(organization) 版本：2021-03-31
-
-### 第 22 次发布
-
-发布时间：2023-08-10 01:32:28
+发布时间：2023-08-11 01:04:42
 
 本次发布包含了以下内容：
 
@@ -77,19 +12,15 @@
 
 新增接口：
 
-* [DeleteOrganizationMemberAuthIdentity](https://cloud.tencent.com/document/api/850/96120)
+* [CreateMessageReceiver](https://cloud.tencent.com/document/api/598/96136)
 
 
 
-## 集团账号管理(organization) 版本：2018-12-25
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
 
+### 第 92 次发布
 
-
-## 音速达直播音乐版权引擎(yinsuda) 版本：2022-05-27
-
-### 第 17 次发布
-
-发布时间：2023-08-10 01:50:27
+发布时间：2023-08-11 01:08:23
 
 本次发布包含了以下内容：
 
@@ -97,9 +28,75 @@
 
 修改数据结构：
 
-* [TRTCJoinRoomInput](https://cloud.tencent.com/document/api/1592/76191#TRTCJoinRoomInput)
+* [InstanceAttributesResponse](https://cloud.tencent.com/document/api/597/40861#InstanceAttributesResponse)
 
-	* 新增成员：RoomIdType
+	* 新增成员：InstanceChargeType
+
+
+### 第 91 次发布
+
+发布时间：2023-08-10 10:00:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RenewCkafkaInstance](https://cloud.tencent.com/document/api/597/90290)
+
+	* 新增出参：Result, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>BigDealId, DealName
+
+
+新增数据结构：
+
+* [RenewCkafkaInstanceResp](https://cloud.tencent.com/document/api/597/40861#RenewCkafkaInstanceResp)
+
+修改数据结构：
+
+* [EsParam](https://cloud.tencent.com/document/api/597/40861#EsParam)
+
+	* 新增成员：RecordMappingMode
+
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 36 次发布
+
+发布时间：2023-08-11 01:27:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：VideoDuration
+
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 38 次发布
+
+发布时间：2023-08-11 01:44:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KongRoutePreview](https://cloud.tencent.com/document/api/1364/54942#KongRoutePreview)
+
+	* <font color="#dd0000">**修改成员**：</font>Headers
 
 
 
@@ -10654,6 +10651,18 @@
 
 
 ## 访问管理(cam) 版本：2019-01-16
+
+### 第 55 次发布
+
+发布时间：2023-08-11 01:04:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateMessageReceiver](https://cloud.tencent.com/document/api/598/96136)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 54 次发布
 
@@ -22708,6 +22717,49 @@
 
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 92 次发布
+
+发布时间：2023-08-11 01:08:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceAttributesResponse](https://cloud.tencent.com/document/api/597/40861#InstanceAttributesResponse)
+
+	* 新增成员：InstanceChargeType
+
+
+### 第 91 次发布
+
+发布时间：2023-08-10 10:00:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [RenewCkafkaInstance](https://cloud.tencent.com/document/api/597/90290)
+
+	* 新增出参：Result, RequestId
+
+	* <font color="#dd0000">**删除出参**：</font>BigDealId, DealName
+
+
+新增数据结构：
+
+* [[RenewCkafkaInstanceResp](https://cloud.tencent.com/document/api/597/40861#RenewCkafkaInstanceResp)](https://cloud.tencent.com/document/api/597/40861#[RenewCkafkaInstanceResp](https://cloud.tencent.com/document/api/597/40861#RenewCkafkaInstanceResp))
+
+修改数据结构：
+
+* [EsParam](https://cloud.tencent.com/document/api/597/40861#EsParam)
+
+	* 新增成员：RecordMappingMode
+
 
 ### 第 90 次发布
 
@@ -66732,6 +66784,21 @@
 
 ## 低代码互动课堂(lcic) 版本：2022-08-17
 
+### 第 36 次发布
+
+发布时间：2023-08-11 01:27:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：VideoDuration
+
+
 ### 第 35 次发布
 
 发布时间：2023-07-31 01:30:04
@@ -81698,7 +81765,7 @@
 
 新增接口：
 
-* [[DeleteOrganizationMemberAuthIdentity](https://cloud.tencent.com/document/api/850/96120)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteOrganizationMemberAuthIdentity](https://cloud.tencent.com/document/api/850/96120)
 
 ### 第 21 次发布
 
@@ -113753,6 +113820,21 @@
 
 
 ## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 38 次发布
+
+发布时间：2023-08-11 01:44:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KongRoutePreview](https://cloud.tencent.com/document/api/1364/54942#KongRoutePreview)
+
+	* <font color="#dd0000">**修改成员**：</font>Headers
+
 
 ### 第 37 次发布
 

@@ -519,6 +519,64 @@ func (c *Client) CreateGroupWithContext(ctx context.Context, request *CreateGrou
     return
 }
 
+func NewCreateMessageReceiverRequest() (request *CreateMessageReceiverRequest) {
+    request = &CreateMessageReceiverRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cam", APIVersion, "CreateMessageReceiver")
+    
+    
+    return
+}
+
+func NewCreateMessageReceiverResponse() (response *CreateMessageReceiverResponse) {
+    response = &CreateMessageReceiverResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateMessageReceiver
+// 创建消息接收人接口：仅允许已完成实名认证的用户访问消息接收人接口，并对每个用户限制每天最多请求10次。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RECEIVEROVERLIMIT = "InvalidParameter.ReceiverOverLimit"
+//  INVALIDPARAMETER_SUBUSERNAMEINUSE = "InvalidParameter.SubUserNameInUse"
+//  INVALIDPARAMETER_USERNOTAUTH = "InvalidParameter.UserNotAuth"
+//  LIMITEXCEEDED_UIN = "LimitExceeded.Uin"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateMessageReceiver(request *CreateMessageReceiverRequest) (response *CreateMessageReceiverResponse, err error) {
+    return c.CreateMessageReceiverWithContext(context.Background(), request)
+}
+
+// CreateMessageReceiver
+// 创建消息接收人接口：仅允许已完成实名认证的用户访问消息接收人接口，并对每个用户限制每天最多请求10次。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RECEIVEROVERLIMIT = "InvalidParameter.ReceiverOverLimit"
+//  INVALIDPARAMETER_SUBUSERNAMEINUSE = "InvalidParameter.SubUserNameInUse"
+//  INVALIDPARAMETER_USERNOTAUTH = "InvalidParameter.UserNotAuth"
+//  LIMITEXCEEDED_UIN = "LimitExceeded.Uin"
+//  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
+func (c *Client) CreateMessageReceiverWithContext(ctx context.Context, request *CreateMessageReceiverRequest) (response *CreateMessageReceiverResponse, err error) {
+    if request == nil {
+        request = NewCreateMessageReceiverRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateMessageReceiver require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateMessageReceiverResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateOIDCConfigRequest() (request *CreateOIDCConfigRequest) {
     request = &CreateOIDCConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
