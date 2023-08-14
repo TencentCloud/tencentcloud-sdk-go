@@ -122,7 +122,7 @@ func NewCreateAsrVocabResponse() (response *CreateAsrVocabResponse) {
 //
 // <br>•   默认最多可创建30个热词表。
 //
-// <br>•   每个热词表最多可添加128个词，每个词最长10个字，不能超出限制。
+// <br>•   每个热词表最多可添加128个词，每个词最长10个汉字或30个英文字符，不能超出限制。
 //
 // <br>•   热词表可以通过数组或者本地文件形式上传。
 //
@@ -160,7 +160,7 @@ func (c *Client) CreateAsrVocab(request *CreateAsrVocabRequest) (response *Creat
 //
 // <br>•   默认最多可创建30个热词表。
 //
-// <br>•   每个热词表最多可添加128个词，每个词最长10个字，不能超出限制。
+// <br>•   每个热词表最多可添加128个词，每个词最长10个汉字或30个英文字符，不能超出限制。
 //
 // <br>•   热词表可以通过数组或者本地文件形式上传。
 //

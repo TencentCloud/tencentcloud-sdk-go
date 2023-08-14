@@ -1573,6 +1573,68 @@ func (c *Client) ChannelCreatePrepareFlowWithContext(ctx context.Context, reques
     return
 }
 
+func NewChannelCreatePreparedPersonalEsignRequest() (request *ChannelCreatePreparedPersonalEsignRequest) {
+    request = &ChannelCreatePreparedPersonalEsignRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreatePreparedPersonalEsign")
+    
+    
+    return
+}
+
+func NewChannelCreatePreparedPersonalEsignResponse() (response *ChannelCreatePreparedPersonalEsignResponse) {
+    response = &ChannelCreatePreparedPersonalEsignResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreatePreparedPersonalEsign
+// 本接口（ChannelCreatePreparedPersonalEsign）用于创建导入个人印章
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreatePreparedPersonalEsign(request *ChannelCreatePreparedPersonalEsignRequest) (response *ChannelCreatePreparedPersonalEsignResponse, err error) {
+    return c.ChannelCreatePreparedPersonalEsignWithContext(context.Background(), request)
+}
+
+// ChannelCreatePreparedPersonalEsign
+// 本接口（ChannelCreatePreparedPersonalEsign）用于创建导入个人印章
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
+//  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCENOTFOUND_ORGANIZATION = "ResourceNotFound.Organization"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
+func (c *Client) ChannelCreatePreparedPersonalEsignWithContext(ctx context.Context, request *ChannelCreatePreparedPersonalEsignRequest) (response *ChannelCreatePreparedPersonalEsignResponse, err error) {
+    if request == nil {
+        request = NewChannelCreatePreparedPersonalEsignRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreatePreparedPersonalEsign require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreatePreparedPersonalEsignResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateReleaseFlowRequest() (request *ChannelCreateReleaseFlowRequest) {
     request = &ChannelCreateReleaseFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},

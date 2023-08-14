@@ -125,7 +125,7 @@ const (
 	// ApproverVerifyType参数值非法
 	INVALIDPARAMETER_APPROVERVERIFYTYPE = "InvalidParameter.ApproverVerifyType"
 
-	// 当前仅支持指定上传授权书和法人认证授权, 请重新指定认证方式后发起
+	// 不合法的授权方式, 请重新指定授权方式后发起
 	INVALIDPARAMETER_AUTHORIZATIONTYPE = "InvalidParameter.AuthorizationType"
 
 	// 重复添加签署人。

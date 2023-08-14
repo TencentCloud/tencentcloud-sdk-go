@@ -741,49 +741,79 @@ type ClickHouseModifyConnectParam struct {
 
 type ClickHouseParam struct {
 	// ClickHouse的集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
 
 	// ClickHouse的数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Database *string `json:"Database,omitempty" name:"Database"`
 
 	// ClickHouse的数据表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Table *string `json:"Table,omitempty" name:"Table"`
 
 	// ClickHouse的schema
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Schema []*ClickHouseSchema `json:"Schema,omitempty" name:"Schema"`
 
 	// 实例资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitempty" name:"Resource"`
 
 	// ClickHouse的连接ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitempty" name:"Ip"`
 
 	// ClickHouse的连接port
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitempty" name:"Port"`
 
 	// ClickHouse的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
 	// ClickHouse的密码
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Password *string `json:"Password,omitempty" name:"Password"`
 
 	// 实例vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceVip *string `json:"ServiceVip,omitempty" name:"ServiceVip"`
 
 	// 实例的vpcId
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
 
 	// 是否为自建集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SelfBuilt *bool `json:"SelfBuilt,omitempty" name:"SelfBuilt"`
 
 	// ClickHouse是否抛弃解析失败的消息，默认为true
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropInvalidMessage *bool `json:"DropInvalidMessage,omitempty" name:"DropInvalidMessage"`
 
 	// ClickHouse 类型，emr-clickhouse : "emr";cdw-clickhouse : "cdwch";自建 : ""
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DropCls *DropCls `json:"DropCls,omitempty" name:"DropCls"`
+
+	// 每批次投递到 ClickHouse 表消息数量，默认为 1000 条。
+	// 提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BatchSize *int64 `json:"BatchSize,omitempty" name:"BatchSize"`
+
+	// 每次从 topic 中拉取消息大小，默认为 1MB，即至少要从 topic 中批量拉取 1MB 消息，才进行数据投递到 ClickHouse 操作。
+	// 提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerFetchMinBytes *int64 `json:"ConsumerFetchMinBytes,omitempty" name:"ConsumerFetchMinBytes"`
+
+	// 每次从 topic 拉取消息最大等待时间，当超过当前最大等待时间时，即使没有拉取到 ConsumerFetchMinBytes 大小，也将进行 ClickHouse 投递操作。
+	// 提高该参数值，有利于减少往  ClickHouse 投递的次数，但在错误消息过多及网络不稳定等极端情况下时，可能导致频繁重试影响效率。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerFetchMaxWaitMs *int64 `json:"ConsumerFetchMaxWaitMs,omitempty" name:"ConsumerFetchMaxWaitMs"`
 }
 
 type ClickHouseSchema struct {

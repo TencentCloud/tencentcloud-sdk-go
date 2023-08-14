@@ -1,10 +1,54 @@
 # 本版本更新包含以下内容：
 
-## 访问管理(cam) 版本：2019-01-16
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
 
-### 第 55 次发布
+### 第 93 次发布
 
-发布时间：2023-08-11 01:04:42
+发布时间：2023-08-14 01:12:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClickHouseParam](https://cloud.tencent.com/document/api/597/40861#ClickHouseParam)
+
+	* 新增成员：BatchSize, ConsumerFetchMinBytes, ConsumerFetchMaxWaitMs
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 66 次发布
+
+发布时间：2023-08-14 01:14:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SearchLog](https://cloud.tencent.com/document/api/614/56447)
+
+	* 新增出参：Topics
+
+
+新增数据结构：
+
+* [SearchLogErrors](https://cloud.tencent.com/document/api/614/56471#SearchLogErrors)
+* [SearchLogInfos](https://cloud.tencent.com/document/api/614/56471#SearchLogInfos)
+* [SearchLogTopics](https://cloud.tencent.com/document/api/614/56471#SearchLogTopics)
+
+
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 64 次发布
+
+发布时间：2023-08-14 01:19:27
 
 本次发布包含了以下内容：
 
@@ -12,92 +56,48 @@
 
 新增接口：
 
-* [CreateMessageReceiver](https://cloud.tencent.com/document/api/598/96136)
+* [DescribeLogFileRetentionPeriod](https://cloud.tencent.com/document/api/557/96159)
 
 
 
-## 消息队列 CKafka(ckafka) 版本：2019-08-19
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 92 次发布
+### 第 102 次发布
 
-发布时间：2023-08-11 01:08:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceAttributesResponse](https://cloud.tencent.com/document/api/597/40861#InstanceAttributesResponse)
-
-	* 新增成员：InstanceChargeType
-
-
-### 第 91 次发布
-
-发布时间：2023-08-10 10:00:48
+发布时间：2023-08-14 01:23:26
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [RenewCkafkaInstance](https://cloud.tencent.com/document/api/597/90290)
+* [ChannelCreatePreparedPersonalEsign](https://cloud.tencent.com/document/api/1420/96160)
 
-	* 新增出参：Result, RequestId
 
-	* <font color="#dd0000">**删除出参**：</font>BigDealId, DealName
 
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 49 次发布
+
+发布时间：2023-08-14 01:39:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRiskDnsEventDetail](https://cloud.tencent.com/document/api/1285/96162)
+* [DescribeRiskDnsList](https://cloud.tencent.com/document/api/1285/96161)
 
 新增数据结构：
 
-* [RenewCkafkaInstanceResp](https://cloud.tencent.com/document/api/597/40861#RenewCkafkaInstanceResp)
-
-修改数据结构：
-
-* [EsParam](https://cloud.tencent.com/document/api/597/40861#EsParam)
-
-	* 新增成员：RecordMappingMode
-
-
-
-
-## 低代码互动课堂(lcic) 版本：2022-08-17
-
-### 第 36 次发布
-
-发布时间：2023-08-11 01:27:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
-
-	* 新增出参：VideoDuration
-
-
-
-
-## 微服务引擎 TSE(tse) 版本：2020-12-07
-
-### 第 38 次发布
-
-发布时间：2023-08-11 01:44:23
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [KongRoutePreview](https://cloud.tencent.com/document/api/1364/54942#KongRoutePreview)
-
-	* <font color="#dd0000">**修改成员**：</font>Headers
-
+* [RiskDnsEventInfo](https://cloud.tencent.com/document/api/1285/65614#RiskDnsEventInfo)
 
 
 
@@ -10662,7 +10662,7 @@
 
 新增接口：
 
-* [[CreateMessageReceiver](https://cloud.tencent.com/document/api/598/96136)](https://cloud.tencent.com/document/api/#/#)
+* [CreateMessageReceiver](https://cloud.tencent.com/document/api/598/96136)
 
 ### 第 54 次发布
 
@@ -22718,6 +22718,21 @@
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19
 
+### 第 93 次发布
+
+发布时间：2023-08-14 01:12:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClickHouseParam](https://cloud.tencent.com/document/api/597/40861#ClickHouseParam)
+
+	* 新增成员：BatchSize, ConsumerFetchMinBytes, ConsumerFetchMaxWaitMs
+
+
 ### 第 92 次发布
 
 发布时间：2023-08-11 01:08:23
@@ -22752,7 +22767,7 @@
 
 新增数据结构：
 
-* [[RenewCkafkaInstanceResp](https://cloud.tencent.com/document/api/597/40861#RenewCkafkaInstanceResp)](https://cloud.tencent.com/document/api/597/40861#[RenewCkafkaInstanceResp](https://cloud.tencent.com/document/api/597/40861#RenewCkafkaInstanceResp))
+* [RenewCkafkaInstanceResp](https://cloud.tencent.com/document/api/597/40861#RenewCkafkaInstanceResp)
 
 修改数据结构：
 
@@ -27193,6 +27208,27 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 66 次发布
+
+发布时间：2023-08-14 01:14:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SearchLog](https://cloud.tencent.com/document/api/614/56447)
+
+	* 新增出参：Topics
+
+
+新增数据结构：
+
+* [[SearchLogErrors](https://cloud.tencent.com/document/api/614/56471#SearchLogErrors)](https://cloud.tencent.com/document/api/614/56471#[SearchLogErrors](https://cloud.tencent.com/document/api/614/56471#SearchLogErrors))
+* [[SearchLogInfos](https://cloud.tencent.com/document/api/614/56471#SearchLogInfos)](https://cloud.tencent.com/document/api/614/56471#[SearchLogInfos](https://cloud.tencent.com/document/api/614/56471#SearchLogInfos))
+* [[SearchLogTopics](https://cloud.tencent.com/document/api/614/56471#SearchLogTopics)](https://cloud.tencent.com/document/api/614/56471#[SearchLogTopics](https://cloud.tencent.com/document/api/614/56471#SearchLogTopics))
 
 ### 第 65 次发布
 
@@ -41802,6 +41838,18 @@
 
 ## TDSQL MySQL 版(dcdb) 版本：2018-04-11
 
+### 第 64 次发布
+
+发布时间：2023-08-14 01:19:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeLogFileRetentionPeriod](https://cloud.tencent.com/document/api/557/96159)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 63 次发布
 
 发布时间：2023-06-28 01:18:44
@@ -53174,6 +53222,18 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 102 次发布
+
+发布时间：2023-08-14 01:23:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[ChannelCreatePreparedPersonalEsign](https://cloud.tencent.com/document/api/1420/96160)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 101 次发布
 
@@ -97443,6 +97503,23 @@
 
 
 ## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 49 次发布
+
+发布时间：2023-08-14 01:39:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRiskDnsEventDetail](https://cloud.tencent.com/document/api/1285/96162)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRiskDnsList](https://cloud.tencent.com/document/api/1285/96161)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[RiskDnsEventInfo](https://cloud.tencent.com/document/api/1285/65614#RiskDnsEventInfo)](https://cloud.tencent.com/document/api/1285/65614#[RiskDnsEventInfo](https://cloud.tencent.com/document/api/1285/65614#RiskDnsEventInfo))
 
 ### 第 48 次发布
 

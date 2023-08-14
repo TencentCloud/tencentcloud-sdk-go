@@ -12127,6 +12127,140 @@ func (c *Client) DescribeReverseShellWhiteListsWithContext(ctx context.Context, 
     return
 }
 
+func NewDescribeRiskDnsEventDetailRequest() (request *DescribeRiskDnsEventDetailRequest) {
+    request = &DescribeRiskDnsEventDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeRiskDnsEventDetail")
+    
+    
+    return
+}
+
+func NewDescribeRiskDnsEventDetailResponse() (response *DescribeRiskDnsEventDetailResponse) {
+    response = &DescribeRiskDnsEventDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRiskDnsEventDetail
+// 查询恶意请求事件详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeRiskDnsEventDetail(request *DescribeRiskDnsEventDetailRequest) (response *DescribeRiskDnsEventDetailResponse, err error) {
+    return c.DescribeRiskDnsEventDetailWithContext(context.Background(), request)
+}
+
+// DescribeRiskDnsEventDetail
+// 查询恶意请求事件详情
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeRiskDnsEventDetailWithContext(ctx context.Context, request *DescribeRiskDnsEventDetailRequest) (response *DescribeRiskDnsEventDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskDnsEventDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskDnsEventDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRiskDnsEventDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRiskDnsListRequest() (request *DescribeRiskDnsListRequest) {
+    request = &DescribeRiskDnsListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tcss", APIVersion, "DescribeRiskDnsList")
+    
+    
+    return
+}
+
+func NewDescribeRiskDnsListResponse() (response *DescribeRiskDnsListResponse) {
+    response = &DescribeRiskDnsListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRiskDnsList
+// 查询恶意请求事件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeRiskDnsList(request *DescribeRiskDnsListRequest) (response *DescribeRiskDnsListResponse, err error) {
+    return c.DescribeRiskDnsListWithContext(context.Background(), request)
+}
+
+// DescribeRiskDnsList
+// 查询恶意请求事件列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeRiskDnsListWithContext(ctx context.Context, request *DescribeRiskDnsListRequest) (response *DescribeRiskDnsListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRiskDnsListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRiskDnsList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRiskDnsListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRiskListRequest() (request *DescribeRiskListRequest) {
     request = &DescribeRiskListRequest{
         BaseRequest: &tchttp.BaseRequest{},

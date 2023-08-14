@@ -18798,6 +18798,367 @@ func (r *DescribeReverseShellWhiteListsResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type DescribeRiskDnsEventDetailRequestParams struct {
+	// 事件ID
+	EventID *uint64 `json:"EventID,omitempty" name:"EventID"`
+}
+
+type DescribeRiskDnsEventDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 事件ID
+	EventID *uint64 `json:"EventID,omitempty" name:"EventID"`
+}
+
+func (r *DescribeRiskDnsEventDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskDnsEventDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskDnsEventDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRiskDnsEventDetailResponseParams struct {
+	// 事件ID
+	EventID *uint64 `json:"EventID,omitempty" name:"EventID"`
+
+	// 事件类型，恶意域名请求：DOMAIN，恶意IP请求：IP
+	EventType *string `json:"EventType,omitempty" name:"EventType"`
+
+	// 恶意请求次数
+	EventCount *uint64 `json:"EventCount,omitempty" name:"EventCount"`
+
+	// 首次发现时间
+	FoundTime *string `json:"FoundTime,omitempty" name:"FoundTime"`
+
+	// 最近生成时间
+	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+
+	// 容器ID
+	ContainerID *string `json:"ContainerID,omitempty" name:"ContainerID"`
+
+	// 容器名称
+	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+
+	// 隔离状态
+	// 未隔离  	NORMAL
+	// 已隔离		ISOLATED
+	// 隔离中		ISOLATING
+	// 隔离失败	ISOLATE_FAILED
+	// 解除隔离中  RESTORING
+	// 解除隔离失败 RESTORE_FAILED
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+
+	// 容器状态
+	// 正在运行: RUNNING
+	// 暂停: PAUSED
+	// 停止: STOPPED
+	// 已经创建: CREATED
+	// 已经销毁: DESTROYED
+	// 正在重启中: RESTARTING
+	// 迁移中: REMOVING
+	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+
+	// 容器子状态
+	// "AGENT_OFFLINE"       //Agent离线
+	// "NODE_DESTROYED"      //节点已销毁
+	// "CONTAINER_EXITED"    //容器已退出
+	// "CONTAINER_DESTROYED" //容器已销毁
+	// "SHARED_HOST"         // 容器与主机共享网络
+	// "RESOURCE_LIMIT"      //隔离操作资源超限
+	// "UNKNOW"              // 原因未知
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+
+	// 容器隔离操作来源
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+
+	// 镜像ID
+	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 主机名称
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 内网IP
+	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+
+	// 外网IP
+	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+
+	// 节点名称
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// 事件描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 解决方案
+	Solution *string `json:"Solution,omitempty" name:"Solution"`
+
+	// 参考链接
+	Reference []*string `json:"Reference,omitempty" name:"Reference"`
+
+	// 恶意域名或IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 恶意IP所属城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 命中规则类型
+	// SYSTEM：系统规则
+	//  USER：用户自定义
+	MatchRuleType *string `json:"MatchRuleType,omitempty" name:"MatchRuleType"`
+
+	// 标签特征
+	FeatureLabel *string `json:"FeatureLabel,omitempty" name:"FeatureLabel"`
+
+	// 进程权限
+	ProcessAuthority *string `json:"ProcessAuthority,omitempty" name:"ProcessAuthority"`
+
+	// 进程md5
+	ProcessMd5 *string `json:"ProcessMd5,omitempty" name:"ProcessMd5"`
+
+	// 进程启动用户
+	ProcessStartUser *string `json:"ProcessStartUser,omitempty" name:"ProcessStartUser"`
+
+	// 进程用户组
+	ProcessUserGroup *string `json:"ProcessUserGroup,omitempty" name:"ProcessUserGroup"`
+
+	// 进程路径
+	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+
+	// 进程树
+	ProcessTree *string `json:"ProcessTree,omitempty" name:"ProcessTree"`
+
+	// 进程命令行参数
+	ProcessParam *string `json:"ProcessParam,omitempty" name:"ProcessParam"`
+
+	// 父进程启动用户
+	ParentProcessStartUser *string `json:"ParentProcessStartUser,omitempty" name:"ParentProcessStartUser"`
+
+	// 父进程用户组
+	ParentProcessUserGroup *string `json:"ParentProcessUserGroup,omitempty" name:"ParentProcessUserGroup"`
+
+	// 父进程路径
+	ParentProcessPath *string `json:"ParentProcessPath,omitempty" name:"ParentProcessPath"`
+
+	// 父进程命令行参数
+	ParentProcessParam *string `json:"ParentProcessParam,omitempty" name:"ParentProcessParam"`
+
+	// 祖先进程启动用户
+	AncestorProcessStartUser *string `json:"AncestorProcessStartUser,omitempty" name:"AncestorProcessStartUser"`
+
+	// 祖先进程用户组
+	AncestorProcessUserGroup *string `json:"AncestorProcessUserGroup,omitempty" name:"AncestorProcessUserGroup"`
+
+	// 祖先进程路径
+	AncestorProcessPath *string `json:"AncestorProcessPath,omitempty" name:"AncestorProcessPath"`
+
+	// 祖先进程命令行参数
+	AncestorProcessParam *string `json:"AncestorProcessParam,omitempty" name:"AncestorProcessParam"`
+
+	// 主机ID
+	HostID *string `json:"HostID,omitempty" name:"HostID"`
+
+	// 事件状态
+	// EVENT_UNDEAL： 待处理
+	// EVENT_DEALED：已处理
+	// EVENT_IGNORE： 已忽略
+	// EVENT_ADD_WHITE：已加白
+	EventStatus *string `json:"EventStatus,omitempty" name:"EventStatus"`
+
+	// 操作时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
+
+	// 备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
+
+	// 节点类型
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// 节点子网ID
+	NodeSubNetID *string `json:"NodeSubNetID,omitempty" name:"NodeSubNetID"`
+
+	// 节点子网名称
+	NodeSubNetName *string `json:"NodeSubNetName,omitempty" name:"NodeSubNetName"`
+
+	// 节点子网网段
+	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitempty" name:"NodeSubNetCIDR"`
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// podip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// pod状态
+	PodStatus *string `json:"PodStatus,omitempty" name:"PodStatus"`
+
+	// 节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 节点ID名称
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRiskDnsEventDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRiskDnsEventDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeRiskDnsEventDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskDnsEventDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRiskDnsListRequestParams struct {
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>EventStatus- String - 是否必填：否 - 事件状态，待处理：EVENT_UNDEAL，EVENT_DEALED：已处理，已忽略：EVENT_IGNORE， EVENT_ADD_WHITE：已加白</li>
+	// <li>ContainerStatus- String - 是否必填：否 - 容器运行状态筛选，已创建：CREATED,正常运行：RUNNING, 暂定运行：PAUSED, 停止运行：	STOPPED，重启中：RESTARTING, 迁移中：REMOVING, 销毁：DESTROYED </li>
+	// <li>ContainerNetStatus- String -是否必填: 否 -  容器网络状态筛选 未隔离：NORMAL，已隔离：ISOLATED，隔离失败：ISOLATE_FAILED，解除隔离失败：RESTORE_FAILED，解除隔离中：RESTORING，隔离中：ISOLATING</li>
+	// <li>EventType - String -是否必填: 否 -  事件类型，恶意域名请求：DOMAIN，恶意IP请求：IP</li>
+	// <li>TimeRange- String -是否必填: 否 -  时间范围，第一个值表示开始时间，第二个值表示结束时间 </li>
+	// <li>RiskDns- string - 是否必填：否 - 恶意域名。</li>
+	// <li>RiskIP- string - 是否必填：否 - 恶意IP。</li>
+	// <li>ContainerName- string - 是否必填：否 - 容器名称。</li>
+	// <li>ContainerID- string - 是否必填：否 - 容器ID。</li>
+	// <li>ImageName- string - 是否必填：否 - 镜像名称。</li>
+	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
+	// <li>HostName- string - 是否必填：否 - 主机名称。</li>
+	// <li>HostIP- string - 是否必填：否 - 内网IP。</li>
+	// <li>PublicIP- string - 是否必填：否 - 外网IP。</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式：asc/desc
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段：告警数量：EventCount，最近生成时间：LatestFoundTime
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeRiskDnsListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要返回的数量，默认为10，最大值为100
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 过滤条件。
+	// <li>EventStatus- String - 是否必填：否 - 事件状态，待处理：EVENT_UNDEAL，EVENT_DEALED：已处理，已忽略：EVENT_IGNORE， EVENT_ADD_WHITE：已加白</li>
+	// <li>ContainerStatus- String - 是否必填：否 - 容器运行状态筛选，已创建：CREATED,正常运行：RUNNING, 暂定运行：PAUSED, 停止运行：	STOPPED，重启中：RESTARTING, 迁移中：REMOVING, 销毁：DESTROYED </li>
+	// <li>ContainerNetStatus- String -是否必填: 否 -  容器网络状态筛选 未隔离：NORMAL，已隔离：ISOLATED，隔离失败：ISOLATE_FAILED，解除隔离失败：RESTORE_FAILED，解除隔离中：RESTORING，隔离中：ISOLATING</li>
+	// <li>EventType - String -是否必填: 否 -  事件类型，恶意域名请求：DOMAIN，恶意IP请求：IP</li>
+	// <li>TimeRange- String -是否必填: 否 -  时间范围，第一个值表示开始时间，第二个值表示结束时间 </li>
+	// <li>RiskDns- string - 是否必填：否 - 恶意域名。</li>
+	// <li>RiskIP- string - 是否必填：否 - 恶意IP。</li>
+	// <li>ContainerName- string - 是否必填：否 - 容器名称。</li>
+	// <li>ContainerID- string - 是否必填：否 - 容器ID。</li>
+	// <li>ImageName- string - 是否必填：否 - 镜像名称。</li>
+	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
+	// <li>HostName- string - 是否必填：否 - 主机名称。</li>
+	// <li>HostIP- string - 是否必填：否 - 内网IP。</li>
+	// <li>PublicIP- string - 是否必填：否 - 外网IP。</li>
+	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式：asc/desc
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段：告警数量：EventCount，最近生成时间：LatestFoundTime
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeRiskDnsListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskDnsListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskDnsListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRiskDnsListResponseParams struct {
+	// 恶意请求事件列表
+	List []*RiskDnsEventInfo `json:"List,omitempty" name:"List"`
+
+	// 总数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRiskDnsListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRiskDnsListResponseParams `json:"Response"`
+}
+
+func (r *DescribeRiskDnsListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskDnsListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRiskListRequestParams struct {
 	// 要查询的集群ID，如果不指定，则查询用户所有的风险项
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
@@ -29144,6 +29505,122 @@ type ReverseShellWhiteListInfo struct {
 
 	// 白名单id，如果新建则id为空
 	Id *string `json:"Id,omitempty" name:"Id"`
+}
+
+type RiskDnsEventInfo struct {
+	// 事件ID
+	EventID *uint64 `json:"EventID,omitempty" name:"EventID"`
+
+	// 事件类型，恶意域名请求：DOMAIN，恶意IP请求：IP
+	EventType *string `json:"EventType,omitempty" name:"EventType"`
+
+	// 恶意请求域名/IP
+	Address *string `json:"Address,omitempty" name:"Address"`
+
+	// 容器ID
+	ContainerID *string `json:"ContainerID,omitempty" name:"ContainerID"`
+
+	// 容器名称
+	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+
+	// 隔离状态
+	// 未隔离  	NORMAL
+	// 已隔离		ISOLATED
+	// 隔离中		ISOLATING
+	// 隔离失败	ISOLATE_FAILED
+	// 解除隔离中  RESTORING
+	// 解除隔离失败 RESTORE_FAILED
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+
+	// 容器状态
+	// 正在运行: RUNNING
+	// 暂停: PAUSED
+	// 停止: STOPPED
+	// 已经创建: CREATED
+	// 已经销毁: DESTROYED
+	// 正在重启中: RESTARTING
+	// 迁移中: REMOVING
+	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+
+	// 容器子状态
+	// "AGENT_OFFLINE"       //Agent离线
+	// "NODE_DESTROYED"      //节点已销毁
+	// "CONTAINER_EXITED"    //容器已退出
+	// "CONTAINER_DESTROYED" //容器已销毁
+	// "SHARED_HOST"         // 容器与主机共享网络
+	// "RESOURCE_LIMIT"      //隔离操作资源超限
+	// "UNKNOW"              // 原因未知
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+
+	// 容器隔离操作来源
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+
+	// 镜像ID
+	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+
+	// 首次发现时间
+	FoundTime *string `json:"FoundTime,omitempty" name:"FoundTime"`
+
+	// 最近生成时间
+	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+
+	// 事件状态
+	// EVENT_UNDEAL： 待处理
+	// EVENT_DEALED：已处理
+	// EVENT_IGNORE： 已忽略
+	// EVENT_ADD_WHITE：已加白
+	EventStatus *string `json:"EventStatus,omitempty" name:"EventStatus"`
+
+	// 恶意请求次数
+	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+
+	// 事件描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 解决方案
+	Solution *string `json:"Solution,omitempty" name:"Solution"`
+
+	// 恶意IP所属城市
+	City *string `json:"City,omitempty" name:"City"`
+
+	// 主机名称
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 主机ID
+	HostID *string `json:"HostID,omitempty" name:"HostID"`
+
+	// 内网IP
+	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+
+	// 外网IP
+	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+
+	// 节点类型：NORMAL普通节点、SUPER超级节点
+	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+
+	// pod ip
+	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+
+	// pod 名称
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 节点id
+	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+
+	// 节点唯一id
+	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
 }
 
 type RiskSyscallEventDescription struct {

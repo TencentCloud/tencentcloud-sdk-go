@@ -1833,6 +1833,119 @@ func (r *ChannelCreatePrepareFlowResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChannelCreatePreparedPersonalEsignRequestParams struct {
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 个人用户名称
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 身份证件号码
+	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
+
+	// 印章图片的base64
+	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
+
+	// 印章名称
+	SealName *string `json:"SealName,omitempty" name:"SealName"`
+
+	// 操作者信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 身份证件类型
+	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 手机号码；当需要开通自动签时，该参数必传
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 是否开通自动签，该功能需联系运营工作人员开通后使用
+	EnableAutoSign *bool `json:"EnableAutoSign,omitempty" name:"EnableAutoSign"`
+}
+
+type ChannelCreatePreparedPersonalEsignRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 个人用户名称
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 身份证件号码
+	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
+
+	// 印章图片的base64
+	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
+
+	// 印章名称
+	SealName *string `json:"SealName,omitempty" name:"SealName"`
+
+	// 操作者信息
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 身份证件类型
+	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 手机号码；当需要开通自动签时，该参数必传
+	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+
+	// 是否开通自动签，该功能需联系运营工作人员开通后使用
+	EnableAutoSign *bool `json:"EnableAutoSign,omitempty" name:"EnableAutoSign"`
+}
+
+func (r *ChannelCreatePreparedPersonalEsignRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreatePreparedPersonalEsignRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "UserName")
+	delete(f, "IdCardNumber")
+	delete(f, "SealImage")
+	delete(f, "SealName")
+	delete(f, "Operator")
+	delete(f, "IdCardType")
+	delete(f, "Mobile")
+	delete(f, "EnableAutoSign")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreatePreparedPersonalEsignRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreatePreparedPersonalEsignResponseParams struct {
+	// 导入的印章 ID
+	SealId *string `json:"SealId,omitempty" name:"SealId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ChannelCreatePreparedPersonalEsignResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreatePreparedPersonalEsignResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreatePreparedPersonalEsignResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreatePreparedPersonalEsignResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelCreateReleaseFlowRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`

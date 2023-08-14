@@ -8738,6 +8738,32 @@ type ScheduledSqlTaskInfo struct {
 	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
 }
 
+type SearchLogErrors struct {
+	// 日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
+	// 错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCodeStr *string `json:"ErrorCodeStr,omitempty" name:"ErrorCodeStr"`
+}
+
+type SearchLogInfos struct {
+	// 日志主题ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志存储生命周期
+	Period *int64 `json:"Period,omitempty" name:"Period"`
+
+	// 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Context *string `json:"Context,omitempty" name:"Context"`
+}
+
 // Predefined struct for user
 type SearchLogRequestParams struct {
 	// 要检索分析的日志的起始时间，Unix时间戳（毫秒）
@@ -8761,11 +8787,11 @@ type SearchLogRequestParams struct {
 	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时
+	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
 	// 注意：
 	// * 透传该参数时，请勿修改除该参数外的其它参数
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Context *string `json:"Context,omitempty" name:"Context"`
 
 	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
@@ -8821,11 +8847,11 @@ type SearchLogRequest struct {
 	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时
+	// 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
 	// 注意：
 	// * 透传该参数时，请勿修改除该参数外的其它参数
-	// * 仅当检索分析语句(Query)不包含SQL时有效
-	// * SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
+	// * 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
 	Context *string `json:"Context,omitempty" name:"Context"`
 
 	// 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
@@ -8888,7 +8914,9 @@ func (r *SearchLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SearchLogResponseParams struct {
-	// 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
+	// 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时。
+	// 注意：
+	// * 仅适用于单日志主题检索，检索多个日志主题时，请使用Topics中的Context
 	Context *string `json:"Context,omitempty" name:"Context"`
 
 	// 符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
@@ -8926,6 +8954,10 @@ type SearchLogResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SamplingRate *float64 `json:"SamplingRate,omitempty" name:"SamplingRate"`
 
+	// 使用多日志主题检索时，各个日志主题的基本信息，例如报错信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Topics *SearchLogTopics `json:"Topics,omitempty" name:"Topics"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -8944,6 +8976,16 @@ func (r *SearchLogResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *SearchLogResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type SearchLogTopics struct {
+	// 多日志主题检索对应的错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Errors []*SearchLogErrors `json:"Errors,omitempty" name:"Errors"`
+
+	// 多日志主题检索各日志主题信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Infos []*SearchLogInfos `json:"Infos,omitempty" name:"Infos"`
 }
 
 type ShipperInfo struct {

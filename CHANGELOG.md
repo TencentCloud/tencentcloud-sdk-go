@@ -1,3 +1,106 @@
+# Release v1.0.722
+
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 93 次发布
+
+发布时间：2023-08-14 01:12:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClickHouseParam](https://cloud.tencent.com/document/api/597/40861#ClickHouseParam)
+
+	* 新增成员：BatchSize, ConsumerFetchMinBytes, ConsumerFetchMaxWaitMs
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 66 次发布
+
+发布时间：2023-08-14 01:14:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SearchLog](https://cloud.tencent.com/document/api/614/56447)
+
+	* 新增出参：Topics
+
+
+新增数据结构：
+
+* [SearchLogErrors](https://cloud.tencent.com/document/api/614/56471#SearchLogErrors)
+* [SearchLogInfos](https://cloud.tencent.com/document/api/614/56471#SearchLogInfos)
+* [SearchLogTopics](https://cloud.tencent.com/document/api/614/56471#SearchLogTopics)
+
+
+
+## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+
+### 第 64 次发布
+
+发布时间：2023-08-14 01:19:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeLogFileRetentionPeriod](https://cloud.tencent.com/document/api/557/96159)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 102 次发布
+
+发布时间：2023-08-14 01:23:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreatePreparedPersonalEsign](https://cloud.tencent.com/document/api/1420/96160)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 49 次发布
+
+发布时间：2023-08-14 01:39:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRiskDnsEventDetail](https://cloud.tencent.com/document/api/1285/96162)
+* [DescribeRiskDnsList](https://cloud.tencent.com/document/api/1285/96161)
+
+新增数据结构：
+
+* [RiskDnsEventInfo](https://cloud.tencent.com/document/api/1285/65614#RiskDnsEventInfo)
+
+
+
 # Release v1.0.721
 
 ## 访问管理(cam) 版本：2019-01-16
