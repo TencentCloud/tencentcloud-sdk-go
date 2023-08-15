@@ -542,6 +542,7 @@ func NewCreateMessageReceiverResponse() (response *CreateMessageReceiverResponse
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INTERFACENOTEXIST = "InvalidParameter.InterfaceNotExist"
 //  INVALIDPARAMETER_RECEIVEROVERLIMIT = "InvalidParameter.ReceiverOverLimit"
 //  INVALIDPARAMETER_SUBUSERNAMEINUSE = "InvalidParameter.SubUserNameInUse"
 //  INVALIDPARAMETER_USERNOTAUTH = "InvalidParameter.UserNotAuth"
@@ -556,6 +557,7 @@ func (c *Client) CreateMessageReceiver(request *CreateMessageReceiverRequest) (r
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INTERFACENOTEXIST = "InvalidParameter.InterfaceNotExist"
 //  INVALIDPARAMETER_RECEIVEROVERLIMIT = "InvalidParameter.ReceiverOverLimit"
 //  INVALIDPARAMETER_SUBUSERNAMEINUSE = "InvalidParameter.SubUserNameInUse"
 //  INVALIDPARAMETER_USERNOTAUTH = "InvalidParameter.UserNotAuth"

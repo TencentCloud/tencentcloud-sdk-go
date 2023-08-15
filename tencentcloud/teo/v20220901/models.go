@@ -6585,6 +6585,9 @@ type ModifyApplicationProxyRuleRequestParams struct {
 	// <li>单端口：80；</li>
 	// <li>端口段：81-90，81至90端口。</li>
 	OriginPort *string `json:"OriginPort,omitempty" name:"OriginPort"`
+
+	// 规则标签。不填保持原有值。
+	RuleTag *string `json:"RuleTag,omitempty" name:"RuleTag"`
 }
 
 type ModifyApplicationProxyRuleRequest struct {
@@ -6640,6 +6643,9 @@ type ModifyApplicationProxyRuleRequest struct {
 	// <li>单端口：80；</li>
 	// <li>端口段：81-90，81至90端口。</li>
 	OriginPort *string `json:"OriginPort,omitempty" name:"OriginPort"`
+
+	// 规则标签。不填保持原有值。
+	RuleTag *string `json:"RuleTag,omitempty" name:"RuleTag"`
 }
 
 func (r *ModifyApplicationProxyRuleRequest) ToJsonString() string {
@@ -6665,6 +6671,7 @@ func (r *ModifyApplicationProxyRuleRequest) FromJsonString(s string) error {
 	delete(f, "SessionPersist")
 	delete(f, "SessionPersistTime")
 	delete(f, "OriginPort")
+	delete(f, "RuleTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApplicationProxyRuleRequest has unknown keys!", "")
 	}

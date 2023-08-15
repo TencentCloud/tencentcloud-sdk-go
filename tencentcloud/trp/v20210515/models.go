@@ -2134,6 +2134,12 @@ type DescribeCodePacksRequestParams struct {
 
 	// 是否有流水码 0:无 1:有
 	SerialType *uint64 `json:"SerialType,omitempty" name:"SerialType"`
+
+	// 资源类型 batch:批次, order_in 入库, order_out: 出入
+	ResType *string `json:"ResType,omitempty" name:"ResType"`
+
+	// 资源ID ResType是 batch 时对应是批次ID, 是 order_in, order_out时，则是订单ID
+	ResId *string `json:"ResId,omitempty" name:"ResId"`
 }
 
 type DescribeCodePacksRequest struct {
@@ -2153,6 +2159,12 @@ type DescribeCodePacksRequest struct {
 
 	// 是否有流水码 0:无 1:有
 	SerialType *uint64 `json:"SerialType,omitempty" name:"SerialType"`
+
+	// 资源类型 batch:批次, order_in 入库, order_out: 出入
+	ResType *string `json:"ResType,omitempty" name:"ResType"`
+
+	// 资源ID ResType是 batch 时对应是批次ID, 是 order_in, order_out时，则是订单ID
+	ResId *string `json:"ResId,omitempty" name:"ResId"`
 }
 
 func (r *DescribeCodePacksRequest) ToJsonString() string {
@@ -2172,6 +2184,8 @@ func (r *DescribeCodePacksRequest) FromJsonString(s string) error {
 	delete(f, "Keyword")
 	delete(f, "CorpId")
 	delete(f, "SerialType")
+	delete(f, "ResType")
+	delete(f, "ResId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCodePacksRequest has unknown keys!", "")
 	}
@@ -4579,21 +4593,27 @@ type PackSpec struct {
 
 type PhaseData struct {
 	// 启用头
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadEnabled *bool `json:"HeadEnabled,omitempty" name:"HeadEnabled"`
 
 	// 标题
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadTitle *string `json:"HeadTitle,omitempty" name:"HeadTitle"`
 
 	// 标识符
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 小程序AppId
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitempty" name:"AppId"`
 
 	// 小程序AppPath
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppPath *string `json:"AppPath,omitempty" name:"AppPath"`
 
 	// 小程序名称AppName
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppName *string `json:"AppName,omitempty" name:"AppName"`
 }
 

@@ -1573,7 +1573,7 @@ type CreateDataTransformRequestParams struct {
 	// 任务启动状态.   默认为1:开启,  2:关闭
 	EnableFlag *int64 `json:"EnableFlag,omitempty" name:"EnableFlag"`
 
-	// 加工任务目的topic_id以及别名
+	// 加工任务目的topic_id以及别名,当FuncType=1时，该参数必填，当FuncType=2时，无需填写
 	DstResources []*DataTransformResouceInfo `json:"DstResources,omitempty" name:"DstResources"`
 
 	// 用于预览加工结果的测试数据
@@ -1601,7 +1601,7 @@ type CreateDataTransformRequest struct {
 	// 任务启动状态.   默认为1:开启,  2:关闭
 	EnableFlag *int64 `json:"EnableFlag,omitempty" name:"EnableFlag"`
 
-	// 加工任务目的topic_id以及别名
+	// 加工任务目的topic_id以及别名,当FuncType=1时，该参数必填，当FuncType=2时，无需填写
 	DstResources []*DataTransformResouceInfo `json:"DstResources,omitempty" name:"DstResources"`
 
 	// 用于预览加工结果的测试数据

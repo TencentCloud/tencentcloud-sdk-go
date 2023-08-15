@@ -70,6 +70,7 @@ func NewChatCompletionResponse() (response *ChatCompletionResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChatCompletion(request *ChatCompletionRequest) (response *ChatCompletionResponse, err error) {
     return c.ChatCompletionWithContext(context.Background(), request)
 }
@@ -81,6 +82,7 @@ func (c *Client) ChatCompletion(request *ChatCompletionRequest) (response *ChatC
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChatCompletionWithContext(ctx context.Context, request *ChatCompletionRequest) (response *ChatCompletionResponse, err error) {
     if request == nil {
         request = NewChatCompletionRequest()
@@ -2724,6 +2726,7 @@ func NewDescribeModelAccelerateTasksResponse() (response *DescribeModelAccelerat
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeModelAccelerateTasks(request *DescribeModelAccelerateTasksRequest) (response *DescribeModelAccelerateTasksResponse, err error) {
@@ -2735,6 +2738,7 @@ func (c *Client) DescribeModelAccelerateTasks(request *DescribeModelAccelerateTa
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_EXECTAGFAIL = "FailedOperation.ExecTagFail"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeModelAccelerateTasksWithContext(ctx context.Context, request *DescribeModelAccelerateTasksRequest) (response *DescribeModelAccelerateTasksResponse, err error) {
@@ -4645,6 +4649,58 @@ func (c *Client) RestartModelAccelerateTaskWithContext(ctx context.Context, requ
     return
 }
 
+func NewSendChatMessageRequest() (request *SendChatMessageRequest) {
+    request = &SendChatMessageRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tione", APIVersion, "SendChatMessage")
+    
+    
+    return
+}
+
+func NewSendChatMessageResponse() (response *SendChatMessageResponse) {
+    response = &SendChatMessageResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SendChatMessage
+// LLM模型的对话请求发送接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SendChatMessage(request *SendChatMessageRequest) (response *SendChatMessageResponse, err error) {
+    return c.SendChatMessageWithContext(context.Background(), request)
+}
+
+// SendChatMessage
+// LLM模型的对话请求发送接口
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) SendChatMessageWithContext(ctx context.Context, request *SendChatMessageRequest) (response *SendChatMessageResponse, err error) {
+    if request == nil {
+        request = NewSendChatMessageRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SendChatMessage require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSendChatMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStartNotebookRequest() (request *StartNotebookRequest) {
     request = &StartNotebookRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4675,6 +4731,7 @@ func NewStartNotebookResponse() (response *StartNotebookResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
 //  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
@@ -4703,6 +4760,7 @@ func (c *Client) StartNotebook(request *StartNotebookRequest) (response *StartNo
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
 //  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"

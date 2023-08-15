@@ -14798,7 +14798,6 @@ func NewRunTasksByMultiWorkflowResponse() (response *RunTasksByMultiWorkflowResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) RunTasksByMultiWorkflow(request *RunTasksByMultiWorkflowRequest) (response *RunTasksByMultiWorkflowResponse, err error) {
     return c.RunTasksByMultiWorkflowWithContext(context.Background(), request)
 }
@@ -14808,7 +14807,6 @@ func (c *Client) RunTasksByMultiWorkflow(request *RunTasksByMultiWorkflowRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) RunTasksByMultiWorkflowWithContext(ctx context.Context, request *RunTasksByMultiWorkflowRequest) (response *RunTasksByMultiWorkflowResponse, err error) {
     if request == nil {
         request = NewRunTasksByMultiWorkflowRequest()
@@ -14848,7 +14846,6 @@ func NewSaveCustomFunctionResponse() (response *SaveCustomFunctionResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SaveCustomFunction(request *SaveCustomFunctionRequest) (response *SaveCustomFunctionResponse, err error) {
     return c.SaveCustomFunctionWithContext(context.Background(), request)
 }
@@ -14858,7 +14855,6 @@ func (c *Client) SaveCustomFunction(request *SaveCustomFunctionRequest) (respons
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SaveCustomFunctionWithContext(ctx context.Context, request *SaveCustomFunctionRequest) (response *SaveCustomFunctionResponse, err error) {
     if request == nil {
         request = NewSaveCustomFunctionRequest()
@@ -14900,7 +14896,6 @@ func NewSetTaskAlarmNewResponse() (response *SetTaskAlarmNewResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetTaskAlarmNew(request *SetTaskAlarmNewRequest) (response *SetTaskAlarmNewResponse, err error) {
     return c.SetTaskAlarmNewWithContext(context.Background(), request)
 }
@@ -14912,7 +14907,6 @@ func (c *Client) SetTaskAlarmNew(request *SetTaskAlarmNewRequest) (response *Set
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) SetTaskAlarmNewWithContext(ctx context.Context, request *SetTaskAlarmNewRequest) (response *SetTaskAlarmNewResponse, err error) {
     if request == nil {
         request = NewSetTaskAlarmNewRequest()

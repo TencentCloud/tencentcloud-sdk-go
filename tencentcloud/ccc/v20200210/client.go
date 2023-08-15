@@ -1229,6 +1229,7 @@ func NewDescribeExtensionsResponse() (response *DescribeExtensionsResponse) {
 // 查询话机列表信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeExtensions(request *DescribeExtensionsRequest) (response *DescribeExtensionsResponse, err error) {
     return c.DescribeExtensionsWithContext(context.Background(), request)
@@ -1238,6 +1239,7 @@ func (c *Client) DescribeExtensions(request *DescribeExtensionsRequest) (respons
 // 查询话机列表信息
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) DescribeExtensionsWithContext(ctx context.Context, request *DescribeExtensionsRequest) (response *DescribeExtensionsResponse, err error) {
     if request == nil {
@@ -1952,6 +1954,7 @@ func NewModifyExtensionResponse() (response *ModifyExtensionResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) ModifyExtension(request *ModifyExtensionRequest) (response *ModifyExtensionResponse, err error) {
     return c.ModifyExtensionWithContext(context.Background(), request)
 }
@@ -1961,6 +1964,7 @@ func (c *Client) ModifyExtension(request *ModifyExtensionRequest) (response *Mod
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
 func (c *Client) ModifyExtensionWithContext(ctx context.Context, request *ModifyExtensionRequest) (response *ModifyExtensionResponse, err error) {
     if request == nil {
         request = NewModifyExtensionRequest()

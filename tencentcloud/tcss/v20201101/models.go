@@ -2334,6 +2334,26 @@ type ClusterInfoItem struct {
 
 	// 任务创建时间,检查时间
 	TaskCreateTime *string `json:"TaskCreateTime,omitempty" name:"TaskCreateTime"`
+
+	// 接入状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessedStatus *string `json:"AccessedStatus,omitempty" name:"AccessedStatus"`
+
+	// 接入失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessedSubStatus *string `json:"AccessedSubStatus,omitempty" name:"AccessedSubStatus"`
+
+	// 节点总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeCount *uint64 `json:"NodeCount,omitempty" name:"NodeCount"`
+
+	// 离线节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OffLineNodeCount *uint64 `json:"OffLineNodeCount,omitempty" name:"OffLineNodeCount"`
+
+	// 未安装agent节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnInstallAgentNodeCount *uint64 `json:"UnInstallAgentNodeCount,omitempty" name:"UnInstallAgentNodeCount"`
 }
 
 type ClusterRiskItem struct {
@@ -3889,6 +3909,10 @@ type CreateClusterCheckTaskResponseParams struct {
 
 	// 创建检查任务的结果，"Succ"为成功，其他的为失败原因
 	CreateResult *string `json:"CreateResult,omitempty" name:"CreateResult"`
+
+	// 返回创建的集群新任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewTaskID *string `json:"NewTaskID,omitempty" name:"NewTaskID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -9866,6 +9890,15 @@ type DescribeAssetHostDetailResponseParams struct {
 	// 标签
 	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
 
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群接入状态
+	ClusterAccessedStatus *string `json:"ClusterAccessedStatus,omitempty" name:"ClusterAccessedStatus"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -13464,6 +13497,18 @@ type DescribeClusterSummaryResponseParams struct {
 
 	// eks集群数量
 	ServerlessClusterCount *uint64 `json:"ServerlessClusterCount,omitempty" name:"ServerlessClusterCount"`
+
+	// TKE集群数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TkeClusterCount *uint64 `json:"TkeClusterCount,omitempty" name:"TkeClusterCount"`
+
+	// 用户自建腾讯云集群数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserCreateTencentClusterCount *uint64 `json:"UserCreateTencentClusterCount,omitempty" name:"UserCreateTencentClusterCount"`
+
+	// 用户自建集群混合云数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserCreateHybridClusterCount *uint64 `json:"UserCreateHybridClusterCount,omitempty" name:"UserCreateHybridClusterCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -18342,6 +18387,9 @@ func (r *DescribePurchaseStateInfoResponse) FromJsonString(s string) error {
 type DescribeRefreshTaskRequestParams struct {
 	// 任务ID
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 新任务ID
+	NewTaskID *string `json:"NewTaskID,omitempty" name:"NewTaskID"`
 }
 
 type DescribeRefreshTaskRequest struct {
@@ -18349,6 +18397,9 @@ type DescribeRefreshTaskRequest struct {
 	
 	// 任务ID
 	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 新任务ID
+	NewTaskID *string `json:"NewTaskID,omitempty" name:"NewTaskID"`
 }
 
 func (r *DescribeRefreshTaskRequest) ToJsonString() string {
@@ -18364,6 +18415,7 @@ func (r *DescribeRefreshTaskRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "TaskId")
+	delete(f, "NewTaskID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRefreshTaskRequest has unknown keys!", "")
 	}
@@ -21202,6 +21254,10 @@ type DescribeUnfinishRefreshTaskResponseParams struct {
 
 	// 任务状态，为Task_New,Task_Running,Task_Finish,Task_Error,Task_NoExist.Task_New,Task_Running表示有任务存在，不允许新下发
 	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+
+	// 新任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NewTaskID *string `json:"NewTaskID,omitempty" name:"NewTaskID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -25197,6 +25253,12 @@ type HostInfo struct {
 
 	// 集群id
 	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+
+	// 集群接入状态
+	ClusterAccessedStatus *string `json:"ClusterAccessedStatus,omitempty" name:"ClusterAccessedStatus"`
 }
 
 type ImageAutoAuthorizedTask struct {

@@ -2081,6 +2081,7 @@ func NewDeleteRocketMQVipInstanceResponse() (response *DeleteRocketMQVipInstance
 // 删除RocketMQ专享实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DeleteRocketMQVipInstance(request *DeleteRocketMQVipInstanceRequest) (response *DeleteRocketMQVipInstanceResponse, err error) {
     return c.DeleteRocketMQVipInstanceWithContext(context.Background(), request)
@@ -2090,6 +2091,7 @@ func (c *Client) DeleteRocketMQVipInstance(request *DeleteRocketMQVipInstanceReq
 // 删除RocketMQ专享实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 func (c *Client) DeleteRocketMQVipInstanceWithContext(ctx context.Context, request *DeleteRocketMQVipInstanceRequest) (response *DeleteRocketMQVipInstanceResponse, err error) {
     if request == nil {

@@ -539,6 +539,7 @@ func NewDescribeAccountUsersResponse() (response *DescribeAccountUsersResponse) 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) DescribeAccountUsers(request *DescribeAccountUsersRequest) (response *DescribeAccountUsersResponse, err error) {
     return c.DescribeAccountUsersWithContext(context.Background(), request)
 }
@@ -549,6 +550,7 @@ func (c *Client) DescribeAccountUsers(request *DescribeAccountUsersRequest) (res
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CHECKAPPIDFAILED = "InternalError.CheckAppIdFailed"
+//  INVALIDPARAMETER_PERMISSIONDENIED = "InvalidParameter.PermissionDenied"
 func (c *Client) DescribeAccountUsersWithContext(ctx context.Context, request *DescribeAccountUsersRequest) (response *DescribeAccountUsersResponse, err error) {
     if request == nil {
         request = NewDescribeAccountUsersRequest()

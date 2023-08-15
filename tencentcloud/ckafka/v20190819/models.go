@@ -9655,30 +9655,39 @@ type PrivateLinkParam struct {
 
 type RecordMapping struct {
 	// 消息的 key 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	JsonKey *string `json:"JsonKey,omitempty" name:"JsonKey"`
 
 	// 消息类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 消息是否允许为空
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AllowNull *bool `json:"AllowNull,omitempty" name:"AllowNull"`
 
 	// 对应映射列名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColumnName *string `json:"ColumnName,omitempty" name:"ColumnName"`
 
 	// 数据库表额外字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExtraInfo *string `json:"ExtraInfo,omitempty" name:"ExtraInfo"`
 
 	// 当前列大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColumnSize *string `json:"ColumnSize,omitempty" name:"ColumnSize"`
 
 	// 当前列精度
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DecimalDigits *string `json:"DecimalDigits,omitempty" name:"DecimalDigits"`
 
 	// 是否为自增列
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoIncrement *bool `json:"AutoIncrement,omitempty" name:"AutoIncrement"`
 
 	// 数据库表默认参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
 }
 

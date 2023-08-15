@@ -1144,7 +1144,6 @@ func NewDescribeCodePacksResponse() (response *DescribeCodePacksResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCodePacks(request *DescribeCodePacksRequest) (response *DescribeCodePacksResponse, err error) {
@@ -1156,7 +1155,6 @@ func (c *Client) DescribeCodePacks(request *DescribeCodePacksRequest) (response 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeCodePacksWithContext(ctx context.Context, request *DescribeCodePacksRequest) (response *DescribeCodePacksResponse, err error) {
@@ -1409,6 +1407,7 @@ func NewDescribeJobFileUrlResponse() (response *DescribeJobFileUrlResponse) {
 // 获取异步任务的输出地址
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeJobFileUrl(request *DescribeJobFileUrlRequest) (response *DescribeJobFileUrlResponse, err error) {
@@ -1419,6 +1418,7 @@ func (c *Client) DescribeJobFileUrl(request *DescribeJobFileUrlRequest) (respons
 // 获取异步任务的输出地址
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeJobFileUrlWithContext(ctx context.Context, request *DescribeJobFileUrlRequest) (response *DescribeJobFileUrlResponse, err error) {
@@ -1512,6 +1512,7 @@ func NewDescribeMerchantsResponse() (response *DescribeMerchantsResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AGENTEXPIRED = "AuthFailure.AgentExpired"
 //  AUTHFAILURE_CORPEMPTY = "AuthFailure.CorpEmpty"
 //  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
@@ -1525,6 +1526,7 @@ func (c *Client) DescribeMerchants(request *DescribeMerchantsRequest) (response 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AGENTEXPIRED = "AuthFailure.AgentExpired"
 //  AUTHFAILURE_CORPEMPTY = "AuthFailure.CorpEmpty"
 //  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
@@ -1620,6 +1622,7 @@ func NewDescribeProductsResponse() (response *DescribeProductsResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AGENTEXPIRED = "AuthFailure.AgentExpired"
 //  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -1632,6 +1635,7 @@ func (c *Client) DescribeProducts(request *DescribeProductsRequest) (response *D
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_AGENTEXPIRED = "AuthFailure.AgentExpired"
 //  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"

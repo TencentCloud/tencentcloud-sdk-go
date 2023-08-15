@@ -1885,6 +1885,14 @@ type DescAcItem struct {
 	// 关联任务详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BetaList []*BetaInfoByACL `json:"BetaList,omitempty" name:"BetaList"`
+
+	// 生效范围：serial，串行；side，旁路；all，全局
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scope *string `json:"Scope,omitempty" name:"Scope"`
+
+	// 互联网边界防火墙使用的内部规则id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetBorderUuid *string `json:"InternetBorderUuid,omitempty" name:"InternetBorderUuid"`
 }
 
 // Predefined struct for user
@@ -6283,6 +6291,14 @@ type NatInstanceInfo struct {
 	// 实例的规则限制最大规格数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleMax *uint64 `json:"RuleMax,omitempty" name:"RuleMax"`
+
+	// 实例引擎版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
+
+	// 引擎是否可升级：0，不可升级；1，可升级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateEnable *int64 `json:"UpdateEnable,omitempty" name:"UpdateEnable"`
 }
 
 type NewModeItems struct {
@@ -7250,6 +7266,14 @@ type VpcDnsInfo struct {
 
 	// 0：开关关闭 ， 1: 开关打开
 	SwitchStatus *int64 `json:"SwitchStatus,omitempty" name:"SwitchStatus"`
+
+	// 0：未防护， 1: 已防护，2：忽略此字段
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtectedStatus *uint64 `json:"ProtectedStatus,omitempty" name:"ProtectedStatus"`
+
+	// 是否支持DNS FW，0-不支持、1-支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SupportDNSFW *uint64 `json:"SupportDNSFW,omitempty" name:"SupportDNSFW"`
 }
 
 type VpcZoneData struct {

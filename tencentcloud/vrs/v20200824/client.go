@@ -123,6 +123,7 @@ func NewCreateVRSTaskResponse() (response *CreateVRSTaskResponse) {
 // • 签名方法参考 公共参数 中签名方法v3。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
 //  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"
@@ -142,6 +143,7 @@ func (c *Client) CreateVRSTask(request *CreateVRSTaskRequest) (response *CreateV
 // • 签名方法参考 公共参数 中签名方法v3。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_CODEC = "InvalidParameterValue.Codec"
 //  INVALIDPARAMETERVALUE_SAMPLERATE = "InvalidParameterValue.SampleRate"

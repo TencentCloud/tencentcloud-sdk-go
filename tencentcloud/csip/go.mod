@@ -2,4 +2,4 @@ module github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/csip
 
 go 1.14
 
-require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.722
+require github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.723

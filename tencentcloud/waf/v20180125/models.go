@@ -482,10 +482,10 @@ type AddSpartaProtectionRequestParams struct {
 	// 是否开启WebSocket支持，1表示开启，0不开启
 	IsWebsocket *int64 `json:"IsWebsocket,omitempty" name:"IsWebsocket"`
 
-	// 负载均衡策略，0表示轮徇，1表示IP hash
+	// 负载均衡策略，0表示轮询，1表示IP hash
 	LoadBalance *string `json:"LoadBalance,omitempty" name:"LoadBalance"`
 
-	// CertType=1时，需要填次参数，表示证书内容
+	// 值为1时，需要填次参数，表示证书内容
 	Cert *string `json:"Cert,omitempty" name:"Cert"`
 
 	// CertType=1时，需要填次参数，表示证书的私钥
@@ -565,6 +565,9 @@ type AddSpartaProtectionRequestParams struct {
 
 	// is_cdn=3时，需要填此参数，表示自定义header
 	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+
+	// 0:关闭xff重置；1:开启xff重置
+	XFFReset *int64 `json:"XFFReset,omitempty" name:"XFFReset"`
 }
 
 type AddSpartaProtectionRequest struct {
@@ -585,10 +588,10 @@ type AddSpartaProtectionRequest struct {
 	// 是否开启WebSocket支持，1表示开启，0不开启
 	IsWebsocket *int64 `json:"IsWebsocket,omitempty" name:"IsWebsocket"`
 
-	// 负载均衡策略，0表示轮徇，1表示IP hash
+	// 负载均衡策略，0表示轮询，1表示IP hash
 	LoadBalance *string `json:"LoadBalance,omitempty" name:"LoadBalance"`
 
-	// CertType=1时，需要填次参数，表示证书内容
+	// 值为1时，需要填次参数，表示证书内容
 	Cert *string `json:"Cert,omitempty" name:"Cert"`
 
 	// CertType=1时，需要填次参数，表示证书的私钥
@@ -668,6 +671,9 @@ type AddSpartaProtectionRequest struct {
 
 	// is_cdn=3时，需要填此参数，表示自定义header
 	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+
+	// 0:关闭xff重置；1:开启xff重置
+	XFFReset *int64 `json:"XFFReset,omitempty" name:"XFFReset"`
 }
 
 func (r *AddSpartaProtectionRequest) ToJsonString() string {
@@ -715,6 +721,7 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "SniType")
 	delete(f, "SniHost")
 	delete(f, "IpHeaders")
+	delete(f, "XFFReset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpartaProtectionRequest has unknown keys!", "")
 	}
@@ -2474,7 +2481,7 @@ func (r *DescribeFlowTrendResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
-	// 偏移
+	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 容量
@@ -2487,7 +2494,7 @@ type DescribeInstancesRequestParams struct {
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 偏移
+	// 偏移量
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 容量
@@ -3609,18 +3616,23 @@ type DomainInfo struct {
 
 type DomainPackageNew struct {
 	// 资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidTime *string `json:"ValidTime,omitempty" name:"ValidTime"`
 
 	// 是否自动续费，1：自动续费，0：不自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
 	// 套餐购买个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *uint64 `json:"Count,omitempty" name:"Count"`
 
 	// 套餐购买地域，clb-waf暂时没有用到
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitempty" name:"Region"`
 }
 
@@ -3721,6 +3733,10 @@ type DomainsPartInfo struct {
 	// IsCdn=3时，表示自定义header
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+
+	// 0:关闭xff重置；1:开启xff重置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	XFFReset *int64 `json:"XFFReset,omitempty" name:"XFFReset"`
 }
 
 type DownloadAttackRecordInfo struct {
@@ -4124,7 +4140,7 @@ type InstanceInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AttackLogPost *int64 `json:"AttackLogPost,omitempty" name:"AttackLogPost"`
 
-	// 带宽峰值
+	// 带宽峰值，单位为B/s(字节每秒)
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaxBandwidth *uint64 `json:"MaxBandwidth,omitempty" name:"MaxBandwidth"`
 
@@ -4146,6 +4162,10 @@ type InstanceInfo struct {
 	// 实例沙箱值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SandboxQps *uint64 `json:"SandboxQps,omitempty" name:"SandboxQps"`
+
+	// 是否api 安全试用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsAPISecurityTrial *uint64 `json:"IsAPISecurityTrial,omitempty" name:"IsAPISecurityTrial"`
 }
 
 type IpAccessControlData struct {
@@ -4765,7 +4785,7 @@ type ModifySpartaProtectionRequestParams struct {
 	// 加密套件信息
 	Ciphers []*int64 `json:"Ciphers,omitempty" name:"Ciphers"`
 
-	// 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
+	// 0:不支持选择：默认模板  1:通用型模板 2:安全型模板 3:自定义模板
 	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
 
 	// 300s
@@ -4782,6 +4802,9 @@ type ModifySpartaProtectionRequestParams struct {
 
 	// IsCdn=3时，需要填此参数，表示自定义header
 	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+
+	// 0:关闭xff重置；1:开启xff重置
+	XFFReset *int64 `json:"XFFReset,omitempty" name:"XFFReset"`
 }
 
 type ModifySpartaProtectionRequest struct {
@@ -4865,7 +4888,7 @@ type ModifySpartaProtectionRequest struct {
 	// 加密套件信息
 	Ciphers []*int64 `json:"Ciphers,omitempty" name:"Ciphers"`
 
-	// 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
+	// 0:不支持选择：默认模板  1:通用型模板 2:安全型模板 3:自定义模板
 	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
 
 	// 300s
@@ -4882,6 +4905,9 @@ type ModifySpartaProtectionRequest struct {
 
 	// IsCdn=3时，需要填此参数，表示自定义header
 	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+
+	// 0:关闭xff重置；1:开启xff重置
+	XFFReset *int64 `json:"XFFReset,omitempty" name:"XFFReset"`
 }
 
 func (r *ModifySpartaProtectionRequest) ToJsonString() string {
@@ -4928,6 +4954,7 @@ func (r *ModifySpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "SniType")
 	delete(f, "SniHost")
 	delete(f, "IpHeaders")
+	delete(f, "XFFReset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySpartaProtectionRequest has unknown keys!", "")
 	}
@@ -5341,21 +5368,27 @@ func (r *PostAttackDownloadTaskResponse) FromJsonString(s string) error {
 
 type QPSPackageNew struct {
 	// 资源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
 
 	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidTime *string `json:"ValidTime,omitempty" name:"ValidTime"`
 
 	// 是否自动续费，1：自动续费，0：不自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
 
 	// 套餐购买个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitempty" name:"Count"`
 
 	// 套餐购买地域，clb-waf暂时没有用到
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitempty" name:"Region"`
 
 	// 计费项
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	BillingItem *string `json:"BillingItem,omitempty" name:"BillingItem"`
 }
 

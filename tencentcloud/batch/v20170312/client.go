@@ -976,6 +976,7 @@ func NewDescribeCvmZoneInstanceConfigInfosResponse() (response *DescribeCvmZoneI
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLCAM = "InternalError.CallCam"
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -993,6 +994,7 @@ func (c *Client) DescribeCvmZoneInstanceConfigInfos(request *DescribeCvmZoneInst
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLCAM = "InternalError.CallCam"
 //  INTERNALERROR_CALLCVM = "InternalError.CallCvm"
 //  INVALIDFILTER = "InvalidFilter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

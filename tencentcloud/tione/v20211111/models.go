@@ -7789,6 +7789,96 @@ type SegmentationInfo struct {
 	Color *string `json:"Color,omitempty" name:"Color"`
 }
 
+// Predefined struct for user
+type SendChatMessageRequestParams struct {
+	// 会话id，标识一组对话的唯一id，id变更则重置会话
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 问题描述
+	Question *string `json:"Question,omitempty" name:"Question"`
+
+	// 会话模型版本，不同的会话模型调用到不同的模型后台。
+	// 注: 多行业多场景大模型填写 tj_llm_clm-v1
+	ModelVersion *string `json:"ModelVersion,omitempty" name:"ModelVersion"`
+
+	// 使用模式(仅部分模型支持)。General 通用问答；WithSearchPlugin 搜索增强问答
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// 搜索来源。仅当Mode未WithSearchPlugin时生效。Preset 预置文稿库；Custom 自定义。
+	SearchSource *string `json:"SearchSource,omitempty" name:"SearchSource"`
+}
+
+type SendChatMessageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 会话id，标识一组对话的唯一id，id变更则重置会话
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 问题描述
+	Question *string `json:"Question,omitempty" name:"Question"`
+
+	// 会话模型版本，不同的会话模型调用到不同的模型后台。
+	// 注: 多行业多场景大模型填写 tj_llm_clm-v1
+	ModelVersion *string `json:"ModelVersion,omitempty" name:"ModelVersion"`
+
+	// 使用模式(仅部分模型支持)。General 通用问答；WithSearchPlugin 搜索增强问答
+	Mode *string `json:"Mode,omitempty" name:"Mode"`
+
+	// 搜索来源。仅当Mode未WithSearchPlugin时生效。Preset 预置文稿库；Custom 自定义。
+	SearchSource *string `json:"SearchSource,omitempty" name:"SearchSource"`
+}
+
+func (r *SendChatMessageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendChatMessageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SessionId")
+	delete(f, "Question")
+	delete(f, "ModelVersion")
+	delete(f, "Mode")
+	delete(f, "SearchSource")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SendChatMessageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SendChatMessageResponseParams struct {
+	// 答案
+	Answer *string `json:"Answer,omitempty" name:"Answer"`
+
+	// 会话id,返回请求的会话id
+	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SendChatMessageResponse struct {
+	*tchttp.BaseResponse
+	Response *SendChatMessageResponseParams `json:"Response"`
+}
+
+func (r *SendChatMessageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SendChatMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Service struct {
 	// 服务组id
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`

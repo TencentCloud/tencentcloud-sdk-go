@@ -499,6 +499,7 @@ func NewCreateResourceConfigResponse() (response *CreateResourceConfigResponse) 
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_RESOURCENOTEXIST = "InternalError.ResourceNotExist"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -515,6 +516,7 @@ func (c *Client) CreateResourceConfig(request *CreateResourceConfigRequest) (res
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_RESOURCENOTEXIST = "InternalError.ResourceNotExist"
 //  LIMITEXCEEDED = "LimitExceeded"

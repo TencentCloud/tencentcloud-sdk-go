@@ -1,3 +1,216 @@
+# Release v1.0.723
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 41 次发布
+
+发布时间：2023-08-15 01:07:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DescAcItem](https://cloud.tencent.com/document/api/1132/49071#DescAcItem)
+
+	* 新增成员：Scope, InternetBorderUuid
+
+	* <font color="#dd0000">**修改成员**：</font>Direction, InstanceName, InternalUuid, Status, BetaList
+
+* [NatInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#NatInstanceInfo)
+
+	* 新增成员：EngineVersion, UpdateEnable
+
+	* <font color="#dd0000">**修改成员**：</font>RuleUsed, RuleMax
+
+* [VpcDnsInfo](https://cloud.tencent.com/document/api/1132/49071#VpcDnsInfo)
+
+	* 新增成员：ProtectedStatus, SupportDNSFW
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 92 次发布
+
+发布时间：2023-08-15 01:09:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyLoadBalancersProject](https://cloud.tencent.com/document/api/214/96177)
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 60 次发布
+
+发布时间：2023-08-15 01:36:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DuplicateImage](https://cloud.tencent.com/document/api/1141/96178)
+
+
+
+## 容器安全服务(tcss) 版本：2020-11-01
+
+### 第 50 次发布
+
+发布时间：2023-08-15 01:37:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateClusterCheckTask](https://cloud.tencent.com/document/api/1285/65454)
+
+	* 新增出参：NewTaskID
+
+* [DescribeAssetHostDetail](https://cloud.tencent.com/document/api/1285/65508)
+
+	* 新增出参：ClusterID, ClusterName, ClusterAccessedStatus
+
+* [DescribeClusterSummary](https://cloud.tencent.com/document/api/1285/65447)
+
+	* 新增出参：TkeClusterCount, UserCreateTencentClusterCount, UserCreateHybridClusterCount
+
+* [DescribeRefreshTask](https://cloud.tencent.com/document/api/1285/65446)
+
+	* 新增入参：NewTaskID
+
+* [DescribeUnfinishRefreshTask](https://cloud.tencent.com/document/api/1285/65443)
+
+	* 新增出参：NewTaskID
+
+
+修改数据结构：
+
+* [AffectedNodeItem](https://cloud.tencent.com/document/api/1285/65614#AffectedNodeItem)
+
+	* <font color="#dd0000">**修改成员**：</font>NodeName
+
+* [ClusterInfoItem](https://cloud.tencent.com/document/api/1285/65614#ClusterInfoItem)
+
+	* 新增成员：AccessedStatus, AccessedSubStatus, NodeCount, OffLineNodeCount, UnInstallAgentNodeCount
+
+* [HostInfo](https://cloud.tencent.com/document/api/1285/65614#HostInfo)
+
+	* 新增成员：ClusterName, ClusterAccessedStatus
+
+	* <font color="#dd0000">**修改成员**：</font>ClusterID
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 48 次发布
+
+发布时间：2023-08-15 01:40:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80688)
+
+	* 新增入参：RuleTag
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 32 次发布
+
+发布时间：2023-08-14 21:50:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SendChatMessage](https://cloud.tencent.com/document/api/851/96176)
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 26 次发布
+
+发布时间：2023-08-15 01:44:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCodePacks](https://cloud.tencent.com/document/api/1458/75016)
+
+	* 新增入参：ResType, ResId
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 42 次发布
+
+发布时间：2023-08-15 01:49:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AddSpartaProtection](https://cloud.tencent.com/document/api/627/72689)
+
+	* 新增入参：XFFReset
+
+* [ModifySpartaProtection](https://cloud.tencent.com/document/api/627/94309)
+
+	* 新增入参：XFFReset
+
+
+修改数据结构：
+
+* [DomainsPartInfo](https://cloud.tencent.com/document/api/627/53609#DomainsPartInfo)
+
+	* 新增成员：XFFReset
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/627/53609#InstanceInfo)
+
+	* 新增成员：IsAPISecurityTrial
+
+
+
+
 # Release v1.0.722
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19

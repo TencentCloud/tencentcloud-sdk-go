@@ -132,6 +132,7 @@ func NewAddUserGroupMembersResponse() (response *AddUserGroupMembersResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddUserGroupMembers(request *AddUserGroupMembersRequest) (response *AddUserGroupMembersResponse, err error) {
     return c.AddUserGroupMembersWithContext(context.Background(), request)
 }
@@ -145,6 +146,7 @@ func (c *Client) AddUserGroupMembers(request *AddUserGroupMembersRequest) (respo
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddUserGroupMembersWithContext(ctx context.Context, request *AddUserGroupMembersRequest) (response *AddUserGroupMembersResponse, err error) {
     if request == nil {
         request = NewAddUserGroupMembersRequest()
@@ -928,6 +930,7 @@ func NewDeleteAclsResponse() (response *DeleteAclsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteAcls(request *DeleteAclsRequest) (response *DeleteAclsResponse, err error) {
     return c.DeleteAclsWithContext(context.Background(), request)
 }
@@ -939,6 +942,7 @@ func (c *Client) DeleteAcls(request *DeleteAclsRequest) (response *DeleteAclsRes
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteAclsWithContext(ctx context.Context, request *DeleteAclsRequest) (response *DeleteAclsResponse, err error) {
     if request == nil {
         request = NewDeleteAclsRequest()
@@ -980,6 +984,7 @@ func NewDeleteCmdTemplatesResponse() (response *DeleteCmdTemplatesResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteCmdTemplates(request *DeleteCmdTemplatesRequest) (response *DeleteCmdTemplatesResponse, err error) {
     return c.DeleteCmdTemplatesWithContext(context.Background(), request)
 }
@@ -991,6 +996,7 @@ func (c *Client) DeleteCmdTemplates(request *DeleteCmdTemplatesRequest) (respons
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteCmdTemplatesWithContext(ctx context.Context, request *DeleteCmdTemplatesRequest) (response *DeleteCmdTemplatesResponse, err error) {
     if request == nil {
         request = NewDeleteCmdTemplatesRequest()
@@ -1033,6 +1039,7 @@ func NewDeleteDeviceAccountsResponse() (response *DeleteDeviceAccountsResponse) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteDeviceAccounts(request *DeleteDeviceAccountsRequest) (response *DeleteDeviceAccountsResponse, err error) {
     return c.DeleteDeviceAccountsWithContext(context.Background(), request)
 }
@@ -1045,6 +1052,7 @@ func (c *Client) DeleteDeviceAccounts(request *DeleteDeviceAccountsRequest) (res
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteDeviceAccountsWithContext(ctx context.Context, request *DeleteDeviceAccountsRequest) (response *DeleteDeviceAccountsResponse, err error) {
     if request == nil {
         request = NewDeleteDeviceAccountsRequest()
@@ -1088,6 +1096,7 @@ func NewDeleteDeviceGroupMembersResponse() (response *DeleteDeviceGroupMembersRe
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteDeviceGroupMembers(request *DeleteDeviceGroupMembersRequest) (response *DeleteDeviceGroupMembersResponse, err error) {
     return c.DeleteDeviceGroupMembersWithContext(context.Background(), request)
 }
@@ -1101,6 +1110,7 @@ func (c *Client) DeleteDeviceGroupMembers(request *DeleteDeviceGroupMembersReque
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteDeviceGroupMembersWithContext(ctx context.Context, request *DeleteDeviceGroupMembersRequest) (response *DeleteDeviceGroupMembersResponse, err error) {
     if request == nil {
         request = NewDeleteDeviceGroupMembersRequest()
@@ -1143,6 +1153,7 @@ func NewDeleteDeviceGroupsResponse() (response *DeleteDeviceGroupsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteDeviceGroups(request *DeleteDeviceGroupsRequest) (response *DeleteDeviceGroupsResponse, err error) {
     return c.DeleteDeviceGroupsWithContext(context.Background(), request)
 }
@@ -1155,6 +1166,7 @@ func (c *Client) DeleteDeviceGroups(request *DeleteDeviceGroupsRequest) (respons
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteDeviceGroupsWithContext(ctx context.Context, request *DeleteDeviceGroupsRequest) (response *DeleteDeviceGroupsResponse, err error) {
     if request == nil {
         request = NewDeleteDeviceGroupsRequest()
@@ -1197,6 +1209,7 @@ func NewDeleteDevicesResponse() (response *DeleteDevicesResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteDevices(request *DeleteDevicesRequest) (response *DeleteDevicesResponse, err error) {
     return c.DeleteDevicesWithContext(context.Background(), request)
 }
@@ -1209,6 +1222,7 @@ func (c *Client) DeleteDevices(request *DeleteDevicesRequest) (response *DeleteD
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteDevicesWithContext(ctx context.Context, request *DeleteDevicesRequest) (response *DeleteDevicesResponse, err error) {
     if request == nil {
         request = NewDeleteDevicesRequest()
@@ -1250,6 +1264,7 @@ func NewDeleteUserGroupMembersResponse() (response *DeleteUserGroupMembersRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteUserGroupMembers(request *DeleteUserGroupMembersRequest) (response *DeleteUserGroupMembersResponse, err error) {
     return c.DeleteUserGroupMembersWithContext(context.Background(), request)
 }
@@ -1261,6 +1276,7 @@ func (c *Client) DeleteUserGroupMembers(request *DeleteUserGroupMembersRequest) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteUserGroupMembersWithContext(ctx context.Context, request *DeleteUserGroupMembersRequest) (response *DeleteUserGroupMembersResponse, err error) {
     if request == nil {
         request = NewDeleteUserGroupMembersRequest()
@@ -1303,6 +1319,7 @@ func NewDeleteUserGroupsResponse() (response *DeleteUserGroupsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteUserGroups(request *DeleteUserGroupsRequest) (response *DeleteUserGroupsResponse, err error) {
     return c.DeleteUserGroupsWithContext(context.Background(), request)
 }
@@ -1315,6 +1332,7 @@ func (c *Client) DeleteUserGroups(request *DeleteUserGroupsRequest) (response *D
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DeleteUserGroupsWithContext(ctx context.Context, request *DeleteUserGroupsRequest) (response *DeleteUserGroupsResponse, err error) {
     if request == nil {
         request = NewDeleteUserGroupsRequest()
@@ -1686,6 +1704,7 @@ func NewDescribeDeviceAccountsResponse() (response *DescribeDeviceAccountsRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDeviceAccounts(request *DescribeDeviceAccountsRequest) (response *DescribeDeviceAccountsResponse, err error) {
     return c.DescribeDeviceAccountsWithContext(context.Background(), request)
 }
@@ -1697,6 +1716,7 @@ func (c *Client) DescribeDeviceAccounts(request *DescribeDeviceAccountsRequest) 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDeviceAccountsWithContext(ctx context.Context, request *DescribeDeviceAccountsRequest) (response *DescribeDeviceAccountsResponse, err error) {
     if request == nil {
         request = NewDescribeDeviceAccountsRequest()
@@ -2786,6 +2806,7 @@ func NewResetUserResponse() (response *ResetUserResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ResetUser(request *ResetUserRequest) (response *ResetUserResponse, err error) {
     return c.ResetUserWithContext(context.Background(), request)
 }
@@ -2797,6 +2818,7 @@ func (c *Client) ResetUser(request *ResetUserRequest) (response *ResetUserRespon
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ResetUserWithContext(ctx context.Context, request *ResetUserRequest) (response *ResetUserResponse, err error) {
     if request == nil {
         request = NewResetUserRequest()

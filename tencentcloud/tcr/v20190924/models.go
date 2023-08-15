@@ -6804,6 +6804,109 @@ func (r *DuplicateImagePersonalResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type DuplicateImageRequestParams struct {
+	// 实例id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 源命名空间名称
+	SourceNamespace *string `json:"SourceNamespace,omitempty" name:"SourceNamespace"`
+
+	// 源镜像仓库名称
+	SourceRepo *string `json:"SourceRepo,omitempty" name:"SourceRepo"`
+
+	// 源镜像tag或digest值，目前仅支持tag
+	SourceReference *string `json:"SourceReference,omitempty" name:"SourceReference"`
+
+	// 目标镜像版本
+	DestinationTag *string `json:"DestinationTag,omitempty" name:"DestinationTag"`
+
+	// 目标命名空间，不填默认与源一致
+	DestinationNamespace *string `json:"DestinationNamespace,omitempty" name:"DestinationNamespace"`
+
+	// 目标镜像仓库，不填默认与源一致
+	DestinationRepo *string `json:"DestinationRepo,omitempty" name:"DestinationRepo"`
+
+	// 是否覆盖
+	Override *bool `json:"Override,omitempty" name:"Override"`
+}
+
+type DuplicateImageRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id
+	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 源命名空间名称
+	SourceNamespace *string `json:"SourceNamespace,omitempty" name:"SourceNamespace"`
+
+	// 源镜像仓库名称
+	SourceRepo *string `json:"SourceRepo,omitempty" name:"SourceRepo"`
+
+	// 源镜像tag或digest值，目前仅支持tag
+	SourceReference *string `json:"SourceReference,omitempty" name:"SourceReference"`
+
+	// 目标镜像版本
+	DestinationTag *string `json:"DestinationTag,omitempty" name:"DestinationTag"`
+
+	// 目标命名空间，不填默认与源一致
+	DestinationNamespace *string `json:"DestinationNamespace,omitempty" name:"DestinationNamespace"`
+
+	// 目标镜像仓库，不填默认与源一致
+	DestinationRepo *string `json:"DestinationRepo,omitempty" name:"DestinationRepo"`
+
+	// 是否覆盖
+	Override *bool `json:"Override,omitempty" name:"Override"`
+}
+
+func (r *DuplicateImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DuplicateImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegistryId")
+	delete(f, "SourceNamespace")
+	delete(f, "SourceRepo")
+	delete(f, "SourceReference")
+	delete(f, "DestinationTag")
+	delete(f, "DestinationNamespace")
+	delete(f, "DestinationRepo")
+	delete(f, "Override")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DuplicateImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DuplicateImageResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DuplicateImageResponse struct {
+	*tchttp.BaseResponse
+	Response *DuplicateImageResponseParams `json:"Response"`
+}
+
+func (r *DuplicateImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DuplicateImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type FavorResp struct {
 	// 收藏仓库的总数
 	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`

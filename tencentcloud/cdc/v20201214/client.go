@@ -232,6 +232,7 @@ func NewDeleteDedicatedClustersResponse() (response *DeleteDedicatedClustersResp
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCENOTFOUND_INVALIDDEDICATEDCLUSTERID = "ResourceNotFound.InvalidDedicatedClusterId"
 func (c *Client) DeleteDedicatedClusters(request *DeleteDedicatedClustersRequest) (response *DeleteDedicatedClustersResponse, err error) {
     return c.DeleteDedicatedClustersWithContext(context.Background(), request)
 }
@@ -241,6 +242,7 @@ func (c *Client) DeleteDedicatedClusters(request *DeleteDedicatedClustersRequest
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  RESOURCENOTFOUND_INVALIDDEDICATEDCLUSTERID = "ResourceNotFound.InvalidDedicatedClusterId"
 func (c *Client) DeleteDedicatedClustersWithContext(ctx context.Context, request *DeleteDedicatedClustersRequest) (response *DeleteDedicatedClustersResponse, err error) {
     if request == nil {
         request = NewDeleteDedicatedClustersRequest()

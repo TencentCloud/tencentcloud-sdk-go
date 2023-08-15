@@ -10415,6 +10415,7 @@ func NewDescribeK8sApiAbnormalEventInfoResponse() (response *DescribeK8sApiAbnor
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeK8sApiAbnormalEventInfo(request *DescribeK8sApiAbnormalEventInfoRequest) (response *DescribeK8sApiAbnormalEventInfoResponse, err error) {
     return c.DescribeK8sApiAbnormalEventInfoWithContext(context.Background(), request)
 }
@@ -10425,6 +10426,7 @@ func (c *Client) DescribeK8sApiAbnormalEventInfo(request *DescribeK8sApiAbnormal
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeK8sApiAbnormalEventInfoWithContext(ctx context.Context, request *DescribeK8sApiAbnormalEventInfoRequest) (response *DescribeK8sApiAbnormalEventInfoResponse, err error) {
     if request == nil {
         request = NewDescribeK8sApiAbnormalEventInfoRequest()

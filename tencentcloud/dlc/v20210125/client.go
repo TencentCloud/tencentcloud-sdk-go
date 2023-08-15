@@ -3396,10 +3396,6 @@ func NewDescribeResultDownloadResponse() (response *DescribeResultDownloadRespon
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeResultDownload(request *DescribeResultDownloadRequest) (response *DescribeResultDownloadResponse, err error) {
     return c.DescribeResultDownloadWithContext(context.Background(), request)
 }
@@ -3409,10 +3405,6 @@ func (c *Client) DescribeResultDownload(request *DescribeResultDownloadRequest) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeResultDownloadWithContext(ctx context.Context, request *DescribeResultDownloadRequest) (response *DescribeResultDownloadResponse, err error) {
     if request == nil {
         request = NewDescribeResultDownloadRequest()
