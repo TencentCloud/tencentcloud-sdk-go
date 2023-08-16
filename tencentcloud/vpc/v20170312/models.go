@@ -13219,8 +13219,8 @@ type DescribeSecurityGroupsRequestParams struct {
 	// <li>security-group-id - String - （过滤条件）安全组ID。</li>
 	// <li>project-id - Integer - （过滤条件）项目ID。</li>
 	// <li>security-group-name - String - （过滤条件）安全组名称。</li>
-	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2。</li>
-	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
+	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
+	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 其中 tag-key 请使用具体的标签键进行替换。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。
@@ -13246,8 +13246,8 @@ type DescribeSecurityGroupsRequest struct {
 	// <li>security-group-id - String - （过滤条件）安全组ID。</li>
 	// <li>project-id - Integer - （过滤条件）项目ID。</li>
 	// <li>security-group-name - String - （过滤条件）安全组名称。</li>
-	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2。</li>
-	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例3。</li>
+	// <li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
+	// <li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 其中 tag-key 请使用具体的标签键进行替换。</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 
 	// 偏移量，默认为0。

@@ -3851,6 +3851,105 @@ func (r *ModifyResourceSchedulerResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ModifyResourceTags struct {
+	// 集群id 或者 cvm id
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 资源6段式表达式
+	Resource *string `json:"Resource,omitempty" name:"Resource"`
+
+	// 资源前缀
+	ResourcePrefix *string `json:"ResourcePrefix,omitempty" name:"ResourcePrefix"`
+
+	// ap-beijing
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+
+	// emr
+	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+
+	// 删除的标签列表
+	DeleteTags []*Tag `json:"DeleteTags,omitempty" name:"DeleteTags"`
+
+	// 添加的标签列表
+	AddTags []*Tag `json:"AddTags,omitempty" name:"AddTags"`
+
+	// 修改的标签列表
+	ModifyTags []*Tag `json:"ModifyTags,omitempty" name:"ModifyTags"`
+}
+
+// Predefined struct for user
+type ModifyResourcesTagsRequestParams struct {
+	// 标签类型，取值Cluster或者Node
+	ModifyType *string `json:"ModifyType,omitempty" name:"ModifyType"`
+
+	// 标签信息
+	ModifyResourceTagsInfoList []*ModifyResourceTags `json:"ModifyResourceTagsInfoList,omitempty" name:"ModifyResourceTagsInfoList"`
+}
+
+type ModifyResourcesTagsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 标签类型，取值Cluster或者Node
+	ModifyType *string `json:"ModifyType,omitempty" name:"ModifyType"`
+
+	// 标签信息
+	ModifyResourceTagsInfoList []*ModifyResourceTags `json:"ModifyResourceTagsInfoList,omitempty" name:"ModifyResourceTagsInfoList"`
+}
+
+func (r *ModifyResourcesTagsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourcesTagsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ModifyType")
+	delete(f, "ModifyResourceTagsInfoList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourcesTagsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyResourcesTagsResponseParams struct {
+	// 成功的资源id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SuccessList []*string `json:"SuccessList,omitempty" name:"SuccessList"`
+
+	// 失败的资源id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailList []*string `json:"FailList,omitempty" name:"FailList"`
+
+	// 部分成功的资源id列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartSuccessList []*string `json:"PartSuccessList,omitempty" name:"PartSuccessList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyResourcesTagsResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyResourcesTagsResponseParams `json:"Response"`
+}
+
+func (r *ModifyResourcesTagsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourcesTagsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MultiDisk struct {
 	// 云盘类型
 	// <li>CLOUD_SSD：表示云SSD。</li>

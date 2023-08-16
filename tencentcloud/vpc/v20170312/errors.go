@@ -398,13 +398,13 @@ const (
 	// 标签没有分配配额。
 	INVALIDPARAMETERVALUE_TAGNOTALLOCATEDQUOTA = "InvalidParameterValue.TagNotAllocatedQuota"
 
-	// 该标签和值不存在。
+	// 该标签不存在。
 	INVALIDPARAMETERVALUE_TAGNOTEXISTED = "InvalidParameterValue.TagNotExisted"
 
 	// 不支持的标签。
 	INVALIDPARAMETERVALUE_TAGNOTSUPPORTTAG = "InvalidParameterValue.TagNotSupportTag"
 
-	// '标签资源格式错误。
+	// 标签资源格式错误。
 	INVALIDPARAMETERVALUE_TAGRESOURCEFORMATERROR = "InvalidParameterValue.TagResourceFormatError"
 
 	// 标签时间戳超配。

@@ -717,7 +717,7 @@ func (r *BindClusterResourcePackagesResponse) FromJsonString(s string) error {
 }
 
 type BindInstanceInfo struct {
-	// 绑定的实例ID
+	// 绑定的集群ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
@@ -728,6 +728,10 @@ type BindInstanceInfo struct {
 	// 绑定的实例类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 绑定集群下的实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtendIds []*string `json:"ExtendIds,omitempty" name:"ExtendIds"`
 }
 
 type BinlogItem struct {
@@ -1028,6 +1032,10 @@ type ClusterInstanceDetail struct {
 	// 可以执行的时间，枚举值：["Mon","Tue","Wed","Thu","Fri", "Sat", "Sun"]
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MaintainWeekDays []*string `json:"MaintainWeekDays,omitempty" name:"MaintainWeekDays"`
+
+	// serverless实例子状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServerlessStatus *string `json:"ServerlessStatus,omitempty" name:"ServerlessStatus"`
 }
 
 type ClusterParamModifyLog struct {
@@ -6552,7 +6560,7 @@ type DescribeResourcePackageDetailRequestParams struct {
 	// 资源包唯一ID
 	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
 
-	// 实例ID
+	// 集群ID
 	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 
 	// 开始时间
@@ -6566,6 +6574,9 @@ type DescribeResourcePackageDetailRequestParams struct {
 
 	// 限制
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
+
+	// 实例D
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 type DescribeResourcePackageDetailRequest struct {
@@ -6574,7 +6585,7 @@ type DescribeResourcePackageDetailRequest struct {
 	// 资源包唯一ID
 	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
 
-	// 实例ID
+	// 集群ID
 	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 
 	// 开始时间
@@ -6588,6 +6599,9 @@ type DescribeResourcePackageDetailRequest struct {
 
 	// 限制
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
+
+	// 实例D
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 }
 
 func (r *DescribeResourcePackageDetailRequest) ToJsonString() string {
@@ -6608,6 +6622,7 @@ func (r *DescribeResourcePackageDetailRequest) FromJsonString(s string) error {
 	delete(f, "EndTime")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "InstanceIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourcePackageDetailRequest has unknown keys!", "")
 	}
@@ -6616,7 +6631,7 @@ func (r *DescribeResourcePackageDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourcePackageDetailResponseParams struct {
-	// 总使用明细数
+	// 资源包抵扣总数
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 
 	// 资源包明细说明
@@ -7901,6 +7916,18 @@ type InstanceInitInfo struct {
 
 	// 实例个数,范围[1,15]
 	InstanceCount *int64 `json:"InstanceCount,omitempty" name:"InstanceCount"`
+
+	// Serverless实例个数最小值，范围[1,15]
+	MinRoCount *int64 `json:"MinRoCount,omitempty" name:"MinRoCount"`
+
+	// Serverless实例个数最大值，范围[1,15]
+	MaxRoCount *int64 `json:"MaxRoCount,omitempty" name:"MaxRoCount"`
+
+	// Serverless实例最小规格
+	MinRoCpu *float64 `json:"MinRoCpu,omitempty" name:"MinRoCpu"`
+
+	// Serverless实例最大规格
+	MaxRoCpu *float64 `json:"MaxRoCpu,omitempty" name:"MaxRoCpu"`
 }
 
 type InstanceNetInfo struct {

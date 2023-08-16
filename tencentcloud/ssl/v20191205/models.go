@@ -4608,6 +4608,13 @@ type ReplaceCertificateRequestParams struct {
 
 	// 重颁发原因。
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// CSR加密方式，可选：RSA、ECC、SM2
+	// （CsrType为Online才可选）， 默认为RSA
+	CertCSREncryptAlgo *string `json:"CertCSREncryptAlgo,omitempty" name:"CertCSREncryptAlgo"`
+
+	// CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
+	CertCSRKeyParameter *string `json:"CertCSRKeyParameter,omitempty" name:"CertCSRKeyParameter"`
 }
 
 type ReplaceCertificateRequest struct {
@@ -4630,6 +4637,13 @@ type ReplaceCertificateRequest struct {
 
 	// 重颁发原因。
 	Reason *string `json:"Reason,omitempty" name:"Reason"`
+
+	// CSR加密方式，可选：RSA、ECC、SM2
+	// （CsrType为Online才可选）， 默认为RSA
+	CertCSREncryptAlgo *string `json:"CertCSREncryptAlgo,omitempty" name:"CertCSREncryptAlgo"`
+
+	// CSR加密参数，CsrEncryptAlgo为RSA时， 可选2048、4096等默认为2048；CsrEncryptAlgo为ECC时，可选prime256v1，secp384r1等，默认为prime256v1; 
+	CertCSRKeyParameter *string `json:"CertCSRKeyParameter,omitempty" name:"CertCSRKeyParameter"`
 }
 
 func (r *ReplaceCertificateRequest) ToJsonString() string {
@@ -4650,6 +4664,8 @@ func (r *ReplaceCertificateRequest) FromJsonString(s string) error {
 	delete(f, "CsrContent")
 	delete(f, "CsrkeyPassword")
 	delete(f, "Reason")
+	delete(f, "CertCSREncryptAlgo")
+	delete(f, "CertCSRKeyParameter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ReplaceCertificateRequest has unknown keys!", "")
 	}

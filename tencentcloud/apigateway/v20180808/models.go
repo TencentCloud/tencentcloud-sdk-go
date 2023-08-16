@@ -1545,7 +1545,7 @@ type CreateApiRequestParams struct {
 	// API 所在的服务唯一 ID。
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
 
-	// API 的后端服务类型。支持HTTP、MOCK、TSF、SCF、WEBSOCKET、TARGET（内测）。
+	// API 的后端服务类型。支持HTTP、MOCK、TSF、SCF、EB、TARGET、VPC、UPSTREAM、GRPC、COS、WEBSOCKET。
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
 	// API 的后端服务超时时间，单位是秒。
@@ -1708,7 +1708,7 @@ type CreateApiRequest struct {
 	// API 所在的服务唯一 ID。
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
 
-	// API 的后端服务类型。支持HTTP、MOCK、TSF、SCF、WEBSOCKET、TARGET（内测）。
+	// API 的后端服务类型。支持HTTP、MOCK、TSF、SCF、EB、TARGET、VPC、UPSTREAM、GRPC、COS、WEBSOCKET。
 	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
 
 	// API 的后端服务超时时间，单位是秒。

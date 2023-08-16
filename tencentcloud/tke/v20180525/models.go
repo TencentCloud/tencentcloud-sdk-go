@@ -6944,7 +6944,7 @@ func (r *DescribeClusterKubeconfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeClusterKubeconfigResponseParams struct {
-	// 子账户kubeconfig文件，可用于直接访问集群kube-apiserver
+	// 子账户kubeconfig文件，可用于直接访问集群kube-apiserver（入参IsExtranet为false，返回内网访问的kubeconfig，没开内网的情况下server会是一个默认域名；入参IsExtranet为true，返回外网的kubeconfig，没开外网的情况下server会是一个默认域名。默认域名默认不可达，需要自行处理）
 	Kubeconfig *string `json:"Kubeconfig,omitempty" name:"Kubeconfig"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -51,49 +51,79 @@ type Agent struct {
 }
 
 type ApproverInfo struct {
-	// 参与者类型：
+	// 在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:
 	// 0：企业
 	// 1：个人
 	// 3：企业静默签署
 	// 注：类型为3（企业静默签署）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
 	// 7: 个人自动签署，适用于个人自动签场景。
-	// 注: 个人自动签场景为白名单功能, 使用前请联系对接的客户经理沟通。
+	// 注: 个人自动签场景为白名单功能，使用前请联系对接的客户经理沟通。
 	ApproverType *int64 `json:"ApproverType,omitempty" name:"ApproverType"`
 
-	// 签署人的姓名
+	// 签署方经办人的姓名。
+	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	ApproverName *string `json:"ApproverName,omitempty" name:"ApproverName"`
 
-	// 签署人的手机号，11位数字
+	// 本企业的签署方经办人的员工UserId
+	// 
+	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
+	// 
+	// 注: 若传该字段，则签署方经办人的其他信息（如签署方经办人的姓名、证件号码、手机号码等）将被忽略。
 	ApproverMobile *string `json:"ApproverMobile,omitempty" name:"ApproverMobile"`
 
-	// 如果签署方是企业签署方(approverType = 1 或者 approverType = 3)，
+	// 组织机构名称。
+	// 如果签署方是企业签署方(approverType = 1 或者 approverType = 3)， 则企业名称必填。
 	// 
-	// 则企业名称必填
+	// 注: 请确认该名称与企业营业执照中注册的名称一致 ; 如果名称中包含英文括号()，请使用中文括号（）代替。
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
-	// 签署人的签署控件列表
+	// 合同中的签署控件列表，列表中可支持下列多种签署控件,控件的详细定义参考开发者中心的Component结构体
+	// - 个人签名/印章
+	// - 企业印章
+	// - 骑缝章等签署控件
 	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
 
-	// 签署人的证件类型
-	// ID_CARD 身份证
-	// HONGKONG_AND_MACAO 港澳居民来往内地通行证
-	// HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
-	// OTHER_CARD_TYPE 其他（需要使用该类型请先联系运营经理）
+	// 签署方经办人的证件类型，支持以下类型
+	// - ID_CARD 居民身份证  (默认值)
+	// - HONGKONG_AND_MACAO 港澳居民来往内地通行证
+	// - HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+	// - OTHER_CARD_TYPE 其他证件
+	// 
+	// 注: 其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。
 	ApproverIdCardType *string `json:"ApproverIdCardType,omitempty" name:"ApproverIdCardType"`
 
-	// 签署人证件号（长度不超过18位）	
+	// 签署方经办人的证件号码，应符合以下规则
+	// - 居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。
+	// - 港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。
+	// - 港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitempty" name:"ApproverIdCardNumber"`
 
-	// 签署通知类型：sms--短信，none--不通知
+	// 通知签署方经办人的方式,  有以下途径:
+	// 
+	// - sms:  (默认)短信 
+	// - none: 不通知
 	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
 
-	// 签署人角色类型：1--收款人、2--开具人、3--见证人
+	// 收据场景设置签署人角色类型, 可以设置如下类型:
+	// - 1:收款人
+	// - 2:开具人
+	// - 3:见证人
+	// 
+	// 注: 收据场景为白名单功能，使用前请联系对接的客户经理沟通。
 	ApproverRole *int64 `json:"ApproverRole,omitempty" name:"ApproverRole"`
 
 	// 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
+	// 
+	// 注: 将要废弃, 用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置
 	VerifyChannel []*string `json:"VerifyChannel,omitempty" name:"VerifyChannel"`
 
-	// 合同的强制预览时间：3~300s，未指定则按合同页数计算
+	// 签署方在签署合同之前，需要强制阅读合同的时长，可指定为3秒至300秒之间的任意值。
+	// 
+	// 若未指定阅读时间，则会按照合同页数大小计算阅读时间，计算规则如下：
+	// 
+	// - 合同页数少于等于2页，阅读时间为3秒；
+	// - 合同页数为3到5页，阅读时间为5秒；
+	// - 合同页数大于等于6页，阅读时间为10秒。
 	PreReadTime *int64 `json:"PreReadTime,omitempty" name:"PreReadTime"`
 
 	// 签署人userId，仅支持本企业的员工userid， 可在控制台组织管理处获得
@@ -101,38 +131,68 @@ type ApproverInfo struct {
 	// 若传此字段 则以userid的信息为主，会覆盖传递过来的签署人基本信息， 包括姓名，手机号，证件类型等信息
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 
-	// 签署人用户来源，此参数仅针对企微用户开放
-	// 
-	// 企微侧用户请传入：WEWORKAPP
+	// 在企微场景下使用，需设置参数为WEWORKAPP，以表明合同来源于企微。
 	ApproverSource *string `json:"ApproverSource,omitempty" name:"ApproverSource"`
 
-	// 企业签署方或签标识，客户自定义，64位长度。用于发起含有或签签署人的合同。或签参与人必须有此字段。合同内不同或签参与人CustomApproverTag需要保证唯一。如果或签签署人为本方企微参与人，ApproverSource参数需要指定WEWORKAPP
+	// 在企业微信场景下，表明该合同流程为或签，其最大长度为64位字符串。
+	// 所有参与或签的人员均需具备该标识。
+	// 注意，在合同中，不同的或签参与人必须保证其CustomApproverTag唯一。
+	// 如果或签签署人为本方企业微信参与人，则需要指定ApproverSource参数为WEWORKAPP。
 	CustomApproverTag *string `json:"CustomApproverTag,omitempty" name:"CustomApproverTag"`
 
-	// 签署人个性化能力值
+	// 可以控制签署方在签署合同时能否进行某些操作，例如拒签、转交他人等。
+	// 详细操作可以参考开发者中心的ApproverOption结构体。
 	ApproverOption *ApproverOption `json:"ApproverOption,omitempty" name:"ApproverOption"`
 
-	// 签署人查看合同时认证方式, 
-	// 1-实名查看 2-短信验证码查看(企业签署方不支持该方式)
-	// 如果不传默认为1
-	// 模板发起的时候,认证方式以模板配置为主
+	// 指定个人签署方查看合同的校验方式,可以传值如下:
+	// 
+	// - 1 : （默认）人脸识别,人脸识别后才能合同内容
+	// - 2 : 手机号验证, 用户手机号和参与方手机号(ApproverMobile)相同即可查看合同内容
+	// 
+	// 注: 
+	// 
+	// - 如果合同流程设置ApproverVerifyType查看合同的校验方式,    则忽略此签署人的查看合同的校验方式
+	// - 此字段不可传多个校验方式
 	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitempty" name:"ApproverVerifyTypes"`
 
-	// 签署人签署合同时的认证方式
-	// 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)
-	// 合同签署认证方式的优先级 verifyChannel>approverSignTypes
-	// 模板发起的时候,认证方式以模板配置为主
+	// 您可以指定签署方签署合同的认证校验方式，可传递以下值：
+	// 
+	// - 1：人脸认证，需进行人脸识别成功后才能签署合同；
+	// - 2：签署密码，需输入与用户在腾讯电子签设置的密码一致才能校验成功进行合同签署；
+	// - 3：运营商三要素，需到运营商处比对手机号实名信息（名字、手机号、证件号）校验一致才能成功进行合同签署。
+	// 
+	// 注：
+	// 
+	// - 默认情况下，认证校验方式为人脸认证和签署密码两种形式；
+	// - 您可以传递多种值，表示可用多种认证校验方式。
 	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitempty" name:"ApproverSignTypes"`
 
-	// 当前签署方进行签署操作是否需要企业内部审批，true 则为需要。为个人签署方时则由发起方企业审核。	
+	// 
+	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
+	// 
+	// - false：（默认）不需要审批，直接签署。
+	// - true：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。
+	// 
+	// 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
+	// 
+	// - 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。
+	// - 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。
+	// 
+	// 注：此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同
 	ApproverNeedSignReview *bool `json:"ApproverNeedSignReview,omitempty" name:"ApproverNeedSignReview"`
 }
 
 type ApproverOption struct {
-	// 是否可以拒签 默认false-可以拒签 true-不可以拒签
+	// 签署方是否可以拒签
+	// 
+	// - false: ( 默认)可以拒签 
+	// - true:不可以拒签
 	NoRefuse *bool `json:"NoRefuse,omitempty" name:"NoRefuse"`
 
-	// 是否可以转发 默认false-可以转发 true-不可以转发
+	// 签署方是否可以转他人处理
+	// 
+	// - false: ( 默认)可以转他人处理
+	// - true:不可以转他人处理
 	NoTransfer *bool `json:"NoTransfer,omitempty" name:"NoTransfer"`
 }
 
@@ -518,23 +578,30 @@ func (r *CancelUserAutoSignEnableUrlResponse) FromJsonString(s string) error {
 }
 
 type CcInfo struct {
-	// 被抄送人手机号，11位数字
+	// 被抄送方手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
+	// 请确认手机号所有方为此业务通知方。
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
 
-	// 被抄送人姓名
+	// 被抄送方姓名。
+	// 抄送方的姓名将用于身份认证，请确保填写的姓名为抄送方的真实姓名，而非昵称等代名。
 	Name *string `json:"Name,omitempty" name:"Name"`
 
-	// 被抄送人类型,
-	// 0--个人
-	// 1--员工
+	// 被抄送方类型, 可设置以下类型:
+	// 
+	// - 0:个人抄送方
+	// - 1:企业员工抄送方
 	CcType *int64 `json:"CcType,omitempty" name:"CcType"`
 
-	// 被抄送人权限
-	// 0--可查看
-	// 1--可查看也可下载
+	// 被抄送方权限, 可设置如下权限:
+	// 
+	// - 0:可查看合同内容
+	// - 1:可查看合同内容也可下载原文
 	CcPermission *int64 `json:"CcPermission,omitempty" name:"CcPermission"`
 
-	// 关注方通知类型：sms--短信，none--不通知
+	// 通知签署方经办人的方式,  有以下途径:
+	// 
+	// - sms:  (默认)短信 
+	// - none: 不通知
 	NotifyType *string `json:"NotifyType,omitempty" name:"NotifyType"`
 }
 
@@ -1149,7 +1216,7 @@ type CreateEmbedWebUrlRequestParams struct {
 
 	// WEB嵌入的业务资源ID
 	// <br/>PREVIEW_SEAL_DETAIL，必填，取值为印章id
-	// <br/>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模版id
+	// <br/>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id
 	// <br/>PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id
 	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
 
@@ -1183,7 +1250,7 @@ type CreateEmbedWebUrlRequest struct {
 
 	// WEB嵌入的业务资源ID
 	// <br/>PREVIEW_SEAL_DETAIL，必填，取值为印章id
-	// <br/>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模版id
+	// <br/>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id
 	// <br/>PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id
 	BusinessId *string `json:"BusinessId,omitempty" name:"BusinessId"`
 
@@ -1333,162 +1400,280 @@ func (r *CreateFlowApproversResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowByFilesRequestParams struct {
-	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
+	// 执行本接口操作的员工信息。
+	// 使用此接口时，必须填写userId。
+	// 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	// 支持填入集团子公司经办人 userId 代发合同。
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 签署流程名称,最大长度200个字符
+	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// 该名称还将用于合同签署完成后的下载文件名。
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
-	// 签署参与者信息，最大限制50方
+	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的ApproverInfo结构体。
+	// 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序，请确保列表中参与人的顺序符合实际签署顺序。
 	Approvers []*ApproverInfo `json:"Approvers,omitempty" name:"Approvers"`
 
-	// 签署pdf文件的资源编号列表，通过UploadFiles接口获取，暂时仅支持单文件发起
+	// 本合同流程需包含的PDF文件资源编号列表，通过UploadFiles接口获取PDF文件资源编号。目前，此接口仅支持单个文件发起。
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
-	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
-	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
-
-	// 经办人内容控件配置
-	Components []*Component `json:"Components,omitempty" name:"Components"`
-
-	// 被抄送人的信息列表。
-	// 注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
-	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
-
-	// 是否需要预览，true：预览模式，false：非预览（默认）；
-	// 预览链接有效期300秒；
-	// 
-	// 注：如果使用“预览模式”，出参会返回合同预览链接 PreviewUrl，不会正式发起合同，且出参不会返回签署流程编号 FlowId；如果使用“非预览”，则会正常返回签署流程编号 FlowId，不会生成合同预览链接 PreviewUrl。
-	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
-
-	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
-	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
-
-	// 签署流程的签署截止时间。
-	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
-	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
-
-	// 合同到期提醒时间戳，单位秒。设定该值后，可以提前进行到期通知，方便客户处理合同到期事务，如合同续签等。该值支持的范围是从发起时间起到往后的10年内。仅合同发起方企业的发起人可以编辑修改。
-	RemindedOn *int64 `json:"RemindedOn,omitempty" name:"RemindedOn"`
-
-	// 发送类型：
-	// true：无序签
-	// false：有序签
-	// 注：默认为false（有序签）
-	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
-
-	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
-	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
-
-	// 发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
-	// 若设置为true，审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
-	// 
-	// 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
-	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
-
-	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
-	UserData *string `json:"UserData,omitempty" name:"UserData"`
-
-	// 签署人校验方式
-	// VerifyCheck: 人脸识别（默认）
-	// MobileCheck：手机号验证
-	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
-	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
-
-	// 签署流程描述,最大长度1000个字符
+	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
 	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
-	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
-	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
+	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
+	// - 单行文本控件
+	// - 多行文本控件
+	// - 勾选框控件
+	// - 数字控件
+	// - 图片控件
+	// - 动态表格等填写控件
+	Components []*Component `json:"Components,omitempty" name:"Components"`
 
-	// 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	// 注:此功能为白名单功能，使用前请联系对接的客户经理沟通。
+	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
+
+	// 可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
+	// 
+	// - 0：合同发起时通知（默认值）
+	// - 1：签署完成后通知
 	CcNotifyType *int64 `json:"CcNotifyType,omitempty" name:"CcNotifyType"`
 
-	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	// 是否为预览模式，取值如下：
+	// 
+	// false：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。
+	// 
+	// true：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。
+	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
+
+	// 
+	// 预览模式下产生的预览链接类型 
+	// 
+	// - 0 :(默认) 文件流 ,点开后后下载预览的合同PDF文件 
+	// 
+	// - 1 :H5链接 ,点开后在浏览器中展示合同的样子
+	// 
+	// 注意: 此参数在NeedPreview 为true时有效
+	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
+
+	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
+	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
+	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 合同到期提醒时间，为Unix标准时间戳（秒）格式，支持的范围是从发起时间开始到后10年内。
+	// 到达提醒时间后，腾讯电子签会短信通知发起方企业合同提醒，可用于处理合同到期事务，如合同续签等事宜。
+	RemindedOn *int64 `json:"RemindedOn,omitempty" name:"RemindedOn"`
+
+	// 
+	// 合同流程的签署顺序类型：
+	// - false：(默认)有序签署, 本合同多个参与人需要依次签署
+	// - true：无序签署, 本合同多个参与人没有先后签署限制
+	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
+
+	// 您可以自定义腾讯电子签小程序合同列表页展示的合同内容模板，模板中支持以下变量：
+	// 
+	// - {合同名称}
+	// - {发起方企业}
+	// - {发起方姓名}
+	// - {签署方N企业}
+	// - {签署方N姓名}
+	// 
+	// 其中，N表示签署方的编号，从1开始，不能超过签署人的数量。
+	// 
+	// 例如，如果是腾讯公司张三发给李四名称为“租房合同”的合同，您可以将此字段设置为：
+	// 合同名称:`合同名称:{合同名称};发起方: {发起方企业}({发起方姓名});签署方:{签署方1姓名}`
+	// 
+	// 则小程序中列表页展示此合同为以下样子
+	// ```
+	// 合同名称：租房合同 
+	// 发起方：腾讯公司(张三) 
+	// 签署方：李四
+	// ```
+	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
+
+	// 
+	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
+	// 
+	// - false：（默认）不需要审批，直接签署。
+	// - true：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。
+	// 
+	// 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
+	// 
+	// - 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。
+	// - 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。
+	// 
+	// 注：此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同
+	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 20480长度。
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
+	// 回调的相关说明可参考开发者中心的"回调通知"模块。
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
+	// 指定个人签署方查看合同的校验方式
+	// 
+	// - VerifyCheck :（默认）人脸识别,人脸识别后才能合同内容
+	// - MobileCheck:  手机号验证, 用户手机号和参与方手机号(ApproverMobile)相同即可查看合同内容
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
+
+	// 签署方签署控件（印章/签名等）的生成方式：
+	// 
+	// - 0：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。
+	// - 1：签署方在签署时自行添加签署控件，可以拖动位置和控制数量。
+	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
+	// 
+	// - E_PRESCRIPTION_AUTO_SIGN：处方单（医疗自动签） 
+	// 
+	// 注: 个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。
 	AutoSignScene *string `json:"AutoSignScene,omitempty" name:"AutoSignScene"`
 }
 
 type CreateFlowByFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
+	// 执行本接口操作的员工信息。
+	// 使用此接口时，必须填写userId。
+	// 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	// 支持填入集团子公司经办人 userId 代发合同。
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 签署流程名称,最大长度200个字符
+	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// 该名称还将用于合同签署完成后的下载文件名。
 	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
 
-	// 签署参与者信息，最大限制50方
+	// 合同流程的参与方列表，最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的ApproverInfo结构体。
+	// 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序，请确保列表中参与人的顺序符合实际签署顺序。
 	Approvers []*ApproverInfo `json:"Approvers,omitempty" name:"Approvers"`
 
-	// 签署pdf文件的资源编号列表，通过UploadFiles接口获取，暂时仅支持单文件发起
+	// 本合同流程需包含的PDF文件资源编号列表，通过UploadFiles接口获取PDF文件资源编号。目前，此接口仅支持单个文件发起。
 	FileIds []*string `json:"FileIds,omitempty" name:"FileIds"`
 
-	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
-	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
-
-	// 经办人内容控件配置
-	Components []*Component `json:"Components,omitempty" name:"Components"`
-
-	// 被抄送人的信息列表。
-	// 注:此功能为白名单功能，若有需要，请联系电子签客服开白使用
-	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
-
-	// 是否需要预览，true：预览模式，false：非预览（默认）；
-	// 预览链接有效期300秒；
-	// 
-	// 注：如果使用“预览模式”，出参会返回合同预览链接 PreviewUrl，不会正式发起合同，且出参不会返回签署流程编号 FlowId；如果使用“非预览”，则会正常返回签署流程编号 FlowId，不会生成合同预览链接 PreviewUrl。
-	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
-
-	// 预览链接类型 默认:0-文件流, 1- H5链接 注意:此参数在NeedPreview 为true 时有效,
-	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
-
-	// 签署流程的签署截止时间。
-	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
-	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
-
-	// 合同到期提醒时间戳，单位秒。设定该值后，可以提前进行到期通知，方便客户处理合同到期事务，如合同续签等。该值支持的范围是从发起时间起到往后的10年内。仅合同发起方企业的发起人可以编辑修改。
-	RemindedOn *int64 `json:"RemindedOn,omitempty" name:"RemindedOn"`
-
-	// 发送类型：
-	// true：无序签
-	// false：有序签
-	// 注：默认为false（有序签）
-	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
-
-	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
-	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
-
-	// 发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
-	// 若设置为true，审核结果需通过接口 CreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
-	// 
-	// 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
-	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
-
-	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
-	UserData *string `json:"UserData,omitempty" name:"UserData"`
-
-	// 签署人校验方式
-	// VerifyCheck: 人脸识别（默认）
-	// MobileCheck：手机号验证
-	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
-	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
-
-	// 签署流程描述,最大长度1000个字符
+	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
 	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
-	// 标识是否允许发起后添加控件。0为不允许1为允许。如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
-	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
+	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为200个字符，仅限中文、字母、数字和下划线组成。
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
-	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
+	// - 单行文本控件
+	// - 多行文本控件
+	// - 勾选框控件
+	// - 数字控件
+	// - 图片控件
+	// - 动态表格等填写控件
+	Components []*Component `json:"Components,omitempty" name:"Components"`
 
-	// 给关注人发送短信通知的类型，0-合同发起时通知 1-签署完成后通知
+	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
+	// 注:此功能为白名单功能，使用前请联系对接的客户经理沟通。
+	CcInfos []*CcInfo `json:"CcInfos,omitempty" name:"CcInfos"`
+
+	// 可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
+	// 
+	// - 0：合同发起时通知（默认值）
+	// - 1：签署完成后通知
 	CcNotifyType *int64 `json:"CcNotifyType,omitempty" name:"CcNotifyType"`
 
-	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	// 是否为预览模式，取值如下：
+	// 
+	// false：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。
+	// 
+	// true：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。
+	NeedPreview *bool `json:"NeedPreview,omitempty" name:"NeedPreview"`
+
+	// 
+	// 预览模式下产生的预览链接类型 
+	// 
+	// - 0 :(默认) 文件流 ,点开后后下载预览的合同PDF文件 
+	// 
+	// - 1 :H5链接 ,点开后在浏览器中展示合同的样子
+	// 
+	// 注意: 此参数在NeedPreview 为true时有效
+	PreviewType *int64 `json:"PreviewType,omitempty" name:"PreviewType"`
+
+	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
+	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
+	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
+
+	// 合同到期提醒时间，为Unix标准时间戳（秒）格式，支持的范围是从发起时间开始到后10年内。
+	// 到达提醒时间后，腾讯电子签会短信通知发起方企业合同提醒，可用于处理合同到期事务，如合同续签等事宜。
+	RemindedOn *int64 `json:"RemindedOn,omitempty" name:"RemindedOn"`
+
+	// 
+	// 合同流程的签署顺序类型：
+	// - false：(默认)有序签署, 本合同多个参与人需要依次签署
+	// - true：无序签署, 本合同多个参与人没有先后签署限制
+	Unordered *bool `json:"Unordered,omitempty" name:"Unordered"`
+
+	// 您可以自定义腾讯电子签小程序合同列表页展示的合同内容模板，模板中支持以下变量：
+	// 
+	// - {合同名称}
+	// - {发起方企业}
+	// - {发起方姓名}
+	// - {签署方N企业}
+	// - {签署方N姓名}
+	// 
+	// 其中，N表示签署方的编号，从1开始，不能超过签署人的数量。
+	// 
+	// 例如，如果是腾讯公司张三发给李四名称为“租房合同”的合同，您可以将此字段设置为：
+	// 合同名称:`合同名称:{合同名称};发起方: {发起方企业}({发起方姓名});签署方:{签署方1姓名}`
+	// 
+	// 则小程序中列表页展示此合同为以下样子
+	// ```
+	// 合同名称：租房合同 
+	// 发起方：腾讯公司(张三) 
+	// 签署方：李四
+	// ```
+	CustomShowMap *string `json:"CustomShowMap,omitempty" name:"CustomShowMap"`
+
+	// 
+	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
+	// 
+	// - false：（默认）不需要审批，直接签署。
+	// - true：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。
+	// 
+	// 企业可以通过CreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
+	// 
+	// - 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。
+	// - 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。
+	// 
+	// 注：此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同
+	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
+
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 20480长度。
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
+	// 回调的相关说明可参考开发者中心的"回调通知"模块。
+	UserData *string `json:"UserData,omitempty" name:"UserData"`
+
+	// 指定个人签署方查看合同的校验方式
+	// 
+	// - VerifyCheck :（默认）人脸识别,人脸识别后才能合同内容
+	// - MobileCheck:  手机号验证, 用户手机号和参与方手机号(ApproverMobile)相同即可查看合同内容
+	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
+
+	// 签署方签署控件（印章/签名等）的生成方式：
+	// 
+	// - 0：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。
+	// - 1：签署方在签署时自行添加签署控件，可以拖动位置和控制数量。
+	SignBeanTag *int64 `json:"SignBeanTag,omitempty" name:"SignBeanTag"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
+	// 
+	// - E_PRESCRIPTION_AUTO_SIGN：处方单（医疗自动签） 
+	// 
+	// 注: 个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。
 	AutoSignScene *string `json:"AutoSignScene,omitempty" name:"AutoSignScene"`
 }
 
@@ -1508,9 +1693,11 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "FlowName")
 	delete(f, "Approvers")
 	delete(f, "FileIds")
+	delete(f, "FlowDescription")
 	delete(f, "FlowType")
 	delete(f, "Components")
 	delete(f, "CcInfos")
+	delete(f, "CcNotifyType")
 	delete(f, "NeedPreview")
 	delete(f, "PreviewType")
 	delete(f, "Deadline")
@@ -1520,10 +1707,8 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 	delete(f, "NeedSignReview")
 	delete(f, "UserData")
 	delete(f, "ApproverVerifyType")
-	delete(f, "FlowDescription")
 	delete(f, "SignBeanTag")
 	delete(f, "Agent")
-	delete(f, "CcNotifyType")
 	delete(f, "AutoSignScene")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowByFilesRequest has unknown keys!", "")
@@ -1533,14 +1718,16 @@ func (r *CreateFlowByFilesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowByFilesResponseParams struct {
-	// 签署流程编号。
+	// 合同流程ID，为32位字符串。
+	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	// 
-	// 注：如入参 是否需要预览 NeedPreview 设置为 true，不会正式发起合同，此处不会有值返回；如入参 是否需要预览 NeedPreview 设置为 false，此处会正常返回签署流程编号 FlowId。
+	// 注: 如果是预览模式(即NeedPreview设置为true)时, 此处不会有值返回。
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 合同预览链接。
+	// 合同预览链接URL。
 	// 
-	// 注：如入参 是否需要预览 NeedPreview 设置为 true，会开启“预览模式”，此处会返回预览链接；如入参 是否需要预览 NeedPreview 设置为 false，此处不会有值返回。
+	// 注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitempty" name:"PreviewUrl"`
 

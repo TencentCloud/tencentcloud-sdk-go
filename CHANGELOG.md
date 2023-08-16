@@ -1,3 +1,157 @@
+# Release v1.0.724
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 66 次发布
+
+发布时间：2023-08-16 01:18:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeResourcePackageDetail](https://cloud.tencent.com/document/api/1003/93012)
+
+	* 新增入参：InstanceIds
+
+
+修改数据结构：
+
+* [BindInstanceInfo](https://cloud.tencent.com/document/api/1003/48097#BindInstanceInfo)
+
+	* 新增成员：ExtendIds
+
+	* <font color="#dd0000">**修改成员**：</font>InstanceId, InstanceRegion, InstanceType
+
+* [ClusterInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#ClusterInstanceDetail)
+
+	* 新增成员：ServerlessStatus
+
+* [InstanceInitInfo](https://cloud.tencent.com/document/api/1003/48097#InstanceInitInfo)
+
+	* 新增成员：MinRoCount, MaxRoCount, MinRoCpu, MaxRoCpu
+
+
+
+
+## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+
+### 第 15 次发布
+
+发布时间：2023-08-16 01:19:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAcl](https://cloud.tencent.com/document/api/1025/74411)
+
+	* 新增入参：AllowAccessCredential
+
+* [DescribeUsers](https://cloud.tencent.com/document/api/1025/74404)
+
+	* 新增入参：Filters
+
+* [ModifyAcl](https://cloud.tencent.com/document/api/1025/74408)
+
+	* 新增入参：AllowAccessCredential
+
+
+新增数据结构：
+
+* [ACTemplate](https://cloud.tencent.com/document/api/1025/74416#ACTemplate)
+* [DepartmentManagerUser](https://cloud.tencent.com/document/api/1025/74416#DepartmentManagerUser)
+
+修改数据结构：
+
+* [Acl](https://cloud.tencent.com/document/api/1025/74416#Acl)
+
+	* 新增成员：AllowAccessCredential, ACTemplateSet
+
+* [Department](https://cloud.tencent.com/document/api/1025/74416#Department)
+
+	* 新增成员：ManagerUsers
+
+* [User](https://cloud.tencent.com/document/api/1025/74416#User)
+
+	* 新增成员：ActiveStatus, LockStatus, Status
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 50 次发布
+
+发布时间：2023-08-16 01:23:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyResourcesTags](https://cloud.tencent.com/document/api/589/96242)
+
+新增数据结构：
+
+* [ModifyResourceTags](https://cloud.tencent.com/document/api/589/33981#ModifyResourceTags)
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 40 次发布
+
+发布时间：2023-08-16 01:40:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ReplaceCertificate](https://cloud.tencent.com/document/api/400/41667)
+
+	* 新增入参：CertCSREncryptAlgo, CertCSRKeyParameter
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 49 次发布
+
+发布时间：2023-08-16 01:45:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80693)
+
+	* 新增入参：RuleTag
+
+
+修改数据结构：
+
+* [ApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxyRule)
+
+	* 新增成员：RuleTag
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
 # Release v1.0.723
 
 ## 云防火墙(cfw) 版本：2019-09-04

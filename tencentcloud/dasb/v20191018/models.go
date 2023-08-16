@@ -20,6 +20,20 @@ import (
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
 )
 
+type ACTemplate struct {
+	// 模版id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 模版名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+
+	// 模版描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+}
+
 type Acl struct {
 	// 访问权限ID
 	Id *uint64 `json:"Id,omitempty" name:"Id"`
@@ -104,6 +118,14 @@ type Acl struct {
 	// 所属部门的信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Department *Department `json:"Department,omitempty" name:"Department"`
+
+	// 是否允许使用访问串，默认允许
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowAccessCredential *bool `json:"AllowAccessCredential,omitempty" name:"AllowAccessCredential"`
+
+	// 关联的数据库高危命令列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ACTemplateSet []*ACTemplate `json:"ACTemplateSet,omitempty" name:"ACTemplateSet"`
 }
 
 // Predefined struct for user
@@ -614,6 +636,9 @@ type CreateAclRequestParams struct {
 
 	// 访问权限所属部门的ID
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+
+	// 是否允许使用访问串，默认允许
+	AllowAccessCredential *bool `json:"AllowAccessCredential,omitempty" name:"AllowAccessCredential"`
 }
 
 type CreateAclRequest struct {
@@ -698,6 +723,9 @@ type CreateAclRequest struct {
 
 	// 访问权限所属部门的ID
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+
+	// 是否允许使用访问串，默认允许
+	AllowAccessCredential *bool `json:"AllowAccessCredential,omitempty" name:"AllowAccessCredential"`
 }
 
 func (r *CreateAclRequest) ToJsonString() string {
@@ -738,6 +766,7 @@ func (r *CreateAclRequest) FromJsonString(s string) error {
 	delete(f, "ValidateFrom")
 	delete(f, "ValidateTo")
 	delete(f, "DepartmentId")
+	delete(f, "AllowAccessCredential")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAclRequest has unknown keys!", "")
 	}
@@ -1724,6 +1753,20 @@ type Department struct {
 	// 部门管理员账号ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Managers []*string `json:"Managers,omitempty" name:"Managers"`
+
+	// 管理员用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManagerUsers []*DepartmentManagerUser `json:"ManagerUsers,omitempty" name:"ManagerUsers"`
+}
+
+type DepartmentManagerUser struct {
+	// 管理员Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManagerId *string `json:"ManagerId,omitempty" name:"ManagerId"`
+
+	// 管理员姓名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ManagerName *string `json:"ManagerName,omitempty" name:"ManagerName"`
 }
 
 // Predefined struct for user
@@ -3103,6 +3146,9 @@ type DescribeUsersRequestParams struct {
 
 	// 部门ID，用于过滤属于某个部门的用户
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+
+	// 参数过滤数组
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 type DescribeUsersRequest struct {
@@ -3138,6 +3184,9 @@ type DescribeUsersRequest struct {
 
 	// 部门ID，用于过滤属于某个部门的用户
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+
+	// 参数过滤数组
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
 func (r *DescribeUsersRequest) ToJsonString() string {
@@ -3162,6 +3211,7 @@ func (r *DescribeUsersRequest) FromJsonString(s string) error {
 	delete(f, "AuthorizedDeviceIdSet")
 	delete(f, "AuthTypeSet")
 	delete(f, "DepartmentId")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUsersRequest has unknown keys!", "")
 	}
@@ -3470,6 +3520,9 @@ type ModifyAclRequestParams struct {
 
 	// 权限所属部门的ID，如：1.2.3
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+
+	// 是否允许使用访问串
+	AllowAccessCredential *bool `json:"AllowAccessCredential,omitempty" name:"AllowAccessCredential"`
 }
 
 type ModifyAclRequest struct {
@@ -3557,6 +3610,9 @@ type ModifyAclRequest struct {
 
 	// 权限所属部门的ID，如：1.2.3
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+
+	// 是否允许使用访问串
+	AllowAccessCredential *bool `json:"AllowAccessCredential,omitempty" name:"AllowAccessCredential"`
 }
 
 func (r *ModifyAclRequest) ToJsonString() string {
@@ -3598,6 +3654,7 @@ func (r *ModifyAclRequest) FromJsonString(s string) error {
 	delete(f, "ValidateFrom")
 	delete(f, "ValidateTo")
 	delete(f, "DepartmentId")
+	delete(f, "AllowAccessCredential")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAclRequest has unknown keys!", "")
 	}
@@ -5262,4 +5319,16 @@ type User struct {
 	// 用户所属部门（用于入参）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DepartmentId *string `json:"DepartmentId,omitempty" name:"DepartmentId"`
+
+	// 激活状态 0 - 未激活 1 - 激活
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActiveStatus *uint64 `json:"ActiveStatus,omitempty" name:"ActiveStatus"`
+
+	// 锁定状态 0 - 未锁定 1 - 锁定
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LockStatus *uint64 `json:"LockStatus,omitempty" name:"LockStatus"`
+
+	// 状态 与Filter中一致
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }

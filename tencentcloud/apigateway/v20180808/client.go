@@ -67,6 +67,7 @@ func NewAttachPluginResponse() (response *AttachPluginResponse) {
 // 绑定插件到API上。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDINPUTJSON = "FailedOperation.InvalidInputJSON"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
@@ -76,6 +77,7 @@ func NewAttachPluginResponse() (response *AttachPluginResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDENVSTATUS = "InvalidParameterValue.InvalidEnvStatus"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICECONFIG = "InvalidParameterValue.InvalidServiceConfig"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TRAFFICCONTROL = "InvalidParameterValue.TrafficControl"
 //  LIMITEXCEEDED_SERVICECOUNTFORPLUGINLIMITEXCEEDED = "LimitExceeded.ServiceCountForPluginLimitExceeded"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
@@ -93,6 +95,7 @@ func (c *Client) AttachPlugin(request *AttachPluginRequest) (response *AttachPlu
 // 绑定插件到API上。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDINPUTJSON = "FailedOperation.InvalidInputJSON"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
@@ -102,6 +105,7 @@ func (c *Client) AttachPlugin(request *AttachPluginRequest) (response *AttachPlu
 //  INVALIDPARAMETERVALUE_INVALIDENVSTATUS = "InvalidParameterValue.InvalidEnvStatus"
 //  INVALIDPARAMETERVALUE_INVALIDSERVICECONFIG = "InvalidParameterValue.InvalidServiceConfig"
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
+//  INVALIDPARAMETERVALUE_TRAFFICCONTROL = "InvalidParameterValue.TrafficControl"
 //  LIMITEXCEEDED_SERVICECOUNTFORPLUGINLIMITEXCEEDED = "LimitExceeded.ServiceCountForPluginLimitExceeded"
 //  RESOURCENOTFOUND_INVALIDAPI = "ResourceNotFound.InvalidApi"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
@@ -742,6 +746,7 @@ func NewCreateApiResponse() (response *CreateApiResponse) {
 //  UNSUPPORTEDOPERATION_BASICSERVICENOMOREAPI = "UnsupportedOperation.BasicServiceNoMoreApi"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = "UnsupportedOperation.InvalidEndpointType"
+//  UNSUPPORTEDOPERATION_SERVICEEXIST = "UnsupportedOperation.ServiceExist"
 //  UNSUPPORTEDOPERATION_UNPACKERROR = "UnsupportedOperation.UnpackError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDNETTYPE = "UnsupportedOperation.UnsupportedNetType"
 func (c *Client) CreateApi(request *CreateApiRequest) (response *CreateApiResponse, err error) {
@@ -801,6 +806,7 @@ func (c *Client) CreateApi(request *CreateApiRequest) (response *CreateApiRespon
 //  UNSUPPORTEDOPERATION_BASICSERVICENOMOREAPI = "UnsupportedOperation.BasicServiceNoMoreApi"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_INVALIDENDPOINTTYPE = "UnsupportedOperation.InvalidEndpointType"
+//  UNSUPPORTEDOPERATION_SERVICEEXIST = "UnsupportedOperation.ServiceExist"
 //  UNSUPPORTEDOPERATION_UNPACKERROR = "UnsupportedOperation.UnpackError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDNETTYPE = "UnsupportedOperation.UnsupportedNetType"
 func (c *Client) CreateApiWithContext(ctx context.Context, request *CreateApiRequest) (response *CreateApiResponse, err error) {

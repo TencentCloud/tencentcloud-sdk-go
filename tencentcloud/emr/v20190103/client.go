@@ -1987,6 +1987,58 @@ func (c *Client) ModifyResourceSchedulerWithContext(ctx context.Context, request
     return
 }
 
+func NewModifyResourcesTagsRequest() (request *ModifyResourcesTagsRequest) {
+    request = &ModifyResourcesTagsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyResourcesTags")
+    
+    
+    return
+}
+
+func NewModifyResourcesTagsResponse() (response *ModifyResourcesTagsResponse) {
+    response = &ModifyResourcesTagsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyResourcesTags
+// 强制修改标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyResourcesTags(request *ModifyResourcesTagsRequest) (response *ModifyResourcesTagsResponse, err error) {
+    return c.ModifyResourcesTagsWithContext(context.Background(), request)
+}
+
+// ModifyResourcesTags
+// 强制修改标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyResourcesTagsWithContext(ctx context.Context, request *ModifyResourcesTagsRequest) (response *ModifyResourcesTagsResponse, err error) {
+    if request == nil {
+        request = NewModifyResourcesTagsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyResourcesTags require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyResourcesTagsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunJobFlowRequest() (request *RunJobFlowRequest) {
     request = &RunJobFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},

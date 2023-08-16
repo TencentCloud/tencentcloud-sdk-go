@@ -509,6 +509,10 @@ type ApplicationProxyRule struct {
 	// <li>单端口，如：80。</li>
 	// <li>端口段：81-82，表示81，82两个端口。</li>
 	OriginPort *string `json:"OriginPort,omitempty" name:"OriginPort"`
+
+	// 规则标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTag *string `json:"RuleTag,omitempty" name:"RuleTag"`
 }
 
 type AscriptionInfo struct {
@@ -1275,6 +1279,9 @@ type CreateApplicationProxyRuleRequestParams struct {
 	// <li>单端口：80；</li>
 	// <li>端口段：81-90，81至90端口。</li>
 	OriginPort *string `json:"OriginPort,omitempty" name:"OriginPort"`
+
+	// 规则标签。默认值为空字符串。
+	RuleTag *string `json:"RuleTag,omitempty" name:"RuleTag"`
 }
 
 type CreateApplicationProxyRuleRequest struct {
@@ -1325,6 +1332,9 @@ type CreateApplicationProxyRuleRequest struct {
 	// <li>单端口：80；</li>
 	// <li>端口段：81-90，81至90端口。</li>
 	OriginPort *string `json:"OriginPort,omitempty" name:"OriginPort"`
+
+	// 规则标签。默认值为空字符串。
+	RuleTag *string `json:"RuleTag,omitempty" name:"RuleTag"`
 }
 
 func (r *CreateApplicationProxyRuleRequest) ToJsonString() string {
@@ -1349,6 +1359,7 @@ func (r *CreateApplicationProxyRuleRequest) FromJsonString(s string) error {
 	delete(f, "SessionPersist")
 	delete(f, "SessionPersistTime")
 	delete(f, "OriginPort")
+	delete(f, "RuleTag")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateApplicationProxyRuleRequest has unknown keys!", "")
 	}
@@ -2844,7 +2855,7 @@ type DescribeApplicationProxiesRequestParams struct {
 	// 分页查询限制数目。默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否</li>
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否</li><li>rule-tag<br>   按照【<strong>规则标签</strong>】对应用代理下的规则进行过滤。规则标签形如：rule-service-1。<br>   类型：String<br>   必选：否</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
@@ -2857,7 +2868,7 @@ type DescribeApplicationProxiesRequest struct {
 	// 分页查询限制数目。默认值：20，最大值：1000。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
 
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否</li>
+	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：<li>proxy-id<br>   按照【<strong>代理ID</strong>】进行过滤。代理ID形如：proxy-ev2sawbwfd。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-vawer2vadg。<br>   类型：String<br>   必选：否</li><li>rule-tag<br>   按照【<strong>规则标签</strong>】对应用代理下的规则进行过滤。规则标签形如：rule-service-1。<br>   类型：String<br>   必选：否</li>
 	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
 }
 
