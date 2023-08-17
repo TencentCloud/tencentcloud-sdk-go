@@ -1,3 +1,154 @@
+# Release v1.0.725
+
+## 批量计算(batch) 版本：2017-03-12
+
+### 第 48 次发布
+
+发布时间：2023-08-17 01:18:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Application](https://cloud.tencent.com/document/api/599/15912#Application)
+
+	* <font color="#dd0000">**修改成员**：</font>Command
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 103 次发布
+
+发布时间：2023-08-17 03:11:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreatePreparedPersonalEsign](https://cloud.tencent.com/document/api/1420/96160)
+
+	* 新增入参：SealImageCompress
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 60 次发布
+
+发布时间：2023-08-17 03:11:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DetectAuth](https://cloud.tencent.com/document/api/1007/31816)
+
+	* 新增入参：IntentionActions
+
+* [GetDetectInfoEnhanced](https://cloud.tencent.com/document/api/1007/41957)
+
+	* 新增出参：IntentionActionResult
+
+
+新增数据结构：
+
+* [IntentionActionConfig](https://cloud.tencent.com/document/api/1007/41958#IntentionActionConfig)
+* [IntentionActionResult](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResult)
+* [IntentionActionResultDetail](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResultDetail)
+
+修改数据结构：
+
+* [RuleIdConfig](https://cloud.tencent.com/document/api/1007/41958#RuleIdConfig)
+
+	* 新增成员：IntentionType
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 18 次发布
+
+发布时间：2023-08-17 03:37:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudStorage](https://cloud.tencent.com/document/api/1131/77505)
+
+	* 新增入参：OrderId
+
+
+修改数据结构：
+
+* [PackageInfo](https://cloud.tencent.com/document/api/1131/76635#PackageInfo)
+
+	* 新增成员：PackageId, OrderId
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 移动应用安全(ms) 版本：2018-04-08
+
+### 第 17 次发布
+
+发布时间：2023-08-17 04:17:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [RequestLocalTask](https://cloud.tencent.com/document/api/283/96276)
+* [UpdateClientState](https://cloud.tencent.com/document/api/283/96275)
+* [UpdateLocalTaskResult](https://cloud.tencent.com/document/api/283/96274)
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 41 次发布
+
+发布时间：2023-08-17 06:34:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTableLineage](https://cloud.tencent.com/document/api/1267/94987)
+
+	* 新增入参：RecursiveSecond
+
+
+
+
 # Release v1.0.724
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07

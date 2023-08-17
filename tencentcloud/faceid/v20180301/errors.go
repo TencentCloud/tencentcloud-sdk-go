@@ -263,7 +263,7 @@ const (
 	// 服务开通中。
 	UNAUTHORIZEDOPERATION_ACTIVATING = "UnauthorizedOperation.Activating"
 
-	// 帐号已欠费。
+	// 账号已欠费。
 	UNAUTHORIZEDOPERATION_ARREARS = "UnauthorizedOperation.Arrears"
 
 	// 计费状态异常。

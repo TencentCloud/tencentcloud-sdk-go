@@ -1,46 +1,29 @@
 # 本版本更新包含以下内容：
 
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+## 批量计算(batch) 版本：2017-03-12
 
-### 第 66 次发布
+### 第 48 次发布
 
-发布时间：2023-08-16 01:18:52
+发布时间：2023-08-17 01:18:33
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [DescribeResourcePackageDetail](https://cloud.tencent.com/document/api/1003/93012)
-
-	* 新增入参：InstanceIds
-
 
 修改数据结构：
 
-* [BindInstanceInfo](https://cloud.tencent.com/document/api/1003/48097#BindInstanceInfo)
+* [Application](https://cloud.tencent.com/document/api/599/15912#Application)
 
-	* 新增成员：ExtendIds
-
-	* <font color="#dd0000">**修改成员**：</font>InstanceId, InstanceRegion, InstanceType
-
-* [ClusterInstanceDetail](https://cloud.tencent.com/document/api/1003/48097#ClusterInstanceDetail)
-
-	* 新增成员：ServerlessStatus
-
-* [InstanceInitInfo](https://cloud.tencent.com/document/api/1003/48097#InstanceInitInfo)
-
-	* 新增成员：MinRoCount, MaxRoCount, MinRoCpu, MaxRoCpu
+	* <font color="#dd0000">**修改成员**：</font>Command
 
 
 
 
-## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 15 次发布
+### 第 103 次发布
 
-发布时间：2023-08-16 01:19:34
+发布时间：2023-08-17 03:11:06
 
 本次发布包含了以下内容：
 
@@ -48,46 +31,92 @@
 
 修改接口：
 
-* [CreateAcl](https://cloud.tencent.com/document/api/1025/74411)
+* [ChannelCreatePreparedPersonalEsign](https://cloud.tencent.com/document/api/1420/96160)
 
-	* 新增入参：AllowAccessCredential
+	* 新增入参：SealImageCompress
 
-* [DescribeUsers](https://cloud.tencent.com/document/api/1025/74404)
 
-	* 新增入参：Filters
 
-* [ModifyAcl](https://cloud.tencent.com/document/api/1025/74408)
 
-	* 新增入参：AllowAccessCredential
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 60 次发布
+
+发布时间：2023-08-17 03:11:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DetectAuth](https://cloud.tencent.com/document/api/1007/31816)
+
+	* 新增入参：IntentionActions
+
+* [GetDetectInfoEnhanced](https://cloud.tencent.com/document/api/1007/41957)
+
+	* 新增出参：IntentionActionResult
 
 
 新增数据结构：
 
-* [ACTemplate](https://cloud.tencent.com/document/api/1025/74416#ACTemplate)
-* [DepartmentManagerUser](https://cloud.tencent.com/document/api/1025/74416#DepartmentManagerUser)
+* [IntentionActionConfig](https://cloud.tencent.com/document/api/1007/41958#IntentionActionConfig)
+* [IntentionActionResult](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResult)
+* [IntentionActionResultDetail](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResultDetail)
 
 修改数据结构：
 
-* [Acl](https://cloud.tencent.com/document/api/1025/74416#Acl)
+* [RuleIdConfig](https://cloud.tencent.com/document/api/1007/41958#RuleIdConfig)
 
-	* 新增成员：AllowAccessCredential, ACTemplateSet
-
-* [Department](https://cloud.tencent.com/document/api/1025/74416#Department)
-
-	* 新增成员：ManagerUsers
-
-* [User](https://cloud.tencent.com/document/api/1025/74416#User)
-
-	* 新增成员：ActiveStatus, LockStatus, Status
+	* 新增成员：IntentionType
 
 
 
 
-## 弹性 MapReduce(emr) 版本：2019-01-03
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
 
-### 第 50 次发布
+### 第 18 次发布
 
-发布时间：2023-08-16 01:23:36
+发布时间：2023-08-17 03:37:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudStorage](https://cloud.tencent.com/document/api/1131/77505)
+
+	* 新增入参：OrderId
+
+
+修改数据结构：
+
+* [PackageInfo](https://cloud.tencent.com/document/api/1131/76635#PackageInfo)
+
+	* 新增成员：PackageId, OrderId
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 移动应用安全(ms) 版本：2018-04-08
+
+### 第 17 次发布
+
+发布时间：2023-08-17 04:17:58
 
 本次发布包含了以下内容：
 
@@ -95,19 +124,17 @@
 
 新增接口：
 
-* [ModifyResourcesTags](https://cloud.tencent.com/document/api/589/96242)
-
-新增数据结构：
-
-* [ModifyResourceTags](https://cloud.tencent.com/document/api/589/33981#ModifyResourceTags)
+* [RequestLocalTask](https://cloud.tencent.com/document/api/283/96276)
+* [UpdateClientState](https://cloud.tencent.com/document/api/283/96275)
+* [UpdateLocalTaskResult](https://cloud.tencent.com/document/api/283/96274)
 
 
 
-## SSL 证书(ssl) 版本：2019-12-05
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
-### 第 40 次发布
+### 第 41 次发布
 
-发布时间：2023-08-16 01:40:52
+发布时间：2023-08-17 06:34:07
 
 本次发布包含了以下内容：
 
@@ -115,40 +142,10 @@
 
 修改接口：
 
-* [ReplaceCertificate](https://cloud.tencent.com/document/api/400/41667)
+* [DescribeTableLineage](https://cloud.tencent.com/document/api/1267/94987)
 
-	* 新增入参：CertCSREncryptAlgo, CertCSRKeyParameter
+	* 新增入参：RecursiveSecond
 
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-### 第 49 次发布
-
-发布时间：2023-08-16 01:45:46
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80693)
-
-	* 新增入参：RuleTag
-
-
-修改数据结构：
-
-* [ApplicationProxyRule](https://cloud.tencent.com/document/api/1552/80721#ApplicationProxyRule)
-
-	* 新增成员：RuleTag
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
 
 
 
@@ -6752,6 +6749,21 @@
 
 
 ## 批量计算(batch) 版本：2017-03-12
+
+### 第 48 次发布
+
+发布时间：2023-08-17 01:18:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Application](https://cloud.tencent.com/document/api/599/15912#Application)
+
+	* <font color="#dd0000">**修改成员**：</font>Command
+
 
 ### 第 47 次发布
 
@@ -39703,8 +39715,8 @@
 
 新增数据结构：
 
-* [[ACTemplate](https://cloud.tencent.com/document/api/1025/74416#ACTemplate)](https://cloud.tencent.com/document/api/1025/74416#[ACTemplate](https://cloud.tencent.com/document/api/1025/74416#ACTemplate))
-* [[DepartmentManagerUser](https://cloud.tencent.com/document/api/1025/74416#DepartmentManagerUser)](https://cloud.tencent.com/document/api/1025/74416#[DepartmentManagerUser](https://cloud.tencent.com/document/api/1025/74416#DepartmentManagerUser))
+* [ACTemplate](https://cloud.tencent.com/document/api/1025/74416#ACTemplate)
+* [DepartmentManagerUser](https://cloud.tencent.com/document/api/1025/74416#DepartmentManagerUser)
 
 修改数据结构：
 
@@ -49195,11 +49207,11 @@
 
 新增接口：
 
-* [[ModifyResourcesTags](https://cloud.tencent.com/document/api/589/96242)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyResourcesTags](https://cloud.tencent.com/document/api/589/96242)
 
 新增数据结构：
 
-* [[ModifyResourceTags](https://cloud.tencent.com/document/api/589/33981#ModifyResourceTags)](https://cloud.tencent.com/document/api/589/33981#[ModifyResourceTags](https://cloud.tencent.com/document/api/589/33981#ModifyResourceTags))
+* [ModifyResourceTags](https://cloud.tencent.com/document/api/589/33981#ModifyResourceTags)
 
 ### 第 49 次发布
 
@@ -53404,6 +53416,21 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 103 次发布
+
+发布时间：2023-08-17 03:11:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreatePreparedPersonalEsign](https://cloud.tencent.com/document/api/1420/96160)
+
+	* 新增入参：SealImageCompress
+
+
 ### 第 102 次发布
 
 发布时间：2023-08-14 01:23:26
@@ -55486,6 +55513,38 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 60 次发布
+
+发布时间：2023-08-17 03:11:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DetectAuth](https://cloud.tencent.com/document/api/1007/31816)
+
+	* 新增入参：IntentionActions
+
+* [GetDetectInfoEnhanced](https://cloud.tencent.com/document/api/1007/41957)
+
+	* 新增出参：IntentionActionResult
+
+
+新增数据结构：
+
+* [[IntentionActionConfig](https://cloud.tencent.com/document/api/1007/41958#IntentionActionConfig)](https://cloud.tencent.com/document/api/1007/41958#[IntentionActionConfig](https://cloud.tencent.com/document/api/1007/41958#IntentionActionConfig))
+* [[IntentionActionResult](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResult)](https://cloud.tencent.com/document/api/1007/41958#[IntentionActionResult](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResult))
+* [[IntentionActionResultDetail](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResultDetail)](https://cloud.tencent.com/document/api/1007/41958#[IntentionActionResultDetail](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResultDetail))
+
+修改数据结构：
+
+* [RuleIdConfig](https://cloud.tencent.com/document/api/1007/41958#RuleIdConfig)
+
+	* 新增成员：IntentionType
+
 
 ### 第 59 次发布
 
@@ -64818,6 +64877,28 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 18 次发布
+
+发布时间：2023-08-17 03:37:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudStorage](https://cloud.tencent.com/document/api/1131/77505)
+
+	* 新增入参：OrderId
+
+
+修改数据结构：
+
+* [PackageInfo](https://cloud.tencent.com/document/api/1131/76635#PackageInfo)
+
+	* 新增成员：PackageId, OrderId
+
 
 ### 第 17 次发布
 
@@ -78072,6 +78153,20 @@
 
 
 ## 移动应用安全(ms) 版本：2018-04-08
+
+### 第 17 次发布
+
+发布时间：2023-08-17 04:17:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[RequestLocalTask](https://cloud.tencent.com/document/api/283/96276)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateClientState](https://cloud.tencent.com/document/api/283/96275)](https://cloud.tencent.com/document/api/#/#)
+* [[UpdateLocalTaskResult](https://cloud.tencent.com/document/api/283/96274)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 16 次发布
 
@@ -127435,6 +127530,21 @@
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 41 次发布
+
+发布时间：2023-08-17 06:34:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTableLineage](https://cloud.tencent.com/document/api/1267/94987)
+
+	* 新增入参：RecursiveSecond
+
 
 ### 第 40 次发布
 

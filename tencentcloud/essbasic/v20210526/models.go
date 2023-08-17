@@ -1837,23 +1837,26 @@ type ChannelCreatePreparedPersonalEsignRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 个人用户名称
+	// 个人用户姓名
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
 	// 身份证件号码
 	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
 
-	// 印章图片的base64
-	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
-
 	// 印章名称
 	SealName *string `json:"SealName,omitempty" name:"SealName"`
+
+	// 印章图片的base64，最大不超过 8M
+	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
 
 	// 操作者信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 身份证件类型
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
+	SealImageCompress *bool `json:"SealImageCompress,omitempty" name:"SealImageCompress"`
 
 	// 手机号码；当需要开通自动签时，该参数必传
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
@@ -1868,23 +1871,26 @@ type ChannelCreatePreparedPersonalEsignRequest struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 和 Agent.ProxyAppId 必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 个人用户名称
+	// 个人用户姓名
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
 
 	// 身份证件号码
 	IdCardNumber *string `json:"IdCardNumber,omitempty" name:"IdCardNumber"`
 
-	// 印章图片的base64
-	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
-
 	// 印章名称
 	SealName *string `json:"SealName,omitempty" name:"SealName"`
+
+	// 印章图片的base64，最大不超过 8M
+	SealImage *string `json:"SealImage,omitempty" name:"SealImage"`
 
 	// 操作者信息
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
 	// 身份证件类型
 	IdCardType *string `json:"IdCardType,omitempty" name:"IdCardType"`
+
+	// 是否开启印章图片压缩处理，默认不开启，如需开启请设置为 true。当印章超过 2M 时建议开启，开启后图片的 hash 将发生变化。
+	SealImageCompress *bool `json:"SealImageCompress,omitempty" name:"SealImageCompress"`
 
 	// 手机号码；当需要开通自动签时，该参数必传
 	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
@@ -1908,10 +1914,11 @@ func (r *ChannelCreatePreparedPersonalEsignRequest) FromJsonString(s string) err
 	delete(f, "Agent")
 	delete(f, "UserName")
 	delete(f, "IdCardNumber")
-	delete(f, "SealImage")
 	delete(f, "SealName")
+	delete(f, "SealImage")
 	delete(f, "Operator")
 	delete(f, "IdCardType")
+	delete(f, "SealImageCompress")
 	delete(f, "Mobile")
 	delete(f, "EnableAutoSign")
 	if len(f) > 0 {
@@ -3968,7 +3975,7 @@ type CreateFlowsByTemplatesRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 多个合同（签署流程）信息，最多支持20个
+	// 要创建的合同信息列表，最多支持一次创建20个合同
 	FlowInfos []*FlowInfo `json:"FlowInfos,omitempty" name:"FlowInfos"`
 
 	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls；
@@ -3991,7 +3998,7 @@ type CreateFlowsByTemplatesRequest struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 均必填。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
-	// 多个合同（签署流程）信息，最多支持20个
+	// 要创建的合同信息列表，最多支持一次创建20个合同
 	FlowInfos []*FlowInfo `json:"FlowInfos,omitempty" name:"FlowInfos"`
 
 	// 是否为预览模式；默认为false，即非预览模式，此时发起合同并返回FlowIds；若为预览模式，不会发起合同，会返回PreviewUrls；
@@ -4034,7 +4041,7 @@ type CreateFlowsByTemplatesResponseParams struct {
 	// 多个合同ID
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 业务信息，限制1024字符
+	// 第三方应用平台的业务信息, 与创建合同的FlowInfos数组中的CustomerData一一对应
 	CustomerData []*string `json:"CustomerData,omitempty" name:"CustomerData"`
 
 	// 创建消息，对应多个合同ID，

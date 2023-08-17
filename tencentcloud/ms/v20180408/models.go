@@ -2311,6 +2311,85 @@ type PluginListItem struct {
 	PluginDesc *string `json:"PluginDesc,omitempty" name:"PluginDesc"`
 }
 
+// Predefined struct for user
+type RequestLocalTaskRequestParams struct {
+	// Client Id
+	ClientId *string `json:"ClientId,omitempty" name:"ClientId"`
+}
+
+type RequestLocalTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// Client Id
+	ClientId *string `json:"ClientId,omitempty" name:"ClientId"`
+}
+
+func (r *RequestLocalTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RequestLocalTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RequestLocalTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RequestLocalTaskResponseParams struct {
+	// 返回的任务id
+	Sid *string `json:"Sid,omitempty" name:"Sid"`
+
+	// 任务文件的mk5
+	SrcFileMd5 *string `json:"SrcFileMd5,omitempty" name:"SrcFileMd5"`
+
+	// 文件大小，可不传
+	SrcFileSize *int64 `json:"SrcFileSize,omitempty" name:"SrcFileSize"`
+
+	// 任务文件的下载地址，必须无鉴权可下载
+	SrcFileUrl *string `json:"SrcFileUrl,omitempty" name:"SrcFileUrl"`
+
+	// release: 需要INFO-PLIST文件，会生成工具部署安装包，并带有license文件，绑定机器；nobind不需要INFO-PLIST文件，不绑定机器
+	SrcFileType *string `json:"SrcFileType,omitempty" name:"SrcFileType"`
+
+	// enterprise
+	// trial
+	SrcFileVersion *string `json:"SrcFileVersion,omitempty" name:"SrcFileVersion"`
+
+	// 补充字段
+	EncryptParam *string `json:"EncryptParam,omitempty" name:"EncryptParam"`
+
+	// 任务状态
+	EncryptState *int64 `json:"EncryptState,omitempty" name:"EncryptState"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RequestLocalTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *RequestLocalTaskResponseParams `json:"Response"`
+}
+
+func (r *RequestLocalTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RequestLocalTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ResourceInfo struct {
 	// 用户购买的资源id，全局唯一
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
@@ -2481,4 +2560,181 @@ type ShieldPlanInfo struct {
 type SoInfo struct {
 	// so文件列表
 	SoFileNames []*string `json:"SoFileNames,omitempty" name:"SoFileNames"`
+}
+
+// Predefined struct for user
+type UpdateClientStateRequestParams struct {
+	// Client Id
+	ClientId *string `json:"ClientId,omitempty" name:"ClientId"`
+
+	// Ip addr
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 内部分组
+	Internal *int64 `json:"Internal,omitempty" name:"Internal"`
+
+	// Client  Version
+	ServerVersion *string `json:"ServerVersion,omitempty" name:"ServerVersion"`
+
+	// 主机
+	Hostname *string `json:"Hostname,omitempty" name:"Hostname"`
+
+	// 系统
+	Os *string `json:"Os,omitempty" name:"Os"`
+}
+
+type UpdateClientStateRequest struct {
+	*tchttp.BaseRequest
+	
+	// Client Id
+	ClientId *string `json:"ClientId,omitempty" name:"ClientId"`
+
+	// Ip addr
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 内部分组
+	Internal *int64 `json:"Internal,omitempty" name:"Internal"`
+
+	// Client  Version
+	ServerVersion *string `json:"ServerVersion,omitempty" name:"ServerVersion"`
+
+	// 主机
+	Hostname *string `json:"Hostname,omitempty" name:"Hostname"`
+
+	// 系统
+	Os *string `json:"Os,omitempty" name:"Os"`
+}
+
+func (r *UpdateClientStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateClientStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClientId")
+	delete(f, "Ip")
+	delete(f, "Internal")
+	delete(f, "ServerVersion")
+	delete(f, "Hostname")
+	delete(f, "Os")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateClientStateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateClientStateResponseParams struct {
+	// 返回值
+	ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateClientStateResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateClientStateResponseParams `json:"Response"`
+}
+
+func (r *UpdateClientStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateClientStateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateLocalTaskResultRequestParams struct {
+	// 任务id
+	Sid *string `json:"Sid,omitempty" name:"Sid"`
+
+	// 一级任务code。标记任务状态
+	ResultCode *int64 `json:"ResultCode,omitempty" name:"ResultCode"`
+
+	// 二级错误码
+	SubCode *int64 `json:"SubCode,omitempty" name:"SubCode"`
+
+	// 二级错误信息
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 结果
+	Result *string `json:"Result,omitempty" name:"Result"`
+}
+
+type UpdateLocalTaskResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id
+	Sid *string `json:"Sid,omitempty" name:"Sid"`
+
+	// 一级任务code。标记任务状态
+	ResultCode *int64 `json:"ResultCode,omitempty" name:"ResultCode"`
+
+	// 二级错误码
+	SubCode *int64 `json:"SubCode,omitempty" name:"SubCode"`
+
+	// 二级错误信息
+	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+
+	// 结果
+	Result *string `json:"Result,omitempty" name:"Result"`
+}
+
+func (r *UpdateLocalTaskResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateLocalTaskResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Sid")
+	delete(f, "ResultCode")
+	delete(f, "SubCode")
+	delete(f, "ErrMsg")
+	delete(f, "Result")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateLocalTaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateLocalTaskResultResponseParams struct {
+	// 标记成功
+	ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateLocalTaskResultResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateLocalTaskResultResponseParams `json:"Response"`
+}
+
+func (r *UpdateLocalTaskResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateLocalTaskResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }

@@ -18687,6 +18687,9 @@ type DescribeTableLineageRequestParams struct {
 
 	// 是否过滤临时表,默认true
 	IgnoreTemp *bool `json:"IgnoreTemp,omitempty" name:"IgnoreTemp"`
+
+	// 是否递归查询二级节点数目，默认为true
+	RecursiveSecond *bool `json:"RecursiveSecond,omitempty" name:"RecursiveSecond"`
 }
 
 type DescribeTableLineageRequest struct {
@@ -18709,6 +18712,9 @@ type DescribeTableLineageRequest struct {
 
 	// 是否过滤临时表,默认true
 	IgnoreTemp *bool `json:"IgnoreTemp,omitempty" name:"IgnoreTemp"`
+
+	// 是否递归查询二级节点数目，默认为true
+	RecursiveSecond *bool `json:"RecursiveSecond,omitempty" name:"RecursiveSecond"`
 }
 
 func (r *DescribeTableLineageRequest) ToJsonString() string {
@@ -18729,6 +18735,7 @@ func (r *DescribeTableLineageRequest) FromJsonString(s string) error {
 	delete(f, "OutputDepth")
 	delete(f, "ExtParams")
 	delete(f, "IgnoreTemp")
+	delete(f, "RecursiveSecond")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTableLineageRequest has unknown keys!", "")
 	}

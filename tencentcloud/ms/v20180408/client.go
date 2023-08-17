@@ -1266,3 +1266,183 @@ func (c *Client) DescribeUserBaseInfoInstanceWithContext(ctx context.Context, re
     err = c.Send(request, response)
     return
 }
+
+func NewRequestLocalTaskRequest() (request *RequestLocalTaskRequest) {
+    request = &RequestLocalTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ms", APIVersion, "RequestLocalTask")
+    
+    
+    return
+}
+
+func NewRequestLocalTaskResponse() (response *RequestLocalTaskResponse) {
+    response = &RequestLocalTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RequestLocalTask
+// client任务请求地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RequestLocalTask(request *RequestLocalTaskRequest) (response *RequestLocalTaskResponse, err error) {
+    return c.RequestLocalTaskWithContext(context.Background(), request)
+}
+
+// RequestLocalTask
+// client任务请求地址
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RequestLocalTaskWithContext(ctx context.Context, request *RequestLocalTaskRequest) (response *RequestLocalTaskResponse, err error) {
+    if request == nil {
+        request = NewRequestLocalTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RequestLocalTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRequestLocalTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateClientStateRequest() (request *UpdateClientStateRequest) {
+    request = &UpdateClientStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ms", APIVersion, "UpdateClientState")
+    
+    
+    return
+}
+
+func NewUpdateClientStateResponse() (response *UpdateClientStateResponse) {
+    response = &UpdateClientStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateClientState
+// 更新client状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateClientState(request *UpdateClientStateRequest) (response *UpdateClientStateResponse, err error) {
+    return c.UpdateClientStateWithContext(context.Background(), request)
+}
+
+// UpdateClientState
+// 更新client状态
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateClientStateWithContext(ctx context.Context, request *UpdateClientStateRequest) (response *UpdateClientStateResponse, err error) {
+    if request == nil {
+        request = NewUpdateClientStateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateClientState require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateClientStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateLocalTaskResultRequest() (request *UpdateLocalTaskResultRequest) {
+    request = &UpdateLocalTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ms", APIVersion, "UpdateLocalTaskResult")
+    
+    
+    return
+}
+
+func NewUpdateLocalTaskResultResponse() (response *UpdateLocalTaskResultResponse) {
+    response = &UpdateLocalTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateLocalTaskResult
+// 更新本地任务结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateLocalTaskResult(request *UpdateLocalTaskResultRequest) (response *UpdateLocalTaskResultResponse, err error) {
+    return c.UpdateLocalTaskResultWithContext(context.Background(), request)
+}
+
+// UpdateLocalTaskResult
+// 更新本地任务结果
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateLocalTaskResultWithContext(ctx context.Context, request *UpdateLocalTaskResultRequest) (response *UpdateLocalTaskResultResponse, err error) {
+    if request == nil {
+        request = NewUpdateLocalTaskResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateLocalTaskResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateLocalTaskResultResponse()
+    err = c.Send(request, response)
+    return
+}

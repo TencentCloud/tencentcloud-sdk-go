@@ -887,11 +887,14 @@ type DetectAuthRequestParams struct {
 	// 意愿核身（朗读模式）使用的文案，若未使用意愿核身（朗读模式），则该字段无需传入。默认为空，最长可接受120的字符串长度。
 	IntentionVerifyText *string `json:"IntentionVerifyText,omitempty" name:"IntentionVerifyText"`
 
-	// 意愿核身（问答模式）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持一个播报文本+回答文本。
+	// 意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持1轮问答。
 	IntentionQuestions []*IntentionQuestion `json:"IntentionQuestions,omitempty" name:"IntentionQuestions"`
 
 	// RuleId相关配置
 	Config *RuleIdConfig `json:"Config,omitempty" name:"Config"`
+
+	// 意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。当前仅支持一个提示文本。
+	IntentionActions []*IntentionActionConfig `json:"IntentionActions,omitempty" name:"IntentionActions"`
 }
 
 type DetectAuthRequest struct {
@@ -926,11 +929,14 @@ type DetectAuthRequest struct {
 	// 意愿核身（朗读模式）使用的文案，若未使用意愿核身（朗读模式），则该字段无需传入。默认为空，最长可接受120的字符串长度。
 	IntentionVerifyText *string `json:"IntentionVerifyText,omitempty" name:"IntentionVerifyText"`
 
-	// 意愿核身（问答模式）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持一个播报文本+回答文本。
+	// 意愿核身语音问答模式（即语音播报+语音回答）使用的文案，包括：系统语音播报的文本、需要核验的标准文本。当前仅支持1轮问答。
 	IntentionQuestions []*IntentionQuestion `json:"IntentionQuestions,omitempty" name:"IntentionQuestions"`
 
 	// RuleId相关配置
 	Config *RuleIdConfig `json:"Config,omitempty" name:"Config"`
+
+	// 意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。当前仅支持一个提示文本。
+	IntentionActions []*IntentionActionConfig `json:"IntentionActions,omitempty" name:"IntentionActions"`
 }
 
 func (r *DetectAuthRequest) ToJsonString() string {
@@ -956,6 +962,7 @@ func (r *DetectAuthRequest) FromJsonString(s string) error {
 	delete(f, "IntentionVerifyText")
 	delete(f, "IntentionQuestions")
 	delete(f, "Config")
+	delete(f, "IntentionActions")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetectAuthRequest has unknown keys!", "")
 	}
@@ -1560,6 +1567,10 @@ type GetDetectInfoEnhancedResponseParams struct {
 	// 意愿核身问答模式结果。若未使用该意愿核身功能，该字段返回值可以不处理。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntentionQuestionResult *IntentionQuestionResult `json:"IntentionQuestionResult,omitempty" name:"IntentionQuestionResult"`
+
+	// 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntentionActionResult *IntentionActionResult `json:"IntentionActionResult,omitempty" name:"IntentionActionResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -2598,11 +2609,59 @@ func (r *ImageRecognitionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type IntentionActionConfig struct {
+	// 点头确认模式下，系统语音播报使用的问题文本，问题最大长度为150个字符。
+	Text *string `json:"Text,omitempty" name:"Text"`
+}
+
+type IntentionActionResult struct {
+	// 意愿核身错误码：
+	// 0: "成功"       
+	// -1: "参数错误"    
+	// -2: "系统异常"    
+	// -101: "请保持人脸在框内"    
+	// -102: "检测到多张人脸"   
+	// -103: "人脸检测失败"   
+	// -104: "人脸检测不完整"   
+	// -105: "请勿遮挡眼睛"    
+	// -106: "请勿遮挡嘴巴"     
+	// -107: "请勿遮挡鼻子"     
+	// -201: "人脸比对相似度低"    
+	// -202: "人脸比对失败"    
+	// -301: "意愿核验不通过"   
+	// -800: "前端不兼容错误"    
+	// -801: "用户未授权摄像头和麦克风权限"   
+	// -802: "获取视频流失败"   
+	// -803: "用户主动关闭链接/异常断开链接"   
+	// -998: "系统数据异常"   
+	// -999: "系统未知错误，请联系人工核实"   
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinalResultDetailCode *int64 `json:"FinalResultDetailCode,omitempty" name:"FinalResultDetailCode"`
+
+	// 意愿核身错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinalResultMessage *string `json:"FinalResultMessage,omitempty" name:"FinalResultMessage"`
+
+	// 意愿核身结果详细数据，与每段点头确认过程一一对应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Details []*IntentionActionResultDetail `json:"Details,omitempty" name:"Details"`
+}
+
+type IntentionActionResultDetail struct {
+	// 视频base64编码（其中包含全程提示文本和点头音频，mp4格式）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Video *string `json:"Video,omitempty" name:"Video"`
+
+	// 屏幕截图base64编码列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScreenShot []*string `json:"ScreenShot,omitempty" name:"ScreenShot"`
+}
+
 type IntentionQuestion struct {
-	// 系统播报的问题文本，问题最大长度为150个字符。
+	// 当选择语音问答模式时，系统自动播报的问题文本，最大长度为150个字符。
 	Question *string `json:"Question,omitempty" name:"Question"`
 
-	// 用户答案的标准文本列表，用于识别用户回答的语音与标准文本是否一致。列表长度最大为50，单个答案长度限制10个字符。
+	// 当选择语音问答模式时，用于判断用户回答是否通过的标准答案列表，传入后可自动判断用户回答文本是否在标准文本列表中。列表长度最大为50，单个答案长度限制10个字符。
 	Answers []*string `json:"Answers,omitempty" name:"Answers"`
 }
 
@@ -3896,6 +3955,11 @@ func (r *PhoneVerificationResponse) FromJsonString(s string) error {
 type RuleIdConfig struct {
 	// 意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认不开启。
 	IntentionRecognition *bool `json:"IntentionRecognition,omitempty" name:"IntentionRecognition"`
+
+	// 意愿核身类型，默认为0：
+	// 0：问答模式，DetectAuth接口需要传入IntentionQuestions字段；
+	// 1：点头模式，DetectAuth接口需要传入IntentionActions字段；
+	IntentionType *int64 `json:"IntentionType,omitempty" name:"IntentionType"`
 }
 
 type WeChatBillDetail struct {

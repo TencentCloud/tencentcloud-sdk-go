@@ -2026,7 +2026,7 @@ func NewDescribeBillingSpecsPriceResponse() (response *DescribeBillingSpecsPrice
 }
 
 // DescribeBillingSpecsPrice
-// 本接口(DescribeBillingSpecsPrice)用于查询计费项价格。
+// 本接口(DescribeBillingSpecsPrice)用于查询按量计费计费项价格。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
@@ -2038,7 +2038,7 @@ func (c *Client) DescribeBillingSpecsPrice(request *DescribeBillingSpecsPriceReq
 }
 
 // DescribeBillingSpecsPrice
-// 本接口(DescribeBillingSpecsPrice)用于查询计费项价格。
+// 本接口(DescribeBillingSpecsPrice)用于查询按量计费计费项价格。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"

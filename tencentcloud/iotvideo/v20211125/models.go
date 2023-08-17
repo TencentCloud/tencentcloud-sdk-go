@@ -1230,6 +1230,9 @@ type CreateCloudStorageRequestParams struct {
 
 	// 套餐列表顺序：PackageQueue=front会立即使用新购买的套餐，新购套餐结束后，列表中下一个未过期的套餐继续生效；PackageQueue=end会等设备当前所有已购买套餐过期后才会生效新购套餐。与Override参数不能同时使用。
 	PackageQueue *string `json:"PackageQueue,omitempty" name:"PackageQueue"`
+
+	// 订单id
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 }
 
 type CreateCloudStorageRequest struct {
@@ -1269,6 +1272,9 @@ type CreateCloudStorageRequest struct {
 
 	// 套餐列表顺序：PackageQueue=front会立即使用新购买的套餐，新购套餐结束后，列表中下一个未过期的套餐继续生效；PackageQueue=end会等设备当前所有已购买套餐过期后才会生效新购套餐。与Override参数不能同时使用。
 	PackageQueue *string `json:"PackageQueue,omitempty" name:"PackageQueue"`
+
+	// 订单id
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 }
 
 func (r *CreateCloudStorageRequest) ToJsonString() string {
@@ -1288,6 +1294,7 @@ func (r *CreateCloudStorageRequest) FromJsonString(s string) error {
 	delete(f, "PackageId")
 	delete(f, "Override")
 	delete(f, "PackageQueue")
+	delete(f, "OrderId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudStorageRequest has unknown keys!", "")
 	}
@@ -7403,6 +7410,14 @@ type PackageInfo struct {
 	// 云存套餐更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdatedAt *int64 `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 套餐id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 订单id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
 }
 
 type ProductModelDefinition struct {

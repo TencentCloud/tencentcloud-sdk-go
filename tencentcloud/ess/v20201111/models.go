@@ -3735,7 +3735,7 @@ func (r *CreateSchemeUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSchemeUrlResponseParams struct {
-	// 小程序链接地址，有效期5分钟
+	// 小程序链接地址，有效期30天
 	SchemeUrl *string `json:"SchemeUrl,omitempty" name:"SchemeUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

@@ -1592,7 +1592,7 @@ func NewChannelCreatePreparedPersonalEsignResponse() (response *ChannelCreatePre
 }
 
 // ChannelCreatePreparedPersonalEsign
-// 本接口（ChannelCreatePreparedPersonalEsign）用于创建导入个人印章
+// 本接口（ChannelCreatePreparedPersonalEsign）用于创建导入个人印章（处方单场景专用，使用此接口请与客户经理确认）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1608,7 +1608,7 @@ func (c *Client) ChannelCreatePreparedPersonalEsign(request *ChannelCreatePrepar
 }
 
 // ChannelCreatePreparedPersonalEsign
-// 本接口（ChannelCreatePreparedPersonalEsign）用于创建导入个人印章
+// 本接口（ChannelCreatePreparedPersonalEsign）用于创建导入个人印章（处方单场景专用，使用此接口请与客户经理确认）。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2854,12 +2854,7 @@ func NewCreateFlowsByTemplatesResponse() (response *CreateFlowsByTemplatesRespon
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
-//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
 //  INVALIDPARAMETER_APPROVERVERIFYTYPE = "InvalidParameter.ApproverVerifyType"
@@ -2896,12 +2891,7 @@ func (c *Client) CreateFlowsByTemplates(request *CreateFlowsByTemplatesRequest) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
-//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
-//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
-//  INTERNALERROR_THIRDPARTY = "InternalError.ThirdParty"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
 //  INVALIDPARAMETER_APPROVERVERIFYTYPE = "InvalidParameter.ApproverVerifyType"

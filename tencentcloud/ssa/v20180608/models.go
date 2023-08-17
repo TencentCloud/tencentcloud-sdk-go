@@ -2431,7 +2431,7 @@ type DescribeSocAlertListRequestParams struct {
 	// 排序参数
 	Sorter []*QuerySort `json:"Sorter,omitempty" name:"Sorter"`
 
-	// 是否导出
+	// 是否导出；默认为否，如量级超过1000，则使用单独的导出接口
 	ExportFlag *bool `json:"ExportFlag,omitempty" name:"ExportFlag"`
 }
 
@@ -2453,7 +2453,7 @@ type DescribeSocAlertListRequest struct {
 	// 排序参数
 	Sorter []*QuerySort `json:"Sorter,omitempty" name:"Sorter"`
 
-	// 是否导出
+	// 是否导出；默认为否，如量级超过1000，则使用单独的导出接口
 	ExportFlag *bool `json:"ExportFlag,omitempty" name:"ExportFlag"`
 }
 
