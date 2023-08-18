@@ -255,6 +255,10 @@ type AdaptiveDynamicStreamingTaskInput struct {
 
 	// 转自适应码流（仅 HLS）后，分片文件的输出路径，只能为相对路径。如果不填，则默认为相对路径：`{inputName}_adaptiveDynamicStreaming_{definition}_{subStreamNumber}_{segmentNumber}.{format}`。
 	SegmentObjectName *string `json:"SegmentObjectName,omitempty" name:"SegmentObjectName"`
+
+	// 要插入的字幕文件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddOnSubtitles []*AddOnSubtitle `json:"AddOnSubtitles,omitempty" name:"AddOnSubtitles"`
 }
 
 type AdaptiveDynamicStreamingTemplate struct {
@@ -313,6 +317,18 @@ type AdaptiveStreamTemplate struct {
 	// <li>0：否，</li>
 	// <li>1：是。</li>
 	RemoveVideo *uint64 `json:"RemoveVideo,omitempty" name:"RemoveVideo"`
+}
+
+type AddOnSubtitle struct {
+	// 插入形式，可选值：
+	// <li>subtitle-stream：插入字幕轨道</li>
+	// <li>close-caption：编码到SEI帧</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 字幕文件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Subtitle *MediaInputInfo `json:"Subtitle,omitempty" name:"Subtitle"`
 }
 
 type AiAnalysisResult struct {
@@ -12226,6 +12242,10 @@ type OverrideTranscodeParameter struct {
 	// 转码扩展字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StdExtInfo *string `json:"StdExtInfo,omitempty" name:"StdExtInfo"`
+
+	// 要插入的字幕文件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AddOnSubtitles []*AddOnSubtitle `json:"AddOnSubtitles,omitempty" name:"AddOnSubtitles"`
 }
 
 // Predefined struct for user
@@ -13386,15 +13406,19 @@ type S3InputInfo struct {
 
 type S3OutputStorage struct {
 	// S3 bucket。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	S3Bucket *string `json:"S3Bucket,omitempty" name:"S3Bucket"`
 
 	// S3 bucket 对应的区域。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	S3Region *string `json:"S3Region,omitempty" name:"S3Region"`
 
 	// AWS 内网上传 媒体资源的秘钥id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	S3SecretId *string `json:"S3SecretId,omitempty" name:"S3SecretId"`
 
 	// AWS 内网上传 媒体资源的秘钥key。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	S3SecretKey *string `json:"S3SecretKey,omitempty" name:"S3SecretKey"`
 }
 

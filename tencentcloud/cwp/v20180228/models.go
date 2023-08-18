@@ -13381,7 +13381,9 @@ type DescribeLicenseBindListRequestParams struct {
 	// 资源ID
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// <li>Keywords 机器别名/公私IP 模糊查询</li>
+	// <li>InstanceID、IP、
+	// 
+	// MachineName 模糊查询</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 
 	// 限制条数,默认10.
@@ -13403,7 +13405,9 @@ type DescribeLicenseBindListRequest struct {
 	// 资源ID
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// <li>Keywords 机器别名/公私IP 模糊查询</li>
+	// <li>InstanceID、IP、
+	// 
+	// MachineName 模糊查询</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
 
 	// 限制条数,默认10.

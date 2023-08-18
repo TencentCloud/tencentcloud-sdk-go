@@ -3091,6 +3091,78 @@ func (r *DescribeCloudStorageEventsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCloudStorageOrderRequestParams struct {
+	// 订单id
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+}
+
+type DescribeCloudStorageOrderRequest struct {
+	*tchttp.BaseRequest
+	
+	// 订单id
+	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+}
+
+func (r *DescribeCloudStorageOrderRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageOrderRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OrderId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageOrderRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudStorageOrderResponseParams struct {
+	// 云存套餐开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 云存套餐过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 套餐id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+
+	// 套餐状态
+	// 0：等待生效
+	// 1: 已过期
+	// 2:生效
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCloudStorageOrderResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudStorageOrderResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudStorageOrderResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudStorageOrderResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCloudStoragePackageConsumeDetailsRequestParams struct {
 	// 开始日期
 	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`

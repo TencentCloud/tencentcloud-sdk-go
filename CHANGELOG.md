@@ -1,3 +1,187 @@
+# Release v1.0.726
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 142 次发布
+
+发布时间：2023-08-18 01:07:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeBackupDatabases
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* DatabaseName
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 68 次发布
+
+发布时间：2023-08-18 01:11:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVpc](https://cloud.tencent.com/document/api/1108/43569)
+
+	* 新增入参：ISPTypes
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 104 次发布
+
+发布时间：2023-08-18 01:11:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateFlowGroupByFiles](https://cloud.tencent.com/document/api/1420/80390)
+
+	* 新增入参：FlowGroupOptions
+
+
+新增数据结构：
+
+* [FlowGroupOptions](https://cloud.tencent.com/document/api/1420/61525#FlowGroupOptions)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 19 次发布
+
+发布时间：2023-08-18 01:13:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCloudStorageOrder](https://cloud.tencent.com/document/api/1131/96706)
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 37 次发布
+
+发布时间：2023-08-17 20:45:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteUser](https://cloud.tencent.com/document/api/1639/96698)
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 66 次发布
+
+发布时间：2023-08-18 01:14:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AddOnSubtitle](https://cloud.tencent.com/document/api/862/37615#AddOnSubtitle)
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTaskInput)
+
+	* 新增成员：AddOnSubtitles
+
+* [MediaAudioStreamItem](https://cloud.tencent.com/document/api/862/37615#MediaAudioStreamItem)
+
+	* <font color="#dd0000">**修改成员**：</font>Codecs, Loudness
+
+* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/862/37615#MediaVideoStreamItem)
+
+	* <font color="#dd0000">**修改成员**：</font>Codecs
+
+* [OverrideTranscodeParameter](https://cloud.tencent.com/document/api/862/37615#OverrideTranscodeParameter)
+
+	* 新增成员：AddOnSubtitles
+
+
+
+
+## NLP 服务(nlp) 版本：2019-04-08
+
+### 第 21 次发布
+
+发布时间：2023-08-18 01:15:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [TestingTextGeneration](https://cloud.tencent.com/document/api/271/96708)
+
+新增数据结构：
+
+* [TextGenerationChoices](https://cloud.tencent.com/document/api/271/35511#TextGenerationChoices)
+* [TextGenerationMessage](https://cloud.tencent.com/document/api/271/35511#TextGenerationMessage)
+* [TextGenerationUsage](https://cloud.tencent.com/document/api/271/35511#TextGenerationUsage)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 165 次发布
+
+发布时间：2023-08-18 01:20:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54677)
+
+	* 新增出参：VpcEndPointServiceUserSet
+
+
+
+
 # Release v1.0.725
 
 ## 批量计算(batch) 版本：2017-03-12

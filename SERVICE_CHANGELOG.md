@@ -1,29 +1,30 @@
 # 本版本更新包含以下内容：
 
-## 批量计算(batch) 版本：2017-03-12
+## 云数据库 MySQL(cdb) 版本：2017-03-20
 
-### 第 48 次发布
+### 第 142 次发布
 
-发布时间：2023-08-17 01:18:33
+发布时间：2023-08-18 01:07:18
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+<font color="#dd0000">**删除接口**：</font>
 
-* [Application](https://cloud.tencent.com/document/api/599/15912#Application)
+* DescribeBackupDatabases
 
-	* <font color="#dd0000">**修改成员**：</font>Command
+<font color="#dd0000">**删除数据结构**：</font>
+
+* DatabaseName
 
 
 
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+### 第 68 次发布
 
-### 第 103 次发布
-
-发布时间：2023-08-17 03:11:06
+发布时间：2023-08-18 01:11:07
 
 本次发布包含了以下内容：
 
@@ -31,10 +32,33 @@
 
 修改接口：
 
-* [ChannelCreatePreparedPersonalEsign](https://cloud.tencent.com/document/api/1420/96160)
+* [CreateVpc](https://cloud.tencent.com/document/api/1108/43569)
 
-	* 新增入参：SealImageCompress
+	* 新增入参：ISPTypes
 
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 104 次发布
+
+发布时间：2023-08-18 01:11:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateFlowGroupByFiles](https://cloud.tencent.com/document/api/1420/80390)
+
+	* 新增入参：FlowGroupOptions
+
+
+新增数据结构：
+
+* [FlowGroupOptions](https://cloud.tencent.com/document/api/1420/61525#FlowGroupOptions)
 
 
 
@@ -42,65 +66,19 @@
 
 
 
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 60 次发布
-
-发布时间：2023-08-17 03:11:54
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DetectAuth](https://cloud.tencent.com/document/api/1007/31816)
-
-	* 新增入参：IntentionActions
-
-* [GetDetectInfoEnhanced](https://cloud.tencent.com/document/api/1007/41957)
-
-	* 新增出参：IntentionActionResult
-
-
-新增数据结构：
-
-* [IntentionActionConfig](https://cloud.tencent.com/document/api/1007/41958#IntentionActionConfig)
-* [IntentionActionResult](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResult)
-* [IntentionActionResultDetail](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResultDetail)
-
-修改数据结构：
-
-* [RuleIdConfig](https://cloud.tencent.com/document/api/1007/41958#RuleIdConfig)
-
-	* 新增成员：IntentionType
-
-
-
-
 ## 物联网智能视频服务(iotvideo) 版本：2021-11-25
 
-### 第 18 次发布
+### 第 19 次发布
 
-发布时间：2023-08-17 03:37:09
+发布时间：2023-08-18 01:13:17
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [CreateCloudStorage](https://cloud.tencent.com/document/api/1131/77505)
-
-	* 新增入参：OrderId
-
-
-修改数据结构：
-
-* [PackageInfo](https://cloud.tencent.com/document/api/1131/76635#PackageInfo)
-
-	* 新增成员：PackageId, OrderId
-
+* [DescribeCloudStorageOrder](https://cloud.tencent.com/document/api/1131/96706)
 
 
 
@@ -112,11 +90,11 @@
 
 
 
-## 移动应用安全(ms) 版本：2018-04-08
+## 低代码互动课堂(lcic) 版本：2022-08-17
 
-### 第 17 次发布
+### 第 37 次发布
 
-发布时间：2023-08-17 04:17:58
+发布时间：2023-08-17 20:45:43
 
 本次发布包含了以下内容：
 
@@ -124,17 +102,72 @@
 
 新增接口：
 
-* [RequestLocalTask](https://cloud.tencent.com/document/api/283/96276)
-* [UpdateClientState](https://cloud.tencent.com/document/api/283/96275)
-* [UpdateLocalTaskResult](https://cloud.tencent.com/document/api/283/96274)
+* [DeleteUser](https://cloud.tencent.com/document/api/1639/96698)
 
 
 
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+## 媒体处理(mps) 版本：2019-06-12
 
-### 第 41 次发布
+### 第 66 次发布
 
-发布时间：2023-08-17 06:34:07
+发布时间：2023-08-18 01:14:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AddOnSubtitle](https://cloud.tencent.com/document/api/862/37615#AddOnSubtitle)
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTaskInput)
+
+	* 新增成员：AddOnSubtitles
+
+* [MediaAudioStreamItem](https://cloud.tencent.com/document/api/862/37615#MediaAudioStreamItem)
+
+	* <font color="#dd0000">**修改成员**：</font>Codecs, Loudness
+
+* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/862/37615#MediaVideoStreamItem)
+
+	* <font color="#dd0000">**修改成员**：</font>Codecs
+
+* [OverrideTranscodeParameter](https://cloud.tencent.com/document/api/862/37615#OverrideTranscodeParameter)
+
+	* 新增成员：AddOnSubtitles
+
+
+
+
+## NLP 服务(nlp) 版本：2019-04-08
+
+### 第 21 次发布
+
+发布时间：2023-08-18 01:15:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [TestingTextGeneration](https://cloud.tencent.com/document/api/271/96708)
+
+新增数据结构：
+
+* [TextGenerationChoices](https://cloud.tencent.com/document/api/271/35511#TextGenerationChoices)
+* [TextGenerationMessage](https://cloud.tencent.com/document/api/271/35511#TextGenerationMessage)
+* [TextGenerationUsage](https://cloud.tencent.com/document/api/271/35511#TextGenerationUsage)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 165 次发布
+
+发布时间：2023-08-18 01:20:12
 
 本次发布包含了以下内容：
 
@@ -142,9 +175,9 @@
 
 修改接口：
 
-* [DescribeTableLineage](https://cloud.tencent.com/document/api/1267/94987)
+* [DescribeVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54677)
 
-	* 新增入参：RecursiveSecond
+	* 新增出参：VpcEndPointServiceUserSet
 
 
 
@@ -14448,6 +14481,22 @@
 
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 142 次发布
+
+发布时间：2023-08-18 01:07:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeBackupDatabases
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* DatabaseName
 
 ### 第 141 次发布
 
@@ -47104,6 +47153,21 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 68 次发布
+
+发布时间：2023-08-18 01:11:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateVpc](https://cloud.tencent.com/document/api/1108/43569)
+
+	* 新增入参：ISPTypes
+
+
 ### 第 67 次发布
 
 发布时间：2023-07-11 01:20:38
@@ -53416,6 +53480,25 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 104 次发布
+
+发布时间：2023-08-18 01:11:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateFlowGroupByFiles](https://cloud.tencent.com/document/api/1420/80390)
+
+	* 新增入参：FlowGroupOptions
+
+
+新增数据结构：
+
+* [[FlowGroupOptions](https://cloud.tencent.com/document/api/1420/61525#FlowGroupOptions)](https://cloud.tencent.com/document/api/1420/61525#[FlowGroupOptions](https://cloud.tencent.com/document/api/1420/61525#FlowGroupOptions))
+
 ### 第 103 次发布
 
 发布时间：2023-08-17 03:11:06
@@ -55535,9 +55618,9 @@
 
 新增数据结构：
 
-* [[IntentionActionConfig](https://cloud.tencent.com/document/api/1007/41958#IntentionActionConfig)](https://cloud.tencent.com/document/api/1007/41958#[IntentionActionConfig](https://cloud.tencent.com/document/api/1007/41958#IntentionActionConfig))
-* [[IntentionActionResult](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResult)](https://cloud.tencent.com/document/api/1007/41958#[IntentionActionResult](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResult))
-* [[IntentionActionResultDetail](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResultDetail)](https://cloud.tencent.com/document/api/1007/41958#[IntentionActionResultDetail](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResultDetail))
+* [IntentionActionConfig](https://cloud.tencent.com/document/api/1007/41958#IntentionActionConfig)
+* [IntentionActionResult](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResult)
+* [IntentionActionResultDetail](https://cloud.tencent.com/document/api/1007/41958#IntentionActionResultDetail)
 
 修改数据结构：
 
@@ -64878,6 +64961,18 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2021-11-25
 
+### 第 19 次发布
+
+发布时间：2023-08-18 01:13:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeCloudStorageOrder](https://cloud.tencent.com/document/api/1131/96706)](https://cloud.tencent.com/document/api/#/#)
+
 ### 第 18 次发布
 
 发布时间：2023-08-17 03:37:09
@@ -67105,6 +67200,18 @@
 
 
 ## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 37 次发布
+
+发布时间：2023-08-17 20:45:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteUser](https://cloud.tencent.com/document/api/1639/96698)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 36 次发布
 
@@ -75469,6 +75576,37 @@
 
 ## 媒体处理(mps) 版本：2019-06-12
 
+### 第 66 次发布
+
+发布时间：2023-08-18 01:14:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[AddOnSubtitle](https://cloud.tencent.com/document/api/862/37615#AddOnSubtitle)](https://cloud.tencent.com/document/api/862/37615#[AddOnSubtitle](https://cloud.tencent.com/document/api/862/37615#AddOnSubtitle))
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTaskInput)
+
+	* 新增成员：AddOnSubtitles
+
+* [MediaAudioStreamItem](https://cloud.tencent.com/document/api/862/37615#MediaAudioStreamItem)
+
+	* <font color="#dd0000">**修改成员**：</font>Codecs, Loudness
+
+* [MediaVideoStreamItem](https://cloud.tencent.com/document/api/862/37615#MediaVideoStreamItem)
+
+	* <font color="#dd0000">**修改成员**：</font>Codecs
+
+* [OverrideTranscodeParameter](https://cloud.tencent.com/document/api/862/37615#OverrideTranscodeParameter)
+
+	* 新增成员：AddOnSubtitles
+
+
 ### 第 65 次发布
 
 发布时间：2023-08-01 01:33:24
@@ -78164,9 +78302,9 @@
 
 新增接口：
 
-* [[RequestLocalTask](https://cloud.tencent.com/document/api/283/96276)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateClientState](https://cloud.tencent.com/document/api/283/96275)](https://cloud.tencent.com/document/api/#/#)
-* [[UpdateLocalTaskResult](https://cloud.tencent.com/document/api/283/96274)](https://cloud.tencent.com/document/api/#/#)
+* [RequestLocalTask](https://cloud.tencent.com/document/api/283/96276)
+* [UpdateClientState](https://cloud.tencent.com/document/api/283/96275)
+* [UpdateLocalTaskResult](https://cloud.tencent.com/document/api/283/96274)
 
 ### 第 16 次发布
 
@@ -78594,6 +78732,24 @@
 
 
 ## NLP 服务(nlp) 版本：2019-04-08
+
+### 第 21 次发布
+
+发布时间：2023-08-18 01:15:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[TestingTextGeneration](https://cloud.tencent.com/document/api/271/96708)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[TextGenerationChoices](https://cloud.tencent.com/document/api/271/35511#TextGenerationChoices)](https://cloud.tencent.com/document/api/271/35511#[TextGenerationChoices](https://cloud.tencent.com/document/api/271/35511#TextGenerationChoices))
+* [[TextGenerationMessage](https://cloud.tencent.com/document/api/271/35511#TextGenerationMessage)](https://cloud.tencent.com/document/api/271/35511#[TextGenerationMessage](https://cloud.tencent.com/document/api/271/35511#TextGenerationMessage))
+* [[TextGenerationUsage](https://cloud.tencent.com/document/api/271/35511#TextGenerationUsage)](https://cloud.tencent.com/document/api/271/35511#[TextGenerationUsage](https://cloud.tencent.com/document/api/271/35511#TextGenerationUsage))
 
 ### 第 20 次发布
 
@@ -122596,6 +122752,21 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 165 次发布
+
+发布时间：2023-08-18 01:20:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeVpcEndPointServiceWhiteList](https://cloud.tencent.com/document/api/215/54677)
+
+	* 新增出参：VpcEndPointServiceUserSet
+
 
 ### 第 164 次发布
 

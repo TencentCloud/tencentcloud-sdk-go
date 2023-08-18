@@ -817,6 +817,131 @@ type SentencePair struct {
 }
 
 // Predefined struct for user
+type TestingTextGenerationRequestParams struct {
+	// 会话内容,按对话时间从旧到新在数组中排列。
+	Messages []*TextGenerationMessage `json:"Messages,omitempty" name:"Messages"`
+
+	// 模型名称，当前固定为TestingModel
+	Model *string `json:"Model,omitempty" name:"Model"`
+
+	// 会话id。
+	QueryId *string `json:"QueryId,omitempty" name:"QueryId"`
+
+	// 超参数temperature, 该参数用于控制生成文本中重复内容。取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果。默认为1.0。
+	Temperature *float64 `json:"Temperature,omitempty" name:"Temperature"`
+
+	// 超参数top_p, 该参数用于控制生成文本的多样性。较小的"top_p"值会限制模型的选择范围，使生成的文本更加一致和确定性。较大的"top_p"值会扩大选择范围，使生成的文本更加多样化和随机。取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果。默认值为1.0。
+	TopP *float64 `json:"TopP,omitempty" name:"TopP"`
+
+	// 超参数top_k,该参数用于控制生成文本的多样性和可控性，较小的"top_k"值会限制模型的选择范围，使生成的文本更加一致和确定性。较大的"top_k"值会扩大选择范围，使生成的文本更加多样化和随机。取值区间为[1, 100]，默认值 40。
+	TopK *float64 `json:"TopK,omitempty" name:"TopK"`
+
+	// 重复惩罚项,该参数用于用于控制生成文本中重复内容。建议范围[1.0, 1.05]非必要不建议使用, 不合理的取值会影响效果。默认为1。
+	RepetitionPenalty *float64 `json:"RepetitionPenalty,omitempty" name:"RepetitionPenalty"`
+
+	// 输出结果最大tokens数量。取值区间为(0, 1024]。默认值为768。
+	OutputSeqLen *int64 `json:"OutputSeqLen,omitempty" name:"OutputSeqLen"`
+
+	// 输入文本的最大 tokens 数量。取值区间为(0, 1024]。默认值为256。
+	MaxInputSeqLen *int64 `json:"MaxInputSeqLen,omitempty" name:"MaxInputSeqLen"`
+}
+
+type TestingTextGenerationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 会话内容,按对话时间从旧到新在数组中排列。
+	Messages []*TextGenerationMessage `json:"Messages,omitempty" name:"Messages"`
+
+	// 模型名称，当前固定为TestingModel
+	Model *string `json:"Model,omitempty" name:"Model"`
+
+	// 会话id。
+	QueryId *string `json:"QueryId,omitempty" name:"QueryId"`
+
+	// 超参数temperature, 该参数用于控制生成文本中重复内容。取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果。默认为1.0。
+	Temperature *float64 `json:"Temperature,omitempty" name:"Temperature"`
+
+	// 超参数top_p, 该参数用于控制生成文本的多样性。较小的"top_p"值会限制模型的选择范围，使生成的文本更加一致和确定性。较大的"top_p"值会扩大选择范围，使生成的文本更加多样化和随机。取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果。默认值为1.0。
+	TopP *float64 `json:"TopP,omitempty" name:"TopP"`
+
+	// 超参数top_k,该参数用于控制生成文本的多样性和可控性，较小的"top_k"值会限制模型的选择范围，使生成的文本更加一致和确定性。较大的"top_k"值会扩大选择范围，使生成的文本更加多样化和随机。取值区间为[1, 100]，默认值 40。
+	TopK *float64 `json:"TopK,omitempty" name:"TopK"`
+
+	// 重复惩罚项,该参数用于用于控制生成文本中重复内容。建议范围[1.0, 1.05]非必要不建议使用, 不合理的取值会影响效果。默认为1。
+	RepetitionPenalty *float64 `json:"RepetitionPenalty,omitempty" name:"RepetitionPenalty"`
+
+	// 输出结果最大tokens数量。取值区间为(0, 1024]。默认值为768。
+	OutputSeqLen *int64 `json:"OutputSeqLen,omitempty" name:"OutputSeqLen"`
+
+	// 输入文本的最大 tokens 数量。取值区间为(0, 1024]。默认值为256。
+	MaxInputSeqLen *int64 `json:"MaxInputSeqLen,omitempty" name:"MaxInputSeqLen"`
+}
+
+func (r *TestingTextGenerationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TestingTextGenerationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Messages")
+	delete(f, "Model")
+	delete(f, "QueryId")
+	delete(f, "Temperature")
+	delete(f, "TopP")
+	delete(f, "TopK")
+	delete(f, "RepetitionPenalty")
+	delete(f, "OutputSeqLen")
+	delete(f, "MaxInputSeqLen")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TestingTextGenerationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TestingTextGenerationResponseParams struct {
+	// 结果
+	Choices []*TextGenerationChoices `json:"Choices,omitempty" name:"Choices"`
+
+	// unix时间戳的字符串
+	Created *int64 `json:"Created,omitempty" name:"Created"`
+
+	// 会话id
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 模型名
+	Model *string `json:"Model,omitempty" name:"Model"`
+
+	// token数量
+	Usage *TextGenerationUsage `json:"Usage,omitempty" name:"Usage"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type TestingTextGenerationResponse struct {
+	*tchttp.BaseResponse
+	Response *TestingTextGenerationResponseParams `json:"Response"`
+}
+
+func (r *TestingTextGenerationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TestingTextGenerationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type TextEmbellishRequestParams struct {
 	// 待润色的文本。中文文本长度需<=50字符；英文文本长度需<=30个单词。
 	Text *string `json:"Text,omitempty" name:"Text"`
@@ -910,6 +1035,33 @@ func (r *TextEmbellishResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *TextEmbellishResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TextGenerationChoices struct {
+	// 内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *TextGenerationMessage `json:"Message,omitempty" name:"Message"`
+}
+
+type TextGenerationMessage struct {
+	// 角色支持 system, user, assistant。默认为user。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Role *string `json:"Role,omitempty" name:"Role"`
+
+	// 消息的内容。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Content *string `json:"Content,omitempty" name:"Content"`
+}
+
+type TextGenerationUsage struct {
+	// 输入tokens数量
+	PromptTokens *int64 `json:"PromptTokens,omitempty" name:"PromptTokens"`
+
+	// 输出tokens数量
+	CompletionTokens *int64 `json:"CompletionTokens,omitempty" name:"CompletionTokens"`
+
+	// 总token数量
+	TotalTokens *int64 `json:"TotalTokens,omitempty" name:"TotalTokens"`
 }
 
 // Predefined struct for user

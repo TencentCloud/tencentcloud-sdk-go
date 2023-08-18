@@ -2521,6 +2521,9 @@ type CreateVpcRequestParams struct {
 
 	// 描述信息
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 网络运营商类型 取值范围:'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调	
+	ISPTypes []*ISPTypeItem `json:"ISPTypes,omitempty" name:"ISPTypes"`
 }
 
 type CreateVpcRequest struct {
@@ -2549,6 +2552,9 @@ type CreateVpcRequest struct {
 
 	// 描述信息
 	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 网络运营商类型 取值范围:'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联调	
+	ISPTypes []*ISPTypeItem `json:"ISPTypes,omitempty" name:"ISPTypes"`
 }
 
 func (r *CreateVpcRequest) ToJsonString() string {
@@ -2571,6 +2577,7 @@ func (r *CreateVpcRequest) FromJsonString(s string) error {
 	delete(f, "DomainName")
 	delete(f, "Tags")
 	delete(f, "Description")
+	delete(f, "ISPTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpcRequest has unknown keys!", "")
 	}

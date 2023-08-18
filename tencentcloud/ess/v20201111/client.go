@@ -4242,8 +4242,6 @@ func NewDescribeFlowComponentsResponse() (response *DescribeFlowComponentsRespon
 // DescribeFlowComponents
 // 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息和填写内容。
 //
-// 注意：使用此接口前，需要在【企业应用管理】-【应用集成】-【第三方应用管理】中开通【下载应用内全量合同文件及内容数据】功能。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
 //  INTERNALERROR = "InternalError"
@@ -4255,8 +4253,6 @@ func (c *Client) DescribeFlowComponents(request *DescribeFlowComponentsRequest) 
 
 // DescribeFlowComponents
 // 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息和填写内容。
-//
-// 注意：使用此接口前，需要在【企业应用管理】-【应用集成】-【第三方应用管理】中开通【下载应用内全量合同文件及内容数据】功能。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"

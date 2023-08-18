@@ -1961,6 +1961,56 @@ func (c *Client) DescribeCloudStorageEventsWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeCloudStorageOrderRequest() (request *DescribeCloudStorageOrderRequest) {
+    request = &DescribeCloudStorageOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotvideo", APIVersion, "DescribeCloudStorageOrder")
+    
+    
+    return
+}
+
+func NewDescribeCloudStorageOrderResponse() (response *DescribeCloudStorageOrderResponse) {
+    response = &DescribeCloudStorageOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCloudStorageOrder
+// 查询云存服务详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageOrder(request *DescribeCloudStorageOrderRequest) (response *DescribeCloudStorageOrderResponse, err error) {
+    return c.DescribeCloudStorageOrderWithContext(context.Background(), request)
+}
+
+// DescribeCloudStorageOrder
+// 查询云存服务详情
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCloudStorageOrderWithContext(ctx context.Context, request *DescribeCloudStorageOrderRequest) (response *DescribeCloudStorageOrderResponse, err error) {
+    if request == nil {
+        request = NewDescribeCloudStorageOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCloudStorageOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCloudStorageOrderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCloudStoragePackageConsumeDetailsRequest() (request *DescribeCloudStoragePackageConsumeDetailsRequest) {
     request = &DescribeCloudStoragePackageConsumeDetailsRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -14717,8 +14717,11 @@ func (r *DescribeVpcEndPointServiceWhiteListRequest) FromJsonString(s string) er
 
 // Predefined struct for user
 type DescribeVpcEndPointServiceWhiteListResponseParams struct {
-	// 白名单对象数组。
+	// 白名单对象数组。已废弃
 	VpcEndpointServiceUserSet []*VpcEndPointServiceUser `json:"VpcEndpointServiceUserSet,omitempty" name:"VpcEndpointServiceUserSet"`
+
+	// 白名单对象数组。
+	VpcEndPointServiceUserSet []*VpcEndPointServiceUser `json:"VpcEndPointServiceUserSet,omitempty" name:"VpcEndPointServiceUserSet"`
 
 	// 符合条件的白名单个数。
 	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`

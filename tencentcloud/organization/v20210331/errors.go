@@ -278,7 +278,7 @@ const (
 	// 组织成员被委派集团服务，不允许退出。
 	UNSUPPORTEDOPERATION_MEMBEREXISTSERVICENOTALLOWDELETE = "UnsupportedOperation.MemberExistServiceNotAllowDelete"
 
-	// 成员是代理商或代客。
+	// 账号是代理商或代客。
 	UNSUPPORTEDOPERATION_MEMBERISAGENT = "UnsupportedOperation.MemberIsAgent"
 
 	// 成员没有绑卡。

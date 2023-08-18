@@ -3804,7 +3804,7 @@ func NewDescribeProxyNodesResponse() (response *DescribeProxyNodesResponse) {
 }
 
 // DescribeProxyNodes
-// 本接口（DescribeProxyNodes）用于查询代理接口列表。
+// 本接口（DescribeProxyNodes）用于查询代理节点列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -3815,7 +3815,7 @@ func (c *Client) DescribeProxyNodes(request *DescribeProxyNodesRequest) (respons
 }
 
 // DescribeProxyNodes
-// 本接口（DescribeProxyNodes）用于查询代理接口列表。
+// 本接口（DescribeProxyNodes）用于查询代理节点列表。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"

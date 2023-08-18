@@ -647,7 +647,7 @@ type ChannelCreateConvertTaskApiRequestParams struct {
 	// 资源名称，长度限制为256字符
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
-	// 资源Id，通过UploadFiles获取
+	// 文件Id，通过UploadFiles获取
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 调用方用户信息，不用传
@@ -673,7 +673,7 @@ type ChannelCreateConvertTaskApiRequest struct {
 	// 资源名称，长度限制为256字符
 	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
 
-	// 资源Id，通过UploadFiles获取
+	// 文件Id，通过UploadFiles获取
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 调用方用户信息，不用传
@@ -1080,6 +1080,9 @@ type ChannelCreateFlowGroupByFilesRequestParams struct {
 	// 参数说明：若选择后者，未实名的个人签署方查看合同时，无需进行人脸识别实名认证（但签署合同时仍然需要人脸实名），该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
 
+	// 合同组的配置项信息包括：在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
+	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitempty" name:"FlowGroupOptions"`
+
 	// 操作者的信息，此参数不用传
 	//
 	// Deprecated: Operator is deprecated.
@@ -1104,6 +1107,9 @@ type ChannelCreateFlowGroupByFilesRequest struct {
 	// 参数说明：若选择后者，未实名的个人签署方查看合同时，无需进行人脸识别实名认证（但签署合同时仍然需要人脸实名），该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitempty" name:"ApproverVerifyType"`
 
+	// 合同组的配置项信息包括：在合同组签署过程中，是否需要对每个子合同进行独立的意愿确认。
+	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitempty" name:"FlowGroupOptions"`
+
 	// 操作者的信息，此参数不用传
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 }
@@ -1124,6 +1130,7 @@ func (r *ChannelCreateFlowGroupByFilesRequest) FromJsonString(s string) error {
 	delete(f, "FlowGroupName")
 	delete(f, "Agent")
 	delete(f, "ApproverVerifyType")
+	delete(f, "FlowGroupOptions")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateFlowGroupByFilesRequest has unknown keys!", "")
@@ -1806,10 +1813,10 @@ func (r *ChannelCreatePrepareFlowRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreatePrepareFlowResponseParams struct {
-	// 预发起的合同链接
+	// 预发起的合同链接， 可以直接点击进入进行合同发起
 	PrepareFlowUrl *string `json:"PrepareFlowUrl,omitempty" name:"PrepareFlowUrl"`
 
-	// 合同发起后预览链接
+	// 合同发起后预览链接， 注意此时合同并未发起，仅只是展示效果
 	PreviewFlowUrl *string `json:"PreviewFlowUrl,omitempty" name:"PreviewFlowUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5247,6 +5254,20 @@ type FlowFileInfo struct {
 
 	// 本企业(发起方企业)是否需要签署审批
 	NeedSignReview *bool `json:"NeedSignReview,omitempty" name:"NeedSignReview"`
+}
+
+type FlowGroupOptions struct {
+	// 发起方企业经办人（即签署人为发起方企业员工）是否需要对子合同进行独立的意愿确认：
+	// fasle：发起方企业经办人签署时对所有子合同进行统一的意愿确认
+	// true：发起方企业经办人签署时需要对子合同进行独立的意愿确认
+	// 默认为fasle。
+	SelfOrganizationApproverSignEach *bool `json:"SelfOrganizationApproverSignEach,omitempty" name:"SelfOrganizationApproverSignEach"`
+
+	// 非发起方企业经办人（即：签署人为个人或者不为发起方企业的员工）是否需要对子合同进行独立的意愿确认：
+	// fasle：非发起方企业经办人签署时对所有子合同进行统一的意愿确认
+	// true：非发起方企业经办人签署时需要对子合同进行独立的意愿确认
+	// 默认为false。
+	OtherApproverSignEach *bool `json:"OtherApproverSignEach,omitempty" name:"OtherApproverSignEach"`
 }
 
 type FlowInfo struct {

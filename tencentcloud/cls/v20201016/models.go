@@ -8781,7 +8781,7 @@ type SearchLogRequestParams struct {
 	// - 如需同时检索多个日志主题，请使用Topics参数。
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
+	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000，获取后续日志需使用Context参数
 	// 注意：
 	// * 仅当检索分析语句(Query)不包含SQL时有效
 	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
@@ -8841,7 +8841,7 @@ type SearchLogRequest struct {
 	// - 如需同时检索多个日志主题，请使用Topics参数。
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
-	// 表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
+	// 表示单次查询返回的原始日志条数，默认为100，最大值为1000，获取后续日志需使用Context参数
 	// 注意：
 	// * 仅当检索分析语句(Query)不包含SQL时有效
 	// * SQL结果条数指定方式参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
