@@ -3387,6 +3387,95 @@ func (r *ModifyMigrateNameResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyMigrateRateLimitRequestParams struct {
+	// 迁移任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 迁移任务全量导出线程数、有效值为 1-16
+	DumpThread *int64 `json:"DumpThread,omitempty" name:"DumpThread"`
+
+	// 迁移全量导出的 Rps 限制、需要大于 0
+	DumpRps *int64 `json:"DumpRps,omitempty" name:"DumpRps"`
+
+	// 迁移任务全量导入线程数、有效值为 1-16
+	LoadThread *int64 `json:"LoadThread,omitempty" name:"LoadThread"`
+
+	// 迁移任务增量导入线程数、有效值为 1-128
+	SinkerThread *int64 `json:"SinkerThread,omitempty" name:"SinkerThread"`
+
+	// 全量导入Rps限制
+	LoadRps *int64 `json:"LoadRps,omitempty" name:"LoadRps"`
+}
+
+type ModifyMigrateRateLimitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 迁移任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 迁移任务全量导出线程数、有效值为 1-16
+	DumpThread *int64 `json:"DumpThread,omitempty" name:"DumpThread"`
+
+	// 迁移全量导出的 Rps 限制、需要大于 0
+	DumpRps *int64 `json:"DumpRps,omitempty" name:"DumpRps"`
+
+	// 迁移任务全量导入线程数、有效值为 1-16
+	LoadThread *int64 `json:"LoadThread,omitempty" name:"LoadThread"`
+
+	// 迁移任务增量导入线程数、有效值为 1-128
+	SinkerThread *int64 `json:"SinkerThread,omitempty" name:"SinkerThread"`
+
+	// 全量导入Rps限制
+	LoadRps *int64 `json:"LoadRps,omitempty" name:"LoadRps"`
+}
+
+func (r *ModifyMigrateRateLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMigrateRateLimitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "DumpThread")
+	delete(f, "DumpRps")
+	delete(f, "LoadThread")
+	delete(f, "SinkerThread")
+	delete(f, "LoadRps")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyMigrateRateLimitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyMigrateRateLimitResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyMigrateRateLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyMigrateRateLimitResponseParams `json:"Response"`
+}
+
+func (r *ModifyMigrateRateLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyMigrateRateLimitResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyMigrationJobRequestParams struct {
 	// 任务id
 	JobId *string `json:"JobId,omitempty" name:"JobId"`
@@ -3561,6 +3650,95 @@ func (r *ModifySyncJobConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifySyncJobConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySyncRateLimitRequestParams struct {
+	// 迁移任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 同步任务全量导出线程数、有效值为 1-16
+	DumpThread *int64 `json:"DumpThread,omitempty" name:"DumpThread"`
+
+	// 同步任务全量导出的 Rps 限制、需要大于 0
+	DumpRps *int64 `json:"DumpRps,omitempty" name:"DumpRps"`
+
+	// 同步任务全量导入线程数、有效值为 1-16
+	LoadThread *int64 `json:"LoadThread,omitempty" name:"LoadThread"`
+
+	// 同步任务增量导入线程数、有效值为 1-128
+	SinkerThread *int64 `json:"SinkerThread,omitempty" name:"SinkerThread"`
+
+	// 同步任务全量导入的Rps
+	LoadRps *int64 `json:"LoadRps,omitempty" name:"LoadRps"`
+}
+
+type ModifySyncRateLimitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 迁移任务ID
+	JobId *string `json:"JobId,omitempty" name:"JobId"`
+
+	// 同步任务全量导出线程数、有效值为 1-16
+	DumpThread *int64 `json:"DumpThread,omitempty" name:"DumpThread"`
+
+	// 同步任务全量导出的 Rps 限制、需要大于 0
+	DumpRps *int64 `json:"DumpRps,omitempty" name:"DumpRps"`
+
+	// 同步任务全量导入线程数、有效值为 1-16
+	LoadThread *int64 `json:"LoadThread,omitempty" name:"LoadThread"`
+
+	// 同步任务增量导入线程数、有效值为 1-128
+	SinkerThread *int64 `json:"SinkerThread,omitempty" name:"SinkerThread"`
+
+	// 同步任务全量导入的Rps
+	LoadRps *int64 `json:"LoadRps,omitempty" name:"LoadRps"`
+}
+
+func (r *ModifySyncRateLimitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySyncRateLimitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "JobId")
+	delete(f, "DumpThread")
+	delete(f, "DumpRps")
+	delete(f, "LoadThread")
+	delete(f, "SinkerThread")
+	delete(f, "LoadRps")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifySyncRateLimitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifySyncRateLimitResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifySyncRateLimitResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifySyncRateLimitResponseParams `json:"Response"`
+}
+
+func (r *ModifySyncRateLimitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifySyncRateLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

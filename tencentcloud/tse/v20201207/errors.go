@@ -23,11 +23,17 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 调用CLS服务失败
+	FAILEDOPERATION_CLS = "FailedOperation.Cls"
+
 	// 操作失败。
 	FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 
 	// 操作失败，内部错误。
 	FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+
+	// 超过购买实例的最大数量。
+	FAILEDOPERATION_RESOURCE = "FailedOperation.Resource"
 
 	// 获取临时密钥失败
 	FAILEDOPERATION_ROLE = "FailedOperation.Role"
@@ -77,6 +83,9 @@ const (
 	// 访问VPC内部错误。
 	INTERNALERROR_VPCFAILURE = "InternalError.VPCFailure"
 
+	// 参数取值错误。
+	INVALIDPARAMETERVALUE = "InvalidParameterValue"
+
 	// 旧实例不支持此操作。
 	INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
 
@@ -86,8 +95,17 @@ const (
 	// 无效请求参数导致创建失败。
 	INVALIDPARAMETERVALUE_CREATEERROR = "InvalidParameterValue.CreateError"
 
+	// 无效的描述信息。
+	INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
+
+	// 网关ID无效
+	INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
+
 	// 无效的参数值。
 	INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+
+	// 无效的名称。
+	INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
 
 	// 无效请求参数导致操作失败。
 	INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
@@ -113,6 +131,9 @@ const (
 	// 超过配额限制。
 	LIMITEXCEEDED = "LimitExceeded"
 
+	// 参数超过限制。
+	LIMITEXCEEDED_LIMITEXCEEDED = "LimitExceeded.LimitExceeded"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
@@ -128,8 +149,14 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// 不允许的操作。
+	OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
+
+	// 资源不存在不允许操作。
+	RESOURCENOTFOUND_FORBIDDEN = "ResourceNotFound.Forbidden"
 
 	// 实例不存在。
 	RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
@@ -145,6 +172,9 @@ const (
 
 	// 子账号缺少passRole权限。
 	UNAUTHORIZEDOPERATION_CAMPASSROLENOTEXIST = "UnauthorizedOperation.CamPassRoleNotExist"
+
+	// 当前CLS产品未开通
+	UNAUTHORIZEDOPERATION_CLSNOTACTIVATED = "UnauthorizedOperation.ClsNotActivated"
 
 	// Uin未授权
 	UNAUTHORIZEDOPERATION_UIN = "UnauthorizedOperation.Uin"

@@ -1518,9 +1518,11 @@ type CacheConfig struct {
 	// 启发式自定义时间缓存配置开关，取值有：
 	// on：开启
 	// off：关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeuristicCacheTimeSwitch *string `json:"HeuristicCacheTimeSwitch,omitempty" name:"HeuristicCacheTimeSwitch"`
 
 	// 单位 秒.
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeuristicCacheTime *int64 `json:"HeuristicCacheTime,omitempty" name:"HeuristicCacheTime"`
 }
 
@@ -7764,9 +7766,11 @@ type HeuristicCache struct {
 	// 启发式缓存配置开关，取值有：
 	// on：开启
 	// off：关闭
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Switch *string `json:"Switch,omitempty" name:"Switch"`
 
 	// 自定义启发式缓存时间配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CacheConfig *CacheConfig `json:"CacheConfig,omitempty" name:"CacheConfig"`
 }
 

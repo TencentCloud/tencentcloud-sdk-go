@@ -2215,6 +2215,90 @@ func (c *Client) ModifyMigrateNameWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyMigrateRateLimitRequest() (request *ModifyMigrateRateLimitRequest) {
+    request = &ModifyMigrateRateLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dts", APIVersion, "ModifyMigrateRateLimit")
+    
+    
+    return
+}
+
+func NewModifyMigrateRateLimitResponse() (response *ModifyMigrateRateLimitResponse) {
+    response = &ModifyMigrateRateLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyMigrateRateLimit
+// 用户在发现迁移任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
+//  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  LIMITEXCEEDED_LIMITEXCEEDEDERROR = "LimitExceeded.LimitExceededError"
+//  MISSINGPARAMETER_MISSINGPARAMETERERROR = "MissingParameter.MissingParameterError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDEDERROR = "RequestLimitExceeded.RequestLimitExceededError"
+//  RESOURCEINUSE_RESOURCEINUSEERROR = "ResourceInUse.ResourceInUseError"
+//  RESOURCEINSUFFICIENT_RESOURCEINSUFFICIENTERROR = "ResourceInsufficient.ResourceInsufficientError"
+//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLEERROR = "ResourceUnavailable.ResourceUnavailableError"
+//  RESOURCESSOLDOUT_RESOURCESSOLDOUTERROR = "ResourcesSoldOut.ResourcesSoldOutError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONERROR = "UnauthorizedOperation.UnauthorizedOperationError"
+//  UNKNOWNPARAMETER_UNKNOWNPARAMETERERROR = "UnknownParameter.UnknownParameterError"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
+func (c *Client) ModifyMigrateRateLimit(request *ModifyMigrateRateLimitRequest) (response *ModifyMigrateRateLimitResponse, err error) {
+    return c.ModifyMigrateRateLimitWithContext(context.Background(), request)
+}
+
+// ModifyMigrateRateLimit
+// 用户在发现迁移任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
+//
+// 可能返回的错误码:
+//  AUTHFAILURE_AUTHFAILUREERROR = "AuthFailure.AuthFailureError"
+//  DRYRUNOPERATION_DRYRUNOPERATIONERROR = "DryRunOperation.DryRunOperationError"
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
+//  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  LIMITEXCEEDED_LIMITEXCEEDEDERROR = "LimitExceeded.LimitExceededError"
+//  MISSINGPARAMETER_MISSINGPARAMETERERROR = "MissingParameter.MissingParameterError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+//  REQUESTLIMITEXCEEDED_REQUESTLIMITEXCEEDEDERROR = "RequestLimitExceeded.RequestLimitExceededError"
+//  RESOURCEINUSE_RESOURCEINUSEERROR = "ResourceInUse.ResourceInUseError"
+//  RESOURCEINSUFFICIENT_RESOURCEINSUFFICIENTERROR = "ResourceInsufficient.ResourceInsufficientError"
+//  RESOURCENOTFOUND_JOBNOTEXIST = "ResourceNotFound.JobNotExist"
+//  RESOURCENOTFOUND_RESOURCENOTFOUNDERROR = "ResourceNotFound.ResourceNotFoundError"
+//  RESOURCEUNAVAILABLE_RESOURCEUNAVAILABLEERROR = "ResourceUnavailable.ResourceUnavailableError"
+//  RESOURCESSOLDOUT_RESOURCESSOLDOUTERROR = "ResourcesSoldOut.ResourcesSoldOutError"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATIONERROR = "UnauthorizedOperation.UnauthorizedOperationError"
+//  UNKNOWNPARAMETER_UNKNOWNPARAMETERERROR = "UnknownParameter.UnknownParameterError"
+//  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
+func (c *Client) ModifyMigrateRateLimitWithContext(ctx context.Context, request *ModifyMigrateRateLimitRequest) (response *ModifyMigrateRateLimitResponse, err error) {
+    if request == nil {
+        request = NewModifyMigrateRateLimitRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyMigrateRateLimit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyMigrateRateLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyMigrationJobRequest() (request *ModifyMigrationJobRequest) {
     request = &ModifyMigrationJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2359,6 +2443,56 @@ func (c *Client) ModifySyncJobConfigWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifySyncJobConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifySyncRateLimitRequest() (request *ModifySyncRateLimitRequest) {
+    request = &ModifySyncRateLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dts", APIVersion, "ModifySyncRateLimit")
+    
+    
+    return
+}
+
+func NewModifySyncRateLimitResponse() (response *ModifySyncRateLimitResponse) {
+    response = &ModifySyncRateLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifySyncRateLimit
+// 用户在发现同步任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+func (c *Client) ModifySyncRateLimit(request *ModifySyncRateLimitRequest) (response *ModifySyncRateLimitResponse, err error) {
+    return c.ModifySyncRateLimitWithContext(context.Background(), request)
+}
+
+// ModifySyncRateLimit
+// 用户在发现同步任务对用户的数据库的负载影响较大时、可通过该接口限制任务的传输速率
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_OPERATIONDENIEDERROR = "OperationDenied.OperationDeniedError"
+func (c *Client) ModifySyncRateLimitWithContext(ctx context.Context, request *ModifySyncRateLimitRequest) (response *ModifySyncRateLimitResponse, err error) {
+    if request == nil {
+        request = NewModifySyncRateLimitRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySyncRateLimit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySyncRateLimitResponse()
     err = c.Send(request, response)
     return
 }

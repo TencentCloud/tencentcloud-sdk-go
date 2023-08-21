@@ -29,6 +29,9 @@ const (
 	// 鉴权失败。
 	FAILEDOPERATION_AUTHFAIL = "FailedOperation.AuthFail"
 
+	// 当选择“企业实名认证（信任第三方认证源）”时，请先使用“同步企业信息”接口，同步企业名称、统一社会信用代码、法人姓名。
+	FAILEDOPERATION_ERRNOTSYNCPROXYORGANIZATION = "FailedOperation.ErrNotSyncProxyOrganization"
+
 	// 存在同名印章。
 	FAILEDOPERATION_EXISTSAMESEALNAME = "FailedOperation.ExistSameSealName"
 
@@ -383,6 +386,9 @@ const (
 	// 无资源访问权限。
 	OPERATIONDENIED_ERRNORESOURCEACCESS = "OperationDenied.ErrNoResourceAccess"
 
+	// 第三方应用平台未开通“平台子客企业实名认证（信任第三方认证源）”能力
+	OPERATIONDENIED_ERRNOTOPENWEAKAUTHORIZATION = "OperationDenied.ErrNotOpenWeakAuthorization"
+
 	// 文件已删除。
 	OPERATIONDENIED_FILEDELETED = "OperationDenied.FileDeleted"
 
@@ -418,6 +424,9 @@ const (
 
 	// 不属于企业超管或者法人。
 	OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
+
+	// 不支持的企业类型
+	OPERATIONDENIED_NOTSUPPORTORGTYPE = "OperationDenied.NotSupportOrgType"
 
 	// 操作类型不支持。
 	OPERATIONDENIED_OPERATETYPE = "OperationDenied.OperateType"

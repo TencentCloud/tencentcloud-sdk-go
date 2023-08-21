@@ -50,7 +50,7 @@ const (
 	// 账号因为欠费停止服务，请在腾讯云账户充值。
 	FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
 
-	// 账号本月免费额度已用完。
+	// 资源包耗尽，请开通后付费或者购买资源包
 	FAILEDOPERATION_USERHASNOFREEAMOUNT = "FailedOperation.UserHasNoFreeAmount"
 
 	// 服务未开通，请在腾讯云官网语音识别控制台开通服务。

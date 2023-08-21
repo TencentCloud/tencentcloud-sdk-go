@@ -9890,4 +9890,8 @@ type WxGatewayRountItem struct {
 	// 路由环境ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayRouteEnvId *string `json:"GatewayRouteEnvId,omitempty" name:"GatewayRouteEnvId"`
+
+	// 路径匹配类型，支持prefix(前缀匹配)，regex(正则匹配)， 默认prefix
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayRoutePathMatchType *string `json:"GatewayRoutePathMatchType,omitempty" name:"GatewayRoutePathMatchType"`
 }

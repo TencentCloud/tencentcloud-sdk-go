@@ -3822,30 +3822,68 @@ type CreateConsoleLoginUrlRequestParams struct {
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 子客企业名称，最大长度64个字符
+	// 注意：
+	// 1、如果您的企业已经在认证授权中或者激活完成，这里修改子客企业名字将不会生效。
+	// 2、该名称需要与Agent.ProxyOrganizationOpenId相匹配。
 	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitempty" name:"ProxyOrganizationName"`
 
-	// 子客企业经办人的姓名，最大长度50个字符
-	ProxyOperatorName *string `json:"ProxyOperatorName,omitempty" name:"ProxyOperatorName"`
-
-	// PC控制台指定模块，文件/合同管理:"DOCUMENT"，模板管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"。 EndPoint为"CHANNEL"/"APP"只支持"SEAL"-印章管理
-	Module *string `json:"Module,omitempty" name:"Module"`
-
-	// 控制台指定模块Id
-	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
-
 	// 子客企业统一社会信用代码，最大长度200个字符
+	// 注意：
+	// 1、如果您的企业已经在认证授权中或者激活完成，这里修改子客企业名字将不会生效。
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
 
-	// 是否展示左侧菜单栏 是：ENABLE（默认） 否：DISABLE
+	// 子客企业经办人的姓名，最大长度50个字符
+	// 注意：
+	// 1、若经办人已经实名，这里修改经办人名字传入将不会生效。
+	// 2、该名称需要和Agent. ProxyOperator.OpenId相匹配
+	ProxyOperatorName *string `json:"ProxyOperatorName,omitempty" name:"ProxyOperatorName"`
+
+	// PC控制台登录后进入该参数指定的模块，如果不传递，将默认进入控制台首页。支持的模块包括：
+	// 1、DOCUMENT:合同管理模块，
+	// 2、TEMPLATE:企业模板管理模块，
+	// 3、SEAL:印章管理模块，
+	// 4、OPERATOR:组织管理模块，
+	// 默认将进入企业中心模块
+	// 注意：
+	// 1、如果EndPoint选择"CHANNEL"或"APP"，该参数仅支持传递"SEAL"，进入印章管理模块
+	// 2、该参数仅在企业和员工激活完成，登录控制台场景才生效。
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 该参数和Module参数配合使用，用于指定模块下的资源Id，指定后链接登录将展示该资源的详情。
+	// 根据Module参数的不同所代表的含义不同。当前支持：
+	// 1、如果Module="SEAL"，ModuleId代表印章Id, 登录链接将直接查看指定印章的详情。
+	// 2、如果Module="TEMPLATE"，ModuleId代表模版Id，登录链接将直接查看指定模版的详情。
+	// 3、如果Module="1、DOCUMENT"，ModuleId代表合同Id，登录链接将直接查看指定合同的详情。
+	// 注意：
+	// 1、该参数仅在企业和员工激活完成，登录控制台场景才生效。
+	// 2、ModuleId需要和Module对应，ModuleId可以通过API或者控制台获取到。
+	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
+
+	// 是否展示左侧菜单栏 
+	// "ENABLE": 是，展示 
+	// “DISABLE”: 否，不展示
+	// 默认值为ENABLE
+	// 注意：
+	// 1、该参数仅在企业和员工激活完成，登录控制台场景才生效。
 	MenuStatus *string `json:"MenuStatus,omitempty" name:"MenuStatus"`
 
-	// 链接跳转类型："PC"-PC控制台，“CHANNEL”-H5跳转到电子签小程序；“APP”-第三方APP或小程序跳转电子签小程序，默认为PC控制台
+	// 生成链接的类型：
+	// "PC"：PC控制台链接
+	// "CHANNEL"：H5跳转到电子签小程序链接
+	// "APP"：第三方APP或小程序跳转电子签小程序链接
+	// 默认将生成PC控制台链接
 	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
 
-	// 触发自动跳转事件，仅对App类型有效，"VERIFIED":企业认证完成/员工认证完成后跳回原App/小程序
+	// 触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
+	// "VERIFIED":企业认证完成/员工认证完成后跳回原App/小程序
 	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitempty" name:"AutoJumpBackEvent"`
 
-	// 支持的授权方式,授权方式: "1" - 上传授权书认证  "2" - 法定代表人认证
+	// 可选的企业授权方式: 
+	// 1：上传授权书 
+	// 2：转法定代表人授权
+	// 4：企业实名认证（信任第三方认证源）（此项仅支持单选）
+	// 未选择信任第三方认证源时，如果是法人进行企业激活，仅支持法人扫脸直接授权，该配置不生效；选择信任第三方认证源时，请先通过“同步企业信息”接口同步信息。
+	// 该参数仅在企业激活场景生效
 	AuthorizationTypes []*int64 `json:"AuthorizationTypes,omitempty" name:"AuthorizationTypes"`
 
 	// 暂未开放
@@ -3862,30 +3900,68 @@ type CreateConsoleLoginUrlRequest struct {
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 
 	// 子客企业名称，最大长度64个字符
+	// 注意：
+	// 1、如果您的企业已经在认证授权中或者激活完成，这里修改子客企业名字将不会生效。
+	// 2、该名称需要与Agent.ProxyOrganizationOpenId相匹配。
 	ProxyOrganizationName *string `json:"ProxyOrganizationName,omitempty" name:"ProxyOrganizationName"`
 
-	// 子客企业经办人的姓名，最大长度50个字符
-	ProxyOperatorName *string `json:"ProxyOperatorName,omitempty" name:"ProxyOperatorName"`
-
-	// PC控制台指定模块，文件/合同管理:"DOCUMENT"，模板管理:"TEMPLATE"，印章管理:"SEAL"，组织架构/人员:"OPERATOR"，空字符串："账号信息"。 EndPoint为"CHANNEL"/"APP"只支持"SEAL"-印章管理
-	Module *string `json:"Module,omitempty" name:"Module"`
-
-	// 控制台指定模块Id
-	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
-
 	// 子客企业统一社会信用代码，最大长度200个字符
+	// 注意：
+	// 1、如果您的企业已经在认证授权中或者激活完成，这里修改子客企业名字将不会生效。
 	UniformSocialCreditCode *string `json:"UniformSocialCreditCode,omitempty" name:"UniformSocialCreditCode"`
 
-	// 是否展示左侧菜单栏 是：ENABLE（默认） 否：DISABLE
+	// 子客企业经办人的姓名，最大长度50个字符
+	// 注意：
+	// 1、若经办人已经实名，这里修改经办人名字传入将不会生效。
+	// 2、该名称需要和Agent. ProxyOperator.OpenId相匹配
+	ProxyOperatorName *string `json:"ProxyOperatorName,omitempty" name:"ProxyOperatorName"`
+
+	// PC控制台登录后进入该参数指定的模块，如果不传递，将默认进入控制台首页。支持的模块包括：
+	// 1、DOCUMENT:合同管理模块，
+	// 2、TEMPLATE:企业模板管理模块，
+	// 3、SEAL:印章管理模块，
+	// 4、OPERATOR:组织管理模块，
+	// 默认将进入企业中心模块
+	// 注意：
+	// 1、如果EndPoint选择"CHANNEL"或"APP"，该参数仅支持传递"SEAL"，进入印章管理模块
+	// 2、该参数仅在企业和员工激活完成，登录控制台场景才生效。
+	Module *string `json:"Module,omitempty" name:"Module"`
+
+	// 该参数和Module参数配合使用，用于指定模块下的资源Id，指定后链接登录将展示该资源的详情。
+	// 根据Module参数的不同所代表的含义不同。当前支持：
+	// 1、如果Module="SEAL"，ModuleId代表印章Id, 登录链接将直接查看指定印章的详情。
+	// 2、如果Module="TEMPLATE"，ModuleId代表模版Id，登录链接将直接查看指定模版的详情。
+	// 3、如果Module="1、DOCUMENT"，ModuleId代表合同Id，登录链接将直接查看指定合同的详情。
+	// 注意：
+	// 1、该参数仅在企业和员工激活完成，登录控制台场景才生效。
+	// 2、ModuleId需要和Module对应，ModuleId可以通过API或者控制台获取到。
+	ModuleId *string `json:"ModuleId,omitempty" name:"ModuleId"`
+
+	// 是否展示左侧菜单栏 
+	// "ENABLE": 是，展示 
+	// “DISABLE”: 否，不展示
+	// 默认值为ENABLE
+	// 注意：
+	// 1、该参数仅在企业和员工激活完成，登录控制台场景才生效。
 	MenuStatus *string `json:"MenuStatus,omitempty" name:"MenuStatus"`
 
-	// 链接跳转类型："PC"-PC控制台，“CHANNEL”-H5跳转到电子签小程序；“APP”-第三方APP或小程序跳转电子签小程序，默认为PC控制台
+	// 生成链接的类型：
+	// "PC"：PC控制台链接
+	// "CHANNEL"：H5跳转到电子签小程序链接
+	// "APP"：第三方APP或小程序跳转电子签小程序链接
+	// 默认将生成PC控制台链接
 	Endpoint *string `json:"Endpoint,omitempty" name:"Endpoint"`
 
-	// 触发自动跳转事件，仅对App类型有效，"VERIFIED":企业认证完成/员工认证完成后跳回原App/小程序
+	// 触发自动跳转事件，仅对EndPoint为App类型有效，可选值包括：
+	// "VERIFIED":企业认证完成/员工认证完成后跳回原App/小程序
 	AutoJumpBackEvent *string `json:"AutoJumpBackEvent,omitempty" name:"AutoJumpBackEvent"`
 
-	// 支持的授权方式,授权方式: "1" - 上传授权书认证  "2" - 法定代表人认证
+	// 可选的企业授权方式: 
+	// 1：上传授权书 
+	// 2：转法定代表人授权
+	// 4：企业实名认证（信任第三方认证源）（此项仅支持单选）
+	// 未选择信任第三方认证源时，如果是法人进行企业激活，仅支持法人扫脸直接授权，该配置不生效；选择信任第三方认证源时，请先通过“同步企业信息”接口同步信息。
+	// 该参数仅在企业激活场景生效
 	AuthorizationTypes []*int64 `json:"AuthorizationTypes,omitempty" name:"AuthorizationTypes"`
 
 	// 暂未开放
@@ -3906,10 +3982,10 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Agent")
 	delete(f, "ProxyOrganizationName")
+	delete(f, "UniformSocialCreditCode")
 	delete(f, "ProxyOperatorName")
 	delete(f, "Module")
 	delete(f, "ModuleId")
-	delete(f, "UniformSocialCreditCode")
 	delete(f, "MenuStatus")
 	delete(f, "Endpoint")
 	delete(f, "AutoJumpBackEvent")
@@ -3925,16 +4001,20 @@ func (r *CreateConsoleLoginUrlRequest) FromJsonString(s string) error {
 type CreateConsoleLoginUrlResponseParams struct {
 	// 子客企业Web控制台url注意事项：
 	// 1. 所有类型的链接在企业未认证/员工未认证完成时，只要在有效期内（一年）都可以访问
-	// 2. 若企业认证完成且员工认证完成后，重新获取pc端的链接5分钟之内有效，且只能访问一次
-	// 3. 若企业认证完成且员工认证完成后，重新获取H5/APP的链接只要在有效期内（一年）都可以访问
-	// 4. 此链接仅单次有效，使用后需要再次创建新的链接（部分聊天软件，如企业微信默认会对链接进行解析，此时需要使用类似“代码片段”的方式或者放到txt文件里发送链接）
+	// 2. 若企业认证完成且员工认证完成后，重新获取pc端的链接在5分钟之内有效，且只能访问一次
+	// 3. 若企业认证完成且员工认证完成后，重新获取CHANNEL/APP的链接只要在有效期内（一年）都可以访问
+	// 4. 此链接仅单次有效，每次登录需要需要重新创建新的链接，尽量不要做链接存储，多次使用。
 	// 5. 创建的链接应避免被转义，如：&被转义为\u0026；如使用Postman请求后，请选择响应类型为 JSON，否则链接将被转义
 	ConsoleUrl *string `json:"ConsoleUrl,omitempty" name:"ConsoleUrl"`
 
 	// 子客企业是否已开通腾讯电子签，true-是，false-否
+	// 注意：
+	// 1、企业是否实名根据传参Agent.ProxyOrganizationOpenId进行判断，非企业名称或者社会信用代码
 	IsActivated *bool `json:"IsActivated,omitempty" name:"IsActivated"`
 
-	// 当前经办人是否已认证（false:未认证 true:已认证）
+	// 当前经办人是否已认证，true-是，false-否
+	// 注意：
+	// 1、经办人是否实名是根据Agent.ProxyOperator.OpenId判断，非经办人姓名
 	ProxyOperatorIsVerified *bool `json:"ProxyOperatorIsVerified,omitempty" name:"ProxyOperatorIsVerified"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6262,6 +6342,12 @@ type SyncProxyOrganizationRequestParams struct {
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 第三方平台子客企业法人/负责人证件类型，默认居民身份证（ID_CARD）类型，暂不支持其他类型
+	ProxyLegalIdCardType *string `json:"ProxyLegalIdCardType,omitempty" name:"ProxyLegalIdCardType"`
+
+	// 第三方平台子客企业法人/负责人证件号
+	ProxyLegalIdCardNumber *string `json:"ProxyLegalIdCardNumber,omitempty" name:"ProxyLegalIdCardNumber"`
 }
 
 type SyncProxyOrganizationRequest struct {
@@ -6285,6 +6371,12 @@ type SyncProxyOrganizationRequest struct {
 
 	// 暂未开放
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 第三方平台子客企业法人/负责人证件类型，默认居民身份证（ID_CARD）类型，暂不支持其他类型
+	ProxyLegalIdCardType *string `json:"ProxyLegalIdCardType,omitempty" name:"ProxyLegalIdCardType"`
+
+	// 第三方平台子客企业法人/负责人证件号
+	ProxyLegalIdCardNumber *string `json:"ProxyLegalIdCardNumber,omitempty" name:"ProxyLegalIdCardNumber"`
 }
 
 func (r *SyncProxyOrganizationRequest) ToJsonString() string {
@@ -6305,6 +6397,8 @@ func (r *SyncProxyOrganizationRequest) FromJsonString(s string) error {
 	delete(f, "UniformSocialCreditCode")
 	delete(f, "ProxyLegalName")
 	delete(f, "Operator")
+	delete(f, "ProxyLegalIdCardType")
+	delete(f, "ProxyLegalIdCardNumber")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncProxyOrganizationRequest has unknown keys!", "")
 	}

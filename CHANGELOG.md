@@ -1,3 +1,158 @@
+# Release v1.0.727
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 67 次发布
+
+发布时间：2023-08-21 01:09:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ProxyNodeInfo](https://cloud.tencent.com/document/api/1003/48097#ProxyNodeInfo)
+
+	* 新增成员：OssProxyNodeName
+
+
+
+
+## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 15 次发布
+
+发布时间：2023-08-18 16:50:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyMigrateRateLimit](https://cloud.tencent.com/document/api/571/96732)
+* [ModifySyncRateLimit](https://cloud.tencent.com/document/api/571/96733)
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 103 次发布
+
+发布时间：2023-08-21 01:12:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateIntegrationDepartment](https://cloud.tencent.com/document/api/1323/93289)
+
+	* 新增入参：Agent
+
+* [DeleteIntegrationDepartment](https://cloud.tencent.com/document/api/1323/93288)
+
+	* 新增入参：Agent
+
+* [DescribeIntegrationDepartments](https://cloud.tencent.com/document/api/1323/93287)
+
+	* 新增入参：Agent
+
+* [ModifyIntegrationDepartment](https://cloud.tencent.com/document/api/1323/93286)
+
+	* 新增入参：Agent
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 105 次发布
+
+发布时间：2023-08-21 01:13:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [SyncProxyOrganization](https://cloud.tencent.com/document/api/1420/61518)
+
+	* 新增入参：ProxyLegalIdCardType, ProxyLegalIdCardNumber
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 云开发 CloudBase(tcb) 版本：2018-06-08
+
+### 第 99 次发布
+
+发布时间：2023-08-18 11:40:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [WxGatewayRountItem](https://cloud.tencent.com/document/api/876/34822#WxGatewayRountItem)
+
+	* 新增成员：GatewayRoutePathMatchType
+
+	* <font color="#dd0000">**修改成员**：</font>GatewayRouteEnvId
+
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 39 次发布
+
+发布时间：2023-08-21 01:19:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCloudNativeAPIGateway](https://cloud.tencent.com/document/api/1364/96757)
+* [CreateNativeGatewayServerGroup](https://cloud.tencent.com/document/api/1364/96756)
+* [DeleteCloudNativeAPIGateway](https://cloud.tencent.com/document/api/1364/96755)
+* [DeleteNativeGatewayServerGroup](https://cloud.tencent.com/document/api/1364/96754)
+* [DescribeCloudNativeAPIGateway](https://cloud.tencent.com/document/api/1364/96753)
+* [DescribeCloudNativeAPIGateways](https://cloud.tencent.com/document/api/1364/96752)
+* [ModifyCloudNativeAPIGateway](https://cloud.tencent.com/document/api/1364/96751)
+* [ModifyNativeGatewayServerGroup](https://cloud.tencent.com/document/api/1364/96750)
+* [UpdateCloudNativeAPIGatewaySpec](https://cloud.tencent.com/document/api/1364/96749)
+
+新增数据结构：
+
+* [CloudNativeAPIGatewayNodeConfig](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayNodeConfig)
+* [CloudNativeAPIGatewayVpcConfig](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayVpcConfig)
+* [CreateCloudNativeAPIGatewayResult](https://cloud.tencent.com/document/api/1364/54942#CreateCloudNativeAPIGatewayResult)
+* [CreateCloudNativeAPIGatewayServerGroupResult](https://cloud.tencent.com/document/api/1364/54942#CreateCloudNativeAPIGatewayServerGroupResult)
+* [DeleteCloudNativeAPIGatewayResult](https://cloud.tencent.com/document/api/1364/54942#DeleteCloudNativeAPIGatewayResult)
+* [DeleteNativeGatewayServerGroupResult](https://cloud.tencent.com/document/api/1364/54942#DeleteNativeGatewayServerGroupResult)
+* [DescribeCloudNativeAPIGatewayResult](https://cloud.tencent.com/document/api/1364/54942#DescribeCloudNativeAPIGatewayResult)
+* [InstancePort](https://cloud.tencent.com/document/api/1364/54942#InstancePort)
+* [InternetConfig](https://cloud.tencent.com/document/api/1364/54942#InternetConfig)
+* [ListCloudNativeAPIGatewayResult](https://cloud.tencent.com/document/api/1364/54942#ListCloudNativeAPIGatewayResult)
+* [UpdateCloudNativeAPIGatewayResult](https://cloud.tencent.com/document/api/1364/54942#UpdateCloudNativeAPIGatewayResult)
+
+
+
 # Release v1.0.726
 
 ## 云数据库 MySQL(cdb) 版本：2017-03-20

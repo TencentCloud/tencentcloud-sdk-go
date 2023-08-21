@@ -2714,28 +2714,35 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 }
 
 // CreateConsoleLoginUrl
-// 此接口（CreateConsoleLoginUrl）用于创建第三方平台子客企业控制台Web/移动登录链接。登录链接是子客控制台的唯一入口。
+// 此接口（CreateConsoleLoginUrl）用于创建第三方平台子客企业控制台Web/移动登录链接。支持web控制台、电子签小程序和H5链接。登录链接是进入子客控制台的唯一入口。
 //
-// 若子客企业未激活，会进入企业激活流程，首次参与激活流程的经办人会成为超管。（若企业激活过程中填写信息有误，需要重置激活流程，可以换一个经办人OpenId获取新的链接进入。）
+// 链接访问后，会根据企业的和员工的状态（企业根据ProxyOrganizationOpenId参数，员工根据OpenId参数判断），进入不同的流程，主要情况分类如下：
 //
-// 若子客企业已激活，使用了新的经办人OpenId进入，则会进入经办人的实名流程。
+// 1. 若子客企业未激活，会进入企业激活流程，首次参与激活流程的经办人会成为超管。
 //
-// 若子客企业、经办人均已完成认证，则会直接进入子客Web控制台。
+// 2. 若子客企业已激活，员工未激活，则会进入经办人激活流程。
+//
+// 3. 若子客企业、经办人均已完成认证，则会直接进入子客Web控制台。
+//
+// 
+//
+// 如果是企业激活流程，需要注意如下情况：
+//
+// 
+//
+// 1. 若在激活过程中，更换用户OpenID重新生成链接，之前的认证会被清理。因此不要在认证过程中多人同时操作，导致认证过程互相影响。
+//
+// 2. 若您认证中发现信息有误需要重新认证，可以通过更换OpenID重新生成链接的方式，来清理掉已有的流程。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_HASAUTHORIZED = "FailedOperation.HasAuthorized"
+//  FAILEDOPERATION_ERRNOTSYNCPROXYORGANIZATION = "FailedOperation.ErrNotSyncProxyOrganization"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_AUTHORIZATIONTYPE = "InvalidParameter.AuthorizationType"
-//  INVALIDPARAMETER_BUSINESSLICENSE = "InvalidParameter.BusinessLicense"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
-//  INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
 //  INVALIDPARAMETER_MENUSTATUS = "InvalidParameter.MenuStatus"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
@@ -2743,18 +2750,18 @@ func NewCreateConsoleLoginUrlResponse() (response *CreateConsoleLoginUrlResponse
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_UNIFORMSOCIALCREDITCODE = "InvalidParameter.UniformSocialCreditCode"
-//  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_COMPANYACTIVEINFO = "MissingParameter.CompanyActiveInfo"
 //  MISSINGPARAMETER_ORGOPENID = "MissingParameter.OrgOpenId"
 //  MISSINGPARAMETER_PROXYOPERATOROPENID = "MissingParameter.ProxyOperatorOpenId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_ERRNOTOPENWEAKAUTHORIZATION = "OperationDenied.ErrNotOpenWeakAuthorization"
+//  OPERATIONDENIED_NOTSUPPORTORGTYPE = "OperationDenied.NotSupportOrgType"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_APPLICATIONID = "ResourceNotFound.ApplicationId"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -2765,28 +2772,35 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 }
 
 // CreateConsoleLoginUrl
-// 此接口（CreateConsoleLoginUrl）用于创建第三方平台子客企业控制台Web/移动登录链接。登录链接是子客控制台的唯一入口。
+// 此接口（CreateConsoleLoginUrl）用于创建第三方平台子客企业控制台Web/移动登录链接。支持web控制台、电子签小程序和H5链接。登录链接是进入子客控制台的唯一入口。
 //
-// 若子客企业未激活，会进入企业激活流程，首次参与激活流程的经办人会成为超管。（若企业激活过程中填写信息有误，需要重置激活流程，可以换一个经办人OpenId获取新的链接进入。）
+// 链接访问后，会根据企业的和员工的状态（企业根据ProxyOrganizationOpenId参数，员工根据OpenId参数判断），进入不同的流程，主要情况分类如下：
 //
-// 若子客企业已激活，使用了新的经办人OpenId进入，则会进入经办人的实名流程。
+// 1. 若子客企业未激活，会进入企业激活流程，首次参与激活流程的经办人会成为超管。
 //
-// 若子客企业、经办人均已完成认证，则会直接进入子客Web控制台。
+// 2. 若子客企业已激活，员工未激活，则会进入经办人激活流程。
+//
+// 3. 若子客企业、经办人均已完成认证，则会直接进入子客Web控制台。
+//
+// 
+//
+// 如果是企业激活流程，需要注意如下情况：
+//
+// 
+//
+// 1. 若在激活过程中，更换用户OpenID重新生成链接，之前的认证会被清理。因此不要在认证过程中多人同时操作，导致认证过程互相影响。
+//
+// 2. 若您认证中发现信息有误需要重新认证，可以通过更换OpenID重新生成链接的方式，来清理掉已有的流程。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_HASAUTHORIZED = "FailedOperation.HasAuthorized"
+//  FAILEDOPERATION_ERRNOTSYNCPROXYORGANIZATION = "FailedOperation.ErrNotSyncProxyOrganization"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_AUTHORIZATIONTYPE = "InvalidParameter.AuthorizationType"
-//  INVALIDPARAMETER_BUSINESSLICENSE = "InvalidParameter.BusinessLicense"
 //  INVALIDPARAMETER_DATANOTFOUND = "InvalidParameter.DataNotFound"
 //  INVALIDPARAMETER_ENDPOINT = "InvalidParameter.EndPoint"
-//  INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
 //  INVALIDPARAMETER_MENUSTATUS = "InvalidParameter.MenuStatus"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_OPENID = "InvalidParameter.OpenId"
@@ -2794,18 +2808,18 @@ func (c *Client) CreateConsoleLoginUrl(request *CreateConsoleLoginUrlRequest) (r
 //  INVALIDPARAMETER_ORGANIZATIONNAME = "InvalidParameter.OrganizationName"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_UNIFORMSOCIALCREDITCODE = "InvalidParameter.UniformSocialCreditCode"
-//  LIMITEXCEEDED_FILESIZE = "LimitExceeded.FileSize"
 //  MISSINGPARAMETER = "MissingParameter"
 //  MISSINGPARAMETER_COMPANYACTIVEINFO = "MissingParameter.CompanyActiveInfo"
 //  MISSINGPARAMETER_ORGOPENID = "MissingParameter.OrgOpenId"
 //  MISSINGPARAMETER_PROXYOPERATOROPENID = "MissingParameter.ProxyOperatorOpenId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_BANNEDAPPLICATION = "OperationDenied.BannedApplication"
+//  OPERATIONDENIED_ERRNOTOPENWEAKAUTHORIZATION = "OperationDenied.ErrNotOpenWeakAuthorization"
+//  OPERATIONDENIED_NOTSUPPORTORGTYPE = "OperationDenied.NotSupportOrgType"
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_APPLICATIONID = "ResourceNotFound.ApplicationId"
-//  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -4164,15 +4178,20 @@ func NewSyncProxyOrganizationResponse() (response *SyncProxyOrganizationResponse
 }
 
 // SyncProxyOrganization
-// 此接口（SyncProxyOrganization）用于同步第三方平台子客企业信息，主要是子客企业的营业执照，便于子客企业开通过程中不用手动上传。若有需要调用此接口，需要在创建控制链接CreateConsoleLoginUrl之后即刻进行调用。
+// 此接口（SyncProxyOrganization）用于同步第三方平台子客企业信息，包括企业名称，企业营业执照，企业统一社会信用代码和法人姓名等，便于子客企业在企业激活过程中无需手动上传营业执照或补充企业信息。注意：
+//
+// 1. 需要在子客企业激活前调用该接口，如果您的企业已经提交企业信息或者企业已经激活，同步的企业信息将不会生效。
+//
+// 2. 如果您同时传递了营业执照信息和企业名称等信息，在认证过程中将以营业执照中的企业信息为准，请注意企业信息需要和营业执照信息对应。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_BUSINESSLICENSE = "InvalidParameter.BusinessLicense"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
 //  INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"
@@ -4196,15 +4215,20 @@ func (c *Client) SyncProxyOrganization(request *SyncProxyOrganizationRequest) (r
 }
 
 // SyncProxyOrganization
-// 此接口（SyncProxyOrganization）用于同步第三方平台子客企业信息，主要是子客企业的营业执照，便于子客企业开通过程中不用手动上传。若有需要调用此接口，需要在创建控制链接CreateConsoleLoginUrl之后即刻进行调用。
+// 此接口（SyncProxyOrganization）用于同步第三方平台子客企业信息，包括企业名称，企业营业执照，企业统一社会信用代码和法人姓名等，便于子客企业在企业激活过程中无需手动上传营业执照或补充企业信息。注意：
+//
+// 1. 需要在子客企业激活前调用该接口，如果您的企业已经提交企业信息或者企业已经激活，同步的企业信息将不会生效。
+//
+// 2. 如果您同时传递了营业执照信息和企业名称等信息，在认证过程中将以营业执照中的企业信息为准，请注意企业信息需要和营业执照信息对应。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_BUSINESSLICENSE = "InvalidParameter.BusinessLicense"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
+//  INVALIDPARAMETER_CARDTYPE = "InvalidParameter.CardType"
 //  INVALIDPARAMETER_FILETYPE = "InvalidParameter.FileType"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
 //  INVALIDPARAMETER_ORGANIZATIONID = "InvalidParameter.OrganizationId"

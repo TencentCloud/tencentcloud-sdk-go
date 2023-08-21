@@ -149,6 +149,12 @@ const (
 	// 不支持当天发票查询。
 	RESOURCENOTFOUND_NOTSUPPORTCURRENTINVOICEQUERY = "ResourceNotFound.NotSupportCurrentInvoiceQuery"
 
+	// 帐号已欠费。
+	RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+
+	// 账号资源包耗尽。
+	RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
+
 	// 税务局网络异常，请稍后访问。
 	RESOURCEUNAVAILABLE_TAXNETWORKERROR = "ResourceUnavailable.TaxNetworkError"
 

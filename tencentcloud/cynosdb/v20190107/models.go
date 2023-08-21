@@ -11257,6 +11257,9 @@ type ProxyNodeInfo struct {
 
 	// 可用区
 	Zone *string `json:"Zone,omitempty" name:"Zone"`
+
+	// 数据库代理节点名字
+	OssProxyNodeName *string `json:"OssProxyNodeName,omitempty" name:"OssProxyNodeName"`
 }
 
 type ProxySpec struct {
