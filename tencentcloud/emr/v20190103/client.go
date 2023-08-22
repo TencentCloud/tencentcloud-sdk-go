@@ -1841,6 +1841,7 @@ func NewModifyResourcePoolsResponse() (response *ModifyResourcePoolsResponse) {
 // 刷新YARN的动态资源池
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
@@ -1854,6 +1855,7 @@ func (c *Client) ModifyResourcePools(request *ModifyResourcePoolsRequest) (respo
 // 刷新YARN的动态资源池
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INTERNALERROR_WOODSERVERERROR = "InternalError.WoodServerError"
@@ -2011,6 +2013,7 @@ func NewModifyResourcesTagsResponse() (response *ModifyResourcesTagsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyResourcesTags(request *ModifyResourcesTagsRequest) (response *ModifyResourcesTagsResponse, err error) {
     return c.ModifyResourcesTagsWithContext(context.Background(), request)
@@ -2022,6 +2025,7 @@ func (c *Client) ModifyResourcesTags(request *ModifyResourcesTagsRequest) (respo
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyResourcesTagsWithContext(ctx context.Context, request *ModifyResourcesTagsRequest) (response *ModifyResourcesTagsResponse, err error) {
     if request == nil {

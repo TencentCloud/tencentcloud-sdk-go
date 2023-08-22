@@ -146,6 +146,9 @@ const (
 	// 操作不允许。
 	FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
 
+	// 该Notebook实例不支持保存镜像，如果您使用的是自定义镜像请重启Notebook实例后再执行保存操作
+	FAILEDOPERATION_NOTSUPPORTEDTOCREATEIMAGE = "FailedOperation.NotSupportedToCreateImage"
+
 	// 请求正在处理中，请稍后再试。
 	FAILEDOPERATION_PROCESSING = "FailedOperation.Processing"
 

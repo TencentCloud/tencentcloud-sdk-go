@@ -3701,6 +3701,148 @@ func (c *Client) UpdateNamespaceWithContext(ctx context.Context, request *Update
     return
 }
 
+func NewUpdateTriggerRequest() (request *UpdateTriggerRequest) {
+    request = &UpdateTriggerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("scf", APIVersion, "UpdateTrigger")
+    
+    
+    return
+}
+
+func NewUpdateTriggerResponse() (response *UpdateTriggerResponse) {
+    response = &UpdateTriggerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateTrigger
+// 支持触发器配置更新。
+//
+// 默认接口请求频率限制：20次/秒
+//
+// 
+//
+// 注意：目前只支持timer触发器和ckafka触发器更新！
+//
+// 
+//
+// timer触发器和ckafka触发器支持更新字段有：Enable、TriggerDesc、Description、CustomArgument。
+//
+// 
+//
+// timer触发器TriggerDesc支持5段式和7段式的更新。
+//
+// 
+//
+// ckafka触发器TriggerDesc支持Retry、MaxMsgNum、TimeOut参数更新，不传值表示原值不变，传值不能为空。
+//
+// 
+//
+// Enable 触发器开启或关闭，传参为OPEN为开启，CLOSE为关闭。不传值表示原值不变，传值不能为空。
+//
+// 
+//
+// Description 触发器描述，不传值保持原值不变，传值为空则为空。
+//
+// 
+//
+// CustomArgument 触发器用户附加信息（注意：只有timer触发器展示），不传值保持原值不变，传值为空则为空。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATETRIGGER = "FailedOperation.CreateTrigger"
+//  FAILEDOPERATION_UPDATETRIGGER = "FailedOperation.UpdateTrigger"
+//  INTERNALERROR_CMQ = "InternalError.Cmq"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+//  INVALIDPARAMETERVALUE_ENABLE = "InvalidParameterValue.Enable"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_TRIGGERDESC = "InvalidParameterValue.TriggerDesc"
+//  INVALIDPARAMETERVALUE_TRIGGERNAME = "InvalidParameterValue.TriggerName"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_QUALIFIER = "ResourceNotFound.Qualifier"
+//  RESOURCENOTFOUND_TRIGGER = "ResourceNotFound.Trigger"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+func (c *Client) UpdateTrigger(request *UpdateTriggerRequest) (response *UpdateTriggerResponse, err error) {
+    return c.UpdateTriggerWithContext(context.Background(), request)
+}
+
+// UpdateTrigger
+// 支持触发器配置更新。
+//
+// 默认接口请求频率限制：20次/秒
+//
+// 
+//
+// 注意：目前只支持timer触发器和ckafka触发器更新！
+//
+// 
+//
+// timer触发器和ckafka触发器支持更新字段有：Enable、TriggerDesc、Description、CustomArgument。
+//
+// 
+//
+// timer触发器TriggerDesc支持5段式和7段式的更新。
+//
+// 
+//
+// ckafka触发器TriggerDesc支持Retry、MaxMsgNum、TimeOut参数更新，不传值表示原值不变，传值不能为空。
+//
+// 
+//
+// Enable 触发器开启或关闭，传参为OPEN为开启，CLOSE为关闭。不传值表示原值不变，传值不能为空。
+//
+// 
+//
+// Description 触发器描述，不传值保持原值不变，传值为空则为空。
+//
+// 
+//
+// CustomArgument 触发器用户附加信息（注意：只有timer触发器展示），不传值保持原值不变，传值为空则为空。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CREATETRIGGER = "FailedOperation.CreateTrigger"
+//  FAILEDOPERATION_UPDATETRIGGER = "FailedOperation.UpdateTrigger"
+//  INTERNALERROR_CMQ = "InternalError.Cmq"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+//  INVALIDPARAMETERVALUE_ENABLE = "InvalidParameterValue.Enable"
+//  INVALIDPARAMETERVALUE_FUNCTIONNAME = "InvalidParameterValue.FunctionName"
+//  INVALIDPARAMETERVALUE_TRIGGERDESC = "InvalidParameterValue.TriggerDesc"
+//  INVALIDPARAMETERVALUE_TRIGGERNAME = "InvalidParameterValue.TriggerName"
+//  INVALIDPARAMETERVALUE_TYPE = "InvalidParameterValue.Type"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_FUNCTION = "ResourceNotFound.Function"
+//  RESOURCENOTFOUND_FUNCTIONNAME = "ResourceNotFound.FunctionName"
+//  RESOURCENOTFOUND_NAMESPACE = "ResourceNotFound.Namespace"
+//  RESOURCENOTFOUND_QUALIFIER = "ResourceNotFound.Qualifier"
+//  RESOURCENOTFOUND_TRIGGER = "ResourceNotFound.Trigger"
+//  UNAUTHORIZEDOPERATION_CAM = "UnauthorizedOperation.CAM"
+func (c *Client) UpdateTriggerWithContext(ctx context.Context, request *UpdateTriggerRequest) (response *UpdateTriggerResponse, err error) {
+    if request == nil {
+        request = NewUpdateTriggerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateTrigger require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateTriggerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewUpdateTriggerStatusRequest() (request *UpdateTriggerStatusRequest) {
     request = &UpdateTriggerStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},

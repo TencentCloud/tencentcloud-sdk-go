@@ -32,6 +32,9 @@ const (
 	// CLS内部错误。
 	FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
 
+	// 操作CH数据库失败
+	FAILEDOPERATION_CLICKHOUSEOPERATIONFAILED = "FailedOperation.ClickHouseOperationFailed"
+
 	// 操作Mysql数据库失败
 	FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
 
@@ -40,6 +43,9 @@ const (
 
 	// 内部错误。
 	INTERNALERROR = "InternalError"
+
+	// 异步调用失败
+	INTERNALERROR_ASYNCHRONOUSCALLFAILED = "InternalError.AsynchronousCallFailed"
 
 	// DBErr
 	INTERNALERROR_DBERR = "InternalError.DBErr"
@@ -50,11 +56,23 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 证书信息参数错误
+	INVALIDPARAMETER_CERTIFICATIONPARAMETERERR = "InvalidParameter.CertificationParameterErr"
+
+	// 域名数量超出限制错误
+	INVALIDPARAMETER_DOMAINEXCEEDSLIMITERR = "InvalidParameter.DomainExceedsLimitErr"
+
+	// 域名未备案
+	INVALIDPARAMETER_DOMAINNOTRECORD = "InvalidParameter.DomainNotRecord"
+
 	// 证书内容非法。
 	INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
 
 	// 逻辑错误：SQL检索语句中的逻辑错误也可能导致错误。例如，使用错误的运算符、使用错误的条件等
 	INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+
+	// 端口信息参数错误
+	INVALIDPARAMETER_PORTPARAMETERERR = "InvalidParameter.PortParameterErr"
 
 	// 根据ID查询证书失败。
 	INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
@@ -65,8 +83,20 @@ const (
 	// 语法错误：SQL检索语句必须遵循特定的语法规则，如果语法错误，就会导致SQL语句无法执行。例如，缺少关键字、拼写错误、缺少分号等。
 	INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
 
+	// 当前实例版本不支持开启TLS自定义，请升级到高级版及以上
+	INVALIDPARAMETER_SUPPORTTLSCONFFAILED = "InvalidParameter.SupportTLSConfFailed"
+
+	// TLS或加密套件参数错误
+	INVALIDPARAMETER_TLSPARAMETERERR = "InvalidParameter.TLSParameterErr"
+
 	// 数据类型错误：SQL检索语句中的数据类型必须与数据库中的数据类型匹配，否则会导致错误。例如，将字符串与整数进行比较、将日期格式不正确等。
 	INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
+
+	// UnknownAction
+	INVALIDPARAMETER_UNKNOWNACTION = "InvalidParameter.UnknownAction"
+
+	// 回源信息参数错误
+	INVALIDPARAMETER_UPSTREAMPARAMETERERR = "InvalidParameter.UpstreamParameterErr"
 
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -88,6 +118,9 @@ const (
 
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
+
+	// EmptyErr
+	RESOURCEINUSE_EMPTYERR = "ResourceInUse.EmptyErr"
 
 	// 资源不足。
 	RESOURCEINSUFFICIENT = "ResourceInsufficient"

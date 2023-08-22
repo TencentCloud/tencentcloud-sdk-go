@@ -2684,6 +2684,7 @@ func NewModifyCertificateProjectResponse() (response *ModifyCertificateProjectRe
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CAMAUTHORIZEDFAIL = "FailedOperation.CAMAuthorizedFail"
 //  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
 //  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
 //  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
@@ -2697,6 +2698,7 @@ func (c *Client) ModifyCertificateProject(request *ModifyCertificateProjectReque
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUTHERROR = "FailedOperation.AuthError"
+//  FAILEDOPERATION_CAMAUTHORIZEDFAIL = "FailedOperation.CAMAuthorizedFail"
 //  FAILEDOPERATION_INVALIDPARAM = "FailedOperation.InvalidParam"
 //  FAILEDOPERATION_NOPROJECTPERMISSION = "FailedOperation.NoProjectPermission"
 //  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"

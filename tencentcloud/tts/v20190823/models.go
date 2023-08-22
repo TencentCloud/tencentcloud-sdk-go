@@ -52,6 +52,9 @@ type CreateTtsTaskRequestParams struct {
 	// 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。[回调说明](https://cloud.tencent.com/document/product/1073/55746)
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
+	// 是否开启时间戳功能，默认为false。
+	EnableSubtitle *bool `json:"EnableSubtitle,omitempty" name:"EnableSubtitle"`
+
 	// 旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色10510000、100510000），默认 false
 	VoiceoverDialogueSplit *bool `json:"VoiceoverDialogueSplit,omitempty" name:"VoiceoverDialogueSplit"`
 }
@@ -89,6 +92,9 @@ type CreateTtsTaskRequest struct {
 	// 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。[回调说明](https://cloud.tencent.com/document/product/1073/55746)
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
+	// 是否开启时间戳功能，默认为false。
+	EnableSubtitle *bool `json:"EnableSubtitle,omitempty" name:"EnableSubtitle"`
+
 	// 旁白与对白文本解析，分别合成相应风格（仅适用于旁对白音色10510000、100510000），默认 false
 	VoiceoverDialogueSplit *bool `json:"VoiceoverDialogueSplit,omitempty" name:"VoiceoverDialogueSplit"`
 }
@@ -115,6 +121,7 @@ func (r *CreateTtsTaskRequest) FromJsonString(s string) error {
 	delete(f, "SampleRate")
 	delete(f, "Codec")
 	delete(f, "CallbackUrl")
+	delete(f, "EnableSubtitle")
 	delete(f, "VoiceoverDialogueSplit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTtsTaskRequest has unknown keys!", "")
@@ -196,6 +203,9 @@ type DescribeTtsTaskStatusRespData struct {
 
 	// 合成音频COS地址（链接有效期1天）。
 	ResultUrl *string `json:"ResultUrl,omitempty" name:"ResultUrl"`
+
+	// 时间戳信息，若未开启时间戳，则返回空数组。
+	Subtitles []*Subtitle `json:"Subtitles,omitempty" name:"Subtitles"`
 
 	// 失败原因说明。
 	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`

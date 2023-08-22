@@ -125,6 +125,7 @@ func NewCopyJobsResponse() (response *CopyJobsResponse) {
 //  INTERNALERROR_STSNEWCLIENT = "InternalError.StsNewClient"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CopyJobs(request *CopyJobsRequest) (response *CopyJobsResponse, err error) {
@@ -143,6 +144,7 @@ func (c *Client) CopyJobs(request *CopyJobsRequest) (response *CopyJobsResponse,
 //  INTERNALERROR_STSNEWCLIENT = "InternalError.StsNewClient"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) CopyJobsWithContext(ctx context.Context, request *CopyJobsRequest) (response *CopyJobsResponse, err error) {

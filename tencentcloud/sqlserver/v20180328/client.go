@@ -5669,6 +5669,7 @@ func NewModifyInstanceEncryptAttributesResponse() (response *ModifyInstanceEncry
 // 本接口（ModifyInstanceEncryptAttributes）用于开通实例的TDE加密功能。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = "UnsupportedOperation.NotSupportRepeat"
@@ -5680,6 +5681,7 @@ func (c *Client) ModifyInstanceEncryptAttributes(request *ModifyInstanceEncryptA
 // 本接口（ModifyInstanceEncryptAttributes）用于开通实例的TDE加密功能。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_NOTSUPPORT = "FailedOperation.NotSupport"
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCEUNAVAILABLE_INSTANCESTATUSINVALID = "ResourceUnavailable.InstanceStatusInvalid"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTREPEAT = "UnsupportedOperation.NotSupportRepeat"

@@ -236,6 +236,11 @@ type AutoSignConfig struct {
 	// 
 	// 如果是 H5 开通链接，支持传 INSIGHT / TELECOM。默认值 WEIXINAPP / INSIGHT。
 	VerifyChannels []*string `json:"VerifyChannels,omitempty" name:"VerifyChannels"`
+
+	// 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。
+	// 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次
+	// 1-不绑定，发起合同时将按标准合同套餐进行扣减
+	LicenseType *int64 `json:"LicenseType,omitempty" name:"LicenseType"`
 }
 
 // Predefined struct for user
@@ -3349,6 +3354,9 @@ type CreatePreparedPersonalEsignRequestParams struct {
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
+	LicenseType *int64 `json:"LicenseType,omitempty" name:"LicenseType"`
 }
 
 type CreatePreparedPersonalEsignRequest struct {
@@ -3409,6 +3417,9 @@ type CreatePreparedPersonalEsignRequest struct {
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+
+	// 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次 1-不绑定，发起合同时将按标准合同套餐进行扣减	
+	LicenseType *int64 `json:"LicenseType,omitempty" name:"LicenseType"`
 }
 
 func (r *CreatePreparedPersonalEsignRequest) ToJsonString() string {
@@ -3436,6 +3447,7 @@ func (r *CreatePreparedPersonalEsignRequest) FromJsonString(s string) error {
 	delete(f, "ProcessSeal")
 	delete(f, "FileId")
 	delete(f, "Agent")
+	delete(f, "LicenseType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePreparedPersonalEsignRequest has unknown keys!", "")
 	}
@@ -3579,7 +3591,8 @@ type CreateSchemeUrlRequestParams struct {
 
 	// 要跳转的链接类型
 	// 
-	// - HTTP：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  (默认)
+	// - HTTP：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  (默认)，此时返回长链
+	// - HTTP_SHORT_URL：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链
 	// - APP： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型
 	EndPoint *string `json:"EndPoint,omitempty" name:"EndPoint"`
 
@@ -3631,7 +3644,8 @@ type CreateSchemeUrlRequest struct {
 
 	// 要跳转的链接类型
 	// 
-	// - HTTP：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  (默认)
+	// - HTTP：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型  (默认)，此时返回长链
+	// - HTTP_SHORT_URL：跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型，此时返回短链
 	// - APP： 第三方APP或小程序跳转电子签小程序的path,  APP或者小程序跳转适合此类型
 	EndPoint *string `json:"EndPoint,omitempty" name:"EndPoint"`
 
@@ -3697,7 +3711,7 @@ func (r *CreateSchemeUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSchemeUrlResponseParams struct {
-	// 小程序链接地址，有效期30天
+	// 小程序链接地址，有效期90天。如果EndPoint是App，得到的链接Path如’weixin://dl/business/?t= *TICKET*‘，用于客户APP、小程序直接拉起电子签小程序；其他EndPoint得到的https链接如'https://essurl.cn/xxx'，点击链接会打开一个H5页面，然后拉起电子签小程序。
 	SchemeUrl *string `json:"SchemeUrl,omitempty" name:"SchemeUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4132,6 +4146,9 @@ type CreateWebThemeConfigRequestParams struct {
 
 	// 主题配置
 	WebThemeConfig *WebThemeConfig `json:"WebThemeConfig,omitempty" name:"WebThemeConfig"`
+
+	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateWebThemeConfigRequest struct {
@@ -4147,6 +4164,9 @@ type CreateWebThemeConfigRequest struct {
 
 	// 主题配置
 	WebThemeConfig *WebThemeConfig `json:"WebThemeConfig,omitempty" name:"WebThemeConfig"`
+
+	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 func (r *CreateWebThemeConfigRequest) ToJsonString() string {
@@ -4164,6 +4184,7 @@ func (r *CreateWebThemeConfigRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "ThemeType")
 	delete(f, "WebThemeConfig")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateWebThemeConfigRequest has unknown keys!", "")
 	}
@@ -5929,6 +5950,11 @@ type DescribeUserAutoSignStatusResponseParams struct {
 	// 自动签许可到期时间。当且仅当已开通自动签时有值。
 	// 值为unix时间戳,单位为秒。
 	LicenseTo *int64 `json:"LicenseTo,omitempty" name:"LicenseTo"`
+
+	// 设置用户开通自动签时是否绑定个人自动签账号许可。一旦绑定后，将扣减购买的个人自动签账号许可一次（1年有效期），不可解绑释放。不传默认为绑定自动签账号许可。
+	// 0-绑定个人自动签账号许可，开通后将扣减购买的个人自动签账号许可一次
+	// 1-不绑定，发起合同时将按标准合同套餐进行扣减
+	LicenseType *int64 `json:"LicenseType,omitempty" name:"LicenseType"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

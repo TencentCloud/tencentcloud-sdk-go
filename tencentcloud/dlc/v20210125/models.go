@@ -9388,7 +9388,7 @@ type TaskResultInfo struct {
 	// 执行任务的类型，现在分为DDL、DML、DQL
 	SQLType *string `json:"SQLType,omitempty" name:"SQLType"`
 
-	// 任务当前的状态，0：初始化 1：任务运行中 2：任务执行成功 -1：任务执行失败 -3：用户手动终止。只有任务执行成功的情况下，才会返回任务执行的结果
+	// 任务当前的状态，0：初始化 1：任务运行中 2：任务执行成功  3：数据写入中 4：排队中 -1：任务执行失败 -3：用户手动终止 。只有任务执行成功的情况下，才会返回任务执行的结果
 	State *int64 `json:"State,omitempty" name:"State"`
 
 	// 扫描的数据量，单位byte

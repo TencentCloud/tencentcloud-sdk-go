@@ -3334,6 +3334,85 @@ func (r *DescribeGatewaySubProductsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 附加查询返回包含字段值，不传返回0，有效值 ProductNum、ProjectNum、UsedDeviceNum、TotalDevice、ActivateDevice
+	Include []*string `json:"Include,omitempty" name:"Include"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 产品ID，-1 代表全部产品
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
+type DescribeInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 附加查询返回包含字段值，不传返回0，有效值 ProductNum、ProjectNum、UsedDeviceNum、TotalDevice、ActivateDevice
+	Include []*string `json:"Include,omitempty" name:"Include"`
+
+	// 项目ID
+	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+
+	// 产品ID，-1 代表全部产品
+	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+}
+
+func (r *DescribeInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Include")
+	delete(f, "ProjectId")
+	delete(f, "ProductId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceResponseParams struct {
+	// 实例信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *InstanceDetail `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeLoRaFrequencyRequestParams struct {
 	// 频点唯一ID
 	FreqId *string `json:"FreqId,omitempty" name:"FreqId"`
@@ -5310,6 +5389,49 @@ func (r *GetTopicRuleListResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetTopicRuleListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InstanceDetail struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例类型（0 公共实例 1 标准企业实例 2专享企业实例）
+	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+
+	// 地域字母缩写
+	Region *string `json:"Region,omitempty" name:"Region"`
+
+	// 区域全拼
+	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+
+	// 支持设备总数
+	TotalDeviceNum *int64 `json:"TotalDeviceNum,omitempty" name:"TotalDeviceNum"`
+
+	// 以注册设备数
+	UsedDeviceNum *int64 `json:"UsedDeviceNum,omitempty" name:"UsedDeviceNum"`
+
+	// 项目数
+	ProjectNum *int64 `json:"ProjectNum,omitempty" name:"ProjectNum"`
+
+	// 产品数
+	ProductNum *int64 `json:"ProductNum,omitempty" name:"ProductNum"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 过期时间，公共实例过期时间 0001-01-01T00:00:00Z，公共实例是永久有效
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 总设备数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalDevice *int64 `json:"TotalDevice,omitempty" name:"TotalDevice"`
+
+	// 激活设备数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActivateDevice *int64 `json:"ActivateDevice,omitempty" name:"ActivateDevice"`
 }
 
 // Predefined struct for user

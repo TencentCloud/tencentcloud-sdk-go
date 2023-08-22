@@ -2735,6 +2735,70 @@ func (c *Client) DescribeGatewaySubProductsWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeInstanceRequest() (request *DescribeInstanceRequest) {
+    request = &DescribeInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "DescribeInstance")
+    
+    
+    return
+}
+
+func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
+    response = &DescribeInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstance
+// 公共实例过期时间 0001-01-01T00:00:00Z，公共实例是永久有效
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = "UnauthorizedOperation.NoPermissionToStudioInstance"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_UNPAIDORDER = "UnsupportedOperation.UnpaidOrder"
+func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
+    return c.DescribeInstanceWithContext(context.Background(), request)
+}
+
+// DescribeInstance
+// 公共实例过期时间 0001-01-01T00:00:00Z，公共实例是永久有效
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
+//  INTERNALERROR_INTERNALSERVEREXCEPTIONDB = "InternalError.InternalServerExceptionDB"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_INSTANCENOTEXIST = "ResourceNotFound.InstanceNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOINSTANCE = "UnauthorizedOperation.NoPermissionToInstance"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOSTUDIOINSTANCE = "UnauthorizedOperation.NoPermissionToStudioInstance"
+//  UNSUPPORTEDOPERATION_INSTANCEISOLATED = "UnsupportedOperation.InstanceIsolated"
+//  UNSUPPORTEDOPERATION_UNPAIDORDER = "UnsupportedOperation.UnpaidOrder"
+func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeLoRaFrequencyRequest() (request *DescribeLoRaFrequencyRequest) {
     request = &DescribeLoRaFrequencyRequest{
         BaseRequest: &tchttp.BaseRequest{},

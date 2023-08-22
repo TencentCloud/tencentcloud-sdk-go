@@ -2530,6 +2530,7 @@ func NewDeleteNamespaceResponse() (response *DeleteNamespaceResponse) {
 //  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
 //  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
 //  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
+//  FAILEDOPERATION_PRECONDITIONFAILED = "FailedOperation.PreconditionFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -2555,6 +2556,7 @@ func (c *Client) DeleteNamespace(request *DeleteNamespaceRequest) (response *Del
 //  FAILEDOPERATION_ERRORTCRRESOURCECONFLICT = "FailedOperation.ErrorTcrResourceConflict"
 //  FAILEDOPERATION_ERRORTCRUNAUTHORIZED = "FailedOperation.ErrorTcrUnauthorized"
 //  FAILEDOPERATION_GETDBDATAERROR = "FailedOperation.GetDBDataError"
+//  FAILEDOPERATION_PRECONDITIONFAILED = "FailedOperation.PreconditionFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -3987,6 +3989,7 @@ func NewDescribeImagesResponse() (response *DescribeImagesResponse) {
 // 查询镜像版本列表或指定容器镜像信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -4007,6 +4010,7 @@ func (c *Client) DescribeImages(request *DescribeImagesRequest) (response *Descr
 // 查询镜像版本列表或指定容器镜像信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -4957,6 +4961,7 @@ func NewDescribeRepositoriesResponse() (response *DescribeRepositoriesResponse) 
 // 查询镜像仓库列表或指定镜像仓库信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
@@ -4979,6 +4984,7 @@ func (c *Client) DescribeRepositories(request *DescribeRepositoriesRequest) (res
 // 查询镜像仓库列表或指定镜像仓库信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_EMPTYCOREBODY = "FailedOperation.EmptyCoreBody"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"

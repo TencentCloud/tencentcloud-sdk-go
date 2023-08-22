@@ -1239,27 +1239,27 @@ func (r *CreateModelServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateNotebookImageRequestParams struct {
-	// 要保存的kernel数组
-	Kernels []*string `json:"Kernels,omitempty" name:"Kernels"`
-
 	// 镜像信息
 	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
 
 	// notebook id
 	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
+
+	// 要保存的kernel数组
+	Kernels []*string `json:"Kernels,omitempty" name:"Kernels"`
 }
 
 type CreateNotebookImageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要保存的kernel数组
-	Kernels []*string `json:"Kernels,omitempty" name:"Kernels"`
-
 	// 镜像信息
 	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
 
 	// notebook id
 	NotebookId *string `json:"NotebookId,omitempty" name:"NotebookId"`
+
+	// 要保存的kernel数组
+	Kernels []*string `json:"Kernels,omitempty" name:"Kernels"`
 }
 
 func (r *CreateNotebookImageRequest) ToJsonString() string {
@@ -1274,9 +1274,9 @@ func (r *CreateNotebookImageRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Kernels")
 	delete(f, "ImageInfo")
 	delete(f, "NotebookId")
+	delete(f, "Kernels")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookImageRequest has unknown keys!", "")
 	}
@@ -5961,6 +5961,14 @@ type ImageInfo struct {
 	// TCR镜像对应的实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RegistryId *string `json:"RegistryId,omitempty" name:"RegistryId"`
+
+	// 是否允许导出全部内容
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AllowSaveAllContent *bool `json:"AllowSaveAllContent,omitempty" name:"AllowSaveAllContent"`
+
+	// 镜像名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
 }
 
 type InferGatewayCallInfo struct {

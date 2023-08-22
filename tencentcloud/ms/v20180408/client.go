@@ -1289,12 +1289,6 @@ func NewRequestLocalTaskResponse() (response *RequestLocalTaskResponse) {
 // client任务请求地址
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RequestLocalTask(request *RequestLocalTaskRequest) (response *RequestLocalTaskResponse, err error) {
     return c.RequestLocalTaskWithContext(context.Background(), request)
@@ -1304,12 +1298,6 @@ func (c *Client) RequestLocalTask(request *RequestLocalTaskRequest) (response *R
 // client任务请求地址
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) RequestLocalTaskWithContext(ctx context.Context, request *RequestLocalTaskRequest) (response *RequestLocalTaskResponse, err error) {
     if request == nil {
@@ -1349,12 +1337,6 @@ func NewUpdateClientStateResponse() (response *UpdateClientStateResponse) {
 // 更新client状态
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateClientState(request *UpdateClientStateRequest) (response *UpdateClientStateResponse, err error) {
     return c.UpdateClientStateWithContext(context.Background(), request)
@@ -1364,12 +1346,6 @@ func (c *Client) UpdateClientState(request *UpdateClientStateRequest) (response 
 // 更新client状态
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateClientStateWithContext(ctx context.Context, request *UpdateClientStateRequest) (response *UpdateClientStateResponse, err error) {
     if request == nil {
@@ -1409,12 +1385,6 @@ func NewUpdateLocalTaskResultResponse() (response *UpdateLocalTaskResultResponse
 // 更新本地任务结果
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateLocalTaskResult(request *UpdateLocalTaskResultRequest) (response *UpdateLocalTaskResultResponse, err error) {
     return c.UpdateLocalTaskResultWithContext(context.Background(), request)
@@ -1424,12 +1394,6 @@ func (c *Client) UpdateLocalTaskResult(request *UpdateLocalTaskResultRequest) (r
 // 更新本地任务结果
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateLocalTaskResultWithContext(ctx context.Context, request *UpdateLocalTaskResultRequest) (response *UpdateLocalTaskResultResponse, err error) {
     if request == nil {

@@ -731,11 +731,17 @@ const (
 	// 可用区不支持此机型。
 	RESOURCENOTFOUND_INVALIDZONEINSTANCETYPE = "ResourceNotFound.InvalidZoneInstanceType"
 
+	// 指定密钥对不存在。
+	RESOURCENOTFOUND_KEYPAIRNOTFOUND = "ResourceNotFound.KeyPairNotFound"
+
 	// 无可用的缺省类型的CBS资源。
 	RESOURCENOTFOUND_NODEFAULTCBS = "ResourceNotFound.NoDefaultCbs"
 
 	// 无可用的缺省类型的CBS资源。
 	RESOURCENOTFOUND_NODEFAULTCBSWITHREASON = "ResourceNotFound.NoDefaultCbsWithReason"
+
+	// 资源不可用。
+	RESOURCEUNAVAILABLE = "ResourceUnavailable"
 
 	// 该可用区不售卖此机型
 	RESOURCEUNAVAILABLE_INSTANCETYPE = "ResourceUnavailable.InstanceType"

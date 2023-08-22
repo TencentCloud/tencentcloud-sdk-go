@@ -85,9 +85,11 @@ func (r *AddMachineGroupInfoResponse) FromJsonString(s string) error {
 
 type AlarmAnalysisConfig struct {
 	// 键
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitempty" name:"Key"`
 
 	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
 }
 
@@ -136,6 +138,11 @@ type AlarmInfo struct {
 	// 多维分析设置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Analysis []*AnalysisDimensional `json:"Analysis,omitempty" name:"Analysis"`
+
+	// 多触发条件。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiConditions []*MultiCondition `json:"MultiConditions,omitempty" name:"MultiConditions"`
 }
 
 type AlarmNotice struct {
@@ -167,30 +174,41 @@ type AlarmNotice struct {
 	// 最近更新时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 通知规则。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoticeRules []*NoticeRule `json:"NoticeRules,omitempty" name:"NoticeRules"`
 }
 
 type AlarmTarget struct {
 	// 日志主题ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
 
 	// 查询语句。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Query *string `json:"Query,omitempty" name:"Query"`
 
 	// 告警对象序号；从1开始递增。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Number *int64 `json:"Number,omitempty" name:"Number"`
 
 	// 查询范围起始时间相对于告警执行时间的偏移，单位为分钟，取值为非正，最大值为0，最小值为-1440。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTimeOffset *int64 `json:"StartTimeOffset,omitempty" name:"StartTimeOffset"`
 
 	// 查询范围终止时间相对于告警执行时间的偏移，单位为分钟，取值为非正，须大于StartTimeOffset，最大值为0，最小值为-1440。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTimeOffset *int64 `json:"EndTimeOffset,omitempty" name:"EndTimeOffset"`
 
 	// 日志集ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
 
 	// 检索语法规则，默认值为0。
 	// 0：Lucene语法，1：CQL语法。
 	// 详细说明参见<a href="https://cloud.tencent.com/document/product/614/47044#RetrievesConditionalRules" target="_blank">检索条件语法规则</a>
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
 }
 
@@ -704,6 +722,9 @@ type ContainerFileInfo struct {
 	// 日志名称
 	FilePattern *string `json:"FilePattern,omitempty" name:"FilePattern"`
 
+	// 日志文件信息
+	FilePaths []*FilePathInfo `json:"FilePaths,omitempty" name:"FilePaths"`
+
 	// pod标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IncludeLabels []*string `json:"IncludeLabels,omitempty" name:"IncludeLabels"`
@@ -719,6 +740,10 @@ type ContainerFileInfo struct {
 	// 需要排除的pod标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExcludeLabels []*string `json:"ExcludeLabels,omitempty" name:"ExcludeLabels"`
+
+	// metadata信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomLabels []*string `json:"CustomLabels,omitempty" name:"CustomLabels"`
 }
 
 type ContainerStdoutInfo struct {
@@ -748,6 +773,10 @@ type ContainerStdoutInfo struct {
 	// 需要排除的pod标签信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExcludeLabels []*string `json:"ExcludeLabels,omitempty" name:"ExcludeLabels"`
+
+	// metadata信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomLabels []*string `json:"CustomLabels,omitempty" name:"CustomLabels"`
 }
 
 type ContainerWorkLoadInfo struct {
@@ -862,6 +891,14 @@ type CreateAlarmNoticeRequestParams struct {
 
 	// 接口回调信息（包括企业微信）。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitempty" name:"WebCallbacks"`
+
+	// 通知规则。
+	// 
+	//  注意:  
+	// 
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
+	// 
+	NoticeRules []*NoticeRule `json:"NoticeRules,omitempty" name:"NoticeRules"`
 }
 
 type CreateAlarmNoticeRequest struct {
@@ -881,6 +918,14 @@ type CreateAlarmNoticeRequest struct {
 
 	// 接口回调信息（包括企业微信）。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitempty" name:"WebCallbacks"`
+
+	// 通知规则。
+	// 
+	//  注意:  
+	// 
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
+	// 
+	NoticeRules []*NoticeRule `json:"NoticeRules,omitempty" name:"NoticeRules"`
 }
 
 func (r *CreateAlarmNoticeRequest) ToJsonString() string {
@@ -899,6 +944,7 @@ func (r *CreateAlarmNoticeRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "NoticeReceivers")
 	delete(f, "WebCallbacks")
+	delete(f, "NoticeRules")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAlarmNoticeRequest has unknown keys!", "")
 	}
@@ -941,9 +987,6 @@ type CreateAlarmRequestParams struct {
 	// 监控任务运行时间点。
 	MonitorTime *MonitorTime `json:"MonitorTime,omitempty" name:"MonitorTime"`
 
-	// 触发条件。
-	Condition *string `json:"Condition,omitempty" name:"Condition"`
-
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
 	TriggerCount *int64 `json:"TriggerCount,omitempty" name:"TriggerCount"`
 
@@ -952,6 +995,21 @@ type CreateAlarmRequestParams struct {
 
 	// 关联的告警通知模板列表。
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitempty" name:"AlarmNoticeIds"`
+
+	// 触发条件。
+	// 
+	//  注意:  
+	// 
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	Condition *string `json:"Condition,omitempty" name:"Condition"`
+
+	// 多触发条件。
+	// 
+	//  注意:  
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li>
+	// 
+	// 
+	MultiConditions []*MultiCondition `json:"MultiConditions,omitempty" name:"MultiConditions"`
 
 	// 是否开启告警策略。默认值为true
 	Status *bool `json:"Status,omitempty" name:"Status"`
@@ -978,9 +1036,6 @@ type CreateAlarmRequest struct {
 	// 监控任务运行时间点。
 	MonitorTime *MonitorTime `json:"MonitorTime,omitempty" name:"MonitorTime"`
 
-	// 触发条件。
-	Condition *string `json:"Condition,omitempty" name:"Condition"`
-
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
 	TriggerCount *int64 `json:"TriggerCount,omitempty" name:"TriggerCount"`
 
@@ -989,6 +1044,21 @@ type CreateAlarmRequest struct {
 
 	// 关联的告警通知模板列表。
 	AlarmNoticeIds []*string `json:"AlarmNoticeIds,omitempty" name:"AlarmNoticeIds"`
+
+	// 触发条件。
+	// 
+	//  注意:  
+	// 
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	Condition *string `json:"Condition,omitempty" name:"Condition"`
+
+	// 多触发条件。
+	// 
+	//  注意:  
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li>
+	// 
+	// 
+	MultiConditions []*MultiCondition `json:"MultiConditions,omitempty" name:"MultiConditions"`
 
 	// 是否开启告警策略。默认值为true
 	Status *bool `json:"Status,omitempty" name:"Status"`
@@ -1018,10 +1088,11 @@ func (r *CreateAlarmRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "AlarmTargets")
 	delete(f, "MonitorTime")
-	delete(f, "Condition")
 	delete(f, "TriggerCount")
 	delete(f, "AlarmPeriod")
 	delete(f, "AlarmNoticeIds")
+	delete(f, "Condition")
+	delete(f, "MultiConditions")
 	delete(f, "Status")
 	delete(f, "MessageTemplate")
 	delete(f, "CallBack")
@@ -6028,6 +6099,14 @@ type ExtractRuleInfo struct {
 	EventLogRules []*EventLog `json:"EventLogRules,omitempty" name:"EventLogRules"`
 }
 
+type FilePathInfo struct {
+	// 文件路径
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 文件名称
+	File *string `json:"File,omitempty" name:"File"`
+}
+
 type Filter struct {
 	// 需要过滤的字段。
 	Key *string `json:"Key,omitempty" name:"Key"`
@@ -6681,6 +6760,14 @@ type ModifyAlarmNoticeRequestParams struct {
 
 	// 接口回调信息（包括企业微信）。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitempty" name:"WebCallbacks"`
+
+	// 通知规则。
+	// 
+	// 注意: 
+	// 
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
+	// - 传其中一组数据，则另一组数据置空。
+	NoticeRules []*NoticeRule `json:"NoticeRules,omitempty" name:"NoticeRules"`
 }
 
 type ModifyAlarmNoticeRequest struct {
@@ -6703,6 +6790,14 @@ type ModifyAlarmNoticeRequest struct {
 
 	// 接口回调信息（包括企业微信）。
 	WebCallbacks []*WebCallback `json:"WebCallbacks,omitempty" name:"WebCallbacks"`
+
+	// 通知规则。
+	// 
+	// 注意: 
+	// 
+	// - Type、NoticeReceivers和WebCallbacks是一组配置，NoticeRules是另一组配置，2组配置互斥。
+	// - 传其中一组数据，则另一组数据置空。
+	NoticeRules []*NoticeRule `json:"NoticeRules,omitempty" name:"NoticeRules"`
 }
 
 func (r *ModifyAlarmNoticeRequest) ToJsonString() string {
@@ -6722,6 +6817,7 @@ func (r *ModifyAlarmNoticeRequest) FromJsonString(s string) error {
 	delete(f, "Type")
 	delete(f, "NoticeReceivers")
 	delete(f, "WebCallbacks")
+	delete(f, "NoticeRules")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmNoticeRequest has unknown keys!", "")
 	}
@@ -6762,7 +6858,24 @@ type ModifyAlarmRequestParams struct {
 	MonitorTime *MonitorTime `json:"MonitorTime,omitempty" name:"MonitorTime"`
 
 	// 触发条件。
+	// 
+	// 注意:  
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	Condition *string `json:"Condition,omitempty" name:"Condition"`
+
+	// 告警级别。
+	// 
+	// 0:警告(Warn);1:提醒(Info);2:紧急 (Critical)
+	// 
+	// 注意:  
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitempty" name:"AlarmLevel"`
+
+	// 多触发条件。 
+	// 
+	// 注意:  
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	MultiConditions []*MultiCondition `json:"MultiConditions,omitempty" name:"MultiConditions"`
 
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
 	TriggerCount *int64 `json:"TriggerCount,omitempty" name:"TriggerCount"`
@@ -6802,7 +6915,24 @@ type ModifyAlarmRequest struct {
 	MonitorTime *MonitorTime `json:"MonitorTime,omitempty" name:"MonitorTime"`
 
 	// 触发条件。
+	// 
+	// 注意:  
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
 	Condition *string `json:"Condition,omitempty" name:"Condition"`
+
+	// 告警级别。
+	// 
+	// 0:警告(Warn);1:提醒(Info);2:紧急 (Critical)
+	// 
+	// 注意:  
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitempty" name:"AlarmLevel"`
+
+	// 多触发条件。 
+	// 
+	// 注意:  
+	// - Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+	MultiConditions []*MultiCondition `json:"MultiConditions,omitempty" name:"MultiConditions"`
 
 	// 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为10。
 	TriggerCount *int64 `json:"TriggerCount,omitempty" name:"TriggerCount"`
@@ -6845,6 +6975,8 @@ func (r *ModifyAlarmRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "MonitorTime")
 	delete(f, "Condition")
+	delete(f, "AlarmLevel")
+	delete(f, "MultiConditions")
 	delete(f, "TriggerCount")
 	delete(f, "AlarmPeriod")
 	delete(f, "AlarmNoticeIds")
@@ -8279,6 +8411,17 @@ type MonitorTime struct {
 	Time *int64 `json:"Time,omitempty" name:"Time"`
 }
 
+type MultiCondition struct {
+	// 触发条件。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Condition *string `json:"Condition,omitempty" name:"Condition"`
+
+	// 告警级别。0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
+	// <li> 不填则默认为0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmLevel *uint64 `json:"AlarmLevel,omitempty" name:"AlarmLevel"`
+}
+
 type MultiTopicSearchInformation struct {
 	// 要检索分析的日志主题ID
 	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
@@ -8312,6 +8455,20 @@ type NoticeReceiver struct {
 
 	// 位序
 	Index *int64 `json:"Index,omitempty" name:"Index"`
+}
+
+type NoticeRule struct {
+	// 告警通知模板接收者信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NoticeReceivers []*NoticeReceiver `json:"NoticeReceivers,omitempty" name:"NoticeReceivers"`
+
+	// 告警通知模板回调信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebCallbacks []*WebCallback `json:"WebCallbacks,omitempty" name:"WebCallbacks"`
+
+	// 匹配规则。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rule *string `json:"Rule,omitempty" name:"Rule"`
 }
 
 // Predefined struct for user

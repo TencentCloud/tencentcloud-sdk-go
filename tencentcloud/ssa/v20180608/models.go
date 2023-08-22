@@ -2909,14 +2909,14 @@ func (r *DescribeVulDetailResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVulListRequestParams struct {
-	// 查询过滤参数
+	// 查询过滤参数:(json序列化的结果）
 	Params *string `json:"Params,omitempty" name:"Params"`
 }
 
 type DescribeVulListRequest struct {
 	*tchttp.BaseRequest
 	
-	// 查询过滤参数
+	// 查询过滤参数:(json序列化的结果）
 	Params *string `json:"Params,omitempty" name:"Params"`
 }
 

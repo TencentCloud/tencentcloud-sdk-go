@@ -2359,6 +2359,7 @@ func NewDescribeRoomResponse() (response *DescribeRoomResponse) {
 // 获取房间信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
 func (c *Client) DescribeRoom(request *DescribeRoomRequest) (response *DescribeRoomResponse, err error) {
@@ -2369,6 +2370,7 @@ func (c *Client) DescribeRoom(request *DescribeRoomRequest) (response *DescribeR
 // 获取房间信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  RESOURCENOTFOUND_ROOM = "ResourceNotFound.Room"
 func (c *Client) DescribeRoomWithContext(ctx context.Context, request *DescribeRoomRequest) (response *DescribeRoomResponse, err error) {

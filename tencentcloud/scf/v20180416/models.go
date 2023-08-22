@@ -5024,6 +5024,116 @@ func (r *UpdateNamespaceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateTriggerRequestParams struct {
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 触发器名称
+	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
+
+	// 触发器类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 触发器开启或关闭，传参为OPEN为开启，CLOSE为关闭
+	Enable *string `json:"Enable,omitempty" name:"Enable"`
+
+	// 函数的版本，默认为 $LATEST，建议填写 [$DEFAULT](https://cloud.tencent.com/document/product/583/36149#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)方便后续进行版本的灰度发布。
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 函数的命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// TriggerDesc参数
+	TriggerDesc *string `json:"TriggerDesc,omitempty" name:"TriggerDesc"`
+
+	// 触发器描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 用户附加信息
+	CustomArgument *string `json:"CustomArgument,omitempty" name:"CustomArgument"`
+}
+
+type UpdateTriggerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 函数名称
+	FunctionName *string `json:"FunctionName,omitempty" name:"FunctionName"`
+
+	// 触发器名称
+	TriggerName *string `json:"TriggerName,omitempty" name:"TriggerName"`
+
+	// 触发器类型
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 触发器开启或关闭，传参为OPEN为开启，CLOSE为关闭
+	Enable *string `json:"Enable,omitempty" name:"Enable"`
+
+	// 函数的版本，默认为 $LATEST，建议填写 [$DEFAULT](https://cloud.tencent.com/document/product/583/36149#.E9.BB.98.E8.AE.A4.E5.88.AB.E5.90.8D)方便后续进行版本的灰度发布。
+	Qualifier *string `json:"Qualifier,omitempty" name:"Qualifier"`
+
+	// 函数的命名空间
+	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+
+	// TriggerDesc参数
+	TriggerDesc *string `json:"TriggerDesc,omitempty" name:"TriggerDesc"`
+
+	// 触发器描述
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 用户附加信息
+	CustomArgument *string `json:"CustomArgument,omitempty" name:"CustomArgument"`
+}
+
+func (r *UpdateTriggerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTriggerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FunctionName")
+	delete(f, "TriggerName")
+	delete(f, "Type")
+	delete(f, "Enable")
+	delete(f, "Qualifier")
+	delete(f, "Namespace")
+	delete(f, "TriggerDesc")
+	delete(f, "Description")
+	delete(f, "CustomArgument")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateTriggerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateTriggerResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateTriggerResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateTriggerResponseParams `json:"Response"`
+}
+
+func (r *UpdateTriggerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateTriggerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateTriggerStatusRequestParams struct {
 	// 触发器的初始是能状态OPEN表示开启 CLOSE表示关闭
 	Enable *string `json:"Enable,omitempty" name:"Enable"`

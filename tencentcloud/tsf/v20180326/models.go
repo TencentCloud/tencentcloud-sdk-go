@@ -1545,6 +1545,10 @@ type ConfigRelease struct {
 	// 应用ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+
+	// 配置中心发布情况
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigCenters []*TsfConfigCenter `json:"ConfigCenters,omitempty" name:"ConfigCenters"`
 }
 
 type ConfigReleaseLog struct {
@@ -1615,6 +1619,13 @@ type ConfigReleaseLog struct {
 	// 回滚标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RollbackFlag *bool `json:"RollbackFlag,omitempty" name:"RollbackFlag"`
+
+	// 发布成功的配置中心
+	//  ALL/EXCLUSIVE/SHARE/NONE
+	// 
+	// 全部发布成功，独占发布成功，共享发布成功，全部发布失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReleasedConfigCenter *string `json:"ReleasedConfigCenter,omitempty" name:"ReleasedConfigCenter"`
 }
 
 type ConfigTemplate struct {
@@ -21277,6 +21288,28 @@ type TsfApiListResponse struct {
 	// API 列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Content []*MsApiArray `json:"Content,omitempty" name:"Content"`
+}
+
+type TsfConfigCenter struct {
+	// 配置中心类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigType *string `json:"ConfigType,omitempty" name:"ConfigType"`
+
+	// 配置中心实例id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigCenterInstanceId *string `json:"ConfigCenterInstanceId,omitempty" name:"ConfigCenterInstanceId"`
+
+	// 配置中心实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigCenterInstanceName *string `json:"ConfigCenterInstanceName,omitempty" name:"ConfigCenterInstanceName"`
+
+	// 实例地域id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+
+	// 命名空间id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
 }
 
 type TsfPageApiDetailInfo struct {

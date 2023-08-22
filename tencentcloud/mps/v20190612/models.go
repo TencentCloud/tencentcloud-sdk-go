@@ -322,7 +322,8 @@ type AdaptiveStreamTemplate struct {
 type AddOnSubtitle struct {
 	// 插入形式，可选值：
 	// <li>subtitle-stream：插入字幕轨道</li>
-	// <li>close-caption：编码到SEI帧</li>
+	// <li>close-caption-708：CEA-708字幕编码到SEI帧</li>
+	// <li>close-caption-608：CEA-608字幕编码到SEI帧</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitempty" name:"Type"`
 
@@ -9085,6 +9086,7 @@ type LiveStreamAiRecognitionResultItem struct {
 	// <li>AsrFullTextRecognition：语音全文识别，</li>
 	// <li>OcrFullTextRecognition：文本全文识别。</li>
 	// <li>TransTextRecognition：语音翻译。</li>
+	// <li>TagRecognition：精彩打点。</li>
 	Type *string `json:"Type,omitempty" name:"Type"`
 
 	// 人脸识别结果，当 Type 为
@@ -9109,6 +9111,10 @@ type LiveStreamAiRecognitionResultItem struct {
 
 	// 翻译结果，当Type 为 TransTextRecognition 时有效。
 	TransTextRecognitionResultSet []*LiveStreamTransTextRecognitionResult `json:"TransTextRecognitionResultSet,omitempty" name:"TransTextRecognitionResultSet"`
+
+	// 打点结果，当Type 为 TagRecognition 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TagRecognitionResultSet []*LiveStreamTagRecognitionResult `json:"TagRecognitionResultSet,omitempty" name:"TagRecognitionResultSet"`
 }
 
 type LiveStreamAiReviewImagePoliticalResult struct {
@@ -9384,6 +9390,20 @@ type LiveStreamProcessTask struct {
 
 	// 直播流 URL。
 	Url *string `json:"Url,omitempty" name:"Url"`
+}
+
+type LiveStreamTagRecognitionResult struct {
+	// 打点事件。
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// 识别片段起始的 PTS 时间，单位：秒。
+	StartPtsTime *float64 `json:"StartPtsTime,omitempty" name:"StartPtsTime"`
+
+	// 识别片段终止的 PTS 时间，单位：秒。
+	EndPtsTime *float64 `json:"EndPtsTime,omitempty" name:"EndPtsTime"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitempty" name:"Confidence"`
 }
 
 type LiveStreamTaskNotifyConfig struct {

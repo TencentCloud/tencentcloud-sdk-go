@@ -436,6 +436,7 @@ func NewCreateTargetResponse() (response *CreateTargetResponse) {
 //  FAILEDOPERATION_ESINTERNALERROR = "FailedOperation.ESInternalError"
 //  FAILEDOPERATION_ESREQUESTFAILED = "FailedOperation.ESRequestFailed"
 //  FAILEDOPERATION_ESTEMPLATECONFLICT = "FailedOperation.ESTemplateConflict"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETERVALUE_AMPPARAMS = "InvalidParameterValue.AMPParams"
 //  INVALIDPARAMETERVALUE_BATCHEVENTCOUNT = "InvalidParameterValue.BatchEventCount"
 //  INVALIDPARAMETERVALUE_BATCHTIMEOUT = "InvalidParameterValue.BatchTimeout"
@@ -487,6 +488,7 @@ func (c *Client) CreateTarget(request *CreateTargetRequest) (response *CreateTar
 //  FAILEDOPERATION_ESINTERNALERROR = "FailedOperation.ESInternalError"
 //  FAILEDOPERATION_ESREQUESTFAILED = "FailedOperation.ESRequestFailed"
 //  FAILEDOPERATION_ESTEMPLATECONFLICT = "FailedOperation.ESTemplateConflict"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETERVALUE_AMPPARAMS = "InvalidParameterValue.AMPParams"
 //  INVALIDPARAMETERVALUE_BATCHEVENTCOUNT = "InvalidParameterValue.BatchEventCount"
 //  INVALIDPARAMETERVALUE_BATCHTIMEOUT = "InvalidParameterValue.BatchTimeout"
@@ -1636,6 +1638,7 @@ func NewUpdateEventBusResponse() (response *UpdateEventBusResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REGISTERCLSSERVICE = "FailedOperation.RegisterCLSService"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTBUSNAME = "InvalidParameterValue.EventBusName"
 //  INVALIDPARAMETERVALUE_EVENTTRACECONFIG = "InvalidParameterValue.EventTraceConfig"
@@ -1651,6 +1654,7 @@ func (c *Client) UpdateEventBus(request *UpdateEventBusRequest) (response *Updat
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_REGISTERCLSSERVICE = "FailedOperation.RegisterCLSService"
+//  INVALIDPARAMETER_PAYLOAD = "InvalidParameter.Payload"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_EVENTBUSNAME = "InvalidParameterValue.EventBusName"
 //  INVALIDPARAMETERVALUE_EVENTTRACECONFIG = "InvalidParameterValue.EventTraceConfig"

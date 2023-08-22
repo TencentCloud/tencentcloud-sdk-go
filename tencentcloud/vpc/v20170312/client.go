@@ -9581,6 +9581,7 @@ func NewDescribeDhcpIpsResponse() (response *DescribeDhcpIpsResponse) {
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDhcpIps(request *DescribeDhcpIpsRequest) (response *DescribeDhcpIpsResponse, err error) {
     return c.DescribeDhcpIpsWithContext(context.Background(), request)
@@ -9596,6 +9597,7 @@ func (c *Client) DescribeDhcpIps(request *DescribeDhcpIpsRequest) (response *Des
 //  INVALIDPARAMETERVALUE_LIMITEXCEEDED = "InvalidParameterValue.LimitExceeded"
 //  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
 //  INVALIDPARAMETERVALUE_RANGE = "InvalidParameterValue.Range"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeDhcpIpsWithContext(ctx context.Context, request *DescribeDhcpIpsRequest) (response *DescribeDhcpIpsResponse, err error) {
     if request == nil {

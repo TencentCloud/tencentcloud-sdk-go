@@ -561,6 +561,7 @@ func NewCreateNotebookImageResponse() (response *CreateNotebookImageResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEIMAGEFAILED = "FailedOperation.CreateImageFailed"
 //  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_NOTSUPPORTEDTOCREATEIMAGE = "FailedOperation.NotSupportedToCreateImage"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateNotebookImage(request *CreateNotebookImageRequest) (response *CreateNotebookImageResponse, err error) {
     return c.CreateNotebookImageWithContext(context.Background(), request)
@@ -572,6 +573,7 @@ func (c *Client) CreateNotebookImage(request *CreateNotebookImageRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEIMAGEFAILED = "FailedOperation.CreateImageFailed"
 //  FAILEDOPERATION_NOTALLOW = "FailedOperation.NotAllow"
+//  FAILEDOPERATION_NOTSUPPORTEDTOCREATEIMAGE = "FailedOperation.NotSupportedToCreateImage"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateNotebookImageWithContext(ctx context.Context, request *CreateNotebookImageRequest) (response *CreateNotebookImageResponse, err error) {
     if request == nil {
@@ -4820,6 +4822,7 @@ func NewStartTrainingTaskResponse() (response *StartTrainingTaskResponse) {
 //  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
 //  OPERATIONDENIED_BILLINGEXCEPTION = "OperationDenied.BillingException"
 //  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"
@@ -4846,6 +4849,7 @@ func (c *Client) StartTrainingTask(request *StartTrainingTaskRequest) (response 
 //  INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE_FRAMEWORKVERSIONNOTSUPPORT = "InvalidParameterValue.FrameworkVersionNotSupport"
+//  INVALIDPARAMETERVALUE_GETCFSMOUNTIPFAILED = "InvalidParameterValue.GetCFSMountIPFailed"
 //  OPERATIONDENIED_BALANCEINSUFFICIENT = "OperationDenied.BalanceInsufficient"
 //  OPERATIONDENIED_BILLINGEXCEPTION = "OperationDenied.BillingException"
 //  OPERATIONDENIED_BILLINGSTATUSRESOURCEINSUFFICIENT = "OperationDenied.BillingStatusResourceInsufficient"

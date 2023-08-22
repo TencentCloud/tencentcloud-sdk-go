@@ -3706,7 +3706,7 @@ type DomainsPartInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ciphers []*int64 `json:"Ciphers,omitempty" name:"Ciphers"`
 
-	// 模版
+	// 模板
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
 
@@ -3998,6 +3998,84 @@ func (r *GetAttackHistogramResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GetAttackHistogramResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetAttackTotalCountRequestParams struct {
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询的域名，全部域名不指定
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 查询条件，默认为""
+	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+}
+
+type GetAttackTotalCountRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始时间
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 查询的域名，全部域名不指定
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 查询条件，默认为""
+	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+}
+
+func (r *GetAttackTotalCountRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAttackTotalCountRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Domain")
+	delete(f, "QueryString")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetAttackTotalCountRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetAttackTotalCountResponseParams struct {
+	// 攻击总次数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type GetAttackTotalCountResponse struct {
+	*tchttp.BaseResponse
+	Response *GetAttackTotalCountResponseParams `json:"Response"`
+}
+
+func (r *GetAttackTotalCountResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetAttackTotalCountResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4380,7 +4458,7 @@ func (r *ModifyAccessPeriodResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyAreaBanStatusRequestParams struct {
-	// 修要修改的域名
+	// 需要修改的域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 状态值，0表示关闭，1表示开启
@@ -4390,7 +4468,7 @@ type ModifyAreaBanStatusRequestParams struct {
 type ModifyAreaBanStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 修要修改的域名
+	// 需要修改的域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
 
 	// 状态值，0表示关闭，1表示开启
@@ -4528,7 +4606,7 @@ type ModifyCustomWhiteRuleRequestParams struct {
 	// 编辑的规则名称
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
-	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。
+	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果勾选多个，则以“，”串接。
 	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
 
 	// 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
@@ -4553,7 +4631,7 @@ type ModifyCustomWhiteRuleRequest struct {
 	// 编辑的规则名称
 	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
 
-	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。
+	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果勾选多个，则以“，”串接。
 	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
 
 	// 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。

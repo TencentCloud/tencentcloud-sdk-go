@@ -360,6 +360,7 @@ func NewReportGoodsBehaviorResponse() (response *ReportGoodsBehaviorResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ReportGoodsBehavior(request *ReportGoodsBehaviorRequest) (response *ReportGoodsBehaviorResponse, err error) {
@@ -373,6 +374,7 @@ func (c *Client) ReportGoodsBehavior(request *ReportGoodsBehaviorRequest) (respo
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 func (c *Client) ReportGoodsBehaviorWithContext(ctx context.Context, request *ReportGoodsBehaviorRequest) (response *ReportGoodsBehaviorResponse, err error) {

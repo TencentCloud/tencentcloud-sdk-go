@@ -2803,6 +2803,7 @@ func NewDeleteClusterResponse() (response *DeleteClusterResponse) {
 // 删除集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_TKECLUSTERDELETEFAILED = "FailedOperation.TkeClusterDeleteFailed"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_CPCLUSTERUNAVAILABLE = "InternalError.CpClusterUnavailable"
@@ -2825,6 +2826,7 @@ func (c *Client) DeleteCluster(request *DeleteClusterRequest) (response *DeleteC
 // 删除集群
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLOUDAPIPROXYERROR = "FailedOperation.CloudApiProxyError"
 //  FAILEDOPERATION_TKECLUSTERDELETEFAILED = "FailedOperation.TkeClusterDeleteFailed"
 //  INTERNALERROR_CLOUDAPIPROXYERROR = "InternalError.CloudApiProxyError"
 //  INTERNALERROR_CPCLUSTERUNAVAILABLE = "InternalError.CpClusterUnavailable"

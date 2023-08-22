@@ -65,12 +65,20 @@ func NewAddClusterStorageOptionResponse() (response *AddClusterStorageOptionResp
 
 // AddClusterStorageOption
 // 本接口（AddClusterStorageOption）用于添加集群存储选项信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
 func (c *Client) AddClusterStorageOption(request *AddClusterStorageOptionRequest) (response *AddClusterStorageOptionResponse, err error) {
     return c.AddClusterStorageOptionWithContext(context.Background(), request)
 }
 
 // AddClusterStorageOption
 // 本接口（AddClusterStorageOption）用于添加集群存储选项信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
+//  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
 func (c *Client) AddClusterStorageOptionWithContext(ctx context.Context, request *AddClusterStorageOptionRequest) (response *AddClusterStorageOptionResponse, err error) {
     if request == nil {
         request = NewAddClusterStorageOptionRequest()
@@ -389,9 +397,7 @@ func NewDeleteClusterStorageOptionResponse() (response *DeleteClusterStorageOpti
 // 本接口 (DeleteClusterStorageOption) 用于删除集群存储选项信息。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
-//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  RESOURCENOTFOUND_LOCALPATH = "ResourceNotFound.LocalPath"
 func (c *Client) DeleteClusterStorageOption(request *DeleteClusterStorageOptionRequest) (response *DeleteClusterStorageOptionResponse, err error) {
     return c.DeleteClusterStorageOptionWithContext(context.Background(), request)
 }
@@ -400,9 +406,7 @@ func (c *Client) DeleteClusterStorageOption(request *DeleteClusterStorageOptionR
 // 本接口 (DeleteClusterStorageOption) 用于删除集群存储选项信息。
 //
 // 可能返回的错误码:
-//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
-//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
-//  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
+//  RESOURCENOTFOUND_LOCALPATH = "ResourceNotFound.LocalPath"
 func (c *Client) DeleteClusterStorageOptionWithContext(ctx context.Context, request *DeleteClusterStorageOptionRequest) (response *DeleteClusterStorageOptionResponse, err error) {
     if request == nil {
         request = NewDeleteClusterStorageOptionRequest()

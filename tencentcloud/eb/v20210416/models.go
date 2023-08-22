@@ -30,12 +30,21 @@ type APIGWParams struct {
 
 // Predefined struct for user
 type CheckRuleRequestParams struct {
+	// Event信息
+	Event *string `json:"Event,omitempty" name:"Event"`
 
+	// EventPattern信息
+	EventPattern *string `json:"EventPattern,omitempty" name:"EventPattern"`
 }
 
 type CheckRuleRequest struct {
 	*tchttp.BaseRequest
 	
+	// Event信息
+	Event *string `json:"Event,omitempty" name:"Event"`
+
+	// EventPattern信息
+	EventPattern *string `json:"EventPattern,omitempty" name:"EventPattern"`
 }
 
 func (r *CheckRuleRequest) ToJsonString() string {
@@ -50,7 +59,8 @@ func (r *CheckRuleRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Event")
+	delete(f, "EventPattern")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckRuleRequest has unknown keys!", "")
 	}

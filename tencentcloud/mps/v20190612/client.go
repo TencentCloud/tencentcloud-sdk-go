@@ -1078,9 +1078,11 @@ func NewCreateStreamLinkInputResponse() (response *CreateStreamLinkInputResponse
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
 //  INVALIDPARAMETER_INPUT = "InvalidParameter.Input"
 //  INVALIDPARAMETER_MAXBANDWIDTH = "InvalidParameter.MaxBandwidth"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OUTPUT = "InvalidParameter.Output"
 func (c *Client) CreateStreamLinkInput(request *CreateStreamLinkInputRequest) (response *CreateStreamLinkInputResponse, err error) {
     return c.CreateStreamLinkInputWithContext(context.Background(), request)
 }
@@ -1092,9 +1094,11 @@ func (c *Client) CreateStreamLinkInput(request *CreateStreamLinkInputRequest) (r
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_EXCEEDEDQUANTITYLIMIT = "InvalidParameter.ExceededQuantityLimit"
+//  INVALIDPARAMETER_ID = "InvalidParameter.Id"
 //  INVALIDPARAMETER_INPUT = "InvalidParameter.Input"
 //  INVALIDPARAMETER_MAXBANDWIDTH = "InvalidParameter.MaxBandwidth"
 //  INVALIDPARAMETER_NAME = "InvalidParameter.Name"
+//  INVALIDPARAMETER_OUTPUT = "InvalidParameter.Output"
 func (c *Client) CreateStreamLinkInputWithContext(ctx context.Context, request *CreateStreamLinkInputRequest) (response *CreateStreamLinkInputResponse, err error) {
     if request == nil {
         request = NewCreateStreamLinkInputRequest()
@@ -5318,6 +5322,7 @@ func NewModifyStreamLinkInputResponse() (response *ModifyStreamLinkInputResponse
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_ID = "InvalidParameter.Id"
 //  INVALIDPARAMETER_INPUT = "InvalidParameter.Input"
+//  INVALIDPARAMETER_OUTPUT = "InvalidParameter.Output"
 //  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
 //  INVALIDPARAMETER_STATE = "InvalidParameter.State"
 func (c *Client) ModifyStreamLinkInput(request *ModifyStreamLinkInputRequest) (response *ModifyStreamLinkInputResponse, err error) {
@@ -5331,6 +5336,7 @@ func (c *Client) ModifyStreamLinkInput(request *ModifyStreamLinkInputRequest) (r
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_ID = "InvalidParameter.Id"
 //  INVALIDPARAMETER_INPUT = "InvalidParameter.Input"
+//  INVALIDPARAMETER_OUTPUT = "InvalidParameter.Output"
 //  INVALIDPARAMETER_PROTOCOL = "InvalidParameter.Protocol"
 //  INVALIDPARAMETER_STATE = "InvalidParameter.State"
 func (c *Client) ModifyStreamLinkInputWithContext(ctx context.Context, request *ModifyStreamLinkInputRequest) (response *ModifyStreamLinkInputResponse, err error) {

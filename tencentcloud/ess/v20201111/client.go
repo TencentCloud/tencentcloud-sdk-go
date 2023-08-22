@@ -3476,6 +3476,7 @@ func NewCreateSealResponse() (response *CreateSealResponse) {
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 func (c *Client) CreateSeal(request *CreateSealRequest) (response *CreateSealResponse, err error) {
     return c.CreateSealWithContext(context.Background(), request)
 }
@@ -3493,6 +3494,7 @@ func (c *Client) CreateSeal(request *CreateSealRequest) (response *CreateSealRes
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 func (c *Client) CreateSealWithContext(ctx context.Context, request *CreateSealRequest) (response *CreateSealResponse, err error) {
     if request == nil {
         request = NewCreateSealRequest()
@@ -4897,6 +4899,7 @@ func NewDescribeOrganizationSealsResponse() (response *DescribeOrganizationSeals
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -4917,6 +4920,7 @@ func (c *Client) DescribeOrganizationSeals(request *DescribeOrganizationSealsReq
 //  MISSINGPARAMETER_USERID = "MissingParameter.UserId"
 //  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
+//  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
 //  RESOURCENOTFOUND = "ResourceNotFound"

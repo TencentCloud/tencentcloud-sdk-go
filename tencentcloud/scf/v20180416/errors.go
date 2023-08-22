@@ -185,6 +185,9 @@ const (
 	// 更新状态操作失败。
 	FAILEDOPERATION_UPDATESTATUS = "FailedOperation.UpdateStatus"
 
+	// 更新触发器出错。
+	FAILEDOPERATION_UPDATETRIGGER = "FailedOperation.UpdateTrigger"
+
 	// 与原状态一致，无需更改。
 	FAILEDOPERATION_UPDATETRIGGERSTATUS = "FailedOperation.UpdateTriggerStatus"
 

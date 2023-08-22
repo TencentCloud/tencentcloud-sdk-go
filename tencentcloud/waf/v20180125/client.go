@@ -237,11 +237,16 @@ func NewAddSpartaProtectionResponse() (response *AddSpartaProtectionResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ASYNCHRONOUSCALLFAILED = "InternalError.AsynchronousCallFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTIFICATIONPARAMETERERR = "InvalidParameter.CertificationParameterErr"
+//  INVALIDPARAMETER_DOMAINEXCEEDSLIMITERR = "InvalidParameter.DomainExceedsLimitErr"
+//  INVALIDPARAMETER_DOMAINNOTRECORD = "InvalidParameter.DomainNotRecord"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_EMPTYERR = "ResourceInUse.EmptyErr"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -258,11 +263,16 @@ func (c *Client) AddSpartaProtection(request *AddSpartaProtectionRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ASYNCHRONOUSCALLFAILED = "InternalError.AsynchronousCallFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTIFICATIONPARAMETERERR = "InvalidParameter.CertificationParameterErr"
+//  INVALIDPARAMETER_DOMAINEXCEEDSLIMITERR = "InvalidParameter.DomainExceedsLimitErr"
+//  INVALIDPARAMETER_DOMAINNOTRECORD = "InvalidParameter.DomainNotRecord"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_EMPTYERR = "ResourceInUse.EmptyErr"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
@@ -1637,8 +1647,10 @@ func NewDescribeFlowTrendResponse() (response *DescribeFlowTrendResponse) {
 // 获取waf流量访问趋势
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLICKHOUSEOPERATIONFAILED = "FailedOperation.ClickHouseOperationFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNKNOWNACTION = "InvalidParameter.UnknownAction"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeFlowTrend(request *DescribeFlowTrendRequest) (response *DescribeFlowTrendResponse, err error) {
@@ -1649,8 +1661,10 @@ func (c *Client) DescribeFlowTrend(request *DescribeFlowTrendRequest) (response 
 // 获取waf流量访问趋势
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_CLICKHOUSEOPERATIONFAILED = "FailedOperation.ClickHouseOperationFailed"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_UNKNOWNACTION = "InvalidParameter.UnknownAction"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) DescribeFlowTrendWithContext(ctx context.Context, request *DescribeFlowTrendRequest) (response *DescribeFlowTrendResponse, err error) {
@@ -2100,6 +2114,7 @@ func NewDescribeRuleLimitResponse() (response *DescribeRuleLimitResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRuleLimit(request *DescribeRuleLimitRequest) (response *DescribeRuleLimitResponse, err error) {
     return c.DescribeRuleLimitWithContext(context.Background(), request)
@@ -2110,6 +2125,7 @@ func (c *Client) DescribeRuleLimit(request *DescribeRuleLimitRequest) (response 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeRuleLimitWithContext(ctx context.Context, request *DescribeRuleLimitRequest) (response *DescribeRuleLimitResponse, err error) {
     if request == nil {
@@ -2150,6 +2166,7 @@ func NewDescribeUserCdcClbWafRegionsResponse() (response *DescribeUserCdcClbWafR
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserCdcClbWafRegions(request *DescribeUserCdcClbWafRegionsRequest) (response *DescribeUserCdcClbWafRegionsResponse, err error) {
     return c.DescribeUserCdcClbWafRegionsWithContext(context.Background(), request)
@@ -2160,6 +2177,7 @@ func (c *Client) DescribeUserCdcClbWafRegions(request *DescribeUserCdcClbWafRegi
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeUserCdcClbWafRegionsWithContext(ctx context.Context, request *DescribeUserCdcClbWafRegionsRequest) (response *DescribeUserCdcClbWafRegionsResponse, err error) {
     if request == nil {
@@ -2595,6 +2613,68 @@ func (c *Client) GetAttackHistogramWithContext(ctx context.Context, request *Get
     return
 }
 
+func NewGetAttackTotalCountRequest() (request *GetAttackTotalCountRequest) {
+    request = &GetAttackTotalCountRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "GetAttackTotalCount")
+    
+    
+    return
+}
+
+func NewGetAttackTotalCountResponse() (response *GetAttackTotalCountResponse) {
+    response = &GetAttackTotalCountResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetAttackTotalCount
+// 按照条件查询展示攻击总次数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSDBOPERATIONFAILED = "FailedOperation.CLSDBOperationFailed"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
+//  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
+//  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
+func (c *Client) GetAttackTotalCount(request *GetAttackTotalCountRequest) (response *GetAttackTotalCountResponse, err error) {
+    return c.GetAttackTotalCountWithContext(context.Background(), request)
+}
+
+// GetAttackTotalCount
+// 按照条件查询展示攻击总次数
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSDBOPERATIONFAILED = "FailedOperation.CLSDBOperationFailed"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
+//  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
+//  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
+func (c *Client) GetAttackTotalCountWithContext(ctx context.Context, request *GetAttackTotalCountRequest) (response *GetAttackTotalCountResponse, err error) {
+    if request == nil {
+        request = NewGetAttackTotalCountRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetAttackTotalCount require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetAttackTotalCountResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAccessPeriodRequest() (request *ModifyAccessPeriodRequest) {
     request = &ModifyAccessPeriodRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2914,6 +2994,11 @@ func NewModifySpartaProtectionResponse() (response *ModifySpartaProtectionRespon
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTIFICATIONPARAMETERERR = "InvalidParameter.CertificationParameterErr"
+//  INVALIDPARAMETER_PORTPARAMETERERR = "InvalidParameter.PortParameterErr"
+//  INVALIDPARAMETER_SUPPORTTLSCONFFAILED = "InvalidParameter.SupportTLSConfFailed"
+//  INVALIDPARAMETER_TLSPARAMETERERR = "InvalidParameter.TLSParameterErr"
+//  INVALIDPARAMETER_UPSTREAMPARAMETERERR = "InvalidParameter.UpstreamParameterErr"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -2935,6 +3020,11 @@ func (c *Client) ModifySpartaProtection(request *ModifySpartaProtectionRequest) 
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CERTIFICATIONPARAMETERERR = "InvalidParameter.CertificationParameterErr"
+//  INVALIDPARAMETER_PORTPARAMETERERR = "InvalidParameter.PortParameterErr"
+//  INVALIDPARAMETER_SUPPORTTLSCONFFAILED = "InvalidParameter.SupportTLSConfFailed"
+//  INVALIDPARAMETER_TLSPARAMETERERR = "InvalidParameter.TLSParameterErr"
+//  INVALIDPARAMETER_UPSTREAMPARAMETERERR = "InvalidParameter.UpstreamParameterErr"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"

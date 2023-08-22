@@ -62,6 +62,9 @@ const (
 	// 图片分辨率过大。
 	FAILEDOPERATION_IMAGERESOLUTIONEXCEED = "FailedOperation.ImageResolutionExceed"
 
+	// 图片分辨率过小。
+	FAILEDOPERATION_IMAGERESOLUTIONINSUFFICIENT = "FailedOperation.ImageResolutionInsufficient"
+
 	// 未查询到结果。
 	FAILEDOPERATION_IMAGESEARCHINVALID = "FailedOperation.ImageSearchInvalid"
 

@@ -2321,6 +2321,9 @@ type CreateTopicRequestParams struct {
 	// 2: 持久非分区
 	// 3: 持久分区
 	PulsarTopicType *int64 `json:"PulsarTopicType,omitempty" name:"PulsarTopicType"`
+
+	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
+	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 }
 
 type CreateTopicRequest struct {
@@ -2355,6 +2358,9 @@ type CreateTopicRequest struct {
 	// 2: 持久非分区
 	// 3: 持久分区
 	PulsarTopicType *int64 `json:"PulsarTopicType,omitempty" name:"PulsarTopicType"`
+
+	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
+	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 }
 
 func (r *CreateTopicRequest) ToJsonString() string {
@@ -2376,6 +2382,7 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "TopicType")
 	delete(f, "ClusterId")
 	delete(f, "PulsarTopicType")
+	delete(f, "MsgTTL")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateTopicRequest has unknown keys!", "")
 	}
@@ -8416,6 +8423,9 @@ type ModifyTopicRequestParams struct {
 
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
+	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 }
 
 type ModifyTopicRequest struct {
@@ -8435,6 +8445,9 @@ type ModifyTopicRequest struct {
 
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
+	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 }
 
 func (r *ModifyTopicRequest) ToJsonString() string {
@@ -8454,6 +8467,7 @@ func (r *ModifyTopicRequest) FromJsonString(s string) error {
 	delete(f, "Partitions")
 	delete(f, "Remark")
 	delete(f, "ClusterId")
+	delete(f, "MsgTTL")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicRequest has unknown keys!", "")
 	}
@@ -10527,6 +10541,11 @@ type Topic struct {
 	// 3: 持久分区
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PulsarTopicType *int64 `json:"PulsarTopicType,omitempty" name:"PulsarTopicType"`
+
+	// 未消费消息过期时间，单位：秒
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 }
 
 type TopicRecord struct {

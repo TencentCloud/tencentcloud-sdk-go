@@ -10893,6 +10893,7 @@ func NewSplitMediaResponse() (response *SplitMediaResponse) {
 // 对点播视频进行拆条，生成多个新的点播视频。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
@@ -10909,6 +10910,7 @@ func (c *Client) SplitMedia(request *SplitMediaRequest) (response *SplitMediaRes
 // 对点播视频进行拆条，生成多个新的点播视频。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_SESSIONCONTEXTTOOLONG = "InvalidParameterValue.SessionContextTooLong"
