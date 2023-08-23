@@ -122,6 +122,9 @@ type CreateSessionRequestParams struct {
 	// 如果请求的是多应用共享项目，此参数生效；
 	// 如果请求的是关闭预启动的单应用独享项目，此参数生效；
 	// 如果请求的是开启预启动的单应用独享项目，此参数失效。
+	// 
+	// 注意：在此参数生效的情况下，将会被追加到控制台应用或项目配置的启动参数的后面。
+	// 例如，对于某关闭预启动的单应用独享项目，若在控制台中项目配置的启动参数为bar=0，而ApplicationParameters参数为foo=1，则实际应用启动参数为bar=0 foo=1。
 	ApplicationParameters *string `json:"ApplicationParameters,omitempty" name:"ApplicationParameters"`
 
 	// 【多人互动】房主用户ID，在多人互动模式下为必填字段。
@@ -156,6 +159,9 @@ type CreateSessionRequest struct {
 	// 如果请求的是多应用共享项目，此参数生效；
 	// 如果请求的是关闭预启动的单应用独享项目，此参数生效；
 	// 如果请求的是开启预启动的单应用独享项目，此参数失效。
+	// 
+	// 注意：在此参数生效的情况下，将会被追加到控制台应用或项目配置的启动参数的后面。
+	// 例如，对于某关闭预启动的单应用独享项目，若在控制台中项目配置的启动参数为bar=0，而ApplicationParameters参数为foo=1，则实际应用启动参数为bar=0 foo=1。
 	ApplicationParameters *string `json:"ApplicationParameters,omitempty" name:"ApplicationParameters"`
 
 	// 【多人互动】房主用户ID，在多人互动模式下为必填字段。
@@ -277,6 +283,9 @@ func (r *DestroySessionResponse) FromJsonString(s string) error {
 type StartPublishStreamRequestParams struct {
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（UserId将作为StreamId进行推流，比如绑定推流域名为abc.livepush.myqcloud.com，那么推流地址为rtmp://abc.livepush.myqcloud.com/live/UserId?txSecret=xxx&txTime=xxx）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 推流参数，推流时携带自定义参数。
+	PublishStreamArgs *string `json:"PublishStreamArgs,omitempty" name:"PublishStreamArgs"`
 }
 
 type StartPublishStreamRequest struct {
@@ -284,6 +293,9 @@ type StartPublishStreamRequest struct {
 	
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（UserId将作为StreamId进行推流，比如绑定推流域名为abc.livepush.myqcloud.com，那么推流地址为rtmp://abc.livepush.myqcloud.com/live/UserId?txSecret=xxx&txTime=xxx）
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 推流参数，推流时携带自定义参数。
+	PublishStreamArgs *string `json:"PublishStreamArgs,omitempty" name:"PublishStreamArgs"`
 }
 
 func (r *StartPublishStreamRequest) ToJsonString() string {
@@ -299,6 +311,7 @@ func (r *StartPublishStreamRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "UserId")
+	delete(f, "PublishStreamArgs")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartPublishStreamRequest has unknown keys!", "")
 	}

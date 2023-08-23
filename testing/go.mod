@@ -67,7 +67,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.728
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.729
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/csip v0.0.0
@@ -88,6 +88,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/domain v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/drm v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ds v0.0.0
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dsgc v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dtf v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dts v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eb v0.0.0
@@ -330,6 +331,7 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/domain => ../tencentcloud/domain
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/drm => ../tencentcloud/drm
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ds => ../tencentcloud/ds
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dsgc => ../tencentcloud/dsgc
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dtf => ../tencentcloud/dtf
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dts => ../tencentcloud/dts
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/eb => ../tencentcloud/eb

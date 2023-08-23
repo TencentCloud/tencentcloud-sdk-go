@@ -3989,8 +3989,10 @@ func NewDescribeTrainingTaskResponse() (response *DescribeTrainingTaskResponse) 
 // 训练任务详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCEGROUPNAMESFAILED = "FailedOperation.QueryResourceGroupNamesFailed"
 //  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
 //  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrainingTask(request *DescribeTrainingTaskRequest) (response *DescribeTrainingTaskResponse, err error) {
     return c.DescribeTrainingTaskWithContext(context.Background(), request)
@@ -4000,8 +4002,10 @@ func (c *Client) DescribeTrainingTask(request *DescribeTrainingTaskRequest) (res
 // 训练任务详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCEGROUPNAMESFAILED = "FailedOperation.QueryResourceGroupNamesFailed"
 //  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
 //  INTERNALERROR_QUERYBINDINGTAGSFAILED = "InternalError.QueryBindingTagsFailed"
+//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) DescribeTrainingTaskWithContext(ctx context.Context, request *DescribeTrainingTaskRequest) (response *DescribeTrainingTaskResponse, err error) {
     if request == nil {
@@ -4041,7 +4045,10 @@ func NewDescribeTrainingTaskPodsResponse() (response *DescribeTrainingTaskPodsRe
 // 训练任务pod列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCEGROUPNAMESFAILED = "FailedOperation.QueryResourceGroupNamesFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
+//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
@@ -4053,7 +4060,10 @@ func (c *Client) DescribeTrainingTaskPods(request *DescribeTrainingTaskPodsReque
 // 训练任务pod列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_QUERYRESOURCEGROUPNAMESFAILED = "FailedOperation.QueryResourceGroupNamesFailed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_NOPERMISSION = "InternalError.NoPermission"
+//  INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"

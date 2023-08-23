@@ -110,6 +110,7 @@ import (
 	domainv20180808 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/domain/v20180808"
 	drmv20181115 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/drm/v20181115"
 	dsv20180523 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/ds/v20180523"
+	dsgcv20190723 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dsgc/v20190723"
 	dtfv20200506 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dtf/v20200506"
 	dtsv20180330 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dts/v20180330"
 	dtsv20211206 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/dts/v20211206"
@@ -1458,6 +1459,19 @@ func TestDsv20180523Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init ds_v20180523 client: %v", err)
+    }
+}
+
+func TestDsgcv20190723Import(t *testing.T) {
+    credential := common.NewCredential(
+        os.Getenv("TENCENTCLOUD_SECRET_ID"),
+        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
+    client, err := dsgcv20190723.NewClient(
+        credential,
+        regions.Guangzhou,
+        profile.NewClientProfile())
+    if err != nil || client == nil {
+        t.Errorf("fail to init dsgc_v20190723 client: %v", err)
     }
 }
 

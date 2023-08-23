@@ -149,6 +149,56 @@ func (c *Client) ApplyDiskBackupWithContext(ctx context.Context, request *ApplyD
     return
 }
 
+func NewApplyFirewallTemplateRequest() (request *ApplyFirewallTemplateRequest) {
+    request = &ApplyFirewallTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ApplyFirewallTemplate")
+    
+    
+    return
+}
+
+func NewApplyFirewallTemplateResponse() (response *ApplyFirewallTemplateResponse) {
+    response = &ApplyFirewallTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ApplyFirewallTemplate
+// 本接口 (ApplyFirewallTemplate) 用于应用防火墙模板到多个实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEUNAVAILABLE_CANNOTAPPLYEMPTYFIREWALLTEMPLATE = "ResourceUnavailable.CannotApplyEmptyFirewallTemplate"
+func (c *Client) ApplyFirewallTemplate(request *ApplyFirewallTemplateRequest) (response *ApplyFirewallTemplateResponse, err error) {
+    return c.ApplyFirewallTemplateWithContext(context.Background(), request)
+}
+
+// ApplyFirewallTemplate
+// 本接口 (ApplyFirewallTemplate) 用于应用防火墙模板到多个实例。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEUNAVAILABLE_CANNOTAPPLYEMPTYFIREWALLTEMPLATE = "ResourceUnavailable.CannotApplyEmptyFirewallTemplate"
+func (c *Client) ApplyFirewallTemplateWithContext(ctx context.Context, request *ApplyFirewallTemplateRequest) (response *ApplyFirewallTemplateResponse, err error) {
+    if request == nil {
+        request = NewApplyFirewallTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ApplyFirewallTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewApplyFirewallTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewApplyInstanceSnapshotRequest() (request *ApplyInstanceSnapshotRequest) {
     request = &ApplyInstanceSnapshotRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -835,6 +885,112 @@ func (c *Client) CreateFirewallRulesWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewCreateFirewallTemplateRequest() (request *CreateFirewallTemplateRequest) {
+    request = &CreateFirewallTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "CreateFirewallTemplate")
+    
+    
+    return
+}
+
+func NewCreateFirewallTemplateResponse() (response *CreateFirewallTemplateResponse) {
+    response = &CreateFirewallTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateFirewallTemplate
+// 本接口 (CreateFirewallTemplate) 用于创建防火墙模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) CreateFirewallTemplate(request *CreateFirewallTemplateRequest) (response *CreateFirewallTemplateResponse, err error) {
+    return c.CreateFirewallTemplateWithContext(context.Background(), request)
+}
+
+// CreateFirewallTemplate
+// 本接口 (CreateFirewallTemplate) 用于创建防火墙模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
+//  INVALIDPARAMETERVALUE_TOOLARGE = "InvalidParameterValue.TooLarge"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) CreateFirewallTemplateWithContext(ctx context.Context, request *CreateFirewallTemplateRequest) (response *CreateFirewallTemplateResponse, err error) {
+    if request == nil {
+        request = NewCreateFirewallTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFirewallTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFirewallTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateFirewallTemplateRulesRequest() (request *CreateFirewallTemplateRulesRequest) {
+    request = &CreateFirewallTemplateRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "CreateFirewallTemplateRules")
+    
+    
+    return
+}
+
+func NewCreateFirewallTemplateRulesResponse() (response *CreateFirewallTemplateRulesResponse) {
+    response = &CreateFirewallTemplateRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateFirewallTemplateRules
+// 本接口 (CreateFirewallTemplateRules) 用于创建防火墙模板规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
+//  LIMITEXCEEDED_FIREWALLTEMPLATERULEQUOTALIMITEXCEEDED = "LimitExceeded.FirewallTemplateRuleQuotaLimitExceeded"
+func (c *Client) CreateFirewallTemplateRules(request *CreateFirewallTemplateRulesRequest) (response *CreateFirewallTemplateRulesResponse, err error) {
+    return c.CreateFirewallTemplateRulesWithContext(context.Background(), request)
+}
+
+// CreateFirewallTemplateRules
+// 本接口 (CreateFirewallTemplateRules) 用于创建防火墙模板规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
+//  LIMITEXCEEDED_FIREWALLTEMPLATERULEQUOTALIMITEXCEEDED = "LimitExceeded.FirewallTemplateRuleQuotaLimitExceeded"
+func (c *Client) CreateFirewallTemplateRulesWithContext(ctx context.Context, request *CreateFirewallTemplateRulesRequest) (response *CreateFirewallTemplateRulesResponse, err error) {
+    if request == nil {
+        request = NewCreateFirewallTemplateRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateFirewallTemplateRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateFirewallTemplateRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateInstanceSnapshotRequest() (request *CreateInstanceSnapshotRequest) {
     request = &CreateInstanceSnapshotRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1329,6 +1485,102 @@ func (c *Client) DeleteFirewallRulesWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDeleteFirewallRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteFirewallTemplateRequest() (request *DeleteFirewallTemplateRequest) {
+    request = &DeleteFirewallTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DeleteFirewallTemplate")
+    
+    
+    return
+}
+
+func NewDeleteFirewallTemplateResponse() (response *DeleteFirewallTemplateResponse) {
+    response = &DeleteFirewallTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteFirewallTemplate
+// 本接口 (DeleteFirewallTemplate) 用于删除防火墙模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteFirewallTemplate(request *DeleteFirewallTemplateRequest) (response *DeleteFirewallTemplateResponse, err error) {
+    return c.DeleteFirewallTemplateWithContext(context.Background(), request)
+}
+
+// DeleteFirewallTemplate
+// 本接口 (DeleteFirewallTemplate) 用于删除防火墙模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteFirewallTemplateWithContext(ctx context.Context, request *DeleteFirewallTemplateRequest) (response *DeleteFirewallTemplateResponse, err error) {
+    if request == nil {
+        request = NewDeleteFirewallTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFirewallTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteFirewallTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteFirewallTemplateRulesRequest() (request *DeleteFirewallTemplateRulesRequest) {
+    request = &DeleteFirewallTemplateRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DeleteFirewallTemplateRules")
+    
+    
+    return
+}
+
+func NewDeleteFirewallTemplateRulesResponse() (response *DeleteFirewallTemplateRulesResponse) {
+    response = &DeleteFirewallTemplateRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteFirewallTemplateRules
+// 本接口 (DeleteFirewallTemplateRules) 用于删除防火墙模板规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteFirewallTemplateRules(request *DeleteFirewallTemplateRulesRequest) (response *DeleteFirewallTemplateRulesResponse, err error) {
+    return c.DeleteFirewallTemplateRulesWithContext(context.Background(), request)
+}
+
+// DeleteFirewallTemplateRules
+// 本接口 (DeleteFirewallTemplateRules) 用于删除防火墙模板规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteFirewallTemplateRulesWithContext(ctx context.Context, request *DeleteFirewallTemplateRulesRequest) (response *DeleteFirewallTemplateRulesResponse, err error) {
+    if request == nil {
+        request = NewDeleteFirewallTemplateRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteFirewallTemplateRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteFirewallTemplateRulesResponse()
     err = c.Send(request, response)
     return
 }
@@ -2727,6 +2979,254 @@ func (c *Client) DescribeFirewallRulesTemplateWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeFirewallTemplateApplyRecordsRequest() (request *DescribeFirewallTemplateApplyRecordsRequest) {
+    request = &DescribeFirewallTemplateApplyRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeFirewallTemplateApplyRecords")
+    
+    
+    return
+}
+
+func NewDescribeFirewallTemplateApplyRecordsResponse() (response *DescribeFirewallTemplateApplyRecordsResponse) {
+    response = &DescribeFirewallTemplateApplyRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFirewallTemplateApplyRecords
+// 本接口 (DescribeFirewallTemplateApplyRecords) 用于查询防火墙模板应用记录列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeFirewallTemplateApplyRecords(request *DescribeFirewallTemplateApplyRecordsRequest) (response *DescribeFirewallTemplateApplyRecordsResponse, err error) {
+    return c.DescribeFirewallTemplateApplyRecordsWithContext(context.Background(), request)
+}
+
+// DescribeFirewallTemplateApplyRecords
+// 本接口 (DescribeFirewallTemplateApplyRecords) 用于查询防火墙模板应用记录列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeFirewallTemplateApplyRecordsWithContext(ctx context.Context, request *DescribeFirewallTemplateApplyRecordsRequest) (response *DescribeFirewallTemplateApplyRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirewallTemplateApplyRecordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirewallTemplateApplyRecords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFirewallTemplateApplyRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirewallTemplateQuotaRequest() (request *DescribeFirewallTemplateQuotaRequest) {
+    request = &DescribeFirewallTemplateQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeFirewallTemplateQuota")
+    
+    
+    return
+}
+
+func NewDescribeFirewallTemplateQuotaResponse() (response *DescribeFirewallTemplateQuotaResponse) {
+    response = &DescribeFirewallTemplateQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFirewallTemplateQuota
+// 本接口 (DescribeFirewallTemplateQuota) 用于查询防火墙模板配额。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeFirewallTemplateQuota(request *DescribeFirewallTemplateQuotaRequest) (response *DescribeFirewallTemplateQuotaResponse, err error) {
+    return c.DescribeFirewallTemplateQuotaWithContext(context.Background(), request)
+}
+
+// DescribeFirewallTemplateQuota
+// 本接口 (DescribeFirewallTemplateQuota) 用于查询防火墙模板配额。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeFirewallTemplateQuotaWithContext(ctx context.Context, request *DescribeFirewallTemplateQuotaRequest) (response *DescribeFirewallTemplateQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirewallTemplateQuotaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirewallTemplateQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFirewallTemplateQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirewallTemplateRuleQuotaRequest() (request *DescribeFirewallTemplateRuleQuotaRequest) {
+    request = &DescribeFirewallTemplateRuleQuotaRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeFirewallTemplateRuleQuota")
+    
+    
+    return
+}
+
+func NewDescribeFirewallTemplateRuleQuotaResponse() (response *DescribeFirewallTemplateRuleQuotaResponse) {
+    response = &DescribeFirewallTemplateRuleQuotaResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFirewallTemplateRuleQuota
+// 本接口 (DescribeFirewallTemplateRuleQuota) 用于查询防火墙模板规则配额。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeFirewallTemplateRuleQuota(request *DescribeFirewallTemplateRuleQuotaRequest) (response *DescribeFirewallTemplateRuleQuotaResponse, err error) {
+    return c.DescribeFirewallTemplateRuleQuotaWithContext(context.Background(), request)
+}
+
+// DescribeFirewallTemplateRuleQuota
+// 本接口 (DescribeFirewallTemplateRuleQuota) 用于查询防火墙模板规则配额。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+func (c *Client) DescribeFirewallTemplateRuleQuotaWithContext(ctx context.Context, request *DescribeFirewallTemplateRuleQuotaRequest) (response *DescribeFirewallTemplateRuleQuotaResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirewallTemplateRuleQuotaRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirewallTemplateRuleQuota require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFirewallTemplateRuleQuotaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirewallTemplateRulesRequest() (request *DescribeFirewallTemplateRulesRequest) {
+    request = &DescribeFirewallTemplateRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeFirewallTemplateRules")
+    
+    
+    return
+}
+
+func NewDescribeFirewallTemplateRulesResponse() (response *DescribeFirewallTemplateRulesResponse) {
+    response = &DescribeFirewallTemplateRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFirewallTemplateRules
+// 本接口 (DescribeFirewallTemplateRules) 用于查询防火墙模板规则列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
+func (c *Client) DescribeFirewallTemplateRules(request *DescribeFirewallTemplateRulesRequest) (response *DescribeFirewallTemplateRulesResponse, err error) {
+    return c.DescribeFirewallTemplateRulesWithContext(context.Background(), request)
+}
+
+// DescribeFirewallTemplateRules
+// 本接口 (DescribeFirewallTemplateRules) 用于查询防火墙模板规则列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
+func (c *Client) DescribeFirewallTemplateRulesWithContext(ctx context.Context, request *DescribeFirewallTemplateRulesRequest) (response *DescribeFirewallTemplateRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirewallTemplateRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirewallTemplateRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFirewallTemplateRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFirewallTemplatesRequest() (request *DescribeFirewallTemplatesRequest) {
+    request = &DescribeFirewallTemplatesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "DescribeFirewallTemplates")
+    
+    
+    return
+}
+
+func NewDescribeFirewallTemplatesResponse() (response *DescribeFirewallTemplatesResponse) {
+    response = &DescribeFirewallTemplatesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFirewallTemplates
+// 本接口 (DescribeFirewallTemplates) 用于查询防火墙模板列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeFirewallTemplates(request *DescribeFirewallTemplatesRequest) (response *DescribeFirewallTemplatesResponse, err error) {
+    return c.DescribeFirewallTemplatesWithContext(context.Background(), request)
+}
+
+// DescribeFirewallTemplates
+// 本接口 (DescribeFirewallTemplates) 用于查询防火墙模板列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeFirewallTemplatesWithContext(ctx context.Context, request *DescribeFirewallTemplatesRequest) (response *DescribeFirewallTemplatesResponse, err error) {
+    if request == nil {
+        request = NewDescribeFirewallTemplatesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFirewallTemplates require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFirewallTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGeneralResourceQuotasRequest() (request *DescribeGeneralResourceQuotasRequest) {
     request = &DescribeGeneralResourceQuotasRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3001,6 +3501,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 //  INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
 //  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
 func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
     return c.DescribeInstancesWithContext(context.Background(), request)
 }
@@ -3041,6 +3542,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 //  INVALIDPARAMETERVALUE_OUTOFRANGE = "InvalidParameterValue.OutOfRange"
 //  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
 func (c *Client) DescribeInstancesWithContext(ctx context.Context, request *DescribeInstancesRequest) (response *DescribeInstancesResponse, err error) {
     if request == nil {
         request = NewDescribeInstancesRequest()
@@ -5189,6 +5691,54 @@ func (c *Client) ModifyFirewallRulesWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyFirewallTemplateRequest() (request *ModifyFirewallTemplateRequest) {
+    request = &ModifyFirewallTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ModifyFirewallTemplate")
+    
+    
+    return
+}
+
+func NewModifyFirewallTemplateResponse() (response *ModifyFirewallTemplateResponse) {
+    response = &ModifyFirewallTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyFirewallTemplate
+// 本接口 (ModifyFirewallTemplate) 用于修改防火墙模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyFirewallTemplate(request *ModifyFirewallTemplateRequest) (response *ModifyFirewallTemplateResponse, err error) {
+    return c.ModifyFirewallTemplateWithContext(context.Background(), request)
+}
+
+// ModifyFirewallTemplate
+// 本接口 (ModifyFirewallTemplate) 用于修改防火墙模板。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyFirewallTemplateWithContext(ctx context.Context, request *ModifyFirewallTemplateRequest) (response *ModifyFirewallTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyFirewallTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyFirewallTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyFirewallTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstancesAttributeRequest() (request *ModifyInstancesAttributeRequest) {
     request = &ModifyInstancesAttributeRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6001,6 +6551,56 @@ func (c *Client) RenewInstancesWithContext(ctx context.Context, request *RenewIn
     return
 }
 
+func NewReplaceFirewallTemplateRuleRequest() (request *ReplaceFirewallTemplateRuleRequest) {
+    request = &ReplaceFirewallTemplateRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ReplaceFirewallTemplateRule")
+    
+    
+    return
+}
+
+func NewReplaceFirewallTemplateRuleResponse() (response *ReplaceFirewallTemplateRuleResponse) {
+    response = &ReplaceFirewallTemplateRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ReplaceFirewallTemplateRule
+// 本接口 (ReplaceFirewallTemplateRules) 用于替换防火墙模板规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
+func (c *Client) ReplaceFirewallTemplateRule(request *ReplaceFirewallTemplateRuleRequest) (response *ReplaceFirewallTemplateRuleResponse, err error) {
+    return c.ReplaceFirewallTemplateRuleWithContext(context.Background(), request)
+}
+
+// ReplaceFirewallTemplateRule
+// 本接口 (ReplaceFirewallTemplateRules) 用于替换防火墙模板规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
+func (c *Client) ReplaceFirewallTemplateRuleWithContext(ctx context.Context, request *ReplaceFirewallTemplateRuleRequest) (response *ReplaceFirewallTemplateRuleResponse, err error) {
+    if request == nil {
+        request = NewReplaceFirewallTemplateRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ReplaceFirewallTemplateRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewReplaceFirewallTemplateRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRerunDockerContainerRequest() (request *RerunDockerContainerRequest) {
     request = &RerunDockerContainerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6123,6 +6723,54 @@ func (c *Client) ResetAttachCcnWithContext(ctx context.Context, request *ResetAt
     request.SetContext(ctx)
     
     response = NewResetAttachCcnResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewResetFirewallTemplateRulesRequest() (request *ResetFirewallTemplateRulesRequest) {
+    request = &ResetFirewallTemplateRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lighthouse", APIVersion, "ResetFirewallTemplateRules")
+    
+    
+    return
+}
+
+func NewResetFirewallTemplateRulesResponse() (response *ResetFirewallTemplateRulesResponse) {
+    response = &ResetFirewallTemplateRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ResetFirewallTemplateRules
+// 本接口 (ResetFirewallTemplateRules) 用于重置防火墙模板下所有规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ResetFirewallTemplateRules(request *ResetFirewallTemplateRulesRequest) (response *ResetFirewallTemplateRulesResponse, err error) {
+    return c.ResetFirewallTemplateRulesWithContext(context.Background(), request)
+}
+
+// ResetFirewallTemplateRules
+// 本接口 (ResetFirewallTemplateRules) 用于重置防火墙模板下所有规则。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ResetFirewallTemplateRulesWithContext(ctx context.Context, request *ResetFirewallTemplateRulesRequest) (response *ResetFirewallTemplateRulesResponse, err error) {
+    if request == nil {
+        request = NewResetFirewallTemplateRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ResetFirewallTemplateRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewResetFirewallTemplateRulesResponse()
     err = c.Send(request, response)
     return
 }

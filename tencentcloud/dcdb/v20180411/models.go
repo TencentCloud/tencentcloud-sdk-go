@@ -4331,92 +4331,6 @@ func (r *DescribeShardSpecResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeSqlLogsRequestParams struct {
-	// 实例 ID，形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// SQL日志偏移。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 拉取数量（0-10000，为0时拉取总数信息）。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-}
-
-type DescribeSqlLogsRequest struct {
-	*tchttp.BaseRequest
-	
-	// 实例 ID，形如：dcdbt-ow728lmc，可以通过 DescribeDCDBInstances 查询实例详情获得。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
-
-	// SQL日志偏移。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 拉取数量（0-10000，为0时拉取总数信息）。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-}
-
-func (r *DescribeSqlLogsRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSqlLogsRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "InstanceId")
-	delete(f, "Offset")
-	delete(f, "Limit")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSqlLogsRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeSqlLogsResponseParams struct {
-	// 当前消息队列中的sql日志条目数。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
-
-	// 消息队列中的sql日志起始偏移。
-	StartOffset *uint64 `json:"StartOffset,omitempty" name:"StartOffset"`
-
-	// 消息队列中的sql日志结束偏移。
-	EndOffset *uint64 `json:"EndOffset,omitempty" name:"EndOffset"`
-
-	// 返回的第一条sql日志的偏移。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 返回的sql日志数量。
-	Count *uint64 `json:"Count,omitempty" name:"Count"`
-
-	// Sql日志列表。
-	SqlItems []*SqlLogItem `json:"SqlItems,omitempty" name:"SqlItems"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
-}
-
-type DescribeSqlLogsResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeSqlLogsResponseParams `json:"Response"`
-}
-
-func (r *DescribeSqlLogsResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeSqlLogsResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeUserTasksRequestParams struct {
 	// 任务的状态列表。0-任务启动中；1-任务运行中；2-任务成功；3-任务失败
 	Statuses []*int64 `json:"Statuses,omitempty" name:"Statuses"`
@@ -6777,38 +6691,6 @@ type SplitShardConfig struct {
 
 	// 分片存储大小，单位 GB
 	ShardStorage *int64 `json:"ShardStorage,omitempty" name:"ShardStorage"`
-}
-
-type SqlLogItem struct {
-	// 本条日志在消息队列中的偏移量。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
-
-	// 执行本条sql的用户。
-	User *string `json:"User,omitempty" name:"User"`
-
-	// 执行本条sql的客户端IP+端口。
-	Client *string `json:"Client,omitempty" name:"Client"`
-
-	// 数据库名称。
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
-
-	// 执行的sql语句。
-	Sql *string `json:"Sql,omitempty" name:"Sql"`
-
-	// 返回的数据行数。
-	SelectRowNum *uint64 `json:"SelectRowNum,omitempty" name:"SelectRowNum"`
-
-	// 影响行数。
-	AffectRowNum *uint64 `json:"AffectRowNum,omitempty" name:"AffectRowNum"`
-
-	// Sql执行时间戳。
-	Timestamp *uint64 `json:"Timestamp,omitempty" name:"Timestamp"`
-
-	// Sql耗时，单位为毫秒。
-	TimeCostMs *uint64 `json:"TimeCostMs,omitempty" name:"TimeCostMs"`
-
-	// Sql返回码，0为成功。
-	ResultCode *uint64 `json:"ResultCode,omitempty" name:"ResultCode"`
 }
 
 // Predefined struct for user

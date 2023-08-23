@@ -33754,13 +33754,13 @@ type UserFileDTO struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Md5Value *string `json:"Md5Value,omitempty" name:"Md5Value"`
 
-	// 创建时间，秒级别的时间戳
+	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
-	// 更新时间，秒级别的时间戳
+	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 
 	// 文件大小，单位为字节
 	// 注意：此字段可能返回 null，表示取不到有效值。

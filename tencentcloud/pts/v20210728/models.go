@@ -5216,6 +5216,9 @@ type UpdateScenarioRequestParams struct {
 
 	// 创建人名
 	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
 
 type UpdateScenarioRequest struct {
@@ -5283,6 +5286,9 @@ type UpdateScenarioRequest struct {
 
 	// 创建人名
 	Owner *string `json:"Owner,omitempty" name:"Owner"`
+
+	// 环境ID
+	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
 }
 
 func (r *UpdateScenarioRequest) ToJsonString() string {
@@ -5318,6 +5324,7 @@ func (r *UpdateScenarioRequest) FromJsonString(s string) error {
 	delete(f, "DomainNameConfig")
 	delete(f, "NotificationHooks")
 	delete(f, "Owner")
+	delete(f, "EnvId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateScenarioRequest has unknown keys!", "")
 	}

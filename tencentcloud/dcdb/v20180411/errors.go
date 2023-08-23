@@ -68,9 +68,6 @@ const (
 	// 修改账号配置失败。
 	FAILEDOPERATION_MODIFYUSERCONFIGFAILED = "FailedOperation.ModifyUserConfigFailed"
 
-	// 消息队列操作失败。
-	FAILEDOPERATION_MSGQUEUEOPERATIONFAILED = "FailedOperation.MsgQueueOperationFailed"
-
 	// 隔离实例失败。
 	FAILEDOPERATION_OSSISOLATEINSTANCEFAILED = "FailedOperation.OssIsolateInstanceFailed"
 

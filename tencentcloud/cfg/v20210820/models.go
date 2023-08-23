@@ -1156,8 +1156,12 @@ type TaskListItem struct {
 }
 
 type TaskMonitor struct {
-	// 监控指标ID
+	// 演练监控指标ID
 	TaskMonitorId *int64 `json:"TaskMonitorId,omitempty" name:"TaskMonitorId"`
+
+	// 监控指标ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricId *uint64 `json:"MetricId,omitempty" name:"MetricId"`
 
 	// 监控指标对象类型ID
 	TaskMonitorObjectTypeId *int64 `json:"TaskMonitorObjectTypeId,omitempty" name:"TaskMonitorObjectTypeId"`
@@ -1367,8 +1371,12 @@ type TemplateListItem struct {
 }
 
 type TemplateMonitor struct {
-	// 监控指标ID
+	// pk
 	MonitorId *int64 `json:"MonitorId,omitempty" name:"MonitorId"`
+
+	// 监控指标ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MetricId *int64 `json:"MetricId,omitempty" name:"MetricId"`
 
 	// 监控指标对象类型ID
 	ObjectTypeId *int64 `json:"ObjectTypeId,omitempty" name:"ObjectTypeId"`

@@ -4242,6 +4242,9 @@ type ModifyRoomRequestParams struct {
 
 	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
 	RoomType *uint64 `json:"RoomType,omitempty" name:"RoomType"`
+
+	// 录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
 }
 
 type ModifyRoomRequest struct {
@@ -4322,6 +4325,9 @@ type ModifyRoomRequest struct {
 
 	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
 	RoomType *uint64 `json:"RoomType,omitempty" name:"RoomType"`
+
+	// 录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
+	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
 }
 
 func (r *ModifyRoomRequest) ToJsonString() string {
@@ -4355,6 +4361,7 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	delete(f, "VideoOrientation")
 	delete(f, "IsGradingRequiredPostClass")
 	delete(f, "RoomType")
+	delete(f, "RecordLayout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
 	}

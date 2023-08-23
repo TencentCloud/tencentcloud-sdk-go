@@ -254,6 +254,9 @@ const (
 	// 参数值非法，不允许包含重复的值。
 	INVALIDPARAMETERVALUE_DUPLICATED = "InvalidParameterValue.Duplicated"
 
+	// 防火墙模板规则已存在
+	INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
+
 	// 列值不正确。
 	INVALIDPARAMETERVALUE_FIELDSCOMPARE = "InvalidParameterValue.FieldsCompare"
 
@@ -395,6 +398,9 @@ const (
 	// 超过防火墙规则配额。
 	LIMITEXCEEDED_FIREWALLRULESLIMITEXCEEDED = "LimitExceeded.FirewallRulesLimitExceeded"
 
+	// 防火墙模板规则超出配额
+	LIMITEXCEEDED_FIREWALLTEMPLATERULEQUOTALIMITEXCEEDED = "LimitExceeded.FirewallTemplateRuleQuotaLimitExceeded"
+
 	// 超过实例配额。
 	LIMITEXCEEDED_INSTANCEQUOTALIMITEXCEEDED = "LimitExceeded.InstanceQuotaLimitExceeded"
 
@@ -488,6 +494,9 @@ const (
 	// 防火墙规则不存在。
 	RESOURCENOTFOUND_FIREWALLRULESNOTFOUND = "ResourceNotFound.FirewallRulesNotFound"
 
+	// 防火墙模板不存在
+	RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
+
 	// 实例不存在挂载的数据盘。
 	RESOURCENOTFOUND_INSTANCEDATADISKNOTFOUND = "ResourceNotFound.InstanceDataDiskNotFound"
 
@@ -530,6 +539,9 @@ const (
 	// 套餐不可用。
 	RESOURCEUNAVAILABLE_BUNDLEUNAVAILABLE = "ResourceUnavailable.BundleUnavailable"
 
+	// 不能应用该防火墙模板
+	RESOURCEUNAVAILABLE_CANNOTAPPLYEMPTYFIREWALLTEMPLATE = "ResourceUnavailable.CannotApplyEmptyFirewallTemplate"
+
 	// Docker资源不可用。
 	RESOURCEUNAVAILABLE_DOCKERUNAVAILABLE = "ResourceUnavailable.DockerUnavailable"
 
@@ -559,6 +571,9 @@ const (
 
 	// 无权限。
 	UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+
+	// 无权限进行此操作，请求中token不合法。
+	UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
 
 	// 未知参数错误。
 	UNKNOWNPARAMETER = "UnknownParameter"

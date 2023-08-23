@@ -239,6 +239,9 @@ const (
 	// 查询预付费资源组详情失败。
 	INTERNALERROR_QUERYRESOURCEGROUPFAILED = "InternalError.QueryResourceGroupFailed"
 
+	// 查询预付费资源组名称失败
+	INTERNALERROR_QUERYRESOURCEGROUPNAMESFAILED = "InternalError.QueryResourceGroupNamesFailed"
+
 	// 查询资源套餐规格失败
 	INTERNALERROR_QUERYRESOURCESPECFAILED = "InternalError.QueryResourceSpecFailed"
 

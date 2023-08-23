@@ -1378,6 +1378,9 @@ type CreateNotebookRequestParams struct {
 
 	// 镜像类型
 	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+
+	// SSH配置信息
+	SSHConfig *SSHConfig `json:"SSHConfig,omitempty" name:"SSHConfig"`
 }
 
 type CreateNotebookRequest struct {
@@ -1454,6 +1457,9 @@ type CreateNotebookRequest struct {
 
 	// 镜像类型
 	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+
+	// SSH配置信息
+	SSHConfig *SSHConfig `json:"SSHConfig,omitempty" name:"SSHConfig"`
 }
 
 func (r *CreateNotebookRequest) ToJsonString() string {
@@ -1490,6 +1496,7 @@ func (r *CreateNotebookRequest) FromJsonString(s string) error {
 	delete(f, "DataConfigs")
 	delete(f, "ImageInfo")
 	delete(f, "ImageType")
+	delete(f, "SSHConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNotebookRequest has unknown keys!", "")
 	}
@@ -1847,18 +1854,6 @@ type CreateTrainingTaskRequestParams struct {
 	// 资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
 	ResourceConfigInfos []*ResourceConfigInfo `json:"ResourceConfigInfos,omitempty" name:"ResourceConfigInfos"`
 
-	// COS代码包路径
-	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitempty" name:"CodePackagePath"`
-
-	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
-	TrainingMode *string `json:"TrainingMode,omitempty" name:"TrainingMode"`
-
-	// COS训练输出路径
-	Output *CosPathInfo `json:"Output,omitempty" name:"Output"`
-
-	// 是否上报日志
-	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
-
 	// 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
 	FrameworkName *string `json:"FrameworkName,omitempty" name:"FrameworkName"`
 
@@ -1877,8 +1872,14 @@ type CreateTrainingTaskRequestParams struct {
 	// 自定义镜像信息
 	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
 
+	// COS代码包路径
+	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitempty" name:"CodePackagePath"`
+
 	// 启动命令信息，默认为sh start.sh
 	StartCmdInfo *StartCmdInfo `json:"StartCmdInfo,omitempty" name:"StartCmdInfo"`
+
+	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+	TrainingMode *string `json:"TrainingMode,omitempty" name:"TrainingMode"`
 
 	// 数据配置，依赖DataSource字段
 	DataConfigs []*DataConfig `json:"DataConfigs,omitempty" name:"DataConfigs"`
@@ -1889,11 +1890,17 @@ type CreateTrainingTaskRequestParams struct {
 	// 子网Id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
+	// COS训练输出路径
+	Output *CosPathInfo `json:"Output,omitempty" name:"Output"`
+
 	// CLS日志配置
 	LogConfig *LogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
 
 	// 调优参数
 	TuningParameters *string `json:"TuningParameters,omitempty" name:"TuningParameters"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
 
 	// 备注，最多500个字
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
@@ -1918,18 +1925,6 @@ type CreateTrainingTaskRequest struct {
 	// 资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
 	ResourceConfigInfos []*ResourceConfigInfo `json:"ResourceConfigInfos,omitempty" name:"ResourceConfigInfos"`
 
-	// COS代码包路径
-	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitempty" name:"CodePackagePath"`
-
-	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
-	TrainingMode *string `json:"TrainingMode,omitempty" name:"TrainingMode"`
-
-	// COS训练输出路径
-	Output *CosPathInfo `json:"Output,omitempty" name:"Output"`
-
-	// 是否上报日志
-	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
-
 	// 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
 	FrameworkName *string `json:"FrameworkName,omitempty" name:"FrameworkName"`
 
@@ -1948,8 +1943,14 @@ type CreateTrainingTaskRequest struct {
 	// 自定义镜像信息
 	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
 
+	// COS代码包路径
+	CodePackagePath *CosPathInfo `json:"CodePackagePath,omitempty" name:"CodePackagePath"`
+
 	// 启动命令信息，默认为sh start.sh
 	StartCmdInfo *StartCmdInfo `json:"StartCmdInfo,omitempty" name:"StartCmdInfo"`
+
+	// 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+	TrainingMode *string `json:"TrainingMode,omitempty" name:"TrainingMode"`
 
 	// 数据配置，依赖DataSource字段
 	DataConfigs []*DataConfig `json:"DataConfigs,omitempty" name:"DataConfigs"`
@@ -1960,11 +1961,17 @@ type CreateTrainingTaskRequest struct {
 	// 子网Id
 	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 
+	// COS训练输出路径
+	Output *CosPathInfo `json:"Output,omitempty" name:"Output"`
+
 	// CLS日志配置
 	LogConfig *LogConfig `json:"LogConfig,omitempty" name:"LogConfig"`
 
 	// 调优参数
 	TuningParameters *string `json:"TuningParameters,omitempty" name:"TuningParameters"`
+
+	// 是否上报日志
+	LogEnable *bool `json:"LogEnable,omitempty" name:"LogEnable"`
 
 	// 备注，最多500个字
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
@@ -1991,22 +1998,22 @@ func (r *CreateTrainingTaskRequest) FromJsonString(s string) error {
 	delete(f, "Name")
 	delete(f, "ChargeType")
 	delete(f, "ResourceConfigInfos")
-	delete(f, "CodePackagePath")
-	delete(f, "TrainingMode")
-	delete(f, "Output")
-	delete(f, "LogEnable")
 	delete(f, "FrameworkName")
 	delete(f, "FrameworkVersion")
 	delete(f, "FrameworkEnvironment")
 	delete(f, "ResourceGroupId")
 	delete(f, "Tags")
 	delete(f, "ImageInfo")
+	delete(f, "CodePackagePath")
 	delete(f, "StartCmdInfo")
+	delete(f, "TrainingMode")
 	delete(f, "DataConfigs")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
+	delete(f, "Output")
 	delete(f, "LogConfig")
 	delete(f, "TuningParameters")
+	delete(f, "LogEnable")
 	delete(f, "Remark")
 	delete(f, "DataSource")
 	delete(f, "CallbackUrl")
@@ -6703,6 +6710,9 @@ type ModifyNotebookRequestParams struct {
 
 	// 镜像类型
 	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+
+	// SSH配置
+	SSHConfig *SSHConfig `json:"SSHConfig,omitempty" name:"SSHConfig"`
 }
 
 type ModifyNotebookRequest struct {
@@ -6782,6 +6792,9 @@ type ModifyNotebookRequest struct {
 
 	// 镜像类型
 	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+
+	// SSH配置
+	SSHConfig *SSHConfig `json:"SSHConfig,omitempty" name:"SSHConfig"`
 }
 
 func (r *ModifyNotebookRequest) ToJsonString() string {
@@ -6819,6 +6832,7 @@ func (r *ModifyNotebookRequest) FromJsonString(s string) error {
 	delete(f, "DataConfigs")
 	delete(f, "ImageInfo")
 	delete(f, "ImageType")
+	delete(f, "SSHConfig")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNotebookRequest has unknown keys!", "")
 	}
@@ -7241,6 +7255,10 @@ type NotebookSetItem struct {
 	// notebook用户类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserTypes []*string `json:"UserTypes,omitempty" name:"UserTypes"`
+
+	// SSH配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SSHConfig *SSHConfig `json:"SSHConfig,omitempty" name:"SSHConfig"`
 }
 
 type OcrLabelInfo struct {
@@ -7328,6 +7346,10 @@ type PodInfo struct {
 	// pod的IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IP *string `json:"IP,omitempty" name:"IP"`
+
+	// pod状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitempty" name:"Status"`
 }
 
 type PointInfo struct {
@@ -7761,6 +7783,24 @@ type RowValue struct {
 	// 列值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitempty" name:"Value"`
+}
+
+type SSHConfig struct {
+	// 是否开启ssh
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+
+	// 公钥信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+
+	// 端口号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 登录命令
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoginCommand *string `json:"LoginCommand,omitempty" name:"LoginCommand"`
 }
 
 type ScheduledAction struct {

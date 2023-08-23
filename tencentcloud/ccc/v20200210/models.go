@@ -847,6 +847,9 @@ type CreateSDKLoginTokenRequestParams struct {
 
 	// 座席账号。
 	SeatUserId *string `json:"SeatUserId,omitempty" name:"SeatUserId"`
+
+	// 生成的token是否一次性校验
+	OnlyOnce *bool `json:"OnlyOnce,omitempty" name:"OnlyOnce"`
 }
 
 type CreateSDKLoginTokenRequest struct {
@@ -857,6 +860,9 @@ type CreateSDKLoginTokenRequest struct {
 
 	// 座席账号。
 	SeatUserId *string `json:"SeatUserId,omitempty" name:"SeatUserId"`
+
+	// 生成的token是否一次性校验
+	OnlyOnce *bool `json:"OnlyOnce,omitempty" name:"OnlyOnce"`
 }
 
 func (r *CreateSDKLoginTokenRequest) ToJsonString() string {
@@ -873,6 +879,7 @@ func (r *CreateSDKLoginTokenRequest) FromJsonString(s string) error {
 	}
 	delete(f, "SdkAppId")
 	delete(f, "SeatUserId")
+	delete(f, "OnlyOnce")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSDKLoginTokenRequest has unknown keys!", "")
 	}

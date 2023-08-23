@@ -64,7 +64,7 @@ func NewApplyConcurrentResponse() (response *ApplyConcurrentResponse) {
 }
 
 // ApplyConcurrent
-// 申请并发
+// 本接口用于申请并发。接口超时时间：20秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -80,7 +80,7 @@ func (c *Client) ApplyConcurrent(request *ApplyConcurrentRequest) (response *App
 }
 
 // ApplyConcurrent
-// 申请并发
+// 本接口用于申请并发。接口超时时间：20秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -126,7 +126,7 @@ func NewCreateSessionResponse() (response *CreateSessionResponse) {
 }
 
 // CreateSession
-// 创建会话
+// 本接口用于创建会话。接口超时时间：5秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -148,7 +148,7 @@ func (c *Client) CreateSession(request *CreateSessionRequest) (response *CreateS
 }
 
 // CreateSession
-// 创建会话
+// 本接口用于创建会话。接口超时时间：5秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
