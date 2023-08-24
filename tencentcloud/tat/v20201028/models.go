@@ -143,6 +143,10 @@ type Command struct {
 	// 自定义参数的默认取值。
 	DefaultParameters *string `json:"DefaultParameters,omitempty" name:"DefaultParameters"`
 
+	// 自定义参数的默认取值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DefaultParameterConfs []*DefaultParameterConf `json:"DefaultParameterConfs,omitempty" name:"DefaultParameterConfs"`
+
 	// 命令的结构化描述。公共命令有值，用户命令为空字符串。
 	FormattedDescription *string `json:"FormattedDescription,omitempty" name:"FormattedDescription"`
 
@@ -439,6 +443,108 @@ func (r *CreateInvokerResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRegisterCodeRequestParams struct {
+	// 注册码描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 注册实列名称前缀。
+	InstanceNamePrefix *string `json:"InstanceNamePrefix,omitempty" name:"InstanceNamePrefix"`
+
+	// 该注册码允许注册的实列数目。默认限制为10个。
+	RegisterLimit *int64 `json:"RegisterLimit,omitempty" name:"RegisterLimit"`
+
+	// 该注册码的有效时间，单位为小时。默认为4小时。
+	EffectiveTime *int64 `json:"EffectiveTime,omitempty" name:"EffectiveTime"`
+
+	// 该注册码限制tat_agent只能从IpAddressRange所描述公网出口进行注册。默认不做限制。
+	IpAddressRange *string `json:"IpAddressRange,omitempty" name:"IpAddressRange"`
+}
+
+type CreateRegisterCodeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 注册码描述。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 注册实列名称前缀。
+	InstanceNamePrefix *string `json:"InstanceNamePrefix,omitempty" name:"InstanceNamePrefix"`
+
+	// 该注册码允许注册的实列数目。默认限制为10个。
+	RegisterLimit *int64 `json:"RegisterLimit,omitempty" name:"RegisterLimit"`
+
+	// 该注册码的有效时间，单位为小时。默认为4小时。
+	EffectiveTime *int64 `json:"EffectiveTime,omitempty" name:"EffectiveTime"`
+
+	// 该注册码限制tat_agent只能从IpAddressRange所描述公网出口进行注册。默认不做限制。
+	IpAddressRange *string `json:"IpAddressRange,omitempty" name:"IpAddressRange"`
+}
+
+func (r *CreateRegisterCodeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRegisterCodeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Description")
+	delete(f, "InstanceNamePrefix")
+	delete(f, "RegisterLimit")
+	delete(f, "EffectiveTime")
+	delete(f, "IpAddressRange")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRegisterCodeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRegisterCodeResponseParams struct {
+	// 注册码ID。
+	RegisterCodeId *string `json:"RegisterCodeId,omitempty" name:"RegisterCodeId"`
+
+	// 注册码值。
+	RegisterCodeValue *string `json:"RegisterCodeValue,omitempty" name:"RegisterCodeValue"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateRegisterCodeResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRegisterCodeResponseParams `json:"Response"`
+}
+
+func (r *CreateRegisterCodeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRegisterCodeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DefaultParameterConf struct {
+	// 参数名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParameterName *string `json:"ParameterName,omitempty" name:"ParameterName"`
+
+	// 参数默认值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParameterValue *string `json:"ParameterValue,omitempty" name:"ParameterValue"`
+
+	// 参数描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParameterDescription *string `json:"ParameterDescription,omitempty" name:"ParameterDescription"`
+}
+
+// Predefined struct for user
 type DeleteCommandRequestParams struct {
 	// 待删除的命令ID。
 	CommandId *string `json:"CommandId,omitempty" name:"CommandId"`
@@ -543,6 +649,114 @@ func (r *DeleteInvokerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteInvokerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRegisterCodesRequestParams struct {
+	// 注册码ID列表。限制输入的注册码ID数量大于0小于100。
+	RegisterCodeIds []*string `json:"RegisterCodeIds,omitempty" name:"RegisterCodeIds"`
+}
+
+type DeleteRegisterCodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 注册码ID列表。限制输入的注册码ID数量大于0小于100。
+	RegisterCodeIds []*string `json:"RegisterCodeIds,omitempty" name:"RegisterCodeIds"`
+}
+
+func (r *DeleteRegisterCodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRegisterCodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegisterCodeIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRegisterCodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRegisterCodesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteRegisterCodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRegisterCodesResponseParams `json:"Response"`
+}
+
+func (r *DeleteRegisterCodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRegisterCodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRegisterInstanceRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+type DeleteRegisterInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+}
+
+func (r *DeleteRegisterInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRegisterInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRegisterInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRegisterInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteRegisterInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRegisterInstanceResponseParams `json:"Response"`
+}
+
+func (r *DeleteRegisterInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRegisterInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1124,6 +1338,198 @@ func (r *DescribeRegionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRegisterCodesRequestParams struct {
+	// 注册码ID。
+	RegisterCodeIds []*string `json:"RegisterCodeIds,omitempty" name:"RegisterCodeIds"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeRegisterCodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 注册码ID。
+	RegisterCodeIds []*string `json:"RegisterCodeIds,omitempty" name:"RegisterCodeIds"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRegisterCodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRegisterCodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegisterCodeIds")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegisterCodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRegisterCodesResponseParams struct {
+	// 查询到的注册码总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 注册码信息列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegisterCodeSet []*RegisterCodeInfo `json:"RegisterCodeSet,omitempty" name:"RegisterCodeSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRegisterCodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRegisterCodesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRegisterCodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRegisterCodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRegisterInstancesRequestParams struct {
+	// 实例id。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 过滤器列表。
+	// 
+	// - instance-name
+	// 
+	// 按照【实例名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - instance-id
+	// 
+	// 按照【实例ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - register-code-id
+	// 
+	// 按照【注册码ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+type DescribeRegisterInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例id。
+	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+
+	// 过滤器列表。
+	// 
+	// - instance-name
+	// 
+	// 按照【实例名称】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - instance-id
+	// 
+	// 按照【实例ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// - register-code-id
+	// 
+	// 按照【注册码ID】进行过滤。
+	// 类型：String
+	// 必选：否
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+
+	// 偏移量，默认为 0。
+	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 返回数量，默认为 20，最大值为 100。
+	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+}
+
+func (r *DescribeRegisterInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRegisterInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRegisterInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRegisterInstancesResponseParams struct {
+	// 该实例注册过的注册码总数。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 被托管的实例信息的列表。
+	RegisterInstanceSet []*RegisterInstanceInfo `json:"RegisterInstanceSet,omitempty" name:"RegisterInstanceSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeRegisterInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRegisterInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRegisterInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRegisterInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DisableInvokerRequestParams struct {
 	// 待停止的执行器ID。
 	InvokerId *string `json:"InvokerId,omitempty" name:"InvokerId"`
@@ -1174,6 +1580,60 @@ func (r *DisableInvokerResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DisableInvokerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableRegisterCodesRequestParams struct {
+	// 注册码ID。
+	RegisterCodeIds []*string `json:"RegisterCodeIds,omitempty" name:"RegisterCodeIds"`
+}
+
+type DisableRegisterCodesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 注册码ID。
+	RegisterCodeIds []*string `json:"RegisterCodeIds,omitempty" name:"RegisterCodeIds"`
+}
+
+func (r *DisableRegisterCodesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableRegisterCodesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RegisterCodeIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DisableRegisterCodesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DisableRegisterCodesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DisableRegisterCodesResponse struct {
+	*tchttp.BaseResponse
+	Response *DisableRegisterCodesResponseParams `json:"Response"`
+}
+
+func (r *DisableRegisterCodesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DisableRegisterCodesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1806,6 +2266,67 @@ func (r *ModifyInvokerResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRegisterInstanceRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+}
+
+type ModifyRegisterInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+}
+
+func (r *ModifyRegisterInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRegisterInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "InstanceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRegisterInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRegisterInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyRegisterInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRegisterInstanceResponseParams `json:"Response"`
+}
+
+func (r *ModifyRegisterInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRegisterInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type PreviewReplacedCommandContentRequestParams struct {
 	// 本次预览采用的自定义参数。字段类型为 json encoded string，如：{\"varA\": \"222\"}。
 	// key 为自定义参数名称，value 为该参数的取值。kv 均为字符串型。
@@ -1897,6 +2418,100 @@ type RegionInfo struct {
 
 	// 地域是否可用状态，AVAILABLE 代表可用
 	RegionState *string `json:"RegionState,omitempty" name:"RegionState"`
+}
+
+type RegisterCodeInfo struct {
+	// 注册码ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegisterCodeId *string `json:"RegisterCodeId,omitempty" name:"RegisterCodeId"`
+
+	// 注册码描述。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 注册实例名称前缀。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceNamePrefix *string `json:"InstanceNamePrefix,omitempty" name:"InstanceNamePrefix"`
+
+	// 该注册码允许注册的实列数目。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegisterLimit *int64 `json:"RegisterLimit,omitempty" name:"RegisterLimit"`
+
+	// 该注册码的过期时间，按照 ISO8601 标准表示，并且使用 UTC 时间。 
+	// 格式为： YYYY-MM-DDThh:mm:ssZ。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpiredTime *string `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+
+	// 该注册码限制tat_agent只能从IpAddressRange所描述公网出口进行注册。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpAddressRange *string `json:"IpAddressRange,omitempty" name:"IpAddressRange"`
+
+	// 该注册码是否可用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 该注册码已注册数目。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegisteredCount *int64 `json:"RegisteredCount,omitempty" name:"RegisteredCount"`
+
+	// 注册码创建时间，按照 ISO8601 标准表示，并且使用 UTC 时间。 
+	// 格式为： YYYY-MM-DDThh:mm:ssZ。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 注册码最近一次更新时间，按照 ISO8601 标准表示，并且使用 UTC 时间。 
+	// 格式为： YYYY-MM-DDThh:mm:ssZ。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+}
+
+type RegisterInstanceInfo struct {
+	// 注册码ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegisterCodeId *string `json:"RegisterCodeId,omitempty" name:"RegisterCodeId"`
+
+	// 实例ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 实例名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+
+	// 机器ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MachineId *string `json:"MachineId,omitempty" name:"MachineId"`
+
+	// 系统名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystemName *string `json:"SystemName,omitempty" name:"SystemName"`
+
+	// 主机IP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostName *string `json:"HostName,omitempty" name:"HostName"`
+
+	// 内网IP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LocalIp *string `json:"LocalIp,omitempty" name:"LocalIp"`
+
+	// 公钥。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+
+	// 托管状态。
+	// 返回Online表示实例正在托管，返回Offline表示实例未托管。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+
+	// 上次更新时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
 }
 
 // Predefined struct for user

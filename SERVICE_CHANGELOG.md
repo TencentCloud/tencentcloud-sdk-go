@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 应用云渲染(car) 版本：2022-01-10
+## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 8 次发布
+### 第 105 次发布
 
-发布时间：2023-08-23 01:10:00
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [StartPublishStream](https://cloud.tencent.com/document/api/1547/89669)
-
-	* 新增入参：PublishStreamArgs
-
-
-
-
-## 云呼叫中心(ccc) 版本：2020-02-10
-
-### 第 54 次发布
-
-发布时间：2023-08-23 01:10:26
+发布时间：2023-08-24 01:18:44
 
 本次发布包含了以下内容：
 
@@ -31,61 +12,41 @@
 
 修改接口：
 
-* [CreateSDKLoginToken](https://cloud.tencent.com/document/api/679/49227)
+* [CreateSeal](https://cloud.tencent.com/document/api/1323/94136)
 
-	* 新增入参：OnlyOnce
-
-
-
-
-## 混沌演练平台(cfg) 版本：2021-08-20
-
-### 第 10 次发布
-
-发布时间：2023-08-23 01:12:18
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [TaskMonitor](https://cloud.tencent.com/document/api/1500/71784#TaskMonitor)
-
-	* 新增成员：MetricId
-
-* [TemplateMonitor](https://cloud.tencent.com/document/api/1500/71784#TemplateMonitor)
-
-	* 新增成员：MetricId
+	* 新增入参：SealStyle, SealSize
 
 
 
 
-## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+## 游戏多媒体引擎(gme) 版本：2018-07-11
 
-### 第 65 次发布
+### 第 35 次发布
 
-发布时间：2023-08-23 01:20:18
+发布时间：2023-08-24 01:19:31
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**删除接口**：</font>
+修改接口：
 
-* DescribeSqlLogs
+* [CreateScanUser](https://cloud.tencent.com/document/api/607/71481)
 
-<font color="#dd0000">**删除数据结构**：</font>
+	* 新增入参：UserIdString, ExpirationTime
 
-* SqlLogItem
+* [DeleteScanUser](https://cloud.tencent.com/document/api/607/71480)
+
+	* 新增入参：UserIdString
 
 
 
-## 数据安全中心(dsgc) 版本：2019-07-23
 
-### 第 1 次发布
+## 自动化助手(tat) 版本：2020-10-28
 
-发布时间：2023-08-22 15:36:03
+### 第 19 次发布
+
+发布时间：2023-08-24 01:26:36
 
 本次发布包含了以下内容：
 
@@ -93,19 +54,34 @@
 
 新增接口：
 
-* [CreateDSPADbMetaResources](https://cloud.tencent.com/document/api/1087/96843)
+* [CreateRegisterCode](https://cloud.tencent.com/document/api/1340/96928)
+* [DeleteRegisterCodes](https://cloud.tencent.com/document/api/1340/96927)
+* [DeleteRegisterInstance](https://cloud.tencent.com/document/api/1340/96926)
+* [DescribeRegisterCodes](https://cloud.tencent.com/document/api/1340/96925)
+* [DescribeRegisterInstances](https://cloud.tencent.com/document/api/1340/96924)
+* [DisableRegisterCodes](https://cloud.tencent.com/document/api/1340/96923)
+* [ModifyRegisterInstance](https://cloud.tencent.com/document/api/1340/96922)
 
 新增数据结构：
 
-* [DspaCloudResourceMeta](https://cloud.tencent.com/document/api/1087/96844#DspaCloudResourceMeta)
+* [DefaultParameterConf](https://cloud.tencent.com/document/api/1340/52687#DefaultParameterConf)
+* [RegisterCodeInfo](https://cloud.tencent.com/document/api/1340/52687#RegisterCodeInfo)
+* [RegisterInstanceInfo](https://cloud.tencent.com/document/api/1340/52687#RegisterInstanceInfo)
+
+修改数据结构：
+
+* [Command](https://cloud.tencent.com/document/api/1340/52687#Command)
+
+	* 新增成员：DefaultParameterConfs
 
 
 
-## 低代码互动课堂(lcic) 版本：2022-08-17
 
-### 第 39 次发布
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
-发布时间：2023-08-23 01:30:17
+### 第 74 次发布
+
+发布时间：2023-08-24 01:28:28
 
 本次发布包含了以下内容：
 
@@ -113,18 +89,18 @@
 
 修改接口：
 
-* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
+* [CreateEnvironment](https://cloud.tencent.com/document/api/1179/46081)
 
-	* 新增入参：RecordLayout
-
-
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
 
 
-## 轻量应用服务器(lighthouse) 版本：2020-03-24
 
-### 第 52 次发布
 
-发布时间：2023-08-23 01:30:37
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 44 次发布
+
+发布时间：2023-08-24 01:31:57
 
 本次发布包含了以下内容：
 
@@ -132,123 +108,44 @@
 
 新增接口：
 
-* [ApplyFirewallTemplate](https://cloud.tencent.com/document/api/1207/96883)
-* [CreateFirewallTemplate](https://cloud.tencent.com/document/api/1207/96882)
-* [CreateFirewallTemplateRules](https://cloud.tencent.com/document/api/1207/96881)
-* [DeleteFirewallTemplate](https://cloud.tencent.com/document/api/1207/96880)
-* [DeleteFirewallTemplateRules](https://cloud.tencent.com/document/api/1207/96879)
-* [DescribeFirewallTemplateApplyRecords](https://cloud.tencent.com/document/api/1207/96878)
-* [DescribeFirewallTemplateQuota](https://cloud.tencent.com/document/api/1207/96877)
-* [DescribeFirewallTemplateRuleQuota](https://cloud.tencent.com/document/api/1207/96876)
-* [DescribeFirewallTemplateRules](https://cloud.tencent.com/document/api/1207/96875)
-* [DescribeFirewallTemplates](https://cloud.tencent.com/document/api/1207/96874)
-* [ModifyFirewallTemplate](https://cloud.tencent.com/document/api/1207/96873)
-* [ReplaceFirewallTemplateRule](https://cloud.tencent.com/document/api/1207/96872)
-* [ResetFirewallTemplateRules](https://cloud.tencent.com/document/api/1207/96871)
-
-修改接口：
-
-* [CreateInstances](https://cloud.tencent.com/document/api/1207/69573)
-
-	* 新增入参：FirewallTemplateId
-
-
-新增数据结构：
-
-* [FirewallTemplate](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplate)
-* [FirewallTemplateApplyRecord](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateApplyRecord)
-* [FirewallTemplateApplyRecordDetail](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateApplyRecordDetail)
-* [FirewallTemplateRule](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateRule)
-* [FirewallTemplateRuleInfo](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateRuleInfo)
-* [InstanceIdentifier](https://cloud.tencent.com/document/api/1207/47576#InstanceIdentifier)
-
-
-
-## 云压测(pts) 版本：2021-07-28
-
-### 第 13 次发布
-
-发布时间：2023-08-23 01:36:48
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [UpdateScenario](https://cloud.tencent.com/document/api/1484/78057)
-
-	* 新增入参：EnvId
-
-
-
-
-## TI-ONE 训练平台(tione) 版本：2021-11-11
-
-### 第 34 次发布
-
-发布时间：2023-08-23 01:45:33
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateNotebook](https://cloud.tencent.com/document/api/851/95658)
-
-	* 新增入参：SSHConfig
-
-* [CreateTrainingTask](https://cloud.tencent.com/document/api/851/75094)
-
-	* <font color="#dd0000">**修改入参**：</font>CodePackagePath, TrainingMode, Output, LogEnable
-
-* [ModifyNotebook](https://cloud.tencent.com/document/api/851/95652)
-
-	* 新增入参：SSHConfig
-
+* [AddSpartaProtectionAuto](https://cloud.tencent.com/document/api/627/96951)
+* [AddSpartaProtectionsAuto](https://cloud.tencent.com/document/api/627/96932)
+* [DeleteHost](https://cloud.tencent.com/document/api/627/96950)
+* [DeleteSpartaProtection](https://cloud.tencent.com/document/api/627/96949)
+* [DescribeCiphersDetail](https://cloud.tencent.com/document/api/627/96948)
+* [DescribeDomainCountInfo](https://cloud.tencent.com/document/api/627/96947)
+* [DescribeDomainDetailsClb](https://cloud.tencent.com/document/api/627/96946)
+* [DescribeFindDomainList](https://cloud.tencent.com/document/api/627/96945)
+* [DescribeHost](https://cloud.tencent.com/document/api/627/96944)
+* [DescribeHostLimit](https://cloud.tencent.com/document/api/627/96943)
+* [DescribeHosts](https://cloud.tencent.com/document/api/627/96942)
+* [DescribeTlsVersion](https://cloud.tencent.com/document/api/627/96941)
+* [DescribeUserDomainInfo](https://cloud.tencent.com/document/api/627/96940)
+* [DescribeWafInfo](https://cloud.tencent.com/document/api/627/96939)
+* [ModifyDomainIpv6Status](https://cloud.tencent.com/document/api/627/96938)
+* [ModifyDomainsCLSStatus](https://cloud.tencent.com/document/api/627/96937)
+* [ModifyHost](https://cloud.tencent.com/document/api/627/96936)
+* [ModifyHostFlowMode](https://cloud.tencent.com/document/api/627/96935)
+* [ModifyHostMode](https://cloud.tencent.com/document/api/627/96934)
+* [ModifyHostStatus](https://cloud.tencent.com/document/api/627/96933)
+* [ModifyProtectionStatus](https://cloud.tencent.com/document/api/627/96931)
+* [ModifySpartaProtectionMode](https://cloud.tencent.com/document/api/627/96930)
+* [RefreshAccessCheckResult](https://cloud.tencent.com/document/api/627/96929)
 
 新增数据结构：
 
-* [SSHConfig](https://cloud.tencent.com/document/api/851/75051#SSHConfig)
-
-修改数据结构：
-
-* [NotebookSetItem](https://cloud.tencent.com/document/api/851/75051#NotebookSetItem)
-
-	* 新增成员：SSHConfig
-
-	* <font color="#dd0000">**修改成员**：</font>UserTypes
-
-* [PodInfo](https://cloud.tencent.com/document/api/851/75051#PodInfo)
-
-	* 新增成员：Status
-
-	* <font color="#dd0000">**修改成员**：</font>Name, IP
-
-
-
-
-## TI-ONE 训练平台(tione) 版本：2019-10-22
-
-
-
-## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
-
-### 第 43 次发布
-
-发布时间：2023-08-23 01:51:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [UserFileDTO](https://cloud.tencent.com/document/api/1267/76336#UserFileDTO)
-
-	* <font color="#dd0000">**修改成员**：</font>CreateTime, UpdateTime
-
+* [ClbDomainsInfo](https://cloud.tencent.com/document/api/627/53609#ClbDomainsInfo)
+* [ClbHostResult](https://cloud.tencent.com/document/api/627/53609#ClbHostResult)
+* [ClbHostsParams](https://cloud.tencent.com/document/api/627/53609#ClbHostsParams)
+* [DomainURI](https://cloud.tencent.com/document/api/627/53609#DomainURI)
+* [FailedInfo](https://cloud.tencent.com/document/api/627/53609#FailedInfo)
+* [FindAllDomainDetail](https://cloud.tencent.com/document/api/627/53609#FindAllDomainDetail)
+* [HostDel](https://cloud.tencent.com/document/api/627/53609#HostDel)
+* [HostStatus](https://cloud.tencent.com/document/api/627/53609#HostStatus)
+* [SearchItem](https://cloud.tencent.com/document/api/627/53609#SearchItem)
+* [TLSCiphers](https://cloud.tencent.com/document/api/627/53609#TLSCiphers)
+* [TLSVersion](https://cloud.tencent.com/document/api/627/53609#TLSVersion)
+* [UserDomainInfo](https://cloud.tencent.com/document/api/627/53609#UserDomainInfo)
 
 
 
@@ -45951,11 +45848,11 @@
 
 新增接口：
 
-* [[CreateDSPADbMetaResources](https://cloud.tencent.com/document/api/1087/96843)](https://cloud.tencent.com/document/api/#/#)
+* [CreateDSPADbMetaResources](https://cloud.tencent.com/document/api/1087/96843)
 
 新增数据结构：
 
-* [[DspaCloudResourceMeta](https://cloud.tencent.com/document/api/1087/96844#DspaCloudResourceMeta)](https://cloud.tencent.com/document/api/1087/96844#[DspaCloudResourceMeta](https://cloud.tencent.com/document/api/1087/96844#DspaCloudResourceMeta))
+* [DspaCloudResourceMeta](https://cloud.tencent.com/document/api/1087/96844#DspaCloudResourceMeta)
 
 
 
@@ -51739,6 +51636,21 @@
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 105 次发布
+
+发布时间：2023-08-24 01:18:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSeal](https://cloud.tencent.com/document/api/1323/94136)
+
+	* 新增入参：SealStyle, SealSize
+
 
 ### 第 104 次发布
 
@@ -58430,6 +58342,25 @@
 
 
 ## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 35 次发布
+
+发布时间：2023-08-24 01:19:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateScanUser](https://cloud.tencent.com/document/api/607/71481)
+
+	* 新增入参：UserIdString, ExpirationTime
+
+* [DeleteScanUser](https://cloud.tencent.com/document/api/607/71480)
+
+	* 新增入参：UserIdString
+
 
 ### 第 34 次发布
 
@@ -68366,19 +68297,19 @@
 
 新增接口：
 
-* [[ApplyFirewallTemplate](https://cloud.tencent.com/document/api/1207/96883)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateFirewallTemplate](https://cloud.tencent.com/document/api/1207/96882)](https://cloud.tencent.com/document/api/#/#)
-* [[CreateFirewallTemplateRules](https://cloud.tencent.com/document/api/1207/96881)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteFirewallTemplate](https://cloud.tencent.com/document/api/1207/96880)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteFirewallTemplateRules](https://cloud.tencent.com/document/api/1207/96879)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFirewallTemplateApplyRecords](https://cloud.tencent.com/document/api/1207/96878)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFirewallTemplateQuota](https://cloud.tencent.com/document/api/1207/96877)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFirewallTemplateRuleQuota](https://cloud.tencent.com/document/api/1207/96876)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFirewallTemplateRules](https://cloud.tencent.com/document/api/1207/96875)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeFirewallTemplates](https://cloud.tencent.com/document/api/1207/96874)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyFirewallTemplate](https://cloud.tencent.com/document/api/1207/96873)](https://cloud.tencent.com/document/api/#/#)
-* [[ReplaceFirewallTemplateRule](https://cloud.tencent.com/document/api/1207/96872)](https://cloud.tencent.com/document/api/#/#)
-* [[ResetFirewallTemplateRules](https://cloud.tencent.com/document/api/1207/96871)](https://cloud.tencent.com/document/api/#/#)
+* [ApplyFirewallTemplate](https://cloud.tencent.com/document/api/1207/96883)
+* [CreateFirewallTemplate](https://cloud.tencent.com/document/api/1207/96882)
+* [CreateFirewallTemplateRules](https://cloud.tencent.com/document/api/1207/96881)
+* [DeleteFirewallTemplate](https://cloud.tencent.com/document/api/1207/96880)
+* [DeleteFirewallTemplateRules](https://cloud.tencent.com/document/api/1207/96879)
+* [DescribeFirewallTemplateApplyRecords](https://cloud.tencent.com/document/api/1207/96878)
+* [DescribeFirewallTemplateQuota](https://cloud.tencent.com/document/api/1207/96877)
+* [DescribeFirewallTemplateRuleQuota](https://cloud.tencent.com/document/api/1207/96876)
+* [DescribeFirewallTemplateRules](https://cloud.tencent.com/document/api/1207/96875)
+* [DescribeFirewallTemplates](https://cloud.tencent.com/document/api/1207/96874)
+* [ModifyFirewallTemplate](https://cloud.tencent.com/document/api/1207/96873)
+* [ReplaceFirewallTemplateRule](https://cloud.tencent.com/document/api/1207/96872)
+* [ResetFirewallTemplateRules](https://cloud.tencent.com/document/api/1207/96871)
 
 修改接口：
 
@@ -68389,12 +68320,12 @@
 
 新增数据结构：
 
-* [[FirewallTemplate](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplate)](https://cloud.tencent.com/document/api/1207/47576#[FirewallTemplate](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplate))
-* [[FirewallTemplateApplyRecord](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateApplyRecord)](https://cloud.tencent.com/document/api/1207/47576#[FirewallTemplateApplyRecord](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateApplyRecord))
-* [[FirewallTemplateApplyRecordDetail](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateApplyRecordDetail)](https://cloud.tencent.com/document/api/1207/47576#[FirewallTemplateApplyRecordDetail](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateApplyRecordDetail))
-* [[FirewallTemplateRule](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateRule)](https://cloud.tencent.com/document/api/1207/47576#[FirewallTemplateRule](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateRule))
-* [[FirewallTemplateRuleInfo](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateRuleInfo)](https://cloud.tencent.com/document/api/1207/47576#[FirewallTemplateRuleInfo](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateRuleInfo))
-* [[InstanceIdentifier](https://cloud.tencent.com/document/api/1207/47576#InstanceIdentifier)](https://cloud.tencent.com/document/api/1207/47576#[InstanceIdentifier](https://cloud.tencent.com/document/api/1207/47576#InstanceIdentifier))
+* [FirewallTemplate](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplate)
+* [FirewallTemplateApplyRecord](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateApplyRecord)
+* [FirewallTemplateApplyRecordDetail](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateApplyRecordDetail)
+* [FirewallTemplateRule](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateRule)
+* [FirewallTemplateRuleInfo](https://cloud.tencent.com/document/api/1207/47576#FirewallTemplateRuleInfo)
+* [InstanceIdentifier](https://cloud.tencent.com/document/api/1207/47576#InstanceIdentifier)
 
 ### 第 51 次发布
 
@@ -92989,6 +92920,37 @@
 
 ## 自动化助手(tat) 版本：2020-10-28
 
+### 第 19 次发布
+
+发布时间：2023-08-24 01:26:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateRegisterCode](https://cloud.tencent.com/document/api/1340/96928)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRegisterCodes](https://cloud.tencent.com/document/api/1340/96927)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteRegisterInstance](https://cloud.tencent.com/document/api/1340/96926)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRegisterCodes](https://cloud.tencent.com/document/api/1340/96925)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRegisterInstances](https://cloud.tencent.com/document/api/1340/96924)](https://cloud.tencent.com/document/api/#/#)
+* [[DisableRegisterCodes](https://cloud.tencent.com/document/api/1340/96923)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyRegisterInstance](https://cloud.tencent.com/document/api/1340/96922)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[DefaultParameterConf](https://cloud.tencent.com/document/api/1340/52687#DefaultParameterConf)](https://cloud.tencent.com/document/api/1340/52687#[DefaultParameterConf](https://cloud.tencent.com/document/api/1340/52687#DefaultParameterConf))
+* [[RegisterCodeInfo](https://cloud.tencent.com/document/api/1340/52687#RegisterCodeInfo)](https://cloud.tencent.com/document/api/1340/52687#[RegisterCodeInfo](https://cloud.tencent.com/document/api/1340/52687#RegisterCodeInfo))
+* [[RegisterInstanceInfo](https://cloud.tencent.com/document/api/1340/52687#RegisterInstanceInfo)](https://cloud.tencent.com/document/api/1340/52687#[RegisterInstanceInfo](https://cloud.tencent.com/document/api/1340/52687#RegisterInstanceInfo))
+
+修改数据结构：
+
+* [Command](https://cloud.tencent.com/document/api/1340/52687#Command)
+
+	* 新增成员：DefaultParameterConfs
+
+
 ### 第 18 次发布
 
 发布时间：2023-02-20 01:49:40
@@ -100689,6 +100651,21 @@
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
+### 第 74 次发布
+
+发布时间：2023-08-24 01:28:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEnvironment](https://cloud.tencent.com/document/api/1179/46081)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+
 ### 第 73 次发布
 
 发布时间：2023-08-22 01:20:21
@@ -108173,7 +108150,7 @@
 
 新增数据结构：
 
-* [[SSHConfig](https://cloud.tencent.com/document/api/851/75051#SSHConfig)](https://cloud.tencent.com/document/api/851/75051#[SSHConfig](https://cloud.tencent.com/document/api/851/75051#SSHConfig))
+* [SSHConfig](https://cloud.tencent.com/document/api/851/75051#SSHConfig)
 
 修改数据结构：
 
@@ -127215,6 +127192,55 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 44 次发布
+
+发布时间：2023-08-24 01:31:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[AddSpartaProtectionAuto](https://cloud.tencent.com/document/api/627/96951)](https://cloud.tencent.com/document/api/#/#)
+* [[AddSpartaProtectionsAuto](https://cloud.tencent.com/document/api/627/96932)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteHost](https://cloud.tencent.com/document/api/627/96950)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteSpartaProtection](https://cloud.tencent.com/document/api/627/96949)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeCiphersDetail](https://cloud.tencent.com/document/api/627/96948)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDomainCountInfo](https://cloud.tencent.com/document/api/627/96947)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDomainDetailsClb](https://cloud.tencent.com/document/api/627/96946)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeFindDomainList](https://cloud.tencent.com/document/api/627/96945)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeHost](https://cloud.tencent.com/document/api/627/96944)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeHostLimit](https://cloud.tencent.com/document/api/627/96943)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeHosts](https://cloud.tencent.com/document/api/627/96942)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTlsVersion](https://cloud.tencent.com/document/api/627/96941)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeUserDomainInfo](https://cloud.tencent.com/document/api/627/96940)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeWafInfo](https://cloud.tencent.com/document/api/627/96939)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDomainIpv6Status](https://cloud.tencent.com/document/api/627/96938)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyDomainsCLSStatus](https://cloud.tencent.com/document/api/627/96937)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyHost](https://cloud.tencent.com/document/api/627/96936)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyHostFlowMode](https://cloud.tencent.com/document/api/627/96935)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyHostMode](https://cloud.tencent.com/document/api/627/96934)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyHostStatus](https://cloud.tencent.com/document/api/627/96933)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyProtectionStatus](https://cloud.tencent.com/document/api/627/96931)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifySpartaProtectionMode](https://cloud.tencent.com/document/api/627/96930)](https://cloud.tencent.com/document/api/#/#)
+* [[RefreshAccessCheckResult](https://cloud.tencent.com/document/api/627/96929)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ClbDomainsInfo](https://cloud.tencent.com/document/api/627/53609#ClbDomainsInfo)](https://cloud.tencent.com/document/api/627/53609#[ClbDomainsInfo](https://cloud.tencent.com/document/api/627/53609#ClbDomainsInfo))
+* [[ClbHostResult](https://cloud.tencent.com/document/api/627/53609#ClbHostResult)](https://cloud.tencent.com/document/api/627/53609#[ClbHostResult](https://cloud.tencent.com/document/api/627/53609#ClbHostResult))
+* [[ClbHostsParams](https://cloud.tencent.com/document/api/627/53609#ClbHostsParams)](https://cloud.tencent.com/document/api/627/53609#[ClbHostsParams](https://cloud.tencent.com/document/api/627/53609#ClbHostsParams))
+* [[DomainURI](https://cloud.tencent.com/document/api/627/53609#DomainURI)](https://cloud.tencent.com/document/api/627/53609#[DomainURI](https://cloud.tencent.com/document/api/627/53609#DomainURI))
+* [[FailedInfo](https://cloud.tencent.com/document/api/627/53609#FailedInfo)](https://cloud.tencent.com/document/api/627/53609#[FailedInfo](https://cloud.tencent.com/document/api/627/53609#FailedInfo))
+* [[FindAllDomainDetail](https://cloud.tencent.com/document/api/627/53609#FindAllDomainDetail)](https://cloud.tencent.com/document/api/627/53609#[FindAllDomainDetail](https://cloud.tencent.com/document/api/627/53609#FindAllDomainDetail))
+* [[HostDel](https://cloud.tencent.com/document/api/627/53609#HostDel)](https://cloud.tencent.com/document/api/627/53609#[HostDel](https://cloud.tencent.com/document/api/627/53609#HostDel))
+* [[HostStatus](https://cloud.tencent.com/document/api/627/53609#HostStatus)](https://cloud.tencent.com/document/api/627/53609#[HostStatus](https://cloud.tencent.com/document/api/627/53609#HostStatus))
+* [[SearchItem](https://cloud.tencent.com/document/api/627/53609#SearchItem)](https://cloud.tencent.com/document/api/627/53609#[SearchItem](https://cloud.tencent.com/document/api/627/53609#SearchItem))
+* [[TLSCiphers](https://cloud.tencent.com/document/api/627/53609#TLSCiphers)](https://cloud.tencent.com/document/api/627/53609#[TLSCiphers](https://cloud.tencent.com/document/api/627/53609#TLSCiphers))
+* [[TLSVersion](https://cloud.tencent.com/document/api/627/53609#TLSVersion)](https://cloud.tencent.com/document/api/627/53609#[TLSVersion](https://cloud.tencent.com/document/api/627/53609#TLSVersion))
+* [[UserDomainInfo](https://cloud.tencent.com/document/api/627/53609#UserDomainInfo)](https://cloud.tencent.com/document/api/627/53609#[UserDomainInfo](https://cloud.tencent.com/document/api/627/53609#UserDomainInfo))
 
 ### 第 43 次发布
 

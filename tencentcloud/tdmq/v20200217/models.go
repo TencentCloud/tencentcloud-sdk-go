@@ -1184,11 +1184,11 @@ type CreateEnvironmentRequestParams struct {
 	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 
-	// 说明，128个字符以内。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
-
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 说明，128个字符以内。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 消息保留策略
 	RetentionPolicy *RetentionPolicy `json:"RetentionPolicy,omitempty" name:"RetentionPolicy"`
@@ -1206,11 +1206,11 @@ type CreateEnvironmentRequest struct {
 	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 
-	// 说明，128个字符以内。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
-
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 说明，128个字符以内。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 消息保留策略
 	RetentionPolicy *RetentionPolicy `json:"RetentionPolicy,omitempty" name:"RetentionPolicy"`
@@ -1233,8 +1233,8 @@ func (r *CreateEnvironmentRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EnvironmentId")
 	delete(f, "MsgTTL")
-	delete(f, "Remark")
 	delete(f, "ClusterId")
+	delete(f, "Remark")
 	delete(f, "RetentionPolicy")
 	delete(f, "AutoSubscriptionCreation")
 	if len(f) > 0 {

@@ -119,6 +119,9 @@ const (
 	// 后台请求服务异常，请您联系客服解决。
 	FAILEDOPERATION_RESPONSEVALUEERROR = "FailedOperation.ResponseValueError"
 
+	// 查询日志结果集超出限制，请缩小查询范围。
+	FAILEDOPERATION_RESULTSETOVERLIMIT = "FailedOperation.ResultSetOverLimit"
+
 	// 操作发起失败，请稍后重试。如果操作持续不成功，请您联系客服进行处理。
 	FAILEDOPERATION_STARTFLOWERROR = "FailedOperation.StartFlowError"
 

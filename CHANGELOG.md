@@ -1,3 +1,154 @@
+# Release v1.0.730
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 105 次发布
+
+发布时间：2023-08-24 01:18:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSeal](https://cloud.tencent.com/document/api/1323/94136)
+
+	* 新增入参：SealStyle, SealSize
+
+
+
+
+## 游戏多媒体引擎(gme) 版本：2018-07-11
+
+### 第 35 次发布
+
+发布时间：2023-08-24 01:19:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateScanUser](https://cloud.tencent.com/document/api/607/71481)
+
+	* 新增入参：UserIdString, ExpirationTime
+
+* [DeleteScanUser](https://cloud.tencent.com/document/api/607/71480)
+
+	* 新增入参：UserIdString
+
+
+
+
+## 自动化助手(tat) 版本：2020-10-28
+
+### 第 19 次发布
+
+发布时间：2023-08-24 01:26:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateRegisterCode](https://cloud.tencent.com/document/api/1340/96928)
+* [DeleteRegisterCodes](https://cloud.tencent.com/document/api/1340/96927)
+* [DeleteRegisterInstance](https://cloud.tencent.com/document/api/1340/96926)
+* [DescribeRegisterCodes](https://cloud.tencent.com/document/api/1340/96925)
+* [DescribeRegisterInstances](https://cloud.tencent.com/document/api/1340/96924)
+* [DisableRegisterCodes](https://cloud.tencent.com/document/api/1340/96923)
+* [ModifyRegisterInstance](https://cloud.tencent.com/document/api/1340/96922)
+
+新增数据结构：
+
+* [DefaultParameterConf](https://cloud.tencent.com/document/api/1340/52687#DefaultParameterConf)
+* [RegisterCodeInfo](https://cloud.tencent.com/document/api/1340/52687#RegisterCodeInfo)
+* [RegisterInstanceInfo](https://cloud.tencent.com/document/api/1340/52687#RegisterInstanceInfo)
+
+修改数据结构：
+
+* [Command](https://cloud.tencent.com/document/api/1340/52687#Command)
+
+	* 新增成员：DefaultParameterConfs
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 74 次发布
+
+发布时间：2023-08-24 01:28:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEnvironment](https://cloud.tencent.com/document/api/1179/46081)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 44 次发布
+
+发布时间：2023-08-24 01:31:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddSpartaProtectionAuto](https://cloud.tencent.com/document/api/627/96951)
+* [AddSpartaProtectionsAuto](https://cloud.tencent.com/document/api/627/96932)
+* [DeleteHost](https://cloud.tencent.com/document/api/627/96950)
+* [DeleteSpartaProtection](https://cloud.tencent.com/document/api/627/96949)
+* [DescribeCiphersDetail](https://cloud.tencent.com/document/api/627/96948)
+* [DescribeDomainCountInfo](https://cloud.tencent.com/document/api/627/96947)
+* [DescribeDomainDetailsClb](https://cloud.tencent.com/document/api/627/96946)
+* [DescribeFindDomainList](https://cloud.tencent.com/document/api/627/96945)
+* [DescribeHost](https://cloud.tencent.com/document/api/627/96944)
+* [DescribeHostLimit](https://cloud.tencent.com/document/api/627/96943)
+* [DescribeHosts](https://cloud.tencent.com/document/api/627/96942)
+* [DescribeTlsVersion](https://cloud.tencent.com/document/api/627/96941)
+* [DescribeUserDomainInfo](https://cloud.tencent.com/document/api/627/96940)
+* [DescribeWafInfo](https://cloud.tencent.com/document/api/627/96939)
+* [ModifyDomainIpv6Status](https://cloud.tencent.com/document/api/627/96938)
+* [ModifyDomainsCLSStatus](https://cloud.tencent.com/document/api/627/96937)
+* [ModifyHost](https://cloud.tencent.com/document/api/627/96936)
+* [ModifyHostFlowMode](https://cloud.tencent.com/document/api/627/96935)
+* [ModifyHostMode](https://cloud.tencent.com/document/api/627/96934)
+* [ModifyHostStatus](https://cloud.tencent.com/document/api/627/96933)
+* [ModifyProtectionStatus](https://cloud.tencent.com/document/api/627/96931)
+* [ModifySpartaProtectionMode](https://cloud.tencent.com/document/api/627/96930)
+* [RefreshAccessCheckResult](https://cloud.tencent.com/document/api/627/96929)
+
+新增数据结构：
+
+* [ClbDomainsInfo](https://cloud.tencent.com/document/api/627/53609#ClbDomainsInfo)
+* [ClbHostResult](https://cloud.tencent.com/document/api/627/53609#ClbHostResult)
+* [ClbHostsParams](https://cloud.tencent.com/document/api/627/53609#ClbHostsParams)
+* [DomainURI](https://cloud.tencent.com/document/api/627/53609#DomainURI)
+* [FailedInfo](https://cloud.tencent.com/document/api/627/53609#FailedInfo)
+* [FindAllDomainDetail](https://cloud.tencent.com/document/api/627/53609#FindAllDomainDetail)
+* [HostDel](https://cloud.tencent.com/document/api/627/53609#HostDel)
+* [HostStatus](https://cloud.tencent.com/document/api/627/53609#HostStatus)
+* [SearchItem](https://cloud.tencent.com/document/api/627/53609#SearchItem)
+* [TLSCiphers](https://cloud.tencent.com/document/api/627/53609#TLSCiphers)
+* [TLSVersion](https://cloud.tencent.com/document/api/627/53609#TLSVersion)
+* [UserDomainInfo](https://cloud.tencent.com/document/api/627/53609#UserDomainInfo)
+
+
+
 # Release v1.0.729
 
 ## 应用云渲染(car) 版本：2022-01-10

@@ -305,6 +305,60 @@ func (c *Client) CreateInvokerWithContext(ctx context.Context, request *CreateIn
     return
 }
 
+func NewCreateRegisterCodeRequest() (request *CreateRegisterCodeRequest) {
+    request = &CreateRegisterCodeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tat", APIVersion, "CreateRegisterCode")
+    
+    
+    return
+}
+
+func NewCreateRegisterCodeResponse() (response *CreateRegisterCodeResponse) {
+    response = &CreateRegisterCodeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRegisterCode
+// 接口用于创建注册码。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) CreateRegisterCode(request *CreateRegisterCodeRequest) (response *CreateRegisterCodeResponse, err error) {
+    return c.CreateRegisterCodeWithContext(context.Background(), request)
+}
+
+// CreateRegisterCode
+// 接口用于创建注册码。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) CreateRegisterCodeWithContext(ctx context.Context, request *CreateRegisterCodeRequest) (response *CreateRegisterCodeResponse, err error) {
+    if request == nil {
+        request = NewCreateRegisterCodeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRegisterCode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRegisterCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCommandRequest() (request *DeleteCommandRequest) {
     request = &DeleteCommandRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -423,6 +477,118 @@ func (c *Client) DeleteInvokerWithContext(ctx context.Context, request *DeleteIn
     request.SetContext(ctx)
     
     response = NewDeleteInvokerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRegisterCodesRequest() (request *DeleteRegisterCodesRequest) {
+    request = &DeleteRegisterCodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tat", APIVersion, "DeleteRegisterCodes")
+    
+    
+    return
+}
+
+func NewDeleteRegisterCodesResponse() (response *DeleteRegisterCodesResponse) {
+    response = &DeleteRegisterCodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRegisterCodes
+// 此接口用于批量删除注册码。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDREGISTERCODEID = "InvalidParameterValue.InvalidRegisterCodeId"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYDUPLICATED = "InvalidParameterValue.ParameterKeyDuplicated"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_REGISTERCODESNOTFOUNDCODE = "ResourceNotFound.RegisterCodesNotFoundCode"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) DeleteRegisterCodes(request *DeleteRegisterCodesRequest) (response *DeleteRegisterCodesResponse, err error) {
+    return c.DeleteRegisterCodesWithContext(context.Background(), request)
+}
+
+// DeleteRegisterCodes
+// 此接口用于批量删除注册码。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDREGISTERCODEID = "InvalidParameterValue.InvalidRegisterCodeId"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYDUPLICATED = "InvalidParameterValue.ParameterKeyDuplicated"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_REGISTERCODESNOTFOUNDCODE = "ResourceNotFound.RegisterCodesNotFoundCode"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) DeleteRegisterCodesWithContext(ctx context.Context, request *DeleteRegisterCodesRequest) (response *DeleteRegisterCodesResponse, err error) {
+    if request == nil {
+        request = NewDeleteRegisterCodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRegisterCodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRegisterCodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRegisterInstanceRequest() (request *DeleteRegisterInstanceRequest) {
+    request = &DeleteRegisterInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tat", APIVersion, "DeleteRegisterInstance")
+    
+    
+    return
+}
+
+func NewDeleteRegisterInstanceResponse() (response *DeleteRegisterInstanceResponse) {
+    response = &DeleteRegisterInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRegisterInstance
+// 接口用于删除托管实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDREGISTERINSTANCEID = "InvalidParameterValue.InvalidRegisterInstanceId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) DeleteRegisterInstance(request *DeleteRegisterInstanceRequest) (response *DeleteRegisterInstanceResponse, err error) {
+    return c.DeleteRegisterInstanceWithContext(context.Background(), request)
+}
+
+// DeleteRegisterInstance
+// 接口用于删除托管实例。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDREGISTERINSTANCEID = "InvalidParameterValue.InvalidRegisterInstanceId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) DeleteRegisterInstanceWithContext(ctx context.Context, request *DeleteRegisterInstanceRequest) (response *DeleteRegisterInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteRegisterInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRegisterInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRegisterInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -875,6 +1041,116 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeRegisterCodesRequest() (request *DescribeRegisterCodesRequest) {
+    request = &DescribeRegisterCodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tat", APIVersion, "DescribeRegisterCodes")
+    
+    
+    return
+}
+
+func NewDescribeRegisterCodesResponse() (response *DescribeRegisterCodesResponse) {
+    response = &DescribeRegisterCodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRegisterCodes
+// 接口用于查询注册码信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDREGISTERCODEID = "InvalidParameterValue.InvalidRegisterCodeId"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) DescribeRegisterCodes(request *DescribeRegisterCodesRequest) (response *DescribeRegisterCodesResponse, err error) {
+    return c.DescribeRegisterCodesWithContext(context.Background(), request)
+}
+
+// DescribeRegisterCodes
+// 接口用于查询注册码信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDREGISTERCODEID = "InvalidParameterValue.InvalidRegisterCodeId"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) DescribeRegisterCodesWithContext(ctx context.Context, request *DescribeRegisterCodesRequest) (response *DescribeRegisterCodesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegisterCodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegisterCodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRegisterCodesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRegisterInstancesRequest() (request *DescribeRegisterInstancesRequest) {
+    request = &DescribeRegisterInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tat", APIVersion, "DescribeRegisterInstances")
+    
+    
+    return
+}
+
+func NewDescribeRegisterInstancesResponse() (response *DescribeRegisterInstancesResponse) {
+    response = &DescribeRegisterInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRegisterInstances
+// 接口用于查询被托管的实例信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDREGISTERINSTANCEID = "InvalidParameterValue.InvalidRegisterInstanceId"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) DescribeRegisterInstances(request *DescribeRegisterInstancesRequest) (response *DescribeRegisterInstancesResponse, err error) {
+    return c.DescribeRegisterInstancesWithContext(context.Background(), request)
+}
+
+// DescribeRegisterInstances
+// 接口用于查询被托管的实例信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDFILTER = "InvalidParameterValue.InvalidFilter"
+//  INVALIDPARAMETERVALUE_INVALIDREGISTERINSTANCEID = "InvalidParameterValue.InvalidRegisterInstanceId"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) DescribeRegisterInstancesWithContext(ctx context.Context, request *DescribeRegisterInstancesRequest) (response *DescribeRegisterInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeRegisterInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRegisterInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRegisterInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDisableInvokerRequest() (request *DisableInvokerRequest) {
     request = &DisableInvokerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -923,6 +1199,64 @@ func (c *Client) DisableInvokerWithContext(ctx context.Context, request *Disable
     request.SetContext(ctx)
     
     response = NewDisableInvokerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDisableRegisterCodesRequest() (request *DisableRegisterCodesRequest) {
+    request = &DisableRegisterCodesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tat", APIVersion, "DisableRegisterCodes")
+    
+    
+    return
+}
+
+func NewDisableRegisterCodesResponse() (response *DisableRegisterCodesResponse) {
+    response = &DisableRegisterCodesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DisableRegisterCodes
+// 此接口用于批量禁用注册码。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDREGISTERCODEID = "InvalidParameterValue.InvalidRegisterCodeId"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYDUPLICATED = "InvalidParameterValue.ParameterKeyDuplicated"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_REGISTERCODESNOTFOUNDCODE = "ResourceNotFound.RegisterCodesNotFoundCode"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) DisableRegisterCodes(request *DisableRegisterCodesRequest) (response *DisableRegisterCodesResponse, err error) {
+    return c.DisableRegisterCodesWithContext(context.Background(), request)
+}
+
+// DisableRegisterCodes
+// 此接口用于批量禁用注册码。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDREGISTERCODEID = "InvalidParameterValue.InvalidRegisterCodeId"
+//  INVALIDPARAMETERVALUE_PARAMETERKEYDUPLICATED = "InvalidParameterValue.ParameterKeyDuplicated"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_REGISTERCODESNOTFOUNDCODE = "ResourceNotFound.RegisterCodesNotFoundCode"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) DisableRegisterCodesWithContext(ctx context.Context, request *DisableRegisterCodesRequest) (response *DisableRegisterCodesResponse, err error) {
+    if request == nil {
+        request = NewDisableRegisterCodesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DisableRegisterCodes require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDisableRegisterCodesResponse()
     err = c.Send(request, response)
     return
 }
@@ -1275,6 +1609,60 @@ func (c *Client) ModifyInvokerWithContext(ctx context.Context, request *ModifyIn
     request.SetContext(ctx)
     
     response = NewModifyInvokerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRegisterInstanceRequest() (request *ModifyRegisterInstanceRequest) {
+    request = &ModifyRegisterInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tat", APIVersion, "ModifyRegisterInstance")
+    
+    
+    return
+}
+
+func NewModifyRegisterInstanceResponse() (response *ModifyRegisterInstanceResponse) {
+    response = &ModifyRegisterInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRegisterInstance
+// 接口用于修改托管实例信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDREGISTERINSTANCEID = "InvalidParameterValue.InvalidRegisterInstanceId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) ModifyRegisterInstance(request *ModifyRegisterInstanceRequest) (response *ModifyRegisterInstanceResponse, err error) {
+    return c.ModifyRegisterInstanceWithContext(context.Background(), request)
+}
+
+// ModifyRegisterInstance
+// 接口用于修改托管实例信息。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETERVALUE_INVALIDREGISTERINSTANCEID = "InvalidParameterValue.InvalidRegisterInstanceId"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
+//  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
+func (c *Client) ModifyRegisterInstanceWithContext(ctx context.Context, request *ModifyRegisterInstanceRequest) (response *ModifyRegisterInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyRegisterInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRegisterInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRegisterInstanceResponse()
     err = c.Send(request, response)
     return
 }

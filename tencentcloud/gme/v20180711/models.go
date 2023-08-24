@@ -448,7 +448,17 @@ type CreateScanUserRequestParams struct {
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 	// 需要新增送检的用户号。示例：1234
+	// (若UserId不填，则UserIdString必填；两者选其一；两者都填以UserIdString为准)
 	UserId *uint64 `json:"UserId,omitempty" name:"UserId"`
+
+	// 需要新增送检的用户号。示例："1234"
+	// (若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
+	UserIdString *string `json:"UserIdString,omitempty" name:"UserIdString"`
+
+	// 当前用户送检过期时间，单位：秒。
+	// 若参数不为0，则在过期时间之后，用户不会被送检。
+	// 若参数为0，则送检配置不会自动失效。 
+	ExpirationTime *uint64 `json:"ExpirationTime,omitempty" name:"ExpirationTime"`
 }
 
 type CreateScanUserRequest struct {
@@ -458,7 +468,17 @@ type CreateScanUserRequest struct {
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 	// 需要新增送检的用户号。示例：1234
+	// (若UserId不填，则UserIdString必填；两者选其一；两者都填以UserIdString为准)
 	UserId *uint64 `json:"UserId,omitempty" name:"UserId"`
+
+	// 需要新增送检的用户号。示例："1234"
+	// (若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
+	UserIdString *string `json:"UserIdString,omitempty" name:"UserIdString"`
+
+	// 当前用户送检过期时间，单位：秒。
+	// 若参数不为0，则在过期时间之后，用户不会被送检。
+	// 若参数为0，则送检配置不会自动失效。 
+	ExpirationTime *uint64 `json:"ExpirationTime,omitempty" name:"ExpirationTime"`
 }
 
 func (r *CreateScanUserRequest) ToJsonString() string {
@@ -475,6 +495,8 @@ func (r *CreateScanUserRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BizId")
 	delete(f, "UserId")
+	delete(f, "UserIdString")
+	delete(f, "ExpirationTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateScanUserRequest has unknown keys!", "")
 	}
@@ -682,7 +704,12 @@ type DeleteScanUserRequestParams struct {
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 	// 需要删除送检的用户号。示例：1234
+	// (若UserId不填，则UserIdString必填；两者选其一；两者都填以UserIdString为准)
 	UserId *uint64 `json:"UserId,omitempty" name:"UserId"`
+
+	// 需要删除送检的用户号。示例："1234"
+	// (若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
+	UserIdString *string `json:"UserIdString,omitempty" name:"UserIdString"`
 }
 
 type DeleteScanUserRequest struct {
@@ -692,7 +719,12 @@ type DeleteScanUserRequest struct {
 	BizId *uint64 `json:"BizId,omitempty" name:"BizId"`
 
 	// 需要删除送检的用户号。示例：1234
+	// (若UserId不填，则UserIdString必填；两者选其一；两者都填以UserIdString为准)
 	UserId *uint64 `json:"UserId,omitempty" name:"UserId"`
+
+	// 需要删除送检的用户号。示例："1234"
+	// (若UserIdString不填，则UserId必填；两者选其一；两者都填以UserIdString为准)
+	UserIdString *string `json:"UserIdString,omitempty" name:"UserIdString"`
 }
 
 func (r *DeleteScanUserRequest) ToJsonString() string {
@@ -709,6 +741,7 @@ func (r *DeleteScanUserRequest) FromJsonString(s string) error {
 	}
 	delete(f, "BizId")
 	delete(f, "UserId")
+	delete(f, "UserIdString")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteScanUserRequest has unknown keys!", "")
 	}

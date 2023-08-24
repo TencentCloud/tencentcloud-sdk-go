@@ -1066,20 +1066,20 @@ type ClusterParamModifyLog struct {
 
 // Predefined struct for user
 type CopyClusterPasswordComplexityRequestParams struct {
-	// 复制集群ID数组
+	// 复制集群ID数组，例如["cynosdbmysql-bzxxrmtq","cynosdbmysql-qwer"]
 	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 
-	// 集群id
+	// 集群id，例如"cynosdbmysql-bzxxrmtq"
 	SourceClusterId *string `json:"SourceClusterId,omitempty" name:"SourceClusterId"`
 }
 
 type CopyClusterPasswordComplexityRequest struct {
 	*tchttp.BaseRequest
 	
-	// 复制集群ID数组
+	// 复制集群ID数组，例如["cynosdbmysql-bzxxrmtq","cynosdbmysql-qwer"]
 	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
 
-	// 集群id
+	// 集群id，例如"cynosdbmysql-bzxxrmtq"
 	SourceClusterId *string `json:"SourceClusterId,omitempty" name:"SourceClusterId"`
 }
 
@@ -8092,7 +8092,7 @@ type IsolateInstanceRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 实例ID数组
+	// 实例ID数组，例如["cynosdbbmysql-ins-asd","cynosdbmysql-ins-zxc"]
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
 
 	// 该参数已废弃
@@ -8105,7 +8105,7 @@ type IsolateInstanceRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 实例ID数组
+	// 实例ID数组，例如["cynosdbbmysql-ins-asd","cynosdbmysql-ins-zxc"]
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" name:"InstanceIdList"`
 
 	// 该参数已废弃
@@ -9758,10 +9758,10 @@ func (r *ModifyProxyDescResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyProxyRwSplitRequestParams struct {
-	// 集群ID
+	// 集群ID，例如cynosdbmysql-asd123
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 数据库代理组ID
+	// 数据库代理组ID，例如cynosdbmysql-proxy-qwe123
 	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
 
 	// 一致性类型；“eventual"-最终一致性, "session"-会话一致性, "global"-全局一致性
@@ -9811,10 +9811,10 @@ type ModifyProxyRwSplitRequestParams struct {
 type ModifyProxyRwSplitRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群ID，例如cynosdbmysql-asd123
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
-	// 数据库代理组ID
+	// 数据库代理组ID，例如cynosdbmysql-proxy-qwe123
 	ProxyGroupId *string `json:"ProxyGroupId,omitempty" name:"ProxyGroupId"`
 
 	// 一致性类型；“eventual"-最终一致性, "session"-会话一致性, "global"-全局一致性
@@ -10200,13 +10200,13 @@ type NetAddr struct {
 }
 
 type NewAccount struct {
-	// 账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-16
+	// 账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-30
 	AccountName *string `json:"AccountName,omitempty" name:"AccountName"`
 
 	// 密码，密码长度范围为8到64个字符
 	AccountPassword *string `json:"AccountPassword,omitempty" name:"AccountPassword"`
 
-	// 主机
+	// 主机(%或ipv4地址)
 	Host *string `json:"Host,omitempty" name:"Host"`
 
 	// 描述
