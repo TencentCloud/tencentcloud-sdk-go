@@ -1,3 +1,548 @@
+# Release v1.0.731
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 66 次发布
+
+发布时间：2023-08-25 01:08:59
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* UpgradeLaunchConfiguration
+
+
+
+## 批量计算(batch) 版本：2017-03-12
+
+### 第 49 次发布
+
+发布时间：2023-08-25 01:09:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [CommandLine](https://cloud.tencent.com/document/api/599/15912#CommandLine)
+
+修改数据结构：
+
+* [Application](https://cloud.tencent.com/document/api/599/15912#Application)
+
+	* 新增成员：Commands
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 68 次发布
+
+发布时间：2023-08-25 01:21:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SearchCosRechargeInfo](https://cloud.tencent.com/document/api/614/97126)
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 68 次发布
+
+发布时间：2023-08-25 01:28:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Package](https://cloud.tencent.com/document/api/1003/48097#Package)
+
+	* <font color="#dd0000">**修改成员**：</font>AppId, PackageId, PackageName, PackageType, PackageRegion, Status, PackageTotalSpec, PackageUsedSpec, HasQuota, BindInstanceInfos, StartTime, ExpireTime
+
+
+
+
+## 数据安全中心(dsgc) 版本：2019-07-23
+
+### 第 2 次发布
+
+发布时间：2023-08-25 01:34:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AuthorizeDSPAMetaResources](https://cloud.tencent.com/document/api/1087/97183)
+* [BindDSPAResourceCosBuckets](https://cloud.tencent.com/document/api/1087/97182)
+* [BindDSPAResourceDatabases](https://cloud.tencent.com/document/api/1087/97181)
+* [CopyDSPATemplate](https://cloud.tencent.com/document/api/1087/97260)
+* [CreateAssetSortingReportRetryTask](https://cloud.tencent.com/document/api/1087/97141)
+* [CreateAssetSortingReportTask](https://cloud.tencent.com/document/api/1087/97140)
+* [CreateClassificationRule](https://cloud.tencent.com/document/api/1087/97278)
+* [CreateDSPAAssessmentRiskLevel](https://cloud.tencent.com/document/api/1087/97162)
+* [CreateDSPAAssessmentRiskTemplate](https://cloud.tencent.com/document/api/1087/97161)
+* [CreateDSPAAssessmentTask](https://cloud.tencent.com/document/api/1087/97259)
+* [CreateDSPACOSDiscoveryTask](https://cloud.tencent.com/document/api/1087/97258)
+* [CreateDSPACategory](https://cloud.tencent.com/document/api/1087/97257)
+* [CreateDSPACategoryRelation](https://cloud.tencent.com/document/api/1087/97256)
+* [CreateDSPAComplianceGroup](https://cloud.tencent.com/document/api/1087/97255)
+* [CreateDSPAComplianceRules](https://cloud.tencent.com/document/api/1087/97254)
+* [CreateDSPACosMetaResources](https://cloud.tencent.com/document/api/1087/97180)
+* [CreateDSPADiscoveryRule](https://cloud.tencent.com/document/api/1087/97253)
+* [CreateDSPADiscoveryTask](https://cloud.tencent.com/document/api/1087/97252)
+* [CreateDSPALevelGroup](https://cloud.tencent.com/document/api/1087/97251)
+* [CreateDSPAMetaResources](https://cloud.tencent.com/document/api/1087/97179)
+* [CreateDSPASelfBuildMetaResource](https://cloud.tencent.com/document/api/1087/97178)
+* [CreateIdentifyRuleAnotherName](https://cloud.tencent.com/document/api/1087/97250)
+* [CreateNewClassification](https://cloud.tencent.com/document/api/1087/97277)
+* [CreateOrCopyStandard](https://cloud.tencent.com/document/api/1087/97276)
+* [DecribeSuggestRiskLevelMatrix](https://cloud.tencent.com/document/api/1087/97160)
+* [DeleteCosMetaResource](https://cloud.tencent.com/document/api/1087/97177)
+* [DeleteDSPAAssessmentTask](https://cloud.tencent.com/document/api/1087/97249)
+* [DeleteDSPACOSDiscoveryTask](https://cloud.tencent.com/document/api/1087/97248)
+* [DeleteDSPACOSDiscoveryTaskResult](https://cloud.tencent.com/document/api/1087/97247)
+* [DeleteDSPADiscoveryTask](https://cloud.tencent.com/document/api/1087/97246)
+* [DeleteDSPADiscoveryTaskResult](https://cloud.tencent.com/document/api/1087/97245)
+* [DeleteDSPAMetaResource](https://cloud.tencent.com/document/api/1087/97176)
+* [DescribeAssetDetailDataExportResult](https://cloud.tencent.com/document/api/1087/97244)
+* [DescribeAssetOverview](https://cloud.tencent.com/document/api/1087/97139)
+* [DescribeBindDBList](https://cloud.tencent.com/document/api/1087/97138)
+* [DescribeCOSAssetSensitiveDistribution](https://cloud.tencent.com/document/api/1087/97137)
+* [DescribeClassificationInfo](https://cloud.tencent.com/document/api/1087/97275)
+* [DescribeClassificationRuleCount](https://cloud.tencent.com/document/api/1087/97274)
+* [DescribeDSPAAssessmentHighRiskTop10Overview](https://cloud.tencent.com/document/api/1087/97159)
+* [DescribeDSPAAssessmentLatestRiskDetailInfo](https://cloud.tencent.com/document/api/1087/97158)
+* [DescribeDSPAAssessmentLatestRiskList](https://cloud.tencent.com/document/api/1087/97157)
+* [DescribeDSPAAssessmentNewDiscoveredRiskOverview](https://cloud.tencent.com/document/api/1087/97156)
+* [DescribeDSPAAssessmentPendingRiskOverview](https://cloud.tencent.com/document/api/1087/97155)
+* [DescribeDSPAAssessmentProcessingRiskOverview](https://cloud.tencent.com/document/api/1087/97154)
+* [DescribeDSPAAssessmentRiskAmountOverview](https://cloud.tencent.com/document/api/1087/97153)
+* [DescribeDSPAAssessmentRiskDatasourceTop5](https://cloud.tencent.com/document/api/1087/97243)
+* [DescribeDSPAAssessmentRiskDealedOverview](https://cloud.tencent.com/document/api/1087/97242)
+* [DescribeDSPAAssessmentRiskDealedTrend](https://cloud.tencent.com/document/api/1087/97241)
+* [DescribeDSPAAssessmentRiskDistributionOverview](https://cloud.tencent.com/document/api/1087/97152)
+* [DescribeDSPAAssessmentRiskItemTop5](https://cloud.tencent.com/document/api/1087/97240)
+* [DescribeDSPAAssessmentRiskLevelDetail](https://cloud.tencent.com/document/api/1087/97151)
+* [DescribeDSPAAssessmentRiskLevelList](https://cloud.tencent.com/document/api/1087/97150)
+* [DescribeDSPAAssessmentRiskLevelTrend](https://cloud.tencent.com/document/api/1087/97239)
+* [DescribeDSPAAssessmentRiskOverview](https://cloud.tencent.com/document/api/1087/97238)
+* [DescribeDSPAAssessmentRiskProcessHistory](https://cloud.tencent.com/document/api/1087/97237)
+* [DescribeDSPAAssessmentRiskTemplateDetail](https://cloud.tencent.com/document/api/1087/97149)
+* [DescribeDSPAAssessmentRiskTemplateVulnerableList](https://cloud.tencent.com/document/api/1087/97148)
+* [DescribeDSPAAssessmentRisks](https://cloud.tencent.com/document/api/1087/97236)
+* [DescribeDSPAAssessmentTasks](https://cloud.tencent.com/document/api/1087/97235)
+* [DescribeDSPAAssessmentTemplateControlItems](https://cloud.tencent.com/document/api/1087/97234)
+* [DescribeDSPAAssessmentTemplates](https://cloud.tencent.com/document/api/1087/97233)
+* [DescribeDSPACOSDataAssetBuckets](https://cloud.tencent.com/document/api/1087/97232)
+* [DescribeDSPACOSDataAssetByComplianceId](https://cloud.tencent.com/document/api/1087/97231)
+* [DescribeDSPACOSDataAssetDetail](https://cloud.tencent.com/document/api/1087/97230)
+* [DescribeDSPACOSDiscoveryTaskDetail](https://cloud.tencent.com/document/api/1087/97229)
+* [DescribeDSPACOSDiscoveryTaskFiles](https://cloud.tencent.com/document/api/1087/97228)
+* [DescribeDSPACOSDiscoveryTaskResult](https://cloud.tencent.com/document/api/1087/97227)
+* [DescribeDSPACOSDiscoveryTasks](https://cloud.tencent.com/document/api/1087/97226)
+* [DescribeDSPACOSTaskResultDetail](https://cloud.tencent.com/document/api/1087/97225)
+* [DescribeDSPACategories](https://cloud.tencent.com/document/api/1087/97224)
+* [DescribeDSPACategoryRuleStatistic](https://cloud.tencent.com/document/api/1087/97223)
+* [DescribeDSPACategoryRules](https://cloud.tencent.com/document/api/1087/97222)
+* [DescribeDSPACategoryTree](https://cloud.tencent.com/document/api/1087/97221)
+* [DescribeDSPACategoryTreeWithRules](https://cloud.tencent.com/document/api/1087/97220)
+* [DescribeDSPAComplianceGroupDetail](https://cloud.tencent.com/document/api/1087/97219)
+* [DescribeDSPAComplianceGroups](https://cloud.tencent.com/document/api/1087/97218)
+* [DescribeDSPAComplianceUpdateNotification](https://cloud.tencent.com/document/api/1087/97217)
+* [DescribeDSPADataSourceDbInfo](https://cloud.tencent.com/document/api/1087/97216)
+* [DescribeDSPADiscoveryRules](https://cloud.tencent.com/document/api/1087/97215)
+* [DescribeDSPADiscoveryServiceStatus](https://cloud.tencent.com/document/api/1087/97214)
+* [DescribeDSPADiscoveryTaskDetail](https://cloud.tencent.com/document/api/1087/97213)
+* [DescribeDSPADiscoveryTaskResult](https://cloud.tencent.com/document/api/1087/97212)
+* [DescribeDSPADiscoveryTaskResultDetail](https://cloud.tencent.com/document/api/1087/97211)
+* [DescribeDSPADiscoveryTaskTables](https://cloud.tencent.com/document/api/1087/97210)
+* [DescribeDSPAESDataAssetByComplianceId](https://cloud.tencent.com/document/api/1087/97144)
+* [DescribeDSPAESDataAssetDetail](https://cloud.tencent.com/document/api/1087/97143)
+* [DescribeDSPAESDataSample](https://cloud.tencent.com/document/api/1087/97209)
+* [DescribeDSPAESDiscoveryTaskResultDetail](https://cloud.tencent.com/document/api/1087/97208)
+* [DescribeDSPALevelDetail](https://cloud.tencent.com/document/api/1087/97207)
+* [DescribeDSPALevelGroups](https://cloud.tencent.com/document/api/1087/97206)
+* [DescribeDSPARDBDataAssetByComplianceId](https://cloud.tencent.com/document/api/1087/97205)
+* [DescribeDSPARDBDataAssetDetail](https://cloud.tencent.com/document/api/1087/97204)
+* [DescribeDSPASupportedMetas](https://cloud.tencent.com/document/api/1087/97175)
+* [DescribeDSPATaskResultDataSample](https://cloud.tencent.com/document/api/1087/97203)
+* [DescribeESAssetSensitiveDistribution](https://cloud.tencent.com/document/api/1087/97136)
+* [DescribeExportTaskResult](https://cloud.tencent.com/document/api/1087/97128)
+* [DescribeLeafClassification](https://cloud.tencent.com/document/api/1087/97273)
+* [DescribeMongoAssetSensitiveDistribution](https://cloud.tencent.com/document/api/1087/97135)
+* [DescribeRDBAssetSensitiveDistribution](https://cloud.tencent.com/document/api/1087/97134)
+* [DescribeReportTaskDownloadUrl](https://cloud.tencent.com/document/api/1087/97133)
+* [DescribeReportTasks](https://cloud.tencent.com/document/api/1087/97132)
+* [DescribeRuleDetail](https://cloud.tencent.com/document/api/1087/97272)
+* [DescribeRuleList](https://cloud.tencent.com/document/api/1087/97271)
+* [DescribeSensitiveCOSDataDistribution](https://cloud.tencent.com/document/api/1087/97131)
+* [DescribeSensitiveRDBDataDistribution](https://cloud.tencent.com/document/api/1087/97130)
+* [DisableDSPAMetaResourceAuth](https://cloud.tencent.com/document/api/1087/97174)
+* [EnableDSPADiscoveryRule](https://cloud.tencent.com/document/api/1087/97202)
+* [EnableTrialVersion](https://cloud.tencent.com/document/api/1087/97173)
+* [ExportAssetDetailData](https://cloud.tencent.com/document/api/1087/97201)
+* [GetResourceConnectionStatus](https://cloud.tencent.com/document/api/1087/97172)
+* [GetTrialVersion](https://cloud.tencent.com/document/api/1087/97171)
+* [GetUserQuotaInfo](https://cloud.tencent.com/document/api/1087/97170)
+* [ListDSPAClusters](https://cloud.tencent.com/document/api/1087/97169)
+* [ListDSPACosMetaResources](https://cloud.tencent.com/document/api/1087/97168)
+* [ListDSPAMetaResources](https://cloud.tencent.com/document/api/1087/97167)
+* [ModifyClassificationRule](https://cloud.tencent.com/document/api/1087/97270)
+* [ModifyClassificationRuleState](https://cloud.tencent.com/document/api/1087/97269)
+* [ModifyDSPAAssessmentRisk](https://cloud.tencent.com/document/api/1087/97200)
+* [ModifyDSPAAssessmentRiskLatest](https://cloud.tencent.com/document/api/1087/97199)
+* [ModifyDSPAAssessmentRiskLevel](https://cloud.tencent.com/document/api/1087/97147)
+* [ModifyDSPAAssessmentRiskTemplate](https://cloud.tencent.com/document/api/1087/97146)
+* [ModifyDSPACOSDiscoveryTask](https://cloud.tencent.com/document/api/1087/97198)
+* [ModifyDSPACOSTaskResult](https://cloud.tencent.com/document/api/1087/97197)
+* [ModifyDSPACategory](https://cloud.tencent.com/document/api/1087/97196)
+* [ModifyDSPACategoryRelation](https://cloud.tencent.com/document/api/1087/97195)
+* [ModifyDSPAClusterInfo](https://cloud.tencent.com/document/api/1087/97166)
+* [ModifyDSPAComplianceGroup](https://cloud.tencent.com/document/api/1087/97194)
+* [ModifyDSPADiscoveryRule](https://cloud.tencent.com/document/api/1087/97193)
+* [ModifyDSPADiscoveryTask](https://cloud.tencent.com/document/api/1087/97192)
+* [ModifyDSPAESTaskResult](https://cloud.tencent.com/document/api/1087/97191)
+* [ModifyDSPATaskResult](https://cloud.tencent.com/document/api/1087/97190)
+* [ModifyLevelInfo](https://cloud.tencent.com/document/api/1087/97264)
+* [ModifyLevelName](https://cloud.tencent.com/document/api/1087/97263)
+* [ModifyLevelState](https://cloud.tencent.com/document/api/1087/97262)
+* [ModifyMergeClassification](https://cloud.tencent.com/document/api/1087/97268)
+* [ModifyNewClassification](https://cloud.tencent.com/document/api/1087/97267)
+* [ModifyStandardInfo](https://cloud.tencent.com/document/api/1087/97266)
+* [QueryDSPAMetaResourceDbList](https://cloud.tencent.com/document/api/1087/97165)
+* [QueryResourceDbBindStatus](https://cloud.tencent.com/document/api/1087/97164)
+* [RestartDSPAAssessmentTask](https://cloud.tencent.com/document/api/1087/97189)
+* [StartDSPADiscoveryTask](https://cloud.tencent.com/document/api/1087/97188)
+* [StopDSPADiscoveryTask](https://cloud.tencent.com/document/api/1087/97187)
+* [UpdateDSPASelfBuildResource](https://cloud.tencent.com/document/api/1087/97163)
+* [VerifyDSPACOSRule](https://cloud.tencent.com/document/api/1087/97186)
+* [VerifyDSPADiscoveryRule](https://cloud.tencent.com/document/api/1087/97185)
+
+新增数据结构：
+
+* [AKSKLeak](https://cloud.tencent.com/document/api/1087/96844#AKSKLeak)
+* [AccountRisk](https://cloud.tencent.com/document/api/1087/96844#AccountRisk)
+* [AssessmentControlItem](https://cloud.tencent.com/document/api/1087/96844#AssessmentControlItem)
+* [AssessmentRisk](https://cloud.tencent.com/document/api/1087/96844#AssessmentRisk)
+* [AssessmentRiskItem](https://cloud.tencent.com/document/api/1087/96844#AssessmentRiskItem)
+* [AssessmentTask](https://cloud.tencent.com/document/api/1087/96844#AssessmentTask)
+* [AssessmentTemplate](https://cloud.tencent.com/document/api/1087/96844#AssessmentTemplate)
+* [AssetCosDetail](https://cloud.tencent.com/document/api/1087/96844#AssetCosDetail)
+* [AssetDBDetail](https://cloud.tencent.com/document/api/1087/96844#AssetDBDetail)
+* [AssetList](https://cloud.tencent.com/document/api/1087/96844#AssetList)
+* [COSDataRule](https://cloud.tencent.com/document/api/1087/96844#COSDataRule)
+* [COSInstance](https://cloud.tencent.com/document/api/1087/96844#COSInstance)
+* [CategoryRule](https://cloud.tencent.com/document/api/1087/96844#CategoryRule)
+* [CategoryRuleStatistic](https://cloud.tencent.com/document/api/1087/96844#CategoryRuleStatistic)
+* [ComplianceGroupDetail](https://cloud.tencent.com/document/api/1087/96844#ComplianceGroupDetail)
+* [ComplianceGroupRuleIdInfo](https://cloud.tencent.com/document/api/1087/96844#ComplianceGroupRuleIdInfo)
+* [CosAsset](https://cloud.tencent.com/document/api/1087/96844#CosAsset)
+* [CosResourceItem](https://cloud.tencent.com/document/api/1087/96844#CosResourceItem)
+* [CosTaskResult](https://cloud.tencent.com/document/api/1087/96844#CosTaskResult)
+* [CreateComplianceRules](https://cloud.tencent.com/document/api/1087/96844#CreateComplianceRules)
+* [DBInstanceInfo](https://cloud.tencent.com/document/api/1087/96844#DBInstanceInfo)
+* [DBStatements](https://cloud.tencent.com/document/api/1087/96844#DBStatements)
+* [DSPACosMetaDataInfo](https://cloud.tencent.com/document/api/1087/96844#DSPACosMetaDataInfo)
+* [DSPADataSourceDbInfo](https://cloud.tencent.com/document/api/1087/96844#DSPADataSourceDbInfo)
+* [DSPAMetaType](https://cloud.tencent.com/document/api/1087/96844#DSPAMetaType)
+* [DSPATableInfo](https://cloud.tencent.com/document/api/1087/96844#DSPATableInfo)
+* [DataCategory](https://cloud.tencent.com/document/api/1087/96844#DataCategory)
+* [DataContent](https://cloud.tencent.com/document/api/1087/96844#DataContent)
+* [DataRule](https://cloud.tencent.com/document/api/1087/96844#DataRule)
+* [DataRules](https://cloud.tencent.com/document/api/1087/96844#DataRules)
+* [DataSourceInfo](https://cloud.tencent.com/document/api/1087/96844#DataSourceInfo)
+* [DatagovRuleExtendParameter](https://cloud.tencent.com/document/api/1087/96844#DatagovRuleExtendParameter)
+* [DbInfo](https://cloud.tencent.com/document/api/1087/96844#DbInfo)
+* [DbRelationStatusItem](https://cloud.tencent.com/document/api/1087/96844#DbRelationStatusItem)
+* [DbResourceItem](https://cloud.tencent.com/document/api/1087/96844#DbResourceItem)
+* [DbTaskResult](https://cloud.tencent.com/document/api/1087/96844#DbTaskResult)
+* [DiscoveryCondition](https://cloud.tencent.com/document/api/1087/96844#DiscoveryCondition)
+* [DspaAssessmentFilter](https://cloud.tencent.com/document/api/1087/96844#DspaAssessmentFilter)
+* [DspaCOSDataAssetCount](https://cloud.tencent.com/document/api/1087/96844#DspaCOSDataAssetCount)
+* [DspaCOSDataAssetDetail](https://cloud.tencent.com/document/api/1087/96844#DspaCOSDataAssetDetail)
+* [DspaCOSDiscoveryTask](https://cloud.tencent.com/document/api/1087/96844#DspaCOSDiscoveryTask)
+* [DspaCOSDiscoveryTaskDataSourceInfo](https://cloud.tencent.com/document/api/1087/96844#DspaCOSDiscoveryTaskDataSourceInfo)
+* [DspaCOSDiscoveryTaskDetail](https://cloud.tencent.com/document/api/1087/96844#DspaCOSDiscoveryTaskDetail)
+* [DspaCOSDiscoveryTaskResult](https://cloud.tencent.com/document/api/1087/96844#DspaCOSDiscoveryTaskResult)
+* [DspaDataCategoryDistributed](https://cloud.tencent.com/document/api/1087/96844#DspaDataCategoryDistributed)
+* [DspaDataSourceMngFilter](https://cloud.tencent.com/document/api/1087/96844#DspaDataSourceMngFilter)
+* [DspaDiscoveryCOSDataRule](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryCOSDataRule)
+* [DspaDiscoveryCOSRules](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryCOSRules)
+* [DspaDiscoveryCOSTaskResultDetail](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryCOSTaskResultDetail)
+* [DspaDiscoveryComplianceGroup](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryComplianceGroup)
+* [DspaDiscoveryComplianceGroupInfo](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryComplianceGroupInfo)
+* [DspaDiscoveryComplianceGroupRule](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryComplianceGroupRule)
+* [DspaDiscoveryComplianceGroupRuleInfo](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryComplianceGroupRuleInfo)
+* [DspaDiscoveryDataContent](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryDataContent)
+* [DspaDiscoveryDataRule](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryDataRule)
+* [DspaDiscoveryDataRules](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryDataRules)
+* [DspaDiscoveryLevelDetail](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryLevelDetail)
+* [DspaDiscoveryRDBRules](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryRDBRules)
+* [DspaDiscoveryRuleDetail](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryRuleDetail)
+* [DspaDiscoveryTaskCOSCondition](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryTaskCOSCondition)
+* [DspaDiscoveryTaskDataSource](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryTaskDataSource)
+* [DspaDiscoveryTaskDbResult](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryTaskDbResult)
+* [DspaDiscoveryTaskDetail](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryTaskDetail)
+* [DspaDiscoveryTaskResultDetail](https://cloud.tencent.com/document/api/1087/96844#DspaDiscoveryTaskResultDetail)
+* [DspaFieldResultDataSample](https://cloud.tencent.com/document/api/1087/96844#DspaFieldResultDataSample)
+* [DspaInstance](https://cloud.tencent.com/document/api/1087/96844#DspaInstance)
+* [DspaRDBDataAssetCount](https://cloud.tencent.com/document/api/1087/96844#DspaRDBDataAssetCount)
+* [DspaRDBDataAssetDetail](https://cloud.tencent.com/document/api/1087/96844#DspaRDBDataAssetDetail)
+* [DspaResourceAccount](https://cloud.tencent.com/document/api/1087/96844#DspaResourceAccount)
+* [DspaSafeGuard](https://cloud.tencent.com/document/api/1087/96844#DspaSafeGuard)
+* [DspaTaskResult](https://cloud.tencent.com/document/api/1087/96844#DspaTaskResult)
+* [DspaUserResourceMeta](https://cloud.tencent.com/document/api/1087/96844#DspaUserResourceMeta)
+* [ESAsset](https://cloud.tencent.com/document/api/1087/96844#ESAsset)
+* [ESAssetDBDetail](https://cloud.tencent.com/document/api/1087/96844#ESAssetDBDetail)
+* [ESDataAssetCountDto](https://cloud.tencent.com/document/api/1087/96844#ESDataAssetCountDto)
+* [ESDataAssetDetail](https://cloud.tencent.com/document/api/1087/96844#ESDataAssetDetail)
+* [ESInstance](https://cloud.tencent.com/document/api/1087/96844#ESInstance)
+* [ESTaskResultDetail](https://cloud.tencent.com/document/api/1087/96844#ESTaskResultDetail)
+* [ErrDescription](https://cloud.tencent.com/document/api/1087/96844#ErrDescription)
+* [Filter](https://cloud.tencent.com/document/api/1087/96844#Filter)
+* [HighRiskAssetsDetail](https://cloud.tencent.com/document/api/1087/96844#HighRiskAssetsDetail)
+* [ItemLevel](https://cloud.tencent.com/document/api/1087/96844#ItemLevel)
+* [LevelItem](https://cloud.tencent.com/document/api/1087/96844#LevelItem)
+* [MongoAsset](https://cloud.tencent.com/document/api/1087/96844#MongoAsset)
+* [MongoAssetDBDetail](https://cloud.tencent.com/document/api/1087/96844#MongoAssetDBDetail)
+* [NOSQLInstance](https://cloud.tencent.com/document/api/1087/96844#NOSQLInstance)
+* [Note](https://cloud.tencent.com/document/api/1087/96844#Note)
+* [PrivilegeRisk](https://cloud.tencent.com/document/api/1087/96844#PrivilegeRisk)
+* [ProcessHistory](https://cloud.tencent.com/document/api/1087/96844#ProcessHistory)
+* [RDBAsset](https://cloud.tencent.com/document/api/1087/96844#RDBAsset)
+* [RDBInstance](https://cloud.tencent.com/document/api/1087/96844#RDBInstance)
+* [ReportInfo](https://cloud.tencent.com/document/api/1087/96844#ReportInfo)
+* [RiskCountInfo](https://cloud.tencent.com/document/api/1087/96844#RiskCountInfo)
+* [RiskDealedTrendItem](https://cloud.tencent.com/document/api/1087/96844#RiskDealedTrendItem)
+* [RiskItem](https://cloud.tencent.com/document/api/1087/96844#RiskItem)
+* [RiskItemInfo](https://cloud.tencent.com/document/api/1087/96844#RiskItemInfo)
+* [RiskLevelMatrix](https://cloud.tencent.com/document/api/1087/96844#RiskLevelMatrix)
+* [RiskLevelRisk](https://cloud.tencent.com/document/api/1087/96844#RiskLevelRisk)
+* [RiskLevelTrendItem](https://cloud.tencent.com/document/api/1087/96844#RiskLevelTrendItem)
+* [RiskMatrixLevel](https://cloud.tencent.com/document/api/1087/96844#RiskMatrixLevel)
+* [RuleDistribution](https://cloud.tencent.com/document/api/1087/96844#RuleDistribution)
+* [ScanTaskCOSRules](https://cloud.tencent.com/document/api/1087/96844#ScanTaskCOSRules)
+* [ScanTaskComplianceInfo](https://cloud.tencent.com/document/api/1087/96844#ScanTaskComplianceInfo)
+* [ScanTaskRDBRules](https://cloud.tencent.com/document/api/1087/96844#ScanTaskRDBRules)
+* [ScanTaskResult](https://cloud.tencent.com/document/api/1087/96844#ScanTaskResult)
+* [SecurityProduct](https://cloud.tencent.com/document/api/1087/96844#SecurityProduct)
+* [SensitiveLevel](https://cloud.tencent.com/document/api/1087/96844#SensitiveLevel)
+* [SuggestRiskLevelMatrix](https://cloud.tencent.com/document/api/1087/96844#SuggestRiskLevelMatrix)
+* [SuggestRiskLevelMatrixItem](https://cloud.tencent.com/document/api/1087/96844#SuggestRiskLevelMatrixItem)
+* [TopAsset](https://cloud.tencent.com/document/api/1087/96844#TopAsset)
+* [TopAssetStat](https://cloud.tencent.com/document/api/1087/96844#TopAssetStat)
+
+
+
+## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 3 次发布
+
+发布时间：2023-08-25 01:50:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ListGatewayDevices](https://cloud.tencent.com/document/api/1344/97279)
+
+新增数据结构：
+
+* [GatewayDevice](https://cloud.tencent.com/document/api/1344/95952#GatewayDevice)
+* [ListGatewayDevicesData](https://cloud.tencent.com/document/api/1344/95952#ListGatewayDevicesData)
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 75 次发布
+
+发布时间：2023-08-25 02:13:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEnvironmentRole](https://cloud.tencent.com/document/api/1179/62402)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [CreateSubscription](https://cloud.tencent.com/document/api/1179/46075)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [CreateTopic](https://cloud.tencent.com/document/api/1179/46088)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [DeleteEnvironmentRoles](https://cloud.tencent.com/document/api/1179/62400)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [DeleteEnvironments](https://cloud.tencent.com/document/api/1179/46080)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [DeleteRoles](https://cloud.tencent.com/document/api/1179/62403)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [DeleteTopics](https://cloud.tencent.com/document/api/1179/46087)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [DescribeEnvironmentAttributes](https://cloud.tencent.com/document/api/1179/46079)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [DescribeEnvironments](https://cloud.tencent.com/document/api/1179/46078)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [DescribeRoles](https://cloud.tencent.com/document/api/1179/62399)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [DescribeSubscriptions](https://cloud.tencent.com/document/api/1179/46072)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [ModifyEnvironmentAttributes](https://cloud.tencent.com/document/api/1179/46077)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [ModifyEnvironmentRole](https://cloud.tencent.com/document/api/1179/62398)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [ModifyRole](https://cloud.tencent.com/document/api/1179/62397)
+
+	* 新增入参：EnvironmentRoleSets, UnbindAllEnvironment
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+* [ModifyTopic](https://cloud.tencent.com/document/api/1179/46085)
+
+	* <font color="#dd0000">**修改入参**：</font>ClusterId
+
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 40 次发布
+
+发布时间：2023-08-25 02:19:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeNativeGatewayServerGroups](https://cloud.tencent.com/document/api/1364/97280)
+
+新增数据结构：
+
+* [CloudNativeAPIGatewayStrategy](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayStrategy)
+* [CloudNativeAPIGatewayStrategyAutoScalerConfig](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayStrategyAutoScalerConfig)
+* [CloudNativeAPIGatewayStrategyAutoScalerConfigMetric](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayStrategyAutoScalerConfigMetric)
+* [CloudNativeAPIGatewayStrategyCronScalerConfig](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayStrategyCronScalerConfig)
+* [CloudNativeAPIGatewayStrategyCronScalerConfigParam](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayStrategyCronScalerConfigParam)
+* [NativeGatewayServerGroup](https://cloud.tencent.com/document/api/1364/54942#NativeGatewayServerGroup)
+* [NativeGatewayServerGroups](https://cloud.tencent.com/document/api/1364/54942#NativeGatewayServerGroups)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 162 次发布
+
+发布时间：2023-08-25 02:22:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [LiveRecordInfo](https://cloud.tencent.com/document/api/266/31773#LiveRecordInfo)
+* [WebPageRecordInfo](https://cloud.tencent.com/document/api/266/31773#WebPageRecordInfo)
+
+修改数据结构：
+
+* [MediaSourceData](https://cloud.tencent.com/document/api/266/31773#MediaSourceData)
+
+	* 新增成员：LiveRecordInfo, WebPageRecordInfo
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 45 次发布
+
+发布时间：2023-08-25 02:26:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyApiAnalyzeStatus](https://cloud.tencent.com/document/api/627/97282)
+* [ModifyBotStatus](https://cloud.tencent.com/document/api/627/97281)
+
+修改接口：
+
+* [DescribeAttackOverview](https://cloud.tencent.com/document/api/627/87744)
+
+	* 新增出参：ApiRiskEventCount
+
+
+新增数据结构：
+
+* [TargetEntity](https://cloud.tencent.com/document/api/627/53609#TargetEntity)
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 44 次发布
+
+发布时间：2023-08-25 02:27:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [IntegrationNodeSchema](https://cloud.tencent.com/document/api/1267/76336#IntegrationNodeSchema)
+
+	* 新增成员：Comment
+
+
+
+
 # Release v1.0.730
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11

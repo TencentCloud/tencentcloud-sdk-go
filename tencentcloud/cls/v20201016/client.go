@@ -5629,6 +5629,82 @@ func (c *Client) RetryShipperTaskWithContext(ctx context.Context, request *Retry
     return
 }
 
+func NewSearchCosRechargeInfoRequest() (request *SearchCosRechargeInfoRequest) {
+    request = &SearchCosRechargeInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "SearchCosRechargeInfo")
+    
+    
+    return
+}
+
+func NewSearchCosRechargeInfoResponse() (response *SearchCosRechargeInfoResponse) {
+    response = &SearchCosRechargeInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchCosRechargeInfo
+// 本接口用于预览cos导入信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BUCKETNOFILE = "FailedOperation.BucketNoFile"
+//  FAILEDOPERATION_DECOMPRESSFILE = "FailedOperation.DecompressFile"
+//  FAILEDOPERATION_DOWNLOADFILE = "FailedOperation.DownLoadFile"
+//  FAILEDOPERATION_GETLISTFILE = "FailedOperation.GetListFile"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) SearchCosRechargeInfo(request *SearchCosRechargeInfoRequest) (response *SearchCosRechargeInfoResponse, err error) {
+    return c.SearchCosRechargeInfoWithContext(context.Background(), request)
+}
+
+// SearchCosRechargeInfo
+// 本接口用于预览cos导入信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BUCKETNOFILE = "FailedOperation.BucketNoFile"
+//  FAILEDOPERATION_DECOMPRESSFILE = "FailedOperation.DecompressFile"
+//  FAILEDOPERATION_DOWNLOADFILE = "FailedOperation.DownLoadFile"
+//  FAILEDOPERATION_GETLISTFILE = "FailedOperation.GetListFile"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_DBDUPLICATION = "InvalidParameter.DbDuplication"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_ACLFAILED = "OperationDenied.ACLFailed"
+//  OPERATIONDENIED_ACCOUNTDESTROY = "OperationDenied.AccountDestroy"
+//  OPERATIONDENIED_ACCOUNTISOLATE = "OperationDenied.AccountIsolate"
+//  OPERATIONDENIED_ACCOUNTNOTEXISTS = "OperationDenied.AccountNotExists"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) SearchCosRechargeInfoWithContext(ctx context.Context, request *SearchCosRechargeInfoRequest) (response *SearchCosRechargeInfoResponse, err error) {
+    if request == nil {
+        request = NewSearchCosRechargeInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchCosRechargeInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchCosRechargeInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSearchLogRequest() (request *SearchLogRequest) {
     request = &SearchLogRequest{
         BaseRequest: &tchttp.BaseRequest{},

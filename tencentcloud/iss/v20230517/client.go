@@ -3003,6 +3003,60 @@ func (c *Client) ListDevicesWithContext(ctx context.Context, request *ListDevice
     return
 }
 
+func NewListGatewayDevicesRequest() (request *ListGatewayDevicesRequest) {
+    request = &ListGatewayDevicesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "ListGatewayDevices")
+    
+    
+    return
+}
+
+func NewListGatewayDevicesResponse() (response *ListGatewayDevicesResponse) {
+    response = &ListGatewayDevicesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListGatewayDevices
+// 用于查询网关下挂载的设备列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDGATEWAYID = "InvalidParameterValue.InvalidGatewayId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ListGatewayDevices(request *ListGatewayDevicesRequest) (response *ListGatewayDevicesResponse, err error) {
+    return c.ListGatewayDevicesWithContext(context.Background(), request)
+}
+
+// ListGatewayDevices
+// 用于查询网关下挂载的设备列表。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDGATEWAYID = "InvalidParameterValue.InvalidGatewayId"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ListGatewayDevicesWithContext(ctx context.Context, request *ListGatewayDevicesRequest) (response *ListGatewayDevicesResponse, err error) {
+    if request == nil {
+        request = NewListGatewayDevicesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListGatewayDevices require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListGatewayDevicesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListGatewaysRequest() (request *ListGatewaysRequest) {
     request = &ListGatewaysRequest{
         BaseRequest: &tchttp.BaseRequest{},

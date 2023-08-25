@@ -4028,6 +4028,10 @@ func NewUpgradeLaunchConfigurationResponse() (response *UpgradeLaunchConfigurati
 }
 
 // UpgradeLaunchConfiguration
+// 已有替代接口ModifyLaunchConfiguration。该接口存在覆盖参数风险，目前官网已隐藏
+//
+// 
+//
 // 本接口（UpgradeLaunchConfiguration）用于升级启动配置。
 //
 // 
@@ -4071,6 +4075,10 @@ func (c *Client) UpgradeLaunchConfiguration(request *UpgradeLaunchConfigurationR
 }
 
 // UpgradeLaunchConfiguration
+// 已有替代接口ModifyLaunchConfiguration。该接口存在覆盖参数风险，目前官网已隐藏
+//
+// 
+//
 // 本接口（UpgradeLaunchConfiguration）用于升级启动配置。
 //
 // 

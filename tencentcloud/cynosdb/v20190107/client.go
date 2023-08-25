@@ -826,6 +826,7 @@ func NewCreateAuditLogFileResponse() (response *CreateAuditLogFileResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = "OperationDenied.AuditPolicyNotExistError"
 func (c *Client) CreateAuditLogFile(request *CreateAuditLogFileRequest) (response *CreateAuditLogFileResponse, err error) {
     return c.CreateAuditLogFileWithContext(context.Background(), request)
 }
@@ -835,6 +836,7 @@ func (c *Client) CreateAuditLogFile(request *CreateAuditLogFileRequest) (respons
 //
 // 可能返回的错误码:
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
+//  OPERATIONDENIED_AUDITPOLICYNOTEXISTERROR = "OperationDenied.AuditPolicyNotExistError"
 func (c *Client) CreateAuditLogFileWithContext(ctx context.Context, request *CreateAuditLogFileRequest) (response *CreateAuditLogFileResponse, err error) {
     if request == nil {
         request = NewCreateAuditLogFileRequest()
@@ -1034,7 +1036,7 @@ func NewCreateClustersResponse() (response *CreateClustersResponse) {
 }
 
 // CreateClusters
-// 创建集群
+// 购买新集群
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"
@@ -1067,7 +1069,7 @@ func (c *Client) CreateClusters(request *CreateClustersRequest) (response *Creat
 }
 
 // CreateClusters
-// 创建集群
+// 购买新集群
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"
@@ -5896,7 +5898,7 @@ func NewModifyClusterStorageResponse() (response *ModifyClusterStorageResponse) 
 }
 
 // ModifyClusterStorage
-// 升级预付费存储
+// 调整包年包月存储容量
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5918,7 +5920,7 @@ func (c *Client) ModifyClusterStorage(request *ModifyClusterStorageRequest) (res
 }
 
 // ModifyClusterStorage
-// 升级预付费存储
+// 调整包年包月存储容量
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6568,7 +6570,7 @@ func NewOfflineClusterResponse() (response *OfflineClusterResponse) {
 }
 
 // OfflineCluster
-// 下线集群
+// 销毁集群
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -6585,7 +6587,7 @@ func (c *Client) OfflineCluster(request *OfflineClusterRequest) (response *Offli
 }
 
 // OfflineCluster
-// 下线集群
+// 销毁集群
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -6632,7 +6634,7 @@ func NewOfflineInstanceResponse() (response *OfflineInstanceResponse) {
 }
 
 // OfflineInstance
-// 下线实例
+// 销毁实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -6651,7 +6653,7 @@ func (c *Client) OfflineInstance(request *OfflineInstanceRequest) (response *Off
 }
 
 // OfflineInstance
-// 下线实例
+// 销毁实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -6752,7 +6754,7 @@ func NewOpenClusterPasswordComplexityResponse() (response *OpenClusterPasswordCo
 }
 
 // OpenClusterPasswordComplexity
-// 本接口（OpenClusterPasswordComplexity）用于开启集群密码复杂度
+// 本接口（OpenClusterPasswordComplexity）用于开启自定义密码复杂度功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -6769,7 +6771,7 @@ func (c *Client) OpenClusterPasswordComplexity(request *OpenClusterPasswordCompl
 }
 
 // OpenClusterPasswordComplexity
-// 本接口（OpenClusterPasswordComplexity）用于开启集群密码复杂度
+// 本接口（OpenClusterPasswordComplexity）用于开启自定义密码复杂度功能
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -8096,7 +8098,7 @@ func NewUpgradeClusterVersionResponse() (response *UpgradeClusterVersionResponse
 }
 
 // UpgradeClusterVersion
-// 更新集群Cynos内核版本
+// 更新内核小版本
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -8140,7 +8142,7 @@ func (c *Client) UpgradeClusterVersion(request *UpgradeClusterVersionRequest) (r
 }
 
 // UpgradeClusterVersion
-// 更新集群Cynos内核版本
+// 更新内核小版本
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -8214,7 +8216,7 @@ func NewUpgradeInstanceResponse() (response *UpgradeInstanceResponse) {
 }
 
 // UpgradeInstance
-// 升级实例
+// 实例变配
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"
@@ -8235,7 +8237,7 @@ func (c *Client) UpgradeInstance(request *UpgradeInstanceRequest) (response *Upg
 }
 
 // UpgradeInstance
-// 升级实例
+// 实例变配
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDER = "FailedOperation.CreateOrder"

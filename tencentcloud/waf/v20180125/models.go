@@ -2188,6 +2188,10 @@ type DescribeAttackOverviewResponseParams struct {
 	// api资产总数
 	ApiAssetsCount *uint64 `json:"ApiAssetsCount,omitempty" name:"ApiAssetsCount"`
 
+	// api风险事件数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApiRiskEventCount *uint64 `json:"ApiRiskEventCount,omitempty" name:"ApiRiskEventCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -2833,7 +2837,7 @@ func (r *DescribeDomainWhiteRulesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDomainsRequestParams struct {
-	// 数据偏移量，从1开始。
+	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 返回域名的数量
@@ -2846,7 +2850,7 @@ type DescribeDomainsRequestParams struct {
 type DescribeDomainsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据偏移量，从1开始。
+	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
 	// 返回域名的数量
@@ -5519,6 +5523,93 @@ func (r *ModifyAccessPeriodResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyApiAnalyzeStatusRequestParams struct {
+	// 开关状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 需要批量开启的实体列表
+	TargetList []*TargetEntity `json:"TargetList,omitempty" name:"TargetList"`
+}
+
+type ModifyApiAnalyzeStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开关状态
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 需要批量开启的实体列表
+	TargetList []*TargetEntity `json:"TargetList,omitempty" name:"TargetList"`
+}
+
+func (r *ModifyApiAnalyzeStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApiAnalyzeStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Status")
+	delete(f, "Domain")
+	delete(f, "InstanceId")
+	delete(f, "TargetList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyApiAnalyzeStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyApiAnalyzeStatusResponseParams struct {
+	// 已经开启的数量,如果返回值为3（大于支持的域名开启数量），则表示开启失败
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 不支持开启的域名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnSupportedList []*string `json:"UnSupportedList,omitempty" name:"UnSupportedList"`
+
+	// 开启/关闭失败的域名列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailDomainList []*string `json:"FailDomainList,omitempty" name:"FailDomainList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyApiAnalyzeStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyApiAnalyzeStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyApiAnalyzeStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyApiAnalyzeStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyAreaBanStatusRequestParams struct {
 	// 需要修改的域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -5576,6 +5667,99 @@ func (r *ModifyAreaBanStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAreaBanStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBotStatusRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 类别
+	Category *string `json:"Category,omitempty" name:"Category"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 实例id
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 是否是bot4.0版本
+	IsVersionFour *bool `json:"IsVersionFour,omitempty" name:"IsVersionFour"`
+
+	// 传入Bot版本号，场景化版本为"4.1.0"
+	BotVersion *string `json:"BotVersion,omitempty" name:"BotVersion"`
+}
+
+type ModifyBotStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 类别
+	Category *string `json:"Category,omitempty" name:"Category"`
+
+	// 状态
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 实例id
+	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+
+	// 是否是bot4.0版本
+	IsVersionFour *bool `json:"IsVersionFour,omitempty" name:"IsVersionFour"`
+
+	// 传入Bot版本号，场景化版本为"4.1.0"
+	BotVersion *string `json:"BotVersion,omitempty" name:"BotVersion"`
+}
+
+func (r *ModifyBotStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBotStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Category")
+	delete(f, "Status")
+	delete(f, "InstanceID")
+	delete(f, "IsVersionFour")
+	delete(f, "BotVersion")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBotStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyBotStatusResponseParams struct {
+	// 正常情况为null
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyBotStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyBotStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyBotStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyBotStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7586,6 +7770,14 @@ type TLSVersion struct {
 	// TLSVERSION的NAME
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+}
+
+type TargetEntity struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
 }
 
 // Predefined struct for user

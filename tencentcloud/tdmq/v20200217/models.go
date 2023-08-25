@@ -2198,11 +2198,11 @@ type CreateSubscriptionRequestParams struct {
 	// 是否幂等创建，若否不允许创建同名的订阅关系。
 	IsIdempotent *bool `json:"IsIdempotent,omitempty" name:"IsIdempotent"`
 
-	// 备注，128个字符以内。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
-
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 备注，128个字符以内。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 是否自动创建死信和重试主题，True 表示创建，False表示不创建，默认自动创建死信和重试主题。
 	AutoCreatePolicyTopic *bool `json:"AutoCreatePolicyTopic,omitempty" name:"AutoCreatePolicyTopic"`
@@ -2226,11 +2226,11 @@ type CreateSubscriptionRequest struct {
 	// 是否幂等创建，若否不允许创建同名的订阅关系。
 	IsIdempotent *bool `json:"IsIdempotent,omitempty" name:"IsIdempotent"`
 
-	// 备注，128个字符以内。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
-
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 备注，128个字符以内。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 是否自动创建死信和重试主题，True 表示创建，False表示不创建，默认自动创建死信和重试主题。
 	AutoCreatePolicyTopic *bool `json:"AutoCreatePolicyTopic,omitempty" name:"AutoCreatePolicyTopic"`
@@ -2255,8 +2255,8 @@ func (r *CreateSubscriptionRequest) FromJsonString(s string) error {
 	delete(f, "TopicName")
 	delete(f, "SubscriptionName")
 	delete(f, "IsIdempotent")
-	delete(f, "Remark")
 	delete(f, "ClusterId")
+	delete(f, "Remark")
 	delete(f, "AutoCreatePolicyTopic")
 	delete(f, "PostFixPattern")
 	if len(f) > 0 {
@@ -2301,6 +2301,9 @@ type CreateTopicRequestParams struct {
 	// 入参为1，即是创建非分区topic，无分区；入参大于1，表示分区topic的分区数，最大不允许超过128。
 	Partitions *uint64 `json:"Partitions,omitempty" name:"Partitions"`
 
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
 	// 备注，128字符以内。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
@@ -2311,9 +2314,6 @@ type CreateTopicRequestParams struct {
 	// 3 ：重试队列；
 	// 4 ：死信队列。
 	TopicType *uint64 `json:"TopicType,omitempty" name:"TopicType"`
-
-	// Pulsar 集群的ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// Pulsar 主题类型
 	// 0: 非持久非分区
@@ -2338,6 +2338,9 @@ type CreateTopicRequest struct {
 	// 入参为1，即是创建非分区topic，无分区；入参大于1，表示分区topic的分区数，最大不允许超过128。
 	Partitions *uint64 `json:"Partitions,omitempty" name:"Partitions"`
 
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
 	// 备注，128字符以内。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
@@ -2348,9 +2351,6 @@ type CreateTopicRequest struct {
 	// 3 ：重试队列；
 	// 4 ：死信队列。
 	TopicType *uint64 `json:"TopicType,omitempty" name:"TopicType"`
-
-	// Pulsar 集群的ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// Pulsar 主题类型
 	// 0: 非持久非分区
@@ -2378,9 +2378,9 @@ func (r *CreateTopicRequest) FromJsonString(s string) error {
 	delete(f, "EnvironmentId")
 	delete(f, "TopicName")
 	delete(f, "Partitions")
+	delete(f, "ClusterId")
 	delete(f, "Remark")
 	delete(f, "TopicType")
-	delete(f, "ClusterId")
 	delete(f, "PulsarTopicType")
 	delete(f, "MsgTTL")
 	if len(f) > 0 {
@@ -4660,6 +4660,9 @@ func (r *DescribeEnvironmentRolesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeEnvironmentsRequestParams struct {
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
 	// 命名空间名称，模糊搜索。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
@@ -4668,9 +4671,6 @@ type DescribeEnvironmentsRequestParams struct {
 
 	// 返回数量，不填则默认为10，最大值为20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// Pulsar 集群的ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// * EnvironmentId
 	// 按照名称空间进行过滤，精确查询。
@@ -4682,6 +4682,9 @@ type DescribeEnvironmentsRequestParams struct {
 type DescribeEnvironmentsRequest struct {
 	*tchttp.BaseRequest
 	
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
 	// 命名空间名称，模糊搜索。
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
@@ -4690,9 +4693,6 @@ type DescribeEnvironmentsRequest struct {
 
 	// 返回数量，不填则默认为10，最大值为20。
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
-
-	// Pulsar 集群的ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// * EnvironmentId
 	// 按照名称空间进行过滤，精确查询。
@@ -4713,10 +4713,10 @@ func (r *DescribeEnvironmentsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ClusterId")
 	delete(f, "EnvironmentId")
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "ClusterId")
 	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeEnvironmentsRequest has unknown keys!", "")
@@ -6509,6 +6509,9 @@ func (r *DescribeRocketMQVipInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeRolesRequestParams struct {
+	// 必填字段，集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
 	// 角色名称，模糊查询
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 
@@ -6517,9 +6520,6 @@ type DescribeRolesRequestParams struct {
 
 	// 返回数量，不填则默认为10，最大值为20。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 必填字段，集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// * RoleName
 	// 按照角色名进行过滤，精确查询。
@@ -6531,6 +6531,9 @@ type DescribeRolesRequestParams struct {
 type DescribeRolesRequest struct {
 	*tchttp.BaseRequest
 	
+	// 必填字段，集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
 	// 角色名称，模糊查询
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 
@@ -6539,9 +6542,6 @@ type DescribeRolesRequest struct {
 
 	// 返回数量，不填则默认为10，最大值为20。
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
-
-	// 必填字段，集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// * RoleName
 	// 按照角色名进行过滤，精确查询。
@@ -6562,10 +6562,10 @@ func (r *DescribeRolesRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "ClusterId")
 	delete(f, "RoleName")
 	delete(f, "Offset")
 	delete(f, "Limit")
-	delete(f, "ClusterId")
 	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRolesRequest has unknown keys!", "")
@@ -6609,6 +6609,9 @@ type DescribeSubscriptionsRequestParams struct {
 	// 主题名称。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
 	// 起始下标，不填默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -6620,9 +6623,6 @@ type DescribeSubscriptionsRequestParams struct {
 
 	// 数据过滤条件。
 	Filters []*FilterSubscription `json:"Filters,omitempty" name:"Filters"`
-
-	// Pulsar 集群的ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 type DescribeSubscriptionsRequest struct {
@@ -6634,6 +6634,9 @@ type DescribeSubscriptionsRequest struct {
 	// 主题名称。
 	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
 
+	// Pulsar 集群的ID
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
 	// 起始下标，不填默认为0。
 	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
 
@@ -6645,9 +6648,6 @@ type DescribeSubscriptionsRequest struct {
 
 	// 数据过滤条件。
 	Filters []*FilterSubscription `json:"Filters,omitempty" name:"Filters"`
-
-	// Pulsar 集群的ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 }
 
 func (r *DescribeSubscriptionsRequest) ToJsonString() string {
@@ -6664,11 +6664,11 @@ func (r *DescribeSubscriptionsRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EnvironmentId")
 	delete(f, "TopicName")
+	delete(f, "ClusterId")
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "SubscriptionName")
 	delete(f, "Filters")
-	delete(f, "ClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSubscriptionsRequest has unknown keys!", "")
 	}
@@ -7491,11 +7491,11 @@ type ModifyEnvironmentAttributesRequestParams struct {
 	// 未消费消息过期时间，单位：秒，范围60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 
-	// 备注，字符串最长不超过128。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
-
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 备注，字符串最长不超过128。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 消息保留策略
 	RetentionPolicy *RetentionPolicy `json:"RetentionPolicy,omitempty" name:"RetentionPolicy"`
@@ -7513,11 +7513,11 @@ type ModifyEnvironmentAttributesRequest struct {
 	// 未消费消息过期时间，单位：秒，范围60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
 
-	// 备注，字符串最长不超过128。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
-
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 备注，字符串最长不超过128。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 消息保留策略
 	RetentionPolicy *RetentionPolicy `json:"RetentionPolicy,omitempty" name:"RetentionPolicy"`
@@ -7540,8 +7540,8 @@ func (r *ModifyEnvironmentAttributesRequest) FromJsonString(s string) error {
 	}
 	delete(f, "EnvironmentId")
 	delete(f, "MsgTTL")
-	delete(f, "Remark")
 	delete(f, "ClusterId")
+	delete(f, "Remark")
 	delete(f, "RetentionPolicy")
 	delete(f, "AutoSubscriptionCreation")
 	if len(f) > 0 {
@@ -8338,11 +8338,17 @@ type ModifyRoleRequestParams struct {
 	// 角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 
+	// 必填字段，集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
 	// 备注说明，长度必须大等于0且小等于128。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 必填字段，集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	// 批量绑定名字空间信息
+	EnvironmentRoleSets []*EnvironmentRoleSet `json:"EnvironmentRoleSets,omitempty" name:"EnvironmentRoleSets"`
+
+	// 全部解绑名字空间，设置为 true
+	UnbindAllEnvironment *bool `json:"UnbindAllEnvironment,omitempty" name:"UnbindAllEnvironment"`
 }
 
 type ModifyRoleRequest struct {
@@ -8351,11 +8357,17 @@ type ModifyRoleRequest struct {
 	// 角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。
 	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
 
+	// 必填字段，集群Id
+	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
 	// 备注说明，长度必须大等于0且小等于128。
 	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
-	// 必填字段，集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	// 批量绑定名字空间信息
+	EnvironmentRoleSets []*EnvironmentRoleSet `json:"EnvironmentRoleSets,omitempty" name:"EnvironmentRoleSets"`
+
+	// 全部解绑名字空间，设置为 true
+	UnbindAllEnvironment *bool `json:"UnbindAllEnvironment,omitempty" name:"UnbindAllEnvironment"`
 }
 
 func (r *ModifyRoleRequest) ToJsonString() string {
@@ -8371,8 +8383,10 @@ func (r *ModifyRoleRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "RoleName")
-	delete(f, "Remark")
 	delete(f, "ClusterId")
+	delete(f, "Remark")
+	delete(f, "EnvironmentRoleSets")
+	delete(f, "UnbindAllEnvironment")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoleRequest has unknown keys!", "")
 	}
@@ -8418,11 +8432,11 @@ type ModifyTopicRequestParams struct {
 	// 分区数，必须大于或者等于原分区数，若想维持原分区数请输入原数目，修改分区数仅对非全局顺序消息起效果，不允许超过128个分区。
 	Partitions *uint64 `json:"Partitions,omitempty" name:"Partitions"`
 
-	// 备注，128字符以内。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
-
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 备注，128字符以内。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
@@ -8440,11 +8454,11 @@ type ModifyTopicRequest struct {
 	// 分区数，必须大于或者等于原分区数，若想维持原分区数请输入原数目，修改分区数仅对非全局顺序消息起效果，不允许超过128个分区。
 	Partitions *uint64 `json:"Partitions,omitempty" name:"Partitions"`
 
-	// 备注，128字符以内。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
-
 	// Pulsar 集群的ID
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+
+	// 备注，128字符以内。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 未消费消息过期时间，单位：秒，取值范围：60秒~15天。
 	MsgTTL *uint64 `json:"MsgTTL,omitempty" name:"MsgTTL"`
@@ -8465,8 +8479,8 @@ func (r *ModifyTopicRequest) FromJsonString(s string) error {
 	delete(f, "EnvironmentId")
 	delete(f, "TopicName")
 	delete(f, "Partitions")
-	delete(f, "Remark")
 	delete(f, "ClusterId")
+	delete(f, "Remark")
 	delete(f, "MsgTTL")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyTopicRequest has unknown keys!", "")

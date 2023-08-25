@@ -8531,15 +8531,14 @@ func (r *DescribeLiveTranscodeTemplatesResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeLiveTranscodeTotalInfoRequestParams struct {
-	// 结束时间点，接口查询支持两种时间格式：
+	// 开始时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：
 	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
 	// 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，
-	// 使用UTC格式时间，
-	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见  [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+	// 结束时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+	// 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 推流域名列表，若不填，表示查询所有域名总体数据。
@@ -8556,15 +8555,14 @@ type DescribeLiveTranscodeTotalInfoRequestParams struct {
 type DescribeLiveTranscodeTotalInfoRequest struct {
 	*tchttp.BaseRequest
 	
-	// 结束时间点，接口查询支持两种时间格式：
+	// 开始时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：
 	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
 	// 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
-	// 结束时间，
-	// 使用UTC格式时间，
-	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见  [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)。
+	// 结束时间，支持最近三个月的数据查询，起始时间和结束时间跨度不能超过三个月。接口查询支持两种时间格式：
+	// 1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#:~:text=I-,ISO,-%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F)
+	// 2）YYYY-MM-DD hh:mm:ss：使用此格式时，默认代表北京时间。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 推流域名列表，若不填，表示查询所有域名总体数据。

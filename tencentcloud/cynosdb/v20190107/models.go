@@ -6299,7 +6299,7 @@ func (r *DescribeProjectSecurityGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeProxiesRequestParams struct {
-	// 集群ID
+	// 集群ID（该参数必传，例如cynosdbmysql-xxxxxx）
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 返回数量，默认为 20，最大值为 100
@@ -6325,7 +6325,7 @@ type DescribeProxiesRequestParams struct {
 type DescribeProxiesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群ID
+	// 集群ID（该参数必传，例如cynosdbmysql-xxxxxx）
 	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
 
 	// 返回数量，默认为 20，最大值为 100
@@ -6767,7 +6767,7 @@ func (r *DescribeResourcePackageListRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeResourcePackageListResponseParams struct {
-	// 总配置数
+	// 资源包总数
 	Total *int64 `json:"Total,omitempty" name:"Total"`
 
 	// 资源包明细
@@ -10795,7 +10795,7 @@ type Package struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackageUsedSpec *float64 `json:"PackageUsedSpec,omitempty" name:"PackageUsedSpec"`
 
-	// 资源包已使用量
+	// 是否还有库存余量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HasQuota *bool `json:"HasQuota,omitempty" name:"HasQuota"`
 

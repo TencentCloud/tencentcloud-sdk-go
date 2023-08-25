@@ -945,8 +945,10 @@ func NewDeleteIpAccessControlResponse() (response *DeleteIpAccessControlResponse
 // Waf IP黑白名单Delete接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = "FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteIpAccessControl(request *DeleteIpAccessControlRequest) (response *DeleteIpAccessControlResponse, err error) {
     return c.DeleteIpAccessControlWithContext(context.Background(), request)
@@ -956,8 +958,10 @@ func (c *Client) DeleteIpAccessControl(request *DeleteIpAccessControlRequest) (r
 // Waf IP黑白名单Delete接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = "FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteIpAccessControlWithContext(ctx context.Context, request *DeleteIpAccessControlRequest) (response *DeleteIpAccessControlResponse, err error) {
     if request == nil {
@@ -3837,6 +3841,92 @@ func (c *Client) ModifyAccessPeriodWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyApiAnalyzeStatusRequest() (request *ModifyApiAnalyzeStatusRequest) {
+    request = &ModifyApiAnalyzeStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyApiAnalyzeStatus")
+    
+    
+    return
+}
+
+func NewModifyApiAnalyzeStatusResponse() (response *ModifyApiAnalyzeStatusResponse) {
+    response = &ModifyApiAnalyzeStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyApiAnalyzeStatus
+// api分析页面开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyApiAnalyzeStatus(request *ModifyApiAnalyzeStatusRequest) (response *ModifyApiAnalyzeStatusResponse, err error) {
+    return c.ModifyApiAnalyzeStatusWithContext(context.Background(), request)
+}
+
+// ModifyApiAnalyzeStatus
+// api分析页面开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CLSINTERNALERROR = "FailedOperation.CLSInternalError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyApiAnalyzeStatusWithContext(ctx context.Context, request *ModifyApiAnalyzeStatusRequest) (response *ModifyApiAnalyzeStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyApiAnalyzeStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyApiAnalyzeStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyApiAnalyzeStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAreaBanStatusRequest() (request *ModifyAreaBanStatusRequest) {
     request = &ModifyAreaBanStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3881,6 +3971,54 @@ func (c *Client) ModifyAreaBanStatusWithContext(ctx context.Context, request *Mo
     request.SetContext(ctx)
     
     response = NewModifyAreaBanStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyBotStatusRequest() (request *ModifyBotStatusRequest) {
+    request = &ModifyBotStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyBotStatus")
+    
+    
+    return
+}
+
+func NewModifyBotStatusResponse() (response *ModifyBotStatusResponse) {
+    response = &ModifyBotStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBotStatus
+// Bot_V2 bot总开关更新
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyBotStatus(request *ModifyBotStatusRequest) (response *ModifyBotStatusResponse, err error) {
+    return c.ModifyBotStatusWithContext(context.Background(), request)
+}
+
+// ModifyBotStatus
+// Bot_V2 bot总开关更新
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyBotStatusWithContext(ctx context.Context, request *ModifyBotStatusRequest) (response *ModifyBotStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyBotStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBotStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBotStatusResponse()
     err = c.Send(request, response)
     return
 }
@@ -5231,6 +5369,7 @@ func NewUpsertIpAccessControlResponse() (response *UpsertIpAccessControlResponse
 // Waf IP黑白名单Upsert接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -5244,6 +5383,7 @@ func (c *Client) UpsertIpAccessControl(request *UpsertIpAccessControlRequest) (r
 // Waf IP黑白名单Upsert接口
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  LIMITEXCEEDED = "LimitExceeded"

@@ -4214,6 +4214,44 @@ type FaceMaskAIResultInfo struct {
 	FaceMaskInfo []*BaseAIResultInfo `json:"FaceMaskInfo,omitempty" name:"FaceMaskInfo"`
 }
 
+type GatewayDevice struct {
+	// 设备ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+
+	// 网关接入协议类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtocolType *int64 `json:"ProtocolType,omitempty" name:"ProtocolType"`
+
+	// 网关接入协议名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProtocolTypeName *string `json:"ProtocolTypeName,omitempty" name:"ProtocolTypeName"`
+
+	// 设备名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 设备类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 设备内网IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitempty" name:"Ip"`
+
+	// 设备端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitempty" name:"Port"`
+
+	// 设备下通道数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelNum *int64 `json:"ChannelNum,omitempty" name:"ChannelNum"`
+
+	// 设备状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
 type GatewayVersion struct {
 	// 服务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4524,6 +4562,73 @@ func (r *ListDevicesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ListDevicesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListGatewayDevicesData struct {
+	// 网关下设备列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*GatewayDevice `json:"List,omitempty" name:"List"`
+
+	// 网关下设备总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+}
+
+// Predefined struct for user
+type ListGatewayDevicesRequestParams struct {
+	// 网关索引ID（从获取网关列表接口ListGateways中获取）
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+}
+
+type ListGatewayDevicesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关索引ID（从获取网关列表接口ListGateways中获取）
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+}
+
+func (r *ListGatewayDevicesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListGatewayDevicesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListGatewayDevicesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListGatewayDevicesResponseParams struct {
+	// 返回数据
+	Data *ListGatewayDevicesData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ListGatewayDevicesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListGatewayDevicesResponseParams `json:"Response"`
+}
+
+func (r *ListGatewayDevicesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListGatewayDevicesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

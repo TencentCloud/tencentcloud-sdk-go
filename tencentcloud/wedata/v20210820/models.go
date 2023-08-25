@@ -24086,6 +24086,10 @@ type IntegrationNodeSchema struct {
 	// schema别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitempty" name:"Alias"`
+
+	// 字段备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Comment *string `json:"Comment,omitempty" name:"Comment"`
 }
 
 type IntegrationNodeSchemaMapping struct {

@@ -8895,6 +8895,120 @@ type ScheduledSqlTaskInfo struct {
 	SyntaxRule *uint64 `json:"SyntaxRule,omitempty" name:"SyntaxRule"`
 }
 
+// Predefined struct for user
+type SearchCosRechargeInfoRequestParams struct {
+	// 日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 投递任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 存储桶
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 存储桶所在地域
+	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
+
+	// cos文件所在文件夹的前缀
+	Prefix *string `json:"Prefix,omitempty" name:"Prefix"`
+
+	// 压缩模式:   "", "gzip", "lzop", "snappy”;   默认""
+	Compress *string `json:"Compress,omitempty" name:"Compress"`
+}
+
+type SearchCosRechargeInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 日志主题 ID
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// 日志集ID
+	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+
+	// 投递任务名称
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 存储桶
+	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+
+	// 存储桶所在地域
+	BucketRegion *string `json:"BucketRegion,omitempty" name:"BucketRegion"`
+
+	// cos文件所在文件夹的前缀
+	Prefix *string `json:"Prefix,omitempty" name:"Prefix"`
+
+	// 压缩模式:   "", "gzip", "lzop", "snappy”;   默认""
+	Compress *string `json:"Compress,omitempty" name:"Compress"`
+}
+
+func (r *SearchCosRechargeInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchCosRechargeInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "LogsetId")
+	delete(f, "Name")
+	delete(f, "Bucket")
+	delete(f, "BucketRegion")
+	delete(f, "Prefix")
+	delete(f, "Compress")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchCosRechargeInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchCosRechargeInfoResponseParams struct {
+	// 匹配到的存储桶下的某个文件的前几行数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*string `json:"Data,omitempty" name:"Data"`
+
+	// 匹配到的存储桶下的文件个数
+	Sum *uint64 `json:"Sum,omitempty" name:"Sum"`
+
+	// 当前预览文件路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitempty" name:"Path"`
+
+	// 预览获取数据失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitempty" name:"Msg"`
+
+	// 状态
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type SearchCosRechargeInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchCosRechargeInfoResponseParams `json:"Response"`
+}
+
+func (r *SearchCosRechargeInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchCosRechargeInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SearchLogErrors struct {
 	// 日志主题ID
 	// 注意：此字段可能返回 null，表示取不到有效值。

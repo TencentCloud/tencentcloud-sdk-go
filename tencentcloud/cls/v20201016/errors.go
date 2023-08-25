@@ -29,6 +29,18 @@ const (
 	// 告警策略通知模板已经绑定到了某个告警策略上。
 	FAILEDOPERATION_BINDEDALARM = "FailedOperation.BindedAlarm"
 
+	// 桶内无相应前缀文件，请使用正确的桶、文件前缀和压缩方式。
+	FAILEDOPERATION_BUCKETNOFILE = "FailedOperation.BucketNoFile"
+
+	// 文件解压缩失败，请选择正确的压缩方式。
+	FAILEDOPERATION_DECOMPRESSFILE = "FailedOperation.DecompressFile"
+
+	// 文件下载失败，请稍后再试。
+	FAILEDOPERATION_DOWNLOADFILE = "FailedOperation.DownLoadFile"
+
+	// 获取文件列表失败，请稍后再试。
+	FAILEDOPERATION_GETLISTFILE = "FailedOperation.GetListFile"
+
 	// 检索日志触发最大条数限制。
 	FAILEDOPERATION_GETLOGREACHLIMIT = "FailedOperation.GetlogReachLimit"
 

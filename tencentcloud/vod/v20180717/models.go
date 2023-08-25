@@ -13806,6 +13806,17 @@ type LiveRealTimeClipStreamInfo struct {
 	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
 }
 
+type LiveRecordInfo struct {
+	// 直播录制流 ID。
+	StreamId *string `json:"StreamId,omitempty" name:"StreamId"`
+
+	// 录制起始时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	RecordStartTime *string `json:"RecordStartTime,omitempty" name:"RecordStartTime"`
+
+	// 录制结束时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+	RecordEndTime *string `json:"RecordEndTime,omitempty" name:"RecordEndTime"`
+}
+
 type LowLightEnhanceInfo struct {
 	// 低光照增强控制开关，可选值：
 	// <li>ON：开启低光照增强；</li>
@@ -14769,16 +14780,25 @@ type MediaSourceData struct {
 	// <li>Record：来自录制。如直播录制、直播时移录制等。</li>
 	// <li>Upload：来自上传。如拉取上传、服务端上传、客户端 UGC 上传等。</li>
 	// <li>VideoProcessing：来自视频处理。如视频拼接、视频剪辑等。</li>
+	// <li>TrtcRecord：来自TRTC 伴生录制。</li>
 	// <li>WebPageRecord：来自全景录制。</li>
 	// <li>Unknown：未知来源。</li>
 	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
 
-	// 用户创建文件时透传的字段
+	// 用户创建文件时透传的字段。
 	SourceContext *string `json:"SourceContext,omitempty" name:"SourceContext"`
 
-	// TRTC 伴生录制信息。
+	// 直播录制信息，当文件来源为 Record 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiveRecordInfo *LiveRecordInfo `json:"LiveRecordInfo,omitempty" name:"LiveRecordInfo"`
+
+	// TRTC 伴生录制信息，当文件来源为 TrtcRecord 时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrtcRecordInfo *TrtcRecordInfo `json:"TrtcRecordInfo,omitempty" name:"TrtcRecordInfo"`
+
+	// 全景录制信息，当文件来源为 WebPageRecord 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebPageRecordInfo *WebPageRecordInfo `json:"WebPageRecordInfo,omitempty" name:"WebPageRecordInfo"`
 }
 
 type MediaSubStreamInfoItem struct {
@@ -24167,6 +24187,14 @@ func (r *WeChatMiniProgramPublishResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *WeChatMiniProgramPublishResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type WebPageRecordInfo struct {
+	// 全景录制地址。
+	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
+
+	// 全景录制任务 ID。
+	RecordTaskId *string `json:"RecordTaskId,omitempty" name:"RecordTaskId"`
 }
 
 type WechatMiniProgramPublishTask struct {

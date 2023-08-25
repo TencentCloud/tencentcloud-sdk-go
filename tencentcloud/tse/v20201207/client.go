@@ -2203,6 +2203,58 @@ func (c *Client) DescribeNacosServerInterfacesWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribeNativeGatewayServerGroupsRequest() (request *DescribeNativeGatewayServerGroupsRequest) {
+    request = &DescribeNativeGatewayServerGroupsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tse", APIVersion, "DescribeNativeGatewayServerGroups")
+    
+    
+    return
+}
+
+func NewDescribeNativeGatewayServerGroupsResponse() (response *DescribeNativeGatewayServerGroupsResponse) {
+    response = &DescribeNativeGatewayServerGroupsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNativeGatewayServerGroups
+// 查询云原生网关分组信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) DescribeNativeGatewayServerGroups(request *DescribeNativeGatewayServerGroupsRequest) (response *DescribeNativeGatewayServerGroupsResponse, err error) {
+    return c.DescribeNativeGatewayServerGroupsWithContext(context.Background(), request)
+}
+
+// DescribeNativeGatewayServerGroups
+// 查询云原生网关分组信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
+func (c *Client) DescribeNativeGatewayServerGroupsWithContext(ctx context.Context, request *DescribeNativeGatewayServerGroupsRequest) (response *DescribeNativeGatewayServerGroupsResponse, err error) {
+    if request == nil {
+        request = NewDescribeNativeGatewayServerGroupsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNativeGatewayServerGroups require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNativeGatewayServerGroupsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeOneCloudNativeAPIGatewayServiceRequest() (request *DescribeOneCloudNativeAPIGatewayServiceRequest) {
     request = &DescribeOneCloudNativeAPIGatewayServiceRequest{
         BaseRequest: &tchttp.BaseRequest{},

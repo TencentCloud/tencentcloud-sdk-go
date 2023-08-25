@@ -237,6 +237,131 @@ type CloudNativeAPIGatewayRateLimitDetail struct {
 	LineUpTime *int64 `json:"LineUpTime,omitempty" name:"LineUpTime"`
 }
 
+type CloudNativeAPIGatewayStrategy struct {
+	// 策略ID
+	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+
+	// 策略名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyName *string `json:"StrategyName,omitempty" name:"StrategyName"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 策略描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 弹性伸缩配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Config *CloudNativeAPIGatewayStrategyAutoScalerConfig `json:"Config,omitempty" name:"Config"`
+
+	// 网关实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 定时伸缩配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CronConfig *CloudNativeAPIGatewayStrategyCronScalerConfig `json:"CronConfig,omitempty" name:"CronConfig"`
+
+	// 最大节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxReplicas *uint64 `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
+}
+
+type CloudNativeAPIGatewayStrategyAutoScalerConfig struct {
+	// 最大副本数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxReplicas *int64 `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
+
+	// 指标列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Metrics []*CloudNativeAPIGatewayStrategyAutoScalerConfigMetric `json:"Metrics,omitempty" name:"Metrics"`
+
+	// 是否开启指标伸缩
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 弹性策略ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+
+	// 指标配置ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoScalerId *string `json:"AutoScalerId,omitempty" name:"AutoScalerId"`
+}
+
+type CloudNativeAPIGatewayStrategyAutoScalerConfigMetric struct {
+	// 指标类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 指标资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+
+	// 指标目标类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetType *string `json:"TargetType,omitempty" name:"TargetType"`
+
+	// 指标目标值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetValue *int64 `json:"TargetValue,omitempty" name:"TargetValue"`
+}
+
+type CloudNativeAPIGatewayStrategyCronScalerConfig struct {
+	// 是否开启定时伸缩
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+
+	// 定时伸缩配置参数列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Params []*CloudNativeAPIGatewayStrategyCronScalerConfigParam `json:"Params,omitempty" name:"Params"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 弹性策略ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+}
+
+type CloudNativeAPIGatewayStrategyCronScalerConfigParam struct {
+	// 定时伸缩周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Period *string `json:"Period,omitempty" name:"Period"`
+
+	// 定时伸缩开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartAt *string `json:"StartAt,omitempty" name:"StartAt"`
+
+	// 定时伸缩目标节点数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TargetReplicas *int64 `json:"TargetReplicas,omitempty" name:"TargetReplicas"`
+
+	// 定时伸缩cron表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Crontab *string `json:"Crontab,omitempty" name:"Crontab"`
+}
+
 type CloudNativeAPIGatewayVpcConfig struct {
 	// 私有网络ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2767,6 +2892,84 @@ func (r *DescribeNacosServerInterfacesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeNativeGatewayServerGroupsRequestParams struct {
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 翻页从第几个开始获取
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 翻页获取多少个
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+type DescribeNativeGatewayServerGroupsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 翻页从第几个开始获取
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 翻页获取多少个
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤参数
+	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+}
+
+func (r *DescribeNativeGatewayServerGroupsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNativeGatewayServerGroupsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNativeGatewayServerGroupsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNativeGatewayServerGroupsResponseParams struct {
+	// 分组列表信息
+	Result *NativeGatewayServerGroups `json:"Result,omitempty" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeNativeGatewayServerGroupsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNativeGatewayServerGroupsResponseParams `json:"Response"`
+}
+
+func (r *DescribeNativeGatewayServerGroupsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNativeGatewayServerGroupsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeOneCloudNativeAPIGatewayServiceRequestParams struct {
 	// 网关ID
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
@@ -4336,6 +4539,59 @@ type NacosServerInterface struct {
 	// 接口名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Interface *string `json:"Interface,omitempty" name:"Interface"`
+}
+
+type NativeGatewayServerGroup struct {
+	// 云原生网关分组唯一id
+	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+
+	// 分组名
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 描述信息
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 节点规格、节点数信息
+	NodeConfig *CloudNativeAPIGatewayNodeConfig `json:"NodeConfig,omitempty" name:"NodeConfig"`
+
+	// 网关分组状态。
+	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 是否是默认分组。
+	// 0：否。
+	// 1：是。
+	IsFirstGroup *int64 `json:"IsFirstGroup,omitempty" name:"IsFirstGroup"`
+
+	// 关联策略信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindingStrategy *CloudNativeAPIGatewayStrategy `json:"BindingStrategy,omitempty" name:"BindingStrategy"`
+
+	// 网关实例 id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+
+	// 子网id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetIds *string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+}
+
+type NativeGatewayServerGroups struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 分组信息数组。
+	GatewayGroupList []*NativeGatewayServerGroup `json:"GatewayGroupList,omitempty" name:"GatewayGroupList"`
 }
 
 type PolarisLimiterAddress struct {

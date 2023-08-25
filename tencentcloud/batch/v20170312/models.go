@@ -95,6 +95,10 @@ type Application struct {
 	// 应用使用Docker的相关配置。在使用Docker配置的情况下，DeliveryForm 为 LOCAL 表示直接使用Docker镜像内部的应用软件，通过Docker方式运行；DeliveryForm 为 PACKAGE，表示将远程应用包注入到Docker镜像后，通过Docker方式运行。为避免Docker不同版本的兼容性问题，Docker安装包及相关依赖由Batch统一负责，对于已安装Docker的自定义镜像，请卸载后再使用Docker特性。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Docker *Docker `json:"Docker,omitempty" name:"Docker"`
+
+	// 任务执行命令信息。与Command不能同时指定。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Commands []*CommandLine `json:"Commands,omitempty" name:"Commands"`
 }
 
 // Predefined struct for user
@@ -167,6 +171,12 @@ type Authentication struct {
 
 	// SecretKey
 	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+}
+
+type CommandLine struct {
+	// 任务执行命令。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Command *string `json:"Command,omitempty" name:"Command"`
 }
 
 type ComputeEnvCreateInfo struct {

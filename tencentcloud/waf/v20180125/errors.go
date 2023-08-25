@@ -41,6 +41,12 @@ const (
 	// 操作Redis数据库失败
 	FAILEDOPERATION_REDISOPERATIONFAILED = "FailedOperation.RedisOperationFailed"
 
+	// 黑白名单添加数超过上限
+	FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
+
+	// 一次性删除数量达到上限
+	FAILEDOPERATION_THENUMBEROFONETIMEDELETIONSREACHEDTHEUPPERLIMIT = "FailedOperation.TheNumberOfOneTimeDeletionsReachedTheUpperLimit"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
 
