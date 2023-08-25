@@ -611,8 +611,8 @@ SDK 使用 `omitempty` 标签来序列化你的 request 对象, 因为这样可�
 
 但对有的接口而言, 长度为0的数组 和 nil数组 是有区别的, 如果你希望在请求中携带空数组, 需要使用Common Client 来发送请求.
 
-参考[示例](examples/common/omitempty.go)
+参考[示例](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/omitempty.go)
 
 # 支持产品列表
 
-参见[产品列表文档](./products.md)
+参见[产品列表文档](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/products.md)
