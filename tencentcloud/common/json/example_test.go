@@ -6,8 +6,8 @@ package json_test
 
 import (
 	"bytes"
-	"encoding/json"
 	"fmt"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 	"io"
 	"log"
 	"os"

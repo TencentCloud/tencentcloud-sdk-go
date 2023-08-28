@@ -356,6 +356,14 @@ func isEmptyValue(v reflect.Value) bool {
 	return false
 }
 
+func isNilValue(v reflect.Value) bool {
+	switch v.Kind() {
+	case reflect.Array, reflect.Map, reflect.Slice, reflect.String, reflect.Interface, reflect.Ptr:
+		return v.IsNil()
+	}
+	return false
+}
+
 func (e *encodeState) reflectValue(v reflect.Value, opts encOpts) {
 	valueEncoder(v)(e, v, opts)
 }
@@ -745,6 +753,10 @@ FieldLoop:
 				fv = fv.Elem()
 			}
 			fv = fv.Field(i)
+		}
+
+		if f.omitNil && isNilValue(fv) {
+			continue
 		}
 
 		if f.omitEmpty && isEmptyValue(fv) {
@@ -1184,6 +1196,7 @@ type field struct {
 	index     []int
 	typ       reflect.Type
 	omitEmpty bool
+	omitNil   bool
 	quoted    bool
 
 	encoder encoderFunc
@@ -1299,6 +1312,7 @@ func typeFields(t reflect.Type) structFields {
 						index:     index,
 						typ:       ft,
 						omitEmpty: opts.Contains("omitempty"),
+						omitNil:   opts.Contains("omitnil"),
 						quoted:    quoted,
 					}
 					field.nameBytes = []byte(field.name)
