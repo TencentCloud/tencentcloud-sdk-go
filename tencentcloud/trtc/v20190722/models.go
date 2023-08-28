@@ -1268,6 +1268,89 @@ func (r *DescribeScaleInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTRTCMarketQualityDataRequestParams struct {
+	// 用户SdkAppId（如：1400xxxxxx）
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 返回数据的粒度，支持设为以下值：
+	// d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
+	// h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
+	Period *string `json:"Period,omitempty" name:"Period"`
+}
+
+type DescribeTRTCMarketQualityDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户SdkAppId（如：1400xxxxxx）
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 返回数据的粒度，支持设为以下值：
+	// d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
+	// h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
+	Period *string `json:"Period,omitempty" name:"Period"`
+}
+
+func (r *DescribeTRTCMarketQualityDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCMarketQualityDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTRTCMarketQualityDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTRTCMarketQualityDataResponseParams struct {
+	// TRTC监控数据出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TRTCDataResult `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTRTCMarketQualityDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTRTCMarketQualityDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeTRTCMarketQualityDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCMarketQualityDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTRTCMarketQualityMetricDataRequestParams struct {
 	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -1347,6 +1430,89 @@ func (r *DescribeTRTCMarketQualityMetricDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTRTCMarketQualityMetricDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTRTCMarketScaleDataRequestParams struct {
+	// 用户SdkAppId
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 返回数据的粒度，支持设为以下值：
+	// d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
+	// h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
+	Period *string `json:"Period,omitempty" name:"Period"`
+}
+
+type DescribeTRTCMarketScaleDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户SdkAppId
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 查询开始时间，格式为YYYY-MM-DD。（查询时间范围根据监控仪表盘功能版本而定，【基础版】可查近30天，【进阶版】可查近60天）
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 查询结束时间，格式为YYYY-MM-DD。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 返回数据的粒度，支持设为以下值：
+	// d：按天。此时返回查询时间范围内 UTC 时间为零点的数据。
+	// h：按小时。此时返回查询时间范围内 UTC 时间为整小时的数据。
+	Period *string `json:"Period,omitempty" name:"Period"`
+}
+
+func (r *DescribeTRTCMarketScaleDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCMarketScaleDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Period")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTRTCMarketScaleDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTRTCMarketScaleDataResponseParams struct {
+	// TRTC监控数据出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TRTCDataResult `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTRTCMarketScaleDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTRTCMarketScaleDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeTRTCMarketScaleDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCMarketScaleDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1434,6 +1600,85 @@ func (r *DescribeTRTCMarketScaleMetricDataResponse) FromJsonString(s string) err
 }
 
 // Predefined struct for user
+type DescribeTRTCRealTimeQualityDataRequestParams struct {
+	// 用户SdkAppId（如：1400xxxxxx）
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 开始时间，unix时间戳，单位：秒（查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时）
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，unix时间戳，单位：秒
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 房间ID
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+type DescribeTRTCRealTimeQualityDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户SdkAppId（如：1400xxxxxx）
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 开始时间，unix时间戳，单位：秒（查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时）
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，unix时间戳，单位：秒
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 房间ID
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeTRTCRealTimeQualityDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCRealTimeQualityDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTRTCRealTimeQualityDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTRTCRealTimeQualityDataResponseParams struct {
+	// TRTC监控数据出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TRTCDataResult `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTRTCRealTimeQualityDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTRTCRealTimeQualityDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeTRTCRealTimeQualityDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCRealTimeQualityDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeTRTCRealTimeQualityMetricDataRequestParams struct {
 	// 用户SdkAppId（如：1400xxxxxx）
 	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
@@ -1509,6 +1754,85 @@ func (r *DescribeTRTCRealTimeQualityMetricDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTRTCRealTimeQualityMetricDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTRTCRealTimeScaleDataRequestParams struct {
+	// 用户SdkAppId（如：1400xxxxxx）
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 开始时间，unix时间戳，单位：秒（查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时）
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，unix时间戳，单位：秒
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 房间ID
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+type DescribeTRTCRealTimeScaleDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户SdkAppId（如：1400xxxxxx）
+	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+
+	// 开始时间，unix时间戳，单位：秒（查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时）
+	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 结束时间，unix时间戳，单位：秒
+	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+
+	// 房间ID
+	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+}
+
+func (r *DescribeTRTCRealTimeScaleDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCRealTimeScaleDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "RoomId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTRTCRealTimeScaleDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTRTCRealTimeScaleDataResponseParams struct {
+	// TRTC监控数据出参
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *TRTCDataResult `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTRTCRealTimeScaleDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTRTCRealTimeScaleDataResponseParams `json:"Response"`
+}
+
+func (r *DescribeTRTCRealTimeScaleDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTRTCRealTimeScaleDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3161,6 +3485,12 @@ type RoomState struct {
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
 }
 
+type RowValues struct {
+	// 数据值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowValue []*int64 `json:"RowValue,omitempty" name:"RowValue"`
+}
+
 type ScaleInfomation struct {
 	// 每天开始的时间
 	Time *uint64 `json:"Time,omitempty" name:"Time"`
@@ -3214,6 +3544,16 @@ type SeriesInfo struct {
 	// 数据值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Values []*int64 `json:"Values,omitempty" name:"Values"`
+}
+
+type SeriesInfos struct {
+	// 数据列
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Columns []*string `json:"Columns,omitempty" name:"Columns"`
+
+	// 数据值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*RowValues `json:"Values,omitempty" name:"Values"`
 }
 
 type SingleSubscribeParams struct {
@@ -3781,6 +4121,20 @@ type TRTCDataResp struct {
 	// 查询结果数据，以Columns-Values形式返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Series []*SeriesInfo `json:"Series,omitempty" name:"Series"`
+
+	// Total值，监控仪表盘功能下固定为1。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+}
+
+type TRTCDataResult struct {
+	// StatementID值，监控仪表盘下固定为0。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatementID *int64 `json:"StatementID,omitempty" name:"StatementID"`
+
+	// 查询结果数据，以Columns-Values形式返回。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Series []*SeriesInfos `json:"Series,omitempty" name:"Series"`
 
 	// Total值，监控仪表盘功能下固定为1。
 	// 注意：此字段可能返回 null，表示取不到有效值。

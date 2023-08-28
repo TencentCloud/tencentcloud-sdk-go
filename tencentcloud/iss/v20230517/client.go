@@ -699,6 +699,62 @@ func (c *Client) AddUserDeviceWithContext(ctx context.Context, request *AddUserD
     return
 }
 
+func NewBatchOperateDeviceRequest() (request *BatchOperateDeviceRequest) {
+    request = &BatchOperateDeviceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "BatchOperateDevice")
+    
+    
+    return
+}
+
+func NewBatchOperateDeviceResponse() (response *BatchOperateDeviceResponse) {
+    response = &BatchOperateDeviceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// BatchOperateDevice
+// 用于批量操作（启用，禁用，删除）设备
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDEVICEID = "InvalidParameterValue.InvalidDeviceId"
+//  INVALIDPARAMETERVALUE_UNSUPPORTOPERATECMD = "InvalidParameterValue.UnSupportOperateCMD"
+//  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
+func (c *Client) BatchOperateDevice(request *BatchOperateDeviceRequest) (response *BatchOperateDeviceResponse, err error) {
+    return c.BatchOperateDeviceWithContext(context.Background(), request)
+}
+
+// BatchOperateDevice
+// 用于批量操作（启用，禁用，删除）设备
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDDEVICEID = "InvalidParameterValue.InvalidDeviceId"
+//  INVALIDPARAMETERVALUE_UNSUPPORTOPERATECMD = "InvalidParameterValue.UnSupportOperateCMD"
+//  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
+func (c *Client) BatchOperateDeviceWithContext(ctx context.Context, request *BatchOperateDeviceRequest) (response *BatchOperateDeviceResponse, err error) {
+    if request == nil {
+        request = NewBatchOperateDeviceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("BatchOperateDevice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewBatchOperateDeviceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCheckDomainRequest() (request *CheckDomainRequest) {
     request = &CheckDomainRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2767,6 +2823,64 @@ func (c *Client) DescribeStreamAuthWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeTaskRequest() (request *DescribeTaskRequest) {
+    request = &DescribeTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DescribeTask")
+    
+    
+    return
+}
+
+func NewDescribeTaskResponse() (response *DescribeTaskResponse) {
+    response = &DescribeTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTask
+// 用于查询任务详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEERROR = "FailedOperation.DatabaseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETERFORMAT = "InvalidParameter.InvalidParameterFormat"
+//  INVALIDPARAMETER_REQUIREDHEADERPARAMETEREMPTY = "InvalidParameter.RequiredHeaderParameterEmpty"
+//  INVALIDPARAMETER_TASKIDNOTEXIST = "InvalidParameter.TaskIdNotExist"
+//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTED = "InvalidParameterValue.TaskTypeNotSupported"
+func (c *Client) DescribeTask(request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
+    return c.DescribeTaskWithContext(context.Background(), request)
+}
+
+// DescribeTask
+// 用于查询任务详情
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEERROR = "FailedOperation.DatabaseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETERFORMAT = "InvalidParameter.InvalidParameterFormat"
+//  INVALIDPARAMETER_REQUIREDHEADERPARAMETEREMPTY = "InvalidParameter.RequiredHeaderParameterEmpty"
+//  INVALIDPARAMETER_TASKIDNOTEXIST = "InvalidParameter.TaskIdNotExist"
+//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTED = "InvalidParameterValue.TaskTypeNotSupported"
+func (c *Client) DescribeTaskWithContext(ctx context.Context, request *DescribeTaskRequest) (response *DescribeTaskResponse, err error) {
+    if request == nil {
+        request = NewDescribeTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserDeviceRequest() (request *DescribeUserDeviceRequest) {
     request = &DescribeUserDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3639,6 +3753,130 @@ func (c *Client) ListRecordTemplatesWithContext(ctx context.Context, request *Li
     request.SetContext(ctx)
     
     response = NewListRecordTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListSubTasksRequest() (request *ListSubTasksRequest) {
+    request = &ListSubTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "ListSubTasks")
+    
+    
+    return
+}
+
+func NewListSubTasksResponse() (response *ListSubTasksResponse) {
+    response = &ListSubTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListSubTasks
+// 用于查询任务的子任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEERROR = "FailedOperation.DatabaseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETERFORMAT = "InvalidParameter.InvalidParameterFormat"
+//  INVALIDPARAMETER_REQUIREDHEADERPARAMETEREMPTY = "InvalidParameter.RequiredHeaderParameterEmpty"
+//  INVALIDPARAMETER_TASKIDNOTEXIST = "InvalidParameter.TaskIdNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDPAGEPARAMETER = "InvalidParameterValue.InvalidPageParameter"
+//  INVALIDPARAMETERVALUE_INVALIDSTATUS = "InvalidParameterValue.InvalidStatus"
+//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTED = "InvalidParameterValue.TaskTypeNotSupported"
+func (c *Client) ListSubTasks(request *ListSubTasksRequest) (response *ListSubTasksResponse, err error) {
+    return c.ListSubTasksWithContext(context.Background(), request)
+}
+
+// ListSubTasks
+// 用于查询任务的子任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEERROR = "FailedOperation.DatabaseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDPARAMETERFORMAT = "InvalidParameter.InvalidParameterFormat"
+//  INVALIDPARAMETER_REQUIREDHEADERPARAMETEREMPTY = "InvalidParameter.RequiredHeaderParameterEmpty"
+//  INVALIDPARAMETER_TASKIDNOTEXIST = "InvalidParameter.TaskIdNotExist"
+//  INVALIDPARAMETERVALUE_INVALIDPAGEPARAMETER = "InvalidParameterValue.InvalidPageParameter"
+//  INVALIDPARAMETERVALUE_INVALIDSTATUS = "InvalidParameterValue.InvalidStatus"
+//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTED = "InvalidParameterValue.TaskTypeNotSupported"
+func (c *Client) ListSubTasksWithContext(ctx context.Context, request *ListSubTasksRequest) (response *ListSubTasksResponse, err error) {
+    if request == nil {
+        request = NewListSubTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListSubTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListSubTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListTasksRequest() (request *ListTasksRequest) {
+    request = &ListTasksRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "ListTasks")
+    
+    
+    return
+}
+
+func NewListTasksResponse() (response *ListTasksResponse) {
+    response = &ListTasksResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListTasks
+// 用于查询批量任务和简单任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEERROR = "FailedOperation.DatabaseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDACTION = "InvalidParameter.InvalidAction"
+//  INVALIDPARAMETER_INVALIDPARAMETERFORMAT = "InvalidParameter.InvalidParameterFormat"
+//  INVALIDPARAMETER_REQUIREDHEADERPARAMETEREMPTY = "InvalidParameter.RequiredHeaderParameterEmpty"
+//  INVALIDPARAMETERVALUE_INVALIDPAGEPARAMETER = "InvalidParameterValue.InvalidPageParameter"
+//  INVALIDPARAMETERVALUE_INVALIDSTATUS = "InvalidParameterValue.InvalidStatus"
+//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTED = "InvalidParameterValue.TaskTypeNotSupported"
+func (c *Client) ListTasks(request *ListTasksRequest) (response *ListTasksResponse, err error) {
+    return c.ListTasksWithContext(context.Background(), request)
+}
+
+// ListTasks
+// 用于查询批量任务和简单任务列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_DATABASEERROR = "FailedOperation.DatabaseError"
+//  FAILEDOPERATION_REQUESTTIMEOUT = "FailedOperation.RequestTimeout"
+//  INVALIDPARAMETER_INVALIDACTION = "InvalidParameter.InvalidAction"
+//  INVALIDPARAMETER_INVALIDPARAMETERFORMAT = "InvalidParameter.InvalidParameterFormat"
+//  INVALIDPARAMETER_REQUIREDHEADERPARAMETEREMPTY = "InvalidParameter.RequiredHeaderParameterEmpty"
+//  INVALIDPARAMETERVALUE_INVALIDPAGEPARAMETER = "InvalidParameterValue.InvalidPageParameter"
+//  INVALIDPARAMETERVALUE_INVALIDSTATUS = "InvalidParameterValue.InvalidStatus"
+//  INVALIDPARAMETERVALUE_TASKTYPENOTSUPPORTED = "InvalidParameterValue.TaskTypeNotSupported"
+func (c *Client) ListTasksWithContext(ctx context.Context, request *ListTasksRequest) (response *ListTasksResponse, err error) {
+    if request == nil {
+        request = NewListTasksRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListTasks require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListTasksResponse()
     err = c.Send(request, response)
     return
 }

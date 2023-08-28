@@ -1,3 +1,148 @@
+# Release v1.0.732
+
+## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 4 次发布
+
+发布时间：2023-08-25 16:30:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [BatchOperateDevice](https://cloud.tencent.com/document/api/1344/97292)
+* [DescribeTask](https://cloud.tencent.com/document/api/1344/97296)
+* [ListSubTasks](https://cloud.tencent.com/document/api/1344/97295)
+* [ListTasks](https://cloud.tencent.com/document/api/1344/97294)
+
+修改接口：
+
+* [ListGatewayDevices](https://cloud.tencent.com/document/api/1344/97279)
+
+	* 新增入参：PageNumber, PageSize
+
+
+新增数据结构：
+
+* [BatchOperateDeviceData](https://cloud.tencent.com/document/api/1344/95952#BatchOperateDeviceData)
+* [ListSubTasksData](https://cloud.tencent.com/document/api/1344/95952#ListSubTasksData)
+* [ListTasksData](https://cloud.tencent.com/document/api/1344/95952#ListTasksData)
+* [SubTaskData](https://cloud.tencent.com/document/api/1344/95952#SubTaskData)
+* [TaskData](https://cloud.tencent.com/document/api/1344/95952#TaskData)
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 35 次发布
+
+发布时间：2023-08-28 02:39:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
+
+	* 新增入参：Command
+
+* [ModifyModelService](https://cloud.tencent.com/document/api/851/83228)
+
+	* 新增入参：Command
+
+
+新增数据结构：
+
+* [InferCodeInfo](https://cloud.tencent.com/document/api/851/75051#InferCodeInfo)
+
+修改数据结构：
+
+* [ServiceInfo](https://cloud.tencent.com/document/api/851/75051#ServiceInfo)
+
+	* 新增成员：VolumeMount, InferCodeInfo, Command
+
+* [StatefulSetCondition](https://cloud.tencent.com/document/api/851/75051#StatefulSetCondition)
+
+	* 新增成员：LastUpdateTime
+
+* [WorkloadStatus](https://cloud.tencent.com/document/api/851/75051#WorkloadStatus)
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## 实时音视频(trtc) 版本：2019-07-22
+
+### 第 59 次发布
+
+发布时间：2023-08-28 02:42:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTRTCMarketQualityData](https://cloud.tencent.com/document/api/647/97441)
+* [DescribeTRTCRealTimeQualityData](https://cloud.tencent.com/document/api/647/97440)
+
+### 第 58 次发布
+
+发布时间：2023-08-25 17:00:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTRTCRealTimeScaleData](https://cloud.tencent.com/document/api/647/97310)
+
+### 第 57 次发布
+
+发布时间：2023-08-25 16:40:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeTRTCMarketScaleData](https://cloud.tencent.com/document/api/647/97297)
+
+新增数据结构：
+
+* [RowValues](https://cloud.tencent.com/document/api/647/44055#RowValues)
+* [SeriesInfos](https://cloud.tencent.com/document/api/647/44055#SeriesInfos)
+* [TRTCDataResult](https://cloud.tencent.com/document/api/647/44055#TRTCDataResult)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 46 次发布
+
+发布时间：2023-08-28 02:53:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteCustomRule](https://cloud.tencent.com/document/api/627/97444)
+* [DescribeCustomRuleList](https://cloud.tencent.com/document/api/627/97443)
+* [ModifyCustomRule](https://cloud.tencent.com/document/api/627/97442)
+
+
+
 # Release v1.0.731
 
 ## 弹性伸缩(as) 版本：2018-04-19

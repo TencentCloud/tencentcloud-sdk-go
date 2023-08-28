@@ -1189,6 +1189,76 @@ type BaseAIResultInfo struct {
 	Location *Location `json:"Location,omitempty" name:"Location"`
 }
 
+type BatchOperateDeviceData struct {
+	// 任务 ID（用于在查询任务的子任务列表接口ListSubTasks中查询任务进度）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+// Predefined struct for user
+type BatchOperateDeviceRequestParams struct {
+	// 设备 ID 数组（从获取设备列表接口ListDevices中获取）
+	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
+
+	// 操作命令（enable：启用；disable：禁用；delete：删除）
+	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
+}
+
+type BatchOperateDeviceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 设备 ID 数组（从获取设备列表接口ListDevices中获取）
+	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
+
+	// 操作命令（enable：启用；disable：禁用；delete：删除）
+	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
+}
+
+func (r *BatchOperateDeviceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchOperateDeviceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DeviceIds")
+	delete(f, "Cmd")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BatchOperateDeviceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type BatchOperateDeviceResponseParams struct {
+	// 返回结果
+	Data *BatchOperateDeviceData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type BatchOperateDeviceResponse struct {
+	*tchttp.BaseResponse
+	Response *BatchOperateDeviceResponseParams `json:"Response"`
+}
+
+func (r *BatchOperateDeviceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *BatchOperateDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type BodyAIResultInfo struct {
 	// 时间字符串
 	Time *string `json:"Time,omitempty" name:"Time"`
@@ -4045,6 +4115,63 @@ func (r *DescribeStreamAuthResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTaskRequestParams struct {
+	// 简单任务或复杂任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+type DescribeTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 简单任务或复杂任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+}
+
+func (r *DescribeTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskResponseParams struct {
+	// 任务详情
+	Data *TaskData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserDeviceRequestParams struct {
 	// 设备ID（从获取设备列表接口ListDevices中获取）
 	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
@@ -4579,6 +4706,12 @@ type ListGatewayDevicesData struct {
 type ListGatewayDevicesRequestParams struct {
 	// 网关索引ID（从获取网关列表接口ListGateways中获取）
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 分页页数
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 }
 
 type ListGatewayDevicesRequest struct {
@@ -4586,6 +4719,12 @@ type ListGatewayDevicesRequest struct {
 	
 	// 网关索引ID（从获取网关列表接口ListGateways中获取）
 	GatewayId *string `json:"GatewayId,omitempty" name:"GatewayId"`
+
+	// 分页页数
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 }
 
 func (r *ListGatewayDevicesRequest) ToJsonString() string {
@@ -4601,6 +4740,8 @@ func (r *ListGatewayDevicesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "GatewayId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListGatewayDevicesRequest has unknown keys!", "")
 	}
@@ -5511,6 +5652,180 @@ func (r *ListRecordTemplatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ListSubTasksData struct {
+	// 子任务列表
+	List []*SubTaskData `json:"List,omitempty" name:"List"`
+
+	// 子任务数量
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+}
+
+// Predefined struct for user
+type ListSubTasksRequestParams struct {
+	// 复杂任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 页码，默认为1
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页数量，默认为10
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 默认不对该字段进行筛选，否则根据任务状态进行筛选。状态码：1-NEW，2-RUNNING，3-COMPLETED，4-FAILED
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+type ListSubTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 复杂任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 页码，默认为1
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页数量，默认为10
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 默认不对该字段进行筛选，否则根据任务状态进行筛选。状态码：1-NEW，2-RUNNING，3-COMPLETED，4-FAILED
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ListSubTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSubTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListSubTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListSubTasksResponseParams struct {
+	// 返回数据
+	Data *ListSubTasksData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ListSubTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *ListSubTasksResponseParams `json:"Response"`
+}
+
+func (r *ListSubTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListSubTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ListTasksData struct {
+	// 任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*TaskData `json:"List,omitempty" name:"List"`
+
+	// 任务数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+}
+
+// Predefined struct for user
+type ListTasksRequestParams struct {
+	// 页码，默认为1
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页数量，默认为10
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 默认不根据该字段进行筛选，否则根据设备操作类型进行筛选，对应任务的Action字段，批量任务操作类型以Batch开头。目前值有：BatchDeleteUserDevice，BatchDisableDevice，BatchEnableDevice，DeleteUserDevice，DisableDevice，EnableDevice
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 默认不根据该字段进行筛选，否则根据任务状态进行筛选。状态码：1-NEW，2-RUNNING，3-COMPLETED，4-FAILED
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+type ListTasksRequest struct {
+	*tchttp.BaseRequest
+	
+	// 页码，默认为1
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+
+	// 每页数量，默认为10
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 默认不根据该字段进行筛选，否则根据设备操作类型进行筛选，对应任务的Action字段，批量任务操作类型以Batch开头。目前值有：BatchDeleteUserDevice，BatchDisableDevice，BatchEnableDevice，DeleteUserDevice，DisableDevice，EnableDevice
+	Operation *string `json:"Operation,omitempty" name:"Operation"`
+
+	// 默认不根据该字段进行筛选，否则根据任务状态进行筛选。状态码：1-NEW，2-RUNNING，3-COMPLETED，4-FAILED
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+}
+
+func (r *ListTasksRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTasksRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	delete(f, "Operation")
+	delete(f, "Status")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListTasksRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListTasksResponseParams struct {
+	// 返回数据
+	Data *ListTasksData `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ListTasksResponse struct {
+	*tchttp.BaseResponse
+	Response *ListTasksResponseParams `json:"Response"`
+}
+
+func (r *ListTasksResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Location struct {
 	// 左上角 X 坐标轴
 	X *int64 `json:"X,omitempty" name:"X"`
@@ -5905,6 +6220,93 @@ type SnapshotConfig struct {
 
 	// 模板生效的时间段。最多包含5组时间段
 	OperTimeSlot []*OperTimeSlot `json:"OperTimeSlot,omitempty" name:"OperTimeSlot"`
+}
+
+type SubTaskData struct {
+	// 子任务ID
+	SubTaskId *string `json:"SubTaskId,omitempty" name:"SubTaskId"`
+
+	// 任务状态1:NEW,2:RUNNING,3:COMPLETED ,4:FAILED
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 任务失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+	// 任务进度
+	Progress *float64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 操作类型
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 操作类型中文描述
+	ActionZhDesc *string `json:"ActionZhDesc,omitempty" name:"ActionZhDesc"`
+
+	// 资源ID
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 启动任务时间
+	StartedAt *string `json:"StartedAt,omitempty" name:"StartedAt"`
+
+	// 创建任务时间
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 更新任务时间
+	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 任务运行时间，单位ms
+	Runtime *int64 `json:"Runtime,omitempty" name:"Runtime"`
+}
+
+type TaskData struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务状态1:NEW,2:RUNNING,3:COMPLETED ,4:FAILED
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 失败原因
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+
+	// 进度（0-1）
+	Progress *float64 `json:"Progress,omitempty" name:"Progress"`
+
+	// 任务操作类型，批量任务类型以Batch开头
+	Action *string `json:"Action,omitempty" name:"Action"`
+
+	// 操作类型中文描述
+	ActionZhDesc *string `json:"ActionZhDesc,omitempty" name:"ActionZhDesc"`
+
+	// 任务类型 1.简单 2.复杂 3.子任务
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 任务资源id（复杂任务该字段无效）
+	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+
+	// 总任务数（仅复杂任务有效）
+	Total *int64 `json:"Total,omitempty" name:"Total"`
+
+	// 成功任务数（仅复杂任务有效）
+	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+
+	// 失败任务数（仅复杂任务有效）
+	FailCount *int64 `json:"FailCount,omitempty" name:"FailCount"`
+
+	// 运行任务数（仅复杂任务有效）
+	RunningCount *int64 `json:"RunningCount,omitempty" name:"RunningCount"`
+
+	// 启动任务时间
+	StartedAt *string `json:"StartedAt,omitempty" name:"StartedAt"`
+
+	// 创建任务时间
+	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+
+	// 更新任务时间
+	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+
+	// 任务运行时间，单位ms
+	Runtime *int64 `json:"Runtime,omitempty" name:"Runtime"`
 }
 
 type Timeline struct {

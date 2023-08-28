@@ -134,7 +134,7 @@ func NewAddClusterSlaveZoneResponse() (response *AddClusterSlaveZoneResponse) {
 }
 
 // AddClusterSlaveZone
-// 增加从可用区
+// 开启多可用区部署
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -149,7 +149,7 @@ func (c *Client) AddClusterSlaveZone(request *AddClusterSlaveZoneRequest) (respo
 }
 
 // AddClusterSlaveZone
-// 增加从可用区
+// 开启多可用区部署
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -702,7 +702,7 @@ func NewCreateAccountsResponse() (response *CreateAccountsResponse) {
 }
 
 // CreateAccounts
-// 创建账号
+// 创建用户账号
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -747,7 +747,7 @@ func (c *Client) CreateAccounts(request *CreateAccountsRequest) (response *Creat
 }
 
 // CreateAccounts
-// 创建账号
+// 创建用户账号
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -1374,7 +1374,7 @@ func NewDeleteAccountsResponse() (response *DeleteAccountsResponse) {
 }
 
 // DeleteAccounts
-// 删除账号
+// 删除用户账号
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -1395,7 +1395,7 @@ func (c *Client) DeleteAccounts(request *DeleteAccountsRequest) (response *Delet
 }
 
 // DeleteAccounts
-// 删除账号
+// 删除用户账号
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -1734,7 +1734,7 @@ func NewDescribeAccountAllGrantPrivilegesResponse() (response *DescribeAccountAl
 }
 
 // DescribeAccountAllGrantPrivileges
-// 账号所有权限
+// 查询账号所有可授予权限
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -1778,7 +1778,7 @@ func (c *Client) DescribeAccountAllGrantPrivileges(request *DescribeAccountAllGr
 }
 
 // DescribeAccountAllGrantPrivileges
-// 账号所有权限
+// 查询账号所有可授予权限
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -1970,7 +1970,7 @@ func NewDescribeAccountsResponse() (response *DescribeAccountsResponse) {
 }
 
 // DescribeAccounts
-// 本接口(DescribeAccounts)用于查询数据库管理账号。
+// 本接口(DescribeAccounts)用于查询数据库账号列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -1987,7 +1987,7 @@ func (c *Client) DescribeAccounts(request *DescribeAccountsRequest) (response *D
 }
 
 // DescribeAccounts
-// 本接口(DescribeAccounts)用于查询数据库管理账号。
+// 本接口(DescribeAccounts)用于查询数据库账号列表
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -2784,7 +2784,7 @@ func NewDescribeClusterParamLogsResponse() (response *DescribeClusterParamLogsRe
 }
 
 // DescribeClusterParamLogs
-// 本接口（DescribeClusterParamLogs）查询参数修改日志
+// 本接口（DescribeClusterParamLogs）查询参数修改记录
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -2799,7 +2799,7 @@ func (c *Client) DescribeClusterParamLogs(request *DescribeClusterParamLogsReque
 }
 
 // DescribeClusterParamLogs
-// 本接口（DescribeClusterParamLogs）查询参数修改日志
+// 本接口（DescribeClusterParamLogs）查询参数修改记录
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -3282,7 +3282,7 @@ func NewDescribeInstanceParamsResponse() (response *DescribeInstanceParamsRespon
 }
 
 // DescribeInstanceParams
-// 该接口(DescribeInstanceParams)查询实例参数列表
+// 该接口(DescribeInstanceParams)查询实例参数
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -3298,7 +3298,7 @@ func (c *Client) DescribeInstanceParams(request *DescribeInstanceParamsRequest) 
 }
 
 // DescribeInstanceParams
-// 该接口(DescribeInstanceParams)查询实例参数列表
+// 该接口(DescribeInstanceParams)查询实例参数
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -3344,7 +3344,7 @@ func NewDescribeInstanceSlowQueriesResponse() (response *DescribeInstanceSlowQue
 }
 
 // DescribeInstanceSlowQueries
-// 此接口（DescribeInstanceSlowQueries）用于查询实例慢查询日志。
+// 此接口（DescribeInstanceSlowQueries）用于查询实例慢日志详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -3356,7 +3356,7 @@ func (c *Client) DescribeInstanceSlowQueries(request *DescribeInstanceSlowQuerie
 }
 
 // DescribeInstanceSlowQueries
-// 此接口（DescribeInstanceSlowQueries）用于查询实例慢查询日志。
+// 此接口（DescribeInstanceSlowQueries）用于查询实例慢日志详情。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -4074,7 +4074,7 @@ func NewDescribeResourcesByDealNameResponse() (response *DescribeResourcesByDeal
 }
 
 // DescribeResourcesByDealName
-// 根据计费订单id查询资源列表
+// 查询订单关联实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -4090,7 +4090,7 @@ func (c *Client) DescribeResourcesByDealName(request *DescribeResourcesByDealNam
 }
 
 // DescribeResourcesByDealName
-// 根据计费订单id查询资源列表
+// 查询订单关联实例
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -4136,7 +4136,7 @@ func NewDescribeRollbackTimeRangeResponse() (response *DescribeRollbackTimeRange
 }
 
 // DescribeRollbackTimeRange
-// 查询指定集群有效回滚时间范围
+// 查询回档时间范围
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -4152,7 +4152,7 @@ func (c *Client) DescribeRollbackTimeRange(request *DescribeRollbackTimeRangeReq
 }
 
 // DescribeRollbackTimeRange
-// 查询指定集群有效回滚时间范围
+// 查询回档时间范围
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5096,7 +5096,7 @@ func NewModifyAccountParamsResponse() (response *ModifyAccountParamsResponse) {
 }
 
 // ModifyAccountParams
-// 修改账号参数
+// 修改账号配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5141,7 +5141,7 @@ func (c *Client) ModifyAccountParams(request *ModifyAccountParamsRequest) (respo
 }
 
 // ModifyAccountParams
-// 修改账号参数
+// 修改账号配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5216,7 +5216,7 @@ func NewModifyAccountPrivilegesResponse() (response *ModifyAccountPrivilegesResp
 }
 
 // ModifyAccountPrivileges
-// 修改账号权限
+// 修改账号库表权限
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5260,7 +5260,7 @@ func (c *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRequest
 }
 
 // ModifyAccountPrivileges
-// 修改账号权限
+// 修改账号库表权限
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5842,7 +5842,7 @@ func NewModifyClusterSlaveZoneResponse() (response *ModifyClusterSlaveZoneRespon
 }
 
 // ModifyClusterSlaveZone
-// 修改从可用区
+// 变更备可用区
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -5855,7 +5855,7 @@ func (c *Client) ModifyClusterSlaveZone(request *ModifyClusterSlaveZoneRequest) 
 }
 
 // ModifyClusterSlaveZone
-// 修改从可用区
+// 变更备可用区
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -7170,7 +7170,7 @@ func NewRemoveClusterSlaveZoneResponse() (response *RemoveClusterSlaveZoneRespon
 }
 
 // RemoveClusterSlaveZone
-// 删除从可用区
+// 关闭多可用区部署
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -7184,7 +7184,7 @@ func (c *Client) RemoveClusterSlaveZone(request *RemoveClusterSlaveZoneRequest) 
 }
 
 // RemoveClusterSlaveZone
-// 删除从可用区
+// 关闭多可用区部署
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -7228,7 +7228,7 @@ func NewResetAccountPasswordResponse() (response *ResetAccountPasswordResponse) 
 }
 
 // ResetAccountPassword
-// 本接口(ResetAccountPassword)用于重置实例的数据库账号密码。
+// 本接口(ResetAccountPassword)用于修改数据库账号密码
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -7252,7 +7252,7 @@ func (c *Client) ResetAccountPassword(request *ResetAccountPasswordRequest) (res
 }
 
 // ResetAccountPassword
-// 本接口(ResetAccountPassword)用于重置实例的数据库账号密码。
+// 本接口(ResetAccountPassword)用于修改数据库账号密码
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -7610,7 +7610,7 @@ func NewRollBackClusterResponse() (response *RollBackClusterResponse) {
 }
 
 // RollBackCluster
-// 本接口（RollBackCluster）用于回档集群
+// 本接口（RollBackCluster）用于集群回档
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -7627,7 +7627,7 @@ func (c *Client) RollBackCluster(request *RollBackClusterRequest) (response *Rol
 }
 
 // RollBackCluster
-// 本接口（RollBackCluster）用于回档集群
+// 本接口（RollBackCluster）用于集群回档
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
@@ -7920,7 +7920,7 @@ func NewSwitchClusterZoneResponse() (response *SwitchClusterZoneResponse) {
 }
 
 // SwitchClusterZone
-// 切换到从可用区
+// 主备可用区切换
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
@@ -7933,7 +7933,7 @@ func (c *Client) SwitchClusterZone(request *SwitchClusterZoneRequest) (response 
 }
 
 // SwitchClusterZone
-// 切换到从可用区
+// 主备可用区切换
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"

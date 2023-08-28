@@ -37,7 +37,7 @@ type AddDelayLiveStreamRequestParams struct {
 	// 延播设置的过期时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 	// 注意：
 	// 1. 默认7天后过期，且最长支持7天内生效。
-	// 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
@@ -59,7 +59,7 @@ type AddDelayLiveStreamRequest struct {
 	// 延播设置的过期时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 	// 注意：
 	// 1. 默认7天后过期，且最长支持7天内生效。
-	// 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
 	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
 }
 
@@ -11349,7 +11349,7 @@ type ForbidLiveStreamRequestParams struct {
 	// 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 	// 注意：
 	// 1. 默认禁推7天，且最长支持禁推90天。
-	// 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
 	ResumeTime *string `json:"ResumeTime,omitempty" name:"ResumeTime"`
 
 	// 禁推原因。
@@ -11373,7 +11373,7 @@ type ForbidLiveStreamRequest struct {
 	// 恢复流的时间。UTC 格式，例如：2018-11-29T19:00:00Z。
 	// 注意：
 	// 1. 默认禁推7天，且最长支持禁推90天。
-	// 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// 2. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
 	ResumeTime *string `json:"ResumeTime,omitempty" name:"ResumeTime"`
 
 	// 禁推原因。
@@ -12371,7 +12371,7 @@ type ModifyLivePullStreamTaskRequestParams struct {
 	// 开始时间。
 	// 使用UTC格式时间，
 	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间，注意：
@@ -12380,7 +12380,7 @@ type ModifyLivePullStreamTaskRequestParams struct {
 	// 3. 结束时间 和 开始时间 间隔必须小于七天。
 	// 使用UTC格式时间，
 	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 点播拉流转推循环次数。
@@ -12474,7 +12474,7 @@ type ModifyLivePullStreamTaskRequest struct {
 	// 开始时间。
 	// 使用UTC格式时间，
 	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
 	// 结束时间，注意：
@@ -12483,7 +12483,7 @@ type ModifyLivePullStreamTaskRequest struct {
 	// 3. 结束时间 和 开始时间 间隔必须小于七天。
 	// 使用UTC格式时间，
 	// 例如：2019-01-08T10:00:00Z。
-	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	// 注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/267/38543#I)。
 	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
 
 	// 点播拉流转推循环次数。

@@ -1048,6 +1048,9 @@ type CreateModelServiceRequestParams struct {
 
 	// 服务分类
 	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
+
+	// 服务的启动命令
+	Command *string `json:"Command,omitempty" name:"Command"`
 }
 
 type CreateModelServiceRequest struct {
@@ -1162,6 +1165,9 @@ type CreateModelServiceRequest struct {
 
 	// 服务分类
 	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
+
+	// 服务的启动命令
+	Command *string `json:"Command,omitempty" name:"Command"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1205,6 +1211,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "CallbackUrl")
 	delete(f, "ModelTurboEnable")
 	delete(f, "ServiceCategory")
+	delete(f, "Command")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -5978,6 +5985,12 @@ type ImageInfo struct {
 	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
 }
 
+type InferCodeInfo struct {
+	// 推理代码所在的cos详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CosPathInfo *CosPathInfo `json:"CosPathInfo,omitempty" name:"CosPathInfo"`
+}
+
 type InferGatewayCallInfo struct {
 	// 内网http调用地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -6477,6 +6490,9 @@ type ModifyModelServiceRequestParams struct {
 
 	// 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。默认不开启
 	ModelTurboEnable *bool `json:"ModelTurboEnable,omitempty" name:"ModelTurboEnable"`
+
+	// 服务的启动命令
+	Command *string `json:"Command,omitempty" name:"Command"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -6567,6 +6583,9 @@ type ModifyModelServiceRequest struct {
 
 	// 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。默认不开启
 	ModelTurboEnable *bool `json:"ModelTurboEnable,omitempty" name:"ModelTurboEnable"`
+
+	// 服务的启动命令
+	Command *string `json:"Command,omitempty" name:"Command"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -6602,6 +6621,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "ServiceLimit")
 	delete(f, "VolumeMount")
 	delete(f, "ModelTurboEnable")
+	delete(f, "Command")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -8293,6 +8313,18 @@ type ServiceInfo struct {
 	// 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModelTurboEnable *bool `json:"ModelTurboEnable,omitempty" name:"ModelTurboEnable"`
+
+	// 挂载
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeMount *VolumeMount `json:"VolumeMount,omitempty" name:"VolumeMount"`
+
+	// 推理代码信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InferCodeInfo *InferCodeInfo `json:"InferCodeInfo,omitempty" name:"InferCodeInfo"`
+
+	// 服务的启动命令
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Command *string `json:"Command,omitempty" name:"Command"`
 }
 
 type ServiceLimit struct {
@@ -8481,6 +8513,10 @@ type StatefulSetCondition struct {
 	// 上次更新的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastTransitionTime *string `json:"LastTransitionTime,omitempty" name:"LastTransitionTime"`
+
+	// 上次更新的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *string `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
 }
 
 // Predefined struct for user
@@ -9279,7 +9315,7 @@ type VolumeMount struct {
 	// cfs的配置信息
 	CFSConfig *CFSConfig `json:"CFSConfig,omitempty" name:"CFSConfig"`
 
-	// 挂载源类型
+	// 挂载源类型，CFS、COS，默认为CFS
 	VolumeSourceType *string `json:"VolumeSourceType,omitempty" name:"VolumeSourceType"`
 }
 
@@ -9316,6 +9352,8 @@ type WorkloadStatus struct {
 	Status *string `json:"Status,omitempty" name:"Status"`
 
 	// 工作负载的状况信息
+	//
+	// Deprecated: StatefulSetCondition is deprecated.
 	StatefulSetCondition []*StatefulSetCondition `json:"StatefulSetCondition,omitempty" name:"StatefulSetCondition"`
 
 	// 工作负载历史的状况信息

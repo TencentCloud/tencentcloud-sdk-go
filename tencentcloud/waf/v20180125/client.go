@@ -691,6 +691,56 @@ func (c *Client) DeleteAttackDownloadRecordWithContext(ctx context.Context, requ
     return
 }
 
+func NewDeleteCustomRuleRequest() (request *DeleteCustomRuleRequest) {
+    request = &DeleteCustomRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DeleteCustomRule")
+    
+    
+    return
+}
+
+func NewDeleteCustomRuleResponse() (response *DeleteCustomRuleResponse) {
+    response = &DeleteCustomRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCustomRule
+// 删除自定义规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCustomRule(request *DeleteCustomRuleRequest) (response *DeleteCustomRuleResponse, err error) {
+    return c.DeleteCustomRuleWithContext(context.Background(), request)
+}
+
+// DeleteCustomRule
+// 删除自定义规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteCustomRuleWithContext(ctx context.Context, request *DeleteCustomRuleRequest) (response *DeleteCustomRuleResponse, err error) {
+    if request == nil {
+        request = NewDeleteCustomRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCustomRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCustomRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteCustomWhiteRuleRequest() (request *DeleteCustomWhiteRuleRequest) {
     request = &DeleteCustomWhiteRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1657,6 +1707,58 @@ func (c *Client) DescribeCiphersDetailWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewDescribeCiphersDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCustomRuleListRequest() (request *DescribeCustomRuleListRequest) {
+    request = &DescribeCustomRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeCustomRuleList")
+    
+    
+    return
+}
+
+func NewDescribeCustomRuleListResponse() (response *DescribeCustomRuleListResponse) {
+    response = &DescribeCustomRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCustomRuleList
+// 获取防护配置中的访问控制策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCustomRuleList(request *DescribeCustomRuleListRequest) (response *DescribeCustomRuleListResponse, err error) {
+    return c.DescribeCustomRuleListWithContext(context.Background(), request)
+}
+
+// DescribeCustomRuleList
+// 获取防护配置中的访问控制策略列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeCustomRuleListWithContext(ctx context.Context, request *DescribeCustomRuleListRequest) (response *DescribeCustomRuleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeCustomRuleListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCustomRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCustomRuleListResponse()
     err = c.Send(request, response)
     return
 }
@@ -4019,6 +4121,82 @@ func (c *Client) ModifyBotStatusWithContext(ctx context.Context, request *Modify
     request.SetContext(ctx)
     
     response = NewModifyBotStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCustomRuleRequest() (request *ModifyCustomRuleRequest) {
+    request = &ModifyCustomRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyCustomRule")
+    
+    
+    return
+}
+
+func NewModifyCustomRuleResponse() (response *ModifyCustomRuleResponse) {
+    response = &ModifyCustomRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCustomRule
+// 编辑自定义规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCustomRule(request *ModifyCustomRuleRequest) (response *ModifyCustomRuleResponse, err error) {
+    return c.ModifyCustomRuleWithContext(context.Background(), request)
+}
+
+// ModifyCustomRule
+// 编辑自定义规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCustomRuleWithContext(ctx context.Context, request *ModifyCustomRuleRequest) (response *ModifyCustomRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyCustomRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCustomRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCustomRuleResponse()
     err = c.Send(request, response)
     return
 }

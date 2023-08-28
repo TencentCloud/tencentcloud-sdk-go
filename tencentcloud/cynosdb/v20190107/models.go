@@ -3181,9 +3181,11 @@ type CynosdbInstanceGrp struct {
 
 type DatabasePrivileges struct {
 	// 数据库
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Db *string `json:"Db,omitempty" name:"Db"`
 
 	// 权限列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 }
 
@@ -12526,12 +12528,15 @@ func (r *SwitchProxyVpcResponse) FromJsonString(s string) error {
 
 type TablePrivileges struct {
 	// 数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Db *string `json:"Db,omitempty" name:"Db"`
 
 	// 表名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TableName *string `json:"TableName,omitempty" name:"TableName"`
 
 	// 权限列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
 }
 

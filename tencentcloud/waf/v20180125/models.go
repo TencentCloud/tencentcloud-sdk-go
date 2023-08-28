@@ -1335,6 +1335,74 @@ func (r *DeleteAttackDownloadRecordResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteCustomRuleRequestParams struct {
+	// 删除的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 删除的规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+}
+
+type DeleteCustomRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 删除的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 删除的规则ID
+	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+
+	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+}
+
+func (r *DeleteCustomRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "RuleId")
+	delete(f, "Edition")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCustomRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCustomRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteCustomRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCustomRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteCustomRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCustomRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCustomWhiteRuleRequestParams struct {
 	// 删除的域名
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
@@ -2398,6 +2466,101 @@ func (r *DescribeCiphersDetailResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCiphersDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCustomRuleListRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 容量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤数组,name可以是如下的值： RuleID,RuleName,Match
+	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+
+	// asc或者desc
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// exp_ts或者mod_ts
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+type DescribeCustomRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 偏移
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 容量
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 过滤数组,name可以是如下的值： RuleID,RuleName,Match
+	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+
+	// asc或者desc
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// exp_ts或者mod_ts
+	By *string `json:"By,omitempty" name:"By"`
+}
+
+func (r *DescribeCustomRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCustomRuleListResponseParams struct {
+	// 规则详情
+	RuleList []*DescribeCustomRulesRspRuleListItem `json:"RuleList,omitempty" name:"RuleList"`
+
+	// 规则条数
+	TotalCount *string `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeCustomRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCustomRuleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeCustomRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCustomRuleListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5760,6 +5923,129 @@ func (r *ModifyBotStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyBotStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCustomRuleRequestParams struct {
+	// 编辑的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 编辑的规则ID
+	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 编辑的规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 执行动作，0：放行、1：阻断、2：人机识别、3：观察、4：重定向
+	RuleAction *string `json:"RuleAction,omitempty" name:"RuleAction"`
+
+	// 匹配条件数组
+	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
+
+	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// 动作为重定向的时候重定向URL，默认为"/"
+	Redirect *string `json:"Redirect,omitempty" name:"Redirect"`
+
+	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。
+	// 默认是"geoip,cc,owasp,ai,antileakage"
+	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+
+	// 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
+	// 默认是100
+	SortId *uint64 `json:"SortId,omitempty" name:"SortId"`
+
+	// 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
+	// 默认是0
+	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+}
+
+type ModifyCustomRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 编辑的域名
+	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 编辑的规则ID
+	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+
+	// 编辑的规则名称
+	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+
+	// 执行动作，0：放行、1：阻断、2：人机识别、3：观察、4：重定向
+	RuleAction *string `json:"RuleAction,omitempty" name:"RuleAction"`
+
+	// 匹配条件数组
+	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
+
+	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
+	Edition *string `json:"Edition,omitempty" name:"Edition"`
+
+	// 动作为重定向的时候重定向URL，默认为"/"
+	Redirect *string `json:"Redirect,omitempty" name:"Redirect"`
+
+	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。
+	// 默认是"geoip,cc,owasp,ai,antileakage"
+	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+
+	// 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
+	// 默认是100
+	SortId *uint64 `json:"SortId,omitempty" name:"SortId"`
+
+	// 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
+	// 默认是0
+	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+}
+
+func (r *ModifyCustomRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCustomRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "RuleId")
+	delete(f, "RuleName")
+	delete(f, "RuleAction")
+	delete(f, "Strategies")
+	delete(f, "Edition")
+	delete(f, "Redirect")
+	delete(f, "Bypass")
+	delete(f, "SortId")
+	delete(f, "ExpireTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCustomRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCustomRuleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyCustomRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCustomRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyCustomRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCustomRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
