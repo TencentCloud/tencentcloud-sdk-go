@@ -1,8 +1,8 @@
 package common
 
 import (
-	"encoding/json"
 	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 	"testing"
 )
 
