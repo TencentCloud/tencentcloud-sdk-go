@@ -3124,6 +3124,10 @@ type DescribeUserResponseParams struct {
 	// 用户头像Url。
 	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
 
+	// 用户在客户系统的Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -5045,6 +5049,10 @@ type UserInfo struct {
 	// 用户头像Url。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
+
+	// 用户在客户系统的Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
 }
 
 type WatermarkConfig struct {

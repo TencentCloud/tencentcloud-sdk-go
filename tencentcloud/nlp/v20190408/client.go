@@ -632,7 +632,7 @@ func NewGenerateKeywordSentenceResponse() (response *GenerateKeywordSentenceResp
 }
 
 // GenerateKeywordSentence
-// 提取文本中的关键信息，生成简洁明了的关键句子，便于用户快速获取核心观点。
+// 根据提供的关键词，生成简洁明了的关键句子，便于用户快速获取核心观点。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"
@@ -666,7 +666,7 @@ func (c *Client) GenerateKeywordSentence(request *GenerateKeywordSentenceRequest
 }
 
 // GenerateKeywordSentence
-// 提取文本中的关键信息，生成简洁明了的关键句子，便于用户快速获取核心观点。
+// 根据提供的关键词，生成简洁明了的关键句子，便于用户快速获取核心观点。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_BALANCEINSUFFICIENT = "FailedOperation.BalanceInsufficient"

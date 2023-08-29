@@ -472,8 +472,6 @@ func NewCreateConvertTaskApiResponse() (response *CreateConvertTaskApiResponse) 
 // CreateConvertTaskApi
 // 上传了word、excel、图片文件后，通过该接口发起文件转换任务，将word、excel、图片文件转换为pdf文件。
 //
-// 注：如果是集团代子企业发起任务场景，可以通过对Agent参数（未列在入参列表）设置代理的相关应用信息来支持，Agent参数设置可以参考CreateFlow接口的Agent相关说明。
-//
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
 //  INVALIDPARAMETER_INVALIDID = "InvalidParameter.InvalidId"
@@ -489,8 +487,6 @@ func (c *Client) CreateConvertTaskApi(request *CreateConvertTaskApiRequest) (res
 
 // CreateConvertTaskApi
 // 上传了word、excel、图片文件后，通过该接口发起文件转换任务，将word、excel、图片文件转换为pdf文件。
-//
-// 注：如果是集团代子企业发起任务场景，可以通过对Agent参数（未列在入参列表）设置代理的相关应用信息来支持，Agent参数设置可以参考CreateFlow接口的Agent相关说明。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
@@ -2674,6 +2670,14 @@ func NewCreateMultiFlowSignQRCodeResponse() (response *CreateMultiFlowSignQRCode
 //
 // - B端企业是非首位签署
 //
+// 
+//
+//  通过一码多扫二维码发起的合同，涉及到的合同回调消息可参考文档[合同发起以及签署相关回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign)
+//
+// 
+//
+// 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/company/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_QRCODECREATORSIGNCOMPONENTS = "FailedOperation.QrCodeCreatorSignComponents"
@@ -2723,6 +2727,14 @@ func (c *Client) CreateMultiFlowSignQRCode(request *CreateMultiFlowSignQRCodeReq
 // - B端企业的签署方式是静默签署
 //
 // - B端企业是非首位签署
+//
+// 
+//
+//  通过一码多扫二维码发起的合同，涉及到的合同回调消息可参考文档[合同发起以及签署相关回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign)
+//
+// 
+//
+// 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档[签署二维码相关回调](https://qian.tencent.com/developers/company/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3467,6 +3479,7 @@ func NewCreateSealResponse() (response *CreateSealResponse) {
 // 本接口（CreateSeal）用于创建企业电子印章，支持创建企业公章，合同章，财务专用章和人事专用章创建。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
@@ -3485,6 +3498,7 @@ func (c *Client) CreateSeal(request *CreateSealRequest) (response *CreateSealRes
 // 本接口（CreateSeal）用于创建企业电子印章，支持创建企业公章，合同章，财务专用章和人事专用章创建。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
 //  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
@@ -4644,6 +4658,7 @@ func NewDescribeIntegrationEmployeesResponse() (response *DescribeIntegrationEmp
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeIntegrationEmployees(request *DescribeIntegrationEmployeesRequest) (response *DescribeIntegrationEmployeesResponse, err error) {
@@ -4667,6 +4682,7 @@ func (c *Client) DescribeIntegrationEmployees(request *DescribeIntegrationEmploy
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeIntegrationEmployeesWithContext(ctx context.Context, request *DescribeIntegrationEmployeesRequest) (response *DescribeIntegrationEmployeesResponse, err error) {
@@ -4902,6 +4918,7 @@ func NewDescribeOrganizationSealsResponse() (response *DescribeOrganizationSeals
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeOrganizationSeals(request *DescribeOrganizationSealsRequest) (response *DescribeOrganizationSealsResponse, err error) {
@@ -4923,6 +4940,7 @@ func (c *Client) DescribeOrganizationSeals(request *DescribeOrganizationSealsReq
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_OPERATORHASNOPERMISSION = "OperationDenied.OperatorHasNoPermission"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeOrganizationSealsWithContext(ctx context.Context, request *DescribeOrganizationSealsRequest) (response *DescribeOrganizationSealsResponse, err error) {
@@ -5724,7 +5742,7 @@ func NewVerifyPdfResponse() (response *VerifyPdfResponse) {
 }
 
 // VerifyPdf
-// 对流程的合同文件进行验证，判断文件是否合法。
+// 对流程的合同文件进行数字签名验证，判断文件是否被篡改。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -5738,7 +5756,7 @@ func (c *Client) VerifyPdf(request *VerifyPdfRequest) (response *VerifyPdfRespon
 }
 
 // VerifyPdf
-// 对流程的合同文件进行验证，判断文件是否合法。
+// 对流程的合同文件进行数字签名验证，判断文件是否被篡改。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

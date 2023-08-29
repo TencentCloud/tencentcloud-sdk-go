@@ -449,6 +449,9 @@ const (
 	// 取回任务不存在
 	RESOURCENOTFOUND_RETRIEVETASKNOTEXIST = "ResourceNotFound.RetrieveTaskNotExist"
 
+	// 视频流不存在或已关闭
+	RESOURCENOTFOUND_STREAMNOTEXISTORCLOSE = "ResourceNotFound.StreamNotExistOrClose"
+
 	// 模板不存在
 	RESOURCENOTFOUND_TEMPLATENOTEXIST = "ResourceNotFound.TemplateNotExist"
 

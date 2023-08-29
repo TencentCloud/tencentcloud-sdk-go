@@ -183,6 +183,7 @@ func NewCreateCommandResponse() (response *CreateCommandResponse) {
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCommand(request *CreateCommandRequest) (response *CreateCommandResponse, err error) {
     return c.CreateCommandWithContext(context.Background(), request)
 }
@@ -217,6 +218,7 @@ func (c *Client) CreateCommand(request *CreateCommandRequest) (response *CreateC
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
 //  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
 //  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) CreateCommandWithContext(ctx context.Context, request *CreateCommandRequest) (response *CreateCommandResponse, err error) {
     if request == nil {
         request = NewCreateCommandRequest()
@@ -898,6 +900,7 @@ func NewDescribeInvokerRecordsResponse() (response *DescribeInvokerRecordsRespon
 //  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInvokerRecords(request *DescribeInvokerRecordsRequest) (response *DescribeInvokerRecordsResponse, err error) {
     return c.DescribeInvokerRecordsWithContext(context.Background(), request)
 }
@@ -909,6 +912,7 @@ func (c *Client) DescribeInvokerRecords(request *DescribeInvokerRecordsRequest) 
 //  AUTHFAILURE = "AuthFailure"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDINVOKERID = "InvalidParameterValue.InvalidInvokerId"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeInvokerRecordsWithContext(ctx context.Context, request *DescribeInvokerRecordsRequest) (response *DescribeInvokerRecordsResponse, err error) {
     if request == nil {
         request = NewDescribeInvokerRecordsRequest()

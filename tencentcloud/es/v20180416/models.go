@@ -247,7 +247,7 @@ type CreateInstanceRequestParams struct {
 	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
 
 	// 已废弃请使用NodeInfoList
-	// 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
+	// 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li>默认值CLOUD_SSD
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
 	// 已废弃请使用NodeInfoList
@@ -320,6 +320,9 @@ type CreateInstanceRequestParams struct {
 
 	// 是否开启智能巡检
 	EnableDiagnose *bool `json:"EnableDiagnose,omitempty" name:"EnableDiagnose"`
+
+	// cdcId，使用cdc子网时传递
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 }
 
 type CreateInstanceRequest struct {
@@ -361,7 +364,7 @@ type CreateInstanceRequest struct {
 	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
 
 	// 已废弃请使用NodeInfoList
-	// 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高硬能云硬盘</li>默认值CLOUD_SSD
+	// 节点磁盘类型<li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li>默认值CLOUD_SSD
 	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
 
 	// 已废弃请使用NodeInfoList
@@ -434,6 +437,9 @@ type CreateInstanceRequest struct {
 
 	// 是否开启智能巡检
 	EnableDiagnose *bool `json:"EnableDiagnose,omitempty" name:"EnableDiagnose"`
+
+	// cdcId，使用cdc子网时传递
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 }
 
 func (r *CreateInstanceRequest) ToJsonString() string {
@@ -482,6 +488,7 @@ func (r *CreateInstanceRequest) FromJsonString(s string) error {
 	delete(f, "EnableHybridStorage")
 	delete(f, "DiskEnhance")
 	delete(f, "EnableDiagnose")
+	delete(f, "CdcId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstanceRequest has unknown keys!", "")
 	}
@@ -2559,6 +2566,14 @@ type InstanceInfo struct {
 	// Kibana的altering外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	KibanaAlteringPublicAccess *string `json:"KibanaAlteringPublicAccess,omitempty" name:"KibanaAlteringPublicAccess"`
+
+	// 本月是否有内核可以更新：false-无，true-有
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HasKernelUpgrade *bool `json:"HasKernelUpgrade,omitempty" name:"HasKernelUpgrade"`
+
+	// cdcId，使用cdc子网时传递
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CdcId *string `json:"CdcId,omitempty" name:"CdcId"`
 }
 
 type InstanceLog struct {

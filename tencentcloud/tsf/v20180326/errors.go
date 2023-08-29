@@ -1034,6 +1034,9 @@ const (
 	// 命名空间ID不能为空。
 	MISSINGPARAMETER_NAMESPACEIDREQUIRED = "MissingParameter.NamespaceIdRequired"
 
+	// 命名空间名称未填写。
+	MISSINGPARAMETER_NAMESPACENAMEREQUIRED = "MissingParameter.NamespaceNameRequired"
+
 	// %s缺失。
 	MISSINGPARAMETER_REQUIREDPARAMETERMISSING = "MissingParameter.RequiredParameterMissing"
 

@@ -135,6 +135,9 @@ type BaseFlowInfo struct {
 	// <br/>false：不开启发起方发起前审核
 	// <br/>当指定NeedCreateReview=true，则提交审核后，需要使用接口：ChannelCreateFlowSignReview，来完成发起前审核，审核通过后，可以继续查看，签署合同
 	NeedCreateReview *bool `json:"NeedCreateReview,omitempty" name:"NeedCreateReview"`
+
+	// 填写控件：文件发起使用
+	Components []*Component `json:"Components,omitempty" name:"Components"`
 }
 
 type CcInfo struct {
@@ -1541,9 +1544,11 @@ type ChannelCreateMultiFlowSignQRCodeRequestParams struct {
 	// <br/>指定后，只允许知道的人操作和签署
 	Restrictions []*ApproverRestriction `json:"Restrictions,omitempty" name:"Restrictions"`
 
-	// 回调地址，最大长度1000个字符
-	// 不传默认使用第三方应用号配置的回调地址
-	// 回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
+	// 已废弃，回调配置统一使用企业应用管理-应用集成-第三方应用中的配置
+	// <br/> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/partner/callback_types_contracts_sign
+	// <br/> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83
+	//
+	// Deprecated: CallbackUrl is deprecated.
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 限制二维码用户条件（已弃用）
@@ -1585,9 +1590,9 @@ type ChannelCreateMultiFlowSignQRCodeRequest struct {
 	// <br/>指定后，只允许知道的人操作和签署
 	Restrictions []*ApproverRestriction `json:"Restrictions,omitempty" name:"Restrictions"`
 
-	// 回调地址，最大长度1000个字符
-	// 不传默认使用第三方应用号配置的回调地址
-	// 回调时机:用户通过签署二维码发起合同时，企业额度不足导致失败
+	// 已废弃，回调配置统一使用企业应用管理-应用集成-第三方应用中的配置
+	// <br/> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/partner/callback_types_contracts_sign
+	// <br/> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83
 	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
 
 	// 限制二维码用户条件（已弃用）
@@ -1718,7 +1723,7 @@ type ChannelCreatePrepareFlowRequestParams struct {
 	// 资源id，与ResourceType对应
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 资源类型，1：模板，目前仅支持模板，与ResourceId对应
+	// 资源类型，与ResourceId对应1：模板   2: 文件
 	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 合同流程基础信息
@@ -1758,7 +1763,7 @@ type ChannelCreatePrepareFlowRequest struct {
 	// 资源id，与ResourceType对应
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
-	// 资源类型，1：模板，目前仅支持模板，与ResourceId对应
+	// 资源类型，与ResourceId对应1：模板   2: 文件
 	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 合同流程基础信息
@@ -3501,6 +3506,9 @@ type CommonFlowApprover struct {
 
 	// 签署人配置
 	ApproverOption *CommonApproverOption `json:"ApproverOption,omitempty" name:"ApproverOption"`
+
+	// 签署控件：文件发起使用
+	SignComponents []*Component `json:"SignComponents,omitempty" name:"SignComponents"`
 }
 
 type Component struct {

@@ -209,6 +209,7 @@ func NewListDeployableRuntimesMCResponse() (response *ListDeployableRuntimesMCRe
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
 //  FAILEDOPERATION_UNSUPPORTEDOPERATIONTYPE = "FailedOperation.UnSupportedOperationType"
+//  INTERNALERROR_CONNECTORNOTEXIST = "InternalError.ConnectorNotExist"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
 //  INVALIDPARAMETERVALUE_PILOTZONENOTSUPPORTED = "InvalidParameterValue.PilotZoneNotSupported"
@@ -223,6 +224,7 @@ func (c *Client) ListDeployableRuntimesMC(request *ListDeployableRuntimesMCReque
 // 可能返回的错误码:
 //  FAILEDOPERATION_AUTHENTICATIONFAILED = "FailedOperation.AuthenticationFailed"
 //  FAILEDOPERATION_UNSUPPORTEDOPERATIONTYPE = "FailedOperation.UnSupportedOperationType"
+//  INTERNALERROR_CONNECTORNOTEXIST = "InternalError.ConnectorNotExist"
 //  INTERNALERROR_DATABASEERROR = "InternalError.DatabaseError"
 //  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
 //  INVALIDPARAMETERVALUE_PILOTZONENOTSUPPORTED = "InvalidParameterValue.PilotZoneNotSupported"

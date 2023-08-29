@@ -1040,7 +1040,7 @@ func (r *CreateDedicatedClusterDBInstanceResponse) FromJsonString(s string) erro
 
 // Predefined struct for user
 type CreateHourDBInstanceRequestParams struct {
-	// 节点可用区分布，最多可填两个可用区。
+	// 节点可用区分布，可填写多个可用区。
 	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 
 	// 节点个数
@@ -1095,12 +1095,15 @@ type CreateHourDBInstanceRequestParams struct {
 
 	// 回档时间
 	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
+
+	// DCN同步模式，0：普通DCN同步，1：一致性同步
+	DcnSyncMode *int64 `json:"DcnSyncMode,omitempty" name:"DcnSyncMode"`
 }
 
 type CreateHourDBInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 节点可用区分布，最多可填两个可用区。
+	// 节点可用区分布，可填写多个可用区。
 	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 
 	// 节点个数
@@ -1155,6 +1158,9 @@ type CreateHourDBInstanceRequest struct {
 
 	// 回档时间
 	RollbackTime *string `json:"RollbackTime,omitempty" name:"RollbackTime"`
+
+	// DCN同步模式，0：普通DCN同步，1：一致性同步
+	DcnSyncMode *int64 `json:"DcnSyncMode,omitempty" name:"DcnSyncMode"`
 }
 
 func (r *CreateHourDBInstanceRequest) ToJsonString() string {
@@ -1187,6 +1193,7 @@ func (r *CreateHourDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "InitParams")
 	delete(f, "RollbackInstanceId")
 	delete(f, "RollbackTime")
+	delete(f, "DcnSyncMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHourDBInstanceRequest has unknown keys!", "")
 	}

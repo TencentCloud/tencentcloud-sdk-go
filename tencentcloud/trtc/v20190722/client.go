@@ -1625,20 +1625,7 @@ func NewDescribeTRTCRealTimeQualityMetricDataResponse() (response *DescribeTRTCR
 // 2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCRealTimeQualityMetricData(request *DescribeTRTCRealTimeQualityMetricDataRequest) (response *DescribeTRTCRealTimeQualityMetricDataResponse, err error) {
     return c.DescribeTRTCRealTimeQualityMetricDataWithContext(context.Background(), request)
 }
@@ -1657,20 +1644,7 @@ func (c *Client) DescribeTRTCRealTimeQualityMetricData(request *DescribeTRTCReal
 // 2.查询时间范围根据监控仪表盘功能版本而定，基础版可查近3小时，进阶版可查近12小时。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCRealTimeQualityMetricDataWithContext(ctx context.Context, request *DescribeTRTCRealTimeQualityMetricDataRequest) (response *DescribeTRTCRealTimeQualityMetricDataResponse, err error) {
     if request == nil {
         request = NewDescribeTRTCRealTimeQualityMetricDataRequest()
@@ -1723,20 +1697,7 @@ func NewDescribeTRTCRealTimeScaleDataResponse() (response *DescribeTRTCRealTimeS
 // 3.除此之外您也可以通过订阅TRTC包月套餐(https://buy.cloud.tencent.com/trtc)尊享版或旗舰版解锁此接口的调用能力，请在开通包月套餐后，请提交工单联系售后解锁调用能力https://console.cloud.tencent.com/workorder/category
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCRealTimeScaleData(request *DescribeTRTCRealTimeScaleDataRequest) (response *DescribeTRTCRealTimeScaleDataResponse, err error) {
     return c.DescribeTRTCRealTimeScaleDataWithContext(context.Background(), request)
 }
@@ -1759,20 +1720,7 @@ func (c *Client) DescribeTRTCRealTimeScaleData(request *DescribeTRTCRealTimeScal
 // 3.除此之外您也可以通过订阅TRTC包月套餐(https://buy.cloud.tencent.com/trtc)尊享版或旗舰版解锁此接口的调用能力，请在开通包月套餐后，请提交工单联系售后解锁调用能力https://console.cloud.tencent.com/workorder/category
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCRealTimeScaleDataWithContext(ctx context.Context, request *DescribeTRTCRealTimeScaleDataRequest) (response *DescribeTRTCRealTimeScaleDataResponse, err error) {
     if request == nil {
         request = NewDescribeTRTCRealTimeScaleDataRequest()
@@ -1825,20 +1773,7 @@ func NewDescribeTRTCRealTimeScaleMetricDataResponse() (response *DescribeTRTCRea
 // 3.除此之外您也可以通过订阅TRTC包月套餐(https://buy.cloud.tencent.com/trtc)尊享版或旗舰版解锁此接口（DescribeTRTCRealTimeScaleMetricData）的调用能力，请在开通包月套餐后，请提交工单联系售后解锁调用能力https://console.cloud.tencent.com/workorder/category
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCRealTimeScaleMetricData(request *DescribeTRTCRealTimeScaleMetricDataRequest) (response *DescribeTRTCRealTimeScaleMetricDataResponse, err error) {
     return c.DescribeTRTCRealTimeScaleMetricDataWithContext(context.Background(), request)
 }
@@ -1861,20 +1796,7 @@ func (c *Client) DescribeTRTCRealTimeScaleMetricData(request *DescribeTRTCRealTi
 // 3.除此之外您也可以通过订阅TRTC包月套餐(https://buy.cloud.tencent.com/trtc)尊享版或旗舰版解锁此接口（DescribeTRTCRealTimeScaleMetricData）的调用能力，请在开通包月套餐后，请提交工单联系售后解锁调用能力https://console.cloud.tencent.com/workorder/category
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_HTTPPARASEFALIED = "InternalError.HttpParaseFalied"
-//  INTERNALERROR_INTERFACEERR = "InternalError.InterfaceErr"
-//  INTERNALERROR_METHODERR = "InternalError.MethodErr"
-//  INVALIDPARAMETER_BODYPARAMSERROR = "InvalidParameter.BodyParamsError"
-//  INVALIDPARAMETER_ENDTS = "InvalidParameter.EndTs"
-//  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
-//  INVALIDPARAMETER_STARTTS = "InvalidParameter.StartTs"
-//  INVALIDPARAMETER_STARTTSOVERSIZE = "InvalidParameter.StartTsOversize"
-//  INVALIDPARAMETER_USERIDSMORETHANSIX = "InvalidParameter.UserIdsMorethanSix"
-//  MISSINGPARAMETER_ENDTS = "MissingParameter.EndTs"
-//  MISSINGPARAMETER_SDKAPPID = "MissingParameter.SdkAppId"
-//  MISSINGPARAMETER_STARTTS = "MissingParameter.StartTs"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTRTCRealTimeScaleMetricDataWithContext(ctx context.Context, request *DescribeTRTCRealTimeScaleMetricDataRequest) (response *DescribeTRTCRealTimeScaleMetricDataResponse, err error) {
     if request == nil {
         request = NewDescribeTRTCRealTimeScaleMetricDataRequest()
@@ -3042,6 +2964,7 @@ func NewStartMCUMixTranscodeByStrRoomIdResponse() (response *StartMCUMixTranscod
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
+//  FAILEDOPERATION_TASKFINISHED = "FailedOperation.TaskFinished"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_AUDIOENCODEPARAMS = "InvalidParameter.AudioEncodeParams"
@@ -3124,6 +3047,7 @@ func (c *Client) StartMCUMixTranscodeByStrRoomId(request *StartMCUMixTranscodeBy
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTREJECTION = "FailedOperation.RequestRejection"
 //  FAILEDOPERATION_ROOMNOTEXIST = "FailedOperation.RoomNotExist"
+//  FAILEDOPERATION_TASKFINISHED = "FailedOperation.TaskFinished"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETER_AUDIOENCODEPARAMS = "InvalidParameter.AudioEncodeParams"

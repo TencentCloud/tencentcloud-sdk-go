@@ -1150,7 +1150,7 @@ type CreateHourDCDBInstanceRequestParams struct {
 	// 数据库引擎版本，当前可选：8.0，5.7，10.1，10.0。
 	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
 
-	// 分片节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
+	// 分片节点可用区分布，可填写多个可用区。
 	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 
 	// 安全组id
@@ -1182,6 +1182,9 @@ type CreateHourDCDBInstanceRequestParams struct {
 
 	// 安全组ids，安全组可以传数组形式，兼容之前SecurityGroupId参数
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// DCN同步模式，0：普通DCN同步，1：一致性同步
+	DcnSyncMode *int64 `json:"DcnSyncMode,omitempty" name:"DcnSyncMode"`
 }
 
 type CreateHourDCDBInstanceRequest struct {
@@ -1221,7 +1224,7 @@ type CreateHourDCDBInstanceRequest struct {
 	// 数据库引擎版本，当前可选：8.0，5.7，10.1，10.0。
 	DbVersionId *string `json:"DbVersionId,omitempty" name:"DbVersionId"`
 
-	// 分片节点可用区分布，最多可填两个可用区。当分片规格为一主两从时，其中两个节点在第一个可用区。
+	// 分片节点可用区分布，可填写多个可用区。
 	Zones []*string `json:"Zones,omitempty" name:"Zones"`
 
 	// 安全组id
@@ -1253,6 +1256,9 @@ type CreateHourDCDBInstanceRequest struct {
 
 	// 安全组ids，安全组可以传数组形式，兼容之前SecurityGroupId参数
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
+
+	// DCN同步模式，0：普通DCN同步，1：一致性同步
+	DcnSyncMode *int64 `json:"DcnSyncMode,omitempty" name:"DcnSyncMode"`
 }
 
 func (r *CreateHourDCDBInstanceRequest) ToJsonString() string {
@@ -1288,6 +1294,7 @@ func (r *CreateHourDCDBInstanceRequest) FromJsonString(s string) error {
 	delete(f, "RollbackInstanceId")
 	delete(f, "RollbackTime")
 	delete(f, "SecurityGroupIds")
+	delete(f, "DcnSyncMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateHourDCDBInstanceRequest has unknown keys!", "")
 	}

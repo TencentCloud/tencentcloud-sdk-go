@@ -9485,6 +9485,9 @@ type MySQLParam struct {
 
 	// 输入的table是否为正则表达式，如果该选项以及IsTablePrefix同时为true，该选项的判断优先级高于IsTablePrefix
 	IsTableRegular *bool `json:"IsTableRegular,omitempty" name:"IsTableRegular"`
+
+	// 信号表
+	SignalTable *string `json:"SignalTable,omitempty" name:"SignalTable"`
 }
 
 type OperateResponseData struct {

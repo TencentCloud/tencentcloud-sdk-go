@@ -682,6 +682,7 @@ func NewGetStatisticDataResponse() (response *GetStatisticDataResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
 //  INTERNALERROR_FILEIOERROR = "InternalError.FileIOError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
 //  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) GetStatisticData(request *GetStatisticDataRequest) (response *GetStatisticDataResponse, err error) {
@@ -695,6 +696,7 @@ func (c *Client) GetStatisticData(request *GetStatisticDataRequest) (response *G
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_CONTROLREQUESTERROR = "InternalError.ControlRequestError"
 //  INTERNALERROR_FILEIOERROR = "InternalError.FileIOError"
+//  INTERNALERROR_MONITORDATAREQUESTERROR = "InternalError.MonitorDataRequestError"
 //  INTERNALERROR_NETWORKINFOREQUESTERROR = "InternalError.NetworkInfoRequestError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) GetStatisticDataWithContext(ctx context.Context, request *GetStatisticDataRequest) (response *GetStatisticDataResponse, err error) {

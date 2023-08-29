@@ -470,6 +470,7 @@ func NewDeleteJobResponse() (response *DeleteJobResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLTAGAPI = "InternalError.CallTagAPI"
 //  INVALIDPARAMETER_JOBIDMALFORMED = "InvalidParameter.JobIdMalformed"
 //  RESOURCEINUSE_JOB = "ResourceInUse.Job"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"
@@ -487,6 +488,7 @@ func (c *Client) DeleteJob(request *DeleteJobRequest) (response *DeleteJobRespon
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CALLTAGAPI = "InternalError.CallTagAPI"
 //  INVALIDPARAMETER_JOBIDMALFORMED = "InvalidParameter.JobIdMalformed"
 //  RESOURCEINUSE_JOB = "ResourceInUse.Job"
 //  RESOURCENOTFOUND_JOB = "ResourceNotFound.Job"

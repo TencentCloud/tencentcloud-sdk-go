@@ -69,6 +69,7 @@ func NewAddClusterStorageOptionResponse() (response *AddClusterStorageOptionResp
 // 可能返回的错误码:
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 func (c *Client) AddClusterStorageOption(request *AddClusterStorageOptionRequest) (response *AddClusterStorageOptionResponse, err error) {
     return c.AddClusterStorageOptionWithContext(context.Background(), request)
 }
@@ -79,6 +80,7 @@ func (c *Client) AddClusterStorageOption(request *AddClusterStorageOptionRequest
 // 可能返回的错误码:
 //  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  INVALIDPARAMETERVALUE_VALUEDUPLICATED = "InvalidParameterValue.ValueDuplicated"
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 func (c *Client) AddClusterStorageOptionWithContext(ctx context.Context, request *AddClusterStorageOptionRequest) (response *AddClusterStorageOptionResponse, err error) {
     if request == nil {
         request = NewAddClusterStorageOptionRequest()
@@ -397,6 +399,7 @@ func NewDeleteClusterStorageOptionResponse() (response *DeleteClusterStorageOpti
 // 本接口 (DeleteClusterStorageOption) 用于删除集群存储选项信息。
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  RESOURCENOTFOUND_LOCALPATH = "ResourceNotFound.LocalPath"
 func (c *Client) DeleteClusterStorageOption(request *DeleteClusterStorageOptionRequest) (response *DeleteClusterStorageOptionResponse, err error) {
     return c.DeleteClusterStorageOptionWithContext(context.Background(), request)
@@ -406,6 +409,7 @@ func (c *Client) DeleteClusterStorageOption(request *DeleteClusterStorageOptionR
 // 本接口 (DeleteClusterStorageOption) 用于删除集群存储选项信息。
 //
 // 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  RESOURCENOTFOUND_LOCALPATH = "ResourceNotFound.LocalPath"
 func (c *Client) DeleteClusterStorageOptionWithContext(ctx context.Context, request *DeleteClusterStorageOptionRequest) (response *DeleteClusterStorageOptionResponse, err error) {
     if request == nil {
@@ -705,6 +709,7 @@ func NewDescribeClusterStorageOptionResponse() (response *DescribeClusterStorage
 // 本接口 (DescribeClusterStorageOption) 用于查询集群存储选项信息。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 func (c *Client) DescribeClusterStorageOption(request *DescribeClusterStorageOptionRequest) (response *DescribeClusterStorageOptionResponse, err error) {
@@ -715,6 +720,7 @@ func (c *Client) DescribeClusterStorageOption(request *DescribeClusterStorageOpt
 // 本接口 (DescribeClusterStorageOption) 用于查询集群存储选项信息。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_MALFORMED = "InvalidParameter.Malformed"
 //  RESOURCENOTFOUND_CLUSTERID = "ResourceNotFound.ClusterId"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = "UnsupportedOperation.ClusterStatusNotSupport"
 func (c *Client) DescribeClusterStorageOptionWithContext(ctx context.Context, request *DescribeClusterStorageOptionRequest) (response *DescribeClusterStorageOptionResponse, err error) {

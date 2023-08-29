@@ -3529,7 +3529,7 @@ type InstanceTagInfo struct {
 }
 
 type InternetConfig struct {
-	// 公网地址版本，可选："IPV4" | "IPV6-NAT64" 。不填默认 IPV4 。
+	// 公网地址版本，可选："IPV4" | "IPV6" 。不填默认 IPV4 。
 	InternetAddressVersion *string `json:"InternetAddressVersion,omitempty" name:"InternetAddressVersion"`
 
 	// 公网付费类型，当前仅可选："BANDWIDTH"。不填默认为 "BANDWIDTH"
@@ -4613,7 +4613,7 @@ type RateLimitResponse struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Body *string `json:"Body,omitempty" name:"Body"`
 
-	// headrs
+	// Headers
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Headers []*KVMapping `json:"Headers,omitempty" name:"Headers"`
 
