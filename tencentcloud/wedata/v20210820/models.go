@@ -20127,7 +20127,7 @@ type DescribeTaskRunHistoryRequestParams struct {
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
 	// 分页页码
-	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
 type DescribeTaskRunHistoryRequest struct {
@@ -20143,7 +20143,7 @@ type DescribeTaskRunHistoryRequest struct {
 	PageSize *uint64 `json:"PageSize,omitempty" name:"PageSize"`
 
 	// 分页页码
-	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *uint64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
 func (r *DescribeTaskRunHistoryRequest) ToJsonString() string {

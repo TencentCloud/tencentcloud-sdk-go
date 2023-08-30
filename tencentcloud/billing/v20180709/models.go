@@ -934,6 +934,60 @@ type CostDetail struct {
 	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
 }
 
+// Predefined struct for user
+type CreateAllocationTagRequestParams struct {
+	// 用户分账标签键
+	TagKey []*string `json:"TagKey,omitempty" name:"TagKey"`
+}
+
+type CreateAllocationTagRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户分账标签键
+	TagKey []*string `json:"TagKey,omitempty" name:"TagKey"`
+}
+
+func (r *CreateAllocationTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAllocationTagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TagKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAllocationTagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateAllocationTagResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateAllocationTagResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateAllocationTagResponseParams `json:"Response"`
+}
+
+func (r *CreateAllocationTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateAllocationTagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Deal struct {
 	// 订单号
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
@@ -1031,6 +1085,60 @@ type Deal struct {
 	// 订单对应的资源id, 查询参数Limit超过200，将返回null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResourceId []*string `json:"ResourceId,omitempty" name:"ResourceId"`
+}
+
+// Predefined struct for user
+type DeleteAllocationTagRequestParams struct {
+	// 用户分账标签键
+	TagKey []*string `json:"TagKey,omitempty" name:"TagKey"`
+}
+
+type DeleteAllocationTagRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户分账标签键
+	TagKey []*string `json:"TagKey,omitempty" name:"TagKey"`
+}
+
+func (r *DeleteAllocationTagRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAllocationTagRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TagKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAllocationTagRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAllocationTagResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteAllocationTagResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAllocationTagResponseParams `json:"Response"`
+}
+
+func (r *DeleteAllocationTagResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAllocationTagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1585,6 +1693,13 @@ type DescribeBillResourceSummaryRequestParams struct {
 
 	// 支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
 	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
+
+	// 分账标签键，用户自定义（支持2021-01以后账单查询）
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 分账标签值，该参数为空表示该标签键下未设置标签值的记录
+	// （支持2021-01以后账单查询）
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 type DescribeBillResourceSummaryRequest struct {
@@ -1649,6 +1764,13 @@ type DescribeBillResourceSummaryRequest struct {
 
 	// 支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
 	PayerUin *string `json:"PayerUin,omitempty" name:"PayerUin"`
+
+	// 分账标签键，用户自定义（支持2021-01以后账单查询）
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 分账标签值，该参数为空表示该标签键下未设置标签值的记录
+	// （支持2021-01以后账单查询）
+	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
 }
 
 func (r *DescribeBillResourceSummaryRequest) ToJsonString() string {
@@ -1673,6 +1795,8 @@ func (r *DescribeBillResourceSummaryRequest) FromJsonString(s string) error {
 	delete(f, "PayMode")
 	delete(f, "BusinessCode")
 	delete(f, "PayerUin")
+	delete(f, "TagKey")
+	delete(f, "TagValue")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillResourceSummaryRequest has unknown keys!", "")
 	}
@@ -3085,6 +3209,94 @@ func (r *DescribeDosageDetailByDateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeTagListRequestParams struct {
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 数量，最大值为1000
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分账标签键，用作模糊搜索
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签类型，枚举值：0普通标签，1分账标签，用作筛选，不传获取全部标签键
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 排序方式，枚举值：asc排升序，desc排降序
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+}
+
+type DescribeTagListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 数量，最大值为1000
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// 分账标签键，用作模糊搜索
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签类型，枚举值：0普通标签，1分账标签，用作筛选，不传获取全部标签键
+	Status *uint64 `json:"Status,omitempty" name:"Status"`
+
+	// 排序方式，枚举值：asc排升序，desc排降序
+	OrderType *string `json:"OrderType,omitempty" name:"OrderType"`
+}
+
+func (r *DescribeTagListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTagListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "TagKey")
+	delete(f, "Status")
+	delete(f, "OrderType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTagListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTagListResponseParams struct {
+	// 总记录数
+	RecordNum *uint64 `json:"RecordNum,omitempty" name:"RecordNum"`
+
+	// 标签信息
+	Data []*TagDataInfo `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTagListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTagListResponseParams `json:"Response"`
+}
+
+func (r *DescribeTagListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTagListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeVoucherInfoRequestParams struct {
 	// 一页多少条数据，默认是20条，最大不超过1000
 	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
@@ -3589,6 +3801,18 @@ type SummaryTotal struct {
 	// 原价，单位为元。TotalCost字段自账单3.0（即2021-05）之后开始生效，账单3.0之前返回"-"。合同价的情况下，TotalCost字段与官网价格存在差异，也返回“-”。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalCost *string `json:"TotalCost,omitempty" name:"TotalCost"`
+}
+
+type TagDataInfo struct {
+	// 分账标签键
+	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+
+	// 标签类型，0普通标签，1分账标签
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 设置分账标签时间，普通标签不返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
 }
 
 type TagSummaryOverviewItem struct {

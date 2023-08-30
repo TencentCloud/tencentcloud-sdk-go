@@ -694,7 +694,7 @@ func NewCreatePurgeTaskResponse() (response *CreatePurgeTaskResponse) {
 //
 // 
 //
-// 清除缓存任务详情请查看[清除缓存](https://cloud.tencent.com/document/product/1552/70759)。</li>
+// 清除缓存任务详情请查看[清除缓存](https://cloud.tencent.com/document/product/1552/70759)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"
@@ -720,7 +720,7 @@ func (c *Client) CreatePurgeTask(request *CreatePurgeTaskRequest) (response *Cre
 //
 // 
 //
-// 清除缓存任务详情请查看[清除缓存](https://cloud.tencent.com/document/product/1552/70759)。</li>
+// 清除缓存任务详情请查看[清除缓存](https://cloud.tencent.com/document/product/1552/70759)。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_BACKENDERROR = "InternalError.BackendError"

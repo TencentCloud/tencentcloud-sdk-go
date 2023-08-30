@@ -1,3 +1,252 @@
+# Release v1.0.734
+
+## 费用中心(billing) 版本：2018-07-09
+
+### 第 46 次发布
+
+发布时间：2023-08-30 01:07:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateAllocationTag](https://cloud.tencent.com/document/api/555/97569)
+* [DeleteAllocationTag](https://cloud.tencent.com/document/api/555/97568)
+* [DescribeTagList](https://cloud.tencent.com/document/api/555/97567)
+
+修改接口：
+
+* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+
+	* 新增入参：TagKey, TagValue
+
+
+新增数据结构：
+
+* [TagDataInfo](https://cloud.tencent.com/document/api/555/19183#TagDataInfo)
+
+
+
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+
+### 第 14 次发布
+
+发布时间：2023-08-30 01:09:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBackUpSchedule](https://cloud.tencent.com/document/api/1299/83424)
+
+	* 新增入参：InstanceId, ScheduleType, OperationType, RetainDays
+
+	* 新增出参：ErrorMsg
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 114 次发布
+
+发布时间：2023-08-30 01:11:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HostResource](https://cloud.tencent.com/document/api/213/15753#HostResource)
+
+	* 新增成员：ExclusiveOwner
+
+	* <font color="#dd0000">**修改成员**：</font>CpuTotal, CpuAvailable, MemTotal, MemAvailable, DiskTotal, DiskAvailable, GpuTotal, GpuAvailable
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 93 次发布
+
+发布时间：2023-08-30 01:11:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BashRule](https://cloud.tencent.com/document/api/296/19867#BashRule)
+
+	* 新增成员：Description
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 108 次发布
+
+发布时间：2023-08-30 01:14:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateIntegrationRole](https://cloud.tencent.com/document/api/1323/97571)
+* [ModifyIntegrationRole](https://cloud.tencent.com/document/api/1323/97570)
+
+修改接口：
+
+* [CreatePersonAuthCertificateImage](https://cloud.tencent.com/document/api/1323/95783)
+
+	* 新增出参：ImageCertId, SerialNumber, ValidFrom, ValidTo
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 20 次发布
+
+发布时间：2023-08-30 01:17:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudStorage](https://cloud.tencent.com/document/api/1131/77505)
+
+	* 新增入参：ChannelId
+
+* [DescribeCloudStorageDate](https://cloud.tencent.com/document/api/1131/77503)
+
+	* 新增入参：ChannelId
+
+* [DescribeCloudStorageTime](https://cloud.tencent.com/document/api/1131/77498)
+
+	* 新增入参：ChannelId
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
+
+### 第 17 次发布
+
+发布时间：2023-08-30 01:16:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudStorage](https://cloud.tencent.com/document/api/1131/53635)
+
+	* 新增入参：ChannelId
+
+
+
+
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
+
+
+
+## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 5 次发布
+
+发布时间：2023-08-30 01:17:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListRecordBackupPlanDevices](https://cloud.tencent.com/document/api/1344/95921)
+
+	* <font color="#dd0000">**修改入参**：</font>PageSize, PageNumber
+
+
+修改数据结构：
+
+* [ListRecordBackupPlanDevicesData](https://cloud.tencent.com/document/api/1344/95952#ListRecordBackupPlanDevicesData)
+
+	* <font color="#dd0000">**修改成员**：</font>List
+
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 41 次发布
+
+发布时间：2023-08-30 01:21:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CdnInstanceDetail](https://cloud.tencent.com/document/api/400/41679#CdnInstanceDetail)
+
+	* 新增成员：HttpsBillingSwitch
+
+* [Certificate](https://cloud.tencent.com/document/api/400/41679#Certificate)
+
+	* 新增成员：CertCaId, SSLMode
+
+* [TkeInstanceDetail](https://cloud.tencent.com/document/api/400/41679#TkeInstanceDetail)
+
+	* 新增成员：ClusterType, ClusterVersion
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 45 次发布
+
+发布时间：2023-08-30 01:28:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskRunHistory](https://cloud.tencent.com/document/api/1267/95189)
+
+	* <font color="#dd0000">**修改入参**：</font>PageNumber
+
+
+修改数据结构：
+
+* [LinkOpsDto](https://cloud.tencent.com/document/api/1267/76336#LinkOpsDto)
+
+	* <font color="#dd0000">**修改成员**：</font>Id, LinkKey, TaskFrom, TaskTo, InCharge, LinkDependencyType, Offset, LinkType, WorkflowId
+
+* [TaskOpsDto](https://cloud.tencent.com/document/api/1267/76336#TaskOpsDto)
+
+	* <font color="#dd0000">**修改成员**：</font>TaskId, VirtualTaskId, VirtualFlag, TaskName, WorkflowId, RealWorkflowId, WorkflowName, FolderId, FolderName, CreateTime, LastUpdate, Status, InCharge, InChargeId, StartTime, EndTime, ExecutionStartTime, ExecutionEndTime, CycleType, CycleStep, CrontabExpression, DelayTime, StartupTime, RetryWait, RetryAble, TaskAction, TryLimit, RunPriority, TaskType, BrokerIp, ClusterId, MinDateTime, MaxDateTime, ExecutionTTL, SelfDepend, LeftCoordinate, TopCoordinate, Notes, InstanceInitStrategy, YarnQueue, LastSchedulerCommitTime, NormalizedJobStartTime, SchedulerDesc, ResourceGroup, Creator, DependencyRel, DependencyWorkflow, EventListenerConfig, EventPublisherConfig, VirtualTaskStatus, TaskLinkInfo, ProductName, ProjectId, ProjectIdent, ProjectName, OwnId, UserId, TenantId, UpdateUser, UpdateTime, UpdateUserId, TaskTypeId, TaskTypeDesc, ShowWorkflow, FirstSubmitTime, FirstRunTime, ScheduleDesc, CycleNum, Crontab, StartDate, EndDate, CycleUnit, InitStrategy, Layer, SourceServiceId, SourceServiceType, TargetServiceId, TargetServiceType, TasksStr, Submit
+
+
+
+
 # Release v1.0.733
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19

@@ -1,29 +1,39 @@
 # 本版本更新包含以下内容：
 
-## 消息队列 CKafka(ckafka) 版本：2019-08-19
+## 费用中心(billing) 版本：2018-07-09
 
-### 第 94 次发布
+### 第 46 次发布
 
-发布时间：2023-08-29 01:09:11
+发布时间：2023-08-30 01:07:19
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [MySQLParam](https://cloud.tencent.com/document/api/597/40861#MySQLParam)
+* [CreateAllocationTag](https://cloud.tencent.com/document/api/555/97569)
+* [DeleteAllocationTag](https://cloud.tencent.com/document/api/555/97568)
+* [DescribeTagList](https://cloud.tencent.com/document/api/555/97567)
 
-	* 新增成员：SignalTable
+修改接口：
+
+* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+
+	* 新增入参：TagKey, TagValue
+
+
+新增数据结构：
+
+* [TagDataInfo](https://cloud.tencent.com/document/api/555/19183#TagDataInfo)
 
 
 
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
 
-## TDSQL MySQL 版(dcdb) 版本：2018-04-11
+### 第 14 次发布
 
-### 第 66 次发布
-
-发布时间：2023-08-29 01:12:46
+发布时间：2023-08-30 01:09:10
 
 本次发布包含了以下内容：
 
@@ -31,73 +41,84 @@
 
 修改接口：
 
-* [CreateHourDCDBInstance](https://cloud.tencent.com/document/api/557/70249)
+* [CreateBackUpSchedule](https://cloud.tencent.com/document/api/1299/83424)
 
-	* 新增入参：DcnSyncMode
+	* 新增入参：InstanceId, ScheduleType, OperationType, RetainDays
+
+	* 新增出参：ErrorMsg
 
 
 
 
-## Elasticsearch Service(es) 版本：2018-04-16
+## 云服务器(cvm) 版本：2017-03-12
 
-### 第 45 次发布
+### 第 114 次发布
 
-发布时间：2023-08-29 01:14:45
+发布时间：2023-08-30 01:11:15
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+修改数据结构：
 
-* [CreateInstance](https://cloud.tencent.com/document/api/845/30633)
+* [HostResource](https://cloud.tencent.com/document/api/213/15753#HostResource)
 
-	* 新增入参：CdcId
+	* 新增成员：ExclusiveOwner
 
+	* <font color="#dd0000">**修改成员**：</font>CpuTotal, CpuAvailable, MemTotal, MemAvailable, DiskTotal, DiskAvailable, GpuTotal, GpuAvailable
+
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 93 次发布
+
+发布时间：2023-08-30 01:11:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [InstanceInfo](https://cloud.tencent.com/document/api/845/30634#InstanceInfo)
+* [BashRule](https://cloud.tencent.com/document/api/296/19867#BashRule)
 
-	* 新增成员：HasKernelUpgrade, CdcId
+	* 新增成员：Description
 
 
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 107 次发布
+### 第 108 次发布
 
-发布时间：2023-08-29 01:14:56
+发布时间：2023-08-30 01:14:43
 
 本次发布包含了以下内容：
 
 改善已有的文档。
+
+新增接口：
+
+* [CreateIntegrationRole](https://cloud.tencent.com/document/api/1323/97571)
+* [ModifyIntegrationRole](https://cloud.tencent.com/document/api/1323/97570)
 
 修改接口：
 
 * [CreatePersonAuthCertificateImage](https://cloud.tencent.com/document/api/1323/95783)
 
-	* 新增入参：Agent
+	* 新增出参：ImageCertId, SerialNumber, ValidFrom, ValidTo
 
 
-新增数据结构：
-
-* [Permission](https://cloud.tencent.com/document/api/1323/70369#Permission)
-* [PermissionGroup](https://cloud.tencent.com/document/api/1323/70369#PermissionGroup)
-
-修改数据结构：
-
-* [IntegrateRole](https://cloud.tencent.com/document/api/1323/70369#IntegrateRole)
-
-	* 新增成员：PermissionGroups
-
-	* <font color="#dd0000">**修改成员**：</font>RoleId, RoleName, RoleStatus, IsGroupRole, SubOrgIdList
 
 
-### 第 106 次发布
+## 物联网智能视频服务(iotvideo) 版本：2021-11-25
 
-发布时间：2023-08-28 16:10:43
+### 第 20 次发布
+
+发布时间：2023-08-30 01:17:01
 
 本次发布包含了以下内容：
 
@@ -105,69 +126,26 @@
 
 修改接口：
 
-* [CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)
+* [CreateCloudStorage](https://cloud.tencent.com/document/api/1131/77505)
 
-* [DescribeOrganizationSeals](https://cloud.tencent.com/document/api/1323/82453)
+	* 新增入参：ChannelId
 
-	* 新增入参：SealStatuses
+* [DescribeCloudStorageDate](https://cloud.tencent.com/document/api/1131/77503)
 
+	* 新增入参：ChannelId
 
+* [DescribeCloudStorageTime](https://cloud.tencent.com/document/api/1131/77498)
 
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 107 次发布
-
-发布时间：2023-08-29 01:15:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ChannelCreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75452)
-
-
-修改数据结构：
-
-* [BaseFlowInfo](https://cloud.tencent.com/document/api/1420/61525#BaseFlowInfo)
-
-	* 新增成员：Components
-
-* [CommonFlowApprover](https://cloud.tencent.com/document/api/1420/61525#CommonFlowApprover)
-
-	* 新增成员：SignComponents
+	* 新增入参：ChannelId
 
 
 
 
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## 物联网智能视频服务(iotvideo) 版本：2020-12-15
 
+### 第 17 次发布
 
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 61 次发布
-
-发布时间：2023-08-29 01:15:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [IntentionVerifyData](https://cloud.tencent.com/document/api/1007/41958#IntentionVerifyData)
-
-
-
-
-## 低代码互动课堂(lcic) 版本：2022-08-17
-
-### 第 40 次发布
-
-发布时间：2023-08-29 01:17:54
+发布时间：2023-08-30 01:16:44
 
 本次发布包含了以下内容：
 
@@ -175,27 +153,22 @@
 
 修改接口：
 
-* [DescribeUser](https://cloud.tencent.com/document/api/1639/80936)
+* [DescribeCloudStorage](https://cloud.tencent.com/document/api/1131/53635)
 
-	* 新增出参：OriginId
-
-
-修改数据结构：
-
-* [UserInfo](https://cloud.tencent.com/document/api/1639/81423#UserInfo)
-
-	* 新增成员：OriginId
-
-	* <font color="#dd0000">**修改成员**：</font>SdkAppId, UserId, Name, Avatar
+	* 新增入参：ChannelId
 
 
 
 
-## 云数据库 MariaDB(mariadb) 版本：2017-03-12
+## 物联网智能视频服务(iotvideo) 版本：2019-11-26
 
-### 第 58 次发布
 
-发布时间：2023-08-29 01:18:45
+
+## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 5 次发布
+
+发布时间：2023-08-30 01:17:50
 
 本次发布包含了以下内容：
 
@@ -203,9 +176,73 @@
 
 修改接口：
 
-* [CreateHourDBInstance](https://cloud.tencent.com/document/api/237/67878)
+* [ListRecordBackupPlanDevices](https://cloud.tencent.com/document/api/1344/95921)
 
-	* 新增入参：DcnSyncMode
+	* <font color="#dd0000">**修改入参**：</font>PageSize, PageNumber
+
+
+修改数据结构：
+
+* [ListRecordBackupPlanDevicesData](https://cloud.tencent.com/document/api/1344/95952#ListRecordBackupPlanDevicesData)
+
+	* <font color="#dd0000">**修改成员**：</font>List
+
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 41 次发布
+
+发布时间：2023-08-30 01:21:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CdnInstanceDetail](https://cloud.tencent.com/document/api/400/41679#CdnInstanceDetail)
+
+	* 新增成员：HttpsBillingSwitch
+
+* [Certificate](https://cloud.tencent.com/document/api/400/41679#Certificate)
+
+	* 新增成员：CertCaId, SSLMode
+
+* [TkeInstanceDetail](https://cloud.tencent.com/document/api/400/41679#TkeInstanceDetail)
+
+	* 新增成员：ClusterType, ClusterVersion
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 45 次发布
+
+发布时间：2023-08-30 01:28:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskRunHistory](https://cloud.tencent.com/document/api/1267/95189)
+
+	* <font color="#dd0000">**修改入参**：</font>PageNumber
+
+
+修改数据结构：
+
+* [LinkOpsDto](https://cloud.tencent.com/document/api/1267/76336#LinkOpsDto)
+
+	* <font color="#dd0000">**修改成员**：</font>Id, LinkKey, TaskFrom, TaskTo, InCharge, LinkDependencyType, Offset, LinkType, WorkflowId
+
+* [TaskOpsDto](https://cloud.tencent.com/document/api/1267/76336#TaskOpsDto)
+
+	* <font color="#dd0000">**修改成员**：</font>TaskId, VirtualTaskId, VirtualFlag, TaskName, WorkflowId, RealWorkflowId, WorkflowName, FolderId, FolderName, CreateTime, LastUpdate, Status, InCharge, InChargeId, StartTime, EndTime, ExecutionStartTime, ExecutionEndTime, CycleType, CycleStep, CrontabExpression, DelayTime, StartupTime, RetryWait, RetryAble, TaskAction, TryLimit, RunPriority, TaskType, BrokerIp, ClusterId, MinDateTime, MaxDateTime, ExecutionTTL, SelfDepend, LeftCoordinate, TopCoordinate, Notes, InstanceInitStrategy, YarnQueue, LastSchedulerCommitTime, NormalizedJobStartTime, SchedulerDesc, ResourceGroup, Creator, DependencyRel, DependencyWorkflow, EventListenerConfig, EventPublisherConfig, VirtualTaskStatus, TaskLinkInfo, ProductName, ProjectId, ProjectIdent, ProjectName, OwnId, UserId, TenantId, UpdateUser, UpdateTime, UpdateUserId, TaskTypeId, TaskTypeDesc, ShowWorkflow, FirstSubmitTime, FirstRunTime, ScheduleDesc, CycleNum, Crontab, StartDate, EndDate, CycleUnit, InitStrategy, Layer, SourceServiceId, SourceServiceType, TargetServiceId, TargetServiceType, TasksStr, Submit
 
 
 
@@ -8121,6 +8158,31 @@
 
 
 ## 费用中心(billing) 版本：2018-07-09
+
+### 第 46 次发布
+
+发布时间：2023-08-30 01:07:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateAllocationTag](https://cloud.tencent.com/document/api/555/97569)](https://cloud.tencent.com/document/api/#/#)
+* [[DeleteAllocationTag](https://cloud.tencent.com/document/api/555/97568)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTagList](https://cloud.tencent.com/document/api/555/97567)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+
+	* 新增入参：TagKey, TagValue
+
+
+新增数据结构：
+
+* [[TagDataInfo](https://cloud.tencent.com/document/api/555/19183#TagDataInfo)](https://cloud.tencent.com/document/api/555/19183#[TagDataInfo](https://cloud.tencent.com/document/api/555/19183#TagDataInfo))
 
 ### 第 45 次发布
 
@@ -20374,6 +20436,23 @@
 
 
 ## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+
+### 第 14 次发布
+
+发布时间：2023-08-30 01:09:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBackUpSchedule](https://cloud.tencent.com/document/api/1299/83424)
+
+	* 新增入参：InstanceId, ScheduleType, OperationType, RetainDays
+
+	* 新增出参：ErrorMsg
+
 
 ### 第 13 次发布
 
@@ -33647,6 +33726,23 @@
 
 ## 云服务器(cvm) 版本：2017-03-12
 
+### 第 114 次发布
+
+发布时间：2023-08-30 01:11:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HostResource](https://cloud.tencent.com/document/api/213/15753#HostResource)
+
+	* 新增成员：ExclusiveOwner
+
+	* <font color="#dd0000">**修改成员**：</font>CpuTotal, CpuAvailable, MemTotal, MemAvailable, DiskTotal, DiskAvailable, GpuTotal, GpuAvailable
+
+
 ### 第 113 次发布
 
 发布时间：2023-08-10 01:11:31
@@ -35759,6 +35855,21 @@
 
 
 ## 主机安全(cwp) 版本：2018-02-28
+
+### 第 93 次发布
+
+发布时间：2023-08-30 01:11:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [BashRule](https://cloud.tencent.com/document/api/296/19867#BashRule)
+
+	* 新增成员：Description
+
 
 ### 第 92 次发布
 
@@ -52078,6 +52189,26 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 108 次发布
+
+发布时间：2023-08-30 01:14:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateIntegrationRole](https://cloud.tencent.com/document/api/1323/97571)](https://cloud.tencent.com/document/api/#/#)
+* [[ModifyIntegrationRole](https://cloud.tencent.com/document/api/1323/97570)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreatePersonAuthCertificateImage](https://cloud.tencent.com/document/api/1323/95783)
+
+	* 新增出参：ImageCertId, SerialNumber, ValidFrom, ValidTo
+
+
 ### 第 107 次发布
 
 发布时间：2023-08-29 01:14:56
@@ -52095,8 +52226,8 @@
 
 新增数据结构：
 
-* [[Permission](https://cloud.tencent.com/document/api/1323/70369#Permission)](https://cloud.tencent.com/document/api/1323/70369#[Permission](https://cloud.tencent.com/document/api/1323/70369#Permission))
-* [[PermissionGroup](https://cloud.tencent.com/document/api/1323/70369#PermissionGroup)](https://cloud.tencent.com/document/api/1323/70369#[PermissionGroup](https://cloud.tencent.com/document/api/1323/70369#PermissionGroup))
+* [Permission](https://cloud.tencent.com/document/api/1323/70369#Permission)
+* [PermissionGroup](https://cloud.tencent.com/document/api/1323/70369#PermissionGroup)
 
 修改数据结构：
 
@@ -65453,6 +65584,21 @@
 
 ## 物联网智能视频服务(iotvideo) 版本：2020-12-15
 
+### 第 17 次发布
+
+发布时间：2023-08-30 01:16:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCloudStorage](https://cloud.tencent.com/document/api/1131/53635)
+
+	* 新增入参：ChannelId
+
+
 ### 第 16 次发布
 
 发布时间：2023-05-12 01:31:21
@@ -65810,6 +65956,29 @@
 
 
 ## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+
+### 第 20 次发布
+
+发布时间：2023-08-30 01:17:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudStorage](https://cloud.tencent.com/document/api/1131/77505)
+
+	* 新增入参：ChannelId
+
+* [DescribeCloudStorageDate](https://cloud.tencent.com/document/api/1131/77503)
+
+	* 新增入参：ChannelId
+
+* [DescribeCloudStorageTime](https://cloud.tencent.com/document/api/1131/77498)
+
+	* 新增入参：ChannelId
+
 
 ### 第 19 次发布
 
@@ -66833,6 +67002,28 @@
 
 
 ## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 5 次发布
+
+发布时间：2023-08-30 01:17:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ListRecordBackupPlanDevices](https://cloud.tencent.com/document/api/1344/95921)
+
+	* <font color="#dd0000">**修改入参**：</font>PageSize, PageNumber
+
+
+修改数据结构：
+
+* [ListRecordBackupPlanDevicesData](https://cloud.tencent.com/document/api/1344/95952#ListRecordBackupPlanDevicesData)
+
+	* <font color="#dd0000">**修改成员**：</font>List
+
 
 ### 第 4 次发布
 
@@ -91722,6 +91913,29 @@
 
 
 ## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 41 次发布
+
+发布时间：2023-08-30 01:21:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CdnInstanceDetail](https://cloud.tencent.com/document/api/400/41679#CdnInstanceDetail)
+
+	* 新增成员：HttpsBillingSwitch
+
+* [Certificate](https://cloud.tencent.com/document/api/400/41679#Certificate)
+
+	* 新增成员：CertCaId, SSLMode
+
+* [TkeInstanceDetail](https://cloud.tencent.com/document/api/400/41679#TkeInstanceDetail)
+
+	* 新增成员：ClusterType, ClusterVersion
+
 
 ### 第 40 次发布
 
@@ -129287,6 +129501,32 @@
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 45 次发布
+
+发布时间：2023-08-30 01:28:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeTaskRunHistory](https://cloud.tencent.com/document/api/1267/95189)
+
+	* <font color="#dd0000">**修改入参**：</font>PageNumber
+
+
+修改数据结构：
+
+* [LinkOpsDto](https://cloud.tencent.com/document/api/1267/76336#LinkOpsDto)
+
+	* <font color="#dd0000">**修改成员**：</font>Id, LinkKey, TaskFrom, TaskTo, InCharge, LinkDependencyType, Offset, LinkType, WorkflowId
+
+* [TaskOpsDto](https://cloud.tencent.com/document/api/1267/76336#TaskOpsDto)
+
+	* <font color="#dd0000">**修改成员**：</font>TaskId, VirtualTaskId, VirtualFlag, TaskName, WorkflowId, RealWorkflowId, WorkflowName, FolderId, FolderName, CreateTime, LastUpdate, Status, InCharge, InChargeId, StartTime, EndTime, ExecutionStartTime, ExecutionEndTime, CycleType, CycleStep, CrontabExpression, DelayTime, StartupTime, RetryWait, RetryAble, TaskAction, TryLimit, RunPriority, TaskType, BrokerIp, ClusterId, MinDateTime, MaxDateTime, ExecutionTTL, SelfDepend, LeftCoordinate, TopCoordinate, Notes, InstanceInitStrategy, YarnQueue, LastSchedulerCommitTime, NormalizedJobStartTime, SchedulerDesc, ResourceGroup, Creator, DependencyRel, DependencyWorkflow, EventListenerConfig, EventPublisherConfig, VirtualTaskStatus, TaskLinkInfo, ProductName, ProjectId, ProjectIdent, ProjectName, OwnId, UserId, TenantId, UpdateUser, UpdateTime, UpdateUserId, TaskTypeId, TaskTypeDesc, ShowWorkflow, FirstSubmitTime, FirstRunTime, ScheduleDesc, CycleNum, Crontab, StartDate, EndDate, CycleUnit, InitStrategy, Layer, SourceServiceId, SourceServiceType, TargetServiceId, TargetServiceType, TasksStr, Submit
+
 
 ### 第 44 次发布
 

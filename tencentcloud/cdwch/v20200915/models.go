@@ -203,6 +203,18 @@ type ConfigSubmitContext struct {
 
 // Predefined struct for user
 type CreateBackUpScheduleRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 策略类型 meta(元数据)  data (表数据)
+	ScheduleType *string `json:"ScheduleType,omitempty" name:"ScheduleType"`
+
+	// 操作类型 create(创建) update(编辑修改)
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+
+	// 保留天数 例如7
+	RetainDays *int64 `json:"RetainDays,omitempty" name:"RetainDays"`
+
 	// 编辑时需要传
 	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
 
@@ -219,6 +231,18 @@ type CreateBackUpScheduleRequestParams struct {
 type CreateBackUpScheduleRequest struct {
 	*tchttp.BaseRequest
 	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 策略类型 meta(元数据)  data (表数据)
+	ScheduleType *string `json:"ScheduleType,omitempty" name:"ScheduleType"`
+
+	// 操作类型 create(创建) update(编辑修改)
+	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+
+	// 保留天数 例如7
+	RetainDays *int64 `json:"RetainDays,omitempty" name:"RetainDays"`
+
 	// 编辑时需要传
 	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
 
@@ -244,6 +268,10 @@ func (r *CreateBackUpScheduleRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InstanceId")
+	delete(f, "ScheduleType")
+	delete(f, "OperationType")
+	delete(f, "RetainDays")
 	delete(f, "ScheduleId")
 	delete(f, "WeekDays")
 	delete(f, "ExecuteHour")
@@ -256,6 +284,9 @@ func (r *CreateBackUpScheduleRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateBackUpScheduleResponseParams struct {
+	// 错误描述
+	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }

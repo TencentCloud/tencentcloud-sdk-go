@@ -1286,7 +1286,7 @@ func NewRequestLocalTaskResponse() (response *RequestLocalTaskResponse) {
 }
 
 // RequestLocalTask
-// client任务请求地址
+// client任务请求
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -1295,7 +1295,7 @@ func (c *Client) RequestLocalTask(request *RequestLocalTaskRequest) (response *R
 }
 
 // RequestLocalTask
-// client任务请求地址
+// client任务请求
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -1334,7 +1334,7 @@ func NewUpdateClientStateResponse() (response *UpdateClientStateResponse) {
 }
 
 // UpdateClientState
-// 更新client状态
+// 更新client状态，需要白名单
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -1343,7 +1343,7 @@ func (c *Client) UpdateClientState(request *UpdateClientStateRequest) (response 
 }
 
 // UpdateClientState
-// 更新client状态
+// 更新client状态，需要白名单
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -1382,7 +1382,7 @@ func NewUpdateLocalTaskResultResponse() (response *UpdateLocalTaskResultResponse
 }
 
 // UpdateLocalTaskResult
-// 更新本地任务结果
+// 更新本地任务执行结果
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -1391,7 +1391,7 @@ func (c *Client) UpdateLocalTaskResult(request *UpdateLocalTaskResultRequest) (r
 }
 
 // UpdateLocalTaskResult
-// 更新本地任务结果
+// 更新本地任务执行结果
 //
 // 可能返回的错误码:
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"

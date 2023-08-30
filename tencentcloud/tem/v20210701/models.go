@@ -1076,7 +1076,7 @@ type DeleteApplicationRequestParams struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
+	// 来源渠道(用户不需要关心此参数)
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
 
 	// 当服务没有任何运行版本时，是否删除此服务
@@ -1092,7 +1092,7 @@ type DeleteApplicationRequest struct {
 	// 环境ID
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 
-	// 来源渠道
+	// 来源渠道(用户不需要关心此参数)
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
 
 	// 当服务没有任何运行版本时，是否删除此服务
@@ -4127,7 +4127,7 @@ func (r *ModifyApplicationInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyApplicationReplicasRequestParams struct {
-	// 服务id
+	// 应用id
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
 	// 环境ID
@@ -4143,7 +4143,7 @@ type ModifyApplicationReplicasRequestParams struct {
 type ModifyApplicationReplicasRequest struct {
 	*tchttp.BaseRequest
 	
-	// 服务id
+	// 应用id
 	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
 
 	// 环境ID
@@ -4879,7 +4879,7 @@ type RestartApplicationRequestParams struct {
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
 
-	// 环境ID
+	// 环境ID/命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 }
 
@@ -4892,7 +4892,7 @@ type RestartApplicationRequest struct {
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
 
-	// 环境ID
+	// 环境ID/命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 }
 
@@ -5433,7 +5433,7 @@ type StopApplicationRequestParams struct {
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
 
-	// 环境ID
+	// 环境ID/命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 }
 
@@ -5446,7 +5446,7 @@ type StopApplicationRequest struct {
 	// 来源渠道
 	SourceChannel *int64 `json:"SourceChannel,omitempty" name:"SourceChannel"`
 
-	// 环境ID
+	// 环境ID/命名空间ID
 	EnvironmentId *string `json:"EnvironmentId,omitempty" name:"EnvironmentId"`
 }
 

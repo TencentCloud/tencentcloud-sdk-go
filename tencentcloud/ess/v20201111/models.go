@@ -64,10 +64,8 @@ type ApproverInfo struct {
 	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	ApproverName *string `json:"ApproverName,omitempty" name:"ApproverName"`
 
-	// 本企业的签署方经办人的员工UserId
-	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
-	// 
-	// 注: `若传该字段，则签署方经办人的其他信息（如签署方经办人的姓名、证件号码、手机号码等）将被忽略。`
+	// 签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
+	// 请确认手机号所有方为此合同签署方。
 	ApproverMobile *string `json:"ApproverMobile,omitempty" name:"ApproverMobile"`
 
 	// 组织机构名称。
@@ -2675,6 +2673,115 @@ func (r *CreateIntegrationEmployeesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateIntegrationRoleRequestParams struct {
+	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 支持填入集团子公司经办人 userId 代发合同。
+	// 
+	// 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 角色描述，最大长度为50个字符
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 角色类型，0:saas角色，1:集团角色
+	// 默认0，saas角色
+	IsGroupRole *int64 `json:"IsGroupRole,omitempty" name:"IsGroupRole"`
+
+	// 权限树
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitempty" name:"PermissionGroups"`
+
+	// 集团角色的话，需要传递集团子企业列表，如果是全选，则传1
+	SubOrganizationIds *string `json:"SubOrganizationIds,omitempty" name:"SubOrganizationIds"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+type CreateIntegrationRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 支持填入集团子公司经办人 userId 代发合同。
+	// 
+	// 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 角色描述，最大长度为50个字符
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 角色类型，0:saas角色，1:集团角色
+	// 默认0，saas角色
+	IsGroupRole *int64 `json:"IsGroupRole,omitempty" name:"IsGroupRole"`
+
+	// 权限树
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitempty" name:"PermissionGroups"`
+
+	// 集团角色的话，需要传递集团子企业列表，如果是全选，则传1
+	SubOrganizationIds *string `json:"SubOrganizationIds,omitempty" name:"SubOrganizationIds"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+func (r *CreateIntegrationRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIntegrationRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Operator")
+	delete(f, "Description")
+	delete(f, "IsGroupRole")
+	delete(f, "PermissionGroups")
+	delete(f, "SubOrganizationIds")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateIntegrationRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateIntegrationRoleResponseParams struct {
+	// 角色id
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateIntegrationRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateIntegrationRoleResponseParams `json:"Response"`
+}
+
+func (r *CreateIntegrationRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateIntegrationRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateIntegrationUserRolesRequestParams struct {
 	// 操作人信息，UserId必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
@@ -3070,6 +3177,22 @@ type CreatePersonAuthCertificateImageResponseParams struct {
 	// 个人用户证明证书的下载链接
 	AuthCertUrl *string `json:"AuthCertUrl,omitempty" name:"AuthCertUrl"`
 
+	// 证书图片上的证书编号，20位数字
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageCertId *string `json:"ImageCertId,omitempty" name:"ImageCertId"`
+
+	// 图片证明对应的CA证书序列号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialNumber *string `json:"SerialNumber,omitempty" name:"SerialNumber"`
+
+	// CA证书颁发时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidFrom *uint64 `json:"ValidFrom,omitempty" name:"ValidFrom"`
+
+	// CA证书有效截止时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidTo *uint64 `json:"ValidTo,omitempty" name:"ValidTo"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -3095,7 +3218,7 @@ type CreatePrepareFlowRequestParams struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 资源Id，通过多文件上传（UploadFiles）接口获得
+	// 资源id，与ResourceType对应
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 合同名称
@@ -3112,22 +3235,28 @@ type CreatePrepareFlowRequestParams struct {
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
 	// 用户自定义合同类型Id
-	// 该id为电子签企业内的合同类型id
+	// 
+	// 该id为电子签企业内的合同类型id， 可以在自定义合同类型处获取
 	UserFlowTypeId *string `json:"UserFlowTypeId,omitempty" name:"UserFlowTypeId"`
+
+	// 合同类型名称
+	// 该字段用于客户自定义合同类型
+	// 建议使用时指定合同类型，便于之后合同分类以及查看
+	// 如果合同类型与自定义的合同类型描述一致，会自动归类到自定义的合同类型处，如果不一致，则会创建一个新的自定义合同类型
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
 	// 签署流程参与者信息，最大限制50方
 	Approvers []*FlowCreateApprover `json:"Approvers,omitempty" name:"Approvers"`
 
 	// 打开智能添加填写区
-	// (默认开启，打开:"OPEN"
+	// 默认开启，打开:"OPEN"
 	//  关闭："CLOSE"
 	IntelligentStatus *string `json:"IntelligentStatus,omitempty" name:"IntelligentStatus"`
 
 	// 资源类型，
-	// 1：文件，
-	// 2：模板
-	// 不传默认为1：文件
-	// 目前仅支持文件
+	// 1：模板
+	// 2：文件，
+	// 不传默认为2：文件
 	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 发起方填写控件
@@ -3156,11 +3285,6 @@ type CreatePrepareFlowRequestParams struct {
 
 	// 合同id,用于通过已web页面发起的合同id快速生成一个web发起合同链接
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
-
-	// 合同类型名称
-	// 该字段用于客户自定义合同类型
-	// 建议使用时指定合同类型，便于之后合同分类以及查看
-	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填	
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -3172,7 +3296,7 @@ type CreatePrepareFlowRequest struct {
 	// 调用方用户信息，userId 必填
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 资源Id，通过多文件上传（UploadFiles）接口获得
+	// 资源id，与ResourceType对应
 	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
 
 	// 合同名称
@@ -3189,22 +3313,28 @@ type CreatePrepareFlowRequest struct {
 	Deadline *int64 `json:"Deadline,omitempty" name:"Deadline"`
 
 	// 用户自定义合同类型Id
-	// 该id为电子签企业内的合同类型id
+	// 
+	// 该id为电子签企业内的合同类型id， 可以在自定义合同类型处获取
 	UserFlowTypeId *string `json:"UserFlowTypeId,omitempty" name:"UserFlowTypeId"`
+
+	// 合同类型名称
+	// 该字段用于客户自定义合同类型
+	// 建议使用时指定合同类型，便于之后合同分类以及查看
+	// 如果合同类型与自定义的合同类型描述一致，会自动归类到自定义的合同类型处，如果不一致，则会创建一个新的自定义合同类型
+	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
 	// 签署流程参与者信息，最大限制50方
 	Approvers []*FlowCreateApprover `json:"Approvers,omitempty" name:"Approvers"`
 
 	// 打开智能添加填写区
-	// (默认开启，打开:"OPEN"
+	// 默认开启，打开:"OPEN"
 	//  关闭："CLOSE"
 	IntelligentStatus *string `json:"IntelligentStatus,omitempty" name:"IntelligentStatus"`
 
 	// 资源类型，
-	// 1：文件，
-	// 2：模板
-	// 不传默认为1：文件
-	// 目前仅支持文件
+	// 1：模板
+	// 2：文件，
+	// 不传默认为2：文件
 	ResourceType *int64 `json:"ResourceType,omitempty" name:"ResourceType"`
 
 	// 发起方填写控件
@@ -3233,11 +3363,6 @@ type CreatePrepareFlowRequest struct {
 
 	// 合同id,用于通过已web页面发起的合同id快速生成一个web发起合同链接
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
-
-	// 合同类型名称
-	// 该字段用于客户自定义合同类型
-	// 建议使用时指定合同类型，便于之后合同分类以及查看
-	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填	
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
@@ -3261,6 +3386,7 @@ func (r *CreatePrepareFlowRequest) FromJsonString(s string) error {
 	delete(f, "Unordered")
 	delete(f, "Deadline")
 	delete(f, "UserFlowTypeId")
+	delete(f, "FlowType")
 	delete(f, "Approvers")
 	delete(f, "IntelligentStatus")
 	delete(f, "ResourceType")
@@ -3270,7 +3396,6 @@ func (r *CreatePrepareFlowRequest) FromJsonString(s string) error {
 	delete(f, "NeedCreateReview")
 	delete(f, "UserData")
 	delete(f, "FlowId")
-	delete(f, "FlowType")
 	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreatePrepareFlowRequest has unknown keys!", "")
@@ -6450,7 +6575,7 @@ type FlowCreateApprover struct {
 	ApproverType *int64 `json:"ApproverType,omitempty" name:"ApproverType"`
 
 	// 签署人企业名称
-	// <br/>当approverType=1 或 approverType=3时，必须指定
+	// 当approverType=0 或 approverType=3时，必须指定
 	// 
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
@@ -6550,9 +6675,13 @@ type FlowCreateApprover struct {
 	ComponentLimitType []*string `json:"ComponentLimitType,omitempty" name:"ComponentLimitType"`
 
 	// 合同查看方式<br/>默认1 -实名查看 <br/>2-短信验证码查看(企业签署方暂不支持该方式)
+	// 
+	// > 注意:此参数仅针对文件发起设置生效,模板发起合同签署流程, 请以模板配置为主.
 	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitempty" name:"ApproverVerifyTypes"`
 
 	// 合同签署方式(默认1,2) <br/>1-人脸认证 <br/>2-签署密码 <br/>3-运营商三要素
+	// 
+	// > 注意:此参数仅针对文件发起设置生效,模板发起合同签署流程, 请以模板配置为主.
 	ApproverSignTypes []*uint64 `json:"ApproverSignTypes,omitempty" name:"ApproverSignTypes"`
 }
 
@@ -7075,6 +7204,113 @@ func (r *ModifyIntegrationDepartmentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyIntegrationDepartmentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIntegrationRoleRequestParams struct {
+	// 角色Id，可通过接口 DescribeIntegrationRoles 查询获取
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 支持填入集团子公司经办人 userId 代发合同。
+	// 
+	// 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 角色描述，最大长度为50个字符
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 权限树
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitempty" name:"PermissionGroups"`
+
+	// 集团角色的话，需要传递集团子企业列表，如果是全选，则传1
+	SubOrganizationIds []*string `json:"SubOrganizationIds,omitempty" name:"SubOrganizationIds"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+type ModifyIntegrationRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 角色Id，可通过接口 DescribeIntegrationRoles 查询获取
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+	Name *string `json:"Name,omitempty" name:"Name"`
+
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 支持填入集团子公司经办人 userId 代发合同。
+	// 
+	// 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
+
+	// 角色描述，最大长度为50个字符
+	Description *string `json:"Description,omitempty" name:"Description"`
+
+	// 权限树
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitempty" name:"PermissionGroups"`
+
+	// 集团角色的话，需要传递集团子企业列表，如果是全选，则传1
+	SubOrganizationIds []*string `json:"SubOrganizationIds,omitempty" name:"SubOrganizationIds"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
+}
+
+func (r *ModifyIntegrationRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIntegrationRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoleId")
+	delete(f, "Name")
+	delete(f, "Operator")
+	delete(f, "Description")
+	delete(f, "PermissionGroups")
+	delete(f, "SubOrganizationIds")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyIntegrationRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyIntegrationRoleResponseParams struct {
+	// 角色id
+	RoleId *string `json:"RoleId,omitempty" name:"RoleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type ModifyIntegrationRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyIntegrationRoleResponseParams `json:"Response"`
+}
+
+func (r *ModifyIntegrationRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyIntegrationRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

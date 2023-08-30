@@ -4651,6 +4651,10 @@ type HostResource struct {
 
 	// 专用宿主机实例可用GPU卡数
 	GpuAvailable *uint64 `json:"GpuAvailable,omitempty" name:"GpuAvailable"`
+
+	// CDH owner
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExclusiveOwner *string `json:"ExclusiveOwner,omitempty" name:"ExclusiveOwner"`
 }
 
 type HpcClusterInfo struct {

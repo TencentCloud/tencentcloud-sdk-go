@@ -5081,7 +5081,7 @@ type ListRecordBackupPlanDevicesData struct {
 
 	// 设备通道信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List *RecordPlanChannelInfo `json:"List,omitempty" name:"List"`
+	List []*RecordPlanChannelInfo `json:"List,omitempty" name:"List"`
 }
 
 // Predefined struct for user
@@ -5099,10 +5099,10 @@ type ListRecordBackupPlanDevicesRequestParams struct {
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
 	// 每页最大数量
-	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// 第几页
-	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
+	// 分页页数
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
 type ListRecordBackupPlanDevicesRequest struct {
@@ -5121,10 +5121,10 @@ type ListRecordBackupPlanDevicesRequest struct {
 	OrganizationName *string `json:"OrganizationName,omitempty" name:"OrganizationName"`
 
 	// 每页最大数量
-	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
 
-	// 第几页
-	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
+	// 分页页数
+	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
 }
 
 func (r *ListRecordBackupPlanDevicesRequest) ToJsonString() string {

@@ -1233,6 +1233,9 @@ type CreateCloudStorageRequestParams struct {
 
 	// 订单id
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
 type CreateCloudStorageRequest struct {
@@ -1275,6 +1278,9 @@ type CreateCloudStorageRequest struct {
 
 	// 订单id
 	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
 func (r *CreateCloudStorageRequest) ToJsonString() string {
@@ -1295,6 +1301,7 @@ func (r *CreateCloudStorageRequest) FromJsonString(s string) error {
 	delete(f, "Override")
 	delete(f, "PackageQueue")
 	delete(f, "OrderId")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudStorageRequest has unknown keys!", "")
 	}
@@ -2904,6 +2911,9 @@ type DescribeCloudStorageDateRequestParams struct {
 
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
 type DescribeCloudStorageDateRequest struct {
@@ -2917,6 +2927,9 @@ type DescribeCloudStorageDateRequest struct {
 
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
 func (r *DescribeCloudStorageDateRequest) ToJsonString() string {
@@ -2934,6 +2947,7 @@ func (r *DescribeCloudStorageDateRequest) FromJsonString(s string) error {
 	delete(f, "ProductId")
 	delete(f, "DeviceName")
 	delete(f, "UserId")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageDateRequest has unknown keys!", "")
 	}
@@ -3538,6 +3552,9 @@ type DescribeCloudStorageTimeRequestParams struct {
 
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
 type DescribeCloudStorageTimeRequest struct {
@@ -3560,6 +3577,9 @@ type DescribeCloudStorageTimeRequest struct {
 
 	// 用户ID
 	UserId *string `json:"UserId,omitempty" name:"UserId"`
+
+	// 通道ID
+	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
 }
 
 func (r *DescribeCloudStorageTimeRequest) ToJsonString() string {
@@ -3580,6 +3600,7 @@ func (r *DescribeCloudStorageTimeRequest) FromJsonString(s string) error {
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "UserId")
+	delete(f, "ChannelId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudStorageTimeRequest has unknown keys!", "")
 	}

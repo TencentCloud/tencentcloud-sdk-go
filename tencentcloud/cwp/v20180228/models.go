@@ -2551,6 +2551,8 @@ type BashRule struct {
 	Rule *string `json:"Rule,omitempty" name:"Rule"`
 
 	// 规则描述
+	//
+	// Deprecated: Decription is deprecated.
 	Decription *string `json:"Decription,omitempty" name:"Decription"`
 
 	// 操作人
@@ -2582,6 +2584,10 @@ type BashRule struct {
 	// 是否处理之前的事件 0: 不处理 1:处理
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DealOldEvents *uint64 `json:"DealOldEvents,omitempty" name:"DealOldEvents"`
+
+	// 规则描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitempty" name:"Description"`
 }
 
 type BruteAttackInfo struct {

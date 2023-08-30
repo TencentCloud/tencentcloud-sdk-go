@@ -252,6 +252,9 @@ type CdnInstanceDetail struct {
 
 	// 域名状态
 	Status *string `json:"Status,omitempty" name:"Status"`
+
+	// 域名计费状态
+	HttpsBillingSwitch *string `json:"HttpsBillingSwitch,omitempty" name:"HttpsBillingSwitch"`
 }
 
 type CertHostingInfo struct {
@@ -277,6 +280,14 @@ type Certificate struct {
 
 	// 证书绑定的域名
 	DnsNames []*string `json:"DnsNames,omitempty" name:"DnsNames"`
+
+	// 根证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertCaId *string `json:"CertCaId,omitempty" name:"CertCaId"`
+
+	// 证书认证模式：UNIDIRECTIONAL单向认证，MUTUAL双向认证
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SSLMode *string `json:"SSLMode,omitempty" name:"SSLMode"`
 }
 
 type CertificateExtra struct {
@@ -5236,6 +5247,12 @@ type TkeInstanceDetail struct {
 
 	// 集群命名空间列表
 	NamespaceList []*TkeNameSpaceDetail `json:"NamespaceList,omitempty" name:"NamespaceList"`
+
+	// 集群类型
+	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 集群版本
+	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
 }
 
 type TkeNameSpaceDetail struct {

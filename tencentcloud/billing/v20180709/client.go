@@ -45,6 +45,110 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateAllocationTagRequest() (request *CreateAllocationTagRequest) {
+    request = &CreateAllocationTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "CreateAllocationTag")
+    
+    
+    return
+}
+
+func NewCreateAllocationTagResponse() (response *CreateAllocationTagResponse) {
+    response = &CreateAllocationTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateAllocationTag
+// 批量设置分账标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAllocationTag(request *CreateAllocationTagRequest) (response *CreateAllocationTagResponse, err error) {
+    return c.CreateAllocationTagWithContext(context.Background(), request)
+}
+
+// CreateAllocationTag
+// 批量设置分账标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateAllocationTagWithContext(ctx context.Context, request *CreateAllocationTagRequest) (response *CreateAllocationTagResponse, err error) {
+    if request == nil {
+        request = NewCreateAllocationTagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateAllocationTag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateAllocationTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteAllocationTagRequest() (request *DeleteAllocationTagRequest) {
+    request = &DeleteAllocationTagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DeleteAllocationTag")
+    
+    
+    return
+}
+
+func NewDeleteAllocationTagResponse() (response *DeleteAllocationTagResponse) {
+    response = &DeleteAllocationTagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteAllocationTag
+// 批量取消设置分账标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteAllocationTag(request *DeleteAllocationTagRequest) (response *DeleteAllocationTagResponse, err error) {
+    return c.DeleteAllocationTagWithContext(context.Background(), request)
+}
+
+// DeleteAllocationTag
+// 批量取消设置分账标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DeleteAllocationTagWithContext(ctx context.Context, request *DeleteAllocationTagRequest) (response *DeleteAllocationTagResponse, err error) {
+    if request == nil {
+        request = NewDeleteAllocationTagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteAllocationTag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteAllocationTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAccountBalanceRequest() (request *DescribeAccountBalanceRequest) {
     request = &DescribeAccountBalanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1005,6 +1109,58 @@ func (c *Client) DescribeDosageDetailByDateWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDescribeDosageDetailByDateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeTagListRequest() (request *DescribeTagListRequest) {
+    request = &DescribeTagListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeTagList")
+    
+    
+    return
+}
+
+func NewDescribeTagListResponse() (response *DescribeTagListResponse) {
+    response = &DescribeTagListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTagList
+// 获取分账标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTagList(request *DescribeTagListRequest) (response *DescribeTagListResponse, err error) {
+    return c.DescribeTagListWithContext(context.Background(), request)
+}
+
+// DescribeTagList
+// 获取分账标签
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTagListWithContext(ctx context.Context, request *DescribeTagListRequest) (response *DescribeTagListResponse, err error) {
+    if request == nil {
+        request = NewDescribeTagListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTagList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTagListResponse()
     err = c.Send(request, response)
     return
 }
