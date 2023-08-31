@@ -3053,6 +3053,130 @@ func (c *Client) DescribeDSPAAssessmentRiskProcessHistoryWithContext(ctx context
     return
 }
 
+func NewDescribeDSPAAssessmentRiskSideDistributedRequest() (request *DescribeDSPAAssessmentRiskSideDistributedRequest) {
+    request = &DescribeDSPAAssessmentRiskSideDistributedRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dsgc", APIVersion, "DescribeDSPAAssessmentRiskSideDistributed")
+    
+    
+    return
+}
+
+func NewDescribeDSPAAssessmentRiskSideDistributedResponse() (response *DescribeDSPAAssessmentRiskSideDistributedResponse) {
+    response = &DescribeDSPAAssessmentRiskSideDistributedResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDSPAAssessmentRiskSideDistributed
+// 风险评估概览页，查询风险面的分布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDSPAAssessmentRiskSideDistributed(request *DescribeDSPAAssessmentRiskSideDistributedRequest) (response *DescribeDSPAAssessmentRiskSideDistributedResponse, err error) {
+    return c.DescribeDSPAAssessmentRiskSideDistributedWithContext(context.Background(), request)
+}
+
+// DescribeDSPAAssessmentRiskSideDistributed
+// 风险评估概览页，查询风险面的分布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDSPAAssessmentRiskSideDistributedWithContext(ctx context.Context, request *DescribeDSPAAssessmentRiskSideDistributedRequest) (response *DescribeDSPAAssessmentRiskSideDistributedResponse, err error) {
+    if request == nil {
+        request = NewDescribeDSPAAssessmentRiskSideDistributedRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDSPAAssessmentRiskSideDistributed require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDSPAAssessmentRiskSideDistributedResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDSPAAssessmentRiskSideListRequest() (request *DescribeDSPAAssessmentRiskSideListRequest) {
+    request = &DescribeDSPAAssessmentRiskSideListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dsgc", APIVersion, "DescribeDSPAAssessmentRiskSideList")
+    
+    
+    return
+}
+
+func NewDescribeDSPAAssessmentRiskSideListResponse() (response *DescribeDSPAAssessmentRiskSideListResponse) {
+    response = &DescribeDSPAAssessmentRiskSideListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDSPAAssessmentRiskSideList
+// 风险评估概览页，查询风险面的分布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDSPAAssessmentRiskSideList(request *DescribeDSPAAssessmentRiskSideListRequest) (response *DescribeDSPAAssessmentRiskSideListResponse, err error) {
+    return c.DescribeDSPAAssessmentRiskSideListWithContext(context.Background(), request)
+}
+
+// DescribeDSPAAssessmentRiskSideList
+// 风险评估概览页，查询风险面的分布
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeDSPAAssessmentRiskSideListWithContext(ctx context.Context, request *DescribeDSPAAssessmentRiskSideListRequest) (response *DescribeDSPAAssessmentRiskSideListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDSPAAssessmentRiskSideListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDSPAAssessmentRiskSideList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDSPAAssessmentRiskSideListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDSPAAssessmentRiskTemplateDetailRequest() (request *DescribeDSPAAssessmentRiskTemplateDetailRequest) {
     request = &DescribeDSPAAssessmentRiskTemplateDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3075,7 +3199,14 @@ func NewDescribeDSPAAssessmentRiskTemplateDetailResponse() (response *DescribeDS
 // 风险项页面--查看评估模版详情
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDSPAAssessmentRiskTemplateDetail(request *DescribeDSPAAssessmentRiskTemplateDetailRequest) (response *DescribeDSPAAssessmentRiskTemplateDetailResponse, err error) {
     return c.DescribeDSPAAssessmentRiskTemplateDetailWithContext(context.Background(), request)
 }
@@ -3084,7 +3215,14 @@ func (c *Client) DescribeDSPAAssessmentRiskTemplateDetail(request *DescribeDSPAA
 // 风险项页面--查看评估模版详情
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDSPAAssessmentRiskTemplateDetailWithContext(ctx context.Context, request *DescribeDSPAAssessmentRiskTemplateDetailRequest) (response *DescribeDSPAAssessmentRiskTemplateDetailResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskTemplateDetailRequest()
@@ -3123,7 +3261,14 @@ func NewDescribeDSPAAssessmentRiskTemplateVulnerableListResponse() (response *De
 // 风险模版页面--查询风险模版中的脆弱项配置
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDSPAAssessmentRiskTemplateVulnerableList(request *DescribeDSPAAssessmentRiskTemplateVulnerableListRequest) (response *DescribeDSPAAssessmentRiskTemplateVulnerableListResponse, err error) {
     return c.DescribeDSPAAssessmentRiskTemplateVulnerableListWithContext(context.Background(), request)
 }
@@ -3132,7 +3277,14 @@ func (c *Client) DescribeDSPAAssessmentRiskTemplateVulnerableList(request *Descr
 // 风险模版页面--查询风险模版中的脆弱项配置
 //
 // 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeDSPAAssessmentRiskTemplateVulnerableListWithContext(ctx context.Context, request *DescribeDSPAAssessmentRiskTemplateVulnerableListRequest) (response *DescribeDSPAAssessmentRiskTemplateVulnerableListResponse, err error) {
     if request == nil {
         request = NewDescribeDSPAAssessmentRiskTemplateVulnerableListRequest()

@@ -1,10 +1,65 @@
 # 本版本更新包含以下内容：
 
-## 费用中心(billing) 版本：2018-07-09
+## API 网关(apigateway) 版本：2018-08-08
 
-### 第 46 次发布
+### 第 43 次发布
 
-发布时间：2023-08-30 01:07:19
+发布时间：2023-08-31 01:06:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeService](https://cloud.tencent.com/document/api/628/45199)
+
+	* 新增出参：UniqVpcId
+
+* [ModifyService](https://cloud.tencent.com/document/api/628/45193)
+
+	* 新增入参：UniqVpcId
+
+
+
+
+## 品牌经营管家(bma) 版本：2022-11-15
+
+### 第 10 次发布
+
+发布时间：2023-08-31 01:07:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBPWhiteList](https://cloud.tencent.com/document/api/1296/86602)
+
+	* 新增入参：Remark
+
+
+修改数据结构：
+
+* [WhiteListData](https://cloud.tencent.com/document/api/1296/86604#WhiteListData)
+
+	* 新增成员：Remark
+
+	* <font color="#dd0000">**修改成员**：</font>WhiteListId, CompanyId, BrandName, AssetsType, WhiteList, InsertTime
+
+
+
+
+## 品牌经营管家(bma) 版本：2021-06-24
+
+
+
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+
+### 第 15 次发布
+
+发布时间：2023-08-31 01:09:05
 
 本次发布包含了以下内容：
 
@@ -12,28 +67,29 @@
 
 新增接口：
 
-* [CreateAllocationTag](https://cloud.tencent.com/document/api/555/97569)
-* [DeleteAllocationTag](https://cloud.tencent.com/document/api/555/97568)
-* [DescribeTagList](https://cloud.tencent.com/document/api/555/97567)
+* [DeleteBackUpData](https://cloud.tencent.com/document/api/1299/97603)
+* [DescribeBackUpJob](https://cloud.tencent.com/document/api/1299/97605)
+* [DescribeBackUpJobDetail](https://cloud.tencent.com/document/api/1299/97604)
+* [RecoverBackUpJob](https://cloud.tencent.com/document/api/1299/97602)
 
 修改接口：
 
-* [DescribeBillResourceSummary](https://cloud.tencent.com/document/api/555/19181)
+* [DescribeCkSqlApis](https://cloud.tencent.com/document/api/1299/83428)
 
-	* 新增入参：TagKey, TagValue
+	* 新增入参：UserType
 
 
 新增数据结构：
 
-* [TagDataInfo](https://cloud.tencent.com/document/api/555/19183#TagDataInfo)
+* [BackUpJobDisplay](https://cloud.tencent.com/document/api/1299/83429#BackUpJobDisplay)
 
 
 
-## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+## 消息队列 CKafka(ckafka) 版本：2019-08-19
 
-### 第 14 次发布
+### 第 95 次发布
 
-发布时间：2023-08-30 01:09:10
+发布时间：2023-08-31 01:09:45
 
 本次发布包含了以下内容：
 
@@ -41,20 +97,35 @@
 
 修改接口：
 
-* [CreateBackUpSchedule](https://cloud.tencent.com/document/api/1299/83424)
+* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
 
-	* 新增入参：InstanceId, ScheduleType, OperationType, RetainDays
-
-	* 新增出参：ErrorMsg
+	* 新增入参：AutoVoucher
 
 
+新增数据结构：
+
+* [BrokerTopicFlowData](https://cloud.tencent.com/document/api/597/40861#BrokerTopicFlowData)
+
+修改数据结构：
+
+* [TopicFlowRankingResult](https://cloud.tencent.com/document/api/597/40861#TopicFlowRankingResult)
+
+	* 新增成员：BrokerTopicFlowData
+
+	* <font color="#dd0000">**修改成员**：</font>BrokerIp, BrokerTopicData
+
+* [ZoneInfo](https://cloud.tencent.com/document/api/597/40861#ZoneInfo)
+
+	* 新增成员：ExtraFlag
 
 
-## 云服务器(cvm) 版本：2017-03-12
 
-### 第 114 次发布
 
-发布时间：2023-08-30 01:11:15
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 9 次发布
+
+发布时间：2023-08-31 01:11:48
 
 本次发布包含了以下内容：
 
@@ -62,20 +133,39 @@
 
 修改数据结构：
 
-* [HostResource](https://cloud.tencent.com/document/api/213/15753#HostResource)
+* [ClbListenerListInfo](https://cloud.tencent.com/document/api/664/90825#ClbListenerListInfo)
 
-	* 新增成员：ExclusiveOwner
+	* 新增成员：LoadBalancerDomain
 
-	* <font color="#dd0000">**修改成员**：</font>CpuTotal, CpuAvailable, MemTotal, MemAvailable, DiskTotal, DiskAvailable, GpuTotal, GpuAvailable
+	* <font color="#dd0000">**修改成员**：</font>ListenerId, ListenerName, LoadBalancerId, LoadBalancerName, Protocol, Region, Vip, VPort, Zone, NumericalVpcId, LoadBalancerType, Domain
 
 
 
 
 ## 主机安全(cwp) 版本：2018-02-28
 
-### 第 93 次发布
+### 第 94 次发布
 
-发布时间：2023-08-30 01:11:34
+发布时间：2023-08-31 01:12:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeMaliciousRequestWhiteList](https://cloud.tencent.com/document/api/296/61720)
+
+	* 新增入参：Order, By
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 23 次发布
+
+发布时间：2023-08-31 01:13:53
 
 本次发布包含了以下内容：
 
@@ -83,18 +173,24 @@
 
 修改数据结构：
 
-* [BashRule](https://cloud.tencent.com/document/api/296/19867#BashRule)
+* [InstanceInfo](https://cloud.tencent.com/document/api/1130/57812#InstanceInfo)
 
-	* 新增成员：Description
+	* 新增成员：AgentStatus, InstanceStatus
+
+	* <font color="#dd0000">**修改成员**：</font>InternalVip, InternalVport, CreateTime, ClusterId, ClusterName
 
 
 
 
-## 腾讯电子签企业版(ess) 版本：2020-11-11
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
 
-### 第 108 次发布
 
-发布时间：2023-08-30 01:14:43
+
+## 数据安全中心(dsgc) 版本：2019-07-23
+
+### 第 3 次发布
+
+发布时间：2023-08-31 01:14:45
 
 本次发布包含了以下内容：
 
@@ -102,23 +198,89 @@
 
 新增接口：
 
-* [CreateIntegrationRole](https://cloud.tencent.com/document/api/1323/97571)
-* [ModifyIntegrationRole](https://cloud.tencent.com/document/api/1323/97570)
+* [DescribeDSPAAssessmentRiskSideDistributed](https://cloud.tencent.com/document/api/1087/97607)
+* [DescribeDSPAAssessmentRiskSideList](https://cloud.tencent.com/document/api/1087/97606)
 
 修改接口：
 
-* [CreatePersonAuthCertificateImage](https://cloud.tencent.com/document/api/1323/95783)
+* [CreateDSPAAssessmentTask](https://cloud.tencent.com/document/api/1087/97259)
 
-	* 新增出参：ImageCertId, SerialNumber, ValidFrom, ValidTo
+	* <font color="#dd0000">**修改入参**：</font>DiscoveryCondition
+
+* [DescribeDSPAAssessmentHighRiskTop10Overview](https://cloud.tencent.com/document/api/1087/97159)
+
+	* 新增入参：Filter
+
+* [DescribeDSPAAssessmentLatestRiskList](https://cloud.tencent.com/document/api/1087/97157)
+
+	* 新增入参：RiskSide
+
+* [DescribeDSPAAssessmentRiskDistributionOverview](https://cloud.tencent.com/document/api/1087/97152)
+
+	* 新增入参：Filter
+
+* [DescribeDSPAAssessmentRiskTemplateVulnerableList](https://cloud.tencent.com/document/api/1087/97148)
+
+	* 新增入参：RiskSide
+
+* [DescribeDSPAESDiscoveryTaskResultDetail](https://cloud.tencent.com/document/api/1087/97208)
+
+	* 新增入参：DbName
+
+* [ModifyDSPAAssessmentRiskLatest](https://cloud.tencent.com/document/api/1087/97199)
+
+	* 新增入参：BathRiskIdList
+
+
+新增数据结构：
+
+* [RiskSideDistributed](https://cloud.tencent.com/document/api/1087/96844#RiskSideDistributed)
+* [TemplateInfo](https://cloud.tencent.com/document/api/1087/96844#TemplateInfo)
+
+修改数据结构：
+
+* [AssessmentRisk](https://cloud.tencent.com/document/api/1087/96844#AssessmentRisk)
+
+	* 新增成员：RiskSide
+
+	* <font color="#dd0000">**修改成员**：</font>AssetName, SecurityProduct, RiskType
+
+* [AssessmentRiskItem](https://cloud.tencent.com/document/api/1087/96844#AssessmentRiskItem)
+
+	* 新增成员：RiskSide, ReferTemplateList
+
+* [AssessmentTemplate](https://cloud.tencent.com/document/api/1087/96844#AssessmentTemplate)
+
+	* 新增成员：IsASMTemplate
+
+	* <font color="#dd0000">**修改成员**：</font>Id, SupportDataSource
+
+* [ESTaskResultDetail](https://cloud.tencent.com/document/api/1087/96844#ESTaskResultDetail)
+
+	* 新增成员：LevelRiskScore
+
+* [HighRiskAssetsDetail](https://cloud.tencent.com/document/api/1087/96844#HighRiskAssetsDetail)
+
+	* 新增成员：DataSourceType, DataSourceName, RiskSide, ResourceRegion
+
+	* <font color="#dd0000">**修改成员**：</font>InstanceId, AssetsName, HighRiskCount, RiskType, TotalRiskCount
+
+* [RiskCountInfo](https://cloud.tencent.com/document/api/1087/96844#RiskCountInfo)
+
+	* 新增成员：RiskLevelName
+
+* [RiskItemInfo](https://cloud.tencent.com/document/api/1087/96844#RiskItemInfo)
+
+	* 新增成员：ResourceRegion, RiskSide
 
 
 
 
-## 物联网智能视频服务(iotvideo) 版本：2021-11-25
+## 人脸核身(faceid) 版本：2018-03-01
 
-### 第 20 次发布
+### 第 62 次发布
 
-发布时间：2023-08-30 01:17:01
+发布时间：2023-08-31 01:16:46
 
 本次发布包含了以下内容：
 
@@ -126,123 +288,113 @@
 
 修改接口：
 
-* [CreateCloudStorage](https://cloud.tencent.com/document/api/1131/77505)
+* [GetEidResult](https://cloud.tencent.com/document/api/1007/54090)
 
-	* 新增入参：ChannelId
-
-* [DescribeCloudStorageDate](https://cloud.tencent.com/document/api/1131/77503)
-
-	* 新增入参：ChannelId
-
-* [DescribeCloudStorageTime](https://cloud.tencent.com/document/api/1131/77498)
-
-	* 新增入参：ChannelId
-
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2020-12-15
-
-### 第 17 次发布
-
-发布时间：2023-08-30 01:16:44
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeCloudStorage](https://cloud.tencent.com/document/api/1131/53635)
-
-	* 新增入参：ChannelId
-
-
-
-
-## 物联网智能视频服务(iotvideo) 版本：2019-11-26
-
-
-
-## 智能视图计算平台(iss) 版本：2023-05-17
-
-### 第 5 次发布
-
-发布时间：2023-08-30 01:17:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ListRecordBackupPlanDevices](https://cloud.tencent.com/document/api/1344/95921)
-
-	* <font color="#dd0000">**修改入参**：</font>PageSize, PageNumber
+	* 新增出参：IntentionActionResult
 
 
 修改数据结构：
 
-* [ListRecordBackupPlanDevicesData](https://cloud.tencent.com/document/api/1344/95952#ListRecordBackupPlanDevicesData)
+* [GetEidTokenConfig](https://cloud.tencent.com/document/api/1007/41958#GetEidTokenConfig)
 
-	* <font color="#dd0000">**修改成员**：</font>List
-
-
+	* 新增成员：IntentionActions
 
 
-## SSL 证书(ssl) 版本：2019-12-05
 
-### 第 41 次发布
 
-发布时间：2023-08-30 01:21:56
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 37 次发布
+
+发布时间：2023-08-31 01:20:56
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
+新增数据结构：
+
+* [Order](https://cloud.tencent.com/document/api/849/52010#Order)
+
 修改数据结构：
 
-* [CdnInstanceDetail](https://cloud.tencent.com/document/api/400/41679#CdnInstanceDetail)
+* [Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster)
 
-	* 新增成员：HttpsBillingSwitch
+	* 新增成员：ArchGeneration, ClusterType, Orders
 
-* [Certificate](https://cloud.tencent.com/document/api/400/41679#Certificate)
+	* <font color="#dd0000">**修改成员**：</font>ClusterSessions
 
-	* 新增成员：CertCaId, SSLMode
 
-* [TkeInstanceDetail](https://cloud.tencent.com/document/api/400/41679#TkeInstanceDetail)
 
-	* 新增成员：ClusterType, ClusterVersion
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 163 次发布
+
+发布时间：2023-08-31 01:27:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [ProductInstanceResource](https://cloud.tencent.com/document/api/266/31773#ProductInstanceResource)
+
+修改数据结构：
+
+* [ProductInstance](https://cloud.tencent.com/document/api/266/31773#ProductInstance)
+
+	* 新增成员：ResourceSet
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 166 次发布
+
+发布时间：2023-08-31 01:28:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyNetworkAclEntries](https://cloud.tencent.com/document/api/215/42107)
+
+	* 新增入参：EnableUpdateAclEntries
+
+
+修改数据结构：
+
+* [NetworkAclEntry](https://cloud.tencent.com/document/api/215/15824#NetworkAclEntry)
+
+	* 新增成员：Priority, NetworkAclIpv4EntryId, NetworkAclIpv6EntryId
+
+	* <font color="#dd0000">**修改成员**：</font>ModifyTime
 
 
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
-### 第 45 次发布
+### 第 46 次发布
 
-发布时间：2023-08-30 01:28:20
+发布时间：2023-08-31 01:29:16
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
-
-* [DescribeTaskRunHistory](https://cloud.tencent.com/document/api/1267/95189)
-
-	* <font color="#dd0000">**修改入参**：</font>PageNumber
-
-
 修改数据结构：
 
-* [LinkOpsDto](https://cloud.tencent.com/document/api/1267/76336#LinkOpsDto)
+* [DataSourceInfo](https://cloud.tencent.com/document/api/1267/76336#DataSourceInfo)
 
-	* <font color="#dd0000">**修改成员**：</font>Id, LinkKey, TaskFrom, TaskTo, InCharge, LinkDependencyType, Offset, LinkType, WorkflowId
+	* 新增成员：ShowType
 
-* [TaskOpsDto](https://cloud.tencent.com/document/api/1267/76336#TaskOpsDto)
-
-	* <font color="#dd0000">**修改成员**：</font>TaskId, VirtualTaskId, VirtualFlag, TaskName, WorkflowId, RealWorkflowId, WorkflowName, FolderId, FolderName, CreateTime, LastUpdate, Status, InCharge, InChargeId, StartTime, EndTime, ExecutionStartTime, ExecutionEndTime, CycleType, CycleStep, CrontabExpression, DelayTime, StartupTime, RetryWait, RetryAble, TaskAction, TryLimit, RunPriority, TaskType, BrokerIp, ClusterId, MinDateTime, MaxDateTime, ExecutionTTL, SelfDepend, LeftCoordinate, TopCoordinate, Notes, InstanceInitStrategy, YarnQueue, LastSchedulerCommitTime, NormalizedJobStartTime, SchedulerDesc, ResourceGroup, Creator, DependencyRel, DependencyWorkflow, EventListenerConfig, EventPublisherConfig, VirtualTaskStatus, TaskLinkInfo, ProductName, ProjectId, ProjectIdent, ProjectName, OwnId, UserId, TenantId, UpdateUser, UpdateTime, UpdateUserId, TaskTypeId, TaskTypeDesc, ShowWorkflow, FirstSubmitTime, FirstRunTime, ScheduleDesc, CycleNum, Crontab, StartDate, EndDate, CycleUnit, InitStrategy, Layer, SourceServiceId, SourceServiceType, TargetServiceId, TargetServiceType, TasksStr, Submit
+	* <font color="#dd0000">**修改成员**：</font>ModifiedTime
 
 
 
@@ -3421,6 +3573,25 @@
 
 
 ## API 网关(apigateway) 版本：2018-08-08
+
+### 第 43 次发布
+
+发布时间：2023-08-31 01:06:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeService](https://cloud.tencent.com/document/api/628/45199)
+
+	* 新增出参：UniqVpcId
+
+* [ModifyService](https://cloud.tencent.com/document/api/628/45193)
+
+	* 新增入参：UniqVpcId
+
 
 ### 第 42 次发布
 
@@ -8169,9 +8340,9 @@
 
 新增接口：
 
-* [[CreateAllocationTag](https://cloud.tencent.com/document/api/555/97569)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAllocationTag](https://cloud.tencent.com/document/api/555/97568)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeTagList](https://cloud.tencent.com/document/api/555/97567)](https://cloud.tencent.com/document/api/#/#)
+* [CreateAllocationTag](https://cloud.tencent.com/document/api/555/97569)
+* [DeleteAllocationTag](https://cloud.tencent.com/document/api/555/97568)
+* [DescribeTagList](https://cloud.tencent.com/document/api/555/97567)
 
 修改接口：
 
@@ -8182,7 +8353,7 @@
 
 新增数据结构：
 
-* [[TagDataInfo](https://cloud.tencent.com/document/api/555/19183#TagDataInfo)](https://cloud.tencent.com/document/api/555/19183#[TagDataInfo](https://cloud.tencent.com/document/api/555/19183#TagDataInfo))
+* [TagDataInfo](https://cloud.tencent.com/document/api/555/19183#TagDataInfo)
 
 ### 第 45 次发布
 
@@ -9939,6 +10110,30 @@
 
 
 ## 品牌经营管家(bma) 版本：2022-11-15
+
+### 第 10 次发布
+
+发布时间：2023-08-31 01:07:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBPWhiteList](https://cloud.tencent.com/document/api/1296/86602)
+
+	* 新增入参：Remark
+
+
+修改数据结构：
+
+* [WhiteListData](https://cloud.tencent.com/document/api/1296/86604#WhiteListData)
+
+	* 新增成员：Remark
+
+	* <font color="#dd0000">**修改成员**：</font>WhiteListId, CompanyId, BrandName, AssetsType, WhiteList, InsertTime
+
 
 ### 第 9 次发布
 
@@ -20437,6 +20632,32 @@
 
 ## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
 
+### 第 15 次发布
+
+发布时间：2023-08-31 01:09:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DeleteBackUpData](https://cloud.tencent.com/document/api/1299/97603)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBackUpJob](https://cloud.tencent.com/document/api/1299/97605)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeBackUpJobDetail](https://cloud.tencent.com/document/api/1299/97604)](https://cloud.tencent.com/document/api/#/#)
+* [[RecoverBackUpJob](https://cloud.tencent.com/document/api/1299/97602)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [DescribeCkSqlApis](https://cloud.tencent.com/document/api/1299/83428)
+
+	* 新增入参：UserType
+
+
+新增数据结构：
+
+* [[BackUpJobDisplay](https://cloud.tencent.com/document/api/1299/83429#BackUpJobDisplay)](https://cloud.tencent.com/document/api/1299/83429#[BackUpJobDisplay](https://cloud.tencent.com/document/api/1299/83429#BackUpJobDisplay))
+
 ### 第 14 次发布
 
 发布时间：2023-08-30 01:09:10
@@ -23069,6 +23290,38 @@
 
 
 ## 消息队列 CKafka(ckafka) 版本：2019-08-19
+
+### 第 95 次发布
+
+发布时间：2023-08-31 01:09:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstancePre](https://cloud.tencent.com/document/api/597/45847)
+
+	* 新增入参：AutoVoucher
+
+
+新增数据结构：
+
+* [[BrokerTopicFlowData](https://cloud.tencent.com/document/api/597/40861#BrokerTopicFlowData)](https://cloud.tencent.com/document/api/597/40861#[BrokerTopicFlowData](https://cloud.tencent.com/document/api/597/40861#BrokerTopicFlowData))
+
+修改数据结构：
+
+* [TopicFlowRankingResult](https://cloud.tencent.com/document/api/597/40861#TopicFlowRankingResult)
+
+	* 新增成员：BrokerTopicFlowData
+
+	* <font color="#dd0000">**修改成员**：</font>BrokerIp, BrokerTopicData
+
+* [ZoneInfo](https://cloud.tencent.com/document/api/597/40861#ZoneInfo)
+
+	* 新增成员：ExtraFlag
+
 
 ### 第 94 次发布
 
@@ -33493,6 +33746,23 @@
 
 ## 云安全一体化平台(csip) 版本：2022-11-21
 
+### 第 9 次发布
+
+发布时间：2023-08-31 01:11:48
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ClbListenerListInfo](https://cloud.tencent.com/document/api/664/90825#ClbListenerListInfo)
+
+	* 新增成员：LoadBalancerDomain
+
+	* <font color="#dd0000">**修改成员**：</font>ListenerId, ListenerName, LoadBalancerId, LoadBalancerName, Protocol, Region, Vip, VPort, Zone, NumericalVpcId, LoadBalancerType, Domain
+
+
 ### 第 8 次发布
 
 发布时间：2023-08-09 01:17:49
@@ -35855,6 +36125,21 @@
 
 
 ## 主机安全(cwp) 版本：2018-02-28
+
+### 第 94 次发布
+
+发布时间：2023-08-31 01:12:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeMaliciousRequestWhiteList](https://cloud.tencent.com/document/api/296/61720)
+
+	* 新增入参：Order, By
+
 
 ### 第 93 次发布
 
@@ -41440,6 +41725,23 @@
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
 
+### 第 23 次发布
+
+发布时间：2023-08-31 01:13:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceInfo](https://cloud.tencent.com/document/api/1130/57812#InstanceInfo)
+
+	* 新增成员：AgentStatus, InstanceStatus
+
+	* <font color="#dd0000">**修改成员**：</font>InternalVip, InternalVport, CreateTime, ClusterId, ClusterName
+
+
 ### 第 22 次发布
 
 发布时间：2023-07-13 01:15:30
@@ -46097,6 +46399,92 @@
 
 
 ## 数据安全中心(dsgc) 版本：2019-07-23
+
+### 第 3 次发布
+
+发布时间：2023-08-31 01:14:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeDSPAAssessmentRiskSideDistributed](https://cloud.tencent.com/document/api/1087/97607)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeDSPAAssessmentRiskSideList](https://cloud.tencent.com/document/api/1087/97606)](https://cloud.tencent.com/document/api/#/#)
+
+修改接口：
+
+* [CreateDSPAAssessmentTask](https://cloud.tencent.com/document/api/1087/97259)
+
+	* <font color="#dd0000">**修改入参**：</font>DiscoveryCondition
+
+* [DescribeDSPAAssessmentHighRiskTop10Overview](https://cloud.tencent.com/document/api/1087/97159)
+
+	* 新增入参：Filter
+
+* [DescribeDSPAAssessmentLatestRiskList](https://cloud.tencent.com/document/api/1087/97157)
+
+	* 新增入参：RiskSide
+
+* [DescribeDSPAAssessmentRiskDistributionOverview](https://cloud.tencent.com/document/api/1087/97152)
+
+	* 新增入参：Filter
+
+* [DescribeDSPAAssessmentRiskTemplateVulnerableList](https://cloud.tencent.com/document/api/1087/97148)
+
+	* 新增入参：RiskSide
+
+* [DescribeDSPAESDiscoveryTaskResultDetail](https://cloud.tencent.com/document/api/1087/97208)
+
+	* 新增入参：DbName
+
+* [ModifyDSPAAssessmentRiskLatest](https://cloud.tencent.com/document/api/1087/97199)
+
+	* 新增入参：BathRiskIdList
+
+
+新增数据结构：
+
+* [[RiskSideDistributed](https://cloud.tencent.com/document/api/1087/96844#RiskSideDistributed)](https://cloud.tencent.com/document/api/1087/96844#[RiskSideDistributed](https://cloud.tencent.com/document/api/1087/96844#RiskSideDistributed))
+* [[TemplateInfo](https://cloud.tencent.com/document/api/1087/96844#TemplateInfo)](https://cloud.tencent.com/document/api/1087/96844#[TemplateInfo](https://cloud.tencent.com/document/api/1087/96844#TemplateInfo))
+
+修改数据结构：
+
+* [AssessmentRisk](https://cloud.tencent.com/document/api/1087/96844#AssessmentRisk)
+
+	* 新增成员：RiskSide
+
+	* <font color="#dd0000">**修改成员**：</font>AssetName, SecurityProduct, RiskType
+
+* [AssessmentRiskItem](https://cloud.tencent.com/document/api/1087/96844#AssessmentRiskItem)
+
+	* 新增成员：RiskSide, ReferTemplateList
+
+* [AssessmentTemplate](https://cloud.tencent.com/document/api/1087/96844#AssessmentTemplate)
+
+	* 新增成员：IsASMTemplate
+
+	* <font color="#dd0000">**修改成员**：</font>Id, SupportDataSource
+
+* [ESTaskResultDetail](https://cloud.tencent.com/document/api/1087/96844#ESTaskResultDetail)
+
+	* 新增成员：LevelRiskScore
+
+* [HighRiskAssetsDetail](https://cloud.tencent.com/document/api/1087/96844#HighRiskAssetsDetail)
+
+	* 新增成员：DataSourceType, DataSourceName, RiskSide, ResourceRegion
+
+	* <font color="#dd0000">**修改成员**：</font>InstanceId, AssetsName, HighRiskCount, RiskType, TotalRiskCount
+
+* [RiskCountInfo](https://cloud.tencent.com/document/api/1087/96844#RiskCountInfo)
+
+	* 新增成员：RiskLevelName
+
+* [RiskItemInfo](https://cloud.tencent.com/document/api/1087/96844#RiskItemInfo)
+
+	* 新增成员：ResourceRegion, RiskSide
+
 
 ### 第 2 次发布
 
@@ -52199,8 +52587,8 @@
 
 新增接口：
 
-* [[CreateIntegrationRole](https://cloud.tencent.com/document/api/1323/97571)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyIntegrationRole](https://cloud.tencent.com/document/api/1323/97570)](https://cloud.tencent.com/document/api/#/#)
+* [CreateIntegrationRole](https://cloud.tencent.com/document/api/1323/97571)
+* [ModifyIntegrationRole](https://cloud.tencent.com/document/api/1323/97570)
 
 修改接口：
 
@@ -56529,6 +56917,28 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 62 次发布
+
+发布时间：2023-08-31 01:16:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GetEidResult](https://cloud.tencent.com/document/api/1007/54090)
+
+	* 新增出参：IntentionActionResult
+
+
+修改数据结构：
+
+* [GetEidTokenConfig](https://cloud.tencent.com/document/api/1007/41958#GetEidTokenConfig)
+
+	* 新增成员：IntentionActions
+
 
 ### 第 61 次发布
 
@@ -80431,6 +80841,27 @@
 
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 37 次发布
+
+发布时间：2023-08-31 01:20:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[Order](https://cloud.tencent.com/document/api/849/52010#Order)](https://cloud.tencent.com/document/api/849/52010#[Order](https://cloud.tencent.com/document/api/849/52010#Order))
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster)
+
+	* 新增成员：ArchGeneration, ClusterType, Orders
+
+	* <font color="#dd0000">**修改成员**：</font>ClusterSessions
+
 
 ### 第 36 次发布
 
@@ -120047,6 +120478,25 @@
 
 ## 云点播(vod) 版本：2018-07-17
 
+### 第 163 次发布
+
+发布时间：2023-08-31 01:27:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[ProductInstanceResource](https://cloud.tencent.com/document/api/266/31773#ProductInstanceResource)](https://cloud.tencent.com/document/api/266/31773#[ProductInstanceResource](https://cloud.tencent.com/document/api/266/31773#ProductInstanceResource))
+
+修改数据结构：
+
+* [ProductInstance](https://cloud.tencent.com/document/api/266/31773#ProductInstance)
+
+	* 新增成员：ResourceSet
+
+
 ### 第 162 次发布
 
 发布时间：2023-08-25 02:22:14
@@ -124446,6 +124896,30 @@
 
 
 ## 私有网络(vpc) 版本：2017-03-12
+
+### 第 166 次发布
+
+发布时间：2023-08-31 01:28:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyNetworkAclEntries](https://cloud.tencent.com/document/api/215/42107)
+
+	* 新增入参：EnableUpdateAclEntries
+
+
+修改数据结构：
+
+* [NetworkAclEntry](https://cloud.tencent.com/document/api/215/15824#NetworkAclEntry)
+
+	* 新增成员：Priority, NetworkAclIpv4EntryId, NetworkAclIpv6EntryId
+
+	* <font color="#dd0000">**修改成员**：</font>ModifyTime
+
 
 ### 第 165 次发布
 
@@ -129501,6 +129975,23 @@
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 46 次发布
+
+发布时间：2023-08-31 01:29:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DataSourceInfo](https://cloud.tencent.com/document/api/1267/76336#DataSourceInfo)
+
+	* 新增成员：ShowType
+
+	* <font color="#dd0000">**修改成员**：</font>ModifiedTime
+
 
 ### 第 45 次发布
 

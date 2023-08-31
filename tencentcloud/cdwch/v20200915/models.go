@@ -101,6 +101,29 @@ type AttachCBSSpec struct {
 	DiskDesc *string `json:"DiskDesc,omitempty" name:"DiskDesc"`
 }
 
+type BackUpJobDisplay struct {
+	// 备份任务id
+	JobId *int64 `json:"JobId,omitempty" name:"JobId"`
+
+	// 备份任务名
+	Snapshot *string `json:"Snapshot,omitempty" name:"Snapshot"`
+
+	// 任务类型(元数据),(数据)
+	BackUpType *string `json:"BackUpType,omitempty" name:"BackUpType"`
+
+	// 备份数据量
+	BackUpSize *int64 `json:"BackUpSize,omitempty" name:"BackUpSize"`
+
+	// 任务创建时间
+	BackUpTime *string `json:"BackUpTime,omitempty" name:"BackUpTime"`
+
+	// 任务过期时间
+	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+
+	// 任务状态
+	JobStatus *string `json:"JobStatus,omitempty" name:"JobStatus"`
+}
+
 type BackupTableContent struct {
 	// 数据库
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -465,6 +488,225 @@ func (r *CreateInstanceNewResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteBackUpDataRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 任务id
+	BackUpJobId *int64 `json:"BackUpJobId,omitempty" name:"BackUpJobId"`
+
+	// 是否删除所有数据
+	IsDeleteAll *bool `json:"IsDeleteAll,omitempty" name:"IsDeleteAll"`
+}
+
+type DeleteBackUpDataRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 任务id
+	BackUpJobId *int64 `json:"BackUpJobId,omitempty" name:"BackUpJobId"`
+
+	// 是否删除所有数据
+	IsDeleteAll *bool `json:"IsDeleteAll,omitempty" name:"IsDeleteAll"`
+}
+
+func (r *DeleteBackUpDataRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBackUpDataRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BackUpJobId")
+	delete(f, "IsDeleteAll")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteBackUpDataRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteBackUpDataResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteBackUpDataResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteBackUpDataResponseParams `json:"Response"`
+}
+
+func (r *DeleteBackUpDataResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteBackUpDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackUpJobDetailRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 任务id
+	BackUpJobId *int64 `json:"BackUpJobId,omitempty" name:"BackUpJobId"`
+}
+
+type DescribeBackUpJobDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 任务id
+	BackUpJobId *int64 `json:"BackUpJobId,omitempty" name:"BackUpJobId"`
+}
+
+func (r *DescribeBackUpJobDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackUpJobDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BackUpJobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackUpJobDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackUpJobDetailResponseParams struct {
+	// 备份表详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TableContents []*BackupTableContent `json:"TableContents,omitempty" name:"TableContents"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBackUpJobDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackUpJobDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackUpJobDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackUpJobDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackUpJobRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页号
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+type DescribeBackUpJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+
+	// 页号
+	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+
+	// 开始时间
+	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+}
+
+func (r *DescribeBackUpJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackUpJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "PageSize")
+	delete(f, "PageNum")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackUpJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackUpJobResponseParams struct {
+	// 任务列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackUpJobs []*BackUpJobDisplay `json:"BackUpJobs,omitempty" name:"BackUpJobs"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeBackUpJobResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackUpJobResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackUpJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackUpJobResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBackUpScheduleRequestParams struct {
 	// 集群id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -564,6 +806,9 @@ type DescribeCkSqlApisRequestParams struct {
 
 	// 用户名称，api与user相关的必填
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 账户的类型
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
 }
 
 type DescribeCkSqlApisRequest struct {
@@ -591,6 +836,9 @@ type DescribeCkSqlApisRequest struct {
 
 	// 用户名称，api与user相关的必填
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 账户的类型
+	UserType *string `json:"UserType,omitempty" name:"UserType"`
 }
 
 func (r *DescribeCkSqlApisRequest) ToJsonString() string {
@@ -609,6 +857,7 @@ func (r *DescribeCkSqlApisRequest) FromJsonString(s string) error {
 	delete(f, "ApiType")
 	delete(f, "Cluster")
 	delete(f, "UserName")
+	delete(f, "UserType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCkSqlApisRequest has unknown keys!", "")
 	}
@@ -1910,6 +2159,67 @@ func (r *OpenBackUpResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *OpenBackUpResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecoverBackUpJobRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 任务id
+	BackUpJobId *int64 `json:"BackUpJobId,omitempty" name:"BackUpJobId"`
+}
+
+type RecoverBackUpJobRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 任务id
+	BackUpJobId *int64 `json:"BackUpJobId,omitempty" name:"BackUpJobId"`
+}
+
+func (r *RecoverBackUpJobRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecoverBackUpJobRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "BackUpJobId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RecoverBackUpJobRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RecoverBackUpJobResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type RecoverBackUpJobResponse struct {
+	*tchttp.BaseResponse
+	Response *RecoverBackUpJobResponseParams `json:"Response"`
+}
+
+func (r *RecoverBackUpJobResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RecoverBackUpJobResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -9451,10 +9451,10 @@ type ModifyInstanceParamRequestParams struct {
 	// 实例ID
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 集群参数列表
+	// 集群参数列表，例如 [{           "CurrentValue":"2",        "ParamName":"innodb_stats_transient_sample_pages"}]
 	ClusterParamList []*ModifyParamItem `json:"ClusterParamList,omitempty" name:"ClusterParamList"`
 
-	// 实例参数列表
+	// 实例参数列表，例如[{           "CurrentValue":"2",        "ParamName":"innodb_stats_transient_sample_pages"}]
 	InstanceParamList []*ModifyParamItem `json:"InstanceParamList,omitempty" name:"InstanceParamList"`
 
 	// yes：在运维时间窗内修改，no：立即执行（默认值）
@@ -9470,10 +9470,10 @@ type ModifyInstanceParamRequest struct {
 	// 实例ID
 	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
 
-	// 集群参数列表
+	// 集群参数列表，例如 [{           "CurrentValue":"2",        "ParamName":"innodb_stats_transient_sample_pages"}]
 	ClusterParamList []*ModifyParamItem `json:"ClusterParamList,omitempty" name:"ClusterParamList"`
 
-	// 实例参数列表
+	// 实例参数列表，例如[{           "CurrentValue":"2",        "ParamName":"innodb_stats_transient_sample_pages"}]
 	InstanceParamList []*ModifyParamItem `json:"InstanceParamList,omitempty" name:"InstanceParamList"`
 
 	// yes：在运维时间窗内修改，no：立即执行（默认值）

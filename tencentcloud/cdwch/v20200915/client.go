@@ -189,6 +189,150 @@ func (c *Client) CreateInstanceNewWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewDeleteBackUpDataRequest() (request *DeleteBackUpDataRequest) {
+    request = &DeleteBackUpDataRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DeleteBackUpData")
+    
+    
+    return
+}
+
+func NewDeleteBackUpDataResponse() (response *DeleteBackUpDataResponse) {
+    response = &DeleteBackUpDataResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteBackUpData
+// 删除备份数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteBackUpData(request *DeleteBackUpDataRequest) (response *DeleteBackUpDataResponse, err error) {
+    return c.DeleteBackUpDataWithContext(context.Background(), request)
+}
+
+// DeleteBackUpData
+// 删除备份数据
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DeleteBackUpDataWithContext(ctx context.Context, request *DeleteBackUpDataRequest) (response *DeleteBackUpDataResponse, err error) {
+    if request == nil {
+        request = NewDeleteBackUpDataRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBackUpData require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBackUpDataResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBackUpJobRequest() (request *DescribeBackUpJobRequest) {
+    request = &DescribeBackUpJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DescribeBackUpJob")
+    
+    
+    return
+}
+
+func NewDescribeBackUpJobResponse() (response *DescribeBackUpJobResponse) {
+    response = &DescribeBackUpJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBackUpJob
+// 查询备份任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeBackUpJob(request *DescribeBackUpJobRequest) (response *DescribeBackUpJobResponse, err error) {
+    return c.DescribeBackUpJobWithContext(context.Background(), request)
+}
+
+// DescribeBackUpJob
+// 查询备份任务列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeBackUpJobWithContext(ctx context.Context, request *DescribeBackUpJobRequest) (response *DescribeBackUpJobResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackUpJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackUpJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackUpJobResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBackUpJobDetailRequest() (request *DescribeBackUpJobDetailRequest) {
+    request = &DescribeBackUpJobDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "DescribeBackUpJobDetail")
+    
+    
+    return
+}
+
+func NewDescribeBackUpJobDetailResponse() (response *DescribeBackUpJobDetailResponse) {
+    response = &DescribeBackUpJobDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBackUpJobDetail
+// 查询备份任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeBackUpJobDetail(request *DescribeBackUpJobDetailRequest) (response *DescribeBackUpJobDetailResponse, err error) {
+    return c.DescribeBackUpJobDetailWithContext(context.Background(), request)
+}
+
+// DescribeBackUpJobDetail
+// 查询备份任务详情
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeBackUpJobDetailWithContext(ctx context.Context, request *DescribeBackUpJobDetailRequest) (response *DescribeBackUpJobDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeBackUpJobDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBackUpJobDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBackUpJobDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeBackUpScheduleRequest() (request *DescribeBackUpScheduleRequest) {
     request = &DescribeBackUpScheduleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -905,6 +1049,54 @@ func (c *Client) OpenBackUpWithContext(ctx context.Context, request *OpenBackUpR
     request.SetContext(ctx)
     
     response = NewOpenBackUpResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRecoverBackUpJobRequest() (request *RecoverBackUpJobRequest) {
+    request = &RecoverBackUpJobRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwch", APIVersion, "RecoverBackUpJob")
+    
+    
+    return
+}
+
+func NewRecoverBackUpJobResponse() (response *RecoverBackUpJobResponse) {
+    response = &RecoverBackUpJobResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RecoverBackUpJob
+// 备份恢复
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) RecoverBackUpJob(request *RecoverBackUpJobRequest) (response *RecoverBackUpJobResponse, err error) {
+    return c.RecoverBackUpJobWithContext(context.Background(), request)
+}
+
+// RecoverBackUpJob
+// 备份恢复
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) RecoverBackUpJobWithContext(ctx context.Context, request *RecoverBackUpJobRequest) (response *RecoverBackUpJobResponse, err error) {
+    if request == nil {
+        request = NewRecoverBackUpJobRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RecoverBackUpJob require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRecoverBackUpJobResponse()
     err = c.Send(request, response)
     return
 }

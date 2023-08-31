@@ -2211,7 +2211,7 @@ type CreateServiceRequestParams struct {
 	// 独享实例id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// vpc属性
+	// vpc属性，选择VPC后不可修改，为服务选择VPC后，可对接该VPC下的后端资源
 	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
 }
 
@@ -2245,7 +2245,7 @@ type CreateServiceRequest struct {
 	// 独享实例id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
-	// vpc属性
+	// vpc属性，选择VPC后不可修改，为服务选择VPC后，可对接该VPC下的后端资源
 	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
 }
 
@@ -2326,7 +2326,7 @@ func (r *CreateServiceResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUpstreamRequestParams struct {
-	// 后端协议，取值范围：HTTP, HTTPS
+	// 后端协议，取值范围：HTTP, HTTPS,gRPC，gRPCs
 	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
 
 	// 负载均衡算法，取值范围：ROUND-ROBIN
@@ -2366,7 +2366,7 @@ type CreateUpstreamRequestParams struct {
 type CreateUpstreamRequest struct {
 	*tchttp.BaseRequest
 	
-	// 后端协议，取值范围：HTTP, HTTPS
+	// 后端协议，取值范围：HTTP, HTTPS,gRPC，gRPCs
 	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
 
 	// 负载均衡算法，取值范围：ROUND-ROBIN
@@ -5915,6 +5915,10 @@ type DescribeServiceResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecialUse *string `json:"SpecialUse,omitempty" name:"SpecialUse"`
 
+	// vpc属性，存量可能为空字符串
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -8344,6 +8348,9 @@ type ModifyServiceRequestParams struct {
 
 	// 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
 	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
+
+	// vpc属性，选择VPC后不可修改。为服务选择VPC后，可对接该VPC下的后端资源
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
 }
 
 type ModifyServiceRequest struct {
@@ -8363,6 +8370,9 @@ type ModifyServiceRequest struct {
 
 	// 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
 	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
+
+	// vpc属性，选择VPC后不可修改。为服务选择VPC后，可对接该VPC下的后端资源
+	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
 }
 
 func (r *ModifyServiceRequest) ToJsonString() string {
@@ -8382,6 +8392,7 @@ func (r *ModifyServiceRequest) FromJsonString(s string) error {
 	delete(f, "ServiceDesc")
 	delete(f, "Protocol")
 	delete(f, "NetTypes")
+	delete(f, "UniqVpcId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyServiceRequest has unknown keys!", "")
 	}

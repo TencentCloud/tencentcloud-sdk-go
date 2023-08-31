@@ -5480,17 +5480,17 @@ func NewModifyImageSharePermissionResponse() (response *ModifyImageSharePermissi
 }
 
 // ModifyImageSharePermission
-// 本接口（ModifyImageSharePermission）用于修改镜像分享信息。
+// 本接口（ModifyImageSharePermission）用于修改镜像共享信息。
 //
 // 
 //
-// * 分享镜像后，被分享账户可以通过该镜像创建实例。
+// * 共享镜像后，被共享账户可以通过该镜像创建实例。
 //
 // * 每个自定义镜像最多可共享给50个账户。
 //
-// * 分享镜像无法更改名称，描述，仅可用于创建实例。
+// * 共享镜像无法更改名称，描述，仅可用于创建实例。
 //
-// * 只支持分享到对方账户相同地域。
+// * 只支持共享到对方账户相同地域。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
@@ -5511,22 +5511,23 @@ func NewModifyImageSharePermissionResponse() (response *ModifyImageSharePermissi
 //  OVERQUOTA = "OverQuota"
 //  UNAUTHORIZEDOPERATION_IMAGENOTBELONGTOACCOUNT = "UnauthorizedOperation.ImageNotBelongToAccount"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNSUPPORTEDOPERATION_ENCRYPTEDIMAGESNOTSUPPORTED = "UnsupportedOperation.EncryptedImagesNotSupported"
 func (c *Client) ModifyImageSharePermission(request *ModifyImageSharePermissionRequest) (response *ModifyImageSharePermissionResponse, err error) {
     return c.ModifyImageSharePermissionWithContext(context.Background(), request)
 }
 
 // ModifyImageSharePermission
-// 本接口（ModifyImageSharePermission）用于修改镜像分享信息。
+// 本接口（ModifyImageSharePermission）用于修改镜像共享信息。
 //
 // 
 //
-// * 分享镜像后，被分享账户可以通过该镜像创建实例。
+// * 共享镜像后，被共享账户可以通过该镜像创建实例。
 //
 // * 每个自定义镜像最多可共享给50个账户。
 //
-// * 分享镜像无法更改名称，描述，仅可用于创建实例。
+// * 共享镜像无法更改名称，描述，仅可用于创建实例。
 //
-// * 只支持分享到对方账户相同地域。
+// * 只支持共享到对方账户相同地域。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_ACCOUNTALREADYEXISTS = "FailedOperation.AccountAlreadyExists"
@@ -5547,6 +5548,7 @@ func (c *Client) ModifyImageSharePermission(request *ModifyImageSharePermissionR
 //  OVERQUOTA = "OverQuota"
 //  UNAUTHORIZEDOPERATION_IMAGENOTBELONGTOACCOUNT = "UnauthorizedOperation.ImageNotBelongToAccount"
 //  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNSUPPORTEDOPERATION_ENCRYPTEDIMAGESNOTSUPPORTED = "UnsupportedOperation.EncryptedImagesNotSupported"
 func (c *Client) ModifyImageSharePermissionWithContext(ctx context.Context, request *ModifyImageSharePermissionRequest) (response *ModifyImageSharePermissionResponse, err error) {
     if request == nil {
         request = NewModifyImageSharePermissionRequest()

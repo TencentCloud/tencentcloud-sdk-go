@@ -135,6 +135,10 @@ type AssessmentRisk struct {
 	// 风险类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskType *string `json:"RiskType,omitempty" name:"RiskType"`
+
+	// 风险面
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskSide *string `json:"RiskSide,omitempty" name:"RiskSide"`
 }
 
 type AssessmentRiskItem struct {
@@ -165,6 +169,14 @@ type AssessmentRiskItem struct {
 	// 支持的数据源
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportDataSource []*string `json:"SupportDataSource,omitempty" name:"SupportDataSource"`
+
+	// 风险面
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskSide *string `json:"RiskSide,omitempty" name:"RiskSide"`
+
+	// 关联模版列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReferTemplateList []*TemplateInfo `json:"ReferTemplateList,omitempty" name:"ReferTemplateList"`
 }
 
 type AssessmentTask struct {
@@ -258,6 +270,10 @@ type AssessmentTemplate struct {
 	// 支持的数据源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SupportDataSource []*string `json:"SupportDataSource,omitempty" name:"SupportDataSource"`
+
+	// 是否包含攻击面风险
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsASMTemplate *bool `json:"IsASMTemplate,omitempty" name:"IsASMTemplate"`
 }
 
 type AssetCosDetail struct {
@@ -1164,9 +1180,6 @@ type CreateDSPAAssessmentTaskRequestParams struct {
 	// 评估模版Id，格式“template-xxxxxxxx”
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 敏感数据扫描数据源条件。
-	DiscoveryCondition *DiscoveryCondition `json:"DiscoveryCondition,omitempty" name:"DiscoveryCondition"`
-
 	// 评估业务名称。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
 	//
 	// Deprecated: BusinessName is deprecated.
@@ -1185,6 +1198,9 @@ type CreateDSPAAssessmentTaskRequestParams struct {
 	// 分类分级模版Id
 	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
 
+	// 敏感数据扫描数据源条件。
+	DiscoveryCondition *DiscoveryCondition `json:"DiscoveryCondition,omitempty" name:"DiscoveryCondition"`
+
 	// 说明
 	Description *string `json:"Description,omitempty" name:"Description"`
 }
@@ -1201,9 +1217,6 @@ type CreateDSPAAssessmentTaskRequest struct {
 	// 评估模版Id，格式“template-xxxxxxxx”
 	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
 
-	// 敏感数据扫描数据源条件。
-	DiscoveryCondition *DiscoveryCondition `json:"DiscoveryCondition,omitempty" name:"DiscoveryCondition"`
-
 	// 评估业务名称。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
 	BusinessName *string `json:"BusinessName,omitempty" name:"BusinessName"`
 
@@ -1215,6 +1228,9 @@ type CreateDSPAAssessmentTaskRequest struct {
 
 	// 分类分级模版Id
 	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+
+	// 敏感数据扫描数据源条件。
+	DiscoveryCondition *DiscoveryCondition `json:"DiscoveryCondition,omitempty" name:"DiscoveryCondition"`
 
 	// 说明
 	Description *string `json:"Description,omitempty" name:"Description"`
@@ -1235,11 +1251,11 @@ func (r *CreateDSPAAssessmentTaskRequest) FromJsonString(s string) error {
 	delete(f, "DspaId")
 	delete(f, "Name")
 	delete(f, "TemplateId")
-	delete(f, "DiscoveryCondition")
 	delete(f, "BusinessName")
 	delete(f, "BusinessDept")
 	delete(f, "BusinessOwner")
 	delete(f, "ComplianceId")
+	delete(f, "DiscoveryCondition")
 	delete(f, "Description")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDSPAAssessmentTaskRequest has unknown keys!", "")
@@ -3849,6 +3865,10 @@ type DescribeDSPAAssessmentHighRiskTop10OverviewRequestParams struct {
 
 	// 评估模版id
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 过滤条件， rdb（数据库）cos（对象存储）
+	// 不传就是全部
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
 }
 
 type DescribeDSPAAssessmentHighRiskTop10OverviewRequest struct {
@@ -3859,6 +3879,10 @@ type DescribeDSPAAssessmentHighRiskTop10OverviewRequest struct {
 
 	// 评估模版id
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 过滤条件， rdb（数据库）cos（对象存储）
+	// 不传就是全部
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
 }
 
 func (r *DescribeDSPAAssessmentHighRiskTop10OverviewRequest) ToJsonString() string {
@@ -3875,6 +3899,7 @@ func (r *DescribeDSPAAssessmentHighRiskTop10OverviewRequest) FromJsonString(s st
 	}
 	delete(f, "DspaId")
 	delete(f, "TemplateId")
+	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPAAssessmentHighRiskTop10OverviewRequest has unknown keys!", "")
 	}
@@ -4085,6 +4110,9 @@ type DescribeDSPAAssessmentLatestRiskListRequestParams struct {
 
 	// 风险等级筛选
 	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+
+	// 风险面筛选
+	RiskSide []*string `json:"RiskSide,omitempty" name:"RiskSide"`
 }
 
 type DescribeDSPAAssessmentLatestRiskListRequest struct {
@@ -4122,6 +4150,9 @@ type DescribeDSPAAssessmentLatestRiskListRequest struct {
 
 	// 风险等级筛选
 	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+
+	// 风险面筛选
+	RiskSide []*string `json:"RiskSide,omitempty" name:"RiskSide"`
 }
 
 func (r *DescribeDSPAAssessmentLatestRiskListRequest) ToJsonString() string {
@@ -4147,6 +4178,7 @@ func (r *DescribeDSPAAssessmentLatestRiskListRequest) FromJsonString(s string) e
 	delete(f, "BeginTime")
 	delete(f, "EndTime")
 	delete(f, "RiskLevel")
+	delete(f, "RiskSide")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPAAssessmentLatestRiskListRequest has unknown keys!", "")
 	}
@@ -4669,6 +4701,10 @@ type DescribeDSPAAssessmentRiskDistributionOverviewRequestParams struct {
 
 	// 评估模版id
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 风险资产分布的过滤条件
+	// （rdb，cos，不传就筛选全部）
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
 }
 
 type DescribeDSPAAssessmentRiskDistributionOverviewRequest struct {
@@ -4679,6 +4715,10 @@ type DescribeDSPAAssessmentRiskDistributionOverviewRequest struct {
 
 	// 评估模版id
 	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 风险资产分布的过滤条件
+	// （rdb，cos，不传就筛选全部）
+	Filter *string `json:"Filter,omitempty" name:"Filter"`
 }
 
 func (r *DescribeDSPAAssessmentRiskDistributionOverviewRequest) ToJsonString() string {
@@ -4695,6 +4735,7 @@ func (r *DescribeDSPAAssessmentRiskDistributionOverviewRequest) FromJsonString(s
 	}
 	delete(f, "DspaId")
 	delete(f, "TemplateId")
+	delete(f, "Filter")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPAAssessmentRiskDistributionOverviewRequest has unknown keys!", "")
 	}
@@ -5158,6 +5199,136 @@ func (r *DescribeDSPAAssessmentRiskProcessHistoryResponse) FromJsonString(s stri
 }
 
 // Predefined struct for user
+type DescribeDSPAAssessmentRiskSideDistributedRequestParams struct {
+	// DSPA实例ID
+	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+
+	// 评估模版id
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type DescribeDSPAAssessmentRiskSideDistributedRequest struct {
+	*tchttp.BaseRequest
+	
+	// DSPA实例ID
+	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+
+	// 评估模版id
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DescribeDSPAAssessmentRiskSideDistributedRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDSPAAssessmentRiskSideDistributedRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DspaId")
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPAAssessmentRiskSideDistributedRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDSPAAssessmentRiskSideDistributedResponseParams struct {
+	// 风险面的分布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskSideDistributed []*RiskSideDistributed `json:"RiskSideDistributed,omitempty" name:"RiskSideDistributed"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDSPAAssessmentRiskSideDistributedResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDSPAAssessmentRiskSideDistributedResponseParams `json:"Response"`
+}
+
+func (r *DescribeDSPAAssessmentRiskSideDistributedResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDSPAAssessmentRiskSideDistributedResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDSPAAssessmentRiskSideListRequestParams struct {
+	// DSPA实例ID
+	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+
+	// 评估模版id
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+type DescribeDSPAAssessmentRiskSideListRequest struct {
+	*tchttp.BaseRequest
+	
+	// DSPA实例ID
+	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+
+	// 评估模版id
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+}
+
+func (r *DescribeDSPAAssessmentRiskSideListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDSPAAssessmentRiskSideListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DspaId")
+	delete(f, "TemplateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPAAssessmentRiskSideListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDSPAAssessmentRiskSideListResponseParams struct {
+	// 风险面列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskSideItmeList []*Note `json:"RiskSideItmeList,omitempty" name:"RiskSideItmeList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeDSPAAssessmentRiskSideListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDSPAAssessmentRiskSideListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDSPAAssessmentRiskSideListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDSPAAssessmentRiskSideListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeDSPAAssessmentRiskTemplateDetailRequestParams struct {
 	// dspa实例id
 	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
@@ -5276,6 +5447,9 @@ type DescribeDSPAAssessmentRiskTemplateVulnerableListRequestParams struct {
 
 	// 风险名称
 	RiskName *string `json:"RiskName,omitempty" name:"RiskName"`
+
+	// 风险面
+	RiskSide *string `json:"RiskSide,omitempty" name:"RiskSide"`
 }
 
 type DescribeDSPAAssessmentRiskTemplateVulnerableListRequest struct {
@@ -5295,6 +5469,9 @@ type DescribeDSPAAssessmentRiskTemplateVulnerableListRequest struct {
 
 	// 风险名称
 	RiskName *string `json:"RiskName,omitempty" name:"RiskName"`
+
+	// 风险面
+	RiskSide *string `json:"RiskSide,omitempty" name:"RiskSide"`
 }
 
 func (r *DescribeDSPAAssessmentRiskTemplateVulnerableListRequest) ToJsonString() string {
@@ -5314,6 +5491,7 @@ func (r *DescribeDSPAAssessmentRiskTemplateVulnerableListRequest) FromJsonString
 	delete(f, "Offset")
 	delete(f, "RiskType")
 	delete(f, "RiskName")
+	delete(f, "RiskSide")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPAAssessmentRiskTemplateVulnerableListRequest has unknown keys!", "")
 	}
@@ -7850,6 +8028,9 @@ type DescribeDSPAESDiscoveryTaskResultDetailRequestParams struct {
 
 	// 敏感数据分级ID
 	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+
+	// 索引名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
 }
 
 type DescribeDSPAESDiscoveryTaskResultDetailRequest struct {
@@ -7875,6 +8056,9 @@ type DescribeDSPAESDiscoveryTaskResultDetailRequest struct {
 
 	// 敏感数据分级ID
 	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+
+	// 索引名称
+	DbName *string `json:"DbName,omitempty" name:"DbName"`
 }
 
 func (r *DescribeDSPAESDiscoveryTaskResultDetailRequest) ToJsonString() string {
@@ -7896,6 +8080,7 @@ func (r *DescribeDSPAESDiscoveryTaskResultDetailRequest) FromJsonString(s string
 	delete(f, "Limit")
 	delete(f, "CategoryIdList")
 	delete(f, "LevelId")
+	delete(f, "DbName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPAESDiscoveryTaskResultDetailRequest has unknown keys!", "")
 	}
@@ -10472,6 +10657,10 @@ type ESTaskResultDetail struct {
 	// 分级名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LevelName *string `json:"LevelName,omitempty" name:"LevelName"`
+
+	// 分级分数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LevelRiskScore *int64 `json:"LevelRiskScore,omitempty" name:"LevelRiskScore"`
 }
 
 // Predefined struct for user
@@ -10932,6 +11121,14 @@ type HighRiskAssetsDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
 
+	// 数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceName *string `json:"DataSourceName,omitempty" name:"DataSourceName"`
+
 	// 资产对象名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetsName *string `json:"AssetsName,omitempty" name:"AssetsName"`
@@ -10947,6 +11144,14 @@ type HighRiskAssetsDetail struct {
 	// 总的风险个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TotalRiskCount *int64 `json:"TotalRiskCount,omitempty" name:"TotalRiskCount"`
+
+	// 风险面
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskSide *string `json:"RiskSide,omitempty" name:"RiskSide"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
 }
 
 type ItemLevel struct {
@@ -11385,6 +11590,8 @@ type ModifyDSPAAssessmentRiskLatestRequestParams struct {
 	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
 
 	// 最新风险项Id
+	//
+	// Deprecated: RiskLatestTableId is deprecated.
 	RiskLatestTableId *uint64 `json:"RiskLatestTableId,omitempty" name:"RiskLatestTableId"`
 
 	// 风险状态（waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略）
@@ -11395,6 +11602,9 @@ type ModifyDSPAAssessmentRiskLatestRequestParams struct {
 
 	// 处置人
 	ProcessPeople *string `json:"ProcessPeople,omitempty" name:"ProcessPeople"`
+
+	// 批量处理的列表
+	BathRiskIdList []*int64 `json:"BathRiskIdList,omitempty" name:"BathRiskIdList"`
 }
 
 type ModifyDSPAAssessmentRiskLatestRequest struct {
@@ -11414,6 +11624,9 @@ type ModifyDSPAAssessmentRiskLatestRequest struct {
 
 	// 处置人
 	ProcessPeople *string `json:"ProcessPeople,omitempty" name:"ProcessPeople"`
+
+	// 批量处理的列表
+	BathRiskIdList []*int64 `json:"BathRiskIdList,omitempty" name:"BathRiskIdList"`
 }
 
 func (r *ModifyDSPAAssessmentRiskLatestRequest) ToJsonString() string {
@@ -11433,6 +11646,7 @@ func (r *ModifyDSPAAssessmentRiskLatestRequest) FromJsonString(s string) error {
 	delete(f, "Status")
 	delete(f, "Note")
 	delete(f, "ProcessPeople")
+	delete(f, "BathRiskIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDSPAAssessmentRiskLatestRequest has unknown keys!", "")
 	}
@@ -13419,6 +13633,10 @@ type RiskCountInfo struct {
 
 	// 该等级风险项数量
 	Count *int64 `json:"Count,omitempty" name:"Count"`
+
+	// 风险等级名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskLevelName *string `json:"RiskLevelName,omitempty" name:"RiskLevelName"`
 }
 
 type RiskDealedTrendItem struct {
@@ -13459,6 +13677,10 @@ type RiskItemInfo struct {
 	// 数据源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+
+	// 资源地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
 
 	// 资产名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -13507,6 +13729,10 @@ type RiskItemInfo struct {
 	// 类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemSubType *string `json:"ItemSubType,omitempty" name:"ItemSubType"`
+
+	// 风险面
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskSide *string `json:"RiskSide,omitempty" name:"RiskSide"`
 }
 
 type RiskLevelMatrix struct {
@@ -13582,6 +13808,16 @@ type RiskMatrixLevel struct {
 	// 分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Score *float64 `json:"Score,omitempty" name:"Score"`
+}
+
+type RiskSideDistributed struct {
+	// 风险面
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssessmentRiskSide *Note `json:"AssessmentRiskSide,omitempty" name:"AssessmentRiskSide"`
+
+	// 风险类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssessmentRisk []*Note `json:"AssessmentRisk,omitempty" name:"AssessmentRisk"`
 }
 
 type RuleDistribution struct {
@@ -13838,6 +14074,16 @@ type SuggestRiskLevelMatrixItem struct {
 	// 分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskScore *float64 `json:"RiskScore,omitempty" name:"RiskScore"`
+}
+
+type TemplateInfo struct {
+	// 模版id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+
+	// 模版名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
 }
 
 type TopAsset struct {

@@ -1791,6 +1791,10 @@ type GetEidResultResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntentionQuestionResult *IntentionQuestionResult `json:"IntentionQuestionResult,omitempty" name:"IntentionQuestionResult"`
 
+	// 意愿核身点头确认模式的结果信息，若未使用该意愿核身功能，该字段返回值可以不处理。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntentionActionResult *IntentionActionResult `json:"IntentionActionResult,omitempty" name:"IntentionActionResult"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
 }
@@ -1824,7 +1828,7 @@ type GetEidTokenConfig struct {
 	// 是否使用意愿核身，默认不使用。注意：如开启使用，则计费标签按【意愿核身】计费标签计价；如不开启，则计费标签按【E证通】计费标签计价，价格详见：[价格说明](https://cloud.tencent.com/document/product/1007/56804)。
 	UseIntentionVerify *bool `json:"UseIntentionVerify,omitempty" name:"UseIntentionVerify"`
 
-	// 意愿核身模式。枚举值：1( 朗读模式)，2（问答模式） 。默认值1
+	// 意愿核身模式。枚举值：1( 语音朗读模式)，2（语音问答模式） ，3（点头确认模式）。默认值为1。
 	IntentionMode *string `json:"IntentionMode,omitempty" name:"IntentionMode"`
 
 	// 意愿核身朗读模式使用的文案，若未使用意愿核身朗读功能，该字段无需传入。默认为空，最长可接受120的字符串长度。
@@ -1832,6 +1836,9 @@ type GetEidTokenConfig struct {
 
 	// 意愿核身问答模式的配置列表。当前仅支持一个问答。
 	IntentionQuestions []*IntentionQuestion `json:"IntentionQuestions,omitempty" name:"IntentionQuestions"`
+
+	// 意愿核身（点头确认模式）使用的文案，若未使用意愿核身（点头确认模式），则该字段无需传入。默认为空，最长可接受150的字符串长度。
+	IntentionActions []*IntentionActionConfig `json:"IntentionActions,omitempty" name:"IntentionActions"`
 
 	// 意愿核身过程中识别用户的回答意图，开启后除了IntentionQuestions的Answers列表中的标准回答会通过，近似意图的回答也会通过，默认不开启。
 	IntentionRecognition *bool `json:"IntentionRecognition,omitempty" name:"IntentionRecognition"`

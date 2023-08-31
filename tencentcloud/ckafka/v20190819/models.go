@@ -535,6 +535,20 @@ type BrokerTopicData struct {
 	DataSize *uint64 `json:"DataSize,omitempty" name:"DataSize"`
 }
 
+type BrokerTopicFlowData struct {
+	// Topic 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+
+	// Topic Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+
+	// Topic 流量(MB)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicTraffic *string `json:"TopicTraffic,omitempty" name:"TopicTraffic"`
+}
+
 // Predefined struct for user
 type CancelAuthorizationTokenRequestParams struct {
 	// 实例ID
@@ -2078,6 +2092,9 @@ type CreateInstancePreRequestParams struct {
 
 	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
 	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
+
+	// 是否自动选择代金券:1-是;0否。默认为0
+	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 }
 
 type CreateInstancePreRequest struct {
@@ -2142,6 +2159,9 @@ type CreateInstancePreRequest struct {
 
 	// 购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例
 	InstanceNum *int64 `json:"InstanceNum,omitempty" name:"InstanceNum"`
+
+	// 是否自动选择代金券:1-是;0否。默认为0
+	AutoVoucher *int64 `json:"AutoVoucher,omitempty" name:"AutoVoucher"`
 }
 
 func (r *CreateInstancePreRequest) ToJsonString() string {
@@ -2176,6 +2196,7 @@ func (r *CreateInstancePreRequest) FromJsonString(s string) error {
 	delete(f, "ZoneIds")
 	delete(f, "PublicNetworkMonthly")
 	delete(f, "InstanceNum")
+	delete(f, "AutoVoucher")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateInstancePreRequest has unknown keys!", "")
 	}
@@ -10329,6 +10350,9 @@ type TopicFlowRankingResult struct {
 	// 单个broker 节点 Topic占用的数据大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BrokerTopicData []*BrokerTopicData `json:"BrokerTopicData,omitempty" name:"BrokerTopicData"`
+
+	// 单个Broker 节点Topic 流量的大小(单位MB)
+	BrokerTopicFlowData []*BrokerTopicFlowData `json:"BrokerTopicFlowData,omitempty" name:"BrokerTopicFlowData"`
 }
 
 type TopicInSyncReplicaInfo struct {
@@ -10658,6 +10682,8 @@ type ZoneInfo struct {
 	ZoneStatus *int64 `json:"ZoneStatus,omitempty" name:"ZoneStatus"`
 
 	// 额外标识
+	//
+	// Deprecated: Exflag is deprecated.
 	Exflag *string `json:"Exflag,omitempty" name:"Exflag"`
 
 	// json对象，key为机型，value true为售罄，false为未售罄
@@ -10666,6 +10692,9 @@ type ZoneInfo struct {
 	// 标准版售罄信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SalesInfo []*SaleInfo `json:"SalesInfo,omitempty" name:"SalesInfo"`
+
+	// 额外标识
+	ExtraFlag *string `json:"ExtraFlag,omitempty" name:"ExtraFlag"`
 }
 
 type ZoneResponse struct {

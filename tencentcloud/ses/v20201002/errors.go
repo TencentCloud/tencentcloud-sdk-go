@@ -53,7 +53,7 @@ const (
 	// 套餐包额度不足。
 	FAILEDOPERATION_INSUFFICIENTQUOTA = "FailedOperation.InsufficientQuota"
 
-	// 不支持的附件名称，请检查附件名称是否含有特殊字符，详情请参考附录附件说明。
+	// 不支持的附件名称，请检查附件名称是否含有特殊字符，详情请参考[附录附件说明](https://cloud.tencent.com/document/product/1288/51951)。
 	FAILEDOPERATION_INVALIDATTACHNAME = "FailedOperation.InvalidAttachName"
 
 	// 超过查询限制，Limit最大支持100。
@@ -92,7 +92,7 @@ const (
 	// 模板内容太大，请减少模板内容。
 	FAILEDOPERATION_TEMPLATECONTENTTOOLARGE = "FailedOperation.TemplateContentToolarge"
 
-	// 因触发了某些规则导致临时Block。
+	// 因触发了对应的收件服务商限制，邮件推送平台会对该服务商发信暂停10分钟，10分钟后自动解除。
 	FAILEDOPERATION_TEMPORARYBLOCKED = "FailedOperation.TemporaryBlocked"
 
 	// 附件数量太多，单封邮件最多支持10个附件。

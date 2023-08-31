@@ -688,6 +688,10 @@ type ClbListenerListInfo struct {
 	// 监听器域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitempty" name:"Domain"`
+
+	// 负载均衡域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitempty" name:"LoadBalancerDomain"`
 }
 
 // Predefined struct for user

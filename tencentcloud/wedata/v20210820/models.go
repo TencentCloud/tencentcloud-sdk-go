@@ -5835,6 +5835,10 @@ type DataSourceInfo struct {
 	// 修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+
+	// 数据源页面展示类型，与Type对应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShowType *string `json:"ShowType,omitempty" name:"ShowType"`
 }
 
 type DataSourceInfoPage struct {

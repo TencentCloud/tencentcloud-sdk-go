@@ -21729,7 +21729,7 @@ type UnitRuleItem struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UnitRuleTagList []*UnitRuleTag `json:"UnitRuleTagList,omitempty" name:"UnitRuleTagList"`
 
-	// 项目id
+	// 规则项索引
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ItemIndex *int64 `json:"ItemIndex,omitempty" name:"ItemIndex"`
 
@@ -21743,7 +21743,7 @@ type UnitRuleItem struct {
 }
 
 type UnitRuleTag struct {
-	// 标签类型 : U(用户标签)
+	// 标签类型 : U(用户标签)/S(系统标签)
 	TagType *string `json:"TagType,omitempty" name:"TagType"`
 
 	// 标签名

@@ -14702,6 +14702,12 @@ type DescribeMaliciousRequestWhiteListRequestParams struct {
 	// 
 	// <li>Domain  - String - 基线名称</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式 [asc:升序|desc:降序]
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 type DescribeMaliciousRequestWhiteListRequest struct {
@@ -14717,6 +14723,12 @@ type DescribeMaliciousRequestWhiteListRequest struct {
 	// 
 	// <li>Domain  - String - 基线名称</li>
 	Filters []*Filters `json:"Filters,omitempty" name:"Filters"`
+
+	// 排序方式 [asc:升序|desc:降序]
+	Order *string `json:"Order,omitempty" name:"Order"`
+
+	// 排序字段
+	By *string `json:"By,omitempty" name:"By"`
 }
 
 func (r *DescribeMaliciousRequestWhiteListRequest) ToJsonString() string {
@@ -14734,6 +14746,8 @@ func (r *DescribeMaliciousRequestWhiteListRequest) FromJsonString(s string) erro
 	delete(f, "Limit")
 	delete(f, "Offset")
 	delete(f, "Filters")
+	delete(f, "Order")
+	delete(f, "By")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeMaliciousRequestWhiteListRequest has unknown keys!", "")
 	}

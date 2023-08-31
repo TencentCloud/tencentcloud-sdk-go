@@ -256,6 +256,18 @@ type Cluster struct {
 	// session集群信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ClusterSessions []*ClusterSession `json:"ClusterSessions,omitempty" name:"ClusterSessions"`
+
+	// V3版本 = 2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ArchGeneration *uint64 `json:"ArchGeneration,omitempty" name:"ArchGeneration"`
+
+	// 0:TKE, 1:EKS
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterType *uint64 `json:"ClusterType,omitempty" name:"ClusterType"`
+
+	// 订单信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Orders []*Order `json:"Orders,omitempty" name:"Orders"`
 }
 
 type ClusterGroupSetItem struct {
@@ -2855,6 +2867,28 @@ type NodeConfig struct {
 	// 节点的状态ttl配置, 多个用 ; 分割
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StateTTL *string `json:"StateTTL,omitempty" name:"StateTTL"`
+}
+
+type Order struct {
+	// 创建、续费、扩缩容 1 2 3
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+
+	// 自动续费 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitempty" name:"AutoRenewFlag"`
+
+	// 操作人的UIN
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperateUin *string `json:"OperateUin,omitempty" name:"OperateUin"`
+
+	// 最终集群的CU数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ComputeCu *int64 `json:"ComputeCu,omitempty" name:"ComputeCu"`
+
+	// 订单的时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OrderTime *string `json:"OrderTime,omitempty" name:"OrderTime"`
 }
 
 type Property struct {

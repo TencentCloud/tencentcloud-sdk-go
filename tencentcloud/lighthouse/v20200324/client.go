@@ -6928,7 +6928,7 @@ func NewResetInstancesPasswordResponse() (response *ResetInstancesPasswordRespon
 // ResetInstancesPassword
 // 本接口（ResetInstancesPassword）用于将实例操作系统的密码重置为用户指定的密码。
 //
-// * 只修改管理员帐号的密码。实例的操作系统不同，管理员帐号也会不一样（Windows 为 Administrator，Ubuntu 为 ubuntu ，其它系统为 root）。
+// * 只修改管理员账号的密码。实例的操作系统不同，管理员账号也会不一样（Windows 为 Administrator，Ubuntu 为 ubuntu ，其它系统为 root）。
 //
 // * 支持批量操作。将多个实例操作系统的密码重置为相同的密码。每次请求批量实例的上限为 100。
 //
@@ -6966,7 +6966,7 @@ func (c *Client) ResetInstancesPassword(request *ResetInstancesPasswordRequest) 
 // ResetInstancesPassword
 // 本接口（ResetInstancesPassword）用于将实例操作系统的密码重置为用户指定的密码。
 //
-// * 只修改管理员帐号的密码。实例的操作系统不同，管理员帐号也会不一样（Windows 为 Administrator，Ubuntu 为 ubuntu ，其它系统为 root）。
+// * 只修改管理员账号的密码。实例的操作系统不同，管理员账号也会不一样（Windows 为 Administrator，Ubuntu 为 ubuntu ，其它系统为 root）。
 //
 // * 支持批量操作。将多个实例操作系统的密码重置为相同的密码。每次请求批量实例的上限为 100。
 //

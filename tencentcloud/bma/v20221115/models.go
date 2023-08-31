@@ -515,6 +515,9 @@ type CreateBPWhiteListRequestParams struct {
 
 	// 白名单名称
 	WhiteLists []*string `json:"WhiteLists,omitempty" name:"WhiteLists"`
+
+	// 白名单备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 type CreateBPWhiteListRequest struct {
@@ -528,6 +531,9 @@ type CreateBPWhiteListRequest struct {
 
 	// 白名单名称
 	WhiteLists []*string `json:"WhiteLists,omitempty" name:"WhiteLists"`
+
+	// 白名单备注
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 }
 
 func (r *CreateBPWhiteListRequest) ToJsonString() string {
@@ -545,6 +551,7 @@ func (r *CreateBPWhiteListRequest) FromJsonString(s string) error {
 	delete(f, "CompanyId")
 	delete(f, "WhiteListType")
 	delete(f, "WhiteLists")
+	delete(f, "Remark")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBPWhiteListRequest has unknown keys!", "")
 	}
@@ -1149,6 +1156,10 @@ type WhiteListData struct {
 	// 白名单
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WhiteList *string `json:"WhiteList,omitempty" name:"WhiteList"`
+
+	// 白名单备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitempty" name:"Remark"`
 
 	// 新增时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
