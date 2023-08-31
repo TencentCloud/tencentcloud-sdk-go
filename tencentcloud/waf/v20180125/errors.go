@@ -80,6 +80,9 @@ const (
 	// 端口信息参数错误
 	INVALIDPARAMETER_PORTPARAMETERERR = "InvalidParameter.PortParameterErr"
 
+	// 防护域名参数错误
+	INVALIDPARAMETER_PROTECTIONDOMAINPARAMETERERR = "InvalidParameter.ProtectionDomainParameterErr"
+
 	// 根据ID查询证书失败。
 	INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
 
@@ -97,6 +100,9 @@ const (
 
 	// 数据类型错误：SQL检索语句中的数据类型必须与数据库中的数据类型匹配，否则会导致错误。例如，将字符串与整数进行比较、将日期格式不正确等。
 	INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
+
+	// 越权参数错误
+	INVALIDPARAMETER_UNAUTHORIZEDOPERATIONPARAMETERERR = "InvalidParameter.UnauthorizedOperationParameterErr"
 
 	// UnknownAction
 	INVALIDPARAMETER_UNKNOWNACTION = "InvalidParameter.UnknownAction"

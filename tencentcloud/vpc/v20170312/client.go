@@ -3871,6 +3871,70 @@ func (c *Client) CreateNetworkAclWithContext(ctx context.Context, request *Creat
     return
 }
 
+func NewCreateNetworkAclEntriesRequest() (request *CreateNetworkAclEntriesRequest) {
+    request = &CreateNetworkAclEntriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "CreateNetworkAclEntries")
+    
+    
+    return
+}
+
+func NewCreateNetworkAclEntriesResponse() (response *CreateNetworkAclEntriesResponse) {
+    response = &CreateNetworkAclEntriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateNetworkAclEntries
+// 本接口（CreateNetworkAclEntries）用于增量添加网络ACL三元组的入站规则和出站规则。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ACLTYPEMISMATCH = "InvalidParameter.AclTypeMismatch"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+func (c *Client) CreateNetworkAclEntries(request *CreateNetworkAclEntriesRequest) (response *CreateNetworkAclEntriesResponse, err error) {
+    return c.CreateNetworkAclEntriesWithContext(context.Background(), request)
+}
+
+// CreateNetworkAclEntries
+// 本接口（CreateNetworkAclEntries）用于增量添加网络ACL三元组的入站规则和出站规则。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ACLTYPEMISMATCH = "InvalidParameter.AclTypeMismatch"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+func (c *Client) CreateNetworkAclEntriesWithContext(ctx context.Context, request *CreateNetworkAclEntriesRequest) (response *CreateNetworkAclEntriesResponse, err error) {
+    if request == nil {
+        request = NewCreateNetworkAclEntriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateNetworkAclEntries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateNetworkAclEntriesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateNetworkAclQuintupleEntriesRequest() (request *CreateNetworkAclQuintupleEntriesRequest) {
     request = &CreateNetworkAclQuintupleEntriesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -7091,6 +7155,78 @@ func (c *Client) DeleteNetworkAclWithContext(ctx context.Context, request *Delet
     request.SetContext(ctx)
     
     response = NewDeleteNetworkAclResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteNetworkAclEntriesRequest() (request *DeleteNetworkAclEntriesRequest) {
+    request = &DeleteNetworkAclEntriesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vpc", APIVersion, "DeleteNetworkAclEntries")
+    
+    
+    return
+}
+
+func NewDeleteNetworkAclEntriesResponse() (response *DeleteNetworkAclEntriesResponse) {
+    response = &DeleteNetworkAclEntriesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteNetworkAclEntries
+// 本接口（DeleteNetworkAclEntries）用于删除三元组网络ACL的入站规则和出站规则。在NetworkAclEntrySet参数中：
+//
+// * 删除IPv4规则，需要传入NetworkAclIpv4EntryId。
+//
+// * 删除IPv6规则，需要传入NetworkAclIpv6EntryId。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ACLTYPEMISMATCH = "InvalidParameter.AclTypeMismatch"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+func (c *Client) DeleteNetworkAclEntries(request *DeleteNetworkAclEntriesRequest) (response *DeleteNetworkAclEntriesResponse, err error) {
+    return c.DeleteNetworkAclEntriesWithContext(context.Background(), request)
+}
+
+// DeleteNetworkAclEntries
+// 本接口（DeleteNetworkAclEntries）用于删除三元组网络ACL的入站规则和出站规则。在NetworkAclEntrySet参数中：
+//
+// * 删除IPv4规则，需要传入NetworkAclIpv4EntryId。
+//
+// * 删除IPv6规则，需要传入NetworkAclIpv6EntryId。
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_ACLTYPEMISMATCH = "InvalidParameter.AclTypeMismatch"
+//  INVALIDPARAMETER_COEXIST = "InvalidParameter.Coexist"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_MALFORMED = "InvalidParameterValue.Malformed"
+//  INVALIDPARAMETERVALUE_TOOLONG = "InvalidParameterValue.TooLong"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNSUPPORTEDOPERATION_APPIDMISMATCH = "UnsupportedOperation.AppIdMismatch"
+func (c *Client) DeleteNetworkAclEntriesWithContext(ctx context.Context, request *DeleteNetworkAclEntriesRequest) (response *DeleteNetworkAclEntriesResponse, err error) {
+    if request == nil {
+        request = NewDeleteNetworkAclEntriesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteNetworkAclEntries require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteNetworkAclEntriesResponse()
     err = c.Send(request, response)
     return
 }

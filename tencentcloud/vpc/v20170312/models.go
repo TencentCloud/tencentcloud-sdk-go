@@ -4381,6 +4381,67 @@ func (r *CreateNetDetectResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateNetworkAclEntriesRequestParams struct {
+	// 网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 网络三元组ACL规则集。
+	NetworkAclEntrySet *NetworkAclEntrySet `json:"NetworkAclEntrySet,omitempty" name:"NetworkAclEntrySet"`
+}
+
+type CreateNetworkAclEntriesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 网络三元组ACL规则集。
+	NetworkAclEntrySet *NetworkAclEntrySet `json:"NetworkAclEntrySet,omitempty" name:"NetworkAclEntrySet"`
+}
+
+func (r *CreateNetworkAclEntriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNetworkAclEntriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NetworkAclId")
+	delete(f, "NetworkAclEntrySet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNetworkAclEntriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateNetworkAclEntriesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type CreateNetworkAclEntriesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateNetworkAclEntriesResponseParams `json:"Response"`
+}
+
+func (r *CreateNetworkAclEntriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateNetworkAclEntriesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateNetworkAclQuintupleEntriesRequestParams struct {
 	// 网络ACL实例ID。例如：acl-12345678。
 	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
@@ -7535,6 +7596,67 @@ func (r *DeleteNetDetectResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteNetDetectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNetworkAclEntriesRequestParams struct {
+	// 三元组网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 三元组网络ACL规则集。
+	NetworkAclEntrySet *NetworkAclEntrySet `json:"NetworkAclEntrySet,omitempty" name:"NetworkAclEntrySet"`
+}
+
+type DeleteNetworkAclEntriesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 三元组网络ACL实例ID。例如：acl-12345678。
+	NetworkAclId *string `json:"NetworkAclId,omitempty" name:"NetworkAclId"`
+
+	// 三元组网络ACL规则集。
+	NetworkAclEntrySet *NetworkAclEntrySet `json:"NetworkAclEntrySet,omitempty" name:"NetworkAclEntrySet"`
+}
+
+func (r *DeleteNetworkAclEntriesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNetworkAclEntriesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "NetworkAclId")
+	delete(f, "NetworkAclEntrySet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteNetworkAclEntriesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteNetworkAclEntriesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DeleteNetworkAclEntriesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteNetworkAclEntriesResponseParams `json:"Response"`
+}
+
+func (r *DeleteNetworkAclEntriesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteNetworkAclEntriesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -1,3 +1,73 @@
+# Release v1.0.737
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 167 次发布
+
+发布时间：2023-08-31 11:01:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateNetworkAclEntries](https://cloud.tencent.com/document/api/215/97652)
+* [DeleteNetworkAclEntries](https://cloud.tencent.com/document/api/215/97651)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 47 次发布
+
+发布时间：2023-08-31 10:55:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddAntiFakeUrl](https://cloud.tencent.com/document/api/627/97644)
+* [AddAntiInfoLeakRules](https://cloud.tencent.com/document/api/627/97643)
+* [DeleteAntiFakeUrl](https://cloud.tencent.com/document/api/627/97642)
+* [DeleteAntiInfoLeakRule](https://cloud.tencent.com/document/api/627/97649)
+* [DeleteCCRule](https://cloud.tencent.com/document/api/627/97648)
+* [DescribeAntiFakeRules](https://cloud.tencent.com/document/api/627/97641)
+* [DescribeAntiFakeUrl](https://cloud.tencent.com/document/api/627/97640)
+* [DescribeAntiInfoLeakRules](https://cloud.tencent.com/document/api/627/97639)
+* [DescribeAntiInfoLeakageRules](https://cloud.tencent.com/document/api/627/97638)
+* [DescribeBatchIpAccessControl](https://cloud.tencent.com/document/api/627/97650)
+* [DescribeCCRule](https://cloud.tencent.com/document/api/627/97637)
+* [DescribeCCRuleList](https://cloud.tencent.com/document/api/627/97636)
+* [DescribeSession](https://cloud.tencent.com/document/api/627/97635)
+* [ModifyAntiFakeUrl](https://cloud.tencent.com/document/api/627/97634)
+* [ModifyAntiFakeUrlStatus](https://cloud.tencent.com/document/api/627/97647)
+* [ModifyAntiInfoLeakRuleStatus](https://cloud.tencent.com/document/api/627/97633)
+* [ModifyAntiInfoLeakRules](https://cloud.tencent.com/document/api/627/97632)
+* [ModifyCustomWhiteRuleStatus](https://cloud.tencent.com/document/api/627/97631)
+* [UpsertCCRule](https://cloud.tencent.com/document/api/627/97646)
+* [UpsertSession](https://cloud.tencent.com/document/api/627/97645)
+
+新增数据结构：
+
+* [BatchIpAccessControlData](https://cloud.tencent.com/document/api/627/53609#BatchIpAccessControlData)
+* [BatchIpAccessControlItem](https://cloud.tencent.com/document/api/627/53609#BatchIpAccessControlItem)
+* [CCRuleData](https://cloud.tencent.com/document/api/627/53609#CCRuleData)
+* [CCRuleItem](https://cloud.tencent.com/document/api/627/53609#CCRuleItem)
+* [CacheUrlItem](https://cloud.tencent.com/document/api/627/53609#CacheUrlItem)
+* [CacheUrlItems](https://cloud.tencent.com/document/api/627/53609#CacheUrlItems)
+* [DescribeAntiInfoLeakRulesRuleItem](https://cloud.tencent.com/document/api/627/53609#DescribeAntiInfoLeakRulesRuleItem)
+* [DescribeAntiInfoLeakRulesStrategyItem](https://cloud.tencent.com/document/api/627/53609#DescribeAntiInfoLeakRulesStrategyItem)
+* [DescribeAntiLeakageItem](https://cloud.tencent.com/document/api/627/53609#DescribeAntiLeakageItem)
+* [PageInfo](https://cloud.tencent.com/document/api/627/53609#PageInfo)
+* [SessionData](https://cloud.tencent.com/document/api/627/53609#SessionData)
+* [SessionItem](https://cloud.tencent.com/document/api/627/53609#SessionItem)
+* [StrategyForAntiInfoLeak](https://cloud.tencent.com/document/api/627/53609#StrategyForAntiInfoLeak)
+
+
+
 # Release v1.0.736
 
 ## API 网关(apigateway) 版本：2018-08-08

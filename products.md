@@ -227,9 +227,9 @@
 | vm | [视频内容安全](https://cloud.tencent.com/document/product/1265) | 2023-05-18 02:04:19 |
 | vms | [语音消息](https://cloud.tencent.com/document/product/1128) | 2023-08-17 05:50:56 |
 | vod | [云点播](https://cloud.tencent.com/document/product/266) | 2023-08-31 01:27:41 |
-| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2023-08-31 01:28:14 |
+| vpc | [私有网络](https://cloud.tencent.com/document/product/215) | 2023-08-31 11:01:10 |
 | vrs | [声音复刻](https://cloud.tencent.com/document/product/1283) | 2023-07-18 01:58:58 |
-| waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2023-08-28 02:53:45 |
+| waf | [Web 应用防火墙](https://cloud.tencent.com/document/product/627) | 2023-08-31 10:55:43 |
 | wav | [企业微信汽车行业版](https://cloud.tencent.com/document/product/1318) | 2023-07-18 01:59:28 |
 | wedata | [数据开发治理平台 WeData](https://cloud.tencent.com/document/product/1267) | 2023-08-31 01:29:16 |
 | wss | [SSL证书管理服务](https://cloud.tencent.com/document/product) | 2020-04-01 08:53:44 |
