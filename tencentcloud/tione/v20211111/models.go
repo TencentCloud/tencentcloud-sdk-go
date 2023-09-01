@@ -338,38 +338,42 @@ type CFSTurbo struct {
 
 // Predefined struct for user
 type ChatCompletionRequestParams struct {
-	// 部署好的模型服务Id。
+	// 对话的目标模型ID。
+	// 多行业多场景大模型在线体验聊天：tj_llm_clm-v1。
+	// 自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-xxyyzz。
 	Model *string `json:"Model,omitempty" name:"Model"`
 
 	// 输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
 	Messages []*Message `json:"Messages,omitempty" name:"Messages"`
 
-	// 采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+	// 仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
 	Temperature *float64 `json:"Temperature,omitempty" name:"Temperature"`
 
-	// 核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
+	// 仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
 	TopP *float64 `json:"TopP,omitempty" name:"TopP"`
 
-	// 最大生成的token数目。默认为无限大。
+	// 仅当模型为自行部署的开源大模型时生效。最大生成的token数目。默认为无限大。
 	MaxTokens *int64 `json:"MaxTokens,omitempty" name:"MaxTokens"`
 }
 
 type ChatCompletionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 部署好的模型服务Id。
+	// 对话的目标模型ID。
+	// 多行业多场景大模型在线体验聊天：tj_llm_clm-v1。
+	// 自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-xxyyzz。
 	Model *string `json:"Model,omitempty" name:"Model"`
 
 	// 输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
 	Messages []*Message `json:"Messages,omitempty" name:"Messages"`
 
-	// 采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+	// 仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为1.0，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
 	Temperature *float64 `json:"Temperature,omitempty" name:"Temperature"`
 
-	// 核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
+	// 仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
 	TopP *float64 `json:"TopP,omitempty" name:"TopP"`
 
-	// 最大生成的token数目。默认为无限大。
+	// 仅当模型为自行部署的开源大模型时生效。最大生成的token数目。默认为无限大。
 	MaxTokens *int64 `json:"MaxTokens,omitempty" name:"MaxTokens"`
 }
 
@@ -1612,9 +1616,6 @@ type CreateTrainingModelRequestParams struct {
 	// EXIST：导入现有版本
 	ImportMethod *string `json:"ImportMethod,omitempty" name:"ImportMethod"`
 
-	// 模型来源cos目录，以/结尾
-	TrainingModelCosPath *CosPathInfo `json:"TrainingModelCosPath,omitempty" name:"TrainingModelCosPath"`
-
 	// 推理环境来源（SYSTEM/CUSTOM）
 	ReasoningEnvironmentSource *string `json:"ReasoningEnvironmentSource,omitempty" name:"ReasoningEnvironmentSource"`
 
@@ -1626,6 +1627,9 @@ type CreateTrainingModelRequestParams struct {
 
 	// 训练任务名称
 	TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
+
+	// 模型来源cos目录，以/结尾
+	TrainingModelCosPath *CosPathInfo `json:"TrainingModelCosPath,omitempty" name:"TrainingModelCosPath"`
 
 	// 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION)
 	AlgorithmFramework *string `json:"AlgorithmFramework,omitempty" name:"AlgorithmFramework"`
@@ -1699,9 +1703,6 @@ type CreateTrainingModelRequest struct {
 	// EXIST：导入现有版本
 	ImportMethod *string `json:"ImportMethod,omitempty" name:"ImportMethod"`
 
-	// 模型来源cos目录，以/结尾
-	TrainingModelCosPath *CosPathInfo `json:"TrainingModelCosPath,omitempty" name:"TrainingModelCosPath"`
-
 	// 推理环境来源（SYSTEM/CUSTOM）
 	ReasoningEnvironmentSource *string `json:"ReasoningEnvironmentSource,omitempty" name:"ReasoningEnvironmentSource"`
 
@@ -1713,6 +1714,9 @@ type CreateTrainingModelRequest struct {
 
 	// 训练任务名称
 	TrainingJobName *string `json:"TrainingJobName,omitempty" name:"TrainingJobName"`
+
+	// 模型来源cos目录，以/结尾
+	TrainingModelCosPath *CosPathInfo `json:"TrainingModelCosPath,omitempty" name:"TrainingModelCosPath"`
 
 	// 算法框架 （PYTORCH/TENSORFLOW/DETECTRON2/PMML/MMDETECTION)
 	AlgorithmFramework *string `json:"AlgorithmFramework,omitempty" name:"AlgorithmFramework"`
@@ -1790,11 +1794,11 @@ func (r *CreateTrainingModelRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ImportMethod")
-	delete(f, "TrainingModelCosPath")
 	delete(f, "ReasoningEnvironmentSource")
 	delete(f, "TrainingModelName")
 	delete(f, "Tags")
 	delete(f, "TrainingJobName")
+	delete(f, "TrainingModelCosPath")
 	delete(f, "AlgorithmFramework")
 	delete(f, "ReasoningEnvironment")
 	delete(f, "TrainingModelIndex")
@@ -2606,6 +2610,9 @@ func (r *DeleteModelServiceGroupResponse) FromJsonString(s string) error {
 type DeleteModelServiceRequestParams struct {
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 服务分类
+	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
 }
 
 type DeleteModelServiceRequest struct {
@@ -2613,6 +2620,9 @@ type DeleteModelServiceRequest struct {
 	
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 服务分类
+	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
 }
 
 func (r *DeleteModelServiceRequest) ToJsonString() string {
@@ -2628,6 +2638,7 @@ func (r *DeleteModelServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceId")
+	delete(f, "ServiceCategory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteModelServiceRequest has unknown keys!", "")
 	}
@@ -3950,9 +3961,6 @@ type DescribeLogsRequestParams struct {
 	// 查询哪个服务的事件（可选值为TRAIN, NOTEBOOK, INFER）
 	Service *string `json:"Service,omitempty" name:"Service"`
 
-	// 查询哪个Pod的日志（支持结尾通配符*)
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
-
 	// 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -3961,6 +3969,9 @@ type DescribeLogsRequestParams struct {
 
 	// 日志查询条数，默认值100，最大值100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询哪个Pod的日志（支持结尾通配符*)
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
 
 	// 排序方向（可选值为ASC, DESC ），默认为DESC
 	Order *string `json:"Order,omitempty" name:"Order"`
@@ -3985,9 +3996,6 @@ type DescribeLogsRequest struct {
 	// 查询哪个服务的事件（可选值为TRAIN, NOTEBOOK, INFER）
 	Service *string `json:"Service,omitempty" name:"Service"`
 
-	// 查询哪个Pod的日志（支持结尾通配符*)
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
-
 	// 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
 	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
 
@@ -3996,6 +4004,9 @@ type DescribeLogsRequest struct {
 
 	// 日志查询条数，默认值100，最大值100
 	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+
+	// 查询哪个Pod的日志（支持结尾通配符*)
+	PodName *string `json:"PodName,omitempty" name:"PodName"`
 
 	// 排序方向（可选值为ASC, DESC ），默认为DESC
 	Order *string `json:"Order,omitempty" name:"Order"`
@@ -4027,10 +4038,10 @@ func (r *DescribeLogsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Service")
-	delete(f, "PodName")
 	delete(f, "StartTime")
 	delete(f, "EndTime")
 	delete(f, "Limit")
+	delete(f, "PodName")
 	delete(f, "Order")
 	delete(f, "OrderField")
 	delete(f, "Context")
@@ -4301,6 +4312,9 @@ func (r *DescribeModelAccelerateTasksResponse) FromJsonString(s string) error {
 type DescribeModelServiceCallInfoRequestParams struct {
 	// 服务组id
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+
+	// 服务分类
+	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
 }
 
 type DescribeModelServiceCallInfoRequest struct {
@@ -4308,6 +4322,9 @@ type DescribeModelServiceCallInfoRequest struct {
 	
 	// 服务组id
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+
+	// 服务分类
+	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
 }
 
 func (r *DescribeModelServiceCallInfoRequest) ToJsonString() string {
@@ -4323,6 +4340,7 @@ func (r *DescribeModelServiceCallInfoRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceGroupId")
+	delete(f, "ServiceCategory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServiceCallInfoRequest has unknown keys!", "")
 	}
@@ -4342,6 +4360,14 @@ type DescribeModelServiceCallInfoResponseParams struct {
 	// 默认nginx网关的调用信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DefaultNginxGatewayCallInfo *DefaultNginxGatewayCallInfo `json:"DefaultNginxGatewayCallInfo,omitempty" name:"DefaultNginxGatewayCallInfo"`
+
+	// 太极服务的调用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TJCallInfo *TJCallInfo `json:"TJCallInfo,omitempty" name:"TJCallInfo"`
+
+	// 内网调用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IntranetCallInfo *IntranetCallInfo `json:"IntranetCallInfo,omitempty" name:"IntranetCallInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
@@ -4367,6 +4393,9 @@ func (r *DescribeModelServiceCallInfoResponse) FromJsonString(s string) error {
 type DescribeModelServiceGroupRequestParams struct {
 	// 服务组ID
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+
+	// 服务分类
+	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
 }
 
 type DescribeModelServiceGroupRequest struct {
@@ -4374,6 +4403,9 @@ type DescribeModelServiceGroupRequest struct {
 	
 	// 服务组ID
 	ServiceGroupId *string `json:"ServiceGroupId,omitempty" name:"ServiceGroupId"`
+
+	// 服务分类
+	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
 }
 
 func (r *DescribeModelServiceGroupRequest) ToJsonString() string {
@@ -4389,6 +4421,7 @@ func (r *DescribeModelServiceGroupRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceGroupId")
+	delete(f, "ServiceCategory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServiceGroupRequest has unknown keys!", "")
 	}
@@ -4441,6 +4474,9 @@ type DescribeModelServiceGroupsRequestParams struct {
 
 	// 标签过滤参数
 	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+
+	// 服务分类
+	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
 }
 
 type DescribeModelServiceGroupsRequest struct {
@@ -4464,6 +4500,9 @@ type DescribeModelServiceGroupsRequest struct {
 
 	// 标签过滤参数
 	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+
+	// 服务分类
+	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
 }
 
 func (r *DescribeModelServiceGroupsRequest) ToJsonString() string {
@@ -4484,6 +4523,7 @@ func (r *DescribeModelServiceGroupsRequest) FromJsonString(s string) error {
 	delete(f, "OrderField")
 	delete(f, "Filters")
 	delete(f, "TagFilters")
+	delete(f, "ServiceCategory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServiceGroupsRequest has unknown keys!", "")
 	}
@@ -4657,6 +4697,9 @@ func (r *DescribeModelServiceHotUpdatedResponse) FromJsonString(s string) error 
 type DescribeModelServiceRequestParams struct {
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 服务分类
+	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
 }
 
 type DescribeModelServiceRequest struct {
@@ -4664,6 +4707,9 @@ type DescribeModelServiceRequest struct {
 	
 	// 服务id
 	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 服务分类
+	ServiceCategory *string `json:"ServiceCategory,omitempty" name:"ServiceCategory"`
 }
 
 func (r *DescribeModelServiceRequest) ToJsonString() string {
@@ -4679,6 +4725,7 @@ func (r *DescribeModelServiceRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ServiceId")
+	delete(f, "ServiceCategory")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeModelServiceRequest has unknown keys!", "")
 	}
@@ -6039,6 +6086,24 @@ type InferTemplateGroup struct {
 	InferTemplates []*InferTemplate `json:"InferTemplates,omitempty" name:"InferTemplates"`
 }
 
+type IngressPrivateLinkInfo struct {
+	// 用户VpcId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 用户子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+
+	// 内网http调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InnerHttpAddr []*string `json:"InnerHttpAddr,omitempty" name:"InnerHttpAddr"`
+
+	// 内网https调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InnerHttpsAddr []*string `json:"InnerHttpsAddr,omitempty" name:"InnerHttpsAddr"`
+}
+
 type Instance struct {
 	// 资源组节点id
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
@@ -6090,6 +6155,16 @@ type Instance struct {
 
 	// 计费项别名
 	SpecAlias *string `json:"SpecAlias,omitempty" name:"SpecAlias"`
+}
+
+type IntranetCallInfo struct {
+	// 私有连接通道信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IngressPrivateLinkInfo *IngressPrivateLinkInfo `json:"IngressPrivateLinkInfo,omitempty" name:"IngressPrivateLinkInfo"`
+
+	// 共享弹性网卡信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceEIPInfo []*ServiceEIPInfo `json:"ServiceEIPInfo,omitempty" name:"ServiceEIPInfo"`
 }
 
 type LogConfig struct {
@@ -7865,14 +7940,20 @@ type SendChatMessageRequestParams struct {
 	// 问题描述
 	Question *string `json:"Question,omitempty" name:"Question"`
 
-	// 会话模型版本，不同的会话模型调用到不同的模型后台。
-	// 注: 多行业多场景大模型填写 tj_llm_clm-v1
+	// 会话模型版本。
+	// 多行业多场景大模型：填写 tj_llm_clm-v1。
+	// 多行业客服大模型：填写demo_big_model_version_id。
+	// 默认为demo_big_model_version_id，即多行业客服大模型。
 	ModelVersion *string `json:"ModelVersion,omitempty" name:"ModelVersion"`
 
-	// 使用模式(仅部分模型支持)。General 通用问答；WithSearchPlugin 搜索增强问答
+	// 使用模式(仅多场景客服大模型支持)。
+	// 通用问答：填写General。
+	// 搜索增强问答：填写WithSearchPlugin。
+	// 默认为General，即通用问答。
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 
-	// 搜索来源。仅当Mode未WithSearchPlugin时生效。Preset 预置文稿库；Custom 自定义。
+	// 搜索来源。仅当Mode为WithSearchPlugin时生效。
+	// 预置文稿库：填写Preset。自定义：填写Custom。
 	SearchSource *string `json:"SearchSource,omitempty" name:"SearchSource"`
 }
 
@@ -7885,14 +7966,20 @@ type SendChatMessageRequest struct {
 	// 问题描述
 	Question *string `json:"Question,omitempty" name:"Question"`
 
-	// 会话模型版本，不同的会话模型调用到不同的模型后台。
-	// 注: 多行业多场景大模型填写 tj_llm_clm-v1
+	// 会话模型版本。
+	// 多行业多场景大模型：填写 tj_llm_clm-v1。
+	// 多行业客服大模型：填写demo_big_model_version_id。
+	// 默认为demo_big_model_version_id，即多行业客服大模型。
 	ModelVersion *string `json:"ModelVersion,omitempty" name:"ModelVersion"`
 
-	// 使用模式(仅部分模型支持)。General 通用问答；WithSearchPlugin 搜索增强问答
+	// 使用模式(仅多场景客服大模型支持)。
+	// 通用问答：填写General。
+	// 搜索增强问答：填写WithSearchPlugin。
+	// 默认为General，即通用问答。
 	Mode *string `json:"Mode,omitempty" name:"Mode"`
 
-	// 搜索来源。仅当Mode未WithSearchPlugin时生效。Preset 预置文稿库；Custom 自定义。
+	// 搜索来源。仅当Mode为WithSearchPlugin时生效。
+	// 预置文稿库：填写Preset。自定义：填写Custom。
 	SearchSource *string `json:"SearchSource,omitempty" name:"SearchSource"`
 }
 
@@ -8100,6 +8187,34 @@ type ServiceCallInfo struct {
 	// 调用secret
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppSecret *string `json:"AppSecret,omitempty" name:"AppSecret"`
+}
+
+type ServiceEIP struct {
+	// 是否开启TIONE内网到外部的访问
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnableEIP *bool `json:"EnableEIP,omitempty" name:"EnableEIP"`
+
+	// 用户VpcId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 用户subnetId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+}
+
+type ServiceEIPInfo struct {
+	// 服务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+
+	// 用户VpcId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+
+	// 用户子网Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
 }
 
 type ServiceGroup struct {
@@ -8325,6 +8440,10 @@ type ServiceInfo struct {
 	// 服务的启动命令
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Command *string `json:"Command,omitempty" name:"Command"`
+
+	// 开启TIONE内网访问外部设置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitempty" name:"ServiceEIP"`
 }
 
 type ServiceLimit struct {
@@ -8795,6 +8914,20 @@ func (r *StopTrainingTaskResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopTrainingTaskResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type TJCallInfo struct {
+	// 调用地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpAddr *string `json:"HttpAddr,omitempty" name:"HttpAddr"`
+
+	// token
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Token *string `json:"Token,omitempty" name:"Token"`
+
+	// 调用示例
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CallExample *string `json:"CallExample,omitempty" name:"CallExample"`
 }
 
 type Tag struct {

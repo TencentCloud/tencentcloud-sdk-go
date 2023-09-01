@@ -1594,6 +1594,12 @@ func (r *DescribeBucketListResponse) FromJsonString(s string) error {
 type DescribeCfsFileSystemClientsRequestParams struct {
 	// 文件系统 ID。
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// Offset 分页码
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// Limit 页面大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 type DescribeCfsFileSystemClientsRequest struct {
@@ -1601,6 +1607,12 @@ type DescribeCfsFileSystemClientsRequest struct {
 	
 	// 文件系统 ID。
 	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+
+	// Offset 分页码
+	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+
+	// Limit 页面大小
+	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
 }
 
 func (r *DescribeCfsFileSystemClientsRequest) ToJsonString() string {
@@ -1616,6 +1628,8 @@ func (r *DescribeCfsFileSystemClientsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FileSystemId")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCfsFileSystemClientsRequest has unknown keys!", "")
 	}
@@ -1626,6 +1640,9 @@ func (r *DescribeCfsFileSystemClientsRequest) FromJsonString(s string) error {
 type DescribeCfsFileSystemClientsResponseParams struct {
 	// 客户端列表
 	ClientList []*FileSystemClient `json:"ClientList,omitempty" name:"ClientList"`
+
+	// 文件系统总数
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`

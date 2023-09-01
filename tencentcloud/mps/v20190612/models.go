@@ -259,6 +259,10 @@ type AdaptiveDynamicStreamingTaskInput struct {
 	// 要插入的字幕文件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AddOnSubtitles []*AddOnSubtitle `json:"AddOnSubtitles,omitempty" name:"AddOnSubtitles"`
+
+	// Drm信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DrmInfo *DrmInfo `json:"DrmInfo,omitempty" name:"DrmInfo"`
 }
 
 type AdaptiveDynamicStreamingTemplate struct {
@@ -8140,6 +8144,17 @@ func (r *DisableWorkflowResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DrmInfo struct {
+	// 加密类型：
+	// <li> simpleaes: aes-128 加密</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// SimpleAes 加密信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SimpleAesDrm *SimpleAesDrm `json:"SimpleAesDrm,omitempty" name:"SimpleAesDrm"`
+}
+
 type EditMediaFileInfo struct {
 	// 视频的输入信息。
 	InputInfo *MediaInputInfo `json:"InputInfo,omitempty" name:"InputInfo"`
@@ -13764,6 +13779,20 @@ type SharpEnhanceConfig struct {
 	// 默认：0.0。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Intensity *float64 `json:"Intensity,omitempty" name:"Intensity"`
+}
+
+type SimpleAesDrm struct {
+	// 请求解密秘钥uri地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uri *string `json:"Uri,omitempty" name:"Uri"`
+
+	// 加密key(32字节字符串)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitempty" name:"Key"`
+
+	// 加密初始化向量(32字节字符串)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vector *string `json:"Vector,omitempty" name:"Vector"`
 }
 
 type SnapshotByTimeOffsetTaskInput struct {

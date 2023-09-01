@@ -976,7 +976,7 @@ func NewModifyUserNewPrivilegeResponse() (response *ModifyUserNewPrivilegeRespon
 }
 
 // ModifyUserNewPrivilege
-// 针对ck账号的权限做管控（新版）
+// 针对集群账号的权限做管控（新版）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -985,7 +985,7 @@ func (c *Client) ModifyUserNewPrivilege(request *ModifyUserNewPrivilegeRequest) 
 }
 
 // ModifyUserNewPrivilege
-// 针对ck账号的权限做管控（新版）
+// 针对集群账号的权限做管控（新版）
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

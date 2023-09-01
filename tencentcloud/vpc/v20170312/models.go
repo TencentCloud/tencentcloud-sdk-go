@@ -1085,6 +1085,9 @@ type AssignPrivateIpAddressesRequestParams struct {
 
 	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
 	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 type AssignPrivateIpAddressesRequest struct {
@@ -1101,6 +1104,9 @@ type AssignPrivateIpAddressesRequest struct {
 
 	// IP服务质量等级，和SecondaryPrivateIpAddressCount配合使用，可选值：PT、AU、AG、DEFAULT，分别代表云金、云银、云铜、默认四个等级。
 	QosLevel *string `json:"QosLevel,omitempty" name:"QosLevel"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *AssignPrivateIpAddressesRequest) ToJsonString() string {
@@ -1119,6 +1125,7 @@ func (r *AssignPrivateIpAddressesRequest) FromJsonString(s string) error {
 	delete(f, "PrivateIpAddresses")
 	delete(f, "SecondaryPrivateIpAddressCount")
 	delete(f, "QosLevel")
+	delete(f, "ClientToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AssignPrivateIpAddressesRequest has unknown keys!", "")
 	}
@@ -1736,6 +1743,9 @@ type AttachNetworkInterfaceRequestParams struct {
 
 	// 网卡的挂载类型：0 标准型，1扩展型，默认值0。
 	AttachType *uint64 `json:"AttachType,omitempty" name:"AttachType"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 type AttachNetworkInterfaceRequest struct {
@@ -1749,6 +1759,9 @@ type AttachNetworkInterfaceRequest struct {
 
 	// 网卡的挂载类型：0 标准型，1扩展型，默认值0。
 	AttachType *uint64 `json:"AttachType,omitempty" name:"AttachType"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *AttachNetworkInterfaceRequest) ToJsonString() string {
@@ -1766,6 +1779,7 @@ func (r *AttachNetworkInterfaceRequest) FromJsonString(s string) error {
 	delete(f, "NetworkInterfaceId")
 	delete(f, "InstanceId")
 	delete(f, "AttachType")
+	delete(f, "ClientToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AttachNetworkInterfaceRequest has unknown keys!", "")
 	}
@@ -2827,6 +2841,9 @@ type CreateAndAttachNetworkInterfaceRequestParams struct {
 
 	// 绑定类型：0 标准型 1 扩展型。
 	AttachType *uint64 `json:"AttachType,omitempty" name:"AttachType"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 type CreateAndAttachNetworkInterfaceRequest struct {
@@ -2864,6 +2881,9 @@ type CreateAndAttachNetworkInterfaceRequest struct {
 
 	// 绑定类型：0 标准型 1 扩展型。
 	AttachType *uint64 `json:"AttachType,omitempty" name:"AttachType"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *CreateAndAttachNetworkInterfaceRequest) ToJsonString() string {
@@ -2889,6 +2909,7 @@ func (r *CreateAndAttachNetworkInterfaceRequest) FromJsonString(s string) error 
 	delete(f, "NetworkInterfaceDescription")
 	delete(f, "Tags")
 	delete(f, "AttachType")
+	delete(f, "ClientToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAndAttachNetworkInterfaceRequest has unknown keys!", "")
 	}
@@ -4611,6 +4632,9 @@ type CreateNetworkInterfaceRequestParams struct {
 
 	// 网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
 	TrunkingFlag *string `json:"TrunkingFlag,omitempty" name:"TrunkingFlag"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 type CreateNetworkInterfaceRequest struct {
@@ -4645,6 +4669,9 @@ type CreateNetworkInterfaceRequest struct {
 
 	// 网卡trunking模式设置，Enable-开启，Disable--关闭，默认关闭。
 	TrunkingFlag *string `json:"TrunkingFlag,omitempty" name:"TrunkingFlag"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *CreateNetworkInterfaceRequest) ToJsonString() string {
@@ -4669,6 +4696,7 @@ func (r *CreateNetworkInterfaceRequest) FromJsonString(s string) error {
 	delete(f, "PrivateIpAddresses")
 	delete(f, "Tags")
 	delete(f, "TrunkingFlag")
+	delete(f, "ClientToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNetworkInterfaceRequest has unknown keys!", "")
 	}
@@ -4840,7 +4868,7 @@ func (r *CreateRoutesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSecurityGroupPoliciesRequestParams struct {
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 安全组规则集合。
@@ -4850,7 +4878,7 @@ type CreateSecurityGroupPoliciesRequestParams struct {
 type CreateSecurityGroupPoliciesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 安全组规则集合。
@@ -4907,7 +4935,7 @@ type CreateSecurityGroupRequestParams struct {
 	// 安全组备注，最多100个字符。
 	GroupDescription *string `json:"GroupDescription,omitempty" name:"GroupDescription"`
 
-	// 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+	// 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
@@ -4923,7 +4951,7 @@ type CreateSecurityGroupRequest struct {
 	// 安全组备注，最多100个字符。
 	GroupDescription *string `json:"GroupDescription,omitempty" name:"GroupDescription"`
 
-	// 项目ID，默认0。可在qcloud控制台项目管理页面查询到。
+	// 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
@@ -4985,7 +5013,7 @@ type CreateSecurityGroupWithPoliciesRequestParams struct {
 	// 安全组备注，最多100个字符。
 	GroupDescription *string `json:"GroupDescription,omitempty" name:"GroupDescription"`
 
-	// 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">qcloud控制台项目管理页面</a>查询到。
+	// 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 安全组规则集合。
@@ -5001,7 +5029,7 @@ type CreateSecurityGroupWithPoliciesRequest struct {
 	// 安全组备注，最多100个字符。
 	GroupDescription *string `json:"GroupDescription,omitempty" name:"GroupDescription"`
 
-	// 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">qcloud控制台项目管理页面</a>查询到。
+	// 项目ID，默认0。可在<a href="https://console.cloud.tencent.com/project">控制台项目管理页面</a>查询到。
 	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
 
 	// 安全组规则集合。
@@ -7949,7 +7977,7 @@ func (r *DeleteRoutesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteSecurityGroupPoliciesRequestParams struct {
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 安全组规则集合。一个请求中只能删除单个方向的一条或多条规则。支持指定索引（PolicyIndex） 匹配删除和安全组规则匹配删除两种方式，一个请求中只能使用一种匹配方式。
@@ -7959,7 +7987,7 @@ type DeleteSecurityGroupPoliciesRequestParams struct {
 type DeleteSecurityGroupPoliciesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 安全组规则集合。一个请求中只能删除单个方向的一条或多条规则。支持指定索引（PolicyIndex） 匹配删除和安全组规则匹配删除两种方式，一个请求中只能使用一种匹配方式。
@@ -8010,14 +8038,14 @@ func (r *DeleteSecurityGroupPoliciesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteSecurityGroupRequestParams struct {
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 }
 
 type DeleteSecurityGroupRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 }
 
@@ -12996,7 +13024,7 @@ type DescribeRouteTablesRequestParams struct {
 	// 偏移量。
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
 
-	// 请求对象个数。
+	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -13032,7 +13060,7 @@ type DescribeRouteTablesRequest struct {
 	// 偏移量。
 	Offset *string `json:"Offset,omitempty" name:"Offset"`
 
-	// 请求对象个数。
+	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitempty" name:"Limit"`
 }
 
@@ -13088,14 +13116,14 @@ func (r *DescribeRouteTablesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeSecurityGroupAssociationStatisticsRequestParams struct {
-	// 安全实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
 type DescribeSecurityGroupAssociationStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" name:"SecurityGroupIds"`
 }
 
@@ -16167,6 +16195,9 @@ type DetachNetworkInterfaceRequestParams struct {
 
 	// CVM实例ID。形如：ins-r8hr2upy。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 type DetachNetworkInterfaceRequest struct {
@@ -16177,6 +16208,9 @@ type DetachNetworkInterfaceRequest struct {
 
 	// CVM实例ID。形如：ins-r8hr2upy。
 	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。	
+	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 }
 
 func (r *DetachNetworkInterfaceRequest) ToJsonString() string {
@@ -16193,6 +16227,7 @@ func (r *DetachNetworkInterfaceRequest) FromJsonString(s string) error {
 	}
 	delete(f, "NetworkInterfaceId")
 	delete(f, "InstanceId")
+	delete(f, "ClientToken")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DetachNetworkInterfaceRequest has unknown keys!", "")
 	}
@@ -21384,7 +21419,7 @@ func (r *ModifyRouteTableAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySecurityGroupAttributeRequestParams struct {
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 安全组名称，可任意命名，但不得超过60个字符。
@@ -21397,7 +21432,7 @@ type ModifySecurityGroupAttributeRequestParams struct {
 type ModifySecurityGroupAttributeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 安全组名称，可任意命名，但不得超过60个字符。
@@ -21452,7 +21487,7 @@ func (r *ModifySecurityGroupAttributeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifySecurityGroupPoliciesRequestParams struct {
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 安全组规则集合。 SecurityGroupPolicySet对象必须同时指定新的出（Egress）入（Ingress）站规则。 SecurityGroupPolicy对象不支持自定义索引（PolicyIndex）。
@@ -21465,7 +21500,7 @@ type ModifySecurityGroupPoliciesRequestParams struct {
 type ModifySecurityGroupPoliciesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 安全组规则集合。 SecurityGroupPolicySet对象必须同时指定新的出（Egress）入（Ingress）站规则。 SecurityGroupPolicy对象不支持自定义索引（PolicyIndex）。
@@ -22723,7 +22758,7 @@ type NetDetect struct {
 	// 下一跳类型为NAT，取值Nat网关，形如：nat-12345678；
 	// 下一跳类型为NORMAL_CVM，取值云服务器IPv4地址，形如：10.0.0.12；
 	// 下一跳类型为CCN，取值云联网ID，形如：ccn-12345678；
-	// 下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测；
+	// 下一跳类型为NONEXTHOP，指定网络探测为无下一跳的网络探测，添加和修改时，不需要指定值，查询时值为空字符串；
 	NextHopDestination *string `json:"NextHopDestination,omitempty" name:"NextHopDestination"`
 
 	// 下一跳网关名称。
@@ -23923,7 +23958,7 @@ func (r *ReplaceSecurityGroupPoliciesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ReplaceSecurityGroupPolicyRequestParams struct {
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 安全组规则集合对象。
@@ -23936,7 +23971,7 @@ type ReplaceSecurityGroupPolicyRequestParams struct {
 type ReplaceSecurityGroupPolicyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 安全组实例ID，例如sg-33ocnj9n，可通过DescribeSecurityGroups获取。
+	// 安全组实例ID，例如sg-33ocnj9n，可通过<a href="https://cloud.tencent.com/document/product/215/15808">DescribeSecurityGroups</a>获取。
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" name:"SecurityGroupId"`
 
 	// 安全组规则集合对象。

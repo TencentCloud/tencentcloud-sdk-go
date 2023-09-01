@@ -269,6 +269,48 @@ type AssetClusterPod struct {
 	IsNewAsset *uint64 `json:"IsNewAsset,omitempty" name:"IsNewAsset"`
 }
 
+type AssetInfoDetail struct {
+	// 用户appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppID *string `json:"AppID,omitempty" name:"AppID"`
+
+	// CVE编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVEId *string `json:"CVEId,omitempty" name:"CVEId"`
+
+	// 是扫描，0默认未扫描，1正在扫描，2扫描完成，3扫描出错
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsScan *int64 `json:"IsScan,omitempty" name:"IsScan"`
+
+	// 影响资产数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InfluenceAsset *int64 `json:"InfluenceAsset,omitempty" name:"InfluenceAsset"`
+
+	// 未修复资产数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotRepairAsset *int64 `json:"NotRepairAsset,omitempty" name:"NotRepairAsset"`
+
+	// 未防护资产数目
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotProtectAsset *int64 `json:"NotProtectAsset,omitempty" name:"NotProtectAsset"`
+
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 任务百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskPercent *int64 `json:"TaskPercent,omitempty" name:"TaskPercent"`
+
+	// 任务时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskTime *int64 `json:"TaskTime,omitempty" name:"TaskTime"`
+
+	// 扫描时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+}
+
 type AssetViewPortRisk struct {
 	// 端口
 	Port *uint64 `json:"Port,omitempty" name:"Port"`
@@ -432,6 +474,88 @@ type AssetViewVULRisk struct {
 	// 应急漏洞类型，1-应急漏洞，0-非应急漏洞
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EMGCVulType *int64 `json:"EMGCVulType,omitempty" name:"EMGCVulType"`
+}
+
+type BugInfoDetail struct {
+	// 漏洞编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *uint64 `json:"Id,omitempty" name:"Id"`
+
+	// 漏洞对应pocId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PatchId *string `json:"PatchId,omitempty" name:"PatchId"`
+
+	// 漏洞名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VULName *string `json:"VULName,omitempty" name:"VULName"`
+
+	// 漏洞严重性：high,middle，low，info
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Level *string `json:"Level,omitempty" name:"Level"`
+
+	// cvss评分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVSSScore *string `json:"CVSSScore,omitempty" name:"CVSSScore"`
+
+	// cve编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CVEId *string `json:"CVEId,omitempty" name:"CVEId"`
+
+	// 漏洞标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tag *string `json:"Tag,omitempty" name:"Tag"`
+
+	// 漏洞种类，1:web应用，2:系统组件漏洞，3:配置风险
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VULCategory *uint64 `json:"VULCategory,omitempty" name:"VULCategory"`
+
+	// 漏洞影响系统
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImpactOs *string `json:"ImpactOs,omitempty" name:"ImpactOs"`
+
+	// 漏洞影响组件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImpactCOMPENT *string `json:"ImpactCOMPENT,omitempty" name:"ImpactCOMPENT"`
+
+	// 漏洞影响版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImpactVersion *string `json:"ImpactVersion,omitempty" name:"ImpactVersion"`
+
+	// 链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reference *string `json:"Reference,omitempty" name:"Reference"`
+
+	// 漏洞描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VULDescribe *string `json:"VULDescribe,omitempty" name:"VULDescribe"`
+
+	// 修复建议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fix *string `json:"Fix,omitempty" name:"Fix"`
+
+	// 产品支持状态，实时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProSupport *uint64 `json:"ProSupport,omitempty" name:"ProSupport"`
+
+	// 是否公开，0为未发布，1为发布
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPublish *uint64 `json:"IsPublish,omitempty" name:"IsPublish"`
+
+	// 释放时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReleaseTime *string `json:"ReleaseTime,omitempty" name:"ReleaseTime"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+
+	// 漏洞子类别
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubCategory *string `json:"SubCategory,omitempty" name:"SubCategory"`
 }
 
 type CVMAssetVO struct {
@@ -962,6 +1086,39 @@ type DBAssetVO struct {
 	// 是否新资产: 1新
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsNewAsset *uint64 `json:"IsNewAsset,omitempty" name:"IsNewAsset"`
+}
+
+type DataSearchBug struct {
+	// 返回查询状态
+	StateCode *string `json:"StateCode,omitempty" name:"StateCode"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataBug []*BugInfoDetail `json:"DataBug,omitempty" name:"DataBug"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataAsset []*AssetInfoDetail `json:"DataAsset,omitempty" name:"DataAsset"`
+
+	// true支持扫描。false不支持扫描
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VSSScan *bool `json:"VSSScan,omitempty" name:"VSSScan"`
+
+	// 0不支持，1支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CWPScan *string `json:"CWPScan,omitempty" name:"CWPScan"`
+
+	// 1支持虚拟补丁，0或空不支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CFWPatch *string `json:"CFWPatch,omitempty" name:"CFWPatch"`
+
+	// 0不支持，1支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WafPatch *int64 `json:"WafPatch,omitempty" name:"WafPatch"`
+
+	// 0不支持，1支持
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CWPFix *int64 `json:"CWPFix,omitempty" name:"CWPFix"`
 }
 
 type DbAssetInfo struct {
@@ -1815,6 +1972,147 @@ func (r *DescribeScanReportListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeScanTaskListRequestParams struct {
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitempty" name:"Filter"`
+}
+
+type DescribeScanTaskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *DescribeScanTaskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanTaskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScanTaskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScanTaskListResponseParams struct {
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 任务日志列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*ScanTaskInfoList `json:"Data,omitempty" name:"Data"`
+
+	// 主账户ID列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UINList []*string `json:"UINList,omitempty" name:"UINList"`
+
+	// 体检模式过滤列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskModeList []*FilterDataObject `json:"TaskModeList,omitempty" name:"TaskModeList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeScanTaskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeScanTaskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeScanTaskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScanTaskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSearchBugInfoRequestParams struct {
+	// 无
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// id=3时传入该参数
+	CVEId *string `json:"CVEId,omitempty" name:"CVEId"`
+}
+
+type DescribeSearchBugInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 无
+	Id *string `json:"Id,omitempty" name:"Id"`
+
+	// id=3时传入该参数
+	CVEId *string `json:"CVEId,omitempty" name:"CVEId"`
+}
+
+func (r *DescribeSearchBugInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSearchBugInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "CVEId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSearchBugInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSearchBugInfoResponseParams struct {
+	// 漏洞信息和资产信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DataSearchBug `json:"Data,omitempty" name:"Data"`
+
+	// 状态值，0：查询成功，非0：查询失败
+	ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+
+	// 状态信息，success：查询成功，fail：查询失败
+	ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeSearchBugInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSearchBugInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeSearchBugInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSearchBugInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSubnetAssetsRequestParams struct {
 	// 过滤参数
 	Filter *Filter `json:"Filter,omitempty" name:"Filter"`
@@ -1883,6 +2181,136 @@ func (r *DescribeSubnetAssetsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSubnetAssetsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskLogListRequestParams struct {
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitempty" name:"Filter"`
+}
+
+type DescribeTaskLogListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitempty" name:"Filter"`
+}
+
+func (r *DescribeTaskLogListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskLogListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskLogListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskLogListResponseParams struct {
+	// 总条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+
+	// 报告列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*TaskLogInfo `json:"Data,omitempty" name:"Data"`
+
+	// 待查看数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotViewNumber *int64 `json:"NotViewNumber,omitempty" name:"NotViewNumber"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskLogListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskLogListResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskLogListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskLogListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskLogURLRequestParams struct {
+	// 任务报告Id 列表
+	ReportItemKeyList []*ReportItemKey `json:"ReportItemKeyList,omitempty" name:"ReportItemKeyList"`
+
+	// 0: 预览， 1: 下载
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+}
+
+type DescribeTaskLogURLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务报告Id 列表
+	ReportItemKeyList []*ReportItemKey `json:"ReportItemKeyList,omitempty" name:"ReportItemKeyList"`
+
+	// 0: 预览， 1: 下载
+	Type *int64 `json:"Type,omitempty" name:"Type"`
+}
+
+func (r *DescribeTaskLogURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskLogURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReportItemKeyList")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskLogURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTaskLogURLResponseParams struct {
+	// 返回报告临时下载url
+	Data []*TaskLogURL `json:"Data,omitempty" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type DescribeTaskLogURLResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTaskLogURLResponseParams `json:"Response"`
+}
+
+func (r *DescribeTaskLogURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTaskLogURLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2282,6 +2710,11 @@ type IpAssetListVO struct {
 	VerifyStatus *int64 `json:"VerifyStatus,omitempty" name:"VerifyStatus"`
 }
 
+type ReportItemKey struct {
+	// 日志Id列表
+	TaskLogList []*string `json:"TaskLogList,omitempty" name:"TaskLogList"`
+}
+
 type ScanTaskInfo struct {
 	// 任务日志Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2330,6 +2763,164 @@ type ScanTaskInfo struct {
 	// 用户名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UserName *string `json:"UserName,omitempty" name:"UserName"`
+}
+
+type ScanTaskInfoList struct {
+	// 任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 任务开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+
+	// corn
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanPlanContent *string `json:"ScanPlanContent,omitempty" name:"ScanPlanContent"`
+
+	// 0-周期任务,1-立即扫描,2-定时扫描,3-自定义
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *int64 `json:"TaskType,omitempty" name:"TaskType"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
+
+	// 任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+
+	// 排除扫描资产信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelfDefiningAssets []*string `json:"SelfDefiningAssets,omitempty" name:"SelfDefiningAssets"`
+
+	// 预估时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PredictTime *int64 `json:"PredictTime,omitempty" name:"PredictTime"`
+
+	// 预估完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PredictEndTime *string `json:"PredictEndTime,omitempty" name:"PredictEndTime"`
+
+	// 报告数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReportNumber *int64 `json:"ReportNumber,omitempty" name:"ReportNumber"`
+
+	// 资产数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetNumber *int64 `json:"AssetNumber,omitempty" name:"AssetNumber"`
+
+	// 扫描状态 0 初始值  1正在扫描  2扫描完成  3扫描出错
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanStatus *int64 `json:"ScanStatus,omitempty" name:"ScanStatus"`
+
+	// 任务进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percent *float64 `json:"Percent,omitempty" name:"Percent"`
+
+	// port/poc/weakpass/webcontent/configrisk
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanItem *string `json:"ScanItem,omitempty" name:"ScanItem"`
+
+	// 0-全扫，1-指定资产扫，2-排除资产扫
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanAssetType *int64 `json:"ScanAssetType,omitempty" name:"ScanAssetType"`
+
+	// vss子任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VSSTaskId *string `json:"VSSTaskId,omitempty" name:"VSSTaskId"`
+
+	// cspm子任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CSPMTaskId *string `json:"CSPMTaskId,omitempty" name:"CSPMTaskId"`
+
+	// 主机漏扫子任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CWPPOCId *string `json:"CWPPOCId,omitempty" name:"CWPPOCId"`
+
+	// 主机基线子任务id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CWPBlId *string `json:"CWPBlId,omitempty" name:"CWPBlId"`
+
+	// vss子任务进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VSSTaskProcess *int64 `json:"VSSTaskProcess,omitempty" name:"VSSTaskProcess"`
+
+	// cspm子任务进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CSPMTaskProcess *uint64 `json:"CSPMTaskProcess,omitempty" name:"CSPMTaskProcess"`
+
+	// 主机漏扫子任务进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CWPPOCProcess *int64 `json:"CWPPOCProcess,omitempty" name:"CWPPOCProcess"`
+
+	// 主机基线子任务进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CWPBlProcess *uint64 `json:"CWPBlProcess,omitempty" name:"CWPBlProcess"`
+
+	// 异常状态码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorCode *int64 `json:"ErrorCode,omitempty" name:"ErrorCode"`
+
+	// 异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorInfo *string `json:"ErrorInfo,omitempty" name:"ErrorInfo"`
+
+	// 周期任务开始的天数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartDay *int64 `json:"StartDay,omitempty" name:"StartDay"`
+
+	// 扫描频率,单位天,1-每天,7-每周,30-月,0-扫描一次
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Frequency *int64 `json:"Frequency,omitempty" name:"Frequency"`
+
+	// 完成次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompleteNumber *int64 `json:"CompleteNumber,omitempty" name:"CompleteNumber"`
+
+	// 已完成资产个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompleteAssetNumber *int64 `json:"CompleteAssetNumber,omitempty" name:"CompleteAssetNumber"`
+
+	// 风险数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskCount *int64 `json:"RiskCount,omitempty" name:"RiskCount"`
+
+	// 资产
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Assets []*TaskAssetObject `json:"Assets,omitempty" name:"Assets"`
+
+	// 用户Appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 用户主账户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UIN *string `json:"UIN,omitempty" name:"UIN"`
+
+	// 用户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+
+	// 体检模式，0-标准模式，1-快速模式，2-高级模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskMode *int64 `json:"TaskMode,omitempty" name:"TaskMode"`
+
+	// 扫描来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanFrom *string `json:"ScanFrom,omitempty" name:"ScanFrom"`
+
+	// 是否限免体检0不是，1是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsFree *int64 `json:"IsFree,omitempty" name:"IsFree"`
+
+	// 是否可以删除，1-可以，0-不可以，对应多账户管理使用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsDelete *int64 `json:"IsDelete,omitempty" name:"IsDelete"`
 }
 
 type SubnetAsset struct {
@@ -2459,6 +3050,73 @@ type TaskCenterWeakPwdRiskInputParam struct {
 
 	// 是否开启，0-不开启，1-开启
 	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+}
+
+type TaskLogInfo struct {
+	// 报告名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskLogName *string `json:"TaskLogName,omitempty" name:"TaskLogName"`
+
+	// 报告ID
+	TaskLogId *string `json:"TaskLogId,omitempty" name:"TaskLogId"`
+
+	// 关联资产个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssetsNumber *int64 `json:"AssetsNumber,omitempty" name:"AssetsNumber"`
+
+	// 安全风险数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RiskNumber *int64 `json:"RiskNumber,omitempty" name:"RiskNumber"`
+
+	// 报告生成时间,任务结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Time *string `json:"Time,omitempty" name:"Time"`
+
+	// 任务状态码：0 初始值  1正在扫描  2扫描完成  3扫描出错，4停止，5暂停，6该任务已被重启过
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitempty" name:"Status"`
+
+	// 关联任务名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+
+	// 扫描开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+
+	// 任务中心扫描任务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskCenterTaskId *string `json:"TaskCenterTaskId,omitempty" name:"TaskCenterTaskId"`
+
+	// 租户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
+
+	// 主账户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UIN *string `json:"UIN,omitempty" name:"UIN"`
+
+	// 用户名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserName *string `json:"UserName,omitempty" name:"UserName"`
+}
+
+type TaskLogURL struct {
+	// 报告下载临时链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	URL *string `json:"URL,omitempty" name:"URL"`
+
+	// 任务报告id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogId *string `json:"LogId,omitempty" name:"LogId"`
+
+	// 任务报告名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskLogName *string `json:"TaskLogName,omitempty" name:"TaskLogName"`
+
+	// APP ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitempty" name:"AppId"`
 }
 
 type Vpc struct {

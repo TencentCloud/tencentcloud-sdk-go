@@ -12884,8 +12884,11 @@ type ZoneInstanceCountISP struct {
 	// 指定主网卡内网IP。条件：SubnetId与VpcId必须同时指定，并且IP数量与InstanceCount相同，多IP主机副网卡内网IP在相同子网内通过DHCP获取。
 	PrivateIpAddresses []*string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
 
-	// 为弹性网卡指定随机生成的IPv6地址数量，目前数量不能大于1。
+	// 为弹性网卡指定随机生成的IPv6地址数量，单网情况下是1，单网需要ISP 只能为单网运营商，三网情况3
 	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitempty" name:"Ipv6AddressCount"`
+
+	// 指定创建三网ipv6地址，使用的subnet数组，单独ipv4和单网ipv6子网依然使用SubnetId字段
+	Ipv6SubnetIds []*string `json:"Ipv6SubnetIds,omitempty" name:"Ipv6SubnetIds"`
 }
 
 type ZoneInstanceInfo struct {

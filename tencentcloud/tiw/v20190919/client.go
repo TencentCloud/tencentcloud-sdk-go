@@ -178,6 +178,10 @@ func NewCreateOfflineRecordResponse() (response *CreateOfflineRecordResponse) {
 }
 
 // CreateOfflineRecord
+// 课后录制服务已下线
+//
+// 
+//
 // 创建课后录制任务
 //
 // 可能返回的错误码:
@@ -195,6 +199,10 @@ func (c *Client) CreateOfflineRecord(request *CreateOfflineRecordRequest) (respo
 }
 
 // CreateOfflineRecord
+// 课后录制服务已下线
+//
+// 
+//
 // 创建课后录制任务
 //
 // 可能返回的错误码:
@@ -778,6 +786,10 @@ func NewDescribeOfflineRecordResponse() (response *DescribeOfflineRecordResponse
 }
 
 // DescribeOfflineRecord
+// 课后录制服务已下线
+//
+// 
+//
 // 查询课后录制任务的进度与录制结果等相关信息
 //
 // 可能返回的错误码:
@@ -794,6 +806,10 @@ func (c *Client) DescribeOfflineRecord(request *DescribeOfflineRecordRequest) (r
 }
 
 // DescribeOfflineRecord
+// 课后录制服务已下线
+//
+// 
+//
 // 查询课后录制任务的进度与录制结果等相关信息
 //
 // 可能返回的错误码:
@@ -840,6 +856,10 @@ func NewDescribeOfflineRecordCallbackResponse() (response *DescribeOfflineRecord
 }
 
 // DescribeOfflineRecordCallback
+// 课后录制服务已下线
+//
+// 
+//
 // 查询课后录制回调地址
 //
 // 可能返回的错误码:
@@ -853,6 +873,10 @@ func (c *Client) DescribeOfflineRecordCallback(request *DescribeOfflineRecordCal
 }
 
 // DescribeOfflineRecordCallback
+// 课后录制服务已下线
+//
+// 
+//
 // 查询课后录制回调地址
 //
 // 可能返回的错误码:
@@ -2986,6 +3010,10 @@ func NewSetOfflineRecordCallbackResponse() (response *SetOfflineRecordCallbackRe
 }
 
 // SetOfflineRecordCallback
+// 课后录制服务已下线
+//
+// 
+//
 // 设置课后录制回调地址
 //
 // 可能返回的错误码:
@@ -3000,6 +3028,10 @@ func (c *Client) SetOfflineRecordCallback(request *SetOfflineRecordCallbackReque
 }
 
 // SetOfflineRecordCallback
+// 课后录制服务已下线
+//
+// 
+//
 // 设置课后录制回调地址
 //
 // 可能返回的错误码:

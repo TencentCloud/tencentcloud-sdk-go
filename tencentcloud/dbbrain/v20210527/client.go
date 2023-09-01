@@ -3849,6 +3849,150 @@ func (c *Client) OpenAuditServiceWithContext(ctx context.Context, request *OpenA
     return
 }
 
+func NewUpdateAgentSwitchRequest() (request *UpdateAgentSwitchRequest) {
+    request = &UpdateAgentSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "UpdateAgentSwitch")
+    
+    
+    return
+}
+
+func NewUpdateAgentSwitchResponse() (response *UpdateAgentSwitchResponse) {
+    response = &UpdateAgentSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateAgentSwitch
+// 更新agent状态（停止或重连Agent）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateAgentSwitch(request *UpdateAgentSwitchRequest) (response *UpdateAgentSwitchResponse, err error) {
+    return c.UpdateAgentSwitchWithContext(context.Background(), request)
+}
+
+// UpdateAgentSwitch
+// 更新agent状态（停止或重连Agent）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateAgentSwitchWithContext(ctx context.Context, request *UpdateAgentSwitchRequest) (response *UpdateAgentSwitchResponse, err error) {
+    if request == nil {
+        request = NewUpdateAgentSwitchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateAgentSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateAgentSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewUpdateMonitorSwitchRequest() (request *UpdateMonitorSwitchRequest) {
+    request = &UpdateMonitorSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "UpdateMonitorSwitch")
+    
+    
+    return
+}
+
+func NewUpdateMonitorSwitchResponse() (response *UpdateMonitorSwitchResponse) {
+    response = &UpdateMonitorSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpdateMonitorSwitch
+// 更新Agent实例状态（停止或重连实例）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateMonitorSwitch(request *UpdateMonitorSwitchRequest) (response *UpdateMonitorSwitchResponse, err error) {
+    return c.UpdateMonitorSwitchWithContext(context.Background(), request)
+}
+
+// UpdateMonitorSwitch
+// 更新Agent实例状态（停止或重连实例）
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) UpdateMonitorSwitchWithContext(ctx context.Context, request *UpdateMonitorSwitchRequest) (response *UpdateMonitorSwitchResponse, err error) {
+    if request == nil {
+        request = NewUpdateMonitorSwitchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpdateMonitorSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpdateMonitorSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewVerifyUserAccountRequest() (request *VerifyUserAccountRequest) {
     request = &VerifyUserAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},

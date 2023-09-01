@@ -46,6 +46,44 @@ type ApolloEnvParam struct {
 	EnvDesc *string `json:"EnvDesc,omitempty" name:"EnvDesc"`
 }
 
+type AutoScalerBehavior struct {
+	// 扩容行为配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleUp *AutoScalerRules `json:"ScaleUp,omitempty" name:"ScaleUp"`
+
+	// 缩容行为配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScaleDown *AutoScalerRules `json:"ScaleDown,omitempty" name:"ScaleDown"`
+}
+
+type AutoScalerPolicy struct {
+	// 类型，Pods或Percent
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitempty" name:"Type"`
+
+	// 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *int64 `json:"Value,omitempty" name:"Value"`
+
+	// 扩容周期
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeriodSeconds *int64 `json:"PeriodSeconds,omitempty" name:"PeriodSeconds"`
+}
+
+type AutoScalerRules struct {
+	// 稳定窗口时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StabilizationWindowSeconds *int64 `json:"StabilizationWindowSeconds,omitempty" name:"StabilizationWindowSeconds"`
+
+	// 选择策略依据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SelectPolicy *string `json:"SelectPolicy,omitempty" name:"SelectPolicy"`
+
+	// 扩容策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Policies []*AutoScalerPolicy `json:"Policies,omitempty" name:"Policies"`
+}
+
 type BoundK8SInfo struct {
 	// 绑定的kubernetes集群ID
 	BoundClusterId *string `json:"BoundClusterId,omitempty" name:"BoundClusterId"`
@@ -271,6 +309,8 @@ type CloudNativeAPIGatewayStrategy struct {
 
 	// 最大节点数
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: MaxReplicas is deprecated.
 	MaxReplicas *uint64 `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
 }
 
@@ -289,19 +329,31 @@ type CloudNativeAPIGatewayStrategyAutoScalerConfig struct {
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: CreateTime is deprecated.
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ModifyTime is deprecated.
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 
 	// 弹性策略ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: StrategyId is deprecated.
 	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
 
 	// 指标配置ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: AutoScalerId is deprecated.
 	AutoScalerId *string `json:"AutoScalerId,omitempty" name:"AutoScalerId"`
+
+	// 指标伸缩行为配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Behavior *AutoScalerBehavior `json:"Behavior,omitempty" name:"Behavior"`
 }
 
 type CloudNativeAPIGatewayStrategyAutoScalerConfigMetric struct {
@@ -333,14 +385,20 @@ type CloudNativeAPIGatewayStrategyCronScalerConfig struct {
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: CreateTime is deprecated.
 	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
 
 	// 修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ModifyTime is deprecated.
 	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
 
 	// 弹性策略ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: StrategyId is deprecated.
 	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
 }
 

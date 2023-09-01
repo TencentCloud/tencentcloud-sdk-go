@@ -776,6 +776,12 @@ const (
 	// 不支持创建流日志：当前弹性网卡未绑定实例。
 	UNSUPPORTEDOPERATION_FLOWLOGSNOTSUPPORTNULLINSTANCEENI = "UnsupportedOperation.FlowLogsNotSupportNullInstanceEni"
 
+	// 指定的客户令牌已经被使用。
+	UNSUPPORTEDOPERATION_IDEMPOTENTPARAMETERMISMATCH = "UnsupportedOperation.IdempotentParameterMismatch"
+
+	// 先前的幂等请求仍在处理中，请稍后重试。
+	UNSUPPORTEDOPERATION_IDEMPOTENTPROCESSING = "UnsupportedOperation.IdempotentProcessing"
+
 	// 该种类型地址不支持此操作。
 	UNSUPPORTEDOPERATION_INCORRECTADDRESSRESOURCETYPE = "UnsupportedOperation.IncorrectAddressResourceType"
 

@@ -2324,7 +2324,7 @@ type DescribeDiagDBInstancesRequestParams struct {
 	// 是否是DBbrain支持的实例，固定传 true。
 	IsSupported *bool `json:"IsSupported,omitempty" name:"IsSupported"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 分页参数，偏移量。
@@ -2349,7 +2349,7 @@ type DescribeDiagDBInstancesRequest struct {
 	// 是否是DBbrain支持的实例，固定传 true。
 	IsSupported *bool `json:"IsSupported,omitempty" name:"IsSupported"`
 
-	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
+	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
 	Product *string `json:"Product,omitempty" name:"Product"`
 
 	// 分页参数，偏移量。
@@ -5624,6 +5624,142 @@ type TimeSlice struct {
 
 	// 统计开始时间
 	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+}
+
+// Predefined struct for user
+type UpdateAgentSwitchRequestParams struct {
+	// Agent标识。
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 停止或重连Agent，支持值包括："on" - 重连Agent， "off" - 停止Agent。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 服务产品类型，仅支持 "dbbrain-mysql" - 自建MySQL。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+type UpdateAgentSwitchRequest struct {
+	*tchttp.BaseRequest
+	
+	// Agent标识。
+	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+
+	// 停止或重连Agent，支持值包括："on" - 重连Agent， "off" - 停止Agent。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 服务产品类型，仅支持 "dbbrain-mysql" - 自建MySQL。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *UpdateAgentSwitchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAgentSwitchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AgentId")
+	delete(f, "Switch")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateAgentSwitchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateAgentSwitchResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateAgentSwitchResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateAgentSwitchResponseParams `json:"Response"`
+}
+
+func (r *UpdateAgentSwitchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateAgentSwitchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateMonitorSwitchRequestParams struct {
+	// 停止或重连Agent实例，支持值包括："on" - 重连实例， "off" - 停止实例。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，仅支持 "dbbrain-mysql" - 自建MySQL。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+type UpdateMonitorSwitchRequest struct {
+	*tchttp.BaseRequest
+	
+	// 停止或重连Agent实例，支持值包括："on" - 重连实例， "off" - 停止实例。
+	Switch *string `json:"Switch,omitempty" name:"Switch"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+
+	// 服务产品类型，仅支持 "dbbrain-mysql" - 自建MySQL。
+	Product *string `json:"Product,omitempty" name:"Product"`
+}
+
+func (r *UpdateMonitorSwitchRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateMonitorSwitchRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Switch")
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateMonitorSwitchRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateMonitorSwitchResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+}
+
+type UpdateMonitorSwitchResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateMonitorSwitchResponseParams `json:"Response"`
+}
+
+func (r *UpdateMonitorSwitchResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateMonitorSwitchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UserProfile struct {

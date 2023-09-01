@@ -1706,26 +1706,32 @@ func (r *CreateFlowByFilesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowEvidenceReportRequestParams struct {
-	// 调用方用户信息，userId 必填
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 签署流程编号
+	// 合同流程ID，为32位字符串。
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateFlowEvidenceReportRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方用户信息，userId 必填
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 签署流程编号
+	// 合同流程ID，为32位字符串。
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -1752,17 +1758,22 @@ func (r *CreateFlowEvidenceReportRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowEvidenceReportResponseParams struct {
-	// 出证报告 ID，用于查询出证报告DescribeFlowEvidenceReport接口时用到
+	// 出证报告 ID，可用于DescribeFlowEvidenceReport接口查询出证PDF的下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportId *string `json:"ReportId,omitempty" name:"ReportId"`
 
-	// 执行中：EvidenceStatusExecuting
-	// 成功：EvidenceStatusSuccess
-	// 失败：EvidenceStatusFailed
+	// 出证任务执行的状态, 可能会有以下状态：
+	// 
+	// <ul><li>EvidenceStatusExecuting：  出证任务在执行中</li>
+	// <li>EvidenceStatusSuccess：  出证任务执行成功</li>
+	// <li>EvidenceStatusFailed ： 出征任务执行失败</li></ul>
 	Status *string `json:"Status,omitempty" name:"Status"`
 
-	// 废除，字段无效
+	// 此字段已经废除,不再使用.
+	// 出证的PDF下载地址请调用DescribeChannelFlowEvidenceReport接口获取
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: ReportUrl is deprecated.
 	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2018,26 +2029,30 @@ type CreateFlowOption struct {
 
 // Predefined struct for user
 type CreateFlowRemindsRequestParams struct {
-	// 调用方用户信息，userId 必填
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 需要执行催办的签署流程id数组，最多100个
+	// 需执行催办的签署流程ID数组，最多包含100个。
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
 type CreateFlowRemindsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方用户信息，userId 必填
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitempty" name:"Operator"`
 
-	// 需要执行催办的签署流程id数组，最多100个
+	// 需执行催办的签署流程ID数组，最多包含100个。
 	FlowIds []*string `json:"FlowIds,omitempty" name:"FlowIds"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitempty" name:"Agent"`
 }
 
@@ -2064,7 +2079,7 @@ func (r *CreateFlowRemindsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowRemindsResponseParams struct {
-	// 催办合同详情列表
+	// 合同催办结果的详细信息列表。
 	RemindFlowRecords []*RemindFlowRecords `json:"RemindFlowRecords,omitempty" name:"RemindFlowRecords"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2099,6 +2114,9 @@ type CreateFlowRequestParams struct {
 	// 注意 approver中的顺序需要和模板中的顺序保持一致， 否则会导致模板中配置的信息无效。
 	Approvers []*FlowCreateApprover `json:"Approvers,omitempty" name:"Approvers"`
 
+	// 签署流程描述,最大长度1000个字符
+	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
+
 	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
 	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
@@ -2106,6 +2124,7 @@ type CreateFlowRequestParams struct {
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// 签署流程的签署截止时间。
+	// 
 	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
 	DeadLine *int64 `json:"DeadLine,omitempty" name:"DeadLine"`
 
@@ -2114,9 +2133,6 @@ type CreateFlowRequestParams struct {
 
 	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
-
-	// 签署流程描述,最大长度1000个字符
-	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
 	// 发送类型：
 	// true：无序签
@@ -2167,6 +2183,9 @@ type CreateFlowRequest struct {
 	// 注意 approver中的顺序需要和模板中的顺序保持一致， 否则会导致模板中配置的信息无效。
 	Approvers []*FlowCreateApprover `json:"Approvers,omitempty" name:"Approvers"`
 
+	// 签署流程描述,最大长度1000个字符
+	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
+
 	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
 	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
 
@@ -2174,6 +2193,7 @@ type CreateFlowRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" name:"ClientToken"`
 
 	// 签署流程的签署截止时间。
+	// 
 	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
 	DeadLine *int64 `json:"DeadLine,omitempty" name:"DeadLine"`
 
@@ -2182,9 +2202,6 @@ type CreateFlowRequest struct {
 
 	// 用户自定义字段，回调的时候会进行透传，长度需要小于20480
 	UserData *string `json:"UserData,omitempty" name:"UserData"`
-
-	// 签署流程描述,最大长度1000个字符
-	FlowDescription *string `json:"FlowDescription,omitempty" name:"FlowDescription"`
 
 	// 发送类型：
 	// true：无序签
@@ -2233,12 +2250,12 @@ func (r *CreateFlowRequest) FromJsonString(s string) error {
 	delete(f, "Operator")
 	delete(f, "FlowName")
 	delete(f, "Approvers")
+	delete(f, "FlowDescription")
 	delete(f, "FlowType")
 	delete(f, "ClientToken")
 	delete(f, "DeadLine")
 	delete(f, "RemindedOn")
 	delete(f, "UserData")
-	delete(f, "FlowDescription")
 	delete(f, "Unordered")
 	delete(f, "CustomShowMap")
 	delete(f, "NeedSignReview")
@@ -2255,7 +2272,11 @@ func (r *CreateFlowRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowResponseParams struct {
-	// 签署流程编号
+	// 签署流程编号，
+	// 
+	// 返回的流程编号，需要在CreateDocument，StartFlow中使用，
+	// 
+	// 注意：这三个接口（CreateFlow，CreateDocument，StartFlow）要一并调用，才算发起成功
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7609,13 +7630,15 @@ type RelieveInfo struct {
 }
 
 type RemindFlowRecords struct {
-	// 是否能够催办，true-是，false-否
+	// 合同流程是否可以催办：
+	// true - 可以，false - 不可以。
+	// 若无法催办，将返回RemindMessage以解释原因。
 	CanRemind *bool `json:"CanRemind,omitempty" name:"CanRemind"`
 
-	// 合同id
+	// 合同流程ID，为32位字符串。
 	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
 
-	// 催办详情信息
+	// 在合同流程无法催办的情况下，系统将返回RemindMessage以阐述原因。
 	RemindMessage *string `json:"RemindMessage,omitempty" name:"RemindMessage"`
 }
 

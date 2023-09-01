@@ -64,7 +64,11 @@ func NewChatCompletionResponse() (response *ChatCompletionResponse) {
 }
 
 // ChatCompletion
-// 与大模型聊天
+// 该接口支持与两种类型大模型的聊天。
+//
+// 1. 与多行业多场景大模型的在线体验聊天
+//
+// 2. 与自行部署的开源大模型的聊天
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -76,7 +80,11 @@ func (c *Client) ChatCompletion(request *ChatCompletionRequest) (response *ChatC
 }
 
 // ChatCompletion
-// 与大模型聊天
+// 该接口支持与两种类型大模型的聊天。
+//
+// 1. 与多行业多场景大模型的在线体验聊天
+//
+// 2. 与自行部署的开源大模型的聊天
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2544,7 +2552,7 @@ func NewDescribeLogsResponse() (response *DescribeLogsResponse) {
 }
 
 // DescribeLogs
-// 获取训练、推理、Notebook服务的日志
+// 获取训练、推理、Notebook服务的日志 API
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2554,7 +2562,7 @@ func (c *Client) DescribeLogs(request *DescribeLogsRequest) (response *DescribeL
 }
 
 // DescribeLogs
-// 获取训练、推理、Notebook服务的日志
+// 获取训练、推理、Notebook服务的日志 API
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4682,7 +4690,7 @@ func NewSendChatMessageResponse() (response *SendChatMessageResponse) {
 }
 
 // SendChatMessage
-// LLM模型的对话请求发送接口
+// 这是一个供您体验大模型聊天的接口。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4693,7 +4701,7 @@ func (c *Client) SendChatMessage(request *SendChatMessageRequest) (response *Sen
 }
 
 // SendChatMessage
-// LLM模型的对话请求发送接口
+// 这是一个供您体验大模型聊天的接口。
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

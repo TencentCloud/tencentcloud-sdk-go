@@ -1,3 +1,334 @@
+# Release v1.0.738
+
+## 文件存储(cfs) 版本：2019-07-19
+
+### 第 26 次发布
+
+发布时间：2023-09-01 01:09:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeCfsFileSystemClients](https://cloud.tencent.com/document/api/582/47581)
+
+	* 新增入参：Offset, Limit
+
+	* 新增出参：TotalCount
+
+
+
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 10 次发布
+
+发布时间：2023-09-01 01:11:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeScanTaskList](https://cloud.tencent.com/document/api/664/97683)
+* [DescribeSearchBugInfo](https://cloud.tencent.com/document/api/664/97679)
+* [DescribeTaskLogList](https://cloud.tencent.com/document/api/664/97682)
+* [DescribeTaskLogURL](https://cloud.tencent.com/document/api/664/97681)
+
+新增数据结构：
+
+* [AssetInfoDetail](https://cloud.tencent.com/document/api/664/90825#AssetInfoDetail)
+* [BugInfoDetail](https://cloud.tencent.com/document/api/664/90825#BugInfoDetail)
+* [DataSearchBug](https://cloud.tencent.com/document/api/664/90825#DataSearchBug)
+* [ReportItemKey](https://cloud.tencent.com/document/api/664/90825#ReportItemKey)
+* [ScanTaskInfoList](https://cloud.tencent.com/document/api/664/90825#ScanTaskInfoList)
+* [TaskLogInfo](https://cloud.tencent.com/document/api/664/90825#TaskLogInfo)
+* [TaskLogURL](https://cloud.tencent.com/document/api/664/90825#TaskLogURL)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 24 次发布
+
+发布时间：2023-09-01 01:12:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpdateAgentSwitch](https://cloud.tencent.com/document/api/1130/97686)
+* [UpdateMonitorSwitch](https://cloud.tencent.com/document/api/1130/97685)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 数据传输服务(dts) 版本：2021-12-06
+
+### 第 16 次发布
+
+发布时间：2023-09-01 01:13:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [Column](https://cloud.tencent.com/document/api/571/82108#Column)
+* [CompareColumnItem](https://cloud.tencent.com/document/api/571/82108#CompareColumnItem)
+
+修改数据结构：
+
+* [CompareTableItem](https://cloud.tencent.com/document/api/571/82108#CompareTableItem)
+
+	* 新增成员：ColumnMode, Columns
+
+* [Table](https://cloud.tencent.com/document/api/571/82108#Table)
+
+	* 新增成员：ColumnMode, Columns
+
+
+
+
+## 数据传输服务(dts) 版本：2018-03-30
+
+
+
+## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 69 次发布
+
+发布时间：2023-09-01 01:14:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ZoneInstanceCountISP](https://cloud.tencent.com/document/api/1108/42574#ZoneInstanceCountISP)
+
+	* 新增成员：Ipv6SubnetIds
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 68 次发布
+
+发布时间：2023-09-01 01:18:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [DrmInfo](https://cloud.tencent.com/document/api/862/37615#DrmInfo)
+* [SimpleAesDrm](https://cloud.tencent.com/document/api/862/37615#SimpleAesDrm)
+
+修改数据结构：
+
+* [AdaptiveDynamicStreamingTaskInput](https://cloud.tencent.com/document/api/862/37615#AdaptiveDynamicStreamingTaskInput)
+
+	* 新增成员：DrmInfo
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 36 次发布
+
+发布时间：2023-09-01 01:23:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateTrainingModel](https://cloud.tencent.com/document/api/851/75074)
+
+	* <font color="#dd0000">**修改入参**：</font>TrainingModelCosPath
+
+* [DeleteModelService](https://cloud.tencent.com/document/api/851/82290)
+
+	* 新增入参：ServiceCategory
+
+* [DescribeLogs](https://cloud.tencent.com/document/api/851/75076)
+
+	* <font color="#dd0000">**修改入参**：</font>PodName
+
+* [DescribeModelService](https://cloud.tencent.com/document/api/851/82287)
+
+	* 新增入参：ServiceCategory
+
+* [DescribeModelServiceCallInfo](https://cloud.tencent.com/document/api/851/82286)
+
+	* 新增入参：ServiceCategory
+
+	* 新增出参：TJCallInfo, IntranetCallInfo
+
+* [DescribeModelServiceGroup](https://cloud.tencent.com/document/api/851/82285)
+
+	* 新增入参：ServiceCategory
+
+* [DescribeModelServiceGroups](https://cloud.tencent.com/document/api/851/82284)
+
+	* 新增入参：ServiceCategory
+
+
+新增数据结构：
+
+* [IngressPrivateLinkInfo](https://cloud.tencent.com/document/api/851/75051#IngressPrivateLinkInfo)
+* [IntranetCallInfo](https://cloud.tencent.com/document/api/851/75051#IntranetCallInfo)
+* [ServiceEIP](https://cloud.tencent.com/document/api/851/75051#ServiceEIP)
+* [ServiceEIPInfo](https://cloud.tencent.com/document/api/851/75051#ServiceEIPInfo)
+* [TJCallInfo](https://cloud.tencent.com/document/api/851/75051#TJCallInfo)
+
+修改数据结构：
+
+* [ServiceInfo](https://cloud.tencent.com/document/api/851/75051#ServiceInfo)
+
+	* 新增成员：ServiceEIP
+
+* [TrainingModelDTO](https://cloud.tencent.com/document/api/851/75051#TrainingModelDTO)
+
+	* <font color="#dd0000">**修改成员**：</font>TrainingModelVersions
+
+* [TrainingModelVersionDTO](https://cloud.tencent.com/document/api/851/75051#TrainingModelVersionDTO)
+
+	* <font color="#dd0000">**修改成员**：</font>ReasoningEnvironmentId, TrainingJobVersion, TrainingPreference, AutoMLTaskId, IsQAT
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## 互动白板(tiw) 版本：2019-09-19
+
+### 第 34 次发布
+
+发布时间：2023-09-01 01:24:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* CreateOfflineRecord
+* DescribeOfflineRecord
+* DescribeOfflineRecordCallback
+* SetOfflineRecordCallback
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 41 次发布
+
+发布时间：2023-09-01 01:25:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AutoScalerBehavior](https://cloud.tencent.com/document/api/1364/54942#AutoScalerBehavior)
+* [AutoScalerPolicy](https://cloud.tencent.com/document/api/1364/54942#AutoScalerPolicy)
+* [AutoScalerRules](https://cloud.tencent.com/document/api/1364/54942#AutoScalerRules)
+
+修改数据结构：
+
+* [CloudNativeAPIGatewayStrategy](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayStrategy)
+
+	* <font color="#dd0000">**修改成员**：</font>CronConfig, MaxReplicas
+
+* [CloudNativeAPIGatewayStrategyAutoScalerConfig](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayStrategyAutoScalerConfig)
+
+	* 新增成员：Behavior
+
+* [CloudNativeAPIGatewayStrategyCronScalerConfig](https://cloud.tencent.com/document/api/1364/54942#CloudNativeAPIGatewayStrategyCronScalerConfig)
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 164 次发布
+
+发布时间：2023-09-01 01:25:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MediaMiniProgramReviewInfoItem](https://cloud.tencent.com/document/api/266/31773#MediaMiniProgramReviewInfoItem)
+
+	* <font color="#dd0000">**修改成员**：</font>MetaData
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 168 次发布
+
+发布时间：2023-09-01 01:26:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AssignPrivateIpAddresses](https://cloud.tencent.com/document/api/215/15813)
+
+	* 新增入参：ClientToken
+
+* [AttachNetworkInterface](https://cloud.tencent.com/document/api/215/15819)
+
+	* 新增入参：ClientToken
+
+* [CreateAndAttachNetworkInterface](https://cloud.tencent.com/document/api/215/43370)
+
+	* 新增入参：ClientToken
+
+* [CreateNetworkInterface](https://cloud.tencent.com/document/api/215/15818)
+
+	* 新增入参：ClientToken
+
+* [DetachNetworkInterface](https://cloud.tencent.com/document/api/215/15816)
+
+	* 新增入参：ClientToken
+
+
+修改数据结构：
+
+* [RouteTable](https://cloud.tencent.com/document/api/215/15824#RouteTable)
+
+	* <font color="#dd0000">**修改成员**：</font>CreatedTime
+
+
+
+
 # Release v1.0.737
 
 ## 私有网络(vpc) 版本：2017-03-12

@@ -1470,46 +1470,44 @@ func NewCreateFlowEvidenceReportResponse() (response *CreateFlowEvidenceReportRe
 }
 
 // CreateFlowEvidenceReport
-// 创建出证报告，返回报告 ID。需要配合出证套餐才能调用。
+// 创建出证报告并返回报告ID。
 //
-// 出证需要一定时间，建议调用创建出证24小时之后再通过DescribeFlowEvidenceReport进行查询。
+// 使用此功能需搭配出证套餐。
+//
+// 注意：出证过程需一定时间，建议在调用创建出证后的24小时之后，通过DescribeFlowEvidenceReport接口进行查询。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
 //  OPERATIONDENIED_PROVENOQUOTA = "OperationDenied.ProveNoQuota"
-//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
-//  RESOURCENOTFOUND_URL = "ResourceNotFound.Url"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowEvidenceReport(request *CreateFlowEvidenceReportRequest) (response *CreateFlowEvidenceReportResponse, err error) {
     return c.CreateFlowEvidenceReportWithContext(context.Background(), request)
 }
 
 // CreateFlowEvidenceReport
-// 创建出证报告，返回报告 ID。需要配合出证套餐才能调用。
+// 创建出证报告并返回报告ID。
 //
-// 出证需要一定时间，建议调用创建出证24小时之后再通过DescribeFlowEvidenceReport进行查询。
+// 使用此功能需搭配出证套餐。
+//
+// 注意：出证过程需一定时间，建议在调用创建出证后的24小时之后，通过DescribeFlowEvidenceReport接口进行查询。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-//  INVALIDPARAMETERVALUE_MASK = "InvalidParameterValue.Mask"
 //  MISSINGPARAMETER_FLOWID = "MissingParameter.FlowId"
 //  OPERATIONDENIED_FLOWSTATUSFORBID = "OperationDenied.FlowStatusForbid"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOTBELONGSUPERADMINORLEGALPERSON = "OperationDenied.NotBelongSuperAdminOrLegalPerson"
 //  OPERATIONDENIED_PROVENOQUOTA = "OperationDenied.ProveNoQuota"
-//  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_FLOWAPPROVER = "ResourceNotFound.FlowApprover"
-//  RESOURCENOTFOUND_URL = "ResourceNotFound.Url"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateFlowEvidenceReportWithContext(ctx context.Context, request *CreateFlowEvidenceReportRequest) (response *CreateFlowEvidenceReportResponse, err error) {
     if request == nil {
@@ -2182,15 +2180,19 @@ func NewCreateFlowRemindsResponse() (response *CreateFlowRemindsResponse) {
 }
 
 // CreateFlowReminds
-// 指定需要批量催办的签署流程Id，批量催办合同，最多100个; 接口失败后返回错误信息
+// 指定需要批量催办的签署流程ID，批量催办合同，最多100个。需要符合以下条件的合同才可被催办：
 //
-// 注意:
+// 
 //
-// 该接口不可直接调用，请联系客户经理申请使用
+// 1. 发起合同时，签署人的NotifyType需设置为sms
 //
-// 仅能催办当前状态为“待签署”的签署人，且只能催办一次
+// 2. 合同中当前状态为“待签署”的签署人是催办的对象
 //
-// 发起合同时，签署人的NotifyType需设置为sms，否则无法催办
+// 3. 每个合同只能催办一次
+//
+// 
+//
+// 注意：该接口无法直接调用，请联系客户经理申请使用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2206,15 +2208,19 @@ func (c *Client) CreateFlowReminds(request *CreateFlowRemindsRequest) (response 
 }
 
 // CreateFlowReminds
-// 指定需要批量催办的签署流程Id，批量催办合同，最多100个; 接口失败后返回错误信息
+// 指定需要批量催办的签署流程ID，批量催办合同，最多100个。需要符合以下条件的合同才可被催办：
 //
-// 注意:
+// 
 //
-// 该接口不可直接调用，请联系客户经理申请使用
+// 1. 发起合同时，签署人的NotifyType需设置为sms
 //
-// 仅能催办当前状态为“待签署”的签署人，且只能催办一次
+// 2. 合同中当前状态为“待签署”的签署人是催办的对象
 //
-// 发起合同时，签署人的NotifyType需设置为sms，否则无法催办
+// 3. 每个合同只能催办一次
+//
+// 
+//
+// 注意：该接口无法直接调用，请联系客户经理申请使用。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
