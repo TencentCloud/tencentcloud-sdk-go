@@ -15,34 +15,34 @@
 package v20220817
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type AddGroupMemberRequestParams struct {
 	// 群组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 成员列表，最大值200
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+	MemberIds []*string `json:"MemberIds,omitnil" name:"MemberIds"`
 }
 
 type AddGroupMemberRequest struct {
 	*tchttp.BaseRequest
 	
 	// 群组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 成员列表，最大值200
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+	MemberIds []*string `json:"MemberIds,omitnil" name:"MemberIds"`
 }
 
 func (r *AddGroupMemberRequest) ToJsonString() string {
@@ -69,7 +69,7 @@ func (r *AddGroupMemberRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddGroupMemberResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddGroupMemberResponse struct {
@@ -90,27 +90,27 @@ func (r *AddGroupMemberResponse) FromJsonString(s string) error {
 
 type AnswerInfo struct {
 	// 用户名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 答案（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
-	Answer *uint64 `json:"Answer,omitempty" name:"Answer"`
+	Answer *uint64 `json:"Answer,omitnil" name:"Answer"`
 
 	// 答题用时
-	CostTime *uint64 `json:"CostTime,omitempty" name:"CostTime"`
+	CostTime *uint64 `json:"CostTime,omitnil" name:"CostTime"`
 
 	// 用户ID
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 答案是否正确（1正确0错误）
-	IsCorrect *uint64 `json:"IsCorrect,omitempty" name:"IsCorrect"`
+	IsCorrect *uint64 `json:"IsCorrect,omitnil" name:"IsCorrect"`
 }
 
 type AnswerStat struct {
 	// 选项（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
-	Answer *int64 `json:"Answer,omitempty" name:"Answer"`
+	Answer *int64 `json:"Answer,omitnil" name:"Answer"`
 
 	// 答题人数
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 }
 
 type AppConfig struct {
@@ -119,50 +119,50 @@ type AppConfig struct {
 
 type AppCustomContent struct {
 	// 场景参数，一个应用下可以设置多个不同场景。
-	Scene *string `json:"Scene,omitempty" name:"Scene"`
+	Scene *string `json:"Scene,omitnil" name:"Scene"`
 
 	// logo地址，用于上课时展示的课堂或平台图标，支持开发商自定义业务品牌展示。
-	LogoUrl *string `json:"LogoUrl,omitempty" name:"LogoUrl"`
+	LogoUrl *string `json:"LogoUrl,omitnil" name:"LogoUrl"`
 
 	// HomeUrl：主页地址，用于上课结束后课堂跳转，支持跳转到自己的业务系统。如果配置为空则下课后关闭课堂页面。
-	HomeUrl *string `json:"HomeUrl,omitempty" name:"HomeUrl"`
+	HomeUrl *string `json:"HomeUrl,omitnil" name:"HomeUrl"`
 
 	// JsUrl ：自定义js。针对应用用于开发上自定义课堂界面、模块功能、监控操作，支持数据请求与响应处理。
-	JsUrl *string `json:"JsUrl,omitempty" name:"JsUrl"`
+	JsUrl *string `json:"JsUrl,omitnil" name:"JsUrl"`
 
 	// Css : 自定义的css。针对应用用于支持课堂界面的、模块的UI渲染修改、皮肤配色修改、功能模块的隐藏和展示。
-	CssUrl *string `json:"CssUrl,omitempty" name:"CssUrl"`
+	CssUrl *string `json:"CssUrl,omitnil" name:"CssUrl"`
 }
 
 type BackgroundPictureConfig struct {
 	// 背景图片的url
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 }
 
 // Predefined struct for user
 type BatchAddGroupMemberRequestParams struct {
 	// 待添加群组ID列表，最大值100
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 待添加成员列表，最大值200
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+	MemberIds []*string `json:"MemberIds,omitnil" name:"MemberIds"`
 }
 
 type BatchAddGroupMemberRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待添加群组ID列表，最大值100
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 待添加成员列表，最大值200
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+	MemberIds []*string `json:"MemberIds,omitnil" name:"MemberIds"`
 }
 
 func (r *BatchAddGroupMemberRequest) ToJsonString() string {
@@ -189,7 +189,7 @@ func (r *BatchAddGroupMemberRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchAddGroupMemberResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BatchAddGroupMemberResponse struct {
@@ -211,26 +211,26 @@ func (r *BatchAddGroupMemberResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchCreateGroupWithMembersRequestParams struct {
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 批量创建群组基础信息，最大长度限制256
-	GroupBaseInfos []*GroupBaseInfo `json:"GroupBaseInfos,omitempty" name:"GroupBaseInfos"`
+	GroupBaseInfos []*GroupBaseInfo `json:"GroupBaseInfos,omitnil" name:"GroupBaseInfos"`
 
 	// 群组绑定的成员列表，一次性最多200个
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+	MemberIds []*string `json:"MemberIds,omitnil" name:"MemberIds"`
 }
 
 type BatchCreateGroupWithMembersRequest struct {
 	*tchttp.BaseRequest
 	
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 批量创建群组基础信息，最大长度限制256
-	GroupBaseInfos []*GroupBaseInfo `json:"GroupBaseInfos,omitempty" name:"GroupBaseInfos"`
+	GroupBaseInfos []*GroupBaseInfo `json:"GroupBaseInfos,omitnil" name:"GroupBaseInfos"`
 
 	// 群组绑定的成员列表，一次性最多200个
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+	MemberIds []*string `json:"MemberIds,omitnil" name:"MemberIds"`
 }
 
 func (r *BatchCreateGroupWithMembersRequest) ToJsonString() string {
@@ -257,10 +257,10 @@ func (r *BatchCreateGroupWithMembersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchCreateGroupWithMembersResponseParams struct {
 	// 新创建群组ID列表，与输入创建参数顺序一致
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BatchCreateGroupWithMembersResponse struct {
@@ -282,20 +282,20 @@ func (r *BatchCreateGroupWithMembersResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchCreateRoomRequestParams struct {
 	// 低代码平台的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 创建房间ID列表
-	RoomInfos []*RoomInfo `json:"RoomInfos,omitempty" name:"RoomInfos"`
+	RoomInfos []*RoomInfo `json:"RoomInfos,omitnil" name:"RoomInfos"`
 }
 
 type BatchCreateRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 低代码平台的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 创建房间ID列表
-	RoomInfos []*RoomInfo `json:"RoomInfos,omitempty" name:"RoomInfos"`
+	RoomInfos []*RoomInfo `json:"RoomInfos,omitnil" name:"RoomInfos"`
 }
 
 func (r *BatchCreateRoomRequest) ToJsonString() string {
@@ -321,10 +321,10 @@ func (r *BatchCreateRoomRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchCreateRoomResponseParams struct {
 	// 创建成功课堂ID，与传入课堂信息顺序一致
-	RoomIds []*uint64 `json:"RoomIds,omitempty" name:"RoomIds"`
+	RoomIds []*uint64 `json:"RoomIds,omitnil" name:"RoomIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BatchCreateRoomResponse struct {
@@ -346,26 +346,26 @@ func (r *BatchCreateRoomResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchDeleteGroupMemberRequestParams struct {
 	// 待添加群组ID列表，最大值100
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 待添加成员列表，最大值256
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+	MemberIds []*string `json:"MemberIds,omitnil" name:"MemberIds"`
 }
 
 type BatchDeleteGroupMemberRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待添加群组ID列表，最大值100
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 待添加成员列表，最大值256
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+	MemberIds []*string `json:"MemberIds,omitnil" name:"MemberIds"`
 }
 
 func (r *BatchDeleteGroupMemberRequest) ToJsonString() string {
@@ -392,7 +392,7 @@ func (r *BatchDeleteGroupMemberRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchDeleteGroupMemberResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BatchDeleteGroupMemberResponse struct {
@@ -414,20 +414,20 @@ func (r *BatchDeleteGroupMemberResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchDeleteRecordRequestParams struct {
 	// 房间ID列表
-	RoomIds []*int64 `json:"RoomIds,omitempty" name:"RoomIds"`
+	RoomIds []*int64 `json:"RoomIds,omitnil" name:"RoomIds"`
 
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 }
 
 type BatchDeleteRecordRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间ID列表
-	RoomIds []*int64 `json:"RoomIds,omitempty" name:"RoomIds"`
+	RoomIds []*int64 `json:"RoomIds,omitnil" name:"RoomIds"`
 
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 }
 
 func (r *BatchDeleteRecordRequest) ToJsonString() string {
@@ -454,10 +454,10 @@ func (r *BatchDeleteRecordRequest) FromJsonString(s string) error {
 type BatchDeleteRecordResponseParams struct {
 	// 本次操作删除成功的房间ID列表。如果入参列表中某个房间ID的录制文件已经删除，则出参列表中无对应的房间ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RoomIds []*int64 `json:"RoomIds,omitempty" name:"RoomIds"`
+	RoomIds []*int64 `json:"RoomIds,omitnil" name:"RoomIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BatchDeleteRecordResponse struct {
@@ -479,50 +479,50 @@ func (r *BatchDeleteRecordResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchDescribeDocumentRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 分页查询当前页数，从1开始递增
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，最大1000
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
-	Permission []*uint64 `json:"Permission,omitempty" name:"Permission"`
+	Permission []*uint64 `json:"Permission,omitnil" name:"Permission"`
 
 	// 课件所有者的user_id，不填默认获取SdkAppId下所有课件
-	Owner *string `json:"Owner,omitempty" name:"Owner"`
+	Owner *string `json:"Owner,omitnil" name:"Owner"`
 
 	// 课件名称搜索词
-	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
 
 	// 课件id列表，从列表中查询，忽略错误的id
-	DocumentId []*string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId []*string `json:"DocumentId,omitnil" name:"DocumentId"`
 }
 
 type BatchDescribeDocumentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 分页查询当前页数，从1开始递增
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，最大1000
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
-	Permission []*uint64 `json:"Permission,omitempty" name:"Permission"`
+	Permission []*uint64 `json:"Permission,omitnil" name:"Permission"`
 
 	// 课件所有者的user_id，不填默认获取SdkAppId下所有课件
-	Owner *string `json:"Owner,omitempty" name:"Owner"`
+	Owner *string `json:"Owner,omitnil" name:"Owner"`
 
 	// 课件名称搜索词
-	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
 
 	// 课件id列表，从列表中查询，忽略错误的id
-	DocumentId []*string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId []*string `json:"DocumentId,omitnil" name:"DocumentId"`
 }
 
 func (r *BatchDescribeDocumentRequest) ToJsonString() string {
@@ -553,14 +553,14 @@ func (r *BatchDescribeDocumentRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchDescribeDocumentResponseParams struct {
 	// 符合查询条件文档总数
-	Total *int64 `json:"Total,omitempty" name:"Total"`
+	Total *int64 `json:"Total,omitnil" name:"Total"`
 
 	// 文档信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Documents []*DocumentInfo `json:"Documents,omitempty" name:"Documents"`
+	Documents []*DocumentInfo `json:"Documents,omitnil" name:"Documents"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BatchDescribeDocumentResponse struct {
@@ -582,14 +582,14 @@ func (r *BatchDescribeDocumentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchRegisterRequestParams struct {
 	// 批量注册用户信息列表
-	Users []*BatchUserRequest `json:"Users,omitempty" name:"Users"`
+	Users []*BatchUserRequest `json:"Users,omitnil" name:"Users"`
 }
 
 type BatchRegisterRequest struct {
 	*tchttp.BaseRequest
 	
 	// 批量注册用户信息列表
-	Users []*BatchUserRequest `json:"Users,omitempty" name:"Users"`
+	Users []*BatchUserRequest `json:"Users,omitnil" name:"Users"`
 }
 
 func (r *BatchRegisterRequest) ToJsonString() string {
@@ -615,10 +615,10 @@ func (r *BatchRegisterRequest) FromJsonString(s string) error {
 type BatchRegisterResponseParams struct {
 	// 注册成功的用户列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Users []*BatchUserInfo `json:"Users,omitempty" name:"Users"`
+	Users []*BatchUserInfo `json:"Users,omitnil" name:"Users"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BatchRegisterResponse struct {
@@ -639,54 +639,54 @@ func (r *BatchRegisterResponse) FromJsonString(s string) error {
 
 type BatchUserInfo struct {
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 用户ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 用户在客户系统的Id。 若用户注册时该字段为空，则默认为 UserId 值一致。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
+	OriginId *string `json:"OriginId,omitnil" name:"OriginId"`
 }
 
 type BatchUserRequest struct {
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 用户名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 用户在客户系统的Id，需要在同一应用下唯一。
-	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
+	OriginId *string `json:"OriginId,omitnil" name:"OriginId"`
 
 	// 用户头像。
-	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
+	Avatar *string `json:"Avatar,omitnil" name:"Avatar"`
 }
 
 // Predefined struct for user
 type BindDocumentToRoomRequestParams struct {
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 文档ID。
-	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId *string `json:"DocumentId,omitnil" name:"DocumentId"`
 
 	// 绑定类型。后台可透传到客户端，默认为0。客户端可以根据这个字段实现业务逻辑。
-	BindType *uint64 `json:"BindType,omitempty" name:"BindType"`
+	BindType *uint64 `json:"BindType,omitnil" name:"BindType"`
 }
 
 type BindDocumentToRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 文档ID。
-	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId *string `json:"DocumentId,omitnil" name:"DocumentId"`
 
 	// 绑定类型。后台可透传到客户端，默认为0。客户端可以根据这个字段实现业务逻辑。
-	BindType *uint64 `json:"BindType,omitempty" name:"BindType"`
+	BindType *uint64 `json:"BindType,omitnil" name:"BindType"`
 }
 
 func (r *BindDocumentToRoomRequest) ToJsonString() string {
@@ -713,7 +713,7 @@ func (r *BindDocumentToRoomRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BindDocumentToRoomResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BindDocumentToRoomResponse struct {
@@ -735,68 +735,68 @@ func (r *BindDocumentToRoomResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDocumentRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 文档地址。
-	DocumentUrl *string `json:"DocumentUrl,omitempty" name:"DocumentUrl"`
+	DocumentUrl *string `json:"DocumentUrl,omitnil" name:"DocumentUrl"`
 
 	// 文档名称。
-	DocumentName *string `json:"DocumentName,omitempty" name:"DocumentName"`
+	DocumentName *string `json:"DocumentName,omitnil" name:"DocumentName"`
 
 	// 文档所有者的Id
-	Owner *string `json:"Owner,omitempty" name:"Owner"`
+	Owner *string `json:"Owner,omitnil" name:"Owner"`
 
 	// 转码类型，可以有如下取值：
 	// 0 无需转码（默认）
 	// 1 需要转码的文档，ppt，pptx，pdf，doc，docx
 	// 2 需要转码的视频，mp4，3pg，mpeg，avi，flv，wmv，rm，h264等
 	// 2 需要转码的音频，mp3，wav，wma，aac，flac，opus
-	TranscodeType *uint64 `json:"TranscodeType,omitempty" name:"TranscodeType"`
+	TranscodeType *uint64 `json:"TranscodeType,omitnil" name:"TranscodeType"`
 
 	// 权限，可以有如下取值：
 	// 0 私有文档（默认）
 	// 1 公共文档
-	Permission *uint64 `json:"Permission,omitempty" name:"Permission"`
+	Permission *uint64 `json:"Permission,omitnil" name:"Permission"`
 
 	// 文档后缀名。
-	DocumentType *string `json:"DocumentType,omitempty" name:"DocumentType"`
+	DocumentType *string `json:"DocumentType,omitnil" name:"DocumentType"`
 
 	// 文档大小，单位 字节
-	DocumentSize *uint64 `json:"DocumentSize,omitempty" name:"DocumentSize"`
+	DocumentSize *uint64 `json:"DocumentSize,omitnil" name:"DocumentSize"`
 }
 
 type CreateDocumentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 文档地址。
-	DocumentUrl *string `json:"DocumentUrl,omitempty" name:"DocumentUrl"`
+	DocumentUrl *string `json:"DocumentUrl,omitnil" name:"DocumentUrl"`
 
 	// 文档名称。
-	DocumentName *string `json:"DocumentName,omitempty" name:"DocumentName"`
+	DocumentName *string `json:"DocumentName,omitnil" name:"DocumentName"`
 
 	// 文档所有者的Id
-	Owner *string `json:"Owner,omitempty" name:"Owner"`
+	Owner *string `json:"Owner,omitnil" name:"Owner"`
 
 	// 转码类型，可以有如下取值：
 	// 0 无需转码（默认）
 	// 1 需要转码的文档，ppt，pptx，pdf，doc，docx
 	// 2 需要转码的视频，mp4，3pg，mpeg，avi，flv，wmv，rm，h264等
 	// 2 需要转码的音频，mp3，wav，wma，aac，flac，opus
-	TranscodeType *uint64 `json:"TranscodeType,omitempty" name:"TranscodeType"`
+	TranscodeType *uint64 `json:"TranscodeType,omitnil" name:"TranscodeType"`
 
 	// 权限，可以有如下取值：
 	// 0 私有文档（默认）
 	// 1 公共文档
-	Permission *uint64 `json:"Permission,omitempty" name:"Permission"`
+	Permission *uint64 `json:"Permission,omitnil" name:"Permission"`
 
 	// 文档后缀名。
-	DocumentType *string `json:"DocumentType,omitempty" name:"DocumentType"`
+	DocumentType *string `json:"DocumentType,omitnil" name:"DocumentType"`
 
 	// 文档大小，单位 字节
-	DocumentSize *uint64 `json:"DocumentSize,omitempty" name:"DocumentSize"`
+	DocumentSize *uint64 `json:"DocumentSize,omitnil" name:"DocumentSize"`
 }
 
 func (r *CreateDocumentRequest) ToJsonString() string {
@@ -828,10 +828,10 @@ func (r *CreateDocumentRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDocumentResponseParams struct {
 	// 文档ID。
-	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId *string `json:"DocumentId,omitnil" name:"DocumentId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDocumentResponse struct {
@@ -853,32 +853,32 @@ func (r *CreateDocumentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateGroupWithMembersRequestParams struct {
 	// 待创建群组名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 默认绑定主讲老师ID
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 群组成员列表,一次性最多200个
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+	MemberIds []*string `json:"MemberIds,omitnil" name:"MemberIds"`
 }
 
 type CreateGroupWithMembersRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待创建群组名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 默认绑定主讲老师ID
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 群组成员列表,一次性最多200个
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+	MemberIds []*string `json:"MemberIds,omitnil" name:"MemberIds"`
 }
 
 func (r *CreateGroupWithMembersRequest) ToJsonString() string {
@@ -906,10 +906,10 @@ func (r *CreateGroupWithMembersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateGroupWithMembersResponseParams struct {
 	// 创建成功群组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateGroupWithMembersResponse struct {
@@ -931,32 +931,32 @@ func (r *CreateGroupWithMembersResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateGroupWithSubGroupRequestParams struct {
 	// 待创建的新群组名
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 子群组ID列表，子群组ID不能重复，最多40个
-	SubGroupIds []*string `json:"SubGroupIds,omitempty" name:"SubGroupIds"`
+	SubGroupIds []*string `json:"SubGroupIds,omitnil" name:"SubGroupIds"`
 
 	// 群组默认主讲老师ID
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 }
 
 type CreateGroupWithSubGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待创建的新群组名
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 子群组ID列表，子群组ID不能重复，最多40个
-	SubGroupIds []*string `json:"SubGroupIds,omitempty" name:"SubGroupIds"`
+	SubGroupIds []*string `json:"SubGroupIds,omitnil" name:"SubGroupIds"`
 
 	// 群组默认主讲老师ID
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 }
 
 func (r *CreateGroupWithSubGroupRequest) ToJsonString() string {
@@ -984,10 +984,10 @@ func (r *CreateGroupWithSubGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateGroupWithSubGroupResponseParams struct {
 	// 新创建群组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateGroupWithSubGroupResponse struct {
@@ -1009,176 +1009,176 @@ func (r *CreateGroupWithSubGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRoomRequestParams struct {
 	// 房间名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 预定的房间开始时间，unix时间戳（秒）。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 预定的房间结束时间，unix时间戳（秒）。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 分辨率。可以有如下取值：
 	// 1 标清
 	// 2 高清
 	// 3 全高清
-	Resolution *uint64 `json:"Resolution,omitempty" name:"Resolution"`
+	Resolution *uint64 `json:"Resolution,omitnil" name:"Resolution"`
 
 	// 最大连麦人数（不包括老师）。取值范围[0, 16]
-	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
+	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil" name:"MaxMicNumber"`
 
 	// 房间子类型，可以有以下取值：
 	// videodoc 文档+视频
 	// video 纯视频
-	SubType *string `json:"SubType,omitempty" name:"SubType"`
+	SubType *string `json:"SubType,omitnil" name:"SubType"`
 
 	// 老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 进入课堂时是否自动连麦。可以有以下取值：
 	// 0 不自动连麦（需要手动申请上麦，默认值）
 	// 1 自动连麦
-	AutoMic *uint64 `json:"AutoMic,omitempty" name:"AutoMic"`
+	AutoMic *uint64 `json:"AutoMic,omitnil" name:"AutoMic"`
 
 	// 释放音视频权限后是否自动取消连麦。可以有以下取值：
 	// 0 自动取消连麦（默认值）
 	// 1 保持连麦状态
-	TurnOffMic *uint64 `json:"TurnOffMic,omitempty" name:"TurnOffMic"`
+	TurnOffMic *uint64 `json:"TurnOffMic,omitnil" name:"TurnOffMic"`
 
 	// 声音音质。可以有以下取值：
 	// 0：流畅模式（默认值），占用更小的带宽、拥有更好的降噪效果，适用于1对1、小班教学、多人音视频会议等场景。
 	// 1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。
-	AudioQuality *uint64 `json:"AudioQuality,omitempty" name:"AudioQuality"`
+	AudioQuality *uint64 `json:"AudioQuality,omitnil" name:"AudioQuality"`
 
 	// 上课后是否禁止自动录制。可以有以下取值：
 	// 0 不禁止录制（自动开启录制，默认值）
 	// 1 禁止录制
 	// 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
-	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
+	DisableRecord *uint64 `json:"DisableRecord,omitnil" name:"DisableRecord"`
 
 	// 助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
-	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
+	Assistants []*string `json:"Assistants,omitnil" name:"Assistants"`
 
 	// rtc人数。
-	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitempty" name:"RTCAudienceNumber"`
+	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitnil" name:"RTCAudienceNumber"`
 
 	// 观看类型。互动观看 （默认）
-	AudienceType *uint64 `json:"AudienceType,omitempty" name:"AudienceType"`
+	AudienceType *uint64 `json:"AudienceType,omitnil" name:"AudienceType"`
 
 	// 录制模板。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
-	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
+	RecordLayout *uint64 `json:"RecordLayout,omitnil" name:"RecordLayout"`
 
 	// 房间绑定的群组ID,非空时限制组成员进入
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：
 	// 0 不允许直接控制（需同意，默认值）
 	// 1 允许直接控制（无需同意）
-	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitnil" name:"EnableDirectControl"`
 
 	// 开启专注模式。
 	// 0 收看全部角色音视频(默认)
 	// 1 只看老师和助教
-	InteractionMode *int64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+	InteractionMode *int64 `json:"InteractionMode,omitnil" name:"InteractionMode"`
 
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
-	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+	VideoOrientation *uint64 `json:"VideoOrientation,omitnil" name:"VideoOrientation"`
 
 	// 开启课后评分。 0：不开启(默认)  1：开启
-	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitnil" name:"IsGradingRequiredPostClass"`
 
 	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
-	RoomType *int64 `json:"RoomType,omitempty" name:"RoomType"`
+	RoomType *int64 `json:"RoomType,omitnil" name:"RoomType"`
 }
 
 type CreateRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 预定的房间开始时间，unix时间戳（秒）。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 预定的房间结束时间，unix时间戳（秒）。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 分辨率。可以有如下取值：
 	// 1 标清
 	// 2 高清
 	// 3 全高清
-	Resolution *uint64 `json:"Resolution,omitempty" name:"Resolution"`
+	Resolution *uint64 `json:"Resolution,omitnil" name:"Resolution"`
 
 	// 最大连麦人数（不包括老师）。取值范围[0, 16]
-	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
+	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil" name:"MaxMicNumber"`
 
 	// 房间子类型，可以有以下取值：
 	// videodoc 文档+视频
 	// video 纯视频
-	SubType *string `json:"SubType,omitempty" name:"SubType"`
+	SubType *string `json:"SubType,omitnil" name:"SubType"`
 
 	// 老师ID。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有老师权限。
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 进入课堂时是否自动连麦。可以有以下取值：
 	// 0 不自动连麦（需要手动申请上麦，默认值）
 	// 1 自动连麦
-	AutoMic *uint64 `json:"AutoMic,omitempty" name:"AutoMic"`
+	AutoMic *uint64 `json:"AutoMic,omitnil" name:"AutoMic"`
 
 	// 释放音视频权限后是否自动取消连麦。可以有以下取值：
 	// 0 自动取消连麦（默认值）
 	// 1 保持连麦状态
-	TurnOffMic *uint64 `json:"TurnOffMic,omitempty" name:"TurnOffMic"`
+	TurnOffMic *uint64 `json:"TurnOffMic,omitnil" name:"TurnOffMic"`
 
 	// 声音音质。可以有以下取值：
 	// 0：流畅模式（默认值），占用更小的带宽、拥有更好的降噪效果，适用于1对1、小班教学、多人音视频会议等场景。
 	// 1：高音质模式，适合需要高保真传输音乐的场景，但降噪效果会被削弱，适用于音乐教学场景。
-	AudioQuality *uint64 `json:"AudioQuality,omitempty" name:"AudioQuality"`
+	AudioQuality *uint64 `json:"AudioQuality,omitnil" name:"AudioQuality"`
 
 	// 上课后是否禁止自动录制。可以有以下取值：
 	// 0 不禁止录制（自动开启录制，默认值）
 	// 1 禁止录制
 	// 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
-	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
+	DisableRecord *uint64 `json:"DisableRecord,omitnil" name:"DisableRecord"`
 
 	// 助教Id列表。通过[注册用户]接口获取的UserId。指定后该用户在房间内拥有助教权限。
-	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
+	Assistants []*string `json:"Assistants,omitnil" name:"Assistants"`
 
 	// rtc人数。
-	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitempty" name:"RTCAudienceNumber"`
+	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitnil" name:"RTCAudienceNumber"`
 
 	// 观看类型。互动观看 （默认）
-	AudienceType *uint64 `json:"AudienceType,omitempty" name:"AudienceType"`
+	AudienceType *uint64 `json:"AudienceType,omitnil" name:"AudienceType"`
 
 	// 录制模板。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
-	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
+	RecordLayout *uint64 `json:"RecordLayout,omitnil" name:"RecordLayout"`
 
 	// 房间绑定的群组ID,非空时限制组成员进入
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 是否允许老师/助教直接控制学生的摄像头/麦克风。可以有以下取值：
 	// 0 不允许直接控制（需同意，默认值）
 	// 1 允许直接控制（无需同意）
-	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitnil" name:"EnableDirectControl"`
 
 	// 开启专注模式。
 	// 0 收看全部角色音视频(默认)
 	// 1 只看老师和助教
-	InteractionMode *int64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+	InteractionMode *int64 `json:"InteractionMode,omitnil" name:"InteractionMode"`
 
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
-	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+	VideoOrientation *uint64 `json:"VideoOrientation,omitnil" name:"VideoOrientation"`
 
 	// 开启课后评分。 0：不开启(默认)  1：开启
-	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitnil" name:"IsGradingRequiredPostClass"`
 
 	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
-	RoomType *int64 `json:"RoomType,omitempty" name:"RoomType"`
+	RoomType *int64 `json:"RoomType,omitnil" name:"RoomType"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -1224,10 +1224,10 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRoomResponseParams struct {
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateRoomResponse struct {
@@ -1249,20 +1249,20 @@ func (r *CreateRoomResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSupervisorRequestParams struct {
 	// 应用ID。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 用户ID列表。
-	Users []*string `json:"Users,omitempty" name:"Users"`
+	Users []*string `json:"Users,omitnil" name:"Users"`
 }
 
 type CreateSupervisorRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 用户ID列表。
-	Users []*string `json:"Users,omitempty" name:"Users"`
+	Users []*string `json:"Users,omitnil" name:"Users"`
 }
 
 func (r *CreateSupervisorRequest) ToJsonString() string {
@@ -1288,7 +1288,7 @@ func (r *CreateSupervisorRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSupervisorResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateSupervisorResponse struct {
@@ -1310,20 +1310,20 @@ func (r *CreateSupervisorResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAppCustomContentRequestParams struct {
 	// 应用ID。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 指定需要删除的已设置的scene场景自定义元素，如果为空则删除应用下已设置的所有自定义元素。
-	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
+	Scenes []*string `json:"Scenes,omitnil" name:"Scenes"`
 }
 
 type DeleteAppCustomContentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 指定需要删除的已设置的scene场景自定义元素，如果为空则删除应用下已设置的所有自定义元素。
-	Scenes []*string `json:"Scenes,omitempty" name:"Scenes"`
+	Scenes []*string `json:"Scenes,omitnil" name:"Scenes"`
 }
 
 func (r *DeleteAppCustomContentRequest) ToJsonString() string {
@@ -1349,7 +1349,7 @@ func (r *DeleteAppCustomContentRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAppCustomContentResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteAppCustomContentResponse struct {
@@ -1371,14 +1371,14 @@ func (r *DeleteAppCustomContentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDocumentRequestParams struct {
 	// 文档ID。
-	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId *string `json:"DocumentId,omitnil" name:"DocumentId"`
 }
 
 type DeleteDocumentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文档ID。
-	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId *string `json:"DocumentId,omitnil" name:"DocumentId"`
 }
 
 func (r *DeleteDocumentRequest) ToJsonString() string {
@@ -1403,7 +1403,7 @@ func (r *DeleteDocumentRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDocumentResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteDocumentResponse struct {
@@ -1425,26 +1425,26 @@ func (r *DeleteDocumentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteGroupMemberRequestParams struct {
 	// 群组ID，联合群组无法删除群组成员
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 成员列表，最大值200
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+	MemberIds []*string `json:"MemberIds,omitnil" name:"MemberIds"`
 }
 
 type DeleteGroupMemberRequest struct {
 	*tchttp.BaseRequest
 	
 	// 群组ID，联合群组无法删除群组成员
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 成员列表，最大值200
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+	MemberIds []*string `json:"MemberIds,omitnil" name:"MemberIds"`
 }
 
 func (r *DeleteGroupMemberRequest) ToJsonString() string {
@@ -1471,7 +1471,7 @@ func (r *DeleteGroupMemberRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteGroupMemberResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteGroupMemberResponse struct {
@@ -1493,20 +1493,20 @@ func (r *DeleteGroupMemberResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteGroupRequestParams struct {
 	// 待删除群组ID列表
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 }
 
 type DeleteGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待删除群组ID列表
-	GroupIds []*string `json:"GroupIds,omitempty" name:"GroupIds"`
+	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 }
 
 func (r *DeleteGroupRequest) ToJsonString() string {
@@ -1532,7 +1532,7 @@ func (r *DeleteGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteGroupResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteGroupResponse struct {
@@ -1554,20 +1554,20 @@ func (r *DeleteGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRecordRequestParams struct {
 	// 房间Id。
-	RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *int64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 }
 
 type DeleteRecordRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间Id。
-	RoomId *int64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *int64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 }
 
 func (r *DeleteRecordRequest) ToJsonString() string {
@@ -1593,7 +1593,7 @@ func (r *DeleteRecordRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRecordResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteRecordResponse struct {
@@ -1615,14 +1615,14 @@ func (r *DeleteRecordResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRoomRequestParams struct {
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 }
 
 type DeleteRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 }
 
 func (r *DeleteRoomRequest) ToJsonString() string {
@@ -1647,7 +1647,7 @@ func (r *DeleteRoomRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRoomResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteRoomResponse struct {
@@ -1669,20 +1669,20 @@ func (r *DeleteRoomResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSupervisorRequestParams struct {
 	// 应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 用户ID列表
-	Users []*string `json:"Users,omitempty" name:"Users"`
+	Users []*string `json:"Users,omitnil" name:"Users"`
 }
 
 type DeleteSupervisorRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 用户ID列表
-	Users []*string `json:"Users,omitempty" name:"Users"`
+	Users []*string `json:"Users,omitnil" name:"Users"`
 }
 
 func (r *DeleteSupervisorRequest) ToJsonString() string {
@@ -1708,7 +1708,7 @@ func (r *DeleteSupervisorRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSupervisorResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteSupervisorResponse struct {
@@ -1730,14 +1730,14 @@ func (r *DeleteSupervisorResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteUserRequestParams struct {
 	// 待删除用户的ID
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }
 
 type DeleteUserRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待删除用户的ID
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }
 
 func (r *DeleteUserRequest) ToJsonString() string {
@@ -1762,7 +1762,7 @@ func (r *DeleteUserRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteUserResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteUserResponse struct {
@@ -1784,26 +1784,26 @@ func (r *DeleteUserResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAnswerListRequestParams struct {
 	// 问题ID
-	QuestionId *string `json:"QuestionId,omitempty" name:"QuestionId"`
+	QuestionId *string `json:"QuestionId,omitnil" name:"QuestionId"`
 
 	// 1
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 
 	// 100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeAnswerListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 问题ID
-	QuestionId *string `json:"QuestionId,omitempty" name:"QuestionId"`
+	QuestionId *string `json:"QuestionId,omitnil" name:"QuestionId"`
 
 	// 1
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 
 	// 100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeAnswerListRequest) ToJsonString() string {
@@ -1830,14 +1830,14 @@ func (r *DescribeAnswerListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAnswerListResponseParams struct {
 	// 符合查询条件的房间答案总数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 房间提问答案列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AnswerInfo []*AnswerInfo `json:"AnswerInfo,omitempty" name:"AnswerInfo"`
+	AnswerInfo []*AnswerInfo `json:"AnswerInfo,omitnil" name:"AnswerInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAnswerListResponse struct {
@@ -1859,20 +1859,20 @@ func (r *DescribeAnswerListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAppDetailRequestParams struct {
 	// 应用ID。低代码互动课堂的SdkAppId。
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	ApplicationId *string `json:"ApplicationId,omitnil" name:"ApplicationId"`
 
 	// 开发商ID
-	DeveloperId *string `json:"DeveloperId,omitempty" name:"DeveloperId"`
+	DeveloperId *string `json:"DeveloperId,omitnil" name:"DeveloperId"`
 }
 
 type DescribeAppDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID。低代码互动课堂的SdkAppId。
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	ApplicationId *string `json:"ApplicationId,omitnil" name:"ApplicationId"`
 
 	// 开发商ID
-	DeveloperId *string `json:"DeveloperId,omitempty" name:"DeveloperId"`
+	DeveloperId *string `json:"DeveloperId,omitnil" name:"DeveloperId"`
 }
 
 func (r *DescribeAppDetailRequest) ToJsonString() string {
@@ -1898,16 +1898,16 @@ func (r *DescribeAppDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAppDetailResponseParams struct {
 	// SDK 对应的AppId 
-	SdkAppId *string `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *string `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 应用配置
-	AppConfig *AppConfig `json:"AppConfig,omitempty" name:"AppConfig"`
+	AppConfig *AppConfig `json:"AppConfig,omitnil" name:"AppConfig"`
 
 	// 场景配置
-	SceneConfig []*SceneItem `json:"SceneConfig,omitempty" name:"SceneConfig"`
+	SceneConfig []*SceneItem `json:"SceneConfig,omitnil" name:"SceneConfig"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAppDetailResponse struct {
@@ -1929,26 +1929,26 @@ func (r *DescribeAppDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCurrentMemberListRequestParams struct {
 	// 房间Id。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 分页查询当前页数，从1开始递增。
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，最大1000。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeCurrentMemberListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间Id。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 分页查询当前页数，从1开始递增。
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，最大1000。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeCurrentMemberListRequest) ToJsonString() string {
@@ -1975,13 +1975,13 @@ func (r *DescribeCurrentMemberListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCurrentMemberListResponseParams struct {
 	// 记录总数。当前房间的总人数。
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 成员记录列表。
-	MemberRecords []*MemberRecord `json:"MemberRecords,omitempty" name:"MemberRecords"`
+	MemberRecords []*MemberRecord `json:"MemberRecords,omitnil" name:"MemberRecords"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCurrentMemberListResponse struct {
@@ -2032,10 +2032,10 @@ func (r *DescribeDeveloperRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDeveloperResponseParams struct {
 	// 开发商ID
-	DeveloperId *string `json:"DeveloperId,omitempty" name:"DeveloperId"`
+	DeveloperId *string `json:"DeveloperId,omitnil" name:"DeveloperId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDeveloperResponse struct {
@@ -2057,14 +2057,14 @@ func (r *DescribeDeveloperResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDocumentRequestParams struct {
 	// 文档Id（唯一id）
-	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId *string `json:"DocumentId,omitnil" name:"DocumentId"`
 }
 
 type DescribeDocumentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文档Id（唯一id）
-	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId *string `json:"DocumentId,omitnil" name:"DocumentId"`
 }
 
 func (r *DescribeDocumentRequest) ToJsonString() string {
@@ -2089,55 +2089,55 @@ func (r *DescribeDocumentRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDocumentResponseParams struct {
 	// 文档Id
-	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId *string `json:"DocumentId,omitnil" name:"DocumentId"`
 
 	// 文档原址url
-	DocumentUrl *string `json:"DocumentUrl,omitempty" name:"DocumentUrl"`
+	DocumentUrl *string `json:"DocumentUrl,omitnil" name:"DocumentUrl"`
 
 	// 文档名称
-	DocumentName *string `json:"DocumentName,omitempty" name:"DocumentName"`
+	DocumentName *string `json:"DocumentName,omitnil" name:"DocumentName"`
 
 	// 文档所有者UserId
-	Owner *string `json:"Owner,omitempty" name:"Owner"`
+	Owner *string `json:"Owner,omitnil" name:"Owner"`
 
 	// 应用Id
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 文档权限
-	Permission *uint64 `json:"Permission,omitempty" name:"Permission"`
+	Permission *uint64 `json:"Permission,omitnil" name:"Permission"`
 
 	// 转码结果，无需转码为空，转码成功为结果url，转码失败为错误码
-	TranscodeResult *string `json:"TranscodeResult,omitempty" name:"TranscodeResult"`
+	TranscodeResult *string `json:"TranscodeResult,omitnil" name:"TranscodeResult"`
 
 	// 转码类型
-	TranscodeType *uint64 `json:"TranscodeType,omitempty" name:"TranscodeType"`
+	TranscodeType *uint64 `json:"TranscodeType,omitnil" name:"TranscodeType"`
 
 	// 转码进度， 0 - 100 表示（0% - 100%）
-	TranscodeProgress *uint64 `json:"TranscodeProgress,omitempty" name:"TranscodeProgress"`
+	TranscodeProgress *uint64 `json:"TranscodeProgress,omitnil" name:"TranscodeProgress"`
 
 	// 转码状态，0为无需转码，1为正在转码，2为转码失败，3为转码成功
-	TranscodeState *uint64 `json:"TranscodeState,omitempty" name:"TranscodeState"`
+	TranscodeState *uint64 `json:"TranscodeState,omitnil" name:"TranscodeState"`
 
 	// 转码失败后的错误信息
-	TranscodeInfo *string `json:"TranscodeInfo,omitempty" name:"TranscodeInfo"`
+	TranscodeInfo *string `json:"TranscodeInfo,omitnil" name:"TranscodeInfo"`
 
 	// 文档类型
-	DocumentType *string `json:"DocumentType,omitempty" name:"DocumentType"`
+	DocumentType *string `json:"DocumentType,omitnil" name:"DocumentType"`
 
 	// 文档大小，单位：字节
-	DocumentSize *uint64 `json:"DocumentSize,omitempty" name:"DocumentSize"`
+	DocumentSize *uint64 `json:"DocumentSize,omitnil" name:"DocumentSize"`
 
 	// 更新的UNIX时间戳
-	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *uint64 `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 课件页数
-	Pages *uint64 `json:"Pages,omitempty" name:"Pages"`
+	Pages *uint64 `json:"Pages,omitnil" name:"Pages"`
 
 	// 课件预览地址
-	Preview *string `json:"Preview,omitempty" name:"Preview"`
+	Preview *string `json:"Preview,omitnil" name:"Preview"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDocumentResponse struct {
@@ -2159,16 +2159,16 @@ func (r *DescribeDocumentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDocumentsByRoomRequestParams struct {
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 低代码互动课堂的SdkAppId
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 分页查询当前页数，从1开始递增，默认值为1
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，最大1000，默认值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 课件权限。
 	// [0]：获取owner的私有课件；
@@ -2176,26 +2176,26 @@ type DescribeDocumentsByRoomRequestParams struct {
 	// [0,1]：则获取owner的私有课件和公开课件；
 	// [2]：获取owner的私有课件和所有人(包括owner)的公开课件。
 	// 默认值为[2]
-	Permission []*uint64 `json:"Permission,omitempty" name:"Permission"`
+	Permission []*uint64 `json:"Permission,omitnil" name:"Permission"`
 
 	// 文档所有者的user_id，不填默认获取SdkAppId下所有课件
-	Owner *string `json:"Owner,omitempty" name:"Owner"`
+	Owner *string `json:"Owner,omitnil" name:"Owner"`
 }
 
 type DescribeDocumentsByRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 低代码互动课堂的SdkAppId
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 分页查询当前页数，从1开始递增，默认值为1
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，最大1000，默认值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 课件权限。
 	// [0]：获取owner的私有课件；
@@ -2203,10 +2203,10 @@ type DescribeDocumentsByRoomRequest struct {
 	// [0,1]：则获取owner的私有课件和公开课件；
 	// [2]：获取owner的私有课件和所有人(包括owner)的公开课件。
 	// 默认值为[2]
-	Permission []*uint64 `json:"Permission,omitempty" name:"Permission"`
+	Permission []*uint64 `json:"Permission,omitnil" name:"Permission"`
 
 	// 文档所有者的user_id，不填默认获取SdkAppId下所有课件
-	Owner *string `json:"Owner,omitempty" name:"Owner"`
+	Owner *string `json:"Owner,omitnil" name:"Owner"`
 }
 
 func (r *DescribeDocumentsByRoomRequest) ToJsonString() string {
@@ -2237,13 +2237,13 @@ func (r *DescribeDocumentsByRoomRequest) FromJsonString(s string) error {
 type DescribeDocumentsByRoomResponseParams struct {
 	// 文档信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Documents []*DocumentInfo `json:"Documents,omitempty" name:"Documents"`
+	Documents []*DocumentInfo `json:"Documents,omitnil" name:"Documents"`
 
 	// 符合查询条件文档总数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDocumentsByRoomResponse struct {
@@ -2265,50 +2265,50 @@ func (r *DescribeDocumentsByRoomResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDocumentsRequestParams struct {
 	// 学校id
-	SchoolId *uint64 `json:"SchoolId,omitempty" name:"SchoolId"`
+	SchoolId *uint64 `json:"SchoolId,omitnil" name:"SchoolId"`
 
 	// 分页查询当前页数，从1开始递增
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，最大1000
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
-	Permission []*uint64 `json:"Permission,omitempty" name:"Permission"`
+	Permission []*uint64 `json:"Permission,omitnil" name:"Permission"`
 
 	// 课件所有者的user_id，不填默认获取school_id下所有课件
-	Owner *string `json:"Owner,omitempty" name:"Owner"`
+	Owner *string `json:"Owner,omitnil" name:"Owner"`
 
 	// 课件名称搜索词
-	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
 
 	// 课件id列表，从列表中查询，忽略错误的id
-	DocumentId []*string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId []*string `json:"DocumentId,omitnil" name:"DocumentId"`
 }
 
 type DescribeDocumentsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 学校id
-	SchoolId *uint64 `json:"SchoolId,omitempty" name:"SchoolId"`
+	SchoolId *uint64 `json:"SchoolId,omitnil" name:"SchoolId"`
 
 	// 分页查询当前页数，从1开始递增
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，最大1000
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 课件权限。[0]：获取owner的私有课件；[1]：获取owner的公开课件; [0,1]：则获取owner的私有课件和公开课件；[2]：获取owner的私有课件和所有人(包括owner)的公开课件
-	Permission []*uint64 `json:"Permission,omitempty" name:"Permission"`
+	Permission []*uint64 `json:"Permission,omitnil" name:"Permission"`
 
 	// 课件所有者的user_id，不填默认获取school_id下所有课件
-	Owner *string `json:"Owner,omitempty" name:"Owner"`
+	Owner *string `json:"Owner,omitnil" name:"Owner"`
 
 	// 课件名称搜索词
-	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
 
 	// 课件id列表，从列表中查询，忽略错误的id
-	DocumentId []*string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId []*string `json:"DocumentId,omitnil" name:"DocumentId"`
 }
 
 func (r *DescribeDocumentsRequest) ToJsonString() string {
@@ -2339,14 +2339,14 @@ func (r *DescribeDocumentsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDocumentsResponseParams struct {
 	// 符合查询条件文档总数
-	Total *int64 `json:"Total,omitempty" name:"Total"`
+	Total *int64 `json:"Total,omitnil" name:"Total"`
 
 	// 文档信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Documents []*DocumentInfo `json:"Documents,omitempty" name:"Documents"`
+	Documents []*DocumentInfo `json:"Documents,omitnil" name:"Documents"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDocumentsResponse struct {
@@ -2368,38 +2368,38 @@ func (r *DescribeDocumentsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupListRequestParams struct {
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 分页查询当前页数，默认从1开始递增。
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，默认20，最大1000。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 主讲人ID筛选群组，与MemberId有且只有一个,都传时以此字段获取
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 成员ID刷选群组，与TeacherId有且只有一个
-	MemberId *string `json:"MemberId,omitempty" name:"MemberId"`
+	MemberId *string `json:"MemberId,omitnil" name:"MemberId"`
 }
 
 type DescribeGroupListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 分页查询当前页数，默认从1开始递增。
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，默认20，最大1000。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 主讲人ID筛选群组，与MemberId有且只有一个,都传时以此字段获取
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 成员ID刷选群组，与TeacherId有且只有一个
-	MemberId *string `json:"MemberId,omitempty" name:"MemberId"`
+	MemberId *string `json:"MemberId,omitnil" name:"MemberId"`
 }
 
 func (r *DescribeGroupListRequest) ToJsonString() string {
@@ -2428,14 +2428,14 @@ func (r *DescribeGroupListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupListResponseParams struct {
 	// 记录总数。当前匹配群组总数。
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 群组信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupInfos []*GroupInfo `json:"GroupInfos,omitempty" name:"GroupInfos"`
+	GroupInfos []*GroupInfo `json:"GroupInfos,omitnil" name:"GroupInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeGroupListResponse struct {
@@ -2457,32 +2457,32 @@ func (r *DescribeGroupListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupMemberListRequestParams struct {
 	// 群组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 分页值，默认1
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，默认20，最大1000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeGroupMemberListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 群组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 分页值，默认1
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，默认20，最大1000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeGroupMemberListRequest) ToJsonString() string {
@@ -2510,14 +2510,14 @@ func (r *DescribeGroupMemberListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupMemberListResponseParams struct {
 	// 符合查询条件总条数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 查询成员列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MemberIds []*string `json:"MemberIds,omitempty" name:"MemberIds"`
+	MemberIds []*string `json:"MemberIds,omitnil" name:"MemberIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeGroupMemberListResponse struct {
@@ -2539,20 +2539,20 @@ func (r *DescribeGroupMemberListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupRequestParams struct {
 	// 群组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 }
 
 type DescribeGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 群组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 }
 
 func (r *DescribeGroupRequest) ToJsonString() string {
@@ -2578,26 +2578,26 @@ func (r *DescribeGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGroupResponseParams struct {
 	// 群组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 群组名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 群主主讲人ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 群组类型
 	// 0-基础群组
 	// 1-组合群组，若为1时会返回子群组ID
-	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
+	GroupType *uint64 `json:"GroupType,omitnil" name:"GroupType"`
 
 	// 子群组ID列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubGroupIds []*string `json:"SubGroupIds,omitempty" name:"SubGroupIds"`
+	SubGroupIds []*string `json:"SubGroupIds,omitnil" name:"SubGroupIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeGroupResponse struct {
@@ -2619,26 +2619,26 @@ func (r *DescribeGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeQuestionListRequestParams struct {
 	// 房间ID
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 分页查询当前页数，从1开始递增，默认值为1
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 
 	// 分页查询当前页数，从1开始递增，默认值为1
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeQuestionListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间ID
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 分页查询当前页数，从1开始递增，默认值为1
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 
 	// 分页查询当前页数，从1开始递增，默认值为1
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeQuestionListRequest) ToJsonString() string {
@@ -2665,14 +2665,14 @@ func (r *DescribeQuestionListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeQuestionListResponseParams struct {
 	// 符合查询条件的房间问答问题总数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 房间问答问题列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	QuestionInfo []*QuestionInfo `json:"QuestionInfo,omitempty" name:"QuestionInfo"`
+	QuestionInfo []*QuestionInfo `json:"QuestionInfo,omitnil" name:"QuestionInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeQuestionListResponse struct {
@@ -2694,14 +2694,14 @@ func (r *DescribeQuestionListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRoomRequestParams struct {
 	// 房间Id。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 }
 
 type DescribeRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间Id。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 }
 
 func (r *DescribeRoomRequest) ToJsonString() string {
@@ -2726,91 +2726,91 @@ func (r *DescribeRoomRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRoomResponseParams struct {
 	// 房间名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 预定的房间开始时间，unix时间戳（秒）。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 预定的房间结束时间，unix时间戳（秒）。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 老师的UserId。
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 观看类型。互动观看 （默认）	
-	AudienceType *uint64 `json:"AudienceType,omitempty" name:"AudienceType"`
+	AudienceType *uint64 `json:"AudienceType,omitnil" name:"AudienceType"`
 
 	// 分辨率。可以有如下取值：
 	// 1 标清
 	// 2 高清
 	// 3 全高清
-	Resolution *uint64 `json:"Resolution,omitempty" name:"Resolution"`
+	Resolution *uint64 `json:"Resolution,omitnil" name:"Resolution"`
 
 	// 最大连麦人数（不包括老师）。取值范围[0, 16]
-	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
+	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil" name:"MaxMicNumber"`
 
 	// 进入课堂时是否自动连麦。可以有以下取值：
 	// 0 不自动连麦（需要手动申请上麦，默认值）
 	// 1 自动连麦
-	AutoMic *uint64 `json:"AutoMic,omitempty" name:"AutoMic"`
+	AutoMic *uint64 `json:"AutoMic,omitnil" name:"AutoMic"`
 
 	// 高音质模式。可以有以下取值：
 	// 0 不开启高音质（默认值）
 	// 1 开启高音质
-	AudioQuality *uint64 `json:"AudioQuality,omitempty" name:"AudioQuality"`
+	AudioQuality *uint64 `json:"AudioQuality,omitnil" name:"AudioQuality"`
 
 	// 房间子类型，可以有以下取值：
 	// videodoc 文档+视频
 	// video 纯视频
-	SubType *string `json:"SubType,omitempty" name:"SubType"`
+	SubType *string `json:"SubType,omitnil" name:"SubType"`
 
 	// 上课后是否禁止自动录制。可以有以下取值：
 	// 0 不禁止录制（自动开启录制，默认值）
 	// 1 禁止录制
 	// 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
-	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
+	DisableRecord *uint64 `json:"DisableRecord,omitnil" name:"DisableRecord"`
 
 	// 助教UserId列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
+	Assistants []*string `json:"Assistants,omitnil" name:"Assistants"`
 
 	// 录制地址（协议为https)。仅在房间结束后存在。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
+	RecordUrl *string `json:"RecordUrl,omitnil" name:"RecordUrl"`
 
 	// 课堂状态。0为未开始，1为已开始，2为已结束，3为已过期。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 房间绑定的群组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 打开学生麦克风/摄像头的授权开关
-	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitnil" name:"EnableDirectControl"`
 
 	// 开启专注模式。
 	// 0 收看全部角色音视频(默认)
 	// 1 只看老师和助教
-	InteractionMode *int64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+	InteractionMode *int64 `json:"InteractionMode,omitnil" name:"InteractionMode"`
 
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
-	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+	VideoOrientation *uint64 `json:"VideoOrientation,omitnil" name:"VideoOrientation"`
 
 	// 开启课后评分。 0：不开启(默认)  1：开启
-	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitnil" name:"IsGradingRequiredPostClass"`
 
 	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
-	RoomType *int64 `json:"RoomType,omitempty" name:"RoomType"`
+	RoomType *int64 `json:"RoomType,omitnil" name:"RoomType"`
 
 	// 录制时长
-	VideoDuration *uint64 `json:"VideoDuration,omitempty" name:"VideoDuration"`
+	VideoDuration *uint64 `json:"VideoDuration,omitnil" name:"VideoDuration"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRoomResponse struct {
@@ -2832,26 +2832,26 @@ func (r *DescribeRoomResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRoomStatisticsRequestParams struct {
 	// 房间Id。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 分页查询当前页数，从1开始递增。
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，最大1000。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeRoomStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间Id。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 分页查询当前页数，从1开始递增。
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页数据量，最大1000。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeRoomStatisticsRequest) ToJsonString() string {
@@ -2878,33 +2878,33 @@ func (r *DescribeRoomStatisticsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRoomStatisticsResponseParams struct {
 	// 峰值在线成员人数。
-	PeakMemberNumber *uint64 `json:"PeakMemberNumber,omitempty" name:"PeakMemberNumber"`
+	PeakMemberNumber *uint64 `json:"PeakMemberNumber,omitnil" name:"PeakMemberNumber"`
 
 	// 累计在线人数。
-	MemberNumber *uint64 `json:"MemberNumber,omitempty" name:"MemberNumber"`
+	MemberNumber *uint64 `json:"MemberNumber,omitnil" name:"MemberNumber"`
 
 	// 记录总数。包含进入房间或者应到未到的。
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 成员记录列表。
-	MemberRecords []*MemberRecord `json:"MemberRecords,omitempty" name:"MemberRecords"`
+	MemberRecords []*MemberRecord `json:"MemberRecords,omitnil" name:"MemberRecords"`
 
 	// 秒级unix时间戳，实际房间开始时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RealStartTime *uint64 `json:"RealStartTime,omitempty" name:"RealStartTime"`
+	RealStartTime *uint64 `json:"RealStartTime,omitnil" name:"RealStartTime"`
 
 	// 秒级unix时间戳，实际房间结束时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RealEndTime *uint64 `json:"RealEndTime,omitempty" name:"RealEndTime"`
+	RealEndTime *uint64 `json:"RealEndTime,omitnil" name:"RealEndTime"`
 
 	// 房间消息总数。
-	MessageCount *uint64 `json:"MessageCount,omitempty" name:"MessageCount"`
+	MessageCount *uint64 `json:"MessageCount,omitnil" name:"MessageCount"`
 
 	// 房间连麦总数。
-	MicCount *uint64 `json:"MicCount,omitempty" name:"MicCount"`
+	MicCount *uint64 `json:"MicCount,omitnil" name:"MicCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRoomStatisticsResponse struct {
@@ -2926,26 +2926,26 @@ func (r *DescribeRoomStatisticsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSdkAppIdUsersRequestParams struct {
 	// 应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 分页，默认值为1
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 
 	// 分页数据限制，默认值为20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeSdkAppIdUsersRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 分页，默认值为1
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 
 	// 分页数据限制，默认值为20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeSdkAppIdUsersRequest) ToJsonString() string {
@@ -2972,14 +2972,14 @@ func (r *DescribeSdkAppIdUsersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSdkAppIdUsersResponseParams struct {
 	// 用户总数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 当前获取用户信息数组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Users []*UserInfo `json:"Users,omitempty" name:"Users"`
+	Users []*UserInfo `json:"Users,omitnil" name:"Users"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSdkAppIdUsersResponse struct {
@@ -3001,26 +3001,26 @@ func (r *DescribeSdkAppIdUsersResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSupervisorsRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 每页数据量，最大100。 不填默认20.
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页查询当前页数，从1开始递增，不填默认为1。
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 }
 
 type DescribeSupervisorsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 每页数据量，最大100。 不填默认20.
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页查询当前页数，从1开始递增，不填默认为1。
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 }
 
 func (r *DescribeSupervisorsRequest) ToJsonString() string {
@@ -3047,19 +3047,19 @@ func (r *DescribeSupervisorsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSupervisorsResponseParams struct {
 	// 数据总量
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 分页查询当前页数
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 当前页数据量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 巡课列表
-	UserIds []*string `json:"UserIds,omitempty" name:"UserIds"`
+	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSupervisorsResponse struct {
@@ -3081,14 +3081,14 @@ func (r *DescribeSupervisorsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserRequestParams struct {
 	// 用户Id。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }
 
 type DescribeUserRequest struct {
 	*tchttp.BaseRequest
 	
 	// 用户Id。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }
 
 func (r *DescribeUserRequest) ToJsonString() string {
@@ -3113,23 +3113,23 @@ func (r *DescribeUserRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserResponseParams struct {
 	// 应用Id。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 用户Id。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 用户昵称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 用户头像Url。
-	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
+	Avatar *string `json:"Avatar,omitnil" name:"Avatar"`
 
 	// 用户在客户系统的Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
+	OriginId *string `json:"OriginId,omitnil" name:"OriginId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUserResponse struct {
@@ -3151,88 +3151,88 @@ func (r *DescribeUserResponse) FromJsonString(s string) error {
 type DocumentInfo struct {
 	// 文档Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId *string `json:"DocumentId,omitnil" name:"DocumentId"`
 
 	// 文档原址url
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DocumentUrl *string `json:"DocumentUrl,omitempty" name:"DocumentUrl"`
+	DocumentUrl *string `json:"DocumentUrl,omitnil" name:"DocumentUrl"`
 
 	// 文档名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DocumentName *string `json:"DocumentName,omitempty" name:"DocumentName"`
+	DocumentName *string `json:"DocumentName,omitnil" name:"DocumentName"`
 
 	// 文档所有者UserId
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Owner *string `json:"Owner,omitempty" name:"Owner"`
+	Owner *string `json:"Owner,omitnil" name:"Owner"`
 
 	// 应用Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 文档权限，0：私有课件 1：公共课件
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Permission *uint64 `json:"Permission,omitempty" name:"Permission"`
+	Permission *uint64 `json:"Permission,omitnil" name:"Permission"`
 
 	// 转码结果，无需转码为空，转码成功为结果url，转码失败为错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TranscodeResult *string `json:"TranscodeResult,omitempty" name:"TranscodeResult"`
+	TranscodeResult *string `json:"TranscodeResult,omitnil" name:"TranscodeResult"`
 
 	// 转码类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TranscodeType *uint64 `json:"TranscodeType,omitempty" name:"TranscodeType"`
+	TranscodeType *uint64 `json:"TranscodeType,omitnil" name:"TranscodeType"`
 
 	// 转码进度， 0 - 100 表示（0% - 100%）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TranscodeProgress *uint64 `json:"TranscodeProgress,omitempty" name:"TranscodeProgress"`
+	TranscodeProgress *uint64 `json:"TranscodeProgress,omitnil" name:"TranscodeProgress"`
 
 	// 转码状态，0为无需转码，1为正在转码，2为转码失败，3为转码成功
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TranscodeState *uint64 `json:"TranscodeState,omitempty" name:"TranscodeState"`
+	TranscodeState *uint64 `json:"TranscodeState,omitnil" name:"TranscodeState"`
 
 	// 转码失败后的错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TranscodeInfo *string `json:"TranscodeInfo,omitempty" name:"TranscodeInfo"`
+	TranscodeInfo *string `json:"TranscodeInfo,omitnil" name:"TranscodeInfo"`
 
 	// 文档类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DocumentType *string `json:"DocumentType,omitempty" name:"DocumentType"`
+	DocumentType *string `json:"DocumentType,omitnil" name:"DocumentType"`
 
 	// 文档大小，单位：字节
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DocumentSize *uint64 `json:"DocumentSize,omitempty" name:"DocumentSize"`
+	DocumentSize *uint64 `json:"DocumentSize,omitnil" name:"DocumentSize"`
 
 	// 更新的UNIX时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *uint64 `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 课件页数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Pages *uint64 `json:"Pages,omitempty" name:"Pages"`
+	Pages *uint64 `json:"Pages,omitnil" name:"Pages"`
 
 	// 宽，仅在静态转码的课件有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Width *uint64 `json:"Width,omitempty" name:"Width"`
+	Width *uint64 `json:"Width,omitnil" name:"Width"`
 
 	// 高，仅在静态转码的课件有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Height *uint64 `json:"Height,omitempty" name:"Height"`
+	Height *uint64 `json:"Height,omitnil" name:"Height"`
 
 	// 封面，仅转码的课件会生成封面
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cover *string `json:"Cover,omitempty" name:"Cover"`
+	Cover *string `json:"Cover,omitnil" name:"Cover"`
 }
 
 // Predefined struct for user
 type EndRoomRequestParams struct {
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 }
 
 type EndRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 }
 
 func (r *EndRoomRequest) ToJsonString() string {
@@ -3257,7 +3257,7 @@ func (r *EndRoomRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EndRoomResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type EndRoomResponse struct {
@@ -3279,32 +3279,32 @@ func (r *EndRoomResponse) FromJsonString(s string) error {
 type EventDataInfo struct {
 	// 事件发生的房间号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 事件发生的用户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 用户设备类型。0: Unknown; 1: Windows; 2: macOS; 3: Android; 4: iOS; 5: Web; 6: Mobile webpage; 7: Weixin Mini Program.
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Device *uint64 `json:"Device,omitempty" name:"Device"`
+	Device *uint64 `json:"Device,omitnil" name:"Device"`
 
 	// 录制时长。单位：秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *uint64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 录制文件大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecordSize *uint64 `json:"RecordSize,omitempty" name:"RecordSize"`
+	RecordSize *uint64 `json:"RecordSize,omitnil" name:"RecordSize"`
 
 	// 录制url
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
+	RecordUrl *string `json:"RecordUrl,omitnil" name:"RecordUrl"`
 }
 
 type EventInfo struct {
 	// 事件发生的秒级unix时间戳。
-	Timestamp *uint64 `json:"Timestamp,omitempty" name:"Timestamp"`
+	Timestamp *uint64 `json:"Timestamp,omitnil" name:"Timestamp"`
 
 	// 事件类型,有以下值:
 	// RoomStart:房间开始 RoomEnd:房间结束 MemberJoin:成员加入 MemberQuit:成员退出 RecordFinish:录制结束
@@ -3316,26 +3316,26 @@ type EventInfo struct {
 	// ScreenOff: 屏幕共享关闭
 	// VisibleOn: 页面可见
 	// VisibleOff: 页面不可见
-	EventType *string `json:"EventType,omitempty" name:"EventType"`
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
 
 	// 事件详细内容，包含房间号,成员类型事件包含用户Id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EventData *EventDataInfo `json:"EventData,omitempty" name:"EventData"`
+	EventData *EventDataInfo `json:"EventData,omitnil" name:"EventData"`
 }
 
 // Predefined struct for user
 type GetRoomEventRequestParams struct {
 	// 房间Id。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 应用Id。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 起始页，1开始。keyword为空时有效。
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页个数。keyword为空时有效。一次性最多200条。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 搜索事件类型。有以下事件类型:
 	// RoomStart:房间开始
@@ -3351,23 +3351,23 @@ type GetRoomEventRequestParams struct {
 	// ScreenOff: 屏幕共享关闭
 	// VisibleOn: 页面可见
 	// VisibleOff: 页面不可见
-	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
 }
 
 type GetRoomEventRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间Id。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 应用Id。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 起始页，1开始。keyword为空时有效。
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页个数。keyword为空时有效。一次性最多200条。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 搜索事件类型。有以下事件类型:
 	// RoomStart:房间开始
@@ -3383,7 +3383,7 @@ type GetRoomEventRequest struct {
 	// ScreenOff: 屏幕共享关闭
 	// VisibleOn: 页面可见
 	// VisibleOff: 页面不可见
-	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
 }
 
 func (r *GetRoomEventRequest) ToJsonString() string {
@@ -3412,14 +3412,14 @@ func (r *GetRoomEventRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRoomEventResponseParams struct {
 	// 该房间的事件总数，keyword搜索不影响该值。
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 详细事件内容。包含相应的类型、发生的时间戳。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Events []*EventInfo `json:"Events,omitempty" name:"Events"`
+	Events []*EventInfo `json:"Events,omitnil" name:"Events"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetRoomEventResponse struct {
@@ -3441,32 +3441,32 @@ func (r *GetRoomEventResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRoomMessageRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 房间Id。	
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 消息序列。获取该序列以前的消息(不包含该seq消息)
-	Seq *int64 `json:"Seq,omitempty" name:"Seq"`
+	Seq *int64 `json:"Seq,omitnil" name:"Seq"`
 
 	// 消息拉取的条数。最大数量不能超过套餐包限制。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type GetRoomMessageRequest struct {
 	*tchttp.BaseRequest
 	
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *int64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 房间Id。	
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 消息序列。获取该序列以前的消息(不包含该seq消息)
-	Seq *int64 `json:"Seq,omitempty" name:"Seq"`
+	Seq *int64 `json:"Seq,omitnil" name:"Seq"`
 
 	// 消息拉取的条数。最大数量不能超过套餐包限制。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *GetRoomMessageRequest) ToJsonString() string {
@@ -3494,10 +3494,10 @@ func (r *GetRoomMessageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRoomMessageResponseParams struct {
 	// 消息列表
-	Messages []*MessageList `json:"Messages,omitempty" name:"Messages"`
+	Messages []*MessageList `json:"Messages,omitnil" name:"Messages"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetRoomMessageResponse struct {
@@ -3519,44 +3519,44 @@ func (r *GetRoomMessageResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRoomsRequestParams struct {
 	// 低代码平台的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 开始时间。默认以当前时间减去半小时作为开始时间。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间。默认以当前时间加上半小时作为结束时间。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 分页查询当前页数，从1开始递增
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 默认是10条
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 课堂状态。默认展示所有课堂，0为未开始，1为正在上课，2为已结束，3为已过期
-	Status []*uint64 `json:"Status,omitempty" name:"Status"`
+	Status []*uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 type GetRoomsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 低代码平台的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 开始时间。默认以当前时间减去半小时作为开始时间。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间。默认以当前时间加上半小时作为结束时间。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 分页查询当前页数，从1开始递增
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 默认是10条
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 课堂状态。默认展示所有课堂，0为未开始，1为正在上课，2为已结束，3为已过期
-	Status []*uint64 `json:"Status,omitempty" name:"Status"`
+	Status []*uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *GetRoomsRequest) ToJsonString() string {
@@ -3586,13 +3586,13 @@ func (r *GetRoomsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRoomsResponseParams struct {
 	// 总数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 房间列表
-	Rooms []*RoomItem `json:"Rooms,omitempty" name:"Rooms"`
+	Rooms []*RoomItem `json:"Rooms,omitnil" name:"Rooms"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetRoomsResponse struct {
@@ -3614,14 +3614,14 @@ func (r *GetRoomsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetWatermarkRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 }
 
 type GetWatermarkRequest struct {
 	*tchttp.BaseRequest
 	
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 }
 
 func (r *GetWatermarkRequest) ToJsonString() string {
@@ -3647,22 +3647,22 @@ func (r *GetWatermarkRequest) FromJsonString(s string) error {
 type GetWatermarkResponseParams struct {
 	// 老师视频区域的水印参数配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TeacherLogo *WatermarkConfig `json:"TeacherLogo,omitempty" name:"TeacherLogo"`
+	TeacherLogo *WatermarkConfig `json:"TeacherLogo,omitnil" name:"TeacherLogo"`
 
 	// 白板区域的水印参数配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BoardLogo *WatermarkConfig `json:"BoardLogo,omitempty" name:"BoardLogo"`
+	BoardLogo *WatermarkConfig `json:"BoardLogo,omitnil" name:"BoardLogo"`
 
 	// 背景图片配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BackgroundPicture *BackgroundPictureConfig `json:"BackgroundPicture,omitempty" name:"BackgroundPicture"`
+	BackgroundPicture *BackgroundPictureConfig `json:"BackgroundPicture,omitnil" name:"BackgroundPicture"`
 
 	// 文字水印配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Text *TextMarkConfig `json:"Text,omitempty" name:"Text"`
+	Text *TextMarkConfig `json:"Text,omitnil" name:"Text"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetWatermarkResponse struct {
@@ -3683,75 +3683,75 @@ func (r *GetWatermarkResponse) FromJsonString(s string) error {
 
 type GroupBaseInfo struct {
 	// 待创建群组名
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 群组主讲人ID
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 }
 
 type GroupInfo struct {
 	// 群组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 群组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 群组主讲人ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 群组类型 
 	// 0-基础群组 
 	// 1-组合群组，若为1时会返回子群组ID列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupType *uint64 `json:"GroupType,omitempty" name:"GroupType"`
+	GroupType *uint64 `json:"GroupType,omitnil" name:"GroupType"`
 
 	// 子群组ID列表，如有。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubGroupIds *string `json:"SubGroupIds,omitempty" name:"SubGroupIds"`
+	SubGroupIds *string `json:"SubGroupIds,omitnil" name:"SubGroupIds"`
 }
 
 // Predefined struct for user
 type KickUserFromRoomRequestParams struct {
 	// 房间Id。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 低代码平台的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 需要踢出成员Id
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 踢出类型：
 	// 1：临时踢出，可以使用Duration参数指定污点时间，污点时间间隔内用户无法进入房间。
 	// 2：永久踢出
-	KickType *uint64 `json:"KickType,omitempty" name:"KickType"`
+	KickType *uint64 `json:"KickType,omitnil" name:"KickType"`
 
 	// 污点时间(单位秒)，KickType = 1时生效，默认为0
-	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *uint64 `json:"Duration,omitnil" name:"Duration"`
 }
 
 type KickUserFromRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间Id。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 低代码平台的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 需要踢出成员Id
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 踢出类型：
 	// 1：临时踢出，可以使用Duration参数指定污点时间，污点时间间隔内用户无法进入房间。
 	// 2：永久踢出
-	KickType *uint64 `json:"KickType,omitempty" name:"KickType"`
+	KickType *uint64 `json:"KickType,omitnil" name:"KickType"`
 
 	// 污点时间(单位秒)，KickType = 1时生效，默认为0
-	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *uint64 `json:"Duration,omitnil" name:"Duration"`
 }
 
 func (r *KickUserFromRoomRequest) ToJsonString() string {
@@ -3780,7 +3780,7 @@ func (r *KickUserFromRoomRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type KickUserFromRoomResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type KickUserFromRoomResponse struct {
@@ -3802,20 +3802,20 @@ func (r *KickUserFromRoomResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type LoginOriginIdRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 用户在客户系统的Id，需要在同一应用下唯一。
-	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
+	OriginId *string `json:"OriginId,omitnil" name:"OriginId"`
 }
 
 type LoginOriginIdRequest struct {
 	*tchttp.BaseRequest
 	
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 用户在客户系统的Id，需要在同一应用下唯一。
-	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
+	OriginId *string `json:"OriginId,omitnil" name:"OriginId"`
 }
 
 func (r *LoginOriginIdRequest) ToJsonString() string {
@@ -3841,13 +3841,13 @@ func (r *LoginOriginIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type LoginOriginIdResponseParams struct {
 	// 用户Id。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 登录/注册成功后返回登录态token。有效期7天。
-	Token *string `json:"Token,omitempty" name:"Token"`
+	Token *string `json:"Token,omitnil" name:"Token"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type LoginOriginIdResponse struct {
@@ -3869,14 +3869,14 @@ func (r *LoginOriginIdResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type LoginUserRequestParams struct {
 	// 注册获取的用户id。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }
 
 type LoginUserRequest struct {
 	*tchttp.BaseRequest
 	
 	// 注册获取的用户id。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }
 
 func (r *LoginUserRequest) ToJsonString() string {
@@ -3901,13 +3901,13 @@ func (r *LoginUserRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type LoginUserResponseParams struct {
 	// 用户Id。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 登录/注册成功后返回登录态token。有效期7天。
-	Token *string `json:"Token,omitempty" name:"Token"`
+	Token *string `json:"Token,omitnil" name:"Token"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type LoginUserResponse struct {
@@ -3928,127 +3928,127 @@ func (r *LoginUserResponse) FromJsonString(s string) error {
 
 type MemberRecord struct {
 	// 用户ID。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 用户名称。
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
 	// 在线时长，单位秒。
-	PresentTime *uint64 `json:"PresentTime,omitempty" name:"PresentTime"`
+	PresentTime *uint64 `json:"PresentTime,omitnil" name:"PresentTime"`
 
 	// 是否开启摄像头。
-	Camera *uint64 `json:"Camera,omitempty" name:"Camera"`
+	Camera *uint64 `json:"Camera,omitnil" name:"Camera"`
 
 	// 是否开启麦克风。
-	Mic *uint64 `json:"Mic,omitempty" name:"Mic"`
+	Mic *uint64 `json:"Mic,omitnil" name:"Mic"`
 
 	// 是否禁言。
-	Silence *uint64 `json:"Silence,omitempty" name:"Silence"`
+	Silence *uint64 `json:"Silence,omitnil" name:"Silence"`
 
 	// 回答问题数量。
-	AnswerQuestions *uint64 `json:"AnswerQuestions,omitempty" name:"AnswerQuestions"`
+	AnswerQuestions *uint64 `json:"AnswerQuestions,omitnil" name:"AnswerQuestions"`
 
 	// 举手数量。
-	HandUps *uint64 `json:"HandUps,omitempty" name:"HandUps"`
+	HandUps *uint64 `json:"HandUps,omitnil" name:"HandUps"`
 
 	// 首次进入房间的unix时间戳。
-	FirstJoinTimestamp *uint64 `json:"FirstJoinTimestamp,omitempty" name:"FirstJoinTimestamp"`
+	FirstJoinTimestamp *uint64 `json:"FirstJoinTimestamp,omitnil" name:"FirstJoinTimestamp"`
 
 	// 最后一次退出房间的unix时间戳。
-	LastQuitTimestamp *uint64 `json:"LastQuitTimestamp,omitempty" name:"LastQuitTimestamp"`
+	LastQuitTimestamp *uint64 `json:"LastQuitTimestamp,omitnil" name:"LastQuitTimestamp"`
 
 	// 奖励次数。
-	Rewords *uint64 `json:"Rewords,omitempty" name:"Rewords"`
+	Rewords *uint64 `json:"Rewords,omitnil" name:"Rewords"`
 
 	// 用户IP。
-	IPAddress *string `json:"IPAddress,omitempty" name:"IPAddress"`
+	IPAddress *string `json:"IPAddress,omitnil" name:"IPAddress"`
 
 	// 用户位置信息。
-	Location *string `json:"Location,omitempty" name:"Location"`
+	Location *string `json:"Location,omitnil" name:"Location"`
 
 	// 用户设备平台信息。0:unknown  1:windows  2:mac  3:android  4:ios  5:web   6:h5   7:miniprogram （小程序）
-	Device *int64 `json:"Device,omitempty" name:"Device"`
+	Device *int64 `json:"Device,omitnil" name:"Device"`
 
 	// 每个成员上麦次数。
-	PerMemberMicCount *int64 `json:"PerMemberMicCount,omitempty" name:"PerMemberMicCount"`
+	PerMemberMicCount *int64 `json:"PerMemberMicCount,omitnil" name:"PerMemberMicCount"`
 
 	// 每个成员发送消息数量。
-	PerMemberMessageCount *int64 `json:"PerMemberMessageCount,omitempty" name:"PerMemberMessageCount"`
+	PerMemberMessageCount *int64 `json:"PerMemberMessageCount,omitnil" name:"PerMemberMessageCount"`
 
 	// 用户角色。0代表学生；1代表老师； 2助教；3巡课。
-	Role *uint64 `json:"Role,omitempty" name:"Role"`
+	Role *uint64 `json:"Role,omitnil" name:"Role"`
 
 	// 上课班号
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 子上课班号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubGroupId []*string `json:"SubGroupId,omitempty" name:"SubGroupId"`
+	SubGroupId []*string `json:"SubGroupId,omitnil" name:"SubGroupId"`
 
 	// 用户的上台状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Stage *int64 `json:"Stage,omitempty" name:"Stage"`
+	Stage *int64 `json:"Stage,omitnil" name:"Stage"`
 
 	// 用户状态。0为未到，1为在线，2为离线，3为被踢，4为永久被踢，5为暂时掉线
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CurrentState *uint64 `json:"CurrentState,omitempty" name:"CurrentState"`
+	CurrentState *uint64 `json:"CurrentState,omitnil" name:"CurrentState"`
 }
 
 type MessageItem struct {
 	// 消息类型。0表示文本消息，1表示图片消息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MessageType *int64 `json:"MessageType,omitempty" name:"MessageType"`
+	MessageType *int64 `json:"MessageType,omitnil" name:"MessageType"`
 
 	// 文本消息内容。message type为0时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TextMessage *string `json:"TextMessage,omitempty" name:"TextMessage"`
+	TextMessage *string `json:"TextMessage,omitnil" name:"TextMessage"`
 
 	// 图片消息URL。 message type为1时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageMessage *string `json:"ImageMessage,omitempty" name:"ImageMessage"`
+	ImageMessage *string `json:"ImageMessage,omitnil" name:"ImageMessage"`
 }
 
 type MessageList struct {
 	// 消息时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
 
 	// 消息发送者
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FromAccount *string `json:"FromAccount,omitempty" name:"FromAccount"`
+	FromAccount *string `json:"FromAccount,omitnil" name:"FromAccount"`
 
 	// 消息序列号，当前课堂内唯一且单调递增
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Seq *int64 `json:"Seq,omitempty" name:"Seq"`
+	Seq *int64 `json:"Seq,omitnil" name:"Seq"`
 
 	// 历史消息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MessageBody []*MessageItem `json:"MessageBody,omitempty" name:"MessageBody"`
+	MessageBody []*MessageItem `json:"MessageBody,omitnil" name:"MessageBody"`
 }
 
 // Predefined struct for user
 type ModifyAppRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 回调地址。
-	Callback *string `json:"Callback,omitempty" name:"Callback"`
+	Callback *string `json:"Callback,omitnil" name:"Callback"`
 
 	// 回调key。
-	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+	CallbackKey *string `json:"CallbackKey,omitnil" name:"CallbackKey"`
 }
 
 type ModifyAppRequest struct {
 	*tchttp.BaseRequest
 	
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 回调地址。
-	Callback *string `json:"Callback,omitempty" name:"Callback"`
+	Callback *string `json:"Callback,omitnil" name:"Callback"`
 
 	// 回调key。
-	CallbackKey *string `json:"CallbackKey,omitempty" name:"CallbackKey"`
+	CallbackKey *string `json:"CallbackKey,omitnil" name:"CallbackKey"`
 }
 
 func (r *ModifyAppRequest) ToJsonString() string {
@@ -4075,7 +4075,7 @@ func (r *ModifyAppRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAppResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAppResponse struct {
@@ -4097,32 +4097,32 @@ func (r *ModifyAppResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyGroupRequestParams struct {
 	// 需要修改的群组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 默认绑定主讲老师ID
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 待修改的群组名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 }
 
 type ModifyGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要修改的群组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 低代码平台应用ID
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 默认绑定主讲老师ID
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 待修改的群组名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 }
 
 func (r *ModifyGroupRequest) ToJsonString() string {
@@ -4150,7 +4150,7 @@ func (r *ModifyGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyGroupResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyGroupResponse struct {
@@ -4172,166 +4172,166 @@ func (r *ModifyGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRoomRequestParams struct {
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 低代码互动课堂的SdkAppId
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 预定的房间开始时间，unix时间戳（秒）。直播开始后不允许修改。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 预定的房间结束时间，unix时间戳（秒）。直播开始后不允许修改。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 老师ID。直播开始后不允许修改。
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 房间名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 分辨率。可以有如下取值：
 	// 1 标清
 	// 2 高清
 	// 3 全高清
 	// 直播开始后不允许修改。
-	Resolution *uint64 `json:"Resolution,omitempty" name:"Resolution"`
+	Resolution *uint64 `json:"Resolution,omitnil" name:"Resolution"`
 
 	// 最大连麦人数（不包括老师）。取值范围[0, 17)
 	// 直播开始后不允许修改。
-	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
+	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil" name:"MaxMicNumber"`
 
 	// 进入房间时是否自动连麦。可以有以下取值：
 	// 0 不自动连麦（默认值）
 	// 1 自动连麦
 	// 直播开始后不允许修改。
-	AutoMic *uint64 `json:"AutoMic,omitempty" name:"AutoMic"`
+	AutoMic *uint64 `json:"AutoMic,omitnil" name:"AutoMic"`
 
 	// 高音质模式。可以有以下取值：
 	// 0 不开启高音质（默认值）
 	// 1 开启高音质
 	// 直播开始后不允许修改。
-	AudioQuality *uint64 `json:"AudioQuality,omitempty" name:"AudioQuality"`
+	AudioQuality *uint64 `json:"AudioQuality,omitnil" name:"AudioQuality"`
 
 	// 房间子类型，可以有以下取值：
 	// videodoc 文档+视频
 	// video 纯视频
 	// 直播开始后不允许修改。
-	SubType *string `json:"SubType,omitempty" name:"SubType"`
+	SubType *string `json:"SubType,omitnil" name:"SubType"`
 
 	// 禁止录制。可以有以下取值：
 	// 0 不禁止录制（默认值）
 	// 1 禁止录制
 	// 直播开始后不允许修改。
-	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
+	DisableRecord *uint64 `json:"DisableRecord,omitnil" name:"DisableRecord"`
 
 	// 助教Id列表。直播开始后不允许修改。
-	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
+	Assistants []*string `json:"Assistants,omitnil" name:"Assistants"`
 
 	// 房间绑定的群组ID。直播开始后不允许修改。
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 打开学生麦克风/摄像头的授权开关。直播开始后不允许修改。
-	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitnil" name:"EnableDirectControl"`
 
 	// 开启专注模式。
 	// 0 收看全部角色音视频(默认)
 	// 1 只看老师和助教
-	InteractionMode *uint64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+	InteractionMode *uint64 `json:"InteractionMode,omitnil" name:"InteractionMode"`
 
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
-	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+	VideoOrientation *uint64 `json:"VideoOrientation,omitnil" name:"VideoOrientation"`
 
 	// 开启课后评分。 0：不开启(默认)  1：开启
-	IsGradingRequiredPostClass *uint64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+	IsGradingRequiredPostClass *uint64 `json:"IsGradingRequiredPostClass,omitnil" name:"IsGradingRequiredPostClass"`
 
 	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
-	RoomType *uint64 `json:"RoomType,omitempty" name:"RoomType"`
+	RoomType *uint64 `json:"RoomType,omitnil" name:"RoomType"`
 
 	// 录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
-	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
+	RecordLayout *uint64 `json:"RecordLayout,omitnil" name:"RecordLayout"`
 }
 
 type ModifyRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 低代码互动课堂的SdkAppId
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 预定的房间开始时间，unix时间戳（秒）。直播开始后不允许修改。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 预定的房间结束时间，unix时间戳（秒）。直播开始后不允许修改。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 老师ID。直播开始后不允许修改。
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 房间名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 分辨率。可以有如下取值：
 	// 1 标清
 	// 2 高清
 	// 3 全高清
 	// 直播开始后不允许修改。
-	Resolution *uint64 `json:"Resolution,omitempty" name:"Resolution"`
+	Resolution *uint64 `json:"Resolution,omitnil" name:"Resolution"`
 
 	// 最大连麦人数（不包括老师）。取值范围[0, 17)
 	// 直播开始后不允许修改。
-	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
+	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil" name:"MaxMicNumber"`
 
 	// 进入房间时是否自动连麦。可以有以下取值：
 	// 0 不自动连麦（默认值）
 	// 1 自动连麦
 	// 直播开始后不允许修改。
-	AutoMic *uint64 `json:"AutoMic,omitempty" name:"AutoMic"`
+	AutoMic *uint64 `json:"AutoMic,omitnil" name:"AutoMic"`
 
 	// 高音质模式。可以有以下取值：
 	// 0 不开启高音质（默认值）
 	// 1 开启高音质
 	// 直播开始后不允许修改。
-	AudioQuality *uint64 `json:"AudioQuality,omitempty" name:"AudioQuality"`
+	AudioQuality *uint64 `json:"AudioQuality,omitnil" name:"AudioQuality"`
 
 	// 房间子类型，可以有以下取值：
 	// videodoc 文档+视频
 	// video 纯视频
 	// 直播开始后不允许修改。
-	SubType *string `json:"SubType,omitempty" name:"SubType"`
+	SubType *string `json:"SubType,omitnil" name:"SubType"`
 
 	// 禁止录制。可以有以下取值：
 	// 0 不禁止录制（默认值）
 	// 1 禁止录制
 	// 直播开始后不允许修改。
-	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
+	DisableRecord *uint64 `json:"DisableRecord,omitnil" name:"DisableRecord"`
 
 	// 助教Id列表。直播开始后不允许修改。
-	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
+	Assistants []*string `json:"Assistants,omitnil" name:"Assistants"`
 
 	// 房间绑定的群组ID。直播开始后不允许修改。
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 打开学生麦克风/摄像头的授权开关。直播开始后不允许修改。
-	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitnil" name:"EnableDirectControl"`
 
 	// 开启专注模式。
 	// 0 收看全部角色音视频(默认)
 	// 1 只看老师和助教
-	InteractionMode *uint64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+	InteractionMode *uint64 `json:"InteractionMode,omitnil" name:"InteractionMode"`
 
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
-	VideoOrientation *uint64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+	VideoOrientation *uint64 `json:"VideoOrientation,omitnil" name:"VideoOrientation"`
 
 	// 开启课后评分。 0：不开启(默认)  1：开启
-	IsGradingRequiredPostClass *uint64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+	IsGradingRequiredPostClass *uint64 `json:"IsGradingRequiredPostClass,omitnil" name:"IsGradingRequiredPostClass"`
 
 	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
-	RoomType *uint64 `json:"RoomType,omitempty" name:"RoomType"`
+	RoomType *uint64 `json:"RoomType,omitnil" name:"RoomType"`
 
 	// 录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
-	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
+	RecordLayout *uint64 `json:"RecordLayout,omitnil" name:"RecordLayout"`
 }
 
 func (r *ModifyRoomRequest) ToJsonString() string {
@@ -4375,7 +4375,7 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRoomResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyRoomResponse struct {
@@ -4397,26 +4397,26 @@ func (r *ModifyRoomResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyUserProfileRequestParams struct {
 	// 待修改用户ID
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 待修改的用户名
-	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+	Nickname *string `json:"Nickname,omitnil" name:"Nickname"`
 
 	// 待修改头像url
-	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
+	Avatar *string `json:"Avatar,omitnil" name:"Avatar"`
 }
 
 type ModifyUserProfileRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待修改用户ID
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 待修改的用户名
-	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+	Nickname *string `json:"Nickname,omitnil" name:"Nickname"`
 
 	// 待修改头像url
-	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
+	Avatar *string `json:"Avatar,omitnil" name:"Avatar"`
 }
 
 func (r *ModifyUserProfileRequest) ToJsonString() string {
@@ -4443,7 +4443,7 @@ func (r *ModifyUserProfileRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyUserProfileResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyUserProfileResponse struct {
@@ -4464,51 +4464,51 @@ func (r *ModifyUserProfileResponse) FromJsonString(s string) error {
 
 type QuestionInfo struct {
 	// 问题ID
-	QuestionId *string `json:"QuestionId,omitempty" name:"QuestionId"`
+	QuestionId *string `json:"QuestionId,omitnil" name:"QuestionId"`
 
 	// 问题内容
-	QuestionContent *string `json:"QuestionContent,omitempty" name:"QuestionContent"`
+	QuestionContent *string `json:"QuestionContent,omitnil" name:"QuestionContent"`
 
 	// 倒计时答题设置的秒数（0 表示不计时）
-	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *uint64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 正确答案（按照位表示是否选择，如0x1表示选择A，0x11表示选择AB）
-	CorrectAnswer *int64 `json:"CorrectAnswer,omitempty" name:"CorrectAnswer"`
+	CorrectAnswer *int64 `json:"CorrectAnswer,omitnil" name:"CorrectAnswer"`
 
 	// 每个选项答题人数统计
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AnswerStats []*AnswerStat `json:"AnswerStats,omitempty" name:"AnswerStats"`
+	AnswerStats []*AnswerStat `json:"AnswerStats,omitnil" name:"AnswerStats"`
 }
 
 // Predefined struct for user
 type RegisterUserRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 用户名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 用户在客户系统的Id，需要在同一应用下唯一。
-	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
+	OriginId *string `json:"OriginId,omitnil" name:"OriginId"`
 
 	// 用户头像。
-	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
+	Avatar *string `json:"Avatar,omitnil" name:"Avatar"`
 }
 
 type RegisterUserRequest struct {
 	*tchttp.BaseRequest
 	
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 用户名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 用户在客户系统的Id，需要在同一应用下唯一。
-	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
+	OriginId *string `json:"OriginId,omitnil" name:"OriginId"`
 
 	// 用户头像。
-	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
+	Avatar *string `json:"Avatar,omitnil" name:"Avatar"`
 }
 
 func (r *RegisterUserRequest) ToJsonString() string {
@@ -4536,13 +4536,13 @@ func (r *RegisterUserRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RegisterUserResponseParams struct {
 	// 用户Id。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 登录/注册成功后返回登录态token。有效期7天。
-	Token *string `json:"Token,omitempty" name:"Token"`
+	Token *string `json:"Token,omitnil" name:"Token"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RegisterUserResponse struct {
@@ -4563,139 +4563,139 @@ func (r *RegisterUserResponse) FromJsonString(s string) error {
 
 type RoomInfo struct {
 	// 房间名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 预定的房间开始时间，unix时间戳。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 预定的房间结束时间，unix时间戳。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 分辨率。可以有如下取值： 1 标清 2 高清 3 全高清
-	Resolution *uint64 `json:"Resolution,omitempty" name:"Resolution"`
+	Resolution *uint64 `json:"Resolution,omitnil" name:"Resolution"`
 
 	// 最大连麦人数（不包括老师）。取值范围[0, 16]
-	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
+	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil" name:"MaxMicNumber"`
 
 	// 房间子类型，可以有以下取值： videodoc 文档+视频 video 纯视频
-	SubType *string `json:"SubType,omitempty" name:"SubType"`
+	SubType *string `json:"SubType,omitnil" name:"SubType"`
 
 	// 老师ID。通过[注册用户]接口获取的UserId。
-	TeacherId *string `json:"TeacherId,omitempty" name:"TeacherId"`
+	TeacherId *string `json:"TeacherId,omitnil" name:"TeacherId"`
 
 	// 进入课堂时是否自动连麦。可以有以下取值： 0 不自动连麦（需要手动申请上麦，默认值） 1 自动连麦
-	AutoMic *uint64 `json:"AutoMic,omitempty" name:"AutoMic"`
+	AutoMic *uint64 `json:"AutoMic,omitnil" name:"AutoMic"`
 
 	// 释放音视频权限后是否自动取消连麦。可以有以下取值： 0 自动取消连麦（默认值） 1 保持连麦状态
-	TurnOffMic *uint64 `json:"TurnOffMic,omitempty" name:"TurnOffMic"`
+	TurnOffMic *uint64 `json:"TurnOffMic,omitnil" name:"TurnOffMic"`
 
 	// 高音质模式。可以有以下取值： 0 不开启高音质（默认值） 1 开启高音质
-	AudioQuality *uint64 `json:"AudioQuality,omitempty" name:"AudioQuality"`
+	AudioQuality *uint64 `json:"AudioQuality,omitnil" name:"AudioQuality"`
 
 	// 上课后是否禁止自动录制。可以有以下取值： 0 不禁止录制（自动开启录制，默认值） 1 禁止录制 注：如果该配置取值为0，录制将从上课后开始，课堂结束后停止。
-	DisableRecord *uint64 `json:"DisableRecord,omitempty" name:"DisableRecord"`
+	DisableRecord *uint64 `json:"DisableRecord,omitnil" name:"DisableRecord"`
 
 	// 助教Id列表。通过[注册用户]接口获取的UserId。
-	Assistants []*string `json:"Assistants,omitempty" name:"Assistants"`
+	Assistants []*string `json:"Assistants,omitnil" name:"Assistants"`
 
 	// rtc人数。
-	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitempty" name:"RTCAudienceNumber"`
+	RTCAudienceNumber *uint64 `json:"RTCAudienceNumber,omitnil" name:"RTCAudienceNumber"`
 
 	// 观看类型。
-	AudienceType *uint64 `json:"AudienceType,omitempty" name:"AudienceType"`
+	AudienceType *uint64 `json:"AudienceType,omitnil" name:"AudienceType"`
 
 	// 录制布局。
-	RecordLayout *uint64 `json:"RecordLayout,omitempty" name:"RecordLayout"`
+	RecordLayout *uint64 `json:"RecordLayout,omitnil" name:"RecordLayout"`
 
 	// 房间绑定的群组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 打开学生麦克风/摄像头的授权开关
-	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitnil" name:"EnableDirectControl"`
 
 	// 开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
-	InteractionMode *int64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+	InteractionMode *int64 `json:"InteractionMode,omitnil" name:"InteractionMode"`
 
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
-	VideoOrientation *int64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+	VideoOrientation *int64 `json:"VideoOrientation,omitnil" name:"VideoOrientation"`
 
 	// 开启课后评分。 0：不开启(默认)  1：开启
-	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitnil" name:"IsGradingRequiredPostClass"`
 
 	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
-	RoomType *int64 `json:"RoomType,omitempty" name:"RoomType"`
+	RoomType *int64 `json:"RoomType,omitnil" name:"RoomType"`
 }
 
 type RoomItem struct {
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 房间ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 房间状态。0 未开始 ；1进行中  ；2 已结束
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 实际开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RealStartTime *uint64 `json:"RealStartTime,omitempty" name:"RealStartTime"`
+	RealStartTime *uint64 `json:"RealStartTime,omitnil" name:"RealStartTime"`
 
 	// 实际结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RealEndTime *uint64 `json:"RealEndTime,omitempty" name:"RealEndTime"`
+	RealEndTime *uint64 `json:"RealEndTime,omitnil" name:"RealEndTime"`
 
 	// 分辨率。1 标清
 	// 2 高清
 	// 3 全高清
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Resolution *uint64 `json:"Resolution,omitempty" name:"Resolution"`
+	Resolution *uint64 `json:"Resolution,omitnil" name:"Resolution"`
 
 	// 最大允许连麦人数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxRTCMember *uint64 `json:"MaxRTCMember,omitempty" name:"MaxRTCMember"`
+	MaxRTCMember *uint64 `json:"MaxRTCMember,omitnil" name:"MaxRTCMember"`
 
 	// 房间录制地址。已废弃，使用新字段 RecordUrl
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReplayUrl *string `json:"ReplayUrl,omitempty" name:"ReplayUrl"`
+	ReplayUrl *string `json:"ReplayUrl,omitnil" name:"ReplayUrl"`
 
 	// 录制地址（协议为https)。仅在房间结束后存在。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
+	RecordUrl *string `json:"RecordUrl,omitnil" name:"RecordUrl"`
 
 	// 最高房间内人数（不包括老师），0表示不限制，默认为0
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxMicNumber *uint64 `json:"MaxMicNumber,omitempty" name:"MaxMicNumber"`
+	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil" name:"MaxMicNumber"`
 
 	// 打开学生麦克风/摄像头的授权开关 
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnableDirectControl *uint64 `json:"EnableDirectControl,omitempty" name:"EnableDirectControl"`
+	EnableDirectControl *uint64 `json:"EnableDirectControl,omitnil" name:"EnableDirectControl"`
 
 	// 开启专注模式。 0 收看全部角色音视频(默认) 1 只看老师和助教
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InteractionMode *int64 `json:"InteractionMode,omitempty" name:"InteractionMode"`
+	InteractionMode *int64 `json:"InteractionMode,omitnil" name:"InteractionMode"`
 
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VideoOrientation *int64 `json:"VideoOrientation,omitempty" name:"VideoOrientation"`
+	VideoOrientation *int64 `json:"VideoOrientation,omitnil" name:"VideoOrientation"`
 
 	// 开启课后评分。 0：不开启(默认)  1：开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitempty" name:"IsGradingRequiredPostClass"`
+	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitnil" name:"IsGradingRequiredPostClass"`
 
 	// 房间类型。0:小班课（默认值）；1:大班课；2:1V1（后续扩展）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RoomType *int64 `json:"RoomType,omitempty" name:"RoomType"`
+	RoomType *int64 `json:"RoomType,omitnil" name:"RoomType"`
 }
 
 type SceneItem struct {
@@ -4705,20 +4705,20 @@ type SceneItem struct {
 // Predefined struct for user
 type SetAppCustomContentRequestParams struct {
 	// 自定义内容。
-	CustomContent []*AppCustomContent `json:"CustomContent,omitempty" name:"CustomContent"`
+	CustomContent []*AppCustomContent `json:"CustomContent,omitnil" name:"CustomContent"`
 
 	// 应用ID。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 }
 
 type SetAppCustomContentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 自定义内容。
-	CustomContent []*AppCustomContent `json:"CustomContent,omitempty" name:"CustomContent"`
+	CustomContent []*AppCustomContent `json:"CustomContent,omitnil" name:"CustomContent"`
 
 	// 应用ID。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 }
 
 func (r *SetAppCustomContentRequest) ToJsonString() string {
@@ -4744,7 +4744,7 @@ func (r *SetAppCustomContentRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SetAppCustomContentResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SetAppCustomContentResponse struct {
@@ -4766,92 +4766,92 @@ func (r *SetAppCustomContentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SetWatermarkRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 老师视频区域的水印参数地址，设置为空字符串表示删除
-	TeacherUrl *string `json:"TeacherUrl,omitempty" name:"TeacherUrl"`
+	TeacherUrl *string `json:"TeacherUrl,omitnil" name:"TeacherUrl"`
 
 	// 白板视频区域的水印参数地址，设置为空字符串表示删除
-	BoardUrl *string `json:"BoardUrl,omitempty" name:"BoardUrl"`
+	BoardUrl *string `json:"BoardUrl,omitnil" name:"BoardUrl"`
 
 	// 视频默认图片（在没有视频流的时候显示），设置为空字符串表示删除
-	VideoUrl *string `json:"VideoUrl,omitempty" name:"VideoUrl"`
+	VideoUrl *string `json:"VideoUrl,omitnil" name:"VideoUrl"`
 
 	// 白板区域水印的宽度，取值:0-100，默认为0，表示区域X方向的百分比
-	BoardW *float64 `json:"BoardW,omitempty" name:"BoardW"`
+	BoardW *float64 `json:"BoardW,omitnil" name:"BoardW"`
 
 	// 白板区域水印的高度，取值:0-100，默认为0, 表示区域Y方向的百分比
-	BoardH *float64 `json:"BoardH,omitempty" name:"BoardH"`
+	BoardH *float64 `json:"BoardH,omitnil" name:"BoardH"`
 
 	// 白板区域水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
-	BoardX *float64 `json:"BoardX,omitempty" name:"BoardX"`
+	BoardX *float64 `json:"BoardX,omitnil" name:"BoardX"`
 
 	// 白板区域水印Y偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
-	BoardY *float64 `json:"BoardY,omitempty" name:"BoardY"`
+	BoardY *float64 `json:"BoardY,omitnil" name:"BoardY"`
 
 	// 老师视频区域水印的宽度，取值:0-100，默认为0，表示区域X方向的百分比
-	TeacherW *float64 `json:"TeacherW,omitempty" name:"TeacherW"`
+	TeacherW *float64 `json:"TeacherW,omitnil" name:"TeacherW"`
 
 	// 老师视频区域水印的高度，取值:0-100，默认为0, 表示区域Y方向的百分比
-	TeacherH *float64 `json:"TeacherH,omitempty" name:"TeacherH"`
+	TeacherH *float64 `json:"TeacherH,omitnil" name:"TeacherH"`
 
 	// 老师视频区域水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
-	TeacherX *float64 `json:"TeacherX,omitempty" name:"TeacherX"`
+	TeacherX *float64 `json:"TeacherX,omitnil" name:"TeacherX"`
 
 	// 老师视频区域水印Y偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
-	TeacherY *float64 `json:"TeacherY,omitempty" name:"TeacherY"`
+	TeacherY *float64 `json:"TeacherY,omitnil" name:"TeacherY"`
 
 	// 文字水印内容，设置为空字符串表示删除
-	Text *string `json:"Text,omitempty" name:"Text"`
+	Text *string `json:"Text,omitnil" name:"Text"`
 
 	// 文字水印颜色
-	TextColor *string `json:"TextColor,omitempty" name:"TextColor"`
+	TextColor *string `json:"TextColor,omitnil" name:"TextColor"`
 }
 
 type SetWatermarkRequest struct {
 	*tchttp.BaseRequest
 	
 	// 低代码互动课堂的SdkAppId。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 老师视频区域的水印参数地址，设置为空字符串表示删除
-	TeacherUrl *string `json:"TeacherUrl,omitempty" name:"TeacherUrl"`
+	TeacherUrl *string `json:"TeacherUrl,omitnil" name:"TeacherUrl"`
 
 	// 白板视频区域的水印参数地址，设置为空字符串表示删除
-	BoardUrl *string `json:"BoardUrl,omitempty" name:"BoardUrl"`
+	BoardUrl *string `json:"BoardUrl,omitnil" name:"BoardUrl"`
 
 	// 视频默认图片（在没有视频流的时候显示），设置为空字符串表示删除
-	VideoUrl *string `json:"VideoUrl,omitempty" name:"VideoUrl"`
+	VideoUrl *string `json:"VideoUrl,omitnil" name:"VideoUrl"`
 
 	// 白板区域水印的宽度，取值:0-100，默认为0，表示区域X方向的百分比
-	BoardW *float64 `json:"BoardW,omitempty" name:"BoardW"`
+	BoardW *float64 `json:"BoardW,omitnil" name:"BoardW"`
 
 	// 白板区域水印的高度，取值:0-100，默认为0, 表示区域Y方向的百分比
-	BoardH *float64 `json:"BoardH,omitempty" name:"BoardH"`
+	BoardH *float64 `json:"BoardH,omitnil" name:"BoardH"`
 
 	// 白板区域水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
-	BoardX *float64 `json:"BoardX,omitempty" name:"BoardX"`
+	BoardX *float64 `json:"BoardX,omitnil" name:"BoardX"`
 
 	// 白板区域水印Y偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
-	BoardY *float64 `json:"BoardY,omitempty" name:"BoardY"`
+	BoardY *float64 `json:"BoardY,omitnil" name:"BoardY"`
 
 	// 老师视频区域水印的宽度，取值:0-100，默认为0，表示区域X方向的百分比
-	TeacherW *float64 `json:"TeacherW,omitempty" name:"TeacherW"`
+	TeacherW *float64 `json:"TeacherW,omitnil" name:"TeacherW"`
 
 	// 老师视频区域水印的高度，取值:0-100，默认为0, 表示区域Y方向的百分比
-	TeacherH *float64 `json:"TeacherH,omitempty" name:"TeacherH"`
+	TeacherH *float64 `json:"TeacherH,omitnil" name:"TeacherH"`
 
 	// 老师视频区域水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
-	TeacherX *float64 `json:"TeacherX,omitempty" name:"TeacherX"`
+	TeacherX *float64 `json:"TeacherX,omitnil" name:"TeacherX"`
 
 	// 老师视频区域水印Y偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间
-	TeacherY *float64 `json:"TeacherY,omitempty" name:"TeacherY"`
+	TeacherY *float64 `json:"TeacherY,omitnil" name:"TeacherY"`
 
 	// 文字水印内容，设置为空字符串表示删除
-	Text *string `json:"Text,omitempty" name:"Text"`
+	Text *string `json:"Text,omitnil" name:"Text"`
 
 	// 文字水印颜色
-	TextColor *string `json:"TextColor,omitempty" name:"TextColor"`
+	TextColor *string `json:"TextColor,omitnil" name:"TextColor"`
 }
 
 func (r *SetWatermarkRequest) ToJsonString() string {
@@ -4889,7 +4889,7 @@ func (r *SetWatermarkRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SetWatermarkResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SetWatermarkResponse struct {
@@ -4911,14 +4911,14 @@ func (r *SetWatermarkResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type StartRoomRequestParams struct {
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 }
 
 type StartRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 }
 
 func (r *StartRoomRequest) ToJsonString() string {
@@ -4943,7 +4943,7 @@ func (r *StartRoomRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StartRoomResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type StartRoomResponse struct {
@@ -4965,30 +4965,30 @@ func (r *StartRoomResponse) FromJsonString(s string) error {
 type TextMarkConfig struct {
 	// 文字水印内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Text *string `json:"Text,omitempty" name:"Text"`
+	Text *string `json:"Text,omitnil" name:"Text"`
 
 	// 文字水印颜色
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Color *string `json:"Color,omitempty" name:"Color"`
+	Color *string `json:"Color,omitnil" name:"Color"`
 }
 
 // Predefined struct for user
 type UnbindDocumentFromRoomRequestParams struct {
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 文档ID。
-	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId *string `json:"DocumentId,omitnil" name:"DocumentId"`
 }
 
 type UnbindDocumentFromRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 房间ID。
-	RoomId *uint64 `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
 
 	// 文档ID。
-	DocumentId *string `json:"DocumentId,omitempty" name:"DocumentId"`
+	DocumentId *string `json:"DocumentId,omitnil" name:"DocumentId"`
 }
 
 func (r *UnbindDocumentFromRoomRequest) ToJsonString() string {
@@ -5014,7 +5014,7 @@ func (r *UnbindDocumentFromRoomRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UnbindDocumentFromRoomResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UnbindDocumentFromRoomResponse struct {
@@ -5036,43 +5036,43 @@ func (r *UnbindDocumentFromRoomResponse) FromJsonString(s string) error {
 type UserInfo struct {
 	// 应用Id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SdkAppId *uint64 `json:"SdkAppId,omitempty" name:"SdkAppId"`
+	SdkAppId *uint64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
 	// 用户Id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 用户昵称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 用户头像Url。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Avatar *string `json:"Avatar,omitempty" name:"Avatar"`
+	Avatar *string `json:"Avatar,omitnil" name:"Avatar"`
 
 	// 用户在客户系统的Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginId *string `json:"OriginId,omitempty" name:"OriginId"`
+	OriginId *string `json:"OriginId,omitnil" name:"OriginId"`
 }
 
 type WatermarkConfig struct {
 	// 水印图片的url
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 水印宽。为比例值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Width *float64 `json:"Width,omitempty" name:"Width"`
+	Width *float64 `json:"Width,omitnil" name:"Width"`
 
 	// 水印高。为比例值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Height *float64 `json:"Height,omitempty" name:"Height"`
+	Height *float64 `json:"Height,omitnil" name:"Height"`
 
 	// 水印X偏移, 取值:0-100, 表示区域X方向的百分比。比如50，则表示位于X轴中间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LocationX *float64 `json:"LocationX,omitempty" name:"LocationX"`
+	LocationX *float64 `json:"LocationX,omitnil" name:"LocationX"`
 
 	// 水印Y偏移, 取值:0-100, 表示区域Y方向的百分比。比如50，则表示位于Y轴中间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LocationY *float64 `json:"LocationY,omitempty" name:"LocationY"`
+	LocationY *float64 `json:"LocationY,omitnil" name:"LocationY"`
 }

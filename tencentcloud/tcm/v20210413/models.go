@@ -15,149 +15,149 @@
 package v20210413
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type APM struct {
 	// 是否启用
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// APM 实例，如果创建时传入的参数为空，则表示自动创建 APM 实例。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type AccessLogConfig struct {
 	// 是否启用
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 采用的模板，可选值：istio（默认）、trace
-	Template *string `json:"Template,omitempty" name:"Template"`
+	Template *string `json:"Template,omitnil" name:"Template"`
 
 	// 选中的范围
-	SelectedRange *SelectedRange `json:"SelectedRange,omitempty" name:"SelectedRange"`
+	SelectedRange *SelectedRange `json:"SelectedRange,omitnil" name:"SelectedRange"`
 
 	// 腾讯云日志服务相关参数
-	CLS *CLS `json:"CLS,omitempty" name:"CLS"`
+	CLS *CLS `json:"CLS,omitnil" name:"CLS"`
 
 	// 编码格式，可选值：TEXT、JSON
-	Encoding *string `json:"Encoding,omitempty" name:"Encoding"`
+	Encoding *string `json:"Encoding,omitnil" name:"Encoding"`
 
 	// 日志格式
-	Format *string `json:"Format,omitempty" name:"Format"`
+	Format *string `json:"Format,omitnil" name:"Format"`
 
 	// GRPC第三方服务器地址
-	Address *string `json:"Address,omitempty" name:"Address"`
+	Address *string `json:"Address,omitnil" name:"Address"`
 
 	// 是否启用GRPC第三方服务器
-	EnableServer *bool `json:"EnableServer,omitempty" name:"EnableServer"`
+	EnableServer *bool `json:"EnableServer,omitnil" name:"EnableServer"`
 
 	// 是否启用标准输出
-	EnableStdout *bool `json:"EnableStdout,omitempty" name:"EnableStdout"`
+	EnableStdout *bool `json:"EnableStdout,omitnil" name:"EnableStdout"`
 }
 
 type ActiveOperation struct {
 	// 操作Id
-	OperationId *string `json:"OperationId,omitempty" name:"OperationId"`
+	OperationId *string `json:"OperationId,omitnil" name:"OperationId"`
 
 	// 操作类型，取值范围：
 	// - LINK_CLUSTERS: 关联集群
 	// - RELINK_CLUSTERS: 重新关联集群
 	// - UNLINK_CLUSTERS: 解关联集群
 	// - INSTALL_MESH: 安装网格
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
 type AutoInjectionNamespaceState struct {
 	// 命名空间名称
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 注入状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	State *string `json:"State,omitempty" name:"State"`
+	State *string `json:"State,omitnil" name:"State"`
 }
 
 type CLS struct {
 	// 是否启用
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 日志集
-	LogSet *string `json:"LogSet,omitempty" name:"LogSet"`
+	LogSet *string `json:"LogSet,omitnil" name:"LogSet"`
 
 	// 日志主题
-	Topic *string `json:"Topic,omitempty" name:"Topic"`
+	Topic *string `json:"Topic,omitnil" name:"Topic"`
 
 	// 是否删除
-	NeedDelete *bool `json:"NeedDelete,omitempty" name:"NeedDelete"`
+	NeedDelete *bool `json:"NeedDelete,omitnil" name:"NeedDelete"`
 }
 
 type Cluster struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 地域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 集群角色，取值范围：
 	// - MASTER：控制面所在的主集群
 	// - REMOTE：主集群管理的远端集群
-	Role *string `json:"Role,omitempty" name:"Role"`
+	Role *string `json:"Role,omitnil" name:"Role"`
 
 	// 私有网络Id
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 子网Id
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// 名称，只读
-	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
 
 	// 状态，只读
-	State *string `json:"State,omitempty" name:"State"`
+	State *string `json:"State,omitnil" name:"State"`
 
 	// 关联时间，只读
-	LinkedTime *string `json:"LinkedTime,omitempty" name:"LinkedTime"`
+	LinkedTime *string `json:"LinkedTime,omitnil" name:"LinkedTime"`
 
 	// 集群配置
-	Config *ClusterConfig `json:"Config,omitempty" name:"Config"`
+	Config *ClusterConfig `json:"Config,omitnil" name:"Config"`
 
 	// 详细状态，只读
-	Status *ClusterStatus `json:"Status,omitempty" name:"Status"`
+	Status *ClusterStatus `json:"Status,omitnil" name:"Status"`
 
 	// 类型，取值范围：
 	// - TKE
 	// - EKS
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 集群关联的 Namespace 列表
-	HostedNamespaces []*string `json:"HostedNamespaces,omitempty" name:"HostedNamespaces"`
+	HostedNamespaces []*string `json:"HostedNamespaces,omitnil" name:"HostedNamespaces"`
 }
 
 type ClusterConfig struct {
 	// 自动注入SideCar的NameSpace
-	AutoInjectionNamespaceList []*string `json:"AutoInjectionNamespaceList,omitempty" name:"AutoInjectionNamespaceList"`
+	AutoInjectionNamespaceList []*string `json:"AutoInjectionNamespaceList,omitnil" name:"AutoInjectionNamespaceList"`
 
 	// Ingress配置列表
-	IngressGatewayList []*IngressGateway `json:"IngressGatewayList,omitempty" name:"IngressGatewayList"`
+	IngressGatewayList []*IngressGateway `json:"IngressGatewayList,omitnil" name:"IngressGatewayList"`
 
 	// Egress配置列表
-	EgressGatewayList []*EgressGateway `json:"EgressGatewayList,omitempty" name:"EgressGatewayList"`
+	EgressGatewayList []*EgressGateway `json:"EgressGatewayList,omitnil" name:"EgressGatewayList"`
 
 	// Istiod配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Istiod *IstiodConfig `json:"Istiod,omitempty" name:"Istiod"`
+	Istiod *IstiodConfig `json:"Istiod,omitnil" name:"Istiod"`
 
 	// 部署配置
-	DeployConfig *DeployConfig `json:"DeployConfig,omitempty" name:"DeployConfig"`
+	DeployConfig *DeployConfig `json:"DeployConfig,omitnil" name:"DeployConfig"`
 
 	// 自动注入命名空间状态列表
-	AutoInjectionNamespaceStateList []*AutoInjectionNamespaceState `json:"AutoInjectionNamespaceStateList,omitempty" name:"AutoInjectionNamespaceStateList"`
+	AutoInjectionNamespaceStateList []*AutoInjectionNamespaceState `json:"AutoInjectionNamespaceStateList,omitnil" name:"AutoInjectionNamespaceStateList"`
 }
 
 type ClusterStatus struct {
@@ -167,56 +167,56 @@ type ClusterStatus struct {
 	// - UNLINKING: 解关联中
 	// - LINK_FAILED: 关联失败
 	// - UNLINK_FAILED: 解关联失败
-	LinkState *string `json:"LinkState,omitempty" name:"LinkState"`
+	LinkState *string `json:"LinkState,omitnil" name:"LinkState"`
 
 	// 关联错误详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LinkErrorDetail *string `json:"LinkErrorDetail,omitempty" name:"LinkErrorDetail"`
+	LinkErrorDetail *string `json:"LinkErrorDetail,omitnil" name:"LinkErrorDetail"`
 }
 
 // Predefined struct for user
 type CreateMeshRequestParams struct {
 	// Mesh名称
-	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
 
 	// Mesh版本
-	MeshVersion *string `json:"MeshVersion,omitempty" name:"MeshVersion"`
+	MeshVersion *string `json:"MeshVersion,omitnil" name:"MeshVersion"`
 
 	// Mesh类型，取值范围：
 	// - HOSTED：托管网格
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// Mesh配置
-	Config *MeshConfig `json:"Config,omitempty" name:"Config"`
+	Config *MeshConfig `json:"Config,omitnil" name:"Config"`
 
 	// 关联集群
-	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
+	ClusterList []*Cluster `json:"ClusterList,omitnil" name:"ClusterList"`
 
 	// 标签列表
-	TagList []*Tag `json:"TagList,omitempty" name:"TagList"`
+	TagList []*Tag `json:"TagList,omitnil" name:"TagList"`
 }
 
 type CreateMeshRequest struct {
 	*tchttp.BaseRequest
 	
 	// Mesh名称
-	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
 
 	// Mesh版本
-	MeshVersion *string `json:"MeshVersion,omitempty" name:"MeshVersion"`
+	MeshVersion *string `json:"MeshVersion,omitnil" name:"MeshVersion"`
 
 	// Mesh类型，取值范围：
 	// - HOSTED：托管网格
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// Mesh配置
-	Config *MeshConfig `json:"Config,omitempty" name:"Config"`
+	Config *MeshConfig `json:"Config,omitnil" name:"Config"`
 
 	// 关联集群
-	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
+	ClusterList []*Cluster `json:"ClusterList,omitnil" name:"ClusterList"`
 
 	// 标签列表
-	TagList []*Tag `json:"TagList,omitempty" name:"TagList"`
+	TagList []*Tag `json:"TagList,omitnil" name:"TagList"`
 }
 
 func (r *CreateMeshRequest) ToJsonString() string {
@@ -246,10 +246,10 @@ func (r *CreateMeshRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateMeshResponseParams struct {
 	// 创建的Mesh的Id
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateMeshResponse struct {
@@ -274,59 +274,59 @@ type CrossRegionConfig struct {
 
 type CustomPromConfig struct {
 	// Prometheus 访问地址
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 认证方式
-	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+	AuthType *string `json:"AuthType,omitnil" name:"AuthType"`
 
 	// 是否公网地址，缺省为 false
-	IsPublicAddr *bool `json:"IsPublicAddr,omitempty" name:"IsPublicAddr"`
+	IsPublicAddr *bool `json:"IsPublicAddr,omitnil" name:"IsPublicAddr"`
 
 	// 虚拟网络id
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// Prometheus 用户名（用于 basic 认证方式）
-	Username *string `json:"Username,omitempty" name:"Username"`
+	Username *string `json:"Username,omitnil" name:"Username"`
 
 	// Prometheus 密码（用于 basic 认证方式）
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 }
 
 // Predefined struct for user
 type DeleteMeshRequestParams struct {
 	// 需要删除的MeshId
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// CLS组件是否被删除
-	NeedDeleteCLS *bool `json:"NeedDeleteCLS,omitempty" name:"NeedDeleteCLS"`
+	NeedDeleteCLS *bool `json:"NeedDeleteCLS,omitnil" name:"NeedDeleteCLS"`
 
 	// TMP组件是否被删除
-	NeedDeleteTMP *bool `json:"NeedDeleteTMP,omitempty" name:"NeedDeleteTMP"`
+	NeedDeleteTMP *bool `json:"NeedDeleteTMP,omitnil" name:"NeedDeleteTMP"`
 
 	// APM组件是否被删除
-	NeedDeleteAPM *bool `json:"NeedDeleteAPM,omitempty" name:"NeedDeleteAPM"`
+	NeedDeleteAPM *bool `json:"NeedDeleteAPM,omitnil" name:"NeedDeleteAPM"`
 
 	// Grafana组件是否被删除
-	NeedDeleteGrafana *bool `json:"NeedDeleteGrafana,omitempty" name:"NeedDeleteGrafana"`
+	NeedDeleteGrafana *bool `json:"NeedDeleteGrafana,omitnil" name:"NeedDeleteGrafana"`
 }
 
 type DeleteMeshRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要删除的MeshId
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// CLS组件是否被删除
-	NeedDeleteCLS *bool `json:"NeedDeleteCLS,omitempty" name:"NeedDeleteCLS"`
+	NeedDeleteCLS *bool `json:"NeedDeleteCLS,omitnil" name:"NeedDeleteCLS"`
 
 	// TMP组件是否被删除
-	NeedDeleteTMP *bool `json:"NeedDeleteTMP,omitempty" name:"NeedDeleteTMP"`
+	NeedDeleteTMP *bool `json:"NeedDeleteTMP,omitnil" name:"NeedDeleteTMP"`
 
 	// APM组件是否被删除
-	NeedDeleteAPM *bool `json:"NeedDeleteAPM,omitempty" name:"NeedDeleteAPM"`
+	NeedDeleteAPM *bool `json:"NeedDeleteAPM,omitnil" name:"NeedDeleteAPM"`
 
 	// Grafana组件是否被删除
-	NeedDeleteGrafana *bool `json:"NeedDeleteGrafana,omitempty" name:"NeedDeleteGrafana"`
+	NeedDeleteGrafana *bool `json:"NeedDeleteGrafana,omitnil" name:"NeedDeleteGrafana"`
 }
 
 func (r *DeleteMeshRequest) ToJsonString() string {
@@ -355,7 +355,7 @@ func (r *DeleteMeshRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMeshResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteMeshResponse struct {
@@ -378,23 +378,23 @@ type DeployConfig struct {
 	// 部署类型，取值范围：
 	// - SPECIFIC：专有模式
 	// - AUTO：普通模式
-	NodeSelectType *string `json:"NodeSelectType,omitempty" name:"NodeSelectType"`
+	NodeSelectType *string `json:"NodeSelectType,omitnil" name:"NodeSelectType"`
 
 	// 指定的节点
-	Nodes []*string `json:"Nodes,omitempty" name:"Nodes"`
+	Nodes []*string `json:"Nodes,omitnil" name:"Nodes"`
 }
 
 // Predefined struct for user
 type DescribeAccessLogConfigRequestParams struct {
 	// mesh名字
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 }
 
 type DescribeAccessLogConfigRequest struct {
 	*tchttp.BaseRequest
 	
 	// mesh名字
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 }
 
 func (r *DescribeAccessLogConfigRequest) ToJsonString() string {
@@ -419,39 +419,39 @@ func (r *DescribeAccessLogConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessLogConfigResponseParams struct {
 	// 访问日志输出路径。默认 /dev/stdout
-	File *string `json:"File,omitempty" name:"File"`
+	File *string `json:"File,omitnil" name:"File"`
 
 	// 访问日志的格式。
-	Format *string `json:"Format,omitempty" name:"Format"`
+	Format *string `json:"Format,omitnil" name:"Format"`
 
 	// 访问日志输出编码，可取值为 "TEXT" 或 "JSON"，默认 TEXT"
-	Encoding *string `json:"Encoding,omitempty" name:"Encoding"`
+	Encoding *string `json:"Encoding,omitnil" name:"Encoding"`
 
 	// 选中的范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SelectedRange *SelectedRange `json:"SelectedRange,omitempty" name:"SelectedRange"`
+	SelectedRange *SelectedRange `json:"SelectedRange,omitnil" name:"SelectedRange"`
 
 	// 采用的模板，可取值为"istio" 或 "trace"，默认为"istio"
-	Template *string `json:"Template,omitempty" name:"Template"`
+	Template *string `json:"Template,omitnil" name:"Template"`
 
 	// 腾讯云日志服务相关参数
-	CLS *CLS `json:"CLS,omitempty" name:"CLS"`
+	CLS *CLS `json:"CLS,omitnil" name:"CLS"`
 
 	// GRPC第三方服务器地址
-	Address *string `json:"Address,omitempty" name:"Address"`
+	Address *string `json:"Address,omitnil" name:"Address"`
 
 	// 是否启用GRPC第三方服务器
-	EnableServer *bool `json:"EnableServer,omitempty" name:"EnableServer"`
+	EnableServer *bool `json:"EnableServer,omitnil" name:"EnableServer"`
 
 	// 是否启用标准输出
-	EnableStdout *bool `json:"EnableStdout,omitempty" name:"EnableStdout"`
+	EnableStdout *bool `json:"EnableStdout,omitnil" name:"EnableStdout"`
 
 	// 是否启用访问日志采集
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAccessLogConfigResponse struct {
@@ -473,26 +473,26 @@ func (r *DescribeAccessLogConfigResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMeshListRequestParams struct {
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 分页限制
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeMeshListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 分页限制
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeMeshListRequest) ToJsonString() string {
@@ -520,13 +520,13 @@ func (r *DescribeMeshListRequest) FromJsonString(s string) error {
 type DescribeMeshListResponseParams struct {
 	// 查询到的网格信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MeshList []*Mesh `json:"MeshList,omitempty" name:"MeshList"`
+	MeshList []*Mesh `json:"MeshList,omitnil" name:"MeshList"`
 
 	// 总数
-	Total *int64 `json:"Total,omitempty" name:"Total"`
+	Total *int64 `json:"Total,omitnil" name:"Total"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeMeshListResponse struct {
@@ -548,14 +548,14 @@ func (r *DescribeMeshListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMeshRequestParams struct {
 	// 需要查询的网格 Id
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 }
 
 type DescribeMeshRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要查询的网格 Id
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 }
 
 func (r *DescribeMeshRequest) ToJsonString() string {
@@ -580,10 +580,10 @@ func (r *DescribeMeshRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMeshResponseParams struct {
 	// Mesh详细信息
-	Mesh *Mesh `json:"Mesh,omitempty" name:"Mesh"`
+	Mesh *Mesh `json:"Mesh,omitnil" name:"Mesh"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeMeshResponse struct {
@@ -604,189 +604,189 @@ func (r *DescribeMeshResponse) FromJsonString(s string) error {
 
 type EgressGateway struct {
 	// Egress名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 所在的Namespace
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 工作负载配置
-	Workload *WorkloadConfig `json:"Workload,omitempty" name:"Workload"`
+	Workload *WorkloadConfig `json:"Workload,omitnil" name:"Workload"`
 
 	// 工作负载的状态
-	Status *EgressGatewayStatus `json:"Status,omitempty" name:"Status"`
+	Status *EgressGatewayStatus `json:"Status,omitnil" name:"Status"`
 }
 
 type EgressGatewayStatus struct {
 	// egress gateway的当前版本
-	CurrentVersion *string `json:"CurrentVersion,omitempty" name:"CurrentVersion"`
+	CurrentVersion *string `json:"CurrentVersion,omitnil" name:"CurrentVersion"`
 
 	// egress gateway的目标版本
-	DesiredVersion *string `json:"DesiredVersion,omitempty" name:"DesiredVersion"`
+	DesiredVersion *string `json:"DesiredVersion,omitnil" name:"DesiredVersion"`
 
 	// egress gateway的状态，取值：running，upgrading，rollbacking
-	State *string `json:"State,omitempty" name:"State"`
+	State *string `json:"State,omitnil" name:"State"`
 }
 
 type ExtensiveCluster struct {
 	// Cluster ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 可用区
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
 }
 
 type ExtensiveClusters struct {
 	// 4层集群配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	L4Clusters []*ExtensiveCluster `json:"L4Clusters,omitempty" name:"L4Clusters"`
+	L4Clusters []*ExtensiveCluster `json:"L4Clusters,omitnil" name:"L4Clusters"`
 
 	// 7层集群配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	L7Clusters []*ExtensiveCluster `json:"L7Clusters,omitempty" name:"L7Clusters"`
+	L7Clusters []*ExtensiveCluster `json:"L7Clusters,omitnil" name:"L7Clusters"`
 }
 
 type Filter struct {
 	// 需要过滤的字段。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 字段的过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values"`
+	Values []*string `json:"Values,omitnil" name:"Values"`
 }
 
 type GrafanaInfo struct {
 	// 是否开启
-	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
 
 	// 内网地址
-	InternalURL *string `json:"InternalURL,omitempty" name:"InternalURL"`
+	InternalURL *string `json:"InternalURL,omitnil" name:"InternalURL"`
 
 	// 公网地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublicURL *string `json:"PublicURL,omitempty" name:"PublicURL"`
+	PublicURL *string `json:"PublicURL,omitnil" name:"PublicURL"`
 
 	// 公网失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublicFailedReason *string `json:"PublicFailedReason,omitempty" name:"PublicFailedReason"`
+	PublicFailedReason *string `json:"PublicFailedReason,omitnil" name:"PublicFailedReason"`
 
 	// 公网失败详细信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublicFailedMessage *string `json:"PublicFailedMessage,omitempty" name:"PublicFailedMessage"`
+	PublicFailedMessage *string `json:"PublicFailedMessage,omitnil" name:"PublicFailedMessage"`
 }
 
 type HorizontalPodAutoscalerSpec struct {
 	// 最小副本数
-	MinReplicas *int64 `json:"MinReplicas,omitempty" name:"MinReplicas"`
+	MinReplicas *int64 `json:"MinReplicas,omitnil" name:"MinReplicas"`
 
 	// 最大副本数
-	MaxReplicas *int64 `json:"MaxReplicas,omitempty" name:"MaxReplicas"`
+	MaxReplicas *int64 `json:"MaxReplicas,omitnil" name:"MaxReplicas"`
 
 	// 用于计算副本数的指标
-	Metrics []*MetricSpec `json:"Metrics,omitempty" name:"Metrics"`
+	Metrics []*MetricSpec `json:"Metrics,omitnil" name:"Metrics"`
 }
 
 type IngressGateway struct {
 	// IngressGateway 实例名字
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 集群 ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// Service 配置
-	Service *Service `json:"Service,omitempty" name:"Service"`
+	Service *Service `json:"Service,omitnil" name:"Service"`
 
 	// Workload 配置
-	Workload *WorkloadConfig `json:"Workload,omitempty" name:"Workload"`
+	Workload *WorkloadConfig `json:"Workload,omitnil" name:"Workload"`
 
 	// 负载均衡配置，自动创建 CLB 时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LoadBalancer *LoadBalancer `json:"LoadBalancer,omitempty" name:"LoadBalancer"`
+	LoadBalancer *LoadBalancer `json:"LoadBalancer,omitnil" name:"LoadBalancer"`
 
 	// IngressGateway 状态信息，只读
-	Status *IngressGatewayStatus `json:"Status,omitempty" name:"Status"`
+	Status *IngressGatewayStatus `json:"Status,omitnil" name:"Status"`
 
 	// 负载均衡实例ID，使用已有 CLB 时返回
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
 }
 
 type IngressGatewayStatus struct {
 	// 负载均衡实例状态
-	LoadBalancer *LoadBalancerStatus `json:"LoadBalancer,omitempty" name:"LoadBalancer"`
+	LoadBalancer *LoadBalancerStatus `json:"LoadBalancer,omitnil" name:"LoadBalancer"`
 
 	// ingress gateway 当前的版本
-	CurrentVersion *string `json:"CurrentVersion,omitempty" name:"CurrentVersion"`
+	CurrentVersion *string `json:"CurrentVersion,omitnil" name:"CurrentVersion"`
 
 	// ingress gateway 目标的版本
-	DesiredVersion *string `json:"DesiredVersion,omitempty" name:"DesiredVersion"`
+	DesiredVersion *string `json:"DesiredVersion,omitnil" name:"DesiredVersion"`
 
 	// ingress gateway的状态，取值running, upgrading, rollbacking
-	State *string `json:"State,omitempty" name:"State"`
+	State *string `json:"State,omitnil" name:"State"`
 }
 
 type InjectConfig struct {
 	// 不需要进行代理的 ip 地址范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExcludeIPRanges []*string `json:"ExcludeIPRanges,omitempty" name:"ExcludeIPRanges"`
+	ExcludeIPRanges []*string `json:"ExcludeIPRanges,omitnil" name:"ExcludeIPRanges"`
 
 	// 是否等待sidecar启动
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HoldApplicationUntilProxyStarts *bool `json:"HoldApplicationUntilProxyStarts,omitempty" name:"HoldApplicationUntilProxyStarts"`
+	HoldApplicationUntilProxyStarts *bool `json:"HoldApplicationUntilProxyStarts,omitnil" name:"HoldApplicationUntilProxyStarts"`
 
 	// 是否允许sidecar等待
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HoldProxyUntilApplicationEnds *bool `json:"HoldProxyUntilApplicationEnds,omitempty" name:"HoldProxyUntilApplicationEnds"`
+	HoldProxyUntilApplicationEnds *bool `json:"HoldProxyUntilApplicationEnds,omitnil" name:"HoldProxyUntilApplicationEnds"`
 }
 
 type IstioConfig struct {
 	// 外部流量策略
-	OutboundTrafficPolicy *string `json:"OutboundTrafficPolicy,omitempty" name:"OutboundTrafficPolicy"`
+	OutboundTrafficPolicy *string `json:"OutboundTrafficPolicy,omitnil" name:"OutboundTrafficPolicy"`
 
 	// 调用链配置（Deprecated，请使用 MeshConfig.Tracing 进行配置）
-	Tracing *TracingConfig `json:"Tracing,omitempty" name:"Tracing"`
+	Tracing *TracingConfig `json:"Tracing,omitnil" name:"Tracing"`
 
 	// 禁用策略检查功能
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DisablePolicyChecks *bool `json:"DisablePolicyChecks,omitempty" name:"DisablePolicyChecks"`
+	DisablePolicyChecks *bool `json:"DisablePolicyChecks,omitnil" name:"DisablePolicyChecks"`
 
 	// 支持HTTP1.0协议
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnablePilotHTTP *bool `json:"EnablePilotHTTP,omitempty" name:"EnablePilotHTTP"`
+	EnablePilotHTTP *bool `json:"EnablePilotHTTP,omitnil" name:"EnablePilotHTTP"`
 
 	// 禁用HTTP重试策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DisableHTTPRetry *bool `json:"DisableHTTPRetry,omitempty" name:"DisableHTTPRetry"`
+	DisableHTTPRetry *bool `json:"DisableHTTPRetry,omitnil" name:"DisableHTTPRetry"`
 
 	// SmartDNS策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SmartDNS *SmartDNSConfig `json:"SmartDNS,omitempty" name:"SmartDNS"`
+	SmartDNS *SmartDNSConfig `json:"SmartDNS,omitnil" name:"SmartDNS"`
 }
 
 type IstiodConfig struct {
 	// 工作负载配置
-	Workload *WorkloadConfig `json:"Workload,omitempty" name:"Workload"`
+	Workload *WorkloadConfig `json:"Workload,omitnil" name:"Workload"`
 }
 
 // Predefined struct for user
 type LinkClusterListRequestParams struct {
 	// 网格Id
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// 关联集群
-	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
+	ClusterList []*Cluster `json:"ClusterList,omitnil" name:"ClusterList"`
 }
 
 type LinkClusterListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 网格Id
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// 关联集群
-	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
+	ClusterList []*Cluster `json:"ClusterList,omitnil" name:"ClusterList"`
 }
 
 func (r *LinkClusterListRequest) ToJsonString() string {
@@ -812,7 +812,7 @@ func (r *LinkClusterListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type LinkClusterListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type LinkClusterListResponse struct {
@@ -834,20 +834,20 @@ func (r *LinkClusterListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type LinkPrometheusRequestParams struct {
 	// 网格ID
-	MeshID *string `json:"MeshID,omitempty" name:"MeshID"`
+	MeshID *string `json:"MeshID,omitnil" name:"MeshID"`
 
 	// 配置
-	Prometheus *PrometheusConfig `json:"Prometheus,omitempty" name:"Prometheus"`
+	Prometheus *PrometheusConfig `json:"Prometheus,omitnil" name:"Prometheus"`
 }
 
 type LinkPrometheusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 网格ID
-	MeshID *string `json:"MeshID,omitempty" name:"MeshID"`
+	MeshID *string `json:"MeshID,omitnil" name:"MeshID"`
 
 	// 配置
-	Prometheus *PrometheusConfig `json:"Prometheus,omitempty" name:"Prometheus"`
+	Prometheus *PrometheusConfig `json:"Prometheus,omitnil" name:"Prometheus"`
 }
 
 func (r *LinkPrometheusRequest) ToJsonString() string {
@@ -873,7 +873,7 @@ func (r *LinkPrometheusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type LinkPrometheusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type LinkPrometheusResponse struct {
@@ -896,78 +896,78 @@ type LoadBalancer struct {
 	// 负载均衡实例的网络类型：
 	// OPEN：公网属性， INTERNAL：内网属性。
 	// 只读。
-	LoadBalancerType *string `json:"LoadBalancerType,omitempty" name:"LoadBalancerType"`
+	LoadBalancerType *string `json:"LoadBalancerType,omitnil" name:"LoadBalancerType"`
 
 	// 负载均衡实例所在的子网（仅对内网VPC型LB有意义），只读。
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// TRAFFIC_POSTPAID_BY_HOUR 按流量按小时后计费 ; BANDWIDTH_POSTPAID_BY_HOUR 按带宽按小时后计费;只读。
-	InternetChargeType *string `json:"InternetChargeType,omitempty" name:"InternetChargeType"`
+	InternetChargeType *string `json:"InternetChargeType,omitnil" name:"InternetChargeType"`
 
 	// 最大出带宽，单位Mbps，仅对公网属性的LB生效，默认值 10
-	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil" name:"InternetMaxBandwidthOut"`
 
 	// 可用区 ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ZoneID *string `json:"ZoneID,omitempty" name:"ZoneID"`
+	ZoneID *string `json:"ZoneID,omitnil" name:"ZoneID"`
 
 	// 运营商类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VipIsp *string `json:"VipIsp,omitempty" name:"VipIsp"`
+	VipIsp *string `json:"VipIsp,omitnil" name:"VipIsp"`
 
 	// TGW Group 名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TgwGroupName *string `json:"TgwGroupName,omitempty" name:"TgwGroupName"`
+	TgwGroupName *string `json:"TgwGroupName,omitnil" name:"TgwGroupName"`
 
 	// IP 类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AddressIPVersion *string `json:"AddressIPVersion,omitempty" name:"AddressIPVersion"`
+	AddressIPVersion *string `json:"AddressIPVersion,omitnil" name:"AddressIPVersion"`
 
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 内网独占集群配置列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExtensiveClusters *ExtensiveClusters `json:"ExtensiveClusters,omitempty" name:"ExtensiveClusters"`
+	ExtensiveClusters *ExtensiveClusters `json:"ExtensiveClusters,omitnil" name:"ExtensiveClusters"`
 
 	// 负载均衡跨地域配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CrossRegionConfig *CrossRegionConfig `json:"CrossRegionConfig,omitempty" name:"CrossRegionConfig"`
+	CrossRegionConfig *CrossRegionConfig `json:"CrossRegionConfig,omitnil" name:"CrossRegionConfig"`
 }
 
 type LoadBalancerStatus struct {
 	// 负载均衡实例 ID
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
 
 	// 负载均衡实例名字
-	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
+	LoadBalancerName *string `json:"LoadBalancerName,omitnil" name:"LoadBalancerName"`
 
 	// 负载均衡实例 VIP
-	LoadBalancerVip *string `json:"LoadBalancerVip,omitempty" name:"LoadBalancerVip"`
+	LoadBalancerVip *string `json:"LoadBalancerVip,omitnil" name:"LoadBalancerVip"`
 
 	// 负载均衡实例 Hostname
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LoadBalancerHostname *string `json:"LoadBalancerHostname,omitempty" name:"LoadBalancerHostname"`
+	LoadBalancerHostname *string `json:"LoadBalancerHostname,omitnil" name:"LoadBalancerHostname"`
 }
 
 type Mesh struct {
 	// Mesh实例Id
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// Mesh名称
-	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
 
 	// Mesh类型，取值范围：
 	// - STANDALONE：独立网格
 	// - HOSTED：托管网格
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 地域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 版本
-	Version *string `json:"Version,omitempty" name:"Version"`
+	Version *string `json:"Version,omitnil" name:"Version"`
 
 	// Mesh状态，取值范围：
 	// - PENDING：等待中
@@ -982,152 +982,152 @@ type Mesh struct {
 	// - DELETE_FAILED：删除失败
 	// - UPGRADE_FAILED：升级失败
 	// - ROLLBACK_FAILED：回滚失败
-	State *string `json:"State,omitempty" name:"State"`
+	State *string `json:"State,omitnil" name:"State"`
 
 	// 创建时间
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+	UpdatedTime *string `json:"UpdatedTime,omitnil" name:"UpdatedTime"`
 
 	// 集群列表
-	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
+	ClusterList []*Cluster `json:"ClusterList,omitnil" name:"ClusterList"`
 
 	// Mesh配置
-	Config *MeshConfig `json:"Config,omitempty" name:"Config"`
+	Config *MeshConfig `json:"Config,omitnil" name:"Config"`
 
 	// Mesh详细状态
-	Status *MeshStatus `json:"Status,omitempty" name:"Status"`
+	Status *MeshStatus `json:"Status,omitnil" name:"Status"`
 
 	// 标签列表
-	TagList []*Tag `json:"TagList,omitempty" name:"TagList"`
+	TagList []*Tag `json:"TagList,omitnil" name:"TagList"`
 }
 
 type MeshConfig struct {
 	// Istio配置
-	Istio *IstioConfig `json:"Istio,omitempty" name:"Istio"`
+	Istio *IstioConfig `json:"Istio,omitnil" name:"Istio"`
 
 	// AccessLog配置
-	AccessLog *AccessLogConfig `json:"AccessLog,omitempty" name:"AccessLog"`
+	AccessLog *AccessLogConfig `json:"AccessLog,omitnil" name:"AccessLog"`
 
 	// Prometheus配置
-	Prometheus *PrometheusConfig `json:"Prometheus,omitempty" name:"Prometheus"`
+	Prometheus *PrometheusConfig `json:"Prometheus,omitnil" name:"Prometheus"`
 
 	// 自动注入配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Inject *InjectConfig `json:"Inject,omitempty" name:"Inject"`
+	Inject *InjectConfig `json:"Inject,omitnil" name:"Inject"`
 
 	// 调用跟踪配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tracing *TracingConfig `json:"Tracing,omitempty" name:"Tracing"`
+	Tracing *TracingConfig `json:"Tracing,omitnil" name:"Tracing"`
 
 	// Sidecar自定义资源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SidecarResources *ResourceRequirements `json:"SidecarResources,omitempty" name:"SidecarResources"`
+	SidecarResources *ResourceRequirements `json:"SidecarResources,omitnil" name:"SidecarResources"`
 }
 
 type MeshStatus struct {
 	// 服务数量
-	ServiceCount *int64 `json:"ServiceCount,omitempty" name:"ServiceCount"`
+	ServiceCount *int64 `json:"ServiceCount,omitnil" name:"ServiceCount"`
 
 	// 灰度升级的版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CanaryVersion *string `json:"CanaryVersion,omitempty" name:"CanaryVersion"`
+	CanaryVersion *string `json:"CanaryVersion,omitnil" name:"CanaryVersion"`
 
 	// 已废弃
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Prometheus []*PrometheusStatus `json:"Prometheus,omitempty" name:"Prometheus"`
+	Prometheus []*PrometheusStatus `json:"Prometheus,omitnil" name:"Prometheus"`
 
 	// 状态附带信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StateMessage *string `json:"StateMessage,omitempty" name:"StateMessage"`
+	StateMessage *string `json:"StateMessage,omitnil" name:"StateMessage"`
 
 	// 正在执行的异步操作
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActiveOperationList []*ActiveOperation `json:"ActiveOperationList,omitempty" name:"ActiveOperationList"`
+	ActiveOperationList []*ActiveOperation `json:"ActiveOperationList,omitnil" name:"ActiveOperationList"`
 
 	// 获取TPS信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TPS *PrometheusStatus `json:"TPS,omitempty" name:"TPS"`
+	TPS *PrometheusStatus `json:"TPS,omitnil" name:"TPS"`
 }
 
 type MetricSpec struct {
 	// 指标来源类型，支持 Pods/Resource
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 使用自定义指标扩进行自动扩缩容
-	Pods *PodsMetricSource `json:"Pods,omitempty" name:"Pods"`
+	Pods *PodsMetricSource `json:"Pods,omitnil" name:"Pods"`
 
 	// 使用资源指标扩进行自动扩缩容
-	Resource *ResourceMetricSource `json:"Resource,omitempty" name:"Resource"`
+	Resource *ResourceMetricSource `json:"Resource,omitnil" name:"Resource"`
 }
 
 // Predefined struct for user
 type ModifyAccessLogConfigRequestParams struct {
 	// mesh ID
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// 选中的范围
-	SelectedRange *SelectedRange `json:"SelectedRange,omitempty" name:"SelectedRange"`
+	SelectedRange *SelectedRange `json:"SelectedRange,omitnil" name:"SelectedRange"`
 
 	// 采用的模板，可选值：istio（默认）、trace、custom
-	Template *string `json:"Template,omitempty" name:"Template"`
+	Template *string `json:"Template,omitnil" name:"Template"`
 
 	// 是否启用
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 腾讯云日志服务相关参数
-	CLS *CLS `json:"CLS,omitempty" name:"CLS"`
+	CLS *CLS `json:"CLS,omitnil" name:"CLS"`
 
 	// 编码格式，可选值：TEXT、JSON
-	Encoding *string `json:"Encoding,omitempty" name:"Encoding"`
+	Encoding *string `json:"Encoding,omitnil" name:"Encoding"`
 
 	// 日志格式
-	Format *string `json:"Format,omitempty" name:"Format"`
+	Format *string `json:"Format,omitnil" name:"Format"`
 
 	// 是否启用标准输出
-	EnableStdout *bool `json:"EnableStdout,omitempty" name:"EnableStdout"`
+	EnableStdout *bool `json:"EnableStdout,omitnil" name:"EnableStdout"`
 
 	// 是否启动GRPC第三方服务器
-	EnableServer *bool `json:"EnableServer,omitempty" name:"EnableServer"`
+	EnableServer *bool `json:"EnableServer,omitnil" name:"EnableServer"`
 
 	// GRPC第三方服务器地址
-	Address *string `json:"Address,omitempty" name:"Address"`
+	Address *string `json:"Address,omitnil" name:"Address"`
 }
 
 type ModifyAccessLogConfigRequest struct {
 	*tchttp.BaseRequest
 	
 	// mesh ID
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// 选中的范围
-	SelectedRange *SelectedRange `json:"SelectedRange,omitempty" name:"SelectedRange"`
+	SelectedRange *SelectedRange `json:"SelectedRange,omitnil" name:"SelectedRange"`
 
 	// 采用的模板，可选值：istio（默认）、trace、custom
-	Template *string `json:"Template,omitempty" name:"Template"`
+	Template *string `json:"Template,omitnil" name:"Template"`
 
 	// 是否启用
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 腾讯云日志服务相关参数
-	CLS *CLS `json:"CLS,omitempty" name:"CLS"`
+	CLS *CLS `json:"CLS,omitnil" name:"CLS"`
 
 	// 编码格式，可选值：TEXT、JSON
-	Encoding *string `json:"Encoding,omitempty" name:"Encoding"`
+	Encoding *string `json:"Encoding,omitnil" name:"Encoding"`
 
 	// 日志格式
-	Format *string `json:"Format,omitempty" name:"Format"`
+	Format *string `json:"Format,omitnil" name:"Format"`
 
 	// 是否启用标准输出
-	EnableStdout *bool `json:"EnableStdout,omitempty" name:"EnableStdout"`
+	EnableStdout *bool `json:"EnableStdout,omitnil" name:"EnableStdout"`
 
 	// 是否启动GRPC第三方服务器
-	EnableServer *bool `json:"EnableServer,omitempty" name:"EnableServer"`
+	EnableServer *bool `json:"EnableServer,omitnil" name:"EnableServer"`
 
 	// GRPC第三方服务器地址
-	Address *string `json:"Address,omitempty" name:"Address"`
+	Address *string `json:"Address,omitnil" name:"Address"`
 }
 
 func (r *ModifyAccessLogConfigRequest) ToJsonString() string {
@@ -1161,7 +1161,7 @@ func (r *ModifyAccessLogConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAccessLogConfigResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAccessLogConfigResponse struct {
@@ -1183,32 +1183,32 @@ func (r *ModifyAccessLogConfigResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyMeshRequestParams struct {
 	// 需要修改的网格Id
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// 修改的网格名称
-	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
 
 	// 修改的网格配置
-	Config *MeshConfig `json:"Config,omitempty" name:"Config"`
+	Config *MeshConfig `json:"Config,omitnil" name:"Config"`
 
 	// 修改的集群配置
-	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
+	ClusterList []*Cluster `json:"ClusterList,omitnil" name:"ClusterList"`
 }
 
 type ModifyMeshRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要修改的网格Id
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// 修改的网格名称
-	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
 
 	// 修改的网格配置
-	Config *MeshConfig `json:"Config,omitempty" name:"Config"`
+	Config *MeshConfig `json:"Config,omitnil" name:"Config"`
 
 	// 修改的集群配置
-	ClusterList []*Cluster `json:"ClusterList,omitempty" name:"ClusterList"`
+	ClusterList []*Cluster `json:"ClusterList,omitnil" name:"ClusterList"`
 }
 
 func (r *ModifyMeshRequest) ToJsonString() string {
@@ -1236,7 +1236,7 @@ func (r *ModifyMeshRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyMeshResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyMeshResponse struct {
@@ -1258,38 +1258,38 @@ func (r *ModifyMeshResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTracingConfigRequestParams struct {
 	// mesh名字
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// 是否启用调用跟踪
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 腾讯云 APM 服务相关参数
-	APM *APM `json:"APM,omitempty" name:"APM"`
+	APM *APM `json:"APM,omitnil" name:"APM"`
 
 	// 调用跟踪采样值
-	Sampling *float64 `json:"Sampling,omitempty" name:"Sampling"`
+	Sampling *float64 `json:"Sampling,omitnil" name:"Sampling"`
 
 	// 调用追踪Zipkin相关配置
-	Zipkin *TracingZipkin `json:"Zipkin,omitempty" name:"Zipkin"`
+	Zipkin *TracingZipkin `json:"Zipkin,omitnil" name:"Zipkin"`
 }
 
 type ModifyTracingConfigRequest struct {
 	*tchttp.BaseRequest
 	
 	// mesh名字
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// 是否启用调用跟踪
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 腾讯云 APM 服务相关参数
-	APM *APM `json:"APM,omitempty" name:"APM"`
+	APM *APM `json:"APM,omitnil" name:"APM"`
 
 	// 调用跟踪采样值
-	Sampling *float64 `json:"Sampling,omitempty" name:"Sampling"`
+	Sampling *float64 `json:"Sampling,omitnil" name:"Sampling"`
 
 	// 调用追踪Zipkin相关配置
-	Zipkin *TracingZipkin `json:"Zipkin,omitempty" name:"Zipkin"`
+	Zipkin *TracingZipkin `json:"Zipkin,omitnil" name:"Zipkin"`
 }
 
 func (r *ModifyTracingConfigRequest) ToJsonString() string {
@@ -1318,7 +1318,7 @@ func (r *ModifyTracingConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTracingConfigResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyTracingConfigResponse struct {
@@ -1339,175 +1339,175 @@ func (r *ModifyTracingConfigResponse) FromJsonString(s string) error {
 
 type PodsMetricSource struct {
 	// 指标名
-	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 
 	// 目标值
-	TargetAverageValue *string `json:"TargetAverageValue,omitempty" name:"TargetAverageValue"`
+	TargetAverageValue *string `json:"TargetAverageValue,omitnil" name:"TargetAverageValue"`
 }
 
 type PrometheusConfig struct {
 	// 虚拟网络Id
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 子网Id
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// 地域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 关联已存在实例Id，不填则默认创建
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 第三方 Prometheus
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CustomProm *CustomPromConfig `json:"CustomProm,omitempty" name:"CustomProm"`
+	CustomProm *CustomPromConfig `json:"CustomProm,omitnil" name:"CustomProm"`
 }
 
 type PrometheusStatus struct {
 	// Prometheus Id
-	PrometheusId *string `json:"PrometheusId,omitempty" name:"PrometheusId"`
+	PrometheusId *string `json:"PrometheusId,omitnil" name:"PrometheusId"`
 
 	// 展示名称
-	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
 
 	// 实例Id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 虚拟网络Id
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 状态
-	State *string `json:"State,omitempty" name:"State"`
+	State *string `json:"State,omitnil" name:"State"`
 
 	// 地区
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// Grafana信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Grafana *GrafanaInfo `json:"Grafana,omitempty" name:"Grafana"`
+	Grafana *GrafanaInfo `json:"Grafana,omitnil" name:"Grafana"`
 
 	// Prometheus 类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
 type Resource struct {
 	// 资源类型 cpu/memory
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 资源数量
-	Quantity *string `json:"Quantity,omitempty" name:"Quantity"`
+	Quantity *string `json:"Quantity,omitnil" name:"Quantity"`
 }
 
 type ResourceMetricSource struct {
 	// 资源名称 cpu/memory
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 目标平均利用率
-	TargetAverageUtilization *int64 `json:"TargetAverageUtilization,omitempty" name:"TargetAverageUtilization"`
+	TargetAverageUtilization *int64 `json:"TargetAverageUtilization,omitnil" name:"TargetAverageUtilization"`
 
 	// 目标平均值
-	TargetAverageValue *string `json:"TargetAverageValue,omitempty" name:"TargetAverageValue"`
+	TargetAverageValue *string `json:"TargetAverageValue,omitnil" name:"TargetAverageValue"`
 }
 
 type ResourceRequirements struct {
 	// Limits 描述了允许的最大计算资源量。
-	Limits []*Resource `json:"Limits,omitempty" name:"Limits"`
+	Limits []*Resource `json:"Limits,omitnil" name:"Limits"`
 
 	// Requests 描述所需的最小计算资源量。
-	Requests []*Resource `json:"Requests,omitempty" name:"Requests"`
+	Requests []*Resource `json:"Requests,omitnil" name:"Requests"`
 }
 
 type SelectedItems struct {
 	// 命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 选中项目名字
-	ItemName *string `json:"ItemName,omitempty" name:"ItemName"`
+	ItemName *string `json:"ItemName,omitnil" name:"ItemName"`
 
 	// ingress gw的名称列表
-	Gateways []*string `json:"Gateways,omitempty" name:"Gateways"`
+	Gateways []*string `json:"Gateways,omitnil" name:"Gateways"`
 }
 
 type SelectedRange struct {
 	// 选中的项目详细内容
-	Items []*SelectedItems `json:"Items,omitempty" name:"Items"`
+	Items []*SelectedItems `json:"Items,omitnil" name:"Items"`
 
 	// 是否全选
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 }
 
 type Service struct {
 	// ClusterIP/NodePort/LoadBalancer
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 是否开启LB直通Pod
-	CLBDirectAccess *bool `json:"CLBDirectAccess,omitempty" name:"CLBDirectAccess"`
+	CLBDirectAccess *bool `json:"CLBDirectAccess,omitnil" name:"CLBDirectAccess"`
 
 	// 服务是否希望将外部流量路由到节点本地或集群范围的端点。 有两个可用选项：Cluster（默认）和 Local。Cluster 隐藏了客户端源 IP，可能导致第二跳到另一个节点；Local 保留客户端源 IP 并避免 LoadBalancer 和 NodePort 类型服务的第二跳。
-	ExternalTrafficPolicy *string `json:"ExternalTrafficPolicy,omitempty" name:"ExternalTrafficPolicy"`
+	ExternalTrafficPolicy *string `json:"ExternalTrafficPolicy,omitnil" name:"ExternalTrafficPolicy"`
 }
 
 type SmartDNSConfig struct {
 	// 开启DNS代理
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IstioMetaDNSCapture *bool `json:"IstioMetaDNSCapture,omitempty" name:"IstioMetaDNSCapture"`
+	IstioMetaDNSCapture *bool `json:"IstioMetaDNSCapture,omitnil" name:"IstioMetaDNSCapture"`
 
 	// 开启自动地址分配
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IstioMetaDNSAutoAllocate *bool `json:"IstioMetaDNSAutoAllocate,omitempty" name:"IstioMetaDNSAutoAllocate"`
+	IstioMetaDNSAutoAllocate *bool `json:"IstioMetaDNSAutoAllocate,omitnil" name:"IstioMetaDNSAutoAllocate"`
 }
 
 type Tag struct {
 	// 标签键
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 标签值
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 
 	// 是否透传给其他关联产品
-	Passthrough *bool `json:"Passthrough,omitempty" name:"Passthrough"`
+	Passthrough *bool `json:"Passthrough,omitnil" name:"Passthrough"`
 }
 
 type TracingConfig struct {
 	// 调用链采样率，百分比
-	Sampling *float64 `json:"Sampling,omitempty" name:"Sampling"`
+	Sampling *float64 `json:"Sampling,omitnil" name:"Sampling"`
 
 	// 是否启用调用跟踪
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 腾讯云 APM 服务相关参数
-	APM *APM `json:"APM,omitempty" name:"APM"`
+	APM *APM `json:"APM,omitnil" name:"APM"`
 
 	// 启动第三方服务器的地址
-	Zipkin *TracingZipkin `json:"Zipkin,omitempty" name:"Zipkin"`
+	Zipkin *TracingZipkin `json:"Zipkin,omitnil" name:"Zipkin"`
 }
 
 type TracingZipkin struct {
 	// Zipkin调用地址
-	Address *string `json:"Address,omitempty" name:"Address"`
+	Address *string `json:"Address,omitnil" name:"Address"`
 }
 
 // Predefined struct for user
 type UnlinkClusterRequestParams struct {
 	// 网格Id
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// 取消关联的集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 type UnlinkClusterRequest struct {
 	*tchttp.BaseRequest
 	
 	// 网格Id
-	MeshId *string `json:"MeshId,omitempty" name:"MeshId"`
+	MeshId *string `json:"MeshId,omitnil" name:"MeshId"`
 
 	// 取消关联的集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 func (r *UnlinkClusterRequest) ToJsonString() string {
@@ -1533,7 +1533,7 @@ func (r *UnlinkClusterRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UnlinkClusterResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UnlinkClusterResponse struct {
@@ -1555,14 +1555,14 @@ func (r *UnlinkClusterResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UnlinkPrometheusRequestParams struct {
 	// 网格ID
-	MeshID *string `json:"MeshID,omitempty" name:"MeshID"`
+	MeshID *string `json:"MeshID,omitnil" name:"MeshID"`
 }
 
 type UnlinkPrometheusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 网格ID
-	MeshID *string `json:"MeshID,omitempty" name:"MeshID"`
+	MeshID *string `json:"MeshID,omitnil" name:"MeshID"`
 }
 
 func (r *UnlinkPrometheusRequest) ToJsonString() string {
@@ -1587,7 +1587,7 @@ func (r *UnlinkPrometheusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UnlinkPrometheusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UnlinkPrometheusResponse struct {
@@ -1608,21 +1608,21 @@ func (r *UnlinkPrometheusResponse) FromJsonString(s string) error {
 
 type WorkloadConfig struct {
 	// 工作副本数
-	Replicas *int64 `json:"Replicas,omitempty" name:"Replicas"`
+	Replicas *int64 `json:"Replicas,omitnil" name:"Replicas"`
 
 	// 资源配置
-	Resources *ResourceRequirements `json:"Resources,omitempty" name:"Resources"`
+	Resources *ResourceRequirements `json:"Resources,omitnil" name:"Resources"`
 
 	// HPA策略
-	HorizontalPodAutoscaler *HorizontalPodAutoscalerSpec `json:"HorizontalPodAutoscaler,omitempty" name:"HorizontalPodAutoscaler"`
+	HorizontalPodAutoscaler *HorizontalPodAutoscalerSpec `json:"HorizontalPodAutoscaler,omitnil" name:"HorizontalPodAutoscaler"`
 
 	// 部署到指定节点
-	SelectedNodeList []*string `json:"SelectedNodeList,omitempty" name:"SelectedNodeList"`
+	SelectedNodeList []*string `json:"SelectedNodeList,omitnil" name:"SelectedNodeList"`
 
 	// 组件的部署模式，取值说明：
 	// IN_GENERAL_NODE：常规节点
 	// IN_EKLET：eklet 节点
 	// IN_SHARED_NODE_POOL：共享节电池
 	// IN_EXCLUSIVE_NODE_POOL：独占节点池
-	DeployMode *string `json:"DeployMode,omitempty" name:"DeployMode"`
+	DeployMode *string `json:"DeployMode,omitnil" name:"DeployMode"`
 }

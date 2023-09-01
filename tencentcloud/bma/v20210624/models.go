@@ -15,63 +15,63 @@
 package v20210624
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type BrandData struct {
 	// 商标名称
-	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+	BrandName *string `json:"BrandName,omitnil" name:"BrandName"`
 
 	// 商标证明
-	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
+	BrandCertificateName *string `json:"BrandCertificateName,omitnil" name:"BrandCertificateName"`
 
 	// 商标审核状态 1-审核中 2-审核未通过 3-审核通过
-	BrandStatus *int64 `json:"BrandStatus,omitempty" name:"BrandStatus"`
+	BrandStatus *int64 `json:"BrandStatus,omitnil" name:"BrandStatus"`
 
 	// 审核说明
-	BrandNote *string `json:"BrandNote,omitempty" name:"BrandNote"`
+	BrandNote *string `json:"BrandNote,omitnil" name:"BrandNote"`
 
 	// 商标转让证明
-	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
+	TransferName *string `json:"TransferName,omitnil" name:"TransferName"`
 
 	// 商标转让证明审核状态
-	TransferStatus *int64 `json:"TransferStatus,omitempty" name:"TransferStatus"`
+	TransferStatus *int64 `json:"TransferStatus,omitnil" name:"TransferStatus"`
 
 	// 审核说明 1-审核中 2-审核未通过 3-审核通过
-	TransferNote *string `json:"TransferNote,omitempty" name:"TransferNote"`
+	TransferNote *string `json:"TransferNote,omitnil" name:"TransferNote"`
 }
 
 // Predefined struct for user
 type CreateBPFakeURLRequestParams struct {
 	// 保护网址ID
-	ProtectURLId *int64 `json:"ProtectURLId,omitempty" name:"ProtectURLId"`
+	ProtectURLId *int64 `json:"ProtectURLId,omitnil" name:"ProtectURLId"`
 
 	// 仿冒网址
-	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
+	FakeURL *string `json:"FakeURL,omitnil" name:"FakeURL"`
 
 	// 截图
-	SnapshotNames []*string `json:"SnapshotNames,omitempty" name:"SnapshotNames"`
+	SnapshotNames []*string `json:"SnapshotNames,omitnil" name:"SnapshotNames"`
 
 	// 举报说明
-	Note *string `json:"Note,omitempty" name:"Note"`
+	Note *string `json:"Note,omitnil" name:"Note"`
 }
 
 type CreateBPFakeURLRequest struct {
 	*tchttp.BaseRequest
 	
 	// 保护网址ID
-	ProtectURLId *int64 `json:"ProtectURLId,omitempty" name:"ProtectURLId"`
+	ProtectURLId *int64 `json:"ProtectURLId,omitnil" name:"ProtectURLId"`
 
 	// 仿冒网址
-	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
+	FakeURL *string `json:"FakeURL,omitnil" name:"FakeURL"`
 
 	// 截图
-	SnapshotNames []*string `json:"SnapshotNames,omitempty" name:"SnapshotNames"`
+	SnapshotNames []*string `json:"SnapshotNames,omitnil" name:"SnapshotNames"`
 
 	// 举报说明
-	Note *string `json:"Note,omitempty" name:"Note"`
+	Note *string `json:"Note,omitnil" name:"Note"`
 }
 
 func (r *CreateBPFakeURLRequest) ToJsonString() string {
@@ -99,7 +99,7 @@ func (r *CreateBPFakeURLRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBPFakeURLResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateBPFakeURLResponse struct {
@@ -121,14 +121,14 @@ func (r *CreateBPFakeURLResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBPFalseTicketRequestParams struct {
 	// 仿冒网址
-	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
+	FakeURL *string `json:"FakeURL,omitnil" name:"FakeURL"`
 }
 
 type CreateBPFalseTicketRequest struct {
 	*tchttp.BaseRequest
 	
 	// 仿冒网址
-	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
+	FakeURL *string `json:"FakeURL,omitnil" name:"FakeURL"`
 }
 
 func (r *CreateBPFalseTicketRequest) ToJsonString() string {
@@ -153,7 +153,7 @@ func (r *CreateBPFalseTicketRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBPFalseTicketResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateBPFalseTicketResponse struct {
@@ -175,32 +175,32 @@ func (r *CreateBPFalseTicketResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBPOfflineAttachmentRequestParams struct {
 	// 品牌名字
-	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+	BrandName *string `json:"BrandName,omitnil" name:"BrandName"`
 
 	// 商标证明
-	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
+	BrandCertificateName *string `json:"BrandCertificateName,omitnil" name:"BrandCertificateName"`
 
 	// 商标转让证明
-	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
+	TransferName *string `json:"TransferName,omitnil" name:"TransferName"`
 
 	// 授权书
-	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
+	AuthorizationName *string `json:"AuthorizationName,omitnil" name:"AuthorizationName"`
 }
 
 type CreateBPOfflineAttachmentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 品牌名字
-	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+	BrandName *string `json:"BrandName,omitnil" name:"BrandName"`
 
 	// 商标证明
-	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
+	BrandCertificateName *string `json:"BrandCertificateName,omitnil" name:"BrandCertificateName"`
 
 	// 商标转让证明
-	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
+	TransferName *string `json:"TransferName,omitnil" name:"TransferName"`
 
 	// 授权书
-	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
+	AuthorizationName *string `json:"AuthorizationName,omitnil" name:"AuthorizationName"`
 }
 
 func (r *CreateBPOfflineAttachmentRequest) ToJsonString() string {
@@ -228,7 +228,7 @@ func (r *CreateBPOfflineAttachmentRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBPOfflineAttachmentResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateBPOfflineAttachmentResponse struct {
@@ -250,14 +250,14 @@ func (r *CreateBPOfflineAttachmentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBPOfflineTicketRequestParams struct {
 	// 仿冒网址ID
-	FakeURLId *int64 `json:"FakeURLId,omitempty" name:"FakeURLId"`
+	FakeURLId *int64 `json:"FakeURLId,omitnil" name:"FakeURLId"`
 }
 
 type CreateBPOfflineTicketRequest struct {
 	*tchttp.BaseRequest
 	
 	// 仿冒网址ID
-	FakeURLId *int64 `json:"FakeURLId,omitempty" name:"FakeURLId"`
+	FakeURLId *int64 `json:"FakeURLId,omitnil" name:"FakeURLId"`
 }
 
 func (r *CreateBPOfflineTicketRequest) ToJsonString() string {
@@ -282,7 +282,7 @@ func (r *CreateBPOfflineTicketRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBPOfflineTicketResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateBPOfflineTicketResponse struct {
@@ -304,38 +304,38 @@ func (r *CreateBPOfflineTicketResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBPProtectURLsRequestParams struct {
 	// 企业名称
-	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+	CompanyName *string `json:"CompanyName,omitnil" name:"CompanyName"`
 
 	// 电话号码
-	Phone *string `json:"Phone,omitempty" name:"Phone"`
+	Phone *string `json:"Phone,omitnil" name:"Phone"`
 
 	// 营业执照
-	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
+	LicenseName *string `json:"LicenseName,omitnil" name:"LicenseName"`
 
 	// 保护网站
-	ProtectURLs []*string `json:"ProtectURLs,omitempty" name:"ProtectURLs"`
+	ProtectURLs []*string `json:"ProtectURLs,omitnil" name:"ProtectURLs"`
 
 	// 网站名称
-	ProtectWebs []*string `json:"ProtectWebs,omitempty" name:"ProtectWebs"`
+	ProtectWebs []*string `json:"ProtectWebs,omitnil" name:"ProtectWebs"`
 }
 
 type CreateBPProtectURLsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 企业名称
-	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+	CompanyName *string `json:"CompanyName,omitnil" name:"CompanyName"`
 
 	// 电话号码
-	Phone *string `json:"Phone,omitempty" name:"Phone"`
+	Phone *string `json:"Phone,omitnil" name:"Phone"`
 
 	// 营业执照
-	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
+	LicenseName *string `json:"LicenseName,omitnil" name:"LicenseName"`
 
 	// 保护网站
-	ProtectURLs []*string `json:"ProtectURLs,omitempty" name:"ProtectURLs"`
+	ProtectURLs []*string `json:"ProtectURLs,omitnil" name:"ProtectURLs"`
 
 	// 网站名称
-	ProtectWebs []*string `json:"ProtectWebs,omitempty" name:"ProtectWebs"`
+	ProtectWebs []*string `json:"ProtectWebs,omitnil" name:"ProtectWebs"`
 }
 
 func (r *CreateBPProtectURLsRequest) ToJsonString() string {
@@ -364,7 +364,7 @@ func (r *CreateBPProtectURLsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBPProtectURLsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateBPProtectURLsResponse struct {
@@ -386,104 +386,104 @@ func (r *CreateBPProtectURLsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRBlockRequestParams struct {
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 侵权链接
-	TortUrl *string `json:"TortUrl,omitempty" name:"TortUrl"`
+	TortUrl *string `json:"TortUrl,omitnil" name:"TortUrl"`
 
 	// 侵权标题
-	TortTitle *string `json:"TortTitle,omitempty" name:"TortTitle"`
+	TortTitle *string `json:"TortTitle,omitnil" name:"TortTitle"`
 
 	// 侵权平台
-	TortPlat *string `json:"TortPlat,omitempty" name:"TortPlat"`
+	TortPlat *string `json:"TortPlat,omitnil" name:"TortPlat"`
 
 	// 拦截结果回调地址
-	BlockUrl *string `json:"BlockUrl,omitempty" name:"BlockUrl"`
+	BlockUrl *string `json:"BlockUrl,omitnil" name:"BlockUrl"`
 
 	// 授权书下载地址
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
 
 	// 授权书生效日期
-	ValidStartDate *string `json:"ValidStartDate,omitempty" name:"ValidStartDate"`
+	ValidStartDate *string `json:"ValidStartDate,omitnil" name:"ValidStartDate"`
 
 	// 授权书截止日期
-	ValidEndDate *string `json:"ValidEndDate,omitempty" name:"ValidEndDate"`
+	ValidEndDate *string `json:"ValidEndDate,omitnil" name:"ValidEndDate"`
 
 	// 侵权截图
-	TortPic *string `json:"TortPic,omitempty" name:"TortPic"`
+	TortPic *string `json:"TortPic,omitnil" name:"TortPic"`
 
 	// 委托书下载地址
-	CommFileUrl *string `json:"CommFileUrl,omitempty" name:"CommFileUrl"`
+	CommFileUrl *string `json:"CommFileUrl,omitnil" name:"CommFileUrl"`
 
 	// 委托书生效日期
-	CommValidStartDate *string `json:"CommValidStartDate,omitempty" name:"CommValidStartDate"`
+	CommValidStartDate *string `json:"CommValidStartDate,omitnil" name:"CommValidStartDate"`
 
 	// 委托书截止日期
-	CommValidEndDate *string `json:"CommValidEndDate,omitempty" name:"CommValidEndDate"`
+	CommValidEndDate *string `json:"CommValidEndDate,omitnil" name:"CommValidEndDate"`
 
 	// 是否著作权人：0-否 1-是
-	IsProducer *string `json:"IsProducer,omitempty" name:"IsProducer"`
+	IsProducer *string `json:"IsProducer,omitnil" name:"IsProducer"`
 
 	// 存证证书下载地址
-	EvidenceFileUrl *string `json:"EvidenceFileUrl,omitempty" name:"EvidenceFileUrl"`
+	EvidenceFileUrl *string `json:"EvidenceFileUrl,omitnil" name:"EvidenceFileUrl"`
 
 	// 存证证书生效日期
-	EvidenceValidStartDate *string `json:"EvidenceValidStartDate,omitempty" name:"EvidenceValidStartDate"`
+	EvidenceValidStartDate *string `json:"EvidenceValidStartDate,omitnil" name:"EvidenceValidStartDate"`
 
 	// 存证证书截止日期
-	EvidenceValidEndDate *string `json:"EvidenceValidEndDate,omitempty" name:"EvidenceValidEndDate"`
+	EvidenceValidEndDate *string `json:"EvidenceValidEndDate,omitnil" name:"EvidenceValidEndDate"`
 }
 
 type CreateCRBlockRequest struct {
 	*tchttp.BaseRequest
 	
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 侵权链接
-	TortUrl *string `json:"TortUrl,omitempty" name:"TortUrl"`
+	TortUrl *string `json:"TortUrl,omitnil" name:"TortUrl"`
 
 	// 侵权标题
-	TortTitle *string `json:"TortTitle,omitempty" name:"TortTitle"`
+	TortTitle *string `json:"TortTitle,omitnil" name:"TortTitle"`
 
 	// 侵权平台
-	TortPlat *string `json:"TortPlat,omitempty" name:"TortPlat"`
+	TortPlat *string `json:"TortPlat,omitnil" name:"TortPlat"`
 
 	// 拦截结果回调地址
-	BlockUrl *string `json:"BlockUrl,omitempty" name:"BlockUrl"`
+	BlockUrl *string `json:"BlockUrl,omitnil" name:"BlockUrl"`
 
 	// 授权书下载地址
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
 
 	// 授权书生效日期
-	ValidStartDate *string `json:"ValidStartDate,omitempty" name:"ValidStartDate"`
+	ValidStartDate *string `json:"ValidStartDate,omitnil" name:"ValidStartDate"`
 
 	// 授权书截止日期
-	ValidEndDate *string `json:"ValidEndDate,omitempty" name:"ValidEndDate"`
+	ValidEndDate *string `json:"ValidEndDate,omitnil" name:"ValidEndDate"`
 
 	// 侵权截图
-	TortPic *string `json:"TortPic,omitempty" name:"TortPic"`
+	TortPic *string `json:"TortPic,omitnil" name:"TortPic"`
 
 	// 委托书下载地址
-	CommFileUrl *string `json:"CommFileUrl,omitempty" name:"CommFileUrl"`
+	CommFileUrl *string `json:"CommFileUrl,omitnil" name:"CommFileUrl"`
 
 	// 委托书生效日期
-	CommValidStartDate *string `json:"CommValidStartDate,omitempty" name:"CommValidStartDate"`
+	CommValidStartDate *string `json:"CommValidStartDate,omitnil" name:"CommValidStartDate"`
 
 	// 委托书截止日期
-	CommValidEndDate *string `json:"CommValidEndDate,omitempty" name:"CommValidEndDate"`
+	CommValidEndDate *string `json:"CommValidEndDate,omitnil" name:"CommValidEndDate"`
 
 	// 是否著作权人：0-否 1-是
-	IsProducer *string `json:"IsProducer,omitempty" name:"IsProducer"`
+	IsProducer *string `json:"IsProducer,omitnil" name:"IsProducer"`
 
 	// 存证证书下载地址
-	EvidenceFileUrl *string `json:"EvidenceFileUrl,omitempty" name:"EvidenceFileUrl"`
+	EvidenceFileUrl *string `json:"EvidenceFileUrl,omitnil" name:"EvidenceFileUrl"`
 
 	// 存证证书生效日期
-	EvidenceValidStartDate *string `json:"EvidenceValidStartDate,omitempty" name:"EvidenceValidStartDate"`
+	EvidenceValidStartDate *string `json:"EvidenceValidStartDate,omitnil" name:"EvidenceValidStartDate"`
 
 	// 存证证书截止日期
-	EvidenceValidEndDate *string `json:"EvidenceValidEndDate,omitempty" name:"EvidenceValidEndDate"`
+	EvidenceValidEndDate *string `json:"EvidenceValidEndDate,omitnil" name:"EvidenceValidEndDate"`
 }
 
 func (r *CreateCRBlockRequest) ToJsonString() string {
@@ -523,13 +523,13 @@ func (r *CreateCRBlockRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRBlockResponseParams struct {
 	// 侵权ID
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 
 	// 该字段已废弃
-	TortNum *string `json:"TortNum,omitempty" name:"TortNum"`
+	TortNum *string `json:"TortNum,omitnil" name:"TortNum"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateCRBlockResponse struct {
@@ -551,56 +551,56 @@ func (r *CreateCRBlockResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRCompanyVerifyRequestParams struct {
 	// 企业名称
-	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+	CompanyName *string `json:"CompanyName,omitnil" name:"CompanyName"`
 
 	// 企业证件号码
-	CompanyID *string `json:"CompanyID,omitempty" name:"CompanyID"`
+	CompanyID *string `json:"CompanyID,omitnil" name:"CompanyID"`
 
 	// 企业法人姓名
-	CompanyLegalName *string `json:"CompanyLegalName,omitempty" name:"CompanyLegalName"`
+	CompanyLegalName *string `json:"CompanyLegalName,omitnil" name:"CompanyLegalName"`
 
 	// 联系人姓名
-	ManagerName *string `json:"ManagerName,omitempty" name:"ManagerName"`
+	ManagerName *string `json:"ManagerName,omitnil" name:"ManagerName"`
 
 	// 联系人手机号
-	ManagerPhone *string `json:"ManagerPhone,omitempty" name:"ManagerPhone"`
+	ManagerPhone *string `json:"ManagerPhone,omitnil" name:"ManagerPhone"`
 
 	// 手机验证码，接口接入可以置空
-	VerificationCode *string `json:"VerificationCode,omitempty" name:"VerificationCode"`
+	VerificationCode *string `json:"VerificationCode,omitnil" name:"VerificationCode"`
 
 	// 字段已废弃，企业认证号码类型 1：社会信用代码 2：组织机构代码 3：企业工商注册码 4：其他 默认为1
-	CompanyIDType *string `json:"CompanyIDType,omitempty" name:"CompanyIDType"`
+	CompanyIDType *string `json:"CompanyIDType,omitnil" name:"CompanyIDType"`
 
 	// 字段已废弃，认证类型
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
 type CreateCRCompanyVerifyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 企业名称
-	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+	CompanyName *string `json:"CompanyName,omitnil" name:"CompanyName"`
 
 	// 企业证件号码
-	CompanyID *string `json:"CompanyID,omitempty" name:"CompanyID"`
+	CompanyID *string `json:"CompanyID,omitnil" name:"CompanyID"`
 
 	// 企业法人姓名
-	CompanyLegalName *string `json:"CompanyLegalName,omitempty" name:"CompanyLegalName"`
+	CompanyLegalName *string `json:"CompanyLegalName,omitnil" name:"CompanyLegalName"`
 
 	// 联系人姓名
-	ManagerName *string `json:"ManagerName,omitempty" name:"ManagerName"`
+	ManagerName *string `json:"ManagerName,omitnil" name:"ManagerName"`
 
 	// 联系人手机号
-	ManagerPhone *string `json:"ManagerPhone,omitempty" name:"ManagerPhone"`
+	ManagerPhone *string `json:"ManagerPhone,omitnil" name:"ManagerPhone"`
 
 	// 手机验证码，接口接入可以置空
-	VerificationCode *string `json:"VerificationCode,omitempty" name:"VerificationCode"`
+	VerificationCode *string `json:"VerificationCode,omitnil" name:"VerificationCode"`
 
 	// 字段已废弃，企业认证号码类型 1：社会信用代码 2：组织机构代码 3：企业工商注册码 4：其他 默认为1
-	CompanyIDType *string `json:"CompanyIDType,omitempty" name:"CompanyIDType"`
+	CompanyIDType *string `json:"CompanyIDType,omitnil" name:"CompanyIDType"`
 
 	// 字段已废弃，认证类型
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
 func (r *CreateCRCompanyVerifyRequest) ToJsonString() string {
@@ -632,13 +632,13 @@ func (r *CreateCRCompanyVerifyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRCompanyVerifyResponseParams struct {
 	// 认证状态：0-认证成功 1-认证失败
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 认证状态说明，包括认证失败的原因
-	Note *string `json:"Note,omitempty" name:"Note"`
+	Note *string `json:"Note,omitnil" name:"Note"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateCRCompanyVerifyResponse struct {
@@ -660,20 +660,20 @@ func (r *CreateCRCompanyVerifyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRDesktopCodeRequestParams struct {
 	// xxx
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 
 	// xxx
-	DesktopCode *string `json:"DesktopCode,omitempty" name:"DesktopCode"`
+	DesktopCode *string `json:"DesktopCode,omitnil" name:"DesktopCode"`
 }
 
 type CreateCRDesktopCodeRequest struct {
 	*tchttp.BaseRequest
 	
 	// xxx
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 
 	// xxx
-	DesktopCode *string `json:"DesktopCode,omitempty" name:"DesktopCode"`
+	DesktopCode *string `json:"DesktopCode,omitnil" name:"DesktopCode"`
 }
 
 func (r *CreateCRDesktopCodeRequest) ToJsonString() string {
@@ -699,7 +699,7 @@ func (r *CreateCRDesktopCodeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRDesktopCodeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateCRDesktopCodeResponse struct {
@@ -721,20 +721,20 @@ func (r *CreateCRDesktopCodeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRRightFileRequestParams struct {
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 权属文件列表
-	FileList []*File `json:"FileList,omitempty" name:"FileList"`
+	FileList []*File `json:"FileList,omitnil" name:"FileList"`
 }
 
 type CreateCRRightFileRequest struct {
 	*tchttp.BaseRequest
 	
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 权属文件列表
-	FileList []*File `json:"FileList,omitempty" name:"FileList"`
+	FileList []*File `json:"FileList,omitnil" name:"FileList"`
 }
 
 func (r *CreateCRRightFileRequest) ToJsonString() string {
@@ -760,10 +760,10 @@ func (r *CreateCRRightFileRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRRightFileResponseParams struct {
 	// 权属文件Id，按提交顺序排序
-	FileIds []*int64 `json:"FileIds,omitempty" name:"FileIds"`
+	FileIds []*int64 `json:"FileIds,omitnil" name:"FileIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateCRRightFileResponse struct {
@@ -785,116 +785,116 @@ func (r *CreateCRRightFileResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRRightRequestParams struct {
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 侵权链接
-	TortUrl *string `json:"TortUrl,omitempty" name:"TortUrl"`
+	TortUrl *string `json:"TortUrl,omitnil" name:"TortUrl"`
 
 	// 侵权标题
-	TortTitle *string `json:"TortTitle,omitempty" name:"TortTitle"`
+	TortTitle *string `json:"TortTitle,omitnil" name:"TortTitle"`
 
 	// 侵权平台
-	TortPlat *string `json:"TortPlat,omitempty" name:"TortPlat"`
+	TortPlat *string `json:"TortPlat,omitnil" name:"TortPlat"`
 
 	// 发函结果回调地址
-	RightUrl *string `json:"RightUrl,omitempty" name:"RightUrl"`
+	RightUrl *string `json:"RightUrl,omitnil" name:"RightUrl"`
 
 	// 授权书下载地址
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
 
 	// 授权书生效日期
-	ValidStartDate *string `json:"ValidStartDate,omitempty" name:"ValidStartDate"`
+	ValidStartDate *string `json:"ValidStartDate,omitnil" name:"ValidStartDate"`
 
 	// 授权书截止日期
-	ValidEndDate *string `json:"ValidEndDate,omitempty" name:"ValidEndDate"`
+	ValidEndDate *string `json:"ValidEndDate,omitnil" name:"ValidEndDate"`
 
 	// 委托书下载地址
-	CommFileUrl *string `json:"CommFileUrl,omitempty" name:"CommFileUrl"`
+	CommFileUrl *string `json:"CommFileUrl,omitnil" name:"CommFileUrl"`
 
 	// 委托书生效日期
-	CommValidStartDate *string `json:"CommValidStartDate,omitempty" name:"CommValidStartDate"`
+	CommValidStartDate *string `json:"CommValidStartDate,omitnil" name:"CommValidStartDate"`
 
 	// 委托书截止日期
-	CommValidEndDate *string `json:"CommValidEndDate,omitempty" name:"CommValidEndDate"`
+	CommValidEndDate *string `json:"CommValidEndDate,omitnil" name:"CommValidEndDate"`
 
 	// 主页下载地址
-	HomeFileUrl *string `json:"HomeFileUrl,omitempty" name:"HomeFileUrl"`
+	HomeFileUrl *string `json:"HomeFileUrl,omitnil" name:"HomeFileUrl"`
 
 	// 主页生效日期
-	HomeValidStartDate *string `json:"HomeValidStartDate,omitempty" name:"HomeValidStartDate"`
+	HomeValidStartDate *string `json:"HomeValidStartDate,omitnil" name:"HomeValidStartDate"`
 
 	// 主页截止日期
-	HomeValidEndDate *string `json:"HomeValidEndDate,omitempty" name:"HomeValidEndDate"`
+	HomeValidEndDate *string `json:"HomeValidEndDate,omitnil" name:"HomeValidEndDate"`
 
 	// 是否著作权人：0-否 1-是
-	IsProducer *string `json:"IsProducer,omitempty" name:"IsProducer"`
+	IsProducer *string `json:"IsProducer,omitnil" name:"IsProducer"`
 
 	// 存证证书下载地址
-	EvidenceFileUrl *string `json:"EvidenceFileUrl,omitempty" name:"EvidenceFileUrl"`
+	EvidenceFileUrl *string `json:"EvidenceFileUrl,omitnil" name:"EvidenceFileUrl"`
 
 	// 存证证书生效日期
-	EvidenceValidStartDate *string `json:"EvidenceValidStartDate,omitempty" name:"EvidenceValidStartDate"`
+	EvidenceValidStartDate *string `json:"EvidenceValidStartDate,omitnil" name:"EvidenceValidStartDate"`
 
 	// 存证证书截止日期
-	EvidenceValidEndDate *string `json:"EvidenceValidEndDate,omitempty" name:"EvidenceValidEndDate"`
+	EvidenceValidEndDate *string `json:"EvidenceValidEndDate,omitnil" name:"EvidenceValidEndDate"`
 }
 
 type CreateCRRightRequest struct {
 	*tchttp.BaseRequest
 	
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 侵权链接
-	TortUrl *string `json:"TortUrl,omitempty" name:"TortUrl"`
+	TortUrl *string `json:"TortUrl,omitnil" name:"TortUrl"`
 
 	// 侵权标题
-	TortTitle *string `json:"TortTitle,omitempty" name:"TortTitle"`
+	TortTitle *string `json:"TortTitle,omitnil" name:"TortTitle"`
 
 	// 侵权平台
-	TortPlat *string `json:"TortPlat,omitempty" name:"TortPlat"`
+	TortPlat *string `json:"TortPlat,omitnil" name:"TortPlat"`
 
 	// 发函结果回调地址
-	RightUrl *string `json:"RightUrl,omitempty" name:"RightUrl"`
+	RightUrl *string `json:"RightUrl,omitnil" name:"RightUrl"`
 
 	// 授权书下载地址
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
 
 	// 授权书生效日期
-	ValidStartDate *string `json:"ValidStartDate,omitempty" name:"ValidStartDate"`
+	ValidStartDate *string `json:"ValidStartDate,omitnil" name:"ValidStartDate"`
 
 	// 授权书截止日期
-	ValidEndDate *string `json:"ValidEndDate,omitempty" name:"ValidEndDate"`
+	ValidEndDate *string `json:"ValidEndDate,omitnil" name:"ValidEndDate"`
 
 	// 委托书下载地址
-	CommFileUrl *string `json:"CommFileUrl,omitempty" name:"CommFileUrl"`
+	CommFileUrl *string `json:"CommFileUrl,omitnil" name:"CommFileUrl"`
 
 	// 委托书生效日期
-	CommValidStartDate *string `json:"CommValidStartDate,omitempty" name:"CommValidStartDate"`
+	CommValidStartDate *string `json:"CommValidStartDate,omitnil" name:"CommValidStartDate"`
 
 	// 委托书截止日期
-	CommValidEndDate *string `json:"CommValidEndDate,omitempty" name:"CommValidEndDate"`
+	CommValidEndDate *string `json:"CommValidEndDate,omitnil" name:"CommValidEndDate"`
 
 	// 主页下载地址
-	HomeFileUrl *string `json:"HomeFileUrl,omitempty" name:"HomeFileUrl"`
+	HomeFileUrl *string `json:"HomeFileUrl,omitnil" name:"HomeFileUrl"`
 
 	// 主页生效日期
-	HomeValidStartDate *string `json:"HomeValidStartDate,omitempty" name:"HomeValidStartDate"`
+	HomeValidStartDate *string `json:"HomeValidStartDate,omitnil" name:"HomeValidStartDate"`
 
 	// 主页截止日期
-	HomeValidEndDate *string `json:"HomeValidEndDate,omitempty" name:"HomeValidEndDate"`
+	HomeValidEndDate *string `json:"HomeValidEndDate,omitnil" name:"HomeValidEndDate"`
 
 	// 是否著作权人：0-否 1-是
-	IsProducer *string `json:"IsProducer,omitempty" name:"IsProducer"`
+	IsProducer *string `json:"IsProducer,omitnil" name:"IsProducer"`
 
 	// 存证证书下载地址
-	EvidenceFileUrl *string `json:"EvidenceFileUrl,omitempty" name:"EvidenceFileUrl"`
+	EvidenceFileUrl *string `json:"EvidenceFileUrl,omitnil" name:"EvidenceFileUrl"`
 
 	// 存证证书生效日期
-	EvidenceValidStartDate *string `json:"EvidenceValidStartDate,omitempty" name:"EvidenceValidStartDate"`
+	EvidenceValidStartDate *string `json:"EvidenceValidStartDate,omitnil" name:"EvidenceValidStartDate"`
 
 	// 存证证书截止日期
-	EvidenceValidEndDate *string `json:"EvidenceValidEndDate,omitempty" name:"EvidenceValidEndDate"`
+	EvidenceValidEndDate *string `json:"EvidenceValidEndDate,omitnil" name:"EvidenceValidEndDate"`
 }
 
 func (r *CreateCRRightRequest) ToJsonString() string {
@@ -936,13 +936,13 @@ func (r *CreateCRRightRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRRightResponseParams struct {
 	// 侵权ID
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 
 	// 该字段已废弃
-	TortNum *string `json:"TortNum,omitempty" name:"TortNum"`
+	TortNum *string `json:"TortNum,omitnil" name:"TortNum"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateCRRightResponse struct {
@@ -964,32 +964,32 @@ func (r *CreateCRRightResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRTortRequestParams struct {
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 侵权网址
-	TortURL *string `json:"TortURL,omitempty" name:"TortURL"`
+	TortURL *string `json:"TortURL,omitnil" name:"TortURL"`
 
 	// 侵权平台
-	TortPlat *string `json:"TortPlat,omitempty" name:"TortPlat"`
+	TortPlat *string `json:"TortPlat,omitnil" name:"TortPlat"`
 
 	// 侵权标题
-	TortTitle *string `json:"TortTitle,omitempty" name:"TortTitle"`
+	TortTitle *string `json:"TortTitle,omitnil" name:"TortTitle"`
 }
 
 type CreateCRTortRequest struct {
 	*tchttp.BaseRequest
 	
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 侵权网址
-	TortURL *string `json:"TortURL,omitempty" name:"TortURL"`
+	TortURL *string `json:"TortURL,omitnil" name:"TortURL"`
 
 	// 侵权平台
-	TortPlat *string `json:"TortPlat,omitempty" name:"TortPlat"`
+	TortPlat *string `json:"TortPlat,omitnil" name:"TortPlat"`
 
 	// 侵权标题
-	TortTitle *string `json:"TortTitle,omitempty" name:"TortTitle"`
+	TortTitle *string `json:"TortTitle,omitnil" name:"TortTitle"`
 }
 
 func (r *CreateCRTortRequest) ToJsonString() string {
@@ -1017,28 +1017,28 @@ func (r *CreateCRTortRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRTortResponseParams struct {
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 侵权ID
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 
 	// 侵权标题
-	TortTitle *string `json:"TortTitle,omitempty" name:"TortTitle"`
+	TortTitle *string `json:"TortTitle,omitnil" name:"TortTitle"`
 
 	// 侵权平台
-	TortPlat *string `json:"TortPlat,omitempty" name:"TortPlat"`
+	TortPlat *string `json:"TortPlat,omitnil" name:"TortPlat"`
 
 	// 侵权网址
-	TortURL *string `json:"TortURL,omitempty" name:"TortURL"`
+	TortURL *string `json:"TortURL,omitnil" name:"TortURL"`
 
 	// 侵权域名
-	TortDomain *string `json:"TortDomain,omitempty" name:"TortDomain"`
+	TortDomain *string `json:"TortDomain,omitnil" name:"TortDomain"`
 
 	// 侵权主体
-	TortBodyName *string `json:"TortBodyName,omitempty" name:"TortBodyName"`
+	TortBodyName *string `json:"TortBodyName,omitnil" name:"TortBodyName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateCRTortResponse struct {
@@ -1060,38 +1060,38 @@ func (r *CreateCRTortResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRUserVerifyRequestParams struct {
 	// 用户真实姓名
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
 	// 用户身份证号
-	UserID *string `json:"UserID,omitempty" name:"UserID"`
+	UserID *string `json:"UserID,omitnil" name:"UserID"`
 
 	// 用户手机号码
-	UserPhone *string `json:"UserPhone,omitempty" name:"UserPhone"`
+	UserPhone *string `json:"UserPhone,omitnil" name:"UserPhone"`
 
 	// 短信验证码，接口接入可以置空
-	VerificationCode *string `json:"VerificationCode,omitempty" name:"VerificationCode"`
+	VerificationCode *string `json:"VerificationCode,omitnil" name:"VerificationCode"`
 
 	// 字段已废弃，认证类型
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
 type CreateCRUserVerifyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 用户真实姓名
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
 	// 用户身份证号
-	UserID *string `json:"UserID,omitempty" name:"UserID"`
+	UserID *string `json:"UserID,omitnil" name:"UserID"`
 
 	// 用户手机号码
-	UserPhone *string `json:"UserPhone,omitempty" name:"UserPhone"`
+	UserPhone *string `json:"UserPhone,omitnil" name:"UserPhone"`
 
 	// 短信验证码，接口接入可以置空
-	VerificationCode *string `json:"VerificationCode,omitempty" name:"VerificationCode"`
+	VerificationCode *string `json:"VerificationCode,omitnil" name:"VerificationCode"`
 
 	// 字段已废弃，认证类型
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
 func (r *CreateCRUserVerifyRequest) ToJsonString() string {
@@ -1120,13 +1120,13 @@ func (r *CreateCRUserVerifyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRUserVerifyResponseParams struct {
 	// 认证状态：0-认证成功 1-认证失败
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 认证状态说明，包括认证失败原因等
-	Note *string `json:"Note,omitempty" name:"Note"`
+	Note *string `json:"Note,omitnil" name:"Note"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateCRUserVerifyResponse struct {
@@ -1148,200 +1148,200 @@ func (r *CreateCRUserVerifyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRWorkRequestParams struct {
 	// 作品名称
-	WorkName *string `json:"WorkName,omitempty" name:"WorkName"`
+	WorkName *string `json:"WorkName,omitnil" name:"WorkName"`
 
 	// 作品分类
-	WorkCategory *string `json:"WorkCategory,omitempty" name:"WorkCategory"`
+	WorkCategory *string `json:"WorkCategory,omitnil" name:"WorkCategory"`
 
 	// 作品内容类型
-	WorkType *string `json:"WorkType,omitempty" name:"WorkType"`
+	WorkType *string `json:"WorkType,omitnil" name:"WorkType"`
 
 	// 作品标签
-	WorkSign *string `json:"WorkSign,omitempty" name:"WorkSign"`
+	WorkSign *string `json:"WorkSign,omitnil" name:"WorkSign"`
 
 	// 字段已废弃，作品图片
-	WorkPic *string `json:"WorkPic,omitempty" name:"WorkPic"`
+	WorkPic *string `json:"WorkPic,omitnil" name:"WorkPic"`
 
 	// 作品描述
-	WorkDesc *string `json:"WorkDesc,omitempty" name:"WorkDesc"`
+	WorkDesc *string `json:"WorkDesc,omitnil" name:"WorkDesc"`
 
 	// 是否原创：0-否 1-是
-	IsOriginal *string `json:"IsOriginal,omitempty" name:"IsOriginal"`
+	IsOriginal *string `json:"IsOriginal,omitnil" name:"IsOriginal"`
 
 	// 是否发布：0-未发布 1-已发布
-	IsRelease *string `json:"IsRelease,omitempty" name:"IsRelease"`
+	IsRelease *string `json:"IsRelease,omitnil" name:"IsRelease"`
 
 	// 字段已废弃，著作权人ID
-	ProducerID *int64 `json:"ProducerID,omitempty" name:"ProducerID"`
+	ProducerID *int64 `json:"ProducerID,omitnil" name:"ProducerID"`
 
 	// 创作时间
-	ProduceTime *string `json:"ProduceTime,omitempty" name:"ProduceTime"`
+	ProduceTime *string `json:"ProduceTime,omitnil" name:"ProduceTime"`
 
 	// 字段已废弃
-	SampleContentURL *string `json:"SampleContentURL,omitempty" name:"SampleContentURL"`
+	SampleContentURL *string `json:"SampleContentURL,omitnil" name:"SampleContentURL"`
 
 	// 作品下载地址
-	SampleDownloadURL *string `json:"SampleDownloadURL,omitempty" name:"SampleDownloadURL"`
+	SampleDownloadURL *string `json:"SampleDownloadURL,omitnil" name:"SampleDownloadURL"`
 
 	// 作品在线地址
-	SamplePublicURL *string `json:"SamplePublicURL,omitempty" name:"SamplePublicURL"`
+	SamplePublicURL *string `json:"SamplePublicURL,omitnil" name:"SamplePublicURL"`
 
 	// 字段已废弃，授予类型
-	GrantType *string `json:"GrantType,omitempty" name:"GrantType"`
+	GrantType *string `json:"GrantType,omitnil" name:"GrantType"`
 
 	// 是否监测：0-不监测 1-监测
-	IsMonitor *string `json:"IsMonitor,omitempty" name:"IsMonitor"`
+	IsMonitor *string `json:"IsMonitor,omitnil" name:"IsMonitor"`
 
 	// 是否存证：0-不存证  2-存证 注意是2
-	IsCert *string `json:"IsCert,omitempty" name:"IsCert"`
+	IsCert *string `json:"IsCert,omitnil" name:"IsCert"`
 
 	// 存证回调地址
-	CertUrl *string `json:"CertUrl,omitempty" name:"CertUrl"`
+	CertUrl *string `json:"CertUrl,omitnil" name:"CertUrl"`
 
 	// 监测回调地址
-	MonitorUrl *string `json:"MonitorUrl,omitempty" name:"MonitorUrl"`
+	MonitorUrl *string `json:"MonitorUrl,omitnil" name:"MonitorUrl"`
 
 	// 字段已废弃，创作性质
-	ProduceType *string `json:"ProduceType,omitempty" name:"ProduceType"`
+	ProduceType *string `json:"ProduceType,omitnil" name:"ProduceType"`
 
 	// 白名单列表
-	WhiteLists []*string `json:"WhiteLists,omitempty" name:"WhiteLists"`
+	WhiteLists []*string `json:"WhiteLists,omitnil" name:"WhiteLists"`
 
 	// 作品ID，忽略该字段
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 著作权人姓名
-	ProducerName *string `json:"ProducerName,omitempty" name:"ProducerName"`
+	ProducerName *string `json:"ProducerName,omitnil" name:"ProducerName"`
 
 	// 作者，小说类型必填
-	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+	Nickname *string `json:"Nickname,omitnil" name:"Nickname"`
 
 	// 授权书下载地址
-	Authorization *string `json:"Authorization,omitempty" name:"Authorization"`
+	Authorization *string `json:"Authorization,omitnil" name:"Authorization"`
 
 	// 授权书开始时间
-	AuthorizationStartTime *string `json:"AuthorizationStartTime,omitempty" name:"AuthorizationStartTime"`
+	AuthorizationStartTime *string `json:"AuthorizationStartTime,omitnil" name:"AuthorizationStartTime"`
 
 	// 授权书结束时间
-	AuthorizationEndTime *string `json:"AuthorizationEndTime,omitempty" name:"AuthorizationEndTime"`
+	AuthorizationEndTime *string `json:"AuthorizationEndTime,omitnil" name:"AuthorizationEndTime"`
 
 	// 内容格式，支持txt、doc等，表示Content的具体格式
-	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
 
 	// 文件内容base64编码，该字段仅在无法提供下载链接时使用
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 
 	// 监测结束时间
-	MonitorEndTime *string `json:"MonitorEndTime,omitempty" name:"MonitorEndTime"`
+	MonitorEndTime *string `json:"MonitorEndTime,omitnil" name:"MonitorEndTime"`
 
 	// 申请人ID，用于存证和取证
-	ApplierId *string `json:"ApplierId,omitempty" name:"ApplierId"`
+	ApplierId *string `json:"ApplierId,omitnil" name:"ApplierId"`
 
 	// 申请人姓名，用于存证和取证
-	ApplierName *string `json:"ApplierName,omitempty" name:"ApplierName"`
+	ApplierName *string `json:"ApplierName,omitnil" name:"ApplierName"`
 
 	// 是否自动续期
-	IsAutoRenew *string `json:"IsAutoRenew,omitempty" name:"IsAutoRenew"`
+	IsAutoRenew *string `json:"IsAutoRenew,omitnil" name:"IsAutoRenew"`
 }
 
 type CreateCRWorkRequest struct {
 	*tchttp.BaseRequest
 	
 	// 作品名称
-	WorkName *string `json:"WorkName,omitempty" name:"WorkName"`
+	WorkName *string `json:"WorkName,omitnil" name:"WorkName"`
 
 	// 作品分类
-	WorkCategory *string `json:"WorkCategory,omitempty" name:"WorkCategory"`
+	WorkCategory *string `json:"WorkCategory,omitnil" name:"WorkCategory"`
 
 	// 作品内容类型
-	WorkType *string `json:"WorkType,omitempty" name:"WorkType"`
+	WorkType *string `json:"WorkType,omitnil" name:"WorkType"`
 
 	// 作品标签
-	WorkSign *string `json:"WorkSign,omitempty" name:"WorkSign"`
+	WorkSign *string `json:"WorkSign,omitnil" name:"WorkSign"`
 
 	// 字段已废弃，作品图片
-	WorkPic *string `json:"WorkPic,omitempty" name:"WorkPic"`
+	WorkPic *string `json:"WorkPic,omitnil" name:"WorkPic"`
 
 	// 作品描述
-	WorkDesc *string `json:"WorkDesc,omitempty" name:"WorkDesc"`
+	WorkDesc *string `json:"WorkDesc,omitnil" name:"WorkDesc"`
 
 	// 是否原创：0-否 1-是
-	IsOriginal *string `json:"IsOriginal,omitempty" name:"IsOriginal"`
+	IsOriginal *string `json:"IsOriginal,omitnil" name:"IsOriginal"`
 
 	// 是否发布：0-未发布 1-已发布
-	IsRelease *string `json:"IsRelease,omitempty" name:"IsRelease"`
+	IsRelease *string `json:"IsRelease,omitnil" name:"IsRelease"`
 
 	// 字段已废弃，著作权人ID
-	ProducerID *int64 `json:"ProducerID,omitempty" name:"ProducerID"`
+	ProducerID *int64 `json:"ProducerID,omitnil" name:"ProducerID"`
 
 	// 创作时间
-	ProduceTime *string `json:"ProduceTime,omitempty" name:"ProduceTime"`
+	ProduceTime *string `json:"ProduceTime,omitnil" name:"ProduceTime"`
 
 	// 字段已废弃
-	SampleContentURL *string `json:"SampleContentURL,omitempty" name:"SampleContentURL"`
+	SampleContentURL *string `json:"SampleContentURL,omitnil" name:"SampleContentURL"`
 
 	// 作品下载地址
-	SampleDownloadURL *string `json:"SampleDownloadURL,omitempty" name:"SampleDownloadURL"`
+	SampleDownloadURL *string `json:"SampleDownloadURL,omitnil" name:"SampleDownloadURL"`
 
 	// 作品在线地址
-	SamplePublicURL *string `json:"SamplePublicURL,omitempty" name:"SamplePublicURL"`
+	SamplePublicURL *string `json:"SamplePublicURL,omitnil" name:"SamplePublicURL"`
 
 	// 字段已废弃，授予类型
-	GrantType *string `json:"GrantType,omitempty" name:"GrantType"`
+	GrantType *string `json:"GrantType,omitnil" name:"GrantType"`
 
 	// 是否监测：0-不监测 1-监测
-	IsMonitor *string `json:"IsMonitor,omitempty" name:"IsMonitor"`
+	IsMonitor *string `json:"IsMonitor,omitnil" name:"IsMonitor"`
 
 	// 是否存证：0-不存证  2-存证 注意是2
-	IsCert *string `json:"IsCert,omitempty" name:"IsCert"`
+	IsCert *string `json:"IsCert,omitnil" name:"IsCert"`
 
 	// 存证回调地址
-	CertUrl *string `json:"CertUrl,omitempty" name:"CertUrl"`
+	CertUrl *string `json:"CertUrl,omitnil" name:"CertUrl"`
 
 	// 监测回调地址
-	MonitorUrl *string `json:"MonitorUrl,omitempty" name:"MonitorUrl"`
+	MonitorUrl *string `json:"MonitorUrl,omitnil" name:"MonitorUrl"`
 
 	// 字段已废弃，创作性质
-	ProduceType *string `json:"ProduceType,omitempty" name:"ProduceType"`
+	ProduceType *string `json:"ProduceType,omitnil" name:"ProduceType"`
 
 	// 白名单列表
-	WhiteLists []*string `json:"WhiteLists,omitempty" name:"WhiteLists"`
+	WhiteLists []*string `json:"WhiteLists,omitnil" name:"WhiteLists"`
 
 	// 作品ID，忽略该字段
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 著作权人姓名
-	ProducerName *string `json:"ProducerName,omitempty" name:"ProducerName"`
+	ProducerName *string `json:"ProducerName,omitnil" name:"ProducerName"`
 
 	// 作者，小说类型必填
-	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+	Nickname *string `json:"Nickname,omitnil" name:"Nickname"`
 
 	// 授权书下载地址
-	Authorization *string `json:"Authorization,omitempty" name:"Authorization"`
+	Authorization *string `json:"Authorization,omitnil" name:"Authorization"`
 
 	// 授权书开始时间
-	AuthorizationStartTime *string `json:"AuthorizationStartTime,omitempty" name:"AuthorizationStartTime"`
+	AuthorizationStartTime *string `json:"AuthorizationStartTime,omitnil" name:"AuthorizationStartTime"`
 
 	// 授权书结束时间
-	AuthorizationEndTime *string `json:"AuthorizationEndTime,omitempty" name:"AuthorizationEndTime"`
+	AuthorizationEndTime *string `json:"AuthorizationEndTime,omitnil" name:"AuthorizationEndTime"`
 
 	// 内容格式，支持txt、doc等，表示Content的具体格式
-	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
 
 	// 文件内容base64编码，该字段仅在无法提供下载链接时使用
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 
 	// 监测结束时间
-	MonitorEndTime *string `json:"MonitorEndTime,omitempty" name:"MonitorEndTime"`
+	MonitorEndTime *string `json:"MonitorEndTime,omitnil" name:"MonitorEndTime"`
 
 	// 申请人ID，用于存证和取证
-	ApplierId *string `json:"ApplierId,omitempty" name:"ApplierId"`
+	ApplierId *string `json:"ApplierId,omitnil" name:"ApplierId"`
 
 	// 申请人姓名，用于存证和取证
-	ApplierName *string `json:"ApplierName,omitempty" name:"ApplierName"`
+	ApplierName *string `json:"ApplierName,omitnil" name:"ApplierName"`
 
 	// 是否自动续期
-	IsAutoRenew *string `json:"IsAutoRenew,omitempty" name:"IsAutoRenew"`
+	IsAutoRenew *string `json:"IsAutoRenew,omitnil" name:"IsAutoRenew"`
 }
 
 func (r *CreateCRWorkRequest) ToJsonString() string {
@@ -1397,13 +1397,13 @@ func (r *CreateCRWorkRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCRWorkResponseParams struct {
 	// 作品ID，一个作品对应唯一的workid
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 存证ID，忽略该字段
-	EvidenceId *int64 `json:"EvidenceId,omitempty" name:"EvidenceId"`
+	EvidenceId *int64 `json:"EvidenceId,omitnil" name:"EvidenceId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateCRWorkResponse struct {
@@ -1454,37 +1454,37 @@ func (r *DescribeBPCompanyInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBPCompanyInfoResponseParams struct {
 	// 企业名称
-	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+	CompanyName *string `json:"CompanyName,omitnil" name:"CompanyName"`
 
 	// 电话号码
-	Phone *string `json:"Phone,omitempty" name:"Phone"`
+	Phone *string `json:"Phone,omitnil" name:"Phone"`
 
 	// 营业执照
-	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
+	LicenseName *string `json:"LicenseName,omitnil" name:"LicenseName"`
 
 	// 营业执照审核状态 1-审核中 2-审核未通过，3、审核通过
-	LicenseStatus *int64 `json:"LicenseStatus,omitempty" name:"LicenseStatus"`
+	LicenseStatus *int64 `json:"LicenseStatus,omitnil" name:"LicenseStatus"`
 
 	// 营业执照备注
-	LicenseNote *string `json:"LicenseNote,omitempty" name:"LicenseNote"`
+	LicenseNote *string `json:"LicenseNote,omitnil" name:"LicenseNote"`
 
 	// 授权书
-	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
+	AuthorizationName *string `json:"AuthorizationName,omitnil" name:"AuthorizationName"`
 
 	// 授权书审核状态
-	AuthorizationStatus *int64 `json:"AuthorizationStatus,omitempty" name:"AuthorizationStatus"`
+	AuthorizationStatus *int64 `json:"AuthorizationStatus,omitnil" name:"AuthorizationStatus"`
 
 	// 授权书备注
-	AuthorizationNote *string `json:"AuthorizationNote,omitempty" name:"AuthorizationNote"`
+	AuthorizationNote *string `json:"AuthorizationNote,omitnil" name:"AuthorizationNote"`
 
 	// 品牌信息
-	BrandDatas []*BrandData `json:"BrandDatas,omitempty" name:"BrandDatas"`
+	BrandDatas []*BrandData `json:"BrandDatas,omitnil" name:"BrandDatas"`
 
 	// 企业ID
-	CompanyId *int64 `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *int64 `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeBPCompanyInfoResponse struct {
@@ -1506,26 +1506,26 @@ func (r *DescribeBPCompanyInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBPFakeURLsRequestParams struct {
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 页数
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 页码
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 }
 
 type DescribeBPFakeURLsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 页数
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 页码
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 }
 
 func (r *DescribeBPFakeURLsRequest) ToJsonString() string {
@@ -1552,16 +1552,16 @@ func (r *DescribeBPFakeURLsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBPFakeURLsResponseParams struct {
 	// 仿冒网址列表
-	FakeURLInfos []*FakeURLInfo `json:"FakeURLInfos,omitempty" name:"FakeURLInfos"`
+	FakeURLInfos []*FakeURLInfo `json:"FakeURLInfos,omitnil" name:"FakeURLInfos"`
 
 	// 总量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 导出量
-	ExportURL *string `json:"ExportURL,omitempty" name:"ExportURL"`
+	ExportURL *string `json:"ExportURL,omitnil" name:"ExportURL"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeBPFakeURLsResponse struct {
@@ -1583,20 +1583,20 @@ func (r *DescribeBPFakeURLsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBPProtectURLsRequestParams struct {
 	// 页数
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 页码
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 }
 
 type DescribeBPProtectURLsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 页数
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 页码
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 }
 
 func (r *DescribeBPProtectURLsRequest) ToJsonString() string {
@@ -1622,13 +1622,13 @@ func (r *DescribeBPProtectURLsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBPProtectURLsResponseParams struct {
 	// 保护网址列表
-	ProtectURLInfos []*ProtectURLInfo `json:"ProtectURLInfos,omitempty" name:"ProtectURLInfos"`
+	ProtectURLInfos []*ProtectURLInfo `json:"ProtectURLInfos,omitnil" name:"ProtectURLInfos"`
 
 	// 总量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeBPProtectURLsResponse struct {
@@ -1650,26 +1650,26 @@ func (r *DescribeBPProtectURLsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBPReportFakeURLsRequestParams struct {
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 页数
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 页码
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 }
 
 type DescribeBPReportFakeURLsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 页数
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 页码
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 }
 
 func (r *DescribeBPReportFakeURLsRequest) ToJsonString() string {
@@ -1696,13 +1696,13 @@ func (r *DescribeBPReportFakeURLsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBPReportFakeURLsResponseParams struct {
 	// 举报网站列表
-	ReportFakeURLInfos []*ReportFakeURLInfo `json:"ReportFakeURLInfos,omitempty" name:"ReportFakeURLInfos"`
+	ReportFakeURLInfos []*ReportFakeURLInfo `json:"ReportFakeURLInfos,omitnil" name:"ReportFakeURLInfos"`
 
 	// 总量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeBPReportFakeURLsResponse struct {
@@ -1724,32 +1724,32 @@ func (r *DescribeBPReportFakeURLsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCRMonitorDetailRequestParams struct {
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 页数
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 页码
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 
 	// 过滤参数
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeCRMonitorDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 页数
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 页码
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 
 	// 过滤参数
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeCRMonitorDetailRequest) ToJsonString() string {
@@ -1777,19 +1777,19 @@ func (r *DescribeCRMonitorDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCRMonitorDetailResponseParams struct {
 	// 侵权数组
-	Torts []*MonitorTort `json:"Torts,omitempty" name:"Torts"`
+	Torts []*MonitorTort `json:"Torts,omitnil" name:"Torts"`
 
 	// 总记录数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 监测状态
-	MonitorStatus *int64 `json:"MonitorStatus,omitempty" name:"MonitorStatus"`
+	MonitorStatus *int64 `json:"MonitorStatus,omitnil" name:"MonitorStatus"`
 
 	// 导出地址
-	ExportURL *string `json:"ExportURL,omitempty" name:"ExportURL"`
+	ExportURL *string `json:"ExportURL,omitnil" name:"ExportURL"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCRMonitorDetailResponse struct {
@@ -1811,26 +1811,26 @@ func (r *DescribeCRMonitorDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCRMonitorsRequestParams struct {
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 页数
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 页码
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 }
 
 type DescribeCRMonitorsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 页数
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 页码
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 }
 
 func (r *DescribeCRMonitorsRequest) ToJsonString() string {
@@ -1857,16 +1857,16 @@ func (r *DescribeCRMonitorsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCRMonitorsResponseParams struct {
 	// 监测结果
-	Monitors []*Monitor `json:"Monitors,omitempty" name:"Monitors"`
+	Monitors []*Monitor `json:"Monitors,omitnil" name:"Monitors"`
 
 	// 记录总条数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 导出地址
-	ExportURL *string `json:"ExportURL,omitempty" name:"ExportURL"`
+	ExportURL *string `json:"ExportURL,omitnil" name:"ExportURL"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCRMonitorsResponse struct {
@@ -1888,14 +1888,14 @@ func (r *DescribeCRMonitorsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCRObtainDetailRequestParams struct {
 	// 侵权ID
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 }
 
 type DescribeCRObtainDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 侵权ID
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 }
 
 func (r *DescribeCRObtainDetailRequest) ToJsonString() string {
@@ -1920,55 +1920,55 @@ func (r *DescribeCRObtainDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCRObtainDetailResponseParams struct {
 	// 作品名称
-	WorkName *string `json:"WorkName,omitempty" name:"WorkName"`
+	WorkName *string `json:"WorkName,omitnil" name:"WorkName"`
 
 	// 侵权链接
-	TortURL *string `json:"TortURL,omitempty" name:"TortURL"`
+	TortURL *string `json:"TortURL,omitnil" name:"TortURL"`
 
 	// 取证时间
-	ObtainTime *string `json:"ObtainTime,omitempty" name:"ObtainTime"`
+	ObtainTime *string `json:"ObtainTime,omitnil" name:"ObtainTime"`
 
 	// 取证类型
-	ObtainType *string `json:"ObtainType,omitempty" name:"ObtainType"`
+	ObtainType *string `json:"ObtainType,omitnil" name:"ObtainType"`
 
 	// 取证号
-	ObtainNum *string `json:"ObtainNum,omitempty" name:"ObtainNum"`
+	ObtainNum *string `json:"ObtainNum,omitnil" name:"ObtainNum"`
 
 	// 证据地址
-	DepositFile *string `json:"DepositFile,omitempty" name:"DepositFile"`
+	DepositFile *string `json:"DepositFile,omitnil" name:"DepositFile"`
 
 	// 公证信息地址
-	DepositCert *string `json:"DepositCert,omitempty" name:"DepositCert"`
+	DepositCert *string `json:"DepositCert,omitnil" name:"DepositCert"`
 
 	// 内容类型
-	WorkType *string `json:"WorkType,omitempty" name:"WorkType"`
+	WorkType *string `json:"WorkType,omitnil" name:"WorkType"`
 
 	// 作品类型
-	WorkCategory *string `json:"WorkCategory,omitempty" name:"WorkCategory"`
+	WorkCategory *string `json:"WorkCategory,omitnil" name:"WorkCategory"`
 
 	// 侵权ID
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 
 	// 侵权编号
-	TortNum *string `json:"TortNum,omitempty" name:"TortNum"`
+	TortNum *string `json:"TortNum,omitnil" name:"TortNum"`
 
 	// 取证状态
-	ObtainStatus *int64 `json:"ObtainStatus,omitempty" name:"ObtainStatus"`
+	ObtainStatus *int64 `json:"ObtainStatus,omitnil" name:"ObtainStatus"`
 
 	// 取证状态说明
-	ObtainNote *string `json:"ObtainNote,omitempty" name:"ObtainNote"`
+	ObtainNote *string `json:"ObtainNote,omitnil" name:"ObtainNote"`
 
 	// 取证时长
-	ObtainDuration *string `json:"ObtainDuration,omitempty" name:"ObtainDuration"`
+	ObtainDuration *string `json:"ObtainDuration,omitnil" name:"ObtainDuration"`
 
 	// 取证名称
-	ObtainName *string `json:"ObtainName,omitempty" name:"ObtainName"`
+	ObtainName *string `json:"ObtainName,omitnil" name:"ObtainName"`
 
 	// 取证公证信息
-	DepositPdfCert *string `json:"DepositPdfCert,omitempty" name:"DepositPdfCert"`
+	DepositPdfCert *string `json:"DepositPdfCert,omitnil" name:"DepositPdfCert"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCRObtainDetailResponse struct {
@@ -1990,14 +1990,14 @@ func (r *DescribeCRObtainDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCRWorkInfoRequestParams struct {
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 }
 
 type DescribeCRWorkInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 }
 
 func (r *DescribeCRWorkInfoRequest) ToJsonString() string {
@@ -2022,73 +2022,73 @@ func (r *DescribeCRWorkInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCRWorkInfoResponseParams struct {
 	// 作品名称
-	WorkName *string `json:"WorkName,omitempty" name:"WorkName"`
+	WorkName *string `json:"WorkName,omitnil" name:"WorkName"`
 
 	// 监测状态
-	MonitorStatus *int64 `json:"MonitorStatus,omitempty" name:"MonitorStatus"`
+	MonitorStatus *int64 `json:"MonitorStatus,omitnil" name:"MonitorStatus"`
 
 	// 授权文件状态
-	AuthStatus *int64 `json:"AuthStatus,omitempty" name:"AuthStatus"`
+	AuthStatus *int64 `json:"AuthStatus,omitnil" name:"AuthStatus"`
 
 	// 委托书状态
-	CommStatus *int64 `json:"CommStatus,omitempty" name:"CommStatus"`
+	CommStatus *int64 `json:"CommStatus,omitnil" name:"CommStatus"`
 
 	// 是否著作权人
-	IsProducer *int64 `json:"IsProducer,omitempty" name:"IsProducer"`
+	IsProducer *int64 `json:"IsProducer,omitnil" name:"IsProducer"`
 
 	// 存证证书状态
-	EvidenceStatus *int64 `json:"EvidenceStatus,omitempty" name:"EvidenceStatus"`
+	EvidenceStatus *int64 `json:"EvidenceStatus,omitnil" name:"EvidenceStatus"`
 
 	// 作品类型
-	WorkCategory *string `json:"WorkCategory,omitempty" name:"WorkCategory"`
+	WorkCategory *string `json:"WorkCategory,omitnil" name:"WorkCategory"`
 
 	// 是否原创
-	IsOriginal *string `json:"IsOriginal,omitempty" name:"IsOriginal"`
+	IsOriginal *string `json:"IsOriginal,omitnil" name:"IsOriginal"`
 
 	// 是否已发表
-	IsRelease *string `json:"IsRelease,omitempty" name:"IsRelease"`
+	IsRelease *string `json:"IsRelease,omitnil" name:"IsRelease"`
 
 	// 著作权人姓名
-	ProducerName *string `json:"ProducerName,omitempty" name:"ProducerName"`
+	ProducerName *string `json:"ProducerName,omitnil" name:"ProducerName"`
 
 	// 发表时间
-	ProduceTime *string `json:"ProduceTime,omitempty" name:"ProduceTime"`
+	ProduceTime *string `json:"ProduceTime,omitnil" name:"ProduceTime"`
 
 	// 白名单
-	WhiteLists []*string `json:"WhiteLists,omitempty" name:"WhiteLists"`
+	WhiteLists []*string `json:"WhiteLists,omitnil" name:"WhiteLists"`
 
 	// 作品描述
-	WorkDesc *string `json:"WorkDesc,omitempty" name:"WorkDesc"`
+	WorkDesc *string `json:"WorkDesc,omitnil" name:"WorkDesc"`
 
 	// 授权书
-	Authorization *string `json:"Authorization,omitempty" name:"Authorization"`
+	Authorization *string `json:"Authorization,omitnil" name:"Authorization"`
 
 	// 授权书生效日期
-	AuthorizationStartTime *string `json:"AuthorizationStartTime,omitempty" name:"AuthorizationStartTime"`
+	AuthorizationStartTime *string `json:"AuthorizationStartTime,omitnil" name:"AuthorizationStartTime"`
 
 	// 授权书截止日期
-	AuthorizationEndTime *string `json:"AuthorizationEndTime,omitempty" name:"AuthorizationEndTime"`
+	AuthorizationEndTime *string `json:"AuthorizationEndTime,omitnil" name:"AuthorizationEndTime"`
 
 	// 委托书
-	Commission *string `json:"Commission,omitempty" name:"Commission"`
+	Commission *string `json:"Commission,omitnil" name:"Commission"`
 
 	// 委托书生效日期
-	CommissionStartTime *string `json:"CommissionStartTime,omitempty" name:"CommissionStartTime"`
+	CommissionStartTime *string `json:"CommissionStartTime,omitnil" name:"CommissionStartTime"`
 
 	// 委托书截止日期
-	CommissionEndTime *string `json:"CommissionEndTime,omitempty" name:"CommissionEndTime"`
+	CommissionEndTime *string `json:"CommissionEndTime,omitnil" name:"CommissionEndTime"`
 
 	// 存证证书
-	EvidenceUrl *string `json:"EvidenceUrl,omitempty" name:"EvidenceUrl"`
+	EvidenceUrl *string `json:"EvidenceUrl,omitnil" name:"EvidenceUrl"`
 
 	// 存证证书生效日期
-	EvidenceStartTime *string `json:"EvidenceStartTime,omitempty" name:"EvidenceStartTime"`
+	EvidenceStartTime *string `json:"EvidenceStartTime,omitnil" name:"EvidenceStartTime"`
 
 	// 存证证书截止日期
-	EvidenceEndTime *string `json:"EvidenceEndTime,omitempty" name:"EvidenceEndTime"`
+	EvidenceEndTime *string `json:"EvidenceEndTime,omitnil" name:"EvidenceEndTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCRWorkInfoResponse struct {
@@ -2109,66 +2109,66 @@ func (r *DescribeCRWorkInfoResponse) FromJsonString(s string) error {
 
 type FakeURLInfo struct {
 	// 仿冒网址ID
-	FakeURLId *int64 `json:"FakeURLId,omitempty" name:"FakeURLId"`
+	FakeURLId *int64 `json:"FakeURLId,omitnil" name:"FakeURLId"`
 
 	// 保护网站
-	ProtectWeb *string `json:"ProtectWeb,omitempty" name:"ProtectWeb"`
+	ProtectWeb *string `json:"ProtectWeb,omitnil" name:"ProtectWeb"`
 
 	// 检测时间
-	DetectTime *string `json:"DetectTime,omitempty" name:"DetectTime"`
+	DetectTime *string `json:"DetectTime,omitnil" name:"DetectTime"`
 
 	// 仿冒网址
-	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
+	FakeURL *string `json:"FakeURL,omitnil" name:"FakeURL"`
 
 	// 截图
-	Snapshot *string `json:"Snapshot,omitempty" name:"Snapshot"`
+	Snapshot *string `json:"Snapshot,omitnil" name:"Snapshot"`
 
 	// IP地址
-	IP *string `json:"IP,omitempty" name:"IP"`
+	IP *string `json:"IP,omitnil" name:"IP"`
 
 	// IP地理位置
-	IPLoc *string `json:"IPLoc,omitempty" name:"IPLoc"`
+	IPLoc *string `json:"IPLoc,omitnil" name:"IPLoc"`
 
 	// 热度
-	Heat *int64 `json:"Heat,omitempty" name:"Heat"`
+	Heat *int64 `json:"Heat,omitnil" name:"Heat"`
 
 	// 网址状态
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 备注
-	Note *string `json:"Note,omitempty" name:"Note"`
+	Note *string `json:"Note,omitnil" name:"Note"`
 
 	// 仿冒网站所属单位
-	FakeURLCompany *string `json:"FakeURLCompany,omitempty" name:"FakeURLCompany"`
+	FakeURLCompany *string `json:"FakeURLCompany,omitnil" name:"FakeURLCompany"`
 
 	// 仿冒网站性质
-	FakeURLAttr *string `json:"FakeURLAttr,omitempty" name:"FakeURLAttr"`
+	FakeURLAttr *string `json:"FakeURLAttr,omitnil" name:"FakeURLAttr"`
 
 	// 仿冒网站名称
-	FakeURLName *string `json:"FakeURLName,omitempty" name:"FakeURLName"`
+	FakeURLName *string `json:"FakeURLName,omitnil" name:"FakeURLName"`
 
 	// 仿冒网站备案号
-	FakeURLICP *string `json:"FakeURLICP,omitempty" name:"FakeURLICP"`
+	FakeURLICP *string `json:"FakeURLICP,omitnil" name:"FakeURLICP"`
 
 	// 仿冒网站创建时间
-	FakeURLCreateTime *string `json:"FakeURLCreateTime,omitempty" name:"FakeURLCreateTime"`
+	FakeURLCreateTime *string `json:"FakeURLCreateTime,omitnil" name:"FakeURLCreateTime"`
 
 	// 仿冒网站过期时间
-	FakeURLExpireTime *string `json:"FakeURLExpireTime,omitempty" name:"FakeURLExpireTime"`
+	FakeURLExpireTime *string `json:"FakeURLExpireTime,omitnil" name:"FakeURLExpireTime"`
 }
 
 type File struct {
 	// 文件下载地址
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
 
 	// 文件类型 1-委托书 2-授权书 5-存证证书 11-营业执照
-	FileType *int64 `json:"FileType,omitempty" name:"FileType"`
+	FileType *int64 `json:"FileType,omitnil" name:"FileType"`
 
 	// 文件有效开始日期
-	ValidStartDate *string `json:"ValidStartDate,omitempty" name:"ValidStartDate"`
+	ValidStartDate *string `json:"ValidStartDate,omitnil" name:"ValidStartDate"`
 
 	// 文件有效截止日期
-	ValidEndDate *string `json:"ValidEndDate,omitempty" name:"ValidEndDate"`
+	ValidEndDate *string `json:"ValidEndDate,omitnil" name:"ValidEndDate"`
 }
 
 type Filter struct {
@@ -2178,38 +2178,38 @@ type Filter struct {
 // Predefined struct for user
 type ModifyBPOfflineAttachmentRequestParams struct {
 	// 营业执照
-	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
+	LicenseName *string `json:"LicenseName,omitnil" name:"LicenseName"`
 
 	// 授权书
-	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
+	AuthorizationName *string `json:"AuthorizationName,omitnil" name:"AuthorizationName"`
 
 	// 商标名称
-	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+	BrandName *string `json:"BrandName,omitnil" name:"BrandName"`
 
 	// 商标证明
-	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
+	BrandCertificateName *string `json:"BrandCertificateName,omitnil" name:"BrandCertificateName"`
 
 	// 商标转让证明
-	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
+	TransferName *string `json:"TransferName,omitnil" name:"TransferName"`
 }
 
 type ModifyBPOfflineAttachmentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 营业执照
-	LicenseName *string `json:"LicenseName,omitempty" name:"LicenseName"`
+	LicenseName *string `json:"LicenseName,omitnil" name:"LicenseName"`
 
 	// 授权书
-	AuthorizationName *string `json:"AuthorizationName,omitempty" name:"AuthorizationName"`
+	AuthorizationName *string `json:"AuthorizationName,omitnil" name:"AuthorizationName"`
 
 	// 商标名称
-	BrandName *string `json:"BrandName,omitempty" name:"BrandName"`
+	BrandName *string `json:"BrandName,omitnil" name:"BrandName"`
 
 	// 商标证明
-	BrandCertificateName *string `json:"BrandCertificateName,omitempty" name:"BrandCertificateName"`
+	BrandCertificateName *string `json:"BrandCertificateName,omitnil" name:"BrandCertificateName"`
 
 	// 商标转让证明
-	TransferName *string `json:"TransferName,omitempty" name:"TransferName"`
+	TransferName *string `json:"TransferName,omitnil" name:"TransferName"`
 }
 
 func (r *ModifyBPOfflineAttachmentRequest) ToJsonString() string {
@@ -2238,7 +2238,7 @@ func (r *ModifyBPOfflineAttachmentRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyBPOfflineAttachmentResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyBPOfflineAttachmentResponse struct {
@@ -2260,20 +2260,20 @@ func (r *ModifyBPOfflineAttachmentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCRBlockStatusRequestParams struct {
 	// 侵权ID
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 
 	// 拦截结果回调地址
-	BlockUrl *string `json:"BlockUrl,omitempty" name:"BlockUrl"`
+	BlockUrl *string `json:"BlockUrl,omitnil" name:"BlockUrl"`
 }
 
 type ModifyCRBlockStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 侵权ID
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 
 	// 拦截结果回调地址
-	BlockUrl *string `json:"BlockUrl,omitempty" name:"BlockUrl"`
+	BlockUrl *string `json:"BlockUrl,omitnil" name:"BlockUrl"`
 }
 
 func (r *ModifyCRBlockStatusRequest) ToJsonString() string {
@@ -2299,7 +2299,7 @@ func (r *ModifyCRBlockStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCRBlockStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyCRBlockStatusResponse struct {
@@ -2321,26 +2321,26 @@ func (r *ModifyCRBlockStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCRMonitorRequestParams struct {
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 监测状态：1-开启监测 2-关闭监测
-	MonitorStatus *string `json:"MonitorStatus,omitempty" name:"MonitorStatus"`
+	MonitorStatus *string `json:"MonitorStatus,omitnil" name:"MonitorStatus"`
 
 	// 监测截止时间
-	MonitorEnd *string `json:"MonitorEnd,omitempty" name:"MonitorEnd"`
+	MonitorEnd *string `json:"MonitorEnd,omitnil" name:"MonitorEnd"`
 }
 
 type ModifyCRMonitorRequest struct {
 	*tchttp.BaseRequest
 	
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 监测状态：1-开启监测 2-关闭监测
-	MonitorStatus *string `json:"MonitorStatus,omitempty" name:"MonitorStatus"`
+	MonitorStatus *string `json:"MonitorStatus,omitnil" name:"MonitorStatus"`
 
 	// 监测截止时间
-	MonitorEnd *string `json:"MonitorEnd,omitempty" name:"MonitorEnd"`
+	MonitorEnd *string `json:"MonitorEnd,omitnil" name:"MonitorEnd"`
 }
 
 func (r *ModifyCRMonitorRequest) ToJsonString() string {
@@ -2367,7 +2367,7 @@ func (r *ModifyCRMonitorRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCRMonitorResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyCRMonitorResponse struct {
@@ -2389,32 +2389,32 @@ func (r *ModifyCRMonitorResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCRObtainStatusRequestParams struct {
 	// 侵权ID
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 
 	// 取证类型：1-网页取证 2-过程取证(暂不提供)
-	ObtainType *int64 `json:"ObtainType,omitempty" name:"ObtainType"`
+	ObtainType *int64 `json:"ObtainType,omitnil" name:"ObtainType"`
 
 	// 过程取证的取证时长，单位分钟，范围0-120
-	ObtainDuration *int64 `json:"ObtainDuration,omitempty" name:"ObtainDuration"`
+	ObtainDuration *int64 `json:"ObtainDuration,omitnil" name:"ObtainDuration"`
 
 	// 取证结果回调地址
-	ObtainUrl *string `json:"ObtainUrl,omitempty" name:"ObtainUrl"`
+	ObtainUrl *string `json:"ObtainUrl,omitnil" name:"ObtainUrl"`
 }
 
 type ModifyCRObtainStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 侵权ID
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 
 	// 取证类型：1-网页取证 2-过程取证(暂不提供)
-	ObtainType *int64 `json:"ObtainType,omitempty" name:"ObtainType"`
+	ObtainType *int64 `json:"ObtainType,omitnil" name:"ObtainType"`
 
 	// 过程取证的取证时长，单位分钟，范围0-120
-	ObtainDuration *int64 `json:"ObtainDuration,omitempty" name:"ObtainDuration"`
+	ObtainDuration *int64 `json:"ObtainDuration,omitnil" name:"ObtainDuration"`
 
 	// 取证结果回调地址
-	ObtainUrl *string `json:"ObtainUrl,omitempty" name:"ObtainUrl"`
+	ObtainUrl *string `json:"ObtainUrl,omitnil" name:"ObtainUrl"`
 }
 
 func (r *ModifyCRObtainStatusRequest) ToJsonString() string {
@@ -2442,7 +2442,7 @@ func (r *ModifyCRObtainStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCRObtainStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyCRObtainStatusResponse struct {
@@ -2464,20 +2464,20 @@ func (r *ModifyCRObtainStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCRRightStatusRequestParams struct {
 	// 侵权ID
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 
 	// 发函结果回调地址
-	RightUrl *string `json:"RightUrl,omitempty" name:"RightUrl"`
+	RightUrl *string `json:"RightUrl,omitnil" name:"RightUrl"`
 }
 
 type ModifyCRRightStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 侵权ID
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 
 	// 发函结果回调地址
-	RightUrl *string `json:"RightUrl,omitempty" name:"RightUrl"`
+	RightUrl *string `json:"RightUrl,omitnil" name:"RightUrl"`
 }
 
 func (r *ModifyCRRightStatusRequest) ToJsonString() string {
@@ -2503,7 +2503,7 @@ func (r *ModifyCRRightStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCRRightStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyCRRightStatusResponse struct {
@@ -2525,50 +2525,50 @@ func (r *ModifyCRRightStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCRWhiteListRequestParams struct {
 	// 该字段已废弃，白名单ID
-	WhiteListId *int64 `json:"WhiteListId,omitempty" name:"WhiteListId"`
+	WhiteListId *int64 `json:"WhiteListId,omitnil" name:"WhiteListId"`
 
 	// 该字段已废弃，平台名称
-	PlatForm *string `json:"PlatForm,omitempty" name:"PlatForm"`
+	PlatForm *string `json:"PlatForm,omitnil" name:"PlatForm"`
 
 	// 该字段已废弃，平台站点链接
-	PlatUrl *string `json:"PlatUrl,omitempty" name:"PlatUrl"`
+	PlatUrl *string `json:"PlatUrl,omitnil" name:"PlatUrl"`
 
 	// 该字段已废弃，作者ID
-	AuthorId *string `json:"AuthorId,omitempty" name:"AuthorId"`
+	AuthorId *string `json:"AuthorId,omitnil" name:"AuthorId"`
 
 	// 该字段已废弃，作品ID
-	WorksId *int64 `json:"WorksId,omitempty" name:"WorksId"`
+	WorksId *int64 `json:"WorksId,omitnil" name:"WorksId"`
 
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 白名单列表，以\n分割
-	WhiteSites *string `json:"WhiteSites,omitempty" name:"WhiteSites"`
+	WhiteSites *string `json:"WhiteSites,omitnil" name:"WhiteSites"`
 }
 
 type ModifyCRWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 该字段已废弃，白名单ID
-	WhiteListId *int64 `json:"WhiteListId,omitempty" name:"WhiteListId"`
+	WhiteListId *int64 `json:"WhiteListId,omitnil" name:"WhiteListId"`
 
 	// 该字段已废弃，平台名称
-	PlatForm *string `json:"PlatForm,omitempty" name:"PlatForm"`
+	PlatForm *string `json:"PlatForm,omitnil" name:"PlatForm"`
 
 	// 该字段已废弃，平台站点链接
-	PlatUrl *string `json:"PlatUrl,omitempty" name:"PlatUrl"`
+	PlatUrl *string `json:"PlatUrl,omitnil" name:"PlatUrl"`
 
 	// 该字段已废弃，作者ID
-	AuthorId *string `json:"AuthorId,omitempty" name:"AuthorId"`
+	AuthorId *string `json:"AuthorId,omitnil" name:"AuthorId"`
 
 	// 该字段已废弃，作品ID
-	WorksId *int64 `json:"WorksId,omitempty" name:"WorksId"`
+	WorksId *int64 `json:"WorksId,omitnil" name:"WorksId"`
 
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 白名单列表，以\n分割
-	WhiteSites *string `json:"WhiteSites,omitempty" name:"WhiteSites"`
+	WhiteSites *string `json:"WhiteSites,omitnil" name:"WhiteSites"`
 }
 
 func (r *ModifyCRWhiteListRequest) ToJsonString() string {
@@ -2599,7 +2599,7 @@ func (r *ModifyCRWhiteListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCRWhiteListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyCRWhiteListResponse struct {
@@ -2620,239 +2620,239 @@ func (r *ModifyCRWhiteListResponse) FromJsonString(s string) error {
 
 type Monitor struct {
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 作品名称
-	WorkName *string `json:"WorkName,omitempty" name:"WorkName"`
+	WorkName *string `json:"WorkName,omitnil" name:"WorkName"`
 
 	// 作品内容类型 01-视频 02-音频 03-文本 04-图片
-	WorkType *string `json:"WorkType,omitempty" name:"WorkType"`
+	WorkType *string `json:"WorkType,omitnil" name:"WorkType"`
 
 	// 侵权平台数量
-	TortPlatNum *int64 `json:"TortPlatNum,omitempty" name:"TortPlatNum"`
+	TortPlatNum *int64 `json:"TortPlatNum,omitnil" name:"TortPlatNum"`
 
 	// 侵权链接数量
-	TortURLNum *int64 `json:"TortURLNum,omitempty" name:"TortURLNum"`
+	TortURLNum *int64 `json:"TortURLNum,omitnil" name:"TortURLNum"`
 
 	// 监测时间
-	MonitorTime *string `json:"MonitorTime,omitempty" name:"MonitorTime"`
+	MonitorTime *string `json:"MonitorTime,omitnil" name:"MonitorTime"`
 
 	// 0-待监测 1-监测中 2-不监测 3-暂停监测
-	MonitorStatus *int64 `json:"MonitorStatus,omitempty" name:"MonitorStatus"`
+	MonitorStatus *int64 `json:"MonitorStatus,omitnil" name:"MonitorStatus"`
 
 	// 作品类型
-	WorkCategory *string `json:"WorkCategory,omitempty" name:"WorkCategory"`
+	WorkCategory *string `json:"WorkCategory,omitnil" name:"WorkCategory"`
 
 	// 新增时间
-	InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
+	InsertTime *string `json:"InsertTime,omitnil" name:"InsertTime"`
 
 	// 监测状态说明
-	MonitorNote *string `json:"MonitorNote,omitempty" name:"MonitorNote"`
+	MonitorNote *string `json:"MonitorNote,omitnil" name:"MonitorNote"`
 
 	// 作品类型全部展示
-	WorkCategoryAll *string `json:"WorkCategoryAll,omitempty" name:"WorkCategoryAll"`
+	WorkCategoryAll *string `json:"WorkCategoryAll,omitnil" name:"WorkCategoryAll"`
 
 	// 存证状态
-	EvidenceStatus *int64 `json:"EvidenceStatus,omitempty" name:"EvidenceStatus"`
+	EvidenceStatus *int64 `json:"EvidenceStatus,omitnil" name:"EvidenceStatus"`
 
 	// 存证状态说明
-	EvidenceNote *string `json:"EvidenceNote,omitempty" name:"EvidenceNote"`
+	EvidenceNote *string `json:"EvidenceNote,omitnil" name:"EvidenceNote"`
 
 	// 侵权站点数量
-	TortSiteNum *int64 `json:"TortSiteNum,omitempty" name:"TortSiteNum"`
+	TortSiteNum *int64 `json:"TortSiteNum,omitnil" name:"TortSiteNum"`
 
 	// 监测截止时间
-	MonitorEndTime *string `json:"MonitorEndTime,omitempty" name:"MonitorEndTime"`
+	MonitorEndTime *string `json:"MonitorEndTime,omitnil" name:"MonitorEndTime"`
 
 	// 是否自动续费
-	AutoRenew *int64 `json:"AutoRenew,omitempty" name:"AutoRenew"`
+	AutoRenew *int64 `json:"AutoRenew,omitnil" name:"AutoRenew"`
 }
 
 type MonitorTort struct {
 	// 侵权信息ID
-	TortId *int64 `json:"TortId,omitempty" name:"TortId"`
+	TortId *int64 `json:"TortId,omitnil" name:"TortId"`
 
 	// 侵权标题
-	TortTitle *string `json:"TortTitle,omitempty" name:"TortTitle"`
+	TortTitle *string `json:"TortTitle,omitnil" name:"TortTitle"`
 
 	// 侵权平台
-	TortPlat *string `json:"TortPlat,omitempty" name:"TortPlat"`
+	TortPlat *string `json:"TortPlat,omitnil" name:"TortPlat"`
 
 	// 侵权链接
-	TortURL *string `json:"TortURL,omitempty" name:"TortURL"`
+	TortURL *string `json:"TortURL,omitnil" name:"TortURL"`
 
 	// 侵权链接发布时间
-	PubTime *string `json:"PubTime,omitempty" name:"PubTime"`
+	PubTime *string `json:"PubTime,omitnil" name:"PubTime"`
 
 	// 作者
-	Author *string `json:"Author,omitempty" name:"Author"`
+	Author *string `json:"Author,omitnil" name:"Author"`
 
 	// 发现时间
-	DetectTime *string `json:"DetectTime,omitempty" name:"DetectTime"`
+	DetectTime *string `json:"DetectTime,omitnil" name:"DetectTime"`
 
 	// 取证状态
-	ObtainStatus *int64 `json:"ObtainStatus,omitempty" name:"ObtainStatus"`
+	ObtainStatus *int64 `json:"ObtainStatus,omitnil" name:"ObtainStatus"`
 
 	// 维权状态
-	RightStatus *int64 `json:"RightStatus,omitempty" name:"RightStatus"`
+	RightStatus *int64 `json:"RightStatus,omitnil" name:"RightStatus"`
 
 	// 拦截状态
-	BlockStatus *int64 `json:"BlockStatus,omitempty" name:"BlockStatus"`
+	BlockStatus *int64 `json:"BlockStatus,omitnil" name:"BlockStatus"`
 
 	// 侵权编号
-	TortNum *string `json:"TortNum,omitempty" name:"TortNum"`
+	TortNum *string `json:"TortNum,omitnil" name:"TortNum"`
 
 	// 取证状态说明
-	ObtainNote *string `json:"ObtainNote,omitempty" name:"ObtainNote"`
+	ObtainNote *string `json:"ObtainNote,omitnil" name:"ObtainNote"`
 
 	// 作品标题
-	WorkTitle *string `json:"WorkTitle,omitempty" name:"WorkTitle"`
+	WorkTitle *string `json:"WorkTitle,omitnil" name:"WorkTitle"`
 
 	// 侵权站点
-	TortSite *string `json:"TortSite,omitempty" name:"TortSite"`
+	TortSite *string `json:"TortSite,omitnil" name:"TortSite"`
 
 	// ICP备案信息
-	ICP *string `json:"ICP,omitempty" name:"ICP"`
+	ICP *string `json:"ICP,omitnil" name:"ICP"`
 
 	// 维权状态说明
-	RightNote *string `json:"RightNote,omitempty" name:"RightNote"`
+	RightNote *string `json:"RightNote,omitnil" name:"RightNote"`
 
 	// 取证类型
-	ObtainType *int64 `json:"ObtainType,omitempty" name:"ObtainType"`
+	ObtainType *int64 `json:"ObtainType,omitnil" name:"ObtainType"`
 
 	// 拦截状态说明
-	BlockNote *string `json:"BlockNote,omitempty" name:"BlockNote"`
+	BlockNote *string `json:"BlockNote,omitnil" name:"BlockNote"`
 
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 作品名称
-	WorkName *string `json:"WorkName,omitempty" name:"WorkName"`
+	WorkName *string `json:"WorkName,omitnil" name:"WorkName"`
 
 	// 授权书状态
-	AuthStatus *int64 `json:"AuthStatus,omitempty" name:"AuthStatus"`
+	AuthStatus *int64 `json:"AuthStatus,omitnil" name:"AuthStatus"`
 
 	// 委托书状态
-	CommStatus *int64 `json:"CommStatus,omitempty" name:"CommStatus"`
+	CommStatus *int64 `json:"CommStatus,omitnil" name:"CommStatus"`
 
 	// 存证证书状态
-	EvidenceStatus *int64 `json:"EvidenceStatus,omitempty" name:"EvidenceStatus"`
+	EvidenceStatus *int64 `json:"EvidenceStatus,omitnil" name:"EvidenceStatus"`
 
 	// 是否著作权人
-	IsProducer *int64 `json:"IsProducer,omitempty" name:"IsProducer"`
+	IsProducer *int64 `json:"IsProducer,omitnil" name:"IsProducer"`
 
 	// 是否境外网址
-	IsOverseas *int64 `json:"IsOverseas,omitempty" name:"IsOverseas"`
+	IsOverseas *int64 `json:"IsOverseas,omitnil" name:"IsOverseas"`
 
 	// ip地理位置
-	IPLoc *string `json:"IPLoc,omitempty" name:"IPLoc"`
+	IPLoc *string `json:"IPLoc,omitnil" name:"IPLoc"`
 }
 
 type ProtectURLInfo struct {
 	// 保护网站ID
-	ProtectURLId *int64 `json:"ProtectURLId,omitempty" name:"ProtectURLId"`
+	ProtectURLId *int64 `json:"ProtectURLId,omitnil" name:"ProtectURLId"`
 
 	// 保护网站
-	ProtectURL *string `json:"ProtectURL,omitempty" name:"ProtectURL"`
+	ProtectURL *string `json:"ProtectURL,omitnil" name:"ProtectURL"`
 
 	// 保护网站名称
-	ProtectWeb *string `json:"ProtectWeb,omitempty" name:"ProtectWeb"`
+	ProtectWeb *string `json:"ProtectWeb,omitnil" name:"ProtectWeb"`
 
 	// 保护网站审核状态 1-审核中 2-审核不通过 3-审核通过
-	ProtectURLStatus *int64 `json:"ProtectURLStatus,omitempty" name:"ProtectURLStatus"`
+	ProtectURLStatus *int64 `json:"ProtectURLStatus,omitnil" name:"ProtectURLStatus"`
 
 	// 网站审核不通过原因
-	ProtectURLNote *string `json:"ProtectURLNote,omitempty" name:"ProtectURLNote"`
+	ProtectURLNote *string `json:"ProtectURLNote,omitnil" name:"ProtectURLNote"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 }
 
 type ReportFakeURLInfo struct {
 	// 仿冒网址ID
-	FakeURLId *int64 `json:"FakeURLId,omitempty" name:"FakeURLId"`
+	FakeURLId *int64 `json:"FakeURLId,omitnil" name:"FakeURLId"`
 
 	// 检测时间
-	DetectTime *string `json:"DetectTime,omitempty" name:"DetectTime"`
+	DetectTime *string `json:"DetectTime,omitnil" name:"DetectTime"`
 
 	// 保护网站
-	ProtectURL *string `json:"ProtectURL,omitempty" name:"ProtectURL"`
+	ProtectURL *string `json:"ProtectURL,omitnil" name:"ProtectURL"`
 
 	// 保护网站名称
-	ProtectWeb *string `json:"ProtectWeb,omitempty" name:"ProtectWeb"`
+	ProtectWeb *string `json:"ProtectWeb,omitnil" name:"ProtectWeb"`
 
 	// 仿冒网址
-	FakeURL *string `json:"FakeURL,omitempty" name:"FakeURL"`
+	FakeURL *string `json:"FakeURL,omitnil" name:"FakeURL"`
 
 	// 截图
-	Snapshot *string `json:"Snapshot,omitempty" name:"Snapshot"`
+	Snapshot *string `json:"Snapshot,omitnil" name:"Snapshot"`
 
 	// IP地址
-	IP *string `json:"IP,omitempty" name:"IP"`
+	IP *string `json:"IP,omitnil" name:"IP"`
 
 	// IP地理位置
-	IPLoc *string `json:"IPLoc,omitempty" name:"IPLoc"`
+	IPLoc *string `json:"IPLoc,omitnil" name:"IPLoc"`
 
 	// 热度
-	Heat *int64 `json:"Heat,omitempty" name:"Heat"`
+	Heat *int64 `json:"Heat,omitnil" name:"Heat"`
 
 	// 网站状态
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 网站不处理原因
-	Note *string `json:"Note,omitempty" name:"Note"`
+	Note *string `json:"Note,omitnil" name:"Note"`
 
 	// 仿冒网站的企业名称
-	FakeURLCompany *string `json:"FakeURLCompany,omitempty" name:"FakeURLCompany"`
+	FakeURLCompany *string `json:"FakeURLCompany,omitnil" name:"FakeURLCompany"`
 
 	// 仿冒网站的网站性质
-	FakeURLAttr *string `json:"FakeURLAttr,omitempty" name:"FakeURLAttr"`
+	FakeURLAttr *string `json:"FakeURLAttr,omitnil" name:"FakeURLAttr"`
 
 	// 仿冒网站的网站名称
-	FakeURLName *string `json:"FakeURLName,omitempty" name:"FakeURLName"`
+	FakeURLName *string `json:"FakeURLName,omitnil" name:"FakeURLName"`
 
 	// 仿冒网站的备案
-	FakeURLICP *string `json:"FakeURLICP,omitempty" name:"FakeURLICP"`
+	FakeURLICP *string `json:"FakeURLICP,omitnil" name:"FakeURLICP"`
 
 	// 仿冒网站创建时间
-	FakeURLCreateTime *string `json:"FakeURLCreateTime,omitempty" name:"FakeURLCreateTime"`
+	FakeURLCreateTime *string `json:"FakeURLCreateTime,omitnil" name:"FakeURLCreateTime"`
 
 	// 仿冒网站过期时间
-	FakeURLExpireTime *string `json:"FakeURLExpireTime,omitempty" name:"FakeURLExpireTime"`
+	FakeURLExpireTime *string `json:"FakeURLExpireTime,omitnil" name:"FakeURLExpireTime"`
 
 	// 协查处置时间
-	BlockTime *string `json:"BlockTime,omitempty" name:"BlockTime"`
+	BlockTime *string `json:"BlockTime,omitnil" name:"BlockTime"`
 }
 
 // Predefined struct for user
 type UpdateCRWorkRequestParams struct {
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 文件的扩展名，例如txt，docx
-	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
 
 	// 内容的base64编码
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 
 	// 本次存证类型：0-不存证 1-存当前文件 2-存历史全量文件
-	CertType *string `json:"CertType,omitempty" name:"CertType"`
+	CertType *string `json:"CertType,omitnil" name:"CertType"`
 }
 
 type UpdateCRWorkRequest struct {
 	*tchttp.BaseRequest
 	
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 文件的扩展名，例如txt，docx
-	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
 
 	// 内容的base64编码
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 
 	// 本次存证类型：0-不存证 1-存当前文件 2-存历史全量文件
-	CertType *string `json:"CertType,omitempty" name:"CertType"`
+	CertType *string `json:"CertType,omitnil" name:"CertType"`
 }
 
 func (r *UpdateCRWorkRequest) ToJsonString() string {
@@ -2880,13 +2880,13 @@ func (r *UpdateCRWorkRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateCRWorkResponseParams struct {
 	// 作品ID
-	WorkId *int64 `json:"WorkId,omitempty" name:"WorkId"`
+	WorkId *int64 `json:"WorkId,omitnil" name:"WorkId"`
 
 	// 存证ID
-	EvidenceId *int64 `json:"EvidenceId,omitempty" name:"EvidenceId"`
+	EvidenceId *int64 `json:"EvidenceId,omitnil" name:"EvidenceId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateCRWorkResponse struct {

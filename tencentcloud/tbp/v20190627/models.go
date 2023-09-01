@@ -15,87 +15,87 @@
 package v20190627
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type Group struct {
 	// 消息类型参考互联网MIME类型标准，当前仅支持"text/plain"。
-	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
 
 	// 返回内容以链接形式提供。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 普通文本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 }
 
 type ResponseMessage struct {
 	// 消息组列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupList []*Group `json:"GroupList,omitempty" name:"GroupList"`
+	GroupList []*Group `json:"GroupList,omitnil" name:"GroupList"`
 }
 
 type SlotInfo struct {
 	// 槽位名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SlotName *string `json:"SlotName,omitempty" name:"SlotName"`
+	SlotName *string `json:"SlotName,omitnil" name:"SlotName"`
 
 	// 槽位值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SlotValue *string `json:"SlotValue,omitempty" name:"SlotValue"`
+	SlotValue *string `json:"SlotValue,omitnil" name:"SlotValue"`
 }
 
 // Predefined struct for user
 type TextProcessRequestParams struct {
 	// 机器人标识，用于定义抽象机器人。
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
-	BotEnv *string `json:"BotEnv,omitempty" name:"BotEnv"`
+	BotEnv *string `json:"BotEnv,omitnil" name:"BotEnv"`
 
 	// 终端标识，每个终端(或线程)对应一个，区分并发多用户。
-	TerminalId *string `json:"TerminalId,omitempty" name:"TerminalId"`
+	TerminalId *string `json:"TerminalId,omitnil" name:"TerminalId"`
 
 	// 请求的文本。
-	InputText *string `json:"InputText,omitempty" name:"InputText"`
+	InputText *string `json:"InputText,omitnil" name:"InputText"`
 
 	// 透传字段，透传给用户自定义的WebService服务。
-	SessionAttributes *string `json:"SessionAttributes,omitempty" name:"SessionAttributes"`
+	SessionAttributes *string `json:"SessionAttributes,omitnil" name:"SessionAttributes"`
 
 	// 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
-	PlatformType *string `json:"PlatformType,omitempty" name:"PlatformType"`
+	PlatformType *string `json:"PlatformType,omitnil" name:"PlatformType"`
 
 	// 当PlatformType为微信公众号或企业微信时，传递对应微信公众号或企业微信的唯一标识
-	PlatformId *string `json:"PlatformId,omitempty" name:"PlatformId"`
+	PlatformId *string `json:"PlatformId,omitnil" name:"PlatformId"`
 }
 
 type TextProcessRequest struct {
 	*tchttp.BaseRequest
 	
 	// 机器人标识，用于定义抽象机器人。
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
-	BotEnv *string `json:"BotEnv,omitempty" name:"BotEnv"`
+	BotEnv *string `json:"BotEnv,omitnil" name:"BotEnv"`
 
 	// 终端标识，每个终端(或线程)对应一个，区分并发多用户。
-	TerminalId *string `json:"TerminalId,omitempty" name:"TerminalId"`
+	TerminalId *string `json:"TerminalId,omitnil" name:"TerminalId"`
 
 	// 请求的文本。
-	InputText *string `json:"InputText,omitempty" name:"InputText"`
+	InputText *string `json:"InputText,omitnil" name:"InputText"`
 
 	// 透传字段，透传给用户自定义的WebService服务。
-	SessionAttributes *string `json:"SessionAttributes,omitempty" name:"SessionAttributes"`
+	SessionAttributes *string `json:"SessionAttributes,omitnil" name:"SessionAttributes"`
 
 	// 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
-	PlatformType *string `json:"PlatformType,omitempty" name:"PlatformType"`
+	PlatformType *string `json:"PlatformType,omitnil" name:"PlatformType"`
 
 	// 当PlatformType为微信公众号或企业微信时，传递对应微信公众号或企业微信的唯一标识
-	PlatformId *string `json:"PlatformId,omitempty" name:"PlatformId"`
+	PlatformId *string `json:"PlatformId,omitnil" name:"PlatformId"`
 }
 
 func (r *TextProcessRequest) ToJsonString() string {
@@ -127,41 +127,41 @@ func (r *TextProcessRequest) FromJsonString(s string) error {
 type TextProcessResponseParams struct {
 	// 当前会话状态{会话开始: START; 会话中: COUTINUE; 会话结束: COMPLETE}。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DialogStatus *string `json:"DialogStatus,omitempty" name:"DialogStatus"`
+	DialogStatus *string `json:"DialogStatus,omitnil" name:"DialogStatus"`
 
 	// 匹配到的机器人名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 
 	// 匹配到的意图名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IntentName *string `json:"IntentName,omitempty" name:"IntentName"`
+	IntentName *string `json:"IntentName,omitnil" name:"IntentName"`
 
 	// 槽位信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList"`
+	SlotInfoList []*SlotInfo `json:"SlotInfoList,omitnil" name:"SlotInfoList"`
 
 	// 原始的用户说法。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InputText *string `json:"InputText,omitempty" name:"InputText"`
+	InputText *string `json:"InputText,omitnil" name:"InputText"`
 
 	// 机器人应答。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResponseMessage *ResponseMessage `json:"ResponseMessage,omitempty" name:"ResponseMessage"`
+	ResponseMessage *ResponseMessage `json:"ResponseMessage,omitnil" name:"ResponseMessage"`
 
 	// 透传字段，由用户自定义的WebService服务返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SessionAttributes *string `json:"SessionAttributes,omitempty" name:"SessionAttributes"`
+	SessionAttributes *string `json:"SessionAttributes,omitnil" name:"SessionAttributes"`
 
 	// 结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultType *string `json:"ResultType,omitempty" name:"ResultType"`
+	ResultType *string `json:"ResultType,omitnil" name:"ResultType"`
 
 	// 机器人对话的应答文本。	
-	ResponseText *string `json:"ResponseText,omitempty" name:"ResponseText"`
+	ResponseText *string `json:"ResponseText,omitnil" name:"ResponseText"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type TextProcessResponse struct {
@@ -183,38 +183,38 @@ func (r *TextProcessResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type TextResetRequestParams struct {
 	// 机器人标识，用于定义抽象机器人。
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
-	BotEnv *string `json:"BotEnv,omitempty" name:"BotEnv"`
+	BotEnv *string `json:"BotEnv,omitnil" name:"BotEnv"`
 
 	// 终端标识，每个终端(或线程)对应一个，区分并发多用户。
-	TerminalId *string `json:"TerminalId,omitempty" name:"TerminalId"`
+	TerminalId *string `json:"TerminalId,omitnil" name:"TerminalId"`
 
 	// 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
-	PlatformType *string `json:"PlatformType,omitempty" name:"PlatformType"`
+	PlatformType *string `json:"PlatformType,omitnil" name:"PlatformType"`
 
 	// 当PlatformType为微信公众号或企业微信时，传递对应微信公众号或企业微信的唯一标识
-	PlatformId *string `json:"PlatformId,omitempty" name:"PlatformId"`
+	PlatformId *string `json:"PlatformId,omitnil" name:"PlatformId"`
 }
 
 type TextResetRequest struct {
 	*tchttp.BaseRequest
 	
 	// 机器人标识，用于定义抽象机器人。
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 机器人版本，取值"dev"或"release"，{调试版本：dev；线上版本：release}。
-	BotEnv *string `json:"BotEnv,omitempty" name:"BotEnv"`
+	BotEnv *string `json:"BotEnv,omitnil" name:"BotEnv"`
 
 	// 终端标识，每个终端(或线程)对应一个，区分并发多用户。
-	TerminalId *string `json:"TerminalId,omitempty" name:"TerminalId"`
+	TerminalId *string `json:"TerminalId,omitnil" name:"TerminalId"`
 
 	// 平台类型，{小程序：MiniProgram；小微：XiaoWei；公众号：OfficialAccount；企业微信: WXWork}。
-	PlatformType *string `json:"PlatformType,omitempty" name:"PlatformType"`
+	PlatformType *string `json:"PlatformType,omitnil" name:"PlatformType"`
 
 	// 当PlatformType为微信公众号或企业微信时，传递对应微信公众号或企业微信的唯一标识
-	PlatformId *string `json:"PlatformId,omitempty" name:"PlatformId"`
+	PlatformId *string `json:"PlatformId,omitnil" name:"PlatformId"`
 }
 
 func (r *TextResetRequest) ToJsonString() string {
@@ -244,42 +244,42 @@ func (r *TextResetRequest) FromJsonString(s string) error {
 type TextResetResponseParams struct {
 	// 当前会话状态{会话开始: START; 会话中: COUTINUE; 会话结束: COMPLETE}。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DialogStatus *string `json:"DialogStatus,omitempty" name:"DialogStatus"`
+	DialogStatus *string `json:"DialogStatus,omitnil" name:"DialogStatus"`
 
 	// 匹配到的机器人名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 
 	// 匹配到的意图名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IntentName *string `json:"IntentName,omitempty" name:"IntentName"`
+	IntentName *string `json:"IntentName,omitnil" name:"IntentName"`
 
 	// 槽位信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SlotInfoList []*SlotInfo `json:"SlotInfoList,omitempty" name:"SlotInfoList"`
+	SlotInfoList []*SlotInfo `json:"SlotInfoList,omitnil" name:"SlotInfoList"`
 
 	// 原始的用户说法。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InputText *string `json:"InputText,omitempty" name:"InputText"`
+	InputText *string `json:"InputText,omitnil" name:"InputText"`
 
 	// 机器人应答。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResponseMessage *ResponseMessage `json:"ResponseMessage,omitempty" name:"ResponseMessage"`
+	ResponseMessage *ResponseMessage `json:"ResponseMessage,omitnil" name:"ResponseMessage"`
 
 	// 透传字段，由用户自定义的WebService服务返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SessionAttributes *string `json:"SessionAttributes,omitempty" name:"SessionAttributes"`
+	SessionAttributes *string `json:"SessionAttributes,omitnil" name:"SessionAttributes"`
 
 	// 结果类型 {中间逻辑出错:0; 任务型机器人:1; 问答型机器人:2; 闲聊型机器人:3; 未匹配上，返回预设兜底话术:5; 未匹配上，返回相似问题列表:6}。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultType *string `json:"ResultType,omitempty" name:"ResultType"`
+	ResultType *string `json:"ResultType,omitnil" name:"ResultType"`
 
 	// 机器人对话的应答文本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResponseText *string `json:"ResponseText,omitempty" name:"ResponseText"`
+	ResponseText *string `json:"ResponseText,omitnil" name:"ResponseText"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type TextResetResponse struct {

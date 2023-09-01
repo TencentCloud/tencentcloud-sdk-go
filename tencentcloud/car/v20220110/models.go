@@ -15,46 +15,46 @@
 package v20220110
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type ApplyConcurrentRequestParams struct {
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 用户IP，用户客户端的公网IP，用于就近调度
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
 	// 项目ID
-	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 应用版本ID
-	ApplicationVersionId *string `json:"ApplicationVersionId,omitempty" name:"ApplicationVersionId"`
+	ApplicationVersionId *string `json:"ApplicationVersionId,omitnil" name:"ApplicationVersionId"`
 
 	// 应用ID。如果是独享项目，将忽略该参数，使用项目绑定的应用。如果是共享项目，使用该参数来指定应用。
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	ApplicationId *string `json:"ApplicationId,omitnil" name:"ApplicationId"`
 }
 
 type ApplyConcurrentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 用户IP，用户客户端的公网IP，用于就近调度
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
 	// 项目ID
-	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 应用版本ID
-	ApplicationVersionId *string `json:"ApplicationVersionId,omitempty" name:"ApplicationVersionId"`
+	ApplicationVersionId *string `json:"ApplicationVersionId,omitnil" name:"ApplicationVersionId"`
 
 	// 应用ID。如果是独享项目，将忽略该参数，使用项目绑定的应用。如果是共享项目，使用该参数来指定应用。
-	ApplicationId *string `json:"ApplicationId,omitempty" name:"ApplicationId"`
+	ApplicationId *string `json:"ApplicationId,omitnil" name:"ApplicationId"`
 }
 
 func (r *ApplyConcurrentRequest) ToJsonString() string {
@@ -83,7 +83,7 @@ func (r *ApplyConcurrentRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ApplyConcurrentResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ApplyConcurrentResponse struct {
@@ -105,18 +105,18 @@ func (r *ApplyConcurrentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSessionRequestParams struct {
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 用户IP，用户客户端的公网IP，用于就近调度
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
 	// 客户端session信息，从SDK请求中获得。特殊的，当 RunMode 参数为 RunWithoutClient 时，该字段可以为空
-	ClientSession *string `json:"ClientSession,omitempty" name:"ClientSession"`
+	ClientSession *string `json:"ClientSession,omitnil" name:"ClientSession"`
 
 	// 云端运行模式。
 	// RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运行
 	// 默认值（空）：要求必须有客户端连接才会保持云端 App 运行。
-	RunMode *string `json:"RunMode,omitempty" name:"RunMode"`
+	RunMode *string `json:"RunMode,omitnil" name:"RunMode"`
 
 	// 应用启动参数。
 	// 如果请求的是多应用共享项目，此参数生效；
@@ -125,35 +125,35 @@ type CreateSessionRequestParams struct {
 	// 
 	// 注意：在此参数生效的情况下，将会被追加到控制台应用或项目配置的启动参数的后面。
 	// 例如，对于某关闭预启动的单应用独享项目，若在控制台中项目配置的启动参数为bar=0，而ApplicationParameters参数为foo=1，则实际应用启动参数为bar=0 foo=1。
-	ApplicationParameters *string `json:"ApplicationParameters,omitempty" name:"ApplicationParameters"`
+	ApplicationParameters *string `json:"ApplicationParameters,omitnil" name:"ApplicationParameters"`
 
 	// 【多人互动】房主用户ID，在多人互动模式下为必填字段。
 	// 如果该用户是房主，HostUserId需要和UserId保持一致；
 	// 如果该用户非房主，HostUserId需要填写房主的HostUserId。
-	HostUserId *string `json:"HostUserId,omitempty" name:"HostUserId"`
+	HostUserId *string `json:"HostUserId,omitnil" name:"HostUserId"`
 
 	// 【多人互动】角色。
 	// Player：玩家（可通过键鼠等操作应用）
 	// Viewer：观察者（只能观看，无法操作）
-	Role *string `json:"Role,omitempty" name:"Role"`
+	Role *string `json:"Role,omitnil" name:"Role"`
 }
 
 type CreateSessionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 用户IP，用户客户端的公网IP，用于就近调度
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
 	// 客户端session信息，从SDK请求中获得。特殊的，当 RunMode 参数为 RunWithoutClient 时，该字段可以为空
-	ClientSession *string `json:"ClientSession,omitempty" name:"ClientSession"`
+	ClientSession *string `json:"ClientSession,omitnil" name:"ClientSession"`
 
 	// 云端运行模式。
 	// RunWithoutClient：允许无客户端连接的情况下仍保持云端 App 运行
 	// 默认值（空）：要求必须有客户端连接才会保持云端 App 运行。
-	RunMode *string `json:"RunMode,omitempty" name:"RunMode"`
+	RunMode *string `json:"RunMode,omitnil" name:"RunMode"`
 
 	// 应用启动参数。
 	// 如果请求的是多应用共享项目，此参数生效；
@@ -162,17 +162,17 @@ type CreateSessionRequest struct {
 	// 
 	// 注意：在此参数生效的情况下，将会被追加到控制台应用或项目配置的启动参数的后面。
 	// 例如，对于某关闭预启动的单应用独享项目，若在控制台中项目配置的启动参数为bar=0，而ApplicationParameters参数为foo=1，则实际应用启动参数为bar=0 foo=1。
-	ApplicationParameters *string `json:"ApplicationParameters,omitempty" name:"ApplicationParameters"`
+	ApplicationParameters *string `json:"ApplicationParameters,omitnil" name:"ApplicationParameters"`
 
 	// 【多人互动】房主用户ID，在多人互动模式下为必填字段。
 	// 如果该用户是房主，HostUserId需要和UserId保持一致；
 	// 如果该用户非房主，HostUserId需要填写房主的HostUserId。
-	HostUserId *string `json:"HostUserId,omitempty" name:"HostUserId"`
+	HostUserId *string `json:"HostUserId,omitnil" name:"HostUserId"`
 
 	// 【多人互动】角色。
 	// Player：玩家（可通过键鼠等操作应用）
 	// Viewer：观察者（只能观看，无法操作）
-	Role *string `json:"Role,omitempty" name:"Role"`
+	Role *string `json:"Role,omitnil" name:"Role"`
 }
 
 func (r *CreateSessionRequest) ToJsonString() string {
@@ -203,10 +203,10 @@ func (r *CreateSessionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSessionResponseParams struct {
 	// 服务端session信息，返回给SDK
-	ServerSession *string `json:"ServerSession,omitempty" name:"ServerSession"`
+	ServerSession *string `json:"ServerSession,omitnil" name:"ServerSession"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateSessionResponse struct {
@@ -228,14 +228,14 @@ func (r *CreateSessionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DestroySessionRequestParams struct {
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }
 
 type DestroySessionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }
 
 func (r *DestroySessionRequest) ToJsonString() string {
@@ -260,7 +260,7 @@ func (r *DestroySessionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DestroySessionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DestroySessionResponse struct {
@@ -282,20 +282,20 @@ func (r *DestroySessionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type StartPublishStreamRequestParams struct {
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（UserId将作为StreamId进行推流，比如绑定推流域名为abc.livepush.myqcloud.com，那么推流地址为rtmp://abc.livepush.myqcloud.com/live/UserId?txSecret=xxx&txTime=xxx）
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 推流参数，推流时携带自定义参数。
-	PublishStreamArgs *string `json:"PublishStreamArgs,omitempty" name:"PublishStreamArgs"`
+	PublishStreamArgs *string `json:"PublishStreamArgs,omitnil" name:"PublishStreamArgs"`
 }
 
 type StartPublishStreamRequest struct {
 	*tchttp.BaseRequest
 	
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（UserId将作为StreamId进行推流，比如绑定推流域名为abc.livepush.myqcloud.com，那么推流地址为rtmp://abc.livepush.myqcloud.com/live/UserId?txSecret=xxx&txTime=xxx）
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 推流参数，推流时携带自定义参数。
-	PublishStreamArgs *string `json:"PublishStreamArgs,omitempty" name:"PublishStreamArgs"`
+	PublishStreamArgs *string `json:"PublishStreamArgs,omitnil" name:"PublishStreamArgs"`
 }
 
 func (r *StartPublishStreamRequest) ToJsonString() string {
@@ -321,7 +321,7 @@ func (r *StartPublishStreamRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StartPublishStreamResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type StartPublishStreamResponse struct {
@@ -343,14 +343,14 @@ func (r *StartPublishStreamResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type StopPublishStreamRequestParams struct {
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }
 
 type StopPublishStreamRequest struct {
 	*tchttp.BaseRequest
 	
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }
 
 func (r *StopPublishStreamRequest) ToJsonString() string {
@@ -375,7 +375,7 @@ func (r *StopPublishStreamRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StopPublishStreamResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type StopPublishStreamResponse struct {

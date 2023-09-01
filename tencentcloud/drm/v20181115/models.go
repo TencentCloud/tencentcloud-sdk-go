@@ -15,32 +15,32 @@
 package v20181115
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type AddFairPlayPemRequestParams struct {
 	// 加密后的fairplay方案申请时使用的私钥。
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对私钥文件中的字段进行加密，并对加密结果进行base64编码。
-	Pem *string `json:"Pem,omitempty" name:"Pem"`
+	Pem *string `json:"Pem,omitnil" name:"Pem"`
 
 	// 加密后的fairplay方案申请返回的ask数据。
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对Ask字符串进行加密，并对加密结果进行base64编码。
-	Ask *string `json:"Ask,omitempty" name:"Ask"`
+	Ask *string `json:"Ask,omitnil" name:"Ask"`
 
 	// 私钥的解密密钥。
 	// openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的密钥。
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
-	PemDecryptKey *string `json:"PemDecryptKey,omitempty" name:"PemDecryptKey"`
+	PemDecryptKey *string `json:"PemDecryptKey,omitnil" name:"PemDecryptKey"`
 
 	// 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
-	BailorId *uint64 `json:"BailorId,omitempty" name:"BailorId"`
+	BailorId *uint64 `json:"BailorId,omitnil" name:"BailorId"`
 
 	// 私钥的优先级，优先级数值越高，优先级越高。
 	// 该值可以不传，后台将自动分配一个优先级。
-	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+	Priority *uint64 `json:"Priority,omitnil" name:"Priority"`
 }
 
 type AddFairPlayPemRequest struct {
@@ -48,23 +48,23 @@ type AddFairPlayPemRequest struct {
 	
 	// 加密后的fairplay方案申请时使用的私钥。
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对私钥文件中的字段进行加密，并对加密结果进行base64编码。
-	Pem *string `json:"Pem,omitempty" name:"Pem"`
+	Pem *string `json:"Pem,omitnil" name:"Pem"`
 
 	// 加密后的fairplay方案申请返回的ask数据。
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对Ask字符串进行加密，并对加密结果进行base64编码。
-	Ask *string `json:"Ask,omitempty" name:"Ask"`
+	Ask *string `json:"Ask,omitnil" name:"Ask"`
 
 	// 私钥的解密密钥。
 	// openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的密钥。
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
-	PemDecryptKey *string `json:"PemDecryptKey,omitempty" name:"PemDecryptKey"`
+	PemDecryptKey *string `json:"PemDecryptKey,omitnil" name:"PemDecryptKey"`
 
 	// 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
-	BailorId *uint64 `json:"BailorId,omitempty" name:"BailorId"`
+	BailorId *uint64 `json:"BailorId,omitnil" name:"BailorId"`
 
 	// 私钥的优先级，优先级数值越高，优先级越高。
 	// 该值可以不传，后台将自动分配一个优先级。
-	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+	Priority *uint64 `json:"Priority,omitnil" name:"Priority"`
 }
 
 func (r *AddFairPlayPemRequest) ToJsonString() string {
@@ -94,14 +94,14 @@ func (r *AddFairPlayPemRequest) FromJsonString(s string) error {
 type AddFairPlayPemResponseParams struct {
 	// 设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+	FairPlayPemId *uint64 `json:"FairPlayPemId,omitnil" name:"FairPlayPemId"`
 
 	// 私钥的优先级，优先级数值越高，优先级越高。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+	Priority *uint64 `json:"Priority,omitnil" name:"Priority"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddFairPlayPemResponse struct {
@@ -123,32 +123,32 @@ func (r *AddFairPlayPemResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEncryptKeysRequestParams struct {
 	// 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
-	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
 
 	// 设置的加密密钥列表。
-	Keys []*KeyParam `json:"Keys,omitempty" name:"Keys"`
+	Keys []*KeyParam `json:"Keys,omitnil" name:"Keys"`
 
 	// 一个加密内容的唯一标识。
-	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
 
 	// 内容类型。接口取值VodVideo,LiveVideo。
-	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
 }
 
 type CreateEncryptKeysRequest struct {
 	*tchttp.BaseRequest
 	
 	// 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
-	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
 
 	// 设置的加密密钥列表。
-	Keys []*KeyParam `json:"Keys,omitempty" name:"Keys"`
+	Keys []*KeyParam `json:"Keys,omitnil" name:"Keys"`
 
 	// 一个加密内容的唯一标识。
-	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
 
 	// 内容类型。接口取值VodVideo,LiveVideo。
-	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
 }
 
 func (r *CreateEncryptKeysRequest) ToJsonString() string {
@@ -176,7 +176,7 @@ func (r *CreateEncryptKeysRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEncryptKeysResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateEncryptKeysResponse struct {
@@ -198,40 +198,40 @@ func (r *CreateEncryptKeysResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateLicenseRequestParams struct {
 	// DRM方案类型，接口取值：WIDEVINE，FAIRPLAY。
-	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
 
 	// Base64编码的终端设备License Request数据。
-	LicenseRequest *string `json:"LicenseRequest,omitempty" name:"LicenseRequest"`
+	LicenseRequest *string `json:"LicenseRequest,omitnil" name:"LicenseRequest"`
 
 	// 内容类型，接口取值：VodVideo,LiveVideo。
-	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
 
 	// 授权播放的Track列表。
 	// 该值为空时，默认授权所有track播放。
-	Tracks []*string `json:"Tracks,omitempty" name:"Tracks"`
+	Tracks []*string `json:"Tracks,omitnil" name:"Tracks"`
 
 	// 播放策略参数。
-	PlaybackPolicy *PlaybackPolicy `json:"PlaybackPolicy,omitempty" name:"PlaybackPolicy"`
+	PlaybackPolicy *PlaybackPolicy `json:"PlaybackPolicy,omitnil" name:"PlaybackPolicy"`
 }
 
 type CreateLicenseRequest struct {
 	*tchttp.BaseRequest
 	
 	// DRM方案类型，接口取值：WIDEVINE，FAIRPLAY。
-	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
 
 	// Base64编码的终端设备License Request数据。
-	LicenseRequest *string `json:"LicenseRequest,omitempty" name:"LicenseRequest"`
+	LicenseRequest *string `json:"LicenseRequest,omitnil" name:"LicenseRequest"`
 
 	// 内容类型，接口取值：VodVideo,LiveVideo。
-	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
 
 	// 授权播放的Track列表。
 	// 该值为空时，默认授权所有track播放。
-	Tracks []*string `json:"Tracks,omitempty" name:"Tracks"`
+	Tracks []*string `json:"Tracks,omitnil" name:"Tracks"`
 
 	// 播放策略参数。
-	PlaybackPolicy *PlaybackPolicy `json:"PlaybackPolicy,omitempty" name:"PlaybackPolicy"`
+	PlaybackPolicy *PlaybackPolicy `json:"PlaybackPolicy,omitnil" name:"PlaybackPolicy"`
 }
 
 func (r *CreateLicenseRequest) ToJsonString() string {
@@ -260,13 +260,13 @@ func (r *CreateLicenseRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateLicenseResponseParams struct {
 	// Base64 编码的许可证二进制数据。
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 加密内容的内容ID
-	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateLicenseResponse struct {
@@ -288,22 +288,22 @@ func (r *CreateLicenseResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteFairPlayPemRequestParams struct {
 	// 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
-	BailorId *uint64 `json:"BailorId,omitempty" name:"BailorId"`
+	BailorId *uint64 `json:"BailorId,omitnil" name:"BailorId"`
 
 	// 要删除的pem id。
 	// 当未传入该值时，将删除所有的私钥。
-	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+	FairPlayPemId *uint64 `json:"FairPlayPemId,omitnil" name:"FairPlayPemId"`
 }
 
 type DeleteFairPlayPemRequest struct {
 	*tchttp.BaseRequest
 	
 	// 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
-	BailorId *uint64 `json:"BailorId,omitempty" name:"BailorId"`
+	BailorId *uint64 `json:"BailorId,omitnil" name:"BailorId"`
 
 	// 要删除的pem id。
 	// 当未传入该值时，将删除所有的私钥。
-	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+	FairPlayPemId *uint64 `json:"FairPlayPemId,omitnil" name:"FairPlayPemId"`
 }
 
 func (r *DeleteFairPlayPemRequest) ToJsonString() string {
@@ -329,7 +329,7 @@ func (r *DeleteFairPlayPemRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteFairPlayPemResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteFairPlayPemResponse struct {
@@ -351,34 +351,34 @@ func (r *DeleteFairPlayPemResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAllKeysRequestParams struct {
 	// 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
-	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
 
 	// Base64编码的Rsa公钥，用来加密出参中的SessionKey。
 	// 如果该参数为空，则出参中SessionKey为明文。
-	RsaPublicKey *string `json:"RsaPublicKey,omitempty" name:"RsaPublicKey"`
+	RsaPublicKey *string `json:"RsaPublicKey,omitnil" name:"RsaPublicKey"`
 
 	// 一个加密内容的唯一标识。
-	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
 
 	// 内容类型。接口取值VodVideo,LiveVideo。
-	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
 }
 
 type DescribeAllKeysRequest struct {
 	*tchttp.BaseRequest
 	
 	// 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
-	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
 
 	// Base64编码的Rsa公钥，用来加密出参中的SessionKey。
 	// 如果该参数为空，则出参中SessionKey为明文。
-	RsaPublicKey *string `json:"RsaPublicKey,omitempty" name:"RsaPublicKey"`
+	RsaPublicKey *string `json:"RsaPublicKey,omitnil" name:"RsaPublicKey"`
 
 	// 一个加密内容的唯一标识。
-	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
 
 	// 内容类型。接口取值VodVideo,LiveVideo。
-	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
 }
 
 func (r *DescribeAllKeysRequest) ToJsonString() string {
@@ -407,20 +407,20 @@ func (r *DescribeAllKeysRequest) FromJsonString(s string) error {
 type DescribeAllKeysResponseParams struct {
 	// 加密密钥列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keys []*Key `json:"Keys,omitempty" name:"Keys"`
+	Keys []*Key `json:"Keys,omitnil" name:"Keys"`
 
 	// 用来加密密钥。
 	// 如果入参中带有RsaPublicKey，则SessionKey为使用Rsa公钥加密后的二进制数据，Base64编码字符串。
 	// 如果入参中没有RsaPublicKey，则SessionKey为原始数据的字符串形式。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SessionKey *string `json:"SessionKey,omitempty" name:"SessionKey"`
+	SessionKey *string `json:"SessionKey,omitnil" name:"SessionKey"`
 
 	// 内容ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAllKeysResponse struct {
@@ -442,22 +442,22 @@ func (r *DescribeAllKeysResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFairPlayPemRequestParams struct {
 	// 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
-	BailorId *uint64 `json:"BailorId,omitempty" name:"BailorId"`
+	BailorId *uint64 `json:"BailorId,omitnil" name:"BailorId"`
 
 	// 需要查询的pem id。
 	// 当该值未填入时，将返回所有的私钥信息。
-	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+	FairPlayPemId *uint64 `json:"FairPlayPemId,omitnil" name:"FairPlayPemId"`
 }
 
 type DescribeFairPlayPemRequest struct {
 	*tchttp.BaseRequest
 	
 	// 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
-	BailorId *uint64 `json:"BailorId,omitempty" name:"BailorId"`
+	BailorId *uint64 `json:"BailorId,omitnil" name:"BailorId"`
 
 	// 需要查询的pem id。
 	// 当该值未填入时，将返回所有的私钥信息。
-	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+	FairPlayPemId *uint64 `json:"FairPlayPemId,omitnil" name:"FairPlayPemId"`
 }
 
 func (r *DescribeFairPlayPemRequest) ToJsonString() string {
@@ -484,10 +484,10 @@ func (r *DescribeFairPlayPemRequest) FromJsonString(s string) error {
 type DescribeFairPlayPemResponseParams struct {
 	// 该账户下，所有设置的FairPlay私钥摘要信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FairPlayPems []*FairPlayPemDigestInfo `json:"FairPlayPems,omitempty" name:"FairPlayPems"`
+	FairPlayPems []*FairPlayPemDigestInfo `json:"FairPlayPems,omitnil" name:"FairPlayPems"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeFairPlayPemResponse struct {
@@ -509,42 +509,42 @@ func (r *DescribeFairPlayPemResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKeysRequestParams struct {
 	// 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
-	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
 
 	// 加密的track列表，接口取值VIDEO、AUDIO。
-	Tracks []*string `json:"Tracks,omitempty" name:"Tracks"`
+	Tracks []*string `json:"Tracks,omitnil" name:"Tracks"`
 
 	// 内容类型。接口取值VodVideo,LiveVideo
-	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
 
 	// Base64编码的Rsa公钥，用来加密出参中的SessionKey。
 	// 如果该参数为空，则出参中SessionKey为明文。
-	RsaPublicKey *string `json:"RsaPublicKey,omitempty" name:"RsaPublicKey"`
+	RsaPublicKey *string `json:"RsaPublicKey,omitnil" name:"RsaPublicKey"`
 
 	// 一个加密内容的唯一标识。
 	// 如果该参数为空，则后台自动生成
-	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
 }
 
 type DescribeKeysRequest struct {
 	*tchttp.BaseRequest
 	
 	// 使用的DRM方案类型，接口取值WIDEVINE、FAIRPLAY、NORMALAES。
-	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
 
 	// 加密的track列表，接口取值VIDEO、AUDIO。
-	Tracks []*string `json:"Tracks,omitempty" name:"Tracks"`
+	Tracks []*string `json:"Tracks,omitnil" name:"Tracks"`
 
 	// 内容类型。接口取值VodVideo,LiveVideo
-	ContentType *string `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *string `json:"ContentType,omitnil" name:"ContentType"`
 
 	// Base64编码的Rsa公钥，用来加密出参中的SessionKey。
 	// 如果该参数为空，则出参中SessionKey为明文。
-	RsaPublicKey *string `json:"RsaPublicKey,omitempty" name:"RsaPublicKey"`
+	RsaPublicKey *string `json:"RsaPublicKey,omitnil" name:"RsaPublicKey"`
 
 	// 一个加密内容的唯一标识。
 	// 如果该参数为空，则后台自动生成
-	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
 }
 
 func (r *DescribeKeysRequest) ToJsonString() string {
@@ -573,22 +573,22 @@ func (r *DescribeKeysRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKeysResponseParams struct {
 	// 加密密钥列表
-	Keys []*Key `json:"Keys,omitempty" name:"Keys"`
+	Keys []*Key `json:"Keys,omitnil" name:"Keys"`
 
 	// 用来加密密钥。
 	// 如果入参中带有RsaPublicKey，则SessionKey为使用Rsa公钥加密后的二进制数据，Base64编码字符串。
 	// 如果入参中没有RsaPublicKey，则SessionKey为原始数据的字符串形式。
-	SessionKey *string `json:"SessionKey,omitempty" name:"SessionKey"`
+	SessionKey *string `json:"SessionKey,omitnil" name:"SessionKey"`
 
 	// 内容ID
-	ContentId *string `json:"ContentId,omitempty" name:"ContentId"`
+	ContentId *string `json:"ContentId,omitnil" name:"ContentId"`
 
 	// Widevine方案的Pssh数据，Base64编码。
 	// Fairplay方案无该值。
-	Pssh *string `json:"Pssh,omitempty" name:"Pssh"`
+	Pssh *string `json:"Pssh,omitnil" name:"Pssh"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeKeysResponse struct {
@@ -609,110 +609,110 @@ func (r *DescribeKeysResponse) FromJsonString(s string) error {
 
 type DrmOutputObject struct {
 	// 输出的桶名称。
-	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitnil" name:"BucketName"`
 
 	// 输出的对象名称。
-	ObjectName *string `json:"ObjectName,omitempty" name:"ObjectName"`
+	ObjectName *string `json:"ObjectName,omitnil" name:"ObjectName"`
 
 	// 输出对象参数。
-	Para *DrmOutputPara `json:"Para,omitempty" name:"Para"`
+	Para *DrmOutputPara `json:"Para,omitnil" name:"Para"`
 }
 
 type DrmOutputPara struct {
 	// 内容类型。例:video，audio，mpd，m3u8
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 语言,例: en, zh-cn
-	Language *string `json:"Language,omitempty" name:"Language"`
+	Language *string `json:"Language,omitnil" name:"Language"`
 }
 
 type DrmSourceObject struct {
 	// 输入的桶名称。
-	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitnil" name:"BucketName"`
 
 	// 输入对象名称。
-	ObjectName *string `json:"ObjectName,omitempty" name:"ObjectName"`
+	ObjectName *string `json:"ObjectName,omitnil" name:"ObjectName"`
 }
 
 type FairPlayPemDigestInfo struct {
 	// fairplay 私钥pem id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+	FairPlayPemId *uint64 `json:"FairPlayPemId,omitnil" name:"FairPlayPemId"`
 
 	// 私钥的优先级。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+	Priority *uint64 `json:"Priority,omitnil" name:"Priority"`
 
 	// 私钥的md5 信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Md5Pem *string `json:"Md5Pem,omitempty" name:"Md5Pem"`
+	Md5Pem *string `json:"Md5Pem,omitnil" name:"Md5Pem"`
 
 	// ASK的md5信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Md5Ask *string `json:"Md5Ask,omitempty" name:"Md5Ask"`
+	Md5Ask *string `json:"Md5Ask,omitnil" name:"Md5Ask"`
 
 	// 私钥解密密钥的md5值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Md5PemDecryptKey *string `json:"Md5PemDecryptKey,omitempty" name:"Md5PemDecryptKey"`
+	Md5PemDecryptKey *string `json:"Md5PemDecryptKey,omitnil" name:"Md5PemDecryptKey"`
 }
 
 type Key struct {
 	// 加密track类型。Widevine支持SD、HD、UHD1、UHD2、AUDIO。Fairplay只支持HD。
-	Track *string `json:"Track,omitempty" name:"Track"`
+	Track *string `json:"Track,omitnil" name:"Track"`
 
 	// 密钥ID。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 原始Key使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 原始IV使用AES-128 ECB模式和SessionKey加密的后的二进制数据，Base64编码的字符串。
-	Iv *string `json:"Iv,omitempty" name:"Iv"`
+	Iv *string `json:"Iv,omitnil" name:"Iv"`
 
 	// 该key生成时的时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InsertTimestamp *uint64 `json:"InsertTimestamp,omitempty" name:"InsertTimestamp"`
+	InsertTimestamp *uint64 `json:"InsertTimestamp,omitnil" name:"InsertTimestamp"`
 }
 
 type KeyParam struct {
 	// 加密track类型。取值范围：
 	// SD、HD、UHD1、UHD2、AUDIO
-	Track *string `json:"Track,omitempty" name:"Track"`
+	Track *string `json:"Track,omitnil" name:"Track"`
 
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 密钥ID。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
-	Iv *string `json:"Iv,omitempty" name:"Iv"`
+	Iv *string `json:"Iv,omitnil" name:"Iv"`
 }
 
 // Predefined struct for user
 type ModifyFairPlayPemRequestParams struct {
 	// 加密后的fairplay方案申请时使用的私钥。
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对私钥文件中的字段进行加密，并对加密结果进行base64编码。
-	Pem *string `json:"Pem,omitempty" name:"Pem"`
+	Pem *string `json:"Pem,omitnil" name:"Pem"`
 
 	// 加密后的fairplay方案申请返回的ask数据。
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对Ask字符串进行加密，并对加密结果进行base64编码。
-	Ask *string `json:"Ask,omitempty" name:"Ask"`
+	Ask *string `json:"Ask,omitnil" name:"Ask"`
 
 	// 要修改的私钥id
-	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+	FairPlayPemId *uint64 `json:"FairPlayPemId,omitnil" name:"FairPlayPemId"`
 
 	// 私钥的解密密钥。
 	// openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的密钥。
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
-	PemDecryptKey *string `json:"PemDecryptKey,omitempty" name:"PemDecryptKey"`
+	PemDecryptKey *string `json:"PemDecryptKey,omitnil" name:"PemDecryptKey"`
 
 	// 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
-	BailorId *uint64 `json:"BailorId,omitempty" name:"BailorId"`
+	BailorId *uint64 `json:"BailorId,omitnil" name:"BailorId"`
 
 	// 私钥的优先级，优先级数值越高，优先级越高。
 	// 该值可以不传，后台将自动分配一个优先级。
-	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+	Priority *uint64 `json:"Priority,omitnil" name:"Priority"`
 }
 
 type ModifyFairPlayPemRequest struct {
@@ -720,26 +720,26 @@ type ModifyFairPlayPemRequest struct {
 	
 	// 加密后的fairplay方案申请时使用的私钥。
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对私钥文件中的字段进行加密，并对加密结果进行base64编码。
-	Pem *string `json:"Pem,omitempty" name:"Pem"`
+	Pem *string `json:"Pem,omitnil" name:"Pem"`
 
 	// 加密后的fairplay方案申请返回的ask数据。
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对Ask字符串进行加密，并对加密结果进行base64编码。
-	Ask *string `json:"Ask,omitempty" name:"Ask"`
+	Ask *string `json:"Ask,omitnil" name:"Ask"`
 
 	// 要修改的私钥id
-	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+	FairPlayPemId *uint64 `json:"FairPlayPemId,omitnil" name:"FairPlayPemId"`
 
 	// 私钥的解密密钥。
 	// openssl在生成rsa时，可能会需要设置加密密钥，请记住设置的密钥。
 	// 请使用腾讯云DRM 提供的公钥，使用rsa加密算法，PKCS1填充方式对解密密钥进行加密，并对加密结果进行base64编码。
-	PemDecryptKey *string `json:"PemDecryptKey,omitempty" name:"PemDecryptKey"`
+	PemDecryptKey *string `json:"PemDecryptKey,omitnil" name:"PemDecryptKey"`
 
 	// 委托者Id,适用于托管自身证书的客户。普通客户无需填该字段。
-	BailorId *uint64 `json:"BailorId,omitempty" name:"BailorId"`
+	BailorId *uint64 `json:"BailorId,omitnil" name:"BailorId"`
 
 	// 私钥的优先级，优先级数值越高，优先级越高。
 	// 该值可以不传，后台将自动分配一个优先级。
-	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+	Priority *uint64 `json:"Priority,omitnil" name:"Priority"`
 }
 
 func (r *ModifyFairPlayPemRequest) ToJsonString() string {
@@ -770,14 +770,14 @@ func (r *ModifyFairPlayPemRequest) FromJsonString(s string) error {
 type ModifyFairPlayPemResponseParams struct {
 	// 设置私钥后，后台返回的pem id，用来唯一标识一个私钥。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FairPlayPemId *uint64 `json:"FairPlayPemId,omitempty" name:"FairPlayPemId"`
+	FairPlayPemId *uint64 `json:"FairPlayPemId,omitnil" name:"FairPlayPemId"`
 
 	// 私钥的优先级，优先级数值越高，优先级越高。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+	Priority *uint64 `json:"Priority,omitnil" name:"Priority"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyFairPlayPemResponse struct {
@@ -798,53 +798,53 @@ func (r *ModifyFairPlayPemResponse) FromJsonString(s string) error {
 
 type PlaybackPolicy struct {
 	// 播放许可证的有效期
-	LicenseDurationSeconds *uint64 `json:"LicenseDurationSeconds,omitempty" name:"LicenseDurationSeconds"`
+	LicenseDurationSeconds *uint64 `json:"LicenseDurationSeconds,omitnil" name:"LicenseDurationSeconds"`
 
 	// 开始播放后，允许最长播放时间
-	PlaybackDurationSeconds *uint64 `json:"PlaybackDurationSeconds,omitempty" name:"PlaybackDurationSeconds"`
+	PlaybackDurationSeconds *uint64 `json:"PlaybackDurationSeconds,omitnil" name:"PlaybackDurationSeconds"`
 }
 
 // Predefined struct for user
 type StartEncryptionRequestParams struct {
 	// cos的end point。
-	CosEndPoint *string `json:"CosEndPoint,omitempty" name:"CosEndPoint"`
+	CosEndPoint *string `json:"CosEndPoint,omitnil" name:"CosEndPoint"`
 
 	// cos api密钥id。
-	CosSecretId *string `json:"CosSecretId,omitempty" name:"CosSecretId"`
+	CosSecretId *string `json:"CosSecretId,omitnil" name:"CosSecretId"`
 
 	// cos api密钥。
-	CosSecretKey *string `json:"CosSecretKey,omitempty" name:"CosSecretKey"`
+	CosSecretKey *string `json:"CosSecretKey,omitnil" name:"CosSecretKey"`
 
 	// 使用的DRM方案类型，接口取值WIDEVINE,FAIRPLAY
-	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
 
 	// 存储在COS上的原始内容信息
-	SourceObject *DrmSourceObject `json:"SourceObject,omitempty" name:"SourceObject"`
+	SourceObject *DrmSourceObject `json:"SourceObject,omitnil" name:"SourceObject"`
 
 	// 加密后的内容存储到COS的对象
-	OutputObjects []*DrmOutputObject `json:"OutputObjects,omitempty" name:"OutputObjects"`
+	OutputObjects []*DrmOutputObject `json:"OutputObjects,omitnil" name:"OutputObjects"`
 }
 
 type StartEncryptionRequest struct {
 	*tchttp.BaseRequest
 	
 	// cos的end point。
-	CosEndPoint *string `json:"CosEndPoint,omitempty" name:"CosEndPoint"`
+	CosEndPoint *string `json:"CosEndPoint,omitnil" name:"CosEndPoint"`
 
 	// cos api密钥id。
-	CosSecretId *string `json:"CosSecretId,omitempty" name:"CosSecretId"`
+	CosSecretId *string `json:"CosSecretId,omitnil" name:"CosSecretId"`
 
 	// cos api密钥。
-	CosSecretKey *string `json:"CosSecretKey,omitempty" name:"CosSecretKey"`
+	CosSecretKey *string `json:"CosSecretKey,omitnil" name:"CosSecretKey"`
 
 	// 使用的DRM方案类型，接口取值WIDEVINE,FAIRPLAY
-	DrmType *string `json:"DrmType,omitempty" name:"DrmType"`
+	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
 
 	// 存储在COS上的原始内容信息
-	SourceObject *DrmSourceObject `json:"SourceObject,omitempty" name:"SourceObject"`
+	SourceObject *DrmSourceObject `json:"SourceObject,omitnil" name:"SourceObject"`
 
 	// 加密后的内容存储到COS的对象
-	OutputObjects []*DrmOutputObject `json:"OutputObjects,omitempty" name:"OutputObjects"`
+	OutputObjects []*DrmOutputObject `json:"OutputObjects,omitnil" name:"OutputObjects"`
 }
 
 func (r *StartEncryptionRequest) ToJsonString() string {
@@ -874,7 +874,7 @@ func (r *StartEncryptionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StartEncryptionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type StartEncryptionResponse struct {

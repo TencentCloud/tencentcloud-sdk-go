@@ -15,108 +15,108 @@
 package v20220217
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type BuildPacksInfo struct {
 	// 基础镜像
-	BaseImage *string `json:"BaseImage,omitempty" name:"BaseImage"`
+	BaseImage *string `json:"BaseImage,omitnil" name:"BaseImage"`
 
 	// 启动命令
-	EntryPoint *string `json:"EntryPoint,omitempty" name:"EntryPoint"`
+	EntryPoint *string `json:"EntryPoint,omitnil" name:"EntryPoint"`
 
 	// 语言
-	RepoLanguage *string `json:"RepoLanguage,omitempty" name:"RepoLanguage"`
+	RepoLanguage *string `json:"RepoLanguage,omitnil" name:"RepoLanguage"`
 
 	// 上传文件名
-	UploadFilename *string `json:"UploadFilename,omitempty" name:"UploadFilename"`
+	UploadFilename *string `json:"UploadFilename,omitnil" name:"UploadFilename"`
 }
 
 type ClsInfo struct {
 	// cls所属地域
-	ClsRegion *string `json:"ClsRegion,omitempty" name:"ClsRegion"`
+	ClsRegion *string `json:"ClsRegion,omitnil" name:"ClsRegion"`
 
 	// cls日志集ID
-	ClsLogsetId *string `json:"ClsLogsetId,omitempty" name:"ClsLogsetId"`
+	ClsLogsetId *string `json:"ClsLogsetId,omitnil" name:"ClsLogsetId"`
 
 	// cls日志主题ID
-	ClsTopicId *string `json:"ClsTopicId,omitempty" name:"ClsTopicId"`
+	ClsTopicId *string `json:"ClsTopicId,omitnil" name:"ClsTopicId"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 }
 
 // Predefined struct for user
 type CreateCloudRunEnvRequestParams struct {
 	// Trial,Standard,Professional,Enterprise
-	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+	PackageType *string `json:"PackageType,omitnil" name:"PackageType"`
 
 	// 环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
 	// 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
-	FreeQuota *string `json:"FreeQuota,omitempty" name:"FreeQuota"`
+	FreeQuota *string `json:"FreeQuota,omitnil" name:"FreeQuota"`
 
 	// 订单标记。建议使用方统一转大小写之后再判断。
 	// QuickStart：快速启动来源
 	// Activity：活动来源
-	Flag *string `json:"Flag,omitempty" name:"Flag"`
+	Flag *string `json:"Flag,omitnil" name:"Flag"`
 
 	// 私有网络Id
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 子网列表
-	SubNetIds []*string `json:"SubNetIds,omitempty" name:"SubNetIds"`
+	SubNetIds []*string `json:"SubNetIds,omitnil" name:"SubNetIds"`
 
 	// 请求key 用于防重
-	ReqKey *string `json:"ReqKey,omitempty" name:"ReqKey"`
+	ReqKey *string `json:"ReqKey,omitnil" name:"ReqKey"`
 
 	// 来源：wechat | cloud
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 渠道：wechat | cloud
-	Channel *string `json:"Channel,omitempty" name:"Channel"`
+	Channel *string `json:"Channel,omitnil" name:"Channel"`
 
 	// 环境ID
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 }
 
 type CreateCloudRunEnvRequest struct {
 	*tchttp.BaseRequest
 	
 	// Trial,Standard,Professional,Enterprise
-	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+	PackageType *string `json:"PackageType,omitnil" name:"PackageType"`
 
 	// 环境别名，要以a-z开头，不能包含 a-z,0-9,- 以外的字符
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
 	// 用户享有的免费额度级别，目前只能为“basic”，不传该字段或该字段为空，标识不享受免费额度。
-	FreeQuota *string `json:"FreeQuota,omitempty" name:"FreeQuota"`
+	FreeQuota *string `json:"FreeQuota,omitnil" name:"FreeQuota"`
 
 	// 订单标记。建议使用方统一转大小写之后再判断。
 	// QuickStart：快速启动来源
 	// Activity：活动来源
-	Flag *string `json:"Flag,omitempty" name:"Flag"`
+	Flag *string `json:"Flag,omitnil" name:"Flag"`
 
 	// 私有网络Id
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 子网列表
-	SubNetIds []*string `json:"SubNetIds,omitempty" name:"SubNetIds"`
+	SubNetIds []*string `json:"SubNetIds,omitnil" name:"SubNetIds"`
 
 	// 请求key 用于防重
-	ReqKey *string `json:"ReqKey,omitempty" name:"ReqKey"`
+	ReqKey *string `json:"ReqKey,omitnil" name:"ReqKey"`
 
 	// 来源：wechat | cloud
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 渠道：wechat | cloud
-	Channel *string `json:"Channel,omitempty" name:"Channel"`
+	Channel *string `json:"Channel,omitnil" name:"Channel"`
 
 	// 环境ID
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 }
 
 func (r *CreateCloudRunEnvRequest) ToJsonString() string {
@@ -150,13 +150,13 @@ func (r *CreateCloudRunEnvRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCloudRunEnvResponseParams struct {
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 后付费订单号
-	TranId *string `json:"TranId,omitempty" name:"TranId"`
+	TranId *string `json:"TranId,omitnil" name:"TranId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateCloudRunEnvResponse struct {
@@ -178,32 +178,32 @@ func (r *CreateCloudRunEnvResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCloudRunServerRequestParams struct {
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 
 	// 部署信息
-	DeployInfo *DeployParam `json:"DeployInfo,omitempty" name:"DeployInfo"`
+	DeployInfo *DeployParam `json:"DeployInfo,omitnil" name:"DeployInfo"`
 
 	// 服务配置信息
-	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitempty" name:"ServerConfig"`
+	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil" name:"ServerConfig"`
 }
 
 type CreateCloudRunServerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 
 	// 部署信息
-	DeployInfo *DeployParam `json:"DeployInfo,omitempty" name:"DeployInfo"`
+	DeployInfo *DeployParam `json:"DeployInfo,omitnil" name:"DeployInfo"`
 
 	// 服务配置信息
-	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitempty" name:"ServerConfig"`
+	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil" name:"ServerConfig"`
 }
 
 func (r *CreateCloudRunServerRequest) ToJsonString() string {
@@ -231,10 +231,10 @@ func (r *CreateCloudRunServerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCloudRunServerResponseParams struct {
 	// 一键部署任务Id，微信云托管，暂时用不到
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateCloudRunServerResponse struct {
@@ -255,71 +255,71 @@ func (r *CreateCloudRunServerResponse) FromJsonString(s string) error {
 
 type DatabasesInfo struct {
 	// 数据库唯一标识
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 状态。包含以下取值：
 	// <li>INITIALIZING：资源初始化中</li>
 	// <li>RUNNING：运行中，可正常使用的状态</li>
 	// <li>UNUSABLE：禁用，不可用</li>
 	// <li>OVERDUE：资源过期</li>
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 所属地域。
 	// 当前支持ap-shanghai
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 }
 
 type DeployParam struct {
 	// 部署类型：package/image/repository/pipeline/jar/war
-	DeployType *string `json:"DeployType,omitempty" name:"DeployType"`
+	DeployType *string `json:"DeployType,omitnil" name:"DeployType"`
 
 	// 部署类型为image时传入
-	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+	ImageUrl *string `json:"ImageUrl,omitnil" name:"ImageUrl"`
 
 	// 部署类型为package时传入
-	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+	PackageName *string `json:"PackageName,omitnil" name:"PackageName"`
 
 	// 部署类型为package时传入
-	PackageVersion *string `json:"PackageVersion,omitempty" name:"PackageVersion"`
+	PackageVersion *string `json:"PackageVersion,omitnil" name:"PackageVersion"`
 
 	// 部署备注
-	DeployRemark *string `json:"DeployRemark,omitempty" name:"DeployRemark"`
+	DeployRemark *string `json:"DeployRemark,omitnil" name:"DeployRemark"`
 
 	// 代码仓库信息
-	RepoInfo *RepositoryInfo `json:"RepoInfo,omitempty" name:"RepoInfo"`
+	RepoInfo *RepositoryInfo `json:"RepoInfo,omitnil" name:"RepoInfo"`
 
 	// 无Dockerfile时填写
-	BuildPacks *BuildPacksInfo `json:"BuildPacks,omitempty" name:"BuildPacks"`
+	BuildPacks *BuildPacksInfo `json:"BuildPacks,omitnil" name:"BuildPacks"`
 
 	// 发布类型 GRAY | FULL
-	ReleaseType *string `json:"ReleaseType,omitempty" name:"ReleaseType"`
+	ReleaseType *string `json:"ReleaseType,omitnil" name:"ReleaseType"`
 }
 
 // Predefined struct for user
 type DescribeCloudRunEnvsRequestParams struct {
 	// 环境ID，如果传了这个参数则只返回该环境的相关信息
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 指定Channels字段为可见渠道列表或不可见渠道列表
 	// 如只想获取渠道A的环境 就填写IsVisible= true,Channels = ["A"], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = ["A"]
-	IsVisible *bool `json:"IsVisible,omitempty" name:"IsVisible"`
+	IsVisible *bool `json:"IsVisible,omitnil" name:"IsVisible"`
 
 	// 渠道列表，代表可见或不可见渠道由IsVisible参数指定
-	Channels []*string `json:"Channels,omitempty" name:"Channels"`
+	Channels []*string `json:"Channels,omitnil" name:"Channels"`
 }
 
 type DescribeCloudRunEnvsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 环境ID，如果传了这个参数则只返回该环境的相关信息
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 指定Channels字段为可见渠道列表或不可见渠道列表
 	// 如只想获取渠道A的环境 就填写IsVisible= true,Channels = ["A"], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = ["A"]
-	IsVisible *bool `json:"IsVisible,omitempty" name:"IsVisible"`
+	IsVisible *bool `json:"IsVisible,omitnil" name:"IsVisible"`
 
 	// 渠道列表，代表可见或不可见渠道由IsVisible参数指定
-	Channels []*string `json:"Channels,omitempty" name:"Channels"`
+	Channels []*string `json:"Channels,omitnil" name:"Channels"`
 }
 
 func (r *DescribeCloudRunEnvsRequest) ToJsonString() string {
@@ -346,10 +346,10 @@ func (r *DescribeCloudRunEnvsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCloudRunEnvsResponseParams struct {
 	// 环境信息列表
-	EnvList []*EnvInfo `json:"EnvList,omitempty" name:"EnvList"`
+	EnvList []*EnvInfo `json:"EnvList,omitnil" name:"EnvList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCloudRunEnvsResponse struct {
@@ -371,20 +371,20 @@ func (r *DescribeCloudRunEnvsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCloudRunServerDetailRequestParams struct {
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 }
 
 type DescribeCloudRunServerDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 }
 
 func (r *DescribeCloudRunServerDetailRequest) ToJsonString() string {
@@ -411,18 +411,18 @@ func (r *DescribeCloudRunServerDetailRequest) FromJsonString(s string) error {
 type DescribeCloudRunServerDetailResponseParams struct {
 	// 服务基本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BaseInfo *ServerBaseInfo `json:"BaseInfo,omitempty" name:"BaseInfo"`
+	BaseInfo *ServerBaseInfo `json:"BaseInfo,omitnil" name:"BaseInfo"`
 
 	// 服务配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitempty" name:"ServerConfig"`
+	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil" name:"ServerConfig"`
 
 	// 在线版本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OnlineVersionInfos []*OnlineVersionInfo `json:"OnlineVersionInfos,omitempty" name:"OnlineVersionInfos"`
+	OnlineVersionInfos []*OnlineVersionInfo `json:"OnlineVersionInfos,omitnil" name:"OnlineVersionInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCloudRunServerDetailResponse struct {
@@ -444,30 +444,30 @@ func (r *DescribeCloudRunServerDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCloudRunServersRequestParams struct {
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 默认为9， 最大为30
 	// 不传或传0时 取默认9
 	// 大于30时取30
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 不传或传0时 会默认为1
-	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+	PageNum *int64 `json:"PageNum,omitnil" name:"PageNum"`
 }
 
 type DescribeCloudRunServersRequest struct {
 	*tchttp.BaseRequest
 	
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 默认为9， 最大为30
 	// 不传或传0时 取默认9
 	// 大于30时取30
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 不传或传0时 会默认为1
-	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+	PageNum *int64 `json:"PageNum,omitnil" name:"PageNum"`
 }
 
 func (r *DescribeCloudRunServersRequest) ToJsonString() string {
@@ -494,13 +494,13 @@ func (r *DescribeCloudRunServersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCloudRunServersResponseParams struct {
 	// 服务列表
-	ServerList []*ServerBaseInfo `json:"ServerList,omitempty" name:"ServerList"`
+	ServerList []*ServerBaseInfo `json:"ServerList,omitnil" name:"ServerList"`
 
 	// 服务总数
-	Total *int64 `json:"Total,omitempty" name:"Total"`
+	Total *int64 `json:"Total,omitnil" name:"Total"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCloudRunServersResponse struct {
@@ -522,14 +522,14 @@ func (r *DescribeCloudRunServersResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEnvBaseInfoRequestParams struct {
 	// 环境 Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 }
 
 type DescribeEnvBaseInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 环境 Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 }
 
 func (r *DescribeEnvBaseInfoRequest) ToJsonString() string {
@@ -554,10 +554,10 @@ func (r *DescribeEnvBaseInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEnvBaseInfoResponseParams struct {
 	// 环境基础信息
-	EnvBaseInfo *EnvBaseInfo `json:"EnvBaseInfo,omitempty" name:"EnvBaseInfo"`
+	EnvBaseInfo *EnvBaseInfo `json:"EnvBaseInfo,omitnil" name:"EnvBaseInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeEnvBaseInfoResponse struct {
@@ -579,32 +579,32 @@ func (r *DescribeEnvBaseInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServerManageTaskRequestParams struct {
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 
 	// 任务Id
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 操作标识
-	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+	OperatorRemark *string `json:"OperatorRemark,omitnil" name:"OperatorRemark"`
 }
 
 type DescribeServerManageTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 
 	// 任务Id
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 操作标识
-	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+	OperatorRemark *string `json:"OperatorRemark,omitnil" name:"OperatorRemark"`
 }
 
 func (r *DescribeServerManageTaskRequest) ToJsonString() string {
@@ -632,13 +632,13 @@ func (r *DescribeServerManageTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServerManageTaskResponseParams struct {
 	// 是否存在
-	IsExist *bool `json:"IsExist,omitempty" name:"IsExist"`
+	IsExist *bool `json:"IsExist,omitnil" name:"IsExist"`
 
 	// 任务信息
-	Task *ServerManageTaskInfo `json:"Task,omitempty" name:"Task"`
+	Task *ServerManageTaskInfo `json:"Task,omitnil" name:"Task"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeServerManageTaskResponse struct {
@@ -659,207 +659,207 @@ func (r *DescribeServerManageTaskResponse) FromJsonString(s string) error {
 
 type EnvBaseInfo struct {
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 套餐类型：Trial ｜ Standard ｜ Professional ｜ Enterprise
-	PackageType *string `json:"PackageType,omitempty" name:"PackageType"`
+	PackageType *string `json:"PackageType,omitnil" name:"PackageType"`
 
 	// VPC Id
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 环境创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 环境别名
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
 	// 环境状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 环境地域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 环境类型 tcbr ｜ run
-	EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
+	EnvType *string `json:"EnvType,omitnil" name:"EnvType"`
 
 	// 子网id
-	SubnetIds *string `json:"SubnetIds,omitempty" name:"SubnetIds"`
+	SubnetIds *string `json:"SubnetIds,omitnil" name:"SubnetIds"`
 }
 
 type EnvInfo struct {
 	// 账户下该环境唯一标识
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 环境来源。包含以下取值：
 	// <li>miniapp：微信小程序</li>
 	// <li>qcloud ：腾讯云</li>
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 最后修改时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 环境状态。包含以下取值：
 	// <li>NORMAL：正常可用</li>
 	// <li>UNAVAILABLE：服务不可用，可能是尚未初始化或者初始化过程中</li>
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 是否到期自动降为免费版
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsAutoDegrade *bool `json:"IsAutoDegrade,omitempty" name:"IsAutoDegrade"`
+	IsAutoDegrade *bool `json:"IsAutoDegrade,omitnil" name:"IsAutoDegrade"`
 
 	// 环境渠道
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnvChannel *string `json:"EnvChannel,omitempty" name:"EnvChannel"`
+	EnvChannel *string `json:"EnvChannel,omitnil" name:"EnvChannel"`
 
 	// 支付方式。包含以下取值：
 	// <li> prepayment：预付费</li>
 	// <li> postpaid：后付费</li>
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
 
 	// 是否为默认环境
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+	IsDefault *bool `json:"IsDefault,omitnil" name:"IsDefault"`
 
 	// 环境所属地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 环境类型：baas, run, hosting, weda,tcbr
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnvType *string `json:"EnvType,omitempty" name:"EnvType"`
+	EnvType *string `json:"EnvType,omitnil" name:"EnvType"`
 
 	// 数据库列表
-	Databases []*DatabasesInfo `json:"Databases,omitempty" name:"Databases"`
+	Databases []*DatabasesInfo `json:"Databases,omitnil" name:"Databases"`
 
 	// 存储列表
-	Storages []*StorageInfo `json:"Storages,omitempty" name:"Storages"`
+	Storages []*StorageInfo `json:"Storages,omitnil" name:"Storages"`
 
 	// 函数列表
-	Functions []*FunctionInfo `json:"Functions,omitempty" name:"Functions"`
+	Functions []*FunctionInfo `json:"Functions,omitnil" name:"Functions"`
 
 	// 云日志服务列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogServices []*LogServiceInfo `json:"LogServices,omitempty" name:"LogServices"`
+	LogServices []*LogServiceInfo `json:"LogServices,omitnil" name:"LogServices"`
 
 	// 静态资源信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StaticStorages []*StaticStorageInfo `json:"StaticStorages,omitempty" name:"StaticStorages"`
+	StaticStorages []*StaticStorageInfo `json:"StaticStorages,omitnil" name:"StaticStorages"`
 
 	// 环境标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 自定义日志服务
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CustomLogServices []*ClsInfo `json:"CustomLogServices,omitempty" name:"CustomLogServices"`
+	CustomLogServices []*ClsInfo `json:"CustomLogServices,omitnil" name:"CustomLogServices"`
 
 	// tcb产品套餐ID，参考DescribePackages接口的返回值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PackageId *string `json:"PackageId,omitempty" name:"PackageId"`
+	PackageId *string `json:"PackageId,omitnil" name:"PackageId"`
 
 	// 套餐中文名称，参考DescribePackages接口的返回值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PackageName *string `json:"PackageName,omitempty" name:"PackageName"`
+	PackageName *string `json:"PackageName,omitnil" name:"PackageName"`
 }
 
 type FunctionInfo struct {
 	// 命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 所属地域。
 	// 当前支持ap-shanghai
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 }
 
 type HpaPolicy struct {
 	// 扩缩容类型
-	PolicyType *string `json:"PolicyType,omitempty" name:"PolicyType"`
+	PolicyType *string `json:"PolicyType,omitnil" name:"PolicyType"`
 
 	// 扩缩容阈值
-	PolicyThreshold *uint64 `json:"PolicyThreshold,omitempty" name:"PolicyThreshold"`
+	PolicyThreshold *uint64 `json:"PolicyThreshold,omitnil" name:"PolicyThreshold"`
 }
 
 type LogServiceInfo struct {
 	// log名
-	LogsetName *string `json:"LogsetName,omitempty" name:"LogsetName"`
+	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
 
 	// log-id
-	LogsetId *string `json:"LogsetId,omitempty" name:"LogsetId"`
+	LogsetId *string `json:"LogsetId,omitnil" name:"LogsetId"`
 
 	// topic名
-	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
 	// topic-id
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 
 	// cls日志所属地域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 }
 
 type ObjectKV struct {
 	// 键值对Key
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 键值对Value
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type OnlineVersionInfo struct {
 	// 版本名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+	VersionName *string `json:"VersionName,omitnil" name:"VersionName"`
 
 	// 镜像url
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageUrl *string `json:"ImageUrl,omitempty" name:"ImageUrl"`
+	ImageUrl *string `json:"ImageUrl,omitnil" name:"ImageUrl"`
 
 	// 流量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowRatio *string `json:"FlowRatio,omitempty" name:"FlowRatio"`
+	FlowRatio *string `json:"FlowRatio,omitnil" name:"FlowRatio"`
 }
 
 // Predefined struct for user
 type OperateServerManageRequestParams struct {
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 
 	// 任报Id
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 操作类型:cancel | go_back | done
-	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
+	OperateType *string `json:"OperateType,omitnil" name:"OperateType"`
 
 	// 操作标识
-	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+	OperatorRemark *string `json:"OperatorRemark,omitnil" name:"OperatorRemark"`
 }
 
 type OperateServerManageRequest struct {
 	*tchttp.BaseRequest
 	
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 
 	// 任报Id
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 操作类型:cancel | go_back | done
-	OperateType *string `json:"OperateType,omitempty" name:"OperateType"`
+	OperateType *string `json:"OperateType,omitnil" name:"OperateType"`
 
 	// 操作标识
-	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+	OperatorRemark *string `json:"OperatorRemark,omitnil" name:"OperatorRemark"`
 }
 
 func (r *OperateServerManageRequest) ToJsonString() string {
@@ -888,7 +888,7 @@ func (r *OperateServerManageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type OperateServerManageResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type OperateServerManageResponse struct {
@@ -910,50 +910,50 @@ func (r *OperateServerManageResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ReleaseGrayRequestParams struct {
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 
 	// 灰度类型
-	GrayType *string `json:"GrayType,omitempty" name:"GrayType"`
+	GrayType *string `json:"GrayType,omitnil" name:"GrayType"`
 
 	// 流量类型
-	TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
+	TrafficType *string `json:"TrafficType,omitnil" name:"TrafficType"`
 
 	// 流量策略
-	VersionFlowItems []*VersionFlowInfo `json:"VersionFlowItems,omitempty" name:"VersionFlowItems"`
+	VersionFlowItems []*VersionFlowInfo `json:"VersionFlowItems,omitnil" name:"VersionFlowItems"`
 
 	// 操作标识
-	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+	OperatorRemark *string `json:"OperatorRemark,omitnil" name:"OperatorRemark"`
 
 	// 流量比例
-	GrayFlowRatio *int64 `json:"GrayFlowRatio,omitempty" name:"GrayFlowRatio"`
+	GrayFlowRatio *int64 `json:"GrayFlowRatio,omitnil" name:"GrayFlowRatio"`
 }
 
 type ReleaseGrayRequest struct {
 	*tchttp.BaseRequest
 	
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 
 	// 灰度类型
-	GrayType *string `json:"GrayType,omitempty" name:"GrayType"`
+	GrayType *string `json:"GrayType,omitnil" name:"GrayType"`
 
 	// 流量类型
-	TrafficType *string `json:"TrafficType,omitempty" name:"TrafficType"`
+	TrafficType *string `json:"TrafficType,omitnil" name:"TrafficType"`
 
 	// 流量策略
-	VersionFlowItems []*VersionFlowInfo `json:"VersionFlowItems,omitempty" name:"VersionFlowItems"`
+	VersionFlowItems []*VersionFlowInfo `json:"VersionFlowItems,omitnil" name:"VersionFlowItems"`
 
 	// 操作标识
-	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+	OperatorRemark *string `json:"OperatorRemark,omitnil" name:"OperatorRemark"`
 
 	// 流量比例
-	GrayFlowRatio *int64 `json:"GrayFlowRatio,omitempty" name:"GrayFlowRatio"`
+	GrayFlowRatio *int64 `json:"GrayFlowRatio,omitnil" name:"GrayFlowRatio"`
 }
 
 func (r *ReleaseGrayRequest) ToJsonString() string {
@@ -984,7 +984,7 @@ func (r *ReleaseGrayRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ReleaseGrayResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ReleaseGrayResponse struct {
@@ -1005,242 +1005,242 @@ func (r *ReleaseGrayResponse) FromJsonString(s string) error {
 
 type RepositoryInfo struct {
 	// git source
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 仓库名
-	Repo *string `json:"Repo,omitempty" name:"Repo"`
+	Repo *string `json:"Repo,omitnil" name:"Repo"`
 
 	// 分支名
-	Branch *string `json:"Branch,omitempty" name:"Branch"`
+	Branch *string `json:"Branch,omitnil" name:"Branch"`
 }
 
 type ServerBaseConfig struct {
 	// 环境 Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 
 	// 是否开启公网访问
-	OpenAccessTypes []*string `json:"OpenAccessTypes,omitempty" name:"OpenAccessTypes"`
+	OpenAccessTypes []*string `json:"OpenAccessTypes,omitnil" name:"OpenAccessTypes"`
 
 	// Cpu 规格
-	Cpu *float64 `json:"Cpu,omitempty" name:"Cpu"`
+	Cpu *float64 `json:"Cpu,omitnil" name:"Cpu"`
 
 	// Mem 规格
-	Mem *float64 `json:"Mem,omitempty" name:"Mem"`
+	Mem *float64 `json:"Mem,omitnil" name:"Mem"`
 
 	// 最小副本数
-	MinNum *uint64 `json:"MinNum,omitempty" name:"MinNum"`
+	MinNum *uint64 `json:"MinNum,omitnil" name:"MinNum"`
 
 	// 最大副本数
-	MaxNum *uint64 `json:"MaxNum,omitempty" name:"MaxNum"`
+	MaxNum *uint64 `json:"MaxNum,omitnil" name:"MaxNum"`
 
 	// 扩缩容配置
-	PolicyDetails []*HpaPolicy `json:"PolicyDetails,omitempty" name:"PolicyDetails"`
+	PolicyDetails []*HpaPolicy `json:"PolicyDetails,omitnil" name:"PolicyDetails"`
 
 	// 日志采集路径
-	CustomLogs *string `json:"CustomLogs,omitempty" name:"CustomLogs"`
+	CustomLogs *string `json:"CustomLogs,omitnil" name:"CustomLogs"`
 
 	// 环境变量
-	EnvParams *string `json:"EnvParams,omitempty" name:"EnvParams"`
+	EnvParams *string `json:"EnvParams,omitnil" name:"EnvParams"`
 
 	// 延迟检测时间
-	InitialDelaySeconds *uint64 `json:"InitialDelaySeconds,omitempty" name:"InitialDelaySeconds"`
+	InitialDelaySeconds *uint64 `json:"InitialDelaySeconds,omitnil" name:"InitialDelaySeconds"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 服务端口
-	Port *int64 `json:"Port,omitempty" name:"Port"`
+	Port *int64 `json:"Port,omitnil" name:"Port"`
 
 	// 是否有Dockerfile
-	HasDockerfile *bool `json:"HasDockerfile,omitempty" name:"HasDockerfile"`
+	HasDockerfile *bool `json:"HasDockerfile,omitnil" name:"HasDockerfile"`
 
 	// Dockerfile 文件名
-	Dockerfile *string `json:"Dockerfile,omitempty" name:"Dockerfile"`
+	Dockerfile *string `json:"Dockerfile,omitnil" name:"Dockerfile"`
 
 	// 构建目录
-	BuildDir *string `json:"BuildDir,omitempty" name:"BuildDir"`
+	BuildDir *string `json:"BuildDir,omitnil" name:"BuildDir"`
 
 	// 日志类型: none | default | custom
-	LogType *string `json:"LogType,omitempty" name:"LogType"`
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// cls setId
-	LogSetId *string `json:"LogSetId,omitempty" name:"LogSetId"`
+	LogSetId *string `json:"LogSetId,omitnil" name:"LogSetId"`
 
 	// cls 主题id
-	LogTopicId *string `json:"LogTopicId,omitempty" name:"LogTopicId"`
+	LogTopicId *string `json:"LogTopicId,omitnil" name:"LogTopicId"`
 
 	// 解析类型：json ｜ line
-	LogParseType *string `json:"LogParseType,omitempty" name:"LogParseType"`
+	LogParseType *string `json:"LogParseType,omitnil" name:"LogParseType"`
 }
 
 type ServerBaseInfo struct {
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 
 	// 默认服务域名
-	DefaultDomainName *string `json:"DefaultDomainName,omitempty" name:"DefaultDomainName"`
+	DefaultDomainName *string `json:"DefaultDomainName,omitnil" name:"DefaultDomainName"`
 
 	// 自定义域名
-	CustomDomainName *string `json:"CustomDomainName,omitempty" name:"CustomDomainName"`
+	CustomDomainName *string `json:"CustomDomainName,omitnil" name:"CustomDomainName"`
 
 	// 服务状态：running/deploying/deploy_failed
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 公网访问类型
-	AccessTypes []*string `json:"AccessTypes,omitempty" name:"AccessTypes"`
+	AccessTypes []*string `json:"AccessTypes,omitnil" name:"AccessTypes"`
 
 	// 展示自定义域名
-	CustomDomainNames []*string `json:"CustomDomainNames,omitempty" name:"CustomDomainNames"`
+	CustomDomainNames []*string `json:"CustomDomainNames,omitnil" name:"CustomDomainNames"`
 }
 
 type ServerManageTaskInfo struct {
 	// 任务Id
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 变更类型
-	ChangeType *string `json:"ChangeType,omitempty" name:"ChangeType"`
+	ChangeType *string `json:"ChangeType,omitnil" name:"ChangeType"`
 
 	// 发布类型
-	ReleaseType *string `json:"ReleaseType,omitempty" name:"ReleaseType"`
+	ReleaseType *string `json:"ReleaseType,omitnil" name:"ReleaseType"`
 
 	// 部署类型
-	DeployType *string `json:"DeployType,omitempty" name:"DeployType"`
+	DeployType *string `json:"DeployType,omitnil" name:"DeployType"`
 
 	// 上一个版本名
-	PreVersionName *string `json:"PreVersionName,omitempty" name:"PreVersionName"`
+	PreVersionName *string `json:"PreVersionName,omitnil" name:"PreVersionName"`
 
 	// 版本名
-	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+	VersionName *string `json:"VersionName,omitnil" name:"VersionName"`
 
 	// 流水线Id
-	PipelineId *int64 `json:"PipelineId,omitempty" name:"PipelineId"`
+	PipelineId *int64 `json:"PipelineId,omitnil" name:"PipelineId"`
 
 	// 流水线任务Id
-	PipelineTaskId *int64 `json:"PipelineTaskId,omitempty" name:"PipelineTaskId"`
+	PipelineTaskId *int64 `json:"PipelineTaskId,omitnil" name:"PipelineTaskId"`
 
 	// 发布单Id
-	ReleaseId *int64 `json:"ReleaseId,omitempty" name:"ReleaseId"`
+	ReleaseId *int64 `json:"ReleaseId,omitnil" name:"ReleaseId"`
 
 	// 状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 步骤信息
-	Steps []*TaskStepInfo `json:"Steps,omitempty" name:"Steps"`
+	Steps []*TaskStepInfo `json:"Steps,omitnil" name:"Steps"`
 
 	// 失败原因
-	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+	FailReason *string `json:"FailReason,omitnil" name:"FailReason"`
 
 	// 操作标识
-	OperatorRemark *string `json:"OperatorRemark,omitempty" name:"OperatorRemark"`
+	OperatorRemark *string `json:"OperatorRemark,omitnil" name:"OperatorRemark"`
 }
 
 type StaticStorageInfo struct {
 	// 静态CDN域名
-	StaticDomain *string `json:"StaticDomain,omitempty" name:"StaticDomain"`
+	StaticDomain *string `json:"StaticDomain,omitnil" name:"StaticDomain"`
 
 	// 静态CDN默认文件夹，当前为根目录
-	DefaultDirName *string `json:"DefaultDirName,omitempty" name:"DefaultDirName"`
+	DefaultDirName *string `json:"DefaultDirName,omitnil" name:"DefaultDirName"`
 
 	// 资源状态(process/online/offline/init)
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// cos所属区域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// bucket信息
-	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
 }
 
 type StorageInfo struct {
 	// 资源所属地域。
 	// 当前支持ap-shanghai
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 桶名，存储资源的唯一标识
-	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
 
 	// cdn 域名
-	CdnDomain *string `json:"CdnDomain,omitempty" name:"CdnDomain"`
+	CdnDomain *string `json:"CdnDomain,omitnil" name:"CdnDomain"`
 
 	// 资源所属用户的腾讯云appId
-	AppId *string `json:"AppId,omitempty" name:"AppId"`
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
 }
 
 type Tag struct {
 	// 标签键
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 标签值
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type TaskStepInfo struct {
 	// 步骤名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 未启动："todo"
 	// 运行中："running"
 	// 失败："failed"
 	// 成功结束："finished"
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 消耗时间：秒
-	CostTime *int64 `json:"CostTime,omitempty" name:"CostTime"`
+	CostTime *int64 `json:"CostTime,omitnil" name:"CostTime"`
 
 	// 失败原因
-	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+	FailReason *string `json:"FailReason,omitnil" name:"FailReason"`
 }
 
 // Predefined struct for user
 type UpdateCloudRunServerRequestParams struct {
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 
 	// 部署信息
-	DeployInfo *DeployParam `json:"DeployInfo,omitempty" name:"DeployInfo"`
+	DeployInfo *DeployParam `json:"DeployInfo,omitnil" name:"DeployInfo"`
 
 	// 服务配置信息
-	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitempty" name:"ServerConfig"`
+	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil" name:"ServerConfig"`
 }
 
 type UpdateCloudRunServerRequest struct {
 	*tchttp.BaseRequest
 	
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 服务名
-	ServerName *string `json:"ServerName,omitempty" name:"ServerName"`
+	ServerName *string `json:"ServerName,omitnil" name:"ServerName"`
 
 	// 部署信息
-	DeployInfo *DeployParam `json:"DeployInfo,omitempty" name:"DeployInfo"`
+	DeployInfo *DeployParam `json:"DeployInfo,omitnil" name:"DeployInfo"`
 
 	// 服务配置信息
-	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitempty" name:"ServerConfig"`
+	ServerConfig *ServerBaseConfig `json:"ServerConfig,omitnil" name:"ServerConfig"`
 }
 
 func (r *UpdateCloudRunServerRequest) ToJsonString() string {
@@ -1268,13 +1268,13 @@ func (r *UpdateCloudRunServerRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateCloudRunServerResponseParams struct {
 	// 环境Id
-	EnvId *string `json:"EnvId,omitempty" name:"EnvId"`
+	EnvId *string `json:"EnvId,omitnil" name:"EnvId"`
 
 	// 一键部署任务Id，暂时用不到
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateCloudRunServerResponse struct {
@@ -1295,17 +1295,17 @@ func (r *UpdateCloudRunServerResponse) FromJsonString(s string) error {
 
 type VersionFlowInfo struct {
 	// 版本名
-	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+	VersionName *string `json:"VersionName,omitnil" name:"VersionName"`
 
 	// 是否默认版本
-	IsDefaultPriority *bool `json:"IsDefaultPriority,omitempty" name:"IsDefaultPriority"`
+	IsDefaultPriority *bool `json:"IsDefaultPriority,omitnil" name:"IsDefaultPriority"`
 
 	// 流量比例
-	FlowRatio *int64 `json:"FlowRatio,omitempty" name:"FlowRatio"`
+	FlowRatio *int64 `json:"FlowRatio,omitnil" name:"FlowRatio"`
 
 	// 测试KV值
-	UrlParam *ObjectKV `json:"UrlParam,omitempty" name:"UrlParam"`
+	UrlParam *ObjectKV `json:"UrlParam,omitnil" name:"UrlParam"`
 
 	// 权重
-	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+	Priority *int64 `json:"Priority,omitnil" name:"Priority"`
 }

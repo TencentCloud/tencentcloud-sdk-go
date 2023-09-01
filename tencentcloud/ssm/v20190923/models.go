@@ -15,15 +15,15 @@
 package v20190923
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type CreateProductSecretRequestParams struct {
 	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 用户账号名前缀，由用户自行指定，长度限定在8个字符以内，
 	// 可选字符集包括：
@@ -32,50 +32,50 @@ type CreateProductSecretRequestParams struct {
 	// 大写字符：[A, Z]，
 	// 特殊字符(全英文符号)：下划线(_)，
 	// 前缀必须以大写或小写字母开头。
-	UserNamePrefix *string `json:"UserNamePrefix,omitempty" name:"UserNamePrefix"`
+	UserNamePrefix *string `json:"UserNamePrefix,omitnil" name:"UserNamePrefix"`
 
 	// 凭据所绑定的云产品名称，如Mysql，可以通过DescribeSupportedProducts接口获取所支持的云产品名称。
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 
 	// 云产品实例ID。
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 账号的域名，IP形式，支持填入%。
-	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+	Domains []*string `json:"Domains,omitnil" name:"Domains"`
 
 	// 将凭据与云产品实例绑定时，需要授予的权限列表。
-	PrivilegesList []*ProductPrivilegeUnit `json:"PrivilegesList,omitempty" name:"PrivilegesList"`
+	PrivilegesList []*ProductPrivilegeUnit `json:"PrivilegesList,omitnil" name:"PrivilegesList"`
 
 	// 描述信息，用于详细描述用途等，最大支持2048字节。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 指定对凭据进行加密的KMS CMK。
 	// 如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。
 	// 您也可以指定在同region 下自行创建的KMS CMK进行加密。
-	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
+	KmsKeyId *string `json:"KmsKeyId,omitnil" name:"KmsKeyId"`
 
 	// 标签列表。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 用户自定义的开始轮转时间，格式：2006-01-02 15:04:05。
 	// 当EnableRotation为True时，此参数必填。
-	RotationBeginTime *string `json:"RotationBeginTime,omitempty" name:"RotationBeginTime"`
+	RotationBeginTime *string `json:"RotationBeginTime,omitnil" name:"RotationBeginTime"`
 
 	// 是否开启轮转
 	// True -- 开启
 	// False -- 不开启
 	// 如果不指定，默认为False。
-	EnableRotation *bool `json:"EnableRotation,omitempty" name:"EnableRotation"`
+	EnableRotation *bool `json:"EnableRotation,omitnil" name:"EnableRotation"`
 
 	// 轮转周期，以天为单位，默认为1天。
-	RotationFrequency *int64 `json:"RotationFrequency,omitempty" name:"RotationFrequency"`
+	RotationFrequency *int64 `json:"RotationFrequency,omitnil" name:"RotationFrequency"`
 }
 
 type CreateProductSecretRequest struct {
 	*tchttp.BaseRequest
 	
 	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 用户账号名前缀，由用户自行指定，长度限定在8个字符以内，
 	// 可选字符集包括：
@@ -84,43 +84,43 @@ type CreateProductSecretRequest struct {
 	// 大写字符：[A, Z]，
 	// 特殊字符(全英文符号)：下划线(_)，
 	// 前缀必须以大写或小写字母开头。
-	UserNamePrefix *string `json:"UserNamePrefix,omitempty" name:"UserNamePrefix"`
+	UserNamePrefix *string `json:"UserNamePrefix,omitnil" name:"UserNamePrefix"`
 
 	// 凭据所绑定的云产品名称，如Mysql，可以通过DescribeSupportedProducts接口获取所支持的云产品名称。
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 
 	// 云产品实例ID。
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 账号的域名，IP形式，支持填入%。
-	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+	Domains []*string `json:"Domains,omitnil" name:"Domains"`
 
 	// 将凭据与云产品实例绑定时，需要授予的权限列表。
-	PrivilegesList []*ProductPrivilegeUnit `json:"PrivilegesList,omitempty" name:"PrivilegesList"`
+	PrivilegesList []*ProductPrivilegeUnit `json:"PrivilegesList,omitnil" name:"PrivilegesList"`
 
 	// 描述信息，用于详细描述用途等，最大支持2048字节。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 指定对凭据进行加密的KMS CMK。
 	// 如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。
 	// 您也可以指定在同region 下自行创建的KMS CMK进行加密。
-	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
+	KmsKeyId *string `json:"KmsKeyId,omitnil" name:"KmsKeyId"`
 
 	// 标签列表。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 用户自定义的开始轮转时间，格式：2006-01-02 15:04:05。
 	// 当EnableRotation为True时，此参数必填。
-	RotationBeginTime *string `json:"RotationBeginTime,omitempty" name:"RotationBeginTime"`
+	RotationBeginTime *string `json:"RotationBeginTime,omitnil" name:"RotationBeginTime"`
 
 	// 是否开启轮转
 	// True -- 开启
 	// False -- 不开启
 	// 如果不指定，默认为False。
-	EnableRotation *bool `json:"EnableRotation,omitempty" name:"EnableRotation"`
+	EnableRotation *bool `json:"EnableRotation,omitnil" name:"EnableRotation"`
 
 	// 轮转周期，以天为单位，默认为1天。
-	RotationFrequency *int64 `json:"RotationFrequency,omitempty" name:"RotationFrequency"`
+	RotationFrequency *int64 `json:"RotationFrequency,omitnil" name:"RotationFrequency"`
 }
 
 func (r *CreateProductSecretRequest) ToJsonString() string {
@@ -156,22 +156,22 @@ func (r *CreateProductSecretRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateProductSecretResponseParams struct {
 	// 创建的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagCode *uint64 `json:"TagCode,omitempty" name:"TagCode"`
+	TagCode *uint64 `json:"TagCode,omitnil" name:"TagCode"`
 
 	// 标签操作的返回信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagMsg *string `json:"TagMsg,omitempty" name:"TagMsg"`
+	TagMsg *string `json:"TagMsg,omitnil" name:"TagMsg"`
 
 	// 创建云产品凭据异步任务ID号。
-	FlowID *int64 `json:"FlowID,omitempty" name:"FlowID"`
+	FlowID *int64 `json:"FlowID,omitnil" name:"FlowID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateProductSecretResponse struct {
@@ -193,48 +193,48 @@ func (r *CreateProductSecretResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSSHKeyPairSecretRequestParams struct {
 	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 密钥对创建后所属的项目ID。
-	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 描述信息，用于详细描述用途等，最大支持2048字节。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 指定对凭据进行加密的KMS CMK。
 	// 如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。
 	// 您也可以指定在同region 下自行创建的KMS CMK进行加密。
-	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
+	KmsKeyId *string `json:"KmsKeyId,omitnil" name:"KmsKeyId"`
 
 	// 标签列表。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。
-	SSHKeyName *string `json:"SSHKeyName,omitempty" name:"SSHKeyName"`
+	SSHKeyName *string `json:"SSHKeyName,omitnil" name:"SSHKeyName"`
 }
 
 type CreateSSHKeyPairSecretRequest struct {
 	*tchttp.BaseRequest
 	
 	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 密钥对创建后所属的项目ID。
-	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 描述信息，用于详细描述用途等，最大支持2048字节。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 指定对凭据进行加密的KMS CMK。
 	// 如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。
 	// 您也可以指定在同region 下自行创建的KMS CMK进行加密。
-	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
+	KmsKeyId *string `json:"KmsKeyId,omitnil" name:"KmsKeyId"`
 
 	// 标签列表。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 用户自定义输入的SSH密钥对的名称，可由数字，字母和下划线组成，只能以数字和字母开头，长度不超过25个字符。
-	SSHKeyName *string `json:"SSHKeyName,omitempty" name:"SSHKeyName"`
+	SSHKeyName *string `json:"SSHKeyName,omitnil" name:"SSHKeyName"`
 }
 
 func (r *CreateSSHKeyPairSecretRequest) ToJsonString() string {
@@ -264,24 +264,24 @@ func (r *CreateSSHKeyPairSecretRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSSHKeyPairSecretResponseParams struct {
 	// 创建的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 创建的SSH密钥ID。
-	SSHKeyID *string `json:"SSHKeyID,omitempty" name:"SSHKeyID"`
+	SSHKeyID *string `json:"SSHKeyID,omitnil" name:"SSHKeyID"`
 
 	// 创建的SSH密钥名称。
-	SSHKeyName *string `json:"SSHKeyName,omitempty" name:"SSHKeyName"`
+	SSHKeyName *string `json:"SSHKeyName,omitnil" name:"SSHKeyName"`
 
 	// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagCode *uint64 `json:"TagCode,omitempty" name:"TagCode"`
+	TagCode *uint64 `json:"TagCode,omitnil" name:"TagCode"`
 
 	// 标签操作的返回信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagMsg *string `json:"TagMsg,omitempty" name:"TagMsg"`
+	TagMsg *string `json:"TagMsg,omitnil" name:"TagMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateSSHKeyPairSecretResponse struct {
@@ -303,62 +303,62 @@ func (r *CreateSSHKeyPairSecretResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSecretRequestParams struct {
 	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。若为空，则使用默认的初始凭据版本号。可选，若为空或该凭据为云产品类凭据，则该版本号默认为 SSM_Current。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 
 	// 描述信息，用于详细描述用途等，最大支持2048字节。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。
-	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
+	KmsKeyId *string `json:"KmsKeyId,omitnil" name:"KmsKeyId"`
 
 	// 凭据类型，默认为自定义凭据。
-	SecretType *uint64 `json:"SecretType,omitempty" name:"SecretType"`
+	SecretType *uint64 `json:"SecretType,omitnil" name:"SecretType"`
 
 	// 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持4096字节。
-	SecretBinary *string `json:"SecretBinary,omitempty" name:"SecretBinary"`
+	SecretBinary *string `json:"SecretBinary,omitnil" name:"SecretBinary"`
 
 	// 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，，最大支持4096字节。
-	SecretString *string `json:"SecretString,omitempty" name:"SecretString"`
+	SecretString *string `json:"SecretString,omitnil" name:"SecretString"`
 
 	// JSON 格式字符串，用于指定特定凭据类型的额外配置。
-	AdditionalConfig *string `json:"AdditionalConfig,omitempty" name:"AdditionalConfig"`
+	AdditionalConfig *string `json:"AdditionalConfig,omitnil" name:"AdditionalConfig"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type CreateSecretRequest struct {
 	*tchttp.BaseRequest
 	
 	// 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。一旦创建不可修改。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 凭据版本，查询凭据信息时需要根据SecretName 和 VersionId进行查询，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。若为空，则使用默认的初始凭据版本号。可选，若为空或该凭据为云产品类凭据，则该版本号默认为 SSM_Current。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 
 	// 描述信息，用于详细描述用途等，最大支持2048字节。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 指定对凭据进行加密的KMS CMK。如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。您也可以指定在同region 下自行创建的KMS CMK进行加密。
-	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
+	KmsKeyId *string `json:"KmsKeyId,omitnil" name:"KmsKeyId"`
 
 	// 凭据类型，默认为自定义凭据。
-	SecretType *uint64 `json:"SecretType,omitempty" name:"SecretType"`
+	SecretType *uint64 `json:"SecretType,omitnil" name:"SecretType"`
 
 	// 二进制凭据信息base64编码后的明文。SecretBinary 和 SecretString 必须且只能设置一个，最大支持4096字节。
-	SecretBinary *string `json:"SecretBinary,omitempty" name:"SecretBinary"`
+	SecretBinary *string `json:"SecretBinary,omitnil" name:"SecretBinary"`
 
 	// 文本类型凭据信息明文（不需要进行base64编码）。SecretBinary 和 SecretString 必须且只能设置一个，，最大支持4096字节。
-	SecretString *string `json:"SecretString,omitempty" name:"SecretString"`
+	SecretString *string `json:"SecretString,omitnil" name:"SecretString"`
 
 	// JSON 格式字符串，用于指定特定凭据类型的额外配置。
-	AdditionalConfig *string `json:"AdditionalConfig,omitempty" name:"AdditionalConfig"`
+	AdditionalConfig *string `json:"AdditionalConfig,omitnil" name:"AdditionalConfig"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *CreateSecretRequest) ToJsonString() string {
@@ -391,21 +391,21 @@ func (r *CreateSecretRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSecretResponseParams struct {
 	// 新创建的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 新创建的凭据版本。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 
 	// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagCode *uint64 `json:"TagCode,omitempty" name:"TagCode"`
+	TagCode *uint64 `json:"TagCode,omitnil" name:"TagCode"`
 
 	// 标签操作的返回信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagMsg *string `json:"TagMsg,omitempty" name:"TagMsg"`
+	TagMsg *string `json:"TagMsg,omitnil" name:"TagMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateSecretResponse struct {
@@ -427,32 +427,32 @@ func (r *CreateSecretResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSecretRequestParams struct {
 	// 指定需要删除的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 指定计划删除日期，单位（天），0（默认）表示立即删除， 1-30 表示预留的天数，超出该日期之后彻底删除。
 	// 当凭据类型为SSH密钥对凭据时，此字段只能取值只能为0。
-	RecoveryWindowInDays *uint64 `json:"RecoveryWindowInDays,omitempty" name:"RecoveryWindowInDays"`
+	RecoveryWindowInDays *uint64 `json:"RecoveryWindowInDays,omitnil" name:"RecoveryWindowInDays"`
 
 	// 当凭据类型为SSH密钥对凭据时，此字段有效，取值：
 	// True -- 表示不仅仅清理此凭据中存储的SSH密钥信息，还会将SSH密钥对从CVM侧进行清理。注意，如果SSH密钥此时绑定了CVM实例，那么会清理失败。
 	// False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进侧进行清理。
-	CleanSSHKey *bool `json:"CleanSSHKey,omitempty" name:"CleanSSHKey"`
+	CleanSSHKey *bool `json:"CleanSSHKey,omitnil" name:"CleanSSHKey"`
 }
 
 type DeleteSecretRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定需要删除的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 指定计划删除日期，单位（天），0（默认）表示立即删除， 1-30 表示预留的天数，超出该日期之后彻底删除。
 	// 当凭据类型为SSH密钥对凭据时，此字段只能取值只能为0。
-	RecoveryWindowInDays *uint64 `json:"RecoveryWindowInDays,omitempty" name:"RecoveryWindowInDays"`
+	RecoveryWindowInDays *uint64 `json:"RecoveryWindowInDays,omitnil" name:"RecoveryWindowInDays"`
 
 	// 当凭据类型为SSH密钥对凭据时，此字段有效，取值：
 	// True -- 表示不仅仅清理此凭据中存储的SSH密钥信息，还会将SSH密钥对从CVM侧进行清理。注意，如果SSH密钥此时绑定了CVM实例，那么会清理失败。
 	// False --  表示仅仅清理此凭据中存储的SSH密钥信息，不在CVM进侧进行清理。
-	CleanSSHKey *bool `json:"CleanSSHKey,omitempty" name:"CleanSSHKey"`
+	CleanSSHKey *bool `json:"CleanSSHKey,omitnil" name:"CleanSSHKey"`
 }
 
 func (r *DeleteSecretRequest) ToJsonString() string {
@@ -479,13 +479,13 @@ func (r *DeleteSecretRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSecretResponseParams struct {
 	// 指定删除的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 凭据删除的日期，unix时间戳。
-	DeleteTime *int64 `json:"DeleteTime,omitempty" name:"DeleteTime"`
+	DeleteTime *int64 `json:"DeleteTime,omitnil" name:"DeleteTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteSecretResponse struct {
@@ -507,20 +507,20 @@ func (r *DeleteSecretResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSecretVersionRequestParams struct {
 	// 指定凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 指定该名称下需要删除的凭据的版本号。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 }
 
 type DeleteSecretVersionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 指定该名称下需要删除的凭据的版本号。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 }
 
 func (r *DeleteSecretVersionRequest) ToJsonString() string {
@@ -546,13 +546,13 @@ func (r *DeleteSecretVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSecretVersionResponseParams struct {
 	// 凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 凭据版本号。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteSecretVersionResponse struct {
@@ -574,14 +574,14 @@ func (r *DeleteSecretVersionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAsyncRequestInfoRequestParams struct {
 	// 异步任务ID号。
-	FlowID *int64 `json:"FlowID,omitempty" name:"FlowID"`
+	FlowID *int64 `json:"FlowID,omitnil" name:"FlowID"`
 }
 
 type DescribeAsyncRequestInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 异步任务ID号。
-	FlowID *int64 `json:"FlowID,omitempty" name:"FlowID"`
+	FlowID *int64 `json:"FlowID,omitnil" name:"FlowID"`
 }
 
 func (r *DescribeAsyncRequestInfoRequest) ToJsonString() string {
@@ -606,13 +606,13 @@ func (r *DescribeAsyncRequestInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAsyncRequestInfoResponseParams struct {
 	// 0:处理中，1:处理成功，2:处理失败
-	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+	TaskStatus *int64 `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// 任务描述信息。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAsyncRequestInfoResponse struct {
@@ -634,14 +634,14 @@ func (r *DescribeAsyncRequestInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRotationDetailRequestParams struct {
 	// 指定需要获取凭据轮转详细信息的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 type DescribeRotationDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定需要获取凭据轮转详细信息的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 func (r *DescribeRotationDetailRequest) ToJsonString() string {
@@ -666,22 +666,22 @@ func (r *DescribeRotationDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRotationDetailResponseParams struct {
 	// 否允许轮转，true表示开启轮转，false表示禁止轮转。
-	EnableRotation *bool `json:"EnableRotation,omitempty" name:"EnableRotation"`
+	EnableRotation *bool `json:"EnableRotation,omitnil" name:"EnableRotation"`
 
 	// 轮转的频率，以天为单位，默认为1天。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Frequency *int64 `json:"Frequency,omitempty" name:"Frequency"`
+	Frequency *int64 `json:"Frequency,omitnil" name:"Frequency"`
 
 	// 最近一次轮转的时间，显式可见的时间字符串，格式 2006-01-02 15:04:05。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LatestRotateTime *string `json:"LatestRotateTime,omitempty" name:"LatestRotateTime"`
+	LatestRotateTime *string `json:"LatestRotateTime,omitnil" name:"LatestRotateTime"`
 
 	// 下一次开始轮转的时间，显式可见的时间字符串，格式 2006-01-02 15:04:05。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NextRotateBeginTime *string `json:"NextRotateBeginTime,omitempty" name:"NextRotateBeginTime"`
+	NextRotateBeginTime *string `json:"NextRotateBeginTime,omitnil" name:"NextRotateBeginTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRotationDetailResponse struct {
@@ -703,14 +703,14 @@ func (r *DescribeRotationDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRotationHistoryRequestParams struct {
 	// 指定需要获取凭据轮转历史的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 type DescribeRotationHistoryRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定需要获取凭据轮转历史的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 func (r *DescribeRotationHistoryRequest) ToJsonString() string {
@@ -735,13 +735,13 @@ func (r *DescribeRotationHistoryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRotationHistoryResponseParams struct {
 	// 版本号列表。
-	VersionIDs []*string `json:"VersionIDs,omitempty" name:"VersionIDs"`
+	VersionIDs []*string `json:"VersionIDs,omitnil" name:"VersionIDs"`
 
 	// 版本号个数，可以给用户展示的版本号个数上限为10个。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRotationHistoryResponse struct {
@@ -763,14 +763,14 @@ func (r *DescribeRotationHistoryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecretRequestParams struct {
 	// 指定需要获取凭据详细信息的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 type DescribeSecretRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定需要获取凭据详细信息的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 func (r *DescribeSecretRequest) ToJsonString() string {
@@ -795,68 +795,68 @@ func (r *DescribeSecretRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecretResponseParams struct {
 	// 凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 凭据描述信息。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 用于加密的KMS CMK ID。
-	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
+	KmsKeyId *string `json:"KmsKeyId,omitnil" name:"KmsKeyId"`
 
 	// 创建者UIN。
-	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
+	CreateUin *uint64 `json:"CreateUin,omitnil" name:"CreateUin"`
 
 	// 凭据状态：Enabled、Disabled、PendingDelete, Creating, Failed。
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 删除日期，uinx 时间戳，非计划删除状态的凭据为0。
-	DeleteTime *uint64 `json:"DeleteTime,omitempty" name:"DeleteTime"`
+	DeleteTime *uint64 `json:"DeleteTime,omitnil" name:"DeleteTime"`
 
 	// 创建日期。
-	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *uint64 `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 0 --  用户自定义凭据类型；1 -- 数据库凭据类型；2 -- SSH密钥对凭据类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecretType *int64 `json:"SecretType,omitempty" name:"SecretType"`
+	SecretType *int64 `json:"SecretType,omitnil" name:"SecretType"`
 
 	// 云产品名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 
 	// 云产品实例ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceID *string `json:"ResourceID,omitempty" name:"ResourceID"`
+	ResourceID *string `json:"ResourceID,omitnil" name:"ResourceID"`
 
 	// 是否开启轮转：True -- 开启轮转；False -- 关闭轮转。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RotationStatus *bool `json:"RotationStatus,omitempty" name:"RotationStatus"`
+	RotationStatus *bool `json:"RotationStatus,omitnil" name:"RotationStatus"`
 
 	// 轮转周期，默认以天为单位。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RotationFrequency *int64 `json:"RotationFrequency,omitempty" name:"RotationFrequency"`
+	RotationFrequency *int64 `json:"RotationFrequency,omitnil" name:"RotationFrequency"`
 
 	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
 
 	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+	ProjectID *int64 `json:"ProjectID,omitnil" name:"ProjectID"`
 
 	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssociatedInstanceIDs []*string `json:"AssociatedInstanceIDs,omitempty" name:"AssociatedInstanceIDs"`
+	AssociatedInstanceIDs []*string `json:"AssociatedInstanceIDs,omitnil" name:"AssociatedInstanceIDs"`
 
 	// 当凭据类型为云API密钥对凭据时，此字段有效，用于表示此云API密钥对所属的用户UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+	TargetUin *uint64 `json:"TargetUin,omitnil" name:"TargetUin"`
 
 	// 凭据额外配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AdditionalConfig *string `json:"AdditionalConfig,omitempty" name:"AdditionalConfig"`
+	AdditionalConfig *string `json:"AdditionalConfig,omitnil" name:"AdditionalConfig"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecretResponse struct {
@@ -907,13 +907,13 @@ func (r *DescribeSupportedProductsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSupportedProductsResponseParams struct {
 	// 支持的产品列表。
-	Products []*string `json:"Products,omitempty" name:"Products"`
+	Products []*string `json:"Products,omitnil" name:"Products"`
 
 	// 支持的产品个数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSupportedProductsResponse struct {
@@ -935,14 +935,14 @@ func (r *DescribeSupportedProductsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableSecretRequestParams struct {
 	// 指定停用的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 type DisableSecretRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定停用的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 func (r *DisableSecretRequest) ToJsonString() string {
@@ -967,10 +967,10 @@ func (r *DisableSecretRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableSecretResponseParams struct {
 	// 停用的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DisableSecretResponse struct {
@@ -992,14 +992,14 @@ func (r *DisableSecretResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableSecretRequestParams struct {
 	// 指定启用凭据的名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 type EnableSecretRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定启用凭据的名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 func (r *EnableSecretRequest) ToJsonString() string {
@@ -1024,10 +1024,10 @@ func (r *EnableSecretRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableSecretResponseParams struct {
 	// 启用的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type EnableSecretResponse struct {
@@ -1078,10 +1078,10 @@ func (r *GetRegionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRegionsResponseParams struct {
 	// region列表。
-	Regions []*string `json:"Regions,omitempty" name:"Regions"`
+	Regions []*string `json:"Regions,omitnil" name:"Regions"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetRegionsResponse struct {
@@ -1103,20 +1103,20 @@ func (r *GetRegionsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetSSHKeyPairValueRequestParams struct {
 	// 凭据名称，此凭据只能为SSH密钥对凭据类型。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 密钥对ID，是云服务器中密钥对的唯一标识。
-	SSHKeyId *string `json:"SSHKeyId,omitempty" name:"SSHKeyId"`
+	SSHKeyId *string `json:"SSHKeyId,omitnil" name:"SSHKeyId"`
 }
 
 type GetSSHKeyPairValueRequest struct {
 	*tchttp.BaseRequest
 	
 	// 凭据名称，此凭据只能为SSH密钥对凭据类型。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 密钥对ID，是云服务器中密钥对的唯一标识。
-	SSHKeyId *string `json:"SSHKeyId,omitempty" name:"SSHKeyId"`
+	SSHKeyId *string `json:"SSHKeyId,omitnil" name:"SSHKeyId"`
 }
 
 func (r *GetSSHKeyPairValueRequest) ToJsonString() string {
@@ -1142,27 +1142,27 @@ func (r *GetSSHKeyPairValueRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetSSHKeyPairValueResponseParams struct {
 	// SSH密钥对ID。
-	SSHKeyID *string `json:"SSHKeyID,omitempty" name:"SSHKeyID"`
+	SSHKeyID *string `json:"SSHKeyID,omitnil" name:"SSHKeyID"`
 
 	// 公钥明文，使用base64编码。
-	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+	PublicKey *string `json:"PublicKey,omitnil" name:"PublicKey"`
 
 	// 私钥明文，使用base64编码
-	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
 
 	// 此密钥对所属的项目ID。
-	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+	ProjectID *int64 `json:"ProjectID,omitnil" name:"ProjectID"`
 
 	// SSH密钥对的描述信息。
 	// 用户可以在CVM侧控制台对密钥对的描述信息进行修改。
-	SSHKeyDescription *string `json:"SSHKeyDescription,omitempty" name:"SSHKeyDescription"`
+	SSHKeyDescription *string `json:"SSHKeyDescription,omitnil" name:"SSHKeyDescription"`
 
 	// SSH密钥对的名称。
 	// 用户可以在CVM侧控制台对密钥对的名称进行修改。
-	SSHKeyName *string `json:"SSHKeyName,omitempty" name:"SSHKeyName"`
+	SSHKeyName *string `json:"SSHKeyName,omitnil" name:"SSHKeyName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetSSHKeyPairValueResponse struct {
@@ -1184,22 +1184,22 @@ func (r *GetSSHKeyPairValueResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetSecretValueRequestParams struct {
 	// 指定凭据的名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 指定对应凭据的版本号。
 	// 对于云产品凭据如Mysql凭据，通过指定凭据名称和历史版本号来获取历史轮转凭据的明文信息，如果要获取当前正在使用的凭据版本的明文，需要将版本号指定为：SSM_Current。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 }
 
 type GetSecretValueRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定凭据的名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 指定对应凭据的版本号。
 	// 对于云产品凭据如Mysql凭据，通过指定凭据名称和历史版本号来获取历史轮转凭据的明文信息，如果要获取当前正在使用的凭据版本的明文，需要将版本号指定为：SSM_Current。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 }
 
 func (r *GetSecretValueRequest) ToJsonString() string {
@@ -1225,21 +1225,21 @@ func (r *GetSecretValueRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetSecretValueResponseParams struct {
 	// 凭据的名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 该凭据对应的版本号。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 
 	// 在创建凭据(CreateSecret)时，如果指定的是二进制数据，则该字段为返回结果，并且使用base64进行编码，应用方需要进行base64解码后获取原始数据。
 	// SecretBinary和SecretString只有一个不为空。
-	SecretBinary *string `json:"SecretBinary,omitempty" name:"SecretBinary"`
+	SecretBinary *string `json:"SecretBinary,omitnil" name:"SecretBinary"`
 
 	// 在创建凭据(CreateSecret)时，如果指定的是普通文本数据，则该字段为返回结果。
 	// SecretBinary和SecretString只有一个不为空。
-	SecretString *string `json:"SecretString,omitempty" name:"SecretString"`
+	SecretString *string `json:"SecretString,omitnil" name:"SecretString"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetSecretValueResponse struct {
@@ -1290,17 +1290,17 @@ func (r *GetServiceStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetServiceStatusResponseParams struct {
 	// true表示服务已开通，false 表示服务尚未开通。
-	ServiceEnabled *bool `json:"ServiceEnabled,omitempty" name:"ServiceEnabled"`
+	ServiceEnabled *bool `json:"ServiceEnabled,omitnil" name:"ServiceEnabled"`
 
 	// 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放。
-	InvalidType *int64 `json:"InvalidType,omitempty" name:"InvalidType"`
+	InvalidType *int64 `json:"InvalidType,omitnil" name:"InvalidType"`
 
 	// true表示用户已经可以使用密钥安全托管功能，
 	// false表示用户暂时不能使用密钥安全托管功能。
-	AccessKeyEscrowEnabled *bool `json:"AccessKeyEscrowEnabled,omitempty" name:"AccessKeyEscrowEnabled"`
+	AccessKeyEscrowEnabled *bool `json:"AccessKeyEscrowEnabled,omitnil" name:"AccessKeyEscrowEnabled"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetServiceStatusResponse struct {
@@ -1322,14 +1322,14 @@ func (r *GetServiceStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListSecretVersionIdsRequestParams struct {
 	// 凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 type ListSecretVersionIdsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 func (r *ListSecretVersionIdsRequest) ToJsonString() string {
@@ -1354,14 +1354,14 @@ func (r *ListSecretVersionIdsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListSecretVersionIdsResponseParams struct {
 	// 凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// VersionId列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Versions []*VersionInfo `json:"Versions,omitempty" name:"Versions"`
+	Versions []*VersionInfo `json:"Versions,omitnil" name:"Versions"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ListSecretVersionIdsResponse struct {
@@ -1383,13 +1383,13 @@ func (r *ListSecretVersionIdsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListSecretsRequestParams struct {
 	// 查询列表的起始位置，以0开始，不设置默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 单次查询返回的最大数量，0或不设置则使用默认值 20。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 根据创建时间的排序方式，0或者不设置则使用降序排序， 1 表示升序排序。
-	OrderType *uint64 `json:"OrderType,omitempty" name:"OrderType"`
+	OrderType *uint64 `json:"OrderType,omitnil" name:"OrderType"`
 
 	// 根据凭据状态进行过滤。
 	// 默认为0表示查询全部。
@@ -1399,39 +1399,39 @@ type ListSecretsRequestParams struct {
 	// 4 --  表示PendingCreate。
 	// 5 --  表示CreateFailed。
 	// 其中状态PendingCreate和CreateFailed只有在SecretType为云产品凭据时生效
-	State *uint64 `json:"State,omitempty" name:"State"`
+	State *uint64 `json:"State,omitnil" name:"State"`
 
 	// 根据凭据名称进行过滤，为空表示不过滤。
-	SearchSecretName *string `json:"SearchSecretName,omitempty" name:"SearchSecretName"`
+	SearchSecretName *string `json:"SearchSecretName,omitnil" name:"SearchSecretName"`
 
 	// 标签过滤条件。
-	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+	TagFilters []*TagFilter `json:"TagFilters,omitnil" name:"TagFilters"`
 
 	// 0  -- 表示用户自定义凭据，默认为0。
 	// 1  -- 表示用户云产品凭据。
 	// 2 -- 表示SSH密钥对凭据。
 	// 3 -- 表示云API密钥对凭据。
-	SecretType *uint64 `json:"SecretType,omitempty" name:"SecretType"`
+	SecretType *uint64 `json:"SecretType,omitnil" name:"SecretType"`
 
 	// 此参数仅在SecretType参数值为1时生效，
 	// 当SecretType值为1时：
 	// 如果ProductName值为空，则表示查询所有类型的云产品凭据
 	// 如果ProductName值为Mysql，则表示查询Mysql数据库凭据
 	// 如果ProductName值为Tdsql-mysql，则表示查询Tdsql（Mysql版本）的凭据
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 }
 
 type ListSecretsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询列表的起始位置，以0开始，不设置默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 单次查询返回的最大数量，0或不设置则使用默认值 20。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 根据创建时间的排序方式，0或者不设置则使用降序排序， 1 表示升序排序。
-	OrderType *uint64 `json:"OrderType,omitempty" name:"OrderType"`
+	OrderType *uint64 `json:"OrderType,omitnil" name:"OrderType"`
 
 	// 根据凭据状态进行过滤。
 	// 默认为0表示查询全部。
@@ -1441,26 +1441,26 @@ type ListSecretsRequest struct {
 	// 4 --  表示PendingCreate。
 	// 5 --  表示CreateFailed。
 	// 其中状态PendingCreate和CreateFailed只有在SecretType为云产品凭据时生效
-	State *uint64 `json:"State,omitempty" name:"State"`
+	State *uint64 `json:"State,omitnil" name:"State"`
 
 	// 根据凭据名称进行过滤，为空表示不过滤。
-	SearchSecretName *string `json:"SearchSecretName,omitempty" name:"SearchSecretName"`
+	SearchSecretName *string `json:"SearchSecretName,omitnil" name:"SearchSecretName"`
 
 	// 标签过滤条件。
-	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+	TagFilters []*TagFilter `json:"TagFilters,omitnil" name:"TagFilters"`
 
 	// 0  -- 表示用户自定义凭据，默认为0。
 	// 1  -- 表示用户云产品凭据。
 	// 2 -- 表示SSH密钥对凭据。
 	// 3 -- 表示云API密钥对凭据。
-	SecretType *uint64 `json:"SecretType,omitempty" name:"SecretType"`
+	SecretType *uint64 `json:"SecretType,omitnil" name:"SecretType"`
 
 	// 此参数仅在SecretType参数值为1时生效，
 	// 当SecretType值为1时：
 	// 如果ProductName值为空，则表示查询所有类型的云产品凭据
 	// 如果ProductName值为Mysql，则表示查询Mysql数据库凭据
 	// 如果ProductName值为Tdsql-mysql，则表示查询Tdsql（Mysql版本）的凭据
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 }
 
 func (r *ListSecretsRequest) ToJsonString() string {
@@ -1492,13 +1492,13 @@ func (r *ListSecretsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListSecretsResponseParams struct {
 	// 根据State和SearchSecretName 筛选的凭据总数。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 返回凭据信息列表。
-	SecretMetadatas []*SecretMetadata `json:"SecretMetadatas,omitempty" name:"SecretMetadatas"`
+	SecretMetadatas []*SecretMetadata `json:"SecretMetadatas,omitnil" name:"SecretMetadatas"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ListSecretsResponse struct {
@@ -1529,7 +1529,7 @@ type ProductPrivilegeUnit struct {
 	// 当权限为TablePrivileges时，必须通过参数Database和TableName指定数据库名以及数据库中的表名；
 	// 
 	// 当权限为ColumnPrivileges时，必须通过参数Database、TableName和CoulmnName指定数据库、数据库中的表名以及表中的列名。
-	PrivilegeName *string `json:"PrivilegeName,omitempty" name:"PrivilegeName"`
+	PrivilegeName *string `json:"PrivilegeName,omitnil" name:"PrivilegeName"`
 
 	// 权限列表。
 	// 对于Mysql产品来说，可选权限值为：
@@ -1545,51 +1545,51 @@ type ProductPrivilegeUnit struct {
 	// 
 	// 4. ColumnPrivileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
 	// 注意，不传该参数表示清除该权限。
-	Privileges []*string `json:"Privileges,omitempty" name:"Privileges"`
+	Privileges []*string `json:"Privileges,omitnil" name:"Privileges"`
 
 	// 仅当PrivilegeName为DatabasePrivileges时这个值才有效。
-	Database *string `json:"Database,omitempty" name:"Database"`
+	Database *string `json:"Database,omitnil" name:"Database"`
 
 	// 仅当PrivilegeName为TablePrivileges时这个值才有效，并且此时需要填充Database显式指明所在的数据库实例。
-	TableName *string `json:"TableName,omitempty" name:"TableName"`
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
 
 	// 仅当PrivilegeName为ColumnPrivileges时这个值才生效，并且此时必须填充：
 	// Database - 显式指明所在的数据库实例。
 	// TableName - 显式指明所在表
-	ColumnName *string `json:"ColumnName,omitempty" name:"ColumnName"`
+	ColumnName *string `json:"ColumnName,omitnil" name:"ColumnName"`
 }
 
 // Predefined struct for user
 type PutSecretValueRequestParams struct {
 	// 指定需要增加版本的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 指定新增加的版本号，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 
 	// 二进制凭据信息，使用base64编码。
 	// SecretBinary 和 SecretString 必须且只能设置一个。
-	SecretBinary *string `json:"SecretBinary,omitempty" name:"SecretBinary"`
+	SecretBinary *string `json:"SecretBinary,omitnil" name:"SecretBinary"`
 
 	// 文本类型凭据信息明文（不需要进行base64编码），SecretBinary 和 SecretString 必须且只能设置一个。
-	SecretString *string `json:"SecretString,omitempty" name:"SecretString"`
+	SecretString *string `json:"SecretString,omitnil" name:"SecretString"`
 }
 
 type PutSecretValueRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定需要增加版本的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 指定新增加的版本号，最长64 字节，使用字母、数字或者 - _ . 的组合并且以字母或数字开头。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 
 	// 二进制凭据信息，使用base64编码。
 	// SecretBinary 和 SecretString 必须且只能设置一个。
-	SecretBinary *string `json:"SecretBinary,omitempty" name:"SecretBinary"`
+	SecretBinary *string `json:"SecretBinary,omitnil" name:"SecretBinary"`
 
 	// 文本类型凭据信息明文（不需要进行base64编码），SecretBinary 和 SecretString 必须且只能设置一个。
-	SecretString *string `json:"SecretString,omitempty" name:"SecretString"`
+	SecretString *string `json:"SecretString,omitnil" name:"SecretString"`
 }
 
 func (r *PutSecretValueRequest) ToJsonString() string {
@@ -1617,13 +1617,13 @@ func (r *PutSecretValueRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PutSecretValueResponseParams struct {
 	// 凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 新增加的版本号。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type PutSecretValueResponse struct {
@@ -1645,14 +1645,14 @@ func (r *PutSecretValueResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RestoreSecretRequestParams struct {
 	// 指定需要恢复的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 type RestoreSecretRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定需要恢复的凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 func (r *RestoreSecretRequest) ToJsonString() string {
@@ -1677,10 +1677,10 @@ func (r *RestoreSecretRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RestoreSecretResponseParams struct {
 	// 凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RestoreSecretResponse struct {
@@ -1702,14 +1702,14 @@ func (r *RestoreSecretResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RotateProductSecretRequestParams struct {
 	// 需要轮转的凭据名。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 type RotateProductSecretRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要轮转的凭据名。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 }
 
 func (r *RotateProductSecretRequest) ToJsonString() string {
@@ -1734,10 +1734,10 @@ func (r *RotateProductSecretRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RotateProductSecretResponseParams struct {
 	// 当凭据类型为云产品凭据时（即SecretType为1，如MySQL、Tdsql等托管凭据）此字段有效，返回轮转异步任务ID号。
-	FlowID *int64 `json:"FlowID,omitempty" name:"FlowID"`
+	FlowID *int64 `json:"FlowID,omitnil" name:"FlowID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RotateProductSecretResponse struct {
@@ -1758,110 +1758,110 @@ func (r *RotateProductSecretResponse) FromJsonString(s string) error {
 
 type SecretMetadata struct {
 	// 凭据名称
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 凭据的描述信息
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 用于加密凭据的KMS KeyId
-	KmsKeyId *string `json:"KmsKeyId,omitempty" name:"KmsKeyId"`
+	KmsKeyId *string `json:"KmsKeyId,omitnil" name:"KmsKeyId"`
 
 	// 创建者UIN
-	CreateUin *uint64 `json:"CreateUin,omitempty" name:"CreateUin"`
+	CreateUin *uint64 `json:"CreateUin,omitnil" name:"CreateUin"`
 
 	// 凭据状态：Enabled、Disabled、PendingDelete、Creating、Failed
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 凭据删除日期，对于status为PendingDelete 的有效，unix时间戳
-	DeleteTime *uint64 `json:"DeleteTime,omitempty" name:"DeleteTime"`
+	DeleteTime *uint64 `json:"DeleteTime,omitnil" name:"DeleteTime"`
 
 	// 凭据创建时间，unix时间戳
-	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *uint64 `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 用于加密凭据的KMS CMK类型，DEFAULT 表示SecretsManager 创建的默认密钥， CUSTOMER 表示用户指定的密钥
-	KmsKeyType *string `json:"KmsKeyType,omitempty" name:"KmsKeyType"`
+	KmsKeyType *string `json:"KmsKeyType,omitnil" name:"KmsKeyType"`
 
 	// 1:--开启轮转；0--禁止轮转
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RotationStatus *int64 `json:"RotationStatus,omitempty" name:"RotationStatus"`
+	RotationStatus *int64 `json:"RotationStatus,omitnil" name:"RotationStatus"`
 
 	// 下一次轮转开始时间，uinx 时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NextRotationTime *uint64 `json:"NextRotationTime,omitempty" name:"NextRotationTime"`
+	NextRotationTime *uint64 `json:"NextRotationTime,omitnil" name:"NextRotationTime"`
 
 	// 0 -- 用户自定义凭据；
 	// 1 -- 云产品凭据；
 	// 2 -- SSH密钥对凭据；
 	// 3 -- 云API密钥对凭据；
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecretType *int64 `json:"SecretType,omitempty" name:"SecretType"`
+	SecretType *int64 `json:"SecretType,omitnil" name:"SecretType"`
 
 	// 云产品名称，仅在SecretType为1，即凭据类型为云产品凭据时生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 
 	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对凭据的名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
 
 	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所属的项目ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+	ProjectID *int64 `json:"ProjectID,omitnil" name:"ProjectID"`
 
 	// 当凭据类型为SSH密钥对凭据时，此字段有效，用于表示SSH密钥对所关联的CVM实例ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssociatedInstanceIDs []*string `json:"AssociatedInstanceIDs,omitempty" name:"AssociatedInstanceIDs"`
+	AssociatedInstanceIDs []*string `json:"AssociatedInstanceIDs,omitnil" name:"AssociatedInstanceIDs"`
 
 	// 当凭据类型为云API密钥对凭据时，此字段有效，用于表示云API密钥对所属的用户UIN。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TargetUin *uint64 `json:"TargetUin,omitempty" name:"TargetUin"`
+	TargetUin *uint64 `json:"TargetUin,omitnil" name:"TargetUin"`
 
 	// 轮转的频率，以天作为单位，在轮转开启状态下生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RotationFrequency *int64 `json:"RotationFrequency,omitempty" name:"RotationFrequency"`
+	RotationFrequency *int64 `json:"RotationFrequency,omitnil" name:"RotationFrequency"`
 
 	// 云产品凭据对应的云产品实例 ID 号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceID *string `json:"ResourceID,omitempty" name:"ResourceID"`
+	ResourceID *string `json:"ResourceID,omitnil" name:"ResourceID"`
 
 	// 用户指定的轮转开始时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RotationBeginTime *string `json:"RotationBeginTime,omitempty" name:"RotationBeginTime"`
+	RotationBeginTime *string `json:"RotationBeginTime,omitnil" name:"RotationBeginTime"`
 }
 
 type Tag struct {
 	// 标签键
-	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
 
 	// 标签值
-	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
 }
 
 type TagFilter struct {
 	// 标签键
-	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
 
 	// 标签值
-	TagValue []*string `json:"TagValue,omitempty" name:"TagValue"`
+	TagValue []*string `json:"TagValue,omitnil" name:"TagValue"`
 }
 
 // Predefined struct for user
 type UpdateDescriptionRequestParams struct {
 	// 指定需要更新描述信息的凭据名。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 新的描述信息，最大长度2048个字节。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 type UpdateDescriptionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定需要更新描述信息的凭据名。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 新的描述信息，最大长度2048个字节。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 func (r *UpdateDescriptionRequest) ToJsonString() string {
@@ -1887,10 +1887,10 @@ func (r *UpdateDescriptionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateDescriptionResponseParams struct {
 	// 凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateDescriptionResponse struct {
@@ -1912,38 +1912,38 @@ func (r *UpdateDescriptionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateRotationStatusRequestParams struct {
 	// 云产品凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 是否开启轮转。
 	// true -- 开启轮转；
 	// false -- 禁止轮转。
-	EnableRotation *bool `json:"EnableRotation,omitempty" name:"EnableRotation"`
+	EnableRotation *bool `json:"EnableRotation,omitnil" name:"EnableRotation"`
 
 	// 轮转周期，以天为单位，最小为30天，最大为365天。
-	Frequency *int64 `json:"Frequency,omitempty" name:"Frequency"`
+	Frequency *int64 `json:"Frequency,omitnil" name:"Frequency"`
 
 	// 用户设置的期望开始轮转时间，格式为：2006-01-02 15:04:05。
 	// 当EnableRotation为true时，如果不填RotationBeginTime，则默认填充为当前时间。
-	RotationBeginTime *string `json:"RotationBeginTime,omitempty" name:"RotationBeginTime"`
+	RotationBeginTime *string `json:"RotationBeginTime,omitnil" name:"RotationBeginTime"`
 }
 
 type UpdateRotationStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云产品凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 是否开启轮转。
 	// true -- 开启轮转；
 	// false -- 禁止轮转。
-	EnableRotation *bool `json:"EnableRotation,omitempty" name:"EnableRotation"`
+	EnableRotation *bool `json:"EnableRotation,omitnil" name:"EnableRotation"`
 
 	// 轮转周期，以天为单位，最小为30天，最大为365天。
-	Frequency *int64 `json:"Frequency,omitempty" name:"Frequency"`
+	Frequency *int64 `json:"Frequency,omitnil" name:"Frequency"`
 
 	// 用户设置的期望开始轮转时间，格式为：2006-01-02 15:04:05。
 	// 当EnableRotation为true时，如果不填RotationBeginTime，则默认填充为当前时间。
-	RotationBeginTime *string `json:"RotationBeginTime,omitempty" name:"RotationBeginTime"`
+	RotationBeginTime *string `json:"RotationBeginTime,omitnil" name:"RotationBeginTime"`
 }
 
 func (r *UpdateRotationStatusRequest) ToJsonString() string {
@@ -1971,7 +1971,7 @@ func (r *UpdateRotationStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateRotationStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateRotationStatusResponse struct {
@@ -1993,34 +1993,34 @@ func (r *UpdateRotationStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateSecretRequestParams struct {
 	// 指定需要更新凭据内容的名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 指定需要更新凭据内容的版本号。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 
 	// 新的凭据内容为二进制的场景使用该字段，并使用base64进行编码。
 	// SecretBinary 和 SecretString 只能一个不为空。
-	SecretBinary *string `json:"SecretBinary,omitempty" name:"SecretBinary"`
+	SecretBinary *string `json:"SecretBinary,omitnil" name:"SecretBinary"`
 
 	// 新的凭据内容为文本的场景使用该字段，不需要base64编码SecretBinary 和 SecretString 只能一个不为空。
-	SecretString *string `json:"SecretString,omitempty" name:"SecretString"`
+	SecretString *string `json:"SecretString,omitnil" name:"SecretString"`
 }
 
 type UpdateSecretRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定需要更新凭据内容的名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 指定需要更新凭据内容的版本号。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 
 	// 新的凭据内容为二进制的场景使用该字段，并使用base64进行编码。
 	// SecretBinary 和 SecretString 只能一个不为空。
-	SecretBinary *string `json:"SecretBinary,omitempty" name:"SecretBinary"`
+	SecretBinary *string `json:"SecretBinary,omitnil" name:"SecretBinary"`
 
 	// 新的凭据内容为文本的场景使用该字段，不需要base64编码SecretBinary 和 SecretString 只能一个不为空。
-	SecretString *string `json:"SecretString,omitempty" name:"SecretString"`
+	SecretString *string `json:"SecretString,omitnil" name:"SecretString"`
 }
 
 func (r *UpdateSecretRequest) ToJsonString() string {
@@ -2048,13 +2048,13 @@ func (r *UpdateSecretRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateSecretResponseParams struct {
 	// 凭据名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 凭据版本号。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateSecretResponse struct {
@@ -2075,8 +2075,8 @@ func (r *UpdateSecretResponse) FromJsonString(s string) error {
 
 type VersionInfo struct {
 	// 版本号。
-	VersionId *string `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *string `json:"VersionId,omitnil" name:"VersionId"`
 
 	// 创建时间，unix时间戳。
-	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *uint64 `json:"CreateTime,omitnil" name:"CreateTime"`
 }

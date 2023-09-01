@@ -15,52 +15,52 @@
 package v20200507
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type CopyCryptoColumnPolicyRequestParams struct {
 	// 实例Id
-	CasbId *string `json:"CasbId,omitempty" name:"CasbId"`
+	CasbId *string `json:"CasbId,omitnil" name:"CasbId"`
 
 	// 元数据id
-	MetaDataId *string `json:"MetaDataId,omitempty" name:"MetaDataId"`
+	MetaDataId *string `json:"MetaDataId,omitnil" name:"MetaDataId"`
 
 	// 目标实例Id 如果和实例Id相同则为同CasbId下的策略复制
-	DstCasbId *string `json:"DstCasbId,omitempty" name:"DstCasbId"`
+	DstCasbId *string `json:"DstCasbId,omitnil" name:"DstCasbId"`
 
 	// 目标实例Id 如果和[元数据id]相同则为同元数据下的策略复制
-	DstMetaDataId *string `json:"DstMetaDataId,omitempty" name:"DstMetaDataId"`
+	DstMetaDataId *string `json:"DstMetaDataId,omitnil" name:"DstMetaDataId"`
 
 	// 筛选来源数据库的表
-	SrcTableFilter []*CryptoCopyColumnPolicyTableFilter `json:"SrcTableFilter,omitempty" name:"SrcTableFilter"`
+	SrcTableFilter []*CryptoCopyColumnPolicyTableFilter `json:"SrcTableFilter,omitnil" name:"SrcTableFilter"`
 
 	// 复制同元数据下的策略，需要填写目标数据库名
-	DstDatabaseName *string `json:"DstDatabaseName,omitempty" name:"DstDatabaseName"`
+	DstDatabaseName *string `json:"DstDatabaseName,omitnil" name:"DstDatabaseName"`
 }
 
 type CopyCryptoColumnPolicyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例Id
-	CasbId *string `json:"CasbId,omitempty" name:"CasbId"`
+	CasbId *string `json:"CasbId,omitnil" name:"CasbId"`
 
 	// 元数据id
-	MetaDataId *string `json:"MetaDataId,omitempty" name:"MetaDataId"`
+	MetaDataId *string `json:"MetaDataId,omitnil" name:"MetaDataId"`
 
 	// 目标实例Id 如果和实例Id相同则为同CasbId下的策略复制
-	DstCasbId *string `json:"DstCasbId,omitempty" name:"DstCasbId"`
+	DstCasbId *string `json:"DstCasbId,omitnil" name:"DstCasbId"`
 
 	// 目标实例Id 如果和[元数据id]相同则为同元数据下的策略复制
-	DstMetaDataId *string `json:"DstMetaDataId,omitempty" name:"DstMetaDataId"`
+	DstMetaDataId *string `json:"DstMetaDataId,omitnil" name:"DstMetaDataId"`
 
 	// 筛选来源数据库的表
-	SrcTableFilter []*CryptoCopyColumnPolicyTableFilter `json:"SrcTableFilter,omitempty" name:"SrcTableFilter"`
+	SrcTableFilter []*CryptoCopyColumnPolicyTableFilter `json:"SrcTableFilter,omitnil" name:"SrcTableFilter"`
 
 	// 复制同元数据下的策略，需要填写目标数据库名
-	DstDatabaseName *string `json:"DstDatabaseName,omitempty" name:"DstDatabaseName"`
+	DstDatabaseName *string `json:"DstDatabaseName,omitnil" name:"DstDatabaseName"`
 }
 
 func (r *CopyCryptoColumnPolicyRequest) ToJsonString() string {
@@ -90,7 +90,7 @@ func (r *CopyCryptoColumnPolicyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CopyCryptoColumnPolicyResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CopyCryptoColumnPolicyResponse struct {
@@ -111,8 +111,8 @@ func (r *CopyCryptoColumnPolicyResponse) FromJsonString(s string) error {
 
 type CryptoCopyColumnPolicyTableFilter struct {
 	// 数据库名称
-	DatabaseName *string `json:"DatabaseName,omitempty" name:"DatabaseName"`
+	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
 
 	// 表名称
-	TableNameSet []*string `json:"TableNameSet,omitempty" name:"TableNameSet"`
+	TableNameSet []*string `json:"TableNameSet,omitnil" name:"TableNameSet"`
 }

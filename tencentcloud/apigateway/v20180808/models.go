@@ -15,578 +15,578 @@
 package v20180808
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type APIDoc struct {
 	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 
 	// API文档名称
-	ApiDocName *string `json:"ApiDocName,omitempty" name:"ApiDocName"`
+	ApiDocName *string `json:"ApiDocName,omitnil" name:"ApiDocName"`
 
 	// API文档构建状态
-	ApiDocStatus *string `json:"ApiDocStatus,omitempty" name:"ApiDocStatus"`
+	ApiDocStatus *string `json:"ApiDocStatus,omitnil" name:"ApiDocStatus"`
 }
 
 type APIDocInfo struct {
 	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 
 	// API文档名称
-	ApiDocName *string `json:"ApiDocName,omitempty" name:"ApiDocName"`
+	ApiDocName *string `json:"ApiDocName,omitnil" name:"ApiDocName"`
 
 	// API文档构建状态
-	ApiDocStatus *string `json:"ApiDocStatus,omitempty" name:"ApiDocStatus"`
+	ApiDocStatus *string `json:"ApiDocStatus,omitnil" name:"ApiDocStatus"`
 
 	// API文档API数量
-	ApiCount *int64 `json:"ApiCount,omitempty" name:"ApiCount"`
+	ApiCount *int64 `json:"ApiCount,omitnil" name:"ApiCount"`
 
 	// API文档查看次数
-	ViewCount *int64 `json:"ViewCount,omitempty" name:"ViewCount"`
+	ViewCount *int64 `json:"ViewCount,omitnil" name:"ViewCount"`
 
 	// API文档发布次数
-	ReleaseCount *int64 `json:"ReleaseCount,omitempty" name:"ReleaseCount"`
+	ReleaseCount *int64 `json:"ReleaseCount,omitnil" name:"ReleaseCount"`
 
 	// API文档访问URI
-	ApiDocUri *string `json:"ApiDocUri,omitempty" name:"ApiDocUri"`
+	ApiDocUri *string `json:"ApiDocUri,omitnil" name:"ApiDocUri"`
 
 	// API文档分享密码
-	SharePassword *string `json:"SharePassword,omitempty" name:"SharePassword"`
+	SharePassword *string `json:"SharePassword,omitnil" name:"SharePassword"`
 
 	// API文档更新时间
-	UpdatedTime *string `json:"UpdatedTime,omitempty" name:"UpdatedTime"`
+	UpdatedTime *string `json:"UpdatedTime,omitnil" name:"UpdatedTime"`
 
 	// 服务ID
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 环境信息
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 生成API文档的API ID
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 
 	// 服务名称
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// 生成API文档的API名称
-	ApiNames []*string `json:"ApiNames,omitempty" name:"ApiNames"`
+	ApiNames []*string `json:"ApiNames,omitnil" name:"ApiNames"`
 }
 
 type APIDocs struct {
 	// API文档数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// API文档基本信息
-	APIDocSet []*APIDoc `json:"APIDocSet,omitempty" name:"APIDocSet"`
+	APIDocSet []*APIDoc `json:"APIDocSet,omitnil" name:"APIDocSet"`
 }
 
 type ApiAppApiInfo struct {
 	// 应用名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiAppName *string `json:"ApiAppName,omitempty" name:"ApiAppName"`
+	ApiAppName *string `json:"ApiAppName,omitnil" name:"ApiAppName"`
 
 	// 应用ID
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 
 	// Api的ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// Api名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// 服务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 授权绑定时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthorizedTime *string `json:"AuthorizedTime,omitempty" name:"AuthorizedTime"`
+	AuthorizedTime *string `json:"AuthorizedTime,omitnil" name:"AuthorizedTime"`
 
 	// Api所属地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiRegion *string `json:"ApiRegion,omitempty" name:"ApiRegion"`
+	ApiRegion *string `json:"ApiRegion,omitnil" name:"ApiRegion"`
 
 	// 授权绑定的环境
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 }
 
 type ApiAppApiInfos struct {
 	// 数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 应用绑定的Api信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiAppApiSet []*ApiAppApiInfo `json:"ApiAppApiSet,omitempty" name:"ApiAppApiSet"`
+	ApiAppApiSet []*ApiAppApiInfo `json:"ApiAppApiSet,omitnil" name:"ApiAppApiSet"`
 }
 
 type ApiAppInfo struct {
 	// 应用名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiAppName *string `json:"ApiAppName,omitempty" name:"ApiAppName"`
+	ApiAppName *string `json:"ApiAppName,omitnil" name:"ApiAppName"`
 
 	// 应用ID
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 
 	// 应用SECRET
 	// 注意:此字段可能返回null，表示取不到有效值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiAppSecret *string `json:"ApiAppSecret,omitempty" name:"ApiAppSecret"`
+	ApiAppSecret *string `json:"ApiAppSecret,omitnil" name:"ApiAppSecret"`
 
 	// 应用描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiAppDesc *string `json:"ApiAppDesc,omitempty" name:"ApiAppDesc"`
+	ApiAppDesc *string `json:"ApiAppDesc,omitnil" name:"ApiAppDesc"`
 
 	// 创建时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 修改时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// 应用KEY
 	// 注意:此字段可能返回null，表示取不到有效值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiAppKey *string `json:"ApiAppKey,omitempty" name:"ApiAppKey"`
+	ApiAppKey *string `json:"ApiAppKey,omitnil" name:"ApiAppKey"`
 }
 
 type ApiAppInfos struct {
 	// 应用数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 应用信息数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiAppSet []*ApiAppInfo `json:"ApiAppSet,omitempty" name:"ApiAppSet"`
+	ApiAppSet []*ApiAppInfo `json:"ApiAppSet,omitnil" name:"ApiAppSet"`
 }
 
 type ApiEnvironmentStrategy struct {
 	// API唯一ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 用户自定义API名称。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// API的路径。如/path。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// API的方法。如GET。
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 
 	// 环境的限流信息。
-	EnvironmentStrategySet []*EnvironmentStrategy `json:"EnvironmentStrategySet,omitempty" name:"EnvironmentStrategySet"`
+	EnvironmentStrategySet []*EnvironmentStrategy `json:"EnvironmentStrategySet,omitnil" name:"EnvironmentStrategySet"`
 }
 
 type ApiEnvironmentStrategyStatus struct {
 	// API绑定的限流策略数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// API绑定的限流策略列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiEnvironmentStrategySet []*ApiEnvironmentStrategy `json:"ApiEnvironmentStrategySet,omitempty" name:"ApiEnvironmentStrategySet"`
+	ApiEnvironmentStrategySet []*ApiEnvironmentStrategy `json:"ApiEnvironmentStrategySet,omitnil" name:"ApiEnvironmentStrategySet"`
 }
 
 type ApiIdStatus struct {
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API唯一ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// API描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiDesc *string `json:"ApiDesc,omitempty" name:"ApiDesc"`
+	ApiDesc *string `json:"ApiDesc,omitnil" name:"ApiDesc"`
 
 	// API PATH。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// API METHOD。
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 
 	// 服务创建时间。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 服务修改时间。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// API名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// VPC唯一ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// API类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 
 	// API协议。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 是否买后调试。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitempty" name:"IsDebugAfterCharge"`
+	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitnil" name:"IsDebugAfterCharge"`
 
 	// 授权类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+	AuthType *string `json:"AuthType,omitnil" name:"AuthType"`
 
 	// API业务类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiBusinessType *string `json:"ApiBusinessType,omitempty" name:"ApiBusinessType"`
+	ApiBusinessType *string `json:"ApiBusinessType,omitnil" name:"ApiBusinessType"`
 
 	// 关联授权API唯一ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthRelationApiId *string `json:"AuthRelationApiId,omitempty" name:"AuthRelationApiId"`
+	AuthRelationApiId *string `json:"AuthRelationApiId,omitnil" name:"AuthRelationApiId"`
 
 	// 授权API关联的业务API列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: RelationBuniessApiIds is deprecated.
-	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitempty" name:"RelationBuniessApiIds"`
+	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitnil" name:"RelationBuniessApiIds"`
 
 	// oauth配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OauthConfig *OauthConfig `json:"OauthConfig,omitempty" name:"OauthConfig"`
+	OauthConfig *OauthConfig `json:"OauthConfig,omitnil" name:"OauthConfig"`
 
 	// oauth2.0API请求，token存放位置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TokenLocation *string `json:"TokenLocation,omitempty" name:"TokenLocation"`
+	TokenLocation *string `json:"TokenLocation,omitnil" name:"TokenLocation"`
 }
 
 type ApiInfo struct {
 	// API 所在的服务唯一 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 所在的服务的名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// API 所在的服务的描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
+	ServiceDesc *string `json:"ServiceDesc,omitnil" name:"ServiceDesc"`
 
 	// API 接口唯一 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// API 接口的描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiDesc *string `json:"ApiDesc,omitempty" name:"ApiDesc"`
+	ApiDesc *string `json:"ApiDesc,omitnil" name:"ApiDesc"`
 
 	// 创建时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 最后修改时间，按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// API 接口的名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// API 类型。可取值为NORMAL（普通API）、TSF（微服务API）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 
 	// API 的前端请求类型，如 HTTP 或 HTTPS 或者 HTTP 和 HTTPS。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// API 鉴权类型。可取值为 SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+	AuthType *string `json:"AuthType,omitnil" name:"AuthType"`
 
 	// OAUTH API的类型。可取值为NORMAL（业务API）、OAUTH（授权API）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiBusinessType *string `json:"ApiBusinessType,omitempty" name:"ApiBusinessType"`
+	ApiBusinessType *string `json:"ApiBusinessType,omitnil" name:"ApiBusinessType"`
 
 	// OAUTH 业务API 关联的授权API 唯一 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthRelationApiId *string `json:"AuthRelationApiId,omitempty" name:"AuthRelationApiId"`
+	AuthRelationApiId *string `json:"AuthRelationApiId,omitnil" name:"AuthRelationApiId"`
 
 	// OAUTH配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OauthConfig *OauthConfig `json:"OauthConfig,omitempty" name:"OauthConfig"`
+	OauthConfig *OauthConfig `json:"OauthConfig,omitnil" name:"OauthConfig"`
 
 	// 是否购买后调试（云市场预留参数）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitempty" name:"IsDebugAfterCharge"`
+	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitnil" name:"IsDebugAfterCharge"`
 
 	// 请求的前端配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RequestConfig *RequestConfig `json:"RequestConfig,omitempty" name:"RequestConfig"`
+	RequestConfig *RequestConfig `json:"RequestConfig,omitnil" name:"RequestConfig"`
 
 	// 返回类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResponseType *string `json:"ResponseType,omitempty" name:"ResponseType"`
+	ResponseType *string `json:"ResponseType,omitnil" name:"ResponseType"`
 
 	// 自定义响应配置成功响应示例。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResponseSuccessExample *string `json:"ResponseSuccessExample,omitempty" name:"ResponseSuccessExample"`
+	ResponseSuccessExample *string `json:"ResponseSuccessExample,omitnil" name:"ResponseSuccessExample"`
 
 	// 自定义响应配置失败响应示例。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResponseFailExample *string `json:"ResponseFailExample,omitempty" name:"ResponseFailExample"`
+	ResponseFailExample *string `json:"ResponseFailExample,omitnil" name:"ResponseFailExample"`
 
 	// 用户自定义错误码配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResponseErrorCodes []*ErrorCodes `json:"ResponseErrorCodes,omitempty" name:"ResponseErrorCodes"`
+	ResponseErrorCodes []*ErrorCodes `json:"ResponseErrorCodes,omitnil" name:"ResponseErrorCodes"`
 
 	// 前端请求参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RequestParameters []*ReqParameter `json:"RequestParameters,omitempty" name:"RequestParameters"`
+	RequestParameters []*ReqParameter `json:"RequestParameters,omitnil" name:"RequestParameters"`
 
 	// API 的后端服务超时时间，单位是秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceTimeout *int64 `json:"ServiceTimeout,omitempty" name:"ServiceTimeout"`
+	ServiceTimeout *int64 `json:"ServiceTimeout,omitnil" name:"ServiceTimeout"`
 
 	// API 的后端服务类型。可取值为 HTTP、MOCK、TSF、CLB、SCF、WEBSOCKET、TARGET（内测）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
 
 	// API 的后端服务配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceConfig *ServiceConfig `json:"ServiceConfig,omitempty" name:"ServiceConfig"`
+	ServiceConfig *ServiceConfig `json:"ServiceConfig,omitnil" name:"ServiceConfig"`
 
 	// API的后端服务参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceParameters []*DescribeApiResultServiceParametersInfo `json:"ServiceParameters,omitempty" name:"ServiceParameters"`
+	ServiceParameters []*DescribeApiResultServiceParametersInfo `json:"ServiceParameters,omitnil" name:"ServiceParameters"`
 
 	// 常量参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitempty" name:"ConstantParameters"`
+	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitnil" name:"ConstantParameters"`
 
 	// API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitempty" name:"ServiceMockReturnMessage"`
+	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitnil" name:"ServiceMockReturnMessage"`
 
 	// scf 函数名称。当后端类型是SCF时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceScfFunctionName *string `json:"ServiceScfFunctionName,omitempty" name:"ServiceScfFunctionName"`
+	ServiceScfFunctionName *string `json:"ServiceScfFunctionName,omitnil" name:"ServiceScfFunctionName"`
 
 	// scf 函数命名空间。当后端类型是SCF时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceScfFunctionNamespace *string `json:"ServiceScfFunctionNamespace,omitempty" name:"ServiceScfFunctionNamespace"`
+	ServiceScfFunctionNamespace *string `json:"ServiceScfFunctionNamespace,omitnil" name:"ServiceScfFunctionNamespace"`
 
 	// scf函数版本。当后端类型是SCF时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceScfFunctionQualifier *string `json:"ServiceScfFunctionQualifier,omitempty" name:"ServiceScfFunctionQualifier"`
+	ServiceScfFunctionQualifier *string `json:"ServiceScfFunctionQualifier,omitnil" name:"ServiceScfFunctionQualifier"`
 
 	// 是否开启集成响应。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceScfIsIntegratedResponse *bool `json:"ServiceScfIsIntegratedResponse,omitempty" name:"ServiceScfIsIntegratedResponse"`
+	ServiceScfIsIntegratedResponse *bool `json:"ServiceScfIsIntegratedResponse,omitnil" name:"ServiceScfIsIntegratedResponse"`
 
 	// scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceWebsocketRegisterFunctionName *string `json:"ServiceWebsocketRegisterFunctionName,omitempty" name:"ServiceWebsocketRegisterFunctionName"`
+	ServiceWebsocketRegisterFunctionName *string `json:"ServiceWebsocketRegisterFunctionName,omitnil" name:"ServiceWebsocketRegisterFunctionName"`
 
 	// scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceWebsocketRegisterFunctionNamespace *string `json:"ServiceWebsocketRegisterFunctionNamespace,omitempty" name:"ServiceWebsocketRegisterFunctionNamespace"`
+	ServiceWebsocketRegisterFunctionNamespace *string `json:"ServiceWebsocketRegisterFunctionNamespace,omitnil" name:"ServiceWebsocketRegisterFunctionNamespace"`
 
 	// scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceWebsocketRegisterFunctionQualifier *string `json:"ServiceWebsocketRegisterFunctionQualifier,omitempty" name:"ServiceWebsocketRegisterFunctionQualifier"`
+	ServiceWebsocketRegisterFunctionQualifier *string `json:"ServiceWebsocketRegisterFunctionQualifier,omitnil" name:"ServiceWebsocketRegisterFunctionQualifier"`
 
 	// scf websocket清理函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceWebsocketCleanupFunctionName *string `json:"ServiceWebsocketCleanupFunctionName,omitempty" name:"ServiceWebsocketCleanupFunctionName"`
+	ServiceWebsocketCleanupFunctionName *string `json:"ServiceWebsocketCleanupFunctionName,omitnil" name:"ServiceWebsocketCleanupFunctionName"`
 
 	// scf websocket清理函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceWebsocketCleanupFunctionNamespace *string `json:"ServiceWebsocketCleanupFunctionNamespace,omitempty" name:"ServiceWebsocketCleanupFunctionNamespace"`
+	ServiceWebsocketCleanupFunctionNamespace *string `json:"ServiceWebsocketCleanupFunctionNamespace,omitnil" name:"ServiceWebsocketCleanupFunctionNamespace"`
 
 	// scf websocket清理函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceWebsocketCleanupFunctionQualifier *string `json:"ServiceWebsocketCleanupFunctionQualifier,omitempty" name:"ServiceWebsocketCleanupFunctionQualifier"`
+	ServiceWebsocketCleanupFunctionQualifier *string `json:"ServiceWebsocketCleanupFunctionQualifier,omitnil" name:"ServiceWebsocketCleanupFunctionQualifier"`
 
 	// WEBSOCKET 回推地址。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InternalDomain *string `json:"InternalDomain,omitempty" name:"InternalDomain"`
+	InternalDomain *string `json:"InternalDomain,omitnil" name:"InternalDomain"`
 
 	// scf websocket传输函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceWebsocketTransportFunctionName *string `json:"ServiceWebsocketTransportFunctionName,omitempty" name:"ServiceWebsocketTransportFunctionName"`
+	ServiceWebsocketTransportFunctionName *string `json:"ServiceWebsocketTransportFunctionName,omitnil" name:"ServiceWebsocketTransportFunctionName"`
 
 	// scf websocket传输函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceWebsocketTransportFunctionNamespace *string `json:"ServiceWebsocketTransportFunctionNamespace,omitempty" name:"ServiceWebsocketTransportFunctionNamespace"`
+	ServiceWebsocketTransportFunctionNamespace *string `json:"ServiceWebsocketTransportFunctionNamespace,omitnil" name:"ServiceWebsocketTransportFunctionNamespace"`
 
 	// scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceWebsocketTransportFunctionQualifier *string `json:"ServiceWebsocketTransportFunctionQualifier,omitempty" name:"ServiceWebsocketTransportFunctionQualifier"`
+	ServiceWebsocketTransportFunctionQualifier *string `json:"ServiceWebsocketTransportFunctionQualifier,omitnil" name:"ServiceWebsocketTransportFunctionQualifier"`
 
 	// API绑定微服务列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MicroServices []*MicroService `json:"MicroServices,omitempty" name:"MicroServices"`
+	MicroServices []*MicroService `json:"MicroServices,omitnil" name:"MicroServices"`
 
 	// 微服务信息详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MicroServicesInfo []*int64 `json:"MicroServicesInfo,omitempty" name:"MicroServicesInfo"`
+	MicroServicesInfo []*int64 `json:"MicroServicesInfo,omitnil" name:"MicroServicesInfo"`
 
 	// 微服务的负载均衡配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceTsfLoadBalanceConf *TsfLoadBalanceConfResp `json:"ServiceTsfLoadBalanceConf,omitempty" name:"ServiceTsfLoadBalanceConf"`
+	ServiceTsfLoadBalanceConf *TsfLoadBalanceConfResp `json:"ServiceTsfLoadBalanceConf,omitnil" name:"ServiceTsfLoadBalanceConf"`
 
 	// 微服务的健康检查配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceTsfHealthCheckConf *HealthCheckConf `json:"ServiceTsfHealthCheckConf,omitempty" name:"ServiceTsfHealthCheckConf"`
+	ServiceTsfHealthCheckConf *HealthCheckConf `json:"ServiceTsfHealthCheckConf,omitnil" name:"ServiceTsfHealthCheckConf"`
 
 	// 是否开启跨域。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnableCORS *bool `json:"EnableCORS,omitempty" name:"EnableCORS"`
+	EnableCORS *bool `json:"EnableCORS,omitnil" name:"EnableCORS"`
 
 	// API绑定的tag信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// API已发布的环境信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Environments []*string `json:"Environments,omitempty" name:"Environments"`
+	Environments []*string `json:"Environments,omitnil" name:"Environments"`
 
 	// 是否开启Base64编码，只有后端为scf时才会生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsBase64Encoded *bool `json:"IsBase64Encoded,omitempty" name:"IsBase64Encoded"`
+	IsBase64Encoded *bool `json:"IsBase64Encoded,omitnil" name:"IsBase64Encoded"`
 
 	// 是否开启Base64编码的header触发，只有后端为scf时才会生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsBase64Trigger *bool `json:"IsBase64Trigger,omitempty" name:"IsBase64Trigger"`
+	IsBase64Trigger *bool `json:"IsBase64Trigger,omitnil" name:"IsBase64Trigger"`
 
 	// Header触发规则，总规则数量不超过10。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitempty" name:"Base64EncodedTriggerRules"`
+	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitnil" name:"Base64EncodedTriggerRules"`
 }
 
 type ApiInfoSummary struct {
 	// 插件相关的API总数。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 插件相关的API信息。
-	ApiSet []*AvailableApiInfo `json:"ApiSet,omitempty" name:"ApiSet"`
+	ApiSet []*AvailableApiInfo `json:"ApiSet,omitnil" name:"ApiSet"`
 }
 
 type ApiKey struct {
 	// 创建的 API 密钥 ID 。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 
 	// 创建的 API 密钥 Key。
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" name:"AccessKeySecret"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitnil" name:"AccessKeySecret"`
 
 	// 密钥类型，auto 或者 manual。
-	AccessKeyType *string `json:"AccessKeyType,omitempty" name:"AccessKeyType"`
+	AccessKeyType *string `json:"AccessKeyType,omitnil" name:"AccessKeyType"`
 
 	// 用户自定义密钥名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 最后一次修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// 密钥状态。0表示禁用，1表示启用。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 }
 
 type ApiKeysStatus struct {
 	// 符合条件的 API 密钥数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// API 密钥列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiKeySet []*ApiKey `json:"ApiKeySet,omitempty" name:"ApiKeySet"`
+	ApiKeySet []*ApiKey `json:"ApiKeySet,omitnil" name:"ApiKeySet"`
 }
 
 type ApiRequestConfig struct {
 	// path
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// 方法
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 }
 
 type ApiUsagePlan struct {
 	// 服务唯一ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 唯一 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// API 名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// API 路径。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// API 方法。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 
 	// 使用计划的唯一 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 使用计划的名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanName *string `json:"UsagePlanName,omitempty" name:"UsagePlanName"`
+	UsagePlanName *string `json:"UsagePlanName,omitnil" name:"UsagePlanName"`
 
 	// 使用计划的描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanDesc *string `json:"UsagePlanDesc,omitempty" name:"UsagePlanDesc"`
+	UsagePlanDesc *string `json:"UsagePlanDesc,omitnil" name:"UsagePlanDesc"`
 
 	// 使用计划绑定的服务环境。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 已经使用的配额。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InUseRequestNum *int64 `json:"InUseRequestNum,omitempty" name:"InUseRequestNum"`
+	InUseRequestNum *int64 `json:"InUseRequestNum,omitnil" name:"InUseRequestNum"`
 
 	// 请求配额总量，-1表示没有限制。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxRequestNum *int64 `json:"MaxRequestNum,omitempty" name:"MaxRequestNum"`
+	MaxRequestNum *int64 `json:"MaxRequestNum,omitnil" name:"MaxRequestNum"`
 
 	// 请求 QPS 上限，-1 表示没有限制。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitempty" name:"MaxRequestNumPreSec"`
+	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitnil" name:"MaxRequestNumPreSec"`
 
 	// 使用计划创建时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 使用计划最后修改时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// 服务名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 }
 
 type ApiUsagePlanSet struct {
 	// API 绑定的使用计划总数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// API 绑定使用计划列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiUsagePlanList []*ApiUsagePlan `json:"ApiUsagePlanList,omitempty" name:"ApiUsagePlanList"`
+	ApiUsagePlanList []*ApiUsagePlan `json:"ApiUsagePlanList,omitnil" name:"ApiUsagePlanList"`
 }
 
 type ApigatewayTags struct {
@@ -596,32 +596,32 @@ type ApigatewayTags struct {
 // Predefined struct for user
 type AttachPluginRequestParams struct {
 	// 绑定的API网关插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 要操作的服务ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 要操作API的环境。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 要绑定的API列表。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 type AttachPluginRequest struct {
 	*tchttp.BaseRequest
 	
 	// 绑定的API网关插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 要操作的服务ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 要操作API的环境。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 要绑定的API列表。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 func (r *AttachPluginRequest) ToJsonString() string {
@@ -649,10 +649,10 @@ func (r *AttachPluginRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AttachPluginResponseParams struct {
 	// 绑定操作是否成功。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AttachPluginResponse struct {
@@ -673,99 +673,99 @@ func (r *AttachPluginResponse) FromJsonString(s string) error {
 
 type AttachedApiInfo struct {
 	// API所在服务ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API所在服务名称。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// API所在服务描述信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
+	ServiceDesc *string `json:"ServiceDesc,omitnil" name:"ServiceDesc"`
 
 	// API ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// API名称。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// API描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiDesc *string `json:"ApiDesc,omitempty" name:"ApiDesc"`
+	ApiDesc *string `json:"ApiDesc,omitnil" name:"ApiDesc"`
 
 	// 插件绑定API的环境。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 插件和API绑定时间。
-	AttachedTime *string `json:"AttachedTime,omitempty" name:"AttachedTime"`
+	AttachedTime *string `json:"AttachedTime,omitnil" name:"AttachedTime"`
 }
 
 type AttachedApiSummary struct {
 	// 插件绑定的API数量。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 插件绑定的API信息。
-	AttachedApis []*AttachedApiInfo `json:"AttachedApis,omitempty" name:"AttachedApis"`
+	AttachedApis []*AttachedApiInfo `json:"AttachedApis,omitnil" name:"AttachedApis"`
 }
 
 type AttachedPluginInfo struct {
 	// 插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 环境信息。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 绑定时间。
-	AttachedTime *string `json:"AttachedTime,omitempty" name:"AttachedTime"`
+	AttachedTime *string `json:"AttachedTime,omitnil" name:"AttachedTime"`
 
 	// 插件名称。
-	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+	PluginName *string `json:"PluginName,omitnil" name:"PluginName"`
 
 	// 插件类型。
-	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
+	PluginType *string `json:"PluginType,omitnil" name:"PluginType"`
 
 	// 插件描述。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 插件定义语句。
-	PluginData *string `json:"PluginData,omitempty" name:"PluginData"`
+	PluginData *string `json:"PluginData,omitnil" name:"PluginData"`
 }
 
 type AttachedPluginSummary struct {
 	// 已绑定的插件总数。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 已绑定的插件信息。
-	PluginSummary []*AttachedPluginInfo `json:"PluginSummary,omitempty" name:"PluginSummary"`
+	PluginSummary []*AttachedPluginInfo `json:"PluginSummary,omitnil" name:"PluginSummary"`
 }
 
 type AvailableApiInfo struct {
 	// API ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// API名称。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// API类型。
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 
 	// API路径。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// API方法。
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 
 	// API是否绑定其他插件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AttachedOtherPlugin *bool `json:"AttachedOtherPlugin,omitempty" name:"AttachedOtherPlugin"`
+	AttachedOtherPlugin *bool `json:"AttachedOtherPlugin,omitnil" name:"AttachedOtherPlugin"`
 
 	// API是否绑定当前插件。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsAttached *bool `json:"IsAttached,omitempty" name:"IsAttached"`
+	IsAttached *bool `json:"IsAttached,omitnil" name:"IsAttached"`
 }
 
 type Base64EncodedTriggerRule struct {
 	// 进行编码触发的header，可选值 "Accept"和"Content_Type" 对应实际数据流请求header中的Accept和 Content-Type。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 进行编码触发的header的可选值数组, 数组元素的字符串最大长度为40，元素可以包括数字，英文字母以及特殊字符，特殊字符的可选值为： `.`    `+`    `*`   `-`   `/`  `_` 
 	// 
@@ -775,38 +775,38 @@ type Base64EncodedTriggerRule struct {
 	//     "application/vnd.ms-project",
 	//     "application/vnd.rn-rn_music_package"
 	// ] 等都是合法的。
-	Value []*string `json:"Value,omitempty" name:"Value"`
+	Value []*string `json:"Value,omitnil" name:"Value"`
 }
 
 // Predefined struct for user
 type BindApiAppRequestParams struct {
 	// 待绑定的应用唯一 ID 。
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 
 	// 待绑定的环境。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 待绑定的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待绑定的API唯一ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 }
 
 type BindApiAppRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待绑定的应用唯一 ID 。
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 
 	// 待绑定的环境。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 待绑定的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待绑定的API唯一ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 }
 
 func (r *BindApiAppRequest) ToJsonString() string {
@@ -835,10 +835,10 @@ func (r *BindApiAppRequest) FromJsonString(s string) error {
 type BindApiAppResponseParams struct {
 	// 绑定操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BindApiAppResponse struct {
@@ -859,58 +859,58 @@ func (r *BindApiAppResponse) FromJsonString(s string) error {
 
 type BindApiInfo struct {
 	// api唯一id
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// Service唯一id
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// api名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// 服务名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// 绑定时间
-	BindTime *string `json:"BindTime,omitempty" name:"BindTime"`
+	BindTime *string `json:"BindTime,omitnil" name:"BindTime"`
 }
 
 // Predefined struct for user
 type BindEnvironmentRequestParams struct {
 	// 待绑定的使用计划唯一 ID 列表。
-	UsagePlanIds []*string `json:"UsagePlanIds,omitempty" name:"UsagePlanIds"`
+	UsagePlanIds []*string `json:"UsagePlanIds,omitnil" name:"UsagePlanIds"`
 
 	// 绑定类型，取值为API、SERVICE，默认值为SERVICE。
-	BindType *string `json:"BindType,omitempty" name:"BindType"`
+	BindType *string `json:"BindType,omitnil" name:"BindType"`
 
 	// 待绑定的环境。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 待绑定的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API唯一ID数组，当bindType=API时，需要传入此参数。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 type BindEnvironmentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待绑定的使用计划唯一 ID 列表。
-	UsagePlanIds []*string `json:"UsagePlanIds,omitempty" name:"UsagePlanIds"`
+	UsagePlanIds []*string `json:"UsagePlanIds,omitnil" name:"UsagePlanIds"`
 
 	// 绑定类型，取值为API、SERVICE，默认值为SERVICE。
-	BindType *string `json:"BindType,omitempty" name:"BindType"`
+	BindType *string `json:"BindType,omitnil" name:"BindType"`
 
 	// 待绑定的环境。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 待绑定的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API唯一ID数组，当bindType=API时，需要传入此参数。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 func (r *BindEnvironmentRequest) ToJsonString() string {
@@ -940,10 +940,10 @@ func (r *BindEnvironmentRequest) FromJsonString(s string) error {
 type BindEnvironmentResponseParams struct {
 	// 绑定操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BindEnvironmentResponse struct {
@@ -965,32 +965,32 @@ func (r *BindEnvironmentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BindIPStrategyRequestParams struct {
 	// 待绑定的IP策略所属的服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待绑定的IP策略唯一ID。
-	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
 
 	// IP策略待绑定的环境。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// IP策略待绑定的API列表。
-	BindApiIds []*string `json:"BindApiIds,omitempty" name:"BindApiIds"`
+	BindApiIds []*string `json:"BindApiIds,omitnil" name:"BindApiIds"`
 }
 
 type BindIPStrategyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待绑定的IP策略所属的服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待绑定的IP策略唯一ID。
-	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
 
 	// IP策略待绑定的环境。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// IP策略待绑定的API列表。
-	BindApiIds []*string `json:"BindApiIds,omitempty" name:"BindApiIds"`
+	BindApiIds []*string `json:"BindApiIds,omitnil" name:"BindApiIds"`
 }
 
 func (r *BindIPStrategyRequest) ToJsonString() string {
@@ -1019,10 +1019,10 @@ func (r *BindIPStrategyRequest) FromJsonString(s string) error {
 type BindIPStrategyResponseParams struct {
 	// 绑定操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BindIPStrategyResponse struct {
@@ -1044,20 +1044,20 @@ func (r *BindIPStrategyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BindSecretIdsRequestParams struct {
 	// 待绑定的使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 待绑定的密钥 ID 数组。
-	AccessKeyIds []*string `json:"AccessKeyIds,omitempty" name:"AccessKeyIds"`
+	AccessKeyIds []*string `json:"AccessKeyIds,omitnil" name:"AccessKeyIds"`
 }
 
 type BindSecretIdsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待绑定的使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 待绑定的密钥 ID 数组。
-	AccessKeyIds []*string `json:"AccessKeyIds,omitempty" name:"AccessKeyIds"`
+	AccessKeyIds []*string `json:"AccessKeyIds,omitnil" name:"AccessKeyIds"`
 }
 
 func (r *BindSecretIdsRequest) ToJsonString() string {
@@ -1084,10 +1084,10 @@ func (r *BindSecretIdsRequest) FromJsonString(s string) error {
 type BindSecretIdsResponseParams struct {
 	// 绑定操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BindSecretIdsResponse struct {
@@ -1109,62 +1109,62 @@ func (r *BindSecretIdsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BindSubDomainRequestParams struct {
 	// 服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待绑定的自定义的域名。
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 
 	// 服务支持协议，可选值为http、https、http&https。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 网络类型，可选值为OUTER、INNER。
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 是否使用默认路径映射，默认为 true。为 false 时，表示自定义路径映射，此时 PathMappingSet 必填。
-	IsDefaultMapping *bool `json:"IsDefaultMapping,omitempty" name:"IsDefaultMapping"`
+	IsDefaultMapping *bool `json:"IsDefaultMapping,omitnil" name:"IsDefaultMapping"`
 
 	// 默认域名。
-	NetSubDomain *string `json:"NetSubDomain,omitempty" name:"NetSubDomain"`
+	NetSubDomain *string `json:"NetSubDomain,omitnil" name:"NetSubDomain"`
 
 	// 待绑定自定义域名的证书唯一 ID。针对Protocol 为https或http&https可以选择上传。
-	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
 
 	// 自定义域名路径映射，最多输入三个Environment，并且只能分别取值“test”、 ”prepub“、”release“。
-	PathMappingSet []*PathMapping `json:"PathMappingSet,omitempty" name:"PathMappingSet"`
+	PathMappingSet []*PathMapping `json:"PathMappingSet,omitnil" name:"PathMappingSet"`
 
 	// 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
-	IsForcedHttps *bool `json:"IsForcedHttps,omitempty" name:"IsForcedHttps"`
+	IsForcedHttps *bool `json:"IsForcedHttps,omitnil" name:"IsForcedHttps"`
 }
 
 type BindSubDomainRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待绑定的自定义的域名。
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 
 	// 服务支持协议，可选值为http、https、http&https。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 网络类型，可选值为OUTER、INNER。
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 是否使用默认路径映射，默认为 true。为 false 时，表示自定义路径映射，此时 PathMappingSet 必填。
-	IsDefaultMapping *bool `json:"IsDefaultMapping,omitempty" name:"IsDefaultMapping"`
+	IsDefaultMapping *bool `json:"IsDefaultMapping,omitnil" name:"IsDefaultMapping"`
 
 	// 默认域名。
-	NetSubDomain *string `json:"NetSubDomain,omitempty" name:"NetSubDomain"`
+	NetSubDomain *string `json:"NetSubDomain,omitnil" name:"NetSubDomain"`
 
 	// 待绑定自定义域名的证书唯一 ID。针对Protocol 为https或http&https可以选择上传。
-	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
 
 	// 自定义域名路径映射，最多输入三个Environment，并且只能分别取值“test”、 ”prepub“、”release“。
-	PathMappingSet []*PathMapping `json:"PathMappingSet,omitempty" name:"PathMappingSet"`
+	PathMappingSet []*PathMapping `json:"PathMappingSet,omitnil" name:"PathMappingSet"`
 
 	// 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
-	IsForcedHttps *bool `json:"IsForcedHttps,omitempty" name:"IsForcedHttps"`
+	IsForcedHttps *bool `json:"IsForcedHttps,omitnil" name:"IsForcedHttps"`
 }
 
 func (r *BindSubDomainRequest) ToJsonString() string {
@@ -1197,7 +1197,7 @@ func (r *BindSubDomainRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BindSubDomainResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BindSubDomainResponse struct {
@@ -1219,14 +1219,14 @@ func (r *BindSubDomainResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BuildAPIDocRequestParams struct {
 	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 }
 
 type BuildAPIDocRequest struct {
 	*tchttp.BaseRequest
 	
 	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 }
 
 func (r *BuildAPIDocRequest) ToJsonString() string {
@@ -1251,10 +1251,10 @@ func (r *BuildAPIDocRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BuildAPIDocResponseParams struct {
 	// 操作是否成功
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BuildAPIDocResponse struct {
@@ -1276,19 +1276,19 @@ func (r *BuildAPIDocResponse) FromJsonString(s string) error {
 type ConstantParameter struct {
 	// 常量参数名称。只有 ServiceType 是 HTTP 才会用到此参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 常量参数描述。只有 ServiceType 是 HTTP 才会用到此参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
 	// 常量参数位置。只有 ServiceType 是 HTTP 才会用到此参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Position *string `json:"Position,omitempty" name:"Position"`
+	Position *string `json:"Position,omitnil" name:"Position"`
 
 	// 常量参数默认值。只有 ServiceType 是 HTTP 才会用到此参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+	DefaultValue *string `json:"DefaultValue,omitnil" name:"DefaultValue"`
 }
 
 type CosConfig struct {
@@ -1299,15 +1299,15 @@ type CosConfig struct {
 	// HEAD： HeadObject
 	// DELETE： DeleteObject。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Action *string `json:"Action,omitempty" name:"Action"`
+	Action *string `json:"Action,omitnil" name:"Action"`
 
 	// API后端COS的存储桶名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitnil" name:"BucketName"`
 
 	// API调用后端COS的签名开关，默认为false。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Authorization *bool `json:"Authorization,omitempty" name:"Authorization"`
+	Authorization *bool `json:"Authorization,omitnil" name:"Authorization"`
 
 	// API后端COS的路径匹配模式，可选值：
 	// BackEndPath ： 后端路径匹配
@@ -1315,38 +1315,38 @@ type CosConfig struct {
 	// 
 	// 默认值为：BackEndPath
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PathMatchMode *string `json:"PathMatchMode,omitempty" name:"PathMatchMode"`
+	PathMatchMode *string `json:"PathMatchMode,omitnil" name:"PathMatchMode"`
 }
 
 // Predefined struct for user
 type CreateAPIDocRequestParams struct {
 	// API文档名称
-	ApiDocName *string `json:"ApiDocName,omitempty" name:"ApiDocName"`
+	ApiDocName *string `json:"ApiDocName,omitnil" name:"ApiDocName"`
 
 	// 服务名称
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 环境名称
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 生成文档的API列表
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 type CreateAPIDocRequest struct {
 	*tchttp.BaseRequest
 	
 	// API文档名称
-	ApiDocName *string `json:"ApiDocName,omitempty" name:"ApiDocName"`
+	ApiDocName *string `json:"ApiDocName,omitnil" name:"ApiDocName"`
 
 	// 服务名称
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 环境名称
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 生成文档的API列表
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 func (r *CreateAPIDocRequest) ToJsonString() string {
@@ -1374,10 +1374,10 @@ func (r *CreateAPIDocRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAPIDocResponseParams struct {
 	// API文档基本信息
-	Result *APIDoc `json:"Result,omitempty" name:"Result"`
+	Result *APIDoc `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAPIDocResponse struct {
@@ -1399,20 +1399,20 @@ func (r *CreateAPIDocResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateApiAppRequestParams struct {
 	// 用户自定义应用名称。
-	ApiAppName *string `json:"ApiAppName,omitempty" name:"ApiAppName"`
+	ApiAppName *string `json:"ApiAppName,omitnil" name:"ApiAppName"`
 
 	// 应用描述
-	ApiAppDesc *string `json:"ApiAppDesc,omitempty" name:"ApiAppDesc"`
+	ApiAppDesc *string `json:"ApiAppDesc,omitnil" name:"ApiAppDesc"`
 }
 
 type CreateApiAppRequest struct {
 	*tchttp.BaseRequest
 	
 	// 用户自定义应用名称。
-	ApiAppName *string `json:"ApiAppName,omitempty" name:"ApiAppName"`
+	ApiAppName *string `json:"ApiAppName,omitnil" name:"ApiAppName"`
 
 	// 应用描述
-	ApiAppDesc *string `json:"ApiAppDesc,omitempty" name:"ApiAppDesc"`
+	ApiAppDesc *string `json:"ApiAppDesc,omitnil" name:"ApiAppDesc"`
 }
 
 func (r *CreateApiAppRequest) ToJsonString() string {
@@ -1439,10 +1439,10 @@ func (r *CreateApiAppRequest) FromJsonString(s string) error {
 type CreateApiAppResponseParams struct {
 	// 新增的应用详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ApiAppInfo `json:"Result,omitempty" name:"Result"`
+	Result *ApiAppInfo `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateApiAppResponse struct {
@@ -1464,32 +1464,32 @@ func (r *CreateApiAppResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateApiKeyRequestParams struct {
 	// 用户自定义密钥名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 密钥类型，支持 auto 和 manual（自定义密钥），默认为 auto。
-	AccessKeyType *string `json:"AccessKeyType,omitempty" name:"AccessKeyType"`
+	AccessKeyType *string `json:"AccessKeyType,omitnil" name:"AccessKeyType"`
 
 	// 用户自定义密钥 ID，AccessKeyType 为 manual 时必传。长度为5 - 50字符，由字母、数字、英文下划线组成。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 
 	// 用户自定义密钥 Key，AccessKeyType 为 manual 时必传。长度为10 - 50字符，由字母、数字、英文下划线。
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" name:"AccessKeySecret"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitnil" name:"AccessKeySecret"`
 }
 
 type CreateApiKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 用户自定义密钥名称。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 密钥类型，支持 auto 和 manual（自定义密钥），默认为 auto。
-	AccessKeyType *string `json:"AccessKeyType,omitempty" name:"AccessKeyType"`
+	AccessKeyType *string `json:"AccessKeyType,omitnil" name:"AccessKeyType"`
 
 	// 用户自定义密钥 ID，AccessKeyType 为 manual 时必传。长度为5 - 50字符，由字母、数字、英文下划线组成。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 
 	// 用户自定义密钥 Key，AccessKeyType 为 manual 时必传。长度为10 - 50字符，由字母、数字、英文下划线。
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" name:"AccessKeySecret"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitnil" name:"AccessKeySecret"`
 }
 
 func (r *CreateApiKeyRequest) ToJsonString() string {
@@ -1518,10 +1518,10 @@ func (r *CreateApiKeyRequest) FromJsonString(s string) error {
 type CreateApiKeyResponseParams struct {
 	// 新增的密钥详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ApiKey `json:"Result,omitempty" name:"Result"`
+	Result *ApiKey `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateApiKeyResponse struct {
@@ -1543,326 +1543,326 @@ func (r *CreateApiKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateApiRequestParams struct {
 	// API 所在的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 的后端服务类型。支持HTTP、MOCK、TSF、SCF、EB、TARGET、VPC、UPSTREAM、GRPC、COS、WEBSOCKET。
-	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
 
 	// API 的后端服务超时时间，单位是秒。
-	ServiceTimeout *int64 `json:"ServiceTimeout,omitempty" name:"ServiceTimeout"`
+	ServiceTimeout *int64 `json:"ServiceTimeout,omitnil" name:"ServiceTimeout"`
 
 	// API 的前端请求协议，支持HTTP和WEBSOCKET。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 请求的前端配置。
-	RequestConfig *ApiRequestConfig `json:"RequestConfig,omitempty" name:"RequestConfig"`
+	RequestConfig *ApiRequestConfig `json:"RequestConfig,omitnil" name:"RequestConfig"`
 
 	// 用户自定义的 API 名称。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// 用户自定义的 API 接口描述。
-	ApiDesc *string `json:"ApiDesc,omitempty" name:"ApiDesc"`
+	ApiDesc *string `json:"ApiDesc,omitnil" name:"ApiDesc"`
 
 	// API 类型，支持NORMAL（普通API）和TSF（微服务API），默认为NORMAL。
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 
 	// API 鉴权类型。支持SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、APP（应用认证）。默认为NONE。
-	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+	AuthType *string `json:"AuthType,omitnil" name:"AuthType"`
 
 	// 是否开启跨域。
-	EnableCORS *bool `json:"EnableCORS,omitempty" name:"EnableCORS"`
+	EnableCORS *bool `json:"EnableCORS,omitnil" name:"EnableCORS"`
 
 	// 常量参数。
-	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitempty" name:"ConstantParameters"`
+	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitnil" name:"ConstantParameters"`
 
 	// 前端请求参数。
-	RequestParameters []*RequestParameter `json:"RequestParameters,omitempty" name:"RequestParameters"`
+	RequestParameters []*RequestParameter `json:"RequestParameters,omitnil" name:"RequestParameters"`
 
 	// 当AuthType 为 OAUTH时，该字段有效， NORMAL：业务api OAUTH：授权API。
-	ApiBusinessType *string `json:"ApiBusinessType,omitempty" name:"ApiBusinessType"`
+	ApiBusinessType *string `json:"ApiBusinessType,omitnil" name:"ApiBusinessType"`
 
 	// API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
-	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitempty" name:"ServiceMockReturnMessage"`
+	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitnil" name:"ServiceMockReturnMessage"`
 
 	// API绑定微服务列表。
-	MicroServices []*MicroServiceReq `json:"MicroServices,omitempty" name:"MicroServices"`
+	MicroServices []*MicroServiceReq `json:"MicroServices,omitnil" name:"MicroServices"`
 
 	// 微服务的负载均衡配置。
-	ServiceTsfLoadBalanceConf *TsfLoadBalanceConfResp `json:"ServiceTsfLoadBalanceConf,omitempty" name:"ServiceTsfLoadBalanceConf"`
+	ServiceTsfLoadBalanceConf *TsfLoadBalanceConfResp `json:"ServiceTsfLoadBalanceConf,omitnil" name:"ServiceTsfLoadBalanceConf"`
 
 	// 微服务的健康检查配置。
-	ServiceTsfHealthCheckConf *HealthCheckConf `json:"ServiceTsfHealthCheckConf,omitempty" name:"ServiceTsfHealthCheckConf"`
+	ServiceTsfHealthCheckConf *HealthCheckConf `json:"ServiceTsfHealthCheckConf,omitnil" name:"ServiceTsfHealthCheckConf"`
 
 	// target类型后端资源信息。（内测阶段）
-	TargetServices []*TargetServicesReq `json:"TargetServices,omitempty" name:"TargetServices"`
+	TargetServices []*TargetServicesReq `json:"TargetServices,omitnil" name:"TargetServices"`
 
 	// target类型负载均衡配置。（内测阶段）
-	TargetServicesLoadBalanceConf *int64 `json:"TargetServicesLoadBalanceConf,omitempty" name:"TargetServicesLoadBalanceConf"`
+	TargetServicesLoadBalanceConf *int64 `json:"TargetServicesLoadBalanceConf,omitnil" name:"TargetServicesLoadBalanceConf"`
 
 	// target健康检查配置。（内测阶段）
-	TargetServicesHealthCheckConf *HealthCheckConf `json:"TargetServicesHealthCheckConf,omitempty" name:"TargetServicesHealthCheckConf"`
+	TargetServicesHealthCheckConf *HealthCheckConf `json:"TargetServicesHealthCheckConf,omitnil" name:"TargetServicesHealthCheckConf"`
 
 	// scf 函数名称。当后端类型是SCF时生效。
-	ServiceScfFunctionName *string `json:"ServiceScfFunctionName,omitempty" name:"ServiceScfFunctionName"`
+	ServiceScfFunctionName *string `json:"ServiceScfFunctionName,omitnil" name:"ServiceScfFunctionName"`
 
 	// scf websocket注册函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketRegisterFunctionName *string `json:"ServiceWebsocketRegisterFunctionName,omitempty" name:"ServiceWebsocketRegisterFunctionName"`
+	ServiceWebsocketRegisterFunctionName *string `json:"ServiceWebsocketRegisterFunctionName,omitnil" name:"ServiceWebsocketRegisterFunctionName"`
 
 	// scf websocket清理函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketCleanupFunctionName *string `json:"ServiceWebsocketCleanupFunctionName,omitempty" name:"ServiceWebsocketCleanupFunctionName"`
+	ServiceWebsocketCleanupFunctionName *string `json:"ServiceWebsocketCleanupFunctionName,omitnil" name:"ServiceWebsocketCleanupFunctionName"`
 
 	// scf websocket传输函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketTransportFunctionName *string `json:"ServiceWebsocketTransportFunctionName,omitempty" name:"ServiceWebsocketTransportFunctionName"`
+	ServiceWebsocketTransportFunctionName *string `json:"ServiceWebsocketTransportFunctionName,omitnil" name:"ServiceWebsocketTransportFunctionName"`
 
 	// scf 函数命名空间。当后端类型是SCF时生效。
-	ServiceScfFunctionNamespace *string `json:"ServiceScfFunctionNamespace,omitempty" name:"ServiceScfFunctionNamespace"`
+	ServiceScfFunctionNamespace *string `json:"ServiceScfFunctionNamespace,omitnil" name:"ServiceScfFunctionNamespace"`
 
 	// scf函数版本。当后端类型是SCF时生效。
-	ServiceScfFunctionQualifier *string `json:"ServiceScfFunctionQualifier,omitempty" name:"ServiceScfFunctionQualifier"`
+	ServiceScfFunctionQualifier *string `json:"ServiceScfFunctionQualifier,omitnil" name:"ServiceScfFunctionQualifier"`
 
 	// scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketRegisterFunctionNamespace *string `json:"ServiceWebsocketRegisterFunctionNamespace,omitempty" name:"ServiceWebsocketRegisterFunctionNamespace"`
+	ServiceWebsocketRegisterFunctionNamespace *string `json:"ServiceWebsocketRegisterFunctionNamespace,omitnil" name:"ServiceWebsocketRegisterFunctionNamespace"`
 
 	// scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketRegisterFunctionQualifier *string `json:"ServiceWebsocketRegisterFunctionQualifier,omitempty" name:"ServiceWebsocketRegisterFunctionQualifier"`
+	ServiceWebsocketRegisterFunctionQualifier *string `json:"ServiceWebsocketRegisterFunctionQualifier,omitnil" name:"ServiceWebsocketRegisterFunctionQualifier"`
 
 	// scf websocket传输函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketTransportFunctionNamespace *string `json:"ServiceWebsocketTransportFunctionNamespace,omitempty" name:"ServiceWebsocketTransportFunctionNamespace"`
+	ServiceWebsocketTransportFunctionNamespace *string `json:"ServiceWebsocketTransportFunctionNamespace,omitnil" name:"ServiceWebsocketTransportFunctionNamespace"`
 
 	// scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketTransportFunctionQualifier *string `json:"ServiceWebsocketTransportFunctionQualifier,omitempty" name:"ServiceWebsocketTransportFunctionQualifier"`
+	ServiceWebsocketTransportFunctionQualifier *string `json:"ServiceWebsocketTransportFunctionQualifier,omitnil" name:"ServiceWebsocketTransportFunctionQualifier"`
 
 	// scf websocket清理函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketCleanupFunctionNamespace *string `json:"ServiceWebsocketCleanupFunctionNamespace,omitempty" name:"ServiceWebsocketCleanupFunctionNamespace"`
+	ServiceWebsocketCleanupFunctionNamespace *string `json:"ServiceWebsocketCleanupFunctionNamespace,omitnil" name:"ServiceWebsocketCleanupFunctionNamespace"`
 
 	// scf websocket清理函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketCleanupFunctionQualifier *string `json:"ServiceWebsocketCleanupFunctionQualifier,omitempty" name:"ServiceWebsocketCleanupFunctionQualifier"`
+	ServiceWebsocketCleanupFunctionQualifier *string `json:"ServiceWebsocketCleanupFunctionQualifier,omitnil" name:"ServiceWebsocketCleanupFunctionQualifier"`
 
 	// 是否开启响应集成。当后端类型是SCF时生效。
-	ServiceScfIsIntegratedResponse *bool `json:"ServiceScfIsIntegratedResponse,omitempty" name:"ServiceScfIsIntegratedResponse"`
+	ServiceScfIsIntegratedResponse *bool `json:"ServiceScfIsIntegratedResponse,omitnil" name:"ServiceScfIsIntegratedResponse"`
 
 	// 开始调试后计费。（云市场预留字段）
-	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitempty" name:"IsDebugAfterCharge"`
+	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitnil" name:"IsDebugAfterCharge"`
 
 	// 是否删除自定义响应配置错误码，如果不传或者传 False，不删除，当传 True 时，则删除此 API 所有自定义响应配置错误码。
-	IsDeleteResponseErrorCodes *bool `json:"IsDeleteResponseErrorCodes,omitempty" name:"IsDeleteResponseErrorCodes"`
+	IsDeleteResponseErrorCodes *bool `json:"IsDeleteResponseErrorCodes,omitnil" name:"IsDeleteResponseErrorCodes"`
 
 	// 返回类型。
-	ResponseType *string `json:"ResponseType,omitempty" name:"ResponseType"`
+	ResponseType *string `json:"ResponseType,omitnil" name:"ResponseType"`
 
 	// 自定义响应配置成功响应示例。
-	ResponseSuccessExample *string `json:"ResponseSuccessExample,omitempty" name:"ResponseSuccessExample"`
+	ResponseSuccessExample *string `json:"ResponseSuccessExample,omitnil" name:"ResponseSuccessExample"`
 
 	// 自定义响应配置失败响应示例。
-	ResponseFailExample *string `json:"ResponseFailExample,omitempty" name:"ResponseFailExample"`
+	ResponseFailExample *string `json:"ResponseFailExample,omitnil" name:"ResponseFailExample"`
 
 	// API 的后端服务配置。
-	ServiceConfig *ServiceConfig `json:"ServiceConfig,omitempty" name:"ServiceConfig"`
+	ServiceConfig *ServiceConfig `json:"ServiceConfig,omitnil" name:"ServiceConfig"`
 
 	// 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。
-	AuthRelationApiId *string `json:"AuthRelationApiId,omitempty" name:"AuthRelationApiId"`
+	AuthRelationApiId *string `json:"AuthRelationApiId,omitnil" name:"AuthRelationApiId"`
 
 	// API的后端服务参数。
-	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitempty" name:"ServiceParameters"`
+	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitnil" name:"ServiceParameters"`
 
 	// oauth配置。当AuthType是OAUTH时生效。
-	OauthConfig *OauthConfig `json:"OauthConfig,omitempty" name:"OauthConfig"`
+	OauthConfig *OauthConfig `json:"OauthConfig,omitnil" name:"OauthConfig"`
 
 	// 用户自定义错误码配置。
-	ResponseErrorCodes []*ResponseErrorCodeReq `json:"ResponseErrorCodes,omitempty" name:"ResponseErrorCodes"`
+	ResponseErrorCodes []*ResponseErrorCodeReq `json:"ResponseErrorCodes,omitnil" name:"ResponseErrorCodes"`
 
 	// tsf serverless 命名空间ID。（内测中）
-	TargetNamespaceId *string `json:"TargetNamespaceId,omitempty" name:"TargetNamespaceId"`
+	TargetNamespaceId *string `json:"TargetNamespaceId,omitnil" name:"TargetNamespaceId"`
 
 	// 用户类型。
-	UserType *string `json:"UserType,omitempty" name:"UserType"`
+	UserType *string `json:"UserType,omitnil" name:"UserType"`
 
 	// 是否打开Base64编码，只有后端是scf时才会生效。
-	IsBase64Encoded *bool `json:"IsBase64Encoded,omitempty" name:"IsBase64Encoded"`
+	IsBase64Encoded *bool `json:"IsBase64Encoded,omitnil" name:"IsBase64Encoded"`
 
 	// 事件总线ID。
-	EventBusId *string `json:"EventBusId,omitempty" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
 
 	// scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
-	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitempty" name:"ServiceScfFunctionType"`
+	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitnil" name:"ServiceScfFunctionType"`
 
 	// EIAM应用类型。
-	EIAMAppType *string `json:"EIAMAppType,omitempty" name:"EIAMAppType"`
+	EIAMAppType *string `json:"EIAMAppType,omitnil" name:"EIAMAppType"`
 
 	// EIAM应用认证类型，支持仅认证（AuthenticationOnly）、认证和鉴权（Authorization）。
-	EIAMAuthType *string `json:"EIAMAuthType,omitempty" name:"EIAMAuthType"`
+	EIAMAuthType *string `json:"EIAMAuthType,omitnil" name:"EIAMAuthType"`
 
 	// EIAM应用Token 有效时间，单位为秒，默认为7200秒。
-	TokenTimeout *int64 `json:"TokenTimeout,omitempty" name:"TokenTimeout"`
+	TokenTimeout *int64 `json:"TokenTimeout,omitnil" name:"TokenTimeout"`
 
 	// EIAM应用ID。
-	EIAMAppId *string `json:"EIAMAppId,omitempty" name:"EIAMAppId"`
+	EIAMAppId *string `json:"EIAMAppId,omitnil" name:"EIAMAppId"`
 
 	// 资源的Owner
-	Owner *string `json:"Owner,omitempty" name:"Owner"`
+	Owner *string `json:"Owner,omitnil" name:"Owner"`
 }
 
 type CreateApiRequest struct {
 	*tchttp.BaseRequest
 	
 	// API 所在的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 的后端服务类型。支持HTTP、MOCK、TSF、SCF、EB、TARGET、VPC、UPSTREAM、GRPC、COS、WEBSOCKET。
-	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
 
 	// API 的后端服务超时时间，单位是秒。
-	ServiceTimeout *int64 `json:"ServiceTimeout,omitempty" name:"ServiceTimeout"`
+	ServiceTimeout *int64 `json:"ServiceTimeout,omitnil" name:"ServiceTimeout"`
 
 	// API 的前端请求协议，支持HTTP和WEBSOCKET。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 请求的前端配置。
-	RequestConfig *ApiRequestConfig `json:"RequestConfig,omitempty" name:"RequestConfig"`
+	RequestConfig *ApiRequestConfig `json:"RequestConfig,omitnil" name:"RequestConfig"`
 
 	// 用户自定义的 API 名称。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// 用户自定义的 API 接口描述。
-	ApiDesc *string `json:"ApiDesc,omitempty" name:"ApiDesc"`
+	ApiDesc *string `json:"ApiDesc,omitnil" name:"ApiDesc"`
 
 	// API 类型，支持NORMAL（普通API）和TSF（微服务API），默认为NORMAL。
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 
 	// API 鉴权类型。支持SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、APP（应用认证）。默认为NONE。
-	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+	AuthType *string `json:"AuthType,omitnil" name:"AuthType"`
 
 	// 是否开启跨域。
-	EnableCORS *bool `json:"EnableCORS,omitempty" name:"EnableCORS"`
+	EnableCORS *bool `json:"EnableCORS,omitnil" name:"EnableCORS"`
 
 	// 常量参数。
-	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitempty" name:"ConstantParameters"`
+	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitnil" name:"ConstantParameters"`
 
 	// 前端请求参数。
-	RequestParameters []*RequestParameter `json:"RequestParameters,omitempty" name:"RequestParameters"`
+	RequestParameters []*RequestParameter `json:"RequestParameters,omitnil" name:"RequestParameters"`
 
 	// 当AuthType 为 OAUTH时，该字段有效， NORMAL：业务api OAUTH：授权API。
-	ApiBusinessType *string `json:"ApiBusinessType,omitempty" name:"ApiBusinessType"`
+	ApiBusinessType *string `json:"ApiBusinessType,omitnil" name:"ApiBusinessType"`
 
 	// API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
-	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitempty" name:"ServiceMockReturnMessage"`
+	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitnil" name:"ServiceMockReturnMessage"`
 
 	// API绑定微服务列表。
-	MicroServices []*MicroServiceReq `json:"MicroServices,omitempty" name:"MicroServices"`
+	MicroServices []*MicroServiceReq `json:"MicroServices,omitnil" name:"MicroServices"`
 
 	// 微服务的负载均衡配置。
-	ServiceTsfLoadBalanceConf *TsfLoadBalanceConfResp `json:"ServiceTsfLoadBalanceConf,omitempty" name:"ServiceTsfLoadBalanceConf"`
+	ServiceTsfLoadBalanceConf *TsfLoadBalanceConfResp `json:"ServiceTsfLoadBalanceConf,omitnil" name:"ServiceTsfLoadBalanceConf"`
 
 	// 微服务的健康检查配置。
-	ServiceTsfHealthCheckConf *HealthCheckConf `json:"ServiceTsfHealthCheckConf,omitempty" name:"ServiceTsfHealthCheckConf"`
+	ServiceTsfHealthCheckConf *HealthCheckConf `json:"ServiceTsfHealthCheckConf,omitnil" name:"ServiceTsfHealthCheckConf"`
 
 	// target类型后端资源信息。（内测阶段）
-	TargetServices []*TargetServicesReq `json:"TargetServices,omitempty" name:"TargetServices"`
+	TargetServices []*TargetServicesReq `json:"TargetServices,omitnil" name:"TargetServices"`
 
 	// target类型负载均衡配置。（内测阶段）
-	TargetServicesLoadBalanceConf *int64 `json:"TargetServicesLoadBalanceConf,omitempty" name:"TargetServicesLoadBalanceConf"`
+	TargetServicesLoadBalanceConf *int64 `json:"TargetServicesLoadBalanceConf,omitnil" name:"TargetServicesLoadBalanceConf"`
 
 	// target健康检查配置。（内测阶段）
-	TargetServicesHealthCheckConf *HealthCheckConf `json:"TargetServicesHealthCheckConf,omitempty" name:"TargetServicesHealthCheckConf"`
+	TargetServicesHealthCheckConf *HealthCheckConf `json:"TargetServicesHealthCheckConf,omitnil" name:"TargetServicesHealthCheckConf"`
 
 	// scf 函数名称。当后端类型是SCF时生效。
-	ServiceScfFunctionName *string `json:"ServiceScfFunctionName,omitempty" name:"ServiceScfFunctionName"`
+	ServiceScfFunctionName *string `json:"ServiceScfFunctionName,omitnil" name:"ServiceScfFunctionName"`
 
 	// scf websocket注册函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketRegisterFunctionName *string `json:"ServiceWebsocketRegisterFunctionName,omitempty" name:"ServiceWebsocketRegisterFunctionName"`
+	ServiceWebsocketRegisterFunctionName *string `json:"ServiceWebsocketRegisterFunctionName,omitnil" name:"ServiceWebsocketRegisterFunctionName"`
 
 	// scf websocket清理函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketCleanupFunctionName *string `json:"ServiceWebsocketCleanupFunctionName,omitempty" name:"ServiceWebsocketCleanupFunctionName"`
+	ServiceWebsocketCleanupFunctionName *string `json:"ServiceWebsocketCleanupFunctionName,omitnil" name:"ServiceWebsocketCleanupFunctionName"`
 
 	// scf websocket传输函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketTransportFunctionName *string `json:"ServiceWebsocketTransportFunctionName,omitempty" name:"ServiceWebsocketTransportFunctionName"`
+	ServiceWebsocketTransportFunctionName *string `json:"ServiceWebsocketTransportFunctionName,omitnil" name:"ServiceWebsocketTransportFunctionName"`
 
 	// scf 函数命名空间。当后端类型是SCF时生效。
-	ServiceScfFunctionNamespace *string `json:"ServiceScfFunctionNamespace,omitempty" name:"ServiceScfFunctionNamespace"`
+	ServiceScfFunctionNamespace *string `json:"ServiceScfFunctionNamespace,omitnil" name:"ServiceScfFunctionNamespace"`
 
 	// scf函数版本。当后端类型是SCF时生效。
-	ServiceScfFunctionQualifier *string `json:"ServiceScfFunctionQualifier,omitempty" name:"ServiceScfFunctionQualifier"`
+	ServiceScfFunctionQualifier *string `json:"ServiceScfFunctionQualifier,omitnil" name:"ServiceScfFunctionQualifier"`
 
 	// scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketRegisterFunctionNamespace *string `json:"ServiceWebsocketRegisterFunctionNamespace,omitempty" name:"ServiceWebsocketRegisterFunctionNamespace"`
+	ServiceWebsocketRegisterFunctionNamespace *string `json:"ServiceWebsocketRegisterFunctionNamespace,omitnil" name:"ServiceWebsocketRegisterFunctionNamespace"`
 
 	// scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketRegisterFunctionQualifier *string `json:"ServiceWebsocketRegisterFunctionQualifier,omitempty" name:"ServiceWebsocketRegisterFunctionQualifier"`
+	ServiceWebsocketRegisterFunctionQualifier *string `json:"ServiceWebsocketRegisterFunctionQualifier,omitnil" name:"ServiceWebsocketRegisterFunctionQualifier"`
 
 	// scf websocket传输函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketTransportFunctionNamespace *string `json:"ServiceWebsocketTransportFunctionNamespace,omitempty" name:"ServiceWebsocketTransportFunctionNamespace"`
+	ServiceWebsocketTransportFunctionNamespace *string `json:"ServiceWebsocketTransportFunctionNamespace,omitnil" name:"ServiceWebsocketTransportFunctionNamespace"`
 
 	// scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketTransportFunctionQualifier *string `json:"ServiceWebsocketTransportFunctionQualifier,omitempty" name:"ServiceWebsocketTransportFunctionQualifier"`
+	ServiceWebsocketTransportFunctionQualifier *string `json:"ServiceWebsocketTransportFunctionQualifier,omitnil" name:"ServiceWebsocketTransportFunctionQualifier"`
 
 	// scf websocket清理函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketCleanupFunctionNamespace *string `json:"ServiceWebsocketCleanupFunctionNamespace,omitempty" name:"ServiceWebsocketCleanupFunctionNamespace"`
+	ServiceWebsocketCleanupFunctionNamespace *string `json:"ServiceWebsocketCleanupFunctionNamespace,omitnil" name:"ServiceWebsocketCleanupFunctionNamespace"`
 
 	// scf websocket清理函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketCleanupFunctionQualifier *string `json:"ServiceWebsocketCleanupFunctionQualifier,omitempty" name:"ServiceWebsocketCleanupFunctionQualifier"`
+	ServiceWebsocketCleanupFunctionQualifier *string `json:"ServiceWebsocketCleanupFunctionQualifier,omitnil" name:"ServiceWebsocketCleanupFunctionQualifier"`
 
 	// 是否开启响应集成。当后端类型是SCF时生效。
-	ServiceScfIsIntegratedResponse *bool `json:"ServiceScfIsIntegratedResponse,omitempty" name:"ServiceScfIsIntegratedResponse"`
+	ServiceScfIsIntegratedResponse *bool `json:"ServiceScfIsIntegratedResponse,omitnil" name:"ServiceScfIsIntegratedResponse"`
 
 	// 开始调试后计费。（云市场预留字段）
-	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitempty" name:"IsDebugAfterCharge"`
+	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitnil" name:"IsDebugAfterCharge"`
 
 	// 是否删除自定义响应配置错误码，如果不传或者传 False，不删除，当传 True 时，则删除此 API 所有自定义响应配置错误码。
-	IsDeleteResponseErrorCodes *bool `json:"IsDeleteResponseErrorCodes,omitempty" name:"IsDeleteResponseErrorCodes"`
+	IsDeleteResponseErrorCodes *bool `json:"IsDeleteResponseErrorCodes,omitnil" name:"IsDeleteResponseErrorCodes"`
 
 	// 返回类型。
-	ResponseType *string `json:"ResponseType,omitempty" name:"ResponseType"`
+	ResponseType *string `json:"ResponseType,omitnil" name:"ResponseType"`
 
 	// 自定义响应配置成功响应示例。
-	ResponseSuccessExample *string `json:"ResponseSuccessExample,omitempty" name:"ResponseSuccessExample"`
+	ResponseSuccessExample *string `json:"ResponseSuccessExample,omitnil" name:"ResponseSuccessExample"`
 
 	// 自定义响应配置失败响应示例。
-	ResponseFailExample *string `json:"ResponseFailExample,omitempty" name:"ResponseFailExample"`
+	ResponseFailExample *string `json:"ResponseFailExample,omitnil" name:"ResponseFailExample"`
 
 	// API 的后端服务配置。
-	ServiceConfig *ServiceConfig `json:"ServiceConfig,omitempty" name:"ServiceConfig"`
+	ServiceConfig *ServiceConfig `json:"ServiceConfig,omitnil" name:"ServiceConfig"`
 
 	// 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。
-	AuthRelationApiId *string `json:"AuthRelationApiId,omitempty" name:"AuthRelationApiId"`
+	AuthRelationApiId *string `json:"AuthRelationApiId,omitnil" name:"AuthRelationApiId"`
 
 	// API的后端服务参数。
-	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitempty" name:"ServiceParameters"`
+	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitnil" name:"ServiceParameters"`
 
 	// oauth配置。当AuthType是OAUTH时生效。
-	OauthConfig *OauthConfig `json:"OauthConfig,omitempty" name:"OauthConfig"`
+	OauthConfig *OauthConfig `json:"OauthConfig,omitnil" name:"OauthConfig"`
 
 	// 用户自定义错误码配置。
-	ResponseErrorCodes []*ResponseErrorCodeReq `json:"ResponseErrorCodes,omitempty" name:"ResponseErrorCodes"`
+	ResponseErrorCodes []*ResponseErrorCodeReq `json:"ResponseErrorCodes,omitnil" name:"ResponseErrorCodes"`
 
 	// tsf serverless 命名空间ID。（内测中）
-	TargetNamespaceId *string `json:"TargetNamespaceId,omitempty" name:"TargetNamespaceId"`
+	TargetNamespaceId *string `json:"TargetNamespaceId,omitnil" name:"TargetNamespaceId"`
 
 	// 用户类型。
-	UserType *string `json:"UserType,omitempty" name:"UserType"`
+	UserType *string `json:"UserType,omitnil" name:"UserType"`
 
 	// 是否打开Base64编码，只有后端是scf时才会生效。
-	IsBase64Encoded *bool `json:"IsBase64Encoded,omitempty" name:"IsBase64Encoded"`
+	IsBase64Encoded *bool `json:"IsBase64Encoded,omitnil" name:"IsBase64Encoded"`
 
 	// 事件总线ID。
-	EventBusId *string `json:"EventBusId,omitempty" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
 
 	// scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
-	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitempty" name:"ServiceScfFunctionType"`
+	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitnil" name:"ServiceScfFunctionType"`
 
 	// EIAM应用类型。
-	EIAMAppType *string `json:"EIAMAppType,omitempty" name:"EIAMAppType"`
+	EIAMAppType *string `json:"EIAMAppType,omitnil" name:"EIAMAppType"`
 
 	// EIAM应用认证类型，支持仅认证（AuthenticationOnly）、认证和鉴权（Authorization）。
-	EIAMAuthType *string `json:"EIAMAuthType,omitempty" name:"EIAMAuthType"`
+	EIAMAuthType *string `json:"EIAMAuthType,omitnil" name:"EIAMAuthType"`
 
 	// EIAM应用Token 有效时间，单位为秒，默认为7200秒。
-	TokenTimeout *int64 `json:"TokenTimeout,omitempty" name:"TokenTimeout"`
+	TokenTimeout *int64 `json:"TokenTimeout,omitnil" name:"TokenTimeout"`
 
 	// EIAM应用ID。
-	EIAMAppId *string `json:"EIAMAppId,omitempty" name:"EIAMAppId"`
+	EIAMAppId *string `json:"EIAMAppId,omitnil" name:"EIAMAppId"`
 
 	// 资源的Owner
-	Owner *string `json:"Owner,omitempty" name:"Owner"`
+	Owner *string `json:"Owner,omitnil" name:"Owner"`
 }
 
 func (r *CreateApiRequest) ToJsonString() string {
@@ -1940,10 +1940,10 @@ func (r *CreateApiRequest) FromJsonString(s string) error {
 type CreateApiResponseParams struct {
 	// api信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *CreateApiResultInfo `json:"Result,omitempty" name:"Result"`
+	Result *CreateApiResultInfo `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateApiResponse struct {
@@ -1965,88 +1965,88 @@ func (r *CreateApiResponse) FromJsonString(s string) error {
 type CreateApiResultInfo struct {
 	// api id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// 请求方法
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 }
 
 type CreateApiRsp struct {
 	// api id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// 请求方法
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 导入状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 异常信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+	ErrMsg *string `json:"ErrMsg,omitnil" name:"ErrMsg"`
 
 	// api name
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 }
 
 type CreateApiRspSet struct {
 	// 个数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 返回的数组
-	ApiSet []*CreateApiRsp `json:"ApiSet,omitempty" name:"ApiSet"`
+	ApiSet []*CreateApiRsp `json:"ApiSet,omitnil" name:"ApiSet"`
 }
 
 // Predefined struct for user
 type CreateIPStrategyRequestParams struct {
 	// 服务的唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 用户自定义的策略名称。
-	StrategyName *string `json:"StrategyName,omitempty" name:"StrategyName"`
+	StrategyName *string `json:"StrategyName,omitnil" name:"StrategyName"`
 
 	// 策略类型。支持WHITE（白名单）和BLACK（黑名单）。
-	StrategyType *string `json:"StrategyType,omitempty" name:"StrategyType"`
+	StrategyType *string `json:"StrategyType,omitnil" name:"StrategyType"`
 
 	// 策略详情，多个ip 使用\n 分隔符分开。
-	StrategyData *string `json:"StrategyData,omitempty" name:"StrategyData"`
+	StrategyData *string `json:"StrategyData,omitnil" name:"StrategyData"`
 }
 
 type CreateIPStrategyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务的唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 用户自定义的策略名称。
-	StrategyName *string `json:"StrategyName,omitempty" name:"StrategyName"`
+	StrategyName *string `json:"StrategyName,omitnil" name:"StrategyName"`
 
 	// 策略类型。支持WHITE（白名单）和BLACK（黑名单）。
-	StrategyType *string `json:"StrategyType,omitempty" name:"StrategyType"`
+	StrategyType *string `json:"StrategyType,omitnil" name:"StrategyType"`
 
 	// 策略详情，多个ip 使用\n 分隔符分开。
-	StrategyData *string `json:"StrategyData,omitempty" name:"StrategyData"`
+	StrategyData *string `json:"StrategyData,omitnil" name:"StrategyData"`
 }
 
 func (r *CreateIPStrategyRequest) ToJsonString() string {
@@ -2075,10 +2075,10 @@ func (r *CreateIPStrategyRequest) FromJsonString(s string) error {
 type CreateIPStrategyResponseParams struct {
 	// 新建的IP策略详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *IPStrategy `json:"Result,omitempty" name:"Result"`
+	Result *IPStrategy `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateIPStrategyResponse struct {
@@ -2100,38 +2100,38 @@ func (r *CreateIPStrategyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePluginRequestParams struct {
 	// 用户自定义的插件名称。最长50个字符，最短2个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
-	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+	PluginName *string `json:"PluginName,omitnil" name:"PluginName"`
 
 	// 插件类型。目前支持IPControl, TrafficControl, Cors, CustomReq, CustomAuth，Routing，TrafficControlByParameter, CircuitBreaker, ProxyCache。
-	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
+	PluginType *string `json:"PluginType,omitnil" name:"PluginType"`
 
 	// 插件定义语句，支持json。
-	PluginData *string `json:"PluginData,omitempty" name:"PluginData"`
+	PluginData *string `json:"PluginData,omitnil" name:"PluginData"`
 
 	// 插件描述，限定200字以内。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 标签
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type CreatePluginRequest struct {
 	*tchttp.BaseRequest
 	
 	// 用户自定义的插件名称。最长50个字符，最短2个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
-	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+	PluginName *string `json:"PluginName,omitnil" name:"PluginName"`
 
 	// 插件类型。目前支持IPControl, TrafficControl, Cors, CustomReq, CustomAuth，Routing，TrafficControlByParameter, CircuitBreaker, ProxyCache。
-	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
+	PluginType *string `json:"PluginType,omitnil" name:"PluginType"`
 
 	// 插件定义语句，支持json。
-	PluginData *string `json:"PluginData,omitempty" name:"PluginData"`
+	PluginData *string `json:"PluginData,omitnil" name:"PluginData"`
 
 	// 插件描述，限定200字以内。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 标签
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *CreatePluginRequest) ToJsonString() string {
@@ -2160,10 +2160,10 @@ func (r *CreatePluginRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePluginResponseParams struct {
 	// 新建的插件详情。
-	Result *Plugin `json:"Result,omitempty" name:"Result"`
+	Result *Plugin `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreatePluginResponse struct {
@@ -2185,68 +2185,68 @@ func (r *CreatePluginResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateServiceRequestParams struct {
 	// 用户自定义的服务名称。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// 服务的前端请求类型。如 http、https、http&https。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 用户自定义的服务描述。
-	ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
+	ServiceDesc *string `json:"ServiceDesc,omitnil" name:"ServiceDesc"`
 
 	// 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
-	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
+	NetTypes []*string `json:"NetTypes,omitnil" name:"NetTypes"`
 
 	// IP版本号，支持IPv4和IPv6，默认为IPv4。
-	IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
+	IpVersion *string `json:"IpVersion,omitnil" name:"IpVersion"`
 
 	// 集群名称。保留字段，tsf serverless类型使用。
-	SetServerName *string `json:"SetServerName,omitempty" name:"SetServerName"`
+	SetServerName *string `json:"SetServerName,omitnil" name:"SetServerName"`
 
 	// 用户类型。保留类型，serverless用户使用。
-	AppIdType *string `json:"AppIdType,omitempty" name:"AppIdType"`
+	AppIdType *string `json:"AppIdType,omitnil" name:"AppIdType"`
 
 	// 标签。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 独享实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// vpc属性，选择VPC后不可修改，为服务选择VPC后，可对接该VPC下的后端资源
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 }
 
 type CreateServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 用户自定义的服务名称。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// 服务的前端请求类型。如 http、https、http&https。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 用户自定义的服务描述。
-	ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
+	ServiceDesc *string `json:"ServiceDesc,omitnil" name:"ServiceDesc"`
 
 	// 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
-	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
+	NetTypes []*string `json:"NetTypes,omitnil" name:"NetTypes"`
 
 	// IP版本号，支持IPv4和IPv6，默认为IPv4。
-	IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
+	IpVersion *string `json:"IpVersion,omitnil" name:"IpVersion"`
 
 	// 集群名称。保留字段，tsf serverless类型使用。
-	SetServerName *string `json:"SetServerName,omitempty" name:"SetServerName"`
+	SetServerName *string `json:"SetServerName,omitnil" name:"SetServerName"`
 
 	// 用户类型。保留类型，serverless用户使用。
-	AppIdType *string `json:"AppIdType,omitempty" name:"AppIdType"`
+	AppIdType *string `json:"AppIdType,omitnil" name:"AppIdType"`
 
 	// 标签。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 独享实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// vpc属性，选择VPC后不可修改，为服务选择VPC后，可对接该VPC下的后端资源
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 }
 
 func (r *CreateServiceRequest) ToJsonString() string {
@@ -2280,32 +2280,32 @@ func (r *CreateServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateServiceResponseParams struct {
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 用户自定义服务名称。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// 用户自定义服务描述。
-	ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
+	ServiceDesc *string `json:"ServiceDesc,omitnil" name:"ServiceDesc"`
 
 	// 外网默认域名。
-	OuterSubDomain *string `json:"OuterSubDomain,omitempty" name:"OuterSubDomain"`
+	OuterSubDomain *string `json:"OuterSubDomain,omitnil" name:"OuterSubDomain"`
 
 	// vpc内网默认域名。
-	InnerSubDomain *string `json:"InnerSubDomain,omitempty" name:"InnerSubDomain"`
+	InnerSubDomain *string `json:"InnerSubDomain,omitnil" name:"InnerSubDomain"`
 
 	// 服务创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 网络类型列表，INNER为内网访问，OUTER为外网访问。
-	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
+	NetTypes []*string `json:"NetTypes,omitnil" name:"NetTypes"`
 
 	// IP版本号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
+	IpVersion *string `json:"IpVersion,omitnil" name:"IpVersion"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateServiceResponse struct {
@@ -2327,80 +2327,80 @@ func (r *CreateServiceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateUpstreamRequestParams struct {
 	// 后端协议，取值范围：HTTP, HTTPS,gRPC，gRPCs
-	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+	Scheme *string `json:"Scheme,omitnil" name:"Scheme"`
 
 	// 负载均衡算法，取值范围：ROUND-ROBIN
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// VPC唯一ID
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// 后端通道名字
-	UpstreamName *string `json:"UpstreamName,omitempty" name:"UpstreamName"`
+	UpstreamName *string `json:"UpstreamName,omitnil" name:"UpstreamName"`
 
 	// 后端通道描述
-	UpstreamDescription *string `json:"UpstreamDescription,omitempty" name:"UpstreamDescription"`
+	UpstreamDescription *string `json:"UpstreamDescription,omitnil" name:"UpstreamDescription"`
 
 	// 后端访问类型，取值范围：IP_PORT, K8S
-	UpstreamType *string `json:"UpstreamType,omitempty" name:"UpstreamType"`
+	UpstreamType *string `json:"UpstreamType,omitnil" name:"UpstreamType"`
 
 	// 请求重试次数，默认3次
-	Retries *uint64 `json:"Retries,omitempty" name:"Retries"`
+	Retries *uint64 `json:"Retries,omitnil" name:"Retries"`
 
 	// 网关转发到后端的Host请求头
-	UpstreamHost *string `json:"UpstreamHost,omitempty" name:"UpstreamHost"`
+	UpstreamHost *string `json:"UpstreamHost,omitnil" name:"UpstreamHost"`
 
 	// 后端节点
-	Nodes []*UpstreamNode `json:"Nodes,omitempty" name:"Nodes"`
+	Nodes []*UpstreamNode `json:"Nodes,omitnil" name:"Nodes"`
 
 	// 标签
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 健康检查配置，目前只支持VPC通道
-	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitempty" name:"HealthChecker"`
+	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitnil" name:"HealthChecker"`
 
 	// K8S容器服务的配置
-	K8sService []*K8sService `json:"K8sService,omitempty" name:"K8sService"`
+	K8sService []*K8sService `json:"K8sService,omitnil" name:"K8sService"`
 }
 
 type CreateUpstreamRequest struct {
 	*tchttp.BaseRequest
 	
 	// 后端协议，取值范围：HTTP, HTTPS,gRPC，gRPCs
-	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+	Scheme *string `json:"Scheme,omitnil" name:"Scheme"`
 
 	// 负载均衡算法，取值范围：ROUND-ROBIN
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// VPC唯一ID
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// 后端通道名字
-	UpstreamName *string `json:"UpstreamName,omitempty" name:"UpstreamName"`
+	UpstreamName *string `json:"UpstreamName,omitnil" name:"UpstreamName"`
 
 	// 后端通道描述
-	UpstreamDescription *string `json:"UpstreamDescription,omitempty" name:"UpstreamDescription"`
+	UpstreamDescription *string `json:"UpstreamDescription,omitnil" name:"UpstreamDescription"`
 
 	// 后端访问类型，取值范围：IP_PORT, K8S
-	UpstreamType *string `json:"UpstreamType,omitempty" name:"UpstreamType"`
+	UpstreamType *string `json:"UpstreamType,omitnil" name:"UpstreamType"`
 
 	// 请求重试次数，默认3次
-	Retries *uint64 `json:"Retries,omitempty" name:"Retries"`
+	Retries *uint64 `json:"Retries,omitnil" name:"Retries"`
 
 	// 网关转发到后端的Host请求头
-	UpstreamHost *string `json:"UpstreamHost,omitempty" name:"UpstreamHost"`
+	UpstreamHost *string `json:"UpstreamHost,omitnil" name:"UpstreamHost"`
 
 	// 后端节点
-	Nodes []*UpstreamNode `json:"Nodes,omitempty" name:"Nodes"`
+	Nodes []*UpstreamNode `json:"Nodes,omitnil" name:"Nodes"`
 
 	// 标签
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 健康检查配置，目前只支持VPC通道
-	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitempty" name:"HealthChecker"`
+	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitnil" name:"HealthChecker"`
 
 	// K8S容器服务的配置
-	K8sService []*K8sService `json:"K8sService,omitempty" name:"K8sService"`
+	K8sService []*K8sService `json:"K8sService,omitnil" name:"K8sService"`
 }
 
 func (r *CreateUpstreamRequest) ToJsonString() string {
@@ -2437,10 +2437,10 @@ func (r *CreateUpstreamRequest) FromJsonString(s string) error {
 type CreateUpstreamResponseParams struct {
 	// 创建返回的唯一ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+	UpstreamId *string `json:"UpstreamId,omitnil" name:"UpstreamId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateUpstreamResponse struct {
@@ -2462,32 +2462,32 @@ func (r *CreateUpstreamResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateUsagePlanRequestParams struct {
 	// 用户自定义的使用计划名称。
-	UsagePlanName *string `json:"UsagePlanName,omitempty" name:"UsagePlanName"`
+	UsagePlanName *string `json:"UsagePlanName,omitnil" name:"UsagePlanName"`
 
 	// 用户自定义的使用计划描述。
-	UsagePlanDesc *string `json:"UsagePlanDesc,omitempty" name:"UsagePlanDesc"`
+	UsagePlanDesc *string `json:"UsagePlanDesc,omitnil" name:"UsagePlanDesc"`
 
 	// 请求配额总数，取值范围为-1或者[1, 99999999]，默认为-1，表示不开启。
-	MaxRequestNum *int64 `json:"MaxRequestNum,omitempty" name:"MaxRequestNum"`
+	MaxRequestNum *int64 `json:"MaxRequestNum,omitnil" name:"MaxRequestNum"`
 
 	// 每秒请求限制数，取值范围为-1或者[1, 2000]，默认-1，表示不开启。
-	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitempty" name:"MaxRequestNumPreSec"`
+	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitnil" name:"MaxRequestNumPreSec"`
 }
 
 type CreateUsagePlanRequest struct {
 	*tchttp.BaseRequest
 	
 	// 用户自定义的使用计划名称。
-	UsagePlanName *string `json:"UsagePlanName,omitempty" name:"UsagePlanName"`
+	UsagePlanName *string `json:"UsagePlanName,omitnil" name:"UsagePlanName"`
 
 	// 用户自定义的使用计划描述。
-	UsagePlanDesc *string `json:"UsagePlanDesc,omitempty" name:"UsagePlanDesc"`
+	UsagePlanDesc *string `json:"UsagePlanDesc,omitnil" name:"UsagePlanDesc"`
 
 	// 请求配额总数，取值范围为-1或者[1, 99999999]，默认为-1，表示不开启。
-	MaxRequestNum *int64 `json:"MaxRequestNum,omitempty" name:"MaxRequestNum"`
+	MaxRequestNum *int64 `json:"MaxRequestNum,omitnil" name:"MaxRequestNum"`
 
 	// 每秒请求限制数，取值范围为-1或者[1, 2000]，默认-1，表示不开启。
-	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitempty" name:"MaxRequestNumPreSec"`
+	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitnil" name:"MaxRequestNumPreSec"`
 }
 
 func (r *CreateUsagePlanRequest) ToJsonString() string {
@@ -2516,10 +2516,10 @@ func (r *CreateUsagePlanRequest) FromJsonString(s string) error {
 type CreateUsagePlanResponseParams struct {
 	// 使用计划详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *UsagePlanInfo `json:"Result,omitempty" name:"Result"`
+	Result *UsagePlanInfo `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateUsagePlanResponse struct {
@@ -2541,14 +2541,14 @@ func (r *CreateUsagePlanResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAPIDocRequestParams struct {
 	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 }
 
 type DeleteAPIDocRequest struct {
 	*tchttp.BaseRequest
 	
 	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 }
 
 func (r *DeleteAPIDocRequest) ToJsonString() string {
@@ -2573,10 +2573,10 @@ func (r *DeleteAPIDocRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAPIDocResponseParams struct {
 	// 操作是否成功
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteAPIDocResponse struct {
@@ -2598,14 +2598,14 @@ func (r *DeleteAPIDocResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteApiAppRequestParams struct {
 	// 应用唯一 ID。
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 }
 
 type DeleteApiAppRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用唯一 ID。
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 }
 
 func (r *DeleteApiAppRequest) ToJsonString() string {
@@ -2631,10 +2631,10 @@ func (r *DeleteApiAppRequest) FromJsonString(s string) error {
 type DeleteApiAppResponseParams struct {
 	// 删除操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteApiAppResponse struct {
@@ -2656,14 +2656,14 @@ func (r *DeleteApiAppResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteApiKeyRequestParams struct {
 	// 待删除的密钥 ID。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 }
 
 type DeleteApiKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待删除的密钥 ID。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 }
 
 func (r *DeleteApiKeyRequest) ToJsonString() string {
@@ -2689,10 +2689,10 @@ func (r *DeleteApiKeyRequest) FromJsonString(s string) error {
 type DeleteApiKeyResponseParams struct {
 	// 删除操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteApiKeyResponse struct {
@@ -2714,20 +2714,20 @@ func (r *DeleteApiKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteApiRequestParams struct {
 	// API 所在的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 接口唯一 ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 }
 
 type DeleteApiRequest struct {
 	*tchttp.BaseRequest
 	
 	// API 所在的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 接口唯一 ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 }
 
 func (r *DeleteApiRequest) ToJsonString() string {
@@ -2754,10 +2754,10 @@ func (r *DeleteApiRequest) FromJsonString(s string) error {
 type DeleteApiResponseParams struct {
 	// 删除操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteApiResponse struct {
@@ -2779,20 +2779,20 @@ func (r *DeleteApiResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteIPStrategyRequestParams struct {
 	// 待删除的IP策略所属的服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待删除的IP策略唯一ID。
-	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
 }
 
 type DeleteIPStrategyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待删除的IP策略所属的服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待删除的IP策略唯一ID。
-	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
 }
 
 func (r *DeleteIPStrategyRequest) ToJsonString() string {
@@ -2819,10 +2819,10 @@ func (r *DeleteIPStrategyRequest) FromJsonString(s string) error {
 type DeleteIPStrategyResponseParams struct {
 	// 删除操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteIPStrategyResponse struct {
@@ -2844,14 +2844,14 @@ func (r *DeleteIPStrategyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePluginRequestParams struct {
 	// 要删除的API网关插件的ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 }
 
 type DeletePluginRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要删除的API网关插件的ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 }
 
 func (r *DeletePluginRequest) ToJsonString() string {
@@ -2876,10 +2876,10 @@ func (r *DeletePluginRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePluginResponseParams struct {
 	// 删除操作是否成功。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeletePluginResponse struct {
@@ -2901,20 +2901,20 @@ func (r *DeletePluginResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteServiceRequestParams struct {
 	// 待删除服务的唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 跳过删除前置条件校验（仅支持独享实例上的服务）
-	SkipVerification *int64 `json:"SkipVerification,omitempty" name:"SkipVerification"`
+	SkipVerification *int64 `json:"SkipVerification,omitnil" name:"SkipVerification"`
 }
 
 type DeleteServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待删除服务的唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 跳过删除前置条件校验（仅支持独享实例上的服务）
-	SkipVerification *int64 `json:"SkipVerification,omitempty" name:"SkipVerification"`
+	SkipVerification *int64 `json:"SkipVerification,omitnil" name:"SkipVerification"`
 }
 
 func (r *DeleteServiceRequest) ToJsonString() string {
@@ -2941,10 +2941,10 @@ func (r *DeleteServiceRequest) FromJsonString(s string) error {
 type DeleteServiceResponseParams struct {
 	// 删除操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteServiceResponse struct {
@@ -2966,26 +2966,26 @@ func (r *DeleteServiceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteServiceSubDomainMappingRequestParams struct {
 	// 服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 服务绑定的自定义域名。
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 
 	// 待删除映射的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 }
 
 type DeleteServiceSubDomainMappingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 服务绑定的自定义域名。
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 
 	// 待删除映射的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 }
 
 func (r *DeleteServiceSubDomainMappingRequest) ToJsonString() string {
@@ -3012,10 +3012,10 @@ func (r *DeleteServiceSubDomainMappingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteServiceSubDomainMappingResponseParams struct {
 	// 删除自定义域名的路径映射操作是否成功。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteServiceSubDomainMappingResponse struct {
@@ -3037,14 +3037,14 @@ func (r *DeleteServiceSubDomainMappingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteUpstreamRequestParams struct {
 	// 待删除的后端通道ID
-	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+	UpstreamId *string `json:"UpstreamId,omitnil" name:"UpstreamId"`
 }
 
 type DeleteUpstreamRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待删除的后端通道ID
-	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+	UpstreamId *string `json:"UpstreamId,omitnil" name:"UpstreamId"`
 }
 
 func (r *DeleteUpstreamRequest) ToJsonString() string {
@@ -3070,10 +3070,10 @@ func (r *DeleteUpstreamRequest) FromJsonString(s string) error {
 type DeleteUpstreamResponseParams struct {
 	// 成功删除的后端通道ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+	UpstreamId *string `json:"UpstreamId,omitnil" name:"UpstreamId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteUpstreamResponse struct {
@@ -3095,14 +3095,14 @@ func (r *DeleteUpstreamResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteUsagePlanRequestParams struct {
 	// 待删除的使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 }
 
 type DeleteUsagePlanRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待删除的使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 }
 
 func (r *DeleteUsagePlanRequest) ToJsonString() string {
@@ -3128,10 +3128,10 @@ func (r *DeleteUsagePlanRequest) FromJsonString(s string) error {
 type DeleteUsagePlanResponseParams struct {
 	// 删除操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteUsagePlanResponse struct {
@@ -3153,26 +3153,26 @@ func (r *DeleteUsagePlanResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DemoteServiceUsagePlanRequestParams struct {
 	// 使用计划ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 待降级的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 环境名称。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 }
 
 type DemoteServiceUsagePlanRequest struct {
 	*tchttp.BaseRequest
 	
 	// 使用计划ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 待降级的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 环境名称。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 }
 
 func (r *DemoteServiceUsagePlanRequest) ToJsonString() string {
@@ -3200,10 +3200,10 @@ func (r *DemoteServiceUsagePlanRequest) FromJsonString(s string) error {
 type DemoteServiceUsagePlanResponseParams struct {
 	// 降级操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DemoteServiceUsagePlanResponse struct {
@@ -3224,93 +3224,93 @@ func (r *DemoteServiceUsagePlanResponse) FromJsonString(s string) error {
 
 type DesApisStatus struct {
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API唯一ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 用户自定义的 API 接口描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiDesc *string `json:"ApiDesc,omitempty" name:"ApiDesc"`
+	ApiDesc *string `json:"ApiDesc,omitnil" name:"ApiDesc"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// API 接口的名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// VPCID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VpcId *int64 `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *int64 `json:"VpcId,omitnil" name:"VpcId"`
 
 	// VPC唯一ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// API类型。取值为NORMAL（普通API）和TSF（微服务API）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 
 	// API协议。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 是否买后调试。（云市场预留字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitempty" name:"IsDebugAfterCharge"`
+	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitnil" name:"IsDebugAfterCharge"`
 
 	// API 鉴权类型。取值为SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、EIAM。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+	AuthType *string `json:"AuthType,omitnil" name:"AuthType"`
 
 	// OAUTH API的类型。当AuthType 为 OAUTH时该字段有效， 取值为NORMAL（业务API）和 OAUTH（授权API）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiBusinessType *string `json:"ApiBusinessType,omitempty" name:"ApiBusinessType"`
+	ApiBusinessType *string `json:"ApiBusinessType,omitnil" name:"ApiBusinessType"`
 
 	// 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthRelationApiId *string `json:"AuthRelationApiId,omitempty" name:"AuthRelationApiId"`
+	AuthRelationApiId *string `json:"AuthRelationApiId,omitnil" name:"AuthRelationApiId"`
 
 	// OAUTH 配置信息。当AuthType是OAUTH时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OauthConfig *OauthConfig `json:"OauthConfig,omitempty" name:"OauthConfig"`
+	OauthConfig *OauthConfig `json:"OauthConfig,omitnil" name:"OauthConfig"`
 
 	// 授权API关联的业务API列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: RelationBuniessApiIds is deprecated.
-	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitempty" name:"RelationBuniessApiIds"`
+	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitnil" name:"RelationBuniessApiIds"`
 
 	// API关联的标签信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil" name:"Tags"`
 
 	// API 的路径，如 /path。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// API 的请求方法，如 GET。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 }
 
 // Predefined struct for user
 type DescribeAPIDocDetailRequestParams struct {
 	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 }
 
 type DescribeAPIDocDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 }
 
 func (r *DescribeAPIDocDetailRequest) ToJsonString() string {
@@ -3335,10 +3335,10 @@ func (r *DescribeAPIDocDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAPIDocDetailResponseParams struct {
 	// API文档详细信息
-	Result *APIDocInfo `json:"Result,omitempty" name:"Result"`
+	Result *APIDocInfo `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAPIDocDetailResponse struct {
@@ -3360,20 +3360,20 @@ func (r *DescribeAPIDocDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAPIDocsRequestParams struct {
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeAPIDocsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeAPIDocsRequest) ToJsonString() string {
@@ -3399,10 +3399,10 @@ func (r *DescribeAPIDocsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAPIDocsResponseParams struct {
 	// API文档列表信息
-	Result *APIDocs `json:"Result,omitempty" name:"Result"`
+	Result *APIDocs `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAPIDocsResponse struct {
@@ -3424,38 +3424,38 @@ func (r *DescribeAPIDocsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAllPluginApisRequestParams struct {
 	// 要查询的服务ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 要查询的插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 环境信息。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeAllPluginApisRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要查询的服务ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 要查询的插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 环境信息。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeAllPluginApisRequest) ToJsonString() string {
@@ -3484,10 +3484,10 @@ func (r *DescribeAllPluginApisRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAllPluginApisResponseParams struct {
 	// 插件相关API的列表。
-	Result *ApiInfoSummary `json:"Result,omitempty" name:"Result"`
+	Result *ApiInfoSummary `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAllPluginApisResponse struct {
@@ -3509,32 +3509,32 @@ func (r *DescribeAllPluginApisResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiAppBindApisStatusRequestParams struct {
 	// 应用ID
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。支持ApiId、ApiName、ServiceId、Environment 、KeyWord（ 可以匹配name或者ID）。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeApiAppBindApisStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。支持ApiId、ApiName、ServiceId、Environment 、KeyWord（ 可以匹配name或者ID）。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeApiAppBindApisStatusRequest) ToJsonString() string {
@@ -3563,10 +3563,10 @@ func (r *DescribeApiAppBindApisStatusRequest) FromJsonString(s string) error {
 type DescribeApiAppBindApisStatusResponseParams struct {
 	// 应用绑定的Api列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ApiAppApiInfos `json:"Result,omitempty" name:"Result"`
+	Result *ApiAppApiInfos `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeApiAppBindApisStatusResponse struct {
@@ -3588,14 +3588,14 @@ func (r *DescribeApiAppBindApisStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiAppRequestParams struct {
 	// 应用ID。
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 }
 
 type DescribeApiAppRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用ID。
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 }
 
 func (r *DescribeApiAppRequest) ToJsonString() string {
@@ -3621,10 +3621,10 @@ func (r *DescribeApiAppRequest) FromJsonString(s string) error {
 type DescribeApiAppResponseParams struct {
 	// 应用详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ApiAppInfos `json:"Result,omitempty" name:"Result"`
+	Result *ApiAppInfos `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeApiAppResponse struct {
@@ -3646,26 +3646,26 @@ func (r *DescribeApiAppResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiAppsStatusRequestParams struct {
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。支持ApiAppId、ApiAppName、KeyWord（ 可以匹配name或者ID）。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeApiAppsStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。支持ApiAppId、ApiAppName、KeyWord（ 可以匹配name或者ID）。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeApiAppsStatusRequest) ToJsonString() string {
@@ -3693,10 +3693,10 @@ func (r *DescribeApiAppsStatusRequest) FromJsonString(s string) error {
 type DescribeApiAppsStatusResponseParams struct {
 	// 应用列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ApiAppInfos `json:"Result,omitempty" name:"Result"`
+	Result *ApiAppInfos `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeApiAppsStatusResponse struct {
@@ -3718,38 +3718,38 @@ func (r *DescribeApiAppsStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiBindApiAppsStatusRequestParams struct {
 	// 服务ID
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// Api的ID的数组
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。支持ApiAppId、Environment、KeyWord（ 可以匹配name或者ID）。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeApiBindApiAppsStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务ID
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// Api的ID的数组
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。支持ApiAppId、Environment、KeyWord（ 可以匹配name或者ID）。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeApiBindApiAppsStatusRequest) ToJsonString() string {
@@ -3779,10 +3779,10 @@ func (r *DescribeApiBindApiAppsStatusRequest) FromJsonString(s string) error {
 type DescribeApiBindApiAppsStatusResponseParams struct {
 	// 应用绑定的Api列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ApiAppApiInfos `json:"Result,omitempty" name:"Result"`
+	Result *ApiAppApiInfos `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeApiBindApiAppsStatusResponse struct {
@@ -3804,38 +3804,38 @@ func (r *DescribeApiBindApiAppsStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiEnvironmentStrategyRequestParams struct {
 	// API所属服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 环境列表。
-	EnvironmentNames []*string `json:"EnvironmentNames,omitempty" name:"EnvironmentNames"`
+	EnvironmentNames []*string `json:"EnvironmentNames,omitnil" name:"EnvironmentNames"`
 
 	// API唯一ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeApiEnvironmentStrategyRequest struct {
 	*tchttp.BaseRequest
 	
 	// API所属服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 环境列表。
-	EnvironmentNames []*string `json:"EnvironmentNames,omitempty" name:"EnvironmentNames"`
+	EnvironmentNames []*string `json:"EnvironmentNames,omitnil" name:"EnvironmentNames"`
 
 	// API唯一ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeApiEnvironmentStrategyRequest) ToJsonString() string {
@@ -3865,10 +3865,10 @@ func (r *DescribeApiEnvironmentStrategyRequest) FromJsonString(s string) error {
 type DescribeApiEnvironmentStrategyResponseParams struct {
 	// api绑定策略详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ApiEnvironmentStrategyStatus `json:"Result,omitempty" name:"Result"`
+	Result *ApiEnvironmentStrategyStatus `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeApiEnvironmentStrategyResponse struct {
@@ -3890,26 +3890,26 @@ func (r *DescribeApiEnvironmentStrategyResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeApiForApiAppRequestParams struct {
 	// API 所在的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 接口唯一 ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// Api所属地域
-	ApiRegion *string `json:"ApiRegion,omitempty" name:"ApiRegion"`
+	ApiRegion *string `json:"ApiRegion,omitnil" name:"ApiRegion"`
 }
 
 type DescribeApiForApiAppRequest struct {
 	*tchttp.BaseRequest
 	
 	// API 所在的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 接口唯一 ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// Api所属地域
-	ApiRegion *string `json:"ApiRegion,omitempty" name:"ApiRegion"`
+	ApiRegion *string `json:"ApiRegion,omitnil" name:"ApiRegion"`
 }
 
 func (r *DescribeApiForApiAppRequest) ToJsonString() string {
@@ -3936,10 +3936,10 @@ func (r *DescribeApiForApiAppRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiForApiAppResponseParams struct {
 	// API 详情。
-	Result *ApiInfo `json:"Result,omitempty" name:"Result"`
+	Result *ApiInfo `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeApiForApiAppResponse struct {
@@ -3961,14 +3961,14 @@ func (r *DescribeApiForApiAppResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiKeyRequestParams struct {
 	// API 密钥 ID。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 }
 
 type DescribeApiKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// API 密钥 ID。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 }
 
 func (r *DescribeApiKeyRequest) ToJsonString() string {
@@ -3994,10 +3994,10 @@ func (r *DescribeApiKeyRequest) FromJsonString(s string) error {
 type DescribeApiKeyResponseParams struct {
 	// 密钥详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ApiKey `json:"Result,omitempty" name:"Result"`
+	Result *ApiKey `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeApiKeyResponse struct {
@@ -4019,26 +4019,26 @@ func (r *DescribeApiKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiKeysStatusRequestParams struct {
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。支持AccessKeyId、AccessKeySecret、SecretName、NotUsagePlanId、Status、KeyWord（ 可以匹配name或者path）。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeApiKeysStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。支持AccessKeyId、AccessKeySecret、SecretName、NotUsagePlanId、Status、KeyWord（ 可以匹配name或者path）。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeApiKeysStatusRequest) ToJsonString() string {
@@ -4066,10 +4066,10 @@ func (r *DescribeApiKeysStatusRequest) FromJsonString(s string) error {
 type DescribeApiKeysStatusResponseParams struct {
 	// 密钥列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ApiKeysStatus `json:"Result,omitempty" name:"Result"`
+	Result *ApiKeysStatus `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeApiKeysStatusResponse struct {
@@ -4091,20 +4091,20 @@ func (r *DescribeApiKeysStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiRequestParams struct {
 	// API 所在的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 接口唯一 ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 }
 
 type DescribeApiRequest struct {
 	*tchttp.BaseRequest
 	
 	// API 所在的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 接口唯一 ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 }
 
 func (r *DescribeApiRequest) ToJsonString() string {
@@ -4130,10 +4130,10 @@ func (r *DescribeApiRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApiResponseParams struct {
 	// API 详情。
-	Result *ApiInfo `json:"Result,omitempty" name:"Result"`
+	Result *ApiInfo `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeApiResponse struct {
@@ -4155,52 +4155,52 @@ func (r *DescribeApiResponse) FromJsonString(s string) error {
 type DescribeApiResultServiceParametersInfo struct {
 	// API的后端服务参数名称。只有ServiceType是HTTP才会用到此参数。前后端参数名称可不同。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// API 的后端服务参数位置，如 head。只有 ServiceType 是 HTTP 才会用到此参数。前后端参数位置可配置不同。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Position *string `json:"Position,omitempty" name:"Position"`
+	Position *string `json:"Position,omitnil" name:"Position"`
 
 	// API 的后端服务参数对应的前端参数位置，如 head。只有 ServiceType 是 HTTP 才会用到此参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelevantRequestParameterPosition *string `json:"RelevantRequestParameterPosition,omitempty" name:"RelevantRequestParameterPosition"`
+	RelevantRequestParameterPosition *string `json:"RelevantRequestParameterPosition,omitnil" name:"RelevantRequestParameterPosition"`
 
 	// API 的后端服务参数对应的前端参数名称。只有 ServiceType 是 HTTP 才会用到此参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelevantRequestParameterName *string `json:"RelevantRequestParameterName,omitempty" name:"RelevantRequestParameterName"`
+	RelevantRequestParameterName *string `json:"RelevantRequestParameterName,omitnil" name:"RelevantRequestParameterName"`
 
 	// API 的后端服务参数默认值。只有 ServiceType 是 HTTP 才会用到此参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+	DefaultValue *string `json:"DefaultValue,omitnil" name:"DefaultValue"`
 
 	// API 的后端服务参数备注。只有 ServiceType 是 HTTP 才会用到此参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelevantRequestParameterDesc *string `json:"RelevantRequestParameterDesc,omitempty" name:"RelevantRequestParameterDesc"`
+	RelevantRequestParameterDesc *string `json:"RelevantRequestParameterDesc,omitnil" name:"RelevantRequestParameterDesc"`
 }
 
 // Predefined struct for user
 type DescribeApiUsagePlanRequestParams struct {
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeApiUsagePlanRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeApiUsagePlanRequest) ToJsonString() string {
@@ -4228,10 +4228,10 @@ func (r *DescribeApiUsagePlanRequest) FromJsonString(s string) error {
 type DescribeApiUsagePlanResponseParams struct {
 	// api绑定使用计划列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ApiUsagePlanSet `json:"Result,omitempty" name:"Result"`
+	Result *ApiUsagePlanSet `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeApiUsagePlanResponse struct {
@@ -4253,32 +4253,32 @@ func (r *DescribeApiUsagePlanResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApisStatusRequestParams struct {
 	// API 所在的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认为 20，最大值为 100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// API过滤条件。支持ApiId、ApiName、ApiPath、ApiType、AuthRelationApiId、AuthType、ApiBuniessType、NotUsagePlanId、 Environment、Tags (values为 $tag_key:tag_value的列表)、TagKeys （values 为 tag key的列表），其中NotUsagePlanId和Environment必须同时使用，不能单独使用一个。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeApisStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// API 所在的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认为 20，最大值为 100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// API过滤条件。支持ApiId、ApiName、ApiPath、ApiType、AuthRelationApiId、AuthType、ApiBuniessType、NotUsagePlanId、 Environment、Tags (values为 $tag_key:tag_value的列表)、TagKeys （values 为 tag key的列表），其中NotUsagePlanId和Environment必须同时使用，不能单独使用一个。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeApisStatusRequest) ToJsonString() string {
@@ -4306,10 +4306,10 @@ func (r *DescribeApisStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeApisStatusResponseParams struct {
 	// API 详情列表。
-	Result *DescribeApisStatusResultInfo `json:"Result,omitempty" name:"Result"`
+	Result *DescribeApisStatusResultInfo `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeApisStatusResponse struct {
@@ -4330,101 +4330,101 @@ func (r *DescribeApisStatusResponse) FromJsonString(s string) error {
 
 type DescribeApisStatusResultApiIdStatusSetInfo struct {
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API唯一ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 用户自定义的 API 接口描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiDesc *string `json:"ApiDesc,omitempty" name:"ApiDesc"`
+	ApiDesc *string `json:"ApiDesc,omitnil" name:"ApiDesc"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// API 接口的名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// VPCID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VpcId *int64 `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *int64 `json:"VpcId,omitnil" name:"VpcId"`
 
 	// VPC唯一ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// API类型。取值为NORMAL（普通API）和TSF（微服务API）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 
 	// API协议。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 是否买后调试。（云市场预留字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitempty" name:"IsDebugAfterCharge"`
+	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitnil" name:"IsDebugAfterCharge"`
 
 	// API 鉴权类型。取值为SECRET（密钥对鉴权）、NONE（免鉴权）、OAUTH、EIAM。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+	AuthType *string `json:"AuthType,omitnil" name:"AuthType"`
 
 	// OAUTH API的类型。当AuthType 为 OAUTH时该字段有效， 取值为NORMAL（业务API）和 OAUTH（授权API）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiBusinessType *string `json:"ApiBusinessType,omitempty" name:"ApiBusinessType"`
+	ApiBusinessType *string `json:"ApiBusinessType,omitnil" name:"ApiBusinessType"`
 
 	// 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthRelationApiId *string `json:"AuthRelationApiId,omitempty" name:"AuthRelationApiId"`
+	AuthRelationApiId *string `json:"AuthRelationApiId,omitnil" name:"AuthRelationApiId"`
 
 	// OAUTH 配置信息。当AuthType是OAUTH时生效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OauthConfig *OauthConfig `json:"OauthConfig,omitempty" name:"OauthConfig"`
+	OauthConfig *OauthConfig `json:"OauthConfig,omitnil" name:"OauthConfig"`
 
 	// 授权API关联的业务API列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: RelationBuniessApiIds is deprecated.
-	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitempty" name:"RelationBuniessApiIds"`
+	RelationBuniessApiIds []*string `json:"RelationBuniessApiIds,omitnil" name:"RelationBuniessApiIds"`
 
 	// API关联的标签信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*ApigatewayTags `json:"Tags,omitempty" name:"Tags"`
+	Tags []*ApigatewayTags `json:"Tags,omitnil" name:"Tags"`
 
 	// API 的路径，如 /path。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// API 的请求方法，如 GET。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 }
 
 type DescribeApisStatusResultInfo struct {
 	// 符合条件的 API 接口数量。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// API 接口列表。
-	ApiIdStatusSet []*DescribeApisStatusResultApiIdStatusSetInfo `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet"`
+	ApiIdStatusSet []*DescribeApisStatusResultApiIdStatusSetInfo `json:"ApiIdStatusSet,omitnil" name:"ApiIdStatusSet"`
 }
 
 // Predefined struct for user
 type DescribeExclusiveInstanceDetailRequestParams struct {
 	// 独享实例唯一id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DescribeExclusiveInstanceDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 独享实例唯一id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *DescribeExclusiveInstanceDetailRequest) ToJsonString() string {
@@ -4449,10 +4449,10 @@ func (r *DescribeExclusiveInstanceDetailRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeExclusiveInstanceDetailResponseParams struct {
 	// 独享实例详情
-	Result *InstanceDetail `json:"Result,omitempty" name:"Result"`
+	Result *InstanceDetail `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeExclusiveInstanceDetailResponse struct {
@@ -4474,26 +4474,26 @@ func (r *DescribeExclusiveInstanceDetailResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeExclusiveInstancesRequestParams struct {
 	// 分页查询，limit
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页查询，offset
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeExclusiveInstancesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页查询，limit
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页查询，offset
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeExclusiveInstancesRequest) ToJsonString() string {
@@ -4520,10 +4520,10 @@ func (r *DescribeExclusiveInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeExclusiveInstancesResponseParams struct {
 	// 独享实例列表查询结果
-	Result *DescribeExclusiveInstancesResult `json:"Result,omitempty" name:"Result"`
+	Result *DescribeExclusiveInstancesResult `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeExclusiveInstancesResponse struct {
@@ -4549,26 +4549,26 @@ type DescribeExclusiveInstancesResult struct {
 // Predefined struct for user
 type DescribeExclusiveInstancesStatusRequestParams struct {
 	// 分页查询，limit
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页查询，offset
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeExclusiveInstancesStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页查询，limit
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页查询，offset
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeExclusiveInstancesStatusRequest) ToJsonString() string {
@@ -4595,10 +4595,10 @@ func (r *DescribeExclusiveInstancesStatusRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeExclusiveInstancesStatusResponseParams struct {
 	// 独享实例列表查询结果
-	Result *InstanceSummary `json:"Result,omitempty" name:"Result"`
+	Result *InstanceSummary `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeExclusiveInstancesStatusResponse struct {
@@ -4620,44 +4620,44 @@ func (r *DescribeExclusiveInstancesStatusResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeIPStrategyApisStatusRequestParams struct {
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 策略唯一ID。
-	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
 
 	// 策略所在环境。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。支持 ApiPath、ApiName、KeyWord（模糊查询Path 和Name）。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeIPStrategyApisStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 策略唯一ID。
-	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
 
 	// 策略所在环境。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。支持 ApiPath、ApiName、KeyWord（模糊查询Path 和Name）。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeIPStrategyApisStatusRequest) ToJsonString() string {
@@ -4688,10 +4688,10 @@ func (r *DescribeIPStrategyApisStatusRequest) FromJsonString(s string) error {
 type DescribeIPStrategyApisStatusResponseParams struct {
 	// 环境绑定API列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *IPStrategyApiStatus `json:"Result,omitempty" name:"Result"`
+	Result *IPStrategyApiStatus `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeIPStrategyApisStatusResponse struct {
@@ -4713,44 +4713,44 @@ func (r *DescribeIPStrategyApisStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIPStrategyRequestParams struct {
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// IP 策略唯一ID。
-	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
 
 	// 策略关联的环境。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。预留字段，目前不支持过滤。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeIPStrategyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// IP 策略唯一ID。
-	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
 
 	// 策略关联的环境。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。预留字段，目前不支持过滤。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeIPStrategyRequest) ToJsonString() string {
@@ -4781,10 +4781,10 @@ func (r *DescribeIPStrategyRequest) FromJsonString(s string) error {
 type DescribeIPStrategyResponseParams struct {
 	// IP策略详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *IPStrategy `json:"Result,omitempty" name:"Result"`
+	Result *IPStrategy `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeIPStrategyResponse struct {
@@ -4806,20 +4806,20 @@ func (r *DescribeIPStrategyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIPStrategysStatusRequestParams struct {
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 过滤条件。支持StrategyName。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeIPStrategysStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 过滤条件。支持StrategyName。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeIPStrategysStatusRequest) ToJsonString() string {
@@ -4846,10 +4846,10 @@ func (r *DescribeIPStrategysStatusRequest) FromJsonString(s string) error {
 type DescribeIPStrategysStatusResponseParams struct {
 	// 符合条件的策略列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *IPStrategiesStatus `json:"Result,omitempty" name:"Result"`
+	Result *IPStrategiesStatus `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeIPStrategysStatusResponse struct {
@@ -4871,28 +4871,28 @@ func (r *DescribeIPStrategysStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLogSearchRequestParams struct {
 	// 日志开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 日志结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务id
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 保留字段
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 单次要返回的日志条数，单次返回的最大条数为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 根据上次返回的ConText，获取后续的内容，最多可获取10000条
-	ConText *string `json:"ConText,omitempty" name:"ConText"`
+	ConText *string `json:"ConText,omitnil" name:"ConText"`
 
 	// 按时间排序 asc（升序）或者 desc（降序），默认为 desc
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// 保留字段
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 检索条件,支持的检索条件如下：
 	// req_id：“=”
@@ -4907,35 +4907,35 @@ type DescribeLogSearchRequestParams struct {
 	// “:”表示包含，“!=”表示不等于，字段含义见输出参数的LogSet说明
 	//
 	// Deprecated: LogQuerys is deprecated.
-	LogQuerys []*LogQuery `json:"LogQuerys,omitempty" name:"LogQuerys"`
+	LogQuerys []*LogQuery `json:"LogQuerys,omitnil" name:"LogQuerys"`
 }
 
 type DescribeLogSearchRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 日志结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务id
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 保留字段
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 单次要返回的日志条数，单次返回的最大条数为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 根据上次返回的ConText，获取后续的内容，最多可获取10000条
-	ConText *string `json:"ConText,omitempty" name:"ConText"`
+	ConText *string `json:"ConText,omitnil" name:"ConText"`
 
 	// 按时间排序 asc（升序）或者 desc（降序），默认为 desc
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// 保留字段
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 检索条件,支持的检索条件如下：
 	// req_id：“=”
@@ -4948,7 +4948,7 @@ type DescribeLogSearchRequest struct {
 	// 
 	// 说明：
 	// “:”表示包含，“!=”表示不等于，字段含义见输出参数的LogSet说明
-	LogQuerys []*LogQuery `json:"LogQuerys,omitempty" name:"LogQuerys"`
+	LogQuerys []*LogQuery `json:"LogQuerys,omitnil" name:"LogQuerys"`
 }
 
 func (r *DescribeLogSearchRequest) ToJsonString() string {
@@ -4981,7 +4981,7 @@ func (r *DescribeLogSearchRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLogSearchResponseParams struct {
 	// 获取更多检索结果的游标，值为""表示无后续结果
-	ConText *string `json:"ConText,omitempty" name:"ConText"`
+	ConText *string `json:"ConText,omitnil" name:"ConText"`
 
 	// 由0或多条日志组成，每条日志格式如下：
 	// '[$app_id][$env_name][$service_id][$http_host][$api_id][$uri][$scheme][rsp_st:$status][ups_st:$upstream_status]'
@@ -5011,13 +5011,13 @@ type DescribeLogSearchResponseParams struct {
 	// err_msg： 错误信息。
 	// tcp_rtt： 客户端 TCP 连接信息，RTT（Round Trip Time）由三部分组成：链路的传播时间（propagation delay）、末端系统的处理时间、路由器缓存中的排队和处理时间（queuing delay）。
 	// req_id：请求id。
-	LogSet []*string `json:"LogSet,omitempty" name:"LogSet"`
+	LogSet []*string `json:"LogSet,omitnil" name:"LogSet"`
 
 	// 单次搜索返回的日志条数，TotalCount <= Limit
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeLogSearchResponse struct {
@@ -5039,26 +5039,26 @@ func (r *DescribeLogSearchResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePluginApisRequestParams struct {
 	// 查询的插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribePluginApisRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询的插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribePluginApisRequest) ToJsonString() string {
@@ -5085,10 +5085,10 @@ func (r *DescribePluginApisRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePluginApisResponseParams struct {
 	// 插件绑定的API列表信息。
-	Result *AttachedApiSummary `json:"Result,omitempty" name:"Result"`
+	Result *AttachedApiSummary `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePluginApisResponse struct {
@@ -5110,26 +5110,26 @@ func (r *DescribePluginApisResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePluginRequestParams struct {
 	// 要查询的插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribePluginRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要查询的插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribePluginRequest) ToJsonString() string {
@@ -5156,10 +5156,10 @@ func (r *DescribePluginRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePluginResponseParams struct {
 	// 插件详情。
-	Result *Plugin `json:"Result,omitempty" name:"Result"`
+	Result *Plugin `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePluginResponse struct {
@@ -5181,38 +5181,38 @@ func (r *DescribePluginResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePluginsByApiRequestParams struct {
 	// 要查询的API ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 要查询的服务ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 环境信息。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribePluginsByApiRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要查询的API ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 要查询的服务ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 环境信息。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribePluginsByApiRequest) ToJsonString() string {
@@ -5241,10 +5241,10 @@ func (r *DescribePluginsByApiRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePluginsByApiResponseParams struct {
 	// 插件可绑定的API列表信息。
-	Result *AttachedPluginSummary `json:"Result,omitempty" name:"Result"`
+	Result *AttachedPluginSummary `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePluginsByApiResponse struct {
@@ -5266,44 +5266,44 @@ func (r *DescribePluginsByApiResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePluginsRequestParams struct {
 	// 要查询的插件列表。
-	PluginIds []*string `json:"PluginIds,omitempty" name:"PluginIds"`
+	PluginIds []*string `json:"PluginIds,omitnil" name:"PluginIds"`
 
 	// 要查询的插件名称。
-	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+	PluginName *string `json:"PluginName,omitnil" name:"PluginName"`
 
 	// 要查询的插件类型。
-	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
+	PluginType *string `json:"PluginType,omitnil" name:"PluginType"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。预留字段，目前不支持过滤。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribePluginsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要查询的插件列表。
-	PluginIds []*string `json:"PluginIds,omitempty" name:"PluginIds"`
+	PluginIds []*string `json:"PluginIds,omitnil" name:"PluginIds"`
 
 	// 要查询的插件名称。
-	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+	PluginName *string `json:"PluginName,omitnil" name:"PluginName"`
 
 	// 要查询的插件类型。
-	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
+	PluginType *string `json:"PluginType,omitnil" name:"PluginType"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。预留字段，目前不支持过滤。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribePluginsRequest) ToJsonString() string {
@@ -5333,10 +5333,10 @@ func (r *DescribePluginsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePluginsResponseParams struct {
 	// 插件详情。
-	Result *PluginSummary `json:"Result,omitempty" name:"Result"`
+	Result *PluginSummary `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePluginsResponse struct {
@@ -5358,26 +5358,26 @@ func (r *DescribePluginsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServiceEnvironmentListRequestParams struct {
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeServiceEnvironmentListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeServiceEnvironmentListRequest) ToJsonString() string {
@@ -5405,10 +5405,10 @@ func (r *DescribeServiceEnvironmentListRequest) FromJsonString(s string) error {
 type DescribeServiceEnvironmentListResponseParams struct {
 	// 服务绑定环境详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ServiceEnvironmentSet `json:"Result,omitempty" name:"Result"`
+	Result *ServiceEnvironmentSet `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeServiceEnvironmentListResponse struct {
@@ -5430,32 +5430,32 @@ func (r *DescribeServiceEnvironmentListResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeServiceEnvironmentReleaseHistoryRequestParams struct {
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 环境名称。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeServiceEnvironmentReleaseHistoryRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 环境名称。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeServiceEnvironmentReleaseHistoryRequest) ToJsonString() string {
@@ -5484,10 +5484,10 @@ func (r *DescribeServiceEnvironmentReleaseHistoryRequest) FromJsonString(s strin
 type DescribeServiceEnvironmentReleaseHistoryResponseParams struct {
 	// 服务发布历史。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ServiceReleaseHistory `json:"Result,omitempty" name:"Result"`
+	Result *ServiceReleaseHistory `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeServiceEnvironmentReleaseHistoryResponse struct {
@@ -5509,26 +5509,26 @@ func (r *DescribeServiceEnvironmentReleaseHistoryResponse) FromJsonString(s stri
 // Predefined struct for user
 type DescribeServiceEnvironmentStrategyRequestParams struct {
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeServiceEnvironmentStrategyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeServiceEnvironmentStrategyRequest) ToJsonString() string {
@@ -5556,10 +5556,10 @@ func (r *DescribeServiceEnvironmentStrategyRequest) FromJsonString(s string) err
 type DescribeServiceEnvironmentStrategyResponseParams struct {
 	// 限流策略列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ServiceEnvironmentStrategyStatus `json:"Result,omitempty" name:"Result"`
+	Result *ServiceEnvironmentStrategyStatus `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeServiceEnvironmentStrategyResponse struct {
@@ -5581,20 +5581,20 @@ func (r *DescribeServiceEnvironmentStrategyResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeServiceForApiAppRequestParams struct {
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 服务所属的地域
-	ApiRegion *string `json:"ApiRegion,omitempty" name:"ApiRegion"`
+	ApiRegion *string `json:"ApiRegion,omitnil" name:"ApiRegion"`
 }
 
 type DescribeServiceForApiAppRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 服务所属的地域
-	ApiRegion *string `json:"ApiRegion,omitempty" name:"ApiRegion"`
+	ApiRegion *string `json:"ApiRegion,omitnil" name:"ApiRegion"`
 }
 
 func (r *DescribeServiceForApiAppRequest) ToJsonString() string {
@@ -5620,80 +5620,80 @@ func (r *DescribeServiceForApiAppRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServiceForApiAppResponseParams struct {
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 服务 环境列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AvailableEnvironments []*string `json:"AvailableEnvironments,omitempty" name:"AvailableEnvironments"`
+	AvailableEnvironments []*string `json:"AvailableEnvironments,omitnil" name:"AvailableEnvironments"`
 
 	// 服务名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// 服务描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
+	ServiceDesc *string `json:"ServiceDesc,omitnil" name:"ServiceDesc"`
 
 	// 服务支持协议，可选值为http、https、http&https。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 服务创建时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 服务修改时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// 网络类型列表，INNER为内网访问，OUTER为外网访问。
-	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
+	NetTypes []*string `json:"NetTypes,omitnil" name:"NetTypes"`
 
 	// 内网访问子域名。
-	InternalSubDomain *string `json:"InternalSubDomain,omitempty" name:"InternalSubDomain"`
+	InternalSubDomain *string `json:"InternalSubDomain,omitnil" name:"InternalSubDomain"`
 
 	// 外网访问子域名。
-	OuterSubDomain *string `json:"OuterSubDomain,omitempty" name:"OuterSubDomain"`
+	OuterSubDomain *string `json:"OuterSubDomain,omitnil" name:"OuterSubDomain"`
 
 	// 内网访问http服务端口号。
-	InnerHttpPort *int64 `json:"InnerHttpPort,omitempty" name:"InnerHttpPort"`
+	InnerHttpPort *int64 `json:"InnerHttpPort,omitnil" name:"InnerHttpPort"`
 
 	// 内网访问https端口号。
-	InnerHttpsPort *int64 `json:"InnerHttpsPort,omitempty" name:"InnerHttpsPort"`
+	InnerHttpsPort *int64 `json:"InnerHttpsPort,omitnil" name:"InnerHttpsPort"`
 
 	// API总数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiTotalCount *int64 `json:"ApiTotalCount,omitempty" name:"ApiTotalCount"`
+	ApiTotalCount *int64 `json:"ApiTotalCount,omitnil" name:"ApiTotalCount"`
 
 	// API列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiIdStatusSet []*ApiIdStatus `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet"`
+	ApiIdStatusSet []*ApiIdStatus `json:"ApiIdStatusSet,omitnil" name:"ApiIdStatusSet"`
 
 	// 使用计划总数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanTotalCount *int64 `json:"UsagePlanTotalCount,omitempty" name:"UsagePlanTotalCount"`
+	UsagePlanTotalCount *int64 `json:"UsagePlanTotalCount,omitnil" name:"UsagePlanTotalCount"`
 
 	// 使用计划数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanList []*UsagePlan `json:"UsagePlanList,omitempty" name:"UsagePlanList"`
+	UsagePlanList []*UsagePlan `json:"UsagePlanList,omitnil" name:"UsagePlanList"`
 
 	// IP版本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
+	IpVersion *string `json:"IpVersion,omitnil" name:"IpVersion"`
 
 	// 此服务的用户类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserType *string `json:"UserType,omitempty" name:"UserType"`
+	UserType *string `json:"UserType,omitnil" name:"UserType"`
 
 	// 预留字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SetId *int64 `json:"SetId,omitempty" name:"SetId"`
+	SetId *int64 `json:"SetId,omitnil" name:"SetId"`
 
 	// 服务绑定的标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeServiceForApiAppResponse struct {
@@ -5715,26 +5715,26 @@ func (r *DescribeServiceForApiAppResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServiceReleaseVersionRequestParams struct {
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeServiceReleaseVersionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeServiceReleaseVersionRequest) ToJsonString() string {
@@ -5762,10 +5762,10 @@ func (r *DescribeServiceReleaseVersionRequest) FromJsonString(s string) error {
 type DescribeServiceReleaseVersionResponseParams struct {
 	// 服务发布版本列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ServiceReleaseVersion `json:"Result,omitempty" name:"Result"`
+	Result *ServiceReleaseVersion `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeServiceReleaseVersionResponse struct {
@@ -5787,24 +5787,24 @@ func (r *DescribeServiceReleaseVersionResponse) FromJsonString(s string) error {
 type DescribeServiceReleaseVersionResultVersionListInfo struct {
 	// 版本号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+	VersionName *string `json:"VersionName,omitnil" name:"VersionName"`
 
 	// 版本描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionDesc *string `json:"VersionDesc,omitempty" name:"VersionDesc"`
+	VersionDesc *string `json:"VersionDesc,omitnil" name:"VersionDesc"`
 }
 
 // Predefined struct for user
 type DescribeServiceRequestParams struct {
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 }
 
 type DescribeServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 }
 
 func (r *DescribeServiceRequest) ToJsonString() string {
@@ -5829,98 +5829,98 @@ func (r *DescribeServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServiceResponseParams struct {
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 服务 环境列表。
-	AvailableEnvironments []*string `json:"AvailableEnvironments,omitempty" name:"AvailableEnvironments"`
+	AvailableEnvironments []*string `json:"AvailableEnvironments,omitnil" name:"AvailableEnvironments"`
 
 	// 服务名称。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// 服务描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
+	ServiceDesc *string `json:"ServiceDesc,omitnil" name:"ServiceDesc"`
 
 	// 服务支持协议，可选值为http、https、http&https。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 服务创建时间。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 服务修改时间。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// 网络类型列表，INNER为内网访问，OUTER为外网访问。
-	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
+	NetTypes []*string `json:"NetTypes,omitnil" name:"NetTypes"`
 
 	// 内网访问子域名。
-	InternalSubDomain *string `json:"InternalSubDomain,omitempty" name:"InternalSubDomain"`
+	InternalSubDomain *string `json:"InternalSubDomain,omitnil" name:"InternalSubDomain"`
 
 	// 外网访问子域名。
-	OuterSubDomain *string `json:"OuterSubDomain,omitempty" name:"OuterSubDomain"`
+	OuterSubDomain *string `json:"OuterSubDomain,omitnil" name:"OuterSubDomain"`
 
 	// 内网访问http服务端口号。
-	InnerHttpPort *int64 `json:"InnerHttpPort,omitempty" name:"InnerHttpPort"`
+	InnerHttpPort *int64 `json:"InnerHttpPort,omitnil" name:"InnerHttpPort"`
 
 	// 内网访问https端口号。
-	InnerHttpsPort *int64 `json:"InnerHttpsPort,omitempty" name:"InnerHttpsPort"`
+	InnerHttpsPort *int64 `json:"InnerHttpsPort,omitnil" name:"InnerHttpsPort"`
 
 	// API总数。
-	ApiTotalCount *int64 `json:"ApiTotalCount,omitempty" name:"ApiTotalCount"`
+	ApiTotalCount *int64 `json:"ApiTotalCount,omitnil" name:"ApiTotalCount"`
 
 	// API列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiIdStatusSet []*ApiIdStatus `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet"`
+	ApiIdStatusSet []*ApiIdStatus `json:"ApiIdStatusSet,omitnil" name:"ApiIdStatusSet"`
 
 	// 使用计划总数量。
-	UsagePlanTotalCount *int64 `json:"UsagePlanTotalCount,omitempty" name:"UsagePlanTotalCount"`
+	UsagePlanTotalCount *int64 `json:"UsagePlanTotalCount,omitnil" name:"UsagePlanTotalCount"`
 
 	// 使用计划数组。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanList []*UsagePlan `json:"UsagePlanList,omitempty" name:"UsagePlanList"`
+	UsagePlanList []*UsagePlan `json:"UsagePlanList,omitnil" name:"UsagePlanList"`
 
 	// IP版本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
+	IpVersion *string `json:"IpVersion,omitnil" name:"IpVersion"`
 
 	// 此服务的用户类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserType *string `json:"UserType,omitempty" name:"UserType"`
+	UserType *string `json:"UserType,omitnil" name:"UserType"`
 
 	// 预留字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SetId *int64 `json:"SetId,omitempty" name:"SetId"`
+	SetId *int64 `json:"SetId,omitnil" name:"SetId"`
 
 	// 服务绑定的标签。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 独享实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 独享实例name
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 集群类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SetType *string `json:"SetType,omitempty" name:"SetType"`
+	SetType *string `json:"SetType,omitnil" name:"SetType"`
 
 	// 服务部署的集群类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeploymentType *string `json:"DeploymentType,omitempty" name:"DeploymentType"`
+	DeploymentType *string `json:"DeploymentType,omitnil" name:"DeploymentType"`
 
 	// 特殊用途, NULL和DEFAULT表示无特殊用途，其他用途如HTTP_DNS等
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SpecialUse *string `json:"SpecialUse,omitempty" name:"SpecialUse"`
+	SpecialUse *string `json:"SpecialUse,omitnil" name:"SpecialUse"`
 
 	// vpc属性，存量可能为空字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeServiceResponse struct {
@@ -5942,20 +5942,20 @@ func (r *DescribeServiceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServiceSubDomainMappingsRequestParams struct {
 	// 服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 服务绑定的自定义域名。
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 }
 
 type DescribeServiceSubDomainMappingsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 服务绑定的自定义域名。
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 }
 
 func (r *DescribeServiceSubDomainMappingsRequest) ToJsonString() string {
@@ -5981,10 +5981,10 @@ func (r *DescribeServiceSubDomainMappingsRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeServiceSubDomainMappingsResponseParams struct {
 	// 自定义路径映射列表。
-	Result *ServiceSubDomainMappings `json:"Result,omitempty" name:"Result"`
+	Result *ServiceSubDomainMappings `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeServiceSubDomainMappingsResponse struct {
@@ -6006,26 +6006,26 @@ func (r *DescribeServiceSubDomainMappingsResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeServiceSubDomainsRequestParams struct {
 	// 服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeServiceSubDomainsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeServiceSubDomainsRequest) ToJsonString() string {
@@ -6052,10 +6052,10 @@ func (r *DescribeServiceSubDomainsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServiceSubDomainsResponseParams struct {
 	// 查询服务自定义域名列表。
-	Result *DomainSets `json:"Result,omitempty" name:"Result"`
+	Result *DomainSets `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeServiceSubDomainsResponse struct {
@@ -6077,26 +6077,26 @@ func (r *DescribeServiceSubDomainsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServiceUsagePlanRequestParams struct {
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeServiceUsagePlanRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待查询的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeServiceUsagePlanRequest) ToJsonString() string {
@@ -6124,10 +6124,10 @@ func (r *DescribeServiceUsagePlanRequest) FromJsonString(s string) error {
 type DescribeServiceUsagePlanResponseParams struct {
 	// 服务绑定使用计划列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ServiceUsagePlanSet `json:"Result,omitempty" name:"Result"`
+	Result *ServiceUsagePlanSet `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeServiceUsagePlanResponse struct {
@@ -6149,26 +6149,26 @@ func (r *DescribeServiceUsagePlanResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeServicesStatusRequestParams struct {
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。支持ServiceId、ServiceName、NotUsagePlanId、Environment、IpVersion、InstanceId、NetType、EIAMAppId。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeServicesStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。支持ServiceId、ServiceName、NotUsagePlanId、Environment、IpVersion、InstanceId、NetType、EIAMAppId。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeServicesStatusRequest) ToJsonString() string {
@@ -6196,10 +6196,10 @@ func (r *DescribeServicesStatusRequest) FromJsonString(s string) error {
 type DescribeServicesStatusResponseParams struct {
 	// 服务列表查询结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ServicesStatus `json:"Result,omitempty" name:"Result"`
+	Result *ServicesStatus `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeServicesStatusResponse struct {
@@ -6220,41 +6220,41 @@ func (r *DescribeServicesStatusResponse) FromJsonString(s string) error {
 
 type DescribeUpstreamBindApis struct {
 	// 总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 绑定的API信息
-	BindApiSet []*BindApiInfo `json:"BindApiSet,omitempty" name:"BindApiSet"`
+	BindApiSet []*BindApiInfo `json:"BindApiSet,omitnil" name:"BindApiSet"`
 }
 
 // Predefined struct for user
 type DescribeUpstreamBindApisRequestParams struct {
 	// 分页大小
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页起始位置
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 后端通道ID
-	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+	UpstreamId *string `json:"UpstreamId,omitnil" name:"UpstreamId"`
 
 	// ServiceId和ApiId过滤查询
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeUpstreamBindApisRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页大小
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页起始位置
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 后端通道ID
-	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+	UpstreamId *string `json:"UpstreamId,omitnil" name:"UpstreamId"`
 
 	// ServiceId和ApiId过滤查询
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeUpstreamBindApisRequest) ToJsonString() string {
@@ -6282,10 +6282,10 @@ func (r *DescribeUpstreamBindApisRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUpstreamBindApisResponseParams struct {
 	// 查询结果
-	Result *DescribeUpstreamBindApis `json:"Result,omitempty" name:"Result"`
+	Result *DescribeUpstreamBindApis `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUpstreamBindApisResponse struct {
@@ -6306,35 +6306,35 @@ func (r *DescribeUpstreamBindApisResponse) FromJsonString(s string) error {
 
 type DescribeUpstreamInfo struct {
 	// 查询总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 查询列表
-	UpstreamSet []*UpstreamInfo `json:"UpstreamSet,omitempty" name:"UpstreamSet"`
+	UpstreamSet []*UpstreamInfo `json:"UpstreamSet,omitnil" name:"UpstreamSet"`
 }
 
 // Predefined struct for user
 type DescribeUpstreamsRequestParams struct {
 	// 分页大小
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页起始位置
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件，支持后端通道ID（UpstreamId）、后端通道名字（UpstreamName）过滤查询
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeUpstreamsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页大小
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页起始位置
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件，支持后端通道ID（UpstreamId）、后端通道名字（UpstreamName）过滤查询
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeUpstreamsRequest) ToJsonString() string {
@@ -6361,10 +6361,10 @@ func (r *DescribeUpstreamsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUpstreamsResponseParams struct {
 	// 查询结果
-	Result *DescribeUpstreamInfo `json:"Result,omitempty" name:"Result"`
+	Result *DescribeUpstreamInfo `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUpstreamsResponse struct {
@@ -6386,32 +6386,32 @@ func (r *DescribeUpstreamsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUsagePlanEnvironmentsRequestParams struct {
 	// 待查询的使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 定义类型，取值为 API、SERVICE，默认值为 SERVICE。
-	BindType *string `json:"BindType,omitempty" name:"BindType"`
+	BindType *string `json:"BindType,omitnil" name:"BindType"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeUsagePlanEnvironmentsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待查询的使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 定义类型，取值为 API、SERVICE，默认值为 SERVICE。
-	BindType *string `json:"BindType,omitempty" name:"BindType"`
+	BindType *string `json:"BindType,omitnil" name:"BindType"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeUsagePlanEnvironmentsRequest) ToJsonString() string {
@@ -6440,10 +6440,10 @@ func (r *DescribeUsagePlanEnvironmentsRequest) FromJsonString(s string) error {
 type DescribeUsagePlanEnvironmentsResponseParams struct {
 	// 使用计划绑定详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *UsagePlanEnvironmentStatus `json:"Result,omitempty" name:"Result"`
+	Result *UsagePlanEnvironmentStatus `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUsagePlanEnvironmentsResponse struct {
@@ -6465,14 +6465,14 @@ func (r *DescribeUsagePlanEnvironmentsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUsagePlanRequestParams struct {
 	// 待查询的使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 }
 
 type DescribeUsagePlanRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待查询的使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 }
 
 func (r *DescribeUsagePlanRequest) ToJsonString() string {
@@ -6498,10 +6498,10 @@ func (r *DescribeUsagePlanRequest) FromJsonString(s string) error {
 type DescribeUsagePlanResponseParams struct {
 	// 使用计划详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *UsagePlanInfo `json:"Result,omitempty" name:"Result"`
+	Result *UsagePlanInfo `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUsagePlanResponse struct {
@@ -6523,26 +6523,26 @@ func (r *DescribeUsagePlanResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUsagePlanSecretIdsRequestParams struct {
 	// 绑定的使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeUsagePlanSecretIdsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 绑定的使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeUsagePlanSecretIdsRequest) ToJsonString() string {
@@ -6570,10 +6570,10 @@ func (r *DescribeUsagePlanSecretIdsRequest) FromJsonString(s string) error {
 type DescribeUsagePlanSecretIdsResponseParams struct {
 	// 使用计划绑定的密钥列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *UsagePlanBindSecretStatus `json:"Result,omitempty" name:"Result"`
+	Result *UsagePlanBindSecretStatus `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUsagePlanSecretIdsResponse struct {
@@ -6595,26 +6595,26 @@ func (r *DescribeUsagePlanSecretIdsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUsagePlansStatusRequestParams struct {
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 使用计划过滤条件。支持UsagePlanId、UsagePlanName、NotServiceId、NotApiId、Environment。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeUsagePlansStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 返回数量，默认为 20，最大值为 100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为 0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 使用计划过滤条件。支持UsagePlanId、UsagePlanName、NotServiceId、NotApiId、Environment。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeUsagePlansStatusRequest) ToJsonString() string {
@@ -6642,10 +6642,10 @@ func (r *DescribeUsagePlansStatusRequest) FromJsonString(s string) error {
 type DescribeUsagePlansStatusResponseParams struct {
 	// 使用计划列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *UsagePlansStatus `json:"Result,omitempty" name:"Result"`
+	Result *UsagePlansStatus `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUsagePlansStatusResponse struct {
@@ -6667,32 +6667,32 @@ func (r *DescribeUsagePlansStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DetachPluginRequestParams struct {
 	// 要解绑的API网关插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 要操作的服务ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 要操作API的环境。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 要解绑的API ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 }
 
 type DetachPluginRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要解绑的API网关插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 要操作的服务ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 要操作API的环境。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 要解绑的API ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 }
 
 func (r *DetachPluginRequest) ToJsonString() string {
@@ -6720,10 +6720,10 @@ func (r *DetachPluginRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DetachPluginResponseParams struct {
 	// 解绑操作是否成功。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DetachPluginResponse struct {
@@ -6745,14 +6745,14 @@ func (r *DetachPluginResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableApiKeyRequestParams struct {
 	// 待禁用的密钥 ID。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 }
 
 type DisableApiKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待禁用的密钥 ID。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 }
 
 func (r *DisableApiKeyRequest) ToJsonString() string {
@@ -6778,10 +6778,10 @@ func (r *DisableApiKeyRequest) FromJsonString(s string) error {
 type DisableApiKeyResponseParams struct {
 	// 禁用密钥操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DisableApiKeyResponse struct {
@@ -6802,49 +6802,49 @@ func (r *DisableApiKeyResponse) FromJsonString(s string) error {
 
 type DomainSetList struct {
 	// 域名名称。
-	DomainName *string `json:"DomainName,omitempty" name:"DomainName"`
+	DomainName *string `json:"DomainName,omitnil" name:"DomainName"`
 
 	// 域名解析状态。1 表示正常解析，0 表示解析失败。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 证书ID。
-	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
 
 	// 是否使用默认路径映射。
-	IsDefaultMapping *bool `json:"IsDefaultMapping,omitempty" name:"IsDefaultMapping"`
+	IsDefaultMapping *bool `json:"IsDefaultMapping,omitnil" name:"IsDefaultMapping"`
 
 	// 自定义域名协议类型。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 网络类型（'INNER' 或 'OUTER'）。
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
-	IsForcedHttps *bool `json:"IsForcedHttps,omitempty" name:"IsForcedHttps"`
+	IsForcedHttps *bool `json:"IsForcedHttps,omitnil" name:"IsForcedHttps"`
 
 	// 域名备案注册状态
-	RegistrationStatus *bool `json:"RegistrationStatus,omitempty" name:"RegistrationStatus"`
+	RegistrationStatus *bool `json:"RegistrationStatus,omitnil" name:"RegistrationStatus"`
 }
 
 type DomainSets struct {
 	// 服务下的自定义域名数量。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 自定义服务域名列表。
-	DomainSet []*DomainSetList `json:"DomainSet,omitempty" name:"DomainSet"`
+	DomainSet []*DomainSetList `json:"DomainSet,omitnil" name:"DomainSet"`
 }
 
 // Predefined struct for user
 type EnableApiKeyRequestParams struct {
 	// 待启用的密钥 ID。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 }
 
 type EnableApiKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待启用的密钥 ID。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 }
 
 func (r *EnableApiKeyRequest) ToJsonString() string {
@@ -6870,10 +6870,10 @@ func (r *EnableApiKeyRequest) FromJsonString(s string) error {
 type EnableApiKeyResponseParams struct {
 	// 启动密钥操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type EnableApiKeyResponse struct {
@@ -6894,184 +6894,184 @@ func (r *EnableApiKeyResponse) FromJsonString(s string) error {
 
 type Environment struct {
 	// 环境名称。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 访问路径。
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 发布状态，1 表示已发布，0 表示未发布。
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 运行版本。
-	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+	VersionName *string `json:"VersionName,omitnil" name:"VersionName"`
 }
 
 type EnvironmentStrategy struct {
 	// 环境名
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 限流值
-	Quota *int64 `json:"Quota,omitempty" name:"Quota"`
+	Quota *int64 `json:"Quota,omitnil" name:"Quota"`
 }
 
 type ErrorCodes struct {
 	// 自定义响应配置错误码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Code *int64 `json:"Code,omitempty" name:"Code"`
+	Code *int64 `json:"Code,omitnil" name:"Code"`
 
 	// 自定义响应配置错误信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msg *string `json:"Msg,omitempty" name:"Msg"`
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
 
 	// 自定义响应配置错误码备注。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
 	// 自定义错误码转换。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConvertedCode *int64 `json:"ConvertedCode,omitempty" name:"ConvertedCode"`
+	ConvertedCode *int64 `json:"ConvertedCode,omitnil" name:"ConvertedCode"`
 
 	// 是否需要开启错误码转换。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NeedConvert *bool `json:"NeedConvert,omitempty" name:"NeedConvert"`
+	NeedConvert *bool `json:"NeedConvert,omitnil" name:"NeedConvert"`
 }
 
 type Filter struct {
 	// 需要过滤的字段。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 字段的过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values"`
+	Values []*string `json:"Values,omitnil" name:"Values"`
 }
 
 type HealthCheckConf struct {
 	// 是否开启健康检查。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsHealthCheck *bool `json:"IsHealthCheck,omitempty" name:"IsHealthCheck"`
+	IsHealthCheck *bool `json:"IsHealthCheck,omitnil" name:"IsHealthCheck"`
 
 	// 健康检查阈值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RequestVolumeThreshold *int64 `json:"RequestVolumeThreshold,omitempty" name:"RequestVolumeThreshold"`
+	RequestVolumeThreshold *int64 `json:"RequestVolumeThreshold,omitnil" name:"RequestVolumeThreshold"`
 
 	// 窗口大小。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SleepWindowInMilliseconds *int64 `json:"SleepWindowInMilliseconds,omitempty" name:"SleepWindowInMilliseconds"`
+	SleepWindowInMilliseconds *int64 `json:"SleepWindowInMilliseconds,omitnil" name:"SleepWindowInMilliseconds"`
 
 	// 阈值百分比。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorThresholdPercentage *int64 `json:"ErrorThresholdPercentage,omitempty" name:"ErrorThresholdPercentage"`
+	ErrorThresholdPercentage *int64 `json:"ErrorThresholdPercentage,omitnil" name:"ErrorThresholdPercentage"`
 }
 
 type IPStrategiesStatus struct {
 	// 策略数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 策略列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StrategySet []*IPStrategy `json:"StrategySet,omitempty" name:"StrategySet"`
+	StrategySet []*IPStrategy `json:"StrategySet,omitnil" name:"StrategySet"`
 }
 
 type IPStrategy struct {
 	// 策略唯一ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
 
 	// 用户自定义策略名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StrategyName *string `json:"StrategyName,omitempty" name:"StrategyName"`
+	StrategyName *string `json:"StrategyName,omitnil" name:"StrategyName"`
 
 	// 策略类型。支持WHITE（白名单）和BLACK（黑名单）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StrategyType *string `json:"StrategyType,omitempty" name:"StrategyType"`
+	StrategyType *string `json:"StrategyType,omitnil" name:"StrategyType"`
 
 	// IP列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StrategyData *string `json:"StrategyData,omitempty" name:"StrategyData"`
+	StrategyData *string `json:"StrategyData,omitnil" name:"StrategyData"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 修改时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 策略绑定的API数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindApiTotalCount *int64 `json:"BindApiTotalCount,omitempty" name:"BindApiTotalCount"`
+	BindApiTotalCount *int64 `json:"BindApiTotalCount,omitnil" name:"BindApiTotalCount"`
 
 	// 绑定的API详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindApis []*DesApisStatus `json:"BindApis,omitempty" name:"BindApis"`
+	BindApis []*DesApisStatus `json:"BindApis,omitnil" name:"BindApis"`
 }
 
 type IPStrategyApi struct {
 	// API 唯一 ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 用户自定义的 API 名称。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// API 类型。取值为NORMAL（普通API）和TSF （微服务API）。
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 
 	// API 的路径。如 /path。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// API 的请求方法。如 GET。
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 
 	// API 已经绑定的其他策略唯一ID。
-	OtherIPStrategyId *string `json:"OtherIPStrategyId,omitempty" name:"OtherIPStrategyId"`
+	OtherIPStrategyId *string `json:"OtherIPStrategyId,omitnil" name:"OtherIPStrategyId"`
 
 	// API 已经绑定的环境。
-	OtherEnvironmentName *string `json:"OtherEnvironmentName,omitempty" name:"OtherEnvironmentName"`
+	OtherEnvironmentName *string `json:"OtherEnvironmentName,omitnil" name:"OtherEnvironmentName"`
 }
 
 type IPStrategyApiStatus struct {
 	// 环境绑定API数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 环境绑定API详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiIdStatusSet []*IPStrategyApi `json:"ApiIdStatusSet,omitempty" name:"ApiIdStatusSet"`
+	ApiIdStatusSet []*IPStrategyApi `json:"ApiIdStatusSet,omitnil" name:"ApiIdStatusSet"`
 }
 
 // Predefined struct for user
 type ImportOpenApiRequestParams struct {
 	// API所在的服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// openAPI正文内容。
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 
 	// Content格式，只能是YAML或者JSON，默认是YAML。
-	EncodeType *string `json:"EncodeType,omitempty" name:"EncodeType"`
+	EncodeType *string `json:"EncodeType,omitnil" name:"EncodeType"`
 
 	// Content版本，默认是openAPI，目前只支持openAPI。
-	ContentVersion *string `json:"ContentVersion,omitempty" name:"ContentVersion"`
+	ContentVersion *string `json:"ContentVersion,omitnil" name:"ContentVersion"`
 }
 
 type ImportOpenApiRequest struct {
 	*tchttp.BaseRequest
 	
 	// API所在的服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// openAPI正文内容。
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 
 	// Content格式，只能是YAML或者JSON，默认是YAML。
-	EncodeType *string `json:"EncodeType,omitempty" name:"EncodeType"`
+	EncodeType *string `json:"EncodeType,omitnil" name:"EncodeType"`
 
 	// Content版本，默认是openAPI，目前只支持openAPI。
-	ContentVersion *string `json:"ContentVersion,omitempty" name:"ContentVersion"`
+	ContentVersion *string `json:"ContentVersion,omitnil" name:"ContentVersion"`
 }
 
 func (r *ImportOpenApiRequest) ToJsonString() string {
@@ -7099,10 +7099,10 @@ func (r *ImportOpenApiRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ImportOpenApiResponseParams struct {
 	// 导入OpenApi返回参数。
-	Result *CreateApiRspSet `json:"Result,omitempty" name:"Result"`
+	Result *CreateApiRspSet `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ImportOpenApiResponse struct {
@@ -7123,207 +7123,207 @@ func (r *ImportOpenApiResponse) FromJsonString(s string) error {
 
 type InstanceChargePrepaid struct {
 	// 自动续费标示
-	RenewFlag *string `json:"RenewFlag,omitempty" name:"RenewFlag"`
+	RenewFlag *string `json:"RenewFlag,omitnil" name:"RenewFlag"`
 
 	// 预付费到期时间
-	ExpiredTime *string `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+	ExpiredTime *string `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
 }
 
 type InstanceDetail struct {
 	// 独享实例唯一id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 可用区
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// 独享实例名字
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 独享实例描述
-	InstanceDescription *string `json:"InstanceDescription,omitempty" name:"InstanceDescription"`
+	InstanceDescription *string `json:"InstanceDescription,omitnil" name:"InstanceDescription"`
 
 	// 独享实例计费类型
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil" name:"InstanceChargeType"`
 
 	// 独享实例状态
-	InstanceState *string `json:"InstanceState,omitempty" name:"InstanceState"`
+	InstanceState *string `json:"InstanceState,omitnil" name:"InstanceState"`
 
 	// 独享实例预付费类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitempty" name:"InstanceChargePrepaid"`
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil" name:"InstanceChargePrepaid"`
 
 	// 独享实例类型
-	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
 
 	// 独享实例网络类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NetworkConfig *NetworkConfig `json:"NetworkConfig,omitempty" name:"NetworkConfig"`
+	NetworkConfig *NetworkConfig `json:"NetworkConfig,omitnil" name:"NetworkConfig"`
 
 	// 独享实例vpc配置
-	VpcConfig *VpcConfig `json:"VpcConfig,omitempty" name:"VpcConfig"`
+	VpcConfig *VpcConfig `json:"VpcConfig,omitnil" name:"VpcConfig"`
 
 	// 独享实例参数配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Parameters []*ParameterInfo `json:"Parameters,omitempty" name:"Parameters"`
+	Parameters []*ParameterInfo `json:"Parameters,omitnil" name:"Parameters"`
 
 	// 独享实例隔离时间
-	IsolationStartedTime *string `json:"IsolationStartedTime,omitempty" name:"IsolationStartedTime"`
+	IsolationStartedTime *string `json:"IsolationStartedTime,omitnil" name:"IsolationStartedTime"`
 
 	// 创建时间
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 可用区列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Zones []*string `json:"Zones,omitempty" name:"Zones"`
+	Zones []*string `json:"Zones,omitnil" name:"Zones"`
 }
 
 type InstanceInfo struct {
 	// 独享实例唯一id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 独享实例name
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 独享实例描述
-	InstanceDescription *string `json:"InstanceDescription,omitempty" name:"InstanceDescription"`
+	InstanceDescription *string `json:"InstanceDescription,omitnil" name:"InstanceDescription"`
 
 	// 独享实例计费类型
-	InstanceChargeType *string `json:"InstanceChargeType,omitempty" name:"InstanceChargeType"`
+	InstanceChargeType *string `json:"InstanceChargeType,omitnil" name:"InstanceChargeType"`
 
 	// 独享实例类型
-	InstanceType *string `json:"InstanceType,omitempty" name:"InstanceType"`
+	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
 
 	// 独享实例状态
-	InstanceState *string `json:"InstanceState,omitempty" name:"InstanceState"`
+	InstanceState *string `json:"InstanceState,omitnil" name:"InstanceState"`
 
 	// 独享实例创建时间
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 订单号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DealName *string `json:"DealName,omitempty" name:"DealName"`
+	DealName *string `json:"DealName,omitnil" name:"DealName"`
 
 	// 资源ID同唯一id
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 type InstanceParameterInput struct {
 	// ServiceRequestNumPreSec，ApiRequestNumPreSec
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 参数值
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type InstanceSummary struct {
 	// 专享实例总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 专享实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceSet []*InstanceInfo `json:"InstanceSet,omitempty" name:"InstanceSet"`
+	InstanceSet []*InstanceInfo `json:"InstanceSet,omitnil" name:"InstanceSet"`
 }
 
 type K8sLabel struct {
 	// Label的Key
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// Label的Value
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type K8sService struct {
 	// 权重
-	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+	Weight *int64 `json:"Weight,omitnil" name:"Weight"`
 
 	// k8s集群ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 容器命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 容器服务的名字
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// 服务的端口
-	Port *int64 `json:"Port,omitempty" name:"Port"`
+	Port *int64 `json:"Port,omitnil" name:"Port"`
 
 	// 额外选择的Pod的Label
-	ExtraLabels []*K8sLabel `json:"ExtraLabels,omitempty" name:"ExtraLabels"`
+	ExtraLabels []*K8sLabel `json:"ExtraLabels,omitnil" name:"ExtraLabels"`
 
 	// 自定义的服务名字，可选
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 type LogQuery struct {
 	// 检索字段
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 操作符
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 检索值
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type MicroService struct {
 	// 微服务集群ID。
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 微服务命名空间ID。
-	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+	NamespaceId *string `json:"NamespaceId,omitnil" name:"NamespaceId"`
 
 	// 微服务名称。
-	MicroServiceName *string `json:"MicroServiceName,omitempty" name:"MicroServiceName"`
+	MicroServiceName *string `json:"MicroServiceName,omitnil" name:"MicroServiceName"`
 }
 
 type MicroServiceReq struct {
 	// 微服务集群。
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 微服务命名空间。
-	NamespaceId *string `json:"NamespaceId,omitempty" name:"NamespaceId"`
+	NamespaceId *string `json:"NamespaceId,omitnil" name:"NamespaceId"`
 
 	// 微服务名称。
-	MicroServiceName *string `json:"MicroServiceName,omitempty" name:"MicroServiceName"`
+	MicroServiceName *string `json:"MicroServiceName,omitnil" name:"MicroServiceName"`
 }
 
 // Predefined struct for user
 type ModifyAPIDocRequestParams struct {
 	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 
 	// API文档名称
-	ApiDocName *string `json:"ApiDocName,omitempty" name:"ApiDocName"`
+	ApiDocName *string `json:"ApiDocName,omitnil" name:"ApiDocName"`
 
 	// 服务名称
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 环境名称
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 生成文档的API列表
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 type ModifyAPIDocRequest struct {
 	*tchttp.BaseRequest
 	
 	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 
 	// API文档名称
-	ApiDocName *string `json:"ApiDocName,omitempty" name:"ApiDocName"`
+	ApiDocName *string `json:"ApiDocName,omitnil" name:"ApiDocName"`
 
 	// 服务名称
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 环境名称
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 生成文档的API列表
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 func (r *ModifyAPIDocRequest) ToJsonString() string {
@@ -7352,10 +7352,10 @@ func (r *ModifyAPIDocRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAPIDocResponseParams struct {
 	// API文档基本信息
-	Result *APIDoc `json:"Result,omitempty" name:"Result"`
+	Result *APIDoc `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAPIDocResponse struct {
@@ -7377,26 +7377,26 @@ func (r *ModifyAPIDocResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyApiAppRequestParams struct {
 	// 应用唯一 ID。
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 
 	// 修改的应用名称
-	ApiAppName *string `json:"ApiAppName,omitempty" name:"ApiAppName"`
+	ApiAppName *string `json:"ApiAppName,omitnil" name:"ApiAppName"`
 
 	// 修改的应用描述
-	ApiAppDesc *string `json:"ApiAppDesc,omitempty" name:"ApiAppDesc"`
+	ApiAppDesc *string `json:"ApiAppDesc,omitnil" name:"ApiAppDesc"`
 }
 
 type ModifyApiAppRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用唯一 ID。
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 
 	// 修改的应用名称
-	ApiAppName *string `json:"ApiAppName,omitempty" name:"ApiAppName"`
+	ApiAppName *string `json:"ApiAppName,omitnil" name:"ApiAppName"`
 
 	// 修改的应用描述
-	ApiAppDesc *string `json:"ApiAppDesc,omitempty" name:"ApiAppDesc"`
+	ApiAppDesc *string `json:"ApiAppDesc,omitnil" name:"ApiAppDesc"`
 }
 
 func (r *ModifyApiAppRequest) ToJsonString() string {
@@ -7424,10 +7424,10 @@ func (r *ModifyApiAppRequest) FromJsonString(s string) error {
 type ModifyApiAppResponseParams struct {
 	// 修改操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyApiAppResponse struct {
@@ -7449,32 +7449,32 @@ func (r *ModifyApiAppResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyApiEnvironmentStrategyRequestParams struct {
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 限流值。
-	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
+	Strategy *int64 `json:"Strategy,omitnil" name:"Strategy"`
 
 	// 环境名。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// API列表。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 type ModifyApiEnvironmentStrategyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 限流值。
-	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
+	Strategy *int64 `json:"Strategy,omitnil" name:"Strategy"`
 
 	// 环境名。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// API列表。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 func (r *ModifyApiEnvironmentStrategyRequest) ToJsonString() string {
@@ -7503,10 +7503,10 @@ func (r *ModifyApiEnvironmentStrategyRequest) FromJsonString(s string) error {
 type ModifyApiEnvironmentStrategyResponseParams struct {
 	// 修改操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyApiEnvironmentStrategyResponse struct {
@@ -7528,38 +7528,38 @@ func (r *ModifyApiEnvironmentStrategyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyApiIncrementRequestParams struct {
 	// 服务ID
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 接口ID
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 需要修改的API auth类型(可选择OAUTH-授权API)
-	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
+	BusinessType *string `json:"BusinessType,omitnil" name:"BusinessType"`
 
 	// oauth接口需要修改的公钥值
-	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+	PublicKey *string `json:"PublicKey,omitnil" name:"PublicKey"`
 
 	// oauth接口重定向地址
-	LoginRedirectUrl *string `json:"LoginRedirectUrl,omitempty" name:"LoginRedirectUrl"`
+	LoginRedirectUrl *string `json:"LoginRedirectUrl,omitnil" name:"LoginRedirectUrl"`
 }
 
 type ModifyApiIncrementRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务ID
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 接口ID
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 需要修改的API auth类型(可选择OAUTH-授权API)
-	BusinessType *string `json:"BusinessType,omitempty" name:"BusinessType"`
+	BusinessType *string `json:"BusinessType,omitnil" name:"BusinessType"`
 
 	// oauth接口需要修改的公钥值
-	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+	PublicKey *string `json:"PublicKey,omitnil" name:"PublicKey"`
 
 	// oauth接口重定向地址
-	LoginRedirectUrl *string `json:"LoginRedirectUrl,omitempty" name:"LoginRedirectUrl"`
+	LoginRedirectUrl *string `json:"LoginRedirectUrl,omitnil" name:"LoginRedirectUrl"`
 }
 
 func (r *ModifyApiIncrementRequest) ToJsonString() string {
@@ -7588,7 +7588,7 @@ func (r *ModifyApiIncrementRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyApiIncrementResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyApiIncrementResponse struct {
@@ -7610,332 +7610,332 @@ func (r *ModifyApiIncrementResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyApiRequestParams struct {
 	// API 所在的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 的后端服务类型。支持HTTP、MOCK、TSF、CLB、SCF、WEBSOCKET、TARGET（内测）。
-	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
 
 	// 请求的前端配置。
-	RequestConfig *RequestConfig `json:"RequestConfig,omitempty" name:"RequestConfig"`
+	RequestConfig *RequestConfig `json:"RequestConfig,omitnil" name:"RequestConfig"`
 
 	// API 接口唯一 ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 用户自定义的 API 名称。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// 用户自定义的 API 接口描述。
-	ApiDesc *string `json:"ApiDesc,omitempty" name:"ApiDesc"`
+	ApiDesc *string `json:"ApiDesc,omitnil" name:"ApiDesc"`
 
 	// API 类型，支持NORMAL和TSF，默认为NORMAL。
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 
 	// API 鉴权类型。支持SECRET、NONE、OAUTH、APP。默认为NONE。
-	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+	AuthType *string `json:"AuthType,omitnil" name:"AuthType"`
 
 	// 是否需要签名认证，True 表示需要，False 表示不需要。待废弃。
-	AuthRequired *bool `json:"AuthRequired,omitempty" name:"AuthRequired"`
+	AuthRequired *bool `json:"AuthRequired,omitnil" name:"AuthRequired"`
 
 	// API 的后端服务超时时间，单位是秒。
-	ServiceTimeout *int64 `json:"ServiceTimeout,omitempty" name:"ServiceTimeout"`
+	ServiceTimeout *int64 `json:"ServiceTimeout,omitnil" name:"ServiceTimeout"`
 
 	// API 的前端请求类型，如 HTTP 或 HTTPS 或者 HTTP 和 HTTPS。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 是否需要开启跨域，Ture 表示需要，False 表示不需要。
-	EnableCORS *bool `json:"EnableCORS,omitempty" name:"EnableCORS"`
+	EnableCORS *bool `json:"EnableCORS,omitnil" name:"EnableCORS"`
 
 	// 常量参数。
-	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitempty" name:"ConstantParameters"`
+	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitnil" name:"ConstantParameters"`
 
 	// 前端请求参数。
-	RequestParameters []*ReqParameter `json:"RequestParameters,omitempty" name:"RequestParameters"`
+	RequestParameters []*ReqParameter `json:"RequestParameters,omitnil" name:"RequestParameters"`
 
 	// 当AuthType 为 OAUTH时，该字段有效， NORMAL：业务api   OAUTH：授权API。
-	ApiBusinessType *string `json:"ApiBusinessType,omitempty" name:"ApiBusinessType"`
+	ApiBusinessType *string `json:"ApiBusinessType,omitnil" name:"ApiBusinessType"`
 
 	// API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
-	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitempty" name:"ServiceMockReturnMessage"`
+	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitnil" name:"ServiceMockReturnMessage"`
 
 	// API绑定微服务列表。
-	MicroServices []*MicroServiceReq `json:"MicroServices,omitempty" name:"MicroServices"`
+	MicroServices []*MicroServiceReq `json:"MicroServices,omitnil" name:"MicroServices"`
 
 	// 微服务的负载均衡配置。
-	ServiceTsfLoadBalanceConf *TsfLoadBalanceConfResp `json:"ServiceTsfLoadBalanceConf,omitempty" name:"ServiceTsfLoadBalanceConf"`
+	ServiceTsfLoadBalanceConf *TsfLoadBalanceConfResp `json:"ServiceTsfLoadBalanceConf,omitnil" name:"ServiceTsfLoadBalanceConf"`
 
 	// 微服务的健康检查配置。
-	ServiceTsfHealthCheckConf *HealthCheckConf `json:"ServiceTsfHealthCheckConf,omitempty" name:"ServiceTsfHealthCheckConf"`
+	ServiceTsfHealthCheckConf *HealthCheckConf `json:"ServiceTsfHealthCheckConf,omitnil" name:"ServiceTsfHealthCheckConf"`
 
 	// target类型负载均衡配置。（内测阶段）
-	TargetServicesLoadBalanceConf *int64 `json:"TargetServicesLoadBalanceConf,omitempty" name:"TargetServicesLoadBalanceConf"`
+	TargetServicesLoadBalanceConf *int64 `json:"TargetServicesLoadBalanceConf,omitnil" name:"TargetServicesLoadBalanceConf"`
 
 	// target健康检查配置。（内测阶段）
-	TargetServicesHealthCheckConf *HealthCheckConf `json:"TargetServicesHealthCheckConf,omitempty" name:"TargetServicesHealthCheckConf"`
+	TargetServicesHealthCheckConf *HealthCheckConf `json:"TargetServicesHealthCheckConf,omitnil" name:"TargetServicesHealthCheckConf"`
 
 	// scf 函数名称。当后端类型是SCF时生效。
-	ServiceScfFunctionName *string `json:"ServiceScfFunctionName,omitempty" name:"ServiceScfFunctionName"`
+	ServiceScfFunctionName *string `json:"ServiceScfFunctionName,omitnil" name:"ServiceScfFunctionName"`
 
 	// scf websocket注册函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketRegisterFunctionName *string `json:"ServiceWebsocketRegisterFunctionName,omitempty" name:"ServiceWebsocketRegisterFunctionName"`
+	ServiceWebsocketRegisterFunctionName *string `json:"ServiceWebsocketRegisterFunctionName,omitnil" name:"ServiceWebsocketRegisterFunctionName"`
 
 	// scf websocket清理函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketCleanupFunctionName *string `json:"ServiceWebsocketCleanupFunctionName,omitempty" name:"ServiceWebsocketCleanupFunctionName"`
+	ServiceWebsocketCleanupFunctionName *string `json:"ServiceWebsocketCleanupFunctionName,omitnil" name:"ServiceWebsocketCleanupFunctionName"`
 
 	// scf websocket传输函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketTransportFunctionName *string `json:"ServiceWebsocketTransportFunctionName,omitempty" name:"ServiceWebsocketTransportFunctionName"`
+	ServiceWebsocketTransportFunctionName *string `json:"ServiceWebsocketTransportFunctionName,omitnil" name:"ServiceWebsocketTransportFunctionName"`
 
 	// scf 函数命名空间。当后端类型是SCF时生效。
-	ServiceScfFunctionNamespace *string `json:"ServiceScfFunctionNamespace,omitempty" name:"ServiceScfFunctionNamespace"`
+	ServiceScfFunctionNamespace *string `json:"ServiceScfFunctionNamespace,omitnil" name:"ServiceScfFunctionNamespace"`
 
 	// scf函数版本。当后端类型是SCF时生效。
-	ServiceScfFunctionQualifier *string `json:"ServiceScfFunctionQualifier,omitempty" name:"ServiceScfFunctionQualifier"`
+	ServiceScfFunctionQualifier *string `json:"ServiceScfFunctionQualifier,omitnil" name:"ServiceScfFunctionQualifier"`
 
 	// scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketRegisterFunctionNamespace *string `json:"ServiceWebsocketRegisterFunctionNamespace,omitempty" name:"ServiceWebsocketRegisterFunctionNamespace"`
+	ServiceWebsocketRegisterFunctionNamespace *string `json:"ServiceWebsocketRegisterFunctionNamespace,omitnil" name:"ServiceWebsocketRegisterFunctionNamespace"`
 
 	// scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketRegisterFunctionQualifier *string `json:"ServiceWebsocketRegisterFunctionQualifier,omitempty" name:"ServiceWebsocketRegisterFunctionQualifier"`
+	ServiceWebsocketRegisterFunctionQualifier *string `json:"ServiceWebsocketRegisterFunctionQualifier,omitnil" name:"ServiceWebsocketRegisterFunctionQualifier"`
 
 	// scf websocket传输函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketTransportFunctionNamespace *string `json:"ServiceWebsocketTransportFunctionNamespace,omitempty" name:"ServiceWebsocketTransportFunctionNamespace"`
+	ServiceWebsocketTransportFunctionNamespace *string `json:"ServiceWebsocketTransportFunctionNamespace,omitnil" name:"ServiceWebsocketTransportFunctionNamespace"`
 
 	// scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketTransportFunctionQualifier *string `json:"ServiceWebsocketTransportFunctionQualifier,omitempty" name:"ServiceWebsocketTransportFunctionQualifier"`
+	ServiceWebsocketTransportFunctionQualifier *string `json:"ServiceWebsocketTransportFunctionQualifier,omitnil" name:"ServiceWebsocketTransportFunctionQualifier"`
 
 	// scf websocket清理函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketCleanupFunctionNamespace *string `json:"ServiceWebsocketCleanupFunctionNamespace,omitempty" name:"ServiceWebsocketCleanupFunctionNamespace"`
+	ServiceWebsocketCleanupFunctionNamespace *string `json:"ServiceWebsocketCleanupFunctionNamespace,omitnil" name:"ServiceWebsocketCleanupFunctionNamespace"`
 
 	// scf websocket清理函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketCleanupFunctionQualifier *string `json:"ServiceWebsocketCleanupFunctionQualifier,omitempty" name:"ServiceWebsocketCleanupFunctionQualifier"`
+	ServiceWebsocketCleanupFunctionQualifier *string `json:"ServiceWebsocketCleanupFunctionQualifier,omitnil" name:"ServiceWebsocketCleanupFunctionQualifier"`
 
 	// 是否开启响应集成。当后端类型是SCF时生效。
-	ServiceScfIsIntegratedResponse *bool `json:"ServiceScfIsIntegratedResponse,omitempty" name:"ServiceScfIsIntegratedResponse"`
+	ServiceScfIsIntegratedResponse *bool `json:"ServiceScfIsIntegratedResponse,omitnil" name:"ServiceScfIsIntegratedResponse"`
 
 	// 开始调试后计费。（云市场预留字段）
-	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitempty" name:"IsDebugAfterCharge"`
+	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitnil" name:"IsDebugAfterCharge"`
 
 	// 标签。
-	TagSpecifications *Tag `json:"TagSpecifications,omitempty" name:"TagSpecifications"`
+	TagSpecifications *Tag `json:"TagSpecifications,omitnil" name:"TagSpecifications"`
 
 	// 是否删除自定义响应配置错误码，如果不传或者传 False，不删除，当传 True 时，则删除此 API 所有自定义响应配置错误码。
-	IsDeleteResponseErrorCodes *bool `json:"IsDeleteResponseErrorCodes,omitempty" name:"IsDeleteResponseErrorCodes"`
+	IsDeleteResponseErrorCodes *bool `json:"IsDeleteResponseErrorCodes,omitnil" name:"IsDeleteResponseErrorCodes"`
 
 	// 返回类型。
-	ResponseType *string `json:"ResponseType,omitempty" name:"ResponseType"`
+	ResponseType *string `json:"ResponseType,omitnil" name:"ResponseType"`
 
 	// 自定义响应配置成功响应示例。
-	ResponseSuccessExample *string `json:"ResponseSuccessExample,omitempty" name:"ResponseSuccessExample"`
+	ResponseSuccessExample *string `json:"ResponseSuccessExample,omitnil" name:"ResponseSuccessExample"`
 
 	// 自定义响应配置失败响应示例。
-	ResponseFailExample *string `json:"ResponseFailExample,omitempty" name:"ResponseFailExample"`
+	ResponseFailExample *string `json:"ResponseFailExample,omitnil" name:"ResponseFailExample"`
 
 	// API 的后端服务配置。
-	ServiceConfig *ServiceConfig `json:"ServiceConfig,omitempty" name:"ServiceConfig"`
+	ServiceConfig *ServiceConfig `json:"ServiceConfig,omitnil" name:"ServiceConfig"`
 
 	// 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。
-	AuthRelationApiId *string `json:"AuthRelationApiId,omitempty" name:"AuthRelationApiId"`
+	AuthRelationApiId *string `json:"AuthRelationApiId,omitnil" name:"AuthRelationApiId"`
 
 	// API的后端服务参数。
-	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitempty" name:"ServiceParameters"`
+	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitnil" name:"ServiceParameters"`
 
 	// oauth配置。当AuthType是OAUTH时生效。
-	OauthConfig *OauthConfig `json:"OauthConfig,omitempty" name:"OauthConfig"`
+	OauthConfig *OauthConfig `json:"OauthConfig,omitnil" name:"OauthConfig"`
 
 	// 用户自定义错误码配置。
-	ResponseErrorCodes []*ResponseErrorCodeReq `json:"ResponseErrorCodes,omitempty" name:"ResponseErrorCodes"`
+	ResponseErrorCodes []*ResponseErrorCodeReq `json:"ResponseErrorCodes,omitnil" name:"ResponseErrorCodes"`
 
 	// 是否开启Base64编码，只有后端为scf时才会生效。
-	IsBase64Encoded *bool `json:"IsBase64Encoded,omitempty" name:"IsBase64Encoded"`
+	IsBase64Encoded *bool `json:"IsBase64Encoded,omitnil" name:"IsBase64Encoded"`
 
 	// 是否开启Base64编码的header触发，只有后端为scf时才会生效。
-	IsBase64Trigger *bool `json:"IsBase64Trigger,omitempty" name:"IsBase64Trigger"`
+	IsBase64Trigger *bool `json:"IsBase64Trigger,omitnil" name:"IsBase64Trigger"`
 
 	// Header触发规则，总规则数不能超过10。
-	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitempty" name:"Base64EncodedTriggerRules"`
+	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitnil" name:"Base64EncodedTriggerRules"`
 
 	// 事件总线ID。
-	EventBusId *string `json:"EventBusId,omitempty" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
 
 	// scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
-	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitempty" name:"ServiceScfFunctionType"`
+	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitnil" name:"ServiceScfFunctionType"`
 
 	// EIAM应用类型。
-	EIAMAppType *string `json:"EIAMAppType,omitempty" name:"EIAMAppType"`
+	EIAMAppType *string `json:"EIAMAppType,omitnil" name:"EIAMAppType"`
 
 	// EIAM应用认证类型，支持仅认证（AuthenticationOnly）、认证和鉴权（Authorization）。
-	EIAMAuthType *string `json:"EIAMAuthType,omitempty" name:"EIAMAuthType"`
+	EIAMAuthType *string `json:"EIAMAuthType,omitnil" name:"EIAMAuthType"`
 
 	// EIAM应用Token 有效时间，单位为秒，默认为7200秒。
-	EIAMAppId *string `json:"EIAMAppId,omitempty" name:"EIAMAppId"`
+	EIAMAppId *string `json:"EIAMAppId,omitnil" name:"EIAMAppId"`
 
 	// EIAM应用ID。
-	TokenTimeout *int64 `json:"TokenTimeout,omitempty" name:"TokenTimeout"`
+	TokenTimeout *int64 `json:"TokenTimeout,omitnil" name:"TokenTimeout"`
 }
 
 type ModifyApiRequest struct {
 	*tchttp.BaseRequest
 	
 	// API 所在的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 的后端服务类型。支持HTTP、MOCK、TSF、CLB、SCF、WEBSOCKET、TARGET（内测）。
-	ServiceType *string `json:"ServiceType,omitempty" name:"ServiceType"`
+	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
 
 	// 请求的前端配置。
-	RequestConfig *RequestConfig `json:"RequestConfig,omitempty" name:"RequestConfig"`
+	RequestConfig *RequestConfig `json:"RequestConfig,omitnil" name:"RequestConfig"`
 
 	// API 接口唯一 ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// 用户自定义的 API 名称。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// 用户自定义的 API 接口描述。
-	ApiDesc *string `json:"ApiDesc,omitempty" name:"ApiDesc"`
+	ApiDesc *string `json:"ApiDesc,omitnil" name:"ApiDesc"`
 
 	// API 类型，支持NORMAL和TSF，默认为NORMAL。
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 
 	// API 鉴权类型。支持SECRET、NONE、OAUTH、APP。默认为NONE。
-	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+	AuthType *string `json:"AuthType,omitnil" name:"AuthType"`
 
 	// 是否需要签名认证，True 表示需要，False 表示不需要。待废弃。
-	AuthRequired *bool `json:"AuthRequired,omitempty" name:"AuthRequired"`
+	AuthRequired *bool `json:"AuthRequired,omitnil" name:"AuthRequired"`
 
 	// API 的后端服务超时时间，单位是秒。
-	ServiceTimeout *int64 `json:"ServiceTimeout,omitempty" name:"ServiceTimeout"`
+	ServiceTimeout *int64 `json:"ServiceTimeout,omitnil" name:"ServiceTimeout"`
 
 	// API 的前端请求类型，如 HTTP 或 HTTPS 或者 HTTP 和 HTTPS。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 是否需要开启跨域，Ture 表示需要，False 表示不需要。
-	EnableCORS *bool `json:"EnableCORS,omitempty" name:"EnableCORS"`
+	EnableCORS *bool `json:"EnableCORS,omitnil" name:"EnableCORS"`
 
 	// 常量参数。
-	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitempty" name:"ConstantParameters"`
+	ConstantParameters []*ConstantParameter `json:"ConstantParameters,omitnil" name:"ConstantParameters"`
 
 	// 前端请求参数。
-	RequestParameters []*ReqParameter `json:"RequestParameters,omitempty" name:"RequestParameters"`
+	RequestParameters []*ReqParameter `json:"RequestParameters,omitnil" name:"RequestParameters"`
 
 	// 当AuthType 为 OAUTH时，该字段有效， NORMAL：业务api   OAUTH：授权API。
-	ApiBusinessType *string `json:"ApiBusinessType,omitempty" name:"ApiBusinessType"`
+	ApiBusinessType *string `json:"ApiBusinessType,omitnil" name:"ApiBusinessType"`
 
 	// API 的后端 Mock 返回信息。如果 ServiceType 是 Mock，则此参数必传。
-	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitempty" name:"ServiceMockReturnMessage"`
+	ServiceMockReturnMessage *string `json:"ServiceMockReturnMessage,omitnil" name:"ServiceMockReturnMessage"`
 
 	// API绑定微服务列表。
-	MicroServices []*MicroServiceReq `json:"MicroServices,omitempty" name:"MicroServices"`
+	MicroServices []*MicroServiceReq `json:"MicroServices,omitnil" name:"MicroServices"`
 
 	// 微服务的负载均衡配置。
-	ServiceTsfLoadBalanceConf *TsfLoadBalanceConfResp `json:"ServiceTsfLoadBalanceConf,omitempty" name:"ServiceTsfLoadBalanceConf"`
+	ServiceTsfLoadBalanceConf *TsfLoadBalanceConfResp `json:"ServiceTsfLoadBalanceConf,omitnil" name:"ServiceTsfLoadBalanceConf"`
 
 	// 微服务的健康检查配置。
-	ServiceTsfHealthCheckConf *HealthCheckConf `json:"ServiceTsfHealthCheckConf,omitempty" name:"ServiceTsfHealthCheckConf"`
+	ServiceTsfHealthCheckConf *HealthCheckConf `json:"ServiceTsfHealthCheckConf,omitnil" name:"ServiceTsfHealthCheckConf"`
 
 	// target类型负载均衡配置。（内测阶段）
-	TargetServicesLoadBalanceConf *int64 `json:"TargetServicesLoadBalanceConf,omitempty" name:"TargetServicesLoadBalanceConf"`
+	TargetServicesLoadBalanceConf *int64 `json:"TargetServicesLoadBalanceConf,omitnil" name:"TargetServicesLoadBalanceConf"`
 
 	// target健康检查配置。（内测阶段）
-	TargetServicesHealthCheckConf *HealthCheckConf `json:"TargetServicesHealthCheckConf,omitempty" name:"TargetServicesHealthCheckConf"`
+	TargetServicesHealthCheckConf *HealthCheckConf `json:"TargetServicesHealthCheckConf,omitnil" name:"TargetServicesHealthCheckConf"`
 
 	// scf 函数名称。当后端类型是SCF时生效。
-	ServiceScfFunctionName *string `json:"ServiceScfFunctionName,omitempty" name:"ServiceScfFunctionName"`
+	ServiceScfFunctionName *string `json:"ServiceScfFunctionName,omitnil" name:"ServiceScfFunctionName"`
 
 	// scf websocket注册函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketRegisterFunctionName *string `json:"ServiceWebsocketRegisterFunctionName,omitempty" name:"ServiceWebsocketRegisterFunctionName"`
+	ServiceWebsocketRegisterFunctionName *string `json:"ServiceWebsocketRegisterFunctionName,omitnil" name:"ServiceWebsocketRegisterFunctionName"`
 
 	// scf websocket清理函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketCleanupFunctionName *string `json:"ServiceWebsocketCleanupFunctionName,omitempty" name:"ServiceWebsocketCleanupFunctionName"`
+	ServiceWebsocketCleanupFunctionName *string `json:"ServiceWebsocketCleanupFunctionName,omitnil" name:"ServiceWebsocketCleanupFunctionName"`
 
 	// scf websocket传输函数。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketTransportFunctionName *string `json:"ServiceWebsocketTransportFunctionName,omitempty" name:"ServiceWebsocketTransportFunctionName"`
+	ServiceWebsocketTransportFunctionName *string `json:"ServiceWebsocketTransportFunctionName,omitnil" name:"ServiceWebsocketTransportFunctionName"`
 
 	// scf 函数命名空间。当后端类型是SCF时生效。
-	ServiceScfFunctionNamespace *string `json:"ServiceScfFunctionNamespace,omitempty" name:"ServiceScfFunctionNamespace"`
+	ServiceScfFunctionNamespace *string `json:"ServiceScfFunctionNamespace,omitnil" name:"ServiceScfFunctionNamespace"`
 
 	// scf函数版本。当后端类型是SCF时生效。
-	ServiceScfFunctionQualifier *string `json:"ServiceScfFunctionQualifier,omitempty" name:"ServiceScfFunctionQualifier"`
+	ServiceScfFunctionQualifier *string `json:"ServiceScfFunctionQualifier,omitnil" name:"ServiceScfFunctionQualifier"`
 
 	// scf websocket注册函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketRegisterFunctionNamespace *string `json:"ServiceWebsocketRegisterFunctionNamespace,omitempty" name:"ServiceWebsocketRegisterFunctionNamespace"`
+	ServiceWebsocketRegisterFunctionNamespace *string `json:"ServiceWebsocketRegisterFunctionNamespace,omitnil" name:"ServiceWebsocketRegisterFunctionNamespace"`
 
 	// scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketRegisterFunctionQualifier *string `json:"ServiceWebsocketRegisterFunctionQualifier,omitempty" name:"ServiceWebsocketRegisterFunctionQualifier"`
+	ServiceWebsocketRegisterFunctionQualifier *string `json:"ServiceWebsocketRegisterFunctionQualifier,omitnil" name:"ServiceWebsocketRegisterFunctionQualifier"`
 
 	// scf websocket传输函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketTransportFunctionNamespace *string `json:"ServiceWebsocketTransportFunctionNamespace,omitempty" name:"ServiceWebsocketTransportFunctionNamespace"`
+	ServiceWebsocketTransportFunctionNamespace *string `json:"ServiceWebsocketTransportFunctionNamespace,omitnil" name:"ServiceWebsocketTransportFunctionNamespace"`
 
 	// scf websocket传输函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketTransportFunctionQualifier *string `json:"ServiceWebsocketTransportFunctionQualifier,omitempty" name:"ServiceWebsocketTransportFunctionQualifier"`
+	ServiceWebsocketTransportFunctionQualifier *string `json:"ServiceWebsocketTransportFunctionQualifier,omitnil" name:"ServiceWebsocketTransportFunctionQualifier"`
 
 	// scf websocket清理函数命名空间。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketCleanupFunctionNamespace *string `json:"ServiceWebsocketCleanupFunctionNamespace,omitempty" name:"ServiceWebsocketCleanupFunctionNamespace"`
+	ServiceWebsocketCleanupFunctionNamespace *string `json:"ServiceWebsocketCleanupFunctionNamespace,omitnil" name:"ServiceWebsocketCleanupFunctionNamespace"`
 
 	// scf websocket清理函数版本。当前端类型是WEBSOCKET且后端类型是SCF时生效。
-	ServiceWebsocketCleanupFunctionQualifier *string `json:"ServiceWebsocketCleanupFunctionQualifier,omitempty" name:"ServiceWebsocketCleanupFunctionQualifier"`
+	ServiceWebsocketCleanupFunctionQualifier *string `json:"ServiceWebsocketCleanupFunctionQualifier,omitnil" name:"ServiceWebsocketCleanupFunctionQualifier"`
 
 	// 是否开启响应集成。当后端类型是SCF时生效。
-	ServiceScfIsIntegratedResponse *bool `json:"ServiceScfIsIntegratedResponse,omitempty" name:"ServiceScfIsIntegratedResponse"`
+	ServiceScfIsIntegratedResponse *bool `json:"ServiceScfIsIntegratedResponse,omitnil" name:"ServiceScfIsIntegratedResponse"`
 
 	// 开始调试后计费。（云市场预留字段）
-	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitempty" name:"IsDebugAfterCharge"`
+	IsDebugAfterCharge *bool `json:"IsDebugAfterCharge,omitnil" name:"IsDebugAfterCharge"`
 
 	// 标签。
-	TagSpecifications *Tag `json:"TagSpecifications,omitempty" name:"TagSpecifications"`
+	TagSpecifications *Tag `json:"TagSpecifications,omitnil" name:"TagSpecifications"`
 
 	// 是否删除自定义响应配置错误码，如果不传或者传 False，不删除，当传 True 时，则删除此 API 所有自定义响应配置错误码。
-	IsDeleteResponseErrorCodes *bool `json:"IsDeleteResponseErrorCodes,omitempty" name:"IsDeleteResponseErrorCodes"`
+	IsDeleteResponseErrorCodes *bool `json:"IsDeleteResponseErrorCodes,omitnil" name:"IsDeleteResponseErrorCodes"`
 
 	// 返回类型。
-	ResponseType *string `json:"ResponseType,omitempty" name:"ResponseType"`
+	ResponseType *string `json:"ResponseType,omitnil" name:"ResponseType"`
 
 	// 自定义响应配置成功响应示例。
-	ResponseSuccessExample *string `json:"ResponseSuccessExample,omitempty" name:"ResponseSuccessExample"`
+	ResponseSuccessExample *string `json:"ResponseSuccessExample,omitnil" name:"ResponseSuccessExample"`
 
 	// 自定义响应配置失败响应示例。
-	ResponseFailExample *string `json:"ResponseFailExample,omitempty" name:"ResponseFailExample"`
+	ResponseFailExample *string `json:"ResponseFailExample,omitnil" name:"ResponseFailExample"`
 
 	// API 的后端服务配置。
-	ServiceConfig *ServiceConfig `json:"ServiceConfig,omitempty" name:"ServiceConfig"`
+	ServiceConfig *ServiceConfig `json:"ServiceConfig,omitnil" name:"ServiceConfig"`
 
 	// 关联的授权API 唯一 ID，当AuthType为OAUTH且ApiBusinessType为NORMAL时生效。标示业务API绑定的oauth2.0授权API唯一ID。
-	AuthRelationApiId *string `json:"AuthRelationApiId,omitempty" name:"AuthRelationApiId"`
+	AuthRelationApiId *string `json:"AuthRelationApiId,omitnil" name:"AuthRelationApiId"`
 
 	// API的后端服务参数。
-	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitempty" name:"ServiceParameters"`
+	ServiceParameters []*ServiceParameter `json:"ServiceParameters,omitnil" name:"ServiceParameters"`
 
 	// oauth配置。当AuthType是OAUTH时生效。
-	OauthConfig *OauthConfig `json:"OauthConfig,omitempty" name:"OauthConfig"`
+	OauthConfig *OauthConfig `json:"OauthConfig,omitnil" name:"OauthConfig"`
 
 	// 用户自定义错误码配置。
-	ResponseErrorCodes []*ResponseErrorCodeReq `json:"ResponseErrorCodes,omitempty" name:"ResponseErrorCodes"`
+	ResponseErrorCodes []*ResponseErrorCodeReq `json:"ResponseErrorCodes,omitnil" name:"ResponseErrorCodes"`
 
 	// 是否开启Base64编码，只有后端为scf时才会生效。
-	IsBase64Encoded *bool `json:"IsBase64Encoded,omitempty" name:"IsBase64Encoded"`
+	IsBase64Encoded *bool `json:"IsBase64Encoded,omitnil" name:"IsBase64Encoded"`
 
 	// 是否开启Base64编码的header触发，只有后端为scf时才会生效。
-	IsBase64Trigger *bool `json:"IsBase64Trigger,omitempty" name:"IsBase64Trigger"`
+	IsBase64Trigger *bool `json:"IsBase64Trigger,omitnil" name:"IsBase64Trigger"`
 
 	// Header触发规则，总规则数不能超过10。
-	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitempty" name:"Base64EncodedTriggerRules"`
+	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitnil" name:"Base64EncodedTriggerRules"`
 
 	// 事件总线ID。
-	EventBusId *string `json:"EventBusId,omitempty" name:"EventBusId"`
+	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
 
 	// scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
-	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitempty" name:"ServiceScfFunctionType"`
+	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitnil" name:"ServiceScfFunctionType"`
 
 	// EIAM应用类型。
-	EIAMAppType *string `json:"EIAMAppType,omitempty" name:"EIAMAppType"`
+	EIAMAppType *string `json:"EIAMAppType,omitnil" name:"EIAMAppType"`
 
 	// EIAM应用认证类型，支持仅认证（AuthenticationOnly）、认证和鉴权（Authorization）。
-	EIAMAuthType *string `json:"EIAMAuthType,omitempty" name:"EIAMAuthType"`
+	EIAMAuthType *string `json:"EIAMAuthType,omitnil" name:"EIAMAuthType"`
 
 	// EIAM应用Token 有效时间，单位为秒，默认为7200秒。
-	EIAMAppId *string `json:"EIAMAppId,omitempty" name:"EIAMAppId"`
+	EIAMAppId *string `json:"EIAMAppId,omitnil" name:"EIAMAppId"`
 
 	// EIAM应用ID。
-	TokenTimeout *int64 `json:"TokenTimeout,omitempty" name:"TokenTimeout"`
+	TokenTimeout *int64 `json:"TokenTimeout,omitnil" name:"TokenTimeout"`
 }
 
 func (r *ModifyApiRequest) ToJsonString() string {
@@ -8013,7 +8013,7 @@ func (r *ModifyApiRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyApiResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyApiResponse struct {
@@ -8035,32 +8035,32 @@ func (r *ModifyApiResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyExclusiveInstanceRequestParams struct {
 	// 独享实例唯一id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 独享实例name
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 独享实例描述
-	InstanceDescription *string `json:"InstanceDescription,omitempty" name:"InstanceDescription"`
+	InstanceDescription *string `json:"InstanceDescription,omitnil" name:"InstanceDescription"`
 
 	// 独享实例参数配置
-	Parameters []*InstanceParameterInput `json:"Parameters,omitempty" name:"Parameters"`
+	Parameters []*InstanceParameterInput `json:"Parameters,omitnil" name:"Parameters"`
 }
 
 type ModifyExclusiveInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 独享实例唯一id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 独享实例name
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 独享实例描述
-	InstanceDescription *string `json:"InstanceDescription,omitempty" name:"InstanceDescription"`
+	InstanceDescription *string `json:"InstanceDescription,omitnil" name:"InstanceDescription"`
 
 	// 独享实例参数配置
-	Parameters []*InstanceParameterInput `json:"Parameters,omitempty" name:"Parameters"`
+	Parameters []*InstanceParameterInput `json:"Parameters,omitnil" name:"Parameters"`
 }
 
 func (r *ModifyExclusiveInstanceRequest) ToJsonString() string {
@@ -8088,10 +8088,10 @@ func (r *ModifyExclusiveInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyExclusiveInstanceResponseParams struct {
 	// 独享实例详情信息
-	Result *InstanceDetail `json:"Result,omitempty" name:"Result"`
+	Result *InstanceDetail `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyExclusiveInstanceResponse struct {
@@ -8113,26 +8113,26 @@ func (r *ModifyExclusiveInstanceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyIPStrategyRequestParams struct {
 	// 待修改的策略所属服务的唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待修改的策略唯一ID。
-	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
 
 	// 待修改的策略详情。
-	StrategyData *string `json:"StrategyData,omitempty" name:"StrategyData"`
+	StrategyData *string `json:"StrategyData,omitnil" name:"StrategyData"`
 }
 
 type ModifyIPStrategyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待修改的策略所属服务的唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待修改的策略唯一ID。
-	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
 
 	// 待修改的策略详情。
-	StrategyData *string `json:"StrategyData,omitempty" name:"StrategyData"`
+	StrategyData *string `json:"StrategyData,omitnil" name:"StrategyData"`
 }
 
 func (r *ModifyIPStrategyRequest) ToJsonString() string {
@@ -8160,10 +8160,10 @@ func (r *ModifyIPStrategyRequest) FromJsonString(s string) error {
 type ModifyIPStrategyResponseParams struct {
 	// 修改操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyIPStrategyResponse struct {
@@ -8185,32 +8185,32 @@ func (r *ModifyIPStrategyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPluginRequestParams struct {
 	// 要修改的插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 要修改的API网关插件名称。最长50个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
-	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+	PluginName *string `json:"PluginName,omitnil" name:"PluginName"`
 
 	// 要修改的插件描述，限定200字以内。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 要修改的插件定义语句，支持json。
-	PluginData *string `json:"PluginData,omitempty" name:"PluginData"`
+	PluginData *string `json:"PluginData,omitnil" name:"PluginData"`
 }
 
 type ModifyPluginRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要修改的插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 要修改的API网关插件名称。最长50个字符，支持 a-z,A-Z,0-9,_, 必须字母开头，字母或者数字结尾。
-	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+	PluginName *string `json:"PluginName,omitnil" name:"PluginName"`
 
 	// 要修改的插件描述，限定200字以内。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 要修改的插件定义语句，支持json。
-	PluginData *string `json:"PluginData,omitempty" name:"PluginData"`
+	PluginData *string `json:"PluginData,omitnil" name:"PluginData"`
 }
 
 func (r *ModifyPluginRequest) ToJsonString() string {
@@ -8238,10 +8238,10 @@ func (r *ModifyPluginRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPluginResponseParams struct {
 	// 修改操作是否成功。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyPluginResponse struct {
@@ -8263,26 +8263,26 @@ func (r *ModifyPluginResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyServiceEnvironmentStrategyRequestParams struct {
 	// 服务的唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 限流值。
-	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
+	Strategy *int64 `json:"Strategy,omitnil" name:"Strategy"`
 
 	// 环境列表。
-	EnvironmentNames []*string `json:"EnvironmentNames,omitempty" name:"EnvironmentNames"`
+	EnvironmentNames []*string `json:"EnvironmentNames,omitnil" name:"EnvironmentNames"`
 }
 
 type ModifyServiceEnvironmentStrategyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务的唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 限流值。
-	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
+	Strategy *int64 `json:"Strategy,omitnil" name:"Strategy"`
 
 	// 环境列表。
-	EnvironmentNames []*string `json:"EnvironmentNames,omitempty" name:"EnvironmentNames"`
+	EnvironmentNames []*string `json:"EnvironmentNames,omitnil" name:"EnvironmentNames"`
 }
 
 func (r *ModifyServiceEnvironmentStrategyRequest) ToJsonString() string {
@@ -8310,10 +8310,10 @@ func (r *ModifyServiceEnvironmentStrategyRequest) FromJsonString(s string) error
 type ModifyServiceEnvironmentStrategyResponseParams struct {
 	// 修改操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyServiceEnvironmentStrategyResponse struct {
@@ -8335,44 +8335,44 @@ func (r *ModifyServiceEnvironmentStrategyResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type ModifyServiceRequestParams struct {
 	// 待修改服务的唯一 Id。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 修改后的服务名称。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// 修改后的服务描述。
-	ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
+	ServiceDesc *string `json:"ServiceDesc,omitnil" name:"ServiceDesc"`
 
 	// 修改后的服务前端请求类型，如 http、https和 http&https。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
-	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
+	NetTypes []*string `json:"NetTypes,omitnil" name:"NetTypes"`
 
 	// vpc属性，选择VPC后不可修改。为服务选择VPC后，可对接该VPC下的后端资源
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 }
 
 type ModifyServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待修改服务的唯一 Id。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 修改后的服务名称。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// 修改后的服务描述。
-	ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
+	ServiceDesc *string `json:"ServiceDesc,omitnil" name:"ServiceDesc"`
 
 	// 修改后的服务前端请求类型，如 http、https和 http&https。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 网络类型列表，用于指定支持的访问类型，INNER为内网访问，OUTER为外网访问。默认为OUTER。
-	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
+	NetTypes []*string `json:"NetTypes,omitnil" name:"NetTypes"`
 
 	// vpc属性，选择VPC后不可修改。为服务选择VPC后，可对接该VPC下的后端资源
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 }
 
 func (r *ModifyServiceRequest) ToJsonString() string {
@@ -8402,7 +8402,7 @@ func (r *ModifyServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyServiceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyServiceResponse struct {
@@ -8424,56 +8424,56 @@ func (r *ModifyServiceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySubDomainRequestParams struct {
 	// 服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待修改路径映射的自定义的域名。
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 
 	// 是否修改为使用默认路径映射。为 true，表示使用默认路径映射，为 false，表示使用自定义路径映射。
-	IsDefaultMapping *bool `json:"IsDefaultMapping,omitempty" name:"IsDefaultMapping"`
+	IsDefaultMapping *bool `json:"IsDefaultMapping,omitnil" name:"IsDefaultMapping"`
 
 	// 证书 ID，协议包含 HTTPS 的时候要传该字段。
-	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
 
 	// 修改后的自定义域名协议类型。（http，https 或 http&https)
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 修改后的路径映射列表。
-	PathMappingSet []*PathMapping `json:"PathMappingSet,omitempty" name:"PathMappingSet"`
+	PathMappingSet []*PathMapping `json:"PathMappingSet,omitnil" name:"PathMappingSet"`
 
 	// 网络类型 （'INNER' 或 'OUTER'）
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
-	IsForcedHttps *bool `json:"IsForcedHttps,omitempty" name:"IsForcedHttps"`
+	IsForcedHttps *bool `json:"IsForcedHttps,omitnil" name:"IsForcedHttps"`
 }
 
 type ModifySubDomainRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待修改路径映射的自定义的域名。
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 
 	// 是否修改为使用默认路径映射。为 true，表示使用默认路径映射，为 false，表示使用自定义路径映射。
-	IsDefaultMapping *bool `json:"IsDefaultMapping,omitempty" name:"IsDefaultMapping"`
+	IsDefaultMapping *bool `json:"IsDefaultMapping,omitnil" name:"IsDefaultMapping"`
 
 	// 证书 ID，协议包含 HTTPS 的时候要传该字段。
-	CertificateId *string `json:"CertificateId,omitempty" name:"CertificateId"`
+	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
 
 	// 修改后的自定义域名协议类型。（http，https 或 http&https)
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 修改后的路径映射列表。
-	PathMappingSet []*PathMapping `json:"PathMappingSet,omitempty" name:"PathMappingSet"`
+	PathMappingSet []*PathMapping `json:"PathMappingSet,omitnil" name:"PathMappingSet"`
 
 	// 网络类型 （'INNER' 或 'OUTER'）
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 是否将HTTP请求强制跳转 HTTPS，默认为false。参数为 true时，API网关会将所有使用该自定义域名的 HTTP 协议的请求重定向至 HTTPS 协议进行转发。
-	IsForcedHttps *bool `json:"IsForcedHttps,omitempty" name:"IsForcedHttps"`
+	IsForcedHttps *bool `json:"IsForcedHttps,omitnil" name:"IsForcedHttps"`
 }
 
 func (r *ModifySubDomainRequest) ToJsonString() string {
@@ -8505,10 +8505,10 @@ func (r *ModifySubDomainRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySubDomainResponseParams struct {
 	// 修改自定义域名操作是否成功。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifySubDomainResponse struct {
@@ -8530,80 +8530,80 @@ func (r *ModifySubDomainResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyUpstreamRequestParams struct {
 	// 后端通道唯一ID
-	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+	UpstreamId *string `json:"UpstreamId,omitnil" name:"UpstreamId"`
 
 	// 后端通道名字
-	UpstreamName *string `json:"UpstreamName,omitempty" name:"UpstreamName"`
+	UpstreamName *string `json:"UpstreamName,omitnil" name:"UpstreamName"`
 
 	// 后端通道描述
-	UpstreamDescription *string `json:"UpstreamDescription,omitempty" name:"UpstreamDescription"`
+	UpstreamDescription *string `json:"UpstreamDescription,omitnil" name:"UpstreamDescription"`
 
 	// 后端协议，取值范围：HTTP, HTTPS
-	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+	Scheme *string `json:"Scheme,omitnil" name:"Scheme"`
 
 	// 后端访问类型，取值范围：IP_PORT, K8S
-	UpstreamType *string `json:"UpstreamType,omitempty" name:"UpstreamType"`
+	UpstreamType *string `json:"UpstreamType,omitnil" name:"UpstreamType"`
 
 	// 负载均衡算法，取值范围：ROUND_ROBIN
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// VPC唯一ID
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// 请求重试次数，默认3次
-	Retries *uint64 `json:"Retries,omitempty" name:"Retries"`
+	Retries *uint64 `json:"Retries,omitnil" name:"Retries"`
 
 	// 网关转发到后端的 Host 请求头
-	UpstreamHost *string `json:"UpstreamHost,omitempty" name:"UpstreamHost"`
+	UpstreamHost *string `json:"UpstreamHost,omitnil" name:"UpstreamHost"`
 
 	// 后端节点列表
-	Nodes []*UpstreamNode `json:"Nodes,omitempty" name:"Nodes"`
+	Nodes []*UpstreamNode `json:"Nodes,omitnil" name:"Nodes"`
 
 	// 健康检查配置，目前只支持VPC通道
-	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitempty" name:"HealthChecker"`
+	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitnil" name:"HealthChecker"`
 
 	// 容器服务配置
-	K8sService []*K8sService `json:"K8sService,omitempty" name:"K8sService"`
+	K8sService []*K8sService `json:"K8sService,omitnil" name:"K8sService"`
 }
 
 type ModifyUpstreamRequest struct {
 	*tchttp.BaseRequest
 	
 	// 后端通道唯一ID
-	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+	UpstreamId *string `json:"UpstreamId,omitnil" name:"UpstreamId"`
 
 	// 后端通道名字
-	UpstreamName *string `json:"UpstreamName,omitempty" name:"UpstreamName"`
+	UpstreamName *string `json:"UpstreamName,omitnil" name:"UpstreamName"`
 
 	// 后端通道描述
-	UpstreamDescription *string `json:"UpstreamDescription,omitempty" name:"UpstreamDescription"`
+	UpstreamDescription *string `json:"UpstreamDescription,omitnil" name:"UpstreamDescription"`
 
 	// 后端协议，取值范围：HTTP, HTTPS
-	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+	Scheme *string `json:"Scheme,omitnil" name:"Scheme"`
 
 	// 后端访问类型，取值范围：IP_PORT, K8S
-	UpstreamType *string `json:"UpstreamType,omitempty" name:"UpstreamType"`
+	UpstreamType *string `json:"UpstreamType,omitnil" name:"UpstreamType"`
 
 	// 负载均衡算法，取值范围：ROUND_ROBIN
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// VPC唯一ID
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// 请求重试次数，默认3次
-	Retries *uint64 `json:"Retries,omitempty" name:"Retries"`
+	Retries *uint64 `json:"Retries,omitnil" name:"Retries"`
 
 	// 网关转发到后端的 Host 请求头
-	UpstreamHost *string `json:"UpstreamHost,omitempty" name:"UpstreamHost"`
+	UpstreamHost *string `json:"UpstreamHost,omitnil" name:"UpstreamHost"`
 
 	// 后端节点列表
-	Nodes []*UpstreamNode `json:"Nodes,omitempty" name:"Nodes"`
+	Nodes []*UpstreamNode `json:"Nodes,omitnil" name:"Nodes"`
 
 	// 健康检查配置，目前只支持VPC通道
-	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitempty" name:"HealthChecker"`
+	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitnil" name:"HealthChecker"`
 
 	// 容器服务配置
-	K8sService []*K8sService `json:"K8sService,omitempty" name:"K8sService"`
+	K8sService []*K8sService `json:"K8sService,omitnil" name:"K8sService"`
 }
 
 func (r *ModifyUpstreamRequest) ToJsonString() string {
@@ -8640,10 +8640,10 @@ func (r *ModifyUpstreamRequest) FromJsonString(s string) error {
 type ModifyUpstreamResponseParams struct {
 	// 返回修改后的后端通道信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ModifyUpstreamResultInfo `json:"Result,omitempty" name:"Result"`
+	Result *ModifyUpstreamResultInfo `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyUpstreamResponse struct {
@@ -8664,83 +8664,83 @@ func (r *ModifyUpstreamResponse) FromJsonString(s string) error {
 
 type ModifyUpstreamResultInfo struct {
 	// 后端通道唯一ID
-	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+	UpstreamId *string `json:"UpstreamId,omitnil" name:"UpstreamId"`
 
 	// 后端通道名字
-	UpstreamName *string `json:"UpstreamName,omitempty" name:"UpstreamName"`
+	UpstreamName *string `json:"UpstreamName,omitnil" name:"UpstreamName"`
 
 	// 后端通道描述
-	UpstreamDescription *string `json:"UpstreamDescription,omitempty" name:"UpstreamDescription"`
+	UpstreamDescription *string `json:"UpstreamDescription,omitnil" name:"UpstreamDescription"`
 
 	// 后端协议，取值范围：HTTP, HTTPS
-	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+	Scheme *string `json:"Scheme,omitnil" name:"Scheme"`
 
 	// 负载均衡算法，取值范围：ROUND_ROBIN
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// VPC唯一ID
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// 请求重试次数
-	Retries *uint64 `json:"Retries,omitempty" name:"Retries"`
+	Retries *uint64 `json:"Retries,omitnil" name:"Retries"`
 
 	// 后端节点
-	Nodes []*UpstreamNode `json:"Nodes,omitempty" name:"Nodes"`
+	Nodes []*UpstreamNode `json:"Nodes,omitnil" name:"Nodes"`
 
 	// 创建时间
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 健康检查配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitempty" name:"HealthChecker"`
+	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitnil" name:"HealthChecker"`
 
 	// 后端的类型，取值范围：IP_PORT, K8S
-	UpstreamType *string `json:"UpstreamType,omitempty" name:"UpstreamType"`
+	UpstreamType *string `json:"UpstreamType,omitnil" name:"UpstreamType"`
 
 	// K8S容器服务配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	K8sServices []*K8sService `json:"K8sServices,omitempty" name:"K8sServices"`
+	K8sServices []*K8sService `json:"K8sServices,omitnil" name:"K8sServices"`
 
 	// 网关转发给后端的Host请求头
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpstreamHost *string `json:"UpstreamHost,omitempty" name:"UpstreamHost"`
+	UpstreamHost *string `json:"UpstreamHost,omitnil" name:"UpstreamHost"`
 }
 
 // Predefined struct for user
 type ModifyUsagePlanRequestParams struct {
 	// 使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 修改后的用户自定义的使用计划名称。
-	UsagePlanName *string `json:"UsagePlanName,omitempty" name:"UsagePlanName"`
+	UsagePlanName *string `json:"UsagePlanName,omitnil" name:"UsagePlanName"`
 
 	// 修改后的用户自定义的使用计划描述。
-	UsagePlanDesc *string `json:"UsagePlanDesc,omitempty" name:"UsagePlanDesc"`
+	UsagePlanDesc *string `json:"UsagePlanDesc,omitnil" name:"UsagePlanDesc"`
 
 	// 请求配额总数，取值范围为-1或者[1, 99999999]，默认为-1，表示不开启。
-	MaxRequestNum *int64 `json:"MaxRequestNum,omitempty" name:"MaxRequestNum"`
+	MaxRequestNum *int64 `json:"MaxRequestNum,omitnil" name:"MaxRequestNum"`
 
 	// 每秒请求限制数，取值范围为-1或者[1, 2000]，默认-1，表示不开启。
-	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitempty" name:"MaxRequestNumPreSec"`
+	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitnil" name:"MaxRequestNumPreSec"`
 }
 
 type ModifyUsagePlanRequest struct {
 	*tchttp.BaseRequest
 	
 	// 使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 修改后的用户自定义的使用计划名称。
-	UsagePlanName *string `json:"UsagePlanName,omitempty" name:"UsagePlanName"`
+	UsagePlanName *string `json:"UsagePlanName,omitnil" name:"UsagePlanName"`
 
 	// 修改后的用户自定义的使用计划描述。
-	UsagePlanDesc *string `json:"UsagePlanDesc,omitempty" name:"UsagePlanDesc"`
+	UsagePlanDesc *string `json:"UsagePlanDesc,omitnil" name:"UsagePlanDesc"`
 
 	// 请求配额总数，取值范围为-1或者[1, 99999999]，默认为-1，表示不开启。
-	MaxRequestNum *int64 `json:"MaxRequestNum,omitempty" name:"MaxRequestNum"`
+	MaxRequestNum *int64 `json:"MaxRequestNum,omitnil" name:"MaxRequestNum"`
 
 	// 每秒请求限制数，取值范围为-1或者[1, 2000]，默认-1，表示不开启。
-	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitempty" name:"MaxRequestNumPreSec"`
+	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitnil" name:"MaxRequestNumPreSec"`
 }
 
 func (r *ModifyUsagePlanRequest) ToJsonString() string {
@@ -8770,10 +8770,10 @@ func (r *ModifyUsagePlanRequest) FromJsonString(s string) error {
 type ModifyUsagePlanResponseParams struct {
 	// 使用计划详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *UsagePlanInfo `json:"Result,omitempty" name:"Result"`
+	Result *UsagePlanInfo `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyUsagePlanResponse struct {
@@ -8794,159 +8794,159 @@ func (r *ModifyUsagePlanResponse) FromJsonString(s string) error {
 
 type NetworkConfig struct {
 	// 最大出带宽
-	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitempty" name:"InternetMaxBandwidthOut"`
+	InternetMaxBandwidthOut *int64 `json:"InternetMaxBandwidthOut,omitnil" name:"InternetMaxBandwidthOut"`
 
 	// EnableInternetInbound信息
-	EnableInternetInbound *bool `json:"EnableInternetInbound,omitempty" name:"EnableInternetInbound"`
+	EnableInternetInbound *bool `json:"EnableInternetInbound,omitnil" name:"EnableInternetInbound"`
 
 	// EnableInternetOutbound信息
-	EnableInternetOutbound *bool `json:"EnableInternetOutbound,omitempty" name:"EnableInternetOutbound"`
+	EnableInternetOutbound *bool `json:"EnableInternetOutbound,omitnil" name:"EnableInternetOutbound"`
 
 	// InboundIpAddresses信息
-	InboundIpAddresses []*string `json:"InboundIpAddresses,omitempty" name:"InboundIpAddresses"`
+	InboundIpAddresses []*string `json:"InboundIpAddresses,omitnil" name:"InboundIpAddresses"`
 
 	// OutboundIpAddresses信息
-	OutboundIpAddresses []*string `json:"OutboundIpAddresses,omitempty" name:"OutboundIpAddresses"`
+	OutboundIpAddresses []*string `json:"OutboundIpAddresses,omitnil" name:"OutboundIpAddresses"`
 }
 
 type OauthConfig struct {
 	// 公钥，用于验证用户token。
-	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+	PublicKey *string `json:"PublicKey,omitnil" name:"PublicKey"`
 
 	// token传递位置。
-	TokenLocation *string `json:"TokenLocation,omitempty" name:"TokenLocation"`
+	TokenLocation *string `json:"TokenLocation,omitnil" name:"TokenLocation"`
 
 	// 重定向地址，用于引导用户登录操作。
-	LoginRedirectUrl *string `json:"LoginRedirectUrl,omitempty" name:"LoginRedirectUrl"`
+	LoginRedirectUrl *string `json:"LoginRedirectUrl,omitnil" name:"LoginRedirectUrl"`
 }
 
 type ParameterInfo struct {
 	// 名字
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 当前值
-	Value *int64 `json:"Value,omitempty" name:"Value"`
+	Value *int64 `json:"Value,omitnil" name:"Value"`
 
 	// 默认值
-	Default *int64 `json:"Default,omitempty" name:"Default"`
+	Default *int64 `json:"Default,omitnil" name:"Default"`
 
 	// 单位
-	Unit *string `json:"Unit,omitempty" name:"Unit"`
+	Unit *string `json:"Unit,omitnil" name:"Unit"`
 
 	// 类型, integer|string
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 最小
-	Minimum *int64 `json:"Minimum,omitempty" name:"Minimum"`
+	Minimum *int64 `json:"Minimum,omitnil" name:"Minimum"`
 
 	// 最大
-	Maximum *int64 `json:"Maximum,omitempty" name:"Maximum"`
+	Maximum *int64 `json:"Maximum,omitnil" name:"Maximum"`
 
 	// 修改时间
 	//
 	// Deprecated: ModifedTime is deprecated.
-	ModifedTime *string `json:"ModifedTime,omitempty" name:"ModifedTime"`
+	ModifedTime *string `json:"ModifedTime,omitnil" name:"ModifedTime"`
 
 	// 字符类型的值，当Type为string时才有意义
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ValueString *string `json:"ValueString,omitempty" name:"ValueString"`
+	ValueString *string `json:"ValueString,omitnil" name:"ValueString"`
 
 	// 字符类型的默认值，当Type为string时才有意义
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefaultValueString *string `json:"DefaultValueString,omitempty" name:"DefaultValueString"`
+	DefaultValueString *string `json:"DefaultValueString,omitnil" name:"DefaultValueString"`
 
 	// 可调整范围
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Range *string `json:"Range,omitempty" name:"Range"`
+	Range *string `json:"Range,omitnil" name:"Range"`
 }
 
 type PathMapping struct {
 	// 路径。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// 发布环境，可选值为“test”、 ”prepub“、”release“。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 }
 
 type Plugin struct {
 	// 插件ID。
-	PluginId *string `json:"PluginId,omitempty" name:"PluginId"`
+	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
 	// 插件名称。
-	PluginName *string `json:"PluginName,omitempty" name:"PluginName"`
+	PluginName *string `json:"PluginName,omitnil" name:"PluginName"`
 
 	// 插件类型。
-	PluginType *string `json:"PluginType,omitempty" name:"PluginType"`
+	PluginType *string `json:"PluginType,omitnil" name:"PluginType"`
 
 	// 插件定义语句。
-	PluginData *string `json:"PluginData,omitempty" name:"PluginData"`
+	PluginData *string `json:"PluginData,omitnil" name:"PluginData"`
 
 	// 插件描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 插件创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 插件修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// 插件绑定的API总数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AttachedApiTotalCount *int64 `json:"AttachedApiTotalCount,omitempty" name:"AttachedApiTotalCount"`
+	AttachedApiTotalCount *int64 `json:"AttachedApiTotalCount,omitnil" name:"AttachedApiTotalCount"`
 
 	// 插件绑定的API信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AttachedApis []*AttachedApiInfo `json:"AttachedApis,omitempty" name:"AttachedApis"`
+	AttachedApis []*AttachedApiInfo `json:"AttachedApis,omitnil" name:"AttachedApis"`
 }
 
 type PluginSummary struct {
 	// 插件个数。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 插件详情。
-	PluginSet []*Plugin `json:"PluginSet,omitempty" name:"PluginSet"`
+	PluginSet []*Plugin `json:"PluginSet,omitnil" name:"PluginSet"`
 }
 
 type ReleaseService struct {
 	// 发布时的备注信息填写。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReleaseDesc *string `json:"ReleaseDesc,omitempty" name:"ReleaseDesc"`
+	ReleaseDesc *string `json:"ReleaseDesc,omitnil" name:"ReleaseDesc"`
 
 	// 发布的版本id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReleaseVersion *string `json:"ReleaseVersion,omitempty" name:"ReleaseVersion"`
+	ReleaseVersion *string `json:"ReleaseVersion,omitnil" name:"ReleaseVersion"`
 }
 
 // Predefined struct for user
 type ReleaseServiceRequestParams struct {
 	// 待发布服务的唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待发布的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 本次的发布描述。
-	ReleaseDesc *string `json:"ReleaseDesc,omitempty" name:"ReleaseDesc"`
+	ReleaseDesc *string `json:"ReleaseDesc,omitnil" name:"ReleaseDesc"`
 
 	// apiId列表，预留字段，默认全量api发布。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 type ReleaseServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待发布服务的唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待发布的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 本次的发布描述。
-	ReleaseDesc *string `json:"ReleaseDesc,omitempty" name:"ReleaseDesc"`
+	ReleaseDesc *string `json:"ReleaseDesc,omitnil" name:"ReleaseDesc"`
 
 	// apiId列表，预留字段，默认全量api发布。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 func (r *ReleaseServiceRequest) ToJsonString() string {
@@ -8974,10 +8974,10 @@ func (r *ReleaseServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ReleaseServiceResponseParams struct {
 	// 发布信息。
-	Result *ReleaseService `json:"Result,omitempty" name:"Result"`
+	Result *ReleaseService `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ReleaseServiceResponse struct {
@@ -8998,63 +8998,63 @@ func (r *ReleaseServiceResponse) FromJsonString(s string) error {
 
 type ReqParameter struct {
 	// API 的前端参数名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// API 的前端参数位置，如 header。目前支持 header、query、path。
-	Position *string `json:"Position,omitempty" name:"Position"`
+	Position *string `json:"Position,omitnil" name:"Position"`
 
 	// API 的前端参数类型，如 String、int。
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// API 的前端参数默认值。
-	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+	DefaultValue *string `json:"DefaultValue,omitnil" name:"DefaultValue"`
 
 	// API 的前端参数是否必填，True：表示必填，False：表示可选。
-	Required *bool `json:"Required,omitempty" name:"Required"`
+	Required *bool `json:"Required,omitnil" name:"Required"`
 
 	// API 的前端参数备注。
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 }
 
 type RequestConfig struct {
 	// API 的路径，如 /path。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// API 的请求方法，如 GET。
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 }
 
 type RequestParameter struct {
 	// 请求参数名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 描述
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
 	// 参数位置
-	Position *string `json:"Position,omitempty" name:"Position"`
+	Position *string `json:"Position,omitnil" name:"Position"`
 
 	// 参数类型
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 默认值
-	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+	DefaultValue *string `json:"DefaultValue,omitnil" name:"DefaultValue"`
 
 	// 是否必须
-	Required *bool `json:"Required,omitempty" name:"Required"`
+	Required *bool `json:"Required,omitnil" name:"Required"`
 }
 
 // Predefined struct for user
 type ResetAPIDocPasswordRequestParams struct {
 	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 }
 
 type ResetAPIDocPasswordRequest struct {
 	*tchttp.BaseRequest
 	
 	// API文档ID
-	ApiDocId *string `json:"ApiDocId,omitempty" name:"ApiDocId"`
+	ApiDocId *string `json:"ApiDocId,omitnil" name:"ApiDocId"`
 }
 
 func (r *ResetAPIDocPasswordRequest) ToJsonString() string {
@@ -9079,10 +9079,10 @@ func (r *ResetAPIDocPasswordRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ResetAPIDocPasswordResponseParams struct {
 	// API文档基本信息
-	Result *APIDoc `json:"Result,omitempty" name:"Result"`
+	Result *APIDoc `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ResetAPIDocPasswordResponse struct {
@@ -9103,336 +9103,336 @@ func (r *ResetAPIDocPasswordResponse) FromJsonString(s string) error {
 
 type ResponseErrorCodeReq struct {
 	// 自定义响应配置错误码。
-	Code *int64 `json:"Code,omitempty" name:"Code"`
+	Code *int64 `json:"Code,omitnil" name:"Code"`
 
 	// 自定义响应配置错误信息。
-	Msg *string `json:"Msg,omitempty" name:"Msg"`
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
 
 	// 自定义响应配置错误码备注。
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
 	// 自定义错误码转换。
-	ConvertedCode *int64 `json:"ConvertedCode,omitempty" name:"ConvertedCode"`
+	ConvertedCode *int64 `json:"ConvertedCode,omitnil" name:"ConvertedCode"`
 
 	// 是否需要开启错误码转换。
-	NeedConvert *bool `json:"NeedConvert,omitempty" name:"NeedConvert"`
+	NeedConvert *bool `json:"NeedConvert,omitnil" name:"NeedConvert"`
 }
 
 type Service struct {
 	// 内网访问https端口。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InnerHttpsPort *int64 `json:"InnerHttpsPort,omitempty" name:"InnerHttpsPort"`
+	InnerHttpsPort *int64 `json:"InnerHttpsPort,omitnil" name:"InnerHttpsPort"`
 
 	// 用户自定义的服务描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceDesc *string `json:"ServiceDesc,omitempty" name:"ServiceDesc"`
+	ServiceDesc *string `json:"ServiceDesc,omitnil" name:"ServiceDesc"`
 
 	// 服务的前端请求类型。如http、https 或者 http&https。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// 服务支持的网络类型。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NetTypes []*string `json:"NetTypes,omitempty" name:"NetTypes"`
+	NetTypes []*string `json:"NetTypes,omitnil" name:"NetTypes"`
 
 	// 独占集群名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExclusiveSetName *string `json:"ExclusiveSetName,omitempty" name:"ExclusiveSetName"`
+	ExclusiveSetName *string `json:"ExclusiveSetName,omitnil" name:"ExclusiveSetName"`
 
 	// 服务唯一 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// IP版本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IpVersion *string `json:"IpVersion,omitempty" name:"IpVersion"`
+	IpVersion *string `json:"IpVersion,omitnil" name:"IpVersion"`
 
 	// 已经发布的环境列表。如test、prepub、release。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AvailableEnvironments []*string `json:"AvailableEnvironments,omitempty" name:"AvailableEnvironments"`
+	AvailableEnvironments []*string `json:"AvailableEnvironments,omitnil" name:"AvailableEnvironments"`
 
 	// 用户自定义的服务名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// 系统为该服务分配的外网域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OuterSubDomain *string `json:"OuterSubDomain,omitempty" name:"OuterSubDomain"`
+	OuterSubDomain *string `json:"OuterSubDomain,omitnil" name:"OuterSubDomain"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 内网访问http端口。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InnerHttpPort *uint64 `json:"InnerHttpPort,omitempty" name:"InnerHttpPort"`
+	InnerHttpPort *uint64 `json:"InnerHttpPort,omitnil" name:"InnerHttpPort"`
 
 	// 系统为该服务自动分配的内网域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InnerSubDomain *string `json:"InnerSubDomain,omitempty" name:"InnerSubDomain"`
+	InnerSubDomain *string `json:"InnerSubDomain,omitnil" name:"InnerSubDomain"`
 
 	// 服务的计费状态。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TradeIsolateStatus *int64 `json:"TradeIsolateStatus,omitempty" name:"TradeIsolateStatus"`
+	TradeIsolateStatus *int64 `json:"TradeIsolateStatus,omitnil" name:"TradeIsolateStatus"`
 
 	// 服务绑定的标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 独享实例
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 集群类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SetType *string `json:"SetType,omitempty" name:"SetType"`
+	SetType *string `json:"SetType,omitnil" name:"SetType"`
 
 	// 服务部署的集群类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeploymentType *string `json:"DeploymentType,omitempty" name:"DeploymentType"`
+	DeploymentType *string `json:"DeploymentType,omitnil" name:"DeploymentType"`
 }
 
 type ServiceConfig struct {
 	// 后端类型。启用vpc时生效，目前支持的类型为clb, cvm和upstream
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// vpc 的唯一ID。
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// API 的后端服务url。如果ServiceType是HTTP，则此参数必传。
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// API 的后端服务路径，如 /path。如果 ServiceType 是 HTTP，则此参数必传。前后端路径可不同。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// API的后端服务请求方法，如 GET。如果 ServiceType 是 HTTP，则此参数必传。前后端方法可不同。
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 
 	// 当绑定vpc通道才需要
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+	UpstreamId *string `json:"UpstreamId,omitnil" name:"UpstreamId"`
 
 	// API后端COS配置。如果 ServiceType 是 COS，则此参数必传。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CosConfig *CosConfig `json:"CosConfig,omitempty" name:"CosConfig"`
+	CosConfig *CosConfig `json:"CosConfig,omitnil" name:"CosConfig"`
 }
 
 type ServiceEnvironmentSet struct {
 	// 服务绑定环境总数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 服务绑定环境列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnvironmentList []*Environment `json:"EnvironmentList,omitempty" name:"EnvironmentList"`
+	EnvironmentList []*Environment `json:"EnvironmentList,omitnil" name:"EnvironmentList"`
 }
 
 type ServiceEnvironmentStrategy struct {
 	// 环境名。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 访问服务对应环境的url。
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 发布状态。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 发布的版本号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+	VersionName *string `json:"VersionName,omitnil" name:"VersionName"`
 
 	// 限流值。
-	Strategy *int64 `json:"Strategy,omitempty" name:"Strategy"`
+	Strategy *int64 `json:"Strategy,omitnil" name:"Strategy"`
 
 	// 最大限流值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxStrategy *int64 `json:"MaxStrategy,omitempty" name:"MaxStrategy"`
+	MaxStrategy *int64 `json:"MaxStrategy,omitnil" name:"MaxStrategy"`
 }
 
 type ServiceEnvironmentStrategyStatus struct {
 	// 限流策略数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 限流策略列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnvironmentList []*ServiceEnvironmentStrategy `json:"EnvironmentList,omitempty" name:"EnvironmentList"`
+	EnvironmentList []*ServiceEnvironmentStrategy `json:"EnvironmentList,omitnil" name:"EnvironmentList"`
 }
 
 type ServiceParameter struct {
 	// API的后端服务参数名称。只有ServiceType是HTTP才会用到此参数。前后端参数名称可不同。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// API 的后端服务参数位置，如 head。只有 ServiceType 是 HTTP 才会用到此参数。前后端参数位置可配置不同。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Position *string `json:"Position,omitempty" name:"Position"`
+	Position *string `json:"Position,omitnil" name:"Position"`
 
 	// API 的后端服务参数对应的前端参数位置，如 head。只有 ServiceType 是 HTTP 才会用到此参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelevantRequestParameterPosition *string `json:"RelevantRequestParameterPosition,omitempty" name:"RelevantRequestParameterPosition"`
+	RelevantRequestParameterPosition *string `json:"RelevantRequestParameterPosition,omitnil" name:"RelevantRequestParameterPosition"`
 
 	// API 的后端服务参数对应的前端参数名称。只有 ServiceType 是 HTTP 才会用到此参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelevantRequestParameterName *string `json:"RelevantRequestParameterName,omitempty" name:"RelevantRequestParameterName"`
+	RelevantRequestParameterName *string `json:"RelevantRequestParameterName,omitnil" name:"RelevantRequestParameterName"`
 
 	// API 的后端服务参数默认值。只有 ServiceType 是 HTTP 才会用到此参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+	DefaultValue *string `json:"DefaultValue,omitnil" name:"DefaultValue"`
 
 	// API 的后端服务参数备注。只有 ServiceType 是 HTTP 才会用到此参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelevantRequestParameterDesc *string `json:"RelevantRequestParameterDesc,omitempty" name:"RelevantRequestParameterDesc"`
+	RelevantRequestParameterDesc *string `json:"RelevantRequestParameterDesc,omitnil" name:"RelevantRequestParameterDesc"`
 
 	// API 的后端服务参数类型。只有 ServiceType 是 HTTP 才会用到此参数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelevantRequestParameterType *string `json:"RelevantRequestParameterType,omitempty" name:"RelevantRequestParameterType"`
+	RelevantRequestParameterType *string `json:"RelevantRequestParameterType,omitnil" name:"RelevantRequestParameterType"`
 }
 
 type ServiceReleaseHistory struct {
 	// 发布版本总数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 历史版本列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionList []*ServiceReleaseHistoryInfo `json:"VersionList,omitempty" name:"VersionList"`
+	VersionList []*ServiceReleaseHistoryInfo `json:"VersionList,omitnil" name:"VersionList"`
 }
 
 type ServiceReleaseHistoryInfo struct {
 	// 版本号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+	VersionName *string `json:"VersionName,omitnil" name:"VersionName"`
 
 	// 版本描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionDesc *string `json:"VersionDesc,omitempty" name:"VersionDesc"`
+	VersionDesc *string `json:"VersionDesc,omitnil" name:"VersionDesc"`
 
 	// 版本发布时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReleaseTime *string `json:"ReleaseTime,omitempty" name:"ReleaseTime"`
+	ReleaseTime *string `json:"ReleaseTime,omitnil" name:"ReleaseTime"`
 }
 
 type ServiceReleaseVersion struct {
 	// 发布版本总数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 发布版本列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionList []*DescribeServiceReleaseVersionResultVersionListInfo `json:"VersionList,omitempty" name:"VersionList"`
+	VersionList []*DescribeServiceReleaseVersionResultVersionListInfo `json:"VersionList,omitnil" name:"VersionList"`
 }
 
 type ServiceSubDomainMappings struct {
 	// 是否使用默认路径映射，为 True 表示使用默认路径映射；为 False 的话，表示使用自定义路径映射，此时 PathMappingSet 不为空。
-	IsDefaultMapping *bool `json:"IsDefaultMapping,omitempty" name:"IsDefaultMapping"`
+	IsDefaultMapping *bool `json:"IsDefaultMapping,omitnil" name:"IsDefaultMapping"`
 
 	// 自定义路径映射列表。
-	PathMappingSet []*PathMapping `json:"PathMappingSet,omitempty" name:"PathMappingSet"`
+	PathMappingSet []*PathMapping `json:"PathMappingSet,omitnil" name:"PathMappingSet"`
 }
 
 type ServiceUsagePlanSet struct {
 	// 服务上绑定的使用计划总数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 服务上绑定的使用计划列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceUsagePlanList []*ApiUsagePlan `json:"ServiceUsagePlanList,omitempty" name:"ServiceUsagePlanList"`
+	ServiceUsagePlanList []*ApiUsagePlan `json:"ServiceUsagePlanList,omitnil" name:"ServiceUsagePlanList"`
 }
 
 type ServicesStatus struct {
 	// 服务列表总数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 服务列表详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceSet []*Service `json:"ServiceSet,omitempty" name:"ServiceSet"`
+	ServiceSet []*Service `json:"ServiceSet,omitnil" name:"ServiceSet"`
 }
 
 type Tag struct {
 	// 标签的 key。
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 便签的 value。
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type TargetServicesReq struct {
 	// vm ip
-	VmIp *string `json:"VmIp,omitempty" name:"VmIp"`
+	VmIp *string `json:"VmIp,omitnil" name:"VmIp"`
 
 	// vpc id
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// vm port
-	VmPort *int64 `json:"VmPort,omitempty" name:"VmPort"`
+	VmPort *int64 `json:"VmPort,omitnil" name:"VmPort"`
 
 	// cvm所在宿主机ip
-	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+	HostIp *string `json:"HostIp,omitnil" name:"HostIp"`
 
 	// docker ip
-	DockerIp *string `json:"DockerIp,omitempty" name:"DockerIp"`
+	DockerIp *string `json:"DockerIp,omitnil" name:"DockerIp"`
 }
 
 type TsfLoadBalanceConfResp struct {
 	// 是否开启负载均衡。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsLoadBalance *bool `json:"IsLoadBalance,omitempty" name:"IsLoadBalance"`
+	IsLoadBalance *bool `json:"IsLoadBalance,omitnil" name:"IsLoadBalance"`
 
 	// 负载均衡方式。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 
 	// 是否开启会话保持。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SessionStickRequired *bool `json:"SessionStickRequired,omitempty" name:"SessionStickRequired"`
+	SessionStickRequired *bool `json:"SessionStickRequired,omitnil" name:"SessionStickRequired"`
 
 	// 会话保持超时时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SessionStickTimeout *int64 `json:"SessionStickTimeout,omitempty" name:"SessionStickTimeout"`
+	SessionStickTimeout *int64 `json:"SessionStickTimeout,omitnil" name:"SessionStickTimeout"`
 }
 
 // Predefined struct for user
 type UnBindEnvironmentRequestParams struct {
 	// 绑定类型，取值为 API、SERVICE，默认值为 SERVICE。
-	BindType *string `json:"BindType,omitempty" name:"BindType"`
+	BindType *string `json:"BindType,omitnil" name:"BindType"`
 
 	// 待绑定的使用计划唯一 ID 列表。
-	UsagePlanIds []*string `json:"UsagePlanIds,omitempty" name:"UsagePlanIds"`
+	UsagePlanIds []*string `json:"UsagePlanIds,omitnil" name:"UsagePlanIds"`
 
 	// 待解绑的服务环境。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 待解绑的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 唯一 ID 数组，当 BindType=API 时，需要传入此参数。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 type UnBindEnvironmentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 绑定类型，取值为 API、SERVICE，默认值为 SERVICE。
-	BindType *string `json:"BindType,omitempty" name:"BindType"`
+	BindType *string `json:"BindType,omitnil" name:"BindType"`
 
 	// 待绑定的使用计划唯一 ID 列表。
-	UsagePlanIds []*string `json:"UsagePlanIds,omitempty" name:"UsagePlanIds"`
+	UsagePlanIds []*string `json:"UsagePlanIds,omitnil" name:"UsagePlanIds"`
 
 	// 待解绑的服务环境。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 待解绑的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 唯一 ID 数组，当 BindType=API 时，需要传入此参数。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 func (r *UnBindEnvironmentRequest) ToJsonString() string {
@@ -9462,10 +9462,10 @@ func (r *UnBindEnvironmentRequest) FromJsonString(s string) error {
 type UnBindEnvironmentResponseParams struct {
 	// 解绑操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UnBindEnvironmentResponse struct {
@@ -9487,32 +9487,32 @@ func (r *UnBindEnvironmentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UnBindIPStrategyRequestParams struct {
 	// 待解绑的服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待解绑的IP策略唯一ID。
-	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
 
 	// 待解绑的环境。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 待解绑的 API 列表。
-	UnBindApiIds []*string `json:"UnBindApiIds,omitempty" name:"UnBindApiIds"`
+	UnBindApiIds []*string `json:"UnBindApiIds,omitnil" name:"UnBindApiIds"`
 }
 
 type UnBindIPStrategyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待解绑的服务唯一ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待解绑的IP策略唯一ID。
-	StrategyId *string `json:"StrategyId,omitempty" name:"StrategyId"`
+	StrategyId *string `json:"StrategyId,omitnil" name:"StrategyId"`
 
 	// 待解绑的环境。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 待解绑的 API 列表。
-	UnBindApiIds []*string `json:"UnBindApiIds,omitempty" name:"UnBindApiIds"`
+	UnBindApiIds []*string `json:"UnBindApiIds,omitnil" name:"UnBindApiIds"`
 }
 
 func (r *UnBindIPStrategyRequest) ToJsonString() string {
@@ -9541,10 +9541,10 @@ func (r *UnBindIPStrategyRequest) FromJsonString(s string) error {
 type UnBindIPStrategyResponseParams struct {
 	// 解绑操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UnBindIPStrategyResponse struct {
@@ -9566,20 +9566,20 @@ func (r *UnBindIPStrategyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UnBindSecretIdsRequestParams struct {
 	// 待解绑的使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 待解绑的密钥 ID 数组。
-	AccessKeyIds []*string `json:"AccessKeyIds,omitempty" name:"AccessKeyIds"`
+	AccessKeyIds []*string `json:"AccessKeyIds,omitnil" name:"AccessKeyIds"`
 }
 
 type UnBindSecretIdsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待解绑的使用计划唯一 ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 待解绑的密钥 ID 数组。
-	AccessKeyIds []*string `json:"AccessKeyIds,omitempty" name:"AccessKeyIds"`
+	AccessKeyIds []*string `json:"AccessKeyIds,omitnil" name:"AccessKeyIds"`
 }
 
 func (r *UnBindSecretIdsRequest) ToJsonString() string {
@@ -9606,10 +9606,10 @@ func (r *UnBindSecretIdsRequest) FromJsonString(s string) error {
 type UnBindSecretIdsResponseParams struct {
 	// 解绑操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UnBindSecretIdsResponse struct {
@@ -9631,20 +9631,20 @@ func (r *UnBindSecretIdsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UnBindSubDomainRequestParams struct {
 	// 服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待解绑的自定义的域名。
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 }
 
 type UnBindSubDomainRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待解绑的自定义的域名。
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 }
 
 func (r *UnBindSubDomainRequest) ToJsonString() string {
@@ -9670,10 +9670,10 @@ func (r *UnBindSubDomainRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UnBindSubDomainResponseParams struct {
 	// 解绑自定义域名操作是否成功。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UnBindSubDomainResponse struct {
@@ -9695,26 +9695,26 @@ func (r *UnBindSubDomainResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UnReleaseServiceRequestParams struct {
 	// 待下线服务的唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待下线的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 保留字段，待下线的API列表。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 type UnReleaseServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待下线服务的唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待下线的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 保留字段，待下线的API列表。
-	ApiIds []*string `json:"ApiIds,omitempty" name:"ApiIds"`
+	ApiIds []*string `json:"ApiIds,omitnil" name:"ApiIds"`
 }
 
 func (r *UnReleaseServiceRequest) ToJsonString() string {
@@ -9742,10 +9742,10 @@ func (r *UnReleaseServiceRequest) FromJsonString(s string) error {
 type UnReleaseServiceResponseParams struct {
 	// 下线操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UnReleaseServiceResponse struct {
@@ -9767,32 +9767,32 @@ func (r *UnReleaseServiceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UnbindApiAppRequestParams struct {
 	// 待绑定的应用唯一 ID 。
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 
 	// 待绑定的环境。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 待绑定的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待绑定的API唯一ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 }
 
 type UnbindApiAppRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待绑定的应用唯一 ID 。
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 
 	// 待绑定的环境。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 待绑定的服务唯一 ID。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待绑定的API唯一ID。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 }
 
 func (r *UnbindApiAppRequest) ToJsonString() string {
@@ -9821,10 +9821,10 @@ func (r *UnbindApiAppRequest) FromJsonString(s string) error {
 type UnbindApiAppResponseParams struct {
 	// 解除绑定操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UnbindApiAppResponse struct {
@@ -9846,26 +9846,26 @@ func (r *UnbindApiAppResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateApiAppKeyRequestParams struct {
 	// 应用唯一 ID。
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 
 	// 应用的Key。
-	ApiAppKey *string `json:"ApiAppKey,omitempty" name:"ApiAppKey"`
+	ApiAppKey *string `json:"ApiAppKey,omitnil" name:"ApiAppKey"`
 
 	// 应用的Secret。
-	ApiAppSecret *string `json:"ApiAppSecret,omitempty" name:"ApiAppSecret"`
+	ApiAppSecret *string `json:"ApiAppSecret,omitnil" name:"ApiAppSecret"`
 }
 
 type UpdateApiAppKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 应用唯一 ID。
-	ApiAppId *string `json:"ApiAppId,omitempty" name:"ApiAppId"`
+	ApiAppId *string `json:"ApiAppId,omitnil" name:"ApiAppId"`
 
 	// 应用的Key。
-	ApiAppKey *string `json:"ApiAppKey,omitempty" name:"ApiAppKey"`
+	ApiAppKey *string `json:"ApiAppKey,omitnil" name:"ApiAppKey"`
 
 	// 应用的Secret。
-	ApiAppSecret *string `json:"ApiAppSecret,omitempty" name:"ApiAppSecret"`
+	ApiAppSecret *string `json:"ApiAppSecret,omitnil" name:"ApiAppSecret"`
 }
 
 func (r *UpdateApiAppKeyRequest) ToJsonString() string {
@@ -9893,10 +9893,10 @@ func (r *UpdateApiAppKeyRequest) FromJsonString(s string) error {
 type UpdateApiAppKeyResponseParams struct {
 	// 更新操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateApiAppKeyResponse struct {
@@ -9918,20 +9918,20 @@ func (r *UpdateApiAppKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateApiKeyRequestParams struct {
 	// 待更换的密钥 ID。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 
 	// 待更换的密钥 Key，更新自定义密钥时，该字段为必传。长度10 - 50字符，包括字母、数字、英文下划线。
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" name:"AccessKeySecret"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitnil" name:"AccessKeySecret"`
 }
 
 type UpdateApiKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待更换的密钥 ID。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 
 	// 待更换的密钥 Key，更新自定义密钥时，该字段为必传。长度10 - 50字符，包括字母、数字、英文下划线。
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" name:"AccessKeySecret"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitnil" name:"AccessKeySecret"`
 }
 
 func (r *UpdateApiKeyRequest) ToJsonString() string {
@@ -9958,10 +9958,10 @@ func (r *UpdateApiKeyRequest) FromJsonString(s string) error {
 type UpdateApiKeyResponseParams struct {
 	// 更换后的密钥详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ApiKey `json:"Result,omitempty" name:"Result"`
+	Result *ApiKey `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateApiKeyResponse struct {
@@ -9983,32 +9983,32 @@ func (r *UpdateApiKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateServiceRequestParams struct {
 	// 待切换服务的唯一 Id。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待切换的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 切换的版本号。
-	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+	VersionName *string `json:"VersionName,omitnil" name:"VersionName"`
 
 	// 本次的切换描述。
-	UpdateDesc *string `json:"UpdateDesc,omitempty" name:"UpdateDesc"`
+	UpdateDesc *string `json:"UpdateDesc,omitnil" name:"UpdateDesc"`
 }
 
 type UpdateServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待切换服务的唯一 Id。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 待切换的环境名称，当前支持三个环境，test（测试环境）、prepub（预发布环境）和 release（发布环境）。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 切换的版本号。
-	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+	VersionName *string `json:"VersionName,omitnil" name:"VersionName"`
 
 	// 本次的切换描述。
-	UpdateDesc *string `json:"UpdateDesc,omitempty" name:"UpdateDesc"`
+	UpdateDesc *string `json:"UpdateDesc,omitnil" name:"UpdateDesc"`
 }
 
 func (r *UpdateServiceRequest) ToJsonString() string {
@@ -10037,10 +10037,10 @@ func (r *UpdateServiceRequest) FromJsonString(s string) error {
 type UpdateServiceResponseParams struct {
 	// 切换版本操作是否成功。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateServiceResponse struct {
@@ -10061,40 +10061,40 @@ func (r *UpdateServiceResponse) FromJsonString(s string) error {
 
 type UpstreamHealthChecker struct {
 	// 标识是否开启主动健康检查。
-	EnableActiveCheck *bool `json:"EnableActiveCheck,omitempty" name:"EnableActiveCheck"`
+	EnableActiveCheck *bool `json:"EnableActiveCheck,omitnil" name:"EnableActiveCheck"`
 
 	// 标识是否开启被动健康检查。
-	EnablePassiveCheck *bool `json:"EnablePassiveCheck,omitempty" name:"EnablePassiveCheck"`
+	EnablePassiveCheck *bool `json:"EnablePassiveCheck,omitnil" name:"EnablePassiveCheck"`
 
 	// 健康检查时，判断为成功请求的 HTTP 状态码。
-	HealthyHttpStatus *string `json:"HealthyHttpStatus,omitempty" name:"HealthyHttpStatus"`
+	HealthyHttpStatus *string `json:"HealthyHttpStatus,omitnil" name:"HealthyHttpStatus"`
 
 	// 健康检查时，判断为失败请求的 HTTP 状态码。
-	UnhealthyHttpStatus *string `json:"UnhealthyHttpStatus,omitempty" name:"UnhealthyHttpStatus"`
+	UnhealthyHttpStatus *string `json:"UnhealthyHttpStatus,omitnil" name:"UnhealthyHttpStatus"`
 
 	// TCP连续错误阈值。0 表示禁用 TCP 检查。取值范围：[0, 254]。
-	TcpFailureThreshold *uint64 `json:"TcpFailureThreshold,omitempty" name:"TcpFailureThreshold"`
+	TcpFailureThreshold *uint64 `json:"TcpFailureThreshold,omitnil" name:"TcpFailureThreshold"`
 
 	// 连续超时阈值。0 表示禁用超时检查。取值范围：[0, 254]。
-	TimeoutThreshold *uint64 `json:"TimeoutThreshold,omitempty" name:"TimeoutThreshold"`
+	TimeoutThreshold *uint64 `json:"TimeoutThreshold,omitnil" name:"TimeoutThreshold"`
 
 	// HTTP连续错误阈值。0 表示禁用HTTP检查。取值范围：[0, 254]。
-	HttpFailureThreshold *uint64 `json:"HttpFailureThreshold,omitempty" name:"HttpFailureThreshold"`
+	HttpFailureThreshold *uint64 `json:"HttpFailureThreshold,omitnil" name:"HttpFailureThreshold"`
 
 	// 主动健康检查时探测请求的路径。默认为"/"。
-	ActiveCheckHttpPath *string `json:"ActiveCheckHttpPath,omitempty" name:"ActiveCheckHttpPath"`
+	ActiveCheckHttpPath *string `json:"ActiveCheckHttpPath,omitnil" name:"ActiveCheckHttpPath"`
 
 	// 主动健康检查的探测请求超时，单位秒。默认为5秒。
-	ActiveCheckTimeout *uint64 `json:"ActiveCheckTimeout,omitempty" name:"ActiveCheckTimeout"`
+	ActiveCheckTimeout *uint64 `json:"ActiveCheckTimeout,omitnil" name:"ActiveCheckTimeout"`
 
 	// 主动健康检查的时间间隔，默认5秒。
-	ActiveCheckInterval *uint64 `json:"ActiveCheckInterval,omitempty" name:"ActiveCheckInterval"`
+	ActiveCheckInterval *uint64 `json:"ActiveCheckInterval,omitnil" name:"ActiveCheckInterval"`
 
 	// 主动健康检查时探测请求的的请求头。
-	ActiveRequestHeader []*UpstreamHealthCheckerReqHeaders `json:"ActiveRequestHeader,omitempty" name:"ActiveRequestHeader"`
+	ActiveRequestHeader []*UpstreamHealthCheckerReqHeaders `json:"ActiveRequestHeader,omitnil" name:"ActiveRequestHeader"`
 
 	// 异常节点的状态自动恢复时间，单位秒。当只开启被动检查的话，必须设置为 > 0 的值，否则被动异常节点将无法恢复。默认30秒。
-	UnhealthyTimeout *uint64 `json:"UnhealthyTimeout,omitempty" name:"UnhealthyTimeout"`
+	UnhealthyTimeout *uint64 `json:"UnhealthyTimeout,omitnil" name:"UnhealthyTimeout"`
 }
 
 type UpstreamHealthCheckerReqHeaders struct {
@@ -10103,303 +10103,303 @@ type UpstreamHealthCheckerReqHeaders struct {
 
 type UpstreamInfo struct {
 	// 后端通道唯一ID
-	UpstreamId *string `json:"UpstreamId,omitempty" name:"UpstreamId"`
+	UpstreamId *string `json:"UpstreamId,omitnil" name:"UpstreamId"`
 
 	// 后端通道名字
-	UpstreamName *string `json:"UpstreamName,omitempty" name:"UpstreamName"`
+	UpstreamName *string `json:"UpstreamName,omitnil" name:"UpstreamName"`
 
 	// 后端通道描述
-	UpstreamDescription *string `json:"UpstreamDescription,omitempty" name:"UpstreamDescription"`
+	UpstreamDescription *string `json:"UpstreamDescription,omitnil" name:"UpstreamDescription"`
 
 	// 后端协议，取值范围：HTTP, HTTPS
-	Scheme *string `json:"Scheme,omitempty" name:"Scheme"`
+	Scheme *string `json:"Scheme,omitnil" name:"Scheme"`
 
 	// 负载均衡算法，取值范围：ROUND_ROBIN
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// VPC唯一ID
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// 请求重试次数
-	Retries *uint64 `json:"Retries,omitempty" name:"Retries"`
+	Retries *uint64 `json:"Retries,omitnil" name:"Retries"`
 
 	// 后端节点
-	Nodes []*UpstreamNode `json:"Nodes,omitempty" name:"Nodes"`
+	Nodes []*UpstreamNode `json:"Nodes,omitnil" name:"Nodes"`
 
 	// 创建时间
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 健康检查配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitempty" name:"HealthChecker"`
+	HealthChecker *UpstreamHealthChecker `json:"HealthChecker,omitnil" name:"HealthChecker"`
 
 	// 后端的类型，取值范围：IP_PORT, K8S
-	UpstreamType *string `json:"UpstreamType,omitempty" name:"UpstreamType"`
+	UpstreamType *string `json:"UpstreamType,omitnil" name:"UpstreamType"`
 
 	// K8S容器服务配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	K8sServices []*K8sService `json:"K8sServices,omitempty" name:"K8sServices"`
+	K8sServices []*K8sService `json:"K8sServices,omitnil" name:"K8sServices"`
 
 	// 网关转发给后端的Host请求头
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpstreamHost *string `json:"UpstreamHost,omitempty" name:"UpstreamHost"`
+	UpstreamHost *string `json:"UpstreamHost,omitnil" name:"UpstreamHost"`
 }
 
 type UpstreamNode struct {
 	// IP或域名
-	Host *string `json:"Host,omitempty" name:"Host"`
+	Host *string `json:"Host,omitnil" name:"Host"`
 
 	// 端口[0, 65535]
-	Port *uint64 `json:"Port,omitempty" name:"Port"`
+	Port *uint64 `json:"Port,omitnil" name:"Port"`
 
 	// 权重[0, 100], 0为禁用
-	Weight *uint64 `json:"Weight,omitempty" name:"Weight"`
+	Weight *uint64 `json:"Weight,omitnil" name:"Weight"`
 
 	// CVM实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VmInstanceId *string `json:"VmInstanceId,omitempty" name:"VmInstanceId"`
+	VmInstanceId *string `json:"VmInstanceId,omitnil" name:"VmInstanceId"`
 
 	// 染色标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil" name:"Tags"`
 
 	// 节点健康状态，创建、编辑时不需要传该参数。OFF：关闭，HEALTHY：健康，UNHEALTHY：异常，NO_DATA：数据未上报。目前只支持VPC通道。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Healthy *string `json:"Healthy,omitempty" name:"Healthy"`
+	Healthy *string `json:"Healthy,omitnil" name:"Healthy"`
 
 	// K8S容器服务名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// K8S命名空间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NameSpace *string `json:"NameSpace,omitempty" name:"NameSpace"`
+	NameSpace *string `json:"NameSpace,omitnil" name:"NameSpace"`
 
 	// TKE集群的ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// Node的来源，取值范围：K8S
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// API网关内部记录唯一的服务名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UniqueServiceName *string `json:"UniqueServiceName,omitempty" name:"UniqueServiceName"`
+	UniqueServiceName *string `json:"UniqueServiceName,omitnil" name:"UniqueServiceName"`
 }
 
 type UsagePlan struct {
 	// 环境名称。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 使用计划唯一ID。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 使用计划名称。
-	UsagePlanName *string `json:"UsagePlanName,omitempty" name:"UsagePlanName"`
+	UsagePlanName *string `json:"UsagePlanName,omitnil" name:"UsagePlanName"`
 
 	// 使用计划描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanDesc *string `json:"UsagePlanDesc,omitempty" name:"UsagePlanDesc"`
+	UsagePlanDesc *string `json:"UsagePlanDesc,omitnil" name:"UsagePlanDesc"`
 
 	// 使用计划qps，-1表示没有限制。
-	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitempty" name:"MaxRequestNumPreSec"`
+	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitnil" name:"MaxRequestNumPreSec"`
 
 	// 使用计划时间。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 使用计划修改时间。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 }
 
 type UsagePlanBindEnvironment struct {
 	// 环境名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnvironmentName *string `json:"EnvironmentName,omitempty" name:"EnvironmentName"`
+	EnvironmentName *string `json:"EnvironmentName,omitnil" name:"EnvironmentName"`
 
 	// 服务唯一ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 }
 
 type UsagePlanBindSecret struct {
 	// 密钥ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccessKeyId *string `json:"AccessKeyId,omitempty" name:"AccessKeyId"`
+	AccessKeyId *string `json:"AccessKeyId,omitnil" name:"AccessKeyId"`
 
 	// 密钥名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecretName *string `json:"SecretName,omitempty" name:"SecretName"`
+	SecretName *string `json:"SecretName,omitnil" name:"SecretName"`
 
 	// 密钥状态，0表示已禁用，1表示启用中。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 type UsagePlanBindSecretStatus struct {
 	// 使用计划绑定密钥的数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 密钥详情列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccessKeyList []*UsagePlanBindSecret `json:"AccessKeyList,omitempty" name:"AccessKeyList"`
+	AccessKeyList []*UsagePlanBindSecret `json:"AccessKeyList,omitnil" name:"AccessKeyList"`
 }
 
 type UsagePlanEnvironment struct {
 	// 绑定的服务唯一 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// API 的唯一ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiId *string `json:"ApiId,omitempty" name:"ApiId"`
+	ApiId *string `json:"ApiId,omitnil" name:"ApiId"`
 
 	// API 的名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiName *string `json:"ApiName,omitempty" name:"ApiName"`
+	ApiName *string `json:"ApiName,omitnil" name:"ApiName"`
 
 	// API 的路径。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// API 的方法。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 
 	// 已经绑定的环境名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Environment *string `json:"Environment,omitempty" name:"Environment"`
+	Environment *string `json:"Environment,omitnil" name:"Environment"`
 
 	// 已经使用的配额。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InUseRequestNum *int64 `json:"InUseRequestNum,omitempty" name:"InUseRequestNum"`
+	InUseRequestNum *int64 `json:"InUseRequestNum,omitnil" name:"InUseRequestNum"`
 
 	// 最大请求量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxRequestNum *int64 `json:"MaxRequestNum,omitempty" name:"MaxRequestNum"`
+	MaxRequestNum *int64 `json:"MaxRequestNum,omitnil" name:"MaxRequestNum"`
 
 	// 每秒最大请求次数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitempty" name:"MaxRequestNumPreSec"`
+	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitnil" name:"MaxRequestNumPreSec"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// 服务名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServiceName *string `json:"ServiceName,omitempty" name:"ServiceName"`
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 }
 
 type UsagePlanEnvironmentStatus struct {
 	// 使用计划绑定的服务的环境数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 使用计划已经绑定的各个服务的环境状态。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnvironmentList []*UsagePlanEnvironment `json:"EnvironmentList,omitempty" name:"EnvironmentList"`
+	EnvironmentList []*UsagePlanEnvironment `json:"EnvironmentList,omitnil" name:"EnvironmentList"`
 }
 
 type UsagePlanInfo struct {
 	// 使用计划唯一 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 使用计划名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanName *string `json:"UsagePlanName,omitempty" name:"UsagePlanName"`
+	UsagePlanName *string `json:"UsagePlanName,omitnil" name:"UsagePlanName"`
 
 	// 使用计划描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanDesc *string `json:"UsagePlanDesc,omitempty" name:"UsagePlanDesc"`
+	UsagePlanDesc *string `json:"UsagePlanDesc,omitnil" name:"UsagePlanDesc"`
 
 	// 每秒请求限制数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitempty" name:"MaxRequestNumPreSec"`
+	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitnil" name:"MaxRequestNumPreSec"`
 
 	// 最大调用次数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxRequestNum *int64 `json:"MaxRequestNum,omitempty" name:"MaxRequestNum"`
+	MaxRequestNum *int64 `json:"MaxRequestNum,omitnil" name:"MaxRequestNum"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 
 	// 绑定密钥的数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindSecretIdTotalCount *int64 `json:"BindSecretIdTotalCount,omitempty" name:"BindSecretIdTotalCount"`
+	BindSecretIdTotalCount *int64 `json:"BindSecretIdTotalCount,omitnil" name:"BindSecretIdTotalCount"`
 
 	// 绑定密钥的详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindSecretIds []*string `json:"BindSecretIds,omitempty" name:"BindSecretIds"`
+	BindSecretIds []*string `json:"BindSecretIds,omitnil" name:"BindSecretIds"`
 
 	// 绑定环境数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindEnvironmentTotalCount *int64 `json:"BindEnvironmentTotalCount,omitempty" name:"BindEnvironmentTotalCount"`
+	BindEnvironmentTotalCount *int64 `json:"BindEnvironmentTotalCount,omitnil" name:"BindEnvironmentTotalCount"`
 
 	// 绑定环境详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindEnvironments []*UsagePlanBindEnvironment `json:"BindEnvironments,omitempty" name:"BindEnvironments"`
+	BindEnvironments []*UsagePlanBindEnvironment `json:"BindEnvironments,omitnil" name:"BindEnvironments"`
 }
 
 type UsagePlanStatusInfo struct {
 	// 使用计划唯一 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanId *string `json:"UsagePlanId,omitempty" name:"UsagePlanId"`
+	UsagePlanId *string `json:"UsagePlanId,omitnil" name:"UsagePlanId"`
 
 	// 用户自定义的使用计划名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanName *string `json:"UsagePlanName,omitempty" name:"UsagePlanName"`
+	UsagePlanName *string `json:"UsagePlanName,omitnil" name:"UsagePlanName"`
 
 	// 用户自定义的使用计划描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanDesc *string `json:"UsagePlanDesc,omitempty" name:"UsagePlanDesc"`
+	UsagePlanDesc *string `json:"UsagePlanDesc,omitnil" name:"UsagePlanDesc"`
 
 	// 每秒最大请求次数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitempty" name:"MaxRequestNumPreSec"`
+	MaxRequestNumPreSec *int64 `json:"MaxRequestNumPreSec,omitnil" name:"MaxRequestNumPreSec"`
 
 	// 请求配额总量，-1表示没有限制。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxRequestNum *int64 `json:"MaxRequestNum,omitempty" name:"MaxRequestNum"`
+	MaxRequestNum *int64 `json:"MaxRequestNum,omitnil" name:"MaxRequestNum"`
 
 	// 创建时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 最后修改时间。按照 ISO8601 标准表示，并且使用 UTC 时间。格式为：YYYY-MM-DDThh:mm:ssZ。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifiedTime *string `json:"ModifiedTime,omitempty" name:"ModifiedTime"`
+	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 }
 
 type UsagePlansStatus struct {
 	// 符合条件的使用计划数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 使用计划列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsagePlanStatusSet []*UsagePlanStatusInfo `json:"UsagePlanStatusSet,omitempty" name:"UsagePlanStatusSet"`
+	UsagePlanStatusSet []*UsagePlanStatusInfo `json:"UsagePlanStatusSet,omitnil" name:"UsagePlanStatusSet"`
 }
 
 type VpcConfig struct {
 	// vpcid
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// subnetid
-	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+	UniqSubnetId *string `json:"UniqSubnetId,omitnil" name:"UniqSubnetId"`
 }

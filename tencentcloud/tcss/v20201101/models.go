@@ -15,141 +15,141 @@
 package v20201101
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type ABTestConfig struct {
 	// 灰度项目名称
-	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
 
 	// true：正在灰度，false：不在灰度
-	Status *bool `json:"Status,omitempty" name:"Status"`
+	Status *bool `json:"Status,omitnil" name:"Status"`
 }
 
 type AbnormalProcessChildRuleInfo struct {
 	// 策略模式，   RULE_MODE_RELEASE: 放行
 	//    RULE_MODE_ALERT: 告警
 	//    RULE_MODE_HOLDUP:拦截
-	RuleMode *string `json:"RuleMode,omitempty" name:"RuleMode"`
+	RuleMode *string `json:"RuleMode,omitnil" name:"RuleMode"`
 
 	// 进程路径
-	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+	ProcessPath *string `json:"ProcessPath,omitnil" name:"ProcessPath"`
 
 	// 子策略id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 威胁等级，HIGH:高，MIDDLE:中，LOW:低
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleLevel *string `json:"RuleLevel,omitempty" name:"RuleLevel"`
+	RuleLevel *string `json:"RuleLevel,omitnil" name:"RuleLevel"`
 }
 
 type AbnormalProcessEventDescription struct {
 	// 事件规则
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 解决方案
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 事件备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 命中规则详细信息
-	MatchRule *AbnormalProcessChildRuleInfo `json:"MatchRule,omitempty" name:"MatchRule"`
+	MatchRule *AbnormalProcessChildRuleInfo `json:"MatchRule,omitnil" name:"MatchRule"`
 
 	// 命中规则名称，PROXY_TOOL：代理软件，TRANSFER_CONTROL：横向渗透，ATTACK_CMD：恶意命令，REVERSE_SHELL：反弹shell，FILELESS：无文件程序执行，RISK_CMD：高危命令，ABNORMAL_CHILD_PROC：敏感服务异常子进程启动，USER_DEFINED_RULE：用户自定义规则
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 命中规则的id
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 事件最后一次处理的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
+	OperationTime *string `json:"OperationTime,omitnil" name:"OperationTime"`
 
 	// 命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 }
 
 type AbnormalProcessEventInfo struct {
 	// 进程目录
-	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+	ProcessPath *string `json:"ProcessPath,omitnil" name:"ProcessPath"`
 
 	// 事件类型，MALICE_PROCESS_START:恶意进程启动
-	EventType *string `json:"EventType,omitempty" name:"EventType"`
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
 
 	// 命中规则名称，PROXY_TOOL：代理软件，TRANSFER_CONTROL：横向渗透，ATTACK_CMD：恶意命令，REVERSE_SHELL：反弹shell，FILELESS：无文件程序执行，RISK_CMD：高危命令，ABNORMAL_CHILD_PROC：敏感服务异常子进程启动，USER_DEFINED_RULE：用户自定义规则
-	MatchRuleName *string `json:"MatchRuleName,omitempty" name:"MatchRuleName"`
+	MatchRuleName *string `json:"MatchRuleName,omitnil" name:"MatchRuleName"`
 
 	// 生成时间
-	FoundTime *string `json:"FoundTime,omitempty" name:"FoundTime"`
+	FoundTime *string `json:"FoundTime,omitnil" name:"FoundTime"`
 
 	// 容器名
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 镜像名
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 动作执行结果，    BEHAVIOR_NONE: 无
 	//     BEHAVIOR_ALERT: 告警
 	//     BEHAVIOR_RELEASE：放行
 	//     BEHAVIOR_HOLDUP_FAILED:拦截失败
 	//     BEHAVIOR_HOLDUP_SUCCESSED：拦截失败
-	Behavior *string `json:"Behavior,omitempty" name:"Behavior"`
+	Behavior *string `json:"Behavior,omitnil" name:"Behavior"`
 
 	// 状态，EVENT_UNDEAL:事件未处理
 	//     EVENT_DEALED:事件已经处理
 	//     EVENT_INGNORE：事件已经忽略
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件记录的唯一id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 
 	// 镜像id，用于跳转
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 容器id，用于跳转
-	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
 
 	// 事件解决方案
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 事件详细描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 命中策略id
-	MatchRuleId *string `json:"MatchRuleId,omitempty" name:"MatchRuleId"`
+	MatchRuleId *string `json:"MatchRuleId,omitnil" name:"MatchRuleId"`
 
 	// 命中规则行为：
 	// RULE_MODE_RELEASE 放行
 	// RULE_MODE_ALERT  告警
 	// RULE_MODE_HOLDUP 拦截
-	MatchAction *string `json:"MatchAction,omitempty" name:"MatchAction"`
+	MatchAction *string `json:"MatchAction,omitnil" name:"MatchAction"`
 
 	// 命中规则进程信息
-	MatchProcessPath *string `json:"MatchProcessPath,omitempty" name:"MatchProcessPath"`
+	MatchProcessPath *string `json:"MatchProcessPath,omitnil" name:"MatchProcessPath"`
 
 	// 规则是否存在
-	RuleExist *bool `json:"RuleExist,omitempty" name:"RuleExist"`
+	RuleExist *bool `json:"RuleExist,omitnil" name:"RuleExist"`
 
 	// 事件数量
-	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+	EventCount *int64 `json:"EventCount,omitnil" name:"EventCount"`
 
 	// 最近生成时间
-	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+	LatestFoundTime *string `json:"LatestFoundTime,omitnil" name:"LatestFoundTime"`
 
 	// 规则组Id
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字
-	MatchGroupName *string `json:"MatchGroupName,omitempty" name:"MatchGroupName"`
+	MatchGroupName *string `json:"MatchGroupName,omitnil" name:"MatchGroupName"`
 
 	// 命中规则等级，HIGH：高危，MIDDLE：中危，LOW：低危。
-	MatchRuleLevel *string `json:"MatchRuleLevel,omitempty" name:"MatchRuleLevel"`
+	MatchRuleLevel *string `json:"MatchRuleLevel,omitnil" name:"MatchRuleLevel"`
 
 	// 网络状态
 	// 未隔离  	NORMAL
@@ -159,7 +159,7 @@ type AbnormalProcessEventInfo struct {
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil" name:"ContainerNetStatus"`
 
 	// 容器子状态
 	// "AGENT_OFFLINE"       //Agent离线
@@ -170,11 +170,11 @@ type AbnormalProcessEventInfo struct {
 	// "RESOURCE_LIMIT"      //隔离操作资源超限
 	// "UNKNOW"              // 原因未知
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil" name:"ContainerIsolateOperationSrc"`
 
 	// 容器状态
 	// 正在运行: RUNNING
@@ -184,106 +184,106 @@ type AbnormalProcessEventInfo struct {
 	// 已经销毁: DESTROYED
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
-	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+	ContainerStatus *string `json:"ContainerStatus,omitnil" name:"ContainerStatus"`
 
 	// 集群ID
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 节点类型：NORMAL普通节点、SUPER超级节点
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// pod 名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// pod ip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// 集群id
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 节点公网ip
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 节点名称
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 
 	// 节点id
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// uuid
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 节点内网ip
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 }
 
 type AbnormalProcessEventTendencyInfo struct {
 	// 日期
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 待处理代理软件事件数
-	ProxyToolEventCount *int64 `json:"ProxyToolEventCount,omitempty" name:"ProxyToolEventCount"`
+	ProxyToolEventCount *int64 `json:"ProxyToolEventCount,omitnil" name:"ProxyToolEventCount"`
 
 	// 待处理横向参透事件数
-	TransferControlEventCount *int64 `json:"TransferControlEventCount,omitempty" name:"TransferControlEventCount"`
+	TransferControlEventCount *int64 `json:"TransferControlEventCount,omitnil" name:"TransferControlEventCount"`
 
 	// 待处理恶意命令事件数
-	AttackCmdEventCount *int64 `json:"AttackCmdEventCount,omitempty" name:"AttackCmdEventCount"`
+	AttackCmdEventCount *int64 `json:"AttackCmdEventCount,omitnil" name:"AttackCmdEventCount"`
 
 	// 待处理反弹shell事件数
-	ReverseShellEventCount *int64 `json:"ReverseShellEventCount,omitempty" name:"ReverseShellEventCount"`
+	ReverseShellEventCount *int64 `json:"ReverseShellEventCount,omitnil" name:"ReverseShellEventCount"`
 
 	// 待处理无文件程序执行事件数
-	FilelessEventCount *int64 `json:"FilelessEventCount,omitempty" name:"FilelessEventCount"`
+	FilelessEventCount *int64 `json:"FilelessEventCount,omitnil" name:"FilelessEventCount"`
 
 	// 待处理高危命令事件数
-	RiskCmdEventCount *int64 `json:"RiskCmdEventCount,omitempty" name:"RiskCmdEventCount"`
+	RiskCmdEventCount *int64 `json:"RiskCmdEventCount,omitnil" name:"RiskCmdEventCount"`
 
 	// 待处理敏感服务异常子进程启动事件数
-	AbnormalChildProcessEventCount *int64 `json:"AbnormalChildProcessEventCount,omitempty" name:"AbnormalChildProcessEventCount"`
+	AbnormalChildProcessEventCount *int64 `json:"AbnormalChildProcessEventCount,omitnil" name:"AbnormalChildProcessEventCount"`
 
 	// 待处理自定义规则事件数
-	UserDefinedRuleEventCount *int64 `json:"UserDefinedRuleEventCount,omitempty" name:"UserDefinedRuleEventCount"`
+	UserDefinedRuleEventCount *int64 `json:"UserDefinedRuleEventCount,omitnil" name:"UserDefinedRuleEventCount"`
 }
 
 type AbnormalProcessRuleInfo struct {
 	// true:策略启用，false:策略禁用
-	IsEnable *bool `json:"IsEnable,omitempty" name:"IsEnable"`
+	IsEnable *bool `json:"IsEnable,omitnil" name:"IsEnable"`
 
 	// 生效镜像id，空数组代表全部镜像
-	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds"`
+	ImageIds []*string `json:"ImageIds,omitnil" name:"ImageIds"`
 
 	// 用户策略的子策略数组
-	ChildRules []*AbnormalProcessChildRuleInfo `json:"ChildRules,omitempty" name:"ChildRules"`
+	ChildRules []*AbnormalProcessChildRuleInfo `json:"ChildRules,omitnil" name:"ChildRules"`
 
 	// 策略名字
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 策略id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 系统策略的子策略数组
-	SystemChildRules []*AbnormalProcessSystemChildRuleInfo `json:"SystemChildRules,omitempty" name:"SystemChildRules"`
+	SystemChildRules []*AbnormalProcessSystemChildRuleInfo `json:"SystemChildRules,omitnil" name:"SystemChildRules"`
 
 	// 是否是系统默认策略
-	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+	IsDefault *bool `json:"IsDefault,omitnil" name:"IsDefault"`
 }
 
 type AbnormalProcessSystemChildRuleInfo struct {
 	// 子策略Id
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 子策略状态，true为开启，false为关闭
-	IsEnable *bool `json:"IsEnable,omitempty" name:"IsEnable"`
+	IsEnable *bool `json:"IsEnable,omitnil" name:"IsEnable"`
 
 	// 策略模式,  RULE_MODE_RELEASE: 放行
 	//    RULE_MODE_ALERT: 告警
 	//    RULE_MODE_HOLDUP:拦截
-	RuleMode *string `json:"RuleMode,omitempty" name:"RuleMode"`
+	RuleMode *string `json:"RuleMode,omitnil" name:"RuleMode"`
 
 	// 子策略检测的行为类型
 	// PROXY_TOOL： 代理软件
@@ -293,133 +293,133 @@ type AbnormalProcessSystemChildRuleInfo struct {
 	// FILELESS：无文件程序执行
 	// RISK_CMD：高危命令
 	// ABNORMAL_CHILD_PROC: 敏感服务异常子进程启动
-	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+	RuleType *string `json:"RuleType,omitnil" name:"RuleType"`
 
 	// 威胁等级，HIGH:高，MIDDLE:中，LOW:低
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleLevel *string `json:"RuleLevel,omitempty" name:"RuleLevel"`
+	RuleLevel *string `json:"RuleLevel,omitnil" name:"RuleLevel"`
 }
 
 type AccessControlChildRuleInfo struct {
 	// 策略模式,  RULE_MODE_RELEASE: 放行
 	//    RULE_MODE_ALERT: 告警
 	//    RULE_MODE_HOLDUP:拦截
-	RuleMode *string `json:"RuleMode,omitempty" name:"RuleMode"`
+	RuleMode *string `json:"RuleMode,omitnil" name:"RuleMode"`
 
 	// 进程路径
-	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+	ProcessPath *string `json:"ProcessPath,omitnil" name:"ProcessPath"`
 
 	// 被访问文件路径，仅仅在访问控制生效
-	TargetFilePath *string `json:"TargetFilePath,omitempty" name:"TargetFilePath"`
+	TargetFilePath *string `json:"TargetFilePath,omitnil" name:"TargetFilePath"`
 
 	// 子策略id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 type AccessControlEventDescription struct {
 	// 事件规则
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 解决方案
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 事件备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 命中规则详细信息
-	MatchRule *AccessControlChildRuleInfo `json:"MatchRule,omitempty" name:"MatchRule"`
+	MatchRule *AccessControlChildRuleInfo `json:"MatchRule,omitnil" name:"MatchRule"`
 
 	// 命中规则名字
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 命中规则id
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 事件最后一次处理的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
+	OperationTime *string `json:"OperationTime,omitnil" name:"OperationTime"`
 }
 
 type AccessControlEventInfo struct {
 	// 进程名称
-	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
 
 	// 命中规则名称
-	MatchRuleName *string `json:"MatchRuleName,omitempty" name:"MatchRuleName"`
+	MatchRuleName *string `json:"MatchRuleName,omitnil" name:"MatchRuleName"`
 
 	// 生成时间
-	FoundTime *string `json:"FoundTime,omitempty" name:"FoundTime"`
+	FoundTime *string `json:"FoundTime,omitnil" name:"FoundTime"`
 
 	// 容器名
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 镜像名
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 动作执行结果，   BEHAVIOR_NONE: 无
 	//     BEHAVIOR_ALERT: 告警
 	//     BEHAVIOR_RELEASE：放行
 	//     BEHAVIOR_HOLDUP_FAILED:拦截失败
 	//     BEHAVIOR_HOLDUP_SUCCESSED：拦截失败
-	Behavior *string `json:"Behavior,omitempty" name:"Behavior"`
+	Behavior *string `json:"Behavior,omitnil" name:"Behavior"`
 
 	// 状态0:未处理  “EVENT_UNDEAL”:事件未处理
 	//     "EVENT_DEALED":事件已经处理
 	//     "EVENT_INGNORE"：事件已经忽略
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件记录的唯一id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 
 	// 文件名称
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 事件类型， FILE_ABNORMAL_READ:文件异常读取
-	EventType *string `json:"EventType,omitempty" name:"EventType"`
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
 
 	// 镜像id, 用于跳转
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 容器id, 用于跳转
-	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
 
 	// 事件解决方案
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 事件详细描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 命中策略id
-	MatchRuleId *string `json:"MatchRuleId,omitempty" name:"MatchRuleId"`
+	MatchRuleId *string `json:"MatchRuleId,omitnil" name:"MatchRuleId"`
 
 	// 命中规则行为：
 	// RULE_MODE_RELEASE 放行
 	// RULE_MODE_ALERT  告警
 	// RULE_MODE_HOLDUP 拦截
-	MatchAction *string `json:"MatchAction,omitempty" name:"MatchAction"`
+	MatchAction *string `json:"MatchAction,omitnil" name:"MatchAction"`
 
 	// 命中规则进程信息
-	MatchProcessPath *string `json:"MatchProcessPath,omitempty" name:"MatchProcessPath"`
+	MatchProcessPath *string `json:"MatchProcessPath,omitnil" name:"MatchProcessPath"`
 
 	// 命中规则文件信息
-	MatchFilePath *string `json:"MatchFilePath,omitempty" name:"MatchFilePath"`
+	MatchFilePath *string `json:"MatchFilePath,omitnil" name:"MatchFilePath"`
 
 	// 文件路径，包含名字
-	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
 
 	// 规则是否存在
-	RuleExist *bool `json:"RuleExist,omitempty" name:"RuleExist"`
+	RuleExist *bool `json:"RuleExist,omitnil" name:"RuleExist"`
 
 	// 事件数量
-	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+	EventCount *int64 `json:"EventCount,omitnil" name:"EventCount"`
 
 	// 最近生成时间
-	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+	LatestFoundTime *string `json:"LatestFoundTime,omitnil" name:"LatestFoundTime"`
 
 	// 规则组id
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 网络状态
 	// 未隔离  	NORMAL
@@ -428,7 +428,7 @@ type AccessControlEventInfo struct {
 	// 隔离失败	ISOLATE_FAILED
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
-	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil" name:"ContainerNetStatus"`
 
 	// 容器子状态
 	// "AGENT_OFFLINE"       //Agent离线
@@ -438,10 +438,10 @@ type AccessControlEventInfo struct {
 	// "SHARED_HOST"         // 容器与主机共享网络
 	// "RESOURCE_LIMIT"      //隔离操作资源超限
 	// "UNKNOW"              // 原因未知
-	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
-	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil" name:"ContainerIsolateOperationSrc"`
 
 	// 容器状态
 	// 正在运行: RUNNING
@@ -451,92 +451,92 @@ type AccessControlEventInfo struct {
 	// 已经销毁: DESTROYED
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
-	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+	ContainerStatus *string `json:"ContainerStatus,omitnil" name:"ContainerStatus"`
 
 	// 节点名称：如果是超级节点，展示的实质上是它的node_id
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 
 	// pod名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// pod ip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// 节点类型：NORMAL普通节点、SUPER超级节点
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 集群id
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 节点的唯一id，主要是超级节点使用
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 节点公网IP
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 节点id
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// uuid
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 节点内网ip
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 }
 
 type AccessControlRuleInfo struct {
 	// 开关,true:开启，false:禁用
-	IsEnable *bool `json:"IsEnable,omitempty" name:"IsEnable"`
+	IsEnable *bool `json:"IsEnable,omitnil" name:"IsEnable"`
 
 	// 生效镜像id，空数组代表全部镜像
-	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds"`
+	ImageIds []*string `json:"ImageIds,omitnil" name:"ImageIds"`
 
 	// 用户策略的子策略数组
-	ChildRules []*AccessControlChildRuleInfo `json:"ChildRules,omitempty" name:"ChildRules"`
+	ChildRules []*AccessControlChildRuleInfo `json:"ChildRules,omitnil" name:"ChildRules"`
 
 	// 策略名字
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 策略id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 系统策略的子策略数组
-	SystemChildRules []*AccessControlSystemChildRuleInfo `json:"SystemChildRules,omitempty" name:"SystemChildRules"`
+	SystemChildRules []*AccessControlSystemChildRuleInfo `json:"SystemChildRules,omitnil" name:"SystemChildRules"`
 
 	// 是否是系统默认策略
-	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+	IsDefault *bool `json:"IsDefault,omitnil" name:"IsDefault"`
 }
 
 type AccessControlSystemChildRuleInfo struct {
 	// 子策略Id
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 策略模式,  RULE_MODE_RELEASE: 放行
 	//    RULE_MODE_ALERT: 告警
 	//    RULE_MODE_HOLDUP:拦截
-	RuleMode *string `json:"RuleMode,omitempty" name:"RuleMode"`
+	RuleMode *string `json:"RuleMode,omitnil" name:"RuleMode"`
 
 	// 子策略状态，true为开启，false为关闭
-	IsEnable *bool `json:"IsEnable,omitempty" name:"IsEnable"`
+	IsEnable *bool `json:"IsEnable,omitnil" name:"IsEnable"`
 
 	// 子策略检测的入侵行为类型
 	// CHANGE_CRONTAB：篡改计划任务
 	// CHANGE_SYS_BIN：篡改系统程序
 	// CHANGE_USRCFG：篡改用户配置
-	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+	RuleType *string `json:"RuleType,omitnil" name:"RuleType"`
 }
 
 // Predefined struct for user
 type AddAndPublishNetworkFirewallPolicyDetailRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略名
-	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// 入站规则
 	// 
@@ -545,7 +545,7 @@ type AddAndPublishNetworkFirewallPolicyDetailRequestParams struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	FromPolicyRule *int64 `json:"FromPolicyRule,omitempty" name:"FromPolicyRule"`
+	FromPolicyRule *int64 `json:"FromPolicyRule,omitnil" name:"FromPolicyRule"`
 
 	// 出站规则
 	// 
@@ -554,29 +554,29 @@ type AddAndPublishNetworkFirewallPolicyDetailRequestParams struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	ToPolicyRule *int64 `json:"ToPolicyRule,omitempty" name:"ToPolicyRule"`
+	ToPolicyRule *int64 `json:"ToPolicyRule,omitnil" name:"ToPolicyRule"`
 
 	// pod选择器
-	PodSelector *string `json:"PodSelector,omitempty" name:"PodSelector"`
+	PodSelector *string `json:"PodSelector,omitnil" name:"PodSelector"`
 
 	// 命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 自定义规则
-	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitempty" name:"CustomPolicy"`
+	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitnil" name:"CustomPolicy"`
 }
 
 type AddAndPublishNetworkFirewallPolicyDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略名
-	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// 入站规则
 	// 
@@ -585,7 +585,7 @@ type AddAndPublishNetworkFirewallPolicyDetailRequest struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	FromPolicyRule *int64 `json:"FromPolicyRule,omitempty" name:"FromPolicyRule"`
+	FromPolicyRule *int64 `json:"FromPolicyRule,omitnil" name:"FromPolicyRule"`
 
 	// 出站规则
 	// 
@@ -594,19 +594,19 @@ type AddAndPublishNetworkFirewallPolicyDetailRequest struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	ToPolicyRule *int64 `json:"ToPolicyRule,omitempty" name:"ToPolicyRule"`
+	ToPolicyRule *int64 `json:"ToPolicyRule,omitnil" name:"ToPolicyRule"`
 
 	// pod选择器
-	PodSelector *string `json:"PodSelector,omitempty" name:"PodSelector"`
+	PodSelector *string `json:"PodSelector,omitnil" name:"PodSelector"`
 
 	// 命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 自定义规则
-	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitempty" name:"CustomPolicy"`
+	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitnil" name:"CustomPolicy"`
 }
 
 func (r *AddAndPublishNetworkFirewallPolicyDetailRequest) ToJsonString() string {
@@ -638,13 +638,13 @@ func (r *AddAndPublishNetworkFirewallPolicyDetailRequest) FromJsonString(s strin
 // Predefined struct for user
 type AddAndPublishNetworkFirewallPolicyDetailResponseParams struct {
 	// 返回创建的任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddAndPublishNetworkFirewallPolicyDetailResponse struct {
@@ -666,32 +666,32 @@ func (r *AddAndPublishNetworkFirewallPolicyDetailResponse) FromJsonString(s stri
 // Predefined struct for user
 type AddAndPublishNetworkFirewallPolicyYamlDetailRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略名
-	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// base64编码的networkpolicy yaml字符串
-	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+	Yaml *string `json:"Yaml,omitnil" name:"Yaml"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 type AddAndPublishNetworkFirewallPolicyYamlDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略名
-	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// base64编码的networkpolicy yaml字符串
-	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+	Yaml *string `json:"Yaml,omitnil" name:"Yaml"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 func (r *AddAndPublishNetworkFirewallPolicyYamlDetailRequest) ToJsonString() string {
@@ -719,13 +719,13 @@ func (r *AddAndPublishNetworkFirewallPolicyYamlDetailRequest) FromJsonString(s s
 // Predefined struct for user
 type AddAndPublishNetworkFirewallPolicyYamlDetailResponseParams struct {
 	// 返回创建的任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddAndPublishNetworkFirewallPolicyYamlDetailResponse struct {
@@ -747,74 +747,74 @@ func (r *AddAndPublishNetworkFirewallPolicyYamlDetailResponse) FromJsonString(s 
 // Predefined struct for user
 type AddAssetImageRegistryRegistryDetailRequestParams struct {
 	// 仓库名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 用户名
-	Username *string `json:"Username,omitempty" name:"Username"`
+	Username *string `json:"Username,omitnil" name:"Username"`
 
 	// 密码
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 
 	// 仓库url
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 仓库类型，列表：harbor
-	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+	RegistryType *string `json:"RegistryType,omitnil" name:"RegistryType"`
 
 	// 网络类型，列表：public（公网）
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 仓库版本
-	RegistryVersion *string `json:"RegistryVersion,omitempty" name:"RegistryVersion"`
+	RegistryVersion *string `json:"RegistryVersion,omitnil" name:"RegistryVersion"`
 
 	// 区域，列表：default（默认）
-	RegistryRegion *string `json:"RegistryRegion,omitempty" name:"RegistryRegion"`
+	RegistryRegion *string `json:"RegistryRegion,omitnil" name:"RegistryRegion"`
 
 	// 限速
-	SpeedLimit *int64 `json:"SpeedLimit,omitempty" name:"SpeedLimit"`
+	SpeedLimit *int64 `json:"SpeedLimit,omitnil" name:"SpeedLimit"`
 
 	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
-	Insecure *uint64 `json:"Insecure,omitempty" name:"Insecure"`
+	Insecure *uint64 `json:"Insecure,omitnil" name:"Insecure"`
 
 	// 联通性检测的记录ID
-	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitempty" name:"ConnDetectConfig"`
+	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitnil" name:"ConnDetectConfig"`
 }
 
 type AddAssetImageRegistryRegistryDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 仓库名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 用户名
-	Username *string `json:"Username,omitempty" name:"Username"`
+	Username *string `json:"Username,omitnil" name:"Username"`
 
 	// 密码
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 
 	// 仓库url
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 仓库类型，列表：harbor
-	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+	RegistryType *string `json:"RegistryType,omitnil" name:"RegistryType"`
 
 	// 网络类型，列表：public（公网）
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 仓库版本
-	RegistryVersion *string `json:"RegistryVersion,omitempty" name:"RegistryVersion"`
+	RegistryVersion *string `json:"RegistryVersion,omitnil" name:"RegistryVersion"`
 
 	// 区域，列表：default（默认）
-	RegistryRegion *string `json:"RegistryRegion,omitempty" name:"RegistryRegion"`
+	RegistryRegion *string `json:"RegistryRegion,omitnil" name:"RegistryRegion"`
 
 	// 限速
-	SpeedLimit *int64 `json:"SpeedLimit,omitempty" name:"SpeedLimit"`
+	SpeedLimit *int64 `json:"SpeedLimit,omitnil" name:"SpeedLimit"`
 
 	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
-	Insecure *uint64 `json:"Insecure,omitempty" name:"Insecure"`
+	Insecure *uint64 `json:"Insecure,omitnil" name:"Insecure"`
 
 	// 联通性检测的记录ID
-	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitempty" name:"ConnDetectConfig"`
+	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitnil" name:"ConnDetectConfig"`
 }
 
 func (r *AddAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -850,18 +850,18 @@ func (r *AddAssetImageRegistryRegistryDetailRequest) FromJsonString(s string) er
 type AddAssetImageRegistryRegistryDetailResponseParams struct {
 	// 连接错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HealthCheckErr *string `json:"HealthCheckErr,omitempty" name:"HealthCheckErr"`
+	HealthCheckErr *string `json:"HealthCheckErr,omitnil" name:"HealthCheckErr"`
 
 	// 名称错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NameRepeatErr *string `json:"NameRepeatErr,omitempty" name:"NameRepeatErr"`
+	NameRepeatErr *string `json:"NameRepeatErr,omitnil" name:"NameRepeatErr"`
 
 	// 仓库唯一id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegistryId *int64 `json:"RegistryId,omitempty" name:"RegistryId"`
+	RegistryId *int64 `json:"RegistryId,omitnil" name:"RegistryId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddAssetImageRegistryRegistryDetailResponse struct {
@@ -883,14 +883,14 @@ func (r *AddAssetImageRegistryRegistryDetailResponse) FromJsonString(s string) e
 // Predefined struct for user
 type AddComplianceAssetPolicySetToWhitelistRequestParams struct {
 	// 资产ID+检查项IDs. 列表
-	AssetPolicySetList []*ComplianceAssetPolicySetItem `json:"AssetPolicySetList,omitempty" name:"AssetPolicySetList"`
+	AssetPolicySetList []*ComplianceAssetPolicySetItem `json:"AssetPolicySetList,omitnil" name:"AssetPolicySetList"`
 }
 
 type AddComplianceAssetPolicySetToWhitelistRequest struct {
 	*tchttp.BaseRequest
 	
 	// 资产ID+检查项IDs. 列表
-	AssetPolicySetList []*ComplianceAssetPolicySetItem `json:"AssetPolicySetList,omitempty" name:"AssetPolicySetList"`
+	AssetPolicySetList []*ComplianceAssetPolicySetItem `json:"AssetPolicySetList,omitnil" name:"AssetPolicySetList"`
 }
 
 func (r *AddComplianceAssetPolicySetToWhitelistRequest) ToJsonString() string {
@@ -915,7 +915,7 @@ func (r *AddComplianceAssetPolicySetToWhitelistRequest) FromJsonString(s string)
 // Predefined struct for user
 type AddComplianceAssetPolicySetToWhitelistResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddComplianceAssetPolicySetToWhitelistResponse struct {
@@ -937,20 +937,20 @@ func (r *AddComplianceAssetPolicySetToWhitelistResponse) FromJsonString(s string
 // Predefined struct for user
 type AddCompliancePolicyAssetSetToWhitelistRequestParams struct {
 	// 检查项ID
-	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitnil" name:"CustomerPolicyItemId"`
 
 	// 需要忽略指定检查项内的资产ID列表
-	CustomerAssetItemIdSet []*uint64 `json:"CustomerAssetItemIdSet,omitempty" name:"CustomerAssetItemIdSet"`
+	CustomerAssetItemIdSet []*uint64 `json:"CustomerAssetItemIdSet,omitnil" name:"CustomerAssetItemIdSet"`
 }
 
 type AddCompliancePolicyAssetSetToWhitelistRequest struct {
 	*tchttp.BaseRequest
 	
 	// 检查项ID
-	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitnil" name:"CustomerPolicyItemId"`
 
 	// 需要忽略指定检查项内的资产ID列表
-	CustomerAssetItemIdSet []*uint64 `json:"CustomerAssetItemIdSet,omitempty" name:"CustomerAssetItemIdSet"`
+	CustomerAssetItemIdSet []*uint64 `json:"CustomerAssetItemIdSet,omitnil" name:"CustomerAssetItemIdSet"`
 }
 
 func (r *AddCompliancePolicyAssetSetToWhitelistRequest) ToJsonString() string {
@@ -976,7 +976,7 @@ func (r *AddCompliancePolicyAssetSetToWhitelistRequest) FromJsonString(s string)
 // Predefined struct for user
 type AddCompliancePolicyAssetSetToWhitelistResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddCompliancePolicyAssetSetToWhitelistResponse struct {
@@ -998,14 +998,14 @@ func (r *AddCompliancePolicyAssetSetToWhitelistResponse) FromJsonString(s string
 // Predefined struct for user
 type AddCompliancePolicyItemToWhitelistRequestParams struct {
 	// 要忽略的检测项的ID的列表
-	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitempty" name:"CustomerPolicyItemIdSet"`
+	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitnil" name:"CustomerPolicyItemIdSet"`
 }
 
 type AddCompliancePolicyItemToWhitelistRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要忽略的检测项的ID的列表
-	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitempty" name:"CustomerPolicyItemIdSet"`
+	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitnil" name:"CustomerPolicyItemIdSet"`
 }
 
 func (r *AddCompliancePolicyItemToWhitelistRequest) ToJsonString() string {
@@ -1030,7 +1030,7 @@ func (r *AddCompliancePolicyItemToWhitelistRequest) FromJsonString(s string) err
 // Predefined struct for user
 type AddCompliancePolicyItemToWhitelistResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddCompliancePolicyItemToWhitelistResponse struct {
@@ -1052,20 +1052,20 @@ func (r *AddCompliancePolicyItemToWhitelistResponse) FromJsonString(s string) er
 // Predefined struct for user
 type AddEditAbnormalProcessRuleRequestParams struct {
 	// 增加策略信息，策略id为空，编辑策略是id不能为空
-	RuleInfo *AbnormalProcessRuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+	RuleInfo *AbnormalProcessRuleInfo `json:"RuleInfo,omitnil" name:"RuleInfo"`
 
 	// 仅在加白的时候带上
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 type AddEditAbnormalProcessRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 增加策略信息，策略id为空，编辑策略是id不能为空
-	RuleInfo *AbnormalProcessRuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+	RuleInfo *AbnormalProcessRuleInfo `json:"RuleInfo,omitnil" name:"RuleInfo"`
 
 	// 仅在加白的时候带上
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 func (r *AddEditAbnormalProcessRuleRequest) ToJsonString() string {
@@ -1091,7 +1091,7 @@ func (r *AddEditAbnormalProcessRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddEditAbnormalProcessRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddEditAbnormalProcessRuleResponse struct {
@@ -1113,20 +1113,20 @@ func (r *AddEditAbnormalProcessRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddEditAccessControlRuleRequestParams struct {
 	// 增加策略信息，策略id为空，编辑策略是id不能为空
-	RuleInfo *AccessControlRuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+	RuleInfo *AccessControlRuleInfo `json:"RuleInfo,omitnil" name:"RuleInfo"`
 
 	// 仅在白名单时候使用
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 type AddEditAccessControlRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 增加策略信息，策略id为空，编辑策略是id不能为空
-	RuleInfo *AccessControlRuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+	RuleInfo *AccessControlRuleInfo `json:"RuleInfo,omitnil" name:"RuleInfo"`
 
 	// 仅在白名单时候使用
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 func (r *AddEditAccessControlRuleRequest) ToJsonString() string {
@@ -1152,7 +1152,7 @@ func (r *AddEditAccessControlRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddEditAccessControlRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddEditAccessControlRuleResponse struct {
@@ -1174,50 +1174,50 @@ func (r *AddEditAccessControlRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddEditImageAutoAuthorizedRuleRequestParams struct {
 	// 授权范围类别，MANUAL:自选主机节点，ALL:全部镜像
-	RangeType *string `json:"RangeType,omitempty" name:"RangeType"`
+	RangeType *string `json:"RangeType,omitnil" name:"RangeType"`
 
 	// 每天最大的镜像授权数限制, 0表示无限制
-	MaxDailyCount *int64 `json:"MaxDailyCount,omitempty" name:"MaxDailyCount"`
+	MaxDailyCount *int64 `json:"MaxDailyCount,omitnil" name:"MaxDailyCount"`
 
 	// 规则是否生效，0:不生效，1:已生效
-	IsEnabled *int64 `json:"IsEnabled,omitempty" name:"IsEnabled"`
+	IsEnabled *int64 `json:"IsEnabled,omitnil" name:"IsEnabled"`
 
 	// 自选主机id，当授权范围为MANUAL:自选主机时且HostIdFilters为空时，必填
-	HostIdSet []*string `json:"HostIdSet,omitempty" name:"HostIdSet"`
+	HostIdSet []*string `json:"HostIdSet,omitnil" name:"HostIdSet"`
 
 	// 规则id，在编辑时，必填
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 根据条件过滤，当授权范围为MANUAL:自选主机时且HostIdSet为空时，必填
-	HostIdFilters []*AssetFilters `json:"HostIdFilters,omitempty" name:"HostIdFilters"`
+	HostIdFilters []*AssetFilters `json:"HostIdFilters,omitnil" name:"HostIdFilters"`
 
 	// 根据条件过滤而且排除指定主机id
-	ExcludeHostIdSet []*string `json:"ExcludeHostIdSet,omitempty" name:"ExcludeHostIdSet"`
+	ExcludeHostIdSet []*string `json:"ExcludeHostIdSet,omitnil" name:"ExcludeHostIdSet"`
 }
 
 type AddEditImageAutoAuthorizedRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 授权范围类别，MANUAL:自选主机节点，ALL:全部镜像
-	RangeType *string `json:"RangeType,omitempty" name:"RangeType"`
+	RangeType *string `json:"RangeType,omitnil" name:"RangeType"`
 
 	// 每天最大的镜像授权数限制, 0表示无限制
-	MaxDailyCount *int64 `json:"MaxDailyCount,omitempty" name:"MaxDailyCount"`
+	MaxDailyCount *int64 `json:"MaxDailyCount,omitnil" name:"MaxDailyCount"`
 
 	// 规则是否生效，0:不生效，1:已生效
-	IsEnabled *int64 `json:"IsEnabled,omitempty" name:"IsEnabled"`
+	IsEnabled *int64 `json:"IsEnabled,omitnil" name:"IsEnabled"`
 
 	// 自选主机id，当授权范围为MANUAL:自选主机时且HostIdFilters为空时，必填
-	HostIdSet []*string `json:"HostIdSet,omitempty" name:"HostIdSet"`
+	HostIdSet []*string `json:"HostIdSet,omitnil" name:"HostIdSet"`
 
 	// 规则id，在编辑时，必填
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 根据条件过滤，当授权范围为MANUAL:自选主机时且HostIdSet为空时，必填
-	HostIdFilters []*AssetFilters `json:"HostIdFilters,omitempty" name:"HostIdFilters"`
+	HostIdFilters []*AssetFilters `json:"HostIdFilters,omitnil" name:"HostIdFilters"`
 
 	// 根据条件过滤而且排除指定主机id
-	ExcludeHostIdSet []*string `json:"ExcludeHostIdSet,omitempty" name:"ExcludeHostIdSet"`
+	ExcludeHostIdSet []*string `json:"ExcludeHostIdSet,omitnil" name:"ExcludeHostIdSet"`
 }
 
 func (r *AddEditImageAutoAuthorizedRuleRequest) ToJsonString() string {
@@ -1248,7 +1248,7 @@ func (r *AddEditImageAutoAuthorizedRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddEditImageAutoAuthorizedRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddEditImageAutoAuthorizedRuleResponse struct {
@@ -1270,20 +1270,20 @@ func (r *AddEditImageAutoAuthorizedRuleResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type AddEditReverseShellWhiteListRequestParams struct {
 	// 增加或编辑白名单信息。新增白名单时WhiteListInfo.id为空，编辑白名单WhiteListInfo.id不能为空。
-	WhiteListInfo *ReverseShellWhiteListInfo `json:"WhiteListInfo,omitempty" name:"WhiteListInfo"`
+	WhiteListInfo *ReverseShellWhiteListInfo `json:"WhiteListInfo,omitnil" name:"WhiteListInfo"`
 
 	// 仅在添加事件白名单时候使用
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 type AddEditReverseShellWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 增加或编辑白名单信息。新增白名单时WhiteListInfo.id为空，编辑白名单WhiteListInfo.id不能为空。
-	WhiteListInfo *ReverseShellWhiteListInfo `json:"WhiteListInfo,omitempty" name:"WhiteListInfo"`
+	WhiteListInfo *ReverseShellWhiteListInfo `json:"WhiteListInfo,omitnil" name:"WhiteListInfo"`
 
 	// 仅在添加事件白名单时候使用
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 func (r *AddEditReverseShellWhiteListRequest) ToJsonString() string {
@@ -1309,7 +1309,7 @@ func (r *AddEditReverseShellWhiteListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddEditReverseShellWhiteListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddEditReverseShellWhiteListResponse struct {
@@ -1331,20 +1331,20 @@ func (r *AddEditReverseShellWhiteListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddEditRiskSyscallWhiteListRequestParams struct {
 	// 仅在添加事件白名单时候使用
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 
 	// 增加或编辑白名单信。新增白名单时WhiteListInfo.id为空，编辑白名单WhiteListInfo.id不能为空.
-	WhiteListInfo *RiskSyscallWhiteListInfo `json:"WhiteListInfo,omitempty" name:"WhiteListInfo"`
+	WhiteListInfo *RiskSyscallWhiteListInfo `json:"WhiteListInfo,omitnil" name:"WhiteListInfo"`
 }
 
 type AddEditRiskSyscallWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 仅在添加事件白名单时候使用
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 
 	// 增加或编辑白名单信。新增白名单时WhiteListInfo.id为空，编辑白名单WhiteListInfo.id不能为空.
-	WhiteListInfo *RiskSyscallWhiteListInfo `json:"WhiteListInfo,omitempty" name:"WhiteListInfo"`
+	WhiteListInfo *RiskSyscallWhiteListInfo `json:"WhiteListInfo,omitnil" name:"WhiteListInfo"`
 }
 
 func (r *AddEditRiskSyscallWhiteListRequest) ToJsonString() string {
@@ -1370,7 +1370,7 @@ func (r *AddEditRiskSyscallWhiteListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddEditRiskSyscallWhiteListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddEditRiskSyscallWhiteListResponse struct {
@@ -1392,14 +1392,14 @@ func (r *AddEditRiskSyscallWhiteListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddEditWarningRulesRequestParams struct {
 	// 告警开关策略
-	WarningRules []*WarningRule `json:"WarningRules,omitempty" name:"WarningRules"`
+	WarningRules []*WarningRule `json:"WarningRules,omitnil" name:"WarningRules"`
 }
 
 type AddEditWarningRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 告警开关策略
-	WarningRules []*WarningRule `json:"WarningRules,omitempty" name:"WarningRules"`
+	WarningRules []*WarningRule `json:"WarningRules,omitnil" name:"WarningRules"`
 }
 
 func (r *AddEditWarningRulesRequest) ToJsonString() string {
@@ -1424,7 +1424,7 @@ func (r *AddEditWarningRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddEditWarningRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddEditWarningRulesResponse struct {
@@ -1453,10 +1453,10 @@ type AddEscapeWhiteListRequestParams struct {
 	//    MOUNT_SENSITIVE_PTAH：敏感路径挂载
 	//    PRIVILEGE_CONTAINER_START：特权容器
 	//    PRIVILEGE：程序提权逃逸
-	EventType []*string `json:"EventType,omitempty" name:"EventType"`
+	EventType []*string `json:"EventType,omitnil" name:"EventType"`
 
 	// 加白名单镜像ID数组
-	ImageIDs []*string `json:"ImageIDs,omitempty" name:"ImageIDs"`
+	ImageIDs []*string `json:"ImageIDs,omitnil" name:"ImageIDs"`
 }
 
 type AddEscapeWhiteListRequest struct {
@@ -1470,10 +1470,10 @@ type AddEscapeWhiteListRequest struct {
 	//    MOUNT_SENSITIVE_PTAH：敏感路径挂载
 	//    PRIVILEGE_CONTAINER_START：特权容器
 	//    PRIVILEGE：程序提权逃逸
-	EventType []*string `json:"EventType,omitempty" name:"EventType"`
+	EventType []*string `json:"EventType,omitnil" name:"EventType"`
 
 	// 加白名单镜像ID数组
-	ImageIDs []*string `json:"ImageIDs,omitempty" name:"ImageIDs"`
+	ImageIDs []*string `json:"ImageIDs,omitnil" name:"ImageIDs"`
 }
 
 func (r *AddEscapeWhiteListRequest) ToJsonString() string {
@@ -1499,7 +1499,7 @@ func (r *AddEscapeWhiteListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddEscapeWhiteListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddEscapeWhiteListResponse struct {
@@ -1521,14 +1521,14 @@ func (r *AddEscapeWhiteListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddIgnoreVulRequestParams struct {
 	// 漏洞PocID信息列表
-	List []*ModifyIgnoreVul `json:"List,omitempty" name:"List"`
+	List []*ModifyIgnoreVul `json:"List,omitnil" name:"List"`
 }
 
 type AddIgnoreVulRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞PocID信息列表
-	List []*ModifyIgnoreVul `json:"List,omitempty" name:"List"`
+	List []*ModifyIgnoreVul `json:"List,omitnil" name:"List"`
 }
 
 func (r *AddIgnoreVulRequest) ToJsonString() string {
@@ -1553,7 +1553,7 @@ func (r *AddIgnoreVulRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddIgnoreVulResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddIgnoreVulResponse struct {
@@ -1575,10 +1575,10 @@ func (r *AddIgnoreVulResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddNetworkFirewallPolicyDetailRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略名
-	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// 入站规则
 	// 
@@ -1587,7 +1587,7 @@ type AddNetworkFirewallPolicyDetailRequestParams struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	FromPolicyRule *int64 `json:"FromPolicyRule,omitempty" name:"FromPolicyRule"`
+	FromPolicyRule *int64 `json:"FromPolicyRule,omitnil" name:"FromPolicyRule"`
 
 	// 出站规则
 	// 
@@ -1596,29 +1596,29 @@ type AddNetworkFirewallPolicyDetailRequestParams struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	ToPolicyRule *int64 `json:"ToPolicyRule,omitempty" name:"ToPolicyRule"`
+	ToPolicyRule *int64 `json:"ToPolicyRule,omitnil" name:"ToPolicyRule"`
 
 	// pod选择器
-	PodSelector *string `json:"PodSelector,omitempty" name:"PodSelector"`
+	PodSelector *string `json:"PodSelector,omitnil" name:"PodSelector"`
 
 	// 命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 自定义规则
-	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitempty" name:"CustomPolicy"`
+	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitnil" name:"CustomPolicy"`
 }
 
 type AddNetworkFirewallPolicyDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略名
-	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// 入站规则
 	// 
@@ -1627,7 +1627,7 @@ type AddNetworkFirewallPolicyDetailRequest struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	FromPolicyRule *int64 `json:"FromPolicyRule,omitempty" name:"FromPolicyRule"`
+	FromPolicyRule *int64 `json:"FromPolicyRule,omitnil" name:"FromPolicyRule"`
 
 	// 出站规则
 	// 
@@ -1636,19 +1636,19 @@ type AddNetworkFirewallPolicyDetailRequest struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	ToPolicyRule *int64 `json:"ToPolicyRule,omitempty" name:"ToPolicyRule"`
+	ToPolicyRule *int64 `json:"ToPolicyRule,omitnil" name:"ToPolicyRule"`
 
 	// pod选择器
-	PodSelector *string `json:"PodSelector,omitempty" name:"PodSelector"`
+	PodSelector *string `json:"PodSelector,omitnil" name:"PodSelector"`
 
 	// 命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 自定义规则
-	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitempty" name:"CustomPolicy"`
+	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitnil" name:"CustomPolicy"`
 }
 
 func (r *AddNetworkFirewallPolicyDetailRequest) ToJsonString() string {
@@ -1680,13 +1680,13 @@ func (r *AddNetworkFirewallPolicyDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddNetworkFirewallPolicyDetailResponseParams struct {
 	// 返回创建的任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddNetworkFirewallPolicyDetailResponse struct {
@@ -1708,32 +1708,32 @@ func (r *AddNetworkFirewallPolicyDetailResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type AddNetworkFirewallPolicyYamlDetailRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略名
-	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// base64编码的networkpolicy yaml字符串
-	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+	Yaml *string `json:"Yaml,omitnil" name:"Yaml"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 type AddNetworkFirewallPolicyYamlDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略名
-	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// base64编码的networkpolicy yaml字符串
-	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+	Yaml *string `json:"Yaml,omitnil" name:"Yaml"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 func (r *AddNetworkFirewallPolicyYamlDetailRequest) ToJsonString() string {
@@ -1761,13 +1761,13 @@ func (r *AddNetworkFirewallPolicyYamlDetailRequest) FromJsonString(s string) err
 // Predefined struct for user
 type AddNetworkFirewallPolicyYamlDetailResponseParams struct {
 	// 返回创建的任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddNetworkFirewallPolicyYamlDetailResponse struct {
@@ -1788,224 +1788,224 @@ func (r *AddNetworkFirewallPolicyYamlDetailResponse) FromJsonString(s string) er
 
 type AffectedNodeItem struct {
 	// 集群ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 集群名字
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 内网ip地址
-	PrivateIpAddresses *string `json:"PrivateIpAddresses,omitempty" name:"PrivateIpAddresses"`
+	PrivateIpAddresses *string `json:"PrivateIpAddresses,omitnil" name:"PrivateIpAddresses"`
 
 	// 节点的角色，Master、Work等
-	InstanceRole *string `json:"InstanceRole,omitempty" name:"InstanceRole"`
+	InstanceRole *string `json:"InstanceRole,omitnil" name:"InstanceRole"`
 
 	// k8s版本
-	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
+	ClusterVersion *string `json:"ClusterVersion,omitnil" name:"ClusterVersion"`
 
 	// 运行时组件,docker或者containerd
-	ContainerRuntime *string `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+	ContainerRuntime *string `json:"ContainerRuntime,omitnil" name:"ContainerRuntime"`
 
 	// 区域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 检查结果的验证信息
-	VerifyInfo *string `json:"VerifyInfo,omitempty" name:"VerifyInfo"`
+	VerifyInfo *string `json:"VerifyInfo,omitnil" name:"VerifyInfo"`
 
 	// 节点名称
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 }
 
 type AffectedWorkloadItem struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 集群名字
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 工作负载名称
-	WorkloadName *string `json:"WorkloadName,omitempty" name:"WorkloadName"`
+	WorkloadName *string `json:"WorkloadName,omitnil" name:"WorkloadName"`
 
 	// 工作负载类型
-	WorkloadType *string `json:"WorkloadType,omitempty" name:"WorkloadType"`
+	WorkloadType *string `json:"WorkloadType,omitnil" name:"WorkloadType"`
 
 	// 区域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 检测结果的验证信息
-	VerifyInfo *string `json:"VerifyInfo,omitempty" name:"VerifyInfo"`
+	VerifyInfo *string `json:"VerifyInfo,omitnil" name:"VerifyInfo"`
 }
 
 type AssetClusterListItem struct {
 	// 集群ID
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 集群状态
 	// CSR_RUNNING: 运行中
 	// CSR_EXCEPTION:异常
 	// CSR_DEL:已经删除
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 绑定规则名称
-	BindRuleName *string `json:"BindRuleName,omitempty" name:"BindRuleName"`
+	BindRuleName *string `json:"BindRuleName,omitnil" name:"BindRuleName"`
 
 	// 集群类型:
 	// CT_TKE:TKE集群;
 	// CT_USER_CREATE:用户自建集群;
 	// CT_TKE_SERVERLESS:TKE Serverless集群;
-	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
 
 	// 集群版本
-	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
+	ClusterVersion *string `json:"ClusterVersion,omitnil" name:"ClusterVersion"`
 
 	// 内存量
-	MemLimit *int64 `json:"MemLimit,omitempty" name:"MemLimit"`
+	MemLimit *int64 `json:"MemLimit,omitnil" name:"MemLimit"`
 
 	// cpu
-	CpuLimit *int64 `json:"CpuLimit,omitempty" name:"CpuLimit"`
+	CpuLimit *int64 `json:"CpuLimit,omitnil" name:"CpuLimit"`
 }
 
 type AssetFilters struct {
 	// 过滤键的名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values"`
+	Values []*string `json:"Values,omitnil" name:"Values"`
 
 	// 是否模糊查询
-	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
+	ExactMatch *bool `json:"ExactMatch,omitnil" name:"ExactMatch"`
 }
 
 type AssetSimpleImageInfo struct {
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 关联容器个数
-	ContainerCnt *uint64 `json:"ContainerCnt,omitempty" name:"ContainerCnt"`
+	ContainerCnt *uint64 `json:"ContainerCnt,omitnil" name:"ContainerCnt"`
 
 	// 最后扫描时间
-	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 镜像大小
-	Size *uint64 `json:"Size,omitempty" name:"Size"`
+	Size *uint64 `json:"Size,omitnil" name:"Size"`
 }
 
 type AutoAuthorizedImageInfo struct {
 	// 镜像id
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 授权时间
-	AuthorizedTime *string `json:"AuthorizedTime,omitempty" name:"AuthorizedTime"`
+	AuthorizedTime *string `json:"AuthorizedTime,omitnil" name:"AuthorizedTime"`
 
 	// 授权结果，SUCCESS:成功，REACH_LIMIT:达到授权上限，LICENSE_INSUFFICIENT:授权数不足'
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 是否授权，1：是，0：否
-	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+	IsAuthorized *uint64 `json:"IsAuthorized,omitnil" name:"IsAuthorized"`
 }
 
 type AutoAuthorizedRuleHostInfo struct {
 	// 主机id
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 主机ip即内网ip
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 主机名称
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 镜像个数
-	ImageCnt *uint64 `json:"ImageCnt,omitempty" name:"ImageCnt"`
+	ImageCnt *uint64 `json:"ImageCnt,omitnil" name:"ImageCnt"`
 
 	// 容器个数
-	ContainerCnt *uint64 `json:"ContainerCnt,omitempty" name:"ContainerCnt"`
+	ContainerCnt *uint64 `json:"ContainerCnt,omitnil" name:"ContainerCnt"`
 
 	// 外网ip
-	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+	PublicIp *string `json:"PublicIp,omitnil" name:"PublicIp"`
 
 	// 主机实例ID
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；
-	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
 
 	// docker 版本
-	DockerVersion *string `json:"DockerVersion,omitempty" name:"DockerVersion"`
+	DockerVersion *string `json:"DockerVersion,omitnil" name:"DockerVersion"`
 
 	// agent运行状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 }
 
 type CKafkaInstanceInfo struct {
 	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 主题列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicList []*CKafkaTopicInfo `json:"TopicList,omitempty" name:"TopicList"`
+	TopicList []*CKafkaTopicInfo `json:"TopicList,omitnil" name:"TopicList"`
 
 	// 路由列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RouteList []*CkafkaRouteInfo `json:"RouteList,omitempty" name:"RouteList"`
+	RouteList []*CkafkaRouteInfo `json:"RouteList,omitnil" name:"RouteList"`
 
 	// kafka版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
+	KafkaVersion *string `json:"KafkaVersion,omitnil" name:"KafkaVersion"`
 }
 
 type CKafkaTopicInfo struct {
 	// 主题ID
-	TopicID *string `json:"TopicID,omitempty" name:"TopicID"`
+	TopicID *string `json:"TopicID,omitnil" name:"TopicID"`
 
 	// 主题名称
-	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 }
 
 // Predefined struct for user
 type CheckNetworkFirewallPolicyYamlRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略名
-	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// base64编码的networkpolicy yaml字符串
-	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+	Yaml *string `json:"Yaml,omitnil" name:"Yaml"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 type CheckNetworkFirewallPolicyYamlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略名
-	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// base64编码的networkpolicy yaml字符串
-	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+	Yaml *string `json:"Yaml,omitnil" name:"Yaml"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 func (r *CheckNetworkFirewallPolicyYamlRequest) ToJsonString() string {
@@ -2033,13 +2033,13 @@ func (r *CheckNetworkFirewallPolicyYamlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CheckNetworkFirewallPolicyYamlResponseParams struct {
 	// 返回创建的任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CheckNetworkFirewallPolicyYamlResponse struct {
@@ -2061,14 +2061,14 @@ func (r *CheckNetworkFirewallPolicyYamlResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type CheckRepeatAssetImageRegistryRequestParams struct {
 	// 仓库名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 type CheckRepeatAssetImageRegistryRequest struct {
 	*tchttp.BaseRequest
 	
 	// 仓库名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 func (r *CheckRepeatAssetImageRegistryRequest) ToJsonString() string {
@@ -2094,10 +2094,10 @@ func (r *CheckRepeatAssetImageRegistryRequest) FromJsonString(s string) error {
 type CheckRepeatAssetImageRegistryResponseParams struct {
 	// 是否重复
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsRepeat *bool `json:"IsRepeat,omitempty" name:"IsRepeat"`
+	IsRepeat *bool `json:"IsRepeat,omitnil" name:"IsRepeat"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CheckRepeatAssetImageRegistryResponse struct {
@@ -2119,23 +2119,23 @@ func (r *CheckRepeatAssetImageRegistryResponse) FromJsonString(s string) error {
 type CkafkaRouteInfo struct {
 	// 路由ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RouteID *int64 `json:"RouteID,omitempty" name:"RouteID"`
+	RouteID *int64 `json:"RouteID,omitnil" name:"RouteID"`
 
 	// 域名名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DomainPort *uint64 `json:"DomainPort,omitempty" name:"DomainPort"`
+	DomainPort *uint64 `json:"DomainPort,omitnil" name:"DomainPort"`
 
 	// 虚拟ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Vip *string `json:"Vip,omitempty" name:"Vip"`
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
 
 	// 虚拟ip类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VipType *int64 `json:"VipType,omitempty" name:"VipType"`
+	VipType *int64 `json:"VipType,omitnil" name:"VipType"`
 
 	// 接入类型
 	// // 0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)
@@ -2143,245 +2143,245 @@ type CkafkaRouteInfo struct {
 	// 	// 2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）
 	// 	// 3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
+	AccessType *int64 `json:"AccessType,omitnil" name:"AccessType"`
 }
 
 type ClsLogsetInfo struct {
 	// 日志集ID
-	LogsetID *string `json:"LogsetID,omitempty" name:"LogsetID"`
+	LogsetID *string `json:"LogsetID,omitnil" name:"LogsetID"`
 
 	// 日志集名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogsetName *string `json:"LogsetName,omitempty" name:"LogsetName"`
+	LogsetName *string `json:"LogsetName,omitnil" name:"LogsetName"`
 
 	// cls主题列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicList []*ClsTopicInfo `json:"TopicList,omitempty" name:"TopicList"`
+	TopicList []*ClsTopicInfo `json:"TopicList,omitnil" name:"TopicList"`
 }
 
 type ClsTopicInfo struct {
 	// 主题ID
-	TopicID *string `json:"TopicID,omitempty" name:"TopicID"`
+	TopicID *string `json:"TopicID,omitnil" name:"TopicID"`
 
 	// 主题名称
-	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 }
 
 type ClusterCheckItem struct {
 	// 唯一的检测项的ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CheckItemId *int64 `json:"CheckItemId,omitempty" name:"CheckItemId"`
+	CheckItemId *int64 `json:"CheckItemId,omitnil" name:"CheckItemId"`
 
 	// 风险项的名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 检测项详细描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemDetail *string `json:"ItemDetail,omitempty" name:"ItemDetail"`
+	ItemDetail *string `json:"ItemDetail,omitnil" name:"ItemDetail"`
 
 	// 威胁等级。严重Serious,高危High,中危Middle,提示Hint
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 检查对象、风险对象.Runc,Kubelet,Containerd,Pods
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskTarget *string `json:"RiskTarget,omitempty" name:"RiskTarget"`
+	RiskTarget *string `json:"RiskTarget,omitnil" name:"RiskTarget"`
 
 	// 风险类别,漏洞风险CVERisk,配置风险ConfigRisk
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskType *string `json:"RiskType,omitempty" name:"RiskType"`
+	RiskType *string `json:"RiskType,omitnil" name:"RiskType"`
 
 	// 检测项所属的风险类型,权限提升:PrivilegePromotion,拒绝服务:RefuseService,目录穿越:DirectoryEscape,未授权访问:UnauthorizedAccess,权限许可和访问控制问题:PrivilegeAndAccessControl,敏感信息泄露:SensitiveInfoLeak
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskAttribute *string `json:"RiskAttribute,omitempty" name:"RiskAttribute"`
+	RiskAttribute *string `json:"RiskAttribute,omitnil" name:"RiskAttribute"`
 
 	// 风险特征,Tag.存在EXP:ExistEXP,存在POD:ExistPOC,无需重启:NoNeedReboot, 服务重启:ServerRestart,远程信息泄露:RemoteInfoLeak,远程拒绝服务:RemoteRefuseService,远程利用:RemoteExploit,远程执行:RemoteExecute
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskProperty *string `json:"RiskProperty,omitempty" name:"RiskProperty"`
+	RiskProperty *string `json:"RiskProperty,omitnil" name:"RiskProperty"`
 
 	// CVE编号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CVENumber *string `json:"CVENumber,omitempty" name:"CVENumber"`
+	CVENumber *string `json:"CVENumber,omitnil" name:"CVENumber"`
 
 	// 披露时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DiscoverTime *string `json:"DiscoverTime,omitempty" name:"DiscoverTime"`
+	DiscoverTime *string `json:"DiscoverTime,omitnil" name:"DiscoverTime"`
 
 	// 解决方案
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// CVSS信息,用于画图
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CVSS *string `json:"CVSS,omitempty" name:"CVSS"`
+	CVSS *string `json:"CVSS,omitnil" name:"CVSS"`
 
 	// CVSS分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CVSSScore *string `json:"CVSSScore,omitempty" name:"CVSSScore"`
+	CVSSScore *string `json:"CVSSScore,omitnil" name:"CVSSScore"`
 
 	// 参考连接
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelateLink *string `json:"RelateLink,omitempty" name:"RelateLink"`
+	RelateLink *string `json:"RelateLink,omitnil" name:"RelateLink"`
 
 	// 影响类型，为Node或者Workload
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AffectedType *string `json:"AffectedType,omitempty" name:"AffectedType"`
+	AffectedType *string `json:"AffectedType,omitnil" name:"AffectedType"`
 
 	// 受影响的版本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AffectedVersion *string `json:"AffectedVersion,omitempty" name:"AffectedVersion"`
+	AffectedVersion *string `json:"AffectedVersion,omitnil" name:"AffectedVersion"`
 
 	// 忽略的资产数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IgnoredAssetNum *int64 `json:"IgnoredAssetNum,omitempty" name:"IgnoredAssetNum"`
+	IgnoredAssetNum *int64 `json:"IgnoredAssetNum,omitnil" name:"IgnoredAssetNum"`
 
 	// 是否忽略该检测项
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsIgnored *bool `json:"IsIgnored,omitempty" name:"IsIgnored"`
+	IsIgnored *bool `json:"IsIgnored,omitnil" name:"IsIgnored"`
 
 	// 受影响评估
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskAssessment *string `json:"RiskAssessment,omitempty" name:"RiskAssessment"`
+	RiskAssessment *string `json:"RiskAssessment,omitnil" name:"RiskAssessment"`
 }
 
 type ClusterCheckTaskItem struct {
 	// 指定要扫描的集群ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 集群所属地域
-	ClusterRegion *string `json:"ClusterRegion,omitempty" name:"ClusterRegion"`
+	ClusterRegion *string `json:"ClusterRegion,omitnil" name:"ClusterRegion"`
 
 	// 指定要扫描的节点IP
-	NodeIp *string `json:"NodeIp,omitempty" name:"NodeIp"`
+	NodeIp *string `json:"NodeIp,omitnil" name:"NodeIp"`
 
 	// 按照要扫描的workload名字
-	WorkloadName *string `json:"WorkloadName,omitempty" name:"WorkloadName"`
+	WorkloadName *string `json:"WorkloadName,omitnil" name:"WorkloadName"`
 }
 
 type ClusterCreateComponentItem struct {
 	// 要安装组件的集群ID。
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 该集群对应的地域
-	ClusterRegion *string `json:"ClusterRegion,omitempty" name:"ClusterRegion"`
+	ClusterRegion *string `json:"ClusterRegion,omitnil" name:"ClusterRegion"`
 }
 
 type ClusterCustomParameters struct {
 	// 参数名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 参数值
-	Values []*string `json:"Values,omitempty" name:"Values"`
+	Values []*string `json:"Values,omitnil" name:"Values"`
 }
 
 type ClusterInfoItem struct {
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 集群名字
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 集群版本
-	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
+	ClusterVersion *string `json:"ClusterVersion,omitnil" name:"ClusterVersion"`
 
 	// 集群操作系统
-	ClusterOs *string `json:"ClusterOs,omitempty" name:"ClusterOs"`
+	ClusterOs *string `json:"ClusterOs,omitnil" name:"ClusterOs"`
 
 	// 集群类型
-	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
 
 	// 集群节点数
-	ClusterNodeNum *uint64 `json:"ClusterNodeNum,omitempty" name:"ClusterNodeNum"`
+	ClusterNodeNum *uint64 `json:"ClusterNodeNum,omitnil" name:"ClusterNodeNum"`
 
 	// 集群区域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 监控组件的状态，为Defender_Uninstall、Defender_Normal、Defender_Error、Defender_Installing
-	DefenderStatus *string `json:"DefenderStatus,omitempty" name:"DefenderStatus"`
+	DefenderStatus *string `json:"DefenderStatus,omitnil" name:"DefenderStatus"`
 
 	// 集群状态
-	ClusterStatus *string `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+	ClusterStatus *string `json:"ClusterStatus,omitnil" name:"ClusterStatus"`
 
 	// 集群的检测模式，为Cluster_Normal或者Cluster_Actived.
-	ClusterCheckMode *string `json:"ClusterCheckMode,omitempty" name:"ClusterCheckMode"`
+	ClusterCheckMode *string `json:"ClusterCheckMode,omitnil" name:"ClusterCheckMode"`
 
 	// 是否自动定期检测
-	ClusterAutoCheck *bool `json:"ClusterAutoCheck,omitempty" name:"ClusterAutoCheck"`
+	ClusterAutoCheck *bool `json:"ClusterAutoCheck,omitnil" name:"ClusterAutoCheck"`
 
 	// 防护容器部署失败原因，为UserDaemonSetNotReady时,和UnreadyNodeNum转成"N个节点防御容器为就绪"，其他错误直接展示
-	DefenderErrorReason *string `json:"DefenderErrorReason,omitempty" name:"DefenderErrorReason"`
+	DefenderErrorReason *string `json:"DefenderErrorReason,omitnil" name:"DefenderErrorReason"`
 
 	// 防御容器没有ready状态的节点数量
-	UnreadyNodeNum *uint64 `json:"UnreadyNodeNum,omitempty" name:"UnreadyNodeNum"`
+	UnreadyNodeNum *uint64 `json:"UnreadyNodeNum,omitnil" name:"UnreadyNodeNum"`
 
 	// 严重风险检查项的数量
-	SeriousRiskCount *int64 `json:"SeriousRiskCount,omitempty" name:"SeriousRiskCount"`
+	SeriousRiskCount *int64 `json:"SeriousRiskCount,omitnil" name:"SeriousRiskCount"`
 
 	// 高风险检查项的数量
-	HighRiskCount *int64 `json:"HighRiskCount,omitempty" name:"HighRiskCount"`
+	HighRiskCount *int64 `json:"HighRiskCount,omitnil" name:"HighRiskCount"`
 
 	// 中风险检查项的数量
-	MiddleRiskCount *int64 `json:"MiddleRiskCount,omitempty" name:"MiddleRiskCount"`
+	MiddleRiskCount *int64 `json:"MiddleRiskCount,omitnil" name:"MiddleRiskCount"`
 
 	// 提示风险检查项的数量
-	HintRiskCount *int64 `json:"HintRiskCount,omitempty" name:"HintRiskCount"`
+	HintRiskCount *int64 `json:"HintRiskCount,omitnil" name:"HintRiskCount"`
 
 	// 检查失败原因
-	CheckFailReason *string `json:"CheckFailReason,omitempty" name:"CheckFailReason"`
+	CheckFailReason *string `json:"CheckFailReason,omitnil" name:"CheckFailReason"`
 
 	// 检查状态,为Task_Running, NoRisk, HasRisk, Uncheck, Task_Error
-	CheckStatus *string `json:"CheckStatus,omitempty" name:"CheckStatus"`
+	CheckStatus *string `json:"CheckStatus,omitnil" name:"CheckStatus"`
 
 	// 任务创建时间,检查时间
-	TaskCreateTime *string `json:"TaskCreateTime,omitempty" name:"TaskCreateTime"`
+	TaskCreateTime *string `json:"TaskCreateTime,omitnil" name:"TaskCreateTime"`
 
 	// 接入状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccessedStatus *string `json:"AccessedStatus,omitempty" name:"AccessedStatus"`
+	AccessedStatus *string `json:"AccessedStatus,omitnil" name:"AccessedStatus"`
 
 	// 接入失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccessedSubStatus *string `json:"AccessedSubStatus,omitempty" name:"AccessedSubStatus"`
+	AccessedSubStatus *string `json:"AccessedSubStatus,omitnil" name:"AccessedSubStatus"`
 
 	// 节点总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NodeCount *uint64 `json:"NodeCount,omitempty" name:"NodeCount"`
+	NodeCount *uint64 `json:"NodeCount,omitnil" name:"NodeCount"`
 
 	// 离线节点数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OffLineNodeCount *uint64 `json:"OffLineNodeCount,omitempty" name:"OffLineNodeCount"`
+	OffLineNodeCount *uint64 `json:"OffLineNodeCount,omitnil" name:"OffLineNodeCount"`
 
 	// 未安装agent节点数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnInstallAgentNodeCount *uint64 `json:"UnInstallAgentNodeCount,omitempty" name:"UnInstallAgentNodeCount"`
+	UnInstallAgentNodeCount *uint64 `json:"UnInstallAgentNodeCount,omitnil" name:"UnInstallAgentNodeCount"`
 }
 
 type ClusterRiskItem struct {
 	// 检测项相关信息
-	CheckItem *ClusterCheckItem `json:"CheckItem,omitempty" name:"CheckItem"`
+	CheckItem *ClusterCheckItem `json:"CheckItem,omitnil" name:"CheckItem"`
 
 	// 验证信息
-	VerifyInfo *string `json:"VerifyInfo,omitempty" name:"VerifyInfo"`
+	VerifyInfo *string `json:"VerifyInfo,omitnil" name:"VerifyInfo"`
 
 	// 事件描述,检查的错误信息
-	ErrorMessage *string `json:"ErrorMessage,omitempty" name:"ErrorMessage"`
+	ErrorMessage *string `json:"ErrorMessage,omitnil" name:"ErrorMessage"`
 
 	// 受影响的集群数量
-	AffectedClusterCount *uint64 `json:"AffectedClusterCount,omitempty" name:"AffectedClusterCount"`
+	AffectedClusterCount *uint64 `json:"AffectedClusterCount,omitnil" name:"AffectedClusterCount"`
 
 	// 受影响的节点数量
-	AffectedNodeCount *uint64 `json:"AffectedNodeCount,omitempty" name:"AffectedNodeCount"`
+	AffectedNodeCount *uint64 `json:"AffectedNodeCount,omitnil" name:"AffectedNodeCount"`
 }
 
 type ComplianceAffectedAsset struct {
 	// 为客户分配的唯一的资产项的ID。
-	CustomerAssetId *uint64 `json:"CustomerAssetId,omitempty" name:"CustomerAssetId"`
+	CustomerAssetId *uint64 `json:"CustomerAssetId,omitnil" name:"CustomerAssetId"`
 
 	// 资产项的名称。
-	AssetName *string `json:"AssetName,omitempty" name:"AssetName"`
+	AssetName *string `json:"AssetName,omitnil" name:"AssetName"`
 
 	// 资产项的类型
-	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
 
 	// 检测状态
 	// 
@@ -2392,112 +2392,112 @@ type ComplianceAffectedAsset struct {
 	// CHECK_FINISHED, 检测完成
 	// 
 	// CHECK_FAILED, 检测失败
-	CheckStatus *string `json:"CheckStatus,omitempty" name:"CheckStatus"`
+	CheckStatus *string `json:"CheckStatus,omitnil" name:"CheckStatus"`
 
 	// 节点名称。
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 
 	// 上次检测的时间，格式为”YYYY-MM-DD HH:m::SS“。
 	// 
 	// 如果没有检测过，此处为”0000-00-00 00:00:00“。
-	LastCheckTime *string `json:"LastCheckTime,omitempty" name:"LastCheckTime"`
+	LastCheckTime *string `json:"LastCheckTime,omitnil" name:"LastCheckTime"`
 
 	// 检测结果。取值为：
 	// 
 	// RESULT_FAILED: 未通过
 	// 
 	// RESULT_PASSED: 通过
-	CheckResult *string `json:"CheckResult,omitempty" name:"CheckResult"`
+	CheckResult *string `json:"CheckResult,omitnil" name:"CheckResult"`
 
 	// 主机IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 镜像的tag
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+	ImageTag *string `json:"ImageTag,omitnil" name:"ImageTag"`
 
 	// 检查项验证信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VerifyInfo *string `json:"VerifyInfo,omitempty" name:"VerifyInfo"`
+	VerifyInfo *string `json:"VerifyInfo,omitnil" name:"VerifyInfo"`
 
 	// 主机实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type ComplianceAssetDetailInfo struct {
 	// 客户资产的ID。
-	CustomerAssetId *uint64 `json:"CustomerAssetId,omitempty" name:"CustomerAssetId"`
+	CustomerAssetId *uint64 `json:"CustomerAssetId,omitnil" name:"CustomerAssetId"`
 
 	// 资产类别。
-	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
 
 	// 资产的名称。
-	AssetName *string `json:"AssetName,omitempty" name:"AssetName"`
+	AssetName *string `json:"AssetName,omitnil" name:"AssetName"`
 
 	// 资产所属的节点的名称。
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 
 	// 资产所在的主机的名称。
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 资产所在的主机的IP。
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 检测状态
 	// CHECK_INIT, 待检测
 	// CHECK_RUNNING, 检测中
 	// CHECK_FINISHED, 检测完成
 	// CHECK_FAILED, 检测失败
-	CheckStatus *string `json:"CheckStatus,omitempty" name:"CheckStatus"`
+	CheckStatus *string `json:"CheckStatus,omitnil" name:"CheckStatus"`
 
 	// 此类资产通过的检测项的数目。
-	PassedPolicyItemCount *uint64 `json:"PassedPolicyItemCount,omitempty" name:"PassedPolicyItemCount"`
+	PassedPolicyItemCount *uint64 `json:"PassedPolicyItemCount,omitnil" name:"PassedPolicyItemCount"`
 
 	// 此类资产未通过的检测的数目。
-	FailedPolicyItemCount *uint64 `json:"FailedPolicyItemCount,omitempty" name:"FailedPolicyItemCount"`
+	FailedPolicyItemCount *uint64 `json:"FailedPolicyItemCount,omitnil" name:"FailedPolicyItemCount"`
 
 	// 上次检测的时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LastCheckTime *string `json:"LastCheckTime,omitempty" name:"LastCheckTime"`
+	LastCheckTime *string `json:"LastCheckTime,omitnil" name:"LastCheckTime"`
 
 	// 检测结果：
 	// RESULT_FAILED: 未通过。
 	// RESULT_PASSED: 通过。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CheckResult *string `json:"CheckResult,omitempty" name:"CheckResult"`
+	CheckResult *string `json:"CheckResult,omitnil" name:"CheckResult"`
 
 	// 资产的运行状态。
-	AssetStatus *string `json:"AssetStatus,omitempty" name:"AssetStatus"`
+	AssetStatus *string `json:"AssetStatus,omitnil" name:"AssetStatus"`
 
 	// 创建资产的时间。
 	// ASSET_NORMAL: 正常运行，
 	// ASSET_PAUSED: 暂停运行，
 	// ASSET_STOPPED: 停止运行，
 	// ASSET_ABNORMAL: 异常
-	AssetCreateTime *string `json:"AssetCreateTime,omitempty" name:"AssetCreateTime"`
+	AssetCreateTime *string `json:"AssetCreateTime,omitnil" name:"AssetCreateTime"`
 }
 
 type ComplianceAssetInfo struct {
 	// 客户资产的ID。
-	CustomerAssetId *uint64 `json:"CustomerAssetId,omitempty" name:"CustomerAssetId"`
+	CustomerAssetId *uint64 `json:"CustomerAssetId,omitnil" name:"CustomerAssetId"`
 
 	// 资产类别。
-	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
 
 	// 资产的名称。
-	AssetName *string `json:"AssetName,omitempty" name:"AssetName"`
+	AssetName *string `json:"AssetName,omitnil" name:"AssetName"`
 
 	// 当资产为镜像时，这个字段为镜像Tag。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+	ImageTag *string `json:"ImageTag,omitnil" name:"ImageTag"`
 
 	// 资产所在的主机IP。
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 资产所属的节点的名称
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 
 	// 检测状态
 	// 
@@ -2508,96 +2508,96 @@ type ComplianceAssetInfo struct {
 	// CHECK_FINISHED, 检测完成
 	// 
 	// CHECK_FAILED, 检测失败
-	CheckStatus *string `json:"CheckStatus,omitempty" name:"CheckStatus"`
+	CheckStatus *string `json:"CheckStatus,omitnil" name:"CheckStatus"`
 
 	// 此类资产通过的检测项的数目。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PassedPolicyItemCount *uint64 `json:"PassedPolicyItemCount,omitempty" name:"PassedPolicyItemCount"`
+	PassedPolicyItemCount *uint64 `json:"PassedPolicyItemCount,omitnil" name:"PassedPolicyItemCount"`
 
 	// 此类资产未通过的检测的数目。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedPolicyItemCount *uint64 `json:"FailedPolicyItemCount,omitempty" name:"FailedPolicyItemCount"`
+	FailedPolicyItemCount *uint64 `json:"FailedPolicyItemCount,omitnil" name:"FailedPolicyItemCount"`
 
 	// 上次检测的时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LastCheckTime *string `json:"LastCheckTime,omitempty" name:"LastCheckTime"`
+	LastCheckTime *string `json:"LastCheckTime,omitnil" name:"LastCheckTime"`
 
 	// 检测结果：
 	// RESULT_FAILED: 未通过。
 	// RESULT_PASSED: 通过。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CheckResult *string `json:"CheckResult,omitempty" name:"CheckResult"`
+	CheckResult *string `json:"CheckResult,omitnil" name:"CheckResult"`
 
 	// 主机节点的实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type ComplianceAssetPolicyItem struct {
 	// 为客户分配的唯一的检测项的ID。
-	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitnil" name:"CustomerPolicyItemId"`
 
 	// 检测项的原始ID
-	BasePolicyItemId *uint64 `json:"BasePolicyItemId,omitempty" name:"BasePolicyItemId"`
+	BasePolicyItemId *uint64 `json:"BasePolicyItemId,omitnil" name:"BasePolicyItemId"`
 
 	// 检测项的名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 检测项所属的类型的名称
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 所属的合规标准的ID
-	BenchmarkStandardId *uint64 `json:"BenchmarkStandardId,omitempty" name:"BenchmarkStandardId"`
+	BenchmarkStandardId *uint64 `json:"BenchmarkStandardId,omitnil" name:"BenchmarkStandardId"`
 
 	// 所属的合规标准的名称
-	BenchmarkStandardName *string `json:"BenchmarkStandardName,omitempty" name:"BenchmarkStandardName"`
+	BenchmarkStandardName *string `json:"BenchmarkStandardName,omitnil" name:"BenchmarkStandardName"`
 
 	// 威胁等级
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 检测状态
 	// CHECK_INIT, 待检测
 	// CHECK_RUNNING, 检测中
 	// CHECK_FINISHED, 检测完成
 	// CHECK_FAILED, 检测失败
-	CheckStatus *string `json:"CheckStatus,omitempty" name:"CheckStatus"`
+	CheckStatus *string `json:"CheckStatus,omitnil" name:"CheckStatus"`
 
 	// 检测结果
 	// RESULT_PASSED: 通过
 	// RESULT_FAILED: 未通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CheckResult *string `json:"CheckResult,omitempty" name:"CheckResult"`
+	CheckResult *string `json:"CheckResult,omitnil" name:"CheckResult"`
 
 	// 检测项对应的白名单项的ID。如果存在且非0，表示检测项被用户忽略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WhitelistId *uint64 `json:"WhitelistId,omitempty" name:"WhitelistId"`
+	WhitelistId *uint64 `json:"WhitelistId,omitnil" name:"WhitelistId"`
 
 	// 处理建议。
-	FixSuggestion *string `json:"FixSuggestion,omitempty" name:"FixSuggestion"`
+	FixSuggestion *string `json:"FixSuggestion,omitnil" name:"FixSuggestion"`
 
 	// 最近检测的时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LastCheckTime *string `json:"LastCheckTime,omitempty" name:"LastCheckTime"`
+	LastCheckTime *string `json:"LastCheckTime,omitnil" name:"LastCheckTime"`
 
 	// 验证信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VerifyInfo *string `json:"VerifyInfo,omitempty" name:"VerifyInfo"`
+	VerifyInfo *string `json:"VerifyInfo,omitnil" name:"VerifyInfo"`
 }
 
 type ComplianceAssetPolicySetItem struct {
 	// 资产ID
-	CustomerAssetItemId *uint64 `json:"CustomerAssetItemId,omitempty" name:"CustomerAssetItemId"`
+	CustomerAssetItemId *uint64 `json:"CustomerAssetItemId,omitnil" name:"CustomerAssetItemId"`
 
 	// 需要忽略指定资产内的检查项ID列表，为空表示所有
-	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitempty" name:"CustomerPolicyItemIdSet"`
+	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitnil" name:"CustomerPolicyItemIdSet"`
 }
 
 type ComplianceAssetSummary struct {
 	// 资产类别。
-	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
 
 	// 是否为客户的首次检测。与CheckStatus配合使用。
-	IsCustomerFirstCheck *bool `json:"IsCustomerFirstCheck,omitempty" name:"IsCustomerFirstCheck"`
+	IsCustomerFirstCheck *bool `json:"IsCustomerFirstCheck,omitnil" name:"IsCustomerFirstCheck"`
 
 	// 检测状态
 	// 
@@ -2610,219 +2610,219 @@ type ComplianceAssetSummary struct {
 	// CHECK_FINISHED, 检测完成
 	// 
 	// CHECK_FAILED, 检测失败
-	CheckStatus *string `json:"CheckStatus,omitempty" name:"CheckStatus"`
+	CheckStatus *string `json:"CheckStatus,omitnil" name:"CheckStatus"`
 
 	// 此类别的检测进度，为 0~100 的数。若未在检测中，无此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CheckProgress *float64 `json:"CheckProgress,omitempty" name:"CheckProgress"`
+	CheckProgress *float64 `json:"CheckProgress,omitnil" name:"CheckProgress"`
 
 	// 此类资产通过的检测项的数目。
-	PassedPolicyItemCount *uint64 `json:"PassedPolicyItemCount,omitempty" name:"PassedPolicyItemCount"`
+	PassedPolicyItemCount *uint64 `json:"PassedPolicyItemCount,omitnil" name:"PassedPolicyItemCount"`
 
 	// 此类资产未通过的检测的数目。
-	FailedPolicyItemCount *uint64 `json:"FailedPolicyItemCount,omitempty" name:"FailedPolicyItemCount"`
+	FailedPolicyItemCount *uint64 `json:"FailedPolicyItemCount,omitnil" name:"FailedPolicyItemCount"`
 
 	// 此类资产下未通过的严重级别的检测项的数目。
-	FailedCriticalPolicyItemCount *uint64 `json:"FailedCriticalPolicyItemCount,omitempty" name:"FailedCriticalPolicyItemCount"`
+	FailedCriticalPolicyItemCount *uint64 `json:"FailedCriticalPolicyItemCount,omitnil" name:"FailedCriticalPolicyItemCount"`
 
 	// 此类资产下未通过的高危检测项的数目。
-	FailedHighRiskPolicyItemCount *uint64 `json:"FailedHighRiskPolicyItemCount,omitempty" name:"FailedHighRiskPolicyItemCount"`
+	FailedHighRiskPolicyItemCount *uint64 `json:"FailedHighRiskPolicyItemCount,omitnil" name:"FailedHighRiskPolicyItemCount"`
 
 	// 此类资产下未通过的中危检测项的数目。
-	FailedMediumRiskPolicyItemCount *uint64 `json:"FailedMediumRiskPolicyItemCount,omitempty" name:"FailedMediumRiskPolicyItemCount"`
+	FailedMediumRiskPolicyItemCount *uint64 `json:"FailedMediumRiskPolicyItemCount,omitnil" name:"FailedMediumRiskPolicyItemCount"`
 
 	// 此类资产下未通过的低危检测项的数目。
-	FailedLowRiskPolicyItemCount *uint64 `json:"FailedLowRiskPolicyItemCount,omitempty" name:"FailedLowRiskPolicyItemCount"`
+	FailedLowRiskPolicyItemCount *uint64 `json:"FailedLowRiskPolicyItemCount,omitnil" name:"FailedLowRiskPolicyItemCount"`
 
 	// 此类资产下提示级别的检测项的数目。
-	NoticePolicyItemCount *uint64 `json:"NoticePolicyItemCount,omitempty" name:"NoticePolicyItemCount"`
+	NoticePolicyItemCount *uint64 `json:"NoticePolicyItemCount,omitnil" name:"NoticePolicyItemCount"`
 
 	// 通过检测的资产的数目。
-	PassedAssetCount *uint64 `json:"PassedAssetCount,omitempty" name:"PassedAssetCount"`
+	PassedAssetCount *uint64 `json:"PassedAssetCount,omitnil" name:"PassedAssetCount"`
 
 	// 未通过检测的资产的数目。
-	FailedAssetCount *uint64 `json:"FailedAssetCount,omitempty" name:"FailedAssetCount"`
+	FailedAssetCount *uint64 `json:"FailedAssetCount,omitnil" name:"FailedAssetCount"`
 
 	// 此类资产的合规率，0~100的数。
-	AssetPassedRate *float64 `json:"AssetPassedRate,omitempty" name:"AssetPassedRate"`
+	AssetPassedRate *float64 `json:"AssetPassedRate,omitnil" name:"AssetPassedRate"`
 
 	// 检测失败的资产的数目。
-	ScanFailedAssetCount *uint64 `json:"ScanFailedAssetCount,omitempty" name:"ScanFailedAssetCount"`
+	ScanFailedAssetCount *uint64 `json:"ScanFailedAssetCount,omitnil" name:"ScanFailedAssetCount"`
 
 	// 上次检测的耗时，单位为秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CheckCostTime *float64 `json:"CheckCostTime,omitempty" name:"CheckCostTime"`
+	CheckCostTime *float64 `json:"CheckCostTime,omitnil" name:"CheckCostTime"`
 
 	// 上次检测的时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LastCheckTime *string `json:"LastCheckTime,omitempty" name:"LastCheckTime"`
+	LastCheckTime *string `json:"LastCheckTime,omitnil" name:"LastCheckTime"`
 
 	// 定时检测规则。
-	PeriodRule *CompliancePeriodTaskRule `json:"PeriodRule,omitempty" name:"PeriodRule"`
+	PeriodRule *CompliancePeriodTaskRule `json:"PeriodRule,omitnil" name:"PeriodRule"`
 
 	// 已开启的检查项总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OpenPolicyItemCount *uint64 `json:"OpenPolicyItemCount,omitempty" name:"OpenPolicyItemCount"`
+	OpenPolicyItemCount *uint64 `json:"OpenPolicyItemCount,omitnil" name:"OpenPolicyItemCount"`
 
 	// 已忽略的检查项总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IgnoredPolicyItemCount *uint64 `json:"IgnoredPolicyItemCount,omitempty" name:"IgnoredPolicyItemCount"`
+	IgnoredPolicyItemCount *uint64 `json:"IgnoredPolicyItemCount,omitnil" name:"IgnoredPolicyItemCount"`
 }
 
 type ComplianceBenchmarkStandard struct {
 	// 合规标准的ID
-	StandardId *uint64 `json:"StandardId,omitempty" name:"StandardId"`
+	StandardId *uint64 `json:"StandardId,omitnil" name:"StandardId"`
 
 	// 合规标准的名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 合规标准包含的数目
-	PolicyItemCount *uint64 `json:"PolicyItemCount,omitempty" name:"PolicyItemCount"`
+	PolicyItemCount *uint64 `json:"PolicyItemCount,omitnil" name:"PolicyItemCount"`
 
 	// 是否启用此标准
-	Enabled *bool `json:"Enabled,omitempty" name:"Enabled"`
+	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
 
 	// 标准的描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 type ComplianceBenchmarkStandardEnable struct {
 	// 合规标准的ID。
-	StandardId *uint64 `json:"StandardId,omitempty" name:"StandardId"`
+	StandardId *uint64 `json:"StandardId,omitnil" name:"StandardId"`
 
 	// 是否启用合规标准
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 }
 
 type ComplianceContainerDetailInfo struct {
 	// 容器在主机上的ID。
-	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
 
 	// 容器所属的Pod的名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 }
 
 type ComplianceFilters struct {
 	// 过滤键的名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values"`
+	Values []*string `json:"Values,omitnil" name:"Values"`
 
 	// 是否模糊查询。默认为是。
-	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
+	ExactMatch *bool `json:"ExactMatch,omitnil" name:"ExactMatch"`
 }
 
 type ComplianceHostDetailInfo struct {
 	// 主机上的Docker版本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DockerVersion *string `json:"DockerVersion,omitempty" name:"DockerVersion"`
+	DockerVersion *string `json:"DockerVersion,omitnil" name:"DockerVersion"`
 
 	// 主机上的K8S的版本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	K8SVersion *string `json:"K8SVersion,omitempty" name:"K8SVersion"`
+	K8SVersion *string `json:"K8SVersion,omitnil" name:"K8SVersion"`
 
 	// 主机上Containerd版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerdVersion *string `json:"ContainerdVersion,omitempty" name:"ContainerdVersion"`
+	ContainerdVersion *string `json:"ContainerdVersion,omitnil" name:"ContainerdVersion"`
 }
 
 type ComplianceImageDetailInfo struct {
 	// 镜像在主机上的ID。
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 镜像的名称。
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 镜像的Tag。
-	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+	ImageTag *string `json:"ImageTag,omitnil" name:"ImageTag"`
 
 	// 镜像所在远程仓库的路径。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Repository *string `json:"Repository,omitempty" name:"Repository"`
+	Repository *string `json:"Repository,omitnil" name:"Repository"`
 }
 
 type ComplianceK8SDetailInfo struct {
 	// K8S集群的名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// K8S集群的版本。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
+	ClusterVersion *string `json:"ClusterVersion,omitnil" name:"ClusterVersion"`
 }
 
 type CompliancePeriodTask struct {
 	// 周期任务的ID
-	PeriodTaskId *uint64 `json:"PeriodTaskId,omitempty" name:"PeriodTaskId"`
+	PeriodTaskId *uint64 `json:"PeriodTaskId,omitnil" name:"PeriodTaskId"`
 
 	// 资产类型。
 	// ASSET_CONTAINER, 容器
 	// ASSET_IMAGE, 镜像
 	// ASSET_HOST, 主机
 	// ASSET_K8S, K8S资产
-	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
 
 	// 最近一次触发的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LastTriggerTime *string `json:"LastTriggerTime,omitempty" name:"LastTriggerTime"`
+	LastTriggerTime *string `json:"LastTriggerTime,omitnil" name:"LastTriggerTime"`
 
 	// 总的检查项数目
-	TotalPolicyItemCount *uint64 `json:"TotalPolicyItemCount,omitempty" name:"TotalPolicyItemCount"`
+	TotalPolicyItemCount *uint64 `json:"TotalPolicyItemCount,omitnil" name:"TotalPolicyItemCount"`
 
 	// 周期设置
-	PeriodRule *CompliancePeriodTaskRule `json:"PeriodRule,omitempty" name:"PeriodRule"`
+	PeriodRule *CompliancePeriodTaskRule `json:"PeriodRule,omitnil" name:"PeriodRule"`
 
 	// 合规标准列表
-	BenchmarkStandardSet []*ComplianceBenchmarkStandard `json:"BenchmarkStandardSet,omitempty" name:"BenchmarkStandardSet"`
+	BenchmarkStandardSet []*ComplianceBenchmarkStandard `json:"BenchmarkStandardSet,omitnil" name:"BenchmarkStandardSet"`
 }
 
 type CompliancePeriodTaskRule struct {
 	// 执行的频率（几天一次），取值为：1,3,7。
-	Frequency *uint64 `json:"Frequency,omitempty" name:"Frequency"`
+	Frequency *uint64 `json:"Frequency,omitnil" name:"Frequency"`
 
 	// 在这天的什么时间执行，格式为：HH:mm:SS。
-	ExecutionTime *string `json:"ExecutionTime,omitempty" name:"ExecutionTime"`
+	ExecutionTime *string `json:"ExecutionTime,omitnil" name:"ExecutionTime"`
 
 	// 是否开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 }
 
 type CompliancePolicyAssetSetItem struct {
 	// 检查项ID
-	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitnil" name:"CustomerPolicyItemId"`
 
 	// 需要忽略指定检查项内的资产ID列表，为空表示所有
-	CustomerAssetItemIdSet []*uint64 `json:"CustomerAssetItemIdSet,omitempty" name:"CustomerAssetItemIdSet"`
+	CustomerAssetItemIdSet []*uint64 `json:"CustomerAssetItemIdSet,omitnil" name:"CustomerAssetItemIdSet"`
 }
 
 type CompliancePolicyItemSummary struct {
 	// 为客户分配的唯一的检测项的ID。
-	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitnil" name:"CustomerPolicyItemId"`
 
 	// 检测项的原始ID。
-	BasePolicyItemId *uint64 `json:"BasePolicyItemId,omitempty" name:"BasePolicyItemId"`
+	BasePolicyItemId *uint64 `json:"BasePolicyItemId,omitnil" name:"BasePolicyItemId"`
 
 	// 检测项的名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 检测项所属的类型，枚举字符串。
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 所属的合规标准
-	BenchmarkStandardName *string `json:"BenchmarkStandardName,omitempty" name:"BenchmarkStandardName"`
+	BenchmarkStandardName *string `json:"BenchmarkStandardName,omitnil" name:"BenchmarkStandardName"`
 
 	// 威胁等级。RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 检测项所属的资产类型
-	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
 
 	// 最近检测的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LastCheckTime *string `json:"LastCheckTime,omitempty" name:"LastCheckTime"`
+	LastCheckTime *string `json:"LastCheckTime,omitnil" name:"LastCheckTime"`
 
 	// 检测状态
 	// 
@@ -2833,96 +2833,96 @@ type CompliancePolicyItemSummary struct {
 	// CHECK_FINISHED, 检测完成
 	// 
 	// CHECK_FAILED, 检测失败
-	CheckStatus *string `json:"CheckStatus,omitempty" name:"CheckStatus"`
+	CheckStatus *string `json:"CheckStatus,omitnil" name:"CheckStatus"`
 
 	// 检测结果。RESULT_PASSED: 通过
 	// 
 	// RESULT_FAILED: 未通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CheckResult *string `json:"CheckResult,omitempty" name:"CheckResult"`
+	CheckResult *string `json:"CheckResult,omitnil" name:"CheckResult"`
 
 	// 通过检测的资产的数目
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PassedAssetCount *uint64 `json:"PassedAssetCount,omitempty" name:"PassedAssetCount"`
+	PassedAssetCount *uint64 `json:"PassedAssetCount,omitnil" name:"PassedAssetCount"`
 
 	// 未通过检测的资产的数目
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedAssetCount *uint64 `json:"FailedAssetCount,omitempty" name:"FailedAssetCount"`
+	FailedAssetCount *uint64 `json:"FailedAssetCount,omitnil" name:"FailedAssetCount"`
 
 	// 检测项对应的白名单项的ID。如果存在且非0，表示检测项被用户忽略。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WhitelistId *uint64 `json:"WhitelistId,omitempty" name:"WhitelistId"`
+	WhitelistId *uint64 `json:"WhitelistId,omitnil" name:"WhitelistId"`
 
 	// 处理建议。
-	FixSuggestion *string `json:"FixSuggestion,omitempty" name:"FixSuggestion"`
+	FixSuggestion *string `json:"FixSuggestion,omitnil" name:"FixSuggestion"`
 
 	// 所属的合规标准的ID
-	BenchmarkStandardId *uint64 `json:"BenchmarkStandardId,omitempty" name:"BenchmarkStandardId"`
+	BenchmarkStandardId *uint64 `json:"BenchmarkStandardId,omitnil" name:"BenchmarkStandardId"`
 
 	// 检测项适用的版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApplicableVersion *string `json:"ApplicableVersion,omitempty" name:"ApplicableVersion"`
+	ApplicableVersion *string `json:"ApplicableVersion,omitnil" name:"ApplicableVersion"`
 }
 
 type ComplianceScanFailedAsset struct {
 	// 客户资产的ID。
-	CustomerAssetId *uint64 `json:"CustomerAssetId,omitempty" name:"CustomerAssetId"`
+	CustomerAssetId *uint64 `json:"CustomerAssetId,omitnil" name:"CustomerAssetId"`
 
 	// 资产类别。
-	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
 
 	// 检测状态
 	// CHECK_INIT, 待检测
 	// CHECK_RUNNING, 检测中
 	// CHECK_FINISHED, 检测完成
 	// CHECK_FAILED, 检测失败
-	CheckStatus *string `json:"CheckStatus,omitempty" name:"CheckStatus"`
+	CheckStatus *string `json:"CheckStatus,omitnil" name:"CheckStatus"`
 
 	// 资产的名称。
-	AssetName *string `json:"AssetName,omitempty" name:"AssetName"`
+	AssetName *string `json:"AssetName,omitnil" name:"AssetName"`
 
 	// 资产检测失败的原因。
-	FailureReason *string `json:"FailureReason,omitempty" name:"FailureReason"`
+	FailureReason *string `json:"FailureReason,omitnil" name:"FailureReason"`
 
 	// 检测失败的处理建议。
-	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
 
 	// 检测的时间。
-	CheckTime *string `json:"CheckTime,omitempty" name:"CheckTime"`
+	CheckTime *string `json:"CheckTime,omitnil" name:"CheckTime"`
 }
 
 type ComplianceWhitelistItem struct {
 	// 白名单项的ID。
-	WhitelistItemId *uint64 `json:"WhitelistItemId,omitempty" name:"WhitelistItemId"`
+	WhitelistItemId *uint64 `json:"WhitelistItemId,omitnil" name:"WhitelistItemId"`
 
 	// 客户检测项的ID。
-	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitnil" name:"CustomerPolicyItemId"`
 
 	// 检测项的名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 合规标准的名称。
-	StandardName *string `json:"StandardName,omitempty" name:"StandardName"`
+	StandardName *string `json:"StandardName,omitnil" name:"StandardName"`
 
 	// 合规标准的ID。
-	StandardId *uint64 `json:"StandardId,omitempty" name:"StandardId"`
+	StandardId *uint64 `json:"StandardId,omitnil" name:"StandardId"`
 
 	// 检测项影响的资产的数目。
-	AffectedAssetCount *uint64 `json:"AffectedAssetCount,omitempty" name:"AffectedAssetCount"`
+	AffectedAssetCount *uint64 `json:"AffectedAssetCount,omitnil" name:"AffectedAssetCount"`
 
 	// 最后更新的时间
-	LastUpdateTime *string `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
+	LastUpdateTime *string `json:"LastUpdateTime,omitnil" name:"LastUpdateTime"`
 
 	// 加入到白名单的时间
-	InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
+	InsertTime *string `json:"InsertTime,omitnil" name:"InsertTime"`
 }
 
 type ComponentInfo struct {
 	// 名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 版本
-	Version *string `json:"Version,omitempty" name:"Version"`
+	Version *string `json:"Version,omitnil" name:"Version"`
 }
 
 type ComponentsInfo struct {
@@ -2930,46 +2930,46 @@ type ComponentsInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	//
 	// Deprecated: Component is deprecated.
-	Component *string `json:"Component,omitempty" name:"Component"`
+	Component *string `json:"Component,omitnil" name:"Component"`
 
 	// 组件版本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Version *string `json:"Version,omitempty" name:"Version"`
+	Version *string `json:"Version,omitnil" name:"Version"`
 
 	// 可修复版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FixedVersion *string `json:"FixedVersion,omitempty" name:"FixedVersion"`
+	FixedVersion *string `json:"FixedVersion,omitnil" name:"FixedVersion"`
 
 	// 路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// 类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 组件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 // Predefined struct for user
 type ConfirmNetworkFirewallPolicyRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略Id数组
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type ConfirmNetworkFirewallPolicyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略Id数组
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *ConfirmNetworkFirewallPolicyRequest) ToJsonString() string {
@@ -2995,13 +2995,13 @@ func (r *ConfirmNetworkFirewallPolicyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ConfirmNetworkFirewallPolicyResponseParams struct {
 	// 返回创建的任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建确认任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ConfirmNetworkFirewallPolicyResponse struct {
@@ -3022,60 +3022,60 @@ func (r *ConfirmNetworkFirewallPolicyResponse) FromJsonString(s string) error {
 
 type ConnDetectConfig struct {
 	// 主机quuid
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
 
 	// 主机uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
 }
 
 type ContainerInfo struct {
 	// 容器id
-	ContainerID *string `json:"ContainerID,omitempty" name:"ContainerID"`
+	ContainerID *string `json:"ContainerID,omitnil" name:"ContainerID"`
 
 	// 容器名称
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 容器运行状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 运行用户
-	RunAs *string `json:"RunAs,omitempty" name:"RunAs"`
+	RunAs *string `json:"RunAs,omitnil" name:"RunAs"`
 
 	// 命令行
-	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
+	Cmd *string `json:"Cmd,omitnil" name:"Cmd"`
 
 	// CPU使用率 *1000
-	CPUUsage *uint64 `json:"CPUUsage,omitempty" name:"CPUUsage"`
+	CPUUsage *uint64 `json:"CPUUsage,omitnil" name:"CPUUsage"`
 
 	// 内存使用 kb
-	RamUsage *uint64 `json:"RamUsage,omitempty" name:"RamUsage"`
+	RamUsage *uint64 `json:"RamUsage,omitnil" name:"RamUsage"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像id
-	POD *string `json:"POD,omitempty" name:"POD"`
+	POD *string `json:"POD,omitnil" name:"POD"`
 
 	// 主机id
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 主机ip
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 主机名称
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 外网ip
-	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+	PublicIp *string `json:"PublicIp,omitnil" name:"PublicIp"`
 
 	// 网络状态
 	// 未隔离  	NORMAL
@@ -3084,91 +3084,91 @@ type ContainerInfo struct {
 	// 隔离失败	ISOLATE_FAILED
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
-	NetStatus *string `json:"NetStatus,omitempty" name:"NetStatus"`
+	NetStatus *string `json:"NetStatus,omitnil" name:"NetStatus"`
 
 	// 网络子状态
-	NetSubStatus *string `json:"NetSubStatus,omitempty" name:"NetSubStatus"`
+	NetSubStatus *string `json:"NetSubStatus,omitnil" name:"NetSubStatus"`
 
 	// 隔离来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsolateSource *string `json:"IsolateSource,omitempty" name:"IsolateSource"`
+	IsolateSource *string `json:"IsolateSource,omitnil" name:"IsolateSource"`
 
 	// 隔离时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
+	IsolateTime *string `json:"IsolateTime,omitnil" name:"IsolateTime"`
 
 	// 超级节点id
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// podip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// pod名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// 节点类型:节点类型：NORMAL普通节点、SUPER超级节点
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 超级节点唯一id
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 所属Pod的CPU
-	PodCpu *int64 `json:"PodCpu,omitempty" name:"PodCpu"`
+	PodCpu *int64 `json:"PodCpu,omitnil" name:"PodCpu"`
 
 	// 所属Pod的内存
-	PodMem *int64 `json:"PodMem,omitempty" name:"PodMem"`
+	PodMem *int64 `json:"PodMem,omitnil" name:"PodMem"`
 }
 
 type ContainerMount struct {
 	// 挂载类型 bind
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 宿主机路径
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 容器内路径
-	Destination *string `json:"Destination,omitempty" name:"Destination"`
+	Destination *string `json:"Destination,omitnil" name:"Destination"`
 
 	// 模式
-	Mode *string `json:"Mode,omitempty" name:"Mode"`
+	Mode *string `json:"Mode,omitnil" name:"Mode"`
 
 	// 读写权限
-	RW *bool `json:"RW,omitempty" name:"RW"`
+	RW *bool `json:"RW,omitnil" name:"RW"`
 
 	// 传播类型
-	Propagation *string `json:"Propagation,omitempty" name:"Propagation"`
+	Propagation *string `json:"Propagation,omitnil" name:"Propagation"`
 
 	// 名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 驱动
-	Driver *string `json:"Driver,omitempty" name:"Driver"`
+	Driver *string `json:"Driver,omitnil" name:"Driver"`
 }
 
 type ContainerNetwork struct {
 	// endpoint id
-	EndpointID *string `json:"EndpointID,omitempty" name:"EndpointID"`
+	EndpointID *string `json:"EndpointID,omitnil" name:"EndpointID"`
 
 	// 模式:bridge
-	Mode *string `json:"Mode,omitempty" name:"Mode"`
+	Mode *string `json:"Mode,omitnil" name:"Mode"`
 
 	// 网络名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 网络ID
-	NetworkID *string `json:"NetworkID,omitempty" name:"NetworkID"`
+	NetworkID *string `json:"NetworkID,omitnil" name:"NetworkID"`
 
 	// 网关
-	Gateway *string `json:"Gateway,omitempty" name:"Gateway"`
+	Gateway *string `json:"Gateway,omitnil" name:"Gateway"`
 
 	// IPV4地址
-	Ipv4 *string `json:"Ipv4,omitempty" name:"Ipv4"`
+	Ipv4 *string `json:"Ipv4,omitnil" name:"Ipv4"`
 
 	// IPV6地址
-	Ipv6 *string `json:"Ipv6,omitempty" name:"Ipv6"`
+	Ipv6 *string `json:"Ipv6,omitnil" name:"Ipv6"`
 
 	// MAC 地址
-	MAC *string `json:"MAC,omitempty" name:"MAC"`
+	MAC *string `json:"MAC,omitnil" name:"MAC"`
 }
 
 // Predefined struct for user
@@ -3176,16 +3176,16 @@ type CreateAbnormalProcessRulesExportJobRequestParams struct {
 	// 过滤条件。
 	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
 	// <li>Status - string  - 是否必填: 否 -状态</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 type CreateAbnormalProcessRulesExportJobRequest struct {
@@ -3194,16 +3194,16 @@ type CreateAbnormalProcessRulesExportJobRequest struct {
 	// 过滤条件。
 	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
 	// <li>Status - string  - 是否必填: 否 -状态</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 func (r *CreateAbnormalProcessRulesExportJobRequest) ToJsonString() string {
@@ -3231,10 +3231,10 @@ func (r *CreateAbnormalProcessRulesExportJobRequest) FromJsonString(s string) er
 // Predefined struct for user
 type CreateAbnormalProcessRulesExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAbnormalProcessRulesExportJobResponse struct {
@@ -3258,16 +3258,16 @@ type CreateAccessControlsRuleExportJobRequestParams struct {
 	// 过滤条件。
 	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
 	// <li>Status - string  - 是否必填: 否 -状态</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By []*string `json:"By,omitempty" name:"By"`
+	By []*string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 type CreateAccessControlsRuleExportJobRequest struct {
@@ -3276,16 +3276,16 @@ type CreateAccessControlsRuleExportJobRequest struct {
 	// 过滤条件。
 	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
 	// <li>Status - string  - 是否必填: 否 -状态</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By []*string `json:"By,omitempty" name:"By"`
+	By []*string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 func (r *CreateAccessControlsRuleExportJobRequest) ToJsonString() string {
@@ -3313,10 +3313,10 @@ func (r *CreateAccessControlsRuleExportJobRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type CreateAccessControlsRuleExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAccessControlsRuleExportJobResponse struct {
@@ -3338,32 +3338,32 @@ func (r *CreateAccessControlsRuleExportJobResponse) FromJsonString(s string) err
 // Predefined struct for user
 type CreateAssetImageRegistryScanTaskOneKeyRequestParams struct {
 	// 是否扫描全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 扫描的镜像列表
-	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
+	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 扫描类型数组
-	ScanType []*string `json:"ScanType,omitempty" name:"ScanType"`
+	ScanType []*string `json:"ScanType,omitnil" name:"ScanType"`
 
 	// 扫描的镜像列表Id
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type CreateAssetImageRegistryScanTaskOneKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 是否扫描全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 扫描的镜像列表
-	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
+	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 扫描类型数组
-	ScanType []*string `json:"ScanType,omitempty" name:"ScanType"`
+	ScanType []*string `json:"ScanType,omitnil" name:"ScanType"`
 
 	// 扫描的镜像列表Id
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *CreateAssetImageRegistryScanTaskOneKeyRequest) ToJsonString() string {
@@ -3391,10 +3391,10 @@ func (r *CreateAssetImageRegistryScanTaskOneKeyRequest) FromJsonString(s string)
 // Predefined struct for user
 type CreateAssetImageRegistryScanTaskOneKeyResponseParams struct {
 	// 扫描任务id
-	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *uint64 `json:"TaskID,omitnil" name:"TaskID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAssetImageRegistryScanTaskOneKeyResponse struct {
@@ -3416,50 +3416,50 @@ func (r *CreateAssetImageRegistryScanTaskOneKeyResponse) FromJsonString(s string
 // Predefined struct for user
 type CreateAssetImageRegistryScanTaskRequestParams struct {
 	// 是否扫描全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 扫描的镜像列表
-	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
+	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 扫描类型数组
-	ScanType []*string `json:"ScanType,omitempty" name:"ScanType"`
+	ScanType []*string `json:"ScanType,omitnil" name:"ScanType"`
 
 	// 扫描的镜像列表
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 过滤条件
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 不需要扫描的镜像列表, 与Filters配合使用
-	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitempty" name:"ExcludeImageList"`
+	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitnil" name:"ExcludeImageList"`
 
 	// 是否仅扫描各repository最新版的镜像, 与Filters配合使用
-	OnlyScanLatest *bool `json:"OnlyScanLatest,omitempty" name:"OnlyScanLatest"`
+	OnlyScanLatest *bool `json:"OnlyScanLatest,omitnil" name:"OnlyScanLatest"`
 }
 
 type CreateAssetImageRegistryScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 是否扫描全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 扫描的镜像列表
-	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
+	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 扫描类型数组
-	ScanType []*string `json:"ScanType,omitempty" name:"ScanType"`
+	ScanType []*string `json:"ScanType,omitnil" name:"ScanType"`
 
 	// 扫描的镜像列表
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 过滤条件
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 不需要扫描的镜像列表, 与Filters配合使用
-	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitempty" name:"ExcludeImageList"`
+	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitnil" name:"ExcludeImageList"`
 
 	// 是否仅扫描各repository最新版的镜像, 与Filters配合使用
-	OnlyScanLatest *bool `json:"OnlyScanLatest,omitempty" name:"OnlyScanLatest"`
+	OnlyScanLatest *bool `json:"OnlyScanLatest,omitnil" name:"OnlyScanLatest"`
 }
 
 func (r *CreateAssetImageRegistryScanTaskRequest) ToJsonString() string {
@@ -3490,10 +3490,10 @@ func (r *CreateAssetImageRegistryScanTaskRequest) FromJsonString(s string) error
 // Predefined struct for user
 type CreateAssetImageRegistryScanTaskResponseParams struct {
 	// 返回的任务ID
-	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *uint64 `json:"TaskID,omitnil" name:"TaskID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAssetImageRegistryScanTaskResponse struct {
@@ -3515,56 +3515,56 @@ func (r *CreateAssetImageRegistryScanTaskResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type CreateAssetImageScanSettingRequestParams struct {
 	// 开关
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 扫描时间
-	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 扫描周期
-	ScanPeriod *uint64 `json:"ScanPeriod,omitempty" name:"ScanPeriod"`
+	ScanPeriod *uint64 `json:"ScanPeriod,omitnil" name:"ScanPeriod"`
 
 	// 扫描木马
-	ScanVirus *bool `json:"ScanVirus,omitempty" name:"ScanVirus"`
+	ScanVirus *bool `json:"ScanVirus,omitnil" name:"ScanVirus"`
 
 	// 扫描敏感信息
-	ScanRisk *bool `json:"ScanRisk,omitempty" name:"ScanRisk"`
+	ScanRisk *bool `json:"ScanRisk,omitnil" name:"ScanRisk"`
 
 	// 扫描漏洞
-	ScanVul *bool `json:"ScanVul,omitempty" name:"ScanVul"`
+	ScanVul *bool `json:"ScanVul,omitnil" name:"ScanVul"`
 
 	// 全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 自定义镜像
-	Images []*string `json:"Images,omitempty" name:"Images"`
+	Images []*string `json:"Images,omitnil" name:"Images"`
 }
 
 type CreateAssetImageScanSettingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 开关
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 扫描时间
-	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 扫描周期
-	ScanPeriod *uint64 `json:"ScanPeriod,omitempty" name:"ScanPeriod"`
+	ScanPeriod *uint64 `json:"ScanPeriod,omitnil" name:"ScanPeriod"`
 
 	// 扫描木马
-	ScanVirus *bool `json:"ScanVirus,omitempty" name:"ScanVirus"`
+	ScanVirus *bool `json:"ScanVirus,omitnil" name:"ScanVirus"`
 
 	// 扫描敏感信息
-	ScanRisk *bool `json:"ScanRisk,omitempty" name:"ScanRisk"`
+	ScanRisk *bool `json:"ScanRisk,omitnil" name:"ScanRisk"`
 
 	// 扫描漏洞
-	ScanVul *bool `json:"ScanVul,omitempty" name:"ScanVul"`
+	ScanVul *bool `json:"ScanVul,omitnil" name:"ScanVul"`
 
 	// 全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 自定义镜像
-	Images []*string `json:"Images,omitempty" name:"Images"`
+	Images []*string `json:"Images,omitnil" name:"Images"`
 }
 
 func (r *CreateAssetImageScanSettingRequest) ToJsonString() string {
@@ -3596,7 +3596,7 @@ func (r *CreateAssetImageScanSettingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAssetImageScanSettingResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAssetImageScanSettingResponse struct {
@@ -3618,50 +3618,50 @@ func (r *CreateAssetImageScanSettingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAssetImageScanTaskRequestParams struct {
 	// 是否扫描全部镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 需要扫描的镜像列表；全部镜像，镜像列表和根据过滤条件筛选三选一。
-	Images []*string `json:"Images,omitempty" name:"Images"`
+	Images []*string `json:"Images,omitnil" name:"Images"`
 
 	// 扫描漏洞；漏洞，木马和风险需选其一
-	ScanVul *bool `json:"ScanVul,omitempty" name:"ScanVul"`
+	ScanVul *bool `json:"ScanVul,omitnil" name:"ScanVul"`
 
 	// 扫描木马；漏洞，木马和风险需选其一
-	ScanVirus *bool `json:"ScanVirus,omitempty" name:"ScanVirus"`
+	ScanVirus *bool `json:"ScanVirus,omitnil" name:"ScanVirus"`
 
 	// 扫描风险；漏洞，木马和风险需选其一
-	ScanRisk *bool `json:"ScanRisk,omitempty" name:"ScanRisk"`
+	ScanRisk *bool `json:"ScanRisk,omitnil" name:"ScanRisk"`
 
 	// 根据过滤条件筛选出镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 根据过滤条件筛选出镜像，再排除个别镜像
-	ExcludeImageIds []*string `json:"ExcludeImageIds,omitempty" name:"ExcludeImageIds"`
+	ExcludeImageIds []*string `json:"ExcludeImageIds,omitnil" name:"ExcludeImageIds"`
 }
 
 type CreateAssetImageScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 是否扫描全部镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 需要扫描的镜像列表；全部镜像，镜像列表和根据过滤条件筛选三选一。
-	Images []*string `json:"Images,omitempty" name:"Images"`
+	Images []*string `json:"Images,omitnil" name:"Images"`
 
 	// 扫描漏洞；漏洞，木马和风险需选其一
-	ScanVul *bool `json:"ScanVul,omitempty" name:"ScanVul"`
+	ScanVul *bool `json:"ScanVul,omitnil" name:"ScanVul"`
 
 	// 扫描木马；漏洞，木马和风险需选其一
-	ScanVirus *bool `json:"ScanVirus,omitempty" name:"ScanVirus"`
+	ScanVirus *bool `json:"ScanVirus,omitnil" name:"ScanVirus"`
 
 	// 扫描风险；漏洞，木马和风险需选其一
-	ScanRisk *bool `json:"ScanRisk,omitempty" name:"ScanRisk"`
+	ScanRisk *bool `json:"ScanRisk,omitnil" name:"ScanRisk"`
 
 	// 根据过滤条件筛选出镜像；全部镜像，镜像列表和根据过滤条件筛选三选一。
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 根据过滤条件筛选出镜像，再排除个别镜像
-	ExcludeImageIds []*string `json:"ExcludeImageIds,omitempty" name:"ExcludeImageIds"`
+	ExcludeImageIds []*string `json:"ExcludeImageIds,omitnil" name:"ExcludeImageIds"`
 }
 
 func (r *CreateAssetImageScanTaskRequest) ToJsonString() string {
@@ -3692,10 +3692,10 @@ func (r *CreateAssetImageScanTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAssetImageScanTaskResponseParams struct {
 	// 任务id
-	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAssetImageScanTaskResponse struct {
@@ -3717,50 +3717,50 @@ func (r *CreateAssetImageScanTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAssetImageVirusExportJobRequestParams struct {
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 需要返回的数量，默认为10，最大值为10000
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type CreateAssetImageVirusExportJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 需要返回的数量，默认为10，最大值为10000
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *CreateAssetImageVirusExportJobRequest) ToJsonString() string {
@@ -3791,10 +3791,10 @@ func (r *CreateAssetImageVirusExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAssetImageVirusExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAssetImageVirusExportJobResponse struct {
@@ -3816,14 +3816,14 @@ func (r *CreateAssetImageVirusExportJobResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type CreateCheckComponentRequestParams struct {
 	// 要安装的集群列表信息
-	ClusterInfoList []*ClusterCreateComponentItem `json:"ClusterInfoList,omitempty" name:"ClusterInfoList"`
+	ClusterInfoList []*ClusterCreateComponentItem `json:"ClusterInfoList,omitnil" name:"ClusterInfoList"`
 }
 
 type CreateCheckComponentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要安装的集群列表信息
-	ClusterInfoList []*ClusterCreateComponentItem `json:"ClusterInfoList,omitempty" name:"ClusterInfoList"`
+	ClusterInfoList []*ClusterCreateComponentItem `json:"ClusterInfoList,omitnil" name:"ClusterInfoList"`
 }
 
 func (r *CreateCheckComponentRequest) ToJsonString() string {
@@ -3848,10 +3848,10 @@ func (r *CreateCheckComponentRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCheckComponentResponseParams struct {
 	// "InstallSucc"表示安装成功，"InstallFailed"表示安装失败
-	InstallResult *string `json:"InstallResult,omitempty" name:"InstallResult"`
+	InstallResult *string `json:"InstallResult,omitnil" name:"InstallResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateCheckComponentResponse struct {
@@ -3873,14 +3873,14 @@ func (r *CreateCheckComponentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateClusterCheckTaskRequestParams struct {
 	// 指定要扫描的集群信息
-	ClusterCheckTaskList []*ClusterCheckTaskItem `json:"ClusterCheckTaskList,omitempty" name:"ClusterCheckTaskList"`
+	ClusterCheckTaskList []*ClusterCheckTaskItem `json:"ClusterCheckTaskList,omitnil" name:"ClusterCheckTaskList"`
 }
 
 type CreateClusterCheckTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定要扫描的集群信息
-	ClusterCheckTaskList []*ClusterCheckTaskItem `json:"ClusterCheckTaskList,omitempty" name:"ClusterCheckTaskList"`
+	ClusterCheckTaskList []*ClusterCheckTaskItem `json:"ClusterCheckTaskList,omitnil" name:"ClusterCheckTaskList"`
 }
 
 func (r *CreateClusterCheckTaskRequest) ToJsonString() string {
@@ -3905,17 +3905,17 @@ func (r *CreateClusterCheckTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateClusterCheckTaskResponseParams struct {
 	// 返回创建的集群检查任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建检查任务的结果，"Succ"为成功，其他的为失败原因
-	CreateResult *string `json:"CreateResult,omitempty" name:"CreateResult"`
+	CreateResult *string `json:"CreateResult,omitnil" name:"CreateResult"`
 
 	// 返回创建的集群新任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NewTaskID *string `json:"NewTaskID,omitempty" name:"NewTaskID"`
+	NewTaskID *string `json:"NewTaskID,omitnil" name:"NewTaskID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateClusterCheckTaskResponse struct {
@@ -3942,13 +3942,13 @@ type CreateComplianceTaskRequestParams struct {
 	// ASSET_HOST, 主机
 	// ASSET_K8S, K8S资产
 	// AssetTypeSet, PolicySetId, PeriodTaskId三个参数，必须要给其中一个参数填写有效的值。
-	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
+	AssetTypeSet []*string `json:"AssetTypeSet,omitnil" name:"AssetTypeSet"`
 
 	// 按照策略集ID指定的策略执行合规检查。
-	PolicySetId *uint64 `json:"PolicySetId,omitempty" name:"PolicySetId"`
+	PolicySetId *uint64 `json:"PolicySetId,omitnil" name:"PolicySetId"`
 
 	// 按照定时任务ID指定的策略执行合规检查。
-	PeriodTaskId *uint64 `json:"PeriodTaskId,omitempty" name:"PeriodTaskId"`
+	PeriodTaskId *uint64 `json:"PeriodTaskId,omitnil" name:"PeriodTaskId"`
 }
 
 type CreateComplianceTaskRequest struct {
@@ -3960,13 +3960,13 @@ type CreateComplianceTaskRequest struct {
 	// ASSET_HOST, 主机
 	// ASSET_K8S, K8S资产
 	// AssetTypeSet, PolicySetId, PeriodTaskId三个参数，必须要给其中一个参数填写有效的值。
-	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
+	AssetTypeSet []*string `json:"AssetTypeSet,omitnil" name:"AssetTypeSet"`
 
 	// 按照策略集ID指定的策略执行合规检查。
-	PolicySetId *uint64 `json:"PolicySetId,omitempty" name:"PolicySetId"`
+	PolicySetId *uint64 `json:"PolicySetId,omitnil" name:"PolicySetId"`
 
 	// 按照定时任务ID指定的策略执行合规检查。
-	PeriodTaskId *uint64 `json:"PeriodTaskId,omitempty" name:"PeriodTaskId"`
+	PeriodTaskId *uint64 `json:"PeriodTaskId,omitnil" name:"PeriodTaskId"`
 }
 
 func (r *CreateComplianceTaskRequest) ToJsonString() string {
@@ -3993,10 +3993,10 @@ func (r *CreateComplianceTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateComplianceTaskResponseParams struct {
 	// 返回创建的合规检查任务的ID。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateComplianceTaskResponse struct {
@@ -4018,52 +4018,52 @@ func (r *CreateComplianceTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateComponentExportJobRequestParams struct {
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10000，最大值为10000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ComponentName- String - 是否必填：否 - 镜像组件名称</li><li>ComponentVersion- String - 是否必填：否 - 镜像组件版本</li><li>ComponentType- String - 是否必填：否 - 镜像组件类型</li><li>VulLevel- String - 是否必填：否 - 漏洞威胁等级</li><li>HasVul- String - 是否必填：否 -是否有漏洞；true：是，false，否；不传或ALL ：全部</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式desc ，asc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type CreateComponentExportJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10000，最大值为10000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ComponentName- String - 是否必填：否 - 镜像组件名称</li><li>ComponentVersion- String - 是否必填：否 - 镜像组件版本</li><li>ComponentType- String - 是否必填：否 - 镜像组件类型</li><li>VulLevel- String - 是否必填：否 - 漏洞威胁等级</li><li>HasVul- String - 是否必填：否 -是否有漏洞；true：是，false，否；不传或ALL ：全部</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式desc ，asc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *CreateComponentExportJobRequest) ToJsonString() string {
@@ -4094,10 +4094,10 @@ func (r *CreateComponentExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateComponentExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateComponentExportJobResponse struct {
@@ -4119,44 +4119,44 @@ func (r *CreateComponentExportJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDefenceVulExportJobRequestParams struct {
 	// 需要返回的数量，默认为10000，最大值为10000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
 	// <li>CVEID- string - 是否必填：否 - CVE编号</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type CreateDefenceVulExportJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10000，最大值为10000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
 	// <li>CVEID- string - 是否必填：否 - CVE编号</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *CreateDefenceVulExportJobRequest) ToJsonString() string {
@@ -4185,10 +4185,10 @@ func (r *CreateDefenceVulExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDefenceVulExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDefenceVulExportJobResponse struct {
@@ -4210,10 +4210,10 @@ func (r *CreateDefenceVulExportJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEmergencyVulExportJobRequestParams struct {
 	// 需要返回的数量，默认为50000，最大值为50000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
@@ -4227,23 +4227,23 @@ type CreateEmergencyVulExportJobRequestParams struct {
 	// <li>ComponentName- string -是否必填: 否 - 组件名称</li>
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type CreateEmergencyVulExportJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为50000，最大值为50000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
@@ -4257,13 +4257,13 @@ type CreateEmergencyVulExportJobRequest struct {
 	// <li>ComponentName- string -是否必填: 否 - 组件名称</li>
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *CreateEmergencyVulExportJobRequest) ToJsonString() string {
@@ -4292,10 +4292,10 @@ func (r *CreateEmergencyVulExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEmergencyVulExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateEmergencyVulExportJobResponse struct {
@@ -4317,44 +4317,44 @@ func (r *CreateEmergencyVulExportJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEscapeEventsExportJobRequestParams struct {
 	// 需要返回的数量，最大值为10000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,Status：EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：latest_found_time
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 type CreateEscapeEventsExportJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，最大值为10000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,Status：EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：latest_found_time
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 func (r *CreateEscapeEventsExportJobRequest) ToJsonString() string {
@@ -4384,10 +4384,10 @@ func (r *CreateEscapeEventsExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEscapeEventsExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateEscapeEventsExportJobResponse struct {
@@ -4412,19 +4412,19 @@ type CreateEscapeWhiteListExportJobRequestParams struct {
 	// <li>EventType- String - 是否必填：否 - 加白事件类型，ESCAPE_CGROUPS：利用cgroup机制逃逸，ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸， ESCAPE_DOCKER_API：访问Docker API接口逃逸，ESCAPE_VUL_OCCURRED：逃逸漏洞利用，MOUNT_SENSITIVE_PTAH：敏感路径挂载，PRIVILEGE_CONTAINER_START：特权容器， PRIVILEGE：程序提权逃逸</li>
 	// <li>ImageName- string - 是否必填：否 - 镜像名称。</li>
 	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10000，最大值为10000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：主机数量：HostCount，容器数量：ContainerCount，更新时间：UpdateTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type CreateEscapeWhiteListExportJobRequest struct {
@@ -4434,19 +4434,19 @@ type CreateEscapeWhiteListExportJobRequest struct {
 	// <li>EventType- String - 是否必填：否 - 加白事件类型，ESCAPE_CGROUPS：利用cgroup机制逃逸，ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸， ESCAPE_DOCKER_API：访问Docker API接口逃逸，ESCAPE_VUL_OCCURRED：逃逸漏洞利用，MOUNT_SENSITIVE_PTAH：敏感路径挂载，PRIVILEGE_CONTAINER_START：特权容器， PRIVILEGE：程序提权逃逸</li>
 	// <li>ImageName- string - 是否必填：否 - 镜像名称。</li>
 	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10000，最大值为10000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：主机数量：HostCount，容器数量：ContainerCount，更新时间：UpdateTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *CreateEscapeWhiteListExportJobRequest) ToJsonString() string {
@@ -4475,10 +4475,10 @@ func (r *CreateEscapeWhiteListExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEscapeWhiteListExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateEscapeWhiteListExportJobResponse struct {
@@ -4500,32 +4500,32 @@ func (r *CreateEscapeWhiteListExportJobResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type CreateExportComplianceStatusListJobRequestParams struct {
 	// 要导出信息的资产类型
-	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
 
 	// 按照检测项导出，还是按照资产导出。true: 按照资产导出；false: 按照检测项导出。
-	ExportByAsset *bool `json:"ExportByAsset,omitempty" name:"ExportByAsset"`
+	ExportByAsset *bool `json:"ExportByAsset,omitnil" name:"ExportByAsset"`
 
 	// true, 全部导出；false, 根据IdList来导出数据。
-	ExportAll *bool `json:"ExportAll,omitempty" name:"ExportAll"`
+	ExportAll *bool `json:"ExportAll,omitnil" name:"ExportAll"`
 
 	// 要导出的资产ID列表或检测项ID列表，由ExportByAsset的取值决定。
-	IdList []*uint64 `json:"IdList,omitempty" name:"IdList"`
+	IdList []*uint64 `json:"IdList,omitnil" name:"IdList"`
 }
 
 type CreateExportComplianceStatusListJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要导出信息的资产类型
-	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
 
 	// 按照检测项导出，还是按照资产导出。true: 按照资产导出；false: 按照检测项导出。
-	ExportByAsset *bool `json:"ExportByAsset,omitempty" name:"ExportByAsset"`
+	ExportByAsset *bool `json:"ExportByAsset,omitnil" name:"ExportByAsset"`
 
 	// true, 全部导出；false, 根据IdList来导出数据。
-	ExportAll *bool `json:"ExportAll,omitempty" name:"ExportAll"`
+	ExportAll *bool `json:"ExportAll,omitnil" name:"ExportAll"`
 
 	// 要导出的资产ID列表或检测项ID列表，由ExportByAsset的取值决定。
-	IdList []*uint64 `json:"IdList,omitempty" name:"IdList"`
+	IdList []*uint64 `json:"IdList,omitnil" name:"IdList"`
 }
 
 func (r *CreateExportComplianceStatusListJobRequest) ToJsonString() string {
@@ -4554,10 +4554,10 @@ func (r *CreateExportComplianceStatusListJobRequest) FromJsonString(s string) er
 type CreateExportComplianceStatusListJobResponseParams struct {
 	// 返回创建的导出任务的ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateExportComplianceStatusListJobResponse struct {
@@ -4589,22 +4589,22 @@ type CreateHostExportJobRequestParams struct {
 	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
 	// <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
 	// <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 需要返回的数量，默认为10，最大值为10000
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 type CreateHostExportJobRequest struct {
@@ -4621,22 +4621,22 @@ type CreateHostExportJobRequest struct {
 	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
 	// <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
 	// <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 需要返回的数量，默认为10，最大值为10000
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 func (r *CreateHostExportJobRequest) ToJsonString() string {
@@ -4666,10 +4666,10 @@ func (r *CreateHostExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateHostExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateHostExportJobResponse struct {
@@ -4695,22 +4695,22 @@ type CreateImageExportJobRequestParams struct {
 	// <li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
 	// <li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li>
 	// <li>SecurityRisk- String - 是否必填：否 - 安全风险，VulCnt 、VirusCnt、RiskCnt、IsTrustImage</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 type CreateImageExportJobRequest struct {
@@ -4721,22 +4721,22 @@ type CreateImageExportJobRequest struct {
 	// <li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
 	// <li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li>
 	// <li>SecurityRisk- String - 是否必填：否 - 安全风险，VulCnt 、VirusCnt、RiskCnt、IsTrustImage</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 func (r *CreateImageExportJobRequest) ToJsonString() string {
@@ -4766,13 +4766,13 @@ func (r *CreateImageExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateImageExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// excel文件下载地址
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateImageExportJobResponse struct {
@@ -4802,16 +4802,16 @@ type CreateK8sApiAbnormalEventExportJobRequestParams struct {
 	// <li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li>
 	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
 	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 type CreateK8sApiAbnormalEventExportJobRequest struct {
@@ -4826,16 +4826,16 @@ type CreateK8sApiAbnormalEventExportJobRequest struct {
 	// <li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li>
 	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
 	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 func (r *CreateK8sApiAbnormalEventExportJobRequest) ToJsonString() string {
@@ -4863,10 +4863,10 @@ func (r *CreateK8sApiAbnormalEventExportJobRequest) FromJsonString(s string) err
 // Predefined struct for user
 type CreateK8sApiAbnormalEventExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateK8sApiAbnormalEventExportJobResponse struct {
@@ -4890,16 +4890,16 @@ type CreateK8sApiAbnormalRuleExportJobRequestParams struct {
 	// 过滤条件。
 	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
 	// <li>Status - string  - 是否必填: 否 -状态</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By []*string `json:"By,omitempty" name:"By"`
+	By []*string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 type CreateK8sApiAbnormalRuleExportJobRequest struct {
@@ -4908,16 +4908,16 @@ type CreateK8sApiAbnormalRuleExportJobRequest struct {
 	// 过滤条件。
 	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
 	// <li>Status - string  - 是否必填: 否 -状态</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By []*string `json:"By,omitempty" name:"By"`
+	By []*string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 func (r *CreateK8sApiAbnormalRuleExportJobRequest) ToJsonString() string {
@@ -4945,10 +4945,10 @@ func (r *CreateK8sApiAbnormalRuleExportJobRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type CreateK8sApiAbnormalRuleExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateK8sApiAbnormalRuleExportJobResponse struct {
@@ -4970,26 +4970,26 @@ func (r *CreateK8sApiAbnormalRuleExportJobResponse) FromJsonString(s string) err
 // Predefined struct for user
 type CreateK8sApiAbnormalRuleInfoRequestParams struct {
 	// 规则详情
-	RuleInfo *K8sApiAbnormalRuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+	RuleInfo *K8sApiAbnormalRuleInfo `json:"RuleInfo,omitnil" name:"RuleInfo"`
 
 	// 拷贝规则ID(适用于复制规则场景)
-	CopySrcRuleID *string `json:"CopySrcRuleID,omitempty" name:"CopySrcRuleID"`
+	CopySrcRuleID *string `json:"CopySrcRuleID,omitnil" name:"CopySrcRuleID"`
 
 	// 事件ID(适用于事件加白场景)
-	EventID *uint64 `json:"EventID,omitempty" name:"EventID"`
+	EventID *uint64 `json:"EventID,omitnil" name:"EventID"`
 }
 
 type CreateK8sApiAbnormalRuleInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则详情
-	RuleInfo *K8sApiAbnormalRuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+	RuleInfo *K8sApiAbnormalRuleInfo `json:"RuleInfo,omitnil" name:"RuleInfo"`
 
 	// 拷贝规则ID(适用于复制规则场景)
-	CopySrcRuleID *string `json:"CopySrcRuleID,omitempty" name:"CopySrcRuleID"`
+	CopySrcRuleID *string `json:"CopySrcRuleID,omitnil" name:"CopySrcRuleID"`
 
 	// 事件ID(适用于事件加白场景)
-	EventID *uint64 `json:"EventID,omitempty" name:"EventID"`
+	EventID *uint64 `json:"EventID,omitnil" name:"EventID"`
 }
 
 func (r *CreateK8sApiAbnormalRuleInfoRequest) ToJsonString() string {
@@ -5016,10 +5016,10 @@ func (r *CreateK8sApiAbnormalRuleInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateK8sApiAbnormalRuleInfoResponseParams struct {
 	// 规则ID
-	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+	RuleID *string `json:"RuleID,omitnil" name:"RuleID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateK8sApiAbnormalRuleInfoResponse struct {
@@ -5070,13 +5070,13 @@ func (r *CreateNetworkFirewallClusterRefreshRequest) FromJsonString(s string) er
 // Predefined struct for user
 type CreateNetworkFirewallClusterRefreshResponseParams struct {
 	// 返回创建的集群检查任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建检查任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateNetworkFirewallClusterRefreshResponse struct {
@@ -5098,14 +5098,14 @@ func (r *CreateNetworkFirewallClusterRefreshResponse) FromJsonString(s string) e
 // Predefined struct for user
 type CreateNetworkFirewallPolicyDiscoverRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 type CreateNetworkFirewallPolicyDiscoverRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 func (r *CreateNetworkFirewallPolicyDiscoverRequest) ToJsonString() string {
@@ -5130,13 +5130,13 @@ func (r *CreateNetworkFirewallPolicyDiscoverRequest) FromJsonString(s string) er
 // Predefined struct for user
 type CreateNetworkFirewallPolicyDiscoverResponseParams struct {
 	// 返回创建的集群检查任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建检查任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateNetworkFirewallPolicyDiscoverResponse struct {
@@ -5158,20 +5158,20 @@ func (r *CreateNetworkFirewallPolicyDiscoverResponse) FromJsonString(s string) e
 // Predefined struct for user
 type CreateNetworkFirewallPublishRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略Id数组
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type CreateNetworkFirewallPublishRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略Id数组
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *CreateNetworkFirewallPublishRequest) ToJsonString() string {
@@ -5197,13 +5197,13 @@ func (r *CreateNetworkFirewallPublishRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateNetworkFirewallPublishResponseParams struct {
 	// 返回创建的任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateNetworkFirewallPublishResponse struct {
@@ -5225,20 +5225,20 @@ func (r *CreateNetworkFirewallPublishResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateNetworkFirewallUndoPublishRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略Id数组
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type CreateNetworkFirewallUndoPublishRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略Id数组
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *CreateNetworkFirewallUndoPublishRequest) ToJsonString() string {
@@ -5264,13 +5264,13 @@ func (r *CreateNetworkFirewallUndoPublishRequest) FromJsonString(s string) error
 // Predefined struct for user
 type CreateNetworkFirewallUndoPublishResponseParams struct {
 	// 返回创建的任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateNetworkFirewallUndoPublishResponse struct {
@@ -5292,14 +5292,14 @@ func (r *CreateNetworkFirewallUndoPublishResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type CreateOrModifyPostPayCoresRequestParams struct {
 	// 弹性计费上限，最小值500
-	CoresCnt *uint64 `json:"CoresCnt,omitempty" name:"CoresCnt"`
+	CoresCnt *uint64 `json:"CoresCnt,omitnil" name:"CoresCnt"`
 }
 
 type CreateOrModifyPostPayCoresRequest struct {
 	*tchttp.BaseRequest
 	
 	// 弹性计费上限，最小值500
-	CoresCnt *uint64 `json:"CoresCnt,omitempty" name:"CoresCnt"`
+	CoresCnt *uint64 `json:"CoresCnt,omitnil" name:"CoresCnt"`
 }
 
 func (r *CreateOrModifyPostPayCoresRequest) ToJsonString() string {
@@ -5324,7 +5324,7 @@ func (r *CreateOrModifyPostPayCoresRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateOrModifyPostPayCoresResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateOrModifyPostPayCoresResponse struct {
@@ -5346,44 +5346,44 @@ func (r *CreateOrModifyPostPayCoresResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateProcessEventsExportJobRequestParams struct {
 	// 需要返回的数量，最大值为10000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,Status：EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：latest_found_time
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 type CreateProcessEventsExportJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，最大值为10000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,Status：EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：latest_found_time
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 func (r *CreateProcessEventsExportJobRequest) ToJsonString() string {
@@ -5413,10 +5413,10 @@ func (r *CreateProcessEventsExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateProcessEventsExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateProcessEventsExportJobResponse struct {
@@ -5467,13 +5467,13 @@ func (r *CreateRefreshTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRefreshTaskResponseParams struct {
 	// 返回创建的集群检查任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建检查任务的结果，"Succ"为成功，"Failed"为失败
-	CreateResult *string `json:"CreateResult,omitempty" name:"CreateResult"`
+	CreateResult *string `json:"CreateResult,omitnil" name:"CreateResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateRefreshTaskResponse struct {
@@ -5509,19 +5509,19 @@ type CreateRiskDnsEventExportJobRequestParams struct {
 	// <li>HostName- string - 是否必填：否 - 主机名称。</li>
 	// <li>HostIP- string - 是否必填：否 - 内网IP。</li>
 	// <li>PublicIP- string - 是否必填：否 - 外网IP。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，最大值为100000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：事件数量：EventCount
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type CreateRiskDnsEventExportJobRequest struct {
@@ -5542,19 +5542,19 @@ type CreateRiskDnsEventExportJobRequest struct {
 	// <li>HostName- string - 是否必填：否 - 主机名称。</li>
 	// <li>HostIP- string - 是否必填：否 - 内网IP。</li>
 	// <li>PublicIP- string - 是否必填：否 - 外网IP。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，最大值为100000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：事件数量：EventCount
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *CreateRiskDnsEventExportJobRequest) ToJsonString() string {
@@ -5583,10 +5583,10 @@ func (r *CreateRiskDnsEventExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRiskDnsEventExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateRiskDnsEventExportJobResponse struct {
@@ -5608,14 +5608,14 @@ func (r *CreateRiskDnsEventExportJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSearchTemplateRequestParams struct {
 	// 搜索模板
-	SearchTemplate *SearchTemplate `json:"SearchTemplate,omitempty" name:"SearchTemplate"`
+	SearchTemplate *SearchTemplate `json:"SearchTemplate,omitnil" name:"SearchTemplate"`
 }
 
 type CreateSearchTemplateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 搜索模板
-	SearchTemplate *SearchTemplate `json:"SearchTemplate,omitempty" name:"SearchTemplate"`
+	SearchTemplate *SearchTemplate `json:"SearchTemplate,omitnil" name:"SearchTemplate"`
 }
 
 func (r *CreateSearchTemplateRequest) ToJsonString() string {
@@ -5640,7 +5640,7 @@ func (r *CreateSearchTemplateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSearchTemplateResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateSearchTemplateResponse struct {
@@ -5662,10 +5662,10 @@ func (r *CreateSearchTemplateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSystemVulExportJobRequestParams struct {
 	// 需要返回的数量，默认为50000，最大值为50000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedContainer- string - 是否必填：否 - 仅展示影响容器的漏洞true,false</li>
@@ -5683,23 +5683,23 @@ type CreateSystemVulExportJobRequestParams struct {
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
 	// <li>FocusOnType - string - 是否必填：否 -关注紧急度类型 。ALL :全部，SERIOUS_LEVEL： 严重和高危 ，IS_SUGGEST： 重点关注，POC_EXP 有Poc或Exp ，NETWORK_EXP: 远程Exp</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type CreateSystemVulExportJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为50000，最大值为50000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedContainer- string - 是否必填：否 - 仅展示影响容器的漏洞true,false</li>
@@ -5717,13 +5717,13 @@ type CreateSystemVulExportJobRequest struct {
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
 	// <li>FocusOnType - string - 是否必填：否 -关注紧急度类型 。ALL :全部，SERIOUS_LEVEL： 严重和高危 ，IS_SUGGEST： 重点关注，POC_EXP 有Poc或Exp ，NETWORK_EXP: 远程Exp</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *CreateSystemVulExportJobRequest) ToJsonString() string {
@@ -5752,10 +5752,10 @@ func (r *CreateSystemVulExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSystemVulExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateSystemVulExportJobResponse struct {
@@ -5777,32 +5777,32 @@ func (r *CreateSystemVulExportJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVirusScanAgainRequestParams struct {
 	// 任务id
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 需要扫描的容器id集合
-	ContainerIds []*string `json:"ContainerIds,omitempty" name:"ContainerIds"`
+	ContainerIds []*string `json:"ContainerIds,omitnil" name:"ContainerIds"`
 
 	// 是否是扫描全部超时的
-	TimeoutAll *bool `json:"TimeoutAll,omitempty" name:"TimeoutAll"`
+	TimeoutAll *bool `json:"TimeoutAll,omitnil" name:"TimeoutAll"`
 
 	// 重新设置的超时时长
-	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 }
 
 type CreateVirusScanAgainRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务id
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 需要扫描的容器id集合
-	ContainerIds []*string `json:"ContainerIds,omitempty" name:"ContainerIds"`
+	ContainerIds []*string `json:"ContainerIds,omitnil" name:"ContainerIds"`
 
 	// 是否是扫描全部超时的
-	TimeoutAll *bool `json:"TimeoutAll,omitempty" name:"TimeoutAll"`
+	TimeoutAll *bool `json:"TimeoutAll,omitnil" name:"TimeoutAll"`
 
 	// 重新设置的超时时长
-	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 }
 
 func (r *CreateVirusScanAgainRequest) ToJsonString() string {
@@ -5830,7 +5830,7 @@ func (r *CreateVirusScanAgainRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVirusScanAgainResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateVirusScanAgainResponse struct {
@@ -5852,62 +5852,62 @@ func (r *CreateVirusScanAgainResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVirusScanTaskRequestParams struct {
 	// 是否扫描所有路径
-	ScanPathAll *bool `json:"ScanPathAll,omitempty" name:"ScanPathAll"`
+	ScanPathAll *bool `json:"ScanPathAll,omitnil" name:"ScanPathAll"`
 
 	// 扫描范围0容器1主机节点
-	ScanRangeType *uint64 `json:"ScanRangeType,omitempty" name:"ScanRangeType"`
+	ScanRangeType *uint64 `json:"ScanRangeType,omitnil" name:"ScanRangeType"`
 
 	// true 全选，false 自选
-	ScanRangeAll *bool `json:"ScanRangeAll,omitempty" name:"ScanRangeAll"`
+	ScanRangeAll *bool `json:"ScanRangeAll,omitnil" name:"ScanRangeAll"`
 
 	// 超时时长，单位小时
-	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 
 	// 当ScanPathAll为false生效 0扫描以下路径 1、扫描除以下路径
-	ScanPathType *uint64 `json:"ScanPathType,omitempty" name:"ScanPathType"`
+	ScanPathType *uint64 `json:"ScanPathType,omitnil" name:"ScanPathType"`
 
 	// 自选扫描范围的容器id或者主机id 根据ScanRangeType决定
-	ScanIds []*string `json:"ScanIds,omitempty" name:"ScanIds"`
+	ScanIds []*string `json:"ScanIds,omitnil" name:"ScanIds"`
 
 	// 自选排除或扫描的地址
-	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+	ScanPath []*string `json:"ScanPath,omitnil" name:"ScanPath"`
 
 	// 扫描路径模式：
 	// SCAN_PATH_ALL：全部路径
 	// SCAN_PATH_DEFAULT：默认路径
 	// SCAN_PATH_USER_DEFINE：用户自定义路径
-	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
+	ScanPathMode *string `json:"ScanPathMode,omitnil" name:"ScanPathMode"`
 }
 
 type CreateVirusScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 是否扫描所有路径
-	ScanPathAll *bool `json:"ScanPathAll,omitempty" name:"ScanPathAll"`
+	ScanPathAll *bool `json:"ScanPathAll,omitnil" name:"ScanPathAll"`
 
 	// 扫描范围0容器1主机节点
-	ScanRangeType *uint64 `json:"ScanRangeType,omitempty" name:"ScanRangeType"`
+	ScanRangeType *uint64 `json:"ScanRangeType,omitnil" name:"ScanRangeType"`
 
 	// true 全选，false 自选
-	ScanRangeAll *bool `json:"ScanRangeAll,omitempty" name:"ScanRangeAll"`
+	ScanRangeAll *bool `json:"ScanRangeAll,omitnil" name:"ScanRangeAll"`
 
 	// 超时时长，单位小时
-	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 
 	// 当ScanPathAll为false生效 0扫描以下路径 1、扫描除以下路径
-	ScanPathType *uint64 `json:"ScanPathType,omitempty" name:"ScanPathType"`
+	ScanPathType *uint64 `json:"ScanPathType,omitnil" name:"ScanPathType"`
 
 	// 自选扫描范围的容器id或者主机id 根据ScanRangeType决定
-	ScanIds []*string `json:"ScanIds,omitempty" name:"ScanIds"`
+	ScanIds []*string `json:"ScanIds,omitnil" name:"ScanIds"`
 
 	// 自选排除或扫描的地址
-	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+	ScanPath []*string `json:"ScanPath,omitnil" name:"ScanPath"`
 
 	// 扫描路径模式：
 	// SCAN_PATH_ALL：全部路径
 	// SCAN_PATH_DEFAULT：默认路径
 	// SCAN_PATH_USER_DEFINE：用户自定义路径
-	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
+	ScanPathMode *string `json:"ScanPathMode,omitnil" name:"ScanPathMode"`
 }
 
 func (r *CreateVirusScanTaskRequest) ToJsonString() string {
@@ -5939,10 +5939,10 @@ func (r *CreateVirusScanTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVirusScanTaskResponseParams struct {
 	// 任务id
-	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateVirusScanTaskResponse struct {
@@ -5964,38 +5964,38 @@ func (r *CreateVirusScanTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulContainerExportJobRequestParams struct {
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为50000，最大值为50000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
 	// <li>ContainerID- string - 是否必填：否 - 容器ID</li>
 	// <li>ContainerName- String -是否必填: 否 - 容器名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type CreateVulContainerExportJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为50000，最大值为50000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
 	// <li>ContainerID- string - 是否必填：否 - 容器ID</li>
 	// <li>ContainerName- String -是否必填: 否 - 容器名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *CreateVulContainerExportJobRequest) ToJsonString() string {
@@ -6023,10 +6023,10 @@ func (r *CreateVulContainerExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulContainerExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateVulContainerExportJobResponse struct {
@@ -6062,19 +6062,19 @@ type CreateVulDefenceEventExportJobRequestParams struct {
 	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
 	// <li>HostName- string - 是否必填：否 - 主机名称。</li>
 	// <li>HostIP- string - 是否必填：否 - 内网IP。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，最大值为100000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：事件数量：EventCount
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type CreateVulDefenceEventExportJobRequest struct {
@@ -6095,19 +6095,19 @@ type CreateVulDefenceEventExportJobRequest struct {
 	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
 	// <li>HostName- string - 是否必填：否 - 主机名称。</li>
 	// <li>HostIP- string - 是否必填：否 - 内网IP。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，最大值为100000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：事件数量：EventCount
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *CreateVulDefenceEventExportJobRequest) ToJsonString() string {
@@ -6136,10 +6136,10 @@ func (r *CreateVulDefenceEventExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulDefenceEventExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateVulDefenceEventExportJobResponse struct {
@@ -6163,19 +6163,19 @@ type CreateVulDefenceHostExportJobRequestParams struct {
 	// 过滤条件。
 	// <li>Status- String - 是否必填：否 - 插件状态，正常：SUCCESS，异常：FAIL， NO_DEFENCE:未防御</li>
 	// <li>KeyWords- string - 是否必填：否 - 主机名称/IP。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，最大值为100000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：更新时间：ModifyTime/首次开启时间：CreateTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type CreateVulDefenceHostExportJobRequest struct {
@@ -6184,19 +6184,19 @@ type CreateVulDefenceHostExportJobRequest struct {
 	// 过滤条件。
 	// <li>Status- String - 是否必填：否 - 插件状态，正常：SUCCESS，异常：FAIL， NO_DEFENCE:未防御</li>
 	// <li>KeyWords- string - 是否必填：否 - 主机名称/IP。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，最大值为100000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：更新时间：ModifyTime/首次开启时间：CreateTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *CreateVulDefenceHostExportJobRequest) ToJsonString() string {
@@ -6225,10 +6225,10 @@ func (r *CreateVulDefenceHostExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulDefenceHostExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateVulDefenceHostExportJobResponse struct {
@@ -6250,52 +6250,52 @@ func (r *CreateVulDefenceHostExportJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulExportJobRequestParams struct {
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10000，最大值为10000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ComponentName- String - 是否必填：否 - 镜像组件名称</li><li>ComponentVersion- String - 是否必填：否 - 镜像组件版本</li><li>ComponentType- String - 是否必填：否 - 镜像组件类型</li><li>VulLevel- String - 是否必填：否 - 漏洞威胁等级</li><li>HasVul- String - 是否必填：否 -是否有漏洞；true：是，false，否；不传或ALL ：全部</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式desc ，asc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type CreateVulExportJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10000，最大值为10000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ComponentName- String - 是否必填：否 - 镜像组件名称</li><li>ComponentVersion- String - 是否必填：否 - 镜像组件版本</li><li>ComponentType- String - 是否必填：否 - 镜像组件类型</li><li>VulLevel- String - 是否必填：否 - 漏洞威胁等级</li><li>HasVul- String - 是否必填：否 -是否有漏洞；true：是，false，否；不传或ALL ：全部</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式desc ，asc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *CreateVulExportJobRequest) ToJsonString() string {
@@ -6326,10 +6326,10 @@ func (r *CreateVulExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateVulExportJobResponse struct {
@@ -6351,13 +6351,13 @@ func (r *CreateVulExportJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulImageExportJobRequestParams struct {
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为50000，最大值为50000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
@@ -6368,26 +6368,26 @@ type CreateVulImageExportJobRequestParams struct {
 	// <li>ComponentName- string -是否必填: 否 - 组件名称</li>
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>HostName- string -是否必填: 否 - 主机名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type CreateVulImageExportJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为50000，最大值为50000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
@@ -6398,13 +6398,13 @@ type CreateVulImageExportJobRequest struct {
 	// <li>ComponentName- string -是否必填: 否 - 组件名称</li>
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>HostName- string -是否必填: 否 - 主机名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *CreateVulImageExportJobRequest) ToJsonString() string {
@@ -6434,10 +6434,10 @@ func (r *CreateVulImageExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulImageExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateVulImageExportJobResponse struct {
@@ -6459,44 +6459,44 @@ func (r *CreateVulImageExportJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulScanTaskRequestParams struct {
 	// 本地镜像扫描范围类型。ALL:全部本地镜像，NOT_SCAN：全部已授权未扫描本地镜像，IMAGEIDS:自选本地镜像ID
-	LocalImageScanType *string `json:"LocalImageScanType,omitempty" name:"LocalImageScanType"`
+	LocalImageScanType *string `json:"LocalImageScanType,omitnil" name:"LocalImageScanType"`
 
 	// 根据已授权的本地镜像IDs扫描，优先权高于根据满足条件的已授权的本地镜像。
-	LocalImageIDs []*string `json:"LocalImageIDs,omitempty" name:"LocalImageIDs"`
+	LocalImageIDs []*string `json:"LocalImageIDs,omitnil" name:"LocalImageIDs"`
 
 	// 仓库镜像扫描范围类型。ALL:全部仓库镜像，NOT_SCAN：全部已授权未扫描仓库镜像，IMAGEIDS:自选仓库镜像ID
-	RegistryImageScanType *string `json:"RegistryImageScanType,omitempty" name:"RegistryImageScanType"`
+	RegistryImageScanType *string `json:"RegistryImageScanType,omitnil" name:"RegistryImageScanType"`
 
 	// 根据已授权的仓库镜像IDs扫描，优先权高于根据满足条件的已授权的仓库镜像。
-	RegistryImageIDs []*uint64 `json:"RegistryImageIDs,omitempty" name:"RegistryImageIDs"`
+	RegistryImageIDs []*uint64 `json:"RegistryImageIDs,omitnil" name:"RegistryImageIDs"`
 
 	// 本地镜像重新漏洞扫描时的任务ID
-	LocalTaskID *int64 `json:"LocalTaskID,omitempty" name:"LocalTaskID"`
+	LocalTaskID *int64 `json:"LocalTaskID,omitnil" name:"LocalTaskID"`
 
 	// 仓库镜像重新漏洞扫描时的任务ID
-	RegistryTaskID *int64 `json:"RegistryTaskID,omitempty" name:"RegistryTaskID"`
+	RegistryTaskID *int64 `json:"RegistryTaskID,omitnil" name:"RegistryTaskID"`
 }
 
 type CreateVulScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 本地镜像扫描范围类型。ALL:全部本地镜像，NOT_SCAN：全部已授权未扫描本地镜像，IMAGEIDS:自选本地镜像ID
-	LocalImageScanType *string `json:"LocalImageScanType,omitempty" name:"LocalImageScanType"`
+	LocalImageScanType *string `json:"LocalImageScanType,omitnil" name:"LocalImageScanType"`
 
 	// 根据已授权的本地镜像IDs扫描，优先权高于根据满足条件的已授权的本地镜像。
-	LocalImageIDs []*string `json:"LocalImageIDs,omitempty" name:"LocalImageIDs"`
+	LocalImageIDs []*string `json:"LocalImageIDs,omitnil" name:"LocalImageIDs"`
 
 	// 仓库镜像扫描范围类型。ALL:全部仓库镜像，NOT_SCAN：全部已授权未扫描仓库镜像，IMAGEIDS:自选仓库镜像ID
-	RegistryImageScanType *string `json:"RegistryImageScanType,omitempty" name:"RegistryImageScanType"`
+	RegistryImageScanType *string `json:"RegistryImageScanType,omitnil" name:"RegistryImageScanType"`
 
 	// 根据已授权的仓库镜像IDs扫描，优先权高于根据满足条件的已授权的仓库镜像。
-	RegistryImageIDs []*uint64 `json:"RegistryImageIDs,omitempty" name:"RegistryImageIDs"`
+	RegistryImageIDs []*uint64 `json:"RegistryImageIDs,omitnil" name:"RegistryImageIDs"`
 
 	// 本地镜像重新漏洞扫描时的任务ID
-	LocalTaskID *int64 `json:"LocalTaskID,omitempty" name:"LocalTaskID"`
+	LocalTaskID *int64 `json:"LocalTaskID,omitnil" name:"LocalTaskID"`
 
 	// 仓库镜像重新漏洞扫描时的任务ID
-	RegistryTaskID *int64 `json:"RegistryTaskID,omitempty" name:"RegistryTaskID"`
+	RegistryTaskID *int64 `json:"RegistryTaskID,omitnil" name:"RegistryTaskID"`
 }
 
 func (r *CreateVulScanTaskRequest) ToJsonString() string {
@@ -6526,13 +6526,13 @@ func (r *CreateVulScanTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateVulScanTaskResponseParams struct {
 	// 本地镜像重新漏洞扫描时的任务ID
-	LocalTaskID *int64 `json:"LocalTaskID,omitempty" name:"LocalTaskID"`
+	LocalTaskID *int64 `json:"LocalTaskID,omitnil" name:"LocalTaskID"`
 
 	// 仓库镜像重新漏洞扫描时的任务ID
-	RegistryTaskID *int64 `json:"RegistryTaskID,omitempty" name:"RegistryTaskID"`
+	RegistryTaskID *int64 `json:"RegistryTaskID,omitnil" name:"RegistryTaskID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateVulScanTaskResponse struct {
@@ -6554,10 +6554,10 @@ func (r *CreateVulScanTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateWebVulExportJobRequestParams struct {
 	// 需要返回的数量，默认为50000，最大值为50000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedContainer- string - 是否必填：否 - 仅展示影响容器的漏洞true,false</li>
@@ -6575,23 +6575,23 @@ type CreateWebVulExportJobRequestParams struct {
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
 	// <li>FocusOnType - string - 是否必填：否 -关注紧急度类型 。ALL :全部，SERIOUS_LEVEL： 严重和高危 ，IS_SUGGEST： 重点关注，POC_EXP 有Poc或Exp ，NETWORK_EXP: 远程Exp</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type CreateWebVulExportJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为50000，最大值为50000
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedContainer- string - 是否必填：否 - 仅展示影响容器的漏洞true,false</li>
@@ -6609,13 +6609,13 @@ type CreateWebVulExportJobRequest struct {
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
 	// <li>FocusOnType - string - 是否必填：否 -关注紧急度类型 。ALL :全部，SERIOUS_LEVEL： 严重和高危 ，IS_SUGGEST： 重点关注，POC_EXP 有Poc或Exp ，NETWORK_EXP: 远程Exp</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *CreateWebVulExportJobRequest) ToJsonString() string {
@@ -6644,10 +6644,10 @@ func (r *CreateWebVulExportJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateWebVulExportJobResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateWebVulExportJobResponse struct {
@@ -6669,14 +6669,14 @@ func (r *CreateWebVulExportJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAbnormalProcessRulesRequestParams struct {
 	// 策略的ids
-	RuleIdSet []*string `json:"RuleIdSet,omitempty" name:"RuleIdSet"`
+	RuleIdSet []*string `json:"RuleIdSet,omitnil" name:"RuleIdSet"`
 }
 
 type DeleteAbnormalProcessRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略的ids
-	RuleIdSet []*string `json:"RuleIdSet,omitempty" name:"RuleIdSet"`
+	RuleIdSet []*string `json:"RuleIdSet,omitnil" name:"RuleIdSet"`
 }
 
 func (r *DeleteAbnormalProcessRulesRequest) ToJsonString() string {
@@ -6701,7 +6701,7 @@ func (r *DeleteAbnormalProcessRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAbnormalProcessRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteAbnormalProcessRulesResponse struct {
@@ -6723,14 +6723,14 @@ func (r *DeleteAbnormalProcessRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAccessControlRulesRequestParams struct {
 	// 策略的ids
-	RuleIdSet []*string `json:"RuleIdSet,omitempty" name:"RuleIdSet"`
+	RuleIdSet []*string `json:"RuleIdSet,omitnil" name:"RuleIdSet"`
 }
 
 type DeleteAccessControlRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略的ids
-	RuleIdSet []*string `json:"RuleIdSet,omitempty" name:"RuleIdSet"`
+	RuleIdSet []*string `json:"RuleIdSet,omitnil" name:"RuleIdSet"`
 }
 
 func (r *DeleteAccessControlRulesRequest) ToJsonString() string {
@@ -6755,7 +6755,7 @@ func (r *DeleteAccessControlRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAccessControlRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteAccessControlRulesResponse struct {
@@ -6777,20 +6777,20 @@ func (r *DeleteAccessControlRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteComplianceAssetPolicySetFromWhitelistRequestParams struct {
 	// 资产ID
-	AssetItemId *uint64 `json:"AssetItemId,omitempty" name:"AssetItemId"`
+	AssetItemId *uint64 `json:"AssetItemId,omitnil" name:"AssetItemId"`
 
 	// 需要忽略指定资产内的检查项ID列表
-	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitempty" name:"CustomerPolicyItemIdSet"`
+	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitnil" name:"CustomerPolicyItemIdSet"`
 }
 
 type DeleteComplianceAssetPolicySetFromWhitelistRequest struct {
 	*tchttp.BaseRequest
 	
 	// 资产ID
-	AssetItemId *uint64 `json:"AssetItemId,omitempty" name:"AssetItemId"`
+	AssetItemId *uint64 `json:"AssetItemId,omitnil" name:"AssetItemId"`
 
 	// 需要忽略指定资产内的检查项ID列表
-	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitempty" name:"CustomerPolicyItemIdSet"`
+	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitnil" name:"CustomerPolicyItemIdSet"`
 }
 
 func (r *DeleteComplianceAssetPolicySetFromWhitelistRequest) ToJsonString() string {
@@ -6816,7 +6816,7 @@ func (r *DeleteComplianceAssetPolicySetFromWhitelistRequest) FromJsonString(s st
 // Predefined struct for user
 type DeleteComplianceAssetPolicySetFromWhitelistResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteComplianceAssetPolicySetFromWhitelistResponse struct {
@@ -6838,14 +6838,14 @@ func (r *DeleteComplianceAssetPolicySetFromWhitelistResponse) FromJsonString(s s
 // Predefined struct for user
 type DeleteCompliancePolicyAssetSetFromWhitelistRequestParams struct {
 	// （检查项ID+资产ID列表）的列表
-	PolicyAssetSetList []*CompliancePolicyAssetSetItem `json:"PolicyAssetSetList,omitempty" name:"PolicyAssetSetList"`
+	PolicyAssetSetList []*CompliancePolicyAssetSetItem `json:"PolicyAssetSetList,omitnil" name:"PolicyAssetSetList"`
 }
 
 type DeleteCompliancePolicyAssetSetFromWhitelistRequest struct {
 	*tchttp.BaseRequest
 	
 	// （检查项ID+资产ID列表）的列表
-	PolicyAssetSetList []*CompliancePolicyAssetSetItem `json:"PolicyAssetSetList,omitempty" name:"PolicyAssetSetList"`
+	PolicyAssetSetList []*CompliancePolicyAssetSetItem `json:"PolicyAssetSetList,omitnil" name:"PolicyAssetSetList"`
 }
 
 func (r *DeleteCompliancePolicyAssetSetFromWhitelistRequest) ToJsonString() string {
@@ -6870,7 +6870,7 @@ func (r *DeleteCompliancePolicyAssetSetFromWhitelistRequest) FromJsonString(s st
 // Predefined struct for user
 type DeleteCompliancePolicyAssetSetFromWhitelistResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteCompliancePolicyAssetSetFromWhitelistResponse struct {
@@ -6892,14 +6892,14 @@ func (r *DeleteCompliancePolicyAssetSetFromWhitelistResponse) FromJsonString(s s
 // Predefined struct for user
 type DeleteCompliancePolicyItemFromWhitelistRequestParams struct {
 	// 指定的白名单项的ID的列表
-	WhitelistIdSet []*uint64 `json:"WhitelistIdSet,omitempty" name:"WhitelistIdSet"`
+	WhitelistIdSet []*uint64 `json:"WhitelistIdSet,omitnil" name:"WhitelistIdSet"`
 }
 
 type DeleteCompliancePolicyItemFromWhitelistRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定的白名单项的ID的列表
-	WhitelistIdSet []*uint64 `json:"WhitelistIdSet,omitempty" name:"WhitelistIdSet"`
+	WhitelistIdSet []*uint64 `json:"WhitelistIdSet,omitnil" name:"WhitelistIdSet"`
 }
 
 func (r *DeleteCompliancePolicyItemFromWhitelistRequest) ToJsonString() string {
@@ -6924,7 +6924,7 @@ func (r *DeleteCompliancePolicyItemFromWhitelistRequest) FromJsonString(s string
 // Predefined struct for user
 type DeleteCompliancePolicyItemFromWhitelistResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteCompliancePolicyItemFromWhitelistResponse struct {
@@ -6946,14 +6946,14 @@ func (r *DeleteCompliancePolicyItemFromWhitelistResponse) FromJsonString(s strin
 // Predefined struct for user
 type DeleteEscapeWhiteListRequestParams struct {
 	// 白名单记录ID数组
-	IDSet []*int64 `json:"IDSet,omitempty" name:"IDSet"`
+	IDSet []*int64 `json:"IDSet,omitnil" name:"IDSet"`
 }
 
 type DeleteEscapeWhiteListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白名单记录ID数组
-	IDSet []*int64 `json:"IDSet,omitempty" name:"IDSet"`
+	IDSet []*int64 `json:"IDSet,omitnil" name:"IDSet"`
 }
 
 func (r *DeleteEscapeWhiteListRequest) ToJsonString() string {
@@ -6978,7 +6978,7 @@ func (r *DeleteEscapeWhiteListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteEscapeWhiteListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteEscapeWhiteListResponse struct {
@@ -7000,14 +7000,14 @@ func (r *DeleteEscapeWhiteListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteIgnoreVulRequestParams struct {
 	// 漏洞PocID 信息列表
-	List []*ModifyIgnoreVul `json:"List,omitempty" name:"List"`
+	List []*ModifyIgnoreVul `json:"List,omitnil" name:"List"`
 }
 
 type DeleteIgnoreVulRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞PocID 信息列表
-	List []*ModifyIgnoreVul `json:"List,omitempty" name:"List"`
+	List []*ModifyIgnoreVul `json:"List,omitnil" name:"List"`
 }
 
 func (r *DeleteIgnoreVulRequest) ToJsonString() string {
@@ -7032,7 +7032,7 @@ func (r *DeleteIgnoreVulRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteIgnoreVulResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteIgnoreVulResponse struct {
@@ -7054,14 +7054,14 @@ func (r *DeleteIgnoreVulResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteK8sApiAbnormalRuleRequestParams struct {
 	// 规则ID集合
-	RuleIDSet []*string `json:"RuleIDSet,omitempty" name:"RuleIDSet"`
+	RuleIDSet []*string `json:"RuleIDSet,omitnil" name:"RuleIDSet"`
 }
 
 type DeleteK8sApiAbnormalRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则ID集合
-	RuleIDSet []*string `json:"RuleIDSet,omitempty" name:"RuleIDSet"`
+	RuleIDSet []*string `json:"RuleIDSet,omitnil" name:"RuleIDSet"`
 }
 
 func (r *DeleteK8sApiAbnormalRuleRequest) ToJsonString() string {
@@ -7086,7 +7086,7 @@ func (r *DeleteK8sApiAbnormalRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteK8sApiAbnormalRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteK8sApiAbnormalRuleResponse struct {
@@ -7108,14 +7108,14 @@ func (r *DeleteK8sApiAbnormalRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMachineRequestParams struct {
 	// 客户端Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
 }
 
 type DeleteMachineRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户端Uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
 }
 
 func (r *DeleteMachineRequest) ToJsonString() string {
@@ -7140,7 +7140,7 @@ func (r *DeleteMachineRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMachineResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteMachineResponse struct {
@@ -7162,20 +7162,20 @@ func (r *DeleteMachineResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteNetworkFirewallPolicyDetailRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略Id数组
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type DeleteNetworkFirewallPolicyDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略Id数组
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *DeleteNetworkFirewallPolicyDetailRequest) ToJsonString() string {
@@ -7201,13 +7201,13 @@ func (r *DeleteNetworkFirewallPolicyDetailRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DeleteNetworkFirewallPolicyDetailResponseParams struct {
 	// 返回创建的任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建删除任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteNetworkFirewallPolicyDetailResponse struct {
@@ -7229,14 +7229,14 @@ func (r *DeleteNetworkFirewallPolicyDetailResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DeleteReverseShellEventsRequestParams struct {
 	// 事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 }
 
 type DeleteReverseShellEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 }
 
 func (r *DeleteReverseShellEventsRequest) ToJsonString() string {
@@ -7261,7 +7261,7 @@ func (r *DeleteReverseShellEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteReverseShellEventsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteReverseShellEventsResponse struct {
@@ -7283,14 +7283,14 @@ func (r *DeleteReverseShellEventsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteReverseShellWhiteListsRequestParams struct {
 	// 白名单ids
-	WhiteListIdSet []*string `json:"WhiteListIdSet,omitempty" name:"WhiteListIdSet"`
+	WhiteListIdSet []*string `json:"WhiteListIdSet,omitnil" name:"WhiteListIdSet"`
 }
 
 type DeleteReverseShellWhiteListsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白名单ids
-	WhiteListIdSet []*string `json:"WhiteListIdSet,omitempty" name:"WhiteListIdSet"`
+	WhiteListIdSet []*string `json:"WhiteListIdSet,omitnil" name:"WhiteListIdSet"`
 }
 
 func (r *DeleteReverseShellWhiteListsRequest) ToJsonString() string {
@@ -7315,7 +7315,7 @@ func (r *DeleteReverseShellWhiteListsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteReverseShellWhiteListsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteReverseShellWhiteListsResponse struct {
@@ -7337,14 +7337,14 @@ func (r *DeleteReverseShellWhiteListsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRiskSyscallEventsRequestParams struct {
 	// 事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 }
 
 type DeleteRiskSyscallEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 }
 
 func (r *DeleteRiskSyscallEventsRequest) ToJsonString() string {
@@ -7369,7 +7369,7 @@ func (r *DeleteRiskSyscallEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRiskSyscallEventsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteRiskSyscallEventsResponse struct {
@@ -7391,14 +7391,14 @@ func (r *DeleteRiskSyscallEventsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRiskSyscallWhiteListsRequestParams struct {
 	// 白名单ids
-	WhiteListIdSet []*string `json:"WhiteListIdSet,omitempty" name:"WhiteListIdSet"`
+	WhiteListIdSet []*string `json:"WhiteListIdSet,omitnil" name:"WhiteListIdSet"`
 }
 
 type DeleteRiskSyscallWhiteListsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白名单ids
-	WhiteListIdSet []*string `json:"WhiteListIdSet,omitempty" name:"WhiteListIdSet"`
+	WhiteListIdSet []*string `json:"WhiteListIdSet,omitnil" name:"WhiteListIdSet"`
 }
 
 func (r *DeleteRiskSyscallWhiteListsRequest) ToJsonString() string {
@@ -7423,7 +7423,7 @@ func (r *DeleteRiskSyscallWhiteListsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteRiskSyscallWhiteListsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteRiskSyscallWhiteListsResponse struct {
@@ -7445,14 +7445,14 @@ func (r *DeleteRiskSyscallWhiteListsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSearchTemplateRequestParams struct {
 	// 模板ID
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type DeleteSearchTemplateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模板ID
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *DeleteSearchTemplateRequest) ToJsonString() string {
@@ -7477,7 +7477,7 @@ func (r *DeleteSearchTemplateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSearchTemplateResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteSearchTemplateResponse struct {
@@ -7499,14 +7499,14 @@ func (r *DeleteSearchTemplateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeABTestConfigRequestParams struct {
 	// 灰度项目名称
-	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
 }
 
 type DescribeABTestConfigRequest struct {
 	*tchttp.BaseRequest
 	
 	// 灰度项目名称
-	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
 }
 
 func (r *DescribeABTestConfigRequest) ToJsonString() string {
@@ -7531,10 +7531,10 @@ func (r *DescribeABTestConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeABTestConfigResponseParams struct {
 	// 灰度项目配置
-	Config []*ABTestConfig `json:"Config,omitempty" name:"Config"`
+	Config []*ABTestConfig `json:"Config,omitnil" name:"Config"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeABTestConfigResponse struct {
@@ -7556,14 +7556,14 @@ func (r *DescribeABTestConfigResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAbnormalProcessDetailRequestParams struct {
 	// 事件唯一id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 type DescribeAbnormalProcessDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件唯一id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 func (r *DescribeAbnormalProcessDetailRequest) ToJsonString() string {
@@ -7588,23 +7588,23 @@ func (r *DescribeAbnormalProcessDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAbnormalProcessDetailResponseParams struct {
 	// 事件基本信息
-	EventBaseInfo *RunTimeEventBaseInfo `json:"EventBaseInfo,omitempty" name:"EventBaseInfo"`
+	EventBaseInfo *RunTimeEventBaseInfo `json:"EventBaseInfo,omitnil" name:"EventBaseInfo"`
 
 	// 进程信息
-	ProcessInfo *ProcessDetailInfo `json:"ProcessInfo,omitempty" name:"ProcessInfo"`
+	ProcessInfo *ProcessDetailInfo `json:"ProcessInfo,omitnil" name:"ProcessInfo"`
 
 	// 父进程信息
-	ParentProcessInfo *ProcessDetailBaseInfo `json:"ParentProcessInfo,omitempty" name:"ParentProcessInfo"`
+	ParentProcessInfo *ProcessDetailBaseInfo `json:"ParentProcessInfo,omitnil" name:"ParentProcessInfo"`
 
 	// 事件描述
-	EventDetail *AbnormalProcessEventDescription `json:"EventDetail,omitempty" name:"EventDetail"`
+	EventDetail *AbnormalProcessEventDescription `json:"EventDetail,omitnil" name:"EventDetail"`
 
 	// 祖先进程信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitempty" name:"AncestorProcessInfo"`
+	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitnil" name:"AncestorProcessInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAbnormalProcessDetailResponse struct {
@@ -7626,20 +7626,20 @@ func (r *DescribeAbnormalProcessDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAbnormalProcessEventTendencyRequestParams struct {
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 type DescribeAbnormalProcessEventTendencyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 func (r *DescribeAbnormalProcessEventTendencyRequest) ToJsonString() string {
@@ -7665,10 +7665,10 @@ func (r *DescribeAbnormalProcessEventTendencyRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeAbnormalProcessEventTendencyResponseParams struct {
 	// 待处理异常进程事件趋势
-	List []*AbnormalProcessEventTendencyInfo `json:"List,omitempty" name:"List"`
+	List []*AbnormalProcessEventTendencyInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAbnormalProcessEventTendencyResponse struct {
@@ -7690,44 +7690,44 @@ func (r *DescribeAbnormalProcessEventTendencyResponse) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeAbnormalProcessEventsExportRequestParams struct {
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeAbnormalProcessEventsExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeAbnormalProcessEventsExportRequest) ToJsonString() string {
@@ -7758,10 +7758,10 @@ func (r *DescribeAbnormalProcessEventsExportRequest) FromJsonString(s string) er
 type DescribeAbnormalProcessEventsExportResponseParams struct {
 	// execle下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAbnormalProcessEventsExportResponse struct {
@@ -7783,38 +7783,38 @@ func (r *DescribeAbnormalProcessEventsExportResponse) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeAbnormalProcessEventsRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeAbnormalProcessEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeAbnormalProcessEventsRequest) ToJsonString() string {
@@ -7843,13 +7843,13 @@ func (r *DescribeAbnormalProcessEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAbnormalProcessEventsResponseParams struct {
 	// 事件总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 异常进程数组
-	EventSet []*AbnormalProcessEventInfo `json:"EventSet,omitempty" name:"EventSet"`
+	EventSet []*AbnormalProcessEventInfo `json:"EventSet,omitnil" name:"EventSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAbnormalProcessEventsResponse struct {
@@ -7900,16 +7900,16 @@ func (r *DescribeAbnormalProcessLevelSummaryRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeAbnormalProcessLevelSummaryResponseParams struct {
 	// 异常进程高危待处理事件数
-	HighLevelEventCount *int64 `json:"HighLevelEventCount,omitempty" name:"HighLevelEventCount"`
+	HighLevelEventCount *int64 `json:"HighLevelEventCount,omitnil" name:"HighLevelEventCount"`
 
 	// 异常进程中危待处理事件数
-	MediumLevelEventCount *int64 `json:"MediumLevelEventCount,omitempty" name:"MediumLevelEventCount"`
+	MediumLevelEventCount *int64 `json:"MediumLevelEventCount,omitnil" name:"MediumLevelEventCount"`
 
 	// 异常进程低危待处理事件数
-	LowLevelEventCount *int64 `json:"LowLevelEventCount,omitempty" name:"LowLevelEventCount"`
+	LowLevelEventCount *int64 `json:"LowLevelEventCount,omitnil" name:"LowLevelEventCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAbnormalProcessLevelSummaryResponse struct {
@@ -7931,32 +7931,32 @@ func (r *DescribeAbnormalProcessLevelSummaryResponse) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeAbnormalProcessRuleDetailRequestParams struct {
 	// 策略唯一id
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 镜像id, 在添加白名单的时候使用
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeAbnormalProcessRuleDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略唯一id
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 镜像id, 在添加白名单的时候使用
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeAbnormalProcessRuleDetailRequest) ToJsonString() string {
@@ -7984,10 +7984,10 @@ func (r *DescribeAbnormalProcessRuleDetailRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeAbnormalProcessRuleDetailResponseParams struct {
 	// 异常进程策略详细信息
-	RuleDetail *AbnormalProcessRuleInfo `json:"RuleDetail,omitempty" name:"RuleDetail"`
+	RuleDetail *AbnormalProcessRuleInfo `json:"RuleDetail,omitnil" name:"RuleDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAbnormalProcessRuleDetailResponse struct {
@@ -8009,44 +8009,44 @@ func (r *DescribeAbnormalProcessRuleDetailResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeAbnormalProcessRulesExportRequestParams struct {
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeAbnormalProcessRulesExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeAbnormalProcessRulesExportRequest) ToJsonString() string {
@@ -8077,10 +8077,10 @@ func (r *DescribeAbnormalProcessRulesExportRequest) FromJsonString(s string) err
 type DescribeAbnormalProcessRulesExportResponseParams struct {
 	// execle下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAbnormalProcessRulesExportResponse struct {
@@ -8102,38 +8102,38 @@ func (r *DescribeAbnormalProcessRulesExportResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeAbnormalProcessRulesRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeAbnormalProcessRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeAbnormalProcessRulesRequest) ToJsonString() string {
@@ -8162,13 +8162,13 @@ func (r *DescribeAbnormalProcessRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAbnormalProcessRulesResponseParams struct {
 	// 事件总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 异常进程策略信息列表
-	RuleSet []*RuleBaseInfo `json:"RuleSet,omitempty" name:"RuleSet"`
+	RuleSet []*RuleBaseInfo `json:"RuleSet,omitnil" name:"RuleSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAbnormalProcessRulesResponse struct {
@@ -8190,14 +8190,14 @@ func (r *DescribeAbnormalProcessRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessControlDetailRequestParams struct {
 	// 事件唯一id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 type DescribeAccessControlDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件唯一id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 func (r *DescribeAccessControlDetailRequest) ToJsonString() string {
@@ -8222,26 +8222,26 @@ func (r *DescribeAccessControlDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessControlDetailResponseParams struct {
 	// 事件基本信息
-	EventBaseInfo *RunTimeEventBaseInfo `json:"EventBaseInfo,omitempty" name:"EventBaseInfo"`
+	EventBaseInfo *RunTimeEventBaseInfo `json:"EventBaseInfo,omitnil" name:"EventBaseInfo"`
 
 	// 进程信息
-	ProcessInfo *ProcessDetailInfo `json:"ProcessInfo,omitempty" name:"ProcessInfo"`
+	ProcessInfo *ProcessDetailInfo `json:"ProcessInfo,omitnil" name:"ProcessInfo"`
 
 	// 被篡改信息
-	TamperedFileInfo *FileAttributeInfo `json:"TamperedFileInfo,omitempty" name:"TamperedFileInfo"`
+	TamperedFileInfo *FileAttributeInfo `json:"TamperedFileInfo,omitnil" name:"TamperedFileInfo"`
 
 	// 事件描述
-	EventDetail *AccessControlEventDescription `json:"EventDetail,omitempty" name:"EventDetail"`
+	EventDetail *AccessControlEventDescription `json:"EventDetail,omitnil" name:"EventDetail"`
 
 	// 父进程信息
-	ParentProcessInfo *ProcessBaseInfo `json:"ParentProcessInfo,omitempty" name:"ParentProcessInfo"`
+	ParentProcessInfo *ProcessBaseInfo `json:"ParentProcessInfo,omitnil" name:"ParentProcessInfo"`
 
 	// 祖先进程信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitempty" name:"AncestorProcessInfo"`
+	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitnil" name:"AncestorProcessInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAccessControlDetailResponse struct {
@@ -8263,44 +8263,44 @@ func (r *DescribeAccessControlDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessControlEventsExportRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 type DescribeAccessControlEventsExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 func (r *DescribeAccessControlEventsExportRequest) ToJsonString() string {
@@ -8331,14 +8331,14 @@ func (r *DescribeAccessControlEventsExportRequest) FromJsonString(s string) erro
 type DescribeAccessControlEventsExportResponseParams struct {
 	// execle下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 任务id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAccessControlEventsExportResponse struct {
@@ -8360,38 +8360,38 @@ func (r *DescribeAccessControlEventsExportResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeAccessControlEventsRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeAccessControlEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeAccessControlEventsRequest) ToJsonString() string {
@@ -8420,13 +8420,13 @@ func (r *DescribeAccessControlEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessControlEventsResponseParams struct {
 	// 事件总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 访问控制事件数组
-	EventSet []*AccessControlEventInfo `json:"EventSet,omitempty" name:"EventSet"`
+	EventSet []*AccessControlEventInfo `json:"EventSet,omitnil" name:"EventSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAccessControlEventsResponse struct {
@@ -8448,32 +8448,32 @@ func (r *DescribeAccessControlEventsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessControlRuleDetailRequestParams struct {
 	// 策略唯一id
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 镜像id, 仅仅在事件加白的时候使用
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeAccessControlRuleDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略唯一id
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 镜像id, 仅仅在事件加白的时候使用
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeAccessControlRuleDetailRequest) ToJsonString() string {
@@ -8501,10 +8501,10 @@ func (r *DescribeAccessControlRuleDetailRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeAccessControlRuleDetailResponseParams struct {
 	// 运行时策略详细信息
-	RuleDetail *AccessControlRuleInfo `json:"RuleDetail,omitempty" name:"RuleDetail"`
+	RuleDetail *AccessControlRuleInfo `json:"RuleDetail,omitnil" name:"RuleDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAccessControlRuleDetailResponse struct {
@@ -8526,44 +8526,44 @@ func (r *DescribeAccessControlRuleDetailResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeAccessControlRulesExportRequestParams struct {
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeAccessControlRulesExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeAccessControlRulesExportRequest) ToJsonString() string {
@@ -8594,10 +8594,10 @@ func (r *DescribeAccessControlRulesExportRequest) FromJsonString(s string) error
 type DescribeAccessControlRulesExportResponseParams struct {
 	// execle下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAccessControlRulesExportResponse struct {
@@ -8619,38 +8619,38 @@ func (r *DescribeAccessControlRulesExportResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeAccessControlRulesRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeAccessControlRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeAccessControlRulesRequest) ToJsonString() string {
@@ -8679,13 +8679,13 @@ func (r *DescribeAccessControlRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessControlRulesResponseParams struct {
 	// 事件总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 访问控制策略信息列表
-	RuleSet []*RuleBaseInfo `json:"RuleSet,omitempty" name:"RuleSet"`
+	RuleSet []*RuleBaseInfo `json:"RuleSet,omitnil" name:"RuleSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAccessControlRulesResponse struct {
@@ -8736,19 +8736,19 @@ func (r *DescribeAffectedClusterCountRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAffectedClusterCountResponseParams struct {
 	// 严重风险的集群数量
-	SeriousRiskClusterCount *uint64 `json:"SeriousRiskClusterCount,omitempty" name:"SeriousRiskClusterCount"`
+	SeriousRiskClusterCount *uint64 `json:"SeriousRiskClusterCount,omitnil" name:"SeriousRiskClusterCount"`
 
 	// 高危风险的集群数量
-	HighRiskClusterCount *uint64 `json:"HighRiskClusterCount,omitempty" name:"HighRiskClusterCount"`
+	HighRiskClusterCount *uint64 `json:"HighRiskClusterCount,omitnil" name:"HighRiskClusterCount"`
 
 	// 中危风险的集群数量
-	MiddleRiskClusterCount *uint64 `json:"MiddleRiskClusterCount,omitempty" name:"MiddleRiskClusterCount"`
+	MiddleRiskClusterCount *uint64 `json:"MiddleRiskClusterCount,omitnil" name:"MiddleRiskClusterCount"`
 
 	// 低危风险的集群数量
-	HintRiskClusterCount *uint64 `json:"HintRiskClusterCount,omitempty" name:"HintRiskClusterCount"`
+	HintRiskClusterCount *uint64 `json:"HintRiskClusterCount,omitnil" name:"HintRiskClusterCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAffectedClusterCountResponse struct {
@@ -8770,46 +8770,46 @@ func (r *DescribeAffectedClusterCountResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAffectedNodeListRequestParams struct {
 	// 唯一的检测项的ID
-	CheckItemId *int64 `json:"CheckItemId,omitempty" name:"CheckItemId"`
+	CheckItemId *int64 `json:"CheckItemId,omitnil" name:"CheckItemId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName, ClusterId,InstanceId,PrivateIpAddresses
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeAffectedNodeListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 唯一的检测项的ID
-	CheckItemId *int64 `json:"CheckItemId,omitempty" name:"CheckItemId"`
+	CheckItemId *int64 `json:"CheckItemId,omitnil" name:"CheckItemId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName, ClusterId,InstanceId,PrivateIpAddresses
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeAffectedNodeListRequest) ToJsonString() string {
@@ -8839,13 +8839,13 @@ func (r *DescribeAffectedNodeListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAffectedNodeListResponseParams struct {
 	// 受影响的节点总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 受影响的节点列表
-	AffectedNodeList []*AffectedNodeItem `json:"AffectedNodeList,omitempty" name:"AffectedNodeList"`
+	AffectedNodeList []*AffectedNodeItem `json:"AffectedNodeList,omitnil" name:"AffectedNodeList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAffectedNodeListResponse struct {
@@ -8867,46 +8867,46 @@ func (r *DescribeAffectedNodeListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAffectedWorkloadListRequestParams struct {
 	// 唯一的检测项的ID
-	CheckItemId *int64 `json:"CheckItemId,omitempty" name:"CheckItemId"`
+	CheckItemId *int64 `json:"CheckItemId,omitnil" name:"CheckItemId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：WorkloadType,ClusterId
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeAffectedWorkloadListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 唯一的检测项的ID
-	CheckItemId *int64 `json:"CheckItemId,omitempty" name:"CheckItemId"`
+	CheckItemId *int64 `json:"CheckItemId,omitnil" name:"CheckItemId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：WorkloadType,ClusterId
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeAffectedWorkloadListRequest) ToJsonString() string {
@@ -8936,13 +8936,13 @@ func (r *DescribeAffectedWorkloadListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAffectedWorkloadListResponseParams struct {
 	// 受影响的workload列表数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 受影响的workload列表
-	AffectedWorkloadList []*AffectedWorkloadItem `json:"AffectedWorkloadList,omitempty" name:"AffectedWorkloadList"`
+	AffectedWorkloadList []*AffectedWorkloadItem `json:"AffectedWorkloadList,omitnil" name:"AffectedWorkloadList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAffectedWorkloadListResponse struct {
@@ -8964,44 +8964,44 @@ func (r *DescribeAffectedWorkloadListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAgentDaemonSetCmdRequestParams struct {
 	// 是否是腾讯云
-	IsCloud *bool `json:"IsCloud,omitempty" name:"IsCloud"`
+	IsCloud *bool `json:"IsCloud,omitnil" name:"IsCloud"`
 
 	// 网络类型：basic-基础网络，private-VPC, public-公网，direct-专线
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 地域标示, NetType=direct时必填
-	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
+	RegionCode *string `json:"RegionCode,omitnil" name:"RegionCode"`
 
 	// VpcId, NetType=direct时必填
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 命令有效期，非腾讯云时必填
-	ExpireDate *string `json:"ExpireDate,omitempty" name:"ExpireDate"`
+	ExpireDate *string `json:"ExpireDate,omitnil" name:"ExpireDate"`
 
 	// 集群自定义参数
-	ClusterCustomParameters []*ClusterCustomParameters `json:"ClusterCustomParameters,omitempty" name:"ClusterCustomParameters"`
+	ClusterCustomParameters []*ClusterCustomParameters `json:"ClusterCustomParameters,omitnil" name:"ClusterCustomParameters"`
 }
 
 type DescribeAgentDaemonSetCmdRequest struct {
 	*tchttp.BaseRequest
 	
 	// 是否是腾讯云
-	IsCloud *bool `json:"IsCloud,omitempty" name:"IsCloud"`
+	IsCloud *bool `json:"IsCloud,omitnil" name:"IsCloud"`
 
 	// 网络类型：basic-基础网络，private-VPC, public-公网，direct-专线
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 地域标示, NetType=direct时必填
-	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
+	RegionCode *string `json:"RegionCode,omitnil" name:"RegionCode"`
 
 	// VpcId, NetType=direct时必填
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 命令有效期，非腾讯云时必填
-	ExpireDate *string `json:"ExpireDate,omitempty" name:"ExpireDate"`
+	ExpireDate *string `json:"ExpireDate,omitnil" name:"ExpireDate"`
 
 	// 集群自定义参数
-	ClusterCustomParameters []*ClusterCustomParameters `json:"ClusterCustomParameters,omitempty" name:"ClusterCustomParameters"`
+	ClusterCustomParameters []*ClusterCustomParameters `json:"ClusterCustomParameters,omitnil" name:"ClusterCustomParameters"`
 }
 
 func (r *DescribeAgentDaemonSetCmdRequest) ToJsonString() string {
@@ -9031,10 +9031,10 @@ func (r *DescribeAgentDaemonSetCmdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAgentDaemonSetCmdResponseParams struct {
 	// 安装命令
-	Command *string `json:"Command,omitempty" name:"Command"`
+	Command *string `json:"Command,omitnil" name:"Command"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAgentDaemonSetCmdResponse struct {
@@ -9056,44 +9056,44 @@ func (r *DescribeAgentDaemonSetCmdResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAgentInstallCommandRequestParams struct {
 	// 是否是腾讯云
-	IsCloud *bool `json:"IsCloud,omitempty" name:"IsCloud"`
+	IsCloud *bool `json:"IsCloud,omitnil" name:"IsCloud"`
 
 	// 网络类型：basic-基础网络，private-VPC, public-公网，direct-专线
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 地域标示, NetType=direct时必填
-	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
+	RegionCode *string `json:"RegionCode,omitnil" name:"RegionCode"`
 
 	// VpcId, NetType=direct时必填
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 命令有效期，非腾讯云时必填
-	ExpireDate *string `json:"ExpireDate,omitempty" name:"ExpireDate"`
+	ExpireDate *string `json:"ExpireDate,omitnil" name:"ExpireDate"`
 
 	// 标签ID列表，IsCloud=false时才会生效
-	TagIds []*uint64 `json:"TagIds,omitempty" name:"TagIds"`
+	TagIds []*uint64 `json:"TagIds,omitnil" name:"TagIds"`
 }
 
 type DescribeAgentInstallCommandRequest struct {
 	*tchttp.BaseRequest
 	
 	// 是否是腾讯云
-	IsCloud *bool `json:"IsCloud,omitempty" name:"IsCloud"`
+	IsCloud *bool `json:"IsCloud,omitnil" name:"IsCloud"`
 
 	// 网络类型：basic-基础网络，private-VPC, public-公网，direct-专线
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 地域标示, NetType=direct时必填
-	RegionCode *string `json:"RegionCode,omitempty" name:"RegionCode"`
+	RegionCode *string `json:"RegionCode,omitnil" name:"RegionCode"`
 
 	// VpcId, NetType=direct时必填
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 命令有效期，非腾讯云时必填
-	ExpireDate *string `json:"ExpireDate,omitempty" name:"ExpireDate"`
+	ExpireDate *string `json:"ExpireDate,omitnil" name:"ExpireDate"`
 
 	// 标签ID列表，IsCloud=false时才会生效
-	TagIds []*uint64 `json:"TagIds,omitempty" name:"TagIds"`
+	TagIds []*uint64 `json:"TagIds,omitnil" name:"TagIds"`
 }
 
 func (r *DescribeAgentInstallCommandRequest) ToJsonString() string {
@@ -9123,22 +9123,22 @@ func (r *DescribeAgentInstallCommandRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAgentInstallCommandResponseParams struct {
 	// linux系统安装命令
-	LinuxCommand *string `json:"LinuxCommand,omitempty" name:"LinuxCommand"`
+	LinuxCommand *string `json:"LinuxCommand,omitnil" name:"LinuxCommand"`
 
 	// windows系统安装命令（windows2008及以上）
-	WindowsCommand *string `json:"WindowsCommand,omitempty" name:"WindowsCommand"`
+	WindowsCommand *string `json:"WindowsCommand,omitnil" name:"WindowsCommand"`
 
 	// windows系统安装命令第一步（windows2003）
-	WindowsStepOne *string `json:"WindowsStepOne,omitempty" name:"WindowsStepOne"`
+	WindowsStepOne *string `json:"WindowsStepOne,omitnil" name:"WindowsStepOne"`
 
 	// windows系统安装命令第二步（windows2003）
-	WindowsStepTwo *string `json:"WindowsStepTwo,omitempty" name:"WindowsStepTwo"`
+	WindowsStepTwo *string `json:"WindowsStepTwo,omitnil" name:"WindowsStepTwo"`
 
 	// windows版agent下载链接
-	WindowsDownloadUrl *string `json:"WindowsDownloadUrl,omitempty" name:"WindowsDownloadUrl"`
+	WindowsDownloadUrl *string `json:"WindowsDownloadUrl,omitnil" name:"WindowsDownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAgentInstallCommandResponse struct {
@@ -9160,28 +9160,28 @@ func (r *DescribeAgentInstallCommandResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetAppServiceListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords- String - 是否必填：否 - 模糊查询可选字段</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAssetAppServiceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords- String - 是否必填：否 - 模糊查询可选字段</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAssetAppServiceListRequest) ToJsonString() string {
@@ -9208,13 +9208,13 @@ func (r *DescribeAssetAppServiceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetAppServiceListResponseParams struct {
 	// db服务列表
-	List []*ServiceInfo `json:"List,omitempty" name:"List"`
+	List []*ServiceInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetAppServiceListResponse struct {
@@ -9239,19 +9239,19 @@ type DescribeAssetClusterListRequestParams struct {
 	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
 	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
 	// <li>Status - string  - 是否必填: 否 -集群状态</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段。
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeAssetClusterListRequest struct {
@@ -9261,19 +9261,19 @@ type DescribeAssetClusterListRequest struct {
 	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
 	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
 	// <li>Status - string  - 是否必填: 否 -集群状态</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段。
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeAssetClusterListRequest) ToJsonString() string {
@@ -9302,13 +9302,13 @@ func (r *DescribeAssetClusterListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetClusterListResponseParams struct {
 	// 集群列表
-	List []*AssetClusterListItem `json:"List,omitempty" name:"List"`
+	List []*AssetClusterListItem `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetClusterListResponse struct {
@@ -9330,32 +9330,32 @@ func (r *DescribeAssetClusterListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetComponentListRequestParams struct {
 	// 容器id
-	ContainerID *string `json:"ContainerID,omitempty" name:"ContainerID"`
+	ContainerID *string `json:"ContainerID,omitnil" name:"ContainerID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAssetComponentListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 容器id
-	ContainerID *string `json:"ContainerID,omitempty" name:"ContainerID"`
+	ContainerID *string `json:"ContainerID,omitnil" name:"ContainerID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAssetComponentListRequest) ToJsonString() string {
@@ -9383,13 +9383,13 @@ func (r *DescribeAssetComponentListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetComponentListResponseParams struct {
 	// 组件列表
-	List []*ComponentInfo `json:"List,omitempty" name:"List"`
+	List []*ComponentInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetComponentListResponse struct {
@@ -9411,14 +9411,14 @@ func (r *DescribeAssetComponentListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetContainerDetailRequestParams struct {
 	// 容器id
-	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
 }
 
 type DescribeAssetContainerDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 容器id
-	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
 }
 
 func (r *DescribeAssetContainerDetailRequest) ToJsonString() string {
@@ -9443,73 +9443,73 @@ func (r *DescribeAssetContainerDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetContainerDetailResponseParams struct {
 	// 主机id
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 主机ip
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 容器名称
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 运行状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 运行账户
-	RunAs *string `json:"RunAs,omitempty" name:"RunAs"`
+	RunAs *string `json:"RunAs,omitnil" name:"RunAs"`
 
 	// 命令行
-	Cmd *string `json:"Cmd,omitempty" name:"Cmd"`
+	Cmd *string `json:"Cmd,omitnil" name:"Cmd"`
 
 	// CPU使用率 * 1000
-	CPUUsage *uint64 `json:"CPUUsage,omitempty" name:"CPUUsage"`
+	CPUUsage *uint64 `json:"CPUUsage,omitnil" name:"CPUUsage"`
 
 	// 内存使用 KB
-	RamUsage *uint64 `json:"RamUsage,omitempty" name:"RamUsage"`
+	RamUsage *uint64 `json:"RamUsage,omitnil" name:"RamUsage"`
 
 	// 镜像名
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 归属POD
-	POD *string `json:"POD,omitempty" name:"POD"`
+	POD *string `json:"POD,omitnil" name:"POD"`
 
 	// k8s 主节点
-	K8sMaster *string `json:"K8sMaster,omitempty" name:"K8sMaster"`
+	K8sMaster *string `json:"K8sMaster,omitnil" name:"K8sMaster"`
 
 	// 容器内进程数
-	ProcessCnt *uint64 `json:"ProcessCnt,omitempty" name:"ProcessCnt"`
+	ProcessCnt *uint64 `json:"ProcessCnt,omitnil" name:"ProcessCnt"`
 
 	// 容器内端口数
-	PortCnt *uint64 `json:"PortCnt,omitempty" name:"PortCnt"`
+	PortCnt *uint64 `json:"PortCnt,omitnil" name:"PortCnt"`
 
 	// 组件数
-	ComponentCnt *uint64 `json:"ComponentCnt,omitempty" name:"ComponentCnt"`
+	ComponentCnt *uint64 `json:"ComponentCnt,omitnil" name:"ComponentCnt"`
 
 	// app数
-	AppCnt *uint64 `json:"AppCnt,omitempty" name:"AppCnt"`
+	AppCnt *uint64 `json:"AppCnt,omitnil" name:"AppCnt"`
 
 	// websvc数
-	WebServiceCnt *uint64 `json:"WebServiceCnt,omitempty" name:"WebServiceCnt"`
+	WebServiceCnt *uint64 `json:"WebServiceCnt,omitnil" name:"WebServiceCnt"`
 
 	// 挂载
-	Mounts []*ContainerMount `json:"Mounts,omitempty" name:"Mounts"`
+	Mounts []*ContainerMount `json:"Mounts,omitnil" name:"Mounts"`
 
 	// 容器网络信息
-	Network *ContainerNetwork `json:"Network,omitempty" name:"Network"`
+	Network *ContainerNetwork `json:"Network,omitnil" name:"Network"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 镜像创建时间
-	ImageCreateTime *string `json:"ImageCreateTime,omitempty" name:"ImageCreateTime"`
+	ImageCreateTime *string `json:"ImageCreateTime,omitnil" name:"ImageCreateTime"`
 
 	// 镜像大小
-	ImageSize *uint64 `json:"ImageSize,omitempty" name:"ImageSize"`
+	ImageSize *uint64 `json:"ImageSize,omitnil" name:"ImageSize"`
 
 	// 主机状态 offline,online,pause
-	HostStatus *string `json:"HostStatus,omitempty" name:"HostStatus"`
+	HostStatus *string `json:"HostStatus,omitnil" name:"HostStatus"`
 
 	// 网络状态
 	// 未隔离  	NORMAL
@@ -9518,60 +9518,60 @@ type DescribeAssetContainerDetailResponseParams struct {
 	// 隔离失败	ISOLATE_FAILED
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
-	NetStatus *string `json:"NetStatus,omitempty" name:"NetStatus"`
+	NetStatus *string `json:"NetStatus,omitnil" name:"NetStatus"`
 
 	// 网络子状态
-	NetSubStatus *string `json:"NetSubStatus,omitempty" name:"NetSubStatus"`
+	NetSubStatus *string `json:"NetSubStatus,omitnil" name:"NetSubStatus"`
 
 	// 隔离来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsolateSource *string `json:"IsolateSource,omitempty" name:"IsolateSource"`
+	IsolateSource *string `json:"IsolateSource,omitnil" name:"IsolateSource"`
 
 	// 隔离时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsolateTime *string `json:"IsolateTime,omitempty" name:"IsolateTime"`
+	IsolateTime *string `json:"IsolateTime,omitnil" name:"IsolateTime"`
 
 	// 节点ID
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// 节点名称
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 
 	// 节点子网ID
-	NodeSubNetID *string `json:"NodeSubNetID,omitempty" name:"NodeSubNetID"`
+	NodeSubNetID *string `json:"NodeSubNetID,omitnil" name:"NodeSubNetID"`
 
 	// 节点子网名称
-	NodeSubNetName *string `json:"NodeSubNetName,omitempty" name:"NodeSubNetName"`
+	NodeSubNetName *string `json:"NodeSubNetName,omitnil" name:"NodeSubNetName"`
 
 	// 节点子网网段
-	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitempty" name:"NodeSubNetCIDR"`
+	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitnil" name:"NodeSubNetCIDR"`
 
 	// pod名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// pod ip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// pod状态
-	PodStatus *string `json:"PodStatus,omitempty" name:"PodStatus"`
+	PodStatus *string `json:"PodStatus,omitnil" name:"PodStatus"`
 
 	// 集群ID
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 节点类型:NORMAL: 普通节点(默认值) SUPER: 超级节点
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 超级节点唯一id
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 外网ip
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetContainerDetailResponse struct {
@@ -9593,10 +9593,10 @@ func (r *DescribeAssetContainerDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetContainerListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ContainerName - String - 是否必填：否 - 容器名称模糊搜索</li>
@@ -9611,23 +9611,23 @@ type DescribeAssetContainerListRequestParams struct {
 	// <li>PodUid - String -是否必填: 否 - Pod筛选</li>
 	// <li>PodIP - String -是否必填: 否 - PodIP筛选</li>
 	// <li>NodeType - String -是否必填: 否 - 节点类型筛选:NORMAL:普通节点;SUPER:超级节点</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeAssetContainerListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ContainerName - String - 是否必填：否 - 容器名称模糊搜索</li>
@@ -9642,13 +9642,13 @@ type DescribeAssetContainerListRequest struct {
 	// <li>PodUid - String -是否必填: 否 - Pod筛选</li>
 	// <li>PodIP - String -是否必填: 否 - PodIP筛选</li>
 	// <li>NodeType - String -是否必填: 否 - 节点类型筛选:NORMAL:普通节点;SUPER:超级节点</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeAssetContainerListRequest) ToJsonString() string {
@@ -9677,13 +9677,13 @@ func (r *DescribeAssetContainerListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetContainerListResponseParams struct {
 	// 容器列表
-	List []*ContainerInfo `json:"List,omitempty" name:"List"`
+	List []*ContainerInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetContainerListResponse struct {
@@ -9705,28 +9705,28 @@ func (r *DescribeAssetContainerListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetDBServiceListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords- String - 是否必填：否 - 模糊查询可选字段</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAssetDBServiceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords- String - 是否必填：否 - 模糊查询可选字段</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAssetDBServiceListRequest) ToJsonString() string {
@@ -9753,13 +9753,13 @@ func (r *DescribeAssetDBServiceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetDBServiceListResponseParams struct {
 	// db服务列表
-	List []*ServiceInfo `json:"List,omitempty" name:"List"`
+	List []*ServiceInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetDBServiceListResponse struct {
@@ -9781,14 +9781,14 @@ func (r *DescribeAssetDBServiceListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetHostDetailRequestParams struct {
 	// 主机id
-	HostId *string `json:"HostId,omitempty" name:"HostId"`
+	HostId *string `json:"HostId,omitnil" name:"HostId"`
 }
 
 type DescribeAssetHostDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 主机id
-	HostId *string `json:"HostId,omitempty" name:"HostId"`
+	HostId *string `json:"HostId,omitnil" name:"HostId"`
 }
 
 func (r *DescribeAssetHostDetailRequest) ToJsonString() string {
@@ -9813,94 +9813,94 @@ func (r *DescribeAssetHostDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetHostDetailResponseParams struct {
 	// 容器安全uuid
-	UUID *string `json:"UUID,omitempty" name:"UUID"`
+	UUID *string `json:"UUID,omitnil" name:"UUID"`
 
 	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 主机名
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 主机分组
-	Group *string `json:"Group,omitempty" name:"Group"`
+	Group *string `json:"Group,omitnil" name:"Group"`
 
 	// 主机IP
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 操作系统
-	OsName *string `json:"OsName,omitempty" name:"OsName"`
+	OsName *string `json:"OsName,omitnil" name:"OsName"`
 
 	// agent版本
-	AgentVersion *string `json:"AgentVersion,omitempty" name:"AgentVersion"`
+	AgentVersion *string `json:"AgentVersion,omitnil" name:"AgentVersion"`
 
 	// 内核版本
-	KernelVersion *string `json:"KernelVersion,omitempty" name:"KernelVersion"`
+	KernelVersion *string `json:"KernelVersion,omitnil" name:"KernelVersion"`
 
 	// docker版本
-	DockerVersion *string `json:"DockerVersion,omitempty" name:"DockerVersion"`
+	DockerVersion *string `json:"DockerVersion,omitnil" name:"DockerVersion"`
 
 	// docker api版本
-	DockerAPIVersion *string `json:"DockerAPIVersion,omitempty" name:"DockerAPIVersion"`
+	DockerAPIVersion *string `json:"DockerAPIVersion,omitnil" name:"DockerAPIVersion"`
 
 	// docker go 版本
-	DockerGoVersion *string `json:"DockerGoVersion,omitempty" name:"DockerGoVersion"`
+	DockerGoVersion *string `json:"DockerGoVersion,omitnil" name:"DockerGoVersion"`
 
 	// docker 文件系统类型
-	DockerFileSystemDriver *string `json:"DockerFileSystemDriver,omitempty" name:"DockerFileSystemDriver"`
+	DockerFileSystemDriver *string `json:"DockerFileSystemDriver,omitnil" name:"DockerFileSystemDriver"`
 
 	// docker root 目录
-	DockerRootDir *string `json:"DockerRootDir,omitempty" name:"DockerRootDir"`
+	DockerRootDir *string `json:"DockerRootDir,omitnil" name:"DockerRootDir"`
 
 	// 镜像数
-	ImageCnt *uint64 `json:"ImageCnt,omitempty" name:"ImageCnt"`
+	ImageCnt *uint64 `json:"ImageCnt,omitnil" name:"ImageCnt"`
 
 	// 容器数
-	ContainerCnt *uint64 `json:"ContainerCnt,omitempty" name:"ContainerCnt"`
+	ContainerCnt *uint64 `json:"ContainerCnt,omitnil" name:"ContainerCnt"`
 
 	// k8s IP
-	K8sMasterIP *string `json:"K8sMasterIP,omitempty" name:"K8sMasterIP"`
+	K8sMasterIP *string `json:"K8sMasterIP,omitnil" name:"K8sMasterIP"`
 
 	// k8s version
-	K8sVersion *string `json:"K8sVersion,omitempty" name:"K8sVersion"`
+	K8sVersion *string `json:"K8sVersion,omitnil" name:"K8sVersion"`
 
 	// kube proxy
-	KubeProxyVersion *string `json:"KubeProxyVersion,omitempty" name:"KubeProxyVersion"`
+	KubeProxyVersion *string `json:"KubeProxyVersion,omitnil" name:"KubeProxyVersion"`
 
 	// "UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 是否Containerd
-	IsContainerd *bool `json:"IsContainerd,omitempty" name:"IsContainerd"`
+	IsContainerd *bool `json:"IsContainerd,omitnil" name:"IsContainerd"`
 
 	// 主机来源;"TENCENTCLOUD":"腾讯云服务器","OTHERCLOUD":"非腾讯云服务器"
-	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
 
 	// 外网ip
-	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+	PublicIp *string `json:"PublicIp,omitnil" name:"PublicIp"`
 
 	// 主机实例ID
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 地域ID
-	RegionID *int64 `json:"RegionID,omitempty" name:"RegionID"`
+	RegionID *int64 `json:"RegionID,omitnil" name:"RegionID"`
 
 	// 所属项目
-	Project *ProjectInfo `json:"Project,omitempty" name:"Project"`
+	Project *ProjectInfo `json:"Project,omitnil" name:"Project"`
 
 	// 标签
-	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
+	Tags []*TagInfo `json:"Tags,omitnil" name:"Tags"`
 
 	// 集群ID
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 集群接入状态
-	ClusterAccessedStatus *string `json:"ClusterAccessedStatus,omitempty" name:"ClusterAccessedStatus"`
+	ClusterAccessedStatus *string `json:"ClusterAccessedStatus,omitnil" name:"ClusterAccessedStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetHostDetailResponse struct {
@@ -9922,10 +9922,10 @@ func (r *DescribeAssetHostDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetHostListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li>
@@ -9938,23 +9938,23 @@ type DescribeAssetHostListRequestParams struct {
 	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
 	// <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
 	// <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeAssetHostListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Status - String - 是否必填：否 - agent状态筛选，"ALL":"全部"(或不传该字段),"UNINSTALL"："未安装","OFFLINE"："离线", "ONLINE"："防护中"</li>
@@ -9967,13 +9967,13 @@ type DescribeAssetHostListRequest struct {
 	// <li>DockerStatus- string - 是否必填：否 - docker安装状态，"ALL":"全部"(或不传该字段),"INSTALL":"已安装","UNINSTALL":"未安装"</li>
 	// <li>ProjectID- string - 是否必填：否 - 所属项目id搜索</li>
 	// <li>Tag:xxx(tag:key)- string- 是否必填：否 - 标签键值搜索 示例Filters":[{"Name":"tag:tke-kind","Values":["service"]}]</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeAssetHostListRequest) ToJsonString() string {
@@ -10002,13 +10002,13 @@ func (r *DescribeAssetHostListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetHostListResponseParams struct {
 	// 主机列表
-	List []*HostInfo `json:"List,omitempty" name:"List"`
+	List []*HostInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetHostListResponse struct {
@@ -10030,44 +10030,44 @@ func (r *DescribeAssetHostListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageBindRuleInfoRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"EventType","Values":[""]}]
 	// EventType取值：
 	// "FILE_ABNORMAL_READ" 访问控制
 	// "MALICE_PROCESS_START" 恶意进程启动
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeAssetImageBindRuleInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"EventType","Values":[""]}]
 	// EventType取值：
 	// "FILE_ABNORMAL_READ" 访问控制
 	// "MALICE_PROCESS_START" 恶意进程启动
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeAssetImageBindRuleInfoRequest) ToJsonString() string {
@@ -10096,13 +10096,13 @@ func (r *DescribeAssetImageBindRuleInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageBindRuleInfoResponseParams struct {
 	// 事件总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 镜像绑定规则列表
-	ImageBindRuleSet []*ImagesBindRuleInfo `json:"ImageBindRuleSet,omitempty" name:"ImageBindRuleSet"`
+	ImageBindRuleSet []*ImagesBindRuleInfo `json:"ImageBindRuleSet,omitnil" name:"ImageBindRuleSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageBindRuleInfoResponse struct {
@@ -10124,14 +10124,14 @@ func (r *DescribeAssetImageBindRuleInfoResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeAssetImageDetailRequestParams struct {
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 }
 
 type DescribeAssetImageDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 }
 
 func (r *DescribeAssetImageDetailRequest) ToJsonString() string {
@@ -10156,112 +10156,112 @@ func (r *DescribeAssetImageDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageDetailResponseParams struct {
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 镜像大小
-	Size *uint64 `json:"Size,omitempty" name:"Size"`
+	Size *uint64 `json:"Size,omitnil" name:"Size"`
 
 	// 关联主机个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostCnt *uint64 `json:"HostCnt,omitempty" name:"HostCnt"`
+	HostCnt *uint64 `json:"HostCnt,omitnil" name:"HostCnt"`
 
 	// 关联容器个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerCnt *uint64 `json:"ContainerCnt,omitempty" name:"ContainerCnt"`
+	ContainerCnt *uint64 `json:"ContainerCnt,omitnil" name:"ContainerCnt"`
 
 	// 最近扫描时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 漏洞个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VulCnt *uint64 `json:"VulCnt,omitempty" name:"VulCnt"`
+	VulCnt *uint64 `json:"VulCnt,omitnil" name:"VulCnt"`
 
 	// 风险行为数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskCnt *uint64 `json:"RiskCnt,omitempty" name:"RiskCnt"`
+	RiskCnt *uint64 `json:"RiskCnt,omitnil" name:"RiskCnt"`
 
 	// 敏感信息数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveInfoCnt *uint64 `json:"SensitiveInfoCnt,omitempty" name:"SensitiveInfoCnt"`
+	SensitiveInfoCnt *uint64 `json:"SensitiveInfoCnt,omitnil" name:"SensitiveInfoCnt"`
 
 	// 是否信任镜像
-	IsTrustImage *bool `json:"IsTrustImage,omitempty" name:"IsTrustImage"`
+	IsTrustImage *bool `json:"IsTrustImage,omitnil" name:"IsTrustImage"`
 
 	// 镜像系统
-	OsName *string `json:"OsName,omitempty" name:"OsName"`
+	OsName *string `json:"OsName,omitnil" name:"OsName"`
 
 	// agent镜像扫描错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AgentError *string `json:"AgentError,omitempty" name:"AgentError"`
+	AgentError *string `json:"AgentError,omitnil" name:"AgentError"`
 
 	// 后端镜像扫描错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanError *string `json:"ScanError,omitempty" name:"ScanError"`
+	ScanError *string `json:"ScanError,omitnil" name:"ScanError"`
 
 	// 系统架构
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Architecture *string `json:"Architecture,omitempty" name:"Architecture"`
+	Architecture *string `json:"Architecture,omitnil" name:"Architecture"`
 
 	// 作者
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Author *string `json:"Author,omitempty" name:"Author"`
+	Author *string `json:"Author,omitnil" name:"Author"`
 
 	// 构建历史
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BuildHistory *string `json:"BuildHistory,omitempty" name:"BuildHistory"`
+	BuildHistory *string `json:"BuildHistory,omitnil" name:"BuildHistory"`
 
 	// 木马扫描进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanVirusProgress *uint64 `json:"ScanVirusProgress,omitempty" name:"ScanVirusProgress"`
+	ScanVirusProgress *uint64 `json:"ScanVirusProgress,omitnil" name:"ScanVirusProgress"`
 
 	// 漏洞扫进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanVulProgress *uint64 `json:"ScanVulProgress,omitempty" name:"ScanVulProgress"`
+	ScanVulProgress *uint64 `json:"ScanVulProgress,omitnil" name:"ScanVulProgress"`
 
 	// 敏感信息扫描进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanRiskProgress *uint64 `json:"ScanRiskProgress,omitempty" name:"ScanRiskProgress"`
+	ScanRiskProgress *uint64 `json:"ScanRiskProgress,omitnil" name:"ScanRiskProgress"`
 
 	// 木马扫描错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanVirusError *string `json:"ScanVirusError,omitempty" name:"ScanVirusError"`
+	ScanVirusError *string `json:"ScanVirusError,omitnil" name:"ScanVirusError"`
 
 	// 漏洞扫描错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanVulError *string `json:"ScanVulError,omitempty" name:"ScanVulError"`
+	ScanVulError *string `json:"ScanVulError,omitnil" name:"ScanVulError"`
 
 	// 敏感信息错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanRiskError *string `json:"ScanRiskError,omitempty" name:"ScanRiskError"`
+	ScanRiskError *string `json:"ScanRiskError,omitnil" name:"ScanRiskError"`
 
 	// 镜像扫描状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanStatus *string `json:"ScanStatus,omitempty" name:"ScanStatus"`
+	ScanStatus *string `json:"ScanStatus,omitnil" name:"ScanStatus"`
 
 	// 木马病毒数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VirusCnt *uint64 `json:"VirusCnt,omitempty" name:"VirusCnt"`
+	VirusCnt *uint64 `json:"VirusCnt,omitnil" name:"VirusCnt"`
 
 	// 镜像扫描状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 剩余扫描时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RemainScanTime *uint64 `json:"RemainScanTime,omitempty" name:"RemainScanTime"`
+	RemainScanTime *uint64 `json:"RemainScanTime,omitnil" name:"RemainScanTime"`
 
 	// 授权为：1，未授权为：0
-	IsAuthorized *int64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+	IsAuthorized *int64 `json:"IsAuthorized,omitnil" name:"IsAuthorized"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageDetailResponse struct {
@@ -10283,14 +10283,14 @@ func (r *DescribeAssetImageDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageHostListRequestParams struct {
 	// 过滤条件 支持ImageID,HostID
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAssetImageHostListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 过滤条件 支持ImageID,HostID
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAssetImageHostListRequest) ToJsonString() string {
@@ -10315,13 +10315,13 @@ func (r *DescribeAssetImageHostListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageHostListResponseParams struct {
 	// 镜像列表
-	List []*ImageHost `json:"List,omitempty" name:"List"`
+	List []*ImageHost `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageHostListResponse struct {
@@ -10343,52 +10343,52 @@ func (r *DescribeAssetImageHostListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageListExportRequestParams struct {
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
 	// <li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
 	// <li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li>
 	// <li>SecurityRisk- String - 是否必填：否 - 安全风险，VulCnt 、VirusCnt、RiskCnt、IsTrustImage</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeAssetImageListExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
 	// <li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
 	// <li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li>
 	// <li>SecurityRisk- String - 是否必填：否 - 安全风险，VulCnt 、VirusCnt、RiskCnt、IsTrustImage</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeAssetImageListExportRequest) ToJsonString() string {
@@ -10418,10 +10418,10 @@ func (r *DescribeAssetImageListExportRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageListExportResponseParams struct {
 	// excel文件下载地址
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageListExportResponse struct {
@@ -10443,46 +10443,46 @@ func (r *DescribeAssetImageListExportResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
 	// <li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
 	// <li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li>
 	// <li>SecurityRisk- String - 是否必填：否 - 安全风险，VulCnt 、VirusCnt、RiskCnt、IsTrustImage</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeAssetImageListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
 	// <li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
 	// <li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li>
 	// <li>SecurityRisk- String - 是否必填：否 - 安全风险，VulCnt 、VirusCnt、RiskCnt、IsTrustImage</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeAssetImageListRequest) ToJsonString() string {
@@ -10511,13 +10511,13 @@ func (r *DescribeAssetImageListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageListResponseParams struct {
 	// 镜像列表
-	List []*ImagesInfo `json:"List,omitempty" name:"List"`
+	List []*ImagesInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageListResponse struct {
@@ -10568,14 +10568,14 @@ func (r *DescribeAssetImageRegistryAssetStatusRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeAssetImageRegistryAssetStatusResponseParams struct {
 	// 更新进度状态,doing更新中，success更新成功，failed失败
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Err *string `json:"Err,omitempty" name:"Err"`
+	Err *string `json:"Err,omitnil" name:"Err"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistryAssetStatusResponse struct {
@@ -10597,20 +10597,20 @@ func (r *DescribeAssetImageRegistryAssetStatusResponse) FromJsonString(s string)
 // Predefined struct for user
 type DescribeAssetImageRegistryDetailRequestParams struct {
 	// 仓库列表id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 镜像ID
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 }
 
 type DescribeAssetImageRegistryDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 仓库列表id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 镜像ID
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 }
 
 func (r *DescribeAssetImageRegistryDetailRequest) ToJsonString() string {
@@ -10637,134 +10637,134 @@ func (r *DescribeAssetImageRegistryDetailRequest) FromJsonString(s string) error
 type DescribeAssetImageRegistryDetailResponseParams struct {
 	// 镜像Digest
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageDigest *string `json:"ImageDigest,omitempty" name:"ImageDigest"`
+	ImageDigest *string `json:"ImageDigest,omitnil" name:"ImageDigest"`
 
 	// 镜像地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageRepoAddress *string `json:"ImageRepoAddress,omitempty" name:"ImageRepoAddress"`
+	ImageRepoAddress *string `json:"ImageRepoAddress,omitnil" name:"ImageRepoAddress"`
 
 	// 镜像类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+	RegistryType *string `json:"RegistryType,omitnil" name:"RegistryType"`
 
 	// 仓库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 镜像版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+	ImageTag *string `json:"ImageTag,omitnil" name:"ImageTag"`
 
 	// 扫描时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 扫描状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanStatus *string `json:"ScanStatus,omitempty" name:"ScanStatus"`
+	ScanStatus *string `json:"ScanStatus,omitnil" name:"ScanStatus"`
 
 	// 安全漏洞数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VulCnt *uint64 `json:"VulCnt,omitempty" name:"VulCnt"`
+	VulCnt *uint64 `json:"VulCnt,omitnil" name:"VulCnt"`
 
 	// 木马病毒数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VirusCnt *uint64 `json:"VirusCnt,omitempty" name:"VirusCnt"`
+	VirusCnt *uint64 `json:"VirusCnt,omitnil" name:"VirusCnt"`
 
 	// 风险行为数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskCnt *uint64 `json:"RiskCnt,omitempty" name:"RiskCnt"`
+	RiskCnt *uint64 `json:"RiskCnt,omitnil" name:"RiskCnt"`
 
 	// 敏感信息数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SentiveInfoCnt *uint64 `json:"SentiveInfoCnt,omitempty" name:"SentiveInfoCnt"`
+	SentiveInfoCnt *uint64 `json:"SentiveInfoCnt,omitnil" name:"SentiveInfoCnt"`
 
 	// 镜像系统
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OsName *string `json:"OsName,omitempty" name:"OsName"`
+	OsName *string `json:"OsName,omitnil" name:"OsName"`
 
 	// 木马扫描错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanVirusError *string `json:"ScanVirusError,omitempty" name:"ScanVirusError"`
+	ScanVirusError *string `json:"ScanVirusError,omitnil" name:"ScanVirusError"`
 
 	// 漏洞扫描错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanVulError *string `json:"ScanVulError,omitempty" name:"ScanVulError"`
+	ScanVulError *string `json:"ScanVulError,omitnil" name:"ScanVulError"`
 
 	// 层文件信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LayerInfo *string `json:"LayerInfo,omitempty" name:"LayerInfo"`
+	LayerInfo *string `json:"LayerInfo,omitnil" name:"LayerInfo"`
 
 	// 实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 命名空间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 高危扫描错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanRiskError *string `json:"ScanRiskError,omitempty" name:"ScanRiskError"`
+	ScanRiskError *string `json:"ScanRiskError,omitnil" name:"ScanRiskError"`
 
 	// 木马信息扫描进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanVirusProgress *uint64 `json:"ScanVirusProgress,omitempty" name:"ScanVirusProgress"`
+	ScanVirusProgress *uint64 `json:"ScanVirusProgress,omitnil" name:"ScanVirusProgress"`
 
 	// 漏洞扫描进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanVulProgress *uint64 `json:"ScanVulProgress,omitempty" name:"ScanVulProgress"`
+	ScanVulProgress *uint64 `json:"ScanVulProgress,omitnil" name:"ScanVulProgress"`
 
 	// 敏感扫描进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanRiskProgress *uint64 `json:"ScanRiskProgress,omitempty" name:"ScanRiskProgress"`
+	ScanRiskProgress *uint64 `json:"ScanRiskProgress,omitnil" name:"ScanRiskProgress"`
 
 	// 剩余扫描时间秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanRemainTime *uint64 `json:"ScanRemainTime,omitempty" name:"ScanRemainTime"`
+	ScanRemainTime *uint64 `json:"ScanRemainTime,omitnil" name:"ScanRemainTime"`
 
 	// cve扫描状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CveStatus *string `json:"CveStatus,omitempty" name:"CveStatus"`
+	CveStatus *string `json:"CveStatus,omitnil" name:"CveStatus"`
 
 	// 高危扫描状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskStatus *string `json:"RiskStatus,omitempty" name:"RiskStatus"`
+	RiskStatus *string `json:"RiskStatus,omitnil" name:"RiskStatus"`
 
 	// 木马扫描状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VirusStatus *string `json:"VirusStatus,omitempty" name:"VirusStatus"`
+	VirusStatus *string `json:"VirusStatus,omitnil" name:"VirusStatus"`
 
 	// 总进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+	Progress *uint64 `json:"Progress,omitnil" name:"Progress"`
 
 	// 授权状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+	IsAuthorized *uint64 `json:"IsAuthorized,omitnil" name:"IsAuthorized"`
 
 	// 镜像大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageSize *uint64 `json:"ImageSize,omitempty" name:"ImageSize"`
+	ImageSize *uint64 `json:"ImageSize,omitnil" name:"ImageSize"`
 
 	// 镜像Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 镜像区域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegistryRegion *string `json:"RegistryRegion,omitempty" name:"RegistryRegion"`
+	RegistryRegion *string `json:"RegistryRegion,omitnil" name:"RegistryRegion"`
 
 	// 镜像创建的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageCreateTime *string `json:"ImageCreateTime,omitempty" name:"ImageCreateTime"`
+	ImageCreateTime *string `json:"ImageCreateTime,omitnil" name:"ImageCreateTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistryDetailResponse struct {
@@ -10786,50 +10786,50 @@ func (r *DescribeAssetImageRegistryDetailResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeAssetImageRegistryListExportRequestParams struct {
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序字段
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式，asc，desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 是否仅展示repository版本最新的镜像，默认为false
-	OnlyShowLatest *bool `json:"OnlyShowLatest,omitempty" name:"OnlyShowLatest"`
+	OnlyShowLatest *bool `json:"OnlyShowLatest,omitnil" name:"OnlyShowLatest"`
 }
 
 type DescribeAssetImageRegistryListExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序字段
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式，asc，desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 是否仅展示repository版本最新的镜像，默认为false
-	OnlyShowLatest *bool `json:"OnlyShowLatest,omitempty" name:"OnlyShowLatest"`
+	OnlyShowLatest *bool `json:"OnlyShowLatest,omitnil" name:"OnlyShowLatest"`
 }
 
 func (r *DescribeAssetImageRegistryListExportRequest) ToJsonString() string {
@@ -10861,10 +10861,10 @@ func (r *DescribeAssetImageRegistryListExportRequest) FromJsonString(s string) e
 type DescribeAssetImageRegistryListExportResponseParams struct {
 	// excel文件下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistryListExportResponse struct {
@@ -10886,46 +10886,46 @@ func (r *DescribeAssetImageRegistryListExportResponse) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeAssetImageRegistryListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤字段
 	// IsAuthorized是否授权，取值全部all，未授权0，已授权1
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式，asc，desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 是否仅展示各repository最新的镜像, 默认为false
-	OnlyShowLatest *bool `json:"OnlyShowLatest,omitempty" name:"OnlyShowLatest"`
+	OnlyShowLatest *bool `json:"OnlyShowLatest,omitnil" name:"OnlyShowLatest"`
 }
 
 type DescribeAssetImageRegistryListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤字段
 	// IsAuthorized是否授权，取值全部all，未授权0，已授权1
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式，asc，desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 是否仅展示各repository最新的镜像, 默认为false
-	OnlyShowLatest *bool `json:"OnlyShowLatest,omitempty" name:"OnlyShowLatest"`
+	OnlyShowLatest *bool `json:"OnlyShowLatest,omitnil" name:"OnlyShowLatest"`
 }
 
 func (r *DescribeAssetImageRegistryListRequest) ToJsonString() string {
@@ -10956,14 +10956,14 @@ func (r *DescribeAssetImageRegistryListRequest) FromJsonString(s string) error {
 type DescribeAssetImageRegistryListResponseParams struct {
 	// 镜像仓库列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*ImageRepoInfo `json:"List,omitempty" name:"List"`
+	List []*ImageRepoInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistryListResponse struct {
@@ -10985,14 +10985,14 @@ func (r *DescribeAssetImageRegistryListResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeAssetImageRegistryRegistryDetailRequestParams struct {
 	// 仓库唯一id
-	RegistryId *int64 `json:"RegistryId,omitempty" name:"RegistryId"`
+	RegistryId *int64 `json:"RegistryId,omitnil" name:"RegistryId"`
 }
 
 type DescribeAssetImageRegistryRegistryDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 仓库唯一id
-	RegistryId *int64 `json:"RegistryId,omitempty" name:"RegistryId"`
+	RegistryId *int64 `json:"RegistryId,omitnil" name:"RegistryId"`
 }
 
 func (r *DescribeAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -11017,47 +11017,47 @@ func (r *DescribeAssetImageRegistryRegistryDetailRequest) FromJsonString(s strin
 // Predefined struct for user
 type DescribeAssetImageRegistryRegistryDetailResponseParams struct {
 	// 仓库名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 用户名
-	Username *string `json:"Username,omitempty" name:"Username"`
+	Username *string `json:"Username,omitnil" name:"Username"`
 
 	// 密码
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 
 	// 仓库url
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 仓库类型，列表：harbor
-	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+	RegistryType *string `json:"RegistryType,omitnil" name:"RegistryType"`
 
 	// 仓库版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegistryVersion *string `json:"RegistryVersion,omitempty" name:"RegistryVersion"`
+	RegistryVersion *string `json:"RegistryVersion,omitnil" name:"RegistryVersion"`
 
 	// 网络类型，列表：public（公网）,private（私网）
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 区域，列表:default（默认）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegistryRegion *string `json:"RegistryRegion,omitempty" name:"RegistryRegion"`
+	RegistryRegion *string `json:"RegistryRegion,omitnil" name:"RegistryRegion"`
 
 	// 限速
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SpeedLimit *uint64 `json:"SpeedLimit,omitempty" name:"SpeedLimit"`
+	SpeedLimit *uint64 `json:"SpeedLimit,omitnil" name:"SpeedLimit"`
 
 	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Insecure *uint64 `json:"Insecure,omitempty" name:"Insecure"`
+	Insecure *uint64 `json:"Insecure,omitnil" name:"Insecure"`
 
 	// 联通性检测结果详情
-	ConnDetectDetail []*RegistryConnDetectResult `json:"ConnDetectDetail,omitempty" name:"ConnDetectDetail"`
+	ConnDetectDetail []*RegistryConnDetectResult `json:"ConnDetectDetail,omitnil" name:"ConnDetectDetail"`
 
 	// tcr情况下instance_id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistryRegistryDetailResponse struct {
@@ -11108,7 +11108,7 @@ func (r *DescribeAssetImageRegistryRegistryListRequest) FromJsonString(s string)
 // Predefined struct for user
 type DescribeAssetImageRegistryRegistryListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistryRegistryListResponse struct {
@@ -11130,54 +11130,54 @@ func (r *DescribeAssetImageRegistryRegistryListResponse) FromJsonString(s string
 // Predefined struct for user
 type DescribeAssetImageRegistryRiskInfoListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 漏洞级别筛选，</li>
 	// <li>Name - String - 是否必填：否 - 漏洞名称</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 镜像id
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
 	// 排序字段（Level）
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 + -
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 镜像标识Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type DescribeAssetImageRegistryRiskInfoListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 漏洞级别筛选，</li>
 	// <li>Name - String - 是否必填：否 - 漏洞名称</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 镜像id
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
 	// 排序字段（Level）
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 + -
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 镜像标识Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *DescribeAssetImageRegistryRiskInfoListRequest) ToJsonString() string {
@@ -11209,14 +11209,14 @@ func (r *DescribeAssetImageRegistryRiskInfoListRequest) FromJsonString(s string)
 type DescribeAssetImageRegistryRiskInfoListResponseParams struct {
 	// 镜像漏洞列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*ImageRisk `json:"List,omitempty" name:"List"`
+	List []*ImageRisk `json:"List,omitnil" name:"List"`
 
 	// 总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistryRiskInfoListResponse struct {
@@ -11238,48 +11238,48 @@ func (r *DescribeAssetImageRegistryRiskInfoListResponse) FromJsonString(s string
 // Predefined struct for user
 type DescribeAssetImageRegistryRiskListExportRequestParams struct {
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 漏洞级别筛选，</li>
 	// <li>Name - String - 是否必填：否 - 漏洞名称</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 镜像信息
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
 	// 镜像标识Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type DescribeAssetImageRegistryRiskListExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 漏洞级别筛选，</li>
 	// <li>Name - String - 是否必填：否 - 漏洞名称</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 镜像信息
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
 	// 镜像标识Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *DescribeAssetImageRegistryRiskListExportRequest) ToJsonString() string {
@@ -11310,10 +11310,10 @@ func (r *DescribeAssetImageRegistryRiskListExportRequest) FromJsonString(s strin
 type DescribeAssetImageRegistryRiskListExportResponseParams struct {
 	// excel文件下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistryRiskListExportResponse struct {
@@ -11335,32 +11335,32 @@ func (r *DescribeAssetImageRegistryRiskListExportResponse) FromJsonString(s stri
 // Predefined struct for user
 type DescribeAssetImageRegistryScanStatusOneKeyRequestParams struct {
 	// 需要获取进度的镜像列表
-	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
+	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 是否获取全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 需要获取进度的镜像列表Id
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 获取进度的任务ID
-	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *uint64 `json:"TaskID,omitnil" name:"TaskID"`
 }
 
 type DescribeAssetImageRegistryScanStatusOneKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要获取进度的镜像列表
-	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
+	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 是否获取全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 需要获取进度的镜像列表Id
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 获取进度的任务ID
-	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *uint64 `json:"TaskID,omitnil" name:"TaskID"`
 }
 
 func (r *DescribeAssetImageRegistryScanStatusOneKeyRequest) ToJsonString() string {
@@ -11388,33 +11388,33 @@ func (r *DescribeAssetImageRegistryScanStatusOneKeyRequest) FromJsonString(s str
 // Predefined struct for user
 type DescribeAssetImageRegistryScanStatusOneKeyResponseParams struct {
 	// 镜像个数
-	ImageTotal *uint64 `json:"ImageTotal,omitempty" name:"ImageTotal"`
+	ImageTotal *uint64 `json:"ImageTotal,omitnil" name:"ImageTotal"`
 
 	// 扫描镜像个数
-	ImageScanCnt *uint64 `json:"ImageScanCnt,omitempty" name:"ImageScanCnt"`
+	ImageScanCnt *uint64 `json:"ImageScanCnt,omitnil" name:"ImageScanCnt"`
 
 	// 扫描进度列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageStatus []*ImageProgress `json:"ImageStatus,omitempty" name:"ImageStatus"`
+	ImageStatus []*ImageProgress `json:"ImageStatus,omitnil" name:"ImageStatus"`
 
 	// 安全个数
-	SuccessCount *uint64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+	SuccessCount *uint64 `json:"SuccessCount,omitnil" name:"SuccessCount"`
 
 	// 风险个数
-	RiskCount *uint64 `json:"RiskCount,omitempty" name:"RiskCount"`
+	RiskCount *uint64 `json:"RiskCount,omitnil" name:"RiskCount"`
 
 	// 总的扫描进度
-	Schedule *uint64 `json:"Schedule,omitempty" name:"Schedule"`
+	Schedule *uint64 `json:"Schedule,omitnil" name:"Schedule"`
 
 	// 总的扫描状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 扫描剩余时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanRemainTime *uint64 `json:"ScanRemainTime,omitempty" name:"ScanRemainTime"`
+	ScanRemainTime *uint64 `json:"ScanRemainTime,omitnil" name:"ScanRemainTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistryScanStatusOneKeyResponse struct {
@@ -11465,7 +11465,7 @@ func (r *DescribeAssetImageRegistrySummaryRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeAssetImageRegistrySummaryResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistrySummaryResponse struct {
@@ -11487,48 +11487,48 @@ func (r *DescribeAssetImageRegistrySummaryResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeAssetImageRegistryVirusListExportRequestParams struct {
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 漏洞级别筛选，</li>
 	// <li>Name - String - 是否必填：否 - 漏洞名称</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 镜像信息
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
 	// 镜像标识Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type DescribeAssetImageRegistryVirusListExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 漏洞级别筛选，</li>
 	// <li>Name - String - 是否必填：否 - 漏洞名称</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 镜像信息
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
 	// 镜像标识Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *DescribeAssetImageRegistryVirusListExportRequest) ToJsonString() string {
@@ -11559,10 +11559,10 @@ func (r *DescribeAssetImageRegistryVirusListExportRequest) FromJsonString(s stri
 type DescribeAssetImageRegistryVirusListExportResponseParams struct {
 	// excel文件下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistryVirusListExportResponse struct {
@@ -11584,42 +11584,42 @@ func (r *DescribeAssetImageRegistryVirusListExportResponse) FromJsonString(s str
 // Predefined struct for user
 type DescribeAssetImageRegistryVirusListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 漏洞级别筛选，</li>
 	// <li>Name - String - 是否必填：否 - 漏洞名称</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 镜像信息
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
 	// 镜像标识Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type DescribeAssetImageRegistryVirusListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 漏洞级别筛选，</li>
 	// <li>Name - String - 是否必填：否 - 漏洞名称</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 镜像信息
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
 	// 镜像标识Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *DescribeAssetImageRegistryVirusListRequest) ToJsonString() string {
@@ -11649,14 +11649,14 @@ func (r *DescribeAssetImageRegistryVirusListRequest) FromJsonString(s string) er
 type DescribeAssetImageRegistryVirusListResponseParams struct {
 	// 镜像漏洞列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*ImageVirus `json:"List,omitempty" name:"List"`
+	List []*ImageVirus `json:"List,omitnil" name:"List"`
 
 	// 总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistryVirusListResponse struct {
@@ -11678,48 +11678,48 @@ func (r *DescribeAssetImageRegistryVirusListResponse) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeAssetImageRegistryVulListExportRequestParams struct {
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 漏洞级别筛选，</li>
 	// <li>Name - String - 是否必填：否 - 漏洞名称</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 镜像信息
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
 	// 镜像标识Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type DescribeAssetImageRegistryVulListExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 漏洞级别筛选，</li>
 	// <li>Name - String - 是否必填：否 - 漏洞名称</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 镜像信息
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
 	// 镜像标识Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *DescribeAssetImageRegistryVulListExportRequest) ToJsonString() string {
@@ -11750,10 +11750,10 @@ func (r *DescribeAssetImageRegistryVulListExportRequest) FromJsonString(s string
 type DescribeAssetImageRegistryVulListExportResponseParams struct {
 	// excel文件下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistryVulListExportResponse struct {
@@ -11775,42 +11775,42 @@ func (r *DescribeAssetImageRegistryVulListExportResponse) FromJsonString(s strin
 // Predefined struct for user
 type DescribeAssetImageRegistryVulListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 漏洞级别筛选，</li>
 	// <li>Name - String - 是否必填：否 - 漏洞名称</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 镜像信息
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
 	// 镜像标识Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type DescribeAssetImageRegistryVulListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 漏洞级别筛选，</li>
 	// <li>Name - String - 是否必填：否 - 漏洞名称</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 镜像信息
-	ImageInfo *ImageInfo `json:"ImageInfo,omitempty" name:"ImageInfo"`
+	ImageInfo *ImageInfo `json:"ImageInfo,omitnil" name:"ImageInfo"`
 
 	// 镜像标识Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *DescribeAssetImageRegistryVulListRequest) ToJsonString() string {
@@ -11840,14 +11840,14 @@ func (r *DescribeAssetImageRegistryVulListRequest) FromJsonString(s string) erro
 type DescribeAssetImageRegistryVulListResponseParams struct {
 	// 镜像漏洞列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*ImageVul `json:"List,omitempty" name:"List"`
+	List []*ImageVul `json:"List,omitnil" name:"List"`
 
 	// 总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRegistryVulListResponse struct {
@@ -11869,32 +11869,32 @@ func (r *DescribeAssetImageRegistryVulListResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeAssetImageRiskListExportRequestParams struct {
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 风险级别 1,2,3,4，</li>
 	// <li>Behavior - String - 是否必填：否 - 风险行为 1,2,3,4</li>
 	// <li>Type - String - 是否必填：否 - 风险类型  1,2,</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAssetImageRiskListExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 风险级别 1,2,3,4，</li>
 	// <li>Behavior - String - 是否必填：否 - 风险行为 1,2,3,4</li>
 	// <li>Type - String - 是否必填：否 - 风险类型  1,2,</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAssetImageRiskListExportRequest) ToJsonString() string {
@@ -11921,10 +11921,10 @@ func (r *DescribeAssetImageRiskListExportRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeAssetImageRiskListExportResponseParams struct {
 	// excel文件下载地址
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRiskListExportResponse struct {
@@ -11946,50 +11946,50 @@ func (r *DescribeAssetImageRiskListExportResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeAssetImageRiskListRequestParams struct {
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 风险级别 1,2,3,4，</li>
 	// <li>Behavior - String - 是否必填：否 - 风险行为 1,2,3,4</li>
 	// <li>Type - String - 是否必填：否 - 风险类型  1,2,</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeAssetImageRiskListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 风险级别 1,2,3,4，</li>
 	// <li>Behavior - String - 是否必填：否 - 风险行为 1,2,3,4</li>
 	// <li>Type - String - 是否必填：否 - 风险类型  1,2,</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeAssetImageRiskListRequest) ToJsonString() string {
@@ -12019,13 +12019,13 @@ func (r *DescribeAssetImageRiskListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageRiskListResponseParams struct {
 	// 镜像病毒列表
-	List []*ImageRiskInfo `json:"List,omitempty" name:"List"`
+	List []*ImageRiskInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageRiskListResponse struct {
@@ -12076,31 +12076,31 @@ func (r *DescribeAssetImageScanSettingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageScanSettingResponseParams struct {
 	// 开关
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 扫描时刻(完整时间;后端按0时区解析时分秒)
-	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 扫描间隔
-	ScanPeriod *uint64 `json:"ScanPeriod,omitempty" name:"ScanPeriod"`
+	ScanPeriod *uint64 `json:"ScanPeriod,omitnil" name:"ScanPeriod"`
 
 	// 扫描木马
-	ScanVirus *bool `json:"ScanVirus,omitempty" name:"ScanVirus"`
+	ScanVirus *bool `json:"ScanVirus,omitnil" name:"ScanVirus"`
 
 	// 扫描敏感信息
-	ScanRisk *bool `json:"ScanRisk,omitempty" name:"ScanRisk"`
+	ScanRisk *bool `json:"ScanRisk,omitnil" name:"ScanRisk"`
 
 	// 扫描漏洞
-	ScanVul *bool `json:"ScanVul,omitempty" name:"ScanVul"`
+	ScanVul *bool `json:"ScanVul,omitnil" name:"ScanVul"`
 
 	// 扫描全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 自定义扫描镜像
-	Images []*string `json:"Images,omitempty" name:"Images"`
+	Images []*string `json:"Images,omitnil" name:"Images"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageScanSettingResponse struct {
@@ -12122,14 +12122,14 @@ func (r *DescribeAssetImageScanSettingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageScanStatusRequestParams struct {
 	// 任务id
-	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
 }
 
 type DescribeAssetImageScanStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务id
-	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
 }
 
 func (r *DescribeAssetImageScanStatusRequest) ToJsonString() string {
@@ -12154,28 +12154,28 @@ func (r *DescribeAssetImageScanStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageScanStatusResponseParams struct {
 	// 镜像个数
-	ImageTotal *uint64 `json:"ImageTotal,omitempty" name:"ImageTotal"`
+	ImageTotal *uint64 `json:"ImageTotal,omitnil" name:"ImageTotal"`
 
 	// 扫描镜像个数
-	ImageScanCnt *uint64 `json:"ImageScanCnt,omitempty" name:"ImageScanCnt"`
+	ImageScanCnt *uint64 `json:"ImageScanCnt,omitnil" name:"ImageScanCnt"`
 
 	// 扫描状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 扫描进度 ImageScanCnt/ImageTotal *100
-	Schedule *uint64 `json:"Schedule,omitempty" name:"Schedule"`
+	Schedule *uint64 `json:"Schedule,omitnil" name:"Schedule"`
 
 	// 安全个数
-	SuccessCount *uint64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+	SuccessCount *uint64 `json:"SuccessCount,omitnil" name:"SuccessCount"`
 
 	// 风险个数
-	RiskCount *uint64 `json:"RiskCount,omitempty" name:"RiskCount"`
+	RiskCount *uint64 `json:"RiskCount,omitnil" name:"RiskCount"`
 
 	// 剩余扫描时间
-	LeftSeconds *uint64 `json:"LeftSeconds,omitempty" name:"LeftSeconds"`
+	LeftSeconds *uint64 `json:"LeftSeconds,omitnil" name:"LeftSeconds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageScanStatusResponse struct {
@@ -12226,10 +12226,10 @@ func (r *DescribeAssetImageScanTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageScanTaskResponseParams struct {
 	// 任务id
-	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageScanTaskResponse struct {
@@ -12251,40 +12251,40 @@ func (r *DescribeAssetImageScanTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageSimpleListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords- String - 是否必填：否 - 镜像名、镜像id 称筛选，</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeAssetImageSimpleListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords- String - 是否必填：否 - 镜像名、镜像id 称筛选，</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeAssetImageSimpleListRequest) ToJsonString() string {
@@ -12313,13 +12313,13 @@ func (r *DescribeAssetImageSimpleListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageSimpleListResponseParams struct {
 	// 镜像列表
-	List []*AssetSimpleImageInfo `json:"List,omitempty" name:"List"`
+	List []*AssetSimpleImageInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageSimpleListResponse struct {
@@ -12341,30 +12341,30 @@ func (r *DescribeAssetImageSimpleListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageVirusListExportRequestParams struct {
 	// 列表支持字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 过滤条件。
 	// <li>Name- String - 是否必填：否 - 镜像名称筛选，</li>
 	// <li>RiskLevel - String - 是否必填：否 - 风险等级  1,2,3,4</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAssetImageVirusListExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 列表支持字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 过滤条件。
 	// <li>Name- String - 是否必填：否 - 镜像名称筛选，</li>
 	// <li>RiskLevel - String - 是否必填：否 - 风险等级  1,2,3,4</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAssetImageVirusListExportRequest) ToJsonString() string {
@@ -12391,13 +12391,13 @@ func (r *DescribeAssetImageVirusListExportRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeAssetImageVirusListExportResponseParams struct {
 	// excel文件下载地址
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 任务ID
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageVirusListExportResponse struct {
@@ -12419,48 +12419,48 @@ func (r *DescribeAssetImageVirusListExportResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeAssetImageVirusListRequestParams struct {
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Name- String - 是否必填：否 - 镜像名称筛选，</li>
 	// <li>RiskLevel - String - 是否必填：否 - 风险等级  1,2,3,4</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序 asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeAssetImageVirusListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Name- String - 是否必填：否 - 镜像名称筛选，</li>
 	// <li>RiskLevel - String - 是否必填：否 - 风险等级  1,2,3,4</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序 asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeAssetImageVirusListRequest) ToJsonString() string {
@@ -12490,10 +12490,10 @@ func (r *DescribeAssetImageVirusListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageVirusListResponseParams struct {
 	// 镜像病毒列表
-	List []*ImageVirusInfo `json:"List,omitempty" name:"List"`
+	List []*ImageVirusInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 病毒扫描状态
 	// 0:未扫描
@@ -12501,10 +12501,10 @@ type DescribeAssetImageVirusListResponseParams struct {
 	// 2:扫描完成
 	// 3:扫描出错
 	// 4:扫描取消
-	VirusScanStatus *uint64 `json:"VirusScanStatus,omitempty" name:"VirusScanStatus"`
+	VirusScanStatus *uint64 `json:"VirusScanStatus,omitnil" name:"VirusScanStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageVirusListResponse struct {
@@ -12526,42 +12526,42 @@ func (r *DescribeAssetImageVirusListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageVulListExportRequestParams struct {
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Name- String - 是否必填：否 - 漏洞名称名称筛选，</li>
 	// <li>Level - String - 是否必填：否 - 风险等级  1,2,3,4</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAssetImageVulListExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Name- String - 是否必填：否 - 漏洞名称名称筛选，</li>
 	// <li>Level - String - 是否必填：否 - 风险等级  1,2,3,4</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAssetImageVulListExportRequest) ToJsonString() string {
@@ -12590,10 +12590,10 @@ func (r *DescribeAssetImageVulListExportRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeAssetImageVulListExportResponseParams struct {
 	// excel文件下载地址
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageVulListExportResponse struct {
@@ -12615,48 +12615,48 @@ func (r *DescribeAssetImageVulListExportResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeAssetImageVulListRequestParams struct {
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Name- String - 是否必填：否 - 漏洞名称名称筛选，</li>
 	// <li>Level - String - 是否必填：否 - 风险等级  1,2,3,4</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段（Level）
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 + -
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeAssetImageVulListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Name- String - 是否必填：否 - 漏洞名称名称筛选，</li>
 	// <li>Level - String - 是否必填：否 - 风险等级  1,2,3,4</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段（Level）
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 + -
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeAssetImageVulListRequest) ToJsonString() string {
@@ -12686,13 +12686,13 @@ func (r *DescribeAssetImageVulListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetImageVulListResponseParams struct {
 	// 镜像漏洞列表
-	List []*ImagesVul `json:"List,omitempty" name:"List"`
+	List []*ImagesVul `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetImageVulListResponse struct {
@@ -12714,10 +12714,10 @@ func (r *DescribeAssetImageVulListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetPortListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>All - String - 是否必填：否 - 模糊查询可选字段</li>
@@ -12726,17 +12726,17 @@ type DescribeAssetPortListRequestParams struct {
 	// <li>HostID- String - 是否必填：是 - 主机id</li>
 	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
 	// <li>ProcessName- string - 是否必填：否 - 进程名搜索</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAssetPortListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>All - String - 是否必填：否 - 模糊查询可选字段</li>
@@ -12745,7 +12745,7 @@ type DescribeAssetPortListRequest struct {
 	// <li>HostID- String - 是否必填：是 - 主机id</li>
 	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
 	// <li>ProcessName- string - 是否必填：否 - 进程名搜索</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAssetPortListRequest) ToJsonString() string {
@@ -12772,13 +12772,13 @@ func (r *DescribeAssetPortListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetPortListResponseParams struct {
 	// 端口列表
-	List []*PortInfo `json:"List,omitempty" name:"List"`
+	List []*PortInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetPortListResponse struct {
@@ -12800,10 +12800,10 @@ func (r *DescribeAssetPortListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetProcessListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>RunAs - String - 是否必填：否 - 运行用户筛选，</li>
@@ -12812,17 +12812,17 @@ type DescribeAssetProcessListRequestParams struct {
 	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
 	// <li>ProcessName- string - 是否必填：否 - 进程名搜索</li>
 	// <li>Pid- string - 是否必填：否 - 进程id搜索(关联进程)</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAssetProcessListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>RunAs - String - 是否必填：否 - 运行用户筛选，</li>
@@ -12831,7 +12831,7 @@ type DescribeAssetProcessListRequest struct {
 	// <li>HostIP- string - 是否必填：否 - 主机ip搜索</li>
 	// <li>ProcessName- string - 是否必填：否 - 进程名搜索</li>
 	// <li>Pid- string - 是否必填：否 - 进程id搜索(关联进程)</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAssetProcessListRequest) ToJsonString() string {
@@ -12858,13 +12858,13 @@ func (r *DescribeAssetProcessListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetProcessListResponseParams struct {
 	// 端口列表
-	List []*ProcessInfo `json:"List,omitempty" name:"List"`
+	List []*ProcessInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetProcessListResponse struct {
@@ -12915,73 +12915,73 @@ func (r *DescribeAssetSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetSummaryResponseParams struct {
 	// 应用个数
-	AppCnt *uint64 `json:"AppCnt,omitempty" name:"AppCnt"`
+	AppCnt *uint64 `json:"AppCnt,omitnil" name:"AppCnt"`
 
 	// 容器个数
-	ContainerCnt *uint64 `json:"ContainerCnt,omitempty" name:"ContainerCnt"`
+	ContainerCnt *uint64 `json:"ContainerCnt,omitnil" name:"ContainerCnt"`
 
 	// 暂停的容器个数
-	ContainerPause *uint64 `json:"ContainerPause,omitempty" name:"ContainerPause"`
+	ContainerPause *uint64 `json:"ContainerPause,omitnil" name:"ContainerPause"`
 
 	// 运行的容器个数
-	ContainerRunning *uint64 `json:"ContainerRunning,omitempty" name:"ContainerRunning"`
+	ContainerRunning *uint64 `json:"ContainerRunning,omitnil" name:"ContainerRunning"`
 
 	// 停止运行的容器个数
-	ContainerStop *uint64 `json:"ContainerStop,omitempty" name:"ContainerStop"`
+	ContainerStop *uint64 `json:"ContainerStop,omitnil" name:"ContainerStop"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 数据库个数
-	DbCnt *uint64 `json:"DbCnt,omitempty" name:"DbCnt"`
+	DbCnt *uint64 `json:"DbCnt,omitnil" name:"DbCnt"`
 
 	// 镜像个数
-	ImageCnt *uint64 `json:"ImageCnt,omitempty" name:"ImageCnt"`
+	ImageCnt *uint64 `json:"ImageCnt,omitnil" name:"ImageCnt"`
 
 	// 主机在线个数
-	HostOnline *uint64 `json:"HostOnline,omitempty" name:"HostOnline"`
+	HostOnline *uint64 `json:"HostOnline,omitnil" name:"HostOnline"`
 
 	// 主机个数
-	HostCnt *uint64 `json:"HostCnt,omitempty" name:"HostCnt"`
+	HostCnt *uint64 `json:"HostCnt,omitnil" name:"HostCnt"`
 
 	// 有风险的镜像个数
-	ImageHasRiskInfoCnt *uint64 `json:"ImageHasRiskInfoCnt,omitempty" name:"ImageHasRiskInfoCnt"`
+	ImageHasRiskInfoCnt *uint64 `json:"ImageHasRiskInfoCnt,omitnil" name:"ImageHasRiskInfoCnt"`
 
 	// 有病毒的镜像个数
-	ImageHasVirusCnt *uint64 `json:"ImageHasVirusCnt,omitempty" name:"ImageHasVirusCnt"`
+	ImageHasVirusCnt *uint64 `json:"ImageHasVirusCnt,omitnil" name:"ImageHasVirusCnt"`
 
 	// 有漏洞的镜像个数
-	ImageHasVulsCnt *uint64 `json:"ImageHasVulsCnt,omitempty" name:"ImageHasVulsCnt"`
+	ImageHasVulsCnt *uint64 `json:"ImageHasVulsCnt,omitnil" name:"ImageHasVulsCnt"`
 
 	// 不受信任的镜像个数
-	ImageUntrustCnt *uint64 `json:"ImageUntrustCnt,omitempty" name:"ImageUntrustCnt"`
+	ImageUntrustCnt *uint64 `json:"ImageUntrustCnt,omitnil" name:"ImageUntrustCnt"`
 
 	// 监听的端口个数
-	ListenPortCnt *uint64 `json:"ListenPortCnt,omitempty" name:"ListenPortCnt"`
+	ListenPortCnt *uint64 `json:"ListenPortCnt,omitnil" name:"ListenPortCnt"`
 
 	// 进程个数
-	ProcessCnt *uint64 `json:"ProcessCnt,omitempty" name:"ProcessCnt"`
+	ProcessCnt *uint64 `json:"ProcessCnt,omitnil" name:"ProcessCnt"`
 
 	// web服务个数
-	WebServiceCnt *uint64 `json:"WebServiceCnt,omitempty" name:"WebServiceCnt"`
+	WebServiceCnt *uint64 `json:"WebServiceCnt,omitnil" name:"WebServiceCnt"`
 
 	// 最近镜像扫描时间
-	LatestImageScanTime *string `json:"LatestImageScanTime,omitempty" name:"LatestImageScanTime"`
+	LatestImageScanTime *string `json:"LatestImageScanTime,omitnil" name:"LatestImageScanTime"`
 
 	// 风险镜像个数
-	ImageUnsafeCnt *uint64 `json:"ImageUnsafeCnt,omitempty" name:"ImageUnsafeCnt"`
+	ImageUnsafeCnt *uint64 `json:"ImageUnsafeCnt,omitnil" name:"ImageUnsafeCnt"`
 
 	// 主机未安装agent数量
-	HostUnInstallCnt *uint64 `json:"HostUnInstallCnt,omitempty" name:"HostUnInstallCnt"`
+	HostUnInstallCnt *uint64 `json:"HostUnInstallCnt,omitnil" name:"HostUnInstallCnt"`
 
 	// 超级节点个数
-	SuperNodeCnt *uint64 `json:"SuperNodeCnt,omitempty" name:"SuperNodeCnt"`
+	SuperNodeCnt *uint64 `json:"SuperNodeCnt,omitnil" name:"SuperNodeCnt"`
 
 	// 超级节点运行个数
-	SuperNodeRunningCnt *uint64 `json:"SuperNodeRunningCnt,omitempty" name:"SuperNodeRunningCnt"`
+	SuperNodeRunningCnt *uint64 `json:"SuperNodeRunningCnt,omitnil" name:"SuperNodeRunningCnt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetSummaryResponse struct {
@@ -13032,10 +13032,10 @@ func (r *DescribeAssetSyncLastTimeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetSyncLastTimeResponseParams struct {
 	// 资产最近同步时间
-	AssetSyncLastTime *string `json:"AssetSyncLastTime,omitempty" name:"AssetSyncLastTime"`
+	AssetSyncLastTime *string `json:"AssetSyncLastTime,omitnil" name:"AssetSyncLastTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetSyncLastTimeResponse struct {
@@ -13057,10 +13057,10 @@ func (r *DescribeAssetSyncLastTimeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetWebServiceListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords- String - 是否必填：否 - 模糊查询可选字段</li>
@@ -13069,17 +13069,17 @@ type DescribeAssetWebServiceListRequestParams struct {
 	// "lighttpd"
 	// "Nginx"
 	// "Tomcat"</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAssetWebServiceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Keywords- String - 是否必填：否 - 模糊查询可选字段</li>
@@ -13088,7 +13088,7 @@ type DescribeAssetWebServiceListRequest struct {
 	// "lighttpd"
 	// "Nginx"
 	// "Tomcat"</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAssetWebServiceListRequest) ToJsonString() string {
@@ -13115,13 +13115,13 @@ func (r *DescribeAssetWebServiceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetWebServiceListResponseParams struct {
 	// 主机列表
-	List []*ServiceInfo `json:"List,omitempty" name:"List"`
+	List []*ServiceInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetWebServiceListResponse struct {
@@ -13143,38 +13143,38 @@ func (r *DescribeAssetWebServiceListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAutoAuthorizedRuleHostRequestParams struct {
 	// 规则id
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 需要返回的数量，默认为全部；
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序字段
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序方式，asc，desc
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeAutoAuthorizedRuleHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则id
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 需要返回的数量，默认为全部；
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序字段
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序方式，asc，desc
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeAutoAuthorizedRuleHostRequest) ToJsonString() string {
@@ -13203,13 +13203,13 @@ func (r *DescribeAutoAuthorizedRuleHostRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAutoAuthorizedRuleHostResponseParams struct {
 	// 镜像自动授权规则授权范围主机列表
-	List []*AutoAuthorizedRuleHostInfo `json:"List,omitempty" name:"List"`
+	List []*AutoAuthorizedRuleHostInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAutoAuthorizedRuleHostResponse struct {
@@ -13231,26 +13231,26 @@ func (r *DescribeAutoAuthorizedRuleHostResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeCheckItemListRequestParams struct {
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name 可取值：risk_level风险等级, risk_target检查对象，风险对象,risk_type风险类别,risk_attri检测项所属的风险类型
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeCheckItemListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name 可取值：risk_level风险等级, risk_target检查对象，风险对象,risk_type风险类别,risk_attri检测项所属的风险类型
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeCheckItemListRequest) ToJsonString() string {
@@ -13277,13 +13277,13 @@ func (r *DescribeCheckItemListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCheckItemListResponseParams struct {
 	// 检查项详情数组
-	ClusterCheckItems []*ClusterCheckItem `json:"ClusterCheckItems,omitempty" name:"ClusterCheckItems"`
+	ClusterCheckItems []*ClusterCheckItem `json:"ClusterCheckItems,omitnil" name:"ClusterCheckItems"`
 
 	// 检查项总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCheckItemListResponse struct {
@@ -13305,14 +13305,14 @@ func (r *DescribeCheckItemListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterDetailRequestParams struct {
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 type DescribeClusterDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 func (r *DescribeClusterDetailRequest) ToJsonString() string {
@@ -13337,82 +13337,82 @@ func (r *DescribeClusterDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterDetailResponseParams struct {
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 集群名字
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 当前集群扫描任务的进度，100表示扫描完成.
-	ScanTaskProgress *int64 `json:"ScanTaskProgress,omitempty" name:"ScanTaskProgress"`
+	ScanTaskProgress *int64 `json:"ScanTaskProgress,omitnil" name:"ScanTaskProgress"`
 
 	// 集群版本
-	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
+	ClusterVersion *string `json:"ClusterVersion,omitnil" name:"ClusterVersion"`
 
 	// 运行时组件
-	ContainerRuntime *string `json:"ContainerRuntime,omitempty" name:"ContainerRuntime"`
+	ContainerRuntime *string `json:"ContainerRuntime,omitnil" name:"ContainerRuntime"`
 
 	// 集群节点数
-	ClusterNodeNum *uint64 `json:"ClusterNodeNum,omitempty" name:"ClusterNodeNum"`
+	ClusterNodeNum *uint64 `json:"ClusterNodeNum,omitnil" name:"ClusterNodeNum"`
 
 	// 集群状态 (Running 运行中 Creating 创建中 Abnormal 异常 )
-	ClusterStatus *string `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+	ClusterStatus *string `json:"ClusterStatus,omitnil" name:"ClusterStatus"`
 
 	// 集群类型：为托管集群MANAGED_CLUSTER、独立集群INDEPENDENT_CLUSTER
-	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
 
 	// 集群区域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 严重风险检查项的数量
-	SeriousRiskCount *uint64 `json:"SeriousRiskCount,omitempty" name:"SeriousRiskCount"`
+	SeriousRiskCount *uint64 `json:"SeriousRiskCount,omitnil" name:"SeriousRiskCount"`
 
 	// 高风险检查项的数量
-	HighRiskCount *uint64 `json:"HighRiskCount,omitempty" name:"HighRiskCount"`
+	HighRiskCount *uint64 `json:"HighRiskCount,omitnil" name:"HighRiskCount"`
 
 	// 中风险检查项的数量
-	MiddleRiskCount *uint64 `json:"MiddleRiskCount,omitempty" name:"MiddleRiskCount"`
+	MiddleRiskCount *uint64 `json:"MiddleRiskCount,omitnil" name:"MiddleRiskCount"`
 
 	// 提示风险检查项的数量
-	HintRiskCount *uint64 `json:"HintRiskCount,omitempty" name:"HintRiskCount"`
+	HintRiskCount *uint64 `json:"HintRiskCount,omitnil" name:"HintRiskCount"`
 
 	// 检查任务的状态
-	CheckStatus *string `json:"CheckStatus,omitempty" name:"CheckStatus"`
+	CheckStatus *string `json:"CheckStatus,omitnil" name:"CheckStatus"`
 
 	// 防御容器状态
-	DefenderStatus *string `json:"DefenderStatus,omitempty" name:"DefenderStatus"`
+	DefenderStatus *string `json:"DefenderStatus,omitnil" name:"DefenderStatus"`
 
 	// 扫描任务创建时间
-	TaskCreateTime *string `json:"TaskCreateTime,omitempty" name:"TaskCreateTime"`
+	TaskCreateTime *string `json:"TaskCreateTime,omitnil" name:"TaskCreateTime"`
 
 	// 网络类型.PublicNetwork为公网类型,VPCNetwork为VPC网络
-	NetworkType *string `json:"NetworkType,omitempty" name:"NetworkType"`
+	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
 
 	// API Server地址
-	ApiServerAddress *string `json:"ApiServerAddress,omitempty" name:"ApiServerAddress"`
+	ApiServerAddress *string `json:"ApiServerAddress,omitnil" name:"ApiServerAddress"`
 
 	// 节点数
-	NodeCount *uint64 `json:"NodeCount,omitempty" name:"NodeCount"`
+	NodeCount *uint64 `json:"NodeCount,omitnil" name:"NodeCount"`
 
 	// 命名空间数
-	NamespaceCount *uint64 `json:"NamespaceCount,omitempty" name:"NamespaceCount"`
+	NamespaceCount *uint64 `json:"NamespaceCount,omitnil" name:"NamespaceCount"`
 
 	// 工作负载数
-	WorkloadCount *uint64 `json:"WorkloadCount,omitempty" name:"WorkloadCount"`
+	WorkloadCount *uint64 `json:"WorkloadCount,omitnil" name:"WorkloadCount"`
 
 	// Pod数量
-	PodCount *uint64 `json:"PodCount,omitempty" name:"PodCount"`
+	PodCount *uint64 `json:"PodCount,omitnil" name:"PodCount"`
 
 	// Service数量
-	ServiceCount *uint64 `json:"ServiceCount,omitempty" name:"ServiceCount"`
+	ServiceCount *uint64 `json:"ServiceCount,omitnil" name:"ServiceCount"`
 
 	// Ingress数量
-	IngressCount *uint64 `json:"IngressCount,omitempty" name:"IngressCount"`
+	IngressCount *uint64 `json:"IngressCount,omitnil" name:"IngressCount"`
 
 	// 主节点的ip列表
-	MasterIps *string `json:"MasterIps,omitempty" name:"MasterIps"`
+	MasterIps *string `json:"MasterIps,omitnil" name:"MasterIps"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeClusterDetailResponse struct {
@@ -13463,55 +13463,55 @@ func (r *DescribeClusterSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterSummaryResponseParams struct {
 	// 集群总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 有风险的集群数量
-	RiskClusterCount *uint64 `json:"RiskClusterCount,omitempty" name:"RiskClusterCount"`
+	RiskClusterCount *uint64 `json:"RiskClusterCount,omitnil" name:"RiskClusterCount"`
 
 	// 未检查的集群数量
-	UncheckClusterCount *uint64 `json:"UncheckClusterCount,omitempty" name:"UncheckClusterCount"`
+	UncheckClusterCount *uint64 `json:"UncheckClusterCount,omitnil" name:"UncheckClusterCount"`
 
 	// 托管集群数量
-	ManagedClusterCount *uint64 `json:"ManagedClusterCount,omitempty" name:"ManagedClusterCount"`
+	ManagedClusterCount *uint64 `json:"ManagedClusterCount,omitnil" name:"ManagedClusterCount"`
 
 	// 独立集群数量
-	IndependentClusterCount *uint64 `json:"IndependentClusterCount,omitempty" name:"IndependentClusterCount"`
+	IndependentClusterCount *uint64 `json:"IndependentClusterCount,omitnil" name:"IndependentClusterCount"`
 
 	// 无风险的集群数量
-	NoRiskClusterCount *uint64 `json:"NoRiskClusterCount,omitempty" name:"NoRiskClusterCount"`
+	NoRiskClusterCount *uint64 `json:"NoRiskClusterCount,omitnil" name:"NoRiskClusterCount"`
 
 	// 已经检查集群数
-	CheckedClusterCount *uint64 `json:"CheckedClusterCount,omitempty" name:"CheckedClusterCount"`
+	CheckedClusterCount *uint64 `json:"CheckedClusterCount,omitnil" name:"CheckedClusterCount"`
 
 	// 自动检查集群数
-	AutoCheckClusterCount *uint64 `json:"AutoCheckClusterCount,omitempty" name:"AutoCheckClusterCount"`
+	AutoCheckClusterCount *uint64 `json:"AutoCheckClusterCount,omitnil" name:"AutoCheckClusterCount"`
 
 	// 手动检查集群数
-	ManualCheckClusterCount *uint64 `json:"ManualCheckClusterCount,omitempty" name:"ManualCheckClusterCount"`
+	ManualCheckClusterCount *uint64 `json:"ManualCheckClusterCount,omitnil" name:"ManualCheckClusterCount"`
 
 	// 检查失败集群数
-	FailedClusterCount *uint64 `json:"FailedClusterCount,omitempty" name:"FailedClusterCount"`
+	FailedClusterCount *uint64 `json:"FailedClusterCount,omitnil" name:"FailedClusterCount"`
 
 	// 未导入的集群数量
-	NotImportedClusterCount *uint64 `json:"NotImportedClusterCount,omitempty" name:"NotImportedClusterCount"`
+	NotImportedClusterCount *uint64 `json:"NotImportedClusterCount,omitnil" name:"NotImportedClusterCount"`
 
 	// eks集群数量
-	ServerlessClusterCount *uint64 `json:"ServerlessClusterCount,omitempty" name:"ServerlessClusterCount"`
+	ServerlessClusterCount *uint64 `json:"ServerlessClusterCount,omitnil" name:"ServerlessClusterCount"`
 
 	// TKE集群数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TkeClusterCount *uint64 `json:"TkeClusterCount,omitempty" name:"TkeClusterCount"`
+	TkeClusterCount *uint64 `json:"TkeClusterCount,omitnil" name:"TkeClusterCount"`
 
 	// 用户自建腾讯云集群数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserCreateTencentClusterCount *uint64 `json:"UserCreateTencentClusterCount,omitempty" name:"UserCreateTencentClusterCount"`
+	UserCreateTencentClusterCount *uint64 `json:"UserCreateTencentClusterCount,omitnil" name:"UserCreateTencentClusterCount"`
 
 	// 用户自建集群混合云数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserCreateHybridClusterCount *uint64 `json:"UserCreateHybridClusterCount,omitempty" name:"UserCreateHybridClusterCount"`
+	UserCreateHybridClusterCount *uint64 `json:"UserCreateHybridClusterCount,omitnil" name:"UserCreateHybridClusterCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeClusterSummaryResponse struct {
@@ -13533,14 +13533,14 @@ func (r *DescribeClusterSummaryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeComplianceAssetDetailInfoRequestParams struct {
 	// 客户资产ID。
-	CustomerAssetId *uint64 `json:"CustomerAssetId,omitempty" name:"CustomerAssetId"`
+	CustomerAssetId *uint64 `json:"CustomerAssetId,omitnil" name:"CustomerAssetId"`
 }
 
 type DescribeComplianceAssetDetailInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户资产ID。
-	CustomerAssetId *uint64 `json:"CustomerAssetId,omitempty" name:"CustomerAssetId"`
+	CustomerAssetId *uint64 `json:"CustomerAssetId,omitnil" name:"CustomerAssetId"`
 }
 
 func (r *DescribeComplianceAssetDetailInfoRequest) ToJsonString() string {
@@ -13565,26 +13565,26 @@ func (r *DescribeComplianceAssetDetailInfoRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeComplianceAssetDetailInfoResponseParams struct {
 	// 某资产的详情。
-	AssetDetailInfo *ComplianceAssetDetailInfo `json:"AssetDetailInfo,omitempty" name:"AssetDetailInfo"`
+	AssetDetailInfo *ComplianceAssetDetailInfo `json:"AssetDetailInfo,omitnil" name:"AssetDetailInfo"`
 
 	// 当资产为容器时，返回此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerDetailInfo *ComplianceContainerDetailInfo `json:"ContainerDetailInfo,omitempty" name:"ContainerDetailInfo"`
+	ContainerDetailInfo *ComplianceContainerDetailInfo `json:"ContainerDetailInfo,omitnil" name:"ContainerDetailInfo"`
 
 	// 当资产为镜像时，返回此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageDetailInfo *ComplianceImageDetailInfo `json:"ImageDetailInfo,omitempty" name:"ImageDetailInfo"`
+	ImageDetailInfo *ComplianceImageDetailInfo `json:"ImageDetailInfo,omitnil" name:"ImageDetailInfo"`
 
 	// 当资产为主机时，返回此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostDetailInfo *ComplianceHostDetailInfo `json:"HostDetailInfo,omitempty" name:"HostDetailInfo"`
+	HostDetailInfo *ComplianceHostDetailInfo `json:"HostDetailInfo,omitnil" name:"HostDetailInfo"`
 
 	// 当资产为K8S时，返回此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	K8SDetailInfo *ComplianceK8SDetailInfo `json:"K8SDetailInfo,omitempty" name:"K8SDetailInfo"`
+	K8SDetailInfo *ComplianceK8SDetailInfo `json:"K8SDetailInfo,omitnil" name:"K8SDetailInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeComplianceAssetDetailInfoResponse struct {
@@ -13606,32 +13606,32 @@ func (r *DescribeComplianceAssetDetailInfoResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeComplianceAssetListRequestParams struct {
 	// 资产类型列表。
-	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
+	AssetTypeSet []*string `json:"AssetTypeSet,omitnil" name:"AssetTypeSet"`
 
 	// 起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回的数据量，默认为10，最大为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 查询过滤器
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeComplianceAssetListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 资产类型列表。
-	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
+	AssetTypeSet []*string `json:"AssetTypeSet,omitnil" name:"AssetTypeSet"`
 
 	// 起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回的数据量，默认为10，最大为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 查询过滤器
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeComplianceAssetListRequest) ToJsonString() string {
@@ -13659,14 +13659,14 @@ func (r *DescribeComplianceAssetListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeComplianceAssetListResponseParams struct {
 	// 返回资产的总数。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 返回各类资产的列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssetInfoList []*ComplianceAssetInfo `json:"AssetInfoList,omitempty" name:"AssetInfoList"`
+	AssetInfoList []*ComplianceAssetInfo `json:"AssetInfoList,omitnil" name:"AssetInfoList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeComplianceAssetListResponse struct {
@@ -13688,34 +13688,34 @@ func (r *DescribeComplianceAssetListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeComplianceAssetPolicyItemListRequestParams struct {
 	// 客户资产的ID。
-	CustomerAssetId *uint64 `json:"CustomerAssetId,omitempty" name:"CustomerAssetId"`
+	CustomerAssetId *uint64 `json:"CustomerAssetId,omitnil" name:"CustomerAssetId"`
 
 	// 起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 要获取的数据量，默认为10，最大为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤器列表。Name字段支持
 	// RiskLevel
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeComplianceAssetPolicyItemListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户资产的ID。
-	CustomerAssetId *uint64 `json:"CustomerAssetId,omitempty" name:"CustomerAssetId"`
+	CustomerAssetId *uint64 `json:"CustomerAssetId,omitnil" name:"CustomerAssetId"`
 
 	// 起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 要获取的数据量，默认为10，最大为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤器列表。Name字段支持
 	// RiskLevel
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeComplianceAssetPolicyItemListRequest) ToJsonString() string {
@@ -13743,13 +13743,13 @@ func (r *DescribeComplianceAssetPolicyItemListRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeComplianceAssetPolicyItemListResponseParams struct {
 	// 返回检测项的总数。如果用户未启用基线检查，此处返回0。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 返回某个资产下的检测项的列表。
-	AssetPolicyItemList []*ComplianceAssetPolicyItem `json:"AssetPolicyItemList,omitempty" name:"AssetPolicyItemList"`
+	AssetPolicyItemList []*ComplianceAssetPolicyItem `json:"AssetPolicyItemList,omitnil" name:"AssetPolicyItemList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeComplianceAssetPolicyItemListResponse struct {
@@ -13775,13 +13775,13 @@ type DescribeCompliancePeriodTaskListRequestParams struct {
 	// ASSET_IMAGE, 镜像
 	// ASSET_HOST, 主机
 	// ASSET_K8S, K8S资产
-	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要返回的数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeCompliancePeriodTaskListRequest struct {
@@ -13792,13 +13792,13 @@ type DescribeCompliancePeriodTaskListRequest struct {
 	// ASSET_IMAGE, 镜像
 	// ASSET_HOST, 主机
 	// ASSET_K8S, K8S资产
-	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要返回的数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeCompliancePeriodTaskListRequest) ToJsonString() string {
@@ -13825,13 +13825,13 @@ func (r *DescribeCompliancePeriodTaskListRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeCompliancePeriodTaskListResponseParams struct {
 	// 定时任务的总量。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 定时任务信息的列表
-	PeriodTaskSet []*CompliancePeriodTask `json:"PeriodTaskSet,omitempty" name:"PeriodTaskSet"`
+	PeriodTaskSet []*CompliancePeriodTask `json:"PeriodTaskSet,omitnil" name:"PeriodTaskSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCompliancePeriodTaskListResponse struct {
@@ -13853,36 +13853,36 @@ func (r *DescribeCompliancePeriodTaskListResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeCompliancePolicyItemAffectedAssetListRequestParams struct {
 	// DescribeComplianceTaskPolicyItemSummaryList返回的CustomerPolicyItemId，表示检测项的ID。
-	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitnil" name:"CustomerPolicyItemId"`
 
 	// 起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要返回的数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件。
 	// Name - String
 	// Name 可取值：NodeName, CheckResult
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeCompliancePolicyItemAffectedAssetListRequest struct {
 	*tchttp.BaseRequest
 	
 	// DescribeComplianceTaskPolicyItemSummaryList返回的CustomerPolicyItemId，表示检测项的ID。
-	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitnil" name:"CustomerPolicyItemId"`
 
 	// 起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要返回的数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件。
 	// Name - String
 	// Name 可取值：NodeName, CheckResult
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeCompliancePolicyItemAffectedAssetListRequest) ToJsonString() string {
@@ -13910,13 +13910,13 @@ func (r *DescribeCompliancePolicyItemAffectedAssetListRequest) FromJsonString(s 
 // Predefined struct for user
 type DescribeCompliancePolicyItemAffectedAssetListResponseParams struct {
 	// 返回各检测项所影响的资产的列表。
-	AffectedAssetList []*ComplianceAffectedAsset `json:"AffectedAssetList,omitempty" name:"AffectedAssetList"`
+	AffectedAssetList []*ComplianceAffectedAsset `json:"AffectedAssetList,omitnil" name:"AffectedAssetList"`
 
 	// 检测项影响的资产的总数。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCompliancePolicyItemAffectedAssetListResponse struct {
@@ -13938,14 +13938,14 @@ func (r *DescribeCompliancePolicyItemAffectedAssetListResponse) FromJsonString(s
 // Predefined struct for user
 type DescribeCompliancePolicyItemAffectedSummaryRequestParams struct {
 	// DescribeComplianceTaskPolicyItemSummaryList返回的CustomerPolicyItemId，表示检测项的ID。
-	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitnil" name:"CustomerPolicyItemId"`
 }
 
 type DescribeCompliancePolicyItemAffectedSummaryRequest struct {
 	*tchttp.BaseRequest
 	
 	// DescribeComplianceTaskPolicyItemSummaryList返回的CustomerPolicyItemId，表示检测项的ID。
-	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitnil" name:"CustomerPolicyItemId"`
 }
 
 func (r *DescribeCompliancePolicyItemAffectedSummaryRequest) ToJsonString() string {
@@ -13970,10 +13970,10 @@ func (r *DescribeCompliancePolicyItemAffectedSummaryRequest) FromJsonString(s st
 // Predefined struct for user
 type DescribeCompliancePolicyItemAffectedSummaryResponseParams struct {
 	// 返回各检测项影响的资产的汇总信息。
-	PolicyItemSummary *CompliancePolicyItemSummary `json:"PolicyItemSummary,omitempty" name:"PolicyItemSummary"`
+	PolicyItemSummary *CompliancePolicyItemSummary `json:"PolicyItemSummary,omitnil" name:"PolicyItemSummary"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCompliancePolicyItemAffectedSummaryResponse struct {
@@ -13999,16 +13999,16 @@ type DescribeComplianceScanFailedAssetListRequestParams struct {
 	// ASSET_IMAGE, 镜像
 	// ASSET_HOST, 主机
 	// ASSET_K8S, K8S资产
-	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
+	AssetTypeSet []*string `json:"AssetTypeSet,omitnil" name:"AssetTypeSet"`
 
 	// 起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回的数据量，默认为10，最大为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 查询过滤器
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeComplianceScanFailedAssetListRequest struct {
@@ -14019,16 +14019,16 @@ type DescribeComplianceScanFailedAssetListRequest struct {
 	// ASSET_IMAGE, 镜像
 	// ASSET_HOST, 主机
 	// ASSET_K8S, K8S资产
-	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
+	AssetTypeSet []*string `json:"AssetTypeSet,omitnil" name:"AssetTypeSet"`
 
 	// 起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回的数据量，默认为10，最大为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 查询过滤器
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeComplianceScanFailedAssetListRequest) ToJsonString() string {
@@ -14056,14 +14056,14 @@ func (r *DescribeComplianceScanFailedAssetListRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeComplianceScanFailedAssetListResponseParams struct {
 	// 返回检测失败的资产的总数。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 返回各类检测失败的资产的汇总信息的列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanFailedAssetList []*ComplianceScanFailedAsset `json:"ScanFailedAssetList,omitempty" name:"ScanFailedAssetList"`
+	ScanFailedAssetList []*ComplianceScanFailedAsset `json:"ScanFailedAssetList,omitnil" name:"ScanFailedAssetList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeComplianceScanFailedAssetListResponse struct {
@@ -14089,7 +14089,7 @@ type DescribeComplianceTaskAssetSummaryRequestParams struct {
 	// ASSET_IMAGE, 镜像
 	// ASSET_HOST, 主机
 	// ASSET_K8S, K8S资产
-	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
+	AssetTypeSet []*string `json:"AssetTypeSet,omitnil" name:"AssetTypeSet"`
 }
 
 type DescribeComplianceTaskAssetSummaryRequest struct {
@@ -14100,7 +14100,7 @@ type DescribeComplianceTaskAssetSummaryRequest struct {
 	// ASSET_IMAGE, 镜像
 	// ASSET_HOST, 主机
 	// ASSET_K8S, K8S资产
-	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
+	AssetTypeSet []*string `json:"AssetTypeSet,omitnil" name:"AssetTypeSet"`
 }
 
 func (r *DescribeComplianceTaskAssetSummaryRequest) ToJsonString() string {
@@ -14129,13 +14129,13 @@ type DescribeComplianceTaskAssetSummaryResponseParams struct {
 	// USER_UNINIT: 用户未初始化。
 	// USER_INITIALIZING，表示用户正在初始化环境。
 	// USER_NORMAL: 正常状态。
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 返回各类资产的汇总信息的列表。
-	AssetSummaryList []*ComplianceAssetSummary `json:"AssetSummaryList,omitempty" name:"AssetSummaryList"`
+	AssetSummaryList []*ComplianceAssetSummary `json:"AssetSummaryList,omitnil" name:"AssetSummaryList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeComplianceTaskAssetSummaryResponse struct {
@@ -14165,19 +14165,19 @@ type DescribeComplianceTaskPolicyItemSummaryListRequestParams struct {
 	// ASSET_HOST, 主机
 	// 
 	// ASSET_K8S, K8S资产
-	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
 
 	// 起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要返回的数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件。
 	// Name - String
 	// Name 可取值：ItemType, StandardId,  RiskLevel。
 	// 当为K8S资产时，还可取ClusterName。
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeComplianceTaskPolicyItemSummaryListRequest struct {
@@ -14192,19 +14192,19 @@ type DescribeComplianceTaskPolicyItemSummaryListRequest struct {
 	// ASSET_HOST, 主机
 	// 
 	// ASSET_K8S, K8S资产
-	AssetType *string `json:"AssetType,omitempty" name:"AssetType"`
+	AssetType *string `json:"AssetType,omitnil" name:"AssetType"`
 
 	// 起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要返回的数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件。
 	// Name - String
 	// Name 可取值：ItemType, StandardId,  RiskLevel。
 	// 当为K8S资产时，还可取ClusterName。
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeComplianceTaskPolicyItemSummaryListRequest) ToJsonString() string {
@@ -14233,16 +14233,16 @@ func (r *DescribeComplianceTaskPolicyItemSummaryListRequest) FromJsonString(s st
 type DescribeComplianceTaskPolicyItemSummaryListResponseParams struct {
 	// 返回最近一次合规检查任务的ID。这个任务为本次所展示数据的来源。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 返回检测项的总数。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 返回各检测项对应的汇总信息的列表。
-	PolicyItemSummaryList []*CompliancePolicyItemSummary `json:"PolicyItemSummaryList,omitempty" name:"PolicyItemSummaryList"`
+	PolicyItemSummaryList []*CompliancePolicyItemSummary `json:"PolicyItemSummaryList,omitnil" name:"PolicyItemSummaryList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeComplianceTaskPolicyItemSummaryListResponse struct {
@@ -14264,44 +14264,44 @@ func (r *DescribeComplianceTaskPolicyItemSummaryListResponse) FromJsonString(s s
 // Predefined struct for user
 type DescribeComplianceWhitelistItemListRequestParams struct {
 	// 起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 要获取的数量，默认为10，最大为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 资产类型列表。
-	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
+	AssetTypeSet []*string `json:"AssetTypeSet,omitnil" name:"AssetTypeSet"`
 
 	// 查询过滤器
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 desc asc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeComplianceWhitelistItemListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 要获取的数量，默认为10，最大为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 资产类型列表。
-	AssetTypeSet []*string `json:"AssetTypeSet,omitempty" name:"AssetTypeSet"`
+	AssetTypeSet []*string `json:"AssetTypeSet,omitnil" name:"AssetTypeSet"`
 
 	// 查询过滤器
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 desc asc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeComplianceWhitelistItemListRequest) ToJsonString() string {
@@ -14331,13 +14331,13 @@ func (r *DescribeComplianceWhitelistItemListRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeComplianceWhitelistItemListResponseParams struct {
 	// 白名单项的列表。
-	WhitelistItemSet []*ComplianceWhitelistItem `json:"WhitelistItemSet,omitempty" name:"WhitelistItemSet"`
+	WhitelistItemSet []*ComplianceWhitelistItem `json:"WhitelistItemSet,omitnil" name:"WhitelistItemSet"`
 
 	// 白名单项的总数。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeComplianceWhitelistItemListResponse struct {
@@ -14388,43 +14388,43 @@ func (r *DescribeContainerAssetSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeContainerAssetSummaryResponseParams struct {
 	// 容器总数
-	ContainerTotalCnt *uint64 `json:"ContainerTotalCnt,omitempty" name:"ContainerTotalCnt"`
+	ContainerTotalCnt *uint64 `json:"ContainerTotalCnt,omitnil" name:"ContainerTotalCnt"`
 
 	// 正在运行容器数量
-	ContainerRunningCnt *uint64 `json:"ContainerRunningCnt,omitempty" name:"ContainerRunningCnt"`
+	ContainerRunningCnt *uint64 `json:"ContainerRunningCnt,omitnil" name:"ContainerRunningCnt"`
 
 	// 暂停运行容器数量
-	ContainerPauseCnt *uint64 `json:"ContainerPauseCnt,omitempty" name:"ContainerPauseCnt"`
+	ContainerPauseCnt *uint64 `json:"ContainerPauseCnt,omitnil" name:"ContainerPauseCnt"`
 
 	// 停止运行容器数量
-	ContainerStopped *uint64 `json:"ContainerStopped,omitempty" name:"ContainerStopped"`
+	ContainerStopped *uint64 `json:"ContainerStopped,omitnil" name:"ContainerStopped"`
 
 	// 本地镜像数量
-	ImageCnt *uint64 `json:"ImageCnt,omitempty" name:"ImageCnt"`
+	ImageCnt *uint64 `json:"ImageCnt,omitnil" name:"ImageCnt"`
 
 	// 主机节点数量
-	HostCnt *uint64 `json:"HostCnt,omitempty" name:"HostCnt"`
+	HostCnt *uint64 `json:"HostCnt,omitnil" name:"HostCnt"`
 
 	// 主机正在运行节点数量
-	HostRunningCnt *uint64 `json:"HostRunningCnt,omitempty" name:"HostRunningCnt"`
+	HostRunningCnt *uint64 `json:"HostRunningCnt,omitnil" name:"HostRunningCnt"`
 
 	// 主机离线节点数量
-	HostOfflineCnt *uint64 `json:"HostOfflineCnt,omitempty" name:"HostOfflineCnt"`
+	HostOfflineCnt *uint64 `json:"HostOfflineCnt,omitnil" name:"HostOfflineCnt"`
 
 	// 镜像仓库数量
-	ImageRegistryCnt *uint64 `json:"ImageRegistryCnt,omitempty" name:"ImageRegistryCnt"`
+	ImageRegistryCnt *uint64 `json:"ImageRegistryCnt,omitnil" name:"ImageRegistryCnt"`
 
 	// 镜像总数
-	ImageTotalCnt *uint64 `json:"ImageTotalCnt,omitempty" name:"ImageTotalCnt"`
+	ImageTotalCnt *uint64 `json:"ImageTotalCnt,omitnil" name:"ImageTotalCnt"`
 
 	// 主机未安装agent数量
-	HostUnInstallCnt *uint64 `json:"HostUnInstallCnt,omitempty" name:"HostUnInstallCnt"`
+	HostUnInstallCnt *uint64 `json:"HostUnInstallCnt,omitnil" name:"HostUnInstallCnt"`
 
 	// 超级节点个数
-	HostSuperNodeCnt *uint64 `json:"HostSuperNodeCnt,omitempty" name:"HostSuperNodeCnt"`
+	HostSuperNodeCnt *uint64 `json:"HostSuperNodeCnt,omitnil" name:"HostSuperNodeCnt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeContainerAssetSummaryResponse struct {
@@ -14475,32 +14475,32 @@ func (r *DescribeContainerSecEventSummaryRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeContainerSecEventSummaryResponseParams struct {
 	// 未处理逃逸事件
-	UnhandledEscapeCnt *uint64 `json:"UnhandledEscapeCnt,omitempty" name:"UnhandledEscapeCnt"`
+	UnhandledEscapeCnt *uint64 `json:"UnhandledEscapeCnt,omitnil" name:"UnhandledEscapeCnt"`
 
 	// 未处理反弹shell事件
-	UnhandledReverseShellCnt *uint64 `json:"UnhandledReverseShellCnt,omitempty" name:"UnhandledReverseShellCnt"`
+	UnhandledReverseShellCnt *uint64 `json:"UnhandledReverseShellCnt,omitnil" name:"UnhandledReverseShellCnt"`
 
 	// 未处理高危系统调用
-	UnhandledRiskSyscallCnt *uint64 `json:"UnhandledRiskSyscallCnt,omitempty" name:"UnhandledRiskSyscallCnt"`
+	UnhandledRiskSyscallCnt *uint64 `json:"UnhandledRiskSyscallCnt,omitnil" name:"UnhandledRiskSyscallCnt"`
 
 	// 未处理异常进程
-	UnhandledAbnormalProcessCnt *uint64 `json:"UnhandledAbnormalProcessCnt,omitempty" name:"UnhandledAbnormalProcessCnt"`
+	UnhandledAbnormalProcessCnt *uint64 `json:"UnhandledAbnormalProcessCnt,omitnil" name:"UnhandledAbnormalProcessCnt"`
 
 	// 未处理文件篡改
-	UnhandledFileCnt *uint64 `json:"UnhandledFileCnt,omitempty" name:"UnhandledFileCnt"`
+	UnhandledFileCnt *uint64 `json:"UnhandledFileCnt,omitnil" name:"UnhandledFileCnt"`
 
 	// 未处理木马事件
-	UnhandledVirusEventCnt *uint64 `json:"UnhandledVirusEventCnt,omitempty" name:"UnhandledVirusEventCnt"`
+	UnhandledVirusEventCnt *uint64 `json:"UnhandledVirusEventCnt,omitnil" name:"UnhandledVirusEventCnt"`
 
 	// 未处理恶意外连事件
-	UnhandledMaliciousConnectionEventCnt *uint64 `json:"UnhandledMaliciousConnectionEventCnt,omitempty" name:"UnhandledMaliciousConnectionEventCnt"`
+	UnhandledMaliciousConnectionEventCnt *uint64 `json:"UnhandledMaliciousConnectionEventCnt,omitnil" name:"UnhandledMaliciousConnectionEventCnt"`
 
 	// 未处理k8sApi事件
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnhandledK8sApiEventCnt *uint64 `json:"UnhandledK8sApiEventCnt,omitempty" name:"UnhandledK8sApiEventCnt"`
+	UnhandledK8sApiEventCnt *uint64 `json:"UnhandledK8sApiEventCnt,omitnil" name:"UnhandledK8sApiEventCnt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeContainerSecEventSummaryResponse struct {
@@ -14522,14 +14522,14 @@ func (r *DescribeContainerSecEventSummaryResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeESAggregationsRequestParams struct {
 	// ES聚合条件JSON
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 }
 
 type DescribeESAggregationsRequest struct {
 	*tchttp.BaseRequest
 	
 	// ES聚合条件JSON
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 }
 
 func (r *DescribeESAggregationsRequest) ToJsonString() string {
@@ -14554,10 +14554,10 @@ func (r *DescribeESAggregationsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeESAggregationsResponseParams struct {
 	// ES聚合结果JSON
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeESAggregationsResponse struct {
@@ -14579,26 +14579,26 @@ func (r *DescribeESAggregationsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeESHitsRequestParams struct {
 	// ES查询条件JSON
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeESHitsRequest struct {
 	*tchttp.BaseRequest
 	
 	// ES查询条件JSON
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeESHitsRequest) ToJsonString() string {
@@ -14625,10 +14625,10 @@ func (r *DescribeESHitsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeESHitsResponseParams struct {
 	// ES查询结果JSON
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeESHitsResponse struct {
@@ -14650,10 +14650,10 @@ func (r *DescribeESHitsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEmergencyVulListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
@@ -14667,23 +14667,23 @@ type DescribeEmergencyVulListRequestParams struct {
 	// <li>ComponentName- string -是否必填: 否 - 组件名称</li>
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeEmergencyVulListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
@@ -14697,13 +14697,13 @@ type DescribeEmergencyVulListRequest struct {
 	// <li>ComponentName- string -是否必填: 否 - 组件名称</li>
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeEmergencyVulListRequest) ToJsonString() string {
@@ -14732,13 +14732,13 @@ func (r *DescribeEmergencyVulListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEmergencyVulListResponseParams struct {
 	// 漏洞总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 漏洞列表
-	List []*EmergencyVulInfo `json:"List,omitempty" name:"List"`
+	List []*EmergencyVulInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeEmergencyVulListResponse struct {
@@ -14760,14 +14760,14 @@ func (r *DescribeEmergencyVulListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEscapeEventDetailRequestParams struct {
 	// 事件唯一id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 type DescribeEscapeEventDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件唯一id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 func (r *DescribeEscapeEventDetailRequest) ToJsonString() string {
@@ -14792,23 +14792,23 @@ func (r *DescribeEscapeEventDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEscapeEventDetailResponseParams struct {
 	// 事件基本信息
-	EventBaseInfo *RunTimeEventBaseInfo `json:"EventBaseInfo,omitempty" name:"EventBaseInfo"`
+	EventBaseInfo *RunTimeEventBaseInfo `json:"EventBaseInfo,omitnil" name:"EventBaseInfo"`
 
 	// 进程信息
-	ProcessInfo *ProcessDetailInfo `json:"ProcessInfo,omitempty" name:"ProcessInfo"`
+	ProcessInfo *ProcessDetailInfo `json:"ProcessInfo,omitnil" name:"ProcessInfo"`
 
 	// 事件描述
-	EventDetail *EscapeEventDescription `json:"EventDetail,omitempty" name:"EventDetail"`
+	EventDetail *EscapeEventDescription `json:"EventDetail,omitnil" name:"EventDetail"`
 
 	// 父进程信息
-	ParentProcessInfo *ProcessBaseInfo `json:"ParentProcessInfo,omitempty" name:"ParentProcessInfo"`
+	ParentProcessInfo *ProcessBaseInfo `json:"ParentProcessInfo,omitnil" name:"ParentProcessInfo"`
 
 	// 祖先进程信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitempty" name:"AncestorProcessInfo"`
+	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitnil" name:"AncestorProcessInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeEscapeEventDetailResponse struct {
@@ -14830,38 +14830,38 @@ func (r *DescribeEscapeEventDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEscapeEventInfoRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,Status：EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeEscapeEventInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,Status：EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeEscapeEventInfoRequest) ToJsonString() string {
@@ -14890,13 +14890,13 @@ func (r *DescribeEscapeEventInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEscapeEventInfoResponseParams struct {
 	// 逃逸事件数组
-	EventSet []*EscapeEventInfo `json:"EventSet,omitempty" name:"EventSet"`
+	EventSet []*EscapeEventInfo `json:"EventSet,omitnil" name:"EventSet"`
 
 	// 事件总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeEscapeEventInfoResponse struct {
@@ -14918,20 +14918,20 @@ func (r *DescribeEscapeEventInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEscapeEventTendencyRequestParams struct {
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 }
 
 type DescribeEscapeEventTendencyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 }
 
 func (r *DescribeEscapeEventTendencyRequest) ToJsonString() string {
@@ -14957,10 +14957,10 @@ func (r *DescribeEscapeEventTendencyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEscapeEventTendencyResponseParams struct {
 	// 待处理逃逸事件趋势
-	List []*EscapeEventTendencyInfo `json:"List,omitempty" name:"List"`
+	List []*EscapeEventTendencyInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeEscapeEventTendencyResponse struct {
@@ -15011,19 +15011,19 @@ func (r *DescribeEscapeEventTypeSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEscapeEventTypeSummaryResponseParams struct {
 	// 容器逃逸事件数
-	ContainerEscapeEventCount *int64 `json:"ContainerEscapeEventCount,omitempty" name:"ContainerEscapeEventCount"`
+	ContainerEscapeEventCount *int64 `json:"ContainerEscapeEventCount,omitnil" name:"ContainerEscapeEventCount"`
 
 	// 程序提权事件数
-	ProcessPrivilegeEventCount *int64 `json:"ProcessPrivilegeEventCount,omitempty" name:"ProcessPrivilegeEventCount"`
+	ProcessPrivilegeEventCount *int64 `json:"ProcessPrivilegeEventCount,omitnil" name:"ProcessPrivilegeEventCount"`
 
 	// 风险容器事件数
-	RiskContainerEventCount *int64 `json:"RiskContainerEventCount,omitempty" name:"RiskContainerEventCount"`
+	RiskContainerEventCount *int64 `json:"RiskContainerEventCount,omitnil" name:"RiskContainerEventCount"`
 
 	// 逃逸事件待处理数
-	PendingEscapeEventCount *int64 `json:"PendingEscapeEventCount,omitempty" name:"PendingEscapeEventCount"`
+	PendingEscapeEventCount *int64 `json:"PendingEscapeEventCount,omitnil" name:"PendingEscapeEventCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeEscapeEventTypeSummaryResponse struct {
@@ -15045,44 +15045,44 @@ func (r *DescribeEscapeEventTypeSummaryResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeEscapeEventsExportRequestParams struct {
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeEscapeEventsExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeEscapeEventsExportRequest) ToJsonString() string {
@@ -15113,10 +15113,10 @@ func (r *DescribeEscapeEventsExportRequest) FromJsonString(s string) error {
 type DescribeEscapeEventsExportResponseParams struct {
 	// execle下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeEscapeEventsExportResponse struct {
@@ -15167,10 +15167,10 @@ func (r *DescribeEscapeRuleInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEscapeRuleInfoResponseParams struct {
 	// 规则信息
-	RuleSet []*EscapeRule `json:"RuleSet,omitempty" name:"RuleSet"`
+	RuleSet []*EscapeRule `json:"RuleSet,omitnil" name:"RuleSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeEscapeRuleInfoResponse struct {
@@ -15221,10 +15221,10 @@ func (r *DescribeEscapeSafeStateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEscapeSafeStateResponseParams struct {
 	// Unsafe：存在风险，Safe：暂无风险,UnKnown:未知风险
-	IsSafe *string `json:"IsSafe,omitempty" name:"IsSafe"`
+	IsSafe *string `json:"IsSafe,omitnil" name:"IsSafe"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeEscapeSafeStateResponse struct {
@@ -15249,19 +15249,19 @@ type DescribeEscapeWhiteListRequestParams struct {
 	// <li>EventType- String - 是否必填：否 - 加白事件类型，ESCAPE_CGROUPS：利用cgroup机制逃逸，ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸， ESCAPE_DOCKER_API：访问Docker API接口逃逸，ESCAPE_VUL_OCCURRED：逃逸漏洞利用，MOUNT_SENSITIVE_PTAH：敏感路径挂载，PRIVILEGE_CONTAINER_START：特权容器， PRIVILEGE：程序提权逃逸</li>
 	// <li>ImageName- string - 是否必填：否 - 镜像名称。</li>
 	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：主机数量：HostCount，容器数量：ContainerCount，更新时间：UpdateTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeEscapeWhiteListRequest struct {
@@ -15271,19 +15271,19 @@ type DescribeEscapeWhiteListRequest struct {
 	// <li>EventType- String - 是否必填：否 - 加白事件类型，ESCAPE_CGROUPS：利用cgroup机制逃逸，ESCAPE_TAMPER_SENSITIVE_FILE：篡改敏感文件逃逸， ESCAPE_DOCKER_API：访问Docker API接口逃逸，ESCAPE_VUL_OCCURRED：逃逸漏洞利用，MOUNT_SENSITIVE_PTAH：敏感路径挂载，PRIVILEGE_CONTAINER_START：特权容器， PRIVILEGE：程序提权逃逸</li>
 	// <li>ImageName- string - 是否必填：否 - 镜像名称。</li>
 	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：主机数量：HostCount，容器数量：ContainerCount，更新时间：UpdateTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeEscapeWhiteListRequest) ToJsonString() string {
@@ -15312,13 +15312,13 @@ func (r *DescribeEscapeWhiteListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEscapeWhiteListResponseParams struct {
 	// 总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 逃逸白名单列表
-	List []*EscapeWhiteListInfo `json:"List,omitempty" name:"List"`
+	List []*EscapeWhiteListInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeEscapeWhiteListResponse struct {
@@ -15340,14 +15340,14 @@ func (r *DescribeEscapeWhiteListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeExportJobDownloadURLRequestParams struct {
 	// 任务ID
-	JobID *string `json:"JobID,omitempty" name:"JobID"`
+	JobID *string `json:"JobID,omitnil" name:"JobID"`
 }
 
 type DescribeExportJobDownloadURLRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	JobID *string `json:"JobID,omitempty" name:"JobID"`
+	JobID *string `json:"JobID,omitnil" name:"JobID"`
 }
 
 func (r *DescribeExportJobDownloadURLRequest) ToJsonString() string {
@@ -15372,10 +15372,10 @@ func (r *DescribeExportJobDownloadURLRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeExportJobDownloadURLResponseParams struct {
 	// 下载链接
-	DownloadURL *string `json:"DownloadURL,omitempty" name:"DownloadURL"`
+	DownloadURL *string `json:"DownloadURL,omitnil" name:"DownloadURL"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeExportJobDownloadURLResponse struct {
@@ -15400,20 +15400,20 @@ type DescribeExportJobManageListRequestParams struct {
 	// <li>ExportStatus- string -是否必填: 否 - 导出状态 RUNNING: 导出中 SUCCESS:导出完成 FAILURE:失败
 	// <li>ExportSource- string -是否必填: 否 - 导出来源 LocalImage: 本地镜像
 	// </li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
 	// InsertTime: 创建时间
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeExportJobManageListRequest struct {
@@ -15423,20 +15423,20 @@ type DescribeExportJobManageListRequest struct {
 	// <li>ExportStatus- string -是否必填: 否 - 导出状态 RUNNING: 导出中 SUCCESS:导出完成 FAILURE:失败
 	// <li>ExportSource- string -是否必填: 否 - 导出来源 LocalImage: 本地镜像
 	// </li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
 	// InsertTime: 创建时间
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeExportJobManageListRequest) ToJsonString() string {
@@ -15465,13 +15465,13 @@ func (r *DescribeExportJobManageListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeExportJobManageListResponseParams struct {
 	// 总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 任务列表
-	List []*ExportJobInfo `json:"List,omitempty" name:"List"`
+	List []*ExportJobInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeExportJobManageListResponse struct {
@@ -15493,14 +15493,14 @@ func (r *DescribeExportJobManageListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeExportJobResultRequestParams struct {
 	// CreateExportComplianceStatusListJob返回的JobId字段的值
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 }
 
 type DescribeExportJobResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// CreateExportComplianceStatusListJob返回的JobId字段的值
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 }
 
 func (r *DescribeExportJobResultRequest) ToJsonString() string {
@@ -15525,22 +15525,22 @@ func (r *DescribeExportJobResultRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeExportJobResultResponseParams struct {
 	// 导出的状态。取值为, SUCCESS:成功、FAILURE:失败，RUNNING: 进行中。
-	ExportStatus *string `json:"ExportStatus,omitempty" name:"ExportStatus"`
+	ExportStatus *string `json:"ExportStatus,omitnil" name:"ExportStatus"`
 
 	// 返回下载URL
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadURL *string `json:"DownloadURL,omitempty" name:"DownloadURL"`
+	DownloadURL *string `json:"DownloadURL,omitnil" name:"DownloadURL"`
 
 	// 当ExportStatus为RUNNING时，返回导出进度。0~100范围的浮点数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExportProgress *float64 `json:"ExportProgress,omitempty" name:"ExportProgress"`
+	ExportProgress *float64 `json:"ExportProgress,omitnil" name:"ExportProgress"`
 
 	// 失败原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailureMsg *string `json:"FailureMsg,omitempty" name:"FailureMsg"`
+	FailureMsg *string `json:"FailureMsg,omitnil" name:"FailureMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeExportJobResultResponse struct {
@@ -15591,22 +15591,22 @@ func (r *DescribeImageAuthorizedInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImageAuthorizedInfoResponseParams struct {
 	// 总共有效的镜像授权数
-	TotalAuthorizedCnt *uint64 `json:"TotalAuthorizedCnt,omitempty" name:"TotalAuthorizedCnt"`
+	TotalAuthorizedCnt *uint64 `json:"TotalAuthorizedCnt,omitnil" name:"TotalAuthorizedCnt"`
 
 	// 已使用镜像授权数
-	UsedAuthorizedCnt *uint64 `json:"UsedAuthorizedCnt,omitempty" name:"UsedAuthorizedCnt"`
+	UsedAuthorizedCnt *uint64 `json:"UsedAuthorizedCnt,omitnil" name:"UsedAuthorizedCnt"`
 
 	// 已开启扫描镜像数
-	ScannedImageCnt *uint64 `json:"ScannedImageCnt,omitempty" name:"ScannedImageCnt"`
+	ScannedImageCnt *uint64 `json:"ScannedImageCnt,omitnil" name:"ScannedImageCnt"`
 
 	// 未开启扫描镜像数
-	NotScannedImageCnt *uint64 `json:"NotScannedImageCnt,omitempty" name:"NotScannedImageCnt"`
+	NotScannedImageCnt *uint64 `json:"NotScannedImageCnt,omitnil" name:"NotScannedImageCnt"`
 
 	// 本地未开启扫描镜像数
-	NotScannedLocalImageCnt *uint64 `json:"NotScannedLocalImageCnt,omitempty" name:"NotScannedLocalImageCnt"`
+	NotScannedLocalImageCnt *uint64 `json:"NotScannedLocalImageCnt,omitnil" name:"NotScannedLocalImageCnt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeImageAuthorizedInfoResponse struct {
@@ -15628,44 +15628,44 @@ func (r *DescribeImageAuthorizedInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImageAutoAuthorizedLogListRequestParams struct {
 	// 自动授权任务Id
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// Status授权结果，SUCCESS:成功，REACH_LIMIT:达到授权上限，LICENSE_INSUFFICIENT:授权数不足
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序字段：AuthorizedTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式，asc，desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeImageAutoAuthorizedLogListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 自动授权任务Id
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// Status授权结果，SUCCESS:成功，REACH_LIMIT:达到授权上限，LICENSE_INSUFFICIENT:授权数不足
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序字段：AuthorizedTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式，asc，desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeImageAutoAuthorizedLogListRequest) ToJsonString() string {
@@ -15695,13 +15695,13 @@ func (r *DescribeImageAutoAuthorizedLogListRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeImageAutoAuthorizedLogListResponseParams struct {
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 自动授权结果镜像列表
-	List []*AutoAuthorizedImageInfo `json:"List,omitempty" name:"List"`
+	List []*AutoAuthorizedImageInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeImageAutoAuthorizedLogListResponse struct {
@@ -15752,26 +15752,26 @@ func (r *DescribeImageAutoAuthorizedRuleRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeImageAutoAuthorizedRuleResponseParams struct {
 	// 规则是否生效，0:不生效，1:已生效
-	IsEnabled *int64 `json:"IsEnabled,omitempty" name:"IsEnabled"`
+	IsEnabled *int64 `json:"IsEnabled,omitnil" name:"IsEnabled"`
 
 	// 授权范围类别，MANUAL:自选主机节点，ALL:全部镜像
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RangeType *string `json:"RangeType,omitempty" name:"RangeType"`
+	RangeType *string `json:"RangeType,omitnil" name:"RangeType"`
 
 	// 授权范围是自选主机时的主机数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostCount *int64 `json:"HostCount,omitempty" name:"HostCount"`
+	HostCount *int64 `json:"HostCount,omitnil" name:"HostCount"`
 
 	// 每天最大的镜像授权数限制, 0表示无限制
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxDailyCount *int64 `json:"MaxDailyCount,omitempty" name:"MaxDailyCount"`
+	MaxDailyCount *int64 `json:"MaxDailyCount,omitnil" name:"MaxDailyCount"`
 
 	// 规则id，用未设置时为0
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeImageAutoAuthorizedRuleResponse struct {
@@ -15793,44 +15793,44 @@ func (r *DescribeImageAutoAuthorizedRuleResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeImageAutoAuthorizedTaskListRequestParams struct {
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 过滤字段
 	// Status授权结果，全部授权成功：ALLSUCCSESS，部分授权失败：PARTIALFAIL,全部授权失败：ALLFAIL
 	// Type授权方式，AUTO:自动授权，MANUAL:手动授权
 	// Source 镜像来源，LOCAL:本地镜像，REGISTRY:仓库镜像
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeImageAutoAuthorizedTaskListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 过滤字段
 	// Status授权结果，全部授权成功：ALLSUCCSESS，部分授权失败：PARTIALFAIL,全部授权失败：ALLFAIL
 	// Type授权方式，AUTO:自动授权，MANUAL:手动授权
 	// Source 镜像来源，LOCAL:本地镜像，REGISTRY:仓库镜像
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeImageAutoAuthorizedTaskListRequest) ToJsonString() string {
@@ -15859,13 +15859,13 @@ func (r *DescribeImageAutoAuthorizedTaskListRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeImageAutoAuthorizedTaskListResponseParams struct {
 	// 自动授权任务列表
-	List []*ImageAutoAuthorizedTask `json:"List,omitempty" name:"List"`
+	List []*ImageAutoAuthorizedTask `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeImageAutoAuthorizedTaskListResponse struct {
@@ -15887,46 +15887,46 @@ func (r *DescribeImageAutoAuthorizedTaskListResponse) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeImageComponentListRequestParams struct {
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ComponentName- String - 是否必填：否 - 镜像组件名称</li><li>ComponentVersion- String - 是否必填：否 - 镜像组件版本</li><li>ComponentType- String - 是否必填：否 - 镜像组件类型</li><li>VulLevel- String - 是否必填：否 - 漏洞威胁等级</li><li>HasVul- String - 是否必填：否 -是否有漏洞；true：是，false，否；不传或ALL ：全部</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式desc ，asc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeImageComponentListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ComponentName- String - 是否必填：否 - 镜像组件名称</li><li>ComponentVersion- String - 是否必填：否 - 镜像组件版本</li><li>ComponentType- String - 是否必填：否 - 镜像组件类型</li><li>VulLevel- String - 是否必填：否 - 漏洞威胁等级</li><li>HasVul- String - 是否必填：否 -是否有漏洞；true：是，false，否；不传或ALL ：全部</li>
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式desc ，asc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeImageComponentListRequest) ToJsonString() string {
@@ -15956,13 +15956,13 @@ func (r *DescribeImageComponentListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImageComponentListResponseParams struct {
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 镜像组件列表
-	List []*ImageComponent `json:"List,omitempty" name:"List"`
+	List []*ImageComponent `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeImageComponentListResponse struct {
@@ -15984,26 +15984,26 @@ func (r *DescribeImageComponentListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImageRegistryNamespaceListRequestParams struct {
 	// 本次查询的起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 本次查询的数据量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 查询的过滤条件。Name字段可取值"Namespace"。
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeImageRegistryNamespaceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 本次查询的起始偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 本次查询的数据量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 查询的过滤条件。Name字段可取值"Namespace"。
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeImageRegistryNamespaceListRequest) ToJsonString() string {
@@ -16030,13 +16030,13 @@ func (r *DescribeImageRegistryNamespaceListRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeImageRegistryNamespaceListResponseParams struct {
 	// 可返回的项目空间的总量。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 返回的项目空间列表
-	NamespaceList []*string `json:"NamespaceList,omitempty" name:"NamespaceList"`
+	NamespaceList []*string `json:"NamespaceList,omitnil" name:"NamespaceList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeImageRegistryNamespaceListResponse struct {
@@ -16088,35 +16088,35 @@ func (r *DescribeImageRegistryTimingScanTaskRequest) FromJsonString(s string) er
 type DescribeImageRegistryTimingScanTaskResponseParams struct {
 	// 定时扫描开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 定时任务扫描时间
-	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 定时扫描间隔
-	ScanPeriod *uint64 `json:"ScanPeriod,omitempty" name:"ScanPeriod"`
+	ScanPeriod *uint64 `json:"ScanPeriod,omitnil" name:"ScanPeriod"`
 
 	// 扫描类型数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanType []*string `json:"ScanType,omitempty" name:"ScanType"`
+	ScanType []*string `json:"ScanType,omitnil" name:"ScanType"`
 
 	// 扫描全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 自定义扫描镜像
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
+	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 自动以扫描镜像Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 是否扫描最新版本镜像
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Latest *bool `json:"Latest,omitempty" name:"Latest"`
+	Latest *bool `json:"Latest,omitnil" name:"Latest"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeImageRegistryTimingScanTaskResponse struct {
@@ -16167,16 +16167,16 @@ func (r *DescribeImageRiskSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImageRiskSummaryResponseParams struct {
 	// 安全漏洞
-	VulnerabilityCnt []*RunTimeRiskInfo `json:"VulnerabilityCnt,omitempty" name:"VulnerabilityCnt"`
+	VulnerabilityCnt []*RunTimeRiskInfo `json:"VulnerabilityCnt,omitnil" name:"VulnerabilityCnt"`
 
 	// 木马病毒
-	MalwareVirusCnt []*RunTimeRiskInfo `json:"MalwareVirusCnt,omitempty" name:"MalwareVirusCnt"`
+	MalwareVirusCnt []*RunTimeRiskInfo `json:"MalwareVirusCnt,omitnil" name:"MalwareVirusCnt"`
 
 	// 敏感信息
-	RiskCnt []*RunTimeRiskInfo `json:"RiskCnt,omitempty" name:"RiskCnt"`
+	RiskCnt []*RunTimeRiskInfo `json:"RiskCnt,omitnil" name:"RiskCnt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeImageRiskSummaryResponse struct {
@@ -16198,20 +16198,20 @@ func (r *DescribeImageRiskSummaryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImageRiskTendencyRequestParams struct {
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 type DescribeImageRiskTendencyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 func (r *DescribeImageRiskTendencyRequest) ToJsonString() string {
@@ -16237,10 +16237,10 @@ func (r *DescribeImageRiskTendencyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImageRiskTendencyResponseParams struct {
 	// 本地镜像新增风险趋势信息列表
-	ImageRiskTendencySet []*ImageRiskTendencyInfo `json:"ImageRiskTendencySet,omitempty" name:"ImageRiskTendencySet"`
+	ImageRiskTendencySet []*ImageRiskTendencyInfo `json:"ImageRiskTendencySet,omitnil" name:"ImageRiskTendencySet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeImageRiskTendencyResponse struct {
@@ -16262,38 +16262,38 @@ func (r *DescribeImageRiskTendencyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImageSimpleListRequestParams struct {
 	// IsAuthorized 是否已经授权, 0:否 1:是 无:全部
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeImageSimpleListRequest struct {
 	*tchttp.BaseRequest
 	
 	// IsAuthorized 是否已经授权, 0:否 1:是 无:全部
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeImageSimpleListRequest) ToJsonString() string {
@@ -16322,13 +16322,13 @@ func (r *DescribeImageSimpleListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeImageSimpleListResponseParams struct {
 	// 镜像列表
-	ImageList []*ImageSimpleInfo `json:"ImageList,omitempty" name:"ImageList"`
+	ImageList []*ImageSimpleInfo `json:"ImageList,omitnil" name:"ImageList"`
 
 	// 镜像数
-	ImageCnt *uint64 `json:"ImageCnt,omitempty" name:"ImageCnt"`
+	ImageCnt *uint64 `json:"ImageCnt,omitnil" name:"ImageCnt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeImageSimpleListResponse struct {
@@ -16379,10 +16379,10 @@ func (r *DescribeIndexListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIndexListResponseParams struct {
 	// ES 索引信息
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeIndexListResponse struct {
@@ -16433,13 +16433,13 @@ func (r *DescribeInspectionReportRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInspectionReportResponseParams struct {
 	// 报告名称
-	ReportName *string `json:"ReportName,omitempty" name:"ReportName"`
+	ReportName *string `json:"ReportName,omitnil" name:"ReportName"`
 
 	// 下载链接
-	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
+	ReportUrl *string `json:"ReportUrl,omitnil" name:"ReportUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeInspectionReportResponse struct {
@@ -16461,14 +16461,14 @@ func (r *DescribeInspectionReportResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeK8sApiAbnormalEventInfoRequestParams struct {
 	// 事件ID
-	ID *uint64 `json:"ID,omitempty" name:"ID"`
+	ID *uint64 `json:"ID,omitnil" name:"ID"`
 }
 
 type DescribeK8sApiAbnormalEventInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件ID
-	ID *uint64 `json:"ID,omitempty" name:"ID"`
+	ID *uint64 `json:"ID,omitnil" name:"ID"`
 }
 
 func (r *DescribeK8sApiAbnormalEventInfoRequest) ToJsonString() string {
@@ -16493,10 +16493,10 @@ func (r *DescribeK8sApiAbnormalEventInfoRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeK8sApiAbnormalEventInfoResponseParams struct {
 	// 事件详情
-	Info *K8sApiAbnormalEventInfo `json:"Info,omitempty" name:"Info"`
+	Info *K8sApiAbnormalEventInfo `json:"Info,omitnil" name:"Info"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeK8sApiAbnormalEventInfoResponse struct {
@@ -16526,21 +16526,21 @@ type DescribeK8sApiAbnormalEventListRequestParams struct {
 	// <li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li>
 	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
 	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
 	// LatestFoundTime: 最近生成时间
 	// AlarmCount: 告警数量
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeK8sApiAbnormalEventListRequest struct {
@@ -16555,21 +16555,21 @@ type DescribeK8sApiAbnormalEventListRequest struct {
 	// <li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li>
 	// <li>ClusterName - string  - 是否必填: 否 -集群名称</li>
 	// <li>ClusterID - string  - 是否必填: 否 -集群ID</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
 	// LatestFoundTime: 最近生成时间
 	// AlarmCount: 告警数量
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeK8sApiAbnormalEventListRequest) ToJsonString() string {
@@ -16598,13 +16598,13 @@ func (r *DescribeK8sApiAbnormalEventListRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeK8sApiAbnormalEventListResponseParams struct {
 	// 事件列表
-	List []*K8sApiAbnormalEventListItem `json:"List,omitempty" name:"List"`
+	List []*K8sApiAbnormalEventListItem `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeK8sApiAbnormalEventListResponse struct {
@@ -16626,14 +16626,14 @@ func (r *DescribeK8sApiAbnormalEventListResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeK8sApiAbnormalRuleInfoRequestParams struct {
 	// 规则ID
-	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+	RuleID *string `json:"RuleID,omitnil" name:"RuleID"`
 }
 
 type DescribeK8sApiAbnormalRuleInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则ID
-	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+	RuleID *string `json:"RuleID,omitnil" name:"RuleID"`
 }
 
 func (r *DescribeK8sApiAbnormalRuleInfoRequest) ToJsonString() string {
@@ -16658,10 +16658,10 @@ func (r *DescribeK8sApiAbnormalRuleInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeK8sApiAbnormalRuleInfoResponseParams struct {
 	// 规则详情
-	Info *K8sApiAbnormalRuleInfo `json:"Info,omitempty" name:"Info"`
+	Info *K8sApiAbnormalRuleInfo `json:"Info,omitnil" name:"Info"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeK8sApiAbnormalRuleInfoResponse struct {
@@ -16685,21 +16685,21 @@ type DescribeK8sApiAbnormalRuleListRequestParams struct {
 	// 过滤条件。
 	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
 	// <li>Status - string  - 是否必填: 否 -状态</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段。
 	// <li>UpdateTime - string  - 是否必填: 否 -最后更新时间</li>
 	// <li>EffectClusterCount - string  - 是否必填: 否 -影响集群数</li>
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeK8sApiAbnormalRuleListRequest struct {
@@ -16708,21 +16708,21 @@ type DescribeK8sApiAbnormalRuleListRequest struct {
 	// 过滤条件。
 	// <li>RuleType - string  - 是否必填: 否 -规则类型</li>
 	// <li>Status - string  - 是否必填: 否 -状态</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段。
 	// <li>UpdateTime - string  - 是否必填: 否 -最后更新时间</li>
 	// <li>EffectClusterCount - string  - 是否必填: 否 -影响集群数</li>
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeK8sApiAbnormalRuleListRequest) ToJsonString() string {
@@ -16751,13 +16751,13 @@ func (r *DescribeK8sApiAbnormalRuleListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeK8sApiAbnormalRuleListResponseParams struct {
 	// 规则列表
-	List []*K8sApiAbnormalRuleListItem `json:"List,omitempty" name:"List"`
+	List []*K8sApiAbnormalRuleListItem `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeK8sApiAbnormalRuleListResponse struct {
@@ -16779,36 +16779,36 @@ func (r *DescribeK8sApiAbnormalRuleListResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeK8sApiAbnormalRuleScopeListRequestParams struct {
 	// 规则ID
-	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+	RuleID *string `json:"RuleID,omitnil" name:"RuleID"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件。
 	// <li>Action - string -是否必填: 否 - 执行动作</li>
 	// <li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeK8sApiAbnormalRuleScopeListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则ID
-	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+	RuleID *string `json:"RuleID,omitnil" name:"RuleID"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件。
 	// <li>Action - string -是否必填: 否 - 执行动作</li>
 	// <li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeK8sApiAbnormalRuleScopeListRequest) ToJsonString() string {
@@ -16836,13 +16836,13 @@ func (r *DescribeK8sApiAbnormalRuleScopeListRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeK8sApiAbnormalRuleScopeListResponseParams struct {
 	// 总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 列表
-	List []*K8sApiAbnormalRuleScopeInfo `json:"List,omitempty" name:"List"`
+	List []*K8sApiAbnormalRuleScopeInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeK8sApiAbnormalRuleScopeListResponse struct {
@@ -16893,22 +16893,22 @@ func (r *DescribeK8sApiAbnormalSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeK8sApiAbnormalSummaryResponseParams struct {
 	// 待处理事件个数
-	UnhandleEventCount *uint64 `json:"UnhandleEventCount,omitempty" name:"UnhandleEventCount"`
+	UnhandleEventCount *uint64 `json:"UnhandleEventCount,omitnil" name:"UnhandleEventCount"`
 
 	// 待处理高危事件个数
-	UnhandleHighLevelEventCount *uint64 `json:"UnhandleHighLevelEventCount,omitempty" name:"UnhandleHighLevelEventCount"`
+	UnhandleHighLevelEventCount *uint64 `json:"UnhandleHighLevelEventCount,omitnil" name:"UnhandleHighLevelEventCount"`
 
 	// 待处理中危事件个数
-	UnhandleMediumLevelEventCount *uint64 `json:"UnhandleMediumLevelEventCount,omitempty" name:"UnhandleMediumLevelEventCount"`
+	UnhandleMediumLevelEventCount *uint64 `json:"UnhandleMediumLevelEventCount,omitnil" name:"UnhandleMediumLevelEventCount"`
 
 	// 待处理低危事件个数
-	UnhandleLowLevelEventCount *uint64 `json:"UnhandleLowLevelEventCount,omitempty" name:"UnhandleLowLevelEventCount"`
+	UnhandleLowLevelEventCount *uint64 `json:"UnhandleLowLevelEventCount,omitnil" name:"UnhandleLowLevelEventCount"`
 
 	// 待处理提示级别事件个数
-	UnhandleNoticeLevelEventCount *uint64 `json:"UnhandleNoticeLevelEventCount,omitempty" name:"UnhandleNoticeLevelEventCount"`
+	UnhandleNoticeLevelEventCount *uint64 `json:"UnhandleNoticeLevelEventCount,omitnil" name:"UnhandleNoticeLevelEventCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeK8sApiAbnormalSummaryResponse struct {
@@ -16930,14 +16930,14 @@ func (r *DescribeK8sApiAbnormalSummaryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeK8sApiAbnormalTendencyRequestParams struct {
 	// 趋势周期(默认为7天)
-	TendencyPeriod *uint64 `json:"TendencyPeriod,omitempty" name:"TendencyPeriod"`
+	TendencyPeriod *uint64 `json:"TendencyPeriod,omitnil" name:"TendencyPeriod"`
 }
 
 type DescribeK8sApiAbnormalTendencyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 趋势周期(默认为7天)
-	TendencyPeriod *uint64 `json:"TendencyPeriod,omitempty" name:"TendencyPeriod"`
+	TendencyPeriod *uint64 `json:"TendencyPeriod,omitnil" name:"TendencyPeriod"`
 }
 
 func (r *DescribeK8sApiAbnormalTendencyRequest) ToJsonString() string {
@@ -16962,10 +16962,10 @@ func (r *DescribeK8sApiAbnormalTendencyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeK8sApiAbnormalTendencyResponseParams struct {
 	// 趋势列表
-	List []*K8sApiAbnormalTendencyItem `json:"List,omitempty" name:"List"`
+	List []*K8sApiAbnormalTendencyItem `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeK8sApiAbnormalTendencyResponse struct {
@@ -17016,13 +17016,13 @@ func (r *DescribeLogStorageStatisticRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLogStorageStatisticResponseParams struct {
 	// 总容量（单位：B）
-	TotalSize *uint64 `json:"TotalSize,omitempty" name:"TotalSize"`
+	TotalSize *uint64 `json:"TotalSize,omitnil" name:"TotalSize"`
 
 	// 已使用容量（单位：B）
-	UsedSize *uint64 `json:"UsedSize,omitempty" name:"UsedSize"`
+	UsedSize *uint64 `json:"UsedSize,omitnil" name:"UsedSize"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeLogStorageStatisticResponse struct {
@@ -17044,40 +17044,40 @@ func (r *DescribeLogStorageStatisticResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNetworkFirewallAuditRecordRequestParams struct {
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - Action
 	// Name 可取值：publish，unpublish，confirm，add，update，delete
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeNetworkFirewallAuditRecordRequest struct {
 	*tchttp.BaseRequest
 	
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - Action
 	// Name 可取值：publish，unpublish，confirm，add，update，delete
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeNetworkFirewallAuditRecordRequest) ToJsonString() string {
@@ -17106,13 +17106,13 @@ func (r *DescribeNetworkFirewallAuditRecordRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeNetworkFirewallAuditRecordResponseParams struct {
 	// 集群审计总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 集群的审计详细信息
-	AuditList []*NetworkAuditRecord `json:"AuditList,omitempty" name:"AuditList"`
+	AuditList []*NetworkAuditRecord `json:"AuditList,omitnil" name:"AuditList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNetworkFirewallAuditRecordResponse struct {
@@ -17134,40 +17134,40 @@ func (r *DescribeNetworkFirewallAuditRecordResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeNetworkFirewallClusterListRequestParams struct {
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeNetworkFirewallClusterListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeNetworkFirewallClusterListRequest) ToJsonString() string {
@@ -17196,13 +17196,13 @@ func (r *DescribeNetworkFirewallClusterListRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeNetworkFirewallClusterListResponseParams struct {
 	// 集群总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 集群的详细信息
-	ClusterInfoList []*NetworkClusterInfoItem `json:"ClusterInfoList,omitempty" name:"ClusterInfoList"`
+	ClusterInfoList []*NetworkClusterInfoItem `json:"ClusterInfoList,omitnil" name:"ClusterInfoList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNetworkFirewallClusterListResponse struct {
@@ -17224,14 +17224,14 @@ func (r *DescribeNetworkFirewallClusterListResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeNetworkFirewallClusterRefreshStatusRequestParams struct {
 	// 任务ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type DescribeNetworkFirewallClusterRefreshStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *DescribeNetworkFirewallClusterRefreshStatusRequest) ToJsonString() string {
@@ -17256,10 +17256,10 @@ func (r *DescribeNetworkFirewallClusterRefreshStatusRequest) FromJsonString(s st
 // Predefined struct for user
 type DescribeNetworkFirewallClusterRefreshStatusResponseParams struct {
 	// 任务状态，可能为：Task_Running,Task_Succ,Task_Error,Task_NoExist
-	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+	TaskStatus *string `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNetworkFirewallClusterRefreshStatusResponse struct {
@@ -17281,46 +17281,46 @@ func (r *DescribeNetworkFirewallClusterRefreshStatusResponse) FromJsonString(s s
 // Predefined struct for user
 type DescribeNetworkFirewallNamespaceLabelListRequestParams struct {
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeNetworkFirewallNamespaceLabelListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeNetworkFirewallNamespaceLabelListRequest) ToJsonString() string {
@@ -17350,13 +17350,13 @@ func (r *DescribeNetworkFirewallNamespaceLabelListRequest) FromJsonString(s stri
 // Predefined struct for user
 type DescribeNetworkFirewallNamespaceLabelListResponseParams struct {
 	// 集群总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 集群空间标签详细信息
-	ClusterNamespaceLabelList []*NetworkClusterNamespaceLabelInfo `json:"ClusterNamespaceLabelList,omitempty" name:"ClusterNamespaceLabelList"`
+	ClusterNamespaceLabelList []*NetworkClusterNamespaceLabelInfo `json:"ClusterNamespaceLabelList,omitnil" name:"ClusterNamespaceLabelList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNetworkFirewallNamespaceLabelListResponse struct {
@@ -17378,46 +17378,46 @@ func (r *DescribeNetworkFirewallNamespaceLabelListResponse) FromJsonString(s str
 // Predefined struct for user
 type DescribeNetworkFirewallNamespaceListRequestParams struct {
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeNetworkFirewallNamespaceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeNetworkFirewallNamespaceListRequest) ToJsonString() string {
@@ -17447,13 +17447,13 @@ func (r *DescribeNetworkFirewallNamespaceListRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeNetworkFirewallNamespaceListResponseParams struct {
 	// 集群总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 集群的详细信息
-	ClusterNamespaceList []*NetworkClusterNamespaceInfo `json:"ClusterNamespaceList,omitempty" name:"ClusterNamespaceList"`
+	ClusterNamespaceList []*NetworkClusterNamespaceInfo `json:"ClusterNamespaceList,omitnil" name:"ClusterNamespaceList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNetworkFirewallNamespaceListResponse struct {
@@ -17475,46 +17475,46 @@ func (r *DescribeNetworkFirewallNamespaceListResponse) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeNetworkFirewallPodLabelsListRequestParams struct {
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeNetworkFirewallPodLabelsListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeNetworkFirewallPodLabelsListRequest) ToJsonString() string {
@@ -17544,14 +17544,14 @@ func (r *DescribeNetworkFirewallPodLabelsListRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeNetworkFirewallPodLabelsListResponseParams struct {
 	// 集群pod总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 集群pod详细信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PodList []*NetworkClusterPodInfo `json:"PodList,omitempty" name:"PodList"`
+	PodList []*NetworkClusterPodInfo `json:"PodList,omitnil" name:"PodList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNetworkFirewallPodLabelsListResponse struct {
@@ -17573,14 +17573,14 @@ func (r *DescribeNetworkFirewallPodLabelsListResponse) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeNetworkFirewallPolicyDetailRequestParams struct {
 	// 策略Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type DescribeNetworkFirewallPolicyDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *DescribeNetworkFirewallPolicyDetailRequest) ToJsonString() string {
@@ -17605,51 +17605,51 @@ func (r *DescribeNetworkFirewallPolicyDetailRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeNetworkFirewallPolicyDetailResponseParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略名
-	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// 命名空间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 入站类型
-	FromPolicyRule *int64 `json:"FromPolicyRule,omitempty" name:"FromPolicyRule"`
+	FromPolicyRule *int64 `json:"FromPolicyRule,omitnil" name:"FromPolicyRule"`
 
 	// 出站类型
-	ToPolicyRule *int64 `json:"ToPolicyRule,omitempty" name:"ToPolicyRule"`
+	ToPolicyRule *int64 `json:"ToPolicyRule,omitnil" name:"ToPolicyRule"`
 
 	// 自定义规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitempty" name:"CustomPolicy"`
+	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitnil" name:"CustomPolicy"`
 
 	// pod选择器
-	PodSelector *string `json:"PodSelector,omitempty" name:"PodSelector"`
+	PodSelector *string `json:"PodSelector,omitnil" name:"PodSelector"`
 
 	// 策略描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 策略创建时间
-	PolicyCreateTime *string `json:"PolicyCreateTime,omitempty" name:"PolicyCreateTime"`
+	PolicyCreateTime *string `json:"PolicyCreateTime,omitnil" name:"PolicyCreateTime"`
 
 	// 策略源类型，分为System和Manual，分别代表手动和系统添加
-	PolicySourceType *string `json:"PolicySourceType,omitempty" name:"PolicySourceType"`
+	PolicySourceType *string `json:"PolicySourceType,omitnil" name:"PolicySourceType"`
 
 	// 网络策略对应的网络插件
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NetworkPolicyPlugin *string `json:"NetworkPolicyPlugin,omitempty" name:"NetworkPolicyPlugin"`
+	NetworkPolicyPlugin *string `json:"NetworkPolicyPlugin,omitnil" name:"NetworkPolicyPlugin"`
 
 	// 网络策略状态
-	PublishStatus *string `json:"PublishStatus,omitempty" name:"PublishStatus"`
+	PublishStatus *string `json:"PublishStatus,omitnil" name:"PublishStatus"`
 
 	// 网络发布结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublishResult *string `json:"PublishResult,omitempty" name:"PublishResult"`
+	PublishResult *string `json:"PublishResult,omitnil" name:"PublishResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNetworkFirewallPolicyDetailResponse struct {
@@ -17671,14 +17671,14 @@ func (r *DescribeNetworkFirewallPolicyDetailResponse) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeNetworkFirewallPolicyDiscoverRequestParams struct {
 	// 任务ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type DescribeNetworkFirewallPolicyDiscoverRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *DescribeNetworkFirewallPolicyDiscoverRequest) ToJsonString() string {
@@ -17703,10 +17703,10 @@ func (r *DescribeNetworkFirewallPolicyDiscoverRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeNetworkFirewallPolicyDiscoverResponseParams struct {
 	// 任务状态，可能为：Task_Running,Task_Succ,Task_Error,Task_NoExist
-	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+	TaskStatus *string `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNetworkFirewallPolicyDiscoverResponse struct {
@@ -17728,46 +17728,46 @@ func (r *DescribeNetworkFirewallPolicyDiscoverResponse) FromJsonString(s string)
 // Predefined struct for user
 type DescribeNetworkFirewallPolicyListRequestParams struct {
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeNetworkFirewallPolicyListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeNetworkFirewallPolicyListRequest) ToJsonString() string {
@@ -17797,13 +17797,13 @@ func (r *DescribeNetworkFirewallPolicyListRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeNetworkFirewallPolicyListResponseParams struct {
 	// 集群总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 集群的详细信息
-	NetPolicy []*NetworkPolicyInfoItem `json:"NetPolicy,omitempty" name:"NetPolicy"`
+	NetPolicy []*NetworkPolicyInfoItem `json:"NetPolicy,omitnil" name:"NetPolicy"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNetworkFirewallPolicyListResponse struct {
@@ -17825,14 +17825,14 @@ func (r *DescribeNetworkFirewallPolicyListResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeNetworkFirewallPolicyStatusRequestParams struct {
 	// 任务ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type DescribeNetworkFirewallPolicyStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *DescribeNetworkFirewallPolicyStatusRequest) ToJsonString() string {
@@ -17857,14 +17857,14 @@ func (r *DescribeNetworkFirewallPolicyStatusRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeNetworkFirewallPolicyStatusResponseParams struct {
 	// 任务状态，可能为：Task_Running,Task_Succ,Task_Error,Task_NoExist
-	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+	TaskStatus *string `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// NameRepeat,K8sRuleIngressPortError等
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskResult []*string `json:"TaskResult,omitempty" name:"TaskResult"`
+	TaskResult []*string `json:"TaskResult,omitnil" name:"TaskResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNetworkFirewallPolicyStatusResponse struct {
@@ -17886,14 +17886,14 @@ func (r *DescribeNetworkFirewallPolicyStatusResponse) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeNetworkFirewallPolicyYamlDetailRequestParams struct {
 	// 策略Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type DescribeNetworkFirewallPolicyYamlDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *DescribeNetworkFirewallPolicyYamlDetailRequest) ToJsonString() string {
@@ -17918,38 +17918,38 @@ func (r *DescribeNetworkFirewallPolicyYamlDetailRequest) FromJsonString(s string
 // Predefined struct for user
 type DescribeNetworkFirewallPolicyYamlDetailResponseParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略名
-	PolicyName *string `json:"PolicyName,omitempty" name:"PolicyName"`
+	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// base64编码的yaml字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+	Yaml *string `json:"Yaml,omitnil" name:"Yaml"`
 
 	// 策略描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 策略创建时间
-	PolicyCreateTime *string `json:"PolicyCreateTime,omitempty" name:"PolicyCreateTime"`
+	PolicyCreateTime *string `json:"PolicyCreateTime,omitnil" name:"PolicyCreateTime"`
 
 	// 策略源类型，分为System和Manual，分别代表手动和系统添加
-	PolicySourceType *string `json:"PolicySourceType,omitempty" name:"PolicySourceType"`
+	PolicySourceType *string `json:"PolicySourceType,omitnil" name:"PolicySourceType"`
 
 	// 网络策略对应的网络插件
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NetworkPolicyPlugin *string `json:"NetworkPolicyPlugin,omitempty" name:"NetworkPolicyPlugin"`
+	NetworkPolicyPlugin *string `json:"NetworkPolicyPlugin,omitnil" name:"NetworkPolicyPlugin"`
 
 	// 网络策略状态
-	PublishStatus *string `json:"PublishStatus,omitempty" name:"PublishStatus"`
+	PublishStatus *string `json:"PublishStatus,omitnil" name:"PublishStatus"`
 
 	// 网络发布结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublishResult *string `json:"PublishResult,omitempty" name:"PublishResult"`
+	PublishResult *string `json:"PublishResult,omitnil" name:"PublishResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNetworkFirewallPolicyYamlDetailResponse struct {
@@ -18000,22 +18000,22 @@ func (r *DescribeNewestVulRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNewestVulResponseParams struct {
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 漏洞名称
-	VulName *string `json:"VulName,omitempty" name:"VulName"`
+	VulName *string `json:"VulName,omitnil" name:"VulName"`
 
 	// 披露时间
-	SubmitTime *string `json:"SubmitTime,omitempty" name:"SubmitTime"`
+	SubmitTime *string `json:"SubmitTime,omitnil" name:"SubmitTime"`
 
 	// 应急漏洞风险情况：NOT_SCAN：未扫描，SCANNING：扫描中，SCANNED：已扫描
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 漏洞CVEID
-	CVEID *string `json:"CVEID,omitempty" name:"CVEID"`
+	CVEID *string `json:"CVEID,omitnil" name:"CVEID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNewestVulResponse struct {
@@ -18037,20 +18037,20 @@ func (r *DescribeNewestVulResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePostPayDetailRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribePostPayDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribePostPayDetailRequest) ToJsonString() string {
@@ -18077,10 +18077,10 @@ func (r *DescribePostPayDetailRequest) FromJsonString(s string) error {
 type DescribePostPayDetailResponseParams struct {
 	// 弹性计费扣费详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SoftQuotaDayDetail []*SoftQuotaDayInfo `json:"SoftQuotaDayDetail,omitempty" name:"SoftQuotaDayDetail"`
+	SoftQuotaDayDetail []*SoftQuotaDayInfo `json:"SoftQuotaDayDetail,omitnil" name:"SoftQuotaDayDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePostPayDetailResponse struct {
@@ -18132,33 +18132,33 @@ func (r *DescribeProVersionInfoRequest) FromJsonString(s string) error {
 type DescribeProVersionInfoResponseParams struct {
 	// 专业版开始时间，补充购买时才不为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 专业版结束时间，补充购买时才不为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 需购买的机器核数
-	CoresCnt *uint64 `json:"CoresCnt,omitempty" name:"CoresCnt"`
+	CoresCnt *uint64 `json:"CoresCnt,omitnil" name:"CoresCnt"`
 
 	// 弹性计费上限
-	MaxPostPayCoresCnt *uint64 `json:"MaxPostPayCoresCnt,omitempty" name:"MaxPostPayCoresCnt"`
+	MaxPostPayCoresCnt *uint64 `json:"MaxPostPayCoresCnt,omitnil" name:"MaxPostPayCoresCnt"`
 
 	// 资源ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 购买状态
 	// 待购: Pending
 	// 已购: Normal
 	// 隔离: Isolate
-	BuyStatus *string `json:"BuyStatus,omitempty" name:"BuyStatus"`
+	BuyStatus *string `json:"BuyStatus,omitnil" name:"BuyStatus"`
 
 	// 是否曾经购买过(false:未曾 true:曾经购买过)
-	IsPurchased *bool `json:"IsPurchased,omitempty" name:"IsPurchased"`
+	IsPurchased *bool `json:"IsPurchased,omitnil" name:"IsPurchased"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeProVersionInfoResponse struct {
@@ -18180,14 +18180,14 @@ func (r *DescribeProVersionInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePromotionActivityRequestParams struct {
 	// 活动ID
-	ActiveID *uint64 `json:"ActiveID,omitempty" name:"ActiveID"`
+	ActiveID *uint64 `json:"ActiveID,omitnil" name:"ActiveID"`
 }
 
 type DescribePromotionActivityRequest struct {
 	*tchttp.BaseRequest
 	
 	// 活动ID
-	ActiveID *uint64 `json:"ActiveID,omitempty" name:"ActiveID"`
+	ActiveID *uint64 `json:"ActiveID,omitnil" name:"ActiveID"`
 }
 
 func (r *DescribePromotionActivityRequest) ToJsonString() string {
@@ -18212,10 +18212,10 @@ func (r *DescribePromotionActivityRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePromotionActivityResponseParams struct {
 	// 促销活动内容
-	List []*PromotionActivityContent `json:"List,omitempty" name:"List"`
+	List []*PromotionActivityContent `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePromotionActivityResponse struct {
@@ -18266,10 +18266,10 @@ func (r *DescribePublicKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePublicKeyResponseParams struct {
 	// 公钥
-	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+	PublicKey *string `json:"PublicKey,omitnil" name:"PublicKey"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePublicKeyResponse struct {
@@ -18320,51 +18320,51 @@ func (r *DescribePurchaseStateInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePurchaseStateInfoResponseParams struct {
 	// 0：可申请试用可购买；1：只可购买(含试用审核不通过和试用过期)；2：试用生效中；3：专业版生效中；4：专业版过期
-	State *int64 `json:"State,omitempty" name:"State"`
+	State *int64 `json:"State,omitnil" name:"State"`
 
 	// 总核数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CoresCnt *uint64 `json:"CoresCnt,omitempty" name:"CoresCnt"`
+	CoresCnt *uint64 `json:"CoresCnt,omitnil" name:"CoresCnt"`
 
 	// 已购买核数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthorizedCoresCnt *uint64 `json:"AuthorizedCoresCnt,omitempty" name:"AuthorizedCoresCnt"`
+	AuthorizedCoresCnt *uint64 `json:"AuthorizedCoresCnt,omitnil" name:"AuthorizedCoresCnt"`
 
 	// 镜像数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageCnt *uint64 `json:"ImageCnt,omitempty" name:"ImageCnt"`
+	ImageCnt *uint64 `json:"ImageCnt,omitnil" name:"ImageCnt"`
 
 	// 已授权镜像数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AuthorizedImageCnt *uint64 `json:"AuthorizedImageCnt,omitempty" name:"AuthorizedImageCnt"`
+	AuthorizedImageCnt *uint64 `json:"AuthorizedImageCnt,omitnil" name:"AuthorizedImageCnt"`
 
 	// 已购买镜像授权数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PurchasedAuthorizedCnt *uint64 `json:"PurchasedAuthorizedCnt,omitempty" name:"PurchasedAuthorizedCnt"`
+	PurchasedAuthorizedCnt *uint64 `json:"PurchasedAuthorizedCnt,omitnil" name:"PurchasedAuthorizedCnt"`
 
 	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExpirationTime *string `json:"ExpirationTime,omitempty" name:"ExpirationTime"`
+	ExpirationTime *string `json:"ExpirationTime,omitnil" name:"ExpirationTime"`
 
 	// 0表示默认状态(用户未设置，即初始状态)， 1表示自动续费，2表示明确不自动续费(用户设置)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AutomaticRenewal *int64 `json:"AutomaticRenewal,omitempty" name:"AutomaticRenewal"`
+	AutomaticRenewal *int64 `json:"AutomaticRenewal,omitnil" name:"AutomaticRenewal"`
 
 	// 试用期间赠送镜像授权数，可能会过期
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GivenAuthorizedCnt *uint64 `json:"GivenAuthorizedCnt,omitempty" name:"GivenAuthorizedCnt"`
+	GivenAuthorizedCnt *uint64 `json:"GivenAuthorizedCnt,omitnil" name:"GivenAuthorizedCnt"`
 
 	// 起始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 子状态(具体意义依据State字段而定)
 	// State为4时，有效值为: ISOLATE(隔离) DESTROED(已销毁)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubState *string `json:"SubState,omitempty" name:"SubState"`
+	SubState *string `json:"SubState,omitnil" name:"SubState"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePurchaseStateInfoResponse struct {
@@ -18386,20 +18386,20 @@ func (r *DescribePurchaseStateInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRefreshTaskRequestParams struct {
 	// 任务ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 新任务ID
-	NewTaskID *string `json:"NewTaskID,omitempty" name:"NewTaskID"`
+	NewTaskID *string `json:"NewTaskID,omitnil" name:"NewTaskID"`
 }
 
 type DescribeRefreshTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 新任务ID
-	NewTaskID *string `json:"NewTaskID,omitempty" name:"NewTaskID"`
+	NewTaskID *string `json:"NewTaskID,omitnil" name:"NewTaskID"`
 }
 
 func (r *DescribeRefreshTaskRequest) ToJsonString() string {
@@ -18425,10 +18425,10 @@ func (r *DescribeRefreshTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRefreshTaskResponseParams struct {
 	// 刷新任务状态，可能为：Task_New,Task_Running,Task_Finish,Task_Error,Task_NoExist
-	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+	TaskStatus *string `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRefreshTaskResponse struct {
@@ -18450,14 +18450,14 @@ func (r *DescribeRefreshTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReverseShellDetailRequestParams struct {
 	// 事件唯一id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 type DescribeReverseShellDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件唯一id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 func (r *DescribeReverseShellDetailRequest) ToJsonString() string {
@@ -18482,23 +18482,23 @@ func (r *DescribeReverseShellDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReverseShellDetailResponseParams struct {
 	// 事件基本信息
-	EventBaseInfo *RunTimeEventBaseInfo `json:"EventBaseInfo,omitempty" name:"EventBaseInfo"`
+	EventBaseInfo *RunTimeEventBaseInfo `json:"EventBaseInfo,omitnil" name:"EventBaseInfo"`
 
 	// 进程信息
-	ProcessInfo *ProcessDetailInfo `json:"ProcessInfo,omitempty" name:"ProcessInfo"`
+	ProcessInfo *ProcessDetailInfo `json:"ProcessInfo,omitnil" name:"ProcessInfo"`
 
 	// 父进程信息
-	ParentProcessInfo *ProcessDetailBaseInfo `json:"ParentProcessInfo,omitempty" name:"ParentProcessInfo"`
+	ParentProcessInfo *ProcessDetailBaseInfo `json:"ParentProcessInfo,omitnil" name:"ParentProcessInfo"`
 
 	// 事件描述
-	EventDetail *ReverseShellEventDescription `json:"EventDetail,omitempty" name:"EventDetail"`
+	EventDetail *ReverseShellEventDescription `json:"EventDetail,omitnil" name:"EventDetail"`
 
 	// 祖先进程信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitempty" name:"AncestorProcessInfo"`
+	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitnil" name:"AncestorProcessInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeReverseShellDetailResponse struct {
@@ -18520,44 +18520,44 @@ func (r *DescribeReverseShellDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReverseShellEventsExportRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 type DescribeReverseShellEventsExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 func (r *DescribeReverseShellEventsExportRequest) ToJsonString() string {
@@ -18588,14 +18588,14 @@ func (r *DescribeReverseShellEventsExportRequest) FromJsonString(s string) error
 type DescribeReverseShellEventsExportResponseParams struct {
 	// execle下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeReverseShellEventsExportResponse struct {
@@ -18617,40 +18617,40 @@ func (r *DescribeReverseShellEventsExportResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeReverseShellEventsRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数
 	// InnerNetAlarmShow- int - 是否必填：1 - 内网告警展示 0 - 不展示
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeReverseShellEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数
 	// InnerNetAlarmShow- int - 是否必填：1 - 内网告警展示 0 - 不展示
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeReverseShellEventsRequest) ToJsonString() string {
@@ -18679,13 +18679,13 @@ func (r *DescribeReverseShellEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReverseShellEventsResponseParams struct {
 	// 事件总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 反弹shell数组
-	EventSet []*ReverseShellEventInfo `json:"EventSet,omitempty" name:"EventSet"`
+	EventSet []*ReverseShellEventInfo `json:"EventSet,omitnil" name:"EventSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeReverseShellEventsResponse struct {
@@ -18707,14 +18707,14 @@ func (r *DescribeReverseShellEventsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReverseShellWhiteListDetailRequestParams struct {
 	// 白名单id
-	WhiteListId *string `json:"WhiteListId,omitempty" name:"WhiteListId"`
+	WhiteListId *string `json:"WhiteListId,omitnil" name:"WhiteListId"`
 }
 
 type DescribeReverseShellWhiteListDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白名单id
-	WhiteListId *string `json:"WhiteListId,omitempty" name:"WhiteListId"`
+	WhiteListId *string `json:"WhiteListId,omitnil" name:"WhiteListId"`
 }
 
 func (r *DescribeReverseShellWhiteListDetailRequest) ToJsonString() string {
@@ -18739,10 +18739,10 @@ func (r *DescribeReverseShellWhiteListDetailRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeReverseShellWhiteListDetailResponseParams struct {
 	// 事件基本信息
-	WhiteListDetailInfo *ReverseShellWhiteListInfo `json:"WhiteListDetailInfo,omitempty" name:"WhiteListDetailInfo"`
+	WhiteListDetailInfo *ReverseShellWhiteListInfo `json:"WhiteListDetailInfo,omitnil" name:"WhiteListDetailInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeReverseShellWhiteListDetailResponse struct {
@@ -18764,38 +18764,38 @@ func (r *DescribeReverseShellWhiteListDetailResponse) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeReverseShellWhiteListsRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeReverseShellWhiteListsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeReverseShellWhiteListsRequest) ToJsonString() string {
@@ -18824,13 +18824,13 @@ func (r *DescribeReverseShellWhiteListsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReverseShellWhiteListsResponseParams struct {
 	// 事件总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 白名单信息列表
-	WhiteListSet []*ReverseShellWhiteListBaseInfo `json:"WhiteListSet,omitempty" name:"WhiteListSet"`
+	WhiteListSet []*ReverseShellWhiteListBaseInfo `json:"WhiteListSet,omitnil" name:"WhiteListSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeReverseShellWhiteListsResponse struct {
@@ -18852,14 +18852,14 @@ func (r *DescribeReverseShellWhiteListsResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeRiskDnsEventDetailRequestParams struct {
 	// 事件ID
-	EventID *uint64 `json:"EventID,omitempty" name:"EventID"`
+	EventID *uint64 `json:"EventID,omitnil" name:"EventID"`
 }
 
 type DescribeRiskDnsEventDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件ID
-	EventID *uint64 `json:"EventID,omitempty" name:"EventID"`
+	EventID *uint64 `json:"EventID,omitnil" name:"EventID"`
 }
 
 func (r *DescribeRiskDnsEventDetailRequest) ToJsonString() string {
@@ -18884,25 +18884,25 @@ func (r *DescribeRiskDnsEventDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskDnsEventDetailResponseParams struct {
 	// 事件ID
-	EventID *uint64 `json:"EventID,omitempty" name:"EventID"`
+	EventID *uint64 `json:"EventID,omitnil" name:"EventID"`
 
 	// 事件类型，恶意域名请求：DOMAIN，恶意IP请求：IP
-	EventType *string `json:"EventType,omitempty" name:"EventType"`
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
 
 	// 恶意请求次数
-	EventCount *uint64 `json:"EventCount,omitempty" name:"EventCount"`
+	EventCount *uint64 `json:"EventCount,omitnil" name:"EventCount"`
 
 	// 首次发现时间
-	FoundTime *string `json:"FoundTime,omitempty" name:"FoundTime"`
+	FoundTime *string `json:"FoundTime,omitnil" name:"FoundTime"`
 
 	// 最近生成时间
-	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+	LatestFoundTime *string `json:"LatestFoundTime,omitnil" name:"LatestFoundTime"`
 
 	// 容器ID
-	ContainerID *string `json:"ContainerID,omitempty" name:"ContainerID"`
+	ContainerID *string `json:"ContainerID,omitnil" name:"ContainerID"`
 
 	// 容器名称
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 隔离状态
 	// 未隔离  	NORMAL
@@ -18911,7 +18911,7 @@ type DescribeRiskDnsEventDetailResponseParams struct {
 	// 隔离失败	ISOLATE_FAILED
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
-	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil" name:"ContainerNetStatus"`
 
 	// 容器状态
 	// 正在运行: RUNNING
@@ -18921,7 +18921,7 @@ type DescribeRiskDnsEventDetailResponseParams struct {
 	// 已经销毁: DESTROYED
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
-	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+	ContainerStatus *string `json:"ContainerStatus,omitnil" name:"ContainerStatus"`
 
 	// 容器子状态
 	// "AGENT_OFFLINE"       //Agent离线
@@ -18931,151 +18931,151 @@ type DescribeRiskDnsEventDetailResponseParams struct {
 	// "SHARED_HOST"         // 容器与主机共享网络
 	// "RESOURCE_LIMIT"      //隔离操作资源超限
 	// "UNKNOW"              // 原因未知
-	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
-	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil" name:"ContainerIsolateOperationSrc"`
 
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 主机名称
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 内网IP
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 外网IP
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 节点名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// 事件描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 解决方案
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 参考链接
-	Reference []*string `json:"Reference,omitempty" name:"Reference"`
+	Reference []*string `json:"Reference,omitnil" name:"Reference"`
 
 	// 恶意域名或IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Address *string `json:"Address,omitempty" name:"Address"`
+	Address *string `json:"Address,omitnil" name:"Address"`
 
 	// 恶意IP所属城市
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	City *string `json:"City,omitempty" name:"City"`
+	City *string `json:"City,omitnil" name:"City"`
 
 	// 命中规则类型
 	// SYSTEM：系统规则
 	//  USER：用户自定义
-	MatchRuleType *string `json:"MatchRuleType,omitempty" name:"MatchRuleType"`
+	MatchRuleType *string `json:"MatchRuleType,omitnil" name:"MatchRuleType"`
 
 	// 标签特征
-	FeatureLabel *string `json:"FeatureLabel,omitempty" name:"FeatureLabel"`
+	FeatureLabel *string `json:"FeatureLabel,omitnil" name:"FeatureLabel"`
 
 	// 进程权限
-	ProcessAuthority *string `json:"ProcessAuthority,omitempty" name:"ProcessAuthority"`
+	ProcessAuthority *string `json:"ProcessAuthority,omitnil" name:"ProcessAuthority"`
 
 	// 进程md5
-	ProcessMd5 *string `json:"ProcessMd5,omitempty" name:"ProcessMd5"`
+	ProcessMd5 *string `json:"ProcessMd5,omitnil" name:"ProcessMd5"`
 
 	// 进程启动用户
-	ProcessStartUser *string `json:"ProcessStartUser,omitempty" name:"ProcessStartUser"`
+	ProcessStartUser *string `json:"ProcessStartUser,omitnil" name:"ProcessStartUser"`
 
 	// 进程用户组
-	ProcessUserGroup *string `json:"ProcessUserGroup,omitempty" name:"ProcessUserGroup"`
+	ProcessUserGroup *string `json:"ProcessUserGroup,omitnil" name:"ProcessUserGroup"`
 
 	// 进程路径
-	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+	ProcessPath *string `json:"ProcessPath,omitnil" name:"ProcessPath"`
 
 	// 进程树
-	ProcessTree *string `json:"ProcessTree,omitempty" name:"ProcessTree"`
+	ProcessTree *string `json:"ProcessTree,omitnil" name:"ProcessTree"`
 
 	// 进程命令行参数
-	ProcessParam *string `json:"ProcessParam,omitempty" name:"ProcessParam"`
+	ProcessParam *string `json:"ProcessParam,omitnil" name:"ProcessParam"`
 
 	// 父进程启动用户
-	ParentProcessStartUser *string `json:"ParentProcessStartUser,omitempty" name:"ParentProcessStartUser"`
+	ParentProcessStartUser *string `json:"ParentProcessStartUser,omitnil" name:"ParentProcessStartUser"`
 
 	// 父进程用户组
-	ParentProcessUserGroup *string `json:"ParentProcessUserGroup,omitempty" name:"ParentProcessUserGroup"`
+	ParentProcessUserGroup *string `json:"ParentProcessUserGroup,omitnil" name:"ParentProcessUserGroup"`
 
 	// 父进程路径
-	ParentProcessPath *string `json:"ParentProcessPath,omitempty" name:"ParentProcessPath"`
+	ParentProcessPath *string `json:"ParentProcessPath,omitnil" name:"ParentProcessPath"`
 
 	// 父进程命令行参数
-	ParentProcessParam *string `json:"ParentProcessParam,omitempty" name:"ParentProcessParam"`
+	ParentProcessParam *string `json:"ParentProcessParam,omitnil" name:"ParentProcessParam"`
 
 	// 祖先进程启动用户
-	AncestorProcessStartUser *string `json:"AncestorProcessStartUser,omitempty" name:"AncestorProcessStartUser"`
+	AncestorProcessStartUser *string `json:"AncestorProcessStartUser,omitnil" name:"AncestorProcessStartUser"`
 
 	// 祖先进程用户组
-	AncestorProcessUserGroup *string `json:"AncestorProcessUserGroup,omitempty" name:"AncestorProcessUserGroup"`
+	AncestorProcessUserGroup *string `json:"AncestorProcessUserGroup,omitnil" name:"AncestorProcessUserGroup"`
 
 	// 祖先进程路径
-	AncestorProcessPath *string `json:"AncestorProcessPath,omitempty" name:"AncestorProcessPath"`
+	AncestorProcessPath *string `json:"AncestorProcessPath,omitnil" name:"AncestorProcessPath"`
 
 	// 祖先进程命令行参数
-	AncestorProcessParam *string `json:"AncestorProcessParam,omitempty" name:"AncestorProcessParam"`
+	AncestorProcessParam *string `json:"AncestorProcessParam,omitnil" name:"AncestorProcessParam"`
 
 	// 主机ID
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 事件状态
 	// EVENT_UNDEAL： 待处理
 	// EVENT_DEALED：已处理
 	// EVENT_IGNORE： 已忽略
 	// EVENT_ADD_WHITE：已加白
-	EventStatus *string `json:"EventStatus,omitempty" name:"EventStatus"`
+	EventStatus *string `json:"EventStatus,omitnil" name:"EventStatus"`
 
 	// 操作时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
+	OperationTime *string `json:"OperationTime,omitnil" name:"OperationTime"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 节点类型
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 节点名称
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 
 	// 节点子网ID
-	NodeSubNetID *string `json:"NodeSubNetID,omitempty" name:"NodeSubNetID"`
+	NodeSubNetID *string `json:"NodeSubNetID,omitnil" name:"NodeSubNetID"`
 
 	// 节点子网名称
-	NodeSubNetName *string `json:"NodeSubNetName,omitempty" name:"NodeSubNetName"`
+	NodeSubNetName *string `json:"NodeSubNetName,omitnil" name:"NodeSubNetName"`
 
 	// 节点子网网段
-	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitempty" name:"NodeSubNetCIDR"`
+	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitnil" name:"NodeSubNetCIDR"`
 
 	// 集群ID
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// podip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// pod状态
-	PodStatus *string `json:"PodStatus,omitempty" name:"PodStatus"`
+	PodStatus *string `json:"PodStatus,omitnil" name:"PodStatus"`
 
 	// 节点唯一id
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 节点ID名称
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRiskDnsEventDetailResponse struct {
@@ -19097,10 +19097,10 @@ func (r *DescribeRiskDnsEventDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskDnsListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>EventStatus- String - 是否必填：否 - 事件状态，待处理：EVENT_UNDEAL，EVENT_DEALED：已处理，已忽略：EVENT_IGNORE， EVENT_ADD_WHITE：已加白</li>
@@ -19117,23 +19117,23 @@ type DescribeRiskDnsListRequestParams struct {
 	// <li>HostName- string - 是否必填：否 - 主机名称。</li>
 	// <li>HostIP- string - 是否必填：否 - 内网IP。</li>
 	// <li>PublicIP- string - 是否必填：否 - 外网IP。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：告警数量：EventCount，最近生成时间：LatestFoundTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeRiskDnsListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>EventStatus- String - 是否必填：否 - 事件状态，待处理：EVENT_UNDEAL，EVENT_DEALED：已处理，已忽略：EVENT_IGNORE， EVENT_ADD_WHITE：已加白</li>
@@ -19150,13 +19150,13 @@ type DescribeRiskDnsListRequest struct {
 	// <li>HostName- string - 是否必填：否 - 主机名称。</li>
 	// <li>HostIP- string - 是否必填：否 - 内网IP。</li>
 	// <li>PublicIP- string - 是否必填：否 - 外网IP。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：告警数量：EventCount，最近生成时间：LatestFoundTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeRiskDnsListRequest) ToJsonString() string {
@@ -19185,13 +19185,13 @@ func (r *DescribeRiskDnsListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskDnsListResponseParams struct {
 	// 恶意请求事件列表
-	List []*RiskDnsEventInfo `json:"List,omitempty" name:"List"`
+	List []*RiskDnsEventInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRiskDnsListResponse struct {
@@ -19213,46 +19213,46 @@ func (r *DescribeRiskDnsListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskListRequestParams struct {
 	// 要查询的集群ID，如果不指定，则查询用户所有的风险项
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：RiskLevel风险等级, RiskTarget检查对象，风险对象,RiskType风险类别,RiskAttribute检测项所属的风险类型,Name
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeRiskListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要查询的集群ID，如果不指定，则查询用户所有的风险项
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：RiskLevel风险等级, RiskTarget检查对象，风险对象,RiskType风险类别,RiskAttribute检测项所属的风险类型,Name
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeRiskListRequest) ToJsonString() string {
@@ -19282,13 +19282,13 @@ func (r *DescribeRiskListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskListResponseParams struct {
 	// 风险详情数组
-	ClusterRiskItems []*ClusterRiskItem `json:"ClusterRiskItems,omitempty" name:"ClusterRiskItems"`
+	ClusterRiskItems []*ClusterRiskItem `json:"ClusterRiskItems,omitnil" name:"ClusterRiskItems"`
 
 	// 风险项的总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRiskListResponse struct {
@@ -19310,14 +19310,14 @@ func (r *DescribeRiskListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskSyscallDetailRequestParams struct {
 	// 事件唯一id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 type DescribeRiskSyscallDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件唯一id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 func (r *DescribeRiskSyscallDetailRequest) ToJsonString() string {
@@ -19342,23 +19342,23 @@ func (r *DescribeRiskSyscallDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskSyscallDetailResponseParams struct {
 	// 事件基本信息
-	EventBaseInfo *RunTimeEventBaseInfo `json:"EventBaseInfo,omitempty" name:"EventBaseInfo"`
+	EventBaseInfo *RunTimeEventBaseInfo `json:"EventBaseInfo,omitnil" name:"EventBaseInfo"`
 
 	// 进程信息
-	ProcessInfo *ProcessDetailInfo `json:"ProcessInfo,omitempty" name:"ProcessInfo"`
+	ProcessInfo *ProcessDetailInfo `json:"ProcessInfo,omitnil" name:"ProcessInfo"`
 
 	// 父进程信息
-	ParentProcessInfo *ProcessDetailBaseInfo `json:"ParentProcessInfo,omitempty" name:"ParentProcessInfo"`
+	ParentProcessInfo *ProcessDetailBaseInfo `json:"ParentProcessInfo,omitnil" name:"ParentProcessInfo"`
 
 	// 事件描述
-	EventDetail *RiskSyscallEventDescription `json:"EventDetail,omitempty" name:"EventDetail"`
+	EventDetail *RiskSyscallEventDescription `json:"EventDetail,omitnil" name:"EventDetail"`
 
 	// 祖先进程信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitempty" name:"AncestorProcessInfo"`
+	AncestorProcessInfo *ProcessBaseInfo `json:"AncestorProcessInfo,omitnil" name:"AncestorProcessInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRiskSyscallDetailResponse struct {
@@ -19380,44 +19380,44 @@ func (r *DescribeRiskSyscallDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskSyscallEventsExportRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 type DescribeRiskSyscallEventsExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 func (r *DescribeRiskSyscallEventsExportRequest) ToJsonString() string {
@@ -19448,14 +19448,14 @@ func (r *DescribeRiskSyscallEventsExportRequest) FromJsonString(s string) error 
 type DescribeRiskSyscallEventsExportResponseParams struct {
 	// Excel下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 任务Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRiskSyscallEventsExportResponse struct {
@@ -19477,38 +19477,38 @@ func (r *DescribeRiskSyscallEventsExportResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeRiskSyscallEventsRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeRiskSyscallEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeRiskSyscallEventsRequest) ToJsonString() string {
@@ -19537,13 +19537,13 @@ func (r *DescribeRiskSyscallEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskSyscallEventsResponseParams struct {
 	// 事件总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 高危系统调用数组
-	EventSet []*RiskSyscallEventInfo `json:"EventSet,omitempty" name:"EventSet"`
+	EventSet []*RiskSyscallEventInfo `json:"EventSet,omitnil" name:"EventSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRiskSyscallEventsResponse struct {
@@ -19594,13 +19594,13 @@ func (r *DescribeRiskSyscallNamesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskSyscallNamesResponseParams struct {
 	// 事件总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 系统调用名称列表
-	SyscallNames []*string `json:"SyscallNames,omitempty" name:"SyscallNames"`
+	SyscallNames []*string `json:"SyscallNames,omitnil" name:"SyscallNames"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRiskSyscallNamesResponse struct {
@@ -19622,14 +19622,14 @@ func (r *DescribeRiskSyscallNamesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskSyscallWhiteListDetailRequestParams struct {
 	// 白名单id
-	WhiteListId *string `json:"WhiteListId,omitempty" name:"WhiteListId"`
+	WhiteListId *string `json:"WhiteListId,omitnil" name:"WhiteListId"`
 }
 
 type DescribeRiskSyscallWhiteListDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白名单id
-	WhiteListId *string `json:"WhiteListId,omitempty" name:"WhiteListId"`
+	WhiteListId *string `json:"WhiteListId,omitnil" name:"WhiteListId"`
 }
 
 func (r *DescribeRiskSyscallWhiteListDetailRequest) ToJsonString() string {
@@ -19654,10 +19654,10 @@ func (r *DescribeRiskSyscallWhiteListDetailRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeRiskSyscallWhiteListDetailResponseParams struct {
 	// 白名单基本信息
-	WhiteListDetailInfo *RiskSyscallWhiteListInfo `json:"WhiteListDetailInfo,omitempty" name:"WhiteListDetailInfo"`
+	WhiteListDetailInfo *RiskSyscallWhiteListInfo `json:"WhiteListDetailInfo,omitnil" name:"WhiteListDetailInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRiskSyscallWhiteListDetailResponse struct {
@@ -19679,38 +19679,38 @@ func (r *DescribeRiskSyscallWhiteListDetailResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeRiskSyscallWhiteListsRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeRiskSyscallWhiteListsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤参数,"Filters":[{"Name":"Status","Values":["2"]}]
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 升序降序,asc desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeRiskSyscallWhiteListsRequest) ToJsonString() string {
@@ -19739,13 +19739,13 @@ func (r *DescribeRiskSyscallWhiteListsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskSyscallWhiteListsResponseParams struct {
 	// 事件总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 白名单信息列表
-	WhiteListSet []*RiskSyscallWhiteListBaseInfo `json:"WhiteListSet,omitempty" name:"WhiteListSet"`
+	WhiteListSet []*RiskSyscallWhiteListBaseInfo `json:"WhiteListSet,omitnil" name:"WhiteListSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRiskSyscallWhiteListsResponse struct {
@@ -19767,42 +19767,42 @@ func (r *DescribeRiskSyscallWhiteListsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScanIgnoreVulListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>CVEID- string - 是否必填：否 - CVE编号</li>
 	// <li>VulName- string - 是否必填：否 - 漏洞名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式:DESC,ACS
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段 UpdateTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeScanIgnoreVulListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>CVEID- string - 是否必填：否 - CVE编号</li>
 	// <li>VulName- string - 是否必填：否 - 漏洞名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式:DESC,ACS
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段 UpdateTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeScanIgnoreVulListRequest) ToJsonString() string {
@@ -19831,13 +19831,13 @@ func (r *DescribeScanIgnoreVulListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeScanIgnoreVulListResponseParams struct {
 	// 总是
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 漏洞列表
-	List []*ScanIgnoreVul `json:"List,omitempty" name:"List"`
+	List []*ScanIgnoreVul `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeScanIgnoreVulListResponse struct {
@@ -19859,14 +19859,14 @@ func (r *DescribeScanIgnoreVulListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSearchExportListRequestParams struct {
 	// ES查询条件JSON
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 }
 
 type DescribeSearchExportListRequest struct {
 	*tchttp.BaseRequest
 	
 	// ES查询条件JSON
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 }
 
 func (r *DescribeSearchExportListRequest) ToJsonString() string {
@@ -19891,10 +19891,10 @@ func (r *DescribeSearchExportListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSearchExportListResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSearchExportListResponse struct {
@@ -19945,10 +19945,10 @@ func (r *DescribeSearchLogsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSearchLogsResponseParams struct {
 	// 历史搜索记录 保留最新的10条
-	Data []*string `json:"Data,omitempty" name:"Data"`
+	Data []*string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSearchLogsResponse struct {
@@ -19970,20 +19970,20 @@ func (r *DescribeSearchLogsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSearchTemplatesRequestParams struct {
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeSearchTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认为10，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeSearchTemplatesRequest) ToJsonString() string {
@@ -20009,13 +20009,13 @@ func (r *DescribeSearchTemplatesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSearchTemplatesResponseParams struct {
 	// 总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 模板列表
-	List []*SearchTemplate `json:"List,omitempty" name:"List"`
+	List []*SearchTemplate `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSearchTemplatesResponse struct {
@@ -20037,20 +20037,20 @@ func (r *DescribeSearchTemplatesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecEventsTendencyRequestParams struct {
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 type DescribeSecEventsTendencyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 func (r *DescribeSecEventsTendencyRequest) ToJsonString() string {
@@ -20076,10 +20076,10 @@ func (r *DescribeSecEventsTendencyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecEventsTendencyResponseParams struct {
 	// 运行时安全事件趋势信息列表
-	EventTendencySet []*SecTendencyEventInfo `json:"EventTendencySet,omitempty" name:"EventTendencySet"`
+	EventTendencySet []*SecTendencyEventInfo `json:"EventTendencySet,omitnil" name:"EventTendencySet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecEventsTendencyResponse struct {
@@ -20106,7 +20106,7 @@ type DescribeSecLogAlertMsgRequestParams struct {
 	// kafka实例/公网域名不可用: kafka_instance_domain_unavailable
 	// kafka 用户名密码错误: kafka_user_passwd_wrong
 	// kafka后台报错字段: kafka_field_wrong
-	Type []*string `json:"Type,omitempty" name:"Type"`
+	Type []*string `json:"Type,omitnil" name:"Type"`
 }
 
 type DescribeSecLogAlertMsgRequest struct {
@@ -20118,7 +20118,7 @@ type DescribeSecLogAlertMsgRequest struct {
 	// kafka实例/公网域名不可用: kafka_instance_domain_unavailable
 	// kafka 用户名密码错误: kafka_user_passwd_wrong
 	// kafka后台报错字段: kafka_field_wrong
-	Type []*string `json:"Type,omitempty" name:"Type"`
+	Type []*string `json:"Type,omitnil" name:"Type"`
 }
 
 func (r *DescribeSecLogAlertMsgRequest) ToJsonString() string {
@@ -20143,10 +20143,10 @@ func (r *DescribeSecLogAlertMsgRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecLogAlertMsgResponseParams struct {
 	// 告警消息队列
-	List []*SecLogAlertMsgInfo `json:"List,omitempty" name:"List"`
+	List []*SecLogAlertMsgInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecLogAlertMsgResponse struct {
@@ -20197,16 +20197,16 @@ func (r *DescribeSecLogCleanSettingInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecLogCleanSettingInfoResponseParams struct {
 	// 触发清理的储量底线
-	ReservesLimit *uint64 `json:"ReservesLimit,omitempty" name:"ReservesLimit"`
+	ReservesLimit *uint64 `json:"ReservesLimit,omitnil" name:"ReservesLimit"`
 
 	// 清理停止时的储量截至线
-	ReservesDeadline *uint64 `json:"ReservesDeadline,omitempty" name:"ReservesDeadline"`
+	ReservesDeadline *uint64 `json:"ReservesDeadline,omitnil" name:"ReservesDeadline"`
 
 	// 触发清理的存储天数
-	DayLimit *uint64 `json:"DayLimit,omitempty" name:"DayLimit"`
+	DayLimit *uint64 `json:"DayLimit,omitnil" name:"DayLimit"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecLogCleanSettingInfoResponse struct {
@@ -20228,14 +20228,14 @@ func (r *DescribeSecLogCleanSettingInfoResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeSecLogDeliveryClsOptionsRequestParams struct {
 	// 地域
-	ClsRegion *string `json:"ClsRegion,omitempty" name:"ClsRegion"`
+	ClsRegion *string `json:"ClsRegion,omitnil" name:"ClsRegion"`
 }
 
 type DescribeSecLogDeliveryClsOptionsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 地域
-	ClsRegion *string `json:"ClsRegion,omitempty" name:"ClsRegion"`
+	ClsRegion *string `json:"ClsRegion,omitnil" name:"ClsRegion"`
 }
 
 func (r *DescribeSecLogDeliveryClsOptionsRequest) ToJsonString() string {
@@ -20260,13 +20260,13 @@ func (r *DescribeSecLogDeliveryClsOptionsRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeSecLogDeliveryClsOptionsResponseParams struct {
 	// cls可选日志集合列表(仅当入参ClsRegion不为空时返回)
-	LogSetList []*ClsLogsetInfo `json:"LogSetList,omitempty" name:"LogSetList"`
+	LogSetList []*ClsLogsetInfo `json:"LogSetList,omitnil" name:"LogSetList"`
 
 	// 可选地域列表(仅当入参ClsRegion为空时返回)
-	RegionList []*RegionInfo `json:"RegionList,omitempty" name:"RegionList"`
+	RegionList []*RegionInfo `json:"RegionList,omitnil" name:"RegionList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecLogDeliveryClsOptionsResponse struct {
@@ -20317,10 +20317,10 @@ func (r *DescribeSecLogDeliveryClsSettingRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeSecLogDeliveryClsSettingResponseParams struct {
 	// 日志类型列表
-	LogTypeList []*SecLogDeliveryClsSettingInfo `json:"LogTypeList,omitempty" name:"LogTypeList"`
+	LogTypeList []*SecLogDeliveryClsSettingInfo `json:"LogTypeList,omitnil" name:"LogTypeList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecLogDeliveryClsSettingResponse struct {
@@ -20342,14 +20342,14 @@ func (r *DescribeSecLogDeliveryClsSettingResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeSecLogDeliveryKafkaOptionsRequestParams struct {
 	// 地域，若为空则返回所有可选地域
-	RegionID *string `json:"RegionID,omitempty" name:"RegionID"`
+	RegionID *string `json:"RegionID,omitnil" name:"RegionID"`
 }
 
 type DescribeSecLogDeliveryKafkaOptionsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 地域，若为空则返回所有可选地域
-	RegionID *string `json:"RegionID,omitempty" name:"RegionID"`
+	RegionID *string `json:"RegionID,omitnil" name:"RegionID"`
 }
 
 func (r *DescribeSecLogDeliveryKafkaOptionsRequest) ToJsonString() string {
@@ -20374,13 +20374,13 @@ func (r *DescribeSecLogDeliveryKafkaOptionsRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeSecLogDeliveryKafkaOptionsResponseParams struct {
 	// 实例列表
-	InstanceList []*CKafkaInstanceInfo `json:"InstanceList,omitempty" name:"InstanceList"`
+	InstanceList []*CKafkaInstanceInfo `json:"InstanceList,omitnil" name:"InstanceList"`
 
 	// 地域列表
-	RegionList []*RegionInfo `json:"RegionList,omitempty" name:"RegionList"`
+	RegionList []*RegionInfo `json:"RegionList,omitnil" name:"RegionList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecLogDeliveryKafkaOptionsResponse struct {
@@ -20432,30 +20432,30 @@ func (r *DescribeSecLogDeliveryKafkaSettingRequest) FromJsonString(s string) err
 type DescribeSecLogDeliveryKafkaSettingResponseParams struct {
 	// 消息队列实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 消息队列实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 日志类型队列
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogTypeList []*SecLogDeliveryKafkaSettingInfo `json:"LogTypeList,omitempty" name:"LogTypeList"`
+	LogTypeList []*SecLogDeliveryKafkaSettingInfo `json:"LogTypeList,omitnil" name:"LogTypeList"`
 
 	// 用户名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	User *string `json:"User,omitempty" name:"User"`
+	User *string `json:"User,omitnil" name:"User"`
 
 	// 地域ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegionID *string `json:"RegionID,omitempty" name:"RegionID"`
+	RegionID *string `json:"RegionID,omitnil" name:"RegionID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecLogDeliveryKafkaSettingResponse struct {
@@ -20480,26 +20480,26 @@ type DescribeSecLogJoinObjectListRequestParams struct {
 	// bash: "container_bash",
 	// 启动: "container_launch",
 	// "k8s": "k8s_api"
-	LogType *string `json:"LogType,omitempty" name:"LogType"`
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Status- String - 是否必填：否 - 主机状态 </li>
 	// <li>HostIP- String - 是否必填：否 - 主机内网IP </li>
 	// <li>PublicIP- String - 是否必填：否 - 主机外网IP </li>
 	// <li>HostName- String - 是否必填：否 - 主机名称 </li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeSecLogJoinObjectListRequest struct {
@@ -20509,26 +20509,26 @@ type DescribeSecLogJoinObjectListRequest struct {
 	// bash: "container_bash",
 	// 启动: "container_launch",
 	// "k8s": "k8s_api"
-	LogType *string `json:"LogType,omitempty" name:"LogType"`
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>Status- String - 是否必填：否 - 主机状态 </li>
 	// <li>HostIP- String - 是否必填：否 - 主机内网IP </li>
 	// <li>PublicIP- String - 是否必填：否 - 主机外网IP </li>
 	// <li>HostName- String - 是否必填：否 - 主机名称 </li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeSecLogJoinObjectListRequest) ToJsonString() string {
@@ -20558,13 +20558,13 @@ func (r *DescribeSecLogJoinObjectListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecLogJoinObjectListResponseParams struct {
 	// 总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 接入对象列表
-	List []*SecLogJoinObjectInfo `json:"List,omitempty" name:"List"`
+	List []*SecLogJoinObjectInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecLogJoinObjectListResponse struct {
@@ -20615,10 +20615,10 @@ func (r *DescribeSecLogJoinTypeListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecLogJoinTypeListResponseParams struct {
 	// 接入日志列表
-	List []*SecLogJoinInfo `json:"List,omitempty" name:"List"`
+	List []*SecLogJoinInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecLogJoinTypeListResponse struct {
@@ -20670,14 +20670,14 @@ func (r *DescribeSecLogKafkaUINRequest) FromJsonString(s string) error {
 type DescribeSecLogKafkaUINResponseParams struct {
 	// 目标UIN
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DstUIN *string `json:"DstUIN,omitempty" name:"DstUIN"`
+	DstUIN *string `json:"DstUIN,omitnil" name:"DstUIN"`
 
 	// 授权状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *bool `json:"Status,omitempty" name:"Status"`
+	Status *bool `json:"Status,omitnil" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecLogKafkaUINResponse struct {
@@ -20731,31 +20731,31 @@ type DescribeSecLogVasInfoResponseParams struct {
 	// 待购: Pending
 	// 已购: Normal
 	// 隔离: Isolate
-	BuyStatus *string `json:"BuyStatus,omitempty" name:"BuyStatus"`
+	BuyStatus *string `json:"BuyStatus,omitnil" name:"BuyStatus"`
 
 	// 存储时长(月)
-	LogSaveMonth *int64 `json:"LogSaveMonth,omitempty" name:"LogSaveMonth"`
+	LogSaveMonth *int64 `json:"LogSaveMonth,omitnil" name:"LogSaveMonth"`
 
 	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 截止时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 存储容量(GB)
-	LogCapacity *uint64 `json:"LogCapacity,omitempty" name:"LogCapacity"`
+	LogCapacity *uint64 `json:"LogCapacity,omitnil" name:"LogCapacity"`
 
 	// 资源ID
-	ResourceID *string `json:"ResourceID,omitempty" name:"ResourceID"`
+	ResourceID *string `json:"ResourceID,omitnil" name:"ResourceID"`
 
 	// 是否曾经购买过(false:未曾 true:曾经购买过)
-	IsPurchased *bool `json:"IsPurchased,omitempty" name:"IsPurchased"`
+	IsPurchased *bool `json:"IsPurchased,omitnil" name:"IsPurchased"`
 
 	// 试用存储容量(GB)
-	TrialCapacity *uint64 `json:"TrialCapacity,omitempty" name:"TrialCapacity"`
+	TrialCapacity *uint64 `json:"TrialCapacity,omitnil" name:"TrialCapacity"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecLogVasInfoResponse struct {
@@ -20780,19 +20780,19 @@ type DescribeSupportDefenceVulRequestParams struct {
 	// <li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
 	// <li>CVEID- string - 是否必填：否 - CVE编号</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：披露时间：SubmitTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeSupportDefenceVulRequest struct {
@@ -20802,19 +20802,19 @@ type DescribeSupportDefenceVulRequest struct {
 	// <li>Level- String - 是否必填：否 - 威胁等级，CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低</li>
 	// <li>CVEID- string - 是否必填：否 - CVE编号</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：披露时间：SubmitTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeSupportDefenceVulRequest) ToJsonString() string {
@@ -20843,13 +20843,13 @@ func (r *DescribeSupportDefenceVulRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSupportDefenceVulResponseParams struct {
 	// 支持防御的漏洞列表
-	List []*SupportDefenceVul `json:"List,omitempty" name:"List"`
+	List []*SupportDefenceVul `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSupportDefenceVulResponse struct {
@@ -20871,10 +20871,10 @@ func (r *DescribeSupportDefenceVulResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSystemVulListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedContainer- string - 是否必填：否 - 仅展示影响容器的漏洞true,false</li>
@@ -20891,23 +20891,23 @@ type DescribeSystemVulListRequestParams struct {
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
 	// <li>FocusOnType - string - 是否必填：否 -关注紧急度类型 。ALL :全部，SERIOUS_LEVEL： 严重和高危 ，IS_SUGGEST： 重点关注，POC_EXP 有Poc或Exp ，NETWORK_EXP: 远程Exp</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeSystemVulListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedContainer- string - 是否必填：否 - 仅展示影响容器的漏洞true,false</li>
@@ -20924,13 +20924,13 @@ type DescribeSystemVulListRequest struct {
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
 	// <li>FocusOnType - string - 是否必填：否 -关注紧急度类型 。ALL :全部，SERIOUS_LEVEL： 严重和高危 ，IS_SUGGEST： 重点关注，POC_EXP 有Poc或Exp ，NETWORK_EXP: 远程Exp</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeSystemVulListRequest) ToJsonString() string {
@@ -20959,13 +20959,13 @@ func (r *DescribeSystemVulListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSystemVulListResponseParams struct {
 	// 漏洞总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 漏洞列表
-	List []*VulInfo `json:"List,omitempty" name:"List"`
+	List []*VulInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSystemVulListResponse struct {
@@ -21016,19 +21016,19 @@ func (r *DescribeTaskResultSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskResultSummaryResponseParams struct {
 	// 严重风险影响的节点数量,返回7天数据
-	SeriousRiskNodeCount []*uint64 `json:"SeriousRiskNodeCount,omitempty" name:"SeriousRiskNodeCount"`
+	SeriousRiskNodeCount []*uint64 `json:"SeriousRiskNodeCount,omitnil" name:"SeriousRiskNodeCount"`
 
 	// 高风险影响的节点的数量,返回7天数据
-	HighRiskNodeCount []*uint64 `json:"HighRiskNodeCount,omitempty" name:"HighRiskNodeCount"`
+	HighRiskNodeCount []*uint64 `json:"HighRiskNodeCount,omitnil" name:"HighRiskNodeCount"`
 
 	// 中风险检查项的节点数量,返回7天数据
-	MiddleRiskNodeCount []*uint64 `json:"MiddleRiskNodeCount,omitempty" name:"MiddleRiskNodeCount"`
+	MiddleRiskNodeCount []*uint64 `json:"MiddleRiskNodeCount,omitnil" name:"MiddleRiskNodeCount"`
 
 	// 提示风险检查项的节点数量,返回7天数据
-	HintRiskNodeCount []*uint64 `json:"HintRiskNodeCount,omitempty" name:"HintRiskNodeCount"`
+	HintRiskNodeCount []*uint64 `json:"HintRiskNodeCount,omitnil" name:"HintRiskNodeCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTaskResultSummaryResponse struct {
@@ -21079,73 +21079,73 @@ func (r *DescribeTcssSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTcssSummaryResponseParams struct {
 	// 镜像总数
-	ImageCnt *uint64 `json:"ImageCnt,omitempty" name:"ImageCnt"`
+	ImageCnt *uint64 `json:"ImageCnt,omitnil" name:"ImageCnt"`
 
 	// 已扫描镜像数
-	ScannedImageCnt *uint64 `json:"ScannedImageCnt,omitempty" name:"ScannedImageCnt"`
+	ScannedImageCnt *uint64 `json:"ScannedImageCnt,omitnil" name:"ScannedImageCnt"`
 
 	// 待扫描镜像个数
-	UnScannedImageCnt *uint64 `json:"UnScannedImageCnt,omitempty" name:"UnScannedImageCnt"`
+	UnScannedImageCnt *uint64 `json:"UnScannedImageCnt,omitnil" name:"UnScannedImageCnt"`
 
 	// 本地镜像个数
-	LocalImageCnt *uint64 `json:"LocalImageCnt,omitempty" name:"LocalImageCnt"`
+	LocalImageCnt *uint64 `json:"LocalImageCnt,omitnil" name:"LocalImageCnt"`
 
 	// 仓库镜像个数
-	RepositoryImageCnt *uint64 `json:"RepositoryImageCnt,omitempty" name:"RepositoryImageCnt"`
+	RepositoryImageCnt *uint64 `json:"RepositoryImageCnt,omitnil" name:"RepositoryImageCnt"`
 
 	// 风险本地镜像个数
-	RiskLocalImageCnt *uint64 `json:"RiskLocalImageCnt,omitempty" name:"RiskLocalImageCnt"`
+	RiskLocalImageCnt *uint64 `json:"RiskLocalImageCnt,omitnil" name:"RiskLocalImageCnt"`
 
 	// 风险仓库镜像个数
-	RiskRepositoryImageCnt *uint64 `json:"RiskRepositoryImageCnt,omitempty" name:"RiskRepositoryImageCnt"`
+	RiskRepositoryImageCnt *uint64 `json:"RiskRepositoryImageCnt,omitnil" name:"RiskRepositoryImageCnt"`
 
 	// 容器个数
-	ContainerCnt *uint64 `json:"ContainerCnt,omitempty" name:"ContainerCnt"`
+	ContainerCnt *uint64 `json:"ContainerCnt,omitnil" name:"ContainerCnt"`
 
 	// 风险容器个数
-	RiskContainerCnt *uint64 `json:"RiskContainerCnt,omitempty" name:"RiskContainerCnt"`
+	RiskContainerCnt *uint64 `json:"RiskContainerCnt,omitnil" name:"RiskContainerCnt"`
 
 	// 集群个数
-	ClusterCnt *uint64 `json:"ClusterCnt,omitempty" name:"ClusterCnt"`
+	ClusterCnt *uint64 `json:"ClusterCnt,omitnil" name:"ClusterCnt"`
 
 	// 风险集群个数
-	RiskClusterCnt *uint64 `json:"RiskClusterCnt,omitempty" name:"RiskClusterCnt"`
+	RiskClusterCnt *uint64 `json:"RiskClusterCnt,omitnil" name:"RiskClusterCnt"`
 
 	// 待扫描漏洞个数
-	UnScannedVulCnt *uint64 `json:"UnScannedVulCnt,omitempty" name:"UnScannedVulCnt"`
+	UnScannedVulCnt *uint64 `json:"UnScannedVulCnt,omitnil" name:"UnScannedVulCnt"`
 
 	// 风险漏洞个数
-	RiskVulCnt *uint64 `json:"RiskVulCnt,omitempty" name:"RiskVulCnt"`
+	RiskVulCnt *uint64 `json:"RiskVulCnt,omitnil" name:"RiskVulCnt"`
 
 	// 安全基线待扫描项个数
-	UnScannedBaseLineCnt *uint64 `json:"UnScannedBaseLineCnt,omitempty" name:"UnScannedBaseLineCnt"`
+	UnScannedBaseLineCnt *uint64 `json:"UnScannedBaseLineCnt,omitnil" name:"UnScannedBaseLineCnt"`
 
 	// 安全基线风险个数
-	RiskBaseLineCnt *uint64 `json:"RiskBaseLineCnt,omitempty" name:"RiskBaseLineCnt"`
+	RiskBaseLineCnt *uint64 `json:"RiskBaseLineCnt,omitnil" name:"RiskBaseLineCnt"`
 
 	// 运行时(高危)待处理事件个数
-	RuntimeUnhandleEventCnt *uint64 `json:"RuntimeUnhandleEventCnt,omitempty" name:"RuntimeUnhandleEventCnt"`
+	RuntimeUnhandleEventCnt *uint64 `json:"RuntimeUnhandleEventCnt,omitnil" name:"RuntimeUnhandleEventCnt"`
 
 	// 待扫描集群个数
-	UnScannedClusterCnt *uint64 `json:"UnScannedClusterCnt,omitempty" name:"UnScannedClusterCnt"`
+	UnScannedClusterCnt *uint64 `json:"UnScannedClusterCnt,omitnil" name:"UnScannedClusterCnt"`
 
 	// 是否已扫描镜像
-	ScanImageStatus *bool `json:"ScanImageStatus,omitempty" name:"ScanImageStatus"`
+	ScanImageStatus *bool `json:"ScanImageStatus,omitnil" name:"ScanImageStatus"`
 
 	// 是否已扫描集群
-	ScanClusterStatus *bool `json:"ScanClusterStatus,omitempty" name:"ScanClusterStatus"`
+	ScanClusterStatus *bool `json:"ScanClusterStatus,omitnil" name:"ScanClusterStatus"`
 
 	// 是否已扫描基线
-	ScanBaseLineStatus *bool `json:"ScanBaseLineStatus,omitempty" name:"ScanBaseLineStatus"`
+	ScanBaseLineStatus *bool `json:"ScanBaseLineStatus,omitnil" name:"ScanBaseLineStatus"`
 
 	// 是否已扫描漏洞
-	ScanVulStatus *bool `json:"ScanVulStatus,omitempty" name:"ScanVulStatus"`
+	ScanVulStatus *bool `json:"ScanVulStatus,omitnil" name:"ScanVulStatus"`
 
 	// 漏洞影响镜像数
-	VulRiskImageCnt *uint64 `json:"VulRiskImageCnt,omitempty" name:"VulRiskImageCnt"`
+	VulRiskImageCnt *uint64 `json:"VulRiskImageCnt,omitnil" name:"VulRiskImageCnt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTcssSummaryResponse struct {
@@ -21196,10 +21196,10 @@ func (r *DescribeUnauthorizedCoresTendencyRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeUnauthorizedCoresTendencyResponseParams struct {
 	// 未授权核数趋势
-	List []*UnauthorizedCoresTendency `json:"List,omitempty" name:"List"`
+	List []*UnauthorizedCoresTendency `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUnauthorizedCoresTendencyResponse struct {
@@ -21250,17 +21250,17 @@ func (r *DescribeUnfinishRefreshTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUnfinishRefreshTaskResponseParams struct {
 	// 返回最近的一次任务ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务状态，为Task_New,Task_Running,Task_Finish,Task_Error,Task_NoExist.Task_New,Task_Running表示有任务存在，不允许新下发
-	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+	TaskStatus *string `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// 新任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NewTaskID *string `json:"NewTaskID,omitempty" name:"NewTaskID"`
+	NewTaskID *string `json:"NewTaskID,omitnil" name:"NewTaskID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUnfinishRefreshTaskResponse struct {
@@ -21282,40 +21282,40 @@ func (r *DescribeUnfinishRefreshTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserClusterRequestParams struct {
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeUserClusterRequest struct {
 	*tchttp.BaseRequest
 	
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每次查询的最大记录数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Name - String
 	// Name 可取值：ClusterName,ClusterId,ClusterType,Region,ClusterCheckMode,ClusterAutoCheck
-	Filters []*ComplianceFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ComplianceFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式 asc,desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeUserClusterRequest) ToJsonString() string {
@@ -21344,13 +21344,13 @@ func (r *DescribeUserClusterRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserClusterResponseParams struct {
 	// 集群总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 集群的详细信息
-	ClusterInfoList []*ClusterInfoItem `json:"ClusterInfoList,omitempty" name:"ClusterInfoList"`
+	ClusterInfoList []*ClusterInfoItem `json:"ClusterInfoList,omitnil" name:"ClusterInfoList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUserClusterResponse struct {
@@ -21401,16 +21401,16 @@ func (r *DescribeValueAddedSrvInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeValueAddedSrvInfoResponseParams struct {
 	// 仓库镜像未授权数量
-	RegistryImageCnt *uint64 `json:"RegistryImageCnt,omitempty" name:"RegistryImageCnt"`
+	RegistryImageCnt *uint64 `json:"RegistryImageCnt,omitnil" name:"RegistryImageCnt"`
 
 	// 本地镜像未授权数量
-	LocalImageCnt *uint64 `json:"LocalImageCnt,omitempty" name:"LocalImageCnt"`
+	LocalImageCnt *uint64 `json:"LocalImageCnt,omitnil" name:"LocalImageCnt"`
 
 	// 未使用的镜像安全扫描授权数
-	UnusedAuthorizedCnt *uint64 `json:"UnusedAuthorizedCnt,omitempty" name:"UnusedAuthorizedCnt"`
+	UnusedAuthorizedCnt *uint64 `json:"UnusedAuthorizedCnt,omitnil" name:"UnusedAuthorizedCnt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeValueAddedSrvInfoResponse struct {
@@ -21432,14 +21432,14 @@ func (r *DescribeValueAddedSrvInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusAutoIsolateSampleDetailRequestParams struct {
 	// 文件MD5值
-	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+	MD5 *string `json:"MD5,omitnil" name:"MD5"`
 }
 
 type DescribeVirusAutoIsolateSampleDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件MD5值
-	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+	MD5 *string `json:"MD5,omitnil" name:"MD5"`
 }
 
 func (r *DescribeVirusAutoIsolateSampleDetailRequest) ToJsonString() string {
@@ -21464,42 +21464,42 @@ func (r *DescribeVirusAutoIsolateSampleDetailRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeVirusAutoIsolateSampleDetailResponseParams struct {
 	// 文件Md5值
-	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+	MD5 *string `json:"MD5,omitnil" name:"MD5"`
 
 	// 文件大小(B)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Size *uint64 `json:"Size,omitempty" name:"Size"`
+	Size *uint64 `json:"Size,omitnil" name:"Size"`
 
 	// 病毒名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VirusName *string `json:"VirusName,omitempty" name:"VirusName"`
+	VirusName *string `json:"VirusName,omitnil" name:"VirusName"`
 
 	// 风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 查杀引擎
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KillEngine []*string `json:"KillEngine,omitempty" name:"KillEngine"`
+	KillEngine []*string `json:"KillEngine,omitnil" name:"KillEngine"`
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil" name:"Tags"`
 
 	// 事件描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HarmDescribe *string `json:"HarmDescribe,omitempty" name:"HarmDescribe"`
+	HarmDescribe *string `json:"HarmDescribe,omitnil" name:"HarmDescribe"`
 
 	// 建议方案
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SuggestScheme *string `json:"SuggestScheme,omitempty" name:"SuggestScheme"`
+	SuggestScheme *string `json:"SuggestScheme,omitnil" name:"SuggestScheme"`
 
 	// 参考链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReferenceLink *string `json:"ReferenceLink,omitempty" name:"ReferenceLink"`
+	ReferenceLink *string `json:"ReferenceLink,omitnil" name:"ReferenceLink"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusAutoIsolateSampleDetailResponse struct {
@@ -21521,14 +21521,14 @@ func (r *DescribeVirusAutoIsolateSampleDetailResponse) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeVirusAutoIsolateSampleDownloadURLRequestParams struct {
 	// 样本Md5值
-	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+	MD5 *string `json:"MD5,omitnil" name:"MD5"`
 }
 
 type DescribeVirusAutoIsolateSampleDownloadURLRequest struct {
 	*tchttp.BaseRequest
 	
 	// 样本Md5值
-	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+	MD5 *string `json:"MD5,omitnil" name:"MD5"`
 }
 
 func (r *DescribeVirusAutoIsolateSampleDownloadURLRequest) ToJsonString() string {
@@ -21553,10 +21553,10 @@ func (r *DescribeVirusAutoIsolateSampleDownloadURLRequest) FromJsonString(s stri
 // Predefined struct for user
 type DescribeVirusAutoIsolateSampleDownloadURLResponseParams struct {
 	// 样本下载链接
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusAutoIsolateSampleDownloadURLResponse struct {
@@ -21578,44 +21578,44 @@ func (r *DescribeVirusAutoIsolateSampleDownloadURLResponse) FromJsonString(s str
 // Predefined struct for user
 type DescribeVirusAutoIsolateSampleListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>MD5- String - 是否必填：否 - md5 </li>
 	// <li>AutoIsolateSwitch- String - 是否必填：否 - 自动隔离开关 </li>
 	// <li>VirusName- String - 是否必填：否 - 病毒名 </li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeVirusAutoIsolateSampleListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>MD5- String - 是否必填：否 - md5 </li>
 	// <li>AutoIsolateSwitch- String - 是否必填：否 - 自动隔离开关 </li>
 	// <li>VirusName- String - 是否必填：否 - 病毒名 </li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeVirusAutoIsolateSampleListRequest) ToJsonString() string {
@@ -21644,13 +21644,13 @@ func (r *DescribeVirusAutoIsolateSampleListRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeVirusAutoIsolateSampleListResponseParams struct {
 	// 总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 木马自动隔离样本列表
-	List []*VirusAutoIsolateSampleInfo `json:"List,omitempty" name:"List"`
+	List []*VirusAutoIsolateSampleInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusAutoIsolateSampleListResponse struct {
@@ -21701,13 +21701,13 @@ func (r *DescribeVirusAutoIsolateSettingRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeVirusAutoIsolateSettingResponseParams struct {
 	// 自动隔离开关(true:开 false:关)
-	AutoIsolateSwitch *bool `json:"AutoIsolateSwitch,omitempty" name:"AutoIsolateSwitch"`
+	AutoIsolateSwitch *bool `json:"AutoIsolateSwitch,omitnil" name:"AutoIsolateSwitch"`
 
 	// 是否中断隔离文件关联的进程(true:是 false:否)
-	IsKillProgress *bool `json:"IsKillProgress,omitempty" name:"IsKillProgress"`
+	IsKillProgress *bool `json:"IsKillProgress,omitnil" name:"IsKillProgress"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusAutoIsolateSettingResponse struct {
@@ -21729,14 +21729,14 @@ func (r *DescribeVirusAutoIsolateSettingResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeVirusDetailRequestParams struct {
 	// 木马文件id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 }
 
 type DescribeVirusDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 木马文件id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *DescribeVirusDetailRequest) ToJsonString() string {
@@ -21762,123 +21762,123 @@ func (r *DescribeVirusDetailRequest) FromJsonString(s string) error {
 type DescribeVirusDetailResponseParams struct {
 	// 镜像ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 镜像名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 木马文件大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Size *uint64 `json:"Size,omitempty" name:"Size"`
+	Size *uint64 `json:"Size,omitnil" name:"Size"`
 
 	// 木马文件路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
 
 	// 最近生成时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
 
 	// 病毒名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VirusName *string `json:"VirusName,omitempty" name:"VirusName"`
+	VirusName *string `json:"VirusName,omitnil" name:"VirusName"`
 
 	// 风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 容器名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 容器id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
 
 	// 主机名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 主机id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostId *string `json:"HostId,omitempty" name:"HostId"`
+	HostId *string `json:"HostId,omitnil" name:"HostId"`
 
 	// 进程名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
 
 	// 进程路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+	ProcessPath *string `json:"ProcessPath,omitnil" name:"ProcessPath"`
 
 	// 进程md5
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessMd5 *string `json:"ProcessMd5,omitempty" name:"ProcessMd5"`
+	ProcessMd5 *string `json:"ProcessMd5,omitnil" name:"ProcessMd5"`
 
 	// 进程id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessId *uint64 `json:"ProcessId,omitempty" name:"ProcessId"`
+	ProcessId *uint64 `json:"ProcessId,omitnil" name:"ProcessId"`
 
 	// 进程参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessArgv *string `json:"ProcessArgv,omitempty" name:"ProcessArgv"`
+	ProcessArgv *string `json:"ProcessArgv,omitnil" name:"ProcessArgv"`
 
 	// 进程链
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessChan *string `json:"ProcessChan,omitempty" name:"ProcessChan"`
+	ProcessChan *string `json:"ProcessChan,omitnil" name:"ProcessChan"`
 
 	// 进程组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessAccountGroup *string `json:"ProcessAccountGroup,omitempty" name:"ProcessAccountGroup"`
+	ProcessAccountGroup *string `json:"ProcessAccountGroup,omitnil" name:"ProcessAccountGroup"`
 
 	// 进程启动用户
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessStartAccount *string `json:"ProcessStartAccount,omitempty" name:"ProcessStartAccount"`
+	ProcessStartAccount *string `json:"ProcessStartAccount,omitnil" name:"ProcessStartAccount"`
 
 	// 进程文件权限
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessFileAuthority *string `json:"ProcessFileAuthority,omitempty" name:"ProcessFileAuthority"`
+	ProcessFileAuthority *string `json:"ProcessFileAuthority,omitnil" name:"ProcessFileAuthority"`
 
 	// 来源：0：一键扫描， 1：定时扫描 2：实时监控
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SourceType *int64 `json:"SourceType,omitempty" name:"SourceType"`
+	SourceType *int64 `json:"SourceType,omitnil" name:"SourceType"`
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil" name:"Tags"`
 
 	// 事件描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HarmDescribe *string `json:"HarmDescribe,omitempty" name:"HarmDescribe"`
+	HarmDescribe *string `json:"HarmDescribe,omitnil" name:"HarmDescribe"`
 
 	// 建议方案
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SuggestScheme *string `json:"SuggestScheme,omitempty" name:"SuggestScheme"`
+	SuggestScheme *string `json:"SuggestScheme,omitnil" name:"SuggestScheme"`
 
 	// 备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Mark *string `json:"Mark,omitempty" name:"Mark"`
+	Mark *string `json:"Mark,omitnil" name:"Mark"`
 
 	// 风险文件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 文件MD5
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
+	FileMd5 *string `json:"FileMd5,omitnil" name:"FileMd5"`
 
 	// 事件类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EventType *string `json:"EventType,omitempty" name:"EventType"`
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
 
 	// 集群名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// DEAL_NONE:文件待处理
 	// DEAL_IGNORE:已经忽略
@@ -21890,7 +21890,7 @@ type DescribeVirusDetailResponseParams struct {
 	// DEAL_RECOVERING:恢复中
 	// DEAL_RECOVER_FAILED: 恢复失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 失败子状态:
 	// FILE_NOT_FOUND:文件不存在
@@ -21900,63 +21900,63 @@ type DescribeVirusDetailResponseParams struct {
 	// CONTAINER_NOT_FOUND_DEAL_ISOLATE:隔离时，容器不存在
 	// CONTAINER_NOT_FOUND_DEAL_RECOVER:恢复时，容器不存在
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubStatus *string `json:"SubStatus,omitempty" name:"SubStatus"`
+	SubStatus *string `json:"SubStatus,omitnil" name:"SubStatus"`
 
 	// 内网ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 外网ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClientIP *string `json:"ClientIP,omitempty" name:"ClientIP"`
+	ClientIP *string `json:"ClientIP,omitnil" name:"ClientIP"`
 
 	// 父进程启动用户
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PProcessStartUser *string `json:"PProcessStartUser,omitempty" name:"PProcessStartUser"`
+	PProcessStartUser *string `json:"PProcessStartUser,omitnil" name:"PProcessStartUser"`
 
 	// 父进程用户组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PProcessUserGroup *string `json:"PProcessUserGroup,omitempty" name:"PProcessUserGroup"`
+	PProcessUserGroup *string `json:"PProcessUserGroup,omitnil" name:"PProcessUserGroup"`
 
 	// 父进程路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PProcessPath *string `json:"PProcessPath,omitempty" name:"PProcessPath"`
+	PProcessPath *string `json:"PProcessPath,omitnil" name:"PProcessPath"`
 
 	// 父进程命令行参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PProcessParam *string `json:"PProcessParam,omitempty" name:"PProcessParam"`
+	PProcessParam *string `json:"PProcessParam,omitnil" name:"PProcessParam"`
 
 	// 祖先进程启动用户
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AncestorProcessStartUser *string `json:"AncestorProcessStartUser,omitempty" name:"AncestorProcessStartUser"`
+	AncestorProcessStartUser *string `json:"AncestorProcessStartUser,omitnil" name:"AncestorProcessStartUser"`
 
 	// 祖先进程用户组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AncestorProcessUserGroup *string `json:"AncestorProcessUserGroup,omitempty" name:"AncestorProcessUserGroup"`
+	AncestorProcessUserGroup *string `json:"AncestorProcessUserGroup,omitnil" name:"AncestorProcessUserGroup"`
 
 	// 祖先进程路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AncestorProcessPath *string `json:"AncestorProcessPath,omitempty" name:"AncestorProcessPath"`
+	AncestorProcessPath *string `json:"AncestorProcessPath,omitnil" name:"AncestorProcessPath"`
 
 	// 祖先进程命令行参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AncestorProcessParam *string `json:"AncestorProcessParam,omitempty" name:"AncestorProcessParam"`
+	AncestorProcessParam *string `json:"AncestorProcessParam,omitnil" name:"AncestorProcessParam"`
 
 	// 事件最后一次处理的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
+	OperationTime *string `json:"OperationTime,omitnil" name:"OperationTime"`
 
 	// 容器隔离状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil" name:"ContainerNetStatus"`
 
 	// 容器隔离子状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil" name:"ContainerIsolateOperationSrc"`
 
 	// 检测平台
 	// 1: 云查杀引擎
@@ -21965,48 +21965,48 @@ type DescribeVirusDetailResponseParams struct {
 	// 4: 异常行为
 	// 5: 威胁情报
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CheckPlatform []*string `json:"CheckPlatform,omitempty" name:"CheckPlatform"`
+	CheckPlatform []*string `json:"CheckPlatform,omitnil" name:"CheckPlatform"`
 
 	// 文件访问时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileAccessTime *string `json:"FileAccessTime,omitempty" name:"FileAccessTime"`
+	FileAccessTime *string `json:"FileAccessTime,omitnil" name:"FileAccessTime"`
 
 	// 文件修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileModifyTime *string `json:"FileModifyTime,omitempty" name:"FileModifyTime"`
+	FileModifyTime *string `json:"FileModifyTime,omitnil" name:"FileModifyTime"`
 
 	// 节点子网ID
-	NodeSubNetID *string `json:"NodeSubNetID,omitempty" name:"NodeSubNetID"`
+	NodeSubNetID *string `json:"NodeSubNetID,omitnil" name:"NodeSubNetID"`
 
 	// 节点子网名称
-	NodeSubNetName *string `json:"NodeSubNetName,omitempty" name:"NodeSubNetName"`
+	NodeSubNetName *string `json:"NodeSubNetName,omitnil" name:"NodeSubNetName"`
 
 	// 节点子网网段
-	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitempty" name:"NodeSubNetCIDR"`
+	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitnil" name:"NodeSubNetCIDR"`
 
 	// 集群id
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// pod ip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// pod状态
-	PodStatus *string `json:"PodStatus,omitempty" name:"PodStatus"`
+	PodStatus *string `json:"PodStatus,omitnil" name:"PodStatus"`
 
 	// 节点唯一ID
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 节点类型：NORMAL普通节点、SUPER超级节点
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 节点ID
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusDetailResponse struct {
@@ -22028,14 +22028,14 @@ func (r *DescribeVirusDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusEventTendencyRequestParams struct {
 	// 趋势周期(默认为7天)
-	TendencyPeriod *uint64 `json:"TendencyPeriod,omitempty" name:"TendencyPeriod"`
+	TendencyPeriod *uint64 `json:"TendencyPeriod,omitnil" name:"TendencyPeriod"`
 }
 
 type DescribeVirusEventTendencyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 趋势周期(默认为7天)
-	TendencyPeriod *uint64 `json:"TendencyPeriod,omitempty" name:"TendencyPeriod"`
+	TendencyPeriod *uint64 `json:"TendencyPeriod,omitnil" name:"TendencyPeriod"`
 }
 
 func (r *DescribeVirusEventTendencyRequest) ToJsonString() string {
@@ -22060,10 +22060,10 @@ func (r *DescribeVirusEventTendencyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusEventTendencyResponseParams struct {
 	// 趋势列表
-	List []*VirusTendencyInfo `json:"List,omitempty" name:"List"`
+	List []*VirusTendencyInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusEventTendencyResponse struct {
@@ -22085,10 +22085,10 @@ func (r *DescribeVirusEventTendencyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>FileName - String - 是否必填：否 - 文件名称</li>
@@ -22105,23 +22105,23 @@ type DescribeVirusListRequestParams struct {
 	// <li>ContainerStatus - string -是否必填: 否 - 容器状态 RUNNING PAUSED STOPPED CREATED DESTROYED RESTARTING REMOVING</li>
 	// <li>AutoIsolateMode - string -是否必填: 否 - 隔离方式 MANUAL AUTO</li>
 	// <li>MD5 - string -是否必填: 否 - md5 </li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeVirusListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>FileName - String - 是否必填：否 - 文件名称</li>
@@ -22138,13 +22138,13 @@ type DescribeVirusListRequest struct {
 	// <li>ContainerStatus - string -是否必填: 否 - 容器状态 RUNNING PAUSED STOPPED CREATED DESTROYED RESTARTING REMOVING</li>
 	// <li>AutoIsolateMode - string -是否必填: 否 - 隔离方式 MANUAL AUTO</li>
 	// <li>MD5 - string -是否必填: 否 - md5 </li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeVirusListRequest) ToJsonString() string {
@@ -22173,13 +22173,13 @@ func (r *DescribeVirusListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusListResponseParams struct {
 	// 木马列表
-	List []*VirusInfo `json:"List,omitempty" name:"List"`
+	List []*VirusInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusListResponse struct {
@@ -22201,26 +22201,26 @@ func (r *DescribeVirusListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusManualScanEstimateTimeoutRequestParams struct {
 	// 扫描范围0容器1主机节点
-	ScanRangeType *uint64 `json:"ScanRangeType,omitempty" name:"ScanRangeType"`
+	ScanRangeType *uint64 `json:"ScanRangeType,omitnil" name:"ScanRangeType"`
 
 	// true 全选，false 自选
-	ScanRangeAll *bool `json:"ScanRangeAll,omitempty" name:"ScanRangeAll"`
+	ScanRangeAll *bool `json:"ScanRangeAll,omitnil" name:"ScanRangeAll"`
 
 	// 自选扫描范围的容器id或者主机id 根据ScanRangeType决定
-	ScanIds []*string `json:"ScanIds,omitempty" name:"ScanIds"`
+	ScanIds []*string `json:"ScanIds,omitnil" name:"ScanIds"`
 }
 
 type DescribeVirusManualScanEstimateTimeoutRequest struct {
 	*tchttp.BaseRequest
 	
 	// 扫描范围0容器1主机节点
-	ScanRangeType *uint64 `json:"ScanRangeType,omitempty" name:"ScanRangeType"`
+	ScanRangeType *uint64 `json:"ScanRangeType,omitnil" name:"ScanRangeType"`
 
 	// true 全选，false 自选
-	ScanRangeAll *bool `json:"ScanRangeAll,omitempty" name:"ScanRangeAll"`
+	ScanRangeAll *bool `json:"ScanRangeAll,omitnil" name:"ScanRangeAll"`
 
 	// 自选扫描范围的容器id或者主机id 根据ScanRangeType决定
-	ScanIds []*string `json:"ScanIds,omitempty" name:"ScanIds"`
+	ScanIds []*string `json:"ScanIds,omitnil" name:"ScanIds"`
 }
 
 func (r *DescribeVirusManualScanEstimateTimeoutRequest) ToJsonString() string {
@@ -22247,13 +22247,13 @@ func (r *DescribeVirusManualScanEstimateTimeoutRequest) FromJsonString(s string)
 // Predefined struct for user
 type DescribeVirusManualScanEstimateTimeoutResponseParams struct {
 	// 预估超时时间(h)
-	Timeout *float64 `json:"Timeout,omitempty" name:"Timeout"`
+	Timeout *float64 `json:"Timeout,omitnil" name:"Timeout"`
 
 	// 单台主机并行扫描容器数
-	ContainerScanConcurrencyCount *uint64 `json:"ContainerScanConcurrencyCount,omitempty" name:"ContainerScanConcurrencyCount"`
+	ContainerScanConcurrencyCount *uint64 `json:"ContainerScanConcurrencyCount,omitnil" name:"ContainerScanConcurrencyCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusManualScanEstimateTimeoutResponse struct {
@@ -22304,28 +22304,28 @@ func (r *DescribeVirusMonitorSettingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusMonitorSettingResponseParams struct {
 	// 是否开启实时监控
-	EnableScan *bool `json:"EnableScan,omitempty" name:"EnableScan"`
+	EnableScan *bool `json:"EnableScan,omitnil" name:"EnableScan"`
 
 	// 扫描全部路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanPathAll *bool `json:"ScanPathAll,omitempty" name:"ScanPathAll"`
+	ScanPathAll *bool `json:"ScanPathAll,omitnil" name:"ScanPathAll"`
 
 	// 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanPathType *uint64 `json:"ScanPathType,omitempty" name:"ScanPathType"`
+	ScanPathType *uint64 `json:"ScanPathType,omitnil" name:"ScanPathType"`
 
 	// 自选排除或扫描的地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+	ScanPath []*string `json:"ScanPath,omitnil" name:"ScanPath"`
 
 	// 扫描路径模式：
 	// SCAN_PATH_ALL：全部路径
 	// SCAN_PATH_DEFAULT：默认路径
 	// SCAN_PATH_USER_DEFINE：用户自定义路径
-	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
+	ScanPathMode *string `json:"ScanPathMode,omitnil" name:"ScanPathMode"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusMonitorSettingResponse struct {
@@ -22347,14 +22347,14 @@ func (r *DescribeVirusMonitorSettingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusSampleDownloadUrlRequestParams struct {
 	// 木马id
-	ID *string `json:"ID,omitempty" name:"ID"`
+	ID *string `json:"ID,omitnil" name:"ID"`
 }
 
 type DescribeVirusSampleDownloadUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 木马id
-	ID *string `json:"ID,omitempty" name:"ID"`
+	ID *string `json:"ID,omitnil" name:"ID"`
 }
 
 func (r *DescribeVirusSampleDownloadUrlRequest) ToJsonString() string {
@@ -22379,10 +22379,10 @@ func (r *DescribeVirusSampleDownloadUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusSampleDownloadUrlResponseParams struct {
 	// 样本下载地址
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusSampleDownloadUrlResponse struct {
@@ -22433,47 +22433,47 @@ func (r *DescribeVirusScanSettingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusScanSettingResponseParams struct {
 	// 是否开启定期扫描
-	EnableScan *bool `json:"EnableScan,omitempty" name:"EnableScan"`
+	EnableScan *bool `json:"EnableScan,omitnil" name:"EnableScan"`
 
 	// 检测周期每隔多少天
-	Cycle *uint64 `json:"Cycle,omitempty" name:"Cycle"`
+	Cycle *uint64 `json:"Cycle,omitnil" name:"Cycle"`
 
 	// 扫描开始时间
-	BeginScanAt *string `json:"BeginScanAt,omitempty" name:"BeginScanAt"`
+	BeginScanAt *string `json:"BeginScanAt,omitnil" name:"BeginScanAt"`
 
 	// 扫描全部路径
-	ScanPathAll *bool `json:"ScanPathAll,omitempty" name:"ScanPathAll"`
+	ScanPathAll *bool `json:"ScanPathAll,omitnil" name:"ScanPathAll"`
 
 	// 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径
-	ScanPathType *uint64 `json:"ScanPathType,omitempty" name:"ScanPathType"`
+	ScanPathType *uint64 `json:"ScanPathType,omitnil" name:"ScanPathType"`
 
 	// 超时时长，单位小时
-	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 
 	// 扫描范围0容器1主机节点
-	ScanRangeType *uint64 `json:"ScanRangeType,omitempty" name:"ScanRangeType"`
+	ScanRangeType *uint64 `json:"ScanRangeType,omitnil" name:"ScanRangeType"`
 
 	// true 全选，false 自选
-	ScanRangeAll *bool `json:"ScanRangeAll,omitempty" name:"ScanRangeAll"`
+	ScanRangeAll *bool `json:"ScanRangeAll,omitnil" name:"ScanRangeAll"`
 
 	// 自选扫描范围的容器id或者主机id 根据ScanRangeType决定
-	ScanIds []*string `json:"ScanIds,omitempty" name:"ScanIds"`
+	ScanIds []*string `json:"ScanIds,omitnil" name:"ScanIds"`
 
 	// 自选排除或扫描的地址
-	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+	ScanPath []*string `json:"ScanPath,omitnil" name:"ScanPath"`
 
 	// 一键检测的超时设置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClickTimeout *uint64 `json:"ClickTimeout,omitempty" name:"ClickTimeout"`
+	ClickTimeout *uint64 `json:"ClickTimeout,omitnil" name:"ClickTimeout"`
 
 	// 扫描路径模式：
 	// SCAN_PATH_ALL：全部路径
 	// SCAN_PATH_DEFAULT：默认路径
 	// SCAN_PATH_USER_DEFINE：用户自定义路径
-	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
+	ScanPathMode *string `json:"ScanPathMode,omitnil" name:"ScanPathMode"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusScanSettingResponse struct {
@@ -22495,14 +22495,14 @@ func (r *DescribeVirusScanSettingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusScanTaskStatusRequestParams struct {
 	// 任务id
-	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
 }
 
 type DescribeVirusScanTaskStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务id
-	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
 }
 
 func (r *DescribeVirusScanTaskStatusRequest) ToJsonString() string {
@@ -22527,10 +22527,10 @@ func (r *DescribeVirusScanTaskStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusScanTaskStatusResponseParams struct {
 	// 查杀容器个数
-	ContainerTotal *uint64 `json:"ContainerTotal,omitempty" name:"ContainerTotal"`
+	ContainerTotal *uint64 `json:"ContainerTotal,omitnil" name:"ContainerTotal"`
 
 	// 风险容器个数
-	RiskContainerCnt *uint64 `json:"RiskContainerCnt,omitempty" name:"RiskContainerCnt"`
+	RiskContainerCnt *uint64 `json:"RiskContainerCnt,omitnil" name:"RiskContainerCnt"`
 
 	// 扫描状态 任务状态:
 	// SCAN_NONE:无， 
@@ -22539,31 +22539,31 @@ type DescribeVirusScanTaskStatusResponseParams struct {
 	// SCAN_TIMEOUT：扫描超时
 	// SCAN_CANCELING: 取消中
 	// SCAN_CANCELED:已取消
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 扫描进度 I
-	Schedule *uint64 `json:"Schedule,omitempty" name:"Schedule"`
+	Schedule *uint64 `json:"Schedule,omitnil" name:"Schedule"`
 
 	// 已经扫描了的容器个数
-	ContainerScanCnt *uint64 `json:"ContainerScanCnt,omitempty" name:"ContainerScanCnt"`
+	ContainerScanCnt *uint64 `json:"ContainerScanCnt,omitnil" name:"ContainerScanCnt"`
 
 	// 风险个数
-	RiskCnt *uint64 `json:"RiskCnt,omitempty" name:"RiskCnt"`
+	RiskCnt *uint64 `json:"RiskCnt,omitnil" name:"RiskCnt"`
 
 	// 剩余扫描时间
-	LeftSeconds *uint64 `json:"LeftSeconds,omitempty" name:"LeftSeconds"`
+	LeftSeconds *uint64 `json:"LeftSeconds,omitnil" name:"LeftSeconds"`
 
 	// 扫描开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 扫描结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 扫描类型，"CYCLE"：周期扫描， "MANUAL"：手动扫描
-	ScanType *string `json:"ScanType,omitempty" name:"ScanType"`
+	ScanType *string `json:"ScanType,omitnil" name:"ScanType"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusScanTaskStatusResponse struct {
@@ -22585,14 +22585,14 @@ func (r *DescribeVirusScanTaskStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusScanTimeoutSettingRequestParams struct {
 	// 设置类型0一键检测，1定时检测
-	ScanType *uint64 `json:"ScanType,omitempty" name:"ScanType"`
+	ScanType *uint64 `json:"ScanType,omitnil" name:"ScanType"`
 }
 
 type DescribeVirusScanTimeoutSettingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设置类型0一键检测，1定时检测
-	ScanType *uint64 `json:"ScanType,omitempty" name:"ScanType"`
+	ScanType *uint64 `json:"ScanType,omitnil" name:"ScanType"`
 }
 
 func (r *DescribeVirusScanTimeoutSettingRequest) ToJsonString() string {
@@ -22618,10 +22618,10 @@ func (r *DescribeVirusScanTimeoutSettingRequest) FromJsonString(s string) error 
 type DescribeVirusScanTimeoutSettingResponseParams struct {
 	// 超时时长单位小时
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusScanTimeoutSettingResponse struct {
@@ -22672,38 +22672,38 @@ func (r *DescribeVirusSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusSummaryResponseParams struct {
 	// 最近的一次扫描任务id
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 木马影响容器个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskContainerCnt *uint64 `json:"RiskContainerCnt,omitempty" name:"RiskContainerCnt"`
+	RiskContainerCnt *uint64 `json:"RiskContainerCnt,omitnil" name:"RiskContainerCnt"`
 
 	// 待处理风险个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskCnt *uint64 `json:"RiskCnt,omitempty" name:"RiskCnt"`
+	RiskCnt *uint64 `json:"RiskCnt,omitnil" name:"RiskCnt"`
 
 	// 病毒库更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VirusDataBaseModifyTime *string `json:"VirusDataBaseModifyTime,omitempty" name:"VirusDataBaseModifyTime"`
+	VirusDataBaseModifyTime *string `json:"VirusDataBaseModifyTime,omitnil" name:"VirusDataBaseModifyTime"`
 
 	// 木马影响容器个数较昨日增长
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskContainerIncrease *int64 `json:"RiskContainerIncrease,omitempty" name:"RiskContainerIncrease"`
+	RiskContainerIncrease *int64 `json:"RiskContainerIncrease,omitnil" name:"RiskContainerIncrease"`
 
 	// 待处理风险个数较昨日增长
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskIncrease *int64 `json:"RiskIncrease,omitempty" name:"RiskIncrease"`
+	RiskIncrease *int64 `json:"RiskIncrease,omitnil" name:"RiskIncrease"`
 
 	// 隔离事件个数较昨日新增
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsolateIncrease *int64 `json:"IsolateIncrease,omitempty" name:"IsolateIncrease"`
+	IsolateIncrease *int64 `json:"IsolateIncrease,omitnil" name:"IsolateIncrease"`
 
 	// 隔离事件总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsolateCnt *int64 `json:"IsolateCnt,omitempty" name:"IsolateCnt"`
+	IsolateCnt *int64 `json:"IsolateCnt,omitnil" name:"IsolateCnt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusSummaryResponse struct {
@@ -22725,13 +22725,13 @@ func (r *DescribeVirusSummaryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusTaskListRequestParams struct {
 	// 任务id
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ContainerName - String - 是否必填：否 - 容器名称</li>
@@ -22741,26 +22741,26 @@ type DescribeVirusTaskListRequestParams struct {
 	// <li>ImageId- String - 是否必填：否 - 镜像ID</li>
 	// <li>ImageName- String - 是否必填：否 - 镜像名称</li>
 	// <li>Status- String - 是否必填：否 - 状态</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeVirusTaskListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务id
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>ContainerName - String - 是否必填：否 - 容器名称</li>
@@ -22770,13 +22770,13 @@ type DescribeVirusTaskListRequest struct {
 	// <li>ImageId- String - 是否必填：否 - 镜像ID</li>
 	// <li>ImageName- String - 是否必填：否 - 镜像名称</li>
 	// <li>Status- String - 是否必填：否 - 状态</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeVirusTaskListRequest) ToJsonString() string {
@@ -22806,13 +22806,13 @@ func (r *DescribeVirusTaskListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVirusTaskListResponseParams struct {
 	// 文件查杀列表
-	List []*VirusTaskInfo `json:"List,omitempty" name:"List"`
+	List []*VirusTaskInfo `json:"List,omitnil" name:"List"`
 
 	// 总数量(容器任务数量)
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVirusTaskListResponse struct {
@@ -22834,38 +22834,38 @@ func (r *DescribeVirusTaskListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulContainerListRequestParams struct {
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
 	// <li>ContainerID- string - 是否必填：否 - 容器ID</li>
 	// <li>ContainerName- String -是否必填: 否 - 容器名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeVulContainerListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
 	// <li>ContainerID- string - 是否必填：否 - 容器ID</li>
 	// <li>ContainerName- String -是否必填: 否 - 容器名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeVulContainerListRequest) ToJsonString() string {
@@ -22893,13 +22893,13 @@ func (r *DescribeVulContainerListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulContainerListResponseParams struct {
 	// 容器列表
-	List []*VulAffectedContainerInfo `json:"List,omitempty" name:"List"`
+	List []*VulAffectedContainerInfo `json:"List,omitnil" name:"List"`
 
 	// 容器总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulContainerListResponse struct {
@@ -22921,14 +22921,14 @@ func (r *DescribeVulContainerListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulDefenceEventDetailRequestParams struct {
 	// 事件ID
-	EventID *int64 `json:"EventID,omitempty" name:"EventID"`
+	EventID *int64 `json:"EventID,omitnil" name:"EventID"`
 }
 
 type DescribeVulDefenceEventDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件ID
-	EventID *int64 `json:"EventID,omitempty" name:"EventID"`
+	EventID *int64 `json:"EventID,omitnil" name:"EventID"`
 }
 
 func (r *DescribeVulDefenceEventDetailRequest) ToJsonString() string {
@@ -22953,10 +22953,10 @@ func (r *DescribeVulDefenceEventDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulDefenceEventDetailResponseParams struct {
 	// 漏洞防御事件详细
-	EventDetail *VulDefenceEventDetail `json:"EventDetail,omitempty" name:"EventDetail"`
+	EventDetail *VulDefenceEventDetail `json:"EventDetail,omitnil" name:"EventDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulDefenceEventDetailResponse struct {
@@ -22992,19 +22992,19 @@ type DescribeVulDefenceEventRequestParams struct {
 	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
 	// <li>HostName- string - 是否必填：否 - 主机名称。</li>
 	// <li>HostIP- string - 是否必填：否 - 内网IP。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：事件数量：EventCount
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeVulDefenceEventRequest struct {
@@ -23025,19 +23025,19 @@ type DescribeVulDefenceEventRequest struct {
 	// <li>ImageID- string - 是否必填：否 - 镜像ID。</li>
 	// <li>HostName- string - 是否必填：否 - 主机名称。</li>
 	// <li>HostIP- string - 是否必填：否 - 内网IP。</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：事件数量：EventCount
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeVulDefenceEventRequest) ToJsonString() string {
@@ -23066,13 +23066,13 @@ func (r *DescribeVulDefenceEventRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulDefenceEventResponseParams struct {
 	// 漏洞防御事件列表
-	List []*VulDefenceEvent `json:"List,omitempty" name:"List"`
+	List []*VulDefenceEvent `json:"List,omitnil" name:"List"`
 
 	// 总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulDefenceEventResponse struct {
@@ -23094,20 +23094,20 @@ func (r *DescribeVulDefenceEventResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulDefenceEventTendencyRequestParams struct {
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 type DescribeVulDefenceEventTendencyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 func (r *DescribeVulDefenceEventTendencyRequest) ToJsonString() string {
@@ -23133,13 +23133,13 @@ func (r *DescribeVulDefenceEventTendencyRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeVulDefenceEventTendencyResponseParams struct {
 	// 漏洞防御事件趋势
-	DefendedList []*VulDefenceEventTendency `json:"DefendedList,omitempty" name:"DefendedList"`
+	DefendedList []*VulDefenceEventTendency `json:"DefendedList,omitnil" name:"DefendedList"`
 
 	// 漏洞攻击事件趋势
-	AttackList []*VulDefenceEventTendency `json:"AttackList,omitempty" name:"AttackList"`
+	AttackList []*VulDefenceEventTendency `json:"AttackList,omitnil" name:"AttackList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulDefenceEventTendencyResponse struct {
@@ -23167,19 +23167,19 @@ type DescribeVulDefenceHostRequestParams struct {
 	// <li>NodeType- String - 是否必填：否 - 节点类型</li>
 	// <li>HostName- String - 是否必填：否 - 超级节点名称</li>
 	// <li>NodeSubNetCIDR- String - 是否必填：否 - 超级节点CIDR</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：更新时间：ModifyTime/首次开启时间：CreateTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeVulDefenceHostRequest struct {
@@ -23192,19 +23192,19 @@ type DescribeVulDefenceHostRequest struct {
 	// <li>NodeType- String - 是否必填：否 - 节点类型</li>
 	// <li>HostName- String - 是否必填：否 - 超级节点名称</li>
 	// <li>NodeSubNetCIDR- String - 是否必填：否 - 超级节点CIDR</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式：asc/desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段：更新时间：ModifyTime/首次开启时间：CreateTime
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeVulDefenceHostRequest) ToJsonString() string {
@@ -23233,13 +23233,13 @@ func (r *DescribeVulDefenceHostRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulDefenceHostResponseParams struct {
 	// 总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 漏洞防御的主机列表
-	List []*VulDefenceHost `json:"List,omitempty" name:"List"`
+	List []*VulDefenceHost `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulDefenceHostResponse struct {
@@ -23261,38 +23261,38 @@ func (r *DescribeVulDefenceHostResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulDefencePluginRequestParams struct {
 	// 主机HostID或超级节点UniqueId
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>
 	// Status- String - 是否必填：否 -插件运行状态：注入中:INJECTING，注入成功：SUCCESS，注入失败：FAIL，插件超时：TIMEOUT，插件退出：QUIT
 	// </li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeVulDefencePluginRequest struct {
 	*tchttp.BaseRequest
 	
 	// 主机HostID或超级节点UniqueId
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>
 	// Status- String - 是否必填：否 -插件运行状态：注入中:INJECTING，注入成功：SUCCESS，注入失败：FAIL，插件超时：TIMEOUT，插件退出：QUIT
 	// </li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeVulDefencePluginRequest) ToJsonString() string {
@@ -23320,13 +23320,13 @@ func (r *DescribeVulDefencePluginRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulDefencePluginResponseParams struct {
 	// 总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 漏洞防御插件列表
-	List []*VulDefencePlugin `json:"List,omitempty" name:"List"`
+	List []*VulDefencePlugin `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulDefencePluginResponse struct {
@@ -23377,46 +23377,46 @@ func (r *DescribeVulDefenceSettingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulDefenceSettingResponseParams struct {
 	// 是否开启:0: 关闭 1:开启
-	IsEnabled *int64 `json:"IsEnabled,omitempty" name:"IsEnabled"`
+	IsEnabled *int64 `json:"IsEnabled,omitnil" name:"IsEnabled"`
 
 	// 漏洞防御主机范围: 0:自选主机节点，1:全部
-	Scope *int64 `json:"Scope,omitempty" name:"Scope"`
+	Scope *int64 `json:"Scope,omitnil" name:"Scope"`
 
 	// 漏洞防御主机数量
-	HostCount *int64 `json:"HostCount,omitempty" name:"HostCount"`
+	HostCount *int64 `json:"HostCount,omitnil" name:"HostCount"`
 
 	// 开启漏洞防御异常主机数量
-	ExceptionHostCount *int64 `json:"ExceptionHostCount,omitempty" name:"ExceptionHostCount"`
+	ExceptionHostCount *int64 `json:"ExceptionHostCount,omitnil" name:"ExceptionHostCount"`
 
 	// 自选漏洞防御主机
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostIDs []*string `json:"HostIDs,omitempty" name:"HostIDs"`
+	HostIDs []*string `json:"HostIDs,omitnil" name:"HostIDs"`
 
 	// 开通容器安全的主机总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostTotalCount *int64 `json:"HostTotalCount,omitempty" name:"HostTotalCount"`
+	HostTotalCount *int64 `json:"HostTotalCount,omitnil" name:"HostTotalCount"`
 
 	// 支持防御的漏洞数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SupportDefenseVulCount *int64 `json:"SupportDefenseVulCount,omitempty" name:"SupportDefenseVulCount"`
+	SupportDefenseVulCount *int64 `json:"SupportDefenseVulCount,omitnil" name:"SupportDefenseVulCount"`
 
 	// 普通节点个数
-	HostNodeCount *int64 `json:"HostNodeCount,omitempty" name:"HostNodeCount"`
+	HostNodeCount *int64 `json:"HostNodeCount,omitnil" name:"HostNodeCount"`
 
 	// 超级节点范围
-	SuperScope *int64 `json:"SuperScope,omitempty" name:"SuperScope"`
+	SuperScope *int64 `json:"SuperScope,omitnil" name:"SuperScope"`
 
 	// 超级节点个数
-	SuperNodeCount *int64 `json:"SuperNodeCount,omitempty" name:"SuperNodeCount"`
+	SuperNodeCount *int64 `json:"SuperNodeCount,omitnil" name:"SuperNodeCount"`
 
 	// 超级节点Id列表
-	SuperNodeIds []*string `json:"SuperNodeIds,omitempty" name:"SuperNodeIds"`
+	SuperNodeIds []*string `json:"SuperNodeIds,omitnil" name:"SuperNodeIds"`
 
 	// 开通容器安全的超级结点总数
-	NodeTotalCount *int64 `json:"NodeTotalCount,omitempty" name:"NodeTotalCount"`
+	NodeTotalCount *int64 `json:"NodeTotalCount,omitnil" name:"NodeTotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulDefenceSettingResponse struct {
@@ -23438,14 +23438,14 @@ func (r *DescribeVulDefenceSettingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulDetailRequestParams struct {
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 }
 
 type DescribeVulDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 }
 
 func (r *DescribeVulDetailRequest) ToJsonString() string {
@@ -23470,10 +23470,10 @@ func (r *DescribeVulDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulDetailResponseParams struct {
 	// 漏洞详情信息
-	VulInfo *VulDetailInfo `json:"VulInfo,omitempty" name:"VulInfo"`
+	VulInfo *VulDetailInfo `json:"VulInfo,omitnil" name:"VulInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulDetailResponse struct {
@@ -23495,38 +23495,38 @@ func (r *DescribeVulDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulIgnoreLocalImageListRequestParams struct {
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式:DESC,ACS
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段 ImageSize
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeVulIgnoreLocalImageListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式:DESC,ACS
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段 ImageSize
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeVulIgnoreLocalImageListRequest) ToJsonString() string {
@@ -23555,13 +23555,13 @@ func (r *DescribeVulIgnoreLocalImageListRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeVulIgnoreLocalImageListResponseParams struct {
 	// 总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 镜像列表
-	List []*VulIgnoreLocalImage `json:"List,omitempty" name:"List"`
+	List []*VulIgnoreLocalImage `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulIgnoreLocalImageListResponse struct {
@@ -23583,26 +23583,26 @@ func (r *DescribeVulIgnoreLocalImageListResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeVulIgnoreRegistryImageListRequestParams struct {
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeVulIgnoreRegistryImageListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeVulIgnoreRegistryImageListRequest) ToJsonString() string {
@@ -23629,13 +23629,13 @@ func (r *DescribeVulIgnoreRegistryImageListRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeVulIgnoreRegistryImageListResponseParams struct {
 	// 总数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 镜像列表
-	List []*VulIgnoreRegistryImage `json:"List,omitempty" name:"List"`
+	List []*VulIgnoreRegistryImage `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulIgnoreRegistryImageListResponse struct {
@@ -23657,13 +23657,13 @@ func (r *DescribeVulIgnoreRegistryImageListResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeVulImageListRequestParams struct {
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
@@ -23674,26 +23674,26 @@ type DescribeVulImageListRequestParams struct {
 	// <li>ComponentName- string -是否必填: 否 - 组件名称</li>
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>HostName- string -是否必填: 否 - 主机名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeVulImageListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
@@ -23704,13 +23704,13 @@ type DescribeVulImageListRequest struct {
 	// <li>ComponentName- string -是否必填: 否 - 组件名称</li>
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>HostName- string -是否必填: 否 - 主机名称</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeVulImageListRequest) ToJsonString() string {
@@ -23740,13 +23740,13 @@ func (r *DescribeVulImageListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulImageListResponseParams struct {
 	// 受影响的镜像列表
-	List []*VulAffectedImageInfo `json:"List,omitempty" name:"List"`
+	List []*VulAffectedImageInfo `json:"List,omitnil" name:"List"`
 
 	// 镜像总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulImageListResponse struct {
@@ -23797,34 +23797,34 @@ func (r *DescribeVulImageSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulImageSummaryResponseParams struct {
 	// 受严重或高危漏洞影响的镜像数
-	SeriousVulImageCount *int64 `json:"SeriousVulImageCount,omitempty" name:"SeriousVulImageCount"`
+	SeriousVulImageCount *int64 `json:"SeriousVulImageCount,omitnil" name:"SeriousVulImageCount"`
 
 	// 已扫描的镜像数
-	ScannedImageCount *int64 `json:"ScannedImageCount,omitempty" name:"ScannedImageCount"`
+	ScannedImageCount *int64 `json:"ScannedImageCount,omitnil" name:"ScannedImageCount"`
 
 	// 漏洞总数量
-	VulTotalCount *int64 `json:"VulTotalCount,omitempty" name:"VulTotalCount"`
+	VulTotalCount *int64 `json:"VulTotalCount,omitnil" name:"VulTotalCount"`
 
 	// 系统漏洞数
-	SysTemVulCount *int64 `json:"SysTemVulCount,omitempty" name:"SysTemVulCount"`
+	SysTemVulCount *int64 `json:"SysTemVulCount,omitnil" name:"SysTemVulCount"`
 
 	// web应用漏洞数
-	WebVulCount *int64 `json:"WebVulCount,omitempty" name:"WebVulCount"`
+	WebVulCount *int64 `json:"WebVulCount,omitnil" name:"WebVulCount"`
 
 	// 已授权镜像数
-	AllAuthorizedImageCount *int64 `json:"AllAuthorizedImageCount,omitempty" name:"AllAuthorizedImageCount"`
+	AllAuthorizedImageCount *int64 `json:"AllAuthorizedImageCount,omitnil" name:"AllAuthorizedImageCount"`
 
 	// 应急漏洞数
-	EmergencyVulCount *int64 `json:"EmergencyVulCount,omitempty" name:"EmergencyVulCount"`
+	EmergencyVulCount *int64 `json:"EmergencyVulCount,omitnil" name:"EmergencyVulCount"`
 
 	// 支持扫描的漏洞总数量
-	SupportVulTotalCount *int64 `json:"SupportVulTotalCount,omitempty" name:"SupportVulTotalCount"`
+	SupportVulTotalCount *int64 `json:"SupportVulTotalCount,omitnil" name:"SupportVulTotalCount"`
 
 	// 漏洞库更新时间
-	VulLibraryUpdateTime *string `json:"VulLibraryUpdateTime,omitempty" name:"VulLibraryUpdateTime"`
+	VulLibraryUpdateTime *string `json:"VulLibraryUpdateTime,omitnil" name:"VulLibraryUpdateTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulImageSummaryResponse struct {
@@ -23875,37 +23875,37 @@ func (r *DescribeVulLevelImageSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulLevelImageSummaryResponseParams struct {
 	// 高危漏洞最新本地镜像占比
-	HighLevelVulLocalImagePercent *float64 `json:"HighLevelVulLocalImagePercent,omitempty" name:"HighLevelVulLocalImagePercent"`
+	HighLevelVulLocalImagePercent *float64 `json:"HighLevelVulLocalImagePercent,omitnil" name:"HighLevelVulLocalImagePercent"`
 
 	// 中危漏洞最新本地镜像占比
-	MediumLevelVulLocalImagePercent *float64 `json:"MediumLevelVulLocalImagePercent,omitempty" name:"MediumLevelVulLocalImagePercent"`
+	MediumLevelVulLocalImagePercent *float64 `json:"MediumLevelVulLocalImagePercent,omitnil" name:"MediumLevelVulLocalImagePercent"`
 
 	// 低危漏洞最新本地镜像占比
-	LowLevelVulLocalImagePercent *float64 `json:"LowLevelVulLocalImagePercent,omitempty" name:"LowLevelVulLocalImagePercent"`
+	LowLevelVulLocalImagePercent *float64 `json:"LowLevelVulLocalImagePercent,omitnil" name:"LowLevelVulLocalImagePercent"`
 
 	// 严重漏洞最新本地镜像占比
-	CriticalLevelVulLocalImagePercent *float64 `json:"CriticalLevelVulLocalImagePercent,omitempty" name:"CriticalLevelVulLocalImagePercent"`
+	CriticalLevelVulLocalImagePercent *float64 `json:"CriticalLevelVulLocalImagePercent,omitnil" name:"CriticalLevelVulLocalImagePercent"`
 
 	// 影响的最新版本本地镜像数
-	LocalNewestImageCount *int64 `json:"LocalNewestImageCount,omitempty" name:"LocalNewestImageCount"`
+	LocalNewestImageCount *int64 `json:"LocalNewestImageCount,omitnil" name:"LocalNewestImageCount"`
 
 	// 影响的最新版本仓库镜像数
-	RegistryNewestImageCount *int64 `json:"RegistryNewestImageCount,omitempty" name:"RegistryNewestImageCount"`
+	RegistryNewestImageCount *int64 `json:"RegistryNewestImageCount,omitnil" name:"RegistryNewestImageCount"`
 
 	// 高危漏洞最新仓库镜像占比
-	HighLevelVulRegistryImagePercent *float64 `json:"HighLevelVulRegistryImagePercent,omitempty" name:"HighLevelVulRegistryImagePercent"`
+	HighLevelVulRegistryImagePercent *float64 `json:"HighLevelVulRegistryImagePercent,omitnil" name:"HighLevelVulRegistryImagePercent"`
 
 	// 中危漏洞最新仓库镜像占比
-	MediumLevelVulRegistryImagePercent *float64 `json:"MediumLevelVulRegistryImagePercent,omitempty" name:"MediumLevelVulRegistryImagePercent"`
+	MediumLevelVulRegistryImagePercent *float64 `json:"MediumLevelVulRegistryImagePercent,omitnil" name:"MediumLevelVulRegistryImagePercent"`
 
 	// 低危漏洞最新仓库镜像占比
-	LowLevelVulRegistryImagePercent *float64 `json:"LowLevelVulRegistryImagePercent,omitempty" name:"LowLevelVulRegistryImagePercent"`
+	LowLevelVulRegistryImagePercent *float64 `json:"LowLevelVulRegistryImagePercent,omitnil" name:"LowLevelVulRegistryImagePercent"`
 
 	// 严重漏洞最新仓库镜像占比
-	CriticalLevelVulRegistryImagePercent *float64 `json:"CriticalLevelVulRegistryImagePercent,omitempty" name:"CriticalLevelVulRegistryImagePercent"`
+	CriticalLevelVulRegistryImagePercent *float64 `json:"CriticalLevelVulRegistryImagePercent,omitnil" name:"CriticalLevelVulRegistryImagePercent"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulLevelImageSummaryResponse struct {
@@ -23927,14 +23927,14 @@ func (r *DescribeVulLevelImageSummaryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulLevelSummaryRequestParams struct {
 	// 漏洞分类: SYSTEM:系统漏洞 WEB:web应用漏洞 EMERGENCY:应急漏洞
-	CategoryType *string `json:"CategoryType,omitempty" name:"CategoryType"`
+	CategoryType *string `json:"CategoryType,omitnil" name:"CategoryType"`
 }
 
 type DescribeVulLevelSummaryRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞分类: SYSTEM:系统漏洞 WEB:web应用漏洞 EMERGENCY:应急漏洞
-	CategoryType *string `json:"CategoryType,omitempty" name:"CategoryType"`
+	CategoryType *string `json:"CategoryType,omitnil" name:"CategoryType"`
 }
 
 func (r *DescribeVulLevelSummaryRequest) ToJsonString() string {
@@ -23959,19 +23959,19 @@ func (r *DescribeVulLevelSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulLevelSummaryResponseParams struct {
 	// 高危漏洞数
-	HighLevelVulCount *int64 `json:"HighLevelVulCount,omitempty" name:"HighLevelVulCount"`
+	HighLevelVulCount *int64 `json:"HighLevelVulCount,omitnil" name:"HighLevelVulCount"`
 
 	// 中危漏洞数
-	MediumLevelVulCount *int64 `json:"MediumLevelVulCount,omitempty" name:"MediumLevelVulCount"`
+	MediumLevelVulCount *int64 `json:"MediumLevelVulCount,omitnil" name:"MediumLevelVulCount"`
 
 	// 低危漏洞数
-	LowLevelVulCount *int64 `json:"LowLevelVulCount,omitempty" name:"LowLevelVulCount"`
+	LowLevelVulCount *int64 `json:"LowLevelVulCount,omitnil" name:"LowLevelVulCount"`
 
 	// 严重漏洞数
-	CriticalLevelVulCount *int64 `json:"CriticalLevelVulCount,omitempty" name:"CriticalLevelVulCount"`
+	CriticalLevelVulCount *int64 `json:"CriticalLevelVulCount,omitnil" name:"CriticalLevelVulCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulLevelSummaryResponse struct {
@@ -23993,13 +23993,13 @@ func (r *DescribeVulLevelSummaryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulRegistryImageListRequestParams struct {
 	// 漏洞ID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// OnlyAffectedNewestImage bool 是否影响最新镜像
@@ -24010,26 +24010,26 @@ type DescribeVulRegistryImageListRequestParams struct {
 	// InstanceName 实例名称，支持模糊查询
 	// ImageName 镜像名，支持模糊查询
 	// ImageRepoAddress 镜像地址，支持模糊查询
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeVulRegistryImageListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞ID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// OnlyAffectedNewestImage bool 是否影响最新镜像
@@ -24040,13 +24040,13 @@ type DescribeVulRegistryImageListRequest struct {
 	// InstanceName 实例名称，支持模糊查询
 	// ImageName 镜像名，支持模糊查询
 	// ImageRepoAddress 镜像地址，支持模糊查询
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeVulRegistryImageListRequest) ToJsonString() string {
@@ -24076,13 +24076,13 @@ func (r *DescribeVulRegistryImageListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulRegistryImageListResponseParams struct {
 	// 镜像总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 仓库镜像列表
-	List []*VulAffectedRegistryImageInfo `json:"List,omitempty" name:"List"`
+	List []*VulAffectedRegistryImageInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulRegistryImageListResponse struct {
@@ -24133,13 +24133,13 @@ func (r *DescribeVulScanAuthorizedImageSummaryRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeVulScanAuthorizedImageSummaryResponseParams struct {
 	// 全部已授权的本地镜像数
-	AllAuthorizedImageCount *int64 `json:"AllAuthorizedImageCount,omitempty" name:"AllAuthorizedImageCount"`
+	AllAuthorizedImageCount *int64 `json:"AllAuthorizedImageCount,omitnil" name:"AllAuthorizedImageCount"`
 
 	// 已授权未扫描的本地镜像数
-	UnScanAuthorizedImageCount *int64 `json:"UnScanAuthorizedImageCount,omitempty" name:"UnScanAuthorizedImageCount"`
+	UnScanAuthorizedImageCount *int64 `json:"UnScanAuthorizedImageCount,omitnil" name:"UnScanAuthorizedImageCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulScanAuthorizedImageSummaryResponse struct {
@@ -24161,20 +24161,20 @@ func (r *DescribeVulScanAuthorizedImageSummaryResponse) FromJsonString(s string)
 // Predefined struct for user
 type DescribeVulScanInfoRequestParams struct {
 	// 本地镜像漏洞扫描任务ID，无则返回最近一次的漏洞任务扫描
-	LocalTaskID *int64 `json:"LocalTaskID,omitempty" name:"LocalTaskID"`
+	LocalTaskID *int64 `json:"LocalTaskID,omitnil" name:"LocalTaskID"`
 
 	// 仓库镜像漏洞扫描任务ID，无则返回最近一次的漏洞任务扫描
-	RegistryTaskID *int64 `json:"RegistryTaskID,omitempty" name:"RegistryTaskID"`
+	RegistryTaskID *int64 `json:"RegistryTaskID,omitnil" name:"RegistryTaskID"`
 }
 
 type DescribeVulScanInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 本地镜像漏洞扫描任务ID，无则返回最近一次的漏洞任务扫描
-	LocalTaskID *int64 `json:"LocalTaskID,omitempty" name:"LocalTaskID"`
+	LocalTaskID *int64 `json:"LocalTaskID,omitnil" name:"LocalTaskID"`
 
 	// 仓库镜像漏洞扫描任务ID，无则返回最近一次的漏洞任务扫描
-	RegistryTaskID *int64 `json:"RegistryTaskID,omitempty" name:"RegistryTaskID"`
+	RegistryTaskID *int64 `json:"RegistryTaskID,omitnil" name:"RegistryTaskID"`
 }
 
 func (r *DescribeVulScanInfoRequest) ToJsonString() string {
@@ -24200,46 +24200,46 @@ func (r *DescribeVulScanInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulScanInfoResponseParams struct {
 	// 本次扫描的本地镜像总数
-	LocalImageScanCount *int64 `json:"LocalImageScanCount,omitempty" name:"LocalImageScanCount"`
+	LocalImageScanCount *int64 `json:"LocalImageScanCount,omitnil" name:"LocalImageScanCount"`
 
 	// 忽略的漏洞数量
-	IgnoreVulCount *int64 `json:"IgnoreVulCount,omitempty" name:"IgnoreVulCount"`
+	IgnoreVulCount *int64 `json:"IgnoreVulCount,omitnil" name:"IgnoreVulCount"`
 
 	// 漏洞扫描的开始时间
-	ScanStartTime *string `json:"ScanStartTime,omitempty" name:"ScanStartTime"`
+	ScanStartTime *string `json:"ScanStartTime,omitnil" name:"ScanStartTime"`
 
 	// 漏洞扫描的结束时间
-	ScanEndTime *string `json:"ScanEndTime,omitempty" name:"ScanEndTime"`
+	ScanEndTime *string `json:"ScanEndTime,omitnil" name:"ScanEndTime"`
 
 	// 发现风险镜像数量
-	FoundRiskImageCount *int64 `json:"FoundRiskImageCount,omitempty" name:"FoundRiskImageCount"`
+	FoundRiskImageCount *int64 `json:"FoundRiskImageCount,omitnil" name:"FoundRiskImageCount"`
 
 	// 本地发现漏洞数量
-	FoundVulCount *int64 `json:"FoundVulCount,omitempty" name:"FoundVulCount"`
+	FoundVulCount *int64 `json:"FoundVulCount,omitnil" name:"FoundVulCount"`
 
 	// 扫描进度
-	ScanProgress *float64 `json:"ScanProgress,omitempty" name:"ScanProgress"`
+	ScanProgress *float64 `json:"ScanProgress,omitnil" name:"ScanProgress"`
 
 	// 本次扫描的仓库镜像总数
-	RegistryImageScanCount *int64 `json:"RegistryImageScanCount,omitempty" name:"RegistryImageScanCount"`
+	RegistryImageScanCount *int64 `json:"RegistryImageScanCount,omitnil" name:"RegistryImageScanCount"`
 
 	// 本地镜像最近一次的漏洞任务扫描ID
-	LocalTaskID *int64 `json:"LocalTaskID,omitempty" name:"LocalTaskID"`
+	LocalTaskID *int64 `json:"LocalTaskID,omitnil" name:"LocalTaskID"`
 
 	// 扫描状态:NOT_SCAN:未扫描，SCANNING:扫描中,SCANNED:完成，CANCELED：扫描停止
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 剩余时间，秒
-	RemainingTime *float64 `json:"RemainingTime,omitempty" name:"RemainingTime"`
+	RemainingTime *float64 `json:"RemainingTime,omitnil" name:"RemainingTime"`
 
 	// 仓库镜像最近一次的漏洞任务扫描ID
-	RegistryTaskID *int64 `json:"RegistryTaskID,omitempty" name:"RegistryTaskID"`
+	RegistryTaskID *int64 `json:"RegistryTaskID,omitnil" name:"RegistryTaskID"`
 
 	// 仓库发现漏洞数量
-	RegistryFoundVulCount *int64 `json:"RegistryFoundVulCount,omitempty" name:"RegistryFoundVulCount"`
+	RegistryFoundVulCount *int64 `json:"RegistryFoundVulCount,omitnil" name:"RegistryFoundVulCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulScanInfoResponse struct {
@@ -24261,52 +24261,52 @@ func (r *DescribeVulScanInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulScanLocalImageListRequestParams struct {
 	// 漏洞扫描任务ID
-	TaskID *int64 `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *int64 `json:"TaskID,omitnil" name:"TaskID"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
 	// <li>ImageID- string - 是否必填：否 - 镜像ID</li>
 	// <li>ImageName- String -是否必填: 否 - 镜像名称</li>
 	// <li>ScanStatus- string -是否必填: 否 - 检测状态。WAIT_SCAN：待检测，SCANNING：检查中，SCANNED：检查完成，SCAN_ERR：检查失败，CANCELED：检测停止</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeVulScanLocalImageListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞扫描任务ID
-	TaskID *int64 `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *int64 `json:"TaskID,omitnil" name:"TaskID"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedNewestImage- Bool- 是否必填：否 - 仅展示影响最新版本镜像的漏洞</li>
 	// <li>ImageID- string - 是否必填：否 - 镜像ID</li>
 	// <li>ImageName- String -是否必填: 否 - 镜像名称</li>
 	// <li>ScanStatus- string -是否必填: 否 - 检测状态。WAIT_SCAN：待检测，SCANNING：检查中，SCANNED：检查完成，SCAN_ERR：检查失败，CANCELED：检测停止</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeVulScanLocalImageListRequest) ToJsonString() string {
@@ -24336,13 +24336,13 @@ func (r *DescribeVulScanLocalImageListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulScanLocalImageListResponseParams struct {
 	// 镜像总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 镜像列表
-	List []*VulScanImageInfo `json:"List,omitempty" name:"List"`
+	List []*VulScanImageInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulScanLocalImageListResponse struct {
@@ -24367,7 +24367,7 @@ type DescribeVulSummaryRequestParams struct {
 	// <li>OnlyAffectedNewestImage- string- 是否必填：否 - 仅展示影响最新版本镜像的漏洞true,false</li>
 	// <li>OnlyAffectedContainer-string- 是否必填：否 - 仅展示影响容器的漏洞,true,false</li>
 	// <li>CategoryType- string - 是否必填：否 - 漏洞分类: SYSTEM:系统漏洞 WEB:web应用漏洞 ALL:全部漏洞</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeVulSummaryRequest struct {
@@ -24377,7 +24377,7 @@ type DescribeVulSummaryRequest struct {
 	// <li>OnlyAffectedNewestImage- string- 是否必填：否 - 仅展示影响最新版本镜像的漏洞true,false</li>
 	// <li>OnlyAffectedContainer-string- 是否必填：否 - 仅展示影响容器的漏洞,true,false</li>
 	// <li>CategoryType- string - 是否必填：否 - 漏洞分类: SYSTEM:系统漏洞 WEB:web应用漏洞 ALL:全部漏洞</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeVulSummaryRequest) ToJsonString() string {
@@ -24402,40 +24402,40 @@ func (r *DescribeVulSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulSummaryResponseParams struct {
 	// 漏洞总数量
-	VulTotalCount *int64 `json:"VulTotalCount,omitempty" name:"VulTotalCount"`
+	VulTotalCount *int64 `json:"VulTotalCount,omitnil" name:"VulTotalCount"`
 
 	// 严重及高危漏洞数量
-	SeriousVulCount *int64 `json:"SeriousVulCount,omitempty" name:"SeriousVulCount"`
+	SeriousVulCount *int64 `json:"SeriousVulCount,omitnil" name:"SeriousVulCount"`
 
 	// 重点关注漏洞数量
-	SuggestVulCount *int64 `json:"SuggestVulCount,omitempty" name:"SuggestVulCount"`
+	SuggestVulCount *int64 `json:"SuggestVulCount,omitnil" name:"SuggestVulCount"`
 
 	// 有Poc或者Exp的漏洞数量
-	PocExpLevelVulCount *int64 `json:"PocExpLevelVulCount,omitempty" name:"PocExpLevelVulCount"`
+	PocExpLevelVulCount *int64 `json:"PocExpLevelVulCount,omitnil" name:"PocExpLevelVulCount"`
 
 	// 有远程Exp的漏洞数量
-	RemoteExpLevelVulCount *int64 `json:"RemoteExpLevelVulCount,omitempty" name:"RemoteExpLevelVulCount"`
+	RemoteExpLevelVulCount *int64 `json:"RemoteExpLevelVulCount,omitnil" name:"RemoteExpLevelVulCount"`
 
 	// 受严重或高危漏洞影响的最新版本镜像数
-	SeriousVulNewestImageCount *int64 `json:"SeriousVulNewestImageCount,omitempty" name:"SeriousVulNewestImageCount"`
+	SeriousVulNewestImageCount *int64 `json:"SeriousVulNewestImageCount,omitnil" name:"SeriousVulNewestImageCount"`
 
 	// 系统漏洞重点关注数
-	SystemVulnerabilityFocusCount *int64 `json:"SystemVulnerabilityFocusCount,omitempty" name:"SystemVulnerabilityFocusCount"`
+	SystemVulnerabilityFocusCount *int64 `json:"SystemVulnerabilityFocusCount,omitnil" name:"SystemVulnerabilityFocusCount"`
 
 	// web漏洞重点关注数
-	WebVulnerabilityFocusCount *int64 `json:"WebVulnerabilityFocusCount,omitempty" name:"WebVulnerabilityFocusCount"`
+	WebVulnerabilityFocusCount *int64 `json:"WebVulnerabilityFocusCount,omitnil" name:"WebVulnerabilityFocusCount"`
 
 	// 受影响本地镜像数
-	SeriousVulnerabilityLocalImageCount *int64 `json:"SeriousVulnerabilityLocalImageCount,omitempty" name:"SeriousVulnerabilityLocalImageCount"`
+	SeriousVulnerabilityLocalImageCount *int64 `json:"SeriousVulnerabilityLocalImageCount,omitnil" name:"SeriousVulnerabilityLocalImageCount"`
 
 	// 受影响仓库镜像数
-	SeriousVulnerabilityRegistryImageCount *int64 `json:"SeriousVulnerabilityRegistryImageCount,omitempty" name:"SeriousVulnerabilityRegistryImageCount"`
+	SeriousVulnerabilityRegistryImageCount *int64 `json:"SeriousVulnerabilityRegistryImageCount,omitnil" name:"SeriousVulnerabilityRegistryImageCount"`
 
 	// 应急漏洞数量
-	EmergencyVulnerabilityCount *int64 `json:"EmergencyVulnerabilityCount,omitempty" name:"EmergencyVulnerabilityCount"`
+	EmergencyVulnerabilityCount *int64 `json:"EmergencyVulnerabilityCount,omitnil" name:"EmergencyVulnerabilityCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulSummaryResponse struct {
@@ -24457,30 +24457,30 @@ func (r *DescribeVulSummaryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulTendencyRequestParams struct {
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 枚举类型：
 	// LATEST：最新版本
 	// CONTAINER: 运行容器
-	SphereOfInfluence *string `json:"SphereOfInfluence,omitempty" name:"SphereOfInfluence"`
+	SphereOfInfluence *string `json:"SphereOfInfluence,omitnil" name:"SphereOfInfluence"`
 }
 
 type DescribeVulTendencyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 枚举类型：
 	// LATEST：最新版本
 	// CONTAINER: 运行容器
-	SphereOfInfluence *string `json:"SphereOfInfluence,omitempty" name:"SphereOfInfluence"`
+	SphereOfInfluence *string `json:"SphereOfInfluence,omitnil" name:"SphereOfInfluence"`
 }
 
 func (r *DescribeVulTendencyRequest) ToJsonString() string {
@@ -24507,10 +24507,10 @@ func (r *DescribeVulTendencyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulTendencyResponseParams struct {
 	// 漏洞趋势列表
-	VulTendencySet []*VulTendencyInfo `json:"VulTendencySet,omitempty" name:"VulTendencySet"`
+	VulTendencySet []*VulTendencyInfo `json:"VulTendencySet,omitnil" name:"VulTendencySet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulTendencyResponse struct {
@@ -24532,14 +24532,14 @@ func (r *DescribeVulTendencyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulTopRankingRequestParams struct {
 	// 漏洞分类: SYSTEM:系统漏洞 WEB:web应用漏洞 EMERGENCY:应急漏洞
-	CategoryType *string `json:"CategoryType,omitempty" name:"CategoryType"`
+	CategoryType *string `json:"CategoryType,omitnil" name:"CategoryType"`
 }
 
 type DescribeVulTopRankingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 漏洞分类: SYSTEM:系统漏洞 WEB:web应用漏洞 EMERGENCY:应急漏洞
-	CategoryType *string `json:"CategoryType,omitempty" name:"CategoryType"`
+	CategoryType *string `json:"CategoryType,omitnil" name:"CategoryType"`
 }
 
 func (r *DescribeVulTopRankingRequest) ToJsonString() string {
@@ -24564,10 +24564,10 @@ func (r *DescribeVulTopRankingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVulTopRankingResponseParams struct {
 	// 漏洞Top排名信息列表
-	List []*VulTopRankingInfo `json:"List,omitempty" name:"List"`
+	List []*VulTopRankingInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVulTopRankingResponse struct {
@@ -24618,10 +24618,10 @@ func (r *DescribeWarningRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWarningRulesResponseParams struct {
 	// 告警策略列表
-	WarningRules []*WarningRule `json:"WarningRules,omitempty" name:"WarningRules"`
+	WarningRules []*WarningRule `json:"WarningRules,omitnil" name:"WarningRules"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeWarningRulesResponse struct {
@@ -24643,10 +24643,10 @@ func (r *DescribeWarningRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWebVulListRequestParams struct {
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedContainer- string - 是否必填：否 - 仅展示影响容器的漏洞true,false</li>
@@ -24663,23 +24663,23 @@ type DescribeWebVulListRequestParams struct {
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
 	// <li>FocusOnType - string - 是否必填：否 -关注紧急度类型 。ALL :全部，SERIOUS_LEVEL： 严重和高危 ，IS_SUGGEST： 重点关注，POC_EXP 有Poc或Exp ，NETWORK_EXP: 远程Exp</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeWebVulListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要返回的数量，默认为10，最大值为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤条件。
 	// <li>OnlyAffectedContainer- string - 是否必填：否 - 仅展示影响容器的漏洞true,false</li>
@@ -24696,13 +24696,13 @@ type DescribeWebVulListRequest struct {
 	// <li>ComponentVersion- string -是否必填: 否 - 组件版本</li>
 	// <li>Name- string -是否必填: 否 - 漏洞名称</li>
 	// <li>FocusOnType - string - 是否必填：否 -关注紧急度类型 。ALL :全部，SERIOUS_LEVEL： 严重和高危 ，IS_SUGGEST： 重点关注，POC_EXP 有Poc或Exp ，NETWORK_EXP: 远程Exp</li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeWebVulListRequest) ToJsonString() string {
@@ -24731,13 +24731,13 @@ func (r *DescribeWebVulListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWebVulListResponseParams struct {
 	// 漏洞总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 漏洞列表
-	List []*VulInfo `json:"List,omitempty" name:"List"`
+	List []*VulInfo `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeWebVulListResponse struct {
@@ -24758,75 +24758,75 @@ func (r *DescribeWebVulListResponse) FromJsonString(s string) error {
 
 type EmergencyVulInfo struct {
 	// 漏洞名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 漏洞标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil" name:"Tags"`
 
 	// CVSS V3分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CVSSV3Score *float64 `json:"CVSSV3Score,omitempty" name:"CVSSV3Score"`
+	CVSSV3Score *float64 `json:"CVSSV3Score,omitnil" name:"CVSSV3Score"`
 
 	// 风险等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Level *string `json:"Level,omitempty" name:"Level"`
+	Level *string `json:"Level,omitnil" name:"Level"`
 
 	// CVE编号
-	CVEID *string `json:"CVEID,omitempty" name:"CVEID"`
+	CVEID *string `json:"CVEID,omitnil" name:"CVEID"`
 
 	// 漏洞类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 漏洞披露时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubmitTime *string `json:"SubmitTime,omitempty" name:"SubmitTime"`
+	SubmitTime *string `json:"SubmitTime,omitnil" name:"SubmitTime"`
 
 	// 最近发现时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+	LatestFoundTime *string `json:"LatestFoundTime,omitnil" name:"LatestFoundTime"`
 
 	// 应急漏洞风险情况：NOT_SCAN：未扫描，SCANNING：扫描中，SCANNED_NOT_RISK：已扫描，暂未风险 ，SCANNED_RISK：已扫描存在风险
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 漏洞ID
-	ID *int64 `json:"ID,omitempty" name:"ID"`
+	ID *int64 `json:"ID,omitnil" name:"ID"`
 
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefenceStatus *string `json:"DefenceStatus,omitempty" name:"DefenceStatus"`
+	DefenceStatus *string `json:"DefenceStatus,omitnil" name:"DefenceStatus"`
 
 	// 漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefenceScope *string `json:"DefenceScope,omitempty" name:"DefenceScope"`
+	DefenceScope *string `json:"DefenceScope,omitnil" name:"DefenceScope"`
 
 	// 漏洞防御主机数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefenceHostCount *int64 `json:"DefenceHostCount,omitempty" name:"DefenceHostCount"`
+	DefenceHostCount *int64 `json:"DefenceHostCount,omitnil" name:"DefenceHostCount"`
 
 	// 已防御攻击次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefendedCount *int64 `json:"DefendedCount,omitempty" name:"DefendedCount"`
+	DefendedCount *int64 `json:"DefendedCount,omitnil" name:"DefendedCount"`
 }
 
 type EscapeEventDescription struct {
 	// 事件规则
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 解决方案
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 事件备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 事件最后一次处理的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
+	OperationTime *string `json:"OperationTime,omitnil" name:"OperationTime"`
 }
 
 type EscapeEventInfo struct {
@@ -24838,28 +24838,28 @@ type EscapeEventInfo struct {
 	//    MOUNT_SENSITIVE_PTAH：敏感路径挂载
 	//    PRIVILEGE_CONTAINER_START：特权容器
 	//    PRIVILEGE：程序提权逃逸
-	EventType *string `json:"EventType,omitempty" name:"EventType"`
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
 
 	// 容器名
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 镜像名
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 状态，EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件记录的唯一id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 
 	// 节点名称
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 
 	// pod(实例)的名字
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// 生成时间
-	FoundTime *string `json:"FoundTime,omitempty" name:"FoundTime"`
+	FoundTime *string `json:"FoundTime,omitnil" name:"FoundTime"`
 
 	// 事件名字，
 	// 宿主机文件访问逃逸、
@@ -24868,33 +24868,33 @@ type EscapeEventInfo struct {
 	// 程序提权逃逸、
 	// 特权容器启动逃逸、
 	// 敏感路径挂载
-	EventName *string `json:"EventName,omitempty" name:"EventName"`
+	EventName *string `json:"EventName,omitnil" name:"EventName"`
 
 	// 镜像id，用于跳转
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 容器id，用于跳转
-	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
 
 	// 事件解决方案
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 事件描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 事件数量
-	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+	EventCount *int64 `json:"EventCount,omitnil" name:"EventCount"`
 
 	// 最近生成时间
-	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+	LatestFoundTime *string `json:"LatestFoundTime,omitnil" name:"LatestFoundTime"`
 
 	// 节点IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NodeIP *string `json:"NodeIP,omitempty" name:"NodeIP"`
+	NodeIP *string `json:"NodeIP,omitnil" name:"NodeIP"`
 
 	// 主机IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 网络状态
 	// 未隔离  	NORMAL
@@ -24904,7 +24904,7 @@ type EscapeEventInfo struct {
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil" name:"ContainerNetStatus"`
 
 	// 容器子状态
 	// "AGENT_OFFLINE"       //Agent离线
@@ -24915,11 +24915,11 @@ type EscapeEventInfo struct {
 	// "RESOURCE_LIMIT"      //隔离操作资源超限
 	// "UNKNOW"              // 原因未知
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil" name:"ContainerIsolateOperationSrc"`
 
 	// 容器状态
 	// 正在运行: RUNNING
@@ -24929,45 +24929,45 @@ type EscapeEventInfo struct {
 	// 已经销毁: DESTROYED
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
-	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+	ContainerStatus *string `json:"ContainerStatus,omitnil" name:"ContainerStatus"`
 
 	// 节点所属集群ID
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 节点类型：NORMAL普通节点、SUPER超级节点
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// pod ip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// 节点唯一id
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 节点公网ip
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 节点id
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// 节点内网ip
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 }
 
 type EscapeEventTendencyInfo struct {
 	// 待处理风险容器事件总数
-	RiskContainerEventCount *int64 `json:"RiskContainerEventCount,omitempty" name:"RiskContainerEventCount"`
+	RiskContainerEventCount *int64 `json:"RiskContainerEventCount,omitnil" name:"RiskContainerEventCount"`
 
 	// 待处理程序特权事件总数
-	ProcessPrivilegeEventCount *int64 `json:"ProcessPrivilegeEventCount,omitempty" name:"ProcessPrivilegeEventCount"`
+	ProcessPrivilegeEventCount *int64 `json:"ProcessPrivilegeEventCount,omitnil" name:"ProcessPrivilegeEventCount"`
 
 	// 待处理容器逃逸事件总数
-	ContainerEscapeEventCount *int64 `json:"ContainerEscapeEventCount,omitempty" name:"ContainerEscapeEventCount"`
+	ContainerEscapeEventCount *int64 `json:"ContainerEscapeEventCount,omitnil" name:"ContainerEscapeEventCount"`
 
 	// 日期
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 }
 
 type EscapeRule struct {
@@ -24978,7 +24978,7 @@ type EscapeRule struct {
 	//    ESCAPE_PRIVILEDGE_CONTAINER_START:特权容器启动逃逸
 	//    ESCAPE_MOUNT_SENSITIVE_PTAH:敏感路径挂载
 	// ESCAPE_SYSCALL:Syscall逃逸
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 规则名称
 	// 宿主机文件访问逃逸、
@@ -24987,13 +24987,13 @@ type EscapeRule struct {
 	// 程序提权逃逸、
 	// 特权容器启动逃逸、
 	// 敏感路径挂载
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 是否打开：false否 ，true是
-	IsEnable *bool `json:"IsEnable,omitempty" name:"IsEnable"`
+	IsEnable *bool `json:"IsEnable,omitnil" name:"IsEnable"`
 
 	// 规则组别。RISK_CONTAINER：风险容器，PROCESS_PRIVILEGE：程序特权，CONTAINER_ESCAPE：容器逃逸
-	Group *string `json:"Group,omitempty" name:"Group"`
+	Group *string `json:"Group,omitnil" name:"Group"`
 }
 
 type EscapeRuleEnabled struct {
@@ -25004,65 +25004,65 @@ type EscapeRuleEnabled struct {
 	//    ESCAPE_PRIVILEDGE_CONTAINER_START:特权容器启动逃逸
 	//    ESCAPE_MOUNT_SENSITIVE_PTAH:敏感路径挂载
 	//    ESCAPE_SYSCALL:Syscall逃逸
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 是否打开：false否 ，true是
-	IsEnable *bool `json:"IsEnable,omitempty" name:"IsEnable"`
+	IsEnable *bool `json:"IsEnable,omitnil" name:"IsEnable"`
 }
 
 type EscapeWhiteListInfo struct {
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 白名单记录ID
-	ID *int64 `json:"ID,omitempty" name:"ID"`
+	ID *int64 `json:"ID,omitnil" name:"ID"`
 
 	// 关联主机数量
-	HostCount *int64 `json:"HostCount,omitempty" name:"HostCount"`
+	HostCount *int64 `json:"HostCount,omitnil" name:"HostCount"`
 
 	// 关联容器数量
-	ContainerCount *int64 `json:"ContainerCount,omitempty" name:"ContainerCount"`
+	ContainerCount *int64 `json:"ContainerCount,omitnil" name:"ContainerCount"`
 
 	// 加白事件类型
-	EventType []*string `json:"EventType,omitempty" name:"EventType"`
+	EventType []*string `json:"EventType,omitnil" name:"EventType"`
 
 	// 创建时间
-	InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
+	InsertTime *string `json:"InsertTime,omitnil" name:"InsertTime"`
 
 	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 镜像大小
-	ImageSize *int64 `json:"ImageSize,omitempty" name:"ImageSize"`
+	ImageSize *int64 `json:"ImageSize,omitnil" name:"ImageSize"`
 }
 
 type ExportJobInfo struct {
 	// 任务ID
-	JobID *string `json:"JobID,omitempty" name:"JobID"`
+	JobID *string `json:"JobID,omitnil" name:"JobID"`
 
 	// 任务名称
-	JobName *string `json:"JobName,omitempty" name:"JobName"`
+	JobName *string `json:"JobName,omitnil" name:"JobName"`
 
 	// 来源
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 导出状态
-	ExportStatus *string `json:"ExportStatus,omitempty" name:"ExportStatus"`
+	ExportStatus *string `json:"ExportStatus,omitnil" name:"ExportStatus"`
 
 	// 导出进度
-	ExportProgress *int64 `json:"ExportProgress,omitempty" name:"ExportProgress"`
+	ExportProgress *int64 `json:"ExportProgress,omitnil" name:"ExportProgress"`
 
 	// 失败原因
-	FailureMsg *string `json:"FailureMsg,omitempty" name:"FailureMsg"`
+	FailureMsg *string `json:"FailureMsg,omitnil" name:"FailureMsg"`
 
 	// 超时时间
-	Timeout *string `json:"Timeout,omitempty" name:"Timeout"`
+	Timeout *string `json:"Timeout,omitnil" name:"Timeout"`
 
 	// 插入时间
-	InsertTime *string `json:"InsertTime,omitempty" name:"InsertTime"`
+	InsertTime *string `json:"InsertTime,omitnil" name:"InsertTime"`
 }
 
 // Predefined struct for user
@@ -25082,16 +25082,16 @@ type ExportVirusListRequestParams struct {
 	// <li>ContainerStatus - string -是否必填: 否 - 容器状态 RUNNING PAUSED STOPPED CREATED DESTROYED RESTARTING REMOVING</li>
 	// <li>AutoIsolateMode - string -是否必填: 否 - 隔离方式 MANUAL AUTO</li>
 	// <li>MD5 - string -是否必填: 否 - md5 </li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 type ExportVirusListRequest struct {
@@ -25112,16 +25112,16 @@ type ExportVirusListRequest struct {
 	// <li>ContainerStatus - string -是否必填: 否 - 容器状态 RUNNING PAUSED STOPPED CREATED DESTROYED RESTARTING REMOVING</li>
 	// <li>AutoIsolateMode - string -是否必填: 否 - 隔离方式 MANUAL AUTO</li>
 	// <li>MD5 - string -是否必填: 否 - md5 </li>
-	Filters []*RunTimeFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*RunTimeFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 排序字段
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 导出字段
-	ExportField []*string `json:"ExportField,omitempty" name:"ExportField"`
+	ExportField []*string `json:"ExportField,omitnil" name:"ExportField"`
 }
 
 func (r *ExportVirusListRequest) ToJsonString() string {
@@ -25149,10 +25149,10 @@ func (r *ExportVirusListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportVirusListResponseParams struct {
 	// 导出任务ID，前端拿着任务ID查询任务进度
-	JobId *string `json:"JobId,omitempty" name:"JobId"`
+	JobId *string `json:"JobId,omitnil" name:"JobId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ExportVirusListResponse struct {
@@ -25173,512 +25173,512 @@ func (r *ExportVirusListResponse) FromJsonString(s string) error {
 
 type FileAttributeInfo struct {
 	// 文件名
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 文件类型
-	FileType *string `json:"FileType,omitempty" name:"FileType"`
+	FileType *string `json:"FileType,omitnil" name:"FileType"`
 
 	// 文件大小(字节)
-	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+	FileSize *uint64 `json:"FileSize,omitnil" name:"FileSize"`
 
 	// 文件路径
-	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
 
 	// 文件创建时间
-	FileCreateTime *string `json:"FileCreateTime,omitempty" name:"FileCreateTime"`
+	FileCreateTime *string `json:"FileCreateTime,omitnil" name:"FileCreateTime"`
 
 	// 最近被篡改文件创建时间
-	LatestTamperedFileMTime *string `json:"LatestTamperedFileMTime,omitempty" name:"LatestTamperedFileMTime"`
+	LatestTamperedFileMTime *string `json:"LatestTamperedFileMTime,omitnil" name:"LatestTamperedFileMTime"`
 
 	// 新文件内容
-	NewFile *string `json:"NewFile,omitempty" name:"NewFile"`
+	NewFile *string `json:"NewFile,omitnil" name:"NewFile"`
 
 	// 新旧文件的差异
-	FileDiff *string `json:"FileDiff,omitempty" name:"FileDiff"`
+	FileDiff *string `json:"FileDiff,omitnil" name:"FileDiff"`
 }
 
 type HostInfo struct {
 	// 主机id
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 主机ip即内网ip
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 主机名称
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 业务组
-	Group *string `json:"Group,omitempty" name:"Group"`
+	Group *string `json:"Group,omitnil" name:"Group"`
 
 	// docker 版本
-	DockerVersion *string `json:"DockerVersion,omitempty" name:"DockerVersion"`
+	DockerVersion *string `json:"DockerVersion,omitnil" name:"DockerVersion"`
 
 	// docker 文件系统类型
-	DockerFileSystemDriver *string `json:"DockerFileSystemDriver,omitempty" name:"DockerFileSystemDriver"`
+	DockerFileSystemDriver *string `json:"DockerFileSystemDriver,omitnil" name:"DockerFileSystemDriver"`
 
 	// 镜像个数
-	ImageCnt *uint64 `json:"ImageCnt,omitempty" name:"ImageCnt"`
+	ImageCnt *uint64 `json:"ImageCnt,omitnil" name:"ImageCnt"`
 
 	// 容器个数
-	ContainerCnt *uint64 `json:"ContainerCnt,omitempty" name:"ContainerCnt"`
+	ContainerCnt *uint64 `json:"ContainerCnt,omitnil" name:"ContainerCnt"`
 
 	// agent运行状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 是否是Containerd
-	IsContainerd *bool `json:"IsContainerd,omitempty" name:"IsContainerd"`
+	IsContainerd *bool `json:"IsContainerd,omitnil" name:"IsContainerd"`
 
 	// 主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；
-	MachineType *string `json:"MachineType,omitempty" name:"MachineType"`
+	MachineType *string `json:"MachineType,omitnil" name:"MachineType"`
 
 	// 外网ip
-	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+	PublicIp *string `json:"PublicIp,omitnil" name:"PublicIp"`
 
 	// 主机uuid
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
 
 	// 主机实例ID
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 地域ID
-	RegionID *int64 `json:"RegionID,omitempty" name:"RegionID"`
+	RegionID *int64 `json:"RegionID,omitnil" name:"RegionID"`
 
 	// 所属项目
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Project *ProjectInfo `json:"Project,omitempty" name:"Project"`
+	Project *ProjectInfo `json:"Project,omitnil" name:"Project"`
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
+	Tags []*TagInfo `json:"Tags,omitnil" name:"Tags"`
 
 	// 集群id
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 集群接入状态
-	ClusterAccessedStatus *string `json:"ClusterAccessedStatus,omitempty" name:"ClusterAccessedStatus"`
+	ClusterAccessedStatus *string `json:"ClusterAccessedStatus,omitnil" name:"ClusterAccessedStatus"`
 }
 
 type ImageAutoAuthorizedTask struct {
 	// 任务id
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 授权方式，AUTO:自动授权，MANUAL:手动授权
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 任务日期
-	AuthorizedDate *string `json:"AuthorizedDate,omitempty" name:"AuthorizedDate"`
+	AuthorizedDate *string `json:"AuthorizedDate,omitnil" name:"AuthorizedDate"`
 
 	// 镜像来源，LOCAL:本地镜像，REGISTRY:仓库镜像
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 最近授权时间
-	LastAuthorizedTime *string `json:"LastAuthorizedTime,omitempty" name:"LastAuthorizedTime"`
+	LastAuthorizedTime *string `json:"LastAuthorizedTime,omitnil" name:"LastAuthorizedTime"`
 
 	// 自动授权成功数
-	SuccessCount *int64 `json:"SuccessCount,omitempty" name:"SuccessCount"`
+	SuccessCount *int64 `json:"SuccessCount,omitnil" name:"SuccessCount"`
 
 	// 自动授权失败数
-	FailCount *int64 `json:"FailCount,omitempty" name:"FailCount"`
+	FailCount *int64 `json:"FailCount,omitnil" name:"FailCount"`
 
 	// 最近任务失败码，REACH_LIMIT:达到授权上限，LICENSE_INSUFFICIENT:授权数不足
-	LatestFailCode *string `json:"LatestFailCode,omitempty" name:"LatestFailCode"`
+	LatestFailCode *string `json:"LatestFailCode,omitnil" name:"LatestFailCode"`
 }
 
 type ImageComponent struct {
 	// 组件名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 组件版本
-	Version *string `json:"Version,omitempty" name:"Version"`
+	Version *string `json:"Version,omitnil" name:"Version"`
 
 	// 组件路径
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// 组件类型
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 组件漏洞数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VulCount *uint64 `json:"VulCount,omitempty" name:"VulCount"`
+	VulCount *uint64 `json:"VulCount,omitnil" name:"VulCount"`
 
 	// 镜像ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 }
 
 type ImageHost struct {
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 主机id
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 }
 
 type ImageInfo struct {
 	// 实例名称
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 镜像tag
-	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+	ImageTag *string `json:"ImageTag,omitnil" name:"ImageTag"`
 
 	// 强制扫描
-	Force *string `json:"Force,omitempty" name:"Force"`
+	Force *string `json:"Force,omitnil" name:"Force"`
 
 	// 镜像id
-	ImageDigest *string `json:"ImageDigest,omitempty" name:"ImageDigest"`
+	ImageDigest *string `json:"ImageDigest,omitnil" name:"ImageDigest"`
 
 	// 仓库类型
-	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+	RegistryType *string `json:"RegistryType,omitnil" name:"RegistryType"`
 
 	// 镜像仓库地址
-	ImageRepoAddress *string `json:"ImageRepoAddress,omitempty" name:"ImageRepoAddress"`
+	ImageRepoAddress *string `json:"ImageRepoAddress,omitnil" name:"ImageRepoAddress"`
 
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type ImageProgress struct {
 	// 镜像id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 仓库类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+	RegistryType *string `json:"RegistryType,omitnil" name:"RegistryType"`
 
 	// 镜像仓库地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageRepoAddress *string `json:"ImageRepoAddress,omitempty" name:"ImageRepoAddress"`
+	ImageRepoAddress *string `json:"ImageRepoAddress,omitnil" name:"ImageRepoAddress"`
 
 	// 实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 命名空间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 仓库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 镜像tag
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+	ImageTag *string `json:"ImageTag,omitnil" name:"ImageTag"`
 
 	// 镜像扫描状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanStatus *string `json:"ScanStatus,omitempty" name:"ScanStatus"`
+	ScanStatus *string `json:"ScanStatus,omitnil" name:"ScanStatus"`
 
 	// 镜像cve扫描进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CveProgress *uint64 `json:"CveProgress,omitempty" name:"CveProgress"`
+	CveProgress *uint64 `json:"CveProgress,omitnil" name:"CveProgress"`
 
 	// 镜像敏感扫描进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskProgress *uint64 `json:"RiskProgress,omitempty" name:"RiskProgress"`
+	RiskProgress *uint64 `json:"RiskProgress,omitnil" name:"RiskProgress"`
 
 	// 镜像木马扫描进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VirusProgress *uint64 `json:"VirusProgress,omitempty" name:"VirusProgress"`
+	VirusProgress *uint64 `json:"VirusProgress,omitnil" name:"VirusProgress"`
 }
 
 type ImageRepoInfo struct {
 	// 镜像Digest
-	ImageDigest *string `json:"ImageDigest,omitempty" name:"ImageDigest"`
+	ImageDigest *string `json:"ImageDigest,omitnil" name:"ImageDigest"`
 
 	// 镜像仓库地址
-	ImageRepoAddress *string `json:"ImageRepoAddress,omitempty" name:"ImageRepoAddress"`
+	ImageRepoAddress *string `json:"ImageRepoAddress,omitnil" name:"ImageRepoAddress"`
 
 	// 仓库类型
-	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+	RegistryType *string `json:"RegistryType,omitnil" name:"RegistryType"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 镜像版本
-	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+	ImageTag *string `json:"ImageTag,omitnil" name:"ImageTag"`
 
 	// 镜像大小
-	ImageSize *uint64 `json:"ImageSize,omitempty" name:"ImageSize"`
+	ImageSize *uint64 `json:"ImageSize,omitnil" name:"ImageSize"`
 
 	// 最近扫描时间
-	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 扫描状态
-	ScanStatus *string `json:"ScanStatus,omitempty" name:"ScanStatus"`
+	ScanStatus *string `json:"ScanStatus,omitnil" name:"ScanStatus"`
 
 	// 安全漏洞数
-	VulCnt *uint64 `json:"VulCnt,omitempty" name:"VulCnt"`
+	VulCnt *uint64 `json:"VulCnt,omitnil" name:"VulCnt"`
 
 	// 木马病毒数
-	VirusCnt *uint64 `json:"VirusCnt,omitempty" name:"VirusCnt"`
+	VirusCnt *uint64 `json:"VirusCnt,omitnil" name:"VirusCnt"`
 
 	// 风险行为数
-	RiskCnt *uint64 `json:"RiskCnt,omitempty" name:"RiskCnt"`
+	RiskCnt *uint64 `json:"RiskCnt,omitnil" name:"RiskCnt"`
 
 	// 敏感信息数
-	SentiveInfoCnt *uint64 `json:"SentiveInfoCnt,omitempty" name:"SentiveInfoCnt"`
+	SentiveInfoCnt *uint64 `json:"SentiveInfoCnt,omitnil" name:"SentiveInfoCnt"`
 
 	// 是否可信镜像
-	IsTrustImage *bool `json:"IsTrustImage,omitempty" name:"IsTrustImage"`
+	IsTrustImage *bool `json:"IsTrustImage,omitnil" name:"IsTrustImage"`
 
 	// 镜像系统
-	OsName *string `json:"OsName,omitempty" name:"OsName"`
+	OsName *string `json:"OsName,omitnil" name:"OsName"`
 
 	// 木马扫描错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanVirusError *string `json:"ScanVirusError,omitempty" name:"ScanVirusError"`
+	ScanVirusError *string `json:"ScanVirusError,omitnil" name:"ScanVirusError"`
 
 	// 漏洞扫描错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanVulError *string `json:"ScanVulError,omitempty" name:"ScanVulError"`
+	ScanVulError *string `json:"ScanVulError,omitnil" name:"ScanVulError"`
 
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 实例名称
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 高危扫描错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanRiskError *string `json:"ScanRiskError,omitempty" name:"ScanRiskError"`
+	ScanRiskError *string `json:"ScanRiskError,omitnil" name:"ScanRiskError"`
 
 	// 敏感信息扫描进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanVirusProgress *uint64 `json:"ScanVirusProgress,omitempty" name:"ScanVirusProgress"`
+	ScanVirusProgress *uint64 `json:"ScanVirusProgress,omitnil" name:"ScanVirusProgress"`
 
 	// 木马扫描进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanVulProgress *uint64 `json:"ScanVulProgress,omitempty" name:"ScanVulProgress"`
+	ScanVulProgress *uint64 `json:"ScanVulProgress,omitnil" name:"ScanVulProgress"`
 
 	// 漏洞扫描进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanRiskProgress *uint64 `json:"ScanRiskProgress,omitempty" name:"ScanRiskProgress"`
+	ScanRiskProgress *uint64 `json:"ScanRiskProgress,omitnil" name:"ScanRiskProgress"`
 
 	// 剩余扫描时间秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanRemainTime *uint64 `json:"ScanRemainTime,omitempty" name:"ScanRemainTime"`
+	ScanRemainTime *uint64 `json:"ScanRemainTime,omitnil" name:"ScanRemainTime"`
 
 	// cve扫描状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CveStatus *string `json:"CveStatus,omitempty" name:"CveStatus"`
+	CveStatus *string `json:"CveStatus,omitnil" name:"CveStatus"`
 
 	// 高危扫描状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskStatus *string `json:"RiskStatus,omitempty" name:"RiskStatus"`
+	RiskStatus *string `json:"RiskStatus,omitnil" name:"RiskStatus"`
 
 	// 木马扫描状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VirusStatus *string `json:"VirusStatus,omitempty" name:"VirusStatus"`
+	VirusStatus *string `json:"VirusStatus,omitnil" name:"VirusStatus"`
 
 	// 总进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+	Progress *uint64 `json:"Progress,omitnil" name:"Progress"`
 
 	// 授权状态
-	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+	IsAuthorized *uint64 `json:"IsAuthorized,omitnil" name:"IsAuthorized"`
 
 	// 仓库区域
-	RegistryRegion *string `json:"RegistryRegion,omitempty" name:"RegistryRegion"`
+	RegistryRegion *string `json:"RegistryRegion,omitnil" name:"RegistryRegion"`
 
 	// 列表id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 镜像Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 镜像创建的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageCreateTime *string `json:"ImageCreateTime,omitempty" name:"ImageCreateTime"`
+	ImageCreateTime *string `json:"ImageCreateTime,omitnil" name:"ImageCreateTime"`
 
 	// 是否为镜像的最新版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsLatestImage *bool `json:"IsLatestImage,omitempty" name:"IsLatestImage"`
+	IsLatestImage *bool `json:"IsLatestImage,omitnil" name:"IsLatestImage"`
 }
 
 type ImageRisk struct {
 	// 高危行为
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Behavior *uint64 `json:"Behavior,omitempty" name:"Behavior"`
+	Behavior *uint64 `json:"Behavior,omitnil" name:"Behavior"`
 
 	// 种类
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
 	// 风险等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Level *string `json:"Level,omitempty" name:"Level"`
+	Level *string `json:"Level,omitnil" name:"Level"`
 
 	// 描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
 	// 解决方案
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstructionContent *string `json:"InstructionContent,omitempty" name:"InstructionContent"`
+	InstructionContent *string `json:"InstructionContent,omitnil" name:"InstructionContent"`
 }
 
 type ImageRiskInfo struct {
 	// 行为
-	Behavior *uint64 `json:"Behavior,omitempty" name:"Behavior"`
+	Behavior *uint64 `json:"Behavior,omitnil" name:"Behavior"`
 
 	// 类型
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
 	// 级别
-	Level *uint64 `json:"Level,omitempty" name:"Level"`
+	Level *uint64 `json:"Level,omitnil" name:"Level"`
 
 	// 详情
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
 	// 解决方案
-	InstructionContent *string `json:"InstructionContent,omitempty" name:"InstructionContent"`
+	InstructionContent *string `json:"InstructionContent,omitnil" name:"InstructionContent"`
 }
 
 type ImageRiskTendencyInfo struct {
 	// 趋势列表
-	ImageRiskSet []*RunTimeTendencyInfo `json:"ImageRiskSet,omitempty" name:"ImageRiskSet"`
+	ImageRiskSet []*RunTimeTendencyInfo `json:"ImageRiskSet,omitnil" name:"ImageRiskSet"`
 
 	// 风险类型：
 	// IRT_VULNERABILITY : 安全漏洞
 	// IRT_MALWARE_VIRUS: 木马病毒
 	// IRT_RISK:敏感信息
-	ImageRiskType *string `json:"ImageRiskType,omitempty" name:"ImageRiskType"`
+	ImageRiskType *string `json:"ImageRiskType,omitnil" name:"ImageRiskType"`
 }
 
 type ImageSimpleInfo struct {
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 镜像大小
-	Size *uint64 `json:"Size,omitempty" name:"Size"`
+	Size *uint64 `json:"Size,omitnil" name:"Size"`
 
 	// 类型
-	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+	ImageType *string `json:"ImageType,omitnil" name:"ImageType"`
 
 	// 关联容器数
-	ContainerCnt *int64 `json:"ContainerCnt,omitempty" name:"ContainerCnt"`
+	ContainerCnt *int64 `json:"ContainerCnt,omitnil" name:"ContainerCnt"`
 }
 
 type ImageVirus struct {
 	// 路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// 风险等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 分类
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 病毒名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VirusName *string `json:"VirusName,omitempty" name:"VirusName"`
+	VirusName *string `json:"VirusName,omitnil" name:"VirusName"`
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil" name:"Tags"`
 
 	// 描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
 	// 解决方案
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 文件类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileType *string `json:"FileType,omitempty" name:"FileType"`
+	FileType *string `json:"FileType,omitnil" name:"FileType"`
 
 	// 文件路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 文件md5
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileMd5 *string `json:"FileMd5,omitempty" name:"FileMd5"`
+	FileMd5 *string `json:"FileMd5,omitnil" name:"FileMd5"`
 
 	// 大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+	FileSize *uint64 `json:"FileSize,omitnil" name:"FileSize"`
 
 	// 首次发现时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FirstScanTime *string `json:"FirstScanTime,omitempty" name:"FirstScanTime"`
+	FirstScanTime *string `json:"FirstScanTime,omitnil" name:"FirstScanTime"`
 
 	// 最近扫描时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LatestScanTime *string `json:"LatestScanTime,omitempty" name:"LatestScanTime"`
+	LatestScanTime *string `json:"LatestScanTime,omitnil" name:"LatestScanTime"`
 }
 
 type ImageVirusInfo struct {
 	// 路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 
 	// 风险等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevel *uint64 `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *uint64 `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 病毒名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VirusName *string `json:"VirusName,omitempty" name:"VirusName"`
+	VirusName *string `json:"VirusName,omitnil" name:"VirusName"`
 
 	// 标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil" name:"Tags"`
 
 	// 描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
 	// 修护建议
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Size *uint64 `json:"Size,omitempty" name:"Size"`
+	Size *uint64 `json:"Size,omitnil" name:"Size"`
 
 	// 首次发现时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FirstScanTime *string `json:"FirstScanTime,omitempty" name:"FirstScanTime"`
+	FirstScanTime *string `json:"FirstScanTime,omitnil" name:"FirstScanTime"`
 
 	// 最近扫描时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LatestScanTime *string `json:"LatestScanTime,omitempty" name:"LatestScanTime"`
+	LatestScanTime *string `json:"LatestScanTime,omitnil" name:"LatestScanTime"`
 
 	// 文件md5
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+	Md5 *string `json:"Md5,omitnil" name:"Md5"`
 
 	// 文件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 检测平台
 	// 1: 云查杀引擎
@@ -25687,232 +25687,232 @@ type ImageVirusInfo struct {
 	// 4: 异常行为
 	// 5: 威胁情报
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CheckPlatform []*string `json:"CheckPlatform,omitempty" name:"CheckPlatform"`
+	CheckPlatform []*string `json:"CheckPlatform,omitnil" name:"CheckPlatform"`
 }
 
 type ImageVul struct {
 	// 漏洞id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CVEID *string `json:"CVEID,omitempty" name:"CVEID"`
+	CVEID *string `json:"CVEID,omitnil" name:"CVEID"`
 
 	// 观点验证程序id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	POCID *string `json:"POCID,omitempty" name:"POCID"`
+	POCID *string `json:"POCID,omitnil" name:"POCID"`
 
 	// 漏洞名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 涉及组件信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Components []*ComponentsInfo `json:"Components,omitempty" name:"Components"`
+	Components []*ComponentsInfo `json:"Components,omitnil" name:"Components"`
 
 	// 分类
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 分类2
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryType *string `json:"CategoryType,omitempty" name:"CategoryType"`
+	CategoryType *string `json:"CategoryType,omitnil" name:"CategoryType"`
 
 	// 风险等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Level *string `json:"Level,omitempty" name:"Level"`
+	Level *string `json:"Level,omitnil" name:"Level"`
 
 	// 描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Des *string `json:"Des,omitempty" name:"Des"`
+	Des *string `json:"Des,omitnil" name:"Des"`
 
 	// 解决方案
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OfficialSolution *string `json:"OfficialSolution,omitempty" name:"OfficialSolution"`
+	OfficialSolution *string `json:"OfficialSolution,omitnil" name:"OfficialSolution"`
 
 	// 引用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Reference *string `json:"Reference,omitempty" name:"Reference"`
+	Reference *string `json:"Reference,omitnil" name:"Reference"`
 
 	// 防御方案
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefenseSolution *string `json:"DefenseSolution,omitempty" name:"DefenseSolution"`
+	DefenseSolution *string `json:"DefenseSolution,omitnil" name:"DefenseSolution"`
 
 	// 提交时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubmitTime *string `json:"SubmitTime,omitempty" name:"SubmitTime"`
+	SubmitTime *string `json:"SubmitTime,omitnil" name:"SubmitTime"`
 
 	// Cvss分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CvssScore *string `json:"CvssScore,omitempty" name:"CvssScore"`
+	CvssScore *string `json:"CvssScore,omitnil" name:"CvssScore"`
 
 	// Cvss信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CvssVector *string `json:"CvssVector,omitempty" name:"CvssVector"`
+	CvssVector *string `json:"CvssVector,omitnil" name:"CvssVector"`
 
 	// 是否建议修复
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsSuggest *string `json:"IsSuggest,omitempty" name:"IsSuggest"`
+	IsSuggest *string `json:"IsSuggest,omitnil" name:"IsSuggest"`
 
 	// 修复版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FixedVersions *string `json:"FixedVersions,omitempty" name:"FixedVersions"`
+	FixedVersions *string `json:"FixedVersions,omitnil" name:"FixedVersions"`
 
 	// 漏洞标签:"CanBeFixed","DynamicLevelPoc","DynamicLevelExp"
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tag []*string `json:"Tag,omitempty" name:"Tag"`
+	Tag []*string `json:"Tag,omitnil" name:"Tag"`
 
 	// 组件名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Component *string `json:"Component,omitempty" name:"Component"`
+	Component *string `json:"Component,omitnil" name:"Component"`
 
 	// 组件版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Version *string `json:"Version,omitempty" name:"Version"`
+	Version *string `json:"Version,omitnil" name:"Version"`
 }
 
 type ImagesBindRuleInfo struct {
 	// 镜像id
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 关联容器数量
-	ContainerCnt *int64 `json:"ContainerCnt,omitempty" name:"ContainerCnt"`
+	ContainerCnt *int64 `json:"ContainerCnt,omitnil" name:"ContainerCnt"`
 
 	// 绑定规则id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 镜像大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ImageSize *int64 `json:"ImageSize,omitempty" name:"ImageSize"`
+	ImageSize *int64 `json:"ImageSize,omitnil" name:"ImageSize"`
 
 	// 最近扫描时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 }
 
 type ImagesInfo struct {
 	// 镜像id
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 镜像大小
-	Size *uint64 `json:"Size,omitempty" name:"Size"`
+	Size *uint64 `json:"Size,omitnil" name:"Size"`
 
 	// 主机个数
-	HostCnt *uint64 `json:"HostCnt,omitempty" name:"HostCnt"`
+	HostCnt *uint64 `json:"HostCnt,omitnil" name:"HostCnt"`
 
 	// 容器个数
-	ContainerCnt *uint64 `json:"ContainerCnt,omitempty" name:"ContainerCnt"`
+	ContainerCnt *uint64 `json:"ContainerCnt,omitnil" name:"ContainerCnt"`
 
 	// 扫描时间
-	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 漏洞个数
-	VulCnt *uint64 `json:"VulCnt,omitempty" name:"VulCnt"`
+	VulCnt *uint64 `json:"VulCnt,omitnil" name:"VulCnt"`
 
 	// 病毒个数
-	VirusCnt *uint64 `json:"VirusCnt,omitempty" name:"VirusCnt"`
+	VirusCnt *uint64 `json:"VirusCnt,omitnil" name:"VirusCnt"`
 
 	// 敏感信息个数
-	RiskCnt *uint64 `json:"RiskCnt,omitempty" name:"RiskCnt"`
+	RiskCnt *uint64 `json:"RiskCnt,omitnil" name:"RiskCnt"`
 
 	// 是否信任镜像
-	IsTrustImage *bool `json:"IsTrustImage,omitempty" name:"IsTrustImage"`
+	IsTrustImage *bool `json:"IsTrustImage,omitnil" name:"IsTrustImage"`
 
 	// 镜像系统
-	OsName *string `json:"OsName,omitempty" name:"OsName"`
+	OsName *string `json:"OsName,omitnil" name:"OsName"`
 
 	// agent镜像扫描错误
-	AgentError *string `json:"AgentError,omitempty" name:"AgentError"`
+	AgentError *string `json:"AgentError,omitnil" name:"AgentError"`
 
 	// 后端镜像扫描错误
-	ScanError *string `json:"ScanError,omitempty" name:"ScanError"`
+	ScanError *string `json:"ScanError,omitnil" name:"ScanError"`
 
 	// 扫描状态
-	ScanStatus *string `json:"ScanStatus,omitempty" name:"ScanStatus"`
+	ScanStatus *string `json:"ScanStatus,omitnil" name:"ScanStatus"`
 
 	// 木马扫描错误信息
-	ScanVirusError *string `json:"ScanVirusError,omitempty" name:"ScanVirusError"`
+	ScanVirusError *string `json:"ScanVirusError,omitnil" name:"ScanVirusError"`
 
 	// 漏洞扫描错误信息
-	ScanVulError *string `json:"ScanVulError,omitempty" name:"ScanVulError"`
+	ScanVulError *string `json:"ScanVulError,omitnil" name:"ScanVulError"`
 
 	// 风险扫描错误信息
-	ScanRiskError *string `json:"ScanRiskError,omitempty" name:"ScanRiskError"`
+	ScanRiskError *string `json:"ScanRiskError,omitnil" name:"ScanRiskError"`
 
 	// 是否是重点关注镜像，为0不是，非0是
-	IsSuggest *uint64 `json:"IsSuggest,omitempty" name:"IsSuggest"`
+	IsSuggest *uint64 `json:"IsSuggest,omitnil" name:"IsSuggest"`
 
 	// 是否授权，1是0否
-	IsAuthorized *uint64 `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+	IsAuthorized *uint64 `json:"IsAuthorized,omitnil" name:"IsAuthorized"`
 
 	// 组件个数
-	ComponentCnt *uint64 `json:"ComponentCnt,omitempty" name:"ComponentCnt"`
+	ComponentCnt *uint64 `json:"ComponentCnt,omitnil" name:"ComponentCnt"`
 }
 
 type ImagesVul struct {
 	// 漏洞id
-	CVEID *string `json:"CVEID,omitempty" name:"CVEID"`
+	CVEID *string `json:"CVEID,omitnil" name:"CVEID"`
 
 	// 漏洞名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 组件
-	Component *string `json:"Component,omitempty" name:"Component"`
+	Component *string `json:"Component,omitnil" name:"Component"`
 
 	// 版本
-	Version *string `json:"Version,omitempty" name:"Version"`
+	Version *string `json:"Version,omitnil" name:"Version"`
 
 	// 分类
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 分类2
-	CategoryType *string `json:"CategoryType,omitempty" name:"CategoryType"`
+	CategoryType *string `json:"CategoryType,omitnil" name:"CategoryType"`
 
 	// 风险等级
-	Level *uint64 `json:"Level,omitempty" name:"Level"`
+	Level *uint64 `json:"Level,omitnil" name:"Level"`
 
 	// 描述
-	Des *string `json:"Des,omitempty" name:"Des"`
+	Des *string `json:"Des,omitnil" name:"Des"`
 
 	// 解决方案
-	OfficialSolution *string `json:"OfficialSolution,omitempty" name:"OfficialSolution"`
+	OfficialSolution *string `json:"OfficialSolution,omitnil" name:"OfficialSolution"`
 
 	// 引用
-	Reference *string `json:"Reference,omitempty" name:"Reference"`
+	Reference *string `json:"Reference,omitnil" name:"Reference"`
 
 	// 防御方案
-	DefenseSolution *string `json:"DefenseSolution,omitempty" name:"DefenseSolution"`
+	DefenseSolution *string `json:"DefenseSolution,omitnil" name:"DefenseSolution"`
 
 	// 提交时间
-	SubmitTime *string `json:"SubmitTime,omitempty" name:"SubmitTime"`
+	SubmitTime *string `json:"SubmitTime,omitnil" name:"SubmitTime"`
 
 	// CVSS V3分数
-	CVSSV3Score *float64 `json:"CVSSV3Score,omitempty" name:"CVSSV3Score"`
+	CVSSV3Score *float64 `json:"CVSSV3Score,omitnil" name:"CVSSV3Score"`
 
 	// CVSS V3描述
-	CVSSV3Desc *string `json:"CVSSV3Desc,omitempty" name:"CVSSV3Desc"`
+	CVSSV3Desc *string `json:"CVSSV3Desc,omitnil" name:"CVSSV3Desc"`
 
 	// 是否是重点关注：true：是，false：不是
-	IsSuggest *bool `json:"IsSuggest,omitempty" name:"IsSuggest"`
+	IsSuggest *bool `json:"IsSuggest,omitnil" name:"IsSuggest"`
 
 	// 修复版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FixedVersions *string `json:"FixedVersions,omitempty" name:"FixedVersions"`
+	FixedVersions *string `json:"FixedVersions,omitnil" name:"FixedVersions"`
 
 	// 漏洞标签:"CanBeFixed","DynamicLevelPoc","DynamicLevelExp"
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tag []*string `json:"Tag,omitempty" name:"Tag"`
+	Tag []*string `json:"Tag,omitnil" name:"Tag"`
 }
 
 // Predefined struct for user
@@ -25947,7 +25947,7 @@ func (r *InitializeUserComplianceEnvironmentRequest) FromJsonString(s string) er
 // Predefined struct for user
 type InitializeUserComplianceEnvironmentResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type InitializeUserComplianceEnvironmentResponse struct {
@@ -25968,31 +25968,31 @@ func (r *InitializeUserComplianceEnvironmentResponse) FromJsonString(s string) e
 
 type K8sApiAbnormalEventInfo struct {
 	// 命中规则名称
-	MatchRuleName *string `json:"MatchRuleName,omitempty" name:"MatchRuleName"`
+	MatchRuleName *string `json:"MatchRuleName,omitnil" name:"MatchRuleName"`
 
 	// 命中规则类型
-	MatchRuleType *string `json:"MatchRuleType,omitempty" name:"MatchRuleType"`
+	MatchRuleType *string `json:"MatchRuleType,omitnil" name:"MatchRuleType"`
 
 	// 告警等级
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 集群ID
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 集群运行状态
-	ClusterRunningStatus *string `json:"ClusterRunningStatus,omitempty" name:"ClusterRunningStatus"`
+	ClusterRunningStatus *string `json:"ClusterRunningStatus,omitnil" name:"ClusterRunningStatus"`
 
 	// 初次生成时间
-	FirstCreateTime *string `json:"FirstCreateTime,omitempty" name:"FirstCreateTime"`
+	FirstCreateTime *string `json:"FirstCreateTime,omitnil" name:"FirstCreateTime"`
 
 	// 最近一次生成时间
-	LastCreateTime *string `json:"LastCreateTime,omitempty" name:"LastCreateTime"`
+	LastCreateTime *string `json:"LastCreateTime,omitnil" name:"LastCreateTime"`
 
 	// 告警数量
-	AlarmCount *uint64 `json:"AlarmCount,omitempty" name:"AlarmCount"`
+	AlarmCount *uint64 `json:"AlarmCount,omitnil" name:"AlarmCount"`
 
 	// 状态
 	// "EVENT_UNDEAL":未处理
@@ -26000,131 +26000,131 @@ type K8sApiAbnormalEventInfo struct {
 	// "EVENT_IGNORE": 忽略
 	// "EVENT_DEL": 删除
 	// "EVENT_ADD_WHITE": 加白
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 集群masterIP
-	ClusterMasterIP *string `json:"ClusterMasterIP,omitempty" name:"ClusterMasterIP"`
+	ClusterMasterIP *string `json:"ClusterMasterIP,omitnil" name:"ClusterMasterIP"`
 
 	// k8s版本
-	K8sVersion *string `json:"K8sVersion,omitempty" name:"K8sVersion"`
+	K8sVersion *string `json:"K8sVersion,omitnil" name:"K8sVersion"`
 
 	// 运行时组件
-	RunningComponent []*string `json:"RunningComponent,omitempty" name:"RunningComponent"`
+	RunningComponent []*string `json:"RunningComponent,omitnil" name:"RunningComponent"`
 
 	// 描述
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
 	// 建议
-	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
 
 	// 请求信息
-	Info *string `json:"Info,omitempty" name:"Info"`
+	Info *string `json:"Info,omitnil" name:"Info"`
 
 	// 规则ID
-	MatchRuleID *string `json:"MatchRuleID,omitempty" name:"MatchRuleID"`
+	MatchRuleID *string `json:"MatchRuleID,omitnil" name:"MatchRuleID"`
 
 	// 高亮字段数组
-	HighLightFields []*string `json:"HighLightFields,omitempty" name:"HighLightFields"`
+	HighLightFields []*string `json:"HighLightFields,omitnil" name:"HighLightFields"`
 
 	// 命中规则
-	MatchRule *K8sApiAbnormalRuleScopeInfo `json:"MatchRule,omitempty" name:"MatchRule"`
+	MatchRule *K8sApiAbnormalRuleScopeInfo `json:"MatchRule,omitnil" name:"MatchRule"`
 }
 
 type K8sApiAbnormalEventListItem struct {
 	// 事件ID
-	ID *uint64 `json:"ID,omitempty" name:"ID"`
+	ID *uint64 `json:"ID,omitnil" name:"ID"`
 
 	// 命中规则类型
-	MatchRuleType *string `json:"MatchRuleType,omitempty" name:"MatchRuleType"`
+	MatchRuleType *string `json:"MatchRuleType,omitnil" name:"MatchRuleType"`
 
 	// 威胁等级
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 集群ID
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 集群运行状态
-	ClusterRunningStatus *string `json:"ClusterRunningStatus,omitempty" name:"ClusterRunningStatus"`
+	ClusterRunningStatus *string `json:"ClusterRunningStatus,omitnil" name:"ClusterRunningStatus"`
 
 	// 初次生成时间
-	FirstCreateTime *string `json:"FirstCreateTime,omitempty" name:"FirstCreateTime"`
+	FirstCreateTime *string `json:"FirstCreateTime,omitnil" name:"FirstCreateTime"`
 
 	// 最近一次生成时间
-	LastCreateTime *string `json:"LastCreateTime,omitempty" name:"LastCreateTime"`
+	LastCreateTime *string `json:"LastCreateTime,omitnil" name:"LastCreateTime"`
 
 	// 告警数量
-	AlarmCount *uint64 `json:"AlarmCount,omitempty" name:"AlarmCount"`
+	AlarmCount *uint64 `json:"AlarmCount,omitnil" name:"AlarmCount"`
 
 	// 状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 规则类型
-	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+	RuleType *string `json:"RuleType,omitnil" name:"RuleType"`
 
 	// 描述信息
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
 	// 解决方案
-	Suggestion *string `json:"Suggestion,omitempty" name:"Suggestion"`
+	Suggestion *string `json:"Suggestion,omitnil" name:"Suggestion"`
 
 	// 规则名称
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 命中规则
-	MatchRule *K8sApiAbnormalRuleScopeInfo `json:"MatchRule,omitempty" name:"MatchRule"`
+	MatchRule *K8sApiAbnormalRuleScopeInfo `json:"MatchRule,omitnil" name:"MatchRule"`
 }
 
 type K8sApiAbnormalRuleInfo struct {
 	// 规则名称
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 状态
-	Status *bool `json:"Status,omitempty" name:"Status"`
+	Status *bool `json:"Status,omitnil" name:"Status"`
 
 	// 规则信息列表
-	RuleInfoList []*K8sApiAbnormalRuleScopeInfo `json:"RuleInfoList,omitempty" name:"RuleInfoList"`
+	RuleInfoList []*K8sApiAbnormalRuleScopeInfo `json:"RuleInfoList,omitnil" name:"RuleInfoList"`
 
 	// 生效集群IDSet
-	EffectClusterIDSet []*string `json:"EffectClusterIDSet,omitempty" name:"EffectClusterIDSet"`
+	EffectClusterIDSet []*string `json:"EffectClusterIDSet,omitnil" name:"EffectClusterIDSet"`
 
 	// 规则类型
 	// RT_SYSTEM 系统规则
 	// RT_USER 用户自定义
-	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+	RuleType *string `json:"RuleType,omitnil" name:"RuleType"`
 
 	// 是否所有集群生效
-	EffectAllCluster *bool `json:"EffectAllCluster,omitempty" name:"EffectAllCluster"`
+	EffectAllCluster *bool `json:"EffectAllCluster,omitnil" name:"EffectAllCluster"`
 
 	// 规则ID
-	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+	RuleID *string `json:"RuleID,omitnil" name:"RuleID"`
 }
 
 type K8sApiAbnormalRuleListItem struct {
 	// 规则ID
-	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+	RuleID *string `json:"RuleID,omitnil" name:"RuleID"`
 
 	// 规则名称
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 规则类型
 	// RT_SYSTEM 系统规则
 	// RT_USER 用户自定义
-	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+	RuleType *string `json:"RuleType,omitnil" name:"RuleType"`
 
 	// 受影响集群总数
-	EffectClusterCount *uint64 `json:"EffectClusterCount,omitempty" name:"EffectClusterCount"`
+	EffectClusterCount *uint64 `json:"EffectClusterCount,omitnil" name:"EffectClusterCount"`
 
 	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 编辑账号
-	OprUin *string `json:"OprUin,omitempty" name:"OprUin"`
+	OprUin *string `json:"OprUin,omitnil" name:"OprUin"`
 
 	// 状态
-	Status *bool `json:"Status,omitempty" name:"Status"`
+	Status *bool `json:"Status,omitnil" name:"Status"`
 }
 
 type K8sApiAbnormalRuleScopeInfo struct {
@@ -26141,79 +26141,79 @@ type K8sApiAbnormalRuleScopeInfo struct {
 	// STATICS_POD: 静态pod创建
 	// ABNORMAL_CREATE_POD: 异常pod创建
 	// USER_DEFINED: 用户自定义
-	Scope *string `json:"Scope,omitempty" name:"Scope"`
+	Scope *string `json:"Scope,omitnil" name:"Scope"`
 
 	// 动作(RULE_MODE_ALERT: 告警 RULE_MODE_RELEASE:放行)
-	Action *string `json:"Action,omitempty" name:"Action"`
+	Action *string `json:"Action,omitnil" name:"Action"`
 
 	// 威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 开关状态(true:开 false:关) 适用于系统规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *bool `json:"Status,omitempty" name:"Status"`
+	Status *bool `json:"Status,omitnil" name:"Status"`
 
 	// 是否被删除 适用于自定义规则入参
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsDelete *bool `json:"IsDelete,omitempty" name:"IsDelete"`
+	IsDelete *bool `json:"IsDelete,omitnil" name:"IsDelete"`
 }
 
 type K8sApiAbnormalTendencyItem struct {
 	// 日期
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 异常UA请求事件数
-	ExceptionUARequestCount *uint64 `json:"ExceptionUARequestCount,omitempty" name:"ExceptionUARequestCount"`
+	ExceptionUARequestCount *uint64 `json:"ExceptionUARequestCount,omitnil" name:"ExceptionUARequestCount"`
 
 	// 匿名用户权限事件数
-	AnonymousUserRightCount *uint64 `json:"AnonymousUserRightCount,omitempty" name:"AnonymousUserRightCount"`
+	AnonymousUserRightCount *uint64 `json:"AnonymousUserRightCount,omitnil" name:"AnonymousUserRightCount"`
 
 	// 凭据信息获取事件数
-	CredentialInformationObtainCount *uint64 `json:"CredentialInformationObtainCount,omitempty" name:"CredentialInformationObtainCount"`
+	CredentialInformationObtainCount *uint64 `json:"CredentialInformationObtainCount,omitnil" name:"CredentialInformationObtainCount"`
 
 	// 敏感数据挂载事件数
-	SensitiveDataMountCount *uint64 `json:"SensitiveDataMountCount,omitempty" name:"SensitiveDataMountCount"`
+	SensitiveDataMountCount *uint64 `json:"SensitiveDataMountCount,omitnil" name:"SensitiveDataMountCount"`
 
 	// 命令执行事件数
-	CmdExecCount *uint64 `json:"CmdExecCount,omitempty" name:"CmdExecCount"`
+	CmdExecCount *uint64 `json:"CmdExecCount,omitnil" name:"CmdExecCount"`
 
 	// 异常定时任务事件数
-	AbnormalScheduledTaskCount *uint64 `json:"AbnormalScheduledTaskCount,omitempty" name:"AbnormalScheduledTaskCount"`
+	AbnormalScheduledTaskCount *uint64 `json:"AbnormalScheduledTaskCount,omitnil" name:"AbnormalScheduledTaskCount"`
 
 	// 静态Pod创建数
-	StaticsPodCreateCount *uint64 `json:"StaticsPodCreateCount,omitempty" name:"StaticsPodCreateCount"`
+	StaticsPodCreateCount *uint64 `json:"StaticsPodCreateCount,omitnil" name:"StaticsPodCreateCount"`
 
 	// 可疑容器创建数
-	DoubtfulContainerCreateCount *uint64 `json:"DoubtfulContainerCreateCount,omitempty" name:"DoubtfulContainerCreateCount"`
+	DoubtfulContainerCreateCount *uint64 `json:"DoubtfulContainerCreateCount,omitnil" name:"DoubtfulContainerCreateCount"`
 
 	// 自定义规则事件数
-	UserDefinedRuleCount *uint64 `json:"UserDefinedRuleCount,omitempty" name:"UserDefinedRuleCount"`
+	UserDefinedRuleCount *uint64 `json:"UserDefinedRuleCount,omitnil" name:"UserDefinedRuleCount"`
 
 	// 匿名访问事件数
-	AnonymousAccessCount *uint64 `json:"AnonymousAccessCount,omitempty" name:"AnonymousAccessCount"`
+	AnonymousAccessCount *uint64 `json:"AnonymousAccessCount,omitnil" name:"AnonymousAccessCount"`
 
 	// 特权容器事件数
-	PrivilegeContainerCount *uint64 `json:"PrivilegeContainerCount,omitempty" name:"PrivilegeContainerCount"`
+	PrivilegeContainerCount *uint64 `json:"PrivilegeContainerCount,omitnil" name:"PrivilegeContainerCount"`
 }
 
 // Predefined struct for user
 type ModifyAbnormalProcessRuleStatusRequestParams struct {
 	// 策略的ids
-	RuleIdSet []*string `json:"RuleIdSet,omitempty" name:"RuleIdSet"`
+	RuleIdSet []*string `json:"RuleIdSet,omitnil" name:"RuleIdSet"`
 
 	// 策略开关，true开启，false关闭
-	IsEnable *bool `json:"IsEnable,omitempty" name:"IsEnable"`
+	IsEnable *bool `json:"IsEnable,omitnil" name:"IsEnable"`
 }
 
 type ModifyAbnormalProcessRuleStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略的ids
-	RuleIdSet []*string `json:"RuleIdSet,omitempty" name:"RuleIdSet"`
+	RuleIdSet []*string `json:"RuleIdSet,omitnil" name:"RuleIdSet"`
 
 	// 策略开关，true开启，false关闭
-	IsEnable *bool `json:"IsEnable,omitempty" name:"IsEnable"`
+	IsEnable *bool `json:"IsEnable,omitnil" name:"IsEnable"`
 }
 
 func (r *ModifyAbnormalProcessRuleStatusRequest) ToJsonString() string {
@@ -26239,7 +26239,7 @@ func (r *ModifyAbnormalProcessRuleStatusRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type ModifyAbnormalProcessRuleStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAbnormalProcessRuleStatusResponse struct {
@@ -26261,34 +26261,34 @@ func (r *ModifyAbnormalProcessRuleStatusResponse) FromJsonString(s string) error
 // Predefined struct for user
 type ModifyAbnormalProcessStatusRequestParams struct {
 	// 处理事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 
 	// 标记事件的状态，   
 	//     EVENT_DEALED:事件处理
 	//     EVENT_INGNORE"：事件忽略
 	//      EVENT_DEL:事件删除
 	//      EVENT_ADD_WHITE:事件加白
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type ModifyAbnormalProcessStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 处理事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 
 	// 标记事件的状态，   
 	//     EVENT_DEALED:事件处理
 	//     EVENT_INGNORE"：事件忽略
 	//      EVENT_DEL:事件删除
 	//      EVENT_ADD_WHITE:事件加白
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 func (r *ModifyAbnormalProcessStatusRequest) ToJsonString() string {
@@ -26315,7 +26315,7 @@ func (r *ModifyAbnormalProcessStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAbnormalProcessStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAbnormalProcessStatusResponse struct {
@@ -26337,20 +26337,20 @@ func (r *ModifyAbnormalProcessStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAccessControlRuleStatusRequestParams struct {
 	// 策略的ids
-	RuleIdSet []*string `json:"RuleIdSet,omitempty" name:"RuleIdSet"`
+	RuleIdSet []*string `json:"RuleIdSet,omitnil" name:"RuleIdSet"`
 
 	// 策略开关，true:代表开启， false代表关闭
-	IsEnable *bool `json:"IsEnable,omitempty" name:"IsEnable"`
+	IsEnable *bool `json:"IsEnable,omitnil" name:"IsEnable"`
 }
 
 type ModifyAccessControlRuleStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 策略的ids
-	RuleIdSet []*string `json:"RuleIdSet,omitempty" name:"RuleIdSet"`
+	RuleIdSet []*string `json:"RuleIdSet,omitnil" name:"RuleIdSet"`
 
 	// 策略开关，true:代表开启， false代表关闭
-	IsEnable *bool `json:"IsEnable,omitempty" name:"IsEnable"`
+	IsEnable *bool `json:"IsEnable,omitnil" name:"IsEnable"`
 }
 
 func (r *ModifyAccessControlRuleStatusRequest) ToJsonString() string {
@@ -26376,7 +26376,7 @@ func (r *ModifyAccessControlRuleStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAccessControlRuleStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAccessControlRuleStatusResponse struct {
@@ -26398,34 +26398,34 @@ func (r *ModifyAccessControlRuleStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAccessControlStatusRequestParams struct {
 	// 处理事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 
 	// 标记事件的状态，     
 	// EVENT_DEALED:事件已经处理
 	//      EVENT_INGNORE：事件忽略
 	//      EVENT_DEL:事件删除
 	//      EVENT_ADD_WHITE:事件加白
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 备注事件信息
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type ModifyAccessControlStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 处理事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 
 	// 标记事件的状态，     
 	// EVENT_DEALED:事件已经处理
 	//      EVENT_INGNORE：事件忽略
 	//      EVENT_DEL:事件删除
 	//      EVENT_ADD_WHITE:事件加白
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 备注事件信息
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 func (r *ModifyAccessControlStatusRequest) ToJsonString() string {
@@ -26452,7 +26452,7 @@ func (r *ModifyAccessControlStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAccessControlStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAccessControlStatusResponse struct {
@@ -26474,32 +26474,32 @@ func (r *ModifyAccessControlStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAssetImageRegistryScanStopOneKeyRequestParams struct {
 	// 是否扫描全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 扫描的镜像列表
-	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
+	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 扫描的镜像列表Id
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 停止的任务ID
-	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *uint64 `json:"TaskID,omitnil" name:"TaskID"`
 }
 
 type ModifyAssetImageRegistryScanStopOneKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 是否扫描全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 扫描的镜像列表
-	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
+	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 扫描的镜像列表Id
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 停止的任务ID
-	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *uint64 `json:"TaskID,omitnil" name:"TaskID"`
 }
 
 func (r *ModifyAssetImageRegistryScanStopOneKeyRequest) ToJsonString() string {
@@ -26527,7 +26527,7 @@ func (r *ModifyAssetImageRegistryScanStopOneKeyRequest) FromJsonString(s string)
 // Predefined struct for user
 type ModifyAssetImageRegistryScanStopOneKeyResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAssetImageRegistryScanStopOneKeyResponse struct {
@@ -26549,50 +26549,50 @@ func (r *ModifyAssetImageRegistryScanStopOneKeyResponse) FromJsonString(s string
 // Predefined struct for user
 type ModifyAssetImageRegistryScanStopRequestParams struct {
 	// 是否扫描全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 扫描的镜像列表
-	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
+	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 扫描的镜像列表
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 过滤条件
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 不要扫描的镜像列表，与Filters配合使用
-	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitempty" name:"ExcludeImageList"`
+	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitnil" name:"ExcludeImageList"`
 
 	// 是否仅扫描各repository最新版本的镜像
-	OnlyScanLatest *bool `json:"OnlyScanLatest,omitempty" name:"OnlyScanLatest"`
+	OnlyScanLatest *bool `json:"OnlyScanLatest,omitnil" name:"OnlyScanLatest"`
 
 	// 停止的任务ID
-	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *uint64 `json:"TaskID,omitnil" name:"TaskID"`
 }
 
 type ModifyAssetImageRegistryScanStopRequest struct {
 	*tchttp.BaseRequest
 	
 	// 是否扫描全部镜像
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 扫描的镜像列表
-	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
+	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 扫描的镜像列表
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 过滤条件
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 不要扫描的镜像列表，与Filters配合使用
-	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitempty" name:"ExcludeImageList"`
+	ExcludeImageList []*uint64 `json:"ExcludeImageList,omitnil" name:"ExcludeImageList"`
 
 	// 是否仅扫描各repository最新版本的镜像
-	OnlyScanLatest *bool `json:"OnlyScanLatest,omitempty" name:"OnlyScanLatest"`
+	OnlyScanLatest *bool `json:"OnlyScanLatest,omitnil" name:"OnlyScanLatest"`
 
 	// 停止的任务ID
-	TaskID *uint64 `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *uint64 `json:"TaskID,omitnil" name:"TaskID"`
 }
 
 func (r *ModifyAssetImageRegistryScanStopRequest) ToJsonString() string {
@@ -26623,7 +26623,7 @@ func (r *ModifyAssetImageRegistryScanStopRequest) FromJsonString(s string) error
 // Predefined struct for user
 type ModifyAssetImageRegistryScanStopResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAssetImageRegistryScanStopResponse struct {
@@ -26645,32 +26645,32 @@ func (r *ModifyAssetImageRegistryScanStopResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type ModifyAssetImageScanStopRequestParams struct {
 	// 任务id；任务id，镜像id和根据过滤条件筛选三选一。
-	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
 
 	// 镜像id；任务id，镜像id和根据过滤条件筛选三选一。
-	Images []*string `json:"Images,omitempty" name:"Images"`
+	Images []*string `json:"Images,omitnil" name:"Images"`
 
 	// 根据过滤条件筛选出镜像；任务id，镜像id和根据过滤条件筛选三选一。
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 根据过滤条件筛选出镜像，再排除个别镜像
-	ExcludeImageIds *string `json:"ExcludeImageIds,omitempty" name:"ExcludeImageIds"`
+	ExcludeImageIds *string `json:"ExcludeImageIds,omitnil" name:"ExcludeImageIds"`
 }
 
 type ModifyAssetImageScanStopRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务id；任务id，镜像id和根据过滤条件筛选三选一。
-	TaskID *string `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
 
 	// 镜像id；任务id，镜像id和根据过滤条件筛选三选一。
-	Images []*string `json:"Images,omitempty" name:"Images"`
+	Images []*string `json:"Images,omitnil" name:"Images"`
 
 	// 根据过滤条件筛选出镜像；任务id，镜像id和根据过滤条件筛选三选一。
-	Filters []*AssetFilters `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 
 	// 根据过滤条件筛选出镜像，再排除个别镜像
-	ExcludeImageIds *string `json:"ExcludeImageIds,omitempty" name:"ExcludeImageIds"`
+	ExcludeImageIds *string `json:"ExcludeImageIds,omitnil" name:"ExcludeImageIds"`
 }
 
 func (r *ModifyAssetImageScanStopRequest) ToJsonString() string {
@@ -26698,10 +26698,10 @@ func (r *ModifyAssetImageScanStopRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAssetImageScanStopResponseParams struct {
 	// 停止状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAssetImageScanStopResponse struct {
@@ -26723,20 +26723,20 @@ func (r *ModifyAssetImageScanStopResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAssetRequestParams struct {
 	// 全部同步
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 要同步的主机列表 两个参数必选一个 All优先
-	Hosts []*string `json:"Hosts,omitempty" name:"Hosts"`
+	Hosts []*string `json:"Hosts,omitnil" name:"Hosts"`
 }
 
 type ModifyAssetRequest struct {
 	*tchttp.BaseRequest
 	
 	// 全部同步
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 要同步的主机列表 两个参数必选一个 All优先
-	Hosts []*string `json:"Hosts,omitempty" name:"Hosts"`
+	Hosts []*string `json:"Hosts,omitnil" name:"Hosts"`
 }
 
 func (r *ModifyAssetRequest) ToJsonString() string {
@@ -26762,10 +26762,10 @@ func (r *ModifyAssetRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAssetResponseParams struct {
 	// 同步任务发送结果
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAssetResponse struct {
@@ -26787,26 +26787,26 @@ func (r *ModifyAssetResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCompliancePeriodTaskRequestParams struct {
 	// 要修改的定时任务的ID，由DescribeCompliancePeriodTaskList接口返回。
-	PeriodTaskId *uint64 `json:"PeriodTaskId,omitempty" name:"PeriodTaskId"`
+	PeriodTaskId *uint64 `json:"PeriodTaskId,omitnil" name:"PeriodTaskId"`
 
 	// 定时任务的周期规则。不填时，不修改。
-	PeriodRule *CompliancePeriodTaskRule `json:"PeriodRule,omitempty" name:"PeriodRule"`
+	PeriodRule *CompliancePeriodTaskRule `json:"PeriodRule,omitnil" name:"PeriodRule"`
 
 	// 设置合规标准。不填时，不修改。
-	StandardSettings []*ComplianceBenchmarkStandardEnable `json:"StandardSettings,omitempty" name:"StandardSettings"`
+	StandardSettings []*ComplianceBenchmarkStandardEnable `json:"StandardSettings,omitnil" name:"StandardSettings"`
 }
 
 type ModifyCompliancePeriodTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要修改的定时任务的ID，由DescribeCompliancePeriodTaskList接口返回。
-	PeriodTaskId *uint64 `json:"PeriodTaskId,omitempty" name:"PeriodTaskId"`
+	PeriodTaskId *uint64 `json:"PeriodTaskId,omitnil" name:"PeriodTaskId"`
 
 	// 定时任务的周期规则。不填时，不修改。
-	PeriodRule *CompliancePeriodTaskRule `json:"PeriodRule,omitempty" name:"PeriodRule"`
+	PeriodRule *CompliancePeriodTaskRule `json:"PeriodRule,omitnil" name:"PeriodRule"`
 
 	// 设置合规标准。不填时，不修改。
-	StandardSettings []*ComplianceBenchmarkStandardEnable `json:"StandardSettings,omitempty" name:"StandardSettings"`
+	StandardSettings []*ComplianceBenchmarkStandardEnable `json:"StandardSettings,omitnil" name:"StandardSettings"`
 }
 
 func (r *ModifyCompliancePeriodTaskRequest) ToJsonString() string {
@@ -26833,7 +26833,7 @@ func (r *ModifyCompliancePeriodTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCompliancePeriodTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyCompliancePeriodTaskResponse struct {
@@ -26855,26 +26855,26 @@ func (r *ModifyCompliancePeriodTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyContainerNetStatusRequestParams struct {
 	// 容器ID
-	ContainerID *string `json:"ContainerID,omitempty" name:"ContainerID"`
+	ContainerID *string `json:"ContainerID,omitnil" name:"ContainerID"`
 
 	// 状态(
 	// 隔离容器: EVENT_ISOLATE_CONTAINER
 	// 恢复容器: EVENT_RESOTRE_CONTAINER
 	// )
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 }
 
 type ModifyContainerNetStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 容器ID
-	ContainerID *string `json:"ContainerID,omitempty" name:"ContainerID"`
+	ContainerID *string `json:"ContainerID,omitnil" name:"ContainerID"`
 
 	// 状态(
 	// 隔离容器: EVENT_ISOLATE_CONTAINER
 	// 恢复容器: EVENT_RESOTRE_CONTAINER
 	// )
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *ModifyContainerNetStatusRequest) ToJsonString() string {
@@ -26900,7 +26900,7 @@ func (r *ModifyContainerNetStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyContainerNetStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyContainerNetStatusResponse struct {
@@ -26922,7 +26922,7 @@ func (r *ModifyContainerNetStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyEscapeEventStatusRequestParams struct {
 	// 处理事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 
 	// 标记事件的状态：
 	// EVENT_UNDEAL:未处理（取消忽略），
@@ -26930,13 +26930,13 @@ type ModifyEscapeEventStatusRequestParams struct {
 	// EVENT_IGNORE:忽略，
 	// EVENT_DELETE：已删除
 	// EVENT_ADD_WHITE：加白
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 加白镜像ID数组
-	ImageIDs []*string `json:"ImageIDs,omitempty" name:"ImageIDs"`
+	ImageIDs []*string `json:"ImageIDs,omitnil" name:"ImageIDs"`
 
 	// 加白事件类型
 	//    ESCAPE_CGROUPS：利用cgroup机制逃逸
@@ -26946,14 +26946,14 @@ type ModifyEscapeEventStatusRequestParams struct {
 	//    MOUNT_SENSITIVE_PTAH：敏感路径挂载
 	//    PRIVILEGE_CONTAINER_START：特权容器
 	//    PRIVILEGE：程序提权逃逸
-	EventType []*string `json:"EventType,omitempty" name:"EventType"`
+	EventType []*string `json:"EventType,omitnil" name:"EventType"`
 }
 
 type ModifyEscapeEventStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 处理事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 
 	// 标记事件的状态：
 	// EVENT_UNDEAL:未处理（取消忽略），
@@ -26961,13 +26961,13 @@ type ModifyEscapeEventStatusRequest struct {
 	// EVENT_IGNORE:忽略，
 	// EVENT_DELETE：已删除
 	// EVENT_ADD_WHITE：加白
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 加白镜像ID数组
-	ImageIDs []*string `json:"ImageIDs,omitempty" name:"ImageIDs"`
+	ImageIDs []*string `json:"ImageIDs,omitnil" name:"ImageIDs"`
 
 	// 加白事件类型
 	//    ESCAPE_CGROUPS：利用cgroup机制逃逸
@@ -26977,7 +26977,7 @@ type ModifyEscapeEventStatusRequest struct {
 	//    MOUNT_SENSITIVE_PTAH：敏感路径挂载
 	//    PRIVILEGE_CONTAINER_START：特权容器
 	//    PRIVILEGE：程序提权逃逸
-	EventType []*string `json:"EventType,omitempty" name:"EventType"`
+	EventType []*string `json:"EventType,omitnil" name:"EventType"`
 }
 
 func (r *ModifyEscapeEventStatusRequest) ToJsonString() string {
@@ -27006,7 +27006,7 @@ func (r *ModifyEscapeEventStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyEscapeEventStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyEscapeEventStatusResponse struct {
@@ -27028,14 +27028,14 @@ func (r *ModifyEscapeEventStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyEscapeRuleRequestParams struct {
 	// 需要修改的数组
-	RuleSet []*EscapeRuleEnabled `json:"RuleSet,omitempty" name:"RuleSet"`
+	RuleSet []*EscapeRuleEnabled `json:"RuleSet,omitnil" name:"RuleSet"`
 }
 
 type ModifyEscapeRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要修改的数组
-	RuleSet []*EscapeRuleEnabled `json:"RuleSet,omitempty" name:"RuleSet"`
+	RuleSet []*EscapeRuleEnabled `json:"RuleSet,omitnil" name:"RuleSet"`
 }
 
 func (r *ModifyEscapeRuleRequest) ToJsonString() string {
@@ -27060,7 +27060,7 @@ func (r *ModifyEscapeRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyEscapeRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyEscapeRuleResponse struct {
@@ -27089,10 +27089,10 @@ type ModifyEscapeWhiteListRequestParams struct {
 	//    MOUNT_SENSITIVE_PTAH：敏感路径挂载
 	//    PRIVILEGE_CONTAINER_START：特权容器
 	//    PRIVILEGE：程序提权逃逸
-	EventType []*string `json:"EventType,omitempty" name:"EventType"`
+	EventType []*string `json:"EventType,omitnil" name:"EventType"`
 
 	// 白名单记录ID
-	IDSet []*int64 `json:"IDSet,omitempty" name:"IDSet"`
+	IDSet []*int64 `json:"IDSet,omitnil" name:"IDSet"`
 }
 
 type ModifyEscapeWhiteListRequest struct {
@@ -27106,10 +27106,10 @@ type ModifyEscapeWhiteListRequest struct {
 	//    MOUNT_SENSITIVE_PTAH：敏感路径挂载
 	//    PRIVILEGE_CONTAINER_START：特权容器
 	//    PRIVILEGE：程序提权逃逸
-	EventType []*string `json:"EventType,omitempty" name:"EventType"`
+	EventType []*string `json:"EventType,omitnil" name:"EventType"`
 
 	// 白名单记录ID
-	IDSet []*int64 `json:"IDSet,omitempty" name:"IDSet"`
+	IDSet []*int64 `json:"IDSet,omitnil" name:"IDSet"`
 }
 
 func (r *ModifyEscapeWhiteListRequest) ToJsonString() string {
@@ -27135,7 +27135,7 @@ func (r *ModifyEscapeWhiteListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyEscapeWhiteListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyEscapeWhiteListResponse struct {
@@ -27156,93 +27156,93 @@ func (r *ModifyEscapeWhiteListResponse) FromJsonString(s string) error {
 
 type ModifyIgnoreVul struct {
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 忽略的镜像ID，空表示全部
-	ImageIDs []*string `json:"ImageIDs,omitempty" name:"ImageIDs"`
+	ImageIDs []*string `json:"ImageIDs,omitnil" name:"ImageIDs"`
 
 	// 当有镜像时
 	// 镜像类型: LOCAL 本地镜像 REGISTRY 仓库镜像
-	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+	ImageType *string `json:"ImageType,omitnil" name:"ImageType"`
 }
 
 // Predefined struct for user
 type ModifyImageAuthorizedRequestParams struct {
 	// 本地镜像是否全部授权的标识，优先权高于根据本地镜像ids授权。等于true时需UpdatedLocalImageCnt大于0。
-	AllLocalImages *bool `json:"AllLocalImages,omitempty" name:"AllLocalImages"`
+	AllLocalImages *bool `json:"AllLocalImages,omitnil" name:"AllLocalImages"`
 
 	// 仓库镜像是否全部授权的标识，优先权高于根据镜像ids授权。等于true时需UpdatedRegistryImageCnt大于0。
-	AllRegistryImages *bool `json:"AllRegistryImages,omitempty" name:"AllRegistryImages"`
+	AllRegistryImages *bool `json:"AllRegistryImages,omitnil" name:"AllRegistryImages"`
 
 	// 指定操作授权的本地镜像数量，判断优先权最高，实际多出的镜像随机忽略，实际不足的部分也忽略。
-	UpdatedLocalImageCnt *uint64 `json:"UpdatedLocalImageCnt,omitempty" name:"UpdatedLocalImageCnt"`
+	UpdatedLocalImageCnt *uint64 `json:"UpdatedLocalImageCnt,omitnil" name:"UpdatedLocalImageCnt"`
 
 	// 指定操作授权的仓库镜像数量，判断优先权最高，实际多出的镜像随机忽略，实际不足的部分也忽略；
-	UpdatedRegistryImageCnt *uint64 `json:"UpdatedRegistryImageCnt,omitempty" name:"UpdatedRegistryImageCnt"`
+	UpdatedRegistryImageCnt *uint64 `json:"UpdatedRegistryImageCnt,omitnil" name:"UpdatedRegistryImageCnt"`
 
 	// 根据满足条件的本地镜像授权,本地镜像来源；ASSETIMAGE:本地镜像列表；IMAGEALL:同步本地镜像；AllLocalImages为false且LocalImageIds为空和UpdatedLocalImageCnt大于0时，需要
-	ImageSourceType *string `json:"ImageSourceType,omitempty" name:"ImageSourceType"`
+	ImageSourceType *string `json:"ImageSourceType,omitnil" name:"ImageSourceType"`
 
 	// 根据满足条件的本地镜像授权，AllLocalImages为false且LocalImageIds为空和UpdatedLocalImageCnt大于0时，需要。
-	LocalImageFilter []*AssetFilters `json:"LocalImageFilter,omitempty" name:"LocalImageFilter"`
+	LocalImageFilter []*AssetFilters `json:"LocalImageFilter,omitnil" name:"LocalImageFilter"`
 
 	// 根据满足条件的仓库镜像授权，AllRegistryImages为false且RegistryImageIds为空和UpdatedRegistryImageCnt大于0时，需要。
-	RegistryImageFilter []*AssetFilters `json:"RegistryImageFilter,omitempty" name:"RegistryImageFilter"`
+	RegistryImageFilter []*AssetFilters `json:"RegistryImageFilter,omitnil" name:"RegistryImageFilter"`
 
 	// 根据满足条件的镜像授权,同时排除的本地镜像。
-	ExcludeLocalImageIds []*string `json:"ExcludeLocalImageIds,omitempty" name:"ExcludeLocalImageIds"`
+	ExcludeLocalImageIds []*string `json:"ExcludeLocalImageIds,omitnil" name:"ExcludeLocalImageIds"`
 
 	// 根据满足条件的镜像授权,同时排除的仓库镜像。
-	ExcludeRegistryImageIds []*string `json:"ExcludeRegistryImageIds,omitempty" name:"ExcludeRegistryImageIds"`
+	ExcludeRegistryImageIds []*string `json:"ExcludeRegistryImageIds,omitnil" name:"ExcludeRegistryImageIds"`
 
 	// 根据本地镜像ids授权，优先权高于根据满足条件的镜像授权。AllLocalImages为false且LocalImageFilter为空和UpdatedLocalImageCnt大于0时，需要。
-	LocalImageIds []*string `json:"LocalImageIds,omitempty" name:"LocalImageIds"`
+	LocalImageIds []*string `json:"LocalImageIds,omitnil" name:"LocalImageIds"`
 
 	// 根据仓库镜像Ids授权，优先权高于根据满足条件的镜像授。AllRegistryImages为false且RegistryImageFilter为空和UpdatedRegistryImageCnt大于0时，需要。
-	RegistryImageIds []*string `json:"RegistryImageIds,omitempty" name:"RegistryImageIds"`
+	RegistryImageIds []*string `json:"RegistryImageIds,omitnil" name:"RegistryImageIds"`
 
 	// 是否仅最新的镜像；RegistryImageFilter不为空且UpdatedRegistryImageCnt大于0时仓库镜像需要。
-	OnlyShowLatest *bool `json:"OnlyShowLatest,omitempty" name:"OnlyShowLatest"`
+	OnlyShowLatest *bool `json:"OnlyShowLatest,omitnil" name:"OnlyShowLatest"`
 }
 
 type ModifyImageAuthorizedRequest struct {
 	*tchttp.BaseRequest
 	
 	// 本地镜像是否全部授权的标识，优先权高于根据本地镜像ids授权。等于true时需UpdatedLocalImageCnt大于0。
-	AllLocalImages *bool `json:"AllLocalImages,omitempty" name:"AllLocalImages"`
+	AllLocalImages *bool `json:"AllLocalImages,omitnil" name:"AllLocalImages"`
 
 	// 仓库镜像是否全部授权的标识，优先权高于根据镜像ids授权。等于true时需UpdatedRegistryImageCnt大于0。
-	AllRegistryImages *bool `json:"AllRegistryImages,omitempty" name:"AllRegistryImages"`
+	AllRegistryImages *bool `json:"AllRegistryImages,omitnil" name:"AllRegistryImages"`
 
 	// 指定操作授权的本地镜像数量，判断优先权最高，实际多出的镜像随机忽略，实际不足的部分也忽略。
-	UpdatedLocalImageCnt *uint64 `json:"UpdatedLocalImageCnt,omitempty" name:"UpdatedLocalImageCnt"`
+	UpdatedLocalImageCnt *uint64 `json:"UpdatedLocalImageCnt,omitnil" name:"UpdatedLocalImageCnt"`
 
 	// 指定操作授权的仓库镜像数量，判断优先权最高，实际多出的镜像随机忽略，实际不足的部分也忽略；
-	UpdatedRegistryImageCnt *uint64 `json:"UpdatedRegistryImageCnt,omitempty" name:"UpdatedRegistryImageCnt"`
+	UpdatedRegistryImageCnt *uint64 `json:"UpdatedRegistryImageCnt,omitnil" name:"UpdatedRegistryImageCnt"`
 
 	// 根据满足条件的本地镜像授权,本地镜像来源；ASSETIMAGE:本地镜像列表；IMAGEALL:同步本地镜像；AllLocalImages为false且LocalImageIds为空和UpdatedLocalImageCnt大于0时，需要
-	ImageSourceType *string `json:"ImageSourceType,omitempty" name:"ImageSourceType"`
+	ImageSourceType *string `json:"ImageSourceType,omitnil" name:"ImageSourceType"`
 
 	// 根据满足条件的本地镜像授权，AllLocalImages为false且LocalImageIds为空和UpdatedLocalImageCnt大于0时，需要。
-	LocalImageFilter []*AssetFilters `json:"LocalImageFilter,omitempty" name:"LocalImageFilter"`
+	LocalImageFilter []*AssetFilters `json:"LocalImageFilter,omitnil" name:"LocalImageFilter"`
 
 	// 根据满足条件的仓库镜像授权，AllRegistryImages为false且RegistryImageIds为空和UpdatedRegistryImageCnt大于0时，需要。
-	RegistryImageFilter []*AssetFilters `json:"RegistryImageFilter,omitempty" name:"RegistryImageFilter"`
+	RegistryImageFilter []*AssetFilters `json:"RegistryImageFilter,omitnil" name:"RegistryImageFilter"`
 
 	// 根据满足条件的镜像授权,同时排除的本地镜像。
-	ExcludeLocalImageIds []*string `json:"ExcludeLocalImageIds,omitempty" name:"ExcludeLocalImageIds"`
+	ExcludeLocalImageIds []*string `json:"ExcludeLocalImageIds,omitnil" name:"ExcludeLocalImageIds"`
 
 	// 根据满足条件的镜像授权,同时排除的仓库镜像。
-	ExcludeRegistryImageIds []*string `json:"ExcludeRegistryImageIds,omitempty" name:"ExcludeRegistryImageIds"`
+	ExcludeRegistryImageIds []*string `json:"ExcludeRegistryImageIds,omitnil" name:"ExcludeRegistryImageIds"`
 
 	// 根据本地镜像ids授权，优先权高于根据满足条件的镜像授权。AllLocalImages为false且LocalImageFilter为空和UpdatedLocalImageCnt大于0时，需要。
-	LocalImageIds []*string `json:"LocalImageIds,omitempty" name:"LocalImageIds"`
+	LocalImageIds []*string `json:"LocalImageIds,omitnil" name:"LocalImageIds"`
 
 	// 根据仓库镜像Ids授权，优先权高于根据满足条件的镜像授。AllRegistryImages为false且RegistryImageFilter为空和UpdatedRegistryImageCnt大于0时，需要。
-	RegistryImageIds []*string `json:"RegistryImageIds,omitempty" name:"RegistryImageIds"`
+	RegistryImageIds []*string `json:"RegistryImageIds,omitnil" name:"RegistryImageIds"`
 
 	// 是否仅最新的镜像；RegistryImageFilter不为空且UpdatedRegistryImageCnt大于0时仓库镜像需要。
-	OnlyShowLatest *bool `json:"OnlyShowLatest,omitempty" name:"OnlyShowLatest"`
+	OnlyShowLatest *bool `json:"OnlyShowLatest,omitnil" name:"OnlyShowLatest"`
 }
 
 func (r *ModifyImageAuthorizedRequest) ToJsonString() string {
@@ -27278,7 +27278,7 @@ func (r *ModifyImageAuthorizedRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyImageAuthorizedResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyImageAuthorizedResponse struct {
@@ -27300,26 +27300,26 @@ func (r *ModifyImageAuthorizedResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyK8sApiAbnormalEventStatusRequestParams struct {
 	// 事件ID集合
-	EventIDSet []*uint64 `json:"EventIDSet,omitempty" name:"EventIDSet"`
+	EventIDSet []*uint64 `json:"EventIDSet,omitnil" name:"EventIDSet"`
 
 	// 状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type ModifyK8sApiAbnormalEventStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件ID集合
-	EventIDSet []*uint64 `json:"EventIDSet,omitempty" name:"EventIDSet"`
+	EventIDSet []*uint64 `json:"EventIDSet,omitnil" name:"EventIDSet"`
 
 	// 状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 func (r *ModifyK8sApiAbnormalEventStatusRequest) ToJsonString() string {
@@ -27346,7 +27346,7 @@ func (r *ModifyK8sApiAbnormalEventStatusRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type ModifyK8sApiAbnormalEventStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyK8sApiAbnormalEventStatusResponse struct {
@@ -27368,14 +27368,14 @@ func (r *ModifyK8sApiAbnormalEventStatusResponse) FromJsonString(s string) error
 // Predefined struct for user
 type ModifyK8sApiAbnormalRuleInfoRequestParams struct {
 	// 规则详情
-	RuleInfo *K8sApiAbnormalRuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+	RuleInfo *K8sApiAbnormalRuleInfo `json:"RuleInfo,omitnil" name:"RuleInfo"`
 }
 
 type ModifyK8sApiAbnormalRuleInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则详情
-	RuleInfo *K8sApiAbnormalRuleInfo `json:"RuleInfo,omitempty" name:"RuleInfo"`
+	RuleInfo *K8sApiAbnormalRuleInfo `json:"RuleInfo,omitnil" name:"RuleInfo"`
 }
 
 func (r *ModifyK8sApiAbnormalRuleInfoRequest) ToJsonString() string {
@@ -27400,7 +27400,7 @@ func (r *ModifyK8sApiAbnormalRuleInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyK8sApiAbnormalRuleInfoResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyK8sApiAbnormalRuleInfoResponse struct {
@@ -27422,20 +27422,20 @@ func (r *ModifyK8sApiAbnormalRuleInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyK8sApiAbnormalRuleStatusRequestParams struct {
 	// 规则ID
-	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+	RuleID *string `json:"RuleID,omitnil" name:"RuleID"`
 
 	// 状态(true:开 false:关)
-	Status *bool `json:"Status,omitempty" name:"Status"`
+	Status *bool `json:"Status,omitnil" name:"Status"`
 }
 
 type ModifyK8sApiAbnormalRuleStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则ID
-	RuleID *string `json:"RuleID,omitempty" name:"RuleID"`
+	RuleID *string `json:"RuleID,omitnil" name:"RuleID"`
 
 	// 状态(true:开 false:关)
-	Status *bool `json:"Status,omitempty" name:"Status"`
+	Status *bool `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *ModifyK8sApiAbnormalRuleStatusRequest) ToJsonString() string {
@@ -27461,7 +27461,7 @@ func (r *ModifyK8sApiAbnormalRuleStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyK8sApiAbnormalRuleStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyK8sApiAbnormalRuleStatusResponse struct {
@@ -27483,34 +27483,34 @@ func (r *ModifyK8sApiAbnormalRuleStatusResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type ModifyReverseShellStatusRequestParams struct {
 	// 处理事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 
 	// 标记事件的状态，   
 	//     EVENT_DEALED:事件处理
 	//     EVENT_INGNORE"：事件忽略
 	//      EVENT_DEL:事件删除
 	//      EVENT_ADD_WHITE:事件加白
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type ModifyReverseShellStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 处理事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 
 	// 标记事件的状态，   
 	//     EVENT_DEALED:事件处理
 	//     EVENT_INGNORE"：事件忽略
 	//      EVENT_DEL:事件删除
 	//      EVENT_ADD_WHITE:事件加白
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 func (r *ModifyReverseShellStatusRequest) ToJsonString() string {
@@ -27537,7 +27537,7 @@ func (r *ModifyReverseShellStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyReverseShellStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyReverseShellStatusResponse struct {
@@ -27559,34 +27559,34 @@ func (r *ModifyReverseShellStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRiskSyscallStatusRequestParams struct {
 	// 处理事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 
 	// 标记事件的状态，   
 	//     EVENT_DEALED:事件处理
 	//     EVENT_INGNORE"：事件忽略
 	//      EVENT_DEL:事件删除
 	//      EVENT_ADD_WHITE:事件加白
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type ModifyRiskSyscallStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 处理事件ids
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 
 	// 标记事件的状态，   
 	//     EVENT_DEALED:事件处理
 	//     EVENT_INGNORE"：事件忽略
 	//      EVENT_DEL:事件删除
 	//      EVENT_ADD_WHITE:事件加白
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 func (r *ModifyRiskSyscallStatusRequest) ToJsonString() string {
@@ -27613,7 +27613,7 @@ func (r *ModifyRiskSyscallStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRiskSyscallStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyRiskSyscallStatusResponse struct {
@@ -27635,26 +27635,26 @@ func (r *ModifyRiskSyscallStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySecLogCleanSettingInfoRequestParams struct {
 	// 触发清理的储量底线(50-99)
-	ReservesLimit *uint64 `json:"ReservesLimit,omitempty" name:"ReservesLimit"`
+	ReservesLimit *uint64 `json:"ReservesLimit,omitnil" name:"ReservesLimit"`
 
 	// 清理停止时的储量截至线(>0,小于ReservesLimit)
-	ReservesDeadline *uint64 `json:"ReservesDeadline,omitempty" name:"ReservesDeadline"`
+	ReservesDeadline *uint64 `json:"ReservesDeadline,omitnil" name:"ReservesDeadline"`
 
 	// 触发清理的存储天数(>=1)
-	DayLimit *uint64 `json:"DayLimit,omitempty" name:"DayLimit"`
+	DayLimit *uint64 `json:"DayLimit,omitnil" name:"DayLimit"`
 }
 
 type ModifySecLogCleanSettingInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 触发清理的储量底线(50-99)
-	ReservesLimit *uint64 `json:"ReservesLimit,omitempty" name:"ReservesLimit"`
+	ReservesLimit *uint64 `json:"ReservesLimit,omitnil" name:"ReservesLimit"`
 
 	// 清理停止时的储量截至线(>0,小于ReservesLimit)
-	ReservesDeadline *uint64 `json:"ReservesDeadline,omitempty" name:"ReservesDeadline"`
+	ReservesDeadline *uint64 `json:"ReservesDeadline,omitnil" name:"ReservesDeadline"`
 
 	// 触发清理的存储天数(>=1)
-	DayLimit *uint64 `json:"DayLimit,omitempty" name:"DayLimit"`
+	DayLimit *uint64 `json:"DayLimit,omitnil" name:"DayLimit"`
 }
 
 func (r *ModifySecLogCleanSettingInfoRequest) ToJsonString() string {
@@ -27681,7 +27681,7 @@ func (r *ModifySecLogCleanSettingInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySecLogCleanSettingInfoResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifySecLogCleanSettingInfoResponse struct {
@@ -27703,14 +27703,14 @@ func (r *ModifySecLogCleanSettingInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySecLogDeliveryClsSettingRequestParams struct {
 	// 日志信息
-	List []*SecLogDeliveryClsSettingInfo `json:"List,omitempty" name:"List"`
+	List []*SecLogDeliveryClsSettingInfo `json:"List,omitnil" name:"List"`
 }
 
 type ModifySecLogDeliveryClsSettingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志信息
-	List []*SecLogDeliveryClsSettingInfo `json:"List,omitempty" name:"List"`
+	List []*SecLogDeliveryClsSettingInfo `json:"List,omitnil" name:"List"`
 }
 
 func (r *ModifySecLogDeliveryClsSettingRequest) ToJsonString() string {
@@ -27735,7 +27735,7 @@ func (r *ModifySecLogDeliveryClsSettingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySecLogDeliveryClsSettingResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifySecLogDeliveryClsSettingResponse struct {
@@ -27757,62 +27757,62 @@ func (r *ModifySecLogDeliveryClsSettingResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type ModifySecLogDeliveryKafkaSettingRequestParams struct {
 	// 实例ID
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 实例名称
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 用户名
-	User *string `json:"User,omitempty" name:"User"`
+	User *string `json:"User,omitnil" name:"User"`
 
 	// 密码
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 
 	// 日志类型队列
-	LogTypeList []*SecLogDeliveryKafkaSettingInfo `json:"LogTypeList,omitempty" name:"LogTypeList"`
+	LogTypeList []*SecLogDeliveryKafkaSettingInfo `json:"LogTypeList,omitnil" name:"LogTypeList"`
 
 	// 接入类型
-	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
+	AccessType *int64 `json:"AccessType,omitnil" name:"AccessType"`
 
 	// kafka版本号
-	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
+	KafkaVersion *string `json:"KafkaVersion,omitnil" name:"KafkaVersion"`
 
 	// 地域ID
-	RegionID *string `json:"RegionID,omitempty" name:"RegionID"`
+	RegionID *string `json:"RegionID,omitnil" name:"RegionID"`
 }
 
 type ModifySecLogDeliveryKafkaSettingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 实例名称
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 用户名
-	User *string `json:"User,omitempty" name:"User"`
+	User *string `json:"User,omitnil" name:"User"`
 
 	// 密码
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 
 	// 日志类型队列
-	LogTypeList []*SecLogDeliveryKafkaSettingInfo `json:"LogTypeList,omitempty" name:"LogTypeList"`
+	LogTypeList []*SecLogDeliveryKafkaSettingInfo `json:"LogTypeList,omitnil" name:"LogTypeList"`
 
 	// 接入类型
-	AccessType *int64 `json:"AccessType,omitempty" name:"AccessType"`
+	AccessType *int64 `json:"AccessType,omitnil" name:"AccessType"`
 
 	// kafka版本号
-	KafkaVersion *string `json:"KafkaVersion,omitempty" name:"KafkaVersion"`
+	KafkaVersion *string `json:"KafkaVersion,omitnil" name:"KafkaVersion"`
 
 	// 地域ID
-	RegionID *string `json:"RegionID,omitempty" name:"RegionID"`
+	RegionID *string `json:"RegionID,omitnil" name:"RegionID"`
 }
 
 func (r *ModifySecLogDeliveryKafkaSettingRequest) ToJsonString() string {
@@ -27845,7 +27845,7 @@ func (r *ModifySecLogDeliveryKafkaSettingRequest) FromJsonString(s string) error
 // Predefined struct for user
 type ModifySecLogDeliveryKafkaSettingResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifySecLogDeliveryKafkaSettingResponse struct {
@@ -27870,18 +27870,18 @@ type ModifySecLogJoinObjectsRequestParams struct {
 	// bash日志: container_bash
 	// 容器启动: container_launch
 	// k8sApi: k8s_api
-	LogType *string `json:"LogType,omitempty" name:"LogType"`
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// 绑定主机quuid列表
-	BindList []*string `json:"BindList,omitempty" name:"BindList"`
+	BindList []*string `json:"BindList,omitnil" name:"BindList"`
 
 	// 待解绑主机quuid列表
-	UnBindList []*string `json:"UnBindList,omitempty" name:"UnBindList"`
+	UnBindList []*string `json:"UnBindList,omitnil" name:"UnBindList"`
 
 	// 节点类型:
 	// NORMAL: 普通节点(默认值)
 	// SUPER: 超级节点
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 }
 
 type ModifySecLogJoinObjectsRequest struct {
@@ -27891,18 +27891,18 @@ type ModifySecLogJoinObjectsRequest struct {
 	// bash日志: container_bash
 	// 容器启动: container_launch
 	// k8sApi: k8s_api
-	LogType *string `json:"LogType,omitempty" name:"LogType"`
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// 绑定主机quuid列表
-	BindList []*string `json:"BindList,omitempty" name:"BindList"`
+	BindList []*string `json:"BindList,omitnil" name:"BindList"`
 
 	// 待解绑主机quuid列表
-	UnBindList []*string `json:"UnBindList,omitempty" name:"UnBindList"`
+	UnBindList []*string `json:"UnBindList,omitnil" name:"UnBindList"`
 
 	// 节点类型:
 	// NORMAL: 普通节点(默认值)
 	// SUPER: 超级节点
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 }
 
 func (r *ModifySecLogJoinObjectsRequest) ToJsonString() string {
@@ -27930,7 +27930,7 @@ func (r *ModifySecLogJoinObjectsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySecLogJoinObjectsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifySecLogJoinObjectsResponse struct {
@@ -27955,10 +27955,10 @@ type ModifySecLogJoinStateRequestParams struct {
 	// bash日志: container_bash
 	// 容器启动: container_launch
 	// k8sApi: k8s_api
-	LogType *string `json:"LogType,omitempty" name:"LogType"`
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// 状态(true:开 false:关)
-	State *bool `json:"State,omitempty" name:"State"`
+	State *bool `json:"State,omitnil" name:"State"`
 }
 
 type ModifySecLogJoinStateRequest struct {
@@ -27968,10 +27968,10 @@ type ModifySecLogJoinStateRequest struct {
 	// bash日志: container_bash
 	// 容器启动: container_launch
 	// k8sApi: k8s_api
-	LogType *string `json:"LogType,omitempty" name:"LogType"`
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// 状态(true:开 false:关)
-	State *bool `json:"State,omitempty" name:"State"`
+	State *bool `json:"State,omitnil" name:"State"`
 }
 
 func (r *ModifySecLogJoinStateRequest) ToJsonString() string {
@@ -27997,7 +27997,7 @@ func (r *ModifySecLogJoinStateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySecLogJoinStateResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifySecLogJoinStateResponse struct {
@@ -28019,14 +28019,14 @@ func (r *ModifySecLogJoinStateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySecLogKafkaUINRequestParams struct {
 	// 目标UIN
-	DstUIN *string `json:"DstUIN,omitempty" name:"DstUIN"`
+	DstUIN *string `json:"DstUIN,omitnil" name:"DstUIN"`
 }
 
 type ModifySecLogKafkaUINRequest struct {
 	*tchttp.BaseRequest
 	
 	// 目标UIN
-	DstUIN *string `json:"DstUIN,omitempty" name:"DstUIN"`
+	DstUIN *string `json:"DstUIN,omitnil" name:"DstUIN"`
 }
 
 func (r *ModifySecLogKafkaUINRequest) ToJsonString() string {
@@ -28051,7 +28051,7 @@ func (r *ModifySecLogKafkaUINRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySecLogKafkaUINResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifySecLogKafkaUINResponse struct {
@@ -28073,20 +28073,20 @@ func (r *ModifySecLogKafkaUINResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVirusAutoIsolateExampleSwitchRequestParams struct {
 	// 文件Md5值
-	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+	MD5 *string `json:"MD5,omitnil" name:"MD5"`
 
 	// 开关(开:true 关: false)
-	Status *bool `json:"Status,omitempty" name:"Status"`
+	Status *bool `json:"Status,omitnil" name:"Status"`
 }
 
 type ModifyVirusAutoIsolateExampleSwitchRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件Md5值
-	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+	MD5 *string `json:"MD5,omitnil" name:"MD5"`
 
 	// 开关(开:true 关: false)
-	Status *bool `json:"Status,omitempty" name:"Status"`
+	Status *bool `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *ModifyVirusAutoIsolateExampleSwitchRequest) ToJsonString() string {
@@ -28112,7 +28112,7 @@ func (r *ModifyVirusAutoIsolateExampleSwitchRequest) FromJsonString(s string) er
 // Predefined struct for user
 type ModifyVirusAutoIsolateExampleSwitchResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyVirusAutoIsolateExampleSwitchResponse struct {
@@ -28134,20 +28134,20 @@ func (r *ModifyVirusAutoIsolateExampleSwitchResponse) FromJsonString(s string) e
 // Predefined struct for user
 type ModifyVirusAutoIsolateSettingRequestParams struct {
 	// 自动隔离开关(true:开 false:关)
-	AutoIsolateSwitch *bool `json:"AutoIsolateSwitch,omitempty" name:"AutoIsolateSwitch"`
+	AutoIsolateSwitch *bool `json:"AutoIsolateSwitch,omitnil" name:"AutoIsolateSwitch"`
 
 	// 是否中断隔离文件关联的进程(true:是 false:否)
-	IsKillProgress *bool `json:"IsKillProgress,omitempty" name:"IsKillProgress"`
+	IsKillProgress *bool `json:"IsKillProgress,omitnil" name:"IsKillProgress"`
 }
 
 type ModifyVirusAutoIsolateSettingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 自动隔离开关(true:开 false:关)
-	AutoIsolateSwitch *bool `json:"AutoIsolateSwitch,omitempty" name:"AutoIsolateSwitch"`
+	AutoIsolateSwitch *bool `json:"AutoIsolateSwitch,omitnil" name:"AutoIsolateSwitch"`
 
 	// 是否中断隔离文件关联的进程(true:是 false:否)
-	IsKillProgress *bool `json:"IsKillProgress,omitempty" name:"IsKillProgress"`
+	IsKillProgress *bool `json:"IsKillProgress,omitnil" name:"IsKillProgress"`
 }
 
 func (r *ModifyVirusAutoIsolateSettingRequest) ToJsonString() string {
@@ -28173,7 +28173,7 @@ func (r *ModifyVirusAutoIsolateSettingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVirusAutoIsolateSettingResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyVirusAutoIsolateSettingResponse struct {
@@ -28195,7 +28195,7 @@ func (r *ModifyVirusAutoIsolateSettingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVirusFileStatusRequestParams struct {
 	// 处理事件id
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 
 	// 标记事件的状态，   
 	//     EVENT_DEALED:事件处理
@@ -28205,20 +28205,20 @@ type ModifyVirusFileStatusRequestParams struct {
 	//     EVENT_PENDING: 事件待处理
 	// 	EVENT_ISOLATE_CONTAINER: 隔离容器
 	// 	EVENT_RESOTRE_CONTAINER: 恢复容器
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 是否后续自动隔离相同MD5文件
-	AutoIsolate *bool `json:"AutoIsolate,omitempty" name:"AutoIsolate"`
+	AutoIsolate *bool `json:"AutoIsolate,omitnil" name:"AutoIsolate"`
 }
 
 type ModifyVirusFileStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 处理事件id
-	EventIdSet []*string `json:"EventIdSet,omitempty" name:"EventIdSet"`
+	EventIdSet []*string `json:"EventIdSet,omitnil" name:"EventIdSet"`
 
 	// 标记事件的状态，   
 	//     EVENT_DEALED:事件处理
@@ -28228,13 +28228,13 @@ type ModifyVirusFileStatusRequest struct {
 	//     EVENT_PENDING: 事件待处理
 	// 	EVENT_ISOLATE_CONTAINER: 隔离容器
 	// 	EVENT_RESOTRE_CONTAINER: 恢复容器
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 是否后续自动隔离相同MD5文件
-	AutoIsolate *bool `json:"AutoIsolate,omitempty" name:"AutoIsolate"`
+	AutoIsolate *bool `json:"AutoIsolate,omitnil" name:"AutoIsolate"`
 }
 
 func (r *ModifyVirusFileStatusRequest) ToJsonString() string {
@@ -28262,7 +28262,7 @@ func (r *ModifyVirusFileStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVirusFileStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyVirusFileStatusResponse struct {
@@ -28284,44 +28284,44 @@ func (r *ModifyVirusFileStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVirusMonitorSettingRequestParams struct {
 	// 是否开启定期扫描
-	EnableScan *bool `json:"EnableScan,omitempty" name:"EnableScan"`
+	EnableScan *bool `json:"EnableScan,omitnil" name:"EnableScan"`
 
 	// 扫描全部路径
-	ScanPathAll *bool `json:"ScanPathAll,omitempty" name:"ScanPathAll"`
+	ScanPathAll *bool `json:"ScanPathAll,omitnil" name:"ScanPathAll"`
 
 	// 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径(扫描范围只能小于等于1)
-	ScanPathType *uint64 `json:"ScanPathType,omitempty" name:"ScanPathType"`
+	ScanPathType *uint64 `json:"ScanPathType,omitnil" name:"ScanPathType"`
 
 	// 自选排除或扫描的地址
-	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+	ScanPath []*string `json:"ScanPath,omitnil" name:"ScanPath"`
 
 	// 扫描路径模式：
 	// SCAN_PATH_ALL：全部路径
 	// SCAN_PATH_DEFAULT：默认路径
 	// SCAN_PATH_USER_DEFINE：用户自定义路径
-	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
+	ScanPathMode *string `json:"ScanPathMode,omitnil" name:"ScanPathMode"`
 }
 
 type ModifyVirusMonitorSettingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 是否开启定期扫描
-	EnableScan *bool `json:"EnableScan,omitempty" name:"EnableScan"`
+	EnableScan *bool `json:"EnableScan,omitnil" name:"EnableScan"`
 
 	// 扫描全部路径
-	ScanPathAll *bool `json:"ScanPathAll,omitempty" name:"ScanPathAll"`
+	ScanPathAll *bool `json:"ScanPathAll,omitnil" name:"ScanPathAll"`
 
 	// 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径(扫描范围只能小于等于1)
-	ScanPathType *uint64 `json:"ScanPathType,omitempty" name:"ScanPathType"`
+	ScanPathType *uint64 `json:"ScanPathType,omitnil" name:"ScanPathType"`
 
 	// 自选排除或扫描的地址
-	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+	ScanPath []*string `json:"ScanPath,omitnil" name:"ScanPath"`
 
 	// 扫描路径模式：
 	// SCAN_PATH_ALL：全部路径
 	// SCAN_PATH_DEFAULT：默认路径
 	// SCAN_PATH_USER_DEFINE：用户自定义路径
-	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
+	ScanPathMode *string `json:"ScanPathMode,omitnil" name:"ScanPathMode"`
 }
 
 func (r *ModifyVirusMonitorSettingRequest) ToJsonString() string {
@@ -28350,7 +28350,7 @@ func (r *ModifyVirusMonitorSettingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVirusMonitorSettingResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyVirusMonitorSettingResponse struct {
@@ -28372,80 +28372,80 @@ func (r *ModifyVirusMonitorSettingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVirusScanSettingRequestParams struct {
 	// 是否开启定期扫描
-	EnableScan *bool `json:"EnableScan,omitempty" name:"EnableScan"`
+	EnableScan *bool `json:"EnableScan,omitnil" name:"EnableScan"`
 
 	// 检测周期每隔多少天(1|3|7)
-	Cycle *uint64 `json:"Cycle,omitempty" name:"Cycle"`
+	Cycle *uint64 `json:"Cycle,omitnil" name:"Cycle"`
 
 	// 扫描开始时间
-	BeginScanAt *string `json:"BeginScanAt,omitempty" name:"BeginScanAt"`
+	BeginScanAt *string `json:"BeginScanAt,omitnil" name:"BeginScanAt"`
 
 	// 扫描全部路径(true:全选,false:自选)
-	ScanPathAll *bool `json:"ScanPathAll,omitempty" name:"ScanPathAll"`
+	ScanPathAll *bool `json:"ScanPathAll,omitnil" name:"ScanPathAll"`
 
 	// 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径
-	ScanPathType *uint64 `json:"ScanPathType,omitempty" name:"ScanPathType"`
+	ScanPathType *uint64 `json:"ScanPathType,omitnil" name:"ScanPathType"`
 
 	// 超时时长(5~24h)
-	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 
 	// 扫描范围0容器1主机节点
-	ScanRangeType *uint64 `json:"ScanRangeType,omitempty" name:"ScanRangeType"`
+	ScanRangeType *uint64 `json:"ScanRangeType,omitnil" name:"ScanRangeType"`
 
 	// true 全选，false 自选
-	ScanRangeAll *bool `json:"ScanRangeAll,omitempty" name:"ScanRangeAll"`
+	ScanRangeAll *bool `json:"ScanRangeAll,omitnil" name:"ScanRangeAll"`
 
 	// 自选扫描范围的容器id或者主机id 根据ScanRangeType决定
-	ScanIds []*string `json:"ScanIds,omitempty" name:"ScanIds"`
+	ScanIds []*string `json:"ScanIds,omitnil" name:"ScanIds"`
 
 	// 扫描路径
-	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+	ScanPath []*string `json:"ScanPath,omitnil" name:"ScanPath"`
 
 	// 扫描路径模式：
 	// SCAN_PATH_ALL：全部路径
 	// SCAN_PATH_DEFAULT：默认路径
 	// SCAN_PATH_USER_DEFINE：用户自定义路径
-	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
+	ScanPathMode *string `json:"ScanPathMode,omitnil" name:"ScanPathMode"`
 }
 
 type ModifyVirusScanSettingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 是否开启定期扫描
-	EnableScan *bool `json:"EnableScan,omitempty" name:"EnableScan"`
+	EnableScan *bool `json:"EnableScan,omitnil" name:"EnableScan"`
 
 	// 检测周期每隔多少天(1|3|7)
-	Cycle *uint64 `json:"Cycle,omitempty" name:"Cycle"`
+	Cycle *uint64 `json:"Cycle,omitnil" name:"Cycle"`
 
 	// 扫描开始时间
-	BeginScanAt *string `json:"BeginScanAt,omitempty" name:"BeginScanAt"`
+	BeginScanAt *string `json:"BeginScanAt,omitnil" name:"BeginScanAt"`
 
 	// 扫描全部路径(true:全选,false:自选)
-	ScanPathAll *bool `json:"ScanPathAll,omitempty" name:"ScanPathAll"`
+	ScanPathAll *bool `json:"ScanPathAll,omitnil" name:"ScanPathAll"`
 
 	// 当ScanPathAll为true 生效 0扫描以下路径 1、扫描除以下路径
-	ScanPathType *uint64 `json:"ScanPathType,omitempty" name:"ScanPathType"`
+	ScanPathType *uint64 `json:"ScanPathType,omitnil" name:"ScanPathType"`
 
 	// 超时时长(5~24h)
-	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 
 	// 扫描范围0容器1主机节点
-	ScanRangeType *uint64 `json:"ScanRangeType,omitempty" name:"ScanRangeType"`
+	ScanRangeType *uint64 `json:"ScanRangeType,omitnil" name:"ScanRangeType"`
 
 	// true 全选，false 自选
-	ScanRangeAll *bool `json:"ScanRangeAll,omitempty" name:"ScanRangeAll"`
+	ScanRangeAll *bool `json:"ScanRangeAll,omitnil" name:"ScanRangeAll"`
 
 	// 自选扫描范围的容器id或者主机id 根据ScanRangeType决定
-	ScanIds []*string `json:"ScanIds,omitempty" name:"ScanIds"`
+	ScanIds []*string `json:"ScanIds,omitnil" name:"ScanIds"`
 
 	// 扫描路径
-	ScanPath []*string `json:"ScanPath,omitempty" name:"ScanPath"`
+	ScanPath []*string `json:"ScanPath,omitnil" name:"ScanPath"`
 
 	// 扫描路径模式：
 	// SCAN_PATH_ALL：全部路径
 	// SCAN_PATH_DEFAULT：默认路径
 	// SCAN_PATH_USER_DEFINE：用户自定义路径
-	ScanPathMode *string `json:"ScanPathMode,omitempty" name:"ScanPathMode"`
+	ScanPathMode *string `json:"ScanPathMode,omitnil" name:"ScanPathMode"`
 }
 
 func (r *ModifyVirusScanSettingRequest) ToJsonString() string {
@@ -28480,7 +28480,7 @@ func (r *ModifyVirusScanSettingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVirusScanSettingResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyVirusScanSettingResponse struct {
@@ -28502,20 +28502,20 @@ func (r *ModifyVirusScanSettingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVirusScanTimeoutSettingRequestParams struct {
 	// 超时时长单位小时(5~24h)
-	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 
 	// 设置类型0一键检测，1定时检测
-	ScanType *uint64 `json:"ScanType,omitempty" name:"ScanType"`
+	ScanType *uint64 `json:"ScanType,omitnil" name:"ScanType"`
 }
 
 type ModifyVirusScanTimeoutSettingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 超时时长单位小时(5~24h)
-	Timeout *uint64 `json:"Timeout,omitempty" name:"Timeout"`
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 
 	// 设置类型0一键检测，1定时检测
-	ScanType *uint64 `json:"ScanType,omitempty" name:"ScanType"`
+	ScanType *uint64 `json:"ScanType,omitnil" name:"ScanType"`
 }
 
 func (r *ModifyVirusScanTimeoutSettingRequest) ToJsonString() string {
@@ -28541,7 +28541,7 @@ func (r *ModifyVirusScanTimeoutSettingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVirusScanTimeoutSettingResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyVirusScanTimeoutSettingResponse struct {
@@ -28563,28 +28563,28 @@ func (r *ModifyVirusScanTimeoutSettingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVulDefenceEventStatusRequestParams struct {
 	// 事件IDs数组
-	EventIDs []*int64 `json:"EventIDs,omitempty" name:"EventIDs"`
+	EventIDs []*int64 `json:"EventIDs,omitnil" name:"EventIDs"`
 
 	// 操作状态：
 	// EVENT_DEALED：已处理，EVENT_IGNORE：忽略，EVENT_ISOLATE_CONTAINER：隔离容器，EVENT_DEL：删除
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type ModifyVulDefenceEventStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件IDs数组
-	EventIDs []*int64 `json:"EventIDs,omitempty" name:"EventIDs"`
+	EventIDs []*int64 `json:"EventIDs,omitnil" name:"EventIDs"`
 
 	// 操作状态：
 	// EVENT_DEALED：已处理，EVENT_IGNORE：忽略，EVENT_ISOLATE_CONTAINER：隔离容器，EVENT_DEL：删除
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 func (r *ModifyVulDefenceEventStatusRequest) ToJsonString() string {
@@ -28611,7 +28611,7 @@ func (r *ModifyVulDefenceEventStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVulDefenceEventStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyVulDefenceEventStatusResponse struct {
@@ -28633,38 +28633,38 @@ func (r *ModifyVulDefenceEventStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVulDefenceSettingRequestParams struct {
 	// 是否开启:0: 关闭 1:开启
-	IsEnabled *int64 `json:"IsEnabled,omitempty" name:"IsEnabled"`
+	IsEnabled *int64 `json:"IsEnabled,omitnil" name:"IsEnabled"`
 
 	// 漏洞防御主机范围:0：自选 1: 全部主机
-	Scope *int64 `json:"Scope,omitempty" name:"Scope"`
+	Scope *int64 `json:"Scope,omitnil" name:"Scope"`
 
 	// 自选漏洞防御主机
-	HostIDs []*string `json:"HostIDs,omitempty" name:"HostIDs"`
+	HostIDs []*string `json:"HostIDs,omitnil" name:"HostIDs"`
 
 	// 漏洞防御超级节点范围:0：自选 1: 全部
-	SuperScope *int64 `json:"SuperScope,omitempty" name:"SuperScope"`
+	SuperScope *int64 `json:"SuperScope,omitnil" name:"SuperScope"`
 
 	// 超级节点Id列表
-	NodeIds []*string `json:"NodeIds,omitempty" name:"NodeIds"`
+	NodeIds []*string `json:"NodeIds,omitnil" name:"NodeIds"`
 }
 
 type ModifyVulDefenceSettingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 是否开启:0: 关闭 1:开启
-	IsEnabled *int64 `json:"IsEnabled,omitempty" name:"IsEnabled"`
+	IsEnabled *int64 `json:"IsEnabled,omitnil" name:"IsEnabled"`
 
 	// 漏洞防御主机范围:0：自选 1: 全部主机
-	Scope *int64 `json:"Scope,omitempty" name:"Scope"`
+	Scope *int64 `json:"Scope,omitnil" name:"Scope"`
 
 	// 自选漏洞防御主机
-	HostIDs []*string `json:"HostIDs,omitempty" name:"HostIDs"`
+	HostIDs []*string `json:"HostIDs,omitnil" name:"HostIDs"`
 
 	// 漏洞防御超级节点范围:0：自选 1: 全部
-	SuperScope *int64 `json:"SuperScope,omitempty" name:"SuperScope"`
+	SuperScope *int64 `json:"SuperScope,omitnil" name:"SuperScope"`
 
 	// 超级节点Id列表
-	NodeIds []*string `json:"NodeIds,omitempty" name:"NodeIds"`
+	NodeIds []*string `json:"NodeIds,omitnil" name:"NodeIds"`
 }
 
 func (r *ModifyVulDefenceSettingRequest) ToJsonString() string {
@@ -28693,7 +28693,7 @@ func (r *ModifyVulDefenceSettingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVulDefenceSettingResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyVulDefenceSettingResponse struct {
@@ -28714,121 +28714,121 @@ func (r *ModifyVulDefenceSettingResponse) FromJsonString(s string) error {
 
 type NetworkAuditRecord struct {
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 集群名字
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 集群区域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 动作
-	Action *string `json:"Action,omitempty" name:"Action"`
+	Action *string `json:"Action,omitnil" name:"Action"`
 
 	// 操作人
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 策略名
-	NetworkPolicyName *string `json:"NetworkPolicyName,omitempty" name:"NetworkPolicyName"`
+	NetworkPolicyName *string `json:"NetworkPolicyName,omitnil" name:"NetworkPolicyName"`
 
 	// 操作时间
-	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
+	OperationTime *string `json:"OperationTime,omitnil" name:"OperationTime"`
 
 	// 操作人appid
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+	AppId *int64 `json:"AppId,omitnil" name:"AppId"`
 
 	// 操作人uin
-	Uin *string `json:"Uin,omitempty" name:"Uin"`
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
 
 	// 策略id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PolicyId *uint64 `json:"PolicyId,omitempty" name:"PolicyId"`
+	PolicyId *uint64 `json:"PolicyId,omitnil" name:"PolicyId"`
 }
 
 type NetworkClusterInfoItem struct {
 	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 集群名字
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 集群版本
-	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
+	ClusterVersion *string `json:"ClusterVersion,omitnil" name:"ClusterVersion"`
 
 	// 集群操作系统
-	ClusterOs *string `json:"ClusterOs,omitempty" name:"ClusterOs"`
+	ClusterOs *string `json:"ClusterOs,omitnil" name:"ClusterOs"`
 
 	// 集群类型
-	ClusterType *string `json:"ClusterType,omitempty" name:"ClusterType"`
+	ClusterType *string `json:"ClusterType,omitnil" name:"ClusterType"`
 
 	// 集群区域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 集群网络插件
-	NetworkPolicyPlugin *string `json:"NetworkPolicyPlugin,omitempty" name:"NetworkPolicyPlugin"`
+	NetworkPolicyPlugin *string `json:"NetworkPolicyPlugin,omitnil" name:"NetworkPolicyPlugin"`
 
 	// 集群状态
-	ClusterStatus *string `json:"ClusterStatus,omitempty" name:"ClusterStatus"`
+	ClusterStatus *string `json:"ClusterStatus,omitnil" name:"ClusterStatus"`
 
 	// 总策略数量
-	TotalRuleCount *int64 `json:"TotalRuleCount,omitempty" name:"TotalRuleCount"`
+	TotalRuleCount *int64 `json:"TotalRuleCount,omitnil" name:"TotalRuleCount"`
 
 	// 已开启策略数量
-	EnableRuleCount *int64 `json:"EnableRuleCount,omitempty" name:"EnableRuleCount"`
+	EnableRuleCount *int64 `json:"EnableRuleCount,omitnil" name:"EnableRuleCount"`
 
 	// 集群网络插件状态，正常：Running 不正常：Error
-	NetworkPolicyPluginStatus *string `json:"NetworkPolicyPluginStatus,omitempty" name:"NetworkPolicyPluginStatus"`
+	NetworkPolicyPluginStatus *string `json:"NetworkPolicyPluginStatus,omitnil" name:"NetworkPolicyPluginStatus"`
 
 	// 集群网络插件错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NetworkPolicyPluginError *string `json:"NetworkPolicyPluginError,omitempty" name:"NetworkPolicyPluginError"`
+	NetworkPolicyPluginError *string `json:"NetworkPolicyPluginError,omitnil" name:"NetworkPolicyPluginError"`
 
 	// 容器网络插件
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterNetworkSettings *string `json:"ClusterNetworkSettings,omitempty" name:"ClusterNetworkSettings"`
+	ClusterNetworkSettings *string `json:"ClusterNetworkSettings,omitnil" name:"ClusterNetworkSettings"`
 }
 
 type NetworkClusterNamespaceInfo struct {
 	// 网络空间标签
-	Labels *string `json:"Labels,omitempty" name:"Labels"`
+	Labels *string `json:"Labels,omitnil" name:"Labels"`
 
 	// 网络空间名字
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 type NetworkClusterNamespaceLabelInfo struct {
 	// 网络空间标签
-	Labels *string `json:"Labels,omitempty" name:"Labels"`
+	Labels *string `json:"Labels,omitnil" name:"Labels"`
 
 	// 网络空间名字
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 type NetworkClusterPodInfo struct {
 	// pod名字
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// pod空间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// pod标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Labels *string `json:"Labels,omitempty" name:"Labels"`
+	Labels *string `json:"Labels,omitnil" name:"Labels"`
 
 	// pod类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WorkloadKind *string `json:"WorkloadKind,omitempty" name:"WorkloadKind"`
+	WorkloadKind *string `json:"WorkloadKind,omitnil" name:"WorkloadKind"`
 }
 
 type NetworkCustomPolicy struct {
 	// 网络策略方向，分为FROM和TO
-	Direction *string `json:"Direction,omitempty" name:"Direction"`
+	Direction *string `json:"Direction,omitnil" name:"Direction"`
 
 	// 网络策略策略端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Ports []*NetworkPorts `json:"Ports,omitempty" name:"Ports"`
+	Ports []*NetworkPorts `json:"Ports,omitnil" name:"Ports"`
 
 	// 网络策略策略对象
 	// 
@@ -28842,7 +28842,7 @@ type NetworkCustomPolicy struct {
 	// 
 	// 待开启：unPublishEdit
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Peer []*NetworkPeer `json:"Peer,omitempty" name:"Peer"`
+	Peer []*NetworkPeer `json:"Peer,omitnil" name:"Peer"`
 }
 
 type NetworkPeer struct {
@@ -28853,28 +28853,28 @@ type NetworkPeer struct {
 	// pod类型：PodSelector，代表NamespaceSelector和PodSelector都有值
 	// 
 	// ip类型：IPBlock，代表只有IPBlock有值
-	PeerType *string `json:"PeerType,omitempty" name:"PeerType"`
+	PeerType *string `json:"PeerType,omitnil" name:"PeerType"`
 
 	// 空间选择器
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NamespaceSelector *string `json:"NamespaceSelector,omitempty" name:"NamespaceSelector"`
+	NamespaceSelector *string `json:"NamespaceSelector,omitnil" name:"NamespaceSelector"`
 
 	// pod选择器
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PodSelector *string `json:"PodSelector,omitempty" name:"PodSelector"`
+	PodSelector *string `json:"PodSelector,omitnil" name:"PodSelector"`
 
 	// Ip选择器
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IPBlock *string `json:"IPBlock,omitempty" name:"IPBlock"`
+	IPBlock *string `json:"IPBlock,omitnil" name:"IPBlock"`
 }
 
 type NetworkPolicyInfoItem struct {
 	// 网络策略名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 网络策略描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 发布状态：
 	// 
@@ -28887,31 +28887,31 @@ type NetworkPolicyInfoItem struct {
 	// 开启中：Publishing
 	// 
 	// 待开启：unPublishEdit
-	PublishStatus *string `json:"PublishStatus,omitempty" name:"PublishStatus"`
+	PublishStatus *string `json:"PublishStatus,omitnil" name:"PublishStatus"`
 
 	// 策略类型：
 	// 
 	// 自动发现：System
 	// 
 	// 手动添加：Manual
-	PolicySourceType *string `json:"PolicySourceType,omitempty" name:"PolicySourceType"`
+	PolicySourceType *string `json:"PolicySourceType,omitnil" name:"PolicySourceType"`
 
 	// 策略空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 策略创建日期
-	PolicyCreateTime *string `json:"PolicyCreateTime,omitempty" name:"PolicyCreateTime"`
+	PolicyCreateTime *string `json:"PolicyCreateTime,omitnil" name:"PolicyCreateTime"`
 
 	// 策略类型
 	// 
 	// kube-router：KubeRouter
 	// 
 	// cilium：Cilium
-	NetworkPolicyPlugin *string `json:"NetworkPolicyPlugin,omitempty" name:"NetworkPolicyPlugin"`
+	NetworkPolicyPlugin *string `json:"NetworkPolicyPlugin,omitnil" name:"NetworkPolicyPlugin"`
 
 	// 策略发布结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublishResult *string `json:"PublishResult,omitempty" name:"PublishResult"`
+	PublishResult *string `json:"PublishResult,omitnil" name:"PublishResult"`
 
 	// 入站规则
 	// 
@@ -28920,7 +28920,7 @@ type NetworkPolicyInfoItem struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	FromPolicyRule *int64 `json:"FromPolicyRule,omitempty" name:"FromPolicyRule"`
+	FromPolicyRule *int64 `json:"FromPolicyRule,omitnil" name:"FromPolicyRule"`
 
 	// 入站规则
 	// 
@@ -28929,24 +28929,24 @@ type NetworkPolicyInfoItem struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	ToPolicyRule *int64 `json:"ToPolicyRule,omitempty" name:"ToPolicyRule"`
+	ToPolicyRule *int64 `json:"ToPolicyRule,omitnil" name:"ToPolicyRule"`
 
 	// 作用对象
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PodSelector *string `json:"PodSelector,omitempty" name:"PodSelector"`
+	PodSelector *string `json:"PodSelector,omitnil" name:"PodSelector"`
 
 	// 网络策略Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type NetworkPorts struct {
 	// 网络策略协议
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 网络策略策略端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Port *string `json:"Port,omitempty" name:"Port"`
+	Port *string `json:"Port,omitnil" name:"Port"`
 }
 
 // Predefined struct for user
@@ -28981,13 +28981,13 @@ func (r *OpenTcssTrialRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type OpenTcssTrialResponseParams struct {
 	// 试用开通结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 试用开通开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type OpenTcssTrialResponse struct {
@@ -29008,252 +29008,252 @@ func (r *OpenTcssTrialResponse) FromJsonString(s string) error {
 
 type PortInfo struct {
 	// 类型
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 对外ip
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 主机端口
-	PublicPort *uint64 `json:"PublicPort,omitempty" name:"PublicPort"`
+	PublicPort *uint64 `json:"PublicPort,omitnil" name:"PublicPort"`
 
 	// 容器端口
-	ContainerPort *uint64 `json:"ContainerPort,omitempty" name:"ContainerPort"`
+	ContainerPort *uint64 `json:"ContainerPort,omitnil" name:"ContainerPort"`
 
 	// 容器Pid
-	ContainerPID *uint64 `json:"ContainerPID,omitempty" name:"ContainerPID"`
+	ContainerPID *uint64 `json:"ContainerPID,omitnil" name:"ContainerPID"`
 
 	// 容器名
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 主机id
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 主机ip
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 进程名称
-	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
 
 	// 容器内监听地址
-	ListenContainer *string `json:"ListenContainer,omitempty" name:"ListenContainer"`
+	ListenContainer *string `json:"ListenContainer,omitnil" name:"ListenContainer"`
 
 	// 容器外监听地址
-	ListenHost *string `json:"ListenHost,omitempty" name:"ListenHost"`
+	ListenHost *string `json:"ListenHost,omitnil" name:"ListenHost"`
 
 	// 运行账号
-	RunAs *string `json:"RunAs,omitempty" name:"RunAs"`
+	RunAs *string `json:"RunAs,omitnil" name:"RunAs"`
 
 	// 主机名称
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 外网ip
-	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+	PublicIp *string `json:"PublicIp,omitnil" name:"PublicIp"`
 
 	// 节点id
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// podip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// pod名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// 节点类型
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 超级节点唯一id
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 }
 
 type ProcessBaseInfo struct {
 	// 进程启动用户
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessStartUser *string `json:"ProcessStartUser,omitempty" name:"ProcessStartUser"`
+	ProcessStartUser *string `json:"ProcessStartUser,omitnil" name:"ProcessStartUser"`
 
 	// 进程用户组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessUserGroup *string `json:"ProcessUserGroup,omitempty" name:"ProcessUserGroup"`
+	ProcessUserGroup *string `json:"ProcessUserGroup,omitnil" name:"ProcessUserGroup"`
 
 	// 进程路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+	ProcessPath *string `json:"ProcessPath,omitnil" name:"ProcessPath"`
 
 	// 进程命令行参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessParam *string `json:"ProcessParam,omitempty" name:"ProcessParam"`
+	ProcessParam *string `json:"ProcessParam,omitnil" name:"ProcessParam"`
 }
 
 type ProcessDetailBaseInfo struct {
 	// 进程名称
-	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
 
 	// 进程pid
-	ProcessId *uint64 `json:"ProcessId,omitempty" name:"ProcessId"`
+	ProcessId *uint64 `json:"ProcessId,omitnil" name:"ProcessId"`
 
 	// 进程启动用户
-	ProcessStartUser *string `json:"ProcessStartUser,omitempty" name:"ProcessStartUser"`
+	ProcessStartUser *string `json:"ProcessStartUser,omitnil" name:"ProcessStartUser"`
 
 	// 进程用户组
-	ProcessUserGroup *string `json:"ProcessUserGroup,omitempty" name:"ProcessUserGroup"`
+	ProcessUserGroup *string `json:"ProcessUserGroup,omitnil" name:"ProcessUserGroup"`
 
 	// 进程路径
-	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+	ProcessPath *string `json:"ProcessPath,omitnil" name:"ProcessPath"`
 
 	// 进程命令行参数
-	ProcessParam *string `json:"ProcessParam,omitempty" name:"ProcessParam"`
+	ProcessParam *string `json:"ProcessParam,omitnil" name:"ProcessParam"`
 }
 
 type ProcessDetailInfo struct {
 	// 进程名称
-	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
 
 	// 进程权限
-	ProcessAuthority *string `json:"ProcessAuthority,omitempty" name:"ProcessAuthority"`
+	ProcessAuthority *string `json:"ProcessAuthority,omitnil" name:"ProcessAuthority"`
 
 	// 进程pid
-	ProcessId *uint64 `json:"ProcessId,omitempty" name:"ProcessId"`
+	ProcessId *uint64 `json:"ProcessId,omitnil" name:"ProcessId"`
 
 	// 进程启动用户
-	ProcessStartUser *string `json:"ProcessStartUser,omitempty" name:"ProcessStartUser"`
+	ProcessStartUser *string `json:"ProcessStartUser,omitnil" name:"ProcessStartUser"`
 
 	// 进程用户组
-	ProcessUserGroup *string `json:"ProcessUserGroup,omitempty" name:"ProcessUserGroup"`
+	ProcessUserGroup *string `json:"ProcessUserGroup,omitnil" name:"ProcessUserGroup"`
 
 	// 进程路径
-	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+	ProcessPath *string `json:"ProcessPath,omitnil" name:"ProcessPath"`
 
 	// 进程树
-	ProcessTree *string `json:"ProcessTree,omitempty" name:"ProcessTree"`
+	ProcessTree *string `json:"ProcessTree,omitnil" name:"ProcessTree"`
 
 	// 进程md5
-	ProcessMd5 *string `json:"ProcessMd5,omitempty" name:"ProcessMd5"`
+	ProcessMd5 *string `json:"ProcessMd5,omitnil" name:"ProcessMd5"`
 
 	// 进程命令行参数
-	ProcessParam *string `json:"ProcessParam,omitempty" name:"ProcessParam"`
+	ProcessParam *string `json:"ProcessParam,omitnil" name:"ProcessParam"`
 }
 
 type ProcessInfo struct {
 	// 进程启动时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 运行用户
-	RunAs *string `json:"RunAs,omitempty" name:"RunAs"`
+	RunAs *string `json:"RunAs,omitnil" name:"RunAs"`
 
 	// 命令行参数
-	CmdLine *string `json:"CmdLine,omitempty" name:"CmdLine"`
+	CmdLine *string `json:"CmdLine,omitnil" name:"CmdLine"`
 
 	// Exe路径
-	Exe *string `json:"Exe,omitempty" name:"Exe"`
+	Exe *string `json:"Exe,omitnil" name:"Exe"`
 
 	// 主机PID
-	PID *uint64 `json:"PID,omitempty" name:"PID"`
+	PID *uint64 `json:"PID,omitnil" name:"PID"`
 
 	// 容器内pid
-	ContainerPID *uint64 `json:"ContainerPID,omitempty" name:"ContainerPID"`
+	ContainerPID *uint64 `json:"ContainerPID,omitnil" name:"ContainerPID"`
 
 	// 容器名称
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 主机id
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 主机ip
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 进程名称
-	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
 
 	// 主机名称
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 外网ip
-	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+	PublicIp *string `json:"PublicIp,omitnil" name:"PublicIp"`
 
 	// 节点id
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// podip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// pod名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// 节点类型
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 超级节点唯一id
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 }
 
 type ProjectInfo struct {
 	// 项目名称
-	ProjectName *string `json:"ProjectName,omitempty" name:"ProjectName"`
+	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
 
 	// 项目ID
-	ProjectID *int64 `json:"ProjectID,omitempty" name:"ProjectID"`
+	ProjectID *int64 `json:"ProjectID,omitnil" name:"ProjectID"`
 }
 
 type PromotionActivityContent struct {
 	// 月数
-	MonthNum *uint64 `json:"MonthNum,omitempty" name:"MonthNum"`
+	MonthNum *uint64 `json:"MonthNum,omitnil" name:"MonthNum"`
 
 	// 核数最低限量
-	CoresCountLimit *uint64 `json:"CoresCountLimit,omitempty" name:"CoresCountLimit"`
+	CoresCountLimit *uint64 `json:"CoresCountLimit,omitnil" name:"CoresCountLimit"`
 
 	// 专业版折扣
-	ProfessionalDiscount *uint64 `json:"ProfessionalDiscount,omitempty" name:"ProfessionalDiscount"`
+	ProfessionalDiscount *uint64 `json:"ProfessionalDiscount,omitnil" name:"ProfessionalDiscount"`
 
 	// 附赠镜像数
-	ImageAuthorizationNum *uint64 `json:"ImageAuthorizationNum,omitempty" name:"ImageAuthorizationNum"`
+	ImageAuthorizationNum *uint64 `json:"ImageAuthorizationNum,omitnil" name:"ImageAuthorizationNum"`
 }
 
 type RaspInfo struct {
 	// rasp名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// rasp  描述
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type RegionInfo struct {
 	// 地域标识
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 地域名称
-	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+	RegionName *string `json:"RegionName,omitnil" name:"RegionName"`
 }
 
 type RegistryConnDetectResult struct {
 	// 联通性检测的主机quuid 或者 backend
-	Quuid *string `json:"Quuid,omitempty" name:"Quuid"`
+	Quuid *string `json:"Quuid,omitnil" name:"Quuid"`
 
 	// 联通性检测的主机uuid 或者 backend
-	Uuid *string `json:"Uuid,omitempty" name:"Uuid"`
+	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
 
 	// 检测结果状态
-	ConnDetectStatus *string `json:"ConnDetectStatus,omitempty" name:"ConnDetectStatus"`
+	ConnDetectStatus *string `json:"ConnDetectStatus,omitnil" name:"ConnDetectStatus"`
 
 	// 检测结果信息
-	ConnDetectMessage *string `json:"ConnDetectMessage,omitempty" name:"ConnDetectMessage"`
+	ConnDetectMessage *string `json:"ConnDetectMessage,omitnil" name:"ConnDetectMessage"`
 
 	// 失败的解决方案
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 失败原因
-	FailReason *string `json:"FailReason,omitempty" name:"FailReason"`
+	FailReason *string `json:"FailReason,omitnil" name:"FailReason"`
 }
 
 // Predefined struct for user
 type RemoveAssetImageRegistryRegistryDetailRequestParams struct {
 	// 仓库唯一id
-	RegistryId *int64 `json:"RegistryId,omitempty" name:"RegistryId"`
+	RegistryId *int64 `json:"RegistryId,omitnil" name:"RegistryId"`
 }
 
 type RemoveAssetImageRegistryRegistryDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 仓库唯一id
-	RegistryId *int64 `json:"RegistryId,omitempty" name:"RegistryId"`
+	RegistryId *int64 `json:"RegistryId,omitnil" name:"RegistryId"`
 }
 
 func (r *RemoveAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -29278,7 +29278,7 @@ func (r *RemoveAssetImageRegistryRegistryDetailRequest) FromJsonString(s string)
 // Predefined struct for user
 type RemoveAssetImageRegistryRegistryDetailResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RemoveAssetImageRegistryRegistryDetailResponse struct {
@@ -29300,20 +29300,20 @@ func (r *RemoveAssetImageRegistryRegistryDetailResponse) FromJsonString(s string
 // Predefined struct for user
 type RenewImageAuthorizeStateRequestParams struct {
 	// 是否全部未授权镜像
-	AllImages *bool `json:"AllImages,omitempty" name:"AllImages"`
+	AllImages *bool `json:"AllImages,omitnil" name:"AllImages"`
 
 	// 镜像ids
-	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds"`
+	ImageIds []*string `json:"ImageIds,omitnil" name:"ImageIds"`
 }
 
 type RenewImageAuthorizeStateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 是否全部未授权镜像
-	AllImages *bool `json:"AllImages,omitempty" name:"AllImages"`
+	AllImages *bool `json:"AllImages,omitnil" name:"AllImages"`
 
 	// 镜像ids
-	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds"`
+	ImageIds []*string `json:"ImageIds,omitnil" name:"ImageIds"`
 }
 
 func (r *RenewImageAuthorizeStateRequest) ToJsonString() string {
@@ -29339,7 +29339,7 @@ func (r *RenewImageAuthorizeStateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RenewImageAuthorizeStateResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RenewImageAuthorizeStateResponse struct {
@@ -29361,20 +29361,20 @@ func (r *RenewImageAuthorizeStateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ResetSecLogTopicConfigRequestParams struct {
 	// 配置类型(ckafka/cls)
-	ConfigType *string `json:"ConfigType,omitempty" name:"ConfigType"`
+	ConfigType *string `json:"ConfigType,omitnil" name:"ConfigType"`
 
 	// 日志类型
-	LogType *string `json:"LogType,omitempty" name:"LogType"`
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
 }
 
 type ResetSecLogTopicConfigRequest struct {
 	*tchttp.BaseRequest
 	
 	// 配置类型(ckafka/cls)
-	ConfigType *string `json:"ConfigType,omitempty" name:"ConfigType"`
+	ConfigType *string `json:"ConfigType,omitnil" name:"ConfigType"`
 
 	// 日志类型
-	LogType *string `json:"LogType,omitempty" name:"LogType"`
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
 }
 
 func (r *ResetSecLogTopicConfigRequest) ToJsonString() string {
@@ -29400,7 +29400,7 @@ func (r *ResetSecLogTopicConfigRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ResetSecLogTopicConfigResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ResetSecLogTopicConfigResponse struct {
@@ -29421,74 +29421,74 @@ func (r *ResetSecLogTopicConfigResponse) FromJsonString(s string) error {
 
 type ReverseShellEventDescription struct {
 	// 描述信息
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 解决方案
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 事件备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 目标地址
-	DstAddress *string `json:"DstAddress,omitempty" name:"DstAddress"`
+	DstAddress *string `json:"DstAddress,omitnil" name:"DstAddress"`
 
 	// 事件最后一次处理的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
+	OperationTime *string `json:"OperationTime,omitnil" name:"OperationTime"`
 }
 
 type ReverseShellEventInfo struct {
 	// 进程名称
-	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
 
 	// 进程路径
-	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+	ProcessPath *string `json:"ProcessPath,omitnil" name:"ProcessPath"`
 
 	// 镜像id
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 容器id
-	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
 
 	// 镜像名
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 容器名
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 生成时间
-	FoundTime *string `json:"FoundTime,omitempty" name:"FoundTime"`
+	FoundTime *string `json:"FoundTime,omitnil" name:"FoundTime"`
 
 	// 事件解决方案
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 事件详细描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 状态，EVENT_UNDEAL:事件未处理
 	//     EVENT_DEALED:事件已经处理
 	//     EVENT_INGNORE：事件已经忽略
 	//     EVENT_ADD_WHITE：时间已经加白
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 父进程名
-	PProcessName *string `json:"PProcessName,omitempty" name:"PProcessName"`
+	PProcessName *string `json:"PProcessName,omitnil" name:"PProcessName"`
 
 	// 事件数量
-	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+	EventCount *int64 `json:"EventCount,omitnil" name:"EventCount"`
 
 	// 最近生成时间
-	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+	LatestFoundTime *string `json:"LatestFoundTime,omitnil" name:"LatestFoundTime"`
 
 	// 目标地址
-	DstAddress *string `json:"DstAddress,omitempty" name:"DstAddress"`
+	DstAddress *string `json:"DstAddress,omitnil" name:"DstAddress"`
 
 	// 网络状态
 	// 未隔离  	NORMAL
@@ -29497,7 +29497,7 @@ type ReverseShellEventInfo struct {
 	// 隔离失败	ISOLATE_FAILED
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
-	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil" name:"ContainerNetStatus"`
 
 	// 容器子状态
 	// "AGENT_OFFLINE"       //Agent离线
@@ -29507,10 +29507,10 @@ type ReverseShellEventInfo struct {
 	// 	"SHARED_HOST"         // 容器与主机共享网络
 	// 	"RESOURCE_LIMIT"      //隔离操作资源超限
 	// 	"UNKNOW"              // 原因未知
-	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
-	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil" name:"ContainerIsolateOperationSrc"`
 
 	// 容器状态
 	// 正在运行: RUNNING
@@ -29520,70 +29520,70 @@ type ReverseShellEventInfo struct {
 	// 已经销毁: DESTROYED
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
-	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+	ContainerStatus *string `json:"ContainerStatus,omitnil" name:"ContainerStatus"`
 }
 
 type ReverseShellWhiteListBaseInfo struct {
 	// 白名单id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 
 	// 镜像数量
-	ImageCount *uint64 `json:"ImageCount,omitempty" name:"ImageCount"`
+	ImageCount *uint64 `json:"ImageCount,omitnil" name:"ImageCount"`
 
 	// 连接进程名字
-	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
 
 	// 目标地址ip
-	DstIp *string `json:"DstIp,omitempty" name:"DstIp"`
+	DstIp *string `json:"DstIp,omitnil" name:"DstIp"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 目标端口
-	DstPort *string `json:"DstPort,omitempty" name:"DstPort"`
+	DstPort *string `json:"DstPort,omitnil" name:"DstPort"`
 
 	// 是否是全局白名单，true全局
-	IsGlobal *bool `json:"IsGlobal,omitempty" name:"IsGlobal"`
+	IsGlobal *bool `json:"IsGlobal,omitnil" name:"IsGlobal"`
 
 	// 镜像id数组，为空代表全部
-	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds"`
+	ImageIds []*string `json:"ImageIds,omitnil" name:"ImageIds"`
 }
 
 type ReverseShellWhiteListInfo struct {
 	// 目标IP
-	DstIp *string `json:"DstIp,omitempty" name:"DstIp"`
+	DstIp *string `json:"DstIp,omitnil" name:"DstIp"`
 
 	// 目标端口
-	DstPort *string `json:"DstPort,omitempty" name:"DstPort"`
+	DstPort *string `json:"DstPort,omitnil" name:"DstPort"`
 
 	// 目标进程
-	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
 
 	// 镜像id数组，为空代表全部
-	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds"`
+	ImageIds []*string `json:"ImageIds,omitnil" name:"ImageIds"`
 
 	// 白名单id，如果新建则id为空
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 }
 
 type RiskDnsEventInfo struct {
 	// 事件ID
-	EventID *uint64 `json:"EventID,omitempty" name:"EventID"`
+	EventID *uint64 `json:"EventID,omitnil" name:"EventID"`
 
 	// 事件类型，恶意域名请求：DOMAIN，恶意IP请求：IP
-	EventType *string `json:"EventType,omitempty" name:"EventType"`
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
 
 	// 恶意请求域名/IP
-	Address *string `json:"Address,omitempty" name:"Address"`
+	Address *string `json:"Address,omitnil" name:"Address"`
 
 	// 容器ID
-	ContainerID *string `json:"ContainerID,omitempty" name:"ContainerID"`
+	ContainerID *string `json:"ContainerID,omitnil" name:"ContainerID"`
 
 	// 容器名称
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 隔离状态
 	// 未隔离  	NORMAL
@@ -29592,7 +29592,7 @@ type RiskDnsEventInfo struct {
 	// 隔离失败	ISOLATE_FAILED
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
-	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil" name:"ContainerNetStatus"`
 
 	// 容器状态
 	// 正在运行: RUNNING
@@ -29602,7 +29602,7 @@ type RiskDnsEventInfo struct {
 	// 已经销毁: DESTROYED
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
-	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+	ContainerStatus *string `json:"ContainerStatus,omitnil" name:"ContainerStatus"`
 
 	// 容器子状态
 	// "AGENT_OFFLINE"       //Agent离线
@@ -29612,155 +29612,155 @@ type RiskDnsEventInfo struct {
 	// "SHARED_HOST"         // 容器与主机共享网络
 	// "RESOURCE_LIMIT"      //隔离操作资源超限
 	// "UNKNOW"              // 原因未知
-	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
-	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil" name:"ContainerIsolateOperationSrc"`
 
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 首次发现时间
-	FoundTime *string `json:"FoundTime,omitempty" name:"FoundTime"`
+	FoundTime *string `json:"FoundTime,omitnil" name:"FoundTime"`
 
 	// 最近生成时间
-	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+	LatestFoundTime *string `json:"LatestFoundTime,omitnil" name:"LatestFoundTime"`
 
 	// 事件状态
 	// EVENT_UNDEAL： 待处理
 	// EVENT_DEALED：已处理
 	// EVENT_IGNORE： 已忽略
 	// EVENT_ADD_WHITE：已加白
-	EventStatus *string `json:"EventStatus,omitempty" name:"EventStatus"`
+	EventStatus *string `json:"EventStatus,omitnil" name:"EventStatus"`
 
 	// 恶意请求次数
-	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+	EventCount *int64 `json:"EventCount,omitnil" name:"EventCount"`
 
 	// 事件描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 解决方案
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 恶意IP所属城市
-	City *string `json:"City,omitempty" name:"City"`
+	City *string `json:"City,omitnil" name:"City"`
 
 	// 主机名称
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 主机ID
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 内网IP
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 外网IP
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 节点类型：NORMAL普通节点、SUPER超级节点
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 节点名称
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 
 	// pod ip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// pod 名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// 集群ID
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 节点id
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// 节点唯一id
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 }
 
 type RiskSyscallEventDescription struct {
 	// 描述信息
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 解决方案
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 事件备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 系统调用名称
-	SyscallName *string `json:"SyscallName,omitempty" name:"SyscallName"`
+	SyscallName *string `json:"SyscallName,omitnil" name:"SyscallName"`
 
 	// 事件最后一次处理的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperationTime *string `json:"OperationTime,omitempty" name:"OperationTime"`
+	OperationTime *string `json:"OperationTime,omitnil" name:"OperationTime"`
 }
 
 type RiskSyscallEventInfo struct {
 	// 进程名称
-	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
 
 	// 进程路径
-	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+	ProcessPath *string `json:"ProcessPath,omitnil" name:"ProcessPath"`
 
 	// 镜像id
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 容器id
-	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
 
 	// 镜像名
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 容器名
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 生成时间
-	FoundTime *string `json:"FoundTime,omitempty" name:"FoundTime"`
+	FoundTime *string `json:"FoundTime,omitnil" name:"FoundTime"`
 
 	// 事件解决方案
-	Solution *string `json:"Solution,omitempty" name:"Solution"`
+	Solution *string `json:"Solution,omitnil" name:"Solution"`
 
 	// 事件详细描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 系统调用名称
-	SyscallName *string `json:"SyscallName,omitempty" name:"SyscallName"`
+	SyscallName *string `json:"SyscallName,omitnil" name:"SyscallName"`
 
 	// 状态，EVENT_UNDEAL:事件未处理
 	//     EVENT_DEALED:事件已经处理
 	//     EVENT_INGNORE：事件已经忽略
 	//     EVENT_ADD_WHITE：时间已经加白
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 
 	// 节点名称
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 
 	// pod(实例)的名字
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 系统监控名称是否存在
-	RuleExist *bool `json:"RuleExist,omitempty" name:"RuleExist"`
+	RuleExist *bool `json:"RuleExist,omitnil" name:"RuleExist"`
 
 	// 事件数量
-	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+	EventCount *int64 `json:"EventCount,omitnil" name:"EventCount"`
 
 	// 最近生成时间
-	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+	LatestFoundTime *string `json:"LatestFoundTime,omitnil" name:"LatestFoundTime"`
 
 	// 网络状态
 	// 未隔离  	NORMAL
@@ -29769,7 +29769,7 @@ type RiskSyscallEventInfo struct {
 	// 隔离失败	ISOLATE_FAILED
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
-	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil" name:"ContainerNetStatus"`
 
 	// 容器子状态
 	// "AGENT_OFFLINE"       //Agent离线
@@ -29779,10 +29779,10 @@ type RiskSyscallEventInfo struct {
 	// "SHARED_HOST"         // 容器与主机共享网络
 	// "RESOURCE_LIMIT"      //隔离操作资源超限
 	// "UNKNOW"              // 原因未知
-	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
-	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil" name:"ContainerIsolateOperationSrc"`
 
 	// 容器状态
 	// 正在运行: RUNNING
@@ -29792,126 +29792,126 @@ type RiskSyscallEventInfo struct {
 	// 已经销毁: DESTROYED
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
-	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+	ContainerStatus *string `json:"ContainerStatus,omitnil" name:"ContainerStatus"`
 
 	// 节点类型：NORMAL普通节点、SUPER超级节点
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 集群I'D
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// pod ip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// 节点唯一id
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 节点公网ip
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 节点id
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// uuid
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 节点内网ip
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 }
 
 type RiskSyscallWhiteListBaseInfo struct {
 	// 白名单id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 
 	// 镜像数量
-	ImageCount *uint64 `json:"ImageCount,omitempty" name:"ImageCount"`
+	ImageCount *uint64 `json:"ImageCount,omitnil" name:"ImageCount"`
 
 	// 连接进程路径
-	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+	ProcessPath *string `json:"ProcessPath,omitnil" name:"ProcessPath"`
 
 	// 系统调用名称列表
-	SyscallNames []*string `json:"SyscallNames,omitempty" name:"SyscallNames"`
+	SyscallNames []*string `json:"SyscallNames,omitnil" name:"SyscallNames"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 是否是全局白名单，true全局
-	IsGlobal *bool `json:"IsGlobal,omitempty" name:"IsGlobal"`
+	IsGlobal *bool `json:"IsGlobal,omitnil" name:"IsGlobal"`
 
 	// 镜像id数组
-	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds"`
+	ImageIds []*string `json:"ImageIds,omitnil" name:"ImageIds"`
 }
 
 type RiskSyscallWhiteListInfo struct {
 	// 镜像id数组，为空代表全部
-	ImageIds []*string `json:"ImageIds,omitempty" name:"ImageIds"`
+	ImageIds []*string `json:"ImageIds,omitnil" name:"ImageIds"`
 
 	// 系统调用名称，通过DescribeRiskSyscallNames接口获取枚举列表
-	SyscallNames []*string `json:"SyscallNames,omitempty" name:"SyscallNames"`
+	SyscallNames []*string `json:"SyscallNames,omitnil" name:"SyscallNames"`
 
 	// 目标进程
-	ProcessPath *string `json:"ProcessPath,omitempty" name:"ProcessPath"`
+	ProcessPath *string `json:"ProcessPath,omitnil" name:"ProcessPath"`
 
 	// 白名单id，如果新建则id为空
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 }
 
 type RuleBaseInfo struct {
 	// true: 默认策略，false:自定义策略
-	IsDefault *bool `json:"IsDefault,omitempty" name:"IsDefault"`
+	IsDefault *bool `json:"IsDefault,omitnil" name:"IsDefault"`
 
 	// 策略生效镜像数量
-	EffectImageCount *uint64 `json:"EffectImageCount,omitempty" name:"EffectImageCount"`
+	EffectImageCount *uint64 `json:"EffectImageCount,omitnil" name:"EffectImageCount"`
 
 	// 策略Id
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 策略更新时间, 存在为空的情况
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 策略名字
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 编辑用户名称
-	EditUserName *string `json:"EditUserName,omitempty" name:"EditUserName"`
+	EditUserName *string `json:"EditUserName,omitnil" name:"EditUserName"`
 
 	// true: 策略启用，false：策略禁用
-	IsEnable *bool `json:"IsEnable,omitempty" name:"IsEnable"`
+	IsEnable *bool `json:"IsEnable,omitnil" name:"IsEnable"`
 }
 
 type RunTimeEventBaseInfo struct {
 	// 事件唯一ID
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 
 	// 事件发现时间
-	FoundTime *string `json:"FoundTime,omitempty" name:"FoundTime"`
+	FoundTime *string `json:"FoundTime,omitnil" name:"FoundTime"`
 
 	// 容器id
-	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
 
 	// 容器名称
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 镜像id
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 节点名称
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 
 	// 状态， “EVENT_UNDEAL”:事件未处理
 	//     "EVENT_DEALED":事件已经处理
 	//     "EVENT_INGNORE"：事件已经忽略
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件名称：
 	// 宿主机文件访问逃逸、
@@ -29922,7 +29922,7 @@ type RunTimeEventBaseInfo struct {
 	// 敏感路径挂载
 	// 恶意进程启动
 	// 文件篡改
-	EventName *string `json:"EventName,omitempty" name:"EventName"`
+	EventName *string `json:"EventName,omitnil" name:"EventName"`
 
 	// 事件类型
 	//    ESCAPE_HOST_ACESS_FILE:宿主机文件访问逃逸
@@ -29931,21 +29931,21 @@ type RunTimeEventBaseInfo struct {
 	//    ESCAPE_PRIVILEDGE_CONTAINER_START:特权容器启动逃逸
 	//    ESCAPE_MOUNT_SENSITIVE_PTAH:敏感路径挂载
 	//    ESCAPE_SYSCALL:Syscall逃逸
-	EventType *string `json:"EventType,omitempty" name:"EventType"`
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
 
 	// 事件数量
-	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+	EventCount *int64 `json:"EventCount,omitnil" name:"EventCount"`
 
 	// 最近生成时间
-	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+	LatestFoundTime *string `json:"LatestFoundTime,omitnil" name:"LatestFoundTime"`
 
 	// 内网ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 外网ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClientIP *string `json:"ClientIP,omitempty" name:"ClientIP"`
+	ClientIP *string `json:"ClientIP,omitnil" name:"ClientIP"`
 
 	// 网络状态
 	// 未隔离  	NORMAL
@@ -29955,7 +29955,7 @@ type RunTimeEventBaseInfo struct {
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil" name:"ContainerNetStatus"`
 
 	// 容器子状态
 	// "AGENT_OFFLINE"       //Agent离线
@@ -29966,97 +29966,97 @@ type RunTimeEventBaseInfo struct {
 	// "RESOURCE_LIMIT"      //隔离操作资源超限
 	// "UNKNOW"              // 原因未知
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil" name:"ContainerIsolateOperationSrc"`
 
 	// 节点ID
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// 节点类型:NORMAL:普通节点;SUPER:超级节点
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 节点子网ID
-	NodeSubNetID *string `json:"NodeSubNetID,omitempty" name:"NodeSubNetID"`
+	NodeSubNetID *string `json:"NodeSubNetID,omitnil" name:"NodeSubNetID"`
 
 	// 节点子网名称
-	NodeSubNetName *string `json:"NodeSubNetName,omitempty" name:"NodeSubNetName"`
+	NodeSubNetName *string `json:"NodeSubNetName,omitnil" name:"NodeSubNetName"`
 
 	// 节点子网网段
-	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitempty" name:"NodeSubNetCIDR"`
+	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitnil" name:"NodeSubNetCIDR"`
 
 	// pod名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// podIP
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// pod状态
-	PodStatus *string `json:"PodStatus,omitempty" name:"PodStatus"`
+	PodStatus *string `json:"PodStatus,omitnil" name:"PodStatus"`
 
 	// 集群id
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 节点唯一id
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// uuid
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 }
 
 type RunTimeFilters struct {
 	// 过滤键的名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 一个或者多个过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values"`
+	Values []*string `json:"Values,omitnil" name:"Values"`
 
 	// 是否模糊查询
-	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
+	ExactMatch *bool `json:"ExactMatch,omitnil" name:"ExactMatch"`
 }
 
 type RunTimeRiskInfo struct {
 	// 数量
-	Cnt *uint64 `json:"Cnt,omitempty" name:"Cnt"`
+	Cnt *uint64 `json:"Cnt,omitnil" name:"Cnt"`
 
 	// 风险等级：
 	// CRITICAL: 严重
 	// HIGH: 高
 	// MEDIUM：中
 	// LOW: 低
-	Level *string `json:"Level,omitempty" name:"Level"`
+	Level *string `json:"Level,omitnil" name:"Level"`
 }
 
 type RunTimeTendencyInfo struct {
 	// 当天时间
-	CurTime *string `json:"CurTime,omitempty" name:"CurTime"`
+	CurTime *string `json:"CurTime,omitnil" name:"CurTime"`
 
 	// 当前数量
-	Cnt *uint64 `json:"Cnt,omitempty" name:"Cnt"`
+	Cnt *uint64 `json:"Cnt,omitnil" name:"Cnt"`
 }
 
 // Predefined struct for user
 type ScanComplianceAssetsByPolicyItemRequestParams struct {
 	// 指定的检测项的ID
-	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitnil" name:"CustomerPolicyItemId"`
 
 	// 要重新扫描的客户资产项ID的列表。
-	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitempty" name:"CustomerAssetIdSet"`
+	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitnil" name:"CustomerAssetIdSet"`
 }
 
 type ScanComplianceAssetsByPolicyItemRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定的检测项的ID
-	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitempty" name:"CustomerPolicyItemId"`
+	CustomerPolicyItemId *uint64 `json:"CustomerPolicyItemId,omitnil" name:"CustomerPolicyItemId"`
 
 	// 要重新扫描的客户资产项ID的列表。
-	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitempty" name:"CustomerAssetIdSet"`
+	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitnil" name:"CustomerAssetIdSet"`
 }
 
 func (r *ScanComplianceAssetsByPolicyItemRequest) ToJsonString() string {
@@ -30082,10 +30082,10 @@ func (r *ScanComplianceAssetsByPolicyItemRequest) FromJsonString(s string) error
 // Predefined struct for user
 type ScanComplianceAssetsByPolicyItemResponseParams struct {
 	// 返回重新检测任务的ID。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ScanComplianceAssetsByPolicyItemResponse struct {
@@ -30107,14 +30107,14 @@ func (r *ScanComplianceAssetsByPolicyItemResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type ScanComplianceAssetsRequestParams struct {
 	// 要重新扫描的客户资产项ID的列表。
-	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitempty" name:"CustomerAssetIdSet"`
+	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitnil" name:"CustomerAssetIdSet"`
 }
 
 type ScanComplianceAssetsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要重新扫描的客户资产项ID的列表。
-	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitempty" name:"CustomerAssetIdSet"`
+	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitnil" name:"CustomerAssetIdSet"`
 }
 
 func (r *ScanComplianceAssetsRequest) ToJsonString() string {
@@ -30139,10 +30139,10 @@ func (r *ScanComplianceAssetsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ScanComplianceAssetsResponseParams struct {
 	// 返回重新检测任务的ID。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ScanComplianceAssetsResponse struct {
@@ -30164,14 +30164,14 @@ func (r *ScanComplianceAssetsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ScanCompliancePolicyItemsRequestParams struct {
 	// 要重新扫描的客户检测项的列表。
-	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitempty" name:"CustomerPolicyItemIdSet"`
+	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitnil" name:"CustomerPolicyItemIdSet"`
 }
 
 type ScanCompliancePolicyItemsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要重新扫描的客户检测项的列表。
-	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitempty" name:"CustomerPolicyItemIdSet"`
+	CustomerPolicyItemIdSet []*uint64 `json:"CustomerPolicyItemIdSet,omitnil" name:"CustomerPolicyItemIdSet"`
 }
 
 func (r *ScanCompliancePolicyItemsRequest) ToJsonString() string {
@@ -30196,10 +30196,10 @@ func (r *ScanCompliancePolicyItemsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ScanCompliancePolicyItemsResponseParams struct {
 	// 返回重新检测任务的ID。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ScanCompliancePolicyItemsResponse struct {
@@ -30221,14 +30221,14 @@ func (r *ScanCompliancePolicyItemsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ScanComplianceScanFailedAssetsRequestParams struct {
 	// 要重新扫描的客户资产项ID的列表。
-	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitempty" name:"CustomerAssetIdSet"`
+	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitnil" name:"CustomerAssetIdSet"`
 }
 
 type ScanComplianceScanFailedAssetsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要重新扫描的客户资产项ID的列表。
-	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitempty" name:"CustomerAssetIdSet"`
+	CustomerAssetIdSet []*uint64 `json:"CustomerAssetIdSet,omitnil" name:"CustomerAssetIdSet"`
 }
 
 func (r *ScanComplianceScanFailedAssetsRequest) ToJsonString() string {
@@ -30253,10 +30253,10 @@ func (r *ScanComplianceScanFailedAssetsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ScanComplianceScanFailedAssetsResponseParams struct {
 	// 返回重新检测任务的ID。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ScanComplianceScanFailedAssetsResponse struct {
@@ -30277,163 +30277,163 @@ func (r *ScanComplianceScanFailedAssetsResponse) FromJsonString(s string) error 
 
 type ScanIgnoreVul struct {
 	// 漏洞名称
-	VulName *string `json:"VulName,omitempty" name:"VulName"`
+	VulName *string `json:"VulName,omitnil" name:"VulName"`
 
 	// 漏洞CVEID
-	CVEID *string `json:"CVEID,omitempty" name:"CVEID"`
+	CVEID *string `json:"CVEID,omitnil" name:"CVEID"`
 
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 忽略的仓库镜像数
-	RegistryImageCount *int64 `json:"RegistryImageCount,omitempty" name:"RegistryImageCount"`
+	RegistryImageCount *int64 `json:"RegistryImageCount,omitnil" name:"RegistryImageCount"`
 
 	// 更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 是否忽略所有镜像：0：否/1：是
-	IsIgnoreAll *int64 `json:"IsIgnoreAll,omitempty" name:"IsIgnoreAll"`
+	IsIgnoreAll *int64 `json:"IsIgnoreAll,omitnil" name:"IsIgnoreAll"`
 
 	// 忽略的本地镜像数
-	LocalImageCount *int64 `json:"LocalImageCount,omitempty" name:"LocalImageCount"`
+	LocalImageCount *int64 `json:"LocalImageCount,omitnil" name:"LocalImageCount"`
 }
 
 type SearchTemplate struct {
 	// 检索名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 检索索引类型
-	LogType *string `json:"LogType,omitempty" name:"LogType"`
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// 检索语句
-	Condition *string `json:"Condition,omitempty" name:"Condition"`
+	Condition *string `json:"Condition,omitnil" name:"Condition"`
 
 	// 时间范围
-	TimeRange *string `json:"TimeRange,omitempty" name:"TimeRange"`
+	TimeRange *string `json:"TimeRange,omitnil" name:"TimeRange"`
 
 	// 转换的检索语句内容
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 检索方式。输入框检索：standard,过滤，检索：simple
-	Flag *string `json:"Flag,omitempty" name:"Flag"`
+	Flag *string `json:"Flag,omitnil" name:"Flag"`
 
 	// 展示数据
-	DisplayData *string `json:"DisplayData,omitempty" name:"DisplayData"`
+	DisplayData *string `json:"DisplayData,omitnil" name:"DisplayData"`
 
 	// 规则ID
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type SecLogAlertMsgInfo struct {
 	// 告警类型
-	MsgType *string `json:"MsgType,omitempty" name:"MsgType"`
+	MsgType *string `json:"MsgType,omitnil" name:"MsgType"`
 
 	// 告警值
-	MsgValue *string `json:"MsgValue,omitempty" name:"MsgValue"`
+	MsgValue *string `json:"MsgValue,omitnil" name:"MsgValue"`
 
 	// 状态(0:关闭 1:开启)
-	State *bool `json:"State,omitempty" name:"State"`
+	State *bool `json:"State,omitnil" name:"State"`
 }
 
 type SecLogDeliveryClsSettingInfo struct {
 	// 日志类型
-	LogType *string `json:"LogType,omitempty" name:"LogType"`
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// 投递状态(true:开启 false:关闭)
-	State *bool `json:"State,omitempty" name:"State"`
+	State *bool `json:"State,omitnil" name:"State"`
 
 	// 区域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 日志集
-	LogSet *string `json:"LogSet,omitempty" name:"LogSet"`
+	LogSet *string `json:"LogSet,omitnil" name:"LogSet"`
 
 	// 主题ID
-	TopicID *string `json:"TopicID,omitempty" name:"TopicID"`
+	TopicID *string `json:"TopicID,omitnil" name:"TopicID"`
 
 	// 日志集名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogSetName *string `json:"LogSetName,omitempty" name:"LogSetName"`
+	LogSetName *string `json:"LogSetName,omitnil" name:"LogSetName"`
 
 	// 主题名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 }
 
 type SecLogDeliveryKafkaSettingInfo struct {
 	// 日志类型
-	LogType *string `json:"LogType,omitempty" name:"LogType"`
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
 
 	// 主题ID
-	TopicID *string `json:"TopicID,omitempty" name:"TopicID"`
+	TopicID *string `json:"TopicID,omitnil" name:"TopicID"`
 
 	// 主题名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
 	// 投递状态(false:关 true:开)
-	State *bool `json:"State,omitempty" name:"State"`
+	State *bool `json:"State,omitnil" name:"State"`
 }
 
 type SecLogJoinInfo struct {
 	// 已接入普通主机数量
-	Count *uint64 `json:"Count,omitempty" name:"Count"`
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
 
 	// 已接入超级节点数量
-	SuperNodeCount *uint64 `json:"SuperNodeCount,omitempty" name:"SuperNodeCount"`
+	SuperNodeCount *uint64 `json:"SuperNodeCount,omitnil" name:"SuperNodeCount"`
 
 	// 是否已接入(true:已接入 false:未接入)
-	IsJoined *bool `json:"IsJoined,omitempty" name:"IsJoined"`
+	IsJoined *bool `json:"IsJoined,omitnil" name:"IsJoined"`
 
 	// 日志类型(
 	// 容器bash:  "container_bash"
 	// 容器启动: "container_launch"
 	// k8sApi: "k8s_api"
 	// )
-	LogType *string `json:"LogType,omitempty" name:"LogType"`
+	LogType *string `json:"LogType,omitnil" name:"LogType"`
 }
 
 type SecLogJoinObjectInfo struct {
 	// 主机ID
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 主机名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 主机IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 主机状态
-	HostStatus *string `json:"HostStatus,omitempty" name:"HostStatus"`
+	HostStatus *string `json:"HostStatus,omitnil" name:"HostStatus"`
 
 	// 集群ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 集群名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 外网IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 接入状态(true:已接入  false:未接入)
-	JoinState *bool `json:"JoinState,omitempty" name:"JoinState"`
+	JoinState *bool `json:"JoinState,omitnil" name:"JoinState"`
 
 	// 集群版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterVersion *string `json:"ClusterVersion,omitempty" name:"ClusterVersion"`
+	ClusterVersion *string `json:"ClusterVersion,omitnil" name:"ClusterVersion"`
 
 	// 集群主节点地址
-	ClusterMainAddress *string `json:"ClusterMainAddress,omitempty" name:"ClusterMainAddress"`
+	ClusterMainAddress *string `json:"ClusterMainAddress,omitnil" name:"ClusterMainAddress"`
 }
 
 type SecTendencyEventInfo struct {
 	// 趋势列表
-	EventSet []*RunTimeTendencyInfo `json:"EventSet,omitempty" name:"EventSet"`
+	EventSet []*RunTimeTendencyInfo `json:"EventSet,omitnil" name:"EventSet"`
 
 	// 事件类型：
 	// ET_ESCAPE : 容器逃逸
@@ -30443,112 +30443,112 @@ type SecTendencyEventInfo struct {
 	// ET_ACCESS_CONTROL 文件篡改
 	// ET_VIRUS 木马事件
 	// ET_MALICIOUS_CONNECTION 恶意外连事件
-	EventType *string `json:"EventType,omitempty" name:"EventType"`
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
 }
 
 type ServiceInfo struct {
 	// 服务id
-	ServiceID *string `json:"ServiceID,omitempty" name:"ServiceID"`
+	ServiceID *string `json:"ServiceID,omitnil" name:"ServiceID"`
 
 	// 主机id
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 主机ip
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 容器名
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 服务名 例如nginx/redis
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 版本
-	Version *string `json:"Version,omitempty" name:"Version"`
+	Version *string `json:"Version,omitnil" name:"Version"`
 
 	// 账号
-	RunAs *string `json:"RunAs,omitempty" name:"RunAs"`
+	RunAs *string `json:"RunAs,omitnil" name:"RunAs"`
 
 	// 监听端口
-	Listen []*string `json:"Listen,omitempty" name:"Listen"`
+	Listen []*string `json:"Listen,omitnil" name:"Listen"`
 
 	// 配置
-	Config *string `json:"Config,omitempty" name:"Config"`
+	Config *string `json:"Config,omitnil" name:"Config"`
 
 	// 关联进程数
-	ProcessCnt *uint64 `json:"ProcessCnt,omitempty" name:"ProcessCnt"`
+	ProcessCnt *uint64 `json:"ProcessCnt,omitnil" name:"ProcessCnt"`
 
 	// 访问日志
-	AccessLog *string `json:"AccessLog,omitempty" name:"AccessLog"`
+	AccessLog *string `json:"AccessLog,omitnil" name:"AccessLog"`
 
 	// 错误日志
-	ErrorLog *string `json:"ErrorLog,omitempty" name:"ErrorLog"`
+	ErrorLog *string `json:"ErrorLog,omitnil" name:"ErrorLog"`
 
 	// 数据目录
-	DataPath *string `json:"DataPath,omitempty" name:"DataPath"`
+	DataPath *string `json:"DataPath,omitnil" name:"DataPath"`
 
 	// web目录
-	WebRoot *string `json:"WebRoot,omitempty" name:"WebRoot"`
+	WebRoot *string `json:"WebRoot,omitnil" name:"WebRoot"`
 
 	// 关联的进程id
-	Pids []*uint64 `json:"Pids,omitempty" name:"Pids"`
+	Pids []*uint64 `json:"Pids,omitnil" name:"Pids"`
 
 	// 服务类型 app,web,db
-	MainType *string `json:"MainType,omitempty" name:"MainType"`
+	MainType *string `json:"MainType,omitnil" name:"MainType"`
 
 	// 执行文件
-	Exe *string `json:"Exe,omitempty" name:"Exe"`
+	Exe *string `json:"Exe,omitnil" name:"Exe"`
 
 	// 服务命令行参数
-	Parameter *string `json:"Parameter,omitempty" name:"Parameter"`
+	Parameter *string `json:"Parameter,omitnil" name:"Parameter"`
 
 	// 容器id
-	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
 
 	// 主机名称
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 外网ip
-	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+	PublicIp *string `json:"PublicIp,omitnil" name:"PublicIp"`
 
 	// 节点id
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// podip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// pod名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// 节点类型
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 超级节点唯一id
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 }
 
 // Predefined struct for user
 type SetCheckModeRequestParams struct {
 	// 要设置的集群ID列表
-	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+	ClusterIds []*string `json:"ClusterIds,omitnil" name:"ClusterIds"`
 
 	// 集群检查模式(正常模式"Cluster_Normal"、主动模式"Cluster_Actived"、不设置"Cluster_Unset")
-	ClusterCheckMode *string `json:"ClusterCheckMode,omitempty" name:"ClusterCheckMode"`
+	ClusterCheckMode *string `json:"ClusterCheckMode,omitnil" name:"ClusterCheckMode"`
 
 	// 0不设置 1打开 2关闭
-	ClusterAutoCheck *uint64 `json:"ClusterAutoCheck,omitempty" name:"ClusterAutoCheck"`
+	ClusterAutoCheck *uint64 `json:"ClusterAutoCheck,omitnil" name:"ClusterAutoCheck"`
 }
 
 type SetCheckModeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 要设置的集群ID列表
-	ClusterIds []*string `json:"ClusterIds,omitempty" name:"ClusterIds"`
+	ClusterIds []*string `json:"ClusterIds,omitnil" name:"ClusterIds"`
 
 	// 集群检查模式(正常模式"Cluster_Normal"、主动模式"Cluster_Actived"、不设置"Cluster_Unset")
-	ClusterCheckMode *string `json:"ClusterCheckMode,omitempty" name:"ClusterCheckMode"`
+	ClusterCheckMode *string `json:"ClusterCheckMode,omitnil" name:"ClusterCheckMode"`
 
 	// 0不设置 1打开 2关闭
-	ClusterAutoCheck *uint64 `json:"ClusterAutoCheck,omitempty" name:"ClusterAutoCheck"`
+	ClusterAutoCheck *uint64 `json:"ClusterAutoCheck,omitnil" name:"ClusterAutoCheck"`
 }
 
 func (r *SetCheckModeRequest) ToJsonString() string {
@@ -30575,10 +30575,10 @@ func (r *SetCheckModeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SetCheckModeResponseParams struct {
 	// "Succ"表示设置成功，"Failed"表示设置失败
-	SetCheckResult *string `json:"SetCheckResult,omitempty" name:"SetCheckResult"`
+	SetCheckResult *string `json:"SetCheckResult,omitnil" name:"SetCheckResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SetCheckModeResponse struct {
@@ -30599,29 +30599,29 @@ func (r *SetCheckModeResponse) FromJsonString(s string) error {
 
 type SoftQuotaDayInfo struct {
 	// 扣费时间
-	PayTime *string `json:"PayTime,omitempty" name:"PayTime"`
+	PayTime *string `json:"PayTime,omitnil" name:"PayTime"`
 
 	// 计费核数(已废弃)
-	CoresCnt *uint64 `json:"CoresCnt,omitempty" name:"CoresCnt"`
+	CoresCnt *uint64 `json:"CoresCnt,omitnil" name:"CoresCnt"`
 }
 
 // Predefined struct for user
 type StopVirusScanTaskRequestParams struct {
 	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 需要停止的容器id 为空默认停止整个任务
-	ContainerIds []*string `json:"ContainerIds,omitempty" name:"ContainerIds"`
+	ContainerIds []*string `json:"ContainerIds,omitnil" name:"ContainerIds"`
 }
 
 type StopVirusScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 需要停止的容器id 为空默认停止整个任务
-	ContainerIds []*string `json:"ContainerIds,omitempty" name:"ContainerIds"`
+	ContainerIds []*string `json:"ContainerIds,omitnil" name:"ContainerIds"`
 }
 
 func (r *StopVirusScanTaskRequest) ToJsonString() string {
@@ -30647,7 +30647,7 @@ func (r *StopVirusScanTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StopVirusScanTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type StopVirusScanTaskResponse struct {
@@ -30669,32 +30669,32 @@ func (r *StopVirusScanTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type StopVulScanTaskRequestParams struct {
 	// 本地镜像漏洞扫描任务ID
-	LocalTaskID *int64 `json:"LocalTaskID,omitempty" name:"LocalTaskID"`
+	LocalTaskID *int64 `json:"LocalTaskID,omitnil" name:"LocalTaskID"`
 
 	// 本地镜像ID，无则全部
-	LocalImageIDs []*string `json:"LocalImageIDs,omitempty" name:"LocalImageIDs"`
+	LocalImageIDs []*string `json:"LocalImageIDs,omitnil" name:"LocalImageIDs"`
 
 	// 仓库镜像ID，无则全部
-	RegistryImageIDs []*uint64 `json:"RegistryImageIDs,omitempty" name:"RegistryImageIDs"`
+	RegistryImageIDs []*uint64 `json:"RegistryImageIDs,omitnil" name:"RegistryImageIDs"`
 
 	// 仓库镜像漏洞扫描任务ID
-	RegistryTaskID *int64 `json:"RegistryTaskID,omitempty" name:"RegistryTaskID"`
+	RegistryTaskID *int64 `json:"RegistryTaskID,omitnil" name:"RegistryTaskID"`
 }
 
 type StopVulScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 本地镜像漏洞扫描任务ID
-	LocalTaskID *int64 `json:"LocalTaskID,omitempty" name:"LocalTaskID"`
+	LocalTaskID *int64 `json:"LocalTaskID,omitnil" name:"LocalTaskID"`
 
 	// 本地镜像ID，无则全部
-	LocalImageIDs []*string `json:"LocalImageIDs,omitempty" name:"LocalImageIDs"`
+	LocalImageIDs []*string `json:"LocalImageIDs,omitnil" name:"LocalImageIDs"`
 
 	// 仓库镜像ID，无则全部
-	RegistryImageIDs []*uint64 `json:"RegistryImageIDs,omitempty" name:"RegistryImageIDs"`
+	RegistryImageIDs []*uint64 `json:"RegistryImageIDs,omitnil" name:"RegistryImageIDs"`
 
 	// 仓库镜像漏洞扫描任务ID
-	RegistryTaskID *int64 `json:"RegistryTaskID,omitempty" name:"RegistryTaskID"`
+	RegistryTaskID *int64 `json:"RegistryTaskID,omitnil" name:"RegistryTaskID"`
 }
 
 func (r *StopVulScanTaskRequest) ToJsonString() string {
@@ -30722,7 +30722,7 @@ func (r *StopVulScanTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type StopVulScanTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type StopVulScanTaskResponse struct {
@@ -30743,44 +30743,44 @@ func (r *StopVulScanTaskResponse) FromJsonString(s string) error {
 
 type SupportDefenceVul struct {
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 漏洞名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 漏洞标签
-	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil" name:"Tags"`
 
 	// 漏洞CVSS
-	CVSSV3Score *float64 `json:"CVSSV3Score,omitempty" name:"CVSSV3Score"`
+	CVSSV3Score *float64 `json:"CVSSV3Score,omitnil" name:"CVSSV3Score"`
 
 	// 漏洞威胁等级
-	Level *string `json:"Level,omitempty" name:"Level"`
+	Level *string `json:"Level,omitnil" name:"Level"`
 
 	// 漏洞CVEID
-	CVEID *string `json:"CVEID,omitempty" name:"CVEID"`
+	CVEID *string `json:"CVEID,omitnil" name:"CVEID"`
 
 	// 漏洞披露时间
-	SubmitTime *string `json:"SubmitTime,omitempty" name:"SubmitTime"`
+	SubmitTime *string `json:"SubmitTime,omitnil" name:"SubmitTime"`
 }
 
 // Predefined struct for user
 type SwitchImageAutoAuthorizedRuleRequestParams struct {
 	// 规则是否生效，0:不生效，1:已生效
-	IsEnabled *int64 `json:"IsEnabled,omitempty" name:"IsEnabled"`
+	IsEnabled *int64 `json:"IsEnabled,omitnil" name:"IsEnabled"`
 
 	// 规则id
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 type SwitchImageAutoAuthorizedRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则是否生效，0:不生效，1:已生效
-	IsEnabled *int64 `json:"IsEnabled,omitempty" name:"IsEnabled"`
+	IsEnabled *int64 `json:"IsEnabled,omitnil" name:"IsEnabled"`
 
 	// 规则id
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 func (r *SwitchImageAutoAuthorizedRuleRequest) ToJsonString() string {
@@ -30806,7 +30806,7 @@ func (r *SwitchImageAutoAuthorizedRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SwitchImageAutoAuthorizedRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SwitchImageAutoAuthorizedRuleResponse struct {
@@ -30857,7 +30857,7 @@ func (r *SyncAssetImageRegistryAssetRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SyncAssetImageRegistryAssetResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SyncAssetImageRegistryAssetResponse struct {
@@ -30878,27 +30878,27 @@ func (r *SyncAssetImageRegistryAssetResponse) FromJsonString(s string) error {
 
 type TagInfo struct {
 	// 标签键
-	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
 
 	// 标签值
-	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
 }
 
 type UnauthorizedCoresTendency struct {
 	// 日期
-	DateTime *string `json:"DateTime,omitempty" name:"DateTime"`
+	DateTime *string `json:"DateTime,omitnil" name:"DateTime"`
 
 	// 未授权的核数
-	CoresCount *int64 `json:"CoresCount,omitempty" name:"CoresCount"`
+	CoresCount *int64 `json:"CoresCount,omitnil" name:"CoresCount"`
 }
 
 // Predefined struct for user
 type UpdateAndPublishNetworkFirewallPolicyDetailRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 入站规则
 	// 
@@ -30907,7 +30907,7 @@ type UpdateAndPublishNetworkFirewallPolicyDetailRequestParams struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	FromPolicyRule *int64 `json:"FromPolicyRule,omitempty" name:"FromPolicyRule"`
+	FromPolicyRule *int64 `json:"FromPolicyRule,omitnil" name:"FromPolicyRule"`
 
 	// 出站规则
 	// 
@@ -30916,29 +30916,29 @@ type UpdateAndPublishNetworkFirewallPolicyDetailRequestParams struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	ToPolicyRule *int64 `json:"ToPolicyRule,omitempty" name:"ToPolicyRule"`
+	ToPolicyRule *int64 `json:"ToPolicyRule,omitnil" name:"ToPolicyRule"`
 
 	// pod选择器
-	PodSelector *string `json:"PodSelector,omitempty" name:"PodSelector"`
+	PodSelector *string `json:"PodSelector,omitnil" name:"PodSelector"`
 
 	// 命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 自定义规则
-	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitempty" name:"CustomPolicy"`
+	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitnil" name:"CustomPolicy"`
 }
 
 type UpdateAndPublishNetworkFirewallPolicyDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 入站规则
 	// 
@@ -30947,7 +30947,7 @@ type UpdateAndPublishNetworkFirewallPolicyDetailRequest struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	FromPolicyRule *int64 `json:"FromPolicyRule,omitempty" name:"FromPolicyRule"`
+	FromPolicyRule *int64 `json:"FromPolicyRule,omitnil" name:"FromPolicyRule"`
 
 	// 出站规则
 	// 
@@ -30956,19 +30956,19 @@ type UpdateAndPublishNetworkFirewallPolicyDetailRequest struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	ToPolicyRule *int64 `json:"ToPolicyRule,omitempty" name:"ToPolicyRule"`
+	ToPolicyRule *int64 `json:"ToPolicyRule,omitnil" name:"ToPolicyRule"`
 
 	// pod选择器
-	PodSelector *string `json:"PodSelector,omitempty" name:"PodSelector"`
+	PodSelector *string `json:"PodSelector,omitnil" name:"PodSelector"`
 
 	// 命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 自定义规则
-	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitempty" name:"CustomPolicy"`
+	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitnil" name:"CustomPolicy"`
 }
 
 func (r *UpdateAndPublishNetworkFirewallPolicyDetailRequest) ToJsonString() string {
@@ -31000,13 +31000,13 @@ func (r *UpdateAndPublishNetworkFirewallPolicyDetailRequest) FromJsonString(s st
 // Predefined struct for user
 type UpdateAndPublishNetworkFirewallPolicyDetailResponseParams struct {
 	// 返回创建的任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateAndPublishNetworkFirewallPolicyDetailResponse struct {
@@ -31028,32 +31028,32 @@ func (r *UpdateAndPublishNetworkFirewallPolicyDetailResponse) FromJsonString(s s
 // Predefined struct for user
 type UpdateAndPublishNetworkFirewallPolicyYamlDetailRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// base64编码的networkpolicy yaml字符串
-	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+	Yaml *string `json:"Yaml,omitnil" name:"Yaml"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 type UpdateAndPublishNetworkFirewallPolicyYamlDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// base64编码的networkpolicy yaml字符串
-	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+	Yaml *string `json:"Yaml,omitnil" name:"Yaml"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 func (r *UpdateAndPublishNetworkFirewallPolicyYamlDetailRequest) ToJsonString() string {
@@ -31081,13 +31081,13 @@ func (r *UpdateAndPublishNetworkFirewallPolicyYamlDetailRequest) FromJsonString(
 // Predefined struct for user
 type UpdateAndPublishNetworkFirewallPolicyYamlDetailResponseParams struct {
 	// 返回创建的任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateAndPublishNetworkFirewallPolicyYamlDetailResponse struct {
@@ -31109,74 +31109,74 @@ func (r *UpdateAndPublishNetworkFirewallPolicyYamlDetailResponse) FromJsonString
 // Predefined struct for user
 type UpdateAssetImageRegistryRegistryDetailRequestParams struct {
 	// 仓库名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 用户名
-	Username *string `json:"Username,omitempty" name:"Username"`
+	Username *string `json:"Username,omitnil" name:"Username"`
 
 	// 密码
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 
 	// 仓库url
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 仓库类型，列表：harbor
-	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+	RegistryType *string `json:"RegistryType,omitnil" name:"RegistryType"`
 
 	// 网络类型，列表：public（公网）
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 仓库版本
-	RegistryVersion *string `json:"RegistryVersion,omitempty" name:"RegistryVersion"`
+	RegistryVersion *string `json:"RegistryVersion,omitnil" name:"RegistryVersion"`
 
 	// 区域，列表：default（默认）
-	RegistryRegion *string `json:"RegistryRegion,omitempty" name:"RegistryRegion"`
+	RegistryRegion *string `json:"RegistryRegion,omitnil" name:"RegistryRegion"`
 
 	// 限速
-	SpeedLimit *int64 `json:"SpeedLimit,omitempty" name:"SpeedLimit"`
+	SpeedLimit *int64 `json:"SpeedLimit,omitnil" name:"SpeedLimit"`
 
 	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
-	Insecure *uint64 `json:"Insecure,omitempty" name:"Insecure"`
+	Insecure *uint64 `json:"Insecure,omitnil" name:"Insecure"`
 
 	// 联通性检测的配置
-	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitempty" name:"ConnDetectConfig"`
+	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitnil" name:"ConnDetectConfig"`
 }
 
 type UpdateAssetImageRegistryRegistryDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 仓库名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 用户名
-	Username *string `json:"Username,omitempty" name:"Username"`
+	Username *string `json:"Username,omitnil" name:"Username"`
 
 	// 密码
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 
 	// 仓库url
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 仓库类型，列表：harbor
-	RegistryType *string `json:"RegistryType,omitempty" name:"RegistryType"`
+	RegistryType *string `json:"RegistryType,omitnil" name:"RegistryType"`
 
 	// 网络类型，列表：public（公网）
-	NetType *string `json:"NetType,omitempty" name:"NetType"`
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
 
 	// 仓库版本
-	RegistryVersion *string `json:"RegistryVersion,omitempty" name:"RegistryVersion"`
+	RegistryVersion *string `json:"RegistryVersion,omitnil" name:"RegistryVersion"`
 
 	// 区域，列表：default（默认）
-	RegistryRegion *string `json:"RegistryRegion,omitempty" name:"RegistryRegion"`
+	RegistryRegion *string `json:"RegistryRegion,omitnil" name:"RegistryRegion"`
 
 	// 限速
-	SpeedLimit *int64 `json:"SpeedLimit,omitempty" name:"SpeedLimit"`
+	SpeedLimit *int64 `json:"SpeedLimit,omitnil" name:"SpeedLimit"`
 
 	// 安全模式（证书校验）：0（默认） 非安全模式（跳过证书校验）：1
-	Insecure *uint64 `json:"Insecure,omitempty" name:"Insecure"`
+	Insecure *uint64 `json:"Insecure,omitnil" name:"Insecure"`
 
 	// 联通性检测的配置
-	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitempty" name:"ConnDetectConfig"`
+	ConnDetectConfig []*ConnDetectConfig `json:"ConnDetectConfig,omitnil" name:"ConnDetectConfig"`
 }
 
 func (r *UpdateAssetImageRegistryRegistryDetailRequest) ToJsonString() string {
@@ -31212,18 +31212,18 @@ func (r *UpdateAssetImageRegistryRegistryDetailRequest) FromJsonString(s string)
 type UpdateAssetImageRegistryRegistryDetailResponseParams struct {
 	// 连接错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HealthCheckErr *string `json:"HealthCheckErr,omitempty" name:"HealthCheckErr"`
+	HealthCheckErr *string `json:"HealthCheckErr,omitnil" name:"HealthCheckErr"`
 
 	// 名称错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NameRepeatErr *string `json:"NameRepeatErr,omitempty" name:"NameRepeatErr"`
+	NameRepeatErr *string `json:"NameRepeatErr,omitnil" name:"NameRepeatErr"`
 
 	// 仓库唯一id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegistryId *int64 `json:"RegistryId,omitempty" name:"RegistryId"`
+	RegistryId *int64 `json:"RegistryId,omitnil" name:"RegistryId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateAssetImageRegistryRegistryDetailResponse struct {
@@ -31245,56 +31245,56 @@ func (r *UpdateAssetImageRegistryRegistryDetailResponse) FromJsonString(s string
 // Predefined struct for user
 type UpdateImageRegistryTimingScanTaskRequestParams struct {
 	// 定时扫描周期
-	ScanPeriod *uint64 `json:"ScanPeriod,omitempty" name:"ScanPeriod"`
+	ScanPeriod *uint64 `json:"ScanPeriod,omitnil" name:"ScanPeriod"`
 
 	// 定时扫描开关
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 定时扫描的时间
-	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 扫描木马类型数组
-	ScanType []*string `json:"ScanType,omitempty" name:"ScanType"`
+	ScanType []*string `json:"ScanType,omitnil" name:"ScanType"`
 
 	// 扫描镜像
-	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
+	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 是否扫描所有
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 扫描镜像Id
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 是否扫描最新版本
-	Latest *bool `json:"Latest,omitempty" name:"Latest"`
+	Latest *bool `json:"Latest,omitnil" name:"Latest"`
 }
 
 type UpdateImageRegistryTimingScanTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 定时扫描周期
-	ScanPeriod *uint64 `json:"ScanPeriod,omitempty" name:"ScanPeriod"`
+	ScanPeriod *uint64 `json:"ScanPeriod,omitnil" name:"ScanPeriod"`
 
 	// 定时扫描开关
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 
 	// 定时扫描的时间
-	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 扫描木马类型数组
-	ScanType []*string `json:"ScanType,omitempty" name:"ScanType"`
+	ScanType []*string `json:"ScanType,omitnil" name:"ScanType"`
 
 	// 扫描镜像
-	Images []*ImageInfo `json:"Images,omitempty" name:"Images"`
+	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 是否扫描所有
-	All *bool `json:"All,omitempty" name:"All"`
+	All *bool `json:"All,omitnil" name:"All"`
 
 	// 扫描镜像Id
-	Id []*uint64 `json:"Id,omitempty" name:"Id"`
+	Id []*uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 是否扫描最新版本
-	Latest *bool `json:"Latest,omitempty" name:"Latest"`
+	Latest *bool `json:"Latest,omitnil" name:"Latest"`
 }
 
 func (r *UpdateImageRegistryTimingScanTaskRequest) ToJsonString() string {
@@ -31326,7 +31326,7 @@ func (r *UpdateImageRegistryTimingScanTaskRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type UpdateImageRegistryTimingScanTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateImageRegistryTimingScanTaskResponse struct {
@@ -31348,10 +31348,10 @@ func (r *UpdateImageRegistryTimingScanTaskResponse) FromJsonString(s string) err
 // Predefined struct for user
 type UpdateNetworkFirewallPolicyDetailRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 入站规则
 	// 
@@ -31360,7 +31360,7 @@ type UpdateNetworkFirewallPolicyDetailRequestParams struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	FromPolicyRule *int64 `json:"FromPolicyRule,omitempty" name:"FromPolicyRule"`
+	FromPolicyRule *int64 `json:"FromPolicyRule,omitnil" name:"FromPolicyRule"`
 
 	// 出站规则
 	// 
@@ -31369,29 +31369,29 @@ type UpdateNetworkFirewallPolicyDetailRequestParams struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	ToPolicyRule *int64 `json:"ToPolicyRule,omitempty" name:"ToPolicyRule"`
+	ToPolicyRule *int64 `json:"ToPolicyRule,omitnil" name:"ToPolicyRule"`
 
 	// pod选择器
-	PodSelector *string `json:"PodSelector,omitempty" name:"PodSelector"`
+	PodSelector *string `json:"PodSelector,omitnil" name:"PodSelector"`
 
 	// 命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 自定义规则
-	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitempty" name:"CustomPolicy"`
+	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitnil" name:"CustomPolicy"`
 }
 
 type UpdateNetworkFirewallPolicyDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 入站规则
 	// 
@@ -31400,7 +31400,7 @@ type UpdateNetworkFirewallPolicyDetailRequest struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	FromPolicyRule *int64 `json:"FromPolicyRule,omitempty" name:"FromPolicyRule"`
+	FromPolicyRule *int64 `json:"FromPolicyRule,omitnil" name:"FromPolicyRule"`
 
 	// 出站规则
 	// 
@@ -31409,19 +31409,19 @@ type UpdateNetworkFirewallPolicyDetailRequest struct {
 	// 全部拒绝 ：2
 	// 
 	// 自定义：3
-	ToPolicyRule *int64 `json:"ToPolicyRule,omitempty" name:"ToPolicyRule"`
+	ToPolicyRule *int64 `json:"ToPolicyRule,omitnil" name:"ToPolicyRule"`
 
 	// pod选择器
-	PodSelector *string `json:"PodSelector,omitempty" name:"PodSelector"`
+	PodSelector *string `json:"PodSelector,omitnil" name:"PodSelector"`
 
 	// 命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 自定义规则
-	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitempty" name:"CustomPolicy"`
+	CustomPolicy []*NetworkCustomPolicy `json:"CustomPolicy,omitnil" name:"CustomPolicy"`
 }
 
 func (r *UpdateNetworkFirewallPolicyDetailRequest) ToJsonString() string {
@@ -31453,13 +31453,13 @@ func (r *UpdateNetworkFirewallPolicyDetailRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type UpdateNetworkFirewallPolicyDetailResponseParams struct {
 	// 返回创建的任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateNetworkFirewallPolicyDetailResponse struct {
@@ -31481,32 +31481,32 @@ func (r *UpdateNetworkFirewallPolicyDetailResponse) FromJsonString(s string) err
 // Predefined struct for user
 type UpdateNetworkFirewallPolicyYamlDetailRequestParams struct {
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// base64编码的networkpolicy yaml字符串
-	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+	Yaml *string `json:"Yaml,omitnil" name:"Yaml"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 type UpdateNetworkFirewallPolicyYamlDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群Id
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 策略id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// base64编码的networkpolicy yaml字符串
-	Yaml *string `json:"Yaml,omitempty" name:"Yaml"`
+	Yaml *string `json:"Yaml,omitnil" name:"Yaml"`
 
 	// 策略描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 func (r *UpdateNetworkFirewallPolicyYamlDetailRequest) ToJsonString() string {
@@ -31534,13 +31534,13 @@ func (r *UpdateNetworkFirewallPolicyYamlDetailRequest) FromJsonString(s string) 
 // Predefined struct for user
 type UpdateNetworkFirewallPolicyYamlDetailResponseParams struct {
 	// 返回创建的任务的ID，为0表示创建失败。
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 创建任务的结果，"Succ"为成功，"Failed"为失败
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateNetworkFirewallPolicyYamlDetailResponse struct {
@@ -31561,39 +31561,39 @@ func (r *UpdateNetworkFirewallPolicyYamlDetailResponse) FromJsonString(s string)
 
 type VirusAutoIsolateSampleInfo struct {
 	// 文件MD5值
-	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+	MD5 *string `json:"MD5,omitnil" name:"MD5"`
 
 	// 病毒名
-	VirusName *string `json:"VirusName,omitempty" name:"VirusName"`
+	VirusName *string `json:"VirusName,omitnil" name:"VirusName"`
 
 	// 最近编辑时间
-	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
 
 	// 自动隔离开关(true:开 false:关)
-	AutoIsolateSwitch *bool `json:"AutoIsolateSwitch,omitempty" name:"AutoIsolateSwitch"`
+	AutoIsolateSwitch *bool `json:"AutoIsolateSwitch,omitnil" name:"AutoIsolateSwitch"`
 }
 
 type VirusInfo struct {
 	// 文件名称
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 文件路径
-	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
 
 	// 病毒名称
-	VirusName *string `json:"VirusName,omitempty" name:"VirusName"`
+	VirusName *string `json:"VirusName,omitnil" name:"VirusName"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 更新时间
-	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
 
 	// 容器名称
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 容器id
-	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
 
 	// 容器状态
 	// 正在运行: RUNNING
@@ -31603,13 +31603,13 @@ type VirusInfo struct {
 	// 已经销毁: DESTROYED
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
-	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+	ContainerStatus *string `json:"ContainerStatus,omitnil" name:"ContainerStatus"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 镜像id
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// DEAL_NONE:文件待处理
 	// DEAL_IGNORE:已经忽略
@@ -31620,16 +31620,16 @@ type VirusInfo struct {
 	// DEAL_ISOLATE_FAILED:隔离失败
 	// DEAL_RECOVERING:恢复中
 	// DEAL_RECOVER_FAILED: 恢复失败
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 
 	// 事件描述
-	HarmDescribe *string `json:"HarmDescribe,omitempty" name:"HarmDescribe"`
+	HarmDescribe *string `json:"HarmDescribe,omitnil" name:"HarmDescribe"`
 
 	// 建议方案
-	SuggestScheme *string `json:"SuggestScheme,omitempty" name:"SuggestScheme"`
+	SuggestScheme *string `json:"SuggestScheme,omitnil" name:"SuggestScheme"`
 
 	// 失败子状态:
 	// FILE_NOT_FOUND:文件不存在
@@ -31643,7 +31643,7 @@ type VirusInfo struct {
 	// OFFLINE: 离线
 	// INTERNAL: 服务内部错误
 	// VALIDATION: 参数非法
-	SubStatus *string `json:"SubStatus,omitempty" name:"SubStatus"`
+	SubStatus *string `json:"SubStatus,omitnil" name:"SubStatus"`
 
 	// 网络状态
 	// 未隔离  	NORMAL
@@ -31652,7 +31652,7 @@ type VirusInfo struct {
 	// 隔离失败	ISOLATE_FAILED
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
-	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil" name:"ContainerNetStatus"`
 
 	// 容器子状态
 	// "AGENT_OFFLINE"       //Agent离线
@@ -31662,18 +31662,18 @@ type VirusInfo struct {
 	// 	"SHARED_HOST"         // 容器与主机共享网络
 	// 	"RESOURCE_LIMIT"      //隔离操作资源超限
 	// 	"UNKNOW"              // 原因未知
-	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
-	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil" name:"ContainerIsolateOperationSrc"`
 
 	// md5值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+	MD5 *string `json:"MD5,omitnil" name:"MD5"`
 
 	// 风险等级 RISK_CRITICAL, RISK_HIGH, RISK_MEDIUM, RISK_LOW, RISK_NOTICE。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 检测平台
 	// 1: 云查杀引擎
@@ -31682,60 +31682,60 @@ type VirusInfo struct {
 	// 4: 异常行为
 	// 5: 威胁情报
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CheckPlatform []*string `json:"CheckPlatform,omitempty" name:"CheckPlatform"`
+	CheckPlatform []*string `json:"CheckPlatform,omitnil" name:"CheckPlatform"`
 
 	// 节点ID
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// 节点名称
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 
 	// pod ip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// pod(实例)的名字
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// 节点所属集群ID
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 节点类型：NORMAL普通节点、SUPER超级节点
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 节点外网IP
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 节点内网IP
-	InnerIP *string `json:"InnerIP,omitempty" name:"InnerIP"`
+	InnerIP *string `json:"InnerIP,omitnil" name:"InnerIP"`
 
 	// 节点唯一ID
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 普通节点ID
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 }
 
 type VirusTaskInfo struct {
 	// 容器名称
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 容器id
-	ContainerId *string `json:"ContainerId,omitempty" name:"ContainerId"`
+	ContainerId *string `json:"ContainerId,omitnil" name:"ContainerId"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 镜像Id
-	ImageId *string `json:"ImageId,omitempty" name:"ImageId"`
+	ImageId *string `json:"ImageId,omitnil" name:"ImageId"`
 
 	// 节点名
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 节点内网ip
-	HostIp *string `json:"HostIp,omitempty" name:"HostIp"`
+	HostIp *string `json:"HostIp,omitnil" name:"HostIp"`
 
 	// 扫描状态：
 	// WAIT: 等待扫描
@@ -31745,19 +31745,19 @@ type VirusTaskInfo struct {
 	// CANCELING: 取消中
 	// CANCELED: 已取消
 	// CANCEL_FAILED： 取消失败
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 检测开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 检测结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 风险个数
-	RiskCnt *uint64 `json:"RiskCnt,omitempty" name:"RiskCnt"`
+	RiskCnt *uint64 `json:"RiskCnt,omitnil" name:"RiskCnt"`
 
 	// 事件id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 
 	// 错误原因:
 	// SEND_SUCCESSED: 下发成功
@@ -31773,197 +31773,197 @@ type VirusTaskInfo struct {
 	// MISC: 其他错误
 	// UNAUTH: 所在镜像未授权
 	// SEND_CANCEL_SUCCESSED:下发成功
-	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
 
 	// 节点类型：NORMAL普通节点、SUPER超级节点
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 节点外网IP
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 节点ID
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 }
 
 type VirusTendencyInfo struct {
 	// 日期
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 待处理事件总数
-	PendingEventCount *uint64 `json:"PendingEventCount,omitempty" name:"PendingEventCount"`
+	PendingEventCount *uint64 `json:"PendingEventCount,omitnil" name:"PendingEventCount"`
 
 	// 风险容器总数
-	RiskContainerCount *uint64 `json:"RiskContainerCount,omitempty" name:"RiskContainerCount"`
+	RiskContainerCount *uint64 `json:"RiskContainerCount,omitnil" name:"RiskContainerCount"`
 
 	// 事件总数
-	EventCount *uint64 `json:"EventCount,omitempty" name:"EventCount"`
+	EventCount *uint64 `json:"EventCount,omitnil" name:"EventCount"`
 
 	// 隔离事件总数
-	IsolateEventCount *uint64 `json:"IsolateEventCount,omitempty" name:"IsolateEventCount"`
+	IsolateEventCount *uint64 `json:"IsolateEventCount,omitnil" name:"IsolateEventCount"`
 }
 
 type VulAffectedComponentInfo struct {
 	// 组件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 组件版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Version []*string `json:"Version,omitempty" name:"Version"`
+	Version []*string `json:"Version,omitnil" name:"Version"`
 
 	// 组件修复版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FixedVersion []*string `json:"FixedVersion,omitempty" name:"FixedVersion"`
+	FixedVersion []*string `json:"FixedVersion,omitnil" name:"FixedVersion"`
 }
 
 type VulAffectedContainerInfo struct {
 	// 内网IP
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 容器ID
-	ContainerID *string `json:"ContainerID,omitempty" name:"ContainerID"`
+	ContainerID *string `json:"ContainerID,omitnil" name:"ContainerID"`
 
 	// 容器名称
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// Pod名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// PodIP值
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// 主机名称
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 主机ID
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 外网IP
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 集群ID
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 节点类型[NORMAL:普通节点|SUPER:超级节点]
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 超级节点唯一ID
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 超级节点ID
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// 超级节点名称
-	NodeName *string `json:"NodeName,omitempty" name:"NodeName"`
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
 }
 
 type VulAffectedImageComponentInfo struct {
 	// 组件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 组件版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Version *string `json:"Version,omitempty" name:"Version"`
+	Version *string `json:"Version,omitnil" name:"Version"`
 
 	// 组件修复版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FixedVersion *string `json:"FixedVersion,omitempty" name:"FixedVersion"`
+	FixedVersion *string `json:"FixedVersion,omitnil" name:"FixedVersion"`
 
 	// 组件路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Path *string `json:"Path,omitempty" name:"Path"`
+	Path *string `json:"Path,omitnil" name:"Path"`
 }
 
 type VulAffectedImageInfo struct {
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 关联的主机数
-	HostCount *int64 `json:"HostCount,omitempty" name:"HostCount"`
+	HostCount *int64 `json:"HostCount,omitnil" name:"HostCount"`
 
 	// 关联的容器数
-	ContainerCount *int64 `json:"ContainerCount,omitempty" name:"ContainerCount"`
+	ContainerCount *int64 `json:"ContainerCount,omitnil" name:"ContainerCount"`
 
 	// 组件列表
-	ComponentList []*VulAffectedImageComponentInfo `json:"ComponentList,omitempty" name:"ComponentList"`
+	ComponentList []*VulAffectedImageComponentInfo `json:"ComponentList,omitnil" name:"ComponentList"`
 }
 
 type VulAffectedRegistryImageInfo struct {
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 镜像版本
-	ImageTag *string `json:"ImageTag,omitempty" name:"ImageTag"`
+	ImageTag *string `json:"ImageTag,omitnil" name:"ImageTag"`
 
 	// 镜像命名空间
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 镜像地址
-	ImageRepoAddress *string `json:"ImageRepoAddress,omitempty" name:"ImageRepoAddress"`
+	ImageRepoAddress *string `json:"ImageRepoAddress,omitnil" name:"ImageRepoAddress"`
 
 	// 组件列表
-	ComponentList []*VulAffectedImageComponentInfo `json:"ComponentList,omitempty" name:"ComponentList"`
+	ComponentList []*VulAffectedImageComponentInfo `json:"ComponentList,omitnil" name:"ComponentList"`
 
 	// 是否为镜像的最新版本
-	IsLatestImage *bool `json:"IsLatestImage,omitempty" name:"IsLatestImage"`
+	IsLatestImage *bool `json:"IsLatestImage,omitnil" name:"IsLatestImage"`
 
 	// 内部镜像资产ID
-	ImageAssetId *int64 `json:"ImageAssetId,omitempty" name:"ImageAssetId"`
+	ImageAssetId *int64 `json:"ImageAssetId,omitnil" name:"ImageAssetId"`
 }
 
 type VulDefenceEvent struct {
 	// 漏洞CVEID
-	CVEID *string `json:"CVEID,omitempty" name:"CVEID"`
+	CVEID *string `json:"CVEID,omitnil" name:"CVEID"`
 
 	// 漏洞名称
-	VulName *string `json:"VulName,omitempty" name:"VulName"`
+	VulName *string `json:"VulName,omitnil" name:"VulName"`
 
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 入侵状态
-	EventType *string `json:"EventType,omitempty" name:"EventType"`
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
 
 	// 攻击源IP
-	SourceIP *string `json:"SourceIP,omitempty" name:"SourceIP"`
+	SourceIP *string `json:"SourceIP,omitnil" name:"SourceIP"`
 
 	// 攻击源ip地址所在城市
-	City *string `json:"City,omitempty" name:"City"`
+	City *string `json:"City,omitnil" name:"City"`
 
 	// 事件数量
-	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+	EventCount *int64 `json:"EventCount,omitnil" name:"EventCount"`
 
 	// 容器ID
-	ContainerID *string `json:"ContainerID,omitempty" name:"ContainerID"`
+	ContainerID *string `json:"ContainerID,omitnil" name:"ContainerID"`
 
 	// 容器名称
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 处理状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 事件ID
-	EventID *int64 `json:"EventID,omitempty" name:"EventID"`
+	EventID *int64 `json:"EventID,omitnil" name:"EventID"`
 
 	// 首次发现时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 隔离状态
 	// 未隔离  	NORMAL
@@ -31972,11 +31972,11 @@ type VulDefenceEvent struct {
 	// 隔离失败	ISOLATE_FAILED
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
-	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil" name:"ContainerNetStatus"`
 
 	// 最近发现时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MergeTime *string `json:"MergeTime,omitempty" name:"MergeTime"`
+	MergeTime *string `json:"MergeTime,omitnil" name:"MergeTime"`
 
 	// 容器状态
 	// 正在运行: RUNNING
@@ -31987,7 +31987,7 @@ type VulDefenceEvent struct {
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+	ContainerStatus *string `json:"ContainerStatus,omitnil" name:"ContainerStatus"`
 
 	// 容器子状态
 	// "AGENT_OFFLINE"       //Agent离线
@@ -31998,138 +31998,138 @@ type VulDefenceEvent struct {
 	// 	"RESOURCE_LIMIT"      //隔离操作资源超限
 	// 	"UNKNOW"              // 原因未知
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil" name:"ContainerIsolateOperationSrc"`
 
 	// 主机QUUID/超级节点ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	QUUID *string `json:"QUUID,omitempty" name:"QUUID"`
+	QUUID *string `json:"QUUID,omitnil" name:"QUUID"`
 
 	// 主机内网IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 主机名称/超级节点名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 节点类型[NORMAL:普通节点|SUPER:超级节点]
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 外网IP
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 超级节点唯一ID
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 超级节点ID
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// 集群ID
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 }
 
 type VulDefenceEventDetail struct {
 	// 漏洞CVEID
-	CVEID *string `json:"CVEID,omitempty" name:"CVEID"`
+	CVEID *string `json:"CVEID,omitnil" name:"CVEID"`
 
 	// 漏洞名称
-	VulName *string `json:"VulName,omitempty" name:"VulName"`
+	VulName *string `json:"VulName,omitnil" name:"VulName"`
 
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 入侵状态
-	EventType *string `json:"EventType,omitempty" name:"EventType"`
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
 
 	// 攻击源IP
-	SourceIP *string `json:"SourceIP,omitempty" name:"SourceIP"`
+	SourceIP *string `json:"SourceIP,omitnil" name:"SourceIP"`
 
 	// 攻击源ip地址所在城市
-	City *string `json:"City,omitempty" name:"City"`
+	City *string `json:"City,omitnil" name:"City"`
 
 	// 事件数量
-	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+	EventCount *int64 `json:"EventCount,omitnil" name:"EventCount"`
 
 	// 容器ID
-	ContainerID *string `json:"ContainerID,omitempty" name:"ContainerID"`
+	ContainerID *string `json:"ContainerID,omitnil" name:"ContainerID"`
 
 	// 容器名称
-	ContainerName *string `json:"ContainerName,omitempty" name:"ContainerName"`
+	ContainerName *string `json:"ContainerName,omitnil" name:"ContainerName"`
 
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 处理状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 攻击源端口
-	SourcePort []*string `json:"SourcePort,omitempty" name:"SourcePort"`
+	SourcePort []*string `json:"SourcePort,omitnil" name:"SourcePort"`
 
 	// 事件ID
-	EventID *int64 `json:"EventID,omitempty" name:"EventID"`
+	EventID *int64 `json:"EventID,omitnil" name:"EventID"`
 
 	// 主机名称/超级节点名称
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 主机内网IP
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 主机外网IP
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// Pod名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 
 	// 危害描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 修复建议
-	OfficialSolution *string `json:"OfficialSolution,omitempty" name:"OfficialSolution"`
+	OfficialSolution *string `json:"OfficialSolution,omitnil" name:"OfficialSolution"`
 
 	// 攻击包
-	NetworkPayload *string `json:"NetworkPayload,omitempty" name:"NetworkPayload"`
+	NetworkPayload *string `json:"NetworkPayload,omitnil" name:"NetworkPayload"`
 
 	// 进程PID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PID *int64 `json:"PID,omitempty" name:"PID"`
+	PID *int64 `json:"PID,omitnil" name:"PID"`
 
 	// 进程主类名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MainClass *string `json:"MainClass,omitempty" name:"MainClass"`
+	MainClass *string `json:"MainClass,omitnil" name:"MainClass"`
 
 	// 堆栈信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StackTrace *string `json:"StackTrace,omitempty" name:"StackTrace"`
+	StackTrace *string `json:"StackTrace,omitnil" name:"StackTrace"`
 
 	// 监听账号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServerAccount *string `json:"ServerAccount,omitempty" name:"ServerAccount"`
+	ServerAccount *string `json:"ServerAccount,omitnil" name:"ServerAccount"`
 
 	// 监听端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServerPort *string `json:"ServerPort,omitempty" name:"ServerPort"`
+	ServerPort *string `json:"ServerPort,omitnil" name:"ServerPort"`
 
 	// 进程路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServerExe *string `json:"ServerExe,omitempty" name:"ServerExe"`
+	ServerExe *string `json:"ServerExe,omitnil" name:"ServerExe"`
 
 	// 进程命令行参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ServerArg *string `json:"ServerArg,omitempty" name:"ServerArg"`
+	ServerArg *string `json:"ServerArg,omitnil" name:"ServerArg"`
 
 	// 主机QUUID/超级节点ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	QUUID *string `json:"QUUID,omitempty" name:"QUUID"`
+	QUUID *string `json:"QUUID,omitnil" name:"QUUID"`
 
 	// 隔离状态
 	// 未隔离  	NORMAL
@@ -32139,7 +32139,7 @@ type VulDefenceEventDetail struct {
 	// 解除隔离中  RESTORING
 	// 解除隔离失败 RESTORE_FAILED
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerNetStatus *string `json:"ContainerNetStatus,omitempty" name:"ContainerNetStatus"`
+	ContainerNetStatus *string `json:"ContainerNetStatus,omitnil" name:"ContainerNetStatus"`
 
 	// 容器子状态
 	// "AGENT_OFFLINE"       //Agent离线
@@ -32150,11 +32150,11 @@ type VulDefenceEventDetail struct {
 	// 	"RESOURCE_LIMIT"      //隔离操作资源超限
 	// 	"UNKNOW"              // 原因未知
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitempty" name:"ContainerNetSubStatus"`
+	ContainerNetSubStatus *string `json:"ContainerNetSubStatus,omitnil" name:"ContainerNetSubStatus"`
 
 	// 容器隔离操作来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitempty" name:"ContainerIsolateOperationSrc"`
+	ContainerIsolateOperationSrc *string `json:"ContainerIsolateOperationSrc,omitnil" name:"ContainerIsolateOperationSrc"`
 
 	// 容器状态
 	// 正在运行: RUNNING
@@ -32165,372 +32165,372 @@ type VulDefenceEventDetail struct {
 	// 正在重启中: RESTARTING
 	// 迁移中: REMOVING
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerStatus *string `json:"ContainerStatus,omitempty" name:"ContainerStatus"`
+	ContainerStatus *string `json:"ContainerStatus,omitnil" name:"ContainerStatus"`
 
 	// 接口Url
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	JNDIUrl *string `json:"JNDIUrl,omitempty" name:"JNDIUrl"`
+	JNDIUrl *string `json:"JNDIUrl,omitnil" name:"JNDIUrl"`
 
 	// rasp detail
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RaspDetail []*RaspInfo `json:"RaspDetail,omitempty" name:"RaspDetail"`
+	RaspDetail []*RaspInfo `json:"RaspDetail,omitnil" name:"RaspDetail"`
 
 	// 超级节点子网名称
-	NodeSubNetName *string `json:"NodeSubNetName,omitempty" name:"NodeSubNetName"`
+	NodeSubNetName *string `json:"NodeSubNetName,omitnil" name:"NodeSubNetName"`
 
 	// 超级节点子网网段
-	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitempty" name:"NodeSubNetCIDR"`
+	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitnil" name:"NodeSubNetCIDR"`
 
 	// pod ip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// 节点类型[NORMAL:普通节点|SUPER:超级节点]
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 超级节点ID
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// 超级节点唯一ID
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 超级节点子网ID
-	NodeSubNetID *string `json:"NodeSubNetID,omitempty" name:"NodeSubNetID"`
+	NodeSubNetID *string `json:"NodeSubNetID,omitnil" name:"NodeSubNetID"`
 
 	// 集群ID
-	ClusterID *string `json:"ClusterID,omitempty" name:"ClusterID"`
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
 
 	// 集群名称
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 }
 
 type VulDefenceEventTendency struct {
 	// 日期
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 事件数量
-	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+	EventCount *int64 `json:"EventCount,omitnil" name:"EventCount"`
 }
 
 type VulDefenceHost struct {
 	// 主机名称/超级节点名称
-	HostName *string `json:"HostName,omitempty" name:"HostName"`
+	HostName *string `json:"HostName,omitnil" name:"HostName"`
 
 	// 主机ip即内网ip
-	HostIP *string `json:"HostIP,omitempty" name:"HostIP"`
+	HostIP *string `json:"HostIP,omitnil" name:"HostIP"`
 
 	// 主机QUUID/超级节点ID
-	HostID *string `json:"HostID,omitempty" name:"HostID"`
+	HostID *string `json:"HostID,omitnil" name:"HostID"`
 
 	// 插件状态，正常：SUCCESS，异常：FAIL， NO_DEFENDED:未防御
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 外网ip
-	PublicIP *string `json:"PublicIP,omitempty" name:"PublicIP"`
+	PublicIP *string `json:"PublicIP,omitnil" name:"PublicIP"`
 
 	// 首次开启时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 更新时间
-	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
 
 	// 节点类型[NORMAL:普通节点|SUPER:超级节点]
-	NodeType *string `json:"NodeType,omitempty" name:"NodeType"`
+	NodeType *string `json:"NodeType,omitnil" name:"NodeType"`
 
 	// 超级节点子网名称
-	NodeSubNetName *string `json:"NodeSubNetName,omitempty" name:"NodeSubNetName"`
+	NodeSubNetName *string `json:"NodeSubNetName,omitnil" name:"NodeSubNetName"`
 
 	// 超级节点子网网段
-	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitempty" name:"NodeSubNetCIDR"`
+	NodeSubNetCIDR *string `json:"NodeSubNetCIDR,omitnil" name:"NodeSubNetCIDR"`
 
 	// 超级节点子网ID
-	NodeSubNetID *string `json:"NodeSubNetID,omitempty" name:"NodeSubNetID"`
+	NodeSubNetID *string `json:"NodeSubNetID,omitnil" name:"NodeSubNetID"`
 
 	// 超级节点唯一ID
-	NodeUniqueID *string `json:"NodeUniqueID,omitempty" name:"NodeUniqueID"`
+	NodeUniqueID *string `json:"NodeUniqueID,omitnil" name:"NodeUniqueID"`
 
 	// 超级节点ID
-	NodeID *string `json:"NodeID,omitempty" name:"NodeID"`
+	NodeID *string `json:"NodeID,omitnil" name:"NodeID"`
 
 	// Pod Ip
-	PodIP *string `json:"PodIP,omitempty" name:"PodIP"`
+	PodIP *string `json:"PodIP,omitnil" name:"PodIP"`
 
 	// Pod 名称
-	PodName *string `json:"PodName,omitempty" name:"PodName"`
+	PodName *string `json:"PodName,omitnil" name:"PodName"`
 }
 
 type VulDefencePlugin struct {
 	// java进程pid
-	PID *int64 `json:"PID,omitempty" name:"PID"`
+	PID *int64 `json:"PID,omitnil" name:"PID"`
 
 	// 进程主类名
-	MainClass *string `json:"MainClass,omitempty" name:"MainClass"`
+	MainClass *string `json:"MainClass,omitnil" name:"MainClass"`
 
 	// 插件运行状态：注入中:INJECTING，注入成功：SUCCESS，注入失败：FAIL，插件超时：TIMEOUT，插件退出：QUIT
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 错误日志
-	ErrorLog *string `json:"ErrorLog,omitempty" name:"ErrorLog"`
+	ErrorLog *string `json:"ErrorLog,omitnil" name:"ErrorLog"`
 }
 
 type VulDetailInfo struct {
 	// CVE编号
-	CVEID *string `json:"CVEID,omitempty" name:"CVEID"`
+	CVEID *string `json:"CVEID,omitnil" name:"CVEID"`
 
 	// 漏洞名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 漏洞标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil" name:"Tags"`
 
 	// 漏洞类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryType *string `json:"CategoryType,omitempty" name:"CategoryType"`
+	CategoryType *string `json:"CategoryType,omitnil" name:"CategoryType"`
 
 	// 漏洞威胁等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Level *string `json:"Level,omitempty" name:"Level"`
+	Level *string `json:"Level,omitnil" name:"Level"`
 
 	// 漏洞披露时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubmitTime *string `json:"SubmitTime,omitempty" name:"SubmitTime"`
+	SubmitTime *string `json:"SubmitTime,omitnil" name:"SubmitTime"`
 
 	// 漏洞描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// CVSS V3描述
-	CVSSV3Desc *string `json:"CVSSV3Desc,omitempty" name:"CVSSV3Desc"`
+	CVSSV3Desc *string `json:"CVSSV3Desc,omitnil" name:"CVSSV3Desc"`
 
 	// 漏洞修复建议
-	OfficialSolution *string `json:"OfficialSolution,omitempty" name:"OfficialSolution"`
+	OfficialSolution *string `json:"OfficialSolution,omitnil" name:"OfficialSolution"`
 
 	// 缓解措施
-	DefenseSolution *string `json:"DefenseSolution,omitempty" name:"DefenseSolution"`
+	DefenseSolution *string `json:"DefenseSolution,omitnil" name:"DefenseSolution"`
 
 	// 参考链接
-	Reference []*string `json:"Reference,omitempty" name:"Reference"`
+	Reference []*string `json:"Reference,omitnil" name:"Reference"`
 
 	// CVSS V3分数
-	CVSSV3Score *float64 `json:"CVSSV3Score,omitempty" name:"CVSSV3Score"`
+	CVSSV3Score *float64 `json:"CVSSV3Score,omitnil" name:"CVSSV3Score"`
 
 	// 受漏洞影响的组件列表
-	ComponentList []*VulAffectedComponentInfo `json:"ComponentList,omitempty" name:"ComponentList"`
+	ComponentList []*VulAffectedComponentInfo `json:"ComponentList,omitnil" name:"ComponentList"`
 
 	// 影响本地镜像数
-	LocalImageCount *int64 `json:"LocalImageCount,omitempty" name:"LocalImageCount"`
+	LocalImageCount *int64 `json:"LocalImageCount,omitnil" name:"LocalImageCount"`
 
 	// 影响容器数
-	ContainerCount *int64 `json:"ContainerCount,omitempty" name:"ContainerCount"`
+	ContainerCount *int64 `json:"ContainerCount,omitnil" name:"ContainerCount"`
 
 	// 影响仓库镜像数
-	RegistryImageCount *int64 `json:"RegistryImageCount,omitempty" name:"RegistryImageCount"`
+	RegistryImageCount *int64 `json:"RegistryImageCount,omitnil" name:"RegistryImageCount"`
 
 	// 漏洞子类型
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 影响最新本地镜像数
-	LocalNewestImageCount *int64 `json:"LocalNewestImageCount,omitempty" name:"LocalNewestImageCount"`
+	LocalNewestImageCount *int64 `json:"LocalNewestImageCount,omitnil" name:"LocalNewestImageCount"`
 
 	// 影响最新仓库镜像数
-	RegistryNewestImageCount *int64 `json:"RegistryNewestImageCount,omitempty" name:"RegistryNewestImageCount"`
+	RegistryNewestImageCount *int64 `json:"RegistryNewestImageCount,omitnil" name:"RegistryNewestImageCount"`
 
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefenceStatus *string `json:"DefenceStatus,omitempty" name:"DefenceStatus"`
+	DefenceStatus *string `json:"DefenceStatus,omitnil" name:"DefenceStatus"`
 
 	// 漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefenceScope *string `json:"DefenceScope,omitempty" name:"DefenceScope"`
+	DefenceScope *string `json:"DefenceScope,omitnil" name:"DefenceScope"`
 
 	// 漏洞防御主机数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefenceHostCount *int64 `json:"DefenceHostCount,omitempty" name:"DefenceHostCount"`
+	DefenceHostCount *int64 `json:"DefenceHostCount,omitnil" name:"DefenceHostCount"`
 
 	// 已防御攻击次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefendedCount *int64 `json:"DefendedCount,omitempty" name:"DefendedCount"`
+	DefendedCount *int64 `json:"DefendedCount,omitnil" name:"DefendedCount"`
 
 	// 是否已扫描，NOT_SCAN:未扫描,SCANNED:已扫描
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanStatus *string `json:"ScanStatus,omitempty" name:"ScanStatus"`
+	ScanStatus *string `json:"ScanStatus,omitnil" name:"ScanStatus"`
 }
 
 type VulIgnoreLocalImage struct {
 	// 记录ID
-	ID *int64 `json:"ID,omitempty" name:"ID"`
+	ID *int64 `json:"ID,omitnil" name:"ID"`
 
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 镜像大小
-	ImageSize *int64 `json:"ImageSize,omitempty" name:"ImageSize"`
+	ImageSize *int64 `json:"ImageSize,omitnil" name:"ImageSize"`
 
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 }
 
 type VulIgnoreRegistryImage struct {
 	// 记录ID
-	ID *int64 `json:"ID,omitempty" name:"ID"`
+	ID *int64 `json:"ID,omitnil" name:"ID"`
 
 	// 仓库名称
-	RegistryName *string `json:"RegistryName,omitempty" name:"RegistryName"`
+	RegistryName *string `json:"RegistryName,omitnil" name:"RegistryName"`
 
 	// 镜像版本
-	ImageVersion *string `json:"ImageVersion,omitempty" name:"ImageVersion"`
+	ImageVersion *string `json:"ImageVersion,omitnil" name:"ImageVersion"`
 
 	// 仓库地址
-	RegistryPath *string `json:"RegistryPath,omitempty" name:"RegistryPath"`
+	RegistryPath *string `json:"RegistryPath,omitnil" name:"RegistryPath"`
 
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 }
 
 type VulInfo struct {
 	// 漏洞名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 漏洞标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil" name:"Tags"`
 
 	// CVSS V3分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CVSSV3Score *float64 `json:"CVSSV3Score,omitempty" name:"CVSSV3Score"`
+	CVSSV3Score *float64 `json:"CVSSV3Score,omitnil" name:"CVSSV3Score"`
 
 	// 风险等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Level *string `json:"Level,omitempty" name:"Level"`
+	Level *string `json:"Level,omitnil" name:"Level"`
 
 	// CVE编号
-	CVEID *string `json:"CVEID,omitempty" name:"CVEID"`
+	CVEID *string `json:"CVEID,omitnil" name:"CVEID"`
 
 	// 漏洞子类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 首次发现时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FoundTime *string `json:"FoundTime,omitempty" name:"FoundTime"`
+	FoundTime *string `json:"FoundTime,omitnil" name:"FoundTime"`
 
 	// 最近发现时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LatestFoundTime *string `json:"LatestFoundTime,omitempty" name:"LatestFoundTime"`
+	LatestFoundTime *string `json:"LatestFoundTime,omitnil" name:"LatestFoundTime"`
 
 	// 漏洞ID
-	ID *int64 `json:"ID,omitempty" name:"ID"`
+	ID *int64 `json:"ID,omitnil" name:"ID"`
 
 	// 影响本地镜像数
-	LocalImageCount *int64 `json:"LocalImageCount,omitempty" name:"LocalImageCount"`
+	LocalImageCount *int64 `json:"LocalImageCount,omitnil" name:"LocalImageCount"`
 
 	// 影响容器数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainerCount *int64 `json:"ContainerCount,omitempty" name:"ContainerCount"`
+	ContainerCount *int64 `json:"ContainerCount,omitnil" name:"ContainerCount"`
 
 	// 影响仓库镜像数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegistryImageCount *int64 `json:"RegistryImageCount,omitempty" name:"RegistryImageCount"`
+	RegistryImageCount *int64 `json:"RegistryImageCount,omitnil" name:"RegistryImageCount"`
 
 	// 漏洞PocID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 
 	// 防御状态，NO_DEFENDED:未防御，DEFENDED:已防御
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefenceStatus *string `json:"DefenceStatus,omitempty" name:"DefenceStatus"`
+	DefenceStatus *string `json:"DefenceStatus,omitnil" name:"DefenceStatus"`
 
 	// 漏洞防御主机范围: MANUAL:自选主机节点，ALL:全部
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefenceScope *string `json:"DefenceScope,omitempty" name:"DefenceScope"`
+	DefenceScope *string `json:"DefenceScope,omitnil" name:"DefenceScope"`
 
 	// 漏洞防御主机数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefenceHostCount *int64 `json:"DefenceHostCount,omitempty" name:"DefenceHostCount"`
+	DefenceHostCount *int64 `json:"DefenceHostCount,omitnil" name:"DefenceHostCount"`
 
 	// 已防御攻击次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefendedCount *int64 `json:"DefendedCount,omitempty" name:"DefendedCount"`
+	DefendedCount *int64 `json:"DefendedCount,omitnil" name:"DefendedCount"`
 }
 
 type VulScanImageInfo struct {
 	// 镜像ID
-	ImageID *string `json:"ImageID,omitempty" name:"ImageID"`
+	ImageID *string `json:"ImageID,omitnil" name:"ImageID"`
 
 	// 镜像名称
-	ImageName *string `json:"ImageName,omitempty" name:"ImageName"`
+	ImageName *string `json:"ImageName,omitnil" name:"ImageName"`
 
 	// 镜像大小
-	Size *float64 `json:"Size,omitempty" name:"Size"`
+	Size *float64 `json:"Size,omitnil" name:"Size"`
 
 	// 任务状态:SCANNING:扫描中 FAILED:失败 FINISHED:完成 CANCELED:取消
-	ScanStatus *string `json:"ScanStatus,omitempty" name:"ScanStatus"`
+	ScanStatus *string `json:"ScanStatus,omitnil" name:"ScanStatus"`
 
 	// 扫描时长
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanDuration *float64 `json:"ScanDuration,omitempty" name:"ScanDuration"`
+	ScanDuration *float64 `json:"ScanDuration,omitnil" name:"ScanDuration"`
 
 	// 高危漏洞数
-	HighLevelVulCount *int64 `json:"HighLevelVulCount,omitempty" name:"HighLevelVulCount"`
+	HighLevelVulCount *int64 `json:"HighLevelVulCount,omitnil" name:"HighLevelVulCount"`
 
 	// 中危漏洞数
-	MediumLevelVulCount *int64 `json:"MediumLevelVulCount,omitempty" name:"MediumLevelVulCount"`
+	MediumLevelVulCount *int64 `json:"MediumLevelVulCount,omitnil" name:"MediumLevelVulCount"`
 
 	// 低危漏洞数
-	LowLevelVulCount *int64 `json:"LowLevelVulCount,omitempty" name:"LowLevelVulCount"`
+	LowLevelVulCount *int64 `json:"LowLevelVulCount,omitnil" name:"LowLevelVulCount"`
 
 	// 严重漏洞数
-	CriticalLevelVulCount *int64 `json:"CriticalLevelVulCount,omitempty" name:"CriticalLevelVulCount"`
+	CriticalLevelVulCount *int64 `json:"CriticalLevelVulCount,omitnil" name:"CriticalLevelVulCount"`
 
 	// 本地镜像漏洞扫描任务ID
-	TaskID *int64 `json:"TaskID,omitempty" name:"TaskID"`
+	TaskID *int64 `json:"TaskID,omitnil" name:"TaskID"`
 
 	// 漏洞扫描的开始时间
-	ScanStartTime *string `json:"ScanStartTime,omitempty" name:"ScanStartTime"`
+	ScanStartTime *string `json:"ScanStartTime,omitnil" name:"ScanStartTime"`
 
 	// 漏洞扫描的结束时间
-	ScanEndTime *string `json:"ScanEndTime,omitempty" name:"ScanEndTime"`
+	ScanEndTime *string `json:"ScanEndTime,omitnil" name:"ScanEndTime"`
 
 	// 失败原因:TIMEOUT:超时 TOO_MANY:任务过多 OFFLINE:离线
-	ErrorStatus *string `json:"ErrorStatus,omitempty" name:"ErrorStatus"`
+	ErrorStatus *string `json:"ErrorStatus,omitnil" name:"ErrorStatus"`
 }
 
 type VulTendencyInfo struct {
 	// 漏洞趋势列表
-	VulSet []*RunTimeTendencyInfo `json:"VulSet,omitempty" name:"VulSet"`
+	VulSet []*RunTimeTendencyInfo `json:"VulSet,omitnil" name:"VulSet"`
 
 	// 漏洞影响的镜像类型：
 	// LOCAL：本地镜像
 	// REGISTRY: 仓库镜像
-	ImageType *string `json:"ImageType,omitempty" name:"ImageType"`
+	ImageType *string `json:"ImageType,omitnil" name:"ImageType"`
 }
 
 type VulTopRankingInfo struct {
 	// 漏洞名称
-	VulName *string `json:"VulName,omitempty" name:"VulName"`
+	VulName *string `json:"VulName,omitnil" name:"VulName"`
 
 	// 威胁等级,CRITICAL:严重 HIGH:高/MIDDLE:中/LOW:低
-	Level *string `json:"Level,omitempty" name:"Level"`
+	Level *string `json:"Level,omitnil" name:"Level"`
 
 	// 影响的镜像数
-	AffectedImageCount *int64 `json:"AffectedImageCount,omitempty" name:"AffectedImageCount"`
+	AffectedImageCount *int64 `json:"AffectedImageCount,omitnil" name:"AffectedImageCount"`
 
 	// 影响的容器数
-	AffectedContainerCount *int64 `json:"AffectedContainerCount,omitempty" name:"AffectedContainerCount"`
+	AffectedContainerCount *int64 `json:"AffectedContainerCount,omitnil" name:"AffectedContainerCount"`
 
 	// 漏洞ID
-	ID *int64 `json:"ID,omitempty" name:"ID"`
+	ID *int64 `json:"ID,omitnil" name:"ID"`
 
 	// 漏洞PocID
-	PocID *string `json:"PocID,omitempty" name:"PocID"`
+	PocID *string `json:"PocID,omitnil" name:"PocID"`
 }
 
 type WarningRule struct {
@@ -32548,22 +32548,22 @@ type WarningRule struct {
 	// 运行时安全-高危系统调用：RUNTIME_SYSCALL
 	// 运行时安全-反弹Shell：RUNTIME_REVERSE_SHELL
 	// 运行时安全-木马：RUNTIME_VIRUS
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 开关状态：
 	// 打开：ON
 	// 关闭：OFF
-	Switch *string `json:"Switch,omitempty" name:"Switch"`
+	Switch *string `json:"Switch,omitnil" name:"Switch"`
 
 	// 告警开始时间，格式: HH:mm
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 告警结束时间，格式: HH:mm
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 告警等级策略控制，二进制位每位代表一个含义，值以字符串类型传递
 	// 控制开关分为高、中、低，则二进制位分别为：第1位:低，第2位:中，第3位:高，0表示关闭、1表示打开。
 	// 如：高危和中危打开告警，低危关闭告警，则二进制值为：110
 	// 告警类型不区分等级控制，则传1。
-	ControlBits *string `json:"ControlBits,omitempty" name:"ControlBits"`
+	ControlBits *string `json:"ControlBits,omitnil" name:"ControlBits"`
 }

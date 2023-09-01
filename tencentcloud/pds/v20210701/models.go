@@ -15,22 +15,22 @@
 package v20210701
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type DescribeNewUserAcquisitionRequestParams struct {
 	// 用户信息
-	ServiceParams *UserInfos `json:"ServiceParams,omitempty" name:"ServiceParams"`
+	ServiceParams *UserInfos `json:"ServiceParams,omitnil" name:"ServiceParams"`
 }
 
 type DescribeNewUserAcquisitionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 用户信息
-	ServiceParams *UserInfos `json:"ServiceParams,omitempty" name:"ServiceParams"`
+	ServiceParams *UserInfos `json:"ServiceParams,omitnil" name:"ServiceParams"`
 }
 
 func (r *DescribeNewUserAcquisitionRequest) ToJsonString() string {
@@ -55,10 +55,10 @@ func (r *DescribeNewUserAcquisitionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNewUserAcquisitionResponseParams struct {
 	// 用户信誉分，1-5从低到高
-	ServiceRsp *Score `json:"ServiceRsp,omitempty" name:"ServiceRsp"`
+	ServiceRsp *Score `json:"ServiceRsp,omitnil" name:"ServiceRsp"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNewUserAcquisitionResponse struct {
@@ -80,14 +80,14 @@ func (r *DescribeNewUserAcquisitionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStockEstimationRequestParams struct {
 	// 用户信息
-	ServiceParams *UserInfos `json:"ServiceParams,omitempty" name:"ServiceParams"`
+	ServiceParams *UserInfos `json:"ServiceParams,omitnil" name:"ServiceParams"`
 }
 
 type DescribeStockEstimationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 用户信息
-	ServiceParams *UserInfos `json:"ServiceParams,omitempty" name:"ServiceParams"`
+	ServiceParams *UserInfos `json:"ServiceParams,omitnil" name:"ServiceParams"`
 }
 
 func (r *DescribeStockEstimationRequest) ToJsonString() string {
@@ -112,10 +112,10 @@ func (r *DescribeStockEstimationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStockEstimationResponseParams struct {
 	// 用户信誉分，1-5从低到高
-	ServiceRsp *Score `json:"ServiceRsp,omitempty" name:"ServiceRsp"`
+	ServiceRsp *Score `json:"ServiceRsp,omitnil" name:"ServiceRsp"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeStockEstimationResponse struct {
@@ -136,28 +136,28 @@ func (r *DescribeStockEstimationResponse) FromJsonString(s string) error {
 
 type Score struct {
 	// 信誉分，1-5从低到高
-	Star *int64 `json:"Star,omitempty" name:"Star"`
+	Star *int64 `json:"Star,omitnil" name:"Star"`
 }
 
 type UserInfos struct {
 	// 用户的手机号
-	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
+	PhoneNum *string `json:"PhoneNum,omitnil" name:"PhoneNum"`
 
 	// 用户的微信OpenID
-	Openid *string `json:"Openid,omitempty" name:"Openid"`
+	Openid *string `json:"Openid,omitnil" name:"Openid"`
 
 	// 用户移动设备的客户端IP
-	IP *string `json:"IP,omitempty" name:"IP"`
+	IP *string `json:"IP,omitnil" name:"IP"`
 
 	// 用户WiFi的BSSID
-	WiFiBssid *string `json:"WiFiBssid,omitempty" name:"WiFiBssid"`
+	WiFiBssid *string `json:"WiFiBssid,omitnil" name:"WiFiBssid"`
 
 	// 用户Android设备的IMEI
-	IMEI *string `json:"IMEI,omitempty" name:"IMEI"`
+	IMEI *string `json:"IMEI,omitnil" name:"IMEI"`
 
 	// 用户Android设备的OAID
-	OAID *string `json:"OAID,omitempty" name:"OAID"`
+	OAID *string `json:"OAID,omitnil" name:"OAID"`
 
 	// 用户iOS设备的IDFA
-	IDFA *string `json:"IDFA,omitempty" name:"IDFA"`
+	IDFA *string `json:"IDFA,omitnil" name:"IDFA"`
 }

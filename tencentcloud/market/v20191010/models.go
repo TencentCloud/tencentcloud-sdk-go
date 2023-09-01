@@ -15,52 +15,52 @@
 package v20191010
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type FlowProductRemindRequestParams struct {
 	// 服务商uin
-	ProviderUin *string `json:"ProviderUin,omitempty" name:"ProviderUin"`
+	ProviderUin *string `json:"ProviderUin,omitnil" name:"ProviderUin"`
 
 	// 服务商实例ID
-	SignId *string `json:"SignId,omitempty" name:"SignId"`
+	SignId *string `json:"SignId,omitnil" name:"SignId"`
 
 	// 云市场实例ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 实例总流量
-	TotalFlow *string `json:"TotalFlow,omitempty" name:"TotalFlow"`
+	TotalFlow *string `json:"TotalFlow,omitnil" name:"TotalFlow"`
 
 	// 剩余流量
-	LeftFlow *string `json:"LeftFlow,omitempty" name:"LeftFlow"`
+	LeftFlow *string `json:"LeftFlow,omitnil" name:"LeftFlow"`
 
 	// 流量单位
-	FlowUnit *string `json:"FlowUnit,omitempty" name:"FlowUnit"`
+	FlowUnit *string `json:"FlowUnit,omitnil" name:"FlowUnit"`
 }
 
 type FlowProductRemindRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务商uin
-	ProviderUin *string `json:"ProviderUin,omitempty" name:"ProviderUin"`
+	ProviderUin *string `json:"ProviderUin,omitnil" name:"ProviderUin"`
 
 	// 服务商实例ID
-	SignId *string `json:"SignId,omitempty" name:"SignId"`
+	SignId *string `json:"SignId,omitnil" name:"SignId"`
 
 	// 云市场实例ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 实例总流量
-	TotalFlow *string `json:"TotalFlow,omitempty" name:"TotalFlow"`
+	TotalFlow *string `json:"TotalFlow,omitnil" name:"TotalFlow"`
 
 	// 剩余流量
-	LeftFlow *string `json:"LeftFlow,omitempty" name:"LeftFlow"`
+	LeftFlow *string `json:"LeftFlow,omitnil" name:"LeftFlow"`
 
 	// 流量单位
-	FlowUnit *string `json:"FlowUnit,omitempty" name:"FlowUnit"`
+	FlowUnit *string `json:"FlowUnit,omitnil" name:"FlowUnit"`
 }
 
 func (r *FlowProductRemindRequest) ToJsonString() string {
@@ -90,17 +90,17 @@ func (r *FlowProductRemindRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type FlowProductRemindResponseParams struct {
 	// 是否成功
-	Success *string `json:"Success,omitempty" name:"Success"`
+	Success *string `json:"Success,omitnil" name:"Success"`
 
 	// 流水号
-	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 消息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Info *string `json:"Info,omitempty" name:"Info"`
+	Info *string `json:"Info,omitnil" name:"Info"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type FlowProductRemindResponse struct {
@@ -122,14 +122,14 @@ func (r *FlowProductRemindResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetUsagePlanUsageAmountRequestParams struct {
 	// 用于查询实例的Id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type GetUsagePlanUsageAmountRequest struct {
 	*tchttp.BaseRequest
 	
 	// 用于查询实例的Id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *GetUsagePlanUsageAmountRequest) ToJsonString() string {
@@ -154,16 +154,16 @@ func (r *GetUsagePlanUsageAmountRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetUsagePlanUsageAmountResponseParams struct {
 	// 最大调用量
-	MaxRequestNum *int64 `json:"MaxRequestNum,omitempty" name:"MaxRequestNum"`
+	MaxRequestNum *int64 `json:"MaxRequestNum,omitnil" name:"MaxRequestNum"`
 
 	// 已经调用量
-	InUseRequestNum *int64 `json:"InUseRequestNum,omitempty" name:"InUseRequestNum"`
+	InUseRequestNum *int64 `json:"InUseRequestNum,omitnil" name:"InUseRequestNum"`
 
 	// 剩余调用量
-	RemainingRequestNum *int64 `json:"RemainingRequestNum,omitempty" name:"RemainingRequestNum"`
+	RemainingRequestNum *int64 `json:"RemainingRequestNum,omitnil" name:"RemainingRequestNum"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetUsagePlanUsageAmountResponse struct {

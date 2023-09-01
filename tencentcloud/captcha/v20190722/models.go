@@ -15,152 +15,152 @@
 package v20190722
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type CaptchaOperDataInterceptUnit struct {
 	// 时间
-	DateKey *string `json:"DateKey,omitempty" name:"DateKey"`
+	DateKey *string `json:"DateKey,omitnil" name:"DateKey"`
 
 	// 停止验证数量
-	AllStopCnt *float64 `json:"AllStopCnt,omitempty" name:"AllStopCnt"`
+	AllStopCnt *float64 `json:"AllStopCnt,omitnil" name:"AllStopCnt"`
 
 	// 图片停止加载数量
-	PicStopCnt *float64 `json:"PicStopCnt,omitempty" name:"PicStopCnt"`
+	PicStopCnt *float64 `json:"PicStopCnt,omitnil" name:"PicStopCnt"`
 
 	// 策略拦截数量
-	StrategyStopCnt *float64 `json:"StrategyStopCnt,omitempty" name:"StrategyStopCnt"`
+	StrategyStopCnt *float64 `json:"StrategyStopCnt,omitnil" name:"StrategyStopCnt"`
 }
 
 type CaptchaOperDataLoadTimeUnit struct {
 	// 时间
-	DateKey *string `json:"DateKey,omitempty" name:"DateKey"`
+	DateKey *string `json:"DateKey,omitnil" name:"DateKey"`
 
 	// Market加载时间
-	MarketLoadTime *float64 `json:"MarketLoadTime,omitempty" name:"MarketLoadTime"`
+	MarketLoadTime *float64 `json:"MarketLoadTime,omitnil" name:"MarketLoadTime"`
 
 	// AppId加载时间
-	AppIdLoadTime *float64 `json:"AppIdLoadTime,omitempty" name:"AppIdLoadTime"`
+	AppIdLoadTime *float64 `json:"AppIdLoadTime,omitnil" name:"AppIdLoadTime"`
 }
 
 type CaptchaOperDataRes struct {
 	// 验证码加载耗时数据返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperDataLoadTimeUnitArray []*CaptchaOperDataLoadTimeUnit `json:"OperDataLoadTimeUnitArray,omitempty" name:"OperDataLoadTimeUnitArray"`
+	OperDataLoadTimeUnitArray []*CaptchaOperDataLoadTimeUnit `json:"OperDataLoadTimeUnitArray,omitnil" name:"OperDataLoadTimeUnitArray"`
 
 	// 验证码拦截情况数据返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperDataInterceptUnitArray []*CaptchaOperDataInterceptUnit `json:"OperDataInterceptUnitArray,omitempty" name:"OperDataInterceptUnitArray"`
+	OperDataInterceptUnitArray []*CaptchaOperDataInterceptUnit `json:"OperDataInterceptUnitArray,omitnil" name:"OperDataInterceptUnitArray"`
 
 	// 验证码尝试次数数据返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperDataTryTimesUnitArray []*CaptchaOperDataTryTimesUnit `json:"OperDataTryTimesUnitArray,omitempty" name:"OperDataTryTimesUnitArray"`
+	OperDataTryTimesUnitArray []*CaptchaOperDataTryTimesUnit `json:"OperDataTryTimesUnitArray,omitnil" name:"OperDataTryTimesUnitArray"`
 
 	// 验证码尝试次数分布数据返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperDataTryTimesDistributeUnitArray []*CaptchaOperDataTryTimesDistributeUnit `json:"OperDataTryTimesDistributeUnitArray,omitempty" name:"OperDataTryTimesDistributeUnitArray"`
+	OperDataTryTimesDistributeUnitArray []*CaptchaOperDataTryTimesDistributeUnit `json:"OperDataTryTimesDistributeUnitArray,omitnil" name:"OperDataTryTimesDistributeUnitArray"`
 }
 
 type CaptchaOperDataTryTimesDistributeUnit struct {
 	// 尝试次数
-	TryCount *int64 `json:"TryCount,omitempty" name:"TryCount"`
+	TryCount *int64 `json:"TryCount,omitnil" name:"TryCount"`
 
 	// 用户请求数量
-	UserCount *int64 `json:"UserCount,omitempty" name:"UserCount"`
+	UserCount *int64 `json:"UserCount,omitnil" name:"UserCount"`
 }
 
 type CaptchaOperDataTryTimesUnit struct {
 	// 时间
-	DateKey *string `json:"DateKey,omitempty" name:"DateKey"`
+	DateKey *string `json:"DateKey,omitnil" name:"DateKey"`
 
 	// 平均尝试次数
-	CntPerPass []*float64 `json:"CntPerPass,omitempty" name:"CntPerPass"`
+	CntPerPass []*float64 `json:"CntPerPass,omitnil" name:"CntPerPass"`
 
 	// market平均尝试次数
-	MarketCntPerPass *float64 `json:"MarketCntPerPass,omitempty" name:"MarketCntPerPass"`
+	MarketCntPerPass *float64 `json:"MarketCntPerPass,omitnil" name:"MarketCntPerPass"`
 }
 
 type CaptchaQueryData struct {
 	// 数量
-	Cnt *int64 `json:"Cnt,omitempty" name:"Cnt"`
+	Cnt *int64 `json:"Cnt,omitnil" name:"Cnt"`
 
 	// 时间
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 }
 
 type CaptchaStatisticObj struct {
 	// 请求总量
-	ActionTotal *int64 `json:"ActionTotal,omitempty" name:"ActionTotal"`
+	ActionTotal *int64 `json:"ActionTotal,omitnil" name:"ActionTotal"`
 
 	// 验证总量
-	VerifyTotal *int64 `json:"VerifyTotal,omitempty" name:"VerifyTotal"`
+	VerifyTotal *int64 `json:"VerifyTotal,omitnil" name:"VerifyTotal"`
 
 	// 验证通过总量
-	VerifyThroughTotal *int64 `json:"VerifyThroughTotal,omitempty" name:"VerifyThroughTotal"`
+	VerifyThroughTotal *int64 `json:"VerifyThroughTotal,omitnil" name:"VerifyThroughTotal"`
 
 	// 验证拦截总量
-	VerifyInterceptTotal *int64 `json:"VerifyInterceptTotal,omitempty" name:"VerifyInterceptTotal"`
+	VerifyInterceptTotal *int64 `json:"VerifyInterceptTotal,omitnil" name:"VerifyInterceptTotal"`
 
 	// 票据校验总量
-	TicketTotal *int64 `json:"TicketTotal,omitempty" name:"TicketTotal"`
+	TicketTotal *int64 `json:"TicketTotal,omitnil" name:"TicketTotal"`
 
 	// 票据通过总量
-	TicketThroughTotal *int64 `json:"TicketThroughTotal,omitempty" name:"TicketThroughTotal"`
+	TicketThroughTotal *int64 `json:"TicketThroughTotal,omitnil" name:"TicketThroughTotal"`
 
 	// 票据拦截总量
-	TicketInterceptTotal *int64 `json:"TicketInterceptTotal,omitempty" name:"TicketInterceptTotal"`
+	TicketInterceptTotal *int64 `json:"TicketInterceptTotal,omitnil" name:"TicketInterceptTotal"`
 
 	// 请求趋势图
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RequestTrend []*RequestTrendObj `json:"RequestTrend,omitempty" name:"RequestTrend"`
+	RequestTrend []*RequestTrendObj `json:"RequestTrend,omitnil" name:"RequestTrend"`
 
 	// 拦截率趋势图
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InterceptPerTrend []*InterceptPerTrendObj `json:"InterceptPerTrend,omitempty" name:"InterceptPerTrend"`
+	InterceptPerTrend []*InterceptPerTrendObj `json:"InterceptPerTrend,omitnil" name:"InterceptPerTrend"`
 
 	// 票据校验趋势图
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TicketCheckTrend []*TicketCheckTrendObj `json:"TicketCheckTrend,omitempty" name:"TicketCheckTrend"`
+	TicketCheckTrend []*TicketCheckTrendObj `json:"TicketCheckTrend,omitnil" name:"TicketCheckTrend"`
 }
 
 type CaptchaTicketDataRes struct {
 	// 票据验证总量返回
-	TicketAmountArray []*TicketAmountUnit `json:"TicketAmountArray,omitempty" name:"TicketAmountArray"`
+	TicketAmountArray []*TicketAmountUnit `json:"TicketAmountArray,omitnil" name:"TicketAmountArray"`
 
 	// 票据验证通过量返回
-	TicketThroughArray []*TicketThroughUnit `json:"TicketThroughArray,omitempty" name:"TicketThroughArray"`
+	TicketThroughArray []*TicketThroughUnit `json:"TicketThroughArray,omitnil" name:"TicketThroughArray"`
 
 	// 票据验证拦截量返回
-	TicketInterceptArray []*TicketInterceptUnit `json:"TicketInterceptArray,omitempty" name:"TicketInterceptArray"`
+	TicketInterceptArray []*TicketInterceptUnit `json:"TicketInterceptArray,omitnil" name:"TicketInterceptArray"`
 }
 
 type CaptchaUserAllAppId struct {
 	// 验证码应用ID
-	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 注册应用名称
-	AppName *string `json:"AppName,omitempty" name:"AppName"`
+	AppName *string `json:"AppName,omitnil" name:"AppName"`
 
 	// 腾讯云APPID
-	TcAppId *int64 `json:"TcAppId,omitempty" name:"TcAppId"`
+	TcAppId *int64 `json:"TcAppId,omitnil" name:"TcAppId"`
 
 	// 渠道信息
-	ChannelInfo *string `json:"ChannelInfo,omitempty" name:"ChannelInfo"`
+	ChannelInfo *string `json:"ChannelInfo,omitnil" name:"ChannelInfo"`
 }
 
 // Predefined struct for user
 type DescribeCaptchaAppIdInfoRequestParams struct {
 	// 验证码应用注册APPID
-	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 }
 
 type DescribeCaptchaAppIdInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证码应用注册APPID
-	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 }
 
 func (r *DescribeCaptchaAppIdInfoRequest) ToJsonString() string {
@@ -185,54 +185,54 @@ func (r *DescribeCaptchaAppIdInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaAppIdInfoResponseParams struct {
 	// 界面风格
-	SchemeColor *string `json:"SchemeColor,omitempty" name:"SchemeColor"`
+	SchemeColor *string `json:"SchemeColor,omitnil" name:"SchemeColor"`
 
 	// 语言
-	Language *int64 `json:"Language,omitempty" name:"Language"`
+	Language *int64 `json:"Language,omitnil" name:"Language"`
 
 	// 场景
-	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
+	SceneType *int64 `json:"SceneType,omitnil" name:"SceneType"`
 
 	// 防控风险等级
-	EvilInterceptGrade *int64 `json:"EvilInterceptGrade,omitempty" name:"EvilInterceptGrade"`
+	EvilInterceptGrade *int64 `json:"EvilInterceptGrade,omitnil" name:"EvilInterceptGrade"`
 
 	// 智能验证
-	SmartVerify *int64 `json:"SmartVerify,omitempty" name:"SmartVerify"`
+	SmartVerify *int64 `json:"SmartVerify,omitnil" name:"SmartVerify"`
 
 	// 智能引擎
-	SmartEngine *int64 `json:"SmartEngine,omitempty" name:"SmartEngine"`
+	SmartEngine *int64 `json:"SmartEngine,omitnil" name:"SmartEngine"`
 
 	// 验证码类型
-	CapType *int64 `json:"CapType,omitempty" name:"CapType"`
+	CapType *int64 `json:"CapType,omitnil" name:"CapType"`
 
 	// 应用名称
-	AppName *string `json:"AppName,omitempty" name:"AppName"`
+	AppName *string `json:"AppName,omitnil" name:"AppName"`
 
 	// 域名限制
-	DomainLimit *string `json:"DomainLimit,omitempty" name:"DomainLimit"`
+	DomainLimit *string `json:"DomainLimit,omitnil" name:"DomainLimit"`
 
 	// 邮件告警
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MailAlarm []*string `json:"MailAlarm,omitempty" name:"MailAlarm"`
+	MailAlarm []*string `json:"MailAlarm,omitnil" name:"MailAlarm"`
 
 	// 流量控制
-	TrafficThreshold *int64 `json:"TrafficThreshold,omitempty" name:"TrafficThreshold"`
+	TrafficThreshold *int64 `json:"TrafficThreshold,omitnil" name:"TrafficThreshold"`
 
 	// 加密key
-	EncryptKey *string `json:"EncryptKey,omitempty" name:"EncryptKey"`
+	EncryptKey *string `json:"EncryptKey,omitnil" name:"EncryptKey"`
 
 	// 是否全屏
-	TopFullScreen *int64 `json:"TopFullScreen,omitempty" name:"TopFullScreen"`
+	TopFullScreen *int64 `json:"TopFullScreen,omitnil" name:"TopFullScreen"`
 
 	// 成功返回0 其它失败
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 返回操作信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCaptchaAppIdInfoResponse struct {
@@ -254,32 +254,32 @@ func (r *DescribeCaptchaAppIdInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaDataRequestParams struct {
 	// 验证码应用ID
-	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间
-	Start *int64 `json:"Start,omitempty" name:"Start"`
+	Start *int64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询结束时间
-	End *int64 `json:"End,omitempty" name:"End"`
+	End *int64 `json:"End,omitnil" name:"End"`
 
 	// 查询类型
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 }
 
 type DescribeCaptchaDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证码应用ID
-	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间
-	Start *int64 `json:"Start,omitempty" name:"Start"`
+	Start *int64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询结束时间
-	End *int64 `json:"End,omitempty" name:"End"`
+	End *int64 `json:"End,omitnil" name:"End"`
 
 	// 查询类型
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 }
 
 func (r *DescribeCaptchaDataRequest) ToJsonString() string {
@@ -307,18 +307,18 @@ func (r *DescribeCaptchaDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaDataResponseParams struct {
 	// 返回码 0 成功 其它失败
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 数据数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*CaptchaQueryData `json:"Data,omitempty" name:"Data"`
+	Data []*CaptchaQueryData `json:"Data,omitnil" name:"Data"`
 
 	// 返回信息描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCaptchaDataResponse struct {
@@ -340,26 +340,26 @@ func (r *DescribeCaptchaDataResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaDataSumRequestParams struct {
 	// 验证码应用ID
-	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间
-	Start *int64 `json:"Start,omitempty" name:"Start"`
+	Start *int64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询结束时间
-	End *int64 `json:"End,omitempty" name:"End"`
+	End *int64 `json:"End,omitnil" name:"End"`
 }
 
 type DescribeCaptchaDataSumRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证码应用ID
-	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间
-	Start *int64 `json:"Start,omitempty" name:"Start"`
+	Start *int64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询结束时间
-	End *int64 `json:"End,omitempty" name:"End"`
+	End *int64 `json:"End,omitnil" name:"End"`
 }
 
 func (r *DescribeCaptchaDataSumRequest) ToJsonString() string {
@@ -386,35 +386,35 @@ func (r *DescribeCaptchaDataSumRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaDataSumResponseParams struct {
 	// 请求总量
-	GetSum *int64 `json:"GetSum,omitempty" name:"GetSum"`
+	GetSum *int64 `json:"GetSum,omitnil" name:"GetSum"`
 
 	// 请求验证成功量
-	VfySuccSum *int64 `json:"VfySuccSum,omitempty" name:"VfySuccSum"`
+	VfySuccSum *int64 `json:"VfySuccSum,omitnil" name:"VfySuccSum"`
 
 	// 请求验证量
-	VfySum *int64 `json:"VfySum,omitempty" name:"VfySum"`
+	VfySum *int64 `json:"VfySum,omitnil" name:"VfySum"`
 
 	// 拦截攻击量
-	AttackSum *int64 `json:"AttackSum,omitempty" name:"AttackSum"`
+	AttackSum *int64 `json:"AttackSum,omitnil" name:"AttackSum"`
 
 	// 返回信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 成功返回0  其它失败
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 票据校验总量
-	CheckTicketSum *int64 `json:"CheckTicketSum,omitempty" name:"CheckTicketSum"`
+	CheckTicketSum *int64 `json:"CheckTicketSum,omitnil" name:"CheckTicketSum"`
 
 	// 票据验证通过量
-	TicketThroughputSum *int64 `json:"TicketThroughputSum,omitempty" name:"TicketThroughputSum"`
+	TicketThroughputSum *int64 `json:"TicketThroughputSum,omitnil" name:"TicketThroughputSum"`
 
 	// 票据验证拦截量
-	TicketInterceptSum *int64 `json:"TicketInterceptSum,omitempty" name:"TicketInterceptSum"`
+	TicketInterceptSum *int64 `json:"TicketInterceptSum,omitnil" name:"TicketInterceptSum"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCaptchaDataSumResponse struct {
@@ -436,32 +436,32 @@ func (r *DescribeCaptchaDataSumResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaMiniDataRequestParams struct {
 	// 验证码应用ID
-	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间 例如：2019112900
-	Start *int64 `json:"Start,omitempty" name:"Start"`
+	Start *int64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询结束时间 例如：2019112902
-	End *int64 `json:"End,omitempty" name:"End"`
+	End *int64 `json:"End,omitnil" name:"End"`
 
 	// 查询类型 安全验证码小程序插件分类查询数据接口，请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 }
 
 type DescribeCaptchaMiniDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证码应用ID
-	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间 例如：2019112900
-	Start *int64 `json:"Start,omitempty" name:"Start"`
+	Start *int64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询结束时间 例如：2019112902
-	End *int64 `json:"End,omitempty" name:"End"`
+	End *int64 `json:"End,omitnil" name:"End"`
 
 	// 查询类型 安全验证码小程序插件分类查询数据接口，请求量type=0、通过量type=1、验证量type=2、拦截量type=3 小时级查询（五小时左右延迟）
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 }
 
 func (r *DescribeCaptchaMiniDataRequest) ToJsonString() string {
@@ -489,18 +489,18 @@ func (r *DescribeCaptchaMiniDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaMiniDataResponseParams struct {
 	// 返回码 0 成功 其它失败
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 数据数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*CaptchaQueryData `json:"Data,omitempty" name:"Data"`
+	Data []*CaptchaQueryData `json:"Data,omitnil" name:"Data"`
 
 	// 返回信息描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCaptchaMiniDataResponse struct {
@@ -522,26 +522,26 @@ func (r *DescribeCaptchaMiniDataResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaMiniDataSumRequestParams struct {
 	// 验证码应用ID
-	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间
-	Start *int64 `json:"Start,omitempty" name:"Start"`
+	Start *int64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询结束时间
-	End *int64 `json:"End,omitempty" name:"End"`
+	End *int64 `json:"End,omitnil" name:"End"`
 }
 
 type DescribeCaptchaMiniDataSumRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证码应用ID
-	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间
-	Start *int64 `json:"Start,omitempty" name:"Start"`
+	Start *int64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询结束时间
-	End *int64 `json:"End,omitempty" name:"End"`
+	End *int64 `json:"End,omitnil" name:"End"`
 }
 
 func (r *DescribeCaptchaMiniDataSumRequest) ToJsonString() string {
@@ -569,42 +569,42 @@ func (r *DescribeCaptchaMiniDataSumRequest) FromJsonString(s string) error {
 type DescribeCaptchaMiniDataSumResponseParams struct {
 	// 请求总量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GetSum *int64 `json:"GetSum,omitempty" name:"GetSum"`
+	GetSum *int64 `json:"GetSum,omitnil" name:"GetSum"`
 
 	// 请求验证成功量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VfySuccSum *int64 `json:"VfySuccSum,omitempty" name:"VfySuccSum"`
+	VfySuccSum *int64 `json:"VfySuccSum,omitnil" name:"VfySuccSum"`
 
 	// 请求验证量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VfySum *int64 `json:"VfySum,omitempty" name:"VfySum"`
+	VfySum *int64 `json:"VfySum,omitnil" name:"VfySum"`
 
 	// 拦截攻击量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AttackSum *int64 `json:"AttackSum,omitempty" name:"AttackSum"`
+	AttackSum *int64 `json:"AttackSum,omitnil" name:"AttackSum"`
 
 	// 返回信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 成功返回0  其它失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 票据校验总量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CheckTicketSum *int64 `json:"CheckTicketSum,omitempty" name:"CheckTicketSum"`
+	CheckTicketSum *int64 `json:"CheckTicketSum,omitnil" name:"CheckTicketSum"`
 
 	// 票据验证通过量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TicketThroughputSum *int64 `json:"TicketThroughputSum,omitempty" name:"TicketThroughputSum"`
+	TicketThroughputSum *int64 `json:"TicketThroughputSum,omitnil" name:"TicketThroughputSum"`
 
 	// 票据验证拦截量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TicketInterceptSum *int64 `json:"TicketInterceptSum,omitempty" name:"TicketInterceptSum"`
+	TicketInterceptSum *int64 `json:"TicketInterceptSum,omitnil" name:"TicketInterceptSum"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCaptchaMiniDataSumResponse struct {
@@ -626,32 +626,32 @@ func (r *DescribeCaptchaMiniDataSumResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaMiniOperDataRequestParams struct {
 	// 验证码应用ID
-	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间
-	Start *uint64 `json:"Start,omitempty" name:"Start"`
+	Start *uint64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询类型
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
 	// 查询结束时间
-	End *uint64 `json:"End,omitempty" name:"End"`
+	End *uint64 `json:"End,omitnil" name:"End"`
 }
 
 type DescribeCaptchaMiniOperDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证码应用ID
-	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间
-	Start *uint64 `json:"Start,omitempty" name:"Start"`
+	Start *uint64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询类型
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
 	// 查询结束时间
-	End *uint64 `json:"End,omitempty" name:"End"`
+	End *uint64 `json:"End,omitnil" name:"End"`
 }
 
 func (r *DescribeCaptchaMiniOperDataRequest) ToJsonString() string {
@@ -679,18 +679,18 @@ func (r *DescribeCaptchaMiniOperDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaMiniOperDataResponseParams struct {
 	// 成功返回 0 其它失败
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 返回信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 用户操作数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *CaptchaOperDataRes `json:"Data,omitempty" name:"Data"`
+	Data *CaptchaOperDataRes `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCaptchaMiniOperDataResponse struct {
@@ -712,62 +712,62 @@ func (r *DescribeCaptchaMiniOperDataResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaMiniResultRequestParams struct {
 	// 固定填值：9（滑块验证码）
-	CaptchaType *uint64 `json:"CaptchaType,omitempty" name:"CaptchaType"`
+	CaptchaType *uint64 `json:"CaptchaType,omitnil" name:"CaptchaType"`
 
 	// 验证码返回给用户的票据
-	Ticket *string `json:"Ticket,omitempty" name:"Ticket"`
+	Ticket *string `json:"Ticket,omitnil" name:"Ticket"`
 
 	// 业务侧获取到的验证码使用者的外网IP
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
 	// 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
-	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
-	AppSecretKey *string `json:"AppSecretKey,omitempty" name:"AppSecretKey"`
+	AppSecretKey *string `json:"AppSecretKey,omitnil" name:"AppSecretKey"`
 
 	// 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
-	BusinessId *uint64 `json:"BusinessId,omitempty" name:"BusinessId"`
+	BusinessId *uint64 `json:"BusinessId,omitnil" name:"BusinessId"`
 
 	// 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
-	SceneId *uint64 `json:"SceneId,omitempty" name:"SceneId"`
+	SceneId *uint64 `json:"SceneId,omitnil" name:"SceneId"`
 
 	// mac 地址或设备唯一标识
-	MacAddress *string `json:"MacAddress,omitempty" name:"MacAddress"`
+	MacAddress *string `json:"MacAddress,omitnil" name:"MacAddress"`
 
 	// 手机设备号
-	Imei *string `json:"Imei,omitempty" name:"Imei"`
+	Imei *string `json:"Imei,omitnil" name:"Imei"`
 }
 
 type DescribeCaptchaMiniResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// 固定填值：9（滑块验证码）
-	CaptchaType *uint64 `json:"CaptchaType,omitempty" name:"CaptchaType"`
+	CaptchaType *uint64 `json:"CaptchaType,omitnil" name:"CaptchaType"`
 
 	// 验证码返回给用户的票据
-	Ticket *string `json:"Ticket,omitempty" name:"Ticket"`
+	Ticket *string `json:"Ticket,omitnil" name:"Ticket"`
 
 	// 业务侧获取到的验证码使用者的外网IP
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
 	// 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
-	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
-	AppSecretKey *string `json:"AppSecretKey,omitempty" name:"AppSecretKey"`
+	AppSecretKey *string `json:"AppSecretKey,omitnil" name:"AppSecretKey"`
 
 	// 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
-	BusinessId *uint64 `json:"BusinessId,omitempty" name:"BusinessId"`
+	BusinessId *uint64 `json:"BusinessId,omitnil" name:"BusinessId"`
 
 	// 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
-	SceneId *uint64 `json:"SceneId,omitempty" name:"SceneId"`
+	SceneId *uint64 `json:"SceneId,omitnil" name:"SceneId"`
 
 	// mac 地址或设备唯一标识
-	MacAddress *string `json:"MacAddress,omitempty" name:"MacAddress"`
+	MacAddress *string `json:"MacAddress,omitnil" name:"MacAddress"`
 
 	// 手机设备号
-	Imei *string `json:"Imei,omitempty" name:"Imei"`
+	Imei *string `json:"Imei,omitnil" name:"Imei"`
 }
 
 func (r *DescribeCaptchaMiniResultRequest) ToJsonString() string {
@@ -810,14 +810,14 @@ type DescribeCaptchaMiniResultResponseParams struct {
 	// 26    system internal error     系统内部错误
 	// 31    UnauthorizedOperation.Unauthorized   无有效套餐包/账户已欠费
 	// 100   param err     参数校验错误
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 状态描述及验证错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCaptchaMiniResultResponse struct {
@@ -839,74 +839,74 @@ func (r *DescribeCaptchaMiniResultResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaMiniRiskResultRequestParams struct {
 	// 固定填值：9（滑块验证码）
-	CaptchaType *uint64 `json:"CaptchaType,omitempty" name:"CaptchaType"`
+	CaptchaType *uint64 `json:"CaptchaType,omitnil" name:"CaptchaType"`
 
 	// 验证码返回给用户的票据
-	Ticket *string `json:"Ticket,omitempty" name:"Ticket"`
+	Ticket *string `json:"Ticket,omitnil" name:"Ticket"`
 
 	// 业务侧获取到的验证码使用者的外网IP
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
 	// 验证码应用APPID
-	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
-	AppSecretKey *string `json:"AppSecretKey,omitempty" name:"AppSecretKey"`
+	AppSecretKey *string `json:"AppSecretKey,omitnil" name:"AppSecretKey"`
 
 	// 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
-	BusinessId *uint64 `json:"BusinessId,omitempty" name:"BusinessId"`
+	BusinessId *uint64 `json:"BusinessId,omitnil" name:"BusinessId"`
 
 	// 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
-	SceneId *uint64 `json:"SceneId,omitempty" name:"SceneId"`
+	SceneId *uint64 `json:"SceneId,omitnil" name:"SceneId"`
 
 	// mac 地址或设备唯一标识
-	MacAddress *string `json:"MacAddress,omitempty" name:"MacAddress"`
+	MacAddress *string `json:"MacAddress,omitnil" name:"MacAddress"`
 
 	// 手机设备号
-	Imei *string `json:"Imei,omitempty" name:"Imei"`
+	Imei *string `json:"Imei,omitnil" name:"Imei"`
 
 	// 验证场景：1 活动防刷场景，2 登录保护场景，3 注册保护场景。根据需求选择场景参数。
-	SceneCode *int64 `json:"SceneCode,omitempty" name:"SceneCode"`
+	SceneCode *int64 `json:"SceneCode,omitnil" name:"SceneCode"`
 
 	// 用户操作来源的微信开放账号
-	WeChatOpenId *string `json:"WeChatOpenId,omitempty" name:"WeChatOpenId"`
+	WeChatOpenId *string `json:"WeChatOpenId,omitnil" name:"WeChatOpenId"`
 }
 
 type DescribeCaptchaMiniRiskResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// 固定填值：9（滑块验证码）
-	CaptchaType *uint64 `json:"CaptchaType,omitempty" name:"CaptchaType"`
+	CaptchaType *uint64 `json:"CaptchaType,omitnil" name:"CaptchaType"`
 
 	// 验证码返回给用户的票据
-	Ticket *string `json:"Ticket,omitempty" name:"Ticket"`
+	Ticket *string `json:"Ticket,omitnil" name:"Ticket"`
 
 	// 业务侧获取到的验证码使用者的外网IP
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
 	// 验证码应用APPID
-	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 用于服务器端校验验证码票据的验证密钥，请妥善保密，请勿泄露给第三方
-	AppSecretKey *string `json:"AppSecretKey,omitempty" name:"AppSecretKey"`
+	AppSecretKey *string `json:"AppSecretKey,omitnil" name:"AppSecretKey"`
 
 	// 业务 ID，网站或应用在多个业务中使用此服务，通过此 ID 区分统计数据
-	BusinessId *uint64 `json:"BusinessId,omitempty" name:"BusinessId"`
+	BusinessId *uint64 `json:"BusinessId,omitnil" name:"BusinessId"`
 
 	// 场景 ID，网站或应用的业务下有多个场景使用此服务，通过此 ID 区分统计数据
-	SceneId *uint64 `json:"SceneId,omitempty" name:"SceneId"`
+	SceneId *uint64 `json:"SceneId,omitnil" name:"SceneId"`
 
 	// mac 地址或设备唯一标识
-	MacAddress *string `json:"MacAddress,omitempty" name:"MacAddress"`
+	MacAddress *string `json:"MacAddress,omitnil" name:"MacAddress"`
 
 	// 手机设备号
-	Imei *string `json:"Imei,omitempty" name:"Imei"`
+	Imei *string `json:"Imei,omitnil" name:"Imei"`
 
 	// 验证场景：1 活动防刷场景，2 登录保护场景，3 注册保护场景。根据需求选择场景参数。
-	SceneCode *int64 `json:"SceneCode,omitempty" name:"SceneCode"`
+	SceneCode *int64 `json:"SceneCode,omitnil" name:"SceneCode"`
 
 	// 用户操作来源的微信开放账号
-	WeChatOpenId *string `json:"WeChatOpenId,omitempty" name:"WeChatOpenId"`
+	WeChatOpenId *string `json:"WeChatOpenId,omitnil" name:"WeChatOpenId"`
 }
 
 func (r *DescribeCaptchaMiniRiskResultRequest) ToJsonString() string {
@@ -950,20 +950,20 @@ type DescribeCaptchaMiniRiskResultResponseParams struct {
 	// 25 bad visitor 策略拦截
 	// 26 system internal error 系统内部错误
 	// 100 param err 参数校验错误
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 状态描述及验证错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 拦截策略返回信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ManageMarketingRiskValue *OutputManageMarketingRiskValue `json:"ManageMarketingRiskValue,omitempty" name:"ManageMarketingRiskValue"`
+	ManageMarketingRiskValue *OutputManageMarketingRiskValue `json:"ManageMarketingRiskValue,omitnil" name:"ManageMarketingRiskValue"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCaptchaMiniRiskResultResponse struct {
@@ -985,32 +985,32 @@ func (r *DescribeCaptchaMiniRiskResultResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaOperDataRequestParams struct {
 	// 验证码应用ID
-	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间
-	Start *uint64 `json:"Start,omitempty" name:"Start"`
+	Start *uint64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询类型
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
 	// 查询结束时间
-	End *uint64 `json:"End,omitempty" name:"End"`
+	End *uint64 `json:"End,omitnil" name:"End"`
 }
 
 type DescribeCaptchaOperDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证码应用ID
-	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间
-	Start *uint64 `json:"Start,omitempty" name:"Start"`
+	Start *uint64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询类型
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
 	// 查询结束时间
-	End *uint64 `json:"End,omitempty" name:"End"`
+	End *uint64 `json:"End,omitnil" name:"End"`
 }
 
 func (r *DescribeCaptchaOperDataRequest) ToJsonString() string {
@@ -1038,18 +1038,18 @@ func (r *DescribeCaptchaOperDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaOperDataResponseParams struct {
 	// 成功返回 0 其它失败
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 返回信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 用户操作数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *CaptchaOperDataRes `json:"Data,omitempty" name:"Data"`
+	Data *CaptchaOperDataRes `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCaptchaOperDataResponse struct {
@@ -1071,74 +1071,74 @@ func (r *DescribeCaptchaOperDataResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaResultRequestParams struct {
 	// 固定填值：9。可在控制台配置不同验证码类型。
-	CaptchaType *uint64 `json:"CaptchaType,omitempty" name:"CaptchaType"`
+	CaptchaType *uint64 `json:"CaptchaType,omitnil" name:"CaptchaType"`
 
 	// 前端回调函数返回的用户验证票据
-	Ticket *string `json:"Ticket,omitempty" name:"Ticket"`
+	Ticket *string `json:"Ticket,omitnil" name:"Ticket"`
 
 	// 业务侧获取到的验证码使用者的外网IP
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
 	// 前端回调函数返回的随机字符串
-	Randstr *string `json:"Randstr,omitempty" name:"Randstr"`
+	Randstr *string `json:"Randstr,omitnil" name:"Randstr"`
 
 	// 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
-	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
-	AppSecretKey *string `json:"AppSecretKey,omitempty" name:"AppSecretKey"`
+	AppSecretKey *string `json:"AppSecretKey,omitnil" name:"AppSecretKey"`
 
 	// 预留字段
-	BusinessId *uint64 `json:"BusinessId,omitempty" name:"BusinessId"`
+	BusinessId *uint64 `json:"BusinessId,omitnil" name:"BusinessId"`
 
 	// 预留字段
-	SceneId *uint64 `json:"SceneId,omitempty" name:"SceneId"`
+	SceneId *uint64 `json:"SceneId,omitnil" name:"SceneId"`
 
 	// mac 地址或设备唯一标识
-	MacAddress *string `json:"MacAddress,omitempty" name:"MacAddress"`
+	MacAddress *string `json:"MacAddress,omitnil" name:"MacAddress"`
 
 	// 手机设备号
-	Imei *string `json:"Imei,omitempty" name:"Imei"`
+	Imei *string `json:"Imei,omitnil" name:"Imei"`
 
 	// 是否返回前端获取验证码时间，取值1：需要返回
-	NeedGetCaptchaTime *int64 `json:"NeedGetCaptchaTime,omitempty" name:"NeedGetCaptchaTime"`
+	NeedGetCaptchaTime *int64 `json:"NeedGetCaptchaTime,omitnil" name:"NeedGetCaptchaTime"`
 }
 
 type DescribeCaptchaResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// 固定填值：9。可在控制台配置不同验证码类型。
-	CaptchaType *uint64 `json:"CaptchaType,omitempty" name:"CaptchaType"`
+	CaptchaType *uint64 `json:"CaptchaType,omitnil" name:"CaptchaType"`
 
 	// 前端回调函数返回的用户验证票据
-	Ticket *string `json:"Ticket,omitempty" name:"Ticket"`
+	Ticket *string `json:"Ticket,omitnil" name:"Ticket"`
 
 	// 业务侧获取到的验证码使用者的外网IP
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
 	// 前端回调函数返回的随机字符串
-	Randstr *string `json:"Randstr,omitempty" name:"Randstr"`
+	Randstr *string `json:"Randstr,omitnil" name:"Randstr"`
 
 	// 验证码应用ID。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到CaptchaAppId。
-	CaptchaAppId *uint64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *uint64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 验证码应用密钥。登录 [验证码控制台](https://console.cloud.tencent.com/captcha/graphical)，在验证列表的【密钥】列，即可查看到AppSecretKey。AppSecretKey属于服务器端校验验证码票据的密钥，请妥善保密，请勿泄露给第三方。
-	AppSecretKey *string `json:"AppSecretKey,omitempty" name:"AppSecretKey"`
+	AppSecretKey *string `json:"AppSecretKey,omitnil" name:"AppSecretKey"`
 
 	// 预留字段
-	BusinessId *uint64 `json:"BusinessId,omitempty" name:"BusinessId"`
+	BusinessId *uint64 `json:"BusinessId,omitnil" name:"BusinessId"`
 
 	// 预留字段
-	SceneId *uint64 `json:"SceneId,omitempty" name:"SceneId"`
+	SceneId *uint64 `json:"SceneId,omitnil" name:"SceneId"`
 
 	// mac 地址或设备唯一标识
-	MacAddress *string `json:"MacAddress,omitempty" name:"MacAddress"`
+	MacAddress *string `json:"MacAddress,omitnil" name:"MacAddress"`
 
 	// 手机设备号
-	Imei *string `json:"Imei,omitempty" name:"Imei"`
+	Imei *string `json:"Imei,omitnil" name:"Imei"`
 
 	// 是否返回前端获取验证码时间，取值1：需要返回
-	NeedGetCaptchaTime *int64 `json:"NeedGetCaptchaTime,omitempty" name:"NeedGetCaptchaTime"`
+	NeedGetCaptchaTime *int64 `json:"NeedGetCaptchaTime,omitnil" name:"NeedGetCaptchaTime"`
 }
 
 func (r *DescribeCaptchaResultRequest) ToJsonString() string {
@@ -1180,31 +1180,31 @@ type DescribeCaptchaResultResponseParams struct {
 	// 16 appid-ticket mismatch 传入的CaptchaAppId错误，请检查CaptchaAppId是否与前端传入的CaptchaAppId一致，并且保障CaptchaAppId是从验证码控制台【验证管理】->【基础配置】中获取
 	// 21 diff 票据校验异常，可能的原因是（1）若Ticket包含terror前缀，一般是由于用户网络较差，导致前端自动容灾，而生成了容灾票据，业务侧可根据需要进行跳过或二次处理。（2）若Ticket不包含terror前缀，则是由于验证码风控系统发现请求有安全风险，业务侧可根据需要进行拦截。
 	// 100 appid-secretkey-ticket mismatch 参数校验错误，（1）请检查CaptchaAppId与AppSecretKey是否正确，CaptchaAppId、AppSecretKey需要在验证码控制台【验证管理】>【基础配置】中获取（2）请检查传入的Ticket是否由传入的CaptchaAppId生成
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 状态描述及验证错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 无感验证模式下，该参数返回验证结果：
 	// EvilLevel=0 请求无恶意
 	// EvilLevel=100 请求有恶意
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EvilLevel *int64 `json:"EvilLevel,omitempty" name:"EvilLevel"`
+	EvilLevel *int64 `json:"EvilLevel,omitnil" name:"EvilLevel"`
 
 	// 前端获取验证码时间，时间戳格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GetCaptchaTime *int64 `json:"GetCaptchaTime,omitempty" name:"GetCaptchaTime"`
+	GetCaptchaTime *int64 `json:"GetCaptchaTime,omitnil" name:"GetCaptchaTime"`
 
 	// 拦截类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EvilBitmap *int64 `json:"EvilBitmap,omitempty" name:"EvilBitmap"`
+	EvilBitmap *int64 `json:"EvilBitmap,omitnil" name:"EvilBitmap"`
 
 	// 提交验证码时间
-	SubmitCaptchaTime *int64 `json:"SubmitCaptchaTime,omitempty" name:"SubmitCaptchaTime"`
+	SubmitCaptchaTime *int64 `json:"SubmitCaptchaTime,omitnil" name:"SubmitCaptchaTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCaptchaResultResponse struct {
@@ -1226,26 +1226,26 @@ func (r *DescribeCaptchaResultResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaTicketDataRequestParams struct {
 	// 验证码应用ID
-	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间 例如：20200909
-	Start *int64 `json:"Start,omitempty" name:"Start"`
+	Start *int64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询结束时间 例如：20220314
-	End *int64 `json:"End,omitempty" name:"End"`
+	End *int64 `json:"End,omitnil" name:"End"`
 }
 
 type DescribeCaptchaTicketDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证码应用ID
-	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 查询开始时间 例如：20200909
-	Start *int64 `json:"Start,omitempty" name:"Start"`
+	Start *int64 `json:"Start,omitnil" name:"Start"`
 
 	// 查询结束时间 例如：20220314
-	End *int64 `json:"End,omitempty" name:"End"`
+	End *int64 `json:"End,omitnil" name:"End"`
 }
 
 func (r *DescribeCaptchaTicketDataRequest) ToJsonString() string {
@@ -1272,18 +1272,18 @@ func (r *DescribeCaptchaTicketDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCaptchaTicketDataResponseParams struct {
 	// 成功返回 0 其它失败
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 返回信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 验证码票据信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *CaptchaTicketDataRes `json:"Data,omitempty" name:"Data"`
+	Data *CaptchaTicketDataRes `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCaptchaTicketDataResponse struct {
@@ -1335,17 +1335,17 @@ func (r *DescribeCaptchaUserAllAppIdRequest) FromJsonString(s string) error {
 type DescribeCaptchaUserAllAppIdResponseParams struct {
 	// 用户注册的所有Appid和应用名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*CaptchaUserAllAppId `json:"Data,omitempty" name:"Data"`
+	Data []*CaptchaUserAllAppId `json:"Data,omitnil" name:"Data"`
 
 	// 成功返回 0  其它失败
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 返回操作信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCaptchaUserAllAppIdResponse struct {
@@ -1367,32 +1367,32 @@ func (r *DescribeCaptchaUserAllAppIdResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetRequestStatisticsRequestParams struct {
 	// 验证码AppId
-	CaptchaAppId *string `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *string `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 开始时间字符串
-	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
+	StartTimeStr *string `json:"StartTimeStr,omitnil" name:"StartTimeStr"`
 
 	// 结束时间字符串
-	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+	EndTimeStr *string `json:"EndTimeStr,omitnil" name:"EndTimeStr"`
 
 	// 查询粒度
-	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
+	Dimension *string `json:"Dimension,omitnil" name:"Dimension"`
 }
 
 type GetRequestStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证码AppId
-	CaptchaAppId *string `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *string `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 开始时间字符串
-	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
+	StartTimeStr *string `json:"StartTimeStr,omitnil" name:"StartTimeStr"`
 
 	// 结束时间字符串
-	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+	EndTimeStr *string `json:"EndTimeStr,omitnil" name:"EndTimeStr"`
 
 	// 查询粒度
-	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
+	Dimension *string `json:"Dimension,omitnil" name:"Dimension"`
 }
 
 func (r *GetRequestStatisticsRequest) ToJsonString() string {
@@ -1421,16 +1421,16 @@ func (r *GetRequestStatisticsRequest) FromJsonString(s string) error {
 type GetRequestStatisticsResponseParams struct {
 	// 查询后数据块
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *CaptchaStatisticObj `json:"Data,omitempty" name:"Data"`
+	Data *CaptchaStatisticObj `json:"Data,omitnil" name:"Data"`
 
 	// 验证码返回码
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 验证码返回信息
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetRequestStatisticsResponse struct {
@@ -1452,32 +1452,32 @@ func (r *GetRequestStatisticsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTicketStatisticsRequestParams struct {
 	// 验证码AppId
-	CaptchaAppId *string `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *string `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 开始时间字符串
-	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
+	StartTimeStr *string `json:"StartTimeStr,omitnil" name:"StartTimeStr"`
 
 	// 结束时间字符串
-	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+	EndTimeStr *string `json:"EndTimeStr,omitnil" name:"EndTimeStr"`
 
 	// 查询粒度
-	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
+	Dimension *string `json:"Dimension,omitnil" name:"Dimension"`
 }
 
 type GetTicketStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证码AppId
-	CaptchaAppId *string `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *string `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 开始时间字符串
-	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
+	StartTimeStr *string `json:"StartTimeStr,omitnil" name:"StartTimeStr"`
 
 	// 结束时间字符串
-	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+	EndTimeStr *string `json:"EndTimeStr,omitnil" name:"EndTimeStr"`
 
 	// 查询粒度
-	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
+	Dimension *string `json:"Dimension,omitnil" name:"Dimension"`
 }
 
 func (r *GetTicketStatisticsRequest) ToJsonString() string {
@@ -1506,16 +1506,16 @@ func (r *GetTicketStatisticsRequest) FromJsonString(s string) error {
 type GetTicketStatisticsResponseParams struct {
 	// 查询后数据块
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *CaptchaStatisticObj `json:"Data,omitempty" name:"Data"`
+	Data *CaptchaStatisticObj `json:"Data,omitnil" name:"Data"`
 
 	// 验证码返回码
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 验证码返回信息
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetTicketStatisticsResponse struct {
@@ -1537,26 +1537,26 @@ func (r *GetTicketStatisticsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTotalRequestStatisticsRequestParams struct {
 	// 开始时间字符串
-	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
+	StartTimeStr *string `json:"StartTimeStr,omitnil" name:"StartTimeStr"`
 
 	// 结束时间字符串
-	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+	EndTimeStr *string `json:"EndTimeStr,omitnil" name:"EndTimeStr"`
 
 	// 查询粒度
-	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
+	Dimension *string `json:"Dimension,omitnil" name:"Dimension"`
 }
 
 type GetTotalRequestStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 开始时间字符串
-	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
+	StartTimeStr *string `json:"StartTimeStr,omitnil" name:"StartTimeStr"`
 
 	// 结束时间字符串
-	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+	EndTimeStr *string `json:"EndTimeStr,omitnil" name:"EndTimeStr"`
 
 	// 查询粒度
-	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
+	Dimension *string `json:"Dimension,omitnil" name:"Dimension"`
 }
 
 func (r *GetTotalRequestStatisticsRequest) ToJsonString() string {
@@ -1584,16 +1584,16 @@ func (r *GetTotalRequestStatisticsRequest) FromJsonString(s string) error {
 type GetTotalRequestStatisticsResponseParams struct {
 	// 查询后数据块
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *CaptchaStatisticObj `json:"Data,omitempty" name:"Data"`
+	Data *CaptchaStatisticObj `json:"Data,omitnil" name:"Data"`
 
 	// 验证码返回码
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 验证码返回信息
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetTotalRequestStatisticsResponse struct {
@@ -1615,32 +1615,32 @@ func (r *GetTotalRequestStatisticsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTotalTicketStatisticsRequestParams struct {
 	// 开始时间
-	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
+	StartTimeStr *string `json:"StartTimeStr,omitnil" name:"StartTimeStr"`
 
 	// 结束时间
-	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+	EndTimeStr *string `json:"EndTimeStr,omitnil" name:"EndTimeStr"`
 
 	// 查询粒度
 	// 分钟：“1”
 	// 小时：“2”
 	// 天：“3”
-	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
+	Dimension *string `json:"Dimension,omitnil" name:"Dimension"`
 }
 
 type GetTotalTicketStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 开始时间
-	StartTimeStr *string `json:"StartTimeStr,omitempty" name:"StartTimeStr"`
+	StartTimeStr *string `json:"StartTimeStr,omitnil" name:"StartTimeStr"`
 
 	// 结束时间
-	EndTimeStr *string `json:"EndTimeStr,omitempty" name:"EndTimeStr"`
+	EndTimeStr *string `json:"EndTimeStr,omitnil" name:"EndTimeStr"`
 
 	// 查询粒度
 	// 分钟：“1”
 	// 小时：“2”
 	// 天：“3”
-	Dimension *string `json:"Dimension,omitempty" name:"Dimension"`
+	Dimension *string `json:"Dimension,omitnil" name:"Dimension"`
 }
 
 func (r *GetTotalTicketStatisticsRequest) ToJsonString() string {
@@ -1668,16 +1668,16 @@ func (r *GetTotalTicketStatisticsRequest) FromJsonString(s string) error {
 type GetTotalTicketStatisticsResponseParams struct {
 	// 返回数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *CaptchaStatisticObj `json:"Data,omitempty" name:"Data"`
+	Data *CaptchaStatisticObj `json:"Data,omitnil" name:"Data"`
 
 	// 返回码
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 返回信息
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetTotalTicketStatisticsResponse struct {
@@ -1698,16 +1698,16 @@ func (r *GetTotalTicketStatisticsResponse) FromJsonString(s string) error {
 
 type InterceptPerTrendObj struct {
 	// 时间参数
-	Ftime *string `json:"Ftime,omitempty" name:"Ftime"`
+	Ftime *string `json:"Ftime,omitnil" name:"Ftime"`
 
 	// 拦截率
-	RequestInterceptPer *float64 `json:"RequestInterceptPer,omitempty" name:"RequestInterceptPer"`
+	RequestInterceptPer *float64 `json:"RequestInterceptPer,omitnil" name:"RequestInterceptPer"`
 
 	// 答案拦截率
-	AnswerInterceptPer *float64 `json:"AnswerInterceptPer,omitempty" name:"AnswerInterceptPer"`
+	AnswerInterceptPer *float64 `json:"AnswerInterceptPer,omitnil" name:"AnswerInterceptPer"`
 
 	// 策略拦截率
-	PolicyInterceptPer *float64 `json:"PolicyInterceptPer,omitempty" name:"PolicyInterceptPer"`
+	PolicyInterceptPer *float64 `json:"PolicyInterceptPer,omitnil" name:"PolicyInterceptPer"`
 }
 
 type OutputManageMarketingRiskValue struct {
@@ -1719,28 +1719,28 @@ type OutputManageMarketingRiskValue struct {
 	// AccountType 是 10004 时，对应手机号的 MD5。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 操作时间戳，单位秒（对应输入参数）。 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PostTime *int64 `json:"PostTime,omitempty" name:"PostTime"`
+	PostTime *int64 `json:"PostTime,omitnil" name:"PostTime"`
 
 	// 对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录 后关联业务自身的账号 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssociateAccount *string `json:"AssociateAccount,omitempty" name:"AssociateAccount"`
+	AssociateAccount *string `json:"AssociateAccount,omitnil" name:"AssociateAccount"`
 
 	// 业务详情。 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
 	// 风险值 pass : 无恶意
 	// review：需要人工审核
 	// reject：拒绝，高风险恶意
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 风险类型，请查看下面详细说明 注意：此字段可能返回 null，表示取不到有效值。
 	// 账号风险	
@@ -1764,147 +1764,147 @@ type OutputManageMarketingRiskValue struct {
 	// 	疑似 IP 异常 	2012	使用 idc 机房 ip 或 使用代理 ip 或 使用恶意 ip 
 	// 	非公网有效 ip 	205	传进来的 IP 地址为内网 ip 地址或者 ip 保留地
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType"`
+	RiskType []*int64 `json:"RiskType,omitnil" name:"RiskType"`
 }
 
 type RequestTrendObj struct {
 	// 时间参数
-	Ftime *string `json:"Ftime,omitempty" name:"Ftime"`
+	Ftime *string `json:"Ftime,omitnil" name:"Ftime"`
 
 	// 请求量
-	RequestAction *int64 `json:"RequestAction,omitempty" name:"RequestAction"`
+	RequestAction *int64 `json:"RequestAction,omitnil" name:"RequestAction"`
 
 	// 验证量
-	RequestVerify *int64 `json:"RequestVerify,omitempty" name:"RequestVerify"`
+	RequestVerify *int64 `json:"RequestVerify,omitnil" name:"RequestVerify"`
 
 	// 通过量
-	RequestThroughput *int64 `json:"RequestThroughput,omitempty" name:"RequestThroughput"`
+	RequestThroughput *int64 `json:"RequestThroughput,omitnil" name:"RequestThroughput"`
 
 	// 拦截量
-	RequestIntercept *uint64 `json:"RequestIntercept,omitempty" name:"RequestIntercept"`
+	RequestIntercept *uint64 `json:"RequestIntercept,omitnil" name:"RequestIntercept"`
 }
 
 type TicketAmountUnit struct {
 	// 时间
-	DateKey *string `json:"DateKey,omitempty" name:"DateKey"`
+	DateKey *string `json:"DateKey,omitnil" name:"DateKey"`
 
 	// 票据验证总量
-	Amount *int64 `json:"Amount,omitempty" name:"Amount"`
+	Amount *int64 `json:"Amount,omitnil" name:"Amount"`
 }
 
 type TicketCheckTrendObj struct {
 	// 时间参数
-	Ftime *string `json:"Ftime,omitempty" name:"Ftime"`
+	Ftime *string `json:"Ftime,omitnil" name:"Ftime"`
 
 	// 票据校验量
-	TicketCount *int64 `json:"TicketCount,omitempty" name:"TicketCount"`
+	TicketCount *int64 `json:"TicketCount,omitnil" name:"TicketCount"`
 
 	// 票据通过量
-	TicketThroughput *int64 `json:"TicketThroughput,omitempty" name:"TicketThroughput"`
+	TicketThroughput *int64 `json:"TicketThroughput,omitnil" name:"TicketThroughput"`
 
 	// 票据拦截量
-	TicketIntercept *int64 `json:"TicketIntercept,omitempty" name:"TicketIntercept"`
+	TicketIntercept *int64 `json:"TicketIntercept,omitnil" name:"TicketIntercept"`
 }
 
 type TicketInterceptUnit struct {
 	// 时间
-	DateKey *string `json:"DateKey,omitempty" name:"DateKey"`
+	DateKey *string `json:"DateKey,omitnil" name:"DateKey"`
 
 	// 票据验证拦截量
-	Intercept *int64 `json:"Intercept,omitempty" name:"Intercept"`
+	Intercept *int64 `json:"Intercept,omitnil" name:"Intercept"`
 }
 
 type TicketThroughUnit struct {
 	// 时间
-	DateKey *string `json:"DateKey,omitempty" name:"DateKey"`
+	DateKey *string `json:"DateKey,omitnil" name:"DateKey"`
 
 	// 票据验证的通过量
-	Through *int64 `json:"Through,omitempty" name:"Through"`
+	Through *int64 `json:"Through,omitnil" name:"Through"`
 }
 
 // Predefined struct for user
 type UpdateCaptchaAppIdInfoRequestParams struct {
 	// 验证码应用ID
-	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 应用名
-	AppName *string `json:"AppName,omitempty" name:"AppName"`
+	AppName *string `json:"AppName,omitnil" name:"AppName"`
 
 	// 域名限制
-	DomainLimit *string `json:"DomainLimit,omitempty" name:"DomainLimit"`
+	DomainLimit *string `json:"DomainLimit,omitnil" name:"DomainLimit"`
 
 	// 场景类型
-	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
+	SceneType *int64 `json:"SceneType,omitnil" name:"SceneType"`
 
 	// 验证码类型
-	CapType *int64 `json:"CapType,omitempty" name:"CapType"`
+	CapType *int64 `json:"CapType,omitnil" name:"CapType"`
 
 	// 风险级别
-	EvilInterceptGrade *int64 `json:"EvilInterceptGrade,omitempty" name:"EvilInterceptGrade"`
+	EvilInterceptGrade *int64 `json:"EvilInterceptGrade,omitnil" name:"EvilInterceptGrade"`
 
 	// 智能检测
-	SmartVerify *int64 `json:"SmartVerify,omitempty" name:"SmartVerify"`
+	SmartVerify *int64 `json:"SmartVerify,omitnil" name:"SmartVerify"`
 
 	// 开启智能引擎
-	SmartEngine *int64 `json:"SmartEngine,omitempty" name:"SmartEngine"`
+	SmartEngine *int64 `json:"SmartEngine,omitnil" name:"SmartEngine"`
 
 	// web风格
-	SchemeColor *string `json:"SchemeColor,omitempty" name:"SchemeColor"`
+	SchemeColor *string `json:"SchemeColor,omitnil" name:"SchemeColor"`
 
 	// 语言
-	CaptchaLanguage *int64 `json:"CaptchaLanguage,omitempty" name:"CaptchaLanguage"`
+	CaptchaLanguage *int64 `json:"CaptchaLanguage,omitnil" name:"CaptchaLanguage"`
 
 	// 告警邮箱
-	MailAlarm *string `json:"MailAlarm,omitempty" name:"MailAlarm"`
+	MailAlarm *string `json:"MailAlarm,omitnil" name:"MailAlarm"`
 
 	// 是否全屏
-	TopFullScreen *int64 `json:"TopFullScreen,omitempty" name:"TopFullScreen"`
+	TopFullScreen *int64 `json:"TopFullScreen,omitnil" name:"TopFullScreen"`
 
 	// 流量限制
-	TrafficThreshold *int64 `json:"TrafficThreshold,omitempty" name:"TrafficThreshold"`
+	TrafficThreshold *int64 `json:"TrafficThreshold,omitnil" name:"TrafficThreshold"`
 }
 
 type UpdateCaptchaAppIdInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证码应用ID
-	CaptchaAppId *int64 `json:"CaptchaAppId,omitempty" name:"CaptchaAppId"`
+	CaptchaAppId *int64 `json:"CaptchaAppId,omitnil" name:"CaptchaAppId"`
 
 	// 应用名
-	AppName *string `json:"AppName,omitempty" name:"AppName"`
+	AppName *string `json:"AppName,omitnil" name:"AppName"`
 
 	// 域名限制
-	DomainLimit *string `json:"DomainLimit,omitempty" name:"DomainLimit"`
+	DomainLimit *string `json:"DomainLimit,omitnil" name:"DomainLimit"`
 
 	// 场景类型
-	SceneType *int64 `json:"SceneType,omitempty" name:"SceneType"`
+	SceneType *int64 `json:"SceneType,omitnil" name:"SceneType"`
 
 	// 验证码类型
-	CapType *int64 `json:"CapType,omitempty" name:"CapType"`
+	CapType *int64 `json:"CapType,omitnil" name:"CapType"`
 
 	// 风险级别
-	EvilInterceptGrade *int64 `json:"EvilInterceptGrade,omitempty" name:"EvilInterceptGrade"`
+	EvilInterceptGrade *int64 `json:"EvilInterceptGrade,omitnil" name:"EvilInterceptGrade"`
 
 	// 智能检测
-	SmartVerify *int64 `json:"SmartVerify,omitempty" name:"SmartVerify"`
+	SmartVerify *int64 `json:"SmartVerify,omitnil" name:"SmartVerify"`
 
 	// 开启智能引擎
-	SmartEngine *int64 `json:"SmartEngine,omitempty" name:"SmartEngine"`
+	SmartEngine *int64 `json:"SmartEngine,omitnil" name:"SmartEngine"`
 
 	// web风格
-	SchemeColor *string `json:"SchemeColor,omitempty" name:"SchemeColor"`
+	SchemeColor *string `json:"SchemeColor,omitnil" name:"SchemeColor"`
 
 	// 语言
-	CaptchaLanguage *int64 `json:"CaptchaLanguage,omitempty" name:"CaptchaLanguage"`
+	CaptchaLanguage *int64 `json:"CaptchaLanguage,omitnil" name:"CaptchaLanguage"`
 
 	// 告警邮箱
-	MailAlarm *string `json:"MailAlarm,omitempty" name:"MailAlarm"`
+	MailAlarm *string `json:"MailAlarm,omitnil" name:"MailAlarm"`
 
 	// 是否全屏
-	TopFullScreen *int64 `json:"TopFullScreen,omitempty" name:"TopFullScreen"`
+	TopFullScreen *int64 `json:"TopFullScreen,omitnil" name:"TopFullScreen"`
 
 	// 流量限制
-	TrafficThreshold *int64 `json:"TrafficThreshold,omitempty" name:"TrafficThreshold"`
+	TrafficThreshold *int64 `json:"TrafficThreshold,omitnil" name:"TrafficThreshold"`
 }
 
 func (r *UpdateCaptchaAppIdInfoRequest) ToJsonString() string {
@@ -1941,14 +1941,14 @@ func (r *UpdateCaptchaAppIdInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateCaptchaAppIdInfoResponseParams struct {
 	// 返回码 0 成功，其它失败
-	CaptchaCode *int64 `json:"CaptchaCode,omitempty" name:"CaptchaCode"`
+	CaptchaCode *int64 `json:"CaptchaCode,omitnil" name:"CaptchaCode"`
 
 	// 返回操作信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaptchaMsg *string `json:"CaptchaMsg,omitempty" name:"CaptchaMsg"`
+	CaptchaMsg *string `json:"CaptchaMsg,omitnil" name:"CaptchaMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateCaptchaAppIdInfoResponse struct {

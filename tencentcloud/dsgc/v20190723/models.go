@@ -15,370 +15,370 @@
 package v20190723
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type AKSKLeak struct {
 	// AK编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AK *string `json:"AK,omitempty" name:"AK"`
+	AK *string `json:"AK,omitnil" name:"AK"`
 
 	// SK编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SK *string `json:"SK,omitempty" name:"SK"`
+	SK *string `json:"SK,omitnil" name:"SK"`
 
 	// URL编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	URL *string `json:"URL,omitempty" name:"URL"`
+	URL *string `json:"URL,omitnil" name:"URL"`
 }
 
 type AccountRisk struct {
 	// id（可不参考）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 
 	// 风险账户
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskAccount *string `json:"RiskAccount,omitempty" name:"RiskAccount"`
+	RiskAccount *string `json:"RiskAccount,omitnil" name:"RiskAccount"`
 }
 
 type AssessmentControlItem struct {
 	// 评估项Id
-	ItemId *string `json:"ItemId,omitempty" name:"ItemId"`
+	ItemId *string `json:"ItemId,omitnil" name:"ItemId"`
 
 	// 评估项名称
-	ItemName *string `json:"ItemName,omitempty" name:"ItemName"`
+	ItemName *string `json:"ItemName,omitnil" name:"ItemName"`
 
 	// 评估项描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 评估项来源，内置/用户自定，取值（system，user）
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 评估项类型，问卷/自动化，取值（questionnaire，auto）
-	ItemType *string `json:"ItemType,omitempty" name:"ItemType"`
+	ItemType *string `json:"ItemType,omitnil" name:"ItemType"`
 
 	// 评估项子类型，单选/多选/时间/文本/AKSK等，取值（singlechoice，multichoice，date，text，AKSK……等）
-	ItemSubType *string `json:"ItemSubType,omitempty" name:"ItemSubType"`
+	ItemSubType *string `json:"ItemSubType,omitnil" name:"ItemSubType"`
 
 	// 评估项创建时间
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 评估项启用状态，启用/未启用，取值draft / launched
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 评估项关联的模版数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateCount *int64 `json:"TemplateCount,omitempty" name:"TemplateCount"`
+	TemplateCount *int64 `json:"TemplateCount,omitnil" name:"TemplateCount"`
 }
 
 type AssessmentRisk struct {
 	// 风险项Id
-	RiskId *string `json:"RiskId,omitempty" name:"RiskId"`
+	RiskId *string `json:"RiskId,omitnil" name:"RiskId"`
 
 	// 风险项描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskDescription *string `json:"RiskDescription,omitempty" name:"RiskDescription"`
+	RiskDescription *string `json:"RiskDescription,omitnil" name:"RiskDescription"`
 
 	// 评估模版Id
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 评估模版名称
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 评估项Id
-	ControlItemId *string `json:"ControlItemId,omitempty" name:"ControlItemId"`
+	ControlItemId *string `json:"ControlItemId,omitnil" name:"ControlItemId"`
 
 	// 评估项名称
-	ControlItemName *string `json:"ControlItemName,omitempty" name:"ControlItemName"`
+	ControlItemName *string `json:"ControlItemName,omitnil" name:"ControlItemName"`
 
 	// 评估描述
-	ControlItemDesc *string `json:"ControlItemDesc,omitempty" name:"ControlItemDesc"`
+	ControlItemDesc *string `json:"ControlItemDesc,omitnil" name:"ControlItemDesc"`
 
 	// 风险等级，取值（high，medium，low）
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 风险缓解措施
-	RiskMitigation *string `json:"RiskMitigation,omitempty" name:"RiskMitigation"`
+	RiskMitigation *string `json:"RiskMitigation,omitnil" name:"RiskMitigation"`
 
 	// 风险处理状态。(waiting待处理, processing处理中, finished已处理)
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 风险生成时间
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 风险负责人
-	RiskOwner *string `json:"RiskOwner,omitempty" name:"RiskOwner"`
+	RiskOwner *string `json:"RiskOwner,omitnil" name:"RiskOwner"`
 
 	// 风险涉及资产
-	RelatedAsset *string `json:"RelatedAsset,omitempty" name:"RelatedAsset"`
+	RelatedAsset *string `json:"RelatedAsset,omitnil" name:"RelatedAsset"`
 
 	// 风险涉及资产id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 风险涉及资产名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceName *string `json:"DataSourceName,omitempty" name:"DataSourceName"`
+	DataSourceName *string `json:"DataSourceName,omitnil" name:"DataSourceName"`
 
 	// 资产名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssetName *string `json:"AssetName,omitempty" name:"AssetName"`
+	AssetName *string `json:"AssetName,omitnil" name:"AssetName"`
 
 	// 建议使用安全产品
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecurityProduct []*SecurityProduct `json:"SecurityProduct,omitempty" name:"SecurityProduct"`
+	SecurityProduct []*SecurityProduct `json:"SecurityProduct,omitnil" name:"SecurityProduct"`
 
 	// 风险类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskType *string `json:"RiskType,omitempty" name:"RiskType"`
+	RiskType *string `json:"RiskType,omitnil" name:"RiskType"`
 
 	// 风险面
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskSide *string `json:"RiskSide,omitempty" name:"RiskSide"`
+	RiskSide *string `json:"RiskSide,omitnil" name:"RiskSide"`
 }
 
 type AssessmentRiskItem struct {
 	// 脆弱项id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskName *string `json:"RiskName,omitempty" name:"RiskName"`
+	RiskName *string `json:"RiskName,omitnil" name:"RiskName"`
 
 	// 脆弱性级别
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Level *string `json:"Level,omitempty" name:"Level"`
+	Level *string `json:"Level,omitnil" name:"Level"`
 
 	// 说明
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 风险类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskType *string `json:"RiskType,omitempty" name:"RiskType"`
+	RiskType *string `json:"RiskType,omitnil" name:"RiskType"`
 
 	// 关联模版个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReferTemplateCount *int64 `json:"ReferTemplateCount,omitempty" name:"ReferTemplateCount"`
+	ReferTemplateCount *int64 `json:"ReferTemplateCount,omitnil" name:"ReferTemplateCount"`
 
 	// 支持的数据源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SupportDataSource []*string `json:"SupportDataSource,omitempty" name:"SupportDataSource"`
+	SupportDataSource []*string `json:"SupportDataSource,omitnil" name:"SupportDataSource"`
 
 	// 风险面
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskSide *string `json:"RiskSide,omitempty" name:"RiskSide"`
+	RiskSide *string `json:"RiskSide,omitnil" name:"RiskSide"`
 
 	// 关联模版列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReferTemplateList []*TemplateInfo `json:"ReferTemplateList,omitempty" name:"ReferTemplateList"`
+	ReferTemplateList []*TemplateInfo `json:"ReferTemplateList,omitnil" name:"ReferTemplateList"`
 }
 
 type AssessmentTask struct {
 	// 评估任务Id
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 评估任务名称
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
 
 	// 业务名称
-	BusinessName *string `json:"BusinessName,omitempty" name:"BusinessName"`
+	BusinessName *string `json:"BusinessName,omitnil" name:"BusinessName"`
 
 	// 业务所属部门
-	BusinessDept *string `json:"BusinessDept,omitempty" name:"BusinessDept"`
+	BusinessDept *string `json:"BusinessDept,omitnil" name:"BusinessDept"`
 
 	// 业务负责人
-	BusinessOwner *string `json:"BusinessOwner,omitempty" name:"BusinessOwner"`
+	BusinessOwner *string `json:"BusinessOwner,omitnil" name:"BusinessOwner"`
 
 	// 评估模版Id
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 评估模版名称
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 分类分级模版Id
-	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitempty" name:"ComplianceGroupId"`
+	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitnil" name:"ComplianceGroupId"`
 
 	// 分类分级模版名称
-	ComplianceGroupName *string `json:"ComplianceGroupName,omitempty" name:"ComplianceGroupName"`
+	ComplianceGroupName *string `json:"ComplianceGroupName,omitnil" name:"ComplianceGroupName"`
 
 	// 评估项数量
-	ControlItemCount *int64 `json:"ControlItemCount,omitempty" name:"ControlItemCount"`
+	ControlItemCount *int64 `json:"ControlItemCount,omitnil" name:"ControlItemCount"`
 
 	// 风险项数量（仅状态为finished的风险项不计入总数，其余状态均算入该数量）
-	RiskCount *int64 `json:"RiskCount,omitempty" name:"RiskCount"`
+	RiskCount *int64 `json:"RiskCount,omitnil" name:"RiskCount"`
 
 	// 评估任务完成时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FinishedTime *string `json:"FinishedTime,omitempty" name:"FinishedTime"`
+	FinishedTime *string `json:"FinishedTime,omitnil" name:"FinishedTime"`
 
 	// 评估任务发起时间
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 评估状态。(waiting待评估，processing评估中, , finished已评估, failed评估失败)
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 待处理各等级风险项信息
-	RiskCountInfoList []*RiskCountInfo `json:"RiskCountInfoList,omitempty" name:"RiskCountInfoList"`
+	RiskCountInfoList []*RiskCountInfo `json:"RiskCountInfoList,omitnil" name:"RiskCountInfoList"`
 
 	// 数据源信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DiscoveryCondition *DiscoveryCondition `json:"DiscoveryCondition,omitempty" name:"DiscoveryCondition"`
+	DiscoveryCondition *DiscoveryCondition `json:"DiscoveryCondition,omitnil" name:"DiscoveryCondition"`
 
 	// 评估任务失败信息
-	ErrorInfo *string `json:"ErrorInfo,omitempty" name:"ErrorInfo"`
+	ErrorInfo *string `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
 }
 
 type AssessmentTemplate struct {
 	// id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 评估模版Id
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 评估模版名称
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 模版来源，内置/用户自定，取值（system，user）
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 模版类型，自动化/半自动化/问卷，取值（auto，semi-auto，law）等
-	UseType *string `json:"UseType,omitempty" name:"UseType"`
+	UseType *string `json:"UseType,omitnil" name:"UseType"`
 
 	// 评估模版创建时间
-	CreatedTime *string `json:"CreatedTime,omitempty" name:"CreatedTime"`
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// 模版关联的评估项数量
-	ControlItemCount *int64 `json:"ControlItemCount,omitempty" name:"ControlItemCount"`
+	ControlItemCount *int64 `json:"ControlItemCount,omitnil" name:"ControlItemCount"`
 
 	// 模版已启用的评估项数量
-	AppliedItemCount *int64 `json:"AppliedItemCount,omitempty" name:"AppliedItemCount"`
+	AppliedItemCount *int64 `json:"AppliedItemCount,omitnil" name:"AppliedItemCount"`
 
 	// 模版启用状态，草稿/已启用，取值draft / launched
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 支持的数据源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SupportDataSource []*string `json:"SupportDataSource,omitempty" name:"SupportDataSource"`
+	SupportDataSource []*string `json:"SupportDataSource,omitnil" name:"SupportDataSource"`
 
 	// 是否包含攻击面风险
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsASMTemplate *bool `json:"IsASMTemplate,omitempty" name:"IsASMTemplate"`
+	IsASMTemplate *bool `json:"IsASMTemplate,omitnil" name:"IsASMTemplate"`
 }
 
 type AssetCosDetail struct {
 	// 桶的名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
 
 	// 数据源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataType *string `json:"DataType,omitempty" name:"DataType"`
+	DataType *string `json:"DataType,omitnil" name:"DataType"`
 
 	// 文件的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileNums *int64 `json:"FileNums,omitempty" name:"FileNums"`
+	FileNums *int64 `json:"FileNums,omitnil" name:"FileNums"`
 
 	// 敏感的文件个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveFileNums *int64 `json:"SensitiveFileNums,omitempty" name:"SensitiveFileNums"`
+	SensitiveFileNums *int64 `json:"SensitiveFileNums,omitnil" name:"SensitiveFileNums"`
 
 	// 敏感分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DistributionData []*Note `json:"DistributionData,omitempty" name:"DistributionData"`
+	DistributionData []*Note `json:"DistributionData,omitnil" name:"DistributionData"`
 
 	// cos文件的敏感数据个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MatchedNum *int64 `json:"MatchedNum,omitempty" name:"MatchedNum"`
+	MatchedNum *int64 `json:"MatchedNum,omitnil" name:"MatchedNum"`
 }
 
 type AssetDBDetail struct {
 	// 数据源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 数据库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DdName *string `json:"DdName,omitempty" name:"DdName"`
+	DdName *string `json:"DdName,omitnil" name:"DdName"`
 
 	// 数据库类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataType *string `json:"DataType,omitempty" name:"DataType"`
+	DataType *string `json:"DataType,omitnil" name:"DataType"`
 
 	// 表的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TableNums *int64 `json:"TableNums,omitempty" name:"TableNums"`
+	TableNums *int64 `json:"TableNums,omitnil" name:"TableNums"`
 
 	// 敏感表数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveTableNums *int64 `json:"SensitiveTableNums,omitempty" name:"SensitiveTableNums"`
+	SensitiveTableNums *int64 `json:"SensitiveTableNums,omitnil" name:"SensitiveTableNums"`
 
 	// 字段的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FieldNums *int64 `json:"FieldNums,omitempty" name:"FieldNums"`
+	FieldNums *int64 `json:"FieldNums,omitnil" name:"FieldNums"`
 
 	// 敏感字段的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitempty" name:"SensitiveFieldNums"`
+	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitnil" name:"SensitiveFieldNums"`
 
 	// 敏感数据分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DistributionData []*Note `json:"DistributionData,omitempty" name:"DistributionData"`
+	DistributionData []*Note `json:"DistributionData,omitnil" name:"DistributionData"`
 }
 
 type AssetList struct {
 	// 数据源类型
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
 	// 数据源信息
-	DataSourceInfo []*DataSourceInfo `json:"DataSourceInfo,omitempty" name:"DataSourceInfo"`
+	DataSourceInfo []*DataSourceInfo `json:"DataSourceInfo,omitnil" name:"DataSourceInfo"`
 }
 
 // Predefined struct for user
 type AuthorizeDSPAMetaResourcesRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 授权方式，可选：automatic(一键自动授权) 、 account(指定用户名授权)。
-	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+	AuthType *string `json:"AuthType,omitnil" name:"AuthType"`
 
 	// 资源类型。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 用户授权的账户信息，如果是一键自动授权模式，则不需要填写账户名与密码。
-	ResourcesAccount []*DspaResourceAccount `json:"ResourcesAccount,omitempty" name:"ResourcesAccount"`
+	ResourcesAccount []*DspaResourceAccount `json:"ResourcesAccount,omitnil" name:"ResourcesAccount"`
 }
 
 type AuthorizeDSPAMetaResourcesRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 授权方式，可选：automatic(一键自动授权) 、 account(指定用户名授权)。
-	AuthType *string `json:"AuthType,omitempty" name:"AuthType"`
+	AuthType *string `json:"AuthType,omitnil" name:"AuthType"`
 
 	// 资源类型。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 用户授权的账户信息，如果是一键自动授权模式，则不需要填写账户名与密码。
-	ResourcesAccount []*DspaResourceAccount `json:"ResourcesAccount,omitempty" name:"ResourcesAccount"`
+	ResourcesAccount []*DspaResourceAccount `json:"ResourcesAccount,omitnil" name:"ResourcesAccount"`
 }
 
 func (r *AuthorizeDSPAMetaResourcesRequest) ToJsonString() string {
@@ -407,14 +407,14 @@ func (r *AuthorizeDSPAMetaResourcesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AuthorizeDSPAMetaResourcesResponseParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 授权结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Results []*DspaTaskResult `json:"Results,omitempty" name:"Results"`
+	Results []*DspaTaskResult `json:"Results,omitnil" name:"Results"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AuthorizeDSPAMetaResourcesResponse struct {
@@ -436,26 +436,26 @@ func (r *AuthorizeDSPAMetaResourcesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BindDSPAResourceCosBucketsRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 绑定的COS桶信息。
-	BindCosResourceItems []*CosResourceItem `json:"BindCosResourceItems,omitempty" name:"BindCosResourceItems"`
+	BindCosResourceItems []*CosResourceItem `json:"BindCosResourceItems,omitnil" name:"BindCosResourceItems"`
 
 	// 解绑的COS桶信息。
-	UnbindCosResourceItems []*CosResourceItem `json:"UnbindCosResourceItems,omitempty" name:"UnbindCosResourceItems"`
+	UnbindCosResourceItems []*CosResourceItem `json:"UnbindCosResourceItems,omitnil" name:"UnbindCosResourceItems"`
 }
 
 type BindDSPAResourceCosBucketsRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 绑定的COS桶信息。
-	BindCosResourceItems []*CosResourceItem `json:"BindCosResourceItems,omitempty" name:"BindCosResourceItems"`
+	BindCosResourceItems []*CosResourceItem `json:"BindCosResourceItems,omitnil" name:"BindCosResourceItems"`
 
 	// 解绑的COS桶信息。
-	UnbindCosResourceItems []*CosResourceItem `json:"UnbindCosResourceItems,omitempty" name:"UnbindCosResourceItems"`
+	UnbindCosResourceItems []*CosResourceItem `json:"UnbindCosResourceItems,omitnil" name:"UnbindCosResourceItems"`
 }
 
 func (r *BindDSPAResourceCosBucketsRequest) ToJsonString() string {
@@ -482,10 +482,10 @@ func (r *BindDSPAResourceCosBucketsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BindDSPAResourceCosBucketsResponseParams struct {
 	// 绑定结果数组
-	CosTaskResults []*CosTaskResult `json:"CosTaskResults,omitempty" name:"CosTaskResults"`
+	CosTaskResults []*CosTaskResult `json:"CosTaskResults,omitnil" name:"CosTaskResults"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BindDSPAResourceCosBucketsResponse struct {
@@ -507,38 +507,38 @@ func (r *BindDSPAResourceCosBucketsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BindDSPAResourceDatabasesRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据库实例ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 数据库实例类型。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 绑定DB列表。
-	BindDbItems []*DbResourceItem `json:"BindDbItems,omitempty" name:"BindDbItems"`
+	BindDbItems []*DbResourceItem `json:"BindDbItems,omitnil" name:"BindDbItems"`
 
 	// 解绑DB列表。
-	UnbindDbItems []*DbResourceItem `json:"UnbindDbItems,omitempty" name:"UnbindDbItems"`
+	UnbindDbItems []*DbResourceItem `json:"UnbindDbItems,omitnil" name:"UnbindDbItems"`
 }
 
 type BindDSPAResourceDatabasesRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据库实例ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 数据库实例类型。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 绑定DB列表。
-	BindDbItems []*DbResourceItem `json:"BindDbItems,omitempty" name:"BindDbItems"`
+	BindDbItems []*DbResourceItem `json:"BindDbItems,omitnil" name:"BindDbItems"`
 
 	// 解绑DB列表。
-	UnbindDbItems []*DbResourceItem `json:"UnbindDbItems,omitempty" name:"UnbindDbItems"`
+	UnbindDbItems []*DbResourceItem `json:"UnbindDbItems,omitnil" name:"UnbindDbItems"`
 }
 
 func (r *BindDSPAResourceDatabasesRequest) ToJsonString() string {
@@ -567,10 +567,10 @@ func (r *BindDSPAResourceDatabasesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BindDSPAResourceDatabasesResponseParams struct {
 	// 绑定结果数组
-	DbTaskResults []*DbTaskResult `json:"DbTaskResults,omitempty" name:"DbTaskResults"`
+	DbTaskResults []*DbTaskResult `json:"DbTaskResults,omitnil" name:"DbTaskResults"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BindDSPAResourceDatabasesResponse struct {
@@ -592,124 +592,124 @@ func (r *BindDSPAResourceDatabasesResponse) FromJsonString(s string) error {
 type COSDataRule struct {
 	// 只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一.
 	// 默认值为or
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 规则内容
-	Contents []*DataContent `json:"Contents,omitempty" name:"Contents"`
+	Contents []*DataContent `json:"Contents,omitnil" name:"Contents"`
 }
 
 type COSInstance struct {
 	// 数据源Id
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 桶名
-	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitnil" name:"BucketName"`
 
 	// 资源所在地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 }
 
 type CategoryRule struct {
 	// 分类id
-	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *uint64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 规则id
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则名称
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 级别id
-	LevelId *uint64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *uint64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 级别名称
-	LevelName *string `json:"LevelName,omitempty" name:"LevelName"`
+	LevelName *string `json:"LevelName,omitnil" name:"LevelName"`
 
 	// 分类规则绑定关系id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 别名ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AliasRuleId *int64 `json:"AliasRuleId,omitempty" name:"AliasRuleId"`
+	AliasRuleId *int64 `json:"AliasRuleId,omitnil" name:"AliasRuleId"`
 
 	// 别名规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AliasRuleName *string `json:"AliasRuleName,omitempty" name:"AliasRuleName"`
+	AliasRuleName *string `json:"AliasRuleName,omitnil" name:"AliasRuleName"`
 }
 
 type CategoryRuleStatistic struct {
 	// 分类id
-	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *uint64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 规则数量
-	RuleCount *uint64 `json:"RuleCount,omitempty" name:"RuleCount"`
+	RuleCount *uint64 `json:"RuleCount,omitnil" name:"RuleCount"`
 
 	// 分类名称
-	CategoryName *string `json:"CategoryName,omitempty" name:"CategoryName"`
+	CategoryName *string `json:"CategoryName,omitnil" name:"CategoryName"`
 }
 
 type ComplianceGroupDetail struct {
 	// 模板id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 模板名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 模板类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComplianceGroupType *int64 `json:"ComplianceGroupType,omitempty" name:"ComplianceGroupType"`
+	ComplianceGroupType *int64 `json:"ComplianceGroupType,omitnil" name:"ComplianceGroupType"`
 
 	// 模板分级方案id
-	LevelGroupId *uint64 `json:"LevelGroupId,omitempty" name:"LevelGroupId"`
+	LevelGroupId *uint64 `json:"LevelGroupId,omitnil" name:"LevelGroupId"`
 
 	// 模板分级方案名称
-	LevelGroupName *string `json:"LevelGroupName,omitempty" name:"LevelGroupName"`
+	LevelGroupName *string `json:"LevelGroupName,omitnil" name:"LevelGroupName"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
 
 	// 是否开启别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsAlias *bool `json:"IsAlias,omitempty" name:"IsAlias"`
+	IsAlias *bool `json:"IsAlias,omitnil" name:"IsAlias"`
 }
 
 type ComplianceGroupRuleIdInfo struct {
 	// 敏感数据识别规则ID
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 敏感数据分类ID
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分级标识ID, 系统支持高、中、低三级，也支持自定义分级
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 }
 
 // Predefined struct for user
 type CopyDSPATemplateRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 type CopyDSPATemplateRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 func (r *CopyDSPATemplateRequest) ToJsonString() string {
@@ -735,10 +735,10 @@ func (r *CopyDSPATemplateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CopyDSPATemplateResponseParams struct {
 	// 模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CopyDSPATemplateResponse struct {
@@ -760,64 +760,64 @@ func (r *CopyDSPATemplateResponse) FromJsonString(s string) error {
 type CosAsset struct {
 	// 桶的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BucketNums *int64 `json:"BucketNums,omitempty" name:"BucketNums"`
+	BucketNums *int64 `json:"BucketNums,omitnil" name:"BucketNums"`
 
 	// 敏感桶的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveBucketNums *int64 `json:"SensitiveBucketNums,omitempty" name:"SensitiveBucketNums"`
+	SensitiveBucketNums *int64 `json:"SensitiveBucketNums,omitnil" name:"SensitiveBucketNums"`
 
 	// 文件个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileNums *int64 `json:"FileNums,omitempty" name:"FileNums"`
+	FileNums *int64 `json:"FileNums,omitnil" name:"FileNums"`
 
 	// 敏感文件的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveFileNums *int64 `json:"SensitiveFileNums,omitempty" name:"SensitiveFileNums"`
+	SensitiveFileNums *int64 `json:"SensitiveFileNums,omitnil" name:"SensitiveFileNums"`
 }
 
 type CosResourceItem struct {
 	// cos数据源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 桶所在地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 桶名称。
-	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
 }
 
 type CosTaskResult struct {
 	// 结果类型。
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 结果描述。
-	ResultDescription *string `json:"ResultDescription,omitempty" name:"ResultDescription"`
+	ResultDescription *string `json:"ResultDescription,omitnil" name:"ResultDescription"`
 
 	// 错误信息描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrDescription *ErrDescription `json:"ErrDescription,omitempty" name:"ErrDescription"`
+	ErrDescription *ErrDescription `json:"ErrDescription,omitnil" name:"ErrDescription"`
 
 	// 资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 // Predefined struct for user
 type CreateAssetSortingReportRetryTaskRequestParams struct {
 	// 任务id
-	ReportTaskId *uint64 `json:"ReportTaskId,omitempty" name:"ReportTaskId"`
+	ReportTaskId *uint64 `json:"ReportTaskId,omitnil" name:"ReportTaskId"`
 
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 type CreateAssetSortingReportRetryTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务id
-	ReportTaskId *uint64 `json:"ReportTaskId,omitempty" name:"ReportTaskId"`
+	ReportTaskId *uint64 `json:"ReportTaskId,omitnil" name:"ReportTaskId"`
 
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 func (r *CreateAssetSortingReportRetryTaskRequest) ToJsonString() string {
@@ -844,14 +844,14 @@ func (r *CreateAssetSortingReportRetryTaskRequest) FromJsonString(s string) erro
 type CreateAssetSortingReportRetryTaskResponseParams struct {
 	// 任务id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportTaskId *uint64 `json:"ReportTaskId,omitempty" name:"ReportTaskId"`
+	ReportTaskId *uint64 `json:"ReportTaskId,omitnil" name:"ReportTaskId"`
 
 	// 提示信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAssetSortingReportRetryTaskResponse struct {
@@ -873,26 +873,26 @@ func (r *CreateAssetSortingReportRetryTaskResponse) FromJsonString(s string) err
 // Predefined struct for user
 type CreateAssetSortingReportTaskRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 识别模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 选中资产列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 type CreateAssetSortingReportTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 识别模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 选中资产列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 func (r *CreateAssetSortingReportTaskRequest) ToJsonString() string {
@@ -920,14 +920,14 @@ func (r *CreateAssetSortingReportTaskRequest) FromJsonString(s string) error {
 type CreateAssetSortingReportTaskResponseParams struct {
 	// 报表任务id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportTaskId *uint64 `json:"ReportTaskId,omitempty" name:"ReportTaskId"`
+	ReportTaskId *uint64 `json:"ReportTaskId,omitnil" name:"ReportTaskId"`
 
 	// 提示信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAssetSortingReportTaskResponse struct {
@@ -978,7 +978,7 @@ func (r *CreateClassificationRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateClassificationRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateClassificationRuleResponse struct {
@@ -999,47 +999,47 @@ func (r *CreateClassificationRuleResponse) FromJsonString(s string) error {
 
 type CreateComplianceRules struct {
 	// 规则id
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 级别id
-	LevelId *uint64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *uint64 `json:"LevelId,omitnil" name:"LevelId"`
 }
 
 // Predefined struct for user
 type CreateDSPAAssessmentRiskLevelRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 风险等级名称
-	RiskLevelName *string `json:"RiskLevelName,omitempty" name:"RiskLevelName"`
+	RiskLevelName *string `json:"RiskLevelName,omitnil" name:"RiskLevelName"`
 
 	// 识别模版
-	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitempty" name:"IdentifyComplianceId"`
+	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitnil" name:"IdentifyComplianceId"`
 
 	// 风险等级矩阵
-	RiskLevelRule []*RiskLevelMatrix `json:"RiskLevelRule,omitempty" name:"RiskLevelRule"`
+	RiskLevelRule []*RiskLevelMatrix `json:"RiskLevelRule,omitnil" name:"RiskLevelRule"`
 
 	// 风险等级的描述
-	RiskLevelDescription *string `json:"RiskLevelDescription,omitempty" name:"RiskLevelDescription"`
+	RiskLevelDescription *string `json:"RiskLevelDescription,omitnil" name:"RiskLevelDescription"`
 }
 
 type CreateDSPAAssessmentRiskLevelRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 风险等级名称
-	RiskLevelName *string `json:"RiskLevelName,omitempty" name:"RiskLevelName"`
+	RiskLevelName *string `json:"RiskLevelName,omitnil" name:"RiskLevelName"`
 
 	// 识别模版
-	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitempty" name:"IdentifyComplianceId"`
+	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitnil" name:"IdentifyComplianceId"`
 
 	// 风险等级矩阵
-	RiskLevelRule []*RiskLevelMatrix `json:"RiskLevelRule,omitempty" name:"RiskLevelRule"`
+	RiskLevelRule []*RiskLevelMatrix `json:"RiskLevelRule,omitnil" name:"RiskLevelRule"`
 
 	// 风险等级的描述
-	RiskLevelDescription *string `json:"RiskLevelDescription,omitempty" name:"RiskLevelDescription"`
+	RiskLevelDescription *string `json:"RiskLevelDescription,omitnil" name:"RiskLevelDescription"`
 }
 
 func (r *CreateDSPAAssessmentRiskLevelRequest) ToJsonString() string {
@@ -1068,7 +1068,7 @@ func (r *CreateDSPAAssessmentRiskLevelRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPAAssessmentRiskLevelResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPAAssessmentRiskLevelResponse struct {
@@ -1090,38 +1090,38 @@ func (r *CreateDSPAAssessmentRiskLevelResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPAAssessmentRiskTemplateRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 模版名称
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 风险等级id
-	RiskLevelId *int64 `json:"RiskLevelId,omitempty" name:"RiskLevelId"`
+	RiskLevelId *int64 `json:"RiskLevelId,omitnil" name:"RiskLevelId"`
 
 	// 风险id列表
-	RiskIdList []*int64 `json:"RiskIdList,omitempty" name:"RiskIdList"`
+	RiskIdList []*int64 `json:"RiskIdList,omitnil" name:"RiskIdList"`
 
 	// 模版描述
-	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+	TemplateDescription *string `json:"TemplateDescription,omitnil" name:"TemplateDescription"`
 }
 
 type CreateDSPAAssessmentRiskTemplateRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 模版名称
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 风险等级id
-	RiskLevelId *int64 `json:"RiskLevelId,omitempty" name:"RiskLevelId"`
+	RiskLevelId *int64 `json:"RiskLevelId,omitnil" name:"RiskLevelId"`
 
 	// 风险id列表
-	RiskIdList []*int64 `json:"RiskIdList,omitempty" name:"RiskIdList"`
+	RiskIdList []*int64 `json:"RiskIdList,omitnil" name:"RiskIdList"`
 
 	// 模版描述
-	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+	TemplateDescription *string `json:"TemplateDescription,omitnil" name:"TemplateDescription"`
 }
 
 func (r *CreateDSPAAssessmentRiskTemplateRequest) ToJsonString() string {
@@ -1150,7 +1150,7 @@ func (r *CreateDSPAAssessmentRiskTemplateRequest) FromJsonString(s string) error
 // Predefined struct for user
 type CreateDSPAAssessmentRiskTemplateResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPAAssessmentRiskTemplateResponse struct {
@@ -1172,68 +1172,68 @@ func (r *CreateDSPAAssessmentRiskTemplateResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type CreateDSPAAssessmentTaskRequestParams struct {
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估任务名称。1-20个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 评估模版Id，格式“template-xxxxxxxx”
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 评估业务名称。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
 	//
 	// Deprecated: BusinessName is deprecated.
-	BusinessName *string `json:"BusinessName,omitempty" name:"BusinessName"`
+	BusinessName *string `json:"BusinessName,omitnil" name:"BusinessName"`
 
 	// 业务所属部门。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
 	//
 	// Deprecated: BusinessDept is deprecated.
-	BusinessDept *string `json:"BusinessDept,omitempty" name:"BusinessDept"`
+	BusinessDept *string `json:"BusinessDept,omitnil" name:"BusinessDept"`
 
 	// 业务负责人。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
 	//
 	// Deprecated: BusinessOwner is deprecated.
-	BusinessOwner *string `json:"BusinessOwner,omitempty" name:"BusinessOwner"`
+	BusinessOwner *string `json:"BusinessOwner,omitnil" name:"BusinessOwner"`
 
 	// 分类分级模版Id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 敏感数据扫描数据源条件。
-	DiscoveryCondition *DiscoveryCondition `json:"DiscoveryCondition,omitempty" name:"DiscoveryCondition"`
+	DiscoveryCondition *DiscoveryCondition `json:"DiscoveryCondition,omitnil" name:"DiscoveryCondition"`
 
 	// 说明
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 type CreateDSPAAssessmentTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估任务名称。1-20个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 评估模版Id，格式“template-xxxxxxxx”
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 评估业务名称。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
-	BusinessName *string `json:"BusinessName,omitempty" name:"BusinessName"`
+	BusinessName *string `json:"BusinessName,omitnil" name:"BusinessName"`
 
 	// 业务所属部门。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
-	BusinessDept *string `json:"BusinessDept,omitempty" name:"BusinessDept"`
+	BusinessDept *string `json:"BusinessDept,omitnil" name:"BusinessDept"`
 
 	// 业务负责人。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字
-	BusinessOwner *string `json:"BusinessOwner,omitempty" name:"BusinessOwner"`
+	BusinessOwner *string `json:"BusinessOwner,omitnil" name:"BusinessOwner"`
 
 	// 分类分级模版Id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 敏感数据扫描数据源条件。
-	DiscoveryCondition *DiscoveryCondition `json:"DiscoveryCondition,omitempty" name:"DiscoveryCondition"`
+	DiscoveryCondition *DiscoveryCondition `json:"DiscoveryCondition,omitnil" name:"DiscoveryCondition"`
 
 	// 说明
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 func (r *CreateDSPAAssessmentTaskRequest) ToJsonString() string {
@@ -1266,10 +1266,10 @@ func (r *CreateDSPAAssessmentTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPAAssessmentTaskResponseParams struct {
 	// 评估任务Id，格式“task-xxxxxxxx”
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPAAssessmentTaskResponse struct {
@@ -1291,94 +1291,94 @@ func (r *CreateDSPAAssessmentTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPACOSDiscoveryTaskRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 任务开关，0 关闭，1 启用
-	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 桶名
-	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
 
 	// 通用规则集开关，0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitempty" name:"GeneralRuleSetEnable"`
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil" name:"GeneralRuleSetEnable"`
 
 	// 执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次。
-	Plan *int64 `json:"Plan,omitempty" name:"Plan"`
+	Plan *int64 `json:"Plan,omitnil" name:"Plan"`
 
 	// 扫描周期，0单次 1每天 2每周 3每月
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 待扫描文件类型，用逗号隔开，格式如：[".txt", ".csv", ".log", ".xml",".html", ".json"]。
-	FileTypes []*string `json:"FileTypes,omitempty" name:"FileTypes"`
+	FileTypes []*string `json:"FileTypes,omitnil" name:"FileTypes"`
 
 	// 文件大小上限，单位为KB，如1000, 目前单个文件最大只支持100MB（102400KB）
-	FileSizeLimit *int64 `json:"FileSizeLimit,omitempty" name:"FileSizeLimit"`
+	FileSizeLimit *int64 `json:"FileSizeLimit,omitnil" name:"FileSizeLimit"`
 
 	// 资源所在地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 任务描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 合规组ID列表，最多支持添加5个
-	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitempty" name:"ComplianceGroupIds"`
+	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitnil" name:"ComplianceGroupIds"`
 
 	// 任务定时启动时间，格式如：2006-01-02 15:04:05
 	// 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
-	TimingStartTime *string `json:"TimingStartTime,omitempty" name:"TimingStartTime"`
+	TimingStartTime *string `json:"TimingStartTime,omitnil" name:"TimingStartTime"`
 }
 
 type CreateDSPACOSDiscoveryTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 任务开关，0 关闭，1 启用
-	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 桶名
-	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
 
 	// 通用规则集开关，0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitempty" name:"GeneralRuleSetEnable"`
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil" name:"GeneralRuleSetEnable"`
 
 	// 执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次。
-	Plan *int64 `json:"Plan,omitempty" name:"Plan"`
+	Plan *int64 `json:"Plan,omitnil" name:"Plan"`
 
 	// 扫描周期，0单次 1每天 2每周 3每月
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 待扫描文件类型，用逗号隔开，格式如：[".txt", ".csv", ".log", ".xml",".html", ".json"]。
-	FileTypes []*string `json:"FileTypes,omitempty" name:"FileTypes"`
+	FileTypes []*string `json:"FileTypes,omitnil" name:"FileTypes"`
 
 	// 文件大小上限，单位为KB，如1000, 目前单个文件最大只支持100MB（102400KB）
-	FileSizeLimit *int64 `json:"FileSizeLimit,omitempty" name:"FileSizeLimit"`
+	FileSizeLimit *int64 `json:"FileSizeLimit,omitnil" name:"FileSizeLimit"`
 
 	// 资源所在地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 任务描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 合规组ID列表，最多支持添加5个
-	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitempty" name:"ComplianceGroupIds"`
+	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitnil" name:"ComplianceGroupIds"`
 
 	// 任务定时启动时间，格式如：2006-01-02 15:04:05
 	// 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
-	TimingStartTime *string `json:"TimingStartTime,omitempty" name:"TimingStartTime"`
+	TimingStartTime *string `json:"TimingStartTime,omitnil" name:"TimingStartTime"`
 }
 
 func (r *CreateDSPACOSDiscoveryTaskRequest) ToJsonString() string {
@@ -1416,14 +1416,14 @@ func (r *CreateDSPACOSDiscoveryTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPACOSDiscoveryTaskResponseParams struct {
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 扫描结果ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultId *int64 `json:"ResultId,omitempty" name:"ResultId"`
+	ResultId *int64 `json:"ResultId,omitnil" name:"ResultId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPACOSDiscoveryTaskResponse struct {
@@ -1445,32 +1445,32 @@ func (r *CreateDSPACOSDiscoveryTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPACategoryRelationRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分类id
-	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *uint64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 父级分类id（无父级分类传-1）
-	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" name:"ParentCategoryId"`
+	ParentCategoryId *int64 `json:"ParentCategoryId,omitnil" name:"ParentCategoryId"`
 
 	// 分类模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 type CreateDSPACategoryRelationRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分类id
-	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *uint64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 父级分类id（无父级分类传-1）
-	ParentCategoryId *int64 `json:"ParentCategoryId,omitempty" name:"ParentCategoryId"`
+	ParentCategoryId *int64 `json:"ParentCategoryId,omitnil" name:"ParentCategoryId"`
 
 	// 分类模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 func (r *CreateDSPACategoryRelationRequest) ToJsonString() string {
@@ -1498,7 +1498,7 @@ func (r *CreateDSPACategoryRelationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPACategoryRelationResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPACategoryRelationResponse struct {
@@ -1520,20 +1520,20 @@ func (r *CreateDSPACategoryRelationResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPACategoryRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 敏感数据分类名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 type CreateDSPACategoryRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 敏感数据分类名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 func (r *CreateDSPACategoryRequest) ToJsonString() string {
@@ -1559,10 +1559,10 @@ func (r *CreateDSPACategoryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPACategoryResponseParams struct {
 	// 敏感数据分类ID
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPACategoryResponse struct {
@@ -1584,38 +1584,38 @@ func (r *CreateDSPACategoryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPAComplianceGroupRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 合规组描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 合规组规则配置（参数已废弃，请传空数组）
-	ComplianceGroupRules []*ComplianceGroupRuleIdInfo `json:"ComplianceGroupRules,omitempty" name:"ComplianceGroupRules"`
+	ComplianceGroupRules []*ComplianceGroupRuleIdInfo `json:"ComplianceGroupRules,omitnil" name:"ComplianceGroupRules"`
 
 	// 分级组ID，默认值为1，新增参数，可选
-	LevelGroupId *uint64 `json:"LevelGroupId,omitempty" name:"LevelGroupId"`
+	LevelGroupId *uint64 `json:"LevelGroupId,omitnil" name:"LevelGroupId"`
 }
 
 type CreateDSPAComplianceGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 合规组描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 合规组规则配置（参数已废弃，请传空数组）
-	ComplianceGroupRules []*ComplianceGroupRuleIdInfo `json:"ComplianceGroupRules,omitempty" name:"ComplianceGroupRules"`
+	ComplianceGroupRules []*ComplianceGroupRuleIdInfo `json:"ComplianceGroupRules,omitnil" name:"ComplianceGroupRules"`
 
 	// 分级组ID，默认值为1，新增参数，可选
-	LevelGroupId *uint64 `json:"LevelGroupId,omitempty" name:"LevelGroupId"`
+	LevelGroupId *uint64 `json:"LevelGroupId,omitnil" name:"LevelGroupId"`
 }
 
 func (r *CreateDSPAComplianceGroupRequest) ToJsonString() string {
@@ -1644,10 +1644,10 @@ func (r *CreateDSPAComplianceGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPAComplianceGroupResponseParams struct {
 	// 合规组ID
-	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitempty" name:"ComplianceGroupId"`
+	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitnil" name:"ComplianceGroupId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPAComplianceGroupResponse struct {
@@ -1669,32 +1669,32 @@ func (r *CreateDSPAComplianceGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPAComplianceRulesRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分类id
-	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *uint64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 合规组模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 规则列表
-	Rules []*CreateComplianceRules `json:"Rules,omitempty" name:"Rules"`
+	Rules []*CreateComplianceRules `json:"Rules,omitnil" name:"Rules"`
 }
 
 type CreateDSPAComplianceRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分类id
-	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *uint64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 合规组模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 规则列表
-	Rules []*CreateComplianceRules `json:"Rules,omitempty" name:"Rules"`
+	Rules []*CreateComplianceRules `json:"Rules,omitnil" name:"Rules"`
 }
 
 func (r *CreateDSPAComplianceRulesRequest) ToJsonString() string {
@@ -1722,7 +1722,7 @@ func (r *CreateDSPAComplianceRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPAComplianceRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPAComplianceRulesResponse struct {
@@ -1744,26 +1744,26 @@ func (r *CreateDSPAComplianceRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPACosMetaResourcesRequestParams struct {
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// COS桶列表
-	Buckets []*string `json:"Buckets,omitempty" name:"Buckets"`
+	Buckets []*string `json:"Buckets,omitnil" name:"Buckets"`
 }
 
 type CreateDSPACosMetaResourcesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// COS桶列表
-	Buckets []*string `json:"Buckets,omitempty" name:"Buckets"`
+	Buckets []*string `json:"Buckets,omitnil" name:"Buckets"`
 }
 
 func (r *CreateDSPACosMetaResourcesRequest) ToJsonString() string {
@@ -1790,7 +1790,7 @@ func (r *CreateDSPACosMetaResourcesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPACosMetaResourcesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPACosMetaResourcesResponse struct {
@@ -1812,44 +1812,44 @@ func (r *CreateDSPACosMetaResourcesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPADbMetaResourcesRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 用来标记本次更新是否已经是最后一次，可选值：continue（后续还需要更新）、finished（本次是最后一次更新）。
-	UpdateStatus *string `json:"UpdateStatus,omitempty" name:"UpdateStatus"`
+	UpdateStatus *string `json:"UpdateStatus,omitnil" name:"UpdateStatus"`
 
 	// 本次更新的ID号，用来标记一次完整的更新过程。
-	UpdateId *string `json:"UpdateId,omitempty" name:"UpdateId"`
+	UpdateId *string `json:"UpdateId,omitnil" name:"UpdateId"`
 
 	// 云上资源列表。
-	Items []*DspaCloudResourceMeta `json:"Items,omitempty" name:"Items"`
+	Items []*DspaCloudResourceMeta `json:"Items,omitnil" name:"Items"`
 }
 
 type CreateDSPADbMetaResourcesRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 用来标记本次更新是否已经是最后一次，可选值：continue（后续还需要更新）、finished（本次是最后一次更新）。
-	UpdateStatus *string `json:"UpdateStatus,omitempty" name:"UpdateStatus"`
+	UpdateStatus *string `json:"UpdateStatus,omitnil" name:"UpdateStatus"`
 
 	// 本次更新的ID号，用来标记一次完整的更新过程。
-	UpdateId *string `json:"UpdateId,omitempty" name:"UpdateId"`
+	UpdateId *string `json:"UpdateId,omitnil" name:"UpdateId"`
 
 	// 云上资源列表。
-	Items []*DspaCloudResourceMeta `json:"Items,omitempty" name:"Items"`
+	Items []*DspaCloudResourceMeta `json:"Items,omitnil" name:"Items"`
 }
 
 func (r *CreateDSPADbMetaResourcesRequest) ToJsonString() string {
@@ -1879,19 +1879,19 @@ func (r *CreateDSPADbMetaResourcesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPADbMetaResourcesResponseParams struct {
 	// 本次更新的ID号，用来标记一次完整的更新过程。
-	UpdateId *string `json:"UpdateId,omitempty" name:"UpdateId"`
+	UpdateId *string `json:"UpdateId,omitnil" name:"UpdateId"`
 
 	// 资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPADbMetaResourcesResponse struct {
@@ -1913,38 +1913,38 @@ func (r *CreateDSPADbMetaResourcesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPADiscoveryRuleRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 规则名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 规则描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// RDB类敏感数据识别规则
-	RDBRules *DspaDiscoveryRDBRules `json:"RDBRules,omitempty" name:"RDBRules"`
+	RDBRules *DspaDiscoveryRDBRules `json:"RDBRules,omitnil" name:"RDBRules"`
 
 	// COS类敏感数据识别规则
-	COSRules *DspaDiscoveryCOSRules `json:"COSRules,omitempty" name:"COSRules"`
+	COSRules *DspaDiscoveryCOSRules `json:"COSRules,omitnil" name:"COSRules"`
 }
 
 type CreateDSPADiscoveryRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 规则名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 规则描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// RDB类敏感数据识别规则
-	RDBRules *DspaDiscoveryRDBRules `json:"RDBRules,omitempty" name:"RDBRules"`
+	RDBRules *DspaDiscoveryRDBRules `json:"RDBRules,omitnil" name:"RDBRules"`
 
 	// COS类敏感数据识别规则
-	COSRules *DspaDiscoveryCOSRules `json:"COSRules,omitempty" name:"COSRules"`
+	COSRules *DspaDiscoveryCOSRules `json:"COSRules,omitnil" name:"COSRules"`
 }
 
 func (r *CreateDSPADiscoveryRuleRequest) ToJsonString() string {
@@ -1973,10 +1973,10 @@ func (r *CreateDSPADiscoveryRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPADiscoveryRuleResponseParams struct {
 	// 规则ID
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPADiscoveryRuleResponse struct {
@@ -1998,28 +1998,28 @@ func (r *CreateDSPADiscoveryRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPADiscoveryTaskRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 任务开关，0 关闭，1 启用
-	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 通用规则集开关，0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitempty" name:"GeneralRuleSetEnable"`
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil" name:"GeneralRuleSetEnable"`
 
 	// 执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次
-	Plan *int64 `json:"Plan,omitempty" name:"Plan"`
+	Plan *int64 `json:"Plan,omitnil" name:"Plan"`
 
 	// 扫描周期，0单次 1每天 2每周 3每月
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 资源所在地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 数据源类型，可取值如下：
 	// cdb 表示云数据库 MySQL,
@@ -2029,48 +2029,48 @@ type CreateDSPADiscoveryTaskRequestParams struct {
 	// cynosdbpg 表示TDSQL-C PostgreSQL版,
 	// cynosdbmysql 表示TDSQL-C MySQL版,
 	// selfbuilt-db 表示自建数据库
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
 	// 任务描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，选择多个数据库，之间通过逗号分隔，若不选，则默认选择全部数据库
-	Condition *string `json:"Condition,omitempty" name:"Condition"`
+	Condition *string `json:"Condition,omitnil" name:"Condition"`
 
 	// 合规组ID列表，最多支持添加5个
-	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitempty" name:"ComplianceGroupIds"`
+	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitnil" name:"ComplianceGroupIds"`
 
 	// 任务定时启动时间，格式如：2006-01-02 15:04:05
 	// 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
-	TimingStartTime *string `json:"TimingStartTime,omitempty" name:"TimingStartTime"`
+	TimingStartTime *string `json:"TimingStartTime,omitnil" name:"TimingStartTime"`
 }
 
 type CreateDSPADiscoveryTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 任务开关，0 关闭，1 启用
-	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 通用规则集开关，0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitempty" name:"GeneralRuleSetEnable"`
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil" name:"GeneralRuleSetEnable"`
 
 	// 执行计划， 0立即 1定时，选择“立即”时，扫描周期只能选择单次
-	Plan *int64 `json:"Plan,omitempty" name:"Plan"`
+	Plan *int64 `json:"Plan,omitnil" name:"Plan"`
 
 	// 扫描周期，0单次 1每天 2每周 3每月
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 资源所在地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 数据源类型，可取值如下：
 	// cdb 表示云数据库 MySQL,
@@ -2080,20 +2080,20 @@ type CreateDSPADiscoveryTaskRequest struct {
 	// cynosdbpg 表示TDSQL-C PostgreSQL版,
 	// cynosdbmysql 表示TDSQL-C MySQL版,
 	// selfbuilt-db 表示自建数据库
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
 	// 任务描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，选择多个数据库，之间通过逗号分隔，若不选，则默认选择全部数据库
-	Condition *string `json:"Condition,omitempty" name:"Condition"`
+	Condition *string `json:"Condition,omitnil" name:"Condition"`
 
 	// 合规组ID列表，最多支持添加5个
-	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitempty" name:"ComplianceGroupIds"`
+	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitnil" name:"ComplianceGroupIds"`
 
 	// 任务定时启动时间，格式如：2006-01-02 15:04:05
 	// 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
-	TimingStartTime *string `json:"TimingStartTime,omitempty" name:"TimingStartTime"`
+	TimingStartTime *string `json:"TimingStartTime,omitnil" name:"TimingStartTime"`
 }
 
 func (r *CreateDSPADiscoveryTaskRequest) ToJsonString() string {
@@ -2130,14 +2130,14 @@ func (r *CreateDSPADiscoveryTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPADiscoveryTaskResponseParams struct {
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 扫描结果ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultId *int64 `json:"ResultId,omitempty" name:"ResultId"`
+	ResultId *int64 `json:"ResultId,omitnil" name:"ResultId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPADiscoveryTaskResponse struct {
@@ -2159,32 +2159,32 @@ func (r *CreateDSPADiscoveryTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPALevelGroupRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分级组名称，唯一性约束，最多60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 分级标识配置
-	ItemLevels []*ItemLevel `json:"ItemLevels,omitempty" name:"ItemLevels"`
+	ItemLevels []*ItemLevel `json:"ItemLevels,omitnil" name:"ItemLevels"`
 
 	// 分级组描述，最多1024字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 type CreateDSPALevelGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分级组名称，唯一性约束，最多60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 分级标识配置
-	ItemLevels []*ItemLevel `json:"ItemLevels,omitempty" name:"ItemLevels"`
+	ItemLevels []*ItemLevel `json:"ItemLevels,omitnil" name:"ItemLevels"`
 
 	// 分级组描述，最多1024字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 func (r *CreateDSPALevelGroupRequest) ToJsonString() string {
@@ -2212,10 +2212,10 @@ func (r *CreateDSPALevelGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPALevelGroupResponseParams struct {
 	// 分级组ID
-	LevelGroupId *uint64 `json:"LevelGroupId,omitempty" name:"LevelGroupId"`
+	LevelGroupId *uint64 `json:"LevelGroupId,omitnil" name:"LevelGroupId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPALevelGroupResponse struct {
@@ -2237,44 +2237,44 @@ func (r *CreateDSPALevelGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPAMetaResourcesRequestParams struct {
 	// 资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 用来标记本次更新是否已经是最后一次，可选值：continue（后续还需要更新）、finished（本次是最后一次更新）。
-	UpdateStatus *string `json:"UpdateStatus,omitempty" name:"UpdateStatus"`
+	UpdateStatus *string `json:"UpdateStatus,omitnil" name:"UpdateStatus"`
 
 	// 本次更新的ID号，用来标记一次完整的更新过程。
-	UpdateId *string `json:"UpdateId,omitempty" name:"UpdateId"`
+	UpdateId *string `json:"UpdateId,omitnil" name:"UpdateId"`
 
 	// 资源列表。
-	Items []*DspaUserResourceMeta `json:"Items,omitempty" name:"Items"`
+	Items []*DspaUserResourceMeta `json:"Items,omitnil" name:"Items"`
 }
 
 type CreateDSPAMetaResourcesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 用来标记本次更新是否已经是最后一次，可选值：continue（后续还需要更新）、finished（本次是最后一次更新）。
-	UpdateStatus *string `json:"UpdateStatus,omitempty" name:"UpdateStatus"`
+	UpdateStatus *string `json:"UpdateStatus,omitnil" name:"UpdateStatus"`
 
 	// 本次更新的ID号，用来标记一次完整的更新过程。
-	UpdateId *string `json:"UpdateId,omitempty" name:"UpdateId"`
+	UpdateId *string `json:"UpdateId,omitnil" name:"UpdateId"`
 
 	// 资源列表。
-	Items []*DspaUserResourceMeta `json:"Items,omitempty" name:"Items"`
+	Items []*DspaUserResourceMeta `json:"Items,omitnil" name:"Items"`
 }
 
 func (r *CreateDSPAMetaResourcesRequest) ToJsonString() string {
@@ -2304,19 +2304,19 @@ func (r *CreateDSPAMetaResourcesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPAMetaResourcesResponseParams struct {
 	// 本次更新的ID号，用来标记一次完整的更新过程。
-	UpdateId *string `json:"UpdateId,omitempty" name:"UpdateId"`
+	UpdateId *string `json:"UpdateId,omitnil" name:"UpdateId"`
 
 	// 资源类型，支持：cdb（云数据库 MySQL）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbpg（TDSQL-C PostgreSQL版）、cynosdbmysql（TDSQL-C MySQL版）
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPAMetaResourcesResponse struct {
@@ -2338,90 +2338,90 @@ func (r *CreateDSPAMetaResourcesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDSPASelfBuildMetaResourceRequestParams struct {
 	// Dspa实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 自建数据库类型。目前支持的自建数据库类型按照协议进行区分，支持两种开源数据库协议：
 	// mysql_like_proto -- Mysql协议类关系型数据库，
 	// postgre_like_proto -- Postgre协议类关系型数据库。
 	// 其他闭源协议的数据库如SqlServer、Oracle等暂不支持。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 自建云资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 可用于访问自建云资源的IP。
-	ResourceVip *string `json:"ResourceVip,omitempty" name:"ResourceVip"`
+	ResourceVip *string `json:"ResourceVip,omitnil" name:"ResourceVip"`
 
 	// 可用于访问自建云资源的端口。
-	ResourceVPort *uint64 `json:"ResourceVPort,omitempty" name:"ResourceVPort"`
+	ResourceVPort *uint64 `json:"ResourceVPort,omitnil" name:"ResourceVPort"`
 
 	// 自建云资源的VPC ID。
-	ResourceUniqueVpcId *string `json:"ResourceUniqueVpcId,omitempty" name:"ResourceUniqueVpcId"`
+	ResourceUniqueVpcId *string `json:"ResourceUniqueVpcId,omitnil" name:"ResourceUniqueVpcId"`
 
 	// 自建云资源的Subnet ID。
-	ResourceUniqueSubnetId *string `json:"ResourceUniqueSubnetId,omitempty" name:"ResourceUniqueSubnetId"`
+	ResourceUniqueSubnetId *string `json:"ResourceUniqueSubnetId,omitnil" name:"ResourceUniqueSubnetId"`
 
 	// 自建云资源所处的服务类型，可选：
 	// cvm - 通过云服务器直接访问。
 	// clb - 通过LB的方式进行访问。
-	ResourceAccessType *string `json:"ResourceAccessType,omitempty" name:"ResourceAccessType"`
+	ResourceAccessType *string `json:"ResourceAccessType,omitnil" name:"ResourceAccessType"`
 
 	// 账户名。
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
 	// 账户密码。
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 
 	// 资源名称，1-60个字符。
-	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
 }
 
 type CreateDSPASelfBuildMetaResourceRequest struct {
 	*tchttp.BaseRequest
 	
 	// Dspa实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 自建数据库类型。目前支持的自建数据库类型按照协议进行区分，支持两种开源数据库协议：
 	// mysql_like_proto -- Mysql协议类关系型数据库，
 	// postgre_like_proto -- Postgre协议类关系型数据库。
 	// 其他闭源协议的数据库如SqlServer、Oracle等暂不支持。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 自建云资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 可用于访问自建云资源的IP。
-	ResourceVip *string `json:"ResourceVip,omitempty" name:"ResourceVip"`
+	ResourceVip *string `json:"ResourceVip,omitnil" name:"ResourceVip"`
 
 	// 可用于访问自建云资源的端口。
-	ResourceVPort *uint64 `json:"ResourceVPort,omitempty" name:"ResourceVPort"`
+	ResourceVPort *uint64 `json:"ResourceVPort,omitnil" name:"ResourceVPort"`
 
 	// 自建云资源的VPC ID。
-	ResourceUniqueVpcId *string `json:"ResourceUniqueVpcId,omitempty" name:"ResourceUniqueVpcId"`
+	ResourceUniqueVpcId *string `json:"ResourceUniqueVpcId,omitnil" name:"ResourceUniqueVpcId"`
 
 	// 自建云资源的Subnet ID。
-	ResourceUniqueSubnetId *string `json:"ResourceUniqueSubnetId,omitempty" name:"ResourceUniqueSubnetId"`
+	ResourceUniqueSubnetId *string `json:"ResourceUniqueSubnetId,omitnil" name:"ResourceUniqueSubnetId"`
 
 	// 自建云资源所处的服务类型，可选：
 	// cvm - 通过云服务器直接访问。
 	// clb - 通过LB的方式进行访问。
-	ResourceAccessType *string `json:"ResourceAccessType,omitempty" name:"ResourceAccessType"`
+	ResourceAccessType *string `json:"ResourceAccessType,omitnil" name:"ResourceAccessType"`
 
 	// 账户名。
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
 	// 账户密码。
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 
 	// 资源名称，1-60个字符。
-	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
 }
 
 func (r *CreateDSPASelfBuildMetaResourceRequest) ToJsonString() string {
@@ -2457,13 +2457,13 @@ func (r *CreateDSPASelfBuildMetaResourceRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type CreateDSPASelfBuildMetaResourceResponseParams struct {
 	// 连通性测试情况，success表示可正常访问，failed表示无法访问。
-	ConnectivityStatus *string `json:"ConnectivityStatus,omitempty" name:"ConnectivityStatus"`
+	ConnectivityStatus *string `json:"ConnectivityStatus,omitnil" name:"ConnectivityStatus"`
 
 	// 连通性描述字段，如果连通性测试失败，这里会返回无法访问的相关信息说明。
-	ConnectivityDescription *string `json:"ConnectivityDescription,omitempty" name:"ConnectivityDescription"`
+	ConnectivityDescription *string `json:"ConnectivityDescription,omitnil" name:"ConnectivityDescription"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDSPASelfBuildMetaResourceResponse struct {
@@ -2485,56 +2485,56 @@ func (r *CreateDSPASelfBuildMetaResourceResponse) FromJsonString(s string) error
 // Predefined struct for user
 type CreateIdentifyRuleAnotherNameRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 规则绑定的分类id
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 规则id
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则名称
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 规则别名
-	AnotherName *string `json:"AnotherName,omitempty" name:"AnotherName"`
+	AnotherName *string `json:"AnotherName,omitnil" name:"AnotherName"`
 
 	// 别名规则id
-	AliasRuleId *int64 `json:"AliasRuleId,omitempty" name:"AliasRuleId"`
+	AliasRuleId *int64 `json:"AliasRuleId,omitnil" name:"AliasRuleId"`
 
 	// 别名规则名称
-	AliasRuleName *string `json:"AliasRuleName,omitempty" name:"AliasRuleName"`
+	AliasRuleName *string `json:"AliasRuleName,omitnil" name:"AliasRuleName"`
 }
 
 type CreateIdentifyRuleAnotherNameRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 规则绑定的分类id
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 规则id
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则名称
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 规则别名
-	AnotherName *string `json:"AnotherName,omitempty" name:"AnotherName"`
+	AnotherName *string `json:"AnotherName,omitnil" name:"AnotherName"`
 
 	// 别名规则id
-	AliasRuleId *int64 `json:"AliasRuleId,omitempty" name:"AliasRuleId"`
+	AliasRuleId *int64 `json:"AliasRuleId,omitnil" name:"AliasRuleId"`
 
 	// 别名规则名称
-	AliasRuleName *string `json:"AliasRuleName,omitempty" name:"AliasRuleName"`
+	AliasRuleName *string `json:"AliasRuleName,omitnil" name:"AliasRuleName"`
 }
 
 func (r *CreateIdentifyRuleAnotherNameRequest) ToJsonString() string {
@@ -2567,14 +2567,14 @@ func (r *CreateIdentifyRuleAnotherNameRequest) FromJsonString(s string) error {
 type CreateIdentifyRuleAnotherNameResponseParams struct {
 	// 创建的别名规则id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AliasRuleId *int64 `json:"AliasRuleId,omitempty" name:"AliasRuleId"`
+	AliasRuleId *int64 `json:"AliasRuleId,omitnil" name:"AliasRuleId"`
 
 	// 别名规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AliasRuleName *string `json:"AliasRuleName,omitempty" name:"AliasRuleName"`
+	AliasRuleName *string `json:"AliasRuleName,omitnil" name:"AliasRuleName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateIdentifyRuleAnotherNameResponse struct {
@@ -2625,7 +2625,7 @@ func (r *CreateNewClassificationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateNewClassificationResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateNewClassificationResponse struct {
@@ -2676,7 +2676,7 @@ func (r *CreateOrCopyStandardRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateOrCopyStandardResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateOrCopyStandardResponse struct {
@@ -2698,126 +2698,126 @@ func (r *CreateOrCopyStandardResponse) FromJsonString(s string) error {
 type DBInstanceInfo struct {
 	// 数据源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 数据源绑定的db信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DbInfos []*DbInfo `json:"DbInfos,omitempty" name:"DbInfos"`
+	DbInfos []*DbInfo `json:"DbInfos,omitnil" name:"DbInfos"`
 }
 
 type DBStatements struct {
 	// 数据库名称
-	DBName *string `json:"DBName,omitempty" name:"DBName"`
+	DBName *string `json:"DBName,omitnil" name:"DBName"`
 
 	// 数据库Schema
-	DBSchema *string `json:"DBSchema,omitempty" name:"DBSchema"`
+	DBSchema *string `json:"DBSchema,omitnil" name:"DBSchema"`
 }
 
 type DSPACosMetaDataInfo struct {
 	// COS桶名
-	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
 
 	// COS桶创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 1 -- 有效，0 -- 无效，资源可能已被删除。
-	Valid *int64 `json:"Valid,omitempty" name:"Valid"`
+	Valid *int64 `json:"Valid,omitnil" name:"Valid"`
 
 	// DSPA为COS资源生成的资源ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// COS资源所处的地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// COS桶绑定状态
-	BindStatus *string `json:"BindStatus,omitempty" name:"BindStatus"`
+	BindStatus *string `json:"BindStatus,omitnil" name:"BindStatus"`
 
 	// COS桶存储量
-	Storage *float64 `json:"Storage,omitempty" name:"Storage"`
+	Storage *float64 `json:"Storage,omitnil" name:"Storage"`
 }
 
 type DSPADataSourceDbInfo struct {
 	// 数据库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 }
 
 type DSPAMetaType struct {
 	// 元数据类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 支持的此元数据类型的地域列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Regions []*string `json:"Regions,omitempty" name:"Regions"`
+	Regions []*string `json:"Regions,omitnil" name:"Regions"`
 
 	// 此元数据类型支持的授权类型：
 	// account    -- 账户名密码授权，账户的最高只读权限需要由用户自行赋予；
 	// automatic -- 一键授权，由DSPA自动生成账户名密码并自动在实例中给账户名赋予最高只读权限；
 	// 如果此列表为空，表明此类资源不支持以上的授权机制，无法通过后台进行授权。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SupportedAuthTypes []*string `json:"SupportedAuthTypes,omitempty" name:"SupportedAuthTypes"`
+	SupportedAuthTypes []*string `json:"SupportedAuthTypes,omitnil" name:"SupportedAuthTypes"`
 }
 
 type DSPATableInfo struct {
 	// 表名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TableName *string `json:"TableName,omitempty" name:"TableName"`
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
 }
 
 type DataCategory struct {
 	// 分类ID
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分类名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 敏感数据分类来源，取值：0 内置, 1 自定义
-	Source *int64 `json:"Source,omitempty" name:"Source"`
+	Source *int64 `json:"Source,omitnil" name:"Source"`
 
 	// 关联模板数量
-	RelateComplianceCount *uint64 `json:"RelateComplianceCount,omitempty" name:"RelateComplianceCount"`
+	RelateComplianceCount *uint64 `json:"RelateComplianceCount,omitnil" name:"RelateComplianceCount"`
 }
 
 type DataContent struct {
 	// 规则内容，可以是正则规则，关键词，
 	// 忽略词扥
-	RuleContent *string `json:"RuleContent,omitempty" name:"RuleContent"`
+	RuleContent *string `json:"RuleContent,omitnil" name:"RuleContent"`
 
 	// 是否区分大小写
 	// false: 不区分大小写
 	// true:区分大小写
-	IsIgnoreCase *bool `json:"IsIgnoreCase,omitempty" name:"IsIgnoreCase"`
+	IsIgnoreCase *bool `json:"IsIgnoreCase,omitnil" name:"IsIgnoreCase"`
 }
 
 type DataRule struct {
 	// 规则类型；取值：
 	// keyword 关键字, 
 	// regex 正则
-	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+	RuleType *string `json:"RuleType,omitnil" name:"RuleType"`
 
 	// 内容
-	RuleContent *string `json:"RuleContent,omitempty" name:"RuleContent"`
+	RuleContent *string `json:"RuleContent,omitnil" name:"RuleContent"`
 
 	// 该字段是针对规则类型RuleType为keyword类型时的一个扩展属性
-	ExtendParameters []*DatagovRuleExtendParameter `json:"ExtendParameters,omitempty" name:"ExtendParameters"`
+	ExtendParameters []*DatagovRuleExtendParameter `json:"ExtendParameters,omitnil" name:"ExtendParameters"`
 }
 
 type DataRules struct {
 	// 操作符；只能取and, or的其中一种
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Contents []*DataRule `json:"Contents,omitempty" name:"Contents"`
+	Contents []*DataRule `json:"Contents,omitnil" name:"Contents"`
 }
 
 type DataSourceInfo struct {
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 针对rbd-就是绑定的db_name
-	BindList []*string `json:"BindList,omitempty" name:"BindList"`
+	BindList []*string `json:"BindList,omitnil" name:"BindList"`
 }
 
 type DatagovRuleExtendParameter struct {
@@ -2825,80 +2825,80 @@ type DatagovRuleExtendParameter struct {
 	// IsFullWordMatch，表示是否全文匹配，该Name对应的Value可取值为"true"或"false":，默认值为"false"，
 	// IsIgnoreCase，表示是否忽略大小写，该Name对应的Value可取值为"true"或"false"，默认值为"true"
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 扩展参数值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type DbInfo struct {
 	// 数据库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 
 	// 绑定的状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ValidStatus *string `json:"ValidStatus,omitempty" name:"ValidStatus"`
+	ValidStatus *string `json:"ValidStatus,omitnil" name:"ValidStatus"`
 }
 
 type DbRelationStatusItem struct {
 	// DB名称。
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 
 	// DB绑定状态。
-	BindStatus *string `json:"BindStatus,omitempty" name:"BindStatus"`
+	BindStatus *string `json:"BindStatus,omitnil" name:"BindStatus"`
 
 	// DB有效性状态。
-	ValidStatus *string `json:"ValidStatus,omitempty" name:"ValidStatus"`
+	ValidStatus *string `json:"ValidStatus,omitnil" name:"ValidStatus"`
 }
 
 type DbResourceItem struct {
 	// DB名称。
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 }
 
 type DbTaskResult struct {
 	// 结果类型。
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 结果描述。
-	ResultDescription *string `json:"ResultDescription,omitempty" name:"ResultDescription"`
+	ResultDescription *string `json:"ResultDescription,omitnil" name:"ResultDescription"`
 
 	// 错误信息描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrDescription *ErrDescription `json:"ErrDescription,omitempty" name:"ErrDescription"`
+	ErrDescription *ErrDescription `json:"ErrDescription,omitnil" name:"ErrDescription"`
 
 	// 资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// database名称。
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 }
 
 // Predefined struct for user
 type DecribeSuggestRiskLevelMatrixRequestParams struct {
 	// dspaId
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分类分级等级列表
-	SensitiveLevelList []*RiskMatrixLevel `json:"SensitiveLevelList,omitempty" name:"SensitiveLevelList"`
+	SensitiveLevelList []*RiskMatrixLevel `json:"SensitiveLevelList,omitnil" name:"SensitiveLevelList"`
 
 	// 脆弱项等级列表
-	VulnerabilityLevelList []*RiskMatrixLevel `json:"VulnerabilityLevelList,omitempty" name:"VulnerabilityLevelList"`
+	VulnerabilityLevelList []*RiskMatrixLevel `json:"VulnerabilityLevelList,omitnil" name:"VulnerabilityLevelList"`
 }
 
 type DecribeSuggestRiskLevelMatrixRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspaId
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分类分级等级列表
-	SensitiveLevelList []*RiskMatrixLevel `json:"SensitiveLevelList,omitempty" name:"SensitiveLevelList"`
+	SensitiveLevelList []*RiskMatrixLevel `json:"SensitiveLevelList,omitnil" name:"SensitiveLevelList"`
 
 	// 脆弱项等级列表
-	VulnerabilityLevelList []*RiskMatrixLevel `json:"VulnerabilityLevelList,omitempty" name:"VulnerabilityLevelList"`
+	VulnerabilityLevelList []*RiskMatrixLevel `json:"VulnerabilityLevelList,omitnil" name:"VulnerabilityLevelList"`
 }
 
 func (r *DecribeSuggestRiskLevelMatrixRequest) ToJsonString() string {
@@ -2925,10 +2925,10 @@ func (r *DecribeSuggestRiskLevelMatrixRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DecribeSuggestRiskLevelMatrixResponseParams struct {
 	// 矩阵
-	SuggestRiskLevelMatrix []*SuggestRiskLevelMatrix `json:"SuggestRiskLevelMatrix,omitempty" name:"SuggestRiskLevelMatrix"`
+	SuggestRiskLevelMatrix []*SuggestRiskLevelMatrix `json:"SuggestRiskLevelMatrix,omitnil" name:"SuggestRiskLevelMatrix"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DecribeSuggestRiskLevelMatrixResponse struct {
@@ -2950,26 +2950,26 @@ func (r *DecribeSuggestRiskLevelMatrixResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCosMetaResourceRequestParams struct {
 	// 实例Id。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 资源实例ID。
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+	ResourceIds []*string `json:"ResourceIds,omitnil" name:"ResourceIds"`
 }
 
 type DeleteCosMetaResourceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例Id。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 资源实例ID。
-	ResourceIds []*string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+	ResourceIds []*string `json:"ResourceIds,omitnil" name:"ResourceIds"`
 }
 
 func (r *DeleteCosMetaResourceRequest) ToJsonString() string {
@@ -2997,13 +2997,13 @@ func (r *DeleteCosMetaResourceRequest) FromJsonString(s string) error {
 type DeleteCosMetaResourceResponseParams struct {
 	// 结果集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Results []*DspaTaskResult `json:"Results,omitempty" name:"Results"`
+	Results []*DspaTaskResult `json:"Results,omitnil" name:"Results"`
 
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteCosMetaResourceResponse struct {
@@ -3025,20 +3025,20 @@ func (r *DeleteCosMetaResourceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDSPAAssessmentTaskRequestParams struct {
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估任务Id，格式“task-xxxxxxxx”
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type DeleteDSPAAssessmentTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估任务Id，格式“task-xxxxxxxx”
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *DeleteDSPAAssessmentTaskRequest) ToJsonString() string {
@@ -3064,7 +3064,7 @@ func (r *DeleteDSPAAssessmentTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDSPAAssessmentTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteDSPAAssessmentTaskResponse struct {
@@ -3086,20 +3086,20 @@ func (r *DeleteDSPAAssessmentTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDSPACOSDiscoveryTaskRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type DeleteDSPACOSDiscoveryTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *DeleteDSPACOSDiscoveryTaskRequest) ToJsonString() string {
@@ -3125,7 +3125,7 @@ func (r *DeleteDSPACOSDiscoveryTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDSPACOSDiscoveryTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteDSPACOSDiscoveryTaskResponse struct {
@@ -3147,20 +3147,20 @@ func (r *DeleteDSPACOSDiscoveryTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDSPACOSDiscoveryTaskResultRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 扫描bucket结果ID
-	BucketResultId *int64 `json:"BucketResultId,omitempty" name:"BucketResultId"`
+	BucketResultId *int64 `json:"BucketResultId,omitnil" name:"BucketResultId"`
 }
 
 type DeleteDSPACOSDiscoveryTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 扫描bucket结果ID
-	BucketResultId *int64 `json:"BucketResultId,omitempty" name:"BucketResultId"`
+	BucketResultId *int64 `json:"BucketResultId,omitnil" name:"BucketResultId"`
 }
 
 func (r *DeleteDSPACOSDiscoveryTaskResultRequest) ToJsonString() string {
@@ -3186,7 +3186,7 @@ func (r *DeleteDSPACOSDiscoveryTaskResultRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DeleteDSPACOSDiscoveryTaskResultResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteDSPACOSDiscoveryTaskResultResponse struct {
@@ -3208,26 +3208,26 @@ func (r *DeleteDSPACOSDiscoveryTaskResultResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DeleteDSPADiscoveryTaskRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 数据源类型
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 }
 
 type DeleteDSPADiscoveryTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 数据源类型
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 }
 
 func (r *DeleteDSPADiscoveryTaskRequest) ToJsonString() string {
@@ -3254,7 +3254,7 @@ func (r *DeleteDSPADiscoveryTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDSPADiscoveryTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteDSPADiscoveryTaskResponse struct {
@@ -3276,20 +3276,20 @@ func (r *DeleteDSPADiscoveryTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDSPADiscoveryTaskResultRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 扫描数据库结果ID
-	DbResultId *int64 `json:"DbResultId,omitempty" name:"DbResultId"`
+	DbResultId *int64 `json:"DbResultId,omitnil" name:"DbResultId"`
 }
 
 type DeleteDSPADiscoveryTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 扫描数据库结果ID
-	DbResultId *int64 `json:"DbResultId,omitempty" name:"DbResultId"`
+	DbResultId *int64 `json:"DbResultId,omitnil" name:"DbResultId"`
 }
 
 func (r *DeleteDSPADiscoveryTaskResultRequest) ToJsonString() string {
@@ -3315,7 +3315,7 @@ func (r *DeleteDSPADiscoveryTaskResultRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDSPADiscoveryTaskResultResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteDSPADiscoveryTaskResultResponse struct {
@@ -3337,20 +3337,20 @@ func (r *DeleteDSPADiscoveryTaskResultResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDSPAMetaResourceRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 用户云资源ID。
-	ResourceIDs []*string `json:"ResourceIDs,omitempty" name:"ResourceIDs"`
+	ResourceIDs []*string `json:"ResourceIDs,omitnil" name:"ResourceIDs"`
 }
 
 type DeleteDSPAMetaResourceRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 用户云资源ID。
-	ResourceIDs []*string `json:"ResourceIDs,omitempty" name:"ResourceIDs"`
+	ResourceIDs []*string `json:"ResourceIDs,omitnil" name:"ResourceIDs"`
 }
 
 func (r *DeleteDSPAMetaResourceRequest) ToJsonString() string {
@@ -3376,13 +3376,13 @@ func (r *DeleteDSPAMetaResourceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDSPAMetaResourceResponseParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 删除结果。
-	Results []*DspaTaskResult `json:"Results,omitempty" name:"Results"`
+	Results []*DspaTaskResult `json:"Results,omitnil" name:"Results"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteDSPAMetaResourceResponse struct {
@@ -3404,20 +3404,20 @@ func (r *DeleteDSPAMetaResourceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAssetDetailDataExportResultRequestParams struct {
 	// 导出任务id
-	ExportTaskId *uint64 `json:"ExportTaskId,omitempty" name:"ExportTaskId"`
+	ExportTaskId *uint64 `json:"ExportTaskId,omitnil" name:"ExportTaskId"`
 
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 type DescribeAssetDetailDataExportResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// 导出任务id
-	ExportTaskId *uint64 `json:"ExportTaskId,omitempty" name:"ExportTaskId"`
+	ExportTaskId *uint64 `json:"ExportTaskId,omitnil" name:"ExportTaskId"`
 
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 func (r *DescribeAssetDetailDataExportResultRequest) ToJsonString() string {
@@ -3443,13 +3443,13 @@ func (r *DescribeAssetDetailDataExportResultRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeAssetDetailDataExportResultResponseParams struct {
 	// 导出结果
-	ExportResult *string `json:"ExportResult,omitempty" name:"ExportResult"`
+	ExportResult *string `json:"ExportResult,omitnil" name:"ExportResult"`
 
 	// 导出文件地址
-	ExportFileUrl *string `json:"ExportFileUrl,omitempty" name:"ExportFileUrl"`
+	ExportFileUrl *string `json:"ExportFileUrl,omitnil" name:"ExportFileUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetDetailDataExportResultResponse struct {
@@ -3471,26 +3471,26 @@ func (r *DescribeAssetDetailDataExportResultResponse) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeAssetOverviewRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产信息列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 type DescribeAssetOverviewRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产信息列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 func (r *DescribeAssetOverviewRequest) ToJsonString() string {
@@ -3518,70 +3518,70 @@ func (r *DescribeAssetOverviewRequest) FromJsonString(s string) error {
 type DescribeAssetOverviewResponseParams struct {
 	// 数据库实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DBInstanceNums *int64 `json:"DBInstanceNums,omitempty" name:"DBInstanceNums"`
+	DBInstanceNums *int64 `json:"DBInstanceNums,omitnil" name:"DBInstanceNums"`
 
 	// 数据库个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DBNums *int64 `json:"DBNums,omitempty" name:"DBNums"`
+	DBNums *int64 `json:"DBNums,omitnil" name:"DBNums"`
 
 	// 表的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TableNums *int64 `json:"TableNums,omitempty" name:"TableNums"`
+	TableNums *int64 `json:"TableNums,omitnil" name:"TableNums"`
 
 	// 字段个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FieldNums *int64 `json:"FieldNums,omitempty" name:"FieldNums"`
+	FieldNums *int64 `json:"FieldNums,omitnil" name:"FieldNums"`
 
 	// 数据库实例的分布情况
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DBInstanceDistribution []*Note `json:"DBInstanceDistribution,omitempty" name:"DBInstanceDistribution"`
+	DBInstanceDistribution []*Note `json:"DBInstanceDistribution,omitnil" name:"DBInstanceDistribution"`
 
 	// db分布情况
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DBDistribution []*Note `json:"DBDistribution,omitempty" name:"DBDistribution"`
+	DBDistribution []*Note `json:"DBDistribution,omitnil" name:"DBDistribution"`
 
 	// cos桶的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BucketNums *int64 `json:"BucketNums,omitempty" name:"BucketNums"`
+	BucketNums *int64 `json:"BucketNums,omitnil" name:"BucketNums"`
 
 	// 文件个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileNums *int64 `json:"FileNums,omitempty" name:"FileNums"`
+	FileNums *int64 `json:"FileNums,omitnil" name:"FileNums"`
 
 	// 用于对用户进行提示信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// es实例数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EsInstanceNums *uint64 `json:"EsInstanceNums,omitempty" name:"EsInstanceNums"`
+	EsInstanceNums *uint64 `json:"EsInstanceNums,omitnil" name:"EsInstanceNums"`
 
 	// es索引数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EsIndexNums *uint64 `json:"EsIndexNums,omitempty" name:"EsIndexNums"`
+	EsIndexNums *uint64 `json:"EsIndexNums,omitnil" name:"EsIndexNums"`
 
 	// es字段数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EsFieldNums *uint64 `json:"EsFieldNums,omitempty" name:"EsFieldNums"`
+	EsFieldNums *uint64 `json:"EsFieldNums,omitnil" name:"EsFieldNums"`
 
 	// mongo实例数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MongoInstanceNums *uint64 `json:"MongoInstanceNums,omitempty" name:"MongoInstanceNums"`
+	MongoInstanceNums *uint64 `json:"MongoInstanceNums,omitnil" name:"MongoInstanceNums"`
 
 	// mongo数据库数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MongoDbNums *uint64 `json:"MongoDbNums,omitempty" name:"MongoDbNums"`
+	MongoDbNums *uint64 `json:"MongoDbNums,omitnil" name:"MongoDbNums"`
 
 	// mongo集合数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MongoColNums *uint64 `json:"MongoColNums,omitempty" name:"MongoColNums"`
+	MongoColNums *uint64 `json:"MongoColNums,omitnil" name:"MongoColNums"`
 
 	// mongo字段数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MongoFieldNums *uint64 `json:"MongoFieldNums,omitempty" name:"MongoFieldNums"`
+	MongoFieldNums *uint64 `json:"MongoFieldNums,omitnil" name:"MongoFieldNums"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAssetOverviewResponse struct {
@@ -3603,26 +3603,26 @@ func (r *DescribeAssetOverviewResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBindDBListRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据源类型
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 }
 
 type DescribeBindDBListRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据源类型
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 }
 
 func (r *DescribeBindDBListRequest) ToJsonString() string {
@@ -3650,14 +3650,14 @@ func (r *DescribeBindDBListRequest) FromJsonString(s string) error {
 type DescribeBindDBListResponseParams struct {
 	// 绑定的DB列表（已废弃）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindDBList []*string `json:"BindDBList,omitempty" name:"BindDBList"`
+	BindDBList []*string `json:"BindDBList,omitnil" name:"BindDBList"`
 
 	// 绑定信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindList []*DBInstanceInfo `json:"BindList,omitempty" name:"BindList"`
+	BindList []*DBInstanceInfo `json:"BindList,omitnil" name:"BindList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeBindDBListResponse struct {
@@ -3679,26 +3679,26 @@ func (r *DescribeBindDBListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCOSAssetSensitiveDistributionRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 type DescribeCOSAssetSensitiveDistributionRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 func (r *DescribeCOSAssetSensitiveDistributionRequest) ToJsonString() string {
@@ -3726,18 +3726,18 @@ func (r *DescribeCOSAssetSensitiveDistributionRequest) FromJsonString(s string) 
 type DescribeCOSAssetSensitiveDistributionResponseParams struct {
 	// cos的涉敏资产
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CosAsset *CosAsset `json:"CosAsset,omitempty" name:"CosAsset"`
+	CosAsset *CosAsset `json:"CosAsset,omitnil" name:"CosAsset"`
 
 	// 涉敏top
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopAsset []*TopAsset `json:"TopAsset,omitempty" name:"TopAsset"`
+	TopAsset []*TopAsset `json:"TopAsset,omitnil" name:"TopAsset"`
 
 	// cos资产详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CosDetail []*AssetCosDetail `json:"CosDetail,omitempty" name:"CosDetail"`
+	CosDetail []*AssetCosDetail `json:"CosDetail,omitnil" name:"CosDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCOSAssetSensitiveDistributionResponse struct {
@@ -3788,7 +3788,7 @@ func (r *DescribeClassificationInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClassificationInfoResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeClassificationInfoResponse struct {
@@ -3839,7 +3839,7 @@ func (r *DescribeClassificationRuleCountRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeClassificationRuleCountResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeClassificationRuleCountResponse struct {
@@ -3861,28 +3861,28 @@ func (r *DescribeClassificationRuleCountResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeDSPAAssessmentHighRiskTop10OverviewRequestParams struct {
 	// dspa实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 过滤条件， rdb（数据库）cos（对象存储）
 	// 不传就是全部
-	Filter *string `json:"Filter,omitempty" name:"Filter"`
+	Filter *string `json:"Filter,omitnil" name:"Filter"`
 }
 
 type DescribeDSPAAssessmentHighRiskTop10OverviewRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 过滤条件， rdb（数据库）cos（对象存储）
 	// 不传就是全部
-	Filter *string `json:"Filter,omitempty" name:"Filter"`
+	Filter *string `json:"Filter,omitnil" name:"Filter"`
 }
 
 func (r *DescribeDSPAAssessmentHighRiskTop10OverviewRequest) ToJsonString() string {
@@ -3910,10 +3910,10 @@ func (r *DescribeDSPAAssessmentHighRiskTop10OverviewRequest) FromJsonString(s st
 type DescribeDSPAAssessmentHighRiskTop10OverviewResponseParams struct {
 	// 含高风险资产TOP10的列表数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssetsList []*HighRiskAssetsDetail `json:"AssetsList,omitempty" name:"AssetsList"`
+	AssetsList []*HighRiskAssetsDetail `json:"AssetsList,omitnil" name:"AssetsList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentHighRiskTop10OverviewResponse struct {
@@ -3935,26 +3935,26 @@ func (r *DescribeDSPAAssessmentHighRiskTop10OverviewResponse) FromJsonString(s s
 // Predefined struct for user
 type DescribeDSPAAssessmentLatestRiskDetailInfoRequestParams struct {
 	// dspa实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 风险id
-	RiskId *int64 `json:"RiskId,omitempty" name:"RiskId"`
+	RiskId *int64 `json:"RiskId,omitnil" name:"RiskId"`
 }
 
 type DescribeDSPAAssessmentLatestRiskDetailInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 风险id
-	RiskId *int64 `json:"RiskId,omitempty" name:"RiskId"`
+	RiskId *int64 `json:"RiskId,omitnil" name:"RiskId"`
 }
 
 func (r *DescribeDSPAAssessmentLatestRiskDetailInfoRequest) ToJsonString() string {
@@ -3982,82 +3982,82 @@ func (r *DescribeDSPAAssessmentLatestRiskDetailInfoRequest) FromJsonString(s str
 type DescribeDSPAAssessmentLatestRiskDetailInfoResponseParams struct {
 	// 数据源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 数据源name
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceName *string `json:"DataSourceName,omitempty" name:"DataSourceName"`
+	DataSourceName *string `json:"DataSourceName,omitnil" name:"DataSourceName"`
 
 	// 资产对象名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssetName *string `json:"AssetName,omitempty" name:"AssetName"`
+	AssetName *string `json:"AssetName,omitnil" name:"AssetName"`
 
 	// 风险评估模版id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssessmentTemplateId *int64 `json:"AssessmentTemplateId,omitempty" name:"AssessmentTemplateId"`
+	AssessmentTemplateId *int64 `json:"AssessmentTemplateId,omitnil" name:"AssessmentTemplateId"`
 
 	// 分类分级的模版id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IdentifyTemplateId *int64 `json:"IdentifyTemplateId,omitempty" name:"IdentifyTemplateId"`
+	IdentifyTemplateId *int64 `json:"IdentifyTemplateId,omitnil" name:"IdentifyTemplateId"`
 
 	// 风险类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskType *string `json:"RiskType,omitempty" name:"RiskType"`
+	RiskType *string `json:"RiskType,omitnil" name:"RiskType"`
 
 	// 风险项
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskName *string `json:"RiskName,omitempty" name:"RiskName"`
+	RiskName *string `json:"RiskName,omitnil" name:"RiskName"`
 
 	// 风险的描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskDescription *string `json:"RiskDescription,omitempty" name:"RiskDescription"`
+	RiskDescription *string `json:"RiskDescription,omitnil" name:"RiskDescription"`
 
 	// 风险的级别
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 处置的建议
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SuggestAction *string `json:"SuggestAction,omitempty" name:"SuggestAction"`
+	SuggestAction *string `json:"SuggestAction,omitnil" name:"SuggestAction"`
 
 	// 处置状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 安全产品
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecurityProduct []*SecurityProduct `json:"SecurityProduct,omitempty" name:"SecurityProduct"`
+	SecurityProduct []*SecurityProduct `json:"SecurityProduct,omitnil" name:"SecurityProduct"`
 
 	// 风险归属
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskDimension *string `json:"RiskDimension,omitempty" name:"RiskDimension"`
+	RiskDimension *string `json:"RiskDimension,omitnil" name:"RiskDimension"`
 
 	// 关联数据库（如果风险归属是instance）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RelationAsset []*string `json:"RelationAsset,omitempty" name:"RelationAsset"`
+	RelationAsset []*string `json:"RelationAsset,omitnil" name:"RelationAsset"`
 
 	// 风险账号详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccountRiskDetail []*AccountRisk `json:"AccountRiskDetail,omitempty" name:"AccountRiskDetail"`
+	AccountRiskDetail []*AccountRisk `json:"AccountRiskDetail,omitnil" name:"AccountRiskDetail"`
 
 	// 权限风险详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PrivilegeRiskDetail []*PrivilegeRisk `json:"PrivilegeRiskDetail,omitempty" name:"PrivilegeRiskDetail"`
+	PrivilegeRiskDetail []*PrivilegeRisk `json:"PrivilegeRiskDetail,omitnil" name:"PrivilegeRiskDetail"`
 
 	// 策略风险的cos风险文件列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PolicyRiskCosFileList []*string `json:"PolicyRiskCosFileList,omitempty" name:"PolicyRiskCosFileList"`
+	PolicyRiskCosFileList []*string `json:"PolicyRiskCosFileList,omitnil" name:"PolicyRiskCosFileList"`
 
 	// AKSK泄漏列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AKSKLeak []*AKSKLeak `json:"AKSKLeak,omitempty" name:"AKSKLeak"`
+	AKSKLeak []*AKSKLeak `json:"AKSKLeak,omitnil" name:"AKSKLeak"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentLatestRiskDetailInfoResponse struct {
@@ -4079,80 +4079,80 @@ func (r *DescribeDSPAAssessmentLatestRiskDetailInfoResponse) FromJsonString(s st
 // Predefined struct for user
 type DescribeDSPAAssessmentLatestRiskListRequestParams struct {
 	// dspa实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 限制条数
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移量
-	Offset *string `json:"Offset,omitempty" name:"Offset"`
+	Offset *string `json:"Offset,omitnil" name:"Offset"`
 
 	// 资产名称，数据源id
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 风险类型
-	RiskType *string `json:"RiskType,omitempty" name:"RiskType"`
+	RiskType *string `json:"RiskType,omitnil" name:"RiskType"`
 
 	// 风险项
-	ControlItemId *string `json:"ControlItemId,omitempty" name:"ControlItemId"`
+	ControlItemId *string `json:"ControlItemId,omitnil" name:"ControlItemId"`
 
 	// 风险状态
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 扫描开始时间
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 扫描结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 风险等级筛选
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 风险面筛选
-	RiskSide []*string `json:"RiskSide,omitempty" name:"RiskSide"`
+	RiskSide []*string `json:"RiskSide,omitnil" name:"RiskSide"`
 }
 
 type DescribeDSPAAssessmentLatestRiskListRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 限制条数
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移量
-	Offset *string `json:"Offset,omitempty" name:"Offset"`
+	Offset *string `json:"Offset,omitnil" name:"Offset"`
 
 	// 资产名称，数据源id
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 风险类型
-	RiskType *string `json:"RiskType,omitempty" name:"RiskType"`
+	RiskType *string `json:"RiskType,omitnil" name:"RiskType"`
 
 	// 风险项
-	ControlItemId *string `json:"ControlItemId,omitempty" name:"ControlItemId"`
+	ControlItemId *string `json:"ControlItemId,omitnil" name:"ControlItemId"`
 
 	// 风险状态
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 扫描开始时间
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 扫描结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 风险等级筛选
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 风险面筛选
-	RiskSide []*string `json:"RiskSide,omitempty" name:"RiskSide"`
+	RiskSide []*string `json:"RiskSide,omitnil" name:"RiskSide"`
 }
 
 func (r *DescribeDSPAAssessmentLatestRiskListRequest) ToJsonString() string {
@@ -4189,13 +4189,13 @@ func (r *DescribeDSPAAssessmentLatestRiskListRequest) FromJsonString(s string) e
 type DescribeDSPAAssessmentLatestRiskListResponseParams struct {
 	// 最新风险详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LatestRiskList []*RiskItemInfo `json:"LatestRiskList,omitempty" name:"LatestRiskList"`
+	LatestRiskList []*RiskItemInfo `json:"LatestRiskList,omitnil" name:"LatestRiskList"`
 
 	// 总条数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentLatestRiskListResponse struct {
@@ -4217,20 +4217,20 @@ func (r *DescribeDSPAAssessmentLatestRiskListResponse) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 type DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 func (r *DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest) ToJsonString() string {
@@ -4256,16 +4256,16 @@ func (r *DescribeDSPAAssessmentNewDiscoveredRiskOverviewRequest) FromJsonString(
 // Predefined struct for user
 type DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponseParams struct {
 	// 待处理的风险数
-	NewDiscoveredRiskCount *int64 `json:"NewDiscoveredRiskCount,omitempty" name:"NewDiscoveredRiskCount"`
+	NewDiscoveredRiskCount *int64 `json:"NewDiscoveredRiskCount,omitnil" name:"NewDiscoveredRiskCount"`
 
 	// 受影响的资产数
-	AffectedAssetCount *int64 `json:"AffectedAssetCount,omitempty" name:"AffectedAssetCount"`
+	AffectedAssetCount *int64 `json:"AffectedAssetCount,omitnil" name:"AffectedAssetCount"`
 
 	// 周同比
-	WeekRatio *float64 `json:"WeekRatio,omitempty" name:"WeekRatio"`
+	WeekRatio *float64 `json:"WeekRatio,omitnil" name:"WeekRatio"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse struct {
@@ -4287,20 +4287,20 @@ func (r *DescribeDSPAAssessmentNewDiscoveredRiskOverviewResponse) FromJsonString
 // Predefined struct for user
 type DescribeDSPAAssessmentPendingRiskOverviewRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 type DescribeDSPAAssessmentPendingRiskOverviewRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 func (r *DescribeDSPAAssessmentPendingRiskOverviewRequest) ToJsonString() string {
@@ -4326,16 +4326,16 @@ func (r *DescribeDSPAAssessmentPendingRiskOverviewRequest) FromJsonString(s stri
 // Predefined struct for user
 type DescribeDSPAAssessmentPendingRiskOverviewResponseParams struct {
 	// 待处理的风险数
-	PendingRiskCount *int64 `json:"PendingRiskCount,omitempty" name:"PendingRiskCount"`
+	PendingRiskCount *int64 `json:"PendingRiskCount,omitnil" name:"PendingRiskCount"`
 
 	// 受影响的资产数
-	AffectedAssetCount *int64 `json:"AffectedAssetCount,omitempty" name:"AffectedAssetCount"`
+	AffectedAssetCount *int64 `json:"AffectedAssetCount,omitnil" name:"AffectedAssetCount"`
 
 	// 周同比
-	WeekRatio *float64 `json:"WeekRatio,omitempty" name:"WeekRatio"`
+	WeekRatio *float64 `json:"WeekRatio,omitnil" name:"WeekRatio"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentPendingRiskOverviewResponse struct {
@@ -4357,20 +4357,20 @@ func (r *DescribeDSPAAssessmentPendingRiskOverviewResponse) FromJsonString(s str
 // Predefined struct for user
 type DescribeDSPAAssessmentProcessingRiskOverviewRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 type DescribeDSPAAssessmentProcessingRiskOverviewRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 func (r *DescribeDSPAAssessmentProcessingRiskOverviewRequest) ToJsonString() string {
@@ -4396,16 +4396,16 @@ func (r *DescribeDSPAAssessmentProcessingRiskOverviewRequest) FromJsonString(s s
 // Predefined struct for user
 type DescribeDSPAAssessmentProcessingRiskOverviewResponseParams struct {
 	// 待处理的风险数
-	ProcessingRiskCount *int64 `json:"ProcessingRiskCount,omitempty" name:"ProcessingRiskCount"`
+	ProcessingRiskCount *int64 `json:"ProcessingRiskCount,omitnil" name:"ProcessingRiskCount"`
 
 	// 受影响的资产数
-	AffectedAssetCount *int64 `json:"AffectedAssetCount,omitempty" name:"AffectedAssetCount"`
+	AffectedAssetCount *int64 `json:"AffectedAssetCount,omitnil" name:"AffectedAssetCount"`
 
 	// 周同比
-	WeekRatio *float64 `json:"WeekRatio,omitempty" name:"WeekRatio"`
+	WeekRatio *float64 `json:"WeekRatio,omitnil" name:"WeekRatio"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentProcessingRiskOverviewResponse struct {
@@ -4427,20 +4427,20 @@ func (r *DescribeDSPAAssessmentProcessingRiskOverviewResponse) FromJsonString(s 
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskAmountOverviewRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 type DescribeDSPAAssessmentRiskAmountOverviewRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 func (r *DescribeDSPAAssessmentRiskAmountOverviewRequest) ToJsonString() string {
@@ -4466,13 +4466,13 @@ func (r *DescribeDSPAAssessmentRiskAmountOverviewRequest) FromJsonString(s strin
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskAmountOverviewResponseParams struct {
 	// 风险总数
-	TotalRiskCount *int64 `json:"TotalRiskCount,omitempty" name:"TotalRiskCount"`
+	TotalRiskCount *int64 `json:"TotalRiskCount,omitnil" name:"TotalRiskCount"`
 
 	// 受影响的资产数
-	TotalAffectedAssetCount *int64 `json:"TotalAffectedAssetCount,omitempty" name:"TotalAffectedAssetCount"`
+	TotalAffectedAssetCount *int64 `json:"TotalAffectedAssetCount,omitnil" name:"TotalAffectedAssetCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskAmountOverviewResponse struct {
@@ -4494,14 +4494,14 @@ func (r *DescribeDSPAAssessmentRiskAmountOverviewResponse) FromJsonString(s stri
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskDatasourceTop5RequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 type DescribeDSPAAssessmentRiskDatasourceTop5Request struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 func (r *DescribeDSPAAssessmentRiskDatasourceTop5Request) ToJsonString() string {
@@ -4527,10 +4527,10 @@ func (r *DescribeDSPAAssessmentRiskDatasourceTop5Request) FromJsonString(s strin
 type DescribeDSPAAssessmentRiskDatasourceTop5ResponseParams struct {
 	// 无
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*RiskItem `json:"Items,omitempty" name:"Items"`
+	Items []*RiskItem `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskDatasourceTop5Response struct {
@@ -4552,14 +4552,14 @@ func (r *DescribeDSPAAssessmentRiskDatasourceTop5Response) FromJsonString(s stri
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskDealedOverviewRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 type DescribeDSPAAssessmentRiskDealedOverviewRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 func (r *DescribeDSPAAssessmentRiskDealedOverviewRequest) ToJsonString() string {
@@ -4584,19 +4584,19 @@ func (r *DescribeDSPAAssessmentRiskDealedOverviewRequest) FromJsonString(s strin
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskDealedOverviewResponseParams struct {
 	// 遗留待处理风险总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 昨日完成风险处置数
-	YesterdayDealedCount *uint64 `json:"YesterdayDealedCount,omitempty" name:"YesterdayDealedCount"`
+	YesterdayDealedCount *uint64 `json:"YesterdayDealedCount,omitnil" name:"YesterdayDealedCount"`
 
 	// 遗留待处理风险数周同比
-	UnDealedRiskWeekRatio *float64 `json:"UnDealedRiskWeekRatio,omitempty" name:"UnDealedRiskWeekRatio"`
+	UnDealedRiskWeekRatio *float64 `json:"UnDealedRiskWeekRatio,omitnil" name:"UnDealedRiskWeekRatio"`
 
 	// 遗留待处理风险数日环比
-	UnDealedRiskDayRatio *float64 `json:"UnDealedRiskDayRatio,omitempty" name:"UnDealedRiskDayRatio"`
+	UnDealedRiskDayRatio *float64 `json:"UnDealedRiskDayRatio,omitnil" name:"UnDealedRiskDayRatio"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskDealedOverviewResponse struct {
@@ -4618,32 +4618,32 @@ func (r *DescribeDSPAAssessmentRiskDealedOverviewResponse) FromJsonString(s stri
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskDealedTrendRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 开始日期
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束日期
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 评估模版id
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 type DescribeDSPAAssessmentRiskDealedTrendRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 开始日期
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束日期
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 评估模版id
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 func (r *DescribeDSPAAssessmentRiskDealedTrendRequest) ToJsonString() string {
@@ -4672,10 +4672,10 @@ func (r *DescribeDSPAAssessmentRiskDealedTrendRequest) FromJsonString(s string) 
 type DescribeDSPAAssessmentRiskDealedTrendResponseParams struct {
 	// 趋势统计结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*RiskDealedTrendItem `json:"Items,omitempty" name:"Items"`
+	Items []*RiskDealedTrendItem `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskDealedTrendResponse struct {
@@ -4697,28 +4697,28 @@ func (r *DescribeDSPAAssessmentRiskDealedTrendResponse) FromJsonString(s string)
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskDistributionOverviewRequestParams struct {
 	// dspa实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 风险资产分布的过滤条件
 	// （rdb，cos，不传就筛选全部）
-	Filter *string `json:"Filter,omitempty" name:"Filter"`
+	Filter *string `json:"Filter,omitnil" name:"Filter"`
 }
 
 type DescribeDSPAAssessmentRiskDistributionOverviewRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 风险资产分布的过滤条件
 	// （rdb，cos，不传就筛选全部）
-	Filter *string `json:"Filter,omitempty" name:"Filter"`
+	Filter *string `json:"Filter,omitnil" name:"Filter"`
 }
 
 func (r *DescribeDSPAAssessmentRiskDistributionOverviewRequest) ToJsonString() string {
@@ -4746,18 +4746,18 @@ func (r *DescribeDSPAAssessmentRiskDistributionOverviewRequest) FromJsonString(s
 type DescribeDSPAAssessmentRiskDistributionOverviewResponseParams struct {
 	// 风险类型分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskTypeDistribution []*Note `json:"RiskTypeDistribution,omitempty" name:"RiskTypeDistribution"`
+	RiskTypeDistribution []*Note `json:"RiskTypeDistribution,omitnil" name:"RiskTypeDistribution"`
 
 	// 风险详情分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskDetailDistribution []*Note `json:"RiskDetailDistribution,omitempty" name:"RiskDetailDistribution"`
+	RiskDetailDistribution []*Note `json:"RiskDetailDistribution,omitnil" name:"RiskDetailDistribution"`
 
 	// 风险资产详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskAssetsDistribution []*Note `json:"RiskAssetsDistribution,omitempty" name:"RiskAssetsDistribution"`
+	RiskAssetsDistribution []*Note `json:"RiskAssetsDistribution,omitnil" name:"RiskAssetsDistribution"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskDistributionOverviewResponse struct {
@@ -4779,14 +4779,14 @@ func (r *DescribeDSPAAssessmentRiskDistributionOverviewResponse) FromJsonString(
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskItemTop5RequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 type DescribeDSPAAssessmentRiskItemTop5Request struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 func (r *DescribeDSPAAssessmentRiskItemTop5Request) ToJsonString() string {
@@ -4812,10 +4812,10 @@ func (r *DescribeDSPAAssessmentRiskItemTop5Request) FromJsonString(s string) err
 type DescribeDSPAAssessmentRiskItemTop5ResponseParams struct {
 	// 无
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*RiskItem `json:"Items,omitempty" name:"Items"`
+	Items []*RiskItem `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskItemTop5Response struct {
@@ -4837,20 +4837,20 @@ func (r *DescribeDSPAAssessmentRiskItemTop5Response) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskLevelDetailRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 风险级别id
-	RiskLevelId *int64 `json:"RiskLevelId,omitempty" name:"RiskLevelId"`
+	RiskLevelId *int64 `json:"RiskLevelId,omitnil" name:"RiskLevelId"`
 }
 
 type DescribeDSPAAssessmentRiskLevelDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 风险级别id
-	RiskLevelId *int64 `json:"RiskLevelId,omitempty" name:"RiskLevelId"`
+	RiskLevelId *int64 `json:"RiskLevelId,omitnil" name:"RiskLevelId"`
 }
 
 func (r *DescribeDSPAAssessmentRiskLevelDetailRequest) ToJsonString() string {
@@ -4876,25 +4876,25 @@ func (r *DescribeDSPAAssessmentRiskLevelDetailRequest) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskLevelDetailResponseParams struct {
 	// 风险级别名称
-	RiskLevelName *string `json:"RiskLevelName,omitempty" name:"RiskLevelName"`
+	RiskLevelName *string `json:"RiskLevelName,omitnil" name:"RiskLevelName"`
 
 	// 风险级别描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevelDescription *string `json:"RiskLevelDescription,omitempty" name:"RiskLevelDescription"`
+	RiskLevelDescription *string `json:"RiskLevelDescription,omitnil" name:"RiskLevelDescription"`
 
 	// 分类分级id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitempty" name:"IdentifyComplianceId"`
+	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitnil" name:"IdentifyComplianceId"`
 
 	// 分类分级模版名称
-	IdentifyComplianceName *string `json:"IdentifyComplianceName,omitempty" name:"IdentifyComplianceName"`
+	IdentifyComplianceName *string `json:"IdentifyComplianceName,omitnil" name:"IdentifyComplianceName"`
 
 	// 风险数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevelMatrix []*RiskLevelMatrix `json:"RiskLevelMatrix,omitempty" name:"RiskLevelMatrix"`
+	RiskLevelMatrix []*RiskLevelMatrix `json:"RiskLevelMatrix,omitnil" name:"RiskLevelMatrix"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskLevelDetailResponse struct {
@@ -4916,26 +4916,26 @@ func (r *DescribeDSPAAssessmentRiskLevelDetailResponse) FromJsonString(s string)
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskLevelListRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 限制条数
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeDSPAAssessmentRiskLevelListRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 限制条数
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeDSPAAssessmentRiskLevelListRequest) ToJsonString() string {
@@ -4962,14 +4962,14 @@ func (r *DescribeDSPAAssessmentRiskLevelListRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskLevelListResponseParams struct {
 	// 总条数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 风险等级列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevelList []*RiskLevelRisk `json:"RiskLevelList,omitempty" name:"RiskLevelList"`
+	RiskLevelList []*RiskLevelRisk `json:"RiskLevelList,omitnil" name:"RiskLevelList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskLevelListResponse struct {
@@ -4991,32 +4991,32 @@ func (r *DescribeDSPAAssessmentRiskLevelListResponse) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskLevelTrendRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 开始日期
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时日期
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 评估模版id
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 type DescribeDSPAAssessmentRiskLevelTrendRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 开始日期
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时日期
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 评估模版id
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 func (r *DescribeDSPAAssessmentRiskLevelTrendRequest) ToJsonString() string {
@@ -5045,10 +5045,10 @@ func (r *DescribeDSPAAssessmentRiskLevelTrendRequest) FromJsonString(s string) e
 type DescribeDSPAAssessmentRiskLevelTrendResponseParams struct {
 	// 结果集
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*RiskLevelTrendItem `json:"Items,omitempty" name:"Items"`
+	Items []*RiskLevelTrendItem `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskLevelTrendResponse struct {
@@ -5070,14 +5070,14 @@ func (r *DescribeDSPAAssessmentRiskLevelTrendResponse) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskOverviewRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 type DescribeDSPAAssessmentRiskOverviewRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 func (r *DescribeDSPAAssessmentRiskOverviewRequest) ToJsonString() string {
@@ -5102,19 +5102,19 @@ func (r *DescribeDSPAAssessmentRiskOverviewRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskOverviewResponseParams struct {
 	// 风险总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 高危风险数
-	HighRiskCount *uint64 `json:"HighRiskCount,omitempty" name:"HighRiskCount"`
+	HighRiskCount *uint64 `json:"HighRiskCount,omitnil" name:"HighRiskCount"`
 
 	// 周同比
-	HighRiskWeekRatio *float64 `json:"HighRiskWeekRatio,omitempty" name:"HighRiskWeekRatio"`
+	HighRiskWeekRatio *float64 `json:"HighRiskWeekRatio,omitnil" name:"HighRiskWeekRatio"`
 
 	// 高危风险数日环比
-	HighRiskDayRatio *float64 `json:"HighRiskDayRatio,omitempty" name:"HighRiskDayRatio"`
+	HighRiskDayRatio *float64 `json:"HighRiskDayRatio,omitnil" name:"HighRiskDayRatio"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskOverviewResponse struct {
@@ -5136,20 +5136,20 @@ func (r *DescribeDSPAAssessmentRiskOverviewResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskProcessHistoryRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// xxx
-	RiskId *int64 `json:"RiskId,omitempty" name:"RiskId"`
+	RiskId *int64 `json:"RiskId,omitnil" name:"RiskId"`
 }
 
 type DescribeDSPAAssessmentRiskProcessHistoryRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// xxx
-	RiskId *int64 `json:"RiskId,omitempty" name:"RiskId"`
+	RiskId *int64 `json:"RiskId,omitnil" name:"RiskId"`
 }
 
 func (r *DescribeDSPAAssessmentRiskProcessHistoryRequest) ToJsonString() string {
@@ -5176,10 +5176,10 @@ func (r *DescribeDSPAAssessmentRiskProcessHistoryRequest) FromJsonString(s strin
 type DescribeDSPAAssessmentRiskProcessHistoryResponseParams struct {
 	// 处理的历史
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessHistory []*ProcessHistory `json:"ProcessHistory,omitempty" name:"ProcessHistory"`
+	ProcessHistory []*ProcessHistory `json:"ProcessHistory,omitnil" name:"ProcessHistory"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskProcessHistoryResponse struct {
@@ -5201,20 +5201,20 @@ func (r *DescribeDSPAAssessmentRiskProcessHistoryResponse) FromJsonString(s stri
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskSideDistributedRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 type DescribeDSPAAssessmentRiskSideDistributedRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 func (r *DescribeDSPAAssessmentRiskSideDistributedRequest) ToJsonString() string {
@@ -5241,10 +5241,10 @@ func (r *DescribeDSPAAssessmentRiskSideDistributedRequest) FromJsonString(s stri
 type DescribeDSPAAssessmentRiskSideDistributedResponseParams struct {
 	// 风险面的分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskSideDistributed []*RiskSideDistributed `json:"RiskSideDistributed,omitempty" name:"RiskSideDistributed"`
+	RiskSideDistributed []*RiskSideDistributed `json:"RiskSideDistributed,omitnil" name:"RiskSideDistributed"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskSideDistributedResponse struct {
@@ -5266,20 +5266,20 @@ func (r *DescribeDSPAAssessmentRiskSideDistributedResponse) FromJsonString(s str
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskSideListRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 type DescribeDSPAAssessmentRiskSideListRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 func (r *DescribeDSPAAssessmentRiskSideListRequest) ToJsonString() string {
@@ -5306,10 +5306,10 @@ func (r *DescribeDSPAAssessmentRiskSideListRequest) FromJsonString(s string) err
 type DescribeDSPAAssessmentRiskSideListResponseParams struct {
 	// 风险面列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskSideItmeList []*Note `json:"RiskSideItmeList,omitempty" name:"RiskSideItmeList"`
+	RiskSideItmeList []*Note `json:"RiskSideItmeList,omitnil" name:"RiskSideItmeList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskSideListResponse struct {
@@ -5331,32 +5331,32 @@ func (r *DescribeDSPAAssessmentRiskSideListResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskTemplateDetailRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 限制条数
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeDSPAAssessmentRiskTemplateDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 限制条数
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeDSPAAssessmentRiskTemplateDetailRequest) ToJsonString() string {
@@ -5384,35 +5384,35 @@ func (r *DescribeDSPAAssessmentRiskTemplateDetailRequest) FromJsonString(s strin
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskTemplateDetailResponseParams struct {
 	// 模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 模版名称
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 模版的描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+	TemplateDescription *string `json:"TemplateDescription,omitnil" name:"TemplateDescription"`
 
 	// 风险等级
-	RiskLevelId *int64 `json:"RiskLevelId,omitempty" name:"RiskLevelId"`
+	RiskLevelId *int64 `json:"RiskLevelId,omitnil" name:"RiskLevelId"`
 
 	// 风险等级名称
-	RiskLevelName *string `json:"RiskLevelName,omitempty" name:"RiskLevelName"`
+	RiskLevelName *string `json:"RiskLevelName,omitnil" name:"RiskLevelName"`
 
 	// 脆弱项配置列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskItemList []*AssessmentRiskItem `json:"RiskItemList,omitempty" name:"RiskItemList"`
+	RiskItemList []*AssessmentRiskItem `json:"RiskItemList,omitnil" name:"RiskItemList"`
 
 	// 脆弱项配置条数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 被任务引用次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskCitations *int64 `json:"TaskCitations,omitempty" name:"TaskCitations"`
+	TaskCitations *int64 `json:"TaskCitations,omitnil" name:"TaskCitations"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskTemplateDetailResponse struct {
@@ -5434,44 +5434,44 @@ func (r *DescribeDSPAAssessmentRiskTemplateDetailResponse) FromJsonString(s stri
 // Predefined struct for user
 type DescribeDSPAAssessmentRiskTemplateVulnerableListRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 限制条数
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 风险类型
-	RiskType *string `json:"RiskType,omitempty" name:"RiskType"`
+	RiskType *string `json:"RiskType,omitnil" name:"RiskType"`
 
 	// 风险名称
-	RiskName *string `json:"RiskName,omitempty" name:"RiskName"`
+	RiskName *string `json:"RiskName,omitnil" name:"RiskName"`
 
 	// 风险面
-	RiskSide *string `json:"RiskSide,omitempty" name:"RiskSide"`
+	RiskSide *string `json:"RiskSide,omitnil" name:"RiskSide"`
 }
 
 type DescribeDSPAAssessmentRiskTemplateVulnerableListRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 限制条数
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 风险类型
-	RiskType *string `json:"RiskType,omitempty" name:"RiskType"`
+	RiskType *string `json:"RiskType,omitnil" name:"RiskType"`
 
 	// 风险名称
-	RiskName *string `json:"RiskName,omitempty" name:"RiskName"`
+	RiskName *string `json:"RiskName,omitnil" name:"RiskName"`
 
 	// 风险面
-	RiskSide *string `json:"RiskSide,omitempty" name:"RiskSide"`
+	RiskSide *string `json:"RiskSide,omitnil" name:"RiskSide"`
 }
 
 func (r *DescribeDSPAAssessmentRiskTemplateVulnerableListRequest) ToJsonString() string {
@@ -5502,13 +5502,13 @@ func (r *DescribeDSPAAssessmentRiskTemplateVulnerableListRequest) FromJsonString
 type DescribeDSPAAssessmentRiskTemplateVulnerableListResponseParams struct {
 	// 脆弱项列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskItemList []*AssessmentRiskItem `json:"RiskItemList,omitempty" name:"RiskItemList"`
+	RiskItemList []*AssessmentRiskItem `json:"RiskItemList,omitnil" name:"RiskItemList"`
 
 	// 总条数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRiskTemplateVulnerableListResponse struct {
@@ -5530,46 +5530,46 @@ func (r *DescribeDSPAAssessmentRiskTemplateVulnerableListResponse) FromJsonStrin
 // Predefined struct for user
 type DescribeDSPAAssessmentRisksRequestParams struct {
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估任务Id，格式“task-xxxxxxxx”
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 偏移量。默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 结果集个数限制。默认为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤项。
 	// 支持模糊搜索：ControlItemName。
 	// 支持过滤：
 	// RiskLevel：风险等级（high，medium，low）
 	// Status：风险处理状态(waiting待处理, processing处理中, stopped处理暂停, finished已处理, failed处理失败)
-	Filters []*DspaAssessmentFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaAssessmentFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeDSPAAssessmentRisksRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估任务Id，格式“task-xxxxxxxx”
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 偏移量。默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 结果集个数限制。默认为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤项。
 	// 支持模糊搜索：ControlItemName。
 	// 支持过滤：
 	// RiskLevel：风险等级（high，medium，low）
 	// Status：风险处理状态(waiting待处理, processing处理中, stopped处理暂停, finished已处理, failed处理失败)
-	Filters []*DspaAssessmentFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaAssessmentFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeDSPAAssessmentRisksRequest) ToJsonString() string {
@@ -5598,13 +5598,13 @@ func (r *DescribeDSPAAssessmentRisksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPAAssessmentRisksResponseParams struct {
 	// 符合条件的评估风险项数目
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 评估风险项列表
-	Items []*AssessmentRisk `json:"Items,omitempty" name:"Items"`
+	Items []*AssessmentRisk `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentRisksResponse struct {
@@ -5626,13 +5626,13 @@ func (r *DescribeDSPAAssessmentRisksResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPAAssessmentTasksRequestParams struct {
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 偏移量。默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 结果集个数限制。默认为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤项。
 	// 支持模糊搜索：TaskId，TaskName
@@ -5641,20 +5641,20 @@ type DescribeDSPAAssessmentTasksRequestParams struct {
 	// BusinessDept：业务部门名称
 	// TemplateName：评估模版名称
 	// Status：评估状态 (waiting待评估，processing评估中, , finished已评估, failed评估失败)
-	Filters []*DspaAssessmentFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaAssessmentFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeDSPAAssessmentTasksRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 偏移量。默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 结果集个数限制。默认为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤项。
 	// 支持模糊搜索：TaskId，TaskName
@@ -5663,7 +5663,7 @@ type DescribeDSPAAssessmentTasksRequest struct {
 	// BusinessDept：业务部门名称
 	// TemplateName：评估模版名称
 	// Status：评估状态 (waiting待评估，processing评估中, , finished已评估, failed评估失败)
-	Filters []*DspaAssessmentFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaAssessmentFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeDSPAAssessmentTasksRequest) ToJsonString() string {
@@ -5691,13 +5691,13 @@ func (r *DescribeDSPAAssessmentTasksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPAAssessmentTasksResponseParams struct {
 	// 符合条件的评估任务数目
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 评估任务列表
-	Items []*AssessmentTask `json:"Items,omitempty" name:"Items"`
+	Items []*AssessmentTask `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentTasksResponse struct {
@@ -5719,16 +5719,16 @@ func (r *DescribeDSPAAssessmentTasksResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPAAssessmentTemplateControlItemsRequestParams struct {
 	// DSPA实例Id。格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版Id。格式“template-xxxxxxxx”
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 偏移量。默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 结果集个数限制。默认为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤项。
 	// 支持模糊搜索：ItemId，ItemName
@@ -5737,23 +5737,23 @@ type DescribeDSPAAssessmentTemplateControlItemsRequestParams struct {
 	// ItemType：评估项类型，questionnaire / auto
 	// ItemSubType：评估项子类型
 	// Status：评估项启用状态，draft / launched
-	Filters []*DspaAssessmentFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaAssessmentFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeDSPAAssessmentTemplateControlItemsRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例Id。格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估模版Id。格式“template-xxxxxxxx”
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 偏移量。默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 结果集个数限制。默认为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤项。
 	// 支持模糊搜索：ItemId，ItemName
@@ -5762,7 +5762,7 @@ type DescribeDSPAAssessmentTemplateControlItemsRequest struct {
 	// ItemType：评估项类型，questionnaire / auto
 	// ItemSubType：评估项子类型
 	// Status：评估项启用状态，draft / launched
-	Filters []*DspaAssessmentFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaAssessmentFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeDSPAAssessmentTemplateControlItemsRequest) ToJsonString() string {
@@ -5791,13 +5791,13 @@ func (r *DescribeDSPAAssessmentTemplateControlItemsRequest) FromJsonString(s str
 // Predefined struct for user
 type DescribeDSPAAssessmentTemplateControlItemsResponseParams struct {
 	// 符合条件的评估项数目
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 模版关联的评估项列表
-	Items []*AssessmentControlItem `json:"Items,omitempty" name:"Items"`
+	Items []*AssessmentControlItem `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentTemplateControlItemsResponse struct {
@@ -5819,13 +5819,13 @@ func (r *DescribeDSPAAssessmentTemplateControlItemsResponse) FromJsonString(s st
 // Predefined struct for user
 type DescribeDSPAAssessmentTemplatesRequestParams struct {
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 偏移量。默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 结果集个数限制。默认为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤项。
 	// 支持模糊搜索：（TemplateId，TemplateName）
@@ -5833,20 +5833,20 @@ type DescribeDSPAAssessmentTemplatesRequestParams struct {
 	// Source：模版来源，system / user
 	// UseType：模版类型，auto，semi-auto，law等
 	// Status：模版启用状态，draft / launched
-	Filters []*DspaAssessmentFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaAssessmentFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeDSPAAssessmentTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 偏移量。默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 结果集个数限制。默认为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤项。
 	// 支持模糊搜索：（TemplateId，TemplateName）
@@ -5854,7 +5854,7 @@ type DescribeDSPAAssessmentTemplatesRequest struct {
 	// Source：模版来源，system / user
 	// UseType：模版类型，auto，semi-auto，law等
 	// Status：模版启用状态，draft / launched
-	Filters []*DspaAssessmentFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaAssessmentFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeDSPAAssessmentTemplatesRequest) ToJsonString() string {
@@ -5882,13 +5882,13 @@ func (r *DescribeDSPAAssessmentTemplatesRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeDSPAAssessmentTemplatesResponseParams struct {
 	// 符合条件的模板数目
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 模板列表。
-	Items []*AssessmentTemplate `json:"Items,omitempty" name:"Items"`
+	Items []*AssessmentTemplate `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAAssessmentTemplatesResponse struct {
@@ -5910,20 +5910,20 @@ func (r *DescribeDSPAAssessmentTemplatesResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeDSPACOSDataAssetBucketsRequestParams struct {
 	// DSPA实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组Id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 type DescribeDSPACOSDataAssetBucketsRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组Id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 func (r *DescribeDSPACOSDataAssetBucketsRequest) ToJsonString() string {
@@ -5950,10 +5950,10 @@ func (r *DescribeDSPACOSDataAssetBucketsRequest) FromJsonString(s string) error 
 type DescribeDSPACOSDataAssetBucketsResponseParams struct {
 	// COS对象存储敏感数据资产已扫描的桶集合。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Buckets []*string `json:"Buckets,omitempty" name:"Buckets"`
+	Buckets []*string `json:"Buckets,omitnil" name:"Buckets"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPACOSDataAssetBucketsResponse struct {
@@ -5975,20 +5975,20 @@ func (r *DescribeDSPACOSDataAssetBucketsResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeDSPACOSDataAssetByComplianceIdRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 type DescribeDSPACOSDataAssetByComplianceIdRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 func (r *DescribeDSPACOSDataAssetByComplianceIdRequest) ToJsonString() string {
@@ -6016,10 +6016,10 @@ type DescribeDSPACOSDataAssetByComplianceIdResponseParams struct {
 	// 符合条件的COS存储对象的敏感数据资产统计记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Stats *DspaCOSDataAssetCount `json:"Stats,omitempty" name:"Stats"`
+	Stats *DspaCOSDataAssetCount `json:"Stats,omitnil" name:"Stats"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPACOSDataAssetByComplianceIdResponse struct {
@@ -6041,20 +6041,20 @@ func (r *DescribeDSPACOSDataAssetByComplianceIdResponse) FromJsonString(s string
 // Predefined struct for user
 type DescribeDSPACOSDataAssetDetailRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 type DescribeDSPACOSDataAssetDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 func (r *DescribeDSPACOSDataAssetDetailRequest) ToJsonString() string {
@@ -6081,13 +6081,13 @@ func (r *DescribeDSPACOSDataAssetDetailRequest) FromJsonString(s string) error {
 type DescribeDSPACOSDataAssetDetailResponseParams struct {
 	// COS对象存储敏感数据资产详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Details []*DspaCOSDataAssetDetail `json:"Details,omitempty" name:"Details"`
+	Details []*DspaCOSDataAssetDetail `json:"Details,omitnil" name:"Details"`
 
 	// 符合条件的COS对象存储敏感数据资产数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPACOSDataAssetDetailResponse struct {
@@ -6109,20 +6109,20 @@ func (r *DescribeDSPACOSDataAssetDetailResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeDSPACOSDiscoveryTaskDetailRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type DescribeDSPACOSDiscoveryTaskDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *DescribeDSPACOSDiscoveryTaskDetailRequest) ToJsonString() string {
@@ -6149,10 +6149,10 @@ func (r *DescribeDSPACOSDiscoveryTaskDetailRequest) FromJsonString(s string) err
 type DescribeDSPACOSDiscoveryTaskDetailResponseParams struct {
 	// 任务详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Task *DspaCOSDiscoveryTaskDetail `json:"Task,omitempty" name:"Task"`
+	Task *DspaCOSDiscoveryTaskDetail `json:"Task,omitnil" name:"Task"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPACOSDiscoveryTaskDetailResponse struct {
@@ -6174,26 +6174,26 @@ func (r *DescribeDSPACOSDiscoveryTaskDetailResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeDSPACOSDiscoveryTaskFilesRequestParams struct {
 	// DSPA实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 扫描任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 扫描Bucket任务结果ID
-	BucketResultId *int64 `json:"BucketResultId,omitempty" name:"BucketResultId"`
+	BucketResultId *int64 `json:"BucketResultId,omitnil" name:"BucketResultId"`
 }
 
 type DescribeDSPACOSDiscoveryTaskFilesRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 扫描任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 扫描Bucket任务结果ID
-	BucketResultId *int64 `json:"BucketResultId,omitempty" name:"BucketResultId"`
+	BucketResultId *int64 `json:"BucketResultId,omitnil" name:"BucketResultId"`
 }
 
 func (r *DescribeDSPACOSDiscoveryTaskFilesRequest) ToJsonString() string {
@@ -6221,10 +6221,10 @@ func (r *DescribeDSPACOSDiscoveryTaskFilesRequest) FromJsonString(s string) erro
 type DescribeDSPACOSDiscoveryTaskFilesResponseParams struct {
 	// 文件列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Files []*string `json:"Files,omitempty" name:"Files"`
+	Files []*string `json:"Files,omitnil" name:"Files"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPACOSDiscoveryTaskFilesResponse struct {
@@ -6246,13 +6246,13 @@ func (r *DescribeDSPACOSDiscoveryTaskFilesResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeDSPACOSDiscoveryTaskResultRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认值为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Array of Filter	此参数对外不可见。过滤数组。支持的Name：
 	// BucketName 对象桶名
@@ -6261,20 +6261,20 @@ type DescribeDSPACOSDiscoveryTaskResultRequestParams struct {
 	// DataSourceId：数据源ID，
 	// ResourceRegion：资源所在地域
 	// 每项过滤条件最多支持5个。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeDSPACOSDiscoveryTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认值为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// Array of Filter	此参数对外不可见。过滤数组。支持的Name：
 	// BucketName 对象桶名
@@ -6283,7 +6283,7 @@ type DescribeDSPACOSDiscoveryTaskResultRequest struct {
 	// DataSourceId：数据源ID，
 	// ResourceRegion：资源所在地域
 	// 每项过滤条件最多支持5个。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeDSPACOSDiscoveryTaskResultRequest) ToJsonString() string {
@@ -6312,14 +6312,14 @@ func (r *DescribeDSPACOSDiscoveryTaskResultRequest) FromJsonString(s string) err
 type DescribeDSPACOSDiscoveryTaskResultResponseParams struct {
 	// 扫描任务结果项
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DspaCOSDiscoveryTaskResult `json:"Items,omitempty" name:"Items"`
+	Items []*DspaCOSDiscoveryTaskResult `json:"Items,omitnil" name:"Items"`
 
 	// 符合条件的数据结果数目
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPACOSDiscoveryTaskResultResponse struct {
@@ -6341,44 +6341,44 @@ func (r *DescribeDSPACOSDiscoveryTaskResultResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeDSPACOSDiscoveryTasksRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 任务扫描结果状态，可供选择的状态值有：-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
-	StatusList []*int64 `json:"StatusList,omitempty" name:"StatusList"`
+	StatusList []*int64 `json:"StatusList,omitnil" name:"StatusList"`
 
 	// 偏移量，默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeDSPACOSDiscoveryTasksRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 任务扫描结果状态，可供选择的状态值有：-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
-	StatusList []*int64 `json:"StatusList,omitempty" name:"StatusList"`
+	StatusList []*int64 `json:"StatusList,omitnil" name:"StatusList"`
 
 	// 偏移量，默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeDSPACOSDiscoveryTasksRequest) ToJsonString() string {
@@ -6409,13 +6409,13 @@ func (r *DescribeDSPACOSDiscoveryTasksRequest) FromJsonString(s string) error {
 type DescribeDSPACOSDiscoveryTasksResponseParams struct {
 	// 任务列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DspaCOSDiscoveryTask `json:"Items,omitempty" name:"Items"`
+	Items []*DspaCOSDiscoveryTask `json:"Items,omitnil" name:"Items"`
 
 	// 符合条件的任务列表数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPACOSDiscoveryTasksResponse struct {
@@ -6437,74 +6437,74 @@ func (r *DescribeDSPACOSDiscoveryTasksResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPACOSTaskResultDetailRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 扫描Bucket结果ID
-	BucketResultId *int64 `json:"BucketResultId,omitempty" name:"BucketResultId"`
+	BucketResultId *int64 `json:"BucketResultId,omitnil" name:"BucketResultId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 文件名
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 敏感数据分类ID
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分级ID
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 偏移量，默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认值为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 扫描桶名称。
-	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitnil" name:"BucketName"`
 
 	// 多级分类的分类ID集合
-	CategoryIdList []*int64 `json:"CategoryIdList,omitempty" name:"CategoryIdList"`
+	CategoryIdList []*int64 `json:"CategoryIdList,omitnil" name:"CategoryIdList"`
 }
 
 type DescribeDSPACOSTaskResultDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 扫描Bucket结果ID
-	BucketResultId *int64 `json:"BucketResultId,omitempty" name:"BucketResultId"`
+	BucketResultId *int64 `json:"BucketResultId,omitnil" name:"BucketResultId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 文件名
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 敏感数据分类ID
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分级ID
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 偏移量，默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认值为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 扫描桶名称。
-	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitnil" name:"BucketName"`
 
 	// 多级分类的分类ID集合
-	CategoryIdList []*int64 `json:"CategoryIdList,omitempty" name:"CategoryIdList"`
+	CategoryIdList []*int64 `json:"CategoryIdList,omitnil" name:"CategoryIdList"`
 }
 
 func (r *DescribeDSPACOSTaskResultDetailRequest) ToJsonString() string {
@@ -6540,13 +6540,13 @@ func (r *DescribeDSPACOSTaskResultDetailRequest) FromJsonString(s string) error 
 type DescribeDSPACOSTaskResultDetailResponseParams struct {
 	// 扫描结果详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DspaDiscoveryCOSTaskResultDetail `json:"Items,omitempty" name:"Items"`
+	Items []*DspaDiscoveryCOSTaskResultDetail `json:"Items,omitnil" name:"Items"`
 
 	// 符合条件的详情数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPACOSTaskResultDetailResponse struct {
@@ -6568,38 +6568,38 @@ func (r *DescribeDSPACOSTaskResultDetailResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeDSPACategoriesRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据分类ID
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分类名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeDSPACategoriesRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据分类ID
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分类名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeDSPACategoriesRequest) ToJsonString() string {
@@ -6629,14 +6629,14 @@ func (r *DescribeDSPACategoriesRequest) FromJsonString(s string) error {
 type DescribeDSPACategoriesResponseParams struct {
 	// 敏感数据分类列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DataCategory `json:"Items,omitempty" name:"Items"`
+	Items []*DataCategory `json:"Items,omitnil" name:"Items"`
 
 	// 符合条件的敏感数据分类数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPACategoriesResponse struct {
@@ -6658,20 +6658,20 @@ func (r *DescribeDSPACategoriesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPACategoryRuleStatisticRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 type DescribeDSPACategoryRuleStatisticRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 func (r *DescribeDSPACategoryRuleStatisticRequest) ToJsonString() string {
@@ -6698,10 +6698,10 @@ func (r *DescribeDSPACategoryRuleStatisticRequest) FromJsonString(s string) erro
 type DescribeDSPACategoryRuleStatisticResponseParams struct {
 	// 分类规则统计信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatisticSet []*CategoryRuleStatistic `json:"StatisticSet,omitempty" name:"StatisticSet"`
+	StatisticSet []*CategoryRuleStatistic `json:"StatisticSet,omitnil" name:"StatisticSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPACategoryRuleStatisticResponse struct {
@@ -6723,26 +6723,26 @@ func (r *DescribeDSPACategoryRuleStatisticResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeDSPACategoryRulesRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分类id
-	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *uint64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 合规组模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 type DescribeDSPACategoryRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分类id
-	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *uint64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 合规组模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 func (r *DescribeDSPACategoryRulesRequest) ToJsonString() string {
@@ -6770,10 +6770,10 @@ func (r *DescribeDSPACategoryRulesRequest) FromJsonString(s string) error {
 type DescribeDSPACategoryRulesResponseParams struct {
 	// 分类规则信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryRules []*CategoryRule `json:"CategoryRules,omitempty" name:"CategoryRules"`
+	CategoryRules []*CategoryRule `json:"CategoryRules,omitnil" name:"CategoryRules"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPACategoryRulesResponse struct {
@@ -6795,20 +6795,20 @@ func (r *DescribeDSPACategoryRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPACategoryTreeRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 type DescribeDSPACategoryTreeRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 func (r *DescribeDSPACategoryTreeRequest) ToJsonString() string {
@@ -6835,10 +6835,10 @@ func (r *DescribeDSPACategoryTreeRequest) FromJsonString(s string) error {
 type DescribeDSPACategoryTreeResponseParams struct {
 	// 分类树json
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultJson *string `json:"ResultJson,omitempty" name:"ResultJson"`
+	ResultJson *string `json:"ResultJson,omitnil" name:"ResultJson"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPACategoryTreeResponse struct {
@@ -6860,26 +6860,26 @@ func (r *DescribeDSPACategoryTreeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPACategoryTreeWithRulesRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 分类id
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 }
 
 type DescribeDSPACategoryTreeWithRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 分类id
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 }
 
 func (r *DescribeDSPACategoryTreeWithRulesRequest) ToJsonString() string {
@@ -6907,10 +6907,10 @@ func (r *DescribeDSPACategoryTreeWithRulesRequest) FromJsonString(s string) erro
 type DescribeDSPACategoryTreeWithRulesResponseParams struct {
 	// 分类树json
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultJson *string `json:"ResultJson,omitempty" name:"ResultJson"`
+	ResultJson *string `json:"ResultJson,omitnil" name:"ResultJson"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPACategoryTreeWithRulesResponse struct {
@@ -6932,20 +6932,20 @@ func (r *DescribeDSPACategoryTreeWithRulesResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeDSPAComplianceGroupDetailRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 type DescribeDSPAComplianceGroupDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 func (r *DescribeDSPAComplianceGroupDetailRequest) ToJsonString() string {
@@ -6972,10 +6972,10 @@ func (r *DescribeDSPAComplianceGroupDetailRequest) FromJsonString(s string) erro
 type DescribeDSPAComplianceGroupDetailResponseParams struct {
 	// 模板详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Detail *ComplianceGroupDetail `json:"Detail,omitempty" name:"Detail"`
+	Detail *ComplianceGroupDetail `json:"Detail,omitnil" name:"Detail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAComplianceGroupDetailResponse struct {
@@ -6997,44 +6997,44 @@ func (r *DescribeDSPAComplianceGroupDetailResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeDSPAComplianceGroupsRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitempty" name:"ComplianceGroupId"`
+	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitnil" name:"ComplianceGroupId"`
 
 	// 合规组名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 合规组类型可选值：0 默认合规组, 1 系统合规组, 2 自定义合规组
-	ComplianceGroupTypeList []*int64 `json:"ComplianceGroupTypeList,omitempty" name:"ComplianceGroupTypeList"`
+	ComplianceGroupTypeList []*int64 `json:"ComplianceGroupTypeList,omitnil" name:"ComplianceGroupTypeList"`
 }
 
 type DescribeDSPAComplianceGroupsRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitempty" name:"ComplianceGroupId"`
+	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitnil" name:"ComplianceGroupId"`
 
 	// 合规组名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回结果集数量，默认值是10000，最大值为10000，根据该资源的个数限制条件，该资源的个数不会超过10000，所以如果不输入该字段，默认获取全量数据
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 合规组类型可选值：0 默认合规组, 1 系统合规组, 2 自定义合规组
-	ComplianceGroupTypeList []*int64 `json:"ComplianceGroupTypeList,omitempty" name:"ComplianceGroupTypeList"`
+	ComplianceGroupTypeList []*int64 `json:"ComplianceGroupTypeList,omitnil" name:"ComplianceGroupTypeList"`
 }
 
 func (r *DescribeDSPAComplianceGroupsRequest) ToJsonString() string {
@@ -7065,14 +7065,14 @@ func (r *DescribeDSPAComplianceGroupsRequest) FromJsonString(s string) error {
 type DescribeDSPAComplianceGroupsResponseParams struct {
 	// 合规组列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DspaDiscoveryComplianceGroupInfo `json:"Items,omitempty" name:"Items"`
+	Items []*DspaDiscoveryComplianceGroupInfo `json:"Items,omitnil" name:"Items"`
 
 	// 符合条件的合规组列表数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAComplianceGroupsResponse struct {
@@ -7094,20 +7094,20 @@ func (r *DescribeDSPAComplianceGroupsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPAComplianceUpdateNotificationRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组分类模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 type DescribeDSPAComplianceUpdateNotificationRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组分类模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 func (r *DescribeDSPAComplianceUpdateNotificationRequest) ToJsonString() string {
@@ -7134,14 +7134,14 @@ func (r *DescribeDSPAComplianceUpdateNotificationRequest) FromJsonString(s strin
 type DescribeDSPAComplianceUpdateNotificationResponseParams struct {
 	// 模板是否更新
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsUpdated *bool `json:"IsUpdated,omitempty" name:"IsUpdated"`
+	IsUpdated *bool `json:"IsUpdated,omitnil" name:"IsUpdated"`
 
 	// 任务名称集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskNameSet []*string `json:"TaskNameSet,omitempty" name:"TaskNameSet"`
+	TaskNameSet []*string `json:"TaskNameSet,omitnil" name:"TaskNameSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAComplianceUpdateNotificationResponse struct {
@@ -7163,20 +7163,20 @@ func (r *DescribeDSPAComplianceUpdateNotificationResponse) FromJsonString(s stri
 // Predefined struct for user
 type DescribeDSPADataSourceDbInfoRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 }
 
 type DescribeDSPADataSourceDbInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 }
 
 func (r *DescribeDSPADataSourceDbInfoRequest) ToJsonString() string {
@@ -7203,10 +7203,10 @@ func (r *DescribeDSPADataSourceDbInfoRequest) FromJsonString(s string) error {
 type DescribeDSPADataSourceDbInfoResponseParams struct {
 	// 数据库信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DSPADataSourceDbInfo `json:"Items,omitempty" name:"Items"`
+	Items []*DSPADataSourceDbInfo `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPADataSourceDbInfoResponse struct {
@@ -7228,44 +7228,44 @@ func (r *DescribeDSPADataSourceDbInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPADiscoveryRulesRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回上限，默认值10， 最大值10000。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 规则ID
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 是否需要过滤别名
-	FilterRuleSource *bool `json:"FilterRuleSource,omitempty" name:"FilterRuleSource"`
+	FilterRuleSource *bool `json:"FilterRuleSource,omitnil" name:"FilterRuleSource"`
 }
 
 type DescribeDSPADiscoveryRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回上限，默认值10， 最大值10000。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 规则ID
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 是否需要过滤别名
-	FilterRuleSource *bool `json:"FilterRuleSource,omitempty" name:"FilterRuleSource"`
+	FilterRuleSource *bool `json:"FilterRuleSource,omitnil" name:"FilterRuleSource"`
 }
 
 func (r *DescribeDSPADiscoveryRulesRequest) ToJsonString() string {
@@ -7295,14 +7295,14 @@ func (r *DescribeDSPADiscoveryRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPADiscoveryRulesResponseParams struct {
 	// 规则ID
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 规则集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DspaDiscoveryRuleDetail `json:"Items,omitempty" name:"Items"`
+	Items []*DspaDiscoveryRuleDetail `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPADiscoveryRulesResponse struct {
@@ -7324,14 +7324,14 @@ func (r *DescribeDSPADiscoveryRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPADiscoveryServiceStatusRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 type DescribeDSPADiscoveryServiceStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 func (r *DescribeDSPADiscoveryServiceStatusRequest) ToJsonString() string {
@@ -7356,10 +7356,10 @@ func (r *DescribeDSPADiscoveryServiceStatusRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeDSPADiscoveryServiceStatusResponseParams struct {
 	// 分类分级服务是否开通，true 表示已开通，false表示未开通
-	ServiceEnabled *bool `json:"ServiceEnabled,omitempty" name:"ServiceEnabled"`
+	ServiceEnabled *bool `json:"ServiceEnabled,omitnil" name:"ServiceEnabled"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPADiscoveryServiceStatusResponse struct {
@@ -7381,20 +7381,20 @@ func (r *DescribeDSPADiscoveryServiceStatusResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeDSPADiscoveryTaskDetailRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type DescribeDSPADiscoveryTaskDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *DescribeDSPADiscoveryTaskDetailRequest) ToJsonString() string {
@@ -7421,10 +7421,10 @@ func (r *DescribeDSPADiscoveryTaskDetailRequest) FromJsonString(s string) error 
 type DescribeDSPADiscoveryTaskDetailResponseParams struct {
 	// 任务详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Task *DspaDiscoveryTaskDetail `json:"Task,omitempty" name:"Task"`
+	Task *DspaDiscoveryTaskDetail `json:"Task,omitnil" name:"Task"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPADiscoveryTaskDetailResponse struct {
@@ -7446,74 +7446,74 @@ func (r *DescribeDSPADiscoveryTaskDetailResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeDSPADiscoveryTaskResultDetailRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 扫描数据库结果ID
-	DbResultId *int64 `json:"DbResultId,omitempty" name:"DbResultId"`
+	DbResultId *int64 `json:"DbResultId,omitnil" name:"DbResultId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 数据库名
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 
 	// 所属数据表名
-	TableName *string `json:"TableName,omitempty" name:"TableName"`
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
 
 	// 敏感数据分类ID
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分级ID
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 偏移量，默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认值为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 多级分类的分类ID集合
-	CategoryIdList []*int64 `json:"CategoryIdList,omitempty" name:"CategoryIdList"`
+	CategoryIdList []*int64 `json:"CategoryIdList,omitnil" name:"CategoryIdList"`
 }
 
 type DescribeDSPADiscoveryTaskResultDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 扫描数据库结果ID
-	DbResultId *int64 `json:"DbResultId,omitempty" name:"DbResultId"`
+	DbResultId *int64 `json:"DbResultId,omitnil" name:"DbResultId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 数据库名
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 
 	// 所属数据表名
-	TableName *string `json:"TableName,omitempty" name:"TableName"`
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
 
 	// 敏感数据分类ID
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分级ID
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 偏移量，默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认值为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 多级分类的分类ID集合
-	CategoryIdList []*int64 `json:"CategoryIdList,omitempty" name:"CategoryIdList"`
+	CategoryIdList []*int64 `json:"CategoryIdList,omitnil" name:"CategoryIdList"`
 }
 
 func (r *DescribeDSPADiscoveryTaskResultDetailRequest) ToJsonString() string {
@@ -7549,14 +7549,14 @@ func (r *DescribeDSPADiscoveryTaskResultDetailRequest) FromJsonString(s string) 
 type DescribeDSPADiscoveryTaskResultDetailResponseParams struct {
 	// 扫描结果详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DspaDiscoveryTaskResultDetail `json:"Items,omitempty" name:"Items"`
+	Items []*DspaDiscoveryTaskResultDetail `json:"Items,omitnil" name:"Items"`
 
 	// 符合条件的扫描结果详情记录数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPADiscoveryTaskResultDetailResponse struct {
@@ -7578,7 +7578,7 @@ func (r *DescribeDSPADiscoveryTaskResultDetailResponse) FromJsonString(s string)
 // Predefined struct for user
 type DescribeDSPADiscoveryTaskResultRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据源类型，可取值如下：
 	// cdb 表示云数据库 MySQL,
@@ -7588,35 +7588,35 @@ type DescribeDSPADiscoveryTaskResultRequestParams struct {
 	// cynosdbpg 表示TDSQL-C PostgreSQL版,
 	// cynosdbmysql 表示TDSQL-C MySQL版,
 	// selfbuilt-db 表示自建数据库
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 数据库名称
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 
 	// 偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认值为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 资源所在地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 }
 
 type DescribeDSPADiscoveryTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据源类型，可取值如下：
 	// cdb 表示云数据库 MySQL,
@@ -7626,28 +7626,28 @@ type DescribeDSPADiscoveryTaskResultRequest struct {
 	// cynosdbpg 表示TDSQL-C PostgreSQL版,
 	// cynosdbmysql 表示TDSQL-C MySQL版,
 	// selfbuilt-db 表示自建数据库
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 数据库名称
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 
 	// 偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认值为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 资源所在地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 }
 
 func (r *DescribeDSPADiscoveryTaskResultRequest) ToJsonString() string {
@@ -7681,14 +7681,14 @@ func (r *DescribeDSPADiscoveryTaskResultRequest) FromJsonString(s string) error 
 type DescribeDSPADiscoveryTaskResultResponseParams struct {
 	// 扫描任务结果项
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DspaDiscoveryTaskDbResult `json:"Items,omitempty" name:"Items"`
+	Items []*DspaDiscoveryTaskDbResult `json:"Items,omitnil" name:"Items"`
 
 	// 符合条件的扫描任务结果记录数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPADiscoveryTaskResultResponse struct {
@@ -7710,32 +7710,32 @@ func (r *DescribeDSPADiscoveryTaskResultResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeDSPADiscoveryTaskTablesRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 数据库扫描结果ID
-	DbResultId *int64 `json:"DbResultId,omitempty" name:"DbResultId"`
+	DbResultId *int64 `json:"DbResultId,omitnil" name:"DbResultId"`
 
 	// db名称
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 }
 
 type DescribeDSPADiscoveryTaskTablesRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 数据库扫描结果ID
-	DbResultId *int64 `json:"DbResultId,omitempty" name:"DbResultId"`
+	DbResultId *int64 `json:"DbResultId,omitnil" name:"DbResultId"`
 
 	// db名称
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 }
 
 func (r *DescribeDSPADiscoveryTaskTablesRequest) ToJsonString() string {
@@ -7764,10 +7764,10 @@ func (r *DescribeDSPADiscoveryTaskTablesRequest) FromJsonString(s string) error 
 type DescribeDSPADiscoveryTaskTablesResponseParams struct {
 	// 分类分级扫描表集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DSPATableInfo `json:"Items,omitempty" name:"Items"`
+	Items []*DSPATableInfo `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPADiscoveryTaskTablesResponse struct {
@@ -7789,20 +7789,20 @@ func (r *DescribeDSPADiscoveryTaskTablesResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeDSPAESDataAssetByComplianceIdRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 type DescribeDSPAESDataAssetByComplianceIdRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 func (r *DescribeDSPAESDataAssetByComplianceIdRequest) ToJsonString() string {
@@ -7829,10 +7829,10 @@ func (r *DescribeDSPAESDataAssetByComplianceIdRequest) FromJsonString(s string) 
 type DescribeDSPAESDataAssetByComplianceIdResponseParams struct {
 	// 概览统计结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Stats *ESDataAssetCountDto `json:"Stats,omitempty" name:"Stats"`
+	Stats *ESDataAssetCountDto `json:"Stats,omitnil" name:"Stats"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAESDataAssetByComplianceIdResponse struct {
@@ -7854,38 +7854,38 @@ func (r *DescribeDSPAESDataAssetByComplianceIdResponse) FromJsonString(s string)
 // Predefined struct for user
 type DescribeDSPAESDataAssetDetailRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 限制条目数
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeDSPAESDataAssetDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 限制条目数
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeDSPAESDataAssetDetailRequest) ToJsonString() string {
@@ -7915,14 +7915,14 @@ func (r *DescribeDSPAESDataAssetDetailRequest) FromJsonString(s string) error {
 type DescribeDSPAESDataAssetDetailResponseParams struct {
 	// 总的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 概览详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Details []*ESDataAssetDetail `json:"Details,omitempty" name:"Details"`
+	Details []*ESDataAssetDetail `json:"Details,omitnil" name:"Details"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAESDataAssetDetailResponse struct {
@@ -7944,20 +7944,20 @@ func (r *DescribeDSPAESDataAssetDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPAESDataSampleRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 字段扫描结果ID
-	FieldResultId *int64 `json:"FieldResultId,omitempty" name:"FieldResultId"`
+	FieldResultId *int64 `json:"FieldResultId,omitnil" name:"FieldResultId"`
 }
 
 type DescribeDSPAESDataSampleRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 字段扫描结果ID
-	FieldResultId *int64 `json:"FieldResultId,omitempty" name:"FieldResultId"`
+	FieldResultId *int64 `json:"FieldResultId,omitnil" name:"FieldResultId"`
 }
 
 func (r *DescribeDSPAESDataSampleRequest) ToJsonString() string {
@@ -7984,10 +7984,10 @@ func (r *DescribeDSPAESDataSampleRequest) FromJsonString(s string) error {
 type DescribeDSPAESDataSampleResponseParams struct {
 	// 数据样本列表，最多10条数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*string `json:"Items,omitempty" name:"Items"`
+	Items []*string `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAESDataSampleResponse struct {
@@ -8009,56 +8009,56 @@ func (r *DescribeDSPAESDataSampleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPAESDiscoveryTaskResultDetailRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 偏移量，默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认值为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 多级分类的分类ID集合
-	CategoryIdList []*int64 `json:"CategoryIdList,omitempty" name:"CategoryIdList"`
+	CategoryIdList []*int64 `json:"CategoryIdList,omitnil" name:"CategoryIdList"`
 
 	// 敏感数据分级ID
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 索引名称
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 }
 
 type DescribeDSPAESDiscoveryTaskResultDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 偏移量，默认为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认值为20，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 多级分类的分类ID集合
-	CategoryIdList []*int64 `json:"CategoryIdList,omitempty" name:"CategoryIdList"`
+	CategoryIdList []*int64 `json:"CategoryIdList,omitnil" name:"CategoryIdList"`
 
 	// 敏感数据分级ID
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 索引名称
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 }
 
 func (r *DescribeDSPAESDiscoveryTaskResultDetailRequest) ToJsonString() string {
@@ -8091,14 +8091,14 @@ func (r *DescribeDSPAESDiscoveryTaskResultDetailRequest) FromJsonString(s string
 type DescribeDSPAESDiscoveryTaskResultDetailResponseParams struct {
 	// ES扫描结果详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*ESTaskResultDetail `json:"Items,omitempty" name:"Items"`
+	Items []*ESTaskResultDetail `json:"Items,omitnil" name:"Items"`
 
 	// 符合条件的扫描结果详情记录数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPAESDiscoveryTaskResultDetailResponse struct {
@@ -8120,24 +8120,24 @@ func (r *DescribeDSPAESDiscoveryTaskResultDetailResponse) FromJsonString(s strin
 // Predefined struct for user
 type DescribeDSPALevelDetailRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 过滤数组。支持的Name：
 	// ComplianceId 合规组ID
 	// LevelGroupId 敏感分级组ID
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeDSPALevelDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 过滤数组。支持的Name：
 	// ComplianceId 合规组ID
 	// LevelGroupId 敏感分级组ID
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeDSPALevelDetailRequest) ToJsonString() string {
@@ -8164,14 +8164,14 @@ func (r *DescribeDSPALevelDetailRequest) FromJsonString(s string) error {
 type DescribeDSPALevelDetailResponseParams struct {
 	// 符合条件的敏感数据分级标识记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*LevelItem `json:"Items,omitempty" name:"Items"`
+	Items []*LevelItem `json:"Items,omitnil" name:"Items"`
 
 	// 符合条件的敏感数据分级标识记录数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPALevelDetailResponse struct {
@@ -8193,20 +8193,20 @@ func (r *DescribeDSPALevelDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPALevelGroupsRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分级组名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 type DescribeDSPALevelGroupsRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分级组名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 func (r *DescribeDSPALevelGroupsRequest) ToJsonString() string {
@@ -8234,15 +8234,15 @@ type DescribeDSPALevelGroupsResponseParams struct {
 	// 符合条件的敏感数据分级标识记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DspaDiscoveryLevelDetail `json:"Items,omitempty" name:"Items"`
+	Items []*DspaDiscoveryLevelDetail `json:"Items,omitnil" name:"Items"`
 
 	// 符合条件的敏感数据分级标识记录数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPALevelGroupsResponse struct {
@@ -8264,26 +8264,26 @@ func (r *DescribeDSPALevelGroupsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPARDBDataAssetByComplianceIdRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 }
 
 type DescribeDSPARDBDataAssetByComplianceIdRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 }
 
 func (r *DescribeDSPARDBDataAssetByComplianceIdRequest) ToJsonString() string {
@@ -8311,10 +8311,10 @@ func (r *DescribeDSPARDBDataAssetByComplianceIdRequest) FromJsonString(s string)
 type DescribeDSPARDBDataAssetByComplianceIdResponseParams struct {
 	// 符合条件的RDB关系数据库敏感数据资产统计记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Stats *DspaRDBDataAssetCount `json:"Stats,omitempty" name:"Stats"`
+	Stats *DspaRDBDataAssetCount `json:"Stats,omitnil" name:"Stats"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPARDBDataAssetByComplianceIdResponse struct {
@@ -8336,20 +8336,20 @@ func (r *DescribeDSPARDBDataAssetByComplianceIdResponse) FromJsonString(s string
 // Predefined struct for user
 type DescribeDSPARDBDataAssetDetailRequestParams struct {
 	// DSPA实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组Id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 type DescribeDSPARDBDataAssetDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组Id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 func (r *DescribeDSPARDBDataAssetDetailRequest) ToJsonString() string {
@@ -8376,13 +8376,13 @@ func (r *DescribeDSPARDBDataAssetDetailRequest) FromJsonString(s string) error {
 type DescribeDSPARDBDataAssetDetailResponseParams struct {
 	// RDB关系数据库敏感数据资产详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Details []*DspaRDBDataAssetDetail `json:"Details,omitempty" name:"Details"`
+	Details []*DspaRDBDataAssetDetail `json:"Details,omitnil" name:"Details"`
 
 	// 符合条件的RDB关系数据库敏感数据资产数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPARDBDataAssetDetailResponse struct {
@@ -8404,14 +8404,14 @@ func (r *DescribeDSPARDBDataAssetDetailResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeDSPASupportedMetasRequestParams struct {
 	// 元数据类型
-	MetaTypes []*string `json:"MetaTypes,omitempty" name:"MetaTypes"`
+	MetaTypes []*string `json:"MetaTypes,omitnil" name:"MetaTypes"`
 }
 
 type DescribeDSPASupportedMetasRequest struct {
 	*tchttp.BaseRequest
 	
 	// 元数据类型
-	MetaTypes []*string `json:"MetaTypes,omitempty" name:"MetaTypes"`
+	MetaTypes []*string `json:"MetaTypes,omitnil" name:"MetaTypes"`
 }
 
 func (r *DescribeDSPASupportedMetasRequest) ToJsonString() string {
@@ -8437,10 +8437,10 @@ func (r *DescribeDSPASupportedMetasRequest) FromJsonString(s string) error {
 type DescribeDSPASupportedMetasResponseParams struct {
 	// 支持的元数据类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Metas []*DSPAMetaType `json:"Metas,omitempty" name:"Metas"`
+	Metas []*DSPAMetaType `json:"Metas,omitnil" name:"Metas"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPASupportedMetasResponse struct {
@@ -8462,20 +8462,20 @@ func (r *DescribeDSPASupportedMetasResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDSPATaskResultDataSampleRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 字段扫描结果ID
-	FieldResultId *int64 `json:"FieldResultId,omitempty" name:"FieldResultId"`
+	FieldResultId *int64 `json:"FieldResultId,omitnil" name:"FieldResultId"`
 }
 
 type DescribeDSPATaskResultDataSampleRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 字段扫描结果ID
-	FieldResultId *int64 `json:"FieldResultId,omitempty" name:"FieldResultId"`
+	FieldResultId *int64 `json:"FieldResultId,omitnil" name:"FieldResultId"`
 }
 
 func (r *DescribeDSPATaskResultDataSampleRequest) ToJsonString() string {
@@ -8502,10 +8502,10 @@ func (r *DescribeDSPATaskResultDataSampleRequest) FromJsonString(s string) error
 type DescribeDSPATaskResultDataSampleResponseParams struct {
 	// 数据样本列表，最多10条数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DspaFieldResultDataSample `json:"Items,omitempty" name:"Items"`
+	Items []*DspaFieldResultDataSample `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDSPATaskResultDataSampleResponse struct {
@@ -8527,26 +8527,26 @@ func (r *DescribeDSPATaskResultDataSampleResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeESAssetSensitiveDistributionRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产信息列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 type DescribeESAssetSensitiveDistributionRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产信息列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 func (r *DescribeESAssetSensitiveDistributionRequest) ToJsonString() string {
@@ -8574,18 +8574,18 @@ func (r *DescribeESAssetSensitiveDistributionRequest) FromJsonString(s string) e
 type DescribeESAssetSensitiveDistributionResponseParams struct {
 	// ES的资产统计数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ESAsset *ESAsset `json:"ESAsset,omitempty" name:"ESAsset"`
+	ESAsset *ESAsset `json:"ESAsset,omitnil" name:"ESAsset"`
 
 	// 涉敏top数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopAsset []*TopAsset `json:"TopAsset,omitempty" name:"TopAsset"`
+	TopAsset []*TopAsset `json:"TopAsset,omitnil" name:"TopAsset"`
 
 	// ES的详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ESDetail []*ESAssetDBDetail `json:"ESDetail,omitempty" name:"ESDetail"`
+	ESDetail []*ESAssetDBDetail `json:"ESDetail,omitnil" name:"ESDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeESAssetSensitiveDistributionResponse struct {
@@ -8607,20 +8607,20 @@ func (r *DescribeESAssetSensitiveDistributionResponse) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeExportTaskResultRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 导出任务id
-	ExportTaskId *uint64 `json:"ExportTaskId,omitempty" name:"ExportTaskId"`
+	ExportTaskId *uint64 `json:"ExportTaskId,omitnil" name:"ExportTaskId"`
 }
 
 type DescribeExportTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 导出任务id
-	ExportTaskId *uint64 `json:"ExportTaskId,omitempty" name:"ExportTaskId"`
+	ExportTaskId *uint64 `json:"ExportTaskId,omitnil" name:"ExportTaskId"`
 }
 
 func (r *DescribeExportTaskResultRequest) ToJsonString() string {
@@ -8646,13 +8646,13 @@ func (r *DescribeExportTaskResultRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeExportTaskResultResponseParams struct {
 	// 导出任务结果
-	ExportResult *string `json:"ExportResult,omitempty" name:"ExportResult"`
+	ExportResult *string `json:"ExportResult,omitnil" name:"ExportResult"`
 
 	// 导出文件地址
-	ExportFileUrl *string `json:"ExportFileUrl,omitempty" name:"ExportFileUrl"`
+	ExportFileUrl *string `json:"ExportFileUrl,omitnil" name:"ExportFileUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeExportTaskResultResponse struct {
@@ -8703,7 +8703,7 @@ func (r *DescribeLeafClassificationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLeafClassificationResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeLeafClassificationResponse struct {
@@ -8725,26 +8725,26 @@ func (r *DescribeLeafClassificationResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMongoAssetSensitiveDistributionRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产信息列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 type DescribeMongoAssetSensitiveDistributionRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产信息列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 func (r *DescribeMongoAssetSensitiveDistributionRequest) ToJsonString() string {
@@ -8772,18 +8772,18 @@ func (r *DescribeMongoAssetSensitiveDistributionRequest) FromJsonString(s string
 type DescribeMongoAssetSensitiveDistributionResponseParams struct {
 	// mongo的资产统计数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MongoAsset *MongoAsset `json:"MongoAsset,omitempty" name:"MongoAsset"`
+	MongoAsset *MongoAsset `json:"MongoAsset,omitnil" name:"MongoAsset"`
 
 	// 涉敏top数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopAsset []*TopAsset `json:"TopAsset,omitempty" name:"TopAsset"`
+	TopAsset []*TopAsset `json:"TopAsset,omitnil" name:"TopAsset"`
 
 	// mongo的详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MongoDetail []*MongoAssetDBDetail `json:"MongoDetail,omitempty" name:"MongoDetail"`
+	MongoDetail []*MongoAssetDBDetail `json:"MongoDetail,omitnil" name:"MongoDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeMongoAssetSensitiveDistributionResponse struct {
@@ -8805,26 +8805,26 @@ func (r *DescribeMongoAssetSensitiveDistributionResponse) FromJsonString(s strin
 // Predefined struct for user
 type DescribeRDBAssetSensitiveDistributionRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产信息列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 type DescribeRDBAssetSensitiveDistributionRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产信息列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 func (r *DescribeRDBAssetSensitiveDistributionRequest) ToJsonString() string {
@@ -8852,18 +8852,18 @@ func (r *DescribeRDBAssetSensitiveDistributionRequest) FromJsonString(s string) 
 type DescribeRDBAssetSensitiveDistributionResponseParams struct {
 	// rdb的资产统计数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RDBAsset *RDBAsset `json:"RDBAsset,omitempty" name:"RDBAsset"`
+	RDBAsset *RDBAsset `json:"RDBAsset,omitnil" name:"RDBAsset"`
 
 	// 涉敏top数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopAsset []*TopAsset `json:"TopAsset,omitempty" name:"TopAsset"`
+	TopAsset []*TopAsset `json:"TopAsset,omitnil" name:"TopAsset"`
 
 	// rdb的详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RDBDetail []*AssetDBDetail `json:"RDBDetail,omitempty" name:"RDBDetail"`
+	RDBDetail []*AssetDBDetail `json:"RDBDetail,omitnil" name:"RDBDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRDBAssetSensitiveDistributionResponse struct {
@@ -8885,26 +8885,26 @@ func (r *DescribeRDBAssetSensitiveDistributionResponse) FromJsonString(s string)
 // Predefined struct for user
 type DescribeReportTaskDownloadUrlRequestParams struct {
 	// 任务id
-	ReportTaskId *uint64 `json:"ReportTaskId,omitempty" name:"ReportTaskId"`
+	ReportTaskId *uint64 `json:"ReportTaskId,omitnil" name:"ReportTaskId"`
 
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 是否同时下载敏感资产详情报告
-	IsWithSensitiveDetailReport *bool `json:"IsWithSensitiveDetailReport,omitempty" name:"IsWithSensitiveDetailReport"`
+	IsWithSensitiveDetailReport *bool `json:"IsWithSensitiveDetailReport,omitnil" name:"IsWithSensitiveDetailReport"`
 }
 
 type DescribeReportTaskDownloadUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务id
-	ReportTaskId *uint64 `json:"ReportTaskId,omitempty" name:"ReportTaskId"`
+	ReportTaskId *uint64 `json:"ReportTaskId,omitnil" name:"ReportTaskId"`
 
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 是否同时下载敏感资产详情报告
-	IsWithSensitiveDetailReport *bool `json:"IsWithSensitiveDetailReport,omitempty" name:"IsWithSensitiveDetailReport"`
+	IsWithSensitiveDetailReport *bool `json:"IsWithSensitiveDetailReport,omitnil" name:"IsWithSensitiveDetailReport"`
 }
 
 func (r *DescribeReportTaskDownloadUrlRequest) ToJsonString() string {
@@ -8932,10 +8932,10 @@ func (r *DescribeReportTaskDownloadUrlRequest) FromJsonString(s string) error {
 type DescribeReportTaskDownloadUrlResponseParams struct {
 	// 下载链接集合
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadUrlSet []*string `json:"DownloadUrlSet,omitempty" name:"DownloadUrlSet"`
+	DownloadUrlSet []*string `json:"DownloadUrlSet,omitnil" name:"DownloadUrlSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeReportTaskDownloadUrlResponse struct {
@@ -8957,32 +8957,32 @@ func (r *DescribeReportTaskDownloadUrlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeReportTasksRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分页大小
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 报表名称
-	ReportName *string `json:"ReportName,omitempty" name:"ReportName"`
+	ReportName *string `json:"ReportName,omitnil" name:"ReportName"`
 }
 
 type DescribeReportTasksRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 分页大小
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 报表名称
-	ReportName *string `json:"ReportName,omitempty" name:"ReportName"`
+	ReportName *string `json:"ReportName,omitnil" name:"ReportName"`
 }
 
 func (r *DescribeReportTasksRequest) ToJsonString() string {
@@ -9011,14 +9011,14 @@ func (r *DescribeReportTasksRequest) FromJsonString(s string) error {
 type DescribeReportTasksResponseParams struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 报表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemSet []*ReportInfo `json:"ItemSet,omitempty" name:"ItemSet"`
+	ItemSet []*ReportInfo `json:"ItemSet,omitnil" name:"ItemSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeReportTasksResponse struct {
@@ -9069,7 +9069,7 @@ func (r *DescribeRuleDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRuleDetailResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRuleDetailResponse struct {
@@ -9120,7 +9120,7 @@ func (r *DescribeRuleListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRuleListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRuleListResponse struct {
@@ -9142,26 +9142,26 @@ func (r *DescribeRuleListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSensitiveCOSDataDistributionRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 2331
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产信息列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 type DescribeSensitiveCOSDataDistributionRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 2331
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产信息列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 func (r *DescribeSensitiveCOSDataDistributionRequest) ToJsonString() string {
@@ -9189,22 +9189,22 @@ func (r *DescribeSensitiveCOSDataDistributionRequest) FromJsonString(s string) e
 type DescribeSensitiveCOSDataDistributionResponseParams struct {
 	// 分级分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelDistribution []*Note `json:"LevelDistribution,omitempty" name:"LevelDistribution"`
+	LevelDistribution []*Note `json:"LevelDistribution,omitnil" name:"LevelDistribution"`
 
 	// 分类分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryDistribution []*Note `json:"CategoryDistribution,omitempty" name:"CategoryDistribution"`
+	CategoryDistribution []*Note `json:"CategoryDistribution,omitnil" name:"CategoryDistribution"`
 
 	// 规则分布详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleDistribution []*RuleDistribution `json:"RuleDistribution,omitempty" name:"RuleDistribution"`
+	RuleDistribution []*RuleDistribution `json:"RuleDistribution,omitnil" name:"RuleDistribution"`
 
 	// 计算占比
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveDataNum *int64 `json:"SensitiveDataNum,omitempty" name:"SensitiveDataNum"`
+	SensitiveDataNum *int64 `json:"SensitiveDataNum,omitnil" name:"SensitiveDataNum"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSensitiveCOSDataDistributionResponse struct {
@@ -9226,26 +9226,26 @@ func (r *DescribeSensitiveCOSDataDistributionResponse) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeSensitiveRDBDataDistributionRequestParams struct {
 	// dspa-实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产信息列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 type DescribeSensitiveRDBDataDistributionRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa-实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 查询的资产信息列表
-	AssetList []*AssetList `json:"AssetList,omitempty" name:"AssetList"`
+	AssetList []*AssetList `json:"AssetList,omitnil" name:"AssetList"`
 }
 
 func (r *DescribeSensitiveRDBDataDistributionRequest) ToJsonString() string {
@@ -9273,22 +9273,22 @@ func (r *DescribeSensitiveRDBDataDistributionRequest) FromJsonString(s string) e
 type DescribeSensitiveRDBDataDistributionResponseParams struct {
 	// 分级分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelDistribution []*Note `json:"LevelDistribution,omitempty" name:"LevelDistribution"`
+	LevelDistribution []*Note `json:"LevelDistribution,omitnil" name:"LevelDistribution"`
 
 	// 分类分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryDistribution []*Note `json:"CategoryDistribution,omitempty" name:"CategoryDistribution"`
+	CategoryDistribution []*Note `json:"CategoryDistribution,omitnil" name:"CategoryDistribution"`
 
 	// 敏感规则分布详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleDistribution []*RuleDistribution `json:"RuleDistribution,omitempty" name:"RuleDistribution"`
+	RuleDistribution []*RuleDistribution `json:"RuleDistribution,omitnil" name:"RuleDistribution"`
 
 	// 计算占比字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveDataNum *int64 `json:"SensitiveDataNum,omitempty" name:"SensitiveDataNum"`
+	SensitiveDataNum *int64 `json:"SensitiveDataNum,omitnil" name:"SensitiveDataNum"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSensitiveRDBDataDistributionResponse struct {
@@ -9310,32 +9310,32 @@ func (r *DescribeSensitiveRDBDataDistributionResponse) FromJsonString(s string) 
 // Predefined struct for user
 type DisableDSPAMetaResourceAuthRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 资源类型。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 用户云资源ID列表。
-	ResourceIDs []*string `json:"ResourceIDs,omitempty" name:"ResourceIDs"`
+	ResourceIDs []*string `json:"ResourceIDs,omitnil" name:"ResourceIDs"`
 }
 
 type DisableDSPAMetaResourceAuthRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 资源类型。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 用户云资源ID列表。
-	ResourceIDs []*string `json:"ResourceIDs,omitempty" name:"ResourceIDs"`
+	ResourceIDs []*string `json:"ResourceIDs,omitnil" name:"ResourceIDs"`
 }
 
 func (r *DisableDSPAMetaResourceAuthRequest) ToJsonString() string {
@@ -9363,14 +9363,14 @@ func (r *DisableDSPAMetaResourceAuthRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableDSPAMetaResourceAuthResponseParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 授权结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Results []*DspaTaskResult `json:"Results,omitempty" name:"Results"`
+	Results []*DspaTaskResult `json:"Results,omitnil" name:"Results"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DisableDSPAMetaResourceAuthResponse struct {
@@ -9392,538 +9392,538 @@ func (r *DisableDSPAMetaResourceAuthResponse) FromJsonString(s string) error {
 type DiscoveryCondition struct {
 	// RDB实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RDBInstances []*RDBInstance `json:"RDBInstances,omitempty" name:"RDBInstances"`
+	RDBInstances []*RDBInstance `json:"RDBInstances,omitnil" name:"RDBInstances"`
 
 	// COS实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	COSInstances []*COSInstance `json:"COSInstances,omitempty" name:"COSInstances"`
+	COSInstances []*COSInstance `json:"COSInstances,omitnil" name:"COSInstances"`
 
 	// Mongo实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NOSQLInstances []*NOSQLInstance `json:"NOSQLInstances,omitempty" name:"NOSQLInstances"`
+	NOSQLInstances []*NOSQLInstance `json:"NOSQLInstances,omitnil" name:"NOSQLInstances"`
 
 	// ES实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ESInstances []*ESInstance `json:"ESInstances,omitempty" name:"ESInstances"`
+	ESInstances []*ESInstance `json:"ESInstances,omitnil" name:"ESInstances"`
 }
 
 type DspaAssessmentFilter struct {
 	// 过滤类型。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 过滤类型的值。
-	Values []*string `json:"Values,omitempty" name:"Values"`
+	Values []*string `json:"Values,omitnil" name:"Values"`
 }
 
 type DspaCOSDataAssetCount struct {
 	// 数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataAssetType *int64 `json:"DataAssetType,omitempty" name:"DataAssetType"`
+	DataAssetType *int64 `json:"DataAssetType,omitnil" name:"DataAssetType"`
 
 	// 已扫描的存储桶的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalBucketCnt *int64 `json:"TotalBucketCnt,omitempty" name:"TotalBucketCnt"`
+	TotalBucketCnt *int64 `json:"TotalBucketCnt,omitnil" name:"TotalBucketCnt"`
 
 	// 对象总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalObjectCnt *int64 `json:"TotalObjectCnt,omitempty" name:"TotalObjectCnt"`
+	TotalObjectCnt *int64 `json:"TotalObjectCnt,omitnil" name:"TotalObjectCnt"`
 
 	// 敏感数据类型个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveCategoryCnt *int64 `json:"SensitiveCategoryCnt,omitempty" name:"SensitiveCategoryCnt"`
+	SensitiveCategoryCnt *int64 `json:"SensitiveCategoryCnt,omitnil" name:"SensitiveCategoryCnt"`
 
 	// 敏感数据条数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveDataCnt *int64 `json:"SensitiveDataCnt,omitempty" name:"SensitiveDataCnt"`
+	SensitiveDataCnt *int64 `json:"SensitiveDataCnt,omitnil" name:"SensitiveDataCnt"`
 
 	// 敏感等级分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveLevel []*SensitiveLevel `json:"SensitiveLevel,omitempty" name:"SensitiveLevel"`
+	SensitiveLevel []*SensitiveLevel `json:"SensitiveLevel,omitnil" name:"SensitiveLevel"`
 
 	// 敏感存储桶个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveBucketCnt *int64 `json:"SensitiveBucketCnt,omitempty" name:"SensitiveBucketCnt"`
+	SensitiveBucketCnt *int64 `json:"SensitiveBucketCnt,omitnil" name:"SensitiveBucketCnt"`
 
 	// 敏感对象个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveObjectCnt *int64 `json:"SensitiveObjectCnt,omitempty" name:"SensitiveObjectCnt"`
+	SensitiveObjectCnt *int64 `json:"SensitiveObjectCnt,omitnil" name:"SensitiveObjectCnt"`
 
 	// 数据分类分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryDistributed []*DspaDataCategoryDistributed `json:"CategoryDistributed,omitempty" name:"CategoryDistributed"`
+	CategoryDistributed []*DspaDataCategoryDistributed `json:"CategoryDistributed,omitnil" name:"CategoryDistributed"`
 }
 
 type DspaCOSDataAssetDetail struct {
 	// 对象桶
-	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitnil" name:"BucketName"`
 
 	// 对象名称
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 规则名称
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 出现次数
-	SensitiveDataCount *int64 `json:"SensitiveDataCount,omitempty" name:"SensitiveDataCount"`
+	SensitiveDataCount *int64 `json:"SensitiveDataCount,omitnil" name:"SensitiveDataCount"`
 
 	// 敏感数据分类
-	CategoryName *string `json:"CategoryName,omitempty" name:"CategoryName"`
+	CategoryName *string `json:"CategoryName,omitnil" name:"CategoryName"`
 
 	// 敏感等级
-	LevelRiskName *string `json:"LevelRiskName,omitempty" name:"LevelRiskName"`
+	LevelRiskName *string `json:"LevelRiskName,omitnil" name:"LevelRiskName"`
 
 	// KMS加密
-	KMSEncrypted *bool `json:"KMSEncrypted,omitempty" name:"KMSEncrypted"`
+	KMSEncrypted *bool `json:"KMSEncrypted,omitnil" name:"KMSEncrypted"`
 
 	// 文件类型
-	FileType *string `json:"FileType,omitempty" name:"FileType"`
+	FileType *string `json:"FileType,omitnil" name:"FileType"`
 
 	// 文件大小
-	FileSize *string `json:"FileSize,omitempty" name:"FileSize"`
+	FileSize *string `json:"FileSize,omitnil" name:"FileSize"`
 
 	// 敏感数据分级分数
-	LevelRiskScore *int64 `json:"LevelRiskScore,omitempty" name:"LevelRiskScore"`
+	LevelRiskScore *int64 `json:"LevelRiskScore,omitnil" name:"LevelRiskScore"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 规则id
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 资源所在地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 分类ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 分级ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 文件扫描结果ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileResultId *int64 `json:"FileResultId,omitempty" name:"FileResultId"`
+	FileResultId *int64 `json:"FileResultId,omitnil" name:"FileResultId"`
 
 	// 数据源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceName *string `json:"DataSourceName,omitempty" name:"DataSourceName"`
+	DataSourceName *string `json:"DataSourceName,omitnil" name:"DataSourceName"`
 
 	// 分类路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryFullPath *string `json:"CategoryFullPath,omitempty" name:"CategoryFullPath"`
+	CategoryFullPath *string `json:"CategoryFullPath,omitnil" name:"CategoryFullPath"`
 }
 
 type DspaCOSDiscoveryTask struct {
 	// 任务名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 任务描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 执行周期，0单次 1每天 2每周 3每月
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 执行计划，0立即 1定时
-	Plan *int64 `json:"Plan,omitempty" name:"Plan"`
+	Plan *int64 `json:"Plan,omitnil" name:"Plan"`
 
 	// 任务开关；1 打开，0 关闭
-	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 数据源对象信息
-	DataSourceInfo *DspaCOSDiscoveryTaskDataSourceInfo `json:"DataSourceInfo,omitempty" name:"DataSourceInfo"`
+	DataSourceInfo *DspaCOSDiscoveryTaskDataSourceInfo `json:"DataSourceInfo,omitnil" name:"DataSourceInfo"`
 
 	// 通用规则集开关，0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitempty" name:"GeneralRuleSetEnable"`
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil" name:"GeneralRuleSetEnable"`
 
 	// 任务最新的一次执行结果信息，该字段用于查询任务列表接口
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ScanTaskResult `json:"Result,omitempty" name:"Result"`
+	Result *ScanTaskResult `json:"Result,omitnil" name:"Result"`
 
 	// 定时开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimingStartTime *string `json:"TimingStartTime,omitempty" name:"TimingStartTime"`
+	TimingStartTime *string `json:"TimingStartTime,omitnil" name:"TimingStartTime"`
 
 	// 关联分类模板是否更新
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComplianceUpdate *bool `json:"ComplianceUpdate,omitempty" name:"ComplianceUpdate"`
+	ComplianceUpdate *bool `json:"ComplianceUpdate,omitnil" name:"ComplianceUpdate"`
 }
 
 type DspaCOSDiscoveryTaskDataSourceInfo struct {
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 代理地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProxyAddress []*string `json:"ProxyAddress,omitempty" name:"ProxyAddress"`
+	ProxyAddress []*string `json:"ProxyAddress,omitnil" name:"ProxyAddress"`
 
 	// 数据源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceName *string `json:"DataSourceName,omitempty" name:"DataSourceName"`
+	DataSourceName *string `json:"DataSourceName,omitnil" name:"DataSourceName"`
 
 	// 扫描任务条件
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Condition *DspaDiscoveryTaskCOSCondition `json:"Condition,omitempty" name:"Condition"`
+	Condition *DspaDiscoveryTaskCOSCondition `json:"Condition,omitnil" name:"Condition"`
 
 	// 资源所在地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 }
 
 type DspaCOSDiscoveryTaskDetail struct {
 	// 任务名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 任务描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 执行周期，0单次 1每天 2每周 3每月
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 执行计划，0立即 1定时
-	Plan *int64 `json:"Plan,omitempty" name:"Plan"`
+	Plan *int64 `json:"Plan,omitnil" name:"Plan"`
 
 	// 任务开关；1 打开，0 关闭
-	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 数据源对象信息
-	DataSourceInfo *DspaCOSDiscoveryTaskDataSourceInfo `json:"DataSourceInfo,omitempty" name:"DataSourceInfo"`
+	DataSourceInfo *DspaCOSDiscoveryTaskDataSourceInfo `json:"DataSourceInfo,omitnil" name:"DataSourceInfo"`
 
 	// 通用规则集开关，0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitempty" name:"GeneralRuleSetEnable"`
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil" name:"GeneralRuleSetEnable"`
 
 	// 当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefaultComplianceInfo []*ScanTaskComplianceInfo `json:"DefaultComplianceInfo,omitempty" name:"DefaultComplianceInfo"`
+	DefaultComplianceInfo []*ScanTaskComplianceInfo `json:"DefaultComplianceInfo,omitnil" name:"DefaultComplianceInfo"`
 
 	// 该任务中用户选择的合规组信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CustomComplianceInfo []*ScanTaskComplianceInfo `json:"CustomComplianceInfo,omitempty" name:"CustomComplianceInfo"`
+	CustomComplianceInfo []*ScanTaskComplianceInfo `json:"CustomComplianceInfo,omitnil" name:"CustomComplianceInfo"`
 
 	// 定时开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimingStartTime *string `json:"TimingStartTime,omitempty" name:"TimingStartTime"`
+	TimingStartTime *string `json:"TimingStartTime,omitnil" name:"TimingStartTime"`
 }
 
 type DspaCOSDiscoveryTaskResult struct {
 	// 扫描bucket结果ID
-	BucketResultId *int64 `json:"BucketResultId,omitempty" name:"BucketResultId"`
+	BucketResultId *int64 `json:"BucketResultId,omitnil" name:"BucketResultId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
 
 	// 扫描任务最新一次扫描结果ID
-	ResultId *int64 `json:"ResultId,omitempty" name:"ResultId"`
+	ResultId *int64 `json:"ResultId,omitnil" name:"ResultId"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 桶名称
-	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitnil" name:"BucketName"`
 
 	// 总文件数
-	TotalFiles *int64 `json:"TotalFiles,omitempty" name:"TotalFiles"`
+	TotalFiles *int64 `json:"TotalFiles,omitnil" name:"TotalFiles"`
 
 	// 被识别出的敏感数据数
-	SensitiveDataNums *int64 `json:"SensitiveDataNums,omitempty" name:"SensitiveDataNums"`
+	SensitiveDataNums *int64 `json:"SensitiveDataNums,omitnil" name:"SensitiveDataNums"`
 
 	// Bucket扫描的结束时间，格式如：2006-01-02 15:04:05
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 数据源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceName *string `json:"DataSourceName,omitempty" name:"DataSourceName"`
+	DataSourceName *string `json:"DataSourceName,omitnil" name:"DataSourceName"`
 
 	// Bucket扫描状态，0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// Bucket扫描结果错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorInfo *string `json:"ErrorInfo,omitempty" name:"ErrorInfo"`
+	ErrorInfo *string `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
 
 	// 资源所在地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 是否超额
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OverSize *string `json:"OverSize,omitempty" name:"OverSize"`
+	OverSize *string `json:"OverSize,omitnil" name:"OverSize"`
 }
 
 type DspaCloudResourceMeta struct {
 	// 用户资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 资源名称。
-	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
 
 	// 资源VIP。
-	ResourceVip *string `json:"ResourceVip,omitempty" name:"ResourceVip"`
+	ResourceVip *string `json:"ResourceVip,omitnil" name:"ResourceVip"`
 
 	// 资源端口。
-	ResourceVPort *uint64 `json:"ResourceVPort,omitempty" name:"ResourceVPort"`
+	ResourceVPort *uint64 `json:"ResourceVPort,omitnil" name:"ResourceVPort"`
 
 	// 资源被创建时间。
-	ResourceCreateTime *string `json:"ResourceCreateTime,omitempty" name:"ResourceCreateTime"`
+	ResourceCreateTime *string `json:"ResourceCreateTime,omitnil" name:"ResourceCreateTime"`
 
 	// 用户资源VPC ID 字符串。
-	ResourceUniqueVpcId *string `json:"ResourceUniqueVpcId,omitempty" name:"ResourceUniqueVpcId"`
+	ResourceUniqueVpcId *string `json:"ResourceUniqueVpcId,omitnil" name:"ResourceUniqueVpcId"`
 
 	// 用户资源Subnet ID 字符串。
-	ResourceUniqueSubnetId *string `json:"ResourceUniqueSubnetId,omitempty" name:"ResourceUniqueSubnetId"`
+	ResourceUniqueSubnetId *string `json:"ResourceUniqueSubnetId,omitnil" name:"ResourceUniqueSubnetId"`
 }
 
 type DspaDataCategoryDistributed struct {
 	// 数据分类ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 数据分类名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryName *string `json:"CategoryName,omitempty" name:"CategoryName"`
+	CategoryName *string `json:"CategoryName,omitnil" name:"CategoryName"`
 
 	// 数据分类统计个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Count *uint64 `json:"Count,omitempty" name:"Count"`
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
 
 	// 分类路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryFullPath *string `json:"CategoryFullPath,omitempty" name:"CategoryFullPath"`
+	CategoryFullPath *string `json:"CategoryFullPath,omitnil" name:"CategoryFullPath"`
 }
 
 type DspaDataSourceMngFilter struct {
 	// 过滤类型。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 过滤类型的值。
-	Values []*string `json:"Values,omitempty" name:"Values"`
+	Values []*string `json:"Values,omitnil" name:"Values"`
 }
 
 type DspaDiscoveryCOSDataRule struct {
 	// 只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一.
 	// 默认值为or
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 规则内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Contents []*DspaDiscoveryDataContent `json:"Contents,omitempty" name:"Contents"`
+	Contents []*DspaDiscoveryDataContent `json:"Contents,omitnil" name:"Contents"`
 }
 
 type DspaDiscoveryCOSRules struct {
 	// 规则状态；0 不启用, 1 启用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// regex规则内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegexRule *DspaDiscoveryCOSDataRule `json:"RegexRule,omitempty" name:"RegexRule"`
+	RegexRule *DspaDiscoveryCOSDataRule `json:"RegexRule,omitnil" name:"RegexRule"`
 
 	// 关键词规则内容组，最大支持5个关键词。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeywordRule *DspaDiscoveryCOSDataRule `json:"KeywordRule,omitempty" name:"KeywordRule"`
+	KeywordRule *DspaDiscoveryCOSDataRule `json:"KeywordRule,omitnil" name:"KeywordRule"`
 
 	// 忽略词规则内容组，最大支持5个忽略词。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IgnoreStringRule *DspaDiscoveryCOSDataRule `json:"IgnoreStringRule,omitempty" name:"IgnoreStringRule"`
+	IgnoreStringRule *DspaDiscoveryCOSDataRule `json:"IgnoreStringRule,omitnil" name:"IgnoreStringRule"`
 
 	// 最大匹配距离，默认值为100。上限为500.
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxMatch *int64 `json:"MaxMatch,omitempty" name:"MaxMatch"`
+	MaxMatch *int64 `json:"MaxMatch,omitnil" name:"MaxMatch"`
 }
 
 type DspaDiscoveryCOSTaskResultDetail struct {
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 扫描File结果详情ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileResultId *int64 `json:"FileResultId,omitempty" name:"FileResultId"`
+	FileResultId *int64 `json:"FileResultId,omitnil" name:"FileResultId"`
 
 	// 所属桶名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitnil" name:"BucketName"`
 
 	// 所属文件名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 敏感数据分类ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分类名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryName *string `json:"CategoryName,omitempty" name:"CategoryName"`
+	CategoryName *string `json:"CategoryName,omitnil" name:"CategoryName"`
 
 	// 敏感数据分级ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 敏感数据分级名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelName *string `json:"LevelName,omitempty" name:"LevelName"`
+	LevelName *string `json:"LevelName,omitnil" name:"LevelName"`
 
 	// KMS加密，true or false
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KMSEncrypted *bool `json:"KMSEncrypted,omitempty" name:"KMSEncrypted"`
+	KMSEncrypted *bool `json:"KMSEncrypted,omitnil" name:"KMSEncrypted"`
 
 	// 规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 规则ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 敏感数据分级分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelRiskScore *int64 `json:"LevelRiskScore,omitempty" name:"LevelRiskScore"`
+	LevelRiskScore *int64 `json:"LevelRiskScore,omitnil" name:"LevelRiskScore"`
 
 	// 文件大小，单位为KB
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+	FileSize *int64 `json:"FileSize,omitnil" name:"FileSize"`
 
 	// 文件类型，如csv，txt
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileType *string `json:"FileType,omitempty" name:"FileType"`
+	FileType *string `json:"FileType,omitnil" name:"FileType"`
 
 	// 敏感数据出现次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveDataCount *int64 `json:"SensitiveDataCount,omitempty" name:"SensitiveDataCount"`
+	SensitiveDataCount *int64 `json:"SensitiveDataCount,omitnil" name:"SensitiveDataCount"`
 
 	// 分类树路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryFullPath []*string `json:"CategoryFullPath,omitempty" name:"CategoryFullPath"`
+	CategoryFullPath []*string `json:"CategoryFullPath,omitnil" name:"CategoryFullPath"`
 
 	// 合规组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 结果id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultId *int64 `json:"ResultId,omitempty" name:"ResultId"`
+	ResultId *int64 `json:"ResultId,omitnil" name:"ResultId"`
 }
 
 type DspaDiscoveryComplianceGroup struct {
 	// 合规组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitempty" name:"ComplianceGroupId"`
+	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitnil" name:"ComplianceGroupId"`
 
 	// 合规组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 合规组描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComplianceGroupType *int64 `json:"ComplianceGroupType,omitempty" name:"ComplianceGroupType"`
+	ComplianceGroupType *int64 `json:"ComplianceGroupType,omitnil" name:"ComplianceGroupType"`
 
 	// 合规组对应的规则项
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComplianceGroupRules []*DspaDiscoveryComplianceGroupRuleInfo `json:"ComplianceGroupRules,omitempty" name:"ComplianceGroupRules"`
+	ComplianceGroupRules []*DspaDiscoveryComplianceGroupRuleInfo `json:"ComplianceGroupRules,omitnil" name:"ComplianceGroupRules"`
 
 	// 合规组对应的分级组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelGroupId *uint64 `json:"LevelGroupId,omitempty" name:"LevelGroupId"`
+	LevelGroupId *uint64 `json:"LevelGroupId,omitnil" name:"LevelGroupId"`
 }
 
 type DspaDiscoveryComplianceGroupInfo struct {
 	// 合规组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitempty" name:"ComplianceGroupId"`
+	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitnil" name:"ComplianceGroupId"`
 
 	// 合规组名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 合规组描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 合规组类型；0 默认合规组，1 系统合规组（除默认合规组外）, 2 自定义合规组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComplianceGroupType *int64 `json:"ComplianceGroupType,omitempty" name:"ComplianceGroupType"`
+	ComplianceGroupType *int64 `json:"ComplianceGroupType,omitnil" name:"ComplianceGroupType"`
 
 	// 合规组对应的规则项
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComplianceGroupRules []*DspaDiscoveryComplianceGroupRule `json:"ComplianceGroupRules,omitempty" name:"ComplianceGroupRules"`
+	ComplianceGroupRules []*DspaDiscoveryComplianceGroupRule `json:"ComplianceGroupRules,omitnil" name:"ComplianceGroupRules"`
 
 	// 合规组对应的分级组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelGroupId *uint64 `json:"LevelGroupId,omitempty" name:"LevelGroupId"`
+	LevelGroupId *uint64 `json:"LevelGroupId,omitnil" name:"LevelGroupId"`
 
 	// 是否禁止使用（true，禁止使用，false，可以使用）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Disabled *bool `json:"Disabled,omitempty" name:"Disabled"`
+	Disabled *bool `json:"Disabled,omitnil" name:"Disabled"`
 
 	// 是否别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsAlias *bool `json:"IsAlias,omitempty" name:"IsAlias"`
+	IsAlias *bool `json:"IsAlias,omitnil" name:"IsAlias"`
 }
 
 type DspaDiscoveryComplianceGroupRule struct {
 	// 敏感数据识别规则ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 敏感数据识别规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 敏感数据分类ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分级ID, 目前只支持高、中、低三级
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 合规组对应的分类信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryName *string `json:"CategoryName,omitempty" name:"CategoryName"`
+	CategoryName *string `json:"CategoryName,omitnil" name:"CategoryName"`
 
 	// 分级名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelRiskName *string `json:"LevelRiskName,omitempty" name:"LevelRiskName"`
+	LevelRiskName *string `json:"LevelRiskName,omitnil" name:"LevelRiskName"`
 }
 
 type DspaDiscoveryComplianceGroupRuleInfo struct {
 	// 敏感数据识别规则ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 敏感数据识别规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 敏感数据分类ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分级ID, 目前只支持高、中、低三级
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 }
 
 type DspaDiscoveryDataContent struct {
 	// 规则内容，可以是正则规则，关键词，
 	// 忽略词扥
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleContent *string `json:"RuleContent,omitempty" name:"RuleContent"`
+	RuleContent *string `json:"RuleContent,omitnil" name:"RuleContent"`
 
 	// 是否区分大小写
 	// false: 不区分大小写
 	// true:区分大小写
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsIgnoreCase *bool `json:"IsIgnoreCase,omitempty" name:"IsIgnoreCase"`
+	IsIgnoreCase *bool `json:"IsIgnoreCase,omitnil" name:"IsIgnoreCase"`
 }
 
 type DspaDiscoveryDataRule struct {
@@ -9931,440 +9931,440 @@ type DspaDiscoveryDataRule struct {
 	// keyword 关键字, 
 	// regex 正则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleType *string `json:"RuleType,omitempty" name:"RuleType"`
+	RuleType *string `json:"RuleType,omitnil" name:"RuleType"`
 
 	// 内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleContent *string `json:"RuleContent,omitempty" name:"RuleContent"`
+	RuleContent *string `json:"RuleContent,omitnil" name:"RuleContent"`
 
 	// 该字段是针对规则类型RuleType为keyword类型时的一个扩展属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExtendParameters []*DatagovRuleExtendParameter `json:"ExtendParameters,omitempty" name:"ExtendParameters"`
+	ExtendParameters []*DatagovRuleExtendParameter `json:"ExtendParameters,omitnil" name:"ExtendParameters"`
 }
 
 type DspaDiscoveryDataRules struct {
 	// 操作符；只能取and, or的其中一种
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Contents []*DspaDiscoveryDataRule `json:"Contents,omitempty" name:"Contents"`
+	Contents []*DspaDiscoveryDataRule `json:"Contents,omitnil" name:"Contents"`
 }
 
 type DspaDiscoveryLevelDetail struct {
 	// 分级组名称，唯一性约束，最多60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelGroupName *string `json:"LevelGroupName,omitempty" name:"LevelGroupName"`
+	LevelGroupName *string `json:"LevelGroupName,omitnil" name:"LevelGroupName"`
 
 	// 分级组来源，0为内置，1为自定义
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Source *int64 `json:"Source,omitempty" name:"Source"`
+	Source *int64 `json:"Source,omitnil" name:"Source"`
 
 	// 分级组描述，最多1024字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelGroupDesc *string `json:"LevelGroupDesc,omitempty" name:"LevelGroupDesc"`
+	LevelGroupDesc *string `json:"LevelGroupDesc,omitnil" name:"LevelGroupDesc"`
 
 	// 具体分级标识详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelDetail []*LevelItem `json:"LevelDetail,omitempty" name:"LevelDetail"`
+	LevelDetail []*LevelItem `json:"LevelDetail,omitnil" name:"LevelDetail"`
 
 	// 引用合规组次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RefComplianceCnt *uint64 `json:"RefComplianceCnt,omitempty" name:"RefComplianceCnt"`
+	RefComplianceCnt *uint64 `json:"RefComplianceCnt,omitnil" name:"RefComplianceCnt"`
 
 	// 引用合规组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RefCompliance []*DspaDiscoveryComplianceGroup `json:"RefCompliance,omitempty" name:"RefCompliance"`
+	RefCompliance []*DspaDiscoveryComplianceGroup `json:"RefCompliance,omitnil" name:"RefCompliance"`
 
 	// 分级组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelGroupId *uint64 `json:"LevelGroupId,omitempty" name:"LevelGroupId"`
+	LevelGroupId *uint64 `json:"LevelGroupId,omitnil" name:"LevelGroupId"`
 }
 
 type DspaDiscoveryRDBRules struct {
 	// 规则状态；0 不启用, 1 启用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MatchOperator *string `json:"MatchOperator,omitempty" name:"MatchOperator"`
+	MatchOperator *string `json:"MatchOperator,omitnil" name:"MatchOperator"`
 
 	// 字段名包含规则，最大支持选择9项
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MetaRule *DspaDiscoveryDataRules `json:"MetaRule,omitempty" name:"MetaRule"`
+	MetaRule *DspaDiscoveryDataRules `json:"MetaRule,omitnil" name:"MetaRule"`
 
 	// 内容包含规则，最大支持选择9项
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContentRule *DspaDiscoveryDataRules `json:"ContentRule,omitempty" name:"ContentRule"`
+	ContentRule *DspaDiscoveryDataRules `json:"ContentRule,omitnil" name:"ContentRule"`
 }
 
 type DspaDiscoveryRuleDetail struct {
 	// 规则ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 规则描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 规则来源，取值：0 内置, 1 自定义
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Source *int64 `json:"Source,omitempty" name:"Source"`
+	Source *int64 `json:"Source,omitnil" name:"Source"`
 
 	// RDB规则详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RDBRules *DspaDiscoveryRDBRules `json:"RDBRules,omitempty" name:"RDBRules"`
+	RDBRules *DspaDiscoveryRDBRules `json:"RDBRules,omitnil" name:"RDBRules"`
 
 	// COS规则详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	COSRules *DspaDiscoveryCOSRules `json:"COSRules,omitempty" name:"COSRules"`
+	COSRules *DspaDiscoveryCOSRules `json:"COSRules,omitnil" name:"COSRules"`
 }
 
 type DspaDiscoveryTaskCOSCondition struct {
 	// 数据桶名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
 
 	// 文件类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileTypes []*string `json:"FileTypes,omitempty" name:"FileTypes"`
+	FileTypes []*string `json:"FileTypes,omitnil" name:"FileTypes"`
 
 	// 文件大小上限，单位为KB，如1000, 目前单个文件最大只支持1GB（1048576KB）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileSizeLimit *int64 `json:"FileSizeLimit,omitempty" name:"FileSizeLimit"`
+	FileSizeLimit *int64 `json:"FileSizeLimit,omitnil" name:"FileSizeLimit"`
 }
 
 type DspaDiscoveryTaskDataSource struct {
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 用于传入的数据源的条件，可以选择多个数据库，数据库之间通过逗号分隔，如果为空，默认是全部数据库
-	Condition *string `json:"Condition,omitempty" name:"Condition"`
+	Condition *string `json:"Condition,omitnil" name:"Condition"`
 
 	// 代理地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProxyAddress []*string `json:"ProxyAddress,omitempty" name:"ProxyAddress"`
+	ProxyAddress []*string `json:"ProxyAddress,omitnil" name:"ProxyAddress"`
 
 	// 数据源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceName *string `json:"DataSourceName,omitempty" name:"DataSourceName"`
+	DataSourceName *string `json:"DataSourceName,omitnil" name:"DataSourceName"`
 
 	// 资源所在地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 }
 
 type DspaDiscoveryTaskDbResult struct {
 	// 扫描数据库结果ID
-	DbResultId *int64 `json:"DbResultId,omitempty" name:"DbResultId"`
+	DbResultId *int64 `json:"DbResultId,omitnil" name:"DbResultId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
 
 	// 扫描任务最新一次扫描结果ID
-	ResultId *int64 `json:"ResultId,omitempty" name:"ResultId"`
+	ResultId *int64 `json:"ResultId,omitnil" name:"ResultId"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 数据库名称
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 
 	// 总表数
-	TotalTables *int64 `json:"TotalTables,omitempty" name:"TotalTables"`
+	TotalTables *int64 `json:"TotalTables,omitnil" name:"TotalTables"`
 
 	// 敏感表数
-	SensitiveTables *int64 `json:"SensitiveTables,omitempty" name:"SensitiveTables"`
+	SensitiveTables *int64 `json:"SensitiveTables,omitnil" name:"SensitiveTables"`
 
 	// DB扫描的结束时间，格式如：2006-01-02 15:04:05
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 数据源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceName *string `json:"DataSourceName,omitempty" name:"DataSourceName"`
+	DataSourceName *string `json:"DataSourceName,omitnil" name:"DataSourceName"`
 
 	// DB扫描状态，0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// DB扫描结果错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorInfo *string `json:"ErrorInfo,omitempty" name:"ErrorInfo"`
+	ErrorInfo *string `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
 
 	// 资源所在地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 敏感字段数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveField *int64 `json:"SensitiveField,omitempty" name:"SensitiveField"`
+	SensitiveField *int64 `json:"SensitiveField,omitnil" name:"SensitiveField"`
 
 	// 总的字段数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalField *int64 `json:"TotalField,omitempty" name:"TotalField"`
+	TotalField *int64 `json:"TotalField,omitnil" name:"TotalField"`
 }
 
 type DspaDiscoveryTaskDetail struct {
 	// 任务名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 任务描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 执行周期，0单次 1每天 2每周 3每月
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 执行计划，0立即 1定时
-	Plan *int64 `json:"Plan,omitempty" name:"Plan"`
+	Plan *int64 `json:"Plan,omitnil" name:"Plan"`
 
 	// 任务开关；1 打开，0 关闭
-	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 元数据对象信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceInfo *DspaDiscoveryTaskDataSource `json:"DataSourceInfo,omitempty" name:"DataSourceInfo"`
+	DataSourceInfo *DspaDiscoveryTaskDataSource `json:"DataSourceInfo,omitnil" name:"DataSourceInfo"`
 
 	// 通用规则集开关，0 关闭，1 启用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitempty" name:"GeneralRuleSetEnable"`
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil" name:"GeneralRuleSetEnable"`
 
 	// 当创建任务时，用户打开了通用规则集开关，则该字段就会保存默认合规组信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DefaultComplianceInfo []*ScanTaskComplianceInfo `json:"DefaultComplianceInfo,omitempty" name:"DefaultComplianceInfo"`
+	DefaultComplianceInfo []*ScanTaskComplianceInfo `json:"DefaultComplianceInfo,omitnil" name:"DefaultComplianceInfo"`
 
 	// 该任务中用户选择的合规组信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CustomComplianceInfo []*ScanTaskComplianceInfo `json:"CustomComplianceInfo,omitempty" name:"CustomComplianceInfo"`
+	CustomComplianceInfo []*ScanTaskComplianceInfo `json:"CustomComplianceInfo,omitnil" name:"CustomComplianceInfo"`
 
 	// 定时开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimingStartTime *string `json:"TimingStartTime,omitempty" name:"TimingStartTime"`
+	TimingStartTime *string `json:"TimingStartTime,omitnil" name:"TimingStartTime"`
 }
 
 type DspaDiscoveryTaskResultDetail struct {
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 扫描结果详情ID
-	FieldResultId *int64 `json:"FieldResultId,omitempty" name:"FieldResultId"`
+	FieldResultId *int64 `json:"FieldResultId,omitnil" name:"FieldResultId"`
 
 	// 所属数据表名
-	TableName *string `json:"TableName,omitempty" name:"TableName"`
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
 
 	// 字段名
-	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
+	FieldName *string `json:"FieldName,omitnil" name:"FieldName"`
 
 	// 敏感数据分类ID
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分类名称
-	CategoryName *string `json:"CategoryName,omitempty" name:"CategoryName"`
+	CategoryName *string `json:"CategoryName,omitnil" name:"CategoryName"`
 
 	// 敏感数据分级ID
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 敏感数据分级名称
-	LevelName *string `json:"LevelName,omitempty" name:"LevelName"`
+	LevelName *string `json:"LevelName,omitnil" name:"LevelName"`
 
 	// 规则名称
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 规则ID
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 敏感数据分级分数
-	LevelRiskScore *int64 `json:"LevelRiskScore,omitempty" name:"LevelRiskScore"`
+	LevelRiskScore *int64 `json:"LevelRiskScore,omitnil" name:"LevelRiskScore"`
 
 	// 保护措施
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SafeGuard *DspaSafeGuard `json:"SafeGuard,omitempty" name:"SafeGuard"`
+	SafeGuard *DspaSafeGuard `json:"SafeGuard,omitnil" name:"SafeGuard"`
 
 	// 分类路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryFullPath *string `json:"CategoryFullPath,omitempty" name:"CategoryFullPath"`
+	CategoryFullPath *string `json:"CategoryFullPath,omitnil" name:"CategoryFullPath"`
 }
 
 type DspaFieldResultDataSample struct {
 	// 数据样本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSample *string `json:"DataSample,omitempty" name:"DataSample"`
+	DataSample *string `json:"DataSample,omitnil" name:"DataSample"`
 }
 
 type DspaInstance struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// DSPA实例名称。
-	DspaName *string `json:"DspaName,omitempty" name:"DspaName"`
+	DspaName *string `json:"DspaName,omitnil" name:"DspaName"`
 
 	// DSPA实例描述信息。
-	DspaDescription *string `json:"DspaDescription,omitempty" name:"DspaDescription"`
+	DspaDescription *string `json:"DspaDescription,omitnil" name:"DspaDescription"`
 
 	// DSPA实例已授权的数据库实例数量。
-	DBAuthCount *uint64 `json:"DBAuthCount,omitempty" name:"DBAuthCount"`
+	DBAuthCount *uint64 `json:"DBAuthCount,omitnil" name:"DBAuthCount"`
 
 	// DSPA实例已绑定的cos桶数量。
-	CosBindCount *uint64 `json:"CosBindCount,omitempty" name:"CosBindCount"`
+	CosBindCount *uint64 `json:"CosBindCount,omitnil" name:"CosBindCount"`
 
 	// DSPA实例版本。
-	InstanceVersion *string `json:"InstanceVersion,omitempty" name:"InstanceVersion"`
+	InstanceVersion *string `json:"InstanceVersion,omitnil" name:"InstanceVersion"`
 
 	// DSPA实例状态。
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 实例过期时间戳。
-	ExpiredAt *uint64 `json:"ExpiredAt,omitempty" name:"ExpiredAt"`
+	ExpiredAt *uint64 `json:"ExpiredAt,omitnil" name:"ExpiredAt"`
 
 	// 账户APPID。
-	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+	AppId *uint64 `json:"AppId,omitnil" name:"AppId"`
 
 	// 体验版本信息。
-	TrialVersion *string `json:"TrialVersion,omitempty" name:"TrialVersion"`
+	TrialVersion *string `json:"TrialVersion,omitnil" name:"TrialVersion"`
 
 	// 体验版本过期时间戳。
-	TrialEndAt *uint64 `json:"TrialEndAt,omitempty" name:"TrialEndAt"`
+	TrialEndAt *uint64 `json:"TrialEndAt,omitnil" name:"TrialEndAt"`
 
 	// DB已购配额。
-	DbTotalQuota *int64 `json:"DbTotalQuota,omitempty" name:"DbTotalQuota"`
+	DbTotalQuota *int64 `json:"DbTotalQuota,omitnil" name:"DbTotalQuota"`
 
 	// COS已购配额。
-	CosTotalQuota *int64 `json:"CosTotalQuota,omitempty" name:"CosTotalQuota"`
+	CosTotalQuota *int64 `json:"CosTotalQuota,omitnil" name:"CosTotalQuota"`
 
 	// COS配额单位，比如TB。
-	CosQuotaUnit *string `json:"CosQuotaUnit,omitempty" name:"CosQuotaUnit"`
+	CosQuotaUnit *string `json:"CosQuotaUnit,omitnil" name:"CosQuotaUnit"`
 
 	// 0: 默认状态(用户未设置)
 	// 1: 开启自动续费
 	// 2: 明确不自动续费
-	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+	RenewFlag *uint64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
 }
 
 type DspaRDBDataAssetCount struct {
 	// 数组资产类型，0代表关系型数据库资产，1代表对象存储COS资产
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataAssetType *int64 `json:"DataAssetType,omitempty" name:"DataAssetType"`
+	DataAssetType *int64 `json:"DataAssetType,omitnil" name:"DataAssetType"`
 
 	// 已扫描的数据库的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalDbCnt *int64 `json:"TotalDbCnt,omitempty" name:"TotalDbCnt"`
+	TotalDbCnt *int64 `json:"TotalDbCnt,omitnil" name:"TotalDbCnt"`
 
 	// 数据库表的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalTableCnt *int64 `json:"TotalTableCnt,omitempty" name:"TotalTableCnt"`
+	TotalTableCnt *int64 `json:"TotalTableCnt,omitnil" name:"TotalTableCnt"`
 
 	// 敏感数据类型个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveCategoryCnt *int64 `json:"SensitiveCategoryCnt,omitempty" name:"SensitiveCategoryCnt"`
+	SensitiveCategoryCnt *int64 `json:"SensitiveCategoryCnt,omitnil" name:"SensitiveCategoryCnt"`
 
 	// 敏感字段的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveFieldCnt *int64 `json:"SensitiveFieldCnt,omitempty" name:"SensitiveFieldCnt"`
+	SensitiveFieldCnt *int64 `json:"SensitiveFieldCnt,omitnil" name:"SensitiveFieldCnt"`
 
 	// 敏感等级分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveLevel []*SensitiveLevel `json:"SensitiveLevel,omitempty" name:"SensitiveLevel"`
+	SensitiveLevel []*SensitiveLevel `json:"SensitiveLevel,omitnil" name:"SensitiveLevel"`
 
 	// 敏感数据库的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveDbCnt *int64 `json:"SensitiveDbCnt,omitempty" name:"SensitiveDbCnt"`
+	SensitiveDbCnt *int64 `json:"SensitiveDbCnt,omitnil" name:"SensitiveDbCnt"`
 
 	// 敏感数据库表的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveTableCnt *int64 `json:"SensitiveTableCnt,omitempty" name:"SensitiveTableCnt"`
+	SensitiveTableCnt *int64 `json:"SensitiveTableCnt,omitnil" name:"SensitiveTableCnt"`
 
 	// 扫描字段的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalFieldCnt *int64 `json:"TotalFieldCnt,omitempty" name:"TotalFieldCnt"`
+	TotalFieldCnt *int64 `json:"TotalFieldCnt,omitnil" name:"TotalFieldCnt"`
 
 	// 数据分类分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryDistributed []*DspaDataCategoryDistributed `json:"CategoryDistributed,omitempty" name:"CategoryDistributed"`
+	CategoryDistributed []*DspaDataCategoryDistributed `json:"CategoryDistributed,omitnil" name:"CategoryDistributed"`
 }
 
 type DspaRDBDataAssetDetail struct {
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 数据库类型
-	DbType *string `json:"DbType,omitempty" name:"DbType"`
+	DbType *string `json:"DbType,omitnil" name:"DbType"`
 
 	// 数据库名称
-	DbName *string `json:"DbName,omitempty" name:"DbName"`
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
 
 	// 数据库表名称
-	TableName *string `json:"TableName,omitempty" name:"TableName"`
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
 
 	// 数据库表字段名称
-	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
+	FieldName *string `json:"FieldName,omitnil" name:"FieldName"`
 
 	// 规则名称
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 数据分类
-	CategoryName *string `json:"CategoryName,omitempty" name:"CategoryName"`
+	CategoryName *string `json:"CategoryName,omitnil" name:"CategoryName"`
 
 	// 敏感等级
-	LevelRiskName *string `json:"LevelRiskName,omitempty" name:"LevelRiskName"`
+	LevelRiskName *string `json:"LevelRiskName,omitnil" name:"LevelRiskName"`
 
 	// 分级风险分数，1-10，最小值为1，最大值为10
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelRiskScore *int64 `json:"LevelRiskScore,omitempty" name:"LevelRiskScore"`
+	LevelRiskScore *int64 `json:"LevelRiskScore,omitnil" name:"LevelRiskScore"`
 
 	// 可信分
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TrustedScore *string `json:"TrustedScore,omitempty" name:"TrustedScore"`
+	TrustedScore *string `json:"TrustedScore,omitnil" name:"TrustedScore"`
 
 	// 资源所在地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 字段扫描结果ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FieldResultId *string `json:"FieldResultId,omitempty" name:"FieldResultId"`
+	FieldResultId *string `json:"FieldResultId,omitnil" name:"FieldResultId"`
 
 	// 规则ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 分级ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 分类ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 数据源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceName *string `json:"DataSourceName,omitempty" name:"DataSourceName"`
+	DataSourceName *string `json:"DataSourceName,omitnil" name:"DataSourceName"`
 
 	// 保护措施
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SafeGuard *DspaSafeGuard `json:"SafeGuard,omitempty" name:"SafeGuard"`
+	SafeGuard *DspaSafeGuard `json:"SafeGuard,omitnil" name:"SafeGuard"`
 
 	// 分类路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryFullPath *string `json:"CategoryFullPath,omitempty" name:"CategoryFullPath"`
+	CategoryFullPath *string `json:"CategoryFullPath,omitnil" name:"CategoryFullPath"`
 }
 
 type DspaResourceAccount struct {
 	// 资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 用户名。
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
 	// 密码。
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 }
 
 type DspaSafeGuard struct {
@@ -10373,319 +10373,319 @@ type DspaSafeGuard struct {
 	// DISABLE 规则设置未启用
 	// ENABLE 规则设置并启用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Encrypt *string `json:"Encrypt,omitempty" name:"Encrypt"`
+	Encrypt *string `json:"Encrypt,omitnil" name:"Encrypt"`
 
 	// 脱敏状态，可取值如下：
 	// UNSET 未设置
 	// DISABLE 规则设置未启用
 	// ENABLE 规则设置并启用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Desensitization *string `json:"Desensitization,omitempty" name:"Desensitization"`
+	Desensitization *string `json:"Desensitization,omitnil" name:"Desensitization"`
 }
 
 type DspaTaskResult struct {
 	// 任务结果。
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 结果描述。
-	ResultDescription *string `json:"ResultDescription,omitempty" name:"ResultDescription"`
+	ResultDescription *string `json:"ResultDescription,omitnil" name:"ResultDescription"`
 
 	// 资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 资源类型。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 }
 
 type DspaUserResourceMeta struct {
 	// 用户资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 资源名称。
-	ResourceName *string `json:"ResourceName,omitempty" name:"ResourceName"`
+	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
 
 	// 资源VIP。
-	ResourceVip *string `json:"ResourceVip,omitempty" name:"ResourceVip"`
+	ResourceVip *string `json:"ResourceVip,omitnil" name:"ResourceVip"`
 
 	// 资源端口。
-	ResourceVPort *uint64 `json:"ResourceVPort,omitempty" name:"ResourceVPort"`
+	ResourceVPort *uint64 `json:"ResourceVPort,omitnil" name:"ResourceVPort"`
 
 	// 资源被创建时间。
-	ResourceCreateTime *string `json:"ResourceCreateTime,omitempty" name:"ResourceCreateTime"`
+	ResourceCreateTime *string `json:"ResourceCreateTime,omitnil" name:"ResourceCreateTime"`
 
 	// 用户资源VPC ID 字符串。
-	ResourceUniqueVpcId *string `json:"ResourceUniqueVpcId,omitempty" name:"ResourceUniqueVpcId"`
+	ResourceUniqueVpcId *string `json:"ResourceUniqueVpcId,omitnil" name:"ResourceUniqueVpcId"`
 
 	// 用户资源Subnet ID 字符串。
-	ResourceUniqueSubnetId *string `json:"ResourceUniqueSubnetId,omitempty" name:"ResourceUniqueSubnetId"`
+	ResourceUniqueSubnetId *string `json:"ResourceUniqueSubnetId,omitnil" name:"ResourceUniqueSubnetId"`
 
 	// 用户资源类型信息。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 资源被同步时间。
-	ResourceSyncTime *string `json:"ResourceSyncTime,omitempty" name:"ResourceSyncTime"`
+	ResourceSyncTime *string `json:"ResourceSyncTime,omitnil" name:"ResourceSyncTime"`
 
 	// 资源被授权状态。
-	AuthStatus *string `json:"AuthStatus,omitempty" name:"AuthStatus"`
+	AuthStatus *string `json:"AuthStatus,omitnil" name:"AuthStatus"`
 
 	// 资源创建类型，cloud-云原生资源，build-用户自建资源。
-	BuildType *string `json:"BuildType,omitempty" name:"BuildType"`
+	BuildType *string `json:"BuildType,omitnil" name:"BuildType"`
 
 	// 主实例ID。
-	MasterInsId *string `json:"MasterInsId,omitempty" name:"MasterInsId"`
+	MasterInsId *string `json:"MasterInsId,omitnil" name:"MasterInsId"`
 
 	// 用户资源VPC ID 整数。
-	ResourceVpcId *uint64 `json:"ResourceVpcId,omitempty" name:"ResourceVpcId"`
+	ResourceVpcId *uint64 `json:"ResourceVpcId,omitnil" name:"ResourceVpcId"`
 
 	// 用户资源Subnet ID 整数。
-	ResourceSubnetId *uint64 `json:"ResourceSubnetId,omitempty" name:"ResourceSubnetId"`
+	ResourceSubnetId *uint64 `json:"ResourceSubnetId,omitnil" name:"ResourceSubnetId"`
 
 	// 协议类型。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 资源版本号。
-	ResourceVersion *string `json:"ResourceVersion,omitempty" name:"ResourceVersion"`
+	ResourceVersion *string `json:"ResourceVersion,omitnil" name:"ResourceVersion"`
 
 	// 授权方式
-	ResourceAuthType *string `json:"ResourceAuthType,omitempty" name:"ResourceAuthType"`
+	ResourceAuthType *string `json:"ResourceAuthType,omitnil" name:"ResourceAuthType"`
 
 	// 授权账号名
-	ResourceAuthAccount *string `json:"ResourceAuthAccount,omitempty" name:"ResourceAuthAccount"`
+	ResourceAuthAccount *string `json:"ResourceAuthAccount,omitnil" name:"ResourceAuthAccount"`
 }
 
 type ESAsset struct {
 	// 索引总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IndexNums *int64 `json:"IndexNums,omitempty" name:"IndexNums"`
+	IndexNums *int64 `json:"IndexNums,omitnil" name:"IndexNums"`
 
 	// 敏感索引的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveIndexNums *int64 `json:"SensitiveIndexNums,omitempty" name:"SensitiveIndexNums"`
+	SensitiveIndexNums *int64 `json:"SensitiveIndexNums,omitnil" name:"SensitiveIndexNums"`
 
 	// 字段数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FieldNums *int64 `json:"FieldNums,omitempty" name:"FieldNums"`
+	FieldNums *int64 `json:"FieldNums,omitnil" name:"FieldNums"`
 
 	// 敏感的字段数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitempty" name:"SensitiveFieldNums"`
+	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitnil" name:"SensitiveFieldNums"`
 }
 
 type ESAssetDBDetail struct {
 	// 数据源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 索引名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IndexName *string `json:"IndexName,omitempty" name:"IndexName"`
+	IndexName *string `json:"IndexName,omitnil" name:"IndexName"`
 
 	// 数据库类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataType *string `json:"DataType,omitempty" name:"DataType"`
+	DataType *string `json:"DataType,omitnil" name:"DataType"`
 
 	// 字段的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FieldNums *int64 `json:"FieldNums,omitempty" name:"FieldNums"`
+	FieldNums *int64 `json:"FieldNums,omitnil" name:"FieldNums"`
 
 	// 敏感字段的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitempty" name:"SensitiveFieldNums"`
+	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitnil" name:"SensitiveFieldNums"`
 
 	// 敏感数据分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DistributionData []*Note `json:"DistributionData,omitempty" name:"DistributionData"`
+	DistributionData []*Note `json:"DistributionData,omitnil" name:"DistributionData"`
 }
 
 type ESDataAssetCountDto struct {
 	// es
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataAssetType *int64 `json:"DataAssetType,omitempty" name:"DataAssetType"`
+	DataAssetType *int64 `json:"DataAssetType,omitnil" name:"DataAssetType"`
 
 	// 敏感索引个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveIndexCnt *int64 `json:"SensitiveIndexCnt,omitempty" name:"SensitiveIndexCnt"`
+	SensitiveIndexCnt *int64 `json:"SensitiveIndexCnt,omitnil" name:"SensitiveIndexCnt"`
 
 	// 总的索引个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalIndexCnt *int64 `json:"TotalIndexCnt,omitempty" name:"TotalIndexCnt"`
+	TotalIndexCnt *int64 `json:"TotalIndexCnt,omitnil" name:"TotalIndexCnt"`
 
 	// 敏感字段个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveFieldCnt *int64 `json:"SensitiveFieldCnt,omitempty" name:"SensitiveFieldCnt"`
+	SensitiveFieldCnt *int64 `json:"SensitiveFieldCnt,omitnil" name:"SensitiveFieldCnt"`
 
 	// 总的字段个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalFieldCnt *int64 `json:"TotalFieldCnt,omitempty" name:"TotalFieldCnt"`
+	TotalFieldCnt *int64 `json:"TotalFieldCnt,omitnil" name:"TotalFieldCnt"`
 
 	// 敏感分类的个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveCategoryCnt *int64 `json:"SensitiveCategoryCnt,omitempty" name:"SensitiveCategoryCnt"`
+	SensitiveCategoryCnt *int64 `json:"SensitiveCategoryCnt,omitnil" name:"SensitiveCategoryCnt"`
 
 	// 敏感分级的分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveLevel []*SensitiveLevel `json:"SensitiveLevel,omitempty" name:"SensitiveLevel"`
+	SensitiveLevel []*SensitiveLevel `json:"SensitiveLevel,omitnil" name:"SensitiveLevel"`
 
 	// 敏感分类的分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryDistributed []*DspaDataCategoryDistributed `json:"CategoryDistributed,omitempty" name:"CategoryDistributed"`
+	CategoryDistributed []*DspaDataCategoryDistributed `json:"CategoryDistributed,omitnil" name:"CategoryDistributed"`
 }
 
 type ESDataAssetDetail struct {
 	// id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FieldResultId *int64 `json:"FieldResultId,omitempty" name:"FieldResultId"`
+	FieldResultId *int64 `json:"FieldResultId,omitnil" name:"FieldResultId"`
 
 	// 数据源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 数据源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceName *string `json:"DataSourceName,omitempty" name:"DataSourceName"`
+	DataSourceName *string `json:"DataSourceName,omitnil" name:"DataSourceName"`
 
 	// 类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
 	// 地域信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 索引名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IndexName *string `json:"IndexName,omitempty" name:"IndexName"`
+	IndexName *string `json:"IndexName,omitnil" name:"IndexName"`
 
 	// 字段名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
+	FieldName *string `json:"FieldName,omitnil" name:"FieldName"`
 
 	// 分类id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 分类名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryName *string `json:"CategoryName,omitempty" name:"CategoryName"`
+	CategoryName *string `json:"CategoryName,omitnil" name:"CategoryName"`
 
 	// 分类路径数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryArr []*string `json:"CategoryArr,omitempty" name:"CategoryArr"`
+	CategoryArr []*string `json:"CategoryArr,omitnil" name:"CategoryArr"`
 
 	// 等级id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 分级名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelRiskName *string `json:"LevelRiskName,omitempty" name:"LevelRiskName"`
+	LevelRiskName *string `json:"LevelRiskName,omitnil" name:"LevelRiskName"`
 
 	// 分级分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelRiskScore *int64 `json:"LevelRiskScore,omitempty" name:"LevelRiskScore"`
+	LevelRiskScore *int64 `json:"LevelRiskScore,omitnil" name:"LevelRiskScore"`
 
 	// 可信分
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TrustedScore *float64 `json:"TrustedScore,omitempty" name:"TrustedScore"`
+	TrustedScore *float64 `json:"TrustedScore,omitnil" name:"TrustedScore"`
 
 	// 规则id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 }
 
 type ESInstance struct {
 	// 数据源id
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 数据源类型
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
 	// 地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 扫描任务ID
-	DiscoveryTaskId *int64 `json:"DiscoveryTaskId,omitempty" name:"DiscoveryTaskId"`
+	DiscoveryTaskId *int64 `json:"DiscoveryTaskId,omitnil" name:"DiscoveryTaskId"`
 
 	// 扫描任务实例ID
-	DiscoveryTaskInstanceID *int64 `json:"DiscoveryTaskInstanceID,omitempty" name:"DiscoveryTaskInstanceID"`
+	DiscoveryTaskInstanceID *int64 `json:"DiscoveryTaskInstanceID,omitnil" name:"DiscoveryTaskInstanceID"`
 }
 
 type ESTaskResultDetail struct {
 	// id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 任务id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 字段名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
+	FieldName *string `json:"FieldName,omitnil" name:"FieldName"`
 
 	// 规则id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 分类id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 分类名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryName *string `json:"CategoryName,omitempty" name:"CategoryName"`
+	CategoryName *string `json:"CategoryName,omitnil" name:"CategoryName"`
 
 	// 多级分类的路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CategoryArr []*string `json:"CategoryArr,omitempty" name:"CategoryArr"`
+	CategoryArr []*string `json:"CategoryArr,omitnil" name:"CategoryArr"`
 
 	// 分级id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 分级名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelName *string `json:"LevelName,omitempty" name:"LevelName"`
+	LevelName *string `json:"LevelName,omitnil" name:"LevelName"`
 
 	// 分级分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelRiskScore *int64 `json:"LevelRiskScore,omitempty" name:"LevelRiskScore"`
+	LevelRiskScore *int64 `json:"LevelRiskScore,omitnil" name:"LevelRiskScore"`
 }
 
 // Predefined struct for user
 type EnableDSPADiscoveryRuleRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 规则ID
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 开关ScanRule
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 }
 
 type EnableDSPADiscoveryRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 规则ID
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 开关ScanRule
-	Enable *bool `json:"Enable,omitempty" name:"Enable"`
+	Enable *bool `json:"Enable,omitnil" name:"Enable"`
 }
 
 func (r *EnableDSPADiscoveryRuleRequest) ToJsonString() string {
@@ -10712,7 +10712,7 @@ func (r *EnableDSPADiscoveryRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableDSPADiscoveryRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type EnableDSPADiscoveryRuleResponse struct {
@@ -10734,20 +10734,20 @@ func (r *EnableDSPADiscoveryRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableTrialVersionRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 体验版本名称。
-	TrialVersion *string `json:"TrialVersion,omitempty" name:"TrialVersion"`
+	TrialVersion *string `json:"TrialVersion,omitnil" name:"TrialVersion"`
 }
 
 type EnableTrialVersionRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 体验版本名称。
-	TrialVersion *string `json:"TrialVersion,omitempty" name:"TrialVersion"`
+	TrialVersion *string `json:"TrialVersion,omitnil" name:"TrialVersion"`
 }
 
 func (r *EnableTrialVersionRequest) ToJsonString() string {
@@ -10773,7 +10773,7 @@ func (r *EnableTrialVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableTrialVersionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type EnableTrialVersionResponse struct {
@@ -10794,22 +10794,22 @@ func (r *EnableTrialVersionResponse) FromJsonString(s string) error {
 
 type ErrDescription struct {
 	// 错误码。
-	ErrCode *string `json:"ErrCode,omitempty" name:"ErrCode"`
+	ErrCode *string `json:"ErrCode,omitnil" name:"ErrCode"`
 
 	// 具体错误信息。
-	ErrMessage *string `json:"ErrMessage,omitempty" name:"ErrMessage"`
+	ErrMessage *string `json:"ErrMessage,omitnil" name:"ErrMessage"`
 }
 
 // Predefined struct for user
 type ExportAssetDetailDataRequestParams struct {
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 资产类型（rdb,cvm_db,cos）
-	MetaDataType *string `json:"MetaDataType,omitempty" name:"MetaDataType"`
+	MetaDataType *string `json:"MetaDataType,omitnil" name:"MetaDataType"`
 
 	// 过滤数组。支持的Name：
 	// DataSourceID 数据源ID
@@ -10820,20 +10820,20 @@ type ExportAssetDetailDataRequestParams struct {
 	// ResourceRegion 资源所在地域
 	// DataSourceType 数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
 	// 注意：每个name默认支持最多5个values。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type ExportAssetDetailDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 资产类型（rdb,cvm_db,cos）
-	MetaDataType *string `json:"MetaDataType,omitempty" name:"MetaDataType"`
+	MetaDataType *string `json:"MetaDataType,omitnil" name:"MetaDataType"`
 
 	// 过滤数组。支持的Name：
 	// DataSourceID 数据源ID
@@ -10844,7 +10844,7 @@ type ExportAssetDetailDataRequest struct {
 	// ResourceRegion 资源所在地域
 	// DataSourceType 数据源类型，不填默认过滤非自建的所有关系型数据源类型，填selfbuilt-db只过滤自建类型
 	// 注意：每个name默认支持最多5个values。
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *ExportAssetDetailDataRequest) ToJsonString() string {
@@ -10872,10 +10872,10 @@ func (r *ExportAssetDetailDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportAssetDetailDataResponseParams struct {
 	// 导出任务id
-	ExportTaskId *uint64 `json:"ExportTaskId,omitempty" name:"ExportTaskId"`
+	ExportTaskId *uint64 `json:"ExportTaskId,omitnil" name:"ExportTaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ExportAssetDetailDataResponse struct {
@@ -10896,41 +10896,41 @@ func (r *ExportAssetDetailDataResponse) FromJsonString(s string) error {
 
 type Filter struct {
 	// 需要过滤的字段。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 字段的过滤值。
-	Values []*string `json:"Values,omitempty" name:"Values"`
+	Values []*string `json:"Values,omitnil" name:"Values"`
 }
 
 // Predefined struct for user
 type GetResourceConnectionStatusRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 资源类型。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 资源列表中展示的资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 type GetResourceConnectionStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 资源类型。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
 	// 资源所处地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 资源列表中展示的资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 func (r *GetResourceConnectionStatusRequest) ToJsonString() string {
@@ -10958,14 +10958,14 @@ func (r *GetResourceConnectionStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetResourceConnectionStatusResponseParams struct {
 	// 连接状态，success -- 连接成功，failed -- 连接失败
-	ConnectionStatus *string `json:"ConnectionStatus,omitempty" name:"ConnectionStatus"`
+	ConnectionStatus *string `json:"ConnectionStatus,omitnil" name:"ConnectionStatus"`
 
 	// 连接状态的描述信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConnectionDesc *string `json:"ConnectionDesc,omitempty" name:"ConnectionDesc"`
+	ConnectionDesc *string `json:"ConnectionDesc,omitnil" name:"ConnectionDesc"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetResourceConnectionStatusResponse struct {
@@ -10987,14 +10987,14 @@ func (r *GetResourceConnectionStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTrialVersionRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 type GetTrialVersionRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 func (r *GetTrialVersionRequest) ToJsonString() string {
@@ -11019,13 +11019,13 @@ func (r *GetTrialVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTrialVersionResponseParams struct {
 	// 体验版本名称。
-	TrialVersion *string `json:"TrialVersion,omitempty" name:"TrialVersion"`
+	TrialVersion *string `json:"TrialVersion,omitnil" name:"TrialVersion"`
 
 	// 版本体验结束时间戳。
-	TrialEndAt *uint64 `json:"TrialEndAt,omitempty" name:"TrialEndAt"`
+	TrialEndAt *uint64 `json:"TrialEndAt,omitnil" name:"TrialEndAt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetTrialVersionResponse struct {
@@ -11047,14 +11047,14 @@ func (r *GetTrialVersionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetUserQuotaInfoRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 type GetUserQuotaInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 }
 
 func (r *GetUserQuotaInfoRequest) ToJsonString() string {
@@ -11079,25 +11079,25 @@ func (r *GetUserQuotaInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetUserQuotaInfoResponseParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 用户购买的DB配额。
-	DbTotalQuota *int64 `json:"DbTotalQuota,omitempty" name:"DbTotalQuota"`
+	DbTotalQuota *int64 `json:"DbTotalQuota,omitnil" name:"DbTotalQuota"`
 
 	// 用户购买的COS存储量配额。
-	CosTotalQuota *int64 `json:"CosTotalQuota,omitempty" name:"CosTotalQuota"`
+	CosTotalQuota *int64 `json:"CosTotalQuota,omitnil" name:"CosTotalQuota"`
 
 	// 用户可用的DB配额。
-	DbRemainQuota *int64 `json:"DbRemainQuota,omitempty" name:"DbRemainQuota"`
+	DbRemainQuota *int64 `json:"DbRemainQuota,omitnil" name:"DbRemainQuota"`
 
 	// 用户可用的COS存储量配额。
-	CosRemainQuota *float64 `json:"CosRemainQuota,omitempty" name:"CosRemainQuota"`
+	CosRemainQuota *float64 `json:"CosRemainQuota,omitnil" name:"CosRemainQuota"`
 
 	// COS存储量单位，比如TB。
-	CosQuotaUnit *string `json:"CosQuotaUnit,omitempty" name:"CosQuotaUnit"`
+	CosQuotaUnit *string `json:"CosQuotaUnit,omitnil" name:"CosQuotaUnit"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetUserQuotaInfoResponse struct {
@@ -11119,100 +11119,100 @@ func (r *GetUserQuotaInfoResponse) FromJsonString(s string) error {
 type HighRiskAssetsDetail struct {
 	// 实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 数据源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
 	// 数据源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceName *string `json:"DataSourceName,omitempty" name:"DataSourceName"`
+	DataSourceName *string `json:"DataSourceName,omitnil" name:"DataSourceName"`
 
 	// 资产对象名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssetsName *string `json:"AssetsName,omitempty" name:"AssetsName"`
+	AssetsName *string `json:"AssetsName,omitnil" name:"AssetsName"`
 
 	// 高风险个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HighRiskCount *int64 `json:"HighRiskCount,omitempty" name:"HighRiskCount"`
+	HighRiskCount *int64 `json:"HighRiskCount,omitnil" name:"HighRiskCount"`
 
 	// 风险类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskType *string `json:"RiskType,omitempty" name:"RiskType"`
+	RiskType *string `json:"RiskType,omitnil" name:"RiskType"`
 
 	// 总的风险个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalRiskCount *int64 `json:"TotalRiskCount,omitempty" name:"TotalRiskCount"`
+	TotalRiskCount *int64 `json:"TotalRiskCount,omitnil" name:"TotalRiskCount"`
 
 	// 风险面
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskSide *string `json:"RiskSide,omitempty" name:"RiskSide"`
+	RiskSide *string `json:"RiskSide,omitnil" name:"RiskSide"`
 
 	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 }
 
 type ItemLevel struct {
 	// 分级标识名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	LevelRiskName *string `json:"LevelRiskName,omitempty" name:"LevelRiskName"`
+	LevelRiskName *string `json:"LevelRiskName,omitnil" name:"LevelRiskName"`
 
 	// 分级标识对应的风险分数值，1-10，最小为1，最大为10
-	LevelRiskScore *int64 `json:"LevelRiskScore,omitempty" name:"LevelRiskScore"`
+	LevelRiskScore *int64 `json:"LevelRiskScore,omitnil" name:"LevelRiskScore"`
 }
 
 type LevelItem struct {
 	// 分级ID
-	LevelId *uint64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *uint64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 分级组ID
-	LevelGroupId *uint64 `json:"LevelGroupId,omitempty" name:"LevelGroupId"`
+	LevelGroupId *uint64 `json:"LevelGroupId,omitnil" name:"LevelGroupId"`
 
 	// 分级标识名称，支持内置分级，内置分级取值：高，中，低，也可以自定义
-	LevelRiskName *string `json:"LevelRiskName,omitempty" name:"LevelRiskName"`
+	LevelRiskName *string `json:"LevelRiskName,omitnil" name:"LevelRiskName"`
 
 	// 分级风险分数，1-10，最小值为1，最大值为10
-	LevelRiskScore *uint64 `json:"LevelRiskScore,omitempty" name:"LevelRiskScore"`
+	LevelRiskScore *uint64 `json:"LevelRiskScore,omitnil" name:"LevelRiskScore"`
 }
 
 // Predefined struct for user
 type ListDSPAClustersRequestParams struct {
 	// 分页步长，默认为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤项。
 	// 支持的过滤项包括：DspaId、Status、Version、DspaName。
 	// DspaId和DspaName支持模糊搜索。
 	// Status支持的可选值：enabled、disabled。
 	// Version支持的可选值：trial、official。
-	Filters []*DspaDataSourceMngFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaDataSourceMngFilter `json:"Filters,omitnil" name:"Filters"`
 
 	// 展示模式。
-	ListMode *string `json:"ListMode,omitempty" name:"ListMode"`
+	ListMode *string `json:"ListMode,omitnil" name:"ListMode"`
 }
 
 type ListDSPAClustersRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页步长，默认为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 过滤项。
 	// 支持的过滤项包括：DspaId、Status、Version、DspaName。
 	// DspaId和DspaName支持模糊搜索。
 	// Status支持的可选值：enabled、disabled。
 	// Version支持的可选值：trial、official。
-	Filters []*DspaDataSourceMngFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaDataSourceMngFilter `json:"Filters,omitnil" name:"Filters"`
 
 	// 展示模式。
-	ListMode *string `json:"ListMode,omitempty" name:"ListMode"`
+	ListMode *string `json:"ListMode,omitnil" name:"ListMode"`
 }
 
 func (r *ListDSPAClustersRequest) ToJsonString() string {
@@ -11240,16 +11240,16 @@ func (r *ListDSPAClustersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListDSPAClustersResponseParams struct {
 	// 资源总数。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 资源列表。
-	InstanceList []*DspaInstance `json:"InstanceList,omitempty" name:"InstanceList"`
+	InstanceList []*DspaInstance `json:"InstanceList,omitnil" name:"InstanceList"`
 
 	// 是否被拒绝访问所有dspa实例资源。
-	DenyAll *bool `json:"DenyAll,omitempty" name:"DenyAll"`
+	DenyAll *bool `json:"DenyAll,omitnil" name:"DenyAll"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ListDSPAClustersResponse struct {
@@ -11271,7 +11271,7 @@ func (r *ListDSPAClustersResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListDSPACosMetaResourcesRequestParams struct {
 	// 实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 过滤数组。支持的Name：
 	// Bucket - 桶名，支持模糊匹配
@@ -11279,23 +11279,23 @@ type ListDSPACosMetaResourcesRequestParams struct {
 	// ResoureRegion - 资源所处地域，需要填写完整地域名称，不支持模糊匹配。
 	// 
 	// Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
-	Filters []*DspaDataSourceMngFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaDataSourceMngFilter `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 资源绑定状态过滤，默认为全部
-	BindType *string `json:"BindType,omitempty" name:"BindType"`
+	BindType *string `json:"BindType,omitnil" name:"BindType"`
 }
 
 type ListDSPACosMetaResourcesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例Id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 过滤数组。支持的Name：
 	// Bucket - 桶名，支持模糊匹配
@@ -11303,16 +11303,16 @@ type ListDSPACosMetaResourcesRequest struct {
 	// ResoureRegion - 资源所处地域，需要填写完整地域名称，不支持模糊匹配。
 	// 
 	// Valid -- 资源是否有效，"1" 表示有效，"0"表示无效。
-	Filters []*DspaDataSourceMngFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaDataSourceMngFilter `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 资源绑定状态过滤，默认为全部
-	BindType *string `json:"BindType,omitempty" name:"BindType"`
+	BindType *string `json:"BindType,omitnil" name:"BindType"`
 }
 
 func (r *ListDSPACosMetaResourcesRequest) ToJsonString() string {
@@ -11341,18 +11341,18 @@ func (r *ListDSPACosMetaResourcesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListDSPACosMetaResourcesResponseParams struct {
 	// 符合条件的COS元数据数量。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// COS元数据信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*DSPACosMetaDataInfo `json:"Items,omitempty" name:"Items"`
+	Items []*DSPACosMetaDataInfo `json:"Items,omitnil" name:"Items"`
 
 	// DSPA实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ListDSPACosMetaResourcesResponse struct {
@@ -11374,7 +11374,7 @@ func (r *ListDSPACosMetaResourcesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListDSPAMetaResourcesRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 过滤项。
 	// 可过滤值包括：
@@ -11387,23 +11387,23 @@ type ListDSPAMetaResourcesRequestParams struct {
 	// MetaType - cdb（云数据Mysql）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbmysql（TDSQL-C MySQL版）、cos（对象存储）、mysql_like_proto（自建型Mysql协议类关系型数据库）、postgre_like_proto（自建型Postgre协议类关系型数据库）。
 	// 
 	// ResourceId - 资源ID，支持模糊搜索。
-	Filters []*DspaDataSourceMngFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaDataSourceMngFilter `json:"Filters,omitnil" name:"Filters"`
 
 	// 分页步长，默认为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 资源绑定状态过滤，默认为全部
-	BindType *string `json:"BindType,omitempty" name:"BindType"`
+	BindType *string `json:"BindType,omitnil" name:"BindType"`
 }
 
 type ListDSPAMetaResourcesRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 过滤项。
 	// 可过滤值包括：
@@ -11416,16 +11416,16 @@ type ListDSPAMetaResourcesRequest struct {
 	// MetaType - cdb（云数据Mysql）、dcdb（TDSQL MySQL版）、mariadb（云数据库 MariaDB）、postgres（云数据库 PostgreSQL）、cynosdbmysql（TDSQL-C MySQL版）、cos（对象存储）、mysql_like_proto（自建型Mysql协议类关系型数据库）、postgre_like_proto（自建型Postgre协议类关系型数据库）。
 	// 
 	// ResourceId - 资源ID，支持模糊搜索。
-	Filters []*DspaDataSourceMngFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*DspaDataSourceMngFilter `json:"Filters,omitnil" name:"Filters"`
 
 	// 分页步长，默认为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移量，默认为0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 资源绑定状态过滤，默认为全部
-	BindType *string `json:"BindType,omitempty" name:"BindType"`
+	BindType *string `json:"BindType,omitnil" name:"BindType"`
 }
 
 func (r *ListDSPAMetaResourcesRequest) ToJsonString() string {
@@ -11454,16 +11454,16 @@ func (r *ListDSPAMetaResourcesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListDSPAMetaResourcesResponseParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 用户资源列表。
-	Resources []*DspaUserResourceMeta `json:"Resources,omitempty" name:"Resources"`
+	Resources []*DspaUserResourceMeta `json:"Resources,omitnil" name:"Resources"`
 
 	// 资源总量。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ListDSPAMetaResourcesResponse struct {
@@ -11514,7 +11514,7 @@ func (r *ModifyClassificationRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyClassificationRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyClassificationRuleResponse struct {
@@ -11565,7 +11565,7 @@ func (r *ModifyClassificationRuleStateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyClassificationRuleStateResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyClassificationRuleStateResponse struct {
@@ -11587,46 +11587,46 @@ func (r *ModifyClassificationRuleStateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPAAssessmentRiskLatestRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 最新风险项Id
 	//
 	// Deprecated: RiskLatestTableId is deprecated.
-	RiskLatestTableId *uint64 `json:"RiskLatestTableId,omitempty" name:"RiskLatestTableId"`
+	RiskLatestTableId *uint64 `json:"RiskLatestTableId,omitnil" name:"RiskLatestTableId"`
 
 	// 风险状态（waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略）
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 备注
-	Note *string `json:"Note,omitempty" name:"Note"`
+	Note *string `json:"Note,omitnil" name:"Note"`
 
 	// 处置人
-	ProcessPeople *string `json:"ProcessPeople,omitempty" name:"ProcessPeople"`
+	ProcessPeople *string `json:"ProcessPeople,omitnil" name:"ProcessPeople"`
 
 	// 批量处理的列表
-	BathRiskIdList []*int64 `json:"BathRiskIdList,omitempty" name:"BathRiskIdList"`
+	BathRiskIdList []*int64 `json:"BathRiskIdList,omitnil" name:"BathRiskIdList"`
 }
 
 type ModifyDSPAAssessmentRiskLatestRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 最新风险项Id
-	RiskLatestTableId *uint64 `json:"RiskLatestTableId,omitempty" name:"RiskLatestTableId"`
+	RiskLatestTableId *uint64 `json:"RiskLatestTableId,omitnil" name:"RiskLatestTableId"`
 
 	// 风险状态（waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略）
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 备注
-	Note *string `json:"Note,omitempty" name:"Note"`
+	Note *string `json:"Note,omitnil" name:"Note"`
 
 	// 处置人
-	ProcessPeople *string `json:"ProcessPeople,omitempty" name:"ProcessPeople"`
+	ProcessPeople *string `json:"ProcessPeople,omitnil" name:"ProcessPeople"`
 
 	// 批量处理的列表
-	BathRiskIdList []*int64 `json:"BathRiskIdList,omitempty" name:"BathRiskIdList"`
+	BathRiskIdList []*int64 `json:"BathRiskIdList,omitnil" name:"BathRiskIdList"`
 }
 
 func (r *ModifyDSPAAssessmentRiskLatestRequest) ToJsonString() string {
@@ -11656,7 +11656,7 @@ func (r *ModifyDSPAAssessmentRiskLatestRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPAAssessmentRiskLatestResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPAAssessmentRiskLatestResponse struct {
@@ -11678,38 +11678,38 @@ func (r *ModifyDSPAAssessmentRiskLatestResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type ModifyDSPAAssessmentRiskLevelRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 风险等级名称
-	RiskLevelName *string `json:"RiskLevelName,omitempty" name:"RiskLevelName"`
+	RiskLevelName *string `json:"RiskLevelName,omitnil" name:"RiskLevelName"`
 
 	// 风险的描述
-	RiskLevelDescription *string `json:"RiskLevelDescription,omitempty" name:"RiskLevelDescription"`
+	RiskLevelDescription *string `json:"RiskLevelDescription,omitnil" name:"RiskLevelDescription"`
 
 	// 风险id
-	RiskId *int64 `json:"RiskId,omitempty" name:"RiskId"`
+	RiskId *int64 `json:"RiskId,omitnil" name:"RiskId"`
 
 	// 需要修改的风险列表
-	ModifyRiskItem []*RiskLevelMatrix `json:"ModifyRiskItem,omitempty" name:"ModifyRiskItem"`
+	ModifyRiskItem []*RiskLevelMatrix `json:"ModifyRiskItem,omitnil" name:"ModifyRiskItem"`
 }
 
 type ModifyDSPAAssessmentRiskLevelRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 风险等级名称
-	RiskLevelName *string `json:"RiskLevelName,omitempty" name:"RiskLevelName"`
+	RiskLevelName *string `json:"RiskLevelName,omitnil" name:"RiskLevelName"`
 
 	// 风险的描述
-	RiskLevelDescription *string `json:"RiskLevelDescription,omitempty" name:"RiskLevelDescription"`
+	RiskLevelDescription *string `json:"RiskLevelDescription,omitnil" name:"RiskLevelDescription"`
 
 	// 风险id
-	RiskId *int64 `json:"RiskId,omitempty" name:"RiskId"`
+	RiskId *int64 `json:"RiskId,omitnil" name:"RiskId"`
 
 	// 需要修改的风险列表
-	ModifyRiskItem []*RiskLevelMatrix `json:"ModifyRiskItem,omitempty" name:"ModifyRiskItem"`
+	ModifyRiskItem []*RiskLevelMatrix `json:"ModifyRiskItem,omitnil" name:"ModifyRiskItem"`
 }
 
 func (r *ModifyDSPAAssessmentRiskLevelRequest) ToJsonString() string {
@@ -11738,7 +11738,7 @@ func (r *ModifyDSPAAssessmentRiskLevelRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPAAssessmentRiskLevelResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPAAssessmentRiskLevelResponse struct {
@@ -11760,32 +11760,32 @@ func (r *ModifyDSPAAssessmentRiskLevelResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPAAssessmentRiskRequestParams struct {
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估任务Id，格式“task-xxxxxxxx”
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 风险项Id，格式“risk-xxxxxxxx”
-	RiskId *string `json:"RiskId,omitempty" name:"RiskId"`
+	RiskId *string `json:"RiskId,omitnil" name:"RiskId"`
 
 	// 风险项状态。（waiting:待处理，processing:处理中，finished:已处理）
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 }
 
 type ModifyDSPAAssessmentRiskRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估任务Id，格式“task-xxxxxxxx”
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 风险项Id，格式“risk-xxxxxxxx”
-	RiskId *string `json:"RiskId,omitempty" name:"RiskId"`
+	RiskId *string `json:"RiskId,omitnil" name:"RiskId"`
 
 	// 风险项状态。（waiting:待处理，processing:处理中，finished:已处理）
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *ModifyDSPAAssessmentRiskRequest) ToJsonString() string {
@@ -11813,7 +11813,7 @@ func (r *ModifyDSPAAssessmentRiskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPAAssessmentRiskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPAAssessmentRiskResponse struct {
@@ -11835,44 +11835,44 @@ func (r *ModifyDSPAAssessmentRiskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPAAssessmentRiskTemplateRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 模版名称
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 模版的描述
-	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+	TemplateDescription *string `json:"TemplateDescription,omitnil" name:"TemplateDescription"`
 
 	// 模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 修改的风险等级id
-	RiskLevelId *int64 `json:"RiskLevelId,omitempty" name:"RiskLevelId"`
+	RiskLevelId *int64 `json:"RiskLevelId,omitnil" name:"RiskLevelId"`
 
 	// 脆弱项列表
-	RiskIdList []*int64 `json:"RiskIdList,omitempty" name:"RiskIdList"`
+	RiskIdList []*int64 `json:"RiskIdList,omitnil" name:"RiskIdList"`
 }
 
 type ModifyDSPAAssessmentRiskTemplateRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 模版名称
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 模版的描述
-	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+	TemplateDescription *string `json:"TemplateDescription,omitnil" name:"TemplateDescription"`
 
 	// 模版id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 修改的风险等级id
-	RiskLevelId *int64 `json:"RiskLevelId,omitempty" name:"RiskLevelId"`
+	RiskLevelId *int64 `json:"RiskLevelId,omitnil" name:"RiskLevelId"`
 
 	// 脆弱项列表
-	RiskIdList []*int64 `json:"RiskIdList,omitempty" name:"RiskIdList"`
+	RiskIdList []*int64 `json:"RiskIdList,omitnil" name:"RiskIdList"`
 }
 
 func (r *ModifyDSPAAssessmentRiskTemplateRequest) ToJsonString() string {
@@ -11902,7 +11902,7 @@ func (r *ModifyDSPAAssessmentRiskTemplateRequest) FromJsonString(s string) error
 // Predefined struct for user
 type ModifyDSPAAssessmentRiskTemplateResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPAAssessmentRiskTemplateResponse struct {
@@ -11924,88 +11924,88 @@ func (r *ModifyDSPAAssessmentRiskTemplateResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type ModifyDSPACOSDiscoveryTaskRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 任务描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 任务开关，0 关闭，1 启用
-	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 通用规则集开关；0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitempty" name:"GeneralRuleSetEnable"`
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil" name:"GeneralRuleSetEnable"`
 
 	// 合规组ID列表，最多支持添加5个
-	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitempty" name:"ComplianceGroupIds"`
+	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitnil" name:"ComplianceGroupIds"`
 
 	// 执行计划； 0立即 1定时，选择“立即”时，扫描周期只能选择单次
-	Plan *int64 `json:"Plan,omitempty" name:"Plan"`
+	Plan *int64 `json:"Plan,omitnil" name:"Plan"`
 
 	// 扫描周期；0单次 1每天 2每周 3每月
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 任务定时启动时间，格式：2006-01-02 15:04:05
 	// 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
-	TimingStartTime *string `json:"TimingStartTime,omitempty" name:"TimingStartTime"`
+	TimingStartTime *string `json:"TimingStartTime,omitnil" name:"TimingStartTime"`
 
 	// 待扫描文件类型，用逗号隔开，格式如：[".txt", ".csv", ".log", ".xml",".html", ".json"]。
-	FileTypes []*string `json:"FileTypes,omitempty" name:"FileTypes"`
+	FileTypes []*string `json:"FileTypes,omitnil" name:"FileTypes"`
 
 	// 文件大小上限，单位为KB，如1000, 目前单个文件最大只支持100MB（102400KB）
-	FileSizeLimit *int64 `json:"FileSizeLimit,omitempty" name:"FileSizeLimit"`
+	FileSizeLimit *int64 `json:"FileSizeLimit,omitnil" name:"FileSizeLimit"`
 
 	// 资源所在地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 }
 
 type ModifyDSPACOSDiscoveryTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 任务描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 任务开关，0 关闭，1 启用
-	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 通用规则集开关；0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitempty" name:"GeneralRuleSetEnable"`
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil" name:"GeneralRuleSetEnable"`
 
 	// 合规组ID列表，最多支持添加5个
-	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitempty" name:"ComplianceGroupIds"`
+	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitnil" name:"ComplianceGroupIds"`
 
 	// 执行计划； 0立即 1定时，选择“立即”时，扫描周期只能选择单次
-	Plan *int64 `json:"Plan,omitempty" name:"Plan"`
+	Plan *int64 `json:"Plan,omitnil" name:"Plan"`
 
 	// 扫描周期；0单次 1每天 2每周 3每月
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 任务定时启动时间，格式：2006-01-02 15:04:05
 	// 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
-	TimingStartTime *string `json:"TimingStartTime,omitempty" name:"TimingStartTime"`
+	TimingStartTime *string `json:"TimingStartTime,omitnil" name:"TimingStartTime"`
 
 	// 待扫描文件类型，用逗号隔开，格式如：[".txt", ".csv", ".log", ".xml",".html", ".json"]。
-	FileTypes []*string `json:"FileTypes,omitempty" name:"FileTypes"`
+	FileTypes []*string `json:"FileTypes,omitnil" name:"FileTypes"`
 
 	// 文件大小上限，单位为KB，如1000, 目前单个文件最大只支持100MB（102400KB）
-	FileSizeLimit *int64 `json:"FileSizeLimit,omitempty" name:"FileSizeLimit"`
+	FileSizeLimit *int64 `json:"FileSizeLimit,omitnil" name:"FileSizeLimit"`
 
 	// 资源所在地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 }
 
 func (r *ModifyDSPACOSDiscoveryTaskRequest) ToJsonString() string {
@@ -12042,7 +12042,7 @@ func (r *ModifyDSPACOSDiscoveryTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPACOSDiscoveryTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPACOSDiscoveryTaskResponse struct {
@@ -12064,32 +12064,32 @@ func (r *ModifyDSPACOSDiscoveryTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPACOSTaskResultRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 文件扫描结果ID
-	FileResultId *int64 `json:"FileResultId,omitempty" name:"FileResultId"`
+	FileResultId *int64 `json:"FileResultId,omitnil" name:"FileResultId"`
 
 	// 是否设置为非敏感文件
-	IsSetNonSensitiveFile *bool `json:"IsSetNonSensitiveFile,omitempty" name:"IsSetNonSensitiveFile"`
+	IsSetNonSensitiveFile *bool `json:"IsSetNonSensitiveFile,omitnil" name:"IsSetNonSensitiveFile"`
 }
 
 type ModifyDSPACOSTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 文件扫描结果ID
-	FileResultId *int64 `json:"FileResultId,omitempty" name:"FileResultId"`
+	FileResultId *int64 `json:"FileResultId,omitnil" name:"FileResultId"`
 
 	// 是否设置为非敏感文件
-	IsSetNonSensitiveFile *bool `json:"IsSetNonSensitiveFile,omitempty" name:"IsSetNonSensitiveFile"`
+	IsSetNonSensitiveFile *bool `json:"IsSetNonSensitiveFile,omitnil" name:"IsSetNonSensitiveFile"`
 }
 
 func (r *ModifyDSPACOSTaskResultRequest) ToJsonString() string {
@@ -12117,7 +12117,7 @@ func (r *ModifyDSPACOSTaskResultRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPACOSTaskResultResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPACOSTaskResultResponse struct {
@@ -12139,32 +12139,32 @@ func (r *ModifyDSPACOSTaskResultResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPACategoryRelationRequestParams struct {
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 当前分类id
-	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *uint64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 合并到的分类id
-	MergedCategoryId *int64 `json:"MergedCategoryId,omitempty" name:"MergedCategoryId"`
+	MergedCategoryId *int64 `json:"MergedCategoryId,omitnil" name:"MergedCategoryId"`
 
 	// 合规组模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 type ModifyDSPACategoryRelationRequest struct {
 	*tchttp.BaseRequest
 	
 	// dspa实例id
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 当前分类id
-	CategoryId *uint64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *uint64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 合并到的分类id
-	MergedCategoryId *int64 `json:"MergedCategoryId,omitempty" name:"MergedCategoryId"`
+	MergedCategoryId *int64 `json:"MergedCategoryId,omitnil" name:"MergedCategoryId"`
 
 	// 合规组模板id
-	ComplianceId *uint64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *uint64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 }
 
 func (r *ModifyDSPACategoryRelationRequest) ToJsonString() string {
@@ -12192,7 +12192,7 @@ func (r *ModifyDSPACategoryRelationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPACategoryRelationResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPACategoryRelationResponse struct {
@@ -12214,26 +12214,26 @@ func (r *ModifyDSPACategoryRelationResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPACategoryRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据分类ID
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分类名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 type ModifyDSPACategoryRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据分类ID
-	CategoryId *int64 `json:"CategoryId,omitempty" name:"CategoryId"`
+	CategoryId *int64 `json:"CategoryId,omitnil" name:"CategoryId"`
 
 	// 敏感数据分类名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 func (r *ModifyDSPACategoryRequest) ToJsonString() string {
@@ -12260,7 +12260,7 @@ func (r *ModifyDSPACategoryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPACategoryResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPACategoryResponse struct {
@@ -12282,26 +12282,26 @@ func (r *ModifyDSPACategoryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPAClusterInfoRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// DSPA实例名。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字。
-	DspaName *string `json:"DspaName,omitempty" name:"DspaName"`
+	DspaName *string `json:"DspaName,omitnil" name:"DspaName"`
 
 	// DSPA实例描述信息。最长1024个字符。
-	DspaDescription *string `json:"DspaDescription,omitempty" name:"DspaDescription"`
+	DspaDescription *string `json:"DspaDescription,omitnil" name:"DspaDescription"`
 }
 
 type ModifyDSPAClusterInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// DSPA实例名。1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字。
-	DspaName *string `json:"DspaName,omitempty" name:"DspaName"`
+	DspaName *string `json:"DspaName,omitnil" name:"DspaName"`
 
 	// DSPA实例描述信息。最长1024个字符。
-	DspaDescription *string `json:"DspaDescription,omitempty" name:"DspaDescription"`
+	DspaDescription *string `json:"DspaDescription,omitnil" name:"DspaDescription"`
 }
 
 func (r *ModifyDSPAClusterInfoRequest) ToJsonString() string {
@@ -12328,7 +12328,7 @@ func (r *ModifyDSPAClusterInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPAClusterInfoResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPAClusterInfoResponse struct {
@@ -12350,50 +12350,50 @@ func (r *ModifyDSPAClusterInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPAComplianceGroupRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitempty" name:"ComplianceGroupId"`
+	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitnil" name:"ComplianceGroupId"`
 
 	// 合规组名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 合规组描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 合规组规则配置（参数已废弃，请传空数组）
-	ComplianceGroupRules []*ComplianceGroupRuleIdInfo `json:"ComplianceGroupRules,omitempty" name:"ComplianceGroupRules"`
+	ComplianceGroupRules []*ComplianceGroupRuleIdInfo `json:"ComplianceGroupRules,omitnil" name:"ComplianceGroupRules"`
 
 	// 分级组ID，新增参数，可选参数，默认值为1
-	LevelGroupId *uint64 `json:"LevelGroupId,omitempty" name:"LevelGroupId"`
+	LevelGroupId *uint64 `json:"LevelGroupId,omitnil" name:"LevelGroupId"`
 
 	// 是否开启别名
-	RuleAlias *bool `json:"RuleAlias,omitempty" name:"RuleAlias"`
+	RuleAlias *bool `json:"RuleAlias,omitnil" name:"RuleAlias"`
 }
 
 type ModifyDSPAComplianceGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 合规组ID
-	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitempty" name:"ComplianceGroupId"`
+	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitnil" name:"ComplianceGroupId"`
 
 	// 合规组名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 合规组描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 合规组规则配置（参数已废弃，请传空数组）
-	ComplianceGroupRules []*ComplianceGroupRuleIdInfo `json:"ComplianceGroupRules,omitempty" name:"ComplianceGroupRules"`
+	ComplianceGroupRules []*ComplianceGroupRuleIdInfo `json:"ComplianceGroupRules,omitnil" name:"ComplianceGroupRules"`
 
 	// 分级组ID，新增参数，可选参数，默认值为1
-	LevelGroupId *uint64 `json:"LevelGroupId,omitempty" name:"LevelGroupId"`
+	LevelGroupId *uint64 `json:"LevelGroupId,omitnil" name:"LevelGroupId"`
 
 	// 是否开启别名
-	RuleAlias *bool `json:"RuleAlias,omitempty" name:"RuleAlias"`
+	RuleAlias *bool `json:"RuleAlias,omitnil" name:"RuleAlias"`
 }
 
 func (r *ModifyDSPAComplianceGroupRequest) ToJsonString() string {
@@ -12424,7 +12424,7 @@ func (r *ModifyDSPAComplianceGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPAComplianceGroupResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPAComplianceGroupResponse struct {
@@ -12446,44 +12446,44 @@ func (r *ModifyDSPAComplianceGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPADiscoveryRuleRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 规则名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 规则ID
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// RDB类敏感数据识别规则
-	RDBRules *ScanTaskRDBRules `json:"RDBRules,omitempty" name:"RDBRules"`
+	RDBRules *ScanTaskRDBRules `json:"RDBRules,omitnil" name:"RDBRules"`
 
 	// COS类敏感数据识别规则
-	COSRules *ScanTaskCOSRules `json:"COSRules,omitempty" name:"COSRules"`
+	COSRules *ScanTaskCOSRules `json:"COSRules,omitnil" name:"COSRules"`
 }
 
 type ModifyDSPADiscoveryRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 规则名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 规则ID
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// RDB类敏感数据识别规则
-	RDBRules *ScanTaskRDBRules `json:"RDBRules,omitempty" name:"RDBRules"`
+	RDBRules *ScanTaskRDBRules `json:"RDBRules,omitnil" name:"RDBRules"`
 
 	// COS类敏感数据识别规则
-	COSRules *ScanTaskCOSRules `json:"COSRules,omitempty" name:"COSRules"`
+	COSRules *ScanTaskCOSRules `json:"COSRules,omitnil" name:"COSRules"`
 }
 
 func (r *ModifyDSPADiscoveryRuleRequest) ToJsonString() string {
@@ -12513,7 +12513,7 @@ func (r *ModifyDSPADiscoveryRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPADiscoveryRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPADiscoveryRuleResponse struct {
@@ -12535,44 +12535,44 @@ func (r *ModifyDSPADiscoveryRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPADiscoveryTaskRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 任务描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 任务开关，0 关闭，1 启用
-	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，最多添加5个数据库，之间通过逗号分隔
-	Condition *string `json:"Condition,omitempty" name:"Condition"`
+	Condition *string `json:"Condition,omitnil" name:"Condition"`
 
 	// 通用规则集开关；0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitempty" name:"GeneralRuleSetEnable"`
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil" name:"GeneralRuleSetEnable"`
 
 	// 合规组ID列表，最多支持添加5个
-	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitempty" name:"ComplianceGroupIds"`
+	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitnil" name:"ComplianceGroupIds"`
 
 	// 执行计划； 0立即 1定时，选择“立即”时，扫描周期只能选择单次
-	Plan *int64 `json:"Plan,omitempty" name:"Plan"`
+	Plan *int64 `json:"Plan,omitnil" name:"Plan"`
 
 	// 扫描周期；0单次 1每天 2每周 3每月
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 任务定时启动时间，格式：2006-01-02 15:04:05
 	// 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
-	TimingStartTime *string `json:"TimingStartTime,omitempty" name:"TimingStartTime"`
+	TimingStartTime *string `json:"TimingStartTime,omitnil" name:"TimingStartTime"`
 
 	// 资源所在地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 数据源类型，可取值如下：
 	// cdb 表示云数据库 MySQL,
@@ -12582,51 +12582,51 @@ type ModifyDSPADiscoveryTaskRequestParams struct {
 	// cynosdbpg 表示TDSQL-C PostgreSQL版,
 	// cynosdbmysql 表示TDSQL-C MySQL版,
 	// selfbuilt-db 表示自建数据库
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 }
 
 type ModifyDSPADiscoveryTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务名称，1-60个字符，仅允许输入中文、英文字母、数字、'_'、'-'，并且开头和结尾需为中文、英文字母或者数字，Name不可重复
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 任务描述，最大长度为1024个字符
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 任务开关，0 关闭，1 启用
-	Enable *int64 `json:"Enable,omitempty" name:"Enable"`
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 数据源ID
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 用于传入的数据源的条件，目前只支持数据库，所以目前表示数据库的名称，最多添加5个数据库，之间通过逗号分隔
-	Condition *string `json:"Condition,omitempty" name:"Condition"`
+	Condition *string `json:"Condition,omitnil" name:"Condition"`
 
 	// 通用规则集开关；0 关闭，1 启用
-	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitempty" name:"GeneralRuleSetEnable"`
+	GeneralRuleSetEnable *int64 `json:"GeneralRuleSetEnable,omitnil" name:"GeneralRuleSetEnable"`
 
 	// 合规组ID列表，最多支持添加5个
-	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitempty" name:"ComplianceGroupIds"`
+	ComplianceGroupIds []*int64 `json:"ComplianceGroupIds,omitnil" name:"ComplianceGroupIds"`
 
 	// 执行计划； 0立即 1定时，选择“立即”时，扫描周期只能选择单次
-	Plan *int64 `json:"Plan,omitempty" name:"Plan"`
+	Plan *int64 `json:"Plan,omitnil" name:"Plan"`
 
 	// 扫描周期；0单次 1每天 2每周 3每月
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 任务定时启动时间，格式：2006-01-02 15:04:05
 	// 当执行计划（Plan字段）为”立即“时，定时启动时间不会生效，此场景下给该字段传值不会被保存。
-	TimingStartTime *string `json:"TimingStartTime,omitempty" name:"TimingStartTime"`
+	TimingStartTime *string `json:"TimingStartTime,omitnil" name:"TimingStartTime"`
 
 	// 资源所在地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 数据源类型，可取值如下：
 	// cdb 表示云数据库 MySQL,
@@ -12636,7 +12636,7 @@ type ModifyDSPADiscoveryTaskRequest struct {
 	// cynosdbpg 表示TDSQL-C PostgreSQL版,
 	// cynosdbmysql 表示TDSQL-C MySQL版,
 	// selfbuilt-db 表示自建数据库
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 }
 
 func (r *ModifyDSPADiscoveryTaskRequest) ToJsonString() string {
@@ -12674,7 +12674,7 @@ func (r *ModifyDSPADiscoveryTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPADiscoveryTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPADiscoveryTaskResponse struct {
@@ -12696,50 +12696,50 @@ func (r *ModifyDSPADiscoveryTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPAESTaskResultRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 字段扫描结果ID
-	FieldResultId *int64 `json:"FieldResultId,omitempty" name:"FieldResultId"`
+	FieldResultId *int64 `json:"FieldResultId,omitnil" name:"FieldResultId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 是否设置为非敏感字段
-	IsSetNonSensitiveField *bool `json:"IsSetNonSensitiveField,omitempty" name:"IsSetNonSensitiveField"`
+	IsSetNonSensitiveField *bool `json:"IsSetNonSensitiveField,omitnil" name:"IsSetNonSensitiveField"`
 
 	// 调整后新的规则ID
-	DestRuleId *int64 `json:"DestRuleId,omitempty" name:"DestRuleId"`
+	DestRuleId *int64 `json:"DestRuleId,omitnil" name:"DestRuleId"`
 
 	// 调整后新的分类ID
-	DestCategoryId *int64 `json:"DestCategoryId,omitempty" name:"DestCategoryId"`
+	DestCategoryId *int64 `json:"DestCategoryId,omitnil" name:"DestCategoryId"`
 
 	// 调整后新的分级ID
-	DestLevelId *int64 `json:"DestLevelId,omitempty" name:"DestLevelId"`
+	DestLevelId *int64 `json:"DestLevelId,omitnil" name:"DestLevelId"`
 }
 
 type ModifyDSPAESTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 字段扫描结果ID
-	FieldResultId *int64 `json:"FieldResultId,omitempty" name:"FieldResultId"`
+	FieldResultId *int64 `json:"FieldResultId,omitnil" name:"FieldResultId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 是否设置为非敏感字段
-	IsSetNonSensitiveField *bool `json:"IsSetNonSensitiveField,omitempty" name:"IsSetNonSensitiveField"`
+	IsSetNonSensitiveField *bool `json:"IsSetNonSensitiveField,omitnil" name:"IsSetNonSensitiveField"`
 
 	// 调整后新的规则ID
-	DestRuleId *int64 `json:"DestRuleId,omitempty" name:"DestRuleId"`
+	DestRuleId *int64 `json:"DestRuleId,omitnil" name:"DestRuleId"`
 
 	// 调整后新的分类ID
-	DestCategoryId *int64 `json:"DestCategoryId,omitempty" name:"DestCategoryId"`
+	DestCategoryId *int64 `json:"DestCategoryId,omitnil" name:"DestCategoryId"`
 
 	// 调整后新的分级ID
-	DestLevelId *int64 `json:"DestLevelId,omitempty" name:"DestLevelId"`
+	DestLevelId *int64 `json:"DestLevelId,omitnil" name:"DestLevelId"`
 }
 
 func (r *ModifyDSPAESTaskResultRequest) ToJsonString() string {
@@ -12770,7 +12770,7 @@ func (r *ModifyDSPAESTaskResultRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPAESTaskResultResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPAESTaskResultResponse struct {
@@ -12792,50 +12792,50 @@ func (r *ModifyDSPAESTaskResultResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPATaskResultRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 字段扫描结果ID
-	FieldResultId *int64 `json:"FieldResultId,omitempty" name:"FieldResultId"`
+	FieldResultId *int64 `json:"FieldResultId,omitnil" name:"FieldResultId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 是否设置为非敏感字段
-	IsSetNonSensitiveField *bool `json:"IsSetNonSensitiveField,omitempty" name:"IsSetNonSensitiveField"`
+	IsSetNonSensitiveField *bool `json:"IsSetNonSensitiveField,omitnil" name:"IsSetNonSensitiveField"`
 
 	// 调整后新的规则ID
-	DestRuleId *int64 `json:"DestRuleId,omitempty" name:"DestRuleId"`
+	DestRuleId *int64 `json:"DestRuleId,omitnil" name:"DestRuleId"`
 
 	// 调整后新的分类ID
-	DestCategoryId *int64 `json:"DestCategoryId,omitempty" name:"DestCategoryId"`
+	DestCategoryId *int64 `json:"DestCategoryId,omitnil" name:"DestCategoryId"`
 
 	// 调整后新的分级ID
-	DestLevelId *int64 `json:"DestLevelId,omitempty" name:"DestLevelId"`
+	DestLevelId *int64 `json:"DestLevelId,omitnil" name:"DestLevelId"`
 }
 
 type ModifyDSPATaskResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 字段扫描结果ID
-	FieldResultId *int64 `json:"FieldResultId,omitempty" name:"FieldResultId"`
+	FieldResultId *int64 `json:"FieldResultId,omitnil" name:"FieldResultId"`
 
 	// 合规组ID
-	ComplianceId *int64 `json:"ComplianceId,omitempty" name:"ComplianceId"`
+	ComplianceId *int64 `json:"ComplianceId,omitnil" name:"ComplianceId"`
 
 	// 是否设置为非敏感字段
-	IsSetNonSensitiveField *bool `json:"IsSetNonSensitiveField,omitempty" name:"IsSetNonSensitiveField"`
+	IsSetNonSensitiveField *bool `json:"IsSetNonSensitiveField,omitnil" name:"IsSetNonSensitiveField"`
 
 	// 调整后新的规则ID
-	DestRuleId *int64 `json:"DestRuleId,omitempty" name:"DestRuleId"`
+	DestRuleId *int64 `json:"DestRuleId,omitnil" name:"DestRuleId"`
 
 	// 调整后新的分类ID
-	DestCategoryId *int64 `json:"DestCategoryId,omitempty" name:"DestCategoryId"`
+	DestCategoryId *int64 `json:"DestCategoryId,omitnil" name:"DestCategoryId"`
 
 	// 调整后新的分级ID
-	DestLevelId *int64 `json:"DestLevelId,omitempty" name:"DestLevelId"`
+	DestLevelId *int64 `json:"DestLevelId,omitnil" name:"DestLevelId"`
 }
 
 func (r *ModifyDSPATaskResultRequest) ToJsonString() string {
@@ -12866,7 +12866,7 @@ func (r *ModifyDSPATaskResultRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDSPATaskResultResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDSPATaskResultResponse struct {
@@ -12917,7 +12917,7 @@ func (r *ModifyLevelInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLevelInfoResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyLevelInfoResponse struct {
@@ -12968,7 +12968,7 @@ func (r *ModifyLevelNameRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLevelNameResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyLevelNameResponse struct {
@@ -13019,7 +13019,7 @@ func (r *ModifyLevelStateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyLevelStateResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyLevelStateResponse struct {
@@ -13070,7 +13070,7 @@ func (r *ModifyMergeClassificationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyMergeClassificationResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyMergeClassificationResponse struct {
@@ -13121,7 +13121,7 @@ func (r *ModifyNewClassificationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyNewClassificationResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyNewClassificationResponse struct {
@@ -13172,7 +13172,7 @@ func (r *ModifyStandardInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyStandardInfoResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyStandardInfoResponse struct {
@@ -13194,151 +13194,151 @@ func (r *ModifyStandardInfoResponse) FromJsonString(s string) error {
 type MongoAsset struct {
 	// DB总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DbNums *int64 `json:"DbNums,omitempty" name:"DbNums"`
+	DbNums *int64 `json:"DbNums,omitnil" name:"DbNums"`
 
 	// 敏感DB数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveDbNums *int64 `json:"SensitiveDbNums,omitempty" name:"SensitiveDbNums"`
+	SensitiveDbNums *int64 `json:"SensitiveDbNums,omitnil" name:"SensitiveDbNums"`
 
 	// 集合数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ColNums *int64 `json:"ColNums,omitempty" name:"ColNums"`
+	ColNums *int64 `json:"ColNums,omitnil" name:"ColNums"`
 
 	// 敏感集合的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveColNums *int64 `json:"SensitiveColNums,omitempty" name:"SensitiveColNums"`
+	SensitiveColNums *int64 `json:"SensitiveColNums,omitnil" name:"SensitiveColNums"`
 
 	// 字段数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FieldNums *int64 `json:"FieldNums,omitempty" name:"FieldNums"`
+	FieldNums *int64 `json:"FieldNums,omitnil" name:"FieldNums"`
 
 	// 敏感的字段数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitempty" name:"SensitiveFieldNums"`
+	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitnil" name:"SensitiveFieldNums"`
 }
 
 type MongoAssetDBDetail struct {
 	// 数据源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 数据库名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DdName *string `json:"DdName,omitempty" name:"DdName"`
+	DdName *string `json:"DdName,omitnil" name:"DdName"`
 
 	// 数据库类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataType *string `json:"DataType,omitempty" name:"DataType"`
+	DataType *string `json:"DataType,omitnil" name:"DataType"`
 
 	// 集合的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ColNums *int64 `json:"ColNums,omitempty" name:"ColNums"`
+	ColNums *int64 `json:"ColNums,omitnil" name:"ColNums"`
 
 	// 敏感集合数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveColNums *int64 `json:"SensitiveColNums,omitempty" name:"SensitiveColNums"`
+	SensitiveColNums *int64 `json:"SensitiveColNums,omitnil" name:"SensitiveColNums"`
 
 	// 字段的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FieldNums *int64 `json:"FieldNums,omitempty" name:"FieldNums"`
+	FieldNums *int64 `json:"FieldNums,omitnil" name:"FieldNums"`
 
 	// 敏感字段的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitempty" name:"SensitiveFieldNums"`
+	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitnil" name:"SensitiveFieldNums"`
 
 	// 敏感数据分布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DistributionData []*Note `json:"DistributionData,omitempty" name:"DistributionData"`
+	DistributionData []*Note `json:"DistributionData,omitnil" name:"DistributionData"`
 }
 
 type NOSQLInstance struct {
 	// 数据源id
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// cdb, dcdb, mariadb, postgres, cynosdbpg, cynosdbmysql, cos, mysql_like_proto, postgre_like_proto,mongodb
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
 	// 资源所在地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 根据实例创建的敏感数据识别扫描任务Id
-	DiscoveryTaskId *int64 `json:"DiscoveryTaskId,omitempty" name:"DiscoveryTaskId"`
+	DiscoveryTaskId *int64 `json:"DiscoveryTaskId,omitnil" name:"DiscoveryTaskId"`
 
 	// 敏感数据识别任务实例id
-	DiscoveryTaskInstanceID *int64 `json:"DiscoveryTaskInstanceID,omitempty" name:"DiscoveryTaskInstanceID"`
+	DiscoveryTaskInstanceID *int64 `json:"DiscoveryTaskInstanceID,omitnil" name:"DiscoveryTaskInstanceID"`
 }
 
 type Note struct {
 	// 通用key，比如分类名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 通用value，比如分类个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *int64 `json:"Value,omitempty" name:"Value"`
+	Value *int64 `json:"Value,omitnil" name:"Value"`
 }
 
 type PrivilegeRisk struct {
 	// 账户名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccountName []*string `json:"AccountName,omitempty" name:"AccountName"`
+	AccountName []*string `json:"AccountName,omitnil" name:"AccountName"`
 
 	// 表名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TableName *string `json:"TableName,omitempty" name:"TableName"`
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
 
 	// 说明
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 type ProcessHistory struct {
 	// 处理时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Time *string `json:"Time,omitempty" name:"Time"`
+	Time *string `json:"Time,omitnil" name:"Time"`
 
 	// 状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 处理人
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Handler *string `json:"Handler,omitempty" name:"Handler"`
+	Handler *string `json:"Handler,omitnil" name:"Handler"`
 
 	// 备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Note *string `json:"Note,omitempty" name:"Note"`
+	Note *string `json:"Note,omitnil" name:"Note"`
 }
 
 // Predefined struct for user
 type QueryDSPAMetaResourceDbListRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据库实例ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 数据库实例所在地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 数据库实例类型。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 }
 
 type QueryDSPAMetaResourceDbListRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 数据库实例ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 数据库实例所在地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 数据库实例类型。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 }
 
 func (r *QueryDSPAMetaResourceDbListRequest) ToJsonString() string {
@@ -13366,10 +13366,10 @@ func (r *QueryDSPAMetaResourceDbListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryDSPAMetaResourceDbListResponseParams struct {
 	// 数据库实例DB列表的查询结果。
-	DbRelationStatusItems []*DbRelationStatusItem `json:"DbRelationStatusItems,omitempty" name:"DbRelationStatusItems"`
+	DbRelationStatusItems []*DbRelationStatusItem `json:"DbRelationStatusItems,omitnil" name:"DbRelationStatusItems"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryDSPAMetaResourceDbListResponse struct {
@@ -13391,32 +13391,32 @@ func (r *QueryDSPAMetaResourceDbListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryResourceDbBindStatusRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 资源所在地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 资源类型。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 }
 
 type QueryResourceDbBindStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 资源所在地域。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 资源类型。
-	MetaType *string `json:"MetaType,omitempty" name:"MetaType"`
+	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 }
 
 func (r *QueryResourceDbBindStatusRequest) ToJsonString() string {
@@ -13444,13 +13444,13 @@ func (r *QueryResourceDbBindStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryResourceDbBindStatusResponseParams struct {
 	// 绑定DB数量。
-	BindDbNums *uint64 `json:"BindDbNums,omitempty" name:"BindDbNums"`
+	BindDbNums *uint64 `json:"BindDbNums,omitnil" name:"BindDbNums"`
 
 	// 未绑定DB数量。
-	UnbindDbNums *uint64 `json:"UnbindDbNums,omitempty" name:"UnbindDbNums"`
+	UnbindDbNums *uint64 `json:"UnbindDbNums,omitnil" name:"UnbindDbNums"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryResourceDbBindStatusResponse struct {
@@ -13472,117 +13472,117 @@ func (r *QueryResourceDbBindStatusResponse) FromJsonString(s string) error {
 type RDBAsset struct {
 	// DB总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DbNums *int64 `json:"DbNums,omitempty" name:"DbNums"`
+	DbNums *int64 `json:"DbNums,omitnil" name:"DbNums"`
 
 	// 敏感DB数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveDbNums *int64 `json:"SensitiveDbNums,omitempty" name:"SensitiveDbNums"`
+	SensitiveDbNums *int64 `json:"SensitiveDbNums,omitnil" name:"SensitiveDbNums"`
 
 	// 表数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TableNums *int64 `json:"TableNums,omitempty" name:"TableNums"`
+	TableNums *int64 `json:"TableNums,omitnil" name:"TableNums"`
 
 	// 敏感表的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveTableNums *int64 `json:"SensitiveTableNums,omitempty" name:"SensitiveTableNums"`
+	SensitiveTableNums *int64 `json:"SensitiveTableNums,omitnil" name:"SensitiveTableNums"`
 
 	// 字段数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FieldNums *int64 `json:"FieldNums,omitempty" name:"FieldNums"`
+	FieldNums *int64 `json:"FieldNums,omitnil" name:"FieldNums"`
 
 	// 敏感的字段数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitempty" name:"SensitiveFieldNums"`
+	SensitiveFieldNums *int64 `json:"SensitiveFieldNums,omitnil" name:"SensitiveFieldNums"`
 }
 
 type RDBInstance struct {
 	// 数据源Id
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// cdb, dcdb, mariadb, postgres, cynosdbpg, cynosdbmysql, cos, mysql_like_proto, postgre_like_proto
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
 	// 资源所在地域
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 若未来扩展到DBName粒度，可采用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DBs []*DBStatements `json:"DBs,omitempty" name:"DBs"`
+	DBs []*DBStatements `json:"DBs,omitnil" name:"DBs"`
 }
 
 type ReportInfo struct {
 	// 任务id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 报告名称
-	ReportName *string `json:"ReportName,omitempty" name:"ReportName"`
+	ReportName *string `json:"ReportName,omitnil" name:"ReportName"`
 
 	// 报告类型（AssetSorting:资产梳理）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportType *string `json:"ReportType,omitempty" name:"ReportType"`
+	ReportType *string `json:"ReportType,omitnil" name:"ReportType"`
 
 	// 报告周期（0单次 1每天 2每周 3每月）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportPeriod *uint64 `json:"ReportPeriod,omitempty" name:"ReportPeriod"`
+	ReportPeriod *uint64 `json:"ReportPeriod,omitnil" name:"ReportPeriod"`
 
 	// 执行计划 （0:单次报告 1:定时报告）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportPlan *uint64 `json:"ReportPlan,omitempty" name:"ReportPlan"`
+	ReportPlan *uint64 `json:"ReportPlan,omitnil" name:"ReportPlan"`
 
 	// 报告导出状态（Success 成功, Failed 失败, InProgress 进行中）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportStatus *string `json:"ReportStatus,omitempty" name:"ReportStatus"`
+	ReportStatus *string `json:"ReportStatus,omitnil" name:"ReportStatus"`
 
 	// 任务下次启动时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimingStartTime *string `json:"TimingStartTime,omitempty" name:"TimingStartTime"`
+	TimingStartTime *string `json:"TimingStartTime,omitnil" name:"TimingStartTime"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 完成时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FinishedTime *string `json:"FinishedTime,omitempty" name:"FinishedTime"`
+	FinishedTime *string `json:"FinishedTime,omitnil" name:"FinishedTime"`
 
 	// 子账号uin
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubUin *string `json:"SubUin,omitempty" name:"SubUin"`
+	SubUin *string `json:"SubUin,omitnil" name:"SubUin"`
 
 	// 失败信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedMessage *string `json:"FailedMessage,omitempty" name:"FailedMessage"`
+	FailedMessage *string `json:"FailedMessage,omitnil" name:"FailedMessage"`
 
 	// 是否启用（0：否 1：是）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Enable *uint64 `json:"Enable,omitempty" name:"Enable"`
+	Enable *uint64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 识别模板名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComplianceName *string `json:"ComplianceName,omitempty" name:"ComplianceName"`
+	ComplianceName *string `json:"ComplianceName,omitnil" name:"ComplianceName"`
 
 	// 进度百分比
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProgressPercent *uint64 `json:"ProgressPercent,omitempty" name:"ProgressPercent"`
+	ProgressPercent *uint64 `json:"ProgressPercent,omitnil" name:"ProgressPercent"`
 }
 
 // Predefined struct for user
 type RestartDSPAAssessmentTaskRequestParams struct {
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估任务Id，格式“task-xxxxxxxx”
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type RestartDSPAAssessmentTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例Id，格式“dspa-xxxxxxxx”
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 评估任务Id，格式“task-xxxxxxxx”
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *RestartDSPAAssessmentTaskRequest) ToJsonString() string {
@@ -13608,7 +13608,7 @@ func (r *RestartDSPAAssessmentTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RestartDSPAAssessmentTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RestartDSPAAssessmentTaskResponse struct {
@@ -13629,316 +13629,316 @@ func (r *RestartDSPAAssessmentTaskResponse) FromJsonString(s string) error {
 
 type RiskCountInfo struct {
 	// 风险等级
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 该等级风险项数量
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 风险等级名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevelName *string `json:"RiskLevelName,omitempty" name:"RiskLevelName"`
+	RiskLevelName *string `json:"RiskLevelName,omitnil" name:"RiskLevelName"`
 }
 
 type RiskDealedTrendItem struct {
 	// 日期
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 未解决数量
-	Unhandled *uint64 `json:"Unhandled,omitempty" name:"Unhandled"`
+	Unhandled *uint64 `json:"Unhandled,omitnil" name:"Unhandled"`
 
 	// 已解决数量
-	Handled *uint64 `json:"Handled,omitempty" name:"Handled"`
+	Handled *uint64 `json:"Handled,omitnil" name:"Handled"`
 
 	// 新发现
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NewDiscoveryHandled *uint64 `json:"NewDiscoveryHandled,omitempty" name:"NewDiscoveryHandled"`
+	NewDiscoveryHandled *uint64 `json:"NewDiscoveryHandled,omitnil" name:"NewDiscoveryHandled"`
 }
 
 type RiskItem struct {
 	// 名称
-	ItemName *string `json:"ItemName,omitempty" name:"ItemName"`
+	ItemName *string `json:"ItemName,omitnil" name:"ItemName"`
 
 	// 风险数量
-	RiskNum *uint64 `json:"RiskNum,omitempty" name:"RiskNum"`
+	RiskNum *uint64 `json:"RiskNum,omitnil" name:"RiskNum"`
 }
 
 type RiskItemInfo struct {
 	// 最新风险项id
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 数据源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// 数据源名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceName *string `json:"DataSourceName,omitempty" name:"DataSourceName"`
+	DataSourceName *string `json:"DataSourceName,omitnil" name:"DataSourceName"`
 
 	// 数据源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceType *string `json:"DataSourceType,omitempty" name:"DataSourceType"`
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 
 	// 资源地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceRegion *string `json:"ResourceRegion,omitempty" name:"ResourceRegion"`
+	ResourceRegion *string `json:"ResourceRegion,omitnil" name:"ResourceRegion"`
 
 	// 资产名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssetName *string `json:"AssetName,omitempty" name:"AssetName"`
+	AssetName *string `json:"AssetName,omitnil" name:"AssetName"`
 
 	// 风险类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskType *string `json:"RiskType,omitempty" name:"RiskType"`
+	RiskType *string `json:"RiskType,omitnil" name:"RiskType"`
 
 	// 风险项
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskName *string `json:"RiskName,omitempty" name:"RiskName"`
+	RiskName *string `json:"RiskName,omitnil" name:"RiskName"`
 
 	// 风险级别
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 风险描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskDescription *string `json:"RiskDescription,omitempty" name:"RiskDescription"`
+	RiskDescription *string `json:"RiskDescription,omitnil" name:"RiskDescription"`
 
 	// 建议措施
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SuggestAction *string `json:"SuggestAction,omitempty" name:"SuggestAction"`
+	SuggestAction *string `json:"SuggestAction,omitnil" name:"SuggestAction"`
 
 	// 安全产品（可能有多个）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecurityProduct []*SecurityProduct `json:"SecurityProduct,omitempty" name:"SecurityProduct"`
+	SecurityProduct []*SecurityProduct `json:"SecurityProduct,omitnil" name:"SecurityProduct"`
 
 	// 状态(waiting:待处理，processing:处理中，finished:已处理，ignored:已忽略)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 扫描时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScanTime *string `json:"ScanTime,omitempty" name:"ScanTime"`
+	ScanTime *string `json:"ScanTime,omitnil" name:"ScanTime"`
 
 	// 最后处置时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LastProcessTime *string `json:"LastProcessTime,omitempty" name:"LastProcessTime"`
+	LastProcessTime *string `json:"LastProcessTime,omitnil" name:"LastProcessTime"`
 
 	// 分类分级合规组Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitempty" name:"IdentifyComplianceId"`
+	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitnil" name:"IdentifyComplianceId"`
 
 	// 类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ItemSubType *string `json:"ItemSubType,omitempty" name:"ItemSubType"`
+	ItemSubType *string `json:"ItemSubType,omitnil" name:"ItemSubType"`
 
 	// 风险面
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskSide *string `json:"RiskSide,omitempty" name:"RiskSide"`
+	RiskSide *string `json:"RiskSide,omitnil" name:"RiskSide"`
 }
 
 type RiskLevelMatrix struct {
 	// 存储id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 分类分级levelID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveLevelId *int64 `json:"SensitiveLevelId,omitempty" name:"SensitiveLevelId"`
+	SensitiveLevelId *int64 `json:"SensitiveLevelId,omitnil" name:"SensitiveLevelId"`
 
 	// 分类分级名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveLevelName *string `json:"SensitiveLevelName,omitempty" name:"SensitiveLevelName"`
+	SensitiveLevelName *string `json:"SensitiveLevelName,omitnil" name:"SensitiveLevelName"`
 
 	// 漏洞级别
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VulnerabilityLevel *string `json:"VulnerabilityLevel,omitempty" name:"VulnerabilityLevel"`
+	VulnerabilityLevel *string `json:"VulnerabilityLevel,omitnil" name:"VulnerabilityLevel"`
 
 	// 风险级别
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 }
 
 type RiskLevelRisk struct {
 	// 风险id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 风险等级列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevelName *string `json:"RiskLevelName,omitempty" name:"RiskLevelName"`
+	RiskLevelName *string `json:"RiskLevelName,omitnil" name:"RiskLevelName"`
 
 	// 风险级别描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevelDescription *string `json:"RiskLevelDescription,omitempty" name:"RiskLevelDescription"`
+	RiskLevelDescription *string `json:"RiskLevelDescription,omitnil" name:"RiskLevelDescription"`
 
 	// 引用的分类分级模版
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IdentifyComplianceName *string `json:"IdentifyComplianceName,omitempty" name:"IdentifyComplianceName"`
+	IdentifyComplianceName *string `json:"IdentifyComplianceName,omitnil" name:"IdentifyComplianceName"`
 
 	// 类型，区分自定义还是系统内置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
 type RiskLevelTrendItem struct {
 	// 日期
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 高风险数量
-	High *uint64 `json:"High,omitempty" name:"High"`
+	High *uint64 `json:"High,omitnil" name:"High"`
 
 	// 中风险数量
-	Medium *uint64 `json:"Medium,omitempty" name:"Medium"`
+	Medium *uint64 `json:"Medium,omitnil" name:"Medium"`
 
 	// 低风险数量
-	Low *uint64 `json:"Low,omitempty" name:"Low"`
+	Low *uint64 `json:"Low,omitnil" name:"Low"`
 
 	// 总数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 }
 
 type RiskMatrixLevel struct {
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 就是id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Score *float64 `json:"Score,omitempty" name:"Score"`
+	Score *float64 `json:"Score,omitnil" name:"Score"`
 }
 
 type RiskSideDistributed struct {
 	// 风险面
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssessmentRiskSide *Note `json:"AssessmentRiskSide,omitempty" name:"AssessmentRiskSide"`
+	AssessmentRiskSide *Note `json:"AssessmentRiskSide,omitnil" name:"AssessmentRiskSide"`
 
 	// 风险类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssessmentRisk []*Note `json:"AssessmentRisk,omitempty" name:"AssessmentRisk"`
+	AssessmentRisk []*Note `json:"AssessmentRisk,omitnil" name:"AssessmentRisk"`
 }
 
 type RuleDistribution struct {
 	// 规则id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 分级id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 分级名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelName *string `json:"LevelName,omitempty" name:"LevelName"`
+	LevelName *string `json:"LevelName,omitnil" name:"LevelName"`
 
 	// 规则数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleCnt *int64 `json:"RuleCnt,omitempty" name:"RuleCnt"`
+	RuleCnt *int64 `json:"RuleCnt,omitnil" name:"RuleCnt"`
 }
 
 type ScanTaskCOSRules struct {
 	// regex规则内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegexRule *COSDataRule `json:"RegexRule,omitempty" name:"RegexRule"`
+	RegexRule *COSDataRule `json:"RegexRule,omitnil" name:"RegexRule"`
 
 	// 规则状态；0 不启用, 1 启用
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 关键词规则内容组，最大支持5个关键词。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeywordRule *COSDataRule `json:"KeywordRule,omitempty" name:"KeywordRule"`
+	KeywordRule *COSDataRule `json:"KeywordRule,omitnil" name:"KeywordRule"`
 
 	// 忽略词规则内容组，最大支持5个忽略词。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IgnoreStringRule *COSDataRule `json:"IgnoreStringRule,omitempty" name:"IgnoreStringRule"`
+	IgnoreStringRule *COSDataRule `json:"IgnoreStringRule,omitnil" name:"IgnoreStringRule"`
 
 	// 最大匹配距离，默认值为100。上限为500.
-	MaxMatch *int64 `json:"MaxMatch,omitempty" name:"MaxMatch"`
+	MaxMatch *int64 `json:"MaxMatch,omitnil" name:"MaxMatch"`
 }
 
 type ScanTaskComplianceInfo struct {
 	// 合规组ID
-	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitempty" name:"ComplianceGroupId"`
+	ComplianceGroupId *int64 `json:"ComplianceGroupId,omitnil" name:"ComplianceGroupId"`
 
 	// 合规组名称
-	ComplianceGroupName *string `json:"ComplianceGroupName,omitempty" name:"ComplianceGroupName"`
+	ComplianceGroupName *string `json:"ComplianceGroupName,omitnil" name:"ComplianceGroupName"`
 }
 
 type ScanTaskRDBRules struct {
 	// 规则状态；0 不启用, 1 启用
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
-	MatchOperator *string `json:"MatchOperator,omitempty" name:"MatchOperator"`
+	MatchOperator *string `json:"MatchOperator,omitnil" name:"MatchOperator"`
 
 	// 字段名包含规则，最大支持选择9项
-	MetaRule *DataRules `json:"MetaRule,omitempty" name:"MetaRule"`
+	MetaRule *DataRules `json:"MetaRule,omitnil" name:"MetaRule"`
 
 	// 内容包含规则，最大支持选择9项
-	ContentRule *DataRules `json:"ContentRule,omitempty" name:"ContentRule"`
+	ContentRule *DataRules `json:"ContentRule,omitnil" name:"ContentRule"`
 }
 
 type ScanTaskResult struct {
 	// 任务最新一次运行结果ID
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 任务扫描结束的时间，格式如：2021-12-12 12:12:12
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 任务状态，-1待触发 0待扫描 1扫描中 2扫描终止 3扫描成功 4扫描失败
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 扫描任务结果展示，如果扫描失败，则显示失败原因
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 }
 
 type SecurityProduct struct {
 	// 产品名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 
 	// 产品链接
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReferUrl *string `json:"ReferUrl,omitempty" name:"ReferUrl"`
+	ReferUrl *string `json:"ReferUrl,omitnil" name:"ReferUrl"`
 }
 
 type SensitiveLevel struct {
 	// 分级标识ID
-	LevelId *int64 `json:"LevelId,omitempty" name:"LevelId"`
+	LevelId *int64 `json:"LevelId,omitnil" name:"LevelId"`
 
 	// 分级标识统计
-	LevelCnt *int64 `json:"LevelCnt,omitempty" name:"LevelCnt"`
+	LevelCnt *int64 `json:"LevelCnt,omitnil" name:"LevelCnt"`
 
 	// 分级标识名称
-	LevelRiskName *string `json:"LevelRiskName,omitempty" name:"LevelRiskName"`
+	LevelRiskName *string `json:"LevelRiskName,omitnil" name:"LevelRiskName"`
 
 	// 分级标识分数
-	LevelRiskScore *int64 `json:"LevelRiskScore,omitempty" name:"LevelRiskScore"`
+	LevelRiskScore *int64 `json:"LevelRiskScore,omitnil" name:"LevelRiskScore"`
 }
 
 // Predefined struct for user
 type StartDSPADiscoveryTaskRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type StartDSPADiscoveryTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *StartDSPADiscoveryTaskRequest) ToJsonString() string {
@@ -13965,10 +13965,10 @@ func (r *StartDSPADiscoveryTaskRequest) FromJsonString(s string) error {
 type StartDSPADiscoveryTaskResponseParams struct {
 	// 任务扫描结果ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultId *int64 `json:"ResultId,omitempty" name:"ResultId"`
+	ResultId *int64 `json:"ResultId,omitnil" name:"ResultId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type StartDSPADiscoveryTaskResponse struct {
@@ -13990,20 +13990,20 @@ func (r *StartDSPADiscoveryTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type StopDSPADiscoveryTaskRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type StopDSPADiscoveryTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *StopDSPADiscoveryTaskRequest) ToJsonString() string {
@@ -14030,10 +14030,10 @@ func (r *StopDSPADiscoveryTaskRequest) FromJsonString(s string) error {
 type StopDSPADiscoveryTaskResponseParams struct {
 	// 任务扫描结果ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultId *int64 `json:"ResultId,omitempty" name:"ResultId"`
+	ResultId *int64 `json:"ResultId,omitnil" name:"ResultId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type StopDSPADiscoveryTaskResponse struct {
@@ -14055,100 +14055,100 @@ func (r *StopDSPADiscoveryTaskResponse) FromJsonString(s string) error {
 type SuggestRiskLevelMatrix struct {
 	// 矩阵
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevelMatrix []*SuggestRiskLevelMatrixItem `json:"RiskLevelMatrix,omitempty" name:"RiskLevelMatrix"`
+	RiskLevelMatrix []*SuggestRiskLevelMatrixItem `json:"RiskLevelMatrix,omitnil" name:"RiskLevelMatrix"`
 }
 
 type SuggestRiskLevelMatrixItem struct {
 	// 分类分级等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveLevel *RiskMatrixLevel `json:"SensitiveLevel,omitempty" name:"SensitiveLevel"`
+	SensitiveLevel *RiskMatrixLevel `json:"SensitiveLevel,omitnil" name:"SensitiveLevel"`
 
 	// 脆弱项等级
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VulnerabilityLevel *RiskMatrixLevel `json:"VulnerabilityLevel,omitempty" name:"VulnerabilityLevel"`
+	VulnerabilityLevel *RiskMatrixLevel `json:"VulnerabilityLevel,omitnil" name:"VulnerabilityLevel"`
 
 	// 风险名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskName *string `json:"RiskName,omitempty" name:"RiskName"`
+	RiskName *string `json:"RiskName,omitnil" name:"RiskName"`
 
 	// 分数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskScore *float64 `json:"RiskScore,omitempty" name:"RiskScore"`
+	RiskScore *float64 `json:"RiskScore,omitnil" name:"RiskScore"`
 }
 
 type TemplateInfo struct {
 	// 模版id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 模版名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 }
 
 type TopAsset struct {
 	// 分级名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LevelName *string `json:"LevelName,omitempty" name:"LevelName"`
+	LevelName *string `json:"LevelName,omitnil" name:"LevelName"`
 
 	// top数据信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopStat []*TopAssetStat `json:"TopStat,omitempty" name:"TopStat"`
+	TopStat []*TopAssetStat `json:"TopStat,omitnil" name:"TopStat"`
 }
 
 type TopAssetStat struct {
 	// 数据源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataSourceId *string `json:"DataSourceId,omitempty" name:"DataSourceId"`
+	DataSourceId *string `json:"DataSourceId,omitnil" name:"DataSourceId"`
 
 	// db_name
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubData *string `json:"SubData,omitempty" name:"SubData"`
+	SubData *string `json:"SubData,omitnil" name:"SubData"`
 
 	// 敏感个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SensitiveCnt *int64 `json:"SensitiveCnt,omitempty" name:"SensitiveCnt"`
+	SensitiveCnt *int64 `json:"SensitiveCnt,omitnil" name:"SensitiveCnt"`
 }
 
 // Predefined struct for user
 type UpdateDSPASelfBuildResourceRequestParams struct {
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 云资源名称，如果是通过CVM访问则填写CVM的资源ID，如果是通过LB访问则填写LB的资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 资源绑定的端口，为0则表示不更新。
-	ResourceVPort *uint64 `json:"ResourceVPort,omitempty" name:"ResourceVPort"`
+	ResourceVPort *uint64 `json:"ResourceVPort,omitnil" name:"ResourceVPort"`
 
 	// 账户名，为空则表示不更新。
 	// UserName和Password必须同时填写或同时为空。
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
 	// 账户密码，为空则表示不更新。
 	// UserName和Password必须同时填写或同时为空。
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 }
 
 type UpdateDSPASelfBuildResourceRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID。
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 云资源名称，如果是通过CVM访问则填写CVM的资源ID，如果是通过LB访问则填写LB的资源ID。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 资源绑定的端口，为0则表示不更新。
-	ResourceVPort *uint64 `json:"ResourceVPort,omitempty" name:"ResourceVPort"`
+	ResourceVPort *uint64 `json:"ResourceVPort,omitnil" name:"ResourceVPort"`
 
 	// 账户名，为空则表示不更新。
 	// UserName和Password必须同时填写或同时为空。
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
 	// 账户密码，为空则表示不更新。
 	// UserName和Password必须同时填写或同时为空。
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 }
 
 func (r *UpdateDSPASelfBuildResourceRequest) ToJsonString() string {
@@ -14177,7 +14177,7 @@ func (r *UpdateDSPASelfBuildResourceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateDSPASelfBuildResourceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateDSPASelfBuildResourceResponse struct {
@@ -14199,26 +14199,26 @@ func (r *UpdateDSPASelfBuildResourceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type VerifyDSPACOSRuleRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 待验证COS规则
-	COSRules *ScanTaskCOSRules `json:"COSRules,omitempty" name:"COSRules"`
+	COSRules *ScanTaskCOSRules `json:"COSRules,omitnil" name:"COSRules"`
 
 	// 待验证数据
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 }
 
 type VerifyDSPACOSRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 待验证COS规则
-	COSRules *ScanTaskCOSRules `json:"COSRules,omitempty" name:"COSRules"`
+	COSRules *ScanTaskCOSRules `json:"COSRules,omitnil" name:"COSRules"`
 
 	// 待验证数据
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 }
 
 func (r *VerifyDSPACOSRuleRequest) ToJsonString() string {
@@ -14247,13 +14247,13 @@ type VerifyDSPACOSRuleResponseParams struct {
 	// 验证结果
 	// Success 验证成功
 	// Failed 验证失败
-	VerifyResult *string `json:"VerifyResult,omitempty" name:"VerifyResult"`
+	VerifyResult *string `json:"VerifyResult,omitnil" name:"VerifyResult"`
 
 	// 验证结果详情
-	DetailInfo *string `json:"DetailInfo,omitempty" name:"DetailInfo"`
+	DetailInfo *string `json:"DetailInfo,omitnil" name:"DetailInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type VerifyDSPACOSRuleResponse struct {
@@ -14275,44 +14275,44 @@ func (r *VerifyDSPACOSRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type VerifyDSPADiscoveryRuleRequestParams struct {
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
-	MatchOperator *string `json:"MatchOperator,omitempty" name:"MatchOperator"`
+	MatchOperator *string `json:"MatchOperator,omitnil" name:"MatchOperator"`
 
 	// 字段名包含规则，最大支持选择9项
-	MetaRule *DataRules `json:"MetaRule,omitempty" name:"MetaRule"`
+	MetaRule *DataRules `json:"MetaRule,omitnil" name:"MetaRule"`
 
 	// 内容包含规则，最大支持选择9项
-	ContentRule *DataRules `json:"ContentRule,omitempty" name:"ContentRule"`
+	ContentRule *DataRules `json:"ContentRule,omitnil" name:"ContentRule"`
 
 	// 验证规则字段名，最大长度为1024个字符
-	VerifyMeta *string `json:"VerifyMeta,omitempty" name:"VerifyMeta"`
+	VerifyMeta *string `json:"VerifyMeta,omitnil" name:"VerifyMeta"`
 
 	// 验证规则数据内容，最大长度为1024个字符
-	VerifyContent *string `json:"VerifyContent,omitempty" name:"VerifyContent"`
+	VerifyContent *string `json:"VerifyContent,omitnil" name:"VerifyContent"`
 }
 
 type VerifyDSPADiscoveryRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// DSPA实例ID
-	DspaId *string `json:"DspaId,omitempty" name:"DspaId"`
+	DspaId *string `json:"DspaId,omitnil" name:"DspaId"`
 
 	// 只能取and 、or两个值其中之一，and：字段和内容同时满足，or：字段和内容满足其一
-	MatchOperator *string `json:"MatchOperator,omitempty" name:"MatchOperator"`
+	MatchOperator *string `json:"MatchOperator,omitnil" name:"MatchOperator"`
 
 	// 字段名包含规则，最大支持选择9项
-	MetaRule *DataRules `json:"MetaRule,omitempty" name:"MetaRule"`
+	MetaRule *DataRules `json:"MetaRule,omitnil" name:"MetaRule"`
 
 	// 内容包含规则，最大支持选择9项
-	ContentRule *DataRules `json:"ContentRule,omitempty" name:"ContentRule"`
+	ContentRule *DataRules `json:"ContentRule,omitnil" name:"ContentRule"`
 
 	// 验证规则字段名，最大长度为1024个字符
-	VerifyMeta *string `json:"VerifyMeta,omitempty" name:"VerifyMeta"`
+	VerifyMeta *string `json:"VerifyMeta,omitnil" name:"VerifyMeta"`
 
 	// 验证规则数据内容，最大长度为1024个字符
-	VerifyContent *string `json:"VerifyContent,omitempty" name:"VerifyContent"`
+	VerifyContent *string `json:"VerifyContent,omitnil" name:"VerifyContent"`
 }
 
 func (r *VerifyDSPADiscoveryRuleRequest) ToJsonString() string {
@@ -14344,13 +14344,13 @@ type VerifyDSPADiscoveryRuleResponseParams struct {
 	// 验证结果
 	// Success 验证成功
 	// Failed 验证失败
-	VerifyResult *string `json:"VerifyResult,omitempty" name:"VerifyResult"`
+	VerifyResult *string `json:"VerifyResult,omitnil" name:"VerifyResult"`
 
 	// 验证结果详情
-	DetailInfo *string `json:"DetailInfo,omitempty" name:"DetailInfo"`
+	DetailInfo *string `json:"DetailInfo,omitnil" name:"DetailInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type VerifyDSPADiscoveryRuleResponse struct {

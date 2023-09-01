@@ -15,46 +15,46 @@
 package v20220105
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type ApplyEmbedIntervalRequestParams struct {
 	// 分享项目id，必选
-	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 分享页面id，嵌出看板时此为空值0
-	PageId *uint64 `json:"PageId,omitempty" name:"PageId"`
+	PageId *uint64 `json:"PageId,omitnil" name:"PageId"`
 
 	// 需要申请延期的Token
-	BIToken *string `json:"BIToken,omitempty" name:"BIToken"`
+	BIToken *string `json:"BIToken,omitnil" name:"BIToken"`
 
 	// 备用字段
-	ExtraParam *string `json:"ExtraParam,omitempty" name:"ExtraParam"`
+	ExtraParam *string `json:"ExtraParam,omitnil" name:"ExtraParam"`
 
 	// panel,看板；page，页面
-	Scope *string `json:"Scope,omitempty" name:"Scope"`
+	Scope *string `json:"Scope,omitnil" name:"Scope"`
 }
 
 type ApplyEmbedIntervalRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分享项目id，必选
-	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 分享页面id，嵌出看板时此为空值0
-	PageId *uint64 `json:"PageId,omitempty" name:"PageId"`
+	PageId *uint64 `json:"PageId,omitnil" name:"PageId"`
 
 	// 需要申请延期的Token
-	BIToken *string `json:"BIToken,omitempty" name:"BIToken"`
+	BIToken *string `json:"BIToken,omitnil" name:"BIToken"`
 
 	// 备用字段
-	ExtraParam *string `json:"ExtraParam,omitempty" name:"ExtraParam"`
+	ExtraParam *string `json:"ExtraParam,omitnil" name:"ExtraParam"`
 
 	// panel,看板；page，页面
-	Scope *string `json:"Scope,omitempty" name:"Scope"`
+	Scope *string `json:"Scope,omitnil" name:"Scope"`
 }
 
 func (r *ApplyEmbedIntervalRequest) ToJsonString() string {
@@ -84,18 +84,18 @@ func (r *ApplyEmbedIntervalRequest) FromJsonString(s string) error {
 type ApplyEmbedIntervalResponseParams struct {
 	// 额外参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Extra *string `json:"Extra,omitempty" name:"Extra"`
+	Extra *string `json:"Extra,omitnil" name:"Extra"`
 
 	// 结果数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *ApplyEmbedTokenInfo `json:"Data,omitempty" name:"Data"`
+	Data *ApplyEmbedTokenInfo `json:"Data,omitnil" name:"Data"`
 
 	// 结果描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msg *string `json:"Msg,omitempty" name:"Msg"`
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ApplyEmbedIntervalResponse struct {
@@ -117,44 +117,44 @@ func (r *ApplyEmbedIntervalResponse) FromJsonString(s string) error {
 type ApplyEmbedTokenInfo struct {
 	// 申请结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *bool `json:"Result,omitempty" name:"Result"`
+	Result *bool `json:"Result,omitnil" name:"Result"`
 }
 
 // Predefined struct for user
 type CreateEmbedTokenRequestParams struct {
 	// 分享项目id
-	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 分享页面id，嵌出看板时此为空值0
-	PageId *uint64 `json:"PageId,omitempty" name:"PageId"`
+	PageId *uint64 `json:"PageId,omitnil" name:"PageId"`
 
 	// page表示嵌出页面，panel表嵌出整个看板
-	Scope *string `json:"Scope,omitempty" name:"Scope"`
+	Scope *string `json:"Scope,omitnil" name:"Scope"`
 
 	// 过期时间。 单位：分钟 最大值：240。即，4小时 默认值：240
-	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 备用字段
-	ExtraParam *string `json:"ExtraParam,omitempty" name:"ExtraParam"`
+	ExtraParam *string `json:"ExtraParam,omitnil" name:"ExtraParam"`
 }
 
 type CreateEmbedTokenRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分享项目id
-	ProjectId *uint64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 分享页面id，嵌出看板时此为空值0
-	PageId *uint64 `json:"PageId,omitempty" name:"PageId"`
+	PageId *uint64 `json:"PageId,omitnil" name:"PageId"`
 
 	// page表示嵌出页面，panel表嵌出整个看板
-	Scope *string `json:"Scope,omitempty" name:"Scope"`
+	Scope *string `json:"Scope,omitnil" name:"Scope"`
 
 	// 过期时间。 单位：分钟 最大值：240。即，4小时 默认值：240
-	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 备用字段
-	ExtraParam *string `json:"ExtraParam,omitempty" name:"ExtraParam"`
+	ExtraParam *string `json:"ExtraParam,omitnil" name:"ExtraParam"`
 }
 
 func (r *CreateEmbedTokenRequest) ToJsonString() string {
@@ -184,18 +184,18 @@ func (r *CreateEmbedTokenRequest) FromJsonString(s string) error {
 type CreateEmbedTokenResponseParams struct {
 	// 额外信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Extra *string `json:"Extra,omitempty" name:"Extra"`
+	Extra *string `json:"Extra,omitnil" name:"Extra"`
 
 	// 数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *EmbedTokenInfo `json:"Data,omitempty" name:"Data"`
+	Data *EmbedTokenInfo `json:"Data,omitnil" name:"Data"`
 
 	// 结果描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msg *string `json:"Msg,omitempty" name:"Msg"`
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateEmbedTokenResponse struct {
@@ -217,45 +217,45 @@ func (r *CreateEmbedTokenResponse) FromJsonString(s string) error {
 type EmbedTokenInfo struct {
 	// 信息标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 令牌
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BIToken *string `json:"BIToken,omitempty" name:"BIToken"`
+	BIToken *string `json:"BIToken,omitnil" name:"BIToken"`
 
 	// 项目Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProjectId *string `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 创建人
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedUser *string `json:"CreatedUser,omitempty" name:"CreatedUser"`
+	CreatedUser *string `json:"CreatedUser,omitnil" name:"CreatedUser"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
 
 	// 更新人
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdatedUser *string `json:"UpdatedUser,omitempty" name:"UpdatedUser"`
+	UpdatedUser *string `json:"UpdatedUser,omitnil" name:"UpdatedUser"`
 
 	// 更新时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdatedAt *string `json:"UpdatedAt,omitempty" name:"UpdatedAt"`
+	UpdatedAt *string `json:"UpdatedAt,omitnil" name:"UpdatedAt"`
 
 	// 页面Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PageId *string `json:"PageId,omitempty" name:"PageId"`
+	PageId *string `json:"PageId,omitnil" name:"PageId"`
 
 	// 备用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExtraParam *string `json:"ExtraParam,omitempty" name:"ExtraParam"`
+	ExtraParam *string `json:"ExtraParam,omitnil" name:"ExtraParam"`
 
 	// 嵌出类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Scope *string `json:"Scope,omitempty" name:"Scope"`
+	Scope *string `json:"Scope,omitnil" name:"Scope"`
 
 	// 过期时间，分钟为单位，最大240
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *uint64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
 }

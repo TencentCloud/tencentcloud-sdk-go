@@ -15,23 +15,23 @@
 package v20201103
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type AccountInfo struct {
 	// 账号类型
-	AccountType *uint64 `json:"AccountType,omitempty" name:"AccountType"`
+	AccountType *uint64 `json:"AccountType,omitnil" name:"AccountType"`
 
 	// QQ账号信息，AccountType是1时，该字段必填。
-	QQAccount *QQAccountInfo `json:"QQAccount,omitempty" name:"QQAccount"`
+	QQAccount *QQAccountInfo `json:"QQAccount,omitnil" name:"QQAccount"`
 
 	// 微信账号信息，AccountType是2时，该字段必填。
-	WeChatAccount *WeChatAccountInfo `json:"WeChatAccount,omitempty" name:"WeChatAccount"`
+	WeChatAccount *WeChatAccountInfo `json:"WeChatAccount,omitnil" name:"WeChatAccount"`
 
 	// 其它账号信息，AccountType是0、4、8或10004时，该字段必填。
-	OtherAccount *OtherAccountInfo `json:"OtherAccount,omitempty" name:"OtherAccount"`
+	OtherAccount *OtherAccountInfo `json:"OtherAccount,omitnil" name:"OtherAccount"`
 }
 
 // Predefined struct for user
@@ -66,7 +66,7 @@ func (r *DescribeRiskAssessmentRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskAssessmentResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRiskAssessmentResponse struct {
@@ -88,14 +88,14 @@ func (r *DescribeRiskAssessmentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskTrendsRequestParams struct {
 	// 业务入参
-	BusinessSecurityData *InputFrontRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+	BusinessSecurityData *InputFrontRisk `json:"BusinessSecurityData,omitnil" name:"BusinessSecurityData"`
 }
 
 type DescribeRiskTrendsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务入参
-	BusinessSecurityData *InputFrontRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+	BusinessSecurityData *InputFrontRisk `json:"BusinessSecurityData,omitnil" name:"BusinessSecurityData"`
 }
 
 func (r *DescribeRiskTrendsRequest) ToJsonString() string {
@@ -120,10 +120,10 @@ func (r *DescribeRiskTrendsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRiskTrendsResponseParams struct {
 	// 业务出参
-	Data *OutputFrontRiskData `json:"Data,omitempty" name:"Data"`
+	Data *OutputFrontRiskData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRiskTrendsResponse struct {
@@ -144,134 +144,134 @@ func (r *DescribeRiskTrendsResponse) FromJsonString(s string) error {
 
 type InputCryptoManageMarketingRisk struct {
 	// 是否授权
-	IsAuthorized *string `json:"IsAuthorized,omitempty" name:"IsAuthorized"`
+	IsAuthorized *string `json:"IsAuthorized,omitnil" name:"IsAuthorized"`
 
 	// 加密类型
-	CryptoType *string `json:"CryptoType,omitempty" name:"CryptoType"`
+	CryptoType *string `json:"CryptoType,omitnil" name:"CryptoType"`
 
 	// 加密内容
-	CryptoContent *string `json:"CryptoContent,omitempty" name:"CryptoContent"`
+	CryptoContent *string `json:"CryptoContent,omitnil" name:"CryptoContent"`
 }
 
 type InputDetails struct {
 	// 字段名称
-	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
+	FieldName *string `json:"FieldName,omitnil" name:"FieldName"`
 
 	// 字段值
-	FieldValue *string `json:"FieldValue,omitempty" name:"FieldValue"`
+	FieldValue *string `json:"FieldValue,omitnil" name:"FieldValue"`
 }
 
 type InputFrontRisk struct {
 	// 事件ID
-	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+	EventId *int64 `json:"EventId,omitnil" name:"EventId"`
 
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 趋势类型
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 
 	// 当前开始时间
-	CurrentStartTime *string `json:"CurrentStartTime,omitempty" name:"CurrentStartTime"`
+	CurrentStartTime *string `json:"CurrentStartTime,omitnil" name:"CurrentStartTime"`
 
 	// 当前结束时间
-	CurrentEndTime *string `json:"CurrentEndTime,omitempty" name:"CurrentEndTime"`
+	CurrentEndTime *string `json:"CurrentEndTime,omitnil" name:"CurrentEndTime"`
 }
 
 type InputManageMarketingRisk struct {
 	// 账号信息。
-	Account *AccountInfo `json:"Account,omitempty" name:"Account"`
+	Account *AccountInfo `json:"Account,omitnil" name:"Account"`
 
 	// 场景类型：场景SceneCode, 控制台上新建对应的场景并获取对应的值；
 	// 例如：e_register_protection_1521184361
 	// 控制台链接：https://console.cloud.tencent.com/rce/risk/sceneroot；
-	SceneCode *string `json:"SceneCode,omitempty" name:"SceneCode"`
+	SceneCode *string `json:"SceneCode,omitnil" name:"SceneCode"`
 
 	// 登录来源的外网IP
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
 	// 时间戳
-	PostTime *uint64 `json:"PostTime,omitempty" name:"PostTime"`
+	PostTime *uint64 `json:"PostTime,omitnil" name:"PostTime"`
 
 	// 用户唯一标识。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 设备指纹token。
-	DeviceToken *string `json:"DeviceToken,omitempty" name:"DeviceToken"`
+	DeviceToken *string `json:"DeviceToken,omitnil" name:"DeviceToken"`
 
 	// 设备指纹BusinessId
-	DeviceBusinessId *int64 `json:"DeviceBusinessId,omitempty" name:"DeviceBusinessId"`
+	DeviceBusinessId *int64 `json:"DeviceBusinessId,omitnil" name:"DeviceBusinessId"`
 
 	// 业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。
-	BusinessId *uint64 `json:"BusinessId,omitempty" name:"BusinessId"`
+	BusinessId *uint64 `json:"BusinessId,omitnil" name:"BusinessId"`
 
 	// 昵称，UTF-8 编码。
-	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+	Nickname *string `json:"Nickname,omitnil" name:"Nickname"`
 
 	// 用户邮箱地址（非系统自动生成）。
-	EmailAddress *string `json:"EmailAddress,omitempty" name:"EmailAddress"`
+	EmailAddress *string `json:"EmailAddress,omitnil" name:"EmailAddress"`
 
 	// 是否识别设备异常：
 	// 0：不识别。
 	// 1：识别。
-	CheckDevice *int64 `json:"CheckDevice,omitempty" name:"CheckDevice"`
+	CheckDevice *int64 `json:"CheckDevice,omitnil" name:"CheckDevice"`
 
 	// 用户HTTP请求中的Cookie进行2次hash的值，只要保证相同Cookie的hash值一致即可。
-	CookieHash *string `json:"CookieHash,omitempty" name:"CookieHash"`
+	CookieHash *string `json:"CookieHash,omitnil" name:"CookieHash"`
 
 	// 用户HTTP请求的Referer值。
-	Referer *string `json:"Referer,omitempty" name:"Referer"`
+	Referer *string `json:"Referer,omitnil" name:"Referer"`
 
 	// 用户HTTP请求的User-Agent值。
-	UserAgent *string `json:"UserAgent,omitempty" name:"UserAgent"`
+	UserAgent *string `json:"UserAgent,omitnil" name:"UserAgent"`
 
 	// 用户HTTP请求的X-Forwarded-For值。
-	XForwardedFor *string `json:"XForwardedFor,omitempty" name:"XForwardedFor"`
+	XForwardedFor *string `json:"XForwardedFor,omitnil" name:"XForwardedFor"`
 
 	// MAC地址或设备唯一标识。
-	MacAddress *string `json:"MacAddress,omitempty" name:"MacAddress"`
+	MacAddress *string `json:"MacAddress,omitnil" name:"MacAddress"`
 
 	// 手机制造商ID，如果手机注册，请带上此信息。
-	VendorId *string `json:"VendorId,omitempty" name:"VendorId"`
+	VendorId *string `json:"VendorId,omitnil" name:"VendorId"`
 
 	// 设备类型：
 	// 1：Android
 	// 2：IOS
-	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
+	DeviceType *int64 `json:"DeviceType,omitnil" name:"DeviceType"`
 
 	// 详细信息
-	Details []*InputDetails `json:"Details,omitempty" name:"Details"`
+	Details []*InputDetails `json:"Details,omitnil" name:"Details"`
 
 	// 可选填写。详情请跳转至SponsorInfo查看。
-	Sponsor *SponsorInfo `json:"Sponsor,omitempty" name:"Sponsor"`
+	Sponsor *SponsorInfo `json:"Sponsor,omitnil" name:"Sponsor"`
 
 	// 可选填写。详情请跳转至OnlineScamInfo查看。
-	OnlineScam *OnlineScamInfo `json:"OnlineScam,omitempty" name:"OnlineScam"`
+	OnlineScam *OnlineScamInfo `json:"OnlineScam,omitnil" name:"OnlineScam"`
 
 	// 平台: 1android
-	Platform *string `json:"Platform,omitempty" name:"Platform"`
+	Platform *string `json:"Platform,omitnil" name:"Platform"`
 }
 
 // Predefined struct for user
 type ManageMarketingRiskRequestParams struct {
 	// 业务入参
-	BusinessSecurityData *InputManageMarketingRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+	BusinessSecurityData *InputManageMarketingRisk `json:"BusinessSecurityData,omitnil" name:"BusinessSecurityData"`
 
 	// 业务入参
-	BusinessCryptoData *InputCryptoManageMarketingRisk `json:"BusinessCryptoData,omitempty" name:"BusinessCryptoData"`
+	BusinessCryptoData *InputCryptoManageMarketingRisk `json:"BusinessCryptoData,omitnil" name:"BusinessCryptoData"`
 }
 
 type ManageMarketingRiskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务入参
-	BusinessSecurityData *InputManageMarketingRisk `json:"BusinessSecurityData,omitempty" name:"BusinessSecurityData"`
+	BusinessSecurityData *InputManageMarketingRisk `json:"BusinessSecurityData,omitnil" name:"BusinessSecurityData"`
 
 	// 业务入参
-	BusinessCryptoData *InputCryptoManageMarketingRisk `json:"BusinessCryptoData,omitempty" name:"BusinessCryptoData"`
+	BusinessCryptoData *InputCryptoManageMarketingRisk `json:"BusinessCryptoData,omitnil" name:"BusinessCryptoData"`
 }
 
 func (r *ManageMarketingRiskRequest) ToJsonString() string {
@@ -297,10 +297,10 @@ func (r *ManageMarketingRiskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ManageMarketingRiskResponseParams struct {
 	// 业务出参
-	Data *OutputManageMarketingRisk `json:"Data,omitempty" name:"Data"`
+	Data *OutputManageMarketingRisk `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ManageMarketingRiskResponse struct {
@@ -321,86 +321,86 @@ func (r *ManageMarketingRiskResponse) FromJsonString(s string) error {
 
 type OnlineScamInfo struct {
 	// 内容标签。
-	ContentLabel *string `json:"ContentLabel,omitempty" name:"ContentLabel"`
+	ContentLabel *string `json:"ContentLabel,omitnil" name:"ContentLabel"`
 
 	// 内容风险等级：
 	// 0：正常。
 	// 1：可疑。
-	ContentRiskLevel *int64 `json:"ContentRiskLevel,omitempty" name:"ContentRiskLevel"`
+	ContentRiskLevel *int64 `json:"ContentRiskLevel,omitnil" name:"ContentRiskLevel"`
 
 	// 内容产生形式：
 	// 0：对话。
 	// 1：广播。
-	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *int64 `json:"ContentType,omitnil" name:"ContentType"`
 
 	// 类型
-	FraudType *int64 `json:"FraudType,omitempty" name:"FraudType"`
+	FraudType *int64 `json:"FraudType,omitnil" name:"FraudType"`
 
 	// 账号
-	FraudAccount *string `json:"FraudAccount,omitempty" name:"FraudAccount"`
+	FraudAccount *string `json:"FraudAccount,omitnil" name:"FraudAccount"`
 }
 
 type OtherAccountInfo struct {
 	// id
-	AccountId *string `json:"AccountId,omitempty" name:"AccountId"`
+	AccountId *string `json:"AccountId,omitnil" name:"AccountId"`
 
 	// 手机号
-	MobilePhone *string `json:"MobilePhone,omitempty" name:"MobilePhone"`
+	MobilePhone *string `json:"MobilePhone,omitnil" name:"MobilePhone"`
 
 	// id
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 }
 
 type OutputFrontRisk struct {
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 参数值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*OutputFrontRiskValue `json:"Value,omitempty" name:"Value"`
+	Value []*OutputFrontRiskValue `json:"Value,omitnil" name:"Value"`
 }
 
 type OutputFrontRiskData struct {
 	// 返回码[0：成功；非0：标识失败错误码]。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Code *int64 `json:"Code,omitempty" name:"Code"`
+	Code *int64 `json:"Code,omitnil" name:"Code"`
 
 	// 出错消息[UTF-8编码]。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 
 	// 返回结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value []*OutputFrontRisk `json:"Value,omitempty" name:"Value"`
+	Value []*OutputFrontRisk `json:"Value,omitnil" name:"Value"`
 }
 
 type OutputFrontRiskValue struct {
 	// 请求次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Requests *int64 `json:"Requests,omitempty" name:"Requests"`
+	Requests *int64 `json:"Requests,omitnil" name:"Requests"`
 
 	// 日期标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Index *string `json:"Index,omitempty" name:"Index"`
+	Index *string `json:"Index,omitnil" name:"Index"`
 }
 
 type OutputManageMarketingRisk struct {
 	// 返回码。0表示成功，非0标识失败错误码。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Code *int64 `json:"Code,omitempty" name:"Code"`
+	Code *int64 `json:"Code,omitnil" name:"Code"`
 
 	// UTF-8编码，出错消息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 
 	// 业务详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *OutputManageMarketingRiskValue `json:"Value,omitempty" name:"Value"`
+	Value *OutputManageMarketingRiskValue `json:"Value,omitnil" name:"Value"`
 
 	// 控制台显示的req_id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UUid *string `json:"UUid,omitempty" name:"UUid"`
+	UUid *string `json:"UUid,omitnil" name:"UUid"`
 }
 
 type OutputManageMarketingRiskValue struct {
@@ -412,26 +412,26 @@ type OutputManageMarketingRiskValue struct {
 	// AccountType是0时，对应账号信息。
 	// AccountType是10004时，对应手机号的MD5。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserId *string `json:"UserId,omitempty" name:"UserId"`
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 操作时间戳，单位秒（对应输入参数）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PostTime *uint64 `json:"PostTime,omitempty" name:"PostTime"`
+	PostTime *uint64 `json:"PostTime,omitnil" name:"PostTime"`
 
 	// 对应输入参数，AccountType 是 QQ 或微信开放账号时，用于标识 QQ 或微信用户登录后关联业务自身的账号ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AssociateAccount *string `json:"AssociateAccount,omitempty" name:"AssociateAccount"`
+	AssociateAccount *string `json:"AssociateAccount,omitnil" name:"AssociateAccount"`
 
 	// 操作来源的外网IP（对应输入参数）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserIp *string `json:"UserIp,omitempty" name:"UserIp"`
+	UserIp *string `json:"UserIp,omitnil" name:"UserIp"`
 
 	// 风险值
 	// pass : 无恶意
 	// review：需要人工审核
 	// reject：拒绝，高风险恶意
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 
 	// 风险类型，请参考官网风险类型
 	// 账号风险 
@@ -460,68 +460,68 @@ type OutputManageMarketingRiskValue struct {
 	// 2062 疑似 虚拟设备 请求设备为模拟器、脚本、云设备等虚拟设备
 	// 2063 疑似 群控设备 请求设备为猫池、手机墙等群控设备
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RiskType []*int64 `json:"RiskType,omitempty" name:"RiskType"`
+	RiskType []*int64 `json:"RiskType,omitnil" name:"RiskType"`
 
 	// 唯一ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ConstId *string `json:"ConstId,omitempty" name:"ConstId"`
+	ConstId *string `json:"ConstId,omitnil" name:"ConstId"`
 }
 
 type QQAccountInfo struct {
 	// QQ的OpenID。
-	QQOpenId *string `json:"QQOpenId,omitempty" name:"QQOpenId"`
+	QQOpenId *string `json:"QQOpenId,omitnil" name:"QQOpenId"`
 
 	// QQ分配给网站或应用的AppId，用来唯一标识网站或应用。
-	AppIdUser *string `json:"AppIdUser,omitempty" name:"AppIdUser"`
+	AppIdUser *string `json:"AppIdUser,omitnil" name:"AppIdUser"`
 
 	// 用于标识QQ用户登录后所关联业务自身的账号ID。
-	AssociateAccount *string `json:"AssociateAccount,omitempty" name:"AssociateAccount"`
+	AssociateAccount *string `json:"AssociateAccount,omitnil" name:"AssociateAccount"`
 
 	// 账号绑定的手机号。
-	MobilePhone *string `json:"MobilePhone,omitempty" name:"MobilePhone"`
+	MobilePhone *string `json:"MobilePhone,omitnil" name:"MobilePhone"`
 
 	// 用户设备号。
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 }
 
 type SponsorInfo struct {
 	// OpenID
-	SponsorOpenId *string `json:"SponsorOpenId,omitempty" name:"SponsorOpenId"`
+	SponsorOpenId *string `json:"SponsorOpenId,omitnil" name:"SponsorOpenId"`
 
 	// 设备号
-	SponsorDeviceNumber *string `json:"SponsorDeviceNumber,omitempty" name:"SponsorDeviceNumber"`
+	SponsorDeviceNumber *string `json:"SponsorDeviceNumber,omitnil" name:"SponsorDeviceNumber"`
 
 	// 手机号
-	SponsorPhone *string `json:"SponsorPhone,omitempty" name:"SponsorPhone"`
+	SponsorPhone *string `json:"SponsorPhone,omitnil" name:"SponsorPhone"`
 
 	// IP
-	SponsorIp *string `json:"SponsorIp,omitempty" name:"SponsorIp"`
+	SponsorIp *string `json:"SponsorIp,omitnil" name:"SponsorIp"`
 
 	// 链接
-	CampaignUrl *string `json:"CampaignUrl,omitempty" name:"CampaignUrl"`
+	CampaignUrl *string `json:"CampaignUrl,omitnil" name:"CampaignUrl"`
 }
 
 type WeChatAccountInfo struct {
 	// 微信的OpenID/UnionID 。
-	WeChatOpenId *string `json:"WeChatOpenId,omitempty" name:"WeChatOpenId"`
+	WeChatOpenId *string `json:"WeChatOpenId,omitnil" name:"WeChatOpenId"`
 
 	// 微信开放账号类型：
 	// 1：微信公众号/微信第三方登录。
 	// 2：微信小程序。
-	WeChatSubType *uint64 `json:"WeChatSubType,omitempty" name:"WeChatSubType"`
+	WeChatSubType *uint64 `json:"WeChatSubType,omitnil" name:"WeChatSubType"`
 
 	// 随机串。如果WeChatSubType是2，该字段必填。Token签名随机数，建议16个字符。
-	RandStr *string `json:"RandStr,omitempty" name:"RandStr"`
+	RandStr *string `json:"RandStr,omitnil" name:"RandStr"`
 
 	// token
-	WeChatAccessToken *string `json:"WeChatAccessToken,omitempty" name:"WeChatAccessToken"`
+	WeChatAccessToken *string `json:"WeChatAccessToken,omitnil" name:"WeChatAccessToken"`
 
 	// 用于标识微信用户登录后所关联业务自身的账号ID。
-	AssociateAccount *string `json:"AssociateAccount,omitempty" name:"AssociateAccount"`
+	AssociateAccount *string `json:"AssociateAccount,omitnil" name:"AssociateAccount"`
 
 	// 账号绑定的手机号。
-	MobilePhone *string `json:"MobilePhone,omitempty" name:"MobilePhone"`
+	MobilePhone *string `json:"MobilePhone,omitnil" name:"MobilePhone"`
 
 	// 用户设备号。
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 }

@@ -15,89 +15,89 @@
 package v20201028
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type AccountVpcInfo struct {
 	// VpcId： vpc-xadsafsdasd
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// Vpc所属地区: ap-guangzhou, ap-shanghai
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// Vpc所属账号: 123456789
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Uin *string `json:"Uin,omitempty" name:"Uin"`
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
 
 	// vpc资源名称：testname
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+	VpcName *string `json:"VpcName,omitnil" name:"VpcName"`
 }
 
 type AccountVpcInfoOut struct {
 	// VpcId： vpc-xadsafsdasd
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// Vpc所属地区: ap-guangzhou, ap-shanghai
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// Vpc所属账号: 123456789
-	Uin *string `json:"Uin,omitempty" name:"Uin"`
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
 
 	// vpc资源名称：testname
-	VpcName *string `json:"VpcName,omitempty" name:"VpcName"`
+	VpcName *string `json:"VpcName,omitnil" name:"VpcName"`
 }
 
 type AccountVpcInfoOutput struct {
 	// 关联账户的uin
-	Uin *string `json:"Uin,omitempty" name:"Uin"`
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
 
 	// vpcid
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// 地域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 }
 
 type AuditLog struct {
 	// 日志类型
-	Resource *string `json:"Resource,omitempty" name:"Resource"`
+	Resource *string `json:"Resource,omitnil" name:"Resource"`
 
 	// 日志表名
-	Metric *string `json:"Metric,omitempty" name:"Metric"`
+	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
 	// 日志总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 日志列表
-	DataSet []*AuditLogInfo `json:"DataSet,omitempty" name:"DataSet"`
+	DataSet []*AuditLogInfo `json:"DataSet,omitnil" name:"DataSet"`
 }
 
 type AuditLogInfo struct {
 	// 时间
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 操作人uin
-	OperatorUin *string `json:"OperatorUin,omitempty" name:"OperatorUin"`
+	OperatorUin *string `json:"OperatorUin,omitnil" name:"OperatorUin"`
 
 	// 日志内容
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 }
 
 // Predefined struct for user
 type CreatePrivateDNSAccountRequestParams struct {
 	// 私有域解析账号
-	Account *PrivateDNSAccount `json:"Account,omitempty" name:"Account"`
+	Account *PrivateDNSAccount `json:"Account,omitnil" name:"Account"`
 }
 
 type CreatePrivateDNSAccountRequest struct {
 	*tchttp.BaseRequest
 	
 	// 私有域解析账号
-	Account *PrivateDNSAccount `json:"Account,omitempty" name:"Account"`
+	Account *PrivateDNSAccount `json:"Account,omitnil" name:"Account"`
 }
 
 func (r *CreatePrivateDNSAccountRequest) ToJsonString() string {
@@ -122,7 +122,7 @@ func (r *CreatePrivateDNSAccountRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePrivateDNSAccountResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreatePrivateDNSAccountResponse struct {
@@ -144,50 +144,50 @@ func (r *CreatePrivateDNSAccountResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePrivateZoneRecordRequestParams struct {
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
-	RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
+	RecordType *string `json:"RecordType,omitnil" name:"RecordType"`
 
 	// 子域名，例如 "www", "m", "@"
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 
 	// 记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
-	RecordValue *string `json:"RecordValue,omitempty" name:"RecordValue"`
+	RecordValue *string `json:"RecordValue,omitnil" name:"RecordValue"`
 
 	// 记录权重，值为1-100
-	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+	Weight *int64 `json:"Weight,omitnil" name:"Weight"`
 
 	// MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
-	MX *int64 `json:"MX,omitempty" name:"MX"`
+	MX *int64 `json:"MX,omitnil" name:"MX"`
 
 	// 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
-	TTL *int64 `json:"TTL,omitempty" name:"TTL"`
+	TTL *int64 `json:"TTL,omitnil" name:"TTL"`
 }
 
 type CreatePrivateZoneRecordRequest struct {
 	*tchttp.BaseRequest
 	
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
-	RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
+	RecordType *string `json:"RecordType,omitnil" name:"RecordType"`
 
 	// 子域名，例如 "www", "m", "@"
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 
 	// 记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
-	RecordValue *string `json:"RecordValue,omitempty" name:"RecordValue"`
+	RecordValue *string `json:"RecordValue,omitnil" name:"RecordValue"`
 
 	// 记录权重，值为1-100
-	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+	Weight *int64 `json:"Weight,omitnil" name:"Weight"`
 
 	// MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
-	MX *int64 `json:"MX,omitempty" name:"MX"`
+	MX *int64 `json:"MX,omitnil" name:"MX"`
 
 	// 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
-	TTL *int64 `json:"TTL,omitempty" name:"TTL"`
+	TTL *int64 `json:"TTL,omitnil" name:"TTL"`
 }
 
 func (r *CreatePrivateZoneRecordRequest) ToJsonString() string {
@@ -218,10 +218,10 @@ func (r *CreatePrivateZoneRecordRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePrivateZoneRecordResponseParams struct {
 	// 记录Id
-	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+	RecordId *string `json:"RecordId,omitnil" name:"RecordId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreatePrivateZoneRecordResponse struct {
@@ -243,56 +243,56 @@ func (r *CreatePrivateZoneRecordResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePrivateZoneRequestParams struct {
 	// 域名，格式必须是标准的TLD
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 创建私有域的同时，为其打上标签
-	TagSet []*TagInfo `json:"TagSet,omitempty" name:"TagSet"`
+	TagSet []*TagInfo `json:"TagSet,omitnil" name:"TagSet"`
 
 	// 创建私有域的同时，将其关联至VPC
-	VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet"`
+	VpcSet []*VpcInfo `json:"VpcSet,omitnil" name:"VpcSet"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 是否开启子域名递归, ENABLED， DISABLED。默认值为ENABLED
-	DnsForwardStatus *string `json:"DnsForwardStatus,omitempty" name:"DnsForwardStatus"`
+	DnsForwardStatus *string `json:"DnsForwardStatus,omitnil" name:"DnsForwardStatus"`
 
 	// 创建私有域的同时，将其关联至VPC
-	Vpcs []*VpcInfo `json:"Vpcs,omitempty" name:"Vpcs"`
+	Vpcs []*VpcInfo `json:"Vpcs,omitnil" name:"Vpcs"`
 
 	// 创建私有域同时绑定关联账号的VPC
-	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitempty" name:"AccountVpcSet"`
+	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
 
 	// 是否CNAME加速：ENABLED，DISABLED，默认值为ENABLED
-	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitempty" name:"CnameSpeedupStatus"`
+	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitnil" name:"CnameSpeedupStatus"`
 }
 
 type CreatePrivateZoneRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名，格式必须是标准的TLD
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 创建私有域的同时，为其打上标签
-	TagSet []*TagInfo `json:"TagSet,omitempty" name:"TagSet"`
+	TagSet []*TagInfo `json:"TagSet,omitnil" name:"TagSet"`
 
 	// 创建私有域的同时，将其关联至VPC
-	VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet"`
+	VpcSet []*VpcInfo `json:"VpcSet,omitnil" name:"VpcSet"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 是否开启子域名递归, ENABLED， DISABLED。默认值为ENABLED
-	DnsForwardStatus *string `json:"DnsForwardStatus,omitempty" name:"DnsForwardStatus"`
+	DnsForwardStatus *string `json:"DnsForwardStatus,omitnil" name:"DnsForwardStatus"`
 
 	// 创建私有域的同时，将其关联至VPC
-	Vpcs []*VpcInfo `json:"Vpcs,omitempty" name:"Vpcs"`
+	Vpcs []*VpcInfo `json:"Vpcs,omitnil" name:"Vpcs"`
 
 	// 创建私有域同时绑定关联账号的VPC
-	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitempty" name:"AccountVpcSet"`
+	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
 
 	// 是否CNAME加速：ENABLED，DISABLED，默认值为ENABLED
-	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitempty" name:"CnameSpeedupStatus"`
+	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitnil" name:"CnameSpeedupStatus"`
 }
 
 func (r *CreatePrivateZoneRequest) ToJsonString() string {
@@ -324,13 +324,13 @@ func (r *CreatePrivateZoneRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreatePrivateZoneResponseParams struct {
 	// 私有域ID, zone-xxxxxx
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 私有域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreatePrivateZoneResponse struct {
@@ -351,23 +351,23 @@ func (r *CreatePrivateZoneResponse) FromJsonString(s string) error {
 
 type DatePoint struct {
 	// 时间
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 值
-	Value *int64 `json:"Value,omitempty" name:"Value"`
+	Value *int64 `json:"Value,omitnil" name:"Value"`
 }
 
 // Predefined struct for user
 type DeleteEndPointRequestParams struct {
 	// 终端节点ID
-	EndPointId *string `json:"EndPointId,omitempty" name:"EndPointId"`
+	EndPointId *string `json:"EndPointId,omitnil" name:"EndPointId"`
 }
 
 type DeleteEndPointRequest struct {
 	*tchttp.BaseRequest
 	
 	// 终端节点ID
-	EndPointId *string `json:"EndPointId,omitempty" name:"EndPointId"`
+	EndPointId *string `json:"EndPointId,omitnil" name:"EndPointId"`
 }
 
 func (r *DeleteEndPointRequest) ToJsonString() string {
@@ -392,7 +392,7 @@ func (r *DeleteEndPointRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteEndPointResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteEndPointResponse struct {
@@ -414,14 +414,14 @@ func (r *DeleteEndPointResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePrivateDNSAccountRequestParams struct {
 	// 私有域解析账号
-	Account *PrivateDNSAccount `json:"Account,omitempty" name:"Account"`
+	Account *PrivateDNSAccount `json:"Account,omitnil" name:"Account"`
 }
 
 type DeletePrivateDNSAccountRequest struct {
 	*tchttp.BaseRequest
 	
 	// 私有域解析账号
-	Account *PrivateDNSAccount `json:"Account,omitempty" name:"Account"`
+	Account *PrivateDNSAccount `json:"Account,omitnil" name:"Account"`
 }
 
 func (r *DeletePrivateDNSAccountRequest) ToJsonString() string {
@@ -446,7 +446,7 @@ func (r *DeletePrivateDNSAccountRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePrivateDNSAccountResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeletePrivateDNSAccountResponse struct {
@@ -468,26 +468,26 @@ func (r *DeletePrivateDNSAccountResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePrivateZoneRecordRequestParams struct {
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 记录ID
-	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+	RecordId *string `json:"RecordId,omitnil" name:"RecordId"`
 
 	// 记录ID数组，RecordId 优先
-	RecordIdSet []*string `json:"RecordIdSet,omitempty" name:"RecordIdSet"`
+	RecordIdSet []*string `json:"RecordIdSet,omitnil" name:"RecordIdSet"`
 }
 
 type DeletePrivateZoneRecordRequest struct {
 	*tchttp.BaseRequest
 	
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 记录ID
-	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+	RecordId *string `json:"RecordId,omitnil" name:"RecordId"`
 
 	// 记录ID数组，RecordId 优先
-	RecordIdSet []*string `json:"RecordIdSet,omitempty" name:"RecordIdSet"`
+	RecordIdSet []*string `json:"RecordIdSet,omitnil" name:"RecordIdSet"`
 }
 
 func (r *DeletePrivateZoneRecordRequest) ToJsonString() string {
@@ -514,7 +514,7 @@ func (r *DeletePrivateZoneRecordRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePrivateZoneRecordResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeletePrivateZoneRecordResponse struct {
@@ -536,20 +536,20 @@ func (r *DeletePrivateZoneRecordResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePrivateZoneRequestParams struct {
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 私有域ID数组，ZoneId 优先
-	ZoneIdSet []*string `json:"ZoneIdSet,omitempty" name:"ZoneIdSet"`
+	ZoneIdSet []*string `json:"ZoneIdSet,omitnil" name:"ZoneIdSet"`
 }
 
 type DeletePrivateZoneRequest struct {
 	*tchttp.BaseRequest
 	
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 私有域ID数组，ZoneId 优先
-	ZoneIdSet []*string `json:"ZoneIdSet,omitempty" name:"ZoneIdSet"`
+	ZoneIdSet []*string `json:"ZoneIdSet,omitnil" name:"ZoneIdSet"`
 }
 
 func (r *DeletePrivateZoneRequest) ToJsonString() string {
@@ -575,7 +575,7 @@ func (r *DeletePrivateZoneRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePrivateZoneResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeletePrivateZoneResponse struct {
@@ -597,32 +597,32 @@ func (r *DeletePrivateZoneResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccountVpcListRequestParams struct {
 	// 关联账号的uin
-	AccountUin *string `json:"AccountUin,omitempty" name:"AccountUin"`
+	AccountUin *string `json:"AccountUin,omitnil" name:"AccountUin"`
 
 	// 分页偏移量，从0开始
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页限制数目， 最大100，默认20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤参数
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAccountVpcListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 关联账号的uin
-	AccountUin *string `json:"AccountUin,omitempty" name:"AccountUin"`
+	AccountUin *string `json:"AccountUin,omitnil" name:"AccountUin"`
 
 	// 分页偏移量，从0开始
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页限制数目， 最大100，默认20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤参数
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAccountVpcListRequest) ToJsonString() string {
@@ -650,13 +650,13 @@ func (r *DescribeAccountVpcListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccountVpcListResponseParams struct {
 	// VPC数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// VPC 列表
-	VpcSet []*AccountVpcInfoOut `json:"VpcSet,omitempty" name:"VpcSet"`
+	VpcSet []*AccountVpcInfoOut `json:"VpcSet,omitnil" name:"VpcSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAccountVpcListResponse struct {
@@ -678,38 +678,38 @@ func (r *DescribeAccountVpcListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAuditLogRequestParams struct {
 	// 请求量统计起始时间
-	TimeRangeBegin *string `json:"TimeRangeBegin,omitempty" name:"TimeRangeBegin"`
+	TimeRangeBegin *string `json:"TimeRangeBegin,omitnil" name:"TimeRangeBegin"`
 
 	// 筛选参数：ZoneId：私有域ID；Domain：私有域；OperatorUin：操作者账号ID
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 请求量统计结束时间
-	TimeRangeEnd *string `json:"TimeRangeEnd,omitempty" name:"TimeRangeEnd"`
+	TimeRangeEnd *string `json:"TimeRangeEnd,omitnil" name:"TimeRangeEnd"`
 
 	// 分页偏移量，从0开始
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页限制数目， 最大100，默认20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeAuditLogRequest struct {
 	*tchttp.BaseRequest
 	
 	// 请求量统计起始时间
-	TimeRangeBegin *string `json:"TimeRangeBegin,omitempty" name:"TimeRangeBegin"`
+	TimeRangeBegin *string `json:"TimeRangeBegin,omitnil" name:"TimeRangeBegin"`
 
 	// 筛选参数：ZoneId：私有域ID；Domain：私有域；OperatorUin：操作者账号ID
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 请求量统计结束时间
-	TimeRangeEnd *string `json:"TimeRangeEnd,omitempty" name:"TimeRangeEnd"`
+	TimeRangeEnd *string `json:"TimeRangeEnd,omitnil" name:"TimeRangeEnd"`
 
 	// 分页偏移量，从0开始
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页限制数目， 最大100，默认20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeAuditLogRequest) ToJsonString() string {
@@ -738,10 +738,10 @@ func (r *DescribeAuditLogRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAuditLogResponseParams struct {
 	// 操作日志列表
-	Data []*AuditLog `json:"Data,omitempty" name:"Data"`
+	Data []*AuditLog `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAuditLogResponse struct {
@@ -792,19 +792,19 @@ func (r *DescribeDashboardRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDashboardResponseParams struct {
 	// 私有域解析总数
-	ZoneTotal *int64 `json:"ZoneTotal,omitempty" name:"ZoneTotal"`
+	ZoneTotal *int64 `json:"ZoneTotal,omitnil" name:"ZoneTotal"`
 
 	// 私有域关联VPC数量
-	ZoneVpcCount *int64 `json:"ZoneVpcCount,omitempty" name:"ZoneVpcCount"`
+	ZoneVpcCount *int64 `json:"ZoneVpcCount,omitnil" name:"ZoneVpcCount"`
 
 	// 历史请求量总数
-	RequestTotalCount *int64 `json:"RequestTotalCount,omitempty" name:"RequestTotalCount"`
+	RequestTotalCount *int64 `json:"RequestTotalCount,omitnil" name:"RequestTotalCount"`
 
 	// 流量包用量
-	FlowUsage []*FlowUsage `json:"FlowUsage,omitempty" name:"FlowUsage"`
+	FlowUsage []*FlowUsage `json:"FlowUsage,omitnil" name:"FlowUsage"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDashboardResponse struct {
@@ -826,26 +826,26 @@ func (r *DescribeDashboardResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePrivateDNSAccountListRequestParams struct {
 	// 分页偏移量，从0开始
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页限制数目， 最大100，默认20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤参数
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribePrivateDNSAccountListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页偏移量，从0开始
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页限制数目， 最大100，默认20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤参数
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribePrivateDNSAccountListRequest) ToJsonString() string {
@@ -872,13 +872,13 @@ func (r *DescribePrivateDNSAccountListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePrivateDNSAccountListResponseParams struct {
 	// 私有域解析账号数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 私有域解析账号列表
-	AccountSet []*PrivateDNSAccount `json:"AccountSet,omitempty" name:"AccountSet"`
+	AccountSet []*PrivateDNSAccount `json:"AccountSet,omitnil" name:"AccountSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePrivateDNSAccountListResponse struct {
@@ -900,26 +900,26 @@ func (r *DescribePrivateDNSAccountListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePrivateZoneListRequestParams struct {
 	// 分页偏移量，从0开始
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页限制数目， 最大100，默认20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤参数
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribePrivateZoneListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页偏移量，从0开始
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页限制数目， 最大100，默认20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤参数
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribePrivateZoneListRequest) ToJsonString() string {
@@ -946,13 +946,13 @@ func (r *DescribePrivateZoneListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePrivateZoneListResponseParams struct {
 	// 私有域数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 私有域列表
-	PrivateZoneSet []*PrivateZone `json:"PrivateZoneSet,omitempty" name:"PrivateZoneSet"`
+	PrivateZoneSet []*PrivateZone `json:"PrivateZoneSet,omitnil" name:"PrivateZoneSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePrivateZoneListResponse struct {
@@ -974,32 +974,32 @@ func (r *DescribePrivateZoneListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePrivateZoneRecordListRequestParams struct {
 	// 私有域ID: zone-xxxxxx
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 过滤参数（支持使用Value、RecordType过滤）
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 分页偏移量，从0开始
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页限制数目， 最大200，默认20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribePrivateZoneRecordListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 私有域ID: zone-xxxxxx
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 过滤参数（支持使用Value、RecordType过滤）
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 分页偏移量，从0开始
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页限制数目， 最大200，默认20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribePrivateZoneRecordListRequest) ToJsonString() string {
@@ -1027,13 +1027,13 @@ func (r *DescribePrivateZoneRecordListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePrivateZoneRecordListResponseParams struct {
 	// 解析记录数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 解析记录列表
-	RecordSet []*PrivateZoneRecord `json:"RecordSet,omitempty" name:"RecordSet"`
+	RecordSet []*PrivateZoneRecord `json:"RecordSet,omitnil" name:"RecordSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePrivateZoneRecordListResponse struct {
@@ -1055,14 +1055,14 @@ func (r *DescribePrivateZoneRecordListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePrivateZoneRequestParams struct {
 	// 域名，格式必须是标准的TLD
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 }
 
 type DescribePrivateZoneRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名，格式必须是标准的TLD
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 }
 
 func (r *DescribePrivateZoneRequest) ToJsonString() string {
@@ -1087,10 +1087,10 @@ func (r *DescribePrivateZoneRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePrivateZoneResponseParams struct {
 	// 私有域详情
-	PrivateZone *PrivateZone `json:"PrivateZone,omitempty" name:"PrivateZone"`
+	PrivateZone *PrivateZone `json:"PrivateZone,omitnil" name:"PrivateZone"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePrivateZoneResponse struct {
@@ -1141,10 +1141,10 @@ func (r *DescribePrivateZoneServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePrivateZoneServiceResponseParams struct {
 	// 私有域解析服务开通状态。ENABLED已开通，DISABLED未开通
-	ServiceStatus *string `json:"ServiceStatus,omitempty" name:"ServiceStatus"`
+	ServiceStatus *string `json:"ServiceStatus,omitnil" name:"ServiceStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePrivateZoneServiceResponse struct {
@@ -1195,10 +1195,10 @@ func (r *DescribeQuotaUsageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeQuotaUsageResponseParams struct {
 	// Tld额度使用情况
-	TldQuota *TldQuota `json:"TldQuota,omitempty" name:"TldQuota"`
+	TldQuota *TldQuota `json:"TldQuota,omitnil" name:"TldQuota"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeQuotaUsageResponse struct {
@@ -1220,26 +1220,26 @@ func (r *DescribeQuotaUsageResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRequestDataRequestParams struct {
 	// 请求量统计起始时间，格式：2020-11-22 00:00:00
-	TimeRangeBegin *string `json:"TimeRangeBegin,omitempty" name:"TimeRangeBegin"`
+	TimeRangeBegin *string `json:"TimeRangeBegin,omitnil" name:"TimeRangeBegin"`
 
 	// 筛选参数：
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 请求量统计结束时间，格式：2020-11-22 23:59:59
-	TimeRangeEnd *string `json:"TimeRangeEnd,omitempty" name:"TimeRangeEnd"`
+	TimeRangeEnd *string `json:"TimeRangeEnd,omitnil" name:"TimeRangeEnd"`
 }
 
 type DescribeRequestDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 请求量统计起始时间，格式：2020-11-22 00:00:00
-	TimeRangeBegin *string `json:"TimeRangeBegin,omitempty" name:"TimeRangeBegin"`
+	TimeRangeBegin *string `json:"TimeRangeBegin,omitnil" name:"TimeRangeBegin"`
 
 	// 筛选参数：
-	Filters []*Filter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 请求量统计结束时间，格式：2020-11-22 23:59:59
-	TimeRangeEnd *string `json:"TimeRangeEnd,omitempty" name:"TimeRangeEnd"`
+	TimeRangeEnd *string `json:"TimeRangeEnd,omitnil" name:"TimeRangeEnd"`
 }
 
 func (r *DescribeRequestDataRequest) ToJsonString() string {
@@ -1266,13 +1266,13 @@ func (r *DescribeRequestDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRequestDataResponseParams struct {
 	// 请求量统计表
-	Data []*MetricData `json:"Data,omitempty" name:"Data"`
+	Data []*MetricData `json:"Data,omitnil" name:"Data"`
 
 	// 请求量单位时间: Day：天，Hour：小时
-	Interval *string `json:"Interval,omitempty" name:"Interval"`
+	Interval *string `json:"Interval,omitnil" name:"Interval"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRequestDataResponse struct {
@@ -1293,91 +1293,91 @@ func (r *DescribeRequestDataResponse) FromJsonString(s string) error {
 
 type Filter struct {
 	// 参数名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 参数值数组
-	Values []*string `json:"Values,omitempty" name:"Values"`
+	Values []*string `json:"Values,omitnil" name:"Values"`
 }
 
 type FlowUsage struct {
 	// 流量包类型：ZONE 私有域；TRAFFIC 解析流量包
-	FlowType *string `json:"FlowType,omitempty" name:"FlowType"`
+	FlowType *string `json:"FlowType,omitnil" name:"FlowType"`
 
 	// 流量包总额度
-	TotalQuantity *int64 `json:"TotalQuantity,omitempty" name:"TotalQuantity"`
+	TotalQuantity *int64 `json:"TotalQuantity,omitnil" name:"TotalQuantity"`
 
 	// 流量包可用额度
-	AvailableQuantity *int64 `json:"AvailableQuantity,omitempty" name:"AvailableQuantity"`
+	AvailableQuantity *int64 `json:"AvailableQuantity,omitnil" name:"AvailableQuantity"`
 }
 
 type MetricData struct {
 	// 资源描述
-	Resource *string `json:"Resource,omitempty" name:"Resource"`
+	Resource *string `json:"Resource,omitnil" name:"Resource"`
 
 	// 表名
-	Metric *string `json:"Metric,omitempty" name:"Metric"`
+	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
 	// 表数据
-	DataSet []*DatePoint `json:"DataSet,omitempty" name:"DataSet"`
+	DataSet []*DatePoint `json:"DataSet,omitnil" name:"DataSet"`
 
 	// 查询范围内的请求总量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MetricCount *int64 `json:"MetricCount,omitempty" name:"MetricCount"`
+	MetricCount *int64 `json:"MetricCount,omitnil" name:"MetricCount"`
 }
 
 // Predefined struct for user
 type ModifyPrivateZoneRecordRequestParams struct {
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 记录ID
-	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+	RecordId *string `json:"RecordId,omitnil" name:"RecordId"`
 
 	// 记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
-	RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
+	RecordType *string `json:"RecordType,omitnil" name:"RecordType"`
 
 	// 子域名，例如 "www", "m", "@"
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 
 	// 记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
-	RecordValue *string `json:"RecordValue,omitempty" name:"RecordValue"`
+	RecordValue *string `json:"RecordValue,omitnil" name:"RecordValue"`
 
 	// 记录权重，值为1-100
-	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+	Weight *int64 `json:"Weight,omitnil" name:"Weight"`
 
 	// MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
-	MX *int64 `json:"MX,omitempty" name:"MX"`
+	MX *int64 `json:"MX,omitnil" name:"MX"`
 
 	// 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
-	TTL *int64 `json:"TTL,omitempty" name:"TTL"`
+	TTL *int64 `json:"TTL,omitnil" name:"TTL"`
 }
 
 type ModifyPrivateZoneRecordRequest struct {
 	*tchttp.BaseRequest
 	
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 记录ID
-	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+	RecordId *string `json:"RecordId,omitnil" name:"RecordId"`
 
 	// 记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
-	RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
+	RecordType *string `json:"RecordType,omitnil" name:"RecordType"`
 
 	// 子域名，例如 "www", "m", "@"
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 
 	// 记录值，例如 IP：192.168.10.2，CNAME：cname.qcloud.com.，MX：mail.qcloud.com.
-	RecordValue *string `json:"RecordValue,omitempty" name:"RecordValue"`
+	RecordValue *string `json:"RecordValue,omitnil" name:"RecordValue"`
 
 	// 记录权重，值为1-100
-	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+	Weight *int64 `json:"Weight,omitnil" name:"Weight"`
 
 	// MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
-	MX *int64 `json:"MX,omitempty" name:"MX"`
+	MX *int64 `json:"MX,omitnil" name:"MX"`
 
 	// 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
-	TTL *int64 `json:"TTL,omitempty" name:"TTL"`
+	TTL *int64 `json:"TTL,omitnil" name:"TTL"`
 }
 
 func (r *ModifyPrivateZoneRecordRequest) ToJsonString() string {
@@ -1409,7 +1409,7 @@ func (r *ModifyPrivateZoneRecordRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPrivateZoneRecordResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyPrivateZoneRecordResponse struct {
@@ -1431,32 +1431,32 @@ func (r *ModifyPrivateZoneRecordResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPrivateZoneRequestParams struct {
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 是否开启子域名递归, ENABLED， DISABLED
-	DnsForwardStatus *string `json:"DnsForwardStatus,omitempty" name:"DnsForwardStatus"`
+	DnsForwardStatus *string `json:"DnsForwardStatus,omitnil" name:"DnsForwardStatus"`
 
 	// 是否开启CNAME加速：ENABLED， DISABLED
-	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitempty" name:"CnameSpeedupStatus"`
+	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitnil" name:"CnameSpeedupStatus"`
 }
 
 type ModifyPrivateZoneRequest struct {
 	*tchttp.BaseRequest
 	
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 是否开启子域名递归, ENABLED， DISABLED
-	DnsForwardStatus *string `json:"DnsForwardStatus,omitempty" name:"DnsForwardStatus"`
+	DnsForwardStatus *string `json:"DnsForwardStatus,omitnil" name:"DnsForwardStatus"`
 
 	// 是否开启CNAME加速：ENABLED， DISABLED
-	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitempty" name:"CnameSpeedupStatus"`
+	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitnil" name:"CnameSpeedupStatus"`
 }
 
 func (r *ModifyPrivateZoneRequest) ToJsonString() string {
@@ -1484,7 +1484,7 @@ func (r *ModifyPrivateZoneRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPrivateZoneResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyPrivateZoneResponse struct {
@@ -1506,26 +1506,26 @@ func (r *ModifyPrivateZoneResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPrivateZoneVpcRequestParams struct {
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 私有域关联的全部VPC列表
-	VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet"`
+	VpcSet []*VpcInfo `json:"VpcSet,omitnil" name:"VpcSet"`
 
 	// 私有域账号关联的全部VPC列表
-	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitempty" name:"AccountVpcSet"`
+	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
 }
 
 type ModifyPrivateZoneVpcRequest struct {
 	*tchttp.BaseRequest
 	
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 私有域关联的全部VPC列表
-	VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet"`
+	VpcSet []*VpcInfo `json:"VpcSet,omitnil" name:"VpcSet"`
 
 	// 私有域账号关联的全部VPC列表
-	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitempty" name:"AccountVpcSet"`
+	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
 }
 
 func (r *ModifyPrivateZoneVpcRequest) ToJsonString() string {
@@ -1552,16 +1552,16 @@ func (r *ModifyPrivateZoneVpcRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPrivateZoneVpcResponseParams struct {
 	// 私有域ID, zone-xxxxxx
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 解析域关联的VPC列表
-	VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet"`
+	VpcSet []*VpcInfo `json:"VpcSet,omitnil" name:"VpcSet"`
 
 	// 私有域账号关联的全部VPC列表
-	AccountVpcSet []*AccountVpcInfoOutput `json:"AccountVpcSet,omitempty" name:"AccountVpcSet"`
+	AccountVpcSet []*AccountVpcInfoOutput `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyPrivateZoneVpcResponse struct {
@@ -1583,26 +1583,26 @@ func (r *ModifyPrivateZoneVpcResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRecordsStatusRequestParams struct {
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 解析记录ID列表
-	RecordIds []*int64 `json:"RecordIds,omitempty" name:"RecordIds"`
+	RecordIds []*int64 `json:"RecordIds,omitnil" name:"RecordIds"`
 
 	// enabled：生效，disabled：失效
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 }
 
 type ModifyRecordsStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 解析记录ID列表
-	RecordIds []*int64 `json:"RecordIds,omitempty" name:"RecordIds"`
+	RecordIds []*int64 `json:"RecordIds,omitnil" name:"RecordIds"`
 
 	// enabled：生效，disabled：失效
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *ModifyRecordsStatusRequest) ToJsonString() string {
@@ -1629,16 +1629,16 @@ func (r *ModifyRecordsStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyRecordsStatusResponseParams struct {
 	// 私有域ID
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 解析记录ID列表
-	RecordIds []*int64 `json:"RecordIds,omitempty" name:"RecordIds"`
+	RecordIds []*int64 `json:"RecordIds,omitnil" name:"RecordIds"`
 
 	// enabled：生效，disabled：失效
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyRecordsStatusResponse struct {
@@ -1659,121 +1659,121 @@ func (r *ModifyRecordsStatusResponse) FromJsonString(s string) error {
 
 type PrivateDNSAccount struct {
 	// 主账号Uin
-	Uin *string `json:"Uin,omitempty" name:"Uin"`
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
 
 	// 主账号名称
-	Account *string `json:"Account,omitempty" name:"Account"`
+	Account *string `json:"Account,omitnil" name:"Account"`
 
 	// 用户昵称
-	Nickname *string `json:"Nickname,omitempty" name:"Nickname"`
+	Nickname *string `json:"Nickname,omitnil" name:"Nickname"`
 }
 
 type PrivateZone struct {
 	// 私有域id: zone-xxxxxxxx
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 域名所有者uin
-	OwnerUin *int64 `json:"OwnerUin,omitempty" name:"OwnerUin"`
+	OwnerUin *int64 `json:"OwnerUin,omitnil" name:"OwnerUin"`
 
 	// 私有域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 创建时间
-	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+	CreatedOn *string `json:"CreatedOn,omitnil" name:"CreatedOn"`
 
 	// 修改时间
-	UpdatedOn *string `json:"UpdatedOn,omitempty" name:"UpdatedOn"`
+	UpdatedOn *string `json:"UpdatedOn,omitnil" name:"UpdatedOn"`
 
 	// 记录数
-	RecordCount *int64 `json:"RecordCount,omitempty" name:"RecordCount"`
+	RecordCount *int64 `json:"RecordCount,omitnil" name:"RecordCount"`
 
 	// 备注
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 绑定的Vpc列表
-	VpcSet []*VpcInfo `json:"VpcSet,omitempty" name:"VpcSet"`
+	VpcSet []*VpcInfo `json:"VpcSet,omitnil" name:"VpcSet"`
 
 	// 私有域状态：正常解析：ENABLED, 暂停解析：SUSPEND, 锁定：FROZEN
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 域名递归解析状态：开通：ENABLED, 关闭，DISABLED
-	DnsForwardStatus *string `json:"DnsForwardStatus,omitempty" name:"DnsForwardStatus"`
+	DnsForwardStatus *string `json:"DnsForwardStatus,omitnil" name:"DnsForwardStatus"`
 
 	// 标签键值对集合
-	Tags []*TagInfo `json:"Tags,omitempty" name:"Tags"`
+	Tags []*TagInfo `json:"Tags,omitnil" name:"Tags"`
 
 	// 绑定的关联账号的vpc列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccountVpcSet []*AccountVpcInfoOutput `json:"AccountVpcSet,omitempty" name:"AccountVpcSet"`
+	AccountVpcSet []*AccountVpcInfoOutput `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
 
 	// 是否自定义TLD
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsCustomTld *bool `json:"IsCustomTld,omitempty" name:"IsCustomTld"`
+	IsCustomTld *bool `json:"IsCustomTld,omitnil" name:"IsCustomTld"`
 
 	// CNAME加速状态：开通：ENABLED, 关闭，DISABLED
-	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitempty" name:"CnameSpeedupStatus"`
+	CnameSpeedupStatus *string `json:"CnameSpeedupStatus,omitnil" name:"CnameSpeedupStatus"`
 
 	// 转发规则名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ForwardRuleName *string `json:"ForwardRuleName,omitempty" name:"ForwardRuleName"`
+	ForwardRuleName *string `json:"ForwardRuleName,omitnil" name:"ForwardRuleName"`
 
 	// 转发规则类型：云上到云下，DOWN；云下到云上，UP，目前只支持DOWN
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ForwardRuleType *string `json:"ForwardRuleType,omitempty" name:"ForwardRuleType"`
+	ForwardRuleType *string `json:"ForwardRuleType,omitnil" name:"ForwardRuleType"`
 
 	// 转发的地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ForwardAddress *string `json:"ForwardAddress,omitempty" name:"ForwardAddress"`
+	ForwardAddress *string `json:"ForwardAddress,omitnil" name:"ForwardAddress"`
 
 	// 终端节点名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EndPointName *string `json:"EndPointName,omitempty" name:"EndPointName"`
+	EndPointName *string `json:"EndPointName,omitnil" name:"EndPointName"`
 }
 
 type PrivateZoneRecord struct {
 	// 记录id
-	RecordId *string `json:"RecordId,omitempty" name:"RecordId"`
+	RecordId *string `json:"RecordId,omitnil" name:"RecordId"`
 
 	// 私有域id: zone-xxxxxxxx
-	ZoneId *string `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 子域名
-	SubDomain *string `json:"SubDomain,omitempty" name:"SubDomain"`
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
 
 	// 记录类型，可选的记录类型为："A", "AAAA", "CNAME", "MX", "TXT", "PTR"
-	RecordType *string `json:"RecordType,omitempty" name:"RecordType"`
+	RecordType *string `json:"RecordType,omitnil" name:"RecordType"`
 
 	// 记录值
-	RecordValue *string `json:"RecordValue,omitempty" name:"RecordValue"`
+	RecordValue *string `json:"RecordValue,omitnil" name:"RecordValue"`
 
 	// 记录缓存时间，数值越小生效越快，取值1-86400s, 默认 600
-	TTL *int64 `json:"TTL,omitempty" name:"TTL"`
+	TTL *int64 `json:"TTL,omitnil" name:"TTL"`
 
 	// MX优先级：记录类型为MX时必填。取值范围：5,10,15,20,30,40,50
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MX *int64 `json:"MX,omitempty" name:"MX"`
+	MX *int64 `json:"MX,omitnil" name:"MX"`
 
 	// 记录状态：ENABLED
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 记录权重，值为1-100
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Weight *int64 `json:"Weight,omitempty" name:"Weight"`
+	Weight *int64 `json:"Weight,omitnil" name:"Weight"`
 
 	// 记录创建时间
-	CreatedOn *string `json:"CreatedOn,omitempty" name:"CreatedOn"`
+	CreatedOn *string `json:"CreatedOn,omitnil" name:"CreatedOn"`
 
 	// 记录更新时间
-	UpdatedOn *string `json:"UpdatedOn,omitempty" name:"UpdatedOn"`
+	UpdatedOn *string `json:"UpdatedOn,omitnil" name:"UpdatedOn"`
 
 	// 附加信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Extra *string `json:"Extra,omitempty" name:"Extra"`
+	Extra *string `json:"Extra,omitnil" name:"Extra"`
 
 	// 0暂停，1启用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Enabled *uint64 `json:"Enabled,omitempty" name:"Enabled"`
+	Enabled *uint64 `json:"Enabled,omitnil" name:"Enabled"`
 }
 
 // Predefined struct for user
@@ -1808,10 +1808,10 @@ func (r *SubscribePrivateZoneServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SubscribePrivateZoneServiceResponseParams struct {
 	// 私有域解析服务开通状态
-	ServiceStatus *string `json:"ServiceStatus,omitempty" name:"ServiceStatus"`
+	ServiceStatus *string `json:"ServiceStatus,omitnil" name:"ServiceStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SubscribePrivateZoneServiceResponse struct {
@@ -1832,30 +1832,30 @@ func (r *SubscribePrivateZoneServiceResponse) FromJsonString(s string) error {
 
 type TagInfo struct {
 	// 标签键
-	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
 
 	// 标签值
-	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
 }
 
 type TldQuota struct {
 	// 总共额度
-	Total *int64 `json:"Total,omitempty" name:"Total"`
+	Total *int64 `json:"Total,omitnil" name:"Total"`
 
 	// 已使用额度
-	Used *int64 `json:"Used,omitempty" name:"Used"`
+	Used *int64 `json:"Used,omitnil" name:"Used"`
 
 	// 库存
-	Stock *int64 `json:"Stock,omitempty" name:"Stock"`
+	Stock *int64 `json:"Stock,omitnil" name:"Stock"`
 
 	// 用户限额
-	Quota *int64 `json:"Quota,omitempty" name:"Quota"`
+	Quota *int64 `json:"Quota,omitnil" name:"Quota"`
 }
 
 type VpcInfo struct {
 	// VpcId： vpc-xadsafsdasd
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// Vpc所属地区: ap-guangzhou, ap-shanghai
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 }

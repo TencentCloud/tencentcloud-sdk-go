@@ -15,52 +15,52 @@
 package v20190121
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type AddCrowdPackInfoRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 人群包名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 人群包文件名称,人群包文件必须为utf8编码，动态参数只能是汉字、数字、英文字母的组合，不能包含其他字符
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 人群包描述
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
 	// 已经上传好的人群包cos地址
-	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+	CosUrl *string `json:"CosUrl,omitnil" name:"CosUrl"`
 
 	// 人群包手机号数量
-	PhoneNum *int64 `json:"PhoneNum,omitempty" name:"PhoneNum"`
+	PhoneNum *int64 `json:"PhoneNum,omitnil" name:"PhoneNum"`
 }
 
 type AddCrowdPackInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 人群包名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 人群包文件名称,人群包文件必须为utf8编码，动态参数只能是汉字、数字、英文字母的组合，不能包含其他字符
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 人群包描述
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 
 	// 已经上传好的人群包cos地址
-	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+	CosUrl *string `json:"CosUrl,omitnil" name:"CosUrl"`
 
 	// 人群包手机号数量
-	PhoneNum *int64 `json:"PhoneNum,omitempty" name:"PhoneNum"`
+	PhoneNum *int64 `json:"PhoneNum,omitnil" name:"PhoneNum"`
 }
 
 func (r *AddCrowdPackInfoRequest) ToJsonString() string {
@@ -90,10 +90,10 @@ func (r *AddCrowdPackInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddCrowdPackInfoResponseParams struct {
 	// 接口返回
-	Data *SmsAddCrowdPackInfoResponse `json:"Data,omitempty" name:"Data"`
+	Data *SmsAddCrowdPackInfoResponse `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddCrowdPackInfoResponse struct {
@@ -115,7 +115,7 @@ func (r *AddCrowdPackInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddSmsSignRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
 	// 0：公司（0，1，2，3）。
@@ -125,7 +125,7 @@ type AddSmsSignRequestParams struct {
 	// 4：商标（7）。
 	// 5：政府/机关事业单位/其他机构（2，3）。
 	// 注：必须按照对应关系选择证明类型，否则会审核失败。
-	SignType *uint64 `json:"SignType,omitempty" name:"SignType"`
+	SignType *uint64 `json:"SignType,omitnil" name:"SignType"`
 
 	// 证明类型：
 	// 0：三证合一。
@@ -136,28 +136,28 @@ type AddSmsSignRequestParams struct {
 	// 5：网站备案后台截图（个人开发网站）。
 	// 6：小程序设置页面截图（个人认证小程序）。
 	// 7：商标注册书
-	DocumentType *uint64 `json:"DocumentType,omitempty" name:"DocumentType"`
+	DocumentType *uint64 `json:"DocumentType,omitnil" name:"DocumentType"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 
 	// 资质图片url
-	ProofImage *string `json:"ProofImage,omitempty" name:"ProofImage"`
+	ProofImage *string `json:"ProofImage,omitnil" name:"ProofImage"`
 
 	// 签名内容
-	SignName *string `json:"SignName,omitempty" name:"SignName"`
+	SignName *string `json:"SignName,omitnil" name:"SignName"`
 
 	// 签名备注，比如申请原因，使用场景等,可以填空
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type AddSmsSignRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
 	// 0：公司（0，1，2，3）。
@@ -167,7 +167,7 @@ type AddSmsSignRequest struct {
 	// 4：商标（7）。
 	// 5：政府/机关事业单位/其他机构（2，3）。
 	// 注：必须按照对应关系选择证明类型，否则会审核失败。
-	SignType *uint64 `json:"SignType,omitempty" name:"SignType"`
+	SignType *uint64 `json:"SignType,omitnil" name:"SignType"`
 
 	// 证明类型：
 	// 0：三证合一。
@@ -178,21 +178,21 @@ type AddSmsSignRequest struct {
 	// 5：网站备案后台截图（个人开发网站）。
 	// 6：小程序设置页面截图（个人认证小程序）。
 	// 7：商标注册书
-	DocumentType *uint64 `json:"DocumentType,omitempty" name:"DocumentType"`
+	DocumentType *uint64 `json:"DocumentType,omitnil" name:"DocumentType"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 
 	// 资质图片url
-	ProofImage *string `json:"ProofImage,omitempty" name:"ProofImage"`
+	ProofImage *string `json:"ProofImage,omitnil" name:"ProofImage"`
 
 	// 签名内容
-	SignName *string `json:"SignName,omitempty" name:"SignName"`
+	SignName *string `json:"SignName,omitnil" name:"SignName"`
 
 	// 签名备注，比如申请原因，使用场景等,可以填空
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 func (r *AddSmsSignRequest) ToJsonString() string {
@@ -223,10 +223,10 @@ func (r *AddSmsSignRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddSmsSignResponseParams struct {
 	// 签名id数组
-	Data *PaasCreateSignResp `json:"Data,omitempty" name:"Data"`
+	Data *PaasCreateSignResp `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddSmsSignResponse struct {
@@ -247,78 +247,78 @@ func (r *AddSmsSignResponse) FromJsonString(s string) error {
 
 type AddSmsTemplateDataStruct struct {
 	// 短信模板ID
-	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *uint64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 // Predefined struct for user
 type AddSmsTemplateRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 短信签名，创建签名时返回
-	SignID *uint64 `json:"SignID,omitempty" name:"SignID"`
+	SignID *uint64 `json:"SignID,omitnil" name:"SignID"`
 
 	// 模板名称
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 短信内容，动态内容使用占位符{1}，{2}等表示
-	TemplateContent *string `json:"TemplateContent,omitempty" name:"TemplateContent"`
+	TemplateContent *string `json:"TemplateContent,omitnil" name:"TemplateContent"`
 
 	// 短信类型：{0:普通短信，1:营销短信}
-	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
+	SmsType *uint64 `json:"SmsType,omitnil" name:"SmsType"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 
 	// 短信模板标签
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 发送短信活动时配置的落地链接地址,仅用作短信活动
-	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil" name:"Urls"`
 
 	// 发送短信活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号
-	CommonParams []*int64 `json:"CommonParams,omitempty" name:"CommonParams"`
+	CommonParams []*int64 `json:"CommonParams,omitnil" name:"CommonParams"`
 
 	// 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动
-	UrlParams []*int64 `json:"UrlParams,omitempty" name:"UrlParams"`
+	UrlParams []*int64 `json:"UrlParams,omitnil" name:"UrlParams"`
 }
 
 type AddSmsTemplateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 短信签名，创建签名时返回
-	SignID *uint64 `json:"SignID,omitempty" name:"SignID"`
+	SignID *uint64 `json:"SignID,omitnil" name:"SignID"`
 
 	// 模板名称
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 短信内容，动态内容使用占位符{1}，{2}等表示
-	TemplateContent *string `json:"TemplateContent,omitempty" name:"TemplateContent"`
+	TemplateContent *string `json:"TemplateContent,omitnil" name:"TemplateContent"`
 
 	// 短信类型：{0:普通短信，1:营销短信}
-	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
+	SmsType *uint64 `json:"SmsType,omitnil" name:"SmsType"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 
 	// 短信模板标签
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 发送短信活动时配置的落地链接地址,仅用作短信活动
-	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil" name:"Urls"`
 
 	// 发送短信活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号
-	CommonParams []*int64 `json:"CommonParams,omitempty" name:"CommonParams"`
+	CommonParams []*int64 `json:"CommonParams,omitnil" name:"CommonParams"`
 
 	// 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动
-	UrlParams []*int64 `json:"UrlParams,omitempty" name:"UrlParams"`
+	UrlParams []*int64 `json:"UrlParams,omitnil" name:"UrlParams"`
 }
 
 func (r *AddSmsTemplateRequest) ToJsonString() string {
@@ -352,10 +352,10 @@ func (r *AddSmsTemplateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddSmsTemplateResponseParams struct {
 	// 短信模板创建接口返回
-	Data *AddSmsTemplateDataStruct `json:"Data,omitempty" name:"Data"`
+	Data *AddSmsTemplateDataStruct `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddSmsTemplateResponse struct {
@@ -376,26 +376,26 @@ func (r *AddSmsTemplateResponse) FromJsonString(s string) error {
 
 type CancelActivityData struct {
 	// 成功返回时的文字描述
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 }
 
 // Predefined struct for user
 type CancelCampaignRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 短信活动id
-	CampaignId *int64 `json:"CampaignId,omitempty" name:"CampaignId"`
+	CampaignId *int64 `json:"CampaignId,omitnil" name:"CampaignId"`
 }
 
 type CancelCampaignRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 短信活动id
-	CampaignId *int64 `json:"CampaignId,omitempty" name:"CampaignId"`
+	CampaignId *int64 `json:"CampaignId,omitnil" name:"CampaignId"`
 }
 
 func (r *CancelCampaignRequest) ToJsonString() string {
@@ -421,10 +421,10 @@ func (r *CancelCampaignRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CancelCampaignResponseParams struct {
 	// 处理结果
-	Data *CancelActivityData `json:"Data,omitempty" name:"Data"`
+	Data *CancelActivityData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CancelCampaignResponse struct {
@@ -446,50 +446,50 @@ func (r *CancelCampaignResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCampaignRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 短信活动发送时间
-	SendTime *int64 `json:"SendTime,omitempty" name:"SendTime"`
+	SendTime *int64 `json:"SendTime,omitnil" name:"SendTime"`
 
 	// 短信活动名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 发送策略
-	Strategies []*PaasStrategy `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*PaasStrategy `json:"Strategies,omitnil" name:"Strategies"`
 
 	// 废弃
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 废弃
-	CrowdID *int64 `json:"CrowdID,omitempty" name:"CrowdID"`
+	CrowdID *int64 `json:"CrowdID,omitnil" name:"CrowdID"`
 
 	// 活动类型(0-短信,1-超短,不填默认为超短)
-	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
+	SmsType *uint64 `json:"SmsType,omitnil" name:"SmsType"`
 }
 
 type CreateCampaignRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 短信活动发送时间
-	SendTime *int64 `json:"SendTime,omitempty" name:"SendTime"`
+	SendTime *int64 `json:"SendTime,omitnil" name:"SendTime"`
 
 	// 短信活动名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 发送策略
-	Strategies []*PaasStrategy `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*PaasStrategy `json:"Strategies,omitnil" name:"Strategies"`
 
 	// 废弃
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 废弃
-	CrowdID *int64 `json:"CrowdID,omitempty" name:"CrowdID"`
+	CrowdID *int64 `json:"CrowdID,omitnil" name:"CrowdID"`
 
 	// 活动类型(0-短信,1-超短,不填默认为超短)
-	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
+	SmsType *uint64 `json:"SmsType,omitnil" name:"SmsType"`
 }
 
 func (r *CreateCampaignRequest) ToJsonString() string {
@@ -520,10 +520,10 @@ func (r *CreateCampaignRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateCampaignResponseParams struct {
 	// 活动信息
-	Data *SmsCreateCampaignResponse `json:"Data,omitempty" name:"Data"`
+	Data *SmsCreateCampaignResponse `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateCampaignResponse struct {
@@ -544,71 +544,71 @@ func (r *CreateCampaignResponse) FromJsonString(s string) error {
 
 type CreateMmsInstanceItem struct {
 	// 素材类型：1-文本 2-图片 3-视频 4-音频
-	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *int64 `json:"ContentType,omitnil" name:"ContentType"`
 
 	// 素材内容：如果素材是文本类型，直接填写文本内容，否则填写素材文件上传到cos后的url地址
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 }
 
 // Predefined struct for user
 type CreateMmsInstanceRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 样例名称
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 标题
-	Title *string `json:"Title,omitempty" name:"Title"`
+	Title *string `json:"Title,omitnil" name:"Title"`
 
 	// 签名
-	Sign *string `json:"Sign,omitempty" name:"Sign"`
+	Sign *string `json:"Sign,omitnil" name:"Sign"`
 
 	// 素材内容
-	Contents []*CreateMmsInstanceItem `json:"Contents,omitempty" name:"Contents"`
+	Contents []*CreateMmsInstanceItem `json:"Contents,omitnil" name:"Contents"`
 
 	// 样例中链接动态变量对应的链接，和占位符顺序一致
-	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil" name:"Urls"`
 
 	// 机型列表
-	PhoneType []*uint64 `json:"PhoneType,omitempty" name:"PhoneType"`
+	PhoneType []*uint64 `json:"PhoneType,omitnil" name:"PhoneType"`
 
 	// 发送超短活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号
-	CommonParams []*uint64 `json:"CommonParams,omitempty" name:"CommonParams"`
+	CommonParams []*uint64 `json:"CommonParams,omitnil" name:"CommonParams"`
 
 	// 发送超短活动时用于展示短连接模板占位符序号,仅用作超短活动
-	UrlParams []*uint64 `json:"UrlParams,omitempty" name:"UrlParams"`
+	UrlParams []*uint64 `json:"UrlParams,omitnil" name:"UrlParams"`
 }
 
 type CreateMmsInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 样例名称
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 标题
-	Title *string `json:"Title,omitempty" name:"Title"`
+	Title *string `json:"Title,omitnil" name:"Title"`
 
 	// 签名
-	Sign *string `json:"Sign,omitempty" name:"Sign"`
+	Sign *string `json:"Sign,omitnil" name:"Sign"`
 
 	// 素材内容
-	Contents []*CreateMmsInstanceItem `json:"Contents,omitempty" name:"Contents"`
+	Contents []*CreateMmsInstanceItem `json:"Contents,omitnil" name:"Contents"`
 
 	// 样例中链接动态变量对应的链接，和占位符顺序一致
-	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil" name:"Urls"`
 
 	// 机型列表
-	PhoneType []*uint64 `json:"PhoneType,omitempty" name:"PhoneType"`
+	PhoneType []*uint64 `json:"PhoneType,omitnil" name:"PhoneType"`
 
 	// 发送超短活动时用于展示人群包动态参数模板占位符序号或接口发送时变量占位符序号
-	CommonParams []*uint64 `json:"CommonParams,omitempty" name:"CommonParams"`
+	CommonParams []*uint64 `json:"CommonParams,omitnil" name:"CommonParams"`
 
 	// 发送超短活动时用于展示短连接模板占位符序号,仅用作超短活动
-	UrlParams []*uint64 `json:"UrlParams,omitempty" name:"UrlParams"`
+	UrlParams []*uint64 `json:"UrlParams,omitnil" name:"UrlParams"`
 }
 
 func (r *CreateMmsInstanceRequest) ToJsonString() string {
@@ -640,22 +640,22 @@ func (r *CreateMmsInstanceRequest) FromJsonString(s string) error {
 
 type CreateMmsInstanceResp struct {
 	// 返回码：0-成功 其它-失败
-	ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+	ReturnCode *int64 `json:"ReturnCode,omitnil" name:"ReturnCode"`
 
 	// 返回信息
-	ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
+	ReturnMsg *string `json:"ReturnMsg,omitnil" name:"ReturnMsg"`
 
 	// 样例id
-	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *int64 `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 // Predefined struct for user
 type CreateMmsInstanceResponseParams struct {
 	// 创建样例返回信息
-	Data *CreateMmsInstanceResp `json:"Data,omitempty" name:"Data"`
+	Data *CreateMmsInstanceResp `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateMmsInstanceResponse struct {
@@ -677,20 +677,20 @@ func (r *CreateMmsInstanceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DelCrowdPackRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 人群包id
-	ID *uint64 `json:"ID,omitempty" name:"ID"`
+	ID *uint64 `json:"ID,omitnil" name:"ID"`
 }
 
 type DelCrowdPackRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 人群包id
-	ID *uint64 `json:"ID,omitempty" name:"ID"`
+	ID *uint64 `json:"ID,omitnil" name:"ID"`
 }
 
 func (r *DelCrowdPackRequest) ToJsonString() string {
@@ -716,10 +716,10 @@ func (r *DelCrowdPackRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DelCrowdPackResponseParams struct {
 	// 接口返回
-	Data *SmsSuccessResponse `json:"Data,omitempty" name:"Data"`
+	Data *SmsSuccessResponse `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DelCrowdPackResponse struct {
@@ -740,26 +740,26 @@ func (r *DelCrowdPackResponse) FromJsonString(s string) error {
 
 type DelMmsInstanceData struct {
 	// 样例id
-	InstanceId *uint64 `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *uint64 `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 // Predefined struct for user
 type DelTemplateRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 短信模板ID
-	TemplateID *int64 `json:"TemplateID,omitempty" name:"TemplateID"`
+	TemplateID *int64 `json:"TemplateID,omitnil" name:"TemplateID"`
 }
 
 type DelTemplateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 短信模板ID
-	TemplateID *int64 `json:"TemplateID,omitempty" name:"TemplateID"`
+	TemplateID *int64 `json:"TemplateID,omitnil" name:"TemplateID"`
 }
 
 func (r *DelTemplateRequest) ToJsonString() string {
@@ -785,10 +785,10 @@ func (r *DelTemplateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DelTemplateResponseParams struct {
 	// 接口返回
-	Data *SmsSuccessResponse `json:"Data,omitempty" name:"Data"`
+	Data *SmsSuccessResponse `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DelTemplateResponse struct {
@@ -810,20 +810,20 @@ func (r *DelTemplateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMmsInstanceRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 超级短信样例id
-	InstanceId *uint64 `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *uint64 `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DeleteMmsInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 超级短信样例id
-	InstanceId *uint64 `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *uint64 `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *DeleteMmsInstanceRequest) ToJsonString() string {
@@ -849,10 +849,10 @@ func (r *DeleteMmsInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMmsInstanceResponseParams struct {
 	// 删除信息返回
-	Data *DelMmsInstanceData `json:"Data,omitempty" name:"Data"`
+	Data *DelMmsInstanceData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteMmsInstanceResponse struct {
@@ -874,20 +874,20 @@ func (r *DeleteMmsInstanceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMmsInstanceInfoRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 彩信实例id
-	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *int64 `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DescribeMmsInstanceInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 彩信实例id
-	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *int64 `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *DescribeMmsInstanceInfoRequest) ToJsonString() string {
@@ -913,10 +913,10 @@ func (r *DescribeMmsInstanceInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMmsInstanceInfoResponseParams struct {
 	// 彩信实例信息
-	Data *MmsInstanceInfo `json:"Data,omitempty" name:"Data"`
+	Data *MmsInstanceInfo `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeMmsInstanceInfoResponse struct {
@@ -938,38 +938,38 @@ func (r *DescribeMmsInstanceInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMmsInstanceListRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 业务代码
-	AppSubId *string `json:"AppSubId,omitempty" name:"AppSubId"`
+	AppSubId *string `json:"AppSubId,omitnil" name:"AppSubId"`
 
 	// 实例标题
-	Title *string `json:"Title,omitempty" name:"Title"`
+	Title *string `json:"Title,omitnil" name:"Title"`
 }
 
 type DescribeMmsInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 业务代码
-	AppSubId *string `json:"AppSubId,omitempty" name:"AppSubId"`
+	AppSubId *string `json:"AppSubId,omitnil" name:"AppSubId"`
 
 	// 实例标题
-	Title *string `json:"Title,omitempty" name:"Title"`
+	Title *string `json:"Title,omitnil" name:"Title"`
 }
 
 func (r *DescribeMmsInstanceListRequest) ToJsonString() string {
@@ -998,10 +998,10 @@ func (r *DescribeMmsInstanceListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMmsInstanceListResponseParams struct {
 	// 彩信实例信息列表返回
-	Data *MmsInstanceInfoList `json:"Data,omitempty" name:"Data"`
+	Data *MmsInstanceInfoList `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeMmsInstanceListResponse struct {
@@ -1023,20 +1023,20 @@ func (r *DescribeMmsInstanceListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmsCampaignStatisticsRequestParams struct {
 	// 活动id
-	CampaignId *uint64 `json:"CampaignId,omitempty" name:"CampaignId"`
+	CampaignId *uint64 `json:"CampaignId,omitnil" name:"CampaignId"`
 
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 }
 
 type DescribeSmsCampaignStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 活动id
-	CampaignId *uint64 `json:"CampaignId,omitempty" name:"CampaignId"`
+	CampaignId *uint64 `json:"CampaignId,omitnil" name:"CampaignId"`
 
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 }
 
 func (r *DescribeSmsCampaignStatisticsRequest) ToJsonString() string {
@@ -1062,10 +1062,10 @@ func (r *DescribeSmsCampaignStatisticsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmsCampaignStatisticsResponseParams struct {
 	// 响应数据
-	Data *SmsCampaignStatisticsData `json:"Data,omitempty" name:"Data"`
+	Data *SmsCampaignStatisticsData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSmsCampaignStatisticsResponse struct {
@@ -1086,55 +1086,55 @@ func (r *DescribeSmsCampaignStatisticsResponse) FromJsonString(s string) error {
 
 type DescribeSmsSignListDataStruct struct {
 	// 签名Id
-	SignId *uint64 `json:"SignId,omitempty" name:"SignId"`
+	SignId *uint64 `json:"SignId,omitnil" name:"SignId"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 
 	// 申请签名状态。其中：
 	// 0：表示审核通过。
 	// -1：表示审核未通过或审核失败。
-	StatusCode *int64 `json:"StatusCode,omitempty" name:"StatusCode"`
+	StatusCode *int64 `json:"StatusCode,omitnil" name:"StatusCode"`
 
 	// 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
-	ReviewReply *string `json:"ReviewReply,omitempty" name:"ReviewReply"`
+	ReviewReply *string `json:"ReviewReply,omitnil" name:"ReviewReply"`
 
 	// 签名名称。
-	SignName *string `json:"SignName,omitempty" name:"SignName"`
+	SignName *string `json:"SignName,omitnil" name:"SignName"`
 
 	// 提交审核时间，UNIX 时间戳（单位：秒）。
-	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *uint64 `json:"CreateTime,omitnil" name:"CreateTime"`
 }
 
 // Predefined struct for user
 type DescribeSmsSignListRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 签名ID数组
-	SignIdSet []*uint64 `json:"SignIdSet,omitempty" name:"SignIdSet"`
+	SignIdSet []*uint64 `json:"SignIdSet,omitnil" name:"SignIdSet"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 }
 
 type DescribeSmsSignListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 签名ID数组
-	SignIdSet []*uint64 `json:"SignIdSet,omitempty" name:"SignIdSet"`
+	SignIdSet []*uint64 `json:"SignIdSet,omitnil" name:"SignIdSet"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 }
 
 func (r *DescribeSmsSignListRequest) ToJsonString() string {
@@ -1161,10 +1161,10 @@ func (r *DescribeSmsSignListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmsSignListResponseParams struct {
 	// 返回数据
-	Data []*DescribeSmsSignListDataStruct `json:"Data,omitempty" name:"Data"`
+	Data []*DescribeSmsSignListDataStruct `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSmsSignListResponse struct {
@@ -1185,55 +1185,55 @@ func (r *DescribeSmsSignListResponse) FromJsonString(s string) error {
 
 type DescribeSmsTemplateListDataStruct struct {
 	// 模板Id
-	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *uint64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 
 	// 申请签名状态。其中：
 	// 0：表示审核通过。
 	// -1：表示审核未通过或审核失败。
-	StatusCode *int64 `json:"StatusCode,omitempty" name:"StatusCode"`
+	StatusCode *int64 `json:"StatusCode,omitnil" name:"StatusCode"`
 
 	// 审核回复，审核人员审核后给出的回复，通常是审核未通过的原因。
-	ReviewReply *string `json:"ReviewReply,omitempty" name:"ReviewReply"`
+	ReviewReply *string `json:"ReviewReply,omitnil" name:"ReviewReply"`
 
 	// 模板名称。
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 提交审核时间，UNIX 时间戳（单位：秒）。
-	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *uint64 `json:"CreateTime,omitnil" name:"CreateTime"`
 }
 
 // Predefined struct for user
 type DescribeSmsTemplateListRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 短信模板id数组
-	TemplateIdSet []*uint64 `json:"TemplateIdSet,omitempty" name:"TemplateIdSet"`
+	TemplateIdSet []*uint64 `json:"TemplateIdSet,omitnil" name:"TemplateIdSet"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 }
 
 type DescribeSmsTemplateListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 短信模板id数组
-	TemplateIdSet []*uint64 `json:"TemplateIdSet,omitempty" name:"TemplateIdSet"`
+	TemplateIdSet []*uint64 `json:"TemplateIdSet,omitnil" name:"TemplateIdSet"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 }
 
 func (r *DescribeSmsTemplateListRequest) ToJsonString() string {
@@ -1260,10 +1260,10 @@ func (r *DescribeSmsTemplateListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmsTemplateListResponseParams struct {
 	// 返回数据信息
-	Data []*DescribeSmsTemplateListDataStruct `json:"Data,omitempty" name:"Data"`
+	Data []*DescribeSmsTemplateListDataStruct `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSmsTemplateListResponse struct {
@@ -1285,38 +1285,38 @@ func (r *DescribeSmsTemplateListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetCrowdPackListRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 限制返回数量
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 人群包名称，用于过滤人群包
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 人群包状态，默认-1，用于过滤人群包
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 type GetCrowdPackListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 限制返回数量
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 人群包名称，用于过滤人群包
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 人群包状态，默认-1，用于过滤人群包
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *GetCrowdPackListRequest) ToJsonString() string {
@@ -1345,10 +1345,10 @@ func (r *GetCrowdPackListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetCrowdPackListResponseParams struct {
 	// 人群包信息列表
-	Data *SmsGetCrowdPackListResponse `json:"Data,omitempty" name:"Data"`
+	Data *SmsGetCrowdPackListResponse `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetCrowdPackListResponse struct {
@@ -1370,20 +1370,20 @@ func (r *GetCrowdPackListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetCrowdUploadInfoRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 上传文件名称
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 }
 
 type GetCrowdUploadInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 上传文件名称
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 }
 
 func (r *GetCrowdUploadInfoRequest) ToJsonString() string {
@@ -1409,10 +1409,10 @@ func (r *GetCrowdUploadInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetCrowdUploadInfoResponseParams struct {
 	// 返回信息
-	Data *SmsGetCrowdUploadInfoResponse `json:"Data,omitempty" name:"Data"`
+	Data *SmsGetCrowdUploadInfoResponse `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetCrowdUploadInfoResponse struct {
@@ -1434,14 +1434,14 @@ func (r *GetCrowdUploadInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetSmsAmountInfoRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 }
 
 type GetSmsAmountInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 }
 
 func (r *GetSmsAmountInfoRequest) ToJsonString() string {
@@ -1466,10 +1466,10 @@ func (r *GetSmsAmountInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetSmsAmountInfoResponseParams struct {
 	// 短信账号额度接口
-	Data *SmsAmountDataStruct `json:"Data,omitempty" name:"Data"`
+	Data *SmsAmountDataStruct `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetSmsAmountInfoResponse struct {
@@ -1491,20 +1491,20 @@ func (r *GetSmsAmountInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetSmsCampaignStatusRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 活动ID
-	CampaignId *int64 `json:"CampaignId,omitempty" name:"CampaignId"`
+	CampaignId *int64 `json:"CampaignId,omitnil" name:"CampaignId"`
 }
 
 type GetSmsCampaignStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 活动ID
-	CampaignId *int64 `json:"CampaignId,omitempty" name:"CampaignId"`
+	CampaignId *int64 `json:"CampaignId,omitnil" name:"CampaignId"`
 }
 
 func (r *GetSmsCampaignStatusRequest) ToJsonString() string {
@@ -1530,10 +1530,10 @@ func (r *GetSmsCampaignStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetSmsCampaignStatusResponseParams struct {
 	// 活动状态
-	Data *PaasSmsCampaignStatusResp `json:"Data,omitempty" name:"Data"`
+	Data *PaasSmsCampaignStatusResp `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetSmsCampaignStatusResponse struct {
@@ -1554,147 +1554,147 @@ func (r *GetSmsCampaignStatusResponse) FromJsonString(s string) error {
 
 type MmsInstanceInfo struct {
 	// 彩信实例id
-	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *int64 `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 彩信实例名称
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 状态是否通知
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 实例审核状态信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusInfo []*MmsInstanceStateInfo `json:"StatusInfo,omitempty" name:"StatusInfo"`
+	StatusInfo []*MmsInstanceStateInfo `json:"StatusInfo,omitnil" name:"StatusInfo"`
 
 	// 业务码
-	AppSubId *string `json:"AppSubId,omitempty" name:"AppSubId"`
+	AppSubId *string `json:"AppSubId,omitnil" name:"AppSubId"`
 
 	// 彩信标题
-	Title *string `json:"Title,omitempty" name:"Title"`
+	Title *string `json:"Title,omitnil" name:"Title"`
 
 	// 签名
-	Sign *string `json:"Sign,omitempty" name:"Sign"`
+	Sign *string `json:"Sign,omitnil" name:"Sign"`
 
 	// 彩信内容
-	Contents *string `json:"Contents,omitempty" name:"Contents"`
+	Contents *string `json:"Contents,omitnil" name:"Contents"`
 
 	// 创建时间
-	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
 
 	// 样例配置的链接地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil" name:"Urls"`
 
 	// 机型列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PhoneType []*uint64 `json:"PhoneType,omitempty" name:"PhoneType"`
+	PhoneType []*uint64 `json:"PhoneType,omitnil" name:"PhoneType"`
 
 	// 普通参数序号数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CommonParams []*uint64 `json:"CommonParams,omitempty" name:"CommonParams"`
+	CommonParams []*uint64 `json:"CommonParams,omitnil" name:"CommonParams"`
 
 	// 链接参数序号数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UrlParams []*uint64 `json:"UrlParams,omitempty" name:"UrlParams"`
+	UrlParams []*uint64 `json:"UrlParams,omitnil" name:"UrlParams"`
 }
 
 type MmsInstanceInfoList struct {
 	// 总数据量
-	Total *int64 `json:"Total,omitempty" name:"Total"`
+	Total *int64 `json:"Total,omitnil" name:"Total"`
 
 	// 彩信实例状态信息列表
-	List []*MmsInstanceInfo `json:"List,omitempty" name:"List"`
+	List []*MmsInstanceInfo `json:"List,omitnil" name:"List"`
 }
 
 type MmsInstanceStateInfo struct {
 	// 运营商
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 审核状态：0未审核，1审核通过，2审核拒绝
-	State *int64 `json:"State,omitempty" name:"State"`
+	State *int64 `json:"State,omitnil" name:"State"`
 }
 
 type ModifySmsTemplateDataStruct struct {
 	// 短信模板id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 // Predefined struct for user
 type ModifySmsTemplateRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 短信模板id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 短信签名，创建签名时返回
-	SignID *uint64 `json:"SignID,omitempty" name:"SignID"`
+	SignID *uint64 `json:"SignID,omitnil" name:"SignID"`
 
 	// 模板名称
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 短信内容，动态内容使用占位符{1}，{2}等表示
-	TemplateContent *string `json:"TemplateContent,omitempty" name:"TemplateContent"`
+	TemplateContent *string `json:"TemplateContent,omitnil" name:"TemplateContent"`
 
 	// 短信类型：{0:普通短信，1:营销短信}
-	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
+	SmsType *uint64 `json:"SmsType,omitnil" name:"SmsType"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 
 	// 短信模板标签
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 发送短信活动时配置的落地链接地址,仅用作短信活动
-	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil" name:"Urls"`
 
 	// 发送短信活动时用于展示人群包动态参数模板占位符序号,仅用作短信活动
-	CommonParams []*int64 `json:"CommonParams,omitempty" name:"CommonParams"`
+	CommonParams []*int64 `json:"CommonParams,omitnil" name:"CommonParams"`
 
 	// 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动
-	UrlParams []*int64 `json:"UrlParams,omitempty" name:"UrlParams"`
+	UrlParams []*int64 `json:"UrlParams,omitnil" name:"UrlParams"`
 }
 
 type ModifySmsTemplateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 短信模板id
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 短信签名，创建签名时返回
-	SignID *uint64 `json:"SignID,omitempty" name:"SignID"`
+	SignID *uint64 `json:"SignID,omitnil" name:"SignID"`
 
 	// 模板名称
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 
 	// 短信内容，动态内容使用占位符{1}，{2}等表示
-	TemplateContent *string `json:"TemplateContent,omitempty" name:"TemplateContent"`
+	TemplateContent *string `json:"TemplateContent,omitnil" name:"TemplateContent"`
 
 	// 短信类型：{0:普通短信，1:营销短信}
-	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
+	SmsType *uint64 `json:"SmsType,omitnil" name:"SmsType"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 
 	// 短信模板标签
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 发送短信活动时配置的落地链接地址,仅用作短信活动
-	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil" name:"Urls"`
 
 	// 发送短信活动时用于展示人群包动态参数模板占位符序号,仅用作短信活动
-	CommonParams []*int64 `json:"CommonParams,omitempty" name:"CommonParams"`
+	CommonParams []*int64 `json:"CommonParams,omitnil" name:"CommonParams"`
 
 	// 发送短信活动时用于展示短连接模板占位符序号,仅用作短信活动
-	UrlParams []*int64 `json:"UrlParams,omitempty" name:"UrlParams"`
+	UrlParams []*int64 `json:"UrlParams,omitnil" name:"UrlParams"`
 }
 
 func (r *ModifySmsTemplateRequest) ToJsonString() string {
@@ -1729,10 +1729,10 @@ func (r *ModifySmsTemplateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySmsTemplateResponseParams struct {
 	// 返回
-	Data *ModifySmsTemplateDataStruct `json:"Data,omitempty" name:"Data"`
+	Data *ModifySmsTemplateDataStruct `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifySmsTemplateResponse struct {
@@ -1753,71 +1753,71 @@ func (r *ModifySmsTemplateResponse) FromJsonString(s string) error {
 
 type PaasCreateSignResp struct {
 	// 签名id
-	SignId *int64 `json:"SignId,omitempty" name:"SignId"`
+	SignId *int64 `json:"SignId,omitnil" name:"SignId"`
 }
 
 type PaasSmsCampaignStatusResp struct {
 	// 0-未发送 1-发送中 2-发送结束 3-发送取消
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 type PaasStrategy struct {
 	// 人群包id
-	CrowdID *int64 `json:"CrowdID,omitempty" name:"CrowdID"`
+	CrowdID *int64 `json:"CrowdID,omitnil" name:"CrowdID"`
 
 	// 待选素材数组
-	Items []*PaasStrategyItem `json:"Items,omitempty" name:"Items"`
+	Items []*PaasStrategyItem `json:"Items,omitnil" name:"Items"`
 }
 
 type PaasStrategyItem struct {
 	// 短信模板id或超级短信样例id
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 素材类型 0-普短 1-超短
-	ContentType *int64 `json:"ContentType,omitempty" name:"ContentType"`
+	ContentType *int64 `json:"ContentType,omitnil" name:"ContentType"`
 }
 
 // Predefined struct for user
 type PushMmsContentRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 素材样例id
-	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *int64 `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 手机号
-	Tel *string `json:"Tel,omitempty" name:"Tel"`
+	Tel *string `json:"Tel,omitnil" name:"Tel"`
 
 	// 附带数据字段
-	Session *string `json:"Session,omitempty" name:"Session"`
+	Session *string `json:"Session,omitnil" name:"Session"`
 
 	// 动态参数key(即申请样例时设置的u_或p_开头的动态参数,要求序号有序)
-	DynamicParaKey []*string `json:"DynamicParaKey,omitempty" name:"DynamicParaKey"`
+	DynamicParaKey []*string `json:"DynamicParaKey,omitnil" name:"DynamicParaKey"`
 
 	// 动态参数值,和DynamicParaKey对应
-	DynamicParaValue []*string `json:"DynamicParaValue,omitempty" name:"DynamicParaValue"`
+	DynamicParaValue []*string `json:"DynamicParaValue,omitnil" name:"DynamicParaValue"`
 }
 
 type PushMmsContentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 素材样例id
-	InstanceId *int64 `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *int64 `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 手机号
-	Tel *string `json:"Tel,omitempty" name:"Tel"`
+	Tel *string `json:"Tel,omitnil" name:"Tel"`
 
 	// 附带数据字段
-	Session *string `json:"Session,omitempty" name:"Session"`
+	Session *string `json:"Session,omitnil" name:"Session"`
 
 	// 动态参数key(即申请样例时设置的u_或p_开头的动态参数,要求序号有序)
-	DynamicParaKey []*string `json:"DynamicParaKey,omitempty" name:"DynamicParaKey"`
+	DynamicParaKey []*string `json:"DynamicParaKey,omitnil" name:"DynamicParaKey"`
 
 	// 动态参数值,和DynamicParaKey对应
-	DynamicParaValue []*string `json:"DynamicParaValue,omitempty" name:"DynamicParaValue"`
+	DynamicParaValue []*string `json:"DynamicParaValue,omitnil" name:"DynamicParaValue"`
 }
 
 func (r *PushMmsContentRequest) ToJsonString() string {
@@ -1846,22 +1846,22 @@ func (r *PushMmsContentRequest) FromJsonString(s string) error {
 
 type PushMmsContentResp struct {
 	// 返回码：0-成功 其它-失败
-	ReturnCode *int64 `json:"ReturnCode,omitempty" name:"ReturnCode"`
+	ReturnCode *int64 `json:"ReturnCode,omitnil" name:"ReturnCode"`
 
 	// 返回信息
-	ReturnMsg *string `json:"ReturnMsg,omitempty" name:"ReturnMsg"`
+	ReturnMsg *string `json:"ReturnMsg,omitnil" name:"ReturnMsg"`
 
 	// 消息回执id
-	MessageId *int64 `json:"MessageId,omitempty" name:"MessageId"`
+	MessageId *int64 `json:"MessageId,omitnil" name:"MessageId"`
 }
 
 // Predefined struct for user
 type PushMmsContentResponseParams struct {
 	// 推送短信返回信息
-	Data *PushMmsContentResp `json:"Data,omitempty" name:"Data"`
+	Data *PushMmsContentResp `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type PushMmsContentResponse struct {
@@ -1882,84 +1882,84 @@ func (r *PushMmsContentResponse) FromJsonString(s string) error {
 
 type SendSmsPaasDataStruct struct {
 	// 发送流水号
-	SerialNo *string `json:"SerialNo,omitempty" name:"SerialNo"`
+	SerialNo *string `json:"SerialNo,omitnil" name:"SerialNo"`
 
 	// 手机号码,e.164标准，+[国家或地区码][手机号] ，示例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
-	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
 
 	// 计费条数
-	Fee *uint64 `json:"Fee,omitempty" name:"Fee"`
+	Fee *uint64 `json:"Fee,omitnil" name:"Fee"`
 
 	// OK为成功
-	Code *string `json:"Code,omitempty" name:"Code"`
+	Code *string `json:"Code,omitnil" name:"Code"`
 
 	// 短信请求错误码描述
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 }
 
 // Predefined struct for user
 type SendSmsRequestParams struct {
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 手机号码,采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号,如:+8613800138000
-	Phone []*string `json:"Phone,omitempty" name:"Phone"`
+	Phone []*string `json:"Phone,omitnil" name:"Phone"`
 
 	// 短信模板id(推荐使用模板id发送,使用内容发送时模板id留空)
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 模板参数，若无模板参数，则设置为空。
-	Params []*string `json:"Params,omitempty" name:"Params"`
+	Params []*string `json:"Params,omitnil" name:"Params"`
 
 	// 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名。注：国内短信为必填参数。
-	Sign *string `json:"Sign,omitempty" name:"Sign"`
+	Sign *string `json:"Sign,omitnil" name:"Sign"`
 
 	// 国际/港澳台短信 senderid，国内短信填空
-	SenderId *string `json:"SenderId,omitempty" name:"SenderId"`
+	SenderId *string `json:"SenderId,omitnil" name:"SenderId"`
 
 	// 短信类型：{0:普通短信，1:营销短信}，使用内容发送时必填
-	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
+	SmsType *uint64 `json:"SmsType,omitnil" name:"SmsType"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。使用内容发送时必填
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 
 	// 发送使用的模板内容,如果有占位符,此处也包括占位符,占位符的实际内容通过Params参数传递,使用模板id发送时此字段为空
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 }
 
 type SendSmsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 商户证书
-	License *string `json:"License,omitempty" name:"License"`
+	License *string `json:"License,omitnil" name:"License"`
 
 	// 手机号码,采用 e.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为境内手机号,如:+8613800138000
-	Phone []*string `json:"Phone,omitempty" name:"Phone"`
+	Phone []*string `json:"Phone,omitnil" name:"Phone"`
 
 	// 短信模板id(推荐使用模板id发送,使用内容发送时模板id留空)
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 模板参数，若无模板参数，则设置为空。
-	Params []*string `json:"Params,omitempty" name:"Params"`
+	Params []*string `json:"Params,omitnil" name:"Params"`
 
 	// 短信签名内容，使用 UTF-8 编码，必须填写已审核通过的签名。注：国内短信为必填参数。
-	Sign *string `json:"Sign,omitempty" name:"Sign"`
+	Sign *string `json:"Sign,omitnil" name:"Sign"`
 
 	// 国际/港澳台短信 senderid，国内短信填空
-	SenderId *string `json:"SenderId,omitempty" name:"SenderId"`
+	SenderId *string `json:"SenderId,omitnil" name:"SenderId"`
 
 	// 短信类型：{0:普通短信，1:营销短信}，使用内容发送时必填
-	SmsType *uint64 `json:"SmsType,omitempty" name:"SmsType"`
+	SmsType *uint64 `json:"SmsType,omitnil" name:"SmsType"`
 
 	// 是否国际/港澳台短信：
 	// 0：表示国内短信。
 	// 1：表示国际/港澳台短信。使用内容发送时必填
-	International *uint64 `json:"International,omitempty" name:"International"`
+	International *uint64 `json:"International,omitnil" name:"International"`
 
 	// 发送使用的模板内容,如果有占位符,此处也包括占位符,占位符的实际内容通过Params参数传递,使用模板id发送时此字段为空
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 }
 
 func (r *SendSmsRequest) ToJsonString() string {
@@ -1992,10 +1992,10 @@ func (r *SendSmsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SendSmsResponseParams struct {
 	// 出参数据
-	Data []*SendSmsPaasDataStruct `json:"Data,omitempty" name:"Data"`
+	Data []*SendSmsPaasDataStruct `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SendSmsResponse struct {
@@ -2016,143 +2016,143 @@ func (r *SendSmsResponse) FromJsonString(s string) error {
 
 type SmsAddCrowdPackInfoResponse struct {
 	// 人群包id
-	ID *uint64 `json:"ID,omitempty" name:"ID"`
+	ID *uint64 `json:"ID,omitnil" name:"ID"`
 }
 
 type SmsAmountDataStruct struct {
 	// 短信活动配额
-	SmsCampaignAmount *uint64 `json:"SmsCampaignAmount,omitempty" name:"SmsCampaignAmount"`
+	SmsCampaignAmount *uint64 `json:"SmsCampaignAmount,omitnil" name:"SmsCampaignAmount"`
 
 	// 短信活动消耗配额
-	SmsCampaignConsume *uint64 `json:"SmsCampaignConsume,omitempty" name:"SmsCampaignConsume"`
+	SmsCampaignConsume *uint64 `json:"SmsCampaignConsume,omitnil" name:"SmsCampaignConsume"`
 
 	// 短信发送额度
-	SmsSendAmount *uint64 `json:"SmsSendAmount,omitempty" name:"SmsSendAmount"`
+	SmsSendAmount *uint64 `json:"SmsSendAmount,omitnil" name:"SmsSendAmount"`
 
 	// 短信发送消耗额度
-	SmsSendConsume *uint64 `json:"SmsSendConsume,omitempty" name:"SmsSendConsume"`
+	SmsSendConsume *uint64 `json:"SmsSendConsume,omitnil" name:"SmsSendConsume"`
 
 	// 超短活动额度
-	MmsCampaignAmount *uint64 `json:"MmsCampaignAmount,omitempty" name:"MmsCampaignAmount"`
+	MmsCampaignAmount *uint64 `json:"MmsCampaignAmount,omitnil" name:"MmsCampaignAmount"`
 
 	// 超短活动消耗额度
-	MmsCampaignConsume *uint64 `json:"MmsCampaignConsume,omitempty" name:"MmsCampaignConsume"`
+	MmsCampaignConsume *uint64 `json:"MmsCampaignConsume,omitnil" name:"MmsCampaignConsume"`
 
 	// 超短短信额度
-	MmsSendAmount *uint64 `json:"MmsSendAmount,omitempty" name:"MmsSendAmount"`
+	MmsSendAmount *uint64 `json:"MmsSendAmount,omitnil" name:"MmsSendAmount"`
 
 	// 超短短信消耗额度
-	MmsSendConsume *uint64 `json:"MmsSendConsume,omitempty" name:"MmsSendConsume"`
+	MmsSendConsume *uint64 `json:"MmsSendConsume,omitnil" name:"MmsSendConsume"`
 }
 
 type SmsCampaignStatisticsCrowdData struct {
 	// 人群包id
-	CrowdId *uint64 `json:"CrowdId,omitempty" name:"CrowdId"`
+	CrowdId *uint64 `json:"CrowdId,omitnil" name:"CrowdId"`
 
 	// 人群包名称
-	CrowdName *string `json:"CrowdName,omitempty" name:"CrowdName"`
+	CrowdName *string `json:"CrowdName,omitnil" name:"CrowdName"`
 
 	// 人群包目标触达总数
-	CrowdCount *uint64 `json:"CrowdCount,omitempty" name:"CrowdCount"`
+	CrowdCount *uint64 `json:"CrowdCount,omitnil" name:"CrowdCount"`
 
 	// 模板列表
-	TemplateList []*SmsCampaignStatisticsTemplateData `json:"TemplateList,omitempty" name:"TemplateList"`
+	TemplateList []*SmsCampaignStatisticsTemplateData `json:"TemplateList,omitnil" name:"TemplateList"`
 }
 
 type SmsCampaignStatisticsData struct {
 	// 活动Id
-	CampaignId *uint64 `json:"CampaignId,omitempty" name:"CampaignId"`
+	CampaignId *uint64 `json:"CampaignId,omitnil" name:"CampaignId"`
 
 	// 统计数据
-	Statistics []*SmsCampaignStatisticsCrowdData `json:"Statistics,omitempty" name:"Statistics"`
+	Statistics []*SmsCampaignStatisticsCrowdData `json:"Statistics,omitnil" name:"Statistics"`
 }
 
 type SmsCampaignStatisticsTemplateData struct {
 	// 模板或样例id
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 模板内容
-	TemplateContent *string `json:"TemplateContent,omitempty" name:"TemplateContent"`
+	TemplateContent *string `json:"TemplateContent,omitnil" name:"TemplateContent"`
 
 	// 触达成功数
-	SendCount *uint64 `json:"SendCount,omitempty" name:"SendCount"`
+	SendCount *uint64 `json:"SendCount,omitnil" name:"SendCount"`
 
 	// 短链点击数
-	ClickCount *uint64 `json:"ClickCount,omitempty" name:"ClickCount"`
+	ClickCount *uint64 `json:"ClickCount,omitnil" name:"ClickCount"`
 }
 
 type SmsCreateCampaignResponse struct {
 	// 活动id
-	CampaignId *int64 `json:"CampaignId,omitempty" name:"CampaignId"`
+	CampaignId *int64 `json:"CampaignId,omitnil" name:"CampaignId"`
 }
 
 type SmsGetCrowdPackList struct {
 	// 创建时间
-	CreatedAt *string `json:"CreatedAt,omitempty" name:"CreatedAt"`
+	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
 
 	// 人群包id
-	ID *uint64 `json:"ID,omitempty" name:"ID"`
+	ID *uint64 `json:"ID,omitnil" name:"ID"`
 
 	// 人群包名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 人群包状态
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 人群包手机号数量
-	PhoneNum *int64 `json:"PhoneNum,omitempty" name:"PhoneNum"`
+	PhoneNum *int64 `json:"PhoneNum,omitnil" name:"PhoneNum"`
 
 	// 人群包标签信息
-	Tag *string `json:"Tag,omitempty" name:"Tag"`
+	Tag *string `json:"Tag,omitnil" name:"Tag"`
 
 	// 人群包md5
-	MD5 *string `json:"MD5,omitempty" name:"MD5"`
+	MD5 *string `json:"MD5,omitnil" name:"MD5"`
 
 	// 人群包文件名称
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 人群包描述
-	Desc *string `json:"Desc,omitempty" name:"Desc"`
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
 }
 
 type SmsGetCrowdPackListResponse struct {
 	// 人群包总数
-	Total *int64 `json:"Total,omitempty" name:"Total"`
+	Total *int64 `json:"Total,omitnil" name:"Total"`
 
 	// 人群包返回数据列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	List []*SmsGetCrowdPackList `json:"List,omitempty" name:"List"`
+	List []*SmsGetCrowdPackList `json:"List,omitnil" name:"List"`
 }
 
 type SmsGetCrowdUploadInfoResponse struct {
 	// 过期时间
-	ExpiredTime *uint64 `json:"ExpiredTime,omitempty" name:"ExpiredTime"`
+	ExpiredTime *uint64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
 
 	// 会话token
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
+	SessionToken *string `json:"SessionToken,omitnil" name:"SessionToken"`
 
 	// 临时密钥id
-	TmpSecretId *string `json:"TmpSecretId,omitempty" name:"TmpSecretId"`
+	TmpSecretId *string `json:"TmpSecretId,omitnil" name:"TmpSecretId"`
 
 	// 临时密钥
-	TmpSecretKey *string `json:"TmpSecretKey,omitempty" name:"TmpSecretKey"`
+	TmpSecretKey *string `json:"TmpSecretKey,omitnil" name:"TmpSecretKey"`
 
 	// cos信息
-	CosInfo *UploadFansInfoCosInfo `json:"CosInfo,omitempty" name:"CosInfo"`
+	CosInfo *UploadFansInfoCosInfo `json:"CosInfo,omitnil" name:"CosInfo"`
 }
 
 type SmsSuccessResponse struct {
 	// 成功返回信息
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 }
 
 type UploadFansInfoCosInfo struct {
 	// COS bucket
-	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
 
 	// COS路径
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// COS区域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 }

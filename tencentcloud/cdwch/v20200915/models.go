@@ -15,30 +15,30 @@
 package v20200915
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type ActionAlterCkUserRequestParams struct {
 	// 用户信息
-	UserInfo *CkUserAlterInfo `json:"UserInfo,omitempty" name:"UserInfo"`
+	UserInfo *CkUserAlterInfo `json:"UserInfo,omitnil" name:"UserInfo"`
 
 	// api接口类型，
 	// AddSystemUser新增用户，UpdateSystemUser，修改用户
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 }
 
 type ActionAlterCkUserRequest struct {
 	*tchttp.BaseRequest
 	
 	// 用户信息
-	UserInfo *CkUserAlterInfo `json:"UserInfo,omitempty" name:"UserInfo"`
+	UserInfo *CkUserAlterInfo `json:"UserInfo,omitnil" name:"UserInfo"`
 
 	// api接口类型，
 	// AddSystemUser新增用户，UpdateSystemUser，修改用户
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 }
 
 func (r *ActionAlterCkUserRequest) ToJsonString() string {
@@ -65,10 +65,10 @@ func (r *ActionAlterCkUserRequest) FromJsonString(s string) error {
 type ActionAlterCkUserResponseParams struct {
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+	ErrMsg *string `json:"ErrMsg,omitnil" name:"ErrMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ActionAlterCkUserResponse struct {
@@ -89,194 +89,194 @@ func (r *ActionAlterCkUserResponse) FromJsonString(s string) error {
 
 type AttachCBSSpec struct {
 	// 节点磁盘类型，例如“CLOUD_SSD”\"CLOUD_PREMIUM"
-	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+	DiskType *string `json:"DiskType,omitnil" name:"DiskType"`
 
 	// 磁盘容量，单位G
-	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+	DiskSize *int64 `json:"DiskSize,omitnil" name:"DiskSize"`
 
 	// 磁盘总数
-	DiskCount *int64 `json:"DiskCount,omitempty" name:"DiskCount"`
+	DiskCount *int64 `json:"DiskCount,omitnil" name:"DiskCount"`
 
 	// 描述
-	DiskDesc *string `json:"DiskDesc,omitempty" name:"DiskDesc"`
+	DiskDesc *string `json:"DiskDesc,omitnil" name:"DiskDesc"`
 }
 
 type BackUpJobDisplay struct {
 	// 备份任务id
-	JobId *int64 `json:"JobId,omitempty" name:"JobId"`
+	JobId *int64 `json:"JobId,omitnil" name:"JobId"`
 
 	// 备份任务名
-	Snapshot *string `json:"Snapshot,omitempty" name:"Snapshot"`
+	Snapshot *string `json:"Snapshot,omitnil" name:"Snapshot"`
 
 	// 任务类型(元数据),(数据)
-	BackUpType *string `json:"BackUpType,omitempty" name:"BackUpType"`
+	BackUpType *string `json:"BackUpType,omitnil" name:"BackUpType"`
 
 	// 备份数据量
-	BackUpSize *int64 `json:"BackUpSize,omitempty" name:"BackUpSize"`
+	BackUpSize *int64 `json:"BackUpSize,omitnil" name:"BackUpSize"`
 
 	// 任务创建时间
-	BackUpTime *string `json:"BackUpTime,omitempty" name:"BackUpTime"`
+	BackUpTime *string `json:"BackUpTime,omitnil" name:"BackUpTime"`
 
 	// 任务过期时间
-	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 任务状态
-	JobStatus *string `json:"JobStatus,omitempty" name:"JobStatus"`
+	JobStatus *string `json:"JobStatus,omitnil" name:"JobStatus"`
 }
 
 type BackupTableContent struct {
 	// 数据库
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Database *string `json:"Database,omitempty" name:"Database"`
+	Database *string `json:"Database,omitnil" name:"Database"`
 
 	// 表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Table *string `json:"Table,omitempty" name:"Table"`
+	Table *string `json:"Table,omitnil" name:"Table"`
 
 	// 表总字节数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalBytes *int64 `json:"TotalBytes,omitempty" name:"TotalBytes"`
+	TotalBytes *int64 `json:"TotalBytes,omitnil" name:"TotalBytes"`
 
 	// 虚拟cluster
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VCluster *string `json:"VCluster,omitempty" name:"VCluster"`
+	VCluster *string `json:"VCluster,omitnil" name:"VCluster"`
 
 	// 表ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Ips *string `json:"Ips,omitempty" name:"Ips"`
+	Ips *string `json:"Ips,omitnil" name:"Ips"`
 
 	// zk路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ZooPath *string `json:"ZooPath,omitempty" name:"ZooPath"`
+	ZooPath *string `json:"ZooPath,omitnil" name:"ZooPath"`
 
 	// cvm的ip地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rip *string `json:"Rip,omitempty" name:"Rip"`
+	Rip *string `json:"Rip,omitnil" name:"Rip"`
 }
 
 type Charge struct {
 	// 计费类型，“PREPAID” 预付费，“POSTPAID_BY_HOUR” 后付费
-	ChargeType *string `json:"ChargeType,omitempty" name:"ChargeType"`
+	ChargeType *string `json:"ChargeType,omitnil" name:"ChargeType"`
 
 	// PREPAID需要传递，是否自动续费，1表示自动续费开启
-	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
 
 	// 预付费需要传递，计费时间长度，多少个月
-	TimeSpan *int64 `json:"TimeSpan,omitempty" name:"TimeSpan"`
+	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
 }
 
 type CkUserAlterInfo struct {
 	// 集群实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 用户名
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
 	// 密码
-	PassWord *string `json:"PassWord,omitempty" name:"PassWord"`
+	PassWord *string `json:"PassWord,omitnil" name:"PassWord"`
 
 	// 描述
-	Describe *string `json:"Describe,omitempty" name:"Describe"`
+	Describe *string `json:"Describe,omitnil" name:"Describe"`
 }
 
 type ClusterConfigsInfoFromEMR struct {
 	// 配置文件名称
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 配置文件对应的相关属性信息
-	FileConf *string `json:"FileConf,omitempty" name:"FileConf"`
+	FileConf *string `json:"FileConf,omitnil" name:"FileConf"`
 
 	// 配置文件对应的其他属性信息
-	KeyConf *string `json:"KeyConf,omitempty" name:"KeyConf"`
+	KeyConf *string `json:"KeyConf,omitnil" name:"KeyConf"`
 
 	// 配置文件的内容，base64编码
-	OriParam *string `json:"OriParam,omitempty" name:"OriParam"`
+	OriParam *string `json:"OriParam,omitnil" name:"OriParam"`
 
 	// 用于表示当前配置文件是不是有过修改后没有重启，提醒用户需要重启
-	NeedRestart *int64 `json:"NeedRestart,omitempty" name:"NeedRestart"`
+	NeedRestart *int64 `json:"NeedRestart,omitnil" name:"NeedRestart"`
 
 	// 保存配置文件的路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
 }
 
 type ClusterInfo struct {
 	// vcluster名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 当前cluster的IP列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NodeIps []*string `json:"NodeIps,omitempty" name:"NodeIps"`
+	NodeIps []*string `json:"NodeIps,omitnil" name:"NodeIps"`
 }
 
 type ConfigSubmitContext struct {
 	// 配置文件名称
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 配置文件旧内容，base64编码
-	OldConfValue *string `json:"OldConfValue,omitempty" name:"OldConfValue"`
+	OldConfValue *string `json:"OldConfValue,omitnil" name:"OldConfValue"`
 
 	// 配置文件新内容，base64编码
-	NewConfValue *string `json:"NewConfValue,omitempty" name:"NewConfValue"`
+	NewConfValue *string `json:"NewConfValue,omitnil" name:"NewConfValue"`
 
 	// 保存配置文件的路径
-	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
 }
 
 // Predefined struct for user
 type CreateBackUpScheduleRequestParams struct {
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 策略类型 meta(元数据)  data (表数据)
-	ScheduleType *string `json:"ScheduleType,omitempty" name:"ScheduleType"`
+	ScheduleType *string `json:"ScheduleType,omitnil" name:"ScheduleType"`
 
 	// 操作类型 create(创建) update(编辑修改)
-	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+	OperationType *string `json:"OperationType,omitnil" name:"OperationType"`
 
 	// 保留天数 例如7
-	RetainDays *int64 `json:"RetainDays,omitempty" name:"RetainDays"`
+	RetainDays *int64 `json:"RetainDays,omitnil" name:"RetainDays"`
 
 	// 编辑时需要传
-	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+	ScheduleId *int64 `json:"ScheduleId,omitnil" name:"ScheduleId"`
 
 	// 选择的星期 逗号分隔，例如 2 代表周二
-	WeekDays *string `json:"WeekDays,omitempty" name:"WeekDays"`
+	WeekDays *string `json:"WeekDays,omitnil" name:"WeekDays"`
 
 	// 执行小时
-	ExecuteHour *int64 `json:"ExecuteHour,omitempty" name:"ExecuteHour"`
+	ExecuteHour *int64 `json:"ExecuteHour,omitnil" name:"ExecuteHour"`
 
 	// 备份表列表
-	BackUpTables []*BackupTableContent `json:"BackUpTables,omitempty" name:"BackUpTables"`
+	BackUpTables []*BackupTableContent `json:"BackUpTables,omitnil" name:"BackUpTables"`
 }
 
 type CreateBackUpScheduleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 策略类型 meta(元数据)  data (表数据)
-	ScheduleType *string `json:"ScheduleType,omitempty" name:"ScheduleType"`
+	ScheduleType *string `json:"ScheduleType,omitnil" name:"ScheduleType"`
 
 	// 操作类型 create(创建) update(编辑修改)
-	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+	OperationType *string `json:"OperationType,omitnil" name:"OperationType"`
 
 	// 保留天数 例如7
-	RetainDays *int64 `json:"RetainDays,omitempty" name:"RetainDays"`
+	RetainDays *int64 `json:"RetainDays,omitnil" name:"RetainDays"`
 
 	// 编辑时需要传
-	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+	ScheduleId *int64 `json:"ScheduleId,omitnil" name:"ScheduleId"`
 
 	// 选择的星期 逗号分隔，例如 2 代表周二
-	WeekDays *string `json:"WeekDays,omitempty" name:"WeekDays"`
+	WeekDays *string `json:"WeekDays,omitnil" name:"WeekDays"`
 
 	// 执行小时
-	ExecuteHour *int64 `json:"ExecuteHour,omitempty" name:"ExecuteHour"`
+	ExecuteHour *int64 `json:"ExecuteHour,omitnil" name:"ExecuteHour"`
 
 	// 备份表列表
-	BackUpTables []*BackupTableContent `json:"BackUpTables,omitempty" name:"BackUpTables"`
+	BackUpTables []*BackupTableContent `json:"BackUpTables,omitnil" name:"BackUpTables"`
 }
 
 func (r *CreateBackUpScheduleRequest) ToJsonString() string {
@@ -308,10 +308,10 @@ func (r *CreateBackUpScheduleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBackUpScheduleResponseParams struct {
 	// 错误描述
-	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateBackUpScheduleResponse struct {
@@ -333,92 +333,92 @@ func (r *CreateBackUpScheduleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateInstanceNewRequestParams struct {
 	// 可用区
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// 是否高可用
-	HaFlag *bool `json:"HaFlag,omitempty" name:"HaFlag"`
+	HaFlag *bool `json:"HaFlag,omitnil" name:"HaFlag"`
 
 	// 私有网络
-	UserVPCId *string `json:"UserVPCId,omitempty" name:"UserVPCId"`
+	UserVPCId *string `json:"UserVPCId,omitnil" name:"UserVPCId"`
 
 	// 子网
-	UserSubnetId *string `json:"UserSubnetId,omitempty" name:"UserSubnetId"`
+	UserSubnetId *string `json:"UserSubnetId,omitnil" name:"UserSubnetId"`
 
 	// 版本
-	ProductVersion *string `json:"ProductVersion,omitempty" name:"ProductVersion"`
+	ProductVersion *string `json:"ProductVersion,omitnil" name:"ProductVersion"`
 
 	// 计费方式
-	ChargeProperties *Charge `json:"ChargeProperties,omitempty" name:"ChargeProperties"`
+	ChargeProperties *Charge `json:"ChargeProperties,omitnil" name:"ChargeProperties"`
 
 	// 实例名称
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 数据节点
-	DataSpec *NodeSpec `json:"DataSpec,omitempty" name:"DataSpec"`
+	DataSpec *NodeSpec `json:"DataSpec,omitnil" name:"DataSpec"`
 
 	// 标签列表
-	Tags *Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags *Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 日志主题ID
-	ClsLogSetId *string `json:"ClsLogSetId,omitempty" name:"ClsLogSetId"`
+	ClsLogSetId *string `json:"ClsLogSetId,omitnil" name:"ClsLogSetId"`
 
 	// COS桶名称
-	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
+	CosBucketName *string `json:"CosBucketName,omitnil" name:"CosBucketName"`
 
 	// 是否是裸盘挂载
-	MountDiskType *int64 `json:"MountDiskType,omitempty" name:"MountDiskType"`
+	MountDiskType *int64 `json:"MountDiskType,omitnil" name:"MountDiskType"`
 
 	// 是否是ZK高可用
-	HAZk *bool `json:"HAZk,omitempty" name:"HAZk"`
+	HAZk *bool `json:"HAZk,omitnil" name:"HAZk"`
 
 	// ZK节点
-	CommonSpec *NodeSpec `json:"CommonSpec,omitempty" name:"CommonSpec"`
+	CommonSpec *NodeSpec `json:"CommonSpec,omitnil" name:"CommonSpec"`
 }
 
 type CreateInstanceNewRequest struct {
 	*tchttp.BaseRequest
 	
 	// 可用区
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// 是否高可用
-	HaFlag *bool `json:"HaFlag,omitempty" name:"HaFlag"`
+	HaFlag *bool `json:"HaFlag,omitnil" name:"HaFlag"`
 
 	// 私有网络
-	UserVPCId *string `json:"UserVPCId,omitempty" name:"UserVPCId"`
+	UserVPCId *string `json:"UserVPCId,omitnil" name:"UserVPCId"`
 
 	// 子网
-	UserSubnetId *string `json:"UserSubnetId,omitempty" name:"UserSubnetId"`
+	UserSubnetId *string `json:"UserSubnetId,omitnil" name:"UserSubnetId"`
 
 	// 版本
-	ProductVersion *string `json:"ProductVersion,omitempty" name:"ProductVersion"`
+	ProductVersion *string `json:"ProductVersion,omitnil" name:"ProductVersion"`
 
 	// 计费方式
-	ChargeProperties *Charge `json:"ChargeProperties,omitempty" name:"ChargeProperties"`
+	ChargeProperties *Charge `json:"ChargeProperties,omitnil" name:"ChargeProperties"`
 
 	// 实例名称
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 数据节点
-	DataSpec *NodeSpec `json:"DataSpec,omitempty" name:"DataSpec"`
+	DataSpec *NodeSpec `json:"DataSpec,omitnil" name:"DataSpec"`
 
 	// 标签列表
-	Tags *Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags *Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 日志主题ID
-	ClsLogSetId *string `json:"ClsLogSetId,omitempty" name:"ClsLogSetId"`
+	ClsLogSetId *string `json:"ClsLogSetId,omitnil" name:"ClsLogSetId"`
 
 	// COS桶名称
-	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
+	CosBucketName *string `json:"CosBucketName,omitnil" name:"CosBucketName"`
 
 	// 是否是裸盘挂载
-	MountDiskType *int64 `json:"MountDiskType,omitempty" name:"MountDiskType"`
+	MountDiskType *int64 `json:"MountDiskType,omitnil" name:"MountDiskType"`
 
 	// 是否是ZK高可用
-	HAZk *bool `json:"HAZk,omitempty" name:"HAZk"`
+	HAZk *bool `json:"HAZk,omitnil" name:"HAZk"`
 
 	// ZK节点
-	CommonSpec *NodeSpec `json:"CommonSpec,omitempty" name:"CommonSpec"`
+	CommonSpec *NodeSpec `json:"CommonSpec,omitnil" name:"CommonSpec"`
 }
 
 func (r *CreateInstanceNewRequest) ToJsonString() string {
@@ -457,18 +457,18 @@ func (r *CreateInstanceNewRequest) FromJsonString(s string) error {
 type CreateInstanceNewResponseParams struct {
 	// 流程ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateInstanceNewResponse struct {
@@ -490,26 +490,26 @@ func (r *CreateInstanceNewResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteBackUpDataRequestParams struct {
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 任务id
-	BackUpJobId *int64 `json:"BackUpJobId,omitempty" name:"BackUpJobId"`
+	BackUpJobId *int64 `json:"BackUpJobId,omitnil" name:"BackUpJobId"`
 
 	// 是否删除所有数据
-	IsDeleteAll *bool `json:"IsDeleteAll,omitempty" name:"IsDeleteAll"`
+	IsDeleteAll *bool `json:"IsDeleteAll,omitnil" name:"IsDeleteAll"`
 }
 
 type DeleteBackUpDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 任务id
-	BackUpJobId *int64 `json:"BackUpJobId,omitempty" name:"BackUpJobId"`
+	BackUpJobId *int64 `json:"BackUpJobId,omitnil" name:"BackUpJobId"`
 
 	// 是否删除所有数据
-	IsDeleteAll *bool `json:"IsDeleteAll,omitempty" name:"IsDeleteAll"`
+	IsDeleteAll *bool `json:"IsDeleteAll,omitnil" name:"IsDeleteAll"`
 }
 
 func (r *DeleteBackUpDataRequest) ToJsonString() string {
@@ -536,7 +536,7 @@ func (r *DeleteBackUpDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteBackUpDataResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteBackUpDataResponse struct {
@@ -558,20 +558,20 @@ func (r *DeleteBackUpDataResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBackUpJobDetailRequestParams struct {
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 任务id
-	BackUpJobId *int64 `json:"BackUpJobId,omitempty" name:"BackUpJobId"`
+	BackUpJobId *int64 `json:"BackUpJobId,omitnil" name:"BackUpJobId"`
 }
 
 type DescribeBackUpJobDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 任务id
-	BackUpJobId *int64 `json:"BackUpJobId,omitempty" name:"BackUpJobId"`
+	BackUpJobId *int64 `json:"BackUpJobId,omitnil" name:"BackUpJobId"`
 }
 
 func (r *DescribeBackUpJobDetailRequest) ToJsonString() string {
@@ -598,10 +598,10 @@ func (r *DescribeBackUpJobDetailRequest) FromJsonString(s string) error {
 type DescribeBackUpJobDetailResponseParams struct {
 	// 备份表详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TableContents []*BackupTableContent `json:"TableContents,omitempty" name:"TableContents"`
+	TableContents []*BackupTableContent `json:"TableContents,omitnil" name:"TableContents"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeBackUpJobDetailResponse struct {
@@ -623,38 +623,38 @@ func (r *DescribeBackUpJobDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBackUpJobRequestParams struct {
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 分页大小
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 页号
-	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+	PageNum *int64 `json:"PageNum,omitnil" name:"PageNum"`
 
 	// 开始时间
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 type DescribeBackUpJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 分页大小
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 页号
-	PageNum *int64 `json:"PageNum,omitempty" name:"PageNum"`
+	PageNum *int64 `json:"PageNum,omitnil" name:"PageNum"`
 
 	// 开始时间
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 func (r *DescribeBackUpJobRequest) ToJsonString() string {
@@ -684,10 +684,10 @@ func (r *DescribeBackUpJobRequest) FromJsonString(s string) error {
 type DescribeBackUpJobResponseParams struct {
 	// 任务列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BackUpJobs []*BackUpJobDisplay `json:"BackUpJobs,omitempty" name:"BackUpJobs"`
+	BackUpJobs []*BackUpJobDisplay `json:"BackUpJobs,omitnil" name:"BackUpJobs"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeBackUpJobResponse struct {
@@ -709,14 +709,14 @@ func (r *DescribeBackUpJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBackUpScheduleRequestParams struct {
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DescribeBackUpScheduleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *DescribeBackUpScheduleRequest) ToJsonString() string {
@@ -741,29 +741,29 @@ func (r *DescribeBackUpScheduleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBackUpScheduleResponseParams struct {
 	// 备份是否开启
-	BackUpOpened *bool `json:"BackUpOpened,omitempty" name:"BackUpOpened"`
+	BackUpOpened *bool `json:"BackUpOpened,omitnil" name:"BackUpOpened"`
 
 	// 元数据备份策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MetaStrategy *ScheduleStrategy `json:"MetaStrategy,omitempty" name:"MetaStrategy"`
+	MetaStrategy *ScheduleStrategy `json:"MetaStrategy,omitnil" name:"MetaStrategy"`
 
 	// 表数据备份策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataStrategy *ScheduleStrategy `json:"DataStrategy,omitempty" name:"DataStrategy"`
+	DataStrategy *ScheduleStrategy `json:"DataStrategy,omitnil" name:"DataStrategy"`
 
 	// 备份表列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BackUpContents []*BackupTableContent `json:"BackUpContents,omitempty" name:"BackUpContents"`
+	BackUpContents []*BackupTableContent `json:"BackUpContents,omitnil" name:"BackUpContents"`
 
 	// 备份的状态
-	BackUpStatus *int64 `json:"BackUpStatus,omitempty" name:"BackUpStatus"`
+	BackUpStatus *int64 `json:"BackUpStatus,omitnil" name:"BackUpStatus"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeBackUpScheduleResponse struct {
@@ -785,7 +785,7 @@ func (r *DescribeBackUpScheduleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCkSqlApisRequestParams struct {
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// api接口名称,GetClusters:获取集群cluster列表
 	// GetSystemUsers:获取系统用户列表
@@ -799,23 +799,23 @@ type DescribeCkSqlApisRequestParams struct {
 	// DeleteSystemUser:删除系统用户 —— 必须所有cluster先解绑
 	// GetUserOptionMessages:获取用户配置备注信息
 	// GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 
 	// 集群名称，GET_SYSTEM_USERS，GET_PRIVILEGE_USERS，GET_CLUSTER_DATABASES，GET_CLUSTER_TABLES 必填
-	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitnil" name:"Cluster"`
 
 	// 用户名称，api与user相关的必填
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
 	// 账户的类型
-	UserType *string `json:"UserType,omitempty" name:"UserType"`
+	UserType *string `json:"UserType,omitnil" name:"UserType"`
 }
 
 type DescribeCkSqlApisRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// api接口名称,GetClusters:获取集群cluster列表
 	// GetSystemUsers:获取系统用户列表
@@ -829,16 +829,16 @@ type DescribeCkSqlApisRequest struct {
 	// DeleteSystemUser:删除系统用户 —— 必须所有cluster先解绑
 	// GetUserOptionMessages:获取用户配置备注信息
 	// GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
-	ApiType *string `json:"ApiType,omitempty" name:"ApiType"`
+	ApiType *string `json:"ApiType,omitnil" name:"ApiType"`
 
 	// 集群名称，GET_SYSTEM_USERS，GET_PRIVILEGE_USERS，GET_CLUSTER_DATABASES，GET_CLUSTER_TABLES 必填
-	Cluster *string `json:"Cluster,omitempty" name:"Cluster"`
+	Cluster *string `json:"Cluster,omitnil" name:"Cluster"`
 
 	// 用户名称，api与user相关的必填
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
 	// 账户的类型
-	UserType *string `json:"UserType,omitempty" name:"UserType"`
+	UserType *string `json:"UserType,omitnil" name:"UserType"`
 }
 
 func (r *DescribeCkSqlApisRequest) ToJsonString() string {
@@ -868,10 +868,10 @@ func (r *DescribeCkSqlApisRequest) FromJsonString(s string) error {
 type DescribeCkSqlApisResponseParams struct {
 	// 返回的查询数据，大部分情况是list，也可能是bool
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReturnData *string `json:"ReturnData,omitempty" name:"ReturnData"`
+	ReturnData *string `json:"ReturnData,omitnil" name:"ReturnData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCkSqlApisResponse struct {
@@ -893,14 +893,14 @@ func (r *DescribeCkSqlApisResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterConfigsRequestParams struct {
 	// 集群实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DescribeClusterConfigsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *DescribeClusterConfigsRequest) ToJsonString() string {
@@ -925,10 +925,10 @@ func (r *DescribeClusterConfigsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterConfigsResponseParams struct {
 	// 返回实例的配置文件相关的信息
-	ClusterConfList []*ClusterConfigsInfoFromEMR `json:"ClusterConfList,omitempty" name:"ClusterConfList"`
+	ClusterConfList []*ClusterConfigsInfoFromEMR `json:"ClusterConfList,omitnil" name:"ClusterConfList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeClusterConfigsResponse struct {
@@ -950,14 +950,14 @@ func (r *DescribeClusterConfigsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceClustersRequestParams struct {
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DescribeInstanceClustersRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *DescribeInstanceClustersRequest) ToJsonString() string {
@@ -982,10 +982,10 @@ func (r *DescribeInstanceClustersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceClustersResponseParams struct {
 	// cluster列表
-	Clusters []*ClusterInfo `json:"Clusters,omitempty" name:"Clusters"`
+	Clusters []*ClusterInfo `json:"Clusters,omitnil" name:"Clusters"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeInstanceClustersResponse struct {
@@ -1007,20 +1007,20 @@ func (r *DescribeInstanceClustersResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceKeyValConfigsRequestParams struct {
 	// 集群实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 搜索的配置项名称
-	SearchConfigName *string `json:"SearchConfigName,omitempty" name:"SearchConfigName"`
+	SearchConfigName *string `json:"SearchConfigName,omitnil" name:"SearchConfigName"`
 }
 
 type DescribeInstanceKeyValConfigsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 搜索的配置项名称
-	SearchConfigName *string `json:"SearchConfigName,omitempty" name:"SearchConfigName"`
+	SearchConfigName *string `json:"SearchConfigName,omitnil" name:"SearchConfigName"`
 }
 
 func (r *DescribeInstanceKeyValConfigsRequest) ToJsonString() string {
@@ -1046,22 +1046,22 @@ func (r *DescribeInstanceKeyValConfigsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceKeyValConfigsResponseParams struct {
 	// 参数列表
-	ConfigItems []*InstanceConfigInfo `json:"ConfigItems,omitempty" name:"ConfigItems"`
+	ConfigItems []*InstanceConfigInfo `json:"ConfigItems,omitnil" name:"ConfigItems"`
 
 	// 未配置的参数列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnConfigItems []*InstanceConfigInfo `json:"UnConfigItems,omitempty" name:"UnConfigItems"`
+	UnConfigItems []*InstanceConfigInfo `json:"UnConfigItems,omitnil" name:"UnConfigItems"`
 
 	// 配置的多层级参数列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MapConfigItems []*MapConfigItem `json:"MapConfigItems,omitempty" name:"MapConfigItems"`
+	MapConfigItems []*MapConfigItem `json:"MapConfigItems,omitnil" name:"MapConfigItems"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeInstanceKeyValConfigsResponse struct {
@@ -1083,20 +1083,20 @@ func (r *DescribeInstanceKeyValConfigsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceRequestParams struct {
 	// 集群实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 是否是open api查询
-	IsOpenApi *bool `json:"IsOpenApi,omitempty" name:"IsOpenApi"`
+	IsOpenApi *bool `json:"IsOpenApi,omitnil" name:"IsOpenApi"`
 }
 
 type DescribeInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 是否是open api查询
-	IsOpenApi *bool `json:"IsOpenApi,omitempty" name:"IsOpenApi"`
+	IsOpenApi *bool `json:"IsOpenApi,omitnil" name:"IsOpenApi"`
 }
 
 func (r *DescribeInstanceRequest) ToJsonString() string {
@@ -1122,10 +1122,10 @@ func (r *DescribeInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceResponseParams struct {
 	// 实例描述信息
-	InstanceInfo *InstanceInfo `json:"InstanceInfo,omitempty" name:"InstanceInfo"`
+	InstanceInfo *InstanceInfo `json:"InstanceInfo,omitnil" name:"InstanceInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeInstanceResponse struct {
@@ -1147,14 +1147,14 @@ func (r *DescribeInstanceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceShardsRequestParams struct {
 	// 集群实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DescribeInstanceShardsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *DescribeInstanceShardsRequest) ToJsonString() string {
@@ -1180,10 +1180,10 @@ func (r *DescribeInstanceShardsRequest) FromJsonString(s string) error {
 type DescribeInstanceShardsResponseParams struct {
 	// 实例shard信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceShardsList *string `json:"InstanceShardsList,omitempty" name:"InstanceShardsList"`
+	InstanceShardsList *string `json:"InstanceShardsList,omitnil" name:"InstanceShardsList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeInstanceShardsResponse struct {
@@ -1205,14 +1205,14 @@ func (r *DescribeInstanceShardsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceStateRequestParams struct {
 	// 集群实例名称
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DescribeInstanceStateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群实例名称
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *DescribeInstanceStateRequest) ToJsonString() string {
@@ -1237,30 +1237,30 @@ func (r *DescribeInstanceStateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstanceStateResponseParams struct {
 	// 集群状态，例如：Serving
-	InstanceState *string `json:"InstanceState,omitempty" name:"InstanceState"`
+	InstanceState *string `json:"InstanceState,omitnil" name:"InstanceState"`
 
 	// 集群操作创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowCreateTime *string `json:"FlowCreateTime,omitempty" name:"FlowCreateTime"`
+	FlowCreateTime *string `json:"FlowCreateTime,omitnil" name:"FlowCreateTime"`
 
 	// 集群操作名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
 
 	// 集群操作进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowProgress *float64 `json:"FlowProgress,omitempty" name:"FlowProgress"`
+	FlowProgress *float64 `json:"FlowProgress,omitnil" name:"FlowProgress"`
 
 	// 集群状态描述，例如：运行中
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceStateDesc *string `json:"InstanceStateDesc,omitempty" name:"InstanceStateDesc"`
+	InstanceStateDesc *string `json:"InstanceStateDesc,omitnil" name:"InstanceStateDesc"`
 
 	// 集群流程错误信息，例如：“创建失败，资源不足”
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowMsg *string `json:"FlowMsg,omitempty" name:"FlowMsg"`
+	FlowMsg *string `json:"FlowMsg,omitnil" name:"FlowMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeInstanceStateResponse struct {
@@ -1282,44 +1282,44 @@ func (r *DescribeInstanceStateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstancesNewRequestParams struct {
 	// 搜索的集群id名称
-	SearchInstanceId *string `json:"SearchInstanceId,omitempty" name:"SearchInstanceId"`
+	SearchInstanceId *string `json:"SearchInstanceId,omitnil" name:"SearchInstanceId"`
 
 	// 搜索的集群name
-	SearchInstanceName *string `json:"SearchInstanceName,omitempty" name:"SearchInstanceName"`
+	SearchInstanceName *string `json:"SearchInstanceName,omitnil" name:"SearchInstanceName"`
 
 	// 分页参数，第一页为0，第二页为10
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页参数，分页步长，默认为10
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 搜索标签列表
-	SearchTags []*SearchTags `json:"SearchTags,omitempty" name:"SearchTags"`
+	SearchTags []*SearchTags `json:"SearchTags,omitnil" name:"SearchTags"`
 
 	// 信息详细与否
-	IsSimple *bool `json:"IsSimple,omitempty" name:"IsSimple"`
+	IsSimple *bool `json:"IsSimple,omitnil" name:"IsSimple"`
 }
 
 type DescribeInstancesNewRequest struct {
 	*tchttp.BaseRequest
 	
 	// 搜索的集群id名称
-	SearchInstanceId *string `json:"SearchInstanceId,omitempty" name:"SearchInstanceId"`
+	SearchInstanceId *string `json:"SearchInstanceId,omitnil" name:"SearchInstanceId"`
 
 	// 搜索的集群name
-	SearchInstanceName *string `json:"SearchInstanceName,omitempty" name:"SearchInstanceName"`
+	SearchInstanceName *string `json:"SearchInstanceName,omitnil" name:"SearchInstanceName"`
 
 	// 分页参数，第一页为0，第二页为10
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页参数，分页步长，默认为10
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 搜索标签列表
-	SearchTags []*SearchTags `json:"SearchTags,omitempty" name:"SearchTags"`
+	SearchTags []*SearchTags `json:"SearchTags,omitnil" name:"SearchTags"`
 
 	// 信息详细与否
-	IsSimple *bool `json:"IsSimple,omitempty" name:"IsSimple"`
+	IsSimple *bool `json:"IsSimple,omitnil" name:"IsSimple"`
 }
 
 func (r *DescribeInstancesNewRequest) ToJsonString() string {
@@ -1349,13 +1349,13 @@ func (r *DescribeInstancesNewRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstancesNewResponseParams struct {
 	// 实例总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 实例数组
-	InstancesList []*InstanceInfo `json:"InstancesList,omitempty" name:"InstancesList"`
+	InstancesList []*InstanceInfo `json:"InstancesList,omitnil" name:"InstancesList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeInstancesNewResponse struct {
@@ -1377,26 +1377,26 @@ func (r *DescribeInstancesNewResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSpecRequestParams struct {
 	// 地域信息，例如"ap-guangzhou-1"
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// 计费类型，PREPAID 包年包月，POSTPAID_BY_HOUR 按量计费
-	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
 
 	// 是否弹性ck
-	IsElastic *bool `json:"IsElastic,omitempty" name:"IsElastic"`
+	IsElastic *bool `json:"IsElastic,omitnil" name:"IsElastic"`
 }
 
 type DescribeSpecRequest struct {
 	*tchttp.BaseRequest
 	
 	// 地域信息，例如"ap-guangzhou-1"
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// 计费类型，PREPAID 包年包月，POSTPAID_BY_HOUR 按量计费
-	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
 
 	// 是否弹性ck
-	IsElastic *bool `json:"IsElastic,omitempty" name:"IsElastic"`
+	IsElastic *bool `json:"IsElastic,omitnil" name:"IsElastic"`
 }
 
 func (r *DescribeSpecRequest) ToJsonString() string {
@@ -1423,17 +1423,17 @@ func (r *DescribeSpecRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSpecResponseParams struct {
 	// zookeeper节点规格描述
-	CommonSpec []*ResourceSpec `json:"CommonSpec,omitempty" name:"CommonSpec"`
+	CommonSpec []*ResourceSpec `json:"CommonSpec,omitnil" name:"CommonSpec"`
 
 	// 数据节点规格描述
-	DataSpec []*ResourceSpec `json:"DataSpec,omitempty" name:"DataSpec"`
+	DataSpec []*ResourceSpec `json:"DataSpec,omitnil" name:"DataSpec"`
 
 	// 云盘列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AttachCBSSpec []*DiskSpec `json:"AttachCBSSpec,omitempty" name:"AttachCBSSpec"`
+	AttachCBSSpec []*DiskSpec `json:"AttachCBSSpec,omitnil" name:"AttachCBSSpec"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSpecResponse struct {
@@ -1455,14 +1455,14 @@ func (r *DescribeSpecResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DestroyInstanceRequestParams struct {
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DestroyInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *DestroyInstanceRequest) ToJsonString() string {
@@ -1488,16 +1488,16 @@ func (r *DestroyInstanceRequest) FromJsonString(s string) error {
 type DestroyInstanceResponseParams struct {
 	// 作业id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowID *string `json:"FlowID,omitempty" name:"FlowID"`
+	FlowID *string `json:"FlowID,omitnil" name:"FlowID"`
 
 	// 集群id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 错误信息
-	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DestroyInstanceResponse struct {
@@ -1518,322 +1518,322 @@ func (r *DestroyInstanceResponse) FromJsonString(s string) error {
 
 type DiskSpec struct {
 	// 磁盘类型，例如“CLOUD_SSD", "LOCAL_SSD"等
-	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+	DiskType *string `json:"DiskType,omitnil" name:"DiskType"`
 
 	// 磁盘类型说明，例如"云SSD", "本地SSD"等
-	DiskDesc *string `json:"DiskDesc,omitempty" name:"DiskDesc"`
+	DiskDesc *string `json:"DiskDesc,omitnil" name:"DiskDesc"`
 
 	// 磁盘最小规格大小，单位G
-	MinDiskSize *int64 `json:"MinDiskSize,omitempty" name:"MinDiskSize"`
+	MinDiskSize *int64 `json:"MinDiskSize,omitnil" name:"MinDiskSize"`
 
 	// 磁盘最大规格大小，单位G
-	MaxDiskSize *int64 `json:"MaxDiskSize,omitempty" name:"MaxDiskSize"`
+	MaxDiskSize *int64 `json:"MaxDiskSize,omitnil" name:"MaxDiskSize"`
 
 	// 磁盘数目
-	DiskCount *int64 `json:"DiskCount,omitempty" name:"DiskCount"`
+	DiskCount *int64 `json:"DiskCount,omitnil" name:"DiskCount"`
 }
 
 type InstanceConfigInfo struct {
 	// 配置项名称
-	ConfKey *string `json:"ConfKey,omitempty" name:"ConfKey"`
+	ConfKey *string `json:"ConfKey,omitnil" name:"ConfKey"`
 
 	// 配置项内容
-	ConfValue *string `json:"ConfValue,omitempty" name:"ConfValue"`
+	ConfValue *string `json:"ConfValue,omitnil" name:"ConfValue"`
 
 	// 默认值
-	DefaultValue *string `json:"DefaultValue,omitempty" name:"DefaultValue"`
+	DefaultValue *string `json:"DefaultValue,omitnil" name:"DefaultValue"`
 
 	// 是否需要重启
-	NeedRestart *bool `json:"NeedRestart,omitempty" name:"NeedRestart"`
+	NeedRestart *bool `json:"NeedRestart,omitnil" name:"NeedRestart"`
 
 	// 是否可编辑
-	Editable *bool `json:"Editable,omitempty" name:"Editable"`
+	Editable *bool `json:"Editable,omitnil" name:"Editable"`
 
 	// 配置项解释
-	ConfDesc *string `json:"ConfDesc,omitempty" name:"ConfDesc"`
+	ConfDesc *string `json:"ConfDesc,omitnil" name:"ConfDesc"`
 
 	// 文件名称
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 规则名称类型
-	ModifyRuleType *string `json:"ModifyRuleType,omitempty" name:"ModifyRuleType"`
+	ModifyRuleType *string `json:"ModifyRuleType,omitnil" name:"ModifyRuleType"`
 
 	// 规则名称内容
-	ModifyRuleValue *string `json:"ModifyRuleValue,omitempty" name:"ModifyRuleValue"`
+	ModifyRuleValue *string `json:"ModifyRuleValue,omitnil" name:"ModifyRuleValue"`
 
 	// 修改人的uin
-	Uin *string `json:"Uin,omitempty" name:"Uin"`
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
 
 	// 修改时间
-	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
 }
 
 type InstanceConfigItem struct {
 	// key
-	ConfKey *string `json:"ConfKey,omitempty" name:"ConfKey"`
+	ConfKey *string `json:"ConfKey,omitnil" name:"ConfKey"`
 
 	// value
-	ConfValue *string `json:"ConfValue,omitempty" name:"ConfValue"`
+	ConfValue *string `json:"ConfValue,omitnil" name:"ConfValue"`
 }
 
 type InstanceInfo struct {
 	// 集群实例ID, "cdw-xxxx" 字符串类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 集群实例名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 状态,
 	// Init 创建中; Serving 运行中； 
 	// Deleted已销毁；Deleting 销毁中；
 	// Modify 集群变更中；
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Version *string `json:"Version,omitempty" name:"Version"`
+	Version *string `json:"Version,omitnil" name:"Version"`
 
 	// 地域, ap-guangzhou
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 可用区， ap-guangzhou-3
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// 私有网络名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 子网名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// 付费类型，"hour", "prepay"
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PayMode *string `json:"PayMode,omitempty" name:"PayMode"`
+	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
 
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 数据节点描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MasterSummary *NodesSummary `json:"MasterSummary,omitempty" name:"MasterSummary"`
+	MasterSummary *NodesSummary `json:"MasterSummary,omitnil" name:"MasterSummary"`
 
 	// zookeeper节点描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CommonSummary *NodesSummary `json:"CommonSummary,omitempty" name:"CommonSummary"`
+	CommonSummary *NodesSummary `json:"CommonSummary,omitnil" name:"CommonSummary"`
 
 	// 高可用，“true" "false"
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HA *string `json:"HA,omitempty" name:"HA"`
+	HA *string `json:"HA,omitnil" name:"HA"`
 
 	// 访问地址，例如 "10.0.0.1:9000"
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccessInfo *string `json:"AccessInfo,omitempty" name:"AccessInfo"`
+	AccessInfo *string `json:"AccessInfo,omitnil" name:"AccessInfo"`
 
 	// 记录ID，数值型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// regionId, 表示地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegionId *int64 `json:"RegionId,omitempty" name:"RegionId"`
+	RegionId *int64 `json:"RegionId,omitnil" name:"RegionId"`
 
 	// 可用区说明，例如 "广州二区"
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ZoneDesc *string `json:"ZoneDesc,omitempty" name:"ZoneDesc"`
+	ZoneDesc *string `json:"ZoneDesc,omitnil" name:"ZoneDesc"`
 
 	// 错误流程说明信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowMsg *string `json:"FlowMsg,omitempty" name:"FlowMsg"`
+	FlowMsg *string `json:"FlowMsg,omitnil" name:"FlowMsg"`
 
 	// 状态描述，例如“运行中”等
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusDesc *string `json:"StatusDesc,omitempty" name:"StatusDesc"`
+	StatusDesc *string `json:"StatusDesc,omitnil" name:"StatusDesc"`
 
 	// 自动续费标记
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RenewFlag *bool `json:"RenewFlag,omitempty" name:"RenewFlag"`
+	RenewFlag *bool `json:"RenewFlag,omitnil" name:"RenewFlag"`
 
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 监控信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Monitor *string `json:"Monitor,omitempty" name:"Monitor"`
+	Monitor *string `json:"Monitor,omitnil" name:"Monitor"`
 
 	// 是否开通日志
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HasClsTopic *bool `json:"HasClsTopic,omitempty" name:"HasClsTopic"`
+	HasClsTopic *bool `json:"HasClsTopic,omitnil" name:"HasClsTopic"`
 
 	// 日志主题ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClsTopicId *string `json:"ClsTopicId,omitempty" name:"ClsTopicId"`
+	ClsTopicId *string `json:"ClsTopicId,omitnil" name:"ClsTopicId"`
 
 	// 日志集ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClsLogSetId *string `json:"ClsLogSetId,omitempty" name:"ClsLogSetId"`
+	ClsLogSetId *string `json:"ClsLogSetId,omitnil" name:"ClsLogSetId"`
 
 	// 是否支持xml配置管理
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EnableXMLConfig *int64 `json:"EnableXMLConfig,omitempty" name:"EnableXMLConfig"`
+	EnableXMLConfig *int64 `json:"EnableXMLConfig,omitnil" name:"EnableXMLConfig"`
 
 	// 区域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RegionDesc *string `json:"RegionDesc,omitempty" name:"RegionDesc"`
+	RegionDesc *string `json:"RegionDesc,omitnil" name:"RegionDesc"`
 
 	// 弹性网卡地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Eip *string `json:"Eip,omitempty" name:"Eip"`
+	Eip *string `json:"Eip,omitnil" name:"Eip"`
 
 	// 冷热分层系数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CosMoveFactor *int64 `json:"CosMoveFactor,omitempty" name:"CosMoveFactor"`
+	CosMoveFactor *int64 `json:"CosMoveFactor,omitnil" name:"CosMoveFactor"`
 
 	// external/local/yunti
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Kind *string `json:"Kind,omitempty" name:"Kind"`
+	Kind *string `json:"Kind,omitnil" name:"Kind"`
 
 	// 是否弹性ck
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsElastic *bool `json:"IsElastic,omitempty" name:"IsElastic"`
+	IsElastic *bool `json:"IsElastic,omitnil" name:"IsElastic"`
 
 	// 集群详细状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceStateInfo *InstanceStateInfo `json:"InstanceStateInfo,omitempty" name:"InstanceStateInfo"`
+	InstanceStateInfo *InstanceStateInfo `json:"InstanceStateInfo,omitnil" name:"InstanceStateInfo"`
 
 	// ZK高可用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HAZk *bool `json:"HAZk,omitempty" name:"HAZk"`
+	HAZk *bool `json:"HAZk,omitnil" name:"HAZk"`
 
 	// 挂载盘,默认0:没有类型；1:裸盘;2:lvm
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MountDiskType *int64 `json:"MountDiskType,omitempty" name:"MountDiskType"`
+	MountDiskType *int64 `json:"MountDiskType,omitnil" name:"MountDiskType"`
 
 	// 无
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CHProxyVip *string `json:"CHProxyVip,omitempty" name:"CHProxyVip"`
+	CHProxyVip *string `json:"CHProxyVip,omitnil" name:"CHProxyVip"`
 
 	// cos buket的名字
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
+	CosBucketName *string `json:"CosBucketName,omitnil" name:"CosBucketName"`
 
 	// 是否可以挂载云盘
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CanAttachCbs *bool `json:"CanAttachCbs,omitempty" name:"CanAttachCbs"`
+	CanAttachCbs *bool `json:"CanAttachCbs,omitnil" name:"CanAttachCbs"`
 
 	// 是否可以挂载云盘阵列
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CanAttachCbsLvm *bool `json:"CanAttachCbsLvm,omitempty" name:"CanAttachCbsLvm"`
+	CanAttachCbsLvm *bool `json:"CanAttachCbsLvm,omitnil" name:"CanAttachCbsLvm"`
 
 	// 是否可以挂载cos
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CanAttachCos *bool `json:"CanAttachCos,omitempty" name:"CanAttachCos"`
+	CanAttachCos *bool `json:"CanAttachCos,omitnil" name:"CanAttachCos"`
 
 	// 服务信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Components []*ServiceInfo `json:"Components,omitempty" name:"Components"`
+	Components []*ServiceInfo `json:"Components,omitnil" name:"Components"`
 
 	// 可升级的内核版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpgradeVersions *string `json:"UpgradeVersions,omitempty" name:"UpgradeVersions"`
+	UpgradeVersions *string `json:"UpgradeVersions,omitnil" name:"UpgradeVersions"`
 
 	// ex-index
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EsIndexId *string `json:"EsIndexId,omitempty" name:"EsIndexId"`
+	EsIndexId *string `json:"EsIndexId,omitnil" name:"EsIndexId"`
 
 	// username
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EsIndexUsername *string `json:"EsIndexUsername,omitempty" name:"EsIndexUsername"`
+	EsIndexUsername *string `json:"EsIndexUsername,omitnil" name:"EsIndexUsername"`
 
 	// password
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EsIndexPassword *string `json:"EsIndexPassword,omitempty" name:"EsIndexPassword"`
+	EsIndexPassword *string `json:"EsIndexPassword,omitnil" name:"EsIndexPassword"`
 
 	// true
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HasEsIndex *bool `json:"HasEsIndex,omitempty" name:"HasEsIndex"`
+	HasEsIndex *bool `json:"HasEsIndex,omitnil" name:"HasEsIndex"`
 }
 
 type InstanceStateInfo struct {
 	// 集群状态，例如：Serving
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceState *string `json:"InstanceState,omitempty" name:"InstanceState"`
+	InstanceState *string `json:"InstanceState,omitnil" name:"InstanceState"`
 
 	// 集群操作创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowCreateTime *string `json:"FlowCreateTime,omitempty" name:"FlowCreateTime"`
+	FlowCreateTime *string `json:"FlowCreateTime,omitnil" name:"FlowCreateTime"`
 
 	// 集群操作名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowName *string `json:"FlowName,omitempty" name:"FlowName"`
+	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
 
 	// 集群操作进度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowProgress *int64 `json:"FlowProgress,omitempty" name:"FlowProgress"`
+	FlowProgress *int64 `json:"FlowProgress,omitnil" name:"FlowProgress"`
 
 	// 集群状态描述，例如：运行中
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceStateDesc *string `json:"InstanceStateDesc,omitempty" name:"InstanceStateDesc"`
+	InstanceStateDesc *string `json:"InstanceStateDesc,omitnil" name:"InstanceStateDesc"`
 
 	// 集群流程错误信息，例如：“创建失败，资源不足”
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowMsg *string `json:"FlowMsg,omitempty" name:"FlowMsg"`
+	FlowMsg *string `json:"FlowMsg,omitnil" name:"FlowMsg"`
 
 	// 当前步骤的名称，例如：”购买资源中“
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessName *string `json:"ProcessName,omitempty" name:"ProcessName"`
+	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
 
 	// 请求id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 
 	// 流程的二级名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProcessSubName *string `json:"ProcessSubName,omitempty" name:"ProcessSubName"`
+	ProcessSubName *string `json:"ProcessSubName,omitnil" name:"ProcessSubName"`
 }
 
 type MapConfigItem struct {
 	// key
-	ConfKey *string `json:"ConfKey,omitempty" name:"ConfKey"`
+	ConfKey *string `json:"ConfKey,omitnil" name:"ConfKey"`
 
 	// 列表
-	Items []*InstanceConfigInfo `json:"Items,omitempty" name:"Items"`
+	Items []*InstanceConfigInfo `json:"Items,omitnil" name:"Items"`
 }
 
 // Predefined struct for user
 type ModifyClusterConfigsRequestParams struct {
 	// 集群ID，例如cdwch-xxxx
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 配置文件修改信息
-	ModifyConfContext []*ConfigSubmitContext `json:"ModifyConfContext,omitempty" name:"ModifyConfContext"`
+	ModifyConfContext []*ConfigSubmitContext `json:"ModifyConfContext,omitnil" name:"ModifyConfContext"`
 
 	// 修改原因
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type ModifyClusterConfigsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群ID，例如cdwch-xxxx
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 配置文件修改信息
-	ModifyConfContext []*ConfigSubmitContext `json:"ModifyConfContext,omitempty" name:"ModifyConfContext"`
+	ModifyConfContext []*ConfigSubmitContext `json:"ModifyConfContext,omitnil" name:"ModifyConfContext"`
 
 	// 修改原因
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 func (r *ModifyClusterConfigsRequest) ToJsonString() string {
@@ -1860,13 +1860,13 @@ func (r *ModifyClusterConfigsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyClusterConfigsResponseParams struct {
 	// 流程相关信息
-	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+	FlowId *int64 `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 错误信息
-	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyClusterConfigsResponse struct {
@@ -1888,44 +1888,44 @@ func (r *ModifyClusterConfigsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyInstanceKeyValConfigsRequestParams struct {
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 新增配置列表
-	AddItems []*InstanceConfigItem `json:"AddItems,omitempty" name:"AddItems"`
+	AddItems []*InstanceConfigItem `json:"AddItems,omitnil" name:"AddItems"`
 
 	// 更新配置列表
-	UpdateItems []*InstanceConfigItem `json:"UpdateItems,omitempty" name:"UpdateItems"`
+	UpdateItems []*InstanceConfigItem `json:"UpdateItems,omitnil" name:"UpdateItems"`
 
 	// 删除配置列表
-	DeleteItems *InstanceConfigItem `json:"DeleteItems,omitempty" name:"DeleteItems"`
+	DeleteItems *InstanceConfigItem `json:"DeleteItems,omitnil" name:"DeleteItems"`
 
 	// 删除配置列表
-	DelItems []*InstanceConfigItem `json:"DelItems,omitempty" name:"DelItems"`
+	DelItems []*InstanceConfigItem `json:"DelItems,omitnil" name:"DelItems"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type ModifyInstanceKeyValConfigsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 新增配置列表
-	AddItems []*InstanceConfigItem `json:"AddItems,omitempty" name:"AddItems"`
+	AddItems []*InstanceConfigItem `json:"AddItems,omitnil" name:"AddItems"`
 
 	// 更新配置列表
-	UpdateItems []*InstanceConfigItem `json:"UpdateItems,omitempty" name:"UpdateItems"`
+	UpdateItems []*InstanceConfigItem `json:"UpdateItems,omitnil" name:"UpdateItems"`
 
 	// 删除配置列表
-	DeleteItems *InstanceConfigItem `json:"DeleteItems,omitempty" name:"DeleteItems"`
+	DeleteItems *InstanceConfigItem `json:"DeleteItems,omitnil" name:"DeleteItems"`
 
 	// 删除配置列表
-	DelItems []*InstanceConfigItem `json:"DelItems,omitempty" name:"DelItems"`
+	DelItems []*InstanceConfigItem `json:"DelItems,omitnil" name:"DelItems"`
 
 	// 备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 func (r *ModifyInstanceKeyValConfigsRequest) ToJsonString() string {
@@ -1956,13 +1956,13 @@ func (r *ModifyInstanceKeyValConfigsRequest) FromJsonString(s string) error {
 type ModifyInstanceKeyValConfigsResponseParams struct {
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
 
 	// ID
-	FlowId *int64 `json:"FlowId,omitempty" name:"FlowId"`
+	FlowId *int64 `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyInstanceKeyValConfigsResponse struct {
@@ -2013,7 +2013,7 @@ func (r *ModifyUserNewPrivilegeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyUserNewPrivilegeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyUserNewPrivilegeResponse struct {
@@ -2034,89 +2034,89 @@ func (r *ModifyUserNewPrivilegeResponse) FromJsonString(s string) error {
 
 type NodeSpec struct {
 	// 规格名称
-	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+	SpecName *string `json:"SpecName,omitnil" name:"SpecName"`
 
 	// 数量
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 云盘大小
-	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+	DiskSize *int64 `json:"DiskSize,omitnil" name:"DiskSize"`
 }
 
 type NodesSummary struct {
 	// 机型，如 S1
-	Spec *string `json:"Spec,omitempty" name:"Spec"`
+	Spec *string `json:"Spec,omitnil" name:"Spec"`
 
 	// 节点数目
-	NodeSize *int64 `json:"NodeSize,omitempty" name:"NodeSize"`
+	NodeSize *int64 `json:"NodeSize,omitnil" name:"NodeSize"`
 
 	// cpu核数，单位个
-	Core *int64 `json:"Core,omitempty" name:"Core"`
+	Core *int64 `json:"Core,omitnil" name:"Core"`
 
 	// 内存大小，单位G
-	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+	Memory *int64 `json:"Memory,omitnil" name:"Memory"`
 
 	// 磁盘大小，单位G
-	Disk *int64 `json:"Disk,omitempty" name:"Disk"`
+	Disk *int64 `json:"Disk,omitnil" name:"Disk"`
 
 	// 磁盘类型
-	DiskType *string `json:"DiskType,omitempty" name:"DiskType"`
+	DiskType *string `json:"DiskType,omitnil" name:"DiskType"`
 
 	// 磁盘描述
-	DiskDesc *string `json:"DiskDesc,omitempty" name:"DiskDesc"`
+	DiskDesc *string `json:"DiskDesc,omitnil" name:"DiskDesc"`
 
 	// 挂载云盘信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AttachCBSSpec *AttachCBSSpec `json:"AttachCBSSpec,omitempty" name:"AttachCBSSpec"`
+	AttachCBSSpec *AttachCBSSpec `json:"AttachCBSSpec,omitnil" name:"AttachCBSSpec"`
 
 	// 子产品类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubProductType *string `json:"SubProductType,omitempty" name:"SubProductType"`
+	SubProductType *string `json:"SubProductType,omitnil" name:"SubProductType"`
 
 	// 规格对应的核数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SpecCore *int64 `json:"SpecCore,omitempty" name:"SpecCore"`
+	SpecCore *int64 `json:"SpecCore,omitnil" name:"SpecCore"`
 
 	// 规格对应的内存大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SpecMemory *int64 `json:"SpecMemory,omitempty" name:"SpecMemory"`
+	SpecMemory *int64 `json:"SpecMemory,omitnil" name:"SpecMemory"`
 
 	// 磁盘的数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DiskCount *int64 `json:"DiskCount,omitempty" name:"DiskCount"`
+	DiskCount *int64 `json:"DiskCount,omitnil" name:"DiskCount"`
 
 	// 磁盘的最大大小
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxDiskSize *int64 `json:"MaxDiskSize,omitempty" name:"MaxDiskSize"`
+	MaxDiskSize *int64 `json:"MaxDiskSize,omitnil" name:"MaxDiskSize"`
 
 	// 是否为加密云盘
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Encrypt *int64 `json:"Encrypt,omitempty" name:"Encrypt"`
+	Encrypt *int64 `json:"Encrypt,omitnil" name:"Encrypt"`
 }
 
 // Predefined struct for user
 type OpenBackUpRequestParams struct {
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// OPEN 或者CLOSE
-	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+	OperationType *string `json:"OperationType,omitnil" name:"OperationType"`
 
 	// 桶名字
-	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
+	CosBucketName *string `json:"CosBucketName,omitnil" name:"CosBucketName"`
 }
 
 type OpenBackUpRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// OPEN 或者CLOSE
-	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+	OperationType *string `json:"OperationType,omitnil" name:"OperationType"`
 
 	// 桶名字
-	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
+	CosBucketName *string `json:"CosBucketName,omitnil" name:"CosBucketName"`
 }
 
 func (r *OpenBackUpRequest) ToJsonString() string {
@@ -2143,7 +2143,7 @@ func (r *OpenBackUpRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type OpenBackUpResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type OpenBackUpResponse struct {
@@ -2165,20 +2165,20 @@ func (r *OpenBackUpResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RecoverBackUpJobRequestParams struct {
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 任务id
-	BackUpJobId *int64 `json:"BackUpJobId,omitempty" name:"BackUpJobId"`
+	BackUpJobId *int64 `json:"BackUpJobId,omitnil" name:"BackUpJobId"`
 }
 
 type RecoverBackUpJobRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 任务id
-	BackUpJobId *int64 `json:"BackUpJobId,omitempty" name:"BackUpJobId"`
+	BackUpJobId *int64 `json:"BackUpJobId,omitnil" name:"BackUpJobId"`
 }
 
 func (r *RecoverBackUpJobRequest) ToJsonString() string {
@@ -2204,7 +2204,7 @@ func (r *RecoverBackUpJobRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RecoverBackUpJobResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RecoverBackUpJobResponse struct {
@@ -2226,26 +2226,26 @@ func (r *RecoverBackUpJobResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ResizeDiskRequestParams struct {
 	// 实例唯一ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 磁盘扩容后容量，不能小于原有用量。clickhouse最小200，且为100的整数倍。 zk最小100，且为10的整数倍；
-	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+	DiskSize *int64 `json:"DiskSize,omitnil" name:"DiskSize"`
 }
 
 type ResizeDiskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例唯一ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 磁盘扩容后容量，不能小于原有用量。clickhouse最小200，且为100的整数倍。 zk最小100，且为10的整数倍；
-	DiskSize *int64 `json:"DiskSize,omitempty" name:"DiskSize"`
+	DiskSize *int64 `json:"DiskSize,omitnil" name:"DiskSize"`
 }
 
 func (r *ResizeDiskRequest) ToJsonString() string {
@@ -2273,18 +2273,18 @@ func (r *ResizeDiskRequest) FromJsonString(s string) error {
 type ResizeDiskResponseParams struct {
 	// 流程ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ResizeDiskResponse struct {
@@ -2305,92 +2305,92 @@ func (r *ResizeDiskResponse) FromJsonString(s string) error {
 
 type ResourceSpec struct {
 	// 规格名称，例如“SCH1"
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// cpu核数
-	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+	Cpu *int64 `json:"Cpu,omitnil" name:"Cpu"`
 
 	// 内存大小，单位G
-	Mem *int64 `json:"Mem,omitempty" name:"Mem"`
+	Mem *int64 `json:"Mem,omitnil" name:"Mem"`
 
 	// 分类标记，STANDARD/BIGDATA/HIGHIO分别表示标准型/大数据型/高IO
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 系统盘描述信息
-	SystemDisk *DiskSpec `json:"SystemDisk,omitempty" name:"SystemDisk"`
+	SystemDisk *DiskSpec `json:"SystemDisk,omitnil" name:"SystemDisk"`
 
 	// 数据盘描述信息
-	DataDisk *DiskSpec `json:"DataDisk,omitempty" name:"DataDisk"`
+	DataDisk *DiskSpec `json:"DataDisk,omitnil" name:"DataDisk"`
 
 	// 最大节点数目限制
-	MaxNodeSize *int64 `json:"MaxNodeSize,omitempty" name:"MaxNodeSize"`
+	MaxNodeSize *int64 `json:"MaxNodeSize,omitnil" name:"MaxNodeSize"`
 
 	// 是否可用，false代表售罄
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Available *bool `json:"Available,omitempty" name:"Available"`
+	Available *bool `json:"Available,omitnil" name:"Available"`
 
 	// 规格描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ComputeSpecDesc *string `json:"ComputeSpecDesc,omitempty" name:"ComputeSpecDesc"`
+	ComputeSpecDesc *string `json:"ComputeSpecDesc,omitnil" name:"ComputeSpecDesc"`
 
 	// 规格名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
 
 	// 库存数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceQuota *int64 `json:"InstanceQuota,omitempty" name:"InstanceQuota"`
+	InstanceQuota *int64 `json:"InstanceQuota,omitnil" name:"InstanceQuota"`
 }
 
 // Predefined struct for user
 type ScaleOutInstanceRequestParams struct {
 	// 实例唯一ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 调整clickhouse节点数量
-	NodeCount *int64 `json:"NodeCount,omitempty" name:"NodeCount"`
+	NodeCount *int64 `json:"NodeCount,omitnil" name:"NodeCount"`
 
 	// v_cluster分组，	
 	// 新增扩容节点将加入到已选择的v_cluster分组中，提交同步VIP生效.
-	ScaleOutCluster *string `json:"ScaleOutCluster,omitempty" name:"ScaleOutCluster"`
+	ScaleOutCluster *string `json:"ScaleOutCluster,omitnil" name:"ScaleOutCluster"`
 
 	// 子网剩余ip数量，用于判断当前实例子网剩余ip数是否能扩容。需要根据实际填写
-	UserSubnetIPNum *int64 `json:"UserSubnetIPNum,omitempty" name:"UserSubnetIPNum"`
+	UserSubnetIPNum *int64 `json:"UserSubnetIPNum,omitnil" name:"UserSubnetIPNum"`
 
 	// 同步元数据节点IP （uip），扩容的时候必填
-	ScaleOutNodeIp *string `json:"ScaleOutNodeIp,omitempty" name:"ScaleOutNodeIp"`
+	ScaleOutNodeIp *string `json:"ScaleOutNodeIp,omitnil" name:"ScaleOutNodeIp"`
 
 	// 缩容节点shard的节点IP （uip），其中ha集群需要主副节点ip都传入以逗号分隔，缩容的时候必填
-	ReduceShardInfo []*string `json:"ReduceShardInfo,omitempty" name:"ReduceShardInfo"`
+	ReduceShardInfo []*string `json:"ReduceShardInfo,omitnil" name:"ReduceShardInfo"`
 }
 
 type ScaleOutInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例唯一ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 调整clickhouse节点数量
-	NodeCount *int64 `json:"NodeCount,omitempty" name:"NodeCount"`
+	NodeCount *int64 `json:"NodeCount,omitnil" name:"NodeCount"`
 
 	// v_cluster分组，	
 	// 新增扩容节点将加入到已选择的v_cluster分组中，提交同步VIP生效.
-	ScaleOutCluster *string `json:"ScaleOutCluster,omitempty" name:"ScaleOutCluster"`
+	ScaleOutCluster *string `json:"ScaleOutCluster,omitnil" name:"ScaleOutCluster"`
 
 	// 子网剩余ip数量，用于判断当前实例子网剩余ip数是否能扩容。需要根据实际填写
-	UserSubnetIPNum *int64 `json:"UserSubnetIPNum,omitempty" name:"UserSubnetIPNum"`
+	UserSubnetIPNum *int64 `json:"UserSubnetIPNum,omitnil" name:"UserSubnetIPNum"`
 
 	// 同步元数据节点IP （uip），扩容的时候必填
-	ScaleOutNodeIp *string `json:"ScaleOutNodeIp,omitempty" name:"ScaleOutNodeIp"`
+	ScaleOutNodeIp *string `json:"ScaleOutNodeIp,omitnil" name:"ScaleOutNodeIp"`
 
 	// 缩容节点shard的节点IP （uip），其中ha集群需要主副节点ip都传入以逗号分隔，缩容的时候必填
-	ReduceShardInfo []*string `json:"ReduceShardInfo,omitempty" name:"ReduceShardInfo"`
+	ReduceShardInfo []*string `json:"ReduceShardInfo,omitnil" name:"ReduceShardInfo"`
 }
 
 func (r *ScaleOutInstanceRequest) ToJsonString() string {
@@ -2422,18 +2422,18 @@ func (r *ScaleOutInstanceRequest) FromJsonString(s string) error {
 type ScaleOutInstanceResponseParams struct {
 	// 流程ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ScaleOutInstanceResponse struct {
@@ -2455,32 +2455,32 @@ func (r *ScaleOutInstanceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ScaleUpInstanceRequestParams struct {
 	// 实例唯一ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// clickhouse节点规格。
-	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+	SpecName *string `json:"SpecName,omitnil" name:"SpecName"`
 
 	// 是否滚动重启，false为不滚动重启，true为滚动重启
-	ScaleUpEnableRolling *bool `json:"ScaleUpEnableRolling,omitempty" name:"ScaleUpEnableRolling"`
+	ScaleUpEnableRolling *bool `json:"ScaleUpEnableRolling,omitnil" name:"ScaleUpEnableRolling"`
 }
 
 type ScaleUpInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例唯一ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 节点类型，DATA：clickhouse节点，COMMON：为zookeeper节点
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// clickhouse节点规格。
-	SpecName *string `json:"SpecName,omitempty" name:"SpecName"`
+	SpecName *string `json:"SpecName,omitnil" name:"SpecName"`
 
 	// 是否滚动重启，false为不滚动重启，true为滚动重启
-	ScaleUpEnableRolling *bool `json:"ScaleUpEnableRolling,omitempty" name:"ScaleUpEnableRolling"`
+	ScaleUpEnableRolling *bool `json:"ScaleUpEnableRolling,omitnil" name:"ScaleUpEnableRolling"`
 }
 
 func (r *ScaleUpInstanceRequest) ToJsonString() string {
@@ -2509,18 +2509,18 @@ func (r *ScaleUpInstanceRequest) FromJsonString(s string) error {
 type ScaleUpInstanceResponseParams struct {
 	// 流程ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorMsg *string `json:"ErrorMsg,omitempty" name:"ErrorMsg"`
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ScaleUpInstanceResponse struct {
@@ -2542,50 +2542,50 @@ func (r *ScaleUpInstanceResponse) FromJsonString(s string) error {
 type ScheduleStrategy struct {
 	// 备份桶列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CosBucketName *string `json:"CosBucketName,omitempty" name:"CosBucketName"`
+	CosBucketName *string `json:"CosBucketName,omitnil" name:"CosBucketName"`
 
 	// 备份保留天数
-	RetainDays *int64 `json:"RetainDays,omitempty" name:"RetainDays"`
+	RetainDays *int64 `json:"RetainDays,omitnil" name:"RetainDays"`
 
 	// 备份的天
-	WeekDays *string `json:"WeekDays,omitempty" name:"WeekDays"`
+	WeekDays *string `json:"WeekDays,omitnil" name:"WeekDays"`
 
 	// 备份小时
-	ExecuteHour *int64 `json:"ExecuteHour,omitempty" name:"ExecuteHour"`
+	ExecuteHour *int64 `json:"ExecuteHour,omitnil" name:"ExecuteHour"`
 
 	// 策略id
-	ScheduleId *int64 `json:"ScheduleId,omitempty" name:"ScheduleId"`
+	ScheduleId *int64 `json:"ScheduleId,omitnil" name:"ScheduleId"`
 
 	// 下次备份时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NextBackupTime *string `json:"NextBackupTime,omitempty" name:"NextBackupTime"`
+	NextBackupTime *string `json:"NextBackupTime,omitnil" name:"NextBackupTime"`
 }
 
 type SearchTags struct {
 	// 标签的键
-	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
 
 	// 标签的值
-	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
 
 	// 1表示只输入标签的键，没有输入值；0表示输入键时且输入值
-	AllValue *int64 `json:"AllValue,omitempty" name:"AllValue"`
+	AllValue *int64 `json:"AllValue,omitnil" name:"AllValue"`
 }
 
 type ServiceInfo struct {
 	// 服务名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 服务的版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Version *string `json:"Version,omitempty" name:"Version"`
+	Version *string `json:"Version,omitnil" name:"Version"`
 }
 
 type Tag struct {
 	// 标签的键
-	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
 
 	// 标签的值
-	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
 }

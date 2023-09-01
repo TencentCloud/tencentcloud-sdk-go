@@ -15,36 +15,36 @@
 package v20210820
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type ActionFilter struct {
 	// 关键字
-	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
 
 	// 搜索内容值
-	Values []*string `json:"Values,omitempty" name:"Values"`
+	Values []*string `json:"Values,omitnil" name:"Values"`
 }
 
 // Predefined struct for user
 type CreateTaskFromTemplateRequestParams struct {
 	// 从经验库中查询到的经验模板ID
-	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *uint64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 演练的配置参数
-	TaskConfig *TaskConfig `json:"TaskConfig,omitempty" name:"TaskConfig"`
+	TaskConfig *TaskConfig `json:"TaskConfig,omitnil" name:"TaskConfig"`
 }
 
 type CreateTaskFromTemplateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 从经验库中查询到的经验模板ID
-	TemplateId *uint64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *uint64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 演练的配置参数
-	TaskConfig *TaskConfig `json:"TaskConfig,omitempty" name:"TaskConfig"`
+	TaskConfig *TaskConfig `json:"TaskConfig,omitnil" name:"TaskConfig"`
 }
 
 func (r *CreateTaskFromTemplateRequest) ToJsonString() string {
@@ -70,10 +70,10 @@ func (r *CreateTaskFromTemplateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTaskFromTemplateResponseParams struct {
 	// 创建成功的演练ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateTaskFromTemplateResponse struct {
@@ -95,14 +95,14 @@ func (r *CreateTaskFromTemplateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTaskRequestParams struct {
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type DeleteTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *DeleteTaskRequest) ToJsonString() string {
@@ -127,7 +127,7 @@ func (r *DeleteTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteTaskResponse struct {
@@ -148,42 +148,42 @@ func (r *DeleteTaskResponse) FromJsonString(s string) error {
 
 type DescribePolicy struct {
 	// 保护策略ID列表
-	TaskPolicyIdList []*string `json:"TaskPolicyIdList,omitempty" name:"TaskPolicyIdList"`
+	TaskPolicyIdList []*string `json:"TaskPolicyIdList,omitnil" name:"TaskPolicyIdList"`
 
 	// 保护策略状态
-	TaskPolicyStatus *string `json:"TaskPolicyStatus,omitempty" name:"TaskPolicyStatus"`
+	TaskPolicyStatus *string `json:"TaskPolicyStatus,omitnil" name:"TaskPolicyStatus"`
 
 	// 策略规则
-	TaskPolicyRule *string `json:"TaskPolicyRule,omitempty" name:"TaskPolicyRule"`
+	TaskPolicyRule *string `json:"TaskPolicyRule,omitnil" name:"TaskPolicyRule"`
 
 	// 护栏策略生效处理策略 1:顺序执行，2:暂停
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskPolicyDealType *int64 `json:"TaskPolicyDealType,omitempty" name:"TaskPolicyDealType"`
+	TaskPolicyDealType *int64 `json:"TaskPolicyDealType,omitnil" name:"TaskPolicyDealType"`
 }
 
 // Predefined struct for user
 type DescribeTaskExecuteLogsRequestParams struct {
 	// 任务ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 返回的内容行数
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 日志起始的行数。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeTaskExecuteLogsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 返回的内容行数
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 日志起始的行数。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeTaskExecuteLogsRequest) ToJsonString() string {
@@ -210,10 +210,10 @@ func (r *DescribeTaskExecuteLogsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskExecuteLogsResponseParams struct {
 	// 日志数据
-	LogMessage []*string `json:"LogMessage,omitempty" name:"LogMessage"`
+	LogMessage []*string `json:"LogMessage,omitnil" name:"LogMessage"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTaskExecuteLogsResponse struct {
@@ -235,62 +235,62 @@ func (r *DescribeTaskExecuteLogsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskListRequestParams struct {
 	// 分页Limit
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页Offset
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 演练名称
-	TaskTitle *string `json:"TaskTitle,omitempty" name:"TaskTitle"`
+	TaskTitle *string `json:"TaskTitle,omitnil" name:"TaskTitle"`
 
 	// 标签键
-	TaskTag []*string `json:"TaskTag,omitempty" name:"TaskTag"`
+	TaskTag []*string `json:"TaskTag,omitnil" name:"TaskTag"`
 
 	// 任务状态(1001 -- 未开始 1002 -- 进行中 1003 -- 暂停中 1004 -- 任务结束)
-	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+	TaskStatus *int64 `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// 开始时间，固定格式%Y-%m-%d %H:%M:%S
-	TaskStartTime *string `json:"TaskStartTime,omitempty" name:"TaskStartTime"`
+	TaskStartTime *string `json:"TaskStartTime,omitnil" name:"TaskStartTime"`
 
 	// 结束时间，固定格式%Y-%m-%d %H:%M:%S
-	TaskEndTime *string `json:"TaskEndTime,omitempty" name:"TaskEndTime"`
+	TaskEndTime *string `json:"TaskEndTime,omitnil" name:"TaskEndTime"`
 
 	// 标签对
-	Tags []*TagWithDescribe `json:"Tags,omitempty" name:"Tags"`
+	Tags []*TagWithDescribe `json:"Tags,omitnil" name:"Tags"`
 
 	// 筛选条件
-	Filters []*ActionFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ActionFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeTaskListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页Limit
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页Offset
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 演练名称
-	TaskTitle *string `json:"TaskTitle,omitempty" name:"TaskTitle"`
+	TaskTitle *string `json:"TaskTitle,omitnil" name:"TaskTitle"`
 
 	// 标签键
-	TaskTag []*string `json:"TaskTag,omitempty" name:"TaskTag"`
+	TaskTag []*string `json:"TaskTag,omitnil" name:"TaskTag"`
 
 	// 任务状态(1001 -- 未开始 1002 -- 进行中 1003 -- 暂停中 1004 -- 任务结束)
-	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+	TaskStatus *int64 `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// 开始时间，固定格式%Y-%m-%d %H:%M:%S
-	TaskStartTime *string `json:"TaskStartTime,omitempty" name:"TaskStartTime"`
+	TaskStartTime *string `json:"TaskStartTime,omitnil" name:"TaskStartTime"`
 
 	// 结束时间，固定格式%Y-%m-%d %H:%M:%S
-	TaskEndTime *string `json:"TaskEndTime,omitempty" name:"TaskEndTime"`
+	TaskEndTime *string `json:"TaskEndTime,omitnil" name:"TaskEndTime"`
 
 	// 标签对
-	Tags []*TagWithDescribe `json:"Tags,omitempty" name:"Tags"`
+	Tags []*TagWithDescribe `json:"Tags,omitnil" name:"Tags"`
 
 	// 筛选条件
-	Filters []*ActionFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ActionFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeTaskListRequest) ToJsonString() string {
@@ -323,13 +323,13 @@ func (r *DescribeTaskListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskListResponseParams struct {
 	// 无
-	TaskList []*TaskListItem `json:"TaskList,omitempty" name:"TaskList"`
+	TaskList []*TaskListItem `json:"TaskList,omitnil" name:"TaskList"`
 
 	// 列表数量
-	Total *int64 `json:"Total,omitempty" name:"Total"`
+	Total *int64 `json:"Total,omitnil" name:"Total"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTaskListResponse struct {
@@ -351,14 +351,14 @@ func (r *DescribeTaskListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskRequestParams struct {
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type DescribeTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *DescribeTaskRequest) ToJsonString() string {
@@ -383,14 +383,14 @@ func (r *DescribeTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskResponseParams struct {
 	// 任务信息
-	Task *Task `json:"Task,omitempty" name:"Task"`
+	Task *Task `json:"Task,omitnil" name:"Task"`
 
 	// 任务对应的演练报告信息，null表示未导出报告
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ReportInfo *TaskReportInfo `json:"ReportInfo,omitempty" name:"ReportInfo"`
+	ReportInfo *TaskReportInfo `json:"ReportInfo,omitnil" name:"ReportInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTaskResponse struct {
@@ -412,62 +412,62 @@ func (r *DescribeTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTemplateListRequestParams struct {
 	// 分页Limit, 最大值100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页Offset
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 演练名称
-	Title *string `json:"Title,omitempty" name:"Title"`
+	Title *string `json:"Title,omitnil" name:"Title"`
 
 	// 标签键
-	Tag []*string `json:"Tag,omitempty" name:"Tag"`
+	Tag []*string `json:"Tag,omitnil" name:"Tag"`
 
 	// 状态，1---使用中， 2---停用
-	IsUsed *int64 `json:"IsUsed,omitempty" name:"IsUsed"`
+	IsUsed *int64 `json:"IsUsed,omitnil" name:"IsUsed"`
 
 	// 标签对
-	Tags []*TagWithDescribe `json:"Tags,omitempty" name:"Tags"`
+	Tags []*TagWithDescribe `json:"Tags,omitnil" name:"Tags"`
 
 	// 经验来源 0-自建 1-专家推荐
-	TemplateSource *int64 `json:"TemplateSource,omitempty" name:"TemplateSource"`
+	TemplateSource *int64 `json:"TemplateSource,omitnil" name:"TemplateSource"`
 
 	// 经验ID
-	TemplateIdList []*int64 `json:"TemplateIdList,omitempty" name:"TemplateIdList"`
+	TemplateIdList []*int64 `json:"TemplateIdList,omitnil" name:"TemplateIdList"`
 
 	// 过滤参数
-	Filters []*ActionFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ActionFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeTemplateListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页Limit, 最大值100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页Offset
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 演练名称
-	Title *string `json:"Title,omitempty" name:"Title"`
+	Title *string `json:"Title,omitnil" name:"Title"`
 
 	// 标签键
-	Tag []*string `json:"Tag,omitempty" name:"Tag"`
+	Tag []*string `json:"Tag,omitnil" name:"Tag"`
 
 	// 状态，1---使用中， 2---停用
-	IsUsed *int64 `json:"IsUsed,omitempty" name:"IsUsed"`
+	IsUsed *int64 `json:"IsUsed,omitnil" name:"IsUsed"`
 
 	// 标签对
-	Tags []*TagWithDescribe `json:"Tags,omitempty" name:"Tags"`
+	Tags []*TagWithDescribe `json:"Tags,omitnil" name:"Tags"`
 
 	// 经验来源 0-自建 1-专家推荐
-	TemplateSource *int64 `json:"TemplateSource,omitempty" name:"TemplateSource"`
+	TemplateSource *int64 `json:"TemplateSource,omitnil" name:"TemplateSource"`
 
 	// 经验ID
-	TemplateIdList []*int64 `json:"TemplateIdList,omitempty" name:"TemplateIdList"`
+	TemplateIdList []*int64 `json:"TemplateIdList,omitnil" name:"TemplateIdList"`
 
 	// 过滤参数
-	Filters []*ActionFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*ActionFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeTemplateListRequest) ToJsonString() string {
@@ -500,13 +500,13 @@ func (r *DescribeTemplateListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTemplateListResponseParams struct {
 	// 经验库列表
-	TemplateList []*TemplateListItem `json:"TemplateList,omitempty" name:"TemplateList"`
+	TemplateList []*TemplateListItem `json:"TemplateList,omitnil" name:"TemplateList"`
 
 	// 列表数量
-	Total *int64 `json:"Total,omitempty" name:"Total"`
+	Total *int64 `json:"Total,omitnil" name:"Total"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTemplateListResponse struct {
@@ -528,14 +528,14 @@ func (r *DescribeTemplateListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTemplateRequestParams struct {
 	// 经验库ID
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 type DescribeTemplateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 经验库ID
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 }
 
 func (r *DescribeTemplateRequest) ToJsonString() string {
@@ -560,10 +560,10 @@ func (r *DescribeTemplateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTemplateResponseParams struct {
 	// 经验库详情
-	Template *Template `json:"Template,omitempty" name:"Template"`
+	Template *Template `json:"Template,omitnil" name:"Template"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTemplateResponse struct {
@@ -585,44 +585,44 @@ func (r *DescribeTemplateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ExecuteTaskInstanceRequestParams struct {
 	// 任务ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务动作ID
-	TaskActionId *uint64 `json:"TaskActionId,omitempty" name:"TaskActionId"`
+	TaskActionId *uint64 `json:"TaskActionId,omitnil" name:"TaskActionId"`
 
 	// 任务动作实例ID
-	TaskInstanceIds []*uint64 `json:"TaskInstanceIds,omitempty" name:"TaskInstanceIds"`
+	TaskInstanceIds []*uint64 `json:"TaskInstanceIds,omitnil" name:"TaskInstanceIds"`
 
 	// 是否操作整个任务
-	IsOperateAll *bool `json:"IsOperateAll,omitempty" name:"IsOperateAll"`
+	IsOperateAll *bool `json:"IsOperateAll,omitnil" name:"IsOperateAll"`
 
 	// 操作类型：（1--启动   2--执行  3--跳过   5--重试）
-	ActionType *uint64 `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 动作组ID
-	TaskGroupId *uint64 `json:"TaskGroupId,omitempty" name:"TaskGroupId"`
+	TaskGroupId *uint64 `json:"TaskGroupId,omitnil" name:"TaskGroupId"`
 }
 
 type ExecuteTaskInstanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *uint64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *uint64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务动作ID
-	TaskActionId *uint64 `json:"TaskActionId,omitempty" name:"TaskActionId"`
+	TaskActionId *uint64 `json:"TaskActionId,omitnil" name:"TaskActionId"`
 
 	// 任务动作实例ID
-	TaskInstanceIds []*uint64 `json:"TaskInstanceIds,omitempty" name:"TaskInstanceIds"`
+	TaskInstanceIds []*uint64 `json:"TaskInstanceIds,omitnil" name:"TaskInstanceIds"`
 
 	// 是否操作整个任务
-	IsOperateAll *bool `json:"IsOperateAll,omitempty" name:"IsOperateAll"`
+	IsOperateAll *bool `json:"IsOperateAll,omitnil" name:"IsOperateAll"`
 
 	// 操作类型：（1--启动   2--执行  3--跳过   5--重试）
-	ActionType *uint64 `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 动作组ID
-	TaskGroupId *uint64 `json:"TaskGroupId,omitempty" name:"TaskGroupId"`
+	TaskGroupId *uint64 `json:"TaskGroupId,omitnil" name:"TaskGroupId"`
 }
 
 func (r *ExecuteTaskInstanceRequest) ToJsonString() string {
@@ -652,7 +652,7 @@ func (r *ExecuteTaskInstanceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExecuteTaskInstanceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ExecuteTaskInstanceResponse struct {
@@ -674,14 +674,14 @@ func (r *ExecuteTaskInstanceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ExecuteTaskRequestParams struct {
 	// 需要执行的任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type ExecuteTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要执行的任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *ExecuteTaskRequest) ToJsonString() string {
@@ -706,7 +706,7 @@ func (r *ExecuteTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExecuteTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ExecuteTaskResponse struct {
@@ -728,32 +728,32 @@ func (r *ExecuteTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTaskRunStatusRequestParams struct {
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务状态, 1001--未开始 1002--进行中（执行）1003--进行中（暂停）1004--执行结束
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 执行结果是否符合预期（当前扭转状态为执行结束时，需要必传此字段）
-	IsExpect *bool `json:"IsExpect,omitempty" name:"IsExpect"`
+	IsExpect *bool `json:"IsExpect,omitnil" name:"IsExpect"`
 
 	// 演习结论（当演习状态转变为执行结束时，需要填写此字段）
-	Summary *string `json:"Summary,omitempty" name:"Summary"`
+	Summary *string `json:"Summary,omitnil" name:"Summary"`
 }
 
 type ModifyTaskRunStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务状态, 1001--未开始 1002--进行中（执行）1003--进行中（暂停）1004--执行结束
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 执行结果是否符合预期（当前扭转状态为执行结束时，需要必传此字段）
-	IsExpect *bool `json:"IsExpect,omitempty" name:"IsExpect"`
+	IsExpect *bool `json:"IsExpect,omitnil" name:"IsExpect"`
 
 	// 演习结论（当演习状态转变为执行结束时，需要填写此字段）
-	Summary *string `json:"Summary,omitempty" name:"Summary"`
+	Summary *string `json:"Summary,omitnil" name:"Summary"`
 }
 
 func (r *ModifyTaskRunStatusRequest) ToJsonString() string {
@@ -781,7 +781,7 @@ func (r *ModifyTaskRunStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyTaskRunStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyTaskRunStatusResponse struct {
@@ -802,600 +802,600 @@ func (r *ModifyTaskRunStatusResponse) FromJsonString(s string) error {
 
 type TagWithCreate struct {
 	// 标签键
-	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
 
 	// 标签值
-	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
 }
 
 type TagWithDescribe struct {
 	// 标签键
-	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
 
 	// 标签值
-	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
 }
 
 type Task struct {
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务标题
-	TaskTitle *string `json:"TaskTitle,omitempty" name:"TaskTitle"`
+	TaskTitle *string `json:"TaskTitle,omitnil" name:"TaskTitle"`
 
 	// 任务描述
-	TaskDescription *string `json:"TaskDescription,omitempty" name:"TaskDescription"`
+	TaskDescription *string `json:"TaskDescription,omitnil" name:"TaskDescription"`
 
 	// 自定义标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskTag *string `json:"TaskTag,omitempty" name:"TaskTag"`
+	TaskTag *string `json:"TaskTag,omitnil" name:"TaskTag"`
 
 	// 任务状态，1001--未开始  1002--进行中（执行）1003--进行中（暂停）1004--执行结束
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+	TaskStatus *int64 `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// 任务结束状态，表明任务以何种状态结束: 0 -- 尚未结束，1 -- 成功，2-- 失败，3--终止
-	TaskStatusType *int64 `json:"TaskStatusType,omitempty" name:"TaskStatusType"`
+	TaskStatusType *int64 `json:"TaskStatusType,omitnil" name:"TaskStatusType"`
 
 	// 保护策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskProtectStrategy *string `json:"TaskProtectStrategy,omitempty" name:"TaskProtectStrategy"`
+	TaskProtectStrategy *string `json:"TaskProtectStrategy,omitnil" name:"TaskProtectStrategy"`
 
 	// 任务创建时间
-	TaskCreateTime *string `json:"TaskCreateTime,omitempty" name:"TaskCreateTime"`
+	TaskCreateTime *string `json:"TaskCreateTime,omitnil" name:"TaskCreateTime"`
 
 	// 任务更新时间
-	TaskUpdateTime *string `json:"TaskUpdateTime,omitempty" name:"TaskUpdateTime"`
+	TaskUpdateTime *string `json:"TaskUpdateTime,omitnil" name:"TaskUpdateTime"`
 
 	// 任务动作组
-	TaskGroups []*TaskGroup `json:"TaskGroups,omitempty" name:"TaskGroups"`
+	TaskGroups []*TaskGroup `json:"TaskGroups,omitnil" name:"TaskGroups"`
 
 	// 开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskStartTime *string `json:"TaskStartTime,omitempty" name:"TaskStartTime"`
+	TaskStartTime *string `json:"TaskStartTime,omitnil" name:"TaskStartTime"`
 
 	// 结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskEndTime *string `json:"TaskEndTime,omitempty" name:"TaskEndTime"`
+	TaskEndTime *string `json:"TaskEndTime,omitnil" name:"TaskEndTime"`
 
 	// 是否符合预期。1：符合预期，2：不符合预期
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskExpect *int64 `json:"TaskExpect,omitempty" name:"TaskExpect"`
+	TaskExpect *int64 `json:"TaskExpect,omitnil" name:"TaskExpect"`
 
 	// 演习记录
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskSummary *string `json:"TaskSummary,omitempty" name:"TaskSummary"`
+	TaskSummary *string `json:"TaskSummary,omitnil" name:"TaskSummary"`
 
 	// 任务模式。1:手工执行，2:自动执行
-	TaskMode *int64 `json:"TaskMode,omitempty" name:"TaskMode"`
+	TaskMode *int64 `json:"TaskMode,omitnil" name:"TaskMode"`
 
 	// 自动暂停时长。单位分钟
-	TaskPauseDuration *int64 `json:"TaskPauseDuration,omitempty" name:"TaskPauseDuration"`
+	TaskPauseDuration *int64 `json:"TaskPauseDuration,omitnil" name:"TaskPauseDuration"`
 
 	// 演练创建者Uin
-	TaskOwnerUin *string `json:"TaskOwnerUin,omitempty" name:"TaskOwnerUin"`
+	TaskOwnerUin *string `json:"TaskOwnerUin,omitnil" name:"TaskOwnerUin"`
 
 	// 地域ID
-	TaskRegionId *int64 `json:"TaskRegionId,omitempty" name:"TaskRegionId"`
+	TaskRegionId *int64 `json:"TaskRegionId,omitnil" name:"TaskRegionId"`
 
 	// 监控指标列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskMonitors []*TaskMonitor `json:"TaskMonitors,omitempty" name:"TaskMonitors"`
+	TaskMonitors []*TaskMonitor `json:"TaskMonitors,omitnil" name:"TaskMonitors"`
 
 	// 保护策略
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskPolicy *DescribePolicy `json:"TaskPolicy,omitempty" name:"TaskPolicy"`
+	TaskPolicy *DescribePolicy `json:"TaskPolicy,omitnil" name:"TaskPolicy"`
 
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*TagWithDescribe `json:"Tags,omitempty" name:"Tags"`
+	Tags []*TagWithDescribe `json:"Tags,omitnil" name:"Tags"`
 
 	// 关联的演练计划ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskPlanId *int64 `json:"TaskPlanId,omitempty" name:"TaskPlanId"`
+	TaskPlanId *int64 `json:"TaskPlanId,omitnil" name:"TaskPlanId"`
 
 	// 关联的演练计划名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskPlanTitle *string `json:"TaskPlanTitle,omitempty" name:"TaskPlanTitle"`
+	TaskPlanTitle *string `json:"TaskPlanTitle,omitnil" name:"TaskPlanTitle"`
 }
 
 type TaskConfig struct {
 	// 动作组配置，需要保证配置个数和经验中的动作组个数一致
-	TaskGroupsConfig []*TaskGroupConfig `json:"TaskGroupsConfig,omitempty" name:"TaskGroupsConfig"`
+	TaskGroupsConfig []*TaskGroupConfig `json:"TaskGroupsConfig,omitnil" name:"TaskGroupsConfig"`
 
 	// 更改后的演练名称，不填则默认取经验名称
-	TaskTitle *string `json:"TaskTitle,omitempty" name:"TaskTitle"`
+	TaskTitle *string `json:"TaskTitle,omitnil" name:"TaskTitle"`
 
 	// 更改后的演练描述，不填则默认取经验描述
-	TaskDescription *string `json:"TaskDescription,omitempty" name:"TaskDescription"`
+	TaskDescription *string `json:"TaskDescription,omitnil" name:"TaskDescription"`
 
 	// 演练执行模式：1----手工执行/ 2 ---自动执行，不填则默认取经验执行模式
-	TaskMode *uint64 `json:"TaskMode,omitempty" name:"TaskMode"`
+	TaskMode *uint64 `json:"TaskMode,omitnil" name:"TaskMode"`
 
 	// 演练自动暂停时间，单位分钟, 不填则默认取经验自动暂停时间
-	TaskPauseDuration *uint64 `json:"TaskPauseDuration,omitempty" name:"TaskPauseDuration"`
+	TaskPauseDuration *uint64 `json:"TaskPauseDuration,omitnil" name:"TaskPauseDuration"`
 
 	// 演练标签信息，不填则默认取经验标签
-	Tags []*TagWithCreate `json:"Tags,omitempty" name:"Tags"`
+	Tags []*TagWithCreate `json:"Tags,omitnil" name:"Tags"`
 }
 
 type TaskGroup struct {
 	// 任务动作ID
-	TaskGroupId *int64 `json:"TaskGroupId,omitempty" name:"TaskGroupId"`
+	TaskGroupId *int64 `json:"TaskGroupId,omitnil" name:"TaskGroupId"`
 
 	// 分组标题
-	TaskGroupTitle *string `json:"TaskGroupTitle,omitempty" name:"TaskGroupTitle"`
+	TaskGroupTitle *string `json:"TaskGroupTitle,omitnil" name:"TaskGroupTitle"`
 
 	// 分组描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupDescription *string `json:"TaskGroupDescription,omitempty" name:"TaskGroupDescription"`
+	TaskGroupDescription *string `json:"TaskGroupDescription,omitnil" name:"TaskGroupDescription"`
 
 	// 任务分组顺序
-	TaskGroupOrder *int64 `json:"TaskGroupOrder,omitempty" name:"TaskGroupOrder"`
+	TaskGroupOrder *int64 `json:"TaskGroupOrder,omitnil" name:"TaskGroupOrder"`
 
 	// 对象类型ID
-	ObjectTypeId *int64 `json:"ObjectTypeId,omitempty" name:"ObjectTypeId"`
+	ObjectTypeId *int64 `json:"ObjectTypeId,omitnil" name:"ObjectTypeId"`
 
 	// 任务分组创建时间
-	TaskGroupCreateTime *string `json:"TaskGroupCreateTime,omitempty" name:"TaskGroupCreateTime"`
+	TaskGroupCreateTime *string `json:"TaskGroupCreateTime,omitnil" name:"TaskGroupCreateTime"`
 
 	// 任务分组更新时间
-	TaskGroupUpdateTime *string `json:"TaskGroupUpdateTime,omitempty" name:"TaskGroupUpdateTime"`
+	TaskGroupUpdateTime *string `json:"TaskGroupUpdateTime,omitnil" name:"TaskGroupUpdateTime"`
 
 	// 动作分组动作列表
-	TaskGroupActions []*TaskGroupAction `json:"TaskGroupActions,omitempty" name:"TaskGroupActions"`
+	TaskGroupActions []*TaskGroupAction `json:"TaskGroupActions,omitnil" name:"TaskGroupActions"`
 
 	// 实例列表
-	TaskGroupInstanceList []*string `json:"TaskGroupInstanceList,omitempty" name:"TaskGroupInstanceList"`
+	TaskGroupInstanceList []*string `json:"TaskGroupInstanceList,omitnil" name:"TaskGroupInstanceList"`
 
 	// 执行模式。1 --- 顺序执行，2 --- 阶段执行
-	TaskGroupMode *int64 `json:"TaskGroupMode,omitempty" name:"TaskGroupMode"`
+	TaskGroupMode *int64 `json:"TaskGroupMode,omitnil" name:"TaskGroupMode"`
 
 	// 不参演的实例列表
-	TaskGroupDiscardInstanceList []*string `json:"TaskGroupDiscardInstanceList,omitempty" name:"TaskGroupDiscardInstanceList"`
+	TaskGroupDiscardInstanceList []*string `json:"TaskGroupDiscardInstanceList,omitnil" name:"TaskGroupDiscardInstanceList"`
 
 	// 参演实例列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupSelectedInstanceList []*string `json:"TaskGroupSelectedInstanceList,omitempty" name:"TaskGroupSelectedInstanceList"`
+	TaskGroupSelectedInstanceList []*string `json:"TaskGroupSelectedInstanceList,omitnil" name:"TaskGroupSelectedInstanceList"`
 
 	// 机器选取规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupInstancesExecuteRule []*TaskGroupInstancesExecuteRules `json:"TaskGroupInstancesExecuteRule,omitempty" name:"TaskGroupInstancesExecuteRule"`
+	TaskGroupInstancesExecuteRule []*TaskGroupInstancesExecuteRules `json:"TaskGroupInstancesExecuteRule,omitnil" name:"TaskGroupInstancesExecuteRule"`
 }
 
 type TaskGroupAction struct {
 	// 任务分组动作ID
-	TaskGroupActionId *int64 `json:"TaskGroupActionId,omitempty" name:"TaskGroupActionId"`
+	TaskGroupActionId *int64 `json:"TaskGroupActionId,omitnil" name:"TaskGroupActionId"`
 
 	// 任务分组动作实例列表
-	TaskGroupInstances []*TaskGroupInstance `json:"TaskGroupInstances,omitempty" name:"TaskGroupInstances"`
+	TaskGroupInstances []*TaskGroupInstance `json:"TaskGroupInstances,omitnil" name:"TaskGroupInstances"`
 
 	// 动作ID
-	ActionId *int64 `json:"ActionId,omitempty" name:"ActionId"`
+	ActionId *int64 `json:"ActionId,omitnil" name:"ActionId"`
 
 	// 分组动作顺序
-	TaskGroupActionOrder *int64 `json:"TaskGroupActionOrder,omitempty" name:"TaskGroupActionOrder"`
+	TaskGroupActionOrder *int64 `json:"TaskGroupActionOrder,omitnil" name:"TaskGroupActionOrder"`
 
 	// 分组动作通用配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupActionGeneralConfiguration *string `json:"TaskGroupActionGeneralConfiguration,omitempty" name:"TaskGroupActionGeneralConfiguration"`
+	TaskGroupActionGeneralConfiguration *string `json:"TaskGroupActionGeneralConfiguration,omitnil" name:"TaskGroupActionGeneralConfiguration"`
 
 	// 分组动作自定义配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupActionCustomConfiguration *string `json:"TaskGroupActionCustomConfiguration,omitempty" name:"TaskGroupActionCustomConfiguration"`
+	TaskGroupActionCustomConfiguration *string `json:"TaskGroupActionCustomConfiguration,omitnil" name:"TaskGroupActionCustomConfiguration"`
 
 	// 分组动作状态
-	TaskGroupActionStatus *int64 `json:"TaskGroupActionStatus,omitempty" name:"TaskGroupActionStatus"`
+	TaskGroupActionStatus *int64 `json:"TaskGroupActionStatus,omitnil" name:"TaskGroupActionStatus"`
 
 	// 动作分组创建时间
-	TaskGroupActionCreateTime *string `json:"TaskGroupActionCreateTime,omitempty" name:"TaskGroupActionCreateTime"`
+	TaskGroupActionCreateTime *string `json:"TaskGroupActionCreateTime,omitnil" name:"TaskGroupActionCreateTime"`
 
 	// 动作分组更新时间
-	TaskGroupActionUpdateTime *string `json:"TaskGroupActionUpdateTime,omitempty" name:"TaskGroupActionUpdateTime"`
+	TaskGroupActionUpdateTime *string `json:"TaskGroupActionUpdateTime,omitnil" name:"TaskGroupActionUpdateTime"`
 
 	// 动作名称
-	ActionTitle *string `json:"ActionTitle,omitempty" name:"ActionTitle"`
+	ActionTitle *string `json:"ActionTitle,omitnil" name:"ActionTitle"`
 
 	// 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
-	TaskGroupActionStatusType *int64 `json:"TaskGroupActionStatusType,omitempty" name:"TaskGroupActionStatusType"`
+	TaskGroupActionStatusType *int64 `json:"TaskGroupActionStatusType,omitnil" name:"TaskGroupActionStatusType"`
 
 	// RandomId
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupActionRandomId *int64 `json:"TaskGroupActionRandomId,omitempty" name:"TaskGroupActionRandomId"`
+	TaskGroupActionRandomId *int64 `json:"TaskGroupActionRandomId,omitnil" name:"TaskGroupActionRandomId"`
 
 	// RecoverId
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupActionRecoverId *int64 `json:"TaskGroupActionRecoverId,omitempty" name:"TaskGroupActionRecoverId"`
+	TaskGroupActionRecoverId *int64 `json:"TaskGroupActionRecoverId,omitnil" name:"TaskGroupActionRecoverId"`
 
 	// ExecuteId
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupActionExecuteId *int64 `json:"TaskGroupActionExecuteId,omitempty" name:"TaskGroupActionExecuteId"`
+	TaskGroupActionExecuteId *int64 `json:"TaskGroupActionExecuteId,omitnil" name:"TaskGroupActionExecuteId"`
 
 	// 调用api类型，0:tat, 1:云api
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActionApiType *int64 `json:"ActionApiType,omitempty" name:"ActionApiType"`
+	ActionApiType *int64 `json:"ActionApiType,omitnil" name:"ActionApiType"`
 
 	// 1:故障，2:恢复
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActionAttribute *int64 `json:"ActionAttribute,omitempty" name:"ActionAttribute"`
+	ActionAttribute *int64 `json:"ActionAttribute,omitnil" name:"ActionAttribute"`
 
 	// 动作类型：平台、自定义
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 是否可重试
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsExecuteRedo *bool `json:"IsExecuteRedo,omitempty" name:"IsExecuteRedo"`
+	IsExecuteRedo *bool `json:"IsExecuteRedo,omitnil" name:"IsExecuteRedo"`
 
 	// 动作风险级别
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActionRisk *string `json:"ActionRisk,omitempty" name:"ActionRisk"`
+	ActionRisk *string `json:"ActionRisk,omitnil" name:"ActionRisk"`
 
 	// 动作运行时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupActionExecuteTime *int64 `json:"TaskGroupActionExecuteTime,omitempty" name:"TaskGroupActionExecuteTime"`
+	TaskGroupActionExecuteTime *int64 `json:"TaskGroupActionExecuteTime,omitnil" name:"TaskGroupActionExecuteTime"`
 }
 
 type TaskGroupActionConfig struct {
 	// 该动作在动作组中的顺序，从1开始，不填或填错将匹配不到经验中要修改参数的动作
-	TaskGroupActionOrder *uint64 `json:"TaskGroupActionOrder,omitempty" name:"TaskGroupActionOrder"`
+	TaskGroupActionOrder *uint64 `json:"TaskGroupActionOrder,omitnil" name:"TaskGroupActionOrder"`
 
 	// 动作通用参数，需要json序列化传入，可以从查询经验详情接口获取，不填默认使用经验中动作参数
-	TaskGroupActionGeneralConfiguration *string `json:"TaskGroupActionGeneralConfiguration,omitempty" name:"TaskGroupActionGeneralConfiguration"`
+	TaskGroupActionGeneralConfiguration *string `json:"TaskGroupActionGeneralConfiguration,omitnil" name:"TaskGroupActionGeneralConfiguration"`
 
 	// 动作自定义参数，需要json序列化传入，可以从查询经验详情接口获取，不填默认使用经验中动作参数
-	TaskGroupActionCustomConfiguration *string `json:"TaskGroupActionCustomConfiguration,omitempty" name:"TaskGroupActionCustomConfiguration"`
+	TaskGroupActionCustomConfiguration *string `json:"TaskGroupActionCustomConfiguration,omitnil" name:"TaskGroupActionCustomConfiguration"`
 }
 
 type TaskGroupConfig struct {
 	// 动作组所关联的实例对象
-	TaskGroupInstances []*string `json:"TaskGroupInstances,omitempty" name:"TaskGroupInstances"`
+	TaskGroupInstances []*string `json:"TaskGroupInstances,omitnil" name:"TaskGroupInstances"`
 
 	// 动作组标题，不填默认取经验中的动作组名称
-	TaskGroupTitle *string `json:"TaskGroupTitle,omitempty" name:"TaskGroupTitle"`
+	TaskGroupTitle *string `json:"TaskGroupTitle,omitnil" name:"TaskGroupTitle"`
 
 	// 动作组描述，不填默认取经验中的动作组描述
-	TaskGroupDescription *string `json:"TaskGroupDescription,omitempty" name:"TaskGroupDescription"`
+	TaskGroupDescription *string `json:"TaskGroupDescription,omitnil" name:"TaskGroupDescription"`
 
 	// 动作执行模式。1 --- 顺序执行，2 --- 阶段执行, 不填默认取经验中的动作组执行模式
-	TaskGroupMode *uint64 `json:"TaskGroupMode,omitempty" name:"TaskGroupMode"`
+	TaskGroupMode *uint64 `json:"TaskGroupMode,omitnil" name:"TaskGroupMode"`
 
 	// 动作组中的动作参数，不填默认使用经验中的动作参数，配置时可以只指定想要修改参数的动作
-	TaskGroupActionsConfig []*TaskGroupActionConfig `json:"TaskGroupActionsConfig,omitempty" name:"TaskGroupActionsConfig"`
+	TaskGroupActionsConfig []*TaskGroupActionConfig `json:"TaskGroupActionsConfig,omitnil" name:"TaskGroupActionsConfig"`
 }
 
 type TaskGroupInstance struct {
 	// 实例ID
-	TaskGroupInstanceId *int64 `json:"TaskGroupInstanceId,omitempty" name:"TaskGroupInstanceId"`
+	TaskGroupInstanceId *int64 `json:"TaskGroupInstanceId,omitnil" name:"TaskGroupInstanceId"`
 
 	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupInstanceObjectId *string `json:"TaskGroupInstanceObjectId,omitempty" name:"TaskGroupInstanceObjectId"`
+	TaskGroupInstanceObjectId *string `json:"TaskGroupInstanceObjectId,omitnil" name:"TaskGroupInstanceObjectId"`
 
 	// 实例动作执行状态
-	TaskGroupInstanceStatus *int64 `json:"TaskGroupInstanceStatus,omitempty" name:"TaskGroupInstanceStatus"`
+	TaskGroupInstanceStatus *int64 `json:"TaskGroupInstanceStatus,omitnil" name:"TaskGroupInstanceStatus"`
 
 	// 实例动作执行日志
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupInstanceExecuteLog *string `json:"TaskGroupInstanceExecuteLog,omitempty" name:"TaskGroupInstanceExecuteLog"`
+	TaskGroupInstanceExecuteLog *string `json:"TaskGroupInstanceExecuteLog,omitnil" name:"TaskGroupInstanceExecuteLog"`
 
 	// 实例创建时间
-	TaskGroupInstanceCreateTime *string `json:"TaskGroupInstanceCreateTime,omitempty" name:"TaskGroupInstanceCreateTime"`
+	TaskGroupInstanceCreateTime *string `json:"TaskGroupInstanceCreateTime,omitnil" name:"TaskGroupInstanceCreateTime"`
 
 	// 实例更新时间
-	TaskGroupInstanceUpdateTime *string `json:"TaskGroupInstanceUpdateTime,omitempty" name:"TaskGroupInstanceUpdateTime"`
+	TaskGroupInstanceUpdateTime *string `json:"TaskGroupInstanceUpdateTime,omitnil" name:"TaskGroupInstanceUpdateTime"`
 
 	// 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
-	TaskGroupInstanceStatusType *int64 `json:"TaskGroupInstanceStatusType,omitempty" name:"TaskGroupInstanceStatusType"`
+	TaskGroupInstanceStatusType *int64 `json:"TaskGroupInstanceStatusType,omitnil" name:"TaskGroupInstanceStatusType"`
 
 	// 执行开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupInstanceStartTime *string `json:"TaskGroupInstanceStartTime,omitempty" name:"TaskGroupInstanceStartTime"`
+	TaskGroupInstanceStartTime *string `json:"TaskGroupInstanceStartTime,omitnil" name:"TaskGroupInstanceStartTime"`
 
 	// 执行结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupInstanceEndTime *string `json:"TaskGroupInstanceEndTime,omitempty" name:"TaskGroupInstanceEndTime"`
+	TaskGroupInstanceEndTime *string `json:"TaskGroupInstanceEndTime,omitnil" name:"TaskGroupInstanceEndTime"`
 
 	// 实例是否可重试
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupInstanceIsRedo *bool `json:"TaskGroupInstanceIsRedo,omitempty" name:"TaskGroupInstanceIsRedo"`
+	TaskGroupInstanceIsRedo *bool `json:"TaskGroupInstanceIsRedo,omitnil" name:"TaskGroupInstanceIsRedo"`
 
 	// 动作实例执行时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupInstanceExecuteTime *int64 `json:"TaskGroupInstanceExecuteTime,omitempty" name:"TaskGroupInstanceExecuteTime"`
+	TaskGroupInstanceExecuteTime *int64 `json:"TaskGroupInstanceExecuteTime,omitnil" name:"TaskGroupInstanceExecuteTime"`
 }
 
 type TaskGroupInstancesExecuteRules struct {
 	// 实例选取模式
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupInstancesExecuteMode *int64 `json:"TaskGroupInstancesExecuteMode,omitempty" name:"TaskGroupInstancesExecuteMode"`
+	TaskGroupInstancesExecuteMode *int64 `json:"TaskGroupInstancesExecuteMode,omitnil" name:"TaskGroupInstancesExecuteMode"`
 
 	// 按比例选取模式下选取比例
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupInstancesExecutePercent *int64 `json:"TaskGroupInstancesExecutePercent,omitempty" name:"TaskGroupInstancesExecutePercent"`
+	TaskGroupInstancesExecutePercent *int64 `json:"TaskGroupInstancesExecutePercent,omitnil" name:"TaskGroupInstancesExecutePercent"`
 
 	// 按数量选取模式下选取数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskGroupInstancesExecuteNum *int64 `json:"TaskGroupInstancesExecuteNum,omitempty" name:"TaskGroupInstancesExecuteNum"`
+	TaskGroupInstancesExecuteNum *int64 `json:"TaskGroupInstancesExecuteNum,omitnil" name:"TaskGroupInstancesExecuteNum"`
 }
 
 type TaskListItem struct {
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务标题
-	TaskTitle *string `json:"TaskTitle,omitempty" name:"TaskTitle"`
+	TaskTitle *string `json:"TaskTitle,omitnil" name:"TaskTitle"`
 
 	// 任务描述
-	TaskDescription *string `json:"TaskDescription,omitempty" name:"TaskDescription"`
+	TaskDescription *string `json:"TaskDescription,omitnil" name:"TaskDescription"`
 
 	// 任务标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskTag *string `json:"TaskTag,omitempty" name:"TaskTag"`
+	TaskTag *string `json:"TaskTag,omitnil" name:"TaskTag"`
 
 	// 任务状态(1001 -- 未开始   1002 -- 进行中  1003 -- 暂停中   1004 -- 任务结束)
-	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+	TaskStatus *int64 `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// 任务创建时间
-	TaskCreateTime *string `json:"TaskCreateTime,omitempty" name:"TaskCreateTime"`
+	TaskCreateTime *string `json:"TaskCreateTime,omitnil" name:"TaskCreateTime"`
 
 	// 任务更新时间
-	TaskUpdateTime *string `json:"TaskUpdateTime,omitempty" name:"TaskUpdateTime"`
+	TaskUpdateTime *string `json:"TaskUpdateTime,omitnil" name:"TaskUpdateTime"`
 
 	// 0--未开始，1--进行中，2--已完成
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskPreCheckStatus *int64 `json:"TaskPreCheckStatus,omitempty" name:"TaskPreCheckStatus"`
+	TaskPreCheckStatus *int64 `json:"TaskPreCheckStatus,omitnil" name:"TaskPreCheckStatus"`
 
 	// 环境检查是否通过
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskPreCheckSuccess *bool `json:"TaskPreCheckSuccess,omitempty" name:"TaskPreCheckSuccess"`
+	TaskPreCheckSuccess *bool `json:"TaskPreCheckSuccess,omitnil" name:"TaskPreCheckSuccess"`
 
 	// 演练是否符合预期 1-符合预期 2-不符合预期
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskExpect *int64 `json:"TaskExpect,omitempty" name:"TaskExpect"`
+	TaskExpect *int64 `json:"TaskExpect,omitnil" name:"TaskExpect"`
 }
 
 type TaskMonitor struct {
 	// 演练监控指标ID
-	TaskMonitorId *int64 `json:"TaskMonitorId,omitempty" name:"TaskMonitorId"`
+	TaskMonitorId *int64 `json:"TaskMonitorId,omitnil" name:"TaskMonitorId"`
 
 	// 监控指标ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MetricId *uint64 `json:"MetricId,omitempty" name:"MetricId"`
+	MetricId *uint64 `json:"MetricId,omitnil" name:"MetricId"`
 
 	// 监控指标对象类型ID
-	TaskMonitorObjectTypeId *int64 `json:"TaskMonitorObjectTypeId,omitempty" name:"TaskMonitorObjectTypeId"`
+	TaskMonitorObjectTypeId *int64 `json:"TaskMonitorObjectTypeId,omitnil" name:"TaskMonitorObjectTypeId"`
 
 	// 指标名称
-	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 
 	// 实例ID列表
-	InstancesIds []*string `json:"InstancesIds,omitempty" name:"InstancesIds"`
+	InstancesIds []*string `json:"InstancesIds,omitnil" name:"InstancesIds"`
 
 	// 中文指标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MetricChineseName *string `json:"MetricChineseName,omitempty" name:"MetricChineseName"`
+	MetricChineseName *string `json:"MetricChineseName,omitnil" name:"MetricChineseName"`
 
 	// 单位
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Unit *string `json:"Unit,omitempty" name:"Unit"`
+	Unit *string `json:"Unit,omitnil" name:"Unit"`
 }
 
 type TaskReportInfo struct {
 	// 0--未开始，1--正在导出，2--导出成功，3--导出失败
-	Stage *int64 `json:"Stage,omitempty" name:"Stage"`
+	Stage *int64 `json:"Stage,omitnil" name:"Stage"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 有效期截止时间
-	ExpirationTime *string `json:"ExpirationTime,omitempty" name:"ExpirationTime"`
+	ExpirationTime *string `json:"ExpirationTime,omitnil" name:"ExpirationTime"`
 
 	// 是否有效
-	Expired *bool `json:"Expired,omitempty" name:"Expired"`
+	Expired *bool `json:"Expired,omitnil" name:"Expired"`
 
 	// 演练报告cos文件地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+	CosUrl *string `json:"CosUrl,omitnil" name:"CosUrl"`
 
 	// 演练报告导出日志
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Log *string `json:"Log,omitempty" name:"Log"`
+	Log *string `json:"Log,omitnil" name:"Log"`
 }
 
 type Template struct {
 	// 经验库ID
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 经验库标题
-	TemplateTitle *string `json:"TemplateTitle,omitempty" name:"TemplateTitle"`
+	TemplateTitle *string `json:"TemplateTitle,omitnil" name:"TemplateTitle"`
 
 	// 经验库描述
-	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+	TemplateDescription *string `json:"TemplateDescription,omitnil" name:"TemplateDescription"`
 
 	// 自定义标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateTag *string `json:"TemplateTag,omitempty" name:"TemplateTag"`
+	TemplateTag *string `json:"TemplateTag,omitnil" name:"TemplateTag"`
 
 	// 使用状态。1 ---- 使用中，2 --- 停用
-	TemplateIsUsed *int64 `json:"TemplateIsUsed,omitempty" name:"TemplateIsUsed"`
+	TemplateIsUsed *int64 `json:"TemplateIsUsed,omitnil" name:"TemplateIsUsed"`
 
 	// 经验库创建时间
-	TemplateCreateTime *string `json:"TemplateCreateTime,omitempty" name:"TemplateCreateTime"`
+	TemplateCreateTime *string `json:"TemplateCreateTime,omitnil" name:"TemplateCreateTime"`
 
 	// 经验库更新时间
-	TemplateUpdateTime *string `json:"TemplateUpdateTime,omitempty" name:"TemplateUpdateTime"`
+	TemplateUpdateTime *string `json:"TemplateUpdateTime,omitnil" name:"TemplateUpdateTime"`
 
 	// 经验库模式。1:手工执行，2:自动执行
-	TemplateMode *int64 `json:"TemplateMode,omitempty" name:"TemplateMode"`
+	TemplateMode *int64 `json:"TemplateMode,omitnil" name:"TemplateMode"`
 
 	// 自动暂停时长。单位分钟
-	TemplatePauseDuration *int64 `json:"TemplatePauseDuration,omitempty" name:"TemplatePauseDuration"`
+	TemplatePauseDuration *int64 `json:"TemplatePauseDuration,omitnil" name:"TemplatePauseDuration"`
 
 	// 演练创建者Uin
-	TemplateOwnerUin *string `json:"TemplateOwnerUin,omitempty" name:"TemplateOwnerUin"`
+	TemplateOwnerUin *string `json:"TemplateOwnerUin,omitnil" name:"TemplateOwnerUin"`
 
 	// 地域ID
-	TemplateRegionId *int64 `json:"TemplateRegionId,omitempty" name:"TemplateRegionId"`
+	TemplateRegionId *int64 `json:"TemplateRegionId,omitnil" name:"TemplateRegionId"`
 
 	// 动作组
-	TemplateGroups []*TemplateGroup `json:"TemplateGroups,omitempty" name:"TemplateGroups"`
+	TemplateGroups []*TemplateGroup `json:"TemplateGroups,omitnil" name:"TemplateGroups"`
 
 	// 监控指标
-	TemplateMonitors []*TemplateMonitor `json:"TemplateMonitors,omitempty" name:"TemplateMonitors"`
+	TemplateMonitors []*TemplateMonitor `json:"TemplateMonitors,omitnil" name:"TemplateMonitors"`
 
 	// 护栏监控
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplatePolicy *TemplatePolicy `json:"TemplatePolicy,omitempty" name:"TemplatePolicy"`
+	TemplatePolicy *TemplatePolicy `json:"TemplatePolicy,omitnil" name:"TemplatePolicy"`
 
 	// 标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*TagWithDescribe `json:"Tags,omitempty" name:"Tags"`
+	Tags []*TagWithDescribe `json:"Tags,omitnil" name:"Tags"`
 
 	// 经验来源 0-自建 1-专家推荐
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateSource *int64 `json:"TemplateSource,omitempty" name:"TemplateSource"`
+	TemplateSource *int64 `json:"TemplateSource,omitnil" name:"TemplateSource"`
 }
 
 type TemplateGroup struct {
 	// 经验库动作ID
-	TemplateGroupId *int64 `json:"TemplateGroupId,omitempty" name:"TemplateGroupId"`
+	TemplateGroupId *int64 `json:"TemplateGroupId,omitnil" name:"TemplateGroupId"`
 
 	// 经验库动作分组动作列表
-	TemplateGroupActions []*TemplateGroupAction `json:"TemplateGroupActions,omitempty" name:"TemplateGroupActions"`
+	TemplateGroupActions []*TemplateGroupAction `json:"TemplateGroupActions,omitnil" name:"TemplateGroupActions"`
 
 	// 分组标题
-	Title *string `json:"Title,omitempty" name:"Title"`
+	Title *string `json:"Title,omitnil" name:"Title"`
 
 	// 分组描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 分组顺序
-	Order *int64 `json:"Order,omitempty" name:"Order"`
+	Order *int64 `json:"Order,omitnil" name:"Order"`
 
 	// 执行模式。1 --- 顺序执行，2 --- 阶段执行
-	Mode *int64 `json:"Mode,omitempty" name:"Mode"`
+	Mode *int64 `json:"Mode,omitnil" name:"Mode"`
 
 	// 对象类型ID
-	ObjectTypeId *int64 `json:"ObjectTypeId,omitempty" name:"ObjectTypeId"`
+	ObjectTypeId *int64 `json:"ObjectTypeId,omitnil" name:"ObjectTypeId"`
 
 	// 分组创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 分组更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 }
 
 type TemplateGroupAction struct {
 	// 经验库分组动作ID
-	TemplateGroupActionId *int64 `json:"TemplateGroupActionId,omitempty" name:"TemplateGroupActionId"`
+	TemplateGroupActionId *int64 `json:"TemplateGroupActionId,omitnil" name:"TemplateGroupActionId"`
 
 	// 动作ID
-	ActionId *int64 `json:"ActionId,omitempty" name:"ActionId"`
+	ActionId *int64 `json:"ActionId,omitnil" name:"ActionId"`
 
 	// 分组动作顺序
-	Order *int64 `json:"Order,omitempty" name:"Order"`
+	Order *int64 `json:"Order,omitnil" name:"Order"`
 
 	// 分组动作通用配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GeneralConfiguration *string `json:"GeneralConfiguration,omitempty" name:"GeneralConfiguration"`
+	GeneralConfiguration *string `json:"GeneralConfiguration,omitnil" name:"GeneralConfiguration"`
 
 	// 分组动作自定义配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CustomConfiguration *string `json:"CustomConfiguration,omitempty" name:"CustomConfiguration"`
+	CustomConfiguration *string `json:"CustomConfiguration,omitnil" name:"CustomConfiguration"`
 
 	// 动作分组创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 动作分组更新时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 动作名称
-	ActionTitle *string `json:"ActionTitle,omitempty" name:"ActionTitle"`
+	ActionTitle *string `json:"ActionTitle,omitnil" name:"ActionTitle"`
 
 	// 自身随机id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RandomId *int64 `json:"RandomId,omitempty" name:"RandomId"`
+	RandomId *int64 `json:"RandomId,omitnil" name:"RandomId"`
 
 	// 恢复动作id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecoverId *int64 `json:"RecoverId,omitempty" name:"RecoverId"`
+	RecoverId *int64 `json:"RecoverId,omitnil" name:"RecoverId"`
 
 	// 执行动作id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExecuteId *int64 `json:"ExecuteId,omitempty" name:"ExecuteId"`
+	ExecuteId *int64 `json:"ExecuteId,omitnil" name:"ExecuteId"`
 
 	// 调用api类型，0:tat, 1:云api
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActionApiType *int64 `json:"ActionApiType,omitempty" name:"ActionApiType"`
+	ActionApiType *int64 `json:"ActionApiType,omitnil" name:"ActionApiType"`
 
 	// 1:故障，2:恢复
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActionAttribute *int64 `json:"ActionAttribute,omitempty" name:"ActionAttribute"`
+	ActionAttribute *int64 `json:"ActionAttribute,omitnil" name:"ActionAttribute"`
 
 	// 动作类型：平台和自定义
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
 }
 
 type TemplateListItem struct {
 	// 经验库ID
-	TemplateId *int64 `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 经验库标题
-	TemplateTitle *string `json:"TemplateTitle,omitempty" name:"TemplateTitle"`
+	TemplateTitle *string `json:"TemplateTitle,omitnil" name:"TemplateTitle"`
 
 	// 经验库描述
-	TemplateDescription *string `json:"TemplateDescription,omitempty" name:"TemplateDescription"`
+	TemplateDescription *string `json:"TemplateDescription,omitnil" name:"TemplateDescription"`
 
 	// 经验库标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateTag *string `json:"TemplateTag,omitempty" name:"TemplateTag"`
+	TemplateTag *string `json:"TemplateTag,omitnil" name:"TemplateTag"`
 
 	// 经验库状态。1 -- 使用中，2 -- 停用
-	TemplateIsUsed *int64 `json:"TemplateIsUsed,omitempty" name:"TemplateIsUsed"`
+	TemplateIsUsed *int64 `json:"TemplateIsUsed,omitnil" name:"TemplateIsUsed"`
 
 	// 经验库创建时间
-	TemplateCreateTime *string `json:"TemplateCreateTime,omitempty" name:"TemplateCreateTime"`
+	TemplateCreateTime *string `json:"TemplateCreateTime,omitnil" name:"TemplateCreateTime"`
 
 	// 经验库更新时间
-	TemplateUpdateTime *string `json:"TemplateUpdateTime,omitempty" name:"TemplateUpdateTime"`
+	TemplateUpdateTime *string `json:"TemplateUpdateTime,omitnil" name:"TemplateUpdateTime"`
 
 	// 经验库关联的任务数量
-	TemplateUsedNum *int64 `json:"TemplateUsedNum,omitempty" name:"TemplateUsedNum"`
+	TemplateUsedNum *int64 `json:"TemplateUsedNum,omitnil" name:"TemplateUsedNum"`
 
 	// 经验库来源 0-自建经验 1-专家推荐
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TemplateSource *int64 `json:"TemplateSource,omitempty" name:"TemplateSource"`
+	TemplateSource *int64 `json:"TemplateSource,omitnil" name:"TemplateSource"`
 }
 
 type TemplateMonitor struct {
 	// pk
-	MonitorId *int64 `json:"MonitorId,omitempty" name:"MonitorId"`
+	MonitorId *int64 `json:"MonitorId,omitnil" name:"MonitorId"`
 
 	// 监控指标ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MetricId *int64 `json:"MetricId,omitempty" name:"MetricId"`
+	MetricId *int64 `json:"MetricId,omitnil" name:"MetricId"`
 
 	// 监控指标对象类型ID
-	ObjectTypeId *int64 `json:"ObjectTypeId,omitempty" name:"ObjectTypeId"`
+	ObjectTypeId *int64 `json:"ObjectTypeId,omitnil" name:"ObjectTypeId"`
 
 	// 指标名称
-	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 
 	// 中文指标
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MetricChineseName *string `json:"MetricChineseName,omitempty" name:"MetricChineseName"`
+	MetricChineseName *string `json:"MetricChineseName,omitnil" name:"MetricChineseName"`
 }
 
 type TemplatePolicy struct {
 	// 保护策略ID列表
-	TemplatePolicyIdList []*string `json:"TemplatePolicyIdList,omitempty" name:"TemplatePolicyIdList"`
+	TemplatePolicyIdList []*string `json:"TemplatePolicyIdList,omitnil" name:"TemplatePolicyIdList"`
 
 	// 策略规则
-	TemplatePolicyRule *string `json:"TemplatePolicyRule,omitempty" name:"TemplatePolicyRule"`
+	TemplatePolicyRule *string `json:"TemplatePolicyRule,omitnil" name:"TemplatePolicyRule"`
 
 	// 护栏策略生效处理策略 1:顺序执行，2:暂停
-	TemplatePolicyDealType *int64 `json:"TemplatePolicyDealType,omitempty" name:"TemplatePolicyDealType"`
+	TemplatePolicyDealType *int64 `json:"TemplatePolicyDealType,omitnil" name:"TemplatePolicyDealType"`
 }

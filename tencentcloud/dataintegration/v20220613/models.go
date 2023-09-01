@@ -15,36 +15,36 @@
 package v20220613
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type BatchContent struct {
 	// 消息体
-	Body *string `json:"Body,omitempty" name:"Body"`
+	Body *string `json:"Body,omitnil" name:"Body"`
 
 	// 消息的键名
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 }
 
 // Predefined struct for user
 type SendMessageRequestParams struct {
 	// 接入资源ID
-	DataHubId *string `json:"DataHubId,omitempty" name:"DataHubId"`
+	DataHubId *string `json:"DataHubId,omitnil" name:"DataHubId"`
 
 	// 批量消息
-	Message []*BatchContent `json:"Message,omitempty" name:"Message"`
+	Message []*BatchContent `json:"Message,omitnil" name:"Message"`
 }
 
 type SendMessageRequest struct {
 	*tchttp.BaseRequest
 	
 	// 接入资源ID
-	DataHubId *string `json:"DataHubId,omitempty" name:"DataHubId"`
+	DataHubId *string `json:"DataHubId,omitnil" name:"DataHubId"`
 
 	// 批量消息
-	Message []*BatchContent `json:"Message,omitempty" name:"Message"`
+	Message []*BatchContent `json:"Message,omitnil" name:"Message"`
 }
 
 func (r *SendMessageRequest) ToJsonString() string {
@@ -70,10 +70,10 @@ func (r *SendMessageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SendMessageResponseParams struct {
 	// 消息ID
-	MessageId []*string `json:"MessageId,omitempty" name:"MessageId"`
+	MessageId []*string `json:"MessageId,omitnil" name:"MessageId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SendMessageResponse struct {

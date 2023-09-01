@@ -15,40 +15,40 @@
 package v20230306
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type DescribeEventsRequestParams struct {
 	// 事件的发生日期
-	EventDate *string `json:"EventDate,omitempty" name:"EventDate"`
+	EventDate *string `json:"EventDate,omitnil" name:"EventDate"`
 
 	// 1. 不指定产品列表时将查询所有产品。
 	// 2. 产品ID示例：cvm、lb、cdb、cdn、crs
-	ProductIds []*string `json:"ProductIds,omitempty" name:"ProductIds"`
+	ProductIds []*string `json:"ProductIds,omitnil" name:"ProductIds"`
 
 	// 1. 不指定地域列表时将查询所有地域。
 	// 2. 查询非区域性产品事件时，地域ID指定为：non-regional
 	// 3. 其他地域ID取值请参考：https://cloud.tencent.com/document/api/213/15692
-	RegionIds []*string `json:"RegionIds,omitempty" name:"RegionIds"`
+	RegionIds []*string `json:"RegionIds,omitnil" name:"RegionIds"`
 }
 
 type DescribeEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事件的发生日期
-	EventDate *string `json:"EventDate,omitempty" name:"EventDate"`
+	EventDate *string `json:"EventDate,omitnil" name:"EventDate"`
 
 	// 1. 不指定产品列表时将查询所有产品。
 	// 2. 产品ID示例：cvm、lb、cdb、cdn、crs
-	ProductIds []*string `json:"ProductIds,omitempty" name:"ProductIds"`
+	ProductIds []*string `json:"ProductIds,omitnil" name:"ProductIds"`
 
 	// 1. 不指定地域列表时将查询所有地域。
 	// 2. 查询非区域性产品事件时，地域ID指定为：non-regional
 	// 3. 其他地域ID取值请参考：https://cloud.tencent.com/document/api/213/15692
-	RegionIds []*string `json:"RegionIds,omitempty" name:"RegionIds"`
+	RegionIds []*string `json:"RegionIds,omitnil" name:"RegionIds"`
 }
 
 func (r *DescribeEventsRequest) ToJsonString() string {
@@ -75,10 +75,10 @@ func (r *DescribeEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEventsResponseParams struct {
 	// 事件详情列表
-	Data *ProductEventList `json:"Data,omitempty" name:"Data"`
+	Data *ProductEventList `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeEventsResponse struct {
@@ -99,29 +99,29 @@ func (r *DescribeEventsResponse) FromJsonString(s string) error {
 
 type EventDetail struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 产品名称
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 
 	// 地域ID，非区域性地域返回non-regional
-	RegionId *string `json:"RegionId,omitempty" name:"RegionId"`
+	RegionId *string `json:"RegionId,omitnil" name:"RegionId"`
 
 	// 地域名称
-	RegionName *string `json:"RegionName,omitempty" name:"RegionName"`
+	RegionName *string `json:"RegionName,omitnil" name:"RegionName"`
 
 	// 事件开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 事件结束时间，当事件正在发生还未结束时，结束时间返回空
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 事件当前状态：提示、异常、正常
-	CurrentStatus *string `json:"CurrentStatus,omitempty" name:"CurrentStatus"`
+	CurrentStatus *string `json:"CurrentStatus,omitnil" name:"CurrentStatus"`
 }
 
 type ProductEventList struct {
 	// 事件详情列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EventList []*EventDetail `json:"EventList,omitempty" name:"EventList"`
+	EventList []*EventDetail `json:"EventList,omitnil" name:"EventList"`
 }

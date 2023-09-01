@@ -15,30 +15,30 @@
 package v20190118
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type AlgorithmInfo struct {
 	// 算法的标识
-	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
+	KeyUsage *string `json:"KeyUsage,omitnil" name:"KeyUsage"`
 
 	// 算法的名称
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 }
 
 // Predefined struct for user
 type ArchiveKeyRequestParams struct {
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type ArchiveKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *ArchiveKeyRequest) ToJsonString() string {
@@ -63,7 +63,7 @@ func (r *ArchiveKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ArchiveKeyResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ArchiveKeyResponse struct {
@@ -85,26 +85,26 @@ func (r *ArchiveKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AsymmetricRsaDecryptRequestParams struct {
 	// CMK的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 使用PublicKey加密的密文，Base64编码
-	Ciphertext *string `json:"Ciphertext,omitempty" name:"Ciphertext"`
+	Ciphertext *string `json:"Ciphertext,omitnil" name:"Ciphertext"`
 
 	// 在使用公钥加密时对应的算法：当前支持RSAES_PKCS1_V1_5、RSAES_OAEP_SHA_1、RSAES_OAEP_SHA_256
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 }
 
 type AsymmetricRsaDecryptRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 使用PublicKey加密的密文，Base64编码
-	Ciphertext *string `json:"Ciphertext,omitempty" name:"Ciphertext"`
+	Ciphertext *string `json:"Ciphertext,omitnil" name:"Ciphertext"`
 
 	// 在使用公钥加密时对应的算法：当前支持RSAES_PKCS1_V1_5、RSAES_OAEP_SHA_1、RSAES_OAEP_SHA_256
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 }
 
 func (r *AsymmetricRsaDecryptRequest) ToJsonString() string {
@@ -131,13 +131,13 @@ func (r *AsymmetricRsaDecryptRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AsymmetricRsaDecryptResponseParams struct {
 	// CMK的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 解密后的明文，base64编码
-	Plaintext *string `json:"Plaintext,omitempty" name:"Plaintext"`
+	Plaintext *string `json:"Plaintext,omitnil" name:"Plaintext"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AsymmetricRsaDecryptResponse struct {
@@ -159,20 +159,20 @@ func (r *AsymmetricRsaDecryptResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AsymmetricSm2DecryptRequestParams struct {
 	// CMK的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 使用PublicKey加密的密文，Base64编码。密文长度不能超过256字节。
-	Ciphertext *string `json:"Ciphertext,omitempty" name:"Ciphertext"`
+	Ciphertext *string `json:"Ciphertext,omitnil" name:"Ciphertext"`
 }
 
 type AsymmetricSm2DecryptRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 使用PublicKey加密的密文，Base64编码。密文长度不能超过256字节。
-	Ciphertext *string `json:"Ciphertext,omitempty" name:"Ciphertext"`
+	Ciphertext *string `json:"Ciphertext,omitnil" name:"Ciphertext"`
 }
 
 func (r *AsymmetricSm2DecryptRequest) ToJsonString() string {
@@ -198,13 +198,13 @@ func (r *AsymmetricSm2DecryptRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AsymmetricSm2DecryptResponseParams struct {
 	// CMK的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 解密后的明文，base64编码
-	Plaintext *string `json:"Plaintext,omitempty" name:"Plaintext"`
+	Plaintext *string `json:"Plaintext,omitnil" name:"Plaintext"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AsymmetricSm2DecryptResponse struct {
@@ -226,26 +226,26 @@ func (r *AsymmetricSm2DecryptResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BindCloudResourceRequestParams struct {
 	// cmk的ID
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 云产品的唯一性标识符
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 资源/实例ID，由调用方根据自己的云产品特征来定义，以字符串形式做存储。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 type BindCloudResourceRequest struct {
 	*tchttp.BaseRequest
 	
 	// cmk的ID
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 云产品的唯一性标识符
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 资源/实例ID，由调用方根据自己的云产品特征来定义，以字符串形式做存储。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 func (r *BindCloudResourceRequest) ToJsonString() string {
@@ -272,7 +272,7 @@ func (r *BindCloudResourceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BindCloudResourceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BindCloudResourceResponse struct {
@@ -294,14 +294,14 @@ func (r *BindCloudResourceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CancelKeyArchiveRequestParams struct {
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type CancelKeyArchiveRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *CancelKeyArchiveRequest) ToJsonString() string {
@@ -326,7 +326,7 @@ func (r *CancelKeyArchiveRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CancelKeyArchiveResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CancelKeyArchiveResponse struct {
@@ -348,14 +348,14 @@ func (r *CancelKeyArchiveResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CancelKeyDeletionRequestParams struct {
 	// 需要被取消删除的CMK的唯一标志
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type CancelKeyDeletionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要被取消删除的CMK的唯一标志
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *CancelKeyDeletionRequest) ToJsonString() string {
@@ -380,10 +380,10 @@ func (r *CancelKeyDeletionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CancelKeyDeletionResponseParams struct {
 	// 唯一标志被取消删除的CMK。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CancelKeyDeletionResponse struct {
@@ -405,44 +405,44 @@ func (r *CancelKeyDeletionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateKeyRequestParams struct {
 	// 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字。以 kms- 作为前缀的用于云产品使用，Alias 不可重复。
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
 	// CMK 的描述，最大1024字节
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 指定key的用途，默认为  "ENCRYPT_DECRYPT" 表示创建对称加解密密钥，其它支持用途 “ASYMMETRIC_DECRYPT_RSA_2048” 表示创建用于加解密的RSA2048非对称密钥，“ASYMMETRIC_DECRYPT_SM2” 表示创建用于加解密的SM2非对称密钥，“ASYMMETRIC_SIGN_VERIFY_SM2” 表示创建用于签名验签的SM2非对称密钥，“ASYMMETRIC_SIGN_VERIFY_ECC” 表示创建用于签名验签的ECC非对称密钥，“ASYMMETRIC_SIGN_VERIFY_RSA_2048” 表示创建用于签名验签的RSA_2048非对称密钥，“ASYMMETRIC_SIGN_VERIFY_ECDSA384”表示创建用于签名验签的 ECDSA384 非对称秘钥。完整的秘钥用途与算法支持列表可通过 ListAlgorithms 接口获取。
-	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
+	KeyUsage *string `json:"KeyUsage,omitnil" name:"KeyUsage"`
 
 	// 指定key类型，默认为1，1表示默认类型，由KMS创建CMK密钥，2 表示EXTERNAL 类型，该类型需要用户导入密钥材料，参考 GetParametersForImport 和 ImportKeyMaterial 接口
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
-	HsmClusterId *string `json:"HsmClusterId,omitempty" name:"HsmClusterId"`
+	HsmClusterId *string `json:"HsmClusterId,omitnil" name:"HsmClusterId"`
 }
 
 type CreateKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字。以 kms- 作为前缀的用于云产品使用，Alias 不可重复。
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
 	// CMK 的描述，最大1024字节
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 指定key的用途，默认为  "ENCRYPT_DECRYPT" 表示创建对称加解密密钥，其它支持用途 “ASYMMETRIC_DECRYPT_RSA_2048” 表示创建用于加解密的RSA2048非对称密钥，“ASYMMETRIC_DECRYPT_SM2” 表示创建用于加解密的SM2非对称密钥，“ASYMMETRIC_SIGN_VERIFY_SM2” 表示创建用于签名验签的SM2非对称密钥，“ASYMMETRIC_SIGN_VERIFY_ECC” 表示创建用于签名验签的ECC非对称密钥，“ASYMMETRIC_SIGN_VERIFY_RSA_2048” 表示创建用于签名验签的RSA_2048非对称密钥，“ASYMMETRIC_SIGN_VERIFY_ECDSA384”表示创建用于签名验签的 ECDSA384 非对称秘钥。完整的秘钥用途与算法支持列表可通过 ListAlgorithms 接口获取。
-	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
+	KeyUsage *string `json:"KeyUsage,omitnil" name:"KeyUsage"`
 
 	// 指定key类型，默认为1，1表示默认类型，由KMS创建CMK密钥，2 表示EXTERNAL 类型，该类型需要用户导入密钥材料，参考 GetParametersForImport 和 ImportKeyMaterial 接口
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
-	HsmClusterId *string `json:"HsmClusterId,omitempty" name:"HsmClusterId"`
+	HsmClusterId *string `json:"HsmClusterId,omitnil" name:"HsmClusterId"`
 }
 
 func (r *CreateKeyRequest) ToJsonString() string {
@@ -472,38 +472,38 @@ func (r *CreateKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateKeyResponseParams struct {
 	// CMK的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 作为密钥更容易辨识，更容易被人看懂的别名
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
 	// 密钥创建时间，unix时间戳
-	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *uint64 `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// CMK的描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// CMK的状态
-	KeyState *string `json:"KeyState,omitempty" name:"KeyState"`
+	KeyState *string `json:"KeyState,omitnil" name:"KeyState"`
 
 	// CMK的用途
-	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
+	KeyUsage *string `json:"KeyUsage,omitnil" name:"KeyUsage"`
 
 	// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagCode *uint64 `json:"TagCode,omitempty" name:"TagCode"`
+	TagCode *uint64 `json:"TagCode,omitnil" name:"TagCode"`
 
 	// 标签操作的返回信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagMsg *string `json:"TagMsg,omitempty" name:"TagMsg"`
+	TagMsg *string `json:"TagMsg,omitnil" name:"TagMsg"`
 
 	// HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HsmClusterId *string `json:"HsmClusterId,omitempty" name:"HsmClusterId"`
+	HsmClusterId *string `json:"HsmClusterId,omitnil" name:"HsmClusterId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateKeyResponse struct {
@@ -525,32 +525,32 @@ func (r *CreateKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateWhiteBoxKeyRequestParams struct {
 	// 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字。Alias不可重复。
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
 	// 创建密钥所有的算法类型，支持的取值：AES_256,SM4
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// 密钥的描述，最大1024字节
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 type CreateWhiteBoxKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字。Alias不可重复。
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
 	// 创建密钥所有的算法类型，支持的取值：AES_256,SM4
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// 密钥的描述，最大1024字节
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 标签列表
-	Tags []*Tag `json:"Tags,omitempty" name:"Tags"`
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *CreateWhiteBoxKeyRequest) ToJsonString() string {
@@ -578,24 +578,24 @@ func (r *CreateWhiteBoxKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateWhiteBoxKeyResponseParams struct {
 	// 用于加密的密钥，base64编码
-	EncryptKey *string `json:"EncryptKey,omitempty" name:"EncryptKey"`
+	EncryptKey *string `json:"EncryptKey,omitnil" name:"EncryptKey"`
 
 	// 用于解密的密钥，base64编码
-	DecryptKey *string `json:"DecryptKey,omitempty" name:"DecryptKey"`
+	DecryptKey *string `json:"DecryptKey,omitnil" name:"DecryptKey"`
 
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagCode *uint64 `json:"TagCode,omitempty" name:"TagCode"`
+	TagCode *uint64 `json:"TagCode,omitnil" name:"TagCode"`
 
 	// 标签操作的返回信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TagMsg *string `json:"TagMsg,omitempty" name:"TagMsg"`
+	TagMsg *string `json:"TagMsg,omitnil" name:"TagMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateWhiteBoxKeyResponse struct {
@@ -617,32 +617,32 @@ func (r *CreateWhiteBoxKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DecryptRequestParams struct {
 	// 待解密的密文数据
-	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitnil" name:"CiphertextBlob"`
 
 	// key/value对的json字符串，如果Encrypt指定了该参数，则在调用Decrypt API时需要提供同样的参数，最大支持1024字符
-	EncryptionContext *string `json:"EncryptionContext,omitempty" name:"EncryptionContext"`
+	EncryptionContext *string `json:"EncryptionContext,omitnil" name:"EncryptionContext"`
 
 	// PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
-	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" name:"EncryptionPublicKey"`
+	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitnil" name:"EncryptionPublicKey"`
 
 	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
-	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" name:"EncryptionAlgorithm"`
+	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil" name:"EncryptionAlgorithm"`
 }
 
 type DecryptRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待解密的密文数据
-	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitnil" name:"CiphertextBlob"`
 
 	// key/value对的json字符串，如果Encrypt指定了该参数，则在调用Decrypt API时需要提供同样的参数，最大支持1024字符
-	EncryptionContext *string `json:"EncryptionContext,omitempty" name:"EncryptionContext"`
+	EncryptionContext *string `json:"EncryptionContext,omitnil" name:"EncryptionContext"`
 
 	// PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
-	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" name:"EncryptionPublicKey"`
+	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitnil" name:"EncryptionPublicKey"`
 
 	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
-	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" name:"EncryptionAlgorithm"`
+	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil" name:"EncryptionAlgorithm"`
 }
 
 func (r *DecryptRequest) ToJsonString() string {
@@ -670,14 +670,14 @@ func (r *DecryptRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DecryptResponseParams struct {
 	// CMK的全局唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 若调用时未提供 EncryptionPublicKey，该字段值为 Base64 编码的明文，需进行 Base64 解码以获取明文。
 	// 若调用时提供了 EncryptionPublicKey，则该字段值为使用 EncryptionPublicKey 公钥进行非对称加密后的 Base64 编码的密文。需在 Base64 解码后，使用用户上传的公钥对应的私钥进行进一步解密，以获取明文。
-	Plaintext *string `json:"Plaintext,omitempty" name:"Plaintext"`
+	Plaintext *string `json:"Plaintext,omitnil" name:"Plaintext"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DecryptResponse struct {
@@ -699,14 +699,14 @@ func (r *DecryptResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteImportedKeyMaterialRequestParams struct {
 	// 指定需要删除密钥材料的EXTERNAL CMK。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type DeleteImportedKeyMaterialRequest struct {
 	*tchttp.BaseRequest
 	
 	// 指定需要删除密钥材料的EXTERNAL CMK。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *DeleteImportedKeyMaterialRequest) ToJsonString() string {
@@ -731,7 +731,7 @@ func (r *DeleteImportedKeyMaterialRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteImportedKeyMaterialResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteImportedKeyMaterialResponse struct {
@@ -753,14 +753,14 @@ func (r *DeleteImportedKeyMaterialResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteWhiteBoxKeyRequestParams struct {
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type DeleteWhiteBoxKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *DeleteWhiteBoxKeyRequest) ToJsonString() string {
@@ -785,7 +785,7 @@ func (r *DeleteWhiteBoxKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteWhiteBoxKeyResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteWhiteBoxKeyResponse struct {
@@ -807,14 +807,14 @@ func (r *DeleteWhiteBoxKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKeyRequestParams struct {
 	// CMK全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type DescribeKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *DescribeKeyRequest) ToJsonString() string {
@@ -840,10 +840,10 @@ func (r *DescribeKeyRequest) FromJsonString(s string) error {
 type DescribeKeyResponseParams struct {
 	// 密钥属性信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeyMetadata *KeyMetadata `json:"KeyMetadata,omitempty" name:"KeyMetadata"`
+	KeyMetadata *KeyMetadata `json:"KeyMetadata,omitnil" name:"KeyMetadata"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeKeyResponse struct {
@@ -865,14 +865,14 @@ func (r *DescribeKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKeysRequestParams struct {
 	// 查询CMK的ID列表，批量查询一次最多支持100个KeyId
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
+	KeyIds []*string `json:"KeyIds,omitnil" name:"KeyIds"`
 }
 
 type DescribeKeysRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询CMK的ID列表，批量查询一次最多支持100个KeyId
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
+	KeyIds []*string `json:"KeyIds,omitnil" name:"KeyIds"`
 }
 
 func (r *DescribeKeysRequest) ToJsonString() string {
@@ -898,10 +898,10 @@ func (r *DescribeKeysRequest) FromJsonString(s string) error {
 type DescribeKeysResponseParams struct {
 	// 返回的属性信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitempty" name:"KeyMetadatas"`
+	KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitnil" name:"KeyMetadatas"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeKeysResponse struct {
@@ -923,14 +923,14 @@ func (r *DescribeKeysResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWhiteBoxDecryptKeyRequestParams struct {
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type DescribeWhiteBoxDecryptKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *DescribeWhiteBoxDecryptKeyRequest) ToJsonString() string {
@@ -955,10 +955,10 @@ func (r *DescribeWhiteBoxDecryptKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWhiteBoxDecryptKeyResponseParams struct {
 	// 白盒解密密钥，base64编码
-	DecryptKey *string `json:"DecryptKey,omitempty" name:"DecryptKey"`
+	DecryptKey *string `json:"DecryptKey,omitnil" name:"DecryptKey"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeWhiteBoxDecryptKeyResponse struct {
@@ -980,14 +980,14 @@ func (r *DescribeWhiteBoxDecryptKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWhiteBoxDeviceFingerprintsRequestParams struct {
 	// 白盒密钥ID
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type DescribeWhiteBoxDeviceFingerprintsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白盒密钥ID
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *DescribeWhiteBoxDeviceFingerprintsRequest) ToJsonString() string {
@@ -1012,10 +1012,10 @@ func (r *DescribeWhiteBoxDeviceFingerprintsRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeWhiteBoxDeviceFingerprintsResponseParams struct {
 	// 设备指纹列表
-	DeviceFingerprints []*DeviceFingerprint `json:"DeviceFingerprints,omitempty" name:"DeviceFingerprints"`
+	DeviceFingerprints []*DeviceFingerprint `json:"DeviceFingerprints,omitnil" name:"DeviceFingerprints"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeWhiteBoxDeviceFingerprintsResponse struct {
@@ -1037,32 +1037,32 @@ func (r *DescribeWhiteBoxDeviceFingerprintsResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeWhiteBoxKeyDetailsRequestParams struct {
 	// 过滤条件：密钥的状态，0：disabled，1：enabled
-	KeyStatus *int64 `json:"KeyStatus,omitempty" name:"KeyStatus"`
+	KeyStatus *int64 `json:"KeyStatus,omitnil" name:"KeyStatus"`
 
 	// 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为0, 表示不分页
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 标签过滤条件
-	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+	TagFilters []*TagFilter `json:"TagFilters,omitnil" name:"TagFilters"`
 }
 
 type DescribeWhiteBoxKeyDetailsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 过滤条件：密钥的状态，0：disabled，1：enabled
-	KeyStatus *int64 `json:"KeyStatus,omitempty" name:"KeyStatus"`
+	KeyStatus *int64 `json:"KeyStatus,omitnil" name:"KeyStatus"`
 
 	// 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为0, 表示不分页
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 标签过滤条件
-	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+	TagFilters []*TagFilter `json:"TagFilters,omitnil" name:"TagFilters"`
 }
 
 func (r *DescribeWhiteBoxKeyDetailsRequest) ToJsonString() string {
@@ -1090,14 +1090,14 @@ func (r *DescribeWhiteBoxKeyDetailsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWhiteBoxKeyDetailsResponseParams struct {
 	// 白盒密钥信息列表。
-	KeyInfos []*WhiteboxKeyInfo `json:"KeyInfos,omitempty" name:"KeyInfos"`
+	KeyInfos []*WhiteboxKeyInfo `json:"KeyInfos,omitnil" name:"KeyInfos"`
 
 	// 白盒密钥总数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeWhiteBoxKeyDetailsResponse struct {
@@ -1119,14 +1119,14 @@ func (r *DescribeWhiteBoxKeyDetailsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWhiteBoxKeyRequestParams struct {
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type DescribeWhiteBoxKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *DescribeWhiteBoxKeyRequest) ToJsonString() string {
@@ -1151,10 +1151,10 @@ func (r *DescribeWhiteBoxKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWhiteBoxKeyResponseParams struct {
 	// 白盒密钥信息
-	KeyInfo *WhiteboxKeyInfo `json:"KeyInfo,omitempty" name:"KeyInfo"`
+	KeyInfo *WhiteboxKeyInfo `json:"KeyInfo,omitnil" name:"KeyInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeWhiteBoxKeyResponse struct {
@@ -1205,10 +1205,10 @@ func (r *DescribeWhiteBoxServiceStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWhiteBoxServiceStatusResponseParams struct {
 	// 用户的白盒密钥服务是否可用
-	ServiceEnabled *bool `json:"ServiceEnabled,omitempty" name:"ServiceEnabled"`
+	ServiceEnabled *bool `json:"ServiceEnabled,omitnil" name:"ServiceEnabled"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeWhiteBoxServiceStatusResponse struct {
@@ -1229,24 +1229,24 @@ func (r *DescribeWhiteBoxServiceStatusResponse) FromJsonString(s string) error {
 
 type DeviceFingerprint struct {
 	// 指纹信息，由设备指纹采集工具采集获得，格式满足正则表达式：^[0-9a-f]{8}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{14}[\-][0-9a-f]{16}$
-	Identity *string `json:"Identity,omitempty" name:"Identity"`
+	Identity *string `json:"Identity,omitnil" name:"Identity"`
 
 	// 描述信息，如：IP，设备名称等，最大1024字节
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 // Predefined struct for user
 type DisableKeyRequestParams struct {
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type DisableKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *DisableKeyRequest) ToJsonString() string {
@@ -1271,7 +1271,7 @@ func (r *DisableKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableKeyResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DisableKeyResponse struct {
@@ -1293,14 +1293,14 @@ func (r *DisableKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableKeyRotationRequestParams struct {
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type DisableKeyRotationRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *DisableKeyRotationRequest) ToJsonString() string {
@@ -1325,7 +1325,7 @@ func (r *DisableKeyRotationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableKeyRotationResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DisableKeyRotationResponse struct {
@@ -1347,14 +1347,14 @@ func (r *DisableKeyRotationResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableKeysRequestParams struct {
 	// 需要批量禁用的CMK Id 列表，CMK数量最大支持100
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
+	KeyIds []*string `json:"KeyIds,omitnil" name:"KeyIds"`
 }
 
 type DisableKeysRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要批量禁用的CMK Id 列表，CMK数量最大支持100
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
+	KeyIds []*string `json:"KeyIds,omitnil" name:"KeyIds"`
 }
 
 func (r *DisableKeysRequest) ToJsonString() string {
@@ -1379,7 +1379,7 @@ func (r *DisableKeysRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableKeysResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DisableKeysResponse struct {
@@ -1401,14 +1401,14 @@ func (r *DisableKeysResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableWhiteBoxKeyRequestParams struct {
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type DisableWhiteBoxKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *DisableWhiteBoxKeyRequest) ToJsonString() string {
@@ -1433,7 +1433,7 @@ func (r *DisableWhiteBoxKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableWhiteBoxKeyResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DisableWhiteBoxKeyResponse struct {
@@ -1455,14 +1455,14 @@ func (r *DisableWhiteBoxKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableWhiteBoxKeysRequestParams struct {
 	// 白盒密钥的全局唯一标识符列表。注意：要确保所有提供的KeyId是格式有效的，没有重复，个数不超过50个，并且都是有效存在的。
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
+	KeyIds []*string `json:"KeyIds,omitnil" name:"KeyIds"`
 }
 
 type DisableWhiteBoxKeysRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白盒密钥的全局唯一标识符列表。注意：要确保所有提供的KeyId是格式有效的，没有重复，个数不超过50个，并且都是有效存在的。
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
+	KeyIds []*string `json:"KeyIds,omitnil" name:"KeyIds"`
 }
 
 func (r *DisableWhiteBoxKeysRequest) ToJsonString() string {
@@ -1487,7 +1487,7 @@ func (r *DisableWhiteBoxKeysRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableWhiteBoxKeysResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DisableWhiteBoxKeysResponse struct {
@@ -1509,14 +1509,14 @@ func (r *DisableWhiteBoxKeysResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableKeyRequestParams struct {
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type EnableKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *EnableKeyRequest) ToJsonString() string {
@@ -1541,7 +1541,7 @@ func (r *EnableKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableKeyResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type EnableKeyResponse struct {
@@ -1563,20 +1563,20 @@ func (r *EnableKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableKeyRotationRequestParams struct {
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 密钥轮转周期，单位天，允许范围 7 ~ 365，默认值 365。
-	RotateDays *uint64 `json:"RotateDays,omitempty" name:"RotateDays"`
+	RotateDays *uint64 `json:"RotateDays,omitnil" name:"RotateDays"`
 }
 
 type EnableKeyRotationRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 密钥轮转周期，单位天，允许范围 7 ~ 365，默认值 365。
-	RotateDays *uint64 `json:"RotateDays,omitempty" name:"RotateDays"`
+	RotateDays *uint64 `json:"RotateDays,omitnil" name:"RotateDays"`
 }
 
 func (r *EnableKeyRotationRequest) ToJsonString() string {
@@ -1602,7 +1602,7 @@ func (r *EnableKeyRotationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableKeyRotationResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type EnableKeyRotationResponse struct {
@@ -1624,14 +1624,14 @@ func (r *EnableKeyRotationResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableKeysRequestParams struct {
 	// 需要批量启用的CMK Id 列表， CMK数量最大支持100
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
+	KeyIds []*string `json:"KeyIds,omitnil" name:"KeyIds"`
 }
 
 type EnableKeysRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要批量启用的CMK Id 列表， CMK数量最大支持100
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
+	KeyIds []*string `json:"KeyIds,omitnil" name:"KeyIds"`
 }
 
 func (r *EnableKeysRequest) ToJsonString() string {
@@ -1656,7 +1656,7 @@ func (r *EnableKeysRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableKeysResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type EnableKeysResponse struct {
@@ -1678,14 +1678,14 @@ func (r *EnableKeysResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableWhiteBoxKeyRequestParams struct {
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type EnableWhiteBoxKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *EnableWhiteBoxKeyRequest) ToJsonString() string {
@@ -1710,7 +1710,7 @@ func (r *EnableWhiteBoxKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableWhiteBoxKeyResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type EnableWhiteBoxKeyResponse struct {
@@ -1732,14 +1732,14 @@ func (r *EnableWhiteBoxKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableWhiteBoxKeysRequestParams struct {
 	// 白盒密钥的全局唯一标识符列表。注意：要确保所有提供的KeyId是格式有效的，没有重复，个数不超过50个，并且都是有效存在的。
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
+	KeyIds []*string `json:"KeyIds,omitnil" name:"KeyIds"`
 }
 
 type EnableWhiteBoxKeysRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白盒密钥的全局唯一标识符列表。注意：要确保所有提供的KeyId是格式有效的，没有重复，个数不超过50个，并且都是有效存在的。
-	KeyIds []*string `json:"KeyIds,omitempty" name:"KeyIds"`
+	KeyIds []*string `json:"KeyIds,omitnil" name:"KeyIds"`
 }
 
 func (r *EnableWhiteBoxKeysRequest) ToJsonString() string {
@@ -1764,7 +1764,7 @@ func (r *EnableWhiteBoxKeysRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EnableWhiteBoxKeysResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type EnableWhiteBoxKeysResponse struct {
@@ -1786,26 +1786,26 @@ func (r *EnableWhiteBoxKeysResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type EncryptByWhiteBoxRequestParams struct {
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 待加密的文本， base64编码，文本的原始长度最大不超过4KB
-	PlainText *string `json:"PlainText,omitempty" name:"PlainText"`
+	PlainText *string `json:"PlainText,omitnil" name:"PlainText"`
 
 	// 初始化向量，大小为 16 Bytes，加密算法会使用到, base64编码；如果不传，则由后端服务随机生成。用户需要自行保存该值，作为解密的参数。
-	InitializationVector *string `json:"InitializationVector,omitempty" name:"InitializationVector"`
+	InitializationVector *string `json:"InitializationVector,omitnil" name:"InitializationVector"`
 }
 
 type EncryptByWhiteBoxRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 待加密的文本， base64编码，文本的原始长度最大不超过4KB
-	PlainText *string `json:"PlainText,omitempty" name:"PlainText"`
+	PlainText *string `json:"PlainText,omitnil" name:"PlainText"`
 
 	// 初始化向量，大小为 16 Bytes，加密算法会使用到, base64编码；如果不传，则由后端服务随机生成。用户需要自行保存该值，作为解密的参数。
-	InitializationVector *string `json:"InitializationVector,omitempty" name:"InitializationVector"`
+	InitializationVector *string `json:"InitializationVector,omitnil" name:"InitializationVector"`
 }
 
 func (r *EncryptByWhiteBoxRequest) ToJsonString() string {
@@ -1832,13 +1832,13 @@ func (r *EncryptByWhiteBoxRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EncryptByWhiteBoxResponseParams struct {
 	// 初始化向量，加密算法会使用到, base64编码。如果由调用方在入参中传入，则原样返回。如果调用方没有传入，则后端服务随机生成，并返回
-	InitializationVector *string `json:"InitializationVector,omitempty" name:"InitializationVector"`
+	InitializationVector *string `json:"InitializationVector,omitnil" name:"InitializationVector"`
 
 	// 加密后的密文，base64编码
-	CipherText *string `json:"CipherText,omitempty" name:"CipherText"`
+	CipherText *string `json:"CipherText,omitnil" name:"CipherText"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type EncryptByWhiteBoxResponse struct {
@@ -1860,26 +1860,26 @@ func (r *EncryptByWhiteBoxResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type EncryptRequestParams struct {
 	// 调用CreateKey生成的CMK全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 被加密的明文数据，该字段必须使用base64编码，原文最大长度支持4K
-	Plaintext *string `json:"Plaintext,omitempty" name:"Plaintext"`
+	Plaintext *string `json:"Plaintext,omitnil" name:"Plaintext"`
 
 	// key/value对的json字符串，如果指定了该参数，则在调用Decrypt API时需要提供同样的参数，最大支持1024个字符
-	EncryptionContext *string `json:"EncryptionContext,omitempty" name:"EncryptionContext"`
+	EncryptionContext *string `json:"EncryptionContext,omitnil" name:"EncryptionContext"`
 }
 
 type EncryptRequest struct {
 	*tchttp.BaseRequest
 	
 	// 调用CreateKey生成的CMK全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 被加密的明文数据，该字段必须使用base64编码，原文最大长度支持4K
-	Plaintext *string `json:"Plaintext,omitempty" name:"Plaintext"`
+	Plaintext *string `json:"Plaintext,omitnil" name:"Plaintext"`
 
 	// key/value对的json字符串，如果指定了该参数，则在调用Decrypt API时需要提供同样的参数，最大支持1024个字符
-	EncryptionContext *string `json:"EncryptionContext,omitempty" name:"EncryptionContext"`
+	EncryptionContext *string `json:"EncryptionContext,omitnil" name:"EncryptionContext"`
 }
 
 func (r *EncryptRequest) ToJsonString() string {
@@ -1906,13 +1906,13 @@ func (r *EncryptRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EncryptResponseParams struct {
 	// 加密后的密文，base64编码。注意：本字段中打包了密文和密钥的相关信息，不是对明文的直接加密结果，只有将该字段作为Decrypt接口的输入参数，才可以解密出原文。
-	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitnil" name:"CiphertextBlob"`
 
 	// 加密使用的CMK的全局唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type EncryptResponse struct {
@@ -1934,44 +1934,44 @@ func (r *EncryptResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GenerateDataKeyRequestParams struct {
 	// CMK全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 指定生成Datakey的加密算法以及Datakey大小，AES_128或者AES_256。KeySpec 和 NumberOfBytes 必须指定一个
-	KeySpec *string `json:"KeySpec,omitempty" name:"KeySpec"`
+	KeySpec *string `json:"KeySpec,omitnil" name:"KeySpec"`
 
 	// 生成的DataKey的长度，同时指定NumberOfBytes和KeySpec时，以NumberOfBytes为准。最小值为1， 最大值为1024。KeySpec 和 NumberOfBytes 必须指定一个
-	NumberOfBytes *uint64 `json:"NumberOfBytes,omitempty" name:"NumberOfBytes"`
+	NumberOfBytes *uint64 `json:"NumberOfBytes,omitnil" name:"NumberOfBytes"`
 
 	// key/value对的json字符串，如果使用该字段，则返回的DataKey在解密时需要填入相同的字符串
-	EncryptionContext *string `json:"EncryptionContext,omitempty" name:"EncryptionContext"`
+	EncryptionContext *string `json:"EncryptionContext,omitnil" name:"EncryptionContext"`
 
 	// PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
-	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" name:"EncryptionPublicKey"`
+	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitnil" name:"EncryptionPublicKey"`
 
 	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
-	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" name:"EncryptionAlgorithm"`
+	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil" name:"EncryptionAlgorithm"`
 }
 
 type GenerateDataKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 指定生成Datakey的加密算法以及Datakey大小，AES_128或者AES_256。KeySpec 和 NumberOfBytes 必须指定一个
-	KeySpec *string `json:"KeySpec,omitempty" name:"KeySpec"`
+	KeySpec *string `json:"KeySpec,omitnil" name:"KeySpec"`
 
 	// 生成的DataKey的长度，同时指定NumberOfBytes和KeySpec时，以NumberOfBytes为准。最小值为1， 最大值为1024。KeySpec 和 NumberOfBytes 必须指定一个
-	NumberOfBytes *uint64 `json:"NumberOfBytes,omitempty" name:"NumberOfBytes"`
+	NumberOfBytes *uint64 `json:"NumberOfBytes,omitnil" name:"NumberOfBytes"`
 
 	// key/value对的json字符串，如果使用该字段，则返回的DataKey在解密时需要填入相同的字符串
-	EncryptionContext *string `json:"EncryptionContext,omitempty" name:"EncryptionContext"`
+	EncryptionContext *string `json:"EncryptionContext,omitnil" name:"EncryptionContext"`
 
 	// PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
-	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" name:"EncryptionPublicKey"`
+	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitnil" name:"EncryptionPublicKey"`
 
 	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
-	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" name:"EncryptionAlgorithm"`
+	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil" name:"EncryptionAlgorithm"`
 }
 
 func (r *GenerateDataKeyRequest) ToJsonString() string {
@@ -2001,17 +2001,17 @@ func (r *GenerateDataKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GenerateDataKeyResponseParams struct {
 	// CMK的全局唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 若调用时未提供 EncryptionPublicKey，该字段值为生成的数据密钥 DataKey 的 Base64 编码的明文，需进行 Base64 解码以获取 DataKey 明文。
 	// 若调用时提供了 EncryptionPublicKey，则该字段值为使用 EncryptionPublicKey 公钥进行非对称加密后的 Base64 编码的密文。需在 Base64 解码后，使用用户上传的公钥对应的私钥进行进一步解密，以获取 DataKey 明文。
-	Plaintext *string `json:"Plaintext,omitempty" name:"Plaintext"`
+	Plaintext *string `json:"Plaintext,omitnil" name:"Plaintext"`
 
 	// 数据密钥DataKey加密后的密文，用户需要自行保存该密文，KMS不托管用户的数据密钥。可以通过Decrypt接口从CiphertextBlob中获取数据密钥DataKey明文
-	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitnil" name:"CiphertextBlob"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GenerateDataKeyResponse struct {
@@ -2033,14 +2033,14 @@ func (r *GenerateDataKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GenerateRandomRequestParams struct {
 	// 生成的随机数的长度。最小值为1， 最大值为1024。
-	NumberOfBytes *uint64 `json:"NumberOfBytes,omitempty" name:"NumberOfBytes"`
+	NumberOfBytes *uint64 `json:"NumberOfBytes,omitnil" name:"NumberOfBytes"`
 }
 
 type GenerateRandomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 生成的随机数的长度。最小值为1， 最大值为1024。
-	NumberOfBytes *uint64 `json:"NumberOfBytes,omitempty" name:"NumberOfBytes"`
+	NumberOfBytes *uint64 `json:"NumberOfBytes,omitnil" name:"NumberOfBytes"`
 }
 
 func (r *GenerateRandomRequest) ToJsonString() string {
@@ -2065,10 +2065,10 @@ func (r *GenerateRandomRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GenerateRandomResponseParams struct {
 	// 生成的随机数的明文，该明文使用base64编码，用户需要使用base64解码得到明文。
-	Plaintext *string `json:"Plaintext,omitempty" name:"Plaintext"`
+	Plaintext *string `json:"Plaintext,omitnil" name:"Plaintext"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GenerateRandomResponse struct {
@@ -2090,14 +2090,14 @@ func (r *GenerateRandomResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetKeyRotationStatusRequestParams struct {
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type GetKeyRotationStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *GetKeyRotationStatusRequest) ToJsonString() string {
@@ -2122,10 +2122,10 @@ func (r *GetKeyRotationStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetKeyRotationStatusResponseParams struct {
 	// 密钥轮换是否开启
-	KeyRotationEnabled *bool `json:"KeyRotationEnabled,omitempty" name:"KeyRotationEnabled"`
+	KeyRotationEnabled *bool `json:"KeyRotationEnabled,omitnil" name:"KeyRotationEnabled"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetKeyRotationStatusResponse struct {
@@ -2147,26 +2147,26 @@ func (r *GetKeyRotationStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetParametersForImportRequestParams struct {
 	// CMK的唯一标识，获取密钥参数的CMK必须是EXTERNAL类型，即在CreateKey时指定Type=2 类型的CMK。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 指定加密密钥材料的算法，目前支持RSAES_PKCS1_V1_5、RSAES_OAEP_SHA_1、RSAES_OAEP_SHA_256
-	WrappingAlgorithm *string `json:"WrappingAlgorithm,omitempty" name:"WrappingAlgorithm"`
+	WrappingAlgorithm *string `json:"WrappingAlgorithm,omitnil" name:"WrappingAlgorithm"`
 
 	// 指定加密密钥材料的类型，目前只支持RSA_2048
-	WrappingKeySpec *string `json:"WrappingKeySpec,omitempty" name:"WrappingKeySpec"`
+	WrappingKeySpec *string `json:"WrappingKeySpec,omitnil" name:"WrappingKeySpec"`
 }
 
 type GetParametersForImportRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK的唯一标识，获取密钥参数的CMK必须是EXTERNAL类型，即在CreateKey时指定Type=2 类型的CMK。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 指定加密密钥材料的算法，目前支持RSAES_PKCS1_V1_5、RSAES_OAEP_SHA_1、RSAES_OAEP_SHA_256
-	WrappingAlgorithm *string `json:"WrappingAlgorithm,omitempty" name:"WrappingAlgorithm"`
+	WrappingAlgorithm *string `json:"WrappingAlgorithm,omitnil" name:"WrappingAlgorithm"`
 
 	// 指定加密密钥材料的类型，目前只支持RSA_2048
-	WrappingKeySpec *string `json:"WrappingKeySpec,omitempty" name:"WrappingKeySpec"`
+	WrappingKeySpec *string `json:"WrappingKeySpec,omitnil" name:"WrappingKeySpec"`
 }
 
 func (r *GetParametersForImportRequest) ToJsonString() string {
@@ -2193,19 +2193,19 @@ func (r *GetParametersForImportRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetParametersForImportResponseParams struct {
 	// CMK的唯一标识，用于指定目标导入密钥材料的CMK。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 导入密钥材料需要的token，用于作为 ImportKeyMaterial 的参数。
-	ImportToken *string `json:"ImportToken,omitempty" name:"ImportToken"`
+	ImportToken *string `json:"ImportToken,omitnil" name:"ImportToken"`
 
 	// 用于加密密钥材料的RSA公钥，base64编码。使用PublicKey base64解码后的公钥将导入密钥进行加密后作为 ImportKeyMaterial 的参数。
-	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+	PublicKey *string `json:"PublicKey,omitnil" name:"PublicKey"`
 
 	// 该导出token和公钥的有效期，超过该时间后无法导入，需要重新调用GetParametersForImport获取。
-	ParametersValidTo *uint64 `json:"ParametersValidTo,omitempty" name:"ParametersValidTo"`
+	ParametersValidTo *uint64 `json:"ParametersValidTo,omitnil" name:"ParametersValidTo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetParametersForImportResponse struct {
@@ -2227,14 +2227,14 @@ func (r *GetParametersForImportResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetPublicKeyRequestParams struct {
 	// CMK的唯一标识。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type GetPublicKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK的唯一标识。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *GetPublicKeyRequest) ToJsonString() string {
@@ -2259,16 +2259,16 @@ func (r *GetPublicKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetPublicKeyResponseParams struct {
 	// CMK的唯一标识。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 经过base64编码的公钥内容。
-	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+	PublicKey *string `json:"PublicKey,omitnil" name:"PublicKey"`
 
 	// PEM格式的公钥内容。
-	PublicKeyPem *string `json:"PublicKeyPem,omitempty" name:"PublicKeyPem"`
+	PublicKeyPem *string `json:"PublicKeyPem,omitnil" name:"PublicKeyPem"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetPublicKeyResponse struct {
@@ -2320,10 +2320,10 @@ func (r *GetRegionsRequest) FromJsonString(s string) error {
 type GetRegionsResponseParams struct {
 	// 可用region列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Regions []*string `json:"Regions,omitempty" name:"Regions"`
+	Regions []*string `json:"Regions,omitnil" name:"Regions"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetRegionsResponse struct {
@@ -2374,41 +2374,41 @@ func (r *GetServiceStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetServiceStatusResponseParams struct {
 	// KMS服务是否开通， true 表示已开通
-	ServiceEnabled *bool `json:"ServiceEnabled,omitempty" name:"ServiceEnabled"`
+	ServiceEnabled *bool `json:"ServiceEnabled,omitnil" name:"ServiceEnabled"`
 
 	// 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InvalidType *int64 `json:"InvalidType,omitempty" name:"InvalidType"`
+	InvalidType *int64 `json:"InvalidType,omitnil" name:"InvalidType"`
 
 	// 0-普通版，1-旗舰版
-	UserLevel *uint64 `json:"UserLevel,omitempty" name:"UserLevel"`
+	UserLevel *uint64 `json:"UserLevel,omitnil" name:"UserLevel"`
 
 	// 旗舰版到期时间（Epoch Unix Timestamp）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProExpireTime *uint64 `json:"ProExpireTime,omitempty" name:"ProExpireTime"`
+	ProExpireTime *uint64 `json:"ProExpireTime,omitnil" name:"ProExpireTime"`
 
 	// 旗舰版是否自动续费：0-不自动续费，1-自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProRenewFlag *uint64 `json:"ProRenewFlag,omitempty" name:"ProRenewFlag"`
+	ProRenewFlag *uint64 `json:"ProRenewFlag,omitnil" name:"ProRenewFlag"`
 
 	// 旗舰版购买记录的唯一性标识。如果为开通旗舰版，则返回值为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProResourceId *string `json:"ProResourceId,omitempty" name:"ProResourceId"`
+	ProResourceId *string `json:"ProResourceId,omitnil" name:"ProResourceId"`
 
 	// 是否开通 KMS 托管版
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExclusiveVSMEnabled *bool `json:"ExclusiveVSMEnabled,omitempty" name:"ExclusiveVSMEnabled"`
+	ExclusiveVSMEnabled *bool `json:"ExclusiveVSMEnabled,omitnil" name:"ExclusiveVSMEnabled"`
 
 	// 是否开通 KMS 独享版
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExclusiveHSMEnabled *bool `json:"ExclusiveHSMEnabled,omitempty" name:"ExclusiveHSMEnabled"`
+	ExclusiveHSMEnabled *bool `json:"ExclusiveHSMEnabled,omitnil" name:"ExclusiveHSMEnabled"`
 
 	// KMS 订阅信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubscriptionInfo *string `json:"SubscriptionInfo,omitempty" name:"SubscriptionInfo"`
+	SubscriptionInfo *string `json:"SubscriptionInfo,omitnil" name:"SubscriptionInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetServiceStatusResponse struct {
@@ -2430,32 +2430,32 @@ func (r *GetServiceStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ImportKeyMaterialRequestParams struct {
 	// 使用GetParametersForImport 返回的PublicKey加密后的密钥材料base64编码。对于国密版本region的KMS，导入的密钥材料长度要求为 128 bit，FIPS版本region的KMS， 导入的密钥材料长度要求为 256 bit。
-	EncryptedKeyMaterial *string `json:"EncryptedKeyMaterial,omitempty" name:"EncryptedKeyMaterial"`
+	EncryptedKeyMaterial *string `json:"EncryptedKeyMaterial,omitnil" name:"EncryptedKeyMaterial"`
 
 	// 通过调用GetParametersForImport获得的导入令牌。
-	ImportToken *string `json:"ImportToken,omitempty" name:"ImportToken"`
+	ImportToken *string `json:"ImportToken,omitnil" name:"ImportToken"`
 
 	// 指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点，最大支持 2147443200。
-	ValidTo *uint64 `json:"ValidTo,omitempty" name:"ValidTo"`
+	ValidTo *uint64 `json:"ValidTo,omitnil" name:"ValidTo"`
 }
 
 type ImportKeyMaterialRequest struct {
 	*tchttp.BaseRequest
 	
 	// 使用GetParametersForImport 返回的PublicKey加密后的密钥材料base64编码。对于国密版本region的KMS，导入的密钥材料长度要求为 128 bit，FIPS版本region的KMS， 导入的密钥材料长度要求为 256 bit。
-	EncryptedKeyMaterial *string `json:"EncryptedKeyMaterial,omitempty" name:"EncryptedKeyMaterial"`
+	EncryptedKeyMaterial *string `json:"EncryptedKeyMaterial,omitnil" name:"EncryptedKeyMaterial"`
 
 	// 通过调用GetParametersForImport获得的导入令牌。
-	ImportToken *string `json:"ImportToken,omitempty" name:"ImportToken"`
+	ImportToken *string `json:"ImportToken,omitnil" name:"ImportToken"`
 
 	// 指定导入密钥材料的CMK，需要和GetParametersForImport 指定的CMK相同。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 密钥材料过期时间 unix 时间戳，不指定或者 0 表示密钥材料不会过期，若指定过期时间，需要大于当前时间点，最大支持 2147443200。
-	ValidTo *uint64 `json:"ValidTo,omitempty" name:"ValidTo"`
+	ValidTo *uint64 `json:"ValidTo,omitnil" name:"ValidTo"`
 }
 
 func (r *ImportKeyMaterialRequest) ToJsonString() string {
@@ -2483,7 +2483,7 @@ func (r *ImportKeyMaterialRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ImportKeyMaterialResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ImportKeyMaterialResponse struct {
@@ -2504,61 +2504,61 @@ func (r *ImportKeyMaterialResponse) FromJsonString(s string) error {
 
 type Key struct {
 	// CMK的全局唯一标识。
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type KeyMetadata struct {
 	// CMK的全局唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 作为密钥更容易辨识，更容易被人看懂的别名
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
 	// 密钥创建时间
-	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *uint64 `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// CMK的描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// CMK的状态， 取值为：Enabled | Disabled | PendingDelete | PendingImport | Archived
-	KeyState *string `json:"KeyState,omitempty" name:"KeyState"`
+	KeyState *string `json:"KeyState,omitnil" name:"KeyState"`
 
 	// CMK用途，取值为: ENCRYPT_DECRYPT | ASYMMETRIC_DECRYPT_RSA_2048 | ASYMMETRIC_DECRYPT_SM2 | ASYMMETRIC_SIGN_VERIFY_SM2 | ASYMMETRIC_SIGN_VERIFY_RSA_2048 | ASYMMETRIC_SIGN_VERIFY_ECC
-	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
+	KeyUsage *string `json:"KeyUsage,omitnil" name:"KeyUsage"`
 
 	// CMK类型，2 表示符合FIPS标准，4表示符合国密标准
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 
 	// 创建者
-	CreatorUin *uint64 `json:"CreatorUin,omitempty" name:"CreatorUin"`
+	CreatorUin *uint64 `json:"CreatorUin,omitnil" name:"CreatorUin"`
 
 	// 是否开启了密钥轮换功能
-	KeyRotationEnabled *bool `json:"KeyRotationEnabled,omitempty" name:"KeyRotationEnabled"`
+	KeyRotationEnabled *bool `json:"KeyRotationEnabled,omitnil" name:"KeyRotationEnabled"`
 
 	// CMK的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名
-	Owner *string `json:"Owner,omitempty" name:"Owner"`
+	Owner *string `json:"Owner,omitnil" name:"Owner"`
 
 	// 在密钥轮换开启状态下，下次轮换的时间
-	NextRotateTime *uint64 `json:"NextRotateTime,omitempty" name:"NextRotateTime"`
+	NextRotateTime *uint64 `json:"NextRotateTime,omitnil" name:"NextRotateTime"`
 
 	// 计划删除的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeletionDate *uint64 `json:"DeletionDate,omitempty" name:"DeletionDate"`
+	DeletionDate *uint64 `json:"DeletionDate,omitnil" name:"DeletionDate"`
 
 	// CMK 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Origin *string `json:"Origin,omitempty" name:"Origin"`
+	Origin *string `json:"Origin,omitnil" name:"Origin"`
 
 	// 在Origin为  EXTERNAL 时有效，表示密钥材料的有效日期， 0 表示不过期
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ValidTo *uint64 `json:"ValidTo,omitempty" name:"ValidTo"`
+	ValidTo *uint64 `json:"ValidTo,omitnil" name:"ValidTo"`
 
 	// 资源ID，格式：creatorUin/$creatorUin/$keyId
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HsmClusterId *string `json:"HsmClusterId,omitempty" name:"HsmClusterId"`
+	HsmClusterId *string `json:"HsmClusterId,omitnil" name:"HsmClusterId"`
 }
 
 // Predefined struct for user
@@ -2593,16 +2593,16 @@ func (r *ListAlgorithmsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListAlgorithmsResponseParams struct {
 	// 本地区支持的对称加密算法
-	SymmetricAlgorithms []*AlgorithmInfo `json:"SymmetricAlgorithms,omitempty" name:"SymmetricAlgorithms"`
+	SymmetricAlgorithms []*AlgorithmInfo `json:"SymmetricAlgorithms,omitnil" name:"SymmetricAlgorithms"`
 
 	// 本地区支持的非对称加密算法
-	AsymmetricAlgorithms []*AlgorithmInfo `json:"AsymmetricAlgorithms,omitempty" name:"AsymmetricAlgorithms"`
+	AsymmetricAlgorithms []*AlgorithmInfo `json:"AsymmetricAlgorithms,omitnil" name:"AsymmetricAlgorithms"`
 
 	// 本地区支持的非对称签名验签算法
-	AsymmetricSignVerifyAlgorithms []*AlgorithmInfo `json:"AsymmetricSignVerifyAlgorithms,omitempty" name:"AsymmetricSignVerifyAlgorithms"`
+	AsymmetricSignVerifyAlgorithms []*AlgorithmInfo `json:"AsymmetricSignVerifyAlgorithms,omitnil" name:"AsymmetricSignVerifyAlgorithms"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ListAlgorithmsResponse struct {
@@ -2624,68 +2624,68 @@ func (r *ListAlgorithmsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListKeyDetailRequestParams struct {
 	// 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为10，最大值为200
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 根据创建者角色筛选，默认 0 表示用户自己创建的cmk， 1 表示授权其它云产品自动创建的cmk
-	Role *uint64 `json:"Role,omitempty" name:"Role"`
+	Role *uint64 `json:"Role,omitnil" name:"Role"`
 
 	// 根据CMK创建时间排序， 0 表示按照降序排序，1表示按照升序排序
-	OrderType *uint64 `json:"OrderType,omitempty" name:"OrderType"`
+	OrderType *uint64 `json:"OrderType,omitnil" name:"OrderType"`
 
 	// 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK，3 表示查询PendingDelete 状态的CMK(处于计划删除状态的Key)，4 表示查询 PendingImport 状态的CMK，5 表示查询 Archived 状态的 CMK
-	KeyState *uint64 `json:"KeyState,omitempty" name:"KeyState"`
+	KeyState *uint64 `json:"KeyState,omitnil" name:"KeyState"`
 
 	// 根据KeyId或者Alias进行模糊匹配查询
-	SearchKeyAlias *string `json:"SearchKeyAlias,omitempty" name:"SearchKeyAlias"`
+	SearchKeyAlias *string `json:"SearchKeyAlias,omitnil" name:"SearchKeyAlias"`
 
 	// 根据CMK类型筛选， "TENCENT_KMS" 表示筛选密钥材料由KMS创建的CMK， "EXTERNAL" 表示筛选密钥材料需要用户导入的 EXTERNAL类型CMK，"ALL" 或者不设置表示两种类型都查询，大小写敏感。
-	Origin *string `json:"Origin,omitempty" name:"Origin"`
+	Origin *string `json:"Origin,omitnil" name:"Origin"`
 
 	// 根据CMK的KeyUsage筛选，ALL表示筛选全部，可使用的参数为：ALL 或 ENCRYPT_DECRYPT 或 ASYMMETRIC_DECRYPT_RSA_2048 或 ASYMMETRIC_DECRYPT_SM2 或 ASYMMETRIC_SIGN_VERIFY_SM2 或 ASYMMETRIC_SIGN_VERIFY_RSA_2048 或 ASYMMETRIC_SIGN_VERIFY_ECC，为空则默认筛选ENCRYPT_DECRYPT类型
-	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
+	KeyUsage *string `json:"KeyUsage,omitnil" name:"KeyUsage"`
 
 	// 标签过滤条件
-	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+	TagFilters []*TagFilter `json:"TagFilters,omitnil" name:"TagFilters"`
 
 	// KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
-	HsmClusterId *string `json:"HsmClusterId,omitempty" name:"HsmClusterId"`
+	HsmClusterId *string `json:"HsmClusterId,omitnil" name:"HsmClusterId"`
 }
 
 type ListKeyDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 含义跟 SQL 查询的 Limit 一致，表示本次最多获取 Limit 个元素。缺省值为10，最大值为200
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 根据创建者角色筛选，默认 0 表示用户自己创建的cmk， 1 表示授权其它云产品自动创建的cmk
-	Role *uint64 `json:"Role,omitempty" name:"Role"`
+	Role *uint64 `json:"Role,omitnil" name:"Role"`
 
 	// 根据CMK创建时间排序， 0 表示按照降序排序，1表示按照升序排序
-	OrderType *uint64 `json:"OrderType,omitempty" name:"OrderType"`
+	OrderType *uint64 `json:"OrderType,omitnil" name:"OrderType"`
 
 	// 根据CMK状态筛选， 0表示全部CMK， 1 表示仅查询Enabled CMK， 2 表示仅查询Disabled CMK，3 表示查询PendingDelete 状态的CMK(处于计划删除状态的Key)，4 表示查询 PendingImport 状态的CMK，5 表示查询 Archived 状态的 CMK
-	KeyState *uint64 `json:"KeyState,omitempty" name:"KeyState"`
+	KeyState *uint64 `json:"KeyState,omitnil" name:"KeyState"`
 
 	// 根据KeyId或者Alias进行模糊匹配查询
-	SearchKeyAlias *string `json:"SearchKeyAlias,omitempty" name:"SearchKeyAlias"`
+	SearchKeyAlias *string `json:"SearchKeyAlias,omitnil" name:"SearchKeyAlias"`
 
 	// 根据CMK类型筛选， "TENCENT_KMS" 表示筛选密钥材料由KMS创建的CMK， "EXTERNAL" 表示筛选密钥材料需要用户导入的 EXTERNAL类型CMK，"ALL" 或者不设置表示两种类型都查询，大小写敏感。
-	Origin *string `json:"Origin,omitempty" name:"Origin"`
+	Origin *string `json:"Origin,omitnil" name:"Origin"`
 
 	// 根据CMK的KeyUsage筛选，ALL表示筛选全部，可使用的参数为：ALL 或 ENCRYPT_DECRYPT 或 ASYMMETRIC_DECRYPT_RSA_2048 或 ASYMMETRIC_DECRYPT_SM2 或 ASYMMETRIC_SIGN_VERIFY_SM2 或 ASYMMETRIC_SIGN_VERIFY_RSA_2048 或 ASYMMETRIC_SIGN_VERIFY_ECC，为空则默认筛选ENCRYPT_DECRYPT类型
-	KeyUsage *string `json:"KeyUsage,omitempty" name:"KeyUsage"`
+	KeyUsage *string `json:"KeyUsage,omitnil" name:"KeyUsage"`
 
 	// 标签过滤条件
-	TagFilters []*TagFilter `json:"TagFilters,omitempty" name:"TagFilters"`
+	TagFilters []*TagFilter `json:"TagFilters,omitnil" name:"TagFilters"`
 
 	// KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
-	HsmClusterId *string `json:"HsmClusterId,omitempty" name:"HsmClusterId"`
+	HsmClusterId *string `json:"HsmClusterId,omitnil" name:"HsmClusterId"`
 }
 
 func (r *ListKeyDetailRequest) ToJsonString() string {
@@ -2719,14 +2719,14 @@ func (r *ListKeyDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListKeyDetailResponseParams struct {
 	// CMK的总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 返回的属性信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitempty" name:"KeyMetadatas"`
+	KeyMetadatas []*KeyMetadata `json:"KeyMetadatas,omitnil" name:"KeyMetadatas"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ListKeyDetailResponse struct {
@@ -2748,32 +2748,32 @@ func (r *ListKeyDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListKeysRequestParams struct {
 	// 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 含义跟 SQL 查询的 Limit 一致，表示本次获最多获取 Limit 个元素。缺省值为10，最大值为200
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 根据创建者角色筛选，默认 0 表示用户自己创建的cmk， 1 表示授权其它云产品自动创建的cmk
-	Role *uint64 `json:"Role,omitempty" name:"Role"`
+	Role *uint64 `json:"Role,omitnil" name:"Role"`
 
 	// KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
-	HsmClusterId *string `json:"HsmClusterId,omitempty" name:"HsmClusterId"`
+	HsmClusterId *string `json:"HsmClusterId,omitnil" name:"HsmClusterId"`
 }
 
 type ListKeysRequest struct {
 	*tchttp.BaseRequest
 	
 	// 含义跟 SQL 查询的 Offset 一致，表示本次获取从按一定顺序排列数组的第 Offset 个元素开始，缺省为0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 含义跟 SQL 查询的 Limit 一致，表示本次获最多获取 Limit 个元素。缺省值为10，最大值为200
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 根据创建者角色筛选，默认 0 表示用户自己创建的cmk， 1 表示授权其它云产品自动创建的cmk
-	Role *uint64 `json:"Role,omitempty" name:"Role"`
+	Role *uint64 `json:"Role,omitnil" name:"Role"`
 
 	// KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
-	HsmClusterId *string `json:"HsmClusterId,omitempty" name:"HsmClusterId"`
+	HsmClusterId *string `json:"HsmClusterId,omitnil" name:"HsmClusterId"`
 }
 
 func (r *ListKeysRequest) ToJsonString() string {
@@ -2802,13 +2802,13 @@ func (r *ListKeysRequest) FromJsonString(s string) error {
 type ListKeysResponseParams struct {
 	// CMK列表数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Keys []*Key `json:"Keys,omitempty" name:"Keys"`
+	Keys []*Key `json:"Keys,omitnil" name:"Keys"`
 
 	// CMK的总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ListKeysResponse struct {
@@ -2830,20 +2830,20 @@ func (r *ListKeysResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type OverwriteWhiteBoxDeviceFingerprintsRequestParams struct {
 	// 白盒密钥ID
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 设备指纹列表，如果列表为空，则表示删除该密钥对应的所有指纹信息。列表最大长度不超过200。
-	DeviceFingerprints []*DeviceFingerprint `json:"DeviceFingerprints,omitempty" name:"DeviceFingerprints"`
+	DeviceFingerprints []*DeviceFingerprint `json:"DeviceFingerprints,omitnil" name:"DeviceFingerprints"`
 }
 
 type OverwriteWhiteBoxDeviceFingerprintsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 白盒密钥ID
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 设备指纹列表，如果列表为空，则表示删除该密钥对应的所有指纹信息。列表最大长度不超过200。
-	DeviceFingerprints []*DeviceFingerprint `json:"DeviceFingerprints,omitempty" name:"DeviceFingerprints"`
+	DeviceFingerprints []*DeviceFingerprint `json:"DeviceFingerprints,omitnil" name:"DeviceFingerprints"`
 }
 
 func (r *OverwriteWhiteBoxDeviceFingerprintsRequest) ToJsonString() string {
@@ -2869,7 +2869,7 @@ func (r *OverwriteWhiteBoxDeviceFingerprintsRequest) FromJsonString(s string) er
 // Predefined struct for user
 type OverwriteWhiteBoxDeviceFingerprintsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type OverwriteWhiteBoxDeviceFingerprintsResponse struct {
@@ -2891,26 +2891,26 @@ func (r *OverwriteWhiteBoxDeviceFingerprintsResponse) FromJsonString(s string) e
 // Predefined struct for user
 type PostQuantumCryptoDecryptRequestParams struct {
 	// 待解密的密文数据
-	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitnil" name:"CiphertextBlob"`
 
 	// PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
-	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" name:"EncryptionPublicKey"`
+	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitnil" name:"EncryptionPublicKey"`
 
 	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
-	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" name:"EncryptionAlgorithm"`
+	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil" name:"EncryptionAlgorithm"`
 }
 
 type PostQuantumCryptoDecryptRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待解密的密文数据
-	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitnil" name:"CiphertextBlob"`
 
 	// PEM 格式公钥字符串，支持 RSA2048 和 SM2 公钥，用于对返回数据中的 Plaintext 值进行加密。若为空，则不对 Plaintext 值加密。
-	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitempty" name:"EncryptionPublicKey"`
+	EncryptionPublicKey *string `json:"EncryptionPublicKey,omitnil" name:"EncryptionPublicKey"`
 
 	// 非对称加密算法，配合 EncryptionPublicKey 对返回数据进行加密。目前支持：SM2（以 C1C3C2 格式返回密文），SM2_C1C3C2_ASN1 （以 C1C3C2 ASN1 格式返回密文），RSAES_PKCS1_V1_5，RSAES_OAEP_SHA_1，RSAES_OAEP_SHA_256。若为空，则默认为 SM2。
-	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitempty" name:"EncryptionAlgorithm"`
+	EncryptionAlgorithm *string `json:"EncryptionAlgorithm,omitnil" name:"EncryptionAlgorithm"`
 }
 
 func (r *PostQuantumCryptoDecryptRequest) ToJsonString() string {
@@ -2937,14 +2937,14 @@ func (r *PostQuantumCryptoDecryptRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PostQuantumCryptoDecryptResponseParams struct {
 	// CMK的全局唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 若调用时未提供 EncryptionPublicKey，该字段值为 Base64 编码的明文，需进行 Base64 解码以获取明文。
 	// 若调用时提供了 EncryptionPublicKey，则该字段值为使用 EncryptionPublicKey 公钥进行非对称加密后的 Base64 编码的密文。需在 Base64 解码后，使用用户上传的公钥对应的私钥进行进一步解密，以获取明文。
-	PlainText *string `json:"PlainText,omitempty" name:"PlainText"`
+	PlainText *string `json:"PlainText,omitnil" name:"PlainText"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type PostQuantumCryptoDecryptResponse struct {
@@ -2966,20 +2966,20 @@ func (r *PostQuantumCryptoDecryptResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type PostQuantumCryptoEncryptRequestParams struct {
 	// 调用CreateKey生成的CMK全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 被加密的明文数据，该字段必须使用base64编码，原文最大长度支持4K
-	PlainText *string `json:"PlainText,omitempty" name:"PlainText"`
+	PlainText *string `json:"PlainText,omitnil" name:"PlainText"`
 }
 
 type PostQuantumCryptoEncryptRequest struct {
 	*tchttp.BaseRequest
 	
 	// 调用CreateKey生成的CMK全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 被加密的明文数据，该字段必须使用base64编码，原文最大长度支持4K
-	PlainText *string `json:"PlainText,omitempty" name:"PlainText"`
+	PlainText *string `json:"PlainText,omitnil" name:"PlainText"`
 }
 
 func (r *PostQuantumCryptoEncryptRequest) ToJsonString() string {
@@ -3005,13 +3005,13 @@ func (r *PostQuantumCryptoEncryptRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PostQuantumCryptoEncryptResponseParams struct {
 	// 加密后的密文，base64编码。注意：本字段中打包了密文和密钥的相关信息，不是对明文的直接加密结果，只有将该字段作为PostQuantumCryptoDecrypt接口的输入参数，才可以解密出原文。
-	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitnil" name:"CiphertextBlob"`
 
 	// 加密使用的CMK的全局唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type PostQuantumCryptoEncryptResponse struct {
@@ -3033,20 +3033,20 @@ func (r *PostQuantumCryptoEncryptResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type PostQuantumCryptoSignRequestParams struct {
 	// Base64 编码的消息原文。消息原文的长度（Base64编码前的长度）不超过4096字节。
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 
 	// 密钥的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type PostQuantumCryptoSignRequest struct {
 	*tchttp.BaseRequest
 	
 	// Base64 编码的消息原文。消息原文的长度（Base64编码前的长度）不超过4096字节。
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 
 	// 密钥的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *PostQuantumCryptoSignRequest) ToJsonString() string {
@@ -3072,10 +3072,10 @@ func (r *PostQuantumCryptoSignRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PostQuantumCryptoSignResponseParams struct {
 	// 签名值，Base64编码。可使用 PostQuantumCryptoVerify接口对签名值进行验证。
-	Signature *string `json:"Signature,omitempty" name:"Signature"`
+	Signature *string `json:"Signature,omitnil" name:"Signature"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type PostQuantumCryptoSignResponse struct {
@@ -3097,26 +3097,26 @@ func (r *PostQuantumCryptoSignResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type PostQuantumCryptoVerifyRequestParams struct {
 	// 密钥的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 签名值，通过调用KMS PostQuantumCryptoSign签名接口生成
-	SignatureValue *string `json:"SignatureValue,omitempty" name:"SignatureValue"`
+	SignatureValue *string `json:"SignatureValue,omitnil" name:"SignatureValue"`
 
 	// Base64 编码的消息原文，消息原文的长度（Base64编码前的长度）不超过4096字节。
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 }
 
 type PostQuantumCryptoVerifyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 密钥的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 签名值，通过调用KMS PostQuantumCryptoSign签名接口生成
-	SignatureValue *string `json:"SignatureValue,omitempty" name:"SignatureValue"`
+	SignatureValue *string `json:"SignatureValue,omitnil" name:"SignatureValue"`
 
 	// Base64 编码的消息原文，消息原文的长度（Base64编码前的长度）不超过4096字节。
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 }
 
 func (r *PostQuantumCryptoVerifyRequest) ToJsonString() string {
@@ -3143,10 +3143,10 @@ func (r *PostQuantumCryptoVerifyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PostQuantumCryptoVerifyResponseParams struct {
 	// 签名是否有效。true：签名有效，false：签名无效。
-	SignatureValid *bool `json:"SignatureValid,omitempty" name:"SignatureValid"`
+	SignatureValid *bool `json:"SignatureValid,omitnil" name:"SignatureValid"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type PostQuantumCryptoVerifyResponse struct {
@@ -3168,32 +3168,32 @@ func (r *PostQuantumCryptoVerifyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ReEncryptRequestParams struct {
 	// 需要重新加密的密文
-	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitnil" name:"CiphertextBlob"`
 
 	// 重新加密使用的CMK，如果为空，则使用密文原有的CMK重新加密（若密钥没有轮换则密文不会刷新）
-	DestinationKeyId *string `json:"DestinationKeyId,omitempty" name:"DestinationKeyId"`
+	DestinationKeyId *string `json:"DestinationKeyId,omitnil" name:"DestinationKeyId"`
 
 	// CiphertextBlob 密文加密时使用的key/value对的json字符串。如果加密时未使用，则为空
-	SourceEncryptionContext *string `json:"SourceEncryptionContext,omitempty" name:"SourceEncryptionContext"`
+	SourceEncryptionContext *string `json:"SourceEncryptionContext,omitnil" name:"SourceEncryptionContext"`
 
 	// 重新加密使用的key/value对的json字符串，如果使用该字段，则返回的新密文在解密时需要填入相同的字符串
-	DestinationEncryptionContext *string `json:"DestinationEncryptionContext,omitempty" name:"DestinationEncryptionContext"`
+	DestinationEncryptionContext *string `json:"DestinationEncryptionContext,omitnil" name:"DestinationEncryptionContext"`
 }
 
 type ReEncryptRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要重新加密的密文
-	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitnil" name:"CiphertextBlob"`
 
 	// 重新加密使用的CMK，如果为空，则使用密文原有的CMK重新加密（若密钥没有轮换则密文不会刷新）
-	DestinationKeyId *string `json:"DestinationKeyId,omitempty" name:"DestinationKeyId"`
+	DestinationKeyId *string `json:"DestinationKeyId,omitnil" name:"DestinationKeyId"`
 
 	// CiphertextBlob 密文加密时使用的key/value对的json字符串。如果加密时未使用，则为空
-	SourceEncryptionContext *string `json:"SourceEncryptionContext,omitempty" name:"SourceEncryptionContext"`
+	SourceEncryptionContext *string `json:"SourceEncryptionContext,omitnil" name:"SourceEncryptionContext"`
 
 	// 重新加密使用的key/value对的json字符串，如果使用该字段，则返回的新密文在解密时需要填入相同的字符串
-	DestinationEncryptionContext *string `json:"DestinationEncryptionContext,omitempty" name:"DestinationEncryptionContext"`
+	DestinationEncryptionContext *string `json:"DestinationEncryptionContext,omitnil" name:"DestinationEncryptionContext"`
 }
 
 func (r *ReEncryptRequest) ToJsonString() string {
@@ -3221,19 +3221,19 @@ func (r *ReEncryptRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ReEncryptResponseParams struct {
 	// 重新加密后的密文
-	CiphertextBlob *string `json:"CiphertextBlob,omitempty" name:"CiphertextBlob"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitnil" name:"CiphertextBlob"`
 
 	// 重新加密使用的CMK
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 重新加密前密文使用的CMK
-	SourceKeyId *string `json:"SourceKeyId,omitempty" name:"SourceKeyId"`
+	SourceKeyId *string `json:"SourceKeyId,omitnil" name:"SourceKeyId"`
 
 	// true表示密文已经重新加密。同一个CMK进行重加密，在密钥没有发生轮换的情况下不会进行实际重新加密操作，返回原密文
-	ReEncrypted *bool `json:"ReEncrypted,omitempty" name:"ReEncrypted"`
+	ReEncrypted *bool `json:"ReEncrypted,omitnil" name:"ReEncrypted"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ReEncryptResponse struct {
@@ -3255,20 +3255,20 @@ func (r *ReEncryptResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ScheduleKeyDeletionRequestParams struct {
 	// CMK的唯一标志
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 计划删除时间区间[7,30]
-	PendingWindowInDays *uint64 `json:"PendingWindowInDays,omitempty" name:"PendingWindowInDays"`
+	PendingWindowInDays *uint64 `json:"PendingWindowInDays,omitnil" name:"PendingWindowInDays"`
 }
 
 type ScheduleKeyDeletionRequest struct {
 	*tchttp.BaseRequest
 	
 	// CMK的唯一标志
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 计划删除时间区间[7,30]
-	PendingWindowInDays *uint64 `json:"PendingWindowInDays,omitempty" name:"PendingWindowInDays"`
+	PendingWindowInDays *uint64 `json:"PendingWindowInDays,omitnil" name:"PendingWindowInDays"`
 }
 
 func (r *ScheduleKeyDeletionRequest) ToJsonString() string {
@@ -3294,13 +3294,13 @@ func (r *ScheduleKeyDeletionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ScheduleKeyDeletionResponseParams struct {
 	// 计划删除执行时间
-	DeletionDate *uint64 `json:"DeletionDate,omitempty" name:"DeletionDate"`
+	DeletionDate *uint64 `json:"DeletionDate,omitnil" name:"DeletionDate"`
 
 	// 唯一标志被计划删除的CMK
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ScheduleKeyDeletionResponse struct {
@@ -3322,32 +3322,32 @@ func (r *ScheduleKeyDeletionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SignByAsymmetricKeyRequestParams struct {
 	// 签名算法，支持的算法：SM2DSA，ECC_P256_R1，RSA_PSS_SHA_256，RSA_PKCS1_SHA_256 等。更多支持的算法可通过 ListAlgorithms 接口进行查询。
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// 消息原文或消息摘要。如果提供的是消息原文，则消息原文的长度（Base64编码前的长度）不超过4096字节。如果提供的是消息摘要，消息摘要长度（Base64编码前的长度）必须等于32字节
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 
 	// 密钥的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 消息类型：RAW，DIGEST，如果不传，默认为RAW，表示消息原文。
-	MessageType *string `json:"MessageType,omitempty" name:"MessageType"`
+	MessageType *string `json:"MessageType,omitnil" name:"MessageType"`
 }
 
 type SignByAsymmetricKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 签名算法，支持的算法：SM2DSA，ECC_P256_R1，RSA_PSS_SHA_256，RSA_PKCS1_SHA_256 等。更多支持的算法可通过 ListAlgorithms 接口进行查询。
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// 消息原文或消息摘要。如果提供的是消息原文，则消息原文的长度（Base64编码前的长度）不超过4096字节。如果提供的是消息摘要，消息摘要长度（Base64编码前的长度）必须等于32字节
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 
 	// 密钥的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 消息类型：RAW，DIGEST，如果不传，默认为RAW，表示消息原文。
-	MessageType *string `json:"MessageType,omitempty" name:"MessageType"`
+	MessageType *string `json:"MessageType,omitnil" name:"MessageType"`
 }
 
 func (r *SignByAsymmetricKeyRequest) ToJsonString() string {
@@ -3375,10 +3375,10 @@ func (r *SignByAsymmetricKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SignByAsymmetricKeyResponseParams struct {
 	// 签名，Base64编码
-	Signature *string `json:"Signature,omitempty" name:"Signature"`
+	Signature *string `json:"Signature,omitnil" name:"Signature"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SignByAsymmetricKeyResponse struct {
@@ -3399,43 +3399,43 @@ func (r *SignByAsymmetricKeyResponse) FromJsonString(s string) error {
 
 type Tag struct {
 	// 标签键
-	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
 
 	// 标签值
-	TagValue *string `json:"TagValue,omitempty" name:"TagValue"`
+	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
 }
 
 type TagFilter struct {
 	// 标签键
-	TagKey *string `json:"TagKey,omitempty" name:"TagKey"`
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
 
 	// 标签值
-	TagValue []*string `json:"TagValue,omitempty" name:"TagValue"`
+	TagValue []*string `json:"TagValue,omitnil" name:"TagValue"`
 }
 
 // Predefined struct for user
 type UnbindCloudResourceRequestParams struct {
 	// cmk的ID
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 云产品的唯一性标识符
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 资源/实例ID，由调用方根据自己的云产品特征来定义，以字符串形式做存储。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 type UnbindCloudResourceRequest struct {
 	*tchttp.BaseRequest
 	
 	// cmk的ID
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 云产品的唯一性标识符
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 资源/实例ID，由调用方根据自己的云产品特征来定义，以字符串形式做存储。
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 func (r *UnbindCloudResourceRequest) ToJsonString() string {
@@ -3462,7 +3462,7 @@ func (r *UnbindCloudResourceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UnbindCloudResourceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UnbindCloudResourceResponse struct {
@@ -3484,20 +3484,20 @@ func (r *UnbindCloudResourceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateAliasRequestParams struct {
 	// 新的别名，1-60个字符或数字的组合
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
 	// CMK的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type UpdateAliasRequest struct {
 	*tchttp.BaseRequest
 	
 	// 新的别名，1-60个字符或数字的组合
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
 	// CMK的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *UpdateAliasRequest) ToJsonString() string {
@@ -3523,7 +3523,7 @@ func (r *UpdateAliasRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateAliasResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateAliasResponse struct {
@@ -3545,20 +3545,20 @@ func (r *UpdateAliasResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateKeyDescriptionRequestParams struct {
 	// 新的描述信息，最大支持1024字节
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 需要修改描述信息的CMK ID
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 type UpdateKeyDescriptionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 新的描述信息，最大支持1024字节
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 需要修改描述信息的CMK ID
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 }
 
 func (r *UpdateKeyDescriptionRequest) ToJsonString() string {
@@ -3584,7 +3584,7 @@ func (r *UpdateKeyDescriptionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateKeyDescriptionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateKeyDescriptionResponse struct {
@@ -3606,38 +3606,38 @@ func (r *UpdateKeyDescriptionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type VerifyByAsymmetricKeyRequestParams struct {
 	// 密钥的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 签名值，通过调用KMS签名接口生成
-	SignatureValue *string `json:"SignatureValue,omitempty" name:"SignatureValue"`
+	SignatureValue *string `json:"SignatureValue,omitnil" name:"SignatureValue"`
 
 	// 消息原文或消息摘要。如果提供的是消息原文，则消息原文的长度（Base64编码前的长度）不超过4096字节。如果提供的是消息摘要，则消息摘要长度（Base64编码前的长度）必须等于32字节
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 
 	// 签名算法，支持的算法：SM2DSA，ECC_P256_R1，RSA_PSS_SHA_256，RSA_PKCS1_SHA_256 等。更多支持的算法可通过 ListAlgorithms 接口进行查询。
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// 消息类型：RAW，DIGEST，如果不传，默认为RAW，表示消息原文。
-	MessageType *string `json:"MessageType,omitempty" name:"MessageType"`
+	MessageType *string `json:"MessageType,omitnil" name:"MessageType"`
 }
 
 type VerifyByAsymmetricKeyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 密钥的唯一标识
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 签名值，通过调用KMS签名接口生成
-	SignatureValue *string `json:"SignatureValue,omitempty" name:"SignatureValue"`
+	SignatureValue *string `json:"SignatureValue,omitnil" name:"SignatureValue"`
 
 	// 消息原文或消息摘要。如果提供的是消息原文，则消息原文的长度（Base64编码前的长度）不超过4096字节。如果提供的是消息摘要，则消息摘要长度（Base64编码前的长度）必须等于32字节
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 
 	// 签名算法，支持的算法：SM2DSA，ECC_P256_R1，RSA_PSS_SHA_256，RSA_PKCS1_SHA_256 等。更多支持的算法可通过 ListAlgorithms 接口进行查询。
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// 消息类型：RAW，DIGEST，如果不传，默认为RAW，表示消息原文。
-	MessageType *string `json:"MessageType,omitempty" name:"MessageType"`
+	MessageType *string `json:"MessageType,omitnil" name:"MessageType"`
 }
 
 func (r *VerifyByAsymmetricKeyRequest) ToJsonString() string {
@@ -3666,10 +3666,10 @@ func (r *VerifyByAsymmetricKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type VerifyByAsymmetricKeyResponseParams struct {
 	// 签名是否有效。true：签名有效，false：签名无效。
-	SignatureValid *bool `json:"SignatureValid,omitempty" name:"SignatureValid"`
+	SignatureValid *bool `json:"SignatureValid,omitnil" name:"SignatureValid"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type VerifyByAsymmetricKeyResponse struct {
@@ -3690,39 +3690,39 @@ func (r *VerifyByAsymmetricKeyResponse) FromJsonString(s string) error {
 
 type WhiteboxKeyInfo struct {
 	// 白盒密钥的全局唯一标识符
-	KeyId *string `json:"KeyId,omitempty" name:"KeyId"`
+	KeyId *string `json:"KeyId,omitnil" name:"KeyId"`
 
 	// 作为密钥更容易辨识，更容易被人看懂的别名， 不可为空，1-60个字母数字 - _ 的组合，首字符必须为字母或者数字. 不可重复
-	Alias *string `json:"Alias,omitempty" name:"Alias"`
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
 	// 创建者
-	CreatorUin *uint64 `json:"CreatorUin,omitempty" name:"CreatorUin"`
+	CreatorUin *uint64 `json:"CreatorUin,omitnil" name:"CreatorUin"`
 
 	// 密钥的描述信息
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 密钥创建时间，Unix时间戳
-	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *uint64 `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 白盒密钥的状态， 取值为：Enabled | Disabled
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 创建者
-	OwnerUin *uint64 `json:"OwnerUin,omitempty" name:"OwnerUin"`
+	OwnerUin *uint64 `json:"OwnerUin,omitnil" name:"OwnerUin"`
 
 	// 密钥所用的算法类型
-	Algorithm *string `json:"Algorithm,omitempty" name:"Algorithm"`
+	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// 白盒加密密钥，base64编码
-	EncryptKey *string `json:"EncryptKey,omitempty" name:"EncryptKey"`
+	EncryptKey *string `json:"EncryptKey,omitnil" name:"EncryptKey"`
 
 	// 白盒解密密钥，base64编码
-	DecryptKey *string `json:"DecryptKey,omitempty" name:"DecryptKey"`
+	DecryptKey *string `json:"DecryptKey,omitnil" name:"DecryptKey"`
 
 	// 资源ID，格式：creatorUin/$creatorUin/$keyId
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 是否有设备指纹与当前密钥绑定
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeviceFingerprintBind *bool `json:"DeviceFingerprintBind,omitempty" name:"DeviceFingerprintBind"`
+	DeviceFingerprintBind *bool `json:"DeviceFingerprintBind,omitnil" name:"DeviceFingerprintBind"`
 }

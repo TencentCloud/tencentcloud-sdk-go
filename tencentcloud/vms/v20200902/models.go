@@ -15,48 +15,48 @@
 package v20200902
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type SendCodeVoiceRequestParams struct {
 	// 验证码，仅支持填写数字，实际播报语音时，会自动在数字前补充语音文本"您的验证码是"。
-	CodeMessage *string `json:"CodeMessage,omitempty" name:"CodeMessage"`
+	CodeMessage *string `json:"CodeMessage,omitnil" name:"CodeMessage"`
 
 	// 被叫手机号码，采用 e.164 标准，格式为+[国家或地区码][用户号码]。
 	// 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
-	CalledNumber *string `json:"CalledNumber,omitempty" name:"CalledNumber"`
+	CalledNumber *string `json:"CalledNumber,omitnil" name:"CalledNumber"`
 
 	// 在[语音控制台](https://console.cloud.tencent.com/vms)添加应用后生成的实际SdkAppid，示例如1400006666。
-	VoiceSdkAppid *string `json:"VoiceSdkAppid,omitempty" name:"VoiceSdkAppid"`
+	VoiceSdkAppid *string `json:"VoiceSdkAppid,omitnil" name:"VoiceSdkAppid"`
 
 	// 播放次数，可选，最多3次，默认2次。
-	PlayTimes *uint64 `json:"PlayTimes,omitempty" name:"PlayTimes"`
+	PlayTimes *uint64 `json:"PlayTimes,omitnil" name:"PlayTimes"`
 
 	// 用户的 session 内容，腾讯 server 回包中会原样返回。
-	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+	SessionContext *string `json:"SessionContext,omitnil" name:"SessionContext"`
 }
 
 type SendCodeVoiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 验证码，仅支持填写数字，实际播报语音时，会自动在数字前补充语音文本"您的验证码是"。
-	CodeMessage *string `json:"CodeMessage,omitempty" name:"CodeMessage"`
+	CodeMessage *string `json:"CodeMessage,omitnil" name:"CodeMessage"`
 
 	// 被叫手机号码，采用 e.164 标准，格式为+[国家或地区码][用户号码]。
 	// 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
-	CalledNumber *string `json:"CalledNumber,omitempty" name:"CalledNumber"`
+	CalledNumber *string `json:"CalledNumber,omitnil" name:"CalledNumber"`
 
 	// 在[语音控制台](https://console.cloud.tencent.com/vms)添加应用后生成的实际SdkAppid，示例如1400006666。
-	VoiceSdkAppid *string `json:"VoiceSdkAppid,omitempty" name:"VoiceSdkAppid"`
+	VoiceSdkAppid *string `json:"VoiceSdkAppid,omitnil" name:"VoiceSdkAppid"`
 
 	// 播放次数，可选，最多3次，默认2次。
-	PlayTimes *uint64 `json:"PlayTimes,omitempty" name:"PlayTimes"`
+	PlayTimes *uint64 `json:"PlayTimes,omitnil" name:"PlayTimes"`
 
 	// 用户的 session 内容，腾讯 server 回包中会原样返回。
-	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+	SessionContext *string `json:"SessionContext,omitnil" name:"SessionContext"`
 }
 
 func (r *SendCodeVoiceRequest) ToJsonString() string {
@@ -85,10 +85,10 @@ func (r *SendCodeVoiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SendCodeVoiceResponseParams struct {
 	// 语音验证码发送状态。
-	SendStatus *SendStatus `json:"SendStatus,omitempty" name:"SendStatus"`
+	SendStatus *SendStatus `json:"SendStatus,omitnil" name:"SendStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SendCodeVoiceResponse struct {
@@ -109,58 +109,58 @@ func (r *SendCodeVoiceResponse) FromJsonString(s string) error {
 
 type SendStatus struct {
 	// 标识本次发送 ID，标识一次下发记录。
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 用户的 session 内容，腾讯 server 回包中会原样返回。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+	SessionContext *string `json:"SessionContext,omitnil" name:"SessionContext"`
 }
 
 // Predefined struct for user
 type SendTtsVoiceRequestParams struct {
 	// 模板 ID，在控制台审核通过的模板 ID。
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 被叫手机号码，采用 e.164 标准，格式为+[国家或地区码][用户号码]。
 	// 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
-	CalledNumber *string `json:"CalledNumber,omitempty" name:"CalledNumber"`
+	CalledNumber *string `json:"CalledNumber,omitnil" name:"CalledNumber"`
 
 	// 在[语音控制台](https://console.cloud.tencent.com/vms)添加应用后生成的实际SdkAppid，示例如1400006666。
-	VoiceSdkAppid *string `json:"VoiceSdkAppid,omitempty" name:"VoiceSdkAppid"`
+	VoiceSdkAppid *string `json:"VoiceSdkAppid,omitnil" name:"VoiceSdkAppid"`
 
 	// 模板参数，若模板没有参数，请提供为空数组。
 	// 注：语音消息的内容长度不超过350字。
-	TemplateParamSet []*string `json:"TemplateParamSet,omitempty" name:"TemplateParamSet"`
+	TemplateParamSet []*string `json:"TemplateParamSet,omitnil" name:"TemplateParamSet"`
 
 	// 播放次数，可选，最多3次，默认2次。
-	PlayTimes *uint64 `json:"PlayTimes,omitempty" name:"PlayTimes"`
+	PlayTimes *uint64 `json:"PlayTimes,omitnil" name:"PlayTimes"`
 
 	// 用户的 session 内容，腾讯 server 回包中会原样返回。
-	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+	SessionContext *string `json:"SessionContext,omitnil" name:"SessionContext"`
 }
 
 type SendTtsVoiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模板 ID，在控制台审核通过的模板 ID。
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 被叫手机号码，采用 e.164 标准，格式为+[国家或地区码][用户号码]。
 	// 例如：+8613711112222， 其中前面有一个+号 ，86为国家码，13711112222为手机号。
-	CalledNumber *string `json:"CalledNumber,omitempty" name:"CalledNumber"`
+	CalledNumber *string `json:"CalledNumber,omitnil" name:"CalledNumber"`
 
 	// 在[语音控制台](https://console.cloud.tencent.com/vms)添加应用后生成的实际SdkAppid，示例如1400006666。
-	VoiceSdkAppid *string `json:"VoiceSdkAppid,omitempty" name:"VoiceSdkAppid"`
+	VoiceSdkAppid *string `json:"VoiceSdkAppid,omitnil" name:"VoiceSdkAppid"`
 
 	// 模板参数，若模板没有参数，请提供为空数组。
 	// 注：语音消息的内容长度不超过350字。
-	TemplateParamSet []*string `json:"TemplateParamSet,omitempty" name:"TemplateParamSet"`
+	TemplateParamSet []*string `json:"TemplateParamSet,omitnil" name:"TemplateParamSet"`
 
 	// 播放次数，可选，最多3次，默认2次。
-	PlayTimes *uint64 `json:"PlayTimes,omitempty" name:"PlayTimes"`
+	PlayTimes *uint64 `json:"PlayTimes,omitnil" name:"PlayTimes"`
 
 	// 用户的 session 内容，腾讯 server 回包中会原样返回。
-	SessionContext *string `json:"SessionContext,omitempty" name:"SessionContext"`
+	SessionContext *string `json:"SessionContext,omitnil" name:"SessionContext"`
 }
 
 func (r *SendTtsVoiceRequest) ToJsonString() string {
@@ -190,10 +190,10 @@ func (r *SendTtsVoiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SendTtsVoiceResponseParams struct {
 	// 语音通知发送状态。
-	SendStatus *SendStatus `json:"SendStatus,omitempty" name:"SendStatus"`
+	SendStatus *SendStatus `json:"SendStatus,omitnil" name:"SendStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SendTtsVoiceResponse struct {

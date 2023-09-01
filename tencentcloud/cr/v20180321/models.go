@@ -15,34 +15,34 @@
 package v20180321
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type ApplyBlackListDataRequestParams struct {
 	// 模块名，AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，ApplyBlackListData
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 黑名单列表
-	BlackList []*BlackListData `json:"BlackList,omitempty" name:"BlackList"`
+	BlackList []*BlackListData `json:"BlackList,omitnil" name:"BlackList"`
 }
 
 type ApplyBlackListDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，ApplyBlackListData
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 黑名单列表
-	BlackList []*BlackListData `json:"BlackList,omitempty" name:"BlackList"`
+	BlackList []*BlackListData `json:"BlackList,omitnil" name:"BlackList"`
 }
 
 func (r *ApplyBlackListDataRequest) ToJsonString() string {
@@ -69,7 +69,7 @@ func (r *ApplyBlackListDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ApplyBlackListDataResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ApplyBlackListDataResponse struct {
@@ -91,32 +91,32 @@ func (r *ApplyBlackListDataResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ApplyBlackListRequestParams struct {
 	// 模块名，本接口取值：account
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：ApplyBlackList
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 黑名单列表
-	BlackList []*SingleBlackApply `json:"BlackList,omitempty" name:"BlackList"`
+	BlackList []*SingleBlackApply `json:"BlackList,omitnil" name:"BlackList"`
 
 	// 实例ID，不传默认为系统分配的初始实例
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 type ApplyBlackListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，本接口取值：account
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：ApplyBlackList
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 黑名单列表
-	BlackList []*SingleBlackApply `json:"BlackList,omitempty" name:"BlackList"`
+	BlackList []*SingleBlackApply `json:"BlackList,omitnil" name:"BlackList"`
 
 	// 实例ID，不传默认为系统分配的初始实例
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 func (r *ApplyBlackListRequest) ToJsonString() string {
@@ -144,7 +144,7 @@ func (r *ApplyBlackListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ApplyBlackListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ApplyBlackListResponse struct {
@@ -166,50 +166,50 @@ func (r *ApplyBlackListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ApplyCreditAuditRequestParams struct {
 	// 模块名，本接口取值：Credit
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：Apply
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 实例ID
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 
 	// 产品ID，形如P******。
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 信审任务ID，同一天内，同一InstId下，同一CaseId只能调用一次。
-	CaseId *string `json:"CaseId,omitempty" name:"CaseId"`
+	CaseId *string `json:"CaseId,omitnil" name:"CaseId"`
 
 	// 回调地址
-	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
 	// JSON格式的业务字段。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 }
 
 type ApplyCreditAuditRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，本接口取值：Credit
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：Apply
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 实例ID
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 
 	// 产品ID，形如P******。
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 信审任务ID，同一天内，同一InstId下，同一CaseId只能调用一次。
-	CaseId *string `json:"CaseId,omitempty" name:"CaseId"`
+	CaseId *string `json:"CaseId,omitnil" name:"CaseId"`
 
 	// 回调地址
-	CallbackUrl *string `json:"CallbackUrl,omitempty" name:"CallbackUrl"`
+	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
 	// JSON格式的业务字段。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 }
 
 func (r *ApplyCreditAuditRequest) ToJsonString() string {
@@ -240,10 +240,10 @@ func (r *ApplyCreditAuditRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ApplyCreditAuditResponseParams struct {
 	// 请求日期
-	RequestDate *string `json:"RequestDate,omitempty" name:"RequestDate"`
+	RequestDate *string `json:"RequestDate,omitnil" name:"RequestDate"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ApplyCreditAuditResponse struct {
@@ -264,162 +264,162 @@ func (r *ApplyCreditAuditResponse) FromJsonString(s string) error {
 
 type BlackListData struct {
 	// 黑名单类型，01代表手机号码。
-	BlackType *string `json:"BlackType,omitempty" name:"BlackType"`
+	BlackType *string `json:"BlackType,omitnil" name:"BlackType"`
 
 	// 操作类型，A为新增，D为删除。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperType *string `json:"OperType,omitempty" name:"OperType"`
+	OperType *string `json:"OperType,omitnil" name:"OperType"`
 
 	// 黑名单值，BlackType为01时，填写11位手机号码。
-	BlackValue *string `json:"BlackValue,omitempty" name:"BlackValue"`
+	BlackValue *string `json:"BlackValue,omitnil" name:"BlackValue"`
 
 	// 备注。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BlackDescription *string `json:"BlackDescription,omitempty" name:"BlackDescription"`
+	BlackDescription *string `json:"BlackDescription,omitnil" name:"BlackDescription"`
 
 	// 黑名单生效截止日期，格式为YYYY-MM-DD，不填默认为永久。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BlackValidDate *string `json:"BlackValidDate,omitempty" name:"BlackValidDate"`
+	BlackValidDate *string `json:"BlackValidDate,omitnil" name:"BlackValidDate"`
 
 	// 黑名单加入日期
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BlackAddDate *string `json:"BlackAddDate,omitempty" name:"BlackAddDate"`
+	BlackAddDate *string `json:"BlackAddDate,omitnil" name:"BlackAddDate"`
 
 	// 0-生效 1-失效
-	BlackStatus *string `json:"BlackStatus,omitempty" name:"BlackStatus"`
+	BlackStatus *string `json:"BlackStatus,omitnil" name:"BlackStatus"`
 }
 
 type BotFileData struct {
 	// 文件类型 A 拨打结果 T 记录详情
-	FileType *string `json:"FileType,omitempty" name:"FileType"`
+	FileType *string `json:"FileType,omitnil" name:"FileType"`
 
 	// 文件地址
-	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+	CosUrl *string `json:"CosUrl,omitnil" name:"CosUrl"`
 }
 
 type BotFlow struct {
 	// 对话流ID
-	BotFlowId *string `json:"BotFlowId,omitempty" name:"BotFlowId"`
+	BotFlowId *string `json:"BotFlowId,omitnil" name:"BotFlowId"`
 
 	// 对话流名称
-	BotFlowName *string `json:"BotFlowName,omitempty" name:"BotFlowName"`
+	BotFlowName *string `json:"BotFlowName,omitnil" name:"BotFlowName"`
 
 	// 号码组信息列表
-	PhonePoolList []*PhonePool `json:"PhonePoolList,omitempty" name:"PhonePoolList"`
+	PhonePoolList []*PhonePool `json:"PhonePoolList,omitnil" name:"PhonePoolList"`
 }
 
 type BotInfo struct {
 	// 机器人ID
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 机器人名称
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 
 	// 机器人状态。0-停用 1-启用 2-待审核
-	BotStatus *string `json:"BotStatus,omitempty" name:"BotStatus"`
+	BotStatus *string `json:"BotStatus,omitnil" name:"BotStatus"`
 }
 
 type CallInfo struct {
 	// 业务日期
-	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitnil" name:"BizDate"`
 
 	// 状态 WAIT：待执行；DOING：执行中；ERROR：执行错误；DONE：已完成；
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 成功总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 文件名称
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 文件类型 I：呼叫文件 R：停拨文件
-	FileType *string `json:"FileType,omitempty" name:"FileType"`
+	FileType *string `json:"FileType,omitnil" name:"FileType"`
 
 	// 作业唯一标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 }
 
 type CallTimeDict struct {
 	// 周一
-	Monday *CallTimeInfo `json:"Monday,omitempty" name:"Monday"`
+	Monday *CallTimeInfo `json:"Monday,omitnil" name:"Monday"`
 
 	// 周二
-	Tuesday *CallTimeInfo `json:"Tuesday,omitempty" name:"Tuesday"`
+	Tuesday *CallTimeInfo `json:"Tuesday,omitnil" name:"Tuesday"`
 
 	// 周三
-	Wednesday *CallTimeInfo `json:"Wednesday,omitempty" name:"Wednesday"`
+	Wednesday *CallTimeInfo `json:"Wednesday,omitnil" name:"Wednesday"`
 
 	// 周四
-	Thursday *CallTimeInfo `json:"Thursday,omitempty" name:"Thursday"`
+	Thursday *CallTimeInfo `json:"Thursday,omitnil" name:"Thursday"`
 
 	// 周五
-	Friday *CallTimeInfo `json:"Friday,omitempty" name:"Friday"`
+	Friday *CallTimeInfo `json:"Friday,omitnil" name:"Friday"`
 
 	// 周六
-	Saturday *CallTimeInfo `json:"Saturday,omitempty" name:"Saturday"`
+	Saturday *CallTimeInfo `json:"Saturday,omitnil" name:"Saturday"`
 
 	// 周日
-	Sunday *CallTimeInfo `json:"Sunday,omitempty" name:"Sunday"`
+	Sunday *CallTimeInfo `json:"Sunday,omitnil" name:"Sunday"`
 }
 
 type CallTimeInfo struct {
 	// 产品开始拨打时间，HHmmss格式,默认090000
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 产品结束拨打时间，HHmmss格式.默认200000
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 // Predefined struct for user
 type ChangeBotCallStatusRequestParams struct {
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：ChangeBotCallStatus
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 作业变更状态
 	// SUSPEND：暂停；EXECUTE：恢复；
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 作业唯一标识
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 业务日期
-	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitnil" name:"BizDate"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 }
 
 type ChangeBotCallStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：ChangeBotCallStatus
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 作业变更状态
 	// SUSPEND：暂停；EXECUTE：恢复；
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 作业唯一标识
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 业务日期
-	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitnil" name:"BizDate"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 }
 
 func (r *ChangeBotCallStatusRequest) ToJsonString() string {
@@ -450,7 +450,7 @@ func (r *ChangeBotCallStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChangeBotCallStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ChangeBotCallStatusResponse struct {
@@ -472,40 +472,40 @@ func (r *ChangeBotCallStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ChangeBotTaskStatusRequestParams struct {
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：ChangeBotTaskStatus
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 作业变更状态
 	// SUSPEND：暂停；EXECUTE：恢复；
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 }
 
 type ChangeBotTaskStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：ChangeBotTaskStatus
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 作业变更状态
 	// SUSPEND：暂停；EXECUTE：恢复；
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 }
 
 func (r *ChangeBotTaskStatusRequest) ToJsonString() string {
@@ -534,7 +534,7 @@ func (r *ChangeBotTaskStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ChangeBotTaskStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ChangeBotTaskStatusResponse struct {
@@ -556,116 +556,116 @@ func (r *ChangeBotTaskStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBotTaskRequestParams struct {
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：CreateTask
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 任务名称
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 
 	// 对话流ID
-	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 是否禁止拨打，默认Y
-	BanCall *string `json:"BanCall,omitempty" name:"BanCall"`
+	BanCall *string `json:"BanCall,omitnil" name:"BanCall"`
 
 	// 拨打线路集合
-	PhoneCollection *string `json:"PhoneCollection,omitempty" name:"PhoneCollection"`
+	PhoneCollection *string `json:"PhoneCollection,omitnil" name:"PhoneCollection"`
 
 	// 产品拨打时间集合
-	CallTimeCollection *CallTimeDict `json:"CallTimeCollection,omitempty" name:"CallTimeCollection"`
+	CallTimeCollection *CallTimeDict `json:"CallTimeCollection,omitnil" name:"CallTimeCollection"`
 
 	// 禁止拨打起始时间。默认130000
-	StartTimeBan *string `json:"StartTimeBan,omitempty" name:"StartTimeBan"`
+	StartTimeBan *string `json:"StartTimeBan,omitnil" name:"StartTimeBan"`
 
 	// 禁止拨打结束时间。默认140000
-	EndTimeBan *string `json:"EndTimeBan,omitempty" name:"EndTimeBan"`
+	EndTimeBan *string `json:"EndTimeBan,omitnil" name:"EndTimeBan"`
 
 	// 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL
-	CodeType *string `json:"CodeType,omitempty" name:"CodeType"`
+	CodeType *string `json:"CodeType,omitnil" name:"CodeType"`
 
 	// 重播值集合，A：强意向、B：中意向、C：低意向、D：无意向、E：在忙、F：未接通、G：无效号码，可多选，用竖线分隔：A|B|C|D|E|F|G
-	CodeCollection *string `json:"CodeCollection,omitempty" name:"CodeCollection"`
+	CodeCollection *string `json:"CodeCollection,omitnil" name:"CodeCollection"`
 
 	// 继续拨打次数
-	CallCount *int64 `json:"CallCount,omitempty" name:"CallCount"`
+	CallCount *int64 `json:"CallCount,omitnil" name:"CallCount"`
 
 	// 拨打间隔
-	CallInterval *int64 `json:"CallInterval,omitempty" name:"CallInterval"`
+	CallInterval *int64 `json:"CallInterval,omitnil" name:"CallInterval"`
 
 	// 未接通引用短信签名ID
-	SmsSignId *string `json:"SmsSignId,omitempty" name:"SmsSignId"`
+	SmsSignId *string `json:"SmsSignId,omitnil" name:"SmsSignId"`
 
 	// 未接通引用短信模板ID
-	SmsTemplateId *string `json:"SmsTemplateId,omitempty" name:"SmsTemplateId"`
+	SmsTemplateId *string `json:"SmsTemplateId,omitnil" name:"SmsTemplateId"`
 
 	// 拨打方式。NORMAL - 正常拨打；TIMER - 定时拨打
-	CallType *string `json:"CallType,omitempty" name:"CallType"`
+	CallType *string `json:"CallType,omitnil" name:"CallType"`
 
 	// 拨打开始日期。CallType=TIMER时有值，yyyy-MM-dd
-	CallStartDate *string `json:"CallStartDate,omitempty" name:"CallStartDate"`
+	CallStartDate *string `json:"CallStartDate,omitnil" name:"CallStartDate"`
 
 	// 拨打结束日期。CallType=PERIOD 时有值，yyyy-MM-dd
-	CallEndDate *string `json:"CallEndDate,omitempty" name:"CallEndDate"`
+	CallEndDate *string `json:"CallEndDate,omitnil" name:"CallEndDate"`
 }
 
 type CreateBotTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：CreateTask
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 任务名称
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 
 	// 对话流ID
-	FlowId *string `json:"FlowId,omitempty" name:"FlowId"`
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
 	// 是否禁止拨打，默认Y
-	BanCall *string `json:"BanCall,omitempty" name:"BanCall"`
+	BanCall *string `json:"BanCall,omitnil" name:"BanCall"`
 
 	// 拨打线路集合
-	PhoneCollection *string `json:"PhoneCollection,omitempty" name:"PhoneCollection"`
+	PhoneCollection *string `json:"PhoneCollection,omitnil" name:"PhoneCollection"`
 
 	// 产品拨打时间集合
-	CallTimeCollection *CallTimeDict `json:"CallTimeCollection,omitempty" name:"CallTimeCollection"`
+	CallTimeCollection *CallTimeDict `json:"CallTimeCollection,omitnil" name:"CallTimeCollection"`
 
 	// 禁止拨打起始时间。默认130000
-	StartTimeBan *string `json:"StartTimeBan,omitempty" name:"StartTimeBan"`
+	StartTimeBan *string `json:"StartTimeBan,omitnil" name:"StartTimeBan"`
 
 	// 禁止拨打结束时间。默认140000
-	EndTimeBan *string `json:"EndTimeBan,omitempty" name:"EndTimeBan"`
+	EndTimeBan *string `json:"EndTimeBan,omitnil" name:"EndTimeBan"`
 
 	// 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL
-	CodeType *string `json:"CodeType,omitempty" name:"CodeType"`
+	CodeType *string `json:"CodeType,omitnil" name:"CodeType"`
 
 	// 重播值集合，A：强意向、B：中意向、C：低意向、D：无意向、E：在忙、F：未接通、G：无效号码，可多选，用竖线分隔：A|B|C|D|E|F|G
-	CodeCollection *string `json:"CodeCollection,omitempty" name:"CodeCollection"`
+	CodeCollection *string `json:"CodeCollection,omitnil" name:"CodeCollection"`
 
 	// 继续拨打次数
-	CallCount *int64 `json:"CallCount,omitempty" name:"CallCount"`
+	CallCount *int64 `json:"CallCount,omitnil" name:"CallCount"`
 
 	// 拨打间隔
-	CallInterval *int64 `json:"CallInterval,omitempty" name:"CallInterval"`
+	CallInterval *int64 `json:"CallInterval,omitnil" name:"CallInterval"`
 
 	// 未接通引用短信签名ID
-	SmsSignId *string `json:"SmsSignId,omitempty" name:"SmsSignId"`
+	SmsSignId *string `json:"SmsSignId,omitnil" name:"SmsSignId"`
 
 	// 未接通引用短信模板ID
-	SmsTemplateId *string `json:"SmsTemplateId,omitempty" name:"SmsTemplateId"`
+	SmsTemplateId *string `json:"SmsTemplateId,omitnil" name:"SmsTemplateId"`
 
 	// 拨打方式。NORMAL - 正常拨打；TIMER - 定时拨打
-	CallType *string `json:"CallType,omitempty" name:"CallType"`
+	CallType *string `json:"CallType,omitnil" name:"CallType"`
 
 	// 拨打开始日期。CallType=TIMER时有值，yyyy-MM-dd
-	CallStartDate *string `json:"CallStartDate,omitempty" name:"CallStartDate"`
+	CallStartDate *string `json:"CallStartDate,omitnil" name:"CallStartDate"`
 
 	// 拨打结束日期。CallType=PERIOD 时有值，yyyy-MM-dd
-	CallEndDate *string `json:"CallEndDate,omitempty" name:"CallEndDate"`
+	CallEndDate *string `json:"CallEndDate,omitnil" name:"CallEndDate"`
 }
 
 func (r *CreateBotTaskRequest) ToJsonString() string {
@@ -707,10 +707,10 @@ func (r *CreateBotTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBotTaskResponseParams struct {
 	// 机器人任务Id
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateBotTaskResponse struct {
@@ -732,20 +732,20 @@ func (r *CreateBotTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBotFlowRequestParams struct {
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：GetFlow
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 }
 
 type DescribeBotFlowRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：GetFlow
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 }
 
 func (r *DescribeBotFlowRequest) ToJsonString() string {
@@ -772,18 +772,18 @@ func (r *DescribeBotFlowRequest) FromJsonString(s string) error {
 type DescribeBotFlowResponseParams struct {
 	// 机器人对话流列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BotFlowList []*BotFlow `json:"BotFlowList,omitempty" name:"BotFlowList"`
+	BotFlowList []*BotFlow `json:"BotFlowList,omitnil" name:"BotFlowList"`
 
 	// 短信签名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SmsSignList []*SmsSign `json:"SmsSignList,omitempty" name:"SmsSignList"`
+	SmsSignList []*SmsSign `json:"SmsSignList,omitnil" name:"SmsSignList"`
 
 	// 短信模板列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SmsTemplateList []*SmsTemplate `json:"SmsTemplateList,omitempty" name:"SmsTemplateList"`
+	SmsTemplateList []*SmsTemplate `json:"SmsTemplateList,omitnil" name:"SmsTemplateList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeBotFlowResponse struct {
@@ -805,44 +805,44 @@ func (r *DescribeBotFlowResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCreditResultRequestParams struct {
 	// 模块名，本接口取值：Credit
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：Get
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 实例ID
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 
 	// 产品ID，形如P******。
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 信审任务ID
-	CaseId *string `json:"CaseId,omitempty" name:"CaseId"`
+	CaseId *string `json:"CaseId,omitnil" name:"CaseId"`
 
 	// 请求日期，格式为YYYY-MM-DD
-	RequestDate *string `json:"RequestDate,omitempty" name:"RequestDate"`
+	RequestDate *string `json:"RequestDate,omitnil" name:"RequestDate"`
 }
 
 type DescribeCreditResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，本接口取值：Credit
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：Get
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 实例ID
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 
 	// 产品ID，形如P******。
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 信审任务ID
-	CaseId *string `json:"CaseId,omitempty" name:"CaseId"`
+	CaseId *string `json:"CaseId,omitnil" name:"CaseId"`
 
 	// 请求日期，格式为YYYY-MM-DD
-	RequestDate *string `json:"RequestDate,omitempty" name:"RequestDate"`
+	RequestDate *string `json:"RequestDate,omitnil" name:"RequestDate"`
 }
 
 func (r *DescribeCreditResultRequest) ToJsonString() string {
@@ -872,28 +872,28 @@ func (r *DescribeCreditResultRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCreditResultResponseParams struct {
 	// <p>呼叫结果，取值范围：</p><ul style="margin-bottom:0px;"><li>NON：接通</li><li>DBU：号码忙</li><li>DRF：不在服务区</li><li>ANA：欠费未接听</li><li>REJ：拒接</li><li>SHU：关机</li><li>NAN：空号</li><li>HAL：停机</li><li>DAD：未接听</li><li>EXE：其他异常</li></ul>
-	ResultCode *string `json:"ResultCode,omitempty" name:"ResultCode"`
+	ResultCode *string `json:"ResultCode,omitnil" name:"ResultCode"`
 
 	// 客户标识代码，多个标识码以英文逗号分隔，ResultCode为NON时才有。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClientCode *string `json:"ClientCode,omitempty" name:"ClientCode"`
+	ClientCode *string `json:"ClientCode,omitnil" name:"ClientCode"`
 
 	// 开始振铃时间，ResultCode为NON或DAD时才有此字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RingStartTime *string `json:"RingStartTime,omitempty" name:"RingStartTime"`
+	RingStartTime *string `json:"RingStartTime,omitnil" name:"RingStartTime"`
 
 	// 振铃时长
-	RingDuration *int64 `json:"RingDuration,omitempty" name:"RingDuration"`
+	RingDuration *int64 `json:"RingDuration,omitnil" name:"RingDuration"`
 
 	// 接通时长
-	AnswerDuration *int64 `json:"AnswerDuration,omitempty" name:"AnswerDuration"`
+	AnswerDuration *int64 `json:"AnswerDuration,omitnil" name:"AnswerDuration"`
 
 	// JSON格式的扩展信息字段，ResultCode为NON时才有。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContextValue *string `json:"ContextValue,omitempty" name:"ContextValue"`
+	ContextValue *string `json:"ContextValue,omitnil" name:"ContextValue"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCreditResultResponse struct {
@@ -915,38 +915,38 @@ func (r *DescribeCreditResultResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileModelRequestParams struct {
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：DescribeFileModel
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 模板文件类型，输入input，停拨stop
-	FileType *string `json:"FileType,omitempty" name:"FileType"`
+	FileType *string `json:"FileType,omitnil" name:"FileType"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 }
 
 type DescribeFileModelRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：DescribeFileModel
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 模板文件类型，输入input，停拨stop
-	FileType *string `json:"FileType,omitempty" name:"FileType"`
+	FileType *string `json:"FileType,omitnil" name:"FileType"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 }
 
 func (r *DescribeFileModelRequest) ToJsonString() string {
@@ -975,10 +975,10 @@ func (r *DescribeFileModelRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileModelResponseParams struct {
 	// 模板下载链接
-	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+	CosUrl *string `json:"CosUrl,omitnil" name:"CosUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeFileModelResponse struct {
@@ -1000,68 +1000,68 @@ func (r *DescribeFileModelResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRecordsRequestParams struct {
 	// 模块名，本接口取值：Record
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：List
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 案件编号
-	AccountNum *string `json:"AccountNum,omitempty" name:"AccountNum"`
+	AccountNum *string `json:"AccountNum,omitnil" name:"AccountNum"`
 
 	// 被叫号码
-	CalledPhone *string `json:"CalledPhone,omitempty" name:"CalledPhone"`
+	CalledPhone *string `json:"CalledPhone,omitnil" name:"CalledPhone"`
 
 	// 查询起始日期，格式为YYYY-MM-DD
-	StartBizDate *string `json:"StartBizDate,omitempty" name:"StartBizDate"`
+	StartBizDate *string `json:"StartBizDate,omitnil" name:"StartBizDate"`
 
 	// 查询结束日期，格式为YYYY-MM-DD
-	EndBizDate *string `json:"EndBizDate,omitempty" name:"EndBizDate"`
+	EndBizDate *string `json:"EndBizDate,omitnil" name:"EndBizDate"`
 
 	// 分页参数，索引，默认为0
-	Offset *string `json:"Offset,omitempty" name:"Offset"`
+	Offset *string `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页参数，页长，默认为20
-	Limit *string `json:"Limit,omitempty" name:"Limit"`
+	Limit *string `json:"Limit,omitnil" name:"Limit"`
 
 	// 实例ID，不传默认为系统分配的初始实例
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 type DescribeRecordsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，本接口取值：Record
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：List
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 案件编号
-	AccountNum *string `json:"AccountNum,omitempty" name:"AccountNum"`
+	AccountNum *string `json:"AccountNum,omitnil" name:"AccountNum"`
 
 	// 被叫号码
-	CalledPhone *string `json:"CalledPhone,omitempty" name:"CalledPhone"`
+	CalledPhone *string `json:"CalledPhone,omitnil" name:"CalledPhone"`
 
 	// 查询起始日期，格式为YYYY-MM-DD
-	StartBizDate *string `json:"StartBizDate,omitempty" name:"StartBizDate"`
+	StartBizDate *string `json:"StartBizDate,omitnil" name:"StartBizDate"`
 
 	// 查询结束日期，格式为YYYY-MM-DD
-	EndBizDate *string `json:"EndBizDate,omitempty" name:"EndBizDate"`
+	EndBizDate *string `json:"EndBizDate,omitnil" name:"EndBizDate"`
 
 	// 分页参数，索引，默认为0
-	Offset *string `json:"Offset,omitempty" name:"Offset"`
+	Offset *string `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页参数，页长，默认为20
-	Limit *string `json:"Limit,omitempty" name:"Limit"`
+	Limit *string `json:"Limit,omitnil" name:"Limit"`
 
 	// 实例ID，不传默认为系统分配的初始实例
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 func (r *DescribeRecordsRequest) ToJsonString() string {
@@ -1096,13 +1096,13 @@ func (r *DescribeRecordsRequest) FromJsonString(s string) error {
 type DescribeRecordsResponseParams struct {
 	// 录音列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecordList []*SingleRecord `json:"RecordList,omitempty" name:"RecordList"`
+	RecordList []*SingleRecord `json:"RecordList,omitnil" name:"RecordList"`
 
 	// 录音总量。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRecordsResponse struct {
@@ -1124,32 +1124,32 @@ func (r *DescribeRecordsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskStatusRequestParams struct {
 	// 模块名，本接口取值：Task
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：DescribeTaskStatus
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 任务ID，"上传文件"接口返回的DataResId，形如abc-xyz123
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 实例ID，不传默认为系统分配的初始实例。
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 type DescribeTaskStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，本接口取值：Task
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：DescribeTaskStatus
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 任务ID，"上传文件"接口返回的DataResId，形如abc-xyz123
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 实例ID，不传默认为系统分配的初始实例。
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 func (r *DescribeTaskStatusRequest) ToJsonString() string {
@@ -1177,17 +1177,17 @@ func (r *DescribeTaskStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTaskStatusResponseParams struct {
 	// <p>任务结果：</p><ul style="margin-bottom:0px;"><li>处理中："Uploading Data."</li><li>上传成功："File Uploading Task Success."</li><li>上传失败：具体失败原因</li></ul>
-	TaskResult *string `json:"TaskResult,omitempty" name:"TaskResult"`
+	TaskResult *string `json:"TaskResult,omitnil" name:"TaskResult"`
 
 	// <p>任务类型：</p><ul style="margin-bottom:0px;"><li>到期/逾期提醒数据上传：002</li><li>到期/逾期提醒停拨数据上传：003</li><li>回访数据上传：004</li><li>回访停拨数据上传：005</li></ul>
-	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+	TaskType *string `json:"TaskType,omitnil" name:"TaskType"`
 
 	// 过滤文件下载链接，有过滤数据时才存在。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskFileUrl *string `json:"TaskFileUrl,omitempty" name:"TaskFileUrl"`
+	TaskFileUrl *string `json:"TaskFileUrl,omitnil" name:"TaskFileUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTaskStatusResponse struct {
@@ -1209,26 +1209,26 @@ func (r *DescribeTaskStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DownloadBotRecordRequestParams struct {
 	// 模块：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作：DownloadRecord
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 业务日期
-	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitnil" name:"BizDate"`
 }
 
 type DownloadBotRecordRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作：DownloadRecord
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 业务日期
-	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitnil" name:"BizDate"`
 }
 
 func (r *DownloadBotRecordRequest) ToJsonString() string {
@@ -1255,13 +1255,13 @@ func (r *DownloadBotRecordRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DownloadBotRecordResponseParams struct {
 	// 录音地址。请求后30分钟内有效
-	RecordCosUrl *string `json:"RecordCosUrl,omitempty" name:"RecordCosUrl"`
+	RecordCosUrl *string `json:"RecordCosUrl,omitnil" name:"RecordCosUrl"`
 
 	// 文本地址。请求后30分钟内有效
-	TextCosUrl *string `json:"TextCosUrl,omitempty" name:"TextCosUrl"`
+	TextCosUrl *string `json:"TextCosUrl,omitnil" name:"TextCosUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DownloadBotRecordResponse struct {
@@ -1283,32 +1283,32 @@ func (r *DownloadBotRecordResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DownloadDialogueTextRequestParams struct {
 	// 模块名，本接口取值：Report
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：DownloadTextReport
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 报告日期，格式为YYYY-MM-DD
-	ReportDate *string `json:"ReportDate,omitempty" name:"ReportDate"`
+	ReportDate *string `json:"ReportDate,omitnil" name:"ReportDate"`
 
 	// 实例ID
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 type DownloadDialogueTextRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，本接口取值：Report
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：DownloadTextReport
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 报告日期，格式为YYYY-MM-DD
-	ReportDate *string `json:"ReportDate,omitempty" name:"ReportDate"`
+	ReportDate *string `json:"ReportDate,omitnil" name:"ReportDate"`
 
 	// 实例ID
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 func (r *DownloadDialogueTextRequest) ToJsonString() string {
@@ -1336,10 +1336,10 @@ func (r *DownloadDialogueTextRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DownloadDialogueTextResponseParams struct {
 	// 对话文本下载地址
-	TextReportUrl *string `json:"TextReportUrl,omitempty" name:"TextReportUrl"`
+	TextReportUrl *string `json:"TextReportUrl,omitnil" name:"TextReportUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DownloadDialogueTextResponse struct {
@@ -1361,32 +1361,32 @@ func (r *DownloadDialogueTextResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DownloadRecordListRequestParams struct {
 	// 模块名，本接口取值：Record
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：DownloadList
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 录音日期，格式为YYYY-MM-DD
-	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitnil" name:"BizDate"`
 
 	// 实例ID
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 type DownloadRecordListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，本接口取值：Record
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：DownloadList
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 录音日期，格式为YYYY-MM-DD
-	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitnil" name:"BizDate"`
 
 	// 实例ID
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 func (r *DownloadRecordListRequest) ToJsonString() string {
@@ -1414,10 +1414,10 @@ func (r *DownloadRecordListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DownloadRecordListResponseParams struct {
 	// 录音列表下载地址
-	RecordListUrl *string `json:"RecordListUrl,omitempty" name:"RecordListUrl"`
+	RecordListUrl *string `json:"RecordListUrl,omitnil" name:"RecordListUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DownloadRecordListResponse struct {
@@ -1439,32 +1439,32 @@ func (r *DownloadRecordListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DownloadReportRequestParams struct {
 	// 模块名，本接口取值：Report
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：DownloadReport
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 报告日期，格式为YYYY-MM-DD
-	ReportDate *string `json:"ReportDate,omitempty" name:"ReportDate"`
+	ReportDate *string `json:"ReportDate,omitnil" name:"ReportDate"`
 
 	// 实例ID，不传默认为系统分配的初始实例。
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 type DownloadReportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，本接口取值：Report
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：DownloadReport
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 报告日期，格式为YYYY-MM-DD
-	ReportDate *string `json:"ReportDate,omitempty" name:"ReportDate"`
+	ReportDate *string `json:"ReportDate,omitnil" name:"ReportDate"`
 
 	// 实例ID，不传默认为系统分配的初始实例。
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 func (r *DownloadReportRequest) ToJsonString() string {
@@ -1493,30 +1493,30 @@ func (r *DownloadReportRequest) FromJsonString(s string) error {
 type DownloadReportResponseParams struct {
 	// 到期/逾期提醒日报下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DailyReportUrl *string `json:"DailyReportUrl,omitempty" name:"DailyReportUrl"`
+	DailyReportUrl *string `json:"DailyReportUrl,omitnil" name:"DailyReportUrl"`
 
 	// 到期/逾期提醒结果下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResultReportUrl *string `json:"ResultReportUrl,omitempty" name:"ResultReportUrl"`
+	ResultReportUrl *string `json:"ResultReportUrl,omitnil" name:"ResultReportUrl"`
 
 	// 到期/逾期提醒明细下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DetailReportUrl *string `json:"DetailReportUrl,omitempty" name:"DetailReportUrl"`
+	DetailReportUrl *string `json:"DetailReportUrl,omitnil" name:"DetailReportUrl"`
 
 	// 回访日报下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CallbackDailyReportUrl *string `json:"CallbackDailyReportUrl,omitempty" name:"CallbackDailyReportUrl"`
+	CallbackDailyReportUrl *string `json:"CallbackDailyReportUrl,omitnil" name:"CallbackDailyReportUrl"`
 
 	// 回访结果下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CallbackResultReportUrl *string `json:"CallbackResultReportUrl,omitempty" name:"CallbackResultReportUrl"`
+	CallbackResultReportUrl *string `json:"CallbackResultReportUrl,omitnil" name:"CallbackResultReportUrl"`
 
 	// 回访明细下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CallbackDetailReportUrl *string `json:"CallbackDetailReportUrl,omitempty" name:"CallbackDetailReportUrl"`
+	CallbackDetailReportUrl *string `json:"CallbackDetailReportUrl,omitnil" name:"CallbackDetailReportUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DownloadReportResponse struct {
@@ -1538,38 +1538,38 @@ func (r *DownloadReportResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportBotDataRequestParams struct {
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：ExportBotData
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 业务日期。YYYY-MM-DD
-	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitnil" name:"BizDate"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 }
 
 type ExportBotDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：ExportBotData
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 业务日期。YYYY-MM-DD
-	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitnil" name:"BizDate"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 }
 
 func (r *ExportBotDataRequest) ToJsonString() string {
@@ -1598,10 +1598,10 @@ func (r *ExportBotDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExportBotDataResponseParams struct {
 	// 导出文件列表
-	Data []*BotFileData `json:"Data,omitempty" name:"Data"`
+	Data []*BotFileData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ExportBotDataResponse struct {
@@ -1622,79 +1622,79 @@ func (r *ExportBotDataResponse) FromJsonString(s string) error {
 
 type PhonePool struct {
 	// 号码组ID
-	PoolId *string `json:"PoolId,omitempty" name:"PoolId"`
+	PoolId *string `json:"PoolId,omitnil" name:"PoolId"`
 
 	// 号码组名称
-	PoolName *string `json:"PoolName,omitempty" name:"PoolName"`
+	PoolName *string `json:"PoolName,omitnil" name:"PoolName"`
 }
 
 type ProductQueryInfo struct {
 	// 产品Id
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 产品名称
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 
 	// 产品编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductCode *string `json:"ProductCode,omitempty" name:"ProductCode"`
+	ProductCode *string `json:"ProductCode,omitnil" name:"ProductCode"`
 
 	// 产品状态 0 禁用 1 启用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductStatus *int64 `json:"ProductStatus,omitempty" name:"ProductStatus"`
+	ProductStatus *int64 `json:"ProductStatus,omitnil" name:"ProductStatus"`
 
 	// 场景类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SceneType *string `json:"SceneType,omitempty" name:"SceneType"`
+	SceneType *string `json:"SceneType,omitnil" name:"SceneType"`
 }
 
 // Predefined struct for user
 type QueryBlackListDataRequestParams struct {
 	// 模块:AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作:QueryBlackListData
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 页码
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页数量
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 开始日期
-	StartBizDate *string `json:"StartBizDate,omitempty" name:"StartBizDate"`
+	StartBizDate *string `json:"StartBizDate,omitnil" name:"StartBizDate"`
 
 	// 结束日期
-	EndBizDate *string `json:"EndBizDate,omitempty" name:"EndBizDate"`
+	EndBizDate *string `json:"EndBizDate,omitnil" name:"EndBizDate"`
 
 	// 电话号码、手机
-	BlackValue *string `json:"BlackValue,omitempty" name:"BlackValue"`
+	BlackValue *string `json:"BlackValue,omitnil" name:"BlackValue"`
 }
 
 type QueryBlackListDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块:AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作:QueryBlackListData
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 页码
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页数量
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 开始日期
-	StartBizDate *string `json:"StartBizDate,omitempty" name:"StartBizDate"`
+	StartBizDate *string `json:"StartBizDate,omitnil" name:"StartBizDate"`
 
 	// 结束日期
-	EndBizDate *string `json:"EndBizDate,omitempty" name:"EndBizDate"`
+	EndBizDate *string `json:"EndBizDate,omitnil" name:"EndBizDate"`
 
 	// 电话号码、手机
-	BlackValue *string `json:"BlackValue,omitempty" name:"BlackValue"`
+	BlackValue *string `json:"BlackValue,omitnil" name:"BlackValue"`
 }
 
 func (r *QueryBlackListDataRequest) ToJsonString() string {
@@ -1725,14 +1725,14 @@ func (r *QueryBlackListDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryBlackListDataResponseParams struct {
 	// 总数。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 黑名单列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*BlackListData `json:"Data,omitempty" name:"Data"`
+	Data []*BlackListData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryBlackListDataResponse struct {
@@ -1754,20 +1754,20 @@ func (r *QueryBlackListDataResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryBotListRequestParams struct {
 	// 模块名：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名：QueryBotList
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 }
 
 type QueryBotListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名：QueryBotList
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 }
 
 func (r *QueryBotListRequest) ToJsonString() string {
@@ -1793,10 +1793,10 @@ func (r *QueryBotListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryBotListResponseParams struct {
 	// 任务列表。
-	BotList []*BotInfo `json:"BotList,omitempty" name:"BotList"`
+	BotList []*BotInfo `json:"BotList,omitnil" name:"BotList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryBotListResponse struct {
@@ -1818,44 +1818,44 @@ func (r *QueryBotListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryCallListRequestParams struct {
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：QueryCallList
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 业务日期
-	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitnil" name:"BizDate"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 
 	// 通过API或平台上传的文件完整名称
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 }
 
 type QueryCallListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：QueryCallList
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 业务日期
-	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitnil" name:"BizDate"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 
 	// 通过API或平台上传的文件完整名称
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 }
 
 func (r *QueryCallListRequest) ToJsonString() string {
@@ -1886,10 +1886,10 @@ func (r *QueryCallListRequest) FromJsonString(s string) error {
 type QueryCallListResponseParams struct {
 	// 任务作业状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CallList []*CallInfo `json:"CallList,omitempty" name:"CallList"`
+	CallList []*CallInfo `json:"CallList,omitnil" name:"CallList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryCallListResponse struct {
@@ -1911,44 +1911,44 @@ func (r *QueryCallListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryInstantDataRequestParams struct {
 	// 模块名，本接口取值：Data
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：Query
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 实例ID，不传默认为系统分配的初始实例
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 查询类型：callRecord 通话记录
-	QueryModel *string `json:"QueryModel,omitempty" name:"QueryModel"`
+	QueryModel *string `json:"QueryModel,omitnil" name:"QueryModel"`
 
 	// 查询参数
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 }
 
 type QueryInstantDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，本接口取值：Data
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：Query
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 实例ID，不传默认为系统分配的初始实例
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 查询类型：callRecord 通话记录
-	QueryModel *string `json:"QueryModel,omitempty" name:"QueryModel"`
+	QueryModel *string `json:"QueryModel,omitnil" name:"QueryModel"`
 
 	// 查询参数
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 }
 
 func (r *QueryInstantDataRequest) ToJsonString() string {
@@ -1979,14 +1979,14 @@ func (r *QueryInstantDataRequest) FromJsonString(s string) error {
 type QueryInstantDataResponseParams struct {
 	// 总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 返回内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryInstantDataResponse struct {
@@ -2008,26 +2008,26 @@ func (r *QueryInstantDataResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryProductsRequestParams struct {
 	// 模块名。默认值（固定）：Product
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：QueryProducts
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 实例Id。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type QueryProductsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名。默认值（固定）：Product
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：QueryProducts
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 实例Id。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *QueryProductsRequest) ToJsonString() string {
@@ -2054,10 +2054,10 @@ func (r *QueryProductsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryProductsResponseParams struct {
 	// 产品信息。
-	ProductList []*ProductQueryInfo `json:"ProductList,omitempty" name:"ProductList"`
+	ProductList []*ProductQueryInfo `json:"ProductList,omitnil" name:"ProductList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryProductsResponse struct {
@@ -2079,62 +2079,62 @@ func (r *QueryProductsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryRecordListRequestParams struct {
 	// 模块名。AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。QueryRecordList
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 偏移值
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 偏移位移，最大20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 
 	// 被叫号码
-	CalledPhone *string `json:"CalledPhone,omitempty" name:"CalledPhone"`
+	CalledPhone *string `json:"CalledPhone,omitnil" name:"CalledPhone"`
 
 	// 开始日期
-	StartBizDate *string `json:"StartBizDate,omitempty" name:"StartBizDate"`
+	StartBizDate *string `json:"StartBizDate,omitnil" name:"StartBizDate"`
 
 	// 结束日期
-	EndBizDate *string `json:"EndBizDate,omitempty" name:"EndBizDate"`
+	EndBizDate *string `json:"EndBizDate,omitnil" name:"EndBizDate"`
 }
 
 type QueryRecordListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名。AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。QueryRecordList
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 偏移值
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 偏移位移，最大20
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 
 	// 被叫号码
-	CalledPhone *string `json:"CalledPhone,omitempty" name:"CalledPhone"`
+	CalledPhone *string `json:"CalledPhone,omitnil" name:"CalledPhone"`
 
 	// 开始日期
-	StartBizDate *string `json:"StartBizDate,omitempty" name:"StartBizDate"`
+	StartBizDate *string `json:"StartBizDate,omitnil" name:"StartBizDate"`
 
 	// 结束日期
-	EndBizDate *string `json:"EndBizDate,omitempty" name:"EndBizDate"`
+	EndBizDate *string `json:"EndBizDate,omitnil" name:"EndBizDate"`
 }
 
 func (r *QueryRecordListRequest) ToJsonString() string {
@@ -2167,13 +2167,13 @@ func (r *QueryRecordListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryRecordListResponseParams struct {
 	// 录音列表。
-	RecordList []*RecordInfo `json:"RecordList,omitempty" name:"RecordList"`
+	RecordList []*RecordInfo `json:"RecordList,omitnil" name:"RecordList"`
 
 	// 总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryRecordListResponse struct {
@@ -2194,189 +2194,189 @@ func (r *QueryRecordListResponse) FromJsonString(s string) error {
 
 type RecordInfo struct {
 	// 任务Id
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 
 	// 任务日期
-	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitnil" name:"BizDate"`
 
 	// 被叫号码
-	CalledPhone *string `json:"CalledPhone,omitempty" name:"CalledPhone"`
+	CalledPhone *string `json:"CalledPhone,omitnil" name:"CalledPhone"`
 
 	// 开始通话时间
-	CallStartTime *string `json:"CallStartTime,omitempty" name:"CallStartTime"`
+	CallStartTime *string `json:"CallStartTime,omitnil" name:"CallStartTime"`
 
 	// 通话时长
-	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 录音文件地址
-	CosUrl *string `json:"CosUrl,omitempty" name:"CosUrl"`
+	CosUrl *string `json:"CosUrl,omitnil" name:"CosUrl"`
 
 	// 对话日志。JSON格式
-	DialogueLog *string `json:"DialogueLog,omitempty" name:"DialogueLog"`
+	DialogueLog *string `json:"DialogueLog,omitnil" name:"DialogueLog"`
 
 	// 录音文件名
-	CosFileName *string `json:"CosFileName,omitempty" name:"CosFileName"`
+	CosFileName *string `json:"CosFileName,omitnil" name:"CosFileName"`
 }
 
 type SingleBlackApply struct {
 	// 黑名单类型，01代表手机号码。
-	BlackType *string `json:"BlackType,omitempty" name:"BlackType"`
+	BlackType *string `json:"BlackType,omitnil" name:"BlackType"`
 
 	// 操作类型，A为新增，D为删除。
-	OperationType *string `json:"OperationType,omitempty" name:"OperationType"`
+	OperationType *string `json:"OperationType,omitnil" name:"OperationType"`
 
 	// 黑名单值，BlackType为01时，填写11位手机号码。
-	BlackValue *string `json:"BlackValue,omitempty" name:"BlackValue"`
+	BlackValue *string `json:"BlackValue,omitnil" name:"BlackValue"`
 
 	// 备注。
-	BlackDescription *string `json:"BlackDescription,omitempty" name:"BlackDescription"`
+	BlackDescription *string `json:"BlackDescription,omitnil" name:"BlackDescription"`
 
 	// 黑名单生效截止日期，格式为YYYY-MM-DD，不填默认为永久。
-	BlackValidDate *string `json:"BlackValidDate,omitempty" name:"BlackValidDate"`
+	BlackValidDate *string `json:"BlackValidDate,omitnil" name:"BlackValidDate"`
 }
 
 type SingleRecord struct {
 	// 案件编号。
-	AccountNum *string `json:"AccountNum,omitempty" name:"AccountNum"`
+	AccountNum *string `json:"AccountNum,omitnil" name:"AccountNum"`
 
 	// 外呼日期。
-	BizDate *string `json:"BizDate,omitempty" name:"BizDate"`
+	BizDate *string `json:"BizDate,omitnil" name:"BizDate"`
 
 	// 开始呼叫时间。
-	CallStartTime *string `json:"CallStartTime,omitempty" name:"CallStartTime"`
+	CallStartTime *string `json:"CallStartTime,omitnil" name:"CallStartTime"`
 
 	// 主叫号码。
-	CallerPhone *string `json:"CallerPhone,omitempty" name:"CallerPhone"`
+	CallerPhone *string `json:"CallerPhone,omitnil" name:"CallerPhone"`
 
 	// 呼叫方向，O为呼出，I为呼入。
-	Direction *string `json:"Direction,omitempty" name:"Direction"`
+	Direction *string `json:"Direction,omitnil" name:"Direction"`
 
 	// 通话时长。
-	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 产品ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 录音下载链接。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RecordCosUrl *string `json:"RecordCosUrl,omitempty" name:"RecordCosUrl"`
+	RecordCosUrl *string `json:"RecordCosUrl,omitnil" name:"RecordCosUrl"`
 }
 
 type SmsSign struct {
 	// 短信签名ID
-	SignId *string `json:"SignId,omitempty" name:"SignId"`
+	SignId *string `json:"SignId,omitnil" name:"SignId"`
 
 	// 短信签名名称
-	SignName *string `json:"SignName,omitempty" name:"SignName"`
+	SignName *string `json:"SignName,omitnil" name:"SignName"`
 }
 
 type SmsTemplate struct {
 	// 短信模板ID
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 短信模板名称
-	TemplateName *string `json:"TemplateName,omitempty" name:"TemplateName"`
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 }
 
 // Predefined struct for user
 type UpdateBotTaskRequestParams struct {
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：UpdateTask
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 任务名称
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 
 	// 任务ID
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 产品拨打时间集合
-	CallTimeCollection *CallTimeDict `json:"CallTimeCollection,omitempty" name:"CallTimeCollection"`
+	CallTimeCollection *CallTimeDict `json:"CallTimeCollection,omitnil" name:"CallTimeCollection"`
 
 	// 是否禁止拨打，默认Y
-	BanCall *string `json:"BanCall,omitempty" name:"BanCall"`
+	BanCall *string `json:"BanCall,omitnil" name:"BanCall"`
 
 	// 禁止拨打起始时间。默认130000
-	StartTimeBan *string `json:"StartTimeBan,omitempty" name:"StartTimeBan"`
+	StartTimeBan *string `json:"StartTimeBan,omitnil" name:"StartTimeBan"`
 
 	// 禁止拨打结束时间。默认140000
-	EndTimeBan *string `json:"EndTimeBan,omitempty" name:"EndTimeBan"`
+	EndTimeBan *string `json:"EndTimeBan,omitnil" name:"EndTimeBan"`
 
 	// 拨打线路集合
-	PhoneCollection *string `json:"PhoneCollection,omitempty" name:"PhoneCollection"`
+	PhoneCollection *string `json:"PhoneCollection,omitnil" name:"PhoneCollection"`
 
 	// 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL
-	CodeType *string `json:"CodeType,omitempty" name:"CodeType"`
+	CodeType *string `json:"CodeType,omitnil" name:"CodeType"`
 
 	// 重播值集合，A：强意向、B：中意向、C：低意向、D：无意向、E：在忙、F：未接通、G：无效号码，可多选，用竖线分隔：A|B|C|D|E|F|G
-	CodeCollection *string `json:"CodeCollection,omitempty" name:"CodeCollection"`
+	CodeCollection *string `json:"CodeCollection,omitnil" name:"CodeCollection"`
 
 	// 继续拨打次数
-	CallCount *int64 `json:"CallCount,omitempty" name:"CallCount"`
+	CallCount *int64 `json:"CallCount,omitnil" name:"CallCount"`
 
 	// 拨打间隔
-	CallInterval *int64 `json:"CallInterval,omitempty" name:"CallInterval"`
+	CallInterval *int64 `json:"CallInterval,omitnil" name:"CallInterval"`
 
 	// 未接通引用短信签名ID
-	SmsSignId *string `json:"SmsSignId,omitempty" name:"SmsSignId"`
+	SmsSignId *string `json:"SmsSignId,omitnil" name:"SmsSignId"`
 
 	// 未接通引用短信模板ID
-	SmsTemplateId *string `json:"SmsTemplateId,omitempty" name:"SmsTemplateId"`
+	SmsTemplateId *string `json:"SmsTemplateId,omitnil" name:"SmsTemplateId"`
 }
 
 type UpdateBotTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：UpdateTask
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 任务名称
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 
 	// 任务ID
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 产品拨打时间集合
-	CallTimeCollection *CallTimeDict `json:"CallTimeCollection,omitempty" name:"CallTimeCollection"`
+	CallTimeCollection *CallTimeDict `json:"CallTimeCollection,omitnil" name:"CallTimeCollection"`
 
 	// 是否禁止拨打，默认Y
-	BanCall *string `json:"BanCall,omitempty" name:"BanCall"`
+	BanCall *string `json:"BanCall,omitnil" name:"BanCall"`
 
 	// 禁止拨打起始时间。默认130000
-	StartTimeBan *string `json:"StartTimeBan,omitempty" name:"StartTimeBan"`
+	StartTimeBan *string `json:"StartTimeBan,omitnil" name:"StartTimeBan"`
 
 	// 禁止拨打结束时间。默认140000
-	EndTimeBan *string `json:"EndTimeBan,omitempty" name:"EndTimeBan"`
+	EndTimeBan *string `json:"EndTimeBan,omitnil" name:"EndTimeBan"`
 
 	// 拨打线路集合
-	PhoneCollection *string `json:"PhoneCollection,omitempty" name:"PhoneCollection"`
+	PhoneCollection *string `json:"PhoneCollection,omitnil" name:"PhoneCollection"`
 
 	// 重播方式，NON：未接通、LABEL：意向分级，可多选，用竖线分隔：NON|LABEL
-	CodeType *string `json:"CodeType,omitempty" name:"CodeType"`
+	CodeType *string `json:"CodeType,omitnil" name:"CodeType"`
 
 	// 重播值集合，A：强意向、B：中意向、C：低意向、D：无意向、E：在忙、F：未接通、G：无效号码，可多选，用竖线分隔：A|B|C|D|E|F|G
-	CodeCollection *string `json:"CodeCollection,omitempty" name:"CodeCollection"`
+	CodeCollection *string `json:"CodeCollection,omitnil" name:"CodeCollection"`
 
 	// 继续拨打次数
-	CallCount *int64 `json:"CallCount,omitempty" name:"CallCount"`
+	CallCount *int64 `json:"CallCount,omitnil" name:"CallCount"`
 
 	// 拨打间隔
-	CallInterval *int64 `json:"CallInterval,omitempty" name:"CallInterval"`
+	CallInterval *int64 `json:"CallInterval,omitnil" name:"CallInterval"`
 
 	// 未接通引用短信签名ID
-	SmsSignId *string `json:"SmsSignId,omitempty" name:"SmsSignId"`
+	SmsSignId *string `json:"SmsSignId,omitnil" name:"SmsSignId"`
 
 	// 未接通引用短信模板ID
-	SmsTemplateId *string `json:"SmsTemplateId,omitempty" name:"SmsTemplateId"`
+	SmsTemplateId *string `json:"SmsTemplateId,omitnil" name:"SmsTemplateId"`
 }
 
 func (r *UpdateBotTaskRequest) ToJsonString() string {
@@ -2415,7 +2415,7 @@ func (r *UpdateBotTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateBotTaskResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateBotTaskResponse struct {
@@ -2437,38 +2437,38 @@ func (r *UpdateBotTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadBotDataRequestParams struct {
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：UploadData
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 任务数据。JSON格式
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 }
 
 type UploadBotDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：UploadData
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 任务数据。JSON格式
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 }
 
 func (r *UploadBotDataRequest) ToJsonString() string {
@@ -2497,7 +2497,7 @@ func (r *UploadBotDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadBotDataResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UploadBotDataResponse struct {
@@ -2519,50 +2519,50 @@ func (r *UploadBotDataResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadBotFileRequestParams struct {
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：Upload
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 文件类型，输入input，停拨stop
-	FileType *string `json:"FileType,omitempty" name:"FileType"`
+	FileType *string `json:"FileType,omitnil" name:"FileType"`
 
 	// 文件链接
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
 
 	// 文件名
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 }
 
 type UploadBotFileRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名。默认值（固定）：AiApi
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名。默认值（固定）：Upload
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 文件类型，输入input，停拨stop
-	FileType *string `json:"FileType,omitempty" name:"FileType"`
+	FileType *string `json:"FileType,omitnil" name:"FileType"`
 
 	// 文件链接
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
 
 	// 文件名
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 任务ID，二者必填一个
-	BotId *string `json:"BotId,omitempty" name:"BotId"`
+	BotId *string `json:"BotId,omitnil" name:"BotId"`
 
 	// 任务名称，二者必填一个
-	BotName *string `json:"BotName,omitempty" name:"BotName"`
+	BotName *string `json:"BotName,omitnil" name:"BotName"`
 }
 
 func (r *UploadBotFileRequest) ToJsonString() string {
@@ -2593,7 +2593,7 @@ func (r *UploadBotFileRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadBotFileResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UploadBotFileResponse struct {
@@ -2615,50 +2615,50 @@ func (r *UploadBotFileResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadDataFileRequestParams struct {
 	// 模块名，本接口取值：Data
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：Upload
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 文件名
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// <p>上传类型，不填默认到期/逾期提醒文件，取值范围：</p><ul style="margin-bottom:0px;"><li>data：到期/逾期提醒文件</li><li>repay：到期/逾期提醒停拨文件</li><li>callback：回访文件</li><li>callstop：回访停拨文件</li><li>blacklist：黑名单文件</li></ul>
-	UploadModel *string `json:"UploadModel,omitempty" name:"UploadModel"`
+	UploadModel *string `json:"UploadModel,omitnil" name:"UploadModel"`
 
 	// 文件，文件与文件地址上传只可选用一种，必须使用multipart/form-data协议来上传二进制流文件，建议使用xlsx格式，大小不超过5MB。
-	File *string `json:"File,omitempty" name:"File"`
+	File *string `json:"File,omitnil" name:"File"`
 
 	// 文件上传地址，文件与文件地址上传只可选用一种，大小不超过50MB。
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
 
 	// 实例ID，不传默认为系统分配的初始实例。
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 type UploadDataFileRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，本接口取值：Data
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：Upload
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 文件名
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// <p>上传类型，不填默认到期/逾期提醒文件，取值范围：</p><ul style="margin-bottom:0px;"><li>data：到期/逾期提醒文件</li><li>repay：到期/逾期提醒停拨文件</li><li>callback：回访文件</li><li>callstop：回访停拨文件</li><li>blacklist：黑名单文件</li></ul>
-	UploadModel *string `json:"UploadModel,omitempty" name:"UploadModel"`
+	UploadModel *string `json:"UploadModel,omitnil" name:"UploadModel"`
 
 	// 文件，文件与文件地址上传只可选用一种，必须使用multipart/form-data协议来上传二进制流文件，建议使用xlsx格式，大小不超过5MB。
-	File *string `json:"File,omitempty" name:"File"`
+	File *string `json:"File,omitnil" name:"File"`
 
 	// 文件上传地址，文件与文件地址上传只可选用一种，大小不超过50MB。
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
 
 	// 实例ID，不传默认为系统分配的初始实例。
-	InstId *string `json:"InstId,omitempty" name:"InstId"`
+	InstId *string `json:"InstId,omitnil" name:"InstId"`
 }
 
 func (r *UploadDataFileRequest) ToJsonString() string {
@@ -2689,10 +2689,10 @@ func (r *UploadDataFileRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadDataFileResponseParams struct {
 	// 数据ID
-	DataResId *string `json:"DataResId,omitempty" name:"DataResId"`
+	DataResId *string `json:"DataResId,omitnil" name:"DataResId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UploadDataFileResponse struct {
@@ -2714,38 +2714,38 @@ func (r *UploadDataFileResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadDataJsonRequestParams struct {
 	// 模块名，本接口取值：Data
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：UploadJson
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 报文信息
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// <p>上传类型，不填默认到期/逾期提醒数据，取值范围：</p><ul style="margin-bottom:0px;"><li>data：到期/逾期提醒数据</li><li>repay：到期/逾期提醒停拨数据</li></ul>
-	UploadModel *string `json:"UploadModel,omitempty" name:"UploadModel"`
+	UploadModel *string `json:"UploadModel,omitnil" name:"UploadModel"`
 
 	// 实例ID，不传默认为系统分配的初始实例。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type UploadDataJsonRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，本接口取值：Data
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，本接口取值：UploadJson
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 报文信息
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// <p>上传类型，不填默认到期/逾期提醒数据，取值范围：</p><ul style="margin-bottom:0px;"><li>data：到期/逾期提醒数据</li><li>repay：到期/逾期提醒停拨数据</li></ul>
-	UploadModel *string `json:"UploadModel,omitempty" name:"UploadModel"`
+	UploadModel *string `json:"UploadModel,omitnil" name:"UploadModel"`
 
 	// 实例ID，不传默认为系统分配的初始实例。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *UploadDataJsonRequest) ToJsonString() string {
@@ -2775,10 +2775,10 @@ func (r *UploadDataJsonRequest) FromJsonString(s string) error {
 type UploadDataJsonResponseParams struct {
 	// 响应报文信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UploadDataJsonResponse struct {
@@ -2800,38 +2800,38 @@ func (r *UploadDataJsonResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadFileRequestParams struct {
 	// 模块名
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 文件上传地址，要求地址协议为HTTPS，且URL端口必须为443
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
 
 	// 文件名
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 文件日期
-	FileDate *string `json:"FileDate,omitempty" name:"FileDate"`
+	FileDate *string `json:"FileDate,omitnil" name:"FileDate"`
 }
 
 type UploadFileRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 文件上传地址，要求地址协议为HTTPS，且URL端口必须为443
-	FileUrl *string `json:"FileUrl,omitempty" name:"FileUrl"`
+	FileUrl *string `json:"FileUrl,omitnil" name:"FileUrl"`
 
 	// 文件名
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 文件日期
-	FileDate *string `json:"FileDate,omitempty" name:"FileDate"`
+	FileDate *string `json:"FileDate,omitnil" name:"FileDate"`
 }
 
 func (r *UploadFileRequest) ToJsonString() string {
@@ -2860,10 +2860,10 @@ func (r *UploadFileRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadFileResponseParams struct {
 	// 任务ID
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UploadFileResponse struct {

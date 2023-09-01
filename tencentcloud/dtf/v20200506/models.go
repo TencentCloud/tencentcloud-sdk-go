@@ -15,64 +15,64 @@
 package v20200506
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type DescribeTransactionsRequestParams struct {
 	// 事务分组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 事务开始时间查询起始时间戳，UTC，精确到毫秒
-	TransactionBeginFrom *int64 `json:"TransactionBeginFrom,omitempty" name:"TransactionBeginFrom"`
+	TransactionBeginFrom *int64 `json:"TransactionBeginFrom,omitnil" name:"TransactionBeginFrom"`
 
 	// 事务开始时间查询截止时间戳，UTC，精确到毫秒
-	TransactionBeginTo *int64 `json:"TransactionBeginTo,omitempty" name:"TransactionBeginTo"`
+	TransactionBeginTo *int64 `json:"TransactionBeginTo,omitnil" name:"TransactionBeginTo"`
 
 	// 仅查询异常状态的事务，true：仅查询异常，false或不传入：查询所有
-	SearchError *bool `json:"SearchError,omitempty" name:"SearchError"`
+	SearchError *bool `json:"SearchError,omitnil" name:"SearchError"`
 
 	// 主事务ID，不传入时查询全量，高优先级
-	TransactionId *int64 `json:"TransactionId,omitempty" name:"TransactionId"`
+	TransactionId *int64 `json:"TransactionId,omitnil" name:"TransactionId"`
 
 	// 主事务ID列表，不传入时查询全量，低优先级
-	TransactionIdList []*int64 `json:"TransactionIdList,omitempty" name:"TransactionIdList"`
+	TransactionIdList []*int64 `json:"TransactionIdList,omitnil" name:"TransactionIdList"`
 
 	// 每页数量
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 起始偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeTransactionsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 事务分组ID
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 事务开始时间查询起始时间戳，UTC，精确到毫秒
-	TransactionBeginFrom *int64 `json:"TransactionBeginFrom,omitempty" name:"TransactionBeginFrom"`
+	TransactionBeginFrom *int64 `json:"TransactionBeginFrom,omitnil" name:"TransactionBeginFrom"`
 
 	// 事务开始时间查询截止时间戳，UTC，精确到毫秒
-	TransactionBeginTo *int64 `json:"TransactionBeginTo,omitempty" name:"TransactionBeginTo"`
+	TransactionBeginTo *int64 `json:"TransactionBeginTo,omitnil" name:"TransactionBeginTo"`
 
 	// 仅查询异常状态的事务，true：仅查询异常，false或不传入：查询所有
-	SearchError *bool `json:"SearchError,omitempty" name:"SearchError"`
+	SearchError *bool `json:"SearchError,omitnil" name:"SearchError"`
 
 	// 主事务ID，不传入时查询全量，高优先级
-	TransactionId *int64 `json:"TransactionId,omitempty" name:"TransactionId"`
+	TransactionId *int64 `json:"TransactionId,omitnil" name:"TransactionId"`
 
 	// 主事务ID列表，不传入时查询全量，低优先级
-	TransactionIdList []*int64 `json:"TransactionIdList,omitempty" name:"TransactionIdList"`
+	TransactionIdList []*int64 `json:"TransactionIdList,omitnil" name:"TransactionIdList"`
 
 	// 每页数量
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 起始偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeTransactionsRequest) ToJsonString() string {
@@ -104,10 +104,10 @@ func (r *DescribeTransactionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTransactionsResponseParams struct {
 	// 主事务分页列表
-	Result *PagedTransaction `json:"Result,omitempty" name:"Result"`
+	Result *PagedTransaction `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTransactionsResponse struct {
@@ -129,70 +129,70 @@ func (r *DescribeTransactionsResponse) FromJsonString(s string) error {
 type PagedTransaction struct {
 	// 总条数，特定在该接口中总是会返回null
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 主事务分组列表
-	Content []*Transaction `json:"Content,omitempty" name:"Content"`
+	Content []*Transaction `json:"Content,omitnil" name:"Content"`
 }
 
 type Transaction struct {
 	// 主事务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TransactionId *int64 `json:"TransactionId,omitempty" name:"TransactionId"`
+	TransactionId *int64 `json:"TransactionId,omitnil" name:"TransactionId"`
 
 	// 主事务开始时间戳，UTC，精确到毫秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TransactionBegin *int64 `json:"TransactionBegin,omitempty" name:"TransactionBegin"`
+	TransactionBegin *int64 `json:"TransactionBegin,omitnil" name:"TransactionBegin"`
 
 	// 主事务结束时间戳，UTC，精确到毫秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TransactionEnd *int64 `json:"TransactionEnd,omitempty" name:"TransactionEnd"`
+	TransactionEnd *int64 `json:"TransactionEnd,omitnil" name:"TransactionEnd"`
 
 	// 主事务提交时间戳，UTC，精确到毫秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TransactionCommit *int64 `json:"TransactionCommit,omitempty" name:"TransactionCommit"`
+	TransactionCommit *int64 `json:"TransactionCommit,omitnil" name:"TransactionCommit"`
 
 	// 主事务回滚时间戳，UTC，精确到毫秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TransactionRollback *int64 `json:"TransactionRollback,omitempty" name:"TransactionRollback"`
+	TransactionRollback *int64 `json:"TransactionRollback,omitnil" name:"TransactionRollback"`
 
 	// 主事务异常停止时间戳，UTC，精确到毫秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TransactionError *int64 `json:"TransactionError,omitempty" name:"TransactionError"`
+	TransactionError *int64 `json:"TransactionError,omitnil" name:"TransactionError"`
 
 	// 主事务超时时长，单位毫秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Timeout *int64 `json:"Timeout,omitempty" name:"Timeout"`
+	Timeout *int64 `json:"Timeout,omitnil" name:"Timeout"`
 
 	// 主事务状态：0:Trying, 1:Confirming, 2: Confirmed, 3:Canceling, 4: Canceled
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 主事务结束标识：0:运行中, 1: 已结束
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EndFlag *int64 `json:"EndFlag,omitempty" name:"EndFlag"`
+	EndFlag *int64 `json:"EndFlag,omitnil" name:"EndFlag"`
 
 	// 主事务超时标识：0:运行中, 1: 已超时
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TimeoutFlag *int64 `json:"TimeoutFlag,omitempty" name:"TimeoutFlag"`
+	TimeoutFlag *int64 `json:"TimeoutFlag,omitnil" name:"TimeoutFlag"`
 
 	// 异常信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Comment *string `json:"Comment,omitempty" name:"Comment"`
+	Comment *string `json:"Comment,omitnil" name:"Comment"`
 
 	// 事务分组ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 主事务来源服务标识
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Server *string `json:"Server,omitempty" name:"Server"`
+	Server *string `json:"Server,omitnil" name:"Server"`
 
 	// 分支事务数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BranchQuantity *int64 `json:"BranchQuantity,omitempty" name:"BranchQuantity"`
+	BranchQuantity *int64 `json:"BranchQuantity,omitnil" name:"BranchQuantity"`
 
 	// 重试标识：true：可以重试；false：不可重试
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RetryFlag *bool `json:"RetryFlag,omitempty" name:"RetryFlag"`
+	RetryFlag *bool `json:"RetryFlag,omitnil" name:"RetryFlag"`
 }

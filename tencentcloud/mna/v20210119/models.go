@@ -15,40 +15,40 @@
 package v20210119
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type AddDeviceRequestParams struct {
 	// 新建设备的名称
-	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
 
 	// 新建设备的备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 新建设备的base64密钥字符串，非必选，如果不填写则由系统自动生成
-	DataKey *string `json:"DataKey,omitempty" name:"DataKey"`
+	DataKey *string `json:"DataKey,omitnil" name:"DataKey"`
 
 	// 是否设置预置密钥
-	Encrypted *bool `json:"Encrypted,omitempty" name:"Encrypted"`
+	Encrypted *bool `json:"Encrypted,omitnil" name:"Encrypted"`
 }
 
 type AddDeviceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 新建设备的名称
-	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
 
 	// 新建设备的备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 新建设备的base64密钥字符串，非必选，如果不填写则由系统自动生成
-	DataKey *string `json:"DataKey,omitempty" name:"DataKey"`
+	DataKey *string `json:"DataKey,omitnil" name:"DataKey"`
 
 	// 是否设置预置密钥
-	Encrypted *bool `json:"Encrypted,omitempty" name:"Encrypted"`
+	Encrypted *bool `json:"Encrypted,omitnil" name:"Encrypted"`
 }
 
 func (r *AddDeviceRequest) ToJsonString() string {
@@ -76,17 +76,17 @@ func (r *AddDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddDeviceResponseParams struct {
 	// 经过加密算法加密后的base64格式密钥
-	DataKey *string `json:"DataKey,omitempty" name:"DataKey"`
+	DataKey *string `json:"DataKey,omitnil" name:"DataKey"`
 
 	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
 	// 签名字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Signature *string `json:"Signature,omitempty" name:"Signature"`
+	Signature *string `json:"Signature,omitnil" name:"Signature"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddDeviceResponse struct {
@@ -107,21 +107,21 @@ func (r *AddDeviceResponse) FromJsonString(s string) error {
 
 type Capacity struct {
 	// 电信鉴权的Token。要加速的电信手机终端访问 http://qos.189.cn/qos-api/getToken?appid=TencentCloud 页面，获取返回结果中result的值
-	CTCCToken *string `json:"CTCCToken,omitempty" name:"CTCCToken"`
+	CTCCToken *string `json:"CTCCToken,omitnil" name:"CTCCToken"`
 
 	// 终端所处在的省份，建议不填写由服务端自动获取，若需填写请填写带有省、市、自治区、特别行政区等后缀的省份中文全称
-	Province *string `json:"Province,omitempty" name:"Province"`
+	Province *string `json:"Province,omitnil" name:"Province"`
 }
 
 type Context struct {
 	// 测速数据
-	NetworkData *NetworkData `json:"NetworkData,omitempty" name:"NetworkData"`
+	NetworkData *NetworkData `json:"NetworkData,omitnil" name:"NetworkData"`
 
 	// 用户期望最低门限
-	ExpectedLowThreshold *ExpectedThreshold `json:"ExpectedLowThreshold,omitempty" name:"ExpectedLowThreshold"`
+	ExpectedLowThreshold *ExpectedThreshold `json:"ExpectedLowThreshold,omitnil" name:"ExpectedLowThreshold"`
 
 	// 用户期望最高门限
-	ExpectedHighThreshold *ExpectedThreshold `json:"ExpectedHighThreshold,omitempty" name:"ExpectedHighThreshold"`
+	ExpectedHighThreshold *ExpectedThreshold `json:"ExpectedHighThreshold,omitnil" name:"ExpectedHighThreshold"`
 }
 
 // Predefined struct for user
@@ -156,10 +156,10 @@ func (r *CreateEncryptedKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateEncryptedKeyResponseParams struct {
 	// 预置密钥
-	EncryptedKey *string `json:"EncryptedKey,omitempty" name:"EncryptedKey"`
+	EncryptedKey *string `json:"EncryptedKey,omitnil" name:"EncryptedKey"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateEncryptedKeyResponse struct {
@@ -181,10 +181,10 @@ func (r *CreateEncryptedKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateQosRequestParams struct {
 	// 加速业务源地址信息，SrcIpv6和（SrcIpv4+SrcPublicIpv4）二选一，目前Ipv6不可用，全部填写以Ipv4参数为准。
-	SrcAddressInfo *SrcAddressInfo `json:"SrcAddressInfo,omitempty" name:"SrcAddressInfo"`
+	SrcAddressInfo *SrcAddressInfo `json:"SrcAddressInfo,omitnil" name:"SrcAddressInfo"`
 
 	// 加速业务目标地址信息
-	DestAddressInfo *DestAddressInfo `json:"DestAddressInfo,omitempty" name:"DestAddressInfo"`
+	DestAddressInfo *DestAddressInfo `json:"DestAddressInfo,omitnil" name:"DestAddressInfo"`
 
 	// 加速套餐
 	// T100K：时延性保障 + 带宽保障上下行保障 100kbps
@@ -196,41 +196,41 @@ type CreateQosRequestParams struct {
 	// BU1M：带宽型保障 + 上行带宽保障1Mbps
 	// BU2M：带宽型保障 + 上行带宽保障2Mbps
 	// BU4M：带宽型保障 + 上行带宽保障4Mbps
-	QosMenu *string `json:"QosMenu,omitempty" name:"QosMenu"`
+	QosMenu *string `json:"QosMenu,omitnil" name:"QosMenu"`
 
 	// 申请加速的设备信息，包括运营商，操作系统，设备唯一标识等。
-	DeviceInfo *DeviceInfo `json:"DeviceInfo,omitempty" name:"DeviceInfo"`
+	DeviceInfo *DeviceInfo `json:"DeviceInfo,omitnil" name:"DeviceInfo"`
 
 	// 期望加速时长（单位分钟），默认值30分钟
-	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *uint64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 接口能力扩展，如果是电信用户，必须填充CTCC Token字段
-	Capacity *Capacity `json:"Capacity,omitempty" name:"Capacity"`
+	Capacity *Capacity `json:"Capacity,omitnil" name:"Capacity"`
 
 	// 应用模板ID
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 针对特殊协议进行加速
 	// 1. IP （默认值）
 	// 2. UDP
 	// 3. TCP
-	Protocol *uint64 `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *uint64 `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 加速策略关键数据
-	Context *Context `json:"Context,omitempty" name:"Context"`
+	Context *Context `json:"Context,omitnil" name:"Context"`
 
 	// 签名
-	Extern *string `json:"Extern,omitempty" name:"Extern"`
+	Extern *string `json:"Extern,omitnil" name:"Extern"`
 }
 
 type CreateQosRequest struct {
 	*tchttp.BaseRequest
 	
 	// 加速业务源地址信息，SrcIpv6和（SrcIpv4+SrcPublicIpv4）二选一，目前Ipv6不可用，全部填写以Ipv4参数为准。
-	SrcAddressInfo *SrcAddressInfo `json:"SrcAddressInfo,omitempty" name:"SrcAddressInfo"`
+	SrcAddressInfo *SrcAddressInfo `json:"SrcAddressInfo,omitnil" name:"SrcAddressInfo"`
 
 	// 加速业务目标地址信息
-	DestAddressInfo *DestAddressInfo `json:"DestAddressInfo,omitempty" name:"DestAddressInfo"`
+	DestAddressInfo *DestAddressInfo `json:"DestAddressInfo,omitnil" name:"DestAddressInfo"`
 
 	// 加速套餐
 	// T100K：时延性保障 + 带宽保障上下行保障 100kbps
@@ -242,31 +242,31 @@ type CreateQosRequest struct {
 	// BU1M：带宽型保障 + 上行带宽保障1Mbps
 	// BU2M：带宽型保障 + 上行带宽保障2Mbps
 	// BU4M：带宽型保障 + 上行带宽保障4Mbps
-	QosMenu *string `json:"QosMenu,omitempty" name:"QosMenu"`
+	QosMenu *string `json:"QosMenu,omitnil" name:"QosMenu"`
 
 	// 申请加速的设备信息，包括运营商，操作系统，设备唯一标识等。
-	DeviceInfo *DeviceInfo `json:"DeviceInfo,omitempty" name:"DeviceInfo"`
+	DeviceInfo *DeviceInfo `json:"DeviceInfo,omitnil" name:"DeviceInfo"`
 
 	// 期望加速时长（单位分钟），默认值30分钟
-	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *uint64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 接口能力扩展，如果是电信用户，必须填充CTCC Token字段
-	Capacity *Capacity `json:"Capacity,omitempty" name:"Capacity"`
+	Capacity *Capacity `json:"Capacity,omitnil" name:"Capacity"`
 
 	// 应用模板ID
-	TemplateId *string `json:"TemplateId,omitempty" name:"TemplateId"`
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
 	// 针对特殊协议进行加速
 	// 1. IP （默认值）
 	// 2. UDP
 	// 3. TCP
-	Protocol *uint64 `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *uint64 `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 加速策略关键数据
-	Context *Context `json:"Context,omitempty" name:"Context"`
+	Context *Context `json:"Context,omitnil" name:"Context"`
 
 	// 签名
-	Extern *string `json:"Extern,omitempty" name:"Extern"`
+	Extern *string `json:"Extern,omitnil" name:"Extern"`
 }
 
 func (r *CreateQosRequest) ToJsonString() string {
@@ -300,13 +300,13 @@ func (r *CreateQosRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateQosResponseParams struct {
 	// 单次加速唯一 Id
-	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
 
 	// 当前加速剩余时长（单位秒）
-	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *uint64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateQosResponse struct {
@@ -328,14 +328,14 @@ func (r *CreateQosResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDeviceRequestParams struct {
 	// 删除设备的唯一ID
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 }
 
 type DeleteDeviceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 删除设备的唯一ID
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 }
 
 func (r *DeleteDeviceRequest) ToJsonString() string {
@@ -360,7 +360,7 @@ func (r *DeleteDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDeviceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteDeviceResponse struct {
@@ -382,14 +382,14 @@ func (r *DeleteDeviceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteQosRequestParams struct {
 	// 单次加速唯一 Id
-	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
 }
 
 type DeleteQosRequest struct {
 	*tchttp.BaseRequest
 	
 	// 单次加速唯一 Id
-	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
 }
 
 func (r *DeleteQosRequest) ToJsonString() string {
@@ -414,13 +414,13 @@ func (r *DeleteQosRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteQosResponseParams struct {
 	// 单次加速唯一 Id
-	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
 
 	// 本次加速会话持续时间（单位秒）
-	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *uint64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteQosResponse struct {
@@ -442,14 +442,14 @@ func (r *DeleteQosResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeQosRequestParams struct {
 	// 单次加速唯一 Id
-	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
 }
 
 type DescribeQosRequest struct {
 	*tchttp.BaseRequest
 	
 	// 单次加速唯一 Id
-	SessionId *string `json:"SessionId,omitempty" name:"SessionId"`
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
 }
 
 func (r *DescribeQosRequest) ToJsonString() string {
@@ -475,26 +475,26 @@ func (r *DescribeQosRequest) FromJsonString(s string) error {
 type DescribeQosResponseParams struct {
 	// 0：无匹配的加速中会话
 	// 1：存在匹配的加速中会话
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 手机公网出口IP，仅匹配时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SrcPublicIpv4 *string `json:"SrcPublicIpv4,omitempty" name:"SrcPublicIpv4"`
+	SrcPublicIpv4 *string `json:"SrcPublicIpv4,omitnil" name:"SrcPublicIpv4"`
 
 	// 业务访问目的IP，仅匹配时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DestIpv4 []*string `json:"DestIpv4,omitempty" name:"DestIpv4"`
+	DestIpv4 []*string `json:"DestIpv4,omitnil" name:"DestIpv4"`
 
 	// 当前加速剩余时长（单位秒）有，仅匹配时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Duration *uint64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *uint64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 加速套餐类型，仅匹配时返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	QosMenu *string `json:"QosMenu,omitempty" name:"QosMenu"`
+	QosMenu *string `json:"QosMenu,omitnil" name:"QosMenu"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeQosResponse struct {
@@ -515,45 +515,45 @@ func (r *DescribeQosResponse) FromJsonString(s string) error {
 
 type DestAddressInfo struct {
 	// 加速业务目标 ip 地址数组
-	DestIp []*string `json:"DestIp,omitempty" name:"DestIp"`
+	DestIp []*string `json:"DestIp,omitnil" name:"DestIp"`
 }
 
 type DeviceBaseInfo struct {
 	// 设备唯一ID
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
 	// 设备名称
-	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
 
 	// 设备创建的时间，单位：ms
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 设备最后在线时间，单位：ms
-	LastTime *string `json:"LastTime,omitempty" name:"LastTime"`
+	LastTime *string `json:"LastTime,omitnil" name:"LastTime"`
 
 	// 设备的备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type DeviceDetails struct {
 	// 设备基本信息
-	DeviceBaseInfo *DeviceBaseInfo `json:"DeviceBaseInfo,omitempty" name:"DeviceBaseInfo"`
+	DeviceBaseInfo *DeviceBaseInfo `json:"DeviceBaseInfo,omitnil" name:"DeviceBaseInfo"`
 
 	// 设备网络信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeviceNetInfo []*DeviceNetInfo `json:"DeviceNetInfo,omitempty" name:"DeviceNetInfo"`
+	DeviceNetInfo []*DeviceNetInfo `json:"DeviceNetInfo,omitnil" name:"DeviceNetInfo"`
 
 	// 聚合服务器地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GatewaySite *string `json:"GatewaySite,omitempty" name:"GatewaySite"`
+	GatewaySite *string `json:"GatewaySite,omitnil" name:"GatewaySite"`
 
 	// 业务下行速率
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BusinessDownRate *float64 `json:"BusinessDownRate,omitempty" name:"BusinessDownRate"`
+	BusinessDownRate *float64 `json:"BusinessDownRate,omitnil" name:"BusinessDownRate"`
 
 	// 业务上行速率
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BusinessUpRate *float64 `json:"BusinessUpRate,omitempty" name:"BusinessUpRate"`
+	BusinessUpRate *float64 `json:"BusinessUpRate,omitnil" name:"BusinessUpRate"`
 }
 
 type DeviceInfo struct {
@@ -563,28 +563,28 @@ type DeviceInfo struct {
 	// 3：联通
 	// 4：广电
 	// 99：其他
-	Vendor *uint64 `json:"Vendor,omitempty" name:"Vendor"`
+	Vendor *uint64 `json:"Vendor,omitnil" name:"Vendor"`
 
 	// 设备操作系统：
 	// 1：Android
 	// 2： IOS
 	// 99：其他
-	OS *uint64 `json:"OS,omitempty" name:"OS"`
+	OS *uint64 `json:"OS,omitnil" name:"OS"`
 
 	// 设备唯一标识
 	// IOS 填写 IDFV
 	// Android 填写 IMEI
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
 	// 用户手机号码
-	PhoneNum *string `json:"PhoneNum,omitempty" name:"PhoneNum"`
+	PhoneNum *string `json:"PhoneNum,omitnil" name:"PhoneNum"`
 
 	// 无线信息
 	// 1：4G
 	// 2：5G
 	// 3：WIFI
 	// 99：其他
-	Wireless *uint64 `json:"Wireless,omitempty" name:"Wireless"`
+	Wireless *uint64 `json:"Wireless,omitnil" name:"Wireless"`
 }
 
 type DeviceNetInfo struct {
@@ -593,49 +593,49 @@ type DeviceNetInfo struct {
 	// 1:Wi-Fi
 	// 2:有线
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 
 	// 启用/禁用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataEnable *bool `json:"DataEnable,omitempty" name:"DataEnable"`
+	DataEnable *bool `json:"DataEnable,omitnil" name:"DataEnable"`
 
 	// 上行限速
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UploadLimit *string `json:"UploadLimit,omitempty" name:"UploadLimit"`
+	UploadLimit *string `json:"UploadLimit,omitnil" name:"UploadLimit"`
 
 	// 下行限速
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownloadLimit *string `json:"DownloadLimit,omitempty" name:"DownloadLimit"`
+	DownloadLimit *string `json:"DownloadLimit,omitnil" name:"DownloadLimit"`
 
 	// 接收实时速率
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataRx *uint64 `json:"DataRx,omitempty" name:"DataRx"`
+	DataRx *uint64 `json:"DataRx,omitnil" name:"DataRx"`
 
 	// 发送实时速率
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataTx *uint64 `json:"DataTx,omitempty" name:"DataTx"`
+	DataTx *uint64 `json:"DataTx,omitnil" name:"DataTx"`
 
 	// 运营商类型：
 	// 1: 中国移动；
 	// 2: 中国电信; 
 	// 3: 中国联通
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Vendor *int64 `json:"Vendor,omitempty" name:"Vendor"`
+	Vendor *int64 `json:"Vendor,omitnil" name:"Vendor"`
 
 	// 连接状态：
 	// 0:无连接
 	// 1:连接中
 	// 2:已连接
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	State *int64 `json:"State,omitempty" name:"State"`
+	State *int64 `json:"State,omitnil" name:"State"`
 
 	// 公网IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublicIp *string `json:"PublicIp,omitempty" name:"PublicIp"`
+	PublicIp *string `json:"PublicIp,omitnil" name:"PublicIp"`
 
 	// 信号强度/单位：dbm
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SignalStrength *int64 `json:"SignalStrength,omitempty" name:"SignalStrength"`
+	SignalStrength *int64 `json:"SignalStrength,omitnil" name:"SignalStrength"`
 
 	// 数据网络类型：
 	// -1 ：无效值   
@@ -644,65 +644,65 @@ type DeviceNetInfo struct {
 	// 4：4G 
 	// 5：5G
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rat *int64 `json:"Rat,omitempty" name:"Rat"`
+	Rat *int64 `json:"Rat,omitnil" name:"Rat"`
 
 	// 网卡名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NetInfoName *string `json:"NetInfoName,omitempty" name:"NetInfoName"`
+	NetInfoName *string `json:"NetInfoName,omitnil" name:"NetInfoName"`
 
 	// 下行实时速率（浮点数类型代替上一版本DataRx的整型）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DownRate *float64 `json:"DownRate,omitempty" name:"DownRate"`
+	DownRate *float64 `json:"DownRate,omitnil" name:"DownRate"`
 
 	// 上行实时速率（浮点数类型代替上一版本TxRate的整型）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpRate *float64 `json:"UpRate,omitempty" name:"UpRate"`
+	UpRate *float64 `json:"UpRate,omitnil" name:"UpRate"`
 }
 
 type ExpectedThreshold struct {
 	// 期望发起加速的时延阈值
-	RTT *float64 `json:"RTT,omitempty" name:"RTT"`
+	RTT *float64 `json:"RTT,omitnil" name:"RTT"`
 
 	// 期望发起加速的丢包率阈值
-	Loss *float64 `json:"Loss,omitempty" name:"Loss"`
+	Loss *float64 `json:"Loss,omitnil" name:"Loss"`
 
 	// 期望发起加速的抖动阈值
-	Jitter *float64 `json:"Jitter,omitempty" name:"Jitter"`
+	Jitter *float64 `json:"Jitter,omitnil" name:"Jitter"`
 }
 
 type FlowDetails struct {
 	// 流量数据点
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NetDetails []*NetDetails `json:"NetDetails,omitempty" name:"NetDetails"`
+	NetDetails []*NetDetails `json:"NetDetails,omitnil" name:"NetDetails"`
 
 	// 设备ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
 	// 流量最大值（单位：bytes）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxValue *float64 `json:"MaxValue,omitempty" name:"MaxValue"`
+	MaxValue *float64 `json:"MaxValue,omitnil" name:"MaxValue"`
 
 	// 流量平均值（单位：bytes）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AvgValue *float64 `json:"AvgValue,omitempty" name:"AvgValue"`
+	AvgValue *float64 `json:"AvgValue,omitnil" name:"AvgValue"`
 
 	// 流量总值（单位：bytes）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalValue *float64 `json:"TotalValue,omitempty" name:"TotalValue"`
+	TotalValue *float64 `json:"TotalValue,omitnil" name:"TotalValue"`
 }
 
 // Predefined struct for user
 type GetDeviceRequestParams struct {
 	// 搜索指定设备的id
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 }
 
 type GetDeviceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 搜索指定设备的id
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 }
 
 func (r *GetDeviceRequest) ToJsonString() string {
@@ -727,10 +727,10 @@ func (r *GetDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetDeviceResponseParams struct {
 	// 设备详细信息
-	DeviceDetails *DeviceDetails `json:"DeviceDetails,omitempty" name:"DeviceDetails"`
+	DeviceDetails *DeviceDetails `json:"DeviceDetails,omitnil" name:"DeviceDetails"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetDeviceResponse struct {
@@ -752,38 +752,38 @@ func (r *GetDeviceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetDevicesRequestParams struct {
 	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 
 	// 搜索设备的关键字（ID或者设备名），为空时匹配所有设备
-	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
 
 	// DeviceType
 	// 不传：返回所有设备；
 	// 1:自有设备；
 	// 2:三方设备
-	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
+	DeviceType *int64 `json:"DeviceType,omitnil" name:"DeviceType"`
 }
 
 type GetDevicesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 每页显示记录数，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
-	PageSize *int64 `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
 
 	// 当前查看页码，PageSize、PageNumber值均为-1 时，按照1页无限制条数匹配所有设备
-	PageNumber *int64 `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
 
 	// 搜索设备的关键字（ID或者设备名），为空时匹配所有设备
-	Keyword *string `json:"Keyword,omitempty" name:"Keyword"`
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
 
 	// DeviceType
 	// 不传：返回所有设备；
 	// 1:自有设备；
 	// 2:三方设备
-	DeviceType *int64 `json:"DeviceType,omitempty" name:"DeviceType"`
+	DeviceType *int64 `json:"DeviceType,omitnil" name:"DeviceType"`
 }
 
 func (r *GetDevicesRequest) ToJsonString() string {
@@ -811,16 +811,16 @@ func (r *GetDevicesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetDevicesResponseParams struct {
 	// 设备信息列表
-	DeviceInfos []*DeviceBaseInfo `json:"DeviceInfos,omitempty" name:"DeviceInfos"`
+	DeviceInfos []*DeviceBaseInfo `json:"DeviceInfos,omitnil" name:"DeviceInfos"`
 
 	// 设备总记录条数
-	Length *int64 `json:"Length,omitempty" name:"Length"`
+	Length *int64 `json:"Length,omitnil" name:"Length"`
 
 	// 总页数
-	TotalPage *int64 `json:"TotalPage,omitempty" name:"TotalPage"`
+	TotalPage *int64 `json:"TotalPage,omitnil" name:"TotalPage"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetDevicesResponse struct {
@@ -842,38 +842,38 @@ func (r *GetDevicesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetFlowStatisticRequestParams struct {
 	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
 	// 开始查找时间
-	BeginTime *int64 `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *int64 `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 截止时间
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 流量种类（1：上行流量，2：下行流量）
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 
 	// 时间粒度（1：按小时统计，2：按天统计）
-	TimeGranularity *int64 `json:"TimeGranularity,omitempty" name:"TimeGranularity"`
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil" name:"TimeGranularity"`
 }
 
 type GetFlowStatisticRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
 	// 开始查找时间
-	BeginTime *int64 `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *int64 `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 截止时间
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 流量种类（1：上行流量，2：下行流量）
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 
 	// 时间粒度（1：按小时统计，2：按天统计）
-	TimeGranularity *int64 `json:"TimeGranularity,omitempty" name:"TimeGranularity"`
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil" name:"TimeGranularity"`
 }
 
 func (r *GetFlowStatisticRequest) ToJsonString() string {
@@ -902,19 +902,19 @@ func (r *GetFlowStatisticRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetFlowStatisticResponseParams struct {
 	// 流量详细信息
-	NetDetails []*NetDetails `json:"NetDetails,omitempty" name:"NetDetails"`
+	NetDetails []*NetDetails `json:"NetDetails,omitnil" name:"NetDetails"`
 
 	// 查找时间段流量使用最大值（单位：byte）
-	MaxValue *float64 `json:"MaxValue,omitempty" name:"MaxValue"`
+	MaxValue *float64 `json:"MaxValue,omitnil" name:"MaxValue"`
 
 	// 查找时间段流量使用平均值（单位：byte）
-	AvgValue *float64 `json:"AvgValue,omitempty" name:"AvgValue"`
+	AvgValue *float64 `json:"AvgValue,omitnil" name:"AvgValue"`
 
 	// 查找时间段流量使用总量（单位：byte）
-	TotalValue *float64 `json:"TotalValue,omitempty" name:"TotalValue"`
+	TotalValue *float64 `json:"TotalValue,omitnil" name:"TotalValue"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetFlowStatisticResponse struct {
@@ -936,38 +936,38 @@ func (r *GetFlowStatisticResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetMultiFlowStatisticRequestParams struct {
 	// 设备id列表，单次最多请求10个设备
-	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
+	DeviceIds []*string `json:"DeviceIds,omitnil" name:"DeviceIds"`
 
 	// 1659514436
-	BeginTime *int64 `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *int64 `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 1659515000
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 统计流量类型（1：上行流量，2：下行流量）
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 
 	// 统计时间粒度（1：按小时统计，2：按天统计）
-	TimeGranularity *int64 `json:"TimeGranularity,omitempty" name:"TimeGranularity"`
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil" name:"TimeGranularity"`
 }
 
 type GetMultiFlowStatisticRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备id列表，单次最多请求10个设备
-	DeviceIds []*string `json:"DeviceIds,omitempty" name:"DeviceIds"`
+	DeviceIds []*string `json:"DeviceIds,omitnil" name:"DeviceIds"`
 
 	// 1659514436
-	BeginTime *int64 `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *int64 `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 1659515000
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 统计流量类型（1：上行流量，2：下行流量）
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 
 	// 统计时间粒度（1：按小时统计，2：按天统计）
-	TimeGranularity *int64 `json:"TimeGranularity,omitempty" name:"TimeGranularity"`
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil" name:"TimeGranularity"`
 }
 
 func (r *GetMultiFlowStatisticRequest) ToJsonString() string {
@@ -996,10 +996,10 @@ func (r *GetMultiFlowStatisticRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetMultiFlowStatisticResponseParams struct {
 	// 批量设备流量信息
-	FlowDetails []*FlowDetails `json:"FlowDetails,omitempty" name:"FlowDetails"`
+	FlowDetails []*FlowDetails `json:"FlowDetails,omitnil" name:"FlowDetails"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetMultiFlowStatisticResponse struct {
@@ -1050,10 +1050,10 @@ func (r *GetPublicKeyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetPublicKeyResponseParams struct {
 	// 非对称公钥
-	PublicKey *string `json:"PublicKey,omitempty" name:"PublicKey"`
+	PublicKey *string `json:"PublicKey,omitnil" name:"PublicKey"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetPublicKeyResponse struct {
@@ -1075,36 +1075,36 @@ func (r *GetPublicKeyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetStatisticDataRequestParams struct {
 	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
 	// 统计开始时间，单位：s
-	BeginTime *int64 `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *int64 `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 统计结束时间，单位：s
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 聚合粒度：
 	// 1:按小时统计
 	// 2:按天统计
-	TimeGranularity *int64 `json:"TimeGranularity,omitempty" name:"TimeGranularity"`
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil" name:"TimeGranularity"`
 }
 
 type GetStatisticDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
 	// 统计开始时间，单位：s
-	BeginTime *int64 `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *int64 `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 统计结束时间，单位：s
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 聚合粒度：
 	// 1:按小时统计
 	// 2:按天统计
-	TimeGranularity *int64 `json:"TimeGranularity,omitempty" name:"TimeGranularity"`
+	TimeGranularity *int64 `json:"TimeGranularity,omitnil" name:"TimeGranularity"`
 }
 
 func (r *GetStatisticDataRequest) ToJsonString() string {
@@ -1132,10 +1132,10 @@ func (r *GetStatisticDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetStatisticDataResponseParams struct {
 	// 文件地址url
-	FilePath *string `json:"FilePath,omitempty" name:"FilePath"`
+	FilePath *string `json:"FilePath,omitnil" name:"FilePath"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetStatisticDataResponse struct {
@@ -1156,66 +1156,66 @@ func (r *GetStatisticDataResponse) FromJsonString(s string) error {
 
 type NetDetails struct {
 	// 流量值（bit）
-	Current *float64 `json:"Current,omitempty" name:"Current"`
+	Current *float64 `json:"Current,omitnil" name:"Current"`
 
 	// 时间点，单位：s
-	Time *string `json:"Time,omitempty" name:"Time"`
+	Time *string `json:"Time,omitnil" name:"Time"`
 }
 
 type NetworkData struct {
 	// 时延数组，最大长度30
-	RTT []*float64 `json:"RTT,omitempty" name:"RTT"`
+	RTT []*float64 `json:"RTT,omitnil" name:"RTT"`
 
 	// 丢包率
-	Loss *float64 `json:"Loss,omitempty" name:"Loss"`
+	Loss *float64 `json:"Loss,omitnil" name:"Loss"`
 
 	// 抖动
-	Jitter *float64 `json:"Jitter,omitempty" name:"Jitter"`
+	Jitter *float64 `json:"Jitter,omitnil" name:"Jitter"`
 
 	// 10位秒级时间戳
-	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
 }
 
 type SrcAddressInfo struct {
 	// 用户私网 ipv4 地址
-	SrcIpv4 *string `json:"SrcIpv4,omitempty" name:"SrcIpv4"`
+	SrcIpv4 *string `json:"SrcIpv4,omitnil" name:"SrcIpv4"`
 
 	// 用户公网 ipv4 地址
-	SrcPublicIpv4 *string `json:"SrcPublicIpv4,omitempty" name:"SrcPublicIpv4"`
+	SrcPublicIpv4 *string `json:"SrcPublicIpv4,omitnil" name:"SrcPublicIpv4"`
 
 	// 用户 ipv6 地址
-	SrcIpv6 *string `json:"SrcIpv6,omitempty" name:"SrcIpv6"`
+	SrcIpv6 *string `json:"SrcIpv6,omitnil" name:"SrcIpv6"`
 }
 
 // Predefined struct for user
 type UpdateDeviceRequestParams struct {
 	// 设备id
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
 	// 设备名称
-	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
 
 	// 设备备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 更新设备网络信息
-	UpdateNetInfo []*UpdateNetInfo `json:"UpdateNetInfo,omitempty" name:"UpdateNetInfo"`
+	UpdateNetInfo []*UpdateNetInfo `json:"UpdateNetInfo,omitnil" name:"UpdateNetInfo"`
 }
 
 type UpdateDeviceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备id
-	DeviceId *string `json:"DeviceId,omitempty" name:"DeviceId"`
+	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 
 	// 设备名称
-	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
 
 	// 设备备注
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 更新设备网络信息
-	UpdateNetInfo []*UpdateNetInfo `json:"UpdateNetInfo,omitempty" name:"UpdateNetInfo"`
+	UpdateNetInfo []*UpdateNetInfo `json:"UpdateNetInfo,omitnil" name:"UpdateNetInfo"`
 }
 
 func (r *UpdateDeviceRequest) ToJsonString() string {
@@ -1243,7 +1243,7 @@ func (r *UpdateDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateDeviceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateDeviceResponse struct {
@@ -1266,17 +1266,17 @@ type UpdateNetInfo struct {
 	// 网络类型：
 	// 0:数据
 	// 1:Wi-Fi
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 
 	// 启用/禁用
-	DataEnable *bool `json:"DataEnable,omitempty" name:"DataEnable"`
+	DataEnable *bool `json:"DataEnable,omitnil" name:"DataEnable"`
 
 	// 上行限速：bit
-	UploadLimit *uint64 `json:"UploadLimit,omitempty" name:"UploadLimit"`
+	UploadLimit *uint64 `json:"UploadLimit,omitnil" name:"UploadLimit"`
 
 	// 下行限速：bit
-	DownloadLimit *uint64 `json:"DownloadLimit,omitempty" name:"DownloadLimit"`
+	DownloadLimit *uint64 `json:"DownloadLimit,omitnil" name:"DownloadLimit"`
 
 	// 网卡名
-	NetInfoName *string `json:"NetInfoName,omitempty" name:"NetInfoName"`
+	NetInfoName *string `json:"NetInfoName,omitnil" name:"NetInfoName"`
 }

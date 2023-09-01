@@ -15,9 +15,9 @@
 package v20221229
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
@@ -26,49 +26,49 @@ type ImageToImageRequestParams struct {
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
 	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
 	// 图片限制：单边分辨率小于2000，转成 Base64 字符串后小于 5MB。
-	InputImage *string `json:"InputImage,omitempty" name:"InputImage"`
+	InputImage *string `json:"InputImage,omitnil" name:"InputImage"`
 
 	// 输入图 Url。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
 	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
 	// 图片限制：单边分辨率小于2000，转成 Base64 字符串后小于 5MB。
-	InputUrl *string `json:"InputUrl,omitempty" name:"InputUrl"`
+	InputUrl *string `json:"InputUrl,omitnil" name:"InputUrl"`
 
 	// 文本描述。
 	// 用于在输入图的基础上引导生成图效果，增加生成结果中出现描述内容的可能。
 	// 推荐使用中文。最多支持256个 utf-8 字符。
-	Prompt *string `json:"Prompt,omitempty" name:"Prompt"`
+	Prompt *string `json:"Prompt,omitnil" name:"Prompt"`
 
 	// 反向文本描述。
 	// 用于一定程度上从反面引导模型生成的走向，减少生成结果中出现描述内容的可能，但不能完全杜绝。
 	// 推荐使用中文。最多可传256个 utf-8 字符。
-	NegativePrompt *string `json:"NegativePrompt,omitempty" name:"NegativePrompt"`
+	NegativePrompt *string `json:"NegativePrompt,omitnil" name:"NegativePrompt"`
 
 	// 绘画风格。
 	// 请在  [智能图生图风格列表](https://cloud.tencent.com/document/product/1668/86250) 中选择期望的风格，传入风格编号。
 	// 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
-	Styles []*string `json:"Styles,omitempty" name:"Styles"`
+	Styles []*string `json:"Styles,omitnil" name:"Styles"`
 
 	// 生成图结果的配置，包括输出图片分辨率和尺寸等。
-	ResultConfig *ResultConfig `json:"ResultConfig,omitempty" name:"ResultConfig"`
+	ResultConfig *ResultConfig `json:"ResultConfig,omitnil" name:"ResultConfig"`
 
 	// 为生成结果图添加标识的开关，默认为1。
 	// 1：添加标识。
 	// 0：不添加标识。
 	// 其他数值：默认按1处理。
 	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
-	LogoAdd *int64 `json:"LogoAdd,omitempty" name:"LogoAdd"`
+	LogoAdd *int64 `json:"LogoAdd,omitnil" name:"LogoAdd"`
 
 	// 标识内容设置。
 	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
-	LogoParam *LogoParam `json:"LogoParam,omitempty" name:"LogoParam"`
+	LogoParam *LogoParam `json:"LogoParam,omitnil" name:"LogoParam"`
 
 	// 生成自由度。
 	// Strength 值越小，生成图和原图越接近。取值范围0~1，不传默认为0.75。
-	Strength *float64 `json:"Strength,omitempty" name:"Strength"`
+	Strength *float64 `json:"Strength,omitnil" name:"Strength"`
 
 	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
-	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
 }
 
 type ImageToImageRequest struct {
@@ -78,49 +78,49 @@ type ImageToImageRequest struct {
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
 	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
 	// 图片限制：单边分辨率小于2000，转成 Base64 字符串后小于 5MB。
-	InputImage *string `json:"InputImage,omitempty" name:"InputImage"`
+	InputImage *string `json:"InputImage,omitnil" name:"InputImage"`
 
 	// 输入图 Url。
 	// 算法将根据输入的图片，结合文本描述智能生成与之相关的图像。
 	// Base64 和 Url 必须提供一个，如果都提供以 Base64 为准。
 	// 图片限制：单边分辨率小于2000，转成 Base64 字符串后小于 5MB。
-	InputUrl *string `json:"InputUrl,omitempty" name:"InputUrl"`
+	InputUrl *string `json:"InputUrl,omitnil" name:"InputUrl"`
 
 	// 文本描述。
 	// 用于在输入图的基础上引导生成图效果，增加生成结果中出现描述内容的可能。
 	// 推荐使用中文。最多支持256个 utf-8 字符。
-	Prompt *string `json:"Prompt,omitempty" name:"Prompt"`
+	Prompt *string `json:"Prompt,omitnil" name:"Prompt"`
 
 	// 反向文本描述。
 	// 用于一定程度上从反面引导模型生成的走向，减少生成结果中出现描述内容的可能，但不能完全杜绝。
 	// 推荐使用中文。最多可传256个 utf-8 字符。
-	NegativePrompt *string `json:"NegativePrompt,omitempty" name:"NegativePrompt"`
+	NegativePrompt *string `json:"NegativePrompt,omitnil" name:"NegativePrompt"`
 
 	// 绘画风格。
 	// 请在  [智能图生图风格列表](https://cloud.tencent.com/document/product/1668/86250) 中选择期望的风格，传入风格编号。
 	// 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
-	Styles []*string `json:"Styles,omitempty" name:"Styles"`
+	Styles []*string `json:"Styles,omitnil" name:"Styles"`
 
 	// 生成图结果的配置，包括输出图片分辨率和尺寸等。
-	ResultConfig *ResultConfig `json:"ResultConfig,omitempty" name:"ResultConfig"`
+	ResultConfig *ResultConfig `json:"ResultConfig,omitnil" name:"ResultConfig"`
 
 	// 为生成结果图添加标识的开关，默认为1。
 	// 1：添加标识。
 	// 0：不添加标识。
 	// 其他数值：默认按1处理。
 	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
-	LogoAdd *int64 `json:"LogoAdd,omitempty" name:"LogoAdd"`
+	LogoAdd *int64 `json:"LogoAdd,omitnil" name:"LogoAdd"`
 
 	// 标识内容设置。
 	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
-	LogoParam *LogoParam `json:"LogoParam,omitempty" name:"LogoParam"`
+	LogoParam *LogoParam `json:"LogoParam,omitnil" name:"LogoParam"`
 
 	// 生成自由度。
 	// Strength 值越小，生成图和原图越接近。取值范围0~1，不传默认为0.75。
-	Strength *float64 `json:"Strength,omitempty" name:"Strength"`
+	Strength *float64 `json:"Strength,omitnil" name:"Strength"`
 
 	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
-	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
 }
 
 func (r *ImageToImageRequest) ToJsonString() string {
@@ -156,10 +156,10 @@ type ImageToImageResponseParams struct {
 	// 根据入参 RspImgType 填入不同，返回不同的内容。
 	// 如果传入 base64 则返回生成图 Base64 编码。
 	// 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
-	ResultImage *string `json:"ResultImage,omitempty" name:"ResultImage"`
+	ResultImage *string `json:"ResultImage,omitnil" name:"ResultImage"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ImageToImageResponse struct {
@@ -180,27 +180,27 @@ func (r *ImageToImageResponse) FromJsonString(s string) error {
 
 type LogoParam struct {
 	// 水印url
-	LogoUrl *string `json:"LogoUrl,omitempty" name:"LogoUrl"`
+	LogoUrl *string `json:"LogoUrl,omitnil" name:"LogoUrl"`
 
 	// 水印base64，url和base64二选一传入
-	LogoImage *string `json:"LogoImage,omitempty" name:"LogoImage"`
+	LogoImage *string `json:"LogoImage,omitnil" name:"LogoImage"`
 
 	// 水印图片位于融合结果图中的坐标，将按照坐标对标识图片进行位置和大小的拉伸匹配
-	LogoRect *LogoRect `json:"LogoRect,omitempty" name:"LogoRect"`
+	LogoRect *LogoRect `json:"LogoRect,omitnil" name:"LogoRect"`
 }
 
 type LogoRect struct {
 	// 左上角X坐标
-	X *int64 `json:"X,omitempty" name:"X"`
+	X *int64 `json:"X,omitnil" name:"X"`
 
 	// 左上角Y坐标
-	Y *int64 `json:"Y,omitempty" name:"Y"`
+	Y *int64 `json:"Y,omitnil" name:"Y"`
 
 	// 方框宽度
-	Width *int64 `json:"Width,omitempty" name:"Width"`
+	Width *int64 `json:"Width,omitnil" name:"Width"`
 
 	// 方框高度
-	Height *int64 `json:"Height,omitempty" name:"Height"`
+	Height *int64 `json:"Height,omitnil" name:"Height"`
 }
 
 type ResultConfig struct {
@@ -210,7 +210,7 @@ type ResultConfig struct {
 	// ● 768:768
 	// ● 768:1024
 	// ● 1024:768
-	Resolution *string `json:"Resolution,omitempty" name:"Resolution"`
+	Resolution *string `json:"Resolution,omitnil" name:"Resolution"`
 }
 
 // Predefined struct for user
@@ -218,34 +218,34 @@ type TextToImageRequestParams struct {
 	// 文本描述。
 	// 算法将根据输入的文本智能生成与之相关的图像。建议详细描述画面主体、细节、场景等，文本描述越丰富，生成效果越精美。
 	// 不能为空，推荐使用中文。最多可传256个 utf-8 字符。
-	Prompt *string `json:"Prompt,omitempty" name:"Prompt"`
+	Prompt *string `json:"Prompt,omitnil" name:"Prompt"`
 
 	// 反向文本描述。
 	// 用于一定程度上从反面引导模型生成的走向，减少生成结果中出现描述内容的可能，但不能完全杜绝。
 	// 推荐使用中文。最多可传256个 utf-8 字符。
-	NegativePrompt *string `json:"NegativePrompt,omitempty" name:"NegativePrompt"`
+	NegativePrompt *string `json:"NegativePrompt,omitnil" name:"NegativePrompt"`
 
 	// 绘画风格。
 	// 请在 [智能文生图风格列表](https://cloud.tencent.com/document/product/1668/86249) 中选择期望的风格，传入风格编号。
 	// 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
-	Styles []*string `json:"Styles,omitempty" name:"Styles"`
+	Styles []*string `json:"Styles,omitnil" name:"Styles"`
 
 	// 生成图结果的配置，包括输出图片分辨率和尺寸等。
-	ResultConfig *ResultConfig `json:"ResultConfig,omitempty" name:"ResultConfig"`
+	ResultConfig *ResultConfig `json:"ResultConfig,omitnil" name:"ResultConfig"`
 
 	// 为生成结果图添加标识的开关，默认为1。
 	// 1：添加标识。
 	// 0：不添加标识。
 	// 其他数值：默认按1处理。
 	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
-	LogoAdd *int64 `json:"LogoAdd,omitempty" name:"LogoAdd"`
+	LogoAdd *int64 `json:"LogoAdd,omitnil" name:"LogoAdd"`
 
 	// 标识内容设置。
 	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
-	LogoParam *LogoParam `json:"LogoParam,omitempty" name:"LogoParam"`
+	LogoParam *LogoParam `json:"LogoParam,omitnil" name:"LogoParam"`
 
 	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
-	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
 }
 
 type TextToImageRequest struct {
@@ -254,34 +254,34 @@ type TextToImageRequest struct {
 	// 文本描述。
 	// 算法将根据输入的文本智能生成与之相关的图像。建议详细描述画面主体、细节、场景等，文本描述越丰富，生成效果越精美。
 	// 不能为空，推荐使用中文。最多可传256个 utf-8 字符。
-	Prompt *string `json:"Prompt,omitempty" name:"Prompt"`
+	Prompt *string `json:"Prompt,omitnil" name:"Prompt"`
 
 	// 反向文本描述。
 	// 用于一定程度上从反面引导模型生成的走向，减少生成结果中出现描述内容的可能，但不能完全杜绝。
 	// 推荐使用中文。最多可传256个 utf-8 字符。
-	NegativePrompt *string `json:"NegativePrompt,omitempty" name:"NegativePrompt"`
+	NegativePrompt *string `json:"NegativePrompt,omitnil" name:"NegativePrompt"`
 
 	// 绘画风格。
 	// 请在 [智能文生图风格列表](https://cloud.tencent.com/document/product/1668/86249) 中选择期望的风格，传入风格编号。
 	// 推荐使用且只使用一种风格。不传默认使用201（日系动漫风格）。
-	Styles []*string `json:"Styles,omitempty" name:"Styles"`
+	Styles []*string `json:"Styles,omitnil" name:"Styles"`
 
 	// 生成图结果的配置，包括输出图片分辨率和尺寸等。
-	ResultConfig *ResultConfig `json:"ResultConfig,omitempty" name:"ResultConfig"`
+	ResultConfig *ResultConfig `json:"ResultConfig,omitnil" name:"ResultConfig"`
 
 	// 为生成结果图添加标识的开关，默认为1。
 	// 1：添加标识。
 	// 0：不添加标识。
 	// 其他数值：默认按1处理。
 	// 建议您使用显著标识来提示结果图使用了 AI 绘画技术，是 AI 生成的图片。
-	LogoAdd *int64 `json:"LogoAdd,omitempty" name:"LogoAdd"`
+	LogoAdd *int64 `json:"LogoAdd,omitnil" name:"LogoAdd"`
 
 	// 标识内容设置。
 	// 默认在生成结果图右下角添加“图片由 AI 生成”字样，您可根据自身需要替换为其他的标识图片。
-	LogoParam *LogoParam `json:"LogoParam,omitempty" name:"LogoParam"`
+	LogoParam *LogoParam `json:"LogoParam,omitnil" name:"LogoParam"`
 
 	// 返回图像方式（base64 或 url) ，二选一，默认为 base64。url 有效期为1小时。
-	RspImgType *string `json:"RspImgType,omitempty" name:"RspImgType"`
+	RspImgType *string `json:"RspImgType,omitnil" name:"RspImgType"`
 }
 
 func (r *TextToImageRequest) ToJsonString() string {
@@ -314,10 +314,10 @@ type TextToImageResponseParams struct {
 	// 根据入参 RspImgType 填入不同，返回不同的内容。
 	// 如果传入 base64 则返回生成图 Base64 编码。
 	// 如果传入 url 则返回的生成图 URL , 有效期1小时，请及时保存。
-	ResultImage *string `json:"ResultImage,omitempty" name:"ResultImage"`
+	ResultImage *string `json:"ResultImage,omitnil" name:"ResultImage"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type TextToImageResponse struct {

@@ -15,28 +15,28 @@
 package v20180416
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type ApplyChainMakerBatchUserCertRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 证书标识和证书请求文件，可参考TBaaS证书生成相关文档生成证书请求文件
-	SignUserCsrList []*SignCertCsr `json:"SignUserCsrList,omitempty" name:"SignUserCsrList"`
+	SignUserCsrList []*SignCertCsr `json:"SignUserCsrList,omitnil" name:"SignUserCsrList"`
 }
 
 type ApplyChainMakerBatchUserCertRequest struct {
 	*tchttp.BaseRequest
 	
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 证书标识和证书请求文件，可参考TBaaS证书生成相关文档生成证书请求文件
-	SignUserCsrList []*SignCertCsr `json:"SignUserCsrList,omitempty" name:"SignUserCsrList"`
+	SignUserCsrList []*SignCertCsr `json:"SignUserCsrList,omitnil" name:"SignUserCsrList"`
 }
 
 func (r *ApplyChainMakerBatchUserCertRequest) ToJsonString() string {
@@ -63,10 +63,10 @@ func (r *ApplyChainMakerBatchUserCertRequest) FromJsonString(s string) error {
 type ApplyChainMakerBatchUserCertResponseParams struct {
 	// 成功生成的用户证书的base64编码字符串列表，与SignUserCsrList一一对应
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SignUserCrtList []*string `json:"SignUserCrtList,omitempty" name:"SignUserCrtList"`
+	SignUserCrtList []*string `json:"SignUserCrtList,omitnil" name:"SignUserCrtList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ApplyChainMakerBatchUserCertResponse struct {
@@ -88,62 +88,62 @@ func (r *ApplyChainMakerBatchUserCertResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ApplyUserCertRequestParams struct {
 	// 模块名，固定字段：cert_mng
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：cert_apply_for_user
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 申请证书的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 用户证书标识，用于标识用户证书，要求由纯小写字母组成，长度小于10
-	UserIdentity *string `json:"UserIdentity,omitempty" name:"UserIdentity"`
+	UserIdentity *string `json:"UserIdentity,omitnil" name:"UserIdentity"`
 
 	// 证书申请实体，使用腾讯云账号实名认证的名称
-	Applicant *string `json:"Applicant,omitempty" name:"Applicant"`
+	Applicant *string `json:"Applicant,omitnil" name:"Applicant"`
 
 	// 证件号码。如果腾讯云账号对应的实名认证类型为企业认证，填入“0”；如果腾讯云账号对应的实名认证类型为个人认证，填入个人身份证号码
-	IdentityNum *string `json:"IdentityNum,omitempty" name:"IdentityNum"`
+	IdentityNum *string `json:"IdentityNum,omitnil" name:"IdentityNum"`
 
 	// csr p10证书文件。需要用户根据文档生成证书的CSR文件
-	CsrData *string `json:"CsrData,omitempty" name:"CsrData"`
+	CsrData *string `json:"CsrData,omitnil" name:"CsrData"`
 
 	// 证书备注信息
-	Notes *string `json:"Notes,omitempty" name:"Notes"`
+	Notes *string `json:"Notes,omitnil" name:"Notes"`
 }
 
 type ApplyUserCertRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，固定字段：cert_mng
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：cert_apply_for_user
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 申请证书的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 用户证书标识，用于标识用户证书，要求由纯小写字母组成，长度小于10
-	UserIdentity *string `json:"UserIdentity,omitempty" name:"UserIdentity"`
+	UserIdentity *string `json:"UserIdentity,omitnil" name:"UserIdentity"`
 
 	// 证书申请实体，使用腾讯云账号实名认证的名称
-	Applicant *string `json:"Applicant,omitempty" name:"Applicant"`
+	Applicant *string `json:"Applicant,omitnil" name:"Applicant"`
 
 	// 证件号码。如果腾讯云账号对应的实名认证类型为企业认证，填入“0”；如果腾讯云账号对应的实名认证类型为个人认证，填入个人身份证号码
-	IdentityNum *string `json:"IdentityNum,omitempty" name:"IdentityNum"`
+	IdentityNum *string `json:"IdentityNum,omitnil" name:"IdentityNum"`
 
 	// csr p10证书文件。需要用户根据文档生成证书的CSR文件
-	CsrData *string `json:"CsrData,omitempty" name:"CsrData"`
+	CsrData *string `json:"CsrData,omitnil" name:"CsrData"`
 
 	// 证书备注信息
-	Notes *string `json:"Notes,omitempty" name:"Notes"`
+	Notes *string `json:"Notes,omitnil" name:"Notes"`
 }
 
 func (r *ApplyUserCertRequest) ToJsonString() string {
@@ -176,13 +176,13 @@ func (r *ApplyUserCertRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ApplyUserCertResponseParams struct {
 	// 证书ID
-	CertId *uint64 `json:"CertId,omitempty" name:"CertId"`
+	CertId *uint64 `json:"CertId,omitnil" name:"CertId"`
 
 	// 证书DN
-	CertDn *string `json:"CertDn,omitempty" name:"CertDn"`
+	CertDn *string `json:"CertDn,omitnil" name:"CertDn"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ApplyUserCertResponse struct {
@@ -203,120 +203,120 @@ func (r *ApplyUserCertResponse) FromJsonString(s string) error {
 
 type Block struct {
 	// 区块编号
-	BlockNum *uint64 `json:"BlockNum,omitempty" name:"BlockNum"`
+	BlockNum *uint64 `json:"BlockNum,omitnil" name:"BlockNum"`
 
 	// 区块数据Hash数值
-	DataHash *string `json:"DataHash,omitempty" name:"DataHash"`
+	DataHash *string `json:"DataHash,omitnil" name:"DataHash"`
 
 	// 区块ID，与区块编号一致
-	BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
+	BlockId *uint64 `json:"BlockId,omitnil" name:"BlockId"`
 
 	// 前一个区块Hash
-	PreHash *string `json:"PreHash,omitempty" name:"PreHash"`
+	PreHash *string `json:"PreHash,omitnil" name:"PreHash"`
 
 	// 区块内的交易数量
-	TxCount *uint64 `json:"TxCount,omitempty" name:"TxCount"`
+	TxCount *uint64 `json:"TxCount,omitnil" name:"TxCount"`
 }
 
 type ChainMakerContractResult struct {
 	// 交易结果码
-	Code *int64 `json:"Code,omitempty" name:"Code"`
+	Code *int64 `json:"Code,omitnil" name:"Code"`
 
 	// 交易结果码含义
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CodeMessage *string `json:"CodeMessage,omitempty" name:"CodeMessage"`
+	CodeMessage *string `json:"CodeMessage,omitnil" name:"CodeMessage"`
 
 	// 交易ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TxId *string `json:"TxId,omitempty" name:"TxId"`
+	TxId *string `json:"TxId,omitnil" name:"TxId"`
 
 	// Gas使用量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GasUsed *int64 `json:"GasUsed,omitempty" name:"GasUsed"`
+	GasUsed *int64 `json:"GasUsed,omitnil" name:"GasUsed"`
 
 	// 合约返回消息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 
 	// 合约函数返回，base64编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 }
 
 type ChainMakerTransactionResult struct {
 	// 交易结果码
-	Code *int64 `json:"Code,omitempty" name:"Code"`
+	Code *int64 `json:"Code,omitnil" name:"Code"`
 
 	// 交易结果码含义
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CodeMessage *string `json:"CodeMessage,omitempty" name:"CodeMessage"`
+	CodeMessage *string `json:"CodeMessage,omitnil" name:"CodeMessage"`
 
 	// 交易ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TxId *string `json:"TxId,omitempty" name:"TxId"`
+	TxId *string `json:"TxId,omitnil" name:"TxId"`
 
 	// Gas使用量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GasUsed *int64 `json:"GasUsed,omitempty" name:"GasUsed"`
+	GasUsed *int64 `json:"GasUsed,omitnil" name:"GasUsed"`
 
 	// 区块高度
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BlockHeight *int64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+	BlockHeight *int64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
 
 	// 合约执行结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContractEvent *string `json:"ContractEvent,omitempty" name:"ContractEvent"`
+	ContractEvent *string `json:"ContractEvent,omitnil" name:"ContractEvent"`
 
 	// 合约返回信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 
 	// 交易时间，单位是秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
 }
 
 // Predefined struct for user
 type DownloadUserCertRequestParams struct {
 	// 模块名，固定字段：cert_mng
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：cert_download_for_user
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 证书ID，可以在证书详情页面获取
-	CertId *uint64 `json:"CertId,omitempty" name:"CertId"`
+	CertId *uint64 `json:"CertId,omitnil" name:"CertId"`
 
 	// 证书DN，可以在证书详情页面获取
-	CertDn *string `json:"CertDn,omitempty" name:"CertDn"`
+	CertDn *string `json:"CertDn,omitnil" name:"CertDn"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 下载证书的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 }
 
 type DownloadUserCertRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，固定字段：cert_mng
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：cert_download_for_user
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 证书ID，可以在证书详情页面获取
-	CertId *uint64 `json:"CertId,omitempty" name:"CertId"`
+	CertId *uint64 `json:"CertId,omitnil" name:"CertId"`
 
 	// 证书DN，可以在证书详情页面获取
-	CertDn *string `json:"CertDn,omitempty" name:"CertDn"`
+	CertDn *string `json:"CertDn,omitnil" name:"CertDn"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 下载证书的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 }
 
 func (r *DownloadUserCertRequest) ToJsonString() string {
@@ -346,13 +346,13 @@ func (r *DownloadUserCertRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DownloadUserCertResponseParams struct {
 	// 证书名称
-	CertName *string `json:"CertName,omitempty" name:"CertName"`
+	CertName *string `json:"CertName,omitnil" name:"CertName"`
 
 	// 证书内容
-	CertCtx *string `json:"CertCtx,omitempty" name:"CertCtx"`
+	CertCtx *string `json:"CertCtx,omitnil" name:"CertCtx"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DownloadUserCertResponse struct {
@@ -373,71 +373,71 @@ func (r *DownloadUserCertResponse) FromJsonString(s string) error {
 
 type EndorserGroup struct {
 	// 背书组织名称
-	EndorserGroupName *string `json:"EndorserGroupName,omitempty" name:"EndorserGroupName"`
+	EndorserGroupName *string `json:"EndorserGroupName,omitnil" name:"EndorserGroupName"`
 
 	// 背书节点列表
-	EndorserPeerList []*string `json:"EndorserPeerList,omitempty" name:"EndorserPeerList"`
+	EndorserPeerList []*string `json:"EndorserPeerList,omitnil" name:"EndorserPeerList"`
 }
 
 // Predefined struct for user
 type GetBlockListRequestParams struct {
 	// 模块名称，固定字段：block
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名称，固定字段：block_list
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 通道ID，固定字段：0
-	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 
 	// 组织ID，固定字段：0
-	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 需要查询的通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 需要获取的起始交易偏移
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要获取的交易数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type GetBlockListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名称，固定字段：block
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名称，固定字段：block_list
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 通道ID，固定字段：0
-	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 
 	// 组织ID，固定字段：0
-	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 需要查询的通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 需要获取的起始交易偏移
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要获取的交易数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *GetBlockListRequest) ToJsonString() string {
@@ -470,13 +470,13 @@ func (r *GetBlockListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetBlockListResponseParams struct {
 	// 区块数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 区块列表
-	BlockList []*Block `json:"BlockList,omitempty" name:"BlockList"`
+	BlockList []*Block `json:"BlockList,omitnil" name:"BlockList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetBlockListResponse struct {
@@ -498,56 +498,56 @@ func (r *GetBlockListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetBlockTransactionListForUserRequestParams struct {
 	// 模块名，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：block_transaction_list_for_user
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 参与交易的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 业务所属通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 区块ID，通过GetInvokeTx接口可以获取交易所在的区块ID
-	BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
+	BlockId *uint64 `json:"BlockId,omitnil" name:"BlockId"`
 
 	// 查询的交易列表起始偏移地址
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 查询的交易列表数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type GetBlockTransactionListForUserRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：block_transaction_list_for_user
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 参与交易的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 业务所属通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 区块ID，通过GetInvokeTx接口可以获取交易所在的区块ID
-	BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
+	BlockId *uint64 `json:"BlockId,omitnil" name:"BlockId"`
 
 	// 查询的交易列表起始偏移地址
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 查询的交易列表数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *GetBlockTransactionListForUserRequest) ToJsonString() string {
@@ -579,13 +579,13 @@ func (r *GetBlockTransactionListForUserRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetBlockTransactionListForUserResponseParams struct {
 	// 交易总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 交易列表
-	TransactionList []*TransactionItem `json:"TransactionList,omitempty" name:"TransactionList"`
+	TransactionList []*TransactionItem `json:"TransactionList,omitnil" name:"TransactionList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetBlockTransactionListForUserResponse struct {
@@ -607,38 +607,38 @@ func (r *GetBlockTransactionListForUserResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type GetClusterSummaryRequestParams struct {
 	// 模块名称，固定字段：cluster_mng
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名称，固定字段：cluster_summary
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 组织ID，固定字段：0
-	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 }
 
 type GetClusterSummaryRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名称，固定字段：cluster_mng
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名称，固定字段：cluster_summary
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 组织ID，固定字段：0
-	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 }
 
 func (r *GetClusterSummaryRequest) ToJsonString() string {
@@ -667,52 +667,52 @@ func (r *GetClusterSummaryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetClusterSummaryResponseParams struct {
 	// 网络通道总数量
-	TotalChannelCount *uint64 `json:"TotalChannelCount,omitempty" name:"TotalChannelCount"`
+	TotalChannelCount *uint64 `json:"TotalChannelCount,omitnil" name:"TotalChannelCount"`
 
 	// 当前组织创建的通道数量
-	MyChannelCount *uint64 `json:"MyChannelCount,omitempty" name:"MyChannelCount"`
+	MyChannelCount *uint64 `json:"MyChannelCount,omitnil" name:"MyChannelCount"`
 
 	// 当前组织加入的通道数量
-	JoinChannelCount *uint64 `json:"JoinChannelCount,omitempty" name:"JoinChannelCount"`
+	JoinChannelCount *uint64 `json:"JoinChannelCount,omitnil" name:"JoinChannelCount"`
 
 	// 网络节点总数量
-	TotalPeerCount *uint64 `json:"TotalPeerCount,omitempty" name:"TotalPeerCount"`
+	TotalPeerCount *uint64 `json:"TotalPeerCount,omitnil" name:"TotalPeerCount"`
 
 	// 当前组织创建的节点数量
-	MyPeerCount *uint64 `json:"MyPeerCount,omitempty" name:"MyPeerCount"`
+	MyPeerCount *uint64 `json:"MyPeerCount,omitnil" name:"MyPeerCount"`
 
 	// 其他组织创建的节点数量
-	OrderCount *uint64 `json:"OrderCount,omitempty" name:"OrderCount"`
+	OrderCount *uint64 `json:"OrderCount,omitnil" name:"OrderCount"`
 
 	// 网络组织总数量
-	TotalGroupCount *uint64 `json:"TotalGroupCount,omitempty" name:"TotalGroupCount"`
+	TotalGroupCount *uint64 `json:"TotalGroupCount,omitnil" name:"TotalGroupCount"`
 
 	// 当前组织创建的组织数量
-	MyGroupCount *uint64 `json:"MyGroupCount,omitempty" name:"MyGroupCount"`
+	MyGroupCount *uint64 `json:"MyGroupCount,omitnil" name:"MyGroupCount"`
 
 	// 网络智能合约总数量
-	TotalChaincodeCount *uint64 `json:"TotalChaincodeCount,omitempty" name:"TotalChaincodeCount"`
+	TotalChaincodeCount *uint64 `json:"TotalChaincodeCount,omitnil" name:"TotalChaincodeCount"`
 
 	// 最近7天发起的智能合约数量
-	RecentChaincodeCount *uint64 `json:"RecentChaincodeCount,omitempty" name:"RecentChaincodeCount"`
+	RecentChaincodeCount *uint64 `json:"RecentChaincodeCount,omitnil" name:"RecentChaincodeCount"`
 
 	// 当前组织发起的智能合约数量
-	MyChaincodeCount *uint64 `json:"MyChaincodeCount,omitempty" name:"MyChaincodeCount"`
+	MyChaincodeCount *uint64 `json:"MyChaincodeCount,omitnil" name:"MyChaincodeCount"`
 
 	// 当前组织的证书总数量
-	TotalCertCount *uint64 `json:"TotalCertCount,omitempty" name:"TotalCertCount"`
+	TotalCertCount *uint64 `json:"TotalCertCount,omitnil" name:"TotalCertCount"`
 
 	// 颁发给当前组织的证书数量
-	TlsCertCount *uint64 `json:"TlsCertCount,omitempty" name:"TlsCertCount"`
+	TlsCertCount *uint64 `json:"TlsCertCount,omitnil" name:"TlsCertCount"`
 
 	// 网络背书节点证书数量
-	PeerCertCount *uint64 `json:"PeerCertCount,omitempty" name:"PeerCertCount"`
+	PeerCertCount *uint64 `json:"PeerCertCount,omitnil" name:"PeerCertCount"`
 
 	// 当前组织业务证书数量
-	ClientCertCount *uint64 `json:"ClientCertCount,omitempty" name:"ClientCertCount"`
+	ClientCertCount *uint64 `json:"ClientCertCount,omitnil" name:"ClientCertCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetClusterSummaryResponse struct {
@@ -734,56 +734,56 @@ func (r *GetClusterSummaryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetInvokeTxRequestParams struct {
 	// 模块名，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：query_txid
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务所属通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 执行该查询交易的节点名称，可以在通道详情中获取该通道上的节点名称及其所属组织名称
-	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
+	PeerName *string `json:"PeerName,omitnil" name:"PeerName"`
 
 	// 执行该查询交易的节点所属组织名称，可以在通道详情中获取该通道上的节点名称及其所属组织名称
-	PeerGroup *string `json:"PeerGroup,omitempty" name:"PeerGroup"`
+	PeerGroup *string `json:"PeerGroup,omitnil" name:"PeerGroup"`
 
 	// 交易ID
-	TxId *string `json:"TxId,omitempty" name:"TxId"`
+	TxId *string `json:"TxId,omitnil" name:"TxId"`
 
 	// 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 }
 
 type GetInvokeTxRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：query_txid
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务所属通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 执行该查询交易的节点名称，可以在通道详情中获取该通道上的节点名称及其所属组织名称
-	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
+	PeerName *string `json:"PeerName,omitnil" name:"PeerName"`
 
 	// 执行该查询交易的节点所属组织名称，可以在通道详情中获取该通道上的节点名称及其所属组织名称
-	PeerGroup *string `json:"PeerGroup,omitempty" name:"PeerGroup"`
+	PeerGroup *string `json:"PeerGroup,omitnil" name:"PeerGroup"`
 
 	// 交易ID
-	TxId *string `json:"TxId,omitempty" name:"TxId"`
+	TxId *string `json:"TxId,omitnil" name:"TxId"`
 
 	// 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 }
 
 func (r *GetInvokeTxRequest) ToJsonString() string {
@@ -815,16 +815,16 @@ func (r *GetInvokeTxRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetInvokeTxResponseParams struct {
 	// 交易执行状态码
-	TxValidationCode *int64 `json:"TxValidationCode,omitempty" name:"TxValidationCode"`
+	TxValidationCode *int64 `json:"TxValidationCode,omitnil" name:"TxValidationCode"`
 
 	// 交易执行消息
-	TxValidationMsg *string `json:"TxValidationMsg,omitempty" name:"TxValidationMsg"`
+	TxValidationMsg *string `json:"TxValidationMsg,omitnil" name:"TxValidationMsg"`
 
 	// 交易所在区块ID
-	BlockId *int64 `json:"BlockId,omitempty" name:"BlockId"`
+	BlockId *int64 `json:"BlockId,omitnil" name:"BlockId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetInvokeTxResponse struct {
@@ -846,68 +846,68 @@ func (r *GetInvokeTxResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetLatesdTransactionListRequestParams struct {
 	// 模块名称，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名称，固定字段：latest_transaction_list
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 组织ID，固定字段：0
-	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 通道ID，固定字段：0
-	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 
 	// 获取的最新交易的区块数量，取值范围1~5
-	LatestBlockNumber *uint64 `json:"LatestBlockNumber,omitempty" name:"LatestBlockNumber"`
+	LatestBlockNumber *uint64 `json:"LatestBlockNumber,omitnil" name:"LatestBlockNumber"`
 
 	// 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 需要查询的通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 需要获取的起始交易偏移
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要获取的交易数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type GetLatesdTransactionListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名称，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名称，固定字段：latest_transaction_list
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 组织ID，固定字段：0
-	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 通道ID，固定字段：0
-	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 
 	// 获取的最新交易的区块数量，取值范围1~5
-	LatestBlockNumber *uint64 `json:"LatestBlockNumber,omitempty" name:"LatestBlockNumber"`
+	LatestBlockNumber *uint64 `json:"LatestBlockNumber,omitnil" name:"LatestBlockNumber"`
 
 	// 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 需要查询的通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 需要获取的起始交易偏移
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要获取的交易数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *GetLatesdTransactionListRequest) ToJsonString() string {
@@ -941,13 +941,13 @@ func (r *GetLatesdTransactionListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetLatesdTransactionListResponseParams struct {
 	// 交易总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 交易列表
-	TransactionList []*TransactionItem `json:"TransactionList,omitempty" name:"TransactionList"`
+	TransactionList []*TransactionItem `json:"TransactionList,omitnil" name:"TransactionList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetLatesdTransactionListResponse struct {
@@ -969,68 +969,68 @@ func (r *GetLatesdTransactionListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetLatestTransactionListRequestParams struct {
 	// 模块名称，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名称，固定字段：latest_transaction_list
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 组织ID，固定字段：0
-	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 通道ID，固定字段：0
-	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 
 	// 获取的最新交易的区块数量，取值范围1~5
-	LatestBlockNumber *uint64 `json:"LatestBlockNumber,omitempty" name:"LatestBlockNumber"`
+	LatestBlockNumber *uint64 `json:"LatestBlockNumber,omitnil" name:"LatestBlockNumber"`
 
 	// 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 需要查询的通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 需要获取的起始交易偏移
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要获取的交易数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type GetLatestTransactionListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名称，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名称，固定字段：latest_transaction_list
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 组织ID，固定字段：0
-	GroupId *uint64 `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 通道ID，固定字段：0
-	ChannelId *uint64 `json:"ChannelId,omitempty" name:"ChannelId"`
+	ChannelId *uint64 `json:"ChannelId,omitnil" name:"ChannelId"`
 
 	// 获取的最新交易的区块数量，取值范围1~5
-	LatestBlockNumber *uint64 `json:"LatestBlockNumber,omitempty" name:"LatestBlockNumber"`
+	LatestBlockNumber *uint64 `json:"LatestBlockNumber,omitnil" name:"LatestBlockNumber"`
 
 	// 调用接口的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 需要查询的通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 需要获取的起始交易偏移
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 需要获取的交易数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *GetLatestTransactionListRequest) ToJsonString() string {
@@ -1064,13 +1064,13 @@ func (r *GetLatestTransactionListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetLatestTransactionListResponseParams struct {
 	// 交易总数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 交易列表
-	TransactionList []*TransactionItem `json:"TransactionList,omitempty" name:"TransactionList"`
+	TransactionList []*TransactionItem `json:"TransactionList,omitnil" name:"TransactionList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetLatestTransactionListResponse struct {
@@ -1092,50 +1092,50 @@ func (r *GetLatestTransactionListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTransactionDetailForUserRequestParams struct {
 	// 模块名，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：transaction_detail_for_user
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 参与交易的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 业务所属通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 区块ID，通过GetInvokeTx接口可以获取交易所在的区块ID
-	BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
+	BlockId *uint64 `json:"BlockId,omitnil" name:"BlockId"`
 
 	// 交易ID，需要查询的详情的交易ID
-	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+	TransactionId *string `json:"TransactionId,omitnil" name:"TransactionId"`
 }
 
 type GetTransactionDetailForUserRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：transaction_detail_for_user
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 参与交易的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 业务所属通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 区块ID，通过GetInvokeTx接口可以获取交易所在的区块ID
-	BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
+	BlockId *uint64 `json:"BlockId,omitnil" name:"BlockId"`
 
 	// 交易ID，需要查询的详情的交易ID
-	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+	TransactionId *string `json:"TransactionId,omitnil" name:"TransactionId"`
 }
 
 func (r *GetTransactionDetailForUserRequest) ToJsonString() string {
@@ -1166,46 +1166,46 @@ func (r *GetTransactionDetailForUserRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetTransactionDetailForUserResponseParams struct {
 	// 交易ID
-	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+	TransactionId *string `json:"TransactionId,omitnil" name:"TransactionId"`
 
 	// 交易hash
-	TransactionHash *string `json:"TransactionHash,omitempty" name:"TransactionHash"`
+	TransactionHash *string `json:"TransactionHash,omitnil" name:"TransactionHash"`
 
 	// 创建交易的组织名
-	CreateOrgName *string `json:"CreateOrgName,omitempty" name:"CreateOrgName"`
+	CreateOrgName *string `json:"CreateOrgName,omitnil" name:"CreateOrgName"`
 
 	// 交易类型（普通交易和配置交易）
-	TransactionType *string `json:"TransactionType,omitempty" name:"TransactionType"`
+	TransactionType *string `json:"TransactionType,omitnil" name:"TransactionType"`
 
 	// 交易状态
-	TransactionStatus *string `json:"TransactionStatus,omitempty" name:"TransactionStatus"`
+	TransactionStatus *string `json:"TransactionStatus,omitnil" name:"TransactionStatus"`
 
 	// 交易创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 交易数据
-	TransactionData *string `json:"TransactionData,omitempty" name:"TransactionData"`
+	TransactionData *string `json:"TransactionData,omitnil" name:"TransactionData"`
 
 	// 交易所在区块号
-	BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
+	BlockId *uint64 `json:"BlockId,omitnil" name:"BlockId"`
 
 	// 交易所在区块哈希
-	BlockHash *string `json:"BlockHash,omitempty" name:"BlockHash"`
+	BlockHash *string `json:"BlockHash,omitnil" name:"BlockHash"`
 
 	// 交易所在区块高度
-	BlockHeight *uint64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+	BlockHeight *uint64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
 
 	// 通道名称
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 交易所在合约名称
-	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+	ContractName *string `json:"ContractName,omitnil" name:"ContractName"`
 
 	// 背书组织列表
-	EndorserOrgList []*EndorserGroup `json:"EndorserOrgList,omitempty" name:"EndorserOrgList"`
+	EndorserOrgList []*EndorserGroup `json:"EndorserOrgList,omitnil" name:"EndorserOrgList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetTransactionDetailForUserResponse struct {
@@ -1227,44 +1227,44 @@ func (r *GetTransactionDetailForUserResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type InvokeChainMakerContractRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
-	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+	ContractName *string `json:"ContractName,omitnil" name:"ContractName"`
 
 	// 合约方法名
-	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
 
 	// 合约方法入参，json格式字符串，key/value都是string类型的map
-	FuncParam *string `json:"FuncParam,omitempty" name:"FuncParam"`
+	FuncParam *string `json:"FuncParam,omitnil" name:"FuncParam"`
 
 	// 是否异步执行，1为是，否则为0；如果异步执行，可使用返回值中的交易TxID查询执行结果
-	AsyncFlag *int64 `json:"AsyncFlag,omitempty" name:"AsyncFlag"`
+	AsyncFlag *int64 `json:"AsyncFlag,omitnil" name:"AsyncFlag"`
 }
 
 type InvokeChainMakerContractRequest struct {
 	*tchttp.BaseRequest
 	
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
-	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+	ContractName *string `json:"ContractName,omitnil" name:"ContractName"`
 
 	// 合约方法名
-	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
 
 	// 合约方法入参，json格式字符串，key/value都是string类型的map
-	FuncParam *string `json:"FuncParam,omitempty" name:"FuncParam"`
+	FuncParam *string `json:"FuncParam,omitnil" name:"FuncParam"`
 
 	// 是否异步执行，1为是，否则为0；如果异步执行，可使用返回值中的交易TxID查询执行结果
-	AsyncFlag *int64 `json:"AsyncFlag,omitempty" name:"AsyncFlag"`
+	AsyncFlag *int64 `json:"AsyncFlag,omitnil" name:"AsyncFlag"`
 }
 
 func (r *InvokeChainMakerContractRequest) ToJsonString() string {
@@ -1295,10 +1295,10 @@ func (r *InvokeChainMakerContractRequest) FromJsonString(s string) error {
 type InvokeChainMakerContractResponseParams struct {
 	// 交易结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ChainMakerContractResult `json:"Result,omitempty" name:"Result"`
+	Result *ChainMakerContractResult `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type InvokeChainMakerContractResponse struct {
@@ -1320,44 +1320,44 @@ func (r *InvokeChainMakerContractResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type InvokeChainMakerDemoContractRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
-	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+	ContractName *string `json:"ContractName,omitnil" name:"ContractName"`
 
 	// 合约方法名
-	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
 
 	// 合约方法入参，json格式字符串，key/value都是string类型的map
-	FuncParam *string `json:"FuncParam,omitempty" name:"FuncParam"`
+	FuncParam *string `json:"FuncParam,omitnil" name:"FuncParam"`
 
 	// 是否异步执行，1为是，否则为0；如果异步执行，可使用返回值中的交易TxID查询执行结果
-	AsyncFlag *int64 `json:"AsyncFlag,omitempty" name:"AsyncFlag"`
+	AsyncFlag *int64 `json:"AsyncFlag,omitnil" name:"AsyncFlag"`
 }
 
 type InvokeChainMakerDemoContractRequest struct {
 	*tchttp.BaseRequest
 	
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
-	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+	ContractName *string `json:"ContractName,omitnil" name:"ContractName"`
 
 	// 合约方法名
-	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
 
 	// 合约方法入参，json格式字符串，key/value都是string类型的map
-	FuncParam *string `json:"FuncParam,omitempty" name:"FuncParam"`
+	FuncParam *string `json:"FuncParam,omitnil" name:"FuncParam"`
 
 	// 是否异步执行，1为是，否则为0；如果异步执行，可使用返回值中的交易TxID查询执行结果
-	AsyncFlag *int64 `json:"AsyncFlag,omitempty" name:"AsyncFlag"`
+	AsyncFlag *int64 `json:"AsyncFlag,omitnil" name:"AsyncFlag"`
 }
 
 func (r *InvokeChainMakerDemoContractRequest) ToJsonString() string {
@@ -1388,10 +1388,10 @@ func (r *InvokeChainMakerDemoContractRequest) FromJsonString(s string) error {
 type InvokeChainMakerDemoContractResponseParams struct {
 	// 交易结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ChainMakerContractResult `json:"Result,omitempty" name:"Result"`
+	Result *ChainMakerContractResult `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type InvokeChainMakerDemoContractResponse struct {
@@ -1413,68 +1413,68 @@ func (r *InvokeChainMakerDemoContractResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type InvokeRequestParams struct {
 	// 模块名，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：invoke
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务所属智能合约名称，可在智能合约详情或列表中获取
-	ChaincodeName *string `json:"ChaincodeName,omitempty" name:"ChaincodeName"`
+	ChaincodeName *string `json:"ChaincodeName,omitnil" name:"ChaincodeName"`
 
 	// 业务所属通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 对该笔交易进行背书的节点列表（包括节点名称和节点所属组织名称，详见数据结构一节），可以在通道详情中获取该通道上的节点名称及其所属组织名称
-	Peers []*PeerSet `json:"Peers,omitempty" name:"Peers"`
+	Peers []*PeerSet `json:"Peers,omitnil" name:"Peers"`
 
 	// 该笔交易需要调用的智能合约中的函数名称
-	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
 
 	// 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 被调用的函数参数列表，参数列表大小总和要求小于2M
-	Args []*string `json:"Args,omitempty" name:"Args"`
+	Args []*string `json:"Args,omitnil" name:"Args"`
 
 	// 同步调用标识，可选参数，值为0或者不传表示使用同步方法调用，调用后会等待交易执行后再返回执行结果；值为1时表示使用异步方式调用Invoke，执行后会立即返回交易对应的Txid，后续需要通过GetInvokeTx这个API查询该交易的执行结果。（对于逻辑较为简单的交易，可以使用同步模式；对于逻辑较为复杂的交易，建议使用异步模式，否则容易导致API因等待时间过长，返回等待超时）
-	AsyncFlag *uint64 `json:"AsyncFlag,omitempty" name:"AsyncFlag"`
+	AsyncFlag *uint64 `json:"AsyncFlag,omitnil" name:"AsyncFlag"`
 }
 
 type InvokeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：invoke
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务所属智能合约名称，可在智能合约详情或列表中获取
-	ChaincodeName *string `json:"ChaincodeName,omitempty" name:"ChaincodeName"`
+	ChaincodeName *string `json:"ChaincodeName,omitnil" name:"ChaincodeName"`
 
 	// 业务所属通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 对该笔交易进行背书的节点列表（包括节点名称和节点所属组织名称，详见数据结构一节），可以在通道详情中获取该通道上的节点名称及其所属组织名称
-	Peers []*PeerSet `json:"Peers,omitempty" name:"Peers"`
+	Peers []*PeerSet `json:"Peers,omitnil" name:"Peers"`
 
 	// 该笔交易需要调用的智能合约中的函数名称
-	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
 
 	// 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 被调用的函数参数列表，参数列表大小总和要求小于2M
-	Args []*string `json:"Args,omitempty" name:"Args"`
+	Args []*string `json:"Args,omitnil" name:"Args"`
 
 	// 同步调用标识，可选参数，值为0或者不传表示使用同步方法调用，调用后会等待交易执行后再返回执行结果；值为1时表示使用异步方式调用Invoke，执行后会立即返回交易对应的Txid，后续需要通过GetInvokeTx这个API查询该交易的执行结果。（对于逻辑较为简单的交易，可以使用同步模式；对于逻辑较为复杂的交易，建议使用异步模式，否则容易导致API因等待时间过长，返回等待超时）
-	AsyncFlag *uint64 `json:"AsyncFlag,omitempty" name:"AsyncFlag"`
+	AsyncFlag *uint64 `json:"AsyncFlag,omitnil" name:"AsyncFlag"`
 }
 
 func (r *InvokeRequest) ToJsonString() string {
@@ -1508,13 +1508,13 @@ func (r *InvokeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type InvokeResponseParams struct {
 	// 交易ID
-	Txid *string `json:"Txid,omitempty" name:"Txid"`
+	Txid *string `json:"Txid,omitnil" name:"Txid"`
 
 	// 交易执行结果
-	Events *string `json:"Events,omitempty" name:"Events"`
+	Events *string `json:"Events,omitnil" name:"Events"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type InvokeResponse struct {
@@ -1535,35 +1535,35 @@ func (r *InvokeResponse) FromJsonString(s string) error {
 
 type PeerSet struct {
 	// 节点名称
-	PeerName *string `json:"PeerName,omitempty" name:"PeerName"`
+	PeerName *string `json:"PeerName,omitnil" name:"PeerName"`
 
 	// 组织名称
-	OrgName *string `json:"OrgName,omitempty" name:"OrgName"`
+	OrgName *string `json:"OrgName,omitnil" name:"OrgName"`
 }
 
 // Predefined struct for user
 type QueryChainMakerBlockTransactionRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 区块高度
-	BlockHeight *int64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+	BlockHeight *int64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
 }
 
 type QueryChainMakerBlockTransactionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 区块高度
-	BlockHeight *int64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+	BlockHeight *int64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
 }
 
 func (r *QueryChainMakerBlockTransactionRequest) ToJsonString() string {
@@ -1591,20 +1591,20 @@ func (r *QueryChainMakerBlockTransactionRequest) FromJsonString(s string) error 
 type QueryChainMakerBlockTransactionResponseParams struct {
 	// 区块交易
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result []*ChainMakerTransactionResult `json:"Result,omitempty" name:"Result"`
+	Result []*ChainMakerTransactionResult `json:"Result,omitnil" name:"Result"`
 
 	// 区块高度
-	BlockHeight *int64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+	BlockHeight *int64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
 
 	// 交易数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TxCount *int64 `json:"TxCount,omitempty" name:"TxCount"`
+	TxCount *int64 `json:"TxCount,omitnil" name:"TxCount"`
 
 	// 区块时间戳，单位是秒
-	BlockTimestamp *int64 `json:"BlockTimestamp,omitempty" name:"BlockTimestamp"`
+	BlockTimestamp *int64 `json:"BlockTimestamp,omitnil" name:"BlockTimestamp"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryChainMakerBlockTransactionResponse struct {
@@ -1626,38 +1626,38 @@ func (r *QueryChainMakerBlockTransactionResponse) FromJsonString(s string) error
 // Predefined struct for user
 type QueryChainMakerContractRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
-	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+	ContractName *string `json:"ContractName,omitnil" name:"ContractName"`
 
 	// 合约方法名
-	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
 
 	// 合约方法入参，json格式字符串，key/value都是string类型的map
-	FuncParam *string `json:"FuncParam,omitempty" name:"FuncParam"`
+	FuncParam *string `json:"FuncParam,omitnil" name:"FuncParam"`
 }
 
 type QueryChainMakerContractRequest struct {
 	*tchttp.BaseRequest
 	
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
-	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+	ContractName *string `json:"ContractName,omitnil" name:"ContractName"`
 
 	// 合约方法名
-	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
 
 	// 合约方法入参，json格式字符串，key/value都是string类型的map
-	FuncParam *string `json:"FuncParam,omitempty" name:"FuncParam"`
+	FuncParam *string `json:"FuncParam,omitnil" name:"FuncParam"`
 }
 
 func (r *QueryChainMakerContractRequest) ToJsonString() string {
@@ -1687,10 +1687,10 @@ func (r *QueryChainMakerContractRequest) FromJsonString(s string) error {
 type QueryChainMakerContractResponseParams struct {
 	// 交易结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ChainMakerContractResult `json:"Result,omitempty" name:"Result"`
+	Result *ChainMakerContractResult `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryChainMakerContractResponse struct {
@@ -1712,26 +1712,26 @@ func (r *QueryChainMakerContractResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryChainMakerDemoBlockTransactionRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 区块高度
-	BlockHeight *int64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+	BlockHeight *int64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
 }
 
 type QueryChainMakerDemoBlockTransactionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 区块高度
-	BlockHeight *int64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+	BlockHeight *int64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
 }
 
 func (r *QueryChainMakerDemoBlockTransactionRequest) ToJsonString() string {
@@ -1759,20 +1759,20 @@ func (r *QueryChainMakerDemoBlockTransactionRequest) FromJsonString(s string) er
 type QueryChainMakerDemoBlockTransactionResponseParams struct {
 	// 区块交易
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result []*ChainMakerTransactionResult `json:"Result,omitempty" name:"Result"`
+	Result []*ChainMakerTransactionResult `json:"Result,omitnil" name:"Result"`
 
 	// 区块高度
-	BlockHeight *int64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+	BlockHeight *int64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
 
 	// 交易数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TxCount *int64 `json:"TxCount,omitempty" name:"TxCount"`
+	TxCount *int64 `json:"TxCount,omitnil" name:"TxCount"`
 
 	// 区块时间戳，单位是秒
-	BlockTimestamp *int64 `json:"BlockTimestamp,omitempty" name:"BlockTimestamp"`
+	BlockTimestamp *int64 `json:"BlockTimestamp,omitnil" name:"BlockTimestamp"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryChainMakerDemoBlockTransactionResponse struct {
@@ -1794,38 +1794,38 @@ func (r *QueryChainMakerDemoBlockTransactionResponse) FromJsonString(s string) e
 // Predefined struct for user
 type QueryChainMakerDemoContractRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
-	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+	ContractName *string `json:"ContractName,omitnil" name:"ContractName"`
 
 	// 合约方法名
-	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
 
 	// 合约方法入参，json格式字符串，key/value都是string类型的map
-	FuncParam *string `json:"FuncParam,omitempty" name:"FuncParam"`
+	FuncParam *string `json:"FuncParam,omitnil" name:"FuncParam"`
 }
 
 type QueryChainMakerDemoContractRequest struct {
 	*tchttp.BaseRequest
 	
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 合约名称，可在合约管理中获取
-	ContractName *string `json:"ContractName,omitempty" name:"ContractName"`
+	ContractName *string `json:"ContractName,omitnil" name:"ContractName"`
 
 	// 合约方法名
-	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
 
 	// 合约方法入参，json格式字符串，key/value都是string类型的map
-	FuncParam *string `json:"FuncParam,omitempty" name:"FuncParam"`
+	FuncParam *string `json:"FuncParam,omitnil" name:"FuncParam"`
 }
 
 func (r *QueryChainMakerDemoContractRequest) ToJsonString() string {
@@ -1855,10 +1855,10 @@ func (r *QueryChainMakerDemoContractRequest) FromJsonString(s string) error {
 type QueryChainMakerDemoContractResponseParams struct {
 	// 交易结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ChainMakerContractResult `json:"Result,omitempty" name:"Result"`
+	Result *ChainMakerContractResult `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryChainMakerDemoContractResponse struct {
@@ -1880,26 +1880,26 @@ func (r *QueryChainMakerDemoContractResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryChainMakerDemoTransactionRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 交易ID，通过调用合约的返回值获取
-	TxID *string `json:"TxID,omitempty" name:"TxID"`
+	TxID *string `json:"TxID,omitnil" name:"TxID"`
 }
 
 type QueryChainMakerDemoTransactionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 交易ID，通过调用合约的返回值获取
-	TxID *string `json:"TxID,omitempty" name:"TxID"`
+	TxID *string `json:"TxID,omitnil" name:"TxID"`
 }
 
 func (r *QueryChainMakerDemoTransactionRequest) ToJsonString() string {
@@ -1927,10 +1927,10 @@ func (r *QueryChainMakerDemoTransactionRequest) FromJsonString(s string) error {
 type QueryChainMakerDemoTransactionResponseParams struct {
 	// 交易结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ChainMakerTransactionResult `json:"Result,omitempty" name:"Result"`
+	Result *ChainMakerTransactionResult `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryChainMakerDemoTransactionResponse struct {
@@ -1952,26 +1952,26 @@ func (r *QueryChainMakerDemoTransactionResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type QueryChainMakerTransactionRequestParams struct {
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 交易ID，通过调用合约的返回值获取
-	TxID *string `json:"TxID,omitempty" name:"TxID"`
+	TxID *string `json:"TxID,omitnil" name:"TxID"`
 }
 
 type QueryChainMakerTransactionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务链ID，可在网络概览页获取
-	ChainId *string `json:"ChainId,omitempty" name:"ChainId"`
+	ChainId *string `json:"ChainId,omitnil" name:"ChainId"`
 
 	// 交易ID，通过调用合约的返回值获取
-	TxID *string `json:"TxID,omitempty" name:"TxID"`
+	TxID *string `json:"TxID,omitnil" name:"TxID"`
 }
 
 func (r *QueryChainMakerTransactionRequest) ToJsonString() string {
@@ -1999,10 +1999,10 @@ func (r *QueryChainMakerTransactionRequest) FromJsonString(s string) error {
 type QueryChainMakerTransactionResponseParams struct {
 	// 交易结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *ChainMakerTransactionResult `json:"Result,omitempty" name:"Result"`
+	Result *ChainMakerTransactionResult `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryChainMakerTransactionResponse struct {
@@ -2024,62 +2024,62 @@ func (r *QueryChainMakerTransactionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryRequestParams struct {
 	// 模块名，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：query
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务所属智能合约名称，可在智能合约详情或列表中获取
-	ChaincodeName *string `json:"ChaincodeName,omitempty" name:"ChaincodeName"`
+	ChaincodeName *string `json:"ChaincodeName,omitnil" name:"ChaincodeName"`
 
 	// 业务所属通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 执行该查询交易的节点列表（包括节点名称和节点所属组织名称，详见数据结构一节），可以在通道详情中获取该通道上的节点名称及其所属组织名称
-	Peers []*PeerSet `json:"Peers,omitempty" name:"Peers"`
+	Peers []*PeerSet `json:"Peers,omitnil" name:"Peers"`
 
 	// 该笔交易查询需要调用的智能合约中的函数名称
-	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
 
 	// 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 被调用的函数参数列表
-	Args []*string `json:"Args,omitempty" name:"Args"`
+	Args []*string `json:"Args,omitnil" name:"Args"`
 }
 
 type QueryRequest struct {
 	*tchttp.BaseRequest
 	
 	// 模块名，固定字段：transaction
-	Module *string `json:"Module,omitempty" name:"Module"`
+	Module *string `json:"Module,omitnil" name:"Module"`
 
 	// 操作名，固定字段：query
-	Operation *string `json:"Operation,omitempty" name:"Operation"`
+	Operation *string `json:"Operation,omitnil" name:"Operation"`
 
 	// 区块链网络ID，可在区块链网络详情或列表中获取
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 业务所属智能合约名称，可在智能合约详情或列表中获取
-	ChaincodeName *string `json:"ChaincodeName,omitempty" name:"ChaincodeName"`
+	ChaincodeName *string `json:"ChaincodeName,omitnil" name:"ChaincodeName"`
 
 	// 业务所属通道名称，可在通道详情或列表中获取
-	ChannelName *string `json:"ChannelName,omitempty" name:"ChannelName"`
+	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
 	// 执行该查询交易的节点列表（包括节点名称和节点所属组织名称，详见数据结构一节），可以在通道详情中获取该通道上的节点名称及其所属组织名称
-	Peers []*PeerSet `json:"Peers,omitempty" name:"Peers"`
+	Peers []*PeerSet `json:"Peers,omitnil" name:"Peers"`
 
 	// 该笔交易查询需要调用的智能合约中的函数名称
-	FuncName *string `json:"FuncName,omitempty" name:"FuncName"`
+	FuncName *string `json:"FuncName,omitnil" name:"FuncName"`
 
 	// 调用合约的组织名称，可以在组织管理列表中获取当前组织的名称
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 被调用的函数参数列表
-	Args []*string `json:"Args,omitempty" name:"Args"`
+	Args []*string `json:"Args,omitnil" name:"Args"`
 }
 
 func (r *QueryRequest) ToJsonString() string {
@@ -2112,10 +2112,10 @@ func (r *QueryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryResponseParams struct {
 	// 查询结果数据
-	Data []*string `json:"Data,omitempty" name:"Data"`
+	Data []*string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryResponse struct {
@@ -2136,35 +2136,35 @@ func (r *QueryResponse) FromJsonString(s string) error {
 
 type SignCertCsr struct {
 	// 用户签名证书的标识，会存在于用户申请的证书中
-	CertMark *string `json:"CertMark,omitempty" name:"CertMark"`
+	CertMark *string `json:"CertMark,omitnil" name:"CertMark"`
 
 	// 用户申请签名证书所需要的证书请求文件的base64编码
-	SignCsrContent *string `json:"SignCsrContent,omitempty" name:"SignCsrContent"`
+	SignCsrContent *string `json:"SignCsrContent,omitnil" name:"SignCsrContent"`
 }
 
 // Predefined struct for user
 type SrvInvokeRequestParams struct {
 	// 服务类型，iss或者dam
-	Service *string `json:"Service,omitempty" name:"Service"`
+	Service *string `json:"Service,omitnil" name:"Service"`
 
 	// 服务接口，要调用的方法函数名
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 
 	// 用户自定义json字符串
-	Param *string `json:"Param,omitempty" name:"Param"`
+	Param *string `json:"Param,omitnil" name:"Param"`
 }
 
 type SrvInvokeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务类型，iss或者dam
-	Service *string `json:"Service,omitempty" name:"Service"`
+	Service *string `json:"Service,omitnil" name:"Service"`
 
 	// 服务接口，要调用的方法函数名
-	Method *string `json:"Method,omitempty" name:"Method"`
+	Method *string `json:"Method,omitnil" name:"Method"`
 
 	// 用户自定义json字符串
-	Param *string `json:"Param,omitempty" name:"Param"`
+	Param *string `json:"Param,omitnil" name:"Param"`
 }
 
 func (r *SrvInvokeRequest) ToJsonString() string {
@@ -2191,16 +2191,16 @@ func (r *SrvInvokeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SrvInvokeResponseParams struct {
 	// 返回码
-	RetCode *int64 `json:"RetCode,omitempty" name:"RetCode"`
+	RetCode *int64 `json:"RetCode,omitnil" name:"RetCode"`
 
 	// 返回消息
-	RetMsg *string `json:"RetMsg,omitempty" name:"RetMsg"`
+	RetMsg *string `json:"RetMsg,omitnil" name:"RetMsg"`
 
 	// 返回数据
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SrvInvokeResponse struct {
@@ -2221,26 +2221,26 @@ func (r *SrvInvokeResponse) FromJsonString(s string) error {
 
 type TransactionItem struct {
 	// 交易ID
-	TransactionId *string `json:"TransactionId,omitempty" name:"TransactionId"`
+	TransactionId *string `json:"TransactionId,omitnil" name:"TransactionId"`
 
 	// 交易hash
-	TransactionHash *string `json:"TransactionHash,omitempty" name:"TransactionHash"`
+	TransactionHash *string `json:"TransactionHash,omitnil" name:"TransactionHash"`
 
 	// 创建交易的组织名
-	CreateOrgName *string `json:"CreateOrgName,omitempty" name:"CreateOrgName"`
+	CreateOrgName *string `json:"CreateOrgName,omitnil" name:"CreateOrgName"`
 
 	// 交易所在区块号
-	BlockId *uint64 `json:"BlockId,omitempty" name:"BlockId"`
+	BlockId *uint64 `json:"BlockId,omitnil" name:"BlockId"`
 
 	// 交易类型（普通交易和配置交易）
-	TransactionType *string `json:"TransactionType,omitempty" name:"TransactionType"`
+	TransactionType *string `json:"TransactionType,omitnil" name:"TransactionType"`
 
 	// 交易创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 交易所在区块高度
-	BlockHeight *uint64 `json:"BlockHeight,omitempty" name:"BlockHeight"`
+	BlockHeight *uint64 `json:"BlockHeight,omitnil" name:"BlockHeight"`
 
 	// 交易状态
-	TransactionStatus *string `json:"TransactionStatus,omitempty" name:"TransactionStatus"`
+	TransactionStatus *string `json:"TransactionStatus,omitnil" name:"TransactionStatus"`
 }

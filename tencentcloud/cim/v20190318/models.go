@@ -15,9 +15,9 @@
 package v20190318
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
@@ -52,10 +52,10 @@ func (r *DescribeSdkAppidRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSdkAppidResponseParams struct {
 	// 表示 appid 对应的 SdkAppid 的数据
-	SdkAppids []*int64 `json:"SdkAppids,omitempty" name:"SdkAppids"`
+	SdkAppids []*int64 `json:"SdkAppids,omitnil" name:"SdkAppids"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSdkAppidResponse struct {

@@ -15,45 +15,45 @@
 package v20191126
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type BindDevInfo struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 设备名称
-	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
 
 	// 设备型号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeviceModel *string `json:"DeviceModel,omitempty" name:"DeviceModel"`
+	DeviceModel *string `json:"DeviceModel,omitnil" name:"DeviceModel"`
 
 	// 用户角色，owner：主人，guest：访客
-	Role *string `json:"Role,omitempty" name:"Role"`
+	Role *string `json:"Role,omitnil" name:"Role"`
 }
 
 type BindUsrInfo struct {
 	// IotVideo平台分配给终端用户的用户id
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 用户角色，owner：主人，guest：访客
-	Role *string `json:"Role,omitempty" name:"Role"`
+	Role *string `json:"Role,omitnil" name:"Role"`
 }
 
 // Predefined struct for user
 type ClearDeviceActiveCodeRequestParams struct {
 	// 设备TID列表，0<元素数量<=100
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 type ClearDeviceActiveCodeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID列表，0<元素数量<=100
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 func (r *ClearDeviceActiveCodeRequest) ToJsonString() string {
@@ -78,7 +78,7 @@ func (r *ClearDeviceActiveCodeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ClearDeviceActiveCodeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ClearDeviceActiveCodeResponse struct {
@@ -100,44 +100,44 @@ func (r *ClearDeviceActiveCodeResponse) FromJsonString(s string) error {
 type Contents struct {
 	// 英文，长度不超过300个字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	En *string `json:"En,omitempty" name:"En"`
+	En *string `json:"En,omitnil" name:"En"`
 
 	// 中文简体，长度不超过300个字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cn *string `json:"Cn,omitempty" name:"Cn"`
+	Cn *string `json:"Cn,omitnil" name:"Cn"`
 
 	// 中文繁体(Traditional Chinese)，长度不超过300个字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tc *string `json:"Tc,omitempty" name:"Tc"`
+	Tc *string `json:"Tc,omitnil" name:"Tc"`
 
 	// 默认语言，最多不超过300个字符
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Default *string `json:"Default,omitempty" name:"Default"`
+	Default *string `json:"Default,omitnil" name:"Default"`
 }
 
 // Predefined struct for user
 type CreateAnonymousAccessTokenRequestParams struct {
 	// Token的TTL(time to alive)分钟数,最大值1440(即24小时)
-	TtlMinutes *int64 `json:"TtlMinutes,omitempty" name:"TtlMinutes"`
+	TtlMinutes *int64 `json:"TtlMinutes,omitnil" name:"TtlMinutes"`
 
 	// 设备ID。创建Token时, 此参数为必须项
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 旧的AccessToken。续期Token时，此参数为必须
-	OldAccessToken *string `json:"OldAccessToken,omitempty" name:"OldAccessToken"`
+	OldAccessToken *string `json:"OldAccessToken,omitnil" name:"OldAccessToken"`
 }
 
 type CreateAnonymousAccessTokenRequest struct {
 	*tchttp.BaseRequest
 	
 	// Token的TTL(time to alive)分钟数,最大值1440(即24小时)
-	TtlMinutes *int64 `json:"TtlMinutes,omitempty" name:"TtlMinutes"`
+	TtlMinutes *int64 `json:"TtlMinutes,omitnil" name:"TtlMinutes"`
 
 	// 设备ID。创建Token时, 此参数为必须项
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 旧的AccessToken。续期Token时，此参数为必须
-	OldAccessToken *string `json:"OldAccessToken,omitempty" name:"OldAccessToken"`
+	OldAccessToken *string `json:"OldAccessToken,omitnil" name:"OldAccessToken"`
 }
 
 func (r *CreateAnonymousAccessTokenRequest) ToJsonString() string {
@@ -164,16 +164,16 @@ func (r *CreateAnonymousAccessTokenRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAnonymousAccessTokenResponseParams struct {
 	// 终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// IoT Video平台的AccessToken
-	AccessToken *string `json:"AccessToken,omitempty" name:"AccessToken"`
+	AccessToken *string `json:"AccessToken,omitnil" name:"AccessToken"`
 
 	// Token的过期时间，单位秒(UTC时间)
-	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *int64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAnonymousAccessTokenResponse struct {
@@ -195,20 +195,20 @@ func (r *CreateAnonymousAccessTokenResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAppUsrRequestParams struct {
 	// 标识用户的唯一ID，防止同一个用户多次注册
-	CunionId *string `json:"CunionId,omitempty" name:"CunionId"`
+	CunionId *string `json:"CunionId,omitnil" name:"CunionId"`
 
 	// 用于小程序关联手机号
-	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 }
 
 type CreateAppUsrRequest struct {
 	*tchttp.BaseRequest
 	
 	// 标识用户的唯一ID，防止同一个用户多次注册
-	CunionId *string `json:"CunionId,omitempty" name:"CunionId"`
+	CunionId *string `json:"CunionId,omitnil" name:"CunionId"`
 
 	// 用于小程序关联手机号
-	Mobile *string `json:"Mobile,omitempty" name:"Mobile"`
+	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 }
 
 func (r *CreateAppUsrRequest) ToJsonString() string {
@@ -234,16 +234,16 @@ func (r *CreateAppUsrRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAppUsrResponseParams struct {
 	// 厂商云标识用户的唯一ID
-	CunionId *string `json:"CunionId,omitempty" name:"CunionId"`
+	CunionId *string `json:"CunionId,omitnil" name:"CunionId"`
 
 	// 客户的终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 用户是否为新创建
-	NewRegist *bool `json:"NewRegist,omitempty" name:"NewRegist"`
+	NewRegist *bool `json:"NewRegist,omitnil" name:"NewRegist"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAppUsrResponse struct {
@@ -265,44 +265,44 @@ func (r *CreateAppUsrResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBindingRequestParams struct {
 	// 终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 用户角色，owner：主人，guest：访客
-	Role *string `json:"Role,omitempty" name:"Role"`
+	Role *string `json:"Role,omitnil" name:"Role"`
 
 	// 是否踢掉之前的主人，true：踢掉；false：不踢掉。当role为guest时，可以不填
-	ForceBind *bool `json:"ForceBind,omitempty" name:"ForceBind"`
+	ForceBind *bool `json:"ForceBind,omitnil" name:"ForceBind"`
 
 	// 设备昵称，最多不超过64个字符
-	Nick *string `json:"Nick,omitempty" name:"Nick"`
+	Nick *string `json:"Nick,omitnil" name:"Nick"`
 
 	// 绑定过程中的会话token，由设备通过SDK接口确认是否允许绑定的token，用于增加设备被绑定的安全性
-	BindToken *string `json:"BindToken,omitempty" name:"BindToken"`
+	BindToken *string `json:"BindToken,omitnil" name:"BindToken"`
 }
 
 type CreateBindingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 用户角色，owner：主人，guest：访客
-	Role *string `json:"Role,omitempty" name:"Role"`
+	Role *string `json:"Role,omitnil" name:"Role"`
 
 	// 是否踢掉之前的主人，true：踢掉；false：不踢掉。当role为guest时，可以不填
-	ForceBind *bool `json:"ForceBind,omitempty" name:"ForceBind"`
+	ForceBind *bool `json:"ForceBind,omitnil" name:"ForceBind"`
 
 	// 设备昵称，最多不超过64个字符
-	Nick *string `json:"Nick,omitempty" name:"Nick"`
+	Nick *string `json:"Nick,omitnil" name:"Nick"`
 
 	// 绑定过程中的会话token，由设备通过SDK接口确认是否允许绑定的token，用于增加设备被绑定的安全性
-	BindToken *string `json:"BindToken,omitempty" name:"BindToken"`
+	BindToken *string `json:"BindToken,omitnil" name:"BindToken"`
 }
 
 func (r *CreateBindingRequest) ToJsonString() string {
@@ -332,10 +332,10 @@ func (r *CreateBindingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateBindingResponseParams struct {
 	// 访问设备的AccessToken
-	AccessToken *string `json:"AccessToken,omitempty" name:"AccessToken"`
+	AccessToken *string `json:"AccessToken,omitnil" name:"AccessToken"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateBindingResponse struct {
@@ -357,26 +357,26 @@ func (r *CreateBindingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDevTokenRequestParams struct {
 	// 客户的终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 设备TID列表,0<元素数量<=100
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 
 	// Token的TTL(time to alive)分钟数
-	TtlMinutes *uint64 `json:"TtlMinutes,omitempty" name:"TtlMinutes"`
+	TtlMinutes *uint64 `json:"TtlMinutes,omitnil" name:"TtlMinutes"`
 }
 
 type CreateDevTokenRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户的终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 设备TID列表,0<元素数量<=100
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 
 	// Token的TTL(time to alive)分钟数
-	TtlMinutes *uint64 `json:"TtlMinutes,omitempty" name:"TtlMinutes"`
+	TtlMinutes *uint64 `json:"TtlMinutes,omitnil" name:"TtlMinutes"`
 }
 
 func (r *CreateDevTokenRequest) ToJsonString() string {
@@ -404,10 +404,10 @@ func (r *CreateDevTokenRequest) FromJsonString(s string) error {
 type CreateDevTokenResponseParams struct {
 	// 返回的用户token列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*DevTokenInfo `json:"Data,omitempty" name:"Data"`
+	Data []*DevTokenInfo `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDevTokenResponse struct {
@@ -429,32 +429,32 @@ func (r *CreateDevTokenResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDevicesRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 创建设备的数量，数量范围1-100
-	Number *uint64 `json:"Number,omitempty" name:"Number"`
+	Number *uint64 `json:"Number,omitnil" name:"Number"`
 
 	// 设备名称前缀，支持英文、数字，不超过10字符
-	NamePrefix *string `json:"NamePrefix,omitempty" name:"NamePrefix"`
+	NamePrefix *string `json:"NamePrefix,omitnil" name:"NamePrefix"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 }
 
 type CreateDevicesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 创建设备的数量，数量范围1-100
-	Number *uint64 `json:"Number,omitempty" name:"Number"`
+	Number *uint64 `json:"Number,omitnil" name:"Number"`
 
 	// 设备名称前缀，支持英文、数字，不超过10字符
-	NamePrefix *string `json:"NamePrefix,omitempty" name:"NamePrefix"`
+	NamePrefix *string `json:"NamePrefix,omitnil" name:"NamePrefix"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 }
 
 func (r *CreateDevicesRequest) ToJsonString() string {
@@ -482,10 +482,10 @@ func (r *CreateDevicesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDevicesResponseParams struct {
 	// 新创建设备的认证信息
-	Data []*DeviceCertificate `json:"Data,omitempty" name:"Data"`
+	Data []*DeviceCertificate `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDevicesResponse struct {
@@ -507,20 +507,20 @@ func (r *CreateDevicesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateGencodeRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 物模型发布版本号,-1代表未发布的，保存的是草稿箱的版本。1代表已发布的物模型。
-	Revision *int64 `json:"Revision,omitempty" name:"Revision"`
+	Revision *int64 `json:"Revision,omitnil" name:"Revision"`
 }
 
 type CreateGencodeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 物模型发布版本号,-1代表未发布的，保存的是草稿箱的版本。1代表已发布的物模型。
-	Revision *int64 `json:"Revision,omitempty" name:"Revision"`
+	Revision *int64 `json:"Revision,omitnil" name:"Revision"`
 }
 
 func (r *CreateGencodeRequest) ToJsonString() string {
@@ -547,10 +547,10 @@ func (r *CreateGencodeRequest) FromJsonString(s string) error {
 type CreateGencodeResponseParams struct {
 	// 生成的源代码(zip压缩后的base64编码)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ZipCode *string `json:"ZipCode,omitempty" name:"ZipCode"`
+	ZipCode *string `json:"ZipCode,omitnil" name:"ZipCode"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateGencodeResponse struct {
@@ -572,14 +572,14 @@ func (r *CreateGencodeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateIotDataTypeRequestParams struct {
 	// 用户自定义数据类型，json格式的字符串
-	IotDataType *string `json:"IotDataType,omitempty" name:"IotDataType"`
+	IotDataType *string `json:"IotDataType,omitnil" name:"IotDataType"`
 }
 
 type CreateIotDataTypeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 用户自定义数据类型，json格式的字符串
-	IotDataType *string `json:"IotDataType,omitempty" name:"IotDataType"`
+	IotDataType *string `json:"IotDataType,omitnil" name:"IotDataType"`
 }
 
 func (r *CreateIotDataTypeRequest) ToJsonString() string {
@@ -604,7 +604,7 @@ func (r *CreateIotDataTypeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateIotDataTypeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateIotDataTypeResponse struct {
@@ -626,20 +626,20 @@ func (r *CreateIotDataTypeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateIotModelRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 物模型json串
-	IotModel *string `json:"IotModel,omitempty" name:"IotModel"`
+	IotModel *string `json:"IotModel,omitnil" name:"IotModel"`
 }
 
 type CreateIotModelRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 物模型json串
-	IotModel *string `json:"IotModel,omitempty" name:"IotModel"`
+	IotModel *string `json:"IotModel,omitnil" name:"IotModel"`
 }
 
 func (r *CreateIotModelRequest) ToJsonString() string {
@@ -665,7 +665,7 @@ func (r *CreateIotModelRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateIotModelResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateIotModelResponse struct {
@@ -687,24 +687,24 @@ func (r *CreateIotModelResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateProductRequestParams struct {
 	// 产器型号(APP产品,为APP包名)
-	ProductModel *string `json:"ProductModel,omitempty" name:"ProductModel"`
+	ProductModel *string `json:"ProductModel,omitnil" name:"ProductModel"`
 
 	// 产品名称
 	// 仅支持中文、英文、数字、下划线，不超过32个字符
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 
 	// 产品描述信息
 	// 不支持单引号、双引号、退格符、回车符、换行符、制表符、反斜杠、下划线、“%”、“#”、“$”，不超过128字符
-	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
+	ProductDescription *string `json:"ProductDescription,omitnil" name:"ProductDescription"`
 
 	// 设备功能码（ypsxth:音频双向通话 ，spdxth:视频单向通话）
-	Features []*string `json:"Features,omitempty" name:"Features"`
+	Features []*string `json:"Features,omitnil" name:"Features"`
 
 	// 主芯片产商ID
-	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
+	ChipManufactureId *string `json:"ChipManufactureId,omitnil" name:"ChipManufactureId"`
 
 	// 主芯片ID
-	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
+	ChipId *string `json:"ChipId,omitnil" name:"ChipId"`
 
 	// 地域：
 	// China-Mainland（中国大陆）
@@ -713,43 +713,43 @@ type CreateProductRequestParams struct {
 	// Europe（欧洲）
 	// India（印度）
 	// Other-Overseas（其他境外地区）
-	ProductRegion *string `json:"ProductRegion,omitempty" name:"ProductRegion"`
+	ProductRegion *string `json:"ProductRegion,omitnil" name:"ProductRegion"`
 
 	// 设备类型, 0-普通视频设备，1-NVR设备
-	ProductCate *uint64 `json:"ProductCate,omitempty" name:"ProductCate"`
+	ProductCate *uint64 `json:"ProductCate,omitnil" name:"ProductCate"`
 
 	// 接入模型，bit0是0：公版小程序未接入，bit0是1：公版小程序已接入
-	AccessMode *int64 `json:"AccessMode,omitempty" name:"AccessMode"`
+	AccessMode *int64 `json:"AccessMode,omitnil" name:"AccessMode"`
 
 	// Linux,Android,Liteos等系统
-	Os *string `json:"Os,omitempty" name:"Os"`
+	Os *string `json:"Os,omitnil" name:"Os"`
 
 	// 芯片架构，只是针对操作系统为android的
-	ChipArch *string `json:"ChipArch,omitempty" name:"ChipArch"`
+	ChipArch *string `json:"ChipArch,omitnil" name:"ChipArch"`
 }
 
 type CreateProductRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产器型号(APP产品,为APP包名)
-	ProductModel *string `json:"ProductModel,omitempty" name:"ProductModel"`
+	ProductModel *string `json:"ProductModel,omitnil" name:"ProductModel"`
 
 	// 产品名称
 	// 仅支持中文、英文、数字、下划线，不超过32个字符
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 
 	// 产品描述信息
 	// 不支持单引号、双引号、退格符、回车符、换行符、制表符、反斜杠、下划线、“%”、“#”、“$”，不超过128字符
-	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
+	ProductDescription *string `json:"ProductDescription,omitnil" name:"ProductDescription"`
 
 	// 设备功能码（ypsxth:音频双向通话 ，spdxth:视频单向通话）
-	Features []*string `json:"Features,omitempty" name:"Features"`
+	Features []*string `json:"Features,omitnil" name:"Features"`
 
 	// 主芯片产商ID
-	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
+	ChipManufactureId *string `json:"ChipManufactureId,omitnil" name:"ChipManufactureId"`
 
 	// 主芯片ID
-	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
+	ChipId *string `json:"ChipId,omitnil" name:"ChipId"`
 
 	// 地域：
 	// China-Mainland（中国大陆）
@@ -758,19 +758,19 @@ type CreateProductRequest struct {
 	// Europe（欧洲）
 	// India（印度）
 	// Other-Overseas（其他境外地区）
-	ProductRegion *string `json:"ProductRegion,omitempty" name:"ProductRegion"`
+	ProductRegion *string `json:"ProductRegion,omitnil" name:"ProductRegion"`
 
 	// 设备类型, 0-普通视频设备，1-NVR设备
-	ProductCate *uint64 `json:"ProductCate,omitempty" name:"ProductCate"`
+	ProductCate *uint64 `json:"ProductCate,omitnil" name:"ProductCate"`
 
 	// 接入模型，bit0是0：公版小程序未接入，bit0是1：公版小程序已接入
-	AccessMode *int64 `json:"AccessMode,omitempty" name:"AccessMode"`
+	AccessMode *int64 `json:"AccessMode,omitnil" name:"AccessMode"`
 
 	// Linux,Android,Liteos等系统
-	Os *string `json:"Os,omitempty" name:"Os"`
+	Os *string `json:"Os,omitnil" name:"Os"`
 
 	// 芯片架构，只是针对操作系统为android的
-	ChipArch *string `json:"ChipArch,omitempty" name:"ChipArch"`
+	ChipArch *string `json:"ChipArch,omitnil" name:"ChipArch"`
 }
 
 func (r *CreateProductRequest) ToJsonString() string {
@@ -805,10 +805,10 @@ func (r *CreateProductRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateProductResponseParams struct {
 	// 产品详细信息
-	Data *ProductBase `json:"Data,omitempty" name:"Data"`
+	Data *ProductBase `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateProductResponse struct {
@@ -830,26 +830,26 @@ func (r *CreateProductResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateStorageRequestParams struct {
 	// 云存套餐ID
-	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+	PkgId *string `json:"PkgId,omitnil" name:"PkgId"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 用户唯一标识，由厂商保证内部唯一性
-	UserTag *string `json:"UserTag,omitempty" name:"UserTag"`
+	UserTag *string `json:"UserTag,omitnil" name:"UserTag"`
 }
 
 type CreateStorageRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云存套餐ID
-	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+	PkgId *string `json:"PkgId,omitnil" name:"PkgId"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 用户唯一标识，由厂商保证内部唯一性
-	UserTag *string `json:"UserTag,omitempty" name:"UserTag"`
+	UserTag *string `json:"UserTag,omitnil" name:"UserTag"`
 }
 
 func (r *CreateStorageRequest) ToJsonString() string {
@@ -876,7 +876,7 @@ func (r *CreateStorageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateStorageResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateStorageResponse struct {
@@ -912,25 +912,25 @@ type CreateStorageServiceRequestParams struct {
 	// ye1y30d ：事件30天存储年套餐。
 	// yc1w7d : 全时7天存储周套餐。
 	// ye1w7d : 事件7天存储周套餐。
-	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+	PkgId *string `json:"PkgId,omitnil" name:"PkgId"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 订单数量,可一次性创建多个订单
-	OrderCount *int64 `json:"OrderCount,omitempty" name:"OrderCount"`
+	OrderCount *int64 `json:"OrderCount,omitnil" name:"OrderCount"`
 
 	// 云存服务所在的区域,如ap-guangzhou,ap-singapore, na-siliconvalley, eu-frankfurt
-	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+	StorageRegion *string `json:"StorageRegion,omitnil" name:"StorageRegion"`
 
 	// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
-	ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+	ChnNum *int64 `json:"ChnNum,omitnil" name:"ChnNum"`
 
 	// 设备主人用户在IoT Video平台的注册ID。该参数用于验证Paas/Saas平台的设备/用户关系链是否一致
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 服务生效时间,若不指定此参数，服务立即生效
-	EnableTime *int64 `json:"EnableTime,omitempty" name:"EnableTime"`
+	EnableTime *int64 `json:"EnableTime,omitnil" name:"EnableTime"`
 }
 
 type CreateStorageServiceRequest struct {
@@ -951,25 +951,25 @@ type CreateStorageServiceRequest struct {
 	// ye1y30d ：事件30天存储年套餐。
 	// yc1w7d : 全时7天存储周套餐。
 	// ye1w7d : 事件7天存储周套餐。
-	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+	PkgId *string `json:"PkgId,omitnil" name:"PkgId"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 订单数量,可一次性创建多个订单
-	OrderCount *int64 `json:"OrderCount,omitempty" name:"OrderCount"`
+	OrderCount *int64 `json:"OrderCount,omitnil" name:"OrderCount"`
 
 	// 云存服务所在的区域,如ap-guangzhou,ap-singapore, na-siliconvalley, eu-frankfurt
-	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+	StorageRegion *string `json:"StorageRegion,omitnil" name:"StorageRegion"`
 
 	// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
-	ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+	ChnNum *int64 `json:"ChnNum,omitnil" name:"ChnNum"`
 
 	// 设备主人用户在IoT Video平台的注册ID。该参数用于验证Paas/Saas平台的设备/用户关系链是否一致
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 服务生效时间,若不指定此参数，服务立即生效
-	EnableTime *int64 `json:"EnableTime,omitempty" name:"EnableTime"`
+	EnableTime *int64 `json:"EnableTime,omitnil" name:"EnableTime"`
 }
 
 func (r *CreateStorageServiceRequest) ToJsonString() string {
@@ -1000,41 +1000,41 @@ func (r *CreateStorageServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateStorageServiceResponseParams struct {
 	// 标志是否为续订
-	IsRenew *bool `json:"IsRenew,omitempty" name:"IsRenew"`
+	IsRenew *bool `json:"IsRenew,omitnil" name:"IsRenew"`
 
 	// 云存服务ID
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 云存服务所在的区域
-	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+	StorageRegion *string `json:"StorageRegion,omitnil" name:"StorageRegion"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
-	ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+	ChnNum *int64 `json:"ChnNum,omitnil" name:"ChnNum"`
 
 	// 终端用户在IoT Video平台的注册ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 服务开始时间
-	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 服务失效时间
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务状态
 	// 1：正常使用中
 	// 2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
 	// 3：已过期。查询不到设备保存在云端的数据。
 	// 4：等待服务生效。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 新增的云存定单列表
-	Data []*StorageOrder `json:"Data,omitempty" name:"Data"`
+	Data []*StorageOrder `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateStorageServiceResponse struct {
@@ -1056,14 +1056,14 @@ func (r *CreateStorageServiceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTraceIdsRequestParams struct {
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 type CreateTraceIdsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 func (r *CreateTraceIdsRequest) ToJsonString() string {
@@ -1088,7 +1088,7 @@ func (r *CreateTraceIdsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateTraceIdsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateTraceIdsResponse struct {
@@ -1110,20 +1110,20 @@ func (r *CreateTraceIdsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateUploadPathRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 固件文件名
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 }
 
 type CreateUploadPathRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 固件文件名
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 }
 
 func (r *CreateUploadPathRequest) ToJsonString() string {
@@ -1150,10 +1150,10 @@ func (r *CreateUploadPathRequest) FromJsonString(s string) error {
 type CreateUploadPathResponseParams struct {
 	// 固件上传地址URL，用户可将本地的固件文件通过该URL以PUT的请求方式上传。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateUploadPathResponse struct {
@@ -1175,32 +1175,32 @@ func (r *CreateUploadPathResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateUsrTokenRequestParams struct {
 	// 终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 终端唯一ID，用于区分同一个用户的多个终端
-	UniqueId *string `json:"UniqueId,omitempty" name:"UniqueId"`
+	UniqueId *string `json:"UniqueId,omitnil" name:"UniqueId"`
 
 	// Token的TTL(time to alive)分钟数
-	TtlMinutes *uint64 `json:"TtlMinutes,omitempty" name:"TtlMinutes"`
+	TtlMinutes *uint64 `json:"TtlMinutes,omitnil" name:"TtlMinutes"`
 
 	// 旧的AccessToken。续期Token时，此参数为必须。
-	OldAccessToken *string `json:"OldAccessToken,omitempty" name:"OldAccessToken"`
+	OldAccessToken *string `json:"OldAccessToken,omitnil" name:"OldAccessToken"`
 }
 
 type CreateUsrTokenRequest struct {
 	*tchttp.BaseRequest
 	
 	// 终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 终端唯一ID，用于区分同一个用户的多个终端
-	UniqueId *string `json:"UniqueId,omitempty" name:"UniqueId"`
+	UniqueId *string `json:"UniqueId,omitnil" name:"UniqueId"`
 
 	// Token的TTL(time to alive)分钟数
-	TtlMinutes *uint64 `json:"TtlMinutes,omitempty" name:"TtlMinutes"`
+	TtlMinutes *uint64 `json:"TtlMinutes,omitnil" name:"TtlMinutes"`
 
 	// 旧的AccessToken。续期Token时，此参数为必须。
-	OldAccessToken *string `json:"OldAccessToken,omitempty" name:"OldAccessToken"`
+	OldAccessToken *string `json:"OldAccessToken,omitnil" name:"OldAccessToken"`
 }
 
 func (r *CreateUsrTokenRequest) ToJsonString() string {
@@ -1228,19 +1228,19 @@ func (r *CreateUsrTokenRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateUsrTokenResponseParams struct {
 	// 终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// IoT Video平台的AccessToken
-	AccessToken *string `json:"AccessToken,omitempty" name:"AccessToken"`
+	AccessToken *string `json:"AccessToken,omitnil" name:"AccessToken"`
 
 	// Token的过期时间，单位秒(UTC时间)
-	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *uint64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 终端ID
-	TerminalId *string `json:"TerminalId,omitempty" name:"TerminalId"`
+	TerminalId *string `json:"TerminalId,omitnil" name:"TerminalId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateUsrTokenResponse struct {
@@ -1262,36 +1262,36 @@ func (r *CreateUsrTokenResponse) FromJsonString(s string) error {
 type Data struct {
 	// 直播协议
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 流媒体播放地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	URI *string `json:"URI,omitempty" name:"URI"`
+	URI *string `json:"URI,omitnil" name:"URI"`
 
 	// 流媒体地址过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *int64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 视频编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VideoCodec *string `json:"VideoCodec,omitempty" name:"VideoCodec"`
+	VideoCodec *string `json:"VideoCodec,omitnil" name:"VideoCodec"`
 
 	// 音频编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AudioCodec *string `json:"AudioCodec,omitempty" name:"AudioCodec"`
+	AudioCodec *string `json:"AudioCodec,omitnil" name:"AudioCodec"`
 }
 
 // Predefined struct for user
 type DeleteAppUsrRequestParams struct {
 	// 客户的终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 }
 
 type DeleteAppUsrRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户的终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 }
 
 func (r *DeleteAppUsrRequest) ToJsonString() string {
@@ -1316,7 +1316,7 @@ func (r *DeleteAppUsrRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAppUsrResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteAppUsrResponse struct {
@@ -1338,26 +1338,26 @@ func (r *DeleteAppUsrResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteBindingRequestParams struct {
 	// 终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 用户角色，owner：主人，guest：访客
-	Role *string `json:"Role,omitempty" name:"Role"`
+	Role *string `json:"Role,omitnil" name:"Role"`
 }
 
 type DeleteBindingRequest struct {
 	*tchttp.BaseRequest
 	
 	// 终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 用户角色，owner：主人，guest：访客
-	Role *string `json:"Role,omitempty" name:"Role"`
+	Role *string `json:"Role,omitnil" name:"Role"`
 }
 
 func (r *DeleteBindingRequest) ToJsonString() string {
@@ -1384,7 +1384,7 @@ func (r *DeleteBindingRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteBindingResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteBindingResponse struct {
@@ -1406,14 +1406,14 @@ func (r *DeleteBindingResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDeviceRequestParams struct {
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 type DeleteDeviceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 func (r *DeleteDeviceRequest) ToJsonString() string {
@@ -1438,7 +1438,7 @@ func (r *DeleteDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDeviceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteDeviceResponse struct {
@@ -1460,14 +1460,14 @@ func (r *DeleteDeviceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteIotDataTypeRequestParams struct {
 	// 自定义数据类型的标识符
-	TypeId *string `json:"TypeId,omitempty" name:"TypeId"`
+	TypeId *string `json:"TypeId,omitnil" name:"TypeId"`
 }
 
 type DeleteIotDataTypeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 自定义数据类型的标识符
-	TypeId *string `json:"TypeId,omitempty" name:"TypeId"`
+	TypeId *string `json:"TypeId,omitnil" name:"TypeId"`
 }
 
 func (r *DeleteIotDataTypeRequest) ToJsonString() string {
@@ -1492,7 +1492,7 @@ func (r *DeleteIotDataTypeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteIotDataTypeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteIotDataTypeResponse struct {
@@ -1514,14 +1514,14 @@ func (r *DeleteIotDataTypeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMessageQueueRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 }
 
 type DeleteMessageQueueRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 }
 
 func (r *DeleteMessageQueueRequest) ToJsonString() string {
@@ -1546,7 +1546,7 @@ func (r *DeleteMessageQueueRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteMessageQueueResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteMessageQueueResponse struct {
@@ -1568,26 +1568,26 @@ func (r *DeleteMessageQueueResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteOtaVersionRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 }
 
 type DeleteOtaVersionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 }
 
 func (r *DeleteOtaVersionRequest) ToJsonString() string {
@@ -1614,7 +1614,7 @@ func (r *DeleteOtaVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteOtaVersionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteOtaVersionResponse struct {
@@ -1636,14 +1636,14 @@ func (r *DeleteOtaVersionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteProductRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 }
 
 type DeleteProductRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 }
 
 func (r *DeleteProductRequest) ToJsonString() string {
@@ -1668,7 +1668,7 @@ func (r *DeleteProductRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteProductResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteProductResponse struct {
@@ -1690,14 +1690,14 @@ func (r *DeleteProductResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTraceIdsRequestParams struct {
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 type DeleteTraceIdsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 func (r *DeleteTraceIdsRequest) ToJsonString() string {
@@ -1722,7 +1722,7 @@ func (r *DeleteTraceIdsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteTraceIdsResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteTraceIdsResponse struct {
@@ -1744,32 +1744,32 @@ func (r *DeleteTraceIdsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeliverStorageServiceRequestParams struct {
 	// 待转移的源云存服务ID
-	SrcServiceId *string `json:"SrcServiceId,omitempty" name:"SrcServiceId"`
+	SrcServiceId *string `json:"SrcServiceId,omitnil" name:"SrcServiceId"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
-	ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+	ChnNum *int64 `json:"ChnNum,omitnil" name:"ChnNum"`
 
 	// 设备主人用户在IoT Video平台的注册ID。该参数用于验证Paas/Saas平台的设备/用户关系链是否一致
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 }
 
 type DeliverStorageServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 待转移的源云存服务ID
-	SrcServiceId *string `json:"SrcServiceId,omitempty" name:"SrcServiceId"`
+	SrcServiceId *string `json:"SrcServiceId,omitnil" name:"SrcServiceId"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
-	ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+	ChnNum *int64 `json:"ChnNum,omitnil" name:"ChnNum"`
 
 	// 设备主人用户在IoT Video平台的注册ID。该参数用于验证Paas/Saas平台的设备/用户关系链是否一致
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 }
 
 func (r *DeliverStorageServiceRequest) ToJsonString() string {
@@ -1797,41 +1797,41 @@ func (r *DeliverStorageServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeliverStorageServiceResponseParams struct {
 	// 被转出的云存服务ID
-	SrcServiceId *string `json:"SrcServiceId,omitempty" name:"SrcServiceId"`
+	SrcServiceId *string `json:"SrcServiceId,omitnil" name:"SrcServiceId"`
 
 	// 被转入的云存服务ID
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 云存服务所在的区域
-	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+	StorageRegion *string `json:"StorageRegion,omitnil" name:"StorageRegion"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
-	ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+	ChnNum *int64 `json:"ChnNum,omitnil" name:"ChnNum"`
 
 	// 终端用户在IoT Video平台的注册ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 服务开始时间
-	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 服务失效时间
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务状态
 	// 1：正常使用中
 	// 2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
 	// 3：已过期。查询不到设备保存在云端的数据。
 	// 4：等待服务生效。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 新增的云存定单列表
-	Data []*StorageOrder `json:"Data,omitempty" name:"Data"`
+	Data []*StorageOrder `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeliverStorageServiceResponse struct {
@@ -1853,14 +1853,14 @@ func (r *DeliverStorageServiceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccountBalanceRequestParams struct {
 	// 账户类型 1:设备接入 2:云存
-	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
+	AccountType *int64 `json:"AccountType,omitnil" name:"AccountType"`
 }
 
 type DescribeAccountBalanceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 账户类型 1:设备接入 2:云存
-	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
+	AccountType *int64 `json:"AccountType,omitnil" name:"AccountType"`
 }
 
 func (r *DescribeAccountBalanceRequest) ToJsonString() string {
@@ -1886,22 +1886,22 @@ func (r *DescribeAccountBalanceRequest) FromJsonString(s string) error {
 type DescribeAccountBalanceResponseParams struct {
 	// 账户类型 1=设备接入;2=云存。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
+	AccountType *int64 `json:"AccountType,omitnil" name:"AccountType"`
 
 	// 余额, 单位 : 分(人民币)。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Balance *int64 `json:"Balance,omitempty" name:"Balance"`
+	Balance *int64 `json:"Balance,omitnil" name:"Balance"`
 
 	// 账户状态，1=正常；8=冻结；9=销户。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	State *int64 `json:"State,omitempty" name:"State"`
+	State *int64 `json:"State,omitnil" name:"State"`
 
 	// 最后修改时间，UTC值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
+	LastUpdateTime *int64 `json:"LastUpdateTime,omitnil" name:"LastUpdateTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAccountBalanceResponse struct {
@@ -1923,14 +1923,14 @@ func (r *DescribeAccountBalanceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBindDevRequestParams struct {
 	// 终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 }
 
 type DescribeBindDevRequest struct {
 	*tchttp.BaseRequest
 	
 	// 终端用户在IoT Video上的唯一标识ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 }
 
 func (r *DescribeBindDevRequest) ToJsonString() string {
@@ -1956,10 +1956,10 @@ func (r *DescribeBindDevRequest) FromJsonString(s string) error {
 type DescribeBindDevResponseParams struct {
 	// 绑定的设备列表信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*BindDevInfo `json:"Data,omitempty" name:"Data"`
+	Data []*BindDevInfo `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeBindDevResponse struct {
@@ -1981,20 +1981,20 @@ func (r *DescribeBindDevResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBindUsrRequestParams struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 设备主人的AccessId
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 }
 
 type DescribeBindUsrRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 设备主人的AccessId
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 }
 
 func (r *DescribeBindUsrRequest) ToJsonString() string {
@@ -2021,10 +2021,10 @@ func (r *DescribeBindUsrRequest) FromJsonString(s string) error {
 type DescribeBindUsrResponseParams struct {
 	// 具有绑定关系的终端用户信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*BindUsrInfo `json:"Data,omitempty" name:"Data"`
+	Data []*BindUsrInfo `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeBindUsrResponse struct {
@@ -2046,20 +2046,20 @@ func (r *DescribeBindUsrResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDeviceModelRequestParams struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 物模型的分支路径
-	Branch *string `json:"Branch,omitempty" name:"Branch"`
+	Branch *string `json:"Branch,omitnil" name:"Branch"`
 }
 
 type DescribeDeviceModelRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 物模型的分支路径
-	Branch *string `json:"Branch,omitempty" name:"Branch"`
+	Branch *string `json:"Branch,omitnil" name:"Branch"`
 }
 
 func (r *DescribeDeviceModelRequest) ToJsonString() string {
@@ -2086,10 +2086,10 @@ func (r *DescribeDeviceModelRequest) FromJsonString(s string) error {
 type DescribeDeviceModelResponseParams struct {
 	// 设备物模型信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *DeviceModelData `json:"Data,omitempty" name:"Data"`
+	Data *DeviceModelData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDeviceModelResponse struct {
@@ -2111,14 +2111,14 @@ func (r *DescribeDeviceModelResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDeviceRequestParams struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 }
 
 type DescribeDeviceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 }
 
 func (r *DescribeDeviceRequest) ToJsonString() string {
@@ -2144,10 +2144,10 @@ func (r *DescribeDeviceRequest) FromJsonString(s string) error {
 type DescribeDeviceResponseParams struct {
 	// 设备信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *DeviceData `json:"Data,omitempty" name:"Data"`
+	Data *DeviceData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDeviceResponse struct {
@@ -2169,46 +2169,46 @@ func (r *DescribeDeviceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDevicesRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 是否返回全量数据
 	// 当该值为false时，返回值中的设备物模型、固件版本、在线状态、最后在线时间字段等字段，都将返回数据类型的零值。
-	ReturnModel *bool `json:"ReturnModel,omitempty" name:"ReturnModel"`
+	ReturnModel *bool `json:"ReturnModel,omitnil" name:"ReturnModel"`
 
 	// 分页数量,0<取值范围<=100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移，取值＞0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 指定固件版本号，为空查询此产品下所有设备
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 设备名称，支持左前缀模糊匹配
-	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
 }
 
 type DescribeDevicesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 是否返回全量数据
 	// 当该值为false时，返回值中的设备物模型、固件版本、在线状态、最后在线时间字段等字段，都将返回数据类型的零值。
-	ReturnModel *bool `json:"ReturnModel,omitempty" name:"ReturnModel"`
+	ReturnModel *bool `json:"ReturnModel,omitnil" name:"ReturnModel"`
 
 	// 分页数量,0<取值范围<=100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移，取值＞0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 指定固件版本号，为空查询此产品下所有设备
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 设备名称，支持左前缀模糊匹配
-	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
 }
 
 func (r *DescribeDevicesRequest) ToJsonString() string {
@@ -2239,13 +2239,13 @@ func (r *DescribeDevicesRequest) FromJsonString(s string) error {
 type DescribeDevicesResponseParams struct {
 	// 设备信息 列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*DevicesData `json:"Data,omitempty" name:"Data"`
+	Data []*DevicesData `json:"Data,omitnil" name:"Data"`
 
 	// 设备总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDevicesResponse struct {
@@ -2267,14 +2267,14 @@ func (r *DescribeDevicesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIotDataTypeRequestParams struct {
 	// 自定义数据类型的标识符，为空则返回全量自定义类型的列表
-	TypeId *string `json:"TypeId,omitempty" name:"TypeId"`
+	TypeId *string `json:"TypeId,omitnil" name:"TypeId"`
 }
 
 type DescribeIotDataTypeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 自定义数据类型的标识符，为空则返回全量自定义类型的列表
-	TypeId *string `json:"TypeId,omitempty" name:"TypeId"`
+	TypeId *string `json:"TypeId,omitnil" name:"TypeId"`
 }
 
 func (r *DescribeIotDataTypeRequest) ToJsonString() string {
@@ -2300,10 +2300,10 @@ func (r *DescribeIotDataTypeRequest) FromJsonString(s string) error {
 type DescribeIotDataTypeResponseParams struct {
 	// 自定义数据类型，json格式的字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*string `json:"Data,omitempty" name:"Data"`
+	Data []*string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeIotDataTypeResponse struct {
@@ -2325,20 +2325,20 @@ func (r *DescribeIotDataTypeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIotModelRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 物模型版本号， -1表示最新编辑的（未发布）
-	Revision *int64 `json:"Revision,omitempty" name:"Revision"`
+	Revision *int64 `json:"Revision,omitnil" name:"Revision"`
 }
 
 type DescribeIotModelRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 物模型版本号， -1表示最新编辑的（未发布）
-	Revision *int64 `json:"Revision,omitempty" name:"Revision"`
+	Revision *int64 `json:"Revision,omitnil" name:"Revision"`
 }
 
 func (r *DescribeIotModelRequest) ToJsonString() string {
@@ -2365,10 +2365,10 @@ func (r *DescribeIotModelRequest) FromJsonString(s string) error {
 type DescribeIotModelResponseParams struct {
 	// 物模型定义，json格式的字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeIotModelResponse struct {
@@ -2390,14 +2390,14 @@ func (r *DescribeIotModelResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIotModelsRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 }
 
 type DescribeIotModelsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 }
 
 func (r *DescribeIotModelsRequest) ToJsonString() string {
@@ -2423,10 +2423,10 @@ func (r *DescribeIotModelsRequest) FromJsonString(s string) error {
 type DescribeIotModelsResponseParams struct {
 	// 历史版本列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*IotModelData `json:"Data,omitempty" name:"Data"`
+	Data []*IotModelData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeIotModelsResponse struct {
@@ -2448,50 +2448,50 @@ func (r *DescribeIotModelsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeLogsRequestParams struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 当前分页的最大条数,0<取值范围<=100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移量,取值范围>0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 日志类型 1.在线状态变更 2.ProConst变更 3.ProWritable变更 4.Action控制 5.ProReadonly变更 6.Event事件
-	LogType *uint64 `json:"LogType,omitempty" name:"LogType"`
+	LogType *uint64 `json:"LogType,omitnil" name:"LogType"`
 
 	// 查询的起始时间 UNIX时间戳，单位秒
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 物模型对象索引，用于模糊查询，字符长度<=255，每层节点的字符长度<=16
-	DataObject *string `json:"DataObject,omitempty" name:"DataObject"`
+	DataObject *string `json:"DataObject,omitnil" name:"DataObject"`
 
 	// 查询的结束时间 UNIX时间戳，单位秒
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 type DescribeLogsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 当前分页的最大条数,0<取值范围<=100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移量,取值范围>0
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 日志类型 1.在线状态变更 2.ProConst变更 3.ProWritable变更 4.Action控制 5.ProReadonly变更 6.Event事件
-	LogType *uint64 `json:"LogType,omitempty" name:"LogType"`
+	LogType *uint64 `json:"LogType,omitnil" name:"LogType"`
 
 	// 查询的起始时间 UNIX时间戳，单位秒
-	StartTime *uint64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 物模型对象索引，用于模糊查询，字符长度<=255，每层节点的字符长度<=16
-	DataObject *string `json:"DataObject,omitempty" name:"DataObject"`
+	DataObject *string `json:"DataObject,omitnil" name:"DataObject"`
 
 	// 查询的结束时间 UNIX时间戳，单位秒
-	EndTime *uint64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 func (r *DescribeLogsRequest) ToJsonString() string {
@@ -2523,13 +2523,13 @@ func (r *DescribeLogsRequest) FromJsonString(s string) error {
 type DescribeLogsResponseParams struct {
 	// 设备日志信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*LogData `json:"Data,omitempty" name:"Data"`
+	Data []*LogData `json:"Data,omitnil" name:"Data"`
 
 	// Data数组所包含的信息条数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeLogsResponse struct {
@@ -2551,14 +2551,14 @@ func (r *DescribeLogsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMessageQueueRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 }
 
 type DescribeMessageQueueRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 }
 
 func (r *DescribeMessageQueueRequest) ToJsonString() string {
@@ -2584,10 +2584,10 @@ func (r *DescribeMessageQueueRequest) FromJsonString(s string) error {
 type DescribeMessageQueueResponseParams struct {
 	// 消息队列配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *MsgQueueData `json:"Data,omitempty" name:"Data"`
+	Data *MsgQueueData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeMessageQueueResponse struct {
@@ -2609,14 +2609,14 @@ func (r *DescribeMessageQueueResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeModelDataRetRequestParams struct {
 	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type DescribeModelDataRetRequest struct {
 	*tchttp.BaseRequest
 	
 	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *DescribeModelDataRetRequest) ToJsonString() string {
@@ -2642,10 +2642,10 @@ func (r *DescribeModelDataRetRequest) FromJsonString(s string) error {
 type DescribeModelDataRetResponseParams struct {
 	// 设备响应结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeModelDataRetResponse struct {
@@ -2697,10 +2697,10 @@ func (r *DescribeOsListRequest) FromJsonString(s string) error {
 type DescribeOsListResponseParams struct {
 	// 系统类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *SystemType `json:"Data,omitempty" name:"Data"`
+	Data *SystemType `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeOsListResponse struct {
@@ -2722,38 +2722,38 @@ func (r *DescribeOsListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOtaVersionsRequestParams struct {
 	// 分页偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页数量，0<取值范围<=100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 产品ID，为空时查询客户所有产品的版本信息
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 版本号，支持模糊匹配
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 版本类型 1未发布 2测试发布 3正式发布 4禁用
-	PubStatus *uint64 `json:"PubStatus,omitempty" name:"PubStatus"`
+	PubStatus *uint64 `json:"PubStatus,omitnil" name:"PubStatus"`
 }
 
 type DescribeOtaVersionsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页数量，0<取值范围<=100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 产品ID，为空时查询客户所有产品的版本信息
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 版本号，支持模糊匹配
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 版本类型 1未发布 2测试发布 3正式发布 4禁用
-	PubStatus *uint64 `json:"PubStatus,omitempty" name:"PubStatus"`
+	PubStatus *uint64 `json:"PubStatus,omitnil" name:"PubStatus"`
 }
 
 func (r *DescribeOtaVersionsRequest) ToJsonString() string {
@@ -2782,14 +2782,14 @@ func (r *DescribeOtaVersionsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeOtaVersionsResponseParams struct {
 	// 版本数量
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 版本详细信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*VersionData `json:"Data,omitempty" name:"Data"`
+	Data []*VersionData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeOtaVersionsResponse struct {
@@ -2811,14 +2811,14 @@ func (r *DescribeOtaVersionsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProductRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 }
 
 type DescribeProductRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 }
 
 func (r *DescribeProductRequest) ToJsonString() string {
@@ -2844,10 +2844,10 @@ func (r *DescribeProductRequest) FromJsonString(s string) error {
 type DescribeProductResponseParams struct {
 	// 产品详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *ProductData `json:"Data,omitempty" name:"Data"`
+	Data *ProductData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeProductResponse struct {
@@ -2869,38 +2869,38 @@ func (r *DescribeProductResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProductsRequestParams struct {
 	// 分页大小，当前页面中显示的最大数量，值范围 1-100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移，Offset从0开始
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 产器型号(APP产品,为APP包名)
-	ProductModel *string `json:"ProductModel,omitempty" name:"ProductModel"`
+	ProductModel *string `json:"ProductModel,omitnil" name:"ProductModel"`
 
 	// 开始时间 ，UNIX 时间戳，单位秒
-	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间 ，UNIX 时间戳，单位秒
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 type DescribeProductsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页大小，当前页面中显示的最大数量，值范围 1-100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页偏移，Offset从0开始
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 产器型号(APP产品,为APP包名)
-	ProductModel *string `json:"ProductModel,omitempty" name:"ProductModel"`
+	ProductModel *string `json:"ProductModel,omitnil" name:"ProductModel"`
 
 	// 开始时间 ，UNIX 时间戳，单位秒
-	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间 ，UNIX 时间戳，单位秒
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 func (r *DescribeProductsRequest) ToJsonString() string {
@@ -2930,13 +2930,13 @@ func (r *DescribeProductsRequest) FromJsonString(s string) error {
 type DescribeProductsResponseParams struct {
 	// 产品详细信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*ProductData `json:"Data,omitempty" name:"Data"`
+	Data []*ProductData `json:"Data,omitnil" name:"Data"`
 
 	// 产品总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeProductsResponse struct {
@@ -2958,14 +2958,14 @@ func (r *DescribeProductsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePubVersionsRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 }
 
 type DescribePubVersionsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 }
 
 func (r *DescribePubVersionsRequest) ToJsonString() string {
@@ -2991,10 +2991,10 @@ func (r *DescribePubVersionsRequest) FromJsonString(s string) error {
 type DescribePubVersionsResponseParams struct {
 	// 历史发布的版本列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*OtaPubHistory `json:"Data,omitempty" name:"Data"`
+	Data []*OtaPubHistory `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePubVersionsResponse struct {
@@ -3016,26 +3016,26 @@ func (r *DescribePubVersionsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRechargeRecordsRequestParams struct {
 	// 账户类型 1:设备接入 2:云存。
-	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
+	AccountType *int64 `json:"AccountType,omitnil" name:"AccountType"`
 
 	// 从第几条记录开始显示, 默认值为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 总共查询多少条记录，默认为值50。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeRechargeRecordsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 账户类型 1:设备接入 2:云存。
-	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
+	AccountType *int64 `json:"AccountType,omitnil" name:"AccountType"`
 
 	// 从第几条记录开始显示, 默认值为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 总共查询多少条记录，默认为值50。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeRechargeRecordsRequest) ToJsonString() string {
@@ -3063,14 +3063,14 @@ func (r *DescribeRechargeRecordsRequest) FromJsonString(s string) error {
 type DescribeRechargeRecordsResponseParams struct {
 	// 账户类型 1:设备接入 2:云存
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccountType *int64 `json:"AccountType,omitempty" name:"AccountType"`
+	AccountType *int64 `json:"AccountType,omitnil" name:"AccountType"`
 
 	// 充值记录列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Records []*RechargeRecord `json:"Records,omitempty" name:"Records"`
+	Records []*RechargeRecord `json:"Records,omitnil" name:"Records"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRechargeRecordsResponse struct {
@@ -3092,14 +3092,14 @@ func (r *DescribeRechargeRecordsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRegistrationStatusRequestParams struct {
 	// 终端用户的唯一ID列表，0<元素数量<=100
-	CunionIds []*string `json:"CunionIds,omitempty" name:"CunionIds"`
+	CunionIds []*string `json:"CunionIds,omitnil" name:"CunionIds"`
 }
 
 type DescribeRegistrationStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 终端用户的唯一ID列表，0<元素数量<=100
-	CunionIds []*string `json:"CunionIds,omitempty" name:"CunionIds"`
+	CunionIds []*string `json:"CunionIds,omitnil" name:"CunionIds"`
 }
 
 func (r *DescribeRegistrationStatusRequest) ToJsonString() string {
@@ -3124,10 +3124,10 @@ func (r *DescribeRegistrationStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRegistrationStatusResponseParams struct {
 	// 终端用户注册状态列表
-	Data []*RegisteredStatus `json:"Data,omitempty" name:"Data"`
+	Data []*RegisteredStatus `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRegistrationStatusResponse struct {
@@ -3149,14 +3149,14 @@ func (r *DescribeRegistrationStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRunLogRequestParams struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 }
 
 type DescribeRunLogRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 }
 
 func (r *DescribeRunLogRequest) ToJsonString() string {
@@ -3182,10 +3182,10 @@ func (r *DescribeRunLogRequest) FromJsonString(s string) error {
 type DescribeRunLogResponseParams struct {
 	// 设备运行日志文本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRunLogResponse struct {
@@ -3207,20 +3207,20 @@ func (r *DescribeRunLogResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStorageServiceRequestParams struct {
 	// 云存服务ID
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 是否返回已结束的订单信息(已过期/已退订/已转移)
-	GetFinishedOrder *bool `json:"GetFinishedOrder,omitempty" name:"GetFinishedOrder"`
+	GetFinishedOrder *bool `json:"GetFinishedOrder,omitnil" name:"GetFinishedOrder"`
 }
 
 type DescribeStorageServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云存服务ID
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 是否返回已结束的订单信息(已过期/已退订/已转移)
-	GetFinishedOrder *bool `json:"GetFinishedOrder,omitempty" name:"GetFinishedOrder"`
+	GetFinishedOrder *bool `json:"GetFinishedOrder,omitnil" name:"GetFinishedOrder"`
 }
 
 func (r *DescribeStorageServiceRequest) ToJsonString() string {
@@ -3246,38 +3246,38 @@ func (r *DescribeStorageServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStorageServiceResponseParams struct {
 	// 云存服务ID
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 云存服务所在的区域
-	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+	StorageRegion *string `json:"StorageRegion,omitnil" name:"StorageRegion"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
-	ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+	ChnNum *int64 `json:"ChnNum,omitnil" name:"ChnNum"`
 
 	// 终端用户在IoT Video平台的注册ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 服务开始时间
-	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 服务失效时间
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务状态
 	// 1：正常使用中
 	// 2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
 	// 3：已过期。查询不到设备保存在云端的数据。
 	// 4：等待服务生效。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 云存定单列表
-	Data []*StorageOrder `json:"Data,omitempty" name:"Data"`
+	Data []*StorageOrder `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeStorageServiceResponse struct {
@@ -3299,38 +3299,38 @@ func (r *DescribeStorageServiceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStreamRequestParams struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 终端用户ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 直播协议, 可选值：RTSP、RTMP、HLS、HLS-fmp4
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 音视频流地址
-	Address *string `json:"Address,omitempty" name:"Address"`
+	Address *string `json:"Address,omitnil" name:"Address"`
 
 	// 设备访问token，访问用户未绑定的设备时，需提供该参数
-	AccessToken *string `json:"AccessToken,omitempty" name:"AccessToken"`
+	AccessToken *string `json:"AccessToken,omitnil" name:"AccessToken"`
 }
 
 type DescribeStreamRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 终端用户ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 直播协议, 可选值：RTSP、RTMP、HLS、HLS-fmp4
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 音视频流地址
-	Address *string `json:"Address,omitempty" name:"Address"`
+	Address *string `json:"Address,omitnil" name:"Address"`
 
 	// 设备访问token，访问用户未绑定的设备时，需提供该参数
-	AccessToken *string `json:"AccessToken,omitempty" name:"AccessToken"`
+	AccessToken *string `json:"AccessToken,omitnil" name:"AccessToken"`
 }
 
 func (r *DescribeStreamRequest) ToJsonString() string {
@@ -3360,10 +3360,10 @@ func (r *DescribeStreamRequest) FromJsonString(s string) error {
 type DescribeStreamResponseParams struct {
 	// 返回参数结构
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *Data `json:"Data,omitempty" name:"Data"`
+	Data *Data `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeStreamResponse struct {
@@ -3415,10 +3415,10 @@ func (r *DescribeTraceIdsRequest) FromJsonString(s string) error {
 type DescribeTraceIdsResponseParams struct {
 	// 设备TID列表，列表元素之间以“,”分隔
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTraceIdsResponse struct {
@@ -3440,14 +3440,14 @@ func (r *DescribeTraceIdsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTraceStatusRequestParams struct {
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 type DescribeTraceStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 func (r *DescribeTraceStatusRequest) ToJsonString() string {
@@ -3473,10 +3473,10 @@ func (r *DescribeTraceStatusRequest) FromJsonString(s string) error {
 type DescribeTraceStatusResponseParams struct {
 	// 设备追踪状态列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*TraceStatus `json:"Data,omitempty" name:"Data"`
+	Data []*TraceStatus `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTraceStatusResponse struct {
@@ -3497,135 +3497,135 @@ func (r *DescribeTraceStatusResponse) FromJsonString(s string) error {
 
 type DevTokenInfo struct {
 	// 客户的终端用户在IotVideo上的唯一标识id
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// IotVideo平台的accessToken
-	AccessToken *string `json:"AccessToken,omitempty" name:"AccessToken"`
+	AccessToken *string `json:"AccessToken,omitnil" name:"AccessToken"`
 
 	// Token的过期时间，单位秒(UTC时间)
-	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *uint64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
 }
 
 type DeviceCertificate struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 设备初始证书信息，base64编码
-	Certificate *string `json:"Certificate,omitempty" name:"Certificate"`
+	Certificate *string `json:"Certificate,omitnil" name:"Certificate"`
 
 	// 设备私钥下载地址
-	WhiteBoxSoUrl *string `json:"WhiteBoxSoUrl,omitempty" name:"WhiteBoxSoUrl"`
+	WhiteBoxSoUrl *string `json:"WhiteBoxSoUrl,omitnil" name:"WhiteBoxSoUrl"`
 }
 
 type DeviceData struct {
 	// 设备TID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 激活时间 0代表未激活
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActiveTime *uint64 `json:"ActiveTime,omitempty" name:"ActiveTime"`
+	ActiveTime *uint64 `json:"ActiveTime,omitnil" name:"ActiveTime"`
 
 	// 设备是否被禁用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Disabled *bool `json:"Disabled,omitempty" name:"Disabled"`
+	Disabled *bool `json:"Disabled,omitnil" name:"Disabled"`
 
 	// 固件版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 设备在线状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Online *uint64 `json:"Online,omitempty" name:"Online"`
+	Online *uint64 `json:"Online,omitnil" name:"Online"`
 
 	// 设备最后上线时间（mqtt连接成功时间），UNIX时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LastOnlineTime *uint64 `json:"LastOnlineTime,omitempty" name:"LastOnlineTime"`
+	LastOnlineTime *uint64 `json:"LastOnlineTime,omitnil" name:"LastOnlineTime"`
 
 	// 物模型json数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IotModel *string `json:"IotModel,omitempty" name:"IotModel"`
+	IotModel *string `json:"IotModel,omitnil" name:"IotModel"`
 
 	// 设备名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
 
 	// 产品ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 设备初始证书信息，base64编码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Certificate *string `json:"Certificate,omitempty" name:"Certificate"`
+	Certificate *string `json:"Certificate,omitnil" name:"Certificate"`
 
 	// 设备私钥下载地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WhiteBoxSoUrl *string `json:"WhiteBoxSoUrl,omitempty" name:"WhiteBoxSoUrl"`
+	WhiteBoxSoUrl *string `json:"WhiteBoxSoUrl,omitnil" name:"WhiteBoxSoUrl"`
 
 	// 设备推流状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StreamStatus *bool `json:"StreamStatus,omitempty" name:"StreamStatus"`
+	StreamStatus *bool `json:"StreamStatus,omitnil" name:"StreamStatus"`
 }
 
 type DeviceModelData struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 物模型分支路径
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Branch *string `json:"Branch,omitempty" name:"Branch"`
+	Branch *string `json:"Branch,omitnil" name:"Branch"`
 
 	// 物模型数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IotModel *string `json:"IotModel,omitempty" name:"IotModel"`
+	IotModel *string `json:"IotModel,omitnil" name:"IotModel"`
 }
 
 type DevicesData struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 设备名称
-	DeviceName *string `json:"DeviceName,omitempty" name:"DeviceName"`
+	DeviceName *string `json:"DeviceName,omitnil" name:"DeviceName"`
 
 	// 激活时间 0代表未激活
-	ActiveTime *uint64 `json:"ActiveTime,omitempty" name:"ActiveTime"`
+	ActiveTime *uint64 `json:"ActiveTime,omitnil" name:"ActiveTime"`
 
 	// 设备是否被禁用
-	Disabled *bool `json:"Disabled,omitempty" name:"Disabled"`
+	Disabled *bool `json:"Disabled,omitnil" name:"Disabled"`
 
 	// 设备推流状态
-	StreamStatus *bool `json:"StreamStatus,omitempty" name:"StreamStatus"`
+	StreamStatus *bool `json:"StreamStatus,omitnil" name:"StreamStatus"`
 
 	// 固件版本
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 设备在线状态
-	Online *uint64 `json:"Online,omitempty" name:"Online"`
+	Online *uint64 `json:"Online,omitnil" name:"Online"`
 
 	// 设备最后上线时间（mqtt连接成功时间），UNIX时间戳，单位秒
-	LastOnlineTime *uint64 `json:"LastOnlineTime,omitempty" name:"LastOnlineTime"`
+	LastOnlineTime *uint64 `json:"LastOnlineTime,omitnil" name:"LastOnlineTime"`
 
 	// 物模型json数据
-	IotModel *string `json:"IotModel,omitempty" name:"IotModel"`
+	IotModel *string `json:"IotModel,omitnil" name:"IotModel"`
 
 	// 设备固件最新更新时间，UNIX时间戳，单位秒
-	LastUpdateTime *uint64 `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
+	LastUpdateTime *uint64 `json:"LastUpdateTime,omitnil" name:"LastUpdateTime"`
 }
 
 // Predefined struct for user
 type DisableDeviceRequestParams struct {
 	// 设备TID ≤100
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 type DisableDeviceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID ≤100
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 func (r *DisableDeviceRequest) ToJsonString() string {
@@ -3650,7 +3650,7 @@ func (r *DisableDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableDeviceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DisableDeviceResponse struct {
@@ -3672,14 +3672,14 @@ func (r *DisableDeviceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableDeviceStreamRequestParams struct {
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 type DisableDeviceStreamRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 func (r *DisableDeviceStreamRequest) ToJsonString() string {
@@ -3704,7 +3704,7 @@ func (r *DisableDeviceStreamRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableDeviceStreamResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DisableDeviceStreamResponse struct {
@@ -3726,26 +3726,26 @@ func (r *DisableDeviceStreamResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableOtaVersionRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 }
 
 type DisableOtaVersionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 }
 
 func (r *DisableOtaVersionRequest) ToJsonString() string {
@@ -3772,7 +3772,7 @@ func (r *DisableOtaVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DisableOtaVersionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DisableOtaVersionResponse struct {
@@ -3793,67 +3793,67 @@ func (r *DisableOtaVersionResponse) FromJsonString(s string) error {
 
 type IotModelData struct {
 	// 版本号
-	Revision *int64 `json:"Revision,omitempty" name:"Revision"`
+	Revision *int64 `json:"Revision,omitnil" name:"Revision"`
 
 	// 发布时间
-	ReleaseTime *int64 `json:"ReleaseTime,omitempty" name:"ReleaseTime"`
+	ReleaseTime *int64 `json:"ReleaseTime,omitnil" name:"ReleaseTime"`
 }
 
 type LogData struct {
 	// 发生时间 UNIX时间戳，单位秒
-	Occurtime *uint64 `json:"Occurtime,omitempty" name:"Occurtime"`
+	Occurtime *uint64 `json:"Occurtime,omitnil" name:"Occurtime"`
 
 	// 日志类型 1在线状态变更 2FP变更 3SP变更 4CO控制 5ST变更 6EV事件
-	LogType *uint64 `json:"LogType,omitempty" name:"LogType"`
+	LogType *uint64 `json:"LogType,omitnil" name:"LogType"`
 
 	// 物模型对象索引
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataObject *string `json:"DataObject,omitempty" name:"DataObject"`
+	DataObject *string `json:"DataObject,omitnil" name:"DataObject"`
 
 	// 物模型旧值  json串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OldValue *string `json:"OldValue,omitempty" name:"OldValue"`
+	OldValue *string `json:"OldValue,omitnil" name:"OldValue"`
 
 	// 物模型新值  json串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NewValue *string `json:"NewValue,omitempty" name:"NewValue"`
+	NewValue *string `json:"NewValue,omitnil" name:"NewValue"`
 }
 
 // Predefined struct for user
 type ModifyDeviceActionRequestParams struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 如果设备处于休眠状态，是否唤醒设备
-	Wakeup *bool `json:"Wakeup,omitempty" name:"Wakeup"`
+	Wakeup *bool `json:"Wakeup,omitnil" name:"Wakeup"`
 
 	// 物模型的分支路径
-	Branch *string `json:"Branch,omitempty" name:"Branch"`
+	Branch *string `json:"Branch,omitnil" name:"Branch"`
 
 	// 写入的物模型数据，如果是json需要转义成字符串
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 
 	// Value字段的类型是否为数值（float、int）
-	IsNum *bool `json:"IsNum,omitempty" name:"IsNum"`
+	IsNum *bool `json:"IsNum,omitnil" name:"IsNum"`
 }
 
 type ModifyDeviceActionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 如果设备处于休眠状态，是否唤醒设备
-	Wakeup *bool `json:"Wakeup,omitempty" name:"Wakeup"`
+	Wakeup *bool `json:"Wakeup,omitnil" name:"Wakeup"`
 
 	// 物模型的分支路径
-	Branch *string `json:"Branch,omitempty" name:"Branch"`
+	Branch *string `json:"Branch,omitnil" name:"Branch"`
 
 	// 写入的物模型数据，如果是json需要转义成字符串
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 
 	// Value字段的类型是否为数值（float、int）
-	IsNum *bool `json:"IsNum,omitempty" name:"IsNum"`
+	IsNum *bool `json:"IsNum,omitnil" name:"IsNum"`
 }
 
 func (r *ModifyDeviceActionRequest) ToJsonString() string {
@@ -3883,15 +3883,15 @@ func (r *ModifyDeviceActionRequest) FromJsonString(s string) error {
 type ModifyDeviceActionResponseParams struct {
 	// 设备端的响应结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 任务ID
 	// 若设备端未能及时响应时，会返回此字段，用户可以通过DescribeModelDataRet获取设备的最终响应结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDeviceActionResponse struct {
@@ -3913,38 +3913,38 @@ func (r *ModifyDeviceActionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDevicePropertyRequestParams struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 如果设备处于休眠状态，是否唤醒设备
-	Wakeup *bool `json:"Wakeup,omitempty" name:"Wakeup"`
+	Wakeup *bool `json:"Wakeup,omitnil" name:"Wakeup"`
 
 	// 物模型的分支路径
-	Branch *string `json:"Branch,omitempty" name:"Branch"`
+	Branch *string `json:"Branch,omitnil" name:"Branch"`
 
 	// 写入的物模型数据，如果是json需要转义成字符串
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 
 	// Value字段是否为数值（float、int）
-	IsNum *bool `json:"IsNum,omitempty" name:"IsNum"`
+	IsNum *bool `json:"IsNum,omitnil" name:"IsNum"`
 }
 
 type ModifyDevicePropertyRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 如果设备处于休眠状态，是否唤醒设备
-	Wakeup *bool `json:"Wakeup,omitempty" name:"Wakeup"`
+	Wakeup *bool `json:"Wakeup,omitnil" name:"Wakeup"`
 
 	// 物模型的分支路径
-	Branch *string `json:"Branch,omitempty" name:"Branch"`
+	Branch *string `json:"Branch,omitnil" name:"Branch"`
 
 	// 写入的物模型数据，如果是json需要转义成字符串
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 
 	// Value字段是否为数值（float、int）
-	IsNum *bool `json:"IsNum,omitempty" name:"IsNum"`
+	IsNum *bool `json:"IsNum,omitnil" name:"IsNum"`
 }
 
 func (r *ModifyDevicePropertyRequest) ToJsonString() string {
@@ -3973,7 +3973,7 @@ func (r *ModifyDevicePropertyRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDevicePropertyResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDevicePropertyResponse struct {
@@ -3995,26 +3995,26 @@ func (r *ModifyDevicePropertyResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDeviceRequestParams struct {
 	// 设备ID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 用户ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 设备昵称，最多不超过64个字符
-	Nick *string `json:"Nick,omitempty" name:"Nick"`
+	Nick *string `json:"Nick,omitnil" name:"Nick"`
 }
 
 type ModifyDeviceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备ID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 用户ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 设备昵称，最多不超过64个字符
-	Nick *string `json:"Nick,omitempty" name:"Nick"`
+	Nick *string `json:"Nick,omitnil" name:"Nick"`
 }
 
 func (r *ModifyDeviceRequest) ToJsonString() string {
@@ -4041,7 +4041,7 @@ func (r *ModifyDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDeviceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDeviceResponse struct {
@@ -4063,38 +4063,38 @@ func (r *ModifyDeviceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyProductRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 产品名称
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 
 	// 产品描述
-	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
+	ProductDescription *string `json:"ProductDescription,omitnil" name:"ProductDescription"`
 
 	// 主芯片产商ID
-	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
+	ChipManufactureId *string `json:"ChipManufactureId,omitnil" name:"ChipManufactureId"`
 
 	// 主芯片ID
-	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
+	ChipId *string `json:"ChipId,omitnil" name:"ChipId"`
 }
 
 type ModifyProductRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 产品名称
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 
 	// 产品描述
-	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
+	ProductDescription *string `json:"ProductDescription,omitnil" name:"ProductDescription"`
 
 	// 主芯片产商ID
-	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
+	ChipManufactureId *string `json:"ChipManufactureId,omitnil" name:"ChipManufactureId"`
 
 	// 主芯片ID
-	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
+	ChipId *string `json:"ChipId,omitnil" name:"ChipId"`
 }
 
 func (r *ModifyProductRequest) ToJsonString() string {
@@ -4123,7 +4123,7 @@ func (r *ModifyProductRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyProductResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyProductResponse struct {
@@ -4145,38 +4145,38 @@ func (r *ModifyProductResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVerContentRequestParams struct {
 	// 产品id
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 需要修改的版本号
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 操作人,字符长度<=64
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 备注信息
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 版本发布的描述信息，需要国际化，可以为空
-	Contents *Contents `json:"Contents,omitempty" name:"Contents"`
+	Contents *Contents `json:"Contents,omitnil" name:"Contents"`
 }
 
 type ModifyVerContentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品id
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 需要修改的版本号
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 操作人,字符长度<=64
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 备注信息
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 版本发布的描述信息，需要国际化，可以为空
-	Contents *Contents `json:"Contents,omitempty" name:"Contents"`
+	Contents *Contents `json:"Contents,omitnil" name:"Contents"`
 }
 
 func (r *ModifyVerContentRequest) ToJsonString() string {
@@ -4205,7 +4205,7 @@ func (r *ModifyVerContentRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyVerContentResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyVerContentResponse struct {
@@ -4226,60 +4226,60 @@ func (r *ModifyVerContentResponse) FromJsonString(s string) error {
 
 type MsgQueueData struct {
 	// 消息队列类型 1：CMQ 2：kafka
-	MsgQueueType *uint64 `json:"MsgQueueType,omitempty" name:"MsgQueueType"`
+	MsgQueueType *uint64 `json:"MsgQueueType,omitnil" name:"MsgQueueType"`
 
 	// 消息类型列表，整型值（0-31）之间以“,”分隔
-	MsgType *string `json:"MsgType,omitempty" name:"MsgType"`
+	MsgType *string `json:"MsgType,omitnil" name:"MsgType"`
 
 	// 主题名称
-	Topic *string `json:"Topic,omitempty" name:"Topic"`
+	Topic *string `json:"Topic,omitnil" name:"Topic"`
 
 	// 实例名称
-	Instance *string `json:"Instance,omitempty" name:"Instance"`
+	Instance *string `json:"Instance,omitnil" name:"Instance"`
 
 	// 消息地域
-	MsgRegion *string `json:"MsgRegion,omitempty" name:"MsgRegion"`
+	MsgRegion *string `json:"MsgRegion,omitnil" name:"MsgRegion"`
 }
 
 type OsData struct {
 	// 芯片型号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
+	ChipId *string `json:"ChipId,omitnil" name:"ChipId"`
 
 	// 芯片厂商
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ChipManufacture *string `json:"ChipManufacture,omitempty" name:"ChipManufacture"`
+	ChipManufacture *string `json:"ChipManufacture,omitnil" name:"ChipManufacture"`
 }
 
 type OtaPubHistory struct {
 	// 版本名称
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 发布时间，unix时间戳，单位：秒
-	PublishTime *uint64 `json:"PublishTime,omitempty" name:"PublishTime"`
+	PublishTime *uint64 `json:"PublishTime,omitnil" name:"PublishTime"`
 }
 
 type ProductBase struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 产器型号(APP产品,为APP包名)
-	ProductModel *string `json:"ProductModel,omitempty" name:"ProductModel"`
+	ProductModel *string `json:"ProductModel,omitnil" name:"ProductModel"`
 
 	// 产品名称
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 
 	// 产品描述信息
-	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
+	ProductDescription *string `json:"ProductDescription,omitnil" name:"ProductDescription"`
 
 	// 创建时间，UNIX 时间戳，单位秒
-	CreateTime *uint64 `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *uint64 `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 物模型发布版本号,0代表物模型尚未发布
-	IotModelRevision *uint64 `json:"IotModelRevision,omitempty" name:"IotModelRevision"`
+	IotModelRevision *uint64 `json:"IotModelRevision,omitnil" name:"IotModelRevision"`
 
 	// 产品密钥
-	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+	SecretKey *string `json:"SecretKey,omitnil" name:"SecretKey"`
 
 	// 设备功能码
 	// ypsxth : 音频双向通话;	
@@ -4289,11 +4289,11 @@ type ProductBase struct {
 	// Alexa : Alexa接入;
 	// Google : Google接入;
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FuncCode []*string `json:"FuncCode,omitempty" name:"FuncCode"`
+	FuncCode []*string `json:"FuncCode,omitnil" name:"FuncCode"`
 
 	// 产品类别，0 : 普通视频设备；1 : NVR设备
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductCate *int64 `json:"ProductCate,omitempty" name:"ProductCate"`
+	ProductCate *int64 `json:"ProductCate,omitnil" name:"ProductCate"`
 
 	// 产品地域
 	// China-Mainland（中国大陆）
@@ -4303,53 +4303,53 @@ type ProductBase struct {
 	// India（印度）
 	// Other-Overseas（其他境外地区）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductRegion *string `json:"ProductRegion,omitempty" name:"ProductRegion"`
+	ProductRegion *string `json:"ProductRegion,omitnil" name:"ProductRegion"`
 }
 
 type ProductData struct {
 	// 产品ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 产品名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductName *string `json:"ProductName,omitempty" name:"ProductName"`
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
 
 	// 产品描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductDescription *string `json:"ProductDescription,omitempty" name:"ProductDescription"`
+	ProductDescription *string `json:"ProductDescription,omitnil" name:"ProductDescription"`
 
 	// 创建时间，UNIX 时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *int64 `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 物模型发布版本号,0代表物模型尚未发布
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IotModelRevision *int64 `json:"IotModelRevision,omitempty" name:"IotModelRevision"`
+	IotModelRevision *int64 `json:"IotModelRevision,omitnil" name:"IotModelRevision"`
 
 	// 产品密钥
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SecretKey *string `json:"SecretKey,omitempty" name:"SecretKey"`
+	SecretKey *string `json:"SecretKey,omitnil" name:"SecretKey"`
 
 	// 设备功能码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Features []*string `json:"Features,omitempty" name:"Features"`
+	Features []*string `json:"Features,omitnil" name:"Features"`
 
 	// 产器型号(APP产品,为APP包名)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductModel *string `json:"ProductModel,omitempty" name:"ProductModel"`
+	ProductModel *string `json:"ProductModel,omitnil" name:"ProductModel"`
 
 	// 主芯片厂商id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ChipManufactureId *string `json:"ChipManufactureId,omitempty" name:"ChipManufactureId"`
+	ChipManufactureId *string `json:"ChipManufactureId,omitnil" name:"ChipManufactureId"`
 
 	// 主芯片型号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ChipId *string `json:"ChipId,omitempty" name:"ChipId"`
+	ChipId *string `json:"ChipId,omitnil" name:"ChipId"`
 
 	// 产品类别，0：普通视频设备；1：NVR设备
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductCate *int64 `json:"ProductCate,omitempty" name:"ProductCate"`
+	ProductCate *int64 `json:"ProductCate,omitnil" name:"ProductCate"`
 
 	// 产品地区
 	// China-Mainland（中国大陆）
@@ -4359,52 +4359,52 @@ type ProductData struct {
 	// India（印度）
 	// Other-Overseas（其他境外地区）
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductRegion *string `json:"ProductRegion,omitempty" name:"ProductRegion"`
+	ProductRegion *string `json:"ProductRegion,omitnil" name:"ProductRegion"`
 
 	// 接入模型，bit0是0：公版小程序未接入，bit0是1：公版小程序已接入
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AccessMode *int64 `json:"AccessMode,omitempty" name:"AccessMode"`
+	AccessMode *int64 `json:"AccessMode,omitnil" name:"AccessMode"`
 
 	// linux,android,liteos
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Os *string `json:"Os,omitempty" name:"Os"`
+	Os *string `json:"Os,omitnil" name:"Os"`
 }
 
 type RechargeRecord struct {
 	// 流水记录号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WaterId *int64 `json:"WaterId,omitempty" name:"WaterId"`
+	WaterId *int64 `json:"WaterId,omitnil" name:"WaterId"`
 
 	// 充值前的余额，单位0.01元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BalanceBeforeRecharge *int64 `json:"BalanceBeforeRecharge,omitempty" name:"BalanceBeforeRecharge"`
+	BalanceBeforeRecharge *int64 `json:"BalanceBeforeRecharge,omitnil" name:"BalanceBeforeRecharge"`
 
 	// 充值金额，单位0.01元。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Money *int64 `json:"Money,omitempty" name:"Money"`
+	Money *int64 `json:"Money,omitnil" name:"Money"`
 
 	// 充值时间, UTC值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OperateTime *int64 `json:"OperateTime,omitempty" name:"OperateTime"`
+	OperateTime *int64 `json:"OperateTime,omitnil" name:"OperateTime"`
 }
 
 // Predefined struct for user
 type RefundStorageServiceRequestParams struct {
 	// 云存服务ID
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 云存子订单ID。如果指定子订单ID,则仅退订该子订单，如果未指定子定单ID，则退订所有子订单
-	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
 }
 
 type RefundStorageServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云存服务ID
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 云存子订单ID。如果指定子订单ID,则仅退订该子订单，如果未指定子定单ID，则退订所有子订单
-	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
 }
 
 func (r *RefundStorageServiceRequest) ToJsonString() string {
@@ -4430,38 +4430,38 @@ func (r *RefundStorageServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RefundStorageServiceResponseParams struct {
 	// 云存服务ID
-	ServiceId *string `json:"ServiceId,omitempty" name:"ServiceId"`
+	ServiceId *string `json:"ServiceId,omitnil" name:"ServiceId"`
 
 	// 云存服务所在的区域
-	StorageRegion *string `json:"StorageRegion,omitempty" name:"StorageRegion"`
+	StorageRegion *string `json:"StorageRegion,omitnil" name:"StorageRegion"`
 
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 视频流通道号。(对于存在多路视频流的设备，如NVR设备，与设备实际视频流通道号对应)
-	ChnNum *int64 `json:"ChnNum,omitempty" name:"ChnNum"`
+	ChnNum *int64 `json:"ChnNum,omitnil" name:"ChnNum"`
 
 	// 终端用户在IoT Video平台的注册ID
-	AccessId *string `json:"AccessId,omitempty" name:"AccessId"`
+	AccessId *string `json:"AccessId,omitnil" name:"AccessId"`
 
 	// 服务开始时间
-	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 服务失效时间
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务状态
 	// 1：正常使用中
 	// 2：待续费。设备云存服务已到期，但是历史云存数据未过期。续费后仍可查看这些历史数据。
 	// 3：已过期。查询不到设备保存在云端的数据。
 	// 4：等待服务生效。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 有效云存定单列表
-	Data []*StorageOrder `json:"Data,omitempty" name:"Data"`
+	Data []*StorageOrder `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RefundStorageServiceResponse struct {
@@ -4482,23 +4482,23 @@ func (r *RefundStorageServiceResponse) FromJsonString(s string) error {
 
 type RegisteredStatus struct {
 	// 终端用户的唯一ID
-	CunionId *string `json:"CunionId,omitempty" name:"CunionId"`
+	CunionId *string `json:"CunionId,omitnil" name:"CunionId"`
 
 	// 注册状态
-	IsRegisted *bool `json:"IsRegisted,omitempty" name:"IsRegisted"`
+	IsRegisted *bool `json:"IsRegisted,omitnil" name:"IsRegisted"`
 }
 
 // Predefined struct for user
 type RunDeviceRequestParams struct {
 	// TID列表 ≤100
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 type RunDeviceRequest struct {
 	*tchttp.BaseRequest
 	
 	// TID列表 ≤100
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 func (r *RunDeviceRequest) ToJsonString() string {
@@ -4523,7 +4523,7 @@ func (r *RunDeviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RunDeviceResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RunDeviceResponse struct {
@@ -4545,14 +4545,14 @@ func (r *RunDeviceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RunDeviceStreamRequestParams struct {
 	// 设备TID 列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 type RunDeviceStreamRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID 列表
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 }
 
 func (r *RunDeviceStreamRequest) ToJsonString() string {
@@ -4577,7 +4577,7 @@ func (r *RunDeviceStreamRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RunDeviceStreamResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RunDeviceStreamResponse struct {
@@ -4599,20 +4599,20 @@ func (r *RunDeviceStreamResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RunIotModelRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 物模型定义，json格式的字符串
-	IotModel *string `json:"IotModel,omitempty" name:"IotModel"`
+	IotModel *string `json:"IotModel,omitnil" name:"IotModel"`
 }
 
 type RunIotModelRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 物模型定义，json格式的字符串
-	IotModel *string `json:"IotModel,omitempty" name:"IotModel"`
+	IotModel *string `json:"IotModel,omitnil" name:"IotModel"`
 }
 
 func (r *RunIotModelRequest) ToJsonString() string {
@@ -4638,7 +4638,7 @@ func (r *RunIotModelRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RunIotModelResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RunIotModelResponse struct {
@@ -4660,50 +4660,50 @@ func (r *RunIotModelResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RunOtaVersionRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 灰度值,取值范围0-100，为0时相当于暂停发布
-	GrayValue *uint64 `json:"GrayValue,omitempty" name:"GrayValue"`
+	GrayValue *uint64 `json:"GrayValue,omitnil" name:"GrayValue"`
 
 	// 指定的旧版本
-	OldVersions []*string `json:"OldVersions,omitempty" name:"OldVersions"`
+	OldVersions []*string `json:"OldVersions,omitnil" name:"OldVersions"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 备注信息
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 版本发布的描述信息，需要国际化，可以为空
-	Contents *Contents `json:"Contents,omitempty" name:"Contents"`
+	Contents *Contents `json:"Contents,omitnil" name:"Contents"`
 }
 
 type RunOtaVersionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 灰度值,取值范围0-100，为0时相当于暂停发布
-	GrayValue *uint64 `json:"GrayValue,omitempty" name:"GrayValue"`
+	GrayValue *uint64 `json:"GrayValue,omitnil" name:"GrayValue"`
 
 	// 指定的旧版本
-	OldVersions []*string `json:"OldVersions,omitempty" name:"OldVersions"`
+	OldVersions []*string `json:"OldVersions,omitnil" name:"OldVersions"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 备注信息
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 版本发布的描述信息，需要国际化，可以为空
-	Contents *Contents `json:"Contents,omitempty" name:"Contents"`
+	Contents *Contents `json:"Contents,omitnil" name:"Contents"`
 }
 
 func (r *RunOtaVersionRequest) ToJsonString() string {
@@ -4734,7 +4734,7 @@ func (r *RunOtaVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RunOtaVersionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RunOtaVersionResponse struct {
@@ -4756,38 +4756,38 @@ func (r *RunOtaVersionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type RunTestOtaVersionRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 指定可升级的设备TID
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 备注信息
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type RunTestOtaVersionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 指定可升级的设备TID
-	Tids []*string `json:"Tids,omitempty" name:"Tids"`
+	Tids []*string `json:"Tids,omitnil" name:"Tids"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 备注信息
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 func (r *RunTestOtaVersionRequest) ToJsonString() string {
@@ -4816,7 +4816,7 @@ func (r *RunTestOtaVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RunTestOtaVersionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RunTestOtaVersionResponse struct {
@@ -4838,44 +4838,44 @@ func (r *RunTestOtaVersionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SendOnlineMsgRequestParams struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 如果设备处于休眠状态，是否唤醒设备
-	Wakeup *bool `json:"Wakeup,omitempty" name:"Wakeup"`
+	Wakeup *bool `json:"Wakeup,omitnil" name:"Wakeup"`
 
 	// 等待回应类型
 	// 0：不等待设备回应直接响应请求;
 	// 1：要求设备确认消息已接收,或等待超时后返回;
 	// 2：要求设备进行响应处理,收到设备的响应数据后,将设备响应数据回应给请求方;
-	WaitResp *uint64 `json:"WaitResp,omitempty" name:"WaitResp"`
+	WaitResp *uint64 `json:"WaitResp,omitnil" name:"WaitResp"`
 
 	// 消息主题
-	MsgTopic *string `json:"MsgTopic,omitempty" name:"MsgTopic"`
+	MsgTopic *string `json:"MsgTopic,omitnil" name:"MsgTopic"`
 
 	// 消息内容，最大长度不超过8k字节
-	MsgContent *string `json:"MsgContent,omitempty" name:"MsgContent"`
+	MsgContent *string `json:"MsgContent,omitnil" name:"MsgContent"`
 }
 
 type SendOnlineMsgRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 如果设备处于休眠状态，是否唤醒设备
-	Wakeup *bool `json:"Wakeup,omitempty" name:"Wakeup"`
+	Wakeup *bool `json:"Wakeup,omitnil" name:"Wakeup"`
 
 	// 等待回应类型
 	// 0：不等待设备回应直接响应请求;
 	// 1：要求设备确认消息已接收,或等待超时后返回;
 	// 2：要求设备进行响应处理,收到设备的响应数据后,将设备响应数据回应给请求方;
-	WaitResp *uint64 `json:"WaitResp,omitempty" name:"WaitResp"`
+	WaitResp *uint64 `json:"WaitResp,omitnil" name:"WaitResp"`
 
 	// 消息主题
-	MsgTopic *string `json:"MsgTopic,omitempty" name:"MsgTopic"`
+	MsgTopic *string `json:"MsgTopic,omitnil" name:"MsgTopic"`
 
 	// 消息内容，最大长度不超过8k字节
-	MsgContent *string `json:"MsgContent,omitempty" name:"MsgContent"`
+	MsgContent *string `json:"MsgContent,omitnil" name:"MsgContent"`
 }
 
 func (r *SendOnlineMsgRequest) ToJsonString() string {
@@ -4904,13 +4904,13 @@ func (r *SendOnlineMsgRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SendOnlineMsgResponseParams struct {
 	// 若返回此项则表明需要用户用此taskID进行查询请求是否成功(只有waitresp不等于0的情况下才可能会返回该taskID项)
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 设备响应信息
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SendOnlineMsgResponse struct {
@@ -4932,10 +4932,10 @@ func (r *SendOnlineMsgResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SetMessageQueueRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 消息队列类型 1-CMQ; 2-Ckafka
-	MsgQueueType *uint64 `json:"MsgQueueType,omitempty" name:"MsgQueueType"`
+	MsgQueueType *uint64 `json:"MsgQueueType,omitnil" name:"MsgQueueType"`
 
 	// 消息类型,整型值（0-31）之间以“,”分隔
 	// 0.设备在线状态变更
@@ -4945,26 +4945,26 @@ type SetMessageQueueRequestParams struct {
 	// 4.设备控制(Action)
 	// 5.设备事件(Event)
 	// 6.系统事件(System)
-	MsgType *string `json:"MsgType,omitempty" name:"MsgType"`
+	MsgType *string `json:"MsgType,omitnil" name:"MsgType"`
 
 	// 消息队列主题，不超过32字符
-	Topic *string `json:"Topic,omitempty" name:"Topic"`
+	Topic *string `json:"Topic,omitnil" name:"Topic"`
 
 	// kafka消息队列的实例名，不超过64字符
-	Instance *string `json:"Instance,omitempty" name:"Instance"`
+	Instance *string `json:"Instance,omitnil" name:"Instance"`
 
 	// 消息地域，不超过32字符
-	MsgRegion *string `json:"MsgRegion,omitempty" name:"MsgRegion"`
+	MsgRegion *string `json:"MsgRegion,omitnil" name:"MsgRegion"`
 }
 
 type SetMessageQueueRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 消息队列类型 1-CMQ; 2-Ckafka
-	MsgQueueType *uint64 `json:"MsgQueueType,omitempty" name:"MsgQueueType"`
+	MsgQueueType *uint64 `json:"MsgQueueType,omitnil" name:"MsgQueueType"`
 
 	// 消息类型,整型值（0-31）之间以“,”分隔
 	// 0.设备在线状态变更
@@ -4974,16 +4974,16 @@ type SetMessageQueueRequest struct {
 	// 4.设备控制(Action)
 	// 5.设备事件(Event)
 	// 6.系统事件(System)
-	MsgType *string `json:"MsgType,omitempty" name:"MsgType"`
+	MsgType *string `json:"MsgType,omitnil" name:"MsgType"`
 
 	// 消息队列主题，不超过32字符
-	Topic *string `json:"Topic,omitempty" name:"Topic"`
+	Topic *string `json:"Topic,omitnil" name:"Topic"`
 
 	// kafka消息队列的实例名，不超过64字符
-	Instance *string `json:"Instance,omitempty" name:"Instance"`
+	Instance *string `json:"Instance,omitnil" name:"Instance"`
 
 	// 消息地域，不超过32字符
-	MsgRegion *string `json:"MsgRegion,omitempty" name:"MsgRegion"`
+	MsgRegion *string `json:"MsgRegion,omitnil" name:"MsgRegion"`
 }
 
 func (r *SetMessageQueueRequest) ToJsonString() string {
@@ -5013,7 +5013,7 @@ func (r *SetMessageQueueRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SetMessageQueueResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SetMessageQueueResponse struct {
@@ -5034,10 +5034,10 @@ func (r *SetMessageQueueResponse) FromJsonString(s string) error {
 
 type StorageOrder struct {
 	// 定单唯一性ID
-	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
 
 	// 云存套餐ID
-	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+	PkgId *string `json:"PkgId,omitnil" name:"PkgId"`
 
 	// 定单服务状态
 	// 1;订单正在使用。
@@ -5046,60 +5046,60 @@ type StorageOrder struct {
 	// 4:订单已过期。
 	// 5:订单已被退订。
 	// 6:定单已被转移到其他云存服务。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 定单服务生效时间
-	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 定单服务失效时间
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 type SystemType struct {
 	// 安卓系统
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Android []*OsData `json:"Android,omitempty" name:"Android"`
+	Android []*OsData `json:"Android,omitnil" name:"Android"`
 
 	// linux系统
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Linux []*OsData `json:"Linux,omitempty" name:"Linux"`
+	Linux []*OsData `json:"Linux,omitnil" name:"Linux"`
 
 	// LiteOs系统
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LiteOs []*OsData `json:"LiteOs,omitempty" name:"LiteOs"`
+	LiteOs []*OsData `json:"LiteOs,omitnil" name:"LiteOs"`
 }
 
 type TraceStatus struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 设备追踪状态
-	IsExist *bool `json:"IsExist,omitempty" name:"IsExist"`
+	IsExist *bool `json:"IsExist,omitnil" name:"IsExist"`
 }
 
 // Predefined struct for user
 type UpgradeDeviceRequestParams struct {
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 固件版本号
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 是否立即升级
-	UpgradeNow *bool `json:"UpgradeNow,omitempty" name:"UpgradeNow"`
+	UpgradeNow *bool `json:"UpgradeNow,omitnil" name:"UpgradeNow"`
 }
 
 type UpgradeDeviceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 设备TID
-	Tid *string `json:"Tid,omitempty" name:"Tid"`
+	Tid *string `json:"Tid,omitnil" name:"Tid"`
 
 	// 固件版本号
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 是否立即升级
-	UpgradeNow *bool `json:"UpgradeNow,omitempty" name:"UpgradeNow"`
+	UpgradeNow *bool `json:"UpgradeNow,omitnil" name:"UpgradeNow"`
 }
 
 func (r *UpgradeDeviceRequest) ToJsonString() string {
@@ -5127,10 +5127,10 @@ func (r *UpgradeDeviceRequest) FromJsonString(s string) error {
 type UpgradeDeviceResponseParams struct {
 	// 设备端返回的数据
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpgradeDeviceResponse struct {
@@ -5152,56 +5152,56 @@ func (r *UpgradeDeviceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadOtaVersionRequestParams struct {
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 固件版本URL
-	VersionUrl *string `json:"VersionUrl,omitempty" name:"VersionUrl"`
+	VersionUrl *string `json:"VersionUrl,omitnil" name:"VersionUrl"`
 
 	// 文件大小，单位：byte
-	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+	FileSize *uint64 `json:"FileSize,omitnil" name:"FileSize"`
 
 	// 文件md5校验码（32字符）
-	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+	Md5 *string `json:"Md5,omitnil" name:"Md5"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 备注信息
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 版本发布的描述信息，需要国际化，可以为空
-	Contents *Contents `json:"Contents,omitempty" name:"Contents"`
+	Contents *Contents `json:"Contents,omitnil" name:"Contents"`
 }
 
 type UploadOtaVersionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 产品ID
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 固件版本号，格式为x.y.z， x，y 范围0-63，z范围1~524288
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 固件版本URL
-	VersionUrl *string `json:"VersionUrl,omitempty" name:"VersionUrl"`
+	VersionUrl *string `json:"VersionUrl,omitnil" name:"VersionUrl"`
 
 	// 文件大小，单位：byte
-	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+	FileSize *uint64 `json:"FileSize,omitnil" name:"FileSize"`
 
 	// 文件md5校验码（32字符）
-	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+	Md5 *string `json:"Md5,omitnil" name:"Md5"`
 
 	// 操作人
-	Operator *string `json:"Operator,omitempty" name:"Operator"`
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
 	// 备注信息
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 版本发布的描述信息，需要国际化，可以为空
-	Contents *Contents `json:"Contents,omitempty" name:"Contents"`
+	Contents *Contents `json:"Contents,omitnil" name:"Contents"`
 }
 
 func (r *UploadOtaVersionRequest) ToJsonString() string {
@@ -5233,7 +5233,7 @@ func (r *UploadOtaVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UploadOtaVersionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UploadOtaVersionResponse struct {
@@ -5255,73 +5255,73 @@ func (r *UploadOtaVersionResponse) FromJsonString(s string) error {
 type VersionData struct {
 	// 产品ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductId *string `json:"ProductId,omitempty" name:"ProductId"`
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
 
 	// 固件版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OtaVersion *string `json:"OtaVersion,omitempty" name:"OtaVersion"`
+	OtaVersion *string `json:"OtaVersion,omitnil" name:"OtaVersion"`
 
 	// 版本类型 1未发布 2测试发布 3正式发布 4禁用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PubStatus *uint64 `json:"PubStatus,omitempty" name:"PubStatus"`
+	PubStatus *uint64 `json:"PubStatus,omitnil" name:"PubStatus"`
 
 	// 固件版本存储路径URL
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionUrl *string `json:"VersionUrl,omitempty" name:"VersionUrl"`
+	VersionUrl *string `json:"VersionUrl,omitnil" name:"VersionUrl"`
 
 	// 文件大小，byte
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileSize *uint64 `json:"FileSize,omitempty" name:"FileSize"`
+	FileSize *uint64 `json:"FileSize,omitnil" name:"FileSize"`
 
 	// 文件校验码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+	Md5 *string `json:"Md5,omitnil" name:"Md5"`
 
 	// 指定的允许升级的旧版本，PubStatus=3时有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OldVersions *string `json:"OldVersions,omitempty" name:"OldVersions"`
+	OldVersions *string `json:"OldVersions,omitnil" name:"OldVersions"`
 
 	// 指定的允许升级的旧设备id，PubStatus=2时有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tids *string `json:"Tids,omitempty" name:"Tids"`
+	Tids *string `json:"Tids,omitnil" name:"Tids"`
 
 	// 灰度值（0-100）,PubStatus=3时有效，表示n%的升级总量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GrayValue *uint64 `json:"GrayValue,omitempty" name:"GrayValue"`
+	GrayValue *uint64 `json:"GrayValue,omitnil" name:"GrayValue"`
 
 	// 最近一次发布时间，UNIX时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PublishTime *uint64 `json:"PublishTime,omitempty" name:"PublishTime"`
+	PublishTime *uint64 `json:"PublishTime,omitnil" name:"PublishTime"`
 
 	// 此版本激活的设备总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActiveCount *int64 `json:"ActiveCount,omitempty" name:"ActiveCount"`
+	ActiveCount *int64 `json:"ActiveCount,omitnil" name:"ActiveCount"`
 
 	// 此版本在线的设备总数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OnlineCount *int64 `json:"OnlineCount,omitempty" name:"OnlineCount"`
+	OnlineCount *int64 `json:"OnlineCount,omitnil" name:"OnlineCount"`
 
 	// 上传固件文件的时间，UNIX时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpdateTime *uint64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *uint64 `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 发布记录的最后变更时间，UNIX时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UploadTime *uint64 `json:"UploadTime,omitempty" name:"UploadTime"`
+	UploadTime *uint64 `json:"UploadTime,omitnil" name:"UploadTime"`
 
 	// 该固件版本发布的变更次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ModifyTimes *uint64 `json:"ModifyTimes,omitempty" name:"ModifyTimes"`
+	ModifyTimes *uint64 `json:"ModifyTimes,omitnil" name:"ModifyTimes"`
 
 	// 备注信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 
 	// 版本发布的描述信息，需要国际化，可以为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Contents *Contents `json:"Contents,omitempty" name:"Contents"`
+	Contents *Contents `json:"Contents,omitnil" name:"Contents"`
 
 	// 月活设备数，当月第一天开始有上线的设备数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AliveInMonthCnt *uint64 `json:"AliveInMonthCnt,omitempty" name:"AliveInMonthCnt"`
+	AliveInMonthCnt *uint64 `json:"AliveInMonthCnt,omitnil" name:"AliveInMonthCnt"`
 }

@@ -15,28 +15,28 @@
 package v20200715
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type DescribeEisConnectorConfigRequestParams struct {
 	// 连接器名称
-	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
 
 	// 连接器版本
-	ConnectorVersion *string `json:"ConnectorVersion,omitempty" name:"ConnectorVersion"`
+	ConnectorVersion *string `json:"ConnectorVersion,omitnil" name:"ConnectorVersion"`
 }
 
 type DescribeEisConnectorConfigRequest struct {
 	*tchttp.BaseRequest
 	
 	// 连接器名称
-	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
 
 	// 连接器版本
-	ConnectorVersion *string `json:"ConnectorVersion,omitempty" name:"ConnectorVersion"`
+	ConnectorVersion *string `json:"ConnectorVersion,omitnil" name:"ConnectorVersion"`
 }
 
 func (r *DescribeEisConnectorConfigRequest) ToJsonString() string {
@@ -236,10 +236,10 @@ type DescribeEisConnectorConfigResponseParams struct {
 	//         }
 	//     ]
 	// }
-	ConnectorParameter *string `json:"ConnectorParameter,omitempty" name:"ConnectorParameter"`
+	ConnectorParameter *string `json:"ConnectorParameter,omitnil" name:"ConnectorParameter"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeEisConnectorConfigResponse struct {
@@ -260,52 +260,52 @@ func (r *DescribeEisConnectorConfigResponse) FromJsonString(s string) error {
 
 type EisConnectionOperation struct {
 	// 连接器操作名称
-	OperationName *string `json:"OperationName,omitempty" name:"OperationName"`
+	OperationName *string `json:"OperationName,omitnil" name:"OperationName"`
 
 	// 连接器展示名称
-	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
 
 	// 操作是否为触发器
-	IsTrigger *bool `json:"IsTrigger,omitempty" name:"IsTrigger"`
+	IsTrigger *bool `json:"IsTrigger,omitnil" name:"IsTrigger"`
 }
 
 type EisConnectorSummary struct {
 	// 连接器名称
-	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
 
 	// 连接器展示名称
-	DisplayName *string `json:"DisplayName,omitempty" name:"DisplayName"`
+	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
 
 	// 连接器对应企业
-	Company *string `json:"Company,omitempty" name:"Company"`
+	Company *string `json:"Company,omitnil" name:"Company"`
 
 	// 连接器对应产品
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 连接器版本
-	ConnectorVersion *string `json:"ConnectorVersion,omitempty" name:"ConnectorVersion"`
+	ConnectorVersion *string `json:"ConnectorVersion,omitnil" name:"ConnectorVersion"`
 
 	// 连接器创建时间
-	CreateTime *int64 `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *int64 `json:"CreateTime,omitnil" name:"CreateTime"`
 }
 
 // Predefined struct for user
 type ListEisConnectorOperationsRequestParams struct {
 	// 连接器名称
-	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
 
 	// 连接器版本
-	ConnectorVersion *string `json:"ConnectorVersion,omitempty" name:"ConnectorVersion"`
+	ConnectorVersion *string `json:"ConnectorVersion,omitnil" name:"ConnectorVersion"`
 }
 
 type ListEisConnectorOperationsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 连接器名称
-	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
 
 	// 连接器版本
-	ConnectorVersion *string `json:"ConnectorVersion,omitempty" name:"ConnectorVersion"`
+	ConnectorVersion *string `json:"ConnectorVersion,omitnil" name:"ConnectorVersion"`
 }
 
 func (r *ListEisConnectorOperationsRequest) ToJsonString() string {
@@ -331,10 +331,10 @@ func (r *ListEisConnectorOperationsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListEisConnectorOperationsResponseParams struct {
 	// 连接器列表
-	Operations []*EisConnectionOperation `json:"Operations,omitempty" name:"Operations"`
+	Operations []*EisConnectionOperation `json:"Operations,omitnil" name:"Operations"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ListEisConnectorOperationsResponse struct {
@@ -356,26 +356,26 @@ func (r *ListEisConnectorOperationsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ListEisConnectorsRequestParams struct {
 	// 连接器名称,非必输，如输入则按照输入值模糊匹配
-	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
 
 	// 分页参数,数据偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页参数,每页显示的条数
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type ListEisConnectorsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 连接器名称,非必输，如输入则按照输入值模糊匹配
-	ConnectorName *string `json:"ConnectorName,omitempty" name:"ConnectorName"`
+	ConnectorName *string `json:"ConnectorName,omitnil" name:"ConnectorName"`
 
 	// 分页参数,数据偏移量
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页参数,每页显示的条数
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *ListEisConnectorsRequest) ToJsonString() string {
@@ -402,13 +402,13 @@ func (r *ListEisConnectorsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ListEisConnectorsResponseParams struct {
 	// 连接器总数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 连接器列表
-	Connectors []*EisConnectorSummary `json:"Connectors,omitempty" name:"Connectors"`
+	Connectors []*EisConnectorSummary `json:"Connectors,omitnil" name:"Connectors"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ListEisConnectorsResponse struct {

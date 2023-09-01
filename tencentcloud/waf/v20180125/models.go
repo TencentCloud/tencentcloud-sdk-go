@@ -15,174 +15,174 @@
 package v20180125
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type AccessFullTextInfo struct {
 	// 是否大小写敏感
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaseSensitive *bool `json:"CaseSensitive,omitempty" name:"CaseSensitive"`
+	CaseSensitive *bool `json:"CaseSensitive,omitnil" name:"CaseSensitive"`
 
 	// 全文索引的分词符，字符串中每个字符代表一个分词符
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tokenizer *string `json:"Tokenizer,omitempty" name:"Tokenizer"`
+	Tokenizer *string `json:"Tokenizer,omitnil" name:"Tokenizer"`
 
 	// 是否包含中文
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainZH *bool `json:"ContainZH,omitempty" name:"ContainZH"`
+	ContainZH *bool `json:"ContainZH,omitnil" name:"ContainZH"`
 }
 
 type AccessHistogramItem struct {
 	// 时间，单位ms
-	BTime *int64 `json:"BTime,omitempty" name:"BTime"`
+	BTime *int64 `json:"BTime,omitnil" name:"BTime"`
 
 	// 日志条数
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 }
 
 type AccessKeyValueInfo struct {
 	// 需要配置键值或者元字段索引的字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 字段的索引描述信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *AccessValueInfo `json:"Value,omitempty" name:"Value"`
+	Value *AccessValueInfo `json:"Value,omitnil" name:"Value"`
 }
 
 type AccessLogInfo struct {
 	// 日志时间，单位ms
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Time *int64 `json:"Time,omitempty" name:"Time"`
+	Time *int64 `json:"Time,omitnil" name:"Time"`
 
 	// 日志主题ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 
 	// 日志主题名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TopicName *string `json:"TopicName,omitempty" name:"TopicName"`
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 
 	// 日志来源IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 日志文件名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 日志上报请求包的ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PkgId *string `json:"PkgId,omitempty" name:"PkgId"`
+	PkgId *string `json:"PkgId,omitnil" name:"PkgId"`
 
 	// 请求包内日志的ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PkgLogId *string `json:"PkgLogId,omitempty" name:"PkgLogId"`
+	PkgLogId *string `json:"PkgLogId,omitnil" name:"PkgLogId"`
 
 	// 日志内容的Json序列化字符串
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogJson *string `json:"LogJson,omitempty" name:"LogJson"`
+	LogJson *string `json:"LogJson,omitnil" name:"LogJson"`
 }
 
 type AccessLogItem struct {
 	// 日记Key
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 日志Value
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type AccessLogItems struct {
 	// 分析结果返回的KV数据对
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*AccessLogItem `json:"Data,omitempty" name:"Data"`
+	Data []*AccessLogItem `json:"Data,omitnil" name:"Data"`
 }
 
 type AccessRuleInfo struct {
 	// 全文索引配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FullText *AccessFullTextInfo `json:"FullText,omitempty" name:"FullText"`
+	FullText *AccessFullTextInfo `json:"FullText,omitnil" name:"FullText"`
 
 	// 键值索引配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeyValue *AccessRuleKeyValueInfo `json:"KeyValue,omitempty" name:"KeyValue"`
+	KeyValue *AccessRuleKeyValueInfo `json:"KeyValue,omitnil" name:"KeyValue"`
 
 	// 元字段索引配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tag *AccessRuleTagInfo `json:"Tag,omitempty" name:"Tag"`
+	Tag *AccessRuleTagInfo `json:"Tag,omitnil" name:"Tag"`
 }
 
 type AccessRuleKeyValueInfo struct {
 	// 是否大小写敏感
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaseSensitive *bool `json:"CaseSensitive,omitempty" name:"CaseSensitive"`
+	CaseSensitive *bool `json:"CaseSensitive,omitnil" name:"CaseSensitive"`
 
 	// 需要建立索引的键值对信息；最大只能配置100个键值对
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeyValues []*AccessKeyValueInfo `json:"KeyValues,omitempty" name:"KeyValues"`
+	KeyValues []*AccessKeyValueInfo `json:"KeyValues,omitnil" name:"KeyValues"`
 }
 
 type AccessRuleTagInfo struct {
 	// 是否大小写敏感
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CaseSensitive *bool `json:"CaseSensitive,omitempty" name:"CaseSensitive"`
+	CaseSensitive *bool `json:"CaseSensitive,omitnil" name:"CaseSensitive"`
 
 	// 标签索引配置中的字段信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeyValues []*AccessKeyValueInfo `json:"KeyValues,omitempty" name:"KeyValues"`
+	KeyValues []*AccessKeyValueInfo `json:"KeyValues,omitnil" name:"KeyValues"`
 }
 
 type AccessValueInfo struct {
 	// 字段类型，目前支持的类型有：long、text、double
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 字段的分词符，只有当字段类型为text时才有意义；输入字符串中的每个字符代表一个分词符
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tokenizer *string `json:"Tokenizer,omitempty" name:"Tokenizer"`
+	Tokenizer *string `json:"Tokenizer,omitnil" name:"Tokenizer"`
 
 	// 字段是否开启分析功能
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SqlFlag *bool `json:"SqlFlag,omitempty" name:"SqlFlag"`
+	SqlFlag *bool `json:"SqlFlag,omitnil" name:"SqlFlag"`
 
 	// 是否包含中文
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ContainZH *bool `json:"ContainZH,omitempty" name:"ContainZH"`
+	ContainZH *bool `json:"ContainZH,omitnil" name:"ContainZH"`
 }
 
 // Predefined struct for user
 type AddAntiFakeUrlRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// uri
-	Uri *string `json:"Uri,omitempty" name:"Uri"`
+	Uri *string `json:"Uri,omitnil" name:"Uri"`
 }
 
 type AddAntiFakeUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// uri
-	Uri *string `json:"Uri,omitempty" name:"Uri"`
+	Uri *string `json:"Uri,omitnil" name:"Uri"`
 }
 
 func (r *AddAntiFakeUrlRequest) ToJsonString() string {
@@ -209,10 +209,10 @@ func (r *AddAntiFakeUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddAntiFakeUrlResponseParams struct {
 	// 结果
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddAntiFakeUrlResponse struct {
@@ -234,38 +234,38 @@ func (r *AddAntiFakeUrlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddAntiInfoLeakRulesRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 动作
-	ActionType *uint64 `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 策略详情
-	Strategies []*StrategyForAntiInfoLeak `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*StrategyForAntiInfoLeak `json:"Strategies,omitnil" name:"Strategies"`
 
 	// 网址
-	Uri *string `json:"Uri,omitempty" name:"Uri"`
+	Uri *string `json:"Uri,omitnil" name:"Uri"`
 }
 
 type AddAntiInfoLeakRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 动作
-	ActionType *uint64 `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 策略详情
-	Strategies []*StrategyForAntiInfoLeak `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*StrategyForAntiInfoLeak `json:"Strategies,omitnil" name:"Strategies"`
 
 	// 网址
-	Uri *string `json:"Uri,omitempty" name:"Uri"`
+	Uri *string `json:"Uri,omitnil" name:"Uri"`
 }
 
 func (r *AddAntiInfoLeakRulesRequest) ToJsonString() string {
@@ -294,7 +294,7 @@ func (r *AddAntiInfoLeakRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddAntiInfoLeakRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddAntiInfoLeakRulesResponse struct {
@@ -316,68 +316,68 @@ func (r *AddAntiInfoLeakRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddCustomRuleRequestParams struct {
 	// 规则名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 优先级
-	SortId *string `json:"SortId,omitempty" name:"SortId"`
+	SortId *string `json:"SortId,omitnil" name:"SortId"`
 
 	// 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59. 0表示永不过期
-	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 策略详情
-	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*Strategy `json:"Strategies,omitnil" name:"Strategies"`
 
 	// 需要添加策略的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
-	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 如果动作是重定向，则表示重定向的地址；其他情况可以为空
-	Redirect *string `json:"Redirect,omitempty" name:"Redirect"`
+	Redirect *string `json:"Redirect,omitnil" name:"Redirect"`
 
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 放行的详情
-	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+	Bypass *string `json:"Bypass,omitnil" name:"Bypass"`
 
 	// 添加规则的来源，默认为空
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 type AddCustomRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 优先级
-	SortId *string `json:"SortId,omitempty" name:"SortId"`
+	SortId *string `json:"SortId,omitnil" name:"SortId"`
 
 	// 过期时间，单位为秒级时间戳，例如1677254399表示过期时间为2023-02-24 23:59:59. 0表示永不过期
-	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 策略详情
-	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*Strategy `json:"Strategies,omitnil" name:"Strategies"`
 
 	// 需要添加策略的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
-	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 如果动作是重定向，则表示重定向的地址；其他情况可以为空
-	Redirect *string `json:"Redirect,omitempty" name:"Redirect"`
+	Redirect *string `json:"Redirect,omitnil" name:"Redirect"`
 
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 放行的详情
-	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+	Bypass *string `json:"Bypass,omitnil" name:"Bypass"`
 
 	// 添加规则的来源，默认为空
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 func (r *AddCustomRuleRequest) ToJsonString() string {
@@ -411,14 +411,14 @@ func (r *AddCustomRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddCustomRuleResponseParams struct {
 	// 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
-	Success *ResponseCode `json:"Success,omitempty" name:"Success"`
+	Success *ResponseCode `json:"Success,omitnil" name:"Success"`
 
 	// 添加成功的规则ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *int64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddCustomRuleResponse struct {
@@ -440,44 +440,44 @@ func (r *AddCustomRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddCustomWhiteRuleRequestParams struct {
 	// 规则名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 优先级
-	SortId *string `json:"SortId,omitempty" name:"SortId"`
+	SortId *string `json:"SortId,omitnil" name:"SortId"`
 
 	// 过期时间
-	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 策略详情
-	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*Strategy `json:"Strategies,omitnil" name:"Strategies"`
 
 	// 需要添加策略的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 放行的详情
-	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+	Bypass *string `json:"Bypass,omitnil" name:"Bypass"`
 }
 
 type AddCustomWhiteRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 优先级
-	SortId *string `json:"SortId,omitempty" name:"SortId"`
+	SortId *string `json:"SortId,omitnil" name:"SortId"`
 
 	// 过期时间
-	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 策略详情
-	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*Strategy `json:"Strategies,omitnil" name:"Strategies"`
 
 	// 需要添加策略的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 放行的详情
-	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+	Bypass *string `json:"Bypass,omitnil" name:"Bypass"`
 }
 
 func (r *AddCustomWhiteRuleRequest) ToJsonString() string {
@@ -507,14 +507,14 @@ func (r *AddCustomWhiteRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddCustomWhiteRuleResponseParams struct {
 	// 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
-	Success *ResponseCode `json:"Success,omitempty" name:"Success"`
+	Success *ResponseCode `json:"Success,omitnil" name:"Success"`
 
 	// 添加成功的规则ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddCustomWhiteRuleResponse struct {
@@ -536,38 +536,38 @@ func (r *AddCustomWhiteRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddDomainWhiteRuleRequestParams struct {
 	// 需要添加的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 需要添加的规则
-	Rules []*uint64 `json:"Rules,omitempty" name:"Rules"`
+	Rules []*uint64 `json:"Rules,omitnil" name:"Rules"`
 
 	// 需要添加的规则url
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 规则的方法
-	Function *string `json:"Function,omitempty" name:"Function"`
+	Function *string `json:"Function,omitnil" name:"Function"`
 
 	// 规则的开关，0表示规则关闭，1表示规则打开
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 type AddDomainWhiteRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要添加的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 需要添加的规则
-	Rules []*uint64 `json:"Rules,omitempty" name:"Rules"`
+	Rules []*uint64 `json:"Rules,omitnil" name:"Rules"`
 
 	// 需要添加的规则url
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 规则的方法
-	Function *string `json:"Function,omitempty" name:"Function"`
+	Function *string `json:"Function,omitnil" name:"Function"`
 
 	// 规则的开关，0表示规则关闭，1表示规则打开
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *AddDomainWhiteRuleRequest) ToJsonString() string {
@@ -596,10 +596,10 @@ func (r *AddDomainWhiteRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddDomainWhiteRuleResponseParams struct {
 	// 规则id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddDomainWhiteRuleResponse struct {
@@ -621,14 +621,14 @@ func (r *AddDomainWhiteRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddSpartaProtectionAutoRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 type AddSpartaProtectionAutoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 func (r *AddSpartaProtectionAutoRequest) ToJsonString() string {
@@ -653,7 +653,7 @@ func (r *AddSpartaProtectionAutoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddSpartaProtectionAutoResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddSpartaProtectionAutoResponse struct {
@@ -675,212 +675,212 @@ func (r *AddSpartaProtectionAutoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddSpartaProtectionRequestParams struct {
 	// 需要防御的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 证书类型，0表示没有证书，CertType=1表示自有证书,2 为托管证书
-	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
+	CertType *int64 `json:"CertType,omitnil" name:"CertType"`
 
 	// 表示是否开启了CDN代理，1：有部署CDN，0：未部署CDN
-	IsCdn *int64 `json:"IsCdn,omitempty" name:"IsCdn"`
+	IsCdn *int64 `json:"IsCdn,omitnil" name:"IsCdn"`
 
 	// 回源类型，0表示通过IP回源,1 表示通过域名回源
-	UpstreamType *int64 `json:"UpstreamType,omitempty" name:"UpstreamType"`
+	UpstreamType *int64 `json:"UpstreamType,omitnil" name:"UpstreamType"`
 
 	// 是否开启WebSocket支持，1表示开启，0不开启
-	IsWebsocket *int64 `json:"IsWebsocket,omitempty" name:"IsWebsocket"`
+	IsWebsocket *int64 `json:"IsWebsocket,omitnil" name:"IsWebsocket"`
 
 	// 负载均衡策略，0表示轮询，1表示IP hash
-	LoadBalance *string `json:"LoadBalance,omitempty" name:"LoadBalance"`
+	LoadBalance *string `json:"LoadBalance,omitnil" name:"LoadBalance"`
 
 	// 值为1时，需要填次参数，表示证书内容
-	Cert *string `json:"Cert,omitempty" name:"Cert"`
+	Cert *string `json:"Cert,omitnil" name:"Cert"`
 
 	// CertType=1时，需要填次参数，表示证书的私钥
-	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
 
 	// CertType=2时，需要填次参数，表示证书的ID
-	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+	SSLId *string `json:"SSLId,omitnil" name:"SSLId"`
 
 	// Waf的资源ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// HTTPS回源协议，填http或者https
-	UpstreamScheme *string `json:"UpstreamScheme,omitempty" name:"UpstreamScheme"`
+	UpstreamScheme *string `json:"UpstreamScheme,omitnil" name:"UpstreamScheme"`
 
 	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
-	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitempty" name:"HttpsUpstreamPort"`
+	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil" name:"HttpsUpstreamPort"`
 
 	// 是否开启灰度，0表示不开启灰度
-	IsGray *int64 `json:"IsGray,omitempty" name:"IsGray"`
+	IsGray *int64 `json:"IsGray,omitnil" name:"IsGray"`
 
 	// 灰度的地区
-	GrayAreas []*string `json:"GrayAreas,omitempty" name:"GrayAreas"`
+	GrayAreas []*string `json:"GrayAreas,omitnil" name:"GrayAreas"`
 
 	// UpstreamType=1时，填次字段表示回源域名
-	UpstreamDomain *string `json:"UpstreamDomain,omitempty" name:"UpstreamDomain"`
+	UpstreamDomain *string `json:"UpstreamDomain,omitnil" name:"UpstreamDomain"`
 
 	// UpstreamType=0时，填次字段表示回源IP
-	SrcList []*string `json:"SrcList,omitempty" name:"SrcList"`
+	SrcList []*string `json:"SrcList,omitnil" name:"SrcList"`
 
 	// 是否开启HTTP2,开启HTTP2需要HTTPS支持
-	IsHttp2 *int64 `json:"IsHttp2,omitempty" name:"IsHttp2"`
+	IsHttp2 *int64 `json:"IsHttp2,omitnil" name:"IsHttp2"`
 
 	// 表示是否强制跳转到HTTPS，1强制跳转Https，0不强制跳转
-	HttpsRewrite *int64 `json:"HttpsRewrite,omitempty" name:"HttpsRewrite"`
+	HttpsRewrite *int64 `json:"HttpsRewrite,omitnil" name:"HttpsRewrite"`
 
 	// 服务有多端口需要设置此字段
-	Ports []*PortItem `json:"Ports,omitempty" name:"Ports"`
+	Ports []*PortItem `json:"Ports,omitnil" name:"Ports"`
 
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF，cdn-waf表示CDN上的Web防护能力
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 是否开启长连接，仅IP回源时可以用填次参数，域名回源时这个参数无效
-	IsKeepAlive *string `json:"IsKeepAlive,omitempty" name:"IsKeepAlive"`
+	IsKeepAlive *string `json:"IsKeepAlive,omitnil" name:"IsKeepAlive"`
 
 	// 实例id，上线之后带上此字段
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// anycast IP类型开关： 0 普通IP 1 Anycast IP
-	Anycast *int64 `json:"Anycast,omitempty" name:"Anycast"`
+	Anycast *int64 `json:"Anycast,omitnil" name:"Anycast"`
 
 	// src权重
-	Weights []*int64 `json:"Weights,omitempty" name:"Weights"`
+	Weights []*int64 `json:"Weights,omitnil" name:"Weights"`
 
 	// 是否开启主动健康检测，1表示开启，0表示不开启
-	ActiveCheck *int64 `json:"ActiveCheck,omitempty" name:"ActiveCheck"`
+	ActiveCheck *int64 `json:"ActiveCheck,omitnil" name:"ActiveCheck"`
 
 	// TLS版本信息
-	TLSVersion *int64 `json:"TLSVersion,omitempty" name:"TLSVersion"`
+	TLSVersion *int64 `json:"TLSVersion,omitnil" name:"TLSVersion"`
 
 	// 加密套件信息
-	Ciphers []*int64 `json:"Ciphers,omitempty" name:"Ciphers"`
+	Ciphers []*int64 `json:"Ciphers,omitnil" name:"Ciphers"`
 
 	// 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
-	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
+	CipherTemplate *int64 `json:"CipherTemplate,omitnil" name:"CipherTemplate"`
 
 	// 300s
-	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitempty" name:"ProxyReadTimeout"`
+	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil" name:"ProxyReadTimeout"`
 
 	// 300s
-	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitempty" name:"ProxySendTimeout"`
+	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitnil" name:"ProxySendTimeout"`
 
 	// 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
-	SniType *int64 `json:"SniType,omitempty" name:"SniType"`
+	SniType *int64 `json:"SniType,omitnil" name:"SniType"`
 
 	// SniType=3时，需要填此参数，表示自定义的host；
-	SniHost *string `json:"SniHost,omitempty" name:"SniHost"`
+	SniHost *string `json:"SniHost,omitnil" name:"SniHost"`
 
 	// is_cdn=3时，需要填此参数，表示自定义header
-	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+	IpHeaders []*string `json:"IpHeaders,omitnil" name:"IpHeaders"`
 
 	// 0:关闭xff重置；1:开启xff重置
-	XFFReset *int64 `json:"XFFReset,omitempty" name:"XFFReset"`
+	XFFReset *int64 `json:"XFFReset,omitnil" name:"XFFReset"`
 }
 
 type AddSpartaProtectionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要防御的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 证书类型，0表示没有证书，CertType=1表示自有证书,2 为托管证书
-	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
+	CertType *int64 `json:"CertType,omitnil" name:"CertType"`
 
 	// 表示是否开启了CDN代理，1：有部署CDN，0：未部署CDN
-	IsCdn *int64 `json:"IsCdn,omitempty" name:"IsCdn"`
+	IsCdn *int64 `json:"IsCdn,omitnil" name:"IsCdn"`
 
 	// 回源类型，0表示通过IP回源,1 表示通过域名回源
-	UpstreamType *int64 `json:"UpstreamType,omitempty" name:"UpstreamType"`
+	UpstreamType *int64 `json:"UpstreamType,omitnil" name:"UpstreamType"`
 
 	// 是否开启WebSocket支持，1表示开启，0不开启
-	IsWebsocket *int64 `json:"IsWebsocket,omitempty" name:"IsWebsocket"`
+	IsWebsocket *int64 `json:"IsWebsocket,omitnil" name:"IsWebsocket"`
 
 	// 负载均衡策略，0表示轮询，1表示IP hash
-	LoadBalance *string `json:"LoadBalance,omitempty" name:"LoadBalance"`
+	LoadBalance *string `json:"LoadBalance,omitnil" name:"LoadBalance"`
 
 	// 值为1时，需要填次参数，表示证书内容
-	Cert *string `json:"Cert,omitempty" name:"Cert"`
+	Cert *string `json:"Cert,omitnil" name:"Cert"`
 
 	// CertType=1时，需要填次参数，表示证书的私钥
-	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
 
 	// CertType=2时，需要填次参数，表示证书的ID
-	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+	SSLId *string `json:"SSLId,omitnil" name:"SSLId"`
 
 	// Waf的资源ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// HTTPS回源协议，填http或者https
-	UpstreamScheme *string `json:"UpstreamScheme,omitempty" name:"UpstreamScheme"`
+	UpstreamScheme *string `json:"UpstreamScheme,omitnil" name:"UpstreamScheme"`
 
 	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
-	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitempty" name:"HttpsUpstreamPort"`
+	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil" name:"HttpsUpstreamPort"`
 
 	// 是否开启灰度，0表示不开启灰度
-	IsGray *int64 `json:"IsGray,omitempty" name:"IsGray"`
+	IsGray *int64 `json:"IsGray,omitnil" name:"IsGray"`
 
 	// 灰度的地区
-	GrayAreas []*string `json:"GrayAreas,omitempty" name:"GrayAreas"`
+	GrayAreas []*string `json:"GrayAreas,omitnil" name:"GrayAreas"`
 
 	// UpstreamType=1时，填次字段表示回源域名
-	UpstreamDomain *string `json:"UpstreamDomain,omitempty" name:"UpstreamDomain"`
+	UpstreamDomain *string `json:"UpstreamDomain,omitnil" name:"UpstreamDomain"`
 
 	// UpstreamType=0时，填次字段表示回源IP
-	SrcList []*string `json:"SrcList,omitempty" name:"SrcList"`
+	SrcList []*string `json:"SrcList,omitnil" name:"SrcList"`
 
 	// 是否开启HTTP2,开启HTTP2需要HTTPS支持
-	IsHttp2 *int64 `json:"IsHttp2,omitempty" name:"IsHttp2"`
+	IsHttp2 *int64 `json:"IsHttp2,omitnil" name:"IsHttp2"`
 
 	// 表示是否强制跳转到HTTPS，1强制跳转Https，0不强制跳转
-	HttpsRewrite *int64 `json:"HttpsRewrite,omitempty" name:"HttpsRewrite"`
+	HttpsRewrite *int64 `json:"HttpsRewrite,omitnil" name:"HttpsRewrite"`
 
 	// 服务有多端口需要设置此字段
-	Ports []*PortItem `json:"Ports,omitempty" name:"Ports"`
+	Ports []*PortItem `json:"Ports,omitnil" name:"Ports"`
 
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF，cdn-waf表示CDN上的Web防护能力
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 是否开启长连接，仅IP回源时可以用填次参数，域名回源时这个参数无效
-	IsKeepAlive *string `json:"IsKeepAlive,omitempty" name:"IsKeepAlive"`
+	IsKeepAlive *string `json:"IsKeepAlive,omitnil" name:"IsKeepAlive"`
 
 	// 实例id，上线之后带上此字段
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// anycast IP类型开关： 0 普通IP 1 Anycast IP
-	Anycast *int64 `json:"Anycast,omitempty" name:"Anycast"`
+	Anycast *int64 `json:"Anycast,omitnil" name:"Anycast"`
 
 	// src权重
-	Weights []*int64 `json:"Weights,omitempty" name:"Weights"`
+	Weights []*int64 `json:"Weights,omitnil" name:"Weights"`
 
 	// 是否开启主动健康检测，1表示开启，0表示不开启
-	ActiveCheck *int64 `json:"ActiveCheck,omitempty" name:"ActiveCheck"`
+	ActiveCheck *int64 `json:"ActiveCheck,omitnil" name:"ActiveCheck"`
 
 	// TLS版本信息
-	TLSVersion *int64 `json:"TLSVersion,omitempty" name:"TLSVersion"`
+	TLSVersion *int64 `json:"TLSVersion,omitnil" name:"TLSVersion"`
 
 	// 加密套件信息
-	Ciphers []*int64 `json:"Ciphers,omitempty" name:"Ciphers"`
+	Ciphers []*int64 `json:"Ciphers,omitnil" name:"Ciphers"`
 
 	// 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
-	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
+	CipherTemplate *int64 `json:"CipherTemplate,omitnil" name:"CipherTemplate"`
 
 	// 300s
-	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitempty" name:"ProxyReadTimeout"`
+	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil" name:"ProxyReadTimeout"`
 
 	// 300s
-	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitempty" name:"ProxySendTimeout"`
+	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitnil" name:"ProxySendTimeout"`
 
 	// 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
-	SniType *int64 `json:"SniType,omitempty" name:"SniType"`
+	SniType *int64 `json:"SniType,omitnil" name:"SniType"`
 
 	// SniType=3时，需要填此参数，表示自定义的host；
-	SniHost *string `json:"SniHost,omitempty" name:"SniHost"`
+	SniHost *string `json:"SniHost,omitnil" name:"SniHost"`
 
 	// is_cdn=3时，需要填此参数，表示自定义header
-	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+	IpHeaders []*string `json:"IpHeaders,omitnil" name:"IpHeaders"`
 
 	// 0:关闭xff重置；1:开启xff重置
-	XFFReset *int64 `json:"XFFReset,omitempty" name:"XFFReset"`
+	XFFReset *int64 `json:"XFFReset,omitnil" name:"XFFReset"`
 }
 
 func (r *AddSpartaProtectionRequest) ToJsonString() string {
@@ -938,7 +938,7 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddSpartaProtectionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddSpartaProtectionResponse struct {
@@ -960,14 +960,14 @@ func (r *AddSpartaProtectionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type AddSpartaProtectionsAutoRequestParams struct {
 	// 多域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 type AddSpartaProtectionsAutoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 多域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 func (r *AddSpartaProtectionsAutoRequest) ToJsonString() string {
@@ -992,10 +992,10 @@ func (r *AddSpartaProtectionsAutoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddSpartaProtectionsAutoResponseParams struct {
 	// 失败原因
-	FailedInfos []*FailedInfo `json:"FailedInfos,omitempty" name:"FailedInfos"`
+	FailedInfos []*FailedInfo `json:"FailedInfos,omitnil" name:"FailedInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddSpartaProtectionsAutoResponse struct {
@@ -1016,364 +1016,364 @@ func (r *AddSpartaProtectionsAutoResponse) FromJsonString(s string) error {
 
 type AttackLogInfo struct {
 	// 攻击日志的详情内容
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 
 	// CLS返回内容
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// CLS返回内容
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// CLS返回内容
-	TimeStamp *string `json:"TimeStamp,omitempty" name:"TimeStamp"`
+	TimeStamp *string `json:"TimeStamp,omitnil" name:"TimeStamp"`
 }
 
 type AutoDenyDetail struct {
 	// 攻击封禁类型标签
-	AttackTags []*string `json:"AttackTags,omitempty" name:"AttackTags"`
+	AttackTags []*string `json:"AttackTags,omitnil" name:"AttackTags"`
 
 	// 攻击次数阈值
-	AttackThreshold *int64 `json:"AttackThreshold,omitempty" name:"AttackThreshold"`
+	AttackThreshold *int64 `json:"AttackThreshold,omitnil" name:"AttackThreshold"`
 
 	// 自动封禁状态
-	DefenseStatus *int64 `json:"DefenseStatus,omitempty" name:"DefenseStatus"`
+	DefenseStatus *int64 `json:"DefenseStatus,omitnil" name:"DefenseStatus"`
 
 	// 攻击时间阈值
-	TimeThreshold *int64 `json:"TimeThreshold,omitempty" name:"TimeThreshold"`
+	TimeThreshold *int64 `json:"TimeThreshold,omitnil" name:"TimeThreshold"`
 
 	// 自动封禁时间
-	DenyTimeThreshold *int64 `json:"DenyTimeThreshold,omitempty" name:"DenyTimeThreshold"`
+	DenyTimeThreshold *int64 `json:"DenyTimeThreshold,omitnil" name:"DenyTimeThreshold"`
 
 	// 最后更新时间
-	LastUpdateTime *string `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
+	LastUpdateTime *string `json:"LastUpdateTime,omitnil" name:"LastUpdateTime"`
 }
 
 type BatchIpAccessControlData struct {
 	// 总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 黑白名单条目
-	Res []*BatchIpAccessControlItem `json:"Res,omitempty" name:"Res"`
+	Res []*BatchIpAccessControlItem `json:"Res,omitnil" name:"Res"`
 }
 
 type BatchIpAccessControlItem struct {
 	// 黑名单42或白名单40
-	ActionType *int64 `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *int64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 黑白名单的IP
-	Ip *string `json:"Ip,omitempty" name:"Ip"`
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
 
 	// 备注
-	Note *string `json:"Note,omitempty" name:"Note"`
+	Note *string `json:"Note,omitnil" name:"Note"`
 
 	// 添加路径
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 修改时间
-	TsVersion *uint64 `json:"TsVersion,omitempty" name:"TsVersion"`
+	TsVersion *uint64 `json:"TsVersion,omitnil" name:"TsVersion"`
 
 	// 超时时间
-	ValidTs *int64 `json:"ValidTs,omitempty" name:"ValidTs"`
+	ValidTs *int64 `json:"ValidTs,omitnil" name:"ValidTs"`
 
 	// 域名列表
-	Hosts []*string `json:"Hosts,omitempty" name:"Hosts"`
+	Hosts []*string `json:"Hosts,omitnil" name:"Hosts"`
 }
 
 type BotPkg struct {
 	// 资源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+	ResourceIds *string `json:"ResourceIds,omitnil" name:"ResourceIds"`
 
 	// 状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *int64 `json:"Region,omitempty" name:"Region"`
+	Region *int64 `json:"Region,omitnil" name:"Region"`
 
 	// 开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 申请数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InquireNum *int64 `json:"InquireNum,omitempty" name:"InquireNum"`
+	InquireNum *int64 `json:"InquireNum,omitnil" name:"InquireNum"`
 
 	// 使用数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsedNum *int64 `json:"UsedNum,omitempty" name:"UsedNum"`
+	UsedNum *int64 `json:"UsedNum,omitnil" name:"UsedNum"`
 
 	// 子产品code
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 续费标志	
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+	RenewFlag *uint64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
 }
 
 type BotQPS struct {
 	// 资源id
-	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+	ResourceIds *string `json:"ResourceIds,omitnil" name:"ResourceIds"`
 
 	// 有效时间
-	ValidTime *string `json:"ValidTime,omitempty" name:"ValidTime"`
+	ValidTime *string `json:"ValidTime,omitnil" name:"ValidTime"`
 
 	// 资源数量
-	Count *uint64 `json:"Count,omitempty" name:"Count"`
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
 
 	// 资源所在地区
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 使用qps的最大值
-	MaxBotQPS *uint64 `json:"MaxBotQPS,omitempty" name:"MaxBotQPS"`
+	MaxBotQPS *uint64 `json:"MaxBotQPS,omitnil" name:"MaxBotQPS"`
 
 	// 续费标志
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+	RenewFlag *uint64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
 }
 
 type BotStatPointItem struct {
 	// 横坐标
-	TimeStamp *string `json:"TimeStamp,omitempty" name:"TimeStamp"`
+	TimeStamp *string `json:"TimeStamp,omitnil" name:"TimeStamp"`
 
 	// value的所属对象
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 纵列表
-	Value *int64 `json:"Value,omitempty" name:"Value"`
+	Value *int64 `json:"Value,omitnil" name:"Value"`
 
 	// Key对应的页面展示内容
-	Label *string `json:"Label,omitempty" name:"Label"`
+	Label *string `json:"Label,omitnil" name:"Label"`
 }
 
 type CCRuleData struct {
 	// cc规则
-	Res []*CCRuleItem `json:"Res,omitempty" name:"Res"`
+	Res []*CCRuleItem `json:"Res,omitnil" name:"Res"`
 
 	// 规则数目
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 }
 
 type CCRuleItem struct {
 	// 动作
-	ActionType *uint64 `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 高级模式
-	Advance *uint64 `json:"Advance,omitempty" name:"Advance"`
+	Advance *uint64 `json:"Advance,omitnil" name:"Advance"`
 
 	// 时间周期
-	Interval *uint64 `json:"Interval,omitempty" name:"Interval"`
+	Interval *uint64 `json:"Interval,omitnil" name:"Interval"`
 
 	// 限制次数
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 匹配方法
-	MatchFunc *uint64 `json:"MatchFunc,omitempty" name:"MatchFunc"`
+	MatchFunc *uint64 `json:"MatchFunc,omitnil" name:"MatchFunc"`
 
 	// 名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 优先级
-	Priority *uint64 `json:"Priority,omitempty" name:"Priority"`
+	Priority *uint64 `json:"Priority,omitnil" name:"Priority"`
 
 	// 状态
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 更新时间戳
-	TsVersion *uint64 `json:"TsVersion,omitempty" name:"TsVersion"`
+	TsVersion *uint64 `json:"TsVersion,omitnil" name:"TsVersion"`
 
 	// 匹配url
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 策略动作有效时间
-	ValidTime *uint64 `json:"ValidTime,omitempty" name:"ValidTime"`
+	ValidTime *uint64 `json:"ValidTime,omitnil" name:"ValidTime"`
 
 	// 高级参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OptionsArr *string `json:"OptionsArr,omitempty" name:"OptionsArr"`
+	OptionsArr *string `json:"OptionsArr,omitnil" name:"OptionsArr"`
 }
 
 type CacheUrlItem struct {
 	// Id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 
 	// 名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// uri
-	Uri *string `json:"Uri,omitempty" name:"Uri"`
+	Uri *string `json:"Uri,omitnil" name:"Uri"`
 
 	// 协议
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 }
 
 type CacheUrlItems struct {
 	// 标识
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 名字
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 网址
-	Uri *string `json:"Uri,omitempty" name:"Uri"`
+	Uri *string `json:"Uri,omitnil" name:"Uri"`
 
 	// 协议
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 状态
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 type CdcCluster struct {
 	// cdc的集群id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 
 	// cdc的集群名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 type CdcRegion struct {
 	// 地域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 该地域对应的集群信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Clusters []*CdcCluster `json:"Clusters,omitempty" name:"Clusters"`
+	Clusters []*CdcCluster `json:"Clusters,omitnil" name:"Clusters"`
 }
 
 type ClbDomainsInfo struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名id
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 实例名
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// waf类型
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 是否是cdn
-	IsCdn *uint64 `json:"IsCdn,omitempty" name:"IsCdn"`
+	IsCdn *uint64 `json:"IsCdn,omitnil" name:"IsCdn"`
 
 	// 负载均衡算法
-	LoadBalancerSet []*LoadBalancerPackageNew `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet"`
+	LoadBalancerSet []*LoadBalancerPackageNew `json:"LoadBalancerSet,omitnil" name:"LoadBalancerSet"`
 
 	// 镜像模式
-	FlowMode *uint64 `json:"FlowMode,omitempty" name:"FlowMode"`
+	FlowMode *uint64 `json:"FlowMode,omitnil" name:"FlowMode"`
 
 	// 绑定clb状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	State *int64 `json:"State,omitempty" name:"State"`
+	State *int64 `json:"State,omitnil" name:"State"`
 
 	// 负载均衡类型，clb或者apisix
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlbType *string `json:"AlbType,omitempty" name:"AlbType"`
+	AlbType *string `json:"AlbType,omitnil" name:"AlbType"`
 
 	// IsCdn=3时，表示自定义header
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+	IpHeaders []*string `json:"IpHeaders,omitnil" name:"IpHeaders"`
 
 	// cdc类型会增加集群信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CdcClusters *string `json:"CdcClusters,omitempty" name:"CdcClusters"`
+	CdcClusters *string `json:"CdcClusters,omitnil" name:"CdcClusters"`
 }
 
 type ClbHostResult struct {
 	// WAF绑定的监听器实例
-	LoadBalancer *LoadBalancer `json:"LoadBalancer,omitempty" name:"LoadBalancer"`
+	LoadBalancer *LoadBalancer `json:"LoadBalancer,omitnil" name:"LoadBalancer"`
 
 	// WAF绑定的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// WAF绑定的实例ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 是否有绑定WAF，1：绑定了WAF，0：没有绑定WAF
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 绑定了WAF的情况下，WAF流量模式，1：清洗模式，0：镜像模式（默认）
-	FlowMode *uint64 `json:"FlowMode,omitempty" name:"FlowMode"`
+	FlowMode *uint64 `json:"FlowMode,omitnil" name:"FlowMode"`
 }
 
 type ClbHostsParams struct {
 	// 负载均衡实例ID，如果不传次参数则默认认为操作的是整个AppId的监听器，如果此参数不为空则认为操作的是对应负载均衡实例。
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
 
 	// 负载均衡监听器ID，，如果不传次参数则默认认为操作的是整个负载均衡实例，如果此参数不为空则认为操作的是对应负载均衡监听器。
-	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+	ListenerId *string `json:"ListenerId,omitnil" name:"ListenerId"`
 
 	// WAF实例ID，，如果不传次参数则默认认为操作的是整个负载均衡监听器实例，如果此参数不为空则认为操作的是对应负载均衡监听器的某一个具体的域名。
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 }
 
 // Predefined struct for user
 type CreateAccessExportRequestParams struct {
 	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
-	From *int64 `json:"From,omitempty" name:"From"`
+	From *int64 `json:"From,omitnil" name:"From"`
 
 	// 要查询的日志的结束时间，Unix时间戳，单位ms
-	To *int64 `json:"To,omitempty" name:"To"`
+	To *int64 `json:"To,omitnil" name:"To"`
 
 	// 日志导出检索语句
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 日志导出数量，最大值100w
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 日志导出数据格式。json，csv，默认为json
-	Format *string `json:"Format,omitempty" name:"Format"`
+	Format *string `json:"Format,omitnil" name:"Format"`
 
 	// 日志导出时间排序。desc，asc，默认为desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type CreateAccessExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
-	From *int64 `json:"From,omitempty" name:"From"`
+	From *int64 `json:"From,omitnil" name:"From"`
 
 	// 要查询的日志的结束时间，Unix时间戳，单位ms
-	To *int64 `json:"To,omitempty" name:"To"`
+	To *int64 `json:"To,omitnil" name:"To"`
 
 	// 日志导出检索语句
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 日志导出数量，最大值100w
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 日志导出数据格式。json，csv，默认为json
-	Format *string `json:"Format,omitempty" name:"Format"`
+	Format *string `json:"Format,omitnil" name:"Format"`
 
 	// 日志导出时间排序。desc，asc，默认为desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *CreateAccessExportRequest) ToJsonString() string {
@@ -1404,10 +1404,10 @@ func (r *CreateAccessExportRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAccessExportResponseParams struct {
 	// 日志导出ID。
-	ExportId *string `json:"ExportId,omitempty" name:"ExportId"`
+	ExportId *string `json:"ExportId,omitnil" name:"ExportId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAccessExportResponse struct {
@@ -1429,20 +1429,20 @@ func (r *CreateAccessExportResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateHostRequestParams struct {
 	// 防护域名配置信息
-	Host *HostRecord `json:"Host,omitempty" name:"Host"`
+	Host *HostRecord `json:"Host,omitnil" name:"Host"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 type CreateHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 防护域名配置信息
-	Host *HostRecord `json:"Host,omitempty" name:"Host"`
+	Host *HostRecord `json:"Host,omitnil" name:"Host"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 func (r *CreateHostRequest) ToJsonString() string {
@@ -1468,10 +1468,10 @@ func (r *CreateHostRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateHostResponseParams struct {
 	// 新增防护域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateHostResponse struct {
@@ -1493,20 +1493,20 @@ func (r *CreateHostResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAccessExportRequestParams struct {
 	// 日志导出ID
-	ExportId *string `json:"ExportId,omitempty" name:"ExportId"`
+	ExportId *string `json:"ExportId,omitnil" name:"ExportId"`
 
 	// 日志主题
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 }
 
 type DeleteAccessExportRequest struct {
 	*tchttp.BaseRequest
 	
 	// 日志导出ID
-	ExportId *string `json:"ExportId,omitempty" name:"ExportId"`
+	ExportId *string `json:"ExportId,omitnil" name:"ExportId"`
 
 	// 日志主题
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 }
 
 func (r *DeleteAccessExportRequest) ToJsonString() string {
@@ -1532,7 +1532,7 @@ func (r *DeleteAccessExportRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAccessExportResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteAccessExportResponse struct {
@@ -1554,20 +1554,20 @@ func (r *DeleteAccessExportResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAntiFakeUrlRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type DeleteAntiFakeUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *DeleteAntiFakeUrlRequest) ToJsonString() string {
@@ -1593,7 +1593,7 @@ func (r *DeleteAntiFakeUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAntiFakeUrlResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteAntiFakeUrlResponse struct {
@@ -1615,20 +1615,20 @@ func (r *DeleteAntiFakeUrlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAntiInfoLeakRuleRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 规则id
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 type DeleteAntiInfoLeakRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 规则id
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 func (r *DeleteAntiInfoLeakRuleRequest) ToJsonString() string {
@@ -1654,7 +1654,7 @@ func (r *DeleteAntiInfoLeakRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAntiInfoLeakRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteAntiInfoLeakRuleResponse struct {
@@ -1676,14 +1676,14 @@ func (r *DeleteAntiInfoLeakRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAttackDownloadRecordRequestParams struct {
 	// 下载任务记录唯一标记
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 type DeleteAttackDownloadRecordRequest struct {
 	*tchttp.BaseRequest
 	
 	// 下载任务记录唯一标记
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *DeleteAttackDownloadRecordRequest) ToJsonString() string {
@@ -1708,7 +1708,7 @@ func (r *DeleteAttackDownloadRecordRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAttackDownloadRecordResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteAttackDownloadRecordResponse struct {
@@ -1730,26 +1730,26 @@ func (r *DeleteAttackDownloadRecordResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCCRuleRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 规则名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// clb-waf或者sparta-waf
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 type DeleteCCRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 规则名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// clb-waf或者sparta-waf
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 func (r *DeleteCCRuleRequest) ToJsonString() string {
@@ -1777,10 +1777,10 @@ func (r *DeleteCCRuleRequest) FromJsonString(s string) error {
 type DeleteCCRuleResponseParams struct {
 	// 一般为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteCCRuleResponse struct {
@@ -1802,26 +1802,26 @@ func (r *DeleteCCRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCustomRuleRequestParams struct {
 	// 删除的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 删除的规则ID
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 type DeleteCustomRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 删除的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 删除的规则ID
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 func (r *DeleteCustomRuleRequest) ToJsonString() string {
@@ -1848,7 +1848,7 @@ func (r *DeleteCustomRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCustomRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteCustomRuleResponse struct {
@@ -1870,20 +1870,20 @@ func (r *DeleteCustomRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCustomWhiteRuleRequestParams struct {
 	// 删除的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 删除的规则ID
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 type DeleteCustomWhiteRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 删除的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 删除的规则ID
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 func (r *DeleteCustomWhiteRuleRequest) ToJsonString() string {
@@ -1909,10 +1909,10 @@ func (r *DeleteCustomWhiteRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCustomWhiteRuleResponseParams struct {
 	// 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
-	Success *ResponseCode `json:"Success,omitempty" name:"Success"`
+	Success *ResponseCode `json:"Success,omitnil" name:"Success"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteCustomWhiteRuleResponse struct {
@@ -1934,20 +1934,20 @@ func (r *DeleteCustomWhiteRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDomainWhiteRulesRequestParams struct {
 	// 需要删除的规则域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 需要删除的白名单规则
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
 }
 
 type DeleteDomainWhiteRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要删除的规则域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 需要删除的白名单规则
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
 }
 
 func (r *DeleteDomainWhiteRulesRequest) ToJsonString() string {
@@ -1974,10 +1974,10 @@ func (r *DeleteDomainWhiteRulesRequest) FromJsonString(s string) error {
 type DeleteDomainWhiteRulesResponseParams struct {
 	// 出参
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteDomainWhiteRulesResponse struct {
@@ -1999,14 +1999,14 @@ func (r *DeleteDomainWhiteRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDownloadRecordRequestParams struct {
 	// 记录id
-	Flow *string `json:"Flow,omitempty" name:"Flow"`
+	Flow *string `json:"Flow,omitnil" name:"Flow"`
 }
 
 type DeleteDownloadRecordRequest struct {
 	*tchttp.BaseRequest
 	
 	// 记录id
-	Flow *string `json:"Flow,omitempty" name:"Flow"`
+	Flow *string `json:"Flow,omitnil" name:"Flow"`
 }
 
 func (r *DeleteDownloadRecordRequest) ToJsonString() string {
@@ -2031,7 +2031,7 @@ func (r *DeleteDownloadRecordRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDownloadRecordResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteDownloadRecordResponse struct {
@@ -2053,14 +2053,14 @@ func (r *DeleteDownloadRecordResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteHostRequestParams struct {
 	// 删除的域名列表
-	HostsDel []*HostDel `json:"HostsDel,omitempty" name:"HostsDel"`
+	HostsDel []*HostDel `json:"HostsDel,omitnil" name:"HostsDel"`
 }
 
 type DeleteHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 删除的域名列表
-	HostsDel []*HostDel `json:"HostsDel,omitempty" name:"HostsDel"`
+	HostsDel []*HostDel `json:"HostsDel,omitnil" name:"HostsDel"`
 }
 
 func (r *DeleteHostRequest) ToJsonString() string {
@@ -2085,10 +2085,10 @@ func (r *DeleteHostRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteHostResponseParams struct {
 	// 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
-	Success *ResponseCode `json:"Success,omitempty" name:"Success"`
+	Success *ResponseCode `json:"Success,omitnil" name:"Success"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteHostResponse struct {
@@ -2110,32 +2110,32 @@ func (r *DeleteHostResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteIpAccessControlRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 删除的ip数组
-	Items []*string `json:"Items,omitempty" name:"Items"`
+	Items []*string `json:"Items,omitnil" name:"Items"`
 
 	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
-	DeleteAll *bool `json:"DeleteAll,omitempty" name:"DeleteAll"`
+	DeleteAll *bool `json:"DeleteAll,omitnil" name:"DeleteAll"`
 
 	// 是否为多域名黑白名单
-	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+	SourceType *string `json:"SourceType,omitnil" name:"SourceType"`
 }
 
 type DeleteIpAccessControlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 删除的ip数组
-	Items []*string `json:"Items,omitempty" name:"Items"`
+	Items []*string `json:"Items,omitnil" name:"Items"`
 
 	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
-	DeleteAll *bool `json:"DeleteAll,omitempty" name:"DeleteAll"`
+	DeleteAll *bool `json:"DeleteAll,omitnil" name:"DeleteAll"`
 
 	// 是否为多域名黑白名单
-	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+	SourceType *string `json:"SourceType,omitnil" name:"SourceType"`
 }
 
 func (r *DeleteIpAccessControlRequest) ToJsonString() string {
@@ -2164,14 +2164,14 @@ func (r *DeleteIpAccessControlRequest) FromJsonString(s string) error {
 type DeleteIpAccessControlResponseParams struct {
 	// 删除失败的条目
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedItems *string `json:"FailedItems,omitempty" name:"FailedItems"`
+	FailedItems *string `json:"FailedItems,omitnil" name:"FailedItems"`
 
 	// 删除失败的条目数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedCount *int64 `json:"FailedCount,omitempty" name:"FailedCount"`
+	FailedCount *int64 `json:"FailedCount,omitnil" name:"FailedCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteIpAccessControlResponse struct {
@@ -2193,20 +2193,20 @@ func (r *DeleteIpAccessControlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSessionRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// clb-waf 或者 sprta-waf
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 type DeleteSessionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// clb-waf 或者 sprta-waf
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 func (r *DeleteSessionRequest) ToJsonString() string {
@@ -2233,10 +2233,10 @@ func (r *DeleteSessionRequest) FromJsonString(s string) error {
 type DeleteSessionResponseParams struct {
 	// 结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteSessionResponse struct {
@@ -2258,26 +2258,26 @@ func (r *DeleteSessionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSpartaProtectionRequestParams struct {
 	// 域名列表
-	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+	Domains []*string `json:"Domains,omitnil" name:"Domains"`
 
 	// 版本
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 type DeleteSpartaProtectionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名列表
-	Domains []*string `json:"Domains,omitempty" name:"Domains"`
+	Domains []*string `json:"Domains,omitnil" name:"Domains"`
 
 	// 版本
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 func (r *DeleteSpartaProtectionRequest) ToJsonString() string {
@@ -2304,7 +2304,7 @@ func (r *DeleteSpartaProtectionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSpartaProtectionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteSpartaProtectionResponse struct {
@@ -2326,26 +2326,26 @@ func (r *DeleteSpartaProtectionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessExportsRequestParams struct {
 	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 
 	// 分页的偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeAccessExportsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 
 	// 分页的偏移量，默认值为0
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页单页限制数目，默认值为20，最大值100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeAccessExportsRequest) ToJsonString() string {
@@ -2372,14 +2372,14 @@ func (r *DescribeAccessExportsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessExportsResponseParams struct {
 	// 日志导出ID。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 日志导出列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Exports []*ExportAccessInfo `json:"Exports,omitempty" name:"Exports"`
+	Exports []*ExportAccessInfo `json:"Exports,omitnil" name:"Exports"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAccessExportsResponse struct {
@@ -2401,38 +2401,38 @@ func (r *DescribeAccessExportsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessFastAnalysisRequestParams struct {
 	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
-	From *int64 `json:"From,omitempty" name:"From"`
+	From *int64 `json:"From,omitnil" name:"From"`
 
 	// 要查询的日志的结束时间，Unix时间戳，单位ms
-	To *int64 `json:"To,omitempty" name:"To"`
+	To *int64 `json:"To,omitnil" name:"To"`
 
 	// 查询语句，语句长度最大为4096，由于本接口是分析接口，如果无过滤条件，必须传 * 表示匹配所有，参考CLS的分析统计语句的文档
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 需要分析统计的字段名
-	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
+	FieldName *string `json:"FieldName,omitnil" name:"FieldName"`
 }
 
 type DescribeAccessFastAnalysisRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
-	From *int64 `json:"From,omitempty" name:"From"`
+	From *int64 `json:"From,omitnil" name:"From"`
 
 	// 要查询的日志的结束时间，Unix时间戳，单位ms
-	To *int64 `json:"To,omitempty" name:"To"`
+	To *int64 `json:"To,omitnil" name:"To"`
 
 	// 查询语句，语句长度最大为4096，由于本接口是分析接口，如果无过滤条件，必须传 * 表示匹配所有，参考CLS的分析统计语句的文档
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 需要分析统计的字段名
-	FieldName *string `json:"FieldName,omitempty" name:"FieldName"`
+	FieldName *string `json:"FieldName,omitnil" name:"FieldName"`
 }
 
 func (r *DescribeAccessFastAnalysisRequest) ToJsonString() string {
@@ -2461,7 +2461,7 @@ func (r *DescribeAccessFastAnalysisRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessFastAnalysisResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAccessFastAnalysisResponse struct {
@@ -2483,38 +2483,38 @@ func (r *DescribeAccessFastAnalysisResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessHistogramRequestParams struct {
 	// 老版本查询的日志主题ID，新版本传空字符串即可
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
-	From *int64 `json:"From,omitempty" name:"From"`
+	From *int64 `json:"From,omitnil" name:"From"`
 
 	// 要查询的日志的结束时间，Unix时间戳，单位ms
-	To *int64 `json:"To,omitempty" name:"To"`
+	To *int64 `json:"To,omitnil" name:"To"`
 
 	// 查询语句，语句长度最大为4096
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 柱状图间隔时间差，单位ms
-	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+	Interval *int64 `json:"Interval,omitnil" name:"Interval"`
 }
 
 type DescribeAccessHistogramRequest struct {
 	*tchttp.BaseRequest
 	
 	// 老版本查询的日志主题ID，新版本传空字符串即可
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
-	From *int64 `json:"From,omitempty" name:"From"`
+	From *int64 `json:"From,omitnil" name:"From"`
 
 	// 要查询的日志的结束时间，Unix时间戳，单位ms
-	To *int64 `json:"To,omitempty" name:"To"`
+	To *int64 `json:"To,omitnil" name:"To"`
 
 	// 查询语句，语句长度最大为4096
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 柱状图间隔时间差，单位ms
-	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+	Interval *int64 `json:"Interval,omitnil" name:"Interval"`
 }
 
 func (r *DescribeAccessHistogramRequest) ToJsonString() string {
@@ -2543,17 +2543,17 @@ func (r *DescribeAccessHistogramRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessHistogramResponseParams struct {
 	// 柱状图间隔时间差，单位ms
-	Interval *int64 `json:"Interval,omitempty" name:"Interval"`
+	Interval *int64 `json:"Interval,omitnil" name:"Interval"`
 
 	// 满足条件的日志条数
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 注意：此字段可能返回 null，表示取不到有效值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HistogramInfos []*AccessHistogramItem `json:"HistogramInfos,omitempty" name:"HistogramInfos"`
+	HistogramInfos []*AccessHistogramItem `json:"HistogramInfos,omitnil" name:"HistogramInfos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAccessHistogramResponse struct {
@@ -2604,18 +2604,18 @@ func (r *DescribeAccessIndexRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAccessIndexResponseParams struct {
 	// 是否生效，true表示生效，false表示未生效
-	Status *bool `json:"Status,omitempty" name:"Status"`
+	Status *bool `json:"Status,omitnil" name:"Status"`
 
 	// 索引配置信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Rule *AccessRuleInfo `json:"Rule,omitempty" name:"Rule"`
+	Rule *AccessRuleInfo `json:"Rule,omitnil" name:"Rule"`
 
 	// 索引修改时间，初始值为索引创建时间。
-	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAccessIndexResponse struct {
@@ -2637,44 +2637,44 @@ func (r *DescribeAccessIndexResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAntiFakeRulesRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 偏移
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 容量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤数组,name可以是如下的值： RuleID,ParamName,Url,Action,Method,Source,Status
-	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 
 	// asc或者desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 目前支持根据ts排序
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeAntiFakeRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 偏移
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 容量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤数组,name可以是如下的值： RuleID,ParamName,Url,Action,Method,Source,Status
-	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 
 	// asc或者desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 目前支持根据ts排序
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeAntiFakeRulesRequest) ToJsonString() string {
@@ -2705,10 +2705,10 @@ func (r *DescribeAntiFakeRulesRequest) FromJsonString(s string) error {
 type DescribeAntiFakeRulesResponseParams struct {
 	// 返回值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*CacheUrlItems `json:"Data,omitempty" name:"Data"`
+	Data []*CacheUrlItems `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAntiFakeRulesResponse struct {
@@ -2730,20 +2730,20 @@ func (r *DescribeAntiFakeRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAntiFakeUrlRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 翻页参数
-	PageInfo *PageInfo `json:"PageInfo,omitempty" name:"PageInfo"`
+	PageInfo *PageInfo `json:"PageInfo,omitnil" name:"PageInfo"`
 }
 
 type DescribeAntiFakeUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 翻页参数
-	PageInfo *PageInfo `json:"PageInfo,omitempty" name:"PageInfo"`
+	PageInfo *PageInfo `json:"PageInfo,omitnil" name:"PageInfo"`
 }
 
 func (r *DescribeAntiFakeUrlRequest) ToJsonString() string {
@@ -2769,13 +2769,13 @@ func (r *DescribeAntiFakeUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAntiFakeUrlResponseParams struct {
 	// 总数
-	Total *string `json:"Total,omitempty" name:"Total"`
+	Total *string `json:"Total,omitnil" name:"Total"`
 
 	// 信息
-	List []*CacheUrlItem `json:"List,omitempty" name:"List"`
+	List []*CacheUrlItem `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAntiFakeUrlResponse struct {
@@ -2797,26 +2797,26 @@ func (r *DescribeAntiFakeUrlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAntiInfoLeakRulesRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 动作类型
-	ActionType *int64 `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *int64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 翻页
-	PageInfo *PageInfo `json:"PageInfo,omitempty" name:"PageInfo"`
+	PageInfo *PageInfo `json:"PageInfo,omitnil" name:"PageInfo"`
 }
 
 type DescribeAntiInfoLeakRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 动作类型
-	ActionType *int64 `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *int64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 翻页
-	PageInfo *PageInfo `json:"PageInfo,omitempty" name:"PageInfo"`
+	PageInfo *PageInfo `json:"PageInfo,omitnil" name:"PageInfo"`
 }
 
 func (r *DescribeAntiInfoLeakRulesRequest) ToJsonString() string {
@@ -2843,13 +2843,13 @@ func (r *DescribeAntiInfoLeakRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAntiInfoLeakRulesResponseParams struct {
 	// 记录条数
-	TotalCount *string `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *string `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 规则列表
-	RuleList []*DescribeAntiInfoLeakRulesRuleItem `json:"RuleList,omitempty" name:"RuleList"`
+	RuleList []*DescribeAntiInfoLeakRulesRuleItem `json:"RuleList,omitnil" name:"RuleList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAntiInfoLeakRulesResponse struct {
@@ -2870,46 +2870,46 @@ func (r *DescribeAntiInfoLeakRulesResponse) FromJsonString(s string) error {
 
 type DescribeAntiInfoLeakRulesRuleItem struct {
 	// 规则ID
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 规则状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 规则动作类型
-	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 规则创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 详细的规则
-	Strategies []*DescribeAntiInfoLeakRulesStrategyItem `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*DescribeAntiInfoLeakRulesStrategyItem `json:"Strategies,omitnil" name:"Strategies"`
 }
 
 type DescribeAntiInfoLeakRulesStrategyItem struct {
 	// 字段
-	Field *string `json:"Field,omitempty" name:"Field"`
+	Field *string `json:"Field,omitnil" name:"Field"`
 
 	// 条件
-	CompareFunc *string `json:"CompareFunc,omitempty" name:"CompareFunc"`
+	CompareFunc *string `json:"CompareFunc,omitnil" name:"CompareFunc"`
 
 	// 内容
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 }
 
 // Predefined struct for user
 type DescribeAntiInfoLeakageRulesRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 type DescribeAntiInfoLeakageRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 func (r *DescribeAntiInfoLeakageRulesRequest) ToJsonString() string {
@@ -2934,13 +2934,13 @@ func (r *DescribeAntiInfoLeakageRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAntiInfoLeakageRulesResponseParams struct {
 	// 记录条数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 规则列表
-	RuleList []*DescribeAntiLeakageItem `json:"RuleList,omitempty" name:"RuleList"`
+	RuleList []*DescribeAntiLeakageItem `json:"RuleList,omitnil" name:"RuleList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAntiInfoLeakageRulesResponse struct {
@@ -2961,70 +2961,70 @@ func (r *DescribeAntiInfoLeakageRulesResponse) FromJsonString(s string) error {
 
 type DescribeAntiLeakageItem struct {
 	// 规则ID
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 状态值
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 动作
-	Action *string `json:"Action,omitempty" name:"Action"`
+	Action *string `json:"Action,omitnil" name:"Action"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 匹配条件
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Strategies []*DescribeAntiInfoLeakRulesStrategyItem `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*DescribeAntiInfoLeakRulesStrategyItem `json:"Strategies,omitnil" name:"Strategies"`
 
 	// 匹配的URL
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Uri *string `json:"Uri,omitempty" name:"Uri"`
+	Uri *string `json:"Uri,omitnil" name:"Uri"`
 }
 
 // Predefined struct for user
 type DescribeAttackOverviewRequestParams struct {
 	// 查询开始时间
-	FromTime *string `json:"FromTime,omitempty" name:"FromTime"`
+	FromTime *string `json:"FromTime,omitnil" name:"FromTime"`
 
 	// 查询结束时间
-	ToTime *string `json:"ToTime,omitempty" name:"ToTime"`
+	ToTime *string `json:"ToTime,omitnil" name:"ToTime"`
 
 	// 客户的Appid
-	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
+	Appid *uint64 `json:"Appid,omitnil" name:"Appid"`
 
 	// 被查询的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// WAF实例ID，不传则不过滤
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 type DescribeAttackOverviewRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询开始时间
-	FromTime *string `json:"FromTime,omitempty" name:"FromTime"`
+	FromTime *string `json:"FromTime,omitnil" name:"FromTime"`
 
 	// 查询结束时间
-	ToTime *string `json:"ToTime,omitempty" name:"ToTime"`
+	ToTime *string `json:"ToTime,omitnil" name:"ToTime"`
 
 	// 客户的Appid
-	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
+	Appid *uint64 `json:"Appid,omitnil" name:"Appid"`
 
 	// 被查询的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// WAF实例ID，不传则不过滤
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 func (r *DescribeAttackOverviewRequest) ToJsonString() string {
@@ -3054,29 +3054,29 @@ func (r *DescribeAttackOverviewRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAttackOverviewResponseParams struct {
 	// 访问请求总数
-	AccessCount *uint64 `json:"AccessCount,omitempty" name:"AccessCount"`
+	AccessCount *uint64 `json:"AccessCount,omitnil" name:"AccessCount"`
 
 	// Web攻击总数
-	AttackCount *uint64 `json:"AttackCount,omitempty" name:"AttackCount"`
+	AttackCount *uint64 `json:"AttackCount,omitnil" name:"AttackCount"`
 
 	// 访问控制总数
-	ACLCount *uint64 `json:"ACLCount,omitempty" name:"ACLCount"`
+	ACLCount *uint64 `json:"ACLCount,omitnil" name:"ACLCount"`
 
 	// CC攻击总数
-	CCCount *uint64 `json:"CCCount,omitempty" name:"CCCount"`
+	CCCount *uint64 `json:"CCCount,omitnil" name:"CCCount"`
 
 	// Bot攻击总数
-	BotCount *uint64 `json:"BotCount,omitempty" name:"BotCount"`
+	BotCount *uint64 `json:"BotCount,omitnil" name:"BotCount"`
 
 	// api资产总数
-	ApiAssetsCount *uint64 `json:"ApiAssetsCount,omitempty" name:"ApiAssetsCount"`
+	ApiAssetsCount *uint64 `json:"ApiAssetsCount,omitnil" name:"ApiAssetsCount"`
 
 	// api风险事件数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiRiskEventCount *uint64 `json:"ApiRiskEventCount,omitempty" name:"ApiRiskEventCount"`
+	ApiRiskEventCount *uint64 `json:"ApiRiskEventCount,omitnil" name:"ApiRiskEventCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAttackOverviewResponse struct {
@@ -3098,80 +3098,80 @@ func (r *DescribeAttackOverviewResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAutoDenyIPRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 查询IP自动封禁状态
-	Ip *string `json:"Ip,omitempty" name:"Ip"`
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
 
 	// 计数标识
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 类别
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 有效时间最小时间戳
-	VtsMin *uint64 `json:"VtsMin,omitempty" name:"VtsMin"`
+	VtsMin *uint64 `json:"VtsMin,omitnil" name:"VtsMin"`
 
 	// 有效时间最大时间戳
-	VtsMax *uint64 `json:"VtsMax,omitempty" name:"VtsMax"`
+	VtsMax *uint64 `json:"VtsMax,omitnil" name:"VtsMax"`
 
 	// 创建时间最小时间戳
-	CtsMin *uint64 `json:"CtsMin,omitempty" name:"CtsMin"`
+	CtsMin *uint64 `json:"CtsMin,omitnil" name:"CtsMin"`
 
 	// 创建时间最大时间戳
-	CtsMax *uint64 `json:"CtsMax,omitempty" name:"CtsMax"`
+	CtsMax *uint64 `json:"CtsMax,omitnil" name:"CtsMax"`
 
 	// 偏移量
-	Skip *uint64 `json:"Skip,omitempty" name:"Skip"`
+	Skip *uint64 `json:"Skip,omitnil" name:"Skip"`
 
 	// 限制条数
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 策略名字
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 排序参数
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 }
 
 type DescribeAutoDenyIPRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 查询IP自动封禁状态
-	Ip *string `json:"Ip,omitempty" name:"Ip"`
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
 
 	// 计数标识
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 类别
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 有效时间最小时间戳
-	VtsMin *uint64 `json:"VtsMin,omitempty" name:"VtsMin"`
+	VtsMin *uint64 `json:"VtsMin,omitnil" name:"VtsMin"`
 
 	// 有效时间最大时间戳
-	VtsMax *uint64 `json:"VtsMax,omitempty" name:"VtsMax"`
+	VtsMax *uint64 `json:"VtsMax,omitnil" name:"VtsMax"`
 
 	// 创建时间最小时间戳
-	CtsMin *uint64 `json:"CtsMin,omitempty" name:"CtsMin"`
+	CtsMin *uint64 `json:"CtsMin,omitnil" name:"CtsMin"`
 
 	// 创建时间最大时间戳
-	CtsMax *uint64 `json:"CtsMax,omitempty" name:"CtsMax"`
+	CtsMax *uint64 `json:"CtsMax,omitnil" name:"CtsMax"`
 
 	// 偏移量
-	Skip *uint64 `json:"Skip,omitempty" name:"Skip"`
+	Skip *uint64 `json:"Skip,omitnil" name:"Skip"`
 
 	// 限制条数
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 策略名字
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 排序参数
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 }
 
 func (r *DescribeAutoDenyIPRequest) ToJsonString() string {
@@ -3207,10 +3207,10 @@ func (r *DescribeAutoDenyIPRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAutoDenyIPResponseParams struct {
 	// 查询IP封禁状态返回结果
-	Data *IpHitItemsData `json:"Data,omitempty" name:"Data"`
+	Data *IpHitItemsData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAutoDenyIPResponse struct {
@@ -3232,32 +3232,32 @@ func (r *DescribeAutoDenyIPResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeBatchIpAccessControlRequestParams struct {
 	// 筛选条件，支持 ActionType 40/42，Ip：ip地址，Domain：域名三类
-	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移
-	OffSet *uint64 `json:"OffSet,omitempty" name:"OffSet"`
+	OffSet *uint64 `json:"OffSet,omitnil" name:"OffSet"`
 
 	// 限制
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 排序参数
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 }
 
 type DescribeBatchIpAccessControlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 筛选条件，支持 ActionType 40/42，Ip：ip地址，Domain：域名三类
-	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 
 	// 偏移
-	OffSet *uint64 `json:"OffSet,omitempty" name:"OffSet"`
+	OffSet *uint64 `json:"OffSet,omitnil" name:"OffSet"`
 
 	// 限制
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 排序参数
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 }
 
 func (r *DescribeBatchIpAccessControlRequest) ToJsonString() string {
@@ -3286,10 +3286,10 @@ func (r *DescribeBatchIpAccessControlRequest) FromJsonString(s string) error {
 type DescribeBatchIpAccessControlResponseParams struct {
 	// 输出
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *BatchIpAccessControlData `json:"Data,omitempty" name:"Data"`
+	Data *BatchIpAccessControlData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeBatchIpAccessControlResponse struct {
@@ -3340,7 +3340,7 @@ func (r *DescribeCCRuleListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCCRuleListResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCCRuleListResponse struct {
@@ -3362,44 +3362,44 @@ func (r *DescribeCCRuleListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCCRuleRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 页码
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 页的数目
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 排序参数
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// clb-waf 或者 sparta-waf
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 过滤条件
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 type DescribeCCRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 页码
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 页的数目
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 排序参数
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// clb-waf 或者 sparta-waf
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 过滤条件
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 func (r *DescribeCCRuleRequest) ToJsonString() string {
@@ -3430,10 +3430,10 @@ func (r *DescribeCCRuleRequest) FromJsonString(s string) error {
 type DescribeCCRuleResponseParams struct {
 	// 结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *CCRuleData `json:"Data,omitempty" name:"Data"`
+	Data *CCRuleData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCCRuleResponse struct {
@@ -3485,10 +3485,10 @@ func (r *DescribeCiphersDetailRequest) FromJsonString(s string) error {
 type DescribeCiphersDetailResponseParams struct {
 	// 加密套件信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Ciphers []*TLSCiphers `json:"Ciphers,omitempty" name:"Ciphers"`
+	Ciphers []*TLSCiphers `json:"Ciphers,omitnil" name:"Ciphers"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCiphersDetailResponse struct {
@@ -3510,44 +3510,44 @@ func (r *DescribeCiphersDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCustomRuleListRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 偏移
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 容量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤数组,name可以是如下的值： RuleID,RuleName,Match
-	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 
 	// asc或者desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// exp_ts或者mod_ts
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeCustomRuleListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 偏移
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 容量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤数组,name可以是如下的值： RuleID,RuleName,Match
-	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 
 	// asc或者desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// exp_ts或者mod_ts
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeCustomRuleListRequest) ToJsonString() string {
@@ -3577,13 +3577,13 @@ func (r *DescribeCustomRuleListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCustomRuleListResponseParams struct {
 	// 规则详情
-	RuleList []*DescribeCustomRulesRspRuleListItem `json:"RuleList,omitempty" name:"RuleList"`
+	RuleList []*DescribeCustomRulesRspRuleListItem `json:"RuleList,omitnil" name:"RuleList"`
 
 	// 规则条数
-	TotalCount *string `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *string `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCustomRuleListResponse struct {
@@ -3604,81 +3604,81 @@ func (r *DescribeCustomRuleListResponse) FromJsonString(s string) error {
 
 type DescribeCustomRulesRspRuleListItem struct {
 	// 动作类型
-	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 跳过的策略
-	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+	Bypass *string `json:"Bypass,omitnil" name:"Bypass"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 过期时间
-	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 策略名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 重定向地址
-	Redirect *string `json:"Redirect,omitempty" name:"Redirect"`
+	Redirect *string `json:"Redirect,omitnil" name:"Redirect"`
 
 	// 策略ID
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 优先级
-	SortId *string `json:"SortId,omitempty" name:"SortId"`
+	SortId *string `json:"SortId,omitnil" name:"SortId"`
 
 	// 状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 策略详情
-	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*Strategy `json:"Strategies,omitnil" name:"Strategies"`
 
 	// 事件id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 // Predefined struct for user
 type DescribeCustomWhiteRuleRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 容量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤数组,name可以是如下的值： RuleID,RuleName,Match
-	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 
 	// asc或者desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// exp_ts或者mod_ts
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 type DescribeCustomWhiteRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 容量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤数组,name可以是如下的值： RuleID,RuleName,Match
-	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 
 	// asc或者desc
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// exp_ts或者mod_ts
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 }
 
 func (r *DescribeCustomWhiteRuleRequest) ToJsonString() string {
@@ -3708,13 +3708,13 @@ func (r *DescribeCustomWhiteRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCustomWhiteRuleResponseParams struct {
 	// 规则详情
-	RuleList []*DescribeCustomRulesRspRuleListItem `json:"RuleList,omitempty" name:"RuleList"`
+	RuleList []*DescribeCustomRulesRspRuleListItem `json:"RuleList,omitnil" name:"RuleList"`
 
 	// 规则条数
-	TotalCount *string `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *string `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCustomWhiteRuleResponse struct {
@@ -3765,22 +3765,22 @@ func (r *DescribeDomainCountInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainCountInfoResponseParams struct {
 	// 域名总数
-	AllDomain *uint64 `json:"AllDomain,omitempty" name:"AllDomain"`
+	AllDomain *uint64 `json:"AllDomain,omitnil" name:"AllDomain"`
 
 	// 最近发现时间
-	UpdateTime *string `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 接入域名总数
-	WafDomainCount *uint64 `json:"WafDomainCount,omitempty" name:"WafDomainCount"`
+	WafDomainCount *uint64 `json:"WafDomainCount,omitnil" name:"WafDomainCount"`
 
 	// 剩下配额
-	LeftDomainCount *uint64 `json:"LeftDomainCount,omitempty" name:"LeftDomainCount"`
+	LeftDomainCount *uint64 `json:"LeftDomainCount,omitnil" name:"LeftDomainCount"`
 
 	// 开启防护域名数
-	OpenWafDomain *uint64 `json:"OpenWafDomain,omitempty" name:"OpenWafDomain"`
+	OpenWafDomain *uint64 `json:"OpenWafDomain,omitnil" name:"OpenWafDomain"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDomainCountInfoResponse struct {
@@ -3802,26 +3802,26 @@ func (r *DescribeDomainCountInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainDetailsClbRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名id
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DescribeDomainDetailsClbRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名id
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *DescribeDomainDetailsClbRequest) ToJsonString() string {
@@ -3848,10 +3848,10 @@ func (r *DescribeDomainDetailsClbRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainDetailsClbResponseParams struct {
 	// clb域名详情
-	DomainsClbPartInfo *ClbDomainsInfo `json:"DomainsClbPartInfo,omitempty" name:"DomainsClbPartInfo"`
+	DomainsClbPartInfo *ClbDomainsInfo `json:"DomainsClbPartInfo,omitnil" name:"DomainsClbPartInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDomainDetailsClbResponse struct {
@@ -3873,26 +3873,26 @@ func (r *DescribeDomainDetailsClbResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainDetailsSaasRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名id
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DescribeDomainDetailsSaasRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名id
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *DescribeDomainDetailsSaasRequest) ToJsonString() string {
@@ -3919,10 +3919,10 @@ func (r *DescribeDomainDetailsSaasRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainDetailsSaasResponseParams struct {
 	// 域名详情
-	DomainsPartInfo *DomainsPartInfo `json:"DomainsPartInfo,omitempty" name:"DomainsPartInfo"`
+	DomainsPartInfo *DomainsPartInfo `json:"DomainsPartInfo,omitnil" name:"DomainsPartInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDomainDetailsSaasResponse struct {
@@ -3944,44 +3944,44 @@ func (r *DescribeDomainDetailsSaasResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainWhiteRulesRequestParams struct {
 	// 需要查询的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 请求的白名单匹配路径
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 翻到多少页
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页展示的条数
-	Count *uint64 `json:"Count,omitempty" name:"Count"`
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
 
 	// 排序方式,desc表示降序，asc表示升序
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// 规则ID
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 type DescribeDomainWhiteRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要查询的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 请求的白名单匹配路径
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 翻到多少页
-	Page *uint64 `json:"Page,omitempty" name:"Page"`
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
 
 	// 每页展示的条数
-	Count *uint64 `json:"Count,omitempty" name:"Count"`
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
 
 	// 排序方式,desc表示降序，asc表示升序
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// 规则ID
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 func (r *DescribeDomainWhiteRulesRequest) ToJsonString() string {
@@ -4011,13 +4011,13 @@ func (r *DescribeDomainWhiteRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainWhiteRulesResponseParams struct {
 	// 规则列表
-	RuleList []*RuleList `json:"RuleList,omitempty" name:"RuleList"`
+	RuleList []*RuleList `json:"RuleList,omitnil" name:"RuleList"`
 
 	// 规则的数量
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDomainWhiteRulesResponse struct {
@@ -4039,26 +4039,26 @@ func (r *DescribeDomainWhiteRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainsRequestParams struct {
 	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回域名的数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤数组
-	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeDomainsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页偏移量，取Limit整数倍。最小值为0，最大值= Total/Limit向上取整
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回域名的数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤数组
-	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeDomainsRequest) ToJsonString() string {
@@ -4085,14 +4085,14 @@ func (r *DescribeDomainsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDomainsResponseParams struct {
 	// 总数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// domain列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Domains []*DomainInfo `json:"Domains,omitempty" name:"Domains"`
+	Domains []*DomainInfo `json:"Domains,omitnil" name:"Domains"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDomainsResponse struct {
@@ -4114,44 +4114,44 @@ func (r *DescribeDomainsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFindDomainListRequestParams struct {
 	// 分页
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页容量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 是否接入waf
-	IsWafDomain *string `json:"IsWafDomain,omitempty" name:"IsWafDomain"`
+	IsWafDomain *string `json:"IsWafDomain,omitnil" name:"IsWafDomain"`
 
 	// 排序参数
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 type DescribeFindDomainListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 分页
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页容量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤条件
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 是否接入waf
-	IsWafDomain *string `json:"IsWafDomain,omitempty" name:"IsWafDomain"`
+	IsWafDomain *string `json:"IsWafDomain,omitnil" name:"IsWafDomain"`
 
 	// 排序参数
-	By *string `json:"By,omitempty" name:"By"`
+	By *string `json:"By,omitnil" name:"By"`
 
 	// 排序方式
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
 func (r *DescribeFindDomainListRequest) ToJsonString() string {
@@ -4181,13 +4181,13 @@ func (r *DescribeFindDomainListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFindDomainListResponseParams struct {
 	// 域名总数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 域名信息列表
-	List []*FindAllDomainDetail `json:"List,omitempty" name:"List"`
+	List []*FindAllDomainDetail `json:"List,omitnil" name:"List"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeFindDomainListResponse struct {
@@ -4209,26 +4209,26 @@ func (r *DescribeFindDomainListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFlowTrendRequestParams struct {
 	// 需要获取流量趋势的域名, all表示所有域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 起始时间戳，精度秒
-	StartTs *int64 `json:"StartTs,omitempty" name:"StartTs"`
+	StartTs *int64 `json:"StartTs,omitnil" name:"StartTs"`
 
 	// 结束时间戳，精度秒
-	EndTs *int64 `json:"EndTs,omitempty" name:"EndTs"`
+	EndTs *int64 `json:"EndTs,omitnil" name:"EndTs"`
 }
 
 type DescribeFlowTrendRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要获取流量趋势的域名, all表示所有域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 起始时间戳，精度秒
-	StartTs *int64 `json:"StartTs,omitempty" name:"StartTs"`
+	StartTs *int64 `json:"StartTs,omitnil" name:"StartTs"`
 
 	// 结束时间戳，精度秒
-	EndTs *int64 `json:"EndTs,omitempty" name:"EndTs"`
+	EndTs *int64 `json:"EndTs,omitnil" name:"EndTs"`
 }
 
 func (r *DescribeFlowTrendRequest) ToJsonString() string {
@@ -4255,10 +4255,10 @@ func (r *DescribeFlowTrendRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFlowTrendResponseParams struct {
 	// 流量趋势数据
-	Data []*BotStatPointItem `json:"Data,omitempty" name:"Data"`
+	Data []*BotStatPointItem `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeFlowTrendResponse struct {
@@ -4280,26 +4280,26 @@ func (r *DescribeFlowTrendResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostLimitRequestParams struct {
 	// 添加的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 流量来源
-	AlbType *string `json:"AlbType,omitempty" name:"AlbType"`
+	AlbType *string `json:"AlbType,omitnil" name:"AlbType"`
 }
 
 type DescribeHostLimitRequest struct {
 	*tchttp.BaseRequest
 	
 	// 添加的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 流量来源
-	AlbType *string `json:"AlbType,omitempty" name:"AlbType"`
+	AlbType *string `json:"AlbType,omitnil" name:"AlbType"`
 }
 
 func (r *DescribeHostLimitRequest) ToJsonString() string {
@@ -4327,10 +4327,10 @@ func (r *DescribeHostLimitRequest) FromJsonString(s string) error {
 type DescribeHostLimitResponseParams struct {
 	// 成功返回的状态码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Success *ResponseCode `json:"Success,omitempty" name:"Success"`
+	Success *ResponseCode `json:"Success,omitnil" name:"Success"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeHostLimitResponse struct {
@@ -4352,26 +4352,26 @@ func (r *DescribeHostLimitResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 实例ID
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 type DescribeHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 实例ID
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 func (r *DescribeHostRequest) ToJsonString() string {
@@ -4398,10 +4398,10 @@ func (r *DescribeHostRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostResponseParams struct {
 	// 域名详情
-	Host *HostRecord `json:"Host,omitempty" name:"Host"`
+	Host *HostRecord `json:"Host,omitnil" name:"Host"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeHostResponse struct {
@@ -4423,38 +4423,38 @@ func (r *DescribeHostResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostsRequestParams struct {
 	// 防护域名，如果是要查询某一具体的防护域名则传入此参数，要求是准确的域名，此参数不支持模糊搜索
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 防护域名ID，如果是要查询某一具体的防护域名则传入此参数，要求是准确的域名ID，此参数不支持模糊搜索
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 搜索条件，根据此参数对域名做模糊搜索
-	Search *string `json:"Search,omitempty" name:"Search"`
+	Search *string `json:"Search,omitnil" name:"Search"`
 
 	// 复杂的搜索条件
-	Item *SearchItem `json:"Item,omitempty" name:"Item"`
+	Item *SearchItem `json:"Item,omitnil" name:"Item"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 type DescribeHostsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 防护域名，如果是要查询某一具体的防护域名则传入此参数，要求是准确的域名，此参数不支持模糊搜索
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 防护域名ID，如果是要查询某一具体的防护域名则传入此参数，要求是准确的域名ID，此参数不支持模糊搜索
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 搜索条件，根据此参数对域名做模糊搜索
-	Search *string `json:"Search,omitempty" name:"Search"`
+	Search *string `json:"Search,omitnil" name:"Search"`
 
 	// 复杂的搜索条件
-	Item *SearchItem `json:"Item,omitempty" name:"Item"`
+	Item *SearchItem `json:"Item,omitnil" name:"Item"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 func (r *DescribeHostsRequest) ToJsonString() string {
@@ -4483,14 +4483,14 @@ func (r *DescribeHostsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHostsResponseParams struct {
 	// 防护域名列表的长度
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 防护域名的列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	HostList []*HostRecord `json:"HostList,omitempty" name:"HostList"`
+	HostList []*HostRecord `json:"HostList,omitnil" name:"HostList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeHostsResponse struct {
@@ -4512,26 +4512,26 @@ func (r *DescribeHostsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstancesRequestParams struct {
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 容量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤数组
-	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeInstancesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 容量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 过滤数组
-	Filters []*FiltersItemNew `json:"Filters,omitempty" name:"Filters"`
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeInstancesRequest) ToJsonString() string {
@@ -4558,13 +4558,13 @@ func (r *DescribeInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeInstancesResponseParams struct {
 	// 总数
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// instance列表
-	Instances []*InstanceInfo `json:"Instances,omitempty" name:"Instances"`
+	Instances []*InstanceInfo `json:"Instances,omitnil" name:"Instances"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeInstancesResponse struct {
@@ -4586,80 +4586,80 @@ func (r *DescribeInstancesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIpAccessControlRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 计数标识
-	Count *uint64 `json:"Count,omitempty" name:"Count"`
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
 
 	// 动作，40表示查询白名单，42表示查询黑名单
-	ActionType *uint64 `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 最小有效时间的时间戳
-	VtsMin *uint64 `json:"VtsMin,omitempty" name:"VtsMin"`
+	VtsMin *uint64 `json:"VtsMin,omitnil" name:"VtsMin"`
 
 	// 最大有效时间的时间戳
-	VtsMax *uint64 `json:"VtsMax,omitempty" name:"VtsMax"`
+	VtsMax *uint64 `json:"VtsMax,omitnil" name:"VtsMax"`
 
 	// 最小创建时间的时间戳
-	CtsMin *uint64 `json:"CtsMin,omitempty" name:"CtsMin"`
+	CtsMin *uint64 `json:"CtsMin,omitnil" name:"CtsMin"`
 
 	// 最大创建时间的时间戳
-	CtsMax *uint64 `json:"CtsMax,omitempty" name:"CtsMax"`
+	CtsMax *uint64 `json:"CtsMax,omitnil" name:"CtsMax"`
 
 	// 分页开始条数
-	OffSet *uint64 `json:"OffSet,omitempty" name:"OffSet"`
+	OffSet *uint64 `json:"OffSet,omitnil" name:"OffSet"`
 
 	// 每页的条数
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 来源
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 排序参数
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// ip
-	Ip *string `json:"Ip,omitempty" name:"Ip"`
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
 }
 
 type DescribeIpAccessControlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 计数标识
-	Count *uint64 `json:"Count,omitempty" name:"Count"`
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
 
 	// 动作，40表示查询白名单，42表示查询黑名单
-	ActionType *uint64 `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 最小有效时间的时间戳
-	VtsMin *uint64 `json:"VtsMin,omitempty" name:"VtsMin"`
+	VtsMin *uint64 `json:"VtsMin,omitnil" name:"VtsMin"`
 
 	// 最大有效时间的时间戳
-	VtsMax *uint64 `json:"VtsMax,omitempty" name:"VtsMax"`
+	VtsMax *uint64 `json:"VtsMax,omitnil" name:"VtsMax"`
 
 	// 最小创建时间的时间戳
-	CtsMin *uint64 `json:"CtsMin,omitempty" name:"CtsMin"`
+	CtsMin *uint64 `json:"CtsMin,omitnil" name:"CtsMin"`
 
 	// 最大创建时间的时间戳
-	CtsMax *uint64 `json:"CtsMax,omitempty" name:"CtsMax"`
+	CtsMax *uint64 `json:"CtsMax,omitnil" name:"CtsMax"`
 
 	// 分页开始条数
-	OffSet *uint64 `json:"OffSet,omitempty" name:"OffSet"`
+	OffSet *uint64 `json:"OffSet,omitnil" name:"OffSet"`
 
 	// 每页的条数
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 来源
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 排序参数
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// ip
-	Ip *string `json:"Ip,omitempty" name:"Ip"`
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
 }
 
 func (r *DescribeIpAccessControlRequest) ToJsonString() string {
@@ -4696,10 +4696,10 @@ func (r *DescribeIpAccessControlRequest) FromJsonString(s string) error {
 type DescribeIpAccessControlResponseParams struct {
 	// 输出
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *IpAccessControlData `json:"Data,omitempty" name:"Data"`
+	Data *IpAccessControlData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeIpAccessControlResponse struct {
@@ -4721,80 +4721,80 @@ func (r *DescribeIpAccessControlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeIpHitItemsRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 计数标识
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 类别
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 有效时间最小时间戳
-	VtsMin *uint64 `json:"VtsMin,omitempty" name:"VtsMin"`
+	VtsMin *uint64 `json:"VtsMin,omitnil" name:"VtsMin"`
 
 	// 有效时间最大时间戳
-	VtsMax *uint64 `json:"VtsMax,omitempty" name:"VtsMax"`
+	VtsMax *uint64 `json:"VtsMax,omitnil" name:"VtsMax"`
 
 	// 创建时间最小时间戳
-	CtsMin *uint64 `json:"CtsMin,omitempty" name:"CtsMin"`
+	CtsMin *uint64 `json:"CtsMin,omitnil" name:"CtsMin"`
 
 	// 创建时间最大时间戳
-	CtsMax *uint64 `json:"CtsMax,omitempty" name:"CtsMax"`
+	CtsMax *uint64 `json:"CtsMax,omitnil" name:"CtsMax"`
 
 	// 偏移参数
-	Skip *uint64 `json:"Skip,omitempty" name:"Skip"`
+	Skip *uint64 `json:"Skip,omitnil" name:"Skip"`
 
 	// 限制数目
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 策略名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 排序参数
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// IP
-	Ip *string `json:"Ip,omitempty" name:"Ip"`
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
 }
 
 type DescribeIpHitItemsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 计数标识
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 类别
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 有效时间最小时间戳
-	VtsMin *uint64 `json:"VtsMin,omitempty" name:"VtsMin"`
+	VtsMin *uint64 `json:"VtsMin,omitnil" name:"VtsMin"`
 
 	// 有效时间最大时间戳
-	VtsMax *uint64 `json:"VtsMax,omitempty" name:"VtsMax"`
+	VtsMax *uint64 `json:"VtsMax,omitnil" name:"VtsMax"`
 
 	// 创建时间最小时间戳
-	CtsMin *uint64 `json:"CtsMin,omitempty" name:"CtsMin"`
+	CtsMin *uint64 `json:"CtsMin,omitnil" name:"CtsMin"`
 
 	// 创建时间最大时间戳
-	CtsMax *uint64 `json:"CtsMax,omitempty" name:"CtsMax"`
+	CtsMax *uint64 `json:"CtsMax,omitnil" name:"CtsMax"`
 
 	// 偏移参数
-	Skip *uint64 `json:"Skip,omitempty" name:"Skip"`
+	Skip *uint64 `json:"Skip,omitnil" name:"Skip"`
 
 	// 限制数目
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 策略名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 排序参数
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// IP
-	Ip *string `json:"Ip,omitempty" name:"Ip"`
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
 }
 
 func (r *DescribeIpHitItemsRequest) ToJsonString() string {
@@ -4831,10 +4831,10 @@ func (r *DescribeIpHitItemsRequest) FromJsonString(s string) error {
 type DescribeIpHitItemsResponseParams struct {
 	// 结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *IpHitItemsData `json:"Data,omitempty" name:"Data"`
+	Data *IpHitItemsData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeIpHitItemsResponse struct {
@@ -4856,19 +4856,19 @@ func (r *DescribeIpHitItemsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePeakPointsRequestParams struct {
 	// 查询起始时间
-	FromTime *string `json:"FromTime,omitempty" name:"FromTime"`
+	FromTime *string `json:"FromTime,omitnil" name:"FromTime"`
 
 	// 查询终止时间
-	ToTime *string `json:"ToTime,omitempty" name:"ToTime"`
+	ToTime *string `json:"ToTime,omitnil" name:"ToTime"`
 
 	// 查询的域名，如果查询所有域名数据，该参数不填写
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// WAF实例ID，不传则不过滤
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 十三个值可选：
 	// access-峰值qps趋势图
@@ -4884,26 +4884,26 @@ type DescribePeakPointsRequestParams struct {
 	// UpstreamServerError-源站返回给WAF状态码次数趋势图
 	// UpstreamClientError-源站返回给WAF状态码次数趋势图
 	// UpstreamRedirect-源站返回给WAF状态码次数趋势图
-	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 }
 
 type DescribePeakPointsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询起始时间
-	FromTime *string `json:"FromTime,omitempty" name:"FromTime"`
+	FromTime *string `json:"FromTime,omitnil" name:"FromTime"`
 
 	// 查询终止时间
-	ToTime *string `json:"ToTime,omitempty" name:"ToTime"`
+	ToTime *string `json:"ToTime,omitnil" name:"ToTime"`
 
 	// 查询的域名，如果查询所有域名数据，该参数不填写
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// WAF实例ID，不传则不过滤
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 十三个值可选：
 	// access-峰值qps趋势图
@@ -4919,7 +4919,7 @@ type DescribePeakPointsRequest struct {
 	// UpstreamServerError-源站返回给WAF状态码次数趋势图
 	// UpstreamClientError-源站返回给WAF状态码次数趋势图
 	// UpstreamRedirect-源站返回给WAF状态码次数趋势图
-	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 }
 
 func (r *DescribePeakPointsRequest) ToJsonString() string {
@@ -4949,10 +4949,10 @@ func (r *DescribePeakPointsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePeakPointsResponseParams struct {
 	// 数据点
-	Points []*PeakPointsItem `json:"Points,omitempty" name:"Points"`
+	Points []*PeakPointsItem `json:"Points,omitnil" name:"Points"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePeakPointsResponse struct {
@@ -4974,19 +4974,19 @@ func (r *DescribePeakPointsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePeakValueRequestParams struct {
 	// 查询起始时间
-	FromTime *string `json:"FromTime,omitempty" name:"FromTime"`
+	FromTime *string `json:"FromTime,omitnil" name:"FromTime"`
 
 	// 查询结束时间
-	ToTime *string `json:"ToTime,omitempty" name:"ToTime"`
+	ToTime *string `json:"ToTime,omitnil" name:"ToTime"`
 
 	// 需要查询的域名，当前用户所有域名可以不传
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// WAF实例ID，不传则不过滤
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 五个值可选：
 	// access-峰值qps
@@ -4994,26 +4994,26 @@ type DescribePeakValueRequestParams struct {
 	// up-上行峰值带宽
 	// attack-Web攻击总数
 	// cc-CC攻击总数趋势图
-	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 }
 
 type DescribePeakValueRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询起始时间
-	FromTime *string `json:"FromTime,omitempty" name:"FromTime"`
+	FromTime *string `json:"FromTime,omitnil" name:"FromTime"`
 
 	// 查询结束时间
-	ToTime *string `json:"ToTime,omitempty" name:"ToTime"`
+	ToTime *string `json:"ToTime,omitnil" name:"ToTime"`
 
 	// 需要查询的域名，当前用户所有域名可以不传
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// WAF实例ID，不传则不过滤
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 五个值可选：
 	// access-峰值qps
@@ -5021,7 +5021,7 @@ type DescribePeakValueRequest struct {
 	// up-上行峰值带宽
 	// attack-Web攻击总数
 	// cc-CC攻击总数趋势图
-	MetricName *string `json:"MetricName,omitempty" name:"MetricName"`
+	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 }
 
 func (r *DescribePeakValueRequest) ToJsonString() string {
@@ -5051,22 +5051,22 @@ func (r *DescribePeakValueRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePeakValueResponseParams struct {
 	// QPS峰值
-	Access *uint64 `json:"Access,omitempty" name:"Access"`
+	Access *uint64 `json:"Access,omitnil" name:"Access"`
 
 	// 上行带宽峰值，单位B
-	Up *uint64 `json:"Up,omitempty" name:"Up"`
+	Up *uint64 `json:"Up,omitnil" name:"Up"`
 
 	// 下行带宽峰值，单位B
-	Down *uint64 `json:"Down,omitempty" name:"Down"`
+	Down *uint64 `json:"Down,omitnil" name:"Down"`
 
 	// Web攻击总数
-	Attack *uint64 `json:"Attack,omitempty" name:"Attack"`
+	Attack *uint64 `json:"Attack,omitnil" name:"Attack"`
 
 	// CC攻击总数
-	Cc *uint64 `json:"Cc,omitempty" name:"Cc"`
+	Cc *uint64 `json:"Cc,omitnil" name:"Cc"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePeakValueResponse struct {
@@ -5088,20 +5088,20 @@ func (r *DescribePeakValueResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePolicyStatusRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// clb-waf或者saas-waf
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 type DescribePolicyStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// clb-waf或者saas-waf
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 func (r *DescribePolicyStatusRequest) ToJsonString() string {
@@ -5127,13 +5127,13 @@ func (r *DescribePolicyStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePolicyStatusResponseParams struct {
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 防护状态
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePolicyStatusResponse struct {
@@ -5155,14 +5155,14 @@ func (r *DescribePolicyStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRuleLimitRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 type DescribeRuleLimitRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 func (r *DescribeRuleLimitRequest) ToJsonString() string {
@@ -5187,10 +5187,10 @@ func (r *DescribeRuleLimitRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRuleLimitResponseParams struct {
 	// waf模块的规格
-	Res *WafRuleLimit `json:"Res,omitempty" name:"Res"`
+	Res *WafRuleLimit `json:"Res,omitnil" name:"Res"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRuleLimitResponse struct {
@@ -5212,20 +5212,20 @@ func (r *DescribeRuleLimitResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSessionRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// clb-waf或者sparta-waf
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 type DescribeSessionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// clb-waf或者sparta-waf
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 func (r *DescribeSessionRequest) ToJsonString() string {
@@ -5252,10 +5252,10 @@ func (r *DescribeSessionRequest) FromJsonString(s string) error {
 type DescribeSessionResponseParams struct {
 	// 返回结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *SessionData `json:"Data,omitempty" name:"Data"`
+	Data *SessionData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSessionResponse struct {
@@ -5306,10 +5306,10 @@ func (r *DescribeTlsVersionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTlsVersionResponseParams struct {
 	// TLS key value
-	TLS []*TLSVersion `json:"TLS,omitempty" name:"TLS"`
+	TLS []*TLSVersion `json:"TLS,omitnil" name:"TLS"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTlsVersionResponse struct {
@@ -5361,10 +5361,10 @@ func (r *DescribeUserCdcClbWafRegionsRequest) FromJsonString(s string) error {
 type DescribeUserCdcClbWafRegionsResponseParams struct {
 	// CdcRegion的类型描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*CdcRegion `json:"Data,omitempty" name:"Data"`
+	Data []*CdcRegion `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUserCdcClbWafRegionsResponse struct {
@@ -5416,10 +5416,10 @@ func (r *DescribeUserClbWafRegionsRequest) FromJsonString(s string) error {
 type DescribeUserClbWafRegionsResponseParams struct {
 	// 地域（标准的ap-格式）列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data []*string `json:"Data,omitempty" name:"Data"`
+	Data []*string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUserClbWafRegionsResponse struct {
@@ -5470,10 +5470,10 @@ func (r *DescribeUserDomainInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserDomainInfoResponseParams struct {
 	// saas和clb域名信息
-	UsersInfo []*UserDomainInfo `json:"UsersInfo,omitempty" name:"UsersInfo"`
+	UsersInfo []*UserDomainInfo `json:"UsersInfo,omitnil" name:"UsersInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUserDomainInfoResponse struct {
@@ -5495,14 +5495,14 @@ func (r *DescribeUserDomainInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVipInfoRequestParams struct {
 	// waf实例id列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 }
 
 type DescribeVipInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// waf实例id列表
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 }
 
 func (r *DescribeVipInfoRequest) ToJsonString() string {
@@ -5527,10 +5527,10 @@ func (r *DescribeVipInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeVipInfoResponseParams struct {
 	// VIP信息
-	VipInfo []*VipInfo `json:"VipInfo,omitempty" name:"VipInfo"`
+	VipInfo []*VipInfo `json:"VipInfo,omitnil" name:"VipInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeVipInfoResponse struct {
@@ -5552,14 +5552,14 @@ func (r *DescribeVipInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWafAutoDenyRulesRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 type DescribeWafAutoDenyRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 func (r *DescribeWafAutoDenyRulesRequest) ToJsonString() string {
@@ -5584,19 +5584,19 @@ func (r *DescribeWafAutoDenyRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWafAutoDenyRulesResponseParams struct {
 	// 攻击次数阈值
-	AttackThreshold *int64 `json:"AttackThreshold,omitempty" name:"AttackThreshold"`
+	AttackThreshold *int64 `json:"AttackThreshold,omitnil" name:"AttackThreshold"`
 
 	// 攻击时间阈值
-	TimeThreshold *int64 `json:"TimeThreshold,omitempty" name:"TimeThreshold"`
+	TimeThreshold *int64 `json:"TimeThreshold,omitnil" name:"TimeThreshold"`
 
 	// 自动封禁时间
-	DenyTimeThreshold *int64 `json:"DenyTimeThreshold,omitempty" name:"DenyTimeThreshold"`
+	DenyTimeThreshold *int64 `json:"DenyTimeThreshold,omitnil" name:"DenyTimeThreshold"`
 
 	// 自动封禁状态
-	DefenseStatus *int64 `json:"DefenseStatus,omitempty" name:"DefenseStatus"`
+	DefenseStatus *int64 `json:"DefenseStatus,omitnil" name:"DefenseStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeWafAutoDenyRulesResponse struct {
@@ -5647,10 +5647,10 @@ func (r *DescribeWafAutoDenyStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWafAutoDenyStatusResponseParams struct {
 	// WAF 自动封禁详情
-	WafAutoDenyDetails *AutoDenyDetail `json:"WafAutoDenyDetails,omitempty" name:"WafAutoDenyDetails"`
+	WafAutoDenyDetails *AutoDenyDetail `json:"WafAutoDenyDetails,omitnil" name:"WafAutoDenyDetails"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeWafAutoDenyStatusResponse struct {
@@ -5672,14 +5672,14 @@ func (r *DescribeWafAutoDenyStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWafInfoRequestParams struct {
 	// CLB回调WAF接口（获取、删除）的参数
-	Params []*ClbHostsParams `json:"Params,omitempty" name:"Params"`
+	Params []*ClbHostsParams `json:"Params,omitnil" name:"Params"`
 }
 
 type DescribeWafInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// CLB回调WAF接口（获取、删除）的参数
-	Params []*ClbHostsParams `json:"Params,omitempty" name:"Params"`
+	Params []*ClbHostsParams `json:"Params,omitnil" name:"Params"`
 }
 
 func (r *DescribeWafInfoRequest) ToJsonString() string {
@@ -5704,13 +5704,13 @@ func (r *DescribeWafInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeWafInfoResponseParams struct {
 	// 返回的WAF信息数组的长度，为0则表示没有查询到对应的信息
-	Total *uint64 `json:"Total,omitempty" name:"Total"`
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
 	// 对应的WAF信息的数组。
-	HostList []*ClbHostResult `json:"HostList,omitempty" name:"HostList"`
+	HostList []*ClbHostResult `json:"HostList,omitnil" name:"HostList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeWafInfoResponse struct {
@@ -5761,10 +5761,10 @@ func (r *DescribeWafThreatenIntelligenceRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeWafThreatenIntelligenceResponseParams struct {
 	// WAF 威胁情报封禁信息
-	WafThreatenIntelligenceDetails *WafThreatenIntelligenceDetails `json:"WafThreatenIntelligenceDetails,omitempty" name:"WafThreatenIntelligenceDetails"`
+	WafThreatenIntelligenceDetails *WafThreatenIntelligenceDetails `json:"WafThreatenIntelligenceDetails,omitnil" name:"WafThreatenIntelligenceDetails"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeWafThreatenIntelligenceResponse struct {
@@ -5785,389 +5785,389 @@ func (r *DescribeWafThreatenIntelligenceResponse) FromJsonString(s string) error
 
 type DomainInfo struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// cname地址
-	Cname *string `json:"Cname,omitempty" name:"Cname"`
+	Cname *string `json:"Cname,omitnil" name:"Cname"`
 
 	// 实例类型,sparta-waf表示saaswaf实例域名,clb-waf表示clbwaf实例域名,cdc-clb-waf表示CDC环境下clbwaf实例域名,cdn-waf表示cdnwaf实例域名
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 地域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 实例名
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 日志包
-	ClsStatus *uint64 `json:"ClsStatus,omitempty" name:"ClsStatus"`
+	ClsStatus *uint64 `json:"ClsStatus,omitnil" name:"ClsStatus"`
 
 	// clbwaf使用模式,0镜像模式 1清洗模式
-	FlowMode *uint64 `json:"FlowMode,omitempty" name:"FlowMode"`
+	FlowMode *uint64 `json:"FlowMode,omitnil" name:"FlowMode"`
 
 	// waf开关,0关闭 1开启
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 规则防御模式,0观察模式 1拦截模式
-	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// AI防御模式,10规则引擎观察&&AI引擎关闭模式 11规则引擎观察&&AI引擎观察模式 12规则引擎观察&&AI引擎拦截模式 20规则引擎拦截&&AI引擎关闭模式 21规则引擎拦截&&AI引擎观察模式 22规则引擎拦截&&AI引擎拦截模式
-	Engine *uint64 `json:"Engine,omitempty" name:"Engine"`
+	Engine *uint64 `json:"Engine,omitnil" name:"Engine"`
 
 	// CC列表
-	CCList []*string `json:"CCList,omitempty" name:"CCList"`
+	CCList []*string `json:"CCList,omitnil" name:"CCList"`
 
 	// 回源ip
-	RsList []*string `json:"RsList,omitempty" name:"RsList"`
+	RsList []*string `json:"RsList,omitnil" name:"RsList"`
 
 	// 服务端口配置
-	Ports []*PortInfo `json:"Ports,omitempty" name:"Ports"`
+	Ports []*PortInfo `json:"Ports,omitnil" name:"Ports"`
 
 	// 负载均衡器
-	LoadBalancerSet []*LoadBalancerPackageNew `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet"`
+	LoadBalancerSet []*LoadBalancerPackageNew `json:"LoadBalancerSet,omitnil" name:"LoadBalancerSet"`
 
 	// 用户id
-	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+	AppId *uint64 `json:"AppId,omitnil" name:"AppId"`
 
 	// clbwaf域名监听器状态,0操作成功 4正在绑定LB 6正在解绑LB 7解绑LB失败 8绑定LB失败 10内部错误
-	State *int64 `json:"State,omitempty" name:"State"`
+	State *int64 `json:"State,omitnil" name:"State"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// Ipv6开关状态,0关闭 1开启
-	Ipv6Status *int64 `json:"Ipv6Status,omitempty" name:"Ipv6Status"`
+	Ipv6Status *int64 `json:"Ipv6Status,omitnil" name:"Ipv6Status"`
 
 	// BOT开关状态,0关闭 1开启
-	BotStatus *int64 `json:"BotStatus,omitempty" name:"BotStatus"`
+	BotStatus *int64 `json:"BotStatus,omitnil" name:"BotStatus"`
 
 	// 版本信息
-	Level *int64 `json:"Level,omitempty" name:"Level"`
+	Level *int64 `json:"Level,omitnil" name:"Level"`
 
 	// 是否开启投递CLS功能,0关闭 1开启
-	PostCLSStatus *int64 `json:"PostCLSStatus,omitempty" name:"PostCLSStatus"`
+	PostCLSStatus *int64 `json:"PostCLSStatus,omitnil" name:"PostCLSStatus"`
 
 	// 是否开启投递CKafka功能,0关闭 1开启
-	PostCKafkaStatus *int64 `json:"PostCKafkaStatus,omitempty" name:"PostCKafkaStatus"`
+	PostCKafkaStatus *int64 `json:"PostCKafkaStatus,omitnil" name:"PostCKafkaStatus"`
 
 	// cdc实例域名接入的集群信息,非cdc实例忽略
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CdcClusters *string `json:"CdcClusters,omitempty" name:"CdcClusters"`
+	CdcClusters *string `json:"CdcClusters,omitnil" name:"CdcClusters"`
 
 	// api安全开关状态,0关闭 1开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ApiStatus *int64 `json:"ApiStatus,omitempty" name:"ApiStatus"`
+	ApiStatus *int64 `json:"ApiStatus,omitnil" name:"ApiStatus"`
 
 	// 应用型负载均衡类型,clb或者apisix，默认clb
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlbType *string `json:"AlbType,omitempty" name:"AlbType"`
+	AlbType *string `json:"AlbType,omitnil" name:"AlbType"`
 
 	// 安全组状态,0不展示 1非腾讯云源站 2安全组绑定失败 3安全组发生变更
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SgState *int64 `json:"SgState,omitempty" name:"SgState"`
+	SgState *int64 `json:"SgState,omitnil" name:"SgState"`
 
 	// 安全组状态的详细解释
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SgDetail *string `json:"SgDetail,omitempty" name:"SgDetail"`
+	SgDetail *string `json:"SgDetail,omitnil" name:"SgDetail"`
 }
 
 type DomainPackageNew struct {
 	// 资源ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+	ResourceIds *string `json:"ResourceIds,omitnil" name:"ResourceIds"`
 
 	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ValidTime *string `json:"ValidTime,omitempty" name:"ValidTime"`
+	ValidTime *string `json:"ValidTime,omitnil" name:"ValidTime"`
 
 	// 是否自动续费，1：自动续费，0：不自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+	RenewFlag *uint64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
 
 	// 套餐购买个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Count *uint64 `json:"Count,omitempty" name:"Count"`
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
 
 	// 套餐购买地域，clb-waf暂时没有用到
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 }
 
 type DomainURI struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 版本
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 type DomainsPartInfo struct {
 	// 是否开启httpRewrite
-	HttpsRewrite *uint64 `json:"HttpsRewrite,omitempty" name:"HttpsRewrite"`
+	HttpsRewrite *uint64 `json:"HttpsRewrite,omitnil" name:"HttpsRewrite"`
 
 	// https回源端口
-	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitempty" name:"HttpsUpstreamPort"`
+	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil" name:"HttpsUpstreamPort"`
 
 	// 是否是cdn
-	IsCdn *uint64 `json:"IsCdn,omitempty" name:"IsCdn"`
+	IsCdn *uint64 `json:"IsCdn,omitnil" name:"IsCdn"`
 
 	// 是否开启gray
-	IsGray *uint64 `json:"IsGray,omitempty" name:"IsGray"`
+	IsGray *uint64 `json:"IsGray,omitnil" name:"IsGray"`
 
 	// 是否是http2
-	IsHttp2 *uint64 `json:"IsHttp2,omitempty" name:"IsHttp2"`
+	IsHttp2 *uint64 `json:"IsHttp2,omitnil" name:"IsHttp2"`
 
 	// 是否开启websocket
-	IsWebsocket *uint64 `json:"IsWebsocket,omitempty" name:"IsWebsocket"`
+	IsWebsocket *uint64 `json:"IsWebsocket,omitnil" name:"IsWebsocket"`
 
 	// 负载均衡
-	LoadBalance *uint64 `json:"LoadBalance,omitempty" name:"LoadBalance"`
+	LoadBalance *uint64 `json:"LoadBalance,omitnil" name:"LoadBalance"`
 
 	// 防御模式
-	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// 私钥
-	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
 
 	// ssl id
-	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+	SSLId *string `json:"SSLId,omitnil" name:"SSLId"`
 
 	// 回源域名
-	UpstreamDomain *string `json:"UpstreamDomain,omitempty" name:"UpstreamDomain"`
+	UpstreamDomain *string `json:"UpstreamDomain,omitnil" name:"UpstreamDomain"`
 
 	// 回源类型
-	UpstreamType *uint64 `json:"UpstreamType,omitempty" name:"UpstreamType"`
+	UpstreamType *uint64 `json:"UpstreamType,omitnil" name:"UpstreamType"`
 
 	// 回源ip
-	SrcList []*string `json:"SrcList,omitempty" name:"SrcList"`
+	SrcList []*string `json:"SrcList,omitnil" name:"SrcList"`
 
 	// 服务端口配置
-	Ports []*PortInfo `json:"Ports,omitempty" name:"Ports"`
+	Ports []*PortInfo `json:"Ports,omitnil" name:"Ports"`
 
 	// 证书类型
-	CertType *uint64 `json:"CertType,omitempty" name:"CertType"`
+	CertType *uint64 `json:"CertType,omitnil" name:"CertType"`
 
 	// 回源方式
-	UpstreamScheme *string `json:"UpstreamScheme,omitempty" name:"UpstreamScheme"`
+	UpstreamScheme *string `json:"UpstreamScheme,omitnil" name:"UpstreamScheme"`
 
 	// 日志包
-	Cls *uint64 `json:"Cls,omitempty" name:"Cls"`
+	Cls *uint64 `json:"Cls,omitnil" name:"Cls"`
 
 	// 一级cname
-	Cname *string `json:"Cname,omitempty" name:"Cname"`
+	Cname *string `json:"Cname,omitnil" name:"Cname"`
 
 	// 是否长连接
-	IsKeepAlive *uint64 `json:"IsKeepAlive,omitempty" name:"IsKeepAlive"`
+	IsKeepAlive *uint64 `json:"IsKeepAlive,omitnil" name:"IsKeepAlive"`
 
 	// 是否开启主动健康检测，1表示开启，0表示不开启
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ActiveCheck *uint64 `json:"ActiveCheck,omitempty" name:"ActiveCheck"`
+	ActiveCheck *uint64 `json:"ActiveCheck,omitnil" name:"ActiveCheck"`
 
 	// TLS版本信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TLSVersion *int64 `json:"TLSVersion,omitempty" name:"TLSVersion"`
+	TLSVersion *int64 `json:"TLSVersion,omitnil" name:"TLSVersion"`
 
 	// 加密套件信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Ciphers []*int64 `json:"Ciphers,omitempty" name:"Ciphers"`
+	Ciphers []*int64 `json:"Ciphers,omitnil" name:"Ciphers"`
 
 	// 模板
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
+	CipherTemplate *int64 `json:"CipherTemplate,omitnil" name:"CipherTemplate"`
 
 	// 300s
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitempty" name:"ProxyReadTimeout"`
+	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil" name:"ProxyReadTimeout"`
 
 	// 300s
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitempty" name:"ProxySendTimeout"`
+	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitnil" name:"ProxySendTimeout"`
 
 	// 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SniType *int64 `json:"SniType,omitempty" name:"SniType"`
+	SniType *int64 `json:"SniType,omitnil" name:"SniType"`
 
 	// SniType=3时，需要填此参数，表示自定义的host；
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SniHost *string `json:"SniHost,omitempty" name:"SniHost"`
+	SniHost *string `json:"SniHost,omitnil" name:"SniHost"`
 
 	// 无
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Weights []*string `json:"Weights,omitempty" name:"Weights"`
+	Weights []*string `json:"Weights,omitnil" name:"Weights"`
 
 	// IsCdn=3时，表示自定义header
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+	IpHeaders []*string `json:"IpHeaders,omitnil" name:"IpHeaders"`
 
 	// 0:关闭xff重置；1:开启xff重置
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	XFFReset *int64 `json:"XFFReset,omitempty" name:"XFFReset"`
+	XFFReset *int64 `json:"XFFReset,omitnil" name:"XFFReset"`
 }
 
 type DownloadAttackRecordInfo struct {
 	// 记录ID
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 下载任务名
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
 
 	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 域名
-	Host *string `json:"Host,omitempty" name:"Host"`
+	Host *string `json:"Host,omitnil" name:"Host"`
 
 	// 当前下载任务的日志条数
-	Count *uint64 `json:"Count,omitempty" name:"Count"`
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
 
 	// 下载任务运行状态：-1-下载超时，0-下载等待，1-下载完成，2-下载失败，4-正在下载
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 下载文件URL
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 最后更新修改时间
-	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
 
 	// 过期时间
-	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 下载任务需下载的日志总条数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 }
 
 type ExportAccessInfo struct {
 	// 日志导出任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ExportId *string `json:"ExportId,omitempty" name:"ExportId"`
+	ExportId *string `json:"ExportId,omitnil" name:"ExportId"`
 
 	// 日志导出查询语句
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 日志导出文件名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 日志文件大小
-	FileSize *int64 `json:"FileSize,omitempty" name:"FileSize"`
+	FileSize *int64 `json:"FileSize,omitnil" name:"FileSize"`
 
 	// 日志导出时间排序
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Order *string `json:"Order,omitempty" name:"Order"`
+	Order *string `json:"Order,omitnil" name:"Order"`
 
 	// 日志导出格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Format *string `json:"Format,omitempty" name:"Format"`
+	Format *string `json:"Format,omitnil" name:"Format"`
 
 	// 日志导出数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Count *uint64 `json:"Count,omitempty" name:"Count"`
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
 
 	// 日志下载状态。Processing:导出正在进行中，Complete:导出完成，Failed:导出失败，Expired:日志导出已过期（三天有效期）
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 日志导出起始时间
-	From *int64 `json:"From,omitempty" name:"From"`
+	From *int64 `json:"From,omitnil" name:"From"`
 
 	// 日志导出结束时间
-	To *int64 `json:"To,omitempty" name:"To"`
+	To *int64 `json:"To,omitnil" name:"To"`
 
 	// 日志导出路径
-	CosPath *string `json:"CosPath,omitempty" name:"CosPath"`
+	CosPath *string `json:"CosPath,omitnil" name:"CosPath"`
 
 	// 日志导出创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 }
 
 type FailedInfo struct {
 	// 域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 失败信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 }
 
 type FiltersItemNew struct {
 	// 字段名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 过滤值
-	Values []*string `json:"Values,omitempty" name:"Values"`
+	Values []*string `json:"Values,omitnil" name:"Values"`
 
 	// 是否精确查找
-	ExactMatch *bool `json:"ExactMatch,omitempty" name:"ExactMatch"`
+	ExactMatch *bool `json:"ExactMatch,omitnil" name:"ExactMatch"`
 }
 
 type FindAllDomainDetail struct {
 	// 用户id
-	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
+	Appid *uint64 `json:"Appid,omitnil" name:"Appid"`
 
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名ip
-	Ips []*string `json:"Ips,omitempty" name:"Ips"`
+	Ips []*string `json:"Ips,omitnil" name:"Ips"`
 
 	// 发现时间
-	FindTime *string `json:"FindTime,omitempty" name:"FindTime"`
+	FindTime *string `json:"FindTime,omitnil" name:"FindTime"`
 
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 域名id
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// waf类型
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 是否接入waf
-	IsWafDomain *uint64 `json:"IsWafDomain,omitempty" name:"IsWafDomain"`
+	IsWafDomain *uint64 `json:"IsWafDomain,omitnil" name:"IsWafDomain"`
 }
 
 type FraudPkg struct {
 	// 资源id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+	ResourceIds *string `json:"ResourceIds,omitnil" name:"ResourceIds"`
 
 	// 状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *int64 `json:"Region,omitempty" name:"Region"`
+	Region *int64 `json:"Region,omitnil" name:"Region"`
 
 	// 开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 申请数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InquireNum *int64 `json:"InquireNum,omitempty" name:"InquireNum"`
+	InquireNum *int64 `json:"InquireNum,omitnil" name:"InquireNum"`
 
 	// 使用数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UsedNum *int64 `json:"UsedNum,omitempty" name:"UsedNum"`
+	UsedNum *int64 `json:"UsedNum,omitnil" name:"UsedNum"`
 
 	// 续费标志
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+	RenewFlag *uint64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
 }
 
 // Predefined struct for user
@@ -6202,10 +6202,10 @@ func (r *GetAttackDownloadRecordsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetAttackDownloadRecordsResponseParams struct {
 	// 下载攻击日志记录数组
-	Records []*DownloadAttackRecordInfo `json:"Records,omitempty" name:"Records"`
+	Records []*DownloadAttackRecordInfo `json:"Records,omitnil" name:"Records"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetAttackDownloadRecordsResponse struct {
@@ -6227,32 +6227,32 @@ func (r *GetAttackDownloadRecordsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetAttackHistogramRequestParams struct {
 	// 查询的域名，所有域名使用all
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 查询起始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// Lucene语法
-	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+	QueryString *string `json:"QueryString,omitnil" name:"QueryString"`
 }
 
 type GetAttackHistogramRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询的域名，所有域名使用all
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 查询起始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// Lucene语法
-	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+	QueryString *string `json:"QueryString,omitnil" name:"QueryString"`
 }
 
 func (r *GetAttackHistogramRequest) ToJsonString() string {
@@ -6280,16 +6280,16 @@ func (r *GetAttackHistogramRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetAttackHistogramResponseParams struct {
 	// 统计详情
-	Data []*LogHistogramInfo `json:"Data,omitempty" name:"Data"`
+	Data []*LogHistogramInfo `json:"Data,omitnil" name:"Data"`
 
 	// 时间段大小
-	Period *uint64 `json:"Period,omitempty" name:"Period"`
+	Period *uint64 `json:"Period,omitnil" name:"Period"`
 
 	// 统计的条目数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetAttackHistogramResponse struct {
@@ -6311,32 +6311,32 @@ func (r *GetAttackHistogramResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetAttackTotalCountRequestParams struct {
 	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 查询的域名，全部域名不指定
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 查询条件，默认为""
-	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+	QueryString *string `json:"QueryString,omitnil" name:"QueryString"`
 }
 
 type GetAttackTotalCountRequest struct {
 	*tchttp.BaseRequest
 	
 	// 起始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 查询的域名，全部域名不指定
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 查询条件，默认为""
-	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+	QueryString *string `json:"QueryString,omitnil" name:"QueryString"`
 }
 
 func (r *GetAttackTotalCountRequest) ToJsonString() string {
@@ -6364,10 +6364,10 @@ func (r *GetAttackTotalCountRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetAttackTotalCountResponseParams struct {
 	// 攻击总次数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetAttackTotalCountResponse struct {
@@ -6388,362 +6388,362 @@ func (r *GetAttackTotalCountResponse) FromJsonString(s string) error {
 
 type HostDel struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 实例类型
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 type HostRecord struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 主域名，入参时为空
-	MainDomain *string `json:"MainDomain,omitempty" name:"MainDomain"`
+	MainDomain *string `json:"MainDomain,omitnil" name:"MainDomain"`
 
 	// waf模式，同saas waf保持一致
-	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// waf和LD的绑定，0：没有绑定，1：绑定
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 域名状态，0：正常，1：未检测到流量，2：即将过期，3：过期
-	State *uint64 `json:"State,omitempty" name:"State"`
+	State *uint64 `json:"State,omitnil" name:"State"`
 
 	// 使用的规则，同saas waf保持一致
-	Engine *uint64 `json:"Engine,omitempty" name:"Engine"`
+	Engine *uint64 `json:"Engine,omitnil" name:"Engine"`
 
 	// 是否开启代理，0：不开启，1：开启
-	IsCdn *uint64 `json:"IsCdn,omitempty" name:"IsCdn"`
+	IsCdn *uint64 `json:"IsCdn,omitnil" name:"IsCdn"`
 
 	// 绑定的LB列表
-	LoadBalancerSet []*LoadBalancer `json:"LoadBalancerSet,omitempty" name:"LoadBalancerSet"`
+	LoadBalancerSet []*LoadBalancer `json:"LoadBalancerSet,omitnil" name:"LoadBalancerSet"`
 
 	// 域名绑定的LB的地域，以,分割多个地域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 产品分类，取值为：sparta-waf、clb-waf、cdn-waf
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// WAF的流量模式，1：清洗模式，0：镜像模式
-	FlowMode *uint64 `json:"FlowMode,omitempty" name:"FlowMode"`
+	FlowMode *uint64 `json:"FlowMode,omitnil" name:"FlowMode"`
 
 	// 是否开启访问日志，1：开启，0：关闭
-	ClsStatus *uint64 `json:"ClsStatus,omitempty" name:"ClsStatus"`
+	ClsStatus *uint64 `json:"ClsStatus,omitnil" name:"ClsStatus"`
 
 	// 防护等级，可选值100,200,300
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Level *uint64 `json:"Level,omitempty" name:"Level"`
+	Level *uint64 `json:"Level,omitnil" name:"Level"`
 
 	// 域名需要下发到的cdc集群列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CdcClusters []*string `json:"CdcClusters,omitempty" name:"CdcClusters"`
+	CdcClusters []*string `json:"CdcClusters,omitnil" name:"CdcClusters"`
 
 	// 应用型负载均衡类型: clb或者apisix，默认clb
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AlbType *string `json:"AlbType,omitempty" name:"AlbType"`
+	AlbType *string `json:"AlbType,omitnil" name:"AlbType"`
 
 	// IsCdn=3时，需要填此参数，表示自定义header
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+	IpHeaders []*string `json:"IpHeaders,omitnil" name:"IpHeaders"`
 
 	// 规则引擎类型， 1: menshen,   2:tiga
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EngineType *int64 `json:"EngineType,omitempty" name:"EngineType"`
+	EngineType *int64 `json:"EngineType,omitnil" name:"EngineType"`
 }
 
 type HostStatus struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// WAF的开关，1：开，0：关
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 实例ID
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 type InstanceInfo struct {
 	// id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// Name
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 资源id
-	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+	ResourceIds *string `json:"ResourceIds,omitnil" name:"ResourceIds"`
 
 	// 地域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 付费模式
-	PayMode *uint64 `json:"PayMode,omitempty" name:"PayMode"`
+	PayMode *uint64 `json:"PayMode,omitnil" name:"PayMode"`
 
 	// 自动续费
-	RenewFlag *uint64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+	RenewFlag *uint64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
 
 	// 弹性计费
-	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// 套餐版本
-	Level *uint64 `json:"Level,omitempty" name:"Level"`
+	Level *uint64 `json:"Level,omitnil" name:"Level"`
 
 	// 过期时间
-	ValidTime *string `json:"ValidTime,omitempty" name:"ValidTime"`
+	ValidTime *string `json:"ValidTime,omitnil" name:"ValidTime"`
 
 	// 开始时间
-	BeginTime *string `json:"BeginTime,omitempty" name:"BeginTime"`
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
 
 	// 已用
-	DomainCount *uint64 `json:"DomainCount,omitempty" name:"DomainCount"`
+	DomainCount *uint64 `json:"DomainCount,omitnil" name:"DomainCount"`
 
 	// 上限
-	SubDomainLimit *uint64 `json:"SubDomainLimit,omitempty" name:"SubDomainLimit"`
+	SubDomainLimit *uint64 `json:"SubDomainLimit,omitnil" name:"SubDomainLimit"`
 
 	// 已用
-	MainDomainCount *uint64 `json:"MainDomainCount,omitempty" name:"MainDomainCount"`
+	MainDomainCount *uint64 `json:"MainDomainCount,omitnil" name:"MainDomainCount"`
 
 	// 上限
-	MainDomainLimit *uint64 `json:"MainDomainLimit,omitempty" name:"MainDomainLimit"`
+	MainDomainLimit *uint64 `json:"MainDomainLimit,omitnil" name:"MainDomainLimit"`
 
 	// 峰值
-	MaxQPS *uint64 `json:"MaxQPS,omitempty" name:"MaxQPS"`
+	MaxQPS *uint64 `json:"MaxQPS,omitnil" name:"MaxQPS"`
 
 	// qps套餐
-	QPS *QPSPackageNew `json:"QPS,omitempty" name:"QPS"`
+	QPS *QPSPackageNew `json:"QPS,omitnil" name:"QPS"`
 
 	// 域名套餐
-	DomainPkg *DomainPackageNew `json:"DomainPkg,omitempty" name:"DomainPkg"`
+	DomainPkg *DomainPackageNew `json:"DomainPkg,omitnil" name:"DomainPkg"`
 
 	// 用户appid
-	AppId *uint64 `json:"AppId,omitempty" name:"AppId"`
+	AppId *uint64 `json:"AppId,omitnil" name:"AppId"`
 
 	// clb或saas
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 业务安全包
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FraudPkg *FraudPkg `json:"FraudPkg,omitempty" name:"FraudPkg"`
+	FraudPkg *FraudPkg `json:"FraudPkg,omitnil" name:"FraudPkg"`
 
 	// Bot资源包
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BotPkg *BotPkg `json:"BotPkg,omitempty" name:"BotPkg"`
+	BotPkg *BotPkg `json:"BotPkg,omitnil" name:"BotPkg"`
 
 	// bot的qps详情
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BotQPS *BotQPS `json:"BotQPS,omitempty" name:"BotQPS"`
+	BotQPS *BotQPS `json:"BotQPS,omitnil" name:"BotQPS"`
 
 	// qps弹性计费上限
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ElasticBilling *uint64 `json:"ElasticBilling,omitempty" name:"ElasticBilling"`
+	ElasticBilling *uint64 `json:"ElasticBilling,omitnil" name:"ElasticBilling"`
 
 	// 攻击日志投递开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AttackLogPost *int64 `json:"AttackLogPost,omitempty" name:"AttackLogPost"`
+	AttackLogPost *int64 `json:"AttackLogPost,omitnil" name:"AttackLogPost"`
 
 	// 带宽峰值，单位为B/s(字节每秒)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxBandwidth *uint64 `json:"MaxBandwidth,omitempty" name:"MaxBandwidth"`
+	MaxBandwidth *uint64 `json:"MaxBandwidth,omitnil" name:"MaxBandwidth"`
 
 	// api安全是否购买
-	APISecurity *uint64 `json:"APISecurity,omitempty" name:"APISecurity"`
+	APISecurity *uint64 `json:"APISecurity,omitnil" name:"APISecurity"`
 
 	// 购买的qps规格
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	QpsStandard *uint64 `json:"QpsStandard,omitempty" name:"QpsStandard"`
+	QpsStandard *uint64 `json:"QpsStandard,omitnil" name:"QpsStandard"`
 
 	// 购买的带宽规格
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BandwidthStandard *uint64 `json:"BandwidthStandard,omitempty" name:"BandwidthStandard"`
+	BandwidthStandard *uint64 `json:"BandwidthStandard,omitnil" name:"BandwidthStandard"`
 
 	// 实例状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 实例沙箱值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SandboxQps *uint64 `json:"SandboxQps,omitempty" name:"SandboxQps"`
+	SandboxQps *uint64 `json:"SandboxQps,omitnil" name:"SandboxQps"`
 
 	// 是否api 安全试用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	IsAPISecurityTrial *uint64 `json:"IsAPISecurityTrial,omitempty" name:"IsAPISecurityTrial"`
+	IsAPISecurityTrial *uint64 `json:"IsAPISecurityTrial,omitnil" name:"IsAPISecurityTrial"`
 }
 
 type IpAccessControlData struct {
 	// ip黑白名单
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Res []*IpAccessControlItem `json:"Res,omitempty" name:"Res"`
+	Res []*IpAccessControlItem `json:"Res,omitnil" name:"Res"`
 
 	// 计数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 }
 
 type IpAccessControlItem struct {
 	// 动作
-	ActionType *uint64 `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// ip
-	Ip *string `json:"Ip,omitempty" name:"Ip"`
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
 
 	// 备注
-	Note *string `json:"Note,omitempty" name:"Note"`
+	Note *string `json:"Note,omitnil" name:"Note"`
 
 	// 来源
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 更新时间戳
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TsVersion *uint64 `json:"TsVersion,omitempty" name:"TsVersion"`
+	TsVersion *uint64 `json:"TsVersion,omitnil" name:"TsVersion"`
 
 	// 有效截止时间戳
-	ValidTs *uint64 `json:"ValidTs,omitempty" name:"ValidTs"`
+	ValidTs *uint64 `json:"ValidTs,omitnil" name:"ValidTs"`
 }
 
 type IpHitItem struct {
 	// 动作
-	Action *uint64 `json:"Action,omitempty" name:"Action"`
+	Action *uint64 `json:"Action,omitnil" name:"Action"`
 
 	// 类别
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// ip
-	Ip *string `json:"Ip,omitempty" name:"Ip"`
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
 
 	// 规则名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 时间戳
-	TsVersion *uint64 `json:"TsVersion,omitempty" name:"TsVersion"`
+	TsVersion *uint64 `json:"TsVersion,omitnil" name:"TsVersion"`
 
 	// 有效截止时间戳
-	ValidTs *uint64 `json:"ValidTs,omitempty" name:"ValidTs"`
+	ValidTs *uint64 `json:"ValidTs,omitnil" name:"ValidTs"`
 }
 
 type IpHitItemsData struct {
 	// 数组封装
-	Res []*IpHitItem `json:"Res,omitempty" name:"Res"`
+	Res []*IpHitItem `json:"Res,omitnil" name:"Res"`
 
 	// 总数目
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 }
 
 type LoadBalancer struct {
 	// 负载均衡LD的ID
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
 
 	// 负载均衡LD的名称
-	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
+	LoadBalancerName *string `json:"LoadBalancerName,omitnil" name:"LoadBalancerName"`
 
 	// 负载均衡监听器的ID
-	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+	ListenerId *string `json:"ListenerId,omitnil" name:"ListenerId"`
 
 	// 负载均衡监听器的名称
-	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
+	ListenerName *string `json:"ListenerName,omitnil" name:"ListenerName"`
 
 	// 负载均衡实例的IP
-	Vip *string `json:"Vip,omitempty" name:"Vip"`
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
 
 	// 负载均衡实例的端口
-	Vport *uint64 `json:"Vport,omitempty" name:"Vport"`
+	Vport *uint64 `json:"Vport,omitnil" name:"Vport"`
 
 	// 负载均衡LD的地域
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 监听器协议，http、https
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 负载均衡监听器所在的zone
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// 负载均衡的VPCID，公网为-1，内网按实际填写
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NumericalVpcId *int64 `json:"NumericalVpcId,omitempty" name:"NumericalVpcId"`
+	NumericalVpcId *int64 `json:"NumericalVpcId,omitnil" name:"NumericalVpcId"`
 
 	// 负载均衡的网络类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LoadBalancerType *string `json:"LoadBalancerType,omitempty" name:"LoadBalancerType"`
+	LoadBalancerType *string `json:"LoadBalancerType,omitnil" name:"LoadBalancerType"`
 }
 
 type LoadBalancerPackageNew struct {
 	// 监听id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ListenerId *string `json:"ListenerId,omitempty" name:"ListenerId"`
+	ListenerId *string `json:"ListenerId,omitnil" name:"ListenerId"`
 
 	// 监听名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ListenerName *string `json:"ListenerName,omitempty" name:"ListenerName"`
+	ListenerName *string `json:"ListenerName,omitnil" name:"ListenerName"`
 
 	// 负载均衡id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LoadBalancerId *string `json:"LoadBalancerId,omitempty" name:"LoadBalancerId"`
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
 
 	// 负载均衡名
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LoadBalancerName *string `json:"LoadBalancerName,omitempty" name:"LoadBalancerName"`
+	LoadBalancerName *string `json:"LoadBalancerName,omitnil" name:"LoadBalancerName"`
 
 	// 协议
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 地区
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 接入IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Vip *string `json:"Vip,omitempty" name:"Vip"`
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
 
 	// 接入端口
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Vport *uint64 `json:"Vport,omitempty" name:"Vport"`
+	Vport *uint64 `json:"Vport,omitnil" name:"Vport"`
 
 	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// VPCID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NumericalVpcId *int64 `json:"NumericalVpcId,omitempty" name:"NumericalVpcId"`
+	NumericalVpcId *int64 `json:"NumericalVpcId,omitnil" name:"NumericalVpcId"`
 
 	// CLB类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LoadBalancerType *string `json:"LoadBalancerType,omitempty" name:"LoadBalancerType"`
+	LoadBalancerType *string `json:"LoadBalancerType,omitnil" name:"LoadBalancerType"`
 }
 
 type LogHistogramInfo struct {
 	// 日志条数
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 时间戳
-	TimeStamp *int64 `json:"TimeStamp,omitempty" name:"TimeStamp"`
+	TimeStamp *int64 `json:"TimeStamp,omitnil" name:"TimeStamp"`
 }
 
 // Predefined struct for user
 type ModifyAccessPeriodRequestParams struct {
 	// 访问日志保存期限，范围为[1, 30]
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 日志主题
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 }
 
 type ModifyAccessPeriodRequest struct {
 	*tchttp.BaseRequest
 	
 	// 访问日志保存期限，范围为[1, 30]
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 日志主题
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 }
 
 func (r *ModifyAccessPeriodRequest) ToJsonString() string {
@@ -6769,7 +6769,7 @@ func (r *ModifyAccessPeriodRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAccessPeriodResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAccessPeriodResponse struct {
@@ -6791,32 +6791,32 @@ func (r *ModifyAccessPeriodResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAntiFakeUrlRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// uri
-	Uri *string `json:"Uri,omitempty" name:"Uri"`
+	Uri *string `json:"Uri,omitnil" name:"Uri"`
 
 	// ID
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 }
 
 type ModifyAntiFakeUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// uri
-	Uri *string `json:"Uri,omitempty" name:"Uri"`
+	Uri *string `json:"Uri,omitnil" name:"Uri"`
 
 	// ID
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 }
 
 func (r *ModifyAntiFakeUrlRequest) ToJsonString() string {
@@ -6844,10 +6844,10 @@ func (r *ModifyAntiFakeUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAntiFakeUrlResponseParams struct {
 	// 结果
-	Result *string `json:"Result,omitempty" name:"Result"`
+	Result *string `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAntiFakeUrlResponse struct {
@@ -6869,26 +6869,26 @@ func (r *ModifyAntiFakeUrlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAntiFakeUrlStatusRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 状态
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// Id列表
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
 }
 
 type ModifyAntiFakeUrlStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 状态
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// Id列表
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
 }
 
 func (r *ModifyAntiFakeUrlStatusRequest) ToJsonString() string {
@@ -6915,7 +6915,7 @@ func (r *ModifyAntiFakeUrlStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAntiFakeUrlStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAntiFakeUrlStatusResponse struct {
@@ -6937,26 +6937,26 @@ func (r *ModifyAntiFakeUrlStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAntiInfoLeakRuleStatusRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 规则
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 状态
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 type ModifyAntiInfoLeakRuleStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 规则
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 状态
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *ModifyAntiInfoLeakRuleStatusRequest) ToJsonString() string {
@@ -6983,7 +6983,7 @@ func (r *ModifyAntiInfoLeakRuleStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAntiInfoLeakRuleStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAntiInfoLeakRuleStatusResponse struct {
@@ -7005,38 +7005,38 @@ func (r *ModifyAntiInfoLeakRuleStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAntiInfoLeakRulesRequestParams struct {
 	// 规则ID
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// Action 值
-	ActionType *uint64 `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 策略数组
-	Strategies []*StrategyForAntiInfoLeak `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*StrategyForAntiInfoLeak `json:"Strategies,omitnil" name:"Strategies"`
 }
 
 type ModifyAntiInfoLeakRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 规则ID
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// Action 值
-	ActionType *uint64 `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 策略数组
-	Strategies []*StrategyForAntiInfoLeak `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*StrategyForAntiInfoLeak `json:"Strategies,omitnil" name:"Strategies"`
 }
 
 func (r *ModifyAntiInfoLeakRulesRequest) ToJsonString() string {
@@ -7065,7 +7065,7 @@ func (r *ModifyAntiInfoLeakRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAntiInfoLeakRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAntiInfoLeakRulesResponse struct {
@@ -7087,32 +7087,32 @@ func (r *ModifyAntiInfoLeakRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyApiAnalyzeStatusRequestParams struct {
 	// 开关状态
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 需要批量开启的实体列表
-	TargetList []*TargetEntity `json:"TargetList,omitempty" name:"TargetList"`
+	TargetList []*TargetEntity `json:"TargetList,omitnil" name:"TargetList"`
 }
 
 type ModifyApiAnalyzeStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 开关状态
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 需要批量开启的实体列表
-	TargetList []*TargetEntity `json:"TargetList,omitempty" name:"TargetList"`
+	TargetList []*TargetEntity `json:"TargetList,omitnil" name:"TargetList"`
 }
 
 func (r *ModifyApiAnalyzeStatusRequest) ToJsonString() string {
@@ -7141,18 +7141,18 @@ func (r *ModifyApiAnalyzeStatusRequest) FromJsonString(s string) error {
 type ModifyApiAnalyzeStatusResponseParams struct {
 	// 已经开启的数量,如果返回值为3（大于支持的域名开启数量），则表示开启失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 不支持开启的域名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UnSupportedList []*string `json:"UnSupportedList,omitempty" name:"UnSupportedList"`
+	UnSupportedList []*string `json:"UnSupportedList,omitnil" name:"UnSupportedList"`
 
 	// 开启/关闭失败的域名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailDomainList []*string `json:"FailDomainList,omitempty" name:"FailDomainList"`
+	FailDomainList []*string `json:"FailDomainList,omitnil" name:"FailDomainList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyApiAnalyzeStatusResponse struct {
@@ -7174,20 +7174,20 @@ func (r *ModifyApiAnalyzeStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAreaBanStatusRequestParams struct {
 	// 需要修改的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 状态值，0表示关闭，1表示开启
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 type ModifyAreaBanStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要修改的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 状态值，0表示关闭，1表示开启
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *ModifyAreaBanStatusRequest) ToJsonString() string {
@@ -7213,7 +7213,7 @@ func (r *ModifyAreaBanStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAreaBanStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAreaBanStatusResponse struct {
@@ -7235,44 +7235,44 @@ func (r *ModifyAreaBanStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyBotStatusRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 类别
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 是否是bot4.0版本
-	IsVersionFour *bool `json:"IsVersionFour,omitempty" name:"IsVersionFour"`
+	IsVersionFour *bool `json:"IsVersionFour,omitnil" name:"IsVersionFour"`
 
 	// 传入Bot版本号，场景化版本为"4.1.0"
-	BotVersion *string `json:"BotVersion,omitempty" name:"BotVersion"`
+	BotVersion *string `json:"BotVersion,omitnil" name:"BotVersion"`
 }
 
 type ModifyBotStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 类别
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 状态
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 是否是bot4.0版本
-	IsVersionFour *bool `json:"IsVersionFour,omitempty" name:"IsVersionFour"`
+	IsVersionFour *bool `json:"IsVersionFour,omitnil" name:"IsVersionFour"`
 
 	// 传入Bot版本号，场景化版本为"4.1.0"
-	BotVersion *string `json:"BotVersion,omitempty" name:"BotVersion"`
+	BotVersion *string `json:"BotVersion,omitnil" name:"BotVersion"`
 }
 
 func (r *ModifyBotStatusRequest) ToJsonString() string {
@@ -7303,10 +7303,10 @@ func (r *ModifyBotStatusRequest) FromJsonString(s string) error {
 type ModifyBotStatusResponseParams struct {
 	// 正常情况为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyBotStatusResponse struct {
@@ -7328,74 +7328,74 @@ func (r *ModifyBotStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCustomRuleRequestParams struct {
 	// 编辑的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 编辑的规则ID
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 编辑的规则名称
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 执行动作，0：放行、1：阻断、2：人机识别、3：观察、4：重定向
-	RuleAction *string `json:"RuleAction,omitempty" name:"RuleAction"`
+	RuleAction *string `json:"RuleAction,omitnil" name:"RuleAction"`
 
 	// 匹配条件数组
-	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*Strategy `json:"Strategies,omitnil" name:"Strategies"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 动作为重定向的时候重定向URL，默认为"/"
-	Redirect *string `json:"Redirect,omitempty" name:"Redirect"`
+	Redirect *string `json:"Redirect,omitnil" name:"Redirect"`
 
 	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。
 	// 默认是"geoip,cc,owasp,ai,antileakage"
-	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+	Bypass *string `json:"Bypass,omitnil" name:"Bypass"`
 
 	// 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
 	// 默认是100
-	SortId *uint64 `json:"SortId,omitempty" name:"SortId"`
+	SortId *uint64 `json:"SortId,omitnil" name:"SortId"`
 
 	// 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
 	// 默认是0
-	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *uint64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
 }
 
 type ModifyCustomRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 编辑的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 编辑的规则ID
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 编辑的规则名称
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 执行动作，0：放行、1：阻断、2：人机识别、3：观察、4：重定向
-	RuleAction *string `json:"RuleAction,omitempty" name:"RuleAction"`
+	RuleAction *string `json:"RuleAction,omitnil" name:"RuleAction"`
 
 	// 匹配条件数组
-	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*Strategy `json:"Strategies,omitnil" name:"Strategies"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 动作为重定向的时候重定向URL，默认为"/"
-	Redirect *string `json:"Redirect,omitempty" name:"Redirect"`
+	Redirect *string `json:"Redirect,omitnil" name:"Redirect"`
 
 	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果多个勾选那么以,串接。
 	// 默认是"geoip,cc,owasp,ai,antileakage"
-	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+	Bypass *string `json:"Bypass,omitnil" name:"Bypass"`
 
 	// 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
 	// 默认是100
-	SortId *uint64 `json:"SortId,omitempty" name:"SortId"`
+	SortId *uint64 `json:"SortId,omitnil" name:"SortId"`
 
 	// 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
 	// 默认是0
-	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *uint64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
 }
 
 func (r *ModifyCustomRuleRequest) ToJsonString() string {
@@ -7429,7 +7429,7 @@ func (r *ModifyCustomRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCustomRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyCustomRuleResponse struct {
@@ -7451,32 +7451,32 @@ func (r *ModifyCustomRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCustomRuleStatusRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 规则ID
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 开关的状态，1是开启、0是关闭
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 type ModifyCustomRuleStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 规则ID
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 开关的状态，1是开启、0是关闭
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 func (r *ModifyCustomRuleStatusRequest) ToJsonString() string {
@@ -7504,10 +7504,10 @@ func (r *ModifyCustomRuleStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCustomRuleStatusResponseParams struct {
 	// 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
-	Success *ResponseCode `json:"Success,omitempty" name:"Success"`
+	Success *ResponseCode `json:"Success,omitnil" name:"Success"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyCustomRuleStatusResponse struct {
@@ -7529,50 +7529,50 @@ func (r *ModifyCustomRuleStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCustomWhiteRuleRequestParams struct {
 	// 编辑的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 编辑的规则ID
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 编辑的规则名称
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果勾选多个，则以“，”串接。
-	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+	Bypass *string `json:"Bypass,omitnil" name:"Bypass"`
 
 	// 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
-	SortId *uint64 `json:"SortId,omitempty" name:"SortId"`
+	SortId *uint64 `json:"SortId,omitnil" name:"SortId"`
 
 	// 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
-	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *uint64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 匹配条件数组
-	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*Strategy `json:"Strategies,omitnil" name:"Strategies"`
 }
 
 type ModifyCustomWhiteRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 编辑的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 编辑的规则ID
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 编辑的规则名称
-	RuleName *string `json:"RuleName,omitempty" name:"RuleName"`
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
 
 	// 放行时是否继续执行其它检查逻辑，继续执行地域封禁防护：geoip、继续执行CC策略防护：cc、继续执行WEB应用防护：owasp、继续执行AI引擎防护：ai、继续执行信息防泄漏防护：antileakage。如果勾选多个，则以“，”串接。
-	Bypass *string `json:"Bypass,omitempty" name:"Bypass"`
+	Bypass *string `json:"Bypass,omitnil" name:"Bypass"`
 
 	// 优先级，1~100的整数，数字越小，代表这条规则的执行优先级越高。
-	SortId *uint64 `json:"SortId,omitempty" name:"SortId"`
+	SortId *uint64 `json:"SortId,omitnil" name:"SortId"`
 
 	// 规则生效截止时间，0：永久生效，其它值为对应时间的时间戳。
-	ExpireTime *uint64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *uint64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 匹配条件数组
-	Strategies []*Strategy `json:"Strategies,omitempty" name:"Strategies"`
+	Strategies []*Strategy `json:"Strategies,omitnil" name:"Strategies"`
 }
 
 func (r *ModifyCustomWhiteRuleRequest) ToJsonString() string {
@@ -7603,10 +7603,10 @@ func (r *ModifyCustomWhiteRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCustomWhiteRuleResponseParams struct {
 	// 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
-	Success *ResponseCode `json:"Success,omitempty" name:"Success"`
+	Success *ResponseCode `json:"Success,omitnil" name:"Success"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyCustomWhiteRuleResponse struct {
@@ -7628,26 +7628,26 @@ func (r *ModifyCustomWhiteRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCustomWhiteRuleStatusRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 规则ID
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 开关的状态，1是开启、0是关闭
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 type ModifyCustomWhiteRuleStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 规则ID
-	RuleId *uint64 `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 开关的状态，1是开启、0是关闭
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *ModifyCustomWhiteRuleStatusRequest) ToJsonString() string {
@@ -7674,10 +7674,10 @@ func (r *ModifyCustomWhiteRuleStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyCustomWhiteRuleStatusResponseParams struct {
 	// 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
-	Success *ResponseCode `json:"Success,omitempty" name:"Success"`
+	Success *ResponseCode `json:"Success,omitnil" name:"Success"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyCustomWhiteRuleStatusResponse struct {
@@ -7699,32 +7699,32 @@ func (r *ModifyCustomWhiteRuleStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDomainIpv6StatusRequestParams struct {
 	// 需要修改的域名所属的实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 需要修改的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 需要修改的域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 修改域名的Ipv6开关为Status （0:关闭 1:开启）
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 type ModifyDomainIpv6StatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要修改的域名所属的实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 需要修改的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 需要修改的域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 修改域名的Ipv6开关为Status （0:关闭 1:开启）
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *ModifyDomainIpv6StatusRequest) ToJsonString() string {
@@ -7752,10 +7752,10 @@ func (r *ModifyDomainIpv6StatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDomainIpv6StatusResponseParams struct {
 	// 返回的状态 （0: 操作失败 1:操作成功 2:企业版以上不支持 3:企业版以下不支持 ）
-	Ipv6Status *int64 `json:"Ipv6Status,omitempty" name:"Ipv6Status"`
+	Ipv6Status *int64 `json:"Ipv6Status,omitnil" name:"Ipv6Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDomainIpv6StatusResponse struct {
@@ -7777,44 +7777,44 @@ func (r *ModifyDomainIpv6StatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDomainWhiteRuleRequestParams struct {
 	// 需要更改的规则的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 白名单id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 规则的id列表
-	Rules []*uint64 `json:"Rules,omitempty" name:"Rules"`
+	Rules []*uint64 `json:"Rules,omitnil" name:"Rules"`
 
 	// 规则匹配路径
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 规则匹配方法
-	Function *string `json:"Function,omitempty" name:"Function"`
+	Function *string `json:"Function,omitnil" name:"Function"`
 
 	// 规则的开关状态，0表示关闭开关，1表示打开开关
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 type ModifyDomainWhiteRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要更改的规则的域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 白名单id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 规则的id列表
-	Rules []*uint64 `json:"Rules,omitempty" name:"Rules"`
+	Rules []*uint64 `json:"Rules,omitnil" name:"Rules"`
 
 	// 规则匹配路径
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 规则匹配方法
-	Function *string `json:"Function,omitempty" name:"Function"`
+	Function *string `json:"Function,omitnil" name:"Function"`
 
 	// 规则的开关状态，0表示关闭开关，1表示打开开关
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *ModifyDomainWhiteRuleRequest) ToJsonString() string {
@@ -7844,7 +7844,7 @@ func (r *ModifyDomainWhiteRuleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDomainWhiteRuleResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDomainWhiteRuleResponse struct {
@@ -7866,20 +7866,20 @@ func (r *ModifyDomainWhiteRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDomainsCLSStatusRequestParams struct {
 	// 需要修改的域名列表
-	Domains []*DomainURI `json:"Domains,omitempty" name:"Domains"`
+	Domains []*DomainURI `json:"Domains,omitnil" name:"Domains"`
 
 	// 修改域名的访问日志开关为Status
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 type ModifyDomainsCLSStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要修改的域名列表
-	Domains []*DomainURI `json:"Domains,omitempty" name:"Domains"`
+	Domains []*DomainURI `json:"Domains,omitnil" name:"Domains"`
 
 	// 修改域名的访问日志开关为Status
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 func (r *ModifyDomainsCLSStatusRequest) ToJsonString() string {
@@ -7905,7 +7905,7 @@ func (r *ModifyDomainsCLSStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDomainsCLSStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDomainsCLSStatusResponse struct {
@@ -7927,32 +7927,32 @@ func (r *ModifyDomainsCLSStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyHostFlowModeRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// WAF流量模式，1：清洗模式，0：镜像模式（默认）
-	FlowMode *uint64 `json:"FlowMode,omitempty" name:"FlowMode"`
+	FlowMode *uint64 `json:"FlowMode,omitnil" name:"FlowMode"`
 
 	// 实例ID
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 type ModifyHostFlowModeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// WAF流量模式，1：清洗模式，0：镜像模式（默认）
-	FlowMode *uint64 `json:"FlowMode,omitempty" name:"FlowMode"`
+	FlowMode *uint64 `json:"FlowMode,omitnil" name:"FlowMode"`
 
 	// 实例ID
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 func (r *ModifyHostFlowModeRequest) ToJsonString() string {
@@ -7980,10 +7980,10 @@ func (r *ModifyHostFlowModeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyHostFlowModeResponseParams struct {
 	// 成功的状态码
-	Success *ResponseCode `json:"Success,omitempty" name:"Success"`
+	Success *ResponseCode `json:"Success,omitnil" name:"Success"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyHostFlowModeResponse struct {
@@ -8005,48 +8005,48 @@ func (r *ModifyHostFlowModeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyHostModeRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 防护状态：
 	// 10：规则观察&&AI关闭模式，11：规则观察&&AI观察模式，12：规则观察&&AI拦截模式
 	// 20：规则拦截&&AI关闭模式，21：规则拦截&&AI观察模式，22：规则拦截&&AI拦截模式
-	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// 0:修改防护模式，1:修改AI
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
 	// 实例ID
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 实例类型
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 type ModifyHostModeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 防护状态：
 	// 10：规则观察&&AI关闭模式，11：规则观察&&AI观察模式，12：规则观察&&AI拦截模式
 	// 20：规则拦截&&AI关闭模式，21：规则拦截&&AI观察模式，22：规则拦截&&AI拦截模式
-	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// 0:修改防护模式，1:修改AI
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
 
 	// 实例ID
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 实例类型
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 func (r *ModifyHostModeRequest) ToJsonString() string {
@@ -8077,10 +8077,10 @@ func (r *ModifyHostModeRequest) FromJsonString(s string) error {
 type ModifyHostModeResponseParams struct {
 	// 操作的状态码，如果所有的资源操作成功则返回的是成功的状态码，如果有资源操作失败则需要解析Message的内容来查看哪个资源失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Success *ResponseCode `json:"Success,omitempty" name:"Success"`
+	Success *ResponseCode `json:"Success,omitnil" name:"Success"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyHostModeResponse struct {
@@ -8102,20 +8102,20 @@ func (r *ModifyHostModeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyHostRequestParams struct {
 	// 编辑的域名配置信息
-	Host *HostRecord `json:"Host,omitempty" name:"Host"`
+	Host *HostRecord `json:"Host,omitnil" name:"Host"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 type ModifyHostRequest struct {
 	*tchttp.BaseRequest
 	
 	// 编辑的域名配置信息
-	Host *HostRecord `json:"Host,omitempty" name:"Host"`
+	Host *HostRecord `json:"Host,omitnil" name:"Host"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
 func (r *ModifyHostRequest) ToJsonString() string {
@@ -8141,10 +8141,10 @@ func (r *ModifyHostRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyHostResponseParams struct {
 	// 编辑的域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyHostResponse struct {
@@ -8166,14 +8166,14 @@ func (r *ModifyHostResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyHostStatusRequestParams struct {
 	// 域名状态列表
-	HostsStatus []*HostStatus `json:"HostsStatus,omitempty" name:"HostsStatus"`
+	HostsStatus []*HostStatus `json:"HostsStatus,omitnil" name:"HostsStatus"`
 }
 
 type ModifyHostStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名状态列表
-	HostsStatus []*HostStatus `json:"HostsStatus,omitempty" name:"HostsStatus"`
+	HostsStatus []*HostStatus `json:"HostsStatus,omitnil" name:"HostsStatus"`
 }
 
 func (r *ModifyHostStatusRequest) ToJsonString() string {
@@ -8198,10 +8198,10 @@ func (r *ModifyHostStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyHostStatusResponseParams struct {
 	// 成功的状态码，需要JSON解码后再使用，返回的格式是{"域名":"状态"}，成功的状态码为Success，其它的为失败的状态码（yunapi定义的错误码）
-	Success *ResponseCode `json:"Success,omitempty" name:"Success"`
+	Success *ResponseCode `json:"Success,omitnil" name:"Success"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyHostStatusResponse struct {
@@ -8223,26 +8223,26 @@ func (r *ModifyHostStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyProtectionStatusRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 状态
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 type ModifyProtectionStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 状态
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 func (r *ModifyProtectionStatusRequest) ToJsonString() string {
@@ -8269,7 +8269,7 @@ func (r *ModifyProtectionStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyProtectionStatusResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyProtectionStatusResponse struct {
@@ -8291,36 +8291,36 @@ func (r *ModifyProtectionStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySpartaProtectionModeRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 防护状态：
 	// 10：规则观察&&AI关闭模式，11：规则观察&&AI观察模式，12：规则观察&&AI拦截模式
 	// 20：规则拦截&&AI关闭模式，21：规则拦截&&AI观察模式，22：规则拦截&&AI拦截模式
-	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 0是修改规则引擎状态，1是修改AI的状态
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
 }
 
 type ModifySpartaProtectionModeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 防护状态：
 	// 10：规则观察&&AI关闭模式，11：规则观察&&AI观察模式，12：规则观察&&AI拦截模式
 	// 20：规则拦截&&AI关闭模式，21：规则拦截&&AI观察模式，22：规则拦截&&AI拦截模式
-	Mode *uint64 `json:"Mode,omitempty" name:"Mode"`
+	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// WAF的版本，clb-waf代表负载均衡WAF、sparta-waf代表SaaS WAF，默认是sparta-waf。
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 0是修改规则引擎状态，1是修改AI的状态
-	Type *uint64 `json:"Type,omitempty" name:"Type"`
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
 }
 
 func (r *ModifySpartaProtectionModeRequest) ToJsonString() string {
@@ -8348,7 +8348,7 @@ func (r *ModifySpartaProtectionModeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySpartaProtectionModeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifySpartaProtectionModeResponse struct {
@@ -8370,206 +8370,206 @@ func (r *ModifySpartaProtectionModeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySpartaProtectionRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 证书类型，0表示没有证书，CertType=1表示自有证书,2 为托管证书
-	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
+	CertType *int64 `json:"CertType,omitnil" name:"CertType"`
 
 	// CertType=1时，需要填次参数，表示证书内容
-	Cert *string `json:"Cert,omitempty" name:"Cert"`
+	Cert *string `json:"Cert,omitnil" name:"Cert"`
 
 	// CertType=1时，需要填次参数，表示证书的私钥
-	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
 
 	// CertType=2时，需要填次参数，表示证书的ID
-	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+	SSLId *string `json:"SSLId,omitnil" name:"SSLId"`
 
 	// 表示是否开启了CDN代理
-	IsCdn *int64 `json:"IsCdn,omitempty" name:"IsCdn"`
+	IsCdn *int64 `json:"IsCdn,omitnil" name:"IsCdn"`
 
 	// HTTPS回源协议
-	UpstreamScheme *string `json:"UpstreamScheme,omitempty" name:"UpstreamScheme"`
+	UpstreamScheme *string `json:"UpstreamScheme,omitnil" name:"UpstreamScheme"`
 
 	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
-	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitempty" name:"HttpsUpstreamPort"`
+	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil" name:"HttpsUpstreamPort"`
 
 	// 表示是否强制跳转到HTTPS，1表示开启，0表示不开启
-	HttpsRewrite *uint64 `json:"HttpsRewrite,omitempty" name:"HttpsRewrite"`
+	HttpsRewrite *uint64 `json:"HttpsRewrite,omitnil" name:"HttpsRewrite"`
 
 	// 回源类型，0表示通过IP回源,1 表示通过域名回源
-	UpstreamType *int64 `json:"UpstreamType,omitempty" name:"UpstreamType"`
+	UpstreamType *int64 `json:"UpstreamType,omitnil" name:"UpstreamType"`
 
 	// UpstreamType=1时，填次字段表示回源域名
-	UpstreamDomain *string `json:"UpstreamDomain,omitempty" name:"UpstreamDomain"`
+	UpstreamDomain *string `json:"UpstreamDomain,omitnil" name:"UpstreamDomain"`
 
 	// UpstreamType=0时，填次字段表示回源ip
-	SrcList []*string `json:"SrcList,omitempty" name:"SrcList"`
+	SrcList []*string `json:"SrcList,omitnil" name:"SrcList"`
 
 	// 是否开启HTTP2，1表示开启，0表示不开启http2。开启HTTP2需要HTTPS支持
-	IsHttp2 *int64 `json:"IsHttp2,omitempty" name:"IsHttp2"`
+	IsHttp2 *int64 `json:"IsHttp2,omitnil" name:"IsHttp2"`
 
 	// 是否开启WebSocket， 1：开启WebSocket，0：不开启WebSocket
-	IsWebsocket *int64 `json:"IsWebsocket,omitempty" name:"IsWebsocket"`
+	IsWebsocket *int64 `json:"IsWebsocket,omitnil" name:"IsWebsocket"`
 
 	// 负载均衡策略，0表示轮徇，1表示IP hash
-	LoadBalance *int64 `json:"LoadBalance,omitempty" name:"LoadBalance"`
+	LoadBalance *int64 `json:"LoadBalance,omitnil" name:"LoadBalance"`
 
 	// 是否灰度
-	IsGray *int64 `json:"IsGray,omitempty" name:"IsGray"`
+	IsGray *int64 `json:"IsGray,omitnil" name:"IsGray"`
 
 	// WAF版本
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 端口信息
-	Ports []*SpartaProtectionPort `json:"Ports,omitempty" name:"Ports"`
+	Ports []*SpartaProtectionPort `json:"Ports,omitnil" name:"Ports"`
 
 	// 长短连接标志，仅IP回源时有效
-	IsKeepAlive *string `json:"IsKeepAlive,omitempty" name:"IsKeepAlive"`
+	IsKeepAlive *string `json:"IsKeepAlive,omitnil" name:"IsKeepAlive"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 是否为Anycast ip类型：1 Anycast 0 普通ip
-	Anycast *int64 `json:"Anycast,omitempty" name:"Anycast"`
+	Anycast *int64 `json:"Anycast,omitnil" name:"Anycast"`
 
 	// src的权重
-	Weights []*int64 `json:"Weights,omitempty" name:"Weights"`
+	Weights []*int64 `json:"Weights,omitnil" name:"Weights"`
 
 	// 是否开启源站的主动健康检测，1表示开启，0表示不开启
-	ActiveCheck *int64 `json:"ActiveCheck,omitempty" name:"ActiveCheck"`
+	ActiveCheck *int64 `json:"ActiveCheck,omitnil" name:"ActiveCheck"`
 
 	// TLS版本信息
-	TLSVersion *int64 `json:"TLSVersion,omitempty" name:"TLSVersion"`
+	TLSVersion *int64 `json:"TLSVersion,omitnil" name:"TLSVersion"`
 
 	// 加密套件信息
-	Ciphers []*int64 `json:"Ciphers,omitempty" name:"Ciphers"`
+	Ciphers []*int64 `json:"Ciphers,omitnil" name:"Ciphers"`
 
 	// 0:不支持选择：默认模板  1:通用型模板 2:安全型模板 3:自定义模板
-	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
+	CipherTemplate *int64 `json:"CipherTemplate,omitnil" name:"CipherTemplate"`
 
 	// 300s
-	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitempty" name:"ProxyReadTimeout"`
+	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil" name:"ProxyReadTimeout"`
 
 	// 300s
-	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitempty" name:"ProxySendTimeout"`
+	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitnil" name:"ProxySendTimeout"`
 
 	// 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
-	SniType *int64 `json:"SniType,omitempty" name:"SniType"`
+	SniType *int64 `json:"SniType,omitnil" name:"SniType"`
 
 	// SniType=3时，需要填此参数，表示自定义的host；
-	SniHost *string `json:"SniHost,omitempty" name:"SniHost"`
+	SniHost *string `json:"SniHost,omitnil" name:"SniHost"`
 
 	// IsCdn=3时，需要填此参数，表示自定义header
-	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+	IpHeaders []*string `json:"IpHeaders,omitnil" name:"IpHeaders"`
 
 	// 0:关闭xff重置；1:开启xff重置
-	XFFReset *int64 `json:"XFFReset,omitempty" name:"XFFReset"`
+	XFFReset *int64 `json:"XFFReset,omitnil" name:"XFFReset"`
 }
 
 type ModifySpartaProtectionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名ID
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 证书类型，0表示没有证书，CertType=1表示自有证书,2 为托管证书
-	CertType *int64 `json:"CertType,omitempty" name:"CertType"`
+	CertType *int64 `json:"CertType,omitnil" name:"CertType"`
 
 	// CertType=1时，需要填次参数，表示证书内容
-	Cert *string `json:"Cert,omitempty" name:"Cert"`
+	Cert *string `json:"Cert,omitnil" name:"Cert"`
 
 	// CertType=1时，需要填次参数，表示证书的私钥
-	PrivateKey *string `json:"PrivateKey,omitempty" name:"PrivateKey"`
+	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
 
 	// CertType=2时，需要填次参数，表示证书的ID
-	SSLId *string `json:"SSLId,omitempty" name:"SSLId"`
+	SSLId *string `json:"SSLId,omitnil" name:"SSLId"`
 
 	// 表示是否开启了CDN代理
-	IsCdn *int64 `json:"IsCdn,omitempty" name:"IsCdn"`
+	IsCdn *int64 `json:"IsCdn,omitnil" name:"IsCdn"`
 
 	// HTTPS回源协议
-	UpstreamScheme *string `json:"UpstreamScheme,omitempty" name:"UpstreamScheme"`
+	UpstreamScheme *string `json:"UpstreamScheme,omitnil" name:"UpstreamScheme"`
 
 	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
-	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitempty" name:"HttpsUpstreamPort"`
+	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil" name:"HttpsUpstreamPort"`
 
 	// 表示是否强制跳转到HTTPS，1表示开启，0表示不开启
-	HttpsRewrite *uint64 `json:"HttpsRewrite,omitempty" name:"HttpsRewrite"`
+	HttpsRewrite *uint64 `json:"HttpsRewrite,omitnil" name:"HttpsRewrite"`
 
 	// 回源类型，0表示通过IP回源,1 表示通过域名回源
-	UpstreamType *int64 `json:"UpstreamType,omitempty" name:"UpstreamType"`
+	UpstreamType *int64 `json:"UpstreamType,omitnil" name:"UpstreamType"`
 
 	// UpstreamType=1时，填次字段表示回源域名
-	UpstreamDomain *string `json:"UpstreamDomain,omitempty" name:"UpstreamDomain"`
+	UpstreamDomain *string `json:"UpstreamDomain,omitnil" name:"UpstreamDomain"`
 
 	// UpstreamType=0时，填次字段表示回源ip
-	SrcList []*string `json:"SrcList,omitempty" name:"SrcList"`
+	SrcList []*string `json:"SrcList,omitnil" name:"SrcList"`
 
 	// 是否开启HTTP2，1表示开启，0表示不开启http2。开启HTTP2需要HTTPS支持
-	IsHttp2 *int64 `json:"IsHttp2,omitempty" name:"IsHttp2"`
+	IsHttp2 *int64 `json:"IsHttp2,omitnil" name:"IsHttp2"`
 
 	// 是否开启WebSocket， 1：开启WebSocket，0：不开启WebSocket
-	IsWebsocket *int64 `json:"IsWebsocket,omitempty" name:"IsWebsocket"`
+	IsWebsocket *int64 `json:"IsWebsocket,omitnil" name:"IsWebsocket"`
 
 	// 负载均衡策略，0表示轮徇，1表示IP hash
-	LoadBalance *int64 `json:"LoadBalance,omitempty" name:"LoadBalance"`
+	LoadBalance *int64 `json:"LoadBalance,omitnil" name:"LoadBalance"`
 
 	// 是否灰度
-	IsGray *int64 `json:"IsGray,omitempty" name:"IsGray"`
+	IsGray *int64 `json:"IsGray,omitnil" name:"IsGray"`
 
 	// WAF版本
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 端口信息
-	Ports []*SpartaProtectionPort `json:"Ports,omitempty" name:"Ports"`
+	Ports []*SpartaProtectionPort `json:"Ports,omitnil" name:"Ports"`
 
 	// 长短连接标志，仅IP回源时有效
-	IsKeepAlive *string `json:"IsKeepAlive,omitempty" name:"IsKeepAlive"`
+	IsKeepAlive *string `json:"IsKeepAlive,omitnil" name:"IsKeepAlive"`
 
 	// 实例id
-	InstanceID *string `json:"InstanceID,omitempty" name:"InstanceID"`
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 是否为Anycast ip类型：1 Anycast 0 普通ip
-	Anycast *int64 `json:"Anycast,omitempty" name:"Anycast"`
+	Anycast *int64 `json:"Anycast,omitnil" name:"Anycast"`
 
 	// src的权重
-	Weights []*int64 `json:"Weights,omitempty" name:"Weights"`
+	Weights []*int64 `json:"Weights,omitnil" name:"Weights"`
 
 	// 是否开启源站的主动健康检测，1表示开启，0表示不开启
-	ActiveCheck *int64 `json:"ActiveCheck,omitempty" name:"ActiveCheck"`
+	ActiveCheck *int64 `json:"ActiveCheck,omitnil" name:"ActiveCheck"`
 
 	// TLS版本信息
-	TLSVersion *int64 `json:"TLSVersion,omitempty" name:"TLSVersion"`
+	TLSVersion *int64 `json:"TLSVersion,omitnil" name:"TLSVersion"`
 
 	// 加密套件信息
-	Ciphers []*int64 `json:"Ciphers,omitempty" name:"Ciphers"`
+	Ciphers []*int64 `json:"Ciphers,omitnil" name:"Ciphers"`
 
 	// 0:不支持选择：默认模板  1:通用型模板 2:安全型模板 3:自定义模板
-	CipherTemplate *int64 `json:"CipherTemplate,omitempty" name:"CipherTemplate"`
+	CipherTemplate *int64 `json:"CipherTemplate,omitnil" name:"CipherTemplate"`
 
 	// 300s
-	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitempty" name:"ProxyReadTimeout"`
+	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil" name:"ProxyReadTimeout"`
 
 	// 300s
-	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitempty" name:"ProxySendTimeout"`
+	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitnil" name:"ProxySendTimeout"`
 
 	// 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
-	SniType *int64 `json:"SniType,omitempty" name:"SniType"`
+	SniType *int64 `json:"SniType,omitnil" name:"SniType"`
 
 	// SniType=3时，需要填此参数，表示自定义的host；
-	SniHost *string `json:"SniHost,omitempty" name:"SniHost"`
+	SniHost *string `json:"SniHost,omitnil" name:"SniHost"`
 
 	// IsCdn=3时，需要填此参数，表示自定义header
-	IpHeaders []*string `json:"IpHeaders,omitempty" name:"IpHeaders"`
+	IpHeaders []*string `json:"IpHeaders,omitnil" name:"IpHeaders"`
 
 	// 0:关闭xff重置；1:开启xff重置
-	XFFReset *int64 `json:"XFFReset,omitempty" name:"XFFReset"`
+	XFFReset *int64 `json:"XFFReset,omitnil" name:"XFFReset"`
 }
 
 func (r *ModifySpartaProtectionRequest) ToJsonString() string {
@@ -8626,7 +8626,7 @@ func (r *ModifySpartaProtectionRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySpartaProtectionResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifySpartaProtectionResponse struct {
@@ -8648,38 +8648,38 @@ func (r *ModifySpartaProtectionResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyWafAutoDenyRulesRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 触发IP封禁的攻击次数阈值，范围为2~100次
-	AttackThreshold *int64 `json:"AttackThreshold,omitempty" name:"AttackThreshold"`
+	AttackThreshold *int64 `json:"AttackThreshold,omitnil" name:"AttackThreshold"`
 
 	// IP封禁统计时间，范围为1-60分钟
-	TimeThreshold *int64 `json:"TimeThreshold,omitempty" name:"TimeThreshold"`
+	TimeThreshold *int64 `json:"TimeThreshold,omitnil" name:"TimeThreshold"`
 
 	// 触发IP封禁后的封禁时间，范围为5~360分钟
-	DenyTimeThreshold *int64 `json:"DenyTimeThreshold,omitempty" name:"DenyTimeThreshold"`
+	DenyTimeThreshold *int64 `json:"DenyTimeThreshold,omitnil" name:"DenyTimeThreshold"`
 
 	// 自动封禁状态，0表示关闭，1表示打开
-	DefenseStatus *int64 `json:"DefenseStatus,omitempty" name:"DefenseStatus"`
+	DefenseStatus *int64 `json:"DefenseStatus,omitnil" name:"DefenseStatus"`
 }
 
 type ModifyWafAutoDenyRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 触发IP封禁的攻击次数阈值，范围为2~100次
-	AttackThreshold *int64 `json:"AttackThreshold,omitempty" name:"AttackThreshold"`
+	AttackThreshold *int64 `json:"AttackThreshold,omitnil" name:"AttackThreshold"`
 
 	// IP封禁统计时间，范围为1-60分钟
-	TimeThreshold *int64 `json:"TimeThreshold,omitempty" name:"TimeThreshold"`
+	TimeThreshold *int64 `json:"TimeThreshold,omitnil" name:"TimeThreshold"`
 
 	// 触发IP封禁后的封禁时间，范围为5~360分钟
-	DenyTimeThreshold *int64 `json:"DenyTimeThreshold,omitempty" name:"DenyTimeThreshold"`
+	DenyTimeThreshold *int64 `json:"DenyTimeThreshold,omitnil" name:"DenyTimeThreshold"`
 
 	// 自动封禁状态，0表示关闭，1表示打开
-	DefenseStatus *int64 `json:"DefenseStatus,omitempty" name:"DefenseStatus"`
+	DefenseStatus *int64 `json:"DefenseStatus,omitnil" name:"DefenseStatus"`
 }
 
 func (r *ModifyWafAutoDenyRulesRequest) ToJsonString() string {
@@ -8708,10 +8708,10 @@ func (r *ModifyWafAutoDenyRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyWafAutoDenyRulesResponseParams struct {
 	// 成功的状态码，需要JSON解码后再使用，返回的格式是{"域名":"状态"}，成功的状态码为Success，其它的为失败的状态码（yunapi定义的错误码）
-	Success *ResponseCode `json:"Success,omitempty" name:"Success"`
+	Success *ResponseCode `json:"Success,omitnil" name:"Success"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyWafAutoDenyRulesResponse struct {
@@ -8733,14 +8733,14 @@ func (r *ModifyWafAutoDenyRulesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyWafAutoDenyStatusRequestParams struct {
 	// WAF 自动封禁配置项
-	WafAutoDenyDetails *AutoDenyDetail `json:"WafAutoDenyDetails,omitempty" name:"WafAutoDenyDetails"`
+	WafAutoDenyDetails *AutoDenyDetail `json:"WafAutoDenyDetails,omitnil" name:"WafAutoDenyDetails"`
 }
 
 type ModifyWafAutoDenyStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// WAF 自动封禁配置项
-	WafAutoDenyDetails *AutoDenyDetail `json:"WafAutoDenyDetails,omitempty" name:"WafAutoDenyDetails"`
+	WafAutoDenyDetails *AutoDenyDetail `json:"WafAutoDenyDetails,omitnil" name:"WafAutoDenyDetails"`
 }
 
 func (r *ModifyWafAutoDenyStatusRequest) ToJsonString() string {
@@ -8765,10 +8765,10 @@ func (r *ModifyWafAutoDenyStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyWafAutoDenyStatusResponseParams struct {
 	// WAF 自动封禁配置项
-	WafAutoDenyDetails *AutoDenyDetail `json:"WafAutoDenyDetails,omitempty" name:"WafAutoDenyDetails"`
+	WafAutoDenyDetails *AutoDenyDetail `json:"WafAutoDenyDetails,omitnil" name:"WafAutoDenyDetails"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyWafAutoDenyStatusResponse struct {
@@ -8790,14 +8790,14 @@ func (r *ModifyWafAutoDenyStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyWafThreatenIntelligenceRequestParams struct {
 	// 配置WAF威胁情报封禁模块详情
-	WafThreatenIntelligenceDetails *WafThreatenIntelligenceDetails `json:"WafThreatenIntelligenceDetails,omitempty" name:"WafThreatenIntelligenceDetails"`
+	WafThreatenIntelligenceDetails *WafThreatenIntelligenceDetails `json:"WafThreatenIntelligenceDetails,omitnil" name:"WafThreatenIntelligenceDetails"`
 }
 
 type ModifyWafThreatenIntelligenceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 配置WAF威胁情报封禁模块详情
-	WafThreatenIntelligenceDetails *WafThreatenIntelligenceDetails `json:"WafThreatenIntelligenceDetails,omitempty" name:"WafThreatenIntelligenceDetails"`
+	WafThreatenIntelligenceDetails *WafThreatenIntelligenceDetails `json:"WafThreatenIntelligenceDetails,omitnil" name:"WafThreatenIntelligenceDetails"`
 }
 
 func (r *ModifyWafThreatenIntelligenceRequest) ToJsonString() string {
@@ -8822,10 +8822,10 @@ func (r *ModifyWafThreatenIntelligenceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyWafThreatenIntelligenceResponseParams struct {
 	// 当前WAF威胁情报封禁模块详情
-	WafThreatenIntelligenceDetails *WafThreatenIntelligenceDetails `json:"WafThreatenIntelligenceDetails,omitempty" name:"WafThreatenIntelligenceDetails"`
+	WafThreatenIntelligenceDetails *WafThreatenIntelligenceDetails `json:"WafThreatenIntelligenceDetails,omitnil" name:"WafThreatenIntelligenceDetails"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyWafThreatenIntelligenceResponse struct {
@@ -8846,144 +8846,144 @@ func (r *ModifyWafThreatenIntelligenceResponse) FromJsonString(s string) error {
 
 type PageInfo struct {
 	// 页码
-	PageNumber *string `json:"PageNumber,omitempty" name:"PageNumber"`
+	PageNumber *string `json:"PageNumber,omitnil" name:"PageNumber"`
 
 	// 页条目数量
-	PageSize *string `json:"PageSize,omitempty" name:"PageSize"`
+	PageSize *string `json:"PageSize,omitnil" name:"PageSize"`
 }
 
 type PeakPointsItem struct {
 	// 秒级别时间戳
-	Time *uint64 `json:"Time,omitempty" name:"Time"`
+	Time *uint64 `json:"Time,omitnil" name:"Time"`
 
 	// QPS
-	Access *uint64 `json:"Access,omitempty" name:"Access"`
+	Access *uint64 `json:"Access,omitnil" name:"Access"`
 
 	// 上行带宽峰值，单位B
-	Up *uint64 `json:"Up,omitempty" name:"Up"`
+	Up *uint64 `json:"Up,omitnil" name:"Up"`
 
 	// 下行带宽峰值，单位B
-	Down *uint64 `json:"Down,omitempty" name:"Down"`
+	Down *uint64 `json:"Down,omitnil" name:"Down"`
 
 	// Web攻击次数
-	Attack *uint64 `json:"Attack,omitempty" name:"Attack"`
+	Attack *uint64 `json:"Attack,omitnil" name:"Attack"`
 
 	// CC攻击次数
-	Cc *uint64 `json:"Cc,omitempty" name:"Cc"`
+	Cc *uint64 `json:"Cc,omitnil" name:"Cc"`
 
 	// Bot qps
-	BotAccess *uint64 `json:"BotAccess,omitempty" name:"BotAccess"`
+	BotAccess *uint64 `json:"BotAccess,omitnil" name:"BotAccess"`
 
 	// WAF返回给客户端状态码次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusServerError *uint64 `json:"StatusServerError,omitempty" name:"StatusServerError"`
+	StatusServerError *uint64 `json:"StatusServerError,omitnil" name:"StatusServerError"`
 
 	// WAF返回给客户端状态码次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusClientError *uint64 `json:"StatusClientError,omitempty" name:"StatusClientError"`
+	StatusClientError *uint64 `json:"StatusClientError,omitnil" name:"StatusClientError"`
 
 	// WAF返回给客户端状态码次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusRedirect *uint64 `json:"StatusRedirect,omitempty" name:"StatusRedirect"`
+	StatusRedirect *uint64 `json:"StatusRedirect,omitnil" name:"StatusRedirect"`
 
 	// WAF返回给客户端状态码次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StatusOk *uint64 `json:"StatusOk,omitempty" name:"StatusOk"`
+	StatusOk *uint64 `json:"StatusOk,omitnil" name:"StatusOk"`
 
 	// 源站返回给WAF状态码次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpstreamServerError *uint64 `json:"UpstreamServerError,omitempty" name:"UpstreamServerError"`
+	UpstreamServerError *uint64 `json:"UpstreamServerError,omitnil" name:"UpstreamServerError"`
 
 	// 源站返回给WAF状态码次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpstreamClientError *uint64 `json:"UpstreamClientError,omitempty" name:"UpstreamClientError"`
+	UpstreamClientError *uint64 `json:"UpstreamClientError,omitnil" name:"UpstreamClientError"`
 
 	// 源站返回给WAF状态码次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UpstreamRedirect *uint64 `json:"UpstreamRedirect,omitempty" name:"UpstreamRedirect"`
+	UpstreamRedirect *uint64 `json:"UpstreamRedirect,omitnil" name:"UpstreamRedirect"`
 }
 
 type PortInfo struct {
 	// Nginx的服务器id
-	NginxServerId *uint64 `json:"NginxServerId,omitempty" name:"NginxServerId"`
+	NginxServerId *uint64 `json:"NginxServerId,omitnil" name:"NginxServerId"`
 
 	// 监听端口配置
-	Port *string `json:"Port,omitempty" name:"Port"`
+	Port *string `json:"Port,omitnil" name:"Port"`
 
 	// 与端口对应的协议
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 回源端口
-	UpstreamPort *string `json:"UpstreamPort,omitempty" name:"UpstreamPort"`
+	UpstreamPort *string `json:"UpstreamPort,omitnil" name:"UpstreamPort"`
 
 	// 回源协议
-	UpstreamProtocol *string `json:"UpstreamProtocol,omitempty" name:"UpstreamProtocol"`
+	UpstreamProtocol *string `json:"UpstreamProtocol,omitnil" name:"UpstreamProtocol"`
 }
 
 type PortItem struct {
 	// 监听端口配置
-	Port *string `json:"Port,omitempty" name:"Port"`
+	Port *string `json:"Port,omitnil" name:"Port"`
 
 	// 与Port一一对应，表示端口对应的协议
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 与Port一一对应,  表示回源端口
-	UpstreamPort *string `json:"UpstreamPort,omitempty" name:"UpstreamPort"`
+	UpstreamPort *string `json:"UpstreamPort,omitnil" name:"UpstreamPort"`
 
 	// 与Port一一对应,  表示回源协议
-	UpstreamProtocol *string `json:"UpstreamProtocol,omitempty" name:"UpstreamProtocol"`
+	UpstreamProtocol *string `json:"UpstreamProtocol,omitnil" name:"UpstreamProtocol"`
 
 	// Nginx的服务器ID
-	NginxServerId *string `json:"NginxServerId,omitempty" name:"NginxServerId"`
+	NginxServerId *string `json:"NginxServerId,omitnil" name:"NginxServerId"`
 }
 
 // Predefined struct for user
 type PostAttackDownloadTaskRequestParams struct {
 	// 查询的域名，所有域名使用all
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 查询起始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// Lucene语法
-	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+	QueryString *string `json:"QueryString,omitnil" name:"QueryString"`
 
 	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
 
 	// 默认为desc，可以取值desc和asc
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// 下载的日志条数
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 }
 
 type PostAttackDownloadTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询的域名，所有域名使用all
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 查询起始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// Lucene语法
-	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+	QueryString *string `json:"QueryString,omitnil" name:"QueryString"`
 
 	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
 
 	// 默认为desc，可以取值desc和asc
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// 下载的日志条数
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 }
 
 func (r *PostAttackDownloadTaskRequest) ToJsonString() string {
@@ -9014,10 +9014,10 @@ func (r *PostAttackDownloadTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type PostAttackDownloadTaskResponseParams struct {
 	// 任务task id
-	Flow *string `json:"Flow,omitempty" name:"Flow"`
+	Flow *string `json:"Flow,omitnil" name:"Flow"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type PostAttackDownloadTaskResponse struct {
@@ -9039,40 +9039,40 @@ func (r *PostAttackDownloadTaskResponse) FromJsonString(s string) error {
 type QPSPackageNew struct {
 	// 资源ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceIds *string `json:"ResourceIds,omitempty" name:"ResourceIds"`
+	ResourceIds *string `json:"ResourceIds,omitnil" name:"ResourceIds"`
 
 	// 过期时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ValidTime *string `json:"ValidTime,omitempty" name:"ValidTime"`
+	ValidTime *string `json:"ValidTime,omitnil" name:"ValidTime"`
 
 	// 是否自动续费，1：自动续费，0：不自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RenewFlag *int64 `json:"RenewFlag,omitempty" name:"RenewFlag"`
+	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
 
 	// 套餐购买个数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 套餐购买地域，clb-waf暂时没有用到
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 计费项
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BillingItem *string `json:"BillingItem,omitempty" name:"BillingItem"`
+	BillingItem *string `json:"BillingItem,omitnil" name:"BillingItem"`
 }
 
 // Predefined struct for user
 type RefreshAccessCheckResultRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 type RefreshAccessCheckResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 func (r *RefreshAccessCheckResultRequest) ToJsonString() string {
@@ -9097,7 +9097,7 @@ func (r *RefreshAccessCheckResultRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RefreshAccessCheckResultResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RefreshAccessCheckResultResponse struct {
@@ -9118,85 +9118,85 @@ func (r *RefreshAccessCheckResultResponse) FromJsonString(s string) error {
 
 type ResponseCode struct {
 	// 如果成功则返回Success，失败则返回云api定义的错误码
-	Code *string `json:"Code,omitempty" name:"Code"`
+	Code *string `json:"Code,omitnil" name:"Code"`
 
 	// 如果成功则返回Success，失败则返回WAF定义的二级错误码
-	Message *string `json:"Message,omitempty" name:"Message"`
+	Message *string `json:"Message,omitnil" name:"Message"`
 }
 
 type RuleList struct {
 	// 规则Id
-	Id *uint64 `json:"Id,omitempty" name:"Id"`
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
 
 	// 规则列表的id
-	Rules []*uint64 `json:"Rules,omitempty" name:"Rules"`
+	Rules []*uint64 `json:"Rules,omitnil" name:"Rules"`
 
 	// 请求url
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 请求的方法
-	Function *string `json:"Function,omitempty" name:"Function"`
+	Function *string `json:"Function,omitnil" name:"Function"`
 
 	// 时间戳
-	Time *string `json:"Time,omitempty" name:"Time"`
+	Time *string `json:"Time,omitnil" name:"Time"`
 
 	// 开关状态
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 }
 
 // Predefined struct for user
 type SearchAccessLogRequestParams struct {
 	// 客户要查询的日志主题ID，每个客户都有对应的一个主题，新版本此字段填空字符串
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
-	From *int64 `json:"From,omitempty" name:"From"`
+	From *int64 `json:"From,omitnil" name:"From"`
 
 	// 要查询的日志的结束时间，Unix时间戳，单位ms
-	To *int64 `json:"To,omitempty" name:"To"`
+	To *int64 `json:"To,omitnil" name:"To"`
 
 	// 查询语句，语句长度最大为4096
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 单次查询返回的日志条数，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 新版本此字段失效，填空字符串，翻页使用Page
-	Context *string `json:"Context,omitempty" name:"Context"`
+	Context *string `json:"Context,omitnil" name:"Context"`
 
 	// 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// 第几页，从0开始。新版本接口字段
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 }
 
 type SearchAccessLogRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户要查询的日志主题ID，每个客户都有对应的一个主题，新版本此字段填空字符串
-	TopicId *string `json:"TopicId,omitempty" name:"TopicId"`
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
 
 	// 要查询的日志的起始时间，Unix时间戳，单位ms
-	From *int64 `json:"From,omitempty" name:"From"`
+	From *int64 `json:"From,omitnil" name:"From"`
 
 	// 要查询的日志的结束时间，Unix时间戳，单位ms
-	To *int64 `json:"To,omitempty" name:"To"`
+	To *int64 `json:"To,omitnil" name:"To"`
 
 	// 查询语句，语句长度最大为4096
-	Query *string `json:"Query,omitempty" name:"Query"`
+	Query *string `json:"Query,omitnil" name:"Query"`
 
 	// 单次查询返回的日志条数，最大值为100
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 新版本此字段失效，填空字符串，翻页使用Page
-	Context *string `json:"Context,omitempty" name:"Context"`
+	Context *string `json:"Context,omitnil" name:"Context"`
 
 	// 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// 第几页，从0开始。新版本接口字段
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 }
 
 func (r *SearchAccessLogRequest) ToJsonString() string {
@@ -9228,31 +9228,31 @@ func (r *SearchAccessLogRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SearchAccessLogResponseParams struct {
 	// 新接口此字段失效，默认返回空字符串
-	Context *string `json:"Context,omitempty" name:"Context"`
+	Context *string `json:"Context,omitnil" name:"Context"`
 
 	// 日志查询结果是否全部返回，其中，“true”表示结果返回，“false”表示结果为返回
-	ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
+	ListOver *bool `json:"ListOver,omitnil" name:"ListOver"`
 
 	// 返回的是否为分析结果，其中，“true”表示返回分析结果，“false”表示未返回分析结果
-	Analysis *bool `json:"Analysis,omitempty" name:"Analysis"`
+	Analysis *bool `json:"Analysis,omitnil" name:"Analysis"`
 
 	// 如果Analysis为True，则返回分析结果的列名，否则为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ColNames []*string `json:"ColNames,omitempty" name:"ColNames"`
+	ColNames []*string `json:"ColNames,omitnil" name:"ColNames"`
 
 	// 日志查询结果；当Analysis为True时，可能返回为null
 	// 注意：此字段可能返回 null，表示取不到有效值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Results []*AccessLogInfo `json:"Results,omitempty" name:"Results"`
+	Results []*AccessLogInfo `json:"Results,omitnil" name:"Results"`
 
 	// 日志分析结果；当Analysis为False时，可能返回为null
 	// 注意：此字段可能返回 null，表示取不到有效值
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AnalysisResults []*AccessLogItems `json:"AnalysisResults,omitempty" name:"AnalysisResults"`
+	AnalysisResults []*AccessLogItems `json:"AnalysisResults,omitnil" name:"AnalysisResults"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SearchAccessLogResponse struct {
@@ -9274,56 +9274,56 @@ func (r *SearchAccessLogResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SearchAttackLogRequestParams struct {
 	// 查询的域名，所有域名使用all
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 查询起始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 接口升级，这个字段传空字符串,翻页使用Page字段
-	Context *string `json:"Context,omitempty" name:"Context"`
+	Context *string `json:"Context,omitnil" name:"Context"`
 
 	// Lucene语法
-	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+	QueryString *string `json:"QueryString,omitnil" name:"QueryString"`
 
 	// 查询的数量，默认10条，最多100条
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 默认为desc，可以取值desc和asc
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// 第几页，从0开始
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 }
 
 type SearchAttackLogRequest struct {
 	*tchttp.BaseRequest
 	
 	// 查询的域名，所有域名使用all
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 查询起始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 接口升级，这个字段传空字符串,翻页使用Page字段
-	Context *string `json:"Context,omitempty" name:"Context"`
+	Context *string `json:"Context,omitnil" name:"Context"`
 
 	// Lucene语法
-	QueryString *string `json:"QueryString,omitempty" name:"QueryString"`
+	QueryString *string `json:"QueryString,omitnil" name:"QueryString"`
 
 	// 查询的数量，默认10条，最多100条
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 默认为desc，可以取值desc和asc
-	Sort *string `json:"Sort,omitempty" name:"Sort"`
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
 	// 第几页，从0开始
-	Page *int64 `json:"Page,omitempty" name:"Page"`
+	Page *int64 `json:"Page,omitnil" name:"Page"`
 }
 
 func (r *SearchAttackLogRequest) ToJsonString() string {
@@ -9355,22 +9355,22 @@ func (r *SearchAttackLogRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SearchAttackLogResponseParams struct {
 	// 当前返回的攻击日志条数
-	Count *uint64 `json:"Count,omitempty" name:"Count"`
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
 
 	// 接口升级，此字段无效，默认返回空字符串
-	Context *string `json:"Context,omitempty" name:"Context"`
+	Context *string `json:"Context,omitnil" name:"Context"`
 
 	// 攻击日志数组条目内容
-	Data []*AttackLogInfo `json:"Data,omitempty" name:"Data"`
+	Data []*AttackLogInfo `json:"Data,omitnil" name:"Data"`
 
 	// CLS接口返回内容
-	ListOver *bool `json:"ListOver,omitempty" name:"ListOver"`
+	ListOver *bool `json:"ListOver,omitnil" name:"ListOver"`
 
 	// CLS接口返回内容，标志是否启动新版本索引
-	SqlFlag *bool `json:"SqlFlag,omitempty" name:"SqlFlag"`
+	SqlFlag *bool `json:"SqlFlag,omitnil" name:"SqlFlag"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SearchAttackLogResponse struct {
@@ -9391,120 +9391,120 @@ func (r *SearchAttackLogResponse) FromJsonString(s string) error {
 
 type SearchItem struct {
 	// 日志开关
-	ClsStatus *string `json:"ClsStatus,omitempty" name:"ClsStatus"`
+	ClsStatus *string `json:"ClsStatus,omitnil" name:"ClsStatus"`
 
 	// waf开关
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 流量模式
-	FlowMode *string `json:"FlowMode,omitempty" name:"FlowMode"`
+	FlowMode *string `json:"FlowMode,omitnil" name:"FlowMode"`
 }
 
 type SessionData struct {
 	// session定义
-	Res []*SessionItem `json:"Res,omitempty" name:"Res"`
+	Res []*SessionItem `json:"Res,omitnil" name:"Res"`
 }
 
 type SessionItem struct {
 	// 匹配类型
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 起始模式
-	KeyOrStartMat *string `json:"KeyOrStartMat,omitempty" name:"KeyOrStartMat"`
+	KeyOrStartMat *string `json:"KeyOrStartMat,omitnil" name:"KeyOrStartMat"`
 
 	// 结束模式
-	EndMat *string `json:"EndMat,omitempty" name:"EndMat"`
+	EndMat *string `json:"EndMat,omitnil" name:"EndMat"`
 
 	// 起始偏移
-	StartOffset *string `json:"StartOffset,omitempty" name:"StartOffset"`
+	StartOffset *string `json:"StartOffset,omitnil" name:"StartOffset"`
 
 	// 结束偏移
-	EndOffset *string `json:"EndOffset,omitempty" name:"EndOffset"`
+	EndOffset *string `json:"EndOffset,omitnil" name:"EndOffset"`
 
 	// 数据源
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 更新时间戳
-	TsVersion *string `json:"TsVersion,omitempty" name:"TsVersion"`
+	TsVersion *string `json:"TsVersion,omitnil" name:"TsVersion"`
 }
 
 type SpartaProtectionPort struct {
 	// nginx Id
-	NginxServerId *uint64 `json:"NginxServerId,omitempty" name:"NginxServerId"`
+	NginxServerId *uint64 `json:"NginxServerId,omitnil" name:"NginxServerId"`
 
 	// 端口
-	Port *string `json:"Port,omitempty" name:"Port"`
+	Port *string `json:"Port,omitnil" name:"Port"`
 
 	// 协议
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 后端端口
-	UpstreamPort *string `json:"UpstreamPort,omitempty" name:"UpstreamPort"`
+	UpstreamPort *string `json:"UpstreamPort,omitnil" name:"UpstreamPort"`
 
 	// 后端协议
-	UpstreamProtocol *string `json:"UpstreamProtocol,omitempty" name:"UpstreamProtocol"`
+	UpstreamProtocol *string `json:"UpstreamProtocol,omitnil" name:"UpstreamProtocol"`
 }
 
 type Strategy struct {
 	// 匹配字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Field *string `json:"Field,omitempty" name:"Field"`
+	Field *string `json:"Field,omitnil" name:"Field"`
 
 	// 逻辑符号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CompareFunc *string `json:"CompareFunc,omitempty" name:"CompareFunc"`
+	CompareFunc *string `json:"CompareFunc,omitnil" name:"CompareFunc"`
 
 	// 匹配内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 
 	// 匹配参数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Arg *string `json:"Arg,omitempty" name:"Arg"`
+	Arg *string `json:"Arg,omitnil" name:"Arg"`
 }
 
 type StrategyForAntiInfoLeak struct {
 	// 匹配字段
-	Field *string `json:"Field,omitempty" name:"Field"`
+	Field *string `json:"Field,omitnil" name:"Field"`
 
 	// 逻辑符号
-	CompareFunc *string `json:"CompareFunc,omitempty" name:"CompareFunc"`
+	CompareFunc *string `json:"CompareFunc,omitnil" name:"CompareFunc"`
 
 	// 匹配内容
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 }
 
 // Predefined struct for user
 type SwitchDomainRulesRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 规则列表
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
 
 	// 开关状态，0表示关闭，1表示开启，2表示只观察
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 设置为观察模式原因，
 	// 1表示业务自身原因观察，2表示系统规则误报上报，3表示核心业务灰度观察，4表示其他
-	Reason *uint64 `json:"Reason,omitempty" name:"Reason"`
+	Reason *uint64 `json:"Reason,omitnil" name:"Reason"`
 }
 
 type SwitchDomainRulesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 规则列表
-	Ids []*uint64 `json:"Ids,omitempty" name:"Ids"`
+	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
 
 	// 开关状态，0表示关闭，1表示开启，2表示只观察
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 设置为观察模式原因，
 	// 1表示业务自身原因观察，2表示系统规则误报上报，3表示核心业务灰度观察，4表示其他
-	Reason *uint64 `json:"Reason,omitempty" name:"Reason"`
+	Reason *uint64 `json:"Reason,omitnil" name:"Reason"`
 }
 
 func (r *SwitchDomainRulesRequest) ToJsonString() string {
@@ -9532,7 +9532,7 @@ func (r *SwitchDomainRulesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SwitchDomainRulesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SwitchDomainRulesResponse struct {
@@ -9554,130 +9554,130 @@ func (r *SwitchDomainRulesResponse) FromJsonString(s string) error {
 type TLSCiphers struct {
 	// TLS版本ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionId *int64 `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *int64 `json:"VersionId,omitnil" name:"VersionId"`
 
 	// 加密套件ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CipherId *int64 `json:"CipherId,omitempty" name:"CipherId"`
+	CipherId *int64 `json:"CipherId,omitnil" name:"CipherId"`
 
 	// 加密套件
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CipherName *string `json:"CipherName,omitempty" name:"CipherName"`
+	CipherName *string `json:"CipherName,omitnil" name:"CipherName"`
 }
 
 type TLSVersion struct {
 	// TLSVERSION的ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionId *int64 `json:"VersionId,omitempty" name:"VersionId"`
+	VersionId *int64 `json:"VersionId,omitnil" name:"VersionId"`
 
 	// TLSVERSION的NAME
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VersionName *string `json:"VersionName,omitempty" name:"VersionName"`
+	VersionName *string `json:"VersionName,omitnil" name:"VersionName"`
 }
 
 type TargetEntity struct {
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
 // Predefined struct for user
 type UpsertCCRuleRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 状态
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 高级模式
-	Advance *string `json:"Advance,omitempty" name:"Advance"`
+	Advance *string `json:"Advance,omitnil" name:"Advance"`
 
 	// CC检测阈值
-	Limit *string `json:"Limit,omitempty" name:"Limit"`
+	Limit *string `json:"Limit,omitnil" name:"Limit"`
 
 	// CC检测周期
-	Interval *string `json:"Interval,omitempty" name:"Interval"`
+	Interval *string `json:"Interval,omitnil" name:"Interval"`
 
 	// 检测Url
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 匹配方法
-	MatchFunc *int64 `json:"MatchFunc,omitempty" name:"MatchFunc"`
+	MatchFunc *int64 `json:"MatchFunc,omitnil" name:"MatchFunc"`
 
 	// 动作
-	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 优先级
-	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+	Priority *int64 `json:"Priority,omitnil" name:"Priority"`
 
 	// 动作有效时间
-	ValidTime *int64 `json:"ValidTime,omitempty" name:"ValidTime"`
+	ValidTime *int64 `json:"ValidTime,omitnil" name:"ValidTime"`
 
 	// 附加参数
-	OptionsArr *string `json:"OptionsArr,omitempty" name:"OptionsArr"`
+	OptionsArr *string `json:"OptionsArr,omitnil" name:"OptionsArr"`
 
 	// waf版本
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 操作类型
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 
 	// 添加规则的来源事件id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 type UpsertCCRuleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 状态
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 高级模式
-	Advance *string `json:"Advance,omitempty" name:"Advance"`
+	Advance *string `json:"Advance,omitnil" name:"Advance"`
 
 	// CC检测阈值
-	Limit *string `json:"Limit,omitempty" name:"Limit"`
+	Limit *string `json:"Limit,omitnil" name:"Limit"`
 
 	// CC检测周期
-	Interval *string `json:"Interval,omitempty" name:"Interval"`
+	Interval *string `json:"Interval,omitnil" name:"Interval"`
 
 	// 检测Url
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 匹配方法
-	MatchFunc *int64 `json:"MatchFunc,omitempty" name:"MatchFunc"`
+	MatchFunc *int64 `json:"MatchFunc,omitnil" name:"MatchFunc"`
 
 	// 动作
-	ActionType *string `json:"ActionType,omitempty" name:"ActionType"`
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 优先级
-	Priority *int64 `json:"Priority,omitempty" name:"Priority"`
+	Priority *int64 `json:"Priority,omitnil" name:"Priority"`
 
 	// 动作有效时间
-	ValidTime *int64 `json:"ValidTime,omitempty" name:"ValidTime"`
+	ValidTime *int64 `json:"ValidTime,omitnil" name:"ValidTime"`
 
 	// 附加参数
-	OptionsArr *string `json:"OptionsArr,omitempty" name:"OptionsArr"`
+	OptionsArr *string `json:"OptionsArr,omitnil" name:"OptionsArr"`
 
 	// waf版本
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 操作类型
-	Type *int64 `json:"Type,omitempty" name:"Type"`
+	Type *int64 `json:"Type,omitnil" name:"Type"`
 
 	// 添加规则的来源事件id
-	EventId *string `json:"EventId,omitempty" name:"EventId"`
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
 }
 
 func (r *UpsertCCRuleRequest) ToJsonString() string {
@@ -9717,10 +9717,10 @@ func (r *UpsertCCRuleRequest) FromJsonString(s string) error {
 type UpsertCCRuleResponseParams struct {
 	// 一般为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpsertCCRuleResponse struct {
@@ -9742,32 +9742,32 @@ func (r *UpsertCCRuleResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpsertIpAccessControlRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
-	Items []*string `json:"Items,omitempty" name:"Items"`
+	Items []*string `json:"Items,omitnil" name:"Items"`
 
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 是否为多域名黑白名单，当为多域名的黑白名单时，取值为batch，否则为空
-	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+	SourceType *string `json:"SourceType,omitnil" name:"SourceType"`
 }
 
 type UpsertIpAccessControlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
-	Items []*string `json:"Items,omitempty" name:"Items"`
+	Items []*string `json:"Items,omitnil" name:"Items"`
 
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 是否为多域名黑白名单，当为多域名的黑白名单时，取值为batch，否则为空
-	SourceType *string `json:"SourceType,omitempty" name:"SourceType"`
+	SourceType *string `json:"SourceType,omitnil" name:"SourceType"`
 }
 
 func (r *UpsertIpAccessControlRequest) ToJsonString() string {
@@ -9796,14 +9796,14 @@ func (r *UpsertIpAccessControlRequest) FromJsonString(s string) error {
 type UpsertIpAccessControlResponseParams struct {
 	// 添加或修改失败的条目
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedItems *string `json:"FailedItems,omitempty" name:"FailedItems"`
+	FailedItems *string `json:"FailedItems,omitnil" name:"FailedItems"`
 
 	// 添加或修改失败的数目
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	FailedCount *int64 `json:"FailedCount,omitempty" name:"FailedCount"`
+	FailedCount *int64 `json:"FailedCount,omitnil" name:"FailedCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpsertIpAccessControlResponse struct {
@@ -9825,56 +9825,56 @@ func (r *UpsertIpAccessControlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpsertSessionRequestParams struct {
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// session来源位置
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 提取类别
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 提取key或者起始匹配模式
-	KeyOrStartMat *string `json:"KeyOrStartMat,omitempty" name:"KeyOrStartMat"`
+	KeyOrStartMat *string `json:"KeyOrStartMat,omitnil" name:"KeyOrStartMat"`
 
 	// 结束匹配模式
-	EndMat *string `json:"EndMat,omitempty" name:"EndMat"`
+	EndMat *string `json:"EndMat,omitnil" name:"EndMat"`
 
 	// 起始偏移位置
-	StartOffset *string `json:"StartOffset,omitempty" name:"StartOffset"`
+	StartOffset *string `json:"StartOffset,omitnil" name:"StartOffset"`
 
 	// 结束偏移位置
-	EndOffset *string `json:"EndOffset,omitempty" name:"EndOffset"`
+	EndOffset *string `json:"EndOffset,omitnil" name:"EndOffset"`
 
 	// 版本
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 type UpsertSessionRequest struct {
 	*tchttp.BaseRequest
 	
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// session来源位置
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 提取类别
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 提取key或者起始匹配模式
-	KeyOrStartMat *string `json:"KeyOrStartMat,omitempty" name:"KeyOrStartMat"`
+	KeyOrStartMat *string `json:"KeyOrStartMat,omitnil" name:"KeyOrStartMat"`
 
 	// 结束匹配模式
-	EndMat *string `json:"EndMat,omitempty" name:"EndMat"`
+	EndMat *string `json:"EndMat,omitnil" name:"EndMat"`
 
 	// 起始偏移位置
-	StartOffset *string `json:"StartOffset,omitempty" name:"StartOffset"`
+	StartOffset *string `json:"StartOffset,omitnil" name:"StartOffset"`
 
 	// 结束偏移位置
-	EndOffset *string `json:"EndOffset,omitempty" name:"EndOffset"`
+	EndOffset *string `json:"EndOffset,omitnil" name:"EndOffset"`
 
 	// 版本
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 func (r *UpsertSessionRequest) ToJsonString() string {
@@ -9907,10 +9907,10 @@ func (r *UpsertSessionRequest) FromJsonString(s string) error {
 type UpsertSessionResponseParams struct {
 	// 结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Data *string `json:"Data,omitempty" name:"Data"`
+	Data *string `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpsertSessionResponse struct {
@@ -9931,95 +9931,95 @@ func (r *UpsertSessionResponse) FromJsonString(s string) error {
 
 type UserDomainInfo struct {
 	// 用户id
-	Appid *uint64 `json:"Appid,omitempty" name:"Appid"`
+	Appid *uint64 `json:"Appid,omitnil" name:"Appid"`
 
 	// 域名
-	Domain *string `json:"Domain,omitempty" name:"Domain"`
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
 	// 域名id
-	DomainId *string `json:"DomainId,omitempty" name:"DomainId"`
+	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
 	// 实例id
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 实例名
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// waf类型
-	Edition *string `json:"Edition,omitempty" name:"Edition"`
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Level *string `json:"Level,omitempty" name:"Level"`
+	Level *string `json:"Level,omitnil" name:"Level"`
 
 	// 指定域名访问日志字段的开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	WriteConfig *string `json:"WriteConfig,omitempty" name:"WriteConfig"`
+	WriteConfig *string `json:"WriteConfig,omitnil" name:"WriteConfig"`
 
 	// 指定域名是否写cls的开关 1:写 0:不写
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cls *uint64 `json:"Cls,omitempty" name:"Cls"`
+	Cls *uint64 `json:"Cls,omitnil" name:"Cls"`
 }
 
 type VipInfo struct {
 	// Virtual IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Vip *string `json:"Vip,omitempty" name:"Vip"`
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
 
 	// waf实例id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type WafRuleLimit struct {
 	// 自定义CC的规格
-	CC *uint64 `json:"CC,omitempty" name:"CC"`
+	CC *uint64 `json:"CC,omitnil" name:"CC"`
 
 	// 自定义策略的规格
-	CustomRule *uint64 `json:"CustomRule,omitempty" name:"CustomRule"`
+	CustomRule *uint64 `json:"CustomRule,omitnil" name:"CustomRule"`
 
 	// 黑白名单的规格
-	IPControl *uint64 `json:"IPControl,omitempty" name:"IPControl"`
+	IPControl *uint64 `json:"IPControl,omitnil" name:"IPControl"`
 
 	// 信息防泄漏的规格
-	AntiLeak *uint64 `json:"AntiLeak,omitempty" name:"AntiLeak"`
+	AntiLeak *uint64 `json:"AntiLeak,omitnil" name:"AntiLeak"`
 
 	// 防篡改的规格
-	AntiTamper *uint64 `json:"AntiTamper,omitempty" name:"AntiTamper"`
+	AntiTamper *uint64 `json:"AntiTamper,omitnil" name:"AntiTamper"`
 
 	// 紧急CC的规格
-	AutoCC *uint64 `json:"AutoCC,omitempty" name:"AutoCC"`
+	AutoCC *uint64 `json:"AutoCC,omitnil" name:"AutoCC"`
 
 	// 地域封禁的规格
-	AreaBan *uint64 `json:"AreaBan,omitempty" name:"AreaBan"`
+	AreaBan *uint64 `json:"AreaBan,omitnil" name:"AreaBan"`
 
 	// 自定义CC中配置session
-	CCSession *uint64 `json:"CCSession,omitempty" name:"CCSession"`
+	CCSession *uint64 `json:"CCSession,omitnil" name:"CCSession"`
 
 	// AI的规格
-	AI *uint64 `json:"AI,omitempty" name:"AI"`
+	AI *uint64 `json:"AI,omitnil" name:"AI"`
 
 	// 精准白名单的规格
-	CustomWhite *uint64 `json:"CustomWhite,omitempty" name:"CustomWhite"`
+	CustomWhite *uint64 `json:"CustomWhite,omitnil" name:"CustomWhite"`
 
 	// api安全的规格
-	ApiSecurity *uint64 `json:"ApiSecurity,omitempty" name:"ApiSecurity"`
+	ApiSecurity *uint64 `json:"ApiSecurity,omitnil" name:"ApiSecurity"`
 
 	// 客户端流量标记的规格
-	ClientMsg *uint64 `json:"ClientMsg,omitempty" name:"ClientMsg"`
+	ClientMsg *uint64 `json:"ClientMsg,omitnil" name:"ClientMsg"`
 
 	// 流量标记的规格
-	TrafficMarking *uint64 `json:"TrafficMarking,omitempty" name:"TrafficMarking"`
+	TrafficMarking *uint64 `json:"TrafficMarking,omitnil" name:"TrafficMarking"`
 }
 
 type WafThreatenIntelligenceDetails struct {
 	// 封禁属性标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tags []*string `json:"Tags,omitempty" name:"Tags"`
+	Tags []*string `json:"Tags,omitnil" name:"Tags"`
 
 	// 封禁模组启用状态
-	DefenseStatus *int64 `json:"DefenseStatus,omitempty" name:"DefenseStatus"`
+	DefenseStatus *int64 `json:"DefenseStatus,omitnil" name:"DefenseStatus"`
 
 	// 最后更新时间
-	LastUpdateTime *string `json:"LastUpdateTime,omitempty" name:"LastUpdateTime"`
+	LastUpdateTime *string `json:"LastUpdateTime,omitnil" name:"LastUpdateTime"`
 }

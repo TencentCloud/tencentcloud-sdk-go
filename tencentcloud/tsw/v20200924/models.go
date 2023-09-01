@@ -15,43 +15,43 @@
 package v20200924
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type AgentShell struct {
 	// 鉴权token
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Token *string `json:"Token,omitempty" name:"Token"`
+	Token *string `json:"Token,omitnil" name:"Token"`
 
 	// 数据接收Ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EtlIp *string `json:"EtlIp,omitempty" name:"EtlIp"`
+	EtlIp *string `json:"EtlIp,omitnil" name:"EtlIp"`
 
 	// 数据接收port
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EtlPort *string `json:"EtlPort,omitempty" name:"EtlPort"`
+	EtlPort *string `json:"EtlPort,omitnil" name:"EtlPort"`
 
 	// 手动接入脚本串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ByHandAccess *string `json:"ByHandAccess,omitempty" name:"ByHandAccess"`
+	ByHandAccess *string `json:"ByHandAccess,omitnil" name:"ByHandAccess"`
 
 	// 自动接入脚本串
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ByShellAccess *string `json:"ByShellAccess,omitempty" name:"ByShellAccess"`
+	ByShellAccess *string `json:"ByShellAccess,omitnil" name:"ByShellAccess"`
 
 	// SkyWalking数据接收port
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SkyWalkingPort *string `json:"SkyWalkingPort,omitempty" name:"SkyWalkingPort"`
+	SkyWalkingPort *string `json:"SkyWalkingPort,omitnil" name:"SkyWalkingPort"`
 
 	// Zipkin数据接收port
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ZipkinPort *string `json:"ZipkinPort,omitempty" name:"ZipkinPort"`
+	ZipkinPort *string `json:"ZipkinPort,omitnil" name:"ZipkinPort"`
 
 	// Jaeger数据接收port
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	JaegerPort *string `json:"JaegerPort,omitempty" name:"JaegerPort"`
+	JaegerPort *string `json:"JaegerPort,omitnil" name:"JaegerPort"`
 }
 
 // Predefined struct for user
@@ -87,10 +87,10 @@ func (r *DescribeAgentShellRequest) FromJsonString(s string) error {
 type DescribeAgentShellResponseParams struct {
 	// 接入信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Result *AgentShell `json:"Result,omitempty" name:"Result"`
+	Result *AgentShell `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAgentShellResponse struct {

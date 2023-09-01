@@ -15,14 +15,14 @@
 package v20190822
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type CHPRequest struct {
 	// 电话号码
-	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
 }
 
 type CHPResponse struct {
@@ -35,29 +35,29 @@ type CHPResponse struct {
 	//  54:诈骗电话
 	//  55:快递电话
 	//  56:出租车专车
-	TagType *int64 `json:"TagType,omitempty" name:"TagType"`
+	TagType *int64 `json:"TagType,omitnil" name:"TagType"`
 
 	// 标记次数
-	TagCount *int64 `json:"TagCount,omitempty" name:"TagCount"`
+	TagCount *int64 `json:"TagCount,omitnil" name:"TagCount"`
 }
 
 // Predefined struct for user
 type CreateSmpnEpaRequestParams struct {
 	// 企业号码认证请求内容
-	RequestData *EPARequest `json:"RequestData,omitempty" name:"RequestData"`
+	RequestData *EPARequest `json:"RequestData,omitnil" name:"RequestData"`
 
 	// 用于计费的资源ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 type CreateSmpnEpaRequest struct {
 	*tchttp.BaseRequest
 	
 	// 企业号码认证请求内容
-	RequestData *EPARequest `json:"RequestData,omitempty" name:"RequestData"`
+	RequestData *EPARequest `json:"RequestData,omitnil" name:"RequestData"`
 
 	// 用于计费的资源ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 func (r *CreateSmpnEpaRequest) ToJsonString() string {
@@ -83,10 +83,10 @@ func (r *CreateSmpnEpaRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSmpnEpaResponseParams struct {
 	// 业号码认证回应内容
-	ResponseData *EPAResponse `json:"ResponseData,omitempty" name:"ResponseData"`
+	ResponseData *EPAResponse `json:"ResponseData,omitnil" name:"ResponseData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateSmpnEpaResponse struct {
@@ -108,20 +108,20 @@ func (r *CreateSmpnEpaResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmpnChpRequestParams struct {
 	// 客户用于计费的资源Id
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 终端骚扰保护请求
-	RequestData *CHPRequest `json:"RequestData,omitempty" name:"RequestData"`
+	RequestData *CHPRequest `json:"RequestData,omitnil" name:"RequestData"`
 }
 
 type DescribeSmpnChpRequest struct {
 	*tchttp.BaseRequest
 	
 	// 客户用于计费的资源Id
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 终端骚扰保护请求
-	RequestData *CHPRequest `json:"RequestData,omitempty" name:"RequestData"`
+	RequestData *CHPRequest `json:"RequestData,omitnil" name:"RequestData"`
 }
 
 func (r *DescribeSmpnChpRequest) ToJsonString() string {
@@ -147,10 +147,10 @@ func (r *DescribeSmpnChpRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmpnChpResponseParams struct {
 	// 终端骚扰保护回应
-	ResponseData *CHPResponse `json:"ResponseData,omitempty" name:"ResponseData"`
+	ResponseData *CHPResponse `json:"ResponseData,omitnil" name:"ResponseData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSmpnChpResponse struct {
@@ -172,20 +172,20 @@ func (r *DescribeSmpnChpResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmpnFnrRequestParams struct {
 	// 虚假号码识别请求内容
-	RequestData *FNRRequest `json:"RequestData,omitempty" name:"RequestData"`
+	RequestData *FNRRequest `json:"RequestData,omitnil" name:"RequestData"`
 
 	// 用于计费的资源ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 type DescribeSmpnFnrRequest struct {
 	*tchttp.BaseRequest
 	
 	// 虚假号码识别请求内容
-	RequestData *FNRRequest `json:"RequestData,omitempty" name:"RequestData"`
+	RequestData *FNRRequest `json:"RequestData,omitnil" name:"RequestData"`
 
 	// 用于计费的资源ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 func (r *DescribeSmpnFnrRequest) ToJsonString() string {
@@ -211,10 +211,10 @@ func (r *DescribeSmpnFnrRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmpnFnrResponseParams struct {
 	// 虚假号码识别回应内容
-	ResponseData *FNRResponse `json:"ResponseData,omitempty" name:"ResponseData"`
+	ResponseData *FNRResponse `json:"ResponseData,omitnil" name:"ResponseData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSmpnFnrResponse struct {
@@ -236,20 +236,20 @@ func (r *DescribeSmpnFnrResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmpnMhmRequestParams struct {
 	// 号码营销监控请求内容
-	RequestData *MHMRequest `json:"RequestData,omitempty" name:"RequestData"`
+	RequestData *MHMRequest `json:"RequestData,omitnil" name:"RequestData"`
 
 	// 用于计费的资源ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 type DescribeSmpnMhmRequest struct {
 	*tchttp.BaseRequest
 	
 	// 号码营销监控请求内容
-	RequestData *MHMRequest `json:"RequestData,omitempty" name:"RequestData"`
+	RequestData *MHMRequest `json:"RequestData,omitnil" name:"RequestData"`
 
 	// 用于计费的资源ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 func (r *DescribeSmpnMhmRequest) ToJsonString() string {
@@ -275,10 +275,10 @@ func (r *DescribeSmpnMhmRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmpnMhmResponseParams struct {
 	// 号码营销监控回应内容
-	ResponseData *MHMResponse `json:"ResponseData,omitempty" name:"ResponseData"`
+	ResponseData *MHMResponse `json:"ResponseData,omitnil" name:"ResponseData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSmpnMhmResponse struct {
@@ -300,20 +300,20 @@ func (r *DescribeSmpnMhmResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmpnMrlRequestParams struct {
 	// 恶意标记等级请求内容
-	RequestData *MRLRequest `json:"RequestData,omitempty" name:"RequestData"`
+	RequestData *MRLRequest `json:"RequestData,omitnil" name:"RequestData"`
 
 	// 用于计费的资源ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 type DescribeSmpnMrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 恶意标记等级请求内容
-	RequestData *MRLRequest `json:"RequestData,omitempty" name:"RequestData"`
+	RequestData *MRLRequest `json:"RequestData,omitnil" name:"RequestData"`
 
 	// 用于计费的资源ID
-	ResourceId *string `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 func (r *DescribeSmpnMrlRequest) ToJsonString() string {
@@ -339,10 +339,10 @@ func (r *DescribeSmpnMrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSmpnMrlResponseParams struct {
 	// 恶意标记等级回应内容
-	ResponseData *MRLResponse `json:"ResponseData,omitempty" name:"ResponseData"`
+	ResponseData *MRLResponse `json:"ResponseData,omitnil" name:"ResponseData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSmpnMrlResponse struct {
@@ -363,30 +363,30 @@ func (r *DescribeSmpnMrlResponse) FromJsonString(s string) error {
 
 type EPARequest struct {
 	// 电话号码
-	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
 
 	// 黄页名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 type EPAResponse struct {
 	// 0成功 其他失败
-	RetCode *int64 `json:"RetCode,omitempty" name:"RetCode"`
+	RetCode *int64 `json:"RetCode,omitnil" name:"RetCode"`
 }
 
 type FNRRequest struct {
 	// 电话号码
-	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
 }
 
 type FNRResponse struct {
 	// 虚假号码描述
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
 type MHMRequest struct {
 	// 电话号码
-	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
 }
 
 type MHMResponse struct {
@@ -399,30 +399,30 @@ type MHMResponse struct {
 	//  54:诈骗电话
 	//  55:快递电话
 	//  56:出租车专车
-	TagType *int64 `json:"TagType,omitempty" name:"TagType"`
+	TagType *int64 `json:"TagType,omitnil" name:"TagType"`
 
 	// 标记次数
-	TagCount *int64 `json:"TagCount,omitempty" name:"TagCount"`
+	TagCount *int64 `json:"TagCount,omitnil" name:"TagCount"`
 }
 
 type MRLRequest struct {
 	// 电话号码
-	PhoneNumber *string `json:"PhoneNumber,omitempty" name:"PhoneNumber"`
+	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
 }
 
 type MRLResponse struct {
 	// 骚扰电话恶意标记等级
-	DisturbLevel *int64 `json:"DisturbLevel,omitempty" name:"DisturbLevel"`
+	DisturbLevel *int64 `json:"DisturbLevel,omitnil" name:"DisturbLevel"`
 
 	// 房产中介恶意标记等级
-	HouseAgentLevel *int64 `json:"HouseAgentLevel,omitempty" name:"HouseAgentLevel"`
+	HouseAgentLevel *int64 `json:"HouseAgentLevel,omitnil" name:"HouseAgentLevel"`
 
 	// 保险理财恶意标记等级
-	InsuranceLevel *int64 `json:"InsuranceLevel,omitempty" name:"InsuranceLevel"`
+	InsuranceLevel *int64 `json:"InsuranceLevel,omitnil" name:"InsuranceLevel"`
 
 	// 广告推销恶意标记等级
-	SalesLevel *int64 `json:"SalesLevel,omitempty" name:"SalesLevel"`
+	SalesLevel *int64 `json:"SalesLevel,omitnil" name:"SalesLevel"`
 
 	// 诈骗电话恶意标记等级
-	CheatLevel *int64 `json:"CheatLevel,omitempty" name:"CheatLevel"`
+	CheatLevel *int64 `json:"CheatLevel,omitnil" name:"CheatLevel"`
 }

@@ -15,22 +15,22 @@
 package v20190411
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type DescribeEntityRequestParams struct {
 	// 实体名称
-	EntityName *string `json:"EntityName,omitempty" name:"EntityName"`
+	EntityName *string `json:"EntityName,omitnil" name:"EntityName"`
 }
 
 type DescribeEntityRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实体名称
-	EntityName *string `json:"EntityName,omitempty" name:"EntityName"`
+	EntityName *string `json:"EntityName,omitnil" name:"EntityName"`
 }
 
 func (r *DescribeEntityRequest) ToJsonString() string {
@@ -55,10 +55,10 @@ func (r *DescribeEntityRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeEntityResponseParams struct {
 	// 返回查询实体相关信息
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeEntityResponse struct {
@@ -80,20 +80,20 @@ func (r *DescribeEntityResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRelationRequestParams struct {
 	// 输入第一个实体
-	LeftEntityName *string `json:"LeftEntityName,omitempty" name:"LeftEntityName"`
+	LeftEntityName *string `json:"LeftEntityName,omitnil" name:"LeftEntityName"`
 
 	// 输入第二个实体
-	RightEntityName *string `json:"RightEntityName,omitempty" name:"RightEntityName"`
+	RightEntityName *string `json:"RightEntityName,omitnil" name:"RightEntityName"`
 }
 
 type DescribeRelationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 输入第一个实体
-	LeftEntityName *string `json:"LeftEntityName,omitempty" name:"LeftEntityName"`
+	LeftEntityName *string `json:"LeftEntityName,omitnil" name:"LeftEntityName"`
 
 	// 输入第二个实体
-	RightEntityName *string `json:"RightEntityName,omitempty" name:"RightEntityName"`
+	RightEntityName *string `json:"RightEntityName,omitnil" name:"RightEntityName"`
 }
 
 func (r *DescribeRelationRequest) ToJsonString() string {
@@ -119,10 +119,10 @@ func (r *DescribeRelationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRelationResponseParams struct {
 	// 返回查询实体间的关系
-	Content []*EntityRelationContent `json:"Content,omitempty" name:"Content"`
+	Content []*EntityRelationContent `json:"Content,omitnil" name:"Content"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRelationResponse struct {
@@ -144,14 +144,14 @@ func (r *DescribeRelationResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTripleRequestParams struct {
 	// 三元组查询条件
-	TripleCondition *string `json:"TripleCondition,omitempty" name:"TripleCondition"`
+	TripleCondition *string `json:"TripleCondition,omitnil" name:"TripleCondition"`
 }
 
 type DescribeTripleRequest struct {
 	*tchttp.BaseRequest
 	
 	// 三元组查询条件
-	TripleCondition *string `json:"TripleCondition,omitempty" name:"TripleCondition"`
+	TripleCondition *string `json:"TripleCondition,omitnil" name:"TripleCondition"`
 }
 
 func (r *DescribeTripleRequest) ToJsonString() string {
@@ -176,10 +176,10 @@ func (r *DescribeTripleRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTripleResponseParams struct {
 	// 返回三元组信息
-	Content []*TripleContent `json:"Content,omitempty" name:"Content"`
+	Content []*TripleContent `json:"Content,omitnil" name:"Content"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTripleResponse struct {
@@ -200,47 +200,47 @@ func (r *DescribeTripleResponse) FromJsonString(s string) error {
 
 type EntityRelationContent struct {
 	// 实体关系查询返回关系的object
-	Object []*EntityRelationObject `json:"Object,omitempty" name:"Object"`
+	Object []*EntityRelationObject `json:"Object,omitnil" name:"Object"`
 
 	// 实体关系查询返回关系的subject
-	Subject []*EntityRelationSubject `json:"Subject,omitempty" name:"Subject"`
+	Subject []*EntityRelationSubject `json:"Subject,omitnil" name:"Subject"`
 
 	// 实体关系查询返回的关系名称
-	Relation *string `json:"Relation,omitempty" name:"Relation"`
+	Relation *string `json:"Relation,omitnil" name:"Relation"`
 }
 
 type EntityRelationObject struct {
 	// object对应id
-	Id []*string `json:"Id,omitempty" name:"Id"`
+	Id []*string `json:"Id,omitnil" name:"Id"`
 
 	// object对应name
-	Name []*string `json:"Name,omitempty" name:"Name"`
+	Name []*string `json:"Name,omitnil" name:"Name"`
 
 	// object对应popular值
-	Popular []*int64 `json:"Popular,omitempty" name:"Popular"`
+	Popular []*int64 `json:"Popular,omitnil" name:"Popular"`
 }
 
 type EntityRelationSubject struct {
 	// Subject对应id
-	Id []*string `json:"Id,omitempty" name:"Id"`
+	Id []*string `json:"Id,omitnil" name:"Id"`
 
 	// Subject对应name
-	Name []*string `json:"Name,omitempty" name:"Name"`
+	Name []*string `json:"Name,omitnil" name:"Name"`
 
 	// Subject对应popular
-	Popular []*int64 `json:"Popular,omitempty" name:"Popular"`
+	Popular []*int64 `json:"Popular,omitnil" name:"Popular"`
 }
 
 type TripleContent struct {
 	// 实体id
-	Id *string `json:"Id,omitempty" name:"Id"`
+	Id *string `json:"Id,omitnil" name:"Id"`
 
 	// 实体名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 实体order
-	Order *int64 `json:"Order,omitempty" name:"Order"`
+	Order *int64 `json:"Order,omitnil" name:"Order"`
 
 	// 实体流行度
-	Popular *int64 `json:"Popular,omitempty" name:"Popular"`
+	Popular *int64 `json:"Popular,omitnil" name:"Popular"`
 }

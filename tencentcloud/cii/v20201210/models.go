@@ -15,90 +15,90 @@
 package v20201210
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type CompareMetricsData struct {
 	// 短文准确率
-	ShortStructAccuracy *string `json:"ShortStructAccuracy,omitempty" name:"ShortStructAccuracy"`
+	ShortStructAccuracy *string `json:"ShortStructAccuracy,omitnil" name:"ShortStructAccuracy"`
 
 	// 短文召回率
-	ShortStructRecall *string `json:"ShortStructRecall,omitempty" name:"ShortStructRecall"`
+	ShortStructRecall *string `json:"ShortStructRecall,omitnil" name:"ShortStructRecall"`
 
 	// 长文结构化准确率
-	LongStructAccuracy *string `json:"LongStructAccuracy,omitempty" name:"LongStructAccuracy"`
+	LongStructAccuracy *string `json:"LongStructAccuracy,omitnil" name:"LongStructAccuracy"`
 
 	// 长文结构化召回率
-	LongStructRecall *string `json:"LongStructRecall,omitempty" name:"LongStructRecall"`
+	LongStructRecall *string `json:"LongStructRecall,omitnil" name:"LongStructRecall"`
 
 	// 长文提取准确率
-	LongContentAccuracy *string `json:"LongContentAccuracy,omitempty" name:"LongContentAccuracy"`
+	LongContentAccuracy *string `json:"LongContentAccuracy,omitnil" name:"LongContentAccuracy"`
 
 	// 长文提取召回率
-	LongContentRecall *string `json:"LongContentRecall,omitempty" name:"LongContentRecall"`
+	LongContentRecall *string `json:"LongContentRecall,omitnil" name:"LongContentRecall"`
 }
 
 // Predefined struct for user
 type CreateStructureTaskRequestParams struct {
 	// 保单号
-	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+	PolicyId *string `json:"PolicyId,omitnil" name:"PolicyId"`
 
 	// 客户号
-	CustomerId *string `json:"CustomerId,omitempty" name:"CustomerId"`
+	CustomerId *string `json:"CustomerId,omitnil" name:"CustomerId"`
 
 	// 客户姓名
-	CustomerName *string `json:"CustomerName,omitempty" name:"CustomerName"`
+	CustomerName *string `json:"CustomerName,omitnil" name:"CustomerName"`
 
 	// 文件类型，目前只支持体检报告类型，对应的值为：HealthReport
-	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+	TaskType *string `json:"TaskType,omitnil" name:"TaskType"`
 
 	// 报告年份
-	Year *string `json:"Year,omitempty" name:"Year"`
+	Year *string `json:"Year,omitnil" name:"Year"`
 
 	// 报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
-	FileList []*string `json:"FileList,omitempty" name:"FileList"`
+	FileList []*string `json:"FileList,omitnil" name:"FileList"`
 
 	// 险种，如果是体检报告类型，此参数是必填，类型说明如下：
 	// CriticalDiseaseInsurance:重疾险
 	// LifeInsurance：寿险
 	// AccidentInsurance：意外险
-	InsuranceTypes []*string `json:"InsuranceTypes,omitempty" name:"InsuranceTypes"`
+	InsuranceTypes []*string `json:"InsuranceTypes,omitnil" name:"InsuranceTypes"`
 
 	// 报告上传的图片内容数组，图片内容采用base64编码，需按顺序排列
-	ImageList []*string `json:"ImageList,omitempty" name:"ImageList"`
+	ImageList []*string `json:"ImageList,omitnil" name:"ImageList"`
 }
 
 type CreateStructureTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 保单号
-	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+	PolicyId *string `json:"PolicyId,omitnil" name:"PolicyId"`
 
 	// 客户号
-	CustomerId *string `json:"CustomerId,omitempty" name:"CustomerId"`
+	CustomerId *string `json:"CustomerId,omitnil" name:"CustomerId"`
 
 	// 客户姓名
-	CustomerName *string `json:"CustomerName,omitempty" name:"CustomerName"`
+	CustomerName *string `json:"CustomerName,omitnil" name:"CustomerName"`
 
 	// 文件类型，目前只支持体检报告类型，对应的值为：HealthReport
-	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+	TaskType *string `json:"TaskType,omitnil" name:"TaskType"`
 
 	// 报告年份
-	Year *string `json:"Year,omitempty" name:"Year"`
+	Year *string `json:"Year,omitnil" name:"Year"`
 
 	// 报告文件上传的地址列表，需按顺序排列。如果使用ImageList参数，置为空数组即可
-	FileList []*string `json:"FileList,omitempty" name:"FileList"`
+	FileList []*string `json:"FileList,omitnil" name:"FileList"`
 
 	// 险种，如果是体检报告类型，此参数是必填，类型说明如下：
 	// CriticalDiseaseInsurance:重疾险
 	// LifeInsurance：寿险
 	// AccidentInsurance：意外险
-	InsuranceTypes []*string `json:"InsuranceTypes,omitempty" name:"InsuranceTypes"`
+	InsuranceTypes []*string `json:"InsuranceTypes,omitnil" name:"InsuranceTypes"`
 
 	// 报告上传的图片内容数组，图片内容采用base64编码，需按顺序排列
-	ImageList []*string `json:"ImageList,omitempty" name:"ImageList"`
+	ImageList []*string `json:"ImageList,omitnil" name:"ImageList"`
 }
 
 func (r *CreateStructureTaskRequest) ToJsonString() string {
@@ -130,10 +130,10 @@ func (r *CreateStructureTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateStructureTaskResponseParams struct {
 	// 本次结构化任务的ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateStructureTaskResponse struct {
@@ -155,14 +155,14 @@ func (r *CreateStructureTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStructCompareDataRequestParams struct {
 	// 结构化任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type DescribeStructCompareDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 结构化任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *DescribeStructCompareDataRequest) ToJsonString() string {
@@ -187,37 +187,37 @@ func (r *DescribeStructCompareDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStructCompareDataResponseParams struct {
 	// 保单号
-	PolicyId *string `json:"PolicyId,omitempty" name:"PolicyId"`
+	PolicyId *string `json:"PolicyId,omitnil" name:"PolicyId"`
 
 	// 结构化任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 客户号
-	CustomerId *string `json:"CustomerId,omitempty" name:"CustomerId"`
+	CustomerId *string `json:"CustomerId,omitnil" name:"CustomerId"`
 
 	// 客户姓名
-	CustomerName *string `json:"CustomerName,omitempty" name:"CustomerName"`
+	CustomerName *string `json:"CustomerName,omitnil" name:"CustomerName"`
 
 	// 复核时间
-	ReviewTime *string `json:"ReviewTime,omitempty" name:"ReviewTime"`
+	ReviewTime *string `json:"ReviewTime,omitnil" name:"ReviewTime"`
 
 	// 算法识别结果
-	MachineResult *string `json:"MachineResult,omitempty" name:"MachineResult"`
+	MachineResult *string `json:"MachineResult,omitnil" name:"MachineResult"`
 
 	// 人工复核结果
-	ManualResult *string `json:"ManualResult,omitempty" name:"ManualResult"`
+	ManualResult *string `json:"ManualResult,omitnil" name:"ManualResult"`
 
 	// 结构化对比指标数据
-	Metrics *CompareMetricsData `json:"Metrics,omitempty" name:"Metrics"`
+	Metrics *CompareMetricsData `json:"Metrics,omitnil" name:"Metrics"`
 
 	// 新增项
-	NewItems *string `json:"NewItems,omitempty" name:"NewItems"`
+	NewItems *string `json:"NewItems,omitnil" name:"NewItems"`
 
 	// 修改项
-	ModifyItems *string `json:"ModifyItems,omitempty" name:"ModifyItems"`
+	ModifyItems *string `json:"ModifyItems,omitnil" name:"ModifyItems"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeStructCompareDataResponse struct {
@@ -239,14 +239,14 @@ func (r *DescribeStructCompareDataResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeStructureTaskResultRequestParams struct {
 	// 结构化任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type DescribeStructureTaskResultRequest struct {
 	*tchttp.BaseRequest
 	
 	// 结构化任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 func (r *DescribeStructureTaskResultRequest) ToJsonString() string {
@@ -274,14 +274,14 @@ type DescribeStructureTaskResultResponseParams struct {
 	// 0：返回成功
 	// 1：结果未生成
 	// 2：结果生成失败
-	Status *uint64 `json:"Status,omitempty" name:"Status"`
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 结构化识别结果数组，每个数组元素对应一个图片的结构化结果，顺序和输入参数的ImageList或FileList对应。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Results []*ResultObject `json:"Results,omitempty" name:"Results"`
+	Results []*ResultObject `json:"Results,omitnil" name:"Results"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeStructureTaskResultResponse struct {
@@ -302,8 +302,8 @@ func (r *DescribeStructureTaskResultResponse) FromJsonString(s string) error {
 
 type ResultObject struct {
 	// 图片质量分
-	Quality *float64 `json:"Quality,omitempty" name:"Quality"`
+	Quality *float64 `json:"Quality,omitnil" name:"Quality"`
 
 	// 由结构化算法结构化json转换的字符串，具体协议参见算法结构化结果协议
-	StructureResult *string `json:"StructureResult,omitempty" name:"StructureResult"`
+	StructureResult *string `json:"StructureResult,omitnil" name:"StructureResult"`
 }

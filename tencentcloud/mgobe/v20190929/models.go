@@ -15,28 +15,28 @@
 package v20190929
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type DismissRoomRequestParams struct {
 	// 表示游戏资源唯一 ID, 由后台自动分配, 无法修改。
-	GameId *string `json:"GameId,omitempty" name:"GameId"`
+	GameId *string `json:"GameId,omitnil" name:"GameId"`
 
 	// 表示游戏房间唯一ID。
-	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
 }
 
 type DismissRoomRequest struct {
 	*tchttp.BaseRequest
 	
 	// 表示游戏资源唯一 ID, 由后台自动分配, 无法修改。
-	GameId *string `json:"GameId,omitempty" name:"GameId"`
+	GameId *string `json:"GameId,omitnil" name:"GameId"`
 
 	// 表示游戏房间唯一ID。
-	RoomId *string `json:"RoomId,omitempty" name:"RoomId"`
+	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
 }
 
 func (r *DismissRoomRequest) ToJsonString() string {
@@ -62,7 +62,7 @@ func (r *DismissRoomRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DismissRoomResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DismissRoomResponse struct {

@@ -15,61 +15,61 @@
 package v20210811
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type CVSSV2Info struct {
 	// CVE评分。
-	CVSS *float64 `json:"CVSS,omitempty" name:"CVSS"`
+	CVSS *float64 `json:"CVSS,omitnil" name:"CVSS"`
 
 	// AccessVector 攻击途径。
 	// 取值范围：
 	// <li>NETWORK 远程</li>
 	// <li>ADJACENT_NETWORK 近邻</li>
 	// <li>LOCAL 本地</li>
-	AccessVector *string `json:"AccessVector,omitempty" name:"AccessVector"`
+	AccessVector *string `json:"AccessVector,omitnil" name:"AccessVector"`
 
 	// AccessComplexity 攻击复杂度。
 	// 取值范围：
 	// <li>HIGH 高</li>
 	// <li>MEDIUM 中</li>
 	// <li>LOW 低</li>
-	AccessComplexity *string `json:"AccessComplexity,omitempty" name:"AccessComplexity"`
+	AccessComplexity *string `json:"AccessComplexity,omitnil" name:"AccessComplexity"`
 
 	// Authentication 身份验证。
 	// 取值范围：
 	// <li>MULTIPLE 多系统认证</li>
 	// <li>SINGLE 单系统认证</li>
 	// <li>NONE 无</li>
-	Authentication *string `json:"Authentication,omitempty" name:"Authentication"`
+	Authentication *string `json:"Authentication,omitnil" name:"Authentication"`
 
 	// ConfidentialityImpact 机密性影响。
 	// 取值范围：
 	// <li>NONE 无</li>
 	// <li>PARTIAL 部分</li>
 	// <li>COMPLETE 完整</li>
-	ConImpact *string `json:"ConImpact,omitempty" name:"ConImpact"`
+	ConImpact *string `json:"ConImpact,omitnil" name:"ConImpact"`
 
 	// IntegrityImpact 完整性影响。
 	// 取值范围：
 	// <li>NONE 无</li>
 	// <li>PARTIAL 部分</li>
 	// <li>COMPLETE 完整</li>
-	IntegrityImpact *string `json:"IntegrityImpact,omitempty" name:"IntegrityImpact"`
+	IntegrityImpact *string `json:"IntegrityImpact,omitnil" name:"IntegrityImpact"`
 
 	// AvailabilityImpact 可用性影响。
 	// 取值范围：
 	// <li>NONE 无</li>
 	// <li>PARTIAL 部分</li>
 	// <li>COMPLETE 完整</li>
-	AvailabilityImpact *string `json:"AvailabilityImpact,omitempty" name:"AvailabilityImpact"`
+	AvailabilityImpact *string `json:"AvailabilityImpact,omitnil" name:"AvailabilityImpact"`
 }
 
 type CVSSV3Info struct {
 	// CVE评分。
-	CVSS *float64 `json:"CVSS,omitempty" name:"CVSS"`
+	CVSS *float64 `json:"CVSS,omitnil" name:"CVSS"`
 
 	// AttackVector 攻击途径。
 	// 取值范围：
@@ -77,121 +77,121 @@ type CVSSV3Info struct {
 	// <li>ADJACENT_NETWORK 近邻</li>
 	// <li>LOCAL 本地</li>
 	// <li>PHYSICAL 物理</li>
-	AttackVector *string `json:"AttackVector,omitempty" name:"AttackVector"`
+	AttackVector *string `json:"AttackVector,omitnil" name:"AttackVector"`
 
 	// AttackComplexity 攻击复杂度。
 	// 取值范围：
 	// <li>HIGH 高</li>
 	// <li>LOW 低</li>
-	AttackComplexity *string `json:"AttackComplexity,omitempty" name:"AttackComplexity"`
+	AttackComplexity *string `json:"AttackComplexity,omitnil" name:"AttackComplexity"`
 
 	// PrivilegesRequired 触发特权。
 	// 取值范围：
 	// <li>HIGH 高</li>
 	// <li>LOW 低</li>
 	// <li>NONE 无</li>
-	PrivilegesRequired *string `json:"PrivilegesRequired,omitempty" name:"PrivilegesRequired"`
+	PrivilegesRequired *string `json:"PrivilegesRequired,omitnil" name:"PrivilegesRequired"`
 
 	// UserInteraction 交互必要性。
 	// 取值范围：
 	// <li>NONE 无</li>
 	// <li>REQUIRED 需要</li>
-	UserInteraction *string `json:"UserInteraction,omitempty" name:"UserInteraction"`
+	UserInteraction *string `json:"UserInteraction,omitnil" name:"UserInteraction"`
 
 	// Scope 绕过安全边界。
 	// 取值范围：
 	// <li>UNCHANGED 否</li>
 	// <li>CHANGED 能</li>
-	Scope *string `json:"Scope,omitempty" name:"Scope"`
+	Scope *string `json:"Scope,omitnil" name:"Scope"`
 
 	// ConfidentialityImpact 机密性影响。
 	// 取值范围：
 	// <li>NONE 无</li>
 	// <li>LOW 低</li>
 	// <li>HIGH 高</li>
-	ConImpact *string `json:"ConImpact,omitempty" name:"ConImpact"`
+	ConImpact *string `json:"ConImpact,omitnil" name:"ConImpact"`
 
 	// IntegrityImpact 完整性影响。
 	// 取值范围：
 	// <li>NONE 无</li>
 	// <li>LOW 低</li>
 	// <li>HIGH 高</li>
-	IntegrityImpact *string `json:"IntegrityImpact,omitempty" name:"IntegrityImpact"`
+	IntegrityImpact *string `json:"IntegrityImpact,omitnil" name:"IntegrityImpact"`
 
 	// AvailabilityImpact 可用性影响。
 	// 取值范围：
 	// <li>NONE 无</li>
 	// <li>LOW 低</li>
 	// <li>HIGH 高</li>
-	AvailabilityImpact *string `json:"AvailabilityImpact,omitempty" name:"AvailabilityImpact"`
+	AvailabilityImpact *string `json:"AvailabilityImpact,omitnil" name:"AvailabilityImpact"`
 }
 
 type Component struct {
 	// 第三方组件的PURL
-	PURL *PURL `json:"PURL,omitempty" name:"PURL"`
+	PURL *PURL `json:"PURL,omitnil" name:"PURL"`
 
 	// 第三方组件的主页
-	Homepage *string `json:"Homepage,omitempty" name:"Homepage"`
+	Homepage *string `json:"Homepage,omitnil" name:"Homepage"`
 
 	// 第三方组件的简介
-	Summary *string `json:"Summary,omitempty" name:"Summary"`
+	Summary *string `json:"Summary,omitnil" name:"Summary"`
 
 	// 第三方组件的别名列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NicknameList []*string `json:"NicknameList,omitempty" name:"NicknameList"`
+	NicknameList []*string `json:"NicknameList,omitnil" name:"NicknameList"`
 
 	// 第三方组件的代码位置列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CodeLocationList []*string `json:"CodeLocationList,omitempty" name:"CodeLocationList"`
+	CodeLocationList []*string `json:"CodeLocationList,omitnil" name:"CodeLocationList"`
 
 	// 第三方组件的许可证表达式
-	LicenseExpression *string `json:"LicenseExpression,omitempty" name:"LicenseExpression"`
+	LicenseExpression *string `json:"LicenseExpression,omitnil" name:"LicenseExpression"`
 }
 
 type ComponentVulnerabilitySummary struct {
 	// 用于匹配漏洞的PURL
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PURL *PURL `json:"PURL,omitempty" name:"PURL"`
+	PURL *PURL `json:"PURL,omitnil" name:"PURL"`
 
 	// 该组件是否包含修复漏洞的官方补丁
-	CanBeFixed *bool `json:"CanBeFixed,omitempty" name:"CanBeFixed"`
+	CanBeFixed *bool `json:"CanBeFixed,omitnil" name:"CanBeFixed"`
 
 	// 修复漏洞的组件版本号
-	FixedVersion *string `json:"FixedVersion,omitempty" name:"FixedVersion"`
+	FixedVersion *string `json:"FixedVersion,omitnil" name:"FixedVersion"`
 
 	// 漏洞影响的组件版本号
-	AffectedVersion *string `json:"AffectedVersion,omitempty" name:"AffectedVersion"`
+	AffectedVersion *string `json:"AffectedVersion,omitnil" name:"AffectedVersion"`
 
 	// 漏洞影响组件
-	AffectedComponent *string `json:"AffectedComponent,omitempty" name:"AffectedComponent"`
+	AffectedComponent *string `json:"AffectedComponent,omitnil" name:"AffectedComponent"`
 
 	// 漏洞在该产品中的风险等级
 	// <li>Critical</li>
 	// <li>High</li>
 	// <li>Medium</li>
 	// <li>Low</li>
-	RiskLevel *string `json:"RiskLevel,omitempty" name:"RiskLevel"`
+	RiskLevel *string `json:"RiskLevel,omitnil" name:"RiskLevel"`
 }
 
 type ComponentVulnerabilityUnion struct {
 	// 漏洞概览信息
-	Summary *VulnerabilitySummary `json:"Summary,omitempty" name:"Summary"`
+	Summary *VulnerabilitySummary `json:"Summary,omitnil" name:"Summary"`
 
 	// 与组件相关的漏洞概览信息
-	SummaryInComponent *ComponentVulnerabilitySummary `json:"SummaryInComponent,omitempty" name:"SummaryInComponent"`
+	SummaryInComponent *ComponentVulnerabilitySummary `json:"SummaryInComponent,omitnil" name:"SummaryInComponent"`
 }
 
 // Predefined struct for user
 type DescribeKBComponentRequestParams struct {
 	// 组件的PURL
-	PURL *PURL `json:"PURL,omitempty" name:"PURL"`
+	PURL *PURL `json:"PURL,omitnil" name:"PURL"`
 }
 
 type DescribeKBComponentRequest struct {
 	*tchttp.BaseRequest
 	
 	// 组件的PURL
-	PURL *PURL `json:"PURL,omitempty" name:"PURL"`
+	PURL *PURL `json:"PURL,omitnil" name:"PURL"`
 }
 
 func (r *DescribeKBComponentRequest) ToJsonString() string {
@@ -216,10 +216,10 @@ func (r *DescribeKBComponentRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKBComponentResponseParams struct {
 	// 匹配的组件信息
-	Component *Component `json:"Component,omitempty" name:"Component"`
+	Component *Component `json:"Component,omitnil" name:"Component"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeKBComponentResponse struct {
@@ -241,14 +241,14 @@ func (r *DescribeKBComponentResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKBComponentVulnerabilityRequestParams struct {
 	// 组件的PURL，其中Name和Version为必填字段
-	PURL *PURL `json:"PURL,omitempty" name:"PURL"`
+	PURL *PURL `json:"PURL,omitnil" name:"PURL"`
 }
 
 type DescribeKBComponentVulnerabilityRequest struct {
 	*tchttp.BaseRequest
 	
 	// 组件的PURL，其中Name和Version为必填字段
-	PURL *PURL `json:"PURL,omitempty" name:"PURL"`
+	PURL *PURL `json:"PURL,omitnil" name:"PURL"`
 }
 
 func (r *DescribeKBComponentVulnerabilityRequest) ToJsonString() string {
@@ -274,10 +274,10 @@ func (r *DescribeKBComponentVulnerabilityRequest) FromJsonString(s string) error
 type DescribeKBComponentVulnerabilityResponseParams struct {
 	// 漏洞信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VulnerabilityList []*ComponentVulnerabilityUnion `json:"VulnerabilityList,omitempty" name:"VulnerabilityList"`
+	VulnerabilityList []*ComponentVulnerabilityUnion `json:"VulnerabilityList,omitnil" name:"VulnerabilityList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeKBComponentVulnerabilityResponse struct {
@@ -299,14 +299,14 @@ func (r *DescribeKBComponentVulnerabilityResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeKBLicenseRequestParams struct {
 	// License表达式
-	LicenseExpression *string `json:"LicenseExpression,omitempty" name:"LicenseExpression"`
+	LicenseExpression *string `json:"LicenseExpression,omitnil" name:"LicenseExpression"`
 }
 
 type DescribeKBLicenseRequest struct {
 	*tchttp.BaseRequest
 	
 	// License表达式
-	LicenseExpression *string `json:"LicenseExpression,omitempty" name:"LicenseExpression"`
+	LicenseExpression *string `json:"LicenseExpression,omitnil" name:"LicenseExpression"`
 }
 
 func (r *DescribeKBLicenseRequest) ToJsonString() string {
@@ -332,13 +332,13 @@ func (r *DescribeKBLicenseRequest) FromJsonString(s string) error {
 type DescribeKBLicenseResponseParams struct {
 	// 许可证列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LicenseList []*LicenseUnion `json:"LicenseList,omitempty" name:"LicenseList"`
+	LicenseList []*LicenseUnion `json:"LicenseList,omitnil" name:"LicenseList"`
 
 	// 用于匹配的License表达式
-	NormalizedLicenseExpression *string `json:"NormalizedLicenseExpression,omitempty" name:"NormalizedLicenseExpression"`
+	NormalizedLicenseExpression *string `json:"NormalizedLicenseExpression,omitnil" name:"NormalizedLicenseExpression"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeKBLicenseResponse struct {
@@ -360,20 +360,20 @@ func (r *DescribeKBLicenseResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeKBVulnerabilityRequestParams struct {
 	// CVE ID列表（不能与Vul ID同时存在）
-	CVEID []*string `json:"CVEID,omitempty" name:"CVEID"`
+	CVEID []*string `json:"CVEID,omitnil" name:"CVEID"`
 
 	// Vul ID列表（不能与CVE ID 同时存在）
-	VulID []*string `json:"VulID,omitempty" name:"VulID"`
+	VulID []*string `json:"VulID,omitnil" name:"VulID"`
 }
 
 type DescribeKBVulnerabilityRequest struct {
 	*tchttp.BaseRequest
 	
 	// CVE ID列表（不能与Vul ID同时存在）
-	CVEID []*string `json:"CVEID,omitempty" name:"CVEID"`
+	CVEID []*string `json:"CVEID,omitnil" name:"CVEID"`
 
 	// Vul ID列表（不能与CVE ID 同时存在）
-	VulID []*string `json:"VulID,omitempty" name:"VulID"`
+	VulID []*string `json:"VulID,omitnil" name:"VulID"`
 }
 
 func (r *DescribeKBVulnerabilityRequest) ToJsonString() string {
@@ -400,10 +400,10 @@ func (r *DescribeKBVulnerabilityRequest) FromJsonString(s string) error {
 type DescribeKBVulnerabilityResponseParams struct {
 	// 漏洞详细信息列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VulnerabilityDetailList []*VulnerabilityUnion `json:"VulnerabilityDetailList,omitempty" name:"VulnerabilityDetailList"`
+	VulnerabilityDetailList []*VulnerabilityUnion `json:"VulnerabilityDetailList,omitnil" name:"VulnerabilityDetailList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeKBVulnerabilityResponse struct {
@@ -424,69 +424,69 @@ func (r *DescribeKBVulnerabilityResponse) FromJsonString(s string) error {
 
 type LicenseDetail struct {
 	// 许可证内容
-	Content *string `json:"Content,omitempty" name:"Content"`
+	Content *string `json:"Content,omitnil" name:"Content"`
 
 	// 许可证允许信息列表
-	ConditionSet []*LicenseRestriction `json:"ConditionSet,omitempty" name:"ConditionSet"`
+	ConditionSet []*LicenseRestriction `json:"ConditionSet,omitnil" name:"ConditionSet"`
 
 	// 许可证要求信息列表
-	ForbiddenSet []*LicenseRestriction `json:"ForbiddenSet,omitempty" name:"ForbiddenSet"`
+	ForbiddenSet []*LicenseRestriction `json:"ForbiddenSet,omitnil" name:"ForbiddenSet"`
 
 	// 许可证禁止信息列表
-	PermissionSet []*LicenseRestriction `json:"PermissionSet,omitempty" name:"PermissionSet"`
+	PermissionSet []*LicenseRestriction `json:"PermissionSet,omitnil" name:"PermissionSet"`
 }
 
 type LicenseRestriction struct {
 	// license约束的名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// license约束的描述。
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 }
 
 type LicenseSummary struct {
 	// 许可证标识符
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 许可证的SPDX标识符，见 https://spdx.org/licenses/
-	SPDXKey *string `json:"SPDXKey,omitempty" name:"SPDXKey"`
+	SPDXKey *string `json:"SPDXKey,omitnil" name:"SPDXKey"`
 
 	// 许可证短名称
-	ShortName *string `json:"ShortName,omitempty" name:"ShortName"`
+	ShortName *string `json:"ShortName,omitnil" name:"ShortName"`
 
 	// 许可证完整名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// License风险等级
 	// <li>NotDefined</li>
 	// <li>LowRisk</li>
 	// <li>MediumRisk</li>
 	// <li>HighRisk</li>
-	Risk *string `json:"Risk,omitempty" name:"Risk"`
+	Risk *string `json:"Risk,omitnil" name:"Risk"`
 
 	// 许可证来源URL
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 }
 
 type LicenseUnion struct {
 	// 许可证概览信息
-	LicenseSummary *LicenseSummary `json:"LicenseSummary,omitempty" name:"LicenseSummary"`
+	LicenseSummary *LicenseSummary `json:"LicenseSummary,omitnil" name:"LicenseSummary"`
 
 	// 许可证详细信息
-	LicenseDetail *LicenseDetail `json:"LicenseDetail,omitempty" name:"LicenseDetail"`
+	LicenseDetail *LicenseDetail `json:"LicenseDetail,omitnil" name:"LicenseDetail"`
 }
 
 // Predefined struct for user
 type MatchKBPURLListRequestParams struct {
 	// SHA1。
-	SHA1 *string `json:"SHA1,omitempty" name:"SHA1"`
+	SHA1 *string `json:"SHA1,omitnil" name:"SHA1"`
 }
 
 type MatchKBPURLListRequest struct {
 	*tchttp.BaseRequest
 	
 	// SHA1。
-	SHA1 *string `json:"SHA1,omitempty" name:"SHA1"`
+	SHA1 *string `json:"SHA1,omitnil" name:"SHA1"`
 }
 
 func (r *MatchKBPURLListRequest) ToJsonString() string {
@@ -511,13 +511,13 @@ func (r *MatchKBPURLListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type MatchKBPURLListResponseParams struct {
 	// 组件列表。
-	PURLList []*PURL `json:"PURLList,omitempty" name:"PURLList"`
+	PURLList []*PURL `json:"PURLList,omitnil" name:"PURLList"`
 
 	// 是否命中数据库。
-	Hit *bool `json:"Hit,omitempty" name:"Hit"`
+	Hit *bool `json:"Hit,omitnil" name:"Hit"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type MatchKBPURLListResponse struct {
@@ -538,104 +538,104 @@ func (r *MatchKBPURLListResponse) FromJsonString(s string) error {
 
 type PURL struct {
 	// 组件名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 组件所属的类型，如：github, gitlab, generic, deb, rpm, maven 等
-	Protocol *string `json:"Protocol,omitempty" name:"Protocol"`
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 
 	// 组件名的前缀名，如github和gitlab的用户名，deb的操作系统，maven包的group id等
-	Namespace *string `json:"Namespace,omitempty" name:"Namespace"`
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 修饰组件的额外属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Qualifiers []*Qualifier `json:"Qualifiers,omitempty" name:"Qualifiers"`
+	Qualifiers []*Qualifier `json:"Qualifiers,omitnil" name:"Qualifiers"`
 
 	// 相对于组件包根位置的子目录
-	Subpath *string `json:"Subpath,omitempty" name:"Subpath"`
+	Subpath *string `json:"Subpath,omitnil" name:"Subpath"`
 
 	// 组件版本号
-	Version *string `json:"Version,omitempty" name:"Version"`
+	Version *string `json:"Version,omitnil" name:"Version"`
 }
 
 type Qualifier struct {
 	// 额外属性的名称。
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 额外属性的值。
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type VulnerabilityDetail struct {
 	// 漏洞类别
-	Category *string `json:"Category,omitempty" name:"Category"`
+	Category *string `json:"Category,omitnil" name:"Category"`
 
 	// 漏洞分类
-	CategoryType *string `json:"CategoryType,omitempty" name:"CategoryType"`
+	CategoryType *string `json:"CategoryType,omitnil" name:"CategoryType"`
 
 	// 漏洞描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 漏洞官方解决方案
-	OfficialSolution *string `json:"OfficialSolution,omitempty" name:"OfficialSolution"`
+	OfficialSolution *string `json:"OfficialSolution,omitnil" name:"OfficialSolution"`
 
 	// 漏洞信息参考列表
-	ReferenceList []*string `json:"ReferenceList,omitempty" name:"ReferenceList"`
+	ReferenceList []*string `json:"ReferenceList,omitnil" name:"ReferenceList"`
 
 	// 漏洞防御方案
-	DefenseSolution *string `json:"DefenseSolution,omitempty" name:"DefenseSolution"`
+	DefenseSolution *string `json:"DefenseSolution,omitnil" name:"DefenseSolution"`
 
 	// 漏洞CVSSv2信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CVSSv2Info *CVSSV2Info `json:"CVSSv2Info,omitempty" name:"CVSSv2Info"`
+	CVSSv2Info *CVSSV2Info `json:"CVSSv2Info,omitnil" name:"CVSSv2Info"`
 
 	// 漏洞CVSSv3信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CVSSv3Info *CVSSV3Info `json:"CVSSv3Info,omitempty" name:"CVSSv3Info"`
+	CVSSv3Info *CVSSV3Info `json:"CVSSv3Info,omitnil" name:"CVSSv3Info"`
 
 	// 漏洞提交时间
-	SubmitTime *string `json:"SubmitTime,omitempty" name:"SubmitTime"`
+	SubmitTime *string `json:"SubmitTime,omitnil" name:"SubmitTime"`
 
 	// CWE编号
-	CWEID *string `json:"CWEID,omitempty" name:"CWEID"`
+	CWEID *string `json:"CWEID,omitnil" name:"CWEID"`
 
 	// 漏洞CVSSv2向量
-	CVSSv2Vector *string `json:"CVSSv2Vector,omitempty" name:"CVSSv2Vector"`
+	CVSSv2Vector *string `json:"CVSSv2Vector,omitnil" name:"CVSSv2Vector"`
 
 	// 漏洞CVSSv3向量
-	CVSSv3Vector *string `json:"CVSSv3Vector,omitempty" name:"CVSSv3Vector"`
+	CVSSv3Vector *string `json:"CVSSv3Vector,omitnil" name:"CVSSv3Vector"`
 }
 
 type VulnerabilitySummary struct {
 	// 漏洞ID
-	VulID *string `json:"VulID,omitempty" name:"VulID"`
+	VulID *string `json:"VulID,omitnil" name:"VulID"`
 
 	// 漏洞所属CVE编号
-	CVEID *string `json:"CVEID,omitempty" name:"CVEID"`
+	CVEID *string `json:"CVEID,omitnil" name:"CVEID"`
 
 	// 漏洞所属CNVD编号
-	CNVDID *string `json:"CNVDID,omitempty" name:"CNVDID"`
+	CNVDID *string `json:"CNVDID,omitnil" name:"CNVDID"`
 
 	// 漏洞所属CNNVD编号
-	CNNVDID *string `json:"CNNVDID,omitempty" name:"CNNVDID"`
+	CNNVDID *string `json:"CNNVDID,omitnil" name:"CNNVDID"`
 
 	// 漏洞名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 该漏洞是否是需重点关注的漏洞
-	IsSuggest *bool `json:"IsSuggest,omitempty" name:"IsSuggest"`
+	IsSuggest *bool `json:"IsSuggest,omitnil" name:"IsSuggest"`
 
 	// 漏洞风险等级
 	// <li>Critical</li>
 	// <li>High</li>
 	// <li>Medium</li>
 	// <li>Low</li>
-	Severity *string `json:"Severity,omitempty" name:"Severity"`
+	Severity *string `json:"Severity,omitnil" name:"Severity"`
 }
 
 type VulnerabilityUnion struct {
 	// 漏洞概览信息
-	Summary *VulnerabilitySummary `json:"Summary,omitempty" name:"Summary"`
+	Summary *VulnerabilitySummary `json:"Summary,omitnil" name:"Summary"`
 
 	// 漏洞详细信息
-	Detail *VulnerabilityDetail `json:"Detail,omitempty" name:"Detail"`
+	Detail *VulnerabilityDetail `json:"Detail,omitnil" name:"Detail"`
 }

@@ -15,40 +15,40 @@
 package v20180504
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type DataManipulationRequestParams struct {
 	// 操作类型，add或del
-	OpType *string `json:"OpType,omitempty" name:"OpType"`
+	OpType *string `json:"OpType,omitnil" name:"OpType"`
 
 	// 数据编码类型
-	Encoding *string `json:"Encoding,omitempty" name:"Encoding"`
+	Encoding *string `json:"Encoding,omitnil" name:"Encoding"`
 
 	// 数据
-	Contents *string `json:"Contents,omitempty" name:"Contents"`
+	Contents *string `json:"Contents,omitnil" name:"Contents"`
 
 	// 应用Id
-	ResourceId *uint64 `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *uint64 `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 type DataManipulationRequest struct {
 	*tchttp.BaseRequest
 	
 	// 操作类型，add或del
-	OpType *string `json:"OpType,omitempty" name:"OpType"`
+	OpType *string `json:"OpType,omitnil" name:"OpType"`
 
 	// 数据编码类型
-	Encoding *string `json:"Encoding,omitempty" name:"Encoding"`
+	Encoding *string `json:"Encoding,omitnil" name:"Encoding"`
 
 	// 数据
-	Contents *string `json:"Contents,omitempty" name:"Contents"`
+	Contents *string `json:"Contents,omitnil" name:"Contents"`
 
 	// 应用Id
-	ResourceId *uint64 `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *uint64 `json:"ResourceId,omitnil" name:"ResourceId"`
 }
 
 func (r *DataManipulationRequest) ToJsonString() string {
@@ -76,10 +76,10 @@ func (r *DataManipulationRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DataManipulationResponseParams struct {
 	// 返回信息
-	RetMsg *string `json:"RetMsg,omitempty" name:"RetMsg"`
+	RetMsg *string `json:"RetMsg,omitnil" name:"RetMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DataManipulationResponse struct {
@@ -101,146 +101,146 @@ func (r *DataManipulationResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DataSearchRequestParams struct {
 	// 云搜的业务ID，用以表明当前数据请求的业务
-	ResourceId *uint64 `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *uint64 `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 检索串
-	SearchQuery *string `json:"SearchQuery,omitempty" name:"SearchQuery"`
+	SearchQuery *string `json:"SearchQuery,omitnil" name:"SearchQuery"`
 
 	// 当前页，从第0页开始计算
-	PageId *uint64 `json:"PageId,omitempty" name:"PageId"`
+	PageId *uint64 `json:"PageId,omitnil" name:"PageId"`
 
 	// 每页结果数
-	NumPerPage *uint64 `json:"NumPerPage,omitempty" name:"NumPerPage"`
+	NumPerPage *uint64 `json:"NumPerPage,omitnil" name:"NumPerPage"`
 
 	// 当前检索号，用于定位问题，建议指定并且全局唯一
-	SearchId *string `json:"SearchId,omitempty" name:"SearchId"`
+	SearchId *string `json:"SearchId,omitnil" name:"SearchId"`
 
 	// 请求编码，0表示utf8，1表示gbk，建议指定
-	QueryEncode *uint64 `json:"QueryEncode,omitempty" name:"QueryEncode"`
+	QueryEncode *uint64 `json:"QueryEncode,omitnil" name:"QueryEncode"`
 
 	// 排序类型
-	RankType *uint64 `json:"RankType,omitempty" name:"RankType"`
+	RankType *uint64 `json:"RankType,omitnil" name:"RankType"`
 
 	// 数值过滤，结果中按属性过滤
-	NumFilter *string `json:"NumFilter,omitempty" name:"NumFilter"`
+	NumFilter *string `json:"NumFilter,omitnil" name:"NumFilter"`
 
 	// 分类过滤，导航类检索请求
-	ClFilter *string `json:"ClFilter,omitempty" name:"ClFilter"`
+	ClFilter *string `json:"ClFilter,omitnil" name:"ClFilter"`
 
 	// 检索用户相关字段
-	Extra *string `json:"Extra,omitempty" name:"Extra"`
+	Extra *string `json:"Extra,omitnil" name:"Extra"`
 
 	// 检索来源
-	SourceId *uint64 `json:"SourceId,omitempty" name:"SourceId"`
+	SourceId *uint64 `json:"SourceId,omitnil" name:"SourceId"`
 
 	// 是否进行二次检索，0关闭，1打开
-	SecondSearch *uint64 `json:"SecondSearch,omitempty" name:"SecondSearch"`
+	SecondSearch *uint64 `json:"SecondSearch,omitnil" name:"SecondSearch"`
 
 	// 指定返回最大篇数，无特殊原因不建议指定
-	MaxDocReturn *uint64 `json:"MaxDocReturn,omitempty" name:"MaxDocReturn"`
+	MaxDocReturn *uint64 `json:"MaxDocReturn,omitnil" name:"MaxDocReturn"`
 
 	// 是否smartbox检索，0关闭，1打开
-	IsSmartbox *uint64 `json:"IsSmartbox,omitempty" name:"IsSmartbox"`
+	IsSmartbox *uint64 `json:"IsSmartbox,omitnil" name:"IsSmartbox"`
 
 	// 是否打开高红标亮，0关闭，1打开
-	EnableAbsHighlight *uint64 `json:"EnableAbsHighlight,omitempty" name:"EnableAbsHighlight"`
+	EnableAbsHighlight *uint64 `json:"EnableAbsHighlight,omitnil" name:"EnableAbsHighlight"`
 
 	// 指定访问QC纠错业务ID
-	QcBid *uint64 `json:"QcBid,omitempty" name:"QcBid"`
+	QcBid *uint64 `json:"QcBid,omitnil" name:"QcBid"`
 
 	// 按指定字段进行group by，只能对数值字段进行操作
-	GroupBy *string `json:"GroupBy,omitempty" name:"GroupBy"`
+	GroupBy *string `json:"GroupBy,omitnil" name:"GroupBy"`
 
 	// 按指定字段进行distinct，只能对数值字段进行操作
-	Distinct *string `json:"Distinct,omitempty" name:"Distinct"`
+	Distinct *string `json:"Distinct,omitnil" name:"Distinct"`
 
 	// 高级排序参数，具体参见高级排序说明
-	L4RankExpression *string `json:"L4RankExpression,omitempty" name:"L4RankExpression"`
+	L4RankExpression *string `json:"L4RankExpression,omitnil" name:"L4RankExpression"`
 
 	// 高级排序参数，具体参见高级排序说明
-	MatchValue *string `json:"MatchValue,omitempty" name:"MatchValue"`
+	MatchValue *string `json:"MatchValue,omitnil" name:"MatchValue"`
 
 	// 经度信息
-	Longitude *float64 `json:"Longitude,omitempty" name:"Longitude"`
+	Longitude *float64 `json:"Longitude,omitnil" name:"Longitude"`
 
 	// 纬度信息
-	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
+	Latitude *float64 `json:"Latitude,omitnil" name:"Latitude"`
 
 	// 分类过滤并集
-	MultiFilter []*string `json:"MultiFilter,omitempty" name:"MultiFilter"`
+	MultiFilter []*string `json:"MultiFilter,omitnil" name:"MultiFilter"`
 }
 
 type DataSearchRequest struct {
 	*tchttp.BaseRequest
 	
 	// 云搜的业务ID，用以表明当前数据请求的业务
-	ResourceId *uint64 `json:"ResourceId,omitempty" name:"ResourceId"`
+	ResourceId *uint64 `json:"ResourceId,omitnil" name:"ResourceId"`
 
 	// 检索串
-	SearchQuery *string `json:"SearchQuery,omitempty" name:"SearchQuery"`
+	SearchQuery *string `json:"SearchQuery,omitnil" name:"SearchQuery"`
 
 	// 当前页，从第0页开始计算
-	PageId *uint64 `json:"PageId,omitempty" name:"PageId"`
+	PageId *uint64 `json:"PageId,omitnil" name:"PageId"`
 
 	// 每页结果数
-	NumPerPage *uint64 `json:"NumPerPage,omitempty" name:"NumPerPage"`
+	NumPerPage *uint64 `json:"NumPerPage,omitnil" name:"NumPerPage"`
 
 	// 当前检索号，用于定位问题，建议指定并且全局唯一
-	SearchId *string `json:"SearchId,omitempty" name:"SearchId"`
+	SearchId *string `json:"SearchId,omitnil" name:"SearchId"`
 
 	// 请求编码，0表示utf8，1表示gbk，建议指定
-	QueryEncode *uint64 `json:"QueryEncode,omitempty" name:"QueryEncode"`
+	QueryEncode *uint64 `json:"QueryEncode,omitnil" name:"QueryEncode"`
 
 	// 排序类型
-	RankType *uint64 `json:"RankType,omitempty" name:"RankType"`
+	RankType *uint64 `json:"RankType,omitnil" name:"RankType"`
 
 	// 数值过滤，结果中按属性过滤
-	NumFilter *string `json:"NumFilter,omitempty" name:"NumFilter"`
+	NumFilter *string `json:"NumFilter,omitnil" name:"NumFilter"`
 
 	// 分类过滤，导航类检索请求
-	ClFilter *string `json:"ClFilter,omitempty" name:"ClFilter"`
+	ClFilter *string `json:"ClFilter,omitnil" name:"ClFilter"`
 
 	// 检索用户相关字段
-	Extra *string `json:"Extra,omitempty" name:"Extra"`
+	Extra *string `json:"Extra,omitnil" name:"Extra"`
 
 	// 检索来源
-	SourceId *uint64 `json:"SourceId,omitempty" name:"SourceId"`
+	SourceId *uint64 `json:"SourceId,omitnil" name:"SourceId"`
 
 	// 是否进行二次检索，0关闭，1打开
-	SecondSearch *uint64 `json:"SecondSearch,omitempty" name:"SecondSearch"`
+	SecondSearch *uint64 `json:"SecondSearch,omitnil" name:"SecondSearch"`
 
 	// 指定返回最大篇数，无特殊原因不建议指定
-	MaxDocReturn *uint64 `json:"MaxDocReturn,omitempty" name:"MaxDocReturn"`
+	MaxDocReturn *uint64 `json:"MaxDocReturn,omitnil" name:"MaxDocReturn"`
 
 	// 是否smartbox检索，0关闭，1打开
-	IsSmartbox *uint64 `json:"IsSmartbox,omitempty" name:"IsSmartbox"`
+	IsSmartbox *uint64 `json:"IsSmartbox,omitnil" name:"IsSmartbox"`
 
 	// 是否打开高红标亮，0关闭，1打开
-	EnableAbsHighlight *uint64 `json:"EnableAbsHighlight,omitempty" name:"EnableAbsHighlight"`
+	EnableAbsHighlight *uint64 `json:"EnableAbsHighlight,omitnil" name:"EnableAbsHighlight"`
 
 	// 指定访问QC纠错业务ID
-	QcBid *uint64 `json:"QcBid,omitempty" name:"QcBid"`
+	QcBid *uint64 `json:"QcBid,omitnil" name:"QcBid"`
 
 	// 按指定字段进行group by，只能对数值字段进行操作
-	GroupBy *string `json:"GroupBy,omitempty" name:"GroupBy"`
+	GroupBy *string `json:"GroupBy,omitnil" name:"GroupBy"`
 
 	// 按指定字段进行distinct，只能对数值字段进行操作
-	Distinct *string `json:"Distinct,omitempty" name:"Distinct"`
+	Distinct *string `json:"Distinct,omitnil" name:"Distinct"`
 
 	// 高级排序参数，具体参见高级排序说明
-	L4RankExpression *string `json:"L4RankExpression,omitempty" name:"L4RankExpression"`
+	L4RankExpression *string `json:"L4RankExpression,omitnil" name:"L4RankExpression"`
 
 	// 高级排序参数，具体参见高级排序说明
-	MatchValue *string `json:"MatchValue,omitempty" name:"MatchValue"`
+	MatchValue *string `json:"MatchValue,omitnil" name:"MatchValue"`
 
 	// 经度信息
-	Longitude *float64 `json:"Longitude,omitempty" name:"Longitude"`
+	Longitude *float64 `json:"Longitude,omitnil" name:"Longitude"`
 
 	// 纬度信息
-	Latitude *float64 `json:"Latitude,omitempty" name:"Latitude"`
+	Latitude *float64 `json:"Latitude,omitnil" name:"Latitude"`
 
 	// 分类过滤并集
-	MultiFilter []*string `json:"MultiFilter,omitempty" name:"MultiFilter"`
+	MultiFilter []*string `json:"MultiFilter,omitnil" name:"MultiFilter"`
 }
 
 func (r *DataSearchRequest) ToJsonString() string {
@@ -287,10 +287,10 @@ func (r *DataSearchRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DataSearchResponseParams struct {
 	// 数据返回信息
-	RetMsg *string `json:"RetMsg,omitempty" name:"RetMsg"`
+	RetMsg *string `json:"RetMsg,omitnil" name:"RetMsg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DataSearchResponse struct {

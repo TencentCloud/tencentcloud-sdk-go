@@ -15,169 +15,169 @@
 package v20190823
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type CallBackCdr struct {
 	// 呼叫通话 ID
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 主叫号码
-	Src *string `json:"Src,omitempty" name:"Src"`
+	Src *string `json:"Src,omitnil" name:"Src"`
 
 	// 被叫号码
-	Dst *string `json:"Dst,omitempty" name:"Dst"`
+	Dst *string `json:"Dst,omitnil" name:"Dst"`
 
 	// 主叫呼叫开始时间
-	StartSrcCallTime *string `json:"StartSrcCallTime,omitempty" name:"StartSrcCallTime"`
+	StartSrcCallTime *string `json:"StartSrcCallTime,omitnil" name:"StartSrcCallTime"`
 
 	// 主叫响铃开始时间
-	StartSrcRingTime *string `json:"StartSrcRingTime,omitempty" name:"StartSrcRingTime"`
+	StartSrcRingTime *string `json:"StartSrcRingTime,omitnil" name:"StartSrcRingTime"`
 
 	// 主叫接听时间
-	SrcAcceptTime *string `json:"SrcAcceptTime,omitempty" name:"SrcAcceptTime"`
+	SrcAcceptTime *string `json:"SrcAcceptTime,omitnil" name:"SrcAcceptTime"`
 
 	// 被叫呼叫开始时间
-	StartDstCallTime *string `json:"StartDstCallTime,omitempty" name:"StartDstCallTime"`
+	StartDstCallTime *string `json:"StartDstCallTime,omitnil" name:"StartDstCallTime"`
 
 	// 被叫响铃开始时间
-	StartDstRingTime *string `json:"StartDstRingTime,omitempty" name:"StartDstRingTime"`
+	StartDstRingTime *string `json:"StartDstRingTime,omitnil" name:"StartDstRingTime"`
 
 	// 被叫接听时间
-	DstAcceptTime *string `json:"DstAcceptTime,omitempty" name:"DstAcceptTime"`
+	DstAcceptTime *string `json:"DstAcceptTime,omitnil" name:"DstAcceptTime"`
 
 	// 用户挂机通话结束时间
-	EndCallTime *string `json:"EndCallTime,omitempty" name:"EndCallTime"`
+	EndCallTime *string `json:"EndCallTime,omitnil" name:"EndCallTime"`
 
 	// 通话最后状态：0：未知状态 1：正常通话 2：主叫未接 3：主叫接听，被叫未接 4：主叫未接通 5：被叫未接通
-	CallEndStatus *string `json:"CallEndStatus,omitempty" name:"CallEndStatus"`
+	CallEndStatus *string `json:"CallEndStatus,omitnil" name:"CallEndStatus"`
 
 	// 通话计费时间
-	Duration *string `json:"Duration,omitempty" name:"Duration"`
+	Duration *string `json:"Duration,omitnil" name:"Duration"`
 
 	// 录音 URL，如果不录音或录音失败，该值为空
-	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
+	RecordUrl *string `json:"RecordUrl,omitnil" name:"RecordUrl"`
 
 	// 通话类型(1: VOIP 2:IP TO PSTN 3: PSTN TO PSTN)，如果话单中没有该字段，默认值为回拨 3 (PSTN TO PSTN)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CallType *string `json:"CallType,omitempty" name:"CallType"`
+	CallType *string `json:"CallType,omitnil" name:"CallType"`
 
 	// 同回拨请求中的 bizId，如果回拨请求中带 bizId 会有该字段返回
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BizId *string `json:"BizId,omitempty" name:"BizId"`
+	BizId *string `json:"BizId,omitnil" name:"BizId"`
 
 	// 订单 ID,最大长度不超过 64 个字节，对于一些有订单状态 App 相关应用（如达人帮接入 App 应用)，该字段只在帐单中带上，其它回调不附带该字段
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
 }
 
 type CallBackPhoneCode struct {
 	// 国家码，统一以 00 开头
-	Nation *string `json:"Nation,omitempty" name:"Nation"`
+	Nation *string `json:"Nation,omitnil" name:"Nation"`
 
 	// 号码（固话区号前加 0，如075586013388）
-	Phone *string `json:"Phone,omitempty" name:"Phone"`
+	Phone *string `json:"Phone,omitnil" name:"Phone"`
 }
 
 // Predefined struct for user
 type CreateCallBackRequestParams struct {
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 主叫号码(必须为 11 位手机号，号码前加 0086，如 008613631686024)
-	Src *string `json:"Src,omitempty" name:"Src"`
+	Src *string `json:"Src,omitnil" name:"Src"`
 
 	// 被叫号码(必须为 11 位手机或固话号码,号码前加 0086，如008613631686024，固话如：0086075586013388)
-	Dst *string `json:"Dst,omitempty" name:"Dst"`
+	Dst *string `json:"Dst,omitnil" name:"Dst"`
 
 	// 主叫显示系统分配的固话号码，如不填显示随机分配号码
-	SrcDisplayNum *string `json:"SrcDisplayNum,omitempty" name:"SrcDisplayNum"`
+	SrcDisplayNum *string `json:"SrcDisplayNum,omitnil" name:"SrcDisplayNum"`
 
 	// 被叫显示系统分配的固话号码，如不填显示随机分配号码
-	DstDisplayNum *string `json:"DstDisplayNum,omitempty" name:"DstDisplayNum"`
+	DstDisplayNum *string `json:"DstDisplayNum,omitnil" name:"DstDisplayNum"`
 
 	// 是否录音，0 表示不录音，1 表示录音。默认为不录音
-	Record *string `json:"Record,omitempty" name:"Record"`
+	Record *string `json:"Record,omitnil" name:"Record"`
 
 	// 允许最大通话时间，不填默认为 30 分钟（单位：分钟）
-	MaxAllowTime *string `json:"MaxAllowTime,omitempty" name:"MaxAllowTime"`
+	MaxAllowTime *string `json:"MaxAllowTime,omitnil" name:"MaxAllowTime"`
 
 	// 主叫发起呼叫状态：1 被叫发起呼叫状态：256 主叫响铃状态：2 被叫响铃状态：512 主叫接听状态：4 被叫接听状态：1024 主叫拒绝接听状态：8 被叫拒绝接听状态：2048 主叫正常挂机状态：16 被叫正常挂机状态：4096 主叫呼叫异常：32 被叫呼叫异常：8192
 	// 例如：当值为 0：表示所有状态不需要推送；当值为 4：表示只要推送主叫接听状态；当值为 16191：表示所有状态都需要推送(上面所有值和)
-	StatusFlag *string `json:"StatusFlag,omitempty" name:"StatusFlag"`
+	StatusFlag *string `json:"StatusFlag,omitnil" name:"StatusFlag"`
 
 	// 状态回调通知地址，正式环境可以配置默认推送地址
-	StatusUrl *string `json:"StatusUrl,omitempty" name:"StatusUrl"`
+	StatusUrl *string `json:"StatusUrl,omitnil" name:"StatusUrl"`
 
 	// 话单回调通知地址，正式环境可以配置默认推送地址
-	HangupUrl *string `json:"HangupUrl,omitempty" name:"HangupUrl"`
+	HangupUrl *string `json:"HangupUrl,omitnil" name:"HangupUrl"`
 
 	// 录单 URL 回调通知地址，正式环境可以配置默认推送地址
-	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
+	RecordUrl *string `json:"RecordUrl,omitnil" name:"RecordUrl"`
 
 	// 业务应用 key，业务用该 key 可以区分内部业务或客户产品等，该 key 需保证在该 appId 下全局唯一，最大长度不超过 64 个字节，bizId 只能包含数字、字母。
-	BizId *string `json:"BizId,omitempty" name:"BizId"`
+	BizId *string `json:"BizId,omitnil" name:"BizId"`
 
 	// 最后一次呼叫 callId，带上该字段以后，平台会参考该 callId 分配线路，优先不分配该 callId 通话线路（注：谨慎使用，这个会影响线路调度）
-	LastCallId *string `json:"LastCallId,omitempty" name:"LastCallId"`
+	LastCallId *string `json:"LastCallId,omitnil" name:"LastCallId"`
 
 	// 结构体，主叫呼叫预处理操作，根据不同操作确认是否呼通被叫。如需使用，本结构体需要与 keyList 结构体配合使用，此时这两个参数都为必填项
-	PreCallerHandle *RreCallerHandle `json:"PreCallerHandle,omitempty" name:"PreCallerHandle"`
+	PreCallerHandle *RreCallerHandle `json:"PreCallerHandle,omitnil" name:"PreCallerHandle"`
 
 	// 订单 ID，最大长度不超过64个字节，对于一些有订单状态 App 相关应用使用（如达人帮接入 App 应用)，该字段只在帐单中带上，其它回调不附带该字段
-	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
 }
 
 type CreateCallBackRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 主叫号码(必须为 11 位手机号，号码前加 0086，如 008613631686024)
-	Src *string `json:"Src,omitempty" name:"Src"`
+	Src *string `json:"Src,omitnil" name:"Src"`
 
 	// 被叫号码(必须为 11 位手机或固话号码,号码前加 0086，如008613631686024，固话如：0086075586013388)
-	Dst *string `json:"Dst,omitempty" name:"Dst"`
+	Dst *string `json:"Dst,omitnil" name:"Dst"`
 
 	// 主叫显示系统分配的固话号码，如不填显示随机分配号码
-	SrcDisplayNum *string `json:"SrcDisplayNum,omitempty" name:"SrcDisplayNum"`
+	SrcDisplayNum *string `json:"SrcDisplayNum,omitnil" name:"SrcDisplayNum"`
 
 	// 被叫显示系统分配的固话号码，如不填显示随机分配号码
-	DstDisplayNum *string `json:"DstDisplayNum,omitempty" name:"DstDisplayNum"`
+	DstDisplayNum *string `json:"DstDisplayNum,omitnil" name:"DstDisplayNum"`
 
 	// 是否录音，0 表示不录音，1 表示录音。默认为不录音
-	Record *string `json:"Record,omitempty" name:"Record"`
+	Record *string `json:"Record,omitnil" name:"Record"`
 
 	// 允许最大通话时间，不填默认为 30 分钟（单位：分钟）
-	MaxAllowTime *string `json:"MaxAllowTime,omitempty" name:"MaxAllowTime"`
+	MaxAllowTime *string `json:"MaxAllowTime,omitnil" name:"MaxAllowTime"`
 
 	// 主叫发起呼叫状态：1 被叫发起呼叫状态：256 主叫响铃状态：2 被叫响铃状态：512 主叫接听状态：4 被叫接听状态：1024 主叫拒绝接听状态：8 被叫拒绝接听状态：2048 主叫正常挂机状态：16 被叫正常挂机状态：4096 主叫呼叫异常：32 被叫呼叫异常：8192
 	// 例如：当值为 0：表示所有状态不需要推送；当值为 4：表示只要推送主叫接听状态；当值为 16191：表示所有状态都需要推送(上面所有值和)
-	StatusFlag *string `json:"StatusFlag,omitempty" name:"StatusFlag"`
+	StatusFlag *string `json:"StatusFlag,omitnil" name:"StatusFlag"`
 
 	// 状态回调通知地址，正式环境可以配置默认推送地址
-	StatusUrl *string `json:"StatusUrl,omitempty" name:"StatusUrl"`
+	StatusUrl *string `json:"StatusUrl,omitnil" name:"StatusUrl"`
 
 	// 话单回调通知地址，正式环境可以配置默认推送地址
-	HangupUrl *string `json:"HangupUrl,omitempty" name:"HangupUrl"`
+	HangupUrl *string `json:"HangupUrl,omitnil" name:"HangupUrl"`
 
 	// 录单 URL 回调通知地址，正式环境可以配置默认推送地址
-	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
+	RecordUrl *string `json:"RecordUrl,omitnil" name:"RecordUrl"`
 
 	// 业务应用 key，业务用该 key 可以区分内部业务或客户产品等，该 key 需保证在该 appId 下全局唯一，最大长度不超过 64 个字节，bizId 只能包含数字、字母。
-	BizId *string `json:"BizId,omitempty" name:"BizId"`
+	BizId *string `json:"BizId,omitnil" name:"BizId"`
 
 	// 最后一次呼叫 callId，带上该字段以后，平台会参考该 callId 分配线路，优先不分配该 callId 通话线路（注：谨慎使用，这个会影响线路调度）
-	LastCallId *string `json:"LastCallId,omitempty" name:"LastCallId"`
+	LastCallId *string `json:"LastCallId,omitnil" name:"LastCallId"`
 
 	// 结构体，主叫呼叫预处理操作，根据不同操作确认是否呼通被叫。如需使用，本结构体需要与 keyList 结构体配合使用，此时这两个参数都为必填项
-	PreCallerHandle *RreCallerHandle `json:"PreCallerHandle,omitempty" name:"PreCallerHandle"`
+	PreCallerHandle *RreCallerHandle `json:"PreCallerHandle,omitnil" name:"PreCallerHandle"`
 
 	// 订单 ID，最大长度不超过64个字节，对于一些有订单状态 App 相关应用使用（如达人帮接入 App 应用)，该字段只在帐单中带上，其它回调不附带该字段
-	OrderId *string `json:"OrderId,omitempty" name:"OrderId"`
+	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
 }
 
 func (r *CreateCallBackRequest) ToJsonString() string {
@@ -217,25 +217,25 @@ func (r *CreateCallBackRequest) FromJsonString(s string) error {
 type CreateCallBackResponseParams struct {
 	// 话单id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 主叫显示系统分配的固话号码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SrcDisplayNum *string `json:"SrcDisplayNum,omitempty" name:"SrcDisplayNum"`
+	SrcDisplayNum *string `json:"SrcDisplayNum,omitnil" name:"SrcDisplayNum"`
 
 	// 被叫显示系统分配的固话号码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DstDisplayNum *string `json:"DstDisplayNum,omitempty" name:"DstDisplayNum"`
+	DstDisplayNum *string `json:"DstDisplayNum,omitnil" name:"DstDisplayNum"`
 
 	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
+	ErrorCode *string `json:"ErrorCode,omitnil" name:"ErrorCode"`
 
 	// 错误原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msg *string `json:"Msg,omitempty" name:"Msg"`
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateCallBackResponse struct {
@@ -257,26 +257,26 @@ func (r *CreateCallBackResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DelVirtualNumRequestParams struct {
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 双方号码 + 中间号绑定 ID，该 ID 全局唯一
-	BindId *string `json:"BindId,omitempty" name:"BindId"`
+	BindId *string `json:"BindId,omitnil" name:"BindId"`
 
 	// 应用二级业务 ID，bizId 需保证在该 appId 下全局唯一，最大长度不超过 16 个字节。
-	BizId *string `json:"BizId,omitempty" name:"BizId"`
+	BizId *string `json:"BizId,omitnil" name:"BizId"`
 }
 
 type DelVirtualNumRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 双方号码 + 中间号绑定 ID，该 ID 全局唯一
-	BindId *string `json:"BindId,omitempty" name:"BindId"`
+	BindId *string `json:"BindId,omitnil" name:"BindId"`
 
 	// 应用二级业务 ID，bizId 需保证在该 appId 下全局唯一，最大长度不超过 16 个字节。
-	BizId *string `json:"BizId,omitempty" name:"BizId"`
+	BizId *string `json:"BizId,omitnil" name:"BizId"`
 }
 
 func (r *DelVirtualNumRequest) ToJsonString() string {
@@ -303,22 +303,22 @@ func (r *DelVirtualNumRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DelVirtualNumResponseParams struct {
 	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
+	ErrorCode *string `json:"ErrorCode,omitnil" name:"ErrorCode"`
 
 	// 错误信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msg *string `json:"Msg,omitempty" name:"Msg"`
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
 
 	// 绑定 ID，该 ID 全局唯一
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindId *string `json:"BindId,omitempty" name:"BindId"`
+	BindId *string `json:"BindId,omitnil" name:"BindId"`
 
 	// 中间号还剩引用计数，如果计数为 0 会解绑
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RefLeftNum *string `json:"RefLeftNum,omitempty" name:"RefLeftNum"`
+	RefLeftNum *string `json:"RefLeftNum,omitnil" name:"RefLeftNum"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DelVirtualNumResponse struct {
@@ -340,26 +340,26 @@ func (r *DelVirtualNumResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCallBackRequestParams struct {
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 回拨请求响应中返回的 callId
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 0：不管通话状态直接拆线（默认) 1：主叫响铃以后状态不拆线 2：主叫接听以后状态不拆线 3：被叫响铃以后状态不拆线 4：被叫接听以后状态不拆线
-	CancelFlag *string `json:"CancelFlag,omitempty" name:"CancelFlag"`
+	CancelFlag *string `json:"CancelFlag,omitnil" name:"CancelFlag"`
 }
 
 type DeleteCallBackRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 回拨请求响应中返回的 callId
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 0：不管通话状态直接拆线（默认) 1：主叫响铃以后状态不拆线 2：主叫接听以后状态不拆线 3：被叫响铃以后状态不拆线 4：被叫接听以后状态不拆线
-	CancelFlag *string `json:"CancelFlag,omitempty" name:"CancelFlag"`
+	CancelFlag *string `json:"CancelFlag,omitnil" name:"CancelFlag"`
 }
 
 func (r *DeleteCallBackRequest) ToJsonString() string {
@@ -386,18 +386,18 @@ func (r *DeleteCallBackRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCallBackResponseParams struct {
 	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
+	ErrorCode *string `json:"ErrorCode,omitnil" name:"ErrorCode"`
 
 	// 错误原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msg *string `json:"Msg,omitempty" name:"Msg"`
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
 
 	// 话单id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteCallBackResponse struct {
@@ -419,38 +419,38 @@ func (r *DeleteCallBackResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCallBackCdrRequestParams struct {
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 回拨请求响应中返回的 callId，按 callId 查询该话单详细信息
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 查询主叫用户产生的呼叫话单，如填空表示拉取这个时间段所有话单
-	Src *string `json:"Src,omitempty" name:"Src"`
+	Src *string `json:"Src,omitnil" name:"Src"`
 
 	// 话单开始时间戳
-	StartTimeStamp *string `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
+	StartTimeStamp *string `json:"StartTimeStamp,omitnil" name:"StartTimeStamp"`
 
 	// 话单结束时间戳
-	EndTimeStamp *string `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
+	EndTimeStamp *string `json:"EndTimeStamp,omitnil" name:"EndTimeStamp"`
 }
 
 type DescribeCallBackCdrRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 回拨请求响应中返回的 callId，按 callId 查询该话单详细信息
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 查询主叫用户产生的呼叫话单，如填空表示拉取这个时间段所有话单
-	Src *string `json:"Src,omitempty" name:"Src"`
+	Src *string `json:"Src,omitnil" name:"Src"`
 
 	// 话单开始时间戳
-	StartTimeStamp *string `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
+	StartTimeStamp *string `json:"StartTimeStamp,omitnil" name:"StartTimeStamp"`
 
 	// 话单结束时间戳
-	EndTimeStamp *string `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
+	EndTimeStamp *string `json:"EndTimeStamp,omitnil" name:"EndTimeStamp"`
 }
 
 func (r *DescribeCallBackCdrRequest) ToJsonString() string {
@@ -480,22 +480,22 @@ func (r *DescribeCallBackCdrRequest) FromJsonString(s string) error {
 type DescribeCallBackCdrResponseParams struct {
 	// 话单列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cdr []*CallBackCdr `json:"Cdr,omitempty" name:"Cdr"`
+	Cdr []*CallBackCdr `json:"Cdr,omitnil" name:"Cdr"`
 
 	// 偏移
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Offset *string `json:"Offset,omitempty" name:"Offset"`
+	Offset *string `json:"Offset,omitnil" name:"Offset"`
 
 	// 错误码
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
+	ErrorCode *string `json:"ErrorCode,omitnil" name:"ErrorCode"`
 
 	// 错误原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msg *string `json:"Msg,omitempty" name:"Msg"`
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCallBackCdrResponse struct {
@@ -517,38 +517,38 @@ func (r *DescribeCallBackCdrResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCallBackStatusRequestParams struct {
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 回拨请求响应中返回的 callId
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 主叫号码
-	Src *string `json:"Src,omitempty" name:"Src"`
+	Src *string `json:"Src,omitnil" name:"Src"`
 
 	// 被叫号码
-	Dst *string `json:"Dst,omitempty" name:"Dst"`
+	Dst *string `json:"Dst,omitnil" name:"Dst"`
 
 	// 通话最后状态：0：未知状态 1：主叫响铃中 2：主叫接听 3：被叫响铃中 4：正常通话中 5：通话结束
-	CallStatus *string `json:"CallStatus,omitempty" name:"CallStatus"`
+	CallStatus *string `json:"CallStatus,omitnil" name:"CallStatus"`
 }
 
 type DescribeCallBackStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 回拨请求响应中返回的 callId
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 主叫号码
-	Src *string `json:"Src,omitempty" name:"Src"`
+	Src *string `json:"Src,omitnil" name:"Src"`
 
 	// 被叫号码
-	Dst *string `json:"Dst,omitempty" name:"Dst"`
+	Dst *string `json:"Dst,omitnil" name:"Dst"`
 
 	// 通话最后状态：0：未知状态 1：主叫响铃中 2：主叫接听 3：被叫响铃中 4：正常通话中 5：通话结束
-	CallStatus *string `json:"CallStatus,omitempty" name:"CallStatus"`
+	CallStatus *string `json:"CallStatus,omitnil" name:"CallStatus"`
 }
 
 func (r *DescribeCallBackStatusRequest) ToJsonString() string {
@@ -577,28 +577,28 @@ func (r *DescribeCallBackStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCallBackStatusResponseParams struct {
 	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
+	ErrorCode *string `json:"ErrorCode,omitnil" name:"ErrorCode"`
 
 	// 错误信息
-	Msg *string `json:"Msg,omitempty" name:"Msg"`
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
 
 	// 业务appid
-	AppId *string `json:"AppId,omitempty" name:"AppId"`
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
 
 	// 回拨请求响应中返回的 callId
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 主叫号码
-	Src *string `json:"Src,omitempty" name:"Src"`
+	Src *string `json:"Src,omitnil" name:"Src"`
 
 	// 被叫号码
-	Dst *string `json:"Dst,omitempty" name:"Dst"`
+	Dst *string `json:"Dst,omitnil" name:"Dst"`
 
 	// 通话最后状态：0：未知状态 1：主叫响铃中 2：主叫接听 3：被叫响铃中 4：正常通话中 5：通话结束
-	CallStatus *string `json:"CallStatus,omitempty" name:"CallStatus"`
+	CallStatus *string `json:"CallStatus,omitnil" name:"CallStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCallBackStatusResponse struct {
@@ -620,14 +620,14 @@ func (r *DescribeCallBackStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCallerDisplayListRequestParams struct {
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 }
 
 type DescribeCallerDisplayListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 }
 
 func (r *DescribeCallerDisplayListRequest) ToJsonString() string {
@@ -653,21 +653,21 @@ func (r *DescribeCallerDisplayListRequest) FromJsonString(s string) error {
 type DescribeCallerDisplayListResponseParams struct {
 	// appid
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AppId *string `json:"AppId,omitempty" name:"AppId"`
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
 
 	// 主叫显号号码集合，codeList[0...*] 结构体数组，如果业务是主被叫互显，该字段为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CodeList []*CallBackPhoneCode `json:"CodeList,omitempty" name:"CodeList"`
+	CodeList []*CallBackPhoneCode `json:"CodeList,omitnil" name:"CodeList"`
 
 	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
+	ErrorCode *string `json:"ErrorCode,omitnil" name:"ErrorCode"`
 
 	// 错误原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msg *string `json:"Msg,omitempty" name:"Msg"`
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCallerDisplayListResponse struct {
@@ -689,38 +689,38 @@ func (r *DescribeCallerDisplayListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type Get400CdrRequestParams struct {
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 通话唯一标识 callId，即直拨呼叫响应中返回的 callId
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 查询主叫用户产生的呼叫话单（0086开头），设置为空表示拉取该时间段的所有话单
-	Src *string `json:"Src,omitempty" name:"Src"`
+	Src *string `json:"Src,omitnil" name:"Src"`
 
 	// 话单开始时间戳
-	StartTimeStamp *string `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
+	StartTimeStamp *string `json:"StartTimeStamp,omitnil" name:"StartTimeStamp"`
 
 	// 话单结束时间戳
-	EndTimeStamp *string `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
+	EndTimeStamp *string `json:"EndTimeStamp,omitnil" name:"EndTimeStamp"`
 }
 
 type Get400CdrRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 通话唯一标识 callId，即直拨呼叫响应中返回的 callId
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 查询主叫用户产生的呼叫话单（0086开头），设置为空表示拉取该时间段的所有话单
-	Src *string `json:"Src,omitempty" name:"Src"`
+	Src *string `json:"Src,omitnil" name:"Src"`
 
 	// 话单开始时间戳
-	StartTimeStamp *string `json:"StartTimeStamp,omitempty" name:"StartTimeStamp"`
+	StartTimeStamp *string `json:"StartTimeStamp,omitnil" name:"StartTimeStamp"`
 
 	// 话单结束时间戳
-	EndTimeStamp *string `json:"EndTimeStamp,omitempty" name:"EndTimeStamp"`
+	EndTimeStamp *string `json:"EndTimeStamp,omitnil" name:"EndTimeStamp"`
 }
 
 func (r *Get400CdrRequest) ToJsonString() string {
@@ -749,22 +749,22 @@ func (r *Get400CdrRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type Get400CdrResponseParams struct {
 	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
+	ErrorCode *string `json:"ErrorCode,omitnil" name:"ErrorCode"`
 
 	// 错误原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msg *string `json:"Msg,omitempty" name:"Msg"`
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
 
 	// 偏移
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Offset *string `json:"Offset,omitempty" name:"Offset"`
+	Offset *string `json:"Offset,omitnil" name:"Offset"`
 
 	// 话单列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Cdr []*VirturalNumCdr `json:"Cdr,omitempty" name:"Cdr"`
+	Cdr []*VirturalNumCdr `json:"Cdr,omitnil" name:"Cdr"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type Get400CdrResponse struct {
@@ -786,31 +786,31 @@ func (r *Get400CdrResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type GetVirtualNumRequestParams struct {
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 被叫号码(号码前加 0086，如 008613631686024)
-	Dst *string `json:"Dst,omitempty" name:"Dst"`
+	Dst *string `json:"Dst,omitnil" name:"Dst"`
 
 	// 主叫号码(号码前加 0086，如 008613631686024)，xb 模式下是不用填写，axb 模式下是必选
-	Src *string `json:"Src,omitempty" name:"Src"`
+	Src *string `json:"Src,omitnil" name:"Src"`
 
 	// {“accreditList”:[“008613631686024”,”008612345678910”]}，主要用于 N-1 场景，号码绑定非共享是独占型，指定了 dst 独占中间号绑定，accreditList 表示这个列表成员可以拨打 dst 绑 定的中间号，默认值为空，表示所有号码都可以拨打独占型中间号绑定，最大集合不允许超过 30 个，仅适用于xb模式
-	AccreditList []*string `json:"AccreditList,omitempty" name:"AccreditList"`
+	AccreditList []*string `json:"AccreditList,omitnil" name:"AccreditList"`
 
 	// 指定中间号（格式：008617013541251），如果该中间号已被使用则返回绑定失败。如果不带该字段则由腾讯侧从号码池里自动分配
-	AssignVirtualNum *string `json:"AssignVirtualNum,omitempty" name:"AssignVirtualNum"`
+	AssignVirtualNum *string `json:"AssignVirtualNum,omitnil" name:"AssignVirtualNum"`
 
 	// 是否录音，0表示不录音，1表示录音。默认为不录音，注意如果需要录音回调，通话完成后需要等待一段时间，收到录音回调之后，再解绑中间号。
-	Record *string `json:"Record,omitempty" name:"Record"`
+	Record *string `json:"Record,omitnil" name:"Record"`
 
 	// 主被叫显号号码归属地，指定该参数说明显号归属该城市，如果没有该城市号码会随机选取一个城市或者后台配置返回107，返回码详见 《腾讯-中间号-城市id.xlsx》
-	CityId *string `json:"CityId,omitempty" name:"CityId"`
+	CityId *string `json:"CityId,omitnil" name:"CityId"`
 
 	// 应用二级业务 ID，bizId 需保证在该 appId 下全局唯一，最大长度不超过 16 个字节。
-	BizId *string `json:"BizId,omitempty" name:"BizId"`
+	BizId *string `json:"BizId,omitnil" name:"BizId"`
 
 	// 号码最大绑定时间，不填默认为 24 小时，最长绑定时间是168小时，单位秒
-	MaxAssignTime *string `json:"MaxAssignTime,omitempty" name:"MaxAssignTime"`
+	MaxAssignTime *string `json:"MaxAssignTime,omitnil" name:"MaxAssignTime"`
 
 	// 主叫发起呼叫状态：1
 	// 被叫发起呼叫状态：256
@@ -829,47 +829,47 @@ type GetVirtualNumRequestParams struct {
 	// 值为 0：表示所有状态不需要推送
 	// 值为 4：表示只要推送主叫接听状态
 	// 值为 16191：表示所有状态都需要推送（上面所有值和）
-	StatusFlag *string `json:"StatusFlag,omitempty" name:"StatusFlag"`
+	StatusFlag *string `json:"StatusFlag,omitnil" name:"StatusFlag"`
 
 	// 请填写statusFlag并设置值，状态回调通知地址，正式环境可以配置默认推送地址
-	StatusUrl *string `json:"StatusUrl,omitempty" name:"StatusUrl"`
+	StatusUrl *string `json:"StatusUrl,omitnil" name:"StatusUrl"`
 
 	// 话单回调通知地址，正式环境可以配置默认推送地址
-	HangupUrl *string `json:"HangupUrl,omitempty" name:"HangupUrl"`
+	HangupUrl *string `json:"HangupUrl,omitnil" name:"HangupUrl"`
 
 	// 录单 URL 回调通知地址，正式环境可以配置默认推送地址
-	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
+	RecordUrl *string `json:"RecordUrl,omitnil" name:"RecordUrl"`
 }
 
 type GetVirtualNumRequest struct {
 	*tchttp.BaseRequest
 	
 	// 业务appid
-	BizAppId *string `json:"BizAppId,omitempty" name:"BizAppId"`
+	BizAppId *string `json:"BizAppId,omitnil" name:"BizAppId"`
 
 	// 被叫号码(号码前加 0086，如 008613631686024)
-	Dst *string `json:"Dst,omitempty" name:"Dst"`
+	Dst *string `json:"Dst,omitnil" name:"Dst"`
 
 	// 主叫号码(号码前加 0086，如 008613631686024)，xb 模式下是不用填写，axb 模式下是必选
-	Src *string `json:"Src,omitempty" name:"Src"`
+	Src *string `json:"Src,omitnil" name:"Src"`
 
 	// {“accreditList”:[“008613631686024”,”008612345678910”]}，主要用于 N-1 场景，号码绑定非共享是独占型，指定了 dst 独占中间号绑定，accreditList 表示这个列表成员可以拨打 dst 绑 定的中间号，默认值为空，表示所有号码都可以拨打独占型中间号绑定，最大集合不允许超过 30 个，仅适用于xb模式
-	AccreditList []*string `json:"AccreditList,omitempty" name:"AccreditList"`
+	AccreditList []*string `json:"AccreditList,omitnil" name:"AccreditList"`
 
 	// 指定中间号（格式：008617013541251），如果该中间号已被使用则返回绑定失败。如果不带该字段则由腾讯侧从号码池里自动分配
-	AssignVirtualNum *string `json:"AssignVirtualNum,omitempty" name:"AssignVirtualNum"`
+	AssignVirtualNum *string `json:"AssignVirtualNum,omitnil" name:"AssignVirtualNum"`
 
 	// 是否录音，0表示不录音，1表示录音。默认为不录音，注意如果需要录音回调，通话完成后需要等待一段时间，收到录音回调之后，再解绑中间号。
-	Record *string `json:"Record,omitempty" name:"Record"`
+	Record *string `json:"Record,omitnil" name:"Record"`
 
 	// 主被叫显号号码归属地，指定该参数说明显号归属该城市，如果没有该城市号码会随机选取一个城市或者后台配置返回107，返回码详见 《腾讯-中间号-城市id.xlsx》
-	CityId *string `json:"CityId,omitempty" name:"CityId"`
+	CityId *string `json:"CityId,omitnil" name:"CityId"`
 
 	// 应用二级业务 ID，bizId 需保证在该 appId 下全局唯一，最大长度不超过 16 个字节。
-	BizId *string `json:"BizId,omitempty" name:"BizId"`
+	BizId *string `json:"BizId,omitnil" name:"BizId"`
 
 	// 号码最大绑定时间，不填默认为 24 小时，最长绑定时间是168小时，单位秒
-	MaxAssignTime *string `json:"MaxAssignTime,omitempty" name:"MaxAssignTime"`
+	MaxAssignTime *string `json:"MaxAssignTime,omitnil" name:"MaxAssignTime"`
 
 	// 主叫发起呼叫状态：1
 	// 被叫发起呼叫状态：256
@@ -888,16 +888,16 @@ type GetVirtualNumRequest struct {
 	// 值为 0：表示所有状态不需要推送
 	// 值为 4：表示只要推送主叫接听状态
 	// 值为 16191：表示所有状态都需要推送（上面所有值和）
-	StatusFlag *string `json:"StatusFlag,omitempty" name:"StatusFlag"`
+	StatusFlag *string `json:"StatusFlag,omitnil" name:"StatusFlag"`
 
 	// 请填写statusFlag并设置值，状态回调通知地址，正式环境可以配置默认推送地址
-	StatusUrl *string `json:"StatusUrl,omitempty" name:"StatusUrl"`
+	StatusUrl *string `json:"StatusUrl,omitnil" name:"StatusUrl"`
 
 	// 话单回调通知地址，正式环境可以配置默认推送地址
-	HangupUrl *string `json:"HangupUrl,omitempty" name:"HangupUrl"`
+	HangupUrl *string `json:"HangupUrl,omitnil" name:"HangupUrl"`
 
 	// 录单 URL 回调通知地址，正式环境可以配置默认推送地址
-	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
+	RecordUrl *string `json:"RecordUrl,omitnil" name:"RecordUrl"`
 }
 
 func (r *GetVirtualNumRequest) ToJsonString() string {
@@ -934,26 +934,26 @@ func (r *GetVirtualNumRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type GetVirtualNumResponseParams struct {
 	// 错误码
-	ErrorCode *string `json:"ErrorCode,omitempty" name:"ErrorCode"`
+	ErrorCode *string `json:"ErrorCode,omitnil" name:"ErrorCode"`
 
 	// 绑定 ID，该 ID 全局唯一
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	BindId *string `json:"BindId,omitempty" name:"BindId"`
+	BindId *string `json:"BindId,omitnil" name:"BindId"`
 
 	// 中间号还剩引用计数，如果计数为 0 会解绑
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RefNum *string `json:"RefNum,omitempty" name:"RefNum"`
+	RefNum *string `json:"RefNum,omitnil" name:"RefNum"`
 
 	// 中间号
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VirtualNum *string `json:"VirtualNum,omitempty" name:"VirtualNum"`
+	VirtualNum *string `json:"VirtualNum,omitnil" name:"VirtualNum"`
 
 	// 错误原因
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Msg *string `json:"Msg,omitempty" name:"Msg"`
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type GetVirtualNumResponse struct {
@@ -974,72 +974,72 @@ func (r *GetVirtualNumResponse) FromJsonString(s string) error {
 
 type KeyList struct {
 	// 用户按键（0-9、*、#、A-D)
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 1: 呼通被叫 2：interruptPrompt 重播提示 3：拆线
-	Operate *string `json:"Operate,omitempty" name:"Operate"`
+	Operate *string `json:"Operate,omitnil" name:"Operate"`
 }
 
 type RreCallerHandle struct {
 	// 呼叫主叫以后，给主叫用户的语音提示，播放该提示时用户所有按键无效
-	ReadPrompt *string `json:"ReadPrompt,omitempty" name:"ReadPrompt"`
+	ReadPrompt *string `json:"ReadPrompt,omitnil" name:"ReadPrompt"`
 
 	// 可中断提示，播放该提示时，用户可以按键
-	InterruptPrompt *string `json:"InterruptPrompt,omitempty" name:"InterruptPrompt"`
+	InterruptPrompt *string `json:"InterruptPrompt,omitnil" name:"InterruptPrompt"`
 
 	// 对应按键操作,如果没有结构体里定义按键操作用户按键以后都从 interruptPrompt 重新播放
-	KeyList []*KeyList `json:"KeyList,omitempty" name:"KeyList"`
+	KeyList []*KeyList `json:"KeyList,omitnil" name:"KeyList"`
 
 	// 最多重复播放次数，超过该次数拆线
-	RepeatTimes *string `json:"RepeatTimes,omitempty" name:"RepeatTimes"`
+	RepeatTimes *string `json:"RepeatTimes,omitnil" name:"RepeatTimes"`
 
 	// 用户按键回调通知地址，如果为空不回调
-	KeyPressUrl *string `json:"KeyPressUrl,omitempty" name:"KeyPressUrl"`
+	KeyPressUrl *string `json:"KeyPressUrl,omitnil" name:"KeyPressUrl"`
 
 	// 提示音男声女声：1女声，2男声。默认女声
-	PromptGender *string `json:"PromptGender,omitempty" name:"PromptGender"`
+	PromptGender *string `json:"PromptGender,omitnil" name:"PromptGender"`
 }
 
 type VirturalNumCdr struct {
 	// 呼叫通话 ID
-	CallId *string `json:"CallId,omitempty" name:"CallId"`
+	CallId *string `json:"CallId,omitnil" name:"CallId"`
 
 	// 双方号码 + 中间号绑定 ID，该 ID 全局唯一
-	BindId *string `json:"BindId,omitempty" name:"BindId"`
+	BindId *string `json:"BindId,omitnil" name:"BindId"`
 
 	// 主叫号码
-	Src *string `json:"Src,omitempty" name:"Src"`
+	Src *string `json:"Src,omitnil" name:"Src"`
 
 	// 被叫号码
-	Dst *string `json:"Dst,omitempty" name:"Dst"`
+	Dst *string `json:"Dst,omitnil" name:"Dst"`
 
 	// 主叫通讯录直拨虚拟保护号码
-	DstVirtualNum *string `json:"DstVirtualNum,omitempty" name:"DstVirtualNum"`
+	DstVirtualNum *string `json:"DstVirtualNum,omitnil" name:"DstVirtualNum"`
 
 	// 虚拟保护号码平台收到呼叫时间
-	CallCenterAcceptTime *string `json:"CallCenterAcceptTime,omitempty" name:"CallCenterAcceptTime"`
+	CallCenterAcceptTime *string `json:"CallCenterAcceptTime,omitnil" name:"CallCenterAcceptTime"`
 
 	// 被叫呼叫开始时间
-	StartDstCallTime *string `json:"StartDstCallTime,omitempty" name:"StartDstCallTime"`
+	StartDstCallTime *string `json:"StartDstCallTime,omitnil" name:"StartDstCallTime"`
 
 	// 被叫响铃开始时间
-	StartDstRingTime *string `json:"StartDstRingTime,omitempty" name:"StartDstRingTime"`
+	StartDstRingTime *string `json:"StartDstRingTime,omitnil" name:"StartDstRingTime"`
 
 	// 被叫接听时间
-	DstAcceptTime *string `json:"DstAcceptTime,omitempty" name:"DstAcceptTime"`
+	DstAcceptTime *string `json:"DstAcceptTime,omitnil" name:"DstAcceptTime"`
 
 	// 用户挂机通话结束时间
-	EndCallTime *string `json:"EndCallTime,omitempty" name:"EndCallTime"`
+	EndCallTime *string `json:"EndCallTime,omitnil" name:"EndCallTime"`
 
 	// 通话最后状态：0：未知状态 1：正常通话 2：查询呼叫转移被叫号异常 3：未接通 4：未接听 5：拒接挂断 6：关机 7：空号 8：通话中 9：欠费 10：运营商线路或平台异常
-	CallEndStatus *string `json:"CallEndStatus,omitempty" name:"CallEndStatus"`
+	CallEndStatus *string `json:"CallEndStatus,omitnil" name:"CallEndStatus"`
 
 	// 主叫接通虚拟保护号码到通话结束通话时间
-	SrcDuration *string `json:"SrcDuration,omitempty" name:"SrcDuration"`
+	SrcDuration *string `json:"SrcDuration,omitnil" name:"SrcDuration"`
 
 	// 呼叫转接被叫接通到通话结束通话时间
-	DstDuration *string `json:"DstDuration,omitempty" name:"DstDuration"`
+	DstDuration *string `json:"DstDuration,omitnil" name:"DstDuration"`
 
 	// 录音 URL，如果不录音或录音失败，该值为空
-	RecordUrl *string `json:"RecordUrl,omitempty" name:"RecordUrl"`
+	RecordUrl *string `json:"RecordUrl,omitnil" name:"RecordUrl"`
 }

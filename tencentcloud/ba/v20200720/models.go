@@ -15,22 +15,22 @@
 package v20200720
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type CreateWeappQRUrlRequestParams struct {
 	// 代理角色临时密钥的Token
-	SessionKey *string `json:"SessionKey,omitempty" name:"SessionKey"`
+	SessionKey *string `json:"SessionKey,omitnil" name:"SessionKey"`
 }
 
 type CreateWeappQRUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 代理角色临时密钥的Token
-	SessionKey *string `json:"SessionKey,omitempty" name:"SessionKey"`
+	SessionKey *string `json:"SessionKey,omitnil" name:"SessionKey"`
 }
 
 func (r *CreateWeappQRUrlRequest) ToJsonString() string {
@@ -55,10 +55,10 @@ func (r *CreateWeappQRUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateWeappQRUrlResponseParams struct {
 	// 渠道备案小程序二维码
-	Url *string `json:"Url,omitempty" name:"Url"`
+	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateWeappQRUrlResponse struct {
@@ -109,16 +109,16 @@ func (r *DescribeGetAuthInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeGetAuthInfoResponseParams struct {
 	// 实名认证状态：0未实名，1已实名
-	IsTenPayMasked *string `json:"IsTenPayMasked,omitempty" name:"IsTenPayMasked"`
+	IsTenPayMasked *string `json:"IsTenPayMasked,omitnil" name:"IsTenPayMasked"`
 
 	// 实名认证类型：0个人，1企业
-	IsAuthenticated *string `json:"IsAuthenticated,omitempty" name:"IsAuthenticated"`
+	IsAuthenticated *string `json:"IsAuthenticated,omitnil" name:"IsAuthenticated"`
 
 	// 认证类型，个人0，企业1
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeGetAuthInfoResponse struct {
@@ -140,38 +140,38 @@ func (r *DescribeGetAuthInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type SyncIcpOrderWebInfoRequestParams struct {
 	// 备案ICP订单号
-	IcpOrderId *string `json:"IcpOrderId,omitempty" name:"IcpOrderId"`
+	IcpOrderId *string `json:"IcpOrderId,omitnil" name:"IcpOrderId"`
 
 	// 订单里的webId
-	SourceWebId *string `json:"SourceWebId,omitempty" name:"SourceWebId"`
+	SourceWebId *string `json:"SourceWebId,omitnil" name:"SourceWebId"`
 
 	// 订单里的webId 数组(如果传入的webIds含有 订单中不包含的webId，会自动跳过)
-	TargetWebIds []*string `json:"TargetWebIds,omitempty" name:"TargetWebIds"`
+	TargetWebIds []*string `json:"TargetWebIds,omitnil" name:"TargetWebIds"`
 
 	// 网站信息字段名 数组
-	SyncFields []*string `json:"SyncFields,omitempty" name:"SyncFields"`
+	SyncFields []*string `json:"SyncFields,omitnil" name:"SyncFields"`
 
 	// 是否先判断同步的网站负责人是否一致 (这里会判断 sitePersonName, sitePersonCerType,sitePersonCerNum三个字段完全一致)  默认:true. 非必要 不建议关闭修改该参数默认值
-	CheckSamePerson *bool `json:"CheckSamePerson,omitempty" name:"CheckSamePerson"`
+	CheckSamePerson *bool `json:"CheckSamePerson,omitnil" name:"CheckSamePerson"`
 }
 
 type SyncIcpOrderWebInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 备案ICP订单号
-	IcpOrderId *string `json:"IcpOrderId,omitempty" name:"IcpOrderId"`
+	IcpOrderId *string `json:"IcpOrderId,omitnil" name:"IcpOrderId"`
 
 	// 订单里的webId
-	SourceWebId *string `json:"SourceWebId,omitempty" name:"SourceWebId"`
+	SourceWebId *string `json:"SourceWebId,omitnil" name:"SourceWebId"`
 
 	// 订单里的webId 数组(如果传入的webIds含有 订单中不包含的webId，会自动跳过)
-	TargetWebIds []*string `json:"TargetWebIds,omitempty" name:"TargetWebIds"`
+	TargetWebIds []*string `json:"TargetWebIds,omitnil" name:"TargetWebIds"`
 
 	// 网站信息字段名 数组
-	SyncFields []*string `json:"SyncFields,omitempty" name:"SyncFields"`
+	SyncFields []*string `json:"SyncFields,omitnil" name:"SyncFields"`
 
 	// 是否先判断同步的网站负责人是否一致 (这里会判断 sitePersonName, sitePersonCerType,sitePersonCerNum三个字段完全一致)  默认:true. 非必要 不建议关闭修改该参数默认值
-	CheckSamePerson *bool `json:"CheckSamePerson,omitempty" name:"CheckSamePerson"`
+	CheckSamePerson *bool `json:"CheckSamePerson,omitnil" name:"CheckSamePerson"`
 }
 
 func (r *SyncIcpOrderWebInfoRequest) ToJsonString() string {
@@ -200,7 +200,7 @@ func (r *SyncIcpOrderWebInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type SyncIcpOrderWebInfoResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type SyncIcpOrderWebInfoResponse struct {

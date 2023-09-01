@@ -15,28 +15,28 @@
 package v20220519
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type AddCrossVpcSubnetSupportForClientNodeRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 子网信息
-	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitempty" name:"SubnetInfo"`
+	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitnil" name:"SubnetInfo"`
 }
 
 type AddCrossVpcSubnetSupportForClientNodeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 子网信息
-	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitempty" name:"SubnetInfo"`
+	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitnil" name:"SubnetInfo"`
 }
 
 func (r *AddCrossVpcSubnetSupportForClientNodeRequest) ToJsonString() string {
@@ -62,7 +62,7 @@ func (r *AddCrossVpcSubnetSupportForClientNodeRequest) FromJsonString(s string) 
 // Predefined struct for user
 type AddCrossVpcSubnetSupportForClientNodeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddCrossVpcSubnetSupportForClientNodeResponse struct {
@@ -84,20 +84,20 @@ func (r *AddCrossVpcSubnetSupportForClientNodeResponse) FromJsonString(s string)
 // Predefined struct for user
 type AttachFileSystemBucketRequestParams struct {
 	// 无
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 关联新Bucket
-	Bucket *MappedBucket `json:"Bucket,omitempty" name:"Bucket"`
+	Bucket *MappedBucket `json:"Bucket,omitnil" name:"Bucket"`
 }
 
 type AttachFileSystemBucketRequest struct {
 	*tchttp.BaseRequest
 	
 	// 无
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 关联新Bucket
-	Bucket *MappedBucket `json:"Bucket,omitempty" name:"Bucket"`
+	Bucket *MappedBucket `json:"Bucket,omitnil" name:"Bucket"`
 }
 
 func (r *AttachFileSystemBucketRequest) ToJsonString() string {
@@ -123,7 +123,7 @@ func (r *AttachFileSystemBucketRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AttachFileSystemBucketResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AttachFileSystemBucketResponse struct {
@@ -145,26 +145,26 @@ func (r *AttachFileSystemBucketResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchAddClientNodesRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 添加客户端节点列表
-	ClientNodes []*LinuxNodeAttribute `json:"ClientNodes,omitempty" name:"ClientNodes"`
+	ClientNodes []*LinuxNodeAttribute `json:"ClientNodes,omitnil" name:"ClientNodes"`
 
 	// 是否单集群默认是false	
-	SingleClusterFlag *bool `json:"SingleClusterFlag,omitempty" name:"SingleClusterFlag"`
+	SingleClusterFlag *bool `json:"SingleClusterFlag,omitnil" name:"SingleClusterFlag"`
 }
 
 type BatchAddClientNodesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 添加客户端节点列表
-	ClientNodes []*LinuxNodeAttribute `json:"ClientNodes,omitempty" name:"ClientNodes"`
+	ClientNodes []*LinuxNodeAttribute `json:"ClientNodes,omitnil" name:"ClientNodes"`
 
 	// 是否单集群默认是false	
-	SingleClusterFlag *bool `json:"SingleClusterFlag,omitempty" name:"SingleClusterFlag"`
+	SingleClusterFlag *bool `json:"SingleClusterFlag,omitnil" name:"SingleClusterFlag"`
 }
 
 func (r *BatchAddClientNodesRequest) ToJsonString() string {
@@ -191,7 +191,7 @@ func (r *BatchAddClientNodesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchAddClientNodesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BatchAddClientNodesResponse struct {
@@ -213,26 +213,26 @@ func (r *BatchAddClientNodesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchDeleteClientNodesRequestParams struct {
 	// 文件系统id
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 删除的客户端节点列表
-	ClientNodes []*LinuxNodeAttribute `json:"ClientNodes,omitempty" name:"ClientNodes"`
+	ClientNodes []*LinuxNodeAttribute `json:"ClientNodes,omitnil" name:"ClientNodes"`
 
 	// 是否单集群，默认是false
-	SingleClusterFlag *bool `json:"SingleClusterFlag,omitempty" name:"SingleClusterFlag"`
+	SingleClusterFlag *bool `json:"SingleClusterFlag,omitnil" name:"SingleClusterFlag"`
 }
 
 type BatchDeleteClientNodesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统id
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 删除的客户端节点列表
-	ClientNodes []*LinuxNodeAttribute `json:"ClientNodes,omitempty" name:"ClientNodes"`
+	ClientNodes []*LinuxNodeAttribute `json:"ClientNodes,omitnil" name:"ClientNodes"`
 
 	// 是否单集群，默认是false
-	SingleClusterFlag *bool `json:"SingleClusterFlag,omitempty" name:"SingleClusterFlag"`
+	SingleClusterFlag *bool `json:"SingleClusterFlag,omitnil" name:"SingleClusterFlag"`
 }
 
 func (r *BatchDeleteClientNodesRequest) ToJsonString() string {
@@ -259,7 +259,7 @@ func (r *BatchDeleteClientNodesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type BatchDeleteClientNodesResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type BatchDeleteClientNodesResponse struct {
@@ -280,105 +280,105 @@ func (r *BatchDeleteClientNodesResponse) FromJsonString(s string) error {
 
 type ClientClusterManagerNodeInfo struct {
 	// 客户端节点IP
-	NodeIp *string `json:"NodeIp,omitempty" name:"NodeIp"`
+	NodeIp *string `json:"NodeIp,omitnil" name:"NodeIp"`
 
 	// 节点Instance Id
-	NodeInstanceId *string `json:"NodeInstanceId,omitempty" name:"NodeInstanceId"`
+	NodeInstanceId *string `json:"NodeInstanceId,omitnil" name:"NodeInstanceId"`
 
 	// 初始密码
-	InitialPassword *string `json:"InitialPassword,omitempty" name:"InitialPassword"`
+	InitialPassword *string `json:"InitialPassword,omitnil" name:"InitialPassword"`
 }
 
 type ClientNodeAttribute struct {
 	// 客户端节点IP
-	ClientNodeIp *string `json:"ClientNodeIp,omitempty" name:"ClientNodeIp"`
+	ClientNodeIp *string `json:"ClientNodeIp,omitnil" name:"ClientNodeIp"`
 
 	// 客户端节点服务状态, Active(运行中), Adding(添加中), Destroying(销毁中), Down(已停止)
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 客户端节点类型，extend(扩展节点)，manager(管理节点)
-	ClientType *string `json:"ClientType,omitempty" name:"ClientType"`
+	ClientType *string `json:"ClientType,omitnil" name:"ClientType"`
 }
 
 type ClientToken struct {
 	// 节点 IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	NodeIp *string `json:"NodeIp,omitempty" name:"NodeIp"`
+	NodeIp *string `json:"NodeIp,omitnil" name:"NodeIp"`
 
 	// 挂载点
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LocalDirectory *string `json:"LocalDirectory,omitempty" name:"LocalDirectory"`
+	LocalDirectory *string `json:"LocalDirectory,omitnil" name:"LocalDirectory"`
 
 	// 可以访问的 GooseFS 目录
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GooseFSDirectory *string `json:"GooseFSDirectory,omitempty" name:"GooseFSDirectory"`
+	GooseFSDirectory *string `json:"GooseFSDirectory,omitnil" name:"GooseFSDirectory"`
 
 	// token
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Token *string `json:"Token,omitempty" name:"Token"`
+	Token *string `json:"Token,omitnil" name:"Token"`
 }
 
 type ClusterRole struct {
 	// 集群ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 角色名
-	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
 
 	// 描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// 目录列表
-	DirectoryList []*string `json:"DirectoryList,omitempty" name:"DirectoryList"`
+	DirectoryList []*string `json:"DirectoryList,omitnil" name:"DirectoryList"`
 }
 
 // Predefined struct for user
 type CreateDataRepositoryTaskRequestParams struct {
 	// 数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)
-	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+	TaskType *string `json:"TaskType,omitnil" name:"TaskType"`
 
 	// COS存储桶名
-	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
 
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据
-	TaskPath *string `json:"TaskPath,omitempty" name:"TaskPath"`
+	TaskPath *string `json:"TaskPath,omitnil" name:"TaskPath"`
 
 	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
 
 	// 数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载
-	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
+	RepositoryType *string `json:"RepositoryType,omitnil" name:"RepositoryType"`
 
 	// 文件列表下载地址，以http开头
-	TextLocation *string `json:"TextLocation,omitempty" name:"TextLocation"`
+	TextLocation *string `json:"TextLocation,omitnil" name:"TextLocation"`
 }
 
 type CreateDataRepositoryTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 数据流通任务类型, FS_TO_COS(文件系统到COS Bucket),或者COS_TO_FS(COS Bucket到文件系统)
-	TaskType *string `json:"TaskType,omitempty" name:"TaskType"`
+	TaskType *string `json:"TaskType,omitnil" name:"TaskType"`
 
 	// COS存储桶名
-	Bucket *string `json:"Bucket,omitempty" name:"Bucket"`
+	Bucket *string `json:"Bucket,omitnil" name:"Bucket"`
 
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 对于FS_TO_COS, TaskPath是Bucket映射目录的相对路径, 对于COS_TO_FS是COS上的路径。如果置为空, 则表示全部数据
-	TaskPath *string `json:"TaskPath,omitempty" name:"TaskPath"`
+	TaskPath *string `json:"TaskPath,omitnil" name:"TaskPath"`
 
 	// 任务名称
-	TaskName *string `json:"TaskName,omitempty" name:"TaskName"`
+	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
 
 	// 数据流通方式 MSP_AFM 手动加载  RAW_AFM 按需加载
-	RepositoryType *string `json:"RepositoryType,omitempty" name:"RepositoryType"`
+	RepositoryType *string `json:"RepositoryType,omitnil" name:"RepositoryType"`
 
 	// 文件列表下载地址，以http开头
-	TextLocation *string `json:"TextLocation,omitempty" name:"TextLocation"`
+	TextLocation *string `json:"TextLocation,omitnil" name:"TextLocation"`
 }
 
 func (r *CreateDataRepositoryTaskRequest) ToJsonString() string {
@@ -409,10 +409,10 @@ func (r *CreateDataRepositoryTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDataRepositoryTaskResponseParams struct {
 	// 任务ID
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDataRepositoryTaskResponse struct {
@@ -434,56 +434,56 @@ func (r *CreateDataRepositoryTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFileSystemRequestParams struct {
 	// 文件系统类型, 可填goosefs和goosefsx
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 文件系统名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 文件系统备注描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// vpc网络ID
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 子网ID
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// 子网所在的可用区
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// 文件系统关联的tag
-	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
+	Tag []*Tag `json:"Tag,omitnil" name:"Tag"`
 
 	// GooseFSx构建时要传递的参数
-	GooseFSxBuildElements *GooseFSxBuildElement `json:"GooseFSxBuildElements,omitempty" name:"GooseFSxBuildElements"`
+	GooseFSxBuildElements *GooseFSxBuildElement `json:"GooseFSxBuildElements,omitnil" name:"GooseFSxBuildElements"`
 }
 
 type CreateFileSystemRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统类型, 可填goosefs和goosefsx
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 文件系统名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 文件系统备注描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// vpc网络ID
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 子网ID
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// 子网所在的可用区
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// 文件系统关联的tag
-	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
+	Tag []*Tag `json:"Tag,omitnil" name:"Tag"`
 
 	// GooseFSx构建时要传递的参数
-	GooseFSxBuildElements *GooseFSxBuildElement `json:"GooseFSxBuildElements,omitempty" name:"GooseFSxBuildElements"`
+	GooseFSxBuildElements *GooseFSxBuildElement `json:"GooseFSxBuildElements,omitnil" name:"GooseFSxBuildElements"`
 }
 
 func (r *CreateFileSystemRequest) ToJsonString() string {
@@ -515,7 +515,7 @@ func (r *CreateFileSystemRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFileSystemResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateFileSystemResponse struct {
@@ -537,20 +537,20 @@ func (r *CreateFileSystemResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteCrossVpcSubnetSupportForClientNodeRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 子网信息
-	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitempty" name:"SubnetInfo"`
+	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitnil" name:"SubnetInfo"`
 }
 
 type DeleteCrossVpcSubnetSupportForClientNodeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 子网信息
-	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitempty" name:"SubnetInfo"`
+	SubnetInfo *SubnetInfo `json:"SubnetInfo,omitnil" name:"SubnetInfo"`
 }
 
 func (r *DeleteCrossVpcSubnetSupportForClientNodeRequest) ToJsonString() string {
@@ -576,7 +576,7 @@ func (r *DeleteCrossVpcSubnetSupportForClientNodeRequest) FromJsonString(s strin
 // Predefined struct for user
 type DeleteCrossVpcSubnetSupportForClientNodeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteCrossVpcSubnetSupportForClientNodeResponse struct {
@@ -598,14 +598,14 @@ func (r *DeleteCrossVpcSubnetSupportForClientNodeResponse) FromJsonString(s stri
 // Predefined struct for user
 type DeleteFileSystemRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 }
 
 type DeleteFileSystemRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 }
 
 func (r *DeleteFileSystemRequest) ToJsonString() string {
@@ -630,7 +630,7 @@ func (r *DeleteFileSystemRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteFileSystemResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteFileSystemResponse struct {
@@ -652,14 +652,14 @@ func (r *DeleteFileSystemResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClientNodesRequestParams struct {
 	// 文件系统Id
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 }
 
 type DescribeClientNodesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统Id
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 }
 
 func (r *DescribeClientNodesRequest) ToJsonString() string {
@@ -684,10 +684,10 @@ func (r *DescribeClientNodesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClientNodesResponseParams struct {
 	// 客户端节点数组
-	ClientNodes []*ClientNodeAttribute `json:"ClientNodes,omitempty" name:"ClientNodes"`
+	ClientNodes []*ClientNodeAttribute `json:"ClientNodes,omitnil" name:"ClientNodes"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeClientNodesResponse struct {
@@ -709,14 +709,14 @@ func (r *DescribeClientNodesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterClientTokenRequestParams struct {
 	// 集群ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 type DescribeClusterClientTokenRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 }
 
 func (r *DescribeClusterClientTokenRequest) ToJsonString() string {
@@ -741,10 +741,10 @@ func (r *DescribeClusterClientTokenRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterClientTokenResponseParams struct {
 	// 客户端凭证
-	ClientTokens []*ClientToken `json:"ClientTokens,omitempty" name:"ClientTokens"`
+	ClientTokens []*ClientToken `json:"ClientTokens,omitnil" name:"ClientTokens"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeClusterClientTokenResponse struct {
@@ -766,20 +766,20 @@ func (r *DescribeClusterClientTokenResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterRoleTokenRequestParams struct {
 	// 集群ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 角色名
-	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
 }
 
 type DescribeClusterRoleTokenRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 角色名
-	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
 }
 
 func (r *DescribeClusterRoleTokenRequest) ToJsonString() string {
@@ -805,10 +805,10 @@ func (r *DescribeClusterRoleTokenRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterRoleTokenResponseParams struct {
 	// 角色凭证
-	RoleTokens []*RoleToken `json:"RoleTokens,omitempty" name:"RoleTokens"`
+	RoleTokens []*RoleToken `json:"RoleTokens,omitnil" name:"RoleTokens"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeClusterRoleTokenResponse struct {
@@ -830,20 +830,20 @@ func (r *DescribeClusterRoleTokenResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterRolesRequestParams struct {
 	// 集群ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 角色名
-	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
 }
 
 type DescribeClusterRolesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集群ID
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 角色名
-	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
 }
 
 func (r *DescribeClusterRolesRequest) ToJsonString() string {
@@ -869,10 +869,10 @@ func (r *DescribeClusterRolesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterRolesResponseParams struct {
 	// 集群角色
-	ClusterRoles []*ClusterRole `json:"ClusterRoles,omitempty" name:"ClusterRoles"`
+	ClusterRoles []*ClusterRole `json:"ClusterRoles,omitnil" name:"ClusterRoles"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeClusterRolesResponse struct {
@@ -894,20 +894,20 @@ func (r *DescribeClusterRolesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDataRepositoryTaskStatusRequestParams struct {
 	// task id
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// file system id
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 }
 
 type DescribeDataRepositoryTaskStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// task id
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// file system id
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 }
 
 func (r *DescribeDataRepositoryTaskStatusRequest) ToJsonString() string {
@@ -933,19 +933,19 @@ func (r *DescribeDataRepositoryTaskStatusRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeDataRepositoryTaskStatusResponseParams struct {
 	// 任务id
-	TaskId *string `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务状态 0(初始化中), 1(运行中), 2(已完成), 3(任务失败)
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 已完成的文件数量
-	FinishedFileNumber *uint64 `json:"FinishedFileNumber,omitempty" name:"FinishedFileNumber"`
+	FinishedFileNumber *uint64 `json:"FinishedFileNumber,omitnil" name:"FinishedFileNumber"`
 
 	// 已完成的数据量
-	FinishedCapacity *uint64 `json:"FinishedCapacity,omitempty" name:"FinishedCapacity"`
+	FinishedCapacity *uint64 `json:"FinishedCapacity,omitnil" name:"FinishedCapacity"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDataRepositoryTaskStatusResponse struct {
@@ -967,14 +967,14 @@ func (r *DescribeDataRepositoryTaskStatusResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeFileSystemBucketsRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 }
 
 type DescribeFileSystemBucketsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 }
 
 func (r *DescribeFileSystemBucketsRequest) ToJsonString() string {
@@ -999,10 +999,10 @@ func (r *DescribeFileSystemBucketsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileSystemBucketsResponseParams struct {
 	// bucket列表
-	BucketList []*MappedBucket `json:"BucketList,omitempty" name:"BucketList"`
+	BucketList []*MappedBucket `json:"BucketList,omitnil" name:"BucketList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeFileSystemBucketsResponse struct {
@@ -1024,20 +1024,20 @@ func (r *DescribeFileSystemBucketsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileSystemsRequestParams struct {
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页的数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeFileSystemsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 偏移量
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页的数量
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeFileSystemsRequest) ToJsonString() string {
@@ -1063,13 +1063,13 @@ func (r *DescribeFileSystemsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileSystemsResponseParams struct {
 	// 文件系统列表
-	FSAttributeList []*FSAttribute `json:"FSAttributeList,omitempty" name:"FSAttributeList"`
+	FSAttributeList []*FSAttribute `json:"FSAttributeList,omitnil" name:"FSAttributeList"`
 
 	// 总共的文件系统数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeFileSystemsResponse struct {
@@ -1091,20 +1091,20 @@ func (r *DescribeFileSystemsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DetachFileSystemBucketRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 要解绑的Bucket名
-	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitnil" name:"BucketName"`
 }
 
 type DetachFileSystemBucketRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 要解绑的Bucket名
-	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitnil" name:"BucketName"`
 }
 
 func (r *DetachFileSystemBucketRequest) ToJsonString() string {
@@ -1130,7 +1130,7 @@ func (r *DetachFileSystemBucketRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DetachFileSystemBucketResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DetachFileSystemBucketResponse struct {
@@ -1152,20 +1152,20 @@ func (r *DetachFileSystemBucketResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ExpandCapacityRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 新增扩容的系统容量
-	ExpandedCapacity *uint64 `json:"ExpandedCapacity,omitempty" name:"ExpandedCapacity"`
+	ExpandedCapacity *uint64 `json:"ExpandedCapacity,omitnil" name:"ExpandedCapacity"`
 }
 
 type ExpandCapacityRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 新增扩容的系统容量
-	ExpandedCapacity *uint64 `json:"ExpandedCapacity,omitempty" name:"ExpandedCapacity"`
+	ExpandedCapacity *uint64 `json:"ExpandedCapacity,omitnil" name:"ExpandedCapacity"`
 }
 
 func (r *ExpandCapacityRequest) ToJsonString() string {
@@ -1191,7 +1191,7 @@ func (r *ExpandCapacityRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ExpandCapacityResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ExpandCapacityResponse struct {
@@ -1212,89 +1212,89 @@ func (r *ExpandCapacityResponse) FromJsonString(s string) error {
 
 type FSAttribute struct {
 	// 文件系统类型, 可填goosefs和goosefsx
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 创建时间
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// GooseFSx文件系统属性
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	GooseFSxAttribute *GooseFSxAttribute `json:"GooseFSxAttribute,omitempty" name:"GooseFSxAttribute"`
+	GooseFSxAttribute *GooseFSxAttribute `json:"GooseFSxAttribute,omitnil" name:"GooseFSxAttribute"`
 
 	// 文件系统状态 ACTIVE(运行中), CREATING(创建中), DESTROYING(销毁中), FAIL(创建失败),EXPANDING(扩容中),PROBING(容灾中)
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 文件系统名
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 文件系统备注描述
-	Description *string `json:"Description,omitempty" name:"Description"`
+	Description *string `json:"Description,omitnil" name:"Description"`
 
 	// vpc ID
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 子网ID
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// 子网所在的可用区
-	Zone *string `json:"Zone,omitempty" name:"Zone"`
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
 
 	// Tag数组
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Tag []*Tag `json:"Tag,omitempty" name:"Tag"`
+	Tag []*Tag `json:"Tag,omitnil" name:"Tag"`
 
 	// 更新属性时间
-	ModifyTime *string `json:"ModifyTime,omitempty" name:"ModifyTime"`
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
 }
 
 type GooseFSxAttribute struct {
 	// GooseFSx的型号
-	Model *string `json:"Model,omitempty" name:"Model"`
+	Model *string `json:"Model,omitnil" name:"Model"`
 
 	// 容量单位是GB, 比如4608(4.5TB)
-	Capacity *uint64 `json:"Capacity,omitempty" name:"Capacity"`
+	Capacity *uint64 `json:"Capacity,omitnil" name:"Capacity"`
 
 	// 要关联映射的bucket列表
-	MappedBucketList []*MappedBucket `json:"MappedBucketList,omitempty" name:"MappedBucketList"`
+	MappedBucketList []*MappedBucket `json:"MappedBucketList,omitnil" name:"MappedBucketList"`
 
 	// 客户侧管理节点信息
-	ClientManagerNodeList []*ClientClusterManagerNodeInfo `json:"ClientManagerNodeList,omitempty" name:"ClientManagerNodeList"`
+	ClientManagerNodeList []*ClientClusterManagerNodeInfo `json:"ClientManagerNodeList,omitnil" name:"ClientManagerNodeList"`
 }
 
 type GooseFSxBuildElement struct {
 	// GooseFSx的型号
-	Model *string `json:"Model,omitempty" name:"Model"`
+	Model *string `json:"Model,omitnil" name:"Model"`
 
 	// 容量单位是GB, 比如4608(4.5TB)
-	Capacity *uint64 `json:"Capacity,omitempty" name:"Capacity"`
+	Capacity *uint64 `json:"Capacity,omitnil" name:"Capacity"`
 
 	// 要关联映射的bucket列表
-	MappedBucketList []*MappedBucket `json:"MappedBucketList,omitempty" name:"MappedBucketList"`
+	MappedBucketList []*MappedBucket `json:"MappedBucketList,omitnil" name:"MappedBucketList"`
 }
 
 type LinuxNodeAttribute struct {
 	// cvmId
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 节点所属vpcid
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 节点所属子网id
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
 	// linux客户端节点地址
-	LinuxClientNodeIp *string `json:"LinuxClientNodeIp,omitempty" name:"LinuxClientNodeIp"`
+	LinuxClientNodeIp *string `json:"LinuxClientNodeIp,omitnil" name:"LinuxClientNodeIp"`
 }
 
 type MappedBucket struct {
 	// 对象存储Bucket名
-	BucketName *string `json:"BucketName,omitempty" name:"BucketName"`
+	BucketName *string `json:"BucketName,omitnil" name:"BucketName"`
 
 	// 映射到的文件系统路径, 默认为/
-	FileSystemPath *string `json:"FileSystemPath,omitempty" name:"FileSystemPath"`
+	FileSystemPath *string `json:"FileSystemPath,omitnil" name:"FileSystemPath"`
 
 	// 数据流动的自动策略, 包含加载与沉降。策略可以是多种的组合
 	// 按需加载(OnDemandImport)
@@ -1305,34 +1305,34 @@ type MappedBucket struct {
 	// 周期沉降(PeriodExport)
 	// 立即沉降(ImmediateExport)
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DataRepositoryTaskAutoStrategy []*string `json:"DataRepositoryTaskAutoStrategy,omitempty" name:"DataRepositoryTaskAutoStrategy"`
+	DataRepositoryTaskAutoStrategy []*string `json:"DataRepositoryTaskAutoStrategy,omitnil" name:"DataRepositoryTaskAutoStrategy"`
 
 	// 绑定bucket的数据流动策略ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleId *string `json:"RuleId,omitempty" name:"RuleId"`
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 规则备注与描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RuleDescription *string `json:"RuleDescription,omitempty" name:"RuleDescription"`
+	RuleDescription *string `json:"RuleDescription,omitnil" name:"RuleDescription"`
 }
 
 // Predefined struct for user
 type ModifyDataRepositoryBandwidthRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 带宽, 单位MB/S
-	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+	Bandwidth *uint64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
 }
 
 type ModifyDataRepositoryBandwidthRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 
 	// 带宽, 单位MB/S
-	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+	Bandwidth *uint64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
 }
 
 func (r *ModifyDataRepositoryBandwidthRequest) ToJsonString() string {
@@ -1358,7 +1358,7 @@ func (r *ModifyDataRepositoryBandwidthRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDataRepositoryBandwidthResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDataRepositoryBandwidthResponse struct {
@@ -1380,14 +1380,14 @@ func (r *ModifyDataRepositoryBandwidthResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryCrossVpcSubnetSupportForClientNodeRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 }
 
 type QueryCrossVpcSubnetSupportForClientNodeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 }
 
 func (r *QueryCrossVpcSubnetSupportForClientNodeRequest) ToJsonString() string {
@@ -1412,10 +1412,10 @@ func (r *QueryCrossVpcSubnetSupportForClientNodeRequest) FromJsonString(s string
 // Predefined struct for user
 type QueryCrossVpcSubnetSupportForClientNodeResponseParams struct {
 	// 支持的子网信息集合
-	SubnetInfoCollection []*SubnetInfo `json:"SubnetInfoCollection,omitempty" name:"SubnetInfoCollection"`
+	SubnetInfoCollection []*SubnetInfo `json:"SubnetInfoCollection,omitnil" name:"SubnetInfoCollection"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryCrossVpcSubnetSupportForClientNodeResponse struct {
@@ -1437,14 +1437,14 @@ func (r *QueryCrossVpcSubnetSupportForClientNodeResponse) FromJsonString(s strin
 // Predefined struct for user
 type QueryDataRepositoryBandwidthRequestParams struct {
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 }
 
 type QueryDataRepositoryBandwidthRequest struct {
 	*tchttp.BaseRequest
 	
 	// 文件系统ID
-	FileSystemId *string `json:"FileSystemId,omitempty" name:"FileSystemId"`
+	FileSystemId *string `json:"FileSystemId,omitnil" name:"FileSystemId"`
 }
 
 func (r *QueryDataRepositoryBandwidthRequest) ToJsonString() string {
@@ -1469,16 +1469,16 @@ func (r *QueryDataRepositoryBandwidthRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type QueryDataRepositoryBandwidthResponseParams struct {
 	// 数据流动带宽, 单位MB/s
-	Bandwidth *uint64 `json:"Bandwidth,omitempty" name:"Bandwidth"`
+	Bandwidth *uint64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
 
 	// 带宽状态。1:待扩容;2:运行中;3:扩容中
-	BandwidthStatus *uint64 `json:"BandwidthStatus,omitempty" name:"BandwidthStatus"`
+	BandwidthStatus *uint64 `json:"BandwidthStatus,omitnil" name:"BandwidthStatus"`
 
 	// 能设置的最小带宽, 单位MB/s
-	MinBandwidth *uint64 `json:"MinBandwidth,omitempty" name:"MinBandwidth"`
+	MinBandwidth *uint64 `json:"MinBandwidth,omitnil" name:"MinBandwidth"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type QueryDataRepositoryBandwidthResponse struct {
@@ -1499,27 +1499,27 @@ func (r *QueryDataRepositoryBandwidthResponse) FromJsonString(s string) error {
 
 type RoleToken struct {
 	// 角色名
-	RoleName *string `json:"RoleName,omitempty" name:"RoleName"`
+	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
 
 	// 用于goosefs client/sdk等
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Token *string `json:"Token,omitempty" name:"Token"`
+	Token *string `json:"Token,omitnil" name:"Token"`
 }
 
 type SubnetInfo struct {
 	// vpc id
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	VpcId *string `json:"VpcId,omitempty" name:"VpcId"`
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 子网ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SubnetId *string `json:"SubnetId,omitempty" name:"SubnetId"`
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 }
 
 type Tag struct {
 	// 标签键
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 标签值
-	Value *string `json:"Value,omitempty" name:"Value"`
+	Value *string `json:"Value,omitnil" name:"Value"`
 }

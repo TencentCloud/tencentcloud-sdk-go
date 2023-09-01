@@ -15,34 +15,34 @@
 package v20210527
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 // Predefined struct for user
 type AddUserContactRequestParams struct {
 	// 联系人姓名，由中英文、数字、空格、!@#$%^&*()_+-=（）组成，不能以下划线开头，长度在20以内。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 邮箱地址，支持大小写字母、数字、下划线及@字符， 不能以下划线开头，邮箱地址不可重复。
-	ContactInfo *string `json:"ContactInfo,omitempty" name:"ContactInfo"`
+	ContactInfo *string `json:"ContactInfo,omitnil" name:"ContactInfo"`
 
 	// 服务产品类型，固定值："mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type AddUserContactRequest struct {
 	*tchttp.BaseRequest
 	
 	// 联系人姓名，由中英文、数字、空格、!@#$%^&*()_+-=（）组成，不能以下划线开头，长度在20以内。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 邮箱地址，支持大小写字母、数字、下划线及@字符， 不能以下划线开头，邮箱地址不可重复。
-	ContactInfo *string `json:"ContactInfo,omitempty" name:"ContactInfo"`
+	ContactInfo *string `json:"ContactInfo,omitnil" name:"ContactInfo"`
 
 	// 服务产品类型，固定值："mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *AddUserContactRequest) ToJsonString() string {
@@ -69,10 +69,10 @@ func (r *AddUserContactRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type AddUserContactResponseParams struct {
 	// 添加成功的联系人id。
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type AddUserContactResponse struct {
@@ -93,143 +93,143 @@ func (r *AddUserContactResponse) FromJsonString(s string) error {
 
 type AuditInstance struct {
 	// 审计状态，已开通审计为：YES，未开通审计为：ON。
-	AuditStatus *string `json:"AuditStatus,omitempty" name:"AuditStatus"`
+	AuditStatus *string `json:"AuditStatus,omitnil" name:"AuditStatus"`
 
 	// 审计日志大小，为兼容老版本用。
-	BillingAmount *int64 `json:"BillingAmount,omitempty" name:"BillingAmount"`
+	BillingAmount *int64 `json:"BillingAmount,omitnil" name:"BillingAmount"`
 
 	// 计费确认状态，0-未确认；1-已确认。
-	BillingConfirmed *int64 `json:"BillingConfirmed,omitempty" name:"BillingConfirmed"`
+	BillingConfirmed *int64 `json:"BillingConfirmed,omitnil" name:"BillingConfirmed"`
 
 	// 低频存储时长。
-	ColdLogExpireDay *int64 `json:"ColdLogExpireDay,omitempty" name:"ColdLogExpireDay"`
+	ColdLogExpireDay *int64 `json:"ColdLogExpireDay,omitnil" name:"ColdLogExpireDay"`
 
 	// 低频日志存储量单位MB。
-	ColdLogSize *int64 `json:"ColdLogSize,omitempty" name:"ColdLogSize"`
+	ColdLogSize *int64 `json:"ColdLogSize,omitnil" name:"ColdLogSize"`
 
 	// 高频日志存储天数。
-	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
+	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitnil" name:"HotLogExpireDay"`
 
 	// 高频日志存储量，单位MB。
-	HotLogSize *int64 `json:"HotLogSize,omitempty" name:"HotLogSize"`
+	HotLogSize *int64 `json:"HotLogSize,omitnil" name:"HotLogSize"`
 
 	// 实例Id。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 日志保存总天数，为高频存储时长+低频存储时长。
-	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+	LogExpireDay *int64 `json:"LogExpireDay,omitnil" name:"LogExpireDay"`
 
 	// 实例创建时间。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 实例详细信息。
-	InstanceInfo *AuditInstanceInfo `json:"InstanceInfo,omitempty" name:"InstanceInfo"`
+	InstanceInfo *AuditInstanceInfo `json:"InstanceInfo,omitnil" name:"InstanceInfo"`
 }
 
 type AuditInstanceFilter struct {
 	// 搜索条件名称
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 要搜索的条件的值
-	Values []*string `json:"Values,omitempty" name:"Values"`
+	Values []*string `json:"Values,omitnil" name:"Values"`
 }
 
 type AuditInstanceInfo struct {
 	// appId。
-	AppId *int64 `json:"AppId,omitempty" name:"AppId"`
+	AppId *int64 `json:"AppId,omitnil" name:"AppId"`
 
 	// 审计状态，0-未开通审计；1-已开通审计。
-	AuditStatus *int64 `json:"AuditStatus,omitempty" name:"AuditStatus"`
+	AuditStatus *int64 `json:"AuditStatus,omitnil" name:"AuditStatus"`
 
 	// 实例Id。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 实例名称。
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 项目Id。
-	ProjectId *int64 `json:"ProjectId,omitempty" name:"ProjectId"`
+	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
 
 	// 实例所在地域。
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 资源Tags。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ResourceTags []*string `json:"ResourceTags,omitempty" name:"ResourceTags"`
+	ResourceTags []*string `json:"ResourceTags,omitnil" name:"ResourceTags"`
 }
 
 type AuditLogFile struct {
 	// 审计日志文件生成异步任务ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 
 	// 审计日志文件名称。
-	FileName *string `json:"FileName,omitempty" name:"FileName"`
+	FileName *string `json:"FileName,omitnil" name:"FileName"`
 
 	// 审计日志文件创建时间。格式为 : "2019-03-20 17:09:13"。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 文件状态值。可能返回的值为：
 	// "creating" - 生成中;
 	// "failed" - 创建失败;
 	// "success" - 已生成;
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 文件大小，单位为 KB。
-	FileSize *float64 `json:"FileSize,omitempty" name:"FileSize"`
+	FileSize *float64 `json:"FileSize,omitnil" name:"FileSize"`
 
 	// 审计日志下载地址。
-	DownloadUrl *string `json:"DownloadUrl,omitempty" name:"DownloadUrl"`
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
 
 	// 错误信息。
-	ErrMsg *string `json:"ErrMsg,omitempty" name:"ErrMsg"`
+	ErrMsg *string `json:"ErrMsg,omitnil" name:"ErrMsg"`
 
 	// 文件生成进度。
-	Progress *float64 `json:"Progress,omitempty" name:"Progress"`
+	Progress *float64 `json:"Progress,omitnil" name:"Progress"`
 
 	// 文件生成成功时间。
-	FinishTime *string `json:"FinishTime,omitempty" name:"FinishTime"`
+	FinishTime *string `json:"FinishTime,omitnil" name:"FinishTime"`
 }
 
 type AuditLogFilter struct {
 	// 客户端地址。
-	Host []*string `json:"Host,omitempty" name:"Host"`
+	Host []*string `json:"Host,omitnil" name:"Host"`
 
 	// 数据库名称。
-	DBName []*string `json:"DBName,omitempty" name:"DBName"`
+	DBName []*string `json:"DBName,omitnil" name:"DBName"`
 
 	// 用户名。
-	User []*string `json:"User,omitempty" name:"User"`
+	User []*string `json:"User,omitnil" name:"User"`
 
 	// 返回行数。表示筛选返回行数大于该值的审计日志。
-	SentRows *int64 `json:"SentRows,omitempty" name:"SentRows"`
+	SentRows *int64 `json:"SentRows,omitnil" name:"SentRows"`
 
 	// 影响行数。表示筛选影响行数大于该值的审计日志。
-	AffectRows *int64 `json:"AffectRows,omitempty" name:"AffectRows"`
+	AffectRows *int64 `json:"AffectRows,omitnil" name:"AffectRows"`
 
 	// 执行时间。单位为：µs。表示筛选执行时间大于该值的审计日志。
-	ExecTime *int64 `json:"ExecTime,omitempty" name:"ExecTime"`
+	ExecTime *int64 `json:"ExecTime,omitnil" name:"ExecTime"`
 }
 
 // Predefined struct for user
 type CancelKillTaskRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type CancelKillTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *CancelKillTaskRequest) ToJsonString() string {
@@ -255,10 +255,10 @@ func (r *CancelKillTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CancelKillTaskResponseParams struct {
 	// kill会话任务终止成功返回1。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CancelKillTaskResponse struct {
@@ -280,26 +280,26 @@ func (r *CancelKillTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CloseAuditServiceRequestParams struct {
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 实例Id。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type CloseAuditServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 实例Id。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *CloseAuditServiceRequest) ToJsonString() string {
@@ -326,10 +326,10 @@ func (r *CloseAuditServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CloseAuditServiceResponseParams struct {
 	// 0-关闭审计成功，非0关闭审计失败。
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CloseAuditServiceResponse struct {
@@ -350,56 +350,56 @@ func (r *CloseAuditServiceResponse) FromJsonString(s string) error {
 
 type ContactItem struct {
 	// 联系人id。
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 联系人姓名。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 联系人绑定的邮箱。
-	Mail *string `json:"Mail,omitempty" name:"Mail"`
+	Mail *string `json:"Mail,omitnil" name:"Mail"`
 }
 
 // Predefined struct for user
 type CreateAuditLogFileRequestParams struct {
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。	
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 截止时间，如“2019-09-11 10:13:14”。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 过滤条件。可按设置的过滤条件过滤日志。
-	Filter *AuditLogFilter `json:"Filter,omitempty" name:"Filter"`
+	Filter *AuditLogFilter `json:"Filter,omitnil" name:"Filter"`
 }
 
 type CreateAuditLogFileRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。	
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 截止时间，如“2019-09-11 10:13:14”。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 过滤条件。可按设置的过滤条件过滤日志。
-	Filter *AuditLogFilter `json:"Filter,omitempty" name:"Filter"`
+	Filter *AuditLogFilter `json:"Filter,omitnil" name:"Filter"`
 }
 
 func (r *CreateAuditLogFileRequest) ToJsonString() string {
@@ -429,10 +429,10 @@ func (r *CreateAuditLogFileRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAuditLogFileResponseParams struct {
 	// 审计日志文件下载的任务ID
-	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAuditLogFileResponse struct {
@@ -454,50 +454,50 @@ func (r *CreateAuditLogFileResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDBDiagReportTaskRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 开始时间，如“2020-11-08T14:00:00+08:00”。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间，如“2020-11-09T14:00:00+08:00”。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 是否发送邮件: 0 - 否，1 - 是。
-	SendMailFlag *int64 `json:"SendMailFlag,omitempty" name:"SendMailFlag"`
+	SendMailFlag *int64 `json:"SendMailFlag,omitnil" name:"SendMailFlag"`
 
 	// 接收邮件的联系人ID数组。
-	ContactPerson []*int64 `json:"ContactPerson,omitempty" name:"ContactPerson"`
+	ContactPerson []*int64 `json:"ContactPerson,omitnil" name:"ContactPerson"`
 
 	// 接收邮件的联系组ID数组。
-	ContactGroup []*int64 `json:"ContactGroup,omitempty" name:"ContactGroup"`
+	ContactGroup []*int64 `json:"ContactGroup,omitnil" name:"ContactGroup"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认值为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type CreateDBDiagReportTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 开始时间，如“2020-11-08T14:00:00+08:00”。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间，如“2020-11-09T14:00:00+08:00”。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 是否发送邮件: 0 - 否，1 - 是。
-	SendMailFlag *int64 `json:"SendMailFlag,omitempty" name:"SendMailFlag"`
+	SendMailFlag *int64 `json:"SendMailFlag,omitnil" name:"SendMailFlag"`
 
 	// 接收邮件的联系人ID数组。
-	ContactPerson []*int64 `json:"ContactPerson,omitempty" name:"ContactPerson"`
+	ContactPerson []*int64 `json:"ContactPerson,omitnil" name:"ContactPerson"`
 
 	// 接收邮件的联系组ID数组。
-	ContactGroup []*int64 `json:"ContactGroup,omitempty" name:"ContactGroup"`
+	ContactGroup []*int64 `json:"ContactGroup,omitnil" name:"ContactGroup"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认值为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *CreateDBDiagReportTaskRequest) ToJsonString() string {
@@ -529,10 +529,10 @@ func (r *CreateDBDiagReportTaskRequest) FromJsonString(s string) error {
 type CreateDBDiagReportTaskResponseParams struct {
 	// 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDBDiagReportTaskResponse struct {
@@ -554,26 +554,26 @@ func (r *CreateDBDiagReportTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDBDiagReportUrlRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
-	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type CreateDBDiagReportUrlRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 健康报告相应的任务ID，可通过DescribeDBDiagReportTasks查询。
-	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *CreateDBDiagReportUrlRequest) ToJsonString() string {
@@ -600,13 +600,13 @@ func (r *CreateDBDiagReportUrlRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateDBDiagReportUrlResponseParams struct {
 	// 健康报告浏览地址。
-	ReportUrl *string `json:"ReportUrl,omitempty" name:"ReportUrl"`
+	ReportUrl *string `json:"ReportUrl,omitnil" name:"ReportUrl"`
 
 	// 健康报告浏览地址到期时间戳（秒）。
-	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *int64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateDBDiagReportUrlResponse struct {
@@ -628,62 +628,62 @@ func (r *CreateDBDiagReportUrlResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateKillTaskRequestParams struct {
 	// kill会话任务的关联实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 任务持续时间，单位秒，手动关闭任务传-1。
-	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 任务过滤条件，客户端IP。
-	Host *string `json:"Host,omitempty" name:"Host"`
+	Host *string `json:"Host,omitnil" name:"Host"`
 
 	// 任务过滤条件，数据库库名,多个","隔开。
-	DB *string `json:"DB,omitempty" name:"DB"`
+	DB *string `json:"DB,omitnil" name:"DB"`
 
 	// 任务过滤条件，相关命令，多个","隔开。
-	Command *string `json:"Command,omitempty" name:"Command"`
+	Command *string `json:"Command,omitnil" name:"Command"`
 
 	// 任务过滤条件，支持单条件前缀匹配。
-	Info *string `json:"Info,omitempty" name:"Info"`
+	Info *string `json:"Info,omitnil" name:"Info"`
 
 	// 任务过滤条件，用户类型。
-	User *string `json:"User,omitempty" name:"User"`
+	User *string `json:"User,omitnil" name:"User"`
 
 	// 任务过滤条件，会话持续时长，单位秒。
-	Time *int64 `json:"Time,omitempty" name:"Time"`
+	Time *int64 `json:"Time,omitnil" name:"Time"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type CreateKillTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// kill会话任务的关联实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 任务持续时间，单位秒，手动关闭任务传-1。
-	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 任务过滤条件，客户端IP。
-	Host *string `json:"Host,omitempty" name:"Host"`
+	Host *string `json:"Host,omitnil" name:"Host"`
 
 	// 任务过滤条件，数据库库名,多个","隔开。
-	DB *string `json:"DB,omitempty" name:"DB"`
+	DB *string `json:"DB,omitnil" name:"DB"`
 
 	// 任务过滤条件，相关命令，多个","隔开。
-	Command *string `json:"Command,omitempty" name:"Command"`
+	Command *string `json:"Command,omitnil" name:"Command"`
 
 	// 任务过滤条件，支持单条件前缀匹配。
-	Info *string `json:"Info,omitempty" name:"Info"`
+	Info *string `json:"Info,omitnil" name:"Info"`
 
 	// 任务过滤条件，用户类型。
-	User *string `json:"User,omitempty" name:"User"`
+	User *string `json:"User,omitnil" name:"User"`
 
 	// 任务过滤条件，会话持续时长，单位秒。
-	Time *int64 `json:"Time,omitempty" name:"Time"`
+	Time *int64 `json:"Time,omitnil" name:"Time"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *CreateKillTaskRequest) ToJsonString() string {
@@ -716,10 +716,10 @@ func (r *CreateKillTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateKillTaskResponseParams struct {
 	// kill会话任务创建成功返回1
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateKillTaskResponse struct {
@@ -741,44 +741,44 @@ func (r *CreateKillTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateMailProfileRequestParams struct {
 	// 邮件配置内容。
-	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitempty" name:"ProfileInfo"`
+	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitnil" name:"ProfileInfo"`
 
 	// 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
-	ProfileLevel *string `json:"ProfileLevel,omitempty" name:"ProfileLevel"`
+	ProfileLevel *string `json:"ProfileLevel,omitnil" name:"ProfileLevel"`
 
 	// 配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
-	ProfileName *string `json:"ProfileName,omitempty" name:"ProfileName"`
+	ProfileName *string `json:"ProfileName,omitnil" name:"ProfileName"`
 
 	// 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
-	ProfileType *string `json:"ProfileType,omitempty" name:"ProfileType"`
+	ProfileType *string `json:"ProfileType,omitnil" name:"ProfileType"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 配置绑定的实例ID，当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
-	BindInstanceIds []*string `json:"BindInstanceIds,omitempty" name:"BindInstanceIds"`
+	BindInstanceIds []*string `json:"BindInstanceIds,omitnil" name:"BindInstanceIds"`
 }
 
 type CreateMailProfileRequest struct {
 	*tchttp.BaseRequest
 	
 	// 邮件配置内容。
-	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitempty" name:"ProfileInfo"`
+	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitnil" name:"ProfileInfo"`
 
 	// 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
-	ProfileLevel *string `json:"ProfileLevel,omitempty" name:"ProfileLevel"`
+	ProfileLevel *string `json:"ProfileLevel,omitnil" name:"ProfileLevel"`
 
 	// 配置名称，需要保持唯一性，数据库巡检邮件配置名称自拟；定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
-	ProfileName *string `json:"ProfileName,omitempty" name:"ProfileName"`
+	ProfileName *string `json:"ProfileName,omitnil" name:"ProfileName"`
 
 	// 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
-	ProfileType *string `json:"ProfileType,omitempty" name:"ProfileType"`
+	ProfileType *string `json:"ProfileType,omitnil" name:"ProfileType"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 配置绑定的实例ID，当配置级别为"Instance"时需要传入且只能为一个实例；当配置级别为“User”时，此参数不填。
-	BindInstanceIds []*string `json:"BindInstanceIds,omitempty" name:"BindInstanceIds"`
+	BindInstanceIds []*string `json:"BindInstanceIds,omitnil" name:"BindInstanceIds"`
 }
 
 func (r *CreateMailProfileRequest) ToJsonString() string {
@@ -808,7 +808,7 @@ func (r *CreateMailProfileRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateMailProfileResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateMailProfileResponse struct {
@@ -830,20 +830,20 @@ func (r *CreateMailProfileResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateProxySessionKillTaskRequestParams struct {
 	// 实例 ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type CreateProxySessionKillTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例 ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *CreateProxySessionKillTaskRequest) ToJsonString() string {
@@ -869,10 +869,10 @@ func (r *CreateProxySessionKillTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateProxySessionKillTaskResponseParams struct {
 	// 创建 kill 会话任务返回的异步任务 id
-	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateProxySessionKillTaskResponse struct {
@@ -894,34 +894,34 @@ func (r *CreateProxySessionKillTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRedisBigKeyAnalysisTaskRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 分片节点序号列表。当列表为空时，选择所有分片节点。
-	ShardIds []*int64 `json:"ShardIds,omitempty" name:"ShardIds"`
+	ShardIds []*int64 `json:"ShardIds,omitnil" name:"ShardIds"`
 
 	// Top Key前缀的分隔符列表。
 	// 目前仅支持以下分割符：[",", ";", ":", "_", "-", "+", "@", "=", "|", "#", "."]，当列表为空时，默认选择所有分隔符。
-	KeyDelimiterList []*string `json:"KeyDelimiterList,omitempty" name:"KeyDelimiterList"`
+	KeyDelimiterList []*string `json:"KeyDelimiterList,omitnil" name:"KeyDelimiterList"`
 }
 
 type CreateRedisBigKeyAnalysisTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 分片节点序号列表。当列表为空时，选择所有分片节点。
-	ShardIds []*int64 `json:"ShardIds,omitempty" name:"ShardIds"`
+	ShardIds []*int64 `json:"ShardIds,omitnil" name:"ShardIds"`
 
 	// Top Key前缀的分隔符列表。
 	// 目前仅支持以下分割符：[",", ";", ":", "_", "-", "+", "@", "=", "|", "#", "."]，当列表为空时，默认选择所有分隔符。
-	KeyDelimiterList []*string `json:"KeyDelimiterList,omitempty" name:"KeyDelimiterList"`
+	KeyDelimiterList []*string `json:"KeyDelimiterList,omitnil" name:"KeyDelimiterList"`
 }
 
 func (r *CreateRedisBigKeyAnalysisTaskRequest) ToJsonString() string {
@@ -949,10 +949,10 @@ func (r *CreateRedisBigKeyAnalysisTaskRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateRedisBigKeyAnalysisTaskResponseParams struct {
 	// 异步任务ID。
-	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateRedisBigKeyAnalysisTaskResponse struct {
@@ -974,38 +974,38 @@ func (r *CreateRedisBigKeyAnalysisTaskResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSchedulerMailProfileRequestParams struct {
 	// 取值范围1-7，分别代表周一至周日。
-	WeekConfiguration []*int64 `json:"WeekConfiguration,omitempty" name:"WeekConfiguration"`
+	WeekConfiguration []*int64 `json:"WeekConfiguration,omitnil" name:"WeekConfiguration"`
 
 	// 邮件配置内容。
-	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitempty" name:"ProfileInfo"`
+	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitnil" name:"ProfileInfo"`
 
 	// 配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
-	ProfileName *string `json:"ProfileName,omitempty" name:"ProfileName"`
+	ProfileName *string `json:"ProfileName,omitnil" name:"ProfileName"`
 
 	// 配置订阅的实例ID。
-	BindInstanceId *string `json:"BindInstanceId,omitempty" name:"BindInstanceId"`
+	BindInstanceId *string `json:"BindInstanceId,omitnil" name:"BindInstanceId"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type CreateSchedulerMailProfileRequest struct {
 	*tchttp.BaseRequest
 	
 	// 取值范围1-7，分别代表周一至周日。
-	WeekConfiguration []*int64 `json:"WeekConfiguration,omitempty" name:"WeekConfiguration"`
+	WeekConfiguration []*int64 `json:"WeekConfiguration,omitnil" name:"WeekConfiguration"`
 
 	// 邮件配置内容。
-	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitempty" name:"ProfileInfo"`
+	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitnil" name:"ProfileInfo"`
 
 	// 配置名称，需要保持唯一性，定期生成邮件配置命名格式："scheduler_" + {instanceId}，如"schduler_cdb-test"。
-	ProfileName *string `json:"ProfileName,omitempty" name:"ProfileName"`
+	ProfileName *string `json:"ProfileName,omitnil" name:"ProfileName"`
 
 	// 配置订阅的实例ID。
-	BindInstanceId *string `json:"BindInstanceId,omitempty" name:"BindInstanceId"`
+	BindInstanceId *string `json:"BindInstanceId,omitnil" name:"BindInstanceId"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *CreateSchedulerMailProfileRequest) ToJsonString() string {
@@ -1034,7 +1034,7 @@ func (r *CreateSchedulerMailProfileRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSchedulerMailProfileResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateSchedulerMailProfileResponse struct {
@@ -1056,38 +1056,38 @@ func (r *CreateSchedulerMailProfileResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSecurityAuditLogExportTaskRequestParams struct {
 	// 安全审计组Id。
-	SecAuditGroupId *string `json:"SecAuditGroupId,omitempty" name:"SecAuditGroupId"`
+	SecAuditGroupId *string `json:"SecAuditGroupId,omitnil" name:"SecAuditGroupId"`
 
 	// 导出日志开始时间，例如2020-12-28 00:00:00。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 导出日志结束时间，例如2020-12-28 01:00:00。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 日志风险等级列表，支持值包括：0 无风险；1 低风险；2 中风险；3 高风险。
-	DangerLevels []*int64 `json:"DangerLevels,omitempty" name:"DangerLevels"`
+	DangerLevels []*int64 `json:"DangerLevels,omitnil" name:"DangerLevels"`
 }
 
 type CreateSecurityAuditLogExportTaskRequest struct {
 	*tchttp.BaseRequest
 	
 	// 安全审计组Id。
-	SecAuditGroupId *string `json:"SecAuditGroupId,omitempty" name:"SecAuditGroupId"`
+	SecAuditGroupId *string `json:"SecAuditGroupId,omitnil" name:"SecAuditGroupId"`
 
 	// 导出日志开始时间，例如2020-12-28 00:00:00。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 导出日志结束时间，例如2020-12-28 01:00:00。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 日志风险等级列表，支持值包括：0 无风险；1 低风险；2 中风险；3 高风险。
-	DangerLevels []*int64 `json:"DangerLevels,omitempty" name:"DangerLevels"`
+	DangerLevels []*int64 `json:"DangerLevels,omitnil" name:"DangerLevels"`
 }
 
 func (r *CreateSecurityAuditLogExportTaskRequest) ToJsonString() string {
@@ -1116,10 +1116,10 @@ func (r *CreateSecurityAuditLogExportTaskRequest) FromJsonString(s string) error
 // Predefined struct for user
 type CreateSecurityAuditLogExportTaskResponseParams struct {
 	// 日志导出任务Id。
-	AsyncRequestId *uint64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *uint64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateSecurityAuditLogExportTaskResponse struct {
@@ -1141,50 +1141,50 @@ func (r *CreateSecurityAuditLogExportTaskResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type CreateSqlFilterRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
-	SqlType *string `json:"SqlType,omitempty" name:"SqlType"`
+	SqlType *string `json:"SqlType,omitnil" name:"SqlType"`
 
 	// 关键字，用于筛选SQL语句，多个关键字用英文逗号分隔，逗号不能作为关键词，多个关键词之间的关系为“逻辑与”。
-	FilterKey *string `json:"FilterKey,omitempty" name:"FilterKey"`
+	FilterKey *string `json:"FilterKey,omitnil" name:"FilterKey"`
 
 	// 最大并发度，取值不能小于0，如果该值设为 0，则表示限制所有匹配的SQL执行。
-	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" name:"MaxConcurrency"`
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil" name:"MaxConcurrency"`
 
 	// 限流时长，单位秒，支持-1和小于2147483647的正整数，-1表示永不过期。
-	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
+	SessionToken *string `json:"SessionToken,omitnil" name:"SessionToken"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type CreateSqlFilterRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
-	SqlType *string `json:"SqlType,omitempty" name:"SqlType"`
+	SqlType *string `json:"SqlType,omitnil" name:"SqlType"`
 
 	// 关键字，用于筛选SQL语句，多个关键字用英文逗号分隔，逗号不能作为关键词，多个关键词之间的关系为“逻辑与”。
-	FilterKey *string `json:"FilterKey,omitempty" name:"FilterKey"`
+	FilterKey *string `json:"FilterKey,omitnil" name:"FilterKey"`
 
 	// 最大并发度，取值不能小于0，如果该值设为 0，则表示限制所有匹配的SQL执行。
-	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" name:"MaxConcurrency"`
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil" name:"MaxConcurrency"`
 
 	// 限流时长，单位秒，支持-1和小于2147483647的正整数，-1表示永不过期。
-	Duration *int64 `json:"Duration,omitempty" name:"Duration"`
+	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
+	SessionToken *string `json:"SessionToken,omitnil" name:"SessionToken"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *CreateSqlFilterRequest) ToJsonString() string {
@@ -1215,10 +1215,10 @@ func (r *CreateSqlFilterRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateSqlFilterResponseParams struct {
 	// 限流任务ID。
-	FilterId *int64 `json:"FilterId,omitempty" name:"FilterId"`
+	FilterId *int64 `json:"FilterId,omitnil" name:"FilterId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateSqlFilterResponse struct {
@@ -1240,32 +1240,32 @@ func (r *CreateSqlFilterResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAuditLogFileRequestParams struct {
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"	
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 审计日志文件生成异步任务ID。
-	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 }
 
 type DeleteAuditLogFileRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"	
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 审计日志文件生成异步任务ID。
-	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 }
 
 func (r *DeleteAuditLogFileRequest) ToJsonString() string {
@@ -1293,7 +1293,7 @@ func (r *DeleteAuditLogFileRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteAuditLogFileResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteAuditLogFileResponse struct {
@@ -1315,26 +1315,26 @@ func (r *DeleteAuditLogFileResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDBDiagReportTasksRequestParams struct {
 	// 需要删除的任务id列表
-	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitempty" name:"AsyncRequestIds"`
+	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitnil" name:"AsyncRequestIds"`
 
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DeleteDBDiagReportTasksRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要删除的任务id列表
-	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitempty" name:"AsyncRequestIds"`
+	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitnil" name:"AsyncRequestIds"`
 
 	// 实例ID
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DeleteDBDiagReportTasksRequest) ToJsonString() string {
@@ -1361,10 +1361,10 @@ func (r *DeleteDBDiagReportTasksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteDBDiagReportTasksResponseParams struct {
 	// 任务删除状态, 0-删除成功
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteDBDiagReportTasksResponse struct {
@@ -1386,26 +1386,26 @@ func (r *DeleteDBDiagReportTasksResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSecurityAuditLogExportTasksRequestParams struct {
 	// 安全审计组Id。
-	SecAuditGroupId *string `json:"SecAuditGroupId,omitempty" name:"SecAuditGroupId"`
+	SecAuditGroupId *string `json:"SecAuditGroupId,omitnil" name:"SecAuditGroupId"`
 
 	// 日志导出任务Id列表，接口会忽略不存在或已删除的任务Id。
-	AsyncRequestIds []*uint64 `json:"AsyncRequestIds,omitempty" name:"AsyncRequestIds"`
+	AsyncRequestIds []*uint64 `json:"AsyncRequestIds,omitnil" name:"AsyncRequestIds"`
 
 	// 服务产品类型，支持值： "mysql" - 云数据库 MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DeleteSecurityAuditLogExportTasksRequest struct {
 	*tchttp.BaseRequest
 	
 	// 安全审计组Id。
-	SecAuditGroupId *string `json:"SecAuditGroupId,omitempty" name:"SecAuditGroupId"`
+	SecAuditGroupId *string `json:"SecAuditGroupId,omitnil" name:"SecAuditGroupId"`
 
 	// 日志导出任务Id列表，接口会忽略不存在或已删除的任务Id。
-	AsyncRequestIds []*uint64 `json:"AsyncRequestIds,omitempty" name:"AsyncRequestIds"`
+	AsyncRequestIds []*uint64 `json:"AsyncRequestIds,omitnil" name:"AsyncRequestIds"`
 
 	// 服务产品类型，支持值： "mysql" - 云数据库 MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DeleteSecurityAuditLogExportTasksRequest) ToJsonString() string {
@@ -1432,7 +1432,7 @@ func (r *DeleteSecurityAuditLogExportTasksRequest) FromJsonString(s string) erro
 // Predefined struct for user
 type DeleteSecurityAuditLogExportTasksResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteSecurityAuditLogExportTasksResponse struct {
@@ -1454,32 +1454,32 @@ func (r *DeleteSecurityAuditLogExportTasksResponse) FromJsonString(s string) err
 // Predefined struct for user
 type DeleteSqlFiltersRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 限流任务ID列表。
-	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
+	FilterIds []*int64 `json:"FilterIds,omitnil" name:"FilterIds"`
 
 	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
+	SessionToken *string `json:"SessionToken,omitnil" name:"SessionToken"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DeleteSqlFiltersRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 限流任务ID列表。
-	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
+	FilterIds []*int64 `json:"FilterIds,omitnil" name:"FilterIds"`
 
 	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
+	SessionToken *string `json:"SessionToken,omitnil" name:"SessionToken"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DeleteSqlFiltersRequest) ToJsonString() string {
@@ -1507,7 +1507,7 @@ func (r *DeleteSqlFiltersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeleteSqlFiltersResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeleteSqlFiltersResponse struct {
@@ -1529,20 +1529,20 @@ func (r *DeleteSqlFiltersResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAllUserContactRequestParams struct {
 	// 服务产品类型，固定值：mysql。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 联系人名数组，支持模糊搜索。
-	Names []*string `json:"Names,omitempty" name:"Names"`
+	Names []*string `json:"Names,omitnil" name:"Names"`
 }
 
 type DescribeAllUserContactRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务产品类型，固定值：mysql。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 联系人名数组，支持模糊搜索。
-	Names []*string `json:"Names,omitempty" name:"Names"`
+	Names []*string `json:"Names,omitnil" name:"Names"`
 }
 
 func (r *DescribeAllUserContactRequest) ToJsonString() string {
@@ -1568,14 +1568,14 @@ func (r *DescribeAllUserContactRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAllUserContactResponseParams struct {
 	// 联系人的总数量。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 联系人的信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Contacts []*ContactItem `json:"Contacts,omitempty" name:"Contacts"`
+	Contacts []*ContactItem `json:"Contacts,omitnil" name:"Contacts"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAllUserContactResponse struct {
@@ -1597,20 +1597,20 @@ func (r *DescribeAllUserContactResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAllUserGroupRequestParams struct {
 	// 服务产品类型，固定值：mysql。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 联系组名称数组，支持模糊搜索。
-	Names []*string `json:"Names,omitempty" name:"Names"`
+	Names []*string `json:"Names,omitnil" name:"Names"`
 }
 
 type DescribeAllUserGroupRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务产品类型，固定值：mysql。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 联系组名称数组，支持模糊搜索。
-	Names []*string `json:"Names,omitempty" name:"Names"`
+	Names []*string `json:"Names,omitnil" name:"Names"`
 }
 
 func (r *DescribeAllUserGroupRequest) ToJsonString() string {
@@ -1636,14 +1636,14 @@ func (r *DescribeAllUserGroupRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAllUserGroupResponseParams struct {
 	// 组总数。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 组信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Groups []*GroupItem `json:"Groups,omitempty" name:"Groups"`
+	Groups []*GroupItem `json:"Groups,omitnil" name:"Groups"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAllUserGroupResponse struct {
@@ -1665,44 +1665,44 @@ func (r *DescribeAllUserGroupResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAuditInstanceListRequestParams struct {
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 审计状态标识，0-未开通审计；1-已开通审计，默认为0。
-	AuditSwitch *int64 `json:"AuditSwitch,omitempty" name:"AuditSwitch"`
+	AuditSwitch *int64 `json:"AuditSwitch,omitnil" name:"AuditSwitch"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 查询数目，默认为20，最大为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 查询实例的搜索条件。
-	Filters []*AuditInstanceFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AuditInstanceFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAuditInstanceListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 审计状态标识，0-未开通审计；1-已开通审计，默认为0。
-	AuditSwitch *int64 `json:"AuditSwitch,omitempty" name:"AuditSwitch"`
+	AuditSwitch *int64 `json:"AuditSwitch,omitnil" name:"AuditSwitch"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 查询数目，默认为20，最大为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 查询实例的搜索条件。
-	Filters []*AuditInstanceFilter `json:"Filters,omitempty" name:"Filters"`
+	Filters []*AuditInstanceFilter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAuditInstanceListRequest) ToJsonString() string {
@@ -1733,13 +1733,13 @@ func (r *DescribeAuditInstanceListRequest) FromJsonString(s string) error {
 type DescribeAuditInstanceListResponseParams struct {
 	// 符合条件的实例个数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 实例详情。
-	Items []*AuditInstance `json:"Items,omitempty" name:"Items"`
+	Items []*AuditInstance `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAuditInstanceListResponse struct {
@@ -1761,38 +1761,38 @@ func (r *DescribeAuditInstanceListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeAuditLogFilesRequestParams struct {
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 查询数目，默认为20，最大为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeAuditLogFilesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB for MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 查询数目，默认为20，最大为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeAuditLogFilesRequest) ToJsonString() string {
@@ -1822,14 +1822,14 @@ func (r *DescribeAuditLogFilesRequest) FromJsonString(s string) error {
 type DescribeAuditLogFilesResponseParams struct {
 	// 符合条件的审计日志文件个数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 审计日志文件详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*AuditLogFile `json:"Items,omitempty" name:"Items"`
+	Items []*AuditLogFile `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeAuditLogFilesResponse struct {
@@ -1851,26 +1851,26 @@ func (r *DescribeAuditLogFilesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBDiagEventRequestParams struct {
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
-	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+	EventId *int64 `json:"EventId,omitnil" name:"EventId"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeDBDiagEventRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 事件 ID 。通过“获取实例诊断历史DescribeDBDiagHistory”获取。
-	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+	EventId *int64 `json:"EventId,omitnil" name:"EventId"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeDBDiagEventRequest) ToJsonString() string {
@@ -1897,41 +1897,41 @@ func (r *DescribeDBDiagEventRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBDiagEventResponseParams struct {
 	// 诊断项。
-	DiagItem *string `json:"DiagItem,omitempty" name:"DiagItem"`
+	DiagItem *string `json:"DiagItem,omitnil" name:"DiagItem"`
 
 	// 诊断类型。
-	DiagType *string `json:"DiagType,omitempty" name:"DiagType"`
+	DiagType *string `json:"DiagType,omitnil" name:"DiagType"`
 
 	// 事件 ID 。
-	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+	EventId *int64 `json:"EventId,omitnil" name:"EventId"`
 
 	// 诊断事件详情，若无附加解释信息则输出为空。
-	Explanation *string `json:"Explanation,omitempty" name:"Explanation"`
+	Explanation *string `json:"Explanation,omitnil" name:"Explanation"`
 
 	// 诊断概要。
-	Outline *string `json:"Outline,omitempty" name:"Outline"`
+	Outline *string `json:"Outline,omitnil" name:"Outline"`
 
 	// 诊断出的问题。
-	Problem *string `json:"Problem,omitempty" name:"Problem"`
+	Problem *string `json:"Problem,omitnil" name:"Problem"`
 
 	// 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
-	Severity *int64 `json:"Severity,omitempty" name:"Severity"`
+	Severity *int64 `json:"Severity,omitnil" name:"Severity"`
 
 	// 开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 诊断建议，若无建议则输出为空。
-	Suggestions *string `json:"Suggestions,omitempty" name:"Suggestions"`
+	Suggestions *string `json:"Suggestions,omitnil" name:"Suggestions"`
 
 	// 保留字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Metric *string `json:"Metric,omitempty" name:"Metric"`
+	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
 	// 结束时间。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDBDiagEventResponse struct {
@@ -1953,44 +1953,44 @@ func (r *DescribeDBDiagEventResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBDiagEventsRequestParams struct {
 	// 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间，如“2021-05-27 01:00:00”，结束时间与开始时间的间隔最大可为7天。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。
-	Severities []*int64 `json:"Severities,omitempty" name:"Severities"`
+	Severities []*int64 `json:"Severities,omitnil" name:"Severities"`
 
 	// 实例ID列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 
 	// 偏移量，默认0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认20，最大值为50。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeDBDiagEventsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 开始时间，如“2021-05-27 00:00:00”，支持的最早查询时间为当前时间的前30天。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间，如“2021-05-27 01:00:00”，结束时间与开始时间的间隔最大可为7天。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。
-	Severities []*int64 `json:"Severities,omitempty" name:"Severities"`
+	Severities []*int64 `json:"Severities,omitnil" name:"Severities"`
 
 	// 实例ID列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 
 	// 偏移量，默认0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认20，最大值为50。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeDBDiagEventsRequest) ToJsonString() string {
@@ -2020,13 +2020,13 @@ func (r *DescribeDBDiagEventsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBDiagEventsResponseParams struct {
 	// 诊断事件的总数目。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 诊断事件的列表。
-	Items []*DiagHistoryEventItem `json:"Items,omitempty" name:"Items"`
+	Items []*DiagHistoryEventItem `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDBDiagEventsResponse struct {
@@ -2048,32 +2048,32 @@ func (r *DescribeDBDiagEventsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBDiagHistoryRequestParams struct {
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间，如“2019-09-11 12:13:14”，结束时间与开始时间的间隔最大可为2天。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeDBDiagHistoryRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间，如“2019-09-11 12:13:14”，结束时间与开始时间的间隔最大可为2天。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeDBDiagHistoryRequest) ToJsonString() string {
@@ -2101,10 +2101,10 @@ func (r *DescribeDBDiagHistoryRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBDiagHistoryResponseParams struct {
 	// 事件描述。
-	Events []*DiagHistoryEventItem `json:"Events,omitempty" name:"Events"`
+	Events []*DiagHistoryEventItem `json:"Events,omitnil" name:"Events"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDBDiagHistoryResponse struct {
@@ -2126,62 +2126,62 @@ func (r *DescribeDBDiagHistoryResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBDiagReportTasksRequestParams struct {
 	// 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 实例ID数组，用于筛选指定实例的任务列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 
 	// 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
-	Sources []*string `json:"Sources,omitempty" name:"Sources"`
+	Sources []*string `json:"Sources,omitnil" name:"Sources"`
 
 	// 报告的健康等级，支持的取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK" - 危险；"HIGH_RISK" - 高危。
-	HealthLevels *string `json:"HealthLevels,omitempty" name:"HealthLevels"`
+	HealthLevels *string `json:"HealthLevels,omitnil" name:"HealthLevels"`
 
 	// 任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
-	TaskStatuses *string `json:"TaskStatuses,omitempty" name:"TaskStatuses"`
+	TaskStatuses *string `json:"TaskStatuses,omitnil" name:"TaskStatuses"`
 
 	// 偏移量，默认0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认20，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeDBDiagReportTasksRequest struct {
 	*tchttp.BaseRequest
 	
 	// 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 实例ID数组，用于筛选指定实例的任务列表。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 
 	// 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
-	Sources []*string `json:"Sources,omitempty" name:"Sources"`
+	Sources []*string `json:"Sources,omitnil" name:"Sources"`
 
 	// 报告的健康等级，支持的取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK" - 危险；"HIGH_RISK" - 高危。
-	HealthLevels *string `json:"HealthLevels,omitempty" name:"HealthLevels"`
+	HealthLevels *string `json:"HealthLevels,omitnil" name:"HealthLevels"`
 
 	// 任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
-	TaskStatuses *string `json:"TaskStatuses,omitempty" name:"TaskStatuses"`
+	TaskStatuses *string `json:"TaskStatuses,omitnil" name:"TaskStatuses"`
 
 	// 偏移量，默认0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认20，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeDBDiagReportTasksRequest) ToJsonString() string {
@@ -2214,13 +2214,13 @@ func (r *DescribeDBDiagReportTasksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBDiagReportTasksResponseParams struct {
 	// 任务总数目。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 任务列表。
-	Tasks []*HealthReportTask `json:"Tasks,omitempty" name:"Tasks"`
+	Tasks []*HealthReportTask `json:"Tasks,omitnil" name:"Tasks"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDBDiagReportTasksResponse struct {
@@ -2242,26 +2242,26 @@ func (r *DescribeDBDiagReportTasksResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBSpaceStatusRequestParams struct {
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 时间段天数，截止日期为当日，默认为7天。
-	RangeDays *int64 `json:"RangeDays,omitempty" name:"RangeDays"`
+	RangeDays *int64 `json:"RangeDays,omitnil" name:"RangeDays"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeDBSpaceStatusRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 时间段天数，截止日期为当日，默认为7天。
-	RangeDays *int64 `json:"RangeDays,omitempty" name:"RangeDays"`
+	RangeDays *int64 `json:"RangeDays,omitnil" name:"RangeDays"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeDBSpaceStatusRequest) ToJsonString() string {
@@ -2288,19 +2288,19 @@ func (r *DescribeDBSpaceStatusRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDBSpaceStatusResponseParams struct {
 	// 磁盘增长量(MB)。
-	Growth *int64 `json:"Growth,omitempty" name:"Growth"`
+	Growth *int64 `json:"Growth,omitnil" name:"Growth"`
 
 	// 磁盘剩余(MB)。
-	Remain *int64 `json:"Remain,omitempty" name:"Remain"`
+	Remain *int64 `json:"Remain,omitnil" name:"Remain"`
 
 	// 磁盘总量(MB)。
-	Total *int64 `json:"Total,omitempty" name:"Total"`
+	Total *int64 `json:"Total,omitnil" name:"Total"`
 
 	// 预计可用天数。
-	AvailableDays *int64 `json:"AvailableDays,omitempty" name:"AvailableDays"`
+	AvailableDays *int64 `json:"AvailableDays,omitnil" name:"AvailableDays"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDBSpaceStatusResponse struct {
@@ -2322,50 +2322,50 @@ func (r *DescribeDBSpaceStatusResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDiagDBInstancesRequestParams struct {
 	// 是否是DBbrain支持的实例，固定传 true。
-	IsSupported *bool `json:"IsSupported,omitempty" name:"IsSupported"`
+	IsSupported *bool `json:"IsSupported,omitnil" name:"IsSupported"`
 
 	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 分页参数，偏移量。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页参数，分页值，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 根据实例名称条件查询。
-	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames"`
+	InstanceNames []*string `json:"InstanceNames,omitnil" name:"InstanceNames"`
 
 	// 根据实例ID条件查询。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 
 	// 根据地域条件查询。
-	Regions []*string `json:"Regions,omitempty" name:"Regions"`
+	Regions []*string `json:"Regions,omitnil" name:"Regions"`
 }
 
 type DescribeDiagDBInstancesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 是否是DBbrain支持的实例，固定传 true。
-	IsSupported *bool `json:"IsSupported,omitempty" name:"IsSupported"`
+	IsSupported *bool `json:"IsSupported,omitnil" name:"IsSupported"`
 
 	// 服务产品类型，支持值包括："mysql" - 云数据库 MySQL，"cynosdb" - 云数据库 TDSQL-C for MySQL，"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 分页参数，偏移量。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页参数，分页值，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 根据实例名称条件查询。
-	InstanceNames []*string `json:"InstanceNames,omitempty" name:"InstanceNames"`
+	InstanceNames []*string `json:"InstanceNames,omitnil" name:"InstanceNames"`
 
 	// 根据实例ID条件查询。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 
 	// 根据地域条件查询。
-	Regions []*string `json:"Regions,omitempty" name:"Regions"`
+	Regions []*string `json:"Regions,omitnil" name:"Regions"`
 }
 
 func (r *DescribeDiagDBInstancesRequest) ToJsonString() string {
@@ -2396,16 +2396,16 @@ func (r *DescribeDiagDBInstancesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeDiagDBInstancesResponseParams struct {
 	// 实例总数。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 全实例巡检状态：0：开启全实例巡检；1：未开启全实例巡检。
-	DbScanStatus *int64 `json:"DbScanStatus,omitempty" name:"DbScanStatus"`
+	DbScanStatus *int64 `json:"DbScanStatus,omitnil" name:"DbScanStatus"`
 
 	// 实例相关信息。
-	Items []*InstanceInfo `json:"Items,omitempty" name:"Items"`
+	Items []*InstanceInfo `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeDiagDBInstancesResponse struct {
@@ -2427,26 +2427,26 @@ func (r *DescribeDiagDBInstancesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHealthScoreRequestParams struct {
 	// 需要获取健康得分的实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 获取健康得分的时间，时间格式如：2019-09-10 12:13:14。
-	Time *string `json:"Time,omitempty" name:"Time"`
+	Time *string `json:"Time,omitnil" name:"Time"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeHealthScoreRequest struct {
 	*tchttp.BaseRequest
 	
 	// 需要获取健康得分的实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 获取健康得分的时间，时间格式如：2019-09-10 12:13:14。
-	Time *string `json:"Time,omitempty" name:"Time"`
+	Time *string `json:"Time,omitnil" name:"Time"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeHealthScoreRequest) ToJsonString() string {
@@ -2473,10 +2473,10 @@ func (r *DescribeHealthScoreRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHealthScoreResponseParams struct {
 	// 健康得分以及异常扣分项。
-	Data *HealthScoreInfo `json:"Data,omitempty" name:"Data"`
+	Data *HealthScoreInfo `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeHealthScoreResponse struct {
@@ -2498,38 +2498,38 @@ func (r *DescribeHealthScoreResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMailProfileRequestParams struct {
 	// 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
-	ProfileType *string `json:"ProfileType,omitempty" name:"ProfileType"`
+	ProfileType *string `json:"ProfileType,omitnil" name:"ProfileType"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 分页偏移量。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页单位，最大支持50。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 根据邮件配置名称查询，定期发送的邮件配置名称遵循："scheduler_"+{instanceId}的规则。
-	ProfileName *string `json:"ProfileName,omitempty" name:"ProfileName"`
+	ProfileName *string `json:"ProfileName,omitnil" name:"ProfileName"`
 }
 
 type DescribeMailProfileRequest struct {
 	*tchttp.BaseRequest
 	
 	// 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
-	ProfileType *string `json:"ProfileType,omitempty" name:"ProfileType"`
+	ProfileType *string `json:"ProfileType,omitnil" name:"ProfileType"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 分页偏移量。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 分页单位，最大支持50。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 根据邮件配置名称查询，定期发送的邮件配置名称遵循："scheduler_"+{instanceId}的规则。
-	ProfileName *string `json:"ProfileName,omitempty" name:"ProfileName"`
+	ProfileName *string `json:"ProfileName,omitnil" name:"ProfileName"`
 }
 
 func (r *DescribeMailProfileRequest) ToJsonString() string {
@@ -2559,14 +2559,14 @@ func (r *DescribeMailProfileRequest) FromJsonString(s string) error {
 type DescribeMailProfileResponseParams struct {
 	// 邮件配置详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProfileList []*UserProfile `json:"ProfileList,omitempty" name:"ProfileList"`
+	ProfileList []*UserProfile `json:"ProfileList,omitnil" name:"ProfileList"`
 
 	// 邮件配置总数。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeMailProfileResponse struct {
@@ -2588,74 +2588,74 @@ func (r *DescribeMailProfileResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMySqlProcessListRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 线程的ID，用于筛选线程列表。
-	ID *uint64 `json:"ID,omitempty" name:"ID"`
+	ID *uint64 `json:"ID,omitnil" name:"ID"`
 
 	// 线程的操作账号名，用于筛选线程列表。
-	User *string `json:"User,omitempty" name:"User"`
+	User *string `json:"User,omitnil" name:"User"`
 
 	// 线程的操作主机地址，用于筛选线程列表。
-	Host *string `json:"Host,omitempty" name:"Host"`
+	Host *string `json:"Host,omitnil" name:"Host"`
 
 	// 线程的操作数据库，用于筛选线程列表。
-	DB *string `json:"DB,omitempty" name:"DB"`
+	DB *string `json:"DB,omitnil" name:"DB"`
 
 	// 线程的操作状态，用于筛选线程列表。
-	State *string `json:"State,omitempty" name:"State"`
+	State *string `json:"State,omitnil" name:"State"`
 
 	// 线程的执行类型，用于筛选线程列表。
-	Command *string `json:"Command,omitempty" name:"Command"`
+	Command *string `json:"Command,omitnil" name:"Command"`
 
 	// 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
-	Time *uint64 `json:"Time,omitempty" name:"Time"`
+	Time *uint64 `json:"Time,omitnil" name:"Time"`
 
 	// 线程的操作语句，用于筛选线程列表。
-	Info *string `json:"Info,omitempty" name:"Info"`
+	Info *string `json:"Info,omitnil" name:"Info"`
 
 	// 返回数量，默认20。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeMySqlProcessListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 线程的ID，用于筛选线程列表。
-	ID *uint64 `json:"ID,omitempty" name:"ID"`
+	ID *uint64 `json:"ID,omitnil" name:"ID"`
 
 	// 线程的操作账号名，用于筛选线程列表。
-	User *string `json:"User,omitempty" name:"User"`
+	User *string `json:"User,omitnil" name:"User"`
 
 	// 线程的操作主机地址，用于筛选线程列表。
-	Host *string `json:"Host,omitempty" name:"Host"`
+	Host *string `json:"Host,omitnil" name:"Host"`
 
 	// 线程的操作数据库，用于筛选线程列表。
-	DB *string `json:"DB,omitempty" name:"DB"`
+	DB *string `json:"DB,omitnil" name:"DB"`
 
 	// 线程的操作状态，用于筛选线程列表。
-	State *string `json:"State,omitempty" name:"State"`
+	State *string `json:"State,omitnil" name:"State"`
 
 	// 线程的执行类型，用于筛选线程列表。
-	Command *string `json:"Command,omitempty" name:"Command"`
+	Command *string `json:"Command,omitnil" name:"Command"`
 
 	// 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
-	Time *uint64 `json:"Time,omitempty" name:"Time"`
+	Time *uint64 `json:"Time,omitnil" name:"Time"`
 
 	// 线程的操作语句，用于筛选线程列表。
-	Info *string `json:"Info,omitempty" name:"Info"`
+	Info *string `json:"Info,omitnil" name:"Info"`
 
 	// 返回数量，默认20。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeMySqlProcessListRequest) ToJsonString() string {
@@ -2690,10 +2690,10 @@ func (r *DescribeMySqlProcessListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeMySqlProcessListResponseParams struct {
 	// 实时线程列表。
-	ProcessList []*MySqlProcess `json:"ProcessList,omitempty" name:"ProcessList"`
+	ProcessList []*MySqlProcess `json:"ProcessList,omitnil" name:"ProcessList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeMySqlProcessListResponse struct {
@@ -2715,38 +2715,38 @@ func (r *DescribeMySqlProcessListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNoPrimaryKeyTablesRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 查询日期，如2021-05-27，最早为30天前的日期。
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 查询数目，默认为20，最大为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeNoPrimaryKeyTablesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 查询日期，如2021-05-27，最早为30天前的日期。
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 查询数目，默认为20，最大为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeNoPrimaryKeyTablesRequest) ToJsonString() string {
@@ -2775,22 +2775,22 @@ func (r *DescribeNoPrimaryKeyTablesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNoPrimaryKeyTablesResponseParams struct {
 	// 无主键表总数。
-	NoPrimaryKeyTableCount *int64 `json:"NoPrimaryKeyTableCount,omitempty" name:"NoPrimaryKeyTableCount"`
+	NoPrimaryKeyTableCount *int64 `json:"NoPrimaryKeyTableCount,omitnil" name:"NoPrimaryKeyTableCount"`
 
 	// 与昨日扫描无主键表的差值，正数为增加，负数为减少，0为无变化。
-	NoPrimaryKeyTableCountDiff *int64 `json:"NoPrimaryKeyTableCountDiff,omitempty" name:"NoPrimaryKeyTableCountDiff"`
+	NoPrimaryKeyTableCountDiff *int64 `json:"NoPrimaryKeyTableCountDiff,omitnil" name:"NoPrimaryKeyTableCountDiff"`
 
 	// 记录的无主键表总数（不超过无主键表总数），可用于分页查询。
-	NoPrimaryKeyTableRecordCount *int64 `json:"NoPrimaryKeyTableRecordCount,omitempty" name:"NoPrimaryKeyTableRecordCount"`
+	NoPrimaryKeyTableRecordCount *int64 `json:"NoPrimaryKeyTableRecordCount,omitnil" name:"NoPrimaryKeyTableRecordCount"`
 
 	// 无主键表列表。
-	NoPrimaryKeyTables []*Table `json:"NoPrimaryKeyTables,omitempty" name:"NoPrimaryKeyTables"`
+	NoPrimaryKeyTables []*Table `json:"NoPrimaryKeyTables,omitnil" name:"NoPrimaryKeyTables"`
 
 	// 采集时间戳（秒）。
-	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNoPrimaryKeyTablesResponse struct {
@@ -2812,50 +2812,50 @@ func (r *DescribeNoPrimaryKeyTablesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProxyProcessStatisticsRequestParams struct {
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 该实例下需要查询的某一个 ProxyID 。
-	InstanceProxyId *string `json:"InstanceProxyId,omitempty" name:"InstanceProxyId"`
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil" name:"InstanceProxyId"`
 
 	// 返回数量。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 偏移量，默认0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 按照某字断排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// 排序方向。支持值包括："DESC"，"ASC"。
-	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+	OrderDirection *string `json:"OrderDirection,omitnil" name:"OrderDirection"`
 }
 
 type DescribeProxyProcessStatisticsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 该实例下需要查询的某一个 ProxyID 。
-	InstanceProxyId *string `json:"InstanceProxyId,omitempty" name:"InstanceProxyId"`
+	InstanceProxyId *string `json:"InstanceProxyId,omitnil" name:"InstanceProxyId"`
 
 	// 返回数量。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 偏移量，默认0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 按照某字断排序。支持值包括："AllConn"，"ActiveConn"，"Ip"。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// 排序方向。支持值包括："DESC"，"ASC"。
-	OrderDirection *string `json:"OrderDirection,omitempty" name:"OrderDirection"`
+	OrderDirection *string `json:"OrderDirection,omitnil" name:"OrderDirection"`
 }
 
 func (r *DescribeProxyProcessStatisticsRequest) ToJsonString() string {
@@ -2886,10 +2886,10 @@ func (r *DescribeProxyProcessStatisticsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProxyProcessStatisticsResponseParams struct {
 	// 实时会话统计详情。
-	ProcessStatistics *ProcessStatistic `json:"ProcessStatistics,omitempty" name:"ProcessStatistics"`
+	ProcessStatistics *ProcessStatistic `json:"ProcessStatistics,omitnil" name:"ProcessStatistics"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeProxyProcessStatisticsResponse struct {
@@ -2911,26 +2911,26 @@ func (r *DescribeProxyProcessStatisticsResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeProxySessionKillTasksRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// kill 会话异步任务 ID,  接口 CreateProxySessionKillTask 调用成功后获取。
-	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitempty" name:"AsyncRequestIds"`
+	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitnil" name:"AsyncRequestIds"`
 
 	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeProxySessionKillTasksRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// kill 会话异步任务 ID,  接口 CreateProxySessionKillTask 调用成功后获取。
-	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitempty" name:"AsyncRequestIds"`
+	AsyncRequestIds []*int64 `json:"AsyncRequestIds,omitnil" name:"AsyncRequestIds"`
 
 	// 服务产品类型，支持值包括： "redis" - 云数据库 Redis。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeProxySessionKillTasksRequest) ToJsonString() string {
@@ -2957,13 +2957,13 @@ func (r *DescribeProxySessionKillTasksRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeProxySessionKillTasksResponseParams struct {
 	// kill 任务的详情。
-	Tasks []*TaskInfo `json:"Tasks,omitempty" name:"Tasks"`
+	Tasks []*TaskInfo `json:"Tasks,omitnil" name:"Tasks"`
 
 	// 任务总数。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeProxySessionKillTasksResponse struct {
@@ -2985,44 +2985,44 @@ func (r *DescribeProxySessionKillTasksResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRedisTopBigKeysRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 查询日期，如2021-05-27，最早可为前30天的日期。
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 排序字段，取值包括Capacity - 内存，ItemCount - 元素数量，默认为Capacity。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// key类型筛选条件，默认为不进行筛选，取值包括string, list, set, hash, sortedset, stream。
-	KeyType *string `json:"KeyType,omitempty" name:"KeyType"`
+	KeyType *string `json:"KeyType,omitnil" name:"KeyType"`
 
 	// 查询数目，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeRedisTopBigKeysRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 查询日期，如2021-05-27，最早可为前30天的日期。
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 排序字段，取值包括Capacity - 内存，ItemCount - 元素数量，默认为Capacity。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// key类型筛选条件，默认为不进行筛选，取值包括string, list, set, hash, sortedset, stream。
-	KeyType *string `json:"KeyType,omitempty" name:"KeyType"`
+	KeyType *string `json:"KeyType,omitnil" name:"KeyType"`
 
 	// 查询数目，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeRedisTopBigKeysRequest) ToJsonString() string {
@@ -3052,13 +3052,13 @@ func (r *DescribeRedisTopBigKeysRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRedisTopBigKeysResponseParams struct {
 	// top key列表。
-	TopKeys []*RedisKeySpaceData `json:"TopKeys,omitempty" name:"TopKeys"`
+	TopKeys []*RedisKeySpaceData `json:"TopKeys,omitnil" name:"TopKeys"`
 
 	// 采集时间戳（秒）。
-	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRedisTopBigKeysResponse struct {
@@ -3080,32 +3080,32 @@ func (r *DescribeRedisTopBigKeysResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRedisTopKeyPrefixListRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 查询日期，如2021-05-27，最早可为前30天的日期。
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 查询数目，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeRedisTopKeyPrefixListRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 查询日期，如2021-05-27，最早可为前30天的日期。
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 查询数目，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeRedisTopKeyPrefixListRequest) ToJsonString() string {
@@ -3133,13 +3133,13 @@ func (r *DescribeRedisTopKeyPrefixListRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeRedisTopKeyPrefixListResponseParams struct {
 	// top key前缀列表。
-	Items []*RedisPreKeySpaceData `json:"Items,omitempty" name:"Items"`
+	Items []*RedisPreKeySpaceData `json:"Items,omitnil" name:"Items"`
 
 	// 采集时间戳（秒）。
-	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeRedisTopKeyPrefixListResponse struct {
@@ -3161,26 +3161,26 @@ func (r *DescribeRedisTopKeyPrefixListResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSecurityAuditLogDownloadUrlsRequestParams struct {
 	// 安全审计组Id。
-	SecAuditGroupId *string `json:"SecAuditGroupId,omitempty" name:"SecAuditGroupId"`
+	SecAuditGroupId *string `json:"SecAuditGroupId,omitnil" name:"SecAuditGroupId"`
 
 	// 异步任务Id。
-	AsyncRequestId *uint64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *uint64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeSecurityAuditLogDownloadUrlsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 安全审计组Id。
-	SecAuditGroupId *string `json:"SecAuditGroupId,omitempty" name:"SecAuditGroupId"`
+	SecAuditGroupId *string `json:"SecAuditGroupId,omitnil" name:"SecAuditGroupId"`
 
 	// 异步任务Id。
-	AsyncRequestId *uint64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *uint64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeSecurityAuditLogDownloadUrlsRequest) ToJsonString() string {
@@ -3207,10 +3207,10 @@ func (r *DescribeSecurityAuditLogDownloadUrlsRequest) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeSecurityAuditLogDownloadUrlsResponseParams struct {
 	// 导出结果的COS链接列表。当结果集很大时，可能会切分为多个url下载。
-	Urls []*string `json:"Urls,omitempty" name:"Urls"`
+	Urls []*string `json:"Urls,omitnil" name:"Urls"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecurityAuditLogDownloadUrlsResponse struct {
@@ -3232,38 +3232,38 @@ func (r *DescribeSecurityAuditLogDownloadUrlsResponse) FromJsonString(s string) 
 // Predefined struct for user
 type DescribeSecurityAuditLogExportTasksRequestParams struct {
 	// 安全审计组Id。
-	SecAuditGroupId *string `json:"SecAuditGroupId,omitempty" name:"SecAuditGroupId"`
+	SecAuditGroupId *string `json:"SecAuditGroupId,omitnil" name:"SecAuditGroupId"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 日志导出任务Id列表。
-	AsyncRequestIds []*uint64 `json:"AsyncRequestIds,omitempty" name:"AsyncRequestIds"`
+	AsyncRequestIds []*uint64 `json:"AsyncRequestIds,omitnil" name:"AsyncRequestIds"`
 
 	// 偏移量，默认0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认20，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeSecurityAuditLogExportTasksRequest struct {
 	*tchttp.BaseRequest
 	
 	// 安全审计组Id。
-	SecAuditGroupId *string `json:"SecAuditGroupId,omitempty" name:"SecAuditGroupId"`
+	SecAuditGroupId *string `json:"SecAuditGroupId,omitnil" name:"SecAuditGroupId"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 日志导出任务Id列表。
-	AsyncRequestIds []*uint64 `json:"AsyncRequestIds,omitempty" name:"AsyncRequestIds"`
+	AsyncRequestIds []*uint64 `json:"AsyncRequestIds,omitnil" name:"AsyncRequestIds"`
 
 	// 偏移量，默认0。
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认20，最大值为100。
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeSecurityAuditLogExportTasksRequest) ToJsonString() string {
@@ -3292,13 +3292,13 @@ func (r *DescribeSecurityAuditLogExportTasksRequest) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeSecurityAuditLogExportTasksResponseParams struct {
 	// 安全审计日志导出任务列表。
-	Tasks []*SecLogExportTaskInfo `json:"Tasks,omitempty" name:"Tasks"`
+	Tasks []*SecLogExportTaskInfo `json:"Tasks,omitnil" name:"Tasks"`
 
 	// 安全审计日志导出任务总数。
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSecurityAuditLogExportTasksResponse struct {
@@ -3320,32 +3320,32 @@ func (r *DescribeSecurityAuditLogExportTasksResponse) FromJsonString(s string) e
 // Predefined struct for user
 type DescribeSlowLogTimeSeriesStatsRequestParams struct {
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间，如“2019-09-10 12:13:14”，结束时间与开始时间的间隔最大可为7天。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeSlowLogTimeSeriesStatsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间，如“2019-09-10 12:13:14”，结束时间与开始时间的间隔最大可为7天。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeSlowLogTimeSeriesStatsRequest) ToJsonString() string {
@@ -3373,16 +3373,16 @@ func (r *DescribeSlowLogTimeSeriesStatsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSlowLogTimeSeriesStatsResponseParams struct {
 	// 柱间单位时间间隔，单位为秒。
-	Period *int64 `json:"Period,omitempty" name:"Period"`
+	Period *int64 `json:"Period,omitnil" name:"Period"`
 
 	// 单位时间间隔内慢日志数量统计。
-	TimeSeries []*TimeSlice `json:"TimeSeries,omitempty" name:"TimeSeries"`
+	TimeSeries []*TimeSlice `json:"TimeSeries,omitnil" name:"TimeSeries"`
 
 	// 单位时间间隔内的实例 cpu 利用率监控数据。
-	SeriesData *MonitorMetricSeriesData `json:"SeriesData,omitempty" name:"SeriesData"`
+	SeriesData *MonitorMetricSeriesData `json:"SeriesData,omitnil" name:"SeriesData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSlowLogTimeSeriesStatsResponse struct {
@@ -3404,62 +3404,62 @@ func (r *DescribeSlowLogTimeSeriesStatsResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeSlowLogTopSqlsRequestParams struct {
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// 排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。
-	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 数据库名称数组。
-	SchemaList []*SchemaItem `json:"SchemaList,omitempty" name:"SchemaList"`
+	SchemaList []*SchemaItem `json:"SchemaList,omitnil" name:"SchemaList"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeSlowLogTopSqlsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 排序键，目前支持 QueryTime,ExecTimes,RowsSent,LockTime以及RowsExamined 等排序键，默认为QueryTime。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// 排序方式，支持ASC（升序）以及DESC（降序），默认为DESC。
-	OrderBy *string `json:"OrderBy,omitempty" name:"OrderBy"`
+	OrderBy *string `json:"OrderBy,omitnil" name:"OrderBy"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 数据库名称数组。
-	SchemaList []*SchemaItem `json:"SchemaList,omitempty" name:"SchemaList"`
+	SchemaList []*SchemaItem `json:"SchemaList,omitnil" name:"SchemaList"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeSlowLogTopSqlsRequest) ToJsonString() string {
@@ -3492,13 +3492,13 @@ func (r *DescribeSlowLogTopSqlsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSlowLogTopSqlsResponseParams struct {
 	// 符合条件的记录总数。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 慢日志 top sql 列表
-	Rows []*SlowLogTopSqlItem `json:"Rows,omitempty" name:"Rows"`
+	Rows []*SlowLogTopSqlItem `json:"Rows,omitnil" name:"Rows"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSlowLogTopSqlsResponse struct {
@@ -3520,38 +3520,38 @@ func (r *DescribeSlowLogTopSqlsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSlowLogUserHostStatsRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 查询范围的开始时间，时间格式如：2019-09-10 12:13:14。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询范围的结束时间，时间格式如：2019-09-10 12:13:14。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// SQL模板的MD5值
-	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+	Md5 *string `json:"Md5,omitnil" name:"Md5"`
 }
 
 type DescribeSlowLogUserHostStatsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 查询范围的开始时间，时间格式如：2019-09-10 12:13:14。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询范围的结束时间，时间格式如：2019-09-10 12:13:14。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// SQL模板的MD5值
-	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+	Md5 *string `json:"Md5,omitnil" name:"Md5"`
 }
 
 func (r *DescribeSlowLogUserHostStatsRequest) ToJsonString() string {
@@ -3580,19 +3580,19 @@ func (r *DescribeSlowLogUserHostStatsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSlowLogUserHostStatsResponseParams struct {
 	// 来源地址数目。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 各来源地址的慢日志占比详情列表。
-	Items []*SlowLogHost `json:"Items,omitempty" name:"Items"`
+	Items []*SlowLogHost `json:"Items,omitnil" name:"Items"`
 
 	// 各来源用户名的慢日志占比详情列表。
-	UserNameItems []*SlowLogUser `json:"UserNameItems,omitempty" name:"UserNameItems"`
+	UserNameItems []*SlowLogUser `json:"UserNameItems,omitnil" name:"UserNameItems"`
 
 	// 来源用户数目。
-	UserTotalCount *int64 `json:"UserTotalCount,omitempty" name:"UserTotalCount"`
+	UserTotalCount *int64 `json:"UserTotalCount,omitnil" name:"UserTotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSlowLogUserHostStatsResponse struct {
@@ -3614,80 +3614,80 @@ func (r *DescribeSlowLogUserHostStatsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSlowLogsRequestParams struct {
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 实例id。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// sql模板的md5值
-	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+	Md5 *string `json:"Md5,omitnil" name:"Md5"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 查询数目，默认为20，最大为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 数据库列表
-	DB []*string `json:"DB,omitempty" name:"DB"`
+	DB []*string `json:"DB,omitnil" name:"DB"`
 
 	// 关键字
-	Key []*string `json:"Key,omitempty" name:"Key"`
+	Key []*string `json:"Key,omitnil" name:"Key"`
 
 	// 用户
-	User []*string `json:"User,omitempty" name:"User"`
+	User []*string `json:"User,omitnil" name:"User"`
 
 	// IP
-	Ip []*string `json:"Ip,omitempty" name:"Ip"`
+	Ip []*string `json:"Ip,omitnil" name:"Ip"`
 
 	// 耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素
-	Time []*int64 `json:"Time,omitempty" name:"Time"`
+	Time []*int64 `json:"Time,omitnil" name:"Time"`
 }
 
 type DescribeSlowLogsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 实例id。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// sql模板的md5值
-	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+	Md5 *string `json:"Md5,omitnil" name:"Md5"`
 
 	// 开始时间，如“2019-09-10 12:13:14”。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 截止时间，如“2019-09-11 10:13:14”，截止时间与开始时间的间隔小于7天。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 查询数目，默认为20，最大为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 数据库列表
-	DB []*string `json:"DB,omitempty" name:"DB"`
+	DB []*string `json:"DB,omitnil" name:"DB"`
 
 	// 关键字
-	Key []*string `json:"Key,omitempty" name:"Key"`
+	Key []*string `json:"Key,omitnil" name:"Key"`
 
 	// 用户
-	User []*string `json:"User,omitempty" name:"User"`
+	User []*string `json:"User,omitnil" name:"User"`
 
 	// IP
-	Ip []*string `json:"Ip,omitempty" name:"Ip"`
+	Ip []*string `json:"Ip,omitnil" name:"Ip"`
 
 	// 耗时区间,耗时区间的左右边界分别对应数组的第0个元素和第一个元素
-	Time []*int64 `json:"Time,omitempty" name:"Time"`
+	Time []*int64 `json:"Time,omitnil" name:"Time"`
 }
 
 func (r *DescribeSlowLogsRequest) ToJsonString() string {
@@ -3723,13 +3723,13 @@ func (r *DescribeSlowLogsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSlowLogsResponseParams struct {
 	// 符合条件的记录总数。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 慢日志明细
-	Rows []*SlowLogInfoItem `json:"Rows,omitempty" name:"Rows"`
+	Rows []*SlowLogInfoItem `json:"Rows,omitnil" name:"Rows"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSlowLogsResponse struct {
@@ -3751,44 +3751,44 @@ func (r *DescribeSlowLogsResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSqlFiltersRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 任务ID列表，用于筛选任务列表。
-	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
+	FilterIds []*int64 `json:"FilterIds,omitnil" name:"FilterIds"`
 
 	// 任务状态列表，用于筛选任务列表，取值包括RUNNING - 运行中, FINISHED - 已完成, TERMINATED - 已终止。
-	Statuses []*string `json:"Statuses,omitempty" name:"Statuses"`
+	Statuses []*string `json:"Statuses,omitnil" name:"Statuses"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeSqlFiltersRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 任务ID列表，用于筛选任务列表。
-	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
+	FilterIds []*int64 `json:"FilterIds,omitnil" name:"FilterIds"`
 
 	// 任务状态列表，用于筛选任务列表，取值包括RUNNING - 运行中, FINISHED - 已完成, TERMINATED - 已终止。
-	Statuses []*string `json:"Statuses,omitempty" name:"Statuses"`
+	Statuses []*string `json:"Statuses,omitnil" name:"Statuses"`
 
 	// 偏移量，默认为0。
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 返回数量，默认为20，最大值为100。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeSqlFiltersRequest) ToJsonString() string {
@@ -3818,13 +3818,13 @@ func (r *DescribeSqlFiltersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSqlFiltersResponseParams struct {
 	// 限流任务总数目。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 限流任务列表。
-	Items []*SQLFilter `json:"Items,omitempty" name:"Items"`
+	Items []*SQLFilter `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSqlFiltersResponse struct {
@@ -3846,32 +3846,32 @@ func (r *DescribeSqlFiltersResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSqlTemplateRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 数据库名。
-	Schema *string `json:"Schema,omitempty" name:"Schema"`
+	Schema *string `json:"Schema,omitnil" name:"Schema"`
 
 	// SQL语句。
-	SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+	SqlText *string `json:"SqlText,omitnil" name:"SqlText"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeSqlTemplateRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 数据库名。
-	Schema *string `json:"Schema,omitempty" name:"Schema"`
+	Schema *string `json:"Schema,omitnil" name:"Schema"`
 
 	// SQL语句。
-	SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+	SqlText *string `json:"SqlText,omitnil" name:"SqlText"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeSqlTemplateRequest) ToJsonString() string {
@@ -3899,22 +3899,22 @@ func (r *DescribeSqlTemplateRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeSqlTemplateResponseParams struct {
 	// 数据库名。
-	Schema *string `json:"Schema,omitempty" name:"Schema"`
+	Schema *string `json:"Schema,omitnil" name:"Schema"`
 
 	// SQL语句。
-	SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+	SqlText *string `json:"SqlText,omitnil" name:"SqlText"`
 
 	// SQL类型。
-	SqlType *string `json:"SqlType,omitempty" name:"SqlType"`
+	SqlType *string `json:"SqlType,omitnil" name:"SqlType"`
 
 	// SQL模版内容。
-	SqlTemplate *string `json:"SqlTemplate,omitempty" name:"SqlTemplate"`
+	SqlTemplate *string `json:"SqlTemplate,omitnil" name:"SqlTemplate"`
 
 	// SQL模版ID。
-	SqlId *int64 `json:"SqlId,omitempty" name:"SqlId"`
+	SqlId *int64 `json:"SqlId,omitnil" name:"SqlId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeSqlTemplateResponse struct {
@@ -3936,44 +3936,44 @@ func (r *DescribeSqlTemplateResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTopSpaceSchemaTimeSeriesRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 返回的Top库数量，最大值为100，默认为20。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// 开始日期，如“2021-01-01”，最早为当日的前第29天，默认为截止日期的前第6天。
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 截止日期，如“2021-01-01”，最早为当日的前第29天，默认为当日。
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeTopSpaceSchemaTimeSeriesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 返回的Top库数量，最大值为100，默认为20。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// 开始日期，如“2021-01-01”，最早为当日的前第29天，默认为截止日期的前第6天。
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 截止日期，如“2021-01-01”，最早为当日的前第29天，默认为当日。
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeTopSpaceSchemaTimeSeriesRequest) ToJsonString() string {
@@ -4003,10 +4003,10 @@ func (r *DescribeTopSpaceSchemaTimeSeriesRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeTopSpaceSchemaTimeSeriesResponseParams struct {
 	// 返回的Top库空间统计信息的时序数据列表。
-	TopSpaceSchemaTimeSeries []*SchemaSpaceTimeSeries `json:"TopSpaceSchemaTimeSeries,omitempty" name:"TopSpaceSchemaTimeSeries"`
+	TopSpaceSchemaTimeSeries []*SchemaSpaceTimeSeries `json:"TopSpaceSchemaTimeSeries,omitnil" name:"TopSpaceSchemaTimeSeries"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTopSpaceSchemaTimeSeriesResponse struct {
@@ -4028,32 +4028,32 @@ func (r *DescribeTopSpaceSchemaTimeSeriesResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeTopSpaceSchemasRequestParams struct {
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 返回的Top库数量，最大值为100，默认为20。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeTopSpaceSchemasRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 返回的Top库数量，最大值为100，默认为20。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 筛选Top库所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeTopSpaceSchemasRequest) ToJsonString() string {
@@ -4081,13 +4081,13 @@ func (r *DescribeTopSpaceSchemasRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTopSpaceSchemasResponseParams struct {
 	// 返回的Top库空间统计信息列表。
-	TopSpaceSchemas []*SchemaSpaceData `json:"TopSpaceSchemas,omitempty" name:"TopSpaceSchemas"`
+	TopSpaceSchemas []*SchemaSpaceData `json:"TopSpaceSchemas,omitnil" name:"TopSpaceSchemas"`
 
 	// 采集库空间数据的时间戳（秒）。
-	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTopSpaceSchemasResponse struct {
@@ -4109,44 +4109,44 @@ func (r *DescribeTopSpaceSchemasResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTopSpaceTableTimeSeriesRequestParams struct {
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 返回的Top表数量，最大值为100，默认为20。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// 开始日期，如“2021-01-01”，最早为当日的前第29天，默认为截止日期的前第6天。
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 截止日期，如“2021-01-01”，最早为当日的前第29天，默认为当日。
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeTopSpaceTableTimeSeriesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 返回的Top表数量，最大值为100，默认为20。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize，默认为 PhysicalFileSize。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// 开始日期，如“2021-01-01”，最早为当日的前第29天，默认为截止日期的前第6天。
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 截止日期，如“2021-01-01”，最早为当日的前第29天，默认为当日。
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeTopSpaceTableTimeSeriesRequest) ToJsonString() string {
@@ -4176,10 +4176,10 @@ func (r *DescribeTopSpaceTableTimeSeriesRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeTopSpaceTableTimeSeriesResponseParams struct {
 	// 返回的Top表空间统计信息的时序数据列表。
-	TopSpaceTableTimeSeries []*TableSpaceTimeSeries `json:"TopSpaceTableTimeSeries,omitempty" name:"TopSpaceTableTimeSeries"`
+	TopSpaceTableTimeSeries []*TableSpaceTimeSeries `json:"TopSpaceTableTimeSeries,omitnil" name:"TopSpaceTableTimeSeries"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTopSpaceTableTimeSeriesResponse struct {
@@ -4201,32 +4201,32 @@ func (r *DescribeTopSpaceTableTimeSeriesResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeTopSpaceTablesRequestParams struct {
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 返回的Top表数量，最大值为100，默认为20。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeTopSpaceTablesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 返回的Top表数量，最大值为100，默认为20。
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 筛选Top表所用的排序字段，可选字段包含DataLength、IndexLength、TotalLength、DataFree、FragRatio、TableRows、PhysicalFileSize（仅云数据库 MySQL实例支持），云数据库 MySQL实例默认为 PhysicalFileSize，其他产品实例默认为TotalLength。
-	SortBy *string `json:"SortBy,omitempty" name:"SortBy"`
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeTopSpaceTablesRequest) ToJsonString() string {
@@ -4254,13 +4254,13 @@ func (r *DescribeTopSpaceTablesRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTopSpaceTablesResponseParams struct {
 	// 返回的Top表空间统计信息列表。
-	TopSpaceTables []*TableSpaceData `json:"TopSpaceTables,omitempty" name:"TopSpaceTables"`
+	TopSpaceTables []*TableSpaceData `json:"TopSpaceTables,omitnil" name:"TopSpaceTables"`
 
 	// 采集表空间数据的时间戳（秒）。
-	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTopSpaceTablesResponse struct {
@@ -4282,32 +4282,32 @@ func (r *DescribeTopSpaceTablesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserSqlAdviceRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// SQL语句。
-	SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+	SqlText *string `json:"SqlText,omitnil" name:"SqlText"`
 
 	// 库名。
-	Schema *string `json:"Schema,omitempty" name:"Schema"`
+	Schema *string `json:"Schema,omitnil" name:"Schema"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL；"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type DescribeUserSqlAdviceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// SQL语句。
-	SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+	SqlText *string `json:"SqlText,omitnil" name:"SqlText"`
 
 	// 库名。
-	Schema *string `json:"Schema,omitempty" name:"Schema"`
+	Schema *string `json:"Schema,omitnil" name:"Schema"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL；"dbbrain-mysql" - 自建 MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *DescribeUserSqlAdviceRequest) ToJsonString() string {
@@ -4335,28 +4335,28 @@ func (r *DescribeUserSqlAdviceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeUserSqlAdviceResponseParams struct {
 	// SQL优化建议，可解析为JSON数组，无需优化时输出为空。
-	Advices *string `json:"Advices,omitempty" name:"Advices"`
+	Advices *string `json:"Advices,omitnil" name:"Advices"`
 
 	// SQL优化建议备注，可解析为String数组，无需优化时输出为空。
-	Comments *string `json:"Comments,omitempty" name:"Comments"`
+	Comments *string `json:"Comments,omitnil" name:"Comments"`
 
 	// SQL语句。
-	SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+	SqlText *string `json:"SqlText,omitnil" name:"SqlText"`
 
 	// 库名。
-	Schema *string `json:"Schema,omitempty" name:"Schema"`
+	Schema *string `json:"Schema,omitnil" name:"Schema"`
 
 	// 相关表的DDL信息，可解析为JSON数组。
-	Tables *string `json:"Tables,omitempty" name:"Tables"`
+	Tables *string `json:"Tables,omitnil" name:"Tables"`
 
 	// SQL执行计划，可解析为JSON，无需优化时输出为空。
-	SqlPlan *string `json:"SqlPlan,omitempty" name:"SqlPlan"`
+	SqlPlan *string `json:"SqlPlan,omitnil" name:"SqlPlan"`
 
 	// SQL优化后的成本节约详情，可解析为JSON，无需优化时输出为空。
-	Cost *string `json:"Cost,omitempty" name:"Cost"`
+	Cost *string `json:"Cost,omitnil" name:"Cost"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeUserSqlAdviceResponse struct {
@@ -4377,327 +4377,327 @@ func (r *DescribeUserSqlAdviceResponse) FromJsonString(s string) error {
 
 type DiagHistoryEventItem struct {
 	// 诊断类型。
-	DiagType *string `json:"DiagType,omitempty" name:"DiagType"`
+	DiagType *string `json:"DiagType,omitnil" name:"DiagType"`
 
 	// 结束时间。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 开始时间。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 事件唯一ID 。
-	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+	EventId *int64 `json:"EventId,omitnil" name:"EventId"`
 
 	// 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
-	Severity *int64 `json:"Severity,omitempty" name:"Severity"`
+	Severity *int64 `json:"Severity,omitnil" name:"Severity"`
 
 	// 诊断概要。
-	Outline *string `json:"Outline,omitempty" name:"Outline"`
+	Outline *string `json:"Outline,omitnil" name:"Outline"`
 
 	// 诊断项说明。
-	DiagItem *string `json:"DiagItem,omitempty" name:"DiagItem"`
+	DiagItem *string `json:"DiagItem,omitnil" name:"DiagItem"`
 
 	// 实例 ID 。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 保留字段。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Metric *string `json:"Metric,omitempty" name:"Metric"`
+	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
 	// 地域。
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 }
 
 type EventInfo struct {
 	// 事件 ID 。
-	EventId *int64 `json:"EventId,omitempty" name:"EventId"`
+	EventId *int64 `json:"EventId,omitnil" name:"EventId"`
 
 	// 诊断类型。
-	DiagType *string `json:"DiagType,omitempty" name:"DiagType"`
+	DiagType *string `json:"DiagType,omitnil" name:"DiagType"`
 
 	// 开始时间。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 结束时间。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 概要。
-	Outline *string `json:"Outline,omitempty" name:"Outline"`
+	Outline *string `json:"Outline,omitnil" name:"Outline"`
 
 	// 严重程度。严重程度分为5级，按影响程度从高至低分别为：1：致命，2：严重，3：告警，4：提示，5：健康。
-	Severity *int64 `json:"Severity,omitempty" name:"Severity"`
+	Severity *int64 `json:"Severity,omitnil" name:"Severity"`
 
 	// 扣分。
-	ScoreLost *int64 `json:"ScoreLost,omitempty" name:"ScoreLost"`
+	ScoreLost *int64 `json:"ScoreLost,omitnil" name:"ScoreLost"`
 
 	// 保留字段。
-	Metric *string `json:"Metric,omitempty" name:"Metric"`
+	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
 	// 告警数目。
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 }
 
 type GroupItem struct {
 	// 组id。
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 组名称。
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 组成员数量。
-	MemberCount *int64 `json:"MemberCount,omitempty" name:"MemberCount"`
+	MemberCount *int64 `json:"MemberCount,omitnil" name:"MemberCount"`
 }
 
 type HealthReportTask struct {
 	// 异步任务请求 ID。
-	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 
 	// 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 任务完成进度，单位%。
-	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+	Progress *int64 `json:"Progress,omitnil" name:"Progress"`
 
 	// 任务创建时间。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 任务开始执行时间。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 任务完成执行时间。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 任务所属实例的基础信息。
-	InstanceInfo *InstanceBasicInfo `json:"InstanceInfo,omitempty" name:"InstanceInfo"`
+	InstanceInfo *InstanceBasicInfo `json:"InstanceInfo,omitnil" name:"InstanceInfo"`
 
 	// 健康报告中的健康信息。
-	HealthStatus *HealthStatus `json:"HealthStatus,omitempty" name:"HealthStatus"`
+	HealthStatus *HealthStatus `json:"HealthStatus,omitnil" name:"HealthStatus"`
 }
 
 type HealthScoreInfo struct {
 	// 异常详情。
-	IssueTypes []*IssueTypeInfo `json:"IssueTypes,omitempty" name:"IssueTypes"`
+	IssueTypes []*IssueTypeInfo `json:"IssueTypes,omitnil" name:"IssueTypes"`
 
 	// 异常事件总数。
-	EventsTotalCount *int64 `json:"EventsTotalCount,omitempty" name:"EventsTotalCount"`
+	EventsTotalCount *int64 `json:"EventsTotalCount,omitnil" name:"EventsTotalCount"`
 
 	// 健康得分。
-	HealthScore *int64 `json:"HealthScore,omitempty" name:"HealthScore"`
+	HealthScore *int64 `json:"HealthScore,omitnil" name:"HealthScore"`
 
 	// 健康等级, 如："HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"。
-	HealthLevel *string `json:"HealthLevel,omitempty" name:"HealthLevel"`
+	HealthLevel *string `json:"HealthLevel,omitnil" name:"HealthLevel"`
 }
 
 type HealthStatus struct {
 	// 健康分数，满分100。
-	HealthScore *int64 `json:"HealthScore,omitempty" name:"HealthScore"`
+	HealthScore *int64 `json:"HealthScore,omitnil" name:"HealthScore"`
 
 	// 健康等级，取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK"- 危险；"HIGH_RISK" - 高危。
-	HealthLevel *string `json:"HealthLevel,omitempty" name:"HealthLevel"`
+	HealthLevel *string `json:"HealthLevel,omitnil" name:"HealthLevel"`
 
 	// 总扣分分数。
-	ScoreLost *int64 `json:"ScoreLost,omitempty" name:"ScoreLost"`
+	ScoreLost *int64 `json:"ScoreLost,omitnil" name:"ScoreLost"`
 
 	// 扣分详情。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ScoreDetails []*ScoreDetail `json:"ScoreDetails,omitempty" name:"ScoreDetails"`
+	ScoreDetails []*ScoreDetail `json:"ScoreDetails,omitnil" name:"ScoreDetails"`
 }
 
 type InstanceBasicInfo struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 实例名称。
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 实例内网IP。
-	Vip *string `json:"Vip,omitempty" name:"Vip"`
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
 
 	// 实例内网Port。
-	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+	Vport *int64 `json:"Vport,omitnil" name:"Vport"`
 
 	// 实例产品。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 实例引擎版本。
-	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
+	EngineVersion *string `json:"EngineVersion,omitnil" name:"EngineVersion"`
 }
 
 type InstanceConfs struct {
 	// 数据库巡检开关, Yes/No。
-	DailyInspection *string `json:"DailyInspection,omitempty" name:"DailyInspection"`
+	DailyInspection *string `json:"DailyInspection,omitnil" name:"DailyInspection"`
 
 	// 实例概览开关，Yes/No。
-	OverviewDisplay *string `json:"OverviewDisplay,omitempty" name:"OverviewDisplay"`
+	OverviewDisplay *string `json:"OverviewDisplay,omitnil" name:"OverviewDisplay"`
 
 	// redis大key分析的自定义分割符，仅redis使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	KeyDelimiters []*string `json:"KeyDelimiters,omitempty" name:"KeyDelimiters"`
+	KeyDelimiters []*string `json:"KeyDelimiters,omitnil" name:"KeyDelimiters"`
 }
 
 type InstanceInfo struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 实例名称。
-	InstanceName *string `json:"InstanceName,omitempty" name:"InstanceName"`
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
 	// 实例所属地域。
-	Region *string `json:"Region,omitempty" name:"Region"`
+	Region *string `json:"Region,omitnil" name:"Region"`
 
 	// 健康得分。
-	HealthScore *int64 `json:"HealthScore,omitempty" name:"HealthScore"`
+	HealthScore *int64 `json:"HealthScore,omitnil" name:"HealthScore"`
 
 	// 所属产品。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 异常事件数量。
-	EventCount *int64 `json:"EventCount,omitempty" name:"EventCount"`
+	EventCount *int64 `json:"EventCount,omitnil" name:"EventCount"`
 
 	// 实例类型：1:MASTER；2:DR，3：RO，4:SDR。
-	InstanceType *int64 `json:"InstanceType,omitempty" name:"InstanceType"`
+	InstanceType *int64 `json:"InstanceType,omitnil" name:"InstanceType"`
 
 	// 核心数。
-	Cpu *int64 `json:"Cpu,omitempty" name:"Cpu"`
+	Cpu *int64 `json:"Cpu,omitnil" name:"Cpu"`
 
 	// 内存，单位MB。
-	Memory *int64 `json:"Memory,omitempty" name:"Memory"`
+	Memory *int64 `json:"Memory,omitnil" name:"Memory"`
 
 	// 硬盘存储，单位GB。
-	Volume *int64 `json:"Volume,omitempty" name:"Volume"`
+	Volume *int64 `json:"Volume,omitnil" name:"Volume"`
 
 	// 数据库版本。
-	EngineVersion *string `json:"EngineVersion,omitempty" name:"EngineVersion"`
+	EngineVersion *string `json:"EngineVersion,omitnil" name:"EngineVersion"`
 
 	// 内网地址。
-	Vip *string `json:"Vip,omitempty" name:"Vip"`
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
 
 	// 内网端口。
-	Vport *int64 `json:"Vport,omitempty" name:"Vport"`
+	Vport *int64 `json:"Vport,omitnil" name:"Vport"`
 
 	// 接入来源。
-	Source *string `json:"Source,omitempty" name:"Source"`
+	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 分组ID。
-	GroupId *string `json:"GroupId,omitempty" name:"GroupId"`
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 分组组名。
-	GroupName *string `json:"GroupName,omitempty" name:"GroupName"`
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
 
 	// 实例状态：0：发货中；1：运行正常；4：销毁中；5：隔离中。
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 子网统一ID。
-	UniqSubnetId *string `json:"UniqSubnetId,omitempty" name:"UniqSubnetId"`
+	UniqSubnetId *string `json:"UniqSubnetId,omitnil" name:"UniqSubnetId"`
 
 	// cdb类型。
-	DeployMode *string `json:"DeployMode,omitempty" name:"DeployMode"`
+	DeployMode *string `json:"DeployMode,omitnil" name:"DeployMode"`
 
 	// cdb实例初始化标志：0：未初始化；1：已初始化。
-	InitFlag *int64 `json:"InitFlag,omitempty" name:"InitFlag"`
+	InitFlag *int64 `json:"InitFlag,omitnil" name:"InitFlag"`
 
 	// 任务状态。
-	TaskStatus *int64 `json:"TaskStatus,omitempty" name:"TaskStatus"`
+	TaskStatus *int64 `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// 私有网络统一ID。
-	UniqVpcId *string `json:"UniqVpcId,omitempty" name:"UniqVpcId"`
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 
 	// 实例巡检/概览的状态。
-	InstanceConf *InstanceConfs `json:"InstanceConf,omitempty" name:"InstanceConf"`
+	InstanceConf *InstanceConfs `json:"InstanceConf,omitnil" name:"InstanceConf"`
 
 	// 资源到期时间。
-	DeadlineTime *string `json:"DeadlineTime,omitempty" name:"DeadlineTime"`
+	DeadlineTime *string `json:"DeadlineTime,omitnil" name:"DeadlineTime"`
 
 	// 是否是DBbrain支持的实例。
-	IsSupported *bool `json:"IsSupported,omitempty" name:"IsSupported"`
+	IsSupported *bool `json:"IsSupported,omitnil" name:"IsSupported"`
 
 	// 实例安全审计日志开启状态：ON： 安全审计开启；OFF： 未开启安全审计。
-	SecAuditStatus *string `json:"SecAuditStatus,omitempty" name:"SecAuditStatus"`
+	SecAuditStatus *string `json:"SecAuditStatus,omitnil" name:"SecAuditStatus"`
 
 	// 实例审计日志开启状态，ALL_AUDIT： 开启全审计；RULE_AUDIT： 开启规则审计；UNBOUND： 未开启审计。
-	AuditPolicyStatus *string `json:"AuditPolicyStatus,omitempty" name:"AuditPolicyStatus"`
+	AuditPolicyStatus *string `json:"AuditPolicyStatus,omitnil" name:"AuditPolicyStatus"`
 
 	// 实例审计日志运行状态：normal： 运行中； paused： 欠费暂停。
-	AuditRunningStatus *string `json:"AuditRunningStatus,omitempty" name:"AuditRunningStatus"`
+	AuditRunningStatus *string `json:"AuditRunningStatus,omitnil" name:"AuditRunningStatus"`
 
 	// 内网vip。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InternalVip *string `json:"InternalVip,omitempty" name:"InternalVip"`
+	InternalVip *string `json:"InternalVip,omitnil" name:"InternalVip"`
 
 	// 内网port。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	InternalVport *int64 `json:"InternalVport,omitempty" name:"InternalVport"`
+	InternalVport *int64 `json:"InternalVport,omitnil" name:"InternalVport"`
 
 	// 创建时间。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 所属集群ID（仅对集群数据库产品该字段非空，如TDSQL-C）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterId *string `json:"ClusterId,omitempty" name:"ClusterId"`
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
 	// 所属集群名称（仅对集群数据库产品该字段非空，如TDSQL-C）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ClusterName *string `json:"ClusterName,omitempty" name:"ClusterName"`
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 自建MySQL的Agent状态，"not_deployed" - 未部署，"deploying" - 部署中，"connected" - 连接正常，"deploy_failed" - 连接失败，"monitoring" - 连接正常，"stopped" - 暂停连接，"connect_failed" - 连接失败，unknown - 未知。
-	AgentStatus *string `json:"AgentStatus,omitempty" name:"AgentStatus"`
+	AgentStatus *string `json:"AgentStatus,omitnil" name:"AgentStatus"`
 
 	// 自建MySQL的实例状态，"not_attached" - 未连接，"attached" - 连接正常，"failed" - 连接失败，"stopped" - 停止监控，unknown- 未知。
-	InstanceStatus *string `json:"InstanceStatus,omitempty" name:"InstanceStatus"`
+	InstanceStatus *string `json:"InstanceStatus,omitnil" name:"InstanceStatus"`
 }
 
 type IssueTypeInfo struct {
 	// 指标分类：AVAILABILITY：可用性，MAINTAINABILITY：可维护性，PERFORMANCE，性能，RELIABILITY可靠性。
-	IssueType *string `json:"IssueType,omitempty" name:"IssueType"`
+	IssueType *string `json:"IssueType,omitnil" name:"IssueType"`
 
 	// 异常事件。
-	Events []*EventInfo `json:"Events,omitempty" name:"Events"`
+	Events []*EventInfo `json:"Events,omitnil" name:"Events"`
 
 	// 异常事件总数。
-	TotalCount *int64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 }
 
 // Predefined struct for user
 type KillMySqlThreadsRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// kill会话任务的阶段，取值包括："Prepare"-准备阶段，"Commit"-提交阶段。
-	Stage *string `json:"Stage,omitempty" name:"Stage"`
+	Stage *string `json:"Stage,omitnil" name:"Stage"`
 
 	// 需要kill的sql会话ID列表，此参数用于Prepare阶段。
-	Threads []*int64 `json:"Threads,omitempty" name:"Threads"`
+	Threads []*int64 `json:"Threads,omitnil" name:"Threads"`
 
 	// 执行ID，此参数用于Commit阶段。
-	SqlExecId *string `json:"SqlExecId,omitempty" name:"SqlExecId"`
+	SqlExecId *string `json:"SqlExecId,omitnil" name:"SqlExecId"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 默认是ture, 记录下kill的记录，为了加快kill，可设置为false。
-	RecordHistory *bool `json:"RecordHistory,omitempty" name:"RecordHistory"`
+	RecordHistory *bool `json:"RecordHistory,omitnil" name:"RecordHistory"`
 }
 
 type KillMySqlThreadsRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// kill会话任务的阶段，取值包括："Prepare"-准备阶段，"Commit"-提交阶段。
-	Stage *string `json:"Stage,omitempty" name:"Stage"`
+	Stage *string `json:"Stage,omitnil" name:"Stage"`
 
 	// 需要kill的sql会话ID列表，此参数用于Prepare阶段。
-	Threads []*int64 `json:"Threads,omitempty" name:"Threads"`
+	Threads []*int64 `json:"Threads,omitnil" name:"Threads"`
 
 	// 执行ID，此参数用于Commit阶段。
-	SqlExecId *string `json:"SqlExecId,omitempty" name:"SqlExecId"`
+	SqlExecId *string `json:"SqlExecId,omitnil" name:"SqlExecId"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 默认是ture, 记录下kill的记录，为了加快kill，可设置为false。
-	RecordHistory *bool `json:"RecordHistory,omitempty" name:"RecordHistory"`
+	RecordHistory *bool `json:"RecordHistory,omitnil" name:"RecordHistory"`
 }
 
 func (r *KillMySqlThreadsRequest) ToJsonString() string {
@@ -4727,14 +4727,14 @@ func (r *KillMySqlThreadsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type KillMySqlThreadsResponseParams struct {
 	// kill完成的sql会话ID列表。
-	Threads []*int64 `json:"Threads,omitempty" name:"Threads"`
+	Threads []*int64 `json:"Threads,omitnil" name:"Threads"`
 
 	// 执行ID， Prepare阶段的任务输出，用于Commit阶段中指定执行kill操作的会话ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SqlExecId *string `json:"SqlExecId,omitempty" name:"SqlExecId"`
+	SqlExecId *string `json:"SqlExecId,omitnil" name:"SqlExecId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type KillMySqlThreadsResponse struct {
@@ -4755,56 +4755,56 @@ func (r *KillMySqlThreadsResponse) FromJsonString(s string) error {
 
 type MailConfiguration struct {
 	// 是否开启邮件发送: 0, 否; 1, 是。
-	SendMail *int64 `json:"SendMail,omitempty" name:"SendMail"`
+	SendMail *int64 `json:"SendMail,omitnil" name:"SendMail"`
 
 	// 地域配置, 如["ap-guangzhou", "ap-shanghai"]。巡检的邮件发送模板，配置需要发送巡检邮件的地域；订阅的邮件发送模板，配置当前订阅实例的所属地域。
-	Region []*string `json:"Region,omitempty" name:"Region"`
+	Region []*string `json:"Region,omitnil" name:"Region"`
 
 	// 发送指定的健康等级的报告, 如["HEALTH", "SUB_HEALTH", "RISK", "HIGH_RISK"]。
-	HealthStatus []*string `json:"HealthStatus,omitempty" name:"HealthStatus"`
+	HealthStatus []*string `json:"HealthStatus,omitnil" name:"HealthStatus"`
 
 	// 联系人id, 联系人/联系组不能都为空。
-	ContactPerson []*int64 `json:"ContactPerson,omitempty" name:"ContactPerson"`
+	ContactPerson []*int64 `json:"ContactPerson,omitnil" name:"ContactPerson"`
 
 	// 联系组id, 联系人/联系组不能都为空。
-	ContactGroup []*int64 `json:"ContactGroup,omitempty" name:"ContactGroup"`
+	ContactGroup []*int64 `json:"ContactGroup,omitnil" name:"ContactGroup"`
 }
 
 // Predefined struct for user
 type ModifyAuditServiceRequestParams struct {
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 日志保存总时长，只能是7,30,90,180,365,1095,1825。
-	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+	LogExpireDay *int64 `json:"LogExpireDay,omitnil" name:"LogExpireDay"`
 
 	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825。
-	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
+	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitnil" name:"HotLogExpireDay"`
 }
 
 type ModifyAuditServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 日志保存总时长，只能是7,30,90,180,365,1095,1825。
-	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+	LogExpireDay *int64 `json:"LogExpireDay,omitnil" name:"LogExpireDay"`
 
 	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825。
-	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
+	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitnil" name:"HotLogExpireDay"`
 }
 
 func (r *ModifyAuditServiceRequest) ToJsonString() string {
@@ -4833,10 +4833,10 @@ func (r *ModifyAuditServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyAuditServiceResponseParams struct {
 	// 审计配置修改结果，0-修改成功,非0-修改失败。
-	Success *int64 `json:"Success,omitempty" name:"Success"`
+	Success *int64 `json:"Success,omitnil" name:"Success"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyAuditServiceResponse struct {
@@ -4858,32 +4858,32 @@ func (r *ModifyAuditServiceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDiagDBInstanceConfRequestParams struct {
 	// 实例配置，包括巡检、概览开关等。
-	InstanceConfs *InstanceConfs `json:"InstanceConfs,omitempty" name:"InstanceConfs"`
+	InstanceConfs *InstanceConfs `json:"InstanceConfs,omitnil" name:"InstanceConfs"`
 
 	// 生效实例地域，取值为"All"，代表全地域。
-	Regions *string `json:"Regions,omitempty" name:"Regions"`
+	Regions *string `json:"Regions,omitnil" name:"Regions"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 指定更改巡检状态的实例ID。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 }
 
 type ModifyDiagDBInstanceConfRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例配置，包括巡检、概览开关等。
-	InstanceConfs *InstanceConfs `json:"InstanceConfs,omitempty" name:"InstanceConfs"`
+	InstanceConfs *InstanceConfs `json:"InstanceConfs,omitnil" name:"InstanceConfs"`
 
 	// 生效实例地域，取值为"All"，代表全地域。
-	Regions *string `json:"Regions,omitempty" name:"Regions"`
+	Regions *string `json:"Regions,omitnil" name:"Regions"`
 
 	// 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 指定更改巡检状态的实例ID。
-	InstanceIds []*string `json:"InstanceIds,omitempty" name:"InstanceIds"`
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 }
 
 func (r *ModifyDiagDBInstanceConfRequest) ToJsonString() string {
@@ -4911,7 +4911,7 @@ func (r *ModifyDiagDBInstanceConfRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyDiagDBInstanceConfResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyDiagDBInstanceConfResponse struct {
@@ -4933,38 +4933,38 @@ func (r *ModifyDiagDBInstanceConfResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySqlFiltersRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// SQL限流任务ID列表。
-	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
+	FilterIds []*int64 `json:"FilterIds,omitnil" name:"FilterIds"`
 
 	// 限流任务状态，取值支持TERMINATED - 终止。
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
+	SessionToken *string `json:"SessionToken,omitnil" name:"SessionToken"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type ModifySqlFiltersRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// SQL限流任务ID列表。
-	FilterIds []*int64 `json:"FilterIds,omitempty" name:"FilterIds"`
+	FilterIds []*int64 `json:"FilterIds,omitnil" name:"FilterIds"`
 
 	// 限流任务状态，取值支持TERMINATED - 终止。
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 通过VerifyUserAccount获取有效期为5分钟的会话token，使用后会自动延长token有效期至五分钟后。
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
+	SessionToken *string `json:"SessionToken,omitnil" name:"SessionToken"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *ModifySqlFiltersRequest) ToJsonString() string {
@@ -4993,7 +4993,7 @@ func (r *ModifySqlFiltersRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifySqlFiltersResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifySqlFiltersResponse struct {
@@ -5014,105 +5014,105 @@ func (r *ModifySqlFiltersResponse) FromJsonString(s string) error {
 
 type MonitorFloatMetric struct {
 	// 指标名称。
-	Metric *string `json:"Metric,omitempty" name:"Metric"`
+	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
 	// 指标单位。
-	Unit *string `json:"Unit,omitempty" name:"Unit"`
+	Unit *string `json:"Unit,omitnil" name:"Unit"`
 
 	// 指标值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Values []*float64 `json:"Values,omitempty" name:"Values"`
+	Values []*float64 `json:"Values,omitnil" name:"Values"`
 }
 
 type MonitorFloatMetricSeriesData struct {
 	// 监控指标。
-	Series []*MonitorFloatMetric `json:"Series,omitempty" name:"Series"`
+	Series []*MonitorFloatMetric `json:"Series,omitnil" name:"Series"`
 
 	// 监控指标对应的时间戳。
-	Timestamp []*int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+	Timestamp []*int64 `json:"Timestamp,omitnil" name:"Timestamp"`
 }
 
 type MonitorMetric struct {
 	// 指标名称。
-	Metric *string `json:"Metric,omitempty" name:"Metric"`
+	Metric *string `json:"Metric,omitnil" name:"Metric"`
 
 	// 指标单位。
-	Unit *string `json:"Unit,omitempty" name:"Unit"`
+	Unit *string `json:"Unit,omitnil" name:"Unit"`
 
 	// 指标值。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Values []*float64 `json:"Values,omitempty" name:"Values"`
+	Values []*float64 `json:"Values,omitnil" name:"Values"`
 }
 
 type MonitorMetricSeriesData struct {
 	// 监控指标。
-	Series []*MonitorMetric `json:"Series,omitempty" name:"Series"`
+	Series []*MonitorMetric `json:"Series,omitnil" name:"Series"`
 
 	// 监控指标对应的时间戳。
-	Timestamp []*int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+	Timestamp []*int64 `json:"Timestamp,omitnil" name:"Timestamp"`
 }
 
 type MySqlProcess struct {
 	// 线程ID。
-	ID *string `json:"ID,omitempty" name:"ID"`
+	ID *string `json:"ID,omitnil" name:"ID"`
 
 	// 线程的操作账号名。
-	User *string `json:"User,omitempty" name:"User"`
+	User *string `json:"User,omitnil" name:"User"`
 
 	// 线程的操作主机地址。
-	Host *string `json:"Host,omitempty" name:"Host"`
+	Host *string `json:"Host,omitnil" name:"Host"`
 
 	// 线程的操作数据库。
-	DB *string `json:"DB,omitempty" name:"DB"`
+	DB *string `json:"DB,omitnil" name:"DB"`
 
 	// 线程的操作状态。
-	State *string `json:"State,omitempty" name:"State"`
+	State *string `json:"State,omitnil" name:"State"`
 
 	// 线程的执行类型。
-	Command *string `json:"Command,omitempty" name:"Command"`
+	Command *string `json:"Command,omitnil" name:"Command"`
 
 	// 线程的操作时长，单位秒。
-	Time *string `json:"Time,omitempty" name:"Time"`
+	Time *string `json:"Time,omitnil" name:"Time"`
 
 	// 线程的操作语句。
-	Info *string `json:"Info,omitempty" name:"Info"`
+	Info *string `json:"Info,omitnil" name:"Info"`
 }
 
 // Predefined struct for user
 type OpenAuditServiceRequestParams struct {
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 日志保存总时长，只能是7,30,90,180,365,1095,1825。
-	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+	LogExpireDay *int64 `json:"LogExpireDay,omitnil" name:"LogExpireDay"`
 
 	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825。
-	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
+	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitnil" name:"HotLogExpireDay"`
 }
 
 type OpenAuditServiceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 服务产品类型，支持值包括： "dcdb" - 云数据库 Tdsql， "mariadb" - 云数据库 MariaDB。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 
 	// 与Product保持一致。如："dcdb" ,"mariadb"。
-	NodeRequestType *string `json:"NodeRequestType,omitempty" name:"NodeRequestType"`
+	NodeRequestType *string `json:"NodeRequestType,omitnil" name:"NodeRequestType"`
 
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 日志保存总时长，只能是7,30,90,180,365,1095,1825。
-	LogExpireDay *int64 `json:"LogExpireDay,omitempty" name:"LogExpireDay"`
+	LogExpireDay *int64 `json:"LogExpireDay,omitnil" name:"LogExpireDay"`
 
 	// 高频日志保存时长，只能是7,30,90,180,365,1095,1825。
-	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitempty" name:"HotLogExpireDay"`
+	HotLogExpireDay *int64 `json:"HotLogExpireDay,omitnil" name:"HotLogExpireDay"`
 }
 
 func (r *OpenAuditServiceRequest) ToJsonString() string {
@@ -5141,10 +5141,10 @@ func (r *OpenAuditServiceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type OpenAuditServiceResponseParams struct {
 	// taskId 为0表示开通审计成功，否则开通失败
-	TaskId *int64 `json:"TaskId,omitempty" name:"TaskId"`
+	TaskId *int64 `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type OpenAuditServiceResponse struct {
@@ -5165,490 +5165,490 @@ func (r *OpenAuditServiceResponse) FromJsonString(s string) error {
 
 type ProcessStatistic struct {
 	// 会话详情数组。
-	Items []*SessionItem `json:"Items,omitempty" name:"Items"`
+	Items []*SessionItem `json:"Items,omitnil" name:"Items"`
 
 	// 总连接数。
-	AllConnSum *int64 `json:"AllConnSum,omitempty" name:"AllConnSum"`
+	AllConnSum *int64 `json:"AllConnSum,omitnil" name:"AllConnSum"`
 
 	// 总活跃连接数。
-	ActiveConnSum *int64 `json:"ActiveConnSum,omitempty" name:"ActiveConnSum"`
+	ActiveConnSum *int64 `json:"ActiveConnSum,omitnil" name:"ActiveConnSum"`
 }
 
 type ProfileInfo struct {
 	// 语言, 如"zh"。
-	Language *string `json:"Language,omitempty" name:"Language"`
+	Language *string `json:"Language,omitnil" name:"Language"`
 
 	// 邮件模板的内容。
-	MailConfiguration *MailConfiguration `json:"MailConfiguration,omitempty" name:"MailConfiguration"`
+	MailConfiguration *MailConfiguration `json:"MailConfiguration,omitnil" name:"MailConfiguration"`
 }
 
 type RedisKeySpaceData struct {
 	// key名。
-	Key *string `json:"Key,omitempty" name:"Key"`
+	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// key类型。
-	Type *string `json:"Type,omitempty" name:"Type"`
+	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// key编码方式。
-	Encoding *string `json:"Encoding,omitempty" name:"Encoding"`
+	Encoding *string `json:"Encoding,omitnil" name:"Encoding"`
 
 	// key过期时间戳（毫秒），0代表未设置过期时间。
-	ExpireTime *int64 `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *int64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
 
 	// key内存大小，单位Byte。
-	Length *int64 `json:"Length,omitempty" name:"Length"`
+	Length *int64 `json:"Length,omitnil" name:"Length"`
 
 	// 元素个数。
-	ItemCount *int64 `json:"ItemCount,omitempty" name:"ItemCount"`
+	ItemCount *int64 `json:"ItemCount,omitnil" name:"ItemCount"`
 
 	// 最大元素长度。
-	MaxElementSize *int64 `json:"MaxElementSize,omitempty" name:"MaxElementSize"`
+	MaxElementSize *int64 `json:"MaxElementSize,omitnil" name:"MaxElementSize"`
 
 	// 平均元素长度。
-	AveElementSize *int64 `json:"AveElementSize,omitempty" name:"AveElementSize"`
+	AveElementSize *int64 `json:"AveElementSize,omitnil" name:"AveElementSize"`
 
 	// 所属分片序号。
-	ShardId *string `json:"ShardId,omitempty" name:"ShardId"`
+	ShardId *string `json:"ShardId,omitnil" name:"ShardId"`
 }
 
 type RedisPreKeySpaceData struct {
 	// 平均元素长度。
-	AveElementSize *int64 `json:"AveElementSize,omitempty" name:"AveElementSize"`
+	AveElementSize *int64 `json:"AveElementSize,omitnil" name:"AveElementSize"`
 
 	// 总占用内存（Byte）。
-	Length *int64 `json:"Length,omitempty" name:"Length"`
+	Length *int64 `json:"Length,omitnil" name:"Length"`
 
 	// key前缀。
-	KeyPreIndex *string `json:"KeyPreIndex,omitempty" name:"KeyPreIndex"`
+	KeyPreIndex *string `json:"KeyPreIndex,omitnil" name:"KeyPreIndex"`
 
 	// 元素数量。
-	ItemCount *int64 `json:"ItemCount,omitempty" name:"ItemCount"`
+	ItemCount *int64 `json:"ItemCount,omitnil" name:"ItemCount"`
 
 	// key个数。
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 最大元素长度。
-	MaxElementSize *int64 `json:"MaxElementSize,omitempty" name:"MaxElementSize"`
+	MaxElementSize *int64 `json:"MaxElementSize,omitnil" name:"MaxElementSize"`
 }
 
 type SQLFilter struct {
 	// 任务ID。
-	Id *int64 `json:"Id,omitempty" name:"Id"`
+	Id *int64 `json:"Id,omitnil" name:"Id"`
 
 	// 任务状态，取值包括RUNNING - 运行中, FINISHED - 已完成, TERMINATED - 已终止。
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// SQL类型，取值包括SELECT, UPDATE, DELETE, INSERT, REPLACE。
-	SqlType *string `json:"SqlType,omitempty" name:"SqlType"`
+	SqlType *string `json:"SqlType,omitnil" name:"SqlType"`
 
 	// 筛选SQL的关键词，多个关键词用英文逗号拼接。
-	OriginKeys *string `json:"OriginKeys,omitempty" name:"OriginKeys"`
+	OriginKeys *string `json:"OriginKeys,omitnil" name:"OriginKeys"`
 
 	// 筛选SQL的规则。
-	OriginRule *string `json:"OriginRule,omitempty" name:"OriginRule"`
+	OriginRule *string `json:"OriginRule,omitnil" name:"OriginRule"`
 
 	// 已拒绝SQL数目。
-	RejectedSqlCount *int64 `json:"RejectedSqlCount,omitempty" name:"RejectedSqlCount"`
+	RejectedSqlCount *int64 `json:"RejectedSqlCount,omitnil" name:"RejectedSqlCount"`
 
 	// 当前并发数。
-	CurrentConcurrency *int64 `json:"CurrentConcurrency,omitempty" name:"CurrentConcurrency"`
+	CurrentConcurrency *int64 `json:"CurrentConcurrency,omitnil" name:"CurrentConcurrency"`
 
 	// 最大并发数。
-	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" name:"MaxConcurrency"`
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil" name:"MaxConcurrency"`
 
 	// 任务创建时间。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 当前时间。
-	CurrentTime *string `json:"CurrentTime,omitempty" name:"CurrentTime"`
+	CurrentTime *string `json:"CurrentTime,omitnil" name:"CurrentTime"`
 
 	// 限流过期时间。
-	ExpireTime *string `json:"ExpireTime,omitempty" name:"ExpireTime"`
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
 }
 
 type SchemaItem struct {
 	// 数据库名称
-	Schema *string `json:"Schema,omitempty" name:"Schema"`
+	Schema *string `json:"Schema,omitnil" name:"Schema"`
 }
 
 type SchemaSpaceData struct {
 	// 库名。
-	TableSchema *string `json:"TableSchema,omitempty" name:"TableSchema"`
+	TableSchema *string `json:"TableSchema,omitnil" name:"TableSchema"`
 
 	// 数据空间（MB）。
-	DataLength *float64 `json:"DataLength,omitempty" name:"DataLength"`
+	DataLength *float64 `json:"DataLength,omitnil" name:"DataLength"`
 
 	// 索引空间（MB）。
-	IndexLength *float64 `json:"IndexLength,omitempty" name:"IndexLength"`
+	IndexLength *float64 `json:"IndexLength,omitnil" name:"IndexLength"`
 
 	// 碎片空间（MB）。
-	DataFree *float64 `json:"DataFree,omitempty" name:"DataFree"`
+	DataFree *float64 `json:"DataFree,omitnil" name:"DataFree"`
 
 	// 总使用空间（MB）。
-	TotalLength *float64 `json:"TotalLength,omitempty" name:"TotalLength"`
+	TotalLength *float64 `json:"TotalLength,omitnil" name:"TotalLength"`
 
 	// 碎片率（%）。
-	FragRatio *float64 `json:"FragRatio,omitempty" name:"FragRatio"`
+	FragRatio *float64 `json:"FragRatio,omitnil" name:"FragRatio"`
 
 	// 行数。
-	TableRows *int64 `json:"TableRows,omitempty" name:"TableRows"`
+	TableRows *int64 `json:"TableRows,omitnil" name:"TableRows"`
 
 	// 库中所有表对应的独立物理文件大小加和（MB）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	PhysicalFileSize *float64 `json:"PhysicalFileSize,omitempty" name:"PhysicalFileSize"`
+	PhysicalFileSize *float64 `json:"PhysicalFileSize,omitnil" name:"PhysicalFileSize"`
 }
 
 type SchemaSpaceTimeSeries struct {
 	// 库名
-	TableSchema *string `json:"TableSchema,omitempty" name:"TableSchema"`
+	TableSchema *string `json:"TableSchema,omitnil" name:"TableSchema"`
 
 	// 单位时间间隔内的空间指标数据。
-	SeriesData *MonitorMetricSeriesData `json:"SeriesData,omitempty" name:"SeriesData"`
+	SeriesData *MonitorMetricSeriesData `json:"SeriesData,omitnil" name:"SeriesData"`
 }
 
 type ScoreDetail struct {
 	// 扣分项分类，取值包括：可用性、可维护性、性能及可靠性。
-	IssueType *string `json:"IssueType,omitempty" name:"IssueType"`
+	IssueType *string `json:"IssueType,omitnil" name:"IssueType"`
 
 	// 扣分总分。
-	ScoreLost *int64 `json:"ScoreLost,omitempty" name:"ScoreLost"`
+	ScoreLost *int64 `json:"ScoreLost,omitnil" name:"ScoreLost"`
 
 	// 扣分总分上限。
-	ScoreLostMax *int64 `json:"ScoreLostMax,omitempty" name:"ScoreLostMax"`
+	ScoreLostMax *int64 `json:"ScoreLostMax,omitnil" name:"ScoreLostMax"`
 
 	// 扣分项列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Items []*ScoreItem `json:"Items,omitempty" name:"Items"`
+	Items []*ScoreItem `json:"Items,omitnil" name:"Items"`
 }
 
 type ScoreItem struct {
 	// 异常诊断项名称。
-	DiagItem *string `json:"DiagItem,omitempty" name:"DiagItem"`
+	DiagItem *string `json:"DiagItem,omitnil" name:"DiagItem"`
 
 	// 诊断项分类，取值包括：可用性、可维护性、性能及可靠性。
-	IssueType *string `json:"IssueType,omitempty" name:"IssueType"`
+	IssueType *string `json:"IssueType,omitnil" name:"IssueType"`
 
 	// 健康等级，取值包括：信息、提示、告警、严重、致命。
-	TopSeverity *string `json:"TopSeverity,omitempty" name:"TopSeverity"`
+	TopSeverity *string `json:"TopSeverity,omitnil" name:"TopSeverity"`
 
 	// 该异常诊断项出现次数。
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 扣分分数。
-	ScoreLost *int64 `json:"ScoreLost,omitempty" name:"ScoreLost"`
+	ScoreLost *int64 `json:"ScoreLost,omitnil" name:"ScoreLost"`
 }
 
 type SecLogExportTaskInfo struct {
 	// 异步任务Id。
-	AsyncRequestId *uint64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *uint64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 
 	// 任务开始时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 任务结束时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 任务创建时间。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 任务状态。
-	Status *string `json:"Status,omitempty" name:"Status"`
+	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 任务执行进度。
-	Progress *uint64 `json:"Progress,omitempty" name:"Progress"`
+	Progress *uint64 `json:"Progress,omitnil" name:"Progress"`
 
 	// 导出日志开始时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogStartTime *string `json:"LogStartTime,omitempty" name:"LogStartTime"`
+	LogStartTime *string `json:"LogStartTime,omitnil" name:"LogStartTime"`
 
 	// 导出日志结束时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LogEndTime *string `json:"LogEndTime,omitempty" name:"LogEndTime"`
+	LogEndTime *string `json:"LogEndTime,omitnil" name:"LogEndTime"`
 
 	// 日志文件总大小，单位KB。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	TotalSize *uint64 `json:"TotalSize,omitempty" name:"TotalSize"`
+	TotalSize *uint64 `json:"TotalSize,omitnil" name:"TotalSize"`
 
 	// 风险等级列表。0 无风险；1 低风险；2 中风险；3 高风险。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	DangerLevels []*uint64 `json:"DangerLevels,omitempty" name:"DangerLevels"`
+	DangerLevels []*uint64 `json:"DangerLevels,omitnil" name:"DangerLevels"`
 }
 
 type SessionItem struct {
 	// 访问来源。
-	Ip *string `json:"Ip,omitempty" name:"Ip"`
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
 
 	// 当前访问来源活跃连接数
-	ActiveConn *string `json:"ActiveConn,omitempty" name:"ActiveConn"`
+	ActiveConn *string `json:"ActiveConn,omitnil" name:"ActiveConn"`
 
 	// 当前访问来源总连接数
-	AllConn *int64 `json:"AllConn,omitempty" name:"AllConn"`
+	AllConn *int64 `json:"AllConn,omitnil" name:"AllConn"`
 }
 
 type SlowLogHost struct {
 	// 来源地址。
-	UserHost *string `json:"UserHost,omitempty" name:"UserHost"`
+	UserHost *string `json:"UserHost,omitnil" name:"UserHost"`
 
 	// 该来源地址的慢日志数目占总数目的比例，单位%。
-	Ratio *float64 `json:"Ratio,omitempty" name:"Ratio"`
+	Ratio *float64 `json:"Ratio,omitnil" name:"Ratio"`
 
 	// 该来源地址的慢日志数目。
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 }
 
 type SlowLogInfoItem struct {
 	// 慢日志开始时间
-	Timestamp *string `json:"Timestamp,omitempty" name:"Timestamp"`
+	Timestamp *string `json:"Timestamp,omitnil" name:"Timestamp"`
 
 	// sql语句
-	SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+	SqlText *string `json:"SqlText,omitnil" name:"SqlText"`
 
 	// 数据库
-	Database *string `json:"Database,omitempty" name:"Database"`
+	Database *string `json:"Database,omitnil" name:"Database"`
 
 	// User来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
 	// IP来源
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserHost *string `json:"UserHost,omitempty" name:"UserHost"`
+	UserHost *string `json:"UserHost,omitnil" name:"UserHost"`
 
 	// 执行时间,单位秒
-	QueryTime *int64 `json:"QueryTime,omitempty" name:"QueryTime"`
+	QueryTime *int64 `json:"QueryTime,omitnil" name:"QueryTime"`
 
 	// 锁时间,单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	LockTime *int64 `json:"LockTime,omitempty" name:"LockTime"`
+	LockTime *int64 `json:"LockTime,omitnil" name:"LockTime"`
 
 	// 扫描行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RowsExamined *int64 `json:"RowsExamined,omitempty" name:"RowsExamined"`
+	RowsExamined *int64 `json:"RowsExamined,omitnil" name:"RowsExamined"`
 
 	// 返回行数
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	RowsSent *int64 `json:"RowsSent,omitempty" name:"RowsSent"`
+	RowsSent *int64 `json:"RowsSent,omitnil" name:"RowsSent"`
 }
 
 type SlowLogTopSqlItem struct {
 	// sql总锁等待时间，单位秒
-	LockTime *float64 `json:"LockTime,omitempty" name:"LockTime"`
+	LockTime *float64 `json:"LockTime,omitnil" name:"LockTime"`
 
 	// 最大锁等待时间，单位秒
-	LockTimeMax *float64 `json:"LockTimeMax,omitempty" name:"LockTimeMax"`
+	LockTimeMax *float64 `json:"LockTimeMax,omitnil" name:"LockTimeMax"`
 
 	// 最小锁等待时间，单位秒
-	LockTimeMin *float64 `json:"LockTimeMin,omitempty" name:"LockTimeMin"`
+	LockTimeMin *float64 `json:"LockTimeMin,omitnil" name:"LockTimeMin"`
 
 	// 总扫描行数
-	RowsExamined *int64 `json:"RowsExamined,omitempty" name:"RowsExamined"`
+	RowsExamined *int64 `json:"RowsExamined,omitnil" name:"RowsExamined"`
 
 	// 最大扫描行数
-	RowsExaminedMax *int64 `json:"RowsExaminedMax,omitempty" name:"RowsExaminedMax"`
+	RowsExaminedMax *int64 `json:"RowsExaminedMax,omitnil" name:"RowsExaminedMax"`
 
 	// 最小扫描行数
-	RowsExaminedMin *int64 `json:"RowsExaminedMin,omitempty" name:"RowsExaminedMin"`
+	RowsExaminedMin *int64 `json:"RowsExaminedMin,omitnil" name:"RowsExaminedMin"`
 
 	// 总耗时，单位秒
-	QueryTime *float64 `json:"QueryTime,omitempty" name:"QueryTime"`
+	QueryTime *float64 `json:"QueryTime,omitnil" name:"QueryTime"`
 
 	// 最大执行时间，单位秒
-	QueryTimeMax *float64 `json:"QueryTimeMax,omitempty" name:"QueryTimeMax"`
+	QueryTimeMax *float64 `json:"QueryTimeMax,omitnil" name:"QueryTimeMax"`
 
 	// 最小执行时间，单位秒
-	QueryTimeMin *float64 `json:"QueryTimeMin,omitempty" name:"QueryTimeMin"`
+	QueryTimeMin *float64 `json:"QueryTimeMin,omitnil" name:"QueryTimeMin"`
 
 	// 总返回行数
-	RowsSent *int64 `json:"RowsSent,omitempty" name:"RowsSent"`
+	RowsSent *int64 `json:"RowsSent,omitnil" name:"RowsSent"`
 
 	// 最大返回行数
-	RowsSentMax *int64 `json:"RowsSentMax,omitempty" name:"RowsSentMax"`
+	RowsSentMax *int64 `json:"RowsSentMax,omitnil" name:"RowsSentMax"`
 
 	// 最小返回行数
-	RowsSentMin *int64 `json:"RowsSentMin,omitempty" name:"RowsSentMin"`
+	RowsSentMin *int64 `json:"RowsSentMin,omitnil" name:"RowsSentMin"`
 
 	// 执行次数
-	ExecTimes *int64 `json:"ExecTimes,omitempty" name:"ExecTimes"`
+	ExecTimes *int64 `json:"ExecTimes,omitnil" name:"ExecTimes"`
 
 	// sql模板
-	SqlTemplate *string `json:"SqlTemplate,omitempty" name:"SqlTemplate"`
+	SqlTemplate *string `json:"SqlTemplate,omitnil" name:"SqlTemplate"`
 
 	// 带参数SQL（随机）
-	SqlText *string `json:"SqlText,omitempty" name:"SqlText"`
+	SqlText *string `json:"SqlText,omitnil" name:"SqlText"`
 
 	// 数据库名
-	Schema *string `json:"Schema,omitempty" name:"Schema"`
+	Schema *string `json:"Schema,omitnil" name:"Schema"`
 
 	// 总耗时占比，单位%
-	QueryTimeRatio *float64 `json:"QueryTimeRatio,omitempty" name:"QueryTimeRatio"`
+	QueryTimeRatio *float64 `json:"QueryTimeRatio,omitnil" name:"QueryTimeRatio"`
 
 	// sql总锁等待时间占比，单位%
-	LockTimeRatio *float64 `json:"LockTimeRatio,omitempty" name:"LockTimeRatio"`
+	LockTimeRatio *float64 `json:"LockTimeRatio,omitnil" name:"LockTimeRatio"`
 
 	// 总扫描行数占比，单位%
-	RowsExaminedRatio *float64 `json:"RowsExaminedRatio,omitempty" name:"RowsExaminedRatio"`
+	RowsExaminedRatio *float64 `json:"RowsExaminedRatio,omitnil" name:"RowsExaminedRatio"`
 
 	// 总返回行数占比，单位%
-	RowsSentRatio *float64 `json:"RowsSentRatio,omitempty" name:"RowsSentRatio"`
+	RowsSentRatio *float64 `json:"RowsSentRatio,omitnil" name:"RowsSentRatio"`
 
 	// 平均执行时间，单位秒
-	QueryTimeAvg *float64 `json:"QueryTimeAvg,omitempty" name:"QueryTimeAvg"`
+	QueryTimeAvg *float64 `json:"QueryTimeAvg,omitnil" name:"QueryTimeAvg"`
 
 	// 平均返回行数
-	RowsSentAvg *float64 `json:"RowsSentAvg,omitempty" name:"RowsSentAvg"`
+	RowsSentAvg *float64 `json:"RowsSentAvg,omitnil" name:"RowsSentAvg"`
 
 	// 平均锁等待时间，单位秒
-	LockTimeAvg *float64 `json:"LockTimeAvg,omitempty" name:"LockTimeAvg"`
+	LockTimeAvg *float64 `json:"LockTimeAvg,omitnil" name:"LockTimeAvg"`
 
 	// 平均扫描行数
-	RowsExaminedAvg *float64 `json:"RowsExaminedAvg,omitempty" name:"RowsExaminedAvg"`
+	RowsExaminedAvg *float64 `json:"RowsExaminedAvg,omitnil" name:"RowsExaminedAvg"`
 
 	// SQL模板的MD5值
-	Md5 *string `json:"Md5,omitempty" name:"Md5"`
+	Md5 *string `json:"Md5,omitnil" name:"Md5"`
 }
 
 type SlowLogUser struct {
 	// 来源用户名。
-	UserName *string `json:"UserName,omitempty" name:"UserName"`
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
 	// 该来源用户名的慢日志数目占总数目的比例，单位%。
-	Ratio *float64 `json:"Ratio,omitempty" name:"Ratio"`
+	Ratio *float64 `json:"Ratio,omitnil" name:"Ratio"`
 
 	// 该来源用户名的慢日志数目。
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 }
 
 type Table struct {
 	// 库名。
-	TableSchema *string `json:"TableSchema,omitempty" name:"TableSchema"`
+	TableSchema *string `json:"TableSchema,omitnil" name:"TableSchema"`
 
 	// 表名。
-	TableName *string `json:"TableName,omitempty" name:"TableName"`
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
 
 	// 库表的存储引擎。
-	Engine *string `json:"Engine,omitempty" name:"Engine"`
+	Engine *string `json:"Engine,omitnil" name:"Engine"`
 
 	// 行数。
-	TableRows *int64 `json:"TableRows,omitempty" name:"TableRows"`
+	TableRows *int64 `json:"TableRows,omitnil" name:"TableRows"`
 
 	// 总使用空间（MB）。
-	TotalLength *float64 `json:"TotalLength,omitempty" name:"TotalLength"`
+	TotalLength *float64 `json:"TotalLength,omitnil" name:"TotalLength"`
 }
 
 type TableSpaceData struct {
 	// 表名。
-	TableName *string `json:"TableName,omitempty" name:"TableName"`
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
 
 	// 库名。
-	TableSchema *string `json:"TableSchema,omitempty" name:"TableSchema"`
+	TableSchema *string `json:"TableSchema,omitnil" name:"TableSchema"`
 
 	// 库表的存储引擎。
-	Engine *string `json:"Engine,omitempty" name:"Engine"`
+	Engine *string `json:"Engine,omitnil" name:"Engine"`
 
 	// 数据空间（MB）。
-	DataLength *float64 `json:"DataLength,omitempty" name:"DataLength"`
+	DataLength *float64 `json:"DataLength,omitnil" name:"DataLength"`
 
 	// 索引空间（MB）。
-	IndexLength *float64 `json:"IndexLength,omitempty" name:"IndexLength"`
+	IndexLength *float64 `json:"IndexLength,omitnil" name:"IndexLength"`
 
 	// 碎片空间（MB）。
-	DataFree *float64 `json:"DataFree,omitempty" name:"DataFree"`
+	DataFree *float64 `json:"DataFree,omitnil" name:"DataFree"`
 
 	// 总使用空间（MB）。
-	TotalLength *float64 `json:"TotalLength,omitempty" name:"TotalLength"`
+	TotalLength *float64 `json:"TotalLength,omitnil" name:"TotalLength"`
 
 	// 碎片率（%）。
-	FragRatio *float64 `json:"FragRatio,omitempty" name:"FragRatio"`
+	FragRatio *float64 `json:"FragRatio,omitnil" name:"FragRatio"`
 
 	// 行数。
-	TableRows *int64 `json:"TableRows,omitempty" name:"TableRows"`
+	TableRows *int64 `json:"TableRows,omitnil" name:"TableRows"`
 
 	// 表对应的独立物理文件大小（MB）。
-	PhysicalFileSize *float64 `json:"PhysicalFileSize,omitempty" name:"PhysicalFileSize"`
+	PhysicalFileSize *float64 `json:"PhysicalFileSize,omitnil" name:"PhysicalFileSize"`
 }
 
 type TableSpaceTimeSeries struct {
 	// 表名。
-	TableName *string `json:"TableName,omitempty" name:"TableName"`
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
 
 	// 库名。
-	TableSchema *string `json:"TableSchema,omitempty" name:"TableSchema"`
+	TableSchema *string `json:"TableSchema,omitnil" name:"TableSchema"`
 
 	// 库表的存储引擎。
-	Engine *string `json:"Engine,omitempty" name:"Engine"`
+	Engine *string `json:"Engine,omitnil" name:"Engine"`
 
 	// 单位时间间隔内的空间指标数据。
-	SeriesData *MonitorFloatMetricSeriesData `json:"SeriesData,omitempty" name:"SeriesData"`
+	SeriesData *MonitorFloatMetricSeriesData `json:"SeriesData,omitnil" name:"SeriesData"`
 }
 
 type TaskInfo struct {
 	// 异步任务 ID。
-	AsyncRequestId *int64 `json:"AsyncRequestId,omitempty" name:"AsyncRequestId"`
+	AsyncRequestId *int64 `json:"AsyncRequestId,omitnil" name:"AsyncRequestId"`
 
 	// 当前实例所有 proxy 列表。
-	InstProxyList []*string `json:"InstProxyList,omitempty" name:"InstProxyList"`
+	InstProxyList []*string `json:"InstProxyList,omitnil" name:"InstProxyList"`
 
 	// 当前实例所有 proxy 数量。
-	InstProxyCount *int64 `json:"InstProxyCount,omitempty" name:"InstProxyCount"`
+	InstProxyCount *int64 `json:"InstProxyCount,omitnil" name:"InstProxyCount"`
 
 	// 任务创建时间。
-	CreateTime *string `json:"CreateTime,omitempty" name:"CreateTime"`
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
 	// 任务启动时间。
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
-	TaskStatus *string `json:"TaskStatus,omitempty" name:"TaskStatus"`
+	TaskStatus *string `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// 完成 kill 任务的 proxyId。
-	FinishedProxyList []*string `json:"FinishedProxyList,omitempty" name:"FinishedProxyList"`
+	FinishedProxyList []*string `json:"FinishedProxyList,omitnil" name:"FinishedProxyList"`
 
 	// kill 任务实行失败的 proxyId。
-	FailedProxyList []*string `json:"FailedProxyList,omitempty" name:"FailedProxyList"`
+	FailedProxyList []*string `json:"FailedProxyList,omitnil" name:"FailedProxyList"`
 
 	// 任务结束时间。
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
 	// 任务执行进度。
-	Progress *int64 `json:"Progress,omitempty" name:"Progress"`
+	Progress *int64 `json:"Progress,omitnil" name:"Progress"`
 
 	// 实例 ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type TimeSlice struct {
 	// 总数
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 统计开始时间
-	Timestamp *int64 `json:"Timestamp,omitempty" name:"Timestamp"`
+	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
 }
 
 // Predefined struct for user
 type UpdateAgentSwitchRequestParams struct {
 	// Agent标识。
-	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+	AgentId *string `json:"AgentId,omitnil" name:"AgentId"`
 
 	// 停止或重连Agent，支持值包括："on" - 重连Agent， "off" - 停止Agent。
-	Switch *string `json:"Switch,omitempty" name:"Switch"`
+	Switch *string `json:"Switch,omitnil" name:"Switch"`
 
 	// 服务产品类型，仅支持 "dbbrain-mysql" - 自建MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type UpdateAgentSwitchRequest struct {
 	*tchttp.BaseRequest
 	
 	// Agent标识。
-	AgentId *string `json:"AgentId,omitempty" name:"AgentId"`
+	AgentId *string `json:"AgentId,omitnil" name:"AgentId"`
 
 	// 停止或重连Agent，支持值包括："on" - 重连Agent， "off" - 停止Agent。
-	Switch *string `json:"Switch,omitempty" name:"Switch"`
+	Switch *string `json:"Switch,omitnil" name:"Switch"`
 
 	// 服务产品类型，仅支持 "dbbrain-mysql" - 自建MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *UpdateAgentSwitchRequest) ToJsonString() string {
@@ -5675,7 +5675,7 @@ func (r *UpdateAgentSwitchRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateAgentSwitchResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateAgentSwitchResponse struct {
@@ -5697,26 +5697,26 @@ func (r *UpdateAgentSwitchResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateMonitorSwitchRequestParams struct {
 	// 停止或重连Agent实例，支持值包括："on" - 重连实例， "off" - 停止实例。
-	Switch *string `json:"Switch,omitempty" name:"Switch"`
+	Switch *string `json:"Switch,omitnil" name:"Switch"`
 
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 服务产品类型，仅支持 "dbbrain-mysql" - 自建MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type UpdateMonitorSwitchRequest struct {
 	*tchttp.BaseRequest
 	
 	// 停止或重连Agent实例，支持值包括："on" - 重连实例， "off" - 停止实例。
-	Switch *string `json:"Switch,omitempty" name:"Switch"`
+	Switch *string `json:"Switch,omitnil" name:"Switch"`
 
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 服务产品类型，仅支持 "dbbrain-mysql" - 自建MySQL。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *UpdateMonitorSwitchRequest) ToJsonString() string {
@@ -5743,7 +5743,7 @@ func (r *UpdateMonitorSwitchRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type UpdateMonitorSwitchResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type UpdateMonitorSwitchResponse struct {
@@ -5765,53 +5765,53 @@ func (r *UpdateMonitorSwitchResponse) FromJsonString(s string) error {
 type UserProfile struct {
 	// 配置的id。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProfileId *string `json:"ProfileId,omitempty" name:"ProfileId"`
+	ProfileId *string `json:"ProfileId,omitnil" name:"ProfileId"`
 
 	// 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProfileType *string `json:"ProfileType,omitempty" name:"ProfileType"`
+	ProfileType *string `json:"ProfileType,omitnil" name:"ProfileType"`
 
 	// 配置级别，支持值包括："User" - 用户级别，"Instance" - 实例级别，其中数据库巡检邮件配置为用户级别，定期生成邮件配置为实例级别。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProfileLevel *string `json:"ProfileLevel,omitempty" name:"ProfileLevel"`
+	ProfileLevel *string `json:"ProfileLevel,omitnil" name:"ProfileLevel"`
 
 	// 配置名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProfileName *string `json:"ProfileName,omitempty" name:"ProfileName"`
+	ProfileName *string `json:"ProfileName,omitnil" name:"ProfileName"`
 
 	// 配置详情。
-	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitempty" name:"ProfileInfo"`
+	ProfileInfo *ProfileInfo `json:"ProfileInfo,omitnil" name:"ProfileInfo"`
 }
 
 // Predefined struct for user
 type VerifyUserAccountRequestParams struct {
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 数据库账号名。
-	User *string `json:"User,omitempty" name:"User"`
+	User *string `json:"User,omitnil" name:"User"`
 
 	// 数据库账号密码。
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 type VerifyUserAccountRequest struct {
 	*tchttp.BaseRequest
 	
 	// 实例ID。
-	InstanceId *string `json:"InstanceId,omitempty" name:"InstanceId"`
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 数据库账号名。
-	User *string `json:"User,omitempty" name:"User"`
+	User *string `json:"User,omitnil" name:"User"`
 
 	// 数据库账号密码。
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 
 	// 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
-	Product *string `json:"Product,omitempty" name:"Product"`
+	Product *string `json:"Product,omitnil" name:"Product"`
 }
 
 func (r *VerifyUserAccountRequest) ToJsonString() string {
@@ -5839,10 +5839,10 @@ func (r *VerifyUserAccountRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type VerifyUserAccountResponseParams struct {
 	// 会话token，有效期为5分钟。
-	SessionToken *string `json:"SessionToken,omitempty" name:"SessionToken"`
+	SessionToken *string `json:"SessionToken,omitnil" name:"SessionToken"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type VerifyUserAccountResponse struct {

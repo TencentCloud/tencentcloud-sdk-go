@@ -15,86 +15,86 @@
 package v20180228
 
 import (
-    "encoding/json"
     tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
     tchttp "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/http"
+    "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 type ArrivedMallInfo struct {
 	// 到场时间
-	ArrivedTime *string `json:"ArrivedTime,omitempty" name:"ArrivedTime"`
+	ArrivedTime *string `json:"ArrivedTime,omitnil" name:"ArrivedTime"`
 
 	// 出场时间
-	LeaveTime *string `json:"LeaveTime,omitempty" name:"LeaveTime"`
+	LeaveTime *string `json:"LeaveTime,omitnil" name:"LeaveTime"`
 
 	// 停留时间，秒
-	StaySecond *uint64 `json:"StaySecond,omitempty" name:"StaySecond"`
+	StaySecond *uint64 `json:"StaySecond,omitnil" name:"StaySecond"`
 
 	// 到场抓拍图片
-	InCapPic *string `json:"InCapPic,omitempty" name:"InCapPic"`
+	InCapPic *string `json:"InCapPic,omitnil" name:"InCapPic"`
 
 	// 出场抓拍图片
-	OutCapPic *string `json:"OutCapPic,omitempty" name:"OutCapPic"`
+	OutCapPic *string `json:"OutCapPic,omitnil" name:"OutCapPic"`
 
 	// 轨迹编码
-	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
+	TraceId *string `json:"TraceId,omitnil" name:"TraceId"`
 }
 
 type CameraPersonInfo struct {
 	// 临时id，还未生成face id时返回
-	TempId *string `json:"TempId,omitempty" name:"TempId"`
+	TempId *string `json:"TempId,omitnil" name:"TempId"`
 
 	// 人脸face id
-	FaceId *int64 `json:"FaceId,omitempty" name:"FaceId"`
+	FaceId *int64 `json:"FaceId,omitnil" name:"FaceId"`
 
 	// 确定当次返回的哪个id有效，1-FaceId，2-TempId
-	IdType *int64 `json:"IdType,omitempty" name:"IdType"`
+	IdType *int64 `json:"IdType,omitnil" name:"IdType"`
 
 	// 当次抓拍到的人脸图片base编码
-	FacePic *string `json:"FacePic,omitempty" name:"FacePic"`
+	FacePic *string `json:"FacePic,omitnil" name:"FacePic"`
 
 	// 当次抓拍时间戳
-	Time *int64 `json:"Time,omitempty" name:"Time"`
+	Time *int64 `json:"Time,omitnil" name:"Time"`
 
 	// 当前的person基本信息，图片以FacePic为准，结构体内未填
-	PersonInfo *PersonInfo `json:"PersonInfo,omitempty" name:"PersonInfo"`
+	PersonInfo *PersonInfo `json:"PersonInfo,omitnil" name:"PersonInfo"`
 }
 
 // Predefined struct for user
 type CreateAccountRequestParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 账号名；需要是手机号
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 密码；需要是(`~!@#$%^&*()_+=-）中的至少两种且八位以上
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 
 	// 客户门店编码
-	ShopCode *string `json:"ShopCode,omitempty" name:"ShopCode"`
+	ShopCode *string `json:"ShopCode,omitnil" name:"ShopCode"`
 
 	// 备注说明; 30个字符以内
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type CreateAccountRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 账号名；需要是手机号
-	Name *string `json:"Name,omitempty" name:"Name"`
+	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 密码；需要是(`~!@#$%^&*()_+=-）中的至少两种且八位以上
-	Password *string `json:"Password,omitempty" name:"Password"`
+	Password *string `json:"Password,omitnil" name:"Password"`
 
 	// 客户门店编码
-	ShopCode *string `json:"ShopCode,omitempty" name:"ShopCode"`
+	ShopCode *string `json:"ShopCode,omitnil" name:"ShopCode"`
 
 	// 备注说明; 30个字符以内
-	Remark *string `json:"Remark,omitempty" name:"Remark"`
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 func (r *CreateAccountRequest) ToJsonString() string {
@@ -123,7 +123,7 @@ func (r *CreateAccountRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateAccountResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateAccountResponse struct {
@@ -145,44 +145,44 @@ func (r *CreateAccountResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFacePictureRequestParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 人物类型（0表示普通顾客，1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
-	PersonType *int64 `json:"PersonType,omitempty" name:"PersonType"`
+	PersonType *int64 `json:"PersonType,omitnil" name:"PersonType"`
 
 	// 图片BASE编码
-	Picture *string `json:"Picture,omitempty" name:"Picture"`
+	Picture *string `json:"Picture,omitnil" name:"Picture"`
 
 	// 图片名称
-	PictureName *string `json:"PictureName,omitempty" name:"PictureName"`
+	PictureName *string `json:"PictureName,omitnil" name:"PictureName"`
 
 	// 店铺ID，如果不填表示操作集团身份库
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 是否强制更新：为ture时会为用户创建一个新的指定PersonType的身份;目前这个参数已废弃，可不传
-	IsForceUpload *bool `json:"IsForceUpload,omitempty" name:"IsForceUpload"`
+	IsForceUpload *bool `json:"IsForceUpload,omitnil" name:"IsForceUpload"`
 }
 
 type CreateFacePictureRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 人物类型（0表示普通顾客，1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
-	PersonType *int64 `json:"PersonType,omitempty" name:"PersonType"`
+	PersonType *int64 `json:"PersonType,omitnil" name:"PersonType"`
 
 	// 图片BASE编码
-	Picture *string `json:"Picture,omitempty" name:"Picture"`
+	Picture *string `json:"Picture,omitnil" name:"Picture"`
 
 	// 图片名称
-	PictureName *string `json:"PictureName,omitempty" name:"PictureName"`
+	PictureName *string `json:"PictureName,omitnil" name:"PictureName"`
 
 	// 店铺ID，如果不填表示操作集团身份库
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 是否强制更新：为ture时会为用户创建一个新的指定PersonType的身份;目前这个参数已废弃，可不传
-	IsForceUpload *bool `json:"IsForceUpload,omitempty" name:"IsForceUpload"`
+	IsForceUpload *bool `json:"IsForceUpload,omitnil" name:"IsForceUpload"`
 }
 
 func (r *CreateFacePictureRequest) ToJsonString() string {
@@ -212,16 +212,16 @@ func (r *CreateFacePictureRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFacePictureResponseParams struct {
 	// 人物ID
-	PersonId *int64 `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *int64 `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 0.正常建档 1.重复身份 2.未检测到人脸 3.检测到多个人脸 4.人脸大小过小 5.人脸质量不达标 6.其他错误
-	Status *int64 `json:"Status,omitempty" name:"Status"`
+	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 图片url
-	PictureUrl *string `json:"PictureUrl,omitempty" name:"PictureUrl"`
+	PictureUrl *string `json:"PictureUrl,omitnil" name:"PictureUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type CreateFacePictureResponse struct {
@@ -242,35 +242,35 @@ func (r *CreateFacePictureResponse) FromJsonString(s string) error {
 
 type DailyTracePoint struct {
 	// 轨迹日期
-	TraceDate *string `json:"TraceDate,omitempty" name:"TraceDate"`
+	TraceDate *string `json:"TraceDate,omitnil" name:"TraceDate"`
 
 	// 轨迹点序列
-	TracePointSet []*PersonTracePoint `json:"TracePointSet,omitempty" name:"TracePointSet"`
+	TracePointSet []*PersonTracePoint `json:"TracePointSet,omitnil" name:"TracePointSet"`
 }
 
 // Predefined struct for user
 type DeletePersonFeatureRequestParams struct {
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 顾客ID
-	PersonId *int64 `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *int64 `json:"PersonId,omitnil" name:"PersonId"`
 }
 
 type DeletePersonFeatureRequest struct {
 	*tchttp.BaseRequest
 	
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 顾客ID
-	PersonId *int64 `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *int64 `json:"PersonId,omitnil" name:"PersonId"`
 }
 
 func (r *DeletePersonFeatureRequest) ToJsonString() string {
@@ -297,7 +297,7 @@ func (r *DeletePersonFeatureRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DeletePersonFeatureResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DeletePersonFeatureResponse struct {
@@ -319,56 +319,56 @@ func (r *DeletePersonFeatureResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCameraPersonRequestParams struct {
 	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 摄像头id
-	CameraId *int64 `json:"CameraId,omitempty" name:"CameraId"`
+	CameraId *int64 `json:"CameraId,omitnil" name:"CameraId"`
 
 	// 拉取开始时间戳，单位秒
-	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 拉取结束时间戳，单位秒，不超过StartTime+10秒，超过默认为StartTime+10
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// pos机id
-	PosId *string `json:"PosId,omitempty" name:"PosId"`
+	PosId *string `json:"PosId,omitnil" name:"PosId"`
 
 	// 拉取图片数，默认为1，最大为3
-	Num *int64 `json:"Num,omitempty" name:"Num"`
+	Num *int64 `json:"Num,omitnil" name:"Num"`
 
 	// 是否需要base64的图片，0-不需要，1-需要，默认0
-	IsNeedPic *int64 `json:"IsNeedPic,omitempty" name:"IsNeedPic"`
+	IsNeedPic *int64 `json:"IsNeedPic,omitnil" name:"IsNeedPic"`
 }
 
 type DescribeCameraPersonRequest struct {
 	*tchttp.BaseRequest
 	
 	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 摄像头id
-	CameraId *int64 `json:"CameraId,omitempty" name:"CameraId"`
+	CameraId *int64 `json:"CameraId,omitnil" name:"CameraId"`
 
 	// 拉取开始时间戳，单位秒
-	StartTime *int64 `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 拉取结束时间戳，单位秒，不超过StartTime+10秒，超过默认为StartTime+10
-	EndTime *int64 `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
 
 	// pos机id
-	PosId *string `json:"PosId,omitempty" name:"PosId"`
+	PosId *string `json:"PosId,omitnil" name:"PosId"`
 
 	// 拉取图片数，默认为1，最大为3
-	Num *int64 `json:"Num,omitempty" name:"Num"`
+	Num *int64 `json:"Num,omitnil" name:"Num"`
 
 	// 是否需要base64的图片，0-不需要，1-需要，默认0
-	IsNeedPic *int64 `json:"IsNeedPic,omitempty" name:"IsNeedPic"`
+	IsNeedPic *int64 `json:"IsNeedPic,omitnil" name:"IsNeedPic"`
 }
 
 func (r *DescribeCameraPersonRequest) ToJsonString() string {
@@ -400,22 +400,22 @@ func (r *DescribeCameraPersonRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeCameraPersonResponseParams struct {
 	// 集团id
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺id
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 摄像机id
-	CameraId *int64 `json:"CameraId,omitempty" name:"CameraId"`
+	CameraId *int64 `json:"CameraId,omitnil" name:"CameraId"`
 
 	// pos机id
-	PosId *string `json:"PosId,omitempty" name:"PosId"`
+	PosId *string `json:"PosId,omitnil" name:"PosId"`
 
 	// 抓取的顾客信息
-	Infos []*CameraPersonInfo `json:"Infos,omitempty" name:"Infos"`
+	Infos []*CameraPersonInfo `json:"Infos,omitnil" name:"Infos"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeCameraPersonResponse struct {
@@ -437,32 +437,32 @@ func (r *DescribeCameraPersonResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterPersonArrivedMallRequestParams struct {
 	// 卖场编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 查询开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 type DescribeClusterPersonArrivedMallRequest struct {
 	*tchttp.BaseRequest
 	
 	// 卖场编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 查询开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 func (r *DescribeClusterPersonArrivedMallRequest) ToJsonString() string {
@@ -490,19 +490,19 @@ func (r *DescribeClusterPersonArrivedMallRequest) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeClusterPersonArrivedMallResponseParams struct {
 	// 卖场系统编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 卖场客户编码
-	MallCode *string `json:"MallCode,omitempty" name:"MallCode"`
+	MallCode *string `json:"MallCode,omitnil" name:"MallCode"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 到场信息
-	ArrivedMallSet []*ArrivedMallInfo `json:"ArrivedMallSet,omitempty" name:"ArrivedMallSet"`
+	ArrivedMallSet []*ArrivedMallInfo `json:"ArrivedMallSet,omitnil" name:"ArrivedMallSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeClusterPersonArrivedMallResponse struct {
@@ -524,32 +524,32 @@ func (r *DescribeClusterPersonArrivedMallResponse) FromJsonString(s string) erro
 // Predefined struct for user
 type DescribeClusterPersonTraceRequestParams struct {
 	// 卖场编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 查询开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 type DescribeClusterPersonTraceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 卖场编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 查询开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 func (r *DescribeClusterPersonTraceRequest) ToJsonString() string {
@@ -577,19 +577,19 @@ func (r *DescribeClusterPersonTraceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeClusterPersonTraceResponseParams struct {
 	// 卖场系统编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 卖场用户编码
-	MallCode *string `json:"MallCode,omitempty" name:"MallCode"`
+	MallCode *string `json:"MallCode,omitnil" name:"MallCode"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 轨迹序列
-	TracePointSet []*DailyTracePoint `json:"TracePointSet,omitempty" name:"TracePointSet"`
+	TracePointSet []*DailyTracePoint `json:"TracePointSet,omitnil" name:"TracePointSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeClusterPersonTraceResponse struct {
@@ -611,44 +611,44 @@ func (r *DescribeClusterPersonTraceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFaceIdByTempIdRequestParams struct {
 	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 临时id
-	TempId *string `json:"TempId,omitempty" name:"TempId"`
+	TempId *string `json:"TempId,omitnil" name:"TempId"`
 
 	// 摄像头id
-	CameraId *int64 `json:"CameraId,omitempty" name:"CameraId"`
+	CameraId *int64 `json:"CameraId,omitnil" name:"CameraId"`
 
 	// pos机id
-	PosId *string `json:"PosId,omitempty" name:"PosId"`
+	PosId *string `json:"PosId,omitnil" name:"PosId"`
 
 	// 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
-	PictureExpires *int64 `json:"PictureExpires,omitempty" name:"PictureExpires"`
+	PictureExpires *int64 `json:"PictureExpires,omitnil" name:"PictureExpires"`
 }
 
 type DescribeFaceIdByTempIdRequest struct {
 	*tchttp.BaseRequest
 	
 	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 临时id
-	TempId *string `json:"TempId,omitempty" name:"TempId"`
+	TempId *string `json:"TempId,omitnil" name:"TempId"`
 
 	// 摄像头id
-	CameraId *int64 `json:"CameraId,omitempty" name:"CameraId"`
+	CameraId *int64 `json:"CameraId,omitnil" name:"CameraId"`
 
 	// pos机id
-	PosId *string `json:"PosId,omitempty" name:"PosId"`
+	PosId *string `json:"PosId,omitnil" name:"PosId"`
 
 	// 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
-	PictureExpires *int64 `json:"PictureExpires,omitempty" name:"PictureExpires"`
+	PictureExpires *int64 `json:"PictureExpires,omitnil" name:"PictureExpires"`
 }
 
 func (r *DescribeFaceIdByTempIdRequest) ToJsonString() string {
@@ -678,28 +678,28 @@ func (r *DescribeFaceIdByTempIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFaceIdByTempIdResponseParams struct {
 	// 集团id
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺id
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 摄像机id
-	CameraId *int64 `json:"CameraId,omitempty" name:"CameraId"`
+	CameraId *int64 `json:"CameraId,omitnil" name:"CameraId"`
 
 	// pos机id
-	PosId *string `json:"PosId,omitempty" name:"PosId"`
+	PosId *string `json:"PosId,omitnil" name:"PosId"`
 
 	// 请求的临时id
-	TempId *string `json:"TempId,omitempty" name:"TempId"`
+	TempId *string `json:"TempId,omitnil" name:"TempId"`
 
 	// 临时id对应的face id
-	FaceId *int64 `json:"FaceId,omitempty" name:"FaceId"`
+	FaceId *int64 `json:"FaceId,omitnil" name:"FaceId"`
 
 	// 顾客属性信息
-	PersonInfo *PersonInfo `json:"PersonInfo,omitempty" name:"PersonInfo"`
+	PersonInfo *PersonInfo `json:"PersonInfo,omitnil" name:"PersonInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeFaceIdByTempIdResponse struct {
@@ -721,50 +721,50 @@ func (r *DescribeFaceIdByTempIdResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHistoryNetworkInfoRequestParams struct {
 	// 请求时间戳
-	Time *int64 `json:"Time,omitempty" name:"Time"`
+	Time *int64 `json:"Time,omitnil" name:"Time"`
 
 	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取，为0则拉取集团全部店铺当前
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 拉取开始日期，格式：2018-09-05
-	StartDay *string `json:"StartDay,omitempty" name:"StartDay"`
+	StartDay *string `json:"StartDay,omitnil" name:"StartDay"`
 
 	// 拉取结束日期，格式L:2018-09-05，超过StartDay 90天，按StartDay+90天算
-	EndDay *string `json:"EndDay,omitempty" name:"EndDay"`
+	EndDay *string `json:"EndDay,omitnil" name:"EndDay"`
 
 	// 拉取条数，默认10
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 拉取偏移，返回offset之后的数据
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeHistoryNetworkInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 请求时间戳
-	Time *int64 `json:"Time,omitempty" name:"Time"`
+	Time *int64 `json:"Time,omitnil" name:"Time"`
 
 	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取，为0则拉取集团全部店铺当前
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 拉取开始日期，格式：2018-09-05
-	StartDay *string `json:"StartDay,omitempty" name:"StartDay"`
+	StartDay *string `json:"StartDay,omitnil" name:"StartDay"`
 
 	// 拉取结束日期，格式L:2018-09-05，超过StartDay 90天，按StartDay+90天算
-	EndDay *string `json:"EndDay,omitempty" name:"EndDay"`
+	EndDay *string `json:"EndDay,omitnil" name:"EndDay"`
 
 	// 拉取条数，默认10
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 拉取偏移，返回offset之后的数据
-	Offset *int64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 func (r *DescribeHistoryNetworkInfoRequest) ToJsonString() string {
@@ -795,10 +795,10 @@ func (r *DescribeHistoryNetworkInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeHistoryNetworkInfoResponseParams struct {
 	// 网络状态数据
-	InstanceSet *NetworkHistoryInfo `json:"InstanceSet,omitempty" name:"InstanceSet"`
+	InstanceSet *NetworkHistoryInfo `json:"InstanceSet,omitnil" name:"InstanceSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeHistoryNetworkInfoResponse struct {
@@ -820,26 +820,26 @@ func (r *DescribeHistoryNetworkInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNetworkInfoRequestParams struct {
 	// 请求时间戳
-	Time *int64 `json:"Time,omitempty" name:"Time"`
+	Time *int64 `json:"Time,omitnil" name:"Time"`
 
 	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取，不填则拉取集团全部店铺当前
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 }
 
 type DescribeNetworkInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 请求时间戳
-	Time *int64 `json:"Time,omitempty" name:"Time"`
+	Time *int64 `json:"Time,omitnil" name:"Time"`
 
 	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取，不填则拉取集团全部店铺当前
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 }
 
 func (r *DescribeNetworkInfoRequest) ToJsonString() string {
@@ -866,10 +866,10 @@ func (r *DescribeNetworkInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeNetworkInfoResponseParams struct {
 	// 网络状态详情
-	InstanceSet *NetworkLastInfo `json:"InstanceSet,omitempty" name:"InstanceSet"`
+	InstanceSet *NetworkLastInfo `json:"InstanceSet,omitnil" name:"InstanceSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeNetworkInfoResponse struct {
@@ -891,32 +891,32 @@ func (r *DescribeNetworkInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePersonArrivedMallRequestParams struct {
 	// 卖场编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 查询开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 type DescribePersonArrivedMallRequest struct {
 	*tchttp.BaseRequest
 	
 	// 卖场编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 查询开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 func (r *DescribePersonArrivedMallRequest) ToJsonString() string {
@@ -944,19 +944,19 @@ func (r *DescribePersonArrivedMallRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePersonArrivedMallResponseParams struct {
 	// 卖场系统编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 卖场用户编码
-	MallCode *string `json:"MallCode,omitempty" name:"MallCode"`
+	MallCode *string `json:"MallCode,omitnil" name:"MallCode"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 到场轨迹
-	ArrivedMallSet []*ArrivedMallInfo `json:"ArrivedMallSet,omitempty" name:"ArrivedMallSet"`
+	ArrivedMallSet []*ArrivedMallInfo `json:"ArrivedMallSet,omitnil" name:"ArrivedMallSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePersonArrivedMallResponse struct {
@@ -978,26 +978,26 @@ func (r *DescribePersonArrivedMallResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePersonInfoByFacePictureRequestParams struct {
 	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 人脸图片BASE编码
-	Picture *string `json:"Picture,omitempty" name:"Picture"`
+	Picture *string `json:"Picture,omitnil" name:"Picture"`
 }
 
 type DescribePersonInfoByFacePictureRequest struct {
 	*tchttp.BaseRequest
 	
 	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 人脸图片BASE编码
-	Picture *string `json:"Picture,omitempty" name:"Picture"`
+	Picture *string `json:"Picture,omitnil" name:"Picture"`
 }
 
 func (r *DescribePersonInfoByFacePictureRequest) ToJsonString() string {
@@ -1024,28 +1024,28 @@ func (r *DescribePersonInfoByFacePictureRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribePersonInfoByFacePictureResponseParams struct {
 	// 集团id
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺id
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 顾客face id
-	PersonId *int64 `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *int64 `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 顾客底图url
-	PictureUrl *string `json:"PictureUrl,omitempty" name:"PictureUrl"`
+	PictureUrl *string `json:"PictureUrl,omitnil" name:"PictureUrl"`
 
 	// 顾客类型（0表示普通顾客，1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
-	PersonType *int64 `json:"PersonType,omitempty" name:"PersonType"`
+	PersonType *int64 `json:"PersonType,omitnil" name:"PersonType"`
 
 	// 顾客首次进店时间
-	FirstVisitTime *string `json:"FirstVisitTime,omitempty" name:"FirstVisitTime"`
+	FirstVisitTime *string `json:"FirstVisitTime,omitnil" name:"FirstVisitTime"`
 
 	// 顾客历史到访次数
-	VisitTimes *int64 `json:"VisitTimes,omitempty" name:"VisitTimes"`
+	VisitTimes *int64 `json:"VisitTimes,omitnil" name:"VisitTimes"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePersonInfoByFacePictureResponse struct {
@@ -1067,50 +1067,50 @@ func (r *DescribePersonInfoByFacePictureResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribePersonInfoRequestParams struct {
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 起始ID，第一次拉取时StartPersonId传0，后续送入的值为上一页最后一条数据项的PersonId
-	StartPersonId *uint64 `json:"StartPersonId,omitempty" name:"StartPersonId"`
+	StartPersonId *uint64 `json:"StartPersonId,omitnil" name:"StartPersonId"`
 
 	// 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
-	PictureExpires *uint64 `json:"PictureExpires,omitempty" name:"PictureExpires"`
+	PictureExpires *uint64 `json:"PictureExpires,omitnil" name:"PictureExpires"`
 
 	// 身份类型(0表示普通顾客，1 白名单，2 表示黑名单）
-	PersonType *uint64 `json:"PersonType,omitempty" name:"PersonType"`
+	PersonType *uint64 `json:"PersonType,omitnil" name:"PersonType"`
 }
 
 type DescribePersonInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 起始ID，第一次拉取时StartPersonId传0，后续送入的值为上一页最后一条数据项的PersonId
-	StartPersonId *uint64 `json:"StartPersonId,omitempty" name:"StartPersonId"`
+	StartPersonId *uint64 `json:"StartPersonId,omitnil" name:"StartPersonId"`
 
 	// 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
-	PictureExpires *uint64 `json:"PictureExpires,omitempty" name:"PictureExpires"`
+	PictureExpires *uint64 `json:"PictureExpires,omitnil" name:"PictureExpires"`
 
 	// 身份类型(0表示普通顾客，1 白名单，2 表示黑名单）
-	PersonType *uint64 `json:"PersonType,omitempty" name:"PersonType"`
+	PersonType *uint64 `json:"PersonType,omitnil" name:"PersonType"`
 }
 
 func (r *DescribePersonInfoRequest) ToJsonString() string {
@@ -1141,19 +1141,19 @@ func (r *DescribePersonInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePersonInfoResponseParams struct {
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 用户信息
-	PersonInfoSet []*PersonInfo `json:"PersonInfoSet,omitempty" name:"PersonInfoSet"`
+	PersonInfoSet []*PersonInfo `json:"PersonInfoSet,omitnil" name:"PersonInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePersonInfoResponse struct {
@@ -1175,26 +1175,26 @@ func (r *DescribePersonInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePersonRequestParams struct {
 	// 卖场编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 查询偏移
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 查询数量，默认20，最大查询数量100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribePersonRequest struct {
 	*tchttp.BaseRequest
 	
 	// 卖场编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 查询偏移
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 查询数量，默认20，最大查询数量100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribePersonRequest) ToJsonString() string {
@@ -1221,13 +1221,13 @@ func (r *DescribePersonRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePersonResponseParams struct {
 	// 总计客户数量
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 客户信息
-	PersonSet []*PersonProfile `json:"PersonSet,omitempty" name:"PersonSet"`
+	PersonSet []*PersonProfile `json:"PersonSet,omitnil" name:"PersonSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePersonResponse struct {
@@ -1249,26 +1249,26 @@ func (r *DescribePersonResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePersonTraceDetailRequestParams struct {
 	// 卖场编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 轨迹编码
-	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
+	TraceId *string `json:"TraceId,omitnil" name:"TraceId"`
 }
 
 type DescribePersonTraceDetailRequest struct {
 	*tchttp.BaseRequest
 	
 	// 卖场编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 轨迹编码
-	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
+	TraceId *string `json:"TraceId,omitnil" name:"TraceId"`
 }
 
 func (r *DescribePersonTraceDetailRequest) ToJsonString() string {
@@ -1295,19 +1295,19 @@ func (r *DescribePersonTraceDetailRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePersonTraceDetailResponseParams struct {
 	// 卖场编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 轨迹编码
-	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
+	TraceId *string `json:"TraceId,omitnil" name:"TraceId"`
 
 	// 轨迹点坐标序列
-	CoordinateSet []*PersonCoordinate `json:"CoordinateSet,omitempty" name:"CoordinateSet"`
+	CoordinateSet []*PersonCoordinate `json:"CoordinateSet,omitnil" name:"CoordinateSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePersonTraceDetailResponse struct {
@@ -1329,32 +1329,32 @@ func (r *DescribePersonTraceDetailResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePersonTraceRequestParams struct {
 	// 卖场编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 查询开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 type DescribePersonTraceRequest struct {
 	*tchttp.BaseRequest
 	
 	// 卖场编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 查询开始时间
-	StartTime *string `json:"StartTime,omitempty" name:"StartTime"`
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
 
 	// 查询结束时间
-	EndTime *string `json:"EndTime,omitempty" name:"EndTime"`
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 }
 
 func (r *DescribePersonTraceRequest) ToJsonString() string {
@@ -1382,19 +1382,19 @@ func (r *DescribePersonTraceRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePersonTraceResponseParams struct {
 	// 卖场系统编码
-	MallId *string `json:"MallId,omitempty" name:"MallId"`
+	MallId *string `json:"MallId,omitnil" name:"MallId"`
 
 	// 卖场用户编码
-	MallCode *string `json:"MallCode,omitempty" name:"MallCode"`
+	MallCode *string `json:"MallCode,omitnil" name:"MallCode"`
 
 	// 客户编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 轨迹列表
-	TraceRouteSet []*PersonTraceRoute `json:"TraceRouteSet,omitempty" name:"TraceRouteSet"`
+	TraceRouteSet []*PersonTraceRoute `json:"TraceRouteSet,omitnil" name:"TraceRouteSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePersonTraceResponse struct {
@@ -1416,62 +1416,62 @@ func (r *DescribePersonTraceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePersonVisitInfoRequestParams struct {
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 开始日期，格式yyyy-MM-dd，已废弃，请使用StartDateTime
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd，已废弃，请使用EndDateTime
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
-	PictureExpires *uint64 `json:"PictureExpires,omitempty" name:"PictureExpires"`
+	PictureExpires *uint64 `json:"PictureExpires,omitnil" name:"PictureExpires"`
 
 	// 开始时间，格式yyyy-MM-dd HH:mm:ss
-	StartDateTime *string `json:"StartDateTime,omitempty" name:"StartDateTime"`
+	StartDateTime *string `json:"StartDateTime,omitnil" name:"StartDateTime"`
 
 	// 结束时间，格式yyyy-MM-dd HH:mm:ss
-	EndDateTime *string `json:"EndDateTime,omitempty" name:"EndDateTime"`
+	EndDateTime *string `json:"EndDateTime,omitnil" name:"EndDateTime"`
 }
 
 type DescribePersonVisitInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 开始日期，格式yyyy-MM-dd，已废弃，请使用StartDateTime
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd，已废弃，请使用EndDateTime
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 图片url过期时间：在当前时间+PictureExpires秒后，图片url无法继续正常访问；单位s；默认值1*24*60*60（1天）
-	PictureExpires *uint64 `json:"PictureExpires,omitempty" name:"PictureExpires"`
+	PictureExpires *uint64 `json:"PictureExpires,omitnil" name:"PictureExpires"`
 
 	// 开始时间，格式yyyy-MM-dd HH:mm:ss
-	StartDateTime *string `json:"StartDateTime,omitempty" name:"StartDateTime"`
+	StartDateTime *string `json:"StartDateTime,omitnil" name:"StartDateTime"`
 
 	// 结束时间，格式yyyy-MM-dd HH:mm:ss
-	EndDateTime *string `json:"EndDateTime,omitempty" name:"EndDateTime"`
+	EndDateTime *string `json:"EndDateTime,omitnil" name:"EndDateTime"`
 }
 
 func (r *DescribePersonVisitInfoRequest) ToJsonString() string {
@@ -1504,19 +1504,19 @@ func (r *DescribePersonVisitInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribePersonVisitInfoResponseParams struct {
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 用户到访明细
-	PersonVisitInfoSet []*PersonVisitInfo `json:"PersonVisitInfoSet,omitempty" name:"PersonVisitInfoSet"`
+	PersonVisitInfoSet []*PersonVisitInfo `json:"PersonVisitInfoSet,omitnil" name:"PersonVisitInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribePersonVisitInfoResponse struct {
@@ -1538,44 +1538,44 @@ func (r *DescribePersonVisitInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeShopHourTrafficInfoRequestParams struct {
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 开始日期，格式：yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式：yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeShopHourTrafficInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 开始日期，格式：yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式：yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeShopHourTrafficInfoRequest) ToJsonString() string {
@@ -1605,19 +1605,19 @@ func (r *DescribeShopHourTrafficInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeShopHourTrafficInfoResponseParams struct {
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 查询结果总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 分时客流信息
-	ShopHourTrafficInfoSet []*ShopHourTrafficInfo `json:"ShopHourTrafficInfoSet,omitempty" name:"ShopHourTrafficInfoSet"`
+	ShopHourTrafficInfoSet []*ShopHourTrafficInfo `json:"ShopHourTrafficInfoSet,omitnil" name:"ShopHourTrafficInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeShopHourTrafficInfoResponse struct {
@@ -1639,20 +1639,20 @@ func (r *DescribeShopHourTrafficInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeShopInfoRequestParams struct {
 	// 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeShopInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeShopInfoRequest) ToJsonString() string {
@@ -1678,13 +1678,13 @@ func (r *DescribeShopInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeShopInfoResponseParams struct {
 	// 门店总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 门店列表信息
-	ShopInfoSet []*ShopInfo `json:"ShopInfoSet,omitempty" name:"ShopInfoSet"`
+	ShopInfoSet []*ShopInfo `json:"ShopInfoSet,omitnil" name:"ShopInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeShopInfoResponse struct {
@@ -1706,44 +1706,44 @@ func (r *DescribeShopInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeShopTrafficInfoRequestParams struct {
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 介绍日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeShopTrafficInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 介绍日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeShopTrafficInfoRequest) ToJsonString() string {
@@ -1773,19 +1773,19 @@ func (r *DescribeShopTrafficInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeShopTrafficInfoResponseParams struct {
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 查询结果总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 客流信息列表
-	ShopDayTrafficInfoSet []*ShopDayTrafficInfo `json:"ShopDayTrafficInfoSet,omitempty" name:"ShopDayTrafficInfoSet"`
+	ShopDayTrafficInfoSet []*ShopDayTrafficInfo `json:"ShopDayTrafficInfoSet,omitnil" name:"ShopDayTrafficInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeShopTrafficInfoResponse struct {
@@ -1807,44 +1807,44 @@ func (r *DescribeShopTrafficInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTrajectoryDataRequestParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 限制返回数据的最大条数，最大 400（负数代为 400）
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 顾客性别顾虑，0是男，1是女，其它代表不分性别
-	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
+	Gender *int64 `json:"Gender,omitnil" name:"Gender"`
 }
 
 type DescribeTrajectoryDataRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 限制返回数据的最大条数，最大 400（负数代为 400）
-	Limit *int64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 顾客性别顾虑，0是男，1是女，其它代表不分性别
-	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
+	Gender *int64 `json:"Gender,omitnil" name:"Gender"`
 }
 
 func (r *DescribeTrajectoryDataRequest) ToJsonString() string {
@@ -1874,28 +1874,28 @@ func (r *DescribeTrajectoryDataRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeTrajectoryDataResponseParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 总人数
-	TotalPerson *int64 `json:"TotalPerson,omitempty" name:"TotalPerson"`
+	TotalPerson *int64 `json:"TotalPerson,omitnil" name:"TotalPerson"`
 
 	// 总动迹数目
-	TotalTrajectory *int64 `json:"TotalTrajectory,omitempty" name:"TotalTrajectory"`
+	TotalTrajectory *int64 `json:"TotalTrajectory,omitnil" name:"TotalTrajectory"`
 
 	// 返回动迹中的总人数
-	Person *int64 `json:"Person,omitempty" name:"Person"`
+	Person *int64 `json:"Person,omitnil" name:"Person"`
 
 	// 返回动迹的数目
-	Trajectory *int64 `json:"Trajectory,omitempty" name:"Trajectory"`
+	Trajectory *int64 `json:"Trajectory,omitnil" name:"Trajectory"`
 
 	// 返回动迹的具体信息
-	Data []*TrajectorySunData `json:"Data,omitempty" name:"Data"`
+	Data []*TrajectorySunData `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeTrajectoryDataResponse struct {
@@ -1917,38 +1917,38 @@ func (r *DescribeTrajectoryDataResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeZoneFlowAgeInfoByZoneIdRequestParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 }
 
 type DescribeZoneFlowAgeInfoByZoneIdRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 }
 
 func (r *DescribeZoneFlowAgeInfoByZoneIdRequest) ToJsonString() string {
@@ -1977,22 +1977,22 @@ func (r *DescribeZoneFlowAgeInfoByZoneIdRequest) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeZoneFlowAgeInfoByZoneIdResponseParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 区域名称
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
 
 	// 当前年龄段占比
-	Data []*float64 `json:"Data,omitempty" name:"Data"`
+	Data []*float64 `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeZoneFlowAgeInfoByZoneIdResponse struct {
@@ -2014,32 +2014,32 @@ func (r *DescribeZoneFlowAgeInfoByZoneIdResponse) FromJsonString(s string) error
 // Predefined struct for user
 type DescribeZoneFlowAndStayTimeRequestParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 }
 
 type DescribeZoneFlowAndStayTimeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 }
 
 func (r *DescribeZoneFlowAndStayTimeRequest) ToJsonString() string {
@@ -2067,16 +2067,16 @@ func (r *DescribeZoneFlowAndStayTimeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeZoneFlowAndStayTimeResponseParams struct {
 	// 集团id
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺id
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 各区域人流数目和停留时长
-	Data []*ZoneFlowAndAvrStayTime `json:"Data,omitempty" name:"Data"`
+	Data []*ZoneFlowAndAvrStayTime `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeZoneFlowAndStayTimeResponse struct {
@@ -2098,38 +2098,38 @@ func (r *DescribeZoneFlowAndStayTimeResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeZoneFlowDailyByZoneIdRequestParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 }
 
 type DescribeZoneFlowDailyByZoneIdRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 }
 
 func (r *DescribeZoneFlowDailyByZoneIdRequest) ToJsonString() string {
@@ -2158,22 +2158,22 @@ func (r *DescribeZoneFlowDailyByZoneIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeZoneFlowDailyByZoneIdResponseParams struct {
 	// 集团id
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺id
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 区域名称
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
 
 	// 每日人流量
-	Data []*ZoneDayFlow `json:"Data,omitempty" name:"Data"`
+	Data []*ZoneDayFlow `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeZoneFlowDailyByZoneIdResponse struct {
@@ -2195,38 +2195,38 @@ func (r *DescribeZoneFlowDailyByZoneIdResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeZoneFlowGenderAvrStayTimeByZoneIdRequestParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 }
 
 type DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 }
 
 func (r *DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest) ToJsonString() string {
@@ -2255,22 +2255,22 @@ func (r *DescribeZoneFlowGenderAvrStayTimeByZoneIdRequest) FromJsonString(s stri
 // Predefined struct for user
 type DescribeZoneFlowGenderAvrStayTimeByZoneIdResponseParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 区域名称
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
 
 	// 不同年龄段男女停留时间（返回格式为数组，从第 1 个到最后一个数据，年龄段分别为 0-17，18 - 23,  24 - 30, 31 - 40, 41 - 50, 51 - 60, 61 - 100）
-	Data []*ZoneAgeGroupAvrStayTime `json:"Data,omitempty" name:"Data"`
+	Data []*ZoneAgeGroupAvrStayTime `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse struct {
@@ -2292,38 +2292,38 @@ func (r *DescribeZoneFlowGenderAvrStayTimeByZoneIdResponse) FromJsonString(s str
 // Predefined struct for user
 type DescribeZoneFlowGenderInfoByZoneIdRequestParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 }
 
 type DescribeZoneFlowGenderInfoByZoneIdRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 }
 
 func (r *DescribeZoneFlowGenderInfoByZoneIdRequest) ToJsonString() string {
@@ -2352,25 +2352,25 @@ func (r *DescribeZoneFlowGenderInfoByZoneIdRequest) FromJsonString(s string) err
 // Predefined struct for user
 type DescribeZoneFlowGenderInfoByZoneIdResponseParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 区域名称
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
 
 	// 男性占比
-	MalePercent *float64 `json:"MalePercent,omitempty" name:"MalePercent"`
+	MalePercent *float64 `json:"MalePercent,omitnil" name:"MalePercent"`
 
 	// 女性占比
-	FemalePercent *float64 `json:"FemalePercent,omitempty" name:"FemalePercent"`
+	FemalePercent *float64 `json:"FemalePercent,omitnil" name:"FemalePercent"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeZoneFlowGenderInfoByZoneIdResponse struct {
@@ -2392,38 +2392,38 @@ func (r *DescribeZoneFlowGenderInfoByZoneIdResponse) FromJsonString(s string) er
 // Predefined struct for user
 type DescribeZoneFlowHourlyByZoneIdRequestParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 }
 
 type DescribeZoneFlowHourlyByZoneIdRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 }
 
 func (r *DescribeZoneFlowHourlyByZoneIdRequest) ToJsonString() string {
@@ -2452,22 +2452,22 @@ func (r *DescribeZoneFlowHourlyByZoneIdRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeZoneFlowHourlyByZoneIdResponseParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 区域ID
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 区域名称
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
 
 	// 各个分时人流量
-	Data []*ZoneHourFlow `json:"Data,omitempty" name:"Data"`
+	Data []*ZoneHourFlow `json:"Data,omitnil" name:"Data"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeZoneFlowHourlyByZoneIdResponse struct {
@@ -2489,44 +2489,44 @@ func (r *DescribeZoneFlowHourlyByZoneIdResponse) FromJsonString(s string) error 
 // Predefined struct for user
 type DescribeZoneTrafficInfoRequestParams struct {
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 type DescribeZoneTrafficInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 开始日期，格式yyyy-MM-dd
-	StartDate *string `json:"StartDate,omitempty" name:"StartDate"`
+	StartDate *string `json:"StartDate,omitnil" name:"StartDate"`
 
 	// 结束日期，格式yyyy-MM-dd
-	EndDate *string `json:"EndDate,omitempty" name:"EndDate"`
+	EndDate *string `json:"EndDate,omitnil" name:"EndDate"`
 
 	// 偏移量：分页控制参数，第一页传0，第n页Offset=(n-1)*Limit
-	Offset *uint64 `json:"Offset,omitempty" name:"Offset"`
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// Limit:每页的数据项，最大100，超过100会被强制指定为100
-	Limit *uint64 `json:"Limit,omitempty" name:"Limit"`
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 }
 
 func (r *DescribeZoneTrafficInfoRequest) ToJsonString() string {
@@ -2556,19 +2556,19 @@ func (r *DescribeZoneTrafficInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeZoneTrafficInfoResponseParams struct {
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 查询结果总数
-	TotalCount *uint64 `json:"TotalCount,omitempty" name:"TotalCount"`
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 区域客流信息列表
-	ZoneTrafficInfoSet []*ZoneTrafficInfo `json:"ZoneTrafficInfoSet,omitempty" name:"ZoneTrafficInfoSet"`
+	ZoneTrafficInfoSet []*ZoneTrafficInfo `json:"ZoneTrafficInfoSet,omitnil" name:"ZoneTrafficInfoSet"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type DescribeZoneTrafficInfoResponse struct {
@@ -2589,64 +2589,64 @@ func (r *DescribeZoneTrafficInfoResponse) FromJsonString(s string) error {
 
 type GenderAgeTrafficDetail struct {
 	// 性别: 0男1女
-	Gender *uint64 `json:"Gender,omitempty" name:"Gender"`
+	Gender *uint64 `json:"Gender,omitnil" name:"Gender"`
 
 	// 年龄区间，枚举值：0-17、18-23、24-30、31-40、41-50、51-60、>60
-	AgeGap *string `json:"AgeGap,omitempty" name:"AgeGap"`
+	AgeGap *string `json:"AgeGap,omitnil" name:"AgeGap"`
 
 	// 客流量
-	TrafficCount *uint64 `json:"TrafficCount,omitempty" name:"TrafficCount"`
+	TrafficCount *uint64 `json:"TrafficCount,omitnil" name:"TrafficCount"`
 }
 
 type HourTrafficInfoDetail struct {
 	// 小时 取值为：0，1，2，3，4，5，6，7，8，9，10，11，12，13，14，15，16，17，18，19，20，21，22，23
-	Hour *uint64 `json:"Hour,omitempty" name:"Hour"`
+	Hour *uint64 `json:"Hour,omitnil" name:"Hour"`
 
 	// 分时客流量
-	HourTrafficTotalCount *uint64 `json:"HourTrafficTotalCount,omitempty" name:"HourTrafficTotalCount"`
+	HourTrafficTotalCount *uint64 `json:"HourTrafficTotalCount,omitnil" name:"HourTrafficTotalCount"`
 }
 
 // Predefined struct for user
 type ModifyPersonFeatureInfoRequestParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 需要修改的顾客id
-	PersonId *int64 `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *int64 `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 图片BASE编码
-	Picture *string `json:"Picture,omitempty" name:"Picture"`
+	Picture *string `json:"Picture,omitnil" name:"Picture"`
 
 	// 图片名称（尽量不要重复）
-	PictureName *string `json:"PictureName,omitempty" name:"PictureName"`
+	PictureName *string `json:"PictureName,omitnil" name:"PictureName"`
 
 	// 人物类型，仅能操作黑白名单顾客（1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
-	PersonType *int64 `json:"PersonType,omitempty" name:"PersonType"`
+	PersonType *int64 `json:"PersonType,omitnil" name:"PersonType"`
 
 	// 店铺ID，如果不填表示操作集团身份库
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 }
 
 type ModifyPersonFeatureInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 需要修改的顾客id
-	PersonId *int64 `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *int64 `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 图片BASE编码
-	Picture *string `json:"Picture,omitempty" name:"Picture"`
+	Picture *string `json:"Picture,omitnil" name:"Picture"`
 
 	// 图片名称（尽量不要重复）
-	PictureName *string `json:"PictureName,omitempty" name:"PictureName"`
+	PictureName *string `json:"PictureName,omitnil" name:"PictureName"`
 
 	// 人物类型，仅能操作黑白名单顾客（1 白名单，2 表示黑名单，101表示集团白名单，102表示集团黑名单）
-	PersonType *int64 `json:"PersonType,omitempty" name:"PersonType"`
+	PersonType *int64 `json:"PersonType,omitnil" name:"PersonType"`
 
 	// 店铺ID，如果不填表示操作集团身份库
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 }
 
 func (r *ModifyPersonFeatureInfoRequest) ToJsonString() string {
@@ -2676,25 +2676,25 @@ func (r *ModifyPersonFeatureInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPersonFeatureInfoResponseParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺ID，如果不填表示操作集团身份库
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 请求的顾客id
-	PersonId *int64 `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *int64 `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 图片实际绑定person_id，可能与请求的person_id不同，以此id为准
-	PersonIdBind *int64 `json:"PersonIdBind,omitempty" name:"PersonIdBind"`
+	PersonIdBind *int64 `json:"PersonIdBind,omitnil" name:"PersonIdBind"`
 
 	// 请求的顾客类型
-	PersonType *int64 `json:"PersonType,omitempty" name:"PersonType"`
+	PersonType *int64 `json:"PersonType,omitnil" name:"PersonType"`
 
 	// 与请求的person_id类型相同、与请求图片特征相似的一个或多个person_id，需要额外确认这些id是否是同一个人
-	SimilarPersonIds []*int64 `json:"SimilarPersonIds,omitempty" name:"SimilarPersonIds"`
+	SimilarPersonIds []*int64 `json:"SimilarPersonIds,omitnil" name:"SimilarPersonIds"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyPersonFeatureInfoResponse struct {
@@ -2716,26 +2716,26 @@ func (r *ModifyPersonFeatureInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPersonTagInfoRequestParams struct {
 	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取，为0则拉取集团全部店铺当前
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 需要设置的顾客信息，批量设置最大为10个
-	Tags []*PersonTagInfo `json:"Tags,omitempty" name:"Tags"`
+	Tags []*PersonTagInfo `json:"Tags,omitnil" name:"Tags"`
 }
 
 type ModifyPersonTagInfoRequest struct {
 	*tchttp.BaseRequest
 	
 	// 优mall集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 优mall店铺id，通过"指定身份标识获取客户门店列表"接口获取，为0则拉取集团全部店铺当前
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 需要设置的顾客信息，批量设置最大为10个
-	Tags []*PersonTagInfo `json:"Tags,omitempty" name:"Tags"`
+	Tags []*PersonTagInfo `json:"Tags,omitnil" name:"Tags"`
 }
 
 func (r *ModifyPersonTagInfoRequest) ToJsonString() string {
@@ -2762,7 +2762,7 @@ func (r *ModifyPersonTagInfoRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPersonTagInfoResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyPersonTagInfoResponse struct {
@@ -2784,44 +2784,44 @@ func (r *ModifyPersonTagInfoResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPersonTypeRequestParams struct {
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 顾客ID
-	PersonId *uint64 `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *uint64 `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 身份类型(0表示普通顾客，1 白名单，2 表示黑名单）
-	PersonType *uint64 `json:"PersonType,omitempty" name:"PersonType"`
+	PersonType *uint64 `json:"PersonType,omitnil" name:"PersonType"`
 
 	// 身份子类型:
 	// PersonType=0时(普通顾客)，0普通顾客
 	// PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册会员，5VIP用户
 	// PersonType=2时(黑名单)，0普通黑名单，1小偷)
-	PersonSubType *uint64 `json:"PersonSubType,omitempty" name:"PersonSubType"`
+	PersonSubType *uint64 `json:"PersonSubType,omitnil" name:"PersonSubType"`
 }
 
 type ModifyPersonTypeRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集团ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 顾客ID
-	PersonId *uint64 `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *uint64 `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 身份类型(0表示普通顾客，1 白名单，2 表示黑名单）
-	PersonType *uint64 `json:"PersonType,omitempty" name:"PersonType"`
+	PersonType *uint64 `json:"PersonType,omitnil" name:"PersonType"`
 
 	// 身份子类型:
 	// PersonType=0时(普通顾客)，0普通顾客
 	// PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册会员，5VIP用户
 	// PersonType=2时(黑名单)，0普通黑名单，1小偷)
-	PersonSubType *uint64 `json:"PersonSubType,omitempty" name:"PersonSubType"`
+	PersonSubType *uint64 `json:"PersonSubType,omitnil" name:"PersonSubType"`
 }
 
 func (r *ModifyPersonTypeRequest) ToJsonString() string {
@@ -2850,7 +2850,7 @@ func (r *ModifyPersonTypeRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type ModifyPersonTypeResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type ModifyPersonTypeResponse struct {
@@ -2871,292 +2871,292 @@ func (r *ModifyPersonTypeResponse) FromJsonString(s string) error {
 
 type NetworkAndShopInfo struct {
 	// 集团id
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺id
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 店铺省份
-	Province *string `json:"Province,omitempty" name:"Province"`
+	Province *string `json:"Province,omitnil" name:"Province"`
 
 	// 店铺城市
-	City *string `json:"City,omitempty" name:"City"`
+	City *string `json:"City,omitnil" name:"City"`
 
 	// 店铺名
-	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
+	ShopName *string `json:"ShopName,omitnil" name:"ShopName"`
 
 	// 上传带宽，单位Mb/s，-1：未知
-	Upload *float64 `json:"Upload,omitempty" name:"Upload"`
+	Upload *float64 `json:"Upload,omitnil" name:"Upload"`
 
 	// 下载带宽，单位Mb/s，-1：未知
-	Download *float64 `json:"Download,omitempty" name:"Download"`
+	Download *float64 `json:"Download,omitnil" name:"Download"`
 
 	// 最小延迟，单位ms，-1：未知
-	MinRtt *float64 `json:"MinRtt,omitempty" name:"MinRtt"`
+	MinRtt *float64 `json:"MinRtt,omitnil" name:"MinRtt"`
 
 	// 平均延迟，单位ms，-1：未知
-	AvgRtt *float64 `json:"AvgRtt,omitempty" name:"AvgRtt"`
+	AvgRtt *float64 `json:"AvgRtt,omitnil" name:"AvgRtt"`
 
 	// 最大延迟，单位ms，-1：未知
-	MaxRtt *float64 `json:"MaxRtt,omitempty" name:"MaxRtt"`
+	MaxRtt *float64 `json:"MaxRtt,omitnil" name:"MaxRtt"`
 
 	// 平均偏差延迟，单位ms，-1：未知
-	MdevRtt *float64 `json:"MdevRtt,omitempty" name:"MdevRtt"`
+	MdevRtt *float64 `json:"MdevRtt,omitnil" name:"MdevRtt"`
 
 	// 丢包率百分比，-1：未知
-	Loss *float64 `json:"Loss,omitempty" name:"Loss"`
+	Loss *float64 `json:"Loss,omitnil" name:"Loss"`
 
 	// 更新时间戳
-	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *int64 `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 上报网络状态设备
-	Mac *string `json:"Mac,omitempty" name:"Mac"`
+	Mac *string `json:"Mac,omitnil" name:"Mac"`
 }
 
 type NetworkHistoryInfo struct {
 	// 总数
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 集团id
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 店铺id
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 店铺省份
-	Province *string `json:"Province,omitempty" name:"Province"`
+	Province *string `json:"Province,omitnil" name:"Province"`
 
 	// 店铺城市
-	City *string `json:"City,omitempty" name:"City"`
+	City *string `json:"City,omitnil" name:"City"`
 
 	// 店铺名称
-	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
+	ShopName *string `json:"ShopName,omitnil" name:"ShopName"`
 
 	// 网络信息
-	Infos []*NetworkInfo `json:"Infos,omitempty" name:"Infos"`
+	Infos []*NetworkInfo `json:"Infos,omitnil" name:"Infos"`
 }
 
 type NetworkInfo struct {
 	// 上传带宽，单位Mb/s，-1：未知
-	Upload *float64 `json:"Upload,omitempty" name:"Upload"`
+	Upload *float64 `json:"Upload,omitnil" name:"Upload"`
 
 	// 下载带宽，单位Mb/s，-1：未知
-	Download *float64 `json:"Download,omitempty" name:"Download"`
+	Download *float64 `json:"Download,omitnil" name:"Download"`
 
 	// 最小延迟，单位ms，-1：未知
-	MinRtt *float64 `json:"MinRtt,omitempty" name:"MinRtt"`
+	MinRtt *float64 `json:"MinRtt,omitnil" name:"MinRtt"`
 
 	// 平均延迟，单位ms，-1：未知
-	AvgRtt *float64 `json:"AvgRtt,omitempty" name:"AvgRtt"`
+	AvgRtt *float64 `json:"AvgRtt,omitnil" name:"AvgRtt"`
 
 	// 最大延迟，单位ms，-1：未知
-	MaxRtt *float64 `json:"MaxRtt,omitempty" name:"MaxRtt"`
+	MaxRtt *float64 `json:"MaxRtt,omitnil" name:"MaxRtt"`
 
 	// 平均偏差延迟，单位ms，-1：未知
-	MdevRtt *float64 `json:"MdevRtt,omitempty" name:"MdevRtt"`
+	MdevRtt *float64 `json:"MdevRtt,omitnil" name:"MdevRtt"`
 
 	// 丢包率百分比，-1：未知
-	Loss *float64 `json:"Loss,omitempty" name:"Loss"`
+	Loss *float64 `json:"Loss,omitnil" name:"Loss"`
 
 	// 更新时间戳
-	UpdateTime *int64 `json:"UpdateTime,omitempty" name:"UpdateTime"`
+	UpdateTime *int64 `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
 	// 上报网络状态设备
-	Mac *string `json:"Mac,omitempty" name:"Mac"`
+	Mac *string `json:"Mac,omitnil" name:"Mac"`
 }
 
 type NetworkLastInfo struct {
 	// 总数
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 网络状态
-	Infos []*NetworkAndShopInfo `json:"Infos,omitempty" name:"Infos"`
+	Infos []*NetworkAndShopInfo `json:"Infos,omitnil" name:"Infos"`
 }
 
 type PersonCoordinate struct {
 	// CAD图X坐标
-	CADX *float64 `json:"CADX,omitempty" name:"CADX"`
+	CADX *float64 `json:"CADX,omitnil" name:"CADX"`
 
 	// CAD图Y坐标
-	CADY *float64 `json:"CADY,omitempty" name:"CADY"`
+	CADY *float64 `json:"CADY,omitnil" name:"CADY"`
 
 	// 抓拍时间点
-	CapTime *string `json:"CapTime,omitempty" name:"CapTime"`
+	CapTime *string `json:"CapTime,omitnil" name:"CapTime"`
 
 	// 抓拍图片
-	CapPic *string `json:"CapPic,omitempty" name:"CapPic"`
+	CapPic *string `json:"CapPic,omitnil" name:"CapPic"`
 
 	// 卖场区域类型
-	MallAreaType *int64 `json:"MallAreaType,omitempty" name:"MallAreaType"`
+	MallAreaType *int64 `json:"MallAreaType,omitnil" name:"MallAreaType"`
 
 	// 坐标编号
-	PosId *int64 `json:"PosId,omitempty" name:"PosId"`
+	PosId *int64 `json:"PosId,omitnil" name:"PosId"`
 
 	// 门店编号
-	ShopId *int64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *int64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 事件
-	Event *string `json:"Event,omitempty" name:"Event"`
+	Event *string `json:"Event,omitnil" name:"Event"`
 }
 
 type PersonInfo struct {
 	// 用户ID
-	PersonId *uint64 `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *uint64 `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 人脸图片Base64内容，已弃用，返回默认空值
-	PersonPicture *string `json:"PersonPicture,omitempty" name:"PersonPicture"`
+	PersonPicture *string `json:"PersonPicture,omitnil" name:"PersonPicture"`
 
 	// 性别：0男1女
-	Gender *int64 `json:"Gender,omitempty" name:"Gender"`
+	Gender *int64 `json:"Gender,omitnil" name:"Gender"`
 
 	// 年龄
-	Age *int64 `json:"Age,omitempty" name:"Age"`
+	Age *int64 `json:"Age,omitnil" name:"Age"`
 
 	// 身份类型（0表示普通顾客，1 白名单，2 表示黑名单）
-	PersonType *int64 `json:"PersonType,omitempty" name:"PersonType"`
+	PersonType *int64 `json:"PersonType,omitnil" name:"PersonType"`
 
 	// 人脸图片Url，在有效期内可以访问下载
-	PersonPictureUrl *string `json:"PersonPictureUrl,omitempty" name:"PersonPictureUrl"`
+	PersonPictureUrl *string `json:"PersonPictureUrl,omitnil" name:"PersonPictureUrl"`
 
 	// 身份子类型:
 	// PersonType=0时(普通顾客)，0普通顾客
 	// PersonType=1时(白名单)，0店员，1商场人员，2其他类型人员，3区域经理，4注册用户，5VIP用户
 	// PersonType=2时(黑名单)，0普通黑名单，1小偷)
-	PersonSubType *int64 `json:"PersonSubType,omitempty" name:"PersonSubType"`
+	PersonSubType *int64 `json:"PersonSubType,omitnil" name:"PersonSubType"`
 
 	// 到访次数，-1表示未知
-	VisitTimes *int64 `json:"VisitTimes,omitempty" name:"VisitTimes"`
+	VisitTimes *int64 `json:"VisitTimes,omitnil" name:"VisitTimes"`
 
 	// 到访天数，-1表示未知
-	VisitDays *int64 `json:"VisitDays,omitempty" name:"VisitDays"`
+	VisitDays *int64 `json:"VisitDays,omitnil" name:"VisitDays"`
 }
 
 type PersonProfile struct {
 	// 客人编码
-	PersonId *string `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 性别
-	Gender *uint64 `json:"Gender,omitempty" name:"Gender"`
+	Gender *uint64 `json:"Gender,omitnil" name:"Gender"`
 
 	// 年龄
-	Age *uint64 `json:"Age,omitempty" name:"Age"`
+	Age *uint64 `json:"Age,omitnil" name:"Age"`
 
 	// 首次到场时间
-	FirstArrivedTime *string `json:"FirstArrivedTime,omitempty" name:"FirstArrivedTime"`
+	FirstArrivedTime *string `json:"FirstArrivedTime,omitnil" name:"FirstArrivedTime"`
 
 	// 来访次数
-	ArrivedCount *uint64 `json:"ArrivedCount,omitempty" name:"ArrivedCount"`
+	ArrivedCount *uint64 `json:"ArrivedCount,omitnil" name:"ArrivedCount"`
 
 	// 客户图片
-	PicUrl *string `json:"PicUrl,omitempty" name:"PicUrl"`
+	PicUrl *string `json:"PicUrl,omitnil" name:"PicUrl"`
 
 	// 置信度
-	Similarity *float64 `json:"Similarity,omitempty" name:"Similarity"`
+	Similarity *float64 `json:"Similarity,omitnil" name:"Similarity"`
 }
 
 type PersonTagInfo struct {
 	// 顾客原类型
-	OldType *int64 `json:"OldType,omitempty" name:"OldType"`
+	OldType *int64 `json:"OldType,omitnil" name:"OldType"`
 
 	// 顾客新类型
-	NewType *int64 `json:"NewType,omitempty" name:"NewType"`
+	NewType *int64 `json:"NewType,omitnil" name:"NewType"`
 
 	// 顾客face id
-	PersonId *int64 `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *int64 `json:"PersonId,omitnil" name:"PersonId"`
 }
 
 type PersonTracePoint struct {
 	// 卖场区域编码
-	MallAreaId *uint64 `json:"MallAreaId,omitempty" name:"MallAreaId"`
+	MallAreaId *uint64 `json:"MallAreaId,omitnil" name:"MallAreaId"`
 
 	// 门店编码
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 卖场区域类型
-	MallAreaType *uint64 `json:"MallAreaType,omitempty" name:"MallAreaType"`
+	MallAreaType *uint64 `json:"MallAreaType,omitnil" name:"MallAreaType"`
 
 	// 轨迹事件
-	TraceEventType *uint64 `json:"TraceEventType,omitempty" name:"TraceEventType"`
+	TraceEventType *uint64 `json:"TraceEventType,omitnil" name:"TraceEventType"`
 
 	// 轨迹事件发生时间点
-	TraceEventTime *string `json:"TraceEventTime,omitempty" name:"TraceEventTime"`
+	TraceEventTime *string `json:"TraceEventTime,omitnil" name:"TraceEventTime"`
 
 	// 抓拍图片
-	CapPic *string `json:"CapPic,omitempty" name:"CapPic"`
+	CapPic *string `json:"CapPic,omitnil" name:"CapPic"`
 
 	// 购物袋类型
-	ShoppingBagType *uint64 `json:"ShoppingBagType,omitempty" name:"ShoppingBagType"`
+	ShoppingBagType *uint64 `json:"ShoppingBagType,omitnil" name:"ShoppingBagType"`
 
 	// 购物袋数量
-	ShoppingBagCount *uint64 `json:"ShoppingBagCount,omitempty" name:"ShoppingBagCount"`
+	ShoppingBagCount *uint64 `json:"ShoppingBagCount,omitnil" name:"ShoppingBagCount"`
 }
 
 type PersonTraceRoute struct {
 	// 轨迹编码
-	TraceId *string `json:"TraceId,omitempty" name:"TraceId"`
+	TraceId *string `json:"TraceId,omitnil" name:"TraceId"`
 
 	// 轨迹点序列
-	TracePointSet []*PersonTracePoint `json:"TracePointSet,omitempty" name:"TracePointSet"`
+	TracePointSet []*PersonTracePoint `json:"TracePointSet,omitnil" name:"TracePointSet"`
 }
 
 type PersonVisitInfo struct {
 	// 用户ID
-	PersonId *uint64 `json:"PersonId,omitempty" name:"PersonId"`
+	PersonId *uint64 `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 用户到访ID
-	VisitId *uint64 `json:"VisitId,omitempty" name:"VisitId"`
+	VisitId *uint64 `json:"VisitId,omitnil" name:"VisitId"`
 
 	// 到访时间：Unix时间戳
-	InTime *uint64 `json:"InTime,omitempty" name:"InTime"`
+	InTime *uint64 `json:"InTime,omitnil" name:"InTime"`
 
 	// 抓拍到的头像Base64内容，已弃用，返回默认空值
-	CapturedPicture *string `json:"CapturedPicture,omitempty" name:"CapturedPicture"`
+	CapturedPicture *string `json:"CapturedPicture,omitnil" name:"CapturedPicture"`
 
 	// 口罩类型：0不戴口罩，1戴口罩
-	MaskType *uint64 `json:"MaskType,omitempty" name:"MaskType"`
+	MaskType *uint64 `json:"MaskType,omitnil" name:"MaskType"`
 
 	// 眼镜类型：0不戴眼镜，1普通眼镜 , 2墨镜
-	GlassType *uint64 `json:"GlassType,omitempty" name:"GlassType"`
+	GlassType *uint64 `json:"GlassType,omitnil" name:"GlassType"`
 
 	// 发型：0 短发,  1长发
-	HairType *uint64 `json:"HairType,omitempty" name:"HairType"`
+	HairType *uint64 `json:"HairType,omitnil" name:"HairType"`
 
 	// 抓拍到的头像Url，在有效期内可以访问下载
-	CapturedPictureUrl *string `json:"CapturedPictureUrl,omitempty" name:"CapturedPictureUrl"`
+	CapturedPictureUrl *string `json:"CapturedPictureUrl,omitnil" name:"CapturedPictureUrl"`
 
 	// 抓拍头像的场景图信息
-	SceneInfo *SceneInfo `json:"SceneInfo,omitempty" name:"SceneInfo"`
+	SceneInfo *SceneInfo `json:"SceneInfo,omitnil" name:"SceneInfo"`
 }
 
 // Predefined struct for user
 type RegisterCallbackRequestParams struct {
 	// 集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 通知回调地址，完整url，示例（http://youmall.tencentcloudapi.com/）
-	BackUrl *string `json:"BackUrl,omitempty" name:"BackUrl"`
+	BackUrl *string `json:"BackUrl,omitnil" name:"BackUrl"`
 
 	// 请求时间戳
-	Time *uint64 `json:"Time,omitempty" name:"Time"`
+	Time *uint64 `json:"Time,omitnil" name:"Time"`
 
 	// 是否需要顾客图片，1-需要图片，其它-不需要图片
-	NeedFacePic *uint64 `json:"NeedFacePic,omitempty" name:"NeedFacePic"`
+	NeedFacePic *uint64 `json:"NeedFacePic,omitnil" name:"NeedFacePic"`
 }
 
 type RegisterCallbackRequest struct {
 	*tchttp.BaseRequest
 	
 	// 集团id，通过"指定身份标识获取客户门店列表"接口获取
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 通知回调地址，完整url，示例（http://youmall.tencentcloudapi.com/）
-	BackUrl *string `json:"BackUrl,omitempty" name:"BackUrl"`
+	BackUrl *string `json:"BackUrl,omitnil" name:"BackUrl"`
 
 	// 请求时间戳
-	Time *uint64 `json:"Time,omitempty" name:"Time"`
+	Time *uint64 `json:"Time,omitnil" name:"Time"`
 
 	// 是否需要顾客图片，1-需要图片，其它-不需要图片
-	NeedFacePic *uint64 `json:"NeedFacePic,omitempty" name:"NeedFacePic"`
+	NeedFacePic *uint64 `json:"NeedFacePic,omitnil" name:"NeedFacePic"`
 }
 
 func (r *RegisterCallbackRequest) ToJsonString() string {
@@ -3184,7 +3184,7 @@ func (r *RegisterCallbackRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type RegisterCallbackResponseParams struct {
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitempty" name:"RequestId"`
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
 
 type RegisterCallbackResponse struct {
@@ -3205,130 +3205,130 @@ func (r *RegisterCallbackResponse) FromJsonString(s string) error {
 
 type SceneInfo struct {
 	// 场景图
-	ScenePictureURL *string `json:"ScenePictureURL,omitempty" name:"ScenePictureURL"`
+	ScenePictureURL *string `json:"ScenePictureURL,omitnil" name:"ScenePictureURL"`
 
 	// 抓拍头像左上角X坐标在场景图中的像素点位置
-	HeadX *int64 `json:"HeadX,omitempty" name:"HeadX"`
+	HeadX *int64 `json:"HeadX,omitnil" name:"HeadX"`
 
 	// 抓拍头像左上角Y坐标在场景图中的像素点位置
-	HeadY *int64 `json:"HeadY,omitempty" name:"HeadY"`
+	HeadY *int64 `json:"HeadY,omitnil" name:"HeadY"`
 
 	// 抓拍头像在场景图中占有的像素宽度
-	HeadWidth *int64 `json:"HeadWidth,omitempty" name:"HeadWidth"`
+	HeadWidth *int64 `json:"HeadWidth,omitnil" name:"HeadWidth"`
 
 	// 抓拍头像在场景图中占有的像素高度
-	HeadHeight *int64 `json:"HeadHeight,omitempty" name:"HeadHeight"`
+	HeadHeight *int64 `json:"HeadHeight,omitnil" name:"HeadHeight"`
 }
 
 type ShopDayTrafficInfo struct {
 	// 日期
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 客流量
-	DayTrafficTotalCount *uint64 `json:"DayTrafficTotalCount,omitempty" name:"DayTrafficTotalCount"`
+	DayTrafficTotalCount *uint64 `json:"DayTrafficTotalCount,omitnil" name:"DayTrafficTotalCount"`
 
 	// 性别年龄分组下的客流信息
-	GenderAgeTrafficDetailSet []*GenderAgeTrafficDetail `json:"GenderAgeTrafficDetailSet,omitempty" name:"GenderAgeTrafficDetailSet"`
+	GenderAgeTrafficDetailSet []*GenderAgeTrafficDetail `json:"GenderAgeTrafficDetailSet,omitnil" name:"GenderAgeTrafficDetailSet"`
 }
 
 type ShopHourTrafficInfo struct {
 	// 日期，格式yyyy-MM-dd
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 分时客流详细信息
-	HourTrafficInfoDetailSet []*HourTrafficInfoDetail `json:"HourTrafficInfoDetailSet,omitempty" name:"HourTrafficInfoDetailSet"`
+	HourTrafficInfoDetailSet []*HourTrafficInfoDetail `json:"HourTrafficInfoDetailSet,omitnil" name:"HourTrafficInfoDetailSet"`
 }
 
 type ShopInfo struct {
 	// 公司ID
-	CompanyId *string `json:"CompanyId,omitempty" name:"CompanyId"`
+	CompanyId *string `json:"CompanyId,omitnil" name:"CompanyId"`
 
 	// 门店ID
-	ShopId *uint64 `json:"ShopId,omitempty" name:"ShopId"`
+	ShopId *uint64 `json:"ShopId,omitnil" name:"ShopId"`
 
 	// 门店名称
-	ShopName *string `json:"ShopName,omitempty" name:"ShopName"`
+	ShopName *string `json:"ShopName,omitnil" name:"ShopName"`
 
 	// 客户门店编码
-	ShopCode *string `json:"ShopCode,omitempty" name:"ShopCode"`
+	ShopCode *string `json:"ShopCode,omitnil" name:"ShopCode"`
 
 	// 省
-	Province *string `json:"Province,omitempty" name:"Province"`
+	Province *string `json:"Province,omitnil" name:"Province"`
 
 	// 市
-	City *string `json:"City,omitempty" name:"City"`
+	City *string `json:"City,omitnil" name:"City"`
 
 	// 公司名称
-	CompanyName *string `json:"CompanyName,omitempty" name:"CompanyName"`
+	CompanyName *string `json:"CompanyName,omitnil" name:"CompanyName"`
 }
 
 type TrajectorySunData struct {
 	// 区域动线，形如 x-x-x-x-x，其中 x 为区域 ID
-	Zones *string `json:"Zones,omitempty" name:"Zones"`
+	Zones *string `json:"Zones,omitnil" name:"Zones"`
 
 	// 该动线出现次数
-	Count *int64 `json:"Count,omitempty" name:"Count"`
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 
 	// 该动线平均停留时间（秒）
-	AvgStayTime *int64 `json:"AvgStayTime,omitempty" name:"AvgStayTime"`
+	AvgStayTime *int64 `json:"AvgStayTime,omitnil" name:"AvgStayTime"`
 }
 
 type ZoneAgeGroupAvrStayTime struct {
 	// 男性平均停留时间
-	MaleAvrStayTime *float64 `json:"MaleAvrStayTime,omitempty" name:"MaleAvrStayTime"`
+	MaleAvrStayTime *float64 `json:"MaleAvrStayTime,omitnil" name:"MaleAvrStayTime"`
 
 	// 女性平均停留时间
-	FemaleAvrStayTime *float64 `json:"FemaleAvrStayTime,omitempty" name:"FemaleAvrStayTime"`
+	FemaleAvrStayTime *float64 `json:"FemaleAvrStayTime,omitnil" name:"FemaleAvrStayTime"`
 }
 
 type ZoneDayFlow struct {
 	// 日期，如 2018-08-6
-	Day *string `json:"Day,omitempty" name:"Day"`
+	Day *string `json:"Day,omitnil" name:"Day"`
 
 	// 客流量
-	FlowCount *int64 `json:"FlowCount,omitempty" name:"FlowCount"`
+	FlowCount *int64 `json:"FlowCount,omitnil" name:"FlowCount"`
 }
 
 type ZoneFlowAndAvrStayTime struct {
 	// 区域id
-	ZoneId *int64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 区域名称
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
 
 	// 人流量
-	FlowCount *uint64 `json:"FlowCount,omitempty" name:"FlowCount"`
+	FlowCount *uint64 `json:"FlowCount,omitnil" name:"FlowCount"`
 
 	// 平均停留时长
-	AvrStayTime *uint64 `json:"AvrStayTime,omitempty" name:"AvrStayTime"`
+	AvrStayTime *uint64 `json:"AvrStayTime,omitnil" name:"AvrStayTime"`
 }
 
 type ZoneHourFlow struct {
 	// 分时 0~23
-	Hour *int64 `json:"Hour,omitempty" name:"Hour"`
+	Hour *int64 `json:"Hour,omitnil" name:"Hour"`
 
 	// 客流量
-	FlowCount *int64 `json:"FlowCount,omitempty" name:"FlowCount"`
+	FlowCount *int64 `json:"FlowCount,omitnil" name:"FlowCount"`
 }
 
 type ZoneTrafficInfo struct {
 	// 日期
-	Date *string `json:"Date,omitempty" name:"Date"`
+	Date *string `json:"Date,omitnil" name:"Date"`
 
 	// 门店区域客流详细信息
-	ZoneTrafficInfoDetailSet []*ZoneTrafficInfoDetail `json:"ZoneTrafficInfoDetailSet,omitempty" name:"ZoneTrafficInfoDetailSet"`
+	ZoneTrafficInfoDetailSet []*ZoneTrafficInfoDetail `json:"ZoneTrafficInfoDetailSet,omitnil" name:"ZoneTrafficInfoDetailSet"`
 }
 
 type ZoneTrafficInfoDetail struct {
 	// 区域ID
-	ZoneId *uint64 `json:"ZoneId,omitempty" name:"ZoneId"`
+	ZoneId *uint64 `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 区域名称
-	ZoneName *string `json:"ZoneName,omitempty" name:"ZoneName"`
+	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
 
 	// 客流量
-	TrafficTotalCount *uint64 `json:"TrafficTotalCount,omitempty" name:"TrafficTotalCount"`
+	TrafficTotalCount *uint64 `json:"TrafficTotalCount,omitnil" name:"TrafficTotalCount"`
 
 	// 平均停留时间
-	AvgStayTime *uint64 `json:"AvgStayTime,omitempty" name:"AvgStayTime"`
+	AvgStayTime *uint64 `json:"AvgStayTime,omitnil" name:"AvgStayTime"`
 }
