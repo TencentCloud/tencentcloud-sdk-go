@@ -1,9 +1,9 @@
 package common
 
 import (
-	"encoding/json"
 	"fmt"
 	tcerr "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/errors"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
 const (

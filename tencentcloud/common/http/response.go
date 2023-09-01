@@ -1,8 +1,8 @@
 package common
 
 import (
-	"encoding/json"
 	"fmt"
+	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 	"io/ioutil"
 	//"log"
 	"net/http"

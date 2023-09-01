@@ -607,9 +607,12 @@ func main() {
 > 注入的 `ClientToken` 在 `100000/s` 并发量以下提供全局唯一性。
 
 ## 空数组和omitempty
-SDK 使用 `omitempty` 标签来序列化你的 request 对象, 因为这样可以避免上报空数组/对象. 
+在 v1.0.732 之前的版本, SDK使用`omitempty`标签来序列化请求, 这会导致 nil 数组和 长度为0的空数组 都无法被序列化.
+这在你希望发送一个空数组的时候会造成不便, 在之前你需要使用 CommonClient 来解决这个问题.
 
-但对有的接口而言, 长度为0的数组 和 nil数组 是有区别的, 如果你希望在请求中携带空数组, 需要使用Common Client 来发送请求.
+在 >= v1.0.733 的版本, SDK使用`omitnil`标签来序列化请求, 此时nil数组会被忽略掉, 但是空数组可以被正常发送.
+
+需要注意的是这个改动在大部分情况下对于用户是无感知的, 但是在特殊情况下依然可能会造成行为不一致.
 
 参考[示例](https://github.com/TencentCloud/tencentcloud-sdk-go/blob/master/examples/common/omitempty.go)
 
