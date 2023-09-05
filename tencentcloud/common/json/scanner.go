@@ -13,16 +13,11 @@ package json
 // This file starts with two simple examples using the scanner
 // before diving into the scanner itself.
 
-import (
-	"strconv"
-	"sync"
-)
+import "strconv"
 
 // Valid reports whether data is a valid JSON encoding.
 func Valid(data []byte) bool {
-	scan := newScanner()
-	defer freeScanner(scan)
-	return checkValid(data, scan) == nil
+	return checkValid(data, &scanner{}) == nil
 }
 
 // checkValid verifies that data is valid JSON-encoded data.
@@ -50,7 +45,7 @@ type SyntaxError struct {
 func (e *SyntaxError) Error() string { return e.msg }
 
 // A scanner is a JSON scanning state machine.
-// Callers call scan.reset and then pass bytes in one at a time
+// Callers call scan.reset() and then pass bytes in one at a time
 // by calling scan.step(&scan, c) for each byte.
 // The return value, referred to as an opcode, tells the
 // caller about significant parsing events like beginning
@@ -77,31 +72,8 @@ type scanner struct {
 	// Error that happened, if any.
 	err error
 
-	// total bytes consumed, updated by decoder.Decode (and deliberately
-	// not set to zero by scan.reset)
+	// total bytes consumed, updated by decoder.Decode
 	bytes int64
-}
-
-var scannerPool = sync.Pool{
-	New: func() interface{} {
-		return &scanner{}
-	},
-}
-
-func newScanner() *scanner {
-	scan := scannerPool.Get().(*scanner)
-	// scan.reset by design doesn't set bytes to zero
-	scan.bytes = 0
-	scan.reset()
-	return scan
-}
-
-func freeScanner(scan *scanner) {
-	// Avoid hanging on to too much memory in extreme cases.
-	if len(scan.parseState) > 1024 {
-		scan.parseState = nil
-	}
-	scannerPool.Put(scan)
 }
 
 // These values are returned by the state transition functions
@@ -139,10 +111,6 @@ const (
 	parseArrayValue         // parsing array value
 )
 
-// This limits the max nesting depth to prevent stack overflow.
-// This is permitted by https://tools.ietf.org/html/rfc7159#section-9
-const maxNestingDepth = 10000
-
 // reset prepares the scanner for use.
 // It must be called before calling s.step.
 func (s *scanner) reset() {
@@ -172,13 +140,8 @@ func (s *scanner) eof() int {
 }
 
 // pushParseState pushes a new parse state p onto the parse stack.
-// an error state is returned if maxNestingDepth was exceeded, otherwise successState is returned.
-func (s *scanner) pushParseState(c byte, newParseState int, successState int) int {
-	s.parseState = append(s.parseState, newParseState)
-	if len(s.parseState) <= maxNestingDepth {
-		return successState
-	}
-	return s.error(c, "exceeded max depth")
+func (s *scanner) pushParseState(p int) {
+	s.parseState = append(s.parseState, p)
 }
 
 // popParseState pops a parse state (already obtained) off the stack
@@ -195,12 +158,12 @@ func (s *scanner) popParseState() {
 }
 
 func isSpace(c byte) bool {
-	return c <= ' ' && (c == ' ' || c == '\t' || c == '\r' || c == '\n')
+	return c == ' ' || c == '\t' || c == '\r' || c == '\n'
 }
 
 // stateBeginValueOrEmpty is the state after reading `[`.
 func stateBeginValueOrEmpty(s *scanner, c byte) int {
-	if isSpace(c) {
+	if c <= ' ' && isSpace(c) {
 		return scanSkipSpace
 	}
 	if c == ']' {
@@ -211,16 +174,18 @@ func stateBeginValueOrEmpty(s *scanner, c byte) int {
 
 // stateBeginValue is the state at the beginning of the input.
 func stateBeginValue(s *scanner, c byte) int {
-	if isSpace(c) {
+	if c <= ' ' && isSpace(c) {
 		return scanSkipSpace
 	}
 	switch c {
 	case '{':
 		s.step = stateBeginStringOrEmpty
-		return s.pushParseState(c, parseObjectKey, scanBeginObject)
+		s.pushParseState(parseObjectKey)
+		return scanBeginObject
 	case '[':
 		s.step = stateBeginValueOrEmpty
-		return s.pushParseState(c, parseArrayValue, scanBeginArray)
+		s.pushParseState(parseArrayValue)
+		return scanBeginArray
 	case '"':
 		s.step = stateInString
 		return scanBeginLiteral
@@ -249,7 +214,7 @@ func stateBeginValue(s *scanner, c byte) int {
 
 // stateBeginStringOrEmpty is the state after reading `{`.
 func stateBeginStringOrEmpty(s *scanner, c byte) int {
-	if isSpace(c) {
+	if c <= ' ' && isSpace(c) {
 		return scanSkipSpace
 	}
 	if c == '}' {
@@ -262,7 +227,7 @@ func stateBeginStringOrEmpty(s *scanner, c byte) int {
 
 // stateBeginString is the state after reading `{"key": value,`.
 func stateBeginString(s *scanner, c byte) int {
-	if isSpace(c) {
+	if c <= ' ' && isSpace(c) {
 		return scanSkipSpace
 	}
 	if c == '"' {
@@ -282,7 +247,7 @@ func stateEndValue(s *scanner, c byte) int {
 		s.endTop = true
 		return stateEndTop(s, c)
 	}
-	if isSpace(c) {
+	if c <= ' ' && isSpace(c) {
 		s.step = stateEndValue
 		return scanSkipSpace
 	}
@@ -324,7 +289,7 @@ func stateEndValue(s *scanner, c byte) int {
 // such as after reading `{}` or `[1,2,3]`.
 // Only space characters should be seen now.
 func stateEndTop(s *scanner, c byte) int {
-	if !isSpace(c) {
+	if c != ' ' && c != '\t' && c != '\r' && c != '\n' {
 		// Complain about non-space byte on next call.
 		s.error(c, "after top-level value")
 	}
