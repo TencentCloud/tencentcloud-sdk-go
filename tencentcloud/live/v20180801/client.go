@@ -4319,6 +4319,78 @@ func (c *Client) DescribeDeliverBandwidthListWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeDeliverLogDownListRequest() (request *DescribeDeliverLogDownListRequest) {
+    request = &DescribeDeliverLogDownListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("live", APIVersion, "DescribeDeliverLogDownList")
+    
+    
+    return
+}
+
+func NewDescribeDeliverLogDownListResponse() (response *DescribeDeliverLogDownListResponse) {
+    response = &DescribeDeliverLogDownListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDeliverLogDownList
+// 批量获取转推日志的URL。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVOKECDNAPIFAIL = "FailedOperation.InvokeCdnApiFail"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CDNLOGEMPTY = "ResourceNotFound.CdnLogEmpty"
+//  RESOURCENOTFOUND_CDNTHEMEEMPTY = "ResourceNotFound.CdnThemeEmpty"
+//  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeDeliverLogDownList(request *DescribeDeliverLogDownListRequest) (response *DescribeDeliverLogDownListResponse, err error) {
+    return c.DescribeDeliverLogDownListWithContext(context.Background(), request)
+}
+
+// DescribeDeliverLogDownList
+// 批量获取转推日志的URL。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVOKECDNAPIFAIL = "FailedOperation.InvokeCdnApiFail"
+//  INTERNALERROR_CONNECTDBERROR = "InternalError.ConnectDbError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCENOTFOUND_CDNLOGEMPTY = "ResourceNotFound.CdnLogEmpty"
+//  RESOURCENOTFOUND_CDNTHEMEEMPTY = "ResourceNotFound.CdnThemeEmpty"
+//  RESOURCENOTFOUND_DOMAINNOTEXIST = "ResourceNotFound.DomainNotExist"
+//  RESOURCENOTFOUND_FORBIDSERVICE = "ResourceNotFound.ForbidService"
+//  RESOURCENOTFOUND_FREEZESERVICE = "ResourceNotFound.FreezeService"
+//  RESOURCENOTFOUND_STOPSERVICE = "ResourceNotFound.StopService"
+//  RESOURCENOTFOUND_USERDISABLESERVICE = "ResourceNotFound.UserDisableService"
+func (c *Client) DescribeDeliverLogDownListWithContext(ctx context.Context, request *DescribeDeliverLogDownListRequest) (response *DescribeDeliverLogDownListResponse, err error) {
+    if request == nil {
+        request = NewDescribeDeliverLogDownListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDeliverLogDownList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDeliverLogDownListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGroupProIspPlayInfoListRequest() (request *DescribeGroupProIspPlayInfoListRequest) {
     request = &DescribeGroupProIspPlayInfoListRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -181,6 +181,7 @@ type CreateAsyncRecognitionTaskRequestParams struct {
 	// • 16k_tr：土耳其语；
 	// • 16k_ar：阿拉伯语；
 	// • 16k_es：西班牙语；
+	// • 16k_hi：印地语；
 	EngineType *string `json:"EngineType,omitnil" name:"EngineType"`
 
 	// 语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
@@ -228,6 +229,7 @@ type CreateAsyncRecognitionTaskRequest struct {
 	// • 16k_tr：土耳其语；
 	// • 16k_ar：阿拉伯语；
 	// • 16k_es：西班牙语；
+	// • 16k_hi：印地语；
 	EngineType *string `json:"EngineType,omitnil" name:"EngineType"`
 
 	// 语音流地址，支持rtmp、rtsp等流媒体协议，以及各类基于http协议的直播流(不支持hls, m3u8)
@@ -395,15 +397,19 @@ func (r *CreateCustomizationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRecTaskRequestParams struct {
-	// 引擎模型类型。注意：非电话场景请务必使用16k的引擎。
-	// 电话场景：
-	// • 8k_zh：中文电话通用；
-	// • 8k_en：英文电话通用；
+	// 引擎模型类型
 	// 
-	// 非电话场景：
-	// • 16k_zh：中文通用；
-	// • 16k_zh-PY：中英粤;
-	// • 16k_zh_medical：中文医疗；
+	// 电话通讯场景引擎：
+	// **注意：电话通讯场景，请务必使用以下8k引擎**
+	// • 8k_zh：中文电话通讯；
+	// • 8k_en：英文电话通讯；
+	// 如您有电话通讯场景识别需求，但发现需求语种仅支持16k，可将8k音频传入下方16k引擎，亦能获取识别结果。但**16k引擎并非基于电话通讯数据训练，无法承诺此种调用方式的识别效果，需由您自行验证识别结果是否可用**。
+	// 
+	// 通用场景引擎：
+	// **注意：除电话通讯场景以外的其它识别场景，请务必使用以下16k引擎**
+	// • 16k_zh：中文普通话通用引擎，支持中文普通话和少量英语，使用丰富的中文普通话语料训练，覆盖场景广泛，适用于除电话通讯外的所有中文普通话识别场景；
+	// • 16k_zh-PY：中英粤混合引擎，使用一个引擎同时识别中文普通话、英语、粤语三个语言;
+	// • 16k_zh_dialect：中文普通话+多方言混合引擎，除普通话外支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	// • 16k_en：英语；
 	// • 16k_yue：粤语；
 	// • 16k_ja：日语；
@@ -417,27 +423,52 @@ type CreateRecTaskRequestParams struct {
 	// • 16k_tr：土耳其语；
 	// • 16k_ar：阿拉伯语；
 	// • 16k_es：西班牙语；
-	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
+	// • 16k_hi：印地语；
+	// • 16k_zh_medical：中文医疗引擎
 	EngineModelType *string `json:"EngineModelType,omitnil" name:"EngineModelType"`
 
-	// 识别声道数。1：单声道（非电话场景，直接选择单声道即可，忽略音频声道数）；2：双声道（仅支持8k_zh电话场景，双声道应分别对应通话双方）。注意：双声道的电话音频已物理分离说话人，无需再开启说话人分离功能。
+	// 识别声道数
+	// 1：单声道（16k音频仅支持单声道，**请勿**设置为双声道）；
+	// 2：双声道（仅支持8k电话音频，且双声道应分别为通话双方）
+	// 
+	// 注意：
+	// • 16k音频：仅支持单声道识别，**需设置ChannelNum=1**
+	// • 8k电话音频：支持单声道、双声道识别，**建议设置ChannelNum=2，即双声道**。双声道能够物理区分说话人、避免说话双方重叠产生的识别错误，能达到最好的说话人分离效果和识别效果。设置双声道后，将自动区分说话人，因此**无需再开启说话人分离功能**，相关参数（**SpeakerDiarization、SpeakerNumber**）使用默认值即可
 	ChannelNum *uint64 `json:"ChannelNum,omitnil" name:"ChannelNum"`
 
-	// 识别结果返回形式。0： 识别结果文本(含分段时间戳)； 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；2：词级别粒度的详细识别结果（包含标点、语速值）；3: 标点符号分段，包含每段时间戳，特别适用于字幕场景（包含词级时间、标点、语速值）。4：【增值付费功能】对识别结果按照语义分段，并展示词级别粒度的详细识别结果，仅支持8k_zh、16k_zh引擎，需购买对应资源包使用（注意：如果账号后付费功能开启并使用此功能，将[自动计费](https://cloud.tencent.com/document/product/1093/35686)）
+	// 识别结果返回形式
+	// 0： 识别结果文本(含分段时间戳)；
+	// 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；
+	// 2：词级别粒度的详细识别结果（包含标点、语速值）；
+	// 3: 标点符号分段，包含每段时间戳，特别适用于字幕场景（包含词级时间、标点、语速值）
+	// 4：【增值付费功能】对识别结果按照语义分段，并展示词级别粒度的详细识别结果，仅支持8k_zh、16k_zh引擎，需购买对应资源包使用（注意：如果账号后付费功能开启并使用此功能，将[自动计费](https://cloud.tencent.com/document/product/1093/35686)）
 	ResTextFormat *uint64 `json:"ResTextFormat,omitnil" name:"ResTextFormat"`
 
-	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
+	// 语音数据来源
+	// 0：语音 URL；
+	// 1：语音数据（post body）
 	SourceType *uint64 `json:"SourceType,omitnil" name:"SourceType"`
 
-	// 是否开启说话人分离，0：不开启，1：开启(仅支持8k_zh/16k_zh，ChannelNum=1时可用)，默认值为 0。
-	// 注意：8k电话场景建议使用双声道来区分通话双方，设置ChannelNum=2即可，不用开启说话人分离，如果设置了ChannelNum=1，后台会先转码成单声道，说话人分离结果可能产生偏差。
+	// 是否开启说话人分离
+	// 0：不开启；
+	// 1：开启（仅支持8k_zh/16k_zh，且ChannelNum=1时可用）；
+	// 默认值为 0
+	// 
+	// 注意：
+	// 8k双声道电话音频请按 **ChannelNum 识别声道数** 的参数描述使用默认值
 	SpeakerDiarization *int64 `json:"SpeakerDiarization,omitnil" name:"SpeakerDiarization"`
 
-	// 说话人分离人数（需配合开启说话人分离使用），取值范围：0-10，0代表自动分离（目前仅支持≤6个人），1-10代表指定说话人数分离。默认值为 0。
-	// 注：此功能结果仅供参考，请根据您的需要谨慎使用。
+	// 说话人分离人数
+	// **需配合开启说话人分离使用，不开启无效**，取值范围：0-10
+	// 0：自动分离（最多分离出20个人）；
+	// 1-10：指定人数分离；
+	// 默认值为 0
+	// 
+	// 注意：此功能结果仅供参考
 	SpeakerNumber *int64 `json:"SpeakerNumber,omitnil" name:"SpeakerNumber"`
 
-	// 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。回调格式&内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
+	// 回调 URL：用户自行搭建的用于接收识别结果的服务URL。回调格式和内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
+	// 如果用户使用轮询方式获取识别结果，则无需提交该参数。
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
 	// 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写。注意：请确保录音文件时长在5个小时之内，否则可能识别失败。请保证文件的下载速度，否则可能下载失败。
@@ -487,15 +518,19 @@ type CreateRecTaskRequestParams struct {
 type CreateRecTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 引擎模型类型。注意：非电话场景请务必使用16k的引擎。
-	// 电话场景：
-	// • 8k_zh：中文电话通用；
-	// • 8k_en：英文电话通用；
+	// 引擎模型类型
 	// 
-	// 非电话场景：
-	// • 16k_zh：中文通用；
-	// • 16k_zh-PY：中英粤;
-	// • 16k_zh_medical：中文医疗；
+	// 电话通讯场景引擎：
+	// **注意：电话通讯场景，请务必使用以下8k引擎**
+	// • 8k_zh：中文电话通讯；
+	// • 8k_en：英文电话通讯；
+	// 如您有电话通讯场景识别需求，但发现需求语种仅支持16k，可将8k音频传入下方16k引擎，亦能获取识别结果。但**16k引擎并非基于电话通讯数据训练，无法承诺此种调用方式的识别效果，需由您自行验证识别结果是否可用**。
+	// 
+	// 通用场景引擎：
+	// **注意：除电话通讯场景以外的其它识别场景，请务必使用以下16k引擎**
+	// • 16k_zh：中文普通话通用引擎，支持中文普通话和少量英语，使用丰富的中文普通话语料训练，覆盖场景广泛，适用于除电话通讯外的所有中文普通话识别场景；
+	// • 16k_zh-PY：中英粤混合引擎，使用一个引擎同时识别中文普通话、英语、粤语三个语言;
+	// • 16k_zh_dialect：中文普通话+多方言混合引擎，除普通话外支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	// • 16k_en：英语；
 	// • 16k_yue：粤语；
 	// • 16k_ja：日语；
@@ -509,27 +544,52 @@ type CreateRecTaskRequest struct {
 	// • 16k_tr：土耳其语；
 	// • 16k_ar：阿拉伯语；
 	// • 16k_es：西班牙语；
-	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
+	// • 16k_hi：印地语；
+	// • 16k_zh_medical：中文医疗引擎
 	EngineModelType *string `json:"EngineModelType,omitnil" name:"EngineModelType"`
 
-	// 识别声道数。1：单声道（非电话场景，直接选择单声道即可，忽略音频声道数）；2：双声道（仅支持8k_zh电话场景，双声道应分别对应通话双方）。注意：双声道的电话音频已物理分离说话人，无需再开启说话人分离功能。
+	// 识别声道数
+	// 1：单声道（16k音频仅支持单声道，**请勿**设置为双声道）；
+	// 2：双声道（仅支持8k电话音频，且双声道应分别为通话双方）
+	// 
+	// 注意：
+	// • 16k音频：仅支持单声道识别，**需设置ChannelNum=1**
+	// • 8k电话音频：支持单声道、双声道识别，**建议设置ChannelNum=2，即双声道**。双声道能够物理区分说话人、避免说话双方重叠产生的识别错误，能达到最好的说话人分离效果和识别效果。设置双声道后，将自动区分说话人，因此**无需再开启说话人分离功能**，相关参数（**SpeakerDiarization、SpeakerNumber**）使用默认值即可
 	ChannelNum *uint64 `json:"ChannelNum,omitnil" name:"ChannelNum"`
 
-	// 识别结果返回形式。0： 识别结果文本(含分段时间戳)； 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；2：词级别粒度的详细识别结果（包含标点、语速值）；3: 标点符号分段，包含每段时间戳，特别适用于字幕场景（包含词级时间、标点、语速值）。4：【增值付费功能】对识别结果按照语义分段，并展示词级别粒度的详细识别结果，仅支持8k_zh、16k_zh引擎，需购买对应资源包使用（注意：如果账号后付费功能开启并使用此功能，将[自动计费](https://cloud.tencent.com/document/product/1093/35686)）
+	// 识别结果返回形式
+	// 0： 识别结果文本(含分段时间戳)；
+	// 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；
+	// 2：词级别粒度的详细识别结果（包含标点、语速值）；
+	// 3: 标点符号分段，包含每段时间戳，特别适用于字幕场景（包含词级时间、标点、语速值）
+	// 4：【增值付费功能】对识别结果按照语义分段，并展示词级别粒度的详细识别结果，仅支持8k_zh、16k_zh引擎，需购买对应资源包使用（注意：如果账号后付费功能开启并使用此功能，将[自动计费](https://cloud.tencent.com/document/product/1093/35686)）
 	ResTextFormat *uint64 `json:"ResTextFormat,omitnil" name:"ResTextFormat"`
 
-	// 语音数据来源。0：语音 URL；1：语音数据（post body）。
+	// 语音数据来源
+	// 0：语音 URL；
+	// 1：语音数据（post body）
 	SourceType *uint64 `json:"SourceType,omitnil" name:"SourceType"`
 
-	// 是否开启说话人分离，0：不开启，1：开启(仅支持8k_zh/16k_zh，ChannelNum=1时可用)，默认值为 0。
-	// 注意：8k电话场景建议使用双声道来区分通话双方，设置ChannelNum=2即可，不用开启说话人分离，如果设置了ChannelNum=1，后台会先转码成单声道，说话人分离结果可能产生偏差。
+	// 是否开启说话人分离
+	// 0：不开启；
+	// 1：开启（仅支持8k_zh/16k_zh，且ChannelNum=1时可用）；
+	// 默认值为 0
+	// 
+	// 注意：
+	// 8k双声道电话音频请按 **ChannelNum 识别声道数** 的参数描述使用默认值
 	SpeakerDiarization *int64 `json:"SpeakerDiarization,omitnil" name:"SpeakerDiarization"`
 
-	// 说话人分离人数（需配合开启说话人分离使用），取值范围：0-10，0代表自动分离（目前仅支持≤6个人），1-10代表指定说话人数分离。默认值为 0。
-	// 注：此功能结果仅供参考，请根据您的需要谨慎使用。
+	// 说话人分离人数
+	// **需配合开启说话人分离使用，不开启无效**，取值范围：0-10
+	// 0：自动分离（最多分离出20个人）；
+	// 1-10：指定人数分离；
+	// 默认值为 0
+	// 
+	// 注意：此功能结果仅供参考
 	SpeakerNumber *int64 `json:"SpeakerNumber,omitnil" name:"SpeakerNumber"`
 
-	// 回调 URL，用户自行搭建的用于接收识别结果的服务URL。如果用户使用轮询方式获取识别结果，则无需提交该参数。回调格式&内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
+	// 回调 URL：用户自行搭建的用于接收识别结果的服务URL。回调格式和内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
+	// 如果用户使用轮询方式获取识别结果，则无需提交该参数。
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
 	// 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写。注意：请确保录音文件时长在5个小时之内，否则可能识别失败。请保证文件的下载速度，否则可能下载失败。
@@ -1511,6 +1571,7 @@ type SentenceRecognitionRequestParams struct {
 	// • 16k_tr：土耳其语；
 	// • 16k_ar：阿拉伯语；
 	// • 16k_es：西班牙语；
+	// • 16k_hi：印地语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitnil" name:"EngSerViceType"`
 
@@ -1606,6 +1667,7 @@ type SentenceRecognitionRequest struct {
 	// • 16k_tr：土耳其语；
 	// • 16k_ar：阿拉伯语；
 	// • 16k_es：西班牙语；
+	// • 16k_hi：印地语；
 	// • 16k_zh_dialect：多方言，支持23种方言（上海话、四川话、武汉话、贵阳话、昆明话、西安话、郑州话、太原话、兰州话、银川话、西宁话、南京话、合肥话、南昌话、长沙话、苏州话、杭州话、济南话、天津话、石家庄话、黑龙江话、吉林话、辽宁话）；
 	EngSerViceType *string `json:"EngSerViceType,omitnil" name:"EngSerViceType"`
 

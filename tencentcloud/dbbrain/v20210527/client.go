@@ -1239,6 +1239,70 @@ func (c *Client) DeleteSqlFiltersWithContext(ctx context.Context, request *Delet
     return
 }
 
+func NewDescribeAlarmTemplateRequest() (request *DescribeAlarmTemplateRequest) {
+    request = &DescribeAlarmTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeAlarmTemplate")
+    
+    
+    return
+}
+
+func NewDescribeAlarmTemplateResponse() (response *DescribeAlarmTemplateResponse) {
+    response = &DescribeAlarmTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAlarmTemplate
+// 通知模板查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAlarmTemplate(request *DescribeAlarmTemplateRequest) (response *DescribeAlarmTemplateResponse, err error) {
+    return c.DescribeAlarmTemplateWithContext(context.Background(), request)
+}
+
+// DescribeAlarmTemplate
+// 通知模板查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) DescribeAlarmTemplateWithContext(ctx context.Context, request *DescribeAlarmTemplateRequest) (response *DescribeAlarmTemplateResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAlarmTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAlarmTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAllUserContactRequest() (request *DescribeAllUserContactRequest) {
     request = &DescribeAllUserContactRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3559,6 +3623,74 @@ func (c *Client) KillMySqlThreadsWithContext(ctx context.Context, request *KillM
     request.SetContext(ctx)
     
     response = NewKillMySqlThreadsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAlarmPolicyRequest() (request *ModifyAlarmPolicyRequest) {
+    request = &ModifyAlarmPolicyRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "ModifyAlarmPolicy")
+    
+    
+    return
+}
+
+func NewModifyAlarmPolicyResponse() (response *ModifyAlarmPolicyResponse) {
+    response = &ModifyAlarmPolicyResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAlarmPolicy
+// 修改告警策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyAlarmPolicy(request *ModifyAlarmPolicyRequest) (response *ModifyAlarmPolicyResponse, err error) {
+    return c.ModifyAlarmPolicyWithContext(context.Background(), request)
+}
+
+// ModifyAlarmPolicy
+// 修改告警策略
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyAlarmPolicyWithContext(ctx context.Context, request *ModifyAlarmPolicyRequest) (response *ModifyAlarmPolicyResponse, err error) {
+    if request == nil {
+        request = NewModifyAlarmPolicyRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAlarmPolicy require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAlarmPolicyResponse()
     err = c.Send(request, response)
     return
 }

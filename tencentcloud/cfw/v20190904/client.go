@@ -375,6 +375,60 @@ func (c *Client) CreateAddressTemplateWithContext(ctx context.Context, request *
     return
 }
 
+func NewCreateBlockIgnoreRuleListRequest() (request *CreateBlockIgnoreRuleListRequest) {
+    request = &CreateBlockIgnoreRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "CreateBlockIgnoreRuleList")
+    
+    
+    return
+}
+
+func NewCreateBlockIgnoreRuleListResponse() (response *CreateBlockIgnoreRuleListResponse) {
+    response = &CreateBlockIgnoreRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateBlockIgnoreRuleList
+// 批量添加入侵防御封禁列表、放通列表规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateBlockIgnoreRuleList(request *CreateBlockIgnoreRuleListRequest) (response *CreateBlockIgnoreRuleListResponse, err error) {
+    return c.CreateBlockIgnoreRuleListWithContext(context.Background(), request)
+}
+
+// CreateBlockIgnoreRuleList
+// 批量添加入侵防御封禁列表、放通列表规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) CreateBlockIgnoreRuleListWithContext(ctx context.Context, request *CreateBlockIgnoreRuleListRequest) (response *CreateBlockIgnoreRuleListResponse, err error) {
+    if request == nil {
+        request = NewCreateBlockIgnoreRuleListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateBlockIgnoreRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateBlockIgnoreRuleListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateChooseVpcsRequest() (request *CreateChooseVpcsRequest) {
     request = &CreateChooseVpcsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3567,6 +3621,64 @@ func (c *Client) ModifyBlockTopWithContext(ctx context.Context, request *ModifyB
     request.SetContext(ctx)
     
     response = NewModifyBlockTopResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyEWRuleStatusRequest() (request *ModifyEWRuleStatusRequest) {
+    request = &ModifyEWRuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyEWRuleStatus")
+    
+    
+    return
+}
+
+func NewModifyEWRuleStatusResponse() (response *ModifyEWRuleStatusResponse) {
+    response = &ModifyEWRuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyEWRuleStatus
+// 启用停用VPC间规则或Nat边界规则
+//
+// VPC间规则需指定EdgeId。Nat边界规则需指定地域Region与Direction。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyEWRuleStatus(request *ModifyEWRuleStatusRequest) (response *ModifyEWRuleStatusResponse, err error) {
+    return c.ModifyEWRuleStatusWithContext(context.Background(), request)
+}
+
+// ModifyEWRuleStatus
+// 启用停用VPC间规则或Nat边界规则
+//
+// VPC间规则需指定EdgeId。Nat边界规则需指定地域Region与Direction。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyEWRuleStatusWithContext(ctx context.Context, request *ModifyEWRuleStatusRequest) (response *ModifyEWRuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyEWRuleStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEWRuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEWRuleStatusResponse()
     err = c.Send(request, response)
     return
 }

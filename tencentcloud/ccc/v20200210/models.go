@@ -994,13 +994,13 @@ type CreateUserSigRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
-	// 用户 ID
+	// 用户 ID，该值必须与 ClientData 字段中 Uid 的值一致
 	Uid *string `json:"Uid,omitnil" name:"Uid"`
 
 	// 有效期，单位秒，不超过 1 小时
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
 
-	// 用户签名数据
+	// 用户签名数据，必填字段，为标准 JSON 格式
 	ClientData *string `json:"ClientData,omitnil" name:"ClientData"`
 }
 
@@ -1010,13 +1010,13 @@ type CreateUserSigRequest struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
-	// 用户 ID
+	// 用户 ID，该值必须与 ClientData 字段中 Uid 的值一致
 	Uid *string `json:"Uid,omitnil" name:"Uid"`
 
 	// 有效期，单位秒，不超过 1 小时
 	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
 
-	// 用户签名数据
+	// 用户签名数据，必填字段，为标准 JSON 格式
 	ClientData *string `json:"ClientData,omitnil" name:"ClientData"`
 }
 

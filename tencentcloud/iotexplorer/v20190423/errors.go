@@ -344,7 +344,7 @@ const (
 	// 设备不存在。
 	RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 
-	// 设备没有影子信息。
+	// 设备影子未创建或是已删除。
 	RESOURCENOTFOUND_DEVICESHADOWNOTEXIST = "ResourceNotFound.DeviceShadowNotExist"
 
 	// 围栏未绑定该设备。

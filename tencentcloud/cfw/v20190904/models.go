@@ -817,6 +817,67 @@ func (r *CreateAddressTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateBlockIgnoreRuleListRequestParams struct {
+	// 规则列表
+	Rules []*IntrusionDefenseRule `json:"Rules,omitnil" name:"Rules"`
+
+	// 规则类型，1封禁，2放通，不支持域名封禁
+	RuleType *int64 `json:"RuleType,omitnil" name:"RuleType"`
+}
+
+type CreateBlockIgnoreRuleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则列表
+	Rules []*IntrusionDefenseRule `json:"Rules,omitnil" name:"Rules"`
+
+	// 规则类型，1封禁，2放通，不支持域名封禁
+	RuleType *int64 `json:"RuleType,omitnil" name:"RuleType"`
+}
+
+func (r *CreateBlockIgnoreRuleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBlockIgnoreRuleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Rules")
+	delete(f, "RuleType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBlockIgnoreRuleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateBlockIgnoreRuleListResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateBlockIgnoreRuleListResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateBlockIgnoreRuleListResponseParams `json:"Response"`
+}
+
+func (r *CreateBlockIgnoreRuleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateBlockIgnoreRuleListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateChooseVpcsRequestParams struct {
 	// vpc列表
 	VpcList []*string `json:"VpcList,omitnil" name:"VpcList"`
@@ -4522,6 +4583,26 @@ type InstanceInfo struct {
 	RegionKey *string `json:"RegionKey,omitnil" name:"RegionKey"`
 }
 
+type IntrusionDefenseRule struct {
+	// 规则方向，0出站，1入站，3内网间
+	Direction *int64 `json:"Direction,omitnil" name:"Direction"`
+
+	// 规则结束时间，格式：2006-01-02 15:04:05，必须大于当前时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 规则IP地址，IP与Domain必填其中之一
+	IP *string `json:"IP,omitnil" name:"IP"`
+
+	// 规则域名，IP与Domain必填其中之一
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 备注信息，长度不能超过50
+	Comment *string `json:"Comment,omitnil" name:"Comment"`
+
+	// 规则开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+}
+
 type IocListData struct {
 	// 待处置IP地址，IP/Domain字段二选一
 	IP *string `json:"IP,omitnil" name:"IP"`
@@ -5078,6 +5159,94 @@ func (r *ModifyBlockTopResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyBlockTopResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEWRuleStatusRequestParams struct {
+	// vpc规则必填，边id
+	EdgeId *string `json:"EdgeId,omitnil" name:"EdgeId"`
+
+	// 是否开关开启，0：未开启，1：开启
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 规则方向，0：出站，1：入站，默认1
+	Direction *uint64 `json:"Direction,omitnil" name:"Direction"`
+
+	// 更改的规则当前执行顺序
+	RuleSequence *uint64 `json:"RuleSequence,omitnil" name:"RuleSequence"`
+
+	// 规则类型，vpc：VPC间规则、nat：Nat边界规则
+	RuleType *string `json:"RuleType,omitnil" name:"RuleType"`
+}
+
+type ModifyEWRuleStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// vpc规则必填，边id
+	EdgeId *string `json:"EdgeId,omitnil" name:"EdgeId"`
+
+	// 是否开关开启，0：未开启，1：开启
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 规则方向，0：出站，1：入站，默认1
+	Direction *uint64 `json:"Direction,omitnil" name:"Direction"`
+
+	// 更改的规则当前执行顺序
+	RuleSequence *uint64 `json:"RuleSequence,omitnil" name:"RuleSequence"`
+
+	// 规则类型，vpc：VPC间规则、nat：Nat边界规则
+	RuleType *string `json:"RuleType,omitnil" name:"RuleType"`
+}
+
+func (r *ModifyEWRuleStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEWRuleStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EdgeId")
+	delete(f, "Status")
+	delete(f, "Direction")
+	delete(f, "RuleSequence")
+	delete(f, "RuleType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEWRuleStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyEWRuleStatusResponseParams struct {
+	// 状态值，0：修改成功，非0：修改失败
+	ReturnCode *int64 `json:"ReturnCode,omitnil" name:"ReturnCode"`
+
+	// 状态信息，success：查询成功，fail：查询失败
+	ReturnMsg *string `json:"ReturnMsg,omitnil" name:"ReturnMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyEWRuleStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyEWRuleStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyEWRuleStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyEWRuleStatusResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6571,6 +6740,9 @@ type RuleInfoData struct {
 
 	// 国家名
 	CountryName *string `json:"CountryName,omitnil" name:"CountryName"`
+
+	// 国家二位iso代码或者省份缩写代码
+	RegionIso *string `json:"RegionIso,omitnil" name:"RegionIso"`
 }
 
 type ScanInfo struct {
@@ -6805,10 +6977,10 @@ type SecurityGroupOrderIndexData struct {
 type SecurityGroupRule struct {
 	// 访问源示例：
 	// net：IP/CIDR(192.168.0.2)
-	// template：参数模板(ipm-dyodhpby)
-	// instance：资产实例(ins-123456)
-	// resourcegroup：资产分组(/全部分组/分组1/子分组1)
-	// tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+	// template：参数模板id(ipm-dyodhpby)
+	// instance：资产实例id(ins-123456)
+	// resourcegroup：资产分组id(cfwrg-xxxx)
+	// tag：资源标签({\"Key\":\"标签key值\",\"Value\":\"标签Value值\"})
 	// region：地域(ap-gaungzhou)
 	SourceContent *string `json:"SourceContent,omitnil" name:"SourceContent"`
 
@@ -6817,10 +6989,10 @@ type SecurityGroupRule struct {
 
 	// 访问目的示例：
 	// net：IP/CIDR(192.168.0.2)
-	// template：参数模板(ipm-dyodhpby)
-	// instance：资产实例(ins-123456)
-	// resourcegroup：资产分组(/全部分组/分组1/子分组1)
-	// tag：资源标签({"Key":"标签key值","Value":"标签Value值"})
+	// template：参数模板id(ipm-dyodhpby)
+	// instance：资产实例id(ins-123456)
+	// resourcegroup：资产分组id(cfwrg-xxxx)
+	// tag：资源标签({\"Key\":\"标签key值\",\"Value\":\"标签Value值\"})
 	// region：地域(ap-gaungzhou)
 	DestContent *string `json:"DestContent,omitnil" name:"DestContent"`
 
@@ -6835,7 +7007,7 @@ type SecurityGroupRule struct {
 	// 描述
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 规则顺序，-1表示最低，1表示最高
+	// 规则顺序，-1表示最低，1表示最高，请勿和外层Type冲突（和外层的Type配合使用，当中间插入时，指定添加位置）
 	OrderIndex *string `json:"OrderIndex,omitnil" name:"OrderIndex"`
 
 	// 协议；TCP/UDP/ICMP/ANY
@@ -6852,9 +7024,10 @@ type SecurityGroupRule struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceTemplateId *string `json:"ServiceTemplateId,omitnil" name:"ServiceTemplateId"`
 
-	// 规则对应的唯一id
+	// （入参时无需填写，自动生成）规则对应的唯一id
 	Id *string `json:"Id,omitnil" name:"Id"`
 
+	// （入参时、Enable已弃用；由通用配置中新增规则启用状态控制）
 	// 规则状态，true表示启用，false表示禁用
 	Enable *string `json:"Enable,omitnil" name:"Enable"`
 }

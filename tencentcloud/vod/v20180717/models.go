@@ -16442,7 +16442,7 @@ func (r *ModifyMediaInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyMediaStorageClassRequestParams struct {
-	// 媒体文件唯一标识列表。
+	// 媒体文件唯一标识列表，最大长度：100。
 	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
 
 	// 目标存储类型。可选值有：
@@ -16469,7 +16469,7 @@ type ModifyMediaStorageClassRequestParams struct {
 type ModifyMediaStorageClassRequest struct {
 	*tchttp.BaseRequest
 	
-	// 媒体文件唯一标识列表。
+	// 媒体文件唯一标识列表，最大长度：100。
 	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
 
 	// 目标存储类型。可选值有：

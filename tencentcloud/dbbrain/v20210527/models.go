@@ -91,6 +91,88 @@ func (r *AddUserContactResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type AlarmProfileList struct {
+	// 0-不是 1-是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsWebHook *int64 `json:"IsWebHook,omitnil" name:"IsWebHook"`
+
+	// 接收告警用户数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiveUinCount *int64 `json:"ReceiveUinCount,omitnil" name:"ReceiveUinCount"`
+
+	// 语言
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Lang *string `json:"Lang,omitnil" name:"Lang"`
+
+	// 模板类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateType *string `json:"TemplateType,omitnil" name:"TemplateType"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 接收组数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiveGroupCount *int64 `json:"ReceiveGroupCount,omitnil" name:"ReceiveGroupCount"`
+
+	// 更新用户的uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateUin *int64 `json:"UpdateUin,omitnil" name:"UpdateUin"`
+
+	// 接收类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiveType []*int64 `json:"ReceiveType,omitnil" name:"ReceiveType"`
+
+	// 接收用户信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiveInfo []*ReceiveInfo `json:"ReceiveInfo,omitnil" name:"ReceiveInfo"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+
+	// 模板名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
+
+	// 发送渠道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SendChannel []*int64 `json:"SendChannel,omitnil" name:"SendChannel"`
+
+	// 模板id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateId *int64 `json:"TemplateId,omitnil" name:"TemplateId"`
+
+	// webhook数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WebHookCount *int64 `json:"WebHookCount,omitnil" name:"WebHookCount"`
+}
+
+type AlarmsRules struct {
+	// 间隔
+	Interval *int64 `json:"Interval,omitnil" name:"Interval"`
+
+	// 告警名
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 指标
+	Metric *string `json:"Metric,omitnil" name:"Metric"`
+
+	// 操作符
+	Operator *string `json:"Operator,omitnil" name:"Operator"`
+
+	// 等级 
+	// fatal-致命
+	// critical-严重
+	// warning-告警
+	// information-通知
+	Severity *string `json:"Severity,omitnil" name:"Severity"`
+
+	// 指标值
+	Value *float64 `json:"Value,omitnil" name:"Value"`
+}
+
 type AuditInstance struct {
 	// 审计状态，已开通审计为：YES，未开通审计为：ON。
 	AuditStatus *string `json:"AuditStatus,omitnil" name:"AuditStatus"`
@@ -1523,6 +1605,89 @@ func (r *DeleteSqlFiltersResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteSqlFiltersResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmTemplateRequestParams struct {
+	// 搜索字段
+	TemplateNameRegexp *string `json:"TemplateNameRegexp,omitnil" name:"TemplateNameRegexp"`
+
+	// 返回限制长度
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏置
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// mysql -  mysql
+	// cynosdb -  tdsql-c
+	Product *string `json:"Product,omitnil" name:"Product"`
+}
+
+type DescribeAlarmTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 搜索字段
+	TemplateNameRegexp *string `json:"TemplateNameRegexp,omitnil" name:"TemplateNameRegexp"`
+
+	// 返回限制长度
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏置
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// mysql -  mysql
+	// cynosdb -  tdsql-c
+	Product *string `json:"Product,omitnil" name:"Product"`
+}
+
+func (r *DescribeAlarmTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TemplateNameRegexp")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Product")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmTemplateResponseParams struct {
+	// 模板列表
+	ProfileList []*AlarmProfileList `json:"ProfileList,omitnil" name:"ProfileList"`
+
+	// 模板总数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAlarmTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAlarmTemplateResponseParams `json:"Response"`
+}
+
+func (r *DescribeAlarmTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4535,6 +4700,11 @@ type InstanceConfs struct {
 	KeyDelimiters []*string `json:"KeyDelimiters,omitnil" name:"KeyDelimiters"`
 }
 
+type InstanceID struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
 type InstanceInfo struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -4768,6 +4938,143 @@ type MailConfiguration struct {
 
 	// 联系组id, 联系人/联系组不能都为空。
 	ContactGroup []*int64 `json:"ContactGroup,omitnil" name:"ContactGroup"`
+}
+
+// Predefined struct for user
+type ModifyAlarmPolicyRequestParams struct {
+	// 类型
+	ApplyType *string `json:"ApplyType,omitnil" name:"ApplyType"`
+
+	// 开启策略
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
+
+	// 列表
+	InstanceIds []*InstanceID `json:"InstanceIds,omitnil" name:"InstanceIds"`
+
+	// User-动态关联该用户所有实例
+	// Instance-关联实例列表的实例
+	NewProfileLevel *string `json:"NewProfileLevel,omitnil" name:"NewProfileLevel"`
+
+	// 新策略名
+	NewProfileName *string `json:"NewProfileName,omitnil" name:"NewProfileName"`
+
+	// 旧策略名
+	ProfileName *string `json:"ProfileName,omitnil" name:"ProfileName"`
+
+	// 策略类型
+	ProfileType *string `json:"ProfileType,omitnil" name:"ProfileType"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 规则类型 0-快速，1-自定义 若值为0，则QuickRule不能为空，若值为1，则Rules 不能为空
+	RuleType *int64 `json:"RuleType,omitnil" name:"RuleType"`
+
+	// 接受模板
+	TemplateInfo []*TemplateInfo `json:"TemplateInfo,omitnil" name:"TemplateInfo"`
+
+	// 快速规则  支持包括fatal-致命, critical-严重,
+	// warning-告警,
+	// information-通知
+	QuickRule *string `json:"QuickRule,omitnil" name:"QuickRule"`
+
+	// 自定义规则
+	Rules []*AlarmsRules `json:"Rules,omitnil" name:"Rules"`
+}
+
+type ModifyAlarmPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 类型
+	ApplyType *string `json:"ApplyType,omitnil" name:"ApplyType"`
+
+	// 开启策略
+	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
+
+	// 列表
+	InstanceIds []*InstanceID `json:"InstanceIds,omitnil" name:"InstanceIds"`
+
+	// User-动态关联该用户所有实例
+	// Instance-关联实例列表的实例
+	NewProfileLevel *string `json:"NewProfileLevel,omitnil" name:"NewProfileLevel"`
+
+	// 新策略名
+	NewProfileName *string `json:"NewProfileName,omitnil" name:"NewProfileName"`
+
+	// 旧策略名
+	ProfileName *string `json:"ProfileName,omitnil" name:"ProfileName"`
+
+	// 策略类型
+	ProfileType *string `json:"ProfileType,omitnil" name:"ProfileType"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 规则类型 0-快速，1-自定义 若值为0，则QuickRule不能为空，若值为1，则Rules 不能为空
+	RuleType *int64 `json:"RuleType,omitnil" name:"RuleType"`
+
+	// 接受模板
+	TemplateInfo []*TemplateInfo `json:"TemplateInfo,omitnil" name:"TemplateInfo"`
+
+	// 快速规则  支持包括fatal-致命, critical-严重,
+	// warning-告警,
+	// information-通知
+	QuickRule *string `json:"QuickRule,omitnil" name:"QuickRule"`
+
+	// 自定义规则
+	Rules []*AlarmsRules `json:"Rules,omitnil" name:"Rules"`
+}
+
+func (r *ModifyAlarmPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAlarmPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ApplyType")
+	delete(f, "Enable")
+	delete(f, "InstanceIds")
+	delete(f, "NewProfileLevel")
+	delete(f, "NewProfileName")
+	delete(f, "ProfileName")
+	delete(f, "ProfileType")
+	delete(f, "Remark")
+	delete(f, "RuleType")
+	delete(f, "TemplateInfo")
+	delete(f, "QuickRule")
+	delete(f, "Rules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAlarmPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAlarmPolicyResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyAlarmPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAlarmPolicyResponseParams `json:"Response"`
+}
+
+func (r *ModifyAlarmPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAlarmPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -5180,6 +5487,42 @@ type ProfileInfo struct {
 
 	// 邮件模板的内容。
 	MailConfiguration *MailConfiguration `json:"MailConfiguration,omitnil" name:"MailConfiguration"`
+}
+
+type ReceiveInfo struct {
+	// 接收组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiveGroup []*int64 `json:"ReceiveGroup,omitnil" name:"ReceiveGroup"`
+
+	// 最后接收时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndReceiveTime *string `json:"EndReceiveTime,omitnil" name:"EndReceiveTime"`
+
+	// 接收名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiveName *string `json:"ReceiveName,omitnil" name:"ReceiveName"`
+
+	// 推送渠道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SendChannel []*int64 `json:"SendChannel,omitnil" name:"SendChannel"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartReceiveTime *string `json:"StartReceiveTime,omitnil" name:"StartReceiveTime"`
+
+	// 接收用户列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReceiveUin []*ReceiveUin `json:"ReceiveUin,omitnil" name:"ReceiveUin"`
+}
+
+type ReceiveUin struct {
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UinName *string `json:"UinName,omitnil" name:"UinName"`
+
+	// 用户id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
 }
 
 type RedisKeySpaceData struct {
@@ -5616,6 +5959,14 @@ type TaskInfo struct {
 
 	// 实例 ID。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type TemplateInfo struct {
+	// 模板id
+	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
+
+	// 模板名
+	TemplateName *string `json:"TemplateName,omitnil" name:"TemplateName"`
 }
 
 type TimeSlice struct {

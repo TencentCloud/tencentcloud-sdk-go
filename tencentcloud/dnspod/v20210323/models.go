@@ -4365,6 +4365,9 @@ type DomainInfo struct {
 	// 域名关联的标签列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TagList []*TagItem `json:"TagList,omitnil" name:"TagList"`
+
+	// 是否启用搜索引擎推送
+	SearchEnginePush *string `json:"SearchEnginePush,omitnil" name:"SearchEnginePush"`
 }
 
 type DomainListItem struct {

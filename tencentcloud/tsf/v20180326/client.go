@@ -10650,7 +10650,7 @@ func NewExecuteTaskResponse() (response *ExecuteTaskResponse) {
 }
 
 // ExecuteTask
-// 手动执行一次任务。
+// 手动执行一次任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKOPERATIONFAILED = "FailedOperation.TaskOperationFailed"
@@ -10669,7 +10669,7 @@ func (c *Client) ExecuteTask(request *ExecuteTaskRequest) (response *ExecuteTask
 }
 
 // ExecuteTask
-// 手动执行一次任务。
+// 手动执行一次任务
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TASKOPERATIONFAILED = "FailedOperation.TaskOperationFailed"

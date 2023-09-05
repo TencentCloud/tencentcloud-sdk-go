@@ -5365,6 +5365,63 @@ func (r *DescribeDeliverBandwidthListResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeDeliverLogDownListRequestParams struct {
+
+}
+
+type DescribeDeliverLogDownListRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeDeliverLogDownListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeliverLogDownListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeliverLogDownListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDeliverLogDownListResponseParams struct {
+	// 日志信息列表。
+	LogInfoList []*PushLogInfo `json:"LogInfoList,omitnil" name:"LogInfoList"`
+
+	// 总条数。
+	TotalNum *uint64 `json:"TotalNum,omitnil" name:"TotalNum"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDeliverLogDownListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDeliverLogDownListResponseParams `json:"Response"`
+}
+
+func (r *DescribeDeliverLogDownListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDeliverLogDownListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeGroupProIspPlayInfoListRequestParams struct {
 	// 起始时间点，
 	// 使用UTC格式时间，
@@ -14148,6 +14205,22 @@ type PushDataInfo struct {
 
 	// metadata 中的帧率。
 	MetaFps *uint64 `json:"MetaFps,omitnil" name:"MetaFps"`
+}
+
+type PushLogInfo struct {
+	// 日志名称。
+	LogName *string `json:"LogName,omitnil" name:"LogName"`
+
+	// 日志下载地址。
+	LogUrl *string `json:"LogUrl,omitnil" name:"LogUrl"`
+
+	// 日志时间。UTC 格式，例如：2018-11-29T19:00:00Z。
+	// 注意：
+	// 1. 北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+	LogTime *string `json:"LogTime,omitnil" name:"LogTime"`
+
+	// 文件大小，单位字节。
+	FileSize *int64 `json:"FileSize,omitnil" name:"FileSize"`
 }
 
 type PushQualityData struct {

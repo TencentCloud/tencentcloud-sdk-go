@@ -1679,6 +1679,69 @@ type AsrWordsConfigureInfoForUpdate struct {
 	LabelSet []*string `json:"LabelSet,omitnil" name:"LabelSet"`
 }
 
+type AudioBeautifyConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitnil" name:"Switch"`
+
+	// 类型，可多选，可选值：
+	// <li>declick：杂音去除</li>
+	// <li>deesser：齿音压制</li>
+	// 默认值：declick。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Types []*string `json:"Types,omitnil" name:"Types"`
+}
+
+type AudioDenoiseConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitnil" name:"Switch"`
+}
+
+type AudioEnhanceConfig struct {
+	// 音频降噪配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Denoise *AudioDenoiseConfig `json:"Denoise,omitnil" name:"Denoise"`
+
+	// 音频分离配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Separate *AudioSeparateConfig `json:"Separate,omitnil" name:"Separate"`
+
+	// 音量均衡配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VolumeBalance *VolumeBalanceConfig `json:"VolumeBalance,omitnil" name:"VolumeBalance"`
+
+	// 音频美化配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Beautify *AudioBeautifyConfig `json:"Beautify,omitnil" name:"Beautify"`
+}
+
+type AudioSeparateConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitnil" name:"Switch"`
+
+	// 场景类型，可选值：
+	// <li>normal：人声背景声场景</li>
+	// <li>music：演唱伴奏场景</li>
+	// 默认值：normal。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 输出音轨，可选值：
+	// <li>vocal：输出人声</li>
+	// <li>background：应用场景为normal时输出背景声，应用场景为music时输出伴奏</li>
+	// 默认值：vocal。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Track *string `json:"Track,omitnil" name:"Track"`
+}
+
 type AudioTemplateInfo struct {
 	// 音频流的编码格式。
 	// 当外层参数 Container 为 mp3 时，可选值为：
@@ -8434,6 +8497,10 @@ type EnhanceConfig struct {
 	// 视频增强配置。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VideoEnhance *VideoEnhanceConfig `json:"VideoEnhance,omitnil" name:"VideoEnhance"`
+
+	// 音频增强配置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AudioEnhance *AudioEnhanceConfig `json:"AudioEnhance,omitnil" name:"AudioEnhance"`
 }
 
 // Predefined struct for user
@@ -14778,6 +14845,21 @@ type VideoTemplateInfoForUpdate struct {
 	// 默认值: 0.   当开启该参数时，将会自适应生成多个不同分辨率，不同码率的码流， 其中VideoTemplate的宽和高为多个码流中的最大分辨率，VideoTemplate中的码率为多个码流中的最高码率， VideoTemplate中的vcrf为多个码流中的最高质量。 当不设置分辨率、码率和vcrf时， ContentAdaptStream 参数生成的最高分辨率为视频源的分辨率，视频质量为接近vmaf95分。 若要开启该参数或了解计费细节, 请联系您的腾讯云商务。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ContentAdaptStream *uint64 `json:"ContentAdaptStream,omitnil" name:"ContentAdaptStream"`
+}
+
+type VolumeBalanceConfig struct {
+	// 能力配置开关，可选值：
+	// <li>ON：开启；</li>
+	// <li>OFF：关闭。</li>
+	// 默认值：ON。
+	Switch *string `json:"Switch,omitnil" name:"Switch"`
+
+	// 类型，可选值：
+	// <li>loudNorm：响度标准化</li>
+	// <li>gainControl：减小突变</li>
+	// 默认值：loudNorm。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
 type WatermarkInput struct {

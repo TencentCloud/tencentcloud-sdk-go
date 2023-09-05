@@ -15601,14 +15601,14 @@ func (r *ExecuteTaskFlowResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ExecuteTaskRequestParams struct {
-	// 任务 ID。
+	// 任务 ID
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type ExecuteTaskRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务 ID。
+	// 任务 ID
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
