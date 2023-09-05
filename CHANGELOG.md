@@ -1,3 +1,150 @@
+# Release v1.0.741
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 42 次发布
+
+发布时间：2023-09-04 01:25:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateBlockIgnoreRuleList](https://cloud.tencent.com/document/api/1132/97724)
+* [ModifyEWRuleStatus](https://cloud.tencent.com/document/api/1132/97723)
+
+新增数据结构：
+
+* [IntrusionDefenseRule](https://cloud.tencent.com/document/api/1132/49071#IntrusionDefenseRule)
+
+修改数据结构：
+
+* [RuleInfoData](https://cloud.tencent.com/document/api/1132/49071#RuleInfoData)
+
+	* 新增成员：RegionIso
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 93 次发布
+
+发布时间：2023-09-04 01:28:05
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
+
+	* 新增入参：Egress
+
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 25 次发布
+
+发布时间：2023-09-04 01:41:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAlarmTemplate](https://cloud.tencent.com/document/api/1130/97726)
+* [ModifyAlarmPolicy](https://cloud.tencent.com/document/api/1130/97725)
+
+新增数据结构：
+
+* [AlarmProfileList](https://cloud.tencent.com/document/api/1130/57812#AlarmProfileList)
+* [AlarmsRules](https://cloud.tencent.com/document/api/1130/57812#AlarmsRules)
+* [InstanceID](https://cloud.tencent.com/document/api/1130/57812#InstanceID)
+* [ReceiveInfo](https://cloud.tencent.com/document/api/1130/57812#ReceiveInfo)
+* [ReceiveUin](https://cloud.tencent.com/document/api/1130/57812#ReceiveUin)
+* [TemplateInfo](https://cloud.tencent.com/document/api/1130/57812#TemplateInfo)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## DNSPod(dnspod) 版本：2021-03-23
+
+### 第 24 次发布
+
+发布时间：2023-09-04 01:44:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainInfo](https://cloud.tencent.com/document/api/1427/56185#DomainInfo)
+
+	* 新增成员：SearchEnginePush
+
+	* <font color="#dd0000">**修改成员**：</font>IsGracePeriod, VipBuffered, VipStartAt, VipEndAt, VipAutoRenew, VipResourceId, IsSubDomain, TagList
+
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 110 次发布
+
+发布时间：2023-09-04 02:06:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDeliverLogDownList](https://cloud.tencent.com/document/api/267/97727)
+
+新增数据结构：
+
+* [PushLogInfo](https://cloud.tencent.com/document/api/267/20474#PushLogInfo)
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 69 次发布
+
+发布时间：2023-09-04 02:12:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AudioBeautifyConfig](https://cloud.tencent.com/document/api/862/37615#AudioBeautifyConfig)
+* [AudioDenoiseConfig](https://cloud.tencent.com/document/api/862/37615#AudioDenoiseConfig)
+* [AudioEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#AudioEnhanceConfig)
+* [AudioSeparateConfig](https://cloud.tencent.com/document/api/862/37615#AudioSeparateConfig)
+* [VolumeBalanceConfig](https://cloud.tencent.com/document/api/862/37615#VolumeBalanceConfig)
+
+修改数据结构：
+
+* [EnhanceConfig](https://cloud.tencent.com/document/api/862/37615#EnhanceConfig)
+
+	* 新增成员：AudioEnhance
+
+
+
+
 # Release v1.0.740
 
 ## 云防火墙(cfw) 版本：2019-09-04

@@ -83,7 +83,7 @@
 | domain | [域名注册](https://cloud.tencent.com/document/product/242) | 2023-08-17 02:58:55 |
 | drm | [数字版权管理](https://cloud.tencent.com/document/product/1000) | 2023-08-17 02:59:36 |
 | ds | [文档服务](https://cloud.tencent.com/document/product/869) | 2023-08-17 02:59:40 |
-| dsgc | [数据安全中心](https://cloud.tencent.com/document/product/1087) | 2023-09-04 14:40:54 |
+| dsgc | [数据安全中心](https://cloud.tencent.com/document/product/1087) | 2023-08-31 01:14:45 |
 | dtf | [分布式事务](https://cloud.tencent.com/document/product/1224) | 2022-04-04 06:38:57 |
 | dts | [数据传输服务](https://cloud.tencent.com/document/product/571) | 2023-09-01 01:13:57 |
 | eb | [事件总线](https://cloud.tencent.com/document/product/1359) | 2023-08-22 01:12:28 |
