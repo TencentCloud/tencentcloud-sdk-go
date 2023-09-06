@@ -948,6 +948,7 @@ func NewCreateRoomResponse() (response *CreateRoomResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
 //  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -970,6 +971,7 @@ func (c *Client) CreateRoom(request *CreateRoomRequest) (response *CreateRoomRes
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CONTENT = "InvalidParameter.Content"
 //  INVALIDPARAMETER_ENDTIME = "InvalidParameter.EndTime"
+//  INVALIDPARAMETER_ROOMTYPEINVALID = "InvalidParameter.RoomTypeInvalid"
 //  INVALIDPARAMETER_SDKAPPID = "InvalidParameter.SdkAppId"
 //  INVALIDPARAMETER_STARTTIME = "InvalidParameter.StartTime"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
@@ -2148,6 +2150,7 @@ func NewDescribeGroupListResponse() (response *DescribeGroupListResponse) {
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"
@@ -2169,6 +2172,7 @@ func (c *Client) DescribeGroupList(request *DescribeGroupListRequest) (response 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_GROUPMEMBEROVERLIMIT = "InvalidParameter.GroupMemberOverLimit"

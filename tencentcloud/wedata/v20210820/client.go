@@ -755,6 +755,7 @@ func NewBatchStopIntegrationTasksResponse() (response *BatchStopIntegrationTasks
 // 批量停止集成任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) BatchStopIntegrationTasks(request *BatchStopIntegrationTasksRequest) (response *BatchStopIntegrationTasksResponse, err error) {
     return c.BatchStopIntegrationTasksWithContext(context.Background(), request)
@@ -764,6 +765,7 @@ func (c *Client) BatchStopIntegrationTasks(request *BatchStopIntegrationTasksReq
 // 批量停止集成任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) BatchStopIntegrationTasksWithContext(ctx context.Context, request *BatchStopIntegrationTasksRequest) (response *BatchStopIntegrationTasksResponse, err error) {
     if request == nil {
@@ -3851,12 +3853,7 @@ func NewDescribeAllByFolderNewResponse() (response *DescribeAllByFolderNewRespon
 // 查询父目录下所有子文件夹+工作流
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAllByFolderNew(request *DescribeAllByFolderNewRequest) (response *DescribeAllByFolderNewResponse, err error) {
     return c.DescribeAllByFolderNewWithContext(context.Background(), request)
 }
@@ -3865,12 +3862,7 @@ func (c *Client) DescribeAllByFolderNew(request *DescribeAllByFolderNewRequest) 
 // 查询父目录下所有子文件夹+工作流
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAllByFolderNewWithContext(ctx context.Context, request *DescribeAllByFolderNewRequest) (response *DescribeAllByFolderNewResponse, err error) {
     if request == nil {
         request = NewDescribeAllByFolderNewRequest()
@@ -3909,12 +3901,7 @@ func NewDescribeAllTaskTypeResponse() (response *DescribeAllTaskTypeResponse) {
 // 获取所有任务类型
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAllTaskType(request *DescribeAllTaskTypeRequest) (response *DescribeAllTaskTypeResponse, err error) {
     return c.DescribeAllTaskTypeWithContext(context.Background(), request)
 }
@@ -3923,12 +3910,7 @@ func (c *Client) DescribeAllTaskType(request *DescribeAllTaskTypeRequest) (respo
 // 获取所有任务类型
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAllTaskTypeWithContext(ctx context.Context, request *DescribeAllTaskTypeRequest) (response *DescribeAllTaskTypeResponse, err error) {
     if request == nil {
         request = NewDescribeAllTaskTypeRequest()
@@ -3967,12 +3949,7 @@ func NewDescribeAllUsedVersionSonResponse() (response *DescribeAllUsedVersionSon
 // 根据任务Id查找生产态子任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAllUsedVersionSon(request *DescribeAllUsedVersionSonRequest) (response *DescribeAllUsedVersionSonResponse, err error) {
     return c.DescribeAllUsedVersionSonWithContext(context.Background(), request)
 }
@@ -3981,12 +3958,7 @@ func (c *Client) DescribeAllUsedVersionSon(request *DescribeAllUsedVersionSonReq
 // 根据任务Id查找生产态子任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeAllUsedVersionSonWithContext(ctx context.Context, request *DescribeAllUsedVersionSonRequest) (response *DescribeAllUsedVersionSonResponse, err error) {
     if request == nil {
         request = NewDescribeAllUsedVersionSonRequest()
@@ -12233,13 +12205,7 @@ func NewForceSucScheduleInstancesResponse() (response *ForceSucScheduleInstances
 // 实例强制成功
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ForceSucScheduleInstances(request *ForceSucScheduleInstancesRequest) (response *ForceSucScheduleInstancesResponse, err error) {
     return c.ForceSucScheduleInstancesWithContext(context.Background(), request)
 }
@@ -12248,13 +12214,7 @@ func (c *Client) ForceSucScheduleInstances(request *ForceSucScheduleInstancesReq
 // 实例强制成功
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ForceSucScheduleInstancesWithContext(ctx context.Context, request *ForceSucScheduleInstancesRequest) (response *ForceSucScheduleInstancesResponse, err error) {
     if request == nil {
         request = NewForceSucScheduleInstancesRequest()

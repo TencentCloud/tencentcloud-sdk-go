@@ -944,6 +944,10 @@ type Cluster struct {
 	// 集群容灾类型，如SINGLE-ZONE，DISASTER-RECOVERY，MUTUAL-DISASTER-RECOVERY
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DisasterRecoveryType *string `json:"DisasterRecoveryType,omitnil" name:"DisasterRecoveryType"`
+
+	// 网络出口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Egress *string `json:"Egress,omitnil" name:"Egress"`
 }
 
 type ClusterItem struct {
@@ -5511,6 +5515,10 @@ type LoadBalancer struct {
 	// 负载均衡实例的域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitnil" name:"LoadBalancerDomain"`
+
+	// 网络出口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Egress *string `json:"Egress,omitnil" name:"Egress"`
 }
 
 type LoadBalancerDetail struct {
@@ -5665,6 +5673,10 @@ type LoadBalancerDetail struct {
 	// 负载均衡实例的域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitnil" name:"LoadBalancerDomain"`
+
+	// 网络出口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Egress *string `json:"Egress,omitnil" name:"Egress"`
 }
 
 type LoadBalancerHealth struct {
@@ -8385,4 +8397,8 @@ type ZoneResource struct {
 
 	// 可用区是否是EdgeZone可用区，如：false
 	EdgeZone *bool `json:"EdgeZone,omitnil" name:"EdgeZone"`
+
+	// 网络出口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Egress *string `json:"Egress,omitnil" name:"Egress"`
 }

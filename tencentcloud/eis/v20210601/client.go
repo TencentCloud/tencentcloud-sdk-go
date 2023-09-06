@@ -214,6 +214,7 @@ func NewListDeployableRuntimesMCResponse() (response *ListDeployableRuntimesMCRe
 //  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
 //  INVALIDPARAMETERVALUE_PILOTZONENOTSUPPORTED = "InvalidParameterValue.PilotZoneNotSupported"
 //  INVALIDPARAMETERVALUE_PROJECTANDINSTANCENOTMATCH = "InvalidParameterValue.ProjectAndInstanceNotMatch"
+//  INVALIDPARAMETERVALUE_PROJECTINSTANCENOTFOUND = "InvalidParameterValue.ProjectInstanceNotFound"
 func (c *Client) ListDeployableRuntimesMC(request *ListDeployableRuntimesMCRequest) (response *ListDeployableRuntimesMCResponse, err error) {
     return c.ListDeployableRuntimesMCWithContext(context.Background(), request)
 }
@@ -229,6 +230,7 @@ func (c *Client) ListDeployableRuntimesMC(request *ListDeployableRuntimesMCReque
 //  INTERNALERROR_RPCPILOTSERVERERROR = "InternalError.RpcPilotServerError"
 //  INVALIDPARAMETERVALUE_PILOTZONENOTSUPPORTED = "InvalidParameterValue.PilotZoneNotSupported"
 //  INVALIDPARAMETERVALUE_PROJECTANDINSTANCENOTMATCH = "InvalidParameterValue.ProjectAndInstanceNotMatch"
+//  INVALIDPARAMETERVALUE_PROJECTINSTANCENOTFOUND = "InvalidParameterValue.ProjectInstanceNotFound"
 func (c *Client) ListDeployableRuntimesMCWithContext(ctx context.Context, request *ListDeployableRuntimesMCRequest) (response *ListDeployableRuntimesMCResponse, err error) {
     if request == nil {
         request = NewListDeployableRuntimesMCRequest()

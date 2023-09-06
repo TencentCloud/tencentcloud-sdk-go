@@ -1,38 +1,48 @@
 # 本版本更新包含以下内容：
 
-## 云防火墙(cfw) 版本：2019-09-04
+## 日志服务(cls) 版本：2020-10-16
 
-### 第 42 次发布
+### 第 70 次发布
 
-发布时间：2023-09-04 01:25:21
+发布时间：2023-09-06 01:23:36
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+修改数据结构：
 
-* [CreateBlockIgnoreRuleList](https://cloud.tencent.com/document/api/1132/97724)
-* [ModifyEWRuleStatus](https://cloud.tencent.com/document/api/1132/97723)
+* [ExportInfo](https://cloud.tencent.com/document/api/614/56471#ExportInfo)
 
-新增数据结构：
+	* 新增成员：SyntaxRule
 
-* [IntrusionDefenseRule](https://cloud.tencent.com/document/api/1132/49071#IntrusionDefenseRule)
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 115 次发布
+
+发布时间：2023-09-06 01:29:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [RuleInfoData](https://cloud.tencent.com/document/api/1132/49071#RuleInfoData)
+* [Placement](https://cloud.tencent.com/document/api/213/15753#Placement)
 
-	* 新增成员：RegionIso
-
-
+	* <font color="#dd0000">**删除成员**：</font>HostIps
 
 
-## 负载均衡(clb) 版本：2018-03-17
 
-### 第 93 次发布
 
-发布时间：2023-09-04 01:28:05
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 111 次发布
+
+发布时间：2023-09-05 17:35:52
 
 本次发布包含了以下内容：
 
@@ -40,48 +50,16 @@
 
 修改接口：
 
-* [CreateLoadBalancer](https://cloud.tencent.com/document/api/214/30692)
-
-	* 新增入参：Egress
+* [StartFlow](https://cloud.tencent.com/document/api/1323/70357)
 
 
 
 
-## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 25 次发布
+### 第 108 次发布
 
-发布时间：2023-09-04 01:41:27
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeAlarmTemplate](https://cloud.tencent.com/document/api/1130/97726)
-* [ModifyAlarmPolicy](https://cloud.tencent.com/document/api/1130/97725)
-
-新增数据结构：
-
-* [AlarmProfileList](https://cloud.tencent.com/document/api/1130/57812#AlarmProfileList)
-* [AlarmsRules](https://cloud.tencent.com/document/api/1130/57812#AlarmsRules)
-* [InstanceID](https://cloud.tencent.com/document/api/1130/57812#InstanceID)
-* [ReceiveInfo](https://cloud.tencent.com/document/api/1130/57812#ReceiveInfo)
-* [ReceiveUin](https://cloud.tencent.com/document/api/1130/57812#ReceiveUin)
-* [TemplateInfo](https://cloud.tencent.com/document/api/1130/57812#TemplateInfo)
-
-
-
-## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
-
-
-
-## DNSPod(dnspod) 版本：2021-03-23
-
-### 第 24 次发布
-
-发布时间：2023-09-04 01:44:32
+发布时间：2023-09-05 17:36:50
 
 本次发布包含了以下内容：
 
@@ -89,20 +67,85 @@
 
 修改数据结构：
 
-* [DomainInfo](https://cloud.tencent.com/document/api/1427/56185#DomainInfo)
+* [SignUrlInfo](https://cloud.tencent.com/document/api/1420/61525#SignUrlInfo)
 
-	* 新增成员：SearchEnginePush
-
-	* <font color="#dd0000">**修改成员**：</font>IsGracePeriod, VipBuffered, VipStartAt, VipEndAt, VipAutoRenew, VipResourceId, IsSubDomain, TagList
+	* <font color="#dd0000">**修改成员**：</font>CustomUserId
 
 
 
 
-## 云直播CSS(live) 版本：2018-08-01
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
 
-### 第 110 次发布
 
-发布时间：2023-09-04 02:06:58
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 63 次发布
+
+发布时间：2023-09-06 01:49:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ChargeDetail](https://cloud.tencent.com/document/api/1007/41958#ChargeDetail)
+
+	* 新增成员：IdCard
+
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 41 次发布
+
+发布时间：2023-09-06 02:00:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+
+	* 新增入参：EndDelayTime
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：EndDelayTime
+
+* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
+
+	* 新增入参：EndDelayTime
+
+
+修改数据结构：
+
+* [DocumentInfo](https://cloud.tencent.com/document/api/1639/81423#DocumentInfo)
+
+	* 新增成员：Preview
+
+	* <font color="#dd0000">**修改成员**：</font>DocumentId, DocumentUrl, DocumentName, Owner, SdkAppId, Permission, TranscodeResult, TranscodeType, TranscodeProgress, TranscodeState, TranscodeInfo, DocumentType, DocumentSize, UpdateTime, Pages, Width, Height, Cover
+
+* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
+
+	* 新增成员：EndDelayTime
+
+* [RoomItem](https://cloud.tencent.com/document/api/1639/81423#RoomItem)
+
+	* 新增成员：EndDelayTime
+
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 92 次发布
+
+发布时间：2023-09-06 02:06:16
 
 本次发布包含了以下内容：
 
@@ -110,37 +153,113 @@
 
 新增接口：
 
-* [DescribeDeliverLogDownList](https://cloud.tencent.com/document/api/267/97727)
+* [DescribePrometheusRegions](https://cloud.tencent.com/document/api/248/97797)
 
 新增数据结构：
 
-* [PushLogInfo](https://cloud.tencent.com/document/api/267/20474#PushLogInfo)
+* [PrometheusRegionItem](https://cloud.tencent.com/document/api/248/30354#PrometheusRegionItem)
 
 
 
-## 媒体处理(mps) 版本：2019-06-12
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
 
-### 第 69 次发布
+### 第 38 次发布
 
-发布时间：2023-09-04 02:12:09
+发布时间：2023-09-06 02:10:27
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增数据结构：
+修改数据结构：
 
-* [AudioBeautifyConfig](https://cloud.tencent.com/document/api/862/37615#AudioBeautifyConfig)
-* [AudioDenoiseConfig](https://cloud.tencent.com/document/api/862/37615#AudioDenoiseConfig)
-* [AudioEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#AudioEnhanceConfig)
-* [AudioSeparateConfig](https://cloud.tencent.com/document/api/862/37615#AudioSeparateConfig)
-* [VolumeBalanceConfig](https://cloud.tencent.com/document/api/862/37615#VolumeBalanceConfig)
+* [RunJobDescription](https://cloud.tencent.com/document/api/849/52010#RunJobDescription)
+
+	* 新增成员：CustomTimestamp
+
+
+
+
+## 高性能计算平台(thpc) 版本：2023-03-21
+
+### 第 9 次发布
+
+发布时间：2023-09-06 02:32:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
 
 修改数据结构：
 
-* [EnhanceConfig](https://cloud.tencent.com/document/api/862/37615#EnhanceConfig)
+* [QueueConfigOverview](https://cloud.tencent.com/document/api/1527/89579#QueueConfigOverview)
 
-	* 新增成员：AudioEnhance
+	* <font color="#dd0000">**修改成员**：</font>QueueName, MinSize, MaxSize, EnableAutoExpansion, EnableAutoShrink, ExpansionNodeConfigs, DesiredIdleNodeCapacity, ScaleOutRatio, ScaleOutNodeThreshold, MaxNodesPerCycle
+
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 37 次发布
+
+发布时间：2023-09-06 02:33:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
+
+	* 新增入参：ServiceEIP
+
+* [ModifyModelService](https://cloud.tencent.com/document/api/851/83228)
+
+	* 新增入参：ServiceEIP
+
+
+修改数据结构：
+
+* [PodInfo](https://cloud.tencent.com/document/api/851/75051#PodInfo)
+
+	* 新增成员：StartTime, EndTime, ResourceConfigInfo
+
+* [Spec](https://cloud.tencent.com/document/api/851/75051#Spec)
+
+	* 新增成员：SpecFeatures, SpecType, GpuType, CategoryId
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 42 次发布
+
+发布时间：2023-09-06 02:36:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KongServicePreview](https://cloud.tencent.com/document/api/1364/54942#KongServicePreview)
+
+	* 新增成员：Path
 
 
 
@@ -20378,6 +20497,26 @@
 
 ## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
 
+### 第 16 次发布
+
+发布时间：2023-09-05 02:01:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyUserNewPrivilege](https://cloud.tencent.com/document/api/1299/83422)
+
+	* 新增入参：InstanceId, Cluster, UserName, AllDatabase, GlobalPrivileges, DatabasePrivilegeList
+
+
+新增数据结构：
+
+* [DatabasePrivilegeInfo](https://cloud.tencent.com/document/api/1299/83429#DatabasePrivilegeInfo)
+* [TablePrivilegeInfo](https://cloud.tencent.com/document/api/1299/83429#TablePrivilegeInfo)
+
 ### 第 15 次发布
 
 发布时间：2023-08-31 01:09:05
@@ -21420,12 +21559,12 @@
 
 新增接口：
 
-* [[CreateBlockIgnoreRuleList](https://cloud.tencent.com/document/api/1132/97724)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyEWRuleStatus](https://cloud.tencent.com/document/api/1132/97723)](https://cloud.tencent.com/document/api/#/#)
+* [CreateBlockIgnoreRuleList](https://cloud.tencent.com/document/api/1132/97724)
+* [ModifyEWRuleStatus](https://cloud.tencent.com/document/api/1132/97723)
 
 新增数据结构：
 
-* [[IntrusionDefenseRule](https://cloud.tencent.com/document/api/1132/49071#IntrusionDefenseRule)](https://cloud.tencent.com/document/api/1132/49071#[IntrusionDefenseRule](https://cloud.tencent.com/document/api/1132/49071#IntrusionDefenseRule))
+* [IntrusionDefenseRule](https://cloud.tencent.com/document/api/1132/49071#IntrusionDefenseRule)
 
 修改数据结构：
 
@@ -25112,6 +25251,35 @@
 
 ## 负载均衡(clb) 版本：2018-03-17
 
+### 第 94 次发布
+
+发布时间：2023-09-05 02:16:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/214/30694#Cluster)
+
+	* 新增成员：Egress
+
+* [LoadBalancer](https://cloud.tencent.com/document/api/214/30694#LoadBalancer)
+
+	* 新增成员：Egress
+
+* [LoadBalancerDetail](https://cloud.tencent.com/document/api/214/30694#LoadBalancerDetail)
+
+	* 新增成员：Egress
+
+	* <font color="#dd0000">**修改成员**：</font>LoadBalancerDomain
+
+* [ZoneResource](https://cloud.tencent.com/document/api/214/30694#ZoneResource)
+
+	* 新增成员：Egress
+
+
 ### 第 93 次发布
 
 发布时间：2023-09-04 01:28:05
@@ -27642,6 +27810,36 @@
 
 
 ## 日志服务(cls) 版本：2020-10-16
+
+### 第 70 次发布
+
+发布时间：2023-09-06 01:23:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ExportInfo](https://cloud.tencent.com/document/api/614/56471#ExportInfo)
+
+	* 新增成员：SyntaxRule
+
+
+### 第 69 次发布
+
+发布时间：2023-09-05 02:24:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MachineInfo](https://cloud.tencent.com/document/api/614/56471#MachineInfo)
+
+	* 新增成员：InstanceID
+
 
 ### 第 68 次发布
 
@@ -33822,6 +34020,21 @@
 
 
 ## 云服务器(cvm) 版本：2017-03-12
+
+### 第 115 次发布
+
+发布时间：2023-09-06 01:29:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Placement](https://cloud.tencent.com/document/api/213/15753#Placement)
+
+	* <font color="#dd0000">**删除成员**：</font>HostIps
+
 
 ### 第 114 次发布
 
@@ -41562,17 +41775,17 @@
 
 新增接口：
 
-* [[DescribeAlarmTemplate](https://cloud.tencent.com/document/api/1130/97726)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAlarmPolicy](https://cloud.tencent.com/document/api/1130/97725)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAlarmTemplate](https://cloud.tencent.com/document/api/1130/97726)
+* [ModifyAlarmPolicy](https://cloud.tencent.com/document/api/1130/97725)
 
 新增数据结构：
 
-* [[AlarmProfileList](https://cloud.tencent.com/document/api/1130/57812#AlarmProfileList)](https://cloud.tencent.com/document/api/1130/57812#[AlarmProfileList](https://cloud.tencent.com/document/api/1130/57812#AlarmProfileList))
-* [[AlarmsRules](https://cloud.tencent.com/document/api/1130/57812#AlarmsRules)](https://cloud.tencent.com/document/api/1130/57812#[AlarmsRules](https://cloud.tencent.com/document/api/1130/57812#AlarmsRules))
-* [[InstanceID](https://cloud.tencent.com/document/api/1130/57812#InstanceID)](https://cloud.tencent.com/document/api/1130/57812#[InstanceID](https://cloud.tencent.com/document/api/1130/57812#InstanceID))
-* [[ReceiveInfo](https://cloud.tencent.com/document/api/1130/57812#ReceiveInfo)](https://cloud.tencent.com/document/api/1130/57812#[ReceiveInfo](https://cloud.tencent.com/document/api/1130/57812#ReceiveInfo))
-* [[ReceiveUin](https://cloud.tencent.com/document/api/1130/57812#ReceiveUin)](https://cloud.tencent.com/document/api/1130/57812#[ReceiveUin](https://cloud.tencent.com/document/api/1130/57812#ReceiveUin))
-* [[TemplateInfo](https://cloud.tencent.com/document/api/1130/57812#TemplateInfo)](https://cloud.tencent.com/document/api/1130/57812#[TemplateInfo](https://cloud.tencent.com/document/api/1130/57812#TemplateInfo))
+* [AlarmProfileList](https://cloud.tencent.com/document/api/1130/57812#AlarmProfileList)
+* [AlarmsRules](https://cloud.tencent.com/document/api/1130/57812#AlarmsRules)
+* [InstanceID](https://cloud.tencent.com/document/api/1130/57812#InstanceID)
+* [ReceiveInfo](https://cloud.tencent.com/document/api/1130/57812#ReceiveInfo)
+* [ReceiveUin](https://cloud.tencent.com/document/api/1130/57812#ReceiveUin)
+* [TemplateInfo](https://cloud.tencent.com/document/api/1130/57812#TemplateInfo)
 
 ### 第 24 次发布
 
@@ -48152,6 +48365,21 @@
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
 
+### 第 70 次发布
+
+发布时间：2023-09-05 10:56:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSubnet](https://cloud.tencent.com/document/api/1108/43594)
+
+	* 新增入参：IPv6CidrBlock
+
+
 ### 第 69 次发布
 
 发布时间：2023-09-01 01:14:14
@@ -52495,6 +52723,34 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 111 次发布
+
+发布时间：2023-09-05 17:35:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [StartFlow](https://cloud.tencent.com/document/api/1323/70357)
+
+
+### 第 110 次发布
+
+发布时间：2023-09-05 04:25:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [FlowApproverDetail](https://cloud.tencent.com/document/api/1323/70369#FlowApproverDetail)
+
+	* 新增成员：SignId
+
+
 ### 第 109 次发布
 
 发布时间：2023-08-31 16:45:41
@@ -54666,6 +54922,21 @@
 
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 108 次发布
+
+发布时间：2023-09-05 17:36:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SignUrlInfo](https://cloud.tencent.com/document/api/1420/61525#SignUrlInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>CustomUserId
+
 
 ### 第 107 次发布
 
@@ -56848,6 +57119,21 @@
 
 
 ## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 63 次发布
+
+发布时间：2023-09-06 01:49:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ChargeDetail](https://cloud.tencent.com/document/api/1007/41958#ChargeDetail)
+
+	* 新增成员：IdCard
+
 
 ### 第 62 次发布
 
@@ -68630,6 +68916,46 @@
 
 ## 低代码互动课堂(lcic) 版本：2022-08-17
 
+### 第 41 次发布
+
+发布时间：2023-09-06 02:00:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+
+	* 新增入参：EndDelayTime
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：EndDelayTime
+
+* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
+
+	* 新增入参：EndDelayTime
+
+
+修改数据结构：
+
+* [DocumentInfo](https://cloud.tencent.com/document/api/1639/81423#DocumentInfo)
+
+	* 新增成员：Preview
+
+	* <font color="#dd0000">**修改成员**：</font>DocumentId, DocumentUrl, DocumentName, Owner, SdkAppId, Permission, TranscodeResult, TranscodeType, TranscodeProgress, TranscodeState, TranscodeInfo, DocumentType, DocumentSize, UpdateTime, Pages, Width, Height, Cover
+
+* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
+
+	* 新增成员：EndDelayTime
+
+* [RoomItem](https://cloud.tencent.com/document/api/1639/81423#RoomItem)
+
+	* 新增成员：EndDelayTime
+
+
 ### 第 40 次发布
 
 发布时间：2023-08-29 01:17:54
@@ -70465,11 +70791,11 @@
 
 新增接口：
 
-* [[DescribeDeliverLogDownList](https://cloud.tencent.com/document/api/267/97727)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeDeliverLogDownList](https://cloud.tencent.com/document/api/267/97727)
 
 新增数据结构：
 
-* [[PushLogInfo](https://cloud.tencent.com/document/api/267/20474#PushLogInfo)](https://cloud.tencent.com/document/api/267/20474#[PushLogInfo](https://cloud.tencent.com/document/api/267/20474#PushLogInfo))
+* [PushLogInfo](https://cloud.tencent.com/document/api/267/20474#PushLogInfo)
 
 ### 第 109 次发布
 
@@ -75175,6 +75501,22 @@
 
 ## 腾讯云可观测平台(monitor) 版本：2018-07-24
 
+### 第 92 次发布
+
+发布时间：2023-09-06 02:06:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribePrometheusRegions](https://cloud.tencent.com/document/api/248/97797)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[PrometheusRegionItem](https://cloud.tencent.com/document/api/248/30354#PrometheusRegionItem)](https://cloud.tencent.com/document/api/248/30354#[PrometheusRegionItem](https://cloud.tencent.com/document/api/248/30354#PrometheusRegionItem))
+
 ### 第 91 次发布
 
 发布时间：2023-07-19 01:32:20
@@ -77142,11 +77484,11 @@
 
 新增数据结构：
 
-* [[AudioBeautifyConfig](https://cloud.tencent.com/document/api/862/37615#AudioBeautifyConfig)](https://cloud.tencent.com/document/api/862/37615#[AudioBeautifyConfig](https://cloud.tencent.com/document/api/862/37615#AudioBeautifyConfig))
-* [[AudioDenoiseConfig](https://cloud.tencent.com/document/api/862/37615#AudioDenoiseConfig)](https://cloud.tencent.com/document/api/862/37615#[AudioDenoiseConfig](https://cloud.tencent.com/document/api/862/37615#AudioDenoiseConfig))
-* [[AudioEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#AudioEnhanceConfig)](https://cloud.tencent.com/document/api/862/37615#[AudioEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#AudioEnhanceConfig))
-* [[AudioSeparateConfig](https://cloud.tencent.com/document/api/862/37615#AudioSeparateConfig)](https://cloud.tencent.com/document/api/862/37615#[AudioSeparateConfig](https://cloud.tencent.com/document/api/862/37615#AudioSeparateConfig))
-* [[VolumeBalanceConfig](https://cloud.tencent.com/document/api/862/37615#VolumeBalanceConfig)](https://cloud.tencent.com/document/api/862/37615#[VolumeBalanceConfig](https://cloud.tencent.com/document/api/862/37615#VolumeBalanceConfig))
+* [AudioBeautifyConfig](https://cloud.tencent.com/document/api/862/37615#AudioBeautifyConfig)
+* [AudioDenoiseConfig](https://cloud.tencent.com/document/api/862/37615#AudioDenoiseConfig)
+* [AudioEnhanceConfig](https://cloud.tencent.com/document/api/862/37615#AudioEnhanceConfig)
+* [AudioSeparateConfig](https://cloud.tencent.com/document/api/862/37615#AudioSeparateConfig)
+* [VolumeBalanceConfig](https://cloud.tencent.com/document/api/862/37615#VolumeBalanceConfig)
 
 修改数据结构：
 
@@ -80831,6 +81173,21 @@
 
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 38 次发布
+
+发布时间：2023-09-06 02:10:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RunJobDescription](https://cloud.tencent.com/document/api/849/52010#RunJobDescription)
+
+	* 新增成员：CustomTimestamp
+
 
 ### 第 37 次发布
 
@@ -92335,6 +92692,45 @@
 
 ## SSL 证书(ssl) 版本：2019-12-05
 
+### 第 42 次发布
+
+发布时间：2023-09-05 06:45:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCertificateBindResourceSyncTask](https://cloud.tencent.com/document/api/400/97759)
+* [DescribeCertificateBindResourceTaskDetail](https://cloud.tencent.com/document/api/400/97758)
+* [DescribeCertificateBindResourceTaskResult](https://cloud.tencent.com/document/api/400/97757)
+
+新增数据结构：
+
+* [ApiGatewayInstanceList](https://cloud.tencent.com/document/api/400/41679#ApiGatewayInstanceList)
+* [BindResourceRegionResult](https://cloud.tencent.com/document/api/400/41679#BindResourceRegionResult)
+* [BindResourceResult](https://cloud.tencent.com/document/api/400/41679#BindResourceResult)
+* [CdnInstanceList](https://cloud.tencent.com/document/api/400/41679#CdnInstanceList)
+* [CertTaskId](https://cloud.tencent.com/document/api/400/41679#CertTaskId)
+* [ClbInstanceList](https://cloud.tencent.com/document/api/400/41679#ClbInstanceList)
+* [DdosInstanceList](https://cloud.tencent.com/document/api/400/41679#DdosInstanceList)
+* [Error](https://cloud.tencent.com/document/api/400/41679#Error)
+* [LiveInstanceList](https://cloud.tencent.com/document/api/400/41679#LiveInstanceList)
+* [SyncTaskBindResourceResult](https://cloud.tencent.com/document/api/400/41679#SyncTaskBindResourceResult)
+* [TCBAccessInstance](https://cloud.tencent.com/document/api/400/41679#TCBAccessInstance)
+* [TCBAccessService](https://cloud.tencent.com/document/api/400/41679#TCBAccessService)
+* [TCBEnvironment](https://cloud.tencent.com/document/api/400/41679#TCBEnvironment)
+* [TCBEnvironments](https://cloud.tencent.com/document/api/400/41679#TCBEnvironments)
+* [TCBHostInstance](https://cloud.tencent.com/document/api/400/41679#TCBHostInstance)
+* [TCBHostService](https://cloud.tencent.com/document/api/400/41679#TCBHostService)
+* [TCBInstanceList](https://cloud.tencent.com/document/api/400/41679#TCBInstanceList)
+* [TeoInstanceList](https://cloud.tencent.com/document/api/400/41679#TeoInstanceList)
+* [TkeInstanceList](https://cloud.tencent.com/document/api/400/41679#TkeInstanceList)
+* [VODInstanceList](https://cloud.tencent.com/document/api/400/41679#VODInstanceList)
+* [WafInstanceDetail](https://cloud.tencent.com/document/api/400/41679#WafInstanceDetail)
+* [WafInstanceList](https://cloud.tencent.com/document/api/400/41679#WafInstanceList)
+
 ### 第 41 次发布
 
 发布时间：2023-08-30 01:21:56
@@ -101896,6 +102292,24 @@
 
 ## 消息队列 TDMQ(tdmq) 版本：2020-02-17
 
+### 第 76 次发布
+
+发布时间：2023-09-05 07:38:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRocketMQMsgTrace](https://cloud.tencent.com/document/api/1179/97760)
+* [DescribeRocketMQTopicMsgs](https://cloud.tencent.com/document/api/1179/97761)
+
+新增数据结构：
+
+* [RocketMQMsgLog](https://cloud.tencent.com/document/api/1179/46089#RocketMQMsgLog)
+* [TraceResult](https://cloud.tencent.com/document/api/1179/46089#TraceResult)
+
 ### 第 75 次发布
 
 发布时间：2023-08-25 02:13:40
@@ -105900,6 +106314,18 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 50 次发布
+
+发布时间：2023-09-05 07:43:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateSharedCNAME](https://cloud.tencent.com/document/api/1552/97762)
+
 ### 第 49 次发布
 
 发布时间：2023-08-16 01:45:46
@@ -107856,6 +108282,21 @@
 
 ## 高性能计算平台(thpc) 版本：2023-03-21
 
+### 第 9 次发布
+
+发布时间：2023-09-06 02:32:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [QueueConfigOverview](https://cloud.tencent.com/document/api/1527/89579#QueueConfigOverview)
+
+	* <font color="#dd0000">**修改成员**：</font>QueueName, MinSize, MaxSize, EnableAutoExpansion, EnableAutoShrink, ExpansionNodeConfigs, DesiredIdleNodeCapacity, ScaleOutRatio, ScaleOutNodeThreshold, MaxNodesPerCycle
+
+
 ### 第 8 次发布
 
 发布时间：2023-06-15 01:38:28
@@ -109442,6 +109883,36 @@
 
 
 ## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 37 次发布
+
+发布时间：2023-09-06 02:33:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
+
+	* 新增入参：ServiceEIP
+
+* [ModifyModelService](https://cloud.tencent.com/document/api/851/83228)
+
+	* 新增入参：ServiceEIP
+
+
+修改数据结构：
+
+* [PodInfo](https://cloud.tencent.com/document/api/851/75051#PodInfo)
+
+	* 新增成员：StartTime, EndTime, ResourceConfigInfo
+
+* [Spec](https://cloud.tencent.com/document/api/851/75051#Spec)
+
+	* 新增成员：SpecFeatures, SpecType, GpuType, CategoryId
+
 
 ### 第 36 次发布
 
@@ -116541,6 +117012,21 @@
 
 
 ## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 42 次发布
+
+发布时间：2023-09-06 02:36:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KongServicePreview](https://cloud.tencent.com/document/api/1364/54942#KongServicePreview)
+
+	* 新增成员：Path
+
 
 ### 第 41 次发布
 

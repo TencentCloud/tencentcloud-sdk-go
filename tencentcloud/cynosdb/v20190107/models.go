@@ -203,7 +203,7 @@ type AddInstancesRequestParams struct {
 	// 内存，单位为GB
 	Memory *int64 `json:"Memory,omitnil" name:"Memory"`
 
-	// 新增只读实例数，取值范围为[0,4]
+	// 新增只读实例数，取值范围为(0,15]
 	ReadOnlyCount *int64 `json:"ReadOnlyCount,omitnil" name:"ReadOnlyCount"`
 
 	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。当前版本已废弃。
@@ -256,7 +256,7 @@ type AddInstancesRequest struct {
 	// 内存，单位为GB
 	Memory *int64 `json:"Memory,omitnil" name:"Memory"`
 
-	// 新增只读实例数，取值范围为[0,4]
+	// 新增只读实例数，取值范围为(0,15]
 	ReadOnlyCount *int64 `json:"ReadOnlyCount,omitnil" name:"ReadOnlyCount"`
 
 	// 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。当前版本已废弃。
@@ -1621,7 +1621,8 @@ type CreateClustersRequestParams struct {
 	// 包年包月购买时长单位，['s','d','m','y']
 	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
 
-	// 包年包月购买是否自动续费，默认为0
+	// 包年包月购买是否自动续费，默认为0。
+	// 0标识默认续费方式，1表示自动续费，2表示手不自动续费。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
 
 	// 是否自动选择代金券 1是 0否 默认为0
@@ -1769,7 +1770,8 @@ type CreateClustersRequest struct {
 	// 包年包月购买时长单位，['s','d','m','y']
 	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
 
-	// 包年包月购买是否自动续费，默认为0
+	// 包年包月购买是否自动续费，默认为0。
+	// 0标识默认续费方式，1表示自动续费，2表示手不自动续费。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
 
 	// 是否自动选择代金券 1是 0否 默认为0
@@ -3758,7 +3760,7 @@ func (r *DescribeAccountPrivilegesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccountPrivilegesResponseParams struct {
-	// 权限列表，示例值为：["select","update","delete","create","drop","references","index","alter","show_db","create_tmp_table","lock_tables","execute","create_view","show_view","create_routine","alter_routine","event","trigger"]
+	// 权限列表，示例值为：["","select","update","delete","create","drop","references","index","alter","show_db","create_tmp_table","lock_tables","execute","create_view","show_view","create_routine","alter_routine","event","trigger"]
 	Privileges []*string `json:"Privileges,omitnil" name:"Privileges"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6893,20 +6895,24 @@ func (r *DescribeResourcePackageSaleSpecResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type DescribeResourcesByDealNameRequestParams struct {
-	// 计费订单ID（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+	// 计费订单ID（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）。
+	// DealName与DealNames至少应输入一项，两者都传时以DealName为准。
 	DealName *string `json:"DealName,omitnil" name:"DealName"`
 
-	// 计费订单ID列表，可以一次查询若干条订单ID对应资源信息（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+	// 计费订单ID列表，可以一次查询若干条订单ID对应资源信息（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）。
+	// DealName与DealNames至少应输入一项，两者都传时以DealName为准。
 	DealNames []*string `json:"DealNames,omitnil" name:"DealNames"`
 }
 
 type DescribeResourcesByDealNameRequest struct {
 	*tchttp.BaseRequest
 	
-	// 计费订单ID（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+	// 计费订单ID（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）。
+	// DealName与DealNames至少应输入一项，两者都传时以DealName为准。
 	DealName *string `json:"DealName,omitnil" name:"DealName"`
 
-	// 计费订单ID列表，可以一次查询若干条订单ID对应资源信息（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）
+	// 计费订单ID列表，可以一次查询若干条订单ID对应资源信息（如果计费还没回调业务发货，可能出现错误码InvalidParameterValue.DealNameNotFound，这种情况需要业务重试DescribeResourcesByDealName接口直到成功）。
+	// DealName与DealNames至少应输入一项，两者都传时以DealName为准。
 	DealNames []*string `json:"DealNames,omitnil" name:"DealNames"`
 }
 
@@ -9451,7 +9457,7 @@ type ModifyInstanceParamRequestParams struct {
 	// 实例ID
 	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 
-	// 集群参数列表，例如 [{           "CurrentValue":"2",        "ParamName":"innodb_stats_transient_sample_pages"}]
+	// 集群参数列表，例如 [{           "CurrentValue":"2",        "ParamName":"auto_increment_increment"}]
 	ClusterParamList []*ModifyParamItem `json:"ClusterParamList,omitnil" name:"ClusterParamList"`
 
 	// 实例参数列表，例如[{           "CurrentValue":"2",        "ParamName":"innodb_stats_transient_sample_pages"}]
@@ -9470,7 +9476,7 @@ type ModifyInstanceParamRequest struct {
 	// 实例ID
 	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
 
-	// 集群参数列表，例如 [{           "CurrentValue":"2",        "ParamName":"innodb_stats_transient_sample_pages"}]
+	// 集群参数列表，例如 [{           "CurrentValue":"2",        "ParamName":"auto_increment_increment"}]
 	ClusterParamList []*ModifyParamItem `json:"ClusterParamList,omitnil" name:"ClusterParamList"`
 
 	// 实例参数列表，例如[{           "CurrentValue":"2",        "ParamName":"innodb_stats_transient_sample_pages"}]

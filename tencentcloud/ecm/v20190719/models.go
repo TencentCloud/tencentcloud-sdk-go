@@ -2423,6 +2423,9 @@ type CreateSubnetRequestParams struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// IPv6 CIDR
+	IPv6CidrBlock *string `json:"IPv6CidrBlock,omitnil" name:"IPv6CidrBlock"`
 }
 
 type CreateSubnetRequest struct {
@@ -2445,6 +2448,9 @@ type CreateSubnetRequest struct {
 
 	// 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// IPv6 CIDR
+	IPv6CidrBlock *string `json:"IPv6CidrBlock,omitnil" name:"IPv6CidrBlock"`
 }
 
 func (r *CreateSubnetRequest) ToJsonString() string {
@@ -2465,6 +2471,7 @@ func (r *CreateSubnetRequest) FromJsonString(s string) error {
 	delete(f, "Zone")
 	delete(f, "EcmRegion")
 	delete(f, "Tags")
+	delete(f, "IPv6CidrBlock")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSubnetRequest has unknown keys!", "")
 	}

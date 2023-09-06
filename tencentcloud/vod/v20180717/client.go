@@ -5339,6 +5339,7 @@ func NewDescribePersonSamplesResponse() (response *DescribePersonSamplesResponse
 // 该接口用于查询素材样本信息，支持根据素材 ID、名称、标签，分页查询。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -5350,6 +5351,7 @@ func (c *Client) DescribePersonSamples(request *DescribePersonSamplesRequest) (r
 // 该接口用于查询素材样本信息，支持根据素材 ID、名称、标签，分页查询。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"

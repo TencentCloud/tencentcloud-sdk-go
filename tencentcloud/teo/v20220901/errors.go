@@ -221,6 +221,9 @@ const (
 	// 无效的缓存键。
 	INVALIDPARAMETER_INVALIDCACHEKEY = "InvalidParameter.InvalidCacheKey"
 
+	// 无效的自定义Cache Key Cookie无效。
+	INVALIDPARAMETER_INVALIDCACHEKEYCOOKIE = "InvalidParameter.InvalidCacheKeyCookie"
+
 	// 无效的缓存键忽略大小写。
 	INVALIDPARAMETER_INVALIDCACHEKEYIGNORECASE = "InvalidParameter.InvalidCacheKeyIgnoreCase"
 
@@ -443,8 +446,14 @@ const (
 	// 加速域名状态不符合要求。
 	INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
 
+	// 不支持接入泛域名 CNAME
+	INVALIDPARAMETERVALUE_NOTALLOWEDWILDCARDSHAREDCNAME = "InvalidParameterValue.NotAllowedWildcardSharedCNAME"
+
 	// 指定的源站组不存在。
 	INVALIDPARAMETERVALUE_ORIGINGROUPNOTEXISTS = "InvalidParameterValue.OriginGroupNotExists"
+
+	// 请输入合法的共享 CNAME 前缀，最大支持50个字符。
+	INVALIDPARAMETERVALUE_SHAREDCNAMEPREFIXNOTMATCH = "InvalidParameterValue.SharedCNAMEPrefixNotMatch"
 
 	// 该同名站点标识已被占用，请重新输入。
 	INVALIDPARAMETERVALUE_ZONESAMEASNAME = "InvalidParameterValue.ZoneSameAsName"
@@ -527,6 +536,15 @@ const (
 	// 当前有互相排斥的请求操作并行发起，请稍后重试。
 	OPERATIONDENIED_RESOURCELOCKEDTEMPORARY = "OperationDenied.ResourceLockedTemporary"
 
+	// 绑定在共享 CNAME 中的域名不允许变更 中国大陆网络优化（国际加速）访问，如果您需要单独变更，请先将域名从共享 CNAME 中解绑。
+	OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDACCELERATEMAINLAND = "OperationDenied.SharedCNAMEUnsupportedAccelerateMainland"
+
+	// 绑定在共享 CNAME 中的域名不允许变更 IPv6 访问，如果您需要单独变更，请先将域名从共享 CNAME 中解绑。
+	OPERATIONDENIED_SHAREDCNAMEUNSUPPORTEDIPV6 = "OperationDenied.SharedCNAMEUnsupportedIPv6"
+
+	// 共享CNAME已被其他站点绑定，请先解绑才能删除站点
+	OPERATIONDENIED_ZONEISBINDINGSHAREDCNAME = "OperationDenied.ZoneIsBindingSharedCNAME"
+
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
 
@@ -601,6 +619,9 @@ const (
 
 	// 域名不存在或未开启代理。
 	RESOURCEUNAVAILABLE_HOSTNOTFOUND = "ResourceUnavailable.HostNotFound"
+
+	// 该共享 CNAME 已被占用，请重新输入。
+	RESOURCEUNAVAILABLE_SHAREDCNAMEALREADYEXISTS = "ResourceUnavailable.SharedCNAMEAlreadyExists"
 
 	// 站点不存在或不属于该账号。
 	RESOURCEUNAVAILABLE_ZONENOTFOUND = "ResourceUnavailable.ZoneNotFound"

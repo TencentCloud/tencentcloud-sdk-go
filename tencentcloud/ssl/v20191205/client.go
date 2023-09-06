@@ -431,6 +431,56 @@ func (c *Client) CreateCertificateWithContext(ctx context.Context, request *Crea
     return
 }
 
+func NewCreateCertificateBindResourceSyncTaskRequest() (request *CreateCertificateBindResourceSyncTaskRequest) {
+    request = &CreateCertificateBindResourceSyncTaskRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "CreateCertificateBindResourceSyncTask")
+    
+    
+    return
+}
+
+func NewCreateCertificateBindResourceSyncTaskResponse() (response *CreateCertificateBindResourceSyncTaskResponse) {
+    response = &CreateCertificateBindResourceSyncTaskResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateCertificateBindResourceSyncTask
+// 创建证书绑定关联云资源异步任务， 该接口用于查询证书关联云资源。 若证书ID已存在查询云资源任务，则结果返回该任务ID。关联云资源类型，支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）。查询关联云资源结果使用DescribeCertificateBindResourceTaskResult接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+func (c *Client) CreateCertificateBindResourceSyncTask(request *CreateCertificateBindResourceSyncTaskRequest) (response *CreateCertificateBindResourceSyncTaskResponse, err error) {
+    return c.CreateCertificateBindResourceSyncTaskWithContext(context.Background(), request)
+}
+
+// CreateCertificateBindResourceSyncTask
+// 创建证书绑定关联云资源异步任务， 该接口用于查询证书关联云资源。 若证书ID已存在查询云资源任务，则结果返回该任务ID。关联云资源类型，支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）。查询关联云资源结果使用DescribeCertificateBindResourceTaskResult接口
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+func (c *Client) CreateCertificateBindResourceSyncTaskWithContext(ctx context.Context, request *CreateCertificateBindResourceSyncTaskRequest) (response *CreateCertificateBindResourceSyncTaskResponse, err error) {
+    if request == nil {
+        request = NewCreateCertificateBindResourceSyncTaskRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateCertificateBindResourceSyncTask require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateCertificateBindResourceSyncTaskResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateCertificateByPackageRequest() (request *CreateCertificateByPackageRequest) {
     request = &CreateCertificateByPackageRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -939,6 +989,104 @@ func (c *Client) DescribeCertificateWithContext(ctx context.Context, request *De
     request.SetContext(ctx)
     
     response = NewDescribeCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCertificateBindResourceTaskDetailRequest() (request *DescribeCertificateBindResourceTaskDetailRequest) {
+    request = &DescribeCertificateBindResourceTaskDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeCertificateBindResourceTaskDetail")
+    
+    
+    return
+}
+
+func NewDescribeCertificateBindResourceTaskDetailResponse() (response *DescribeCertificateBindResourceTaskDetailResponse) {
+    response = &DescribeCertificateBindResourceTaskDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCertificateBindResourceTaskDetail
+// 查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+func (c *Client) DescribeCertificateBindResourceTaskDetail(request *DescribeCertificateBindResourceTaskDetailRequest) (response *DescribeCertificateBindResourceTaskDetailResponse, err error) {
+    return c.DescribeCertificateBindResourceTaskDetailWithContext(context.Background(), request)
+}
+
+// DescribeCertificateBindResourceTaskDetail
+// 查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
+func (c *Client) DescribeCertificateBindResourceTaskDetailWithContext(ctx context.Context, request *DescribeCertificateBindResourceTaskDetailRequest) (response *DescribeCertificateBindResourceTaskDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeCertificateBindResourceTaskDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCertificateBindResourceTaskDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCertificateBindResourceTaskDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeCertificateBindResourceTaskResultRequest() (request *DescribeCertificateBindResourceTaskResultRequest) {
+    request = &DescribeCertificateBindResourceTaskResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "DescribeCertificateBindResourceTaskResult")
+    
+    
+    return
+}
+
+func NewDescribeCertificateBindResourceTaskResultResponse() (response *DescribeCertificateBindResourceTaskResultResponse) {
+    response = &DescribeCertificateBindResourceTaskResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCertificateBindResourceTaskResult
+// 查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeCertificateBindResourceTaskResult(request *DescribeCertificateBindResourceTaskResultRequest) (response *DescribeCertificateBindResourceTaskResultResponse, err error) {
+    return c.DescribeCertificateBindResourceTaskResultWithContext(context.Background(), request)
+}
+
+// DescribeCertificateBindResourceTaskResult
+// 查询CreateCertificateBindResourceSyncTask任务结果， 返回证书关联云资源异步任务结果， 支持以下云资源：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeCertificateBindResourceTaskResultWithContext(ctx context.Context, request *DescribeCertificateBindResourceTaskResultRequest) (response *DescribeCertificateBindResourceTaskResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeCertificateBindResourceTaskResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCertificateBindResourceTaskResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCertificateBindResourceTaskResultResponse()
     err = c.Send(request, response)
     return
 }

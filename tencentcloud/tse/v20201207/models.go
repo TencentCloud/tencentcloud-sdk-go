@@ -3768,6 +3768,10 @@ type KongServicePreview struct {
 	// 是否可编辑
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Editable *bool `json:"Editable,omitnil" name:"Editable"`
+
+	// 请求路径
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Path *string `json:"Path,omitnil" name:"Path"`
 }
 
 type KongServiceRouteList struct {

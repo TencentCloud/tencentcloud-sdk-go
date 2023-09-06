@@ -304,7 +304,7 @@ func (r *BatchCreateAclRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type BatchCreateAclResponseParams struct {
-	// 状态码
+	// 状态码：0-修改成功，否则修改失败
 	Result *int64 `json:"Result,omitnil" name:"Result"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2507,7 +2507,7 @@ type CreateRouteRequestParams struct {
 	// vpc子网id
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
-	// 访问类型
+	// 访问类型：0-plaintext；1-sasl_plaintext；2-ssl；3-sasl_ssl
 	AccessType *int64 `json:"AccessType,omitnil" name:"AccessType"`
 
 	// 是否需要权限管理
@@ -2538,7 +2538,7 @@ type CreateRouteRequest struct {
 	// vpc子网id
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
-	// 访问类型
+	// 访问类型：0-plaintext；1-sasl_plaintext；2-ssl；3-sasl_ssl
 	AccessType *int64 `json:"AccessType,omitnil" name:"AccessType"`
 
 	// 是否需要权限管理

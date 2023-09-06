@@ -38,6 +38,18 @@ type ApiGatewayInstanceDetail struct {
 	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
 }
 
+type ApiGatewayInstanceList struct {
+	// 地域
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// apigateway实例详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*ApiGatewayInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+
+	// 该地域下apigateway实例总数	
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+}
+
 // Predefined struct for user
 type ApplyCertificateRequestParams struct {
 	// 验证方式：DNS_AUTO = 自动DNS验证，DNS = 手动DNS验证，FILE = 文件验证。
@@ -186,6 +198,23 @@ func (r *ApplyCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BindResourceRegionResult struct {
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// 关联资源总数
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+}
+
+type BindResourceResult struct {
+	// 资源类型：clb、cdn、waf、live、vod、ddos、tke、apigateway、tcb、teo（edgeOne）
+	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+
+	// 绑定资源地域结果
+	BindResourceRegionResult []*BindResourceRegionResult `json:"BindResourceRegionResult,omitnil" name:"BindResourceRegionResult"`
+}
+
 // Predefined struct for user
 type CancelCertificateOrderRequestParams struct {
 	// 证书 ID。
@@ -257,6 +286,15 @@ type CdnInstanceDetail struct {
 	HttpsBillingSwitch *string `json:"HttpsBillingSwitch,omitnil" name:"HttpsBillingSwitch"`
 }
 
+type CdnInstanceList struct {
+	// 该地域下CDN域名总数	
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// cdn域名详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*CdnInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+}
+
 type CertHostingInfo struct {
 	// 证书ID
 	CertId *string `json:"CertId,omitnil" name:"CertId"`
@@ -272,6 +310,14 @@ type CertHostingInfo struct {
 	// 创建时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+}
+
+type CertTaskId struct {
+	// 证书ID
+	CertId *string `json:"CertId,omitnil" name:"CertId"`
+
+	// 异步任务ID
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type Certificate struct {
@@ -547,6 +593,18 @@ type ClbInstanceDetail struct {
 	Listeners []*ClbListener `json:"Listeners,omitnil" name:"Listeners"`
 }
 
+type ClbInstanceList struct {
+	// 地域
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// clb实例详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*ClbInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+
+	// 该地域下Clb实例总数
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+}
+
 type ClbListener struct {
 	// 监听器ID
 	ListenerId *string `json:"ListenerId,omitnil" name:"ListenerId"`
@@ -766,6 +824,70 @@ type CosInstanceDetail struct {
 	// 存储桶地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil" name:"Region"`
+}
+
+// Predefined struct for user
+type CreateCertificateBindResourceSyncTaskRequestParams struct {
+	// 证书ID列表，总数不能超过100
+	CertificateIds []*string `json:"CertificateIds,omitnil" name:"CertificateIds"`
+
+	// 是否使用缓存， 1使用缓存，0不使用缓存； 默认为1使用缓存； 若当前证书ID存在半小时已完成的任务， 则使用缓存的情况下， 会读取半小时内离当前时间最近的查询结果
+	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+}
+
+type CreateCertificateBindResourceSyncTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 证书ID列表，总数不能超过100
+	CertificateIds []*string `json:"CertificateIds,omitnil" name:"CertificateIds"`
+
+	// 是否使用缓存， 1使用缓存，0不使用缓存； 默认为1使用缓存； 若当前证书ID存在半小时已完成的任务， 则使用缓存的情况下， 会读取半小时内离当前时间最近的查询结果
+	IsCache *uint64 `json:"IsCache,omitnil" name:"IsCache"`
+}
+
+func (r *CreateCertificateBindResourceSyncTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCertificateBindResourceSyncTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateIds")
+	delete(f, "IsCache")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCertificateBindResourceSyncTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCertificateBindResourceSyncTaskResponseParams struct {
+	// 证书关联云资源异步任务ID列表
+	CertTaskIds []*CertTaskId `json:"CertTaskIds,omitnil" name:"CertTaskIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateCertificateBindResourceSyncTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCertificateBindResourceSyncTaskResponseParams `json:"Response"`
+}
+
+func (r *CreateCertificateBindResourceSyncTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCertificateBindResourceSyncTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -1030,6 +1152,15 @@ type DdosInstanceDetail struct {
 
 	// 转发端口
 	VirtualPort *string `json:"VirtualPort,omitnil" name:"VirtualPort"`
+}
+
+type DdosInstanceList struct {
+	// 该地域下ddos域名总数	
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// ddos实例详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*DdosInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
 }
 
 // Predefined struct for user
@@ -1470,6 +1601,192 @@ type DeployedResources struct {
 	// 关联资源ID或关联域名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resources []*string `json:"Resources,omitnil" name:"Resources"`
+}
+
+// Predefined struct for user
+type DescribeCertificateBindResourceTaskDetailRequestParams struct {
+	// 任务ID，根据任务ID查询绑定云资源结果
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
+	Limit *string `json:"Limit,omitnil" name:"Limit"`
+
+	// 当前偏移量
+	Offset *string `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询资源类型的结果详情， 不传则查询所有
+	ResourceTypes []*string `json:"ResourceTypes,omitnil" name:"ResourceTypes"`
+
+	// 查询地域列表的数据，CLB、TKE、WAF、APIGATEWAY、TCB支持地域查询， 其他资源类型不支持
+	Regions []*string `json:"Regions,omitnil" name:"Regions"`
+}
+
+type DescribeCertificateBindResourceTaskDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID，根据任务ID查询绑定云资源结果
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 每页展示数量， 默认10，最大值100; 分页总数为云资源地域下实例总数， 即第一页会拉群每个云资源的地域下面Limit数量实例
+	Limit *string `json:"Limit,omitnil" name:"Limit"`
+
+	// 当前偏移量
+	Offset *string `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询资源类型的结果详情， 不传则查询所有
+	ResourceTypes []*string `json:"ResourceTypes,omitnil" name:"ResourceTypes"`
+
+	// 查询地域列表的数据，CLB、TKE、WAF、APIGATEWAY、TCB支持地域查询， 其他资源类型不支持
+	Regions []*string `json:"Regions,omitnil" name:"Regions"`
+}
+
+func (r *DescribeCertificateBindResourceTaskDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCertificateBindResourceTaskDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "ResourceTypes")
+	delete(f, "Regions")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificateBindResourceTaskDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCertificateBindResourceTaskDetailResponseParams struct {
+	// 关联clb资源详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLB []*ClbInstanceList `json:"CLB,omitnil" name:"CLB"`
+
+	// 关联cdn资源详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CDN []*CdnInstanceList `json:"CDN,omitnil" name:"CDN"`
+
+	// 关联waf资源详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WAF []*WafInstanceList `json:"WAF,omitnil" name:"WAF"`
+
+	// 关联ddos资源详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DDOS []*DdosInstanceList `json:"DDOS,omitnil" name:"DDOS"`
+
+	// 关联live资源详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LIVE []*LiveInstanceList `json:"LIVE,omitnil" name:"LIVE"`
+
+	// 关联vod资源详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VOD []*VODInstanceList `json:"VOD,omitnil" name:"VOD"`
+
+	// 关联tke资源详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TKE []*TkeInstanceList `json:"TKE,omitnil" name:"TKE"`
+
+	// 关联apigateway资源详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	APIGATEWAY []*ApiGatewayInstanceList `json:"APIGATEWAY,omitnil" name:"APIGATEWAY"`
+
+	// 关联tcb资源详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TCB []*TCBInstanceList `json:"TCB,omitnil" name:"TCB"`
+
+	// 关联teo资源详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TEO []*TeoInstanceList `json:"TEO,omitnil" name:"TEO"`
+
+	// 关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 当前结果缓存时间
+	CacheTime *string `json:"CacheTime,omitnil" name:"CacheTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCertificateBindResourceTaskDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCertificateBindResourceTaskDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeCertificateBindResourceTaskDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCertificateBindResourceTaskDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCertificateBindResourceTaskResultRequestParams struct {
+	// 任务ID，根据任务ID查询绑定云资源结果， 最大支持100个
+	TaskIds []*string `json:"TaskIds,omitnil" name:"TaskIds"`
+}
+
+type DescribeCertificateBindResourceTaskResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID，根据任务ID查询绑定云资源结果， 最大支持100个
+	TaskIds []*string `json:"TaskIds,omitnil" name:"TaskIds"`
+}
+
+func (r *DescribeCertificateBindResourceTaskResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCertificateBindResourceTaskResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificateBindResourceTaskResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCertificateBindResourceTaskResultResponseParams struct {
+	// 异步任务绑定关联云资源结果列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SyncTaskBindResourceResult []*SyncTaskBindResourceResult `json:"SyncTaskBindResourceResult,omitnil" name:"SyncTaskBindResourceResult"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCertificateBindResourceTaskResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCertificateBindResourceTaskResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeCertificateBindResourceTaskResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCertificateBindResourceTaskResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -4127,6 +4444,16 @@ type DvAuths struct {
 	DvAuthVerifyType *string `json:"DvAuthVerifyType,omitnil" name:"DvAuthVerifyType"`
 }
 
+type Error struct {
+	// 异常错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Code *string `json:"Code,omitnil" name:"Code"`
+
+	// 异常错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil" name:"Message"`
+}
+
 type Filter struct {
 	// 过滤参数key
 	FilterKey *string `json:"FilterKey,omitnil" name:"FilterKey"`
@@ -4225,6 +4552,15 @@ type LiveInstanceDetail struct {
 	// 1： 域名https已开启。
 	// 0： 域名https已关闭。
 	Status *int64 `json:"Status,omitnil" name:"Status"`
+}
+
+type LiveInstanceList struct {
+	// 该地域下live实例总数	
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// live实例详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*LiveInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
 }
 
 type ManagerInfo struct {
@@ -5204,6 +5540,133 @@ type SubmittedData struct {
 	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
 }
 
+type SyncTaskBindResourceResult struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 关联云资源结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindResourceResult []*BindResourceResult `json:"BindResourceResult,omitnil" name:"BindResourceResult"`
+
+	// 关联云资源异步查询结果： 0表示查询中， 1表示查询成功。 2表示查询异常； 若状态为1，则查看BindResourceResult结果；若状态为2，则查看Error原因
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 关联云资源错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Error *Error `json:"Error,omitnil" name:"Error"`
+
+	// 当前结果缓存时间
+	CacheTime *string `json:"CacheTime,omitnil" name:"CacheTime"`
+}
+
+type TCBAccessInstance struct {
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 统一域名状态
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnionStatus *int64 `json:"UnionStatus,omitnil" name:"UnionStatus"`
+
+	// 是否被抢占, 被抢占表示域名被其他环境绑定了，需要解绑或者重新绑定。
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsPreempted *bool `json:"IsPreempted,omitnil" name:"IsPreempted"`
+
+	// icp黑名单封禁状态，0-未封禁，1-封禁
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ICPStatus *int64 `json:"ICPStatus,omitnil" name:"ICPStatus"`
+
+	// 已绑定证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+}
+
+type TCBAccessService struct {
+	// 实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*TCBAccessInstance `json:"InstanceList,omitnil" name:"InstanceList"`
+
+	// 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+}
+
+type TCBEnvironment struct {
+	// 唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *string `json:"ID,omitnil" name:"ID"`
+
+	// 来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Source *string `json:"Source,omitnil" name:"Source"`
+
+	// 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
+}
+
+type TCBEnvironments struct {
+	// tcb环境	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Environment *TCBEnvironment `json:"Environment,omitnil" name:"Environment"`
+
+	// 访问服务	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessService *TCBAccessService `json:"AccessService,omitnil" name:"AccessService"`
+
+	// 静态托管	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostService *TCBHostService `json:"HostService,omitnil" name:"HostService"`
+}
+
+type TCBHostInstance struct {
+	// 域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 解析状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DNSStatus *string `json:"DNSStatus,omitnil" name:"DNSStatus"`
+
+	// 已绑定证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+}
+
+type TCBHostService struct {
+	// 实例列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*TCBHostInstance `json:"InstanceList,omitnil" name:"InstanceList"`
+
+	// 数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+}
+
+type TCBInstanceList struct {
+	// 地域
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// tcb环境实例详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Environments []*TCBEnvironments `json:"Environments,omitnil" name:"Environments"`
+}
+
 type Tags struct {
 	// 标签键
 	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
@@ -5225,6 +5688,15 @@ type TeoInstanceDetail struct {
 
 	// 域名状态
 	Status *string `json:"Status,omitnil" name:"Status"`
+}
+
+type TeoInstanceList struct {
+	// edgeone实例详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*TeoInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+
+	// edgeone实例总数	
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 }
 
 type TkeIngressDetail struct {
@@ -5253,6 +5725,18 @@ type TkeInstanceDetail struct {
 
 	// 集群版本
 	ClusterVersion *string `json:"ClusterVersion,omitnil" name:"ClusterVersion"`
+}
+
+type TkeInstanceList struct {
+	// 地域
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// tke实例详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*TkeInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+
+	// 该地域下tke实例总数	
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 }
 
 type TkeNameSpaceDetail struct {
@@ -5852,6 +6336,15 @@ func (r *UploadRevokeLetterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type VODInstanceList struct {
+	// vod实例详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*VodInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+
+	// 该地域下vod实例总数	
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+}
+
 // Predefined struct for user
 type VerifyManagerRequestParams struct {
 	// 管理人ID
@@ -5915,4 +6408,29 @@ type VodInstanceDetail struct {
 
 	// 证书ID
 	CertId *string `json:"CertId,omitnil" name:"CertId"`
+}
+
+type WafInstanceDetail struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertId *string `json:"CertId,omitnil" name:"CertId"`
+
+	// 是否保持长连接，1是，0 否
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Keepalive *uint64 `json:"Keepalive,omitnil" name:"Keepalive"`
+}
+
+type WafInstanceList struct {
+	// 地域
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// waf实例详情	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceList []*WafInstanceDetail `json:"InstanceList,omitnil" name:"InstanceList"`
+
+	// 该地域下waf实例总数	
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 }

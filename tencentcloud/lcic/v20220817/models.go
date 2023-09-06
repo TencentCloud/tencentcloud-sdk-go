@@ -1091,6 +1091,9 @@ type CreateRoomRequestParams struct {
 
 	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
 	RoomType *int64 `json:"RoomType,omitnil" name:"RoomType"`
+
+	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
 }
 
 type CreateRoomRequest struct {
@@ -1179,6 +1182,9 @@ type CreateRoomRequest struct {
 
 	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
 	RoomType *int64 `json:"RoomType,omitnil" name:"RoomType"`
+
+	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
 }
 
 func (r *CreateRoomRequest) ToJsonString() string {
@@ -1215,6 +1221,7 @@ func (r *CreateRoomRequest) FromJsonString(s string) error {
 	delete(f, "VideoOrientation")
 	delete(f, "IsGradingRequiredPostClass")
 	delete(f, "RoomType")
+	delete(f, "EndDelayTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoomRequest has unknown keys!", "")
 	}
@@ -2809,6 +2816,9 @@ type DescribeRoomResponseParams struct {
 	// 录制时长
 	VideoDuration *uint64 `json:"VideoDuration,omitnil" name:"VideoDuration"`
 
+	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -3220,6 +3230,10 @@ type DocumentInfo struct {
 	// 封面，仅转码的课件会生成封面
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cover *string `json:"Cover,omitnil" name:"Cover"`
+
+	// 课件预览地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Preview *string `json:"Preview,omitnil" name:"Preview"`
 }
 
 // Predefined struct for user
@@ -4249,6 +4263,9 @@ type ModifyRoomRequestParams struct {
 
 	// 录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
 	RecordLayout *uint64 `json:"RecordLayout,omitnil" name:"RecordLayout"`
+
+	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
 }
 
 type ModifyRoomRequest struct {
@@ -4332,6 +4349,9 @@ type ModifyRoomRequest struct {
 
 	// 录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
 	RecordLayout *uint64 `json:"RecordLayout,omitnil" name:"RecordLayout"`
+
+	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
 }
 
 func (r *ModifyRoomRequest) ToJsonString() string {
@@ -4366,6 +4386,7 @@ func (r *ModifyRoomRequest) FromJsonString(s string) error {
 	delete(f, "IsGradingRequiredPostClass")
 	delete(f, "RoomType")
 	delete(f, "RecordLayout")
+	delete(f, "EndDelayTime")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoomRequest has unknown keys!", "")
 	}
@@ -4624,6 +4645,9 @@ type RoomInfo struct {
 
 	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
 	RoomType *int64 `json:"RoomType,omitnil" name:"RoomType"`
+
+	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
 }
 
 type RoomItem struct {
@@ -4696,6 +4720,10 @@ type RoomItem struct {
 	// 房间类型。0:小班课（默认值）；1:大班课；2:1V1（后续扩展）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoomType *int64 `json:"RoomType,omitnil" name:"RoomType"`
+
+	// 拖堂时间：单位分钟，0为不限制(默认值), -1为不能拖堂，大于0为拖堂的时间，最大值120分钟
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndDelayTime *int64 `json:"EndDelayTime,omitnil" name:"EndDelayTime"`
 }
 
 type SceneItem struct {

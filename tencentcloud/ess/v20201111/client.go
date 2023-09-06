@@ -141,6 +141,7 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowResponse, err error) {
     return c.CancelFlowWithContext(context.Background(), request)
@@ -170,6 +171,7 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
 //  RESOURCENOTFOUND_NOTEXISTFLOW = "ResourceNotFound.NotExistFlow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CancelFlowWithContext(ctx context.Context, request *CancelFlowRequest) (response *CancelFlowResponse, err error) {
     if request == nil {
@@ -1165,6 +1167,7 @@ func NewCreateFlowByFilesResponse() (response *CreateFlowByFilesResponse) {
 //  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
 //  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
 //  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
@@ -1313,6 +1316,7 @@ func (c *Client) CreateFlowByFiles(request *CreateFlowByFilesRequest) (response 
 //  FAILEDOPERATION_REQUESTLIMITEXCEEDED = "FailedOperation.RequestLimitExceeded"
 //  FAILEDOPERATION_USERINFONOMATCH = "FailedOperation.UserInfoNoMatch"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
 //  INTERNALERROR_DB = "InternalError.Db"
 //  INTERNALERROR_DBCONNECTION = "InternalError.DbConnection"
 //  INTERNALERROR_DBINSERT = "InternalError.DbInsert"
@@ -2758,7 +2762,9 @@ func NewCreateMultiFlowSignQRCodeResponse() (response *CreateMultiFlowSignQRCode
 // CreateMultiFlowSignQRCode
 // 此接口（CreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。
 //
-// 适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
+// 适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。
+//
+// 常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
 //
 // 
 //
@@ -2799,6 +2805,7 @@ func NewCreateMultiFlowSignQRCodeResponse() (response *CreateMultiFlowSignQRCode
 //  INVALIDPARAMETER_QRFLOWEFFECTDAY = "InvalidParameter.QrFlowEffectDay"
 //  INVALIDPARAMETER_TEMPLATEID = "InvalidParameter.TemplateId"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
@@ -2816,7 +2823,9 @@ func (c *Client) CreateMultiFlowSignQRCode(request *CreateMultiFlowSignQRCodeReq
 // CreateMultiFlowSignQRCode
 // 此接口（CreateMultiFlowSignQRCode）用于创建一码多扫流程签署二维码。
 //
-// 适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
+// 适用场景：无需填写签署人信息，可通过模板id生成签署二维码，签署人可通过扫描二维码补充签署信息进行实名签署。
+//
+// 常用于提前不知道签署人的身份信息场景，例如：劳务工招工、大批量员工入职等场景。
 //
 // 
 //
@@ -2857,6 +2866,7 @@ func (c *Client) CreateMultiFlowSignQRCode(request *CreateMultiFlowSignQRCodeReq
 //  INVALIDPARAMETER_QRFLOWEFFECTDAY = "InvalidParameter.QrFlowEffectDay"
 //  INVALIDPARAMETER_TEMPLATEID = "InvalidParameter.TemplateId"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_NOQUOTA = "OperationDenied.NoQuota"
@@ -3450,7 +3460,7 @@ func NewCreateSchemeUrlResponse() (response *CreateSchemeUrlResponse) {
 }
 
 // CreateSchemeUrl
-// 获取小程序签署链接
+// 获取跳转至腾讯电子签小程序的签署链接
 //
 // 
 //
@@ -3458,19 +3468,29 @@ func NewCreateSchemeUrlResponse() (response *CreateSchemeUrlResponse) {
 //
 // 
 //
-// 注：如果签署人是在PC端扫码签署，可以通过生成跳转链接自主转换成二维码，让签署人在PC端扫码签署。
+// 跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
 //
 // 
 //
+// 注：
+//
+// `1. 如果签署人是在PC端扫码签署，可以通过生成跳转链接自主转换成二维码，让签署人在PC端扫码签署`
+//
+// `2. 签署链接的有效期为90天，超过有效期链接不可用`
+//
 // 
 //
-// 跳转到小程序的实现，参考官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式）
+// 其中小程序的原始Id如下，或者查看小程序信息自助获取。
 //
 // 
 //
-// 
+// | 小程序 | AppID | 原始ID |
 //
-// 如您需要自主配置小程序跳转链接，请参考: <a href="https://cloud.tencent.com/document/product/1323/74774">跳转小程序链接配置说明</a>
+// | ------------ | ------------ | ------------ |
+//
+// | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+//
+// | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3494,13 +3514,14 @@ func NewCreateSchemeUrlResponse() (response *CreateSchemeUrlResponse) {
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateSchemeUrl(request *CreateSchemeUrlRequest) (response *CreateSchemeUrlResponse, err error) {
     return c.CreateSchemeUrlWithContext(context.Background(), request)
 }
 
 // CreateSchemeUrl
-// 获取小程序签署链接
+// 获取跳转至腾讯电子签小程序的签署链接
 //
 // 
 //
@@ -3508,19 +3529,29 @@ func (c *Client) CreateSchemeUrl(request *CreateSchemeUrlRequest) (response *Cre
 //
 // 
 //
-// 注：如果签署人是在PC端扫码签署，可以通过生成跳转链接自主转换成二维码，让签署人在PC端扫码签署。
+// 跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
 //
 // 
 //
+// 注：
+//
+// `1. 如果签署人是在PC端扫码签署，可以通过生成跳转链接自主转换成二维码，让签署人在PC端扫码签署`
+//
+// `2. 签署链接的有效期为90天，超过有效期链接不可用`
+//
 // 
 //
-// 跳转到小程序的实现，参考官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式）
+// 其中小程序的原始Id如下，或者查看小程序信息自助获取。
 //
 // 
 //
-// 
+// | 小程序 | AppID | 原始ID |
 //
-// 如您需要自主配置小程序跳转链接，请参考: <a href="https://cloud.tencent.com/document/product/1323/74774">跳转小程序链接配置说明</a>
+// | ------------ | ------------ | ------------ |
+//
+// | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+//
+// | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3544,6 +3575,7 @@ func (c *Client) CreateSchemeUrl(request *CreateSchemeUrlRequest) (response *Cre
 //  OPERATIONDENIED_WHITELISTFORBID = "OperationDenied.WhiteListForbid"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) CreateSchemeUrlWithContext(ctx context.Context, request *CreateSchemeUrlRequest) (response *CreateSchemeUrlResponse, err error) {
     if request == nil {
@@ -3591,6 +3623,7 @@ func NewCreateSealResponse() (response *CreateSealResponse) {
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
@@ -3610,6 +3643,7 @@ func (c *Client) CreateSeal(request *CreateSealRequest) (response *CreateSealRes
 //  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
@@ -4086,21 +4120,43 @@ func NewDescribeExtendedServiceAuthInfosResponse() (response *DescribeExtendedSe
 }
 
 // DescribeExtendedServiceAuthInfos
-// 查询企业扩展服务授权信息，目前支持查询：企业静默签，企业与港澳台居民签署合同，使用手机号验证签署方身份，骑缝章，批量签署能力是否已经开通
+// 查询企业扩展服务的开通和授权情况，当前支持查询以下内容：
+//
+// 1. 企业静默签
+//
+// 2. 企业与港澳台居民签署合同
+//
+// 3. 使用手机号验证签署方身份
+//
+// 4. 骑缝章
+//
+// 5. 批量签署能力
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeExtendedServiceAuthInfos(request *DescribeExtendedServiceAuthInfosRequest) (response *DescribeExtendedServiceAuthInfosResponse, err error) {
     return c.DescribeExtendedServiceAuthInfosWithContext(context.Background(), request)
 }
 
 // DescribeExtendedServiceAuthInfos
-// 查询企业扩展服务授权信息，目前支持查询：企业静默签，企业与港澳台居民签署合同，使用手机号验证签署方身份，骑缝章，批量签署能力是否已经开通
+// 查询企业扩展服务的开通和授权情况，当前支持查询以下内容：
+//
+// 1. 企业静默签
+//
+// 2. 企业与港澳台居民签署合同
+//
+// 3. 使用手机号验证签署方身份
+//
+// 4. 骑缝章
+//
+// 5. 批量签署能力
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 func (c *Client) DescribeExtendedServiceAuthInfosWithContext(ctx context.Context, request *DescribeExtendedServiceAuthInfosRequest) (response *DescribeExtendedServiceAuthInfosResponse, err error) {
     if request == nil {
         request = NewDescribeExtendedServiceAuthInfosRequest()
@@ -4494,6 +4550,7 @@ func NewDescribeFlowInfoResponse() (response *DescribeFlowInfoResponse) {
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -4512,6 +4569,7 @@ func (c *Client) DescribeFlowInfo(request *DescribeFlowInfoRequest) (response *D
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
@@ -4763,6 +4821,7 @@ func NewDescribeIntegrationEmployeesResponse() (response *DescribeIntegrationEmp
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeIntegrationEmployees(request *DescribeIntegrationEmployeesRequest) (response *DescribeIntegrationEmployeesResponse, err error) {
@@ -4787,6 +4846,7 @@ func (c *Client) DescribeIntegrationEmployees(request *DescribeIntegrationEmploy
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeIntegrationEmployeesWithContext(ctx context.Context, request *DescribeIntegrationEmployeesRequest) (response *DescribeIntegrationEmployeesResponse, err error) {
@@ -5382,11 +5442,13 @@ func NewModifyApplicationCallbackInfoResponse() (response *ModifyApplicationCall
 }
 
 // ModifyApplicationCallbackInfo
-// 新增/删除应用callbackinfo
+// 新增/删除企业应用集成中的回调配置。
 //
-// callbackinfo包含： 回调地址和签名key
+// 新增回调配置只会增加不存在的CallbackUrl；删除操作将针对找到的相同CallbackUrl的配置进行删除。
 //
-// 操作：新增/删除
+// 请确保回调地址能够接收并处理 HTTP POST 请求，并返回状态码 200 以表示处理正常。
+//
+// 更多回调相关的说明参考文档[回调通知能力](https://qian.tencent.com/developers/company/callback_types_v2)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5399,11 +5461,13 @@ func (c *Client) ModifyApplicationCallbackInfo(request *ModifyApplicationCallbac
 }
 
 // ModifyApplicationCallbackInfo
-// 新增/删除应用callbackinfo
+// 新增/删除企业应用集成中的回调配置。
 //
-// callbackinfo包含： 回调地址和签名key
+// 新增回调配置只会增加不存在的CallbackUrl；删除操作将针对找到的相同CallbackUrl的配置进行删除。
 //
-// 操作：新增/删除
+// 请确保回调地址能够接收并处理 HTTP POST 请求，并返回状态码 200 以表示处理正常。
+//
+// 更多回调相关的说明参考文档[回调通知能力](https://qian.tencent.com/developers/company/callback_types_v2)
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5602,11 +5666,11 @@ func NewStartFlowResponse() (response *StartFlowResponse) {
 }
 
 // StartFlow
-// 此接口用于发起流程
+// 此接口用于启动流程。它是模板发起合同的最后一步。
 //
-// 适用场景：见创建签署流程接口。
+// 在[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)和[创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)之后，用于激活包含完整合同信息（模板及内容信息）的流程。
 //
-// 注：该接口是“创建电子文档”接口的后置接口，用于激活包含完整合同信息（模板及内容信息）的流程。激活后的流程就是一份待签署的电子合同。
+// 流程激活后，将生成一份待签署的电子合同。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5656,11 +5720,11 @@ func (c *Client) StartFlow(request *StartFlowRequest) (response *StartFlowRespon
 }
 
 // StartFlow
-// 此接口用于发起流程
+// 此接口用于启动流程。它是模板发起合同的最后一步。
 //
-// 适用场景：见创建签署流程接口。
+// 在[创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow)和[创建电子文档](https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument)之后，用于激活包含完整合同信息（模板及内容信息）的流程。
 //
-// 注：该接口是“创建电子文档”接口的后置接口，用于激活包含完整合同信息（模板及内容信息）的流程。激活后的流程就是一份待签署的电子合同。
+// 流程激活后，将生成一份待签署的电子合同。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

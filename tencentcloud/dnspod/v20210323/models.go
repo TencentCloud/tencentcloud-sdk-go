@@ -6631,7 +6631,7 @@ type WhoisInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsQcloud *bool `json:"IsQcloud,omitnil" name:"IsQcloud"`
 
-	// 是否当前操作帐号注册的域名
+	// 是否当前操作账号注册的域名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsQcloudOwner *bool `json:"IsQcloudOwner,omitnil" name:"IsQcloudOwner"`
 

@@ -1055,6 +1055,9 @@ type CreateModelServiceRequestParams struct {
 
 	// 服务的启动命令
 	Command *string `json:"Command,omitnil" name:"Command"`
+
+	// 是否开启TIONE内网访问外部
+	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil" name:"ServiceEIP"`
 }
 
 type CreateModelServiceRequest struct {
@@ -1172,6 +1175,9 @@ type CreateModelServiceRequest struct {
 
 	// 服务的启动命令
 	Command *string `json:"Command,omitnil" name:"Command"`
+
+	// 是否开启TIONE内网访问外部
+	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil" name:"ServiceEIP"`
 }
 
 func (r *CreateModelServiceRequest) ToJsonString() string {
@@ -1216,6 +1222,7 @@ func (r *CreateModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "ModelTurboEnable")
 	delete(f, "ServiceCategory")
 	delete(f, "Command")
+	delete(f, "ServiceEIP")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateModelServiceRequest has unknown keys!", "")
 	}
@@ -6568,6 +6575,9 @@ type ModifyModelServiceRequestParams struct {
 
 	// 服务的启动命令
 	Command *string `json:"Command,omitnil" name:"Command"`
+
+	// 是否开启TIONE内网访问外部
+	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil" name:"ServiceEIP"`
 }
 
 type ModifyModelServiceRequest struct {
@@ -6661,6 +6671,9 @@ type ModifyModelServiceRequest struct {
 
 	// 服务的启动命令
 	Command *string `json:"Command,omitnil" name:"Command"`
+
+	// 是否开启TIONE内网访问外部
+	ServiceEIP *ServiceEIP `json:"ServiceEIP,omitnil" name:"ServiceEIP"`
 }
 
 func (r *ModifyModelServiceRequest) ToJsonString() string {
@@ -6697,6 +6710,7 @@ func (r *ModifyModelServiceRequest) FromJsonString(s string) error {
 	delete(f, "VolumeMount")
 	delete(f, "ModelTurboEnable")
 	delete(f, "Command")
+	delete(f, "ServiceEIP")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyModelServiceRequest has unknown keys!", "")
 	}
@@ -7445,6 +7459,18 @@ type PodInfo struct {
 	// pod状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// pod启动时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// pod结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// pod资源配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceConfigInfo *ResourceConfigInfo `json:"ResourceConfigInfo,omitnil" name:"ResourceConfigInfo"`
 }
 
 type PointInfo struct {
@@ -8469,6 +8495,22 @@ type Spec struct {
 
 	// 当前资源售罄时，可用的区域有哪些
 	AvailableRegion []*string `json:"AvailableRegion,omitnil" name:"AvailableRegion"`
+
+	// 当前计费项支持的特性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecFeatures []*string `json:"SpecFeatures,omitnil" name:"SpecFeatures"`
+
+	// 计费项类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecType *string `json:"SpecType,omitnil" name:"SpecType"`
+
+	// GPU类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GpuType *string `json:"GpuType,omitnil" name:"GpuType"`
+
+	// 计费项CategoryId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CategoryId *string `json:"CategoryId,omitnil" name:"CategoryId"`
 }
 
 type SpecPrice struct {

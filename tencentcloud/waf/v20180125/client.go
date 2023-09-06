@@ -355,6 +355,7 @@ func NewAddSpartaProtectionResponse() (response *AddSpartaProtectionResponse) {
 //  INVALIDPARAMETER_PORTPARAMETERERR = "InvalidParameter.PortParameterErr"
 //  INVALIDPARAMETER_PROTECTIONDOMAINPARAMETERERR = "InvalidParameter.ProtectionDomainParameterErr"
 //  INVALIDPARAMETER_TLSPARAMETERERR = "InvalidParameter.TLSParameterErr"
+//  INVALIDPARAMETER_UNAUTHORIZEDOPERATIONPARAMETERERR = "InvalidParameter.UnauthorizedOperationParameterErr"
 //  INVALIDPARAMETER_UPSTREAMPARAMETERERR = "InvalidParameter.UpstreamParameterErr"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -385,6 +386,7 @@ func (c *Client) AddSpartaProtection(request *AddSpartaProtectionRequest) (respo
 //  INVALIDPARAMETER_PORTPARAMETERERR = "InvalidParameter.PortParameterErr"
 //  INVALIDPARAMETER_PROTECTIONDOMAINPARAMETERERR = "InvalidParameter.ProtectionDomainParameterErr"
 //  INVALIDPARAMETER_TLSPARAMETERERR = "InvalidParameter.TLSParameterErr"
+//  INVALIDPARAMETER_UNAUTHORIZEDOPERATIONPARAMETERERR = "InvalidParameter.UnauthorizedOperationParameterErr"
 //  INVALIDPARAMETER_UPSTREAMPARAMETERERR = "InvalidParameter.UpstreamParameterErr"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
@@ -5104,6 +5106,7 @@ func NewModifyCustomWhiteRuleResponse() (response *ModifyCustomWhiteRuleResponse
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyCustomWhiteRule(request *ModifyCustomWhiteRuleRequest) (response *ModifyCustomWhiteRuleResponse, err error) {
@@ -5115,6 +5118,7 @@ func (c *Client) ModifyCustomWhiteRule(request *ModifyCustomWhiteRuleRequest) (r
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) ModifyCustomWhiteRuleWithContext(ctx context.Context, request *ModifyCustomWhiteRuleRequest) (response *ModifyCustomWhiteRuleResponse, err error) {

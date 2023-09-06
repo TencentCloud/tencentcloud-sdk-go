@@ -1218,6 +1218,7 @@ func NewChannelCreateFlowSignReviewResponse() (response *ChannelCreateFlowSignRe
 //  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -1248,6 +1249,7 @@ func (c *Client) ChannelCreateFlowSignReview(request *ChannelCreateFlowSignRevie
 //  OPERATIONDENIED_NOFLOWPERMISSION = "OperationDenied.NoFlowPermission"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_FLOW = "ResourceNotFound.Flow"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
@@ -2120,6 +2122,7 @@ func NewChannelDescribeEmployeesResponse() (response *ChannelDescribeEmployeesRe
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelDescribeEmployees(request *ChannelDescribeEmployeesRequest) (response *ChannelDescribeEmployeesResponse, err error) {
@@ -2143,6 +2146,7 @@ func (c *Client) ChannelDescribeEmployees(request *ChannelDescribeEmployeesReque
 //  OPERATIONDENIED_USERNOTINORGANIZATION = "OperationDenied.UserNotInOrganization"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelDescribeEmployeesWithContext(ctx context.Context, request *ChannelDescribeEmployeesRequest) (response *ChannelDescribeEmployeesResponse, err error) {
@@ -2560,6 +2564,7 @@ func NewChannelUpdateSealStatusResponse() (response *ChannelUpdateSealStatusResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelUpdateSealStatus(request *ChannelUpdateSealStatusRequest) (response *ChannelUpdateSealStatusResponse, err error) {
     return c.ChannelUpdateSealStatusWithContext(context.Background(), request)
 }
@@ -2569,6 +2574,7 @@ func (c *Client) ChannelUpdateSealStatus(request *ChannelUpdateSealStatusRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) ChannelUpdateSealStatusWithContext(ctx context.Context, request *ChannelUpdateSealStatusRequest) (response *ChannelUpdateSealStatusResponse, err error) {
     if request == nil {
         request = NewChannelUpdateSealStatusRequest()
@@ -3114,11 +3120,23 @@ func NewCreateSignUrlsResponse() (response *CreateSignUrlsResponse) {
 //
 // 使用CreateSignUrls，设置EndPoint为APP，得到path。
 //
+// 
+//
+// 其中小程序的原始Id如下，或者查看小程序信息自助获取。
+//
+// 
+//
+// | 小程序 | AppID | 原始ID |
+//
+// | ------------ | ------------ | ------------ |
+//
+// | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+//
+// | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"
@@ -3189,11 +3207,23 @@ func (c *Client) CreateSignUrls(request *CreateSignUrlsRequest) (response *Creat
 //
 // 使用CreateSignUrls，设置EndPoint为APP，得到path。
 //
+// 
+//
+// 其中小程序的原始Id如下，或者查看小程序信息自助获取。
+//
+// 
+//
+// | 小程序 | AppID | 原始ID |
+//
+// | ------------ | ------------ | ------------ |
+//
+// | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+//
+// | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_GENERATEID = "InternalError.GenerateId"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_APPLICATION = "InvalidParameter.Application"

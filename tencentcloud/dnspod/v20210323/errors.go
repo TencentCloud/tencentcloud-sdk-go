@@ -26,16 +26,16 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
-	// 抱歉，该帐户已经被锁定。
+	// 抱歉，该账户已经被锁定。
 	FAILEDOPERATION_ACCOUNTISLOCKED = "FailedOperation.AccountIsLocked"
 
-	// 您的帐号下包含个人豪华域名，不能直接升级，请联系销售。
+	// 您的账户下包含个人豪华域名，不能直接升级，请联系销售。
 	FAILEDOPERATION_CONTAINSPERSONALVIP = "FailedOperation.ContainsPersonalVip"
 
 	// 此优惠券只能被免费域名使用。
 	FAILEDOPERATION_COUPONFORFREEDOMAIN = "FailedOperation.CouponForFreeDomain"
 
-	// 您的帐户不满足使用此优惠券的条件。
+	// 您的账户不满足使用此优惠券的条件。
 	FAILEDOPERATION_COUPONNOTSUPPORTED = "FailedOperation.CouponNotSupported"
 
 	// 域名已经使用过该类型的礼券了，不能重复使用。
@@ -83,7 +83,7 @@ const (
 	// 账户余额不足。
 	FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 
-	// 帐号异地登录，请求被拒绝。
+	// 账号异地登录，请求被拒绝。
 	FAILEDOPERATION_LOGINAREANOTALLOWED = "FailedOperation.LoginAreaNotAllowed"
 
 	// 登录失败，请检查账号和密码是否正确。
@@ -359,7 +359,7 @@ const (
 	// 无效的openid。
 	INVALIDPARAMETER_OPENIDINVALID = "InvalidParameter.OpenidInvalid"
 
-	// 操作失败，请稍候再试。
+	// 操作失败，请稍后再试。
 	INVALIDPARAMETER_OPERATEFAILED = "InvalidParameter.OperateFailed"
 
 	// 当前操作过于频繁，请 1 分钟后重试。
@@ -443,7 +443,7 @@ const (
 	// 时间戳已过期。
 	INVALIDPARAMETER_TIMESTAMPEXPIRED = "InvalidParameter.TimestampExpired"
 
-	// 当前帐号下的无效域名过多，暂时无法使用该功能。请将已有域名的 DNS 服务器正确指向 DNSPod 之后，再尝试添加。
+	// 当前账号下的无效域名过多，暂时无法使用该功能。请将已有域名的 DNS 服务器正确指向 DNSPod 之后，再尝试添加。
 	INVALIDPARAMETER_TOOMANYINVALIDDOMAINS = "InvalidParameter.TooManyInvalidDomains"
 
 	// 域名无效。
@@ -608,7 +608,7 @@ const (
 	// 您的IP添加了过多任务，请稍后重试。
 	REQUESTLIMITEXCEEDED_BATCHTASKLIMIT = "RequestLimitExceeded.BatchTaskLimit"
 
-	// 您的帐号在短时间内添加了大量的域名，请控制添加频率。
+	// 您的账号在短时间内添加了大量的域名，请控制添加频率。
 	REQUESTLIMITEXCEEDED_CREATEDOMAINLIMIT = "RequestLimitExceeded.CreateDomainLimit"
 
 	// API请求次数超出限制。

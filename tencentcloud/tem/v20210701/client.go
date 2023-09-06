@@ -426,6 +426,7 @@ func NewCreateEnvironmentResponse() (response *CreateEnvironmentResponse) {
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INVALIDPARAMETER_UNAUTHORIZEDORMISSINGROLE = "InvalidParameter.UnauthorizedOrMissingRole"
 //  INVALIDPARAMETER_VPCOVERQUOTA = "InvalidParameter.VpcOverQuota"
+//  INVALIDPARAMETERVALUE_CREATENAMESPACEUNSUPPORTREGIONERROR = "InvalidParameterValue.CreateNamespaceUnsupportRegionError"
 //  INVALIDPARAMETERVALUE_DAILYCREATENAMESPACEREACHMAXIMUM = "InvalidParameterValue.DailyCreateNamespaceReachMaximum"
 //  INVALIDPARAMETERVALUE_NAMESPACEDUPLICATEERROR = "InvalidParameterValue.NamespaceDuplicateError"
 //  INVALIDPARAMETERVALUE_NAMESPACEREACHMAXIMUM = "InvalidParameterValue.NamespaceReachMaximum"
@@ -445,6 +446,7 @@ func (c *Client) CreateEnvironment(request *CreateEnvironmentRequest) (response 
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INVALIDPARAMETER_UNAUTHORIZEDORMISSINGROLE = "InvalidParameter.UnauthorizedOrMissingRole"
 //  INVALIDPARAMETER_VPCOVERQUOTA = "InvalidParameter.VpcOverQuota"
+//  INVALIDPARAMETERVALUE_CREATENAMESPACEUNSUPPORTREGIONERROR = "InvalidParameterValue.CreateNamespaceUnsupportRegionError"
 //  INVALIDPARAMETERVALUE_DAILYCREATENAMESPACEREACHMAXIMUM = "InvalidParameterValue.DailyCreateNamespaceReachMaximum"
 //  INVALIDPARAMETERVALUE_NAMESPACEDUPLICATEERROR = "InvalidParameterValue.NamespaceDuplicateError"
 //  INVALIDPARAMETERVALUE_NAMESPACEREACHMAXIMUM = "InvalidParameterValue.NamespaceReachMaximum"
@@ -2821,6 +2823,7 @@ func NewRestartApplicationResponse() (response *RestartApplicationResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
+//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"
@@ -2836,6 +2839,7 @@ func (c *Client) RestartApplication(request *RestartApplicationRequest) (respons
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
 //  INTERNALERROR_RESTARTAPPLICATIONERROR = "InternalError.RestartApplicationError"
+//  INVALIDPARAMETERVALUE_TEMIDINVALID = "InvalidParameterValue.TemIdInvalid"
 //  MISSINGPARAMETER_NAMESPACEIDNULL = "MissingParameter.NamespaceIdNull"
 //  OPERATIONDENIED_RESOURCEISOLATED = "OperationDenied.ResourceIsolated"
 //  RESOURCENOTFOUND_SERVICERUNNINGVERSIONNOTFOUND = "ResourceNotFound.ServiceRunningVersionNotFound"

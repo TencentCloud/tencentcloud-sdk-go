@@ -352,6 +352,11 @@ type ChargeDetail struct {
 	Seq *string `json:"Seq,omitnil" name:"Seq"`
 
 	// 一比一时使用的、脱敏后的身份证号。
+	IdCard *string `json:"IdCard,omitnil" name:"IdCard"`
+
+	// 已废弃。请使用“IdCard”字段
+	//
+	// Deprecated: Idcard is deprecated.
 	Idcard *string `json:"Idcard,omitnil" name:"Idcard"`
 
 	// 一比一时使用的、脱敏后的姓名。

@@ -6017,6 +6017,10 @@ type ExportInfo struct {
 
 	// 日志导出创建时间
 	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 语法规则。 默认值为0。
+	// 0：Lucene语法，1：CQL语法。
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
 }
 
 type ExtractRuleInfo struct {
@@ -6646,6 +6650,10 @@ type MachineGroupTypeInfo struct {
 type MachineInfo struct {
 	// 机器的IP
 	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 机器实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
 	// 机器状态，0:异常，1:正常
 	Status *uint64 `json:"Status,omitnil" name:"Status"`

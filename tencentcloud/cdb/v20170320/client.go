@@ -4790,6 +4790,7 @@ func NewDescribeInstanceParamRecordsResponse() (response *DescribeInstanceParamR
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENAMENOTFOUND = "InvalidParameter.InstanceNameNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -4804,6 +4805,7 @@ func (c *Client) DescribeInstanceParamRecords(request *DescribeInstanceParamReco
 //  AUTHFAILURE = "AuthFailure"
 //  CDBERROR_DATABASEERROR = "CdbError.DatabaseError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENAMENOTFOUND = "InvalidParameter.InstanceNameNotFound"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
@@ -7333,6 +7335,7 @@ func NewModifyCdbProxyParamResponse() (response *ModifyCdbProxyParamResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyCdbProxyParam(request *ModifyCdbProxyParamRequest) (response *ModifyCdbProxyParamResponse, err error) {
     return c.ModifyCdbProxyParamWithContext(context.Background(), request)
 }
@@ -7343,6 +7346,7 @@ func (c *Client) ModifyCdbProxyParam(request *ModifyCdbProxyParamRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION_DESCRIBEPROXYGROUPERROR = "FailedOperation.DescribeProxyGroupError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 func (c *Client) ModifyCdbProxyParamWithContext(ctx context.Context, request *ModifyCdbProxyParamRequest) (response *ModifyCdbProxyParamResponse, err error) {
     if request == nil {
         request = NewModifyCdbProxyParamRequest()
@@ -8382,6 +8386,7 @@ func NewOpenDBInstanceEncryptionResponse() (response *OpenDBInstanceEncryptionRe
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
+//  INTERNALERROR_HTTPREQUESTERROR = "InternalError.HttpRequestError"
 //  INTERNALERROR_KMSERROR = "InternalError.KmsError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -8416,6 +8421,7 @@ func (c *Client) OpenDBInstanceEncryption(request *OpenDBInstanceEncryptionReque
 //
 // 可能返回的错误码:
 //  CDBERROR = "CdbError"
+//  INTERNALERROR_HTTPREQUESTERROR = "InternalError.HttpRequestError"
 //  INTERNALERROR_KMSERROR = "InternalError.KmsError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -8959,6 +8965,7 @@ func NewStartCpuExpandResponse() (response *StartCpuExpandResponse) {
 // 通过该API，可以开启CPU弹性扩容，包括一次性的手动扩容以及自动弹性扩容。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCETASKCONFLICTERROR = "FailedOperation.InstanceTaskConflictError"
 //  FAILEDOPERATION_NOTCHANGESTRATEGY = "FailedOperation.NotChangeStrategy"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTNORMALINSTANCE = "UnsupportedOperation.NotSupportNormalInstance"
@@ -8970,6 +8977,7 @@ func (c *Client) StartCpuExpand(request *StartCpuExpandRequest) (response *Start
 // 通过该API，可以开启CPU弹性扩容，包括一次性的手动扩容以及自动弹性扩容。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCETASKCONFLICTERROR = "FailedOperation.InstanceTaskConflictError"
 //  FAILEDOPERATION_NOTCHANGESTRATEGY = "FailedOperation.NotChangeStrategy"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  UNSUPPORTEDOPERATION_NOTSUPPORTNORMALINSTANCE = "UnsupportedOperation.NotSupportNormalInstance"

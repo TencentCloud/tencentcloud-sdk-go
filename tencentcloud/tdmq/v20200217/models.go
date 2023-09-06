@@ -726,7 +726,7 @@ type ConsumersSchedule struct {
 
 // Predefined struct for user
 type CreateClusterRequestParams struct {
-	// 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
+	// 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
 	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 用户专享物理集群ID，如果不传，则默认在公共集群上创建用户集群资源。
@@ -745,7 +745,7 @@ type CreateClusterRequestParams struct {
 type CreateClusterRequest struct {
 	*tchttp.BaseRequest
 	
-	// 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过16个字符。
+	// 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
 	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 
 	// 用户专享物理集群ID，如果不传，则默认在公共集群上创建用户集群资源。
@@ -6194,6 +6194,142 @@ func (r *DescribeRocketMQMsgResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRocketMQMsgTraceRequestParams struct {
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间
+	EnvironmentId *string `json:"EnvironmentId,omitnil" name:"EnvironmentId"`
+
+	// 主题，rocketmq查询死信时值为groupId
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 消息id
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 消费组、订阅
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 查询死信时该值为true
+	QueryDLQMsg *bool `json:"QueryDLQMsg,omitnil" name:"QueryDLQMsg"`
+}
+
+type DescribeRocketMQMsgTraceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间
+	EnvironmentId *string `json:"EnvironmentId,omitnil" name:"EnvironmentId"`
+
+	// 主题，rocketmq查询死信时值为groupId
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 消息id
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 消费组、订阅
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 查询死信时该值为true
+	QueryDLQMsg *bool `json:"QueryDLQMsg,omitnil" name:"QueryDLQMsg"`
+}
+
+func (r *DescribeRocketMQMsgTraceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQMsgTraceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "EnvironmentId")
+	delete(f, "TopicName")
+	delete(f, "MsgId")
+	delete(f, "GroupName")
+	delete(f, "QueryDLQMsg")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQMsgTraceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQMsgTraceResponseParams struct {
+	// [
+	//     {
+	//         "Stage": "produce",
+	//         "Data": {
+	//             "ProducerName": "生产者名",
+	//             "ProduceTime": "消息生产时间",
+	//             "ProducerAddr": "客户端地址",
+	//             "Duration": "耗时ms",
+	//             "Status": "状态（0：成功，1：失败）"
+	//         }
+	//     },
+	//     {
+	//         "Stage": "persist",
+	//         "Data": {
+	//             "PersistTime": "存储时间",
+	//             "Duration": "耗时ms",
+	//             "Status": "状态（0：成功，1：失败）"
+	//         }
+	//     },
+	//     {
+	//         "Stage": "consume",
+	//         "Data": {
+	//             "TotalCount": 2,
+	//             "RocketMqConsumeLogs": [
+	//                 {
+	//                     "ConsumerGroup": "消费组",
+	//                     "ConsumeModel": "消费模式",
+	//                     "ConsumerAddr": "消费者地址",
+	//                     "ConsumeTime": "推送时间",
+	//                     "Status": "状态（0:已推送未确认, 2:已确认, 3:转入重试, 4:已重试未确认, 5:已转入死信队列）"
+	//                 },
+	//                 {
+	//                     "ConsumerGroup": "消费组",
+	//                     "ConsumeModel": "消费模式",
+	//                     "ConsumerAddr": "消费者地址",
+	//                     "ConsumeTime": "推送时间",
+	//                     "Status": "状态（0:已推送未确认, 2:已确认, 3:转入重试, 4:已重试未确认, 5:已转入死信队列）"
+	//                 }
+	//             ]    
+	//         }
+	//     }
+	// ]
+	Result []*TraceResult `json:"Result,omitnil" name:"Result"`
+
+	// 消息轨迹页展示的topic名称
+	ShowTopicName *string `json:"ShowTopicName,omitnil" name:"ShowTopicName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRocketMQMsgTraceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQMsgTraceResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQMsgTraceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQMsgTraceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRocketMQNamespacesRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
@@ -6271,6 +6407,147 @@ func (r *DescribeRocketMQNamespacesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRocketMQNamespacesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQTopicMsgsRequestParams struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间
+	EnvironmentId *string `json:"EnvironmentId,omitnil" name:"EnvironmentId"`
+
+	// 主题名称，查询死信时为groupId
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 消息 ID
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 消息 key
+	MsgKey *string `json:"MsgKey,omitnil" name:"MsgKey"`
+
+	// 查询偏移
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询限额
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 标志一次分页事务
+	TaskRequestId *string `json:"TaskRequestId,omitnil" name:"TaskRequestId"`
+
+	// 死信查询时该值为true，只对Rocketmq有效
+	QueryDlqMsg *bool `json:"QueryDlqMsg,omitnil" name:"QueryDlqMsg"`
+
+	// 查询最近N条消息 最大不超过1024，默认-1为其他查询条件
+	NumOfLatestMsg *int64 `json:"NumOfLatestMsg,omitnil" name:"NumOfLatestMsg"`
+}
+
+type DescribeRocketMQTopicMsgsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 命名空间
+	EnvironmentId *string `json:"EnvironmentId,omitnil" name:"EnvironmentId"`
+
+	// 主题名称，查询死信时为groupId
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 消息 ID
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 消息 key
+	MsgKey *string `json:"MsgKey,omitnil" name:"MsgKey"`
+
+	// 查询偏移
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询限额
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 标志一次分页事务
+	TaskRequestId *string `json:"TaskRequestId,omitnil" name:"TaskRequestId"`
+
+	// 死信查询时该值为true，只对Rocketmq有效
+	QueryDlqMsg *bool `json:"QueryDlqMsg,omitnil" name:"QueryDlqMsg"`
+
+	// 查询最近N条消息 最大不超过1024，默认-1为其他查询条件
+	NumOfLatestMsg *int64 `json:"NumOfLatestMsg,omitnil" name:"NumOfLatestMsg"`
+}
+
+func (r *DescribeRocketMQTopicMsgsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQTopicMsgsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "EnvironmentId")
+	delete(f, "TopicName")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "MsgId")
+	delete(f, "MsgKey")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "TaskRequestId")
+	delete(f, "QueryDlqMsg")
+	delete(f, "NumOfLatestMsg")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQTopicMsgsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQTopicMsgsResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 消息列表
+	TopicMsgLogSets []*RocketMQMsgLog `json:"TopicMsgLogSets,omitnil" name:"TopicMsgLogSets"`
+
+	// 标志一次分页事务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskRequestId *string `json:"TaskRequestId,omitnil" name:"TaskRequestId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRocketMQTopicMsgsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQTopicMsgsResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQTopicMsgsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQTopicMsgsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9755,6 +10032,36 @@ type RocketMQMessageTrack struct {
 	ExceptionDesc *string `json:"ExceptionDesc,omitnil" name:"ExceptionDesc"`
 }
 
+type RocketMQMsgLog struct {
+	// 消息id
+	MsgId *string `json:"MsgId,omitnil" name:"MsgId"`
+
+	// 消息tag
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgTag *string `json:"MsgTag,omitnil" name:"MsgTag"`
+
+	// 消息key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MsgKey *string `json:"MsgKey,omitnil" name:"MsgKey"`
+
+	// 客户端地址
+	ProducerAddr *string `json:"ProducerAddr,omitnil" name:"ProducerAddr"`
+
+	// 消息发送时间
+	ProduceTime *string `json:"ProduceTime,omitnil" name:"ProduceTime"`
+
+	// pulsar消息id
+	PulsarMsgId *string `json:"PulsarMsgId,omitnil" name:"PulsarMsgId"`
+
+	// 死信重发次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeadLetterResendTimes *int64 `json:"DeadLetterResendTimes,omitnil" name:"DeadLetterResendTimes"`
+
+	// 死信重发成功次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResendSuccessCount *int64 `json:"ResendSuccessCount,omitnil" name:"ResendSuccessCount"`
+}
+
 type RocketMQNamespace struct {
 	// 命名空间名称，3-64个字符，只能包含字母、数字、“-”及“_”
 	NamespaceId *string `json:"NamespaceId,omitnil" name:"NamespaceId"`
@@ -10568,6 +10875,14 @@ type TopicRecord struct {
 
 	// 主题名称。
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+}
+
+type TraceResult struct {
+	// 阶段
+	Stage *string `json:"Stage,omitnil" name:"Stage"`
+
+	// 内容详情
+	Data *string `json:"Data,omitnil" name:"Data"`
 }
 
 // Predefined struct for user

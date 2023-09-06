@@ -579,6 +579,7 @@ func NewCreateBlueprintResponse() (response *CreateBlueprintResponse) {
 // 本接口 (CreateBlueprint) 用于创建镜像。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATEBLUEPRINTFAILED = "FailedOperation.CreateBlueprintFailed"
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_UNABLETOCREATEBLUEPRINT = "FailedOperation.UnableToCreateBlueprint"
@@ -599,6 +600,7 @@ func (c *Client) CreateBlueprint(request *CreateBlueprintRequest) (response *Cre
 // 本接口 (CreateBlueprint) 用于创建镜像。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATEBLUEPRINTFAILED = "FailedOperation.CreateBlueprintFailed"
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  FAILEDOPERATION_UNABLETOCREATEBLUEPRINT = "FailedOperation.UnableToCreateBlueprint"
@@ -968,6 +970,7 @@ func NewCreateFirewallTemplateRulesResponse() (response *CreateFirewallTemplateR
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
 //  LIMITEXCEEDED_FIREWALLTEMPLATERULEQUOTALIMITEXCEEDED = "LimitExceeded.FirewallTemplateRuleQuotaLimitExceeded"
+//  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
 func (c *Client) CreateFirewallTemplateRules(request *CreateFirewallTemplateRulesRequest) (response *CreateFirewallTemplateRulesResponse, err error) {
     return c.CreateFirewallTemplateRulesWithContext(context.Background(), request)
 }
@@ -979,6 +982,7 @@ func (c *Client) CreateFirewallTemplateRules(request *CreateFirewallTemplateRule
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
 //  LIMITEXCEEDED_FIREWALLTEMPLATERULEQUOTALIMITEXCEEDED = "LimitExceeded.FirewallTemplateRuleQuotaLimitExceeded"
+//  RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
 func (c *Client) CreateFirewallTemplateRulesWithContext(ctx context.Context, request *CreateFirewallTemplateRulesRequest) (response *CreateFirewallTemplateRulesResponse, err error) {
     if request == nil {
         request = NewCreateFirewallTemplateRulesRequest()
@@ -2906,6 +2910,7 @@ func NewDescribeFirewallRulesResponse() (response *DescribeFirewallRulesResponse
 //  RESOURCENOTFOUND_FIREWALLNOTFOUND = "ResourceNotFound.FirewallNotFound"
 //  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
 func (c *Client) DescribeFirewallRules(request *DescribeFirewallRulesRequest) (response *DescribeFirewallRulesResponse, err error) {
     return c.DescribeFirewallRulesWithContext(context.Background(), request)
 }
@@ -2921,6 +2926,7 @@ func (c *Client) DescribeFirewallRules(request *DescribeFirewallRulesRequest) (r
 //  RESOURCENOTFOUND_FIREWALLNOTFOUND = "ResourceNotFound.FirewallNotFound"
 //  RESOURCENOTFOUND_INSTANCEIDNOTFOUND = "ResourceNotFound.InstanceIdNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
 func (c *Client) DescribeFirewallRulesWithContext(ctx context.Context, request *DescribeFirewallRulesRequest) (response *DescribeFirewallRulesResponse, err error) {
     if request == nil {
         request = NewDescribeFirewallRulesRequest()
@@ -6762,6 +6768,7 @@ func NewResetFirewallTemplateRulesResponse() (response *ResetFirewallTemplateRul
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
 func (c *Client) ResetFirewallTemplateRules(request *ResetFirewallTemplateRulesRequest) (response *ResetFirewallTemplateRulesResponse, err error) {
     return c.ResetFirewallTemplateRulesWithContext(context.Background(), request)
 }
@@ -6771,6 +6778,7 @@ func (c *Client) ResetFirewallTemplateRules(request *ResetFirewallTemplateRulesR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETERVALUE_DUPLICATEDFIREWALLTEMPLATERULE = "InvalidParameterValue.DuplicatedFirewallTemplateRule"
 func (c *Client) ResetFirewallTemplateRulesWithContext(ctx context.Context, request *ResetFirewallTemplateRulesRequest) (response *ResetFirewallTemplateRulesResponse, err error) {
     if request == nil {
         request = NewResetFirewallTemplateRulesRequest()

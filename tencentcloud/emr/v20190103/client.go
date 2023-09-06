@@ -679,6 +679,7 @@ func NewDescribeHiveQueriesResponse() (response *DescribeHiveQueriesResponse) {
 // 可能返回的错误码:
 //  INVALIDPARAMETER_IMPALAQUERYEXCEPTION = "InvalidParameter.ImpalaQueryException"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
 func (c *Client) DescribeHiveQueries(request *DescribeHiveQueriesRequest) (response *DescribeHiveQueriesResponse, err error) {
     return c.DescribeHiveQueriesWithContext(context.Background(), request)
 }
@@ -689,6 +690,7 @@ func (c *Client) DescribeHiveQueries(request *DescribeHiveQueriesRequest) (respo
 // 可能返回的错误码:
 //  INVALIDPARAMETER_IMPALAQUERYEXCEPTION = "InvalidParameter.ImpalaQueryException"
 //  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
 func (c *Client) DescribeHiveQueriesWithContext(ctx context.Context, request *DescribeHiveQueriesRequest) (response *DescribeHiveQueriesResponse, err error) {
     if request == nil {
         request = NewDescribeHiveQueriesRequest()

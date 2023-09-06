@@ -2040,6 +2040,7 @@ func NewDescribeCloudNativeAPIGatewaysResponse() (response *DescribeCloudNativeA
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 //  FAILEDOPERATION_ROLE = "FailedOperation.Role"
 //  INTERNALERROR_HTTPSTATUSCODEERROR = "InternalError.HttpStatusCodeError"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
@@ -2065,6 +2066,7 @@ func (c *Client) DescribeCloudNativeAPIGateways(request *DescribeCloudNativeAPIG
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
 //  FAILEDOPERATION_ROLE = "FailedOperation.Role"
 //  INTERNALERROR_HTTPSTATUSCODEERROR = "InternalError.HttpStatusCodeError"
+//  INTERNALERROR_IOERROR = "InternalError.IOError"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
@@ -2605,6 +2607,7 @@ func NewModifyCloudNativeAPIGatewayResponse() (response *ModifyCloudNativeAPIGat
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"
@@ -2626,6 +2629,7 @@ func (c *Client) ModifyCloudNativeAPIGateway(request *ModifyCloudNativeAPIGatewa
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INTERNALERROR_INTERNALERROR = "InternalError.InternalError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
 //  INVALIDPARAMETERVALUE_DESCRIPTION = "InvalidParameterValue.Description"
 //  INVALIDPARAMETERVALUE_GATEWAYID = "InvalidParameterValue.GatewayId"

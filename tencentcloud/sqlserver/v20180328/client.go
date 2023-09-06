@@ -4472,8 +4472,6 @@ func NewInquiryPriceUpgradeDBInstanceResponse() (response *InquiryPriceUpgradeDB
 // InquiryPriceUpgradeDBInstance
 // 本接口（InquiryPriceUpgradeDBInstance）用于查询包年包月实例升级变配的价格。
 //
-// 按量计费实例变配后的价格参考InquiryPriceCreateDBInstances接口。
-//
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
@@ -4492,8 +4490,6 @@ func (c *Client) InquiryPriceUpgradeDBInstance(request *InquiryPriceUpgradeDBIns
 
 // InquiryPriceUpgradeDBInstance
 // 本接口（InquiryPriceUpgradeDBInstance）用于查询包年包月实例升级变配的价格。
-//
-// 按量计费实例变配后的价格参考InquiryPriceCreateDBInstances接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"

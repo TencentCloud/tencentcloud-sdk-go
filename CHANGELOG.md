@@ -1,3 +1,269 @@
+# Release v1.0.742
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 70 次发布
+
+发布时间：2023-09-06 01:23:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ExportInfo](https://cloud.tencent.com/document/api/614/56471#ExportInfo)
+
+	* 新增成员：SyntaxRule
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 115 次发布
+
+发布时间：2023-09-06 01:29:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Placement](https://cloud.tencent.com/document/api/213/15753#Placement)
+
+	* <font color="#dd0000">**删除成员**：</font>HostIps
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 111 次发布
+
+发布时间：2023-09-05 17:35:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [StartFlow](https://cloud.tencent.com/document/api/1323/70357)
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 108 次发布
+
+发布时间：2023-09-05 17:36:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [SignUrlInfo](https://cloud.tencent.com/document/api/1420/61525#SignUrlInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>CustomUserId
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 人脸核身(faceid) 版本：2018-03-01
+
+### 第 63 次发布
+
+发布时间：2023-09-06 01:49:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ChargeDetail](https://cloud.tencent.com/document/api/1007/41958#ChargeDetail)
+
+	* 新增成员：IdCard
+
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 41 次发布
+
+发布时间：2023-09-06 02:00:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+
+	* 新增入参：EndDelayTime
+
+* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+
+	* 新增出参：EndDelayTime
+
+* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
+
+	* 新增入参：EndDelayTime
+
+
+修改数据结构：
+
+* [DocumentInfo](https://cloud.tencent.com/document/api/1639/81423#DocumentInfo)
+
+	* 新增成员：Preview
+
+	* <font color="#dd0000">**修改成员**：</font>DocumentId, DocumentUrl, DocumentName, Owner, SdkAppId, Permission, TranscodeResult, TranscodeType, TranscodeProgress, TranscodeState, TranscodeInfo, DocumentType, DocumentSize, UpdateTime, Pages, Width, Height, Cover
+
+* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
+
+	* 新增成员：EndDelayTime
+
+* [RoomItem](https://cloud.tencent.com/document/api/1639/81423#RoomItem)
+
+	* 新增成员：EndDelayTime
+
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 92 次发布
+
+发布时间：2023-09-06 02:06:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePrometheusRegions](https://cloud.tencent.com/document/api/248/97797)
+
+新增数据结构：
+
+* [PrometheusRegionItem](https://cloud.tencent.com/document/api/248/30354#PrometheusRegionItem)
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 38 次发布
+
+发布时间：2023-09-06 02:10:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [RunJobDescription](https://cloud.tencent.com/document/api/849/52010#RunJobDescription)
+
+	* 新增成员：CustomTimestamp
+
+
+
+
+## 高性能计算平台(thpc) 版本：2023-03-21
+
+### 第 9 次发布
+
+发布时间：2023-09-06 02:32:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [QueueConfigOverview](https://cloud.tencent.com/document/api/1527/89579#QueueConfigOverview)
+
+	* <font color="#dd0000">**修改成员**：</font>QueueName, MinSize, MaxSize, EnableAutoExpansion, EnableAutoShrink, ExpansionNodeConfigs, DesiredIdleNodeCapacity, ScaleOutRatio, ScaleOutNodeThreshold, MaxNodesPerCycle
+
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## TI-ONE 训练平台(tione) 版本：2021-11-11
+
+### 第 37 次发布
+
+发布时间：2023-09-06 02:33:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
+
+	* 新增入参：ServiceEIP
+
+* [ModifyModelService](https://cloud.tencent.com/document/api/851/83228)
+
+	* 新增入参：ServiceEIP
+
+
+修改数据结构：
+
+* [PodInfo](https://cloud.tencent.com/document/api/851/75051#PodInfo)
+
+	* 新增成员：StartTime, EndTime, ResourceConfigInfo
+
+* [Spec](https://cloud.tencent.com/document/api/851/75051#Spec)
+
+	* 新增成员：SpecFeatures, SpecType, GpuType, CategoryId
+
+
+
+
+## TI-ONE 训练平台(tione) 版本：2019-10-22
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 42 次发布
+
+发布时间：2023-09-06 02:36:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [KongServicePreview](https://cloud.tencent.com/document/api/1364/54942#KongServicePreview)
+
+	* 新增成员：Path
+
+
+
+
 # Release v1.0.741
 
 ## 云防火墙(cfw) 版本：2019-09-04

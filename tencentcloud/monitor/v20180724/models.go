@@ -9087,6 +9087,63 @@ func (r *DescribePrometheusRecordRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePrometheusRegionsRequestParams struct {
+	// 1-预付费，2-后付费，3-全地域（不填默认全地域）
+	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
+}
+
+type DescribePrometheusRegionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 1-预付费，2-后付费，3-全地域（不填默认全地域）
+	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
+}
+
+func (r *DescribePrometheusRegionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusRegionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PayMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePrometheusRegionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePrometheusRegionsResponseParams struct {
+	// 区域列表
+	RegionSet []*PrometheusRegionItem `json:"RegionSet,omitnil" name:"RegionSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribePrometheusRegionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePrometheusRegionsResponseParams `json:"Response"`
+}
+
+func (r *DescribePrometheusRegionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePrometheusRegionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrometheusScrapeJobsRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -10397,10 +10454,10 @@ type GrafanaInstanceInfo struct {
 	// 子网 ID 数组
 	SubnetIds []*string `json:"SubnetIds,omitnil" name:"SubnetIds"`
 
-	// Grafana 内网地址
+	// Grafana 公网地址
 	InternetUrl *string `json:"InternetUrl,omitnil" name:"InternetUrl"`
 
-	// Grafana 公网地址
+	// Grafana 内网地址
 	InternalUrl *string `json:"InternalUrl,omitnil" name:"InternalUrl"`
 
 	// 创建时间
@@ -12804,6 +12861,29 @@ type PrometheusRecordRuleYamlItem struct {
 	// 规则数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Count *int64 `json:"Count,omitnil" name:"Count"`
+}
+
+type PrometheusRegionItem struct {
+	// 区域
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// 区域 ID
+	RegionId *int64 `json:"RegionId,omitnil" name:"RegionId"`
+
+	// 区域状态( 0: 不可用；1: 可用)
+	RegionState *int64 `json:"RegionState,omitnil" name:"RegionState"`
+
+	// 区域名(中文)
+	RegionName *string `json:"RegionName,omitnil" name:"RegionName"`
+
+	// 区域名(英文缩写)
+	RegionShortName *string `json:"RegionShortName,omitnil" name:"RegionShortName"`
+
+	// 区域所在大区名
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 1-仅支持预付费，2-仅支持后付费，3-支持两种计费模式实例
+	RegionPayMode *int64 `json:"RegionPayMode,omitnil" name:"RegionPayMode"`
 }
 
 type PrometheusRuleKV struct {

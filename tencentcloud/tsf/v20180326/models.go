@@ -7061,7 +7061,7 @@ type DeployGroupRequestParams struct {
 	// 滚动发布每个批次参与的实例比率
 	DeployBatch []*float64 `json:"DeployBatch,omitnil" name:"DeployBatch"`
 
-	// 滚动发布的执行方式
+	// 滚动发布的执行方式，auto表示自动， manual表示手动
 	DeployExeMode *string `json:"DeployExeMode,omitnil" name:"DeployExeMode"`
 
 	// 滚动发布每个批次的时间间隔
@@ -7079,7 +7079,8 @@ type DeployGroupRequestParams struct {
 	// JDK名称: konaJDK或openJDK
 	JdkName *string `json:"JdkName,omitnil" name:"JdkName"`
 
-	// JDK版本: 8或11 (openJDK只支持8)
+	// konaJDK版本：8、11和17
+	// openJDK版本：8、17
 	JdkVersion *string `json:"JdkVersion,omitnil" name:"JdkVersion"`
 
 	// 部署agent的类型、版本
@@ -7125,7 +7126,7 @@ type DeployGroupRequest struct {
 	// 滚动发布每个批次参与的实例比率
 	DeployBatch []*float64 `json:"DeployBatch,omitnil" name:"DeployBatch"`
 
-	// 滚动发布的执行方式
+	// 滚动发布的执行方式，auto表示自动， manual表示手动
 	DeployExeMode *string `json:"DeployExeMode,omitnil" name:"DeployExeMode"`
 
 	// 滚动发布每个批次的时间间隔
@@ -7143,7 +7144,8 @@ type DeployGroupRequest struct {
 	// JDK名称: konaJDK或openJDK
 	JdkName *string `json:"JdkName,omitnil" name:"JdkName"`
 
-	// JDK版本: 8或11 (openJDK只支持8)
+	// konaJDK版本：8、11和17
+	// openJDK版本：8、17
 	JdkVersion *string `json:"JdkVersion,omitnil" name:"JdkVersion"`
 
 	// 部署agent的类型、版本
@@ -22273,7 +22275,7 @@ type UpdateHealthCheckSettingsRequestParams struct {
 	// 部署组ID
 	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
-	// 是否能使健康检查
+	// 是否开启健康检查
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil" name:"EnableHealthCheck"`
 
 	// 健康检查配置
@@ -22286,7 +22288,7 @@ type UpdateHealthCheckSettingsRequest struct {
 	// 部署组ID
 	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
-	// 是否能使健康检查
+	// 是否开启健康检查
 	EnableHealthCheck *bool `json:"EnableHealthCheck,omitnil" name:"EnableHealthCheck"`
 
 	// 健康检查配置

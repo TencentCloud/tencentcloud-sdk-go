@@ -410,6 +410,9 @@ const (
 	// 云服务器已售罄。
 	RESOURCESSOLDOUT_CVMSOLDOUT = "ResourcesSoldOut.CvmSoldOut"
 
+	// appid不一致。
+	UNAUTHORIZEDOPERATION_APPIDMISMATCHED = "UnauthorizedOperation.AppIdMismatched"
+
 	// 校验账号操作无权限。
 	UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
 

@@ -487,6 +487,19 @@ func (r *CreateInstanceNewResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DatabasePrivilegeInfo struct {
+	// 数据库名称
+	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
+
+	// //库表权限，SELECT、INSERT_ALL、ALTER、TRUNCATE、DROP_TABLE、CREATE_TABLE、DROP_DATABASE
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatabasePrivileges []*string `json:"DatabasePrivileges,omitnil" name:"DatabasePrivileges"`
+
+	// // 库下面的表权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TablePrivilegeList []*TablePrivilegeInfo `json:"TablePrivilegeList,omitnil" name:"TablePrivilegeList"`
+}
+
 // Predefined struct for user
 type DeleteBackUpDataRequestParams struct {
 	// 集群id
@@ -1983,12 +1996,45 @@ func (r *ModifyInstanceKeyValConfigsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyUserNewPrivilegeRequestParams struct {
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
+	// cluster名称
+	Cluster *string `json:"Cluster,omitnil" name:"Cluster"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
+
+	// 是否所有数据库表
+	AllDatabase *bool `json:"AllDatabase,omitnil" name:"AllDatabase"`
+
+	// 全局权限
+	GlobalPrivileges []*string `json:"GlobalPrivileges,omitnil" name:"GlobalPrivileges"`
+
+	// 数据库表权限
+	DatabasePrivilegeList []*DatabasePrivilegeInfo `json:"DatabasePrivilegeList,omitnil" name:"DatabasePrivilegeList"`
 }
 
 type ModifyUserNewPrivilegeRequest struct {
 	*tchttp.BaseRequest
 	
+	// 实例id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// cluster名称
+	Cluster *string `json:"Cluster,omitnil" name:"Cluster"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
+
+	// 是否所有数据库表
+	AllDatabase *bool `json:"AllDatabase,omitnil" name:"AllDatabase"`
+
+	// 全局权限
+	GlobalPrivileges []*string `json:"GlobalPrivileges,omitnil" name:"GlobalPrivileges"`
+
+	// 数据库表权限
+	DatabasePrivilegeList []*DatabasePrivilegeInfo `json:"DatabasePrivilegeList,omitnil" name:"DatabasePrivilegeList"`
 }
 
 func (r *ModifyUserNewPrivilegeRequest) ToJsonString() string {
@@ -2003,7 +2049,12 @@ func (r *ModifyUserNewPrivilegeRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "InstanceId")
+	delete(f, "Cluster")
+	delete(f, "UserName")
+	delete(f, "AllDatabase")
+	delete(f, "GlobalPrivileges")
+	delete(f, "DatabasePrivilegeList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserNewPrivilegeRequest has unknown keys!", "")
 	}
@@ -2580,6 +2631,14 @@ type ServiceInfo struct {
 	// 服务的版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil" name:"Version"`
+}
+
+type TablePrivilegeInfo struct {
+	// 表名称
+	TableName *string `json:"TableName,omitnil" name:"TableName"`
+
+	// 表权限列表 SELECT、INSERT_ALL、ALTER、TRUNCATE、DROP_TABLE 查询、插入、设置、清空表、删除表
+	TablePrivileges []*string `json:"TablePrivileges,omitnil" name:"TablePrivileges"`
 }
 
 type Tag struct {

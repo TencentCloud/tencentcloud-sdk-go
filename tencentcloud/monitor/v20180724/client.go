@@ -5889,6 +5889,60 @@ func (c *Client) DescribePrometheusRecordRulesWithContext(ctx context.Context, r
     return
 }
 
+func NewDescribePrometheusRegionsRequest() (request *DescribePrometheusRegionsRequest) {
+    request = &DescribePrometheusRegionsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("monitor", APIVersion, "DescribePrometheusRegions")
+    
+    
+    return
+}
+
+func NewDescribePrometheusRegionsResponse() (response *DescribePrometheusRegionsResponse) {
+    response = &DescribePrometheusRegionsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePrometheusRegions
+// 列出 Prometheus 服务所有可用的地域
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePrometheusRegions(request *DescribePrometheusRegionsRequest) (response *DescribePrometheusRegionsResponse, err error) {
+    return c.DescribePrometheusRegionsWithContext(context.Background(), request)
+}
+
+// DescribePrometheusRegions
+// 列出 Prometheus 服务所有可用的地域
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DBQUERYFAILED = "FailedOperation.DbQueryFailed"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribePrometheusRegionsWithContext(ctx context.Context, request *DescribePrometheusRegionsRequest) (response *DescribePrometheusRegionsResponse, err error) {
+    if request == nil {
+        request = NewDescribePrometheusRegionsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePrometheusRegions require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePrometheusRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrometheusScrapeJobsRequest() (request *DescribePrometheusScrapeJobsRequest) {
     request = &DescribePrometheusScrapeJobsRequest{
         BaseRequest: &tchttp.BaseRequest{},

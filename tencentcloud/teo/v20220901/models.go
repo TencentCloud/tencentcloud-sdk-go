@@ -1929,6 +1929,81 @@ func (r *CreateSecurityIPGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateSharedCNAMERequestParams struct {
+	// 共享 CNAME 所属站点的 ID。	
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 共享 CNAME 前缀。请输入合法的域名前缀，例如"test-api"、"test-api.com"，限制输入 50 个字符。
+	// 共享 CNAME 完整格式为：<自定义前缀>+<zoneid中的12位随机字符串>+"share.eo.dnse[0-5].com"。例如前缀传入 example.com，EO 会为您创建共享 CNAME：example.com.sai2ig51kaa5.eo.dns2.com
+	// 示例值：example.com
+	SharedCNAMEPrefix *string `json:"SharedCNAMEPrefix,omitnil" name:"SharedCNAMEPrefix"`
+
+	// 描述。可输入 1-50 个任意字符。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+type CreateSharedCNAMERequest struct {
+	*tchttp.BaseRequest
+	
+	// 共享 CNAME 所属站点的 ID。	
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 共享 CNAME 前缀。请输入合法的域名前缀，例如"test-api"、"test-api.com"，限制输入 50 个字符。
+	// 共享 CNAME 完整格式为：<自定义前缀>+<zoneid中的12位随机字符串>+"share.eo.dnse[0-5].com"。例如前缀传入 example.com，EO 会为您创建共享 CNAME：example.com.sai2ig51kaa5.eo.dns2.com
+	// 示例值：example.com
+	SharedCNAMEPrefix *string `json:"SharedCNAMEPrefix,omitnil" name:"SharedCNAMEPrefix"`
+
+	// 描述。可输入 1-50 个任意字符。
+	Description *string `json:"Description,omitnil" name:"Description"`
+}
+
+func (r *CreateSharedCNAMERequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSharedCNAMERequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "SharedCNAMEPrefix")
+	delete(f, "Description")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSharedCNAMERequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateSharedCNAMEResponseParams struct {
+	// 共享 CNAME。格式为：<自定义前缀>+<ZoneId中的12位随机字符串>+"share.eo.dnse[0-5].com"
+	SharedCNAME *string `json:"SharedCNAME,omitnil" name:"SharedCNAME"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateSharedCNAMEResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateSharedCNAMEResponseParams `json:"Response"`
+}
+
+func (r *CreateSharedCNAMEResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateSharedCNAMEResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateZoneRequestParams struct {
 	// 站点名称。
 	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
