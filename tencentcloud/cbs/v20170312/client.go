@@ -2514,9 +2514,9 @@ func NewModifySnapshotAttributeResponse() (response *ModifySnapshotAttributeResp
 //
 // 
 //
-// * 当前仅支持修改快照名称及将非永久快照修改为永久快照。
+// * 本接口支持修改快照名称及到期时间，以及将非永久快照修改为永久快照。
 //
-// * “快照名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为提交工单或是进行快照管理操作的依据。
+// * “快照名称”仅为方便用户管理之用，腾讯云并不以此名称作为提交工单或是进行快照管理操作的依据。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -2534,9 +2534,9 @@ func (c *Client) ModifySnapshotAttribute(request *ModifySnapshotAttributeRequest
 //
 // 
 //
-// * 当前仅支持修改快照名称及将非永久快照修改为永久快照。
+// * 本接口支持修改快照名称及到期时间，以及将非永久快照修改为永久快照。
 //
-// * “快照名称”仅为方便用户自己管理之用，腾讯云并不以此名称作为提交工单或是进行快照管理操作的依据。
+// * “快照名称”仅为方便用户管理之用，腾讯云并不以此名称作为提交工单或是进行快照管理操作的依据。
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

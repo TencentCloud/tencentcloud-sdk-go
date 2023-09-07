@@ -118,17 +118,15 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 }
 
 // CancelFlow
-// 用于撤销签署流程
+// 用于撤销签署流程<br/>
 //
-// 适用场景：如果某个合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
+// 适用场景：如果某个合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。<br/>
 //
-// 注：如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同。
+// `注意：如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同。`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_CANCELREASON = "InvalidParameter.CancelReason"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -148,17 +146,15 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 }
 
 // CancelFlow
-// 用于撤销签署流程
+// 用于撤销签署流程<br/>
 //
-// 适用场景：如果某个合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。
+// 适用场景：如果某个合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。<br/>
 //
-// 注：如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同。
+// `注意：如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同。`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DB = "InternalError.Db"
-//  INTERNALERROR_DEPENDSDB = "InternalError.DependsDb"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  INVALIDPARAMETER_CANCELREASON = "InvalidParameter.CancelReason"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -208,7 +204,11 @@ func NewCancelMultiFlowSignQRCodeResponse() (response *CancelMultiFlowSignQRCode
 }
 
 // CancelMultiFlowSignQRCode
-// 此接口（CancelMultiFlowSignQRCode）用于取消一码多扫二维码。该接口对传入的二维码ID，若还在有效期内，可以提前失效。
+// 此接口（CancelMultiFlowSignQRCode）用于废除一码多扫流程签署二维码。
+//
+// 该接口所需的二维码ID，源自[创建一码多扫流程签署二维码](https://qian.tencent.com/developers/companyApis/startFlows/CreateMultiFlowSignQRCode)生成的。
+//
+// 如果该二维码尚处于有效期内，可通过本接口将其设置为失效状态。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -227,7 +227,11 @@ func (c *Client) CancelMultiFlowSignQRCode(request *CancelMultiFlowSignQRCodeReq
 }
 
 // CancelMultiFlowSignQRCode
-// 此接口（CancelMultiFlowSignQRCode）用于取消一码多扫二维码。该接口对传入的二维码ID，若还在有效期内，可以提前失效。
+// 此接口（CancelMultiFlowSignQRCode）用于废除一码多扫流程签署二维码。
+//
+// 该接口所需的二维码ID，源自[创建一码多扫流程签署二维码](https://qian.tencent.com/developers/companyApis/startFlows/CreateMultiFlowSignQRCode)生成的。
+//
+// 如果该二维码尚处于有效期内，可通过本接口将其设置为失效状态。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -278,6 +282,10 @@ func NewCancelUserAutoSignEnableUrlResponse() (response *CancelUserAutoSignEnabl
 // CancelUserAutoSignEnableUrl
 // 此接口（CancelUserAutoSignEnableUrl）用来撤销发送给个人用户的自动签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
 //
+// 
+//
+// 注: `在调用此接口时，请确保指定的用户已生成自动签开通链接并且未完成开通，否则无法撤销`
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = "FailedOperation.UserAutoSignEnableAlready"
 //  FAILEDOPERATION_USERAUTOSIGNENABLEURLNOTEXIST = "FailedOperation.UserAutoSignEnableUrlNotExist"
@@ -289,6 +297,10 @@ func (c *Client) CancelUserAutoSignEnableUrl(request *CancelUserAutoSignEnableUr
 
 // CancelUserAutoSignEnableUrl
 // 此接口（CancelUserAutoSignEnableUrl）用来撤销发送给个人用户的自动签开通链接，撤销后对应的个人用户开通链接失效。若个人用户已经完成开通，将无法撤销。（处方单场景专用，使用此接口请与客户经理确认）
+//
+// 
+//
+// 注: `在调用此接口时，请确保指定的用户已生成自动签开通链接并且未完成开通，否则无法撤销`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = "FailedOperation.UserAutoSignEnableAlready"
@@ -2370,19 +2382,17 @@ func NewCreateFlowSignUrlResponse() (response *CreateFlowSignUrlResponse) {
 }
 
 // CreateFlowSignUrl
-// 创建个人H5签署链接，请联系客户经理申请开通使用, 否则调用会返回失败 <br/>
+// 该接口用于发起合同后，生成个人用户的签署链接, 暂时不支持企业端签署 <br/>
 //
 // 
 //
-// 该接口用于发起合同后，生成个人签署人的签署链接, 暂时不支持企业端签署 <br/>
+// 注：
 //
-// 
+// `1. 该接口目前仅支持签署人类型是个人签署方的场景（PERSON）` 
 //
-// 注意：该接口目前签署人类型仅支持个人签署方（PERSON） <br/>
+// `2. 该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件，不支持填写控件 `
 //
-// 注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件<br/>
-//
-// 注意：该接口返回的签署链接是用于APP集成的场景，支持APP打开或浏览器直接打开，不支持微信小程序嵌入。微信小程序请使用小程序跳转或半屏弹窗的方式<br/>
+// `3. 该接口返回的签署链接是用于APP集成的场景，支持APP打开或浏览器直接打开，不支持微信小程序嵌入`。跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2402,19 +2412,17 @@ func (c *Client) CreateFlowSignUrl(request *CreateFlowSignUrlRequest) (response 
 }
 
 // CreateFlowSignUrl
-// 创建个人H5签署链接，请联系客户经理申请开通使用, 否则调用会返回失败 <br/>
+// 该接口用于发起合同后，生成个人用户的签署链接, 暂时不支持企业端签署 <br/>
 //
 // 
 //
-// 该接口用于发起合同后，生成个人签署人的签署链接, 暂时不支持企业端签署 <br/>
+// 注：
 //
-// 
+// `1. 该接口目前仅支持签署人类型是个人签署方的场景（PERSON）` 
 //
-// 注意：该接口目前签署人类型仅支持个人签署方（PERSON） <br/>
+// `2. 该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件，不支持填写控件 `
 //
-// 注意：该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件<br/>
-//
-// 注意：该接口返回的签署链接是用于APP集成的场景，支持APP打开或浏览器直接打开，不支持微信小程序嵌入。微信小程序请使用小程序跳转或半屏弹窗的方式<br/>
+// `3. 该接口返回的签署链接是用于APP集成的场景，支持APP打开或浏览器直接打开，不支持微信小程序嵌入`。跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3280,6 +3288,20 @@ func NewCreateReleaseFlowResponse() (response *CreateReleaseFlowResponse) {
 // CreateReleaseFlow
 // 发起解除协议，主要应用场景为：基于一份已经签署的合同(签署流程)，进行解除操作。
 //
+// 
+//
+// `注意：原合同必须签署完成后，才能发起解除协议。` <br/>
+//
+// `注意：只有原合同企业类型的参与人才能发起解除协议，个人不能发起解除协议。`<br/>
+//
+// `注意：原合同个人类型参与人必须是解除协议的参与人，不能更换其他第三方个人参与解除协议。`<br/>
+//
+// `注意：如果原合同企业参与人无法参与解除协议，可以指定同企业具有同等权限的企业员工代为处理。`<br/>
+//
+// `注意：发起解除协议同发起其他企业合同一样，也会参与合同扣费，扣费标准同其他类型合同。`<br/>
+//
+// `注意：在解除协议发起之后，原合同的状态将转变为解除中。一旦解除协议签署完毕，原合同及解除协议均会转变为已解除状态。`<br/>
+//
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_AGENOTACHIEVENORMALLEGAL = "FailedOperation.AgeNotAchieveNormalLegal"
@@ -3355,6 +3377,20 @@ func (c *Client) CreateReleaseFlow(request *CreateReleaseFlowRequest) (response 
 
 // CreateReleaseFlow
 // 发起解除协议，主要应用场景为：基于一份已经签署的合同(签署流程)，进行解除操作。
+//
+// 
+//
+// `注意：原合同必须签署完成后，才能发起解除协议。` <br/>
+//
+// `注意：只有原合同企业类型的参与人才能发起解除协议，个人不能发起解除协议。`<br/>
+//
+// `注意：原合同个人类型参与人必须是解除协议的参与人，不能更换其他第三方个人参与解除协议。`<br/>
+//
+// `注意：如果原合同企业参与人无法参与解除协议，可以指定同企业具有同等权限的企业员工代为处理。`<br/>
+//
+// `注意：发起解除协议同发起其他企业合同一样，也会参与合同扣费，扣费标准同其他类型合同。`<br/>
+//
+// `注意：在解除协议发起之后，原合同的状态将转变为解除中。一旦解除协议签署完毕，原合同及解除协议均会转变为已解除状态。`<br/>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4470,7 +4506,7 @@ func NewDescribeFlowEvidenceReportResponse() (response *DescribeFlowEvidenceRepo
 }
 
 // DescribeFlowEvidenceReport
-// 查询出证报告，返回报告 URL。出证报告编号通过CreateFlowEvidenceReport接口获取。
+// 查询签署报告，返回报告 URL。需调用创建并返回出证报告接口（CreateFlowEvidenceReport）获取报告编号后调用当前接口获取报告链接。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -4490,7 +4526,7 @@ func (c *Client) DescribeFlowEvidenceReport(request *DescribeFlowEvidenceReportR
 }
 
 // DescribeFlowEvidenceReport
-// 查询出证报告，返回报告 URL。出证报告编号通过CreateFlowEvidenceReport接口获取。
+// 查询签署报告，返回报告 URL。需调用创建并返回出证报告接口（CreateFlowEvidenceReport）获取报告编号后调用当前接口获取报告链接。
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"

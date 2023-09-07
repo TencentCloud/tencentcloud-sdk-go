@@ -2577,6 +2577,8 @@ type Organ struct {
 
 	// 峡部厚度
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: IsthmusThicknese is deprecated.
 	IsthmusThicknese *Size `json:"IsthmusThicknese,omitnil" name:"IsthmusThicknese"`
 
 	// 内部回声分布
@@ -2650,6 +2652,10 @@ type Organ struct {
 	// 器官在报告图片中的坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Coords []*Coord `json:"Coords,omitnil" name:"Coords"`
+
+	// 峡部厚度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsthmusThickness *Size `json:"IsthmusThickness,omitnil" name:"IsthmusThickness"`
 }
 
 type OtherInfo struct {
@@ -2810,6 +2816,8 @@ type ParagraphBlock struct {
 
 	// 月经史
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: MenstruallHistoryText is deprecated.
 	MenstruallHistoryText *string `json:"MenstruallHistoryText,omitnil" name:"MenstruallHistoryText"`
 
 	// 婚育史
@@ -2843,6 +2851,10 @@ type ParagraphBlock struct {
 	// 治疗结果
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TreatmentResultText *string `json:"TreatmentResultText,omitnil" name:"TreatmentResultText"`
+
+	// 月经史
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MenstrualHistoryText *string `json:"MenstrualHistoryText,omitnil" name:"MenstrualHistoryText"`
 }
 
 type ParentInfo struct {
@@ -3463,6 +3475,10 @@ type ReportInfo struct {
 	// 未归类时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Times []*Time `json:"Times,omitnil" name:"Times"`
+
+	// 床号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BedNo *string `json:"BedNo,omitnil" name:"BedNo"`
 }
 
 type ReportTypeVersion struct {
@@ -4504,6 +4520,8 @@ type TuberInfo struct {
 
 	// 峡部厚度
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: IsthmusThicknese is deprecated.
 	IsthmusThicknese *Size `json:"IsthmusThicknese,omitnil" name:"IsthmusThicknese"`
 
 	// 原文
@@ -4557,6 +4575,10 @@ type TuberInfo struct {
 	// 在报告图片中的坐标
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Coords []*Coord `json:"Coords,omitnil" name:"Coords"`
+
+	// 峡部厚度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsthmusThickness *Size `json:"IsthmusThickness,omitnil" name:"IsthmusThickness"`
 }
 
 type Vaccination struct {

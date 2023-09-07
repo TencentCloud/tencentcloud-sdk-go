@@ -4351,6 +4351,54 @@ func (c *Client) DescribeWafThreatenIntelligenceWithContext(ctx context.Context,
     return
 }
 
+func NewFreshAntiFakeUrlRequest() (request *FreshAntiFakeUrlRequest) {
+    request = &FreshAntiFakeUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "FreshAntiFakeUrl")
+    
+    
+    return
+}
+
+func NewFreshAntiFakeUrlResponse() (response *FreshAntiFakeUrlResponse) {
+    response = &FreshAntiFakeUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// FreshAntiFakeUrl
+// 刷新防篡改url
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) FreshAntiFakeUrl(request *FreshAntiFakeUrlRequest) (response *FreshAntiFakeUrlResponse, err error) {
+    return c.FreshAntiFakeUrlWithContext(context.Background(), request)
+}
+
+// FreshAntiFakeUrl
+// 刷新防篡改url
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) FreshAntiFakeUrlWithContext(ctx context.Context, request *FreshAntiFakeUrlRequest) (response *FreshAntiFakeUrlResponse, err error) {
+    if request == nil {
+        request = NewFreshAntiFakeUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FreshAntiFakeUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFreshAntiFakeUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetAttackDownloadRecordsRequest() (request *GetAttackDownloadRecordsRequest) {
     request = &GetAttackDownloadRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},

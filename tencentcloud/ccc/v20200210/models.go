@@ -145,11 +145,16 @@ type BindStaffSkillGroupListRequestParams struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
-	// 坐席邮箱
+	// 座席邮箱
 	StaffEmail *string `json:"StaffEmail,omitnil" name:"StaffEmail"`
 
 	// 绑定技能组列表
+	//
+	// Deprecated: SkillGroupList is deprecated.
 	SkillGroupList []*int64 `json:"SkillGroupList,omitnil" name:"SkillGroupList"`
+
+	// 绑定技能组列表(必填)
+	StaffSkillGroupList []*StaffSkillGroupList `json:"StaffSkillGroupList,omitnil" name:"StaffSkillGroupList"`
 }
 
 type BindStaffSkillGroupListRequest struct {
@@ -158,11 +163,14 @@ type BindStaffSkillGroupListRequest struct {
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
 	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
 
-	// 坐席邮箱
+	// 座席邮箱
 	StaffEmail *string `json:"StaffEmail,omitnil" name:"StaffEmail"`
 
 	// 绑定技能组列表
 	SkillGroupList []*int64 `json:"SkillGroupList,omitnil" name:"SkillGroupList"`
+
+	// 绑定技能组列表(必填)
+	StaffSkillGroupList []*StaffSkillGroupList `json:"StaffSkillGroupList,omitnil" name:"StaffSkillGroupList"`
 }
 
 func (r *BindStaffSkillGroupListRequest) ToJsonString() string {
@@ -180,6 +188,7 @@ func (r *BindStaffSkillGroupListRequest) FromJsonString(s string) error {
 	delete(f, "SdkAppId")
 	delete(f, "StaffEmail")
 	delete(f, "SkillGroupList")
+	delete(f, "StaffSkillGroupList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "BindStaffSkillGroupListRequest has unknown keys!", "")
 	}
@@ -3688,6 +3697,14 @@ type StaffInfo struct {
 	// 最后修改时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LastModifyTimestamp *int64 `json:"LastModifyTimestamp,omitnil" name:"LastModifyTimestamp"`
+}
+
+type StaffSkillGroupList struct {
+	// 技能组ID
+	SkillGroupId *int64 `json:"SkillGroupId,omitnil" name:"SkillGroupId"`
+
+	// 座席在技能组中的优先级（1为最高，5最低，默认3）
+	Priority *int64 `json:"Priority,omitnil" name:"Priority"`
 }
 
 type StaffStatusExtra struct {

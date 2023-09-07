@@ -1,107 +1,35 @@
 # 本版本更新包含以下内容：
 
-## 日志服务(cls) 版本：2020-10-16
+## 云呼叫中心(ccc) 版本：2020-02-10
 
-### 第 70 次发布
+### 第 55 次发布
 
-发布时间：2023-09-06 01:23:36
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ExportInfo](https://cloud.tencent.com/document/api/614/56471#ExportInfo)
-
-	* 新增成员：SyntaxRule
-
-
-
-
-## 云服务器(cvm) 版本：2017-03-12
-
-### 第 115 次发布
-
-发布时间：2023-09-06 01:29:11
+发布时间：2023-09-07 01:15:54
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+修改接口：
 
-* [Placement](https://cloud.tencent.com/document/api/213/15753#Placement)
+* [BindStaffSkillGroupList](https://cloud.tencent.com/document/api/679/58190)
 
-	* <font color="#dd0000">**删除成员**：</font>HostIps
+	* 新增入参：StaffSkillGroupList
 
+	* <font color="#dd0000">**修改入参**：</font>SkillGroupList
+
+
+新增数据结构：
+
+* [StaffSkillGroupList](https://cloud.tencent.com/document/api/679/47715#StaffSkillGroupList)
 
 
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
-### 第 111 次发布
+### 第 112 次发布
 
-发布时间：2023-09-05 17:35:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [StartFlow](https://cloud.tencent.com/document/api/1323/70357)
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 108 次发布
-
-发布时间：2023-09-05 17:36:50
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SignUrlInfo](https://cloud.tencent.com/document/api/1420/61525#SignUrlInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>CustomUserId
-
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 人脸核身(faceid) 版本：2018-03-01
-
-### 第 63 次发布
-
-发布时间：2023-09-06 01:49:13
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [ChargeDetail](https://cloud.tencent.com/document/api/1007/41958#ChargeDetail)
-
-	* 新增成员：IdCard
-
-
-
-
-## 低代码互动课堂(lcic) 版本：2022-08-17
-
-### 第 41 次发布
-
-发布时间：2023-09-06 02:00:58
+发布时间：2023-09-07 01:48:58
 
 本次发布包含了以下内容：
 
@@ -109,63 +37,29 @@
 
 修改接口：
 
-* [CreateRoom](https://cloud.tencent.com/document/api/1639/80942)
+* [CancelUserAutoSignEnableUrl](https://cloud.tencent.com/document/api/1323/93320)
 
-	* 新增入参：EndDelayTime
+	* 新增入参：Agent
 
-* [DescribeRoom](https://cloud.tencent.com/document/api/1639/80941)
+* [CreateReleaseFlow](https://cloud.tencent.com/document/api/1323/88045)
 
-	* 新增出参：EndDelayTime
-
-* [ModifyRoom](https://cloud.tencent.com/document/api/1639/86030)
-
-	* 新增入参：EndDelayTime
+	* 新增入参：UserData
 
 
 修改数据结构：
 
-* [DocumentInfo](https://cloud.tencent.com/document/api/1639/81423#DocumentInfo)
+* [FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1323/70369#FlowApproverUrlInfo)
 
-	* 新增成员：Preview
-
-	* <font color="#dd0000">**修改成员**：</font>DocumentId, DocumentUrl, DocumentName, Owner, SdkAppId, Permission, TranscodeResult, TranscodeType, TranscodeProgress, TranscodeState, TranscodeInfo, DocumentType, DocumentSize, UpdateTime, Pages, Width, Height, Cover
-
-* [RoomInfo](https://cloud.tencent.com/document/api/1639/81423#RoomInfo)
-
-	* 新增成员：EndDelayTime
-
-* [RoomItem](https://cloud.tencent.com/document/api/1639/81423#RoomItem)
-
-	* 新增成员：EndDelayTime
+	* <font color="#dd0000">**修改成员**：</font>SignUrl, ApproverType, ApproverName, ApproverMobile, LongUrl
 
 
 
 
-## 腾讯云可观测平台(monitor) 版本：2018-07-24
+## 医疗报告结构化(mrs) 版本：2020-09-10
 
-### 第 92 次发布
+### 第 16 次发布
 
-发布时间：2023-09-06 02:06:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribePrometheusRegions](https://cloud.tencent.com/document/api/248/97797)
-
-新增数据结构：
-
-* [PrometheusRegionItem](https://cloud.tencent.com/document/api/248/30354#PrometheusRegionItem)
-
-
-
-## 流计算 Oceanus(oceanus) 版本：2019-04-22
-
-### 第 38 次发布
-
-发布时间：2023-09-06 02:10:27
+发布时间：2023-09-07 02:12:57
 
 本次发布包含了以下内容：
 
@@ -173,18 +67,36 @@
 
 修改数据结构：
 
-* [RunJobDescription](https://cloud.tencent.com/document/api/849/52010#RunJobDescription)
+* [Organ](https://cloud.tencent.com/document/api/1314/56230#Organ)
 
-	* 新增成员：CustomTimestamp
+	* 新增成员：IsthmusThickness
+
+	* <font color="#dd0000">**修改成员**：</font>Part, Size, Envelope, Edge, InnerEcho, Gland, Shape, Thickness, ShapeAttr, CDFI, SymDesc, SizeStatus, Outline, Structure, Density, Vas, Cysticwall, Capsule, IsthmusThicknese, InnerEchoDistribution, Src, Index, Transparent, MriAdc, MriDwi, MriT1, MriT2, CtHu, Suvmax, Metabolism, RadioactiveUptake, LymphEnlargement, ImageFeature, Duct, Trend, Operation, Coords
+
+* [ParagraphBlock](https://cloud.tencent.com/document/api/1314/56230#ParagraphBlock)
+
+	* 新增成员：MenstrualHistoryText
+
+	* <font color="#dd0000">**修改成员**：</font>IncisionHealingText, AuxiliaryExaminationText, SpecialExamText, OutpatientDiagnosisText, AdmissionConditionText, CheckAndTreatmentProcessText, SymptomsAndSignsText, DischargeInstructionsText, AdmissionDiagnosisText, SurgeryConditionText, PathologicalDiagnosisText, DischargeConditionText, CheckRecordText, ChiefComplaintText, DischargeDiagnosisText, MainDiseaseHistoryText, DiseasePresentText, PersonalHistoryText, MenstruallHistoryText, ObstericalHistoryText, FamilyHistoryText, AllergyHistoryText, DiseaseHistoryText, OtherDiagnosisText, BodyExaminationText, SpecialistExaminationText, TreatmentResultText
+
+* [ReportInfo](https://cloud.tencent.com/document/api/1314/56230#ReportInfo)
+
+	* 新增成员：BedNo
+
+* [TuberInfo](https://cloud.tencent.com/document/api/1314/56230#TuberInfo)
+
+	* 新增成员：IsthmusThickness
+
+	* <font color="#dd0000">**修改成员**：</font>Type, Part, Size, Multiple, AspectRatio, Edge, InnerEcho, RearEcho, Elastic, Shape, ShapeAttr, SkinMedulla, Trend, Calcification, Envelope, Enhancement, LymphEnlargement, LymphDoor, Activity, Operation, CDFI, Index, SizeStatus, InnerEchoDistribution, InnerEchoType, Outline, Structure, Density, Vas, Cysticwall, Capsule, IsthmusThicknese, Src, Transparent, MriAdc, MriDwi, MriT1, MriT2, CtHu, Suvmax, Metabolism, RadioactiveUptake, SymDesc, ImageFeature, Coords
 
 
 
 
 ## 高性能计算平台(thpc) 版本：2023-03-21
 
-### 第 9 次发布
+### 第 10 次发布
 
-发布时间：2023-09-06 02:32:29
+发布时间：2023-09-07 02:37:25
 
 本次发布包含了以下内容：
 
@@ -192,9 +104,13 @@
 
 修改数据结构：
 
+* [QueueConfig](https://cloud.tencent.com/document/api/1527/89579#QueueConfig)
+
+	* 新增成员：ScaleUpMemRatio
+
 * [QueueConfigOverview](https://cloud.tencent.com/document/api/1527/89579#QueueConfigOverview)
 
-	* <font color="#dd0000">**修改成员**：</font>QueueName, MinSize, MaxSize, EnableAutoExpansion, EnableAutoShrink, ExpansionNodeConfigs, DesiredIdleNodeCapacity, ScaleOutRatio, ScaleOutNodeThreshold, MaxNodesPerCycle
+	* 新增成员：ScaleUpMemRatio
 
 
 
@@ -207,60 +123,19 @@
 
 
 
-## TI-ONE 训练平台(tione) 版本：2021-11-11
+## Web 应用防火墙(waf) 版本：2018-01-25
 
-### 第 37 次发布
+### 第 48 次发布
 
-发布时间：2023-09-06 02:33:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateModelService](https://cloud.tencent.com/document/api/851/82291)
-
-	* 新增入参：ServiceEIP
-
-* [ModifyModelService](https://cloud.tencent.com/document/api/851/83228)
-
-	* 新增入参：ServiceEIP
-
-
-修改数据结构：
-
-* [PodInfo](https://cloud.tencent.com/document/api/851/75051#PodInfo)
-
-	* 新增成员：StartTime, EndTime, ResourceConfigInfo
-
-* [Spec](https://cloud.tencent.com/document/api/851/75051#Spec)
-
-	* 新增成员：SpecFeatures, SpecType, GpuType, CategoryId
-
-
-
-
-## TI-ONE 训练平台(tione) 版本：2019-10-22
-
-
-
-## 微服务引擎 TSE(tse) 版本：2020-12-07
-
-### 第 42 次发布
-
-发布时间：2023-09-06 02:36:56
+发布时间：2023-09-07 02:51:23
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改数据结构：
+新增接口：
 
-* [KongServicePreview](https://cloud.tencent.com/document/api/1364/54942#KongServicePreview)
-
-	* 新增成员：Path
-
+* [FreshAntiFakeUrl](https://cloud.tencent.com/document/api/627/97829)
 
 
 
@@ -13757,6 +13632,27 @@
 
 
 ## 云呼叫中心(ccc) 版本：2020-02-10
+
+### 第 55 次发布
+
+发布时间：2023-09-07 01:15:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [BindStaffSkillGroupList](https://cloud.tencent.com/document/api/679/58190)
+
+	* 新增入参：StaffSkillGroupList
+
+	* <font color="#dd0000">**修改入参**：</font>SkillGroupList
+
+
+新增数据结构：
+
+* [[StaffSkillGroupList](https://cloud.tencent.com/document/api/679/47715#StaffSkillGroupList)](https://cloud.tencent.com/document/api/679/47715#[StaffSkillGroupList](https://cloud.tencent.com/document/api/679/47715#StaffSkillGroupList))
 
 ### 第 54 次发布
 
@@ -52723,6 +52619,32 @@
 
 ## 腾讯电子签企业版(ess) 版本：2020-11-11
 
+### 第 112 次发布
+
+发布时间：2023-09-07 01:48:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CancelUserAutoSignEnableUrl](https://cloud.tencent.com/document/api/1323/93320)
+
+	* 新增入参：Agent
+
+* [CreateReleaseFlow](https://cloud.tencent.com/document/api/1323/88045)
+
+	* 新增入参：UserData
+
+
+修改数据结构：
+
+* [FlowApproverUrlInfo](https://cloud.tencent.com/document/api/1323/70369#FlowApproverUrlInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>SignUrl, ApproverType, ApproverName, ApproverMobile, LongUrl
+
+
 ### 第 111 次发布
 
 发布时间：2023-09-05 17:35:52
@@ -75511,11 +75433,11 @@
 
 新增接口：
 
-* [[DescribePrometheusRegions](https://cloud.tencent.com/document/api/248/97797)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePrometheusRegions](https://cloud.tencent.com/document/api/248/97797)
 
 新增数据结构：
 
-* [[PrometheusRegionItem](https://cloud.tencent.com/document/api/248/30354#PrometheusRegionItem)](https://cloud.tencent.com/document/api/248/30354#[PrometheusRegionItem](https://cloud.tencent.com/document/api/248/30354#PrometheusRegionItem))
+* [PrometheusRegionItem](https://cloud.tencent.com/document/api/248/30354#PrometheusRegionItem)
 
 ### 第 91 次发布
 
@@ -79638,6 +79560,39 @@
 
 
 ## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 16 次发布
+
+发布时间：2023-09-07 02:12:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Organ](https://cloud.tencent.com/document/api/1314/56230#Organ)
+
+	* 新增成员：IsthmusThickness
+
+	* <font color="#dd0000">**修改成员**：</font>Part, Size, Envelope, Edge, InnerEcho, Gland, Shape, Thickness, ShapeAttr, CDFI, SymDesc, SizeStatus, Outline, Structure, Density, Vas, Cysticwall, Capsule, IsthmusThicknese, InnerEchoDistribution, Src, Index, Transparent, MriAdc, MriDwi, MriT1, MriT2, CtHu, Suvmax, Metabolism, RadioactiveUptake, LymphEnlargement, ImageFeature, Duct, Trend, Operation, Coords
+
+* [ParagraphBlock](https://cloud.tencent.com/document/api/1314/56230#ParagraphBlock)
+
+	* 新增成员：MenstrualHistoryText
+
+	* <font color="#dd0000">**修改成员**：</font>IncisionHealingText, AuxiliaryExaminationText, SpecialExamText, OutpatientDiagnosisText, AdmissionConditionText, CheckAndTreatmentProcessText, SymptomsAndSignsText, DischargeInstructionsText, AdmissionDiagnosisText, SurgeryConditionText, PathologicalDiagnosisText, DischargeConditionText, CheckRecordText, ChiefComplaintText, DischargeDiagnosisText, MainDiseaseHistoryText, DiseasePresentText, PersonalHistoryText, MenstruallHistoryText, ObstericalHistoryText, FamilyHistoryText, AllergyHistoryText, DiseaseHistoryText, OtherDiagnosisText, BodyExaminationText, SpecialistExaminationText, TreatmentResultText
+
+* [ReportInfo](https://cloud.tencent.com/document/api/1314/56230#ReportInfo)
+
+	* 新增成员：BedNo
+
+* [TuberInfo](https://cloud.tencent.com/document/api/1314/56230#TuberInfo)
+
+	* 新增成员：IsthmusThickness
+
+	* <font color="#dd0000">**修改成员**：</font>Type, Part, Size, Multiple, AspectRatio, Edge, InnerEcho, RearEcho, Elastic, Shape, ShapeAttr, SkinMedulla, Trend, Calcification, Envelope, Enhancement, LymphEnlargement, LymphDoor, Activity, Operation, CDFI, Index, SizeStatus, InnerEchoDistribution, InnerEchoType, Outline, Structure, Density, Vas, Cysticwall, Capsule, IsthmusThicknese, Src, Transparent, MriAdc, MriDwi, MriT1, MriT2, CtHu, Suvmax, Metabolism, RadioactiveUptake, SymDesc, ImageFeature, Coords
+
 
 ### 第 15 次发布
 
@@ -108282,6 +108237,25 @@
 
 ## 高性能计算平台(thpc) 版本：2023-03-21
 
+### 第 10 次发布
+
+发布时间：2023-09-07 02:37:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [QueueConfig](https://cloud.tencent.com/document/api/1527/89579#QueueConfig)
+
+	* 新增成员：ScaleUpMemRatio
+
+* [QueueConfigOverview](https://cloud.tencent.com/document/api/1527/89579#QueueConfigOverview)
+
+	* 新增成员：ScaleUpMemRatio
+
+
 ### 第 9 次发布
 
 发布时间：2023-09-06 02:32:29
@@ -129332,6 +129306,18 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 48 次发布
+
+发布时间：2023-09-07 02:51:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[FreshAntiFakeUrl](https://cloud.tencent.com/document/api/627/97829)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 47 次发布
 

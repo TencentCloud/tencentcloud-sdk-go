@@ -112,7 +112,7 @@ func NewBindStaffSkillGroupListResponse() (response *BindStaffSkillGroupListResp
 }
 
 // BindStaffSkillGroupList
-// 绑定坐席所属技能组
+// 绑定座席所属技能组
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -124,7 +124,7 @@ func (c *Client) BindStaffSkillGroupList(request *BindStaffSkillGroupListRequest
 }
 
 // BindStaffSkillGroupList
-// 绑定坐席所属技能组
+// 绑定座席所属技能组
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

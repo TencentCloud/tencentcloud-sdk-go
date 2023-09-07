@@ -6171,6 +6171,70 @@ type FraudPkg struct {
 }
 
 // Predefined struct for user
+type FreshAntiFakeUrlRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// Id
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
+}
+
+type FreshAntiFakeUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// Id
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
+}
+
+func (r *FreshAntiFakeUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FreshAntiFakeUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FreshAntiFakeUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FreshAntiFakeUrlResponseParams struct {
+	// 结果成功与否
+	Result *string `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type FreshAntiFakeUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *FreshAntiFakeUrlResponseParams `json:"Response"`
+}
+
+func (r *FreshAntiFakeUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FreshAntiFakeUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetAttackDownloadRecordsRequestParams struct {
 
 }
