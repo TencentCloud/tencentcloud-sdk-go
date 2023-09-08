@@ -415,104 +415,6 @@ func (c *Client) AddSpartaProtectionWithContext(ctx context.Context, request *Ad
     return
 }
 
-func NewAddSpartaProtectionAutoRequest() (request *AddSpartaProtectionAutoRequest) {
-    request = &AddSpartaProtectionAutoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("waf", APIVersion, "AddSpartaProtectionAuto")
-    
-    
-    return
-}
-
-func NewAddSpartaProtectionAutoResponse() (response *AddSpartaProtectionAutoResponse) {
-    response = &AddSpartaProtectionAutoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// AddSpartaProtectionAuto
-// 一键接入
-//
-// 可能返回的错误码:
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-func (c *Client) AddSpartaProtectionAuto(request *AddSpartaProtectionAutoRequest) (response *AddSpartaProtectionAutoResponse, err error) {
-    return c.AddSpartaProtectionAutoWithContext(context.Background(), request)
-}
-
-// AddSpartaProtectionAuto
-// 一键接入
-//
-// 可能返回的错误码:
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-func (c *Client) AddSpartaProtectionAutoWithContext(ctx context.Context, request *AddSpartaProtectionAutoRequest) (response *AddSpartaProtectionAutoResponse, err error) {
-    if request == nil {
-        request = NewAddSpartaProtectionAutoRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("AddSpartaProtectionAuto require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewAddSpartaProtectionAutoResponse()
-    err = c.Send(request, response)
-    return
-}
-
-func NewAddSpartaProtectionsAutoRequest() (request *AddSpartaProtectionsAutoRequest) {
-    request = &AddSpartaProtectionsAutoRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("waf", APIVersion, "AddSpartaProtectionsAuto")
-    
-    
-    return
-}
-
-func NewAddSpartaProtectionsAutoResponse() (response *AddSpartaProtectionsAutoResponse) {
-    response = &AddSpartaProtectionsAutoResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// AddSpartaProtectionsAuto
-// 批量添加域名
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER_UNKNOWNACTION = "InvalidParameter.UnknownAction"
-func (c *Client) AddSpartaProtectionsAuto(request *AddSpartaProtectionsAutoRequest) (response *AddSpartaProtectionsAutoResponse, err error) {
-    return c.AddSpartaProtectionsAutoWithContext(context.Background(), request)
-}
-
-// AddSpartaProtectionsAuto
-// 批量添加域名
-//
-// 可能返回的错误码:
-//  INVALIDPARAMETER_UNKNOWNACTION = "InvalidParameter.UnknownAction"
-func (c *Client) AddSpartaProtectionsAutoWithContext(ctx context.Context, request *AddSpartaProtectionsAutoRequest) (response *AddSpartaProtectionsAutoResponse, err error) {
-    if request == nil {
-        request = NewAddSpartaProtectionsAutoRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("AddSpartaProtectionsAuto require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewAddSpartaProtectionsAutoResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateAccessExportRequest() (request *CreateAccessExportRequest) {
     request = &CreateAccessExportRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2693,6 +2595,66 @@ func (c *Client) DescribeDomainDetailsSaasWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeDomainDetailsSaasResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDomainVerifyResultRequest() (request *DescribeDomainVerifyResultRequest) {
+    request = &DescribeDomainVerifyResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeDomainVerifyResult")
+    
+    
+    return
+}
+
+func NewDescribeDomainVerifyResultResponse() (response *DescribeDomainVerifyResultResponse) {
+    response = &DescribeDomainVerifyResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomainVerifyResult
+// 获取添加域名操作的结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DescribeDomainVerifyResult(request *DescribeDomainVerifyResultRequest) (response *DescribeDomainVerifyResultResponse, err error) {
+    return c.DescribeDomainVerifyResultWithContext(context.Background(), request)
+}
+
+// DescribeDomainVerifyResult
+// 获取添加域名操作的结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINUSE = "ResourceInUse"
+func (c *Client) DescribeDomainVerifyResultWithContext(ctx context.Context, request *DescribeDomainVerifyResultRequest) (response *DescribeDomainVerifyResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainVerifyResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainVerifyResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainVerifyResultResponse()
     err = c.Send(request, response)
     return
 }

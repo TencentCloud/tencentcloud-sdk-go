@@ -127,6 +127,88 @@ func (c *Client) AddAcRuleWithContext(ctx context.Context, request *AddAcRuleReq
     return
 }
 
+func NewAddAclRuleRequest() (request *AddAclRuleRequest) {
+    request = &AddAclRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "AddAclRule")
+    
+    
+    return
+}
+
+func NewAddAclRuleResponse() (response *AddAclRuleResponse) {
+    response = &AddAclRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddAclRule
+// 添加互联网边界访问控制规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddAclRule(request *AddAclRuleRequest) (response *AddAclRuleResponse, err error) {
+    return c.AddAclRuleWithContext(context.Background(), request)
+}
+
+// AddAclRule
+// 添加互联网边界访问控制规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddAclRuleWithContext(ctx context.Context, request *AddAclRuleRequest) (response *AddAclRuleResponse, err error) {
+    if request == nil {
+        request = NewAddAclRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddAclRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddAclRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewAddEnterpriseSecurityGroupRulesRequest() (request *AddEnterpriseSecurityGroupRulesRequest) {
     request = &AddEnterpriseSecurityGroupRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -265,6 +347,88 @@ func (c *Client) AddNatAcRuleWithContext(ctx context.Context, request *AddNatAcR
     request.SetContext(ctx)
     
     response = NewAddNatAcRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewAddVpcAcRuleRequest() (request *AddVpcAcRuleRequest) {
+    request = &AddVpcAcRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "AddVpcAcRule")
+    
+    
+    return
+}
+
+func NewAddVpcAcRuleResponse() (response *AddVpcAcRuleResponse) {
+    response = &AddVpcAcRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddVpcAcRule
+// 添加VPC内网间规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddVpcAcRule(request *AddVpcAcRuleRequest) (response *AddVpcAcRuleResponse, err error) {
+    return c.AddVpcAcRuleWithContext(context.Background(), request)
+}
+
+// AddVpcAcRule
+// 添加VPC内网间规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddVpcAcRuleWithContext(ctx context.Context, request *AddVpcAcRuleRequest) (response *AddVpcAcRuleResponse, err error) {
+    if request == nil {
+        request = NewAddVpcAcRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddVpcAcRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddVpcAcRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -759,6 +923,88 @@ func (c *Client) CreateSecurityGroupRulesWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateVpcFwGroupRequest() (request *CreateVpcFwGroupRequest) {
+    request = &CreateVpcFwGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "CreateVpcFwGroup")
+    
+    
+    return
+}
+
+func NewCreateVpcFwGroupResponse() (response *CreateVpcFwGroupResponse) {
+    response = &CreateVpcFwGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateVpcFwGroup
+// 创建VPC间防火墙(防火墙组)
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVpcFwGroup(request *CreateVpcFwGroupRequest) (response *CreateVpcFwGroupResponse, err error) {
+    return c.CreateVpcFwGroupWithContext(context.Background(), request)
+}
+
+// CreateVpcFwGroup
+// 创建VPC间防火墙(防火墙组)
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) CreateVpcFwGroupWithContext(ctx context.Context, request *CreateVpcFwGroupRequest) (response *CreateVpcFwGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateVpcFwGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateVpcFwGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateVpcFwGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteAcRuleRequest() (request *DeleteAcRuleRequest) {
     request = &DeleteAcRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -915,6 +1161,60 @@ func (c *Client) DeleteAllAccessControlRuleWithContext(ctx context.Context, requ
     request.SetContext(ctx)
     
     response = NewDeleteAllAccessControlRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteBlockIgnoreRuleListRequest() (request *DeleteBlockIgnoreRuleListRequest) {
+    request = &DeleteBlockIgnoreRuleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DeleteBlockIgnoreRuleList")
+    
+    
+    return
+}
+
+func NewDeleteBlockIgnoreRuleListResponse() (response *DeleteBlockIgnoreRuleListResponse) {
+    response = &DeleteBlockIgnoreRuleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteBlockIgnoreRuleList
+// 批量删除入侵防御封禁列表、放通列表规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteBlockIgnoreRuleList(request *DeleteBlockIgnoreRuleListRequest) (response *DeleteBlockIgnoreRuleListResponse, err error) {
+    return c.DeleteBlockIgnoreRuleListWithContext(context.Background(), request)
+}
+
+// DeleteBlockIgnoreRuleList
+// 批量删除入侵防御封禁列表、放通列表规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DeleteBlockIgnoreRuleListWithContext(ctx context.Context, request *DeleteBlockIgnoreRuleListRequest) (response *DeleteBlockIgnoreRuleListResponse, err error) {
+    if request == nil {
+        request = NewDeleteBlockIgnoreRuleListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteBlockIgnoreRuleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteBlockIgnoreRuleListResponse()
     err = c.Send(request, response)
     return
 }
@@ -1135,6 +1435,88 @@ func (c *Client) DeleteSecurityGroupRuleWithContext(ctx context.Context, request
     return
 }
 
+func NewDeleteVpcFwGroupRequest() (request *DeleteVpcFwGroupRequest) {
+    request = &DeleteVpcFwGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DeleteVpcFwGroup")
+    
+    
+    return
+}
+
+func NewDeleteVpcFwGroupResponse() (response *DeleteVpcFwGroupResponse) {
+    response = &DeleteVpcFwGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteVpcFwGroup
+// 删除防火墙(组)，或者删除其中实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteVpcFwGroup(request *DeleteVpcFwGroupRequest) (response *DeleteVpcFwGroupResponse, err error) {
+    return c.DeleteVpcFwGroupWithContext(context.Background(), request)
+}
+
+// DeleteVpcFwGroup
+// 删除防火墙(组)，或者删除其中实例
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteVpcFwGroupWithContext(ctx context.Context, request *DeleteVpcFwGroupRequest) (response *DeleteVpcFwGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteVpcFwGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteVpcFwGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteVpcFwGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteVpcInstanceRequest() (request *DeleteVpcInstanceRequest) {
     request = &DeleteVpcInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1237,6 +1619,60 @@ func (c *Client) DescribeAcListsWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeAcListsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAclRuleRequest() (request *DescribeAclRuleRequest) {
+    request = &DescribeAclRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeAclRule")
+    
+    
+    return
+}
+
+func NewDescribeAclRuleResponse() (response *DescribeAclRuleResponse) {
+    response = &DescribeAclRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAclRule
+// 查询互联网边界访问控制列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAclRule(request *DescribeAclRuleRequest) (response *DescribeAclRuleResponse, err error) {
+    return c.DescribeAclRuleWithContext(context.Background(), request)
+}
+
+// DescribeAclRule
+// 查询互联网边界访问控制列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeAclRuleWithContext(ctx context.Context, request *DescribeAclRuleRequest) (response *DescribeAclRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeAclRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAclRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAclRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -1809,6 +2245,170 @@ func (c *Client) DescribeEnterpriseSecurityGroupRuleWithContext(ctx context.Cont
     request.SetContext(ctx)
     
     response = NewDescribeEnterpriseSecurityGroupRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFwEdgeIpsRequest() (request *DescribeFwEdgeIpsRequest) {
+    request = &DescribeFwEdgeIpsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeFwEdgeIps")
+    
+    
+    return
+}
+
+func NewDescribeFwEdgeIpsResponse() (response *DescribeFwEdgeIpsResponse) {
+    response = &DescribeFwEdgeIpsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFwEdgeIps
+// 串行防火墙IP开关列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFwEdgeIps(request *DescribeFwEdgeIpsRequest) (response *DescribeFwEdgeIpsResponse, err error) {
+    return c.DescribeFwEdgeIpsWithContext(context.Background(), request)
+}
+
+// DescribeFwEdgeIps
+// 串行防火墙IP开关列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFwEdgeIpsWithContext(ctx context.Context, request *DescribeFwEdgeIpsRequest) (response *DescribeFwEdgeIpsResponse, err error) {
+    if request == nil {
+        request = NewDescribeFwEdgeIpsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFwEdgeIps require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFwEdgeIpsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeFwGroupInstanceInfoRequest() (request *DescribeFwGroupInstanceInfoRequest) {
+    request = &DescribeFwGroupInstanceInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeFwGroupInstanceInfo")
+    
+    
+    return
+}
+
+func NewDescribeFwGroupInstanceInfoResponse() (response *DescribeFwGroupInstanceInfoResponse) {
+    response = &DescribeFwGroupInstanceInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFwGroupInstanceInfo
+// 获取租户所有VPC防火墙(组)及VPC防火墙实例卡片信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFwGroupInstanceInfo(request *DescribeFwGroupInstanceInfoRequest) (response *DescribeFwGroupInstanceInfoResponse, err error) {
+    return c.DescribeFwGroupInstanceInfoWithContext(context.Background(), request)
+}
+
+// DescribeFwGroupInstanceInfo
+// 获取租户所有VPC防火墙(组)及VPC防火墙实例卡片信息
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFwGroupInstanceInfoWithContext(ctx context.Context, request *DescribeFwGroupInstanceInfoRequest) (response *DescribeFwGroupInstanceInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeFwGroupInstanceInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFwGroupInstanceInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFwGroupInstanceInfoResponse()
     err = c.Send(request, response)
     return
 }
@@ -3131,6 +3731,142 @@ func (c *Client) DescribeUnHandleEventTabListWithContext(ctx context.Context, re
     return
 }
 
+func NewDescribeVpcAcRuleRequest() (request *DescribeVpcAcRuleRequest) {
+    request = &DescribeVpcAcRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeVpcAcRule")
+    
+    
+    return
+}
+
+func NewDescribeVpcAcRuleResponse() (response *DescribeVpcAcRuleResponse) {
+    response = &DescribeVpcAcRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVpcAcRule
+// 查询内网间访问控制列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeVpcAcRule(request *DescribeVpcAcRuleRequest) (response *DescribeVpcAcRuleResponse, err error) {
+    return c.DescribeVpcAcRuleWithContext(context.Background(), request)
+}
+
+// DescribeVpcAcRule
+// 查询内网间访问控制列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) DescribeVpcAcRuleWithContext(ctx context.Context, request *DescribeVpcAcRuleRequest) (response *DescribeVpcAcRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcAcRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpcAcRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVpcAcRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeVpcFwGroupSwitchRequest() (request *DescribeVpcFwGroupSwitchRequest) {
+    request = &DescribeVpcFwGroupSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeVpcFwGroupSwitch")
+    
+    
+    return
+}
+
+func NewDescribeVpcFwGroupSwitchResponse() (response *DescribeVpcFwGroupSwitchResponse) {
+    response = &DescribeVpcFwGroupSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVpcFwGroupSwitch
+// VPC防火墙(组)开关列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVpcFwGroupSwitch(request *DescribeVpcFwGroupSwitchRequest) (response *DescribeVpcFwGroupSwitchResponse, err error) {
+    return c.DescribeVpcFwGroupSwitchWithContext(context.Background(), request)
+}
+
+// DescribeVpcFwGroupSwitch
+// VPC防火墙(组)开关列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeVpcFwGroupSwitchWithContext(ctx context.Context, request *DescribeVpcFwGroupSwitchRequest) (response *DescribeVpcFwGroupSwitchResponse, err error) {
+    if request == nil {
+        request = NewDescribeVpcFwGroupSwitchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVpcFwGroupSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVpcFwGroupSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewExpandCfwVerticalRequest() (request *ExpandCfwVerticalRequest) {
     request = &ExpandCfwVerticalRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3263,6 +3999,62 @@ func (c *Client) ModifyAcRuleWithContext(ctx context.Context, request *ModifyAcR
     request.SetContext(ctx)
     
     response = NewModifyAcRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAclRuleRequest() (request *ModifyAclRuleRequest) {
+    request = &ModifyAclRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyAclRule")
+    
+    
+    return
+}
+
+func NewModifyAclRuleResponse() (response *ModifyAclRuleResponse) {
+    response = &ModifyAclRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAclRule
+// 修改互联网边界访问控制规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAclRule(request *ModifyAclRuleRequest) (response *ModifyAclRuleResponse, err error) {
+    return c.ModifyAclRuleWithContext(context.Background(), request)
+}
+
+// ModifyAclRule
+// 修改互联网边界访问控制规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAclRuleWithContext(ctx context.Context, request *ModifyAclRuleRequest) (response *ModifyAclRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyAclRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAclRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAclRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -3543,6 +4335,60 @@ func (c *Client) ModifyBlockIgnoreListWithContext(ctx context.Context, request *
     return
 }
 
+func NewModifyBlockIgnoreRuleRequest() (request *ModifyBlockIgnoreRuleRequest) {
+    request = &ModifyBlockIgnoreRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyBlockIgnoreRule")
+    
+    
+    return
+}
+
+func NewModifyBlockIgnoreRuleResponse() (response *ModifyBlockIgnoreRuleResponse) {
+    response = &ModifyBlockIgnoreRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyBlockIgnoreRule
+// 编辑单条入侵防御封禁列表、放通列表规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyBlockIgnoreRule(request *ModifyBlockIgnoreRuleRequest) (response *ModifyBlockIgnoreRuleResponse, err error) {
+    return c.ModifyBlockIgnoreRuleWithContext(context.Background(), request)
+}
+
+// ModifyBlockIgnoreRule
+// 编辑单条入侵防御封禁列表、放通列表规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyBlockIgnoreRuleWithContext(ctx context.Context, request *ModifyBlockIgnoreRuleRequest) (response *ModifyBlockIgnoreRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyBlockIgnoreRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyBlockIgnoreRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyBlockIgnoreRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyBlockTopRequest() (request *ModifyBlockTopRequest) {
     request = &ModifyBlockTopRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3683,6 +4529,60 @@ func (c *Client) ModifyEWRuleStatusWithContext(ctx context.Context, request *Mod
     return
 }
 
+func NewModifyEdgeIpSwitchRequest() (request *ModifyEdgeIpSwitchRequest) {
+    request = &ModifyEdgeIpSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyEdgeIpSwitch")
+    
+    
+    return
+}
+
+func NewModifyEdgeIpSwitchResponse() (response *ModifyEdgeIpSwitchResponse) {
+    response = &ModifyEdgeIpSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyEdgeIpSwitch
+// 修改边界防火墙开关(旁路、串行)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyEdgeIpSwitch(request *ModifyEdgeIpSwitchRequest) (response *ModifyEdgeIpSwitchResponse, err error) {
+    return c.ModifyEdgeIpSwitchWithContext(context.Background(), request)
+}
+
+// ModifyEdgeIpSwitch
+// 修改边界防火墙开关(旁路、串行)
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ModifyEdgeIpSwitchWithContext(ctx context.Context, request *ModifyEdgeIpSwitchRequest) (response *ModifyEdgeIpSwitchResponse, err error) {
+    if request == nil {
+        request = NewModifyEdgeIpSwitchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyEdgeIpSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyEdgeIpSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyEnterpriseSecurityDispatchStatusRequest() (request *ModifyEnterpriseSecurityDispatchStatusRequest) {
     request = &ModifyEnterpriseSecurityDispatchStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3791,6 +4691,88 @@ func (c *Client) ModifyEnterpriseSecurityGroupRuleWithContext(ctx context.Contex
     request.SetContext(ctx)
     
     response = NewModifyEnterpriseSecurityGroupRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyFwGroupSwitchRequest() (request *ModifyFwGroupSwitchRequest) {
+    request = &ModifyFwGroupSwitchRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyFwGroupSwitch")
+    
+    
+    return
+}
+
+func NewModifyFwGroupSwitchResponse() (response *ModifyFwGroupSwitchResponse) {
+    response = &ModifyFwGroupSwitchResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyFwGroupSwitch
+// 修改防火墙(组)开关(支持单点模式、多点模式、全互通模式)
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyFwGroupSwitch(request *ModifyFwGroupSwitchRequest) (response *ModifyFwGroupSwitchResponse, err error) {
+    return c.ModifyFwGroupSwitchWithContext(context.Background(), request)
+}
+
+// ModifyFwGroupSwitch
+// 修改防火墙(组)开关(支持单点模式、多点模式、全互通模式)
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyFwGroupSwitchWithContext(ctx context.Context, request *ModifyFwGroupSwitchRequest) (response *ModifyFwGroupSwitchResponse, err error) {
+    if request == nil {
+        request = NewModifyFwGroupSwitchRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyFwGroupSwitch require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyFwGroupSwitchResponse()
     err = c.Send(request, response)
     return
 }
@@ -4523,6 +5505,88 @@ func (c *Client) ModifySecurityGroupSequenceRulesWithContext(ctx context.Context
     return
 }
 
+func NewModifySequenceAclRulesRequest() (request *ModifySequenceAclRulesRequest) {
+    request = &ModifySequenceAclRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifySequenceAclRules")
+    
+    
+    return
+}
+
+func NewModifySequenceAclRulesResponse() (response *ModifySequenceAclRulesResponse) {
+    response = &ModifySequenceAclRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifySequenceAclRules
+// 互联网边界规则快速排序
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySequenceAclRules(request *ModifySequenceAclRulesRequest) (response *ModifySequenceAclRulesResponse, err error) {
+    return c.ModifySequenceAclRulesWithContext(context.Background(), request)
+}
+
+// ModifySequenceAclRules
+// 互联网边界规则快速排序
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifySequenceAclRulesWithContext(ctx context.Context, request *ModifySequenceAclRulesRequest) (response *ModifySequenceAclRulesResponse, err error) {
+    if request == nil {
+        request = NewModifySequenceAclRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifySequenceAclRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifySequenceAclRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifySequenceRulesRequest() (request *ModifySequenceRulesRequest) {
     request = &ModifySequenceRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4713,6 +5777,226 @@ func (c *Client) ModifyTableStatusWithContext(ctx context.Context, request *Modi
     return
 }
 
+func NewModifyVpcAcRuleRequest() (request *ModifyVpcAcRuleRequest) {
+    request = &ModifyVpcAcRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyVpcAcRule")
+    
+    
+    return
+}
+
+func NewModifyVpcAcRuleResponse() (response *ModifyVpcAcRuleResponse) {
+    response = &ModifyVpcAcRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyVpcAcRule
+// 修改内网间访问控制规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyVpcAcRule(request *ModifyVpcAcRuleRequest) (response *ModifyVpcAcRuleResponse, err error) {
+    return c.ModifyVpcAcRuleWithContext(context.Background(), request)
+}
+
+// ModifyVpcAcRule
+// 修改内网间访问控制规则
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyVpcAcRuleWithContext(ctx context.Context, request *ModifyVpcAcRuleRequest) (response *ModifyVpcAcRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyVpcAcRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVpcAcRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVpcAcRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVpcFwGroupRequest() (request *ModifyVpcFwGroupRequest) {
+    request = &ModifyVpcFwGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyVpcFwGroup")
+    
+    
+    return
+}
+
+func NewModifyVpcFwGroupResponse() (response *ModifyVpcFwGroupResponse) {
+    response = &ModifyVpcFwGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyVpcFwGroup
+// 编辑VPC间防火墙(防火墙组)
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyVpcFwGroup(request *ModifyVpcFwGroupRequest) (response *ModifyVpcFwGroupResponse, err error) {
+    return c.ModifyVpcFwGroupWithContext(context.Background(), request)
+}
+
+// ModifyVpcFwGroup
+// 编辑VPC间防火墙(防火墙组)
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyVpcFwGroupWithContext(ctx context.Context, request *ModifyVpcFwGroupRequest) (response *ModifyVpcFwGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyVpcFwGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVpcFwGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVpcFwGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyVpcFwSequenceRulesRequest() (request *ModifyVpcFwSequenceRulesRequest) {
+    request = &ModifyVpcFwSequenceRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyVpcFwSequenceRules")
+    
+    
+    return
+}
+
+func NewModifyVpcFwSequenceRulesResponse() (response *ModifyVpcFwSequenceRulesResponse) {
+    response = &ModifyVpcFwSequenceRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyVpcFwSequenceRules
+// vpc间规则快速排序
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyVpcFwSequenceRules(request *ModifyVpcFwSequenceRulesRequest) (response *ModifyVpcFwSequenceRulesResponse, err error) {
+    return c.ModifyVpcFwSequenceRulesWithContext(context.Background(), request)
+}
+
+// ModifyVpcFwSequenceRules
+// vpc间规则快速排序
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyVpcFwSequenceRulesWithContext(ctx context.Context, request *ModifyVpcFwSequenceRulesRequest) (response *ModifyVpcFwSequenceRulesResponse, err error) {
+    if request == nil {
+        request = NewModifyVpcFwSequenceRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyVpcFwSequenceRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyVpcFwSequenceRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveAcRuleRequest() (request *RemoveAcRuleRequest) {
     request = &RemoveAcRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4791,6 +6075,88 @@ func (c *Client) RemoveAcRuleWithContext(ctx context.Context, request *RemoveAcR
     request.SetContext(ctx)
     
     response = NewRemoveAcRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveAclRuleRequest() (request *RemoveAclRuleRequest) {
+    request = &RemoveAclRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "RemoveAclRule")
+    
+    
+    return
+}
+
+func NewRemoveAclRuleResponse() (response *RemoveAclRuleResponse) {
+    response = &RemoveAclRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RemoveAclRule
+// 删除互联网边界访问控制规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RemoveAclRule(request *RemoveAclRuleRequest) (response *RemoveAclRuleResponse, err error) {
+    return c.RemoveAclRuleWithContext(context.Background(), request)
+}
+
+// RemoveAclRule
+// 删除互联网边界访问控制规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RemoveAclRuleWithContext(ctx context.Context, request *RemoveAclRuleRequest) (response *RemoveAclRuleResponse, err error) {
+    if request == nil {
+        request = NewRemoveAclRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveAclRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveAclRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -4955,6 +6321,88 @@ func (c *Client) RemoveNatAcRuleWithContext(ctx context.Context, request *Remove
     request.SetContext(ctx)
     
     response = NewRemoveNatAcRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRemoveVpcAcRuleRequest() (request *RemoveVpcAcRuleRequest) {
+    request = &RemoveVpcAcRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "RemoveVpcAcRule")
+    
+    
+    return
+}
+
+func NewRemoveVpcAcRuleResponse() (response *RemoveVpcAcRuleResponse) {
+    response = &RemoveVpcAcRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RemoveVpcAcRule
+// 删除VPC间规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RemoveVpcAcRule(request *RemoveVpcAcRuleRequest) (response *RemoveVpcAcRuleResponse, err error) {
+    return c.RemoveVpcAcRuleWithContext(context.Background(), request)
+}
+
+// RemoveVpcAcRule
+// 删除VPC间规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) RemoveVpcAcRuleWithContext(ctx context.Context, request *RemoveVpcAcRuleRequest) (response *RemoveVpcAcRuleResponse, err error) {
+    if request == nil {
+        request = NewRemoveVpcAcRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RemoveVpcAcRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRemoveVpcAcRuleResponse()
     err = c.Send(request, response)
     return
 }

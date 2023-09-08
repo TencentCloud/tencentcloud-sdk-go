@@ -1017,6 +1017,56 @@ func (c *Client) GetEventBusWithContext(ctx context.Context, request *GetEventBu
     return
 }
 
+func NewGetPlatformEventTemplateRequest() (request *GetPlatformEventTemplateRequest) {
+    request = &GetPlatformEventTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("eb", APIVersion, "GetPlatformEventTemplate")
+    
+    
+    return
+}
+
+func NewGetPlatformEventTemplateResponse() (response *GetPlatformEventTemplateResponse) {
+    response = &GetPlatformEventTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetPlatformEventTemplate
+// 获取平台产品事件模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+func (c *Client) GetPlatformEventTemplate(request *GetPlatformEventTemplateRequest) (response *GetPlatformEventTemplateResponse, err error) {
+    return c.GetPlatformEventTemplateWithContext(context.Background(), request)
+}
+
+// GetPlatformEventTemplate
+// 获取平台产品事件模板
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+func (c *Client) GetPlatformEventTemplateWithContext(ctx context.Context, request *GetPlatformEventTemplateRequest) (response *GetPlatformEventTemplateResponse, err error) {
+    if request == nil {
+        request = NewGetPlatformEventTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetPlatformEventTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetPlatformEventTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetRuleRequest() (request *GetRuleRequest) {
     request = &GetRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1245,6 +1295,154 @@ func (c *Client) ListEventBusesWithContext(ctx context.Context, request *ListEve
     request.SetContext(ctx)
     
     response = NewListEventBusesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListPlatformEventNamesRequest() (request *ListPlatformEventNamesRequest) {
+    request = &ListPlatformEventNamesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("eb", APIVersion, "ListPlatformEventNames")
+    
+    
+    return
+}
+
+func NewListPlatformEventNamesResponse() (response *ListPlatformEventNamesResponse) {
+    response = &ListPlatformEventNamesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListPlatformEventNames
+// 获取平台产品事件名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ListPlatformEventNames(request *ListPlatformEventNamesRequest) (response *ListPlatformEventNamesResponse, err error) {
+    return c.ListPlatformEventNamesWithContext(context.Background(), request)
+}
+
+// ListPlatformEventNames
+// 获取平台产品事件名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ListPlatformEventNamesWithContext(ctx context.Context, request *ListPlatformEventNamesRequest) (response *ListPlatformEventNamesResponse, err error) {
+    if request == nil {
+        request = NewListPlatformEventNamesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListPlatformEventNames require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListPlatformEventNamesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListPlatformEventPatternsRequest() (request *ListPlatformEventPatternsRequest) {
+    request = &ListPlatformEventPatternsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("eb", APIVersion, "ListPlatformEventPatterns")
+    
+    
+    return
+}
+
+func NewListPlatformEventPatternsResponse() (response *ListPlatformEventPatternsResponse) {
+    response = &ListPlatformEventPatternsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListPlatformEventPatterns
+// 获取平台产品事件匹配规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+func (c *Client) ListPlatformEventPatterns(request *ListPlatformEventPatternsRequest) (response *ListPlatformEventPatternsResponse, err error) {
+    return c.ListPlatformEventPatternsWithContext(context.Background(), request)
+}
+
+// ListPlatformEventPatterns
+// 获取平台产品事件匹配规则
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+func (c *Client) ListPlatformEventPatternsWithContext(ctx context.Context, request *ListPlatformEventPatternsRequest) (response *ListPlatformEventPatternsResponse, err error) {
+    if request == nil {
+        request = NewListPlatformEventPatternsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListPlatformEventPatterns require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListPlatformEventPatternsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewListPlatformProductsRequest() (request *ListPlatformProductsRequest) {
+    request = &ListPlatformProductsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("eb", APIVersion, "ListPlatformProducts")
+    
+    
+    return
+}
+
+func NewListPlatformProductsResponse() (response *ListPlatformProductsResponse) {
+    response = &ListPlatformProductsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListPlatformProducts
+// 获取平台产品列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+func (c *Client) ListPlatformProducts(request *ListPlatformProductsRequest) (response *ListPlatformProductsResponse, err error) {
+    return c.ListPlatformProductsWithContext(context.Background(), request)
+}
+
+// ListPlatformProducts
+// 获取平台产品列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE_ACTION = "InvalidParameterValue.Action"
+func (c *Client) ListPlatformProductsWithContext(ctx context.Context, request *ListPlatformProductsRequest) (response *ListPlatformProductsResponse, err error) {
+    if request == nil {
+        request = NewListPlatformProductsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListPlatformProducts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListPlatformProductsResponse()
     err = c.Send(request, response)
     return
 }

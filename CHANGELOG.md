@@ -1,3 +1,199 @@
+# Release v1.0.744
+
+## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15
+
+### 第 17 次发布
+
+发布时间：2023-09-08 01:20:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeBackUpTables](https://cloud.tencent.com/document/api/1299/97836)
+
+
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 43 次发布
+
+发布时间：2023-09-08 01:22:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [AddAclRule](https://cloud.tencent.com/document/api/1132/97847)
+* [AddVpcAcRule](https://cloud.tencent.com/document/api/1132/97846)
+* [CreateVpcFwGroup](https://cloud.tencent.com/document/api/1132/97855)
+* [DeleteBlockIgnoreRuleList](https://cloud.tencent.com/document/api/1132/97856)
+* [DeleteVpcFwGroup](https://cloud.tencent.com/document/api/1132/97854)
+* [DescribeAclRule](https://cloud.tencent.com/document/api/1132/97845)
+* [DescribeFwEdgeIps](https://cloud.tencent.com/document/api/1132/97841)
+* [DescribeFwGroupInstanceInfo](https://cloud.tencent.com/document/api/1132/97853)
+* [DescribeVpcAcRule](https://cloud.tencent.com/document/api/1132/97844)
+* [DescribeVpcFwGroupSwitch](https://cloud.tencent.com/document/api/1132/97840)
+* [ModifyAclRule](https://cloud.tencent.com/document/api/1132/97843)
+* [ModifyBlockIgnoreRule](https://cloud.tencent.com/document/api/1132/97852)
+* [ModifyEdgeIpSwitch](https://cloud.tencent.com/document/api/1132/97839)
+* [ModifyFwGroupSwitch](https://cloud.tencent.com/document/api/1132/97851)
+* [ModifySequenceAclRules](https://cloud.tencent.com/document/api/1132/97850)
+* [ModifyVpcAcRule](https://cloud.tencent.com/document/api/1132/97842)
+* [ModifyVpcFwGroup](https://cloud.tencent.com/document/api/1132/97849)
+* [ModifyVpcFwSequenceRules](https://cloud.tencent.com/document/api/1132/97848)
+* [RemoveAclRule](https://cloud.tencent.com/document/api/1132/97838)
+* [RemoveVpcAcRule](https://cloud.tencent.com/document/api/1132/97837)
+
+修改接口：
+
+* [CreateAddressTemplate](https://cloud.tencent.com/document/api/1132/95034)
+
+	* 新增出参：Uuid
+
+* [CreateBlockIgnoreRuleList](https://cloud.tencent.com/document/api/1132/97724)
+
+	* 新增出参：List
+
+
+新增数据结构：
+
+* [CreateRuleItem](https://cloud.tencent.com/document/api/1132/49071#CreateRuleItem)
+* [EdgeIpInfo](https://cloud.tencent.com/document/api/1132/49071#EdgeIpInfo)
+* [EdgeIpSwitch](https://cloud.tencent.com/document/api/1132/49071#EdgeIpSwitch)
+* [FwDeploy](https://cloud.tencent.com/document/api/1132/49071#FwDeploy)
+* [FwGateway](https://cloud.tencent.com/document/api/1132/49071#FwGateway)
+* [FwGroupSwitch](https://cloud.tencent.com/document/api/1132/49071#FwGroupSwitch)
+* [FwGroupSwitchShow](https://cloud.tencent.com/document/api/1132/49071#FwGroupSwitchShow)
+* [NetInstancesInfo](https://cloud.tencent.com/document/api/1132/49071#NetInstancesInfo)
+* [VpcFwCvmInsInfo](https://cloud.tencent.com/document/api/1132/49071#VpcFwCvmInsInfo)
+* [VpcFwGroupInfo](https://cloud.tencent.com/document/api/1132/49071#VpcFwGroupInfo)
+* [VpcFwInstance](https://cloud.tencent.com/document/api/1132/49071#VpcFwInstance)
+* [VpcFwInstanceInfo](https://cloud.tencent.com/document/api/1132/49071#VpcFwInstanceInfo)
+* [VpcFwInstanceShow](https://cloud.tencent.com/document/api/1132/49071#VpcFwInstanceShow)
+* [VpcFwJoinInstanceType](https://cloud.tencent.com/document/api/1132/49071#VpcFwJoinInstanceType)
+* [VpcRuleItem](https://cloud.tencent.com/document/api/1132/49071#VpcRuleItem)
+
+
+
+## 事件总线(eb) 版本：2021-04-16
+
+### 第 12 次发布
+
+发布时间：2023-09-08 01:48:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetPlatformEventTemplate](https://cloud.tencent.com/document/api/1359/97863)
+* [ListPlatformEventNames](https://cloud.tencent.com/document/api/1359/97862)
+* [ListPlatformEventPatterns](https://cloud.tencent.com/document/api/1359/97861)
+* [ListPlatformProducts](https://cloud.tencent.com/document/api/1359/97860)
+
+新增数据结构：
+
+* [PlatformEventDetail](https://cloud.tencent.com/document/api/1359/67704#PlatformEventDetail)
+* [PlatformEventSummary](https://cloud.tencent.com/document/api/1359/67704#PlatformEventSummary)
+* [PlatformProduct](https://cloud.tencent.com/document/api/1359/67704#PlatformProduct)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 113 次发布
+
+发布时间：2023-09-08 01:53:13
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AutoSignConfig](https://cloud.tencent.com/document/api/1323/70369#AutoSignConfig)
+
+	* <font color="#dd0000">**修改成员**：</font>CallbackUrl
+
+
+
+
+## 人脸融合(facefusion) 版本：2022-09-27
+
+
+
+## 人脸融合(facefusion) 版本：2018-12-01
+
+### 第 8 次发布
+
+发布时间：2023-09-08 01:55:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* FaceFusionLite
+
+
+
+## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
+
+### 第 2 次发布
+
+发布时间：2023-09-08 02:48:21
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateInstance](https://cloud.tencent.com/document/api/1493/97868)
+* [DeleteInstance](https://cloud.tencent.com/document/api/1493/97867)
+* [DescribeInstance](https://cloud.tencent.com/document/api/1493/97866)
+* [ModifyInstance](https://cloud.tencent.com/document/api/1493/97865)
+
+新增数据结构：
+
+* [Endpoint](https://cloud.tencent.com/document/api/1493/96031#Endpoint)
+* [IpRule](https://cloud.tencent.com/document/api/1493/96031#IpRule)
+* [VpcInfo](https://cloud.tencent.com/document/api/1493/96031#VpcInfo)
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 49 次发布
+
+发布时间：2023-09-08 03:00:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDomainVerifyResult](https://cloud.tencent.com/document/api/627/97869)
+
+<font color="#dd0000">**删除接口**：</font>
+
+* AddSpartaProtectionAuto
+* AddSpartaProtectionsAuto
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* FailedInfo
+
+
+
 # Release v1.0.743
 
 ## 云呼叫中心(ccc) 版本：2020-02-10

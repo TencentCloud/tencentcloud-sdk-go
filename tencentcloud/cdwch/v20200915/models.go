@@ -796,6 +796,63 @@ func (r *DescribeBackUpScheduleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBackUpTablesRequestParams struct {
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type DescribeBackUpTablesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *DescribeBackUpTablesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackUpTablesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackUpTablesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBackUpTablesResponseParams struct {
+	// 可备份表列表
+	AvailableTables []*BackupTableContent `json:"AvailableTables,omitnil" name:"AvailableTables"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBackUpTablesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBackUpTablesResponseParams `json:"Response"`
+}
+
+func (r *DescribeBackUpTablesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBackUpTablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCkSqlApisRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`

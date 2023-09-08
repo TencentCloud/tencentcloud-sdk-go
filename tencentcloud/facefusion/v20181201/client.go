@@ -276,6 +276,10 @@ func NewFaceFusionLiteResponse() (response *FaceFusionLiteResponse) {
 }
 
 // FaceFusionLite
+// 接口不再使用
+//
+// 
+//
 // 人脸融合活动专用版，不推荐使用。人脸融合接口建议使用[人脸融合](https://cloud.tencent.com/document/product/670/31061)或[选脸融合](https://cloud.tencent.com/document/product/670/37736)接口
 //
 // 可能返回的错误码:
@@ -322,6 +326,10 @@ func (c *Client) FaceFusionLite(request *FaceFusionLiteRequest) (response *FaceF
 }
 
 // FaceFusionLite
+// 接口不再使用
+//
+// 
+//
 // 人脸融合活动专用版，不推荐使用。人脸融合接口建议使用[人脸融合](https://cloud.tencent.com/document/product/670/31061)或[选脸融合](https://cloud.tencent.com/document/product/670/37736)接口
 //
 // 可能返回的错误码:

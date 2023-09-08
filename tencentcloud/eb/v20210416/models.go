@@ -1258,6 +1258,63 @@ func (r *GetEventBusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetPlatformEventTemplateRequestParams struct {
+	// 平台产品事件类型
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
+}
+
+type GetPlatformEventTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 平台产品事件类型
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
+}
+
+func (r *GetPlatformEventTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPlatformEventTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EventType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetPlatformEventTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetPlatformEventTemplateResponseParams struct {
+	// 平台产品事件模板
+	EventTemplate *string `json:"EventTemplate,omitnil" name:"EventTemplate"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GetPlatformEventTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *GetPlatformEventTemplateResponseParams `json:"Response"`
+}
+
+func (r *GetPlatformEventTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetPlatformEventTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetRuleRequestParams struct {
 	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
@@ -1593,6 +1650,174 @@ func (r *ListEventBusesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListPlatformEventNamesRequestParams struct {
+	// 平台产品类型
+	ProductType *string `json:"ProductType,omitnil" name:"ProductType"`
+}
+
+type ListPlatformEventNamesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 平台产品类型
+	ProductType *string `json:"ProductType,omitnil" name:"ProductType"`
+}
+
+func (r *ListPlatformEventNamesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPlatformEventNamesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListPlatformEventNamesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListPlatformEventNamesResponseParams struct {
+	// 平台产品列表
+	EventNames []*PlatformEventDetail `json:"EventNames,omitnil" name:"EventNames"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ListPlatformEventNamesResponse struct {
+	*tchttp.BaseResponse
+	Response *ListPlatformEventNamesResponseParams `json:"Response"`
+}
+
+func (r *ListPlatformEventNamesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPlatformEventNamesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListPlatformEventPatternsRequestParams struct {
+	// 平台产品类型
+	ProductType *string `json:"ProductType,omitnil" name:"ProductType"`
+}
+
+type ListPlatformEventPatternsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 平台产品类型
+	ProductType *string `json:"ProductType,omitnil" name:"ProductType"`
+}
+
+func (r *ListPlatformEventPatternsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPlatformEventPatternsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProductType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListPlatformEventPatternsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListPlatformEventPatternsResponseParams struct {
+	// 平台产品事件匹配规则
+	EventPatterns []*PlatformEventSummary `json:"EventPatterns,omitnil" name:"EventPatterns"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ListPlatformEventPatternsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListPlatformEventPatternsResponseParams `json:"Response"`
+}
+
+func (r *ListPlatformEventPatternsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPlatformEventPatternsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListPlatformProductsRequestParams struct {
+
+}
+
+type ListPlatformProductsRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ListPlatformProductsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPlatformProductsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListPlatformProductsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListPlatformProductsResponseParams struct {
+	// 平台产品列表
+	PlatformProducts []*PlatformProduct `json:"PlatformProducts,omitnil" name:"PlatformProducts"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ListPlatformProductsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListPlatformProductsResponseParams `json:"Response"`
+}
+
+func (r *ListPlatformProductsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListPlatformProductsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListRulesRequestParams struct {
 	// 事件集ID
 	EventBusId *string `json:"EventBusId,omitnil" name:"EventBusId"`
@@ -1812,6 +2037,34 @@ type OutputStructParam struct {
 
 	// value的数据类型, 可选值: STRING, NUMBER,BOOLEAN,NULL,SYS_VARIABLE,JSONPATH
 	ValueType *string `json:"ValueType,omitnil" name:"ValueType"`
+}
+
+type PlatformEventDetail struct {
+	// 事件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventName *string `json:"EventName,omitnil" name:"EventName"`
+
+	// 事件类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventType *string `json:"EventType,omitnil" name:"EventType"`
+}
+
+type PlatformEventSummary struct {
+	// 平台事件名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventName *string `json:"EventName,omitnil" name:"EventName"`
+
+	// 平台事件匹配规则
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventPattern *string `json:"EventPattern,omitnil" name:"EventPattern"`
+}
+
+type PlatformProduct struct {
+	// 平台产品名称
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
+
+	// 平台产品类型
+	ProductType *string `json:"ProductType,omitnil" name:"ProductType"`
 }
 
 // Predefined struct for user

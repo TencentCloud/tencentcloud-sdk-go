@@ -45,6 +45,154 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
+    request = &CreateInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "CreateInstance")
+    
+    
+    return
+}
+
+func NewCreateInstanceResponse() (response *CreateInstanceResponse) {
+    response = &CreateInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateInstance
+// 购买新实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateInstance(request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
+    return c.CreateInstanceWithContext(context.Background(), request)
+}
+
+// CreateInstance
+// 购买新实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateInstanceRequest) (response *CreateInstanceResponse, err error) {
+    if request == nil {
+        request = NewCreateInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteInstanceRequest() (request *DeleteInstanceRequest) {
+    request = &DeleteInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DeleteInstance")
+    
+    
+    return
+}
+
+func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
+    response = &DeleteInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteInstance
+// 删除实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
+    return c.DeleteInstanceWithContext(context.Background(), request)
+}
+
+// DeleteInstance
+// 删除实例
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteInstanceRequest) (response *DeleteInstanceResponse, err error) {
+    if request == nil {
+        request = NewDeleteInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeInstanceRequest() (request *DescribeInstanceRequest) {
+    request = &DescribeInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeInstance")
+    
+    
+    return
+}
+
+func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
+    response = &DescribeInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstance
+// 查询实例信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
+    return c.DescribeInstanceWithContext(context.Background(), request)
+}
+
+// DescribeInstance
+// 查询实例信息
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceListRequest() (request *DescribeInstanceListRequest) {
     request = &DescribeInstanceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -173,6 +321,58 @@ func (c *Client) DescribeTopicListWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeTopicListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
+    request = &ModifyInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ModifyInstance")
+    
+    
+    return
+}
+
+func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
+    response = &ModifyInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstance
+// 修改实例属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
+    return c.ModifyInstanceWithContext(context.Background(), request)
+}
+
+// ModifyInstance
+// 修改实例属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceResponse()
     err = c.Send(request, response)
     return
 }
