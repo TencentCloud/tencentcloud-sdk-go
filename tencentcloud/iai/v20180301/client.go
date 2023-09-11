@@ -2108,8 +2108,6 @@ func NewDetectFaceResponse() (response *DetectFaceResponse) {
 //
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
 //
-// 
-//
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
 //  FAILEDOPERATION = "FailedOperation"
@@ -2220,8 +2218,6 @@ func (c *Client) DetectFace(request *DetectFaceRequest) (response *DetectFaceRes
 // >     
 //
 // - 公共参数中的签名方式请使用V3版本，即配置SignatureMethod参数为TC3-HMAC-SHA256。
-//
-// 
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"

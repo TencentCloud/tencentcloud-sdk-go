@@ -1,3 +1,73 @@
+# Release v1.0.745
+
+## 云防火墙(cfw) 版本：2019-09-04
+
+### 第 44 次发布
+
+发布时间：2023-09-11 01:23:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAddressTemplateList](https://cloud.tencent.com/document/api/1132/97918)
+* [DescribeAssetSync](https://cloud.tencent.com/document/api/1132/97917)
+* [DescribeFwSyncStatus](https://cloud.tencent.com/document/api/1132/97920)
+* [DescribeNatSwitchList](https://cloud.tencent.com/document/api/1132/97915)
+* [ModifyAddressTemplate](https://cloud.tencent.com/document/api/1132/97919)
+* [ModifyAssetSync](https://cloud.tencent.com/document/api/1132/97921)
+* [ModifyNatInstance](https://cloud.tencent.com/document/api/1132/97914)
+* [SyncFwOperate](https://cloud.tencent.com/document/api/1132/97916)
+
+新增数据结构：
+
+* [NatSwitchListData](https://cloud.tencent.com/document/api/1132/49071#NatSwitchListData)
+* [TemplateListInfo](https://cloud.tencent.com/document/api/1132/49071#TemplateListInfo)
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 50 次发布
+
+发布时间：2023-09-11 02:35:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeHASwitchLog](https://cloud.tencent.com/document/api/238/97923)
+* [SwitchCloudInstanceHA](https://cloud.tencent.com/document/api/238/97922)
+
+新增数据结构：
+
+* [SwitchLog](https://cloud.tencent.com/document/api/238/19976#SwitchLog)
+
+
+
+## 容器镜像服务(tcr) 版本：2019-09-24
+
+### 第 61 次发布
+
+发布时间：2023-09-11 02:43:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Registry](https://cloud.tencent.com/document/api/1141/41603#Registry)
+
+	* 新增成员：DeletionProtection
+
+
+
+
 # Release v1.0.744
 
 ## 云数据仓库 ClickHouse(cdwch) 版本：2020-09-15

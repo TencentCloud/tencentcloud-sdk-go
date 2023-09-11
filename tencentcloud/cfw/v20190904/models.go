@@ -2631,6 +2631,170 @@ func (r *DescribeAclRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAddressTemplateListRequestParams struct {
+	// 偏移量，分页用
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 条数，分页用
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序字段，取值 'UpdateTime' | 'RulesNum'
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 排序，取值 'asc'|'desc'
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 搜索值
+	SearchValue *string `json:"SearchValue,omitnil" name:"SearchValue"`
+
+	// 检索地址模板唯一id
+	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+}
+
+type DescribeAddressTemplateListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，分页用
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 条数，分页用
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序字段，取值 'UpdateTime' | 'RulesNum'
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 排序，取值 'asc'|'desc'
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 搜索值
+	SearchValue *string `json:"SearchValue,omitnil" name:"SearchValue"`
+
+	// 检索地址模板唯一id
+	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+}
+
+func (r *DescribeAddressTemplateListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddressTemplateListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "By")
+	delete(f, "Order")
+	delete(f, "SearchValue")
+	delete(f, "Uuid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddressTemplateListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAddressTemplateListResponseParams struct {
+	// 模板总数
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 模板列表数据
+	Data []*TemplateListInfo `json:"Data,omitnil" name:"Data"`
+
+	// 模板名称列表
+	NameList []*string `json:"NameList,omitnil" name:"NameList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAddressTemplateListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAddressTemplateListResponseParams `json:"Response"`
+}
+
+func (r *DescribeAddressTemplateListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAddressTemplateListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAssetSyncRequestParams struct {
+
+}
+
+type DescribeAssetSyncRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeAssetSyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetSyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetSyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAssetSyncResponseParams struct {
+	// 返回状态
+	// 1 更新中
+	// 2 更新完成
+	// 3 更新失败
+	// 4 更新失败
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// success 成功
+	// 其他失败
+	ReturnMsg *string `json:"ReturnMsg,omitnil" name:"ReturnMsg"`
+
+	// 0 成功
+	// 非0 失败
+	ReturnCode *uint64 `json:"ReturnCode,omitnil" name:"ReturnCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAssetSyncResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAssetSyncResponseParams `json:"Response"`
+}
+
+func (r *DescribeAssetSyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAssetSyncResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAssociatedInstanceListRequestParams struct {
 	// 列表偏移量
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
@@ -3639,6 +3803,63 @@ func (r *DescribeFwGroupInstanceInfoResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeFwSyncStatusRequestParams struct {
+	// 查询的同步状态类型：Route,同步路由状态
+	SyncType *string `json:"SyncType,omitnil" name:"SyncType"`
+}
+
+type DescribeFwSyncStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询的同步状态类型：Route,同步路由状态
+	SyncType *string `json:"SyncType,omitnil" name:"SyncType"`
+}
+
+func (r *DescribeFwSyncStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFwSyncStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SyncType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeFwSyncStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeFwSyncStatusResponseParams struct {
+	// 同步状态：1，同步中；0，同步完成
+	SyncStatus *int64 `json:"SyncStatus,omitnil" name:"SyncStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeFwSyncStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeFwSyncStatusResponseParams `json:"Response"`
+}
+
+func (r *DescribeFwSyncStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeFwSyncStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeGuideScanInfoRequestParams struct {
 
 }
@@ -4313,6 +4534,115 @@ func (r *DescribeNatFwVpcDnsLstResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeNatFwVpcDnsLstResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNatSwitchListRequestParams struct {
+	// 偏移量，分页用
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 条数，分页用
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 搜索值
+	SearchValue *string `json:"SearchValue,omitnil" name:"SearchValue"`
+
+	// 开关，1打开，0关闭
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 筛选NAT防火墙子网开关所属VPC
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 筛选NAT防火墙子网开关所属NAT网关
+	NatId *string `json:"NatId,omitnil" name:"NatId"`
+
+	// 筛选NAT防火墙子网开关所属NAT防火墙实例
+	NatInsId *string `json:"NatInsId,omitnil" name:"NatInsId"`
+
+	// 筛选NAT防火墙子网开关所属地域
+	Area *string `json:"Area,omitnil" name:"Area"`
+}
+
+type DescribeNatSwitchListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，分页用
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 条数，分页用
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 搜索值
+	SearchValue *string `json:"SearchValue,omitnil" name:"SearchValue"`
+
+	// 开关，1打开，0关闭
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 筛选NAT防火墙子网开关所属VPC
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 筛选NAT防火墙子网开关所属NAT网关
+	NatId *string `json:"NatId,omitnil" name:"NatId"`
+
+	// 筛选NAT防火墙子网开关所属NAT防火墙实例
+	NatInsId *string `json:"NatInsId,omitnil" name:"NatInsId"`
+
+	// 筛选NAT防火墙子网开关所属地域
+	Area *string `json:"Area,omitnil" name:"Area"`
+}
+
+func (r *DescribeNatSwitchListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNatSwitchListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchValue")
+	delete(f, "Status")
+	delete(f, "VpcId")
+	delete(f, "NatId")
+	delete(f, "NatInsId")
+	delete(f, "Area")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeNatSwitchListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeNatSwitchListResponseParams struct {
+	// 总数
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// NAT边界防火墙开关列表数据
+	Data []*NatSwitchListData `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeNatSwitchListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeNatSwitchListResponseParams `json:"Response"`
+}
+
+func (r *DescribeNatSwitchListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeNatSwitchListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -5966,6 +6296,98 @@ func (r *ModifyAclRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyAddressTemplateRequestParams struct {
+	// 地址模板唯一Id
+	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+
+	// 模板名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 模板描述
+	Detail *string `json:"Detail,omitnil" name:"Detail"`
+
+	// Type为1，ip模板eg：1.1.1.1,2.2.2.2；
+	// Type为5，域名模板eg：www.qq.com,www.tencent.com
+	IpString *string `json:"IpString,omitnil" name:"IpString"`
+
+	// 1 ip模板
+	// 5 域名模板
+	Type *int64 `json:"Type,omitnil" name:"Type"`
+}
+
+type ModifyAddressTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 地址模板唯一Id
+	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+
+	// 模板名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 模板描述
+	Detail *string `json:"Detail,omitnil" name:"Detail"`
+
+	// Type为1，ip模板eg：1.1.1.1,2.2.2.2；
+	// Type为5，域名模板eg：www.qq.com,www.tencent.com
+	IpString *string `json:"IpString,omitnil" name:"IpString"`
+
+	// 1 ip模板
+	// 5 域名模板
+	Type *int64 `json:"Type,omitnil" name:"Type"`
+}
+
+func (r *ModifyAddressTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAddressTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Uuid")
+	delete(f, "Name")
+	delete(f, "Detail")
+	delete(f, "IpString")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAddressTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAddressTemplateResponseParams struct {
+	// 创建结果,0成功
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 唯一Id
+	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyAddressTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAddressTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyAddressTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAddressTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyAllPublicIPSwitchStatusRequestParams struct {
 	// 状态，0：关闭，1：开启
 	Status *int64 `json:"Status,omitnil" name:"Status"`
@@ -6271,6 +6693,71 @@ func (r *ModifyAssetScanResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyAssetScanResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAssetSyncRequestParams struct {
+
+}
+
+type ModifyAssetSyncRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *ModifyAssetSyncRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAssetSyncRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAssetSyncRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAssetSyncResponseParams struct {
+	// 返回状态
+	// 0 请求成功
+	// 2 请求失败
+	// 3 请求失败-频率限制
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// success 成功
+	// 其他失败
+	ReturnMsg *string `json:"ReturnMsg,omitnil" name:"ReturnMsg"`
+
+	// 0 成功
+	// 非0 失败
+	ReturnCode *uint64 `json:"ReturnCode,omitnil" name:"ReturnCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyAssetSyncResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAssetSyncResponseParams `json:"Response"`
+}
+
+func (r *ModifyAssetSyncResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAssetSyncResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7130,6 +7617,74 @@ func (r *ModifyNatFwVpcDnsSwitchResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyNatFwVpcDnsSwitchResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNatInstanceRequestParams struct {
+	// NAT防火墙实例名称
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// NAT防火墙实例ID
+	NatInstanceId *string `json:"NatInstanceId,omitnil" name:"NatInstanceId"`
+}
+
+type ModifyNatInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// NAT防火墙实例名称
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// NAT防火墙实例ID
+	NatInstanceId *string `json:"NatInstanceId,omitnil" name:"NatInstanceId"`
+}
+
+func (r *ModifyNatInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNatInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceName")
+	delete(f, "NatInstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyNatInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyNatInstanceResponseParams struct {
+	// 0 正常
+	// -1 异常
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// nat实例唯一ID
+	NatInstanceId *string `json:"NatInstanceId,omitnil" name:"NatInstanceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyNatInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyNatInstanceResponseParams `json:"Response"`
+}
+
+func (r *ModifyNatInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyNatInstanceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8174,6 +8729,75 @@ type NatInstanceInfo struct {
 	UpdateEnable *int64 `json:"UpdateEnable,omitnil" name:"UpdateEnable"`
 }
 
+type NatSwitchListData struct {
+	// 列表ID
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
+
+	// 子网ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+
+	// 子网名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetName *string `json:"SubnetName,omitnil" name:"SubnetName"`
+
+	// IPv4 CIDR
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetCidr *string `json:"SubnetCidr,omitnil" name:"SubnetCidr"`
+
+	// 关联路由ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteId *string `json:"RouteId,omitnil" name:"RouteId"`
+
+	// 关联路由名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RouteName *string `json:"RouteName,omitnil" name:"RouteName"`
+
+	// 云服务器个数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CvmNum *uint64 `json:"CvmNum,omitnil" name:"CvmNum"`
+
+	// 所属VPC ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 所属VPC名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcName *string `json:"VpcName,omitnil" name:"VpcName"`
+
+	// 是否生效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enable *uint64 `json:"Enable,omitnil" name:"Enable"`
+
+	// 开关状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// NAT网关ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NatId *string `json:"NatId,omitnil" name:"NatId"`
+
+	// NAT网关名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NatName *string `json:"NatName,omitnil" name:"NatName"`
+
+	// NAT防火墙实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NatInsId *string `json:"NatInsId,omitnil" name:"NatInsId"`
+
+	// NAT防火墙实例名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NatInsName *string `json:"NatInsName,omitnil" name:"NatInsName"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// 开关是否异常,0:正常,1:异常
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Abnormal *int64 `json:"Abnormal,omitnil" name:"Abnormal"`
+}
+
 type NetInstancesInfo struct {
 	// 网络实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9207,6 +9831,67 @@ type SwitchListsData struct {
 	ScanStatus *uint64 `json:"ScanStatus,omitnil" name:"ScanStatus"`
 }
 
+// Predefined struct for user
+type SyncFwOperateRequestParams struct {
+	// 同步操作类型：Route，同步防火墙路由
+	SyncType *string `json:"SyncType,omitnil" name:"SyncType"`
+
+	// 防火墙类型；nat,nat防火墙;ew,vpc间防火墙
+	FwType *string `json:"FwType,omitnil" name:"FwType"`
+}
+
+type SyncFwOperateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 同步操作类型：Route，同步防火墙路由
+	SyncType *string `json:"SyncType,omitnil" name:"SyncType"`
+
+	// 防火墙类型；nat,nat防火墙;ew,vpc间防火墙
+	FwType *string `json:"FwType,omitnil" name:"FwType"`
+}
+
+func (r *SyncFwOperateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncFwOperateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SyncType")
+	delete(f, "FwType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SyncFwOperateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SyncFwOperateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type SyncFwOperateResponse struct {
+	*tchttp.BaseResponse
+	Response *SyncFwOperateResponseParams `json:"Response"`
+}
+
+func (r *SyncFwOperateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SyncFwOperateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type TLogInfo struct {
 	// 失陷主机
 	OutNum *int64 `json:"OutNum,omitnil" name:"OutNum"`
@@ -9225,6 +9910,40 @@ type TLogInfo struct {
 
 	// 暴力破解
 	BruteForceNum *int64 `json:"BruteForceNum,omitnil" name:"BruteForceNum"`
+}
+
+type TemplateListInfo struct {
+	// 模版ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
+
+	// 模版名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Detail *string `json:"Detail,omitnil" name:"Detail"`
+
+	// IP模版
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IpString *string `json:"IpString,omitnil" name:"IpString"`
+
+	// 插入时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InsertTime *string `json:"InsertTime,omitnil" name:"InsertTime"`
+
+	// 修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+
+	// 模版类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitnil" name:"Type"`
+
+	// 关联规则条数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RulesNum *int64 `json:"RulesNum,omitnil" name:"RulesNum"`
 }
 
 type UnHandleEvent struct {

@@ -1493,13 +1493,9 @@ type DetectFaceResponseParams struct {
 	FaceInfos []*FaceInfo `json:"FaceInfos,omitnil" name:"FaceInfos"`
 
 	// 人脸识别服务所用的算法模型版本。
-	// 
 	// 目前入参支持 “2.0”和“3.0“ 两个输入。
-	// 
 	// 2020年4月2日开始，默认为“3.0”，之前使用过本接口的账号若未填写本参数默认为“2.0”。
-	// 
 	// 2020年11月26日后开通服务的账号仅支持输入“3.0”。
-	// 
 	// 不同算法模型版本对应的人脸识别算法不同，新版本的整体效果会优于旧版本，建议使用“3.0”版本。
 	FaceModelVersion *string `json:"FaceModelVersion,omitnil" name:"FaceModelVersion"`
 

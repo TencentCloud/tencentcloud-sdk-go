@@ -4834,6 +4834,101 @@ func (r *DescribeFlowStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeHASwitchLogRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 开始时间(yyyy-MM-dd HH:mm:ss)
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间(yyyy-MM-dd HH:mm:ss)
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 切换模式 0-系统自动切换，1-手动切换，不填默认查全部。
+	SwitchType *uint64 `json:"SwitchType,omitnil" name:"SwitchType"`
+
+	// 分页，页大小
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 分页,页数
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+type DescribeHASwitchLogRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 开始时间(yyyy-MM-dd HH:mm:ss)
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间(yyyy-MM-dd HH:mm:ss)
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 切换模式 0-系统自动切换，1-手动切换，不填默认查全部。
+	SwitchType *uint64 `json:"SwitchType,omitnil" name:"SwitchType"`
+
+	// 分页，页大小
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 分页,页数
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+func (r *DescribeHASwitchLogRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHASwitchLogRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "SwitchType")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHASwitchLogRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHASwitchLogResponseParams struct {
+	// 日志总数量
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 主备切换日志
+	SwitchLog []*SwitchLog `json:"SwitchLog,omitnil" name:"SwitchLog"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeHASwitchLogResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHASwitchLogResponseParams `json:"Response"`
+}
+
+func (r *DescribeHASwitchLogResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHASwitchLogResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeIncrementalMigrationRequestParams struct {
 	// 备份导入任务ID，由CreateBackupMigration接口返回
 	BackupMigrationId *string `json:"BackupMigrationId,omitnil" name:"BackupMigrationId"`
@@ -10474,6 +10569,92 @@ func (r *StopMigrationResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *StopMigrationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchCloudInstanceHARequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 切换执行方式，0-立刻执行，1-时间窗内执行，默认取值为0。
+	WaitSwitch *uint64 `json:"WaitSwitch,omitnil" name:"WaitSwitch"`
+}
+
+type SwitchCloudInstanceHARequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 切换执行方式，0-立刻执行，1-时间窗内执行，默认取值为0。
+	WaitSwitch *uint64 `json:"WaitSwitch,omitnil" name:"WaitSwitch"`
+}
+
+func (r *SwitchCloudInstanceHARequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchCloudInstanceHARequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "WaitSwitch")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchCloudInstanceHARequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchCloudInstanceHAResponseParams struct {
+	// 异步任务流程ID
+	FlowId *int64 `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type SwitchCloudInstanceHAResponse struct {
+	*tchttp.BaseResponse
+	Response *SwitchCloudInstanceHAResponseParams `json:"Response"`
+}
+
+func (r *SwitchCloudInstanceHAResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchCloudInstanceHAResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SwitchLog struct {
+	// 切换事件ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EventId *string `json:"EventId,omitnil" name:"EventId"`
+
+	// 切换模式 0-系统自动切换，1-手动切换
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SwitchType *uint64 `json:"SwitchType,omitnil" name:"SwitchType"`
+
+	// 切换开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 切换结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 机器故障导致自动切换
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Reason *string `json:"Reason,omitnil" name:"Reason"`
 }
 
 type TDEConfigAttribute struct {

@@ -1677,6 +1677,138 @@ func (c *Client) DescribeAclRuleWithContext(ctx context.Context, request *Descri
     return
 }
 
+func NewDescribeAddressTemplateListRequest() (request *DescribeAddressTemplateListRequest) {
+    request = &DescribeAddressTemplateListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeAddressTemplateList")
+    
+    
+    return
+}
+
+func NewDescribeAddressTemplateListResponse() (response *DescribeAddressTemplateListResponse) {
+    response = &DescribeAddressTemplateListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAddressTemplateList
+// 查询地址模板列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAddressTemplateList(request *DescribeAddressTemplateListRequest) (response *DescribeAddressTemplateListResponse, err error) {
+    return c.DescribeAddressTemplateListWithContext(context.Background(), request)
+}
+
+// DescribeAddressTemplateList
+// 查询地址模板列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeAddressTemplateListWithContext(ctx context.Context, request *DescribeAddressTemplateListRequest) (response *DescribeAddressTemplateListResponse, err error) {
+    if request == nil {
+        request = NewDescribeAddressTemplateListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAddressTemplateList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAddressTemplateListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeAssetSyncRequest() (request *DescribeAssetSyncRequest) {
+    request = &DescribeAssetSyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeAssetSync")
+    
+    
+    return
+}
+
+func NewDescribeAssetSyncResponse() (response *DescribeAssetSyncResponse) {
+    response = &DescribeAssetSyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAssetSync
+// 资产同步状态查询
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAssetSync(request *DescribeAssetSyncRequest) (response *DescribeAssetSyncResponse, err error) {
+    return c.DescribeAssetSyncWithContext(context.Background(), request)
+}
+
+// DescribeAssetSync
+// 资产同步状态查询
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeAssetSyncWithContext(ctx context.Context, request *DescribeAssetSyncRequest) (response *DescribeAssetSyncResponse, err error) {
+    if request == nil {
+        request = NewDescribeAssetSyncRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAssetSync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAssetSyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssociatedInstanceListRequest() (request *DescribeAssociatedInstanceListRequest) {
     request = &DescribeAssociatedInstanceListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2413,6 +2545,88 @@ func (c *Client) DescribeFwGroupInstanceInfoWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeFwSyncStatusRequest() (request *DescribeFwSyncStatusRequest) {
+    request = &DescribeFwSyncStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeFwSyncStatus")
+    
+    
+    return
+}
+
+func NewDescribeFwSyncStatusResponse() (response *DescribeFwSyncStatusResponse) {
+    response = &DescribeFwSyncStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeFwSyncStatus
+// 获取防火墙同步状态，一般在执行同步操作后查询
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFwSyncStatus(request *DescribeFwSyncStatusRequest) (response *DescribeFwSyncStatusResponse, err error) {
+    return c.DescribeFwSyncStatusWithContext(context.Background(), request)
+}
+
+// DescribeFwSyncStatus
+// 获取防火墙同步状态，一般在执行同步操作后查询
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeFwSyncStatusWithContext(ctx context.Context, request *DescribeFwSyncStatusRequest) (response *DescribeFwSyncStatusResponse, err error) {
+    if request == nil {
+        request = NewDescribeFwSyncStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeFwSyncStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeFwSyncStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeGuideScanInfoRequest() (request *DescribeGuideScanInfoRequest) {
     request = &DescribeGuideScanInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3055,6 +3269,56 @@ func (c *Client) DescribeNatFwVpcDnsLstWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeNatFwVpcDnsLstResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeNatSwitchListRequest() (request *DescribeNatSwitchListRequest) {
+    request = &DescribeNatSwitchListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "DescribeNatSwitchList")
+    
+    
+    return
+}
+
+func NewDescribeNatSwitchListResponse() (response *DescribeNatSwitchListResponse) {
+    response = &DescribeNatSwitchListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeNatSwitchList
+// 查询NAT边界防火墙开关列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNatSwitchList(request *DescribeNatSwitchListRequest) (response *DescribeNatSwitchListResponse, err error) {
+    return c.DescribeNatSwitchListWithContext(context.Background(), request)
+}
+
+// DescribeNatSwitchList
+// 查询NAT边界防火墙开关列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeNatSwitchListWithContext(ctx context.Context, request *DescribeNatSwitchListRequest) (response *DescribeNatSwitchListResponse, err error) {
+    if request == nil {
+        request = NewDescribeNatSwitchListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeNatSwitchList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeNatSwitchListResponse()
     err = c.Send(request, response)
     return
 }
@@ -4059,6 +4323,60 @@ func (c *Client) ModifyAclRuleWithContext(ctx context.Context, request *ModifyAc
     return
 }
 
+func NewModifyAddressTemplateRequest() (request *ModifyAddressTemplateRequest) {
+    request = &ModifyAddressTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyAddressTemplate")
+    
+    
+    return
+}
+
+func NewModifyAddressTemplateResponse() (response *ModifyAddressTemplateResponse) {
+    response = &ModifyAddressTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAddressTemplate
+// 修改地址模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyAddressTemplate(request *ModifyAddressTemplateRequest) (response *ModifyAddressTemplateResponse, err error) {
+    return c.ModifyAddressTemplateWithContext(context.Background(), request)
+}
+
+// ModifyAddressTemplate
+// 修改地址模板
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ModifyAddressTemplateWithContext(ctx context.Context, request *ModifyAddressTemplateRequest) (response *ModifyAddressTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyAddressTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAddressTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAddressTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyAllPublicIPSwitchStatusRequest() (request *ModifyAllPublicIPSwitchStatusRequest) {
     request = &ModifyAllPublicIPSwitchStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4265,6 +4583,88 @@ func (c *Client) ModifyAssetScanWithContext(ctx context.Context, request *Modify
     request.SetContext(ctx)
     
     response = NewModifyAssetScanResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyAssetSyncRequest() (request *ModifyAssetSyncRequest) {
+    request = &ModifyAssetSyncRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyAssetSync")
+    
+    
+    return
+}
+
+func NewModifyAssetSyncResponse() (response *ModifyAssetSyncResponse) {
+    response = &ModifyAssetSyncResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyAssetSync
+// 资产同步
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAssetSync(request *ModifyAssetSyncRequest) (response *ModifyAssetSyncResponse, err error) {
+    return c.ModifyAssetSyncWithContext(context.Background(), request)
+}
+
+// ModifyAssetSync
+// 资产同步
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyAssetSyncWithContext(ctx context.Context, request *ModifyAssetSyncRequest) (response *ModifyAssetSyncResponse, err error) {
+    if request == nil {
+        request = NewModifyAssetSyncRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyAssetSync require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyAssetSyncResponse()
     err = c.Send(request, response)
     return
 }
@@ -5065,6 +5465,88 @@ func (c *Client) ModifyNatFwVpcDnsSwitchWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewModifyNatFwVpcDnsSwitchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyNatInstanceRequest() (request *ModifyNatInstanceRequest) {
+    request = &ModifyNatInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "ModifyNatInstance")
+    
+    
+    return
+}
+
+func NewModifyNatInstanceResponse() (response *ModifyNatInstanceResponse) {
+    response = &ModifyNatInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyNatInstance
+// 编辑NAT防火墙
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNatInstance(request *ModifyNatInstanceRequest) (response *ModifyNatInstanceResponse, err error) {
+    return c.ModifyNatInstanceWithContext(context.Background(), request)
+}
+
+// ModifyNatInstance
+// 编辑NAT防火墙
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyNatInstanceWithContext(ctx context.Context, request *ModifyNatInstanceRequest) (response *ModifyNatInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyNatInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyNatInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyNatInstanceResponse()
     err = c.Send(request, response)
     return
 }
@@ -6649,6 +7131,88 @@ func (c *Client) StopSecurityGroupRuleDispatchWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewStopSecurityGroupRuleDispatchResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSyncFwOperateRequest() (request *SyncFwOperateRequest) {
+    request = &SyncFwOperateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cfw", APIVersion, "SyncFwOperate")
+    
+    
+    return
+}
+
+func NewSyncFwOperateResponse() (response *SyncFwOperateResponse) {
+    response = &SyncFwOperateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SyncFwOperate
+// 同步防火墙操作，包括同步防火墙路由（若vpc，专线网关等增加了Cidr，需要手动同步一下路由使之在防火墙上生效）等。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SyncFwOperate(request *SyncFwOperateRequest) (response *SyncFwOperateResponse, err error) {
+    return c.SyncFwOperateWithContext(context.Background(), request)
+}
+
+// SyncFwOperate
+// 同步防火墙操作，包括同步防火墙路由（若vpc，专线网关等增加了Cidr，需要手动同步一下路由使之在防火墙上生效）等。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) SyncFwOperateWithContext(ctx context.Context, request *SyncFwOperateRequest) (response *SyncFwOperateResponse, err error) {
+    if request == nil {
+        request = NewSyncFwOperateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SyncFwOperate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSyncFwOperateResponse()
     err = c.Send(request, response)
     return
 }

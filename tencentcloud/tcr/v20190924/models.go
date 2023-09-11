@@ -6075,7 +6075,7 @@ type DescribeServiceAccountsRequestParams struct {
 	// 列出所有服务级账号
 	All *bool `json:"All,omitnil" name:"All"`
 
-	// 是否填充策略
+	// 是否填充权限信息
 	EmbedPermission *bool `json:"EmbedPermission,omitnil" name:"EmbedPermission"`
 
 	// 过滤条件
@@ -6097,7 +6097,7 @@ type DescribeServiceAccountsRequest struct {
 	// 列出所有服务级账号
 	All *bool `json:"All,omitnil" name:"All"`
 
-	// 是否填充策略
+	// 是否填充权限信息
 	EmbedPermission *bool `json:"EmbedPermission,omitnil" name:"EmbedPermission"`
 
 	// 过滤条件
@@ -6140,7 +6140,7 @@ type DescribeServiceAccountsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceAccounts []*ServiceAccount `json:"ServiceAccounts,omitnil" name:"ServiceAccounts"`
 
-	// 自定义账户数量
+	// 服务级账户数量
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8514,7 +8514,7 @@ type Permission struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Resource *string `json:"Resource,omitnil" name:"Resource"`
 
-	// 动作，目前仅支持：tcr:PushRepository、tcr:PullRepository
+	// 动作，目前仅支持：tcr:PushRepository、tcr:PullRepository、tcr:CreateRepository、tcr:CreateHelmChart、tcr:DescribeHelmCharts
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Actions []*string `json:"Actions,omitnil" name:"Actions"`
 }
@@ -8594,6 +8594,9 @@ type Registry struct {
 	// 预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+
+	// 是否开启实例删除保护，false表示不开启
+	DeletionProtection *bool `json:"DeletionProtection,omitnil" name:"DeletionProtection"`
 }
 
 type RegistryChargePrepaid struct {
@@ -8998,9 +9001,11 @@ type ServiceAccount struct {
 
 type Tag struct {
 	// 云标签的key
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 云标签的值
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil" name:"Value"`
 }
 

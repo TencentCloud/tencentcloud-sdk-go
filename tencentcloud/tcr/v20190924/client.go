@@ -1354,7 +1354,7 @@ func NewCreateServiceAccountResponse() (response *CreateServiceAccountResponse) 
 }
 
 // CreateServiceAccount
-// 创建自定义账户
+// 创建服务级账户
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1369,7 +1369,7 @@ func (c *Client) CreateServiceAccount(request *CreateServiceAccountRequest) (res
 }
 
 // CreateServiceAccount
-// 创建自定义账户
+// 创建服务级账户
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
