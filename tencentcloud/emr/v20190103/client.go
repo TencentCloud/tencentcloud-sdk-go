@@ -1743,6 +1743,7 @@ func NewInquiryPriceUpdateInstanceResponse() (response *InquiryPriceUpdateInstan
 // 变配询价
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETTRADESERVERFAILED = "FailedOperation.GetTradeServerFailed"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INTERNALERROR_CAMERROR = "InternalError.CamError"
@@ -1779,6 +1780,7 @@ func (c *Client) InquiryPriceUpdateInstance(request *InquiryPriceUpdateInstanceR
 // 变配询价
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_GETTRADESERVERFAILED = "FailedOperation.GetTradeServerFailed"
 //  INTERNALERROR_ACCOUNTCGWERROR = "InternalError.AccountCgwError"
 //  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
 //  INTERNALERROR_CAMERROR = "InternalError.CamError"
@@ -2200,6 +2202,7 @@ func NewScaleOutClusterResponse() (response *ScaleOutClusterResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_GETCVMCONFIGQUOTAFAILED = "FailedOperation.GetCvmConfigQuotaFailed"
 //  INVALIDPARAMETER_INVALIDINSTANCECHARGETYPE = "InvalidParameter.InvalidInstanceChargeType"
+//  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
 //  INVALIDPARAMETER_INVALIDNODEFLAG = "InvalidParameter.InvalidNodeFlag"
 //  INVALIDPARAMETER_INVALIDSOFTDEPLOYINFO = "InvalidParameter.InvalidSoftDeployInfo"
 //  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"
@@ -2216,6 +2219,7 @@ func (c *Client) ScaleOutCluster(request *ScaleOutClusterRequest) (response *Sca
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_GETCVMCONFIGQUOTAFAILED = "FailedOperation.GetCvmConfigQuotaFailed"
 //  INVALIDPARAMETER_INVALIDINSTANCECHARGETYPE = "InvalidParameter.InvalidInstanceChargeType"
+//  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
 //  INVALIDPARAMETER_INVALIDNODEFLAG = "InvalidParameter.InvalidNodeFlag"
 //  INVALIDPARAMETER_INVALIDSOFTDEPLOYINFO = "InvalidParameter.InvalidSoftDeployInfo"
 //  RESOURCEINUSE_INSTANCEINPROCESS = "ResourceInUse.InstanceInProcess"

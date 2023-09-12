@@ -2535,6 +2535,10 @@ type DomainAssetVO struct {
 	// 待确认资产的认证状态，0-待认证，1-认证成功，2-认证中，3-txt认证失败，4-人工认证失败
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifyStatus *int64 `json:"VerifyStatus,omitnil" name:"VerifyStatus"`
+
+	// bot访问数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BotAccessCount *int64 `json:"BotAccessCount,omitnil" name:"BotAccessCount"`
 }
 
 type Filter struct {

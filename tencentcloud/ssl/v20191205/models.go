@@ -516,6 +516,18 @@ type Certificates struct {
 	// 是否自动续费
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// 托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostingStatus *int64 `json:"HostingStatus,omitnil" name:"HostingStatus"`
+
+	// 托管完成时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostingCompleteTime *string `json:"HostingCompleteTime,omitnil" name:"HostingCompleteTime"`
+
+	// 托管新证书ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HostingRenewCertId *string `json:"HostingRenewCertId,omitnil" name:"HostingRenewCertId"`
 }
 
 // Predefined struct for user
@@ -3446,6 +3458,15 @@ type DescribeHostTeoInstanceListRequestParams struct {
 
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 每页数量，默认10。	
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 是否异步
+	AsyncCache *int64 `json:"AsyncCache,omitnil" name:"AsyncCache"`
 }
 
 type DescribeHostTeoInstanceListRequest struct {
@@ -3465,6 +3486,15 @@ type DescribeHostTeoInstanceListRequest struct {
 
 	// 已部署的证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
+
+	// 分页偏移量，从0开始。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 每页数量，默认10。	
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 是否异步
+	AsyncCache *int64 `json:"AsyncCache,omitnil" name:"AsyncCache"`
 }
 
 func (r *DescribeHostTeoInstanceListRequest) ToJsonString() string {
@@ -3484,6 +3514,9 @@ func (r *DescribeHostTeoInstanceListRequest) FromJsonString(s string) error {
 	delete(f, "IsCache")
 	delete(f, "Filters")
 	delete(f, "OldCertificateId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "AsyncCache")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHostTeoInstanceListRequest has unknown keys!", "")
 	}

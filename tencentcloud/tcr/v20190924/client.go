@@ -2191,6 +2191,7 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
 // 删除镜像仓库企业版实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRADEFAILED = "FailedOperation.TradeFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"
@@ -2209,6 +2210,7 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *Delet
 // 删除镜像仓库企业版实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TRADEFAILED = "FailedOperation.TradeFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORCONFLICT = "InternalError.ErrorConflict"

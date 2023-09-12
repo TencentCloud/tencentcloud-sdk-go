@@ -859,6 +859,18 @@ func (r *DescribeDedicatedClusterCosCapacityResponse) FromJsonString(s string) e
 type DescribeDedicatedClusterHostStatisticsRequestParams struct {
 	// 查询的专用集群id
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil" name:"DedicatedClusterId"`
+
+	// 宿主机id
+	HostId *string `json:"HostId,omitnil" name:"HostId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 时间范围精度，1分钟/5分钟
+	Period *string `json:"Period,omitnil" name:"Period"`
 }
 
 type DescribeDedicatedClusterHostStatisticsRequest struct {
@@ -866,6 +878,18 @@ type DescribeDedicatedClusterHostStatisticsRequest struct {
 	
 	// 查询的专用集群id
 	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil" name:"DedicatedClusterId"`
+
+	// 宿主机id
+	HostId *string `json:"HostId,omitnil" name:"HostId"`
+
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 时间范围精度，1分钟/5分钟
+	Period *string `json:"Period,omitnil" name:"Period"`
 }
 
 func (r *DescribeDedicatedClusterHostStatisticsRequest) ToJsonString() string {
@@ -881,6 +905,10 @@ func (r *DescribeDedicatedClusterHostStatisticsRequest) FromJsonString(s string)
 		return err
 	}
 	delete(f, "DedicatedClusterId")
+	delete(f, "HostId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "Period")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDedicatedClusterHostStatisticsRequest has unknown keys!", "")
 	}
@@ -1624,6 +1652,16 @@ func (r *DescribeSitesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DetailData struct {
+	// 时间戳
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamps []*float64 `json:"Timestamps,omitnil" name:"Timestamps"`
+
+	// 对应的具体值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Values []*float64 `json:"Values,omitnil" name:"Values"`
+}
+
 type HostInfo struct {
 	// 宿主机IP
 	HostIp *string `json:"HostIp,omitnil" name:"HostIp"`
@@ -1675,6 +1713,34 @@ type HostStatistic struct {
 
 	// 该规格宿主机的数量
 	Count *uint64 `json:"Count,omitnil" name:"Count"`
+
+	// 平均cpu负载百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuAverage *float64 `json:"CpuAverage,omitnil" name:"CpuAverage"`
+
+	// 平均内存使用率百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemAverage *float64 `json:"MemAverage,omitnil" name:"MemAverage"`
+
+	// 平均网络流量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetAverage *float64 `json:"NetAverage,omitnil" name:"NetAverage"`
+
+	// cpu详细监控数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CpuDetailData *DetailData `json:"CpuDetailData,omitnil" name:"CpuDetailData"`
+
+	// 内存详细数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemDetailData *DetailData `json:"MemDetailData,omitnil" name:"MemDetailData"`
+
+	// 网络速率详细数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetRateDetailData *DetailData `json:"NetRateDetailData,omitnil" name:"NetRateDetailData"`
+
+	// 网速包详细数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetPacketDetailData *DetailData `json:"NetPacketDetailData,omitnil" name:"NetPacketDetailData"`
 }
 
 type InBandwidth struct {

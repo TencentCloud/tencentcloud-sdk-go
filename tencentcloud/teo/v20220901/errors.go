@@ -413,6 +413,9 @@ const (
 	// 站点已被绑定。
 	INVALIDPARAMETER_ZONEHASBEENBOUND = "InvalidParameter.ZoneHasBeenBound"
 
+	// 站点升级中，暂不支持进行变更操作，请稍后再试。
+	INVALIDPARAMETER_ZONEISGRAYPUBLISHING = "InvalidParameter.ZoneIsGrayPublishing"
+
 	// 站点不存在。
 	INVALIDPARAMETER_ZONENOTFOUND = "InvalidParameter.ZoneNotFound"
 
@@ -445,6 +448,9 @@ const (
 
 	// 加速域名状态不符合要求。
 	INVALIDPARAMETERVALUE_INVALIDDOMAINSTATUS = "InvalidParameterValue.InvalidDomainStatus"
+
+	// DNS 代理域名源站错误。
+	INVALIDPARAMETERVALUE_INVALIDPROXYORIGIN = "InvalidParameterValue.InvalidProxyOrigin"
 
 	// 不支持接入泛域名 CNAME
 	INVALIDPARAMETERVALUE_NOTALLOWEDWILDCARDSHAREDCNAME = "InvalidParameterValue.NotAllowedWildcardSharedCNAME"
@@ -484,6 +490,9 @@ const (
 
 	// 中国大陆加速与IPv6冲突，不能同时配置。
 	OPERATIONDENIED_ACCELERATEMAINLANDIPV6CONFLICT = "OperationDenied.AccelerateMainlandIpv6Conflict"
+
+	// 配置已被锁定，请解除配置锁定之后在重试。
+	OPERATIONDENIED_CONFIGLOCKED = "OperationDenied.ConfigLocked"
 
 	// 站点停用未完毕，请稍后再试。
 	OPERATIONDENIED_DISABLEZONENOTCOMPLETED = "OperationDenied.DisableZoneNotCompleted"

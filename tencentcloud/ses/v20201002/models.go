@@ -1446,6 +1446,87 @@ func (r *ListEmailTemplatesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ListReceiverDetailsRequestParams struct {
+	// 收件人列表ID,CreateReceiver接口创建收件人列表时会返回该值
+	ReceiverId *uint64 `json:"ReceiverId,omitnil" name:"ReceiverId"`
+
+	// 偏移量，整型，从0开始
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 限制数目，整型,不超过100
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 收件人地址，长度0-50，示例：xxx@te.com，支持模糊查询
+	Email *string `json:"Email,omitnil" name:"Email"`
+}
+
+type ListReceiverDetailsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 收件人列表ID,CreateReceiver接口创建收件人列表时会返回该值
+	ReceiverId *uint64 `json:"ReceiverId,omitnil" name:"ReceiverId"`
+
+	// 偏移量，整型，从0开始
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 限制数目，整型,不超过100
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 收件人地址，长度0-50，示例：xxx@te.com，支持模糊查询
+	Email *string `json:"Email,omitnil" name:"Email"`
+}
+
+func (r *ListReceiverDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListReceiverDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReceiverId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Email")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ListReceiverDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ListReceiverDetailsResponseParams struct {
+	// 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 数据记录
+	Data []*ReceiverDetail `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ListReceiverDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *ListReceiverDetailsResponseParams `json:"Response"`
+}
+
+func (r *ListReceiverDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ListReceiverDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ListReceiversRequestParams struct {
 	// 偏移量，整型，从0开始
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
@@ -1634,6 +1715,17 @@ type ReceiverData struct {
 
 	// 创建时间,如:2021-09-28 16:40:35
 	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+}
+
+type ReceiverDetail struct {
+	// 收件人地址
+	Email *string `json:"Email,omitnil" name:"Email"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 模板参数
+	TemplateData *string `json:"TemplateData,omitnil" name:"TemplateData"`
 }
 
 type ReceiverInputData struct {

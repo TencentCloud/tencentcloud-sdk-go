@@ -420,3 +420,51 @@ func (c *Client) TextToObjectWithContext(ctx context.Context, request *TextToObj
     err = c.Send(request, response)
     return
 }
+
+func NewTurnPDFToObjectRequest() (request *TurnPDFToObjectRequest) {
+    request = &TurnPDFToObjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("mrs", APIVersion, "TurnPDFToObject")
+    
+    
+    return
+}
+
+func NewTurnPDFToObjectResponse() (response *TurnPDFToObjectResponse) {
+    response = &TurnPDFToObjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// TurnPDFToObject
+// 将PDF格式的体检报告文件结构化,解析关键信息.
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
+func (c *Client) TurnPDFToObject(request *TurnPDFToObjectRequest) (response *TurnPDFToObjectResponse, err error) {
+    return c.TurnPDFToObjectWithContext(context.Background(), request)
+}
+
+// TurnPDFToObject
+// 将PDF格式的体检报告文件结构化,解析关键信息.
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
+func (c *Client) TurnPDFToObjectWithContext(ctx context.Context, request *TurnPDFToObjectRequest) (response *TurnPDFToObjectResponse, err error) {
+    if request == nil {
+        request = NewTurnPDFToObjectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("TurnPDFToObject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewTurnPDFToObjectResponse()
+    err = c.Send(request, response)
+    return
+}

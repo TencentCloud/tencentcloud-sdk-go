@@ -3500,8 +3500,6 @@ type CommonFlowApprover struct {
 	IsFullText *bool `json:"IsFullText,omitnil" name:"IsFullText"`
 
 	// 通知类型：SMS（短信） NONE（不做通知）, 不传 默认SMS
-	//
-	// Deprecated: NotifyType is deprecated.
 	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
 
 	// 签署人配置
@@ -3509,6 +3507,12 @@ type CommonFlowApprover struct {
 
 	// 签署控件：文件发起使用
 	SignComponents []*Component `json:"SignComponents,omitnil" name:"SignComponents"`
+
+	// 签署人查看合同时认证方式, 1-实名查看 2-短信验证码查看(企业签署方不支持该方式) 如果不传默认为1 查看合同的认证方式 Flow层级的优先于approver层级的 （当手写签名方式为OCR_ESIGN时，合同认证方式2无效，因为这种签名方式依赖实名认证）
+	ApproverVerifyTypes []*int64 `json:"ApproverVerifyTypes,omitnil" name:"ApproverVerifyTypes"`
+
+	// 签署人签署合同时的认证方式 1-人脸认证 2-签署密码 3-运营商三要素(默认为1,2)	
+	ApproverSignTypes []*int64 `json:"ApproverSignTypes,omitnil" name:"ApproverSignTypes"`
 }
 
 type Component struct {
@@ -3748,6 +3752,37 @@ type Component struct {
 	// 填写提示的内容
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Placeholder *string `json:"Placeholder,omitnil" name:"Placeholder"`
+
+	// 是否锁定控件值不允许编辑（嵌入式发起使用） <br/>默认false：不锁定控件值，允许在页面编辑控件值	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LockComponentValue *bool `json:"LockComponentValue,omitnil" name:"LockComponentValue"`
+
+	// 是否禁止移动和删除控件 <br/>默认false，不禁止移动和删除控件	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ForbidMoveAndDelete *bool `json:"ForbidMoveAndDelete,omitnil" name:"ForbidMoveAndDelete"`
+}
+
+type ComponentLimit struct {
+	// 控件类型，支持以下类型
+	// <ul><li>SIGN_SEAL : 印章控件</li>
+	// <li>SIGN_PAGING_SEAL : 骑缝章控件</li>
+	// <li>SIGN_LEGAL_PERSON_SEAL : 企业法定代表人控件</li>
+	// <li>SIGN_SIGNATURE : 用户签名控件</li></ul>
+	ComponentType *string `json:"ComponentType,omitnil" name:"ComponentType"`
+
+	// 签署控件类型的值(可选)，用与限制签署时印章或者签名的选择范围
+	// 
+	// 1.当ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时可传入企业印章Id（支持多个）
+	// 
+	// 2.当ComponentType 是 SIGN_SIGNATURE 时可传入以下类型（支持多个）
+	// 
+	// <ul><li>HANDWRITE : 手写签名</li>
+	// <li>OCR_ESIGN : OCR印章（智慧手写签名）</li>
+	// <li>ESIGN : 个人印章</li>
+	// <li>SYSTEM_ESIGN : 系统印章</li></ul>
+	// 
+	// 3.当ComponentType 是 SIGN_LEGAL_PERSON_SEAL 时无需传递此参数。
+	ComponentValue []*string `json:"ComponentValue,omitnil" name:"ComponentValue"`
 }
 
 // Predefined struct for user
@@ -5270,6 +5305,11 @@ type FlowApproverInfo struct {
 	// SMS: 短信(需确保“电子签短信通知签署方”功能是开启状态才能生效); NONE: 不发信息
 	// 默认为SMS(签署方为子客时该字段不生效)
 	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
+
+	// [通过文件创建签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID）或签名方式。
+	// 
+	// 注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个），他方企业或个人只支持限制控件类型。`
+	AddSignComponentsLimits []*ComponentLimit `json:"AddSignComponentsLimits,omitnil" name:"AddSignComponentsLimits"`
 }
 
 type FlowApproverUrlInfo struct {

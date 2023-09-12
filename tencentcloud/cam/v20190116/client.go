@@ -4345,6 +4345,7 @@ func NewSetMfaFlagResponse() (response *SetMfaFlagResponse) {
 //  FAILEDOPERATION_USERNOTBINDWECHAT = "FailedOperation.UserNotBindWechat"
 //  FAILEDOPERATION_USERUNBINDNOPERMISSION = "FailedOperation.UserUnbindNoPermission"
 //  INVALIDPARAMETER_MFATOKENERROR = "InvalidParameter.MFATokenError"
+//  INVALIDPARAMETER_NAMEORIDCARDERROR = "InvalidParameter.NameOrIdCardError"
 //  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) SetMfaFlag(request *SetMfaFlagRequest) (response *SetMfaFlagResponse, err error) {
@@ -4359,6 +4360,7 @@ func (c *Client) SetMfaFlag(request *SetMfaFlagRequest) (response *SetMfaFlagRes
 //  FAILEDOPERATION_USERNOTBINDWECHAT = "FailedOperation.UserNotBindWechat"
 //  FAILEDOPERATION_USERUNBINDNOPERMISSION = "FailedOperation.UserUnbindNoPermission"
 //  INVALIDPARAMETER_MFATOKENERROR = "InvalidParameter.MFATokenError"
+//  INVALIDPARAMETER_NAMEORIDCARDERROR = "InvalidParameter.NameOrIdCardError"
 //  INVALIDPARAMETER_USERNOTEXIST = "InvalidParameter.UserNotExist"
 //  RESOURCENOTFOUND_USERNOTEXIST = "ResourceNotFound.UserNotExist"
 func (c *Client) SetMfaFlagWithContext(ctx context.Context, request *SetMfaFlagRequest) (response *SetMfaFlagResponse, err error) {

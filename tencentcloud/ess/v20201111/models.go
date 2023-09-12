@@ -165,6 +165,11 @@ type ApproverInfo struct {
 	// 
 	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
 	ApproverNeedSignReview *bool `json:"ApproverNeedSignReview,omitnil" name:"ApproverNeedSignReview"`
+
+	// [用PDF文件创建签署流程](https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles)时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID）或签名方式。
+	// 
+	// 注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个），他方企业或个人只支持限制控件类型。`
+	AddSignComponentsLimits []*ComponentLimit `json:"AddSignComponentsLimits,omitnil" name:"AddSignComponentsLimits"`
 }
 
 type ApproverOption struct {
@@ -845,6 +850,29 @@ type Component struct {
 	// <br/>默认false，不禁止移动和删除控件
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ForbidMoveAndDelete *bool `json:"ForbidMoveAndDelete,omitnil" name:"ForbidMoveAndDelete"`
+}
+
+type ComponentLimit struct {
+	// 控件类型，支持以下类型
+	// <ul><li>SIGN_SEAL : 印章控件</li>
+	// <li>SIGN_PAGING_SEAL : 骑缝章控件</li>
+	// <li>SIGN_LEGAL_PERSON_SEAL : 企业法定代表人控件</li>
+	// <li>SIGN_SIGNATURE : 用户签名控件</li></ul>
+	ComponentType *string `json:"ComponentType,omitnil" name:"ComponentType"`
+
+	// 签署控件类型的值(可选)，用与限制签署时印章或者签名的选择范围
+	// 
+	// 1.当ComponentType 是 SIGN_SEAL 或者 SIGN_PAGING_SEAL 时可传入企业印章Id（支持多个）
+	// 
+	// 2.当ComponentType 是 SIGN_SIGNATURE 时可传入以下类型（支持多个）
+	// 
+	// <ul><li>HANDWRITE : 手写签名</li>
+	// <li>OCR_ESIGN : OCR印章（智慧手写签名）</li>
+	// <li>ESIGN : 个人印章</li>
+	// <li>SYSTEM_ESIGN : 系统印章</li></ul>
+	// 
+	// 3.当ComponentType 是 SIGN_LEGAL_PERSON_SEAL 时无需传递此参数。
+	ComponentValue []*string `json:"ComponentValue,omitnil" name:"ComponentValue"`
 }
 
 // Predefined struct for user
@@ -3286,48 +3314,58 @@ func (r *CreateOrganizationBatchSignUrlResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type CreatePersonAuthCertificateImageRequestParams struct {
-	// 操作人信息
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 个人用户名称
 	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
-	// 身份证件类型取值：
-	// ID_CARD 身居民身份证
-	// PASSPORT 护照
-	// HONGKONG_AND_MACAO 港澳居民来往内地通行证
-	// FOREIGN_ID_CARD 外国人永久居留身份证
-	// HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+	// 证件类型，支持以下类型
+	// <ul><li> ID_CARD  : 居民身份证 (默认值)</li>
+	// <li> PASSPORT  : 护照</li>
+	// <li> FOREIGN_ID_CARD  : 外国人永久居留身份证</li>
+	// <li> HONGKONG_AND_MACAO  : 港澳居民来往内地通行证</li>
+	// <li> HONGKONG_MACAO_AND_TAIWAN  : 港澳台居民居住证(格式同居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
 
-	// 身份证件号码
+	// 证件号码，应符合以下规则
+	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
 
-	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type CreatePersonAuthCertificateImageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 个人用户名称
 	UserName *string `json:"UserName,omitnil" name:"UserName"`
 
-	// 身份证件类型取值：
-	// ID_CARD 身居民身份证
-	// PASSPORT 护照
-	// HONGKONG_AND_MACAO 港澳居民来往内地通行证
-	// FOREIGN_ID_CARD 外国人永久居留身份证
-	// HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证(格式同居民身份证)
+	// 证件类型，支持以下类型
+	// <ul><li> ID_CARD  : 居民身份证 (默认值)</li>
+	// <li> PASSPORT  : 护照</li>
+	// <li> FOREIGN_ID_CARD  : 外国人永久居留身份证</li>
+	// <li> HONGKONG_AND_MACAO  : 港澳居民来往内地通行证</li>
+	// <li> HONGKONG_MACAO_AND_TAIWAN  : 港澳台居民居住证(格式同居民身份证)</li></ul>
 	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
 
-	// 身份证件号码
+	// 证件号码，应符合以下规则
+	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
 
-	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -3356,22 +3394,29 @@ func (r *CreatePersonAuthCertificateImageRequest) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreatePersonAuthCertificateImageResponseParams struct {
-	// 个人用户证明证书的下载链接
+	// 个人用户认证证书图片下载URL，`有效期为5分钟`，超过有效期后将无法再下载。
 	AuthCertUrl *string `json:"AuthCertUrl,omitnil" name:"AuthCertUrl"`
 
-	// 证书图片上的证书编号，20位数字
+	// 个人用户认证证书的编号, 为20位数字组成的字符串,  由腾讯电子签下发此编号 。
+	// 该编号会合成到个人用户证书证明图片。
+	// 
+	// 注: `个人用户认证证书的编号和证明图片绑定, 获取新的证明图片编号会变动`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageCertId *string `json:"ImageCertId,omitnil" name:"ImageCertId"`
 
-	// 图片证明对应的CA证书序列号
+	// CA供应商下发给用户的证书编号，在证书到期后自动续期后此证书编号会发生变动，且不会合成到个人用户证书证明图片中。
+	// 
+	// 注意：`腾讯电子签接入多家CA供应商以提供容灾能力，不同CA下发的证书编号区别较大，但基本都是由数字和字母组成，长度在200以下。`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SerialNumber *string `json:"SerialNumber,omitnil" name:"SerialNumber"`
 
-	// CA证书颁发时间戳
+	// CA证书颁发时间，格式为Unix标准时间戳（秒）   
+	// 该时间格式化后会合成到个人用户证书证明图片
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidFrom *uint64 `json:"ValidFrom,omitnil" name:"ValidFrom"`
 
-	// CA证书有效截止时间戳
+	// CA证书有效截止时间，格式为Unix标准时间戳（秒）
+	// 该时间格式化后会合成到个人用户证书证明图片
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ValidTo *uint64 `json:"ValidTo,omitnil" name:"ValidTo"`
 
@@ -3803,18 +3848,18 @@ type CreateReleaseFlowRequestParams struct {
 	// 待解除的签署流程编号（即原签署流程的编号）。
 	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitnil" name:"NeedRelievedFlowId"`
 
-	// 解除协议内容。
+	// 解除协议内容, 包括解除理由等信息。
 	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitnil" name:"ReliveInfo"`
 
 	// 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 解除协议的签署人列表(如不指定该参数，默认使用原流程的签署人列表)。 <br/>
-	// 如需更换原合同中的签署人，可通过指定该签署人的RecipientId编号更换此签署人。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
-	// 解除协议的签署人数量不能多于原流程的签署人数量。<br/>
+	// 替换解除协议的签署人， 如不指定替换签署人,  则使用原流程的签署人。 <br/>
+	// 如需更换原合同中的企业端签署人，可通过指定该签署人的RecipientId编号更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
 	// 
-	// `注意：只能更换同企业的签署人。`<br/>
-	// `注意：不支持更换个人类型的签署人。`<br/>
+	// 注意：
+	// `只能更换自己企业的签署人,  不支持更换个人类型或者其他企业的签署人。`
+	// `可以不指定替换签署人, 使用原流程的签署人 `
 	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitnil" name:"ReleasedApprovers"`
 
 	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的7天时截止。
@@ -3839,18 +3884,18 @@ type CreateReleaseFlowRequest struct {
 	// 待解除的签署流程编号（即原签署流程的编号）。
 	NeedRelievedFlowId *string `json:"NeedRelievedFlowId,omitnil" name:"NeedRelievedFlowId"`
 
-	// 解除协议内容。
+	// 解除协议内容, 包括解除理由等信息。
 	ReliveInfo *RelieveInfo `json:"ReliveInfo,omitnil" name:"ReliveInfo"`
 
 	// 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 解除协议的签署人列表(如不指定该参数，默认使用原流程的签署人列表)。 <br/>
-	// 如需更换原合同中的签署人，可通过指定该签署人的RecipientId编号更换此签署人。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
-	// 解除协议的签署人数量不能多于原流程的签署人数量。<br/>
+	// 替换解除协议的签署人， 如不指定替换签署人,  则使用原流程的签署人。 <br/>
+	// 如需更换原合同中的企业端签署人，可通过指定该签署人的RecipientId编号更换此企业端签署人。(可通过接口<a href="https://qian.tencent.com/developers/companyApis/queryFlows/DescribeFlowInfo/">DescribeFlowInfo</a>查询签署人的RecipientId编号)<br/>
 	// 
-	// `注意：只能更换同企业的签署人。`<br/>
-	// `注意：不支持更换个人类型的签署人。`<br/>
+	// 注意：
+	// `只能更换自己企业的签署人,  不支持更换个人类型或者其他企业的签署人。`
+	// `可以不指定替换签署人, 使用原流程的签署人 `
 	ReleasedApprovers []*ReleasedApprover `json:"ReleasedApprovers,omitnil" name:"ReleasedApprovers"`
 
 	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的7天时截止。
@@ -5194,26 +5239,36 @@ func (r *DescribeFileUrlsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowBriefsRequestParams struct {
-	// 调用方用户信息，userId 必填
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 需要查询的流程ID列表，限制最大100个
+	// 查询的合同流程ID列表最多支持100个流程ID。 
+	// 如果某个合同流程ID不存在，系统会跳过此ID的查询，继续查询剩余存在的合同流程。
+	// 
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type DescribeFlowBriefsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方用户信息，userId 必填
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 需要查询的流程ID列表，限制最大100个
+	// 查询的合同流程ID列表最多支持100个流程ID。 
+	// 如果某个合同流程ID不存在，系统会跳过此ID的查询，继续查询剩余存在的合同流程。
+	// 
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -5240,7 +5295,8 @@ func (r *DescribeFlowBriefsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowBriefsResponseParams struct {
-	// 流程列表
+	// 合同流程基础信息列表，包含流程的名称、状态、创建日期等基本信息。 
+	// 注：`与入参 FlowIds 的顺序可能存在不一致的情况。`
 	FlowBriefs []*FlowBrief `json:"FlowBriefs,omitnil" name:"FlowBriefs"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5758,7 +5814,9 @@ type DescribeIntegrationEmployeesRequestParams struct {
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]
+	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]，查询过滤未实名用户，Key为Status，Values为["NotVerified"]
+	// 查询某个部门的用户，Key为DepartmentId，Values为["DepartmentId"]
+	// 根据用户Id查询员工时，Key为UserId，Values为["UserId"]
 	// 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
@@ -5778,7 +5836,9 @@ type DescribeIntegrationEmployeesRequest struct {
 	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]
+	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]，查询过滤未实名用户，Key为Status，Values为["NotVerified"]
+	// 查询某个部门的用户，Key为DepartmentId，Values为["DepartmentId"]
+	// 根据用户Id查询员工时，Key为UserId，Values为["UserId"]
 	// 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
@@ -6268,26 +6328,30 @@ func (r *DescribeOrganizationSealsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeThirdPartyAuthCodeRequestParams struct {
-	// 电子签小程序跳转客户小程序时携带的授权查看码
+	// 腾讯电子签小程序跳转客户企业小程序时携带的授权查看码，AuthCode由腾讯电子签小程序生成。
 	AuthCode *string `json:"AuthCode,omitnil" name:"AuthCode"`
 
-	// 操作人信息
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type DescribeThirdPartyAuthCodeRequest struct {
 	*tchttp.BaseRequest
 	
-	// 电子签小程序跳转客户小程序时携带的授权查看码
+	// 腾讯电子签小程序跳转客户企业小程序时携带的授权查看码，AuthCode由腾讯电子签小程序生成。
 	AuthCode *string `json:"AuthCode,omitnil" name:"AuthCode"`
 
-	// 操作人信息
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -6314,7 +6378,10 @@ func (r *DescribeThirdPartyAuthCodeRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeThirdPartyAuthCodeResponseParams struct {
-	// 用户是否实名，VERIFIED 为实名，UNVERIFIED 未实名
+	// AuthCode 中对应个人用户是否实名
+	// <ul>
+	// <li> **VERIFIED** : 此个人已实名</li>
+	// <li> **UNVERIFIED**: 此个人未实名</li></ul>
 	VerifyStatus *string `json:"VerifyStatus,omitnil" name:"VerifyStatus"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7910,24 +7977,26 @@ type ReleasedApprover struct {
 	// <li> **SIGN_SIGNATURE**：手写签名控件类型</li></ul>
 	ApproverSignComponentType *string `json:"ApproverSignComponentType,omitnil" name:"ApproverSignComponentType"`
 
-	// 参与方在合同中的角色是按照创建合同的时候来排序的; 解除协议默认会将第一个参与人叫甲方, 第二个叫乙方,第三个叫丙方，以此类推。如果您需要改动参与人的角色名字, 可以设置此签署方自定义控件别名字段，最大20个字。
+	// 参与方在合同中的角色是按照创建合同的时候来排序的，解除协议默认会将第一个参与人叫`甲方`,第二个叫`乙方`,  第三个叫`丙方`，以此类推。
+	// 
+	// 如果需改动此参与人的角色名字，可用此字段指定，由汉字,英文字符,数字组成，最大20个字。
 	ApproverSignRole *string `json:"ApproverSignRole,omitnil" name:"ApproverSignRole"`
 }
 
 type RelieveInfo struct {
-	// 解除理由，最大支持200个字
+	// 解除理由，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
 	Reason *string `json:"Reason,omitnil" name:"Reason"`
 
-	// 解除后仍然有效的条款，保留条款，最大支持200个字
+	// 解除后仍然有效的条款，保留条款，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
 	RemainInForceItem *string `json:"RemainInForceItem,omitnil" name:"RemainInForceItem"`
 
-	// 原合同事项处理-费用结算，最大支持200个字
+	// 原合同事项处理-费用结算，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
 	OriginalExpenseSettlement *string `json:"OriginalExpenseSettlement,omitnil" name:"OriginalExpenseSettlement"`
 
-	// 原合同事项处理-其他事项，最大支持200个字
+	// 原合同事项处理-其他事项，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
 	OriginalOtherSettlement *string `json:"OriginalOtherSettlement,omitnil" name:"OriginalOtherSettlement"`
 
-	// 其他约定，最大支持200个字
+	// 其他约定，长度不能超过200，只能由中文、字母、数字、中文标点和英文标点组成(不支持表情)。
 	OtherDeals *string `json:"OtherDeals,omitnil" name:"OtherDeals"`
 }
 

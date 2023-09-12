@@ -4951,9 +4951,6 @@ func NewModifyEdgeIpSwitchResponse() (response *ModifyEdgeIpSwitchResponse) {
 // 修改边界防火墙开关(旁路、串行)
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ModifyEdgeIpSwitch(request *ModifyEdgeIpSwitchRequest) (response *ModifyEdgeIpSwitchResponse, err error) {
     return c.ModifyEdgeIpSwitchWithContext(context.Background(), request)
@@ -4963,9 +4960,6 @@ func (c *Client) ModifyEdgeIpSwitch(request *ModifyEdgeIpSwitchRequest) (respons
 // 修改边界防火墙开关(旁路、串行)
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
 //  OPERATIONDENIED = "OperationDenied"
 func (c *Client) ModifyEdgeIpSwitchWithContext(ctx context.Context, request *ModifyEdgeIpSwitchRequest) (response *ModifyEdgeIpSwitchResponse, err error) {
     if request == nil {

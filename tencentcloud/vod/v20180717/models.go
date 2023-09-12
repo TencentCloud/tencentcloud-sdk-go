@@ -3730,6 +3730,63 @@ func (r *CreateContentReviewTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateDomainVerifyRecordRequestParams struct {
+
+}
+
+type CreateDomainVerifyRecordRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CreateDomainVerifyRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDomainVerifyRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDomainVerifyRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateDomainVerifyRecordResponseParams struct {
+	// DNS解析信息
+	DNSVerifyInfo *DNSVerifyInfo `json:"DNSVerifyInfo,omitnil" name:"DNSVerifyInfo"`
+
+	// 文件验证信息
+	FileVerifyInfo *FileVerifyInfo `json:"FileVerifyInfo,omitnil" name:"FileVerifyInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateDomainVerifyRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateDomainVerifyRecordResponseParams `json:"Response"`
+}
+
+func (r *CreateDomainVerifyRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateDomainVerifyRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateEnhanceMediaTemplateRequestParams struct {
 	// 输出文件封装格式，可选值：mp4、flv、hls。
 	Container *string `json:"Container,omitnil" name:"Container"`
@@ -5995,6 +6052,17 @@ func (r *CreateWordSamplesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *CreateWordSamplesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type DNSVerifyInfo struct {
+	// 子解析。
+	SubDomain *string `json:"SubDomain,omitnil" name:"SubDomain"`
+
+	// 解析值。
+	Record *string `json:"Record,omitnil" name:"Record"`
+
+	// 解析类型。
+	RecordType *string `json:"RecordType,omitnil" name:"RecordType"`
 }
 
 type DailyPlayStatInfo struct {
@@ -13041,6 +13109,18 @@ type FileUploadTask struct {
 	// 元信息。包括大小、时长、视频流信息、音频流信息等。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	MetaData *MediaMetaData `json:"MetaData,omitnil" name:"MetaData"`
+}
+
+type FileVerifyInfo struct {
+	// 文件验证 URL 指引。
+	FileVerifyUrl *string `json:"FileVerifyUrl,omitnil" name:"FileVerifyUrl"`
+
+	// 文件校验域名列表。
+	FileVerifyDomains []*string `json:"FileVerifyDomains,omitnil" name:"FileVerifyDomains"`
+
+	// 文件校验文件名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileVerifyName *string `json:"FileVerifyName,omitnil" name:"FileVerifyName"`
 }
 
 // Predefined struct for user
@@ -23828,6 +23908,139 @@ type UserDefineOcrTextReviewTemplateInfoForUpdate struct {
 
 	// 判定需人工复核是否违规的分数阈值，当审核达到该分数以上，认为需人工复核。取值范围：0~100。
 	ReviewConfidence *int64 `json:"ReviewConfidence,omitnil" name:"ReviewConfidence"`
+}
+
+// Predefined struct for user
+type VerifyDomainOwnershipForConsoleRequestParams struct {
+	// 需要接入点播的域名。
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 需要开启加速的区域： <li>Mainland: 中国大陆地区</li> <li>Internation: 海外地区及港澳台</li> <li>Global: 全球</li> 不填会根据用户注册腾讯云时的地域信息自动判断 Mainland 或 Internation	
+	AccelerateArea *string `json:"AccelerateArea,omitnil" name:"AccelerateArea"`
+}
+
+type VerifyDomainOwnershipForConsoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要接入点播的域名。
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 需要开启加速的区域： <li>Mainland: 中国大陆地区</li> <li>Internation: 海外地区及港澳台</li> <li>Global: 全球</li> 不填会根据用户注册腾讯云时的地域信息自动判断 Mainland 或 Internation	
+	AccelerateArea *string `json:"AccelerateArea,omitnil" name:"AccelerateArea"`
+}
+
+func (r *VerifyDomainOwnershipForConsoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyDomainOwnershipForConsoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "AccelerateArea")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyDomainOwnershipForConsoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyDomainOwnershipForConsoleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type VerifyDomainOwnershipForConsoleResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyDomainOwnershipForConsoleResponseParams `json:"Response"`
+}
+
+func (r *VerifyDomainOwnershipForConsoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyDomainOwnershipForConsoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyDomainRecordRequestParams struct {
+	// 需要接入点播的加速域名。
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 验证方式：
+	// <li>dns：DNS 解析验证；</li>
+	// <li>fIle：文件验证。</li>
+	// 
+	// 默认值：dns。
+	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
+}
+
+type VerifyDomainRecordRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要接入点播的加速域名。
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 验证方式：
+	// <li>dns：DNS 解析验证；</li>
+	// <li>fIle：文件验证。</li>
+	// 
+	// 默认值：dns。
+	VerifyType *string `json:"VerifyType,omitnil" name:"VerifyType"`
+}
+
+func (r *VerifyDomainRecordRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyDomainRecordRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "VerifyType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyDomainRecordRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyDomainRecordResponseParams struct {
+	// 是否验证成功。
+	Result *bool `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type VerifyDomainRecordResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyDomainRecordResponseParams `json:"Response"`
+}
+
+func (r *VerifyDomainRecordResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyDomainRecordResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VideoDenoiseInfo struct {

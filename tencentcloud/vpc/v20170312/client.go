@@ -17183,6 +17183,7 @@ func NewModifyNatGatewayDestinationIpPortTranslationNatRuleResponse() (response 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_NATGATEWAYDNATRULENOTEXISTS = "InvalidParameterValue.NatGatewayDnatRuleNotExists"
 //  INVALIDPARAMETERVALUE_NATGATEWAYDNATRULEPIPNEEDVM = "InvalidParameterValue.NatGatewayDnatRulePipNeedVm"
+//  RESOURCEINUSE = "ResourceInUse"
 //  UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = "UnsupportedOperation.NatGatewayRulePipExists"
 //  UNSUPPORTEDOPERATION_RECORDEXISTS = "UnsupportedOperation.RecordExists"
 func (c *Client) ModifyNatGatewayDestinationIpPortTranslationNatRule(request *ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest) (response *ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse, err error) {
@@ -17195,6 +17196,7 @@ func (c *Client) ModifyNatGatewayDestinationIpPortTranslationNatRule(request *Mo
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_NATGATEWAYDNATRULENOTEXISTS = "InvalidParameterValue.NatGatewayDnatRuleNotExists"
 //  INVALIDPARAMETERVALUE_NATGATEWAYDNATRULEPIPNEEDVM = "InvalidParameterValue.NatGatewayDnatRulePipNeedVm"
+//  RESOURCEINUSE = "ResourceInUse"
 //  UNSUPPORTEDOPERATION_NATGATEWAYRULEPIPEXISTS = "UnsupportedOperation.NatGatewayRulePipExists"
 //  UNSUPPORTEDOPERATION_RECORDEXISTS = "UnsupportedOperation.RecordExists"
 func (c *Client) ModifyNatGatewayDestinationIpPortTranslationNatRuleWithContext(ctx context.Context, request *ModifyNatGatewayDestinationIpPortTranslationNatRuleRequest) (response *ModifyNatGatewayDestinationIpPortTranslationNatRuleResponse, err error) {

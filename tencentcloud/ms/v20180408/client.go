@@ -1340,7 +1340,6 @@ func NewUpdateClientStateResponse() (response *UpdateClientStateResponse) {
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateClientState(request *UpdateClientStateRequest) (response *UpdateClientStateResponse, err error) {
     return c.UpdateClientStateWithContext(context.Background(), request)
 }
@@ -1350,7 +1349,6 @@ func (c *Client) UpdateClientState(request *UpdateClientStateRequest) (response 
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateClientStateWithContext(ctx context.Context, request *UpdateClientStateRequest) (response *UpdateClientStateResponse, err error) {
     if request == nil {
         request = NewUpdateClientStateRequest()
@@ -1390,7 +1388,6 @@ func NewUpdateLocalTaskResultResponse() (response *UpdateLocalTaskResultResponse
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateLocalTaskResult(request *UpdateLocalTaskResultRequest) (response *UpdateLocalTaskResultResponse, err error) {
     return c.UpdateLocalTaskResultWithContext(context.Background(), request)
 }
@@ -1400,7 +1397,6 @@ func (c *Client) UpdateLocalTaskResult(request *UpdateLocalTaskResultRequest) (r
 //
 // 可能返回的错误码:
 //  UNAUTHORIZEDOPERATION_NOTWHITEUSER = "UnauthorizedOperation.NotWhiteUser"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) UpdateLocalTaskResultWithContext(ctx context.Context, request *UpdateLocalTaskResultRequest) (response *UpdateLocalTaskResultResponse, err error) {
     if request == nil {
         request = NewUpdateLocalTaskResultRequest()

@@ -1343,6 +1343,58 @@ func (c *Client) ListEmailTemplatesWithContext(ctx context.Context, request *Lis
     return
 }
 
+func NewListReceiverDetailsRequest() (request *ListReceiverDetailsRequest) {
+    request = &ListReceiverDetailsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ses", APIVersion, "ListReceiverDetails")
+    
+    
+    return
+}
+
+func NewListReceiverDetailsResponse() (response *ListReceiverDetailsResponse) {
+    response = &ListReceiverDetailsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ListReceiverDetails
+// 根据收件人列表id查询收件人列表中的所有收件人邮箱地址，分页查询，可以根据收件邮箱地址来过滤查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED_RECEIVERNOTEXIST = "OperationDenied.ReceiverNotExist"
+func (c *Client) ListReceiverDetails(request *ListReceiverDetailsRequest) (response *ListReceiverDetailsResponse, err error) {
+    return c.ListReceiverDetailsWithContext(context.Background(), request)
+}
+
+// ListReceiverDetails
+// 根据收件人列表id查询收件人列表中的所有收件人邮箱地址，分页查询，可以根据收件邮箱地址来过滤查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_INVALIDLIMIT = "FailedOperation.InvalidLimit"
+//  INTERNALERROR = "InternalError"
+//  OPERATIONDENIED_RECEIVERNOTEXIST = "OperationDenied.ReceiverNotExist"
+func (c *Client) ListReceiverDetailsWithContext(ctx context.Context, request *ListReceiverDetailsRequest) (response *ListReceiverDetailsResponse, err error) {
+    if request == nil {
+        request = NewListReceiverDetailsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ListReceiverDetails require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewListReceiverDetailsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewListReceiversRequest() (request *ListReceiversRequest) {
     request = &ListReceiversRequest{
         BaseRequest: &tchttp.BaseRequest{},

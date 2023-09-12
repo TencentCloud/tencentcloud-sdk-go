@@ -2911,6 +2911,7 @@ func NewDescribeFlowTrendResponse() (response *DescribeFlowTrendResponse) {
 //  INVALIDPARAMETER_UNKNOWNACTION = "InvalidParameter.UnknownAction"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) DescribeFlowTrend(request *DescribeFlowTrendRequest) (response *DescribeFlowTrendResponse, err error) {
     return c.DescribeFlowTrendWithContext(context.Background(), request)
 }
@@ -2925,6 +2926,7 @@ func (c *Client) DescribeFlowTrend(request *DescribeFlowTrendRequest) (response 
 //  INVALIDPARAMETER_UNKNOWNACTION = "InvalidParameter.UnknownAction"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  OPERATIONDENIED = "OperationDenied"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
 func (c *Client) DescribeFlowTrendWithContext(ctx context.Context, request *DescribeFlowTrendRequest) (response *DescribeFlowTrendResponse, err error) {
     if request == nil {
         request = NewDescribeFlowTrendRequest()
@@ -3316,6 +3318,7 @@ func NewDescribeIpHitItemsResponse() (response *DescribeIpHitItemsResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeIpHitItems(request *DescribeIpHitItemsRequest) (response *DescribeIpHitItemsResponse, err error) {
     return c.DescribeIpHitItemsWithContext(context.Background(), request)
@@ -3326,6 +3329,7 @@ func (c *Client) DescribeIpHitItems(request *DescribeIpHitItemsRequest) (respons
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeIpHitItemsWithContext(ctx context.Context, request *DescribeIpHitItemsRequest) (response *DescribeIpHitItemsResponse, err error) {
     if request == nil {

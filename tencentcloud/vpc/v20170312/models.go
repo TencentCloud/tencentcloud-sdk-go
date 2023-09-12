@@ -9115,6 +9115,9 @@ type DescribeAddressTemplateGroupsRequestParams struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitnil" name:"Limit"`
+
+	// 是否查询IP地址模板成员标识。
+	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil" name:"NeedMemberInfo"`
 }
 
 type DescribeAddressTemplateGroupsRequest struct {
@@ -9130,6 +9133,9 @@ type DescribeAddressTemplateGroupsRequest struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitnil" name:"Limit"`
+
+	// 是否查询IP地址模板成员标识。
+	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil" name:"NeedMemberInfo"`
 }
 
 func (r *DescribeAddressTemplateGroupsRequest) ToJsonString() string {
@@ -9147,6 +9153,7 @@ func (r *DescribeAddressTemplateGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "NeedMemberInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddressTemplateGroupsRequest has unknown keys!", "")
 	}
@@ -9194,6 +9201,9 @@ type DescribeAddressTemplatesRequestParams struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitnil" name:"Limit"`
+
+	// 是否获取IP地址模板成员标识。
+	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil" name:"NeedMemberInfo"`
 }
 
 type DescribeAddressTemplatesRequest struct {
@@ -9210,6 +9220,9 @@ type DescribeAddressTemplatesRequest struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitnil" name:"Limit"`
+
+	// 是否获取IP地址模板成员标识。
+	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil" name:"NeedMemberInfo"`
 }
 
 func (r *DescribeAddressTemplatesRequest) ToJsonString() string {
@@ -9227,6 +9240,7 @@ func (r *DescribeAddressTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "NeedMemberInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAddressTemplatesRequest has unknown keys!", "")
 	}
@@ -13482,6 +13496,9 @@ type DescribeServiceTemplateGroupsRequestParams struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitnil" name:"Limit"`
+
+	// 是否获取协议端口模板成员标识。
+	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil" name:"NeedMemberInfo"`
 }
 
 type DescribeServiceTemplateGroupsRequest struct {
@@ -13497,6 +13514,9 @@ type DescribeServiceTemplateGroupsRequest struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitnil" name:"Limit"`
+
+	// 是否获取协议端口模板成员标识。
+	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil" name:"NeedMemberInfo"`
 }
 
 func (r *DescribeServiceTemplateGroupsRequest) ToJsonString() string {
@@ -13514,6 +13534,7 @@ func (r *DescribeServiceTemplateGroupsRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "NeedMemberInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceTemplateGroupsRequest has unknown keys!", "")
 	}
@@ -13561,6 +13582,9 @@ type DescribeServiceTemplatesRequestParams struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitnil" name:"Limit"`
+
+	// 是否获取协议端口成员标识。
+	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil" name:"NeedMemberInfo"`
 }
 
 type DescribeServiceTemplatesRequest struct {
@@ -13577,6 +13601,9 @@ type DescribeServiceTemplatesRequest struct {
 
 	// 返回数量，默认为20，最大值为100。
 	Limit *string `json:"Limit,omitnil" name:"Limit"`
+
+	// 是否获取协议端口成员标识。
+	NeedMemberInfo *bool `json:"NeedMemberInfo,omitnil" name:"NeedMemberInfo"`
 }
 
 func (r *DescribeServiceTemplatesRequest) ToJsonString() string {
@@ -13594,6 +13621,7 @@ func (r *DescribeServiceTemplatesRequest) FromJsonString(s string) error {
 	delete(f, "Filters")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "NeedMemberInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeServiceTemplatesRequest has unknown keys!", "")
 	}

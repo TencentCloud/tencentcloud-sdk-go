@@ -763,6 +763,9 @@ type CreateDocumentRequestParams struct {
 
 	// 文档大小，单位 字节
 	DocumentSize *uint64 `json:"DocumentSize,omitnil" name:"DocumentSize"`
+
+	// 是否对不支持元素开启自动处理的功能。默认关闭。
+	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitnil" name:"AutoHandleUnsupportedElement"`
 }
 
 type CreateDocumentRequest struct {
@@ -797,6 +800,9 @@ type CreateDocumentRequest struct {
 
 	// 文档大小，单位 字节
 	DocumentSize *uint64 `json:"DocumentSize,omitnil" name:"DocumentSize"`
+
+	// 是否对不支持元素开启自动处理的功能。默认关闭。
+	AutoHandleUnsupportedElement *bool `json:"AutoHandleUnsupportedElement,omitnil" name:"AutoHandleUnsupportedElement"`
 }
 
 func (r *CreateDocumentRequest) ToJsonString() string {
@@ -819,6 +825,7 @@ func (r *CreateDocumentRequest) FromJsonString(s string) error {
 	delete(f, "Permission")
 	delete(f, "DocumentType")
 	delete(f, "DocumentSize")
+	delete(f, "AutoHandleUnsupportedElement")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateDocumentRequest has unknown keys!", "")
 	}

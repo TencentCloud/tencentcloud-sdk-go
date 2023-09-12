@@ -28,6 +28,12 @@ type AggregationObj struct {
 	Bucket []*Bucket `json:"Bucket,omitnil" name:"Bucket"`
 }
 
+type AlarmInfoRsp struct {
+	// 近7天威胁告警
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackEvent []*AttackEvent `json:"AttackEvent,omitnil" name:"AttackEvent"`
+}
+
 type AlertDetail struct {
 	// 告警基础信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -519,6 +525,40 @@ type AssetTypeStatistic struct {
 	// 统计计数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetCount *uint64 `json:"AssetCount,omitnil" name:"AssetCount"`
+}
+
+type AttackEvent struct {
+	// 来源ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SsaSrcIp *string `json:"SsaSrcIp,omitnil" name:"SsaSrcIp"`
+
+	// 目标ip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SsaDstIp *string `json:"SsaDstIp,omitnil" name:"SsaDstIp"`
+
+	// 目标省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SsaDstProvince *string `json:"SsaDstProvince,omitnil" name:"SsaDstProvince"`
+
+	// 目标城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SsaDstCity *string `json:"SsaDstCity,omitnil" name:"SsaDstCity"`
+
+	// 目标国家
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SsaDstCountry *string `json:"SsaDstCountry,omitnil" name:"SsaDstCountry"`
+
+	// 来源省份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SsaSrcProvince *string `json:"SsaSrcProvince,omitnil" name:"SsaSrcProvince"`
+
+	// 来源国家
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SsaSrcCountry *string `json:"SsaSrcCountry,omitnil" name:"SsaSrcCountry"`
+
+	// 来源城市
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SsaSrcCity *string `json:"SsaSrcCity,omitnil" name:"SsaSrcCity"`
 }
 
 type Bucket struct {
@@ -1148,6 +1188,71 @@ type DataEvent struct {
 	// 出入站方向
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Direction *string `json:"Direction,omitnil" name:"Direction"`
+}
+
+// Predefined struct for user
+type DescribeAlarmStatRequestParams struct {
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+}
+
+type DescribeAlarmStatRequest struct {
+	*tchttp.BaseRequest
+	
+	// 开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+}
+
+func (r *DescribeAlarmStatRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmStatRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAlarmStatRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAlarmStatResponseParams struct {
+	// 威胁告警信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *AlarmInfoRsp `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAlarmStatResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAlarmStatResponseParams `json:"Response"`
+}
+
+func (r *DescribeAlarmStatResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAlarmStatResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user

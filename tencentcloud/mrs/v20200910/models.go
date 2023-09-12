@@ -211,6 +211,108 @@ type BirthPlaceBlock struct {
 	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
+type Block struct {
+	// 诊断信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Check []*Check `json:"Check,omitnil" name:"Check"`
+
+	// 病理报告
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pathology []*PathologyReport `json:"Pathology,omitnil" name:"Pathology"`
+
+	// 医学资料
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MedDoc []*MedDoc `json:"MedDoc,omitnil" name:"MedDoc"`
+
+	// 诊断证明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiagCert []*DiagCert `json:"DiagCert,omitnil" name:"DiagCert"`
+
+	// 病案首页
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FirstPage []*FirstPage `json:"FirstPage,omitnil" name:"FirstPage"`
+
+	// 检验报告
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Indicator []*Indicator `json:"Indicator,omitnil" name:"Indicator"`
+
+	// 门诊病历信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MedicalRecordInfo []*MedicalRecordInfo `json:"MedicalRecordInfo,omitnil" name:"MedicalRecordInfo"`
+
+	// 出入院信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hospitalization []*Hospitalization `json:"Hospitalization,omitnil" name:"Hospitalization"`
+
+	// 手术记录
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Surgery []*Surgery `json:"Surgery,omitnil" name:"Surgery"`
+
+	// 处方单
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Prescription []*Prescription `json:"Prescription,omitnil" name:"Prescription"`
+
+	// 免疫接种证明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VaccineCertificate []*VaccineCertificate `json:"VaccineCertificate,omitnil" name:"VaccineCertificate"`
+
+	// 心电图
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Electrocardiogram []*Electrocardiogram `json:"Electrocardiogram,omitnil" name:"Electrocardiogram"`
+
+	// 病理报告v2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PathologyV2 []*PathologyV2 `json:"PathologyV2,omitnil" name:"PathologyV2"`
+
+	// 内窥镜报告
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Endoscopy []*Endoscopy `json:"Endoscopy,omitnil" name:"Endoscopy"`
+
+	// C14检验报告
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	C14 []*Indicator `json:"C14,omitnil" name:"C14"`
+
+	// 体检结论
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Exame []*Exame `json:"Exame,omitnil" name:"Exame"`
+
+	// 出入院结构体
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MedDocV2 []*DischargeInfoBlock `json:"MedDocV2,omitnil" name:"MedDocV2"`
+
+	// 检验报告v3
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndicatorV3 []*IndicatorV3 `json:"IndicatorV3,omitnil" name:"IndicatorV3"`
+
+	// 孕产报告
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Maternity []*Maternity `json:"Maternity,omitnil" name:"Maternity"`
+
+	// 时间轴
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timeline []*TimelineInformation `json:"Timeline,omitnil" name:"Timeline"`
+
+	// 核酸报告结论
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Covid []*CovidItemsInfo `json:"Covid,omitnil" name:"Covid"`
+
+	// 眼科报告结构体
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Eye []*EyeItemsInfo `json:"Eye,omitnil" name:"Eye"`
+
+	// 出生证明结构化信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BirthCert []*BirthCert `json:"BirthCert,omitnil" name:"BirthCert"`
+
+	// 文本类型列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextTypeListBlocks []*TextTypeListBlock `json:"TextTypeListBlocks,omitnil" name:"TextTypeListBlocks"`
+
+	// 体检报告信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhysicalExamination *PhysicalExaminationV1 `json:"PhysicalExamination,omitnil" name:"PhysicalExamination"`
+}
+
 type BlockInfo struct {
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -293,6 +395,32 @@ type BloodPressureBlock struct {
 	NormSystolic *string `json:"NormSystolic,omitnil" name:"NormSystolic"`
 }
 
+type BloodPressureItem struct {
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 项目原文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Item *PhysicalBaseItem `json:"Item,omitnil" name:"Item"`
+
+	// 数值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *PhysicalBaseItem `json:"Result,omitnil" name:"Result"`
+
+	// 单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *PhysicalBaseItem `json:"Unit,omitnil" name:"Unit"`
+
+	// 第几次
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Times *PhysicalBaseItem `json:"Times,omitnil" name:"Times"`
+
+	// 左右手臂
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *PhysicalBaseItem `json:"Location,omitnil" name:"Location"`
+}
+
 type BodyExaminationBlock struct {
 	// 体温
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -341,6 +469,28 @@ type Check struct {
 	// 结论
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Summary *Summary `json:"Summary,omitnil" name:"Summary"`
+}
+
+type ChestCircumferenceItem struct {
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 项目原文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Item *PhysicalBaseItem `json:"Item,omitnil" name:"Item"`
+
+	// 数值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *PhysicalBaseItem `json:"Result,omitnil" name:"Result"`
+
+	// 单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *PhysicalBaseItem `json:"Unit,omitnil" name:"Unit"`
+
+	// 呼吸状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	State *PhysicalBaseItem `json:"State,omitnil" name:"State"`
 }
 
 type ChiefComplaintBlock struct {
@@ -1275,6 +1425,128 @@ type Fp2NdItem struct {
 	AnesthesiaMethod *BaseItem `json:"AnesthesiaMethod,omitnil" name:"AnesthesiaMethod"`
 }
 
+type GeneralExaminationBaseItem struct {
+	// 生命体征
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VitalSign *GeneralExaminationVitalSign `json:"VitalSign,omitnil" name:"VitalSign"`
+
+	// 其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Others *GeneralExaminationOthers `json:"Others,omitnil" name:"Others"`
+
+	// 小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BriefSummary *GeneralExaminationBriefSummary `json:"BriefSummary,omitnil" name:"BriefSummary"`
+}
+
+type GeneralExaminationBriefSummary struct {
+	// 一般检查小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type GeneralExaminationOthers struct {
+	// 面容与表情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Countenance *KeyValueItem `json:"Countenance,omitnil" name:"Countenance"`
+
+	// 精神状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MentalStatus *KeyValueItem `json:"MentalStatus,omitnil" name:"MentalStatus"`
+
+	// 发育及营养状况
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DevelopmentCondition *KeyValueItem `json:"DevelopmentCondition,omitnil" name:"DevelopmentCondition"`
+
+	// 记忆力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *KeyValueItem `json:"Memory,omitnil" name:"Memory"`
+
+	// 臀围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hipline *ValueUnitItem `json:"Hipline,omitnil" name:"Hipline"`
+
+	// 腰臀比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WaistHipRatio *ValueUnitItem `json:"WaistHipRatio,omitnil" name:"WaistHipRatio"`
+
+	// 生活嗜好
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Addiction *KeyValueItem `json:"Addiction,omitnil" name:"Addiction"`
+
+	// 生活能力评定
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AbilityOfLifeADL *KeyValueItem `json:"AbilityOfLifeADL,omitnil" name:"AbilityOfLifeADL"`
+
+	// 一般检查其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Others []*KeyValueItem `json:"Others,omitnil" name:"Others"`
+
+	// 胸围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChestCircumference *ChestCircumferenceItem `json:"ChestCircumference,omitnil" name:"ChestCircumference"`
+}
+
+type GeneralExaminationVitalSign struct {
+	// 生命体征总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *ValueUnitItem `json:"Text,omitnil" name:"Text"`
+
+	// 体温
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BodyTemperature *ValueUnitItem `json:"BodyTemperature,omitnil" name:"BodyTemperature"`
+
+	// 脉率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pulse *ValueUnitItem `json:"Pulse,omitnil" name:"Pulse"`
+
+	// 心率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeartRate *ValueUnitItem `json:"HeartRate,omitnil" name:"HeartRate"`
+
+	// 呼吸频率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BreathingRate *ValueUnitItem `json:"BreathingRate,omitnil" name:"BreathingRate"`
+
+	// 身高
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BodyHeight *ValueUnitItem `json:"BodyHeight,omitnil" name:"BodyHeight"`
+
+	// 体重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BodyWeight *ValueUnitItem `json:"BodyWeight,omitnil" name:"BodyWeight"`
+
+	// 体质指数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BodyMassIndex *ValueUnitItem `json:"BodyMassIndex,omitnil" name:"BodyMassIndex"`
+
+	// 腰围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Waistline *ValueUnitItem `json:"Waistline,omitnil" name:"Waistline"`
+
+	// 血压
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BloodPressure *GeneralExaminationVitalSignBloodPressure `json:"BloodPressure,omitnil" name:"BloodPressure"`
+}
+
+type GeneralExaminationVitalSignBloodPressure struct {
+	// 血压
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *BloodPressureItem `json:"Text,omitnil" name:"Text"`
+
+	// 收缩压/舒张压
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystolicDiastolicPressure []*BloodPressureItem `json:"SystolicDiastolicPressure,omitnil" name:"SystolicDiastolicPressure"`
+
+	// 收缩压
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SystolicPressure []*BloodPressureItem `json:"SystolicPressure,omitnil" name:"SystolicPressure"`
+
+	// 舒张压
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiastolicPressure []*BloodPressureItem `json:"DiastolicPressure,omitnil" name:"DiastolicPressure"`
+}
+
 type GeneticHistoryBlock struct {
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1291,6 +1563,92 @@ type GeneticHistoryBlock struct {
 	// 对外输出值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
+type GynaecologyAdnexal struct {
+	// 子宫附件总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type GynaecologyBaseItem struct {
+	// 外阴
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vulva *GynaecologyVulva `json:"Vulva,omitnil" name:"Vulva"`
+
+	// 阴道
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vagina *GynaecologyVagina `json:"Vagina,omitnil" name:"Vagina"`
+
+	// 子宫颈
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cervix *GynaecologyCervix `json:"Cervix,omitnil" name:"Cervix"`
+
+	// 子宫
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uterus *GynaecologyUterus `json:"Uterus,omitnil" name:"Uterus"`
+
+	// 子宫附件
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Adnexal *GynaecologyAdnexal `json:"Adnexal,omitnil" name:"Adnexal"`
+
+	// 盆腔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PelvicCavity *GynaecologyPelvicCavity `json:"PelvicCavity,omitnil" name:"PelvicCavity"`
+
+	// 妇科其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Others []*KeyValueItem `json:"Others,omitnil" name:"Others"`
+
+	// 月经史
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MenstrualHistory *GynaecologyMenstrualHistory `json:"MenstrualHistory,omitnil" name:"MenstrualHistory"`
+
+	// 小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BriefSummary *GynaecologyBriefSummary `json:"BriefSummary,omitnil" name:"BriefSummary"`
+}
+
+type GynaecologyBriefSummary struct {
+	// 小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type GynaecologyCervix struct {
+	// 子宫颈总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type GynaecologyMenstrualHistory struct {
+	// 妇科月经史总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type GynaecologyPelvicCavity struct {
+	// 盆腔总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type GynaecologyUterus struct {
+	// 子宫总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type GynaecologyVagina struct {
+	// 阴道总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type GynaecologyVulva struct {
+	// 外阴总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
 }
 
 type HandleParam struct {
@@ -1317,6 +1675,24 @@ type HandleParam struct {
 
 	// 采用后台默认值(2048Kb)
 	ScaleTargetSize *uint64 `json:"ScaleTargetSize,omitnil" name:"ScaleTargetSize"`
+}
+
+type HearingItem struct {
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 项目原文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Item *PhysicalBaseItem `json:"Item,omitnil" name:"Item"`
+
+	// 方位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *PhysicalBaseItem `json:"Location,omitnil" name:"Location"`
+
+	// 描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *PhysicalBaseItem `json:"Result,omitnil" name:"Result"`
 }
 
 type HistologyClass struct {
@@ -1819,6 +2195,252 @@ type IndicatorV3 struct {
 	Version *string `json:"Version,omitnil" name:"Version"`
 }
 
+type InternalMedicineAbdomen struct {
+	// 内科腹部小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+
+	// 肝脏
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Liver *InternalMedicineAbdomenLiver `json:"Liver,omitnil" name:"Liver"`
+
+	// 胆囊
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GallBladder *InternalMedicineAbdomenGallBladder `json:"GallBladder,omitnil" name:"GallBladder"`
+
+	// 胰腺
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pancreas *InternalMedicineAbdomenPancreas `json:"Pancreas,omitnil" name:"Pancreas"`
+
+	// 脾脏
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Spleen *InternalMedicineAbdomenSpleen `json:"Spleen,omitnil" name:"Spleen"`
+
+	// 肾脏
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Kidney *InternalMedicineAbdomenKidney `json:"Kidney,omitnil" name:"Kidney"`
+
+	// 腹部其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Others []*KeyValueItem `json:"Others,omitnil" name:"Others"`
+}
+
+type InternalMedicineAbdomenGallBladder struct {
+	// 胆囊总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Src *KeyValueItem `json:"Src,omitnil" name:"Src"`
+
+	// 胆囊大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *KeyValueItem `json:"Size,omitnil" name:"Size"`
+
+	// 胆囊触诊
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Palpation *KeyValueItem `json:"Palpation,omitnil" name:"Palpation"`
+
+	// 胆囊叩诊
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percussion *KeyValueItem `json:"Percussion,omitnil" name:"Percussion"`
+
+	// 胆囊压痛
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tenderness *KeyValueItem `json:"Tenderness,omitnil" name:"Tenderness"`
+
+	// 胆囊质地
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Consistency *KeyValueItem `json:"Consistency,omitnil" name:"Consistency"`
+}
+
+type InternalMedicineAbdomenKidney struct {
+	// 肾脏总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Src *KeyValueItem `json:"Src,omitnil" name:"Src"`
+
+	// 肾脏大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *KeyValueItem `json:"Size,omitnil" name:"Size"`
+
+	// 肾脏触诊
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Palpation *KeyValueItem `json:"Palpation,omitnil" name:"Palpation"`
+
+	// 肾脏叩诊
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percussion *KeyValueItem `json:"Percussion,omitnil" name:"Percussion"`
+
+	// 肾脏压痛
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tenderness *KeyValueItem `json:"Tenderness,omitnil" name:"Tenderness"`
+
+	// 肾脏质地
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Consistency *KeyValueItem `json:"Consistency,omitnil" name:"Consistency"`
+}
+
+type InternalMedicineAbdomenLiver struct {
+	// 肝脏总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Src *KeyValueItem `json:"Src,omitnil" name:"Src"`
+
+	// 肝脏大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *KeyValueItem `json:"Size,omitnil" name:"Size"`
+
+	// 肝脏触诊
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Palpation *KeyValueItem `json:"Palpation,omitnil" name:"Palpation"`
+
+	// 肝脏叩诊
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percussion *KeyValueItem `json:"Percussion,omitnil" name:"Percussion"`
+
+	// 肝脏压痛
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tenderness *KeyValueItem `json:"Tenderness,omitnil" name:"Tenderness"`
+
+	// 肝脏质地
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Consistency *KeyValueItem `json:"Consistency,omitnil" name:"Consistency"`
+}
+
+type InternalMedicineAbdomenPancreas struct {
+	// 胰腺总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Src *KeyValueItem `json:"Src,omitnil" name:"Src"`
+
+	// 胰腺大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *KeyValueItem `json:"Size,omitnil" name:"Size"`
+
+	// 胰腺触诊
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Palpation *KeyValueItem `json:"Palpation,omitnil" name:"Palpation"`
+
+	// 胰腺叩诊
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percussion *KeyValueItem `json:"Percussion,omitnil" name:"Percussion"`
+
+	// 肝脏压痛
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tenderness *KeyValueItem `json:"Tenderness,omitnil" name:"Tenderness"`
+
+	// 胰腺质地
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Consistency *KeyValueItem `json:"Consistency,omitnil" name:"Consistency"`
+}
+
+type InternalMedicineAbdomenSpleen struct {
+	// 脾脏总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Src *KeyValueItem `json:"Src,omitnil" name:"Src"`
+
+	// 脾脏大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *KeyValueItem `json:"Size,omitnil" name:"Size"`
+
+	// 脾脏触诊
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Palpation *KeyValueItem `json:"Palpation,omitnil" name:"Palpation"`
+
+	// 脾脏叩诊
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Percussion *KeyValueItem `json:"Percussion,omitnil" name:"Percussion"`
+
+	// 脾脏压痛
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tenderness *KeyValueItem `json:"Tenderness,omitnil" name:"Tenderness"`
+
+	// 脾脏质地
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Consistency *KeyValueItem `json:"Consistency,omitnil" name:"Consistency"`
+}
+
+type InternalMedicineBaseItem struct {
+	// 体检报告-内科-腹部
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Abdomen *InternalMedicineAbdomen `json:"Abdomen,omitnil" name:"Abdomen"`
+
+	// 体检报告-内科-心脏
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Heart *InternalMedicineHeart `json:"Heart,omitnil" name:"Heart"`
+
+	// 体检报告-内科-血管
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vessel *InternalMedicineVessel `json:"Vessel,omitnil" name:"Vessel"`
+
+	// 体检报告-内科-呼吸系统
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RespiratorySystem *InternalMedicineRespiratorySystem `json:"RespiratorySystem,omitnil" name:"RespiratorySystem"`
+
+	// 体检报告-内科-内科其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Others []*KeyValueItem `json:"Others,omitnil" name:"Others"`
+
+	// 体检报告-内科-小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BriefSummary *InternalMedicineBriefSummary `json:"BriefSummary,omitnil" name:"BriefSummary"`
+}
+
+type InternalMedicineBriefSummary struct {
+	// 内科小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type InternalMedicineHeart struct {
+	// 心脏总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+
+	// 心律
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeartRhythm *KeyValueItem `json:"HeartRhythm,omitnil" name:"HeartRhythm"`
+
+	// 心率
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeartRate *ValueUnitItem `json:"HeartRate,omitnil" name:"HeartRate"`
+
+	// 心脏听诊
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeartAuscultation *KeyValueItem `json:"HeartAuscultation,omitnil" name:"HeartAuscultation"`
+}
+
+type InternalMedicineRespiratorySystem struct {
+	// 呼吸系统总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+
+	// 胸廓
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Thoracic *KeyValueItem `json:"Thoracic,omitnil" name:"Thoracic"`
+
+	// 痰量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Sputum *KeyValueItem `json:"Sputum,omitnil" name:"Sputum"`
+
+	// 肺部叩诊
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LungPercussion *KeyValueItem `json:"LungPercussion,omitnil" name:"LungPercussion"`
+
+	// 肺部听诊其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LungAuscultation []*KeyValueItem `json:"LungAuscultation,omitnil" name:"LungAuscultation"`
+}
+
+type InternalMedicineVessel struct {
+	// 血管总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+
+	// 血管杂音
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VascularMurmur *KeyValueItem `json:"VascularMurmur,omitnil" name:"VascularMurmur"`
+
+	// 外周血管
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeripheralVessel *KeyValueItem `json:"PeripheralVessel,omitnil" name:"PeripheralVessel"`
+}
+
 type Invas struct {
 	// 原文位置
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -1871,6 +2493,20 @@ type IssueInfo struct {
 	// 签发日期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IssuedDate *string `json:"IssuedDate,omitnil" name:"IssuedDate"`
+}
+
+type KeyValueItem struct {
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 项目原文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Item *PhysicalBaseItem `json:"Item,omitnil" name:"Item"`
+
+	// 结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *PhysicalBaseItem `json:"Result,omitnil" name:"Result"`
 }
 
 type LastMenstrualPeriodBlock struct {
@@ -2502,6 +3138,78 @@ type ObstetricalHistoryBlock struct {
 	FertilityHistory *FertilityHistoryBlock `json:"FertilityHistory,omitnil" name:"FertilityHistory"`
 }
 
+type OphthalmologyBareEyeSight struct {
+	// 左眼视力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LeftEyeVisual *KeyValueItem `json:"LeftEyeVisual,omitnil" name:"LeftEyeVisual"`
+
+	// 裸眼视力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+
+	// 右眼视力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RightEyeVisual *KeyValueItem `json:"RightEyeVisual,omitnil" name:"RightEyeVisual"`
+}
+
+type OphthalmologyBaseItem struct {
+	// 裸眼视力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BareEyeSight *OphthalmologyBareEyeSight `json:"BareEyeSight,omitnil" name:"BareEyeSight"`
+
+	// 矫正视力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorrectedVisualAcuity *OphthalmologyCorrectedVisualAcuity `json:"CorrectedVisualAcuity,omitnil" name:"CorrectedVisualAcuity"`
+
+	// 色觉
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ColourVision *OphthalmologyColourVision `json:"ColourVision,omitnil" name:"ColourVision"`
+
+	// 眼底
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fundoscopy *OphthalmologyFundoscopy `json:"Fundoscopy,omitnil" name:"Fundoscopy"`
+
+	// 眼科其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Others []*KeyValueItem `json:"Others,omitnil" name:"Others"`
+
+	// 眼科小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BriefSummary *OphthalmologyBriefSummary `json:"BriefSummary,omitnil" name:"BriefSummary"`
+}
+
+type OphthalmologyBriefSummary struct {
+	// 眼科小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type OphthalmologyColourVision struct {
+	// 色觉总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type OphthalmologyCorrectedVisualAcuity struct {
+	// 左眼矫正视力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LeftEyeVisual *KeyValueItem `json:"LeftEyeVisual,omitnil" name:"LeftEyeVisual"`
+
+	// 矫正视力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+
+	// 右眼矫正视力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RightEyeVisual *KeyValueItem `json:"RightEyeVisual,omitnil" name:"RightEyeVisual"`
+}
+
+type OphthalmologyFundoscopy struct {
+	// 眼底检查总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
 type Organ struct {
 	// 部位
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2682,6 +3390,56 @@ type OtherInfo struct {
 	// 手术结束时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartTime *SurgeryAttr `json:"StartTime,omitnil" name:"StartTime"`
+}
+
+type OtolaryngologyBaseItem struct {
+	// 耳朵
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ear *OtolaryngologyEar `json:"Ear,omitnil" name:"Ear"`
+
+	// 鼻
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nose *OtolaryngologyNose `json:"Nose,omitnil" name:"Nose"`
+
+	// 喉
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Larynx *OtolaryngologyLarynx `json:"Larynx,omitnil" name:"Larynx"`
+
+	// 耳鼻喉其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Others []*KeyValueItem `json:"Others,omitnil" name:"Others"`
+
+	// 小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BriefSummary *OtolaryngologyBriefSummary `json:"BriefSummary,omitnil" name:"BriefSummary"`
+}
+
+type OtolaryngologyBriefSummary struct {
+	// 耳鼻喉小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type OtolaryngologyEar struct {
+	// 耳总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+
+	// 听力
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hearing *HearingItem `json:"Hearing,omitnil" name:"Hearing"`
+}
+
+type OtolaryngologyLarynx struct {
+	// 喉总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type OtolaryngologyNose struct {
+	// 鼻总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
 }
 
 type PTNM struct {
@@ -3165,6 +3923,14 @@ type PatientInfo struct {
 	BedNo *string `json:"BedNo,omitnil" name:"BedNo"`
 }
 
+type PdfInfo struct {
+	// pdf文件url链接(暂不支持)
+	Url *string `json:"Url,omitnil" name:"Url"`
+
+	// pdf文件base64编码字符串
+	Base64 *string `json:"Base64,omitnil" name:"Base64"`
+}
+
 type PersonalHistoryBlock struct {
 	// 出生地
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3219,6 +3985,68 @@ type PersonalMedicalHistory struct {
 	// 饮酒史
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlcoholicHistory *string `json:"AlcoholicHistory,omitnil" name:"AlcoholicHistory"`
+}
+
+type PhysicalBaseItem struct {
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 原始文本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Src *string `json:"Src,omitnil" name:"Src"`
+
+	// 归一化后值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil" name:"Value"`
+
+	// 四点坐标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Coords []*Coord `json:"Coords,omitnil" name:"Coords"`
+}
+
+type PhysicalExamination struct {
+	// 一般检查
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GeneralExamination *GeneralExaminationBaseItem `json:"GeneralExamination,omitnil" name:"GeneralExamination"`
+
+	// 内科
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternalMedicine *InternalMedicineBaseItem `json:"InternalMedicine,omitnil" name:"InternalMedicine"`
+
+	// 外科
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Surgery *SurgeryBaseItem `json:"Surgery,omitnil" name:"Surgery"`
+
+	// 口腔科
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Stomatology *StomatologyBaseItem `json:"Stomatology,omitnil" name:"Stomatology"`
+
+	// 眼科
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ophthalmology *OphthalmologyBaseItem `json:"Ophthalmology,omitnil" name:"Ophthalmology"`
+
+	// 耳鼻喉科
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Otolaryngology *OtolaryngologyBaseItem `json:"Otolaryngology,omitnil" name:"Otolaryngology"`
+
+	// 妇科
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gynaecology *GynaecologyBaseItem `json:"Gynaecology,omitnil" name:"Gynaecology"`
+
+	// 未标准化
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unclassified []*KeyValueItem `json:"Unclassified,omitnil" name:"Unclassified"`
+}
+
+type PhysicalExaminationV1 struct {
+	// 体检报告信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PhysicalExaminationMulti *PhysicalExamination `json:"PhysicalExaminationMulti,omitnil" name:"PhysicalExaminationMulti"`
+
+	// 版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil" name:"Version"`
 }
 
 type Point struct {
@@ -3555,6 +4383,52 @@ type SmokeHistoryBlock struct {
 	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
+type StomatologyBaseItem struct {
+	// 龋齿
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ToothDecay *StomatologyToothDecay `json:"ToothDecay,omitnil" name:"ToothDecay"`
+
+	// 牙龈
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gingiva *StomatologyGingiva `json:"Gingiva,omitnil" name:"Gingiva"`
+
+	// 牙周
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Periodontics *StomatologyPeriodontics `json:"Periodontics,omitnil" name:"Periodontics"`
+
+	// 口腔其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Others []*KeyValueItem `json:"Others,omitnil" name:"Others"`
+
+	// 小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BriefSummary *StomatologyBriefSummary `json:"BriefSummary,omitnil" name:"BriefSummary"`
+}
+
+type StomatologyBriefSummary struct {
+	// 口腔小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type StomatologyGingiva struct {
+	// 牙龈总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type StomatologyPeriodontics struct {
+	// 牙周总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type StomatologyToothDecay struct {
+	// 龋齿总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
 type Summary struct {
 	// 症状
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3589,6 +4463,20 @@ type Surgery struct {
 	OtherInfo *OtherInfo `json:"OtherInfo,omitnil" name:"OtherInfo"`
 }
 
+type SurgeryAnorectal struct {
+	// 肛门直肠总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+
+	// 直肠指检
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DigitalRectalExamination *KeyValueItem `json:"DigitalRectalExamination,omitnil" name:"DigitalRectalExamination"`
+
+	// 痔疮
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hemorrhoid *KeyValueItem `json:"Hemorrhoid,omitnil" name:"Hemorrhoid"`
+}
+
 type SurgeryAttr struct {
 	// 名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3597,6 +4485,60 @@ type SurgeryAttr struct {
 	// 值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
+type SurgeryBaseItem struct {
+	// 体检报告-外科-头颈部
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HeadNeck *SurgeryHeadNeck `json:"HeadNeck,omitnil" name:"HeadNeck"`
+
+	// 体检报告-外科-甲状腺
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Thyroid *SurgeryThyroid `json:"Thyroid,omitnil" name:"Thyroid"`
+
+	// 体检报告-外科-乳房
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Breast *SurgeryBreast `json:"Breast,omitnil" name:"Breast"`
+
+	// 体检报告-外科-浅表淋巴结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LymphNode *SurgeryLymphNode `json:"LymphNode,omitnil" name:"LymphNode"`
+
+	// 体检报告-外科-脊柱
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpinalExtremities *SurgerySpinalExtremities `json:"SpinalExtremities,omitnil" name:"SpinalExtremities"`
+
+	// 体检报告-外科-皮肤
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Skin *SurgerySkin `json:"Skin,omitnil" name:"Skin"`
+
+	// 体检报告-外科-肛门直肠
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Anorectal *SurgeryAnorectal `json:"Anorectal,omitnil" name:"Anorectal"`
+
+	// 体检报告-外科-泌尿生殖系统
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UrogenitalSystem *SurgeryUrogenitalSystem `json:"UrogenitalSystem,omitnil" name:"UrogenitalSystem"`
+
+	// 体检报告-外科-外科其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Others []*KeyValueItem `json:"Others,omitnil" name:"Others"`
+
+	// 体检报告-外科-小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BriefSummary *SurgeryBriefSummary `json:"BriefSummary,omitnil" name:"BriefSummary"`
+}
+
+type SurgeryBreast struct {
+	// 乳房总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type SurgeryBriefSummary struct {
+	// 外科小结
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
 }
 
 type SurgeryConditionBlock struct {
@@ -3616,6 +4558,12 @@ type SurgeryConditionBlock struct {
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
+type SurgeryHeadNeck struct {
+	// 头颈部总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
 }
 
 type SurgeryHistory struct {
@@ -3678,6 +4626,68 @@ type SurgeryListBlock struct {
 	// 部位
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Part *string `json:"Part,omitnil" name:"Part"`
+}
+
+type SurgeryLymphNode struct {
+	// 浅表淋巴结总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type SurgerySkin struct {
+	// 皮肤总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type SurgerySpinalExtremities struct {
+	// 脊柱四肢总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+
+	// 脊柱
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpinalColumn *KeyValueItem `json:"SpinalColumn,omitnil" name:"SpinalColumn"`
+
+	// 四肢和关节
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LimbJoint *KeyValueItem `json:"LimbJoint,omitnil" name:"LimbJoint"`
+
+	// 平跛足
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Foot *KeyValueItem `json:"Foot,omitnil" name:"Foot"`
+
+	// 骨骼
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bone *KeyValueItem `json:"Bone,omitnil" name:"Bone"`
+
+	// 步态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gait *KeyValueItem `json:"Gait,omitnil" name:"Gait"`
+
+	// 残疾或畸形
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Deformity *KeyValueItem `json:"Deformity,omitnil" name:"Deformity"`
+}
+
+type SurgeryThyroid struct {
+	// 甲状腺总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+}
+
+type SurgeryUrogenitalSystem struct {
+	// 泌尿生殖系统总体描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Text *KeyValueItem `json:"Text,omitnil" name:"Text"`
+
+	// 前列腺
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Prostate *KeyValueItem `json:"Prostate,omitnil" name:"Prostate"`
+
+	// 外生殖器（男性）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExternalReproductiveOrgans *KeyValueItem `json:"ExternalReproductiveOrgans,omitnil" name:"ExternalReproductiveOrgans"`
 }
 
 type SymptomInfo struct {
@@ -4007,6 +5017,12 @@ type TextType struct {
 	// 类别名
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil" name:"Name"`
+}
+
+type TextTypeListBlock struct {
+	// 文本类型列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TextTypeList []*TextType `json:"TextTypeList,omitnil" name:"TextTypeList"`
 }
 
 type Time struct {
@@ -4581,6 +5597,72 @@ type TuberInfo struct {
 	IsthmusThickness *Size `json:"IsthmusThickness,omitnil" name:"IsthmusThickness"`
 }
 
+// Predefined struct for user
+type TurnPDFToObjectRequestParams struct {
+	// 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符
+	PdfInfo *PdfInfo `json:"PdfInfo,omitnil" name:"PdfInfo"`
+}
+
+type TurnPDFToObjectRequest struct {
+	*tchttp.BaseRequest
+	
+	// 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符
+	PdfInfo *PdfInfo `json:"PdfInfo,omitnil" name:"PdfInfo"`
+}
+
+func (r *TurnPDFToObjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TurnPDFToObjectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PdfInfo")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TurnPDFToObjectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type TurnPDFToObjectResponseParams struct {
+	// 报告结构化结果
+	Template *Template `json:"Template,omitnil" name:"Template"`
+
+	// 多级分类结果
+	TextTypeList []*TextType `json:"TextTypeList,omitnil" name:"TextTypeList"`
+
+	// 报告结构化结果
+	Block *Block `json:"Block,omitnil" name:"Block"`
+
+	// 是否使用Block字段
+	IsBlock *bool `json:"IsBlock,omitnil" name:"IsBlock"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type TurnPDFToObjectResponse struct {
+	*tchttp.BaseResponse
+	Response *TurnPDFToObjectResponseParams `json:"Response"`
+}
+
+func (r *TurnPDFToObjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *TurnPDFToObjectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Vaccination struct {
 	// 序号
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -4655,4 +5737,22 @@ type ValueBlock struct {
 	// 阳性阴性
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Positive *string `json:"Positive,omitnil" name:"Positive"`
+}
+
+type ValueUnitItem struct {
+	// 类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 项目原文
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Item *PhysicalBaseItem `json:"Item,omitnil" name:"Item"`
+
+	// 数值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *PhysicalBaseItem `json:"Result,omitnil" name:"Result"`
+
+	// 单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unit *PhysicalBaseItem `json:"Unit,omitnil" name:"Unit"`
 }

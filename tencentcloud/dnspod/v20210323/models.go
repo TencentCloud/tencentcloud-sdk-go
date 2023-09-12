@@ -4081,7 +4081,7 @@ func (r *DescribeUserDetailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserDetailResponseParams struct {
-	// 帐户信息
+	// 账户信息
 	UserInfo *UserInfo `json:"UserInfo,omitnil" name:"UserInfo"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

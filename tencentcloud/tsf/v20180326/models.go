@@ -5187,7 +5187,7 @@ func (r *CreateUnitRuleWithDetailRespRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUnitRuleWithDetailRespResponseParams struct {
-	// 单元化规则 ID
+	// 单元化规则信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Result *UnitRule `json:"Result,omitnil" name:"Result"`
 
@@ -9258,7 +9258,7 @@ func (r *DescribeContainerGroupsResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCreateGatewayApiStatusRequestParams struct {
-	// 请求方法
+	// 所属分组ID
 	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 微服务ID
@@ -9268,7 +9268,7 @@ type DescribeCreateGatewayApiStatusRequestParams struct {
 type DescribeCreateGatewayApiStatusRequest struct {
 	*tchttp.BaseRequest
 	
-	// 请求方法
+	// 所属分组ID
 	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 
 	// 微服务ID
@@ -9444,6 +9444,12 @@ type DescribeDeliveryConfigsRequestParams struct {
 
 	// 搜索条数
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 数据集idList
+	ProgramIdList []*string `json:"ProgramIdList,omitnil" name:"ProgramIdList"`
+
+	// ConfigIdList
+	ConfigIdList []*string `json:"ConfigIdList,omitnil" name:"ConfigIdList"`
 }
 
 type DescribeDeliveryConfigsRequest struct {
@@ -9457,6 +9463,12 @@ type DescribeDeliveryConfigsRequest struct {
 
 	// 搜索条数
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 数据集idList
+	ProgramIdList []*string `json:"ProgramIdList,omitnil" name:"ProgramIdList"`
+
+	// ConfigIdList
+	ConfigIdList []*string `json:"ConfigIdList,omitnil" name:"ConfigIdList"`
 }
 
 func (r *DescribeDeliveryConfigsRequest) ToJsonString() string {
@@ -9474,6 +9486,8 @@ func (r *DescribeDeliveryConfigsRequest) FromJsonString(s string) error {
 	delete(f, "SearchWord")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "ProgramIdList")
+	delete(f, "ConfigIdList")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDeliveryConfigsRequest has unknown keys!", "")
 	}
@@ -9986,6 +10000,9 @@ type DescribeGatewayApisRequestParams struct {
 
 	// 部署组ID
 	GatewayDeployGroupId *string `json:"GatewayDeployGroupId,omitnil" name:"GatewayDeployGroupId"`
+
+	// 发布状态, drafted(未发布)/released(已发布)/releasing(发布中)/failed(发布失败)
+	ReleaseStatus *string `json:"ReleaseStatus,omitnil" name:"ReleaseStatus"`
 }
 
 type DescribeGatewayApisRequest struct {
@@ -10005,6 +10022,9 @@ type DescribeGatewayApisRequest struct {
 
 	// 部署组ID
 	GatewayDeployGroupId *string `json:"GatewayDeployGroupId,omitnil" name:"GatewayDeployGroupId"`
+
+	// 发布状态, drafted(未发布)/released(已发布)/releasing(发布中)/failed(发布失败)
+	ReleaseStatus *string `json:"ReleaseStatus,omitnil" name:"ReleaseStatus"`
 }
 
 func (r *DescribeGatewayApisRequest) ToJsonString() string {
@@ -10024,6 +10044,7 @@ func (r *DescribeGatewayApisRequest) FromJsonString(s string) error {
 	delete(f, "Limit")
 	delete(f, "SearchWord")
 	delete(f, "GatewayDeployGroupId")
+	delete(f, "ReleaseStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGatewayApisRequest has unknown keys!", "")
 	}
@@ -10811,14 +10832,14 @@ type DescribeGroupsWithPluginRequestParams struct {
 	// 插件ID
 	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
-	// 绑定/未绑定: true / false
-	Bound *bool `json:"Bound,omitnil" name:"Bound"`
-
 	// 翻页偏移量
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页记录数量
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 绑定/未绑定: true / false
+	Bound *bool `json:"Bound,omitnil" name:"Bound"`
 
 	// 搜索关键字
 	SearchWord *string `json:"SearchWord,omitnil" name:"SearchWord"`
@@ -10833,14 +10854,14 @@ type DescribeGroupsWithPluginRequest struct {
 	// 插件ID
 	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
-	// 绑定/未绑定: true / false
-	Bound *bool `json:"Bound,omitnil" name:"Bound"`
-
 	// 翻页偏移量
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页记录数量
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 绑定/未绑定: true / false
+	Bound *bool `json:"Bound,omitnil" name:"Bound"`
 
 	// 搜索关键字
 	SearchWord *string `json:"SearchWord,omitnil" name:"SearchWord"`
@@ -10862,9 +10883,9 @@ func (r *DescribeGroupsWithPluginRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "PluginId")
-	delete(f, "Bound")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Bound")
 	delete(f, "SearchWord")
 	delete(f, "GatewayInstanceId")
 	if len(f) > 0 {
@@ -12563,14 +12584,14 @@ type DescribePluginInstancesRequestParams struct {
 	// 分组或者API的ID
 	ScopeValue *string `json:"ScopeValue,omitnil" name:"ScopeValue"`
 
-	// 绑定: true; 未绑定: false
-	Bound *bool `json:"Bound,omitnil" name:"Bound"`
-
 	// 翻页偏移量
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页展示的条数
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 绑定: true; 未绑定: false
+	Bound *bool `json:"Bound,omitnil" name:"Bound"`
 
 	// 插件类型
 	Type *string `json:"Type,omitnil" name:"Type"`
@@ -12585,14 +12606,14 @@ type DescribePluginInstancesRequest struct {
 	// 分组或者API的ID
 	ScopeValue *string `json:"ScopeValue,omitnil" name:"ScopeValue"`
 
-	// 绑定: true; 未绑定: false
-	Bound *bool `json:"Bound,omitnil" name:"Bound"`
-
 	// 翻页偏移量
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 每页展示的条数
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 绑定: true; 未绑定: false
+	Bound *bool `json:"Bound,omitnil" name:"Bound"`
 
 	// 插件类型
 	Type *string `json:"Type,omitnil" name:"Type"`
@@ -12614,9 +12635,9 @@ func (r *DescribePluginInstancesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ScopeValue")
-	delete(f, "Bound")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Bound")
 	delete(f, "Type")
 	delete(f, "SearchWord")
 	if len(f) > 0 {
@@ -15974,11 +15995,17 @@ type GatewayPluginBoundParam struct {
 	// 插件id
 	PluginId *string `json:"PluginId,omitnil" name:"PluginId"`
 
-	// 插件绑定到的对象类型:group/api
+	// 插件绑定到的对象类型:group/api/all
 	ScopeType *string `json:"ScopeType,omitnil" name:"ScopeType"`
 
 	// 插件绑定到的对象主键值，例如分组的ID/API的ID
 	ScopeValue *string `json:"ScopeValue,omitnil" name:"ScopeValue"`
+
+	// 创建关联的服务id，关联envoy网关时使用
+	MicroserviceId *string `json:"MicroserviceId,omitnil" name:"MicroserviceId"`
+
+	// 网关id
+	GatewayInstanceId *string `json:"GatewayInstanceId,omitnil" name:"GatewayInstanceId"`
 }
 
 type GatewayVo struct {
@@ -21777,7 +21804,7 @@ type UpdateApiGroupRequestParams struct {
 	// Api 分组描述
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 鉴权类型
+	// 鉴权类型。 secret： 密钥鉴权； none:无鉴权
 	AuthType *string `json:"AuthType,omitnil" name:"AuthType"`
 
 	// 分组上下文
@@ -21808,7 +21835,7 @@ type UpdateApiGroupRequest struct {
 	// Api 分组描述
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 鉴权类型
+	// 鉴权类型。 secret： 密钥鉴权； none:无鉴权
 	AuthType *string `json:"AuthType,omitnil" name:"AuthType"`
 
 	// 分组上下文

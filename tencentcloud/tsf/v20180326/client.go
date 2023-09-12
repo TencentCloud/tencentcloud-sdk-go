@@ -6174,7 +6174,7 @@ func NewDescribeDeliveryConfigsResponse() (response *DescribeDeliveryConfigsResp
 }
 
 // DescribeDeliveryConfigs
-// 获取多个投递项配置 
+// 获取多个投递项配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFAPMBUSILOGCFGSCHEMAQUERYERROR = "FailedOperation.TsfApmBusiLogCfgSchemaQueryError"
@@ -6186,7 +6186,7 @@ func (c *Client) DescribeDeliveryConfigs(request *DescribeDeliveryConfigsRequest
 }
 
 // DescribeDeliveryConfigs
-// 获取多个投递项配置 
+// 获取多个投递项配置
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_TSFAPMBUSILOGCFGSCHEMAQUERYERROR = "FailedOperation.TsfApmBusiLogCfgSchemaQueryError"

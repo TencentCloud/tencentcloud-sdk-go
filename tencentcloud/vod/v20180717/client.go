@@ -865,6 +865,58 @@ func (c *Client) CreateContentReviewTemplateWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateDomainVerifyRecordRequest() (request *CreateDomainVerifyRecordRequest) {
+    request = &CreateDomainVerifyRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "CreateDomainVerifyRecord")
+    
+    
+    return
+}
+
+func NewCreateDomainVerifyRecordResponse() (response *CreateDomainVerifyRecordResponse) {
+    response = &CreateDomainVerifyRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDomainVerifyRecord
+// 该接口用于生成一条子域名解析，提示客户添加到域名解析上，用于泛域名及域名取回校验归属权。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateDomainVerifyRecord(request *CreateDomainVerifyRecordRequest) (response *CreateDomainVerifyRecordResponse, err error) {
+    return c.CreateDomainVerifyRecordWithContext(context.Background(), request)
+}
+
+// CreateDomainVerifyRecord
+// 该接口用于生成一条子域名解析，提示客户添加到域名解析上，用于泛域名及域名取回校验归属权。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) CreateDomainVerifyRecordWithContext(ctx context.Context, request *CreateDomainVerifyRecordRequest) (response *CreateDomainVerifyRecordResponse, err error) {
+    if request == nil {
+        request = NewCreateDomainVerifyRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDomainVerifyRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDomainVerifyRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateEnhanceMediaTemplateRequest() (request *CreateEnhanceMediaTemplateRequest) {
     request = &CreateEnhanceMediaTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -887,20 +939,9 @@ func NewCreateEnhanceMediaTemplateResponse() (response *CreateEnhanceMediaTempla
 // 创建音画质重生模板。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
-//  INVALIDPARAMETERVALUE_BLOCKCONFIDENCE = "InvalidParameterValue.BlockConfidence"
-//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
-//  INVALIDPARAMETERVALUE_LABELSET = "InvalidParameterValue.LabelSet"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_REVIEWCONFIDENCE = "InvalidParameterValue.ReviewConfidence"
-//  INVALIDPARAMETERVALUE_REVIEWWALLSWITCH = "InvalidParameterValue.ReviewWallSwitch"
-//  INVALIDPARAMETERVALUE_SCREENSHOTINTERVAL = "InvalidParameterValue.ScreenshotInterval"
-//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
-//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateEnhanceMediaTemplate(request *CreateEnhanceMediaTemplateRequest) (response *CreateEnhanceMediaTemplateResponse, err error) {
     return c.CreateEnhanceMediaTemplateWithContext(context.Background(), request)
 }
@@ -909,20 +950,9 @@ func (c *Client) CreateEnhanceMediaTemplate(request *CreateEnhanceMediaTemplateR
 // 创建音画质重生模板。
 //
 // 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
-//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_GENDEFINITION = "InternalError.GenDefinition"
-//  INVALIDPARAMETERVALUE_BLOCKCONFIDENCE = "InvalidParameterValue.BlockConfidence"
-//  INVALIDPARAMETERVALUE_COMMENT = "InvalidParameterValue.Comment"
-//  INVALIDPARAMETERVALUE_LABELSET = "InvalidParameterValue.LabelSet"
-//  INVALIDPARAMETERVALUE_NAME = "InvalidParameterValue.Name"
-//  INVALIDPARAMETERVALUE_REVIEWCONFIDENCE = "InvalidParameterValue.ReviewConfidence"
-//  INVALIDPARAMETERVALUE_REVIEWWALLSWITCH = "InvalidParameterValue.ReviewWallSwitch"
-//  INVALIDPARAMETERVALUE_SCREENSHOTINTERVAL = "InvalidParameterValue.ScreenshotInterval"
-//  INVALIDPARAMETERVALUE_SWITCH = "InvalidParameterValue.Switch"
-//  LIMITEXCEEDED_TOOMUCHTEMPLATE = "LimitExceeded.TooMuchTemplate"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) CreateEnhanceMediaTemplateWithContext(ctx context.Context, request *CreateEnhanceMediaTemplateRequest) (response *CreateEnhanceMediaTemplateResponse, err error) {
     if request == nil {
         request = NewCreateEnhanceMediaTemplateRequest()
@@ -10933,6 +10963,126 @@ func (c *Client) SplitMediaWithContext(ctx context.Context, request *SplitMediaR
     request.SetContext(ctx)
     
     response = NewSplitMediaResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyDomainOwnershipForConsoleRequest() (request *VerifyDomainOwnershipForConsoleRequest) {
+    request = &VerifyDomainOwnershipForConsoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "VerifyDomainOwnershipForConsole")
+    
+    
+    return
+}
+
+func NewVerifyDomainOwnershipForConsoleResponse() (response *VerifyDomainOwnershipForConsoleResponse) {
+    response = &VerifyDomainOwnershipForConsoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// VerifyDomainOwnershipForConsole
+// 控制台验证域名归属
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTDOMAINEXIST = "FailedOperation.ConflictDomainExist"
+//  FAILEDOPERATION_DOMAINALREADYEXIST = "FailedOperation.DomainAlreadyExist"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_WILDCARDDOMAINNESTEDCREATE = "FailedOperation.WildCardDomainNestedCreate"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_DOMAINRECORDNOTVERIFIED = "UnauthorizedOperation.DomainRecordNotVerified"
+//  UNAUTHORIZEDOPERATION_HOSTOWNEDBYOTHERS = "UnauthorizedOperation.HostOwnedByOthers"
+func (c *Client) VerifyDomainOwnershipForConsole(request *VerifyDomainOwnershipForConsoleRequest) (response *VerifyDomainOwnershipForConsoleResponse, err error) {
+    return c.VerifyDomainOwnershipForConsoleWithContext(context.Background(), request)
+}
+
+// VerifyDomainOwnershipForConsole
+// 控制台验证域名归属
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CONFLICTDOMAINEXIST = "FailedOperation.ConflictDomainExist"
+//  FAILEDOPERATION_DOMAINALREADYEXIST = "FailedOperation.DomainAlreadyExist"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  FAILEDOPERATION_WILDCARDDOMAINNESTEDCREATE = "FailedOperation.WildCardDomainNestedCreate"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_DOMAINRECORDNOTVERIFIED = "UnauthorizedOperation.DomainRecordNotVerified"
+//  UNAUTHORIZEDOPERATION_HOSTOWNEDBYOTHERS = "UnauthorizedOperation.HostOwnedByOthers"
+func (c *Client) VerifyDomainOwnershipForConsoleWithContext(ctx context.Context, request *VerifyDomainOwnershipForConsoleRequest) (response *VerifyDomainOwnershipForConsoleResponse, err error) {
+    if request == nil {
+        request = NewVerifyDomainOwnershipForConsoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyDomainOwnershipForConsole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyDomainOwnershipForConsoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewVerifyDomainRecordRequest() (request *VerifyDomainRecordRequest) {
+    request = &VerifyDomainRecordRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("vod", APIVersion, "VerifyDomainRecord")
+    
+    
+    return
+}
+
+func NewVerifyDomainRecordResponse() (response *VerifyDomainRecordResponse) {
+    response = &VerifyDomainRecordResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// VerifyDomainRecord
+// 该接口用于验证域名解析值。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) VerifyDomainRecord(request *VerifyDomainRecordRequest) (response *VerifyDomainRecordResponse, err error) {
+    return c.VerifyDomainRecordWithContext(context.Background(), request)
+}
+
+// VerifyDomainRecord
+// 该接口用于验证域名解析值。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INVALIDVODUSER = "FailedOperation.InvalidVodUser"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) VerifyDomainRecordWithContext(ctx context.Context, request *VerifyDomainRecordRequest) (response *VerifyDomainRecordResponse, err error) {
+    if request == nil {
+        request = NewVerifyDomainRecordRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("VerifyDomainRecord require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewVerifyDomainRecordResponse()
     err = c.Send(request, response)
     return
 }

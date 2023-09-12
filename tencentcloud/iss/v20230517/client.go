@@ -3972,6 +3972,7 @@ func NewRefreshDeviceChannelResponse() (response *RefreshDeviceChannelResponse) 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEVICERESPONSETIMEOUT = "FailedOperation.DeviceResponseTimeOut"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICEID = "InvalidParameterValue.InvalidDeviceId"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -3987,6 +3988,7 @@ func (c *Client) RefreshDeviceChannel(request *RefreshDeviceChannelRequest) (res
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DEVICERESPONSETIMEOUT = "FailedOperation.DeviceResponseTimeOut"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICEID = "InvalidParameterValue.InvalidDeviceId"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
 //  RESOURCENOTFOUND = "ResourceNotFound"

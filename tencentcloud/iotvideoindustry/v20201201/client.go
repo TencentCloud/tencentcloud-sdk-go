@@ -8757,8 +8757,6 @@ func NewModifyBindSceneChannelsResponse() (response *ModifyBindSceneChannelsResp
 // 场景绑定解绑通道接口
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  RESOURCENOTFOUND_PLANNOTEXIST = "ResourceNotFound.PlanNotExist"
 //  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
 func (c *Client) ModifyBindSceneChannels(request *ModifyBindSceneChannelsRequest) (response *ModifyBindSceneChannelsResponse, err error) {
     return c.ModifyBindSceneChannelsWithContext(context.Background(), request)
@@ -8768,8 +8766,6 @@ func (c *Client) ModifyBindSceneChannels(request *ModifyBindSceneChannelsRequest
 // 场景绑定解绑通道接口
 //
 // 可能返回的错误码:
-//  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
-//  RESOURCENOTFOUND_PLANNOTEXIST = "ResourceNotFound.PlanNotExist"
 //  UNSUPPORTEDOPERATION_DEVICEBINDEXIST = "UnsupportedOperation.DeviceBindExist"
 func (c *Client) ModifyBindSceneChannelsWithContext(ctx context.Context, request *ModifyBindSceneChannelsRequest) (response *ModifyBindSceneChannelsResponse, err error) {
     if request == nil {

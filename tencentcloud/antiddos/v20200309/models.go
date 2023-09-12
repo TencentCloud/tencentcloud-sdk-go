@@ -6445,7 +6445,7 @@ type DescribeNewL7RulesRequestParams struct {
 	// 一页条数，默认值100，最大值100，超过100最大返回100条
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 页起始偏移，取值为(页码-1)*一页条数
+	// 规则偏移量，取值为(页码-1)*一页条数
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 转发协议搜索，选填，取值[http, https, http/https]
@@ -6476,7 +6476,7 @@ type DescribeNewL7RulesRequest struct {
 	// 一页条数，默认值100，最大值100，超过100最大返回100条
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 页起始偏移，取值为(页码-1)*一页条数
+	// 规则偏移量，取值为(页码-1)*一页条数
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 转发协议搜索，选填，取值[http, https, http/https]

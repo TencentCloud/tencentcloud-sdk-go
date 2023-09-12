@@ -317,6 +317,12 @@ const (
 	// 域名操作过于频繁。
 	LIMITEXCEEDED_CDNHOSTOPTOOOFTEN = "LimitExceeded.CdnHostOpTooOften"
 
+	// 刷新的Url数量超过每批提交的限制。
+	LIMITEXCEEDED_CDNPURGEEXCEEDBATCHLIMIT = "LimitExceeded.CdnPurgeExceedBatchLimit"
+
+	// 刷新的Url数量超过每日限额。
+	LIMITEXCEEDED_CDNPURGEEXCEEDDAYLIMIT = "LimitExceeded.CdnPurgeExceedDayLimit"
+
 	// 刷新的目录数量超过限制。
 	LIMITEXCEEDED_CDNPURGEPATHEXCEEDBATCHLIMIT = "LimitExceeded.CdnPurgePathExceedBatchLimit"
 

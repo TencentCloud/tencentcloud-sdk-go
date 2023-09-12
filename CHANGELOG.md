@@ -1,3 +1,448 @@
+# Release v1.0.746
+
+## 弹性伸缩(as) 版本：2018-04-19
+
+### 第 67 次发布
+
+发布时间：2023-09-12 01:09:06
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ModifyLaunchConfigurationAttributes](https://cloud.tencent.com/document/api/377/31298)
+
+	* 新增入参：LoginSettings
+
+
+
+
+## 本地专用集群(cdc) 版本：2020-12-14
+
+### 第 7 次发布
+
+发布时间：2023-09-12 01:18:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDedicatedClusterHostStatistics](https://cloud.tencent.com/document/api/1346/73764)
+
+	* 新增入参：HostId, StartTime, EndTime, Period
+
+
+新增数据结构：
+
+* [DetailData](https://cloud.tencent.com/document/api/1346/73770#DetailData)
+
+修改数据结构：
+
+* [HostStatistic](https://cloud.tencent.com/document/api/1346/73770#HostStatistic)
+
+	* 新增成员：CpuAverage, MemAverage, NetAverage, CpuDetailData, MemDetailData, NetRateDetailData, NetPacketDetailData
+
+
+
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 11 次发布
+
+发布时间：2023-09-12 01:32:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainAssetVO](https://cloud.tencent.com/document/api/664/90825#DomainAssetVO)
+
+	* 新增成员：BotAccessCount
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 114 次发布
+
+发布时间：2023-09-12 01:51:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [ComponentLimit](https://cloud.tencent.com/document/api/1323/70369#ComponentLimit)
+
+修改数据结构：
+
+* [ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo)
+
+	* 新增成员：AddSignComponentsLimits
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 109 次发布
+
+发布时间：2023-09-12 01:52:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [ComponentLimit](https://cloud.tencent.com/document/api/1420/61525#ComponentLimit)
+
+修改数据结构：
+
+* [CommonFlowApprover](https://cloud.tencent.com/document/api/1420/61525#CommonFlowApprover)
+
+	* 新增成员：ApproverVerifyTypes, ApproverSignTypes
+
+* [Component](https://cloud.tencent.com/document/api/1420/61525#Component)
+
+	* 新增成员：LockComponentValue, ForbidMoveAndDelete
+
+* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
+
+	* 新增成员：AddSignComponentsLimits
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 42 次发布
+
+发布时间：2023-09-12 02:07:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateDocument](https://cloud.tencent.com/document/api/1639/81421)
+
+	* 新增入参：AutoHandleUnsupportedElement
+
+
+
+
+## 医疗报告结构化(mrs) 版本：2020-09-10
+
+### 第 17 次发布
+
+发布时间：2023-09-11 11:36:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [TurnPDFToObject](https://cloud.tencent.com/document/api/1314/97928)
+
+新增数据结构：
+
+* [Block](https://cloud.tencent.com/document/api/1314/56230#Block)
+* [BloodPressureItem](https://cloud.tencent.com/document/api/1314/56230#BloodPressureItem)
+* [ChestCircumferenceItem](https://cloud.tencent.com/document/api/1314/56230#ChestCircumferenceItem)
+* [GeneralExaminationBaseItem](https://cloud.tencent.com/document/api/1314/56230#GeneralExaminationBaseItem)
+* [GeneralExaminationBriefSummary](https://cloud.tencent.com/document/api/1314/56230#GeneralExaminationBriefSummary)
+* [GeneralExaminationOthers](https://cloud.tencent.com/document/api/1314/56230#GeneralExaminationOthers)
+* [GeneralExaminationVitalSign](https://cloud.tencent.com/document/api/1314/56230#GeneralExaminationVitalSign)
+* [GeneralExaminationVitalSignBloodPressure](https://cloud.tencent.com/document/api/1314/56230#GeneralExaminationVitalSignBloodPressure)
+* [GynaecologyAdnexal](https://cloud.tencent.com/document/api/1314/56230#GynaecologyAdnexal)
+* [GynaecologyBaseItem](https://cloud.tencent.com/document/api/1314/56230#GynaecologyBaseItem)
+* [GynaecologyBriefSummary](https://cloud.tencent.com/document/api/1314/56230#GynaecologyBriefSummary)
+* [GynaecologyCervix](https://cloud.tencent.com/document/api/1314/56230#GynaecologyCervix)
+* [GynaecologyMenstrualHistory](https://cloud.tencent.com/document/api/1314/56230#GynaecologyMenstrualHistory)
+* [GynaecologyPelvicCavity](https://cloud.tencent.com/document/api/1314/56230#GynaecologyPelvicCavity)
+* [GynaecologyUterus](https://cloud.tencent.com/document/api/1314/56230#GynaecologyUterus)
+* [GynaecologyVagina](https://cloud.tencent.com/document/api/1314/56230#GynaecologyVagina)
+* [GynaecologyVulva](https://cloud.tencent.com/document/api/1314/56230#GynaecologyVulva)
+* [HearingItem](https://cloud.tencent.com/document/api/1314/56230#HearingItem)
+* [InternalMedicineAbdomen](https://cloud.tencent.com/document/api/1314/56230#InternalMedicineAbdomen)
+* [InternalMedicineAbdomenGallBladder](https://cloud.tencent.com/document/api/1314/56230#InternalMedicineAbdomenGallBladder)
+* [InternalMedicineAbdomenKidney](https://cloud.tencent.com/document/api/1314/56230#InternalMedicineAbdomenKidney)
+* [InternalMedicineAbdomenLiver](https://cloud.tencent.com/document/api/1314/56230#InternalMedicineAbdomenLiver)
+* [InternalMedicineAbdomenPancreas](https://cloud.tencent.com/document/api/1314/56230#InternalMedicineAbdomenPancreas)
+* [InternalMedicineAbdomenSpleen](https://cloud.tencent.com/document/api/1314/56230#InternalMedicineAbdomenSpleen)
+* [InternalMedicineBaseItem](https://cloud.tencent.com/document/api/1314/56230#InternalMedicineBaseItem)
+* [InternalMedicineBriefSummary](https://cloud.tencent.com/document/api/1314/56230#InternalMedicineBriefSummary)
+* [InternalMedicineHeart](https://cloud.tencent.com/document/api/1314/56230#InternalMedicineHeart)
+* [InternalMedicineRespiratorySystem](https://cloud.tencent.com/document/api/1314/56230#InternalMedicineRespiratorySystem)
+* [InternalMedicineVessel](https://cloud.tencent.com/document/api/1314/56230#InternalMedicineVessel)
+* [KeyValueItem](https://cloud.tencent.com/document/api/1314/56230#KeyValueItem)
+* [OphthalmologyBareEyeSight](https://cloud.tencent.com/document/api/1314/56230#OphthalmologyBareEyeSight)
+* [OphthalmologyBaseItem](https://cloud.tencent.com/document/api/1314/56230#OphthalmologyBaseItem)
+* [OphthalmologyBriefSummary](https://cloud.tencent.com/document/api/1314/56230#OphthalmologyBriefSummary)
+* [OphthalmologyColourVision](https://cloud.tencent.com/document/api/1314/56230#OphthalmologyColourVision)
+* [OphthalmologyCorrectedVisualAcuity](https://cloud.tencent.com/document/api/1314/56230#OphthalmologyCorrectedVisualAcuity)
+* [OphthalmologyFundoscopy](https://cloud.tencent.com/document/api/1314/56230#OphthalmologyFundoscopy)
+* [OtolaryngologyBaseItem](https://cloud.tencent.com/document/api/1314/56230#OtolaryngologyBaseItem)
+* [OtolaryngologyBriefSummary](https://cloud.tencent.com/document/api/1314/56230#OtolaryngologyBriefSummary)
+* [OtolaryngologyEar](https://cloud.tencent.com/document/api/1314/56230#OtolaryngologyEar)
+* [OtolaryngologyLarynx](https://cloud.tencent.com/document/api/1314/56230#OtolaryngologyLarynx)
+* [OtolaryngologyNose](https://cloud.tencent.com/document/api/1314/56230#OtolaryngologyNose)
+* [PdfInfo](https://cloud.tencent.com/document/api/1314/56230#PdfInfo)
+* [PhysicalBaseItem](https://cloud.tencent.com/document/api/1314/56230#PhysicalBaseItem)
+* [PhysicalExamination](https://cloud.tencent.com/document/api/1314/56230#PhysicalExamination)
+* [PhysicalExaminationV1](https://cloud.tencent.com/document/api/1314/56230#PhysicalExaminationV1)
+* [StomatologyBaseItem](https://cloud.tencent.com/document/api/1314/56230#StomatologyBaseItem)
+* [StomatologyBriefSummary](https://cloud.tencent.com/document/api/1314/56230#StomatologyBriefSummary)
+* [StomatologyGingiva](https://cloud.tencent.com/document/api/1314/56230#StomatologyGingiva)
+* [StomatologyPeriodontics](https://cloud.tencent.com/document/api/1314/56230#StomatologyPeriodontics)
+* [StomatologyToothDecay](https://cloud.tencent.com/document/api/1314/56230#StomatologyToothDecay)
+* [SurgeryAnorectal](https://cloud.tencent.com/document/api/1314/56230#SurgeryAnorectal)
+* [SurgeryBaseItem](https://cloud.tencent.com/document/api/1314/56230#SurgeryBaseItem)
+* [SurgeryBreast](https://cloud.tencent.com/document/api/1314/56230#SurgeryBreast)
+* [SurgeryBriefSummary](https://cloud.tencent.com/document/api/1314/56230#SurgeryBriefSummary)
+* [SurgeryHeadNeck](https://cloud.tencent.com/document/api/1314/56230#SurgeryHeadNeck)
+* [SurgeryLymphNode](https://cloud.tencent.com/document/api/1314/56230#SurgeryLymphNode)
+* [SurgerySkin](https://cloud.tencent.com/document/api/1314/56230#SurgerySkin)
+* [SurgerySpinalExtremities](https://cloud.tencent.com/document/api/1314/56230#SurgerySpinalExtremities)
+* [SurgeryThyroid](https://cloud.tencent.com/document/api/1314/56230#SurgeryThyroid)
+* [SurgeryUrogenitalSystem](https://cloud.tencent.com/document/api/1314/56230#SurgeryUrogenitalSystem)
+* [TextTypeListBlock](https://cloud.tencent.com/document/api/1314/56230#TextTypeListBlock)
+* [ValueUnitItem](https://cloud.tencent.com/document/api/1314/56230#ValueUnitItem)
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 111 次发布
+
+发布时间：2023-09-12 02:18:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DriverLicenseOCR](https://cloud.tencent.com/document/api/866/36213)
+
+	* 新增出参：CurrentTime, GenerateTime
+
+
+
+
+## 邮件推送(ses) 版本：2020-10-02
+
+### 第 19 次发布
+
+发布时间：2023-09-12 02:25:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ListReceiverDetails](https://cloud.tencent.com/document/api/1288/97935)
+
+新增数据结构：
+
+* [ReceiverDetail](https://cloud.tencent.com/document/api/1288/51053#ReceiverDetail)
+
+
+
+## 安全运营中心(ssa) 版本：2018-06-08
+
+### 第 19 次发布
+
+发布时间：2023-09-12 02:29:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAlarmStat](https://cloud.tencent.com/document/api/664/97936)
+
+新增数据结构：
+
+* [AlarmInfoRsp](https://cloud.tencent.com/document/api/664/51406#AlarmInfoRsp)
+* [AttackEvent](https://cloud.tencent.com/document/api/664/51406#AttackEvent)
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 43 次发布
+
+发布时间：2023-09-12 02:29:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeHostTeoInstanceList](https://cloud.tencent.com/document/api/400/91655)
+
+	* 新增入参：Offset, Limit, AsyncCache
+
+
+修改数据结构：
+
+* [Certificates](https://cloud.tencent.com/document/api/400/41679#Certificates)
+
+	* 新增成员：HostingStatus, HostingCompleteTime, HostingRenewCertId
+
+
+
+
+## 消息队列 RocketMQ 版(trocket) 版本：2023-03-08
+
+### 第 3 次发布
+
+发布时间：2023-09-12 02:49:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateConsumerGroup](https://cloud.tencent.com/document/api/1493/97943)
+* [CreateTopic](https://cloud.tencent.com/document/api/1493/97947)
+* [DeleteConsumerGroup](https://cloud.tencent.com/document/api/1493/97942)
+* [DeleteTopic](https://cloud.tencent.com/document/api/1493/97946)
+* [DescribeConsumerGroup](https://cloud.tencent.com/document/api/1493/97941)
+* [DescribeTopic](https://cloud.tencent.com/document/api/1493/97945)
+* [DescribeTopicStatsOp](https://cloud.tencent.com/document/api/1493/97938)
+* [ModifyConsumerGroup](https://cloud.tencent.com/document/api/1493/97940)
+* [ModifyTopic](https://cloud.tencent.com/document/api/1493/97944)
+
+新增数据结构：
+
+* [SubscriptionData](https://cloud.tencent.com/document/api/1493/96031#SubscriptionData)
+
+
+
+## 微服务平台 TSF(tsf) 版本：2018-03-26
+
+### 第 99 次发布
+
+发布时间：2023-09-12 02:52:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDeliveryConfigs](https://cloud.tencent.com/document/api/649/75774)
+
+	* 新增入参：ProgramIdList, ConfigIdList
+
+* [DescribeGatewayApis](https://cloud.tencent.com/document/api/649/63178)
+
+	* 新增入参：ReleaseStatus
+
+* [DescribeGroupsWithPlugin](https://cloud.tencent.com/document/api/649/53936)
+
+	* <font color="#dd0000">**修改入参**：</font>Bound
+
+* [DescribeLaneRules](https://cloud.tencent.com/document/api/649/44505)
+
+	* <font color="#dd0000">**修改入参**：</font>Limit, Offset
+
+* [DescribePluginInstances](https://cloud.tencent.com/document/api/649/53935)
+
+	* <font color="#dd0000">**修改入参**：</font>Bound
+
+
+修改数据结构：
+
+* [GatewayPluginBoundParam](https://cloud.tencent.com/document/api/649/36099#GatewayPluginBoundParam)
+
+	* 新增成员：MicroserviceId, GatewayInstanceId
+
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 165 次发布
+
+发布时间：2023-09-12 02:56:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDomainVerifyRecord](https://cloud.tencent.com/document/api/266/97950)
+* [VerifyDomainOwnershipForConsole](https://cloud.tencent.com/document/api/266/97949)
+* [VerifyDomainRecord](https://cloud.tencent.com/document/api/266/97948)
+
+新增数据结构：
+
+* [DNSVerifyInfo](https://cloud.tencent.com/document/api/266/31773#DNSVerifyInfo)
+* [FileVerifyInfo](https://cloud.tencent.com/document/api/266/31773#FileVerifyInfo)
+
+修改数据结构：
+
+* [TerrorismConfigureInfo](https://cloud.tencent.com/document/api/266/31773#TerrorismConfigureInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>OcrReviewInfo
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 169 次发布
+
+发布时间：2023-09-12 02:59:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAddressTemplateGroups](https://cloud.tencent.com/document/api/215/16716)
+
+	* 新增入参：NeedMemberInfo
+
+* [DescribeAddressTemplates](https://cloud.tencent.com/document/api/215/16717)
+
+	* 新增入参：NeedMemberInfo
+
+* [DescribeServiceTemplateGroups](https://cloud.tencent.com/document/api/215/16718)
+
+	* 新增入参：NeedMemberInfo
+
+* [DescribeServiceTemplates](https://cloud.tencent.com/document/api/215/16719)
+
+	* 新增入参：NeedMemberInfo
+
+
+
+
 # Release v1.0.745
 
 ## 云防火墙(cfw) 版本：2019-09-04

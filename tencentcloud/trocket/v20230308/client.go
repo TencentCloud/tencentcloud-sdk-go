@@ -45,6 +45,58 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewCreateConsumerGroupRequest() (request *CreateConsumerGroupRequest) {
+    request = &CreateConsumerGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "CreateConsumerGroup")
+    
+    
+    return
+}
+
+func NewCreateConsumerGroupResponse() (response *CreateConsumerGroupResponse) {
+    response = &CreateConsumerGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateConsumerGroup
+// 创建消费组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (response *CreateConsumerGroupResponse, err error) {
+    return c.CreateConsumerGroupWithContext(context.Background(), request)
+}
+
+// CreateConsumerGroup
+// 创建消费组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateConsumerGroupWithContext(ctx context.Context, request *CreateConsumerGroupRequest) (response *CreateConsumerGroupResponse, err error) {
+    if request == nil {
+        request = NewCreateConsumerGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateConsumerGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateConsumerGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateInstanceRequest() (request *CreateInstanceRequest) {
     request = &CreateInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -89,6 +141,114 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     request.SetContext(ctx)
     
     response = NewCreateInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateTopicRequest() (request *CreateTopicRequest) {
+    request = &CreateTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "CreateTopic")
+    
+    
+    return
+}
+
+func NewCreateTopicResponse() (response *CreateTopicResponse) {
+    response = &CreateTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateTopic
+// 创建主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  LIMITEXCEEDED_TOPICNUM = "LimitExceeded.TopicNum"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateTopic(request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
+    return c.CreateTopicWithContext(context.Background(), request)
+}
+
+// CreateTopic
+// 创建主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  LIMITEXCEEDED_TOPICNUM = "LimitExceeded.TopicNum"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateTopicWithContext(ctx context.Context, request *CreateTopicRequest) (response *CreateTopicResponse, err error) {
+    if request == nil {
+        request = NewCreateTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteConsumerGroupRequest() (request *DeleteConsumerGroupRequest) {
+    request = &DeleteConsumerGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DeleteConsumerGroup")
+    
+    
+    return
+}
+
+func NewDeleteConsumerGroupResponse() (response *DeleteConsumerGroupResponse) {
+    response = &DeleteConsumerGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteConsumerGroup
+// 删除消费组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_GROUP = "ResourceNotFound.Group"
+func (c *Client) DeleteConsumerGroup(request *DeleteConsumerGroupRequest) (response *DeleteConsumerGroupResponse, err error) {
+    return c.DeleteConsumerGroupWithContext(context.Background(), request)
+}
+
+// DeleteConsumerGroup
+// 删除消费组
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_GROUP = "ResourceNotFound.Group"
+func (c *Client) DeleteConsumerGroupWithContext(ctx context.Context, request *DeleteConsumerGroupRequest) (response *DeleteConsumerGroupResponse, err error) {
+    if request == nil {
+        request = NewDeleteConsumerGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteConsumerGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteConsumerGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -141,6 +301,102 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
     request.SetContext(ctx)
     
     response = NewDeleteInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteTopicRequest() (request *DeleteTopicRequest) {
+    request = &DeleteTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DeleteTopic")
+    
+    
+    return
+}
+
+func NewDeleteTopicResponse() (response *DeleteTopicResponse) {
+    response = &DeleteTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteTopic
+// 删除主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteTopic(request *DeleteTopicRequest) (response *DeleteTopicResponse, err error) {
+    return c.DeleteTopicWithContext(context.Background(), request)
+}
+
+// DeleteTopic
+// 删除主题
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteTopicWithContext(ctx context.Context, request *DeleteTopicRequest) (response *DeleteTopicResponse, err error) {
+    if request == nil {
+        request = NewDeleteTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeConsumerGroupRequest() (request *DescribeConsumerGroupRequest) {
+    request = &DescribeConsumerGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeConsumerGroup")
+    
+    
+    return
+}
+
+func NewDescribeConsumerGroupResponse() (response *DescribeConsumerGroupResponse) {
+    response = &DescribeConsumerGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeConsumerGroup
+// 查询消费组详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_GROUP = "ResourceNotFound.Group"
+func (c *Client) DescribeConsumerGroup(request *DescribeConsumerGroupRequest) (response *DescribeConsumerGroupResponse, err error) {
+    return c.DescribeConsumerGroupWithContext(context.Background(), request)
+}
+
+// DescribeConsumerGroup
+// 查询消费组详情
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_GROUP = "ResourceNotFound.Group"
+func (c *Client) DescribeConsumerGroupWithContext(ctx context.Context, request *DescribeConsumerGroupRequest) (response *DescribeConsumerGroupResponse, err error) {
+    if request == nil {
+        request = NewDescribeConsumerGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeConsumerGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeConsumerGroupResponse()
     err = c.Send(request, response)
     return
 }
@@ -265,6 +521,64 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribeTopicRequest() (request *DescribeTopicRequest) {
+    request = &DescribeTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeTopic")
+    
+    
+    return
+}
+
+func NewDescribeTopicResponse() (response *DescribeTopicResponse) {
+    response = &DescribeTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTopic
+// 查询主题详情，Offset和Limit参数是指订阅该主题的消费组查询分页参数，Filter参数使用说明如下：
+//
+// 
+//
+// ConsumerGroup，消费组名称过滤
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DescribeTopic(request *DescribeTopicRequest) (response *DescribeTopicResponse, err error) {
+    return c.DescribeTopicWithContext(context.Background(), request)
+}
+
+// DescribeTopic
+// 查询主题详情，Offset和Limit参数是指订阅该主题的消费组查询分页参数，Filter参数使用说明如下：
+//
+// 
+//
+// ConsumerGroup，消费组名称过滤
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+//  RESOURCENOTFOUND_TOPIC = "ResourceNotFound.Topic"
+func (c *Client) DescribeTopicWithContext(ctx context.Context, request *DescribeTopicRequest) (response *DescribeTopicResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopicResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeTopicListRequest() (request *DescribeTopicListRequest) {
     request = &DescribeTopicListRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -325,6 +639,102 @@ func (c *Client) DescribeTopicListWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeTopicStatsOpRequest() (request *DescribeTopicStatsOpRequest) {
+    request = &DescribeTopicStatsOpRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeTopicStatsOp")
+    
+    
+    return
+}
+
+func NewDescribeTopicStatsOpResponse() (response *DescribeTopicStatsOpResponse) {
+    response = &DescribeTopicStatsOpResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTopicStatsOp
+// 运营端查询topicStata
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeTopicStatsOp(request *DescribeTopicStatsOpRequest) (response *DescribeTopicStatsOpResponse, err error) {
+    return c.DescribeTopicStatsOpWithContext(context.Background(), request)
+}
+
+// DescribeTopicStatsOp
+// 运营端查询topicStata
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) DescribeTopicStatsOpWithContext(ctx context.Context, request *DescribeTopicStatsOpRequest) (response *DescribeTopicStatsOpResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopicStatsOpRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopicStatsOp require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopicStatsOpResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyConsumerGroupRequest() (request *ModifyConsumerGroupRequest) {
+    request = &ModifyConsumerGroupRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ModifyConsumerGroup")
+    
+    
+    return
+}
+
+func NewModifyConsumerGroupResponse() (response *ModifyConsumerGroupResponse) {
+    response = &ModifyConsumerGroupResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyConsumerGroup
+// 修改消费组属性
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) ModifyConsumerGroup(request *ModifyConsumerGroupRequest) (response *ModifyConsumerGroupResponse, err error) {
+    return c.ModifyConsumerGroupWithContext(context.Background(), request)
+}
+
+// ModifyConsumerGroup
+// 修改消费组属性
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
+func (c *Client) ModifyConsumerGroupWithContext(ctx context.Context, request *ModifyConsumerGroupRequest) (response *ModifyConsumerGroupResponse, err error) {
+    if request == nil {
+        request = NewModifyConsumerGroupRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyConsumerGroup require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyConsumerGroupResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
     request = &ModifyInstanceRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -373,6 +783,54 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     request.SetContext(ctx)
     
     response = NewModifyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyTopicRequest() (request *ModifyTopicRequest) {
+    request = &ModifyTopicRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ModifyTopic")
+    
+    
+    return
+}
+
+func NewModifyTopicResponse() (response *ModifyTopicResponse) {
+    response = &ModifyTopicResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyTopic
+// 修改主题属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyTopic(request *ModifyTopicRequest) (response *ModifyTopicResponse, err error) {
+    return c.ModifyTopicWithContext(context.Background(), request)
+}
+
+// ModifyTopic
+// 修改主题属性
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyTopicWithContext(ctx context.Context, request *ModifyTopicRequest) (response *ModifyTopicResponse, err error) {
+    if request == nil {
+        request = NewModifyTopicRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyTopic require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyTopicResponse()
     err = c.Send(request, response)
     return
 }

@@ -1439,6 +1439,12 @@ type DriverLicenseOCRResponseParams struct {
 	// 累积记分（仅电子驾驶证支持返回该字段）
 	CumulativeScore *string `json:"CumulativeScore,omitnil" name:"CumulativeScore"`
 
+	// 当前时间（仅电子驾驶证支持返回该字段）
+	CurrentTime *string `json:"CurrentTime,omitnil" name:"CurrentTime"`
+
+	// 生成时间（仅电子驾驶证支持返回该字段）
+	GenerateTime *string `json:"GenerateTime,omitnil" name:"GenerateTime"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }

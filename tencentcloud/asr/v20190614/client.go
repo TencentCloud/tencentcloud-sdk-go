@@ -238,6 +238,7 @@ func NewCreateAsyncRecognitionTaskResponse() (response *CreateAsyncRecognitionTa
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  FAILEDOPERATION_USERHASNOAMOUNT = "FailedOperation.UserHasNoAmount"
 //  FAILEDOPERATION_USERHASNOFREEAMOUNT = "FailedOperation.UserHasNoFreeAmount"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"
@@ -265,6 +266,7 @@ func (c *Client) CreateAsyncRecognitionTask(request *CreateAsyncRecognitionTaskR
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  FAILEDOPERATION_USERHASNOAMOUNT = "FailedOperation.UserHasNoAmount"
 //  FAILEDOPERATION_USERHASNOFREEAMOUNT = "FailedOperation.UserHasNoFreeAmount"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR_FAILACCESSDATABASE = "InternalError.FailAccessDatabase"

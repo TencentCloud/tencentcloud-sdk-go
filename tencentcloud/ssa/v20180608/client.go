@@ -45,6 +45,48 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewDescribeAlarmStatRequest() (request *DescribeAlarmStatRequest) {
+    request = &DescribeAlarmStatRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssa", APIVersion, "DescribeAlarmStat")
+    
+    
+    return
+}
+
+func NewDescribeAlarmStatResponse() (response *DescribeAlarmStatResponse) {
+    response = &DescribeAlarmStatResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAlarmStat
+// 安全大屏-用户威胁告警信息
+func (c *Client) DescribeAlarmStat(request *DescribeAlarmStatRequest) (response *DescribeAlarmStatResponse, err error) {
+    return c.DescribeAlarmStatWithContext(context.Background(), request)
+}
+
+// DescribeAlarmStat
+// 安全大屏-用户威胁告警信息
+func (c *Client) DescribeAlarmStatWithContext(ctx context.Context, request *DescribeAlarmStatRequest) (response *DescribeAlarmStatResponse, err error) {
+    if request == nil {
+        request = NewDescribeAlarmStatRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAlarmStat require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAlarmStatResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAssetDetailRequest() (request *DescribeAssetDetailRequest) {
     request = &DescribeAssetDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},

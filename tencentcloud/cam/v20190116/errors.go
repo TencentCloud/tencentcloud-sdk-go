@@ -128,6 +128,9 @@ const (
 	// 多因子Token验证失败。
 	INVALIDPARAMETER_MFATOKENERROR = "InvalidParameter.MFATokenError"
 
+	// 名字或者id号错误。
+	INVALIDPARAMETER_NAMEORIDCARDERROR = "InvalidParameter.NameOrIdCardError"
+
 	// CAM不支持策略文档中所指定的资源类型。
 	INVALIDPARAMETER_NOTSUPPORTPRODUCT = "InvalidParameter.NotSupportProduct"
 

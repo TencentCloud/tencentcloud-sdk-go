@@ -2444,7 +2444,9 @@ func NewCreateFlowSignUrlResponse() (response *CreateFlowSignUrlResponse) {
 //
 // `2. 该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件，不支持填写控件 。` <br/>
 //
-// `3. 该接口返回的签署链接是用于APP集成的场景，支持APP打开或浏览器直接打开，不支持微信小程序嵌入`。<br/>
+// `3. 该签署链接有效期为30分钟，过期后将失效，如需签署可重新创建签署链接 。` <br/>
+//
+// `4. 该接口返回的签署链接是用于APP集成的场景，支持APP打开或浏览器直接打开，不支持微信小程序嵌入`。<br/>
 //
 // 跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
 //
@@ -2476,7 +2478,9 @@ func (c *Client) CreateFlowSignUrl(request *CreateFlowSignUrlRequest) (response 
 //
 // `2. 该接口可生成签署链接的C端签署人必须仅有手写签名和时间类型的签署控件，不支持填写控件 。` <br/>
 //
-// `3. 该接口返回的签署链接是用于APP集成的场景，支持APP打开或浏览器直接打开，不支持微信小程序嵌入`。<br/>
+// `3. 该签署链接有效期为30分钟，过期后将失效，如需签署可重新创建签署链接 。` <br/>
+//
+// `4. 该接口返回的签署链接是用于APP集成的场景，支持APP打开或浏览器直接打开，不支持微信小程序嵌入`。<br/>
 //
 // 跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
 //
@@ -3040,7 +3044,19 @@ func NewCreatePersonAuthCertificateImageResponse() (response *CreatePersonAuthCe
 }
 
 // CreatePersonAuthCertificateImage
-// 本接口（CreatePersonAuthCertificateImage）用于创建个人用户证书证明图片
+// 获取个人用户认证证书图片下载URL
+//
+// 
+//
+// 个人用户认证证书图片样式如下图
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/CreatePersonAuthCertificateImage.png)
+//
+// 
+//
+// 注:  `只能获取个人用户证明图片, 企业员工的暂不支持`
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -3049,7 +3065,19 @@ func (c *Client) CreatePersonAuthCertificateImage(request *CreatePersonAuthCerti
 }
 
 // CreatePersonAuthCertificateImage
-// 本接口（CreatePersonAuthCertificateImage）用于创建个人用户证书证明图片
+// 获取个人用户认证证书图片下载URL
+//
+// 
+//
+// 个人用户认证证书图片样式如下图
+//
+// 
+//
+// ![image](https://dyn.ess.tencent.cn/guide/capi/CreatePersonAuthCertificateImage.png)
+//
+// 
+//
+// 注:  `只能获取个人用户证明图片, 企业员工的暂不支持`
 //
 // 可能返回的错误码:
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -3342,21 +3370,25 @@ func NewCreateReleaseFlowResponse() (response *CreateReleaseFlowResponse) {
 }
 
 // CreateReleaseFlow
-// 发起解除协议，主要应用场景为：基于一份已经签署的合同(签署流程)，进行解除操作。
+// 发起解除协议的主要应用场景为：基于一份已经签署的合同（签署流程），进行解除操作。
+//
+// 解除协议的模板是官方提供 ，经过提供法务审核，暂不支持自定义。
 //
 // 
 //
-// `注意：原合同必须签署完成后，才能发起解除协议。` <br/>
+// 注意：
 //
-// `注意：只有原合同企业类型的参与人才能发起解除协议，个人不能发起解除协议。`<br/>
+// <ul><li><code>原合同必须签署完</code>成后才能发起解除协议。</li>
 //
-// `注意：原合同个人类型参与人必须是解除协议的参与人，不能更换其他第三方个人参与解除协议。`<br/>
+// <li>只有原合同企业类型的参与人才能发起解除协议，<code>个人参与方不能发起解除协议</code>。</li>
 //
-// `注意：如果原合同企业参与人无法参与解除协议，可以指定同企业具有同等权限的企业员工代为处理。`<br/>
+// <li>原合同个人类型参与人必须是解除协议的参与人，<code>不能更换其他第三方个人</code>参与解除协议。</li>
 //
-// `注意：发起解除协议同发起其他企业合同一样，也会参与合同扣费，扣费标准同其他类型合同。`<br/>
+// <li>如果原合同企业参与人无法参与解除协议，可以指定同企业具有同等权限的<code>企业员工代为处理</code>。</li>
 //
-// `注意：在解除协议发起之后，原合同的状态将转变为解除中。一旦解除协议签署完毕，原合同及解除协议均会转变为已解除状态。`<br/>
+// <li>发起解除协议同发起其他企业合同一样，也会参与合同<code>扣费</code>，扣费标准同其他类型合同。</li>
+//
+// <li>在解除协议发起之后，原合同的状态将转变为解除中。一旦解除协议签署完毕，原合同及解除协议均变为已解除状态。</li></ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3432,21 +3464,25 @@ func (c *Client) CreateReleaseFlow(request *CreateReleaseFlowRequest) (response 
 }
 
 // CreateReleaseFlow
-// 发起解除协议，主要应用场景为：基于一份已经签署的合同(签署流程)，进行解除操作。
+// 发起解除协议的主要应用场景为：基于一份已经签署的合同（签署流程），进行解除操作。
+//
+// 解除协议的模板是官方提供 ，经过提供法务审核，暂不支持自定义。
 //
 // 
 //
-// `注意：原合同必须签署完成后，才能发起解除协议。` <br/>
+// 注意：
 //
-// `注意：只有原合同企业类型的参与人才能发起解除协议，个人不能发起解除协议。`<br/>
+// <ul><li><code>原合同必须签署完</code>成后才能发起解除协议。</li>
 //
-// `注意：原合同个人类型参与人必须是解除协议的参与人，不能更换其他第三方个人参与解除协议。`<br/>
+// <li>只有原合同企业类型的参与人才能发起解除协议，<code>个人参与方不能发起解除协议</code>。</li>
 //
-// `注意：如果原合同企业参与人无法参与解除协议，可以指定同企业具有同等权限的企业员工代为处理。`<br/>
+// <li>原合同个人类型参与人必须是解除协议的参与人，<code>不能更换其他第三方个人</code>参与解除协议。</li>
 //
-// `注意：发起解除协议同发起其他企业合同一样，也会参与合同扣费，扣费标准同其他类型合同。`<br/>
+// <li>如果原合同企业参与人无法参与解除协议，可以指定同企业具有同等权限的<code>企业员工代为处理</code>。</li>
 //
-// `注意：在解除协议发起之后，原合同的状态将转变为解除中。一旦解除协议签署完毕，原合同及解除协议均会转变为已解除状态。`<br/>
+// <li>发起解除协议同发起其他企业合同一样，也会参与合同<code>扣费</code>，扣费标准同其他类型合同。</li>
+//
+// <li>在解除协议发起之后，原合同的状态将转变为解除中。一旦解除协议签署完毕，原合同及解除协议均变为已解除状态。</li></ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4396,7 +4432,9 @@ func NewDescribeFlowBriefsResponse() (response *DescribeFlowBriefsResponse) {
 //
 // 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
 //
-// 每个企业限制日调用量限制：100W，当日超过此限制后再调用接口返回错误
+// 
+//
+// 注: `每个企业限制日调用量限制：100W，当日超过此限制后再调用接口返回错误`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4443,7 +4481,9 @@ func (c *Client) DescribeFlowBriefs(request *DescribeFlowBriefsRequest) (respons
 //
 // 适用场景：可用于主动查询某个合同流程的签署状态信息。可以配合回调通知使用。
 //
-// 每个企业限制日调用量限制：100W，当日超过此限制后再调用接口返回错误
+// 
+//
+// 注: `每个企业限制日调用量限制：100W，当日超过此限制后再调用接口返回错误`
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5242,7 +5282,21 @@ func NewDescribeThirdPartyAuthCodeResponse() (response *DescribeThirdPartyAuthCo
 }
 
 // DescribeThirdPartyAuthCode
-// 通过AuthCode查询用户是否实名
+// 通过AuthCode查询个人用户是否实名
+//
+// 
+//
+// 
+//
+// 注意: 
+//
+// <ul>
+//
+// <li>此接口为合作引流场景使用，使用`有白名单限制`，使用前请联系对接的客户经理沟通。</li>
+//
+// <li>`AuthCode 只能使用一次`，查询一次再次查询会返回错误</li>
+//
+// </ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5259,7 +5313,21 @@ func (c *Client) DescribeThirdPartyAuthCode(request *DescribeThirdPartyAuthCodeR
 }
 
 // DescribeThirdPartyAuthCode
-// 通过AuthCode查询用户是否实名
+// 通过AuthCode查询个人用户是否实名
+//
+// 
+//
+// 
+//
+// 注意: 
+//
+// <ul>
+//
+// <li>此接口为合作引流场景使用，使用`有白名单限制`，使用前请联系对接的客户经理沟通。</li>
+//
+// <li>`AuthCode 只能使用一次`，查询一次再次查询会返回错误</li>
+//
+// </ul>
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

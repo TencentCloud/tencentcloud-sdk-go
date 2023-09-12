@@ -2941,12 +2941,6 @@ func NewDescribeHASwitchLogResponse() (response *DescribeHASwitchLogResponse) {
 // 本接口(DescribeHASwitchLog)用于手动主备切换。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeHASwitchLog(request *DescribeHASwitchLogRequest) (response *DescribeHASwitchLogResponse, err error) {
     return c.DescribeHASwitchLogWithContext(context.Background(), request)
@@ -2956,12 +2950,6 @@ func (c *Client) DescribeHASwitchLog(request *DescribeHASwitchLogRequest) (respo
 // 本接口(DescribeHASwitchLog)用于手动主备切换。
 //
 // 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeHASwitchLogWithContext(ctx context.Context, request *DescribeHASwitchLogRequest) (response *DescribeHASwitchLogResponse, err error) {
     if request == nil {
@@ -7201,19 +7189,6 @@ func NewSwitchCloudInstanceHAResponse() (response *SwitchCloudInstanceHAResponse
 // 本接口(SwitchCloudInstanceHA)用于手动主备切换。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
-//  INTERNALERROR_DBCONNECTERROR = "InternalError.DBConnectError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
-//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
-//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
-//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) SwitchCloudInstanceHA(request *SwitchCloudInstanceHARequest) (response *SwitchCloudInstanceHAResponse, err error) {
     return c.SwitchCloudInstanceHAWithContext(context.Background(), request)
@@ -7223,19 +7198,6 @@ func (c *Client) SwitchCloudInstanceHA(request *SwitchCloudInstanceHARequest) (r
 // 本接口(SwitchCloudInstanceHA)用于手动主备切换。
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
-//  INTERNALERROR = "InternalError"
-//  INTERNALERROR_CREATEFLOWFAILED = "InternalError.CreateFlowFailed"
-//  INTERNALERROR_DBCONNECTERROR = "InternalError.DBConnectError"
-//  INTERNALERROR_DBERROR = "InternalError.DBError"
-//  INTERNALERROR_GCSERROR = "InternalError.GcsError"
-//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
-//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
-//  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
-//  RESOURCENOTFOUND_DBNOTFOUND = "ResourceNotFound.DBNotFound"
-//  RESOURCEUNAVAILABLE_DBINVALIDSTATUS = "ResourceUnavailable.DBInvalidStatus"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) SwitchCloudInstanceHAWithContext(ctx context.Context, request *SwitchCloudInstanceHARequest) (response *SwitchCloudInstanceHAResponse, err error) {
     if request == nil {

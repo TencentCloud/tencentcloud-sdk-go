@@ -5487,6 +5487,7 @@ func NewDescribeBaselinePolicyListResponse() (response *DescribeBaselinePolicyLi
 // 获取基线策略列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBaselinePolicyList(request *DescribeBaselinePolicyListRequest) (response *DescribeBaselinePolicyListResponse, err error) {
@@ -5497,6 +5498,7 @@ func (c *Client) DescribeBaselinePolicyList(request *DescribeBaselinePolicyListR
 // 获取基线策略列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBaselinePolicyListWithContext(ctx context.Context, request *DescribeBaselinePolicyListRequest) (response *DescribeBaselinePolicyListResponse, err error) {
