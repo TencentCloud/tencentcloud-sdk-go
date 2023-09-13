@@ -4220,7 +4220,8 @@ func (r *CreateFlowsByTemplatesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSealByImageRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 印章名称，最大长度不超过50字符
@@ -4233,12 +4234,42 @@ type CreateSealByImageRequestParams struct {
 	//
 	// Deprecated: Operator is deprecated.
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 本接口支持上传图片印章及系统直接生成印章； 如果要使用系统生成印章，此值传：SealGenerateSourceSystem； 如果要使用图片上传请传字段 SealImage
+	GenerateSource *string `json:"GenerateSource,omitnil" name:"GenerateSource"`
+
+	// 电子印章类型：
+	// <ul><li>OFFICIAL-公章</li>
+	// <li>CONTRACT-合同专用章;</li>
+	// <li>FINANCE-合财务专用章;</li>
+	// <li>PERSONNEL-人事专用章
+	// </li>
+	// <li>默认：OFFICIAL</li>
+	// <ul>
+	SealType *string `json:"SealType,omitnil" name:"SealType"`
+
+	// 企业印章横向文字，最多可填15个汉字（若超过印章最大宽度，优先压缩字间距，其次缩小字号
+	SealHorizontalText *string `json:"SealHorizontalText,omitnil" name:"SealHorizontalText"`
+
+	// 印章样式:
+	// 
+	// <ul><li>cycle:圆形印章</li>
+	// <li>ellipse:椭圆印章</li>
+	// <li> 注：默认圆形印章</li></ul>
+	SealStyle *string `json:"SealStyle,omitnil" name:"SealStyle"`
+
+	// 印章尺寸取值描述：<ul><li> 42_42 圆形企业公章直径42mm</li>
+	// <li> 40_40 圆形企业印章直径40mm</li>
+	// <li> 45_30 椭圆形印章45mm x 30mm</li>
+	// </ul>
+	SealSize *string `json:"SealSize,omitnil" name:"SealSize"`
 }
 
 type CreateSealByImageRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 印章名称，最大长度不超过50字符
@@ -4249,6 +4280,35 @@ type CreateSealByImageRequest struct {
 
 	// 操作者的信息
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 本接口支持上传图片印章及系统直接生成印章； 如果要使用系统生成印章，此值传：SealGenerateSourceSystem； 如果要使用图片上传请传字段 SealImage
+	GenerateSource *string `json:"GenerateSource,omitnil" name:"GenerateSource"`
+
+	// 电子印章类型：
+	// <ul><li>OFFICIAL-公章</li>
+	// <li>CONTRACT-合同专用章;</li>
+	// <li>FINANCE-合财务专用章;</li>
+	// <li>PERSONNEL-人事专用章
+	// </li>
+	// <li>默认：OFFICIAL</li>
+	// <ul>
+	SealType *string `json:"SealType,omitnil" name:"SealType"`
+
+	// 企业印章横向文字，最多可填15个汉字（若超过印章最大宽度，优先压缩字间距，其次缩小字号
+	SealHorizontalText *string `json:"SealHorizontalText,omitnil" name:"SealHorizontalText"`
+
+	// 印章样式:
+	// 
+	// <ul><li>cycle:圆形印章</li>
+	// <li>ellipse:椭圆印章</li>
+	// <li> 注：默认圆形印章</li></ul>
+	SealStyle *string `json:"SealStyle,omitnil" name:"SealStyle"`
+
+	// 印章尺寸取值描述：<ul><li> 42_42 圆形企业公章直径42mm</li>
+	// <li> 40_40 圆形企业印章直径40mm</li>
+	// <li> 45_30 椭圆形印章45mm x 30mm</li>
+	// </ul>
+	SealSize *string `json:"SealSize,omitnil" name:"SealSize"`
 }
 
 func (r *CreateSealByImageRequest) ToJsonString() string {
@@ -4267,6 +4327,11 @@ func (r *CreateSealByImageRequest) FromJsonString(s string) error {
 	delete(f, "SealName")
 	delete(f, "SealImage")
 	delete(f, "Operator")
+	delete(f, "GenerateSource")
+	delete(f, "SealType")
+	delete(f, "SealHorizontalText")
+	delete(f, "SealStyle")
+	delete(f, "SealSize")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSealByImageRequest has unknown keys!", "")
 	}
@@ -4275,8 +4340,14 @@ func (r *CreateSealByImageRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateSealByImageResponseParams struct {
-	// 印章id
+	// 电子印章ID，为32位字符串。
+	// 建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
+	// 可登录腾讯电子签控制台，在 "印章"->"印章中心"选择查看的印章，在"印章详情" 中查看某个印章的SealId(在页面中展示为印章ID)。
 	SealId *string `json:"SealId,omitnil" name:"SealId"`
+
+	// 电子印章预览链接地址，地址默认失效时间为24小时。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ImageUrl *string `json:"ImageUrl,omitnil" name:"ImageUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

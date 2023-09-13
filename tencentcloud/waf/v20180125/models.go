@@ -5109,6 +5109,73 @@ func (r *DescribePolicyStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePortsRequestParams struct {
+	// 版本
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// 实例ID
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+}
+
+type DescribePortsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 版本
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// 实例ID
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+}
+
+func (r *DescribePortsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePortsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Edition")
+	delete(f, "InstanceID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePortsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePortsResponseParams struct {
+	// http端口列表
+	HttpPorts []*string `json:"HttpPorts,omitnil" name:"HttpPorts"`
+
+	// https端口列表
+	HttpsPorts []*string `json:"HttpsPorts,omitnil" name:"HttpsPorts"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribePortsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePortsResponseParams `json:"Response"`
+}
+
+func (r *DescribePortsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePortsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRuleLimitRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`

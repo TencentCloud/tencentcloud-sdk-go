@@ -403,7 +403,7 @@ type CreateRecTaskRequestParams struct {
 	// **注意：电话通讯场景，请务必使用以下8k引擎**
 	// • 8k_zh：中文电话通讯；
 	// • 8k_en：英文电话通讯；
-	// 如您有电话通讯场景识别需求，但发现需求语种仅支持16k，可将8k音频传入下方16k引擎，亦能获取识别结果。但**16k引擎并非基于电话通讯数据训练，无法承诺此种调用方式的识别效果，需由您自行验证识别结果是否可用**。
+	// 如您有电话通讯场景识别需求，但发现需求语种仅支持16k，可将8k音频传入下方16k引擎，亦能获取识别结果。但**16k引擎并非基于电话通讯数据训练，无法承诺此种调用方式的识别效果，需由您自行验证识别结果是否可用**
 	// 
 	// 通用场景引擎：
 	// **注意：除电话通讯场景以外的其它识别场景，请务必使用以下16k引擎**
@@ -432,16 +432,18 @@ type CreateRecTaskRequestParams struct {
 	// 2：双声道（仅支持8k电话音频，且双声道应分别为通话双方）
 	// 
 	// 注意：
-	// • 16k音频：仅支持单声道识别，**需设置ChannelNum=1**
+	// • 16k音频：仅支持单声道识别，**需设置ChannelNum=1**；
 	// • 8k电话音频：支持单声道、双声道识别，**建议设置ChannelNum=2，即双声道**。双声道能够物理区分说话人、避免说话双方重叠产生的识别错误，能达到最好的说话人分离效果和识别效果。设置双声道后，将自动区分说话人，因此**无需再开启说话人分离功能**，相关参数（**SpeakerDiarization、SpeakerNumber**）使用默认值即可
 	ChannelNum *uint64 `json:"ChannelNum,omitnil" name:"ChannelNum"`
 
-	// 识别结果返回形式
-	// 0： 识别结果文本(含分段时间戳)；
-	// 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；
-	// 2：词级别粒度的详细识别结果（包含标点、语速值）；
-	// 3: 标点符号分段，包含每段时间戳，特别适用于字幕场景（包含词级时间、标点、语速值）
-	// 4：【增值付费功能】对识别结果按照语义分段，并展示词级别粒度的详细识别结果，仅支持8k_zh、16k_zh引擎，需购买对应资源包使用（注意：如果账号后付费功能开启并使用此功能，将[自动计费](https://cloud.tencent.com/document/product/1093/35686)）
+	// 识别结果返回样式
+	// 0：基础识别结果（仅包含有效人声时间戳，无词粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)）；
+	// 1：基础识别结果之上，增加词粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)（包含词级别时间戳、语速值，**不含标点**）；
+	// 2：基础识别结果之上，增加词粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)（包含词级别时间戳、语速值和标点）；
+	// 3：基础识别结果之上，增加词粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)（包含词级别时间戳、语速值和标点），且识别结果按标点符号分段，**适用字幕场景**；
+	// 4：**【增值付费功能】**基础识别结果之上，增加词粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)（包含词级别时间戳、语速值和标点），且识别结果按nlp语义分段，**适用会议、庭审记录转写等场景**，仅支持8k_zh/16k_zh引擎
+	// 
+	// 注意：如果传入参数值4，需确保账号已购买[语义分段资源包](https://cloud.tencent.com/document/product/1093/35686#97ae4aa0-29a0-4066-9f07-ccaf8856a16b)，或账号开启后付费；**若当前账号已开启后付费功能，并传入参数值4，将[自动计费](https://cloud.tencent.com/document/product/1093/35686#d912167d-ffd5-41a9-8b1c-2e89845a6852)）**
 	ResTextFormat *uint64 `json:"ResTextFormat,omitnil" name:"ResTextFormat"`
 
 	// 语音数据来源
@@ -451,7 +453,7 @@ type CreateRecTaskRequestParams struct {
 
 	// 是否开启说话人分离
 	// 0：不开启；
-	// 1：开启（仅支持8k_zh/16k_zh，且ChannelNum=1时可用）；
+	// 1：开启（仅支持以下引擎：8k_zh/16k_zh/16k_ms/16k_en/16k_id，且ChannelNum=1时可用）；
 	// 默认值为 0
 	// 
 	// 注意：
@@ -463,55 +465,106 @@ type CreateRecTaskRequestParams struct {
 	// 0：自动分离（最多分离出20个人）；
 	// 1-10：指定人数分离；
 	// 默认值为 0
-	// 
-	// 注意：此功能结果仅供参考
 	SpeakerNumber *int64 `json:"SpeakerNumber,omitnil" name:"SpeakerNumber"`
 
-	// 回调 URL：用户自行搭建的用于接收识别结果的服务URL。回调格式和内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
-	// 如果用户使用轮询方式获取识别结果，则无需提交该参数。
+	// 回调 URL
+	// 用户自行搭建的用于接收识别结果的服务URL
+	// 回调格式和内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
+	// 
+	// 注意：
+	// 如果用户使用轮询方式获取识别结果，则无需提交该参数
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
-	// 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写。注意：请确保录音文件时长在5个小时之内，否则可能识别失败。请保证文件的下载速度，否则可能下载失败。
+	// 语音URL的地址（需要公网环境浏览器可下载）
+	// **当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写**
+	// 
+	// 注意：
+	// 1. 请确保录音文件时长在5个小时（含）之内，否则可能识别失败；
+	// 2. 请保证文件的下载速度，否则可能下载失败
 	Url *string `json:"Url,omitnil" name:"Url"`
 
-	// 语音数据base64编码，当SourceType 值为1时必须填写，为0可不写。音频数据要小于5MB。
+	// 语音数据base64编码
+	// **当 SourceType 值为 1 时须填写该字段，为 0 时不需要填写**
+	// 
+	// 注意：音频数据要小于5MB（含）
 	Data *string `json:"Data,omitnil" name:"Data"`
 
-	// 数据长度，非必填（此数据长度为数据未进行base64编码时的数据长度）。
+	// 数据长度（此数据长度为数据未进行base64编码时的长度）
 	DataLen *uint64 `json:"DataLen,omitnil" name:"DataLen"`
 
-	// 是否进行阿拉伯数字智能转换（目前支持中文普通话引擎）。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字，3: 打开数学相关数字转换。默认值为 1。
+	// 阿拉伯数字智能转换（目前仅支持8k_zh/16k_zh引擎）
+	// 0：不转换，直接输出中文数字；
+	// 1：根据场景智能转换为阿拉伯数字；
+	// 3：打开数学相关数字转换（如：阿尔法转写为α）；
+	// 默认值为 1
 	ConvertNumMode *int64 `json:"ConvertNumMode,omitnil" name:"ConvertNumMode"`
 
-	// 是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。默认值为 0。
+	// 脏词过滤（目前仅支持8k_zh/16k_zh引擎）
+	// 0：不过滤脏词；
+	// 1：过滤脏词；
+	// 2：将脏词替换为 * ；
+	// 默认值为 0
 	FilterDirty *int64 `json:"FilterDirty,omitnil" name:"FilterDirty"`
 
-	// 热词表id。如不设置该参数，自动生效默认热词表；如设置了该参数，那么将生效对应的热词表。
+	// 热词表id
+	// 如不设置该参数，将自动生效默认热词表；
+	// 如设置该参数，将生效对应id的热词表；
+	// 点击这里查看[热词表配置方法](https://cloud.tencent.com/document/product/1093/40996)
 	HotwordId *string `json:"HotwordId,omitnil" name:"HotwordId"`
 
-	// 自学习模型 id。如设置了该参数，将生效对应的自学习模型。
+	// 自学习定制模型 id
+	// 如设置了该参数，将生效对应id的自学习定制模型；
+	// 点击这里查看[自学习定制模型配置方法](https://cloud.tencent.com/document/product/1093/38416)
 	CustomizationId *string `json:"CustomizationId,omitnil" name:"CustomizationId"`
 
-	// 附加参数(该参数无意义，忽略即可)
+	// 附加参数**（该参数无意义，忽略即可）**
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
 
-	// 是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认值为 0。
+	// 标点符号过滤（目前仅支持8k_zh/16k_zh引擎）
+	// 0：不过滤标点；
+	// 1：过滤句末标点；
+	// 2：过滤所有标点；
+	// 默认值为 0
 	FilterPunc *int64 `json:"FilterPunc,omitnil" name:"FilterPunc"`
 
-	// 是否过滤语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0。
+	// 语气词过滤（目前支持8k_zh/16k_zh引擎）
+	// 0：不过滤语气词；
+	// 1：过滤部分语气词；
+	// 2：严格过滤语气词；
+	// 默认值为 0
 	FilterModal *int64 `json:"FilterModal,omitnil" name:"FilterModal"`
 
-	// 情绪能量值，取值为音量分贝值/10。取值范围：[1,10]。值越高情绪越强烈。0:不开启，1:开启
+	// 情绪能量值
+	// 取值为音量分贝值/10，取值范围：[1,10]，值越高情绪越强烈
+	// 0：不开启；
+	// 1：开启；
+	// 默认值为0
 	EmotionalEnergy *int64 `json:"EmotionalEnergy,omitnil" name:"EmotionalEnergy"`
 
-	// 热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
+	// 热词增强功能（仅支持8k_zh/16k_zh引擎）
+	// 1：开启热词增强功能
+	// 
+	// 注意：热词增强功能开启后，将对传入的热词表id开启同音替换功能，可以在这里查看[热词表配置方法](https://cloud.tencent.com/document/product/1093/40996)。效果举例：在热词表中配置“蜜制”一词，并开启增强功能，与“蜜制”（mìzhì）同音同调的“秘制”（mìzhì）的识别结果会被强制替换成“蜜制”。**建议客户根据实际的业务需求开启该功能**
 	ReinforceHotword *int64 `json:"ReinforceHotword,omitnil" name:"ReinforceHotword"`
 
-	// 单标点最多字数，取值范围：[6，40]。默认为0，不开启该功能。该参数可用于字幕生成场景，控制单行字幕最大字数（设置ResTextFormat为3，解析返回的ResultDetail列表，通过结构中FinalSentence获取单个标点断句结果）。
+	// 单标点最多字数
+	// **可控制单行字幕最大字数，适用于字幕生成场景**，取值范围：[6，40]
+	// 0：不开启该功能；
+	// 默认值为0
+	// 
+	// 注意：需设置ResTextFormat为3，解析返回的ResultDetail列表，通过结构中FinalSentence获取单个标点断句结果
 	SentenceMaxLength *int64 `json:"SentenceMaxLength,omitnil" name:"SentenceMaxLength"`
 
-	// 情绪识别能力(目前支持16k_zh) 默认为0，不开启。 1：开启情绪识别但是不会在文本展示“情绪标签”， 2：开启情绪识别并且在文本展示“情绪标签”。（该功能需要设置ResTextFormat 大于0）
-	// 注意：本功能为增值服务，购买对应套餐包后，将参数设置为1或2时方可按对应方式生效，并消耗套餐包对应资源。参数设置为0时无需购买套餐包，也不会消耗对应资源。
+	// **【增值付费功能】**情绪识别能力（目前仅支持16k_zh）
+	// 0：不开启；
+	// 1：开启情绪识别，但不在文本展示情绪标签；
+	// 2：开启情绪识别，并且在文本展示情绪标签（**该功能需要设置ResTextFormat 大于0**）
+	// 默认值为0
+	// 
+	// 注意：
+	// 1. **本功能为增值服务**，需将参数设置为1或2时方可按对应方式生效；
+	// 2. 如果传入参数值1或2，需确保账号已购买[情绪识别资源包](https://cloud.tencent.com/document/product/1093/35686#97ae4aa0-29a0-4066-9f07-ccaf8856a16b)，或账号开启后付费；**若当前账号已开启后付费功能，并传入参数值4，将[自动计费](https://cloud.tencent.com/document/product/1093/35686#d912167d-ffd5-41a9-8b1c-2e89845a6852)）**；
+	// 3. 参数设置为0时，无需购买资源包，也不会消耗情绪识别对应资源
 	EmotionRecognition *int64 `json:"EmotionRecognition,omitnil" name:"EmotionRecognition"`
 }
 
@@ -524,7 +577,7 @@ type CreateRecTaskRequest struct {
 	// **注意：电话通讯场景，请务必使用以下8k引擎**
 	// • 8k_zh：中文电话通讯；
 	// • 8k_en：英文电话通讯；
-	// 如您有电话通讯场景识别需求，但发现需求语种仅支持16k，可将8k音频传入下方16k引擎，亦能获取识别结果。但**16k引擎并非基于电话通讯数据训练，无法承诺此种调用方式的识别效果，需由您自行验证识别结果是否可用**。
+	// 如您有电话通讯场景识别需求，但发现需求语种仅支持16k，可将8k音频传入下方16k引擎，亦能获取识别结果。但**16k引擎并非基于电话通讯数据训练，无法承诺此种调用方式的识别效果，需由您自行验证识别结果是否可用**
 	// 
 	// 通用场景引擎：
 	// **注意：除电话通讯场景以外的其它识别场景，请务必使用以下16k引擎**
@@ -553,16 +606,18 @@ type CreateRecTaskRequest struct {
 	// 2：双声道（仅支持8k电话音频，且双声道应分别为通话双方）
 	// 
 	// 注意：
-	// • 16k音频：仅支持单声道识别，**需设置ChannelNum=1**
+	// • 16k音频：仅支持单声道识别，**需设置ChannelNum=1**；
 	// • 8k电话音频：支持单声道、双声道识别，**建议设置ChannelNum=2，即双声道**。双声道能够物理区分说话人、避免说话双方重叠产生的识别错误，能达到最好的说话人分离效果和识别效果。设置双声道后，将自动区分说话人，因此**无需再开启说话人分离功能**，相关参数（**SpeakerDiarization、SpeakerNumber**）使用默认值即可
 	ChannelNum *uint64 `json:"ChannelNum,omitnil" name:"ChannelNum"`
 
-	// 识别结果返回形式
-	// 0： 识别结果文本(含分段时间戳)；
-	// 1：词级别粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)(不含标点，含语速值)；
-	// 2：词级别粒度的详细识别结果（包含标点、语速值）；
-	// 3: 标点符号分段，包含每段时间戳，特别适用于字幕场景（包含词级时间、标点、语速值）
-	// 4：【增值付费功能】对识别结果按照语义分段，并展示词级别粒度的详细识别结果，仅支持8k_zh、16k_zh引擎，需购买对应资源包使用（注意：如果账号后付费功能开启并使用此功能，将[自动计费](https://cloud.tencent.com/document/product/1093/35686)）
+	// 识别结果返回样式
+	// 0：基础识别结果（仅包含有效人声时间戳，无词粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)）；
+	// 1：基础识别结果之上，增加词粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)（包含词级别时间戳、语速值，**不含标点**）；
+	// 2：基础识别结果之上，增加词粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)（包含词级别时间戳、语速值和标点）；
+	// 3：基础识别结果之上，增加词粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)（包含词级别时间戳、语速值和标点），且识别结果按标点符号分段，**适用字幕场景**；
+	// 4：**【增值付费功能】**基础识别结果之上，增加词粒度的[详细识别结果](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)（包含词级别时间戳、语速值和标点），且识别结果按nlp语义分段，**适用会议、庭审记录转写等场景**，仅支持8k_zh/16k_zh引擎
+	// 
+	// 注意：如果传入参数值4，需确保账号已购买[语义分段资源包](https://cloud.tencent.com/document/product/1093/35686#97ae4aa0-29a0-4066-9f07-ccaf8856a16b)，或账号开启后付费；**若当前账号已开启后付费功能，并传入参数值4，将[自动计费](https://cloud.tencent.com/document/product/1093/35686#d912167d-ffd5-41a9-8b1c-2e89845a6852)）**
 	ResTextFormat *uint64 `json:"ResTextFormat,omitnil" name:"ResTextFormat"`
 
 	// 语音数据来源
@@ -572,7 +627,7 @@ type CreateRecTaskRequest struct {
 
 	// 是否开启说话人分离
 	// 0：不开启；
-	// 1：开启（仅支持8k_zh/16k_zh，且ChannelNum=1时可用）；
+	// 1：开启（仅支持以下引擎：8k_zh/16k_zh/16k_ms/16k_en/16k_id，且ChannelNum=1时可用）；
 	// 默认值为 0
 	// 
 	// 注意：
@@ -584,55 +639,106 @@ type CreateRecTaskRequest struct {
 	// 0：自动分离（最多分离出20个人）；
 	// 1-10：指定人数分离；
 	// 默认值为 0
-	// 
-	// 注意：此功能结果仅供参考
 	SpeakerNumber *int64 `json:"SpeakerNumber,omitnil" name:"SpeakerNumber"`
 
-	// 回调 URL：用户自行搭建的用于接收识别结果的服务URL。回调格式和内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
-	// 如果用户使用轮询方式获取识别结果，则无需提交该参数。
+	// 回调 URL
+	// 用户自行搭建的用于接收识别结果的服务URL
+	// 回调格式和内容详见：[录音识别回调说明](https://cloud.tencent.com/document/product/1093/52632)
+	// 
+	// 注意：
+	// 如果用户使用轮询方式获取识别结果，则无需提交该参数
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
-	// 语音的URL地址，需要公网环境浏览器可下载。当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写。注意：请确保录音文件时长在5个小时之内，否则可能识别失败。请保证文件的下载速度，否则可能下载失败。
+	// 语音URL的地址（需要公网环境浏览器可下载）
+	// **当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写**
+	// 
+	// 注意：
+	// 1. 请确保录音文件时长在5个小时（含）之内，否则可能识别失败；
+	// 2. 请保证文件的下载速度，否则可能下载失败
 	Url *string `json:"Url,omitnil" name:"Url"`
 
-	// 语音数据base64编码，当SourceType 值为1时必须填写，为0可不写。音频数据要小于5MB。
+	// 语音数据base64编码
+	// **当 SourceType 值为 1 时须填写该字段，为 0 时不需要填写**
+	// 
+	// 注意：音频数据要小于5MB（含）
 	Data *string `json:"Data,omitnil" name:"Data"`
 
-	// 数据长度，非必填（此数据长度为数据未进行base64编码时的数据长度）。
+	// 数据长度（此数据长度为数据未进行base64编码时的长度）
 	DataLen *uint64 `json:"DataLen,omitnil" name:"DataLen"`
 
-	// 是否进行阿拉伯数字智能转换（目前支持中文普通话引擎）。0：不转换，直接输出中文数字，1：根据场景智能转换为阿拉伯数字，3: 打开数学相关数字转换。默认值为 1。
+	// 阿拉伯数字智能转换（目前仅支持8k_zh/16k_zh引擎）
+	// 0：不转换，直接输出中文数字；
+	// 1：根据场景智能转换为阿拉伯数字；
+	// 3：打开数学相关数字转换（如：阿尔法转写为α）；
+	// 默认值为 1
 	ConvertNumMode *int64 `json:"ConvertNumMode,omitnil" name:"ConvertNumMode"`
 
-	// 是否过滤脏词（目前支持中文普通话引擎）。0：不过滤脏词；1：过滤脏词；2：将脏词替换为 * 。默认值为 0。
+	// 脏词过滤（目前仅支持8k_zh/16k_zh引擎）
+	// 0：不过滤脏词；
+	// 1：过滤脏词；
+	// 2：将脏词替换为 * ；
+	// 默认值为 0
 	FilterDirty *int64 `json:"FilterDirty,omitnil" name:"FilterDirty"`
 
-	// 热词表id。如不设置该参数，自动生效默认热词表；如设置了该参数，那么将生效对应的热词表。
+	// 热词表id
+	// 如不设置该参数，将自动生效默认热词表；
+	// 如设置该参数，将生效对应id的热词表；
+	// 点击这里查看[热词表配置方法](https://cloud.tencent.com/document/product/1093/40996)
 	HotwordId *string `json:"HotwordId,omitnil" name:"HotwordId"`
 
-	// 自学习模型 id。如设置了该参数，将生效对应的自学习模型。
+	// 自学习定制模型 id
+	// 如设置了该参数，将生效对应id的自学习定制模型；
+	// 点击这里查看[自学习定制模型配置方法](https://cloud.tencent.com/document/product/1093/38416)
 	CustomizationId *string `json:"CustomizationId,omitnil" name:"CustomizationId"`
 
-	// 附加参数(该参数无意义，忽略即可)
+	// 附加参数**（该参数无意义，忽略即可）**
 	Extra *string `json:"Extra,omitnil" name:"Extra"`
 
-	// 是否过滤标点符号（目前支持中文普通话引擎）。 0：不过滤，1：过滤句末标点，2：过滤所有标点。默认值为 0。
+	// 标点符号过滤（目前仅支持8k_zh/16k_zh引擎）
+	// 0：不过滤标点；
+	// 1：过滤句末标点；
+	// 2：过滤所有标点；
+	// 默认值为 0
 	FilterPunc *int64 `json:"FilterPunc,omitnil" name:"FilterPunc"`
 
-	// 是否过滤语气词（目前支持中文普通话引擎）。0：不过滤语气词；1：部分过滤；2：严格过滤 。默认值为 0。
+	// 语气词过滤（目前支持8k_zh/16k_zh引擎）
+	// 0：不过滤语气词；
+	// 1：过滤部分语气词；
+	// 2：严格过滤语气词；
+	// 默认值为 0
 	FilterModal *int64 `json:"FilterModal,omitnil" name:"FilterModal"`
 
-	// 情绪能量值，取值为音量分贝值/10。取值范围：[1,10]。值越高情绪越强烈。0:不开启，1:开启
+	// 情绪能量值
+	// 取值为音量分贝值/10，取值范围：[1,10]，值越高情绪越强烈
+	// 0：不开启；
+	// 1：开启；
+	// 默认值为0
 	EmotionalEnergy *int64 `json:"EmotionalEnergy,omitnil" name:"EmotionalEnergy"`
 
-	// 热词增强功能。1:开启后（仅支持8k_zh,16k_zh），将开启同音替换功能，同音字、词在热词中配置。举例：热词配置“蜜制”并开启增强功能后，与“蜜制”同拼音（mizhi）的“秘制”的识别结果会被强制替换成“蜜制”。因此建议客户根据自己的实际情况开启该功能。
+	// 热词增强功能（仅支持8k_zh/16k_zh引擎）
+	// 1：开启热词增强功能
+	// 
+	// 注意：热词增强功能开启后，将对传入的热词表id开启同音替换功能，可以在这里查看[热词表配置方法](https://cloud.tencent.com/document/product/1093/40996)。效果举例：在热词表中配置“蜜制”一词，并开启增强功能，与“蜜制”（mìzhì）同音同调的“秘制”（mìzhì）的识别结果会被强制替换成“蜜制”。**建议客户根据实际的业务需求开启该功能**
 	ReinforceHotword *int64 `json:"ReinforceHotword,omitnil" name:"ReinforceHotword"`
 
-	// 单标点最多字数，取值范围：[6，40]。默认为0，不开启该功能。该参数可用于字幕生成场景，控制单行字幕最大字数（设置ResTextFormat为3，解析返回的ResultDetail列表，通过结构中FinalSentence获取单个标点断句结果）。
+	// 单标点最多字数
+	// **可控制单行字幕最大字数，适用于字幕生成场景**，取值范围：[6，40]
+	// 0：不开启该功能；
+	// 默认值为0
+	// 
+	// 注意：需设置ResTextFormat为3，解析返回的ResultDetail列表，通过结构中FinalSentence获取单个标点断句结果
 	SentenceMaxLength *int64 `json:"SentenceMaxLength,omitnil" name:"SentenceMaxLength"`
 
-	// 情绪识别能力(目前支持16k_zh) 默认为0，不开启。 1：开启情绪识别但是不会在文本展示“情绪标签”， 2：开启情绪识别并且在文本展示“情绪标签”。（该功能需要设置ResTextFormat 大于0）
-	// 注意：本功能为增值服务，购买对应套餐包后，将参数设置为1或2时方可按对应方式生效，并消耗套餐包对应资源。参数设置为0时无需购买套餐包，也不会消耗对应资源。
+	// **【增值付费功能】**情绪识别能力（目前仅支持16k_zh）
+	// 0：不开启；
+	// 1：开启情绪识别，但不在文本展示情绪标签；
+	// 2：开启情绪识别，并且在文本展示情绪标签（**该功能需要设置ResTextFormat 大于0**）
+	// 默认值为0
+	// 
+	// 注意：
+	// 1. **本功能为增值服务**，需将参数设置为1或2时方可按对应方式生效；
+	// 2. 如果传入参数值1或2，需确保账号已购买[情绪识别资源包](https://cloud.tencent.com/document/product/1093/35686#97ae4aa0-29a0-4066-9f07-ccaf8856a16b)，或账号开启后付费；**若当前账号已开启后付费功能，并传入参数值4，将[自动计费](https://cloud.tencent.com/document/product/1093/35686#d912167d-ffd5-41a9-8b1c-2e89845a6852)）**；
+	// 3. 参数设置为0时，无需购买资源包，也不会消耗情绪识别对应资源
 	EmotionRecognition *int64 `json:"EmotionRecognition,omitnil" name:"EmotionRecognition"`
 }
 

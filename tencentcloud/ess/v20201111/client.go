@@ -399,80 +399,6 @@ func (c *Client) CreateBatchCancelFlowUrlWithContext(ctx context.Context, reques
     return
 }
 
-func NewCreateChannelSubOrganizationModifyQrCodeRequest() (request *CreateChannelSubOrganizationModifyQrCodeRequest) {
-    request = &CreateChannelSubOrganizationModifyQrCodeRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("ess", APIVersion, "CreateChannelSubOrganizationModifyQrCode")
-    
-    
-    return
-}
-
-func NewCreateChannelSubOrganizationModifyQrCodeResponse() (response *CreateChannelSubOrganizationModifyQrCodeResponse) {
-    response = &CreateChannelSubOrganizationModifyQrCodeResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// CreateChannelSubOrganizationModifyQrCode
-// 根据产品要求，调整接口目录
-//
-// 
-//
-// 新接口：ChannelCreateOrganizationModifyQrCode 
-//
-// 
-//
-// 老接口目前无线上流量，测试用例已下线处理
-//
-// 
-//
-// 生成子客编辑企业信息二维码
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-func (c *Client) CreateChannelSubOrganizationModifyQrCode(request *CreateChannelSubOrganizationModifyQrCodeRequest) (response *CreateChannelSubOrganizationModifyQrCodeResponse, err error) {
-    return c.CreateChannelSubOrganizationModifyQrCodeWithContext(context.Background(), request)
-}
-
-// CreateChannelSubOrganizationModifyQrCode
-// 根据产品要求，调整接口目录
-//
-// 
-//
-// 新接口：ChannelCreateOrganizationModifyQrCode 
-//
-// 
-//
-// 老接口目前无线上流量，测试用例已下线处理
-//
-// 
-//
-// 生成子客编辑企业信息二维码
-//
-// 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
-func (c *Client) CreateChannelSubOrganizationModifyQrCodeWithContext(ctx context.Context, request *CreateChannelSubOrganizationModifyQrCodeRequest) (response *CreateChannelSubOrganizationModifyQrCodeResponse, err error) {
-    if request == nil {
-        request = NewCreateChannelSubOrganizationModifyQrCodeRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("CreateChannelSubOrganizationModifyQrCode require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewCreateChannelSubOrganizationModifyQrCodeResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewCreateConvertTaskApiRequest() (request *CreateConvertTaskApiRequest) {
     request = &CreateConvertTaskApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2980,9 +2906,13 @@ func NewCreateOrganizationBatchSignUrlResponse() (response *CreateOrganizationBa
 }
 
 // CreateOrganizationBatchSignUrl
-// 通过此接口，创建企业批量签署链接，企业员工点击链接即可跳转控制台进行批量签署。
+// 使用此接口，您可以创建企业批量签署链接，员工只需点击链接即可跳转至控制台进行批量签署。</br>
 //
-// 如果没有UserId，Name和Mobile必填，对应的员工必须在企业下已经实名，且该员工为批量签署合同中的签署方。
+// 附注：
+//
+// - 员工必须在企业下完成实名认证，且需作为批量签署合同的签署方。
+//
+// - 如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2997,9 +2927,13 @@ func (c *Client) CreateOrganizationBatchSignUrl(request *CreateOrganizationBatch
 }
 
 // CreateOrganizationBatchSignUrl
-// 通过此接口，创建企业批量签署链接，企业员工点击链接即可跳转控制台进行批量签署。
+// 使用此接口，您可以创建企业批量签署链接，员工只需点击链接即可跳转至控制台进行批量签署。</br>
 //
-// 如果没有UserId，Name和Mobile必填，对应的员工必须在企业下已经实名，且该员工为批量签署合同中的签署方。
+// 附注：
+//
+// - 员工必须在企业下完成实名认证，且需作为批量签署合同的签署方。
+//
+// - 如有UserId，应以UserId为主要标识；如果没有UserId，则必须填写Name和Mobile信息。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

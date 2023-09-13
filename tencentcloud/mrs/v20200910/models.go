@@ -5599,14 +5599,14 @@ type TuberInfo struct {
 
 // Predefined struct for user
 type TurnPDFToObjectRequestParams struct {
-	// 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符
+	// 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
 	PdfInfo *PdfInfo `json:"PdfInfo,omitnil" name:"PdfInfo"`
 }
 
 type TurnPDFToObjectRequest struct {
 	*tchttp.BaseRequest
 	
-	// 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符
+	// 体检报告PDF文件信息, 目前只支持传PDF文件的Base64编码字符(PDF文件不能超过10MB，如果超过建议先压缩PDF，再转成base64)
 	PdfInfo *PdfInfo `json:"PdfInfo,omitnil" name:"PdfInfo"`
 }
 
@@ -5637,7 +5637,7 @@ type TurnPDFToObjectResponseParams struct {
 	// 多级分类结果
 	TextTypeList []*TextType `json:"TextTypeList,omitnil" name:"TextTypeList"`
 
-	// 报告结构化结果
+	// 报告结构化结果(体检报告PDF结构化接口返回的 json 内容非常多，建议通过本地代码调用)
 	Block *Block `json:"Block,omitnil" name:"Block"`
 
 	// 是否使用Block字段

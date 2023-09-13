@@ -23911,67 +23911,6 @@ type UserDefineOcrTextReviewTemplateInfoForUpdate struct {
 }
 
 // Predefined struct for user
-type VerifyDomainOwnershipForConsoleRequestParams struct {
-	// 需要接入点播的域名。
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
-
-	// 需要开启加速的区域： <li>Mainland: 中国大陆地区</li> <li>Internation: 海外地区及港澳台</li> <li>Global: 全球</li> 不填会根据用户注册腾讯云时的地域信息自动判断 Mainland 或 Internation	
-	AccelerateArea *string `json:"AccelerateArea,omitnil" name:"AccelerateArea"`
-}
-
-type VerifyDomainOwnershipForConsoleRequest struct {
-	*tchttp.BaseRequest
-	
-	// 需要接入点播的域名。
-	Domain *string `json:"Domain,omitnil" name:"Domain"`
-
-	// 需要开启加速的区域： <li>Mainland: 中国大陆地区</li> <li>Internation: 海外地区及港澳台</li> <li>Global: 全球</li> 不填会根据用户注册腾讯云时的地域信息自动判断 Mainland 或 Internation	
-	AccelerateArea *string `json:"AccelerateArea,omitnil" name:"AccelerateArea"`
-}
-
-func (r *VerifyDomainOwnershipForConsoleRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *VerifyDomainOwnershipForConsoleRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Domain")
-	delete(f, "AccelerateArea")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyDomainOwnershipForConsoleRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type VerifyDomainOwnershipForConsoleResponseParams struct {
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type VerifyDomainOwnershipForConsoleResponse struct {
-	*tchttp.BaseResponse
-	Response *VerifyDomainOwnershipForConsoleResponseParams `json:"Response"`
-}
-
-func (r *VerifyDomainOwnershipForConsoleResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *VerifyDomainOwnershipForConsoleResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type VerifyDomainRecordRequestParams struct {
 	// 需要接入点播的加速域名。
 	Domain *string `json:"Domain,omitnil" name:"Domain"`

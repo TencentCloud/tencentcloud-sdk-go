@@ -6086,7 +6086,7 @@ func (r *DescribeSparkSessionBatchSqlLogRequest) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeSparkSessionBatchSqlLogResponseParams struct {
-	// 状态：0：初始化、1：成功、2：失败、3：取消、4：异常；
+	// 状态：0：运行中、1：成功、2：失败、3：取消、4：超时；
 	State *uint64 `json:"State,omitnil" name:"State"`
 
 	// 日志信息列表

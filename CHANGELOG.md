@@ -1,3 +1,200 @@
+# Release v1.0.747
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 116 次发布
+
+发布时间：2023-09-13 01:29:52
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [HostItem](https://cloud.tencent.com/document/api/213/15753#HostItem)
+
+	* 新增成员：Tags
+
+	* <font color="#dd0000">**修改成员**：</font>Placement, HostId, HostType, HostName, HostChargeType, RenewFlag, CreatedTime, ExpiredTime, InstanceIds, HostState, HostIp, HostResource
+
+
+
+
+## 英文作文批改(ecc) 版本：2018-12-13
+
+### 第 4 次发布
+
+发布时间：2023-09-13 01:42:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CorrectMultiImage](https://cloud.tencent.com/document/api/1076/41242)
+
+	* 新增出参：ResultData
+
+* [EHOCR](https://cloud.tencent.com/document/api/1076/35210)
+
+	* 新增出参：ResultData
+
+
+新增数据结构：
+
+* [CompositionContext](https://cloud.tencent.com/document/api/1076/35212#CompositionContext)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 115 次发布
+
+发布时间：2023-09-13 01:46:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* CreateChannelSubOrganizationModifyQrCode
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 110 次发布
+
+发布时间：2023-09-13 01:47:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateSealByImage](https://cloud.tencent.com/document/api/1420/73067)
+
+	* 新增入参：GenerateSource, SealType, SealHorizontalText, SealStyle, SealSize
+
+	* <font color="#dd0000">**修改入参**：</font>SealImage
+
+	* 新增出参：ImageUrl
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 93 次发布
+
+发布时间：2023-09-13 02:04:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AlarmHistory](https://cloud.tencent.com/document/api/248/30354#AlarmHistory)
+
+	* 新增成员：AlarmLevel
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 51 次发布
+
+发布时间：2023-09-13 02:18:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBackup](https://cloud.tencent.com/document/api/238/19946)
+
+	* 新增入参：StorageStrategy
+
+* [DescribeBackups](https://cloud.tencent.com/document/api/238/19943)
+
+	* 新增入参：StorageStrategy
+
+
+修改数据结构：
+
+* [Backup](https://cloud.tencent.com/document/api/238/19976#Backup)
+
+	* 新增成员：StorageStrategy
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 51 次发布
+
+发布时间：2023-09-13 02:30:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OriginDetail](https://cloud.tencent.com/document/api/1552/80721#OriginDetail)
+
+	* <font color="#dd0000">**修改成员**：</font>OriginType, Origin, BackupOrigin, OriginGroupName, BackOriginGroupName, PrivateAccess, PrivateParameters
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 166 次发布
+
+发布时间：2023-09-13 02:40:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* VerifyDomainOwnershipForConsole
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 50 次发布
+
+发布时间：2023-09-13 02:45:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribePorts](https://cloud.tencent.com/document/api/627/98033)
+
+
+
 # Release v1.0.746
 
 ## 弹性伸缩(as) 版本：2018-04-19

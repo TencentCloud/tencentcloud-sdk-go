@@ -3569,6 +3569,54 @@ func (c *Client) DescribePolicyStatusWithContext(ctx context.Context, request *D
     return
 }
 
+func NewDescribePortsRequest() (request *DescribePortsRequest) {
+    request = &DescribePortsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribePorts")
+    
+    
+    return
+}
+
+func NewDescribePortsResponse() (response *DescribePortsResponse) {
+    response = &DescribePortsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePorts
+// 获取非标端口列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribePorts(request *DescribePortsRequest) (response *DescribePortsResponse, err error) {
+    return c.DescribePortsWithContext(context.Background(), request)
+}
+
+// DescribePorts
+// 获取非标端口列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribePortsWithContext(ctx context.Context, request *DescribePortsRequest) (response *DescribePortsResponse, err error) {
+    if request == nil {
+        request = NewDescribePortsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePorts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePortsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRuleLimitRequest() (request *DescribeRuleLimitRequest) {
     request = &DescribeRuleLimitRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -129,6 +129,10 @@ type AlarmHistory struct {
 	// 告警实例的维度信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Dimensions *string `json:"Dimensions,omitnil" name:"Dimensions"`
+
+	// 告警等级
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmLevel *string `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
 }
 
 type AlarmHistoryMetric struct {

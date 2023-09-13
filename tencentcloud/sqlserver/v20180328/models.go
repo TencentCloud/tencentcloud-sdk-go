@@ -214,6 +214,9 @@ type Backup struct {
 	// 备份策略（0-实例备份；1-多库备份）
 	Strategy *int64 `json:"Strategy,omitnil" name:"Strategy"`
 
+	// 备份存储策略 0-跟随自定义备份保留策略 1-跟随实例生命周期直到实例下线
+	StorageStrategy *int64 `json:"StorageStrategy,omitnil" name:"StorageStrategy"`
+
 	// 备份方式，0-定时备份；1-手动临时备份；2-定期备份
 	BackupWay *int64 `json:"BackupWay,omitnil" name:"BackupWay"`
 
@@ -708,6 +711,9 @@ type CreateBackupRequestParams struct {
 
 	// 备份名称，若不填则自动生成“实例ID_备份开始时间戳”
 	BackupName *string `json:"BackupName,omitnil" name:"BackupName"`
+
+	// 备份存储策略 0-跟随自定义备份保留策略 1-跟随实例生命周期直到实例下线，默认取值0
+	StorageStrategy *int64 `json:"StorageStrategy,omitnil" name:"StorageStrategy"`
 }
 
 type CreateBackupRequest struct {
@@ -724,6 +730,9 @@ type CreateBackupRequest struct {
 
 	// 备份名称，若不填则自动生成“实例ID_备份开始时间戳”
 	BackupName *string `json:"BackupName,omitnil" name:"BackupName"`
+
+	// 备份存储策略 0-跟随自定义备份保留策略 1-跟随实例生命周期直到实例下线，默认取值0
+	StorageStrategy *int64 `json:"StorageStrategy,omitnil" name:"StorageStrategy"`
 }
 
 func (r *CreateBackupRequest) ToJsonString() string {
@@ -742,6 +751,7 @@ func (r *CreateBackupRequest) FromJsonString(s string) error {
 	delete(f, "DBNames")
 	delete(f, "InstanceId")
 	delete(f, "BackupName")
+	delete(f, "StorageStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBackupRequest has unknown keys!", "")
 	}
@@ -3869,6 +3879,9 @@ type DescribeBackupsRequestParams struct {
 
 	// 按照备份文件形式筛选，pkg-打包备份文件，single-单库备份文件
 	BackupFormat *string `json:"BackupFormat,omitnil" name:"BackupFormat"`
+
+	// 备份存储策略 0-跟随自定义备份保留策略 1-跟随实例生命周期直到实例下线，默认取值0
+	StorageStrategy *int64 `json:"StorageStrategy,omitnil" name:"StorageStrategy"`
 }
 
 type DescribeBackupsRequest struct {
@@ -3912,6 +3925,9 @@ type DescribeBackupsRequest struct {
 
 	// 按照备份文件形式筛选，pkg-打包备份文件，single-单库备份文件
 	BackupFormat *string `json:"BackupFormat,omitnil" name:"BackupFormat"`
+
+	// 备份存储策略 0-跟随自定义备份保留策略 1-跟随实例生命周期直到实例下线，默认取值0
+	StorageStrategy *int64 `json:"StorageStrategy,omitnil" name:"StorageStrategy"`
 }
 
 func (r *DescribeBackupsRequest) ToJsonString() string {
@@ -3939,6 +3955,7 @@ func (r *DescribeBackupsRequest) FromJsonString(s string) error {
 	delete(f, "Group")
 	delete(f, "Type")
 	delete(f, "BackupFormat")
+	delete(f, "StorageStrategy")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupsRequest has unknown keys!", "")
 	}

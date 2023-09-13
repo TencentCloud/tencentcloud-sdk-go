@@ -31,6 +31,23 @@ type Aspect struct {
 	Percentage *float64 `json:"Percentage,omitnil" name:"Percentage"`
 }
 
+type CompositionContext struct {
+	// 作文内容
+	Content *string `json:"Content,omitnil" name:"Content"`
+
+	// 批改结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CorrectData *CorrectData `json:"CorrectData,omitnil" name:"CorrectData"`
+
+	// 任务 id，用于查询接口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 图像识别唯一标识，一次识别一个 SessionId
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
+}
+
 type CompostionContext struct {
 	// 作文内容
 	Content *string `json:"Content,omitnil" name:"Content"`
@@ -167,7 +184,12 @@ func (r *CorrectMultiImageRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type CorrectMultiImageResponseParams struct {
 	// 接口返回数据
+	//
+	// Deprecated: Data is deprecated.
 	Data *CompostionContext `json:"Data,omitnil" name:"Data"`
+
+	// 接口返回数据
+	ResultData *CompositionContext `json:"ResultData,omitnil" name:"ResultData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -484,7 +506,12 @@ func (r *EHOCRRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type EHOCRResponseParams struct {
 	// 接口返回数据
+	//
+	// Deprecated: Data is deprecated.
 	Data *CompostionContext `json:"Data,omitnil" name:"Data"`
+
+	// 接口返回数据
+	ResultData *CompositionContext `json:"ResultData,omitnil" name:"ResultData"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
