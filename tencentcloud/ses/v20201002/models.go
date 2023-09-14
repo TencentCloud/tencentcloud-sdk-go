@@ -172,6 +172,10 @@ type BlackEmailAddress struct {
 
 	// 被拉黑的邮箱地址
 	EmailAddress *string `json:"EmailAddress,omitnil" name:"EmailAddress"`
+
+	// 被拉黑的理由
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IspDesc *string `json:"IspDesc,omitnil" name:"IspDesc"`
 }
 
 // Predefined struct for user
@@ -1185,7 +1189,7 @@ type ListBlackEmailAddressRequestParams struct {
 	// 可以指定邮箱进行查询
 	EmailAddress *string `json:"EmailAddress,omitnil" name:"EmailAddress"`
 
-	// 可以指定任务ID进行查询
+	// 已废弃
 	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
 }
 
@@ -1207,7 +1211,7 @@ type ListBlackEmailAddressRequest struct {
 	// 可以指定邮箱进行查询
 	EmailAddress *string `json:"EmailAddress,omitnil" name:"EmailAddress"`
 
-	// 可以指定任务ID进行查询
+	// 已废弃
 	TaskID *string `json:"TaskID,omitnil" name:"TaskID"`
 }
 

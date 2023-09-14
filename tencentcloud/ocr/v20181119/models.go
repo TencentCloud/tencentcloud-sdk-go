@@ -3309,7 +3309,7 @@ type IDCardOCRRequestParams struct {
 	// TempIdWarn，临时身份证告警
 	// InvalidDateWarn，身份证有效日期不合法告警
 	// Quality，图片质量分数（评价图片的模糊程度）
-	// MultiCardDetect，是否开启多卡证检测
+	// MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）
 	// ReflectWarn，是否开启反光检测
 	// 
 	// SDK 设置方式参考：
@@ -3348,7 +3348,7 @@ type IDCardOCRRequest struct {
 	// TempIdWarn，临时身份证告警
 	// InvalidDateWarn，身份证有效日期不合法告警
 	// Quality，图片质量分数（评价图片的模糊程度）
-	// MultiCardDetect，是否开启多卡证检测
+	// MultiCardDetect，是否开启正反面同框识别（仅支持二代身份证正反页同框识别或临时身份证正反页同框识别）
 	// ReflectWarn，是否开启反光检测
 	// 
 	// SDK 设置方式参考：

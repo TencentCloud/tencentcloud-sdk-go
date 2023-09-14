@@ -10030,7 +10030,7 @@ func NewDescribeImageRegistryNamespaceListResponse() (response *DescribeImageReg
 }
 
 // DescribeImageRegistryNamespaceList
-// 查询用户镜像仓库下的项目名称列表
+// 查询用户镜像仓库下的命令空间列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -10048,7 +10048,7 @@ func (c *Client) DescribeImageRegistryNamespaceList(request *DescribeImageRegist
 }
 
 // DescribeImageRegistryNamespaceList
-// 查询用户镜像仓库下的项目名称列表
+// 查询用户镜像仓库下的命令空间列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

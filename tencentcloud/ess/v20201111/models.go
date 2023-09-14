@@ -243,7 +243,7 @@ type AutoSignConfig struct {
 	// 设置用户开通自动签时是否绑定个人自动签账号许可。
 	// 
 	// <ul><li>**0**: (默认) 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li>
-	// <li>**1**: 不使用个人自动签账号许可进行开通</li></ul>
+	// </ul>
 	LicenseType *int64 `json:"LicenseType,omitnil" name:"LicenseType"`
 }
 
@@ -1805,15 +1805,15 @@ func (r *CreateFlowEvidenceReportRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowEvidenceReportResponseParams struct {
-	// 出证报告 ID，可用于DescribeFlowEvidenceReport接口查询出证PDF的下载地址
+	// 出证报告 ID，可用于<a href="https://qian.tencent.com/developers/companyApis/certificate/DescribeFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportId *string `json:"ReportId,omitnil" name:"ReportId"`
 
-	// 出证任务执行的状态, 可能会有以下状态：
+	// 出证任务执行的状态, 状态含义如下：
 	// 
-	// <ul><li>EvidenceStatusExecuting：  出证任务在执行中</li>
-	// <li>EvidenceStatusSuccess：  出证任务执行成功</li>
-	// <li>EvidenceStatusFailed ： 出征任务执行失败</li></ul>
+	// <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
+	// <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
+	// <li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
 	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 此字段已经废除,不再使用.
@@ -1845,38 +1845,52 @@ func (r *CreateFlowEvidenceReportResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowGroupByFilesRequestParams struct {
-	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 合同（流程）组名称,最大长度200个字符
+	// 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
 
 	// 合同（流程）组的子合同信息，支持2-50个子合同
 	FlowGroupInfos []*FlowGroupInfo `json:"FlowGroupInfos,omitnil" name:"FlowGroupInfos"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 合同（流程）组的配置项信息。包括是否通知本企业签署方，是否通知其他签署方
+	// 合同（流程）组的配置项信息。
+	// 其中包括：
+	// <ul>
+	// <li>是否通知本企业签署方</li>
+	// <li>是否通知其他签署方</li>
+	// </ul>
 	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil" name:"FlowGroupOptions"`
 }
 
 type CreateFlowGroupByFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 合同（流程）组名称,最大长度200个字符
+	// 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
 
 	// 合同（流程）组的子合同信息，支持2-50个子合同
 	FlowGroupInfos []*FlowGroupInfo `json:"FlowGroupInfos,omitnil" name:"FlowGroupInfos"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 合同（流程）组的配置项信息。包括是否通知本企业签署方，是否通知其他签署方
+	// 合同（流程）组的配置项信息。
+	// 其中包括：
+	// <ul>
+	// <li>是否通知本企业签署方</li>
+	// <li>是否通知其他签署方</li>
+	// </ul>
 	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil" name:"FlowGroupOptions"`
 }
 
@@ -3166,8 +3180,8 @@ type CreateOrganizationBatchSignUrlRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 请指定需执行批量签署的流程ID，数量范围为1-100。</br>
-	// 您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。</br>
+	// 请指定需执行批量签署的流程ID，数量范围为1-100。
+	// 您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。
 	// 用户将利用链接对这些合同实施批量操作。
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
@@ -3175,17 +3189,19 @@ type CreateOrganizationBatchSignUrlRequestParams struct {
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 员工在腾讯电子签平台的独特身份标识，为32位字符串。</br>
-	// 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的UserId（在页面中显示为用户ID）。</br>
+	// 员工在腾讯电子签平台的独特身份标识，为32位字符串。
+	// 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的UserId（在页面中显示为用户ID）。
 	// UserId必须是传入合同（FlowId）中的签署人。
 	// - 1. 若UserId为空，Name和Mobile 必须提供。
 	// - 2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 员工姓名，必须与手机号码一起使用。</br> 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
+	// 员工姓名，必须与手机号码一起使用。
+	// 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 员工手机号，必须与姓名一起使用。</br> 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
+	// 员工手机号，必须与姓名一起使用。
+	//  如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 }
 
@@ -3198,8 +3214,8 @@ type CreateOrganizationBatchSignUrlRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 请指定需执行批量签署的流程ID，数量范围为1-100。</br>
-	// 您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。</br>
+	// 请指定需执行批量签署的流程ID，数量范围为1-100。
+	// 您可登录腾讯电子签控制台，浏览 "合同"->"合同中心" 以查阅某一合同的FlowId（在页面中显示为合同ID）。
 	// 用户将利用链接对这些合同实施批量操作。
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
@@ -3207,17 +3223,19 @@ type CreateOrganizationBatchSignUrlRequest struct {
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 员工在腾讯电子签平台的独特身份标识，为32位字符串。</br>
-	// 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的UserId（在页面中显示为用户ID）。</br>
+	// 员工在腾讯电子签平台的独特身份标识，为32位字符串。
+	// 您可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查阅某位员工的UserId（在页面中显示为用户ID）。
 	// UserId必须是传入合同（FlowId）中的签署人。
 	// - 1. 若UserId为空，Name和Mobile 必须提供。
 	// - 2. 若UserId 与 Name，Mobile均存在，将优先采用UserId对应的员工。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 员工姓名，必须与手机号码一起使用。</br> 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
+	// 员工姓名，必须与手机号码一起使用。
+	// 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 员工手机号，必须与姓名一起使用。</br> 如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
+	// 员工手机号，必须与姓名一起使用。
+	//  如果UserId为空，则此字段不能为空。同时，姓名和手机号码必须与传入合同（FlowId）中的签署人信息一致。
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 }
 
@@ -4557,36 +4575,38 @@ func (r *CreateUserAutoSignEnableUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateWebThemeConfigRequestParams struct {
-	// 操作人信息
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 主题类型
-	// <br/>EMBED_WEB_THEME：嵌入式主题
-	// <br/>目前只支持EMBED_WEB_THEME，web页面嵌入的主题风格配置
+	// 主题类型，取值如下：
+	// <ul><li> **EMBED_WEB_THEME**：嵌入式主题（默认），web页面嵌入的主题风格配置</li>
+	// </ul>
 	ThemeType *string `json:"ThemeType,omitnil" name:"ThemeType"`
 
 	// 主题配置
 	WebThemeConfig *WebThemeConfig `json:"WebThemeConfig,omitnil" name:"WebThemeConfig"`
 
-	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type CreateWebThemeConfigRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 主题类型
-	// <br/>EMBED_WEB_THEME：嵌入式主题
-	// <br/>目前只支持EMBED_WEB_THEME，web页面嵌入的主题风格配置
+	// 主题类型，取值如下：
+	// <ul><li> **EMBED_WEB_THEME**：嵌入式主题（默认），web页面嵌入的主题风格配置</li>
+	// </ul>
 	ThemeType *string `json:"ThemeType,omitnil" name:"ThemeType"`
 
 	// 主题配置
 	WebThemeConfig *WebThemeConfig `json:"WebThemeConfig,omitnil" name:"WebThemeConfig"`
 
-	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -5358,7 +5378,7 @@ type DescribeFlowEvidenceReportRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 签署报告编号
+	// 签署报告编号, 由<a href="https://qian.tencent.com/developers/companyApis/certificate/CreateFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生
 	ReportId *string `json:"ReportId,omitnil" name:"ReportId"`
 
 	// 代理企业和员工的信息。
@@ -5373,7 +5393,7 @@ type DescribeFlowEvidenceReportRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 签署报告编号
+	// 签署报告编号, 由<a href="https://qian.tencent.com/developers/companyApis/certificate/CreateFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生
 	ReportId *string `json:"ReportId,omitnil" name:"ReportId"`
 
 	// 代理企业和员工的信息。
@@ -5404,16 +5424,15 @@ func (r *DescribeFlowEvidenceReportRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowEvidenceReportResponseParams struct {
-	// 出证报告PDF的下载 URL
+	// 出证报告PDF的下载 URL，`有效期为5分钟`，超过有效期后将无法再下载。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ReportUrl *string `json:"ReportUrl,omitnil" name:"ReportUrl"`
 
-	// 签署报告出证任务的状态
-	// <ul>
-	// <li>EvidenceStatusExecuting : 出证任务在执行中</li>
-	// <li>EvidenceStatusSuccess : 出证任务执行成功</li>
-	// <li>EvidenceStatusFailed : 出证任务执行失败</li>
-	// </ul>
+	// 出证任务执行的状态, 状态含义如下：
+	// 
+	// <ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
+	// <li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
+	// <li>**EvidenceStatusFailed** ： 出征任务执行失败</li></ul>
 	Status *string `json:"Status,omitnil" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6445,8 +6464,7 @@ type DescribeUserAutoSignStatusResponseParams struct {
 
 	// 设置用户开通自动签时是否绑定个人自动签账号许可。
 	// 
-	// <ul><li>**0**: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li>
-	// <li>**1**: 不使用个人自动签账号许可进行开通</li></ul>
+	// <ul><li>**0**: 使用个人自动签账号许可进行开通，个人自动签账号许可有效期1年，注: `不可解绑释放更换他人`</li></ul>
 	LicenseType *int64 `json:"LicenseType,omitnil" name:"LicenseType"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -7077,59 +7095,89 @@ type FlowDetailInfo struct {
 }
 
 type FlowGroupInfo struct {
-	// 合同（流程）的名称
+	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+	// 该名称还将用于合同签署完成后的下载文件名。
 	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
 
-	// 合同（流程）的签署方信息
+	// 签署流程参与者信息，最大限制50方
+	// 注意 approver中的顺序需要和模板中的顺序保持一致， 否则会导致模板中配置的信息无效。
 	Approvers []*ApproverInfo `json:"Approvers,omitnil" name:"Approvers"`
 
-	// 发起合同（流程）的资源Id,此资源必须是PDF文件,来自UploadFiles,使用文件发起合同(流程)组时必传
+	// 文件资源ID，通过多文件上传[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获得，为32位字符串。
+	// 建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
 	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
 
-	// 发起合同（流程）的模板Id,用模板发起合同（流程）组时必填
+	// 合同模板ID，为32位字符串。
+	// 建议开发者保存此模板ID，后续用此模板发起合同流程需要此参数。
+	// 可登录腾讯电子签控制台，在 "模板"->"模板中心"->"列表展示设置"选中模板 ID 中查看某个模板的TemplateId(在页面中展示为模板ID)。
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 合同（流程）的类型
+	// 签署流程的类型(如销售合同/入职合同等)，最大长度200个字符
+	// 示例值：劳务合同
 	FlowType *string `json:"FlowType,omitnil" name:"FlowType"`
 
-	// 合同（流程）的描述
+	// 签署流程描述,最大长度1000个字符
 	FlowDescription *string `json:"FlowDescription,omitnil" name:"FlowDescription"`
 
-	// 合同（流程）的截止时间戳，单位秒。默认是一年
+	// 签署流程的签署截止时间。
+	// 
+	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
+	// 示例值：1604912664
 	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
 
 	// 合同（流程）的回调地址
+	//
+	// Deprecated: CallbackUrl is deprecated.
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
-	// 第三方平台传递过来的信息, 限制1024字符 格式必须是base64的
+	// 调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
+	// 回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
 	UserData *string `json:"UserData,omitnil" name:"UserData"`
 
-	// 合同（流程）的签署是否是无序签, true - 无序。 false - 有序, 默认 
+	// 发送类型：
+	// true：无序签
+	// false：有序签
+	// 注：默认为false（有序签），请和模板中的配置保持一致
+	// 示例值：true
 	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
 
-	// 合同（流程）发起方的填写控件, 由发起方进行在发起时进行填充
+	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
+	// <ul><li>单行文本控件</li>
+	// <li>多行文本控件</li>
+	// <li>勾选框控件</li>
+	// <li>数字控件</li>
+	// <li>图片控件</li>
+	// <li>动态表格等填写控件</li></ul>
 	Components []*Component `json:"Components,omitnil" name:"Components"`
 
-	// 本企业（发起方）是否需要签署审批，若需要审批则只允许查看不允许签署，需要您调用接口CreateFlowSignReview提交审批结果。
+	// 发起方企业的签署人进行签署操作是否需要企业内部审批。使用此功能需要发起方企业有参与签署。
+	// 若设置为true，审核结果需通过接口 [CreateFlowSignReview](https://qian.tencent.com/developers/companyApis/operateFlows/CreateFlowSignReview) 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。
+	// 
+	// 注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+	// 示例值：true
 	NeedSignReview *bool `json:"NeedSignReview,omitnil" name:"NeedSignReview"`
 
-	// 本企业（发起方）自动签署，需要您在发起合同时给印章控件指定自动签的印章。
+	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	// 示例值：E_PRESCRIPTION_AUTO_SIGN
 	AutoSignScene *string `json:"AutoSignScene,omitnil" name:"AutoSignScene"`
 }
 
 type FlowGroupOptions struct {
-	// 发起合同（流程）组的合同（流程）签署人校验方式
-	// VerifyCheck: 人脸识别（默认）
-	// MobileCheck：手机号验证
+	// 签署人校验方式,支持以下类型
+	// <ul><li>VerifyCheck : 人脸识别 (默认值)</li>
+	// <li>MobileCheck : 手机号验证</li></ul>
 	// 参数说明：此参数仅在合同组文件发起有效，可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil" name:"ApproverVerifyType"`
 
 	// 发起合同（流程）组本方企业经办人通知方式
-	// 签署通知类型：sms--短信，none--不通知
+	// 签署通知类型，支持以下类型
+	// <ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
 	SelfOrganizationApproverNotifyType *string `json:"SelfOrganizationApproverNotifyType,omitnil" name:"SelfOrganizationApproverNotifyType"`
 
 	// 发起合同（流程）组他方经办人通知方式
-	// 签署通知类型：sms--短信，none--不通知
+	// 签署通知类型，支持以下类型
+	// <ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
 	OtherApproverNotifyType *string `json:"OtherApproverNotifyType,omitnil" name:"OtherApproverNotifyType"`
 }
 
@@ -8715,13 +8763,12 @@ func (r *VerifyPdfResponse) FromJsonString(s string) error {
 
 type WebThemeConfig struct {
 	// 是否显示页面底部电子签logo，取值如下：
-	// <ul>
-	// <li> **true**：页面底部显示电子签logo</li>
-	// <li> **false**：页面底部不显示电子签logo（默认）</li>
-	// </ul>
+	// <ul><li> **true**：页面底部显示电子签logo</li>
+	// <li> **false**：页面底部不显示电子签logo（默认）</li></ul>
 	DisplaySignBrandLogo *bool `json:"DisplaySignBrandLogo,omitnil" name:"DisplaySignBrandLogo"`
 
-	// 主题颜色
-	// <br/>支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
+	// 主题颜色：
+	// 支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
+	// <br/>
 	WebEmbedThemeColor *string `json:"WebEmbedThemeColor,omitnil" name:"WebEmbedThemeColor"`
 }

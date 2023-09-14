@@ -5465,7 +5465,7 @@ type DownloadL4LogsRequestParams struct {
 	// 四层实例 ID 集合。
 	ProxyIds []*string `json:"ProxyIds,omitnil" name:"ProxyIds"`
 
-	// 分页查询的限制数目，默认值为 20，最大查询条目为 1000。
+	// 分页查询的限制数目，默认值为 20，最大查询条目为 300。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页的偏移量，默认值为 0。
@@ -5487,7 +5487,7 @@ type DownloadL4LogsRequest struct {
 	// 四层实例 ID 集合。
 	ProxyIds []*string `json:"ProxyIds,omitnil" name:"ProxyIds"`
 
-	// 分页查询的限制数目，默认值为 20，最大查询条目为 1000。
+	// 分页查询的限制数目，默认值为 20，最大查询条目为 300。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页的偏移量，默认值为 0。
@@ -5560,7 +5560,7 @@ type DownloadL7LogsRequestParams struct {
 	// 子域名集合，不填默认选择全部子域名。
 	Domains []*string `json:"Domains,omitnil" name:"Domains"`
 
-	// 分页查询的限制数目，默认值为 20，最大查询条目为 1000。
+	// 分页查询的限制数目，默认值为 20，最大查询条目为 300。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页的偏移量，默认值为 0。
@@ -5582,7 +5582,7 @@ type DownloadL7LogsRequest struct {
 	// 子域名集合，不填默认选择全部子域名。
 	Domains []*string `json:"Domains,omitnil" name:"Domains"`
 
-	// 分页查询的限制数目，默认值为 20，最大查询条目为 1000。
+	// 分页查询的限制数目，默认值为 20，最大查询条目为 300。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页的偏移量，默认值为 0。

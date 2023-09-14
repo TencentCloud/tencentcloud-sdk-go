@@ -569,6 +569,9 @@ type CreateClusterRequestParams struct {
 
 	// 节点初始化脚本信息列表。
 	InitNodeScripts []*NodeScript `json:"InitNodeScripts,omitnil" name:"InitNodeScripts"`
+
+	// 高性能计算集群ID。若创建的实例为高性能计算实例，需指定实例放置的集群，否则不可指定。
+	HpcClusterId *string `json:"HpcClusterId,omitnil" name:"HpcClusterId"`
 }
 
 type CreateClusterRequest struct {
@@ -638,6 +641,9 @@ type CreateClusterRequest struct {
 
 	// 节点初始化脚本信息列表。
 	InitNodeScripts []*NodeScript `json:"InitNodeScripts,omitnil" name:"InitNodeScripts"`
+
+	// 高性能计算集群ID。若创建的实例为高性能计算实例，需指定实例放置的集群，否则不可指定。
+	HpcClusterId *string `json:"HpcClusterId,omitnil" name:"HpcClusterId"`
 }
 
 func (r *CreateClusterRequest) ToJsonString() string {
@@ -672,6 +678,7 @@ func (r *CreateClusterRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "AutoScalingType")
 	delete(f, "InitNodeScripts")
+	delete(f, "HpcClusterId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateClusterRequest has unknown keys!", "")
 	}

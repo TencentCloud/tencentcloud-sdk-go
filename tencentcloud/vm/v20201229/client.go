@@ -150,13 +150,13 @@ func NewCreateVideoModerationTaskResponse() (response *CreateVideoModerationTask
 }
 
 // CreateVideoModerationTask
-// 本接口（Video Moderation System，VM）用于提交视频文件或视频流进行智能审核任务。使用前请您使用腾讯云主账号登录控制台[开通视频内容安全服务](https://console.cloud.tencent.com/cms/video/package)并调整好对应的业务配置。<br>
+// 本接口（Video Moderation System，VM）用于提交视频文件或视频流进行智能审核任务。使用前请您使用腾讯云主账号登录控制台[开通视频内容安全服务](https://console.cloud.tencent.com/cms)并调整好对应的业务配置。<br>
 //
 // ### 功能使用说明：
 //
 // 
 //
-// - 前往“[内容安全控制台-视频内容安全](https://console.cloud.tencent.com/cms/video/package)”开启使用视频内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含600分钟的处理量（换算1s每帧截图，赠送**36000张图**、**600分钟的音频**处理量），有效期为1个月。
+// - 前往“[内容安全控制台-视频内容安全](https://console.cloud.tencent.com/cms)”开启使用视频内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含200分钟的处理量（换算1s每帧截图，赠送**12000张图**、**200分钟的音频**处理量），有效期为15天。
 //
 // 
 //
@@ -166,7 +166,7 @@ func NewCreateVideoModerationTaskResponse() (response *CreateVideoModerationTask
 //
 // - 默认接口请求频率限制：**20次/秒**，对于异步审核任务（点播视频），超出频率限制的请求会自动排入待审核队列，对于同步审核任务（直播视频），超出频率限制将会报错。
 //
-// - 默认并发审核路数限制：10路，异步审核任务（点播视频）数量超过并发审核路数时，将会进入排队；同步审核任务（直播视频）超过并发审核路数，接口会返回错误。
+// - 默认并发审核路数限制：点播默认10路，异步审核任务（点播视频）数量超过并发审核路数时，将会进入排队；直播默认100路，同步审核任务（直播视频）超过并发审核路数，接口会返回错误。
 //
 // 
 //
@@ -198,9 +198,9 @@ func NewCreateVideoModerationTaskResponse() (response *CreateVideoModerationTask
 //
 // 
 //
-// - 视频文件大小支持：**文件 < 3GB**
+// - 视频文件大小支持：**4K视频文件 < 10GB**；**低于4K视频文件 < 5GB**
 //
-// - 视频文件分辨率支持：**最佳分辨率为1920x1080 (1080p)**，如果视频文件小于300MB，则分辨率可以大于1080p，更大视频可以调用[云转码服务](https://cloud.tencent.com/product/mps/details)转码后再送审；
+// - 视频文件分辨率支持：**最佳分辨率为1920x1080 (1080p)**，如果视频文件小于300MB，则分辨率可以大于1080p，分辨率最大支持4K，更大视频可以调用[云转码服务](https://cloud.tencent.com/product/mps/details)转码后再送审；
 //
 // - 视频文件支持格式：flv、mkv 、mp4 、rmvb 、avi 、wmv、3gp、ts、mov、rm、mpeg、wmf等。
 //
@@ -216,7 +216,7 @@ func NewCreateVideoModerationTaskResponse() (response *CreateVideoModerationTask
 //
 // 
 //
-// - 视频流时长支持：**5小时以内**
+// - 视频流时长支持：**8小时以内**
 //
 // - 视频流分辨率支持：支持**1920x1080 (1080p)**，更高分辨率视频可以调用[直播云转码服务](https://cloud.tencent.com/document/product/267/39889)转码后再送审；
 //
@@ -250,13 +250,13 @@ func (c *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskReq
 }
 
 // CreateVideoModerationTask
-// 本接口（Video Moderation System，VM）用于提交视频文件或视频流进行智能审核任务。使用前请您使用腾讯云主账号登录控制台[开通视频内容安全服务](https://console.cloud.tencent.com/cms/video/package)并调整好对应的业务配置。<br>
+// 本接口（Video Moderation System，VM）用于提交视频文件或视频流进行智能审核任务。使用前请您使用腾讯云主账号登录控制台[开通视频内容安全服务](https://console.cloud.tencent.com/cms)并调整好对应的业务配置。<br>
 //
 // ### 功能使用说明：
 //
 // 
 //
-// - 前往“[内容安全控制台-视频内容安全](https://console.cloud.tencent.com/cms/video/package)”开启使用视频内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含600分钟的处理量（换算1s每帧截图，赠送**36000张图**、**600分钟的音频**处理量），有效期为1个月。
+// - 前往“[内容安全控制台-视频内容安全](https://console.cloud.tencent.com/cms)”开启使用视频内容安全服务，首次开通服务的用户可免费领用试用套餐包，包含200分钟的处理量（换算1s每帧截图，赠送**12000张图**、**200分钟的音频**处理量），有效期为15天。
 //
 // 
 //
@@ -266,7 +266,7 @@ func (c *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskReq
 //
 // - 默认接口请求频率限制：**20次/秒**，对于异步审核任务（点播视频），超出频率限制的请求会自动排入待审核队列，对于同步审核任务（直播视频），超出频率限制将会报错。
 //
-// - 默认并发审核路数限制：10路，异步审核任务（点播视频）数量超过并发审核路数时，将会进入排队；同步审核任务（直播视频）超过并发审核路数，接口会返回错误。
+// - 默认并发审核路数限制：点播默认10路，异步审核任务（点播视频）数量超过并发审核路数时，将会进入排队；直播默认100路，同步审核任务（直播视频）超过并发审核路数，接口会返回错误。
 //
 // 
 //
@@ -298,9 +298,9 @@ func (c *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskReq
 //
 // 
 //
-// - 视频文件大小支持：**文件 < 3GB**
+// - 视频文件大小支持：**4K视频文件 < 10GB**；**低于4K视频文件 < 5GB**
 //
-// - 视频文件分辨率支持：**最佳分辨率为1920x1080 (1080p)**，如果视频文件小于300MB，则分辨率可以大于1080p，更大视频可以调用[云转码服务](https://cloud.tencent.com/product/mps/details)转码后再送审；
+// - 视频文件分辨率支持：**最佳分辨率为1920x1080 (1080p)**，如果视频文件小于300MB，则分辨率可以大于1080p，分辨率最大支持4K，更大视频可以调用[云转码服务](https://cloud.tencent.com/product/mps/details)转码后再送审；
 //
 // - 视频文件支持格式：flv、mkv 、mp4 、rmvb 、avi 、wmv、3gp、ts、mov、rm、mpeg、wmf等。
 //
@@ -316,7 +316,7 @@ func (c *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskReq
 //
 // 
 //
-// - 视频流时长支持：**5小时以内**
+// - 视频流时长支持：**8小时以内**
 //
 // - 视频流分辨率支持：支持**1920x1080 (1080p)**，更高分辨率视频可以调用[直播云转码服务](https://cloud.tencent.com/document/product/267/39889)转码后再送审；
 //

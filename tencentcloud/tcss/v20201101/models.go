@@ -3117,6 +3117,16 @@ type ContainerInfo struct {
 
 	// 所属Pod的内存
 	PodMem *int64 `json:"PodMem,omitnil" name:"PodMem"`
+
+	// 集群名称
+	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
+
+	// 集群ID
+	ClusterID *string `json:"ClusterID,omitnil" name:"ClusterID"`
+
+	// pod uid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PodUid *string `json:"PodUid,omitnil" name:"PodUid"`
 }
 
 type ContainerMount struct {
@@ -3337,7 +3347,9 @@ func (r *CreateAccessControlsRuleExportJobResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type CreateAssetImageRegistryScanTaskOneKeyRequestParams struct {
-	// 是否扫描全部镜像
+	// 是否扫描全部镜像(废弃)
+	//
+	// Deprecated: All is deprecated.
 	All *bool `json:"All,omitnil" name:"All"`
 
 	// 扫描的镜像列表
@@ -3348,12 +3360,30 @@ type CreateAssetImageRegistryScanTaskOneKeyRequestParams struct {
 
 	// 扫描的镜像列表Id
 	Id []*uint64 `json:"Id,omitnil" name:"Id"`
+
+	// 是否最新镜像
+	IsLatest *bool `json:"IsLatest,omitnil" name:"IsLatest"`
+
+	// 扫描范围 0全部镜像，1自选镜像，2推荐扫描镜像
+	ScanScope *uint64 `json:"ScanScope,omitnil" name:"ScanScope"`
+
+	// 仓库类型
+	RegistryType []*string `json:"RegistryType,omitnil" name:"RegistryType"`
+
+	// 命名空间
+	Namespace []*string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 是否存在运行中的容器
+	ContainerRunning *bool `json:"ContainerRunning,omitnil" name:"ContainerRunning"`
+
+	// 任务超时时长单位s
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 }
 
 type CreateAssetImageRegistryScanTaskOneKeyRequest struct {
 	*tchttp.BaseRequest
 	
-	// 是否扫描全部镜像
+	// 是否扫描全部镜像(废弃)
 	All *bool `json:"All,omitnil" name:"All"`
 
 	// 扫描的镜像列表
@@ -3364,6 +3394,24 @@ type CreateAssetImageRegistryScanTaskOneKeyRequest struct {
 
 	// 扫描的镜像列表Id
 	Id []*uint64 `json:"Id,omitnil" name:"Id"`
+
+	// 是否最新镜像
+	IsLatest *bool `json:"IsLatest,omitnil" name:"IsLatest"`
+
+	// 扫描范围 0全部镜像，1自选镜像，2推荐扫描镜像
+	ScanScope *uint64 `json:"ScanScope,omitnil" name:"ScanScope"`
+
+	// 仓库类型
+	RegistryType []*string `json:"RegistryType,omitnil" name:"RegistryType"`
+
+	// 命名空间
+	Namespace []*string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 是否存在运行中的容器
+	ContainerRunning *bool `json:"ContainerRunning,omitnil" name:"ContainerRunning"`
+
+	// 任务超时时长单位s
+	Timeout *uint64 `json:"Timeout,omitnil" name:"Timeout"`
 }
 
 func (r *CreateAssetImageRegistryScanTaskOneKeyRequest) ToJsonString() string {
@@ -3382,6 +3430,12 @@ func (r *CreateAssetImageRegistryScanTaskOneKeyRequest) FromJsonString(s string)
 	delete(f, "Images")
 	delete(f, "ScanType")
 	delete(f, "Id")
+	delete(f, "IsLatest")
+	delete(f, "ScanScope")
+	delete(f, "RegistryType")
+	delete(f, "Namespace")
+	delete(f, "ContainerRunning")
+	delete(f, "Timeout")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateAssetImageRegistryScanTaskOneKeyRequest has unknown keys!", "")
 	}
@@ -10677,6 +10731,8 @@ type DescribeAssetImageRegistryDetailResponseParams struct {
 
 	// 敏感信息数
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: SentiveInfoCnt is deprecated.
 	SentiveInfoCnt *uint64 `json:"SentiveInfoCnt,omitnil" name:"SentiveInfoCnt"`
 
 	// 镜像系统
@@ -10762,6 +10818,10 @@ type DescribeAssetImageRegistryDetailResponseParams struct {
 	// 镜像创建的时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ImageCreateTime *string `json:"ImageCreateTime,omitnil" name:"ImageCreateTime"`
+
+	// 敏感信息数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SensitiveInfoCnt *uint64 `json:"SensitiveInfoCnt,omitnil" name:"SensitiveInfoCnt"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -10903,6 +10963,9 @@ type DescribeAssetImageRegistryListRequestParams struct {
 
 	// 是否仅展示各repository最新的镜像, 默认为false
 	OnlyShowLatest *bool `json:"OnlyShowLatest,omitnil" name:"OnlyShowLatest"`
+
+	// 是否仅展示运行中容器镜像
+	IsRunning *bool `json:"IsRunning,omitnil" name:"IsRunning"`
 }
 
 type DescribeAssetImageRegistryListRequest struct {
@@ -10926,6 +10989,9 @@ type DescribeAssetImageRegistryListRequest struct {
 
 	// 是否仅展示各repository最新的镜像, 默认为false
 	OnlyShowLatest *bool `json:"OnlyShowLatest,omitnil" name:"OnlyShowLatest"`
+
+	// 是否仅展示运行中容器镜像
+	IsRunning *bool `json:"IsRunning,omitnil" name:"IsRunning"`
 }
 
 func (r *DescribeAssetImageRegistryListRequest) ToJsonString() string {
@@ -10946,6 +11012,7 @@ func (r *DescribeAssetImageRegistryListRequest) FromJsonString(s string) error {
 	delete(f, "By")
 	delete(f, "Order")
 	delete(f, "OnlyShowLatest")
+	delete(f, "IsRunning")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetImageRegistryListRequest has unknown keys!", "")
 	}
@@ -11435,12 +11502,15 @@ func (r *DescribeAssetImageRegistryScanStatusOneKeyResponse) FromJsonString(s st
 
 // Predefined struct for user
 type DescribeAssetImageRegistrySummaryRequestParams struct {
-
+	// 过滤字段
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeAssetImageRegistrySummaryRequest struct {
 	*tchttp.BaseRequest
 	
+	// 过滤字段
+	Filters []*AssetFilters `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeAssetImageRegistrySummaryRequest) ToJsonString() string {
@@ -11455,7 +11525,7 @@ func (r *DescribeAssetImageRegistrySummaryRequest) FromJsonString(s string) erro
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAssetImageRegistrySummaryRequest has unknown keys!", "")
 	}
@@ -16029,11 +16099,14 @@ func (r *DescribeImageRegistryNamespaceListRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type DescribeImageRegistryNamespaceListResponseParams struct {
-	// 可返回的项目空间的总量。
+	// 可返回的命令空间的总量。
 	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
-	// 返回的项目空间列表
+	// 返回的命令空间列表
 	NamespaceList []*string `json:"NamespaceList,omitnil" name:"NamespaceList"`
+
+	// 返回的命令空间详细信息列表
+	NamespaceDetail []*NamespaceInfo `json:"NamespaceDetail,omitnil" name:"NamespaceDetail"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -16101,6 +16174,8 @@ type DescribeImageRegistryTimingScanTaskResponseParams struct {
 	ScanType []*string `json:"ScanType,omitnil" name:"ScanType"`
 
 	// 扫描全部镜像
+	//
+	// Deprecated: All is deprecated.
 	All *bool `json:"All,omitnil" name:"All"`
 
 	// 自定义扫描镜像
@@ -16114,6 +16189,22 @@ type DescribeImageRegistryTimingScanTaskResponseParams struct {
 	// 是否扫描最新版本镜像
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Latest *bool `json:"Latest,omitnil" name:"Latest"`
+
+	// 扫描结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScanEndTime *string `json:"ScanEndTime,omitnil" name:"ScanEndTime"`
+
+	// 仓库类型 tcr,ccr,harbor	
+	RegistryType []*string `json:"RegistryType,omitnil" name:"RegistryType"`
+
+	// 是否存在运行中的容器	
+	ContainerRunning *bool `json:"ContainerRunning,omitnil" name:"ContainerRunning"`
+
+	// 扫描范围 0全部镜像，1自选镜像，2推荐扫描镜像
+	ScanScope *uint64 `json:"ScanScope,omitnil" name:"ScanScope"`
+
+	// 命名空间
+	Namespace []*string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -25431,6 +25522,8 @@ type ImageRepoInfo struct {
 	RiskCnt *uint64 `json:"RiskCnt,omitnil" name:"RiskCnt"`
 
 	// 敏感信息数
+	//
+	// Deprecated: SentiveInfoCnt is deprecated.
 	SentiveInfoCnt *uint64 `json:"SentiveInfoCnt,omitnil" name:"SentiveInfoCnt"`
 
 	// 是否可信镜像
@@ -25512,6 +25605,34 @@ type ImageRepoInfo struct {
 	// 是否为镜像的最新版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsLatestImage *bool `json:"IsLatestImage,omitnil" name:"IsLatestImage"`
+
+	// low级别漏洞个数
+	LowLevelVulCnt *uint64 `json:"LowLevelVulCnt,omitnil" name:"LowLevelVulCnt"`
+
+	// medium级别漏洞个数
+	MediumLevelVulCnt *uint64 `json:"MediumLevelVulCnt,omitnil" name:"MediumLevelVulCnt"`
+
+	// high级别漏洞个数
+	HighLevelVulCnt *uint64 `json:"HighLevelVulCnt,omitnil" name:"HighLevelVulCnt"`
+
+	// critical级别漏洞个数
+	CriticalLevelVulCnt *uint64 `json:"CriticalLevelVulCnt,omitnil" name:"CriticalLevelVulCnt"`
+
+	// 关联容器数
+	ContainerCnt *uint64 `json:"ContainerCnt,omitnil" name:"ContainerCnt"`
+
+	// 组件数
+	ComponentCnt *uint64 `json:"ComponentCnt,omitnil" name:"ComponentCnt"`
+
+	// 是否运行中
+	IsRunning *bool `json:"IsRunning,omitnil" name:"IsRunning"`
+
+	// 是否存在必修漏洞
+	HasNeedFixVul *bool `json:"HasNeedFixVul,omitnil" name:"HasNeedFixVul"`
+
+	// 敏感信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SensitiveInfoCnt *uint64 `json:"SensitiveInfoCnt,omitnil" name:"SensitiveInfoCnt"`
 }
 
 type ImageRisk struct {
@@ -25766,6 +25887,10 @@ type ImageVul struct {
 	// 组件版本
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil" name:"Version"`
+
+	// 攻击热度 0-3
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttackLevel *int64 `json:"AttackLevel,omitnil" name:"AttackLevel"`
 }
 
 type ImagesBindRuleInfo struct {
@@ -28712,6 +28837,20 @@ func (r *ModifyVulDefenceSettingResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type NamespaceInfo struct {
+	// 命名空间名称
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 包含仓库数
+	RegistryCnt *int64 `json:"RegistryCnt,omitnil" name:"RegistryCnt"`
+
+	// 包含镜像数
+	ImageCnt *int64 `json:"ImageCnt,omitnil" name:"ImageCnt"`
+
+	// 包含风险镜像数
+	RiskImageCnt *int64 `json:"RiskImageCnt,omitnil" name:"RiskImageCnt"`
+}
+
 type NetworkAuditRecord struct {
 	// 集群id
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
@@ -31260,6 +31399,8 @@ type UpdateImageRegistryTimingScanTaskRequestParams struct {
 	Images []*ImageInfo `json:"Images,omitnil" name:"Images"`
 
 	// 是否扫描所有
+	//
+	// Deprecated: All is deprecated.
 	All *bool `json:"All,omitnil" name:"All"`
 
 	// 扫描镜像Id
@@ -31267,6 +31408,21 @@ type UpdateImageRegistryTimingScanTaskRequestParams struct {
 
 	// 是否扫描最新版本
 	Latest *bool `json:"Latest,omitnil" name:"Latest"`
+
+	// 是否存在运行中的容器
+	ContainerRunning *bool `json:"ContainerRunning,omitnil" name:"ContainerRunning"`
+
+	// 扫描结束时间
+	ScanEndTime *string `json:"ScanEndTime,omitnil" name:"ScanEndTime"`
+
+	// 扫描范围 0全部镜像，1自选镜像，2推荐扫描镜像
+	ScanScope *uint64 `json:"ScanScope,omitnil" name:"ScanScope"`
+
+	// 仓库类型 tcr,ccr,harbor
+	RegistryType []*string `json:"RegistryType,omitnil" name:"RegistryType"`
+
+	// 命名空间
+	Namespace []*string `json:"Namespace,omitnil" name:"Namespace"`
 }
 
 type UpdateImageRegistryTimingScanTaskRequest struct {
@@ -31295,6 +31451,21 @@ type UpdateImageRegistryTimingScanTaskRequest struct {
 
 	// 是否扫描最新版本
 	Latest *bool `json:"Latest,omitnil" name:"Latest"`
+
+	// 是否存在运行中的容器
+	ContainerRunning *bool `json:"ContainerRunning,omitnil" name:"ContainerRunning"`
+
+	// 扫描结束时间
+	ScanEndTime *string `json:"ScanEndTime,omitnil" name:"ScanEndTime"`
+
+	// 扫描范围 0全部镜像，1自选镜像，2推荐扫描镜像
+	ScanScope *uint64 `json:"ScanScope,omitnil" name:"ScanScope"`
+
+	// 仓库类型 tcr,ccr,harbor
+	RegistryType []*string `json:"RegistryType,omitnil" name:"RegistryType"`
+
+	// 命名空间
+	Namespace []*string `json:"Namespace,omitnil" name:"Namespace"`
 }
 
 func (r *UpdateImageRegistryTimingScanTaskRequest) ToJsonString() string {
@@ -31317,6 +31488,11 @@ func (r *UpdateImageRegistryTimingScanTaskRequest) FromJsonString(s string) erro
 	delete(f, "All")
 	delete(f, "Id")
 	delete(f, "Latest")
+	delete(f, "ContainerRunning")
+	delete(f, "ScanEndTime")
+	delete(f, "ScanScope")
+	delete(f, "RegistryType")
+	delete(f, "Namespace")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateImageRegistryTimingScanTaskRequest has unknown keys!", "")
 	}

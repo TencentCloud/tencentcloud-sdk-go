@@ -7205,6 +7205,22 @@ type InstanceInfo struct {
 
 	// 资源ID同唯一id
 	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 公网IP列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OuterIpList []*string `json:"OuterIpList,omitnil" name:"OuterIpList"`
+
+	// 内网IP列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InnerIpList []*string `json:"InnerIpList,omitnil" name:"InnerIpList"`
+
+	// 专享实例计费信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil" name:"InstanceChargePrepaid"`
+
+	// 所属vpc
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UniqVpcId *string `json:"UniqVpcId,omitnil" name:"UniqVpcId"`
 }
 
 type InstanceParameterInput struct {

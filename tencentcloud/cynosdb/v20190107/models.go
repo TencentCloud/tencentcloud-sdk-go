@@ -2822,6 +2822,10 @@ type CynosdbClusterDetail struct {
 	// 自动续费标识，1为自动续费，0为到期不续
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+
+	// 节点网络类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
 }
 
 type CynosdbErrorLogItem struct {

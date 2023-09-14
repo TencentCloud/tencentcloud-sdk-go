@@ -41,7 +41,7 @@ const (
 	// 引擎识别超时。
 	FAILEDOPERATION_ENGINERECOGNIZETIMEOUT = "FailedOperation.EngineRecognizeTimeout"
 
-	// 身份证信息不合法（身份证号、姓名字段校验非法等）。
+	// 第二代身份证信息不合法或缺失（身份证号、姓名字段校验非法等）
 	FAILEDOPERATION_IDCARDINFOILLEGAL = "FailedOperation.IdCardInfoIllegal"
 
 	// 图片分辨率过小或身份证在原图中的占比过小
@@ -59,7 +59,7 @@ const (
 	// 照片未检测到名片。
 	FAILEDOPERATION_IMAGENOBUSINESSCARD = "FailedOperation.ImageNoBusinessCard"
 
-	// 图片中未检测到身份证。
+	// 图片中未检测到第二代身份证或临时身份证。
 	FAILEDOPERATION_IMAGENOIDCARD = "FailedOperation.ImageNoIdCard"
 
 	// 非指定卡类别图片
@@ -77,7 +77,7 @@ const (
 	// 输入的Language不支持。
 	FAILEDOPERATION_LANGUAGENOTSUPPORT = "FailedOperation.LanguageNotSupport"
 
-	// 照片中存在多张卡。
+	// 图片中存在两张及以上同面卡证，请上传卡证单面图片或一正一反双面图片。
 	FAILEDOPERATION_MULTICARDERROR = "FailedOperation.MultiCardError"
 
 	// 非银行卡。

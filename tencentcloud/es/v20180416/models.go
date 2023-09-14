@@ -3062,6 +3062,10 @@ type Operation struct {
 
 	// 操作进度
 	Progress *float64 `json:"Progress,omitnil" name:"Progress"`
+
+	// 操作者Uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubAccountUin *string `json:"SubAccountUin,omitnil" name:"SubAccountUin"`
 }
 
 type OperationDetail struct {
@@ -3132,6 +3136,27 @@ type OptionalWebServiceInfo struct {
 	// 版本号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil" name:"Version"`
+}
+
+type ProcessDetail struct {
+	// 已完成数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Completed *int64 `json:"Completed,omitnil" name:"Completed"`
+
+	// 剩余数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remain *int64 `json:"Remain,omitnil" name:"Remain"`
+
+	// 总数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 任务类型：
+	// 60：重启型任务
+	// 70：分片迁移型任务
+	// 80：节点变配任务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
 }
 
 // Predefined struct for user
@@ -3639,6 +3664,10 @@ type TaskDetail struct {
 	// 任务花费时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ElapsedTime *int64 `json:"ElapsedTime,omitnil" name:"ElapsedTime"`
+
+	// 任务进度详情
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessInfo *ProcessDetail `json:"ProcessInfo,omitnil" name:"ProcessInfo"`
 }
 
 // Predefined struct for user
@@ -3649,7 +3678,7 @@ type UpdateDiagnoseSettingsRequestParams struct {
 	// 0：开启智能运维；-1：关闭智能运维
 	Status *int64 `json:"Status,omitnil" name:"Status"`
 
-	// 智能运维每天定时巡检时间
+	// 智能运维每天定时巡检时间，时间格式为HH:00:00，例如15:00:00
 	CronTime *string `json:"CronTime,omitnil" name:"CronTime"`
 }
 
@@ -3662,7 +3691,7 @@ type UpdateDiagnoseSettingsRequest struct {
 	// 0：开启智能运维；-1：关闭智能运维
 	Status *int64 `json:"Status,omitnil" name:"Status"`
 
-	// 智能运维每天定时巡检时间
+	// 智能运维每天定时巡检时间，时间格式为HH:00:00，例如15:00:00
 	CronTime *string `json:"CronTime,omitnil" name:"CronTime"`
 }
 
@@ -3714,16 +3743,16 @@ type UpdateDictionariesRequestParams struct {
 	// ES实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// IK分词主词典COS地址
+	// 安装时填IK分词主词典COS地址，删除时填词典名如test.dic
 	IkMainDicts []*string `json:"IkMainDicts,omitnil" name:"IkMainDicts"`
 
-	// IK分词停用词词典COS地址
+	// 安装时填IK分词停用词词典COS地址，删除时填词典名如test.dic
 	IkStopwords []*string `json:"IkStopwords,omitnil" name:"IkStopwords"`
 
-	// 同义词词典COS地址
+	// 安装时填同义词词典COS地址，删除时填词典名如test.dic
 	Synonym []*string `json:"Synonym,omitnil" name:"Synonym"`
 
-	// QQ分词词典COS地址
+	// 安装时填QQ分词词典COS地址，删除时填词典名如test.dic
 	QQDict []*string `json:"QQDict,omitnil" name:"QQDict"`
 
 	// 0：安装；1：删除。默认值0
@@ -3739,16 +3768,16 @@ type UpdateDictionariesRequest struct {
 	// ES实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// IK分词主词典COS地址
+	// 安装时填IK分词主词典COS地址，删除时填词典名如test.dic
 	IkMainDicts []*string `json:"IkMainDicts,omitnil" name:"IkMainDicts"`
 
-	// IK分词停用词词典COS地址
+	// 安装时填IK分词停用词词典COS地址，删除时填词典名如test.dic
 	IkStopwords []*string `json:"IkStopwords,omitnil" name:"IkStopwords"`
 
-	// 同义词词典COS地址
+	// 安装时填同义词词典COS地址，删除时填词典名如test.dic
 	Synonym []*string `json:"Synonym,omitnil" name:"Synonym"`
 
-	// QQ分词词典COS地址
+	// 安装时填QQ分词词典COS地址，删除时填词典名如test.dic
 	QQDict []*string `json:"QQDict,omitnil" name:"QQDict"`
 
 	// 0：安装；1：删除。默认值0
@@ -4620,7 +4649,7 @@ type UpgradeInstanceRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 目标ES版本，支持：”6.4.3“, "6.8.2"，"7.5.1"
+	// 目标ES版本，支持：”6.4.3“, "6.8.2"，"7.5.1", "7.10.1", "7.14.2"
 	EsVersion *string `json:"EsVersion,omitnil" name:"EsVersion"`
 
 	// 是否只做升级检查，默认值为false
@@ -4648,7 +4677,7 @@ type UpgradeInstanceRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 目标ES版本，支持：”6.4.3“, "6.8.2"，"7.5.1"
+	// 目标ES版本，支持：”6.4.3“, "6.8.2"，"7.5.1", "7.10.1", "7.14.2"
 	EsVersion *string `json:"EsVersion,omitnil" name:"EsVersion"`
 
 	// 是否只做升级检查，默认值为false
@@ -4732,7 +4761,7 @@ type UpgradeLicenseRequestParams struct {
 	// 代金券ID列表（目前仅支持指定一张代金券）
 	VoucherIds []*string `json:"VoucherIds,omitnil" name:"VoucherIds"`
 
-	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li><li>不传参时会默认维持原状，传参时需注意只能由不开启变为开启，无法由开启变为不开启</li>
 	BasicSecurityType *uint64 `json:"BasicSecurityType,omitnil" name:"BasicSecurityType"`
 
 	// 是否强制重启<li>true强制重启</li><li>false不强制重启</li> 默认值false
@@ -4754,7 +4783,7 @@ type UpgradeLicenseRequest struct {
 	// 代金券ID列表（目前仅支持指定一张代金券）
 	VoucherIds []*string `json:"VoucherIds,omitnil" name:"VoucherIds"`
 
-	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+	// 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li><li>不传参时会默认维持原状，传参时需注意只能由不开启变为开启，无法由开启变为不开启</li>
 	BasicSecurityType *uint64 `json:"BasicSecurityType,omitnil" name:"BasicSecurityType"`
 
 	// 是否强制重启<li>true强制重启</li><li>false不强制重启</li> 默认值false

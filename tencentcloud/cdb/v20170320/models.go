@@ -638,6 +638,10 @@ type AuditLog struct {
 	// 事物持续时间，微秒。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TrxLivingTime *uint64 `json:"TrxLivingTime,omitnil" name:"TrxLivingTime"`
+
+	// 日志命中规则模板的基本信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateInfo []*LogRuleTemplateInfo `json:"TemplateInfo,omitnil" name:"TemplateInfo"`
 }
 
 type AuditLogAggregationResult struct {
@@ -4300,6 +4304,7 @@ type DescribeAuditLogFilesResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 审计日志文件详情。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Items []*AuditLogFile `json:"Items,omitnil" name:"Items"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -9251,7 +9256,7 @@ type InstanceAuditLogFilters struct {
 	// 过滤项。目前支持以下搜索条件：
 	// 
 	// 包含、不包含、包含（分词维度）、不包含（分词维度）:
-	// sql - SQL详情
+	// sql - SQL详情；alarmLevel - 告警等级；ruleTemplateId - 规则模板Id
 	// 
 	// 等于、不等于、包含、不包含：
 	// host - 客户端地址；
@@ -9533,6 +9538,24 @@ type LocalBinlogConfigDefault struct {
 
 	// 本地binlog空间使用率，可取值范围：[30,50]。
 	MaxUsage *int64 `json:"MaxUsage,omitnil" name:"MaxUsage"`
+}
+
+type LogRuleTemplateInfo struct {
+	// 模板ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTemplateId *string `json:"RuleTemplateId,omitnil" name:"RuleTemplateId"`
+
+	// 规则模板名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTemplateName *string `json:"RuleTemplateName,omitnil" name:"RuleTemplateName"`
+
+	// 告警等级。1-低风险，2-中风险，3-高风险。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmLevel *string `json:"AlarmLevel,omitnil" name:"AlarmLevel"`
+
+	// 规则模板变更状态：0-未变更；1-已变更；2-已删除
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RuleTemplateStatus *int64 `json:"RuleTemplateStatus,omitnil" name:"RuleTemplateStatus"`
 }
 
 type MasterInfo struct {
@@ -11835,8 +11858,11 @@ type OpenAuditServiceRequestParams struct {
 	// 审计规则。同RuleTemplateIds都不填是全审计。
 	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil" name:"AuditRuleFilters"`
 
-	// 规则模版ID。同AuditRuleFilters都不填是全审计。
+	// 规则模板ID。同AuditRuleFilters都不填是全审计。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
+
+	// 审计类型。true-全审计；默认false-规则审计。
+	AuditAll *bool `json:"AuditAll,omitnil" name:"AuditAll"`
 }
 
 type OpenAuditServiceRequest struct {
@@ -11863,8 +11889,11 @@ type OpenAuditServiceRequest struct {
 	// 审计规则。同RuleTemplateIds都不填是全审计。
 	AuditRuleFilters []*AuditRuleFilters `json:"AuditRuleFilters,omitnil" name:"AuditRuleFilters"`
 
-	// 规则模版ID。同AuditRuleFilters都不填是全审计。
+	// 规则模板ID。同AuditRuleFilters都不填是全审计。
 	RuleTemplateIds []*string `json:"RuleTemplateIds,omitnil" name:"RuleTemplateIds"`
+
+	// 审计类型。true-全审计；默认false-规则审计。
+	AuditAll *bool `json:"AuditAll,omitnil" name:"AuditAll"`
 }
 
 func (r *OpenAuditServiceRequest) ToJsonString() string {
@@ -11884,6 +11913,7 @@ func (r *OpenAuditServiceRequest) FromJsonString(s string) error {
 	delete(f, "HighLogExpireDay")
 	delete(f, "AuditRuleFilters")
 	delete(f, "RuleTemplateIds")
+	delete(f, "AuditAll")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "OpenAuditServiceRequest has unknown keys!", "")
 	}

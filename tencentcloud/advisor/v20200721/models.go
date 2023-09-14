@@ -20,45 +20,7 @@ import (
     "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
 )
 
-type DescribeStrategie struct {
-	// 评估项ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	StrategyId *uint64 `json:"StrategyId,omitnil" name:"StrategyId"`
-
-	// 评估项名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Name *string `json:"Name,omitnil" name:"Name"`
-
-	// 评估项描述
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Desc *string `json:"Desc,omitnil" name:"Desc"`
-
-	// 评估项对应产品ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Product *string `json:"Product,omitnil" name:"Product"`
-
-	// 评估项对应产品名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	ProductDesc *string `json:"ProductDesc,omitnil" name:"ProductDesc"`
-
-	// 评估项优化建议
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Repair *string `json:"Repair,omitnil" name:"Repair"`
-
-	// 评估项类别ID
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
-
-	// 评估项类别名称
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
-
-	// 评估项风险列表
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	Conditions []*DescribeStrategiesCondition `json:"Conditions,omitnil" name:"Conditions"`
-}
-
-type DescribeStrategiesCondition struct {
+type Conditions struct {
 	// 警告条件ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ConditionId *uint64 `json:"ConditionId,omitnil" name:"ConditionId"`
@@ -108,7 +70,7 @@ func (r *DescribeStrategiesRequest) FromJsonString(s string) error {
 type DescribeStrategiesResponseParams struct {
 	// 评估项列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Strategies []*DescribeStrategie `json:"Strategies,omitnil" name:"Strategies"`
+	Strategies []*Strategies `json:"Strategies,omitnil" name:"Strategies"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -258,4 +220,42 @@ type RiskFieldsDesc struct {
 	// 字段值对应字典
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FieldDict []*KeyValue `json:"FieldDict,omitnil" name:"FieldDict"`
+}
+
+type Strategies struct {
+	// 评估项ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StrategyId *uint64 `json:"StrategyId,omitnil" name:"StrategyId"`
+
+	// 评估项名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 评估项描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Desc *string `json:"Desc,omitnil" name:"Desc"`
+
+	// 评估项对应产品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Product *string `json:"Product,omitnil" name:"Product"`
+
+	// 评估项对应产品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductDesc *string `json:"ProductDesc,omitnil" name:"ProductDesc"`
+
+	// 评估项优化建议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Repair *string `json:"Repair,omitnil" name:"Repair"`
+
+	// 评估项类别ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *uint64 `json:"GroupId,omitnil" name:"GroupId"`
+
+	// 评估项类别名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 评估项风险列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Conditions []*Conditions `json:"Conditions,omitnil" name:"Conditions"`
 }

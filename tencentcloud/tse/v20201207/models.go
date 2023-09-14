@@ -181,6 +181,85 @@ type CloudNativeAPIGatewayCanaryRuleCondition struct {
 	GlobalConfigName *string `json:"GlobalConfigName,omitnil" name:"GlobalConfigName"`
 }
 
+type CloudNativeAPIGatewayConfig struct {
+	// 控制台类型。
+	ConsoleType *string `json:"ConsoleType,omitnil" name:"ConsoleType"`
+
+	// HTTP链接地址。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HttpUrl *string `json:"HttpUrl,omitnil" name:"HttpUrl"`
+
+	// HTTPS链接地址。
+	HttpsUrl *string `json:"HttpsUrl,omitnil" name:"HttpsUrl"`
+
+	// 网络类型, Open|Internal。
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
+
+	// 管理员用户名。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminUser *string `json:"AdminUser,omitnil" name:"AdminUser"`
+
+	// 管理员密码。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AdminPassword *string `json:"AdminPassword,omitnil" name:"AdminPassword"`
+
+	// 网络状态, Open|Closed|Updating
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 网络访问策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessControl *NetworkAccessControl `json:"AccessControl,omitnil" name:"AccessControl"`
+
+	// 内网子网 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+
+	// 内网VPC ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 负载均衡的描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 负载均衡的规格类型，传 "SLA" 表示性能容量型，返回空为共享型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaType *string `json:"SlaType,omitnil" name:"SlaType"`
+
+	// clb vip
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
+
+	// 带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InternetMaxBandwidthOut *uint64 `json:"InternetMaxBandwidthOut,omitnil" name:"InternetMaxBandwidthOut"`
+
+	// 是否多可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MultiZoneFlag *bool `json:"MultiZoneFlag,omitnil" name:"MultiZoneFlag"`
+
+	// 主可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterZoneId *string `json:"MasterZoneId,omitnil" name:"MasterZoneId"`
+
+	// 备可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZoneId *string `json:"SlaveZoneId,omitnil" name:"SlaveZoneId"`
+
+	// 主可用区名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MasterZoneName *string `json:"MasterZoneName,omitnil" name:"MasterZoneName"`
+
+	// 备可用区名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlaveZoneName *string `json:"SlaveZoneName,omitnil" name:"SlaveZoneName"`
+
+	// 网络 id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkId *string `json:"NetworkId,omitnil" name:"NetworkId"`
+}
+
 type CloudNativeAPIGatewayNode struct {
 	// 云原生网关节点 id
 	NodeId *string `json:"NodeId,omitnil" name:"NodeId"`
@@ -2096,6 +2175,90 @@ func (r *DescribeCloudNativeAPIGatewayCanaryRulesResponse) ToJsonString() string
 // because it has no param check, nor strict type check
 func (r *DescribeCloudNativeAPIGatewayCanaryRulesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudNativeAPIGatewayConfigRequestParams struct {
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 分组id，不填时为默认分组
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+}
+
+type DescribeCloudNativeAPIGatewayConfigRequest struct {
+	*tchttp.BaseRequest
+	
+	// 云原生API网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 分组id，不填时为默认分组
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "GroupId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudNativeAPIGatewayConfigResponseParams struct {
+	// 获取云原生API网关响应结果。
+	Result *DescribeCloudNativeAPIGatewayConfigResult `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCloudNativeAPIGatewayConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudNativeAPIGatewayConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeCloudNativeAPIGatewayConfigResult struct {
+	// 网关实例ID。
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 分组网络配置列表。
+	ConfigList []*CloudNativeAPIGatewayConfig `json:"ConfigList,omitnil" name:"ConfigList"`
+
+	// 分组子网信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupSubnetId *string `json:"GroupSubnetId,omitnil" name:"GroupSubnetId"`
+
+	// 分组VPC信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupVpcId *string `json:"GroupVpcId,omitnil" name:"GroupVpcId"`
+
+	// 分组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupId *string `json:"GroupId,omitnil" name:"GroupId"`
 }
 
 // Predefined struct for user
@@ -4654,6 +4817,17 @@ type NativeGatewayServerGroups struct {
 
 	// 分组信息数组。
 	GatewayGroupList []*NativeGatewayServerGroup `json:"GatewayGroupList,omitnil" name:"GatewayGroupList"`
+}
+
+type NetworkAccessControl struct {
+	// 访问模式：Whitelist|Blacklist
+	Mode *string `json:"Mode,omitnil" name:"Mode"`
+
+	// 白名单列表
+	CidrWhiteList []*string `json:"CidrWhiteList,omitnil" name:"CidrWhiteList"`
+
+	// 黑名单列表
+	CidrBlackList []*string `json:"CidrBlackList,omitnil" name:"CidrBlackList"`
 }
 
 type PolarisLimiterAddress struct {

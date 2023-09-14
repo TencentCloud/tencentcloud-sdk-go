@@ -3623,6 +3623,63 @@ func (r *DeleteGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteInstancePostRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type DeleteInstancePostRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *DeleteInstancePostRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInstancePostRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteInstancePostRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteInstancePostResponseParams struct {
+	// 返回的结果集
+	Result *InstanceDeleteResponse `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteInstancePostResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteInstancePostResponseParams `json:"Response"`
+}
+
+func (r *DeleteInstancePostResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteInstancePostResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteInstancePreRequestParams struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -7857,6 +7914,12 @@ type InstanceConfigDO struct {
 
 	// 默认的复制Factor
 	DefaultReplicationFactor *int64 `json:"DefaultReplicationFactor,omitnil" name:"DefaultReplicationFactor"`
+}
+
+type InstanceDeleteResponse struct {
+	// 删除实例返回的任务Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *int64 `json:"FlowId,omitnil" name:"FlowId"`
 }
 
 type InstanceDetail struct {

@@ -3412,7 +3412,7 @@ func NewDescribeInstanceSpecsResponse() (response *DescribeInstanceSpecsResponse
 }
 
 // DescribeInstanceSpecs
-// 本接口（DescribeInstanceSpecs）用于查询实例规格
+// 本接口（DescribeInstanceSpecs）用于查询购买页可购买的实例规格
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
@@ -3425,7 +3425,7 @@ func (c *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsRequest) (r
 }
 
 // DescribeInstanceSpecs
-// 本接口（DescribeInstanceSpecs）用于查询实例规格
+// 本接口（DescribeInstanceSpecs）用于查询购买页可购买的实例规格
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"

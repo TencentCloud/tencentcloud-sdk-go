@@ -35,11 +35,17 @@ const (
 	// 集群状态错误。
 	FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 
-	// 集群索引没有副本存在。
-	FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = "FailedOperation.ErrorClusterStateNoReplication"
-
 	// 集群状态不健康。
 	FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = "FailedOperation.ErrorClusterStateUnhealth"
+
+	// 由于EsDictionaryInfo错误，不允许操纵。
+	FAILEDOPERATION_ESDICTIONARYINFOERROR = "FailedOperation.EsDictionaryInfoError"
+
+	// 文件名不符合规范。
+	FAILEDOPERATION_FILENAMEERROR = "FailedOperation.FileNameError"
+
+	// 文件大小不符合要求。
+	FAILEDOPERATION_FILESIZEERROR = "FailedOperation.FileSizeError"
 
 	// 获取实例的标签列表错误。
 	FAILEDOPERATION_GETTAGINFOERROR = "FailedOperation.GetTagInfoError"
@@ -49,6 +55,12 @@ const (
 
 	// 用户未实名认证。
 	FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
+
+	// 该实例不满足退费条件。
+	FAILEDOPERATION_REFUNDERROR = "FailedOperation.RefundError"
+
+	// 不支持对本地盘集群通过滚动重启方式扩缩容。
+	FAILEDOPERATION_UNSUPPORTEDLOCALDISKROLLUPSCALEUPORDOWN = "FailedOperation.UnsupportedLocalDiskRollUpScaleUpOrDown"
 
 	// 不支持在滚动重启扩容计算资源同时扩容磁盘数量。
 	FAILEDOPERATION_UNSUPPORTEDRESETNODETYPEANDSCALEOUTDISK = "FailedOperation.UnsupportedResetNodeTypeAndScaleOutDisk"
@@ -65,11 +77,20 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// Gc类型的取值和预期不符。
+	INVALIDPARAMETER_GC = "InvalidParameter.GC"
+
 	// AppId的取值和预期不符。
 	INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 
 	// 是否自动使用代金券AutoVoucher的取值和预期不符。
 	INVALIDPARAMETER_INVALIDAUTOVOUCHER = "InvalidParameter.InvalidAutoVoucher"
+
+	// ClusterName的取值和预期不符。
+	INVALIDPARAMETER_INVALIDCLUSTERNAME = "InvalidParameter.InvalidClusterName"
+
+	// cos自动备份信息与预期不符。
+	INVALIDPARAMETER_INVALIDCOSBACKUPINFO = "InvalidParameter.InvalidCosBackupInfo"
 
 	// 集群部署方式InvalidDeployMode的取值和预期不符。
 	INVALIDPARAMETER_INVALIDDEPLOYMODE = "InvalidParameter.InvalidDeployMode"
@@ -83,6 +104,15 @@ const (
 	// 是否启用增强型ssd云盘DiskEnhance的取值和预期不符。
 	INVALIDPARAMETER_INVALIDDISKENHANCE = "InvalidParameter.InvalidDiskEnhance"
 
+	// 节点磁盘容量DiskSize的取值和预期不符。
+	INVALIDPARAMETER_INVALIDDISKSIZE = "InvalidParameter.InvalidDiskSize"
+
+	// 节点磁盘类型DiskType的取值和预期不符。
+	INVALIDPARAMETER_INVALIDDISKTYPE = "InvalidParameter.InvalidDiskType"
+
+	// EsAcl的取值和预期不符。
+	INVALIDPARAMETER_INVALIDESACL = "InvalidParameter.InvalidEsACL"
+
 	// 实例版本EsVersion的取值和预期不符。
 	INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
 
@@ -95,8 +125,14 @@ const (
 	// 私有网络vip列表IpList的取值和预期不符。
 	INVALIDPARAMETER_INVALIDIPLIST = "InvalidParameter.InvalidIpList"
 
+	// Kibana内网访问端口的取值和预期不符。
+	INVALIDPARAMETER_INVALIDKIBANAPRIVATEPORT = "InvalidParameter.InvalidKibanaPrivatePort"
+
 	// 分页大小Limit的取值和预期不符。
 	INVALIDPARAMETER_INVALIDLIMIT = "InvalidParameter.InvalidLimit"
+
+	// 日志类型LogType的取值和预期不符。
+	INVALIDPARAMETER_INVALIDLOGTYPE = "InvalidParameter.InvalidLogType"
 
 	// 多可用区部署ZoneDetail的信息与预期不符。
 	INVALIDPARAMETER_INVALIDMULTIZONEINFO = "InvalidParameter.InvalidMultiZoneInfo"
@@ -122,11 +158,23 @@ const (
 	// 排序方式OrderByType的取值和预期不符。
 	INVALIDPARAMETER_INVALIDORDERBYTYPE = "InvalidParameter.InvalidOrderByType"
 
+	// 内网访问PrivateAccess的取值和预期不符。
+	INVALIDPARAMETER_INVALIDPRIVATEACCESS = "InvalidParameter.InvalidPrivateAccess"
+
+	// 外网访问PublicAccess的取值和预期不符。
+	INVALIDPARAMETER_INVALIDPUBLICACCESS = "InvalidParameter.InvalidPublicAccess"
+
 	// 地域Region的取值与预期不符。
 	INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 
+	// 重启方式RestartType的取值和预期不符。
+	INVALIDPARAMETER_INVALIDRESTARTTYPE = "InvalidParameter.InvalidRestartType"
+
 	// 安全组id列表SecurityGroupIds的取值和预期不符。
 	INVALIDPARAMETER_INVALIDSECURITYGROUPIDS = "InvalidParameter.InvalidSecurityGroupIds"
+
+	// 子网ID SubnetId的取值与预期不符。
+	INVALIDPARAMETER_INVALIDSUBNETID = "InvalidParameter.InvalidSubnetId"
 
 	// 节点标签信息TagInfo的取值和预期不符。
 	INVALIDPARAMETER_INVALIDTAGINFO = "InvalidParameter.InvalidTagInfo"
@@ -134,8 +182,14 @@ const (
 	// 节点标签信息列表TagList的取值和预期不符。
 	INVALIDPARAMETER_INVALIDTAGLIST = "InvalidParameter.InvalidTagList"
 
+	// 时间相关参数的取值或格式和预期不符。
+	INVALIDPARAMETER_INVALIDTIMEPARAM = "InvalidParameter.InvalidTimeParam"
+
 	// 节点类型Type的取值和预期不符。
 	INVALIDPARAMETER_INVALIDTYPE = "InvalidParameter.InvalidType"
+
+	// 更新类型UpdateType的取值和预期不符。
+	INVALIDPARAMETER_INVALIDUPDATETYPE = "InvalidParameter.InvalidUpdateType"
 
 	// 代金券ID列表VoucherIds的取值和预期不符。
 	INVALIDPARAMETER_INVALIDVOUCHERIDS = "InvalidParameter.InvalidVoucherIds"
@@ -149,11 +203,53 @@ const (
 	// 计费类型ChargeType的参数取值有误。
 	INVALIDPARAMETERVALUE_CHARGETYPE = "InvalidParameterValue.ChargeType"
 
+	// 组件配置值有误。
+	INVALIDPARAMETERVALUE_CONFIGINFO = "InvalidParameterValue.ConfigInfo"
+
+	// ES配置类型取值有误。
+	INVALIDPARAMETERVALUE_ESCONFIGTYPE = "InvalidParameterValue.EsConfigType"
+
+	// 为集群稳定起见，当前只支持同时安装1个用户插件。
+	INVALIDPARAMETERVALUE_INSTALLPLUGINLIST = "InvalidParameterValue.InstallPluginList"
+
+	// 实例名校验失败，按规则输入。
+	INVALIDPARAMETERVALUE_INSTANCENAME = "InvalidParameterValue.InstanceName"
+
+	// 截止日期冲突。
+	INVALIDPARAMETERVALUE_INVALIDDEADLINE = "InvalidParameterValue.InvalidDeadline"
+
+	// Jdk类型的取值和预期不符。
+	INVALIDPARAMETERVALUE_INVALIDJDK = "InvalidParameterValue.InvalidJDK"
+
+	// 密码校验不合法。
+	INVALIDPARAMETERVALUE_PASSWORD = "InvalidParameterValue.Password"
+
+	// 插件类型PluginType的取值有误。
+	INVALIDPARAMETERVALUE_PLUGINTYPE = "InvalidParameterValue.PluginType"
+
 	// 自动续费标识RenewFlag的参数取值有误。
 	INVALIDPARAMETERVALUE_RENEWFLAG = "InvalidParameterValue.RenewFlag"
 
+	// 升级方式UpgradeMode的取值有误。
+	INVALIDPARAMETERVALUE_UPGRADEMODE = "InvalidParameterValue.UpgradeMode"
+
 	// 该账号下的集群数超过限额。
 	LIMITEXCEEDED_CLUSTERNUM = "LimitExceeded.ClusterNum"
+
+	// 超过当天智能诊断最大次数。
+	LIMITEXCEEDED_DIAGNOSECOUNT = "LimitExceeded.DiagnoseCount"
+
+	// 节点数量或索引存储量超过限额。
+	LIMITEXCEEDED_NODENUMORINDICES = "LimitExceeded.NodeNumOrIndices"
+
+	// 超过最大自定义插件数量，请先删除部分自定义插件。
+	LIMITEXCEEDED_PLUGININSTALL = "LimitExceeded.PluginInstall"
+
+	// 超出一个用户可以拥有的最大资源限制。
+	LIMITEXCEEDED_RESOURCELIMIT = "LimitExceeded.ResourceLimit"
+
+	// 更新参数值过多，超过限制。
+	LIMITEXCEEDED_UPDATEITEMLIMIT = "LimitExceeded.UpdateItemLimit"
 
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
@@ -163,6 +259,9 @@ const (
 
 	// 资源被占用。
 	RESOURCEINUSE = "ResourceInUse"
+
+	// 存在诊断中的作业，请等待作业诊断完成后重试。
+	RESOURCEINUSE_DIAGNOSE = "ResourceInUse.Diagnose"
 
 	// 订单被锁定。
 	RESOURCEINUSE_ORDER = "ResourceInUse.Order"
@@ -179,20 +278,35 @@ const (
 	// 子网剩余ip数量不足。
 	RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
 
+	// 可用的子网IP不足。
+	RESOURCEINSUFFICIENT_SUBNETIP = "ResourceInsufficient.SubnetIp"
+
 	// 可用区资源不足。
 	RESOURCEINSUFFICIENT_ZONE = "ResourceInsufficient.Zone"
-
-	// 资源不存在。
-	RESOURCENOTFOUND = "ResourceNotFound"
 
 	// CAM资源未找到。
 	RESOURCENOTFOUND_CAMINFONOTFOUND = "ResourceNotFound.CAMInfoNotFound"
 
+	// 集群资源获取失败。
+	RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
+
+	// COS相关信息获取失败。
+	RESOURCENOTFOUND_COSINFONOTFOUND = "ResourceNotFound.CosInfoNotFound"
+
 	// 数据库资源获取失败。
 	RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 
+	// 数据节点信息未找到。
+	RESOURCENOTFOUND_DATANODENOTFOUND = "ResourceNotFound.DataNodeNotFound"
+
+	// 智能诊断相关资源未找到。
+	RESOURCENOTFOUND_DIAGNOSENOTFOUND = "ResourceNotFound.DiagnoseNotFound"
+
 	// 磁盘相关资源获取失败。
 	RESOURCENOTFOUND_DISKINFONOTFOUND = "ResourceNotFound.DiskInfoNotFound"
+
+	// 获取oss资源失败。
+	RESOURCENOTFOUND_OSSINFONOTFOUND = "ResourceNotFound.OssInfoNotFound"
 
 	// 安全组信息获取失败。
 	RESOURCENOTFOUND_SECURITYGROUPNOTFOUND = "ResourceNotFound.SecurityGroupNotFound"
@@ -200,14 +314,14 @@ const (
 	// 获取计费资源失败。
 	RESOURCENOTFOUND_TRADECGWNOTFOUND = "ResourceNotFound.TradeCgwNotFound"
 
+	// VPC资源获取失败。
+	RESOURCENOTFOUND_VPCINFONOTFOUND = "ResourceNotFound.VPCInfoNotFound"
+
 	// 白名单资源获取失败。
 	RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
 
 	// 资源不可用。
 	RESOURCEUNAVAILABLE = "ResourceUnavailable"
-
-	// 资源售罄。
-	RESOURCESSOLDOUT = "ResourcesSoldOut"
 
 	// 未授权操作。
 	UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
@@ -224,12 +338,48 @@ const (
 	// 不支持该认证方式。
 	UNSUPPORTEDOPERATION_BASICSECURITYTYPE = "UnsupportedOperation.BasicSecurityType"
 
+	// 不支持变配节点或磁盘的配置。
+	UNSUPPORTEDOPERATION_CHANGENODETYPE = "UnsupportedOperation.ChangeNodeType"
+
+	// 集群中存在部分索引处于关闭状态。
+	UNSUPPORTEDOPERATION_CLUSTERSTATECLOSE = "UnsupportedOperation.ClusterStateClose"
+
+	// 集群中存在部分索引无备份。
+	UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
+
+	// 集群的状态不正常（不为绿）。
+	UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
+
+	// 该版本不支持cos备份。集群需要重启来允许cos备份。
+	UNSUPPORTEDOPERATION_COSBACKUP = "UnsupportedOperation.CosBackUp"
+
+	// 不支持该智能诊断任务。
+	UNSUPPORTEDOPERATION_DIAGNOSEJOB = "UnsupportedOperation.DiagnoseJob"
+
+	// 智能诊断未开启。
+	UNSUPPORTEDOPERATION_DIAGNOSENOTOPEN = "UnsupportedOperation.DiagnoseNotOpen"
+
+	// 不支持该操作，服务类型有误。
+	UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+
 	// 不支持该操作，license的类型有误。
 	UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
+
+	// 不支持本地盘机型。
+	UNSUPPORTEDOPERATION_LOCALDISK = "UnsupportedOperation.LocalDisk"
+
+	// 不支持多可用区变配。
+	UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
+
+	// 不支持该插件。
+	UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
 
 	// 不支持该操作，实例状态有误。
 	UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 
 	// VPC资源获取失败。
 	UNSUPPORTEDOPERATION_VPCINFONOTFOUND = "UnsupportedOperation.VPCInfoNotFound"
+
+	// 不支持的web组件。
+	UNSUPPORTEDOPERATION_WEBSERVICETYPE = "UnsupportedOperation.WebServiceType"
 )

@@ -961,7 +961,12 @@ type AiRecognitionTaskObjectResultItem struct {
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 物体出现的片段列表。
+	//
+	// Deprecated: SegmentSet is deprecated.
 	SegmentSet []*AiRecognitionTaskObjectSeqmentItem `json:"SegmentSet,omitnil" name:"SegmentSet"`
+
+	// 物体出现的片段列表。
+	RecognitionSegmentSet []*AiRecognitionTaskObjectSegmentItem `json:"RecognitionSegmentSet,omitnil" name:"RecognitionSegmentSet"`
 }
 
 type AiRecognitionTaskObjectResultOutput struct {
@@ -974,6 +979,20 @@ type AiRecognitionTaskObjectResultOutput struct {
 
 	// 智能物体识别结果集文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
 	ResultSetFileUrlExpireTime *string `json:"ResultSetFileUrlExpireTime,omitnil" name:"ResultSetFileUrlExpireTime"`
+}
+
+type AiRecognitionTaskObjectSegmentItem struct {
+	// 识别片段起始的偏移时间，单位：秒。
+	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil" name:"StartTimeOffset"`
+
+	// 识别片段终止的偏移时间，单位：秒。
+	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil" name:"EndTimeOffset"`
+
+	// 识别片段置信度。取值：0~100。
+	Confidence *float64 `json:"Confidence,omitnil" name:"Confidence"`
+
+	// 识别结果的区域坐标。数组包含 4 个元素 [x1,y1,x2,y2]，依次表示区域左上点、右下点的横纵坐标。
+	AreaCoordSet []*int64 `json:"AreaCoordSet,omitnil" name:"AreaCoordSet"`
 }
 
 type AiRecognitionTaskObjectSeqmentItem struct {
@@ -15047,7 +15066,12 @@ type MediaTransitionItem struct {
 	Duration *float64 `json:"Duration,omitnil" name:"Duration"`
 
 	// 转场操作列表。图像转场操作和音频转场操作各自最多支持一个。
+	//
+	// Deprecated: Transitions is deprecated.
 	Transitions []*TransitionOpertion `json:"Transitions,omitnil" name:"Transitions"`
+
+	// 转场操作列表。图像转场操作和音频转场操作各自最多支持一个。
+	MediaTransitions []*TransitionOperation `json:"MediaTransitions,omitnil" name:"MediaTransitions"`
 }
 
 type MediaVideoStreamItem struct {
@@ -23705,6 +23729,57 @@ type TranscodeTemplate struct {
 
 	// 切片类型，仅当 Container 为 hls 时有效。
 	SegmentType *string `json:"SegmentType,omitnil" name:"SegmentType"`
+}
+
+type TransitionOperation struct {
+	// 转场类型，取值有：
+	// <ul>
+	// <li>图像的转场操作，用于两个视频片段图像间的转场处理：
+	// <ul>
+	// <li>ImageFadeInFadeOut：图像淡入淡出。 </li>
+	// <li>BowTieHorizontal：水平蝴蝶结。 </li>
+	// <li>BowTieVertical：垂直蝴蝶结。 </li>
+	// <li>ButterflyWaveScrawler：晃动。 </li>
+	// <li>Cannabisleaf：枫叶。 </li>
+	// <li>Circle：弧形收放。 </li>
+	// <li>CircleCrop：圆环聚拢。 </li>
+	// <li>Circleopen：椭圆聚拢。 </li>
+	// <li>Crosswarp：横向翘曲。 </li>
+	// <li>Cube：立方体。 </li>
+	// <li>DoomScreenTransition：幕布。 </li>
+	// <li>Doorway：门廊。 </li>
+	// <li>Dreamy：波浪。 </li>
+	// <li>DreamyZoom：水平聚拢。 </li>
+	// <li>FilmBurn：火烧云。 </li>
+	// <li>GlitchMemories：抖动。 </li>
+	// <li>Heart：心形。 </li>
+	// <li>InvertedPageCurl：翻页。 </li>
+	// <li>Luma：腐蚀。 </li>
+	// <li>Mosaic：九宫格。 </li>
+	// <li>Pinwheel：风车。 </li>
+	// <li>PolarFunction：椭圆扩散。 </li>
+	// <li>PolkaDotsCurtain：弧形扩散。 </li>
+	// <li>Radial：雷达扫描 </li>
+	// <li>RotateScaleFade：上下收放。 </li>
+	// <li>Squeeze：上下聚拢。 </li>
+	// <li>Swap：放大切换。 </li>
+	// <li>Swirl：螺旋。 </li>
+	// <li>UndulatingBurnOutSwirl：水流蔓延。 </li>
+	// <li>Windowblinds：百叶窗。 </li>
+	// <li>WipeDown：向下收起。 </li>
+	// <li>WipeLeft：向左收起。 </li>
+	// <li>WipeRight：向右收起。 </li>
+	// <li>WipeUp：向上收起。 </li>
+	// <li>ZoomInCircles：水波纹。 </li>
+	// </ul>
+	// </li>
+	// <li>音频的转场操作，用于两个音频片段间的转场处理：
+	// <ul>
+	// <li>AudioFadeInFadeOut：声音淡入淡出。 </li>
+	// </ul>
+	// </li>
+	// </ul>
+	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
 type TransitionOpertion struct {
