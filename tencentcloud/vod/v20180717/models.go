@@ -3273,7 +3273,7 @@ type CreateAdaptiveDynamicStreamingTemplateRequestParams struct {
 	// <li>SimpleAES</li>
 	// <li>Widevine</li>
 	// <li>FairPlay</li>
-	// 如果取值为空字符串，代表不对视频做 DRM 保护。
+	// 默认值为空字符串，如果取值为空字符串，代表不对视频做 DRM 保护。
 	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
 
 	// DRM 的密钥提供商，取值范围：
@@ -3326,7 +3326,7 @@ type CreateAdaptiveDynamicStreamingTemplateRequest struct {
 	// <li>SimpleAES</li>
 	// <li>Widevine</li>
 	// <li>FairPlay</li>
-	// 如果取值为空字符串，代表不对视频做 DRM 保护。
+	// 默认值为空字符串，如果取值为空字符串，代表不对视频做 DRM 保护。
 	DrmType *string `json:"DrmType,omitnil" name:"DrmType"`
 
 	// DRM 的密钥提供商，取值范围：
@@ -4160,9 +4160,11 @@ type CreateImageSpriteTemplateRequestParams struct {
 	SampleInterval *uint64 `json:"SampleInterval,omitnil" name:"SampleInterval"`
 
 	// 雪碧图中小图的行数。
+	// 注意：小图的行数会影响最终大图的高度，大图的高度最大为15000像素，其中大图的高度为小图行数与小图高度的乘积。
 	RowCount *uint64 `json:"RowCount,omitnil" name:"RowCount"`
 
 	// 雪碧图中小图的列数。
+	// 注意：小图的列数会影响最终大图的宽度，大图的宽度最大为15000像素，其中大图的宽度为小图列数与小图宽度的乘积。
 	ColumnCount *uint64 `json:"ColumnCount,omitnil" name:"ColumnCount"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -4186,6 +4188,7 @@ type CreateImageSpriteTemplateRequestParams struct {
 	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 	// 默认值：0。
+	// 注意：小图的宽度会影响最终大图的宽度，大图的宽度最大为15000像素，其中大图的宽度为小图列数与小图宽度的乘积。
 	Width *uint64 `json:"Width,omitnil" name:"Width"`
 
 	// 雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
@@ -4194,6 +4197,7 @@ type CreateImageSpriteTemplateRequestParams struct {
 	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 	// 默认值：0。
+	// 注意：小图的高度会影响最终大图的高度，大图的高度最大为15000像素，其中大图的高度为小图行数与小图高度的乘积。
 	Height *uint64 `json:"Height,omitnil" name:"Height"`
 
 	// 分辨率自适应，可选值：
@@ -4224,9 +4228,11 @@ type CreateImageSpriteTemplateRequest struct {
 	SampleInterval *uint64 `json:"SampleInterval,omitnil" name:"SampleInterval"`
 
 	// 雪碧图中小图的行数。
+	// 注意：小图的行数会影响最终大图的高度，大图的高度最大为15000像素，其中大图的高度为小图行数与小图高度的乘积。
 	RowCount *uint64 `json:"RowCount,omitnil" name:"RowCount"`
 
 	// 雪碧图中小图的列数。
+	// 注意：小图的列数会影响最终大图的宽度，大图的宽度最大为15000像素，其中大图的宽度为小图列数与小图宽度的乘积。
 	ColumnCount *uint64 `json:"ColumnCount,omitnil" name:"ColumnCount"`
 
 	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
@@ -4250,6 +4256,7 @@ type CreateImageSpriteTemplateRequest struct {
 	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 	// 默认值：0。
+	// 注意：小图的宽度会影响最终大图的宽度，大图的宽度最大为15000像素，其中大图的宽度为小图列数与小图宽度的乘积。
 	Width *uint64 `json:"Width,omitnil" name:"Width"`
 
 	// 雪碧图中小图的高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
@@ -4258,6 +4265,7 @@ type CreateImageSpriteTemplateRequest struct {
 	// <li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
 	// <li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
 	// 默认值：0。
+	// 注意：小图的高度会影响最终大图的高度，大图的高度最大为15000像素，其中大图的高度为小图行数与小图高度的乘积。
 	Height *uint64 `json:"Height,omitnil" name:"Height"`
 
 	// 分辨率自适应，可选值：
@@ -5767,15 +5775,15 @@ type CreateVodDomainRequestParams struct {
 	// 需要接入点播的加速域名。注意：不支持填写泛域名。
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
-	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
-
 	// 需要开启 CDN 加速的区域：
 	// <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
 	// <li>Outside Chinese Mainland: 中国境外。</li>
 	// <li>Global: 全球范围。</li>
 	// 如果没有设置 AccelerateArea， 点播会根据用户在腾讯云设置的地域信息自动开通中国境内或者中国境外的 CDN 加速。开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
 	AccelerateArea *string `json:"AccelerateArea,omitnil" name:"AccelerateArea"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
 type CreateVodDomainRequest struct {
@@ -5784,15 +5792,15 @@ type CreateVodDomainRequest struct {
 	// 需要接入点播的加速域名。注意：不支持填写泛域名。
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
-	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
-	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
-
 	// 需要开启 CDN 加速的区域：
 	// <li>Chinese Mainland：中国境内（不包含港澳台）。</li>
 	// <li>Outside Chinese Mainland: 中国境外。</li>
 	// <li>Global: 全球范围。</li>
 	// 如果没有设置 AccelerateArea， 点播会根据用户在腾讯云设置的地域信息自动开通中国境内或者中国境外的 CDN 加速。开启中国境内加速的域名，需要先[备案域名](/document/product/243/18905)。
 	AccelerateArea *string `json:"AccelerateArea,omitnil" name:"AccelerateArea"`
+
+	// <b>点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。</b>
+	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
 func (r *CreateVodDomainRequest) ToJsonString() string {
@@ -5808,8 +5816,8 @@ func (r *CreateVodDomainRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Domain")
-	delete(f, "SubAppId")
 	delete(f, "AccelerateArea")
+	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVodDomainRequest has unknown keys!", "")
 	}
@@ -20564,7 +20572,7 @@ func (r *RebuildMediaRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RebuildMediaResponseParams struct {
-	// 视频重生的任务 ID，可以通过该 ID 查询视频重生任务的状态。
+	// 音画质重生的任务 ID，可以通过该 ID 查询音画质重生任务的状态。
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -21405,6 +21413,9 @@ type RestoreMediaRequestParams struct {
 	// 媒体文件唯一标识列表，最大长度：100。
 	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
 
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
+
 	// 解冻出的临时媒体文件的可访问持续时长，必须大于0，单位为“天”。
 	RestoreDay *uint64 `json:"RestoreDay,omitnil" name:"RestoreDay"`
 
@@ -21416,9 +21427,6 @@ type RestoreMediaRequestParams struct {
 	// <li>标准模式：Standard，解冻任务在24小时后完成。</li>
 	// <li>批量模式：Bulk，解冻任务在48小时后完成。</li>
 	RestoreTier *string `json:"RestoreTier,omitnil" name:"RestoreTier"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
 type RestoreMediaRequest struct {
@@ -21427,6 +21435,9 @@ type RestoreMediaRequest struct {
 	// 媒体文件唯一标识列表，最大长度：100。
 	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
 
+	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
+	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
+
 	// 解冻出的临时媒体文件的可访问持续时长，必须大于0，单位为“天”。
 	RestoreDay *uint64 `json:"RestoreDay,omitnil" name:"RestoreDay"`
 
@@ -21438,9 +21449,6 @@ type RestoreMediaRequest struct {
 	// <li>标准模式：Standard，解冻任务在24小时后完成。</li>
 	// <li>批量模式：Bulk，解冻任务在48小时后完成。</li>
 	RestoreTier *string `json:"RestoreTier,omitnil" name:"RestoreTier"`
-
-	// 点播[子应用](/document/product/266/14574) ID。如果要访问子应用中的资源，则将该字段填写为子应用 ID；否则无需填写该字段。
-	SubAppId *uint64 `json:"SubAppId,omitnil" name:"SubAppId"`
 }
 
 func (r *RestoreMediaRequest) ToJsonString() string {
@@ -21456,9 +21464,9 @@ func (r *RestoreMediaRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "FileIds")
+	delete(f, "SubAppId")
 	delete(f, "RestoreDay")
 	delete(f, "RestoreTier")
-	delete(f, "SubAppId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestoreMediaRequest has unknown keys!", "")
 	}

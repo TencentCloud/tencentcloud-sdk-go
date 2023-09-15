@@ -1001,66 +1001,6 @@ func (c *Client) SentenceCorrectionWithContext(ctx context.Context, request *Sen
     return
 }
 
-func NewTestingTextGenerationRequest() (request *TestingTextGenerationRequest) {
-    request = &TestingTextGenerationRequest{
-        BaseRequest: &tchttp.BaseRequest{},
-    }
-    
-    request.Init().WithApiInfo("nlp", APIVersion, "TestingTextGeneration")
-    
-    
-    return
-}
-
-func NewTestingTextGenerationResponse() (response *TestingTextGenerationResponse) {
-    response = &TestingTextGenerationResponse{
-        BaseResponse: &tchttp.BaseResponse{},
-    }
-    return
-}
-
-// TestingTextGeneration
-// 文案创作（内测版）为内测体验专用接口，现内测期结束，统一改为使用正式服务接口（混元大模型），故内测接口做下线处理。
-//
-// 
-//
-// 基于腾讯大模型能力，用户可以通过传入不同的参数控制生成内容的类型，并通过自然语言给模型以内容生成的指令，可以满足多种场景的文本生成需求，包括但不限于文章写作、营销文案、视频脚本、电商文案、纪要整理等（**注意：当前接口为内测体验专用接口，仅有获取白名单权限的客户可以测试调用，如需测试请联系商务非正式服务接口，内测期结束接口会下线或停服，届时请接入正式服务接口**）
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-func (c *Client) TestingTextGeneration(request *TestingTextGenerationRequest) (response *TestingTextGenerationResponse, err error) {
-    return c.TestingTextGenerationWithContext(context.Background(), request)
-}
-
-// TestingTextGeneration
-// 文案创作（内测版）为内测体验专用接口，现内测期结束，统一改为使用正式服务接口（混元大模型），故内测接口做下线处理。
-//
-// 
-//
-// 基于腾讯大模型能力，用户可以通过传入不同的参数控制生成内容的类型，并通过自然语言给模型以内容生成的指令，可以满足多种场景的文本生成需求，包括但不限于文章写作、营销文案、视频脚本、电商文案、纪要整理等（**注意：当前接口为内测体验专用接口，仅有获取白名单权限的客户可以测试调用，如需测试请联系商务非正式服务接口，内测期结束接口会下线或停服，届时请接入正式服务接口**）
-//
-// 可能返回的错误码:
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-func (c *Client) TestingTextGenerationWithContext(ctx context.Context, request *TestingTextGenerationRequest) (response *TestingTextGenerationResponse, err error) {
-    if request == nil {
-        request = NewTestingTextGenerationRequest()
-    }
-    
-    if c.GetCredential() == nil {
-        return nil, errors.New("TestingTextGeneration require credential")
-    }
-
-    request.SetContext(ctx)
-    
-    response = NewTestingTextGenerationResponse()
-    err = c.Send(request, response)
-    return
-}
-
 func NewTextEmbellishRequest() (request *TextEmbellishRequest) {
     request = &TextEmbellishRequest{
         BaseRequest: &tchttp.BaseRequest{},

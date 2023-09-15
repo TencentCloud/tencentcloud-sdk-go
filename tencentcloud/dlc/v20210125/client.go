@@ -4917,6 +4917,54 @@ func (c *Client) ModifyWorkGroupWithContext(ctx context.Context, request *Modify
     return
 }
 
+func NewQueryResultRequest() (request *QueryResultRequest) {
+    request = &QueryResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "QueryResult")
+    
+    
+    return
+}
+
+func NewQueryResultResponse() (response *QueryResultResponse) {
+    response = &QueryResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryResult
+// 获取任务结果查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+func (c *Client) QueryResult(request *QueryResultRequest) (response *QueryResultResponse, err error) {
+    return c.QueryResultWithContext(context.Background(), request)
+}
+
+// QueryResult
+// 获取任务结果查询
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_HTTPCLIENTDOREQUESTFAILED = "FailedOperation.HttpClientDoRequestFailed"
+func (c *Client) QueryResultWithContext(ctx context.Context, request *QueryResultRequest) (response *QueryResultResponse, err error) {
+    if request == nil {
+        request = NewQueryResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewReportHeartbeatMetaDataRequest() (request *ReportHeartbeatMetaDataRequest) {
     request = &ReportHeartbeatMetaDataRequest{
         BaseRequest: &tchttp.BaseRequest{},

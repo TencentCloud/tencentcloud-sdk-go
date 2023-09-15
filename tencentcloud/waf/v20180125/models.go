@@ -1379,6 +1379,14 @@ func (r *CreateHostResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type DealData struct {
+	// 订单号列表，元素个数与请求包的goods数组的元素个数一致，商品详情与订单按顺序对应
+	DealNames []*string `json:"DealNames,omitnil" name:"DealNames"`
+
+	// 大订单号，一个大订单号下可以有多个子订单，说明是同一次下单[{},{}]
+	BigDealId *string `json:"BigDealId,omitnil" name:"BigDealId"`
+}
+
 // Predefined struct for user
 type DeleteAccessExportRequestParams struct {
 	// 日志导出ID
@@ -6272,6 +6280,75 @@ func (r *FreshAntiFakeUrlResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GenerateDealsAndPayNewRequestParams struct {
+	// 计费下单入参
+	Goods []*GoodNews `json:"Goods,omitnil" name:"Goods"`
+}
+
+type GenerateDealsAndPayNewRequest struct {
+	*tchttp.BaseRequest
+	
+	// 计费下单入参
+	Goods []*GoodNews `json:"Goods,omitnil" name:"Goods"`
+}
+
+func (r *GenerateDealsAndPayNewRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateDealsAndPayNewRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Goods")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GenerateDealsAndPayNewRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GenerateDealsAndPayNewResponseParams struct {
+	// 计费下单响应结构体
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *DealData `json:"Data,omitnil" name:"Data"`
+
+	// 1:成功，0:失败
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 返回message
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ReturnMessage *string `json:"ReturnMessage,omitnil" name:"ReturnMessage"`
+
+	// 购买的实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GenerateDealsAndPayNewResponse struct {
+	*tchttp.BaseResponse
+	Response *GenerateDealsAndPayNewResponseParams `json:"Response"`
+}
+
+func (r *GenerateDealsAndPayNewResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GenerateDealsAndPayNewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetAttackDownloadRecordsRequestParams struct {
 
 }
@@ -6549,6 +6626,91 @@ func (r *GetInstanceQpsLimitResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *GetInstanceQpsLimitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type GoodNews struct {
+	// 商品数量
+	GoodsNum *int64 `json:"GoodsNum,omitnil" name:"GoodsNum"`
+
+	// 商品明细
+	GoodsDetail *GoodsDetailNew `json:"GoodsDetail,omitnil" name:"GoodsDetail"`
+
+	// 订单类型ID，用来唯一标识一个业务的一种场景（总共三种场景：新购、配置变更、续费）
+	// 高级版: 102375(新购),102376(续费),102377(变配)
+	// 企业版 : 102378(新购),102379(续费),102380(变配)
+	// 旗舰版 : 102369(新购),102370(续费),102371(变配)
+	// 高级版-CLB: 新购 101198  续费 101199 变配 101200
+	// 企业版-CLB 101204(新购),101205(续费),101206(变配)
+	// 旗舰版-CLB : 101201(新购),101202(续费),101203(变配)
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GoodsCategoryId *int64 `json:"GoodsCategoryId,omitnil" name:"GoodsCategoryId"`
+
+	// 购买waf实例区域ID
+	// 1 表示购买大陆资源
+	// 2表示购买非中国大陆资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *int64 `json:"RegionId,omitnil" name:"RegionId"`
+}
+
+type GoodsDetailNew struct {
+	// 时间间隔
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+
+	// 单位，支持m、y、d
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
+
+	// 子产品标签,。新购，续费必传，变配时放在oldConfig newConfig里面
+	// 高级版 ：sp_wsm_waf_premium
+	// 企业版 ：sp_wsm_waf_enterprise
+	// 旗舰版 ：sp_wsm_waf_ultimate
+	// 高级版-CLB:sp_wsm_waf_premium_clb
+	// 企业版-CLB : sp_wsm_waf_enterprise_clb
+	// 旗舰版-CLB:sp_wsm_waf_ultimate_clb
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubProductCode *string `json:"SubProductCode,omitnil" name:"SubProductCode"`
+
+	// 业务产品申请的pid（对应一个定价公式），通过pid计费查询到定价模型
+	// 高级版 ：1000827
+	// 企业版 ：1000830
+	// 旗舰版 ：1000832
+	// 高级版-CLB:1001150
+	// 企业版-CLB : 1001152
+	// 旗舰版-CLB:1001154
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Pid *int64 `json:"Pid,omitnil" name:"Pid"`
+
+	// waf实例名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// 1:自动续费，0:不自动续费
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// waf购买的实际地域信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RealRegion *int64 `json:"RealRegion,omitnil" name:"RealRegion"`
+
+	// 计费细项标签数组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelTypes []*string `json:"LabelTypes,omitnil" name:"LabelTypes"`
+
+	// 计费细项标签数量，一般和SvLabelType一一对应
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LabelCounts []*int64 `json:"LabelCounts,omitnil" name:"LabelCounts"`
+
+	// 变配使用，实例到期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurDeadline *string `json:"CurDeadline,omitnil" name:"CurDeadline"`
+
+	// 对存在的实例购买bot 或api 安全
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type HostDel struct {
@@ -9687,13 +9849,18 @@ type Strategy struct {
 }
 
 type StrategyForAntiInfoLeak struct {
-	// 匹配字段
+	// 匹配条件，returncode（响应码）、keywords（关键字）、information（敏感信息）
 	Field *string `json:"Field,omitnil" name:"Field"`
 
-	// 逻辑符号
+	// 逻辑符号，固定取值为contains
 	CompareFunc *string `json:"CompareFunc,omitnil" name:"CompareFunc"`
 
-	// 匹配内容
+	// 匹配内容。
+	// 以下三个对应Field为information时可取的匹配内容：
+	// idcard（身份证）、phone（手机号）、bankcard（银行卡）。
+	// 以下为对应Field为returncode时可取的匹配内容：
+	// 400（状态码400）、403（状态码403）、404（状态码404）、4xx（其它4xx状态码）、500（状态码500）、501（状态码501）、502（状态码502）、504（状态码504）、5xx（其它5xx状态码）。
+	// 当对应Field为keywords时由用户自己输入匹配内容。
 	Content *string `json:"Content,omitnil" name:"Content"`
 }
 

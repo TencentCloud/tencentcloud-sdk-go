@@ -216,6 +216,63 @@ type BindResourceResult struct {
 }
 
 // Predefined struct for user
+type CancelAuditCertificateRequestParams struct {
+	// 证书ID
+	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+}
+
+type CancelAuditCertificateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 证书ID
+	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+}
+
+func (r *CancelAuditCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelAuditCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelAuditCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelAuditCertificateResponseParams struct {
+	// 操作是否成功
+	Result *bool `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CancelAuditCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelAuditCertificateResponseParams `json:"Response"`
+}
+
+func (r *CancelAuditCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelAuditCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CancelCertificateOrderRequestParams struct {
 	// 证书 ID。
 	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
@@ -4782,6 +4839,63 @@ func (r *ModifyCertificateProjectResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyCertificateProjectResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCertificateResubmitRequestParams struct {
+	// 证书ID。
+	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+}
+
+type ModifyCertificateResubmitRequest struct {
+	*tchttp.BaseRequest
+	
+	// 证书ID。
+	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+}
+
+func (r *ModifyCertificateResubmitRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCertificateResubmitRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CertificateId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCertificateResubmitRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCertificateResubmitResponseParams struct {
+	// 证书ID。
+	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyCertificateResubmitResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCertificateResubmitResponseParams `json:"Response"`
+}
+
+func (r *ModifyCertificateResubmitResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCertificateResubmitResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

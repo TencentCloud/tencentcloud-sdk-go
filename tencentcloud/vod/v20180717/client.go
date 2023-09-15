@@ -2892,7 +2892,7 @@ func NewDeleteProcedureTemplateResponse() (response *DeleteProcedureTemplateResp
 }
 
 // DeleteProcedureTemplate
-// 删除用户自定义的任务流模板。  
+// 删除用户自定义的任务流模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2906,7 +2906,7 @@ func (c *Client) DeleteProcedureTemplate(request *DeleteProcedureTemplateRequest
 }
 
 // DeleteProcedureTemplate
-// 删除用户自定义的任务流模板。  
+// 删除用户自定义的任务流模板。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9932,7 +9932,7 @@ func NewRebuildMediaResponse() (response *RebuildMediaResponse) {
 }
 
 // RebuildMedia
-// 发起视频重生
+// 发起音画质重生
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -9942,7 +9942,7 @@ func (c *Client) RebuildMedia(request *RebuildMediaRequest) (response *RebuildMe
 }
 
 // RebuildMedia
-// 发起视频重生
+// 发起音画质重生
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

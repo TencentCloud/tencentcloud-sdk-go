@@ -131,7 +131,7 @@ type CreateIndexRequestParams struct {
 	// 创建的索引名
 	IndexName *string `json:"IndexName,omitnil" name:"IndexName"`
 
-	// 创建的索引元数据JSON，如mappings、settings
+	// 【必填】创建的索引元数据JSON，如mappings、settings
 	IndexMetaJson *string `json:"IndexMetaJson,omitnil" name:"IndexMetaJson"`
 
 	// 集群访问用户名
@@ -153,7 +153,7 @@ type CreateIndexRequest struct {
 	// 创建的索引名
 	IndexName *string `json:"IndexName,omitnil" name:"IndexName"`
 
-	// 创建的索引元数据JSON，如mappings、settings
+	// 【必填】创建的索引元数据JSON，如mappings、settings
 	IndexMetaJson *string `json:"IndexMetaJson,omitnil" name:"IndexMetaJson"`
 
 	// 集群访问用户名
@@ -987,7 +987,7 @@ type DescribeIndexListRequestParams struct {
 	// 过滤索引状态
 	IndexStatusList []*string `json:"IndexStatusList,omitnil" name:"IndexStatusList"`
 
-	// 排序顺序，支持asc、desc
+	// 排序顺序，支持asc、desc，默认为desc 数据格式"asc","desc"
 	Order *string `json:"Order,omitnil" name:"Order"`
 }
 
@@ -1021,7 +1021,7 @@ type DescribeIndexListRequest struct {
 	// 过滤索引状态
 	IndexStatusList []*string `json:"IndexStatusList,omitnil" name:"IndexStatusList"`
 
-	// 排序顺序，支持asc、desc
+	// 排序顺序，支持asc、desc，默认为desc 数据格式"asc","desc"
 	Order *string `json:"Order,omitnil" name:"Order"`
 }
 

@@ -98,6 +98,12 @@ const (
 	// 证书不存在。
 	FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
 
+	// 该证书不存在或不可取消。
+	FAILEDOPERATION_CERTIFICATENOTFOUNDORCANTCANCEL = "FailedOperation.CertificateNotFoundOrCantCancel"
+
+	// 证书状态不允许重新申请。
+	FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWRESUBMIT = "FailedOperation.CertificateStatusNotAllowResubmit"
+
 	// 证书确认函文件过大（需小于1.4M）。
 	FAILEDOPERATION_CONFIRMLETTERTOOLARGE = "FailedOperation.ConfirmLetterTooLarge"
 
@@ -196,6 +202,9 @@ const (
 
 	// 查询的证书ID不能超过50个。
 	INVALIDPARAMETER_CERTIFICATEIDNUMBERLIMIT = "InvalidParameter.CertificateIdNumberLimit"
+
+	// 当前证书状态不允许重新提交申请。
+	INVALIDPARAMETER_CERTIFICATESTATUSNOTALLOWRESUBMIT = "InvalidParameter.CertificateStatusNotAllowResubmit"
 
 	// 证书数量超出限制。
 	INVALIDPARAMETER_CERTIFICATESNUMBEREXCEEDED = "InvalidParameter.CertificatesNumberExceeded"

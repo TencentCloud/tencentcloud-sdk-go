@@ -3550,6 +3550,123 @@ func (r *SaDivulgeDataQueryPubResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type SaDivulgeScanRuleMutateRequestParams struct {
+	// Id
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// DivulgeSoure
+	DivulgeSoure *string `json:"DivulgeSoure,omitnil" name:"DivulgeSoure"`
+
+	// DivulgeSoureUrl
+	DivulgeSoureUrl *string `json:"DivulgeSoureUrl,omitnil" name:"DivulgeSoureUrl"`
+
+	// RuleName
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+
+	// RuleWord
+	RuleWord *string `json:"RuleWord,omitnil" name:"RuleWord"`
+
+	// ScanStatus
+	ScanStatus *string `json:"ScanStatus,omitnil" name:"ScanStatus"`
+
+	// DivulgeType
+	DivulgeType *string `json:"DivulgeType,omitnil" name:"DivulgeType"`
+
+	// RepairAdvice
+	RepairAdvice *string `json:"RepairAdvice,omitnil" name:"RepairAdvice"`
+}
+
+type SaDivulgeScanRuleMutateRequest struct {
+	*tchttp.BaseRequest
+	
+	// Id
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// DivulgeSoure
+	DivulgeSoure *string `json:"DivulgeSoure,omitnil" name:"DivulgeSoure"`
+
+	// DivulgeSoureUrl
+	DivulgeSoureUrl *string `json:"DivulgeSoureUrl,omitnil" name:"DivulgeSoureUrl"`
+
+	// RuleName
+	RuleName *string `json:"RuleName,omitnil" name:"RuleName"`
+
+	// RuleWord
+	RuleWord *string `json:"RuleWord,omitnil" name:"RuleWord"`
+
+	// ScanStatus
+	ScanStatus *string `json:"ScanStatus,omitnil" name:"ScanStatus"`
+
+	// DivulgeType
+	DivulgeType *string `json:"DivulgeType,omitnil" name:"DivulgeType"`
+
+	// RepairAdvice
+	RepairAdvice *string `json:"RepairAdvice,omitnil" name:"RepairAdvice"`
+}
+
+func (r *SaDivulgeScanRuleMutateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SaDivulgeScanRuleMutateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Id")
+	delete(f, "DivulgeSoure")
+	delete(f, "DivulgeSoureUrl")
+	delete(f, "RuleName")
+	delete(f, "RuleWord")
+	delete(f, "ScanStatus")
+	delete(f, "DivulgeType")
+	delete(f, "RepairAdvice")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SaDivulgeScanRuleMutateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SaDivulgeScanRuleMutateResponseParams struct {
+	// Data
+	Data *SaDivulgeScanRuleSetList `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type SaDivulgeScanRuleMutateResponse struct {
+	*tchttp.BaseResponse
+	Response *SaDivulgeScanRuleMutateResponseParams `json:"Response"`
+}
+
+func (r *SaDivulgeScanRuleMutateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SaDivulgeScanRuleMutateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type SaDivulgeScanRuleSetList struct {
+	// Value
+	Value *string `json:"Value,omitnil" name:"Value"`
+
+	// Code
+	Code *int64 `json:"Code,omitnil" name:"Code"`
+
+	// Message
+	Message *string `json:"Message,omitnil" name:"Message"`
+}
+
+// Predefined struct for user
 type SaEventPubRequestParams struct {
 	// 受影响资产
 	Asset *string `json:"Asset,omitnil" name:"Asset"`

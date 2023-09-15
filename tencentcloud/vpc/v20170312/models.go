@@ -457,6 +457,10 @@ type Address struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
 
+	// 静态单线IP网络出口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Egress *string `json:"Egress,omitnil" name:"Egress"`
+
 	// 高防包ID,当EIP类型为高防EIP时，返回EIP绑定的高防包ID.
 	AntiDDoSPackageId *string `json:"AntiDDoSPackageId,omitnil" name:"AntiDDoSPackageId"`
 }
@@ -639,7 +643,6 @@ type AllocateAddressesRequestParams struct {
 	// EIP类型。默认值：EIP。
 	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>AnycastEIP：加速IP，可参见 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)</li></ul>注意：仅部分地域支持加速IP。</li></ul>
 	// <ul style="margin:0"><li>已开通精品IP白名单的用户，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅部分地域支持精品IP。</li></ul>
-	// </ul>
 	// <ul style="margin:0"><li>已开高防IP白名单的用户，可选值：<ul><li>AntiDDoSEIP：高防IP</li></ul>注意：仅部分地域支持高防IP。</li></ul>
 	AddressType *string `json:"AddressType,omitnil" name:"AddressType"`
 
@@ -662,7 +665,7 @@ type AllocateAddressesRequestParams struct {
 	// EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名
 	AddressName *string `json:"AddressName,omitnil" name:"AddressName"`
 
-	// 网络出口，默认是：center_egress1
+	// 静态单线IP网络出口，默认值：center_egress1
 	Egress *string `json:"Egress,omitnil" name:"Egress"`
 
 	// 高防包ID， 申请高防IP时，该字段必传。
@@ -706,7 +709,6 @@ type AllocateAddressesRequest struct {
 	// EIP类型。默认值：EIP。
 	// <ul style="margin:0"><li>已开通Anycast公网加速白名单的用户，可选值：<ul><li>AnycastEIP：加速IP，可参见 [Anycast 公网加速](https://cloud.tencent.com/document/product/644)</li></ul>注意：仅部分地域支持加速IP。</li></ul>
 	// <ul style="margin:0"><li>已开通精品IP白名单的用户，可选值：<ul><li>HighQualityEIP：精品IP</li></ul>注意：仅部分地域支持精品IP。</li></ul>
-	// </ul>
 	// <ul style="margin:0"><li>已开高防IP白名单的用户，可选值：<ul><li>AntiDDoSEIP：高防IP</li></ul>注意：仅部分地域支持高防IP。</li></ul>
 	AddressType *string `json:"AddressType,omitnil" name:"AddressType"`
 
@@ -729,7 +731,7 @@ type AllocateAddressesRequest struct {
 	// EIP名称，用于申请EIP时用户自定义该EIP的个性化名称，默认值：未命名
 	AddressName *string `json:"AddressName,omitnil" name:"AddressName"`
 
-	// 网络出口，默认是：center_egress1
+	// 静态单线IP网络出口，默认值：center_egress1
 	Egress *string `json:"Egress,omitnil" name:"Egress"`
 
 	// 高防包ID， 申请高防IP时，该字段必传。
@@ -22699,6 +22701,14 @@ type NatGateway struct {
 	// NAT网关大版本号，传统型=1，标准型=2
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	NatProductVersion *uint64 `json:"NatProductVersion,omitnil" name:"NatProductVersion"`
+
+	// 是否启用根据目的网段选择SNAT使用的EIP功能	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SmartScheduleMode *bool `json:"SmartScheduleMode,omitnil" name:"SmartScheduleMode"`
+
+	// NAT实例归属的专属集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DedicatedClusterId *string `json:"DedicatedClusterId,omitnil" name:"DedicatedClusterId"`
 }
 
 type NatGatewayAddress struct {
@@ -22710,6 +22720,9 @@ type NatGatewayAddress struct {
 
 	// 资源封堵状态。true表示弹性ip处于封堵状态，false表示弹性ip处于未封堵状态。
 	IsBlocked *bool `json:"IsBlocked,omitnil" name:"IsBlocked"`
+
+	// 资源封堵类型。NORMAL表示未封禁，SECURITY表示安全封禁，USER表示用户封禁，OTHER表示其他封禁，多个原因封禁时用&连接，比如：SECURITY&USER&OTHER。
+	BlockType *string `json:"BlockType,omitnil" name:"BlockType"`
 }
 
 type NatGatewayDestinationIpPortTranslationNatRule struct {

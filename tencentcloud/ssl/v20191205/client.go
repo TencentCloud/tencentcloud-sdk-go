@@ -137,6 +137,54 @@ func (c *Client) ApplyCertificateWithContext(ctx context.Context, request *Apply
     return
 }
 
+func NewCancelAuditCertificateRequest() (request *CancelAuditCertificateRequest) {
+    request = &CancelAuditCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "CancelAuditCertificate")
+    
+    
+    return
+}
+
+func NewCancelAuditCertificateResponse() (response *CancelAuditCertificateResponse) {
+    response = &CancelAuditCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CancelAuditCertificate
+// 取消证书审核
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CERTIFICATENOTFOUNDORCANTCANCEL = "FailedOperation.CertificateNotFoundOrCantCancel"
+func (c *Client) CancelAuditCertificate(request *CancelAuditCertificateRequest) (response *CancelAuditCertificateResponse, err error) {
+    return c.CancelAuditCertificateWithContext(context.Background(), request)
+}
+
+// CancelAuditCertificate
+// 取消证书审核
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_CERTIFICATENOTFOUNDORCANTCANCEL = "FailedOperation.CertificateNotFoundOrCantCancel"
+func (c *Client) CancelAuditCertificateWithContext(ctx context.Context, request *CancelAuditCertificateRequest) (response *CancelAuditCertificateResponse, err error) {
+    if request == nil {
+        request = NewCancelAuditCertificateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CancelAuditCertificate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCancelAuditCertificateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCancelCertificateOrderRequest() (request *CancelCertificateOrderRequest) {
     request = &CancelCertificateOrderRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2863,6 +2911,64 @@ func (c *Client) ModifyCertificateProjectWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewModifyCertificateProjectResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyCertificateResubmitRequest() (request *ModifyCertificateResubmitRequest) {
+    request = &ModifyCertificateResubmitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssl", APIVersion, "ModifyCertificateResubmit")
+    
+    
+    return
+}
+
+func NewModifyCertificateResubmitResponse() (response *ModifyCertificateResubmitResponse) {
+    response = &ModifyCertificateResubmitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCertificateResubmit
+// 针对审核失败或审核取消的付费证书，重新发起审核
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWRESUBMIT = "FailedOperation.CertificateStatusNotAllowResubmit"
+//  INVALIDPARAMETER_CERTIFICATESTATUSNOTALLOWRESUBMIT = "InvalidParameter.CertificateStatusNotAllowResubmit"
+//  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
+func (c *Client) ModifyCertificateResubmit(request *ModifyCertificateResubmitRequest) (response *ModifyCertificateResubmitResponse, err error) {
+    return c.ModifyCertificateResubmitWithContext(context.Background(), request)
+}
+
+// ModifyCertificateResubmit
+// 针对审核失败或审核取消的付费证书，重新发起审核
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_CANNOTGETORDER = "FailedOperation.CannotGetOrder"
+//  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
+//  FAILEDOPERATION_CERTIFICATESTATUSNOTALLOWRESUBMIT = "FailedOperation.CertificateStatusNotAllowResubmit"
+//  INVALIDPARAMETER_CERTIFICATESTATUSNOTALLOWRESUBMIT = "InvalidParameter.CertificateStatusNotAllowResubmit"
+//  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
+func (c *Client) ModifyCertificateResubmitWithContext(ctx context.Context, request *ModifyCertificateResubmitRequest) (response *ModifyCertificateResubmitResponse, err error) {
+    if request == nil {
+        request = NewModifyCertificateResubmitRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCertificateResubmit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCertificateResubmitResponse()
     err = c.Send(request, response)
     return
 }

@@ -485,6 +485,9 @@ type Blueprint struct {
 	// Docker版本号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DockerVersion *string `json:"DockerVersion,omitnil" name:"DockerVersion"`
+
+	// 镜像是否已共享。
+	BlueprintShared *bool `json:"BlueprintShared,omitnil" name:"BlueprintShared"`
 }
 
 type BlueprintInstance struct {

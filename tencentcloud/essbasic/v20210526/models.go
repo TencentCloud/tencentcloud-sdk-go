@@ -2085,6 +2085,84 @@ func (r *ChannelCreateReleaseFlowResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ChannelCreateRoleRequestParams struct {
+	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 代理企业和员工的信息。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 角色描述，最大长度为50个字符
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 权限树，权限树内容 PermissionGroups 可参考接口 DescribeIntegrationRoles 的输出
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
+}
+
+type ChannelCreateRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 代理企业和员工的信息。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 角色描述，最大长度为50个字符
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 权限树，权限树内容 PermissionGroups 可参考接口 DescribeIntegrationRoles 的输出
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
+}
+
+func (r *ChannelCreateRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "Agent")
+	delete(f, "Description")
+	delete(f, "PermissionGroups")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateRoleResponseParams struct {
+	// 角色id
+	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ChannelCreateRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateRoleResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelCreateSealPolicyRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
@@ -2453,6 +2531,67 @@ func (r *ChannelCreateWebThemeConfigResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ChannelCreateWebThemeConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDeleteRoleRequestParams struct {
+	// 代理企业和员工的信息。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 角色id，最多20个
+	RoleIds []*string `json:"RoleIds,omitnil" name:"RoleIds"`
+}
+
+type ChannelDeleteRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 代理企业和员工的信息。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 角色id，最多20个
+	RoleIds []*string `json:"RoleIds,omitnil" name:"RoleIds"`
+}
+
+func (r *ChannelDeleteRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDeleteRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "RoleIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDeleteRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelDeleteRoleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ChannelDeleteRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelDeleteRoleResponseParams `json:"Response"`
+}
+
+func (r *ChannelDeleteRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelDeleteRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2910,16 +3049,17 @@ type ChannelDescribeRolesRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
-
 	// 指定每页多少条数据，单页最大200
 	Limit *string `json:"Limit,omitnil" name:"Limit"`
 
 	// 查询的关键字段:
 	// Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
 	// Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
+	// Key:"IsReturnPermissionGroup"，Values:["0"]:表示接口不返回角色对应的权限树字段，Values:["1"]表示接口返回角色对应的权限树字段
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 操作人信息
 	//
@@ -2933,16 +3073,17 @@ type ChannelDescribeRolesRequest struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
-	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
-
 	// 指定每页多少条数据，单页最大200
 	Limit *string `json:"Limit,omitnil" name:"Limit"`
 
 	// 查询的关键字段:
 	// Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
 	// Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
+	// Key:"IsReturnPermissionGroup"，Values:["0"]:表示接口不返回角色对应的权限树字段，Values:["1"]表示接口返回角色对应的权限树字段
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 操作人信息
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
@@ -2961,9 +3102,9 @@ func (r *ChannelDescribeRolesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Agent")
-	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "Offset")
 	delete(f, "Operator")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelDescribeRolesRequest has unknown keys!", "")
@@ -3282,6 +3423,91 @@ func (r *ChannelGetTaskResultApiResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ChannelModifyRoleRequestParams struct {
+	// 代理企业和员工的信息。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 角色Id，可通过接口 ChannelDescribeRoles 查询获取
+	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
+
+	// 角色描述，最大长度为50个字符
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 权限树，权限树内容 PermissionGroups 可参考接口 DescribeIntegrationRoles 的输出
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
+}
+
+type ChannelModifyRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 代理企业和员工的信息。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 角色名称，最大长度为20个字符，仅限中文、字母、数字和下划线组成。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 角色Id，可通过接口 ChannelDescribeRoles 查询获取
+	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
+
+	// 角色描述，最大长度为50个字符
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 权限树，权限树内容 PermissionGroups 可参考接口 DescribeIntegrationRoles 的输出
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
+}
+
+func (r *ChannelModifyRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelModifyRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "Name")
+	delete(f, "RoleId")
+	delete(f, "Description")
+	delete(f, "PermissionGroups")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelModifyRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelModifyRoleResponseParams struct {
+	// 角色id
+	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ChannelModifyRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelModifyRoleResponseParams `json:"Response"`
+}
+
+func (r *ChannelModifyRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelModifyRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type ChannelRole struct {
 	// 角色id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -3294,6 +3520,10 @@ type ChannelRole struct {
 	// 角色状态：1-启用；2-禁用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleStatus *uint64 `json:"RoleStatus,omitnil" name:"RoleStatus"`
+
+	// 权限树
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PermissionGroups []*PermissionGroup `json:"PermissionGroups,omitnil" name:"PermissionGroups"`
 }
 
 // Predefined struct for user
@@ -5994,6 +6224,70 @@ type PdfVerifyResult struct {
 	ComponentPage *int64 `json:"ComponentPage,omitnil" name:"ComponentPage"`
 }
 
+type Permission struct {
+	// 权限名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 权限key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 权限类型 1前端，2后端
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *int64 `json:"Type,omitnil" name:"Type"`
+
+	// 是否隐藏
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hide *int64 `json:"Hide,omitnil" name:"Hide"`
+
+	// 数据权限标签 1:表示根节点，2:表示叶子结点
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataLabel *int64 `json:"DataLabel,omitnil" name:"DataLabel"`
+
+	// 数据权限独有，1:关联其他模块鉴权，2:表示关联自己模块鉴权
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataType *int64 `json:"DataType,omitnil" name:"DataType"`
+
+	// 数据权限独有，表示数据范围，1：全公司，2:部门及下级部门，3:自己
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataRange *int64 `json:"DataRange,omitnil" name:"DataRange"`
+
+	// 关联权限, 表示这个功能权限要受哪个数据权限管控
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataTo *string `json:"DataTo,omitnil" name:"DataTo"`
+
+	// 父级权限key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ParentKey *string `json:"ParentKey,omitnil" name:"ParentKey"`
+
+	// 是否选中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsChecked *bool `json:"IsChecked,omitnil" name:"IsChecked"`
+
+	// 子权限集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Children []*Permission `json:"Children,omitnil" name:"Children"`
+}
+
+type PermissionGroup struct {
+	// 权限组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupName *string `json:"GroupName,omitnil" name:"GroupName"`
+
+	// 权限组key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GroupKey *string `json:"GroupKey,omitnil" name:"GroupKey"`
+
+	// 是否隐藏分组，0否1是
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hide *int64 `json:"Hide,omitnil" name:"Hide"`
+
+	// 权限集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Permissions []*Permission `json:"Permissions,omitnil" name:"Permissions"`
+}
+
 // Predefined struct for user
 type PrepareFlowsRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
@@ -6815,12 +7109,13 @@ type UserThreeFactor struct {
 }
 
 type WebThemeConfig struct {
-	// 页面底部是否显示电子签logo
-	// <br/>true：允许在页面底部隐藏电子签logo 
-	// <br/>默认false，不允许允许在页面底部隐藏电子签logo
+	// 是否显示页面底部电子签logo，取值如下：
+	// <ul><li> **true**：页面底部显示电子签logo</li>
+	// <li> **false**：页面底部不显示电子签logo（默认）</li></ul>
 	DisplaySignBrandLogo *bool `json:"DisplaySignBrandLogo,omitnil" name:"DisplaySignBrandLogo"`
 
-	// 嵌入式主题颜色
-	// <br/>支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
+	// 主题颜色：
+	// 支持十六进制颜色值以及RGB格式颜色值，例如：#D54941，rgb(213, 73, 65)
+	// <br/>
 	WebEmbedThemeColor *string `json:"WebEmbedThemeColor,omitnil" name:"WebEmbedThemeColor"`
 }

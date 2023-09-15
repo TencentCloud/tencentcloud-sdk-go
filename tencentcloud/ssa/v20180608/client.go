@@ -1317,6 +1317,54 @@ func (c *Client) SaDivulgeDataQueryPubWithContext(ctx context.Context, request *
     return
 }
 
+func NewSaDivulgeScanRuleMutateRequest() (request *SaDivulgeScanRuleMutateRequest) {
+    request = &SaDivulgeScanRuleMutateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ssa", APIVersion, "SaDivulgeScanRuleMutate")
+    
+    
+    return
+}
+
+func NewSaDivulgeScanRuleMutateResponse() (response *SaDivulgeScanRuleMutateResponse) {
+    response = &SaDivulgeScanRuleMutateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SaDivulgeScanRuleMutate
+// SaDivulgeScanRuleMutate
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+func (c *Client) SaDivulgeScanRuleMutate(request *SaDivulgeScanRuleMutateRequest) (response *SaDivulgeScanRuleMutateResponse, err error) {
+    return c.SaDivulgeScanRuleMutateWithContext(context.Background(), request)
+}
+
+// SaDivulgeScanRuleMutate
+// SaDivulgeScanRuleMutate
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
+func (c *Client) SaDivulgeScanRuleMutateWithContext(ctx context.Context, request *SaDivulgeScanRuleMutateRequest) (response *SaDivulgeScanRuleMutateResponse, err error) {
+    if request == nil {
+        request = NewSaDivulgeScanRuleMutateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SaDivulgeScanRuleMutate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSaDivulgeScanRuleMutateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewSaEventPubRequest() (request *SaEventPubRequest) {
     request = &SaEventPubRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -1,3 +1,267 @@
+# Release v1.0.749
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 70 次发布
+
+发布时间：2023-09-15 01:35:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateAuditRuleTemplate](https://cloud.tencent.com/document/api/1003/84702)
+
+	* 新增入参：AlarmLevel, AlarmPolicy
+
+* [DescribeAuditRuleTemplates](https://cloud.tencent.com/document/api/1003/84700)
+
+	* 新增入参：AlarmLevel, AlarmPolicy
+
+* [ModifyAuditRuleTemplates](https://cloud.tencent.com/document/api/1003/84698)
+
+	* 新增入参：AlarmLevel, AlarmPolicy
+
+* [OpenAuditService](https://cloud.tencent.com/document/api/1003/84696)
+
+	* 新增入参：AuditAll
+
+
+新增数据结构：
+
+* [LogRuleTemplateInfo](https://cloud.tencent.com/document/api/1003/48097#LogRuleTemplateInfo)
+* [RuleTemplateInfo](https://cloud.tencent.com/document/api/1003/48097#RuleTemplateInfo)
+
+修改数据结构：
+
+* [AuditLog](https://cloud.tencent.com/document/api/1003/48097#AuditLog)
+
+	* 新增成员：TemplateInfo
+
+* [AuditRuleTemplateInfo](https://cloud.tencent.com/document/api/1003/48097#AuditRuleTemplateInfo)
+
+	* 新增成员：UpdateAt, AlarmLevel, AlarmPolicy, Status, AffectedInstances
+
+* [InstanceAuditRule](https://cloud.tencent.com/document/api/1003/48097#InstanceAuditRule)
+
+	* 新增成员：OldRule, RuleTemplates
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 60 次发布
+
+发布时间：2023-09-15 01:40:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryResult](https://cloud.tencent.com/document/api/1342/98524)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 117 次发布
+
+发布时间：2023-09-15 01:49:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* DescribeIntegrationMainOrganizationUser
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* IntegrationMainOrganizationUser
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 53 次发布
+
+发布时间：2023-09-15 02:04:15
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Blueprint](https://cloud.tencent.com/document/api/1207/47576#Blueprint)
+
+	* 新增成员：BlueprintShared
+
+	* <font color="#dd0000">**修改成员**：</font>DockerVersion
+
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 94 次发布
+
+发布时间：2023-09-15 02:09:24
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeAlarmHistories](https://cloud.tencent.com/document/api/248/48684)
+
+	* 新增入参：AlarmLevels
+
+
+
+
+## NLP 服务(nlp) 版本：2019-04-08
+
+### 第 23 次发布
+
+发布时间：2023-09-15 02:14:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* TestingTextGeneration
+
+<font color="#dd0000">**删除数据结构**：</font>
+
+* TextGenerationChoices
+* TextGenerationMessage
+* TextGenerationUsage
+
+
+
+## 安全运营中心(ssa) 版本：2018-06-08
+
+### 第 20 次发布
+
+发布时间：2023-09-15 02:24:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SaDivulgeScanRuleMutate](https://cloud.tencent.com/document/api/664/98526)
+
+新增数据结构：
+
+* [SaDivulgeScanRuleSetList](https://cloud.tencent.com/document/api/664/51406#SaDivulgeScanRuleSetList)
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 44 次发布
+
+发布时间：2023-09-15 02:24:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CancelAuditCertificate](https://cloud.tencent.com/document/api/400/98528)
+* [ModifyCertificateResubmit](https://cloud.tencent.com/document/api/400/98527)
+
+
+
+## 云点播(vod) 版本：2018-07-17
+
+### 第 168 次发布
+
+发布时间：2023-09-15 02:46:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AiRecognitionTaskObjectResult](https://cloud.tencent.com/document/api/266/31773#AiRecognitionTaskObjectResult)
+
+	* <font color="#dd0000">**修改成员**：</font>BeginProcessTime, FinishTime
+
+* [AiReviewTaskPoliticalOcrResult](https://cloud.tencent.com/document/api/266/31773#AiReviewTaskPoliticalOcrResult)
+
+	* <font color="#dd0000">**修改成员**：</font>Progress
+
+* [DomainDetailInfo](https://cloud.tencent.com/document/api/266/31773#DomainDetailInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>QUICConfig
+
+* [FileUploadTask](https://cloud.tencent.com/document/api/266/31773#FileUploadTask)
+
+	* <font color="#dd0000">**修改成员**：</font>FileId, MediaBasicInfo, ProcedureTaskId, ReviewAudioVideoTaskId, MetaData
+
+* [MediaInfo](https://cloud.tencent.com/document/api/266/31773#MediaInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>BasicInfo, MetaData, TranscodeInfo, AnimatedGraphicsInfo, SampleSnapshotInfo, ImageSpriteInfo, SnapshotByTimeOffsetInfo, KeyFrameDescInfo, AdaptiveDynamicStreamingInfo, MiniProgramReviewInfo, SubtitleInfo, FileId, ReviewInfo
+
+* [MediaProcessTaskAdaptiveDynamicStreamingResult](https://cloud.tencent.com/document/api/266/31773#MediaProcessTaskAdaptiveDynamicStreamingResult)
+
+	* <font color="#dd0000">**修改成员**：</font>BeginProcessTime, FinishTime
+
+* [PullUploadTask](https://cloud.tencent.com/document/api/266/31773#PullUploadTask)
+
+	* <font color="#dd0000">**修改成员**：</font>TaskId, Status, ErrCode, Message, FileId, MediaBasicInfo, MetaData, FileUrl, ProcedureTaskId, ReviewAudioVideoTaskId, SessionContext, SessionId, Progress
+
+* [QualityInspectTask](https://cloud.tencent.com/document/api/266/31773#QualityInspectTask)
+
+	* <font color="#dd0000">**修改成员**：</font>TaskId, Status, ErrCodeExt, Message, MetaData, Input, Output, SessionId, SessionContext
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 170 次发布
+
+发布时间：2023-09-15 02:54:26
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Address](https://cloud.tencent.com/document/api/215/15824#Address)
+
+	* 新增成员：Egress
+
+* [NatGateway](https://cloud.tencent.com/document/api/215/15824#NatGateway)
+
+	* 新增成员：SmartScheduleMode, DedicatedClusterId
+
+* [NatGatewayAddress](https://cloud.tencent.com/document/api/215/15824#NatGatewayAddress)
+
+	* 新增成员：BlockType
+
+	* <font color="#dd0000">**修改成员**：</font>AddressId, PublicIpAddress, IsBlocked
+
+
+
+
 # Release v1.0.748
 
 ## 云顾问(advisor) 版本：2020-07-21

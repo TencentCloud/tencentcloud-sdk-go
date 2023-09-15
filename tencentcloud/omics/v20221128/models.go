@@ -836,7 +836,7 @@ type ImportTableFileRequestParams struct {
 	// 表格文件Cos对象路径。
 	CosUri *string `json:"CosUri,omitnil" name:"CosUri"`
 
-	// 表格文件中每列的数据类型，支持的类型包括：Int、String、File、Array[File]
+	// 表格文件中每列的数据类型，支持的类型包括：Int、Float、String、File、Boolean、Array[Int]、Array[Float]、Array[String]、Array[File]、Array[Boolean]
 	DataType []*string `json:"DataType,omitnil" name:"DataType"`
 
 	// 表格描述。
@@ -855,7 +855,7 @@ type ImportTableFileRequest struct {
 	// 表格文件Cos对象路径。
 	CosUri *string `json:"CosUri,omitnil" name:"CosUri"`
 
-	// 表格文件中每列的数据类型，支持的类型包括：Int、String、File、Array[File]
+	// 表格文件中每列的数据类型，支持的类型包括：Int、Float、String、File、Boolean、Array[Int]、Array[Float]、Array[String]、Array[File]、Array[Boolean]
 	DataType []*string `json:"DataType,omitnil" name:"DataType"`
 
 	// 表格描述。

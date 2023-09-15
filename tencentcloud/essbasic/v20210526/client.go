@@ -1749,6 +1749,82 @@ func (c *Client) ChannelCreateReleaseFlowWithContext(ctx context.Context, reques
     return
 }
 
+func NewChannelCreateRoleRequest() (request *ChannelCreateRoleRequest) {
+    request = &ChannelCreateRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateRole")
+    
+    
+    return
+}
+
+func NewChannelCreateRoleResponse() (response *ChannelCreateRoleResponse) {
+    response = &ChannelCreateRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateRole
+// 此接口（ChannelCreateRole）用来创建企业自定义角色。
+//
+// 
+//
+// 适用场景1：创建当前企业的自定义角色，并且创建时不进行权限的设置（PermissionGroups 参数不传），角色中的权限内容可通过接口 ChannelModifyRole 完成更新。
+//
+// 
+//
+// 适用场景2：创建当前企业的自定义角色，并且创建时进行权限的设置（PermissionGroups 参数要传），权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles 的输出。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ChannelCreateRole(request *ChannelCreateRoleRequest) (response *ChannelCreateRoleResponse, err error) {
+    return c.ChannelCreateRoleWithContext(context.Background(), request)
+}
+
+// ChannelCreateRole
+// 此接口（ChannelCreateRole）用来创建企业自定义角色。
+//
+// 
+//
+// 适用场景1：创建当前企业的自定义角色，并且创建时不进行权限的设置（PermissionGroups 参数不传），角色中的权限内容可通过接口 ChannelModifyRole 完成更新。
+//
+// 
+//
+// 适用场景2：创建当前企业的自定义角色，并且创建时进行权限的设置（PermissionGroups 参数要传），权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles 的输出。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ChannelCreateRoleWithContext(ctx context.Context, request *ChannelCreateRoleRequest) (response *ChannelCreateRoleResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateSealPolicyRequest() (request *ChannelCreateSealPolicyRequest) {
     request = &ChannelCreateSealPolicyRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1950,7 +2026,9 @@ func NewChannelCreateWebThemeConfigResponse() (response *ChannelCreateWebThemeCo
 }
 
 // ChannelCreateWebThemeConfig
-// 生成页面主题配置
+// 用来创建嵌入式页面个性化主题配置（例如是否展示电子签logo、定义主题色等），该接口配合其他所有可嵌入页面接口使用
+//
+// 创建配置对当前第三方应用全局生效，如果多次调用，会以最后一次的配置为准
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1960,7 +2038,9 @@ func (c *Client) ChannelCreateWebThemeConfig(request *ChannelCreateWebThemeConfi
 }
 
 // ChannelCreateWebThemeConfig
-// 生成页面主题配置
+// 用来创建嵌入式页面个性化主题配置（例如是否展示电子签logo、定义主题色等），该接口配合其他所有可嵌入页面接口使用
+//
+// 创建配置对当前第三方应用全局生效，如果多次调用，会以最后一次的配置为准
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1977,6 +2057,74 @@ func (c *Client) ChannelCreateWebThemeConfigWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewChannelCreateWebThemeConfigResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelDeleteRoleRequest() (request *ChannelDeleteRoleRequest) {
+    request = &ChannelDeleteRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelDeleteRole")
+    
+    
+    return
+}
+
+func NewChannelDeleteRoleResponse() (response *ChannelDeleteRoleResponse) {
+    response = &ChannelDeleteRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelDeleteRole
+// 此接口（ChannelDeleteRole）用来删除企业自定义角色。
+//
+// 
+//
+// 注意：系统角色不可删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ChannelDeleteRole(request *ChannelDeleteRoleRequest) (response *ChannelDeleteRoleResponse, err error) {
+    return c.ChannelDeleteRoleWithContext(context.Background(), request)
+}
+
+// ChannelDeleteRole
+// 此接口（ChannelDeleteRole）用来删除企业自定义角色。
+//
+// 
+//
+// 注意：系统角色不可删除。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ChannelDeleteRoleWithContext(ctx context.Context, request *ChannelDeleteRoleRequest) (response *ChannelDeleteRoleResponse, err error) {
+    if request == nil {
+        request = NewChannelDeleteRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelDeleteRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelDeleteRoleResponse()
     err = c.Send(request, response)
     return
 }
@@ -2312,7 +2460,7 @@ func NewChannelDescribeRolesResponse() (response *ChannelDescribeRolesResponse) 
 }
 
 // ChannelDescribeRoles
-// 查询角色列表，支持根据类型和状态过滤角色列表
+// 分页查询企业角色列表，法人的角色是系统保留角色，不会返回，按照角色创建时间升序排列
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2331,7 +2479,7 @@ func (c *Client) ChannelDescribeRoles(request *ChannelDescribeRolesRequest) (res
 }
 
 // ChannelDescribeRoles
-// 查询角色列表，支持根据类型和状态过滤角色列表
+// 分页查询企业角色列表，法人的角色是系统保留角色，不会返回，按照角色创建时间升序排列
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2541,6 +2689,82 @@ func (c *Client) ChannelGetTaskResultApiWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewChannelGetTaskResultApiResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelModifyRoleRequest() (request *ChannelModifyRoleRequest) {
+    request = &ChannelModifyRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelModifyRole")
+    
+    
+    return
+}
+
+func NewChannelModifyRoleResponse() (response *ChannelModifyRoleResponse) {
+    response = &ChannelModifyRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelModifyRole
+// 此接口（ChannelModifyRole）用来更新企业自定义角色。
+//
+// 
+//
+// 适用场景1：更新当前企业的自定义角色的名称或描述等其他信息，更新时不进行权限的设置（PermissionGroups 参数不传）。
+//
+// 
+//
+// 适用场景2：更新当前企业的自定义角色的权限信息，更新时进行权限的设置（PermissionGroups 参数要传），权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles 的输出。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ChannelModifyRole(request *ChannelModifyRoleRequest) (response *ChannelModifyRoleResponse, err error) {
+    return c.ChannelModifyRoleWithContext(context.Background(), request)
+}
+
+// ChannelModifyRole
+// 此接口（ChannelModifyRole）用来更新企业自定义角色。
+//
+// 
+//
+// 适用场景1：更新当前企业的自定义角色的名称或描述等其他信息，更新时不进行权限的设置（PermissionGroups 参数不传）。
+//
+// 
+//
+// 适用场景2：更新当前企业的自定义角色的权限信息，更新时进行权限的设置（PermissionGroups 参数要传），权限树内容 PermissionGroups 可参考接口 ChannelDescribeRoles 的输出。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) ChannelModifyRoleWithContext(ctx context.Context, request *ChannelModifyRoleRequest) (response *ChannelModifyRoleResponse, err error) {
+    if request == nil {
+        request = NewChannelModifyRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelModifyRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelModifyRoleResponse()
     err = c.Send(request, response)
     return
 }

@@ -1231,22 +1231,22 @@ type CreateEmbedWebUrlRequestParams struct {
 	// <br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// WEB嵌入资源类型。
-	// <br/>CREATE_SEAL: 生成创建印章的嵌入页面
-	// <br/>CREATE_TEMPLATE：生成创建模板的嵌入页面
-	// <br/>MODIFY_TEMPLATE：生成编辑模板的嵌入页面
-	// <br/>PREVIEW_TEMPLATE：生成预览模板的嵌入页面
-	// <br/>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面
-	// <br/>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面
-	// <br/>EXTEND_SERVICE：生成拓展服务的嵌入页面
-	// <br/>PREVIEW_FLOW：生成预览合同的嵌入页面
-	// <br/>PREVIEW_FLOW_DETAIL：生成查看合同详情的嵌入页面
+	// WEB嵌入资源类型，支持以下类型
+	// <ul><li>CREATE_SEAL: 生成创建印章的嵌入页面</li>
+	// <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
+	// <li>MODIFY_TEMPLATE：生成编辑模板的嵌入页面</li>
+	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
+	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
+	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
+	// <li>EXTEND_SERVICE：生成拓展服务的嵌入页面</li>
+	// <li>PREVIEW_FLOW：生成预览合同的嵌入页面</li>
+	// <li>PREVIEW_FLOW_DETAIL：生成查看合同详情的嵌入页面</li></ul>
 	EmbedType *string `json:"EmbedType,omitnil" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
-	// <br/>PREVIEW_SEAL_DETAIL，必填，取值为印章id
-	// <br/>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id
-	// <br/>PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id
+	// <ul><li>PREVIEW_SEAL_DETAIL，必填，取值为印章id</li>
+	// <li>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id</li>
+	// <li>PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id</li><ul>
 	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
 
 	// 代理企业和员工的信息。
@@ -1267,22 +1267,22 @@ type CreateEmbedWebUrlRequest struct {
 	// <br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// WEB嵌入资源类型。
-	// <br/>CREATE_SEAL: 生成创建印章的嵌入页面
-	// <br/>CREATE_TEMPLATE：生成创建模板的嵌入页面
-	// <br/>MODIFY_TEMPLATE：生成编辑模板的嵌入页面
-	// <br/>PREVIEW_TEMPLATE：生成预览模板的嵌入页面
-	// <br/>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面
-	// <br/>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面
-	// <br/>EXTEND_SERVICE：生成拓展服务的嵌入页面
-	// <br/>PREVIEW_FLOW：生成预览合同的嵌入页面
-	// <br/>PREVIEW_FLOW_DETAIL：生成查看合同详情的嵌入页面
+	// WEB嵌入资源类型，支持以下类型
+	// <ul><li>CREATE_SEAL: 生成创建印章的嵌入页面</li>
+	// <li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
+	// <li>MODIFY_TEMPLATE：生成编辑模板的嵌入页面</li>
+	// <li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
+	// <li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
+	// <li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
+	// <li>EXTEND_SERVICE：生成拓展服务的嵌入页面</li>
+	// <li>PREVIEW_FLOW：生成预览合同的嵌入页面</li>
+	// <li>PREVIEW_FLOW_DETAIL：生成查看合同详情的嵌入页面</li></ul>
 	EmbedType *string `json:"EmbedType,omitnil" name:"EmbedType"`
 
 	// WEB嵌入的业务资源ID
-	// <br/>PREVIEW_SEAL_DETAIL，必填，取值为印章id
-	// <br/>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id
-	// <br/>PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id
+	// <ul><li>PREVIEW_SEAL_DETAIL，必填，取值为印章id</li>
+	// <li>MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id</li>
+	// <li>PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id</li><ul>
 	BusinessId *string `json:"BusinessId,omitnil" name:"BusinessId"`
 
 	// 代理企业和员工的信息。
@@ -1348,40 +1348,54 @@ func (r *CreateEmbedWebUrlResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowApproversRequestParams struct {
-	// 调用方用户信息，userId 必填
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 签署流程编号
+	// 合同流程ID，为32位字符串。
+	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 补充签署人信息
+	// 补充企业签署人信息。
+	// 
+	// - 如果发起方指定的补充签署人是企业微信签署人（ApproverSource=WEWORKAPP），则需要提供企业微信UserId进行补充；
+	// 
+	// - 如果不指定，则使用姓名和手机号进行补充。
 	Approvers []*FillApproverInfo `json:"Approvers,omitnil" name:"Approvers"`
 
-	// 企微消息中的发起人
+	// 在可定制的企业微信通知中，发起人可以根据具体需求进行自定义设置。
 	Initiator *string `json:"Initiator,omitnil" name:"Initiator"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作
-	// 
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type CreateFlowApproversRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方用户信息，userId 必填
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 签署流程编号
+	// 合同流程ID，为32位字符串。
+	// 建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 补充签署人信息
+	// 补充企业签署人信息。
+	// 
+	// - 如果发起方指定的补充签署人是企业微信签署人（ApproverSource=WEWORKAPP），则需要提供企业微信UserId进行补充；
+	// 
+	// - 如果不指定，则使用姓名和手机号进行补充。
 	Approvers []*FillApproverInfo `json:"Approvers,omitnil" name:"Approvers"`
 
-	// 企微消息中的发起人
+	// 在可定制的企业微信通知中，发起人可以根据具体需求进行自定义设置。
 	Initiator *string `json:"Initiator,omitnil" name:"Initiator"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作
-	// 
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -1949,38 +1963,52 @@ func (r *CreateFlowGroupByFilesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowGroupByTemplatesRequestParams struct {
-	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 合同组名称,最大长度200个字符
+	// 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
 
-	// 合同组的子合同信息，支持2-50个子合同
+	// 合同（流程）组的子合同信息，支持2-50个子合同
 	FlowGroupInfos []*FlowGroupInfo `json:"FlowGroupInfos,omitnil" name:"FlowGroupInfos"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 合同组的配置信息。包括是否通知本企业签署方，是否通知其他签署方
+	// 合同（流程）组的配置项信息。
+	// 其中包括：
+	// <ul>
+	// <li>是否通知本企业签署方</li>
+	// <li>是否通知其他签署方</li>
+	// </ul>
 	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil" name:"FlowGroupOptions"`
 }
 
 type CreateFlowGroupByTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 调用方用户信息，userId 必填。支持填入集团子公司经办人 userId 代发合同
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 合同组名称,最大长度200个字符
+	// 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
 
-	// 合同组的子合同信息，支持2-50个子合同
+	// 合同（流程）组的子合同信息，支持2-50个子合同
 	FlowGroupInfos []*FlowGroupInfo `json:"FlowGroupInfos,omitnil" name:"FlowGroupInfos"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 合同组的配置信息。包括是否通知本企业签署方，是否通知其他签署方
+	// 合同（流程）组的配置项信息。
+	// 其中包括：
+	// <ul>
+	// <li>是否通知本企业签署方</li>
+	// <li>是否通知其他签署方</li>
+	// </ul>
 	FlowGroupOptions *FlowGroupOptions `json:"FlowGroupOptions,omitnil" name:"FlowGroupOptions"`
 }
 
@@ -2936,32 +2964,32 @@ func (r *CreateIntegrationRoleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateIntegrationUserRolesRequestParams struct {
-	// 操作人信息，UserId必填
+	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 绑定角色的用户id列表，不能重复，不能大于 100 个
 	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
 
-	// 绑定角色的角色id列表，不能重复，不能大于 100，可以通过DescribeIntegrationRoles接口获取
+	// 绑定角色的角色id列表，不能重复，不能大于 100，可以通过DescribeIntegrationRoles接口获取角色信息
 	RoleIds []*string `json:"RoleIds,omitnil" name:"RoleIds"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type CreateIntegrationUserRolesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息，UserId必填
+	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 绑定角色的用户id列表，不能重复，不能大于 100 个
 	UserIds []*string `json:"UserIds,omitnil" name:"UserIds"`
 
-	// 绑定角色的角色id列表，不能重复，不能大于 100，可以通过DescribeIntegrationRoles接口获取
+	// 绑定角色的角色id列表，不能重复，不能大于 100，可以通过DescribeIntegrationRoles接口获取角色信息
 	RoleIds []*string `json:"RoleIds,omitnil" name:"RoleIds"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -4525,7 +4553,7 @@ func (r *CreateUserAutoSignEnableUrlRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateUserAutoSignEnableUrlResponseParams struct {
-	// 个人用户自动签的开通链接, 短链形式
+	// 个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
 	Url *string `json:"Url,omitnil" name:"Url"`
 
 	// 腾讯电子签小程序的 AppID，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用
@@ -4806,32 +4834,32 @@ func (r *DeleteIntegrationEmployeesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteIntegrationRoleUsersRequestParams struct {
-	// 操作人信息，userId必填
+	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 角色id
+	// 角色id，可以通过DescribeIntegrationRoles接口获取角色信息
 	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
 
 	// 用户信息,最多 200 个用户，并且 UserId 和 OpenId 二选一，其他字段不需要传
 	Users []*UserInfo `json:"Users,omitnil" name:"Users"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type DeleteIntegrationRoleUsersRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息，userId必填
+	// 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 角色id
+	// 角色id，可以通过DescribeIntegrationRoles接口获取角色信息
 	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
 
 	// 用户信息,最多 200 个用户，并且 UserId 和 OpenId 二选一，其他字段不需要传
 	Users []*UserInfo `json:"Users,omitnil" name:"Users"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -5886,105 +5914,65 @@ func (r *DescribeIntegrationEmployeesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
-type DescribeIntegrationMainOrganizationUserRequestParams struct {
-	// 操作人信息，userId必填
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
-}
-
-type DescribeIntegrationMainOrganizationUserRequest struct {
-	*tchttp.BaseRequest
-	
-	// 操作人信息，userId必填
-	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
-}
-
-func (r *DescribeIntegrationMainOrganizationUserRequest) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeIntegrationMainOrganizationUserRequest) FromJsonString(s string) error {
-	f := make(map[string]interface{})
-	if err := json.Unmarshal([]byte(s), &f); err != nil {
-		return err
-	}
-	delete(f, "Operator")
-	if len(f) > 0 {
-		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIntegrationMainOrganizationUserRequest has unknown keys!", "")
-	}
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
-type DescribeIntegrationMainOrganizationUserResponseParams struct {
-	// 主企业员工账号信息
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	IntegrationMainOrganizationUser *IntegrationMainOrganizationUser `json:"IntegrationMainOrganizationUser,omitnil" name:"IntegrationMainOrganizationUser"`
-
-	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
-	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
-}
-
-type DescribeIntegrationMainOrganizationUserResponse struct {
-	*tchttp.BaseResponse
-	Response *DescribeIntegrationMainOrganizationUserResponseParams `json:"Response"`
-}
-
-func (r *DescribeIntegrationMainOrganizationUserResponse) ToJsonString() string {
-    b, _ := json.Marshal(r)
-    return string(b)
-}
-
-// FromJsonString It is highly **NOT** recommended to use this function
-// because it has no param check, nor strict type check
-func (r *DescribeIntegrationMainOrganizationUserResponse) FromJsonString(s string) error {
-	return json.Unmarshal([]byte(s), &r)
-}
-
-// Predefined struct for user
 type DescribeIntegrationRolesRequestParams struct {
-	// 操作人信息，UserId必填
+	// 执行本接口操作的员工信息。使用此接口时，必须填写UserId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 指定每页多少条数据，单页最大200
+	// 指定分页每页返回的数据条数，单页最大支持 200。
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 查询的关键字段:
-	// Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
-	// Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
-	// Key:"IsGroupRole"，Values:["0"]:查询非集团角色，Values:["1"]表示查询集团角色
-	// Key:"IsReturnPermissionGroup"，Values:["0"]:表示接口不返回角色对应的权限树字段，Values:["1"]表示接口返回角色对应的权限树字段
+	// 查询的关键字段，支持Key-Value单值查询。可选键值对如下：
+	// <ul>
+	//   <li>Key:"RoleType"，查询角色类型，Values可选：
+	//     <ul><li>**"1"**：查询系统角色</li><li>**"2"**：查询自定义角色</li></ul>
+	//   </li><li>Key:"RoleStatus"，查询角色状态，Values可选：
+	//     <ul><li>**"1"**：查询启用角色</li><li>**"2"**：查询禁用角色</li></ul>
+	//   </li><li>Key:"IsGroupRole"，是否查询集团角色，Values可选：
+	//     <ul><li>**"0"**：查询非集团角色</li><li>**"1"**：查询集团角色</li></ul>
+	//   </li><li>Key:"IsReturnPermissionGroup"，是否返回角色对应权限树，Values可选：
+	//     <ul><li>**"0"**：接口不返回角色对应的权限树字段</li><li>**"1"**：接口返回角色对应的权限树字段</li></ul>
+	//   </li>
+	// </ul>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
-	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
+	// 指定分页返回第几页的数据，如果不传默认返回第一页。页码从 0 开始，即首页为 0，最大2000。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeIntegrationRolesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息，UserId必填
+	// 执行本接口操作的员工信息。使用此接口时，必须填写UserId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 指定每页多少条数据，单页最大200
+	// 指定分页每页返回的数据条数，单页最大支持 200。
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 查询的关键字段:
-	// Key:"RoleType",Values:["1"]查询系统角色，Values:["2"]查询自定义角色
-	// Key:"RoleStatus",Values:["1"]查询启用角色，Values:["2"]查询禁用角色
-	// Key:"IsGroupRole"，Values:["0"]:查询非集团角色，Values:["1"]表示查询集团角色
-	// Key:"IsReturnPermissionGroup"，Values:["0"]:表示接口不返回角色对应的权限树字段，Values:["1"]表示接口返回角色对应的权限树字段
+	// 查询的关键字段，支持Key-Value单值查询。可选键值对如下：
+	// <ul>
+	//   <li>Key:"RoleType"，查询角色类型，Values可选：
+	//     <ul><li>**"1"**：查询系统角色</li><li>**"2"**：查询自定义角色</li></ul>
+	//   </li><li>Key:"RoleStatus"，查询角色状态，Values可选：
+	//     <ul><li>**"1"**：查询启用角色</li><li>**"2"**：查询禁用角色</li></ul>
+	//   </li><li>Key:"IsGroupRole"，是否查询集团角色，Values可选：
+	//     <ul><li>**"0"**：查询非集团角色</li><li>**"1"**：查询集团角色</li></ul>
+	//   </li><li>Key:"IsReturnPermissionGroup"，是否返回角色对应权限树，Values可选：
+	//     <ul><li>**"0"**：接口不返回角色对应的权限树字段</li><li>**"1"**：接口返回角色对应的权限树字段</li></ul>
+	//   </li>
+	// </ul>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
-	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
+	// 指定分页返回第几页的数据，如果不传默认返回第一页。页码从 0 开始，即首页为 0，最大2000。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 }
 
@@ -6013,16 +6001,16 @@ func (r *DescribeIntegrationRolesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIntegrationRolesResponseParams struct {
-	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大2000
+	// 指定分页返回的页码。页码从0开始，最大为2000。
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 指定每页多少条数据，单页最大200
+	// 指定分页每页返回的数据条数，单页最大支持 200。
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 符合查询条件的总的角色数
+	// 符合查询条件的总角色数。
 	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
-	// 企业角色信息列表
+	// 企业角色信息列表。
 	IntegrateRoles []*IntegrateRole `json:"IntegrateRoles,omitnil" name:"IntegrateRoles"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6690,7 +6678,10 @@ type FileUrl struct {
 }
 
 type FillApproverInfo struct {
-	// 对应模板中的参与方ID
+	// 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+	// 模板发起合同时，该参数为必填项。
+	// 文件发起合同是，该参数无需传值。
+	// 如果开发者后序用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
 	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 
 	// 签署人来源
@@ -6698,14 +6689,14 @@ type FillApproverInfo struct {
 	// <br/>仅【企微或签】时指定WEWORKAPP
 	ApproverSource *string `json:"ApproverSource,omitnil" name:"ApproverSource"`
 
-	// 企业自定义账号ID
-	// <br/>当ApproverSource为WEWORKAPP的企微或签场景下，必须指企业自有应用获取企微明文的userid
+	// 企业微信UserId
+	// <br/>当ApproverSource为WEWORKAPP的企微或签场景下，必须指企业自有应用获取企业微信的UserId
 	CustomUserId *string `json:"CustomUserId,omitnil" name:"CustomUserId"`
 
-	// 补充签署人姓名
+	// 补充企业签署人员工姓名
 	ApproverName *string `json:"ApproverName,omitnil" name:"ApproverName"`
 
-	// 补充签署人手机号
+	// 补充企业签署人员工手机号
 	ApproverMobile *string `json:"ApproverMobile,omitnil" name:"ApproverMobile"`
 }
 
@@ -6924,9 +6915,10 @@ type FlowCreateApprover struct {
 	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	ApproverIdCardNumber *string `json:"ApproverIdCardNumber,omitnil" name:"ApproverIdCardNumber"`
 
-	// 签署方经办人在模板中的参与方ID
-	// <br/>模板发起合同时，该参数为必填项
-	// <br/>文件发起合同是，该参数无序传值
+	// 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+	// 模板发起合同时，该参数为必填项。
+	// 文件发起合同是，该参数无需传值。
+	// 如果开发者后续用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
 	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 
 	// 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
@@ -7407,20 +7399,6 @@ type IntegrationDepartment struct {
 	// 序列号
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderNo *uint64 `json:"OrderNo,omitnil" name:"OrderNo"`
-}
-
-type IntegrationMainOrganizationUser struct {
-	// 主企业id
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MainOrganizationId *string `json:"MainOrganizationId,omitnil" name:"MainOrganizationId"`
-
-	// 主企业员工UserId
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	MainUserId *string `json:"MainUserId,omitnil" name:"MainUserId"`
-
-	// 主企业员工名
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	UserName *string `json:"UserName,omitnil" name:"UserName"`
 }
 
 // Predefined struct for user

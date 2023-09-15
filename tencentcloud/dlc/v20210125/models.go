@@ -8567,6 +8567,80 @@ type Property struct {
 }
 
 // Predefined struct for user
+type QueryResultRequestParams struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// lastReadFile为上一次读取的文件，lastReadOffset为上一次读取到的位置
+	NextToken *string `json:"NextToken,omitnil" name:"NextToken"`
+}
+
+type QueryResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// lastReadFile为上一次读取的文件，lastReadOffset为上一次读取到的位置
+	NextToken *string `json:"NextToken,omitnil" name:"NextToken"`
+}
+
+func (r *QueryResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskId")
+	delete(f, "NextToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryResultResponseParams struct {
+	// 任务Id
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 结果数据
+	ResultSet *string `json:"ResultSet,omitnil" name:"ResultSet"`
+
+	// schema
+	ResultSchema []*Column `json:"ResultSchema,omitnil" name:"ResultSchema"`
+
+	// 分页信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NextToken *string `json:"NextToken,omitnil" name:"NextToken"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type QueryResultResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryResultResponseParams `json:"Response"`
+}
+
+func (r *QueryResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ReportHeartbeatMetaDataRequestParams struct {
 	// 数据源名称
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil" name:"DatasourceConnectionName"`
