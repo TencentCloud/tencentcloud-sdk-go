@@ -143,13 +143,15 @@ func (r *DescribeRiskTrendsResponse) FromJsonString(s string) error {
 }
 
 type InputCryptoManageMarketingRisk struct {
-	// 是否授权
+	// 是否授权：1已授权，否则未授权。
+	//  调用全栈式风控引擎接口服务时，客户需先明确授权
+	// 
 	IsAuthorized *string `json:"IsAuthorized,omitnil" name:"IsAuthorized"`
 
-	// 加密类型
+	// 加密类型：1AES加密
 	CryptoType *string `json:"CryptoType,omitnil" name:"CryptoType"`
 
-	// 加密内容
+	// 加密内容，非空时接口采用加密模式。
 	CryptoContent *string `json:"CryptoContent,omitnil" name:"CryptoContent"`
 }
 
@@ -182,7 +184,15 @@ type InputFrontRisk struct {
 }
 
 type InputManageMarketingRisk struct {
-	// 账号信息。
+	// 用户账号类型（默认开通 QQ 开放账号、手机号，手机 MD5 账号类型查询。如需使用微
+	// 信开放账号，则需要 提交工单 由腾讯云进行资格审核，审核通过后方可正常使用微信
+	// 开放账号）： 
+	// 1：QQ 开放账号。 
+	// 2：微信开放账号。 
+	// 4：手机号（暂仅支持国内手机号）。 
+	// 8：设备号（imei/imeiMD5/idfa/idfaMd5）。 
+	// 0： 其他。 
+	// 10004：手机号 MD5。
 	Account *AccountInfo `json:"Account,omitnil" name:"Account"`
 
 	// 场景类型：场景SceneCode, 控制台上新建对应的场景并获取对应的值；
@@ -237,9 +247,12 @@ type InputManageMarketingRisk struct {
 	// 手机制造商ID，如果手机注册，请带上此信息。
 	VendorId *string `json:"VendorId,omitnil" name:"VendorId"`
 
-	// 设备类型：
-	// 1：Android
-	// 2：IOS
+	// 设备类型，账号类型为8时必填： 
+	// 0:未知 
+	// 1:Imei;国际移动设备识别号（15-17位数字） 
+	// 2:ImeiMd5；国际移动设备识别号，通过MD5加密后32位的小写字符串 
+	// 3:Idfa; 
+	// 4:IdfaMD5;
 	DeviceType *int64 `json:"DeviceType,omitnil" name:"DeviceType"`
 
 	// 详细信息
@@ -251,7 +264,10 @@ type InputManageMarketingRisk struct {
 	// 可选填写。详情请跳转至OnlineScamInfo查看。
 	OnlineScam *OnlineScamInfo `json:"OnlineScam,omitnil" name:"OnlineScam"`
 
-	// 平台: 1android
+	// 1：安卓
+	// 2：iOS 
+	// 3：H5 
+	// 4：小程序 
 	Platform *string `json:"Platform,omitnil" name:"Platform"`
 }
 
@@ -341,13 +357,22 @@ type OnlineScamInfo struct {
 }
 
 type OtherAccountInfo struct {
-	// id
+	// 其它账号信息：  
+	// AccountType 是 4 时，填入真实的手机号（如 13123456789）。 
+	// AccountType 是 8 时，支持 imei、idfa、imeiMD5、idfaMD5入参。  
+	// AccountType 是 0 时，填入账号信息。  
+	// AccountType 是 10004 时，填入手机号的 MD5 值。 
+	// 注：imeiMd5 加密方式为：  
+	// imei 明文小写后，进行 MD5 加密，加密后取小写值。  
+	// IdfaMd5 加密方式为：idfa 明文大写后，进行 MD5 加密，加密后取小写值。
 	AccountId *string `json:"AccountId,omitnil" name:"AccountId"`
 
-	// 手机号
+	// 手机号，若 AccountType 是 4（手机号）、或 10004（手机号 MD5），则无需重复填写 
+	// 否则填入对应的手机号（如 13123456789）。
 	MobilePhone *string `json:"MobilePhone,omitnil" name:"MobilePhone"`
 
-	// id
+	// 用户设备号。若 AccountType 是 8（设备号），则无需重复填写，否则填入对应的设备 
+	// 号。 
 	DeviceId *string `json:"DeviceId,omitnil" name:"DeviceId"`
 }
 

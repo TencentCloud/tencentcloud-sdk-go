@@ -2789,6 +2789,56 @@ func (c *Client) DescribeDatabasesWithContext(ctx context.Context, request *Desc
     return
 }
 
+func NewDescribeDatasourceConnectionRequest() (request *DescribeDatasourceConnectionRequest) {
+    request = &DescribeDatasourceConnectionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeDatasourceConnection")
+    
+    
+    return
+}
+
+func NewDescribeDatasourceConnectionResponse() (response *DescribeDatasourceConnectionResponse) {
+    response = &DescribeDatasourceConnectionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDatasourceConnection
+// 本接口（DescribeDatasourceConnection）用于查询数据源信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATASOURCETYPEERROR = "InvalidParameter.DatasourceTypeError"
+func (c *Client) DescribeDatasourceConnection(request *DescribeDatasourceConnectionRequest) (response *DescribeDatasourceConnectionResponse, err error) {
+    return c.DescribeDatasourceConnectionWithContext(context.Background(), request)
+}
+
+// DescribeDatasourceConnection
+// 本接口（DescribeDatasourceConnection）用于查询数据源信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_DATASOURCETYPEERROR = "InvalidParameter.DatasourceTypeError"
+func (c *Client) DescribeDatasourceConnectionWithContext(ctx context.Context, request *DescribeDatasourceConnectionRequest) (response *DescribeDatasourceConnectionResponse, err error) {
+    if request == nil {
+        request = NewDescribeDatasourceConnectionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDatasourceConnection require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDatasourceConnectionResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEngineUsageInfoRequest() (request *DescribeEngineUsageInfoRequest) {
     request = &DescribeEngineUsageInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},

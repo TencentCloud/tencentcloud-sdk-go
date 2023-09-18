@@ -3784,6 +3784,36 @@ type DataGovernPolicy struct {
 	GovernEngine *string `json:"GovernEngine,omitnil" name:"GovernEngine"`
 }
 
+type DataSourceInfo struct {
+	// 数据源实例的唯一ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 数据源的名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// 数据源的JDBC访问链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	JdbcUrl *string `json:"JdbcUrl,omitnil" name:"JdbcUrl"`
+
+	// 用于访问数据源的用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil" name:"User"`
+
+	// 数据源访问密码，需要base64编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil" name:"Password"`
+
+	// 数据源的VPC和子网信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *DatasourceConnectionLocation `json:"Location,omitnil" name:"Location"`
+
+	// 默认数据库名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
+}
+
 type DatabaseInfo struct {
 	// 数据库名称，长度0~128，支持数字、字母下划线，不允许数字大头，统一转换为小写。
 	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
@@ -3840,6 +3870,117 @@ type DatabaseResponseInfo struct {
 	// 数据库ID（无效字段）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DatabaseId *string `json:"DatabaseId,omitnil" name:"DatabaseId"`
+}
+
+type DatasourceConnectionConfig struct {
+	// Mysql数据源连接的属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mysql *MysqlInfo `json:"Mysql,omitnil" name:"Mysql"`
+
+	// Hive数据源连接的属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Hive *HiveInfo `json:"Hive,omitnil" name:"Hive"`
+
+	// Kafka数据源连接的属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Kafka *KafkaInfo `json:"Kafka,omitnil" name:"Kafka"`
+
+	// 其他数据源连接的属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OtherDatasourceConnection *OtherDatasourceConnection `json:"OtherDatasourceConnection,omitnil" name:"OtherDatasourceConnection"`
+
+	// PostgreSQL数据源连接的属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PostgreSql *DataSourceInfo `json:"PostgreSql,omitnil" name:"PostgreSql"`
+
+	// SQLServer数据源连接的属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlServer *DataSourceInfo `json:"SqlServer,omitnil" name:"SqlServer"`
+
+	// ClickHouse数据源连接的属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClickHouse *DataSourceInfo `json:"ClickHouse,omitnil" name:"ClickHouse"`
+
+	// Elasticsearch数据源连接的属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Elasticsearch *ElasticsearchInfo `json:"Elasticsearch,omitnil" name:"Elasticsearch"`
+
+	// TDSQL-PostgreSQL数据源连接的属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TDSQLPostgreSql *DataSourceInfo `json:"TDSQLPostgreSql,omitnil" name:"TDSQLPostgreSql"`
+}
+
+type DatasourceConnectionInfo struct {
+	// 数据源数字Id
+	Id *int64 `json:"Id,omitnil" name:"Id"`
+
+	// 数据源字符串Id
+	DatasourceConnectionId *string `json:"DatasourceConnectionId,omitnil" name:"DatasourceConnectionId"`
+
+	// 数据源名称
+	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil" name:"DatasourceConnectionName"`
+
+	// 数据源描述
+	DatasourceConnectionDesc *string `json:"DatasourceConnectionDesc,omitnil" name:"DatasourceConnectionDesc"`
+
+	// 数据源类型，支持DataLakeCatalog、IcebergCatalog、Result、Mysql、HiveCos、HiveHdfs
+	DatasourceConnectionType *string `json:"DatasourceConnectionType,omitnil" name:"DatasourceConnectionType"`
+
+	// 数据源属性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DatasourceConnectionConfig *DatasourceConnectionConfig `json:"DatasourceConnectionConfig,omitnil" name:"DatasourceConnectionConfig"`
+
+	// 数据源状态：0（初始化）、1（成功）、-1（已删除）、-2（失败）、-3（删除中）
+	State *int64 `json:"State,omitnil" name:"State"`
+
+	// 地域
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// 用户AppId
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
+
+	// 数据源创建时间
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 数据源最近一次更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+
+	// 数据源同步失败原因
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 数据源绑定的计算引擎信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngines []*DataEngineInfo `json:"DataEngines,omitnil" name:"DataEngines"`
+
+	// 创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAlias *string `json:"UserAlias,omitnil" name:"UserAlias"`
+
+	// 网络配置列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NetworkConnectionSet []*NetworkConnection `json:"NetworkConnectionSet,omitnil" name:"NetworkConnectionSet"`
+
+	// 连通性状态：0（未测试，默认）、1（正常）、2（失败）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectivityState *uint64 `json:"ConnectivityState,omitnil" name:"ConnectivityState"`
+
+	// 连通性测试提示信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConnectivityTips *string `json:"ConnectivityTips,omitnil" name:"ConnectivityTips"`
+}
+
+type DatasourceConnectionLocation struct {
+	// 数据连接所在Vpc实例Id，如“vpc-azd4dt1c”。
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// Vpc的IPv4 CIDR
+	VpcCidrBlock *string `json:"VpcCidrBlock,omitnil" name:"VpcCidrBlock"`
+
+	// 数据连接所在子网的实例Id，如“subnet-bthucmmy”
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+
+	// Subnet的IPv4 CIDR
+	SubnetCidrBlock *string `json:"SubnetCidrBlock,omitnil" name:"SubnetCidrBlock"`
 }
 
 // Predefined struct for user
@@ -4928,6 +5069,131 @@ func (r *DescribeDatabasesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDatabasesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatasourceConnectionRequestParams struct {
+	// 连接ID列表，指定要查询的连接ID
+	DatasourceConnectionIds []*string `json:"DatasourceConnectionIds,omitnil" name:"DatasourceConnectionIds"`
+
+	// 过滤条件，当前支持的过滤键为：DatasourceConnectionName（数据源连接名）。
+	// DatasourceConnectionType   （数据源连接连接类型）
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回数量，默认20，最大值100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序字段，支持如下字段类型，create-time（默认，创建时间）、update-time（更新时间）
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为desc
+	Sorting *string `json:"Sorting,omitnil" name:"Sorting"`
+
+	// 筛选字段：起始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 筛选字段：截止时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 连接名称列表，指定要查询的连接名称
+	DatasourceConnectionNames []*string `json:"DatasourceConnectionNames,omitnil" name:"DatasourceConnectionNames"`
+
+	// 连接类型，支持Mysql/HiveCos/Kafka/DataLakeCatalog
+	DatasourceConnectionTypes []*string `json:"DatasourceConnectionTypes,omitnil" name:"DatasourceConnectionTypes"`
+}
+
+type DescribeDatasourceConnectionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 连接ID列表，指定要查询的连接ID
+	DatasourceConnectionIds []*string `json:"DatasourceConnectionIds,omitnil" name:"DatasourceConnectionIds"`
+
+	// 过滤条件，当前支持的过滤键为：DatasourceConnectionName（数据源连接名）。
+	// DatasourceConnectionType   （数据源连接连接类型）
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回数量，默认20，最大值100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序字段，支持如下字段类型，create-time（默认，创建时间）、update-time（更新时间）
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为desc
+	Sorting *string `json:"Sorting,omitnil" name:"Sorting"`
+
+	// 筛选字段：起始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 筛选字段：截止时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 连接名称列表，指定要查询的连接名称
+	DatasourceConnectionNames []*string `json:"DatasourceConnectionNames,omitnil" name:"DatasourceConnectionNames"`
+
+	// 连接类型，支持Mysql/HiveCos/Kafka/DataLakeCatalog
+	DatasourceConnectionTypes []*string `json:"DatasourceConnectionTypes,omitnil" name:"DatasourceConnectionTypes"`
+}
+
+func (r *DescribeDatasourceConnectionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatasourceConnectionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DatasourceConnectionIds")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SortBy")
+	delete(f, "Sorting")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	delete(f, "DatasourceConnectionNames")
+	delete(f, "DatasourceConnectionTypes")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDatasourceConnectionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDatasourceConnectionResponseParams struct {
+	// 数据连接总数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 数据连接对象集合
+	ConnectionSet []*DatasourceConnectionInfo `json:"ConnectionSet,omitnil" name:"ConnectionSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDatasourceConnectionResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDatasourceConnectionResponseParams `json:"Response"`
+}
+
+func (r *DescribeDatasourceConnectionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDatasourceConnectionResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7323,6 +7589,36 @@ func (r *DropDMSTableResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ElasticsearchInfo struct {
+	// 数据源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 数据源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// 用户名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	User *string `json:"User,omitnil" name:"User"`
+
+	// 密码，需要base64编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Password *string `json:"Password,omitnil" name:"Password"`
+
+	// 数据源的VPC和子网信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Location *DatasourceConnectionLocation `json:"Location,omitnil" name:"Location"`
+
+	// 默认数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
+
+	// 访问Elasticsearch的ip、端口信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceInfo []*IpPortPair `json:"ServiceInfo,omitnil" name:"ServiceInfo"`
+}
+
 type Execution struct {
 	// 自动生成SQL语句。
 	SQL *string `json:"SQL,omitnil" name:"SQL"`
@@ -7421,6 +7717,63 @@ func (r *GenerateCreateMangedTableSqlResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type HiveInfo struct {
+	// hive metastore的地址
+	MetaStoreUrl *string `json:"MetaStoreUrl,omitnil" name:"MetaStoreUrl"`
+
+	// hive数据源类型，代表数据储存的位置，COS或者HDFS
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 数据源所在的私有网络信息
+	Location *DatasourceConnectionLocation `json:"Location,omitnil" name:"Location"`
+
+	// 如果类型为HDFS，需要传一个用户名
+	User *string `json:"User,omitnil" name:"User"`
+
+	// 如果类型为HDFS，需要选择是否高可用
+	HighAvailability *bool `json:"HighAvailability,omitnil" name:"HighAvailability"`
+
+	// 如果类型为COS，需要填写COS桶连接
+	BucketUrl *string `json:"BucketUrl,omitnil" name:"BucketUrl"`
+
+	// json字符串。如果类型为HDFS，需要填写该字段
+	HdfsProperties *string `json:"HdfsProperties,omitnil" name:"HdfsProperties"`
+
+	// Hive的元数据库信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Mysql *MysqlInfo `json:"Mysql,omitnil" name:"Mysql"`
+
+	// emr集群Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// emr集群名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// EMR集群中hive组件的版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HiveVersion *string `json:"HiveVersion,omitnil" name:"HiveVersion"`
+
+	// Kerberos详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KerberosInfo *KerberosInfo `json:"KerberosInfo,omitnil" name:"KerberosInfo"`
+
+	// 是否开启Kerberos
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	KerberosEnable *bool `json:"KerberosEnable,omitnil" name:"KerberosEnable"`
+}
+
+type IpPortPair struct {
+	// ip信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 端口信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Port *int64 `json:"Port,omitnil" name:"Port"`
+}
+
 type JobLogResult struct {
 	// 日志时间戳，毫秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7451,6 +7804,25 @@ type KVPair struct {
 	// 配置的value值
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
+type KafkaInfo struct {
+	// kakfa实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// kakfa数据源的网络信息
+	Location *DatasourceConnectionLocation `json:"Location,omitnil" name:"Location"`
+}
+
+type KerberosInfo struct {
+	// Krb5Conf文件值
+	Krb5Conf *string `json:"Krb5Conf,omitnil" name:"Krb5Conf"`
+
+	// KeyTab文件值
+	KeyTab *string `json:"KeyTab,omitnil" name:"KeyTab"`
+
+	// 服务主体
+	ServicePrincipal *string `json:"ServicePrincipal,omitnil" name:"ServicePrincipal"`
 }
 
 // Predefined struct for user
@@ -8212,6 +8584,31 @@ func (r *ModifyWorkGroupResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MysqlInfo struct {
+	// 连接mysql的jdbc url
+	JdbcUrl *string `json:"JdbcUrl,omitnil" name:"JdbcUrl"`
+
+	// 用户名
+	User *string `json:"User,omitnil" name:"User"`
+
+	// mysql密码
+	Password *string `json:"Password,omitnil" name:"Password"`
+
+	// mysql数据源的网络信息
+	Location *DatasourceConnectionLocation `json:"Location,omitnil" name:"Location"`
+
+	// 数据库名称
+	DbName *string `json:"DbName,omitnil" name:"DbName"`
+
+	// 数据库实例ID，和数据库侧保持一致
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 数据库实例名称，和数据库侧保持一致
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+}
+
 type NetworkConnection struct {
 	// 网络配置id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -8458,6 +8855,11 @@ type NotebookSessions struct {
 type Other struct {
 	// 枚举类型，默认值为Json，可选值为[Json, Parquet, ORC, AVRD]之一。
 	Format *string `json:"Format,omitnil" name:"Format"`
+}
+
+type OtherDatasourceConnection struct {
+	// 网络参数
+	Location *DatasourceConnectionLocation `json:"Location,omitnil" name:"Location"`
 }
 
 type Partition struct {

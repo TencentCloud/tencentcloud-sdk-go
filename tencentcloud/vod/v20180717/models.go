@@ -11000,6 +11000,7 @@ type DescribeStorageDetailsRequestParams struct {
 	// <li>ArchiveBulkRetrieval：归档批量取回量。</li>
 	// <li>DeepArchiveStandardRetrieval：深度归档标准取回量。</li>
 	// <li>DeepArchiveBulkRetrieval：深度归档批量取回量。</li>
+	// <li>InfrequentRetrieval：低频存储取回量。</li>
 	// 默认值为 TotalStorage。
 	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
 
@@ -11043,6 +11044,7 @@ type DescribeStorageDetailsRequest struct {
 	// <li>ArchiveBulkRetrieval：归档批量取回量。</li>
 	// <li>DeepArchiveStandardRetrieval：深度归档标准取回量。</li>
 	// <li>DeepArchiveBulkRetrieval：深度归档批量取回量。</li>
+	// <li>InfrequentRetrieval：低频存储取回量。</li>
 	// 默认值为 TotalStorage。
 	StorageType *string `json:"StorageType,omitnil" name:"StorageType"`
 

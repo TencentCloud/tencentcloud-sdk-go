@@ -6931,13 +6931,13 @@ type UpdateRecordBackupPlanModify struct {
 	LifeCycle *LifeCycleData `json:"LifeCycle,omitnil" name:"LifeCycle"`
 
 	// 要新增的设备通道（Json数组，没有新增时，不需要该字段，一次添加通道总数不超过5000个，包括组织目录下的通道数量）
-	Add *string `json:"Add,omitnil" name:"Add"`
+	Add []*ChannelInfo `json:"Add,omitnil" name:"Add"`
 
 	// 要删除的设备通道（Json数组，内容为要删除的设备通道id，没有删除设备通道时，不需要该字段）
-	Del *string `json:"Del,omitnil" name:"Del"`
+	Del []*string `json:"Del,omitnil" name:"Del"`
 
 	// 添加组织目录下所有设备通道（Json数组，可以为空，并且通道总数量不超过5000个（包括Add字段通道数量））
-	OrganizationId *string `json:"OrganizationId,omitnil" name:"OrganizationId"`
+	OrganizationId []*string `json:"OrganizationId,omitnil" name:"OrganizationId"`
 }
 
 // Predefined struct for user

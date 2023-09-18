@@ -1,3 +1,228 @@
+# Release v1.0.750
+
+## 商业智能分析 BI(bi) 版本：2022-01-05
+
+### 第 3 次发布
+
+发布时间：2023-09-18 01:10:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEmbedToken](https://cloud.tencent.com/document/api/590/73724)
+
+	* 新增入参：UserCorpId, UserId
+
+
+修改数据结构：
+
+* [EmbedTokenInfo](https://cloud.tencent.com/document/api/590/73726#EmbedTokenInfo)
+
+	* 新增成员：UserCorpId, UserId
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 61 次发布
+
+发布时间：2023-09-18 01:38:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeDatasourceConnection](https://cloud.tencent.com/document/api/1342/98586)
+
+新增数据结构：
+
+* [DataSourceInfo](https://cloud.tencent.com/document/api/1342/53778#DataSourceInfo)
+* [DatasourceConnectionConfig](https://cloud.tencent.com/document/api/1342/53778#DatasourceConnectionConfig)
+* [DatasourceConnectionInfo](https://cloud.tencent.com/document/api/1342/53778#DatasourceConnectionInfo)
+* [DatasourceConnectionLocation](https://cloud.tencent.com/document/api/1342/53778#DatasourceConnectionLocation)
+* [ElasticsearchInfo](https://cloud.tencent.com/document/api/1342/53778#ElasticsearchInfo)
+* [HiveInfo](https://cloud.tencent.com/document/api/1342/53778#HiveInfo)
+* [IpPortPair](https://cloud.tencent.com/document/api/1342/53778#IpPortPair)
+* [KafkaInfo](https://cloud.tencent.com/document/api/1342/53778#KafkaInfo)
+* [KerberosInfo](https://cloud.tencent.com/document/api/1342/53778#KerberosInfo)
+* [MysqlInfo](https://cloud.tencent.com/document/api/1342/53778#MysqlInfo)
+* [OtherDatasourceConnection](https://cloud.tencent.com/document/api/1342/53778#OtherDatasourceConnection)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 118 次发布
+
+发布时间：2023-09-18 01:46:29
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Admin](https://cloud.tencent.com/document/api/1323/70369#Admin)
+
+	* <font color="#dd0000">**修改成员**：</font>Name, Mobile
+
+* [FailedUpdateStaffData](https://cloud.tencent.com/document/api/1323/70369#FailedUpdateStaffData)
+
+	* <font color="#dd0000">**修改成员**：</font>DisplayName, Mobile, Reason, UserId, OpenId
+
+* [IntegrationDepartment](https://cloud.tencent.com/document/api/1323/70369#IntegrationDepartment)
+
+	* <font color="#dd0000">**修改成员**：</font>DeptId, DeptName, ParentDeptId, DeptOpenId, OrderNo
+
+* [SuccessUpdateStaffData](https://cloud.tencent.com/document/api/1323/70369#SuccessUpdateStaffData)
+
+	* <font color="#dd0000">**修改成员**：</font>DisplayName, Mobile, UserId
+
+
+
+
+## 人脸融合(facefusion) 版本：2022-09-27
+
+### 第 6 次发布
+
+发布时间：2023-09-18 01:48:33
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MergeInfo](https://cloud.tencent.com/document/api/670/85619#MergeInfo)
+
+	* 新增成员：TemplateFaceRect
+
+
+
+
+## 人脸融合(facefusion) 版本：2018-12-01
+
+
+
+## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 6 次发布
+
+发布时间：2023-09-18 01:58:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [UpdateRecordBackupPlanModify](https://cloud.tencent.com/document/api/1344/95952#UpdateRecordBackupPlanModify)
+
+	* <font color="#dd0000">**修改成员**：</font>Add, Del, OrganizationId
+
+
+
+
+## 云直播CSS(live) 版本：2018-08-01
+
+### 第 111 次发布
+
+发布时间：2023-09-18 02:01:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PullStreamTaskInfo](https://cloud.tencent.com/document/api/267/20474#PullStreamTaskInfo)
+
+	* 新增成员：BackupToUrl
+
+	* <font color="#dd0000">**修改成员**：</font>RecordTemplateId
+
+
+
+
+## 自动化助手(tat) 版本：2020-10-28
+
+### 第 20 次发布
+
+发布时间：2023-09-18 02:20:44
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCommand](https://cloud.tencent.com/document/api/1340/52684)
+
+	* 新增入参：DefaultParameterConfs
+
+* [ModifyCommand](https://cloud.tencent.com/document/api/1340/52677)
+
+	* 新增入参：DefaultParameterConfs
+
+* [RunCommand](https://cloud.tencent.com/document/api/1340/52676)
+
+	* 新增入参：DefaultParameterConfs
+
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 44 次发布
+
+发布时间：2023-09-18 02:36:04
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateCloudNativeAPIGatewayCertificate](https://cloud.tencent.com/document/api/1364/98591)
+* [DeleteCloudNativeAPIGatewayCertificate](https://cloud.tencent.com/document/api/1364/98590)
+* [DescribeCloudNativeAPIGatewayCertificateDetails](https://cloud.tencent.com/document/api/1364/98589)
+* [DescribeCloudNativeAPIGatewayCertificates](https://cloud.tencent.com/document/api/1364/98588)
+* [UpdateCloudNativeAPIGatewayCertificateInfo](https://cloud.tencent.com/document/api/1364/98587)
+
+新增数据结构：
+
+* [CertificateInfo](https://cloud.tencent.com/document/api/1364/54942#CertificateInfo)
+* [KongCertificate](https://cloud.tencent.com/document/api/1364/54942#KongCertificate)
+* [KongCertificatesList](https://cloud.tencent.com/document/api/1364/54942#KongCertificatesList)
+* [KongCertificatesPreview](https://cloud.tencent.com/document/api/1364/54942#KongCertificatesPreview)
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 171 次发布
+
+发布时间：2023-09-18 02:43:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateNatGateway](https://cloud.tencent.com/document/api/215/36721)
+
+	* 新增入参：NatProductVersion
+
+
+
+
 # Release v1.0.749
 
 ## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07

@@ -2089,13 +2089,13 @@ type CreateProxyEndPointRequestParams struct {
 	// 连接池阈值：单位（秒）
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitnil" name:"ConnectionPoolTimeOut"`
 
-	// 安全组ID数组
+	// 绑定的安全组ID数组
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil" name:"SecurityGroupIds"`
 
 	// 描述说明
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// vip信息
+	// 想要绑定的vip信息，需与UniqueVpcId对应。
 	Vip *string `json:"Vip,omitnil" name:"Vip"`
 
 	// 权重模式：
@@ -2105,7 +2105,10 @@ type CreateProxyEndPointRequestParams struct {
 	// 是否自动添加只读实例，yes-是，no-不自动添加
 	AutoAddRo *string `json:"AutoAddRo,omitnil" name:"AutoAddRo"`
 
-	// 是否开启故障转移
+	// 是否开启故障转移。
+	// yes：开启
+	// no：不开启。
+	// 数据库代理出现故障时，链接地址将会路由到主实例
 	FailOver *string `json:"FailOver,omitnil" name:"FailOver"`
 
 	// 一致性类型：
@@ -2116,10 +2119,10 @@ type CreateProxyEndPointRequestParams struct {
 	// READWRITE,READONLY
 	RwType *string `json:"RwType,omitnil" name:"RwType"`
 
-	// 一致性超时时间
+	// 一致性超时时间。取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待
 	ConsistencyTimeOut *int64 `json:"ConsistencyTimeOut,omitnil" name:"ConsistencyTimeOut"`
 
-	// 事务拆分
+	// 是否开启事务拆分。在一个事务中拆分读和写到不同的实例上去执行
 	TransSplit *bool `json:"TransSplit,omitnil" name:"TransSplit"`
 
 	// 连接模式：
@@ -2151,13 +2154,13 @@ type CreateProxyEndPointRequest struct {
 	// 连接池阈值：单位（秒）
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitnil" name:"ConnectionPoolTimeOut"`
 
-	// 安全组ID数组
+	// 绑定的安全组ID数组
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil" name:"SecurityGroupIds"`
 
 	// 描述说明
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// vip信息
+	// 想要绑定的vip信息，需与UniqueVpcId对应。
 	Vip *string `json:"Vip,omitnil" name:"Vip"`
 
 	// 权重模式：
@@ -2167,7 +2170,10 @@ type CreateProxyEndPointRequest struct {
 	// 是否自动添加只读实例，yes-是，no-不自动添加
 	AutoAddRo *string `json:"AutoAddRo,omitnil" name:"AutoAddRo"`
 
-	// 是否开启故障转移
+	// 是否开启故障转移。
+	// yes：开启
+	// no：不开启。
+	// 数据库代理出现故障时，链接地址将会路由到主实例
 	FailOver *string `json:"FailOver,omitnil" name:"FailOver"`
 
 	// 一致性类型：
@@ -2178,10 +2184,10 @@ type CreateProxyEndPointRequest struct {
 	// READWRITE,READONLY
 	RwType *string `json:"RwType,omitnil" name:"RwType"`
 
-	// 一致性超时时间
+	// 一致性超时时间。取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待
 	ConsistencyTimeOut *int64 `json:"ConsistencyTimeOut,omitnil" name:"ConsistencyTimeOut"`
 
-	// 事务拆分
+	// 是否开启事务拆分。在一个事务中拆分读和写到不同的实例上去执行
 	TransSplit *bool `json:"TransSplit,omitnil" name:"TransSplit"`
 
 	// 连接模式：
@@ -9857,13 +9863,15 @@ type ModifyProxyRwSplitRequestParams struct {
 	// 一致性类型；“eventual"-最终一致性, "session"-会话一致性, "global"-全局一致性
 	ConsistencyType *string `json:"ConsistencyType,omitnil" name:"ConsistencyType"`
 
-	// 一致性超时时间
+	// 一致性超时时间。
+	// 取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。
 	ConsistencyTimeOut *string `json:"ConsistencyTimeOut,omitnil" name:"ConsistencyTimeOut"`
 
 	// 读写权重分配模式；系统自动分配："system"， 自定义："custom"
 	WeightMode *string `json:"WeightMode,omitnil" name:"WeightMode"`
 
-	// 实例只读权重
+	// 实例只读权重。
+	// 该参数必填。
 	InstanceWeights []*ProxyInstanceWeight `json:"InstanceWeights,omitnil" name:"InstanceWeights"`
 
 	// 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值："yes" , "no"
@@ -9872,14 +9880,16 @@ type ModifyProxyRwSplitRequestParams struct {
 	// 是否自动添加只读实例，取值："yes" , "no"
 	AutoAddRo *string `json:"AutoAddRo,omitnil" name:"AutoAddRo"`
 
-	// 是否打开读写分离
+	// 是否打开读写分离。
+	// 该参数已废弃，请通过RwType设置读写属性。
 	OpenRw *string `json:"OpenRw,omitnil" name:"OpenRw"`
 
 	// 读写类型：
 	// READWRITE,READONLY
 	RwType *string `json:"RwType,omitnil" name:"RwType"`
 
-	// 事务拆分
+	// 事务拆分。
+	// 在一个事务中拆分读和写到不同的实例上去执行。
 	TransSplit *bool `json:"TransSplit,omitnil" name:"TransSplit"`
 
 	// 连接模式：
@@ -9894,7 +9904,8 @@ type ModifyProxyRwSplitRequestParams struct {
 	// SessionConnectionPool
 	ConnectionPoolType *string `json:"ConnectionPoolType,omitnil" name:"ConnectionPoolType"`
 
-	// 连接池时间
+	// 连接池时间。
+	// 可选范围:0~300（秒）
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitnil" name:"ConnectionPoolTimeOut"`
 }
 
@@ -9910,13 +9921,15 @@ type ModifyProxyRwSplitRequest struct {
 	// 一致性类型；“eventual"-最终一致性, "session"-会话一致性, "global"-全局一致性
 	ConsistencyType *string `json:"ConsistencyType,omitnil" name:"ConsistencyType"`
 
-	// 一致性超时时间
+	// 一致性超时时间。
+	// 取值范围：0~1000000（微秒）,设置0则表示若只读实例出现延迟, 导致一致性策略不满足, 请求将一直等待。
 	ConsistencyTimeOut *string `json:"ConsistencyTimeOut,omitnil" name:"ConsistencyTimeOut"`
 
 	// 读写权重分配模式；系统自动分配："system"， 自定义："custom"
 	WeightMode *string `json:"WeightMode,omitnil" name:"WeightMode"`
 
-	// 实例只读权重
+	// 实例只读权重。
+	// 该参数必填。
 	InstanceWeights []*ProxyInstanceWeight `json:"InstanceWeights,omitnil" name:"InstanceWeights"`
 
 	// 是否开启故障转移，代理出现故障后，连接地址将路由到主实例，取值："yes" , "no"
@@ -9925,14 +9938,16 @@ type ModifyProxyRwSplitRequest struct {
 	// 是否自动添加只读实例，取值："yes" , "no"
 	AutoAddRo *string `json:"AutoAddRo,omitnil" name:"AutoAddRo"`
 
-	// 是否打开读写分离
+	// 是否打开读写分离。
+	// 该参数已废弃，请通过RwType设置读写属性。
 	OpenRw *string `json:"OpenRw,omitnil" name:"OpenRw"`
 
 	// 读写类型：
 	// READWRITE,READONLY
 	RwType *string `json:"RwType,omitnil" name:"RwType"`
 
-	// 事务拆分
+	// 事务拆分。
+	// 在一个事务中拆分读和写到不同的实例上去执行。
 	TransSplit *bool `json:"TransSplit,omitnil" name:"TransSplit"`
 
 	// 连接模式：
@@ -9947,7 +9962,8 @@ type ModifyProxyRwSplitRequest struct {
 	// SessionConnectionPool
 	ConnectionPoolType *string `json:"ConnectionPoolType,omitnil" name:"ConnectionPoolType"`
 
-	// 连接池时间
+	// 连接池时间。
+	// 可选范围:0~300（秒）
 	ConnectionPoolTimeOut *int64 `json:"ConnectionPoolTimeOut,omitnil" name:"ConnectionPoolTimeOut"`
 }
 
@@ -11874,10 +11890,12 @@ type RollBackClusterRequestParams struct {
 	// 回档策略 timeRollback-按时间点回档 snapRollback-按备份文件回档
 	RollbackStrategy *string `json:"RollbackStrategy,omitnil" name:"RollbackStrategy"`
 
-	// 回档ID
+	// 备份文件ID。
+	// 回档策略为按备份文件回档时必填。
 	RollbackId *uint64 `json:"RollbackId,omitnil" name:"RollbackId"`
 
-	// 期望回档时间
+	// 期望回档时间。
+	// 回档策略为timeRollback按时间点回档时必填。
 	ExpectTime *string `json:"ExpectTime,omitnil" name:"ExpectTime"`
 
 	// 期望阈值（已废弃）
@@ -11902,10 +11920,12 @@ type RollBackClusterRequest struct {
 	// 回档策略 timeRollback-按时间点回档 snapRollback-按备份文件回档
 	RollbackStrategy *string `json:"RollbackStrategy,omitnil" name:"RollbackStrategy"`
 
-	// 回档ID
+	// 备份文件ID。
+	// 回档策略为按备份文件回档时必填。
 	RollbackId *uint64 `json:"RollbackId,omitnil" name:"RollbackId"`
 
-	// 期望回档时间
+	// 期望回档时间。
+	// 回档策略为timeRollback按时间点回档时必填。
 	ExpectTime *string `json:"ExpectTime,omitnil" name:"ExpectTime"`
 
 	// 期望阈值（已废弃）
@@ -12309,7 +12329,7 @@ type SecurityGroup struct {
 
 // Predefined struct for user
 type SetRenewFlagRequestParams struct {
-	// 需操作的实例ID
+	// 需操作的集群ID
 	ResourceIds []*string `json:"ResourceIds,omitnil" name:"ResourceIds"`
 
 	// 自动续费标志位，续费标记 0:正常续费  1:自动续费 2:到期不续
@@ -12319,7 +12339,7 @@ type SetRenewFlagRequestParams struct {
 type SetRenewFlagRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需操作的实例ID
+	// 需操作的集群ID
 	ResourceIds []*string `json:"ResourceIds,omitnil" name:"ResourceIds"`
 
 	// 自动续费标志位，续费标记 0:正常续费  1:自动续费 2:到期不续

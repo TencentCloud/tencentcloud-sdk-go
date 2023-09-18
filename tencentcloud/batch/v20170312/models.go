@@ -2928,9 +2928,6 @@ type Placement struct {
 	// 实例所属的专用宿主机ID列表，仅用于入参。如果您有购买专用宿主机并且指定了该参数，则您购买的实例就会随机的部署在这些专用宿主机上。
 	HostIds []*string `json:"HostIds,omitnil" name:"HostIds"`
 
-	// 指定母机IP生产子机
-	HostIps []*string `json:"HostIps,omitnil" name:"HostIps"`
-
 	// 实例所属的专用宿主机ID，仅用于出参。
 	HostId *string `json:"HostId,omitnil" name:"HostId"`
 }

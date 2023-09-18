@@ -134,6 +134,9 @@ const (
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
 
+	// 数据源类型错误。
+	INVALIDPARAMETER_DATASOURCETYPEERROR = "InvalidParameter.DatasourceTypeError"
+
 	// 重复的引擎名称。
 	INVALIDPARAMETER_DUPLICATEDATAENGINENAME = "InvalidParameter.DuplicateDataEngineName"
 

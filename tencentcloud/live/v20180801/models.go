@@ -14133,6 +14133,10 @@ type PullStreamTaskInfo struct {
 	// 录制模板 ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RecordTemplateId *string `json:"RecordTemplateId,omitnil" name:"RecordTemplateId"`
+
+	// 新增的推流地址。用于单任务推两路场景。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupToUrl *string `json:"BackupToUrl,omitnil" name:"BackupToUrl"`
 }
 
 type PushAuthKeyInfo struct {

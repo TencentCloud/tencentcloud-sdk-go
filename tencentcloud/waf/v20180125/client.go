@@ -1270,7 +1270,7 @@ func NewDeleteSpartaProtectionResponse() (response *DeleteSpartaProtectionRespon
 }
 
 // DeleteSpartaProtection
-// waf斯巴达-删除防护域名
+// SAASWAF删除防护域名
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1282,7 +1282,7 @@ func (c *Client) DeleteSpartaProtection(request *DeleteSpartaProtectionRequest) 
 }
 
 // DeleteSpartaProtection
-// waf斯巴达-删除防护域名
+// SAASWAF删除防护域名
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -5925,6 +5925,294 @@ func (c *Client) ModifyHostStatusWithContext(ctx context.Context, request *Modif
     request.SetContext(ctx)
     
     response = NewModifyHostStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceElasticModeRequest() (request *ModifyInstanceElasticModeRequest) {
+    request = &ModifyInstanceElasticModeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyInstanceElasticMode")
+    
+    
+    return
+}
+
+func NewModifyInstanceElasticModeResponse() (response *ModifyInstanceElasticModeResponse) {
+    response = &ModifyInstanceElasticModeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstanceElasticMode
+// 修改实例的QPS弹性计费开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyInstanceElasticMode(request *ModifyInstanceElasticModeRequest) (response *ModifyInstanceElasticModeResponse, err error) {
+    return c.ModifyInstanceElasticModeWithContext(context.Background(), request)
+}
+
+// ModifyInstanceElasticMode
+// 修改实例的QPS弹性计费开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyInstanceElasticModeWithContext(ctx context.Context, request *ModifyInstanceElasticModeRequest) (response *ModifyInstanceElasticModeResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceElasticModeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceElasticMode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceElasticModeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceNameRequest() (request *ModifyInstanceNameRequest) {
+    request = &ModifyInstanceNameRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyInstanceName")
+    
+    
+    return
+}
+
+func NewModifyInstanceNameResponse() (response *ModifyInstanceNameResponse) {
+    response = &ModifyInstanceNameResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstanceName
+// 修改实例的名称
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyInstanceName(request *ModifyInstanceNameRequest) (response *ModifyInstanceNameResponse, err error) {
+    return c.ModifyInstanceNameWithContext(context.Background(), request)
+}
+
+// ModifyInstanceName
+// 修改实例的名称
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyInstanceNameWithContext(ctx context.Context, request *ModifyInstanceNameRequest) (response *ModifyInstanceNameResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceNameRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceName require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceNameResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceQpsLimitRequest() (request *ModifyInstanceQpsLimitRequest) {
+    request = &ModifyInstanceQpsLimitRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyInstanceQpsLimit")
+    
+    
+    return
+}
+
+func NewModifyInstanceQpsLimitResponse() (response *ModifyInstanceQpsLimitResponse) {
+    response = &ModifyInstanceQpsLimitResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstanceQpsLimit
+// 设置套餐实例的弹性qps上限
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyInstanceQpsLimit(request *ModifyInstanceQpsLimitRequest) (response *ModifyInstanceQpsLimitResponse, err error) {
+    return c.ModifyInstanceQpsLimitWithContext(context.Background(), request)
+}
+
+// ModifyInstanceQpsLimit
+// 设置套餐实例的弹性qps上限
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) ModifyInstanceQpsLimitWithContext(ctx context.Context, request *ModifyInstanceQpsLimitRequest) (response *ModifyInstanceQpsLimitResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceQpsLimitRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceQpsLimit require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceQpsLimitResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceRenewFlagRequest() (request *ModifyInstanceRenewFlagRequest) {
+    request = &ModifyInstanceRenewFlagRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyInstanceRenewFlag")
+    
+    
+    return
+}
+
+func NewModifyInstanceRenewFlagResponse() (response *ModifyInstanceRenewFlagResponse) {
+    response = &ModifyInstanceRenewFlagResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstanceRenewFlag
+// 修改实例的自动续费开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyInstanceRenewFlag(request *ModifyInstanceRenewFlagRequest) (response *ModifyInstanceRenewFlagResponse, err error) {
+    return c.ModifyInstanceRenewFlagWithContext(context.Background(), request)
+}
+
+// ModifyInstanceRenewFlag
+// 修改实例的自动续费开关
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyInstanceRenewFlagWithContext(ctx context.Context, request *ModifyInstanceRenewFlagRequest) (response *ModifyInstanceRenewFlagResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceRenewFlagRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstanceRenewFlag require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceRenewFlagResponse()
     err = c.Send(request, response)
     return
 }

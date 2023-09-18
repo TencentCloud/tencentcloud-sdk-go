@@ -136,6 +136,12 @@ type CreateEmbedTokenRequestParams struct {
 
 	// 备用字段
 	ExtraParam *string `json:"ExtraParam,omitnil" name:"ExtraParam"`
+
+	// 使用者企业Id(仅用于多用户)
+	UserCorpId *string `json:"UserCorpId,omitnil" name:"UserCorpId"`
+
+	// 使用者Id(仅用于多用户)
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }
 
 type CreateEmbedTokenRequest struct {
@@ -155,6 +161,12 @@ type CreateEmbedTokenRequest struct {
 
 	// 备用字段
 	ExtraParam *string `json:"ExtraParam,omitnil" name:"ExtraParam"`
+
+	// 使用者企业Id(仅用于多用户)
+	UserCorpId *string `json:"UserCorpId,omitnil" name:"UserCorpId"`
+
+	// 使用者Id(仅用于多用户)
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }
 
 func (r *CreateEmbedTokenRequest) ToJsonString() string {
@@ -174,6 +186,8 @@ func (r *CreateEmbedTokenRequest) FromJsonString(s string) error {
 	delete(f, "Scope")
 	delete(f, "ExpireTime")
 	delete(f, "ExtraParam")
+	delete(f, "UserCorpId")
+	delete(f, "UserId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEmbedTokenRequest has unknown keys!", "")
 	}
@@ -258,4 +272,12 @@ type EmbedTokenInfo struct {
 	// 过期时间，分钟为单位，最大240
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExpireTime *uint64 `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 使用者企业Id(仅用于多用户)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserCorpId *string `json:"UserCorpId,omitnil" name:"UserCorpId"`
+
+	// 使用者Id(仅用于多用户)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }

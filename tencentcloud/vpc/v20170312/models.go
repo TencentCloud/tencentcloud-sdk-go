@@ -4115,6 +4115,9 @@ type CreateNatGatewayRequestParams struct {
 
 	// 公网IP是否强制与NAT网关来自同可用区，true表示需要与NAT网关同可用区；false表示可与NAT网关不是同一个可用区。此参数只有当参数Zone存在时才能生效。
 	PublicIpFromSameZone *bool `json:"PublicIpFromSameZone,omitnil" name:"PublicIpFromSameZone"`
+
+	// NAT网关大版本号，1是传统型，2是标准型，默认是1
+	NatProductVersion *uint64 `json:"NatProductVersion,omitnil" name:"NatProductVersion"`
 }
 
 type CreateNatGatewayRequest struct {
@@ -4155,6 +4158,9 @@ type CreateNatGatewayRequest struct {
 
 	// 公网IP是否强制与NAT网关来自同可用区，true表示需要与NAT网关同可用区；false表示可与NAT网关不是同一个可用区。此参数只有当参数Zone存在时才能生效。
 	PublicIpFromSameZone *bool `json:"PublicIpFromSameZone,omitnil" name:"PublicIpFromSameZone"`
+
+	// NAT网关大版本号，1是传统型，2是标准型，默认是1
+	NatProductVersion *uint64 `json:"NatProductVersion,omitnil" name:"NatProductVersion"`
 }
 
 func (r *CreateNatGatewayRequest) ToJsonString() string {
@@ -4181,6 +4187,7 @@ func (r *CreateNatGatewayRequest) FromJsonString(s string) error {
 	delete(f, "StockPublicIpAddressesBandwidthOut")
 	delete(f, "PublicIpAddressesBandwidthOut")
 	delete(f, "PublicIpFromSameZone")
+	delete(f, "NatProductVersion")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateNatGatewayRequest has unknown keys!", "")
 	}

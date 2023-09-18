@@ -97,6 +97,12 @@ type BoundK8SInfo struct {
 	SyncMode *string `json:"SyncMode,omitnil" name:"SyncMode"`
 }
 
+type CertificateInfo struct {
+	// 唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
+}
+
 type CloudAPIGatewayCanaryRuleList struct {
 	// 灰度规则
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -574,6 +580,99 @@ func (r *CreateCloudNativeAPIGatewayCanaryRuleResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *CreateCloudNativeAPIGatewayCanaryRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudNativeAPIGatewayCertificateRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 绑定的域名
+	BindDomains []*string `json:"BindDomains,omitnil" name:"BindDomains"`
+
+	// ssl平台证书 Id
+	CertId *string `json:"CertId,omitnil" name:"CertId"`
+
+	// 证书名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 证书私钥
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 证书pem格式
+	Crt *string `json:"Crt,omitnil" name:"Crt"`
+}
+
+type CreateCloudNativeAPIGatewayCertificateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 绑定的域名
+	BindDomains []*string `json:"BindDomains,omitnil" name:"BindDomains"`
+
+	// ssl平台证书 Id
+	CertId *string `json:"CertId,omitnil" name:"CertId"`
+
+	// 证书名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 证书私钥
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 证书pem格式
+	Crt *string `json:"Crt,omitnil" name:"Crt"`
+}
+
+func (r *CreateCloudNativeAPIGatewayCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudNativeAPIGatewayCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "BindDomains")
+	delete(f, "CertId")
+	delete(f, "Name")
+	delete(f, "Key")
+	delete(f, "Crt")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCloudNativeAPIGatewayCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateCloudNativeAPIGatewayCertificateResponseParams struct {
+	// 创建证书结果
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *CertificateInfo `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateCloudNativeAPIGatewayCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateCloudNativeAPIGatewayCertificateResponseParams `json:"Response"`
+}
+
+func (r *CreateCloudNativeAPIGatewayCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateCloudNativeAPIGatewayCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1647,6 +1746,67 @@ func (r *DeleteCloudNativeAPIGatewayCanaryRuleResponse) FromJsonString(s string)
 }
 
 // Predefined struct for user
+type DeleteCloudNativeAPIGatewayCertificateRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 证书Id
+	Id *string `json:"Id,omitnil" name:"Id"`
+}
+
+type DeleteCloudNativeAPIGatewayCertificateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 证书Id
+	Id *string `json:"Id,omitnil" name:"Id"`
+}
+
+func (r *DeleteCloudNativeAPIGatewayCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudNativeAPIGatewayCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCloudNativeAPIGatewayCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCloudNativeAPIGatewayCertificateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteCloudNativeAPIGatewayCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCloudNativeAPIGatewayCertificateResponseParams `json:"Response"`
+}
+
+func (r *DeleteCloudNativeAPIGatewayCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCloudNativeAPIGatewayCertificateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCloudNativeAPIGatewayRequestParams struct {
 	// 云原生API网关实例ID。
 	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
@@ -2174,6 +2334,149 @@ func (r *DescribeCloudNativeAPIGatewayCanaryRulesResponse) ToJsonString() string
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeCloudNativeAPIGatewayCanaryRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudNativeAPIGatewayCertificateDetailsRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 证书Id
+	Id *string `json:"Id,omitnil" name:"Id"`
+}
+
+type DescribeCloudNativeAPIGatewayCertificateDetailsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 证书Id
+	Id *string `json:"Id,omitnil" name:"Id"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayCertificateDetailsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayCertificateDetailsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Id")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayCertificateDetailsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudNativeAPIGatewayCertificateDetailsResponseParams struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Result *KongCertificate `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCloudNativeAPIGatewayCertificateDetailsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudNativeAPIGatewayCertificateDetailsResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayCertificateDetailsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayCertificateDetailsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudNativeAPIGatewayCertificatesRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 列表数量
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 列表offset
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 过滤条件，多个过滤条件之间是与的关系，支持BindDomain ，Name
+	Filters []*ListFilter `json:"Filters,omitnil" name:"Filters"`
+}
+
+type DescribeCloudNativeAPIGatewayCertificatesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 列表数量
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 列表offset
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 过滤条件，多个过滤条件之间是与的关系，支持BindDomain ，Name
+	Filters []*ListFilter `json:"Filters,omitnil" name:"Filters"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayCertificatesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayCertificatesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCloudNativeAPIGatewayCertificatesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCloudNativeAPIGatewayCertificatesResponseParams struct {
+	// 无
+	Result *KongCertificatesList `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCloudNativeAPIGatewayCertificatesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCloudNativeAPIGatewayCertificatesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCloudNativeAPIGatewayCertificatesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCloudNativeAPIGatewayCertificatesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3793,6 +4096,76 @@ type KVPair struct {
 	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
+type KongCertificate struct {
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cert *KongCertificatesPreview `json:"Cert,omitnil" name:"Cert"`
+}
+
+type KongCertificatesList struct {
+	// 证书列表总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertificatesList []*KongCertificatesPreview `json:"CertificatesList,omitnil" name:"CertificatesList"`
+
+	// 证书列表总页数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Pages is deprecated.
+	Pages *int64 `json:"Pages,omitnil" name:"Pages"`
+}
+
+type KongCertificatesPreview struct {
+	// 证书名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 绑定的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindDomains []*string `json:"BindDomains,omitnil" name:"BindDomains"`
+
+	// 证书状态：expired(已过期)
+	//                    active(生效中)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 证书pem格式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Crt *string `json:"Crt,omitnil" name:"Crt"`
+
+	// 证书私钥
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 证书过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 证书上传时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 证书签发时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IssueTime *string `json:"IssueTime,omitnil" name:"IssueTime"`
+
+	// 证书来源：native(kong自定义证书)
+	//                     ssl(ssl平台证书)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertSource *string `json:"CertSource,omitnil" name:"CertSource"`
+
+	// ssl平台证书Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CertId *string `json:"CertId,omitnil" name:"CertId"`
+}
+
 type KongRoutePreview struct {
 	// 服务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5008,6 +5381,81 @@ type ServiceGovernanceInfo struct {
 
 	// 服务治理限流server引擎绑定的网络信息
 	LimiterVpcInfos []*VpcInfo `json:"LimiterVpcInfos,omitnil" name:"LimiterVpcInfos"`
+}
+
+// Predefined struct for user
+type UpdateCloudNativeAPIGatewayCertificateInfoRequestParams struct {
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 证书id
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 绑定的域名列表
+	BindDomains []*string `json:"BindDomains,omitnil" name:"BindDomains"`
+
+	// 证书名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+}
+
+type UpdateCloudNativeAPIGatewayCertificateInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 网关ID
+	GatewayId *string `json:"GatewayId,omitnil" name:"GatewayId"`
+
+	// 证书id
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 绑定的域名列表
+	BindDomains []*string `json:"BindDomains,omitnil" name:"BindDomains"`
+
+	// 证书名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+}
+
+func (r *UpdateCloudNativeAPIGatewayCertificateInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCloudNativeAPIGatewayCertificateInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "GatewayId")
+	delete(f, "Id")
+	delete(f, "BindDomains")
+	delete(f, "Name")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCloudNativeAPIGatewayCertificateInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateCloudNativeAPIGatewayCertificateInfoResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpdateCloudNativeAPIGatewayCertificateInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateCloudNativeAPIGatewayCertificateInfoResponseParams `json:"Response"`
+}
+
+func (r *UpdateCloudNativeAPIGatewayCertificateInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateCloudNativeAPIGatewayCertificateInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type UpdateCloudNativeAPIGatewayResult struct {

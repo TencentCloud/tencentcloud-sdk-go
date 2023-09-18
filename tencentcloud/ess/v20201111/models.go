@@ -25,7 +25,9 @@ type Admin struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 超管手机号
+	// 超管手机号，打码显示
+	// 示例值：138****1569
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 }
@@ -249,32 +251,38 @@ type AutoSignConfig struct {
 
 // Predefined struct for user
 type BindEmployeeUserIdWithClientOpenIdRequestParams struct {
-	// 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定。（参数参考示例）
+	// 执行本接口操作的员工信息。使用此接口时，必须填写UserId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 电子签系统员工UserId
+	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
+	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)；或者通过<a href="https://qian.tencent.com/developers/companyApis/staffs/DescribeIntegrationEmployees" target="_blank">DescribeIntegrationEmployees</a>接口获取。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 客户系统OpenId
+	// 员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一企业内不会出现重复。 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
 	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type BindEmployeeUserIdWithClientOpenIdRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定。（参数参考示例）
+	// 执行本接口操作的员工信息。使用此接口时，必须填写UserId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 电子签系统员工UserId
+	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
+	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)；或者通过<a href="https://qian.tencent.com/developers/companyApis/staffs/DescribeIntegrationEmployees" target="_blank">DescribeIntegrationEmployees</a>接口获取。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 客户系统OpenId
+	// 员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一企业内不会出现重复。 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
 	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -302,7 +310,8 @@ func (r *BindEmployeeUserIdWithClientOpenIdRequest) FromJsonString(s string) err
 
 // Predefined struct for user
 type BindEmployeeUserIdWithClientOpenIdResponseParams struct {
-	// 绑定是否成功，1表示成功，0表示失败
+	// 绑定是否成功。
+	// <ul><li>**0**：失败</li><li>**1**：成功</li></ul>
 	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2681,23 +2690,24 @@ type CreateIntegrationDepartmentRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得组织架构管理权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 部门名称，不超过50个字符
+	// 部门名称，最大长度为50个字符。
 	DeptName *string `json:"DeptName,omitnil" name:"DeptName"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 电子签父部门ID，与ParentDeptOpenId二选一,优先ParentDeptId,都为空时自动填充至根节点下
+	// 电子签父部门ID。
+	// 注：`如果同时指定了ParentDeptId与ParentDeptOpenId参数，系统将优先使用ParentDeptId。当二者都未指定时，创建的新部门将自动填充至根节点部门下。`
 	ParentDeptId *string `json:"ParentDeptId,omitnil" name:"ParentDeptId"`
 
-	// 第三方平台中父部门ID,与ParentDeptId二选一,优先ParentDeptId,都为空时自动填充至根节点下
+	// 第三方平台中父部门ID。
+	// 注：`如果同时指定了ParentDeptId与ParentDeptOpenId参数，系统将优先使用ParentDeptId。当二者都未指定时，创建的新部门将自动填充至根节点部门下。`
 	ParentDeptOpenId *string `json:"ParentDeptOpenId,omitnil" name:"ParentDeptOpenId"`
 
-	// 客户系统部门ID，不超过64个字符
+	// 客户系统部门ID，最大长度为64个字符。
 	DeptOpenId *string `json:"DeptOpenId,omitnil" name:"DeptOpenId"`
 
-	// 排序号,1~30000范围内
+	// 排序号，支持设置的数值范围为1~30000。同一父部门下，排序号越大，部门顺序越靠前。
 	OrderNo *uint64 `json:"OrderNo,omitnil" name:"OrderNo"`
 }
 
@@ -2708,23 +2718,24 @@ type CreateIntegrationDepartmentRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得组织架构管理权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 部门名称，不超过50个字符
+	// 部门名称，最大长度为50个字符。
 	DeptName *string `json:"DeptName,omitnil" name:"DeptName"`
 
-	// 代理企业和员工的信息。
-	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 电子签父部门ID，与ParentDeptOpenId二选一,优先ParentDeptId,都为空时自动填充至根节点下
+	// 电子签父部门ID。
+	// 注：`如果同时指定了ParentDeptId与ParentDeptOpenId参数，系统将优先使用ParentDeptId。当二者都未指定时，创建的新部门将自动填充至根节点部门下。`
 	ParentDeptId *string `json:"ParentDeptId,omitnil" name:"ParentDeptId"`
 
-	// 第三方平台中父部门ID,与ParentDeptId二选一,优先ParentDeptId,都为空时自动填充至根节点下
+	// 第三方平台中父部门ID。
+	// 注：`如果同时指定了ParentDeptId与ParentDeptOpenId参数，系统将优先使用ParentDeptId。当二者都未指定时，创建的新部门将自动填充至根节点部门下。`
 	ParentDeptOpenId *string `json:"ParentDeptOpenId,omitnil" name:"ParentDeptOpenId"`
 
-	// 客户系统部门ID，不超过64个字符
+	// 客户系统部门ID，最大长度为64个字符。
 	DeptOpenId *string `json:"DeptOpenId,omitnil" name:"DeptOpenId"`
 
-	// 排序号,1~30000范围内
+	// 排序号，支持设置的数值范围为1~30000。同一父部门下，排序号越大，部门顺序越靠前。
 	OrderNo *uint64 `json:"OrderNo,omitnil" name:"OrderNo"`
 }
 
@@ -2755,7 +2766,7 @@ func (r *CreateIntegrationDepartmentRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateIntegrationDepartmentResponseParams struct {
-	// 电子签部门ID
+	// 电子签部门ID。建议开发者保存此部门ID，方便后续查询或修改部门信息。
 	DeptId *string `json:"DeptId,omitnil" name:"DeptId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -2780,30 +2791,34 @@ func (r *CreateIntegrationDepartmentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateIntegrationEmployeesRequestParams struct {
-	// 操作人信息，userId必填
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 待创建员工的信息，不超过20个。
-	// 所有类型的企业支持的入参：Mobile和DisplayName必填,OpenId、Email和Department.DepartmentId选填，其他字段暂不支持。
-	// 企微类型的企业特有支持的入参：WeworkOpenId，传入此字段无需在传入其他信息
+	// 待创建员工的信息，最多不超过20个。
+	// 其中入参Mobile和DisplayName必填，OpenId、Email和Department.DepartmentId选填，其他字段暂不支持设置。
+	// 在创建企微企业员工场景下，只需传入WeworkOpenId，无需再传其他信息。
 	Employees []*Staff `json:"Employees,omitnil" name:"Employees"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type CreateIntegrationEmployeesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息，userId必填
+	// 执行本接口操作的员工信息。使用此接口时，必须填写userId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 待创建员工的信息，不超过20个。
-	// 所有类型的企业支持的入参：Mobile和DisplayName必填,OpenId、Email和Department.DepartmentId选填，其他字段暂不支持。
-	// 企微类型的企业特有支持的入参：WeworkOpenId，传入此字段无需在传入其他信息
+	// 待创建员工的信息，最多不超过20个。
+	// 其中入参Mobile和DisplayName必填，OpenId、Email和Department.DepartmentId选填，其他字段暂不支持设置。
+	// 在创建企微企业员工场景下，只需传入WeworkOpenId，无需再传其他信息。
 	Employees []*Staff `json:"Employees,omitnil" name:"Employees"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -2830,7 +2845,7 @@ func (r *CreateIntegrationEmployeesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateIntegrationEmployeesResponseParams struct {
-	// 创建员工的结果
+	// 创建员工的结果。包含创建成功的数据与创建失败数据。
 	CreateEmployeeResult *CreateStaffResult `json:"CreateEmployeeResult,omitnil" name:"CreateEmployeeResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -4688,14 +4703,15 @@ type DeleteIntegrationDepartmentRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得组织架构管理权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 电子签中的部门id,通过DescribeIntegrationDepartments接口可获得
+	// 电子签中的部门ID，通过<a href="https://qian.tencent.com/developers/companyApis/organizations/DescribeIntegrationDepartments" target="_blank">DescribeIntegrationDepartments</a>接口可获得。
 	DeptId *string `json:"DeptId,omitnil" name:"DeptId"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 交接部门ID。待删除部门中的合同、印章和模板数据，交接至该部门ID下，未填写交接至公司根部门。
+	// 交接部门ID。
+	// 待删除部门中的合同、印章和模板数据，将会被交接至该部门ID下；若未填写则交接至公司根部门。
 	ReceiveDeptId *string `json:"ReceiveDeptId,omitnil" name:"ReceiveDeptId"`
 }
 
@@ -4706,14 +4722,15 @@ type DeleteIntegrationDepartmentRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得组织架构管理权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 电子签中的部门id,通过DescribeIntegrationDepartments接口可获得
+	// 电子签中的部门ID，通过<a href="https://qian.tencent.com/developers/companyApis/organizations/DescribeIntegrationDepartments" target="_blank">DescribeIntegrationDepartments</a>接口可获得。
 	DeptId *string `json:"DeptId,omitnil" name:"DeptId"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 交接部门ID。待删除部门中的合同、印章和模板数据，交接至该部门ID下，未填写交接至公司根部门。
+	// 交接部门ID。
+	// 待删除部门中的合同、印章和模板数据，将会被交接至该部门ID下；若未填写则交接至公司根部门。
 	ReceiveDeptId *string `json:"ReceiveDeptId,omitnil" name:"ReceiveDeptId"`
 }
 
@@ -4763,26 +4780,34 @@ func (r *DeleteIntegrationDepartmentResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteIntegrationEmployeesRequestParams struct {
-	// 操作人信息，userId必填
+	// 执行本接口操作的员工信息。使用此接口时，必须填写UserId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 待移除员工的信息，userId和openId二选一，必填一个，如果需要指定交接人的话，ReceiveUserId或者ReceiveOpenId字段二选一
+	// 待移除员工的信息。应符合以下规则：
+	// <ul><li>UserId和OpenId不可同时为空。</li>
+	// <li>若需要进行离职交接，交接人信息ReceiveUserId和ReceiveOpenId不可同时为空。否则视为不进行离职交接。</li></ul>
 	Employees []*Staff `json:"Employees,omitnil" name:"Employees"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type DeleteIntegrationEmployeesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息，userId必填
+	// 执行本接口操作的员工信息。使用此接口时，必须填写UserId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 待移除员工的信息，userId和openId二选一，必填一个，如果需要指定交接人的话，ReceiveUserId或者ReceiveOpenId字段二选一
+	// 待移除员工的信息。应符合以下规则：
+	// <ul><li>UserId和OpenId不可同时为空。</li>
+	// <li>若需要进行离职交接，交接人信息ReceiveUserId和ReceiveOpenId不可同时为空。否则视为不进行离职交接。</li></ul>
 	Employees []*Staff `json:"Employees,omitnil" name:"Employees"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -4809,7 +4834,9 @@ func (r *DeleteIntegrationEmployeesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteIntegrationEmployeesResponseParams struct {
-	// 员工删除数据
+	// 员工删除结果。包含成功数据与失败数据。
+	// <ul><li>**成功数据**：展示员工姓名、手机号与电子签平台UserId</li>
+	// <li>**失败数据**：展示员工电子签平台UserId、第三方平台OpenId和失败原因</li></ul>
 	DeleteEmployeeResult *DeleteStaffsResult `json:"DeleteEmployeeResult,omitnil" name:"DeleteEmployeeResult"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5003,10 +5030,10 @@ type DeleteStaffsResult struct {
 }
 
 type Department struct {
-	// 部门id
+	// 部门ID。
 	DepartmentId *string `json:"DepartmentId,omitnil" name:"DepartmentId"`
 
-	// 部门名称
+	// 部门名称。
 	DepartmentName *string `json:"DepartmentName,omitnil" name:"DepartmentName"`
 }
 
@@ -5728,17 +5755,21 @@ type DescribeIntegrationDepartmentsRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得组织架构管理权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 查询类型 0-查询单个部门节点 1-单个部门节点及一级子节点部门列表
+	// 查询类型，支持以下类型：
+	// <ul><li>**0**：查询单个部门节点列表，不包含子节点部门信息</li>
+	// <li>**1**：查询单个部门节点级一级子节点部门信息列表</li></ul>
 	QueryType *uint64 `json:"QueryType,omitnil" name:"QueryType"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 部门ID,与DeptOpenId二选一,优先DeptId,都为空时获取根节点数据
+	// 查询的部门ID。
+	// 注：`如果同时指定了DeptId与DeptOpenId参数，系统将优先使用DeptId参数进行查询。当二者都未指定时，系统将返回根节点部门数据。`
 	DeptId *string `json:"DeptId,omitnil" name:"DeptId"`
 
-	// 客户系统部门ID,与DeptId二选一,优先DeptId,都为空时获取根节点数据
+	// 查询的客户系统部门ID。
+	// 注：`如果同时指定了DeptId与DeptOpenId参数，系统将优先使用DeptId参数进行查询。当二者都未指定时，系统将返回根节点部门数据。`
 	DeptOpenId *string `json:"DeptOpenId,omitnil" name:"DeptOpenId"`
 }
 
@@ -5749,17 +5780,21 @@ type DescribeIntegrationDepartmentsRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得组织架构管理权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 查询类型 0-查询单个部门节点 1-单个部门节点及一级子节点部门列表
+	// 查询类型，支持以下类型：
+	// <ul><li>**0**：查询单个部门节点列表，不包含子节点部门信息</li>
+	// <li>**1**：查询单个部门节点级一级子节点部门信息列表</li></ul>
 	QueryType *uint64 `json:"QueryType,omitnil" name:"QueryType"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 部门ID,与DeptOpenId二选一,优先DeptId,都为空时获取根节点数据
+	// 查询的部门ID。
+	// 注：`如果同时指定了DeptId与DeptOpenId参数，系统将优先使用DeptId参数进行查询。当二者都未指定时，系统将返回根节点部门数据。`
 	DeptId *string `json:"DeptId,omitnil" name:"DeptId"`
 
-	// 客户系统部门ID,与DeptId二选一,优先DeptId,都为空时获取根节点数据
+	// 查询的客户系统部门ID。
+	// 注：`如果同时指定了DeptId与DeptOpenId参数，系统将优先使用DeptId参数进行查询。当二者都未指定时，系统将返回根节点部门数据。`
 	DeptOpenId *string `json:"DeptOpenId,omitnil" name:"DeptOpenId"`
 }
 
@@ -5788,7 +5823,7 @@ func (r *DescribeIntegrationDepartmentsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIntegrationDepartmentsResponseParams struct {
-	// 部门列表
+	// 部门信息列表。部门信息根据部门排序号OrderNo降序排列，根据部门创建时间升序排列。
 	Departments []*IntegrationDepartment `json:"Departments,omitnil" name:"Departments"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5813,44 +5848,58 @@ func (r *DescribeIntegrationDepartmentsResponse) FromJsonString(s string) error 
 
 // Predefined struct for user
 type DescribeIntegrationEmployeesRequestParams struct {
-	// 操作人信息，userId必填
+	// 执行本接口操作的员工信息。使用此接口时，必须填写UserId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 指定每页多少条数据，单页最大20
+	// 指定分页每页返回的数据条数，单页最大支持 20。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]，查询过滤未实名用户，Key为Status，Values为["NotVerified"]
-	// 查询某个部门的用户，Key为DepartmentId，Values为["DepartmentId"]
-	// 根据用户Id查询员工时，Key为UserId，Values为["UserId"]
-	// 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
+	// 查询的关键字段，支持Key-Values查询。可选键值如下：
+	// <ul>
+	//   <li>Key:**"Status"**，根据实名状态查询员工，Values可选：
+	//     <ul><li>**["IsVerified"]**：查询已实名的员工</li><li>**["NotVerified"]**：查询未实名的员工</li></ul></li>
+	//   <li>Key:**"DepartmentId"**，根据部门ID查询部门下的员工，Values为指定的部门ID：**["DepartmentId"]**</li>
+	//   <li>Key:**"UserId"**，根据用户ID查询员工，Values为指定的用户ID：**["UserId"]**</li>
+	//   <li>Key:**"UserWeWorkOpenId"**，根据用户企微账号ID查询员工，Values为指定用户的企微账号ID：**["UserWeWorkOpenId"]**</li>
+	//   <li>Key:**"StaffOpenId"**，根据第三方系统用户OpenId查询员工，Values为第三方系统用户OpenId列表：**["OpenId1","OpenId2",...]**</li>
+	// </ul>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
-	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大20000
+	// 指定分页返回第几页的数据，如果不传默认返回第一页。页码从 0 开始，即首页为 0，最大20000。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
 type DescribeIntegrationEmployeesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息，userId必填
+	// 执行本接口操作的员工信息。使用此接口时，必须填写UserId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 指定每页多少条数据，单页最大20
+	// 指定分页每页返回的数据条数，单页最大支持 20。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 查询过滤实名用户，Key为Status，Values为["IsVerified"]，查询过滤未实名用户，Key为Status，Values为["NotVerified"]
-	// 查询某个部门的用户，Key为DepartmentId，Values为["DepartmentId"]
-	// 根据用户Id查询员工时，Key为UserId，Values为["UserId"]
-	// 根据第三方系统openId过滤查询员工时,Key为StaffOpenId,Values为["OpenId","OpenId",...]
+	// 查询的关键字段，支持Key-Values查询。可选键值如下：
+	// <ul>
+	//   <li>Key:**"Status"**，根据实名状态查询员工，Values可选：
+	//     <ul><li>**["IsVerified"]**：查询已实名的员工</li><li>**["NotVerified"]**：查询未实名的员工</li></ul></li>
+	//   <li>Key:**"DepartmentId"**，根据部门ID查询部门下的员工，Values为指定的部门ID：**["DepartmentId"]**</li>
+	//   <li>Key:**"UserId"**，根据用户ID查询员工，Values为指定的用户ID：**["UserId"]**</li>
+	//   <li>Key:**"UserWeWorkOpenId"**，根据用户企微账号ID查询员工，Values为指定用户的企微账号ID：**["UserWeWorkOpenId"]**</li>
+	//   <li>Key:**"StaffOpenId"**，根据第三方系统用户OpenId查询员工，Values为第三方系统用户OpenId列表：**["OpenId1","OpenId2",...]**</li>
+	// </ul>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
-	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大20000
+	// 指定分页返回第几页的数据，如果不传默认返回第一页。页码从 0 开始，即首页为 0，最大20000。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 }
 
@@ -5879,18 +5928,18 @@ func (r *DescribeIntegrationEmployeesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeIntegrationEmployeesResponseParams struct {
-	// 员工数据列表
+	// 员工信息列表。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Employees []*Staff `json:"Employees,omitnil" name:"Employees"`
 
-	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0，最大20000
+	// 指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 指定每页多少条数据，单页最大20
+	// 指定分页每页返回的数据条数，单页最大支持 20。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 符合条件的员工数量
+	// 符合条件的员工数量。
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6035,50 +6084,68 @@ func (r *DescribeIntegrationRolesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeOrganizationGroupOrganizationsRequestParams struct {
-	// 操作人信息，userId必填
+	// 执行本接口操作的员工信息,userId必填。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 指定每页多少条数据，单页最大1000
+	// 指定分页每页返回的数据条数，单页最大1000
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0
+	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 查询成员企业的企业名，模糊匹配
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
+	// 成员企业加入集团的当前状态
+	// <ul><li> **1**：待授权</li>
+	// <li> **2**：已授权待激活</li>
+	// <li> **3**：拒绝授权</li>
+	// <li> **4**：已解除</li>
+	// <li> **5**：已加入</li>
+	// </ul>
 	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 是否导出当前成员企业数据
+	// <ul><li> **false**：不导出（默认值）</li>
+	// <li> **true**：导出</li></ul>
 	Export *bool `json:"Export,omitnil" name:"Export"`
 
-	// 成员企业机构 ID，在PC控制台 集团管理可获取
+	// 成员企业机构 ID，32 位字符串，在PC控制台 集团管理可获取
 	Id *string `json:"Id,omitnil" name:"Id"`
 }
 
 type DescribeOrganizationGroupOrganizationsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 操作人信息，userId必填
+	// 执行本接口操作的员工信息,userId必填。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 指定每页多少条数据，单页最大1000
+	// 指定分页每页返回的数据条数，单页最大1000
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 查询结果分页返回，此处指定第几页，如果不传默认从第一页返回。页码从 0 开始，即首页为 0
+	// 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
 	// 查询成员企业的企业名，模糊匹配
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
+	// 成员企业加入集团的当前状态
+	// <ul><li> **1**：待授权</li>
+	// <li> **2**：已授权待激活</li>
+	// <li> **3**：拒绝授权</li>
+	// <li> **4**：已解除</li>
+	// <li> **5**：已加入</li>
+	// </ul>
 	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
 	// 是否导出当前成员企业数据
+	// <ul><li> **false**：不导出（默认值）</li>
+	// <li> **true**：导出</li></ul>
 	Export *bool `json:"Export,omitnil" name:"Export"`
 
-	// 成员企业机构 ID，在PC控制台 集团管理可获取
+	// 成员企业机构 ID，32 位字符串，在PC控制台 集团管理可获取
 	Id *string `json:"Id,omitnil" name:"Id"`
 }
 
@@ -6109,11 +6176,11 @@ func (r *DescribeOrganizationGroupOrganizationsRequest) FromJsonString(s string)
 
 // Predefined struct for user
 type DescribeOrganizationGroupOrganizationsResponseParams struct {
-	// 查询到的符合条件的成员企业总数量
+	// 符合查询条件的资源实例总数量。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Total *uint64 `json:"Total,omitnil" name:"Total"`
 
-	// 已授权待激活的企业数量
+	// 已授权待激活的子企业总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JoinedTotal *uint64 `json:"JoinedTotal,omitnil" name:"JoinedTotal"`
 
@@ -6131,7 +6198,7 @@ type DescribeOrganizationGroupOrganizationsResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	List []*GroupOrganization `json:"List,omitnil" name:"List"`
 
-	// 已加入的企业数量
+	// 已加入的子企业总数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ActivatedTotal *uint64 `json:"ActivatedTotal,omitnil" name:"ActivatedTotal"`
 
@@ -6641,13 +6708,14 @@ type FailedUpdateStaffData struct {
 	// 用户传入的名称
 	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
 
-	// 用户传入的手机号
+	// 用户传入的手机号，明文展示
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 
 	// 失败原因
 	Reason *string `json:"Reason,omitnil" name:"Reason"`
 
-	// 用户Id
+	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
+	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
 	// 员工在第三方平台的openId
@@ -7300,15 +7368,22 @@ type GroupOrganization struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Alias *string `json:"Alias,omitnil" name:"Alias"`
 
-	// 成员企业id
+	// 成员企业id，为 32 位字符串，可在电子签PC 控制台，企业设置->企业电子签账号 获取
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrganizationId *string `json:"OrganizationId,omitnil" name:"OrganizationId"`
 
-	// 更新时间，时间戳，单位秒
+	// 记录更新时间， unix时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *uint64 `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
-	// 成员企业加入集团的当前状态:1-待授权;2-已授权待激活;3-拒绝授权;4-已解除;5-已加入
+	// 成员企业加入集团的当前状态
+	// <ul><li> **1**：待授权</li>
+	// <li> **2**：已授权待激活</li>
+	// <li> **3**：拒绝授权</li>
+	// <li> **4**：已解除</li>
+	// <li> **5**：已加入</li>
+	// </ul>
+	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
@@ -7324,19 +7399,21 @@ type GroupOrganization struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AdminInfo *Admin `json:"AdminInfo,omitnil" name:"AdminInfo"`
 
-	// 企业许可证
+	// 企业许可证Id，此字段暂时不需要关注
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	License *string `json:"License,omitnil" name:"License"`
 
-	// 企业许可证过期时间，时间戳，单位秒
+	// 企业许可证过期时间，unix时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LicenseExpireTime *uint64 `json:"LicenseExpireTime,omitnil" name:"LicenseExpireTime"`
 
-	// 成员企业加入集团时间，时间戳，单位秒
+	// 成员企业加入集团时间，unix时间戳，单位秒
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	JoinTime *uint64 `json:"JoinTime,omitnil" name:"JoinTime"`
 
-	// 是否使用自建审批流引擎（即不是企微审批流引擎），true-是，false-否
+	// 是否使用自建审批流引擎（即不是企微审批流引擎）
+	// <ul><li> **true**：是</li>
+	// <li> **false**：否</li></ul>
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowEngineEnable *bool `json:"FlowEngineEnable,omitnil" name:"FlowEngineEnable"`
 }
@@ -7380,11 +7457,11 @@ type IntegrateRole struct {
 }
 
 type IntegrationDepartment struct {
-	// 部门ID
+	// 部门ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeptId *string `json:"DeptId,omitnil" name:"DeptId"`
 
-	// 部门名
+	// 部门名。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeptName *string `json:"DeptName,omitnil" name:"DeptName"`
 
@@ -7396,7 +7473,7 @@ type IntegrationDepartment struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeptOpenId *string `json:"DeptOpenId,omitnil" name:"DeptOpenId"`
 
-	// 序列号
+	// 序列号。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OrderNo *uint64 `json:"OrderNo,omitnil" name:"OrderNo"`
 }
@@ -7490,23 +7567,23 @@ type ModifyIntegrationDepartmentRequestParams struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得组织架构管理权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 电子签部门ID,通过DescribeIntegrationDepartments接口可以获取
+	// 电子签部门ID，通过<a href="https://qian.tencent.com/developers/companyApis/organizations/DescribeIntegrationDepartments" target="_blank">DescribeIntegrationDepartments</a>接口获得。
 	DeptId *string `json:"DeptId,omitnil" name:"DeptId"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 电子签父部门ID，通过DescribeIntegrationDepartments接口可以获取
+	// 电子签父部门ID，通过<a href="https://qian.tencent.com/developers/companyApis/organizations/DescribeIntegrationDepartments" target="_blank">DescribeIntegrationDepartments</a>接口获得。
 	ParentDeptId *string `json:"ParentDeptId,omitnil" name:"ParentDeptId"`
 
-	// 部门名称，不超过50个字符
+	// 部门名称，最大长度为50个字符。
 	DeptName *string `json:"DeptName,omitnil" name:"DeptName"`
 
-	// 客户系统部门ID，不超过64个字符
+	// 客户系统部门ID，最大长度为64个字符。
 	DeptOpenId *string `json:"DeptOpenId,omitnil" name:"DeptOpenId"`
 
-	// 排序号,1~30000范围内
+	// 排序号，支持设置的数值范围为1~30000。同一父部门下，排序号越大，部门顺序越靠前。
 	OrderNo *uint64 `json:"OrderNo,omitnil" name:"OrderNo"`
 }
 
@@ -7517,23 +7594,23 @@ type ModifyIntegrationDepartmentRequest struct {
 	// 注: `在调用此接口时，请确保指定的员工已获得组织架构管理权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 电子签部门ID,通过DescribeIntegrationDepartments接口可以获取
+	// 电子签部门ID，通过<a href="https://qian.tencent.com/developers/companyApis/organizations/DescribeIntegrationDepartments" target="_blank">DescribeIntegrationDepartments</a>接口获得。
 	DeptId *string `json:"DeptId,omitnil" name:"DeptId"`
 
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 电子签父部门ID，通过DescribeIntegrationDepartments接口可以获取
+	// 电子签父部门ID，通过<a href="https://qian.tencent.com/developers/companyApis/organizations/DescribeIntegrationDepartments" target="_blank">DescribeIntegrationDepartments</a>接口获得。
 	ParentDeptId *string `json:"ParentDeptId,omitnil" name:"ParentDeptId"`
 
-	// 部门名称，不超过50个字符
+	// 部门名称，最大长度为50个字符。
 	DeptName *string `json:"DeptName,omitnil" name:"DeptName"`
 
-	// 客户系统部门ID，不超过64个字符
+	// 客户系统部门ID，最大长度为64个字符。
 	DeptOpenId *string `json:"DeptOpenId,omitnil" name:"DeptOpenId"`
 
-	// 排序号,1~30000范围内
+	// 排序号，支持设置的数值范围为1~30000。同一父部门下，排序号越大，部门顺序越靠前。
 	OrderNo *uint64 `json:"OrderNo,omitnil" name:"OrderNo"`
 }
 
@@ -8051,71 +8128,73 @@ type SignUrl struct {
 }
 
 type Staff struct {
-	// 用户在电子签平台的id
-	// 注：创建和更新场景无需填写
+	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
+	// 注：`创建和更新场景无需填写。`
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 显示的用户名/昵称
+	// 显示的用户名/昵称。
 	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
 
-	// 用户手机号
+	// 用户手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)。
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 
-	// 用户邮箱
+	// 用户邮箱。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Email *string `json:"Email,omitnil" name:"Email"`
 
-	// 用户在第三方平台id，如需在此接口提醒员工实名，该参数不传
+	// 用户在第三方平台ID。
+	// 注：`如需在此接口提醒员工实名，该参数不传。`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
 
-	// 员工角色
-	// 注：创建和更新场景无需填写
+	// 员工角色信息。
+	// 注：`创建和更新场景无需填写。`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Roles []*StaffRole `json:"Roles,omitnil" name:"Roles"`
 
-	// 员工部门
+	// 员工部门信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Department *Department `json:"Department,omitnil" name:"Department"`
 
-	// 员工是否实名
-	// 注：创建和更新场景无需填写
+	// 员工是否实名。
+	// 注：`创建和更新场景无需填写。`
 	Verified *bool `json:"Verified,omitnil" name:"Verified"`
 
-	// 员工创建时间戳，单位秒
-	// 注：创建和更新场景无需填写
+	// 员工创建时间戳，单位秒。
+	// 注：`创建和更新场景无需填写。`
 	CreatedOn *int64 `json:"CreatedOn,omitnil" name:"CreatedOn"`
 
-	// 员工实名时间戳，单位秒
-	// 注：创建和更新场景无需填写
+	// 员工实名时间戳，单位秒。
+	// 注：`创建和更新场景无需填写。`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VerifiedOn *int64 `json:"VerifiedOn,omitnil" name:"VerifiedOn"`
 
-	// 员工是否离职：0-未离职，1-离职
-	// 注：创建和更新场景无需填写
+	// 员工是否离职：
+	// <ul><li>**0**：未离职</li><li>**1**：离职</li></ul>
+	// 注：`创建和更新场景无需填写。`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QuiteJob *int64 `json:"QuiteJob,omitnil" name:"QuiteJob"`
 
-	// 员工离职交接人用户id
-	// 注：创建和更新场景无需填写
+	// 员工离职交接人用户ID。
+	// 注：`创建和更新场景无需填写。`
 	ReceiveUserId *string `json:"ReceiveUserId,omitnil" name:"ReceiveUserId"`
 
-	// 员工离职交接人用户OpenId
-	// 注：创建和更新场景无需填写
+	// 员工离职交接人用户OpenId。
+	// 注：`创建和更新场景无需填写。`
 	ReceiveOpenId *string `json:"ReceiveOpenId,omitnil" name:"ReceiveOpenId"`
 
-	// 企业微信用户账号ID
-	// 注：仅企微类型的企业创建员工接口支持该字段
+	// 企业微信用户账号ID。
+	// 注：`仅企微类型的企业创建员工接口支持该字段。`
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WeworkOpenId *string `json:"WeworkOpenId,omitnil" name:"WeworkOpenId"`
 }
 
 type StaffRole struct {
-	// 角色id
+	// 角色ID。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleId *string `json:"RoleId,omitnil" name:"RoleId"`
 
-	// 角色名称
+	// 角色名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
 }
@@ -8253,10 +8332,11 @@ type SuccessUpdateStaffData struct {
 	// 传入的用户名称
 	DisplayName *string `json:"DisplayName,omitnil" name:"DisplayName"`
 
-	// 传入的手机号
+	// 传入的手机号，没有打码
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 
-	// 用户Id
+	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
+	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 }
 
@@ -8348,32 +8428,40 @@ type TemplateInfo struct {
 
 // Predefined struct for user
 type UnbindEmployeeUserIdWithClientOpenIdRequestParams struct {
-	// 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定(参数用法参考示例)
+	// 执行本接口操作的员工信息。使用此接口时，必须填写UserId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 电子签系统员工UserId
+	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
+	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 客户系统OpenId
+	// 员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一企业内不会出现重复。
+	// 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
 	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type UnbindEmployeeUserIdWithClientOpenIdRequest struct {
 	*tchttp.BaseRequest
 	
-	// 用户信息，OpenId与UserId二选一必填一个，OpenId是第三方客户ID，userId是用户实名后的电子签生成的ID,当传入客户系统openId，传入的openId需与电子签员工userId绑定，且参数Channel必填，Channel值为INTEGRATE；当传入参数UserId，Channel无需指定(参数用法参考示例)
+	// 执行本接口操作的员工信息。使用此接口时，必须填写UserId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 电子签系统员工UserId
+	// 员工在腾讯电子签平台的唯一身份标识，为32位字符串。
+	// 可登录腾讯电子签控制台，在 "更多能力"->"组织管理" 中查看某位员工的UserId(在页面中展示为用户ID)。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 客户系统OpenId
+	// 员工在贵司业务系统中的唯一身份标识，用于与腾讯电子签账号进行映射，确保在同一企业内不会出现重复。
+	// 该标识最大长度为64位字符串，仅支持包含26个英文字母和数字0-9的字符。
 	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId必填
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
@@ -8401,7 +8489,9 @@ func (r *UnbindEmployeeUserIdWithClientOpenIdRequest) FromJsonString(s string) e
 
 // Predefined struct for user
 type UnbindEmployeeUserIdWithClientOpenIdResponseParams struct {
-	// 解绑是否成功，1表示成功，0表示失败
+	// 解绑是否成功。
+	// <ul><li> **0**：失败 </li>
+	// <li> **1**：成功 </li></ul>
 	Status *int64 `json:"Status,omitnil" name:"Status"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -8426,7 +8516,8 @@ func (r *UnbindEmployeeUserIdWithClientOpenIdResponse) FromJsonString(s string) 
 
 // Predefined struct for user
 type UpdateIntegrationEmployeesRequestParams struct {
-	// 当前用户信息，UserId必填
+	// 执行本接口操作的员工信息,UserId必填。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 员工信息，不超过100个。
@@ -8434,14 +8525,16 @@ type UpdateIntegrationEmployeesRequestParams struct {
 	// 可更新Mobile、DisplayName、Email和Department.DepartmentId字段，其他字段暂不支持
 	Employees []*Staff `json:"Employees,omitnil" name:"Employees"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type UpdateIntegrationEmployeesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 当前用户信息，UserId必填
+	// 执行本接口操作的员工信息,UserId必填。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 员工信息，不超过100个。
@@ -8449,7 +8542,8 @@ type UpdateIntegrationEmployeesRequest struct {
 	// 可更新Mobile、DisplayName、Email和Department.DepartmentId字段，其他字段暂不支持
 	Employees []*Staff `json:"Employees,omitnil" name:"Employees"`
 
-	// 代理相关应用信息，如集团主企业代子企业操作的场景中ProxyOrganizationId需填充子企业Id
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
