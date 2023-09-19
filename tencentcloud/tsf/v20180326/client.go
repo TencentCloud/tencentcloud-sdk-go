@@ -4679,6 +4679,7 @@ func NewDescribeApiVersionsResponse() (response *DescribeApiVersionsResponse) {
 // 查询API 版本
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SERVICEINSERTFAILED = "FailedOperation.ServiceInsertFailed"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  MISSINGPARAMETER_REQUIREDPARAMETERMISSING = "MissingParameter.RequiredParameterMissing"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -4691,6 +4692,7 @@ func (c *Client) DescribeApiVersions(request *DescribeApiVersionsRequest) (respo
 // 查询API 版本
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SERVICEINSERTFAILED = "FailedOperation.ServiceInsertFailed"
 //  INTERNALERROR_UNHANDLEDEXCEPTION = "InternalError.UnhandledException"
 //  MISSINGPARAMETER_REQUIREDPARAMETERMISSING = "MissingParameter.RequiredParameterMissing"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"

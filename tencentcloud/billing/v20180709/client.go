@@ -1137,6 +1137,7 @@ func NewDescribeTagListResponse() (response *DescribeTagListResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeTagList(request *DescribeTagListRequest) (response *DescribeTagListResponse, err error) {
     return c.DescribeTagListWithContext(context.Background(), request)
@@ -1148,6 +1149,7 @@ func (c *Client) DescribeTagList(request *DescribeTagListRequest) (response *Des
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeTagListWithContext(ctx context.Context, request *DescribeTagListRequest) (response *DescribeTagListResponse, err error) {
     if request == nil {

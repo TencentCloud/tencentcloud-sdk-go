@@ -62,6 +62,83 @@ type AccountVpcInfoOutput struct {
 	Region *string `json:"Region,omitnil" name:"Region"`
 }
 
+// Predefined struct for user
+type AddSpecifyPrivateZoneVpcRequestParams struct {
+	// 私有域id
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 本次新增的vpc信息
+	VpcSet []*VpcInfo `json:"VpcSet,omitnil" name:"VpcSet"`
+
+	// 本次新增关联账户vpc信息
+	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
+}
+
+type AddSpecifyPrivateZoneVpcRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私有域id
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 本次新增的vpc信息
+	VpcSet []*VpcInfo `json:"VpcSet,omitnil" name:"VpcSet"`
+
+	// 本次新增关联账户vpc信息
+	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
+}
+
+func (r *AddSpecifyPrivateZoneVpcRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddSpecifyPrivateZoneVpcRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "VpcSet")
+	delete(f, "AccountVpcSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpecifyPrivateZoneVpcRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddSpecifyPrivateZoneVpcResponseParams struct {
+	// zone id
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 本次新增的vpc
+	VpcSet []*VpcInfo `json:"VpcSet,omitnil" name:"VpcSet"`
+
+	// 本次新增的关联账号vpc
+	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type AddSpecifyPrivateZoneVpcResponse struct {
+	*tchttp.BaseResponse
+	Response *AddSpecifyPrivateZoneVpcResponseParams `json:"Response"`
+}
+
+func (r *AddSpecifyPrivateZoneVpcResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddSpecifyPrivateZoneVpcResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type AuditLog struct {
 	// 日志类型
 	Resource *string `json:"Resource,omitnil" name:"Resource"`
@@ -591,6 +668,83 @@ func (r *DeletePrivateZoneResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePrivateZoneResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSpecifyPrivateZoneVpcRequestParams struct {
+	// 私有域id
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 本次删除的VPC
+	VpcSet []*VpcInfo `json:"VpcSet,omitnil" name:"VpcSet"`
+
+	// 本次删除的关联账户VPC
+	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
+}
+
+type DeleteSpecifyPrivateZoneVpcRequest struct {
+	*tchttp.BaseRequest
+	
+	// 私有域id
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 本次删除的VPC
+	VpcSet []*VpcInfo `json:"VpcSet,omitnil" name:"VpcSet"`
+
+	// 本次删除的关联账户VPC
+	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
+}
+
+func (r *DeleteSpecifyPrivateZoneVpcRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSpecifyPrivateZoneVpcRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ZoneId")
+	delete(f, "VpcSet")
+	delete(f, "AccountVpcSet")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSpecifyPrivateZoneVpcRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteSpecifyPrivateZoneVpcResponseParams struct {
+	// 私有域id
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 本次删除的VPC
+	VpcSet []*VpcInfo `json:"VpcSet,omitnil" name:"VpcSet"`
+
+	// 本次删除的关联账户的VPC
+	AccountVpcSet []*AccountVpcInfo `json:"AccountVpcSet,omitnil" name:"AccountVpcSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteSpecifyPrivateZoneVpcResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteSpecifyPrivateZoneVpcResponseParams `json:"Response"`
+}
+
+func (r *DeleteSpecifyPrivateZoneVpcResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteSpecifyPrivateZoneVpcResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

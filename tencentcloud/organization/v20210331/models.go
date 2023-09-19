@@ -578,6 +578,63 @@ func (r *CreateOrganizationMemberResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateOrganizationRequestParams struct {
+
+}
+
+type CreateOrganizationRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CreateOrganizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOrganizationResponseParams struct {
+	// 企业组织ID
+	OrgId *uint64 `json:"OrgId,omitnil" name:"OrgId"`
+
+	// 创建者昵称
+	NickName *string `json:"NickName,omitnil" name:"NickName"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateOrganizationResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOrganizationResponseParams `json:"Response"`
+}
+
+func (r *CreateOrganizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteOrganizationMemberAuthIdentityRequestParams struct {
 	// 成员uin。
 	MemberUin *uint64 `json:"MemberUin,omitnil" name:"MemberUin"`
@@ -797,6 +854,57 @@ func (r *DeleteOrganizationNodesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteOrganizationNodesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOrganizationRequestParams struct {
+
+}
+
+type DeleteOrganizationRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DeleteOrganizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOrganizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteOrganizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteOrganizationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteOrganizationResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteOrganizationResponseParams `json:"Response"`
+}
+
+func (r *DeleteOrganizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

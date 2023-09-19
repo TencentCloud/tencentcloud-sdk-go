@@ -139,6 +139,10 @@ type AssessmentRisk struct {
 	// 风险面
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskSide *string `json:"RiskSide,omitnil" name:"RiskSide"`
+
+	// 数据源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataSourceType *string `json:"DataSourceType,omitnil" name:"DataSourceType"`
 }
 
 type AssessmentRiskItem struct {
@@ -182,6 +186,11 @@ type AssessmentRiskItem struct {
 type AssessmentTask struct {
 	// 评估任务Id
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 评估任务的自增ID
+	// 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskUid *int64 `json:"TaskUid,omitnil" name:"TaskUid"`
 
 	// 评估任务名称
 	TaskName *string `json:"TaskName,omitnil" name:"TaskName"`
@@ -232,6 +241,14 @@ type AssessmentTask struct {
 
 	// 评估任务失败信息
 	ErrorInfo *string `json:"ErrorInfo,omitnil" name:"ErrorInfo"`
+
+	// 模版主键id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TemplateUid *int64 `json:"TemplateUid,omitnil" name:"TemplateUid"`
+
+	// 进度百分比
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProgressPercent *int64 `json:"ProgressPercent,omitnil" name:"ProgressPercent"`
 }
 
 type AssessmentTemplate struct {
@@ -274,6 +291,10 @@ type AssessmentTemplate struct {
 	// 是否包含攻击面风险
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsASMTemplate *bool `json:"IsASMTemplate,omitnil" name:"IsASMTemplate"`
+
+	// 合规组id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IdentifyComplianceId *int64 `json:"IdentifyComplianceId,omitnil" name:"IdentifyComplianceId"`
 }
 
 type AssetCosDetail struct {
@@ -4113,6 +4134,9 @@ type DescribeDSPAAssessmentLatestRiskListRequestParams struct {
 
 	// 风险面筛选
 	RiskSide []*string `json:"RiskSide,omitnil" name:"RiskSide"`
+
+	// ASC 正序，DESC倒叙
+	TimeSort *string `json:"TimeSort,omitnil" name:"TimeSort"`
 }
 
 type DescribeDSPAAssessmentLatestRiskListRequest struct {
@@ -4153,6 +4177,9 @@ type DescribeDSPAAssessmentLatestRiskListRequest struct {
 
 	// 风险面筛选
 	RiskSide []*string `json:"RiskSide,omitnil" name:"RiskSide"`
+
+	// ASC 正序，DESC倒叙
+	TimeSort *string `json:"TimeSort,omitnil" name:"TimeSort"`
 }
 
 func (r *DescribeDSPAAssessmentLatestRiskListRequest) ToJsonString() string {
@@ -4179,6 +4206,7 @@ func (r *DescribeDSPAAssessmentLatestRiskListRequest) FromJsonString(s string) e
 	delete(f, "EndTime")
 	delete(f, "RiskLevel")
 	delete(f, "RiskSide")
+	delete(f, "TimeSort")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDSPAAssessmentLatestRiskListRequest has unknown keys!", "")
 	}
@@ -13733,6 +13761,14 @@ type RiskItemInfo struct {
 	// 风险面
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RiskSide *string `json:"RiskSide,omitnil" name:"RiskSide"`
+
+	// API安全风险链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	APIRiskLinkURL *string `json:"APIRiskLinkURL,omitnil" name:"APIRiskLinkURL"`
+
+	// 备注
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 type RiskLevelMatrix struct {

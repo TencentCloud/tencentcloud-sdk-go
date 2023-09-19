@@ -149,6 +149,7 @@ func NewCreatePurgeTaskResponse() (response *CreatePurgeTaskResponse) {
 //  LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) CreatePurgeTask(request *CreatePurgeTaskRequest) (response *CreatePurgeTaskResponse, err error) {
     return c.CreatePurgeTaskWithContext(context.Background(), request)
 }
@@ -169,6 +170,7 @@ func (c *Client) CreatePurgeTask(request *CreatePurgeTaskRequest) (response *Cre
 //  LIMITEXCEEDED_DAILYQUOTA = "LimitExceeded.DailyQuota"
 //  OPERATIONDENIED = "OperationDenied"
 //  UNAUTHORIZEDOPERATION_CAMUNAUTHORIZED = "UnauthorizedOperation.CamUnauthorized"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) CreatePurgeTaskWithContext(ctx context.Context, request *CreatePurgeTaskRequest) (response *CreatePurgeTaskResponse, err error) {
     if request == nil {
         request = NewCreatePurgeTaskRequest()

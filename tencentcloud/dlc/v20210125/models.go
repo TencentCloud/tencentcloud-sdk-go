@@ -2704,7 +2704,7 @@ type CreateSparkSessionBatchSQLRequestParams struct {
 	// DLC Spark作业引擎名称
 	DataEngineName *string `json:"DataEngineName,omitnil" name:"DataEngineName"`
 
-	// 运行sql
+	// 运行sql，需要base64编码。
 	ExecuteSQL *string `json:"ExecuteSQL,omitnil" name:"ExecuteSQL"`
 
 	// 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
@@ -2733,7 +2733,7 @@ type CreateSparkSessionBatchSQLRequestParams struct {
 	// 3.dlc.sql.set.config：用户配置的集群配置信息，可以用过该字段设置；
 	Arguments []*KVPair `json:"Arguments,omitnil" name:"Arguments"`
 
-	// 是否继承集群的资源类配置：0：自定义（默认），1：继承集群；
+	// 是否继承集群的资源类配置：0：不继承（默认），1：继承集群；
 	IsInherit *int64 `json:"IsInherit,omitnil" name:"IsInherit"`
 }
 
@@ -2743,7 +2743,7 @@ type CreateSparkSessionBatchSQLRequest struct {
 	// DLC Spark作业引擎名称
 	DataEngineName *string `json:"DataEngineName,omitnil" name:"DataEngineName"`
 
-	// 运行sql
+	// 运行sql，需要base64编码。
 	ExecuteSQL *string `json:"ExecuteSQL,omitnil" name:"ExecuteSQL"`
 
 	// 指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）
@@ -2772,7 +2772,7 @@ type CreateSparkSessionBatchSQLRequest struct {
 	// 3.dlc.sql.set.config：用户配置的集群配置信息，可以用过该字段设置；
 	Arguments []*KVPair `json:"Arguments,omitnil" name:"Arguments"`
 
-	// 是否继承集群的资源类配置：0：自定义（默认），1：继承集群；
+	// 是否继承集群的资源类配置：0：不继承（默认），1：继承集群；
 	IsInherit *int64 `json:"IsInherit,omitnil" name:"IsInherit"`
 }
 

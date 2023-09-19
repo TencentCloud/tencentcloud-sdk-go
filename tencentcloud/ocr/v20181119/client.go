@@ -82,6 +82,7 @@ func NewAdvertiseOCRResponse() (response *AdvertiseOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) AdvertiseOCR(request *AdvertiseOCRRequest) (response *AdvertiseOCRResponse, err error) {
     return c.AdvertiseOCRWithContext(context.Background(), request)
@@ -106,6 +107,7 @@ func (c *Client) AdvertiseOCR(request *AdvertiseOCRRequest) (response *Advertise
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) AdvertiseOCRWithContext(ctx context.Context, request *AdvertiseOCRRequest) (response *AdvertiseOCRResponse, err error) {
     if request == nil {
@@ -159,6 +161,8 @@ func NewArithmeticOCRResponse() (response *ArithmeticOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ArithmeticOCR(request *ArithmeticOCRRequest) (response *ArithmeticOCRResponse, err error) {
     return c.ArithmeticOCRWithContext(context.Background(), request)
@@ -182,6 +186,8 @@ func (c *Client) ArithmeticOCR(request *ArithmeticOCRRequest) (response *Arithme
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ArithmeticOCRWithContext(ctx context.Context, request *ArithmeticOCRRequest) (response *ArithmeticOCRResponse, err error) {
     if request == nil {
@@ -235,6 +241,7 @@ func NewBankCardOCRResponse() (response *BankCardOCRResponse) {
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) BankCardOCR(request *BankCardOCRRequest) (response *BankCardOCRResponse, err error) {
     return c.BankCardOCRWithContext(context.Background(), request)
@@ -258,6 +265,7 @@ func (c *Client) BankCardOCR(request *BankCardOCRRequest) (response *BankCardOCR
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) BankCardOCRWithContext(ctx context.Context, request *BankCardOCRRequest) (response *BankCardOCRResponse, err error) {
     if request == nil {
@@ -456,6 +464,7 @@ func NewBusInvoiceOCRResponse() (response *BusInvoiceOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) BusInvoiceOCR(request *BusInvoiceOCRRequest) (response *BusInvoiceOCRResponse, err error) {
     return c.BusInvoiceOCRWithContext(context.Background(), request)
@@ -476,6 +485,7 @@ func (c *Client) BusInvoiceOCR(request *BusInvoiceOCRRequest) (response *BusInvo
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) BusInvoiceOCRWithContext(ctx context.Context, request *BusInvoiceOCRRequest) (response *BusInvoiceOCRResponse, err error) {
     if request == nil {
@@ -528,6 +538,7 @@ func NewBusinessCardOCRResponse() (response *BusinessCardOCRResponse) {
 //  INVALIDPARAMETER_CONFIGFORMATERROR = "InvalidParameter.ConfigFormatError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) BusinessCardOCR(request *BusinessCardOCRRequest) (response *BusinessCardOCRResponse, err error) {
     return c.BusinessCardOCRWithContext(context.Background(), request)
@@ -550,6 +561,7 @@ func (c *Client) BusinessCardOCR(request *BusinessCardOCRRequest) (response *Bus
 //  INVALIDPARAMETER_CONFIGFORMATERROR = "InvalidParameter.ConfigFormatError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) BusinessCardOCRWithContext(ctx context.Context, request *BusinessCardOCRRequest) (response *BusinessCardOCRResponse, err error) {
     if request == nil {
@@ -600,6 +612,8 @@ func NewCarInvoiceOCRResponse() (response *CarInvoiceOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CarInvoiceOCR(request *CarInvoiceOCRRequest) (response *CarInvoiceOCRResponse, err error) {
     return c.CarInvoiceOCRWithContext(context.Background(), request)
@@ -620,6 +634,8 @@ func (c *Client) CarInvoiceOCR(request *CarInvoiceOCRRequest) (response *CarInvo
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) CarInvoiceOCRWithContext(ctx context.Context, request *CarInvoiceOCRRequest) (response *CarInvoiceOCRResponse, err error) {
     if request == nil {
@@ -672,6 +688,7 @@ func NewClassifyDetectOCRResponse() (response *ClassifyDetectOCRResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ClassifyDetectOCR(request *ClassifyDetectOCRRequest) (response *ClassifyDetectOCRResponse, err error) {
     return c.ClassifyDetectOCRWithContext(context.Background(), request)
@@ -694,6 +711,7 @@ func (c *Client) ClassifyDetectOCR(request *ClassifyDetectOCRRequest) (response 
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ClassifyDetectOCRWithContext(ctx context.Context, request *ClassifyDetectOCRRequest) (response *ClassifyDetectOCRResponse, err error) {
     if request == nil {
@@ -922,6 +940,7 @@ func NewDutyPaidProofOCRResponse() (response *DutyPaidProofOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) DutyPaidProofOCR(request *DutyPaidProofOCRRequest) (response *DutyPaidProofOCRResponse, err error) {
     return c.DutyPaidProofOCRWithContext(context.Background(), request)
@@ -942,6 +961,7 @@ func (c *Client) DutyPaidProofOCR(request *DutyPaidProofOCRRequest) (response *D
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) DutyPaidProofOCRWithContext(ctx context.Context, request *DutyPaidProofOCRRequest) (response *DutyPaidProofOCRResponse, err error) {
     if request == nil {
@@ -994,6 +1014,7 @@ func NewEduPaperOCRResponse() (response *EduPaperOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) EduPaperOCR(request *EduPaperOCRRequest) (response *EduPaperOCRResponse, err error) {
     return c.EduPaperOCRWithContext(context.Background(), request)
@@ -1016,6 +1037,7 @@ func (c *Client) EduPaperOCR(request *EduPaperOCRRequest) (response *EduPaperOCR
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) EduPaperOCRWithContext(ctx context.Context, request *EduPaperOCRRequest) (response *EduPaperOCRResponse, err error) {
     if request == nil {
@@ -1069,6 +1091,8 @@ func NewEnglishOCRResponse() (response *EnglishOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) EnglishOCR(request *EnglishOCRRequest) (response *EnglishOCRResponse, err error) {
     return c.EnglishOCRWithContext(context.Background(), request)
@@ -1092,6 +1116,8 @@ func (c *Client) EnglishOCR(request *EnglishOCRRequest) (response *EnglishOCRRes
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) EnglishOCRWithContext(ctx context.Context, request *EnglishOCRRequest) (response *EnglishOCRResponse, err error) {
     if request == nil {
@@ -1142,6 +1168,7 @@ func NewEnterpriseLicenseOCRResponse() (response *EnterpriseLicenseOCRResponse) 
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) EnterpriseLicenseOCR(request *EnterpriseLicenseOCRRequest) (response *EnterpriseLicenseOCRResponse, err error) {
     return c.EnterpriseLicenseOCRWithContext(context.Background(), request)
@@ -1162,6 +1189,7 @@ func (c *Client) EnterpriseLicenseOCR(request *EnterpriseLicenseOCRRequest) (res
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) EnterpriseLicenseOCRWithContext(ctx context.Context, request *EnterpriseLicenseOCRRequest) (response *EnterpriseLicenseOCRResponse, err error) {
     if request == nil {
@@ -1214,6 +1242,7 @@ func NewEstateCertOCRResponse() (response *EstateCertOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) EstateCertOCR(request *EstateCertOCRRequest) (response *EstateCertOCRResponse, err error) {
     return c.EstateCertOCRWithContext(context.Background(), request)
@@ -1236,6 +1265,7 @@ func (c *Client) EstateCertOCR(request *EstateCertOCRRequest) (response *EstateC
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) EstateCertOCRWithContext(ctx context.Context, request *EstateCertOCRRequest) (response *EstateCertOCRResponse, err error) {
     if request == nil {
@@ -1287,6 +1317,7 @@ func NewFinanBillOCRResponse() (response *FinanBillOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FinanBillOCR(request *FinanBillOCRRequest) (response *FinanBillOCRResponse, err error) {
     return c.FinanBillOCRWithContext(context.Background(), request)
@@ -1308,6 +1339,7 @@ func (c *Client) FinanBillOCR(request *FinanBillOCRRequest) (response *FinanBill
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FinanBillOCRWithContext(ctx context.Context, request *FinanBillOCRRequest) (response *FinanBillOCRResponse, err error) {
     if request == nil {
@@ -1359,6 +1391,7 @@ func NewFinanBillSliceOCRResponse() (response *FinanBillSliceOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FinanBillSliceOCR(request *FinanBillSliceOCRRequest) (response *FinanBillSliceOCRResponse, err error) {
     return c.FinanBillSliceOCRWithContext(context.Background(), request)
@@ -1380,6 +1413,7 @@ func (c *Client) FinanBillSliceOCR(request *FinanBillSliceOCRRequest) (response 
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FinanBillSliceOCRWithContext(ctx context.Context, request *FinanBillSliceOCRRequest) (response *FinanBillSliceOCRResponse, err error) {
     if request == nil {
@@ -1430,6 +1464,7 @@ func NewFlightInvoiceOCRResponse() (response *FlightInvoiceOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FlightInvoiceOCR(request *FlightInvoiceOCRRequest) (response *FlightInvoiceOCRResponse, err error) {
     return c.FlightInvoiceOCRWithContext(context.Background(), request)
@@ -1450,6 +1485,7 @@ func (c *Client) FlightInvoiceOCR(request *FlightInvoiceOCRRequest) (response *F
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FlightInvoiceOCRWithContext(ctx context.Context, request *FlightInvoiceOCRRequest) (response *FlightInvoiceOCRResponse, err error) {
     if request == nil {
@@ -1502,6 +1538,8 @@ func NewFormulaOCRResponse() (response *FormulaOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FormulaOCR(request *FormulaOCRRequest) (response *FormulaOCRResponse, err error) {
     return c.FormulaOCRWithContext(context.Background(), request)
@@ -1524,6 +1562,8 @@ func (c *Client) FormulaOCR(request *FormulaOCRRequest) (response *FormulaOCRRes
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) FormulaOCRWithContext(ctx context.Context, request *FormulaOCRRequest) (response *FormulaOCRResponse, err error) {
     if request == nil {
@@ -2531,6 +2571,8 @@ func NewGeneralFastOCRResponse() (response *GeneralFastOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GeneralFastOCR(request *GeneralFastOCRRequest) (response *GeneralFastOCRResponse, err error) {
     return c.GeneralFastOCRWithContext(context.Background(), request)
@@ -2554,6 +2596,8 @@ func (c *Client) GeneralFastOCR(request *GeneralFastOCRRequest) (response *Gener
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GeneralFastOCRWithContext(ctx context.Context, request *GeneralFastOCRRequest) (response *GeneralFastOCRResponse, err error) {
     if request == nil {
@@ -2609,6 +2653,8 @@ func NewGeneralHandwritingOCRResponse() (response *GeneralHandwritingOCRResponse
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GeneralHandwritingOCR(request *GeneralHandwritingOCRRequest) (response *GeneralHandwritingOCRResponse, err error) {
     return c.GeneralHandwritingOCRWithContext(context.Background(), request)
@@ -2634,6 +2680,8 @@ func (c *Client) GeneralHandwritingOCR(request *GeneralHandwritingOCRRequest) (r
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) GeneralHandwritingOCRWithContext(ctx context.Context, request *GeneralHandwritingOCRRequest) (response *GeneralHandwritingOCRResponse, err error) {
     if request == nil {
@@ -2808,6 +2856,7 @@ func NewHmtResidentPermitOCRResponse() (response *HmtResidentPermitOCRResponse) 
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) HmtResidentPermitOCR(request *HmtResidentPermitOCRRequest) (response *HmtResidentPermitOCRResponse, err error) {
     return c.HmtResidentPermitOCRWithContext(context.Background(), request)
@@ -2830,6 +2879,7 @@ func (c *Client) HmtResidentPermitOCR(request *HmtResidentPermitOCRRequest) (res
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) HmtResidentPermitOCRWithContext(ctx context.Context, request *HmtResidentPermitOCRRequest) (response *HmtResidentPermitOCRResponse, err error) {
     if request == nil {
@@ -3161,6 +3211,7 @@ func NewImageEnhancementResponse() (response *ImageEnhancementResponse) {
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ImageEnhancement(request *ImageEnhancementRequest) (response *ImageEnhancementResponse, err error) {
     return c.ImageEnhancementWithContext(context.Background(), request)
@@ -3182,6 +3233,7 @@ func (c *Client) ImageEnhancement(request *ImageEnhancementRequest) (response *I
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ImageEnhancementWithContext(ctx context.Context, request *ImageEnhancementRequest) (response *ImageEnhancementResponse, err error) {
     if request == nil {
@@ -3232,6 +3284,7 @@ func NewInstitutionOCRResponse() (response *InstitutionOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) InstitutionOCR(request *InstitutionOCRRequest) (response *InstitutionOCRResponse, err error) {
     return c.InstitutionOCRWithContext(context.Background(), request)
@@ -3252,6 +3305,7 @@ func (c *Client) InstitutionOCR(request *InstitutionOCRRequest) (response *Insti
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) InstitutionOCRWithContext(ctx context.Context, request *InstitutionOCRRequest) (response *InstitutionOCRResponse, err error) {
     if request == nil {
@@ -3304,6 +3358,7 @@ func NewInsuranceBillOCRResponse() (response *InsuranceBillOCRResponse) {
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) InsuranceBillOCR(request *InsuranceBillOCRRequest) (response *InsuranceBillOCRResponse, err error) {
     return c.InsuranceBillOCRWithContext(context.Background(), request)
@@ -3326,6 +3381,7 @@ func (c *Client) InsuranceBillOCR(request *InsuranceBillOCRRequest) (response *I
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) InsuranceBillOCRWithContext(ctx context.Context, request *InsuranceBillOCRRequest) (response *InsuranceBillOCRResponse, err error) {
     if request == nil {
@@ -3376,6 +3432,7 @@ func NewInvoiceGeneralOCRResponse() (response *InvoiceGeneralOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) InvoiceGeneralOCR(request *InvoiceGeneralOCRRequest) (response *InvoiceGeneralOCRResponse, err error) {
     return c.InvoiceGeneralOCRWithContext(context.Background(), request)
@@ -3396,6 +3453,7 @@ func (c *Client) InvoiceGeneralOCR(request *InvoiceGeneralOCRRequest) (response 
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) InvoiceGeneralOCRWithContext(ctx context.Context, request *InvoiceGeneralOCRRequest) (response *InvoiceGeneralOCRResponse, err error) {
     if request == nil {
@@ -3446,6 +3504,8 @@ func NewLicensePlateOCRResponse() (response *LicensePlateOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) LicensePlateOCR(request *LicensePlateOCRRequest) (response *LicensePlateOCRResponse, err error) {
     return c.LicensePlateOCRWithContext(context.Background(), request)
@@ -3466,6 +3526,8 @@ func (c *Client) LicensePlateOCR(request *LicensePlateOCRRequest) (response *Lic
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) LicensePlateOCRWithContext(ctx context.Context, request *LicensePlateOCRRequest) (response *LicensePlateOCRResponse, err error) {
     if request == nil {
@@ -3587,6 +3649,7 @@ func NewMLIDPassportOCRResponse() (response *MLIDPassportOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) MLIDPassportOCR(request *MLIDPassportOCRRequest) (response *MLIDPassportOCRResponse, err error) {
     return c.MLIDPassportOCRWithContext(context.Background(), request)
@@ -3608,6 +3671,7 @@ func (c *Client) MLIDPassportOCR(request *MLIDPassportOCRRequest) (response *MLI
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) MLIDPassportOCRWithContext(ctx context.Context, request *MLIDPassportOCRRequest) (response *MLIDPassportOCRResponse, err error) {
     if request == nil {
@@ -3658,6 +3722,7 @@ func NewMainlandPermitOCRResponse() (response *MainlandPermitOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) MainlandPermitOCR(request *MainlandPermitOCRRequest) (response *MainlandPermitOCRResponse, err error) {
     return c.MainlandPermitOCRWithContext(context.Background(), request)
@@ -3678,6 +3743,7 @@ func (c *Client) MainlandPermitOCR(request *MainlandPermitOCRRequest) (response 
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) MainlandPermitOCRWithContext(ctx context.Context, request *MainlandPermitOCRRequest) (response *MainlandPermitOCRResponse, err error) {
     if request == nil {
@@ -3726,6 +3792,7 @@ func NewMixedInvoiceDetectResponse() (response *MixedInvoiceDetectResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) MixedInvoiceDetect(request *MixedInvoiceDetectRequest) (response *MixedInvoiceDetectResponse, err error) {
     return c.MixedInvoiceDetectWithContext(context.Background(), request)
@@ -3744,6 +3811,7 @@ func (c *Client) MixedInvoiceDetect(request *MixedInvoiceDetectRequest) (respons
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) MixedInvoiceDetectWithContext(ctx context.Context, request *MixedInvoiceDetectRequest) (response *MixedInvoiceDetectResponse, err error) {
     if request == nil {
@@ -3870,6 +3938,7 @@ func NewOrgCodeCertOCRResponse() (response *OrgCodeCertOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) OrgCodeCertOCR(request *OrgCodeCertOCRRequest) (response *OrgCodeCertOCRResponse, err error) {
     return c.OrgCodeCertOCRWithContext(context.Background(), request)
@@ -3890,6 +3959,7 @@ func (c *Client) OrgCodeCertOCR(request *OrgCodeCertOCRRequest) (response *OrgCo
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) OrgCodeCertOCRWithContext(ctx context.Context, request *OrgCodeCertOCRRequest) (response *OrgCodeCertOCRResponse, err error) {
     if request == nil {
@@ -3941,6 +4011,7 @@ func NewPassportOCRResponse() (response *PassportOCRResponse) {
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) PassportOCR(request *PassportOCRRequest) (response *PassportOCRResponse, err error) {
     return c.PassportOCRWithContext(context.Background(), request)
@@ -3962,6 +4033,7 @@ func (c *Client) PassportOCR(request *PassportOCRRequest) (response *PassportOCR
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) PassportOCRWithContext(ctx context.Context, request *PassportOCRRequest) (response *PassportOCRResponse, err error) {
     if request == nil {
@@ -4012,6 +4084,7 @@ func NewPermitOCRResponse() (response *PermitOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) PermitOCR(request *PermitOCRRequest) (response *PermitOCRResponse, err error) {
     return c.PermitOCRWithContext(context.Background(), request)
@@ -4032,6 +4105,7 @@ func (c *Client) PermitOCR(request *PermitOCRRequest) (response *PermitOCRRespon
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) PermitOCRWithContext(ctx context.Context, request *PermitOCRRequest) (response *PermitOCRResponse, err error) {
     if request == nil {
@@ -4087,6 +4161,7 @@ func NewPropOwnerCertOCRResponse() (response *PropOwnerCertOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) PropOwnerCertOCR(request *PropOwnerCertOCRRequest) (response *PropOwnerCertOCRResponse, err error) {
     return c.PropOwnerCertOCRWithContext(context.Background(), request)
@@ -4112,6 +4187,7 @@ func (c *Client) PropOwnerCertOCR(request *PropOwnerCertOCRRequest) (response *P
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) PropOwnerCertOCRWithContext(ctx context.Context, request *PropOwnerCertOCRRequest) (response *PropOwnerCertOCRResponse, err error) {
     if request == nil {
@@ -4167,6 +4243,8 @@ func NewQrcodeOCRResponse() (response *QrcodeOCRResponse) {
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) QrcodeOCR(request *QrcodeOCRRequest) (response *QrcodeOCRResponse, err error) {
     return c.QrcodeOCRWithContext(context.Background(), request)
@@ -4192,6 +4270,8 @@ func (c *Client) QrcodeOCR(request *QrcodeOCRRequest) (response *QrcodeOCRRespon
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) QrcodeOCRWithContext(ctx context.Context, request *QrcodeOCRRequest) (response *QrcodeOCRResponse, err error) {
     if request == nil {
@@ -4242,6 +4322,7 @@ func NewQuotaInvoiceOCRResponse() (response *QuotaInvoiceOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) QuotaInvoiceOCR(request *QuotaInvoiceOCRRequest) (response *QuotaInvoiceOCRResponse, err error) {
     return c.QuotaInvoiceOCRWithContext(context.Background(), request)
@@ -4262,6 +4343,7 @@ func (c *Client) QuotaInvoiceOCR(request *QuotaInvoiceOCRRequest) (response *Quo
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) QuotaInvoiceOCRWithContext(ctx context.Context, request *QuotaInvoiceOCRRequest) (response *QuotaInvoiceOCRResponse, err error) {
     if request == nil {
@@ -5162,6 +5244,7 @@ func NewRecognizeMedicalInvoiceOCRResponse() (response *RecognizeMedicalInvoiceO
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeMedicalInvoiceOCR(request *RecognizeMedicalInvoiceOCRRequest) (response *RecognizeMedicalInvoiceOCRResponse, err error) {
     return c.RecognizeMedicalInvoiceOCRWithContext(context.Background(), request)
@@ -5184,6 +5267,7 @@ func (c *Client) RecognizeMedicalInvoiceOCR(request *RecognizeMedicalInvoiceOCRR
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeMedicalInvoiceOCRWithContext(ctx context.Context, request *RecognizeMedicalInvoiceOCRRequest) (response *RecognizeMedicalInvoiceOCRResponse, err error) {
     if request == nil {
@@ -5234,6 +5318,7 @@ func NewRecognizeOnlineTaxiItineraryOCRResponse() (response *RecognizeOnlineTaxi
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeOnlineTaxiItineraryOCR(request *RecognizeOnlineTaxiItineraryOCRRequest) (response *RecognizeOnlineTaxiItineraryOCRResponse, err error) {
     return c.RecognizeOnlineTaxiItineraryOCRWithContext(context.Background(), request)
@@ -5254,6 +5339,7 @@ func (c *Client) RecognizeOnlineTaxiItineraryOCR(request *RecognizeOnlineTaxiIti
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeOnlineTaxiItineraryOCRWithContext(ctx context.Context, request *RecognizeOnlineTaxiItineraryOCRRequest) (response *RecognizeOnlineTaxiItineraryOCRResponse, err error) {
     if request == nil {
@@ -5634,6 +5720,7 @@ func NewRecognizeTableAccurateOCRResponse() (response *RecognizeTableAccurateOCR
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeTableAccurateOCR(request *RecognizeTableAccurateOCRRequest) (response *RecognizeTableAccurateOCRResponse, err error) {
     return c.RecognizeTableAccurateOCRWithContext(context.Background(), request)
@@ -5656,6 +5743,7 @@ func (c *Client) RecognizeTableAccurateOCR(request *RecognizeTableAccurateOCRReq
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeTableAccurateOCRWithContext(ctx context.Context, request *RecognizeTableAccurateOCRRequest) (response *RecognizeTableAccurateOCRResponse, err error) {
     if request == nil {
@@ -5708,6 +5796,8 @@ func NewRecognizeTableOCRResponse() (response *RecognizeTableOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeTableOCR(request *RecognizeTableOCRRequest) (response *RecognizeTableOCRResponse, err error) {
     return c.RecognizeTableOCRWithContext(context.Background(), request)
@@ -5730,6 +5820,8 @@ func (c *Client) RecognizeTableOCR(request *RecognizeTableOCRRequest) (response 
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeTableOCRWithContext(ctx context.Context, request *RecognizeTableOCRRequest) (response *RecognizeTableOCRResponse, err error) {
     if request == nil {
@@ -5863,6 +5955,7 @@ func NewRecognizeTravelCardOCRResponse() (response *RecognizeTravelCardOCRRespon
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeTravelCardOCR(request *RecognizeTravelCardOCRRequest) (response *RecognizeTravelCardOCRResponse, err error) {
     return c.RecognizeTravelCardOCRWithContext(context.Background(), request)
@@ -5886,6 +5979,7 @@ func (c *Client) RecognizeTravelCardOCR(request *RecognizeTravelCardOCRRequest) 
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RecognizeTravelCardOCRWithContext(ctx context.Context, request *RecognizeTravelCardOCRRequest) (response *RecognizeTravelCardOCRResponse, err error) {
     if request == nil {
@@ -5939,6 +6033,8 @@ func NewResidenceBookletOCRResponse() (response *ResidenceBookletOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ResidenceBookletOCR(request *ResidenceBookletOCRRequest) (response *ResidenceBookletOCRResponse, err error) {
     return c.ResidenceBookletOCRWithContext(context.Background(), request)
@@ -5962,6 +6058,8 @@ func (c *Client) ResidenceBookletOCR(request *ResidenceBookletOCRRequest) (respo
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ResidenceBookletOCRWithContext(ctx context.Context, request *ResidenceBookletOCRRequest) (response *ResidenceBookletOCRResponse, err error) {
     if request == nil {
@@ -6013,6 +6111,7 @@ func NewRideHailingDriverLicenseOCRResponse() (response *RideHailingDriverLicens
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RideHailingDriverLicenseOCR(request *RideHailingDriverLicenseOCRRequest) (response *RideHailingDriverLicenseOCRResponse, err error) {
     return c.RideHailingDriverLicenseOCRWithContext(context.Background(), request)
@@ -6034,6 +6133,7 @@ func (c *Client) RideHailingDriverLicenseOCR(request *RideHailingDriverLicenseOC
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RideHailingDriverLicenseOCRWithContext(ctx context.Context, request *RideHailingDriverLicenseOCRRequest) (response *RideHailingDriverLicenseOCRResponse, err error) {
     if request == nil {
@@ -6085,6 +6185,7 @@ func NewRideHailingTransportLicenseOCRResponse() (response *RideHailingTransport
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RideHailingTransportLicenseOCR(request *RideHailingTransportLicenseOCRRequest) (response *RideHailingTransportLicenseOCRResponse, err error) {
     return c.RideHailingTransportLicenseOCRWithContext(context.Background(), request)
@@ -6106,6 +6207,7 @@ func (c *Client) RideHailingTransportLicenseOCR(request *RideHailingTransportLic
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) RideHailingTransportLicenseOCRWithContext(ctx context.Context, request *RideHailingTransportLicenseOCRRequest) (response *RideHailingTransportLicenseOCRResponse, err error) {
     if request == nil {
@@ -6157,6 +6259,8 @@ func NewSealOCRResponse() (response *SealOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) SealOCR(request *SealOCRRequest) (response *SealOCRResponse, err error) {
     return c.SealOCRWithContext(context.Background(), request)
@@ -6178,6 +6282,8 @@ func (c *Client) SealOCR(request *SealOCRRequest) (response *SealOCRResponse, er
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) SealOCRWithContext(ctx context.Context, request *SealOCRRequest) (response *SealOCRResponse, err error) {
     if request == nil {
@@ -6228,6 +6334,7 @@ func NewShipInvoiceOCRResponse() (response *ShipInvoiceOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ShipInvoiceOCR(request *ShipInvoiceOCRRequest) (response *ShipInvoiceOCRResponse, err error) {
     return c.ShipInvoiceOCRWithContext(context.Background(), request)
@@ -6248,6 +6355,7 @@ func (c *Client) ShipInvoiceOCR(request *ShipInvoiceOCRRequest) (response *ShipI
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) ShipInvoiceOCRWithContext(ctx context.Context, request *ShipInvoiceOCRRequest) (response *ShipInvoiceOCRResponse, err error) {
     if request == nil {
@@ -6298,6 +6406,8 @@ func NewSmartStructuralOCRResponse() (response *SmartStructuralOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) SmartStructuralOCR(request *SmartStructuralOCRRequest) (response *SmartStructuralOCRResponse, err error) {
     return c.SmartStructuralOCRWithContext(context.Background(), request)
@@ -6318,6 +6428,8 @@ func (c *Client) SmartStructuralOCR(request *SmartStructuralOCRRequest) (respons
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) SmartStructuralOCRWithContext(ctx context.Context, request *SmartStructuralOCRRequest) (response *SmartStructuralOCRResponse, err error) {
     if request == nil {
@@ -6368,6 +6480,7 @@ func NewSmartStructuralOCRV2Response() (response *SmartStructuralOCRV2Response) 
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) SmartStructuralOCRV2(request *SmartStructuralOCRV2Request) (response *SmartStructuralOCRV2Response, err error) {
     return c.SmartStructuralOCRV2WithContext(context.Background(), request)
@@ -6388,6 +6501,7 @@ func (c *Client) SmartStructuralOCRV2(request *SmartStructuralOCRV2Request) (res
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) SmartStructuralOCRV2WithContext(ctx context.Context, request *SmartStructuralOCRV2Request) (response *SmartStructuralOCRV2Response, err error) {
     if request == nil {
@@ -6445,6 +6559,8 @@ func NewTableOCRResponse() (response *TableOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TableOCR(request *TableOCRRequest) (response *TableOCRResponse, err error) {
     return c.TableOCRWithContext(context.Background(), request)
@@ -6472,6 +6588,8 @@ func (c *Client) TableOCR(request *TableOCRRequest) (response *TableOCRResponse,
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TableOCRWithContext(ctx context.Context, request *TableOCRRequest) (response *TableOCRResponse, err error) {
     if request == nil {
@@ -6522,6 +6640,8 @@ func NewTaxiInvoiceOCRResponse() (response *TaxiInvoiceOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TaxiInvoiceOCR(request *TaxiInvoiceOCRRequest) (response *TaxiInvoiceOCRResponse, err error) {
     return c.TaxiInvoiceOCRWithContext(context.Background(), request)
@@ -6542,6 +6662,8 @@ func (c *Client) TaxiInvoiceOCR(request *TaxiInvoiceOCRRequest) (response *TaxiI
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TaxiInvoiceOCRWithContext(ctx context.Context, request *TaxiInvoiceOCRRequest) (response *TaxiInvoiceOCRResponse, err error) {
     if request == nil {
@@ -6589,6 +6711,7 @@ func NewTextDetectResponse() (response *TextDetectResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TextDetect(request *TextDetectRequest) (response *TextDetectResponse, err error) {
     return c.TextDetectWithContext(context.Background(), request)
@@ -6606,6 +6729,7 @@ func (c *Client) TextDetect(request *TextDetectRequest) (response *TextDetectRes
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TextDetectWithContext(ctx context.Context, request *TextDetectRequest) (response *TextDetectResponse, err error) {
     if request == nil {
@@ -6656,6 +6780,8 @@ func NewTollInvoiceOCRResponse() (response *TollInvoiceOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TollInvoiceOCR(request *TollInvoiceOCRRequest) (response *TollInvoiceOCRResponse, err error) {
     return c.TollInvoiceOCRWithContext(context.Background(), request)
@@ -6676,6 +6802,8 @@ func (c *Client) TollInvoiceOCR(request *TollInvoiceOCRRequest) (response *TollI
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TollInvoiceOCRWithContext(ctx context.Context, request *TollInvoiceOCRRequest) (response *TollInvoiceOCRResponse, err error) {
     if request == nil {
@@ -6727,6 +6855,7 @@ func NewTrainTicketOCRResponse() (response *TrainTicketOCRResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TrainTicketOCR(request *TrainTicketOCRRequest) (response *TrainTicketOCRResponse, err error) {
     return c.TrainTicketOCRWithContext(context.Background(), request)
@@ -6748,6 +6877,7 @@ func (c *Client) TrainTicketOCR(request *TrainTicketOCRRequest) (response *Train
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) TrainTicketOCRWithContext(ctx context.Context, request *TrainTicketOCRRequest) (response *TrainTicketOCRResponse, err error) {
     if request == nil {
@@ -7044,6 +7174,8 @@ func NewVatRollInvoiceOCRResponse() (response *VatRollInvoiceOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VatRollInvoiceOCR(request *VatRollInvoiceOCRRequest) (response *VatRollInvoiceOCRResponse, err error) {
     return c.VatRollInvoiceOCRWithContext(context.Background(), request)
@@ -7064,6 +7196,8 @@ func (c *Client) VatRollInvoiceOCR(request *VatRollInvoiceOCRRequest) (response 
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VatRollInvoiceOCRWithContext(ctx context.Context, request *VatRollInvoiceOCRRequest) (response *VatRollInvoiceOCRResponse, err error) {
     if request == nil {
@@ -7131,6 +7265,8 @@ func NewVehicleLicenseOCRResponse() (response *VehicleLicenseOCRResponse) {
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VehicleLicenseOCR(request *VehicleLicenseOCRRequest) (response *VehicleLicenseOCRResponse, err error) {
     return c.VehicleLicenseOCRWithContext(context.Background(), request)
@@ -7168,6 +7304,8 @@ func (c *Client) VehicleLicenseOCR(request *VehicleLicenseOCRRequest) (response 
 //  INVALIDPARAMETER_ENGINEIMAGEDECODEFAILED = "InvalidParameter.EngineImageDecodeFailed"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VehicleLicenseOCRWithContext(ctx context.Context, request *VehicleLicenseOCRRequest) (response *VehicleLicenseOCRResponse, err error) {
     if request == nil {
@@ -7218,6 +7356,7 @@ func NewVehicleRegCertOCRResponse() (response *VehicleRegCertOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VehicleRegCertOCR(request *VehicleRegCertOCRRequest) (response *VehicleRegCertOCRResponse, err error) {
     return c.VehicleRegCertOCRWithContext(context.Background(), request)
@@ -7238,6 +7377,7 @@ func (c *Client) VehicleRegCertOCR(request *VehicleRegCertOCRRequest) (response 
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VehicleRegCertOCRWithContext(ctx context.Context, request *VehicleRegCertOCRRequest) (response *VehicleRegCertOCRResponse, err error) {
     if request == nil {
@@ -7349,6 +7489,8 @@ func NewVinOCRResponse() (response *VinOCRResponse) {
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VinOCR(request *VinOCRRequest) (response *VinOCRResponse, err error) {
     return c.VinOCRWithContext(context.Background(), request)
@@ -7366,6 +7508,8 @@ func (c *Client) VinOCR(request *VinOCRRequest) (response *VinOCRResponse, err e
 //  FAILEDOPERATION_UNOPENERROR = "FailedOperation.UnOpenError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUELIMIT = "InvalidParameterValue.InvalidParameterValueLimit"
 //  LIMITEXCEEDED_TOOLARGEFILEERROR = "LimitExceeded.TooLargeFileError"
+//  RESOURCEUNAVAILABLE_INARREARS = "ResourceUnavailable.InArrears"
+//  RESOURCEUNAVAILABLE_RESOURCEPACKAGERUNOUT = "ResourceUnavailable.ResourcePackageRunOut"
 //  RESOURCESSOLDOUT_CHARGESTATUSEXCEPTION = "ResourcesSoldOut.ChargeStatusException"
 func (c *Client) VinOCRWithContext(ctx context.Context, request *VinOCRRequest) (response *VinOCRResponse, err error) {
     if request == nil {

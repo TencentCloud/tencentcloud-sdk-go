@@ -178,7 +178,7 @@ type ActivityResItem struct {
 
 	// 时间点截图任务输出
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	SnapshotByTimeOffsetTask *MediaProcessTaskSampleSnapshotResult `json:"SnapshotByTimeOffsetTask,omitnil" name:"SnapshotByTimeOffsetTask"`
+	SnapshotByTimeOffsetTask *MediaProcessTaskSnapshotByTimeOffsetResult `json:"SnapshotByTimeOffsetTask,omitnil" name:"SnapshotByTimeOffsetTask"`
 
 	// 采样截图任务输出
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -472,6 +472,7 @@ type AiAnalysisTaskHighlightOutput struct {
 	HighlightSet []*MediaAiAnalysisHighlightItem `json:"HighlightSet,omitnil" name:"HighlightSet"`
 
 	// 精彩片段的存储位置。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil" name:"OutputStorage"`
 }
 
@@ -686,6 +687,8 @@ type AiRecognitionTaskAsrFullTextResultOutput struct {
 	SubtitlePath *string `json:"SubtitlePath,omitnil" name:"SubtitlePath"`
 
 	// 字幕文件存储位置。
+	//
+	// Deprecated: OutputStorage is deprecated.
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil" name:"OutputStorage"`
 }
 
@@ -999,9 +1002,6 @@ type AiRecognitionTaskTransTextResultOutput struct {
 
 	// 字幕文件地址。
 	SubtitlePath *string `json:"SubtitlePath,omitnil" name:"SubtitlePath"`
-
-	// 字幕文件存储位置。
-	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil" name:"OutputStorage"`
 }
 
 type AiRecognitionTaskTransTextSegmentItem struct {
@@ -1125,6 +1125,7 @@ type AiReviewPornOcrTaskOutput struct {
 
 type AiReviewPornTaskInput struct {
 	// 鉴黄模板 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Definition *uint64 `json:"Definition,omitnil" name:"Definition"`
 }
 
@@ -1762,7 +1763,7 @@ type AudioTemplateInfo struct {
 
 	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。
 	// 当取值为 0，表示音频码率和原始音频保持一致。
-	Bitrate *uint64 `json:"Bitrate,omitnil" name:"Bitrate"`
+	Bitrate *int64 `json:"Bitrate,omitnil" name:"Bitrate"`
 
 	// 音频流的采样率，可选值：
 	// <li>32000</li>
@@ -1802,7 +1803,7 @@ type AudioTemplateInfoForUpdate struct {
 
 	// 音频流的码率，取值范围：0 和 [26, 256]，单位：kbps。 当取值为 0，表示音频码率和原始音频保持一致。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Bitrate *uint64 `json:"Bitrate,omitnil" name:"Bitrate"`
+	Bitrate *int64 `json:"Bitrate,omitnil" name:"Bitrate"`
 
 	// 音频流的采样率，可选值：
 	// <li>32000</li>
@@ -1856,15 +1857,19 @@ type AwsS3FileUploadTrigger struct {
 
 type AwsSQS struct {
 	// SQS 队列区域。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SQSRegion *string `json:"SQSRegion,omitnil" name:"SQSRegion"`
 
 	// SQS 队列名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SQSQueueName *string `json:"SQSQueueName,omitnil" name:"SQSQueueName"`
 
 	// 读写SQS的秘钥id。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	S3SecretId *string `json:"S3SecretId,omitnil" name:"S3SecretId"`
 
 	// 读写SQS的秘钥key。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	S3SecretKey *string `json:"S3SecretKey,omitnil" name:"S3SecretKey"`
 }
 
@@ -2079,6 +2084,435 @@ type ColorEnhanceConfig struct {
 	// 默认值：weak。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil" name:"Type"`
+}
+
+type ComposeAudioItem struct {
+	// 元素对应媒体信息。
+	SourceMedia *ComposeSourceMedia `json:"SourceMedia,omitnil" name:"SourceMedia"`
+
+	// 元素在轨道时间轴上的时间信息，不填则紧跟上一个元素。
+	TrackTime *ComposeTrackTime `json:"TrackTime,omitnil" name:"TrackTime"`
+
+	// 对音频进行操作，如静音等。
+	AudioOperations []*ComposeAudioOperation `json:"AudioOperations,omitnil" name:"AudioOperations"`
+}
+
+type ComposeAudioOperation struct {
+	// 音频操作类型，取值有：
+	// <li>Volume：音量调节。</li>
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	//  当 Type = Volume 时有效。音量调节参数，取值范围: 0~5。 
+	// <li>0 表示静音。</li>
+	// <li>小于1 表示降低音量。</li>
+	// <li>1 表示不变。</li>
+	// <li>大于1表示升高音量。</li>
+	Volume *float64 `json:"Volume,omitnil" name:"Volume"`
+}
+
+type ComposeAudioStream struct {
+	// 音频流的编码方式，可选值：
+	// <li>AAC：AAC 编码（默认），用于容器为 mp4。</li>
+	// <li>MP3：mp3 编码，用于容器为 mp3。</li>
+	Codec *string `json:"Codec,omitnil" name:"Codec"`
+
+	// 音频流的采样率，单位：Hz，可选值：
+	// <li>16000（默认）</li>
+	// <li>32000</li>
+	// <li>44100</li>
+	// <li>48000</li>
+	SampleRate *int64 `json:"SampleRate,omitnil" name:"SampleRate"`
+
+	// 声道数，可选值：
+	// <li>1：单声道 。</li>
+	// <li>2：双声道（默认）。</li>
+	AudioChannel *int64 `json:"AudioChannel,omitnil" name:"AudioChannel"`
+}
+
+type ComposeCanvas struct {
+	// 背景颜色对应的 RGB 参考值，取值格式： #RRGGBB，如 #F0F0F0 。 
+	// 默认值：#000000（黑色）。
+	Color *string `json:"Color,omitnil" name:"Color"`
+
+	// 画布宽度，即输出视频的宽度，取值范围：0~ 3840，单位：px。  
+	// 默认值：0，表示和第一个视频宽度一致。
+	Width *int64 `json:"Width,omitnil" name:"Width"`
+
+	// 画布高度，即输出视频的高度，取值范围：0~ 3840，单位：px。  
+	// 默认值：0，表示和第一个视频高度一致。
+	Height *int64 `json:"Height,omitnil" name:"Height"`
+}
+
+type ComposeEmptyItem struct {
+	// 元素时长，时间支持：
+	// <li>以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒。</li>
+	Duration *string `json:"Duration,omitnil" name:"Duration"`
+}
+
+type ComposeImageItem struct {
+	// 元素对应媒体信息。
+	SourceMedia *ComposeSourceMedia `json:"SourceMedia,omitnil" name:"SourceMedia"`
+
+	// 元素在轨道时间轴上的时间信息，不填则紧跟上一个元素。
+	TrackTime *ComposeTrackTime `json:"TrackTime,omitnil" name:"TrackTime"`
+
+	// 元素中心点距离画布原点的水平位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示元素 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布宽度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示元素 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
+	// 默认：50%。
+	XPos *string `json:"XPos,omitnil" name:"XPos"`
+
+	// 元素中心点距离画布原点的垂直位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示元素 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示元素 YPos 单位为像素，如 100px 表示 YPos 为100像素。</li>
+	// 默认：50%。
+	YPos *string `json:"YPos,omitnil" name:"YPos"`
+
+	// 视频片段的宽度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示元素 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示元素 Width 单位为像素，如 100px 表示 Width 为100像素。</li>
+	// 为空（或0） 的场景：
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取源素材本身的 Width、Height。</li>
+	// <li>当 Width 为空，Height 非空，则 Width 按源素材比例缩放。</li>
+	// <li>当 Width 非空，Height 为空，则 Height 按源素材比例缩放。</li>
+	Width *string `json:"Width,omitnil" name:"Width"`
+
+	// 元素的高度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示元素 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示元素 Height 单位为像素，如 100px 表示 Height 为100像素。</li>
+	// 为空（或0） 的场景：
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取源素材本身的 Width、Height。</li>
+	// <li>当 Width 为空，Height 非空，则 Width 按源素材比例缩放。</li>
+	// <li>当 Width 非空，Height 为空，则 Height 按源素材比例缩放。</li>
+	Height *string `json:"Height,omitnil" name:"Height"`
+
+	// 对图像画面进行的操作，如图像旋转等。
+	ImageOperations []*ComposeImageOperation `json:"ImageOperations,omitnil" name:"ImageOperations"`
+}
+
+type ComposeImageOperation struct {
+	// 类型，取值有：
+	// <li>Rotate：图像旋转。</li>
+	// <li>Flip：图像翻转。</li>
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 当 Type = Rotate 时有效。图像以中心点为原点进行旋转的角度，取值范围0~360。
+	RotateAngle *float64 `json:"RotateAngle,omitnil" name:"RotateAngle"`
+
+	// 当 Type = Flip 时有效。图像翻转动作，取值有： 
+	// <li>Horizental：水平翻转，即左右镜像。</li>
+	// <li>Vertical：垂直翻转，即上下镜像。</li>
+	FlipType *string `json:"FlipType,omitnil" name:"FlipType"`
+}
+
+type ComposeMediaConfig struct {
+	// 合成目标视频信息。
+	TargetInfo *ComposeTargetInfo `json:"TargetInfo,omitnil" name:"TargetInfo"`
+
+	// 合成目标视频的画布信息。
+	Canvas *ComposeCanvas `json:"Canvas,omitnil" name:"Canvas"`
+
+	// 全局样式，和轨道 Tracks 配合使用，用于定于样式，如字幕样式。
+	Styles []*ComposeStyles `json:"Styles,omitnil" name:"Styles"`
+
+	// 用于描述合成视频的轨道列表，包括：视频、音频、图片、文字等元素组成的多个轨道信息。关于轨道和时间：
+	// <ul><li>轨道时间轴即为目标视频时间轴。</li><li>时间轴上相同时间点的不同轨道上的元素会重叠：</li><ul><li>视频、图片、文字：按轨道顺序进行图像的叠加，轨道顺序靠前的在上面。</li><li>音频 ：进行混音。</li></ul></ul>注意：同一轨道中各个元素（除字幕元素外）的轨道时间不能重叠。
+	Tracks []*ComposeMediaTrack `json:"Tracks,omitnil" name:"Tracks"`
+}
+
+type ComposeMediaItem struct {
+	// 元素类型。取值有：
+	// <li>Video：视频元素。</li>
+	// <li>Audio：音频元素。</li>
+	// <li>Image：图片元素。</li>
+	// <li>Transition：转场元素。</li>
+	// <li>Subtitle：字幕元素。</li>
+	// <li>Empty：空白元素。</li>
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 视频元素，当 Type = Video 时有效。
+	Video *ComposeVideoItem `json:"Video,omitnil" name:"Video"`
+
+	// 音频元素，当 Type = Audio 时有效。
+	Audio *ComposeAudioItem `json:"Audio,omitnil" name:"Audio"`
+
+	// 图片元素，当 Type = Image 时有效。
+	Image *ComposeImageItem `json:"Image,omitnil" name:"Image"`
+
+	// 转场元素，当 Type = Transition 时有效。
+	Transition *ComposeTransitionItem `json:"Transition,omitnil" name:"Transition"`
+
+	// 字幕元素，当 Type = Subtitle 是有效。
+	Subtitle *ComposeSubtitleItem `json:"Subtitle,omitnil" name:"Subtitle"`
+
+	// 空白元素，当 Type = Empty 时有效。用于时间轴的占位。
+	Empty *ComposeEmptyItem `json:"Empty,omitnil" name:"Empty"`
+}
+
+type ComposeMediaTrack struct {
+	// 轨道类型，取值有：<ul><li>Video ：视频轨道。视频轨道可由以下元素组成：</li><ul><li>Video 元素</li><li>Image 元素</li><li>Transition 元素</li><li>Empty 元素</li></ul><li>Audio ：音频轨道。音频轨道可由以下元素组成：</li><ul><li>Audio 元素</li><li>Transition 元素</li><li>Empty 元素</li></ul><li>Title：文字轨道。文字轨道可由以下元素组成：</li><ul><li>Subtitle 元素</li></ul>
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 轨道上的元素列表。
+	Items []*ComposeMediaItem `json:"Items,omitnil" name:"Items"`
+}
+
+type ComposeSourceMedia struct {
+	// 媒体对应的素材ID，即 FileInfos 列表中对应素材的 ID。
+	FileId *string `json:"FileId,omitnil" name:"FileId"`
+
+	// 媒体位于素材的起始时间，时间点支持 s、% 两种格式：
+	// <li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+	// <li>当字符串以 % 结尾，表示时间点为素材时长的百分比大小，如10%表示时间点为素材第10% 的时刻。</li>
+	// 默认：0s
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 媒体位于素材的结束时间，和 StartTime 构成媒体在源素材的时间区间，时间点支持 s、% 两种格式：
+	// <li>当字符串以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+	// <li>当字符串以 % 结尾，表示时间点为素材时长的百分比大小，如10%表示时间点为素材第10%的时间。</li>
+	// 默认：如果对应轨道时长有设置，则默认轨道时长，否则为素材时长，无时长的素材默认为 1 秒。
+	// 注意：至少需要大于 StartTime 0.02 秒。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+}
+
+type ComposeStyles struct {
+	// 样式 Id，用于和轨道元素中的样式关联。
+	// 注意：允许字母、数字、-、_ 组合，最长 32 字符。
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 样式类型，取值有：
+	// <li>Subtitle：字幕样式。</li>
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 字幕样式信息，当 Type = Subtitle 时有效。
+	Subtitle *ComposeSubtitleStyle `json:"Subtitle,omitnil" name:"Subtitle"`
+}
+
+type ComposeSubtitleItem struct {
+	// 字幕样式，Styles 列表中对应的 Subtitle样式的 ID。
+	StyleId *string `json:"StyleId,omitnil" name:"StyleId"`
+
+	// 字幕文本。
+	Text *string `json:"Text,omitnil" name:"Text"`
+
+	// 元素在轨道时间轴上的时间信息，不填则紧跟上一个元素。	
+	TrackTime *ComposeTrackTime `json:"TrackTime,omitnil" name:"TrackTime"`
+}
+
+type ComposeSubtitleStyle struct {
+	// 字幕高度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示为画布高度的百分比大小，如 10% 表示为画布高度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+	// 默认为 FontSize 大小。
+	Height *string `json:"Height,omitnil" name:"Height"`
+
+	// 字幕距离下边框距离，支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示为画布高度的百分比大小，如 10% 表示为画布高度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+	// 默认：0px
+	MarginBottom *string `json:"MarginBottom,omitnil" name:"MarginBottom"`
+
+	// 字体类型，支持：
+	// <li>SimHei：黑体（默认）。</li>
+	// <li>SimSun：宋体。</li>
+	FontType *string `json:"FontType,omitnil" name:"FontType"`
+
+	// 字体大小，支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示为画布高度的百分比大小，如 10% 表示为画布高度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+	// 默认：2%
+	FontSize *string `json:"FontSize,omitnil" name:"FontSize"`
+
+	// 是否使用粗体，和字体相关，可选值：
+	// <li>0：否（默认）。</li>
+	// <li>1：是。</li>
+	FontBold *int64 `json:"FontBold,omitnil" name:"FontBold"`
+
+	// 是否使用斜体，和字体相关，可选值：
+	// <li>0：否（默认）。</li>
+	// <li>1：是。</li>
+	FontItalic *int64 `json:"FontItalic,omitnil" name:"FontItalic"`
+
+	// 字体颜色，格式：#RRGGBBAA。  
+	// 默认值：0x000000FF（黑色）。  
+	// 注意：其中 AA 部分指的是透明度，为可选。
+	FontColor *string `json:"FontColor,omitnil" name:"FontColor"`
+
+	// 文字对齐方式：
+	// <li>Center：居中（默认）。</li>
+	// <li>Left：左对齐。</li>
+	// <li>Right：右对齐。</li>
+	FontAlign *string `json:"FontAlign,omitnil" name:"FontAlign"`
+
+	// 用于字幕对齐留白：
+	// <li>FontAlign=Left 时，表示距离左边距离。</li>
+	// <li>FontAlign=Right时，表示距离右边距离。</li>
+	// 支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示为画布宽度的百分比大小，如 10% 表示为画布宽度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+	FontAlignMargin *string `json:"FontAlignMargin,omitnil" name:"FontAlignMargin"`
+
+	// 字体边框宽度，支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示为画布高度的百分比大小，如 10% 表示为画布高度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示单位为像素，如 100px 表示为100像素。</li>
+	// 默认： 0，表示不需要边框。
+	BorderWidth *string `json:"BorderWidth,omitnil" name:"BorderWidth"`
+
+	// 边框颜色，当 BorderWidth 不为 0 时生效，其值格式和 FontColor 一致。
+	BorderColor *string `json:"BorderColor,omitnil" name:"BorderColor"`
+
+	// 文字底色，其值格式和 FontColor 一致。  
+	// 默认为空， 表示不使用底色。
+	BottomColor *string `json:"BottomColor,omitnil" name:"BottomColor"`
+}
+
+type ComposeTargetInfo struct {
+	// 封装容器格式，可选值：
+	// <li>mp4：视频文件（默认）。</li>
+	// <li>mp3：纯音频文件。</li>
+	Container *string `json:"Container,omitnil" name:"Container"`
+
+	// 是否去除视频数据，可选值：
+	// <li>0：保留（默认）。</li>
+	// <li>1：去除。</li>
+	RemoveVideo *int64 `json:"RemoveVideo,omitnil" name:"RemoveVideo"`
+
+	// 是否去除音频数据，可选值：
+	// <li>0：保留（默认）。</li>
+	// <li>1：去除。</li>
+	RemoveAudio *int64 `json:"RemoveAudio,omitnil" name:"RemoveAudio"`
+
+	// 输出视频流信息。
+	VideoStream *ComposeVideoStream `json:"VideoStream,omitnil" name:"VideoStream"`
+
+	// 输出音频流信息。
+	AudioStream *ComposeAudioStream `json:"AudioStream,omitnil" name:"AudioStream"`
+}
+
+type ComposeTrackTime struct {
+	// 元素在轨道上的起始时间，时间点支持：
+	// <li>以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+	// 注意：不填则默认为前一个元素的结束时间，此时可以通过 ComposeEmptyItem 元素来进行占位，实现轨道起始时间设置。
+	Start *string `json:"Start,omitnil" name:"Start"`
+
+	// 元素时长，时间支持：
+	// <li>以 s 结尾，表示时间点单位为秒，如 3.5s 表示时间点为第3.5秒；</li>
+	// 默认：取对应 ComposeSourceMedia 媒体的有效时长（即 EndTime-StartTime），没有 ComposeSourceMedia 则默认为 1 秒。
+	Duration *string `json:"Duration,omitnil" name:"Duration"`
+}
+
+type ComposeTransitionItem struct {
+	// 元素时长，时间支持：<li>以 s 结尾，表示时间点单位为秒，如 3s 表示时间点为第3秒。</li>
+	// 默认：1s
+	// 注意：
+	// <li>必须是整数s，否则向下取整。</li>
+	// <li>转场 前后必须紧挨着两个不为 Empty 的元素。</li>
+	// <li>转场 Duration 必须小于前一个元素的 Duration，同时必须小于后一个元素的 Duration。</li>
+	// <li>进行转场处理的两个元素，第二个元素在轨道上的起始时间会自动调整为前一个元素的结束时间减去转场的 Duration。</li>
+	Duration *string `json:"Duration,omitnil" name:"Duration"`
+
+	// 转场操作列表。
+	// 默认：淡入淡出。
+	// 注意：图像转场操作和音频转场操作各自最多支持一个。
+	Transitions []*ComposeTransitionOperation `json:"Transitions,omitnil" name:"Transitions"`
+}
+
+type ComposeTransitionOperation struct {
+	// 转场类型。
+	// 
+	// 图像的转场操作，用于两个视频片段图像间的转场处理：
+	// <li>ImageFadeInFadeOut：图像淡入淡出。</li>
+	// <li>BowTieHorizontal：水平蝴蝶结。</li>
+	// <li>BowTieVertical：垂直蝴蝶结。</li>
+	// <li>ButterflyWaveScrawler：晃动。</li>
+	// <li>Cannabisleaf：枫叶。</li>
+	// <li>Circle：弧形收放。</li>
+	// <li>CircleCrop：圆环聚拢。</li>
+	// <li>Circleopen：椭圆聚拢。</li>
+	// <li>Crosswarp：横向翘曲。</li>
+	// <li>Cube：立方体。</li>
+	// <li>DoomScreenTransition：幕布。</li>
+	// <li>Doorway：门廊。</li>
+	// <li>Dreamy：波浪。</li>
+	// <li>DreamyZoom：水平聚拢。</li>
+	// <li>FilmBurn：火烧云。</li>
+	// <li>GlitchMemories：抖动。</li>
+	// <li>Heart：心形。</li>
+	// <li>InvertedPageCurl：翻页。</li>
+	// <li>Luma：腐蚀。</li>
+	// <li>Mosaic：九宫格。</li>
+	// <li>Pinwheel：风车。</li>
+	// <li>PolarFunction：椭圆扩散。</li>
+	// <li>PolkaDotsCurtain：弧形扩散。</li>
+	// <li>Radial：雷达扫描。</li>
+	// <li>RotateScaleFade：上下收放。</li>
+	// <li>Squeeze：上下聚拢。</li>
+	// <li>Swap：放大切换。</li>
+	// <li>Swirl：螺旋。</li>
+	// <li>UndulatingBurnOutSwirl：水流蔓延。</li>
+	// <li>Windowblinds：百叶窗。</li>
+	// <li>WipeDown：向下收起。</li>
+	// <li>WipeLeft：向左收起。</li>
+	// <li>WipeRight：向右收起。</li>
+	// <li>WipeUp：向上收起。</li>
+	// <li>ZoomInCircles：水波纹。</li> 
+	// 音频的转场操作，用于两个音频片段间的转场处理：
+	// <li>AudioFadeInFadeOut：声音淡入淡出。</li>
+	Type *string `json:"Type,omitnil" name:"Type"`
+}
+
+type ComposeVideoItem struct {
+	// 元素对应媒体信息。
+	SourceMedia *ComposeSourceMedia `json:"SourceMedia,omitnil" name:"SourceMedia"`
+
+	// 元素在轨道时间轴上的时间信息，不填则紧跟上一个元素。
+	TrackTime *ComposeTrackTime `json:"TrackTime,omitnil" name:"TrackTime"`
+
+	// 元素中心点距离画布原点的水平位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示元素 XPos 为画布宽度指定百分比的位置，如 10% 表示 XPos 为画布宽度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示元素 XPos 单位为像素，如 100px 表示 XPos 为100像素。</li>
+	// 默认：50%。
+	XPos *string `json:"XPos,omitnil" name:"XPos"`
+
+	// 元素中心点距离画布原点的垂直位置。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示元素 YPos 为画布高度指定百分比的位置，如 10% 表示 YPos 为画布高度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示元素 YPos 单位为像素，如 100px 表示 YPos 为100像素。</li>
+	// 默认：50%。
+	YPos *string `json:"YPos,omitnil" name:"YPos"`
+
+	// 视频片段的宽度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示元素 Width 为画布宽度的百分比大小，如 10% 表示 Width 为画布宽度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示元素 Width 单位为像素，如 100px 表示 Width 为100像素。</li>
+	// 为空（或0） 的场景：
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取源素材本身的 Width、Height。</li>
+	// <li>当 Width 为空，Height 非空，则 Width 按源素材比例缩放。</li>
+	// <li>当 Width 非空，Height 为空，则 Height 按源素材比例缩放。</li>
+	Width *string `json:"Width,omitnil" name:"Width"`
+
+	// 元素的高度。支持 %、px 两种格式：
+	// <li>当字符串以 % 结尾，表示元素 Height 为画布高度的百分比大小，如 10% 表示 Height 为画布高度的 10%。</li>
+	// <li>当字符串以 px 结尾，表示元素 Height 单位为像素，如 100px 表示 Height 为100像素。</li>
+	// 为空（或0） 的场景：
+	// <li>当 Width、Height 均为空，则 Width 和 Height 取源素材本身的 Width、Height。</li>
+	// <li>当 Width 为空，Height 非空，则 Width 按源素材比例缩放。</li>
+	// <li>当 Width 非空，Height 为空，则 Height 按源素材比例缩放。</li>
+	Height *string `json:"Height,omitnil" name:"Height"`
+
+	// 对图像画面进行的操作，如图像旋转等。
+	ImageOperations []*ComposeImageOperation `json:"ImageOperations,omitnil" name:"ImageOperations"`
+
+	// 对音频进行操作，如静音等。
+	AudioOperations []*ComposeAudioOperation `json:"AudioOperations,omitnil" name:"AudioOperations"`
+}
+
+type ComposeVideoStream struct {
+	// 视频流的编码方式，可选值：
+	// <li>H.264：H.264 编码（默认）。</li>
+	Codec *string `json:"Codec,omitnil" name:"Codec"`
+
+	// 视频帧率，取值范围：[0, 60]，单位：Hz。  
+	// 默认值：0，表示和第一个视频帧率一致。
+	Fps *int64 `json:"Fps,omitnil" name:"Fps"`
 }
 
 type ContentReviewTemplateItem struct {
@@ -7568,6 +8002,10 @@ type DescribeTaskDetailResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleTask *ScheduleTask `json:"ScheduleTask,omitnil" name:"ScheduleTask"`
 
+	// 直播编排处理任务信息，仅当 TaskType 为 LiveScheduleTask，该字段有值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiveScheduleTask *LiveScheduleTask `json:"LiveScheduleTask,omitnil" name:"LiveScheduleTask"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -8222,18 +8660,26 @@ type EditMediaFileInfo struct {
 	// 视频的输入信息。
 	InputInfo *MediaInputInfo `json:"InputInfo,omitnil" name:"InputInfo"`
 
-	// 视频剪辑的起始时间偏移，单位：秒。
+	// 【剪辑】任务生效，视频剪辑的起始时间偏移，单位：秒。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil" name:"StartTimeOffset"`
 
-	// 视频剪辑的结束时间偏移，单位：秒。
+	// 【剪辑】任务生效，视频剪辑的结束时间偏移，单位：秒。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil" name:"EndTimeOffset"`
+
+	// 【合成】任务必选，用于轨道元素中媒体关联源素材 ID。
+	// 
+	// 注意：允许字母、数字、-、_ ，最长 32 字符
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
 }
 
 type EditMediaOutputConfig struct {
 	// 封装格式，可选值：mp4、hls、mov、flv、avi。默认是 mp4。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Container *string `json:"Container,omitnil" name:"Container"`
 
 	// 剪辑模式，可选值 normal、fast。默认是精确剪辑 normal
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
@@ -8246,10 +8692,17 @@ type EditMediaRequestParams struct {
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil" name:"OutputStorage"`
 
 	// 媒体处理输出文件的目标路径。
+	// 
+	// 注意：对于复杂合成任务，路径中的文件名只可为数字、字母、-、_ 的组合，最长 64 个字符。
 	OutputObjectPath *string `json:"OutputObjectPath,omitnil" name:"OutputObjectPath"`
 
-	// 编辑后生成的文件配置。
+	// 【剪辑】任务生成的文件配置。
 	OutputConfig *EditMediaOutputConfig `json:"OutputConfig,omitnil" name:"OutputConfig"`
+
+	// 【合成】任务配置。
+	// 
+	// 注意：当其不为空时，认为是合成任务，否则按剪辑任务处理。
+	ComposeConfig *ComposeMediaConfig `json:"ComposeConfig,omitnil" name:"ComposeConfig"`
 
 	// 任务的事件通知信息，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil" name:"TaskNotifyConfig"`
@@ -8274,10 +8727,17 @@ type EditMediaRequest struct {
 	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil" name:"OutputStorage"`
 
 	// 媒体处理输出文件的目标路径。
+	// 
+	// 注意：对于复杂合成任务，路径中的文件名只可为数字、字母、-、_ 的组合，最长 64 个字符。
 	OutputObjectPath *string `json:"OutputObjectPath,omitnil" name:"OutputObjectPath"`
 
-	// 编辑后生成的文件配置。
+	// 【剪辑】任务生成的文件配置。
 	OutputConfig *EditMediaOutputConfig `json:"OutputConfig,omitnil" name:"OutputConfig"`
+
+	// 【合成】任务配置。
+	// 
+	// 注意：当其不为空时，认为是合成任务，否则按剪辑任务处理。
+	ComposeConfig *ComposeMediaConfig `json:"ComposeConfig,omitnil" name:"ComposeConfig"`
 
 	// 任务的事件通知信息，不填代表不获取事件通知。
 	TaskNotifyConfig *TaskNotifyConfig `json:"TaskNotifyConfig,omitnil" name:"TaskNotifyConfig"`
@@ -8308,6 +8768,7 @@ func (r *EditMediaRequest) FromJsonString(s string) error {
 	delete(f, "OutputStorage")
 	delete(f, "OutputObjectPath")
 	delete(f, "OutputConfig")
+	delete(f, "ComposeConfig")
 	delete(f, "TaskNotifyConfig")
 	delete(f, "TasksPriority")
 	delete(f, "SessionId")
@@ -8936,9 +9397,11 @@ type HdrConfig struct {
 
 type HeadTailParameter struct {
 	// 片头列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	HeadSet []*MediaInputInfo `json:"HeadSet,omitnil" name:"HeadSet"`
 
 	// 片尾列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	TailSet []*MediaInputInfo `json:"TailSet,omitnil" name:"TailSet"`
 }
 
@@ -9126,6 +9589,129 @@ type InputAddress struct {
 
 	// 输入地址的端口。
 	Port *int64 `json:"Port,omitnil" name:"Port"`
+}
+
+type LiveActivityResItem struct {
+	// 直播录制任务输出
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiveRecordTask *LiveScheduleLiveRecordTaskResult `json:"LiveRecordTask,omitnil" name:"LiveRecordTask"`
+}
+
+type LiveActivityResult struct {
+	// 原子任务类型。
+	// <li>LiveRecord：直播录制。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActivityType *string `json:"ActivityType,omitnil" name:"ActivityType"`
+
+	// 原子任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiveActivityResItem *LiveActivityResItem `json:"LiveActivityResItem,omitnil" name:"LiveActivityResItem"`
+}
+
+type LiveRecordFile struct {
+	// 直播录制文件地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil" name:"Url"`
+
+	// 直播录制文件大小
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Size *int64 `json:"Size,omitnil" name:"Size"`
+
+	// 直播录制文件时长
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
+
+	// 直播录制文件开始时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 直播录制文件结束时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+}
+
+type LiveRecordResult struct {
+	// 直播录制文件的目标存储。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil" name:"OutputStorage"`
+
+	// 直播录制文件列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileList []*LiveRecordFile `json:"FileList,omitnil" name:"FileList"`
+}
+
+type LiveRecordTaskInput struct {
+	// 直播录制模板 ID。
+	Definition *int64 `json:"Definition,omitnil" name:"Definition"`
+
+	// 直播录制后文件的目标存储，不填则继承上层的 OutputStorage 值。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil" name:"OutputStorage"`
+
+	// 直播录制后文件的输出路径。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OutputObjectPath *string `json:"OutputObjectPath,omitnil" name:"OutputObjectPath"`
+}
+
+type LiveScheduleLiveRecordTaskResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCodeExt *string `json:"ErrCodeExt,omitnil" name:"ErrCodeExt"`
+
+	// 错误码，0 表示成功，其他值表示失败（该字段已不推荐使用，建议使用新的错误码字段 ErrCodeExt）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *int64 `json:"ErrCode,omitnil" name:"ErrCode"`
+
+	// 错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 直播录制任务的输入。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Input *LiveRecordTaskInput `json:"Input,omitnil" name:"Input"`
+
+	// 直播录制任务的输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *LiveRecordResult `json:"Output,omitnil" name:"Output"`
+
+	// 任务开始执行的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginProcessTime *string `json:"BeginProcessTime,omitnil" name:"BeginProcessTime"`
+
+	// 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FinishTime *string `json:"FinishTime,omitnil" name:"FinishTime"`
+}
+
+type LiveScheduleTask struct {
+	// 直播编排任务 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 任务流状态，取值：
+	// <li>PROCESSING：处理中；</li>
+	// <li>FINISH：已完成。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrCode *int64 `json:"ErrCode,omitnil" name:"ErrCode"`
+
+	// 源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 直播流 URL。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Url *string `json:"Url,omitnil" name:"Url"`
+
+	// 直播编排任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LiveActivityResultSet []*LiveActivityResult `json:"LiveActivityResultSet,omitnil" name:"LiveActivityResultSet"`
 }
 
 type LiveStreamAiAnalysisResultInfo struct {
@@ -12784,6 +13370,13 @@ type ProcessLiveStreamRequestParams struct {
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitnil" name:"SessionContext"`
+
+	// 直播编排ID。
+	// 注意1：对于OutputStorage、OutputDir参数：
+	// <li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
+	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若对直播流发起处理（ProcessLiveStream）有输出，将覆盖原有编排的默认输出。</li>
+	// 注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessLiveStream）有设置，将覆盖原有编排的默认回调。
+	ScheduleId *int64 `json:"ScheduleId,omitnil" name:"ScheduleId"`
 }
 
 type ProcessLiveStreamRequest struct {
@@ -12818,6 +13411,13 @@ type ProcessLiveStreamRequest struct {
 
 	// 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
 	SessionContext *string `json:"SessionContext,omitnil" name:"SessionContext"`
+
+	// 直播编排ID。
+	// 注意1：对于OutputStorage、OutputDir参数：
+	// <li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
+	// <li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若对直播流发起处理（ProcessLiveStream）有输出，将覆盖原有编排的默认输出。</li>
+	// 注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessLiveStream）有设置，将覆盖原有编排的默认回调。
+	ScheduleId *int64 `json:"ScheduleId,omitnil" name:"ScheduleId"`
 }
 
 func (r *ProcessLiveStreamRequest) ToJsonString() string {
@@ -12842,6 +13442,7 @@ func (r *ProcessLiveStreamRequest) FromJsonString(s string) error {
 	delete(f, "AiQualityControlTask")
 	delete(f, "SessionId")
 	delete(f, "SessionContext")
+	delete(f, "ScheduleId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ProcessLiveStreamRequest has unknown keys!", "")
 	}
@@ -13772,6 +14373,12 @@ type SchedulesInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScheduleName *string `json:"ScheduleName,omitnil" name:"ScheduleName"`
 
+	// 编排类型，可选值：
+	//  <li>Preset：系统预置编排；</li>
+	// <li>Custom：用户自定义编排。</li>
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
 	// 编排状态，取值范围：
 	// Enabled：已启用，
 	// Disabled：已禁用。
@@ -14169,7 +14776,7 @@ type TEHDConfig struct {
 
 	// 视频码率上限，当 Type 指定了极速高清类型时有效。
 	// 不填或填0表示不设视频码率上限。
-	MaxVideoBitrate *uint64 `json:"MaxVideoBitrate,omitnil" name:"MaxVideoBitrate"`
+	MaxVideoBitrate *int64 `json:"MaxVideoBitrate,omitnil" name:"MaxVideoBitrate"`
 }
 
 type TEHDConfigForUpdate struct {
@@ -14182,7 +14789,7 @@ type TEHDConfigForUpdate struct {
 
 	// 视频码率上限，不填代表不修改。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	MaxVideoBitrate *uint64 `json:"MaxVideoBitrate,omitnil" name:"MaxVideoBitrate"`
+	MaxVideoBitrate *int64 `json:"MaxVideoBitrate,omitnil" name:"MaxVideoBitrate"`
 }
 
 type TagConfigureInfo struct {
@@ -14200,6 +14807,21 @@ type TagConfigureInfoForUpdate struct {
 }
 
 type TaskNotifyConfig struct {
+	// 通知类型，可选值：
+	// <li>CMQ：已下线，建议切换到TDMQ-CMQ</li>
+	// <li>TDMQ-CMQ：消息队列</li>
+	// <li>URL：指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同解析事件通知接口的输出参数 </li>
+	// <li>SCF：不推荐使用，需要在控制台额外配置SCF</li>
+	// <li>AWS-SQS：AWS 队列，只适用于 AWS 任务，且要求同区域</li>
+	// <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
+	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
+
+	// 工作流通知的模式，可取值有 Finish 和 Change，不填代表 Finish。
+	NotifyMode *string `json:"NotifyMode,omitnil" name:"NotifyMode"`
+
+	// HTTP回调地址，NotifyType为URL时必填。
+	NotifyUrl *string `json:"NotifyUrl,omitnil" name:"NotifyUrl"`
+
 	// CMQ或TDMQ-CMQ 的模型，有 Queue 和 Topic 两种。
 	CmqModel *string `json:"CmqModel,omitnil" name:"CmqModel"`
 
@@ -14211,21 +14833,6 @@ type TaskNotifyConfig struct {
 
 	// 当模型为 Queue 时有效，表示接收事件通知的 CMQ 或 TDMQ-CMQ 的队列名。
 	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
-
-	// 工作流通知的模式，可取值有 Finish 和 Change，不填代表 Finish。
-	NotifyMode *string `json:"NotifyMode,omitnil" name:"NotifyMode"`
-
-	// 通知类型，可选值：
-	// <li>CMQ：已下线，建议切换到TDMQ-CMQ</li>
-	// <li>TDMQ-CMQ：消息队列</li>
-	// <li>URL：指定URL时HTTP回调推送到 NotifyUrl 指定的地址，回调协议http+json，包体内容同解析事件通知接口的输出参数 </li>
-	// <li>SCF：不推荐使用，需要在控制台额外配置SCF</li>
-	// <li>AWS-SQS：AWS 队列，只适用于 AWS 任务，且要求同区域</li>
-	// <font color="red"> 注：不填或为空时默认 CMQ，如需采用其他类型需填写对应类型值。 </font>
-	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
-
-	// HTTP回调地址，NotifyType为URL时必填。
-	NotifyUrl *string `json:"NotifyUrl,omitnil" name:"NotifyUrl"`
 
 	// AWS SQS 回调，NotifyType为 AWS-SQS 时必填。
 	// 
@@ -14735,11 +15342,11 @@ type VideoTemplateInfo struct {
 	// 视频帧率，取值范围：[0, 120]，单位：Hz。
 	// 当取值为 0，表示帧率和原始视频保持一致。
 	// 注意：自适应码率时取值范围是 [0, 60]
-	Fps *uint64 `json:"Fps,omitnil" name:"Fps"`
+	Fps *int64 `json:"Fps,omitnil" name:"Fps"`
 
 	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
 	// 当取值为 0，表示视频码率和原始视频保持一致。
-	Bitrate *uint64 `json:"Bitrate,omitnil" name:"Bitrate"`
+	Bitrate *int64 `json:"Bitrate,omitnil" name:"Bitrate"`
 
 	// 分辨率自适应，可选值：
 	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
@@ -14796,12 +15403,12 @@ type VideoTemplateInfoForUpdate struct {
 	// 视频帧率，取值范围：[0, 120]，单位：Hz。
 	// 当取值为 0，表示帧率和原始视频保持一致。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Fps *uint64 `json:"Fps,omitnil" name:"Fps"`
+	Fps *int64 `json:"Fps,omitnil" name:"Fps"`
 
 	// 视频流的码率，取值范围：0 和 [128, 35000]，单位：kbps。
 	// 当取值为 0，表示视频码率和原始视频保持一致。
 	// 注意：此字段可能返回 null，表示取不到有效值。
-	Bitrate *uint64 `json:"Bitrate,omitnil" name:"Bitrate"`
+	Bitrate *int64 `json:"Bitrate,omitnil" name:"Bitrate"`
 
 	// 分辨率自适应，可选值：
 	// <li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>

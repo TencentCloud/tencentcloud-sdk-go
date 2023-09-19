@@ -6411,6 +6411,90 @@ func (r *DescribeRocketMQNamespacesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRocketMQPublicAccessPointRequestParams struct {
+	// 集群ID，当前只支持专享集群
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type DescribeRocketMQPublicAccessPointRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID，当前只支持专享集群
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *DescribeRocketMQPublicAccessPointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQPublicAccessPointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQPublicAccessPointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRocketMQPublicAccessPointResponseParams struct {
+	// 公网接入点状态：
+	// 0， 已开启
+	// 1， 已关闭
+	// 2，开启中
+	// 3，关闭中
+	// 4，修改中
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 支付状态：
+	// 0, 未知
+	// 1，正常
+	// 2，欠费
+	PayStatus *int64 `json:"PayStatus,omitnil" name:"PayStatus"`
+
+	// 接入点地址
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessUrl *string `json:"AccessUrl,omitnil" name:"AccessUrl"`
+
+	// 安全访问规则列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Rules []*PublicAccessRule `json:"Rules,omitnil" name:"Rules"`
+
+	// 带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bandwidth *int64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+
+	// 付费模式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRocketMQPublicAccessPointResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRocketMQPublicAccessPointResponseParams `json:"Response"`
+}
+
+func (r *DescribeRocketMQPublicAccessPointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRocketMQPublicAccessPointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRocketMQTopicMsgsRequestParams struct {
 	// 集群 ID
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
@@ -7939,6 +8023,98 @@ func (r *ModifyEnvironmentRoleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyPublicNetworkAccessPointRequestParams struct {
+	// 集群名字
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 是否开启
+	PublicNetworkAccessPointStatus *bool `json:"PublicNetworkAccessPointStatus,omitnil" name:"PublicNetworkAccessPointStatus"`
+
+	// 必填，公网控制台的开关/Vpc控制台的开关，示例值，Public/Vpc
+	SwitchOwner *string `json:"SwitchOwner,omitnil" name:"SwitchOwner"`
+
+	// Vpc
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 子网
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+
+	// 子网下面指定ip作为vpc接入点
+	SelectIp *string `json:"SelectIp,omitnil" name:"SelectIp"`
+}
+
+type ModifyPublicNetworkAccessPointRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群名字
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 是否开启
+	PublicNetworkAccessPointStatus *bool `json:"PublicNetworkAccessPointStatus,omitnil" name:"PublicNetworkAccessPointStatus"`
+
+	// 必填，公网控制台的开关/Vpc控制台的开关，示例值，Public/Vpc
+	SwitchOwner *string `json:"SwitchOwner,omitnil" name:"SwitchOwner"`
+
+	// Vpc
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 子网
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+
+	// 子网下面指定ip作为vpc接入点
+	SelectIp *string `json:"SelectIp,omitnil" name:"SelectIp"`
+}
+
+func (r *ModifyPublicNetworkAccessPointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPublicNetworkAccessPointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "PublicNetworkAccessPointStatus")
+	delete(f, "SwitchOwner")
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	delete(f, "SelectIp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyPublicNetworkAccessPointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyPublicNetworkAccessPointResponseParams struct {
+	// 修改结果
+	ModifyResult *string `json:"ModifyResult,omitnil" name:"ModifyResult"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyPublicNetworkAccessPointResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyPublicNetworkAccessPointResponseParams `json:"Response"`
+}
+
+func (r *ModifyPublicNetworkAccessPointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyPublicNetworkAccessPointResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyRabbitMQUserRequestParams struct {
 	// 集群实例Id
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -8863,6 +9039,18 @@ type PrometheusEndpointInfo struct {
 	// vpc信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	VpcEndpointInfo *VpcEndpointInfo `json:"VpcEndpointInfo,omitnil" name:"VpcEndpointInfo"`
+}
+
+type PublicAccessRule struct {
+	// ip网段信息
+	IpRule *string `json:"IpRule,omitnil" name:"IpRule"`
+
+	// 允许或者拒绝
+	Allow *bool `json:"Allow,omitnil" name:"Allow"`
+
+	// 备注信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
 }
 
 // Predefined struct for user
@@ -10655,6 +10843,88 @@ func (r *SendRocketMQMessageResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SendRocketMQMessageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetRocketMQPublicAccessPointRequestParams struct {
+	// 集群ID，当前只支持专享集群
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 开启或关闭访问
+	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
+
+	// 带宽大小，开启或者调整公网时必须指定，Mbps为单位
+	Bandwidth *uint64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+
+	// 付费模式，开启公网时必须指定，0为按小时计费，1为包年包月，当前只支持按小时计费
+	PayMode *uint64 `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 公网访问安全规则列表，Enabled为true时必须传入
+	Rules []*PublicAccessRule `json:"Rules,omitnil" name:"Rules"`
+}
+
+type SetRocketMQPublicAccessPointRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群ID，当前只支持专享集群
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 开启或关闭访问
+	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
+
+	// 带宽大小，开启或者调整公网时必须指定，Mbps为单位
+	Bandwidth *uint64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+
+	// 付费模式，开启公网时必须指定，0为按小时计费，1为包年包月，当前只支持按小时计费
+	PayMode *uint64 `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 公网访问安全规则列表，Enabled为true时必须传入
+	Rules []*PublicAccessRule `json:"Rules,omitnil" name:"Rules"`
+}
+
+func (r *SetRocketMQPublicAccessPointRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetRocketMQPublicAccessPointRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Enabled")
+	delete(f, "Bandwidth")
+	delete(f, "PayMode")
+	delete(f, "Rules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SetRocketMQPublicAccessPointRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SetRocketMQPublicAccessPointResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type SetRocketMQPublicAccessPointResponse struct {
+	*tchttp.BaseResponse
+	Response *SetRocketMQPublicAccessPointResponseParams `json:"Response"`
+}
+
+func (r *SetRocketMQPublicAccessPointResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SetRocketMQPublicAccessPointResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

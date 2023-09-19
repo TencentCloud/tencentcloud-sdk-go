@@ -643,6 +643,7 @@ func NewCreateDisksResponse() (response *CreateDisksResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
 //  INVALIDPARAMETER_DISKCONFIGNOTSUPPORTED = "InvalidParameter.DiskConfigNotSupported"
 //  INVALIDPARAMETER_PROJECTIDNOTEXIST = "InvalidParameter.ProjectIdNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -675,6 +676,7 @@ func (c *Client) CreateDisks(request *CreateDisksRequest) (response *CreateDisks
 // 可能返回的错误码:
 //  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INVALIDACCOUNT_INSUFFICIENTBALANCE = "InvalidAccount.InsufficientBalance"
+//  INVALIDINSTANCEID_NOTFOUND = "InvalidInstanceId.NotFound"
 //  INVALIDPARAMETER_DISKCONFIGNOTSUPPORTED = "InvalidParameter.DiskConfigNotSupported"
 //  INVALIDPARAMETER_PROJECTIDNOTEXIST = "InvalidParameter.ProjectIdNotExist"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

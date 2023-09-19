@@ -70,6 +70,7 @@ func NewAttachPluginResponse() (response *AttachPluginResponse) {
 //  FAILEDOPERATION_INVALIDINPUTJSON = "FailedOperation.InvalidInputJSON"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
+//  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INTERNALERROR_RETURNABLEEXCEPTION = "InternalError.ReturnableException"
 //  INVALIDPARAMETER_DUPLICATEPLUGINCONFIG = "InvalidParameter.DuplicatePluginConfig"
@@ -99,6 +100,7 @@ func (c *Client) AttachPlugin(request *AttachPluginRequest) (response *AttachPlu
 //  FAILEDOPERATION_INVALIDINPUTJSON = "FailedOperation.InvalidInputJSON"
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
+//  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INTERNALERROR_RETURNABLEEXCEPTION = "InternalError.ReturnableException"
 //  INVALIDPARAMETER_DUPLICATEPLUGINCONFIG = "InvalidParameter.DuplicatePluginConfig"
@@ -5701,6 +5703,7 @@ func NewReleaseServiceResponse() (response *ReleaseServiceResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
+//  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
@@ -5722,6 +5725,7 @@ func (c *Client) ReleaseService(request *ReleaseServiceRequest) (response *Relea
 // 可能返回的错误码:
 //  FAILEDOPERATION_SERVICEERROR = "FailedOperation.ServiceError"
 //  FAILEDOPERATION_SERVICEINOPERATION = "FailedOperation.ServiceInOperation"
+//  FAILEDOPERATION_TASKALREADYEXIST = "FailedOperation.TaskAlreadyExist"
 //  INTERNALERROR_APIGWEXCEPTION = "InternalError.ApigwException"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"

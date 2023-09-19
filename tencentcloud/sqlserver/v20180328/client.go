@@ -7292,6 +7292,7 @@ func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
@@ -7309,6 +7310,7 @@ func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"

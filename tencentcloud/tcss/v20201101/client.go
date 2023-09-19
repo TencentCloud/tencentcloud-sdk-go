@@ -1441,6 +1441,7 @@ func NewCreateAssetImageRegistryScanTaskOneKeyResponse() (response *CreateAssetI
 // 镜像仓库创建镜像一键扫描任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAssetImageRegistryScanTaskOneKey(request *CreateAssetImageRegistryScanTaskOneKeyRequest) (response *CreateAssetImageRegistryScanTaskOneKeyResponse, err error) {
@@ -1451,6 +1452,7 @@ func (c *Client) CreateAssetImageRegistryScanTaskOneKey(request *CreateAssetImag
 // 镜像仓库创建镜像一键扫描任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) CreateAssetImageRegistryScanTaskOneKeyWithContext(ctx context.Context, request *CreateAssetImageRegistryScanTaskOneKeyRequest) (response *CreateAssetImageRegistryScanTaskOneKeyResponse, err error) {

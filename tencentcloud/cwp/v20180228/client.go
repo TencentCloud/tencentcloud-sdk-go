@@ -6037,6 +6037,7 @@ func NewDescribeBaselineWeakPasswordListResponse() (response *DescribeBaselineWe
 // 获取基线弱口令列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBaselineWeakPasswordList(request *DescribeBaselineWeakPasswordListRequest) (response *DescribeBaselineWeakPasswordListResponse, err error) {
@@ -6047,6 +6048,7 @@ func (c *Client) DescribeBaselineWeakPasswordList(request *DescribeBaselineWeakP
 // 获取基线弱口令列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeBaselineWeakPasswordListWithContext(ctx context.Context, request *DescribeBaselineWeakPasswordListRequest) (response *DescribeBaselineWeakPasswordListResponse, err error) {

@@ -1186,6 +1186,10 @@ type ClbDomainsInfo struct {
 	// cdc类型会增加集群信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CdcClusters *string `json:"CdcClusters,omitnil" name:"CdcClusters"`
+
+	// 云类型:public:公有云；private:私有云;hybrid:混合云
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudType *string `json:"CloudType,omitnil" name:"CloudType"`
 }
 
 type ClbHostResult struct {
@@ -6767,7 +6771,7 @@ type HostRecord struct {
 	// 主域名，入参时为空
 	MainDomain *string `json:"MainDomain,omitnil" name:"MainDomain"`
 
-	// waf模式，同saas waf保持一致
+	// 规则引擎防护模式，0 观察模式，1拦截模式
 	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// waf和LD的绑定，0：没有绑定，1：绑定
@@ -6776,7 +6780,7 @@ type HostRecord struct {
 	// 域名状态，0：正常，1：未检测到流量，2：即将过期，3：过期
 	State *uint64 `json:"State,omitnil" name:"State"`
 
-	// 使用的规则，同saas waf保持一致
+	// 规则引擎和AI引擎防护模式联合状态,10规则引擎观察&&AI引擎关闭模式 11规则引擎观察&&AI引擎观察模式 12规则引擎观察&&AI引擎拦截模式 20规则引擎拦截&&AI引擎关闭模式 21规则引擎拦截&&AI引擎观察模式 22规则引擎拦截&&AI引擎拦截模式
 	Engine *uint64 `json:"Engine,omitnil" name:"Engine"`
 
 	// 是否开启代理，0：不开启，1：开启
@@ -6816,6 +6820,10 @@ type HostRecord struct {
 	// 规则引擎类型， 1: menshen,   2:tiga
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EngineType *int64 `json:"EngineType,omitnil" name:"EngineType"`
+
+	// 云类型:public:公有云；private:私有云;hybrid:混合云
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudType *string `json:"CloudType,omitnil" name:"CloudType"`
 }
 
 type HostStatus struct {
@@ -7031,6 +7039,10 @@ type LoadBalancer struct {
 	// 负载均衡的网络类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerType *string `json:"LoadBalancerType,omitnil" name:"LoadBalancerType"`
+
+	// 负载均衡的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitnil" name:"LoadBalancerDomain"`
 }
 
 type LoadBalancerPackageNew struct {
@@ -7077,6 +7089,10 @@ type LoadBalancerPackageNew struct {
 	// CLB类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LoadBalancerType *string `json:"LoadBalancerType,omitnil" name:"LoadBalancerType"`
+
+	// 负载均衡器的域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LoadBalancerDomain *string `json:"LoadBalancerDomain,omitnil" name:"LoadBalancerDomain"`
 }
 
 type LogHistogramInfo struct {
@@ -8643,6 +8659,9 @@ func (r *ModifyInstanceElasticModeResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ModifyInstanceNameRequestParams struct {
+	// 新名称
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
 	// 实例id
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
@@ -8653,6 +8672,9 @@ type ModifyInstanceNameRequestParams struct {
 type ModifyInstanceNameRequest struct {
 	*tchttp.BaseRequest
 	
+	// 新名称
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
 	// 实例id
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
@@ -8672,6 +8694,7 @@ func (r *ModifyInstanceNameRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "InstanceName")
 	delete(f, "InstanceID")
 	delete(f, "Edition")
 	if len(f) > 0 {
@@ -9072,7 +9095,7 @@ type ModifySpartaProtectionRequestParams struct {
 	// IsCdn=3时，需要填此参数，表示自定义header
 	IpHeaders []*string `json:"IpHeaders,omitnil" name:"IpHeaders"`
 
-	// 0:关闭xff重置；1:开启xff重置
+	// 0:关闭xff重置；1:开启xff重置，只有在IsCdn=0时可以开启
 	XFFReset *int64 `json:"XFFReset,omitnil" name:"XFFReset"`
 }
 
@@ -9175,7 +9198,7 @@ type ModifySpartaProtectionRequest struct {
 	// IsCdn=3时，需要填此参数，表示自定义header
 	IpHeaders []*string `json:"IpHeaders,omitnil" name:"IpHeaders"`
 
-	// 0:关闭xff重置；1:开启xff重置
+	// 0:关闭xff重置；1:开启xff重置，只有在IsCdn=0时可以开启
 	XFFReset *int64 `json:"XFFReset,omitnil" name:"XFFReset"`
 }
 
@@ -10629,6 +10652,10 @@ type UserDomainInfo struct {
 	// 指定域名是否写cls的开关 1:写 0:不写
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Cls *uint64 `json:"Cls,omitnil" name:"Cls"`
+
+	// 标记是否是混合云接入。hybrid表示混合云接入域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudType *string `json:"CloudType,omitnil" name:"CloudType"`
 }
 
 type VipInfo struct {

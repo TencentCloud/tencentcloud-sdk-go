@@ -5312,6 +5312,7 @@ func NewDescribePrometheusGlobalConfigResponse() (response *DescribePrometheusGl
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -5330,6 +5331,7 @@ func (c *Client) DescribePrometheusGlobalConfig(request *DescribePrometheusGloba
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
+//  FAILEDOPERATION_DOTRPCTRANSFERFAILED = "FailedOperation.DoTRPCTransferFailed"
 //  FAILEDOPERATION_KUBECOMMON = "FailedOperation.KubeCommon"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"

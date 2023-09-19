@@ -386,6 +386,7 @@ func NewDeleteInstanceResponse() (response *DeleteInstanceResponse) {
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_CHARGETYPE = "InvalidParameterValue.ChargeType"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  RESOURCENOTFOUND_TRADECGWNOTFOUND = "ResourceNotFound.TradeCgwNotFound"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
@@ -402,6 +403,7 @@ func (c *Client) DeleteInstance(request *DeleteInstanceRequest) (response *Delet
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
 //  INVALIDPARAMETERVALUE_CHARGETYPE = "InvalidParameterValue.ChargeType"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  RESOURCENOTFOUND_TRADECGWNOTFOUND = "ResourceNotFound.TradeCgwNotFound"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
@@ -554,6 +556,7 @@ func NewDescribeIndexListResponse() (response *DescribeIndexListResponse) {
 //  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
 //  INVALIDPARAMETER_INVALIDINDEXTYPE = "InvalidParameter.InvalidIndexType"
 //  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 func (c *Client) DescribeIndexList(request *DescribeIndexListRequest) (response *DescribeIndexListResponse, err error) {
     return c.DescribeIndexListWithContext(context.Background(), request)
@@ -568,6 +571,7 @@ func (c *Client) DescribeIndexList(request *DescribeIndexListRequest) (response 
 //  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
 //  INVALIDPARAMETER_INVALIDINDEXTYPE = "InvalidParameter.InvalidIndexType"
 //  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  RESOURCENOTFOUND_CLUSTERINFONOTFOUND = "ResourceNotFound.ClusterInfoNotFound"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 func (c *Client) DescribeIndexListWithContext(ctx context.Context, request *DescribeIndexListRequest) (response *DescribeIndexListResponse, err error) {
     if request == nil {
@@ -795,6 +799,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 // 查询用户该地域下符合条件的所有实例
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHDESCRIBEINSTANCES = "AuthFailure.UnAuthDescribeInstances"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION_GETTAGINFOERROR = "FailedOperation.GetTagInfoError"
 //  INTERNALERROR = "InternalError"
@@ -820,6 +825,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 // 查询用户该地域下符合条件的所有实例
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_UNAUTHDESCRIBEINSTANCES = "AuthFailure.UnAuthDescribeInstances"
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnAuthorizedOperation"
 //  FAILEDOPERATION_GETTAGINFOERROR = "FailedOperation.GetTagInfoError"
 //  INTERNALERROR = "InternalError"
@@ -1081,7 +1087,9 @@ func NewDescribeViewsResponse() (response *DescribeViewsResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 func (c *Client) DescribeViews(request *DescribeViewsRequest) (response *DescribeViewsResponse, err error) {
     return c.DescribeViewsWithContext(context.Background(), request)
 }
@@ -1092,7 +1100,9 @@ func (c *Client) DescribeViews(request *DescribeViewsRequest) (response *Describ
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 func (c *Client) DescribeViewsWithContext(ctx context.Context, request *DescribeViewsRequest) (response *DescribeViewsResponse, err error) {
     if request == nil {
         request = NewDescribeViewsRequest()
@@ -1137,6 +1147,7 @@ func NewDiagnoseInstanceResponse() (response *DiagnoseInstanceResponse) {
 //  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 //  LIMITEXCEEDED_DIAGNOSECOUNT = "LimitExceeded.DiagnoseCount"
 //  RESOURCEINUSE_DIAGNOSE = "ResourceInUse.Diagnose"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  RESOURCENOTFOUND_DIAGNOSENOTFOUND = "ResourceNotFound.DiagnoseNotFound"
 //  UNSUPPORTEDOPERATION_DIAGNOSEJOB = "UnsupportedOperation.DiagnoseJob"
@@ -1155,6 +1166,7 @@ func (c *Client) DiagnoseInstance(request *DiagnoseInstanceRequest) (response *D
 //  INVALIDPARAMETER_INVALIDREGION = "InvalidParameter.InvalidRegion"
 //  LIMITEXCEEDED_DIAGNOSECOUNT = "LimitExceeded.DiagnoseCount"
 //  RESOURCEINUSE_DIAGNOSE = "ResourceInUse.Diagnose"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  RESOURCENOTFOUND_DIAGNOSENOTFOUND = "ResourceNotFound.DiagnoseNotFound"
 //  UNSUPPORTEDOPERATION_DIAGNOSEJOB = "UnsupportedOperation.DiagnoseJob"
@@ -1323,6 +1335,7 @@ func NewRestartInstanceResponse() (response *RestartInstanceResponse) {
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
 //  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 func (c *Client) RestartInstance(request *RestartInstanceRequest) (response *RestartInstanceResponse, err error) {
     return c.RestartInstanceWithContext(context.Background(), request)
@@ -1342,6 +1355,7 @@ func (c *Client) RestartInstance(request *RestartInstanceRequest) (response *Res
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
 //  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 func (c *Client) RestartInstanceWithContext(ctx context.Context, request *RestartInstanceRequest) (response *RestartInstanceResponse, err error) {
     if request == nil {
@@ -1386,6 +1400,7 @@ func NewRestartKibanaResponse() (response *RestartKibanaResponse) {
 //  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 func (c *Client) RestartKibana(request *RestartKibanaRequest) (response *RestartKibanaResponse, err error) {
     return c.RestartKibanaWithContext(context.Background(), request)
@@ -1400,6 +1415,7 @@ func (c *Client) RestartKibana(request *RestartKibanaRequest) (response *Restart
 //  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 func (c *Client) RestartKibanaWithContext(ctx context.Context, request *RestartKibanaRequest) (response *RestartKibanaResponse, err error) {
     if request == nil {
@@ -1507,6 +1523,8 @@ func NewRestartNodesResponse() (response *RestartNodesResponse) {
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
 //  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+//  UNSUPPORTEDOPERATION_RESTARTMODE = "UnsupportedOperation.RestartMode"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 func (c *Client) RestartNodes(request *RestartNodesRequest) (response *RestartNodesResponse, err error) {
     return c.RestartNodesWithContext(context.Background(), request)
@@ -1528,6 +1546,8 @@ func (c *Client) RestartNodes(request *RestartNodesRequest) (response *RestartNo
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
 //  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
+//  UNSUPPORTEDOPERATION_RESTARTMODE = "UnsupportedOperation.RestartMode"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 func (c *Client) RestartNodesWithContext(ctx context.Context, request *RestartNodesRequest) (response *RestartNodesResponse, err error) {
     if request == nil {
@@ -1933,6 +1953,7 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
 // 以上参数组合只能传递一种，多传或少传均会导致请求失败
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ESDICTIONARYINFOERROR = "FailedOperation.EsDictionaryInfoError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 //  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
@@ -1971,6 +1992,7 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDDEADLINE = "InvalidParameterValue.InvalidDeadline"
 //  INVALIDPARAMETERVALUE_PASSWORD = "InvalidParameterValue.Password"
 //  LIMITEXCEEDED_UPDATEITEMLIMIT = "LimitExceeded.UpdateItemLimit"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_ORDER = "ResourceInUse.Order"
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
 //  RESOURCEINSUFFICIENT_SUBNETIP = "ResourceInsufficient.SubnetIp"
@@ -1987,8 +2009,10 @@ func NewUpdateInstanceResponse() (response *UpdateInstanceResponse) {
 //  UNSUPPORTEDOPERATION_CLUSTERSTATECLOSE = "UnsupportedOperation.ClusterStateClose"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
+//  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
 //  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 //  UNSUPPORTEDOPERATION_WEBSERVICETYPE = "UnsupportedOperation.WebServiceType"
 func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *UpdateInstanceResponse, err error) {
@@ -2013,6 +2037,7 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
 // 以上参数组合只能传递一种，多传或少传均会导致请求失败
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  FAILEDOPERATION_ESDICTIONARYINFOERROR = "FailedOperation.EsDictionaryInfoError"
 //  FAILEDOPERATION_NOPAYMENT = "FailedOperation.NoPayment"
 //  FAILEDOPERATION_NOTAUTHENTICATED = "FailedOperation.NotAuthenticated"
@@ -2051,6 +2076,7 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
 //  INVALIDPARAMETERVALUE_INVALIDDEADLINE = "InvalidParameterValue.InvalidDeadline"
 //  INVALIDPARAMETERVALUE_PASSWORD = "InvalidParameterValue.Password"
 //  LIMITEXCEEDED_UPDATEITEMLIMIT = "LimitExceeded.UpdateItemLimit"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCEINUSE_ORDER = "ResourceInUse.Order"
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
 //  RESOURCEINSUFFICIENT_SUBNETIP = "ResourceInsufficient.SubnetIp"
@@ -2067,8 +2093,10 @@ func (c *Client) UpdateInstance(request *UpdateInstanceRequest) (response *Updat
 //  UNSUPPORTEDOPERATION_CLUSTERSTATECLOSE = "UnsupportedOperation.ClusterStateClose"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATENOREPLICATION = "UnsupportedOperation.ClusterStateNoReplication"
 //  UNSUPPORTEDOPERATION_CLUSTERSTATEUNHEALTH = "UnsupportedOperation.ClusterStateUnHealth"
+//  UNSUPPORTEDOPERATION_LICENSEERROR = "UnsupportedOperation.LicenseError"
 //  UNSUPPORTEDOPERATION_MULTIZONESUPGRADE = "UnsupportedOperation.MultiZonesUpgrade"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 //  UNSUPPORTEDOPERATION_WEBSERVICETYPE = "UnsupportedOperation.WebServiceType"
 func (c *Client) UpdateInstanceWithContext(ctx context.Context, request *UpdateInstanceRequest) (response *UpdateInstanceResponse, err error) {
@@ -2192,6 +2220,7 @@ func NewUpdateLogstashInstanceResponse() (response *UpdateLogstashInstanceRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ORDER = "ResourceInUse.Order"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
 //  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
@@ -2221,6 +2250,7 @@ func (c *Client) UpdateLogstashInstance(request *UpdateLogstashInstanceRequest) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINUSE_ORDER = "ResourceInUse.Order"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 //  RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
 //  RESOURCEINSUFFICIENT_SUBNET = "ResourceInsufficient.Subnet"
@@ -2330,6 +2360,7 @@ func NewUpdatePluginsResponse() (response *UpdatePluginsResponse) {
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 func (c *Client) UpdatePlugins(request *UpdatePluginsRequest) (response *UpdatePluginsResponse, err error) {
     return c.UpdatePluginsWithContext(context.Background(), request)
@@ -2354,6 +2385,7 @@ func (c *Client) UpdatePlugins(request *UpdatePluginsRequest) (response *UpdateP
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  RESOURCENOTFOUND_WHITELISTNOTFOUND = "ResourceNotFound.WhiteListNotFound"
 //  UNSUPPORTEDOPERATION_PLUGIN = "UnsupportedOperation.Plugin"
+//  UNSUPPORTEDOPERATION_STATUSNOTNORMAL = "UnsupportedOperation.StatusNotNormal"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
 func (c *Client) UpdatePluginsWithContext(ctx context.Context, request *UpdatePluginsRequest) (response *UpdatePluginsResponse, err error) {
     if request == nil {

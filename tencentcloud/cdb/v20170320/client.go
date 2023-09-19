@@ -1726,6 +1726,7 @@ func NewCreateRoInstanceIpResponse() (response *CreateRoInstanceIpResponse) {
 //  CDBERROR = "CdbError"
 //  FAILEDOPERATION_CREATEROVIPERROR = "FailedOperation.CreateRoVipError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
@@ -1750,6 +1751,7 @@ func (c *Client) CreateRoInstanceIp(request *CreateRoInstanceIpRequest) (respons
 //  CDBERROR = "CdbError"
 //  FAILEDOPERATION_CREATEROVIPERROR = "FailedOperation.CreateRoVipError"
 //  FAILEDOPERATION_STATUSCONFLICT = "FailedOperation.StatusConflict"
+//  INTERNALERROR_CDBERROR = "InternalError.CdbError"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_DESERROR = "InternalError.DesError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
@@ -9077,6 +9079,7 @@ func NewStopCpuExpandResponse() (response *StopCpuExpandResponse) {
 // 通过该API，可以关闭 CPU 弹性扩容。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCETASKCONFLICTERROR = "FailedOperation.InstanceTaskConflictError"
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"
@@ -9088,6 +9091,7 @@ func (c *Client) StopCpuExpand(request *StopCpuExpandRequest) (response *StopCpu
 // 通过该API，可以关闭 CPU 弹性扩容。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_INSTANCETASKCONFLICTERROR = "FailedOperation.InstanceTaskConflictError"
 //  INTERNALERROR_DBRECORDNOTEXISTERROR = "InternalError.DBRecordNotExistError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_CONTROLLERNOTFOUNDERROR = "InvalidParameter.ControllerNotFoundError"

@@ -5351,6 +5351,7 @@ func NewModifyAuditRuleTemplatesResponse() (response *ModifyAuditRuleTemplatesRe
 // 修改审计规则模板
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 func (c *Client) ModifyAuditRuleTemplates(request *ModifyAuditRuleTemplatesRequest) (response *ModifyAuditRuleTemplatesResponse, err error) {
@@ -5361,6 +5362,7 @@ func (c *Client) ModifyAuditRuleTemplates(request *ModifyAuditRuleTemplatesReque
 // 修改审计规则模板
 //
 // 可能返回的错误码:
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER_EXCEPTIONPARAM = "InvalidParameter.ExceptionParam"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 func (c *Client) ModifyAuditRuleTemplatesWithContext(ctx context.Context, request *ModifyAuditRuleTemplatesRequest) (response *ModifyAuditRuleTemplatesResponse, err error) {
@@ -6340,6 +6342,7 @@ func NewModifyProxyRwSplitResponse() (response *ModifyProxyRwSplitResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"
@@ -6357,6 +6360,7 @@ func (c *Client) ModifyProxyRwSplit(request *ModifyProxyRwSplitRequest) (respons
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DATABASEACCESSERROR = "FailedOperation.DatabaseAccessError"
 //  FAILEDOPERATION_FLOWCREATEERROR = "FailedOperation.FlowCreateError"
+//  FAILEDOPERATION_OPERATIONFAILEDERROR = "FailedOperation.OperationFailedError"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
 //  OPERATIONDENIED_CLUSTERSTATUSDENIEDERROR = "OperationDenied.ClusterStatusDeniedError"

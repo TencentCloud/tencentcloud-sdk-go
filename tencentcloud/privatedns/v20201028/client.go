@@ -45,6 +45,114 @@ func NewClient(credential common.CredentialIface, region string, clientProfile *
 }
 
 
+func NewAddSpecifyPrivateZoneVpcRequest() (request *AddSpecifyPrivateZoneVpcRequest) {
+    request = &AddSpecifyPrivateZoneVpcRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("privatedns", APIVersion, "AddSpecifyPrivateZoneVpc")
+    
+    
+    return
+}
+
+func NewAddSpecifyPrivateZoneVpcResponse() (response *AddSpecifyPrivateZoneVpcResponse) {
+    response = &AddSpecifyPrivateZoneVpcResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// AddSpecifyPrivateZoneVpc
+// 追加与私有域关联的VPC
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDZONEVPCFAILED = "FailedOperation.BindZoneVpcFailed"
+//  FAILEDOPERATION_DATAERROR = "FailedOperation.DataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALVPCINFO = "InvalidParameter.IllegalVpcInfo"
+//  INVALIDPARAMETER_VPCBINDED = "InvalidParameter.VpcBinded"
+//  INVALIDPARAMETER_VPCBINDEDMAINDOMAIN = "InvalidParameter.VpcBindedMainDomain"
+//  INVALIDPARAMETER_ZONENOTEXISTS = "InvalidParameter.ZoneNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_TLDOUTOFLIMIT = "LimitExceeded.TldOutOfLimit"
+//  LIMITEXCEEDED_TLDOUTOFRANGE = "LimitExceeded.TldOutOfRange"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_TLDPACKAGEEXPIRED = "ResourceUnavailable.TldPackageExpired"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnAuthorized"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddSpecifyPrivateZoneVpc(request *AddSpecifyPrivateZoneVpcRequest) (response *AddSpecifyPrivateZoneVpcResponse, err error) {
+    return c.AddSpecifyPrivateZoneVpcWithContext(context.Background(), request)
+}
+
+// AddSpecifyPrivateZoneVpc
+// 追加与私有域关联的VPC
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDZONEVPCFAILED = "FailedOperation.BindZoneVpcFailed"
+//  FAILEDOPERATION_DATAERROR = "FailedOperation.DataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALVPCINFO = "InvalidParameter.IllegalVpcInfo"
+//  INVALIDPARAMETER_VPCBINDED = "InvalidParameter.VpcBinded"
+//  INVALIDPARAMETER_VPCBINDEDMAINDOMAIN = "InvalidParameter.VpcBindedMainDomain"
+//  INVALIDPARAMETER_ZONENOTEXISTS = "InvalidParameter.ZoneNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_TLDOUTOFLIMIT = "LimitExceeded.TldOutOfLimit"
+//  LIMITEXCEEDED_TLDOUTOFRANGE = "LimitExceeded.TldOutOfRange"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_TLDPACKAGEEXPIRED = "ResourceUnavailable.TldPackageExpired"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnAuthorized"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) AddSpecifyPrivateZoneVpcWithContext(ctx context.Context, request *AddSpecifyPrivateZoneVpcRequest) (response *AddSpecifyPrivateZoneVpcResponse, err error) {
+    if request == nil {
+        request = NewAddSpecifyPrivateZoneVpcRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("AddSpecifyPrivateZoneVpc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewAddSpecifyPrivateZoneVpcResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePrivateDNSAccountRequest() (request *CreatePrivateDNSAccountRequest) {
     request = &CreatePrivateDNSAccountRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -745,6 +853,114 @@ func (c *Client) DeletePrivateZoneRecordWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDeletePrivateZoneRecordResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteSpecifyPrivateZoneVpcRequest() (request *DeleteSpecifyPrivateZoneVpcRequest) {
+    request = &DeleteSpecifyPrivateZoneVpcRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("privatedns", APIVersion, "DeleteSpecifyPrivateZoneVpc")
+    
+    
+    return
+}
+
+func NewDeleteSpecifyPrivateZoneVpcResponse() (response *DeleteSpecifyPrivateZoneVpcResponse) {
+    response = &DeleteSpecifyPrivateZoneVpcResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteSpecifyPrivateZoneVpc
+// 删除与私有域关联的VPC
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDZONEVPCFAILED = "FailedOperation.BindZoneVpcFailed"
+//  FAILEDOPERATION_DATAERROR = "FailedOperation.DataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALVPCINFO = "InvalidParameter.IllegalVpcInfo"
+//  INVALIDPARAMETER_VPCBINDED = "InvalidParameter.VpcBinded"
+//  INVALIDPARAMETER_VPCBINDEDMAINDOMAIN = "InvalidParameter.VpcBindedMainDomain"
+//  INVALIDPARAMETER_ZONENOTEXISTS = "InvalidParameter.ZoneNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_TLDOUTOFLIMIT = "LimitExceeded.TldOutOfLimit"
+//  LIMITEXCEEDED_TLDOUTOFRANGE = "LimitExceeded.TldOutOfRange"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_TLDPACKAGEEXPIRED = "ResourceUnavailable.TldPackageExpired"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnAuthorized"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSpecifyPrivateZoneVpc(request *DeleteSpecifyPrivateZoneVpcRequest) (response *DeleteSpecifyPrivateZoneVpcResponse, err error) {
+    return c.DeleteSpecifyPrivateZoneVpcWithContext(context.Background(), request)
+}
+
+// DeleteSpecifyPrivateZoneVpc
+// 删除与私有域关联的VPC
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_TOKENFAILURE = "AuthFailure.TokenFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_BINDZONEVPCFAILED = "FailedOperation.BindZoneVpcFailed"
+//  FAILEDOPERATION_DATAERROR = "FailedOperation.DataError"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_UNDEFIENDERROR = "InternalError.UndefiendError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALVPCINFO = "InvalidParameter.IllegalVpcInfo"
+//  INVALIDPARAMETER_VPCBINDED = "InvalidParameter.VpcBinded"
+//  INVALIDPARAMETER_VPCBINDEDMAINDOMAIN = "InvalidParameter.VpcBindedMainDomain"
+//  INVALIDPARAMETER_ZONENOTEXISTS = "InvalidParameter.ZoneNotExists"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  LIMITEXCEEDED_TLDOUTOFLIMIT = "LimitExceeded.TldOutOfLimit"
+//  LIMITEXCEEDED_TLDOUTOFRANGE = "LimitExceeded.TldOutOfRange"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCEUNAVAILABLE_TLDPACKAGEEXPIRED = "ResourceUnavailable.TldPackageExpired"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_ROLEUNAUTHORIZED = "UnauthorizedOperation.RoleUnAuthorized"
+//  UNAUTHORIZEDOPERATION_UNAUTHORIZEDACCOUNT = "UnauthorizedOperation.UnauthorizedAccount"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DeleteSpecifyPrivateZoneVpcWithContext(ctx context.Context, request *DeleteSpecifyPrivateZoneVpcRequest) (response *DeleteSpecifyPrivateZoneVpcResponse, err error) {
+    if request == nil {
+        request = NewDeleteSpecifyPrivateZoneVpcRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteSpecifyPrivateZoneVpc require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteSpecifyPrivateZoneVpcResponse()
     err = c.Send(request, response)
     return
 }

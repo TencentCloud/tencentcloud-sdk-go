@@ -1263,6 +1263,7 @@ func NewSentenceRecognitionResponse() (response *SentenceRecognitionResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_ERRORRECOGNIZE = "FailedOperation.ErrorRecognize"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  FAILEDOPERATION_USERHASNOAMOUNT = "FailedOperation.UserHasNoAmount"
 //  FAILEDOPERATION_USERHASNOFREEAMOUNT = "FailedOperation.UserHasNoFreeAmount"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR = "InternalError"
@@ -1301,6 +1302,7 @@ func (c *Client) SentenceRecognition(request *SentenceRecognitionRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION_ERRORRECOGNIZE = "FailedOperation.ErrorRecognize"
 //  FAILEDOPERATION_SERVICEISOLATE = "FailedOperation.ServiceIsolate"
+//  FAILEDOPERATION_USERHASNOAMOUNT = "FailedOperation.UserHasNoAmount"
 //  FAILEDOPERATION_USERHASNOFREEAMOUNT = "FailedOperation.UserHasNoFreeAmount"
 //  FAILEDOPERATION_USERNOTREGISTERED = "FailedOperation.UserNotRegistered"
 //  INTERNALERROR = "InternalError"

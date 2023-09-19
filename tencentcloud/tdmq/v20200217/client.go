@@ -4075,6 +4075,66 @@ func (c *Client) DescribeRocketMQNamespacesWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeRocketMQPublicAccessPointRequest() (request *DescribeRocketMQPublicAccessPointRequest) {
+    request = &DescribeRocketMQPublicAccessPointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "DescribeRocketMQPublicAccessPoint")
+    
+    
+    return
+}
+
+func NewDescribeRocketMQPublicAccessPointResponse() (response *DescribeRocketMQPublicAccessPointResponse) {
+    response = &DescribeRocketMQPublicAccessPointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRocketMQPublicAccessPoint
+// 接口用于查询RocketMQ实例的公网接入信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeRocketMQPublicAccessPoint(request *DescribeRocketMQPublicAccessPointRequest) (response *DescribeRocketMQPublicAccessPointResponse, err error) {
+    return c.DescribeRocketMQPublicAccessPointWithContext(context.Background(), request)
+}
+
+// DescribeRocketMQPublicAccessPoint
+// 接口用于查询RocketMQ实例的公网接入信息
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeRocketMQPublicAccessPointWithContext(ctx context.Context, request *DescribeRocketMQPublicAccessPointRequest) (response *DescribeRocketMQPublicAccessPointResponse, err error) {
+    if request == nil {
+        request = NewDescribeRocketMQPublicAccessPointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRocketMQPublicAccessPoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRocketMQPublicAccessPointResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRocketMQTopicMsgsRequest() (request *DescribeRocketMQTopicMsgsRequest) {
     request = &DescribeRocketMQTopicMsgsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4905,6 +4965,54 @@ func (c *Client) ModifyEnvironmentRoleWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyEnvironmentRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyPublicNetworkAccessPointRequest() (request *ModifyPublicNetworkAccessPointRequest) {
+    request = &ModifyPublicNetworkAccessPointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "ModifyPublicNetworkAccessPoint")
+    
+    
+    return
+}
+
+func NewModifyPublicNetworkAccessPointResponse() (response *ModifyPublicNetworkAccessPointResponse) {
+    response = &ModifyPublicNetworkAccessPointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyPublicNetworkAccessPoint
+// RabbitMQ专享版修改公网管控台，vpc15672开关
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) ModifyPublicNetworkAccessPoint(request *ModifyPublicNetworkAccessPointRequest) (response *ModifyPublicNetworkAccessPointResponse, err error) {
+    return c.ModifyPublicNetworkAccessPointWithContext(context.Background(), request)
+}
+
+// ModifyPublicNetworkAccessPoint
+// RabbitMQ专享版修改公网管控台，vpc15672开关
+//
+// 可能返回的错误码:
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
+func (c *Client) ModifyPublicNetworkAccessPointWithContext(ctx context.Context, request *ModifyPublicNetworkAccessPointRequest) (response *ModifyPublicNetworkAccessPointResponse, err error) {
+    if request == nil {
+        request = NewModifyPublicNetworkAccessPointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyPublicNetworkAccessPoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyPublicNetworkAccessPointResponse()
     err = c.Send(request, response)
     return
 }
@@ -6171,6 +6279,58 @@ func (c *Client) SendRocketMQMessageWithContext(ctx context.Context, request *Se
     request.SetContext(ctx)
     
     response = NewSendRocketMQMessageResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSetRocketMQPublicAccessPointRequest() (request *SetRocketMQPublicAccessPointRequest) {
+    request = &SetRocketMQPublicAccessPointRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tdmq", APIVersion, "SetRocketMQPublicAccessPoint")
+    
+    
+    return
+}
+
+func NewSetRocketMQPublicAccessPointResponse() (response *SetRocketMQPublicAccessPointResponse) {
+    response = &SetRocketMQPublicAccessPointResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SetRocketMQPublicAccessPoint
+// 该接口用于开启关闭公网访问、设置安全访问策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SetRocketMQPublicAccessPoint(request *SetRocketMQPublicAccessPointRequest) (response *SetRocketMQPublicAccessPointResponse, err error) {
+    return c.SetRocketMQPublicAccessPointWithContext(context.Background(), request)
+}
+
+// SetRocketMQPublicAccessPoint
+// 该接口用于开启关闭公网访问、设置安全访问策略
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) SetRocketMQPublicAccessPointWithContext(ctx context.Context, request *SetRocketMQPublicAccessPointRequest) (response *SetRocketMQPublicAccessPointResponse, err error) {
+    if request == nil {
+        request = NewSetRocketMQPublicAccessPointRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SetRocketMQPublicAccessPoint require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSetRocketMQPublicAccessPointResponse()
     err = c.Send(request, response)
     return
 }

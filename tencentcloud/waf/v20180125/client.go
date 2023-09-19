@@ -1508,6 +1508,7 @@ func NewDescribeAccessHistogramResponse() (response *DescribeAccessHistogramResp
 //  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
 //  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
 //  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
 //  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
 //  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1540,6 +1541,7 @@ func (c *Client) DescribeAccessHistogram(request *DescribeAccessHistogramRequest
 //  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
 //  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
 //  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
 //  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
 //  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -4583,6 +4585,7 @@ func NewGetAttackHistogramResponse() (response *GetAttackHistogramResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
 //  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
 //  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
 //  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
 func (c *Client) GetAttackHistogram(request *GetAttackHistogramRequest) (response *GetAttackHistogramResponse, err error) {
@@ -4599,6 +4602,7 @@ func (c *Client) GetAttackHistogram(request *GetAttackHistogramRequest) (respons
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
 //  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
 //  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
 //  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
 func (c *Client) GetAttackHistogramWithContext(ctx context.Context, request *GetAttackHistogramRequest) (response *GetAttackHistogramResponse, err error) {
@@ -4645,6 +4649,7 @@ func NewGetAttackTotalCountResponse() (response *GetAttackTotalCountResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
 //  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
 //  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
 //  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
 func (c *Client) GetAttackTotalCount(request *GetAttackTotalCountRequest) (response *GetAttackTotalCountResponse, err error) {
@@ -4661,6 +4666,7 @@ func (c *Client) GetAttackTotalCount(request *GetAttackTotalCountRequest) (respo
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
 //  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
 //  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
 //  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
 func (c *Client) GetAttackTotalCountWithContext(ctx context.Context, request *GetAttackTotalCountRequest) (response *GetAttackTotalCountResponse, err error) {
@@ -4707,6 +4713,7 @@ func NewGetInstanceQpsLimitResponse() (response *GetInstanceQpsLimitResponse) {
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
 //  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
 //  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
 //  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
 func (c *Client) GetInstanceQpsLimit(request *GetInstanceQpsLimitRequest) (response *GetInstanceQpsLimitResponse, err error) {
@@ -4723,6 +4730,7 @@ func (c *Client) GetInstanceQpsLimit(request *GetInstanceQpsLimitRequest) (respo
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_UNKNOWNERR = "InternalError.UnknownErr"
 //  INVALIDPARAMETER_LOGICERR = "InvalidParameter.LogicErr"
+//  INVALIDPARAMETER_QUERYSTRINGSYNTAXERR = "InvalidParameter.QueryStringSyntaxErr"
 //  INVALIDPARAMETER_SQLSYNTAXERR = "InvalidParameter.SQLSyntaxErr"
 //  INVALIDPARAMETER_TYPEMISMATCH = "InvalidParameter.TypeMismatch"
 func (c *Client) GetInstanceQpsLimitWithContext(ctx context.Context, request *GetInstanceQpsLimitRequest) (response *GetInstanceQpsLimitResponse, err error) {

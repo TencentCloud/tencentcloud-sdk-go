@@ -2771,6 +2771,7 @@ func NewResizeSyncJobResponse() (response *ResizeSyncJobResponse) {
 // 调整同步任务规格，此接口只支持按量计费任务的调整，调用此接口后不会立即生效，后台调整时间大概为3~5分钟。调用此接口后可通过查询同步任务信息接口DescribeSyncJobs，获取变配后的状态。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
 //  INTERNALERROR_INTERNALTRADEERROR = "InternalError.InternalTradeError"
 //  INTERNALERROR_NOTENOUGHMONEYERROR = "InternalError.NotEnoughMoneyError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"
@@ -2782,6 +2783,7 @@ func (c *Client) ResizeSyncJob(request *ResizeSyncJobRequest) (response *ResizeS
 // 调整同步任务规格，此接口只支持按量计费任务的调整，调用此接口后不会立即生效，后台调整时间大概为3~5分钟。调用此接口后可通过查询同步任务信息接口DescribeSyncJobs，获取变配后的状态。
 //
 // 可能返回的错误码:
+//  INTERNALERROR_INTERNALERRORERROR = "InternalError.InternalErrorError"
 //  INTERNALERROR_INTERNALTRADEERROR = "InternalError.InternalTradeError"
 //  INTERNALERROR_NOTENOUGHMONEYERROR = "InternalError.NotEnoughMoneyError"
 //  UNSUPPORTEDOPERATION_UNSUPPORTEDOPERATIONERROR = "UnsupportedOperation.UnsupportedOperationError"

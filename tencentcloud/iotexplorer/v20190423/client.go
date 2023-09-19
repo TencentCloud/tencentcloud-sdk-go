@@ -2521,6 +2521,7 @@ func NewDescribeFirmwareTaskResponse() (response *DescribeFirmwareTaskResponse) 
 // 查询固件升级任务列表
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"
@@ -2532,6 +2533,7 @@ func (c *Client) DescribeFirmwareTask(request *DescribeFirmwareTaskRequest) (res
 // 查询固件升级任务列表
 //
 // 可能返回的错误码:
+//  INTERNALERROR_DBOPERATIONERROR = "InternalError.DBOperationError"
 //  INTERNALERROR_INTERNALRPCERROR = "InternalError.InternalRPCError"
 //  RESOURCENOTFOUND_FIRMWARETASKNOTEXIST = "ResourceNotFound.FirmwareTaskNotExist"
 //  RESOURCENOTFOUND_STUDIOPRODUCTNOTEXIST = "ResourceNotFound.StudioProductNotExist"

@@ -257,6 +257,7 @@ func NewCreateCloudNativeAPIGatewayCertificateResponse() (response *CreateCloudN
 //  FAILEDOPERATION_ROLE = "FailedOperation.Role"
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
@@ -288,6 +289,7 @@ func (c *Client) CreateCloudNativeAPIGatewayCertificate(request *CreateCloudNati
 //  FAILEDOPERATION_ROLE = "FailedOperation.Role"
 //  FAILEDOPERATION_VPC = "FailedOperation.Vpc"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_OPERATIONFAILED = "InternalError.OperationFailed"
 //  INTERNALERROR_QUERYERROR = "InternalError.QueryError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETERVALUE_BADREQUESTFORMAT = "InvalidParameterValue.BadRequestFormat"
@@ -783,6 +785,8 @@ func NewCreateNativeGatewayServerGroupResponse() (response *CreateNativeGatewayS
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
 //  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 func (c *Client) CreateNativeGatewayServerGroup(request *CreateNativeGatewayServerGroupRequest) (response *CreateNativeGatewayServerGroupResponse, err error) {
     return c.CreateNativeGatewayServerGroupWithContext(context.Background(), request)
@@ -794,6 +798,8 @@ func (c *Client) CreateNativeGatewayServerGroup(request *CreateNativeGatewayServ
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATION = "FailedOperation.FailedOperation"
 //  FAILEDOPERATION_INTERNALERROR = "FailedOperation.InternalError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUE = "InvalidParameterValue.InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_OPERATIONFAILED = "InvalidParameterValue.OperationFailed"
 //  OPERATIONDENIED_OPERATIONDENIED = "OperationDenied.OperationDenied"
 func (c *Client) CreateNativeGatewayServerGroupWithContext(ctx context.Context, request *CreateNativeGatewayServerGroupRequest) (response *CreateNativeGatewayServerGroupResponse, err error) {
     if request == nil {

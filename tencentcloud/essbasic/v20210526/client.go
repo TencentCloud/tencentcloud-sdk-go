@@ -449,6 +449,90 @@ func (c *Client) ChannelCreateBatchCancelFlowUrlWithContext(ctx context.Context,
     return
 }
 
+func NewChannelCreateBatchSignUrlRequest() (request *ChannelCreateBatchSignUrlRequest) {
+    request = &ChannelCreateBatchSignUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateBatchSignUrl")
+    
+    
+    return
+}
+
+func NewChannelCreateBatchSignUrlResponse() (response *ChannelCreateBatchSignUrlResponse) {
+    response = &ChannelCreateBatchSignUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateBatchSignUrl
+// 通过此接口，创建小程序批量签署链接，个人/企业员工点击此链接即可跳转小程序进行批量签署。
+//
+// 请确保生成链接时候的身份信息和签署合同参与方的信息保持一致。
+//
+// 
+//
+// 注：
+//
+// - 参与人点击链接后需短信验证码才能查看合同内容。
+//
+// - 企业用户批量签署，需要传OrganizationName（参与方所在企业名称）参数生成签署链接，`请确保此企业已完成腾讯电子签企业认证`。
+//
+// - 个人批量签署，签名区`仅支持手写签名`。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateBatchSignUrl(request *ChannelCreateBatchSignUrlRequest) (response *ChannelCreateBatchSignUrlResponse, err error) {
+    return c.ChannelCreateBatchSignUrlWithContext(context.Background(), request)
+}
+
+// ChannelCreateBatchSignUrl
+// 通过此接口，创建小程序批量签署链接，个人/企业员工点击此链接即可跳转小程序进行批量签署。
+//
+// 请确保生成链接时候的身份信息和签署合同参与方的信息保持一致。
+//
+// 
+//
+// 注：
+//
+// - 参与人点击链接后需短信验证码才能查看合同内容。
+//
+// - 企业用户批量签署，需要传OrganizationName（参与方所在企业名称）参数生成签署链接，`请确保此企业已完成腾讯电子签企业认证`。
+//
+// - 个人批量签署，签名区`仅支持手写签名`。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateBatchSignUrlWithContext(ctx context.Context, request *ChannelCreateBatchSignUrlRequest) (response *ChannelCreateBatchSignUrlResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateBatchSignUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateBatchSignUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateBatchSignUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateBoundFlowsRequest() (request *ChannelCreateBoundFlowsRequest) {
     request = &ChannelCreateBoundFlowsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -3867,6 +3951,7 @@ func NewDescribeTemplatesResponse() (response *DescribeTemplatesResponse) {
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response *DescribeTemplatesResponse, err error) {
@@ -3915,6 +4000,7 @@ func (c *Client) DescribeTemplates(request *DescribeTemplatesRequest) (response 
 //  RESOURCENOTFOUND_RESOURCE = "ResourceNotFound.Resource"
 //  RESOURCENOTFOUND_TEMPLATE = "ResourceNotFound.Template"
 //  RESOURCENOTFOUND_USER = "ResourceNotFound.User"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeTemplatesWithContext(ctx context.Context, request *DescribeTemplatesRequest) (response *DescribeTemplatesResponse, err error) {

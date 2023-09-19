@@ -2642,6 +2642,10 @@ func NewDescribeBlackWhiteIpListResponse() (response *DescribeBlackWhiteIpListRe
 }
 
 // DescribeBlackWhiteIpList
+// 接口变更
+//
+// 
+//
 // 获取DDoS防护的IP黑白名单
 //
 // 可能返回的错误码:
@@ -2667,6 +2671,10 @@ func (c *Client) DescribeBlackWhiteIpList(request *DescribeBlackWhiteIpListReque
 }
 
 // DescribeBlackWhiteIpList
+// 接口变更
+//
+// 
+//
 // 获取DDoS防护的IP黑白名单
 //
 // 可能返回的错误码:
@@ -4208,6 +4216,10 @@ func NewDescribeListProtectThresholdConfigResponse() (response *DescribeListProt
 }
 
 // DescribeListProtectThresholdConfig
+// 接口变更
+//
+// 
+//
 // 获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等
 //
 // 可能返回的错误码:
@@ -4234,6 +4246,10 @@ func (c *Client) DescribeListProtectThresholdConfig(request *DescribeListProtect
 }
 
 // DescribeListProtectThresholdConfig
+// 接口变更
+//
+// 
+//
 // 获取防护阈值配置列表，包括DDoS的AI、等级、CC阈值开关等
 //
 // 可能返回的错误码:
