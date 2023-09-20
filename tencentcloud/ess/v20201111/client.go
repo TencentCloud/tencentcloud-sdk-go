@@ -594,11 +594,15 @@ func NewCreateDocumentResponse() (response *CreateDocumentResponse) {
 }
 
 // CreateDocument
-// 创建签署流程电子文档
+// 创建签署流程电子文档<br />
 //
-// 适用场景：见创建签署流程接口。
+// 适用场景：见创建签署流程接口。<br />
 //
-// 注：该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。需要配置<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用, 具体逻辑可以参考下图:
+// 点击查看<a href="https://qian.tencent.com/developers/startFlows/CreateFlow" target="_blank">通过模板创建签署流程</a>
+//
+// <a href="https://qian.tencent.com/developers/startFlows/CreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>。<br />
+//
+// 注：该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。需要配置<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。具体逻辑可以参考下图:
 //
 // 
 //
@@ -655,11 +659,15 @@ func (c *Client) CreateDocument(request *CreateDocumentRequest) (response *Creat
 }
 
 // CreateDocument
-// 创建签署流程电子文档
+// 创建签署流程电子文档<br />
 //
-// 适用场景：见创建签署流程接口。
+// 适用场景：见创建签署流程接口。<br />
 //
-// 注：该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。需要配置<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用, 具体逻辑可以参考下图:
+// 点击查看<a href="https://qian.tencent.com/developers/startFlows/CreateFlow" target="_blank">通过模板创建签署流程</a>
+//
+// <a href="https://qian.tencent.com/developers/startFlows/CreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>。<br />
+//
+// 注：该接口需要给对应的流程指定一个模板id，并且填充该模板中需要补充的信息。需要配置<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlow" target="_blank">创建签署流程</a>和<a href="https://qian.tencent.com/developers/companyApis/startFlows/StartFlow" target="_blank">发起签署流程</a>接口使用。具体逻辑可以参考下图:
 //
 // 
 //
@@ -3216,11 +3224,11 @@ func NewCreatePrepareFlowResponse() (response *CreatePrepareFlowResponse) {
 }
 
 // CreatePrepareFlow
-// 创建快速发起流程
+// 创建发起流程web页面
 //
-// <br/>适用场景：用户通过API 合同文件及签署信息，并可通过我们返回的URL在页面完成签署控件等信息的编辑与确认，快速发起合同.
+// <br/>适用场景：通过该接口（CreatePrepareFlow）传入合同文件/模板编号及签署人信息，可获得发起流程的可嵌入页面，在页面完成签署控件等信息的编辑与确认后，快速发起流程。
 //
-// <br/>注：该接口文件的resourceId 是通过上传文件之后获取的。
+// <br/>注：该接口包含模板/文件发起流程的全部功能，调用接口后不会立即发起，需在可嵌入页面点击按钮进行发起流程。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3300,11 +3308,11 @@ func (c *Client) CreatePrepareFlow(request *CreatePrepareFlowRequest) (response 
 }
 
 // CreatePrepareFlow
-// 创建快速发起流程
+// 创建发起流程web页面
 //
-// <br/>适用场景：用户通过API 合同文件及签署信息，并可通过我们返回的URL在页面完成签署控件等信息的编辑与确认，快速发起合同.
+// <br/>适用场景：通过该接口（CreatePrepareFlow）传入合同文件/模板编号及签署人信息，可获得发起流程的可嵌入页面，在页面完成签署控件等信息的编辑与确认后，快速发起流程。
 //
-// <br/>注：该接口文件的resourceId 是通过上传文件之后获取的。
+// <br/>注：该接口包含模板/文件发起流程的全部功能，调用接口后不会立即发起，需在可嵌入页面点击按钮进行发起流程。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -3912,7 +3920,7 @@ func NewCreateSealPolicyResponse() (response *CreateSealPolicyResponse) {
 }
 
 // CreateSealPolicy
-// 对企业员工进行印章授权
+// 本接口（CreateSealPolicy）用于对企业员工进行印章授权
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3928,7 +3936,7 @@ func (c *Client) CreateSealPolicy(request *CreateSealPolicyRequest) (response *C
 }
 
 // CreateSealPolicy
-// 对企业员工进行印章授权
+// 本接口（CreateSealPolicy）用于对企业员工进行印章授权
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -4056,9 +4064,11 @@ func NewCreateWebThemeConfigResponse() (response *CreateWebThemeConfigResponse) 
 }
 
 // CreateWebThemeConfig
-// 用来创建嵌入式页面个性化主题配置（例如是否展示电子签logo、定义主题色等），该接口配合其他所有可嵌入页面接口使用
+// 用来设置本企业嵌入式页面个性化主题配置（例如是否展示电子签logo、定义主题色等），设置后获取的web签署界面都会使用此配置进行展示。
 //
-// 创建配置对当前企业全局生效，如果多次调用，会以最后一次的配置为准
+// 
+//
+// 如果多次调用，会以最后一次的配置为准
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4068,9 +4078,11 @@ func (c *Client) CreateWebThemeConfig(request *CreateWebThemeConfigRequest) (res
 }
 
 // CreateWebThemeConfig
-// 用来创建嵌入式页面个性化主题配置（例如是否展示电子签logo、定义主题色等），该接口配合其他所有可嵌入页面接口使用
+// 用来设置本企业嵌入式页面个性化主题配置（例如是否展示电子签logo、定义主题色等），设置后获取的web签署界面都会使用此配置进行展示。
 //
-// 创建配置对当前企业全局生效，如果多次调用，会以最后一次的配置为准
+// 
+//
+// 如果多次调用，会以最后一次的配置为准
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4308,7 +4320,7 @@ func NewDeleteSealPoliciesResponse() (response *DeleteSealPoliciesResponse) {
 }
 
 // DeleteSealPolicies
-// 撤销员工持有的印章权限
+// 本接口（DeleteSealPolicies）用于撤销企业员工持有的印章权限
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4323,7 +4335,7 @@ func (c *Client) DeleteSealPolicies(request *DeleteSealPoliciesRequest) (respons
 }
 
 // DeleteSealPolicies
-// 撤销员工持有的印章权限
+// 本接口（DeleteSealPolicies）用于撤销企业员工持有的印章权限
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -4440,7 +4452,7 @@ func NewDescribeFileUrlsResponse() (response *DescribeFileUrlsResponse) {
 }
 
 // DescribeFileUrls
-// 查询文件下载URL。
+// 本接口（DescribeFileUrls）用于查询文件的下载URL。
 //
 // 适用场景：通过传参合同流程编号，下载对应的合同PDF文件流到本地。
 //
@@ -4475,7 +4487,7 @@ func (c *Client) DescribeFileUrls(request *DescribeFileUrlsRequest) (response *D
 }
 
 // DescribeFileUrls
-// 查询文件下载URL。
+// 本接口（DescribeFileUrls）用于查询文件的下载URL。
 //
 // 适用场景：通过传参合同流程编号，下载对应的合同PDF文件流到本地。
 //
@@ -4668,7 +4680,7 @@ func NewDescribeFlowComponentsResponse() (response *DescribeFlowComponentsRespon
 }
 
 // DescribeFlowComponents
-// 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息和填写内容。
+// 查询流程填写控件内容，可以根据合同流程ID查询该合同流程相关联的填写控件信息和填写内容。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
@@ -4680,7 +4692,7 @@ func (c *Client) DescribeFlowComponents(request *DescribeFlowComponentsRequest) 
 }
 
 // DescribeFlowComponents
-// 查询流程填写控件内容，可以根据流程Id查询该流程相关联的填写控件信息和填写内容。
+// 查询流程填写控件内容，可以根据合同流程ID查询该合同流程相关联的填写控件信息和填写内容。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
@@ -4824,7 +4836,9 @@ func NewDescribeFlowInfoResponse() (response *DescribeFlowInfoResponse) {
 }
 
 // DescribeFlowInfo
-// 查询合同详情
+// 接口用户查询合同流程的详情信息, 支持查询多个(数量不能超过100)
+//
+// 
 //
 // 适用场景：可用于主动查询某个合同详情信息。
 //
@@ -4843,7 +4857,9 @@ func (c *Client) DescribeFlowInfo(request *DescribeFlowInfoRequest) (response *D
 }
 
 // DescribeFlowInfo
-// 查询合同详情
+// 接口用户查询合同流程的详情信息, 支持查询多个(数量不能超过100)
+//
+// 
 //
 // 适用场景：可用于主动查询某个合同详情信息。
 //
@@ -4892,19 +4908,7 @@ func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse
 }
 
 // DescribeFlowTemplates
-// 本接口用于查询本企业模板列表。
-//
-// 
-//
-// 当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。
-//
-// 
-//
-// > **适用场景** 
-//
-// >
-//
-// >  该接口常用来配合“模板发起合同-创建电子文档”接口作为前置的接口使用。 
+// 此接口（DescribeFlowTemplates）用于查询本企业模板列表信息。
 //
 // >  一个模板通常会包含以下结构信息
 //
@@ -4917,6 +4921,18 @@ func NewDescribeFlowTemplatesResponse() (response *DescribeFlowTemplatesResponse
 // >- 签署控件 SignComponents
 //
 // >- 生成模板的文件基础信息 FileInfos
+//
+// 
+//
+// 当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。
+//
+// 
+//
+// 适用场景：
+//
+// 该接口常用来配合<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">模板发起合同-创建电子文档</a>接口，作为创建电子文档的前置接口使用。
+//
+// 通过此接口查询到模板信息后，再通过调用创建电子文档接口，指定模板ID，指定模板中需要的填写控件内容等，完成电子文档的创建。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4948,19 +4964,7 @@ func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (r
 }
 
 // DescribeFlowTemplates
-// 本接口用于查询本企业模板列表。
-//
-// 
-//
-// 当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。
-//
-// 
-//
-// > **适用场景** 
-//
-// >
-//
-// >  该接口常用来配合“模板发起合同-创建电子文档”接口作为前置的接口使用。 
+// 此接口（DescribeFlowTemplates）用于查询本企业模板列表信息。
 //
 // >  一个模板通常会包含以下结构信息
 //
@@ -4973,6 +4977,18 @@ func (c *Client) DescribeFlowTemplates(request *DescribeFlowTemplatesRequest) (r
 // >- 签署控件 SignComponents
 //
 // >- 生成模板的文件基础信息 FileInfos
+//
+// 
+//
+// 当模板较多或模板中的控件较多时，可以通过查询模板接口更方便的获取模板列表，以及每个模板内的控件信息。
+//
+// 
+//
+// 适用场景：
+//
+// 该接口常用来配合<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateDocument" target="_blank">模板发起合同-创建电子文档</a>接口，作为创建电子文档的前置接口使用。
+//
+// 通过此接口查询到模板信息后，再通过调用创建电子文档接口，指定模板ID，指定模板中需要的填写控件内容等，完成电子文档的创建。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -6290,7 +6306,7 @@ func NewVerifyPdfResponse() (response *VerifyPdfResponse) {
 }
 
 // VerifyPdf
-// 对流程的合同文件进行数字签名验证，判断文件是否被篡改。
+// 对合同流程文件进行数字签名验证，判断数字签名是否有效，合同文件内容是否被篡改。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -6304,7 +6320,7 @@ func (c *Client) VerifyPdf(request *VerifyPdfRequest) (response *VerifyPdfRespon
 }
 
 // VerifyPdf
-// 对流程的合同文件进行数字签名验证，判断文件是否被篡改。
+// 对合同流程文件进行数字签名验证，判断数字签名是否有效，合同文件内容是否被篡改。
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

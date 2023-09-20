@@ -3684,6 +3684,83 @@ func (r *ModifyAclResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyCmdTemplateRequestParams struct {
+	// 模板名，最长32字符，不能包含空白字符
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 命令列表，\n分隔，最长32768字节
+	CmdList *string `json:"CmdList,omitnil" name:"CmdList"`
+
+	// 命令模板ID
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
+
+	// CmdList字段前端是否base64传值。
+	// 0：否，1：是
+	Encoding *uint64 `json:"Encoding,omitnil" name:"Encoding"`
+}
+
+type ModifyCmdTemplateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 模板名，最长32字符，不能包含空白字符
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 命令列表，\n分隔，最长32768字节
+	CmdList *string `json:"CmdList,omitnil" name:"CmdList"`
+
+	// 命令模板ID
+	Id *uint64 `json:"Id,omitnil" name:"Id"`
+
+	// CmdList字段前端是否base64传值。
+	// 0：否，1：是
+	Encoding *uint64 `json:"Encoding,omitnil" name:"Encoding"`
+}
+
+func (r *ModifyCmdTemplateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCmdTemplateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Name")
+	delete(f, "CmdList")
+	delete(f, "Id")
+	delete(f, "Encoding")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyCmdTemplateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyCmdTemplateResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyCmdTemplateResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyCmdTemplateResponseParams `json:"Response"`
+}
+
+func (r *ModifyCmdTemplateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyCmdTemplateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyDeviceGroupRequestParams struct {
 	// 资产组名，最大长度32字符，不能为空
 	Name *string `json:"Name,omitnil" name:"Name"`

@@ -1,3 +1,221 @@
+# Release v1.0.752
+
+## 云硬盘(cbs) 版本：2017-03-12
+
+### 第 52 次发布
+
+发布时间：2023-09-20 01:08:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CdcSize](https://cloud.tencent.com/document/api/362/15669#CdcSize)
+
+	* 新增成员：DiskAvailable
+
+	* <font color="#dd0000">**删除成员**：</font>DiskAavilable
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 95 次发布
+
+发布时间：2023-09-20 01:13:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [InquiryPriceCreateLoadBalancer](https://cloud.tencent.com/document/api/214/98697)
+* [InquiryPriceModifyLoadBalancer](https://cloud.tencent.com/document/api/214/98696)
+* [InquiryPriceRefundLoadBalancer](https://cloud.tencent.com/document/api/214/98694)
+* [InquiryPriceRenewLoadBalancer](https://cloud.tencent.com/document/api/214/98695)
+
+新增数据结构：
+
+* [ItemPrice](https://cloud.tencent.com/document/api/214/30694#ItemPrice)
+* [Price](https://cloud.tencent.com/document/api/214/30694#Price)
+
+
+
+## 主机安全(cwp) 版本：2018-02-28
+
+### 第 95 次发布
+
+发布时间：2023-09-20 01:15:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAttackEvents](https://cloud.tencent.com/document/api/296/98699)
+* [DescribeMachineRiskCnt](https://cloud.tencent.com/document/api/296/98698)
+* [DescribeSecurityBroadcasts](https://cloud.tencent.com/document/api/296/98701)
+* [ModifyLicenseOrder](https://cloud.tencent.com/document/api/296/98700)
+
+新增数据结构：
+
+* [Broadcasts](https://cloud.tencent.com/document/api/296/19867#Broadcasts)
+* [NetAttackEvent](https://cloud.tencent.com/document/api/296/19867#NetAttackEvent)
+
+
+
+## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
+
+### 第 71 次发布
+
+发布时间：2023-09-20 01:32:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeBackupConfig](https://cloud.tencent.com/document/api/1003/48094)
+
+	* 新增出参：LogicCrossRegionsConfigUpdateTime
+
+* [DescribeBackupList](https://cloud.tencent.com/document/api/1003/48093)
+
+	* 新增入参：BackupRegion, IsCrossRegionsBackup
+
+* [ModifyBackupConfig](https://cloud.tencent.com/document/api/1003/48090)
+
+	* 新增入参：LogicBackupConfig, DeleteAutoLogicBackup
+
+	* <font color="#dd0000">**修改入参**：</font>ReserveDuration
+
+
+新增数据结构：
+
+* [LogicBackupConfigInfo](https://cloud.tencent.com/document/api/1003/48097#LogicBackupConfigInfo)
+
+
+
+## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+
+### 第 16 次发布
+
+发布时间：2023-09-20 01:33:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ModifyCmdTemplate](https://cloud.tencent.com/document/api/1025/98702)
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 120 次发布
+
+发布时间：2023-09-20 01:35:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreatePrepareFlow](https://cloud.tencent.com/document/api/1323/83412)
+
+	* 新增入参：InitiatorComponents
+
+* [VerifyPdf](https://cloud.tencent.com/document/api/1323/80797)
+
+	* 新增入参：Agent
+
+
+
+
+## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 7 次发布
+
+发布时间：2023-09-19 17:35:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRecordSlice](https://cloud.tencent.com/document/api/1344/98691)
+
+新增数据结构：
+
+* [RecordSliceInfo](https://cloud.tencent.com/document/api/1344/95952#RecordSliceInfo)
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 71 次发布
+
+发布时间：2023-09-20 01:41:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TaskNotifyConfig](https://cloud.tencent.com/document/api/862/37615#TaskNotifyConfig)
+
+	* 新增成员：NotifyKey
+
+
+
+
+## 集团账号管理(organization) 版本：2021-03-31
+
+### 第 24 次发布
+
+发布时间：2023-09-19 14:35:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QuitOrganization](https://cloud.tencent.com/document/api/850/98683)
+
+
+
+## 集团账号管理(organization) 版本：2018-12-25
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 55 次发布
+
+发布时间：2023-09-20 01:52:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [SwitchElasticMode](https://cloud.tencent.com/document/api/627/98703)
+
+
+
 # Release v1.0.751
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09

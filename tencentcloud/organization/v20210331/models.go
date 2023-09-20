@@ -2352,6 +2352,60 @@ type OrgProductFinancial struct {
 }
 
 // Predefined struct for user
+type QuitOrganizationRequestParams struct {
+	// 企业组织ID
+	OrgId *uint64 `json:"OrgId,omitnil" name:"OrgId"`
+}
+
+type QuitOrganizationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 企业组织ID
+	OrgId *uint64 `json:"OrgId,omitnil" name:"OrgId"`
+}
+
+func (r *QuitOrganizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QuitOrganizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "OrgId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QuitOrganizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QuitOrganizationResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type QuitOrganizationResponse struct {
+	*tchttp.BaseResponse
+	Response *QuitOrganizationResponseParams `json:"Response"`
+}
+
+func (r *QuitOrganizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QuitOrganizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateOrganizationMemberEmailBindRequestParams struct {
 	// 成员Uin
 	MemberUin *int64 `json:"MemberUin,omitnil" name:"MemberUin"`

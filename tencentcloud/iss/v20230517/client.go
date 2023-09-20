@@ -2723,6 +2723,72 @@ func (c *Client) DescribeRecordRetrieveTaskWithContext(ctx context.Context, requ
     return
 }
 
+func NewDescribeRecordSliceRequest() (request *DescribeRecordSliceRequest) {
+    request = &DescribeRecordSliceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DescribeRecordSlice")
+    
+    
+    return
+}
+
+func NewDescribeRecordSliceResponse() (response *DescribeRecordSliceResponse) {
+    response = &DescribeRecordSliceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRecordSlice
+// 平台支持将数据以TS切片的形式存入客户自有COS桶，该接口用于支持客户快捷查询切片信息列表
+//
+// （注意：只支持标准存储类型的查询）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDBODYFORMAT = "InvalidParameter.InvalidBodyFormat"
+//  INVALIDPARAMETERVALUE_ILLEGALCHANNELID = "InvalidParameterValue.IllegalChannelId"
+//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
+//  INVALIDPARAMETERVALUE_INVALIDSTARTTIMEORENDTIME = "InvalidParameterValue.InvalidStartTimeOrEndTime"
+//  INVALIDPARAMETERVALUE_NONSAMEDAY = "InvalidParameterValue.NonSameDay"
+//  INVALIDPARAMETERVALUE_STARTTIMEGREATERTHANOREQUALENDTIME = "InvalidParameterValue.StartTimeGreaterThanOrEqualEndTime"
+//  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
+func (c *Client) DescribeRecordSlice(request *DescribeRecordSliceRequest) (response *DescribeRecordSliceResponse, err error) {
+    return c.DescribeRecordSliceWithContext(context.Background(), request)
+}
+
+// DescribeRecordSlice
+// 平台支持将数据以TS切片的形式存入客户自有COS桶，该接口用于支持客户快捷查询切片信息列表
+//
+// （注意：只支持标准存储类型的查询）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER_INVALIDBODYFORMAT = "InvalidParameter.InvalidBodyFormat"
+//  INVALIDPARAMETERVALUE_ILLEGALCHANNELID = "InvalidParameterValue.IllegalChannelId"
+//  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
+//  INVALIDPARAMETERVALUE_INVALIDSTARTTIMEORENDTIME = "InvalidParameterValue.InvalidStartTimeOrEndTime"
+//  INVALIDPARAMETERVALUE_NONSAMEDAY = "InvalidParameterValue.NonSameDay"
+//  INVALIDPARAMETERVALUE_STARTTIMEGREATERTHANOREQUALENDTIME = "InvalidParameterValue.StartTimeGreaterThanOrEqualEndTime"
+//  RESOURCENOTFOUND_CHANNELNOTEXIST = "ResourceNotFound.ChannelNotExist"
+func (c *Client) DescribeRecordSliceWithContext(ctx context.Context, request *DescribeRecordSliceRequest) (response *DescribeRecordSliceResponse, err error) {
+    if request == nil {
+        request = NewDescribeRecordSliceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRecordSlice require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRecordSliceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRecordTemplateRequest() (request *DescribeRecordTemplateRequest) {
     request = &DescribeRecordTemplateRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -4025,6 +4025,68 @@ func (c *Client) DescribeAssetWebServiceProcessListWithContext(ctx context.Conte
     return
 }
 
+func NewDescribeAttackEventsRequest() (request *DescribeAttackEventsRequest) {
+    request = &DescribeAttackEventsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAttackEvents")
+    
+    
+    return
+}
+
+func NewDescribeAttackEventsResponse() (response *DescribeAttackEventsResponse) {
+    response = &DescribeAttackEventsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAttackEvents
+// 按分页形式展示网络攻击检测事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAttackEvents(request *DescribeAttackEventsRequest) (response *DescribeAttackEventsResponse, err error) {
+    return c.DescribeAttackEventsWithContext(context.Background(), request)
+}
+
+// DescribeAttackEvents
+// 按分页形式展示网络攻击检测事件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeAttackEventsWithContext(ctx context.Context, request *DescribeAttackEventsRequest) (response *DescribeAttackEventsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAttackEventsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAttackEvents require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAttackEventsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAttackLogInfoRequest() (request *DescribeAttackLogInfoRequest) {
     request = &DescribeAttackLogInfoRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8257,6 +8319,66 @@ func (c *Client) DescribeMachineRegionsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeMachineRiskCntRequest() (request *DescribeMachineRiskCntRequest) {
+    request = &DescribeMachineRiskCntRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeMachineRiskCnt")
+    
+    
+    return
+}
+
+func NewDescribeMachineRiskCntResponse() (response *DescribeMachineRiskCntResponse) {
+    response = &DescribeMachineRiskCntResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeMachineRiskCnt
+// 查询主机入侵检测事件统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeMachineRiskCnt(request *DescribeMachineRiskCntRequest) (response *DescribeMachineRiskCntResponse, err error) {
+    return c.DescribeMachineRiskCntWithContext(context.Background(), request)
+}
+
+// DescribeMachineRiskCnt
+// 查询主机入侵检测事件统计
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeMachineRiskCntWithContext(ctx context.Context, request *DescribeMachineRiskCntRequest) (response *DescribeMachineRiskCntResponse, err error) {
+    if request == nil {
+        request = NewDescribeMachineRiskCntRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeMachineRiskCnt require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeMachineRiskCntResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMachinesRequest() (request *DescribeMachinesRequest) {
     request = &DescribeMachinesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -10195,6 +10317,66 @@ func (c *Client) DescribeSearchTemplatesWithContext(ctx context.Context, request
     request.SetContext(ctx)
     
     response = NewDescribeSearchTemplatesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeSecurityBroadcastsRequest() (request *DescribeSecurityBroadcastsRequest) {
+    request = &DescribeSecurityBroadcastsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeSecurityBroadcasts")
+    
+    
+    return
+}
+
+func NewDescribeSecurityBroadcastsResponse() (response *DescribeSecurityBroadcastsResponse) {
+    response = &DescribeSecurityBroadcastsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSecurityBroadcasts
+// 安全播报列表页
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DescribeSecurityBroadcasts(request *DescribeSecurityBroadcastsRequest) (response *DescribeSecurityBroadcastsResponse, err error) {
+    return c.DescribeSecurityBroadcastsWithContext(context.Background(), request)
+}
+
+// DescribeSecurityBroadcasts
+// 安全播报列表页
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_MAINDBFAIL = "InternalError.MainDBFail"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+//  INVALIDPARAMETER_MISSINGPARAMETER = "InvalidParameter.MissingParameter"
+//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
+func (c *Client) DescribeSecurityBroadcastsWithContext(ctx context.Context, request *DescribeSecurityBroadcastsRequest) (response *DescribeSecurityBroadcastsResponse, err error) {
+    if request == nil {
+        request = NewDescribeSecurityBroadcastsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSecurityBroadcasts require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSecurityBroadcastsResponse()
     err = c.Send(request, response)
     return
 }
@@ -14189,6 +14371,64 @@ func (c *Client) ModifyLicenseBindsWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyLicenseBindsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyLicenseOrderRequest() (request *ModifyLicenseOrderRequest) {
+    request = &ModifyLicenseOrderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "ModifyLicenseOrder")
+    
+    
+    return
+}
+
+func NewModifyLicenseOrderResponse() (response *ModifyLicenseOrderResponse) {
+    response = &ModifyLicenseOrderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyLicenseOrder
+// 编辑《主机安全-按量计费》授权订单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLicenseOrder(request *ModifyLicenseOrderRequest) (response *ModifyLicenseOrderResponse, err error) {
+    return c.ModifyLicenseOrderWithContext(context.Background(), request)
+}
+
+// ModifyLicenseOrder
+// 编辑《主机安全-按量计费》授权订单
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyLicenseOrderWithContext(ctx context.Context, request *ModifyLicenseOrderRequest) (response *ModifyLicenseOrderResponse, err error) {
+    if request == nil {
+        request = NewModifyLicenseOrderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyLicenseOrder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyLicenseOrderResponse()
     err = c.Send(request, response)
     return
 }

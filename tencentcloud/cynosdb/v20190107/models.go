@@ -4351,6 +4351,10 @@ type DescribeBackupConfigResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BackupType *string `json:"BackupType,omitnil" name:"BackupType"`
 
+	// 跨地域逻辑备份配置修改时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogicCrossRegionsConfigUpdateTime *string `json:"LogicCrossRegionsConfigUpdateTime,omitnil" name:"LogicCrossRegionsConfigUpdateTime"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -4476,6 +4480,12 @@ type DescribeBackupListRequestParams struct {
 
 	// 快照备份Id列表
 	SnapshotIdList []*int64 `json:"SnapshotIdList,omitnil" name:"SnapshotIdList"`
+
+	// 备份地域
+	BackupRegion *string `json:"BackupRegion,omitnil" name:"BackupRegion"`
+
+	// 是否跨地域备份
+	IsCrossRegionsBackup *string `json:"IsCrossRegionsBackup,omitnil" name:"IsCrossRegionsBackup"`
 }
 
 type DescribeBackupListRequest struct {
@@ -4520,6 +4530,12 @@ type DescribeBackupListRequest struct {
 
 	// 快照备份Id列表
 	SnapshotIdList []*int64 `json:"SnapshotIdList,omitnil" name:"SnapshotIdList"`
+
+	// 备份地域
+	BackupRegion *string `json:"BackupRegion,omitnil" name:"BackupRegion"`
+
+	// 是否跨地域备份
+	IsCrossRegionsBackup *string `json:"IsCrossRegionsBackup,omitnil" name:"IsCrossRegionsBackup"`
 }
 
 func (r *DescribeBackupListRequest) ToJsonString() string {
@@ -4547,6 +4563,8 @@ func (r *DescribeBackupListRequest) FromJsonString(s string) error {
 	delete(f, "FileNames")
 	delete(f, "BackupNames")
 	delete(f, "SnapshotIdList")
+	delete(f, "BackupRegion")
+	delete(f, "IsCrossRegionsBackup")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBackupListRequest has unknown keys!", "")
 	}
@@ -8244,6 +8262,32 @@ type LogRuleTemplateInfo struct {
 	RuleTemplateStatus *int64 `json:"RuleTemplateStatus,omitnil" name:"RuleTemplateStatus"`
 }
 
+type LogicBackupConfigInfo struct {
+	// 是否开启自动逻辑备份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogicBackupEnable *string `json:"LogicBackupEnable,omitnil" name:"LogicBackupEnable"`
+
+	// 自动逻辑备份开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogicBackupTimeBeg *uint64 `json:"LogicBackupTimeBeg,omitnil" name:"LogicBackupTimeBeg"`
+
+	// 自动逻辑备份结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogicBackupTimeEnd *uint64 `json:"LogicBackupTimeEnd,omitnil" name:"LogicBackupTimeEnd"`
+
+	// 自动逻辑备份保留时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogicReserveDuration *uint64 `json:"LogicReserveDuration,omitnil" name:"LogicReserveDuration"`
+
+	// 是否开启跨地域逻辑备份
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogicCrossRegionsEnable *string `json:"LogicCrossRegionsEnable,omitnil" name:"LogicCrossRegionsEnable"`
+
+	// 逻辑备份所跨地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogicCrossRegions []*string `json:"LogicCrossRegions,omitnil" name:"LogicCrossRegions"`
+}
+
 type ModifiableInfo struct {
 
 }
@@ -8724,20 +8768,26 @@ type ModifyBackupConfigRequestParams struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
-	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
-	ReserveDuration *uint64 `json:"ReserveDuration,omitnil" name:"ReserveDuration"`
-
 	// 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
 	BackupTimeBeg *uint64 `json:"BackupTimeBeg,omitnil" name:"BackupTimeBeg"`
 
 	// 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
 	BackupTimeEnd *uint64 `json:"BackupTimeEnd,omitnil" name:"BackupTimeEnd"`
 
+	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
+	ReserveDuration *uint64 `json:"ReserveDuration,omitnil" name:"ReserveDuration"`
+
 	// 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
 	BackupFreq []*string `json:"BackupFreq,omitnil" name:"BackupFreq"`
 
 	// 该参数目前不支持修改，无需填写。备份方式，logic-逻辑备份，snapshot-快照备份
 	BackupType *string `json:"BackupType,omitnil" name:"BackupType"`
+
+	// 逻辑备份配置
+	LogicBackupConfig *LogicBackupConfigInfo `json:"LogicBackupConfig,omitnil" name:"LogicBackupConfig"`
+
+	// 是否删除自动逻辑备份
+	DeleteAutoLogicBackup *bool `json:"DeleteAutoLogicBackup,omitnil" name:"DeleteAutoLogicBackup"`
 }
 
 type ModifyBackupConfigRequest struct {
@@ -8746,20 +8796,26 @@ type ModifyBackupConfigRequest struct {
 	// 集群ID
 	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
 
-	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
-	ReserveDuration *uint64 `json:"ReserveDuration,omitnil" name:"ReserveDuration"`
-
 	// 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
 	BackupTimeBeg *uint64 `json:"BackupTimeBeg,omitnil" name:"BackupTimeBeg"`
 
 	// 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
 	BackupTimeEnd *uint64 `json:"BackupTimeEnd,omitnil" name:"BackupTimeEnd"`
 
+	// 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
+	ReserveDuration *uint64 `json:"ReserveDuration,omitnil" name:"ReserveDuration"`
+
 	// 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
 	BackupFreq []*string `json:"BackupFreq,omitnil" name:"BackupFreq"`
 
 	// 该参数目前不支持修改，无需填写。备份方式，logic-逻辑备份，snapshot-快照备份
 	BackupType *string `json:"BackupType,omitnil" name:"BackupType"`
+
+	// 逻辑备份配置
+	LogicBackupConfig *LogicBackupConfigInfo `json:"LogicBackupConfig,omitnil" name:"LogicBackupConfig"`
+
+	// 是否删除自动逻辑备份
+	DeleteAutoLogicBackup *bool `json:"DeleteAutoLogicBackup,omitnil" name:"DeleteAutoLogicBackup"`
 }
 
 func (r *ModifyBackupConfigRequest) ToJsonString() string {
@@ -8775,11 +8831,13 @@ func (r *ModifyBackupConfigRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ClusterId")
-	delete(f, "ReserveDuration")
 	delete(f, "BackupTimeBeg")
 	delete(f, "BackupTimeEnd")
+	delete(f, "ReserveDuration")
 	delete(f, "BackupFreq")
 	delete(f, "BackupType")
+	delete(f, "LogicBackupConfig")
+	delete(f, "DeleteAutoLogicBackup")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyBackupConfigRequest has unknown keys!", "")
 	}

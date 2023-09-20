@@ -14838,6 +14838,10 @@ type TaskNotifyConfig struct {
 	// 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AwsSQS *AwsSQS `json:"AwsSQS,omitnil" name:"AwsSQS"`
+
+	// 用于生成回调签名的key。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NotifyKey *string `json:"NotifyKey,omitnil" name:"NotifyKey"`
 }
 
 type TaskOutputStorage struct {

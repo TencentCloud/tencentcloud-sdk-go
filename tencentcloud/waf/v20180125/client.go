@@ -342,7 +342,7 @@ func NewAddSpartaProtectionResponse() (response *AddSpartaProtectionResponse) {
 }
 
 // AddSpartaProtection
-// 添加Spart防护域名
+// 添加SaaS型WAF防护域名
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -373,7 +373,7 @@ func (c *Client) AddSpartaProtection(request *AddSpartaProtectionRequest) (respo
 }
 
 // AddSpartaProtection
-// 添加Spart防护域名
+// 添加SaaS型WAF防护域名
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -520,7 +520,7 @@ func NewCreateHostResponse() (response *CreateHostResponse) {
 }
 
 // CreateHost
-// clb-waf中添加防护的域名
+// clb-waf中添加防护域名
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -541,7 +541,7 @@ func (c *Client) CreateHost(request *CreateHostRequest) (response *CreateHostRes
 }
 
 // CreateHost
-// clb-waf中添加防护的域名
+// clb-waf中添加防护域名
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1270,7 +1270,7 @@ func NewDeleteSpartaProtectionResponse() (response *DeleteSpartaProtectionRespon
 }
 
 // DeleteSpartaProtection
-// SAASWAF删除防护域名
+// Saas型WAF删除防护域名
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1282,7 +1282,7 @@ func (c *Client) DeleteSpartaProtection(request *DeleteSpartaProtectionRequest) 
 }
 
 // DeleteSpartaProtection
-// SAASWAF删除防护域名
+// Saas型WAF删除防护域名
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -2170,7 +2170,7 @@ func NewDescribeCiphersDetailResponse() (response *DescribeCiphersDetailResponse
 }
 
 // DescribeCiphersDetail
-// 查询加密套件信息
+// Saas型WAF接入查询加密套件信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2198,7 +2198,7 @@ func (c *Client) DescribeCiphersDetail(request *DescribeCiphersDetailRequest) (r
 }
 
 // DescribeCiphersDetail
-// 查询加密套件信息
+// Saas型WAF接入查询加密套件信息
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2448,7 +2448,7 @@ func NewDescribeDomainDetailsClbResponse() (response *DescribeDomainDetailsClbRe
 }
 
 // DescribeDomainDetailsClb
-// 获取一个clb域名详情
+// 获取一个clbwaf域名详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2476,7 +2476,7 @@ func (c *Client) DescribeDomainDetailsClb(request *DescribeDomainDetailsClbReque
 }
 
 // DescribeDomainDetailsClb
-// 获取一个clb域名详情
+// 获取一个clbwaf域名详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2534,7 +2534,7 @@ func NewDescribeDomainDetailsSaasResponse() (response *DescribeDomainDetailsSaas
 }
 
 // DescribeDomainDetailsSaas
-// 查询单个saas域名详情
+// 查询单个saaswaf域名详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -2562,7 +2562,7 @@ func (c *Client) DescribeDomainDetailsSaas(request *DescribeDomainDetailsSaasReq
 }
 
 // DescribeDomainDetailsSaas
-// 查询单个saas域名详情
+// 查询单个saaswaf域名详情
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -3590,7 +3590,7 @@ func NewDescribePortsResponse() (response *DescribePortsResponse) {
 }
 
 // DescribePorts
-// 获取非标端口列表
+// 获取Saas型WAF防护端口列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -3599,7 +3599,7 @@ func (c *Client) DescribePorts(request *DescribePortsRequest) (response *Describ
 }
 
 // DescribePorts
-// 获取非标端口列表
+// 获取Saas型WAF防护端口列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -5428,7 +5428,7 @@ func NewModifyDomainIpv6StatusResponse() (response *ModifyDomainIpv6StatusRespon
 }
 
 // ModifyDomainIpv6Status
-// 修改ipv6开关
+// 切换ipv6开关
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -5457,7 +5457,7 @@ func (c *Client) ModifyDomainIpv6Status(request *ModifyDomainIpv6StatusRequest) 
 }
 
 // ModifyDomainIpv6Status
-// 修改ipv6开关
+// 切换ipv6开关
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6917,6 +6917,60 @@ func (c *Client) SwitchDomainRulesWithContext(ctx context.Context, request *Swit
     request.SetContext(ctx)
     
     response = NewSwitchDomainRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSwitchElasticModeRequest() (request *SwitchElasticModeRequest) {
+    request = &SwitchElasticModeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "SwitchElasticMode")
+    
+    
+    return
+}
+
+func NewSwitchElasticModeResponse() (response *SwitchElasticModeResponse) {
+    response = &SwitchElasticModeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SwitchElasticMode
+// 切换弹性的开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) SwitchElasticMode(request *SwitchElasticModeRequest) (response *SwitchElasticModeResponse, err error) {
+    return c.SwitchElasticModeWithContext(context.Background(), request)
+}
+
+// SwitchElasticMode
+// 切换弹性的开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) SwitchElasticModeWithContext(ctx context.Context, request *SwitchElasticModeRequest) (response *SwitchElasticModeResponse, err error) {
+    if request == nil {
+        request = NewSwitchElasticModeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SwitchElasticMode require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSwitchElasticModeResponse()
     err = c.Send(request, response)
     return
 }

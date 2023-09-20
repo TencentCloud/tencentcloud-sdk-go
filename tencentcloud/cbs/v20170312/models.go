@@ -432,11 +432,12 @@ type Cdc struct {
 }
 
 type CdcSize struct {
-	// 独享集群的可用容量大小，单位GiB
-	DiskAavilable *uint64 `json:"DiskAavilable,omitnil" name:"DiskAavilable"`
-
 	// 独享集群的总容量大小，单位GiB
 	DiskTotal *uint64 `json:"DiskTotal,omitnil" name:"DiskTotal"`
+
+	// 独享集群的可用容量大小，单位GiB
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiskAvailable *uint64 `json:"DiskAvailable,omitnil" name:"DiskAvailable"`
 }
 
 // Predefined struct for user

@@ -123,10 +123,11 @@ type CreateCloudRecordingRequestParams struct {
 	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
 	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
 
-	// 录制机器人用于进入TRTC房间拉流的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个UserId不能与其他TRTC房间内的主播或者其他录制任务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分，即录制机器人进入房间的userid应保证独立且唯一。
+	// 录制机器人的UserId，用于进房发起录制任务。
+	// 【*注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复，也不可能指定相同的录制机器人UserId同时进房。建议可以把房间ID作为UserId的标识的一部分，即录制机器人UserId在房间内唯一。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 录制机器人用于进入TRTC房间拉流的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	// 录制机器人UserId对应的校验签名，即UserId和UserSig相当于录制机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
 	UserSig *string `json:"UserSig,omitnil" name:"UserSig"`
 
 	// 云端录制控制参数。
@@ -135,7 +136,8 @@ type CreateCloudRecordingRequestParams struct {
 	// 云端录制文件上传到云存储的参数(目前支持云点播VOD和对象存储COS)。点播和对象存储的参数必填其中之一，不支持同时设置点播和对象存储。
 	StorageParams *StorageParams `json:"StorageParams,omitnil" name:"StorageParams"`
 
-	// TRTC房间号的类型，必须和录制的房间所对应的RoomId类型相同:
+	// TRTC房间号的类型。
+	// 【*注意】必须和录制的房间所对应的RoomId类型相同:
 	// 0: 字符串类型的RoomId
 	// 1: 32位整型的RoomId（默认）
 	RoomIdType *uint64 `json:"RoomIdType,omitnil" name:"RoomIdType"`
@@ -162,10 +164,11 @@ type CreateCloudRecordingRequest struct {
 	// TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，录制的TRTC房间所对应的RoomId。
 	RoomId *string `json:"RoomId,omitnil" name:"RoomId"`
 
-	// 录制机器人用于进入TRTC房间拉流的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个UserId不能与其他TRTC房间内的主播或者其他录制任务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分，即录制机器人进入房间的userid应保证独立且唯一。
+	// 录制机器人的UserId，用于进房发起录制任务。
+	// 【*注意】这个UserId不能与当前房间内的主播观众[UserId](https://cloud.tencent.com/document/product/647/46351#userid)重复，也不可能指定相同的录制机器人UserId同时进房。建议可以把房间ID作为UserId的标识的一部分，即录制机器人UserId在房间内唯一。
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 录制机器人用于进入TRTC房间拉流的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+	// 录制机器人UserId对应的校验签名，即UserId和UserSig相当于录制机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
 	UserSig *string `json:"UserSig,omitnil" name:"UserSig"`
 
 	// 云端录制控制参数。
@@ -174,7 +177,8 @@ type CreateCloudRecordingRequest struct {
 	// 云端录制文件上传到云存储的参数(目前支持云点播VOD和对象存储COS)。点播和对象存储的参数必填其中之一，不支持同时设置点播和对象存储。
 	StorageParams *StorageParams `json:"StorageParams,omitnil" name:"StorageParams"`
 
-	// TRTC房间号的类型，必须和录制的房间所对应的RoomId类型相同:
+	// TRTC房间号的类型。
+	// 【*注意】必须和录制的房间所对应的RoomId类型相同:
 	// 0: 字符串类型的RoomId
 	// 1: 32位整型的RoomId（默认）
 	RoomIdType *uint64 `json:"RoomIdType,omitnil" name:"RoomIdType"`

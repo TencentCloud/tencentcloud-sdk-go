@@ -2393,6 +2393,94 @@ func (c *Client) ModifyAclWithContext(ctx context.Context, request *ModifyAclReq
     return
 }
 
+func NewModifyCmdTemplateRequest() (request *ModifyCmdTemplateRequest) {
+    request = &ModifyCmdTemplateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dasb", APIVersion, "ModifyCmdTemplate")
+    
+    
+    return
+}
+
+func NewModifyCmdTemplateResponse() (response *ModifyCmdTemplateResponse) {
+    response = &ModifyCmdTemplateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyCmdTemplate
+// 修改高危命令模板
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCmdTemplate(request *ModifyCmdTemplateRequest) (response *ModifyCmdTemplateResponse, err error) {
+    return c.ModifyCmdTemplateWithContext(context.Background(), request)
+}
+
+// ModifyCmdTemplate
+// 修改高危命令模板
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
+//  FAILEDOPERATION_DUPLICATEDATA = "FailedOperation.DuplicateData"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_RESOURCEID = "InvalidParameter.ResourceId"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyCmdTemplateWithContext(ctx context.Context, request *ModifyCmdTemplateRequest) (response *ModifyCmdTemplateResponse, err error) {
+    if request == nil {
+        request = NewModifyCmdTemplateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyCmdTemplate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyCmdTemplateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyDeviceRequest() (request *ModifyDeviceRequest) {
     request = &ModifyDeviceRequest{
         BaseRequest: &tchttp.BaseRequest{},

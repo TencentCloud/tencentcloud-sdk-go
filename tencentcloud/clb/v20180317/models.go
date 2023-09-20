@@ -5076,6 +5076,304 @@ type IdleLoadBalancer struct {
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
 }
 
+// Predefined struct for user
+type InquiryPriceCreateLoadBalancerRequestParams struct {
+	// 询价的负载均衡类型，OPEN为公网类型，INTERNAL为内网类型
+	LoadBalancerType *string `json:"LoadBalancerType,omitnil" name:"LoadBalancerType"`
+
+	// 询价的收费类型，POSTPAID为按量计费，"PREPAID"为预付费包年包月
+	LoadBalancerChargeType *string `json:"LoadBalancerChargeType,omitnil" name:"LoadBalancerChargeType"`
+
+	// 询价的收费周期
+	LoadBalancerChargePrepaid *LBChargePrepaid `json:"LoadBalancerChargePrepaid,omitnil" name:"LoadBalancerChargePrepaid"`
+
+	// 询价的网络计费方式
+	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil" name:"InternetAccessible"`
+
+	// 询价的负载均衡实例个数，默认为1
+	GoodsNum *uint64 `json:"GoodsNum,omitnil" name:"GoodsNum"`
+
+	// 指定可用区询价。如：ap-guangzhou-1
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 包年包月询价时传性能容量型规格，如：clb.c3.small。按量付费询价时传SLA
+	SlaType *string `json:"SlaType,omitnil" name:"SlaType"`
+
+	// IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
+	AddressIPVersion *string `json:"AddressIPVersion,omitnil" name:"AddressIPVersion"`
+
+	// 仅适用于公网负载均衡。CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。
+	VipIsp *string `json:"VipIsp,omitnil" name:"VipIsp"`
+}
+
+type InquiryPriceCreateLoadBalancerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 询价的负载均衡类型，OPEN为公网类型，INTERNAL为内网类型
+	LoadBalancerType *string `json:"LoadBalancerType,omitnil" name:"LoadBalancerType"`
+
+	// 询价的收费类型，POSTPAID为按量计费，"PREPAID"为预付费包年包月
+	LoadBalancerChargeType *string `json:"LoadBalancerChargeType,omitnil" name:"LoadBalancerChargeType"`
+
+	// 询价的收费周期
+	LoadBalancerChargePrepaid *LBChargePrepaid `json:"LoadBalancerChargePrepaid,omitnil" name:"LoadBalancerChargePrepaid"`
+
+	// 询价的网络计费方式
+	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil" name:"InternetAccessible"`
+
+	// 询价的负载均衡实例个数，默认为1
+	GoodsNum *uint64 `json:"GoodsNum,omitnil" name:"GoodsNum"`
+
+	// 指定可用区询价。如：ap-guangzhou-1
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 包年包月询价时传性能容量型规格，如：clb.c3.small。按量付费询价时传SLA
+	SlaType *string `json:"SlaType,omitnil" name:"SlaType"`
+
+	// IP版本，可取值：IPV4、IPV6、IPv6FullChain，不区分大小写，默认值 IPV4。说明：取值为IPV6表示为IPV6 NAT64版本；取值为IPv6FullChain，表示为IPv6版本。
+	AddressIPVersion *string `json:"AddressIPVersion,omitnil" name:"AddressIPVersion"`
+
+	// 仅适用于公网负载均衡。CMCC | CTCC | CUCC，分别对应 移动 | 电信 | 联通，如果不指定本参数，则默认使用BGP。
+	VipIsp *string `json:"VipIsp,omitnil" name:"VipIsp"`
+}
+
+func (r *InquiryPriceCreateLoadBalancerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquiryPriceCreateLoadBalancerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerType")
+	delete(f, "LoadBalancerChargeType")
+	delete(f, "LoadBalancerChargePrepaid")
+	delete(f, "InternetAccessible")
+	delete(f, "GoodsNum")
+	delete(f, "ZoneId")
+	delete(f, "SlaType")
+	delete(f, "AddressIPVersion")
+	delete(f, "VipIsp")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceCreateLoadBalancerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquiryPriceCreateLoadBalancerResponseParams struct {
+	// 该参数表示对应的价格。
+	Price *Price `json:"Price,omitnil" name:"Price"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type InquiryPriceCreateLoadBalancerResponse struct {
+	*tchttp.BaseResponse
+	Response *InquiryPriceCreateLoadBalancerResponseParams `json:"Response"`
+}
+
+func (r *InquiryPriceCreateLoadBalancerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquiryPriceCreateLoadBalancerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquiryPriceModifyLoadBalancerRequestParams struct {
+	// 负载均衡实例ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
+
+	// 修改后的网络带宽信息
+	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil" name:"InternetAccessible"`
+}
+
+type InquiryPriceModifyLoadBalancerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 负载均衡实例ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
+
+	// 修改后的网络带宽信息
+	InternetAccessible *InternetAccessible `json:"InternetAccessible,omitnil" name:"InternetAccessible"`
+}
+
+func (r *InquiryPriceModifyLoadBalancerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquiryPriceModifyLoadBalancerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "InternetAccessible")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceModifyLoadBalancerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquiryPriceModifyLoadBalancerResponseParams struct {
+	// 描述价格信息
+	Price *Price `json:"Price,omitnil" name:"Price"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type InquiryPriceModifyLoadBalancerResponse struct {
+	*tchttp.BaseResponse
+	Response *InquiryPriceModifyLoadBalancerResponseParams `json:"Response"`
+}
+
+func (r *InquiryPriceModifyLoadBalancerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquiryPriceModifyLoadBalancerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquiryPriceRefundLoadBalancerRequestParams struct {
+	// 负载均衡实例ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
+}
+
+type InquiryPriceRefundLoadBalancerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 负载均衡实例ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
+}
+
+func (r *InquiryPriceRefundLoadBalancerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquiryPriceRefundLoadBalancerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceRefundLoadBalancerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquiryPriceRefundLoadBalancerResponseParams struct {
+	// 该参数表示对应的价格。
+	Price *Price `json:"Price,omitnil" name:"Price"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type InquiryPriceRefundLoadBalancerResponse struct {
+	*tchttp.BaseResponse
+	Response *InquiryPriceRefundLoadBalancerResponseParams `json:"Response"`
+}
+
+func (r *InquiryPriceRefundLoadBalancerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquiryPriceRefundLoadBalancerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquiryPriceRenewLoadBalancerRequestParams struct {
+	// 负载均衡实例ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
+
+	// 续费周期
+	LoadBalancerChargePrepaid *LBChargePrepaid `json:"LoadBalancerChargePrepaid,omitnil" name:"LoadBalancerChargePrepaid"`
+}
+
+type InquiryPriceRenewLoadBalancerRequest struct {
+	*tchttp.BaseRequest
+	
+	// 负载均衡实例ID
+	LoadBalancerId *string `json:"LoadBalancerId,omitnil" name:"LoadBalancerId"`
+
+	// 续费周期
+	LoadBalancerChargePrepaid *LBChargePrepaid `json:"LoadBalancerChargePrepaid,omitnil" name:"LoadBalancerChargePrepaid"`
+}
+
+func (r *InquiryPriceRenewLoadBalancerRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquiryPriceRenewLoadBalancerRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "LoadBalancerId")
+	delete(f, "LoadBalancerChargePrepaid")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "InquiryPriceRenewLoadBalancerRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type InquiryPriceRenewLoadBalancerResponseParams struct {
+	// 表示续费价格
+	Price *Price `json:"Price,omitnil" name:"Price"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type InquiryPriceRenewLoadBalancerResponse struct {
+	*tchttp.BaseResponse
+	Response *InquiryPriceRenewLoadBalancerResponseParams `json:"Response"`
+}
+
+func (r *InquiryPriceRenewLoadBalancerResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *InquiryPriceRenewLoadBalancerResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type InternetAccessible struct {
 	// TRAFFIC_POSTPAID_BY_HOUR 按流量按小时后计费 ; BANDWIDTH_POSTPAID_BY_HOUR 按带宽按小时后计费;
 	// BANDWIDTH_PACKAGE 按带宽包计费;
@@ -5093,6 +5391,34 @@ type InternetAccessible struct {
 	// 带宽包的类型，如SINGLEISP
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	BandwidthpkgSubType *string `json:"BandwidthpkgSubType,omitnil" name:"BandwidthpkgSubType"`
+}
+
+type ItemPrice struct {
+	// 后付费单价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPrice *float64 `json:"UnitPrice,omitnil" name:"UnitPrice"`
+
+	// 后续计价单元，可取值范围： 
+	// HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）；
+	// GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChargeUnit *string `json:"ChargeUnit,omitnil" name:"ChargeUnit"`
+
+	// 预支费用的原价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginalPrice *float64 `json:"OriginalPrice,omitnil" name:"OriginalPrice"`
+
+	// 预支费用的折扣价，单位：元。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DiscountPrice *float64 `json:"DiscountPrice,omitnil" name:"DiscountPrice"`
+
+	// 后付费的折扣单价，单位:元
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnitPriceDiscount *float64 `json:"UnitPriceDiscount,omitnil" name:"UnitPriceDiscount"`
+
+	// 折扣，如20.0代表2折。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Discount *float64 `json:"Discount,omitnil" name:"Discount"`
 }
 
 type LBChargePrepaid struct {
@@ -7192,6 +7518,20 @@ type MultiCertInfo struct {
 
 	// 监听器或规则证书列表，单双向认证，多本服务端证书算法类型不能重复;若SSLMode为双向认证，证书列表必须包含一本ca证书。
 	CertList []*CertInfo `json:"CertList,omitnil" name:"CertList"`
+}
+
+type Price struct {
+	// 描述了实例价格。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstancePrice *ItemPrice `json:"InstancePrice,omitnil" name:"InstancePrice"`
+
+	// 描述了网络价格。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BandwidthPrice *ItemPrice `json:"BandwidthPrice,omitnil" name:"BandwidthPrice"`
+
+	// 描述了lcu价格。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LcuPrice *ItemPrice `json:"LcuPrice,omitnil" name:"LcuPrice"`
 }
 
 type Quota struct {

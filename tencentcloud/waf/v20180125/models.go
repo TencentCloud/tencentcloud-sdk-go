@@ -620,212 +620,296 @@ func (r *AddDomainWhiteRuleResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddSpartaProtectionRequestParams struct {
-	// 需要防御的域名
+	// 需要防护的域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
-	// 证书类型，0表示没有证书，CertType=1表示自有证书,2 为托管证书
+	// 证书类型。
+	// 0：仅配置HTTP监听端口，没有证书
+	// 1：证书来源为自有证书
+	// 2：证书来源为托管证书
 	CertType *int64 `json:"CertType,omitnil" name:"CertType"`
 
-	// 表示是否开启了CDN代理，1：有部署CDN，0：未部署CDN
+	// waf前是否部署有七层代理服务。
+	// 0：没有部署代理服务
+	// 1：有部署代理服务，waf将使用XFF获取客户端IP
+	// 2：有部署代理服务，waf将使用remote_addr获取客户端IP
+	// 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
 	IsCdn *int64 `json:"IsCdn,omitnil" name:"IsCdn"`
 
-	// 回源类型，0表示通过IP回源,1 表示通过域名回源
+	// 回源类型。
+	// 0：通过IP回源
+	// 1：通过域名回源
 	UpstreamType *int64 `json:"UpstreamType,omitnil" name:"UpstreamType"`
 
-	// 是否开启WebSocket支持，1表示开启，0不开启
+	// 是否开启WebSocket支持。
+	// 0：关闭
+	// 1：开启
 	IsWebsocket *int64 `json:"IsWebsocket,omitnil" name:"IsWebsocket"`
 
-	// 负载均衡策略，0表示轮询，1表示IP hash
+	// 回源负载均衡策略。
+	// 0：轮询
+	// 1：IP hash
+	// 2：加权轮询
 	LoadBalance *string `json:"LoadBalance,omitnil" name:"LoadBalance"`
 
-	// 值为1时，需要填次参数，表示证书内容
+	// CertType为1时，需要填充此参数，表示自有证书的证书链
 	Cert *string `json:"Cert,omitnil" name:"Cert"`
 
-	// CertType=1时，需要填次参数，表示证书的私钥
+	// CertType为1时，需要填充此参数，表示自有证书的私钥
 	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
 
-	// CertType=2时，需要填次参数，表示证书的ID
+	// CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
 	SSLId *string `json:"SSLId,omitnil" name:"SSLId"`
 
-	// Waf的资源ID
+	// 待废弃，可不填。Waf的资源ID。
 	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
-	// HTTPS回源协议，填http或者https
+	// IsCdn为3时，需要填此参数，表示自定义header
+	IpHeaders []*string `json:"IpHeaders,omitnil" name:"IpHeaders"`
+
+	// 服务配置有HTTPS端口时，HTTPS的回源协议。
+	// http：使用http协议回源，和HttpsUpstreamPort配合使用
+	// https：使用https协议回源
 	UpstreamScheme *string `json:"UpstreamScheme,omitnil" name:"UpstreamScheme"`
 
 	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
 	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil" name:"HttpsUpstreamPort"`
 
-	// 是否开启灰度，0表示不开启灰度
+	// 待废弃，可不填。是否开启灰度，0表示不开启灰度。
 	IsGray *int64 `json:"IsGray,omitnil" name:"IsGray"`
 
-	// 灰度的地区
+	// 待废弃，可不填。灰度的地区
 	GrayAreas []*string `json:"GrayAreas,omitnil" name:"GrayAreas"`
 
-	// UpstreamType=1时，填次字段表示回源域名
-	UpstreamDomain *string `json:"UpstreamDomain,omitnil" name:"UpstreamDomain"`
-
-	// UpstreamType=0时，填次字段表示回源IP
-	SrcList []*string `json:"SrcList,omitnil" name:"SrcList"`
-
-	// 是否开启HTTP2,开启HTTP2需要HTTPS支持
-	IsHttp2 *int64 `json:"IsHttp2,omitnil" name:"IsHttp2"`
-
-	// 表示是否强制跳转到HTTPS，1强制跳转Https，0不强制跳转
+	// 是否开启HTTP强制跳转到HTTPS。
+	// 0：不强制跳转
+	// 1：开启强制跳转
 	HttpsRewrite *int64 `json:"HttpsRewrite,omitnil" name:"HttpsRewrite"`
 
-	// 服务有多端口需要设置此字段
+	// 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
+	UpstreamDomain *string `json:"UpstreamDomain,omitnil" name:"UpstreamDomain"`
+
+	// IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
+	SrcList []*string `json:"SrcList,omitnil" name:"SrcList"`
+
+	// 是否开启HTTP2，需要开启HTTPS协议支持。
+	// 0：关闭
+	// 1：开启
+	IsHttp2 *int64 `json:"IsHttp2,omitnil" name:"IsHttp2"`
+
+	// 服务端口列表配置。
+	// NginxServerId：新增域名时填'0'
+	// Port：监听端口号
+	// Protocol：端口协议
+	// UpstreamPort：与Port相同
+	// UpstreamProtocol：与Protocol相同
 	Ports []*PortItem `json:"Ports,omitnil" name:"Ports"`
 
-	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF，cdn-waf表示CDN上的Web防护能力
+	// 待废弃，可不填。WAF实例类型。
+	// sparta-waf：SAAS型WAF
+	// clb-waf：负载均衡型WAF
+	// cdn-waf：CDN上的Web防护能力
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
-	// 是否开启长连接，0 短连接，1 长连接
+	// 是否开启长连接。
+	// 0： 短连接
+	// 1： 长连接
 	IsKeepAlive *string `json:"IsKeepAlive,omitnil" name:"IsKeepAlive"`
 
-	// 实例id，上线之后带上此字段
+	// 域名所属实例id
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
-	// anycast IP类型开关： 0 普通IP 1 Anycast IP
+	// 待废弃，目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
 	Anycast *int64 `json:"Anycast,omitnil" name:"Anycast"`
 
-	// src权重
+	// 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
 	Weights []*int64 `json:"Weights,omitnil" name:"Weights"`
 
-	// 是否开启主动健康检测，1表示开启，0表示不开启
+	// 是否开启主动健康检测。
+	// 0：不开启
+	// 1：开启
 	ActiveCheck *int64 `json:"ActiveCheck,omitnil" name:"ActiveCheck"`
 
 	// TLS版本信息
 	TLSVersion *int64 `json:"TLSVersion,omitnil" name:"TLSVersion"`
 
-	// 加密套件信息
-	Ciphers []*int64 `json:"Ciphers,omitnil" name:"Ciphers"`
-
-	// 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
+	// 加密套件模板。
+	// 0：不支持选择，使用默认模版  
+	// 1：通用型模版 
+	// 2：安全型模版 
+	// 3：自定义模版
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil" name:"CipherTemplate"`
 
-	// 300s
+	// 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
+	Ciphers []*int64 `json:"Ciphers,omitnil" name:"Ciphers"`
+
+	// WAF与源站的读超时时间，默认300s。
 	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil" name:"ProxyReadTimeout"`
 
-	// 300s
+	// WAF与源站的写超时时间，默认300s。
 	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitnil" name:"ProxySendTimeout"`
 
-	// 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
+	// WAF回源时的SNI类型。
+	// 0：关闭SNI，不配置client_hello中的server_name
+	// 1：开启SNI，client_hello中的server_name为防护域名
+	// 2：开启SNI，SNI为域名回源时的源站域名
+	// 3：开启SNI，SNI为自定义域名
 	SniType *int64 `json:"SniType,omitnil" name:"SniType"`
 
-	// SniType=3时，需要填此参数，表示自定义的host；
+	// SniType为3时，需要填此参数，表示自定义的SNI；
 	SniHost *string `json:"SniHost,omitnil" name:"SniHost"`
 
-	// is_cdn=3时，需要填此参数，表示自定义header
-	IpHeaders []*string `json:"IpHeaders,omitnil" name:"IpHeaders"`
-
-	// 0:关闭xff重置；1:开启xff重置
+	// 是否开启XFF重置。
+	// 0：关闭
+	// 1：开启
 	XFFReset *int64 `json:"XFFReset,omitnil" name:"XFFReset"`
 }
 
 type AddSpartaProtectionRequest struct {
 	*tchttp.BaseRequest
 	
-	// 需要防御的域名
+	// 需要防护的域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
-	// 证书类型，0表示没有证书，CertType=1表示自有证书,2 为托管证书
+	// 证书类型。
+	// 0：仅配置HTTP监听端口，没有证书
+	// 1：证书来源为自有证书
+	// 2：证书来源为托管证书
 	CertType *int64 `json:"CertType,omitnil" name:"CertType"`
 
-	// 表示是否开启了CDN代理，1：有部署CDN，0：未部署CDN
+	// waf前是否部署有七层代理服务。
+	// 0：没有部署代理服务
+	// 1：有部署代理服务，waf将使用XFF获取客户端IP
+	// 2：有部署代理服务，waf将使用remote_addr获取客户端IP
+	// 3：有部署代理服务，waf将使用ip_headers中的自定义header获取客户端IP
 	IsCdn *int64 `json:"IsCdn,omitnil" name:"IsCdn"`
 
-	// 回源类型，0表示通过IP回源,1 表示通过域名回源
+	// 回源类型。
+	// 0：通过IP回源
+	// 1：通过域名回源
 	UpstreamType *int64 `json:"UpstreamType,omitnil" name:"UpstreamType"`
 
-	// 是否开启WebSocket支持，1表示开启，0不开启
+	// 是否开启WebSocket支持。
+	// 0：关闭
+	// 1：开启
 	IsWebsocket *int64 `json:"IsWebsocket,omitnil" name:"IsWebsocket"`
 
-	// 负载均衡策略，0表示轮询，1表示IP hash
+	// 回源负载均衡策略。
+	// 0：轮询
+	// 1：IP hash
+	// 2：加权轮询
 	LoadBalance *string `json:"LoadBalance,omitnil" name:"LoadBalance"`
 
-	// 值为1时，需要填次参数，表示证书内容
+	// CertType为1时，需要填充此参数，表示自有证书的证书链
 	Cert *string `json:"Cert,omitnil" name:"Cert"`
 
-	// CertType=1时，需要填次参数，表示证书的私钥
+	// CertType为1时，需要填充此参数，表示自有证书的私钥
 	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
 
-	// CertType=2时，需要填次参数，表示证书的ID
+	// CertType为2时，需要填充此参数，表示腾讯云SSL平台托管的证书id
 	SSLId *string `json:"SSLId,omitnil" name:"SSLId"`
 
-	// Waf的资源ID
+	// 待废弃，可不填。Waf的资源ID。
 	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
 
-	// HTTPS回源协议，填http或者https
+	// IsCdn为3时，需要填此参数，表示自定义header
+	IpHeaders []*string `json:"IpHeaders,omitnil" name:"IpHeaders"`
+
+	// 服务配置有HTTPS端口时，HTTPS的回源协议。
+	// http：使用http协议回源，和HttpsUpstreamPort配合使用
+	// https：使用https协议回源
 	UpstreamScheme *string `json:"UpstreamScheme,omitnil" name:"UpstreamScheme"`
 
 	// HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
 	HttpsUpstreamPort *string `json:"HttpsUpstreamPort,omitnil" name:"HttpsUpstreamPort"`
 
-	// 是否开启灰度，0表示不开启灰度
+	// 待废弃，可不填。是否开启灰度，0表示不开启灰度。
 	IsGray *int64 `json:"IsGray,omitnil" name:"IsGray"`
 
-	// 灰度的地区
+	// 待废弃，可不填。灰度的地区
 	GrayAreas []*string `json:"GrayAreas,omitnil" name:"GrayAreas"`
 
-	// UpstreamType=1时，填次字段表示回源域名
-	UpstreamDomain *string `json:"UpstreamDomain,omitnil" name:"UpstreamDomain"`
-
-	// UpstreamType=0时，填次字段表示回源IP
-	SrcList []*string `json:"SrcList,omitnil" name:"SrcList"`
-
-	// 是否开启HTTP2,开启HTTP2需要HTTPS支持
-	IsHttp2 *int64 `json:"IsHttp2,omitnil" name:"IsHttp2"`
-
-	// 表示是否强制跳转到HTTPS，1强制跳转Https，0不强制跳转
+	// 是否开启HTTP强制跳转到HTTPS。
+	// 0：不强制跳转
+	// 1：开启强制跳转
 	HttpsRewrite *int64 `json:"HttpsRewrite,omitnil" name:"HttpsRewrite"`
 
-	// 服务有多端口需要设置此字段
+	// 域名回源时的回源域名。UpstreamType为1时，需要填充此字段
+	UpstreamDomain *string `json:"UpstreamDomain,omitnil" name:"UpstreamDomain"`
+
+	// IP回源时的回源IP列表。UpstreamType为0时，需要填充此字段
+	SrcList []*string `json:"SrcList,omitnil" name:"SrcList"`
+
+	// 是否开启HTTP2，需要开启HTTPS协议支持。
+	// 0：关闭
+	// 1：开启
+	IsHttp2 *int64 `json:"IsHttp2,omitnil" name:"IsHttp2"`
+
+	// 服务端口列表配置。
+	// NginxServerId：新增域名时填'0'
+	// Port：监听端口号
+	// Protocol：端口协议
+	// UpstreamPort：与Port相同
+	// UpstreamProtocol：与Protocol相同
 	Ports []*PortItem `json:"Ports,omitnil" name:"Ports"`
 
-	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF，cdn-waf表示CDN上的Web防护能力
+	// 待废弃，可不填。WAF实例类型。
+	// sparta-waf：SAAS型WAF
+	// clb-waf：负载均衡型WAF
+	// cdn-waf：CDN上的Web防护能力
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
-	// 是否开启长连接，0 短连接，1 长连接
+	// 是否开启长连接。
+	// 0： 短连接
+	// 1： 长连接
 	IsKeepAlive *string `json:"IsKeepAlive,omitnil" name:"IsKeepAlive"`
 
-	// 实例id，上线之后带上此字段
+	// 域名所属实例id
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
-	// anycast IP类型开关： 0 普通IP 1 Anycast IP
+	// 待废弃，目前填0即可。anycast IP类型开关： 0 普通IP 1 Anycast IP
 	Anycast *int64 `json:"Anycast,omitnil" name:"Anycast"`
 
-	// src权重
+	// 回源IP列表各IP的权重，和SrcList一一对应。当且仅当UpstreamType为0，并且SrcList有多个IP，并且LoadBalance为2时需要填写，否则填 []
 	Weights []*int64 `json:"Weights,omitnil" name:"Weights"`
 
-	// 是否开启主动健康检测，1表示开启，0表示不开启
+	// 是否开启主动健康检测。
+	// 0：不开启
+	// 1：开启
 	ActiveCheck *int64 `json:"ActiveCheck,omitnil" name:"ActiveCheck"`
 
 	// TLS版本信息
 	TLSVersion *int64 `json:"TLSVersion,omitnil" name:"TLSVersion"`
 
-	// 加密套件信息
-	Ciphers []*int64 `json:"Ciphers,omitnil" name:"Ciphers"`
-
-	// 0:不支持选择：默认模版  1:通用型模版 2:安全型模版 3:自定义模版
+	// 加密套件模板。
+	// 0：不支持选择，使用默认模版  
+	// 1：通用型模版 
+	// 2：安全型模版 
+	// 3：自定义模版
 	CipherTemplate *int64 `json:"CipherTemplate,omitnil" name:"CipherTemplate"`
 
-	// 300s
+	// 自定义的加密套件列表。CipherTemplate为3时需要填此字段，表示自定义的加密套件，值通过DescribeCiphersDetail接口获取。
+	Ciphers []*int64 `json:"Ciphers,omitnil" name:"Ciphers"`
+
+	// WAF与源站的读超时时间，默认300s。
 	ProxyReadTimeout *int64 `json:"ProxyReadTimeout,omitnil" name:"ProxyReadTimeout"`
 
-	// 300s
+	// WAF与源站的写超时时间，默认300s。
 	ProxySendTimeout *int64 `json:"ProxySendTimeout,omitnil" name:"ProxySendTimeout"`
 
-	// 0:关闭SNI；1:开启SNI，SNI=源请求host；2:开启SNI，SNI=修改为源站host；3：开启SNI，自定义host，SNI=SniHost；
+	// WAF回源时的SNI类型。
+	// 0：关闭SNI，不配置client_hello中的server_name
+	// 1：开启SNI，client_hello中的server_name为防护域名
+	// 2：开启SNI，SNI为域名回源时的源站域名
+	// 3：开启SNI，SNI为自定义域名
 	SniType *int64 `json:"SniType,omitnil" name:"SniType"`
 
-	// SniType=3时，需要填此参数，表示自定义的host；
+	// SniType为3时，需要填此参数，表示自定义的SNI；
 	SniHost *string `json:"SniHost,omitnil" name:"SniHost"`
 
-	// is_cdn=3时，需要填此参数，表示自定义header
-	IpHeaders []*string `json:"IpHeaders,omitnil" name:"IpHeaders"`
-
-	// 0:关闭xff重置；1:开启xff重置
+	// 是否开启XFF重置。
+	// 0：关闭
+	// 1：开启
 	XFFReset *int64 `json:"XFFReset,omitnil" name:"XFFReset"`
 }
 
@@ -851,14 +935,15 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "PrivateKey")
 	delete(f, "SSLId")
 	delete(f, "ResourceId")
+	delete(f, "IpHeaders")
 	delete(f, "UpstreamScheme")
 	delete(f, "HttpsUpstreamPort")
 	delete(f, "IsGray")
 	delete(f, "GrayAreas")
+	delete(f, "HttpsRewrite")
 	delete(f, "UpstreamDomain")
 	delete(f, "SrcList")
 	delete(f, "IsHttp2")
-	delete(f, "HttpsRewrite")
 	delete(f, "Ports")
 	delete(f, "Edition")
 	delete(f, "IsKeepAlive")
@@ -867,13 +952,12 @@ func (r *AddSpartaProtectionRequest) FromJsonString(s string) error {
 	delete(f, "Weights")
 	delete(f, "ActiveCheck")
 	delete(f, "TLSVersion")
-	delete(f, "Ciphers")
 	delete(f, "CipherTemplate")
+	delete(f, "Ciphers")
 	delete(f, "ProxyReadTimeout")
 	delete(f, "ProxySendTimeout")
 	delete(f, "SniType")
 	delete(f, "SniHost")
-	delete(f, "IpHeaders")
 	delete(f, "XFFReset")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddSpartaProtectionRequest has unknown keys!", "")
@@ -2161,7 +2245,7 @@ type DeleteSpartaProtectionRequestParams struct {
 	// 域名列表
 	Domains []*string `json:"Domains,omitnil" name:"Domains"`
 
-	// 版本
+	// 实例类型
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 实例id
@@ -2174,7 +2258,7 @@ type DeleteSpartaProtectionRequest struct {
 	// 域名列表
 	Domains []*string `json:"Domains,omitnil" name:"Domains"`
 
-	// 版本
+	// 实例类型
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
 	// 实例id
@@ -5122,21 +5206,21 @@ func (r *DescribePolicyStatusResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribePortsRequestParams struct {
-	// 版本
-	Edition *string `json:"Edition,omitnil" name:"Edition"`
-
 	// 实例ID
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+
+	// 实例类型
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 type DescribePortsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 版本
-	Edition *string `json:"Edition,omitnil" name:"Edition"`
-
 	// 实例ID
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+
+	// 实例类型
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
 }
 
 func (r *DescribePortsRequest) ToJsonString() string {
@@ -5151,8 +5235,8 @@ func (r *DescribePortsRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "Edition")
 	delete(f, "InstanceID")
+	delete(f, "Edition")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePortsRequest has unknown keys!", "")
 	}
@@ -10241,6 +10325,74 @@ func (r *SwitchDomainRulesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SwitchDomainRulesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchElasticModeRequestParams struct {
+	// 版本，只能是sparta-waf, clb-waf, cdn-waf
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// 0代表关闭，1代表打开
+	Mode *int64 `json:"Mode,omitnil" name:"Mode"`
+
+	// 实例id
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+}
+
+type SwitchElasticModeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 版本，只能是sparta-waf, clb-waf, cdn-waf
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// 0代表关闭，1代表打开
+	Mode *int64 `json:"Mode,omitnil" name:"Mode"`
+
+	// 实例id
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+}
+
+func (r *SwitchElasticModeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchElasticModeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Edition")
+	delete(f, "Mode")
+	delete(f, "InstanceID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchElasticModeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchElasticModeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type SwitchElasticModeResponse struct {
+	*tchttp.BaseResponse
+	Response *SwitchElasticModeResponseParams `json:"Response"`
+}
+
+func (r *SwitchElasticModeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchElasticModeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

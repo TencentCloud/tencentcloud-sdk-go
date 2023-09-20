@@ -3687,6 +3687,230 @@ func (c *Client) DisassociateTargetGroupsWithContext(ctx context.Context, reques
     return
 }
 
+func NewInquiryPriceCreateLoadBalancerRequest() (request *InquiryPriceCreateLoadBalancerRequest) {
+    request = &InquiryPriceCreateLoadBalancerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "InquiryPriceCreateLoadBalancer")
+    
+    
+    return
+}
+
+func NewInquiryPriceCreateLoadBalancerResponse() (response *InquiryPriceCreateLoadBalancerResponse) {
+    response = &InquiryPriceCreateLoadBalancerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InquiryPriceCreateLoadBalancer
+// InquiryPriceCreateLoadBalancer接口查询创建负载均衡的价格。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) InquiryPriceCreateLoadBalancer(request *InquiryPriceCreateLoadBalancerRequest) (response *InquiryPriceCreateLoadBalancerResponse, err error) {
+    return c.InquiryPriceCreateLoadBalancerWithContext(context.Background(), request)
+}
+
+// InquiryPriceCreateLoadBalancer
+// InquiryPriceCreateLoadBalancer接口查询创建负载均衡的价格。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) InquiryPriceCreateLoadBalancerWithContext(ctx context.Context, request *InquiryPriceCreateLoadBalancerRequest) (response *InquiryPriceCreateLoadBalancerResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceCreateLoadBalancerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceCreateLoadBalancer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquiryPriceCreateLoadBalancerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceModifyLoadBalancerRequest() (request *InquiryPriceModifyLoadBalancerRequest) {
+    request = &InquiryPriceModifyLoadBalancerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "InquiryPriceModifyLoadBalancer")
+    
+    
+    return
+}
+
+func NewInquiryPriceModifyLoadBalancerResponse() (response *InquiryPriceModifyLoadBalancerResponse) {
+    response = &InquiryPriceModifyLoadBalancerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InquiryPriceModifyLoadBalancer
+// InquiryPriceModifyLoadBalancer接口修改负载均衡配置询价。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) InquiryPriceModifyLoadBalancer(request *InquiryPriceModifyLoadBalancerRequest) (response *InquiryPriceModifyLoadBalancerResponse, err error) {
+    return c.InquiryPriceModifyLoadBalancerWithContext(context.Background(), request)
+}
+
+// InquiryPriceModifyLoadBalancer
+// InquiryPriceModifyLoadBalancer接口修改负载均衡配置询价。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) InquiryPriceModifyLoadBalancerWithContext(ctx context.Context, request *InquiryPriceModifyLoadBalancerRequest) (response *InquiryPriceModifyLoadBalancerResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceModifyLoadBalancerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceModifyLoadBalancer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquiryPriceModifyLoadBalancerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceRefundLoadBalancerRequest() (request *InquiryPriceRefundLoadBalancerRequest) {
+    request = &InquiryPriceRefundLoadBalancerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "InquiryPriceRefundLoadBalancer")
+    
+    
+    return
+}
+
+func NewInquiryPriceRefundLoadBalancerResponse() (response *InquiryPriceRefundLoadBalancerResponse) {
+    response = &InquiryPriceRefundLoadBalancerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InquiryPriceRefundLoadBalancer
+// InquiryPriceRefundLoadBalancer接口查询负载均衡退费价格。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+func (c *Client) InquiryPriceRefundLoadBalancer(request *InquiryPriceRefundLoadBalancerRequest) (response *InquiryPriceRefundLoadBalancerResponse, err error) {
+    return c.InquiryPriceRefundLoadBalancerWithContext(context.Background(), request)
+}
+
+// InquiryPriceRefundLoadBalancer
+// InquiryPriceRefundLoadBalancer接口查询负载均衡退费价格。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+func (c *Client) InquiryPriceRefundLoadBalancerWithContext(ctx context.Context, request *InquiryPriceRefundLoadBalancerRequest) (response *InquiryPriceRefundLoadBalancerResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceRefundLoadBalancerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceRefundLoadBalancer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquiryPriceRefundLoadBalancerResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewInquiryPriceRenewLoadBalancerRequest() (request *InquiryPriceRenewLoadBalancerRequest) {
+    request = &InquiryPriceRenewLoadBalancerRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("clb", APIVersion, "InquiryPriceRenewLoadBalancer")
+    
+    
+    return
+}
+
+func NewInquiryPriceRenewLoadBalancerResponse() (response *InquiryPriceRenewLoadBalancerResponse) {
+    response = &InquiryPriceRenewLoadBalancerResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// InquiryPriceRenewLoadBalancer
+// InquiryPriceRenewLoadBalancer接口查询对负载均衡续费的价格，只支持预付费负载均衡续费。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) InquiryPriceRenewLoadBalancer(request *InquiryPriceRenewLoadBalancerRequest) (response *InquiryPriceRenewLoadBalancerResponse, err error) {
+    return c.InquiryPriceRenewLoadBalancerWithContext(context.Background(), request)
+}
+
+// InquiryPriceRenewLoadBalancer
+// InquiryPriceRenewLoadBalancer接口查询对负载均衡续费的价格，只支持预付费负载均衡续费。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+func (c *Client) InquiryPriceRenewLoadBalancerWithContext(ctx context.Context, request *InquiryPriceRenewLoadBalancerRequest) (response *InquiryPriceRenewLoadBalancerResponse, err error) {
+    if request == nil {
+        request = NewInquiryPriceRenewLoadBalancerRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("InquiryPriceRenewLoadBalancer require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewInquiryPriceRenewLoadBalancerResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewManualRewriteRequest() (request *ManualRewriteRequest) {
     request = &ManualRewriteRequest{
         BaseRequest: &tchttp.BaseRequest{},

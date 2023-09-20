@@ -3970,6 +3970,78 @@ func (r *DescribeRecordRetrieveTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRecordSliceRequestParams struct {
+	// 通道ID
+	ChannelId *string `json:"ChannelId,omitnil" name:"ChannelId"`
+
+	// 检索开始时间，UTC秒数，例如：1662114146，开始和结束时间段最长为一天，且不能跨天
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 检索结束时间，UTC秒数，例如：1662114246，开始和结束时间段最长为一天，且不能跨天
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
+}
+
+type DescribeRecordSliceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 通道ID
+	ChannelId *string `json:"ChannelId,omitnil" name:"ChannelId"`
+
+	// 检索开始时间，UTC秒数，例如：1662114146，开始和结束时间段最长为一天，且不能跨天
+	StartTime *uint64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 检索结束时间，UTC秒数，例如：1662114246，开始和结束时间段最长为一天，且不能跨天
+	EndTime *uint64 `json:"EndTime,omitnil" name:"EndTime"`
+}
+
+func (r *DescribeRecordSliceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordSliceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelId")
+	delete(f, "StartTime")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRecordSliceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRecordSliceResponseParams struct {
+	// 云录像切片信息列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data []*RecordSliceInfo `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRecordSliceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRecordSliceResponseParams `json:"Response"`
+}
+
+func (r *DescribeRecordSliceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRecordSliceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRecordTemplateRequestParams struct {
 	// 模板ID
 	TemplateId *string `json:"TemplateId,omitnil" name:"TemplateId"`
@@ -6117,6 +6189,14 @@ type RecordRetrieveTaskDetailsInfo struct {
 
 	// 任务通道数量
 	ChannelCount *int64 `json:"ChannelCount,omitnil" name:"ChannelCount"`
+}
+
+type RecordSliceInfo struct {
+	// 计划ID
+	PlanId *string `json:"PlanId,omitnil" name:"PlanId"`
+
+	// 录像切片开始和结束时间列表
+	List []*RecordTimeLine `json:"List,omitnil" name:"List"`
 }
 
 type RecordTemplateInfo struct {
