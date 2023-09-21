@@ -446,12 +446,12 @@ type CreateRecTaskRequestParams struct {
 	// 注意：如果传入参数值4，需确保账号已购买[语义分段资源包](https://cloud.tencent.com/document/product/1093/35686#97ae4aa0-29a0-4066-9f07-ccaf8856a16b)，或账号开启后付费；**若当前账号已开启后付费功能，并传入参数值4，将[自动计费](https://cloud.tencent.com/document/product/1093/35686#d912167d-ffd5-41a9-8b1c-2e89845a6852)）**
 	ResTextFormat *uint64 `json:"ResTextFormat,omitnil" name:"ResTextFormat"`
 
-	// 语音数据来源
-	// 0：语音 URL；
-	// 1：语音数据（post body）
+	// 音频数据来源
+	// 0：音频URL；
+	// 1：音频数据（post body）
 	SourceType *uint64 `json:"SourceType,omitnil" name:"SourceType"`
 
-	// 语音数据base64编码
+	// 音频数据base64编码
 	// **当 SourceType 值为 1 时须填写该字段，为 0 时不需要填写**
 	// 
 	// 注意：音频数据要小于5MB（含）
@@ -460,7 +460,7 @@ type CreateRecTaskRequestParams struct {
 	// 数据长度（此数据长度为数据未进行base64编码时的长度）
 	DataLen *uint64 `json:"DataLen,omitnil" name:"DataLen"`
 
-	// 语音URL的地址（需要公网环境浏览器可下载）
+	// 音频URL的地址（需要公网环境浏览器可下载）
 	// **当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写**
 	// 
 	// 注意：
@@ -621,12 +621,12 @@ type CreateRecTaskRequest struct {
 	// 注意：如果传入参数值4，需确保账号已购买[语义分段资源包](https://cloud.tencent.com/document/product/1093/35686#97ae4aa0-29a0-4066-9f07-ccaf8856a16b)，或账号开启后付费；**若当前账号已开启后付费功能，并传入参数值4，将[自动计费](https://cloud.tencent.com/document/product/1093/35686#d912167d-ffd5-41a9-8b1c-2e89845a6852)）**
 	ResTextFormat *uint64 `json:"ResTextFormat,omitnil" name:"ResTextFormat"`
 
-	// 语音数据来源
-	// 0：语音 URL；
-	// 1：语音数据（post body）
+	// 音频数据来源
+	// 0：音频URL；
+	// 1：音频数据（post body）
 	SourceType *uint64 `json:"SourceType,omitnil" name:"SourceType"`
 
-	// 语音数据base64编码
+	// 音频数据base64编码
 	// **当 SourceType 值为 1 时须填写该字段，为 0 时不需要填写**
 	// 
 	// 注意：音频数据要小于5MB（含）
@@ -635,7 +635,7 @@ type CreateRecTaskRequest struct {
 	// 数据长度（此数据长度为数据未进行base64编码时的长度）
 	DataLen *uint64 `json:"DataLen,omitnil" name:"DataLen"`
 
-	// 语音URL的地址（需要公网环境浏览器可下载）
+	// 音频URL的地址（需要公网环境浏览器可下载）
 	// **当 SourceType 值为 0 时须填写该字段，为 1 时不需要填写**
 	// 
 	// 注意：

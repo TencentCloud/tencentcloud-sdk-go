@@ -2404,6 +2404,9 @@ type GeneralAccurateOCRRequestParams struct {
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil" name:"PdfPageNumber"`
+
+	// 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
+	EnableDetectText *bool `json:"EnableDetectText,omitnil" name:"EnableDetectText"`
 }
 
 type GeneralAccurateOCRRequest struct {
@@ -2430,6 +2433,9 @@ type GeneralAccurateOCRRequest struct {
 
 	// 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
 	PdfPageNumber *uint64 `json:"PdfPageNumber,omitnil" name:"PdfPageNumber"`
+
+	// 文本检测开关，默认为true。设置为false可直接进行单行识别，适用于仅包含正向单行文本的图片场景。
+	EnableDetectText *bool `json:"EnableDetectText,omitnil" name:"EnableDetectText"`
 }
 
 func (r *GeneralAccurateOCRRequest) ToJsonString() string {
@@ -2450,6 +2456,7 @@ func (r *GeneralAccurateOCRRequest) FromJsonString(s string) error {
 	delete(f, "EnableDetectSplit")
 	delete(f, "IsPdf")
 	delete(f, "PdfPageNumber")
+	delete(f, "EnableDetectText")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GeneralAccurateOCRRequest has unknown keys!", "")
 	}
@@ -2462,7 +2469,12 @@ type GeneralAccurateOCRResponseParams struct {
 	TextDetections []*TextDetection `json:"TextDetections,omitnil" name:"TextDetections"`
 
 	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+	//
+	// Deprecated: Angel is deprecated.
 	Angel *float64 `json:"Angel,omitnil" name:"Angel"`
+
+	// 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。点击查看<a href="https://cloud.tencent.com/document/product/866/45139">如何纠正倾斜文本</a>
+	Angle *float64 `json:"Angle,omitnil" name:"Angle"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

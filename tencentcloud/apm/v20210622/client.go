@@ -295,6 +295,62 @@ func (c *Client) DescribeGeneralMetricDataWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeGeneralSpanListRequest() (request *DescribeGeneralSpanListRequest) {
+    request = &DescribeGeneralSpanListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("apm", APIVersion, "DescribeGeneralSpanList")
+    
+    
+    return
+}
+
+func NewDescribeGeneralSpanListResponse() (response *DescribeGeneralSpanListResponse) {
+    response = &DescribeGeneralSpanListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeGeneralSpanList
+// 通用查询调用链列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeGeneralSpanList(request *DescribeGeneralSpanListRequest) (response *DescribeGeneralSpanListResponse, err error) {
+    return c.DescribeGeneralSpanListWithContext(context.Background(), request)
+}
+
+// DescribeGeneralSpanList
+// 通用查询调用链列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_APPIDNOTMATCHINSTANCEINFO = "FailedOperation.AppIdNotMatchInstanceInfo"
+//  INTERNALERROR = "InternalError"
+func (c *Client) DescribeGeneralSpanListWithContext(ctx context.Context, request *DescribeGeneralSpanListRequest) (response *DescribeGeneralSpanListResponse, err error) {
+    if request == nil {
+        request = NewDescribeGeneralSpanListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeGeneralSpanList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeGeneralSpanListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMetricRecordsRequest() (request *DescribeMetricRecordsRequest) {
     request = &DescribeMetricRecordsRequest{
         BaseRequest: &tchttp.BaseRequest{},

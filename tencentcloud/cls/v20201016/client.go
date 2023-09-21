@@ -5555,6 +5555,120 @@ func (c *Client) PreviewKafkaRechargeWithContext(ctx context.Context, request *P
     return
 }
 
+func NewQueryMetricRequest() (request *QueryMetricRequest) {
+    request = &QueryMetricRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "QueryMetric")
+    
+    
+    return
+}
+
+func NewQueryMetricResponse() (response *QueryMetricResponse) {
+    response = &QueryMetricResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryMetric
+// 查询指定时刻指标的最新值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) QueryMetric(request *QueryMetricRequest) (response *QueryMetricResponse, err error) {
+    return c.QueryMetricWithContext(context.Background(), request)
+}
+
+// QueryMetric
+// 查询指定时刻指标的最新值
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_TOPICNOTEXIST = "ResourceNotFound.TopicNotExist"
+func (c *Client) QueryMetricWithContext(ctx context.Context, request *QueryMetricRequest) (response *QueryMetricResponse, err error) {
+    if request == nil {
+        request = NewQueryMetricRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryMetric require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryMetricResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewQueryRangeMetricRequest() (request *QueryRangeMetricRequest) {
+    request = &QueryRangeMetricRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cls", APIVersion, "QueryRangeMetric")
+    
+    
+    return
+}
+
+func NewQueryRangeMetricResponse() (response *QueryRangeMetricResponse) {
+    response = &QueryRangeMetricResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// QueryRangeMetric
+// 查询指定时间范围内指标的变化趋势
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) QueryRangeMetric(request *QueryRangeMetricRequest) (response *QueryRangeMetricResponse, err error) {
+    return c.QueryRangeMetricWithContext(context.Background(), request)
+}
+
+// QueryRangeMetric
+// 查询指定时间范围内指标的变化趋势
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_QUERYERROR = "FailedOperation.QueryError"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) QueryRangeMetricWithContext(ctx context.Context, request *QueryRangeMetricRequest) (response *QueryRangeMetricResponse, err error) {
+    if request == nil {
+        request = NewQueryRangeMetricRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("QueryRangeMetric require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewQueryRangeMetricResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRetryShipperTaskRequest() (request *RetryShipperTaskRequest) {
     request = &RetryShipperTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},

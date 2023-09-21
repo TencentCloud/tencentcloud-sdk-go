@@ -632,6 +632,9 @@ type DescribeResourceTagsByResourceIdsRequestParams struct {
 
 	// 每页大小，默认为 15
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 type DescribeResourceTagsByResourceIdsRequest struct {
@@ -654,6 +657,9 @@ type DescribeResourceTagsByResourceIdsRequest struct {
 
 	// 每页大小，默认为 15
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 func (r *DescribeResourceTagsByResourceIdsRequest) ToJsonString() string {
@@ -674,6 +680,7 @@ func (r *DescribeResourceTagsByResourceIdsRequest) FromJsonString(s string) erro
 	delete(f, "ResourceRegion")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Category")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeResourceTagsByResourceIdsRequest has unknown keys!", "")
 	}
@@ -1278,11 +1285,14 @@ type DescribeTagKeysRequestParams struct {
 	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 每页大小，默认为 15
+	// 每页大小，默认为 15，最大1000
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 是否展现项目
 	ShowProject *uint64 `json:"ShowProject,omitnil" name:"ShowProject"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 type DescribeTagKeysRequest struct {
@@ -1294,11 +1304,14 @@ type DescribeTagKeysRequest struct {
 	// 数据偏移量，默认为 0, 必须为Limit参数的整数倍
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 每页大小，默认为 15
+	// 每页大小，默认为 15，最大1000
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 是否展现项目
 	ShowProject *uint64 `json:"ShowProject,omitnil" name:"ShowProject"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 func (r *DescribeTagKeysRequest) ToJsonString() string {
@@ -1317,6 +1330,7 @@ func (r *DescribeTagKeysRequest) FromJsonString(s string) error {
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "ShowProject")
+	delete(f, "Category")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTagKeysRequest has unknown keys!", "")
 	}
@@ -1370,6 +1384,9 @@ type DescribeTagValuesRequestParams struct {
 
 	// 每页大小，默认为 15
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 type DescribeTagValuesRequest struct {
@@ -1386,6 +1403,9 @@ type DescribeTagValuesRequest struct {
 
 	// 每页大小，默认为 15
 	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 func (r *DescribeTagValuesRequest) ToJsonString() string {
@@ -1404,6 +1424,7 @@ func (r *DescribeTagValuesRequest) FromJsonString(s string) error {
 	delete(f, "CreateUin")
 	delete(f, "Offset")
 	delete(f, "Limit")
+	delete(f, "Category")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTagValuesRequest has unknown keys!", "")
 	}
@@ -1946,6 +1967,9 @@ type GetTagKeysRequestParams struct {
 	// 每一页返回的数据最大条数，最大1000。
 	// 缺省值：50。
 	MaxResults *uint64 `json:"MaxResults,omitnil" name:"MaxResults"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 type GetTagKeysRequest struct {
@@ -1958,6 +1982,9 @@ type GetTagKeysRequest struct {
 	// 每一页返回的数据最大条数，最大1000。
 	// 缺省值：50。
 	MaxResults *uint64 `json:"MaxResults,omitnil" name:"MaxResults"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 func (r *GetTagKeysRequest) ToJsonString() string {
@@ -1974,6 +2001,7 @@ func (r *GetTagKeysRequest) FromJsonString(s string) error {
 	}
 	delete(f, "PaginationToken")
 	delete(f, "MaxResults")
+	delete(f, "Category")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTagKeysRequest has unknown keys!", "")
 	}
@@ -2022,6 +2050,9 @@ type GetTagValuesRequestParams struct {
 	// 每一页返回的数据最大条数，最大1000。
 	// 缺省值：50。
 	MaxResults *uint64 `json:"MaxResults,omitnil" name:"MaxResults"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 type GetTagValuesRequest struct {
@@ -2039,6 +2070,9 @@ type GetTagValuesRequest struct {
 	// 每一页返回的数据最大条数，最大1000。
 	// 缺省值：50。
 	MaxResults *uint64 `json:"MaxResults,omitnil" name:"MaxResults"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 func (r *GetTagValuesRequest) ToJsonString() string {
@@ -2056,6 +2090,7 @@ func (r *GetTagValuesRequest) FromJsonString(s string) error {
 	delete(f, "TagKeys")
 	delete(f, "PaginationToken")
 	delete(f, "MaxResults")
+	delete(f, "Category")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTagValuesRequest has unknown keys!", "")
 	}
@@ -2104,6 +2139,9 @@ type GetTagsRequestParams struct {
 	// 返回所有标签键列表对应的标签。
 	// 最大长度：20
 	TagKeys []*string `json:"TagKeys,omitnil" name:"TagKeys"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 type GetTagsRequest struct {
@@ -2121,6 +2159,9 @@ type GetTagsRequest struct {
 	// 返回所有标签键列表对应的标签。
 	// 最大长度：20
 	TagKeys []*string `json:"TagKeys,omitnil" name:"TagKeys"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 func (r *GetTagsRequest) ToJsonString() string {
@@ -2138,6 +2179,7 @@ func (r *GetTagsRequest) FromJsonString(s string) error {
 	delete(f, "PaginationToken")
 	delete(f, "MaxResults")
 	delete(f, "TagKeys")
+	delete(f, "Category")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetTagsRequest has unknown keys!", "")
 	}
@@ -2393,6 +2435,10 @@ type Tag struct {
 
 	// 标签值
 	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 type TagFilter struct {
@@ -2427,12 +2473,15 @@ type TagResource struct {
 	// 资源类型
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 // Predefined struct for user
 type TagResourcesRequestParams struct {
-	// 资源六段式列表。腾讯云使用资源六段式描述一个资源。可参考[访问管理](https://cloud.tencent.com/document/product/598/67350)-概览-接口列表-资源六段式信息
-	// 例如：ResourceList.1 = qcs::${ServiceType}:${Region}:uin/${Account}:${ResourcePrefix}/${ResourceId}。
+	// 待绑定的云资源，用标准的资源六段式表示。正确的资源六段式请参考：[标准的资源六段式](https://cloud.tencent.com/document/product/598/10606)和[支持标签的云产品及资源描述方式](https://cloud.tencent.com/document/product/651/89122)。
 	// N取值范围：0~9
 	ResourceList []*string `json:"ResourceList,omitnil" name:"ResourceList"`
 
@@ -2447,8 +2496,7 @@ type TagResourcesRequestParams struct {
 type TagResourcesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 资源六段式列表。腾讯云使用资源六段式描述一个资源。可参考[访问管理](https://cloud.tencent.com/document/product/598/67350)-概览-接口列表-资源六段式信息
-	// 例如：ResourceList.1 = qcs::${ServiceType}:${Region}:uin/${Account}:${ResourcePrefix}/${ResourceId}。
+	// 待绑定的云资源，用标准的资源六段式表示。正确的资源六段式请参考：[标准的资源六段式](https://cloud.tencent.com/document/product/598/10606)和[支持标签的云产品及资源描述方式](https://cloud.tencent.com/document/product/651/89122)。
 	// N取值范围：0~9
 	ResourceList []*string `json:"ResourceList,omitnil" name:"ResourceList"`
 
@@ -2516,6 +2564,10 @@ type TagWithDelete struct {
 
 	// 是否可以删除
 	CanDelete *uint64 `json:"CanDelete,omitnil" name:"CanDelete"`
+
+	// 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Category *string `json:"Category,omitnil" name:"Category"`
 }
 
 // Predefined struct for user

@@ -1442,6 +1442,20 @@ func (r *DescribeQueuesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type EnhancedService struct {
+	// 开启云安全服务。若不指定该参数，则默认开启云安全服务。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityService *RunSecurityServiceEnabled `json:"SecurityService,omitnil" name:"SecurityService"`
+
+	// 开启云监控服务。若不指定该参数，则默认开启云监控服务。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MonitorService *RunMonitorServiceEnabled `json:"MonitorService,omitnil" name:"MonitorService"`
+
+	// 开启云自动化助手服务（TencentCloud Automation Tools，TAT）。若不指定该参数，默认开启云自动化助手服务。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AutomationService *RunAutomationServiceEnabled `json:"AutomationService,omitnil" name:"AutomationService"`
+}
+
 type ExpansionNodeConfig struct {
 	// 扩容实例所在的位置。
 	Placement *Placement `json:"Placement,omitnil" name:"Placement"`
@@ -1832,6 +1846,9 @@ type QueueConfig struct {
 	// - 当ScaleUpMemRatio=0时，会匹配到16GB内存规格的实例,但是由于操作系统内的可用内存为14.9GB小于作业所需的15GB，扩容出来的实例作业无法运行起来。
 	// - 当ScaleUpMemRatio=10时，匹配实例规格会按照15*(1+10%)=16.5GB来进行实例规格匹配，则不会匹配到16GB的实例，而是更大内存规格的实例来保证作业能够被运行起来。
 	ScaleUpMemRatio *int64 `json:"ScaleUpMemRatio,omitnil" name:"ScaleUpMemRatio"`
+
+	// 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。若不指定该参数，则默认开启云监控、云安全服务、自动化助手服务。
+	EnhancedService *EnhancedService `json:"EnhancedService,omitnil" name:"EnhancedService"`
 }
 
 type QueueConfigOverview struct {
@@ -1885,6 +1902,22 @@ type QueueOverview struct {
 	// 队列名称。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	QueueName *string `json:"QueueName,omitnil" name:"QueueName"`
+}
+
+type RunAutomationServiceEnabled struct {
+	// 是否开启云自动化助手。取值范围：<br><li>TRUE：表示开启云自动化助手服务<br><li>FALSE：表示不开启云自动化助手服务<br><br>默认取值：TRUE。
+	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
+}
+
+type RunMonitorServiceEnabled struct {
+	// 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启云监控服务<br><li>FALSE：表示不开启云监控服务<br><br>默认取值：TRUE。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
+}
+
+type RunSecurityServiceEnabled struct {
+	// 是否开启[云安全](/document/product/296)服务。取值范围：<br><li>TRUE：表示开启云安全服务<br><li>FALSE：表示不开启云安全服务<br><br>默认取值：TRUE。
+	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
 }
 
 // Predefined struct for user

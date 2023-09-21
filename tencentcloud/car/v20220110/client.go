@@ -295,6 +295,64 @@ func (c *Client) StartPublishStreamWithContext(ctx context.Context, request *Sta
     return
 }
 
+func NewStartPublishStreamWithURLRequest() (request *StartPublishStreamWithURLRequest) {
+    request = &StartPublishStreamWithURLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("car", APIVersion, "StartPublishStreamWithURL")
+    
+    
+    return
+}
+
+func NewStartPublishStreamWithURLResponse() (response *StartPublishStreamWithURLResponse) {
+    response = &StartPublishStreamWithURLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// StartPublishStreamWithURL
+// 开始云端推流到指定URL
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+func (c *Client) StartPublishStreamWithURL(request *StartPublishStreamWithURLRequest) (response *StartPublishStreamWithURLResponse, err error) {
+    return c.StartPublishStreamWithURLWithContext(context.Background(), request)
+}
+
+// StartPublishStreamWithURL
+// 开始云端推流到指定URL
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_JSONPARSEERROR = "InvalidParameter.JsonParseError"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
+func (c *Client) StartPublishStreamWithURLWithContext(ctx context.Context, request *StartPublishStreamWithURLRequest) (response *StartPublishStreamWithURLResponse, err error) {
+    if request == nil {
+        request = NewStartPublishStreamWithURLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("StartPublishStreamWithURL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewStartPublishStreamWithURLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewStopPublishStreamRequest() (request *StopPublishStreamRequest) {
     request = &StopPublishStreamRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -287,6 +287,22 @@ type CodePack struct {
 	// 层级码配置
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PackSpec []*PackSpec `json:"PackSpec,omitnil" name:"PackSpec"`
+
+	// 商品名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductName *string `json:"ProductName,omitnil" name:"ProductName"`
+
+	// 商品规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductSpecification *string `json:"ProductSpecification,omitnil" name:"ProductSpecification"`
+
+	// 商品ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+
+	// 码关系是否预关联
+	// 0:否, 1:是
+	RelateType *int64 `json:"RelateType,omitnil" name:"RelateType"`
 }
 
 type CodePart struct {
@@ -482,6 +498,12 @@ type CreateCodePackRequestParams struct {
 
 	// 是否有流水码 0:无 1:有
 	SerialType *uint64 `json:"SerialType,omitnil" name:"SerialType"`
+
+	// 关联产品ID
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+
+	// 层级码时是否提前生成关联关系，默认为 1
+	RelateType *int64 `json:"RelateType,omitnil" name:"RelateType"`
 }
 
 type CreateCodePackRequest struct {
@@ -516,6 +538,12 @@ type CreateCodePackRequest struct {
 
 	// 是否有流水码 0:无 1:有
 	SerialType *uint64 `json:"SerialType,omitnil" name:"SerialType"`
+
+	// 关联产品ID
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+
+	// 层级码时是否提前生成关联关系，默认为 1
+	RelateType *int64 `json:"RelateType,omitnil" name:"RelateType"`
 }
 
 func (r *CreateCodePackRequest) ToJsonString() string {
@@ -540,6 +568,8 @@ func (r *CreateCodePackRequest) FromJsonString(s string) error {
 	delete(f, "PackSpec")
 	delete(f, "BatchId")
 	delete(f, "SerialType")
+	delete(f, "ProductId")
+	delete(f, "RelateType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCodePackRequest has unknown keys!", "")
 	}
@@ -716,6 +746,14 @@ type CreateCustomPackRequestParams struct {
 
 	// 是否有流水码 0:无 1:有
 	SerialType *uint64 `json:"SerialType,omitnil" name:"SerialType"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+
+	// 是否预生成码关系
+	// 0: 否, 1:是
+	// 默认为1，仅对层级码有效
+	RelateType *int64 `json:"RelateType,omitnil" name:"RelateType"`
 }
 
 type CreateCustomPackRequest struct {
@@ -750,6 +788,14 @@ type CreateCustomPackRequest struct {
 
 	// 是否有流水码 0:无 1:有
 	SerialType *uint64 `json:"SerialType,omitnil" name:"SerialType"`
+
+	// 产品ID
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+
+	// 是否预生成码关系
+	// 0: 否, 1:是
+	// 默认为1，仅对层级码有效
+	RelateType *int64 `json:"RelateType,omitnil" name:"RelateType"`
 }
 
 func (r *CreateCustomPackRequest) ToJsonString() string {
@@ -774,6 +820,8 @@ func (r *CreateCustomPackRequest) FromJsonString(s string) error {
 	delete(f, "CodeParts")
 	delete(f, "BatchId")
 	delete(f, "SerialType")
+	delete(f, "ProductId")
+	delete(f, "RelateType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCustomPackRequest has unknown keys!", "")
 	}

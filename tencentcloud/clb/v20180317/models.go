@@ -5498,7 +5498,7 @@ type Listener struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SessionExpireTime *int64 `json:"SessionExpireTime,omitnil" name:"SessionExpireTime"`
 
-	// 是否开启SNI特性（本参数仅对于HTTPS监听器有意义）
+	// 是否开启SNI特性，1：表示开启，0：表示不开启（本参数仅对于HTTPS监听器有意义）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SniSwitch *int64 `json:"SniSwitch,omitnil" name:"SniSwitch"`
 
@@ -5992,7 +5992,7 @@ type LoadBalancerDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Zones []*string `json:"Zones,omitnil" name:"Zones"`
 
-	// 是否开启SNI特性（本参数仅对于HTTPS监听器有意义）。
+	// 是否开启SNI特性，1：表示开启，0：表示不开启（本参数仅对于HTTPS监听器有意义）。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SniSwitch *int64 `json:"SniSwitch,omitnil" name:"SniSwitch"`
 

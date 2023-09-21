@@ -12169,10 +12169,15 @@ type ParamRecord struct {
 	NewValue *string `json:"NewValue,omitnil" name:"NewValue"`
 
 	// 参数是否修改成功
+	//
+	// Deprecated: IsSucess is deprecated.
 	IsSucess *bool `json:"IsSucess,omitnil" name:"IsSucess"`
 
 	// 修改时间
 	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+
+	// 参数是否修改成功
+	IsSuccess *bool `json:"IsSuccess,omitnil" name:"IsSuccess"`
 }
 
 type ParamTemplateInfo struct {

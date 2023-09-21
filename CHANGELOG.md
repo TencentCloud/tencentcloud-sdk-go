@@ -1,3 +1,274 @@
+# Release v1.0.753
+
+## 应用性能监控(apm) 版本：2021-06-22
+
+### 第 20 次发布
+
+发布时间：2023-09-21 01:15:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeGeneralSpanList](https://cloud.tencent.com/document/api/1463/98725)
+
+新增数据结构：
+
+* [Span](https://cloud.tencent.com/document/api/1463/64927#Span)
+* [SpanLog](https://cloud.tencent.com/document/api/1463/64927#SpanLog)
+* [SpanProcess](https://cloud.tencent.com/document/api/1463/64927#SpanProcess)
+* [SpanReference](https://cloud.tencent.com/document/api/1463/64927#SpanReference)
+* [SpanTag](https://cloud.tencent.com/document/api/1463/64927#SpanTag)
+
+
+
+## 应用云渲染(car) 版本：2022-01-10
+
+### 第 9 次发布
+
+发布时间：2023-09-21 01:28:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [StartPublishStreamWithURL](https://cloud.tencent.com/document/api/1547/98726)
+
+
+
+## 云数据库 MySQL(cdb) 版本：2017-03-20
+
+### 第 144 次发布
+
+发布时间：2023-09-21 01:31:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ParamRecord](https://cloud.tencent.com/document/api/236/15878#ParamRecord)
+
+	* 新增成员：IsSuccess
+
+
+
+
+## 负载均衡(clb) 版本：2018-03-17
+
+### 第 96 次发布
+
+发布时间：2023-09-21 01:56:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [Listener](https://cloud.tencent.com/document/api/214/30694#Listener)
+
+	* <font color="#dd0000">**修改成员**：</font>IdleConnectTimeout
+
+
+
+
+## 日志服务(cls) 版本：2020-10-16
+
+### 第 71 次发布
+
+发布时间：2023-09-21 02:03:11
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [QueryMetric](https://cloud.tencent.com/document/api/614/98729)
+* [QueryRangeMetric](https://cloud.tencent.com/document/api/614/98728)
+
+
+
+## 企业收付平台(cpdp) 版本：2019-08-20
+
+### 第 101 次发布
+
+发布时间：2023-09-21 02:09:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**删除接口**：</font>
+
+* RevResigterBillSupportWithdraw
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 72 次发布
+
+发布时间：2023-09-21 04:51:12
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ParseNotification](https://cloud.tencent.com/document/api/862/39228)
+
+	* 新增出参：Timestamp, Sign
+
+
+
+
+## 文字识别(ocr) 版本：2018-11-19
+
+### 第 112 次发布
+
+发布时间：2023-09-21 04:56:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [GeneralAccurateOCR](https://cloud.tencent.com/document/api/866/34937)
+
+	* 新增入参：EnableDetectText
+
+	* 新增出参：Angle
+
+
+
+
+## 标签(tag) 版本：2018-08-13
+
+### 第 13 次发布
+
+发布时间：2023-09-21 05:27:30
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeResourceTagsByResourceIds](https://cloud.tencent.com/document/api/651/35319)
+
+	* 新增入参：Category
+
+* [DescribeTagKeys](https://cloud.tencent.com/document/api/651/35318)
+
+	* 新增入参：Category
+
+* [DescribeTagValues](https://cloud.tencent.com/document/api/651/35317)
+
+	* 新增入参：Category
+
+* [GetTagKeys](https://cloud.tencent.com/document/api/651/72277)
+
+	* 新增入参：Category
+
+* [GetTagValues](https://cloud.tencent.com/document/api/651/72276)
+
+	* 新增入参：Category
+
+* [GetTags](https://cloud.tencent.com/document/api/651/72275)
+
+	* 新增入参：Category
+
+
+修改数据结构：
+
+* [Tag](https://cloud.tencent.com/document/api/651/35327#Tag)
+
+	* 新增成员：Category
+
+* [TagResource](https://cloud.tencent.com/document/api/651/35327#TagResource)
+
+	* 新增成员：Category
+
+* [TagWithDelete](https://cloud.tencent.com/document/api/651/35327#TagWithDelete)
+
+	* 新增成员：Category
+
+
+
+
+## 高性能计算平台(thpc) 版本：2023-03-21
+
+### 第 12 次发布
+
+发布时间：2023-09-21 06:17:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [EnhancedService](https://cloud.tencent.com/document/api/1527/89579#EnhancedService)
+* [RunAutomationServiceEnabled](https://cloud.tencent.com/document/api/1527/89579#RunAutomationServiceEnabled)
+* [RunMonitorServiceEnabled](https://cloud.tencent.com/document/api/1527/89579#RunMonitorServiceEnabled)
+* [RunSecurityServiceEnabled](https://cloud.tencent.com/document/api/1527/89579#RunSecurityServiceEnabled)
+
+修改数据结构：
+
+* [QueueConfig](https://cloud.tencent.com/document/api/1527/89579#QueueConfig)
+
+	* 新增成员：EnhancedService
+
+
+
+
+## 高性能计算平台(thpc) 版本：2022-04-01
+
+
+
+## 高性能计算平台(thpc) 版本：2021-11-09
+
+
+
+## T-Sec-安心平台(RP)(trp) 版本：2021-05-15
+
+### 第 27 次发布
+
+发布时间：2023-09-21 06:25:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCodePack](https://cloud.tencent.com/document/api/1458/75028)
+
+	* 新增入参：ProductId, RelateType
+
+* [CreateCustomPack](https://cloud.tencent.com/document/api/1458/81464)
+
+	* 新增入参：ProductId, RelateType
+
+
+修改数据结构：
+
+* [CodePack](https://cloud.tencent.com/document/api/1458/75030#CodePack)
+
+	* 新增成员：ProductName, ProductSpecification, ProductId, RelateType
+
+
+
+
 # Release v1.0.752
 
 ## 云硬盘(cbs) 版本：2017-03-12

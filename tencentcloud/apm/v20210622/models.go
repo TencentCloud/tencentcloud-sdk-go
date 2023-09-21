@@ -631,6 +631,115 @@ func (r *DescribeGeneralMetricDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeGeneralSpanListRequestParams struct {
+	// 分页
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 列表项个数
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序
+	OrderBy *OrderBy `json:"OrderBy,omitnil" name:"OrderBy"`
+
+	// span查询开始时间戳（单位:秒）
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 实例名
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 通用过滤参数
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 业务自身服务名
+	BusinessName *string `json:"BusinessName,omitnil" name:"BusinessName"`
+
+	// span查询结束时间戳（单位:秒）
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+}
+
+type DescribeGeneralSpanListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 列表项个数
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序
+	OrderBy *OrderBy `json:"OrderBy,omitnil" name:"OrderBy"`
+
+	// span查询开始时间戳（单位:秒）
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 实例名
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 通用过滤参数
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 业务自身服务名
+	BusinessName *string `json:"BusinessName,omitnil" name:"BusinessName"`
+
+	// span查询结束时间戳（单位:秒）
+	EndTime *int64 `json:"EndTime,omitnil" name:"EndTime"`
+}
+
+func (r *DescribeGeneralSpanListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGeneralSpanListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "OrderBy")
+	delete(f, "StartTime")
+	delete(f, "InstanceId")
+	delete(f, "Filters")
+	delete(f, "BusinessName")
+	delete(f, "EndTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeGeneralSpanListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeGeneralSpanListResponseParams struct {
+	// 总数量
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// Span分页列表
+	Spans []*Span `json:"Spans,omitnil" name:"Spans"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeGeneralSpanListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeGeneralSpanListResponseParams `json:"Response"`
+}
+
+func (r *DescribeGeneralSpanListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeGeneralSpanListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMetricRecordsRequestParams struct {
 	// 过滤条件
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
@@ -1111,6 +1220,92 @@ type QueryMetricItem struct {
 
 	// 同比，支持多种同比方式
 	Compares []*string `json:"Compares,omitnil" name:"Compares"`
+}
+
+type Span struct {
+	// Trace Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TraceID *string `json:"TraceID,omitnil" name:"TraceID"`
+
+	// 日志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Logs []*SpanLog `json:"Logs,omitnil" name:"Logs"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*SpanTag `json:"Tags,omitnil" name:"Tags"`
+
+	// 上报应用服务信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Process *SpanProcess `json:"Process,omitnil" name:"Process"`
+
+	// 产生时间戳(毫秒)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
+
+	// Span名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OperationName *string `json:"OperationName,omitnil" name:"OperationName"`
+
+	// 关联关系
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	References []*SpanReference `json:"References,omitnil" name:"References"`
+
+	// 产生时间戳(微秒)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *int64 `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 持续耗时(微妙)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Duration *int64 `json:"Duration,omitnil" name:"Duration"`
+
+	// Span Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpanID *string `json:"SpanID,omitnil" name:"SpanID"`
+
+	// 产生时间戳(毫秒)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTimeMillis *int64 `json:"StartTimeMillis,omitnil" name:"StartTimeMillis"`
+}
+
+type SpanLog struct {
+	// 日志时间戳
+	Timestamp *int64 `json:"Timestamp,omitnil" name:"Timestamp"`
+
+	// 标签
+	Fields []*SpanTag `json:"Fields,omitnil" name:"Fields"`
+}
+
+type SpanProcess struct {
+	// 应用服务名称
+	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
+
+	// Tags 标签数组
+	Tags []*SpanTag `json:"Tags,omitnil" name:"Tags"`
+}
+
+type SpanReference struct {
+	// 关联关系类型
+	RefType *string `json:"RefType,omitnil" name:"RefType"`
+
+	// Span ID
+	SpanID *string `json:"SpanID,omitnil" name:"SpanID"`
+
+	// Trace ID
+	TraceID *string `json:"TraceID,omitnil" name:"TraceID"`
+}
+
+type SpanTag struct {
+	// 标签类型
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 标签Key
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 标签值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 // Predefined struct for user

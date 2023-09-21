@@ -341,6 +341,67 @@ func (r *StartPublishStreamResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type StartPublishStreamWithURLRequestParams struct {
+	// 唯一用户身份标识，由业务方自定义，平台不予理解。
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 推流地址，仅支持rtmp协议。
+	PublishStreamURL *string `json:"PublishStreamURL,omitnil" name:"PublishStreamURL"`
+}
+
+type StartPublishStreamWithURLRequest struct {
+	*tchttp.BaseRequest
+	
+	// 唯一用户身份标识，由业务方自定义，平台不予理解。
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 推流地址，仅支持rtmp协议。
+	PublishStreamURL *string `json:"PublishStreamURL,omitnil" name:"PublishStreamURL"`
+}
+
+func (r *StartPublishStreamWithURLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartPublishStreamWithURLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "PublishStreamURL")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartPublishStreamWithURLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartPublishStreamWithURLResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type StartPublishStreamWithURLResponse struct {
+	*tchttp.BaseResponse
+	Response *StartPublishStreamWithURLResponseParams `json:"Response"`
+}
+
+func (r *StartPublishStreamWithURLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartPublishStreamWithURLResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StopPublishStreamRequestParams struct {
 	// 唯一用户身份标识，由业务方自定义，平台不予理解。（可根据业务需要决定使用用户的唯一身份标识或是使用时间戳随机生成；在用户重连时应保持UserId不变）
 	UserId *string `json:"UserId,omitnil" name:"UserId"`

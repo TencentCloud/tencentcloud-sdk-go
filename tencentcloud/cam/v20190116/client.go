@@ -189,6 +189,7 @@ func NewAttachGroupPolicyResponse() (response *AttachGroupPolicyResponse) {
 // 本接口（AttachGroupPolicy）可用于绑定策略到用户组。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  FAILEDOPERATION_POLICYFULL = "FailedOperation.PolicyFull"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
@@ -207,6 +208,7 @@ func (c *Client) AttachGroupPolicy(request *AttachGroupPolicyRequest) (response 
 // 本接口（AttachGroupPolicy）可用于绑定策略到用户组。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  FAILEDOPERATION_POLICYFULL = "FailedOperation.PolicyFull"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
@@ -255,6 +257,7 @@ func NewAttachRolePolicyResponse() (response *AttachRolePolicyResponse) {
 // 本接口（AttachRolePolicy）用于绑定策略到角色。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -270,6 +273,7 @@ func (c *Client) AttachRolePolicy(request *AttachRolePolicyRequest) (response *A
 // 本接口（AttachRolePolicy）用于绑定策略到角色。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -315,6 +319,7 @@ func NewAttachUserPolicyResponse() (response *AttachUserPolicyResponse) {
 // 本接口（AttachUserPolicy）可用于绑定到用户的策略。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  FAILEDOPERATION_POLICYFULL = "FailedOperation.PolicyFull"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
@@ -332,6 +337,7 @@ func (c *Client) AttachUserPolicy(request *AttachUserPolicyRequest) (response *A
 // 本接口（AttachUserPolicy）可用于绑定到用户的策略。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  FAILEDOPERATION_POLICYFULL = "FailedOperation.PolicyFull"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
@@ -778,6 +784,7 @@ func NewCreatePolicyVersionResponse() (response *CreatePolicyVersionResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  FAILEDOPERATION_POLICYFULL = "FailedOperation.PolicyFull"
 //  FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
 //  FAILEDOPERATION_POLICYVERSIONFULL = "FailedOperation.PolicyVersionFull"
@@ -799,7 +806,9 @@ func NewCreatePolicyVersionResponse() (response *CreatePolicyVersionResponse) {
 //  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
 //  INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
 //  INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+//  INVALIDPARAMETER_PRINCIPALQCSERROR = "InvalidParameter.PrincipalQcsError"
 //  INVALIDPARAMETER_PRINCIPALQCSNOTEXIST = "InvalidParameter.PrincipalQcsNotExist"
+//  INVALIDPARAMETER_PRINCIPALSERVICENOTEXIST = "InvalidParameter.PrincipalServiceNotExist"
 //  INVALIDPARAMETER_RESOURCECONTENTERROR = "InvalidParameter.ResourceContentError"
 //  INVALIDPARAMETER_RESOURCEERROR = "InvalidParameter.ResourceError"
 //  INVALIDPARAMETER_RESOURCEPROJECTERROR = "InvalidParameter.ResourceProjectError"
@@ -822,6 +831,7 @@ func (c *Client) CreatePolicyVersion(request *CreatePolicyVersionRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  FAILEDOPERATION_POLICYFULL = "FailedOperation.PolicyFull"
 //  FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
 //  FAILEDOPERATION_POLICYVERSIONFULL = "FailedOperation.PolicyVersionFull"
@@ -843,7 +853,9 @@ func (c *Client) CreatePolicyVersion(request *CreatePolicyVersionRequest) (respo
 //  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
 //  INVALIDPARAMETER_POLICYNAMEERROR = "InvalidParameter.PolicyNameError"
 //  INVALIDPARAMETER_PRINCIPALERROR = "InvalidParameter.PrincipalError"
+//  INVALIDPARAMETER_PRINCIPALQCSERROR = "InvalidParameter.PrincipalQcsError"
 //  INVALIDPARAMETER_PRINCIPALQCSNOTEXIST = "InvalidParameter.PrincipalQcsNotExist"
+//  INVALIDPARAMETER_PRINCIPALSERVICENOTEXIST = "InvalidParameter.PrincipalServiceNotExist"
 //  INVALIDPARAMETER_RESOURCECONTENTERROR = "InvalidParameter.ResourceContentError"
 //  INVALIDPARAMETER_RESOURCEERROR = "InvalidParameter.ResourceError"
 //  INVALIDPARAMETER_RESOURCEPROJECTERROR = "InvalidParameter.ResourceProjectError"
@@ -1399,6 +1411,7 @@ func NewDeletePolicyResponse() (response *DeletePolicyResponse) {
 // 本接口（DeletePolicy）可用于删除策略。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
@@ -1413,6 +1426,7 @@ func (c *Client) DeletePolicy(request *DeletePolicyRequest) (response *DeletePol
 // 本接口（DeletePolicy）可用于删除策略。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
@@ -1458,6 +1472,7 @@ func NewDeletePolicyVersionResponse() (response *DeletePolicyVersionResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
 //  FAILEDOPERATION_POLICYVERSIONALREADYDEFAULT = "FailedOperation.PolicyVersionAlreadyDefault"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -1492,6 +1507,7 @@ func (c *Client) DeletePolicyVersion(request *DeletePolicyVersionRequest) (respo
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
 //  FAILEDOPERATION_POLICYVERSIONALREADYDEFAULT = "FailedOperation.PolicyVersionAlreadyDefault"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -2301,6 +2317,7 @@ func NewDetachGroupPolicyResponse() (response *DetachGroupPolicyResponse) {
 // 本接口（DetachGroupPolicy）可用于解除绑定到用户组的策略。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
@@ -2316,6 +2333,7 @@ func (c *Client) DetachGroupPolicy(request *DetachGroupPolicyRequest) (response 
 // 本接口（DetachGroupPolicy）可用于解除绑定到用户组的策略。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYIDERROR = "InvalidParameter.PolicyIdError"
@@ -2361,6 +2379,7 @@ func NewDetachRolePolicyResponse() (response *DetachRolePolicyResponse) {
 // 本接口（DetachRolePolicy）用于解除绑定角色的策略。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
@@ -2373,6 +2392,7 @@ func (c *Client) DetachRolePolicy(request *DetachRolePolicyRequest) (response *D
 // 本接口（DetachRolePolicy）用于解除绑定角色的策略。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_POLICYIDNOTEXIST = "InvalidParameter.PolicyIdNotExist"
@@ -2415,6 +2435,7 @@ func NewDetachUserPolicyResponse() (response *DetachUserPolicyResponse) {
 // 本接口（DetachUserPolicy）可用于解除绑定到用户的策略。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -2431,6 +2452,7 @@ func (c *Client) DetachUserPolicy(request *DetachUserPolicyRequest) (response *D
 // 本接口（DetachUserPolicy）可用于解除绑定到用户的策略。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ATTACHMENTFULL = "InvalidParameter.AttachmentFull"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -4217,6 +4239,7 @@ func NewSetDefaultPolicyVersionResponse() (response *SetDefaultPolicyVersionResp
 // 本接口（SetDefaultPolicyVersion）可用于设置生效的策略版本。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
 //  FAILEDOPERATION_POLICYVERSIONALREADYDEFAULT = "FailedOperation.PolicyVersionAlreadyDefault"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -4264,6 +4287,7 @@ func (c *Client) SetDefaultPolicyVersion(request *SetDefaultPolicyVersionRequest
 // 本接口（SetDefaultPolicyVersion）可用于设置生效的策略版本。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
 //  FAILEDOPERATION_POLICYVERSIONALREADYDEFAULT = "FailedOperation.PolicyVersionAlreadyDefault"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -4795,6 +4819,7 @@ func NewUpdatePolicyResponse() (response *UpdatePolicyResponse) {
 // 如果已存在策略版本，本接口会直接更新策略的默认版本，不会创建新版本，如果不存在任何策略版本，则直接创建一个默认版本。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ACTIONERROR = "InvalidParameter.ActionError"
@@ -4842,6 +4867,7 @@ func (c *Client) UpdatePolicy(request *UpdatePolicyRequest) (response *UpdatePol
 // 如果已存在策略版本，本接口会直接更新策略的默认版本，不会创建新版本，如果不存在任何策略版本，则直接创建一个默认版本。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ORGANIZATIONPOLICYOPERATEERROR = "FailedOperation.OrganizationPolicyOperateError"
 //  FAILEDOPERATION_POLICYNAMEINUSE = "FailedOperation.PolicyNameInUse"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 //  INVALIDPARAMETER_ACTIONERROR = "InvalidParameter.ActionError"

@@ -8734,6 +8734,168 @@ type PreviewLogStatistic struct {
 }
 
 // Predefined struct for user
+type QueryMetricRequestParams struct {
+	// 查询语句，使用PromQL语法	
+	Query *string `json:"Query,omitnil" name:"Query"`
+
+	// 指标主题ID
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+
+	// 查询时间，秒级Unix时间戳	
+	Time *uint64 `json:"Time,omitnil" name:"Time"`
+}
+
+type QueryMetricRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询语句，使用PromQL语法	
+	Query *string `json:"Query,omitnil" name:"Query"`
+
+	// 指标主题ID
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+
+	// 查询时间，秒级Unix时间戳	
+	Time *uint64 `json:"Time,omitnil" name:"Time"`
+}
+
+func (r *QueryMetricRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMetricRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Query")
+	delete(f, "TopicId")
+	delete(f, "Time")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryMetricRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryMetricResponseParams struct {
+	// 指标查询结果类型
+	ResultType *string `json:"ResultType,omitnil" name:"ResultType"`
+
+	// 指标查询结果
+	Result *string `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type QueryMetricResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryMetricResponseParams `json:"Response"`
+}
+
+func (r *QueryMetricResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryMetricResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryRangeMetricRequestParams struct {
+	// 指标主题ID
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+
+	// 查询语句，使用PromQL语法
+	Query *string `json:"Query,omitnil" name:"Query"`
+
+	// 查询起始时间，秒级Unix时间戳
+	Start *uint64 `json:"Start,omitnil" name:"Start"`
+
+	// 查询结束时间，秒级Unix时间戳
+	End *uint64 `json:"End,omitnil" name:"End"`
+
+	// 查询时间间隔，单位秒
+	Step *uint64 `json:"Step,omitnil" name:"Step"`
+}
+
+type QueryRangeMetricRequest struct {
+	*tchttp.BaseRequest
+	
+	// 指标主题ID
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+
+	// 查询语句，使用PromQL语法
+	Query *string `json:"Query,omitnil" name:"Query"`
+
+	// 查询起始时间，秒级Unix时间戳
+	Start *uint64 `json:"Start,omitnil" name:"Start"`
+
+	// 查询结束时间，秒级Unix时间戳
+	End *uint64 `json:"End,omitnil" name:"End"`
+
+	// 查询时间间隔，单位秒
+	Step *uint64 `json:"Step,omitnil" name:"Step"`
+}
+
+func (r *QueryRangeMetricRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryRangeMetricRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TopicId")
+	delete(f, "Query")
+	delete(f, "Start")
+	delete(f, "End")
+	delete(f, "Step")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "QueryRangeMetricRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type QueryRangeMetricResponseParams struct {
+	// 指标查询结果类型
+	ResultType *string `json:"ResultType,omitnil" name:"ResultType"`
+
+	// 指标查询结果
+	Result *string `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type QueryRangeMetricResponse struct {
+	*tchttp.BaseResponse
+	Response *QueryRangeMetricResponseParams `json:"Response"`
+}
+
+func (r *QueryRangeMetricResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *QueryRangeMetricResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type RetryShipperTaskRequestParams struct {
 	// 投递规则ID
 	ShipperId *string `json:"ShipperId,omitnil" name:"ShipperId"`
