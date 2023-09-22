@@ -40,6 +40,26 @@ type Client struct {
 }
 
 func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err error) {
+	c.completeRequest(request)
+
+	tchttp.CompleteCommonParams(request, c.GetRegion(), c.requestClient)
+
+	// reflect to inject client if field ClientToken exists and retry feature is enabled
+	if c.profile.NetworkFailureMaxRetries > 0 || c.profile.RateLimitExceededMaxRetries > 0 {
+		safeInjectClientToken(request)
+	}
+
+	if request.GetSkipSign() {
+		// Some APIs can skip signature.
+		return c.sendWithoutSignature(request, response)
+	} else if c.profile.DisableRegionBreaker == true || c.rb == nil {
+		return c.sendWithSignature(request, response)
+	} else {
+		return c.sendWithRegionBreaker(request, response)
+	}
+}
+
+func (c *Client) completeRequest(request tchttp.Request) {
 	if request.GetScheme() == "" {
 		request.SetScheme(c.httpProfile.Scheme)
 	}
@@ -58,22 +78,6 @@ func (c *Client) Send(request tchttp.Request, response tchttp.Response) (err err
 
 	if request.GetHttpMethod() == "" {
 		request.SetHttpMethod(c.httpProfile.ReqMethod)
-	}
-
-	tchttp.CompleteCommonParams(request, c.GetRegion(), c.requestClient)
-
-	// reflect to inject client if field ClientToken exists and retry feature is enabled
-	if c.profile.NetworkFailureMaxRetries > 0 || c.profile.RateLimitExceededMaxRetries > 0 {
-		safeInjectClientToken(request)
-	}
-
-	if request.GetSkipSign() {
-		// Some APIs can skip signature.
-		return c.sendWithoutSignature(request, response)
-	} else if c.profile.DisableRegionBreaker == true || c.rb == nil {
-		return c.sendWithSignature(request, response)
-	} else {
-		return c.sendWithRegionBreaker(request, response)
 	}
 }
 
@@ -440,7 +444,13 @@ func (c *Client) sendHttp(request *http.Request) (response *http.Response, err e
 	response, err = c.httpClient.Do(request)
 
 	if c.debug && response != nil {
-		out, err := httputil.DumpResponse(response, true)
+		dumpBody := true
+		switch response.Header.Get("Content-Type") {
+		case "text/event-stream", "application/octet-stream":
+			dumpBody = false
+		}
+
+		out, err := httputil.DumpResponse(response, dumpBody)
 		if err != nil {
 			c.logger.Printf("[ERROR] dump response failed: %s", err)
 		} else {
