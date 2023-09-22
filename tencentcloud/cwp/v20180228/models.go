@@ -5117,6 +5117,121 @@ func (r *DescribeAccountStatisticsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAgentInstallCommandRequestParams struct {
+	// 是否腾讯云
+	IsCloud *bool `json:"IsCloud,omitnil" name:"IsCloud"`
+
+	// 网络类型：basic-基础网络，private-VPC, public-公网，direct-专线
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
+
+	// 地域标示, NetType=direct时必填
+	RegionCode *string `json:"RegionCode,omitnil" name:"RegionCode"`
+
+	// VpcId, NetType=direct时必填
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 标签ID列表，IsCloud=false时才会生效
+	TagIds []*uint64 `json:"TagIds,omitnil" name:"TagIds"`
+
+	// 命令有效期，非腾讯云时必填
+	ExpireDate *string `json:"ExpireDate,omitnil" name:"ExpireDate"`
+
+	// 代理方式接入的vip
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
+}
+
+type DescribeAgentInstallCommandRequest struct {
+	*tchttp.BaseRequest
+	
+	// 是否腾讯云
+	IsCloud *bool `json:"IsCloud,omitnil" name:"IsCloud"`
+
+	// 网络类型：basic-基础网络，private-VPC, public-公网，direct-专线
+	NetType *string `json:"NetType,omitnil" name:"NetType"`
+
+	// 地域标示, NetType=direct时必填
+	RegionCode *string `json:"RegionCode,omitnil" name:"RegionCode"`
+
+	// VpcId, NetType=direct时必填
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 标签ID列表，IsCloud=false时才会生效
+	TagIds []*uint64 `json:"TagIds,omitnil" name:"TagIds"`
+
+	// 命令有效期，非腾讯云时必填
+	ExpireDate *string `json:"ExpireDate,omitnil" name:"ExpireDate"`
+
+	// 代理方式接入的vip
+	Vip *string `json:"Vip,omitnil" name:"Vip"`
+}
+
+func (r *DescribeAgentInstallCommandRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentInstallCommandRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "IsCloud")
+	delete(f, "NetType")
+	delete(f, "RegionCode")
+	delete(f, "VpcId")
+	delete(f, "TagIds")
+	delete(f, "ExpireDate")
+	delete(f, "Vip")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAgentInstallCommandRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAgentInstallCommandResponseParams struct {
+	// linux系统安装命令
+	LinuxCommand *string `json:"LinuxCommand,omitnil" name:"LinuxCommand"`
+
+	// windows系统安装命令（windows2008及以上）
+	WindowsCommand *string `json:"WindowsCommand,omitnil" name:"WindowsCommand"`
+
+	// windows系统安装命令第一步（windows2003）
+	WindowsStepOne *string `json:"WindowsStepOne,omitnil" name:"WindowsStepOne"`
+
+	// windows系统安装命令第二步（windows2003）
+	WindowsStepTwo *string `json:"WindowsStepTwo,omitnil" name:"WindowsStepTwo"`
+
+	// windows版agent下载链接
+	WindowsDownloadUrl *string `json:"WindowsDownloadUrl,omitnil" name:"WindowsDownloadUrl"`
+
+	// Arm安装命令
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ARMCommand *string `json:"ARMCommand,omitnil" name:"ARMCommand"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAgentInstallCommandResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAgentInstallCommandResponseParams `json:"Response"`
+}
+
+func (r *DescribeAgentInstallCommandResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAgentInstallCommandResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAlarmIncidentNodesRequestParams struct {
 	// 机器uuid
 	Uuid *string `json:"Uuid,omitnil" name:"Uuid"`
@@ -14704,6 +14819,7 @@ type DescribeMachinesRequestParams struct {
 	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
 	// <li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
 	// <li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
+	// <li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 机器所属业务ID列表
@@ -14741,6 +14857,7 @@ type DescribeMachinesRequest struct {
 	// 每个过滤条件只支持一个值，暂不支持多个值“或”关系查询
 	// <li>Quuid - String - 是否必填: 否 - 云服务器uuid  最大100条.</li>
 	// <li>AddedOnTheFifteen- String 是否必填: 否 - 是否只查询15天内新增的主机( 1：是) </li>
+	// <li> TagId- String 是否必填: 否 - 查询指定标签关联的主机列表 </li>
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
 	// 机器所属业务ID列表

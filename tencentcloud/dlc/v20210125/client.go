@@ -3679,6 +3679,62 @@ func (c *Client) DescribeSparkAppTasksWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeSparkSessionBatchSQLRequest() (request *DescribeSparkSessionBatchSQLRequest) {
+    request = &DescribeSparkSessionBatchSQLRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dlc", APIVersion, "DescribeSparkSessionBatchSQL")
+    
+    
+    return
+}
+
+func NewDescribeSparkSessionBatchSQLResponse() (response *DescribeSparkSessionBatchSQLResponse) {
+    response = &DescribeSparkSessionBatchSQLResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSparkSessionBatchSQL
+// 本接口（DescribeSparkSessionBatchSQL）用于查询Spark SQL批任务运行状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSparkSessionBatchSQL(request *DescribeSparkSessionBatchSQLRequest) (response *DescribeSparkSessionBatchSQLResponse, err error) {
+    return c.DescribeSparkSessionBatchSQLWithContext(context.Background(), request)
+}
+
+// DescribeSparkSessionBatchSQL
+// 本接口（DescribeSparkSessionBatchSQL）用于查询Spark SQL批任务运行状态
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeSparkSessionBatchSQLWithContext(ctx context.Context, request *DescribeSparkSessionBatchSQLRequest) (response *DescribeSparkSessionBatchSQLResponse, err error) {
+    if request == nil {
+        request = NewDescribeSparkSessionBatchSQLRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSparkSessionBatchSQL require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSparkSessionBatchSQLResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSparkSessionBatchSqlLogRequest() (request *DescribeSparkSessionBatchSqlLogRequest) {
     request = &DescribeSparkSessionBatchSqlLogRequest{
         BaseRequest: &tchttp.BaseRequest{},

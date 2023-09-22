@@ -1168,6 +1168,131 @@ type DbAssetInfo struct {
 }
 
 // Predefined struct for user
+type DeleteDomainAndIpRequestParams struct {
+	// -
+	Content []*PublicIpDomainListKey `json:"Content,omitnil" name:"Content"`
+
+	// 是否保留路径配置，1：保留，其他：不保留，默认不传为不保留
+	RetainPath *int64 `json:"RetainPath,omitnil" name:"RetainPath"`
+
+	// 以后是否忽略该资产，，1：忽略，其他：不忽略，默认不传为忽略
+	IgnoreAsset *int64 `json:"IgnoreAsset,omitnil" name:"IgnoreAsset"`
+}
+
+type DeleteDomainAndIpRequest struct {
+	*tchttp.BaseRequest
+	
+	// -
+	Content []*PublicIpDomainListKey `json:"Content,omitnil" name:"Content"`
+
+	// 是否保留路径配置，1：保留，其他：不保留，默认不传为不保留
+	RetainPath *int64 `json:"RetainPath,omitnil" name:"RetainPath"`
+
+	// 以后是否忽略该资产，，1：忽略，其他：不忽略，默认不传为忽略
+	IgnoreAsset *int64 `json:"IgnoreAsset,omitnil" name:"IgnoreAsset"`
+}
+
+func (r *DeleteDomainAndIpRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDomainAndIpRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Content")
+	delete(f, "RetainPath")
+	delete(f, "IgnoreAsset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDomainAndIpRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDomainAndIpResponseParams struct {
+	// 删除的资产数量
+	Data *int64 `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteDomainAndIpResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDomainAndIpResponseParams `json:"Response"`
+}
+
+func (r *DeleteDomainAndIpResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDomainAndIpResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRiskScanTaskRequestParams struct {
+	// 任务id 列表
+	TaskIdList []*TaskIdListKey `json:"TaskIdList,omitnil" name:"TaskIdList"`
+}
+
+type DeleteRiskScanTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id 列表
+	TaskIdList []*TaskIdListKey `json:"TaskIdList,omitnil" name:"TaskIdList"`
+}
+
+func (r *DeleteRiskScanTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRiskScanTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRiskScanTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRiskScanTaskResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteRiskScanTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRiskScanTaskResponseParams `json:"Response"`
+}
+
+func (r *DeleteRiskScanTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRiskScanTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCVMAssetInfoRequestParams struct {
 	// -
 	AssetId *string `json:"AssetId,omitnil" name:"AssetId"`
@@ -2714,6 +2839,11 @@ type IpAssetListVO struct {
 	VerifyStatus *int64 `json:"VerifyStatus,omitnil" name:"VerifyStatus"`
 }
 
+type PublicIpDomainListKey struct {
+	// 资产值
+	Asset *string `json:"Asset,omitnil" name:"Asset"`
+}
+
 type ReportItemKey struct {
 	// 日志Id列表
 	TaskLogList []*string `json:"TaskLogList,omitnil" name:"TaskLogList"`
@@ -2927,6 +3057,63 @@ type ScanTaskInfoList struct {
 	IsDelete *int64 `json:"IsDelete,omitnil" name:"IsDelete"`
 }
 
+// Predefined struct for user
+type StopRiskCenterTaskRequestParams struct {
+	// 任务id 列表
+	TaskIdList []*TaskIdListKey `json:"TaskIdList,omitnil" name:"TaskIdList"`
+}
+
+type StopRiskCenterTaskRequest struct {
+	*tchttp.BaseRequest
+	
+	// 任务id 列表
+	TaskIdList []*TaskIdListKey `json:"TaskIdList,omitnil" name:"TaskIdList"`
+}
+
+func (r *StopRiskCenterTaskRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopRiskCenterTaskRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "TaskIdList")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopRiskCenterTaskRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopRiskCenterTaskResponseParams struct {
+	// Status为0， 停止成功
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type StopRiskCenterTaskResponse struct {
+	*tchttp.BaseResponse
+	Response *StopRiskCenterTaskResponseParams `json:"Response"`
+}
+
+func (r *StopRiskCenterTaskResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopRiskCenterTaskResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type SubnetAsset struct {
 	// appid
 	AppId *string `json:"AppId,omitnil" name:"AppId"`
@@ -3054,6 +3241,11 @@ type TaskCenterWeakPwdRiskInputParam struct {
 
 	// 是否开启，0-不开启，1-开启
 	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
+}
+
+type TaskIdListKey struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 }
 
 type TaskLogInfo struct {

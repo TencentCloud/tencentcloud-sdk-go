@@ -5646,6 +5646,10 @@ func NewModifyPublicIPSwitchStatusResponse() (response *ModifyPublicIPSwitchStat
 }
 
 // ModifyPublicIPSwitchStatus
+// 已上新接口，支持串行
+//
+// 
+//
 // 单个修改互联网边界防火墙开关
 //
 // 可能返回的错误码:
@@ -5657,6 +5661,10 @@ func (c *Client) ModifyPublicIPSwitchStatus(request *ModifyPublicIPSwitchStatusR
 }
 
 // ModifyPublicIPSwitchStatus
+// 已上新接口，支持串行
+//
+// 
+//
 // 单个修改互联网边界防火墙开关
 //
 // 可能返回的错误码:

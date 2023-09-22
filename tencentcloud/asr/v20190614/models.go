@@ -1618,6 +1618,10 @@ type SentenceDetail struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SliceSentence *string `json:"SliceSentence,omitnil" name:"SliceSentence"`
 
+	// 口语转书面语结果，开启改功能才有值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WrittenText *string `json:"WrittenText,omitnil" name:"WrittenText"`
+
 	// 单句开始时间（毫秒）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StartMs *int64 `json:"StartMs,omitnil" name:"StartMs"`

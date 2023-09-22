@@ -5491,12 +5491,21 @@ func (r *CreateProcessEventsExportJobResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateRefreshTaskRequestParams struct {
+	// 指定集群列表,若为空则标识同步所有集群
+	ClusterIDs []*string `json:"ClusterIDs,omitnil" name:"ClusterIDs"`
 
+	// 是否只同步列表
+	IsSyncListOnly *bool `json:"IsSyncListOnly,omitnil" name:"IsSyncListOnly"`
 }
 
 type CreateRefreshTaskRequest struct {
 	*tchttp.BaseRequest
 	
+	// 指定集群列表,若为空则标识同步所有集群
+	ClusterIDs []*string `json:"ClusterIDs,omitnil" name:"ClusterIDs"`
+
+	// 是否只同步列表
+	IsSyncListOnly *bool `json:"IsSyncListOnly,omitnil" name:"IsSyncListOnly"`
 }
 
 func (r *CreateRefreshTaskRequest) ToJsonString() string {
@@ -5511,7 +5520,8 @@ func (r *CreateRefreshTaskRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "ClusterIDs")
+	delete(f, "IsSyncListOnly")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRefreshTaskRequest has unknown keys!", "")
 	}
@@ -5525,6 +5535,9 @@ type CreateRefreshTaskResponseParams struct {
 
 	// 创建检查任务的结果，"Succ"为成功，"Failed"为失败
 	CreateResult *string `json:"CreateResult,omitnil" name:"CreateResult"`
+
+	// 返回创建的新集群检查任务ID
+	NewTaskID *string `json:"NewTaskID,omitnil" name:"NewTaskID"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

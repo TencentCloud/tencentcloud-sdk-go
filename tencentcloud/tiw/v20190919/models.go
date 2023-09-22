@@ -517,6 +517,7 @@ type CreateTranscodeRequestParams struct {
 	// 示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
 	MinScaleResolution *string `json:"MinScaleResolution,omitnil" name:"MinScaleResolution"`
 
+	// 此参数仅对动态转码生效。
 	// 是否对不支持元素开启自动处理的功能。默认不开启。
 	// 
 	// 在开启自动处理的情况下，会自动进行如下处理：
@@ -571,6 +572,7 @@ type CreateTranscodeRequest struct {
 	// 示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
 	MinScaleResolution *string `json:"MinScaleResolution,omitnil" name:"MinScaleResolution"`
 
+	// 此参数仅对动态转码生效。
 	// 是否对不支持元素开启自动处理的功能。默认不开启。
 	// 
 	// 在开启自动处理的情况下，会自动进行如下处理：

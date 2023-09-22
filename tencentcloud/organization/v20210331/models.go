@@ -75,6 +75,10 @@ func (r *AddOrganizationMemberEmailRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddOrganizationMemberEmailResponseParams struct {
+	// 绑定Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindId *uint64 `json:"BindId,omitnil" name:"BindId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -1356,8 +1360,11 @@ type DescribeOrganizationMemberAuthIdentitiesRequestParams struct {
 	// 限制数目。取值范围：1~50，默认值：10
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 组织成员Uin。
+	// 组织成员Uin。入参MemberUin与IdentityId至少填写一个
 	MemberUin *int64 `json:"MemberUin,omitnil" name:"MemberUin"`
+
+	// 身份ID。入参MemberUin与IdentityId至少填写一个
+	IdentityId *uint64 `json:"IdentityId,omitnil" name:"IdentityId"`
 }
 
 type DescribeOrganizationMemberAuthIdentitiesRequest struct {
@@ -1369,8 +1376,11 @@ type DescribeOrganizationMemberAuthIdentitiesRequest struct {
 	// 限制数目。取值范围：1~50，默认值：10
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 组织成员Uin。
+	// 组织成员Uin。入参MemberUin与IdentityId至少填写一个
 	MemberUin *int64 `json:"MemberUin,omitnil" name:"MemberUin"`
+
+	// 身份ID。入参MemberUin与IdentityId至少填写一个
+	IdentityId *uint64 `json:"IdentityId,omitnil" name:"IdentityId"`
 }
 
 func (r *DescribeOrganizationMemberAuthIdentitiesRequest) ToJsonString() string {
@@ -1388,6 +1398,7 @@ func (r *DescribeOrganizationMemberAuthIdentitiesRequest) FromJsonString(s strin
 	delete(f, "Offset")
 	delete(f, "Limit")
 	delete(f, "MemberUin")
+	delete(f, "IdentityId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeOrganizationMemberAuthIdentitiesRequest has unknown keys!", "")
 	}
@@ -1887,11 +1898,19 @@ func (r *DescribeOrganizationResponse) FromJsonString(s string) error {
 }
 
 type IdentityPolicy struct {
-	// 策略ID
+	// CAM预设策略ID。PolicyType 为预设策略时有效且必选
 	PolicyId *uint64 `json:"PolicyId,omitnil" name:"PolicyId"`
 
-	// 策略名称
+	// CAM预设策略名称。PolicyType 为预设策略时有效且必选
 	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
+
+	// 策略类型。取值 1-自定义策略  2-预设策略；默认值2
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyType *uint64 `json:"PolicyType,omitnil" name:"PolicyType"`
+
+	// 自定义策略内容，遵循CAM策略语法。PolicyType 为自定义策略时有效且必选
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyDocument *string `json:"PolicyDocument,omitnil" name:"PolicyDocument"`
 }
 
 // Predefined struct for user
@@ -2230,21 +2249,33 @@ type OrgMemberAuthIdentity struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityRoleAliasName *string `json:"IdentityRoleAliasName,omitnil" name:"IdentityRoleAliasName"`
 
-	// 描述。
+	// 身份描述。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Description *string `json:"Description,omitnil" name:"Description"`
 
-	// 创建时间。
+	// 首次配置成功的时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 
-	// 更新时间。
+	// 最后一次配置成功的时间。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 
-	// 身份类型。取值： 1-预设  2-自定义
+	// 身份类型。取值： 1-预设身份  2-自定义身份
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentityType *uint64 `json:"IdentityType,omitnil" name:"IdentityType"`
+
+	// 配置状态。取值：1-配置完成 2-需重新配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 成员Uin。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberUin *int64 `json:"MemberUin,omitnil" name:"MemberUin"`
+
+	// 成员名称。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MemberName *string `json:"MemberName,omitnil" name:"MemberName"`
 }
 
 type OrgMemberFinancial struct {

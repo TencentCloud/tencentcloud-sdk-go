@@ -3698,12 +3698,15 @@ func (r *DescribeCrossBorderProxiesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeCustomHeaderRequestParams struct {
-
+	// 规则ID
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 type DescribeCustomHeaderRequest struct {
 	*tchttp.BaseRequest
 	
+	// 规则ID
+	RuleId *string `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 func (r *DescribeCustomHeaderRequest) ToJsonString() string {
@@ -3718,7 +3721,7 @@ func (r *DescribeCustomHeaderRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "RuleId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCustomHeaderRequest has unknown keys!", "")
 	}

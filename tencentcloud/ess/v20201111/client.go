@@ -4836,7 +4836,7 @@ func NewDescribeFlowInfoResponse() (response *DescribeFlowInfoResponse) {
 }
 
 // DescribeFlowInfo
-// 接口用户查询合同流程的详情信息, 支持查询多个(数量不能超过100)
+// 此接口用于查询合同流程的详情信息，支持查询多个（数量不能超过100）。
 //
 // 
 //
@@ -4857,7 +4857,7 @@ func (c *Client) DescribeFlowInfo(request *DescribeFlowInfoRequest) (response *D
 }
 
 // DescribeFlowInfo
-// 接口用户查询合同流程的详情信息, 支持查询多个(数量不能超过100)
+// 此接口用于查询合同流程的详情信息，支持查询多个（数量不能超过100）。
 //
 // 
 //
@@ -5371,6 +5371,58 @@ func (c *Client) DescribeOrganizationSealsWithContext(ctx context.Context, reque
     request.SetContext(ctx)
     
     response = NewDescribeOrganizationSealsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePersonCertificateRequest() (request *DescribePersonCertificateRequest) {
+    request = &DescribePersonCertificateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "DescribePersonCertificate")
+    
+    
+    return
+}
+
+func NewDescribePersonCertificateResponse() (response *DescribePersonCertificateResponse) {
+    response = &DescribePersonCertificateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePersonCertificate
+// 此接口（DescribePersonCertificate）用于查询个人数字证书信息。<br />注：`1.目前仅用于查询开通了医疗自动签署功能的个人数字证书。`<br />`2.调用此接口需要开通白名单，使用前请联系相关人员开通白名单。`
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribePersonCertificate(request *DescribePersonCertificateRequest) (response *DescribePersonCertificateResponse, err error) {
+    return c.DescribePersonCertificateWithContext(context.Background(), request)
+}
+
+// DescribePersonCertificate
+// 此接口（DescribePersonCertificate）用于查询个人数字证书信息。<br />注：`1.目前仅用于查询开通了医疗自动签署功能的个人数字证书。`<br />`2.调用此接口需要开通白名单，使用前请联系相关人员开通白名单。`
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_EMPTYPARAMS = "InvalidParameter.EmptyParams"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) DescribePersonCertificateWithContext(ctx context.Context, request *DescribePersonCertificateRequest) (response *DescribePersonCertificateResponse, err error) {
+    if request == nil {
+        request = NewDescribePersonCertificateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePersonCertificate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePersonCertificateResponse()
     err = c.Send(request, response)
     return
 }

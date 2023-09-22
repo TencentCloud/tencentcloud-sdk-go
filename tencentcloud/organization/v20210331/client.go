@@ -1246,7 +1246,7 @@ func NewDescribeOrganizationMemberAuthIdentitiesResponse() (response *DescribeOr
 }
 
 // DescribeOrganizationMemberAuthIdentities
-// 获取组织成员可被管理的身份列表
+// 获取组织成员访问授权列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
@@ -1257,7 +1257,7 @@ func (c *Client) DescribeOrganizationMemberAuthIdentities(request *DescribeOrgan
 }
 
 // DescribeOrganizationMemberAuthIdentities
-// 获取组织成员可被管理的身份列表
+// 获取组织成员访问授权列表
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"

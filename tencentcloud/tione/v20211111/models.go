@@ -6162,6 +6162,10 @@ type Instance struct {
 
 	// 计费项别名
 	SpecAlias *string `json:"SpecAlias,omitnil" name:"SpecAlias"`
+
+	// 计费项特性列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SpecFeatures []*string `json:"SpecFeatures,omitnil" name:"SpecFeatures"`
 }
 
 type IntranetCallInfo struct {

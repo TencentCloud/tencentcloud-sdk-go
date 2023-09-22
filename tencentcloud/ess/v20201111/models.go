@@ -52,6 +52,22 @@ type Agent struct {
 	ProxyOperator *string `json:"ProxyOperator,omitnil" name:"ProxyOperator"`
 }
 
+type ApproverComponentLimitType struct {
+	// 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
+	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+
+	// 签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式，可多选
+	// 
+	// 签名方式：
+	// <ul>
+	// <li>HANDWRITE-手写签名</li>
+	// <li>ESIGN-个人印章类型</li>
+	// <li>OCR_ESIGN-AI智能识别手写签名</li>
+	// <li>SYSTEM_ESIGN-系统签名</li>
+	// </ul>
+	Values []*string `json:"Values,omitnil" name:"Values"`
+}
+
 type ApproverInfo struct {
 	// 在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:
 	// **0**：企业
@@ -2174,7 +2190,7 @@ func (r *CreateFlowGroupByFilesResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CreateFlowGroupByTemplatesRequestParams struct {
 	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
@@ -2200,7 +2216,7 @@ type CreateFlowGroupByTemplatesRequest struct {
 	*tchttp.BaseRequest
 	
 	// 执行本接口操作的员工信息。
-	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
@@ -3313,6 +3329,9 @@ type CreateMultiFlowSignQRCodeRequestParams struct {
 	//
 	// Deprecated: ApproverRestrictions is deprecated.
 	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitnil" name:"ApproverRestrictions"`
+
+	// 指定签署方在使用个人印章签署控件（SIGN_SIGNATURE） 时可使用的签署方式：自由书写、正楷临摹、系统签名、个人印章。
+	ApproverComponentLimitTypes []*ApproverComponentLimitType `json:"ApproverComponentLimitTypes,omitnil" name:"ApproverComponentLimitTypes"`
 }
 
 type CreateMultiFlowSignQRCodeRequest struct {
@@ -3363,6 +3382,9 @@ type CreateMultiFlowSignQRCodeRequest struct {
 
 	// 限制二维码用户条件（已弃用）
 	ApproverRestrictions *ApproverRestriction `json:"ApproverRestrictions,omitnil" name:"ApproverRestrictions"`
+
+	// 指定签署方在使用个人印章签署控件（SIGN_SIGNATURE） 时可使用的签署方式：自由书写、正楷临摹、系统签名、个人印章。
+	ApproverComponentLimitTypes []*ApproverComponentLimitType `json:"ApproverComponentLimitTypes,omitnil" name:"ApproverComponentLimitTypes"`
 }
 
 func (r *CreateMultiFlowSignQRCodeRequest) ToJsonString() string {
@@ -3388,6 +3410,7 @@ func (r *CreateMultiFlowSignQRCodeRequest) FromJsonString(s string) error {
 	delete(f, "CallbackUrl")
 	delete(f, "Agent")
 	delete(f, "ApproverRestrictions")
+	delete(f, "ApproverComponentLimitTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateMultiFlowSignQRCodeRequest has unknown keys!", "")
 	}
@@ -5831,16 +5854,14 @@ type DescribeFlowInfoRequestParams struct {
 	// 执行本接口操作的员工信息。 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`	
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 需要查询的流程ID列表，限制最大100个
-	// 
-	// 如果查询合同组的信息,不要传此参数
+	// 需要查询的流程ID列表，最多可传入100个ID。
+	// 如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 合同组ID, 如果传此参数会忽略FlowIds入参
-	//  所以如传此参数不要传FlowIds参数
+	// 需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。该合同组由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。
 	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
 }
 
@@ -5850,16 +5871,14 @@ type DescribeFlowInfoRequest struct {
 	// 执行本接口操作的员工信息。 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`	
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 需要查询的流程ID列表，限制最大100个
-	// 
-	// 如果查询合同组的信息,不要传此参数
+	// 需要查询的流程ID列表，最多可传入100个ID。
+	// 如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。
 	FlowIds []*string `json:"FlowIds,omitnil" name:"FlowIds"`
 
 	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 合同组ID, 如果传此参数会忽略FlowIds入参
-	//  所以如传此参数不要传FlowIds参数
+	// 需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。该合同组由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。
 	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
 }
 
@@ -5887,13 +5906,14 @@ func (r *DescribeFlowInfoRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeFlowInfoResponseParams struct {
-	// 签署流程信息
+	// 合同流程的详细信息。
+	// 如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。
 	FlowDetailInfos []*FlowDetailInfo `json:"FlowDetailInfos,omitnil" name:"FlowDetailInfos"`
 
-	// 合同组ID，为32位字符串
+	// 合同组ID，只有在查询合同组信息时才会返回。
 	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
 
-	// 合同组名称
+	// 合同组名称，只有在查询合同组信息时才会返回。
 	FlowGroupName *string `json:"FlowGroupName,omitnil" name:"FlowGroupName"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -6702,6 +6722,98 @@ func (r *DescribeOrganizationSealsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeOrganizationSealsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePersonCertificateRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 个人用户的三要素信息：
+	// <ul><li>姓名</li>
+	// <li>证件号</li>
+	// <li>证件类型</li></ul>
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 证书使用场景，可以选择的场景值如下:
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** : 电子处方场景</li></ul>
+	// 注: `现在仅支持电子处方场景`
+	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+}
+
+type DescribePersonCertificateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 个人用户的三要素信息：
+	// <ul><li>姓名</li>
+	// <li>证件号</li>
+	// <li>证件类型</li></ul>
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 证书使用场景，可以选择的场景值如下:
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** : 电子处方场景</li></ul>
+	// 注: `现在仅支持电子处方场景`
+	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+}
+
+func (r *DescribePersonCertificateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePersonCertificateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "UserInfo")
+	delete(f, "Agent")
+	delete(f, "SceneKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePersonCertificateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePersonCertificateResponseParams struct {
+	// 证书的Base64
+	Cert *string `json:"Cert,omitnil" name:"Cert"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribePersonCertificateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePersonCertificateResponseParams `json:"Response"`
+}
+
+func (r *DescribePersonCertificateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePersonCertificateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -2321,6 +2321,60 @@ func (c *Client) DescribeAccountStatisticsWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeAgentInstallCommandRequest() (request *DescribeAgentInstallCommandRequest) {
+    request = &DescribeAgentInstallCommandRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cwp", APIVersion, "DescribeAgentInstallCommand")
+    
+    
+    return
+}
+
+func NewDescribeAgentInstallCommandResponse() (response *DescribeAgentInstallCommandResponse) {
+    response = &DescribeAgentInstallCommandResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAgentInstallCommand
+// 获取agent安装命令
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) DescribeAgentInstallCommand(request *DescribeAgentInstallCommandRequest) (response *DescribeAgentInstallCommandResponse, err error) {
+    return c.DescribeAgentInstallCommandWithContext(context.Background(), request)
+}
+
+// DescribeAgentInstallCommand
+// 获取agent安装命令
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
+func (c *Client) DescribeAgentInstallCommandWithContext(ctx context.Context, request *DescribeAgentInstallCommandRequest) (response *DescribeAgentInstallCommandResponse, err error) {
+    if request == nil {
+        request = NewDescribeAgentInstallCommandRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAgentInstallCommand require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAgentInstallCommandResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAlarmIncidentNodesRequest() (request *DescribeAlarmIncidentNodesRequest) {
     request = &DescribeAlarmIncidentNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2343,13 +2397,10 @@ func NewDescribeAlarmIncidentNodesResponse() (response *DescribeAlarmIncidentNod
 // 获取告警点所在事件的所有节点信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAlarmIncidentNodes(request *DescribeAlarmIncidentNodesRequest) (response *DescribeAlarmIncidentNodesResponse, err error) {
     return c.DescribeAlarmIncidentNodesWithContext(context.Background(), request)
 }
@@ -2358,13 +2409,10 @@ func (c *Client) DescribeAlarmIncidentNodes(request *DescribeAlarmIncidentNodesR
 // 获取告警点所在事件的所有节点信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAlarmIncidentNodesWithContext(ctx context.Context, request *DescribeAlarmIncidentNodesRequest) (response *DescribeAlarmIncidentNodesResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmIncidentNodesRequest()
@@ -2403,13 +2451,10 @@ func NewDescribeAlarmVertexIdResponse() (response *DescribeAlarmVertexIdResponse
 // 查询告警点id列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAlarmVertexId(request *DescribeAlarmVertexIdRequest) (response *DescribeAlarmVertexIdResponse, err error) {
     return c.DescribeAlarmVertexIdWithContext(context.Background(), request)
 }
@@ -2418,13 +2463,10 @@ func (c *Client) DescribeAlarmVertexId(request *DescribeAlarmVertexIdRequest) (r
 // 查询告警点id列表
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_APISERVERFAIL = "FailedOperation.APIServerFail"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_ILLEGALREQUEST = "InvalidParameter.IllegalRequest"
 //  INVALIDPARAMETER_INVALIDFORMAT = "InvalidParameter.InvalidFormat"
-//  INVALIDPARAMETER_PARSINGERROR = "InvalidParameter.ParsingError"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
 func (c *Client) DescribeAlarmVertexIdWithContext(ctx context.Context, request *DescribeAlarmVertexIdRequest) (response *DescribeAlarmVertexIdResponse, err error) {
     if request == nil {
         request = NewDescribeAlarmVertexIdRequest()

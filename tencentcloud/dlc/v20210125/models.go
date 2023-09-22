@@ -627,6 +627,20 @@ func (r *AttachWorkGroupPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BatchSqlTask struct {
+	// SQL子任务唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 运行SQL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExecuteSQL *string `json:"ExecuteSQL,omitnil" name:"ExecuteSQL"`
+
+	// 任务信息，成功则返回：Task Success!，失败则返回异常信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Message *string `json:"Message,omitnil" name:"Message"`
+}
+
 // Predefined struct for user
 type BindWorkGroupsToUserRequestParams struct {
 	// 绑定的用户和工作组信息
@@ -6315,6 +6329,70 @@ func (r *DescribeSparkAppTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeSparkAppTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSparkSessionBatchSQLRequestParams struct {
+	// SparkSQL唯一标识
+	BatchId *string `json:"BatchId,omitnil" name:"BatchId"`
+}
+
+type DescribeSparkSessionBatchSQLRequest struct {
+	*tchttp.BaseRequest
+	
+	// SparkSQL唯一标识
+	BatchId *string `json:"BatchId,omitnil" name:"BatchId"`
+}
+
+func (r *DescribeSparkSessionBatchSQLRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkSessionBatchSQLRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "BatchId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSparkSessionBatchSQLRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSparkSessionBatchSQLResponseParams struct {
+	// 状态：0：运行中、1：成功、2：失败、3：取消、4：超时；
+	State *uint64 `json:"State,omitnil" name:"State"`
+
+	// SQL子任务列表，仅展示运行完成的子任务，若某个任务运行失败，后续其它子任务不返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tasks []*BatchSqlTask `json:"Tasks,omitnil" name:"Tasks"`
+
+	// 非sql运行的异常事件信息，包含资源创建失败、调度异常，JOB超时等，正常运行下该Event值为空
+	Event *string `json:"Event,omitnil" name:"Event"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSparkSessionBatchSQLResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSparkSessionBatchSQLResponseParams `json:"Response"`
+}
+
+func (r *DescribeSparkSessionBatchSQLResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSparkSessionBatchSQLResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

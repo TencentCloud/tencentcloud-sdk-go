@@ -4299,7 +4299,7 @@ type DescribeAlarmHistoriesRequestParams struct {
 	// 根据指标名过滤
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
-	// 根据策略名称模糊搜索
+	// 根据策略名称模糊搜索,不支持大小写区分
 	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// 根据告警内容模糊搜索
@@ -4314,7 +4314,7 @@ type DescribeAlarmHistoriesRequestParams struct {
 	// 根据告警策略 Id 列表搜索
 	PolicyIds []*string `json:"PolicyIds,omitnil" name:"PolicyIds"`
 
-	// 告警等级
+	// 告警等级,取值范围：Remind、Serious、Warn
 	AlarmLevels []*string `json:"AlarmLevels,omitnil" name:"AlarmLevels"`
 }
 
@@ -4362,7 +4362,7 @@ type DescribeAlarmHistoriesRequest struct {
 	// 根据指标名过滤
 	MetricNames []*string `json:"MetricNames,omitnil" name:"MetricNames"`
 
-	// 根据策略名称模糊搜索
+	// 根据策略名称模糊搜索,不支持大小写区分
 	PolicyName *string `json:"PolicyName,omitnil" name:"PolicyName"`
 
 	// 根据告警内容模糊搜索
@@ -4377,7 +4377,7 @@ type DescribeAlarmHistoriesRequest struct {
 	// 根据告警策略 Id 列表搜索
 	PolicyIds []*string `json:"PolicyIds,omitnil" name:"PolicyIds"`
 
-	// 告警等级
+	// 告警等级,取值范围：Remind、Serious、Warn
 	AlarmLevels []*string `json:"AlarmLevels,omitnil" name:"AlarmLevels"`
 }
 
