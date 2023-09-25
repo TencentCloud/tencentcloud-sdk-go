@@ -4453,6 +4453,9 @@ type DescribeDBInstancesRequestParams struct {
 
 	// 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
 	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
+
+	// 分页查询方式 offset-按照偏移量分页查询，pageNumber-按照页数分页查询，默认取值pageNumber
+	PaginationType *string `json:"PaginationType,omitnil" name:"PaginationType"`
 }
 
 type DescribeDBInstancesRequest struct {
@@ -4517,6 +4520,9 @@ type DescribeDBInstancesRequest struct {
 
 	// 实例类型 HA-高可用 RO-只读实例 SI-基础版 BI-商业智能服务
 	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
+
+	// 分页查询方式 offset-按照偏移量分页查询，pageNumber-按照页数分页查询，默认取值pageNumber
+	PaginationType *string `json:"PaginationType,omitnil" name:"PaginationType"`
 }
 
 func (r *DescribeDBInstancesRequest) ToJsonString() string {
@@ -4547,6 +4553,7 @@ func (r *DescribeDBInstancesRequest) FromJsonString(s string) error {
 	delete(f, "SearchKey")
 	delete(f, "UidSet")
 	delete(f, "InstanceType")
+	delete(f, "PaginationType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDBInstancesRequest has unknown keys!", "")
 	}

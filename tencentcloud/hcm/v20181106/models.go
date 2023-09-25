@@ -41,6 +41,8 @@ type EvaluationRequestParams struct {
 	RejectNonArithmeticImage *bool `json:"RejectNonArithmeticImage,omitnil" name:"RejectNonArithmeticImage"`
 
 	// 异步模式标识，0：同步模式，1：异步模式。默认为同步模式
+	//
+	// Deprecated: IsAsync is deprecated.
 	IsAsync *int64 `json:"IsAsync,omitnil" name:"IsAsync"`
 
 	// 是否展开耦合算式中的竖式计算
@@ -146,6 +148,8 @@ type EvaluationResponseParams struct {
 	Items []*Item `json:"Items,omitnil" name:"Items"`
 
 	// 任务 id，用于查询接口
+	//
+	// Deprecated: TaskId is deprecated.
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。

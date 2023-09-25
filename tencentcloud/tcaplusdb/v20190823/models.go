@@ -2890,10 +2890,10 @@ func (r *ImportSnapshotsResponse) FromJsonString(s string) error {
 }
 
 type KafkaInfo struct {
-	// kafaka address
+	// Kafka address
 	Address *string `json:"Address,omitnil" name:"Address"`
 
-	// kafaka topic
+	// Kafka topic
 	Topic *string `json:"Topic,omitnil" name:"Topic"`
 
 	// kafka username

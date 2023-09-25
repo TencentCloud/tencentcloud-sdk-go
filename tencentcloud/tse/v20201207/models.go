@@ -598,9 +598,13 @@ type CreateCloudNativeAPIGatewayCertificateRequestParams struct {
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// 证书私钥
+	//
+	// Deprecated: Key is deprecated.
 	Key *string `json:"Key,omitnil" name:"Key"`
 
 	// 证书pem格式
+	//
+	// Deprecated: Crt is deprecated.
 	Crt *string `json:"Crt,omitnil" name:"Crt"`
 }
 

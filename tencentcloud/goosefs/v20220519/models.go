@@ -1314,6 +1314,17 @@ type MappedBucket struct {
 	// 规则备注与描述
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RuleDescription *string `json:"RuleDescription,omitnil" name:"RuleDescription"`
+
+	// 桶关联状态 0：关联中 1：关联完成
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 是否使用全球加速域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccelerateFlag *bool `json:"AccelerateFlag,omitnil" name:"AccelerateFlag"`
+
+	// 桶所在的园区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BucketRegion *string `json:"BucketRegion,omitnil" name:"BucketRegion"`
 }
 
 // Predefined struct for user

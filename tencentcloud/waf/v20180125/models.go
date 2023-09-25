@@ -5933,10 +5933,10 @@ type DomainInfo struct {
 	// waf开关,0关闭 1开启
 	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
-	// 规则防御模式,0观察模式 1拦截模式
+	// 规则引擎防护模式,0观察模式 1拦截模式
 	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
-	// AI防御模式,10规则引擎观察&&AI引擎关闭模式 11规则引擎观察&&AI引擎观察模式 12规则引擎观察&&AI引擎拦截模式 20规则引擎拦截&&AI引擎关闭模式 21规则引擎拦截&&AI引擎观察模式 22规则引擎拦截&&AI引擎拦截模式
+	// 规则引擎和AI引擎防护模式联合状态,10规则引擎观察&&AI引擎关闭模式 11规则引擎观察&&AI引擎观察模式 12规则引擎观察&&AI引擎拦截模式 20规则引擎拦截&&AI引擎关闭模式 21规则引擎拦截&&AI引擎观察模式 22规则引擎拦截&&AI引擎拦截模式
 	Engine *uint64 `json:"Engine,omitnil" name:"Engine"`
 
 	// CC列表
@@ -5994,6 +5994,10 @@ type DomainInfo struct {
 	// 安全组状态的详细解释
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SgDetail *string `json:"SgDetail,omitnil" name:"SgDetail"`
+
+	// 域名类型:hybrid表示混合云域名，public表示公有云域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CloudType *string `json:"CloudType,omitnil" name:"CloudType"`
 }
 
 type DomainPackageNew struct {
@@ -8167,7 +8171,7 @@ type ModifyDomainIpv6StatusRequestParams struct {
 	// 需要修改的域名ID
 	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
-	// 修改域名的Ipv6开关为Status （0:关闭 1:开启）
+	// 修改域名的Ipv6开关为Status （1:开启 2:关闭）
 	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 
@@ -8183,7 +8187,7 @@ type ModifyDomainIpv6StatusRequest struct {
 	// 需要修改的域名ID
 	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 
-	// 修改域名的Ipv6开关为Status （0:关闭 1:开启）
+	// 修改域名的Ipv6开关为Status （1:开启 2:关闭）
 	Status *int64 `json:"Status,omitnil" name:"Status"`
 }
 

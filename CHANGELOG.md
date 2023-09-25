@@ -1,3 +1,149 @@
+# Release v1.0.755
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 13 次发布
+
+发布时间：2023-09-25 01:10:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeRiskCenterAssetViewCFGRiskList](https://cloud.tencent.com/document/api/664/98822)
+* [DescribeRiskCenterAssetViewWeakPasswordRiskList](https://cloud.tencent.com/document/api/664/98821)
+* [DescribeRiskCenterServerRiskList](https://cloud.tencent.com/document/api/664/98820)
+* [DescribeRiskCenterWebsiteRiskList](https://cloud.tencent.com/document/api/664/98819)
+
+新增数据结构：
+
+* [AssetViewCFGRisk](https://cloud.tencent.com/document/api/664/90825#AssetViewCFGRisk)
+* [AssetViewWeakPassRisk](https://cloud.tencent.com/document/api/664/90825#AssetViewWeakPassRisk)
+* [ServerRisk](https://cloud.tencent.com/document/api/664/90825#ServerRisk)
+* [ServerRiskSuggestion](https://cloud.tencent.com/document/api/664/90825#ServerRiskSuggestion)
+* [WebsiteRisk](https://cloud.tencent.com/document/api/664/90825#WebsiteRisk)
+
+
+
+## 数据加速器 GooseFS(goosefs) 版本：2022-05-19
+
+### 第 7 次发布
+
+发布时间：2023-09-25 01:15:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MappedBucket](https://cloud.tencent.com/document/api/1424/95076#MappedBucket)
+
+	* 新增成员：Status, AccelerateFlag, BucketRegion
+
+
+
+
+## 数学作业批改(hcm) 版本：2018-11-06
+
+### 第 9 次发布
+
+发布时间：2023-09-25 01:15:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [Evaluation](https://cloud.tencent.com/document/api/1004/30616)
+
+
+
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
+
+### 第 52 次发布
+
+发布时间：2023-09-25 01:24:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/238/19969)
+
+	* 新增入参：PaginationType
+
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 45 次发布
+
+发布时间：2023-09-25 01:28:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudNativeAPIGatewayCertificate](https://cloud.tencent.com/document/api/1364/98591)
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 172 次发布
+
+发布时间：2023-09-25 01:30:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBandwidthPackage](https://cloud.tencent.com/document/api/215/19212)
+
+	* 新增入参：Egress
+
+
+修改数据结构：
+
+* [BandwidthPackage](https://cloud.tencent.com/document/api/215/15824#BandwidthPackage)
+
+	* 新增成员：Egress
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 56 次发布
+
+发布时间：2023-09-25 01:30:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainInfo](https://cloud.tencent.com/document/api/627/53609#DomainInfo)
+
+	* 新增成员：CloudType
+
+
+
+
 # Release v1.0.754
 
 ## 语音识别(asr) 版本：2019-06-14

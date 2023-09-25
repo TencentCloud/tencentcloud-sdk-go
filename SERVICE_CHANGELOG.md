@@ -1,70 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 语音识别(asr) 版本：2019-06-14
-
-### 第 31 次发布
-
-发布时间：2023-09-22 01:10:19
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [SentenceDetail](https://cloud.tencent.com/document/api/1093/37824#SentenceDetail)
-
-	* 新增成员：WrittenText
-
-	* <font color="#dd0000">**修改成员**：</font>EmotionType
-
-
-
-
-## 云防火墙(cfw) 版本：2019-09-04
-
-### 第 45 次发布
-
-发布时间：2023-09-22 01:21:17
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-<font color="#dd0000">**预下线接口**：</font>
-
-* ModifyPublicIPSwitchStatus
-
-
-
 ## 云安全一体化平台(csip) 版本：2022-11-21
 
-### 第 12 次发布
+### 第 13 次发布
 
-发布时间：2023-09-22 01:31:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DeleteDomainAndIp](https://cloud.tencent.com/document/api/664/98743)
-* [DeleteRiskScanTask](https://cloud.tencent.com/document/api/664/98745)
-* [StopRiskCenterTask](https://cloud.tencent.com/document/api/664/98744)
-
-新增数据结构：
-
-* [PublicIpDomainListKey](https://cloud.tencent.com/document/api/664/90825#PublicIpDomainListKey)
-* [TaskIdListKey](https://cloud.tencent.com/document/api/664/90825#TaskIdListKey)
-
-
-
-## 主机安全(cwp) 版本：2018-02-28
-
-### 第 96 次发布
-
-发布时间：2023-09-22 01:33:07
+发布时间：2023-09-25 01:10:56
 
 本次发布包含了以下内容：
 
@@ -72,152 +12,62 @@
 
 新增接口：
 
-* [DescribeAgentInstallCommand](https://cloud.tencent.com/document/api/296/98746)
-
-
-
-## 数据湖计算 DLC(dlc) 版本：2021-01-25
-
-### 第 62 次发布
-
-发布时间：2023-09-22 01:40:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeSparkSessionBatchSQL](https://cloud.tencent.com/document/api/1342/98747)
+* [DescribeRiskCenterAssetViewCFGRiskList](https://cloud.tencent.com/document/api/664/98822)
+* [DescribeRiskCenterAssetViewWeakPasswordRiskList](https://cloud.tencent.com/document/api/664/98821)
+* [DescribeRiskCenterServerRiskList](https://cloud.tencent.com/document/api/664/98820)
+* [DescribeRiskCenterWebsiteRiskList](https://cloud.tencent.com/document/api/664/98819)
 
 新增数据结构：
 
-* [BatchSqlTask](https://cloud.tencent.com/document/api/1342/53778#BatchSqlTask)
+* [AssetViewCFGRisk](https://cloud.tencent.com/document/api/664/90825#AssetViewCFGRisk)
+* [AssetViewWeakPassRisk](https://cloud.tencent.com/document/api/664/90825#AssetViewWeakPassRisk)
+* [ServerRisk](https://cloud.tencent.com/document/api/664/90825#ServerRisk)
+* [ServerRiskSuggestion](https://cloud.tencent.com/document/api/664/90825#ServerRiskSuggestion)
+* [WebsiteRisk](https://cloud.tencent.com/document/api/664/90825#WebsiteRisk)
 
 
 
-## 腾讯电子签企业版(ess) 版本：2020-11-11
+## 数据加速器 GooseFS(goosefs) 版本：2022-05-19
 
-### 第 121 次发布
+### 第 7 次发布
 
-发布时间：2023-09-22 01:49:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribePersonCertificate](https://cloud.tencent.com/document/api/1323/98748)
-
-修改接口：
-
-* [CreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1323/75450)
-
-	* 新增入参：ApproverComponentLimitTypes
-
-
-新增数据结构：
-
-* [ApproverComponentLimitType](https://cloud.tencent.com/document/api/1323/70369#ApproverComponentLimitType)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 113 次发布
-
-发布时间：2023-09-22 01:50:20
+发布时间：2023-09-25 01:15:41
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-修改接口：
-
-* [ChannelCreateMultiFlowSignQRCode](https://cloud.tencent.com/document/api/1420/75452)
-
-	* 新增入参：ApproverComponentLimitTypes
-
-
-新增数据结构：
-
-* [ApproverComponentLimitType](https://cloud.tencent.com/document/api/1420/61525#ApproverComponentLimitType)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
-
-
-
-## 全球应用加速(gaap) 版本：2018-05-29
-
-### 第 41 次发布
-
-发布时间：2023-09-22 01:52:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeCustomHeader](https://cloud.tencent.com/document/api/608/59240)
-
-	* 新增入参：RuleId
-
-
-
-
-## 集团账号管理(organization) 版本：2021-03-31
-
-### 第 25 次发布
-
-发布时间：2023-09-22 02:15:37
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [AddOrganizationMemberEmail](https://cloud.tencent.com/document/api/850/93333)
-
-	* 新增出参：BindId
-
-* [DescribeOrganizationMemberAuthIdentities](https://cloud.tencent.com/document/api/850/82936)
-
-	* 新增入参：IdentityId
-
-	* <font color="#dd0000">**修改入参**：</font>MemberUin
-
 
 修改数据结构：
 
-* [IdentityPolicy](https://cloud.tencent.com/document/api/850/67060#IdentityPolicy)
+* [MappedBucket](https://cloud.tencent.com/document/api/1424/95076#MappedBucket)
 
-	* 新增成员：PolicyType, PolicyDocument
-
-	* <font color="#dd0000">**修改成员**：</font>PolicyId, PolicyName
-
-* [OrgMemberAuthIdentity](https://cloud.tencent.com/document/api/850/67060#OrgMemberAuthIdentity)
-
-	* 新增成员：Status, MemberUin, MemberName
-
-	* <font color="#dd0000">**修改成员**：</font>IdentityType
+	* 新增成员：Status, AccelerateFlag, BucketRegion
 
 
 
 
-## 集团账号管理(organization) 版本：2018-12-25
+## 数学作业批改(hcm) 版本：2018-11-06
+
+### 第 9 次发布
+
+发布时间：2023-09-25 01:15:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [Evaluation](https://cloud.tencent.com/document/api/1004/30616)
 
 
 
-## 容器安全服务(tcss) 版本：2020-11-01
+
+## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
 ### 第 52 次发布
 
-发布时间：2023-09-22 02:29:25
+发布时间：2023-09-25 01:24:51
 
 本次发布包含了以下内容：
 
@@ -225,20 +75,61 @@
 
 修改接口：
 
-* [CreateRefreshTask](https://cloud.tencent.com/document/api/1285/65453)
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/238/19969)
 
-	* 新增入参：ClusterIDs, IsSyncListOnly
-
-	* 新增出参：NewTaskID
+	* 新增入参：PaginationType
 
 
 
 
-## TI-ONE 训练平台(tione) 版本：2021-11-11
+## 微服务引擎 TSE(tse) 版本：2020-12-07
 
-### 第 38 次发布
+### 第 45 次发布
 
-发布时间：2023-09-22 02:38:16
+发布时间：2023-09-25 01:28:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudNativeAPIGatewayCertificate](https://cloud.tencent.com/document/api/1364/98591)
+
+
+
+
+## 私有网络(vpc) 版本：2017-03-12
+
+### 第 172 次发布
+
+发布时间：2023-09-25 01:30:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBandwidthPackage](https://cloud.tencent.com/document/api/215/19212)
+
+	* 新增入参：Egress
+
+
+修改数据结构：
+
+* [BandwidthPackage](https://cloud.tencent.com/document/api/215/15824#BandwidthPackage)
+
+	* 新增成员：Egress
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 56 次发布
+
+发布时间：2023-09-25 01:30:53
 
 本次发布包含了以下内容：
 
@@ -246,14 +137,10 @@
 
 修改数据结构：
 
-* [Instance](https://cloud.tencent.com/document/api/851/75051#Instance)
+* [DomainInfo](https://cloud.tencent.com/document/api/627/53609#DomainInfo)
 
-	* 新增成员：SpecFeatures
+	* 新增成员：CloudType
 
-
-
-
-## TI-ONE 训练平台(tione) 版本：2019-10-22
 
 
 
@@ -34182,6 +34069,29 @@
 
 ## 云安全一体化平台(csip) 版本：2022-11-21
 
+### 第 13 次发布
+
+发布时间：2023-09-25 01:10:56
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeRiskCenterAssetViewCFGRiskList](https://cloud.tencent.com/document/api/664/98822)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRiskCenterAssetViewWeakPasswordRiskList](https://cloud.tencent.com/document/api/664/98821)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRiskCenterServerRiskList](https://cloud.tencent.com/document/api/664/98820)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRiskCenterWebsiteRiskList](https://cloud.tencent.com/document/api/664/98819)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AssetViewCFGRisk](https://cloud.tencent.com/document/api/664/90825#AssetViewCFGRisk)](https://cloud.tencent.com/document/api/664/90825#[AssetViewCFGRisk](https://cloud.tencent.com/document/api/664/90825#AssetViewCFGRisk))
+* [[AssetViewWeakPassRisk](https://cloud.tencent.com/document/api/664/90825#AssetViewWeakPassRisk)](https://cloud.tencent.com/document/api/664/90825#[AssetViewWeakPassRisk](https://cloud.tencent.com/document/api/664/90825#AssetViewWeakPassRisk))
+* [[ServerRisk](https://cloud.tencent.com/document/api/664/90825#ServerRisk)](https://cloud.tencent.com/document/api/664/90825#[ServerRisk](https://cloud.tencent.com/document/api/664/90825#ServerRisk))
+* [[ServerRiskSuggestion](https://cloud.tencent.com/document/api/664/90825#ServerRiskSuggestion)](https://cloud.tencent.com/document/api/664/90825#[ServerRiskSuggestion](https://cloud.tencent.com/document/api/664/90825#ServerRiskSuggestion))
+* [[WebsiteRisk](https://cloud.tencent.com/document/api/664/90825#WebsiteRisk)](https://cloud.tencent.com/document/api/664/90825#[WebsiteRisk](https://cloud.tencent.com/document/api/664/90825#WebsiteRisk))
+
 ### 第 12 次发布
 
 发布时间：2023-09-22 01:31:21
@@ -34192,14 +34102,14 @@
 
 新增接口：
 
-* [[DeleteDomainAndIp](https://cloud.tencent.com/document/api/664/98743)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteRiskScanTask](https://cloud.tencent.com/document/api/664/98745)](https://cloud.tencent.com/document/api/#/#)
-* [[StopRiskCenterTask](https://cloud.tencent.com/document/api/664/98744)](https://cloud.tencent.com/document/api/#/#)
+* [DeleteDomainAndIp](https://cloud.tencent.com/document/api/664/98743)
+* [DeleteRiskScanTask](https://cloud.tencent.com/document/api/664/98745)
+* [StopRiskCenterTask](https://cloud.tencent.com/document/api/664/98744)
 
 新增数据结构：
 
-* [[PublicIpDomainListKey](https://cloud.tencent.com/document/api/664/90825#PublicIpDomainListKey)](https://cloud.tencent.com/document/api/664/90825#[PublicIpDomainListKey](https://cloud.tencent.com/document/api/664/90825#PublicIpDomainListKey))
-* [[TaskIdListKey](https://cloud.tencent.com/document/api/664/90825#TaskIdListKey)](https://cloud.tencent.com/document/api/664/90825#[TaskIdListKey](https://cloud.tencent.com/document/api/664/90825#TaskIdListKey))
+* [PublicIpDomainListKey](https://cloud.tencent.com/document/api/664/90825#PublicIpDomainListKey)
+* [TaskIdListKey](https://cloud.tencent.com/document/api/664/90825#TaskIdListKey)
 
 ### 第 11 次发布
 
@@ -36663,7 +36573,7 @@
 
 新增接口：
 
-* [[DescribeAgentInstallCommand](https://cloud.tencent.com/document/api/296/98746)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAgentInstallCommand](https://cloud.tencent.com/document/api/296/98746)
 
 ### 第 95 次发布
 
@@ -44646,11 +44556,11 @@
 
 新增接口：
 
-* [[DescribeSparkSessionBatchSQL](https://cloud.tencent.com/document/api/1342/98747)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeSparkSessionBatchSQL](https://cloud.tencent.com/document/api/1342/98747)
 
 新增数据结构：
 
-* [[BatchSqlTask](https://cloud.tencent.com/document/api/1342/53778#BatchSqlTask)](https://cloud.tencent.com/document/api/1342/53778#[BatchSqlTask](https://cloud.tencent.com/document/api/1342/53778#BatchSqlTask))
+* [BatchSqlTask](https://cloud.tencent.com/document/api/1342/53778#BatchSqlTask)
 
 ### 第 61 次发布
 
@@ -53510,7 +53420,7 @@
 
 新增接口：
 
-* [[DescribePersonCertificate](https://cloud.tencent.com/document/api/1323/98748)](https://cloud.tencent.com/document/api/#/#)
+* [DescribePersonCertificate](https://cloud.tencent.com/document/api/1323/98748)
 
 修改接口：
 
@@ -53521,7 +53431,7 @@
 
 新增数据结构：
 
-* [[ApproverComponentLimitType](https://cloud.tencent.com/document/api/1323/70369#ApproverComponentLimitType)](https://cloud.tencent.com/document/api/1323/70369#[ApproverComponentLimitType](https://cloud.tencent.com/document/api/1323/70369#ApproverComponentLimitType))
+* [ApproverComponentLimitType](https://cloud.tencent.com/document/api/1323/70369#ApproverComponentLimitType)
 
 ### 第 120 次发布
 
@@ -55899,7 +55809,7 @@
 
 新增数据结构：
 
-* [[ApproverComponentLimitType](https://cloud.tencent.com/document/api/1420/61525#ApproverComponentLimitType)](https://cloud.tencent.com/document/api/1420/61525#[ApproverComponentLimitType](https://cloud.tencent.com/document/api/1420/61525#ApproverComponentLimitType))
+* [ApproverComponentLimitType](https://cloud.tencent.com/document/api/1420/61525#ApproverComponentLimitType)
 
 ### 第 112 次发布
 
@@ -61391,6 +61301,21 @@
 
 ## 数据加速器 GooseFS(goosefs) 版本：2022-05-19
 
+### 第 7 次发布
+
+发布时间：2023-09-25 01:15:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [MappedBucket](https://cloud.tencent.com/document/api/1424/95076#MappedBucket)
+
+	* 新增成员：Status, AccelerateFlag, BucketRegion
+
+
 ### 第 6 次发布
 
 发布时间：2023-08-02 01:16:12
@@ -62613,6 +62538,19 @@
 
 
 ## 数学作业批改(hcm) 版本：2018-11-06
+
+### 第 9 次发布
+
+发布时间：2023-09-25 01:15:46
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [Evaluation](https://cloud.tencent.com/document/api/1004/30616)
+
 
 ### 第 8 次发布
 
@@ -92774,6 +92712,21 @@
 
 ## 云数据库 SQL Server(sqlserver) 版本：2018-03-28
 
+### 第 52 次发布
+
+发布时间：2023-09-25 01:24:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeDBInstances](https://cloud.tencent.com/document/api/238/19969)
+
+	* 新增入参：PaginationType
+
+
 ### 第 51 次发布
 
 发布时间：2023-09-13 02:18:02
@@ -119108,6 +119061,19 @@
 
 ## 微服务引擎 TSE(tse) 版本：2020-12-07
 
+### 第 45 次发布
+
+发布时间：2023-09-25 01:28:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCloudNativeAPIGatewayCertificate](https://cloud.tencent.com/document/api/1364/98591)
+
+
 ### 第 44 次发布
 
 发布时间：2023-09-18 02:36:04
@@ -127944,6 +127910,28 @@
 
 ## 私有网络(vpc) 版本：2017-03-12
 
+### 第 172 次发布
+
+发布时间：2023-09-25 01:30:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateBandwidthPackage](https://cloud.tencent.com/document/api/215/19212)
+
+	* 新增入参：Egress
+
+
+修改数据结构：
+
+* [BandwidthPackage](https://cloud.tencent.com/document/api/215/15824#BandwidthPackage)
+
+	* 新增成员：Egress
+
+
 ### 第 171 次发布
 
 发布时间：2023-09-18 02:43:01
@@ -131849,6 +131837,21 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 56 次发布
+
+发布时间：2023-09-25 01:30:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [DomainInfo](https://cloud.tencent.com/document/api/627/53609#DomainInfo)
+
+	* 新增成员：CloudType
+
 
 ### 第 55 次发布
 

@@ -1971,6 +1971,10 @@ type BandwidthPackage struct {
 
 	// 带宽包限速大小。单位：Mbps，-1表示不限速。
 	Bandwidth *int64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+
+	// 网络出口
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Egress *string `json:"Egress,omitnil" name:"Egress"`
 }
 
 type BandwidthPackageBillBandwidth struct {
@@ -3013,6 +3017,9 @@ type CreateBandwidthPackageRequestParams struct {
 	// 带宽包类型, 默认值: BGP, 可选值:
 	// <li>BGP: 普通BGP共享带宽包</li>
 	// <li>HIGH_QUALITY_BGP: 精品BGP共享带宽包</li>
+	// <li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
+	// <li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
+	// <li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
 	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
 
 	// 带宽包计费类型, 默认为: TOP5_POSTPAID_BY_MONTH, 可选值:
@@ -3040,6 +3047,9 @@ type CreateBandwidthPackageRequestParams struct {
 
 	// 预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。
 	TimeSpan *uint64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+
+	// 网络出口，默认值：center_egress1
+	Egress *string `json:"Egress,omitnil" name:"Egress"`
 }
 
 type CreateBandwidthPackageRequest struct {
@@ -3048,6 +3058,9 @@ type CreateBandwidthPackageRequest struct {
 	// 带宽包类型, 默认值: BGP, 可选值:
 	// <li>BGP: 普通BGP共享带宽包</li>
 	// <li>HIGH_QUALITY_BGP: 精品BGP共享带宽包</li>
+	// <li>SINGLEISP_CMCC: 中国移动共享带宽包</li>
+	// <li>SINGLEISP_CTCC: 中国电信共享带宽包</li>
+	// <li>SINGLEISP_CUCC: 中国联通共享带宽包</li>
 	NetworkType *string `json:"NetworkType,omitnil" name:"NetworkType"`
 
 	// 带宽包计费类型, 默认为: TOP5_POSTPAID_BY_MONTH, 可选值:
@@ -3075,6 +3088,9 @@ type CreateBandwidthPackageRequest struct {
 
 	// 预付费包月带宽包的购买时长，单位: 月，取值范围: 1~60。
 	TimeSpan *uint64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+
+	// 网络出口，默认值：center_egress1
+	Egress *string `json:"Egress,omitnil" name:"Egress"`
 }
 
 func (r *CreateBandwidthPackageRequest) ToJsonString() string {
@@ -3097,6 +3113,7 @@ func (r *CreateBandwidthPackageRequest) FromJsonString(s string) error {
 	delete(f, "Tags")
 	delete(f, "Protocol")
 	delete(f, "TimeSpan")
+	delete(f, "Egress")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBandwidthPackageRequest has unknown keys!", "")
 	}

@@ -378,6 +378,7 @@ func NewDescribeMetricRecordsResponse() (response *DescribeMetricRecordsResponse
 //  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
 //  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 //  FAILEDOPERATION_INVALIDINSTANCEID = "FailedOperation.InvalidInstanceID"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeMetricRecords(request *DescribeMetricRecordsRequest) (response *DescribeMetricRecordsResponse, err error) {
@@ -393,6 +394,7 @@ func (c *Client) DescribeMetricRecords(request *DescribeMetricRecordsRequest) (r
 //  FAILEDOPERATION_INSTANCEIDISEMPTY = "FailedOperation.InstanceIdIsEmpty"
 //  FAILEDOPERATION_INSTANCENOTFOUND = "FailedOperation.InstanceNotFound"
 //  FAILEDOPERATION_INVALIDINSTANCEID = "FailedOperation.InvalidInstanceID"
+//  FAILEDOPERATION_INVALIDREQUEST = "FailedOperation.InvalidRequest"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeMetricRecordsWithContext(ctx context.Context, request *DescribeMetricRecordsRequest) (response *DescribeMetricRecordsResponse, err error) {
