@@ -38,6 +38,9 @@ const (
 	// 参数取值错误。
 	INVALIDPARAMETERVALUE = "InvalidParameterValue"
 
+	// 超过配额限制。
+	LIMITEXCEEDED = "LimitExceeded"
+
 	// 缺少参数错误。
 	MISSINGPARAMETER = "MissingParameter"
 
@@ -55,6 +58,9 @@ const (
 
 	// 权限错误。
 	UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+
+	// 用户未启用。
+	UNAUTHORIZEDOPERATION_INACTIVE = "UnauthorizedOperation.Inactive"
 
 	// 用户不存在。
 	UNAUTHORIZEDOPERATION_USERNOTEXIST = "UnauthorizedOperation.UserNotExist"

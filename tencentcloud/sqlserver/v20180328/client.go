@@ -1853,6 +1853,7 @@ func NewDeletePublishSubscribeResponse() (response *DeletePublishSubscribeRespon
 // 本接口（DeletePublishSubscribe）用于删除两个数据库间的发布订阅关系。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
@@ -1868,6 +1869,7 @@ func (c *Client) DeletePublishSubscribe(request *DeletePublishSubscribeRequest) 
 // 本接口（DeletePublishSubscribe）用于删除两个数据库间的发布订阅关系。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_GCSERROR = "FailedOperation.GcsError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_GCSERROR = "InternalError.GcsError"
@@ -7189,6 +7191,7 @@ func NewSwitchCloudInstanceHAResponse() (response *SwitchCloudInstanceHAResponse
 // 本接口(SwitchCloudInstanceHA)用于手动主备切换。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) SwitchCloudInstanceHA(request *SwitchCloudInstanceHARequest) (response *SwitchCloudInstanceHAResponse, err error) {
     return c.SwitchCloudInstanceHAWithContext(context.Background(), request)
@@ -7198,6 +7201,7 @@ func (c *Client) SwitchCloudInstanceHA(request *SwitchCloudInstanceHARequest) (r
 // 本接口(SwitchCloudInstanceHA)用于手动主备切换。
 //
 // 可能返回的错误码:
+//  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) SwitchCloudInstanceHAWithContext(ctx context.Context, request *SwitchCloudInstanceHARequest) (response *SwitchCloudInstanceHAResponse, err error) {
     if request == nil {
@@ -7292,6 +7296,7 @@ func NewUpgradeDBInstanceResponse() (response *UpgradeDBInstanceResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
@@ -7310,6 +7315,7 @@ func (c *Client) UpgradeDBInstance(request *UpgradeDBInstanceRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_CREATEORDERFAILED = "FailedOperation.CreateOrderFailed"
+//  FAILEDOPERATION_DBERROR = "FailedOperation.DBError"
 //  FAILEDOPERATION_QUERYPRICEFAILED = "FailedOperation.QueryPriceFailed"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
 //  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"

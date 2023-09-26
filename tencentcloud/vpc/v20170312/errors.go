@@ -764,6 +764,9 @@ const (
 	// 当前地域不支持启用组播。
 	UNSUPPORTEDOPERATION_ENABLEMULTICAST = "UnsupportedOperation.EnableMulticast"
 
+	// 终端节点和终端节点服务的CdcId不一致。
+	UNSUPPORTEDOPERATION_ENDPOINTMISMATCHENDPOINTSERVICECDCID = "UnsupportedOperation.EndPointMismatchEndPointServiceCdcId"
+
 	// 终端节点服务本身不能是终端节点。
 	UNSUPPORTEDOPERATION_ENDPOINTSERVICE = "UnsupportedOperation.EndPointService"
 

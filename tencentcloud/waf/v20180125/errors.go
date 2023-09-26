@@ -41,6 +41,9 @@ const (
 	// 操作Redis数据库失败
 	FAILEDOPERATION_REDISOPERATIONFAILED = "FailedOperation.RedisOperationFailed"
 
+	// 删除的Session正在被启用
+	FAILEDOPERATION_SESSIONINUSED = "FailedOperation.SessionInUsed"
+
 	// 黑白名单添加数超过上限
 	FAILEDOPERATION_THENUMBEROFADDEDBLACKANDWHITELISTEXCEEDSTHEUPPERLIMIT = "FailedOperation.TheNumberOfAddedBlackAndWhiteListExceedsTheUpperLimit"
 

@@ -1752,6 +1752,10 @@ type CreateExportRequestParams struct {
 
 	// 日志导出数据格式。json，csv，默认为json
 	Format *string `json:"Format,omitnil" name:"Format"`
+
+	// 语法规则,  默认值为0。
+	// 0：Lucene语法，1：CQL语法。
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
 }
 
 type CreateExportRequest struct {
@@ -1777,6 +1781,10 @@ type CreateExportRequest struct {
 
 	// 日志导出数据格式。json，csv，默认为json
 	Format *string `json:"Format,omitnil" name:"Format"`
+
+	// 语法规则,  默认值为0。
+	// 0：Lucene语法，1：CQL语法。
+	SyntaxRule *uint64 `json:"SyntaxRule,omitnil" name:"SyntaxRule"`
 }
 
 func (r *CreateExportRequest) ToJsonString() string {
@@ -1798,6 +1806,7 @@ func (r *CreateExportRequest) FromJsonString(s string) error {
 	delete(f, "To")
 	delete(f, "Order")
 	delete(f, "Format")
+	delete(f, "SyntaxRule")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateExportRequest has unknown keys!", "")
 	}

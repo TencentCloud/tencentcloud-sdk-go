@@ -211,6 +211,9 @@ type AddAntiFakeUrlResponseParams struct {
 	// 结果
 	Result *string `json:"Result,omitnil" name:"Result"`
 
+	// 规则ID
+	Id *string `json:"Id,omitnil" name:"Id"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -236,10 +239,10 @@ type AddAntiInfoLeakRulesRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
-	// 名称
+	// 规则名称
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 动作
+	// 动作，0（告警）、1（替换）、2（仅显示前四位）、3（仅显示后四位）、4（阻断）
 	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 策略详情
@@ -255,10 +258,10 @@ type AddAntiInfoLeakRulesRequest struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
-	// 名称
+	// 规则名称
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 动作
+	// 动作，0（告警）、1（替换）、2（仅显示前四位）、3（仅显示后四位）、4（阻断）
 	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
 	// 策略详情
@@ -293,6 +296,9 @@ func (r *AddAntiInfoLeakRulesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type AddAntiInfoLeakRulesResponseParams struct {
+	// 规则ID
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -1030,6 +1036,10 @@ type BatchIpAccessControlData struct {
 }
 
 type BatchIpAccessControlItem struct {
+	// mongo表自增Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
+
 	// 黑名单42或白名单40
 	ActionType *int64 `json:"ActionType,omitnil" name:"ActionType"`
 
@@ -1722,6 +1732,9 @@ type DeleteCCRuleRequestParams struct {
 
 	// clb-waf或者sparta-waf
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// 规则Id
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 type DeleteCCRuleRequest struct {
@@ -1735,6 +1748,9 @@ type DeleteCCRuleRequest struct {
 
 	// clb-waf或者sparta-waf
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// 规则Id
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 func (r *DeleteCCRuleRequest) ToJsonString() string {
@@ -1752,6 +1768,7 @@ func (r *DeleteCCRuleRequest) FromJsonString(s string) error {
 	delete(f, "Domain")
 	delete(f, "Name")
 	delete(f, "Edition")
+	delete(f, "RuleId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCCRuleRequest has unknown keys!", "")
 	}
@@ -1763,6 +1780,9 @@ type DeleteCCRuleResponseParams struct {
 	// 一般为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil" name:"Data"`
+
+	// 操作的规则Id
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -2100,6 +2120,9 @@ type DeleteIpAccessControlRequestParams struct {
 	// 删除的ip数组
 	Items []*string `json:"Items,omitnil" name:"Items"`
 
+	// 若IsId字段为True，则Items列表元素需为Id，否则为IP
+	IsId *bool `json:"IsId,omitnil" name:"IsId"`
+
 	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
 	DeleteAll *bool `json:"DeleteAll,omitnil" name:"DeleteAll"`
 
@@ -2115,6 +2138,9 @@ type DeleteIpAccessControlRequest struct {
 
 	// 删除的ip数组
 	Items []*string `json:"Items,omitnil" name:"Items"`
+
+	// 若IsId字段为True，则Items列表元素需为Id，否则为IP
+	IsId *bool `json:"IsId,omitnil" name:"IsId"`
 
 	// 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
 	DeleteAll *bool `json:"DeleteAll,omitnil" name:"DeleteAll"`
@@ -2137,6 +2163,7 @@ func (r *DeleteIpAccessControlRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Domain")
 	delete(f, "Items")
+	delete(f, "IsId")
 	delete(f, "DeleteAll")
 	delete(f, "SourceType")
 	if len(f) > 0 {
@@ -2182,6 +2209,9 @@ type DeleteSessionRequestParams struct {
 
 	// clb-waf 或者 sprta-waf
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// 要删除的SessionID
+	SessionID *int64 `json:"SessionID,omitnil" name:"SessionID"`
 }
 
 type DeleteSessionRequest struct {
@@ -2192,6 +2222,9 @@ type DeleteSessionRequest struct {
 
 	// clb-waf 或者 sprta-waf
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// 要删除的SessionID
+	SessionID *int64 `json:"SessionID,omitnil" name:"SessionID"`
 }
 
 func (r *DeleteSessionRequest) ToJsonString() string {
@@ -2208,6 +2241,7 @@ func (r *DeleteSessionRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Domain")
 	delete(f, "Edition")
+	delete(f, "SessionID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteSessionRequest has unknown keys!", "")
 	}
@@ -2399,6 +2433,12 @@ type DescribeAccessFastAnalysisRequestParams struct {
 
 	// 需要分析统计的字段名
 	FieldName *string `json:"FieldName,omitnil" name:"FieldName"`
+
+	// 排序字段,升序asc,降序desc，默认降序desc 
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
+
+	// 返回的top数，默认返回top5
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 }
 
 type DescribeAccessFastAnalysisRequest struct {
@@ -2418,6 +2458,12 @@ type DescribeAccessFastAnalysisRequest struct {
 
 	// 需要分析统计的字段名
 	FieldName *string `json:"FieldName,omitnil" name:"FieldName"`
+
+	// 排序字段,升序asc,降序desc，默认降序desc 
+	Sort *string `json:"Sort,omitnil" name:"Sort"`
+
+	// 返回的top数，默认返回top5
+	Count *int64 `json:"Count,omitnil" name:"Count"`
 }
 
 func (r *DescribeAccessFastAnalysisRequest) ToJsonString() string {
@@ -2437,6 +2483,8 @@ func (r *DescribeAccessFastAnalysisRequest) FromJsonString(s string) error {
 	delete(f, "To")
 	delete(f, "Query")
 	delete(f, "FieldName")
+	delete(f, "Sort")
+	delete(f, "Count")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccessFastAnalysisRequest has unknown keys!", "")
 	}
@@ -3059,6 +3107,18 @@ type DescribeAttackOverviewResponseParams struct {
 	// api风险事件数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApiRiskEventCount *uint64 `json:"ApiRiskEventCount,omitnil" name:"ApiRiskEventCount"`
+
+	// 黑名单总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IPBlackCount *uint64 `json:"IPBlackCount,omitnil" name:"IPBlackCount"`
+
+	// 防篡改总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TamperCount *uint64 `json:"TamperCount,omitnil" name:"TamperCount"`
+
+	// 信息泄露总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LeakCount *uint64 `json:"LeakCount,omitnil" name:"LeakCount"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -4672,6 +4732,9 @@ type DescribeIpAccessControlRequestParams struct {
 
 	// ip
 	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 生效状态
+	ValidStatus *int64 `json:"ValidStatus,omitnil" name:"ValidStatus"`
 }
 
 type DescribeIpAccessControlRequest struct {
@@ -4712,6 +4775,9 @@ type DescribeIpAccessControlRequest struct {
 
 	// ip
 	Ip *string `json:"Ip,omitnil" name:"Ip"`
+
+	// 生效状态
+	ValidStatus *int64 `json:"ValidStatus,omitnil" name:"ValidStatus"`
 }
 
 func (r *DescribeIpAccessControlRequest) ToJsonString() string {
@@ -4738,6 +4804,7 @@ func (r *DescribeIpAccessControlRequest) FromJsonString(s string) error {
 	delete(f, "Source")
 	delete(f, "Sort")
 	delete(f, "Ip")
+	delete(f, "ValidStatus")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIpAccessControlRequest has unknown keys!", "")
 	}
@@ -4922,20 +4989,18 @@ type DescribePeakPointsRequestParams struct {
 	// WAF实例ID，不传则不过滤
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
-	// 十三个值可选：
+	// 十一个值可选：
 	// access-峰值qps趋势图
 	// botAccess- bot峰值qps趋势图
 	// down-下行峰值带宽趋势图
 	// up-上行峰值带宽趋势图
 	// attack-Web攻击总数趋势图
 	// cc-CC攻击总数趋势图
-	// StatusServerError-WAF返回给客户端状态码次数趋势图
-	// StatusClientError-WAF返回给客户端状态码次数趋势图
-	// StatusRedirect-WAF返回给客户端状态码次数趋势图
-	// StatusOk-WAF返回给客户端状态码次数趋势图
-	// UpstreamServerError-源站返回给WAF状态码次数趋势图
-	// UpstreamClientError-源站返回给WAF状态码次数趋势图
-	// UpstreamRedirect-源站返回给WAF状态码次数趋势图
+	// bw-黑IP攻击总数趋势图
+	// tamper-防篡改攻击总数趋势图
+	// leak-防泄露攻击总数趋势图
+	// acl-访问控制攻击总数趋势图
+	// http_status-状态码各次数趋势图
 	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 }
 
@@ -4957,20 +5022,18 @@ type DescribePeakPointsRequest struct {
 	// WAF实例ID，不传则不过滤
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 
-	// 十三个值可选：
+	// 十一个值可选：
 	// access-峰值qps趋势图
 	// botAccess- bot峰值qps趋势图
 	// down-下行峰值带宽趋势图
 	// up-上行峰值带宽趋势图
 	// attack-Web攻击总数趋势图
 	// cc-CC攻击总数趋势图
-	// StatusServerError-WAF返回给客户端状态码次数趋势图
-	// StatusClientError-WAF返回给客户端状态码次数趋势图
-	// StatusRedirect-WAF返回给客户端状态码次数趋势图
-	// StatusOk-WAF返回给客户端状态码次数趋势图
-	// UpstreamServerError-源站返回给WAF状态码次数趋势图
-	// UpstreamClientError-源站返回给WAF状态码次数趋势图
-	// UpstreamRedirect-源站返回给WAF状态码次数趋势图
+	// bw-黑IP攻击总数趋势图
+	// tamper-防篡改攻击总数趋势图
+	// leak-防泄露攻击总数趋势图
+	// acl-访问控制攻击总数趋势图
+	// http_status-状态码各次数趋势图
 	MetricName *string `json:"MetricName,omitnil" name:"MetricName"`
 }
 
@@ -5275,6 +5338,9 @@ func (r *DescribePortsResponse) FromJsonString(s string) error {
 type DescribeRuleLimitRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DescribeRuleLimitRequest struct {
@@ -5282,6 +5348,9 @@ type DescribeRuleLimitRequest struct {
 	
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *DescribeRuleLimitRequest) ToJsonString() string {
@@ -5297,6 +5366,7 @@ func (r *DescribeRuleLimitRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Domain")
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRuleLimitRequest has unknown keys!", "")
 	}
@@ -5672,6 +5742,9 @@ func (r *DescribeVipInfoResponse) FromJsonString(s string) error {
 type DescribeWafAutoDenyRulesRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type DescribeWafAutoDenyRulesRequest struct {
@@ -5679,6 +5752,9 @@ type DescribeWafAutoDenyRulesRequest struct {
 	
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 func (r *DescribeWafAutoDenyRulesRequest) ToJsonString() string {
@@ -5694,6 +5770,7 @@ func (r *DescribeWafAutoDenyRulesRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Domain")
+	delete(f, "InstanceId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWafAutoDenyRulesRequest has unknown keys!", "")
 	}
@@ -5713,6 +5790,9 @@ type DescribeWafAutoDenyRulesResponseParams struct {
 
 	// 自动封禁状态
 	DefenseStatus *int64 `json:"DefenseStatus,omitnil" name:"DefenseStatus"`
+
+	// 重保护网域名状态
+	HWState *int64 `json:"HWState,omitnil" name:"HWState"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -6928,6 +7008,40 @@ type HostStatus struct {
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
 }
 
+type HybridPkg struct {
+	// 资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceIds *string `json:"ResourceIds,omitnil" name:"ResourceIds"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *int64 `json:"Region,omitnil" name:"Region"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 申请数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InquireNum *int64 `json:"InquireNum,omitnil" name:"InquireNum"`
+
+	// 使用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedNum *int64 `json:"UsedNum,omitnil" name:"UsedNum"`
+
+	// 续费标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *uint64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+}
+
 type InstanceInfo struct {
 	// id
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -7032,6 +7146,14 @@ type InstanceInfo struct {
 	// 是否api 安全试用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsAPISecurityTrial *uint64 `json:"IsAPISecurityTrial,omitnil" name:"IsAPISecurityTrial"`
+
+	// 重保包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MajorEventsPkg *MajorEventsPkg `json:"MajorEventsPkg,omitnil" name:"MajorEventsPkg"`
+
+	// 混合云子节点包
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HybridPkg *HybridPkg `json:"HybridPkg,omitnil" name:"HybridPkg"`
 }
 
 type IpAccessControlData struct {
@@ -7044,6 +7166,10 @@ type IpAccessControlData struct {
 }
 
 type IpAccessControlItem struct {
+	// mongo表自增Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Id *string `json:"Id,omitnil" name:"Id"`
+
 	// 动作
 	ActionType *uint64 `json:"ActionType,omitnil" name:"ActionType"`
 
@@ -7062,6 +7188,10 @@ type IpAccessControlItem struct {
 
 	// 有效截止时间戳
 	ValidTs *uint64 `json:"ValidTs,omitnil" name:"ValidTs"`
+
+	// 生效状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ValidStatus *int64 `json:"ValidStatus,omitnil" name:"ValidStatus"`
 }
 
 type IpHitItem struct {
@@ -7189,6 +7319,48 @@ type LogHistogramInfo struct {
 
 	// 时间戳
 	TimeStamp *int64 `json:"TimeStamp,omitnil" name:"TimeStamp"`
+}
+
+type MajorEventsPkg struct {
+	// 资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceIds *string `json:"ResourceIds,omitnil" name:"ResourceIds"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *int64 `json:"Region,omitnil" name:"Region"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 申请数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InquireNum *int64 `json:"InquireNum,omitnil" name:"InquireNum"`
+
+	// 使用数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UsedNum *int64 `json:"UsedNum,omitnil" name:"UsedNum"`
+
+	// 续费标志
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *uint64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+
+	// 计费项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BillingItem *string `json:"BillingItem,omitnil" name:"BillingItem"`
+
+	// 护网包状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HWState *int64 `json:"HWState,omitnil" name:"HWState"`
 }
 
 // Predefined struct for user
@@ -9592,33 +9764,49 @@ type PeakPointsItem struct {
 	// Bot qps
 	BotAccess *uint64 `json:"BotAccess,omitnil" name:"BotAccess"`
 
-	// WAF返回给客户端状态码次数
+	// WAF返回给客户端状态码5xx次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusServerError *uint64 `json:"StatusServerError,omitnil" name:"StatusServerError"`
 
-	// WAF返回给客户端状态码次数
+	// WAF返回给客户端状态码4xx次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusClientError *uint64 `json:"StatusClientError,omitnil" name:"StatusClientError"`
 
-	// WAF返回给客户端状态码次数
+	// WAF返回给客户端状态码302次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusRedirect *uint64 `json:"StatusRedirect,omitnil" name:"StatusRedirect"`
 
-	// WAF返回给客户端状态码次数
+	// WAF返回给客户端状态码202次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	StatusOk *uint64 `json:"StatusOk,omitnil" name:"StatusOk"`
 
-	// 源站返回给WAF状态码次数
+	// 源站返回给WAF状态码5xx次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamServerError *uint64 `json:"UpstreamServerError,omitnil" name:"UpstreamServerError"`
 
-	// 源站返回给WAF状态码次数
+	// 源站返回给WAF状态码4xx次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamClientError *uint64 `json:"UpstreamClientError,omitnil" name:"UpstreamClientError"`
 
-	// 源站返回给WAF状态码次数
+	// 源站返回给WAF状态码302次数
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpstreamRedirect *uint64 `json:"UpstreamRedirect,omitnil" name:"UpstreamRedirect"`
+
+	// 黑名单次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BlackIP *uint64 `json:"BlackIP,omitnil" name:"BlackIP"`
+
+	// 防篡改次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tamper *uint64 `json:"Tamper,omitnil" name:"Tamper"`
+
+	// 信息防泄露次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Leak *uint64 `json:"Leak,omitnil" name:"Leak"`
+
+	// 访问控制 
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ACL *uint64 `json:"ACL,omitnil" name:"ACL"`
 }
 
 type PortInfo struct {
@@ -10478,6 +10666,12 @@ type UpsertCCRuleRequestParams struct {
 
 	// 添加规则的来源事件id
 	EventId *string `json:"EventId,omitnil" name:"EventId"`
+
+	// 规则需要启用的SessionID
+	SessionApplied []*int64 `json:"SessionApplied,omitnil" name:"SessionApplied"`
+
+	// 规则ID，新增时填0
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 type UpsertCCRuleRequest struct {
@@ -10527,6 +10721,12 @@ type UpsertCCRuleRequest struct {
 
 	// 添加规则的来源事件id
 	EventId *string `json:"EventId,omitnil" name:"EventId"`
+
+	// 规则需要启用的SessionID
+	SessionApplied []*int64 `json:"SessionApplied,omitnil" name:"SessionApplied"`
+
+	// 规则ID，新增时填0
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 }
 
 func (r *UpsertCCRuleRequest) ToJsonString() string {
@@ -10556,6 +10756,8 @@ func (r *UpsertCCRuleRequest) FromJsonString(s string) error {
 	delete(f, "Edition")
 	delete(f, "Type")
 	delete(f, "EventId")
+	delete(f, "SessionApplied")
+	delete(f, "RuleId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpsertCCRuleRequest has unknown keys!", "")
 	}
@@ -10567,6 +10769,9 @@ type UpsertCCRuleResponseParams struct {
 	// 一般为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Data *string `json:"Data,omitnil" name:"Data"`
+
+	// 操作的RuleId
+	RuleId *int64 `json:"RuleId,omitnil" name:"RuleId"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -10596,6 +10801,9 @@ type UpsertIpAccessControlRequestParams struct {
 	// ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
 	Items []*string `json:"Items,omitnil" name:"Items"`
 
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
 
@@ -10611,6 +10819,9 @@ type UpsertIpAccessControlRequest struct {
 
 	// ip 参数列表，json数组由ip，source，note，action，valid_ts组成。ip对应配置的ip地址，source固定为custom值，note为注释，action值42为黑名单，40为白名单，valid_ts为有效日期，值为秒级时间戳（（如1680570420代表2023-04-04 09:07:00））
 	Items []*string `json:"Items,omitnil" name:"Items"`
+
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// WAF实例类型，sparta-waf表示SAAS型WAF，clb-waf表示负载均衡型WAF
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
@@ -10633,6 +10844,7 @@ func (r *UpsertIpAccessControlRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Domain")
 	delete(f, "Items")
+	delete(f, "InstanceId")
 	delete(f, "Edition")
 	delete(f, "SourceType")
 	if len(f) > 0 {
@@ -10696,6 +10908,12 @@ type UpsertSessionRequestParams struct {
 
 	// 版本
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// Session名
+	SessionName *string `json:"SessionName,omitnil" name:"SessionName"`
+
+	// Session对应ID
+	SessionID *int64 `json:"SessionID,omitnil" name:"SessionID"`
 }
 
 type UpsertSessionRequest struct {
@@ -10724,6 +10942,12 @@ type UpsertSessionRequest struct {
 
 	// 版本
 	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// Session名
+	SessionName *string `json:"SessionName,omitnil" name:"SessionName"`
+
+	// Session对应ID
+	SessionID *int64 `json:"SessionID,omitnil" name:"SessionID"`
 }
 
 func (r *UpsertSessionRequest) ToJsonString() string {
@@ -10746,6 +10970,8 @@ func (r *UpsertSessionRequest) FromJsonString(s string) error {
 	delete(f, "StartOffset")
 	delete(f, "EndOffset")
 	delete(f, "Edition")
+	delete(f, "SessionName")
+	delete(f, "SessionID")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpsertSessionRequest has unknown keys!", "")
 	}

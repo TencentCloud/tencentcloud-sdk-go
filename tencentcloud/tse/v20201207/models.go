@@ -4336,81 +4336,110 @@ type KongServices struct {
 
 type KongTarget struct {
 	// Host
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitnil" name:"Host"`
 
 	// 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil" name:"Port"`
 
 	// 权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Weight *int64 `json:"Weight,omitnil" name:"Weight"`
 
 	// 健康状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Health *string `json:"Health,omitnil" name:"Health"`
 
 	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
 
 	// Target的来源
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Source *string `json:"Source,omitnil" name:"Source"`
 }
 
 type KongUpstreamInfo struct {
 	// IP或域名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Host *string `json:"Host,omitnil" name:"Host"`
 
 	// 端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil" name:"Port"`
 
 	// 服务来源ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceID *string `json:"SourceID,omitnil" name:"SourceID"`
 
 	// 命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
 
 	// 服务（注册中心或Kubernetes中的服务）名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ServiceName *string `json:"ServiceName,omitnil" name:"ServiceName"`
 
 	// 服务后端类型是IPList时提供
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Targets []*KongTarget `json:"Targets,omitnil" name:"Targets"`
 
 	// 服务来源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceType *string `json:"SourceType,omitnil" name:"SourceType"`
 
 	// SCF函数类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScfType *string `json:"ScfType,omitnil" name:"ScfType"`
 
 	// SCF函数命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScfNamespace *string `json:"ScfNamespace,omitnil" name:"ScfNamespace"`
 
 	// SCF函数名
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScfLambdaName *string `json:"ScfLambdaName,omitnil" name:"ScfLambdaName"`
 
 	// SCF函数版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScfLambdaQualifier *string `json:"ScfLambdaQualifier,omitnil" name:"ScfLambdaQualifier"`
 
 	// 冷启动时间，单位秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SlowStart *int64 `json:"SlowStart,omitnil" name:"SlowStart"`
 
 	// 负载均衡算法，默认为 round-robin，还支持 least-connections，consisten_hashing
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Algorithm *string `json:"Algorithm,omitnil" name:"Algorithm"`
 
 	// CVM弹性伸缩组ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoScalingGroupID *string `json:"AutoScalingGroupID,omitnil" name:"AutoScalingGroupID"`
 
 	// CVM弹性伸缩组端口
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoScalingCvmPort *uint64 `json:"AutoScalingCvmPort,omitnil" name:"AutoScalingCvmPort"`
 
 	// CVM弹性伸缩组使用的CVM TAT命令状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoScalingTatCmdStatus *string `json:"AutoScalingTatCmdStatus,omitnil" name:"AutoScalingTatCmdStatus"`
 
 	// CVM弹性伸缩组生命周期挂钩状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	AutoScalingHookStatus *string `json:"AutoScalingHookStatus,omitnil" name:"AutoScalingHookStatus"`
 
 	// 服务来源的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	SourceName *string `json:"SourceName,omitnil" name:"SourceName"`
 
 	// 精确的服务来源类型，新建服务来源时候传入的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	RealSourceType *string `json:"RealSourceType,omitnil" name:"RealSourceType"`
+
+	// upstream健康状态HEALTHY（健康）, UNHEALTHY（异常）, HEALTHCHECKS_OFF（未开启）和NONE（不支持健康检查）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	HealthStatus *string `json:"HealthStatus,omitnil" name:"HealthStatus"`
 }
 
 type ListCloudNativeAPIGatewayResult struct {

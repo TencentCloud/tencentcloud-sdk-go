@@ -170,6 +170,9 @@ const (
 	// 只支持绑定一种弹性伸缩。
 	INVALIDPARAMETERVALUE_AUTOSCALERLARGERTHANONE = "InvalidParameterValue.AutoScalerLargerThanOne"
 
+	// 弹性规则名称不合法, 长度必须小于20。
+	INVALIDPARAMETERVALUE_AUTOSCALERNAMEINVALID = "InvalidParameterValue.AutoScalerNameInvalid"
+
 	// 不能覆盖其他应用的访问方式。
 	INVALIDPARAMETERVALUE_CANNOTOVERWRITEOTHERAPPLICATIONSERVICE = "InvalidParameterValue.CannotOverWriteOtherApplicationService"
 

@@ -1261,6 +1261,7 @@ func NewDeleteUserGroupMembersResponse() (response *DeleteUserGroupMembersRespon
 // 删除用户组成员
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
@@ -1273,6 +1274,7 @@ func (c *Client) DeleteUserGroupMembers(request *DeleteUserGroupMembersRequest) 
 // 删除用户组成员
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_DATANOTFOUND = "FailedOperation.DataNotFound"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"

@@ -1917,6 +1917,7 @@ func NewDeleteRocketMQGroupResponse() (response *DeleteRocketMQGroupResponse) {
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DeleteRocketMQGroup(request *DeleteRocketMQGroupRequest) (response *DeleteRocketMQGroupResponse, err error) {
     return c.DeleteRocketMQGroupWithContext(context.Background(), request)
 }
@@ -1931,6 +1932,7 @@ func (c *Client) DeleteRocketMQGroup(request *DeleteRocketMQGroupRequest) (respo
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_CLUSTER = "ResourceNotFound.Cluster"
 func (c *Client) DeleteRocketMQGroupWithContext(ctx context.Context, request *DeleteRocketMQGroupRequest) (response *DeleteRocketMQGroupResponse, err error) {
     if request == nil {
         request = NewDeleteRocketMQGroupRequest()

@@ -642,6 +642,10 @@ type BlockIgnoreRule struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
 
+	// IP
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IP *string `json:"IP,omitnil" name:"IP"`
+
 	// 规则ip
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ioc *string `json:"Ioc,omitnil" name:"Ioc"`
@@ -954,6 +958,9 @@ type CreateBlockIgnoreRuleListRequestParams struct {
 
 	// 规则类型，1封禁，2放通，不支持域名封禁
 	RuleType *int64 `json:"RuleType,omitnil" name:"RuleType"`
+
+	// 是否覆盖重复数据，1覆盖，非1不覆盖，跳过重复数据
+	CoverDuplicate *int64 `json:"CoverDuplicate,omitnil" name:"CoverDuplicate"`
 }
 
 type CreateBlockIgnoreRuleListRequest struct {
@@ -964,6 +971,9 @@ type CreateBlockIgnoreRuleListRequest struct {
 
 	// 规则类型，1封禁，2放通，不支持域名封禁
 	RuleType *int64 `json:"RuleType,omitnil" name:"RuleType"`
+
+	// 是否覆盖重复数据，1覆盖，非1不覆盖，跳过重复数据
+	CoverDuplicate *int64 `json:"CoverDuplicate,omitnil" name:"CoverDuplicate"`
 }
 
 func (r *CreateBlockIgnoreRuleListRequest) ToJsonString() string {
@@ -980,6 +990,7 @@ func (r *CreateBlockIgnoreRuleListRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Rules")
 	delete(f, "RuleType")
+	delete(f, "CoverDuplicate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateBlockIgnoreRuleListRequest has unknown keys!", "")
 	}
@@ -5830,6 +5841,10 @@ type EdgeIpInfo struct {
 	// 1 : 串行
 	// 2 : 正在模式切换
 	SwitchMode *uint64 `json:"SwitchMode,omitnil" name:"SwitchMode"`
+
+	// 开关权重
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SwitchWeight *int64 `json:"SwitchWeight,omitnil" name:"SwitchWeight"`
 }
 
 type EdgeIpSwitch struct {
@@ -7063,10 +7078,20 @@ func (r *ModifyEWRuleStatusResponse) FromJsonString(s string) error {
 type ModifyEdgeIpSwitchRequestParams struct {
 	// 0 关闭开关
 	// 1 打开开关
+	// 2 不操作开关，此次切换模式
 	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 操作开关详情
 	EdgeIpSwitchLst []*EdgeIpSwitch `json:"EdgeIpSwitchLst,omitnil" name:"EdgeIpSwitchLst"`
+
+	// 0 不自动选择子网
+	// 1 自动选择子网创建私有连接
+	AutoChooseSubnet *int64 `json:"AutoChooseSubnet,omitnil" name:"AutoChooseSubnet"`
+
+	// 0 切换为旁路
+	// 1 切换为串行
+	// 2 不切换模式，此次操作开关
+	SwitchMode *int64 `json:"SwitchMode,omitnil" name:"SwitchMode"`
 }
 
 type ModifyEdgeIpSwitchRequest struct {
@@ -7074,10 +7099,20 @@ type ModifyEdgeIpSwitchRequest struct {
 	
 	// 0 关闭开关
 	// 1 打开开关
+	// 2 不操作开关，此次切换模式
 	Enable *int64 `json:"Enable,omitnil" name:"Enable"`
 
 	// 操作开关详情
 	EdgeIpSwitchLst []*EdgeIpSwitch `json:"EdgeIpSwitchLst,omitnil" name:"EdgeIpSwitchLst"`
+
+	// 0 不自动选择子网
+	// 1 自动选择子网创建私有连接
+	AutoChooseSubnet *int64 `json:"AutoChooseSubnet,omitnil" name:"AutoChooseSubnet"`
+
+	// 0 切换为旁路
+	// 1 切换为串行
+	// 2 不切换模式，此次操作开关
+	SwitchMode *int64 `json:"SwitchMode,omitnil" name:"SwitchMode"`
 }
 
 func (r *ModifyEdgeIpSwitchRequest) ToJsonString() string {
@@ -7094,6 +7129,8 @@ func (r *ModifyEdgeIpSwitchRequest) FromJsonString(s string) error {
 	}
 	delete(f, "Enable")
 	delete(f, "EdgeIpSwitchLst")
+	delete(f, "AutoChooseSubnet")
+	delete(f, "SwitchMode")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyEdgeIpSwitchRequest has unknown keys!", "")
 	}
@@ -8727,6 +8764,10 @@ type NatInstanceInfo struct {
 	// 引擎是否可升级：0，不可升级；1，可升级
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	UpdateEnable *int64 `json:"UpdateEnable,omitnil" name:"UpdateEnable"`
+
+	// 是的需要升级引擎 支持 nat拨测 1需要 0不需要
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NeedProbeEngineUpdate *int64 `json:"NeedProbeEngineUpdate,omitnil" name:"NeedProbeEngineUpdate"`
 }
 
 type NatSwitchListData struct {

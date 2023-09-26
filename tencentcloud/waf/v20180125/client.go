@@ -1223,6 +1223,7 @@ func NewDeleteSessionResponse() (response *DeleteSessionResponse) {
 // 删除CC攻击的session设置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SESSIONINUSED = "FailedOperation.SessionInUsed"
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteSession(request *DeleteSessionRequest) (response *DeleteSessionResponse, err error) {
@@ -1233,6 +1234,7 @@ func (c *Client) DeleteSession(request *DeleteSessionRequest) (response *DeleteS
 // 删除CC攻击的session设置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SESSIONINUSED = "FailedOperation.SessionInUsed"
 //  INTERNALERROR = "InternalError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteSessionWithContext(ctx context.Context, request *DeleteSessionRequest) (response *DeleteSessionResponse, err error) {
@@ -3643,7 +3645,7 @@ func NewDescribeRuleLimitResponse() (response *DescribeRuleLimitResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeRuleLimit(request *DescribeRuleLimitRequest) (response *DescribeRuleLimitResponse, err error) {
     return c.DescribeRuleLimitWithContext(context.Background(), request)
 }
@@ -3654,7 +3656,7 @@ func (c *Client) DescribeRuleLimit(request *DescribeRuleLimitRequest) (response 
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERR = "InternalError.DBErr"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
 func (c *Client) DescribeRuleLimitWithContext(ctx context.Context, request *DescribeRuleLimitRequest) (response *DescribeRuleLimitResponse, err error) {
     if request == nil {
         request = NewDescribeRuleLimitRequest()
@@ -6307,6 +6309,7 @@ func NewModifySpartaProtectionResponse() (response *ModifySpartaProtectionRespon
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CERTIFICATIONPARAMETERERR = "InvalidParameter.CertificationParameterErr"
 //  INVALIDPARAMETER_PORTPARAMETERERR = "InvalidParameter.PortParameterErr"
+//  INVALIDPARAMETER_PROTECTIONDOMAINPARAMETERERR = "InvalidParameter.ProtectionDomainParameterErr"
 //  INVALIDPARAMETER_SUPPORTTLSCONFFAILED = "InvalidParameter.SupportTLSConfFailed"
 //  INVALIDPARAMETER_TLSPARAMETERERR = "InvalidParameter.TLSParameterErr"
 //  INVALIDPARAMETER_UPSTREAMPARAMETERERR = "InvalidParameter.UpstreamParameterErr"
@@ -6334,6 +6337,7 @@ func (c *Client) ModifySpartaProtection(request *ModifySpartaProtectionRequest) 
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_CERTIFICATIONPARAMETERERR = "InvalidParameter.CertificationParameterErr"
 //  INVALIDPARAMETER_PORTPARAMETERERR = "InvalidParameter.PortParameterErr"
+//  INVALIDPARAMETER_PROTECTIONDOMAINPARAMETERERR = "InvalidParameter.ProtectionDomainParameterErr"
 //  INVALIDPARAMETER_SUPPORTTLSCONFFAILED = "InvalidParameter.SupportTLSConfFailed"
 //  INVALIDPARAMETER_TLSPARAMETERERR = "InvalidParameter.TLSParameterErr"
 //  INVALIDPARAMETER_UPSTREAMPARAMETERERR = "InvalidParameter.UpstreamParameterErr"

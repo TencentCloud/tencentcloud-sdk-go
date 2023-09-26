@@ -3865,6 +3865,7 @@ func NewDescribeImageManifestsResponse() (response *DescribeImageManifestsRespon
 // 查询容器镜像Manifest信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
@@ -3886,6 +3887,7 @@ func (c *Client) DescribeImageManifests(request *DescribeImageManifestsRequest) 
 // 查询容器镜像Manifest信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DbError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"

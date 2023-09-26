@@ -497,6 +497,9 @@ const (
 	// 防火墙模板不存在
 	RESOURCENOTFOUND_FIREWALLTEMPLATENOTFOUND = "ResourceNotFound.FirewallTemplateNotFound"
 
+	// 防火墙模板规则不存在
+	RESOURCENOTFOUND_FIREWALLTEMPLATERULENOTFOUND = "ResourceNotFound.FirewallTemplateRuleNotFound"
+
 	// 实例不存在挂载的数据盘。
 	RESOURCENOTFOUND_INSTANCEDATADISKNOTFOUND = "ResourceNotFound.InstanceDataDiskNotFound"
 

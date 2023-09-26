@@ -281,6 +281,9 @@ const (
 	// 账户余额不足。
 	RESOURCEINSUFFICIENT_BALANCE = "ResourceInsufficient.Balance"
 
+	// 计算资源不足，可更换可用区或调整机型。
+	RESOURCEINSUFFICIENT_CVM = "ResourceInsufficient.CVM"
+
 	// 隐藏可用区专用主节点资源不足。
 	RESOURCEINSUFFICIENT_HIDDENZONE = "ResourceInsufficient.HiddenZone"
 

@@ -226,7 +226,7 @@ func NewDescribeBillDetailResponse() (response *DescribeBillDetailResponse) {
 }
 
 // DescribeBillDetail
-// 查询账单明细数据。
+// 获取账单明细数据。
 //
 // 注意事项：
 //
@@ -247,7 +247,7 @@ func (c *Client) DescribeBillDetail(request *DescribeBillDetailRequest) (respons
 }
 
 // DescribeBillDetail
-// 查询账单明细数据。
+// 获取账单明细数据。
 //
 // 注意事项：
 //
@@ -275,6 +275,122 @@ func (c *Client) DescribeBillDetailWithContext(ctx context.Context, request *Des
     request.SetContext(ctx)
     
     response = NewDescribeBillDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBillDetailForOrganizationRequest() (request *DescribeBillDetailForOrganizationRequest) {
+    request = &DescribeBillDetailForOrganizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBillDetailForOrganization")
+    
+    
+    return
+}
+
+func NewDescribeBillDetailForOrganizationResponse() (response *DescribeBillDetailForOrganizationResponse) {
+    response = &DescribeBillDetailForOrganizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBillDetailForOrganization
+// 成员账号获取管理账号代付账单（费用明细）。
+//
+// 注意事项：在请求接口时，由于网络不稳定或其它异常，可能会导致请求失败。如果您遇到这种情况，我们建议您在接口请求失败时，手动发起重试操作，这样可以更好地确保您的接口请求能够成功执行。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYCOUNTFAILED = "FailedOperation.QueryCountFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBillDetailForOrganization(request *DescribeBillDetailForOrganizationRequest) (response *DescribeBillDetailForOrganizationResponse, err error) {
+    return c.DescribeBillDetailForOrganizationWithContext(context.Background(), request)
+}
+
+// DescribeBillDetailForOrganization
+// 成员账号获取管理账号代付账单（费用明细）。
+//
+// 注意事项：在请求接口时，由于网络不稳定或其它异常，可能会导致请求失败。如果您遇到这种情况，我们建议您在接口请求失败时，手动发起重试操作，这样可以更好地确保您的接口请求能够成功执行。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_QUERYCOUNTFAILED = "FailedOperation.QueryCountFailed"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeBillDetailForOrganizationWithContext(ctx context.Context, request *DescribeBillDetailForOrganizationRequest) (response *DescribeBillDetailForOrganizationResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillDetailForOrganizationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillDetailForOrganization require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillDetailForOrganizationResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBillDownloadUrlRequest() (request *DescribeBillDownloadUrlRequest) {
+    request = &DescribeBillDownloadUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBillDownloadUrl")
+    
+    
+    return
+}
+
+func NewDescribeBillDownloadUrlResponse() (response *DescribeBillDownloadUrlResponse) {
+    response = &DescribeBillDownloadUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBillDownloadUrl
+// 该接口支持通过传参，获取L0-PDF、L1-汇总、L2-资源、L3-明细、账单包、五类账单文件下载链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBillDownloadUrl(request *DescribeBillDownloadUrlRequest) (response *DescribeBillDownloadUrlResponse, err error) {
+    return c.DescribeBillDownloadUrlWithContext(context.Background(), request)
+}
+
+// DescribeBillDownloadUrl
+// 该接口支持通过传参，获取L0-PDF、L1-汇总、L2-资源、L3-明细、账单包、五类账单文件下载链接
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeBillDownloadUrlWithContext(ctx context.Context, request *DescribeBillDownloadUrlRequest) (response *DescribeBillDownloadUrlResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillDownloadUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillDownloadUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillDownloadUrlResponse()
     err = c.Send(request, response)
     return
 }
@@ -356,7 +472,7 @@ func NewDescribeBillResourceSummaryResponse() (response *DescribeBillResourceSum
 }
 
 // DescribeBillResourceSummary
-// 查询账单资源汇总数据
+// 获取账单资源汇总数据
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SUMMARYDATANOTREADY = "FailedOperation.SummaryDataNotReady"
@@ -367,7 +483,7 @@ func (c *Client) DescribeBillResourceSummary(request *DescribeBillResourceSummar
 }
 
 // DescribeBillResourceSummary
-// 查询账单资源汇总数据
+// 获取账单资源汇总数据
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_SUMMARYDATANOTREADY = "FailedOperation.SummaryDataNotReady"
@@ -385,6 +501,58 @@ func (c *Client) DescribeBillResourceSummaryWithContext(ctx context.Context, req
     request.SetContext(ctx)
     
     response = NewDescribeBillResourceSummaryResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBillResourceSummaryForOrganizationRequest() (request *DescribeBillResourceSummaryForOrganizationRequest) {
+    request = &DescribeBillResourceSummaryForOrganizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBillResourceSummaryForOrganization")
+    
+    
+    return
+}
+
+func NewDescribeBillResourceSummaryForOrganizationResponse() (response *DescribeBillResourceSummaryForOrganizationResponse) {
+    response = &DescribeBillResourceSummaryForOrganizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBillResourceSummaryForOrganization
+// 成员账号获取管理账号代付账单（按资源汇总）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SUMMARYDATANOTREADY = "FailedOperation.SummaryDataNotReady"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeBillResourceSummaryForOrganization(request *DescribeBillResourceSummaryForOrganizationRequest) (response *DescribeBillResourceSummaryForOrganizationResponse, err error) {
+    return c.DescribeBillResourceSummaryForOrganizationWithContext(context.Background(), request)
+}
+
+// DescribeBillResourceSummaryForOrganization
+// 成员账号获取管理账号代付账单（按资源汇总）
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_SUMMARYDATANOTREADY = "FailedOperation.SummaryDataNotReady"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
+func (c *Client) DescribeBillResourceSummaryForOrganizationWithContext(ctx context.Context, request *DescribeBillResourceSummaryForOrganizationRequest) (response *DescribeBillResourceSummaryForOrganizationResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillResourceSummaryForOrganizationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillResourceSummaryForOrganization require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillResourceSummaryForOrganizationResponse()
     err = c.Send(request, response)
     return
 }
@@ -725,6 +893,62 @@ func (c *Client) DescribeBillSummaryByTagWithContext(ctx context.Context, reques
     request.SetContext(ctx)
     
     response = NewDescribeBillSummaryByTagResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeBillSummaryForOrganizationRequest() (request *DescribeBillSummaryForOrganizationRequest) {
+    request = &DescribeBillSummaryForOrganizationRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("billing", APIVersion, "DescribeBillSummaryForOrganization")
+    
+    
+    return
+}
+
+func NewDescribeBillSummaryForOrganizationResponse() (response *DescribeBillSummaryForOrganizationResponse) {
+    response = &DescribeBillSummaryForOrganizationResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeBillSummaryForOrganization
+// 该接口支持通过传参，按照产品、项目、地域、计费模式和标签五个维度获取账单费用明细。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBillSummaryForOrganization(request *DescribeBillSummaryForOrganizationRequest) (response *DescribeBillSummaryForOrganizationResponse, err error) {
+    return c.DescribeBillSummaryForOrganizationWithContext(context.Background(), request)
+}
+
+// DescribeBillSummaryForOrganization
+// 该接口支持通过传参，按照产品、项目、地域、计费模式和标签五个维度获取账单费用明细。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_TAGKEYNOTEXIST = "FailedOperation.TagKeyNotExist"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_GATEWAYERROR = "InternalError.GatewayError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+func (c *Client) DescribeBillSummaryForOrganizationWithContext(ctx context.Context, request *DescribeBillSummaryForOrganizationRequest) (response *DescribeBillSummaryForOrganizationResponse, err error) {
+    if request == nil {
+        request = NewDescribeBillSummaryForOrganizationRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeBillSummaryForOrganization require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeBillSummaryForOrganizationResponse()
     err = c.Send(request, response)
     return
 }

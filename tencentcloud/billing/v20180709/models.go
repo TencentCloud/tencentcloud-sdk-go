@@ -302,6 +302,123 @@ type BillDetailComponentConfig struct {
 	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
+type BillDistributionResourceSummary struct {
+	// 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+	BusinessCodeName *string `json:"BusinessCodeName,omitnil" name:"BusinessCodeName"`
+
+	// 子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+	ProductCodeName *string `json:"ProductCodeName,omitnil" name:"ProductCodeName"`
+
+	// 计费模式：资源的计费模式，区分为包年包月和按量计费
+	PayModeName *string `json:"PayModeName,omitnil" name:"PayModeName"`
+
+	// 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
+
+	// 地域：资源所属地域，如华南地区（广州）
+	RegionName *string `json:"RegionName,omitnil" name:"RegionName"`
+
+	// 可用区：资源所属可用区，如广州三区
+	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
+
+	// 资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID	
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
+	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
+
+	// 交易类型：如包年包月新购、包年包月续费、按量计费扣费等类型
+	ActionTypeName *string `json:"ActionTypeName,omitnil" name:"ActionTypeName"`
+
+	// 订单ID：包年包月计费模式下订购的订单号
+	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+
+	// 扣费时间：结算扣费时间
+	PayTime *string `json:"PayTime,omitnil" name:"PayTime"`
+
+	// 开始使用时间：产品服务开始使用时间
+	FeeBeginTime *string `json:"FeeBeginTime,omitnil" name:"FeeBeginTime"`
+
+	// 结束使用时间：产品服务结束使用时间
+	FeeEndTime *string `json:"FeeEndTime,omitnil" name:"FeeEndTime"`
+
+	// 配置描述：该资源下的计费项名称和用量合并展示，仅在资源账单体现
+	ConfigDesc *string `json:"ConfigDesc,omitnil" name:"ConfigDesc"`
+
+	// 扩展字段1：产品对应的扩展属性信息，仅在资源账单体现
+	ExtendField1 *string `json:"ExtendField1,omitnil" name:"ExtendField1"`
+
+	// 扩展字段2：产品对应的扩展属性信息，仅在资源账单体现
+	ExtendField2 *string `json:"ExtendField2,omitnil" name:"ExtendField2"`
+
+	// 原价：原价 = 组件刊例价 * 组件用量 * 使用时长（如果客户享受一口价/合同价则默认不展示，退费类场景也默认不展示）
+	TotalCost *string `json:"TotalCost,omitnil" name:"TotalCost"`
+
+	// 折扣率：本资源享受的折扣率（如果客户享受一口价/合同价则默认不展示，退费场景也默认不展示）
+	Discount *string `json:"Discount,omitnil" name:"Discount"`
+
+	// 优惠类型
+	ReduceType *string `json:"ReduceType,omitnil" name:"ReduceType"`
+
+	// 优惠后总价
+	RealTotalCost *string `json:"RealTotalCost,omitnil" name:"RealTotalCost"`
+
+	// 优惠券支出：使用各类优惠券（如代金券、现金券等）支付的金额
+	VoucherPayAmount *string `json:"VoucherPayAmount,omitnil" name:"VoucherPayAmount"`
+
+	// 现金账户支出：通过现金账户支付的金额
+	CashPayAmount *string `json:"CashPayAmount,omitnil" name:"CashPayAmount"`
+
+	// 赠送账户支出：使用赠送金支付的金额
+	IncentivePayAmount *string `json:"IncentivePayAmount,omitnil" name:"IncentivePayAmount"`
+
+	// 分成金账户支出：通过分成金账户支付的金额
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TransferPayAmount *string `json:"TransferPayAmount,omitnil" name:"TransferPayAmount"`
+
+	// 扩展字段3：产品对应的扩展属性信息，仅在资源账单体现
+	ExtendField3 *string `json:"ExtendField3,omitnil" name:"ExtendField3"`
+
+	// 扩展字段4：产品对应的扩展属性信息，仅在资源账单体现
+	ExtendField4 *string `json:"ExtendField4,omitnil" name:"ExtendField4"`
+
+	// 扩展字段5：产品对应的扩展属性信息，仅在资源账单体现
+	ExtendField5 *string `json:"ExtendField5,omitnil" name:"ExtendField5"`
+
+	// 标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*BillTagInfo `json:"Tags,omitnil" name:"Tags"`
+
+	// 使用者UIN：实际使用资源的账号 ID
+	OwnerUin *string `json:"OwnerUin,omitnil" name:"OwnerUin"`
+
+	// 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+	OperateUin *string `json:"OperateUin,omitnil" name:"OperateUin"`
+
+	// 产品编码
+	BusinessCode *string `json:"BusinessCode,omitnil" name:"BusinessCode"`
+
+	// 子产品编码
+	ProductCode *string `json:"ProductCode,omitnil" name:"ProductCode"`
+
+	// 地域ID
+	RegionId *int64 `json:"RegionId,omitnil" name:"RegionId"`
+
+	// 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。正常的实例展示默认为不展示
+	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
+
+	// 预留实例抵扣组件原价：本产品或服务使用预留实例抵扣的组件原价金额	
+	OriginalCostWithRI *string `json:"OriginalCostWithRI,omitnil" name:"OriginalCostWithRI"`
+
+	// 节省计划抵扣金额（已废弃）
+	//
+	// Deprecated: SPDeduction is deprecated.
+	SPDeduction *string `json:"SPDeduction,omitnil" name:"SPDeduction"`
+
+	// 节省计划抵扣组件原价：节省计划抵扣原价=节省计划包抵扣金额/节省计划抵扣率	
+	OriginalCostWithSP *string `json:"OriginalCostWithSP,omitnil" name:"OriginalCostWithSP"`
+}
+
 type BillResourceSummary struct {
 	// 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
 	BusinessCodeName *string `json:"BusinessCodeName,omitnil" name:"BusinessCodeName"`
@@ -1232,6 +1349,215 @@ func (r *DescribeAccountBalanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBillDetailForOrganizationRequestParams struct {
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 数量，最大值为100
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+	PeriodType *string `json:"PeriodType,omitnil" name:"PeriodType"`
+
+	// 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
+	Month *string `json:"Month,omitnil" name:"Month"`
+
+	// 周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
+
+	// 周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 是否需要访问列表的总记录数，用于前端分页
+	// 1-表示需要， 0-表示不需要
+	NeedRecordNum *int64 `json:"NeedRecordNum,omitnil" name:"NeedRecordNum"`
+
+	// 付费模式 prePay(表示包年包月)/postPay(表示按时按量)
+	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 查询指定资源信息
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
+	// 包年包月新购
+	// 包年包月续费
+	// 包年包月配置变更
+	// 包年包月退款 
+	// 按量计费扣费 
+	// 线下项目扣费 
+	// 线下产品扣费 
+	// 调账扣费 
+	// 调账补偿 
+	// 按量计费小时结 
+	// 按量计费日结 
+	// 按量计费月结 
+	// 竞价实例小时结 
+	// 线下项目调账补偿 
+	// 线下产品调账补偿 
+	// 优惠扣费 
+	// 优惠补偿 
+	// 按量计费迁入资源 
+	// 按量计费迁出资源 
+	// 包年包月迁入资源 
+	// 包年包月迁出资源 
+	// 预付费用 
+	// 小时费用 
+	// 预留实例退款 
+	// 按量计费冲正 
+	// 包年包月转按量 
+	// 保底扣款 
+	// 节省计划小时费用
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
+
+	// 项目ID:资源所属项目ID
+	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 产品名称代码
+	// 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
+	BusinessCode *string `json:"BusinessCode,omitnil" name:"BusinessCode"`
+
+	// 上一次请求返回的上下文信息，翻页查询Month>=2023-05的月份的数据可加快查询速度，数据量10万级别以上的用户建议使用，查询速度可提升2~10倍
+	Context *string `json:"Context,omitnil" name:"Context"`
+}
+
+type DescribeBillDetailForOrganizationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 数量，最大值为100
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+	PeriodType *string `json:"PeriodType,omitnil" name:"PeriodType"`
+
+	// 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
+	Month *string `json:"Month,omitnil" name:"Month"`
+
+	// 周期开始时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
+	BeginTime *string `json:"BeginTime,omitnil" name:"BeginTime"`
+
+	// 周期结束时间，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据。不能早于开通账单2.0的月份，最多可拉取18个月内的数据。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 是否需要访问列表的总记录数，用于前端分页
+	// 1-表示需要， 0-表示不需要
+	NeedRecordNum *int64 `json:"NeedRecordNum,omitnil" name:"NeedRecordNum"`
+
+	// 付费模式 prePay(表示包年包月)/postPay(表示按时按量)
+	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 查询指定资源信息
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
+	// 包年包月新购
+	// 包年包月续费
+	// 包年包月配置变更
+	// 包年包月退款 
+	// 按量计费扣费 
+	// 线下项目扣费 
+	// 线下产品扣费 
+	// 调账扣费 
+	// 调账补偿 
+	// 按量计费小时结 
+	// 按量计费日结 
+	// 按量计费月结 
+	// 竞价实例小时结 
+	// 线下项目调账补偿 
+	// 线下产品调账补偿 
+	// 优惠扣费 
+	// 优惠补偿 
+	// 按量计费迁入资源 
+	// 按量计费迁出资源 
+	// 包年包月迁入资源 
+	// 包年包月迁出资源 
+	// 预付费用 
+	// 小时费用 
+	// 预留实例退款 
+	// 按量计费冲正 
+	// 包年包月转按量 
+	// 保底扣款 
+	// 节省计划小时费用
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
+
+	// 项目ID:资源所属项目ID
+	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 产品名称代码
+	// 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
+	BusinessCode *string `json:"BusinessCode,omitnil" name:"BusinessCode"`
+
+	// 上一次请求返回的上下文信息，翻页查询Month>=2023-05的月份的数据可加快查询速度，数据量10万级别以上的用户建议使用，查询速度可提升2~10倍
+	Context *string `json:"Context,omitnil" name:"Context"`
+}
+
+func (r *DescribeBillDetailForOrganizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillDetailForOrganizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "PeriodType")
+	delete(f, "Month")
+	delete(f, "BeginTime")
+	delete(f, "EndTime")
+	delete(f, "NeedRecordNum")
+	delete(f, "PayMode")
+	delete(f, "ResourceId")
+	delete(f, "ActionType")
+	delete(f, "ProjectId")
+	delete(f, "BusinessCode")
+	delete(f, "Context")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillDetailForOrganizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillDetailForOrganizationResponseParams struct {
+	// 详情列表
+	DetailSet []*DistributionBillDetail `json:"DetailSet,omitnil" name:"DetailSet"`
+
+	// 总记录数，24小时缓存一次，可能比实际总记录数少
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
+
+	// 本次请求的上下文信息，可用于下一次请求的请求参数中，加快查询速度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Context *string `json:"Context,omitnil" name:"Context"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBillDetailForOrganizationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillDetailForOrganizationResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillDetailForOrganizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillDetailForOrganizationResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBillDetailRequestParams struct {
 	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
 	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
@@ -1455,6 +1781,95 @@ func (r *DescribeBillDetailResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeBillDownloadUrlRequestParams struct {
+	// 账单类型，枚举值
+	// billOverview=L0-PDF账单
+	// billSummary=L1-汇总账单	
+	// billResource=L2-资源账单	
+	// billDetail=L3-明细账单	
+	// billPack=账单包
+	FileType *string `json:"FileType,omitnil" name:"FileType"`
+
+	// 账单月份
+	// 支持的最早开始月份为2021-01
+	// L0-PDF&账单包不支持当月下载，当月账单请在次月1号19:00出账后下载
+	Month *string `json:"Month,omitnil" name:"Month"`
+
+	// 下载的账号 ID列表，默认查询本账号账单，如集团管理账号需下载成员账号自付的账单，该字段需入参成员账号UIN
+	ChildUin []*string `json:"ChildUin,omitnil" name:"ChildUin"`
+}
+
+type DescribeBillDownloadUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 账单类型，枚举值
+	// billOverview=L0-PDF账单
+	// billSummary=L1-汇总账单	
+	// billResource=L2-资源账单	
+	// billDetail=L3-明细账单	
+	// billPack=账单包
+	FileType *string `json:"FileType,omitnil" name:"FileType"`
+
+	// 账单月份
+	// 支持的最早开始月份为2021-01
+	// L0-PDF&账单包不支持当月下载，当月账单请在次月1号19:00出账后下载
+	Month *string `json:"Month,omitnil" name:"Month"`
+
+	// 下载的账号 ID列表，默认查询本账号账单，如集团管理账号需下载成员账号自付的账单，该字段需入参成员账号UIN
+	ChildUin []*string `json:"ChildUin,omitnil" name:"ChildUin"`
+}
+
+func (r *DescribeBillDownloadUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillDownloadUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FileType")
+	delete(f, "Month")
+	delete(f, "ChildUin")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillDownloadUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillDownloadUrlResponseParams struct {
+	// 账单文件是否准备就绪，0文件生成中，1文件已生成
+	Ready *int64 `json:"Ready,omitnil" name:"Ready"`
+
+	// 账单文件下载链接，有效时长为一小时
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DownloadUrl *string `json:"DownloadUrl,omitnil" name:"DownloadUrl"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBillDownloadUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillDownloadUrlResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillDownloadUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillDownloadUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeBillListRequestParams struct {
 	// 查询范围的起始时间（包含）时间格式 yyyy-MM-dd HH:mm:ss 开始时间和结束时间差值小于等于六个月
 	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
@@ -1629,6 +2044,199 @@ func (r *DescribeBillListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBillListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillResourceSummaryForOrganizationRequestParams struct {
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 数量，最大值为1000
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 月份，格式为yyyy-mm。不能早于开通账单2.0的月份
+	Month *string `json:"Month,omitnil" name:"Month"`
+
+	// 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+	PeriodType *string `json:"PeriodType,omitnil" name:"PeriodType"`
+
+	// 是否需要访问列表的总记录数，用于前端分页
+	// 1-表示需要， 0-表示不需要
+	NeedRecordNum *int64 `json:"NeedRecordNum,omitnil" name:"NeedRecordNum"`
+
+	// 查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
+	// 包年包月新购
+	// 包年包月续费
+	// 包年包月配置变更
+	// 包年包月退款 
+	// 按量计费扣费 
+	// 线下项目扣费 
+	// 线下产品扣费 
+	// 调账扣费 
+	// 调账补偿 
+	// 按量计费小时结 
+	// 按量计费日结 
+	// 按量计费月结 
+	// 竞价实例小时结 
+	// 线下项目调账补偿 
+	// 线下产品调账补偿 
+	// 优惠扣费 
+	// 优惠补偿 
+	// 按量计费迁入资源 
+	// 按量计费迁出资源 
+	// 包年包月迁入资源 
+	// 包年包月迁出资源 
+	// 预付费用 
+	// 小时费用 
+	// 预留实例退款 
+	// 按量计费冲正 
+	// 包年包月转按量 
+	// 保底扣款 
+	// 节省计划小时费用
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
+
+	// 查询指定资源信息
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 付费模式 prePay/postPay
+	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 产品名称代码
+	// 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
+	BusinessCode *string `json:"BusinessCode,omitnil" name:"BusinessCode"`
+
+	// 分账标签键，用户自定义（支持2021-01以后账单查询）
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
+
+	// 分账标签值，该参数为空表示该标签键下未设置标签值的记录
+	// （支持2021-01以后账单查询）
+	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
+}
+
+type DescribeBillResourceSummaryForOrganizationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 数量，最大值为1000
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 月份，格式为yyyy-mm。不能早于开通账单2.0的月份
+	Month *string `json:"Month,omitnil" name:"Month"`
+
+	// 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+	PeriodType *string `json:"PeriodType,omitnil" name:"PeriodType"`
+
+	// 是否需要访问列表的总记录数，用于前端分页
+	// 1-表示需要， 0-表示不需要
+	NeedRecordNum *int64 `json:"NeedRecordNum,omitnil" name:"NeedRecordNum"`
+
+	// 查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
+	// 包年包月新购
+	// 包年包月续费
+	// 包年包月配置变更
+	// 包年包月退款 
+	// 按量计费扣费 
+	// 线下项目扣费 
+	// 线下产品扣费 
+	// 调账扣费 
+	// 调账补偿 
+	// 按量计费小时结 
+	// 按量计费日结 
+	// 按量计费月结 
+	// 竞价实例小时结 
+	// 线下项目调账补偿 
+	// 线下产品调账补偿 
+	// 优惠扣费 
+	// 优惠补偿 
+	// 按量计费迁入资源 
+	// 按量计费迁出资源 
+	// 包年包月迁入资源 
+	// 包年包月迁出资源 
+	// 预付费用 
+	// 小时费用 
+	// 预留实例退款 
+	// 按量计费冲正 
+	// 包年包月转按量 
+	// 保底扣款 
+	// 节省计划小时费用
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
+
+	// 查询指定资源信息
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 付费模式 prePay/postPay
+	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 产品名称代码
+	// 备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
+	BusinessCode *string `json:"BusinessCode,omitnil" name:"BusinessCode"`
+
+	// 分账标签键，用户自定义（支持2021-01以后账单查询）
+	TagKey *string `json:"TagKey,omitnil" name:"TagKey"`
+
+	// 分账标签值，该参数为空表示该标签键下未设置标签值的记录
+	// （支持2021-01以后账单查询）
+	TagValue *string `json:"TagValue,omitnil" name:"TagValue"`
+}
+
+func (r *DescribeBillResourceSummaryForOrganizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillResourceSummaryForOrganizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Month")
+	delete(f, "PeriodType")
+	delete(f, "NeedRecordNum")
+	delete(f, "ActionType")
+	delete(f, "ResourceId")
+	delete(f, "PayMode")
+	delete(f, "BusinessCode")
+	delete(f, "TagKey")
+	delete(f, "TagValue")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillResourceSummaryForOrganizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillResourceSummaryForOrganizationResponseParams struct {
+	// 资源汇总列表
+	ResourceSummarySet []*BillDistributionResourceSummary `json:"ResourceSummarySet,omitnil" name:"ResourceSummarySet"`
+
+	// 资源汇总列表总数，入参NeedRecordNum为0时不返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBillResourceSummaryForOrganizationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillResourceSummaryForOrganizationResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillResourceSummaryForOrganizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillResourceSummaryForOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -2243,6 +2851,80 @@ func (r *DescribeBillSummaryByTagResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeBillSummaryByTagResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillSummaryForOrganizationRequestParams struct {
+	// 账单月份，格式为2023-04
+	Month *string `json:"Month,omitnil" name:"Month"`
+
+	// 账单维度类型，枚举值如下：business、project、region、payMode、tag
+	GroupType *string `json:"GroupType,omitnil" name:"GroupType"`
+
+	// 标签键，GroupType=tag获取标签维度账单时传
+	TagKey []*string `json:"TagKey,omitnil" name:"TagKey"`
+}
+
+type DescribeBillSummaryForOrganizationRequest struct {
+	*tchttp.BaseRequest
+	
+	// 账单月份，格式为2023-04
+	Month *string `json:"Month,omitnil" name:"Month"`
+
+	// 账单维度类型，枚举值如下：business、project、region、payMode、tag
+	GroupType *string `json:"GroupType,omitnil" name:"GroupType"`
+
+	// 标签键，GroupType=tag获取标签维度账单时传
+	TagKey []*string `json:"TagKey,omitnil" name:"TagKey"`
+}
+
+func (r *DescribeBillSummaryForOrganizationRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillSummaryForOrganizationRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Month")
+	delete(f, "GroupType")
+	delete(f, "TagKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeBillSummaryForOrganizationRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeBillSummaryForOrganizationResponseParams struct {
+	// 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+	Ready *uint64 `json:"Ready,omitnil" name:"Ready"`
+
+	// 账单多维度汇总消费详情
+	SummaryDetail []*SummaryDetail `json:"SummaryDetail,omitnil" name:"SummaryDetail"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeBillSummaryForOrganizationResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeBillSummaryForOrganizationResponseParams `json:"Response"`
+}
+
+func (r *DescribeBillSummaryForOrganizationResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeBillSummaryForOrganizationResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3561,6 +4243,98 @@ type DetailSet struct {
 	// 实例ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+}
+
+type DistributionBillDetail struct {
+	// 产品名称：用户所采购的各类云产品，例如：云服务器 CVM
+	BusinessCodeName *string `json:"BusinessCodeName,omitnil" name:"BusinessCodeName"`
+
+	// 子产品名称：用户采购的具体产品细分类型，例如：云服务器 CVM-标准型 S1
+	ProductCodeName *string `json:"ProductCodeName,omitnil" name:"ProductCodeName"`
+
+	// 计费模式：资源的计费模式，区分为包年包月和按量计费
+	PayModeName *string `json:"PayModeName,omitnil" name:"PayModeName"`
+
+	// 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+	ProjectName *string `json:"ProjectName,omitnil" name:"ProjectName"`
+
+	// 地域：资源所属地域，如华南地区（广州）
+	RegionName *string `json:"RegionName,omitnil" name:"RegionName"`
+
+	// 可用区：资源所属可用区，如广州三区
+	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
+
+	// 资源 ID：账单中出账对象 ID，不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 资源别名：用户在控制台为资源设置的名称，如果未设置，则默认为空
+	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
+
+	// 交易类型，如包年包月新购、包年包月续费、按量计费扣费等类型
+	ActionTypeName *string `json:"ActionTypeName,omitnil" name:"ActionTypeName"`
+
+	// 订单ID：包年包月计费模式下订购的订单号
+	OrderId *string `json:"OrderId,omitnil" name:"OrderId"`
+
+	// 交易ID：结算扣费单号
+	BillId *string `json:"BillId,omitnil" name:"BillId"`
+
+	// 扣费时间：结算扣费时间
+	PayTime *string `json:"PayTime,omitnil" name:"PayTime"`
+
+	// 开始使用时间：产品服务开始使用时间
+	FeeBeginTime *string `json:"FeeBeginTime,omitnil" name:"FeeBeginTime"`
+
+	// 结束使用时间：产品服务结束使用时间
+	FeeEndTime *string `json:"FeeEndTime,omitnil" name:"FeeEndTime"`
+
+	// 组件列表
+	ComponentSet []*BillDetailComponent `json:"ComponentSet,omitnil" name:"ComponentSet"`
+
+	// 使用者UIN：实际使用资源的账号 ID
+	OwnerUin *string `json:"OwnerUin,omitnil" name:"OwnerUin"`
+
+	// 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+	OperateUin *string `json:"OperateUin,omitnil" name:"OperateUin"`
+
+	// 标签信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*BillTagInfo `json:"Tags,omitnil" name:"Tags"`
+
+	// 产品编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BusinessCode *string `json:"BusinessCode,omitnil" name:"BusinessCode"`
+
+	// 子产品编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProductCode *string `json:"ProductCode,omitnil" name:"ProductCode"`
+
+	// 交易类型编码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActionType *string `json:"ActionType,omitnil" name:"ActionType"`
+
+	// 地域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *string `json:"RegionId,omitnil" name:"RegionId"`
+
+	// 项目ID
+	ProjectId *int64 `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 价格属性：该组件除单价、时长外的其他影响折扣定价的属性信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PriceInfo []*string `json:"PriceInfo,omitnil" name:"PriceInfo"`
+
+	// 关联交易单据ID：和本笔交易关联单据 ID，如，冲销订单，记录原订单、重结订单，退费单记录对应的原购买订单号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AssociatedOrder *BillDetailAssociatedOrder `json:"AssociatedOrder,omitnil" name:"AssociatedOrder"`
+
+	// 计算说明：特殊交易类型计费结算的详细计算说明，如退费及变配
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Formula *string `json:"Formula,omitnil" name:"Formula"`
+
+	// 计费规则：各产品详细的计费规则官网说明链接
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FormulaUrl *string `json:"FormulaUrl,omitnil" name:"FormulaUrl"`
 }
 
 type ExcludedProducts struct {

@@ -445,6 +445,7 @@ func NewTurnPDFToObjectResponse() (response *TurnPDFToObjectResponse) {
 // 注意：该接口是按照体检报告 PDF 页面数量统计次数，不是按照 PDF 文件数量统计次数。通过该接口传入的报告必须是体检报告，非体检报告可能无法正确解析。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
 //  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
 func (c *Client) TurnPDFToObject(request *TurnPDFToObjectRequest) (response *TurnPDFToObjectResponse, err error) {
     return c.TurnPDFToObjectWithContext(context.Background(), request)
@@ -456,6 +457,7 @@ func (c *Client) TurnPDFToObject(request *TurnPDFToObjectRequest) (response *Tur
 // 注意：该接口是按照体检报告 PDF 页面数量统计次数，不是按照 PDF 文件数量统计次数。通过该接口传入的报告必须是体检报告，非体检报告可能无法正确解析。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_SERVICENOTOPEN = "FailedOperation.ServiceNotOpen"
 //  INTERNALERROR_SERVERTIMEOUTERROR = "InternalError.ServerTimeOutError"
 func (c *Client) TurnPDFToObjectWithContext(ctx context.Context, request *TurnPDFToObjectRequest) (response *TurnPDFToObjectResponse, err error) {
     if request == nil {

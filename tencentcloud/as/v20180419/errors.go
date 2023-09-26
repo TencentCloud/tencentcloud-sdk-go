@@ -443,6 +443,9 @@ const (
 	// 伸缩组正在活动中。
 	RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINACTIVITY = "ResourceUnavailable.AutoScalingGroupInActivity"
 
+	// 伸缩组处于另一个实例刷新活动当中。
+	RESOURCEUNAVAILABLE_AUTOSCALINGGROUPINREFRESHACTIVITY = "ResourceUnavailable.AutoScalingGroupInRefreshActivity"
+
 	// 指定的 CMQ Topic 无订阅者。
 	RESOURCEUNAVAILABLE_CMQTOPICHASNOSUBSCRIBER = "ResourceUnavailable.CmqTopicHasNoSubscriber"
 

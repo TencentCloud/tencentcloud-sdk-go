@@ -5268,6 +5268,7 @@ func NewModifyPluginResponse() (response *ModifyPluginResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FORMATERROR = "FailedOperation.FormatError"
+//  FAILEDOPERATION_INVALIDINPUTJSON = "FailedOperation.InvalidInputJSON"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INTERNALERROR_RETURNABLEEXCEPTION = "InternalError.ReturnableException"
 //  INTERNALERROR_TSFEXCEPTION = "InternalError.TsfException"
@@ -5308,6 +5309,7 @@ func (c *Client) ModifyPlugin(request *ModifyPluginRequest) (response *ModifyPlu
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_FORMATERROR = "FailedOperation.FormatError"
+//  FAILEDOPERATION_INVALIDINPUTJSON = "FailedOperation.InvalidInputJSON"
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INTERNALERROR_RETURNABLEEXCEPTION = "InternalError.ReturnableException"
 //  INTERNALERROR_TSFEXCEPTION = "InternalError.TsfException"
@@ -5938,6 +5940,7 @@ func NewUnBindSecretIdsResponse() (response *UnBindSecretIdsResponse) {
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
 //  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
+//  UNSUPPORTEDOPERATION_REQUESTPOSTERROR = "UnsupportedOperation.RequestPostError"
 func (c *Client) UnBindSecretIds(request *UnBindSecretIdsRequest) (response *UnBindSecretIdsResponse, err error) {
     return c.UnBindSecretIdsWithContext(context.Background(), request)
 }
@@ -5949,6 +5952,7 @@ func (c *Client) UnBindSecretIds(request *UnBindSecretIdsRequest) (response *UnB
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  RESOURCENOTFOUND_INVALIDACCESSKEYID = "ResourceNotFound.InvalidAccessKeyId"
 //  RESOURCENOTFOUND_INVALIDUSAGEPLAN = "ResourceNotFound.InvalidUsagePlan"
+//  UNSUPPORTEDOPERATION_REQUESTPOSTERROR = "UnsupportedOperation.RequestPostError"
 func (c *Client) UnBindSecretIdsWithContext(ctx context.Context, request *UnBindSecretIdsRequest) (response *UnBindSecretIdsResponse, err error) {
     if request == nil {
         request = NewUnBindSecretIdsRequest()

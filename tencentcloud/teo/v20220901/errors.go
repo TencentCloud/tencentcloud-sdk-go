@@ -23,6 +23,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION = "FailedOperation"
 
+	// 证书已过期，暂不支持下发过期证书。
+	FAILEDOPERATION_CERTIFICATEHASEXPIRED = "FailedOperation.CertificateHasExpired"
+
 	// 证书不存在。
 	FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
 
@@ -139,6 +142,9 @@ const (
 
 	// 非法操作-非法类型。
 	INVALIDPARAMETER_ERRINVALIDACTIONTYPE = "InvalidParameter.ErrInvalidActionType"
+
+	// 非法条件。
+	INVALIDPARAMETER_ERRINVALIDCONDITION = "InvalidParameter.ErrInvalidCondition"
 
 	// 非法条件-非法忽略大小写。
 	INVALIDPARAMETER_ERRINVALIDCONDITIONIGNORECASE = "InvalidParameter.ErrInvalidConditionIgnoreCase"
@@ -485,6 +491,9 @@ const (
 	// 单位时间内接口请求频率达到限制。
 	LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 
+	// 套餐可绑定的站点数量超过配额。
+	LIMITEXCEEDED_ZONEBINDPLAN = "LimitExceeded.ZoneBindPlan"
+
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
@@ -541,6 +550,9 @@ const (
 
 	// NS接入模式不支持域名流量调度功能。
 	OPERATIONDENIED_NSNOTALLOWTRAFFICSTRATEGY = "OperationDenied.NSNotAllowTrafficStrategy"
+
+	// 套餐不支持变更站点的服务区域。
+	OPERATIONDENIED_PLANNOTSUPPORTMODIFYZONEAREA = "OperationDenied.PlanNotSupportModifyZoneArea"
 
 	// DNS 记录不允许添加。
 	OPERATIONDENIED_RECORDISFORBIDDEN = "OperationDenied.RecordIsForbidden"

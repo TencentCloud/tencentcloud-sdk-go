@@ -35,21 +35,11 @@ type AccelerateType struct {
 }
 
 type AccelerationDomain struct {
-	// 源站信息。
-	// 注意：此字段可能返回 null，表示取不到有效值。
-	OriginDetail *OriginDetail `json:"OriginDetail,omitnil" name:"OriginDetail"`
-
-	// 创建时间。
-	CreatedOn *string `json:"CreatedOn,omitnil" name:"CreatedOn"`
+	// 站点 ID。
+	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 加速域名名称。
 	DomainName *string `json:"DomainName,omitnil" name:"DomainName"`
-
-	// 修改时间。
-	ModifiedOn *string `json:"ModifiedOn,omitnil" name:"ModifiedOn"`
-
-	// 站点 ID。
-	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 加速域名状态，取值有：
 	// <li>online：已生效；</li>
@@ -59,12 +49,26 @@ type AccelerationDomain struct {
 	// <li>init：未生效，待激活站点；</li>
 	DomainStatus *string `json:"DomainStatus,omitnil" name:"DomainStatus"`
 
+	// 源站信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginDetail *OriginDetail `json:"OriginDetail,omitnil" name:"OriginDetail"`
+
 	// CNAME 地址。
 	Cname *string `json:"Cname,omitnil" name:"Cname"`
 
 	// 加速域名归属权验证状态，取值有： <li>pending：待验证；</li> <li>finished：已完成验证。</li>	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IdentificationStatus *string `json:"IdentificationStatus,omitnil" name:"IdentificationStatus"`
+
+	// 创建时间。
+	CreatedOn *string `json:"CreatedOn,omitnil" name:"CreatedOn"`
+
+	// 修改时间。
+	ModifiedOn *string `json:"ModifiedOn,omitnil" name:"ModifiedOn"`
+
+	// 当域名需要进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnershipVerification *OwnershipVerification `json:"OwnershipVerification,omitnil" name:"OwnershipVerification"`
 }
 
 type AclCondition struct {
@@ -936,10 +940,10 @@ type Compression struct {
 
 // Predefined struct for user
 type CreateAccelerationDomainRequestParams struct {
-	// 加速域名所属站点ID。
+	// 加速域名所属站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 加速域名名称。
+	// 加速域名。
 	DomainName *string `json:"DomainName,omitnil" name:"DomainName"`
 
 	// 源站信息。
@@ -949,10 +953,10 @@ type CreateAccelerationDomainRequestParams struct {
 type CreateAccelerationDomainRequest struct {
 	*tchttp.BaseRequest
 	
-	// 加速域名所属站点ID。
+	// 加速域名所属站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 加速域名名称。
+	// 加速域名。
 	DomainName *string `json:"DomainName,omitnil" name:"DomainName"`
 
 	// 源站信息。
@@ -982,6 +986,10 @@ func (r *CreateAccelerationDomainRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateAccelerationDomainResponseParams struct {
+	// 当您的站点未进行归属权验证时，您可通过该参数返回的信息单独对域名进行归属权校验。详情参考 [站点/域名归属权验证](https://cloud.tencent.com/document/product/1552/70789)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnershipVerification *OwnershipVerification `json:"OwnershipVerification,omitnil" name:"OwnershipVerification"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -2005,46 +2013,68 @@ func (r *CreateSharedCNAMEResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateZoneRequestParams struct {
-	// 站点名称。
-	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
-
-	// 接入方式，取值有：
-	// <li> full：NS接入；</li>
-	// <li> partial：CNAME接入，请先调用认证站点API（IdentifyZone）进行站点归属权校验，校验通过后继续调用本接口创建站点；<li>noDomainAccess：无域名接入，取此值时仅Tags字段有效。</li>
-	// </li>不填写使用默认值full。
+	// 站点接入类型。该参数取值如下，不填写时默认为 partial：
+	// <li>partial：CNAME 接入；</li>
+	// <li> full：NS 接入；</li>
+	// <li>noDomainAccess：无域名接入。</li>
 	Type *string `json:"Type,omitnil" name:"Type"`
 
-	// 是否跳过站点现有的DNS记录扫描。默认值：false。
-	JumpStart *bool `json:"JumpStart,omitnil" name:"JumpStart"`
+	// 站点名称。CNAME/NS 接入的时，请传入二级域名（example.com）作为站点名称；无域名接入时，该值请保留为空。
+	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
 
-	// 资源标签。
+	// Type 取值为 partial/full 时，七层域名的加速区域。以下为该参数取值，不填写时该值默认为 overseas。Type 取值为 noDomainAccess 时该值请保留为空：
+	// <li> global: 全球可用区；</li>
+	// <li> mainland: 中国大陆可用区；</li>
+	// <li> overseas: 全球可用区（不含中国大陆）。</li>
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 待绑定的目标套餐 ID。当您账号下已存在套餐时，可以填写此参数，直接将站点绑定至该套餐。若您当前没有可绑定的套餐时，请前往控制台购买套餐完成站点创建。
+	PlanId *string `json:"PlanId,omitnil" name:"PlanId"`
+
+	// 同名站点标识。限制输入数字、英文、- 和 _ 组合，长度 20 个字符以内。详情参考 [同名站点标识]()，无此使用场景时，该字段保留为空即可。
+	AliasZoneName *string `json:"AliasZoneName,omitnil" name:"AliasZoneName"`
+
+	// 标签。该参数用于对站点进行分权限管控、分账。需要先前往 [标签控制台](https://console.cloud.tencent.com/tag/taglist) 创建对应的标签才可以在此处传入对应的标签键和标签值。
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 是否允许重复接入。
 	// <li> true：允许重复接入；</li>
 	// <li> false：不允许重复接入。</li>不填写使用默认值false。
+	//
+	// Deprecated: AllowDuplicates is deprecated.
 	AllowDuplicates *bool `json:"AllowDuplicates,omitnil" name:"AllowDuplicates"`
 
-	// 站点别名。数字、英文、-和_组合，限制20个字符。
-	AliasZoneName *string `json:"AliasZoneName,omitnil" name:"AliasZoneName"`
+	// 是否跳过站点现有的DNS记录扫描。默认值：false。
+	//
+	// Deprecated: JumpStart is deprecated.
+	JumpStart *bool `json:"JumpStart,omitnil" name:"JumpStart"`
 }
 
 type CreateZoneRequest struct {
 	*tchttp.BaseRequest
 	
-	// 站点名称。
-	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
-
-	// 接入方式，取值有：
-	// <li> full：NS接入；</li>
-	// <li> partial：CNAME接入，请先调用认证站点API（IdentifyZone）进行站点归属权校验，校验通过后继续调用本接口创建站点；<li>noDomainAccess：无域名接入，取此值时仅Tags字段有效。</li>
-	// </li>不填写使用默认值full。
+	// 站点接入类型。该参数取值如下，不填写时默认为 partial：
+	// <li>partial：CNAME 接入；</li>
+	// <li> full：NS 接入；</li>
+	// <li>noDomainAccess：无域名接入。</li>
 	Type *string `json:"Type,omitnil" name:"Type"`
 
-	// 是否跳过站点现有的DNS记录扫描。默认值：false。
-	JumpStart *bool `json:"JumpStart,omitnil" name:"JumpStart"`
+	// 站点名称。CNAME/NS 接入的时，请传入二级域名（example.com）作为站点名称；无域名接入时，该值请保留为空。
+	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
 
-	// 资源标签。
+	// Type 取值为 partial/full 时，七层域名的加速区域。以下为该参数取值，不填写时该值默认为 overseas。Type 取值为 noDomainAccess 时该值请保留为空：
+	// <li> global: 全球可用区；</li>
+	// <li> mainland: 中国大陆可用区；</li>
+	// <li> overseas: 全球可用区（不含中国大陆）。</li>
+	Area *string `json:"Area,omitnil" name:"Area"`
+
+	// 待绑定的目标套餐 ID。当您账号下已存在套餐时，可以填写此参数，直接将站点绑定至该套餐。若您当前没有可绑定的套餐时，请前往控制台购买套餐完成站点创建。
+	PlanId *string `json:"PlanId,omitnil" name:"PlanId"`
+
+	// 同名站点标识。限制输入数字、英文、- 和 _ 组合，长度 20 个字符以内。详情参考 [同名站点标识]()，无此使用场景时，该字段保留为空即可。
+	AliasZoneName *string `json:"AliasZoneName,omitnil" name:"AliasZoneName"`
+
+	// 标签。该参数用于对站点进行分权限管控、分账。需要先前往 [标签控制台](https://console.cloud.tencent.com/tag/taglist) 创建对应的标签才可以在此处传入对应的标签键和标签值。
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
 
 	// 是否允许重复接入。
@@ -2052,8 +2082,8 @@ type CreateZoneRequest struct {
 	// <li> false：不允许重复接入。</li>不填写使用默认值false。
 	AllowDuplicates *bool `json:"AllowDuplicates,omitnil" name:"AllowDuplicates"`
 
-	// 站点别名。数字、英文、-和_组合，限制20个字符。
-	AliasZoneName *string `json:"AliasZoneName,omitnil" name:"AliasZoneName"`
+	// 是否跳过站点现有的DNS记录扫描。默认值：false。
+	JumpStart *bool `json:"JumpStart,omitnil" name:"JumpStart"`
 }
 
 func (r *CreateZoneRequest) ToJsonString() string {
@@ -2068,12 +2098,14 @@ func (r *CreateZoneRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "ZoneName")
 	delete(f, "Type")
-	delete(f, "JumpStart")
+	delete(f, "ZoneName")
+	delete(f, "Area")
+	delete(f, "PlanId")
+	delete(f, "AliasZoneName")
 	delete(f, "Tags")
 	delete(f, "AllowDuplicates")
-	delete(f, "AliasZoneName")
+	delete(f, "JumpStart")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateZoneRequest has unknown keys!", "")
 	}
@@ -2082,8 +2114,18 @@ func (r *CreateZoneRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateZoneResponseParams struct {
-	// 站点ID。
+	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 站点归属权验证信息。站点完成创建后，您还需要完成归属权校验，站点才能正常服务。
+	// 
+	// Type = partial 时，您需要参考 [站点/域名归属权验证](https://cloud.tencent.com/document/product/1552/70789) 前往您的域名解析服务商添加 TXT 记录或者前往根域名服务器添加文件，再调用接口 [VerifyOwnership]() 完成验证；
+	// 
+	// Type = full 时，您需要参考 [修改 DNS 服务器](https://cloud.tencent.com/document/product/1552/90452) 切换 DNS 服务器即可，可通过接口 [VerifyOwnership]() 查询 DNS 是否切换成功；
+	// 
+	// Type = noDomainAccess 时，该值为空，不需要进行任何操作。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnershipVerification *OwnershipVerification `json:"OwnershipVerification,omitnil" name:"OwnershipVerification"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -2713,77 +2755,75 @@ func (r *DeleteZoneResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccelerationDomainsRequestParams struct {
-	// 加速域名所属站点ID。
+	// 加速域名所属站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
-
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>domain-name<br>   按照【<strong>加速域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	// <li>origin-type<br>   按照【<strong>源站类型</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	// <li>origin<br>   按照【<strong>主源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	// <li>backup-origin<br>   按照【<strong>备用源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	// <li>domain-cname<br>   按照【<strong>加速CNAME名</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	// <li>share-cname<br>   按照【<strong>共享CNAME名</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
-
-	// 列表排序方式，取值有：
-	// <li>asc：升序排列；</li>
-	// <li>desc：降序排列。</li>默认值为asc。
-	Direction *string `json:"Direction,omitnil" name:"Direction"`
-
-	// 匹配方式，取值有：
-	// <li>all：返回匹配所有查询条件的加速域名；</li>
-	// <li>any：返回匹配任意一个查询条件的加速域名。</li>默认值为all。
-	Match *string `json:"Match,omitnil" name:"Match"`
-
-	// 分页查询限制数目，默认值：20，上限：200。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页查询偏移量，默认为 0。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 排序依据，取值有：
+	// 分页查询限制数目，默认值：20，上限：200。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有域名信息。详细的过滤条件如下：
+	// <li>domain-name：按照加速域名进行过滤；</li>
+	// <li>origin-type：按照源站类型进行过滤；</li>
+	// <li>origin：按照主源站地址进行过滤；</li>
+	// <li>backup-origin： 按照备用源站地址进行过滤；</li>
+	// <li>domain-cname：按照 CNAME 进行过滤；</li>
+	// <li>share-cname：按照共享 CNAME 进行过滤；</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
+
+	// 可根据该字段对返回结果进行排序，取值有：
 	// <li>created_on：加速域名创建时间；</li>
-	// <li>domain-name：加速域名名称；</li>
-	// </li>默认根据domain-name属性排序。
+	// <li>domain-name：加速域名。</li>不填写时，默认对返回结果按照 domain-name 排序。
 	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ascill 码的大小排序。取值有：
+	// <li>asc：升序排列；</li>
+	// <li>desc：降序排列。</li>不填写使用默认值 asc。
+	Direction *string `json:"Direction,omitnil" name:"Direction"`
+
+	// 匹配方式，取值有：
+	// <li>all：返回匹配所有查询条件的加速域名；</li>
+	// <li>any：返回匹配任意一个查询条件的加速域名。</li>不填写时默认值为 all。
+	Match *string `json:"Match,omitnil" name:"Match"`
 }
 
 type DescribeAccelerationDomainsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 加速域名所属站点ID。
+	// 加速域名所属站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
-
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>domain-name<br>   按照【<strong>加速域名名称</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	// <li>origin-type<br>   按照【<strong>源站类型</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	// <li>origin<br>   按照【<strong>主源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	// <li>backup-origin<br>   按照【<strong>备用源站地址</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	// <li>domain-cname<br>   按照【<strong>加速CNAME名</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	// <li>share-cname<br>   按照【<strong>共享CNAME名</strong>】进行过滤。<br>   类型：String<br>   必选：否
-	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
-
-	// 列表排序方式，取值有：
-	// <li>asc：升序排列；</li>
-	// <li>desc：降序排列。</li>默认值为asc。
-	Direction *string `json:"Direction,omitnil" name:"Direction"`
-
-	// 匹配方式，取值有：
-	// <li>all：返回匹配所有查询条件的加速域名；</li>
-	// <li>any：返回匹配任意一个查询条件的加速域名。</li>默认值为all。
-	Match *string `json:"Match,omitnil" name:"Match"`
-
-	// 分页查询限制数目，默认值：20，上限：200。
-	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
 	// 分页查询偏移量，默认为 0。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 排序依据，取值有：
+	// 分页查询限制数目，默认值：20，上限：200。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 zone-id 下所有域名信息。详细的过滤条件如下：
+	// <li>domain-name：按照加速域名进行过滤；</li>
+	// <li>origin-type：按照源站类型进行过滤；</li>
+	// <li>origin：按照主源站地址进行过滤；</li>
+	// <li>backup-origin： 按照备用源站地址进行过滤；</li>
+	// <li>domain-cname：按照 CNAME 进行过滤；</li>
+	// <li>share-cname：按照共享 CNAME 进行过滤；</li>
+	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
+
+	// 可根据该字段对返回结果进行排序，取值有：
 	// <li>created_on：加速域名创建时间；</li>
-	// <li>domain-name：加速域名名称；</li>
-	// </li>默认根据domain-name属性排序。
+	// <li>domain-name：加速域名。</li>不填写时，默认对返回结果按照 domain-name 排序。
 	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ascill 码的大小排序。取值有：
+	// <li>asc：升序排列；</li>
+	// <li>desc：降序排列。</li>不填写使用默认值 asc。
+	Direction *string `json:"Direction,omitnil" name:"Direction"`
+
+	// 匹配方式，取值有：
+	// <li>all：返回匹配所有查询条件的加速域名；</li>
+	// <li>any：返回匹配任意一个查询条件的加速域名。</li>不填写时默认值为 all。
+	Match *string `json:"Match,omitnil" name:"Match"`
 }
 
 func (r *DescribeAccelerationDomainsRequest) ToJsonString() string {
@@ -2799,12 +2839,12 @@ func (r *DescribeAccelerationDomainsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "ZoneId")
+	delete(f, "Offset")
+	delete(f, "Limit")
 	delete(f, "Filters")
+	delete(f, "Order")
 	delete(f, "Direction")
 	delete(f, "Match")
-	delete(f, "Limit")
-	delete(f, "Offset")
-	delete(f, "Order")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAccelerationDomainsRequest has unknown keys!", "")
 	}
@@ -2813,10 +2853,10 @@ func (r *DescribeAccelerationDomainsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAccelerationDomainsResponseParams struct {
-	// 加速域名总数。
+	// 符合查询条件的加速域名个数。
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
-	// 加速域名列表。
+	// 符合查询条件的所有加速域名的信息。
 	AccelerationDomains []*AccelerationDomain `json:"AccelerationDomains,omitnil" name:"AccelerationDomains"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5246,25 +5286,25 @@ type DescribeZonesRequestParams struct {
 	// 分页查询偏移量。默认值：0。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 分页查询限制数目。默认值：20，最大值：1000。
+	// 分页查询限制数目。默认值：20，最大值：100。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为zone-name。
+	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 appid 下有权限的所有站点信息。详细的过滤条件如下：
+	// <li>zone-name：按照站点名称进行过滤；</li><li>zone-id：按照站点 ID进行过滤。站点 ID 形如：zone-2noz78a8ev6k；</li><li>status：按照站点状态进行过滤；</li><li>tag-key：按照标签键进行过滤；</li><li>tag-value： 按照标签值进行过滤。</li>模糊查询时仅支持过滤字段名为 zone-name。
 	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
 
-	// 排序字段，取值有：
+	// 可根据该字段对返回结果进行排序，取值有：
 	// <li> type：接入类型；</li>
 	// <li> area：加速区域；</li>
 	// <li> create-time：创建时间；</li>
 	// <li> zone-name：站点名称；</li>
 	// <li> use-time：最近使用时间；</li>
-	// <li> active-status：生效状态。</li>不填写使用默认值create-time。
+	// <li> active-status：生效状态。</li>不填写时对返回结果默认按照 create-time 排序。
 	Order *string `json:"Order,omitnil" name:"Order"`
 
-	// 排序方向，取值有：
+	// 排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ascill 码的大小排序。取值有：
 	// <li> asc：从小到大排序；</li>
-	// <li> desc：从大到小排序。</li>不填写使用默认值desc。
+	// <li> desc：从大到小排序。</li>不填写使用默认值 desc。
 	Direction *string `json:"Direction,omitnil" name:"Direction"`
 }
 
@@ -5274,25 +5314,25 @@ type DescribeZonesRequest struct {
 	// 分页查询偏移量。默认值：0。
 	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
 
-	// 分页查询限制数目。默认值：20，最大值：1000。
+	// 分页查询限制数目。默认值：20，最大值：100。
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
-	// <li>zone-name<br>   按照【<strong>站点名称</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>zone-id<br>   按照【<strong>站点ID</strong>】进行过滤。站点ID形如：zone-xxx。<br>   类型：String<br>   必选：否</li><li>status<br>   按照【<strong>站点状态</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-key<br>   按照【<strong>标签键</strong>】进行过滤。<br>   类型：String<br>   必选：否</li><li>tag-value<br>   按照【<strong>标签值</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>模糊查询时仅支持过滤字段名为zone-name。
+	// 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回当前 appid 下有权限的所有站点信息。详细的过滤条件如下：
+	// <li>zone-name：按照站点名称进行过滤；</li><li>zone-id：按照站点 ID进行过滤。站点 ID 形如：zone-2noz78a8ev6k；</li><li>status：按照站点状态进行过滤；</li><li>tag-key：按照标签键进行过滤；</li><li>tag-value： 按照标签值进行过滤。</li>模糊查询时仅支持过滤字段名为 zone-name。
 	Filters []*AdvancedFilter `json:"Filters,omitnil" name:"Filters"`
 
-	// 排序字段，取值有：
+	// 可根据该字段对返回结果进行排序，取值有：
 	// <li> type：接入类型；</li>
 	// <li> area：加速区域；</li>
 	// <li> create-time：创建时间；</li>
 	// <li> zone-name：站点名称；</li>
 	// <li> use-time：最近使用时间；</li>
-	// <li> active-status：生效状态。</li>不填写使用默认值create-time。
+	// <li> active-status：生效状态。</li>不填写时对返回结果默认按照 create-time 排序。
 	Order *string `json:"Order,omitnil" name:"Order"`
 
-	// 排序方向，取值有：
+	// 排序方向，如果是字段值为数字，则根据数字大小排序；如果字段值为文本，则根据 ascill 码的大小排序。取值有：
 	// <li> asc：从小到大排序；</li>
-	// <li> desc：从大到小排序。</li>不填写使用默认值desc。
+	// <li> desc：从大到小排序。</li>不填写使用默认值 desc。
 	Direction *string `json:"Direction,omitnil" name:"Direction"`
 }
 
@@ -5324,7 +5364,7 @@ type DescribeZonesResponseParams struct {
 	// 符合条件的站点个数。
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
-	// 站点详细信息列表。
+	// 站点详细信息。
 	Zones []*Zone `json:"Zones,omitnil" name:"Zones"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -5449,6 +5489,17 @@ type DiffIPWhitelist struct {
 
 	// 最新IP白名单列表相比于当前IP白名单列表，不变部分。
 	NoChangeIPWhitelist *IPWhitelist `json:"NoChangeIPWhitelist,omitnil" name:"NoChangeIPWhitelist"`
+}
+
+type DnsVerification struct {
+	// 主机记录。
+	Subdomain *string `json:"Subdomain,omitnil" name:"Subdomain"`
+
+	// 记录类型。
+	RecordType *string `json:"RecordType,omitnil" name:"RecordType"`
+
+	// 记录值。
+	RecordValue *string `json:"RecordValue,omitnil" name:"RecordValue"`
 }
 
 // Predefined struct for user
@@ -5794,6 +5845,14 @@ type FileAscriptionInfo struct {
 
 	// 文件校验内容。
 	IdentifyContent *string `json:"IdentifyContent,omitnil" name:"IdentifyContent"`
+}
+
+type FileVerification struct {
+	// EdgeOne 后台服务器将通过 Scheme + Host + URL Path 的格式（例如 https://www.example.com/.well-known/teo-verification/z12h416twn.txt）获取文件验证信息。该字段为您需要创建的 URL Path 部分。
+	Path *string `json:"Path,omitnil" name:"Path"`
+
+	// 验证文件的内容。该字段的内容需要您填写至 Path 字段返回的 txt 文件中。
+	Content *string `json:"Content,omitnil" name:"Content"`
 }
 
 type Filter struct {
@@ -6942,15 +7001,24 @@ type ModifyHostsCertificateRequestParams struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 本次变更的域名列表。
+	// 需要修改证书配置的加速域名。
 	Hosts []*string `json:"Hosts,omitnil" name:"Hosts"`
 
-	// 证书信息, 只需要传入 CertId 即可, 如果为空, 则使用默认证书。
+	// 配置证书的模式，取值有：
+	// <li>disable：不配置证书；</li>
+	// <li>eofreecert：配置 EdgeOne 免费证书；</li>
+	// <li>sslcert：配置 SSL 证书。</li>不填时默认取值为 disable。
+	Mode *string `json:"Mode,omitnil" name:"Mode"`
+
+	// SSL 证书配置，本参数仅在 mode = sslcert 时生效，传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
 	ServerCertInfo []*ServerCertInfo `json:"ServerCertInfo,omitnil" name:"ServerCertInfo"`
 
 	// 托管类型，取值有：
-	// <li>apply：托管EO；</li>
-	// <li>none：不托管EO；</li>不填，默认取值为none。
+	// <li>none：不托管EO；</li>
+	// <li>apply：托管EO</li>
+	// 不填，默认取值为none。
+	//
+	// Deprecated: ApplyType is deprecated.
 	ApplyType *string `json:"ApplyType,omitnil" name:"ApplyType"`
 }
 
@@ -6960,15 +7028,22 @@ type ModifyHostsCertificateRequest struct {
 	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 本次变更的域名列表。
+	// 需要修改证书配置的加速域名。
 	Hosts []*string `json:"Hosts,omitnil" name:"Hosts"`
 
-	// 证书信息, 只需要传入 CertId 即可, 如果为空, 则使用默认证书。
+	// 配置证书的模式，取值有：
+	// <li>disable：不配置证书；</li>
+	// <li>eofreecert：配置 EdgeOne 免费证书；</li>
+	// <li>sslcert：配置 SSL 证书。</li>不填时默认取值为 disable。
+	Mode *string `json:"Mode,omitnil" name:"Mode"`
+
+	// SSL 证书配置，本参数仅在 mode = sslcert 时生效，传入对应证书的 CertId 即可。您可以前往 [SSL 证书列表](https://console.cloud.tencent.com/certoverview) 查看 CertId。
 	ServerCertInfo []*ServerCertInfo `json:"ServerCertInfo,omitnil" name:"ServerCertInfo"`
 
 	// 托管类型，取值有：
-	// <li>apply：托管EO；</li>
-	// <li>none：不托管EO；</li>不填，默认取值为none。
+	// <li>none：不托管EO；</li>
+	// <li>apply：托管EO</li>
+	// 不填，默认取值为none。
 	ApplyType *string `json:"ApplyType,omitnil" name:"ApplyType"`
 }
 
@@ -6986,6 +7061,7 @@ func (r *ModifyHostsCertificateRequest) FromJsonString(s string) error {
 	}
 	delete(f, "ZoneId")
 	delete(f, "Hosts")
+	delete(f, "Mode")
 	delete(f, "ServerCertInfo")
 	delete(f, "ApplyType")
 	if len(f) > 0 {
@@ -7782,6 +7858,11 @@ type NormalAction struct {
 	Parameters []*RuleNormalActionParams `json:"Parameters,omitnil" name:"Parameters"`
 }
 
+type NsVerification struct {
+	// NS 接入时，分配给用户的 DNS 服务器地址，需要将域名的 NameServer 切换至该地址。
+	NameServers []*string `json:"NameServers,omitnil" name:"NameServers"`
+}
+
 type OfflineCache struct {
 	// 离线缓存是否开启，取值有：
 	// <li>on：开启；</li>
@@ -7886,7 +7967,7 @@ type OriginInfo struct {
 	// <li>ORIGIN_GROUP：源站组类型源站；</li>
 	// <li>AWS_S3：S3兼容对象存储源站；</li>
 	// <li>LB: 负载均衡类型源站；</li>
-	// <li>SPACE：EdgeOne Shield Space 存储。</li>
+	// <li>SPACE：EdgeOne Shield Space 存储。</li>  
 	OriginType *string `json:"OriginType,omitnil" name:"OriginType"`
 
 	// 源站地址，当 OriginType 参数指定为 ORIGIN_GROUP 时，该参数填写源站组 ID，其他情况下填写源站地址。
@@ -7978,6 +8059,22 @@ type OriginRecord struct {
 
 	// 当源站类型Private=true时有效，表示私有鉴权使用参数。
 	PrivateParameters []*PrivateParameter `json:"PrivateParameters,omitnil" name:"PrivateParameters"`
+}
+
+type OwnershipVerification struct {
+	// CNAME 接入，使用 DNS 解析验证时所需的信息。详情参考 [站点/域名归属权验证
+	// ](https://cloud.tencent.com/document/product/1552/70789#7af6ecf8-afca-4e35-8811-b5797ed1bde5)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DnsVerification *DnsVerification `json:"DnsVerification,omitnil" name:"DnsVerification"`
+
+	// CNAME 接入，使用文件验证时所需的信息。详情参考 [站点/域名归属权验证
+	// ](https://cloud.tencent.com/document/product/1552/70789#7af6ecf8-afca-4e35-8811-b5797ed1bde5)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FileVerification *FileVerification `json:"FileVerification,omitnil" name:"FileVerification"`
+
+	// NS 接入，切换 DNS 服务器所需的信息。详情参考 [修改 DNS 服务器](https://cloud.tencent.com/document/product/1552/90452)。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NsVerification *NsVerification `json:"NsVerification,omitnil" name:"NsVerification"`
 }
 
 type PartialModule struct {
@@ -9004,7 +9101,7 @@ type WebSocket struct {
 }
 
 type Zone struct {
-	// 站点ID。
+	// 站点 ID。
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
 	// 站点名称。
@@ -9021,12 +9118,14 @@ type Zone struct {
 	// <li> pending：NS 未切换；</li>
 	// <li> moved：NS 已切走；</li>
 	// <li> deactivated：被封禁。 </li>
+	// <li> initializing：待绑定套餐。 </li>
 	Status *string `json:"Status,omitnil" name:"Status"`
 
-	// 站点接入方式，取值有
-	// <li> full：NS 接入； </li>
+	// 站点接入方式，取值有：
+	// <li> full：NS 接入；</li>
 	// <li> partial：CNAME 接入；</li>
-	// <li> noDomainAccess：无域名接入。</li>
+	// <li> noDomainAccess：无域名接入；</li>
+	// <li> vodeo：vodeo默认站点。</li>
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 站点是否关闭。
@@ -9083,8 +9182,12 @@ type Zone struct {
 	// <li> 1：伪站点。</li>
 	IsFake *int64 `json:"IsFake,omitnil" name:"IsFake"`
 
-	// 锁定状态，取值有：<li> enable：正常，允许进行修改操作；</li><li> disable：锁定中，不允许进行修改操作。</li>
+	// 锁定状态，取值有：<li> enable：正常，允许进行修改操作；</li><li> disable：锁定中，不允许进行修改操作；</li><li> plan_migrate：套餐迁移中，不允许进行修改操作。</li>
 	LockStatus *string `json:"LockStatus,omitnil" name:"LockStatus"`
+
+	// 归属权验证信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OwnershipVerification *OwnershipVerification `json:"OwnershipVerification,omitnil" name:"OwnershipVerification"`
 }
 
 type ZoneSetting struct {

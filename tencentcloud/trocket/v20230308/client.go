@@ -145,6 +145,62 @@ func (c *Client) CreateInstanceWithContext(ctx context.Context, request *CreateI
     return
 }
 
+func NewCreateRoleRequest() (request *CreateRoleRequest) {
+    request = &CreateRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "CreateRole")
+    
+    
+    return
+}
+
+func NewCreateRoleResponse() (response *CreateRoleResponse) {
+    response = &CreateRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateRole
+// 添加角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateRole(request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
+    return c.CreateRoleWithContext(context.Background(), request)
+}
+
+// CreateRole
+// 添加角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  OPERATIONDENIED = "OperationDenied"
+//  RESOURCEINUSE = "ResourceInUse"
+//  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
+func (c *Client) CreateRoleWithContext(ctx context.Context, request *CreateRoleRequest) (response *CreateRoleResponse, err error) {
+    if request == nil {
+        request = NewCreateRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTopicRequest() (request *CreateTopicRequest) {
     request = &CreateTopicRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -301,6 +357,56 @@ func (c *Client) DeleteInstanceWithContext(ctx context.Context, request *DeleteI
     request.SetContext(ctx)
     
     response = NewDeleteInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteRoleRequest() (request *DeleteRoleRequest) {
+    request = &DeleteRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DeleteRole")
+    
+    
+    return
+}
+
+func NewDeleteRoleResponse() (response *DeleteRoleResponse) {
+    response = &DeleteRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteRole
+// 删除角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DeleteRole(request *DeleteRoleRequest) (response *DeleteRoleResponse, err error) {
+    return c.DeleteRoleWithContext(context.Background(), request)
+}
+
+// DeleteRole
+// 删除角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
+func (c *Client) DeleteRoleWithContext(ctx context.Context, request *DeleteRoleRequest) (response *DeleteRoleResponse, err error) {
+    if request == nil {
+        request = NewDeleteRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteRoleResponse()
     err = c.Send(request, response)
     return
 }
@@ -517,6 +623,62 @@ func (c *Client) DescribeInstanceListWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDescribeInstanceListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRoleListRequest() (request *DescribeRoleListRequest) {
+    request = &DescribeRoleListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "DescribeRoleList")
+    
+    
+    return
+}
+
+func NewDescribeRoleListResponse() (response *DescribeRoleListResponse) {
+    response = &DescribeRoleListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRoleList
+// 查询角色列表，Filter参数使用说明如下：
+//
+// 
+//
+// 1. RoleName，角色名称模糊搜索
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeRoleList(request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
+    return c.DescribeRoleListWithContext(context.Background(), request)
+}
+
+// DescribeRoleList
+// 查询角色列表，Filter参数使用说明如下：
+//
+// 
+//
+// 1. RoleName，角色名称模糊搜索
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeRoleListWithContext(ctx context.Context, request *DescribeRoleListRequest) (response *DescribeRoleListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRoleListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRoleList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRoleListResponse()
     err = c.Send(request, response)
     return
 }
@@ -783,6 +945,54 @@ func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyI
     request.SetContext(ctx)
     
     response = NewModifyInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyRoleRequest() (request *ModifyRoleRequest) {
+    request = &ModifyRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trocket", APIVersion, "ModifyRole")
+    
+    
+    return
+}
+
+func NewModifyRoleResponse() (response *ModifyRoleResponse) {
+    response = &ModifyRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyRole
+// 修改角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyRole(request *ModifyRoleRequest) (response *ModifyRoleResponse, err error) {
+    return c.ModifyRoleWithContext(context.Background(), request)
+}
+
+// ModifyRole
+// 修改角色
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyRoleWithContext(ctx context.Context, request *ModifyRoleRequest) (response *ModifyRoleResponse, err error) {
+    if request == nil {
+        request = NewModifyRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyRoleResponse()
     err = c.Send(request, response)
     return
 }

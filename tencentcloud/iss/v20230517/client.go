@@ -149,6 +149,7 @@ func NewAddOrganizationResponse() (response *AddOrganizationResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDORGNAME = "InvalidParameterValue.InvalidOrgName"
 //  INVALIDPARAMETERVALUE_ORGNAMEREPEAT = "InvalidParameterValue.OrgNameRepeat"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddOrganization(request *AddOrganizationRequest) (response *AddOrganizationResponse, err error) {
@@ -161,6 +162,7 @@ func (c *Client) AddOrganization(request *AddOrganizationRequest) (response *Add
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INVALIDORGNAME = "InvalidParameterValue.InvalidOrgName"
 //  INVALIDPARAMETERVALUE_ORGNAMEREPEAT = "InvalidParameterValue.OrgNameRepeat"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) AddOrganizationWithContext(ctx context.Context, request *AddOrganizationRequest) (response *AddOrganizationResponse, err error) {
@@ -3032,6 +3034,7 @@ func NewDescribeVideoDownloadUrlResponse() (response *DescribeVideoDownloadUrlRe
 //  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
 //  INVALIDPARAMETERVALUE_INVALIDENDTIME = "InvalidParameterValue.InvalidEndTime"
 //  INVALIDPARAMETERVALUE_INVALIDFILETYPE = "InvalidParameterValue.InvalidFileType"
+//  INVALIDPARAMETERVALUE_NONSAMEDAY = "InvalidParameterValue.NonSameDay"
 //  INVALIDPARAMETERVALUE_OUTOFTIMERANGE = "InvalidParameterValue.OutOfTimeRange"
 //  OPERATIONDENIED_BANDWIDTHLIMITZERO = "OperationDenied.BandwidthLimitZero"
 //  OPERATIONDENIED_CONCURRENTDOWNLOADSOVERLIMIT = "OperationDenied.ConcurrentDownloadsOverLimit"
@@ -3054,6 +3057,7 @@ func (c *Client) DescribeVideoDownloadUrl(request *DescribeVideoDownloadUrlReque
 //  INVALIDPARAMETERVALUE_INVALIDCHANNELID = "InvalidParameterValue.InvalidChannelId"
 //  INVALIDPARAMETERVALUE_INVALIDENDTIME = "InvalidParameterValue.InvalidEndTime"
 //  INVALIDPARAMETERVALUE_INVALIDFILETYPE = "InvalidParameterValue.InvalidFileType"
+//  INVALIDPARAMETERVALUE_NONSAMEDAY = "InvalidParameterValue.NonSameDay"
 //  INVALIDPARAMETERVALUE_OUTOFTIMERANGE = "InvalidParameterValue.OutOfTimeRange"
 //  OPERATIONDENIED_BANDWIDTHLIMITZERO = "OperationDenied.BandwidthLimitZero"
 //  OPERATIONDENIED_CONCURRENTDOWNLOADSOVERLIMIT = "OperationDenied.ConcurrentDownloadsOverLimit"

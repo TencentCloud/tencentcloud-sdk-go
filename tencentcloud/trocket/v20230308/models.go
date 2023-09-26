@@ -256,6 +256,91 @@ func (r *CreateInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateRoleRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 角色名称
+	Role *string `json:"Role,omitnil" name:"Role"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 是否开启生产权限
+	PermWrite *bool `json:"PermWrite,omitnil" name:"PermWrite"`
+
+	// 是否开启消费权限
+	PermRead *bool `json:"PermRead,omitnil" name:"PermRead"`
+}
+
+type CreateRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 角色名称
+	Role *string `json:"Role,omitnil" name:"Role"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 是否开启生产权限
+	PermWrite *bool `json:"PermWrite,omitnil" name:"PermWrite"`
+
+	// 是否开启消费权限
+	PermRead *bool `json:"PermRead,omitnil" name:"PermRead"`
+}
+
+func (r *CreateRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Role")
+	delete(f, "Remark")
+	delete(f, "PermWrite")
+	delete(f, "PermRead")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateRoleResponseParams struct {
+	// 角色名
+	Role *string `json:"Role,omitnil" name:"Role"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateRoleResponseParams `json:"Response"`
+}
+
+func (r *CreateRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTopicRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -465,6 +550,67 @@ func (r *DeleteInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeleteInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRoleRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 角色名称
+	Role *string `json:"Role,omitnil" name:"Role"`
+}
+
+type DeleteRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 角色名称
+	Role *string `json:"Role,omitnil" name:"Role"`
+}
+
+func (r *DeleteRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Role")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteRoleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteRoleResponseParams `json:"Response"`
+}
+
+func (r *DeleteRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteRoleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -827,6 +973,88 @@ func (r *DescribeInstanceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRoleListRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+}
+
+type DescribeRoleListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 查询起始位置
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 查询结果限制数量
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 查询条件列表
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+}
+
+func (r *DescribeRoleListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRoleListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRoleListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRoleListResponseParams struct {
+	// 查询总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 角色信息列表
+	Data []*RoleItem `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRoleListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRoleListResponseParams `json:"Response"`
+}
+
+func (r *DescribeRoleListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRoleListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -1403,6 +1631,88 @@ func (r *ModifyInstanceResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyRoleRequestParams struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 角色名称
+	Role *string `json:"Role,omitnil" name:"Role"`
+
+	// 是否开启消费
+	PermRead *bool `json:"PermRead,omitnil" name:"PermRead"`
+
+	// 是否开启生产
+	PermWrite *bool `json:"PermWrite,omitnil" name:"PermWrite"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+}
+
+type ModifyRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 角色名称
+	Role *string `json:"Role,omitnil" name:"Role"`
+
+	// 是否开启消费
+	PermRead *bool `json:"PermRead,omitnil" name:"PermRead"`
+
+	// 是否开启生产
+	PermWrite *bool `json:"PermWrite,omitnil" name:"PermWrite"`
+
+	// 备注
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+}
+
+func (r *ModifyRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Role")
+	delete(f, "PermRead")
+	delete(f, "PermWrite")
+	delete(f, "Remark")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRoleResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRoleResponseParams `json:"Response"`
+}
+
+func (r *ModifyRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyTopicRequestParams struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -1475,6 +1785,32 @@ func (r *ModifyTopicResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *ModifyTopicResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type RoleItem struct {
+	// 角色名称
+	RoleName *string `json:"RoleName,omitnil" name:"RoleName"`
+
+	// Access Key
+	AccessKey *string `json:"AccessKey,omitnil" name:"AccessKey"`
+
+	// Secret Key
+	SecretKey *string `json:"SecretKey,omitnil" name:"SecretKey"`
+
+	// 是否开启消费
+	PermRead *bool `json:"PermRead,omitnil" name:"PermRead"`
+
+	// 是否开启生产
+	PermWrite *bool `json:"PermWrite,omitnil" name:"PermWrite"`
+
+	// 备注信息
+	Remark *string `json:"Remark,omitnil" name:"Remark"`
+
+	// 创建时间，秒为单位
+	CreatedTime *int64 `json:"CreatedTime,omitnil" name:"CreatedTime"`
+
+	// 修改时间，秒为单位
+	ModifiedTime *int64 `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
 }
 
 type SubscriptionData struct {
