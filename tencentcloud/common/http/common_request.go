@@ -36,12 +36,12 @@ func (cr *CommonRequest) SetActionParameters(data interface{}) error {
 	switch data.(type) {
 	case []byte:
 		if err := json.Unmarshal(data.([]byte), &cr.actionParameters); err != nil {
-			msg := fmt.Sprintf("Fail to parse contenst %s to json,because: %s", data.([]byte), err)
+			msg := fmt.Sprintf("Fail to parse contents %s to json,because: %s", data.([]byte), err)
 			return tcerr.NewTencentCloudSDKError("ClientError.ParseJsonError", msg, "")
 		}
 	case string:
 		if err := json.Unmarshal([]byte(data.(string)), &cr.actionParameters); err != nil {
-			msg := fmt.Sprintf("Fail to parse contenst %s to json,because: %s", data.(string), err)
+			msg := fmt.Sprintf("Fail to parse contents %s to json,because: %s", data.(string), err)
 			return tcerr.NewTencentCloudSDKError("ClientError.ParseJsonError", msg, "")
 		}
 	case map[string]interface{}:
