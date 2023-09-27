@@ -69,6 +69,19 @@ type AccelerationDomain struct {
 	// 当域名需要进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	OwnershipVerification *OwnershipVerification `json:"OwnershipVerification,omitnil" name:"OwnershipVerification"`
+
+	// 域名证书信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Certificate *AccelerationDomainCertificate `json:"Certificate,omitnil" name:"Certificate"`
+}
+
+type AccelerationDomainCertificate struct {
+	// 配置证书的模式，取值有： <li>disable：不配置证书；</li> <li>eofreecert：配置 EdgeOne 免费证书；</li> <li>sslcert：配置 SSL 证书。</li>
+	Mode *string `json:"Mode,omitnil" name:"Mode"`
+
+	// 证书列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*CertificateInfo `json:"List,omitnil" name:"List"`
 }
 
 type AclCondition struct {
@@ -813,6 +826,37 @@ type CachePrefresh struct {
 	// 缓存预刷新百分比，取值范围：1-99。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Percent *int64 `json:"Percent,omitnil" name:"Percent"`
+}
+
+type CertificateInfo struct {
+	// 服务器证书 ID。
+	CertId *string `json:"CertId,omitnil" name:"CertId"`
+
+	// 证书备注名。
+	Alias *string `json:"Alias,omitnil" name:"Alias"`
+
+	// 证书类型，取值有：
+	// <li>default：默认证书；</li>
+	// <li>upload：用户上传；</li>
+	// <li>managed：腾讯云托管。</li>
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 证书过期时间。
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 证书部署时间。
+	DeployTime *string `json:"DeployTime,omitnil" name:"DeployTime"`
+
+	// 签名算法。
+	SignAlgo *string `json:"SignAlgo,omitnil" name:"SignAlgo"`
+
+	// 证书状态，取值有：
+	// <li>deployed：已部署；</li>
+	// <li>processing：部署中；</li>
+	// <li>applying：申请中；</li>
+	// <li>failed：申请失败；</li>
+	// <li>issued：绑定失败。</li>
+	Status *string `json:"Status,omitnil" name:"Status"`
 }
 
 // Predefined struct for user

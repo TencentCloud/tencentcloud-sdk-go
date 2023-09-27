@@ -2099,6 +2099,154 @@ func (c *Client) DescribeHealthScoreWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeIndexRecommendAggregationSlowLogsRequest() (request *DescribeIndexRecommendAggregationSlowLogsRequest) {
+    request = &DescribeIndexRecommendAggregationSlowLogsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeIndexRecommendAggregationSlowLogs")
+    
+    
+    return
+}
+
+func NewDescribeIndexRecommendAggregationSlowLogsResponse() (response *DescribeIndexRecommendAggregationSlowLogsResponse) {
+    response = &DescribeIndexRecommendAggregationSlowLogsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIndexRecommendAggregationSlowLogs
+// 查询某张表的慢查模板概览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIndexRecommendAggregationSlowLogs(request *DescribeIndexRecommendAggregationSlowLogsRequest) (response *DescribeIndexRecommendAggregationSlowLogsResponse, err error) {
+    return c.DescribeIndexRecommendAggregationSlowLogsWithContext(context.Background(), request)
+}
+
+// DescribeIndexRecommendAggregationSlowLogs
+// 查询某张表的慢查模板概览
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIndexRecommendAggregationSlowLogsWithContext(ctx context.Context, request *DescribeIndexRecommendAggregationSlowLogsRequest) (response *DescribeIndexRecommendAggregationSlowLogsResponse, err error) {
+    if request == nil {
+        request = NewDescribeIndexRecommendAggregationSlowLogsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIndexRecommendAggregationSlowLogs require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIndexRecommendAggregationSlowLogsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeIndexRecommendInfoRequest() (request *DescribeIndexRecommendInfoRequest) {
+    request = &DescribeIndexRecommendInfoRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeIndexRecommendInfo")
+    
+    
+    return
+}
+
+func NewDescribeIndexRecommendInfoResponse() (response *DescribeIndexRecommendInfoResponse) {
+    response = &DescribeIndexRecommendInfoResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIndexRecommendInfo
+// 查询实例的索引推荐信息，包括索引统计相关信息，推荐索引列表，无效索引列表等。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIndexRecommendInfo(request *DescribeIndexRecommendInfoRequest) (response *DescribeIndexRecommendInfoResponse, err error) {
+    return c.DescribeIndexRecommendInfoWithContext(context.Background(), request)
+}
+
+// DescribeIndexRecommendInfo
+// 查询实例的索引推荐信息，包括索引统计相关信息，推荐索引列表，无效索引列表等。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeIndexRecommendInfoWithContext(ctx context.Context, request *DescribeIndexRecommendInfoRequest) (response *DescribeIndexRecommendInfoResponse, err error) {
+    if request == nil {
+        request = NewDescribeIndexRecommendInfoRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIndexRecommendInfo require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIndexRecommendInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeMailProfileRequest() (request *DescribeMailProfileRequest) {
     request = &DescribeMailProfileRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2469,6 +2617,78 @@ func (c *Client) DescribeProxySessionKillTasksWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewDescribeProxySessionKillTasksResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeRedisProcessListRequest() (request *DescribeRedisProcessListRequest) {
+    request = &DescribeRedisProcessListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("dbbrain", APIVersion, "DescribeRedisProcessList")
+    
+    
+    return
+}
+
+func NewDescribeRedisProcessListResponse() (response *DescribeRedisProcessListResponse) {
+    response = &DescribeRedisProcessListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRedisProcessList
+// 获取 Redis 实例所有 proxy 节点的实时会话详情列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisProcessList(request *DescribeRedisProcessListRequest) (response *DescribeRedisProcessListResponse, err error) {
+    return c.DescribeRedisProcessListWithContext(context.Background(), request)
+}
+
+// DescribeRedisProcessList
+// 获取 Redis 实例所有 proxy 节点的实时会话详情列表。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_USERHASNOSTRATEGY = "OperationDenied.UserHasNoStrategy"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeRedisProcessListWithContext(ctx context.Context, request *DescribeRedisProcessListRequest) (response *DescribeRedisProcessListResponse, err error) {
+    if request == nil {
+        request = NewDescribeRedisProcessListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRedisProcessList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRedisProcessListResponse()
     err = c.Send(request, response)
     return
 }

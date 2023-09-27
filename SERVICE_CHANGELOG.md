@@ -1,10 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 商业智能分析 BI(bi) 版本：2022-01-05
+## 云数据仓库 PostgreSQL(cdwpg) 版本：2020-12-30
 
-### 第 5 次发布
+### 第 1 次发布
 
-发布时间：2023-09-27 01:07:14
+发布时间：2023-09-27 11:25:41
 
 本次发布包含了以下内容：
 
@@ -12,222 +12,73 @@
 
 新增接口：
 
-* [ModifyUserRole](https://cloud.tencent.com/document/api/590/98878)
-
-
-
-## 云安全一体化平台(csip) 版本：2022-11-21
-
-### 第 14 次发布
-
-发布时间：2023-09-27 01:12:21
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeDbAssets](https://cloud.tencent.com/document/api/664/90819)
-
-	* 新增入参：AssetTypes
-
-
-修改数据结构：
-
-* [AssetViewCFGRisk](https://cloud.tencent.com/document/api/664/90825#AssetViewCFGRisk)
-
-	* <font color="#dd0000">**修改成员**：</font>Id, CFGName, CheckType, InstanceId, InstanceName, InstanceType, AffectAsset, Level, FirstTime, RecentTime, From, Status, CFGSTD, CFGDescribe, CFGFix, CFGHelpURL, Index, AppId, Nick, Uin
-
-* [ScanTaskInfoList](https://cloud.tencent.com/document/api/664/90825#ScanTaskInfoList)
-
-	* 新增成员：SourceType
-
-* [TaskAssetObject](https://cloud.tencent.com/document/api/664/90825#TaskAssetObject)
-
-	* 新增成员：Arn
-
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 122 次发布
-
-发布时间：2023-09-26 16:45:49
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateDocument](https://cloud.tencent.com/document/api/1323/70364)
-
-	* 新增出参：Approvers
-
-* [CreateFlowApprovers](https://cloud.tencent.com/document/api/1323/80033)
-
-	* 新增入参：FillApproverType
-
-* [CreateFlowByFiles](https://cloud.tencent.com/document/api/1323/70360)
-
-	* 新增出参：Approvers
-
-* [CreateSchemeUrl](https://cloud.tencent.com/document/api/1323/70359)
-
-	* 新增入参：RecipientId
-
-	* 新增出参：SchemeQrcodeUrl
-
-* [UploadFiles](https://cloud.tencent.com/document/api/1323/73066)
-
-	* 新增入参：Agent
-
+* [CreateInstanceByApi](https://cloud.tencent.com/document/api/878/98894)
+* [DestroyInstanceByApi](https://cloud.tencent.com/document/api/878/98893)
 
 新增数据结构：
 
-* [ApproverItem](https://cloud.tencent.com/document/api/1323/70369#ApproverItem)
-
-修改数据结构：
-
-* [ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo)
-
-	* 新增成员：ApproverRoleName
-
-* [ApproverOption](https://cloud.tencent.com/document/api/1323/70369#ApproverOption)
-
-	* 新增成员：FillType
-
-* [FillApproverInfo](https://cloud.tencent.com/document/api/1323/70369#FillApproverInfo)
-
-	* 新增成员：OrganizationName
-
-* [FlowApproverDetail](https://cloud.tencent.com/document/api/1323/70369#FlowApproverDetail)
-
-	* 新增成员：ApproverRoleName
+* [CBSSpec](https://cloud.tencent.com/document/api/878/98895#CBSSpec)
+* [ChargeProperties](https://cloud.tencent.com/document/api/878/98895#ChargeProperties)
+* [ResourceSpecNew](https://cloud.tencent.com/document/api/878/98895#ResourceSpecNew)
+* [Tag](https://cloud.tencent.com/document/api/878/98895#Tag)
 
 
 
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
 
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+### 第 26 次发布
 
-### 第 114 次发布
-
-发布时间：2023-09-26 16:46:19
+发布时间：2023-09-27 12:20:53
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+新增接口：
 
-* [ChannelCreateFlowByFiles](https://cloud.tencent.com/document/api/1420/73068)
-
-	* 新增出参：Approvers
-
-* [CreateFlowsByTemplates](https://cloud.tencent.com/document/api/1420/61523)
-
-	* 新增出参：FlowApprovers
-
-* [CreateSignUrls](https://cloud.tencent.com/document/api/1420/61522)
-
-	* 新增入参：RecipientIds
-
-* [ModifyExtendedService](https://cloud.tencent.com/document/api/1420/85666)
-
-	* 新增入参：Endpoint
-
+* [DescribeIndexRecommendAggregationSlowLogs](https://cloud.tencent.com/document/api/1130/98912)
+* [DescribeIndexRecommendInfo](https://cloud.tencent.com/document/api/1130/98911)
+* [DescribeRedisProcessList](https://cloud.tencent.com/document/api/1130/98909)
 
 新增数据结构：
 
-* [ApproverItem](https://cloud.tencent.com/document/api/1420/61525#ApproverItem)
-* [FlowApproverItem](https://cloud.tencent.com/document/api/1420/61525#FlowApproverItem)
-
-修改数据结构：
-
-* [ApproverOption](https://cloud.tencent.com/document/api/1420/61525#ApproverOption)
-
-	* 新增成员：FillType
-
-* [FlowApproverDetail](https://cloud.tencent.com/document/api/1420/61525#FlowApproverDetail)
-
-	* 新增成员：ApproverRoleName
-
-* [FlowApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FlowApproverInfo)
-
-	* 新增成员：ApproverRoleName
-
-* [SignUrlInfo](https://cloud.tencent.com/document/api/1420/61525#SignUrlInfo)
-
-	* 新增成员：SignQrcodeUrl
+* [Aggregation](https://cloud.tencent.com/document/api/1130/57812#Aggregation)
+* [IndexesToBuild](https://cloud.tencent.com/document/api/1130/57812#IndexesToBuild)
+* [IndexesToDrop](https://cloud.tencent.com/document/api/1130/57812#IndexesToDrop)
+* [MongoDBIndex](https://cloud.tencent.com/document/api/1130/57812#MongoDBIndex)
+* [Process](https://cloud.tencent.com/document/api/1130/57812#Process)
 
 
 
-
-## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
 
 
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
-### 第 53 次发布
+### 第 54 次发布
 
-发布时间：2023-09-27 01:25:45
+发布时间：2023-09-27 12:55:42
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-新增接口：
+新增数据结构：
 
-* [VerifyOwnership](https://cloud.tencent.com/document/api/1552/98879)
+* [AccelerationDomainCertificate](https://cloud.tencent.com/document/api/1552/80721#AccelerationDomainCertificate)
+* [CertificateInfo](https://cloud.tencent.com/document/api/1552/80721#CertificateInfo)
+
+修改数据结构：
+
+* [AccelerationDomain](https://cloud.tencent.com/document/api/1552/80721#AccelerationDomain)
+
+	* 新增成员：Certificate
+
 
 
 
 ## 边缘安全加速平台(teo) 版本：2022-01-06
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 173 次发布
-
-发布时间：2023-09-27 01:28:08
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [DescribeVpcPeeringConnections](https://cloud.tencent.com/document/api/215/96023)
-
-	* 新增出参：TotalCount, PeerConnectionSet
-
-
-新增数据结构：
-
-* [PeerConnection](https://cloud.tencent.com/document/api/215/15824#PeerConnection)
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 58 次发布
-
-发布时间：2023-09-27 01:28:58
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [BotPkg](https://cloud.tencent.com/document/api/627/53609#BotPkg)
-
-	* 新增成员：BotCPWaf, BotNPWaf
-
 
 
 
@@ -8254,7 +8105,7 @@
 
 新增接口：
 
-* [[ModifyUserRole](https://cloud.tencent.com/document/api/590/98878)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyUserRole](https://cloud.tencent.com/document/api/590/98878)
 
 ### 第 4 次发布
 
@@ -21137,6 +20988,31 @@
 * [BackupTableContent](https://cloud.tencent.com/document/api/1299/83429#BackupTableContent)
 * [CkUserAlterInfo](https://cloud.tencent.com/document/api/1299/83429#CkUserAlterInfo)
 * [ConfigSubmitContext](https://cloud.tencent.com/document/api/1299/83429#ConfigSubmitContext)
+
+
+
+
+## 云数据仓库 PostgreSQL(cdwpg) 版本：2020-12-30
+
+### 第 1 次发布
+
+发布时间：2023-09-27 11:25:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[CreateInstanceByApi](https://cloud.tencent.com/document/api/878/98894)](https://cloud.tencent.com/document/api/#/#)
+* [[DestroyInstanceByApi](https://cloud.tencent.com/document/api/878/98893)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[CBSSpec](https://cloud.tencent.com/document/api/878/98895#CBSSpec)](https://cloud.tencent.com/document/api/878/98895#[CBSSpec](https://cloud.tencent.com/document/api/878/98895#CBSSpec))
+* [[ChargeProperties](https://cloud.tencent.com/document/api/878/98895#ChargeProperties)](https://cloud.tencent.com/document/api/878/98895#[ChargeProperties](https://cloud.tencent.com/document/api/878/98895#ChargeProperties))
+* [[ResourceSpecNew](https://cloud.tencent.com/document/api/878/98895#ResourceSpecNew)](https://cloud.tencent.com/document/api/878/98895#[ResourceSpecNew](https://cloud.tencent.com/document/api/878/98895#ResourceSpecNew))
+* [[Tag](https://cloud.tencent.com/document/api/878/98895#Tag)](https://cloud.tencent.com/document/api/878/98895#[Tag](https://cloud.tencent.com/document/api/878/98895#Tag))
 
 
 
@@ -42564,6 +42440,28 @@
 
 ## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
 
+### 第 26 次发布
+
+发布时间：2023-09-27 12:20:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeIndexRecommendAggregationSlowLogs](https://cloud.tencent.com/document/api/1130/98912)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeIndexRecommendInfo](https://cloud.tencent.com/document/api/1130/98911)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeRedisProcessList](https://cloud.tencent.com/document/api/1130/98909)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[Aggregation](https://cloud.tencent.com/document/api/1130/57812#Aggregation)](https://cloud.tencent.com/document/api/1130/57812#[Aggregation](https://cloud.tencent.com/document/api/1130/57812#Aggregation))
+* [[IndexesToBuild](https://cloud.tencent.com/document/api/1130/57812#IndexesToBuild)](https://cloud.tencent.com/document/api/1130/57812#[IndexesToBuild](https://cloud.tencent.com/document/api/1130/57812#IndexesToBuild))
+* [[IndexesToDrop](https://cloud.tencent.com/document/api/1130/57812#IndexesToDrop)](https://cloud.tencent.com/document/api/1130/57812#[IndexesToDrop](https://cloud.tencent.com/document/api/1130/57812#IndexesToDrop))
+* [[MongoDBIndex](https://cloud.tencent.com/document/api/1130/57812#MongoDBIndex)](https://cloud.tencent.com/document/api/1130/57812#[MongoDBIndex](https://cloud.tencent.com/document/api/1130/57812#MongoDBIndex))
+* [[Process](https://cloud.tencent.com/document/api/1130/57812#Process)](https://cloud.tencent.com/document/api/1130/57812#[Process](https://cloud.tencent.com/document/api/1130/57812#Process))
+
 ### 第 25 次发布
 
 发布时间：2023-09-04 01:41:27
@@ -53712,7 +53610,7 @@
 
 新增数据结构：
 
-* [[ApproverItem](https://cloud.tencent.com/document/api/1323/70369#ApproverItem)](https://cloud.tencent.com/document/api/1323/70369#[ApproverItem](https://cloud.tencent.com/document/api/1323/70369#ApproverItem))
+* [ApproverItem](https://cloud.tencent.com/document/api/1323/70369#ApproverItem)
 
 修改数据结构：
 
@@ -56144,8 +56042,8 @@
 
 新增数据结构：
 
-* [[ApproverItem](https://cloud.tencent.com/document/api/1420/61525#ApproverItem)](https://cloud.tencent.com/document/api/1420/61525#[ApproverItem](https://cloud.tencent.com/document/api/1420/61525#ApproverItem))
-* [[FlowApproverItem](https://cloud.tencent.com/document/api/1420/61525#FlowApproverItem)](https://cloud.tencent.com/document/api/1420/61525#[FlowApproverItem](https://cloud.tencent.com/document/api/1420/61525#FlowApproverItem))
+* [ApproverItem](https://cloud.tencent.com/document/api/1420/61525#ApproverItem)
+* [FlowApproverItem](https://cloud.tencent.com/document/api/1420/61525#FlowApproverItem)
 
 修改数据结构：
 
@@ -108579,6 +108477,26 @@
 
 ## 边缘安全加速平台(teo) 版本：2022-09-01
 
+### 第 54 次发布
+
+发布时间：2023-09-27 12:55:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [[AccelerationDomainCertificate](https://cloud.tencent.com/document/api/1552/80721#AccelerationDomainCertificate)](https://cloud.tencent.com/document/api/1552/80721#[AccelerationDomainCertificate](https://cloud.tencent.com/document/api/1552/80721#AccelerationDomainCertificate))
+* [[CertificateInfo](https://cloud.tencent.com/document/api/1552/80721#CertificateInfo)](https://cloud.tencent.com/document/api/1552/80721#[CertificateInfo](https://cloud.tencent.com/document/api/1552/80721#CertificateInfo))
+
+修改数据结构：
+
+* [AccelerationDomain](https://cloud.tencent.com/document/api/1552/80721#AccelerationDomain)
+
+	* 新增成员：Certificate
+
+
 ### 第 53 次发布
 
 发布时间：2023-09-27 01:25:45
@@ -108589,7 +108507,7 @@
 
 新增接口：
 
-* [[VerifyOwnership](https://cloud.tencent.com/document/api/1552/98879)](https://cloud.tencent.com/document/api/#/#)
+* [VerifyOwnership](https://cloud.tencent.com/document/api/1552/98879)
 
 ### 第 52 次发布
 
@@ -128394,7 +128312,7 @@
 
 新增数据结构：
 
-* [[PeerConnection](https://cloud.tencent.com/document/api/215/15824#PeerConnection)](https://cloud.tencent.com/document/api/215/15824#[PeerConnection](https://cloud.tencent.com/document/api/215/15824#PeerConnection))
+* [PeerConnection](https://cloud.tencent.com/document/api/215/15824#PeerConnection)
 
 ### 第 172 次发布
 

@@ -91,6 +91,24 @@ func (r *AddUserContactResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type Aggregation struct {
+	// 平均执行时间（ms）。
+	AvgExecTime *int64 `json:"AvgExecTime,omitnil" name:"AvgExecTime"`
+
+	// 平均扫描行数。
+	AvgDocsExamined *int64 `json:"AvgDocsExamined,omitnil" name:"AvgDocsExamined"`
+
+	// 产生慢查次数（/天）。
+	SlowLogCount *int64 `json:"SlowLogCount,omitnil" name:"SlowLogCount"`
+
+	// 内存排序次数。
+	SortCount *int64 `json:"SortCount,omitnil" name:"SortCount"`
+
+	// 慢查模板概览。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SlowLogs []*string `json:"SlowLogs,omitnil" name:"SlowLogs"`
+}
+
 type AlarmProfileList struct {
 	// 0-不是 1-是
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -2661,6 +2679,171 @@ func (r *DescribeHealthScoreResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeIndexRecommendAggregationSlowLogsRequestParams struct {
+	// 服务产品类型，支持值包括："mongodb" - 云数据库 。
+	Product *string `json:"Product,omitnil" name:"Product"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 数据库名称。
+	Db *string `json:"Db,omitnil" name:"Db"`
+
+	// 表明。
+	Collection *string `json:"Collection,omitnil" name:"Collection"`
+
+	// 签名。
+	Signs []*string `json:"Signs,omitnil" name:"Signs"`
+}
+
+type DescribeIndexRecommendAggregationSlowLogsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务产品类型，支持值包括："mongodb" - 云数据库 。
+	Product *string `json:"Product,omitnil" name:"Product"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 数据库名称。
+	Db *string `json:"Db,omitnil" name:"Db"`
+
+	// 表明。
+	Collection *string `json:"Collection,omitnil" name:"Collection"`
+
+	// 签名。
+	Signs []*string `json:"Signs,omitnil" name:"Signs"`
+}
+
+func (r *DescribeIndexRecommendAggregationSlowLogsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIndexRecommendAggregationSlowLogsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "InstanceId")
+	delete(f, "Db")
+	delete(f, "Collection")
+	delete(f, "Signs")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIndexRecommendAggregationSlowLogsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIndexRecommendAggregationSlowLogsResponseParams struct {
+	// 查询实例慢查询聚合结果。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Aggregation *Aggregation `json:"Aggregation,omitnil" name:"Aggregation"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeIndexRecommendAggregationSlowLogsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIndexRecommendAggregationSlowLogsResponseParams `json:"Response"`
+}
+
+func (r *DescribeIndexRecommendAggregationSlowLogsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIndexRecommendAggregationSlowLogsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIndexRecommendInfoRequestParams struct {
+	// 服务产品类型，支持值包括："mongodb" - 云数据库 。
+	Product *string `json:"Product,omitnil" name:"Product"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type DescribeIndexRecommendInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 服务产品类型，支持值包括："mongodb" - 云数据库 。
+	Product *string `json:"Product,omitnil" name:"Product"`
+
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *DescribeIndexRecommendInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIndexRecommendInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Product")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIndexRecommendInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIndexRecommendInfoResponseParams struct {
+	// 索引推荐的集合数量。
+	CollectionNum *int64 `json:"CollectionNum,omitnil" name:"CollectionNum"`
+
+	// 索引推荐的索引数量。
+	IndexNum *int64 `json:"IndexNum,omitnil" name:"IndexNum"`
+
+	// 索引项。
+	Items []*MongoDBIndex `json:"Items,omitnil" name:"Items"`
+
+	// 优化级别，1-4，优先级从高到低。
+	Level *int64 `json:"Level,omitnil" name:"Level"`
+
+	// 历史优化数。
+	Optimized *int64 `json:"Optimized,omitnil" name:"Optimized"`
+
+	// 累计优化条数。
+	OptimizedCount *int64 `json:"OptimizedCount,omitnil" name:"OptimizedCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeIndexRecommendInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIndexRecommendInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeIndexRecommendInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIndexRecommendInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeMailProfileRequestParams struct {
 	// 配置类型，支持值包括："dbScan_mail_configuration" - 数据库巡检邮件配置，"scheduler_mail_configuration" - 定期生成邮件配置。
 	ProfileType *string `json:"ProfileType,omitnil" name:"ProfileType"`
@@ -3144,6 +3327,87 @@ func (r *DescribeProxySessionKillTasksResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeProxySessionKillTasksResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisProcessListRequestParams struct {
+	// Redis 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil" name:"Product"`
+
+	// 查询的Proxy节点数量上限，默认值为20，最大值为50。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// Proxy节点的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+type DescribeRedisProcessListRequest struct {
+	*tchttp.BaseRequest
+	
+	// Redis 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+	Product *string `json:"Product,omitnil" name:"Product"`
+
+	// 查询的Proxy节点数量上限，默认值为20，最大值为50。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// Proxy节点的偏移量，默认值为0。
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+func (r *DescribeRedisProcessListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisProcessListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Product")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRedisProcessListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRedisProcessListResponseParams struct {
+	// 该实例的Proxy节点数量，可用于分页查询。
+	ProxyCount *int64 `json:"ProxyCount,omitnil" name:"ProxyCount"`
+
+	// 实时会话详情列表。
+	Processes []*Process `json:"Processes,omitnil" name:"Processes"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRedisProcessListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRedisProcessListResponseParams `json:"Response"`
+}
+
+func (r *DescribeRedisProcessListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRedisProcessListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4668,6 +4932,46 @@ type HealthStatus struct {
 	ScoreDetails []*ScoreDetail `json:"ScoreDetails,omitnil" name:"ScoreDetails"`
 }
 
+type IndexesToBuild struct {
+	// 索引id，唯一标识一个索引。
+	Id *int64 `json:"Id,omitnil" name:"Id"`
+
+	// 创建索引命令。
+	IndexCommand *string `json:"IndexCommand,omitnil" name:"IndexCommand"`
+
+	// 索引字符串。
+	IndexStr *string `json:"IndexStr,omitnil" name:"IndexStr"`
+
+	// 优化级别，1-4，优先级从高到低。
+	Level *int64 `json:"Level,omitnil" name:"Level"`
+
+	// 索引得分。
+	Score *int64 `json:"Score,omitnil" name:"Score"`
+
+	// 签名。
+	Signs []*string `json:"Signs,omitnil" name:"Signs"`
+
+	// 0-待创建；1-创建中。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+}
+
+type IndexesToDrop struct {
+	// 索引字符串。
+	IndexStr *string `json:"IndexStr,omitnil" name:"IndexStr"`
+
+	// 索引得分。
+	Score *int64 `json:"Score,omitnil" name:"Score"`
+
+	// 无效原因。
+	Reason *string `json:"Reason,omitnil" name:"Reason"`
+
+	// 删除索引命令。
+	IndexCommand *string `json:"IndexCommand,omitnil" name:"IndexCommand"`
+
+	// 索引名。
+	IndexName *string `json:"IndexName,omitnil" name:"IndexName"`
+}
+
 type InstanceBasicInfo struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -5319,6 +5623,31 @@ func (r *ModifySqlFiltersResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type MongoDBIndex struct {
+	// 实例id。
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 表名。
+	Collection *string `json:"Collection,omitnil" name:"Collection"`
+
+	// 库名。
+	Db *string `json:"Db,omitnil" name:"Db"`
+
+	// 优化级别，1-4，优先级从高到低。
+	Level *int64 `json:"Level,omitnil" name:"Level"`
+
+	// 得分。
+	Score *int64 `json:"Score,omitnil" name:"Score"`
+
+	// 推荐索引列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexesToBuild []*IndexesToBuild `json:"IndexesToBuild,omitnil" name:"IndexesToBuild"`
+
+	// 无效索引列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexesToDrop []*IndexesToDrop `json:"IndexesToDrop,omitnil" name:"IndexesToDrop"`
+}
+
 type MonitorFloatMetric struct {
 	// 指标名称。
 	Metric *string `json:"Metric,omitnil" name:"Metric"`
@@ -5468,6 +5797,32 @@ func (r *OpenAuditServiceResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *OpenAuditServiceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type Process struct {
+	// 会话 ID。
+	Id *int64 `json:"Id,omitnil" name:"Id"`
+
+	// 访问来源，IP 地址和端口号。
+	Address *string `json:"Address,omitnil" name:"Address"`
+
+	// 文件描述符。
+	FileDescriptor *int64 `json:"FileDescriptor,omitnil" name:"FileDescriptor"`
+
+	// 会话名称，使用 CLIENT SETNAME 命令设置。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 最后一次执行的命令。
+	LastCommand *string `json:"LastCommand,omitnil" name:"LastCommand"`
+
+	// 会话存活时间，单位：秒。
+	Age *int64 `json:"Age,omitnil" name:"Age"`
+
+	// 最后一次执行命令后空闲的时间，单位：秒。
+	Idle *int64 `json:"Idle,omitnil" name:"Idle"`
+
+	// 会话所属的 Proxy节点 ID。
+	ProxyId *string `json:"ProxyId,omitnil" name:"ProxyId"`
 }
 
 type ProcessStatistic struct {

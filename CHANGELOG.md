@@ -1,3 +1,87 @@
+# Release v1.0.758
+
+## 云数据仓库 PostgreSQL(cdwpg) 版本：2020-12-30
+
+### 第 1 次发布
+
+发布时间：2023-09-27 11:25:41
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateInstanceByApi](https://cloud.tencent.com/document/api/878/98894)
+* [DestroyInstanceByApi](https://cloud.tencent.com/document/api/878/98893)
+
+新增数据结构：
+
+* [CBSSpec](https://cloud.tencent.com/document/api/878/98895#CBSSpec)
+* [ChargeProperties](https://cloud.tencent.com/document/api/878/98895#ChargeProperties)
+* [ResourceSpecNew](https://cloud.tencent.com/document/api/878/98895#ResourceSpecNew)
+* [Tag](https://cloud.tencent.com/document/api/878/98895#Tag)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2021-05-27
+
+### 第 26 次发布
+
+发布时间：2023-09-27 12:20:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeIndexRecommendAggregationSlowLogs](https://cloud.tencent.com/document/api/1130/98912)
+* [DescribeIndexRecommendInfo](https://cloud.tencent.com/document/api/1130/98911)
+* [DescribeRedisProcessList](https://cloud.tencent.com/document/api/1130/98909)
+
+新增数据结构：
+
+* [Aggregation](https://cloud.tencent.com/document/api/1130/57812#Aggregation)
+* [IndexesToBuild](https://cloud.tencent.com/document/api/1130/57812#IndexesToBuild)
+* [IndexesToDrop](https://cloud.tencent.com/document/api/1130/57812#IndexesToDrop)
+* [MongoDBIndex](https://cloud.tencent.com/document/api/1130/57812#MongoDBIndex)
+* [Process](https://cloud.tencent.com/document/api/1130/57812#Process)
+
+
+
+## 数据库智能管家 DBbrain(dbbrain) 版本：2019-10-16
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 54 次发布
+
+发布时间：2023-09-27 12:55:42
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AccelerationDomainCertificate](https://cloud.tencent.com/document/api/1552/80721#AccelerationDomainCertificate)
+* [CertificateInfo](https://cloud.tencent.com/document/api/1552/80721#CertificateInfo)
+
+修改数据结构：
+
+* [AccelerationDomain](https://cloud.tencent.com/document/api/1552/80721#AccelerationDomain)
+
+	* 新增成员：Certificate
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
 # Release v1.0.757
 
 ## 商业智能分析 BI(bi) 版本：2022-01-05
