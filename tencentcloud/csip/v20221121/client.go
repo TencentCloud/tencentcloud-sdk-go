@@ -728,7 +728,7 @@ func NewDescribeDbAssetsResponse() (response *DescribeDbAssetsResponse) {
 }
 
 // DescribeDbAssets
-// 资产列表
+// 数据库资产列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -754,7 +754,7 @@ func (c *Client) DescribeDbAssets(request *DescribeDbAssetsRequest) (response *D
 }
 
 // DescribeDbAssets
-// 资产列表
+// 数据库资产列表
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

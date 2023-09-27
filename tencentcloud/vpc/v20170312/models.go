@@ -15254,6 +15254,12 @@ func (r *DescribeVpcPeeringConnectionsRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeVpcPeeringConnectionsResponseParams struct {
+	// 满足条件的对等连接实例个数。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 对等连接实例列表。
+	PeerConnectionSet []*PeerConnection `json:"PeerConnectionSet,omitnil" name:"PeerConnectionSet"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -23133,6 +23139,64 @@ func (r *NotifyRoutesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *NotifyRoutesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type PeerConnection struct {
+	// 本端VPC唯一ID。
+	SourceVpcId *string `json:"SourceVpcId,omitnil" name:"SourceVpcId"`
+
+	// 对端VPC唯一ID。
+	PeerVpcId *string `json:"PeerVpcId,omitnil" name:"PeerVpcId"`
+
+	// 对等连接唯一ID。
+	PeeringConnectionId *string `json:"PeeringConnectionId,omitnil" name:"PeeringConnectionId"`
+
+	// 对等连接名称。
+	PeeringConnectionName *string `json:"PeeringConnectionName,omitnil" name:"PeeringConnectionName"`
+
+	// 对等连接状态，PENDING，投放中；ACTIVE，使用中；REJECTED，已拒绝‘DELETED，已删除；FAILED，失败；EXPIRED，已过期；ISOLATED，隔离中。
+	State *string `json:"State,omitnil" name:"State"`
+
+	// 是否是新控制器，true: 是NewAfc；false:不是。
+	IsNgw *bool `json:"IsNgw,omitnil" name:"IsNgw"`
+
+	// 对等连接带宽值。
+	Bandwidth *int64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+
+	// 本端地域。
+	SourceRegion *string `json:"SourceRegion,omitnil" name:"SourceRegion"`
+
+	// 对端地域。
+	DestinationRegion *string `json:"DestinationRegion,omitnil" name:"DestinationRegion"`
+
+	// 创建时间。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 本端APPID。
+	AppId *int64 `json:"AppId,omitnil" name:"AppId"`
+
+	// 对端APPID。
+	PeerAppId *int64 `json:"PeerAppId,omitnil" name:"PeerAppId"`
+
+	// 计费类型，POSTPAID_BY_DAY_MAX：日峰值计费；POSTPAID_BY_MONTH_95：月95计费。
+	ChargeType *string `json:"ChargeType,omitnil" name:"ChargeType"`
+
+	// 本端UIN。
+	SourceUin *int64 `json:"SourceUin,omitnil" name:"SourceUin"`
+
+	// 对端UIN。
+	DestinationUin *int64 `json:"DestinationUin,omitnil" name:"DestinationUin"`
+
+	// 资源标签数据。
+	TagSet []*Tag `json:"TagSet,omitnil" name:"TagSet"`
+
+	// 服务分级：PT、AU、AG。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	QosLevel *string `json:"QosLevel,omitnil" name:"QosLevel"`
+
+	// 互通类型，VPC_PEER：VPC间互通；VPC_BM_PEER：VPC与黑石网络互通。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
 }
 
 type Price struct {

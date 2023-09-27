@@ -6494,7 +6494,7 @@ func NewSmartStructuralOCRV2Response() (response *SmartStructuralOCRV2Response) 
 //
 // 
 //
-// 默认接口请求频率限制：10次/秒。
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"
@@ -6515,7 +6515,7 @@ func (c *Client) SmartStructuralOCRV2(request *SmartStructuralOCRV2Request) (res
 //
 // 
 //
-// 默认接口请求频率限制：10次/秒。
+// 默认接口请求频率限制：5次/秒。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION_DOWNLOADERROR = "FailedOperation.DownLoadError"

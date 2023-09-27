@@ -933,7 +933,7 @@ type TextTranslateResponseParams struct {
 	// 翻译后的文本
 	TargetText *string `json:"TargetText,omitnil" name:"TargetText"`
 
-	// 源语言，详见入参Target
+	// 源语言，详见入参Source
 	Source *string `json:"Source,omitnil" name:"Source"`
 
 	// 目标语言，详见入参Target

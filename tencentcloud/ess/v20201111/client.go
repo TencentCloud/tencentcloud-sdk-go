@@ -120,11 +120,15 @@ func NewCancelFlowResponse() (response *CancelFlowResponse) {
 }
 
 // CancelFlow
-// 用于撤销签署流程<br/>
+// 用于撤销合同流程<br/>
 //
 // 适用场景：如果某个合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。<br/>
 //
-// `注意：如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同。`
+// 
+//
+// 注:
+//
+// `如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同，`签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateReleaseFlow" target="_blank">发起解除合同流程</a>接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -148,11 +152,15 @@ func (c *Client) CancelFlow(request *CancelFlowRequest) (response *CancelFlowRes
 }
 
 // CancelFlow
-// 用于撤销签署流程<br/>
+// 用于撤销合同流程<br/>
 //
 // 适用场景：如果某个合同流程当前至少还有一方没有签署，则可通过该接口取消该合同流程。常用于合同发错、内容填错，需要及时撤销的场景。<br/>
 //
-// `注意：如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同。`
+// 
+//
+// 注:
+//
+// `如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同，`签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateReleaseFlow" target="_blank">发起解除合同流程</a>接口。
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -5724,9 +5732,17 @@ func NewGetTaskResultApiResponse() (response *GetTaskResultApiResponse) {
 }
 
 // GetTaskResultApi
-// 查询转换任务的状态。转换任务Id通过发起转换任务接口（CreateConvertTaskApi）获取。
+// 此接口（GetTaskResultApi）用来查询转换任务的状态。如需发起转换任务，请使用<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>进行资源文件的转换操作<br />
 //
-// 注意：大文件转换所需的时间可能会比较长。
+// 前提条件：已调用 <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>进行文件转换，并得到了返回的转换任务Id。<br />
+//
+// 
+//
+// 适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源Id。<br />
+//
+// 注：
+//
+// 1. `大文件转换所需的时间可能会比较长`
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -5740,9 +5756,17 @@ func (c *Client) GetTaskResultApi(request *GetTaskResultApiRequest) (response *G
 }
 
 // GetTaskResultApi
-// 查询转换任务的状态。转换任务Id通过发起转换任务接口（CreateConvertTaskApi）获取。
+// 此接口（GetTaskResultApi）用来查询转换任务的状态。如需发起转换任务，请使用<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>进行资源文件的转换操作<br />
 //
-// 注意：大文件转换所需的时间可能会比较长。
+// 前提条件：已调用 <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>进行文件转换，并得到了返回的转换任务Id。<br />
+//
+// 
+//
+// 适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源Id。<br />
+//
+// 注：
+//
+// 1. `大文件转换所需的时间可能会比较长`
 //
 // 可能返回的错误码:
 //  INTERNALERROR_SYSTEM = "InternalError.System"
@@ -6278,19 +6302,31 @@ func NewUploadFilesResponse() (response *UploadFilesResponse) {
 }
 
 // UploadFiles
-// 此接口（UploadFiles）用于文件上传。<br/>
-//
-// 适用场景：用于生成pdf资源编号（FileIds）来配合“用PDF创建流程”接口使用，使用场景可详见“用PDF创建流程”接口说明。<br/>
+// 此接口（UploadFiles）文件上传。<br/>
 //
 // 
 //
-// 其中上传的文件，图片类型(png/jpg/jpeg)大小限制为5M，其他大小限制为60M。<br/>
+// 适用场景：用于合同，印章的文件上传。文件上传以后，
 //
-// 调用时需要设置Domain/接口请求域名为 file.ess.tencent.cn,代码示例：<br/>
+// 如果是PDF格式文件可配合<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>接口进行合同流程的发起
 //
-// HttpProfile httpProfile = new HttpProfile();<br/>
+// 如果是其他类型可以配合<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>接口转换成PDF文件
 //
-// httpProfile.setEndpoint("file.test.ess.tencent.cn");<br/>
+// 
+//
+// 注: 
+//
+// 1. `图片类型(png/jpg/jpeg)限制大小为5M以下, PDF/word/excel等其他格式限制大小为60M以下`
+//
+// 2. `联调开发环境调用时需要设置Domain接口请求域名为 file.test.ess.tencent.cn，正式环境需要设置为file.ess.tencent.cn，代码示例`
+//
+// ```
+//
+// HttpProfile httpProfile = new HttpProfile();
+//
+// httpProfile.setEndpoint("file.test.ess.tencent.cn");
+//
+// ```
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -6306,19 +6342,31 @@ func (c *Client) UploadFiles(request *UploadFilesRequest) (response *UploadFiles
 }
 
 // UploadFiles
-// 此接口（UploadFiles）用于文件上传。<br/>
-//
-// 适用场景：用于生成pdf资源编号（FileIds）来配合“用PDF创建流程”接口使用，使用场景可详见“用PDF创建流程”接口说明。<br/>
+// 此接口（UploadFiles）文件上传。<br/>
 //
 // 
 //
-// 其中上传的文件，图片类型(png/jpg/jpeg)大小限制为5M，其他大小限制为60M。<br/>
+// 适用场景：用于合同，印章的文件上传。文件上传以后，
 //
-// 调用时需要设置Domain/接口请求域名为 file.ess.tencent.cn,代码示例：<br/>
+// 如果是PDF格式文件可配合<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>接口进行合同流程的发起
 //
-// HttpProfile httpProfile = new HttpProfile();<br/>
+// 如果是其他类型可以配合<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>接口转换成PDF文件
 //
-// httpProfile.setEndpoint("file.test.ess.tencent.cn");<br/>
+// 
+//
+// 注: 
+//
+// 1. `图片类型(png/jpg/jpeg)限制大小为5M以下, PDF/word/excel等其他格式限制大小为60M以下`
+//
+// 2. `联调开发环境调用时需要设置Domain接口请求域名为 file.test.ess.tencent.cn，正式环境需要设置为file.ess.tencent.cn，代码示例`
+//
+// ```
+//
+// HttpProfile httpProfile = new HttpProfile();
+//
+// httpProfile.setEndpoint("file.test.ess.tencent.cn");
+//
+// ```
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

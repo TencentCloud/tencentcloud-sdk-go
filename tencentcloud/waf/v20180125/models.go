@@ -1098,6 +1098,14 @@ type BotPkg struct {
 	// 续费标志	
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *uint64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+
+	// 购买页bot6折
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BotCPWaf *int64 `json:"BotCPWaf,omitnil" name:"BotCPWaf"`
+
+	// 控制台买bot5折
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BotNPWaf *int64 `json:"BotNPWaf,omitnil" name:"BotNPWaf"`
 }
 
 type BotQPS struct {

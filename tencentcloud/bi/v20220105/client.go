@@ -1269,6 +1269,58 @@ func (c *Client) ModifyProjectWithContext(ctx context.Context, request *ModifyPr
     return
 }
 
+func NewModifyUserRoleRequest() (request *ModifyUserRoleRequest) {
+    request = &ModifyUserRoleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bi", APIVersion, "ModifyUserRole")
+    
+    
+    return
+}
+
+func NewModifyUserRoleResponse() (response *ModifyUserRoleResponse) {
+    response = &ModifyUserRoleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyUserRole
+// 修改用户角色信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) ModifyUserRole(request *ModifyUserRoleRequest) (response *ModifyUserRoleResponse, err error) {
+    return c.ModifyUserRoleWithContext(context.Background(), request)
+}
+
+// ModifyUserRole
+// 修改用户角色信息
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INTERNAL = "InternalError.Internal"
+//  MISSINGPARAMETER_MISSINGPARAM = "MissingParameter.MissingParam"
+//  UNAUTHORIZEDOPERATION_AUTHORIZE = "UnauthorizedOperation.Authorize"
+func (c *Client) ModifyUserRoleWithContext(ctx context.Context, request *ModifyUserRoleRequest) (response *ModifyUserRoleResponse, err error) {
+    if request == nil {
+        request = NewModifyUserRoleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserRole require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserRoleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyUserRoleProjectRequest() (request *ModifyUserRoleProjectRequest) {
     request = &ModifyUserRoleProjectRequest{
         BaseRequest: &tchttp.BaseRequest{},

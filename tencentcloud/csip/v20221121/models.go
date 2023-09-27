@@ -1713,6 +1713,9 @@ func (r *DescribeDbAssetInfoResponse) FromJsonString(s string) error {
 type DescribeDbAssetsRequestParams struct {
 	// -
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产类型:MYSQL/MARIADB/REDIS/MONGODB/POSTGRES/CTS/ES/KAFKA/COS/CBS/CFS
+	AssetTypes []*string `json:"AssetTypes,omitnil" name:"AssetTypes"`
 }
 
 type DescribeDbAssetsRequest struct {
@@ -1720,6 +1723,9 @@ type DescribeDbAssetsRequest struct {
 	
 	// -
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+
+	// 资产类型:MYSQL/MARIADB/REDIS/MONGODB/POSTGRES/CTS/ES/KAFKA/COS/CBS/CFS
+	AssetTypes []*string `json:"AssetTypes,omitnil" name:"AssetTypes"`
 }
 
 func (r *DescribeDbAssetsRequest) ToJsonString() string {
@@ -1735,6 +1741,7 @@ func (r *DescribeDbAssetsRequest) FromJsonString(s string) error {
 		return err
 	}
 	delete(f, "Filter")
+	delete(f, "AssetTypes")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDbAssetsRequest has unknown keys!", "")
 	}
@@ -3331,7 +3338,7 @@ type ScanTaskInfoList struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
 
-	// corn
+	// cron格式
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanPlanContent *string `json:"ScanPlanContent,omitnil" name:"ScanPlanContent"`
 
@@ -3367,7 +3374,7 @@ type ScanTaskInfoList struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AssetNumber *int64 `json:"AssetNumber,omitnil" name:"AssetNumber"`
 
-	// 扫描状态 0 初始值  1正在扫描  2扫描完成  3扫描出错
+	// 扫描状态, 0-初始值，1-正在扫描，2-扫描完成，3-扫描出错，4-停止扫描
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ScanStatus *int64 `json:"ScanStatus,omitnil" name:"ScanStatus"`
 
@@ -3474,6 +3481,10 @@ type ScanTaskInfoList struct {
 	// 是否可以删除，1-可以，0-不可以，对应多账户管理使用
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IsDelete *int64 `json:"IsDelete,omitnil" name:"IsDelete"`
+
+	// 任务源类型，0-默认，1-小助手，2-体检项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SourceType *int64 `json:"SourceType,omitnil" name:"SourceType"`
 }
 
 type ServerRisk struct {
@@ -3730,6 +3741,10 @@ type TaskAssetObject struct {
 	// 地域
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// 多云资产唯一id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Arn *string `json:"Arn,omitnil" name:"Arn"`
 }
 
 type TaskCenterCFGRiskInputParam struct {

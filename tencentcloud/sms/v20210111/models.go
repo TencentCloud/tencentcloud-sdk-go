@@ -395,9 +395,11 @@ func (r *CallbackStatusStatisticsResponse) FromJsonString(s string) error {
 
 type DeleteSignStatus struct {
 	// 删除状态信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteStatus *string `json:"DeleteStatus,omitnil" name:"DeleteStatus"`
 
 	// 删除时间，UNIX 时间戳（单位：秒）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteTime *uint64 `json:"DeleteTime,omitnil" name:"DeleteTime"`
 }
 
@@ -765,7 +767,7 @@ type DescribeTemplateListStatus struct {
 	// 模板ID。
 	TemplateId *uint64 `json:"TemplateId,omitnil" name:"TemplateId"`
 
-	// 是否国际/港澳台短信，其中0表示国内短信，1表示国际/港澳台短信。
+	// 是否国际/港澳台短信，其中0表示国内短信，1表示国际/港澳台短信，3表示该模板既支持国内短信也支持国际/港澳台短信。
 	International *uint64 `json:"International,omitnil" name:"International"`
 
 	// 申请模板状态，其中0表示审核通过且已生效，1表示审核中，2表示审核通过待生效，-1表示审核未通过或审核失败。注：只有状态值为0时该模板才能使用。

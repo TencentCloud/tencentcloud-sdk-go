@@ -2360,7 +2360,7 @@ func NewDescribeRoomResponse() (response *DescribeRoomResponse) {
 }
 
 // DescribeRoom
-// 获取房间信息
+// 获取房间配置信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -2371,7 +2371,7 @@ func (c *Client) DescribeRoom(request *DescribeRoomRequest) (response *DescribeR
 }
 
 // DescribeRoom
-// 获取房间信息
+// 获取房间配置信息
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

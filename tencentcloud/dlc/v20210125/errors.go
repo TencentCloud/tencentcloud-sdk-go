@@ -62,7 +62,7 @@ const (
 	// 获取商品信息失败。
 	FAILEDOPERATION_GETPRODUCTINFORMATIONFAILED = "FailedOperation.GetProductInformationFailed"
 
-	// 获取用户信息失败。
+	// 获取用户信息失败，请重试或提工单联系我们
 	FAILEDOPERATION_GETUSERINFOFAILED = "FailedOperation.GetUserInfoFailed"
 
 	// 获取工作组信息失败。
@@ -161,13 +161,13 @@ const (
 	// 无效的描述信息。
 	INVALIDPARAMETER_INVALIDDESCRIPTION = "InvalidParameter.InvalidDescription"
 
-	// 无效的引擎类型。
+	// 引擎类型不合法
 	INVALIDPARAMETER_INVALIDENGINETYPE = "InvalidParameter.InvalidEngineType"
 
-	// 无效的容错策略。
+	// 任务容错类型错误，当前仅支持: Proceed/Terminate
 	INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
 
-	// 无效的过滤条件。
+	// 不支持此过滤条件
 	INVALIDPARAMETER_INVALIDFILTERKEY = "InvalidParameter.InvalidFilterKey"
 
 	// 无效的工作组Id。
@@ -188,7 +188,7 @@ const (
 	// SQL解析失败。
 	INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 
-	// SQL数量不符合规范。
+	// 执行SQL数量错误，SQL数量要大于等于1个且小于等于50个
 	INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
 
 	// 不支持的排序类型。
@@ -203,7 +203,7 @@ const (
 	// 无效的taskid。
 	INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 
-	// 无效的任务类型。
+	// 任务类型TaskType错误，Spark引擎任务类型为SparkSQLTask,Presto引擎任务类型为SQLTask
 	INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
 
 	// 无效的计费时长。
@@ -245,14 +245,14 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
-	// 指定数据源连接没有找到。
+	// 数据源连接不存在，请重试，或者提交工单联系我们
 	RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
-
-	// 当前无资源创建session，请稍后重试或使用包年包月集群。
-	RESOURCENOTFOUND_RESOURCENOTFOUNDCODE_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.ResourceNotFoundCode_SessionInsufficientResources"
 
 	// 未找到结果路径。
 	RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = "ResourceNotFound.ResultOutputPathNotFound"
+
+	// 当前无资源创建session，请稍后重试或使用包年包月集群。
+	RESOURCENOTFOUND_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.SessionInsufficientResources"
 
 	// session不存在。
 	RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"

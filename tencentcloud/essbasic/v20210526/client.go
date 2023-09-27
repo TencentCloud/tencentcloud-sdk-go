@@ -4234,7 +4234,59 @@ func NewModifyExtendedServiceResponse() (response *ModifyExtendedServiceResponse
 }
 
 // ModifyExtendedService
-// 修改（操作）企业扩展服务 ，企业经办人需要是企业超管或者法人
+// 修改（操作）企业扩展服务 ，企业经办人需要是企业超管或者法人。
+//
+// 
+//
+// 跳转小程序的几种方式：主要是设置不同的EndPoint
+//
+// 1. 通过链接Url直接跳转到小程序，不需要返回
+//
+// 设置EndPoint为WEIXINAPP，得到链接打开即可。
+//
+// 
+//
+// 2. 客户App直接跳转到小程序-->腾讯电子签小程序操作完成-->返回App
+//
+// 跳转到小程序的实现，参考官方文档
+//
+// https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html
+//
+// 其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
+//
+// 设置EndPoint为APP，得到path。
+//
+// 
+//
+// 4. 客户小程序直接跳到电子签小程序-->腾讯电子签小程序操作完成--->回到客户小程序
+//
+// 跳转到小程序的实现，参考官方文档（分为全屏、半屏两种方式）
+//
+// 全屏方式：
+//
+// （https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html）
+//
+// 半屏方式：
+//
+// （https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html）
+//
+// 其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
+//
+// 设置EndPoint为APP，得到path。
+//
+// 
+//
+// 其中小程序的原始Id如下，或者查看小程序信息自助获取。
+//
+// 
+//
+// | 小程序 | AppID | 原始ID |
+//
+// | ------------ | ------------ | ------------ |
+//
+// | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+//
+// | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4249,7 +4301,59 @@ func (c *Client) ModifyExtendedService(request *ModifyExtendedServiceRequest) (r
 }
 
 // ModifyExtendedService
-// 修改（操作）企业扩展服务 ，企业经办人需要是企业超管或者法人
+// 修改（操作）企业扩展服务 ，企业经办人需要是企业超管或者法人。
+//
+// 
+//
+// 跳转小程序的几种方式：主要是设置不同的EndPoint
+//
+// 1. 通过链接Url直接跳转到小程序，不需要返回
+//
+// 设置EndPoint为WEIXINAPP，得到链接打开即可。
+//
+// 
+//
+// 2. 客户App直接跳转到小程序-->腾讯电子签小程序操作完成-->返回App
+//
+// 跳转到小程序的实现，参考官方文档
+//
+// https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html
+//
+// 其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
+//
+// 设置EndPoint为APP，得到path。
+//
+// 
+//
+// 4. 客户小程序直接跳到电子签小程序-->腾讯电子签小程序操作完成--->回到客户小程序
+//
+// 跳转到小程序的实现，参考官方文档（分为全屏、半屏两种方式）
+//
+// 全屏方式：
+//
+// （https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html）
+//
+// 半屏方式：
+//
+// （https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html）
+//
+// 其中小程序的原始Id，请联系<对接技术人员>获取，或者查看小程序信息自助获取。
+//
+// 设置EndPoint为APP，得到path。
+//
+// 
+//
+// 其中小程序的原始Id如下，或者查看小程序信息自助获取。
+//
+// 
+//
+// | 小程序 | AppID | 原始ID |
+//
+// | ------------ | ------------ | ------------ |
+//
+// | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
+//
+// | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

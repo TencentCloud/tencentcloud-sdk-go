@@ -125,6 +125,9 @@ type ApproverInfo struct {
 	// 注: `收据场景为白名单功能，使用前请联系对接的客户经理沟通。`
 	ApproverRole *int64 `json:"ApproverRole,omitnil" name:"ApproverRole"`
 
+	// 自定义签署人角色名：收款人、开具人、见证人
+	ApproverRoleName *string `json:"ApproverRoleName,omitnil" name:"ApproverRoleName"`
+
 	// 签署意愿确认渠道，默认为WEIXINAPP:人脸识别
 	// 
 	// 注: 将要废弃, 用ApproverSignTypes签署人签署合同时的认证方式代替, 新客户可请用ApproverSignTypes来设置
@@ -190,6 +193,20 @@ type ApproverInfo struct {
 	AddSignComponentsLimits []*ComponentLimit `json:"AddSignComponentsLimits,omitnil" name:"AddSignComponentsLimits"`
 }
 
+type ApproverItem struct {
+	// 签署方唯一编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignId *string `json:"SignId,omitnil" name:"SignId"`
+
+	// 签署方角色编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+
+	// 签署方角色名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproverRoleName *string `json:"ApproverRoleName,omitnil" name:"ApproverRoleName"`
+}
+
 type ApproverOption struct {
 	// 签署方是否可以拒签
 	// 
@@ -202,6 +219,12 @@ type ApproverOption struct {
 	// <ul><li> **false** : ( 默认)可以转他人处理</li>
 	// <li> **true** :不可以转他人处理</li></ul>
 	NoTransfer *bool `json:"NoTransfer,omitnil" name:"NoTransfer"`
+
+	// 签署人信息补充类型，默认无需补充。
+	// 
+	// <ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）</li>
+	// </ul>
+	FillType *int64 `json:"FillType,omitnil" name:"FillType"`
 }
 
 type ApproverRestriction struct {
@@ -393,10 +416,11 @@ type CancelFlowRequestParams struct {
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 合同流程ID, 为32位字符串。
-	// 建议开发者保存此流程ID方便后续其他操作。
+	// 
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 撤销此合同(流程)的原因，最长200个字。
+	// 撤销此合同流程的原因，最多支持200个字符长度。只能由中文、字母、数字、中文标点和英文标点组成（不支持表情）。
 	CancelMessage *string `json:"CancelMessage,omitnil" name:"CancelMessage"`
 
 	// 代理企业和员工的信息。
@@ -412,10 +436,11 @@ type CancelFlowRequest struct {
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
 	// 合同流程ID, 为32位字符串。
-	// 建议开发者保存此流程ID方便后续其他操作。
+	// 
+	// 可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
 
-	// 撤销此合同(流程)的原因，最长200个字。
+	// 撤销此合同流程的原因，最多支持200个字符长度。只能由中文、字母、数字、中文标点和英文标点组成（不支持表情）。
 	CancelMessage *string `json:"CancelMessage,omitnil" name:"CancelMessage"`
 
 	// 代理企业和员工的信息。
@@ -1431,6 +1456,10 @@ type CreateDocumentResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewFileUrl *string `json:"PreviewFileUrl,omitnil" name:"PreviewFileUrl"`
 
+	// 签署方信息，如角色ID、角色名称等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Approvers []*ApproverItem `json:"Approvers,omitnil" name:"Approvers"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -1596,6 +1625,12 @@ type CreateFlowApproversRequestParams struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 签署人信息补充方式
+	// 
+	// <ul><li>**0**: 补充或签人，支持补充多个企业经办签署人（默认）注: `不可补充个人签署人`</li>
+	// <li>**1**: 补充动态签署人，可补充企业和个人签署人。注: `每个签署方节点签署人是唯一的，一个节点只支持传入一个签署人信息`</li></ul>
+	FillApproverType *int64 `json:"FillApproverType,omitnil" name:"FillApproverType"`
 }
 
 type CreateFlowApproversRequest struct {
@@ -1623,6 +1658,12 @@ type CreateFlowApproversRequest struct {
 	// 代理企业和员工的信息。
 	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 签署人信息补充方式
+	// 
+	// <ul><li>**0**: 补充或签人，支持补充多个企业经办签署人（默认）注: `不可补充个人签署人`</li>
+	// <li>**1**: 补充动态签署人，可补充企业和个人签署人。注: `每个签署方节点签署人是唯一的，一个节点只支持传入一个签署人信息`</li></ul>
+	FillApproverType *int64 `json:"FillApproverType,omitnil" name:"FillApproverType"`
 }
 
 func (r *CreateFlowApproversRequest) ToJsonString() string {
@@ -1642,6 +1683,7 @@ func (r *CreateFlowApproversRequest) FromJsonString(s string) error {
 	delete(f, "Approvers")
 	delete(f, "Initiator")
 	delete(f, "Agent")
+	delete(f, "FillApproverType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateFlowApproversRequest has unknown keys!", "")
 	}
@@ -1970,6 +2012,10 @@ type CreateFlowByFilesResponseParams struct {
 	// 注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PreviewUrl *string `json:"PreviewUrl,omitnil" name:"PreviewUrl"`
+
+	// 签署方信息，如角色ID、角色名称等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Approvers []*ApproverItem `json:"Approvers,omitnil" name:"Approvers"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -4306,6 +4352,9 @@ type CreateSchemeUrlRequestParams struct {
 	// 
 	// 注:  `字段为数组, 可以传值隐藏多个按钮`
 	Hides []*int64 `json:"Hides,omitnil" name:"Hides"`
+
+	// 签署节点ID，用于生成动态签署人链接完成领取
+	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 }
 
 type CreateSchemeUrlRequest struct {
@@ -4364,6 +4413,9 @@ type CreateSchemeUrlRequest struct {
 	// 
 	// 注:  `字段为数组, 可以传值隐藏多个按钮`
 	Hides []*int64 `json:"Hides,omitnil" name:"Hides"`
+
+	// 签署节点ID，用于生成动态签署人链接完成领取
+	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 }
 
 func (r *CreateSchemeUrlRequest) ToJsonString() string {
@@ -4389,6 +4441,7 @@ func (r *CreateSchemeUrlRequest) FromJsonString(s string) error {
 	delete(f, "AutoJumpBack")
 	delete(f, "Agent")
 	delete(f, "Hides")
+	delete(f, "RecipientId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSchemeUrlRequest has unknown keys!", "")
 	}
@@ -4403,6 +4456,9 @@ type CreateSchemeUrlResponseParams struct {
 	// <li>如果EndPoint是**HTTP**，得到的链接类似于 `https://res.ess.tencent.cn/cdn/h5-activity/jump-mp.html?where=mini&from=SFY&id=yDwfEUUw**4rV6Avz&to=MVP_CONTRACT_COVER&name=%E9%83%**5%86%9B`，点击后会跳转到腾讯电子签小程序进行签署</li>
 	// <li>如果EndPoint是**HTTP_SHORT_URL**，得到的链接类似于 `https://essurl.cn/2n**42Nd`，点击后会跳转到腾讯电子签小程序进行签署</li></ul>
 	SchemeUrl *string `json:"SchemeUrl,omitnil" name:"SchemeUrl"`
+
+	// 二维码，在生成动态签署人跳转封面页链接时返回
+	SchemeQrcodeUrl *string `json:"SchemeQrcodeUrl,omitnil" name:"SchemeQrcodeUrl"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -5437,10 +5493,10 @@ type DescribeFileUrlsRequestParams struct {
 
 	// 文件对应的业务类型，目前支持：
 	// <ul>
-	// <li>FLOW 如需下载合同文件请选择此项</li>
-	// <li>TEMPLATE 如需下载模板文件请选择此项</li>
-	// <li>DOCUMENT 如需下载文档文件请选择此项</li>
-	// <li>SEAL 如需下载印章图片请选择此项</li>
+	// <li>**FLOW ** : 如需下载合同文件请选择此项</li>
+	// <li>**TEMPLATE ** : 如需下载模板文件请选择此项</li>
+	// <li>**DOCUMENT  **: 如需下载文档文件请选择此项</li>
+	// <li>**SEAL  **: 如需下载印章图片请选择此项</li>
 	// </ul>
 	BusinessType *string `json:"BusinessType,omitnil" name:"BusinessType"`
 
@@ -5498,10 +5554,10 @@ type DescribeFileUrlsRequest struct {
 
 	// 文件对应的业务类型，目前支持：
 	// <ul>
-	// <li>FLOW 如需下载合同文件请选择此项</li>
-	// <li>TEMPLATE 如需下载模板文件请选择此项</li>
-	// <li>DOCUMENT 如需下载文档文件请选择此项</li>
-	// <li>SEAL 如需下载印章图片请选择此项</li>
+	// <li>**FLOW ** : 如需下载合同文件请选择此项</li>
+	// <li>**TEMPLATE ** : 如需下载模板文件请选择此项</li>
+	// <li>**DOCUMENT  **: 如需下载文档文件请选择此项</li>
+	// <li>**SEAL  **: 如需下载印章图片请选择此项</li>
 	// </ul>
 	BusinessType *string `json:"BusinessType,omitnil" name:"BusinessType"`
 
@@ -5578,7 +5634,7 @@ func (r *DescribeFileUrlsRequest) FromJsonString(s string) error {
 // Predefined struct for user
 type DescribeFileUrlsResponseParams struct {
 	// 文件URL信息；
-	// 链接不是永久链接，有效期5分钟后链接失效。
+	// 链接不是永久链接,  过期时间收UrlTtl入参的影响,  默认有效期5分钟后,  到期后链接失效。
 	FileUrls []*FileUrl `json:"FileUrls,omitnil" name:"FileUrls"`
 
 	// URL数量
@@ -7222,6 +7278,9 @@ type FillApproverInfo struct {
 
 	// 补充企业签署人员工手机号
 	ApproverMobile *string `json:"ApproverMobile,omitnil" name:"ApproverMobile"`
+
+	// 补充企业动态签署人时，需要指定对应企业名称
+	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
 }
 
 type FilledComponent struct {
@@ -7321,6 +7380,10 @@ type FlowApproverDetail struct {
 	// 签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignId *string `json:"SignId,omitnil" name:"SignId"`
+
+	// 自定义签署人角色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproverRoleName *string `json:"ApproverRoleName,omitnil" name:"ApproverRoleName"`
 }
 
 type FlowApproverUrlInfo struct {
@@ -7704,13 +7767,16 @@ type FormField struct {
 
 // Predefined struct for user
 type GetTaskResultApiRequestParams struct {
-	// 任务Id，通过接口CreateConvertTaskApi或CreateMergeFileTask得到的返回任务id
+	// 转换任务Id，通过接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>或<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateMergeFileTask" target="_blank">创建多文件转换任务接口</a>
+	// 得到的转换任务id
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
-	// 操作人信息,UserId必填
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 暂未开放
@@ -7722,13 +7788,16 @@ type GetTaskResultApiRequestParams struct {
 type GetTaskResultApiRequest struct {
 	*tchttp.BaseRequest
 	
-	// 任务Id，通过接口CreateConvertTaskApi或CreateMergeFileTask得到的返回任务id
+	// 转换任务Id，通过接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务接口</a>或<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateMergeFileTask" target="_blank">创建多文件转换任务接口</a>
+	// 得到的转换任务id
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
-	// 操作人信息,UserId必填
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
 	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
 
-	// 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	// 暂未开放
@@ -7763,21 +7832,21 @@ type GetTaskResultApiResponseParams struct {
 	TaskId *string `json:"TaskId,omitnil" name:"TaskId"`
 
 	// 任务状态，需要关注的状态
-	// 0  :NeedTranform   - 任务已提交
-	// 4  :Processing     - 文档转换中
-	// 8  :TaskEnd        - 任务处理完成
-	// -2 :DownloadFailed - 下载失败
-	// -6 :ProcessFailed  - 转换失败
-	// -13:ProcessTimeout - 转换文件超时
+	// <ul><li>**0**  :NeedTranform   - 任务已提交</li>
+	// <li>**4**  :Processing     - 文档转换中</li>
+	// <li>**8**  :TaskEnd        - 任务处理完成</li>
+	// <li>**-2** :DownloadFailed - 下载失败</li>
+	// <li>**-6** :ProcessFailed  - 转换失败</li>
+	// <li>**-13**:ProcessTimeout - 转换文件超时</li></ul>
 	TaskStatus *int64 `json:"TaskStatus,omitnil" name:"TaskStatus"`
 
 	// 状态描述，需要关注的状态
-	// NeedTranform   - 任务已提交
-	// Processing     - 文档转换中
-	// TaskEnd        - 任务处理完成
-	// DownloadFailed - 下载失败
-	// ProcessFailed  - 转换失败
-	// ProcessTimeout - 转换文件超时
+	// <ul><li> **NeedTranform** : 任务已提交</li>
+	// <li> **Processing** : 文档转换中</li>
+	// <li> **TaskEnd** : 任务处理完成</li>
+	// <li> **DownloadFailed** : 下载失败</li>
+	// <li> **ProcessFailed** : 转换失败</li>
+	// <li> **ProcessTimeout** : 转换文件超时</li></ul>
 	TaskMessage *string `json:"TaskMessage,omitnil" name:"TaskMessage"`
 
 	// 资源Id，也是FileId，用于文件发起时使用
@@ -9052,65 +9121,105 @@ type UploadFile struct {
 
 // Predefined struct for user
 type UploadFilesRequestParams struct {
-	// 文件对应业务类型
-	// 1. TEMPLATE - 模板； 文件类型：.pdf/.doc/.docx/.html
-	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html
-	// 3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
+	// 文件对应业务类型,可以选择的类型如下
+	// <ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
+	// <li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
+	// <li> **DOCUMENT** : 此文件用于合同图片控件的填充，文件类型支持.jpg/.png</li>
+	// <li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil" name:"BusinessType"`
 
-	// 调用方信息，其中OperatorId为必填字段，即用户的UserId
+	// 执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Caller *Caller `json:"Caller,omitnil" name:"Caller"`
 
-	// 上传文件内容数组，最多支持20个文件
+	// 上传文件内容数组，最多支持上传20个文件。
 	FileInfos []*UploadFile `json:"FileInfos,omitnil" name:"FileInfos"`
 
-	// 文件类型， 默认通过文件内容解析得到文件类型，客户可以显示的说明上传文件的类型。
-	// 如：PDF 表示上传的文件 xxx.pdf的文件类型是 PDF
+	// 文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。
+	// 可支持的指定类型如下:
+	// <ul><li>pdf</li>
+	// <li>doc</li>
+	// <li>docx</li>
+	// <li>xls</li>
+	// <li>xlsx</li>
+	// <li>html</li>
+	// <li>jpg</li>
+	// <li>jpeg</li>
+	// <li>png</li></ul>
+	// 如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
 	FileType *string `json:"FileType,omitnil" name:"FileType"`
 
-	// 此参数只对 PDF 文件有效。是否将pdf灰色矩阵置白
-	// true--是，处理置白
-	// 默认为false--否，不处理
+	// 此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。
+	// <ul><li>**true**：将灰色矩阵置为白色。</li>
+	// <li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul>
+	// 
+	// 注: `该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。`
 	CoverRect *bool `json:"CoverRect,omitnil" name:"CoverRect"`
 
 	// 用户自定义ID数组，与上传文件一一对应
+	// 
+	// 注: `历史遗留问题，已经废弃，调用接口时不用赋值`
 	CustomIds []*string `json:"CustomIds,omitnil" name:"CustomIds"`
 
 	// 不再使用，上传文件链接数组，最多支持20个URL
 	//
 	// Deprecated: FileUrls is deprecated.
 	FileUrls *string `json:"FileUrls,omitnil" name:"FileUrls"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 type UploadFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 文件对应业务类型
-	// 1. TEMPLATE - 模板； 文件类型：.pdf/.doc/.docx/.html
-	// 2. DOCUMENT - 签署过程及签署后的合同文档/图片控件 文件类型：.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html
-	// 3. SEAL - 印章； 文件类型：.jpg/.jpeg/.png
+	// 文件对应业务类型,可以选择的类型如下
+	// <ul><li> **TEMPLATE** : 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
+	// <li> **DOCUMENT** : 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li>
+	// <li> **DOCUMENT** : 此文件用于合同图片控件的填充，文件类型支持.jpg/.png</li>
+	// <li> **SEAL** : 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li></ul>
 	BusinessType *string `json:"BusinessType,omitnil" name:"BusinessType"`
 
-	// 调用方信息，其中OperatorId为必填字段，即用户的UserId
+	// 执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
 	Caller *Caller `json:"Caller,omitnil" name:"Caller"`
 
-	// 上传文件内容数组，最多支持20个文件
+	// 上传文件内容数组，最多支持上传20个文件。
 	FileInfos []*UploadFile `json:"FileInfos,omitnil" name:"FileInfos"`
 
-	// 文件类型， 默认通过文件内容解析得到文件类型，客户可以显示的说明上传文件的类型。
-	// 如：PDF 表示上传的文件 xxx.pdf的文件类型是 PDF
+	// 文件类型， 默认通过文件内容和文件后缀一起解析得到文件类型，调用接口时可以显示的指定上传文件的类型。
+	// 可支持的指定类型如下:
+	// <ul><li>pdf</li>
+	// <li>doc</li>
+	// <li>docx</li>
+	// <li>xls</li>
+	// <li>xlsx</li>
+	// <li>html</li>
+	// <li>jpg</li>
+	// <li>jpeg</li>
+	// <li>png</li></ul>
+	// 如：pdf 表示上传的文件 张三入职合同.pdf的文件类型是 pdf
 	FileType *string `json:"FileType,omitnil" name:"FileType"`
 
-	// 此参数只对 PDF 文件有效。是否将pdf灰色矩阵置白
-	// true--是，处理置白
-	// 默认为false--否，不处理
+	// 此参数仅对上传的PDF文件有效。其主要作用是确定是否将PDF中的灰色矩阵置为白色。
+	// <ul><li>**true**：将灰色矩阵置为白色。</li>
+	// <li>**false**：无需处理，不会将灰色矩阵置为白色（默认）。</li></ul>
+	// 
+	// 注: `该参数仅在关键字定位时，需要去除关键字所在的灰框场景下使用。`
 	CoverRect *bool `json:"CoverRect,omitnil" name:"CoverRect"`
 
 	// 用户自定义ID数组，与上传文件一一对应
+	// 
+	// 注: `历史遗留问题，已经废弃，调用接口时不用赋值`
 	CustomIds []*string `json:"CustomIds,omitnil" name:"CustomIds"`
 
 	// 不再使用，上传文件链接数组，最多支持20个URL
 	FileUrls *string `json:"FileUrls,omitnil" name:"FileUrls"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 }
 
 func (r *UploadFilesRequest) ToJsonString() string {
@@ -9132,6 +9241,7 @@ func (r *UploadFilesRequest) FromJsonString(s string) error {
 	delete(f, "CoverRect")
 	delete(f, "CustomIds")
 	delete(f, "FileUrls")
+	delete(f, "Agent")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UploadFilesRequest has unknown keys!", "")
 	}
@@ -9140,7 +9250,8 @@ func (r *UploadFilesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UploadFilesResponseParams struct {
-	// 文件id数组
+	// 文件资源ID数组，每个文件资源ID为32位字符串。
+	// 建议开发者保存此资源ID，后续创建合同或创建合同流程需此资源ID。
 	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
 
 	// 上传成功文件数量

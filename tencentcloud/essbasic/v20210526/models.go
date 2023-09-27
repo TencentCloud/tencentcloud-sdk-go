@@ -55,9 +55,29 @@ type ApproverComponentLimitType struct {
 	Values []*string `json:"Values,omitnil" name:"Values"`
 }
 
+type ApproverItem struct {
+	// 签署方唯一编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignId *string `json:"SignId,omitnil" name:"SignId"`
+
+	// 签署方角色编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+
+	// 签署方角色名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproverRoleName *string `json:"ApproverRoleName,omitnil" name:"ApproverRoleName"`
+}
+
 type ApproverOption struct {
 	// 是否隐藏一键签署 默认false-不隐藏true-隐藏
 	HideOneKeySign *bool `json:"HideOneKeySign,omitnil" name:"HideOneKeySign"`
+
+	// 签署人信息补充类型，默认无需补充。
+	// 
+	// <ul><li> **1** : ( 动态签署人（可发起合同后再补充签署人信息）</li>
+	// </ul>
+	FillType *int64 `json:"FillType,omitnil" name:"FillType"`
 }
 
 type ApproverRestriction struct {
@@ -1260,6 +1280,10 @@ type ChannelCreateFlowByFilesResponseParams struct {
 	// 合同签署流程ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 签署方信息，如角色ID、角色名称等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Approvers []*ApproverItem `json:"Approvers,omitnil" name:"Approvers"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -4647,6 +4671,9 @@ type CreateFlowsByTemplatesResponseParams struct {
 	// 如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；
 	TaskInfos []*TaskInfo `json:"TaskInfos,omitnil" name:"TaskInfos"`
 
+	// 签署方信息，如角色ID、角色名称等
+	FlowApprovers []*FlowApproverItem `json:"FlowApprovers,omitnil" name:"FlowApprovers"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -4881,6 +4908,9 @@ type CreateSignUrlsRequestParams struct {
 	// - 2:合同签署页面更多操作的转他人处理按钮
 	// - 3:签署成功页的查看详情按钮
 	Hides []*int64 `json:"Hides,omitnil" name:"Hides"`
+
+	// 签署节点ID，用于补充动态签署人，使用此参数需要与flow_ids数量一致
+	RecipientIds []*string `json:"RecipientIds,omitnil" name:"RecipientIds"`
 }
 
 type CreateSignUrlsRequest struct {
@@ -4945,6 +4975,9 @@ type CreateSignUrlsRequest struct {
 	// - 2:合同签署页面更多操作的转他人处理按钮
 	// - 3:签署成功页的查看详情按钮
 	Hides []*int64 `json:"Hides,omitnil" name:"Hides"`
+
+	// 签署节点ID，用于补充动态签署人，使用此参数需要与flow_ids数量一致
+	RecipientIds []*string `json:"RecipientIds,omitnil" name:"RecipientIds"`
 }
 
 func (r *CreateSignUrlsRequest) ToJsonString() string {
@@ -4973,6 +5006,7 @@ func (r *CreateSignUrlsRequest) FromJsonString(s string) error {
 	delete(f, "JumpUrl")
 	delete(f, "Operator")
 	delete(f, "Hides")
+	delete(f, "RecipientIds")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateSignUrlsRequest has unknown keys!", "")
 	}
@@ -5734,6 +5768,10 @@ type FlowApproverDetail struct {
 	// <br/>PERSON：个人签署人
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApproveType *string `json:"ApproveType,omitnil" name:"ApproveType"`
+
+	// 自定义签署人角色
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApproverRoleName *string `json:"ApproverRoleName,omitnil" name:"ApproverRoleName"`
 }
 
 type FlowApproverInfo struct {
@@ -5835,6 +5873,19 @@ type FlowApproverInfo struct {
 	// 
 	// 注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个），他方企业或个人只支持限制控件类型。`
 	AddSignComponentsLimits []*ComponentLimit `json:"AddSignComponentsLimits,omitnil" name:"AddSignComponentsLimits"`
+
+	// 自定义签署方角色名称
+	ApproverRoleName *string `json:"ApproverRoleName,omitnil" name:"ApproverRoleName"`
+}
+
+type FlowApproverItem struct {
+	// 合同编号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *string `json:"FlowId,omitnil" name:"FlowId"`
+
+	// 签署方信息，如角色ID、角色名称等
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Approvers []*ApproverItem `json:"Approvers,omitnil" name:"Approvers"`
 }
 
 type FlowApproverUrlInfo struct {
@@ -6128,6 +6179,11 @@ type ModifyExtendedServiceRequestParams struct {
 	// OPEN:开通 
 	// CLOSE:关闭
 	Operate *string `json:"Operate,omitnil" name:"Operate"`
+
+	// 链接跳转类型，支持以下类型
+	// <ul><li>WEIXINAPP : 短链直接跳转到电子签小程序  (默认值)</li>
+	// <li>APP : 第三方APP或小程序跳转电子签小程序</li></ul>
+	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
 }
 
 type ModifyExtendedServiceRequest struct {
@@ -6150,6 +6206,11 @@ type ModifyExtendedServiceRequest struct {
 	// OPEN:开通 
 	// CLOSE:关闭
 	Operate *string `json:"Operate,omitnil" name:"Operate"`
+
+	// 链接跳转类型，支持以下类型
+	// <ul><li>WEIXINAPP : 短链直接跳转到电子签小程序  (默认值)</li>
+	// <li>APP : 第三方APP或小程序跳转电子签小程序</li></ul>
+	Endpoint *string `json:"Endpoint,omitnil" name:"Endpoint"`
 }
 
 func (r *ModifyExtendedServiceRequest) ToJsonString() string {
@@ -6167,6 +6228,7 @@ func (r *ModifyExtendedServiceRequest) FromJsonString(s string) error {
 	delete(f, "Agent")
 	delete(f, "ServiceType")
 	delete(f, "Operate")
+	delete(f, "Endpoint")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyExtendedServiceRequest has unknown keys!", "")
 	}
@@ -6841,6 +6903,10 @@ type SignUrlInfo struct {
 	// 合同组签署链接对应的合同组id
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	FlowGroupId *string `json:"FlowGroupId,omitnil" name:"FlowGroupId"`
+
+	// 二维码，在生成动态签署人跳转封面页链接时返回
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SignQrcodeUrl *string `json:"SignQrcodeUrl,omitnil" name:"SignQrcodeUrl"`
 }
 
 type Staff struct {

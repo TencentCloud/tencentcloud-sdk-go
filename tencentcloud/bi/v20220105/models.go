@@ -2528,6 +2528,107 @@ func (r *ModifyUserRoleProjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyUserRoleRequestParams struct {
+	// 用户ID
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 角色ID 列表
+	RoleIdList []*int64 `json:"RoleIdList,omitnil" name:"RoleIdList"`
+
+	// 邮箱
+	Email *string `json:"Email,omitnil" name:"Email"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
+
+	// 手机号
+	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
+
+	// 手机区号
+	AreaCode *string `json:"AreaCode,omitnil" name:"AreaCode"`
+}
+
+type ModifyUserRoleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户ID
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 角色ID 列表
+	RoleIdList []*int64 `json:"RoleIdList,omitnil" name:"RoleIdList"`
+
+	// 邮箱
+	Email *string `json:"Email,omitnil" name:"Email"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
+
+	// 手机号
+	PhoneNumber *string `json:"PhoneNumber,omitnil" name:"PhoneNumber"`
+
+	// 手机区号
+	AreaCode *string `json:"AreaCode,omitnil" name:"AreaCode"`
+}
+
+func (r *ModifyUserRoleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserRoleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "RoleIdList")
+	delete(f, "Email")
+	delete(f, "UserName")
+	delete(f, "PhoneNumber")
+	delete(f, "AreaCode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserRoleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserRoleResponseParams struct {
+	// 扩展
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Extra *string `json:"Extra,omitnil" name:"Extra"`
+
+	// 消息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Msg *string `json:"Msg,omitnil" name:"Msg"`
+
+	// 数据
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Data *string `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyUserRoleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserRoleResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserRoleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserRoleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type PermissionComponent struct {
 	// 权限值
 	// 注意：此字段可能返回 null，表示取不到有效值。

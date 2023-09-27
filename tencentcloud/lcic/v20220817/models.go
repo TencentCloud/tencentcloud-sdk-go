@@ -1041,7 +1041,7 @@ type CreateRoomRequestParams struct {
 	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitnil" name:"Resolution"`
 
-	// 最大连麦人数（不包括老师）。取值范围[0, 16]
+	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。取值范围[0,16]，当取值为0时表示当前课堂/直播，不支持连麦互动。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil" name:"MaxMicNumber"`
 
 	// 房间子类型，可以有以下取值：
@@ -1132,7 +1132,7 @@ type CreateRoomRequest struct {
 	// 3 全高清
 	Resolution *uint64 `json:"Resolution,omitnil" name:"Resolution"`
 
-	// 最大连麦人数（不包括老师）。取值范围[0, 16]
+	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。取值范围[0,16]，当取值为0时表示当前课堂/直播，不支持连麦互动。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil" name:"MaxMicNumber"`
 
 	// 房间子类型，可以有以下取值：
@@ -2822,7 +2822,7 @@ type DescribeRoomResponseParams struct {
 	// 横竖屏。0：横屏开播（默认值）; 1：竖屏开播，当前仅支持移动端的纯视频类型
 	VideoOrientation *uint64 `json:"VideoOrientation,omitnil" name:"VideoOrientation"`
 
-	// 开启课后评分。 0：不开启(默认)  1：开启
+	// 该房间是否开启了课后评分功能。0：未开启  1：开启
 	IsGradingRequiredPostClass *int64 `json:"IsGradingRequiredPostClass,omitnil" name:"IsGradingRequiredPostClass"`
 
 	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
@@ -4225,8 +4225,8 @@ type ModifyRoomRequestParams struct {
 	// 直播开始后不允许修改。
 	Resolution *uint64 `json:"Resolution,omitnil" name:"Resolution"`
 
-	// 最大连麦人数（不包括老师）。取值范围[0, 17)
-	// 直播开始后不允许修改。
+	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。
+	// 取值范围[0,16]，当取值为0时表示当前课堂/直播，不支持连麦互动。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil" name:"MaxMicNumber"`
 
 	// 进入房间时是否自动连麦。可以有以下取值：
@@ -4273,7 +4273,7 @@ type ModifyRoomRequestParams struct {
 	// 开启课后评分。 0：不开启(默认)  1：开启
 	IsGradingRequiredPostClass *uint64 `json:"IsGradingRequiredPostClass,omitnil" name:"IsGradingRequiredPostClass"`
 
-	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
+	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 （预留参数、暂未开放)
 	RoomType *uint64 `json:"RoomType,omitnil" name:"RoomType"`
 
 	// 录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744
@@ -4311,8 +4311,8 @@ type ModifyRoomRequest struct {
 	// 直播开始后不允许修改。
 	Resolution *uint64 `json:"Resolution,omitnil" name:"Resolution"`
 
-	// 最大连麦人数（不包括老师）。取值范围[0, 17)
-	// 直播开始后不允许修改。
+	// 设置房间/课堂同时最大可与老师进行连麦互动的人数，该参数支持正式上课/开播前调用修改房间修改。
+	// 取值范围[0,16]，当取值为0时表示当前课堂/直播，不支持连麦互动。
 	MaxMicNumber *uint64 `json:"MaxMicNumber,omitnil" name:"MaxMicNumber"`
 
 	// 进入房间时是否自动连麦。可以有以下取值：
@@ -4359,7 +4359,7 @@ type ModifyRoomRequest struct {
 	// 开启课后评分。 0：不开启(默认)  1：开启
 	IsGradingRequiredPostClass *uint64 `json:"IsGradingRequiredPostClass,omitnil" name:"IsGradingRequiredPostClass"`
 
-	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 (后续扩展)
+	// 房间类型: 0 小班课（默认值）; 1 大班课; 2 1V1 （预留参数、暂未开放)
 	RoomType *uint64 `json:"RoomType,omitnil" name:"RoomType"`
 
 	// 录制模板。仅可修改还未开始的房间。录制模板枚举值参考：https://cloud.tencent.com/document/product/1639/89744

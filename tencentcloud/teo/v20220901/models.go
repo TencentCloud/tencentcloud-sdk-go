@@ -2031,7 +2031,7 @@ type CreateZoneRequestParams struct {
 	// 待绑定的目标套餐 ID。当您账号下已存在套餐时，可以填写此参数，直接将站点绑定至该套餐。若您当前没有可绑定的套餐时，请前往控制台购买套餐完成站点创建。
 	PlanId *string `json:"PlanId,omitnil" name:"PlanId"`
 
-	// 同名站点标识。限制输入数字、英文、- 和 _ 组合，长度 20 个字符以内。详情参考 [同名站点标识]()，无此使用场景时，该字段保留为空即可。
+	// 同名站点标识。限制输入数字、英文、- 和 _ 组合，长度 20 个字符以内。详情参考 [同名站点标识](https://cloud.tencent.com/document/product/1552/70202)，无此使用场景时，该字段保留为空即可。
 	AliasZoneName *string `json:"AliasZoneName,omitnil" name:"AliasZoneName"`
 
 	// 标签。该参数用于对站点进行分权限管控、分账。需要先前往 [标签控制台](https://console.cloud.tencent.com/tag/taglist) 创建对应的标签才可以在此处传入对应的标签键和标签值。
@@ -2071,7 +2071,7 @@ type CreateZoneRequest struct {
 	// 待绑定的目标套餐 ID。当您账号下已存在套餐时，可以填写此参数，直接将站点绑定至该套餐。若您当前没有可绑定的套餐时，请前往控制台购买套餐完成站点创建。
 	PlanId *string `json:"PlanId,omitnil" name:"PlanId"`
 
-	// 同名站点标识。限制输入数字、英文、- 和 _ 组合，长度 20 个字符以内。详情参考 [同名站点标识]()，无此使用场景时，该字段保留为空即可。
+	// 同名站点标识。限制输入数字、英文、- 和 _ 组合，长度 20 个字符以内。详情参考 [同名站点标识](https://cloud.tencent.com/document/product/1552/70202)，无此使用场景时，该字段保留为空即可。
 	AliasZoneName *string `json:"AliasZoneName,omitnil" name:"AliasZoneName"`
 
 	// 标签。该参数用于对站点进行分权限管控、分账。需要先前往 [标签控制台](https://console.cloud.tencent.com/tag/taglist) 创建对应的标签才可以在此处传入对应的标签键和标签值。
@@ -9039,6 +9039,68 @@ type VanityNameServersIps struct {
 
 	// 自定义名字服务器 IPv4 地址。
 	IPv4 *string `json:"IPv4,omitnil" name:"IPv4"`
+}
+
+// Predefined struct for user
+type VerifyOwnershipRequestParams struct {
+	// 站点或者加速域名。
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+type VerifyOwnershipRequest struct {
+	*tchttp.BaseRequest
+	
+	// 站点或者加速域名。
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+func (r *VerifyOwnershipRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyOwnershipRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "VerifyOwnershipRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type VerifyOwnershipResponseParams struct {
+	// 归属权验证结果。
+	// <li>success：验证成功；</li>
+	// <li>fail：验证失败。</li>
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 当验证结果为不通过时，该字段会返回原因，协助您排查问题。
+	Result *string `json:"Result,omitnil" name:"Result"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type VerifyOwnershipResponse struct {
+	*tchttp.BaseResponse
+	Response *VerifyOwnershipResponseParams `json:"Response"`
+}
+
+func (r *VerifyOwnershipResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *VerifyOwnershipResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type Waf struct {

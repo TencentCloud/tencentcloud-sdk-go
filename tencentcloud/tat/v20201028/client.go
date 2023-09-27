@@ -565,6 +565,7 @@ func NewDeleteRegisterInstanceResponse() (response *DeleteRegisterInstanceRespon
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDREGISTERINSTANCEID = "InvalidParameterValue.InvalidRegisterInstanceId"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_REGISTERINSTANCENOTFOUNDCODE = "ResourceNotFound.RegisterInstanceNotFoundCode"
 //  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
 //  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
 func (c *Client) DeleteRegisterInstance(request *DeleteRegisterInstanceRequest) (response *DeleteRegisterInstanceResponse, err error) {
@@ -577,6 +578,7 @@ func (c *Client) DeleteRegisterInstance(request *DeleteRegisterInstanceRequest) 
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_INVALIDREGISTERINSTANCEID = "InvalidParameterValue.InvalidRegisterInstanceId"
 //  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCENOTFOUND_REGISTERINSTANCENOTFOUNDCODE = "ResourceNotFound.RegisterInstanceNotFoundCode"
 //  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
 //  UNAUTHORIZEDOPERATION_ASSUMEROLEUNAUTHORIZED = "UnauthorizedOperation.AssumeRoleUnauthorized"
 func (c *Client) DeleteRegisterInstanceWithContext(ctx context.Context, request *DeleteRegisterInstanceRequest) (response *DeleteRegisterInstanceResponse, err error) {
