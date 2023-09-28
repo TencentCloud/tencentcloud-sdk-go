@@ -3352,6 +3352,9 @@ type CreateInput struct {
 
 	// 延播平滑吐流配置信息。
 	ResilientStream *ResilientStreamConf `json:"ResilientStream,omitnil" name:"ResilientStream"`
+
+	// 绑定的输入安全组 ID。 
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil" name:"SecurityGroupIds"`
 }
 
 type CreateInputHLSPullSettings struct {
@@ -3434,6 +3437,9 @@ type CreateOutputInfo struct {
 
 	// 最大拉流并发数，最大4，默认4。
 	MaxConcurrent *uint64 `json:"MaxConcurrent,omitnil" name:"MaxConcurrent"`
+
+	// 绑定的输入安全组 ID。 
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil" name:"SecurityGroupIds"`
 }
 
 type CreateOutputInfoRTPSettings struct {
@@ -6284,6 +6290,10 @@ type DescribeInput struct {
 	// 延播平滑吐流配置信息。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResilientStream *ResilientStreamConf `json:"ResilientStream,omitnil" name:"ResilientStream"`
+
+	// 绑定的输入安全组 ID。	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil" name:"SecurityGroupIds"`
 }
 
 type DescribeInputHLSPullSettings struct {
@@ -6462,6 +6472,10 @@ type DescribeOutput struct {
 
 	// 最大拉流并发数，最大为4，默认4。
 	MaxConcurrent *uint64 `json:"MaxConcurrent,omitnil" name:"MaxConcurrent"`
+
+	// 绑定的安全组 ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil" name:"SecurityGroupIds"`
 }
 
 type DescribeOutputHLSPullServerUrl struct {
@@ -11660,6 +11674,9 @@ type ModifyInput struct {
 
 	// 延播平滑吐流配置信息。
 	ResilientStream *ResilientStreamConf `json:"ResilientStream,omitnil" name:"ResilientStream"`
+
+	// 绑定的输入安全组 ID。 仅支持关联一组安全组。
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil" name:"SecurityGroupIds"`
 }
 
 type ModifyOutputInfo struct {
@@ -11690,6 +11707,9 @@ type ModifyOutputInfo struct {
 
 	// 最大拉流并发数，最大4，默认4。
 	MaxConcurrent *uint64 `json:"MaxConcurrent,omitnil" name:"MaxConcurrent"`
+
+	// 绑定的安全组 ID。 仅支持关联一组安全组。	
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitnil" name:"SecurityGroupIds"`
 }
 
 // Predefined struct for user
@@ -12889,9 +12909,11 @@ type OutputAddress struct {
 
 type OutputSRTSourceAddressResp struct {
 	// 监听IP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil" name:"Ip"`
 
 	// 监听端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil" name:"Port"`
 }
 
@@ -14151,9 +14173,11 @@ type SRTSourceAddressReq struct {
 
 type SRTSourceAddressResp struct {
 	// 对端IP。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Ip *string `json:"Ip,omitnil" name:"Ip"`
 
 	// 对端端口。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Port *int64 `json:"Port,omitnil" name:"Port"`
 }
 

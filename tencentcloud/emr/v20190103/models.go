@@ -254,6 +254,16 @@ type ClusterExternalServiceInfo struct {
 	ClusterStatus *int64 `json:"ClusterStatus,omitnil" name:"ClusterStatus"`
 }
 
+type ClusterIDToFlowID struct {
+	// 集群id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 流程id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowId *uint64 `json:"FlowId,omitnil" name:"FlowId"`
+}
+
 type ClusterInstancesInfo struct {
 	// ID号
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -846,8 +856,8 @@ type CreateInstanceRequestParams struct {
 	CbsEncrypt *uint64 `json:"CbsEncrypt,omitnil" name:"CbsEncrypt"`
 
 	// hive共享元数据库类型。取值范围：
-	// <li>EMR_NEW_META：表示集群默认创建</li>
-	// <li>EMR_EXIT_META：表示集群使用指定EMR-MetaDB。</li>
+	// <li>EMR_DEFAULT_META：表示集群默认创建</li>
+	// <li>EMR_EXIST_META：表示集群使用指定EMR-MetaDB。</li>
 	// <li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
 	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
@@ -983,8 +993,8 @@ type CreateInstanceRequest struct {
 	CbsEncrypt *uint64 `json:"CbsEncrypt,omitnil" name:"CbsEncrypt"`
 
 	// hive共享元数据库类型。取值范围：
-	// <li>EMR_NEW_META：表示集群默认创建</li>
-	// <li>EMR_EXIT_META：表示集群使用指定EMR-MetaDB。</li>
+	// <li>EMR_DEFAULT_META：表示集群默认创建</li>
+	// <li>EMR_EXIST_META：表示集群使用指定EMR-MetaDB。</li>
 	// <li>USER_CUSTOM_META：表示集群使用自定义MetaDB。</li>
 	MetaType *string `json:"MetaType,omitnil" name:"MetaType"`
 
@@ -3929,6 +3939,10 @@ type ModifyResourcesTagsResponseParams struct {
 	// 部分成功的资源id列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PartSuccessList []*string `json:"PartSuccessList,omitnil" name:"PartSuccessList"`
+
+	// 集群id与流程id的映射列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterToFlowIdList []*ClusterIDToFlowID `json:"ClusterToFlowIdList,omitnil" name:"ClusterToFlowIdList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

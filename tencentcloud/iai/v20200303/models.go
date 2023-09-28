@@ -28,12 +28,12 @@ type AnalyzeDenseLandmarksRequestParams struct {
 	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。  
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。  
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。  
@@ -56,12 +56,12 @@ type AnalyzeDenseLandmarksRequest struct {
 	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。  
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。  
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。  
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。  
@@ -138,12 +138,12 @@ type AnalyzeFaceRequestParams struct {
 	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -172,12 +172,12 @@ type AnalyzeFaceRequest struct {
 	Mode *uint64 `json:"Mode,omitnil" name:"Mode"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -296,19 +296,19 @@ type Candidate struct {
 // Predefined struct for user
 type CompareFaceRequestParams struct {
 	// A 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 若图片中包含多张人脸，只选取其中置信度最高的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	ImageA *string `json:"ImageA,omitnil" name:"ImageA"`
 
 	// B 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 若图片中包含多张人脸，只选取其中置信度最高的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	ImageB *string `json:"ImageB,omitnil" name:"ImageB"`
 
 	// A 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -317,7 +317,7 @@ type CompareFaceRequestParams struct {
 	UrlA *string `json:"UrlA,omitnil" name:"UrlA"`
 
 	// B 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -354,19 +354,19 @@ type CompareFaceRequest struct {
 	*tchttp.BaseRequest
 	
 	// A 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 若图片中包含多张人脸，只选取其中置信度最高的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	ImageA *string `json:"ImageA,omitnil" name:"ImageA"`
 
 	// B 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 若图片中包含多张人脸，只选取其中置信度最高的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	ImageB *string `json:"ImageB,omitnil" name:"ImageB"`
 
 	// A 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -375,7 +375,7 @@ type CompareFaceRequest struct {
 	UrlA *string `json:"UrlA,omitnil" name:"UrlA"`
 
 	// B 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -468,19 +468,19 @@ func (r *CompareFaceResponse) FromJsonString(s string) error {
 // Predefined struct for user
 type CompareMaskFaceRequestParams struct {
 	// A 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	ImageA *string `json:"ImageA,omitnil" name:"ImageA"`
 
 	// B 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	ImageB *string `json:"ImageB,omitnil" name:"ImageB"`
 
 	// A 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -489,7 +489,7 @@ type CompareMaskFaceRequestParams struct {
 	UrlA *string `json:"UrlA,omitnil" name:"UrlA"`
 
 	// B 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -515,19 +515,19 @@ type CompareMaskFaceRequest struct {
 	*tchttp.BaseRequest
 	
 	// A 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	ImageA *string `json:"ImageA,omitnil" name:"ImageA"`
 
 	// B 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	ImageB *string `json:"ImageB,omitnil" name:"ImageB"`
 
 	// A 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// A 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -536,7 +536,7 @@ type CompareMaskFaceRequest struct {
 	UrlA *string `json:"UrlA,omitnil" name:"UrlA"`
 
 	// B 图片的 Url ，对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// B 图片的 Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -687,14 +687,14 @@ type CreateFaceRequestParams struct {
 	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 人员人脸总数量不可超过5张。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Images []*string `json:"Images,omitnil" name:"Images"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -728,14 +728,14 @@ type CreateFaceRequest struct {
 	PersonId *string `json:"PersonId,omitnil" name:"PersonId"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 人员人脸总数量不可超过5张。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Images []*string `json:"Images,omitnil" name:"Images"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -953,12 +953,12 @@ type CreatePersonRequestParams struct {
 	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitnil" name:"PersonExDescriptionInfos"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -1010,12 +1010,12 @@ type CreatePersonRequest struct {
 	PersonExDescriptionInfos []*PersonExDescriptionInfo `json:"PersonExDescriptionInfos,omitnil" name:"PersonExDescriptionInfos"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -1412,13 +1412,13 @@ type DetectFaceAttributesRequestParams struct {
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitnil" name:"MaxFaceNum"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。 
 	// 对应图片 base64 编码后大小不可超过5M。 
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
@@ -1450,13 +1450,13 @@ type DetectFaceAttributesRequest struct {
 	MaxFaceNum *uint64 `json:"MaxFaceNum,omitnil" name:"MaxFaceNum"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。 所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。 
 	// 对应图片 base64 编码后大小不可超过5M。 
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。 
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。 
@@ -1548,12 +1548,12 @@ type DetectFaceRequestParams struct {
 	MinFaceSize *uint64 `json:"MinFaceSize,omitnil" name:"MinFaceSize"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -1595,12 +1595,12 @@ type DetectFaceRequest struct {
 	MinFaceSize *uint64 `json:"MinFaceSize,omitnil" name:"MinFaceSize"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -3199,12 +3199,12 @@ type SearchFacesRequestParams struct {
 	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -3252,12 +3252,12 @@ type SearchFacesRequest struct {
 	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。  
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。 
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -3363,12 +3363,12 @@ type SearchFacesReturnsByGroupRequestParams struct {
 	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -3417,12 +3417,12 @@ type SearchFacesReturnsByGroupRequest struct {
 	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -3528,13 +3528,13 @@ type SearchPersonsRequestParams struct {
 	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -3581,13 +3581,13 @@ type SearchPersonsRequest struct {
 	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 若图片中包含多张人脸，只选取其中人脸面积最大的人脸。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -3693,12 +3693,12 @@ type SearchPersonsReturnsByGroupRequestParams struct {
 	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。
@@ -3744,12 +3744,12 @@ type SearchPersonsReturnsByGroupRequest struct {
 	GroupIds []*string `json:"GroupIds,omitnil" name:"GroupIds"`
 
 	// 图片 base64 数据，base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// 支持PNG、JPG、JPEG、BMP，不支持 GIF 图片。
 	Image *string `json:"Image,omitnil" name:"Image"`
 
 	// 图片的 Url 。对应图片 base64 编码后大小不可超过5M。
-	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。
+	// jpg格式长边像素不可超过4000，其他格式图片长边像素不可超2000。所有格式的图片短边像素不小于64。
 	// Url、Image必须提供一个，如果都提供，只使用 Url。
 	// 图片存储于腾讯云的Url可保障更高下载速度和稳定性，建议图片存储于腾讯云。
 	// 非腾讯云存储的Url速度和稳定性可能受一定影响。

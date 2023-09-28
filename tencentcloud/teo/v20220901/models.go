@@ -8533,14 +8533,7 @@ type RuleCondition struct {
 	// <li> notexist: 不存在。</li>
 	Operator *string `json:"Operator,omitnil" name:"Operator"`
 
-	// 匹配类型，取值有：
-	// <li> filename：文件名； </li>
-	// <li> extension：文件后缀； </li>
-	// <li> host：HOST； </li>
-	// <li> full_url：URL Full，当前站点下完整 URL 路径，必须包含 HTTP 协议，Host 和 路径； </li>
-	// <li> url：URL Path，当前站点下 URL 路径的请求； </li><li>client_country：客户端国家/地区；</li>
-	// <li> query_string：查询字符串，当前站点下请求URL的查询字符串； </li>
-	// <li> request_header：HTTP请求头部。 </li>
+	// 匹配类型，取值有： <li> filename：文件名； </li> <li> extension：文件后缀； </li> <li> host：HOST； </li> <li> full_url：URL Full，当前站点下完整 URL 路径，必须包含 HTTP 协议，Host 和 路径； </li> <li> url：URL Path，当前站点下 URL 路径的请求； </li><li>client_country：客户端国家/地区；</li> <li> query_string：查询字符串，当前站点下请求URL的查询字符串； </li> <li> request_header：HTTP请求头部。 </li>
 	Target *string `json:"Target,omitnil" name:"Target"`
 
 	// 对应匹配类型的参数值，仅在匹配类型为查询字符串或HTTP请求头并且运算符取值为存在或不存在时允许传空数组，对应匹配类型有：
@@ -8565,6 +8558,8 @@ type RuleCondition struct {
 
 	// 是否忽略参数名称的大小写，默认值为 false。
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: IgnoreNameCase is deprecated.
 	IgnoreNameCase *bool `json:"IgnoreNameCase,omitnil" name:"IgnoreNameCase"`
 }
 

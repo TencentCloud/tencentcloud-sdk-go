@@ -311,6 +311,9 @@ const (
 	// 初始化master失败。
 	INTERNALERROR_INITMASTERFAILED = "InternalError.InitMasterFailed"
 
+	// 余额不足。
+	INTERNALERROR_INSUFFICIENTBALANCE = "InternalError.InsufficientBalance"
+
 	// 无效CIDR。
 	INTERNALERROR_INVALIDPRIVATENETWORKCIDR = "InternalError.InvalidPrivateNetworkCidr"
 
@@ -355,6 +358,12 @@ const (
 
 	// 操作应用Release失败。
 	INTERNALERROR_MARKETRELEASEOPERATION = "InternalError.MarketReleaseOperation"
+
+	// 无支付权限。
+	INTERNALERROR_NOPAYMENTACCESS = "InternalError.NoPaymentAccess"
+
+	// 未实名认证。
+	INTERNALERROR_NOTVERIFIED = "InternalError.NotVerified"
 
 	// 镜像OS不支持。
 	INTERNALERROR_OSNOTSUPPORT = "InternalError.OsNotSupport"
@@ -401,7 +410,7 @@ const (
 	// 任务未找到。
 	INTERNALERROR_TASKNOTFOUND = "InternalError.TaskNotFound"
 
-	// 询价错误。
+	// 计费错误。
 	INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
 
 	// 账户余额不足。
@@ -538,6 +547,9 @@ const (
 
 	// 未找到该kubernetes资源。
 	RESOURCENOTFOUND_KUBERNETESRESOURCENOTFOUND = "ResourceNotFound.KubernetesResourceNotFound"
+
+	// 资源未找到。
+	RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
 
 	// 找不到对应路由表。
 	RESOURCENOTFOUND_ROUTETABLENOTFOUND = "ResourceNotFound.RouteTableNotFound"

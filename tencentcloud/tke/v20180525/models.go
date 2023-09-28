@@ -522,15 +522,19 @@ type BackupStorageLocation struct {
 
 type CUDNN struct {
 	// cuDNN的版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil" name:"Version"`
 
 	// cuDNN的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
 	// cuDNN的Doc名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DocName *string `json:"DocName,omitnil" name:"DocName"`
 
 	// cuDNN的Dev名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DevName *string `json:"DevName,omitnil" name:"DevName"`
 }
 
@@ -3897,6 +3901,91 @@ func (r *CreatePrometheusTemplateResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateReservedInstancesRequestParams struct {
+	// 预留券实例规格。
+	ReservedInstanceSpec *ReservedInstanceSpec `json:"ReservedInstanceSpec,omitnil" name:"ReservedInstanceSpec"`
+
+	// 购买实例数量，一次最大购买数量为300。
+	InstanceCount *uint64 `json:"InstanceCount,omitnil" name:"InstanceCount"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil" name:"InstanceChargePrepaid"`
+
+	// 预留券名称。
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitnil" name:"ClientToken"`
+}
+
+type CreateReservedInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 预留券实例规格。
+	ReservedInstanceSpec *ReservedInstanceSpec `json:"ReservedInstanceSpec,omitnil" name:"ReservedInstanceSpec"`
+
+	// 购买实例数量，一次最大购买数量为300。
+	InstanceCount *uint64 `json:"InstanceCount,omitnil" name:"InstanceCount"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil" name:"InstanceChargePrepaid"`
+
+	// 预留券名称。
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitnil" name:"ClientToken"`
+}
+
+func (r *CreateReservedInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReservedInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReservedInstanceSpec")
+	delete(f, "InstanceCount")
+	delete(f, "InstanceChargePrepaid")
+	delete(f, "InstanceName")
+	delete(f, "ClientToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateReservedInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateReservedInstancesResponseParams struct {
+	// 预留券实例 ID。
+	ReservedInstanceIds []*string `json:"ReservedInstanceIds,omitnil" name:"ReservedInstanceIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateReservedInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateReservedInstancesResponseParams `json:"Response"`
+}
+
+func (r *CreateReservedInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateReservedInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateTKEEdgeClusterRequestParams struct {
 	// k8s版本号
 	K8SVersion *string `json:"K8SVersion,omitnil" name:"K8SVersion"`
@@ -5805,6 +5894,60 @@ func (r *DeletePrometheusTemplateSyncResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DeletePrometheusTemplateSyncResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteReservedInstancesRequestParams struct {
+	// 预留券实例ID。
+	ReservedInstanceIds []*string `json:"ReservedInstanceIds,omitnil" name:"ReservedInstanceIds"`
+}
+
+type DeleteReservedInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 预留券实例ID。
+	ReservedInstanceIds []*string `json:"ReservedInstanceIds,omitnil" name:"ReservedInstanceIds"`
+}
+
+func (r *DeleteReservedInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteReservedInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReservedInstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteReservedInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteReservedInstancesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteReservedInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteReservedInstancesResponseParams `json:"Response"`
+}
+
+func (r *DeleteReservedInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteReservedInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9660,6 +9803,282 @@ func (r *DescribeImagesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribePodDeductionRateRequestParams struct {
+	// 可用区
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	//  节点名称
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+}
+
+type DescribePodDeductionRateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 可用区
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	//  节点名称
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+}
+
+func (r *DescribePodDeductionRateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePodDeductionRateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Zone")
+	delete(f, "ClusterId")
+	delete(f, "NodeName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePodDeductionRateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePodDeductionRateResponseParams struct {
+	// 各个规格的 可被预留券抵扣的Pod 抵扣率
+	PodDeductionRateSet []*PodDeductionRate `json:"PodDeductionRateSet,omitnil" name:"PodDeductionRateSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribePodDeductionRateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePodDeductionRateResponseParams `json:"Response"`
+}
+
+func (r *DescribePodDeductionRateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePodDeductionRateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePodsBySpecRequestParams struct {
+	// 核数
+	Cpu *float64 `json:"Cpu,omitnil" name:"Cpu"`
+
+	// 内存
+	Memory *float64 `json:"Memory,omitnil" name:"Memory"`
+
+	// 卡数，有0.25、0.5、1、2、4等
+	GpuNum *string `json:"GpuNum,omitnil" name:"GpuNum"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+
+	// 偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// pod-type
+	// 按照**【Pod 类型**】进行过滤。资源类型：intel、amd、v100、t4、a10\*gnv4、a10\*gnv4v等。
+	// 类型：String
+	// 必选：否
+	// 
+	// pod-deduct
+	// 按照**【上个周期抵扣的Pod**】进行过滤。Values可不设置。
+	// 必选：否
+	// 
+	// pod-not-deduct
+	// 按照**【上个周期未抵扣的Pod**】进行过滤。Values可不设置。
+	// 必选：否
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+}
+
+type DescribePodsBySpecRequest struct {
+	*tchttp.BaseRequest
+	
+	// 核数
+	Cpu *float64 `json:"Cpu,omitnil" name:"Cpu"`
+
+	// 内存
+	Memory *float64 `json:"Memory,omitnil" name:"Memory"`
+
+	// 卡数，有0.25、0.5、1、2、4等
+	GpuNum *string `json:"GpuNum,omitnil" name:"GpuNum"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+
+	// 偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// pod-type
+	// 按照**【Pod 类型**】进行过滤。资源类型：intel、amd、v100、t4、a10\*gnv4、a10\*gnv4v等。
+	// 类型：String
+	// 必选：否
+	// 
+	// pod-deduct
+	// 按照**【上个周期抵扣的Pod**】进行过滤。Values可不设置。
+	// 必选：否
+	// 
+	// pod-not-deduct
+	// 按照**【上个周期未抵扣的Pod**】进行过滤。Values可不设置。
+	// 必选：否
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+}
+
+func (r *DescribePodsBySpecRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePodsBySpecRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Cpu")
+	delete(f, "Memory")
+	delete(f, "GpuNum")
+	delete(f, "Zone")
+	delete(f, "ClusterId")
+	delete(f, "NodeName")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePodsBySpecRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePodsBySpecResponseParams struct {
+	// Pod 总数
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// Pod 节点信息
+	PodSet []*PodNodeInfo `json:"PodSet,omitnil" name:"PodSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribePodsBySpecResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePodsBySpecResponseParams `json:"Response"`
+}
+
+func (r *DescribePodsBySpecResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePodsBySpecResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePostNodeResourcesRequestParams struct {
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	//  节点名称
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+}
+
+type DescribePostNodeResourcesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	//  节点名称
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+}
+
+func (r *DescribePostNodeResourcesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePostNodeResourcesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ClusterId")
+	delete(f, "NodeName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribePostNodeResourcesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribePostNodeResourcesResponseParams struct {
+	// Pod详情
+	PodSet []*SuperNodeResource `json:"PodSet,omitnil" name:"PodSet"`
+
+	// 预留券详情
+	ReservedInstanceSet []*SuperNodeResource `json:"ReservedInstanceSet,omitnil" name:"ReservedInstanceSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribePostNodeResourcesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribePostNodeResourcesResponseParams `json:"Response"`
+}
+
+func (r *DescribePostNodeResourcesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribePostNodeResourcesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribePrometheusAgentInstancesRequestParams struct {
 	// 集群id
 	// 可以是tke, eks, edge的集群id
@@ -11100,6 +11519,106 @@ func (r *DescribePrometheusTemplatesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeRIUtilizationDetailRequestParams struct {
+	// 偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// reserved-instance-id
+	// 按照**【预留实例ID**】进行过滤。预留实例ID形如：eksri-xxxxxxxx。
+	// 类型：String
+	// 必选：否
+	// 
+	// begin-time
+	// 按照**【抵扣开始时间**】进行过滤。形如：2023-06-28 15:27:40。
+	// 类型：String
+	// 必选：否
+	// 
+	// end-time
+	// 按照**【抵扣结束时间**】进行过滤。形如：2023-06-28 15:27:40。
+	// 类型：String
+	// 必选：否
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+}
+
+type DescribeRIUtilizationDetailRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// reserved-instance-id
+	// 按照**【预留实例ID**】进行过滤。预留实例ID形如：eksri-xxxxxxxx。
+	// 类型：String
+	// 必选：否
+	// 
+	// begin-time
+	// 按照**【抵扣开始时间**】进行过滤。形如：2023-06-28 15:27:40。
+	// 类型：String
+	// 必选：否
+	// 
+	// end-time
+	// 按照**【抵扣结束时间**】进行过滤。形如：2023-06-28 15:27:40。
+	// 类型：String
+	// 必选：否
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+}
+
+func (r *DescribeRIUtilizationDetailRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRIUtilizationDetailRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRIUtilizationDetailRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRIUtilizationDetailResponseParams struct {
+	// 总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 详情。
+	RIUtilizationDetailSet []*RIUtilizationDetail `json:"RIUtilizationDetailSet,omitnil" name:"RIUtilizationDetailSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRIUtilizationDetailResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRIUtilizationDetailResponseParams `json:"Response"`
+}
+
+func (r *DescribeRIUtilizationDetailResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRIUtilizationDetailResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRegionsRequestParams struct {
 
 }
@@ -11155,6 +11674,206 @@ func (r *DescribeRegionsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRegionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReservedInstancesRequestParams struct {
+	// 偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// status
+	// 按照**【状态**】进行过滤。状态：Creating、Active、Expired、Refunded。
+	// 类型：String
+	// 必选：否
+	// 
+	// resource-type
+	// 按照**【资源类型**】进行过滤。资源类型：common、amd、v100、t4、a10\*gnv4、a10\*gnv4v等，common表示通用类型。
+	// 类型：String
+	// 必选：否
+	// 
+	// cpu
+	// 按照**【核数**】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// memory
+	// 按照**【内存**】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// gpu
+	// 按照**【GPU卡数**】进行过滤，取值有0.25、0.5、1、2、4等。
+	// 类型：String
+	// 必选：否
+	// 
+	// cluster-id
+	// 按照**【集群ID**】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// node-name
+	// 按照**【节点名称**】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// scope
+	// 按照**【可用区**】进行过滤。比如：ap-guangzhou-2，为空字符串表示地域抵扣范围。如果只过滤可用区抵扣范围，需要同时将cluster-id、node-name设置为空字符串。
+	// 类型：String
+	// 必选：否
+	// 
+	// reserved-instance-id
+	// 按照**【预留实例ID**】进行过滤。预留实例ID形如：eksri-xxxxxxxx。
+	// 类型：String
+	// 必选：否
+	// 
+	// reserved-instance-name
+	// 按照**【预留实例名称**】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// reserved-instance-deduct
+	// 按照**【上个周期抵扣的预留券**】进行过滤。Values可不设置。
+	// 必选：否
+	// 
+	// reserved-instance-not-deduct
+	// 按照**【上个周期未抵扣的预留券**】进行过滤。Values可不设置。
+	// 必选：否
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段。支持CreatedAt、ActiveAt、ExpireAt。默认值CreatedAt。
+	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+
+	// 排序方法。顺序：ASC，倒序：DESC。默认值DESC。
+	OrderDirection *string `json:"OrderDirection,omitnil" name:"OrderDirection"`
+}
+
+type DescribeReservedInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 偏移量，默认0。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 返回数量，默认为20，最大值为100。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// status
+	// 按照**【状态**】进行过滤。状态：Creating、Active、Expired、Refunded。
+	// 类型：String
+	// 必选：否
+	// 
+	// resource-type
+	// 按照**【资源类型**】进行过滤。资源类型：common、amd、v100、t4、a10\*gnv4、a10\*gnv4v等，common表示通用类型。
+	// 类型：String
+	// 必选：否
+	// 
+	// cpu
+	// 按照**【核数**】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// memory
+	// 按照**【内存**】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// gpu
+	// 按照**【GPU卡数**】进行过滤，取值有0.25、0.5、1、2、4等。
+	// 类型：String
+	// 必选：否
+	// 
+	// cluster-id
+	// 按照**【集群ID**】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// node-name
+	// 按照**【节点名称**】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// scope
+	// 按照**【可用区**】进行过滤。比如：ap-guangzhou-2，为空字符串表示地域抵扣范围。如果只过滤可用区抵扣范围，需要同时将cluster-id、node-name设置为空字符串。
+	// 类型：String
+	// 必选：否
+	// 
+	// reserved-instance-id
+	// 按照**【预留实例ID**】进行过滤。预留实例ID形如：eksri-xxxxxxxx。
+	// 类型：String
+	// 必选：否
+	// 
+	// reserved-instance-name
+	// 按照**【预留实例名称**】进行过滤。
+	// 类型：String
+	// 必选：否
+	// 
+	// reserved-instance-deduct
+	// 按照**【上个周期抵扣的预留券**】进行过滤。Values可不设置。
+	// 必选：否
+	// 
+	// reserved-instance-not-deduct
+	// 按照**【上个周期未抵扣的预留券**】进行过滤。Values可不设置。
+	// 必选：否
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段。支持CreatedAt、ActiveAt、ExpireAt。默认值CreatedAt。
+	OrderField *string `json:"OrderField,omitnil" name:"OrderField"`
+
+	// 排序方法。顺序：ASC，倒序：DESC。默认值DESC。
+	OrderDirection *string `json:"OrderDirection,omitnil" name:"OrderDirection"`
+}
+
+func (r *DescribeReservedInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReservedInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "Filters")
+	delete(f, "OrderField")
+	delete(f, "OrderDirection")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeReservedInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeReservedInstancesResponseParams struct {
+	// 总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 预留实例列表。
+	ReservedInstanceSet []*ReservedInstance `json:"ReservedInstanceSet,omitnil" name:"ReservedInstanceSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeReservedInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeReservedInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeReservedInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeReservedInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -12162,9 +12881,11 @@ func (r *DrainClusterVirtualNodeResponse) FromJsonString(s string) error {
 
 type DriverVersion struct {
 	// GPU驱动或者CUDA的版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Version *string `json:"Version,omitnil" name:"Version"`
 
 	// GPU驱动或者CUDA的名字
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
@@ -13927,6 +14648,19 @@ type InstanceAdvancedSettings struct {
 	ExtraArgs *InstanceExtraArgs `json:"ExtraArgs,omitnil" name:"ExtraArgs"`
 }
 
+type InstanceChargePrepaid struct {
+	// 购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。
+	Period *uint64 `json:"Period,omitnil" name:"Period"`
+
+	// 自动续费标识。取值范围：
+	// NOTIFY_AND_AUTO_RENEW：通知过期且自动续费
+	// NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费
+	// DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费
+	// 
+	// 默认取值：NOTIFY_AND_MANUAL_RENEW。若该参数指定为NOTIFY_AND_AUTO_RENEW，在账户余额充足的情况下，实例到期后将按月自动续费。
+	RenewFlag *string `json:"RenewFlag,omitnil" name:"RenewFlag"`
+}
+
 type InstanceDataDiskMountSetting struct {
 	// CVM实例类型
 	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
@@ -14822,6 +15556,9 @@ type ModifyClusterNodePoolRequestParams struct {
 
 	// dockerd --graph 指定值, 默认为 /var/lib/docker
 	DockerGraphPath *string `json:"DockerGraphPath,omitnil" name:"DockerGraphPath"`
+
+	// base64编码后的自定义脚本
+	PreStartUserScript *string `json:"PreStartUserScript,omitnil" name:"PreStartUserScript"`
 }
 
 type ModifyClusterNodePoolRequest struct {
@@ -14880,6 +15617,9 @@ type ModifyClusterNodePoolRequest struct {
 
 	// dockerd --graph 指定值, 默认为 /var/lib/docker
 	DockerGraphPath *string `json:"DockerGraphPath,omitnil" name:"DockerGraphPath"`
+
+	// base64编码后的自定义脚本
+	PreStartUserScript *string `json:"PreStartUserScript,omitnil" name:"PreStartUserScript"`
 }
 
 func (r *ModifyClusterNodePoolRequest) ToJsonString() string {
@@ -14912,6 +15652,7 @@ func (r *ModifyClusterNodePoolRequest) FromJsonString(s string) error {
 	delete(f, "Unschedulable")
 	delete(f, "DeletionProtection")
 	delete(f, "DockerGraphPath")
+	delete(f, "PreStartUserScript")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyClusterNodePoolRequest has unknown keys!", "")
 	}
@@ -15702,6 +16443,67 @@ func (r *ModifyPrometheusTemplateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyReservedInstanceScopeRequestParams struct {
+	// 预留券唯一 ID
+	ReservedInstanceIds []*string `json:"ReservedInstanceIds,omitnil" name:"ReservedInstanceIds"`
+
+	// 预留券抵扣范围信息
+	ReservedInstanceScope *ReservedInstanceScope `json:"ReservedInstanceScope,omitnil" name:"ReservedInstanceScope"`
+}
+
+type ModifyReservedInstanceScopeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 预留券唯一 ID
+	ReservedInstanceIds []*string `json:"ReservedInstanceIds,omitnil" name:"ReservedInstanceIds"`
+
+	// 预留券抵扣范围信息
+	ReservedInstanceScope *ReservedInstanceScope `json:"ReservedInstanceScope,omitnil" name:"ReservedInstanceScope"`
+}
+
+func (r *ModifyReservedInstanceScopeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReservedInstanceScopeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReservedInstanceIds")
+	delete(f, "ReservedInstanceScope")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyReservedInstanceScopeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyReservedInstanceScopeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyReservedInstanceScopeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyReservedInstanceScopeResponseParams `json:"Response"`
+}
+
+func (r *ModifyReservedInstanceScopeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyReservedInstanceScopeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type NfsVolume struct {
 	// nfs volume 数据卷名称
 	Name *string `json:"Name,omitnil" name:"Name"`
@@ -15797,6 +16599,30 @@ type NodePool struct {
 	// 删除保护开关
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeletionProtection *bool `json:"DeletionProtection,omitnil" name:"DeletionProtection"`
+
+	// 节点配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExtraArgs *InstanceExtraArgs `json:"ExtraArgs,omitnil" name:"ExtraArgs"`
+
+	// GPU驱动相关参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GPUArgs *GPUArgs `json:"GPUArgs,omitnil" name:"GPUArgs"`
+
+	// dockerd --graph 指定值, 默认为 /var/lib/docker
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DockerGraphPath *string `json:"DockerGraphPath,omitnil" name:"DockerGraphPath"`
+
+	// 多盘数据盘挂载信息：新建节点时请确保购买CVM的参数传递了购买多个数据盘的信息，如CreateClusterInstances API的RunInstancesPara下的DataDisks也需要设置购买多个数据盘, 具体可以参考CreateClusterInstances接口的添加集群节点(多块数据盘)样例；添加已有节点时，请确保填写的分区信息在节点上真实存在
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataDisks []*DataDisk `json:"DataDisks,omitnil" name:"DataDisks"`
+
+	// 是否不可调度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Unschedulable *int64 `json:"Unschedulable,omitnil" name:"Unschedulable"`
+
+	// 用户自定义脚本,在UserScript前执行
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PreStartUserScript *string `json:"PreStartUserScript,omitnil" name:"PreStartUserScript"`
 }
 
 type NodePoolOption struct {
@@ -15854,6 +16680,32 @@ type PendingRelease struct {
 	UpdatedTime *string `json:"UpdatedTime,omitnil" name:"UpdatedTime"`
 }
 
+type PodDeductionRate struct {
+	// Pod的 CPU
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *float64 `json:"Cpu,omitnil" name:"Cpu"`
+
+	// Pod 的内存
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *float64 `json:"Memory,omitnil" name:"Memory"`
+
+	//  Pod 的类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	//  Pod 的 GPU 卡数，Pod 类型为 GPU 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GpuNum *string `json:"GpuNum,omitnil" name:"GpuNum"`
+
+	// 这种规格的 Pod总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalNum *uint64 `json:"TotalNum,omitnil" name:"TotalNum"`
+
+	// 这种规格的 Pod被预留券抵扣的数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeductionNum *uint64 `json:"DeductionNum,omitnil" name:"DeductionNum"`
+}
+
 type PodLimitsByType struct {
 	// TKE共享网卡非固定IP模式可支持的Pod数量
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -15884,6 +16736,28 @@ type PodLimitsInstance struct {
 	// 机型可支持的最大VPC-CNI模式Pod数量信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	PodLimits *PodLimitsByType `json:"PodLimits,omitnil" name:"PodLimits"`
+}
+
+type PodNodeInfo struct {
+	// 集群 ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	//  节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+
+	// 可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// 命名空间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	//  Pod 名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
 }
 
 type Probe struct {
@@ -16628,6 +17502,41 @@ type PrometheusTemplateSyncTarget struct {
 	ClusterName *string `json:"ClusterName,omitnil" name:"ClusterName"`
 }
 
+type RIUtilizationDetail struct {
+	// 预留券ID
+	ReservedInstanceId *string `json:"ReservedInstanceId,omitnil" name:"ReservedInstanceId"`
+
+	// Pod唯一ID
+	EksId *string `json:"EksId,omitnil" name:"EksId"`
+
+	// 集群ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// Pod的名称
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// Pod的命名空间
+	Namespace *string `json:"Namespace,omitnil" name:"Namespace"`
+
+	// 工作负载类型
+	Kind *string `json:"Kind,omitnil" name:"Kind"`
+
+	// 工作负载名称
+	KindName *string `json:"KindName,omitnil" name:"KindName"`
+
+	// Pod的uid
+	Uid *string `json:"Uid,omitnil" name:"Uid"`
+
+	// 用量开始时间
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 用量结束时间
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 抵扣资源所属产品
+	Product *string `json:"Product,omitnil" name:"Product"`
+}
+
 type RegionInstance struct {
 	// 地域名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -16856,6 +17765,152 @@ func (r *RemoveNodeFromNodePoolResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RemoveNodeFromNodePoolResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewReservedInstancesRequestParams struct {
+	// 预留券实例ID，每次请求实例的上限为100。
+	ReservedInstanceIds []*string `json:"ReservedInstanceIds,omitnil" name:"ReservedInstanceIds"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil" name:"InstanceChargePrepaid"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitnil" name:"ClientToken"`
+}
+
+type RenewReservedInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 预留券实例ID，每次请求实例的上限为100。
+	ReservedInstanceIds []*string `json:"ReservedInstanceIds,omitnil" name:"ReservedInstanceIds"`
+
+	// 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的续费时长、是否设置自动续费等属性。
+	InstanceChargePrepaid *InstanceChargePrepaid `json:"InstanceChargePrepaid,omitnil" name:"InstanceChargePrepaid"`
+
+	// 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。
+	ClientToken *string `json:"ClientToken,omitnil" name:"ClientToken"`
+}
+
+func (r *RenewReservedInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewReservedInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ReservedInstanceIds")
+	delete(f, "InstanceChargePrepaid")
+	delete(f, "ClientToken")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewReservedInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewReservedInstancesResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type RenewReservedInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *RenewReservedInstancesResponseParams `json:"Response"`
+}
+
+func (r *RenewReservedInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewReservedInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type ReservedInstance struct {
+	// 预留实例ID
+	ReservedInstanceId *string `json:"ReservedInstanceId,omitnil" name:"ReservedInstanceId"`
+
+	// 预留实例名称
+	ReservedInstanceName *string `json:"ReservedInstanceName,omitnil" name:"ReservedInstanceName"`
+
+	// 预留券状态
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 有效期，单位：月
+	TimeSpan *uint64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+
+	// 抵扣资源类型
+	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+
+	// 资源核数
+	Cpu *float64 `json:"Cpu,omitnil" name:"Cpu"`
+
+	// 资源内存，单位：Gi
+	Memory *float64 `json:"Memory,omitnil" name:"Memory"`
+
+	// 预留券的范围，默认值region。
+	Scope *string `json:"Scope,omitnil" name:"Scope"`
+
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitnil" name:"CreatedAt"`
+
+	// 生效时间
+	ActiveAt *string `json:"ActiveAt,omitnil" name:"ActiveAt"`
+
+	// 过期时间
+	ExpireAt *string `json:"ExpireAt,omitnil" name:"ExpireAt"`
+
+	// GPU卡数
+	GpuCount *string `json:"GpuCount,omitnil" name:"GpuCount"`
+
+	// 自动续费标记
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 节点名称
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+
+	//  上个周期预留券的抵扣状态，Deduct、NotDeduct
+	DeductStatus *string `json:"DeductStatus,omitnil" name:"DeductStatus"`
+}
+
+type ReservedInstanceScope struct {
+	// 抵扣范围，取值：Region、Zone 和 Node
+	Scope *string `json:"Scope,omitnil" name:"Scope"`
+
+	// 可用区
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// 集群 ID
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	//  节点名称
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+}
+
+type ReservedInstanceSpec struct {
+	// 资源类型：common、amd、v100、t4、a10\*gnv4、a10\*gnv4v、a10\*pnv4、windows-common、windows-amd，common表示通用类型。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 核数
+	Cpu *float64 `json:"Cpu,omitnil" name:"Cpu"`
+
+	// 内存
+	Memory *float64 `json:"Memory,omitnil" name:"Memory"`
+
+	// GPU卡数，当Type为GPU类型时设置。
+	Gpu *float64 `json:"Gpu,omitnil" name:"Gpu"`
 }
 
 type ResourceDeleteOption struct {
@@ -17427,6 +18482,28 @@ type SubnetInfos struct {
 
 	// 硬件架构
 	Arch *string `json:"Arch,omitnil" name:"Arch"`
+}
+
+type SuperNodeResource struct {
+	// 节点名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	NodeName *string `json:"NodeName,omitnil" name:"NodeName"`
+
+	// 节点上的资源总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Num *uint64 `json:"Num,omitnil" name:"Num"`
+
+	// 节点上的总核数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Cpu *float64 `json:"Cpu,omitnil" name:"Cpu"`
+
+	// 节点上的总内存数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Memory *float64 `json:"Memory,omitnil" name:"Memory"`
+
+	// 节点上的总 GPU 卡数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Gpu *float64 `json:"Gpu,omitnil" name:"Gpu"`
 }
 
 // Predefined struct for user

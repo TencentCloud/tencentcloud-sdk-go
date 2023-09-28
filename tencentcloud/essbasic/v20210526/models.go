@@ -4345,6 +4345,57 @@ func (r *CreateChannelFlowEvidenceReportResponse) FromJsonString(s string) error
 }
 
 // Predefined struct for user
+type CreateChannelOrganizationInfoChangeUrlRequestParams struct {
+
+}
+
+type CreateChannelOrganizationInfoChangeUrlRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *CreateChannelOrganizationInfoChangeUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChannelOrganizationInfoChangeUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChannelOrganizationInfoChangeUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateChannelOrganizationInfoChangeUrlResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateChannelOrganizationInfoChangeUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateChannelOrganizationInfoChangeUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateChannelOrganizationInfoChangeUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateChannelOrganizationInfoChangeUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateConsoleLoginUrlRequestParams struct {
 	// 应用信息
 	// 此接口Agent.AppId、Agent.ProxyOrganizationOpenId 和 Agent. ProxyOperator.OpenId 必填

@@ -3035,6 +3035,58 @@ func (c *Client) CreateChannelFlowEvidenceReportWithContext(ctx context.Context,
     return
 }
 
+func NewCreateChannelOrganizationInfoChangeUrlRequest() (request *CreateChannelOrganizationInfoChangeUrlRequest) {
+    request = &CreateChannelOrganizationInfoChangeUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "CreateChannelOrganizationInfoChangeUrl")
+    
+    
+    return
+}
+
+func NewCreateChannelOrganizationInfoChangeUrlResponse() (response *CreateChannelOrganizationInfoChangeUrlResponse) {
+    response = &CreateChannelOrganizationInfoChangeUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateChannelOrganizationInfoChangeUrl
+// 此接口（CreateChannelOrganizationInfoChangeUrl）用于创建子客企业信息变更链接，支持创建企业超管变更链接或企业基础信息变更链接，通过入参ChangeType指定。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateChannelOrganizationInfoChangeUrl(request *CreateChannelOrganizationInfoChangeUrlRequest) (response *CreateChannelOrganizationInfoChangeUrlResponse, err error) {
+    return c.CreateChannelOrganizationInfoChangeUrlWithContext(context.Background(), request)
+}
+
+// CreateChannelOrganizationInfoChangeUrl
+// 此接口（CreateChannelOrganizationInfoChangeUrl）用于创建子客企业信息变更链接，支持创建企业超管变更链接或企业基础信息变更链接，通过入参ChangeType指定。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateChannelOrganizationInfoChangeUrlWithContext(ctx context.Context, request *CreateChannelOrganizationInfoChangeUrlRequest) (response *CreateChannelOrganizationInfoChangeUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateChannelOrganizationInfoChangeUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateChannelOrganizationInfoChangeUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateChannelOrganizationInfoChangeUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateConsoleLoginUrlRequest() (request *CreateConsoleLoginUrlRequest) {
     request = &CreateConsoleLoginUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -3123,6 +3123,58 @@ func (c *Client) CreateOrganizationBatchSignUrlWithContext(ctx context.Context, 
     return
 }
 
+func NewCreateOrganizationInfoChangeUrlRequest() (request *CreateOrganizationInfoChangeUrlRequest) {
+    request = &CreateOrganizationInfoChangeUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateOrganizationInfoChangeUrl")
+    
+    
+    return
+}
+
+func NewCreateOrganizationInfoChangeUrlResponse() (response *CreateOrganizationInfoChangeUrlResponse) {
+    response = &CreateOrganizationInfoChangeUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateOrganizationInfoChangeUrl
+// 此接口（CreateOrganizationInfoChangeUrl）用于创建企业信息变更链接，支持创建企业超管变更链接或企业基础信息变更链接，通过入参ChangeType指定。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateOrganizationInfoChangeUrl(request *CreateOrganizationInfoChangeUrlRequest) (response *CreateOrganizationInfoChangeUrlResponse, err error) {
+    return c.CreateOrganizationInfoChangeUrlWithContext(context.Background(), request)
+}
+
+// CreateOrganizationInfoChangeUrl
+// 此接口（CreateOrganizationInfoChangeUrl）用于创建企业信息变更链接，支持创建企业超管变更链接或企业基础信息变更链接，通过入参ChangeType指定。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEM = "InternalError.System"
+//  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) CreateOrganizationInfoChangeUrlWithContext(ctx context.Context, request *CreateOrganizationInfoChangeUrlRequest) (response *CreateOrganizationInfoChangeUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateOrganizationInfoChangeUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateOrganizationInfoChangeUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateOrganizationInfoChangeUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreatePersonAuthCertificateImageRequest() (request *CreatePersonAuthCertificateImageRequest) {
     request = &CreatePersonAuthCertificateImageRequest{
         BaseRequest: &tchttp.BaseRequest{},

@@ -5817,12 +5817,63 @@ func (r *CreateVpcEndPointServiceWhiteListResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type CreateVpcPeeringConnectionRequestParams struct {
+	// 本端VPC唯一ID。
+	SourceVpcId *string `json:"SourceVpcId,omitnil" name:"SourceVpcId"`
 
+	// 对等连接名称。
+	PeeringConnectionName *string `json:"PeeringConnectionName,omitnil" name:"PeeringConnectionName"`
+
+	// 对端VPC唯一ID。
+	DestinationVpcId *string `json:"DestinationVpcId,omitnil" name:"DestinationVpcId"`
+
+	// 对端用户UIN。
+	DestinationUin *string `json:"DestinationUin,omitnil" name:"DestinationUin"`
+
+	// 对端地域。
+	DestinationRegion *string `json:"DestinationRegion,omitnil" name:"DestinationRegion"`
+
+	// 带宽上限，单位Mbps。
+	Bandwidth *int64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+
+	// 互通类型，VPC_PEER：VPC间互通；VPC_BM_PEER：VPC与黑石网络互通。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 计费模式，日峰值POSTPAID_BY_DAY_MAX，月95POSTPAID_BY_MONTH_95。
+	ChargeType *string `json:"ChargeType,omitnil" name:"ChargeType"`
+
+	// 服务分级：PT、AU、AG。
+	QosLevel *string `json:"QosLevel,omitnil" name:"QosLevel"`
 }
 
 type CreateVpcPeeringConnectionRequest struct {
 	*tchttp.BaseRequest
 	
+	// 本端VPC唯一ID。
+	SourceVpcId *string `json:"SourceVpcId,omitnil" name:"SourceVpcId"`
+
+	// 对等连接名称。
+	PeeringConnectionName *string `json:"PeeringConnectionName,omitnil" name:"PeeringConnectionName"`
+
+	// 对端VPC唯一ID。
+	DestinationVpcId *string `json:"DestinationVpcId,omitnil" name:"DestinationVpcId"`
+
+	// 对端用户UIN。
+	DestinationUin *string `json:"DestinationUin,omitnil" name:"DestinationUin"`
+
+	// 对端地域。
+	DestinationRegion *string `json:"DestinationRegion,omitnil" name:"DestinationRegion"`
+
+	// 带宽上限，单位Mbps。
+	Bandwidth *int64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+
+	// 互通类型，VPC_PEER：VPC间互通；VPC_BM_PEER：VPC与黑石网络互通。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 计费模式，日峰值POSTPAID_BY_DAY_MAX，月95POSTPAID_BY_MONTH_95。
+	ChargeType *string `json:"ChargeType,omitnil" name:"ChargeType"`
+
+	// 服务分级：PT、AU、AG。
+	QosLevel *string `json:"QosLevel,omitnil" name:"QosLevel"`
 }
 
 func (r *CreateVpcPeeringConnectionRequest) ToJsonString() string {
@@ -5837,7 +5888,15 @@ func (r *CreateVpcPeeringConnectionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "SourceVpcId")
+	delete(f, "PeeringConnectionName")
+	delete(f, "DestinationVpcId")
+	delete(f, "DestinationUin")
+	delete(f, "DestinationRegion")
+	delete(f, "Bandwidth")
+	delete(f, "Type")
+	delete(f, "ChargeType")
+	delete(f, "QosLevel")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateVpcPeeringConnectionRequest has unknown keys!", "")
 	}
@@ -5846,6 +5905,10 @@ func (r *CreateVpcPeeringConnectionRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateVpcPeeringConnectionResponseParams struct {
+	// 对等连接ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PeeringConnectionId *string `json:"PeeringConnectionId,omitnil" name:"PeeringConnectionId"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -22255,12 +22318,33 @@ func (r *ModifyVpcEndPointServiceWhiteListResponse) FromJsonString(s string) err
 
 // Predefined struct for user
 type ModifyVpcPeeringConnectionRequestParams struct {
+	// 对等连接ID。
+	PeeringConnectionId *string `json:"PeeringConnectionId,omitnil" name:"PeeringConnectionId"`
 
+	// 对等连接名称。
+	PeeringConnectionName *string `json:"PeeringConnectionName,omitnil" name:"PeeringConnectionName"`
+
+	// 带宽上限，单位Mbps。
+	Bandwidth *int64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+
+	// 计费模式，日峰值POSTPAID_BY_DAY_MAX，月95 POSTPAID_BY_MONTH_95。
+	ChargeType *string `json:"ChargeType,omitnil" name:"ChargeType"`
 }
 
 type ModifyVpcPeeringConnectionRequest struct {
 	*tchttp.BaseRequest
 	
+	// 对等连接ID。
+	PeeringConnectionId *string `json:"PeeringConnectionId,omitnil" name:"PeeringConnectionId"`
+
+	// 对等连接名称。
+	PeeringConnectionName *string `json:"PeeringConnectionName,omitnil" name:"PeeringConnectionName"`
+
+	// 带宽上限，单位Mbps。
+	Bandwidth *int64 `json:"Bandwidth,omitnil" name:"Bandwidth"`
+
+	// 计费模式，日峰值POSTPAID_BY_DAY_MAX，月95 POSTPAID_BY_MONTH_95。
+	ChargeType *string `json:"ChargeType,omitnil" name:"ChargeType"`
 }
 
 func (r *ModifyVpcPeeringConnectionRequest) ToJsonString() string {
@@ -22275,7 +22359,10 @@ func (r *ModifyVpcPeeringConnectionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "PeeringConnectionId")
+	delete(f, "PeeringConnectionName")
+	delete(f, "Bandwidth")
+	delete(f, "ChargeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyVpcPeeringConnectionRequest has unknown keys!", "")
 	}
@@ -23407,12 +23494,15 @@ func (r *RejectAttachCcnInstancesResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RejectVpcPeeringConnectionRequestParams struct {
-
+	// 对等连接唯一ID。
+	PeeringConnectionId *string `json:"PeeringConnectionId,omitnil" name:"PeeringConnectionId"`
 }
 
 type RejectVpcPeeringConnectionRequest struct {
 	*tchttp.BaseRequest
 	
+	// 对等连接唯一ID。
+	PeeringConnectionId *string `json:"PeeringConnectionId,omitnil" name:"PeeringConnectionId"`
 }
 
 func (r *RejectVpcPeeringConnectionRequest) ToJsonString() string {
@@ -23427,7 +23517,7 @@ func (r *RejectVpcPeeringConnectionRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "PeeringConnectionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RejectVpcPeeringConnectionRequest has unknown keys!", "")
 	}

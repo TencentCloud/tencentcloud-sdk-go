@@ -12479,6 +12479,10 @@ type ModifyLivePullStreamTaskRequestParams struct {
 	// 1. 单位：秒，配合FileIndex使用。
 	OffsetTime *int64 `json:"OffsetTime,omitnil" name:"OffsetTime"`
 
+	// 目标 Url。
+	// 换目标地址，会断流重推到新地址。
+	ToUrl *string `json:"ToUrl,omitnil" name:"ToUrl"`
+
 	// 任务备注。
 	Comment *string `json:"Comment,omitnil" name:"Comment"`
 
@@ -12582,6 +12586,10 @@ type ModifyLivePullStreamTaskRequest struct {
 	// 1. 单位：秒，配合FileIndex使用。
 	OffsetTime *int64 `json:"OffsetTime,omitnil" name:"OffsetTime"`
 
+	// 目标 Url。
+	// 换目标地址，会断流重推到新地址。
+	ToUrl *string `json:"ToUrl,omitnil" name:"ToUrl"`
+
 	// 任务备注。
 	Comment *string `json:"Comment,omitnil" name:"Comment"`
 
@@ -12641,6 +12649,7 @@ func (r *ModifyLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "CallbackUrl")
 	delete(f, "FileIndex")
 	delete(f, "OffsetTime")
+	delete(f, "ToUrl")
 	delete(f, "Comment")
 	delete(f, "BackupSourceType")
 	delete(f, "BackupSourceUrl")

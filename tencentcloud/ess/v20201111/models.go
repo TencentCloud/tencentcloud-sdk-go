@@ -3611,6 +3611,86 @@ func (r *CreateOrganizationBatchSignUrlResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type CreateOrganizationInfoChangeUrlRequestParams struct {
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 企业信息变更类型，可选类型如下：
+	// <ul><li>**1**：企业超管变更</li><li>**2**：企业基础信息变更</li></ul>
+	ChangeType *uint64 `json:"ChangeType,omitnil" name:"ChangeType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+}
+
+type CreateOrganizationInfoChangeUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 企业信息变更类型，可选类型如下：
+	// <ul><li>**1**：企业超管变更</li><li>**2**：企业基础信息变更</li></ul>
+	ChangeType *uint64 `json:"ChangeType,omitnil" name:"ChangeType"`
+
+	// 代理企业和员工的信息。
+	// 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+}
+
+func (r *CreateOrganizationInfoChangeUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationInfoChangeUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Operator")
+	delete(f, "ChangeType")
+	delete(f, "Agent")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateOrganizationInfoChangeUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateOrganizationInfoChangeUrlResponseParams struct {
+	// 创建的企业信息变更链接。
+	Url *string `json:"Url,omitnil" name:"Url"`
+
+	// 链接过期时间。链接7天有效。
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateOrganizationInfoChangeUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateOrganizationInfoChangeUrlResponseParams `json:"Response"`
+}
+
+func (r *CreateOrganizationInfoChangeUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateOrganizationInfoChangeUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreatePersonAuthCertificateImageRequestParams struct {
 	// 执行本接口操作的员工信息。
 	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`

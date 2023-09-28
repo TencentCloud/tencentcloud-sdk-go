@@ -2272,6 +2272,12 @@ func (r *CreateWxCloudBaseRunServerDBClusterResponse) FromJsonString(s string) e
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type CustomHeader struct {
+	// 请求添加头部配置
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestToAddList []*CustomRequestToAdd `json:"RequestToAddList,omitnil" name:"RequestToAddList"`
+}
+
 type CustomLogConfig struct {
 	// 是否需要请求体
 	NeedReqBodyLog *bool `json:"NeedReqBodyLog,omitnil" name:"NeedReqBodyLog"`
@@ -2290,6 +2296,20 @@ type CustomLogConfig struct {
 
 	// cls topicId
 	LogTopicId *string `json:"LogTopicId,omitnil" name:"LogTopicId"`
+}
+
+type CustomRequestToAdd struct {
+	// Header名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// Header值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil" name:"Value"`
+
+	// Header类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppendAction *string `json:"AppendAction,omitnil" name:"AppendAction"`
 }
 
 type DatabasesInfo struct {
@@ -9894,4 +9914,8 @@ type WxGatewayRountItem struct {
 	// 路径匹配类型，支持prefix(前缀匹配)，regex(正则匹配)， 默认prefix
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	GatewayRoutePathMatchType *string `json:"GatewayRoutePathMatchType,omitnil" name:"GatewayRoutePathMatchType"`
+
+	// 安全网关自定义头部
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CustomHeader *CustomHeader `json:"CustomHeader,omitnil" name:"CustomHeader"`
 }

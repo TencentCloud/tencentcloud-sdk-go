@@ -76,6 +76,7 @@ func NewAcquireClusterAdminRoleResponse() (response *AcquireClusterAdminRoleResp
 //  INTERNALERROR_KUBERNETESCREATEOPERATIONERROR = "InternalError.KubernetesCreateOperationError"
 //  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INTERNALERROR_WHITELISTUNEXPECTEDERROR = "InternalError.WhitelistUnexpectedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -100,6 +101,7 @@ func (c *Client) AcquireClusterAdminRole(request *AcquireClusterAdminRoleRequest
 //  INTERNALERROR_KUBERNETESCREATEOPERATIONERROR = "InternalError.KubernetesCreateOperationError"
 //  INTERNALERROR_KUBERNETESGETOPERATIONERROR = "InternalError.KubernetesGetOperationError"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INTERNALERROR_WHITELISTUNEXPECTEDERROR = "InternalError.WhitelistUnexpectedError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -2507,6 +2509,64 @@ func (c *Client) CreatePrometheusTemplateWithContext(ctx context.Context, reques
     return
 }
 
+func NewCreateReservedInstancesRequest() (request *CreateReservedInstancesRequest) {
+    request = &CreateReservedInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "CreateReservedInstances")
+    
+    
+    return
+}
+
+func NewCreateReservedInstancesResponse() (response *CreateReservedInstancesResponse) {
+    response = &CreateReservedInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateReservedInstances
+// 预留券实例的购买会预先扣除本次实例购买所需金额，在调用本接口前请确保账户余额充足。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INSUFFICIENTBALANCE = "InternalError.InsufficientBalance"
+//  INTERNALERROR_NOPAYMENTACCESS = "InternalError.NoPaymentAccess"
+//  INTERNALERROR_NOTVERIFIED = "InternalError.NotVerified"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) CreateReservedInstances(request *CreateReservedInstancesRequest) (response *CreateReservedInstancesResponse, err error) {
+    return c.CreateReservedInstancesWithContext(context.Background(), request)
+}
+
+// CreateReservedInstances
+// 预留券实例的购买会预先扣除本次实例购买所需金额，在调用本接口前请确保账户余额充足。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INSUFFICIENTBALANCE = "InternalError.InsufficientBalance"
+//  INTERNALERROR_NOPAYMENTACCESS = "InternalError.NoPaymentAccess"
+//  INTERNALERROR_NOTVERIFIED = "InternalError.NotVerified"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) CreateReservedInstancesWithContext(ctx context.Context, request *CreateReservedInstancesRequest) (response *CreateReservedInstancesResponse, err error) {
+    if request == nil {
+        request = NewCreateReservedInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateReservedInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateReservedInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateTKEEdgeClusterRequest() (request *CreateTKEEdgeClusterRequest) {
     request = &CreateTKEEdgeClusterRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4317,6 +4377,7 @@ func NewDeletePrometheusTemplateSyncResponse() (response *DeletePrometheusTempla
 // 取消模板同步，这将会删除目标中该模板所生产的配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -4334,6 +4395,7 @@ func (c *Client) DeletePrometheusTemplateSync(request *DeletePrometheusTemplateS
 // 取消模板同步，这将会删除目标中该模板所生产的配置
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTHTTP = "FailedOperation.ComponentClientHttp"
 //  FAILEDOPERATION_DBRECORDNOTFOUND = "FailedOperation.DbRecordNotFound"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DB = "InternalError.Db"
@@ -4355,6 +4417,60 @@ func (c *Client) DeletePrometheusTemplateSyncWithContext(ctx context.Context, re
     request.SetContext(ctx)
     
     response = NewDeletePrometheusTemplateSyncResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteReservedInstancesRequest() (request *DeleteReservedInstancesRequest) {
+    request = &DeleteReservedInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DeleteReservedInstances")
+    
+    
+    return
+}
+
+func NewDeleteReservedInstancesResponse() (response *DeleteReservedInstancesResponse) {
+    response = &DeleteReservedInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteReservedInstances
+// 预留券实例如符合退还规则，可通过本接口主动退还。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DeleteReservedInstances(request *DeleteReservedInstancesRequest) (response *DeleteReservedInstancesResponse, err error) {
+    return c.DeleteReservedInstancesWithContext(context.Background(), request)
+}
+
+// DeleteReservedInstances
+// 预留券实例如符合退还规则，可通过本接口主动退还。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) DeleteReservedInstancesWithContext(ctx context.Context, request *DeleteReservedInstancesRequest) (response *DeleteReservedInstancesResponse, err error) {
+    if request == nil {
+        request = NewDeleteReservedInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteReservedInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteReservedInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -4750,6 +4866,7 @@ func NewDescribeClusterAsGroupOptionResponse() (response *DescribeClusterAsGroup
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
@@ -4771,6 +4888,7 @@ func (c *Client) DescribeClusterAsGroupOption(request *DescribeClusterAsGroupOpt
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CLUSTERNOTFOUND = "FailedOperation.ClusterNotFound"
 //  FAILEDOPERATION_CLUSTERSTATE = "FailedOperation.ClusterState"
+//  FAILEDOPERATION_PARAM = "FailedOperation.Param"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ACCOUNTUSERNOTAUTHENTICATED = "InternalError.AccountUserNotAuthenticated"
 //  INTERNALERROR_ASCOMMON = "InternalError.AsCommon"
@@ -6358,6 +6476,7 @@ func NewDescribeClusterVirtualNodeResponse() (response *DescribeClusterVirtualNo
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) DescribeClusterVirtualNode(request *DescribeClusterVirtualNodeRequest) (response *DescribeClusterVirtualNodeResponse, err error) {
     return c.DescribeClusterVirtualNodeWithContext(context.Background(), request)
 }
@@ -6371,6 +6490,7 @@ func (c *Client) DescribeClusterVirtualNode(request *DescribeClusterVirtualNodeR
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  RESOURCEUNAVAILABLE_CLUSTERSTATE = "ResourceUnavailable.ClusterState"
+//  UNAUTHORIZEDOPERATION_CAMNOAUTH = "UnauthorizedOperation.CamNoAuth"
 func (c *Client) DescribeClusterVirtualNodeWithContext(ctx context.Context, request *DescribeClusterVirtualNodeRequest) (response *DescribeClusterVirtualNodeResponse, err error) {
     if request == nil {
         request = NewDescribeClusterVirtualNodeRequest()
@@ -7765,6 +7885,156 @@ func (c *Client) DescribeImagesWithContext(ctx context.Context, request *Describ
     return
 }
 
+func NewDescribePodDeductionRateRequest() (request *DescribePodDeductionRateRequest) {
+    request = &DescribePodDeductionRateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePodDeductionRate")
+    
+    
+    return
+}
+
+func NewDescribePodDeductionRateResponse() (response *DescribePodDeductionRateResponse) {
+    response = &DescribePodDeductionRateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePodDeductionRate
+// 查询各个规格的 Pod 的抵扣率
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribePodDeductionRate(request *DescribePodDeductionRateRequest) (response *DescribePodDeductionRateResponse, err error) {
+    return c.DescribePodDeductionRateWithContext(context.Background(), request)
+}
+
+// DescribePodDeductionRate
+// 查询各个规格的 Pod 的抵扣率
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribePodDeductionRateWithContext(ctx context.Context, request *DescribePodDeductionRateRequest) (response *DescribePodDeductionRateResponse, err error) {
+    if request == nil {
+        request = NewDescribePodDeductionRateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePodDeductionRate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePodDeductionRateResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePodsBySpecRequest() (request *DescribePodsBySpecRequest) {
+    request = &DescribePodsBySpecRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePodsBySpec")
+    
+    
+    return
+}
+
+func NewDescribePodsBySpecResponse() (response *DescribePodsBySpecResponse) {
+    response = &DescribePodsBySpecResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePodsBySpec
+// 查询可以用预留券抵扣的 Pod 信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribePodsBySpec(request *DescribePodsBySpecRequest) (response *DescribePodsBySpecResponse, err error) {
+    return c.DescribePodsBySpecWithContext(context.Background(), request)
+}
+
+// DescribePodsBySpec
+// 查询可以用预留券抵扣的 Pod 信息。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) DescribePodsBySpecWithContext(ctx context.Context, request *DescribePodsBySpecRequest) (response *DescribePodsBySpecResponse, err error) {
+    if request == nil {
+        request = NewDescribePodsBySpecRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePodsBySpec require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePodsBySpecResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribePostNodeResourcesRequest() (request *DescribePostNodeResourcesRequest) {
+    request = &DescribePostNodeResourcesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribePostNodeResources")
+    
+    
+    return
+}
+
+func NewDescribePostNodeResourcesResponse() (response *DescribePostNodeResourcesResponse) {
+    response = &DescribePostNodeResourcesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribePostNodeResources
+// 包括 Pod 资源统计和绑定的预留券资源统计。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+func (c *Client) DescribePostNodeResources(request *DescribePostNodeResourcesRequest) (response *DescribePostNodeResourcesResponse, err error) {
+    return c.DescribePostNodeResourcesWithContext(context.Background(), request)
+}
+
+// DescribePostNodeResources
+// 包括 Pod 资源统计和绑定的预留券资源统计。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+func (c *Client) DescribePostNodeResourcesWithContext(ctx context.Context, request *DescribePostNodeResourcesRequest) (response *DescribePostNodeResourcesResponse, err error) {
+    if request == nil {
+        request = NewDescribePostNodeResourcesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribePostNodeResources require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribePostNodeResourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePrometheusAgentInstancesRequest() (request *DescribePrometheusAgentInstancesRequest) {
     request = &DescribePrometheusAgentInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -8248,6 +8518,8 @@ func NewDescribePrometheusGlobalConfigResponse() (response *DescribePrometheusGl
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 func (c *Client) DescribePrometheusGlobalConfig(request *DescribePrometheusGlobalConfigRequest) (response *DescribePrometheusGlobalConfigResponse, err error) {
     return c.DescribePrometheusGlobalConfigWithContext(context.Background(), request)
@@ -8264,6 +8536,8 @@ func (c *Client) DescribePrometheusGlobalConfig(request *DescribePrometheusGloba
 //  INTERNALERROR_PARAM = "InternalError.Param"
 //  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_CLUSTERNOTFOUND = "InvalidParameter.ClusterNotFound"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
 //  INVALIDPARAMETER_PROMINSTANCENOTFOUND = "InvalidParameter.PromInstanceNotFound"
 func (c *Client) DescribePrometheusGlobalConfigWithContext(ctx context.Context, request *DescribePrometheusGlobalConfigRequest) (response *DescribePrometheusGlobalConfigResponse, err error) {
     if request == nil {
@@ -8953,6 +9227,62 @@ func (c *Client) DescribePrometheusTemplatesWithContext(ctx context.Context, req
     return
 }
 
+func NewDescribeRIUtilizationDetailRequest() (request *DescribeRIUtilizationDetailRequest) {
+    request = &DescribeRIUtilizationDetailRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeRIUtilizationDetail")
+    
+    
+    return
+}
+
+func NewDescribeRIUtilizationDetailResponse() (response *DescribeRIUtilizationDetailResponse) {
+    response = &DescribeRIUtilizationDetailResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeRIUtilizationDetail
+// 预留实例用量查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeRIUtilizationDetail(request *DescribeRIUtilizationDetailRequest) (response *DescribeRIUtilizationDetailResponse, err error) {
+    return c.DescribeRIUtilizationDetailWithContext(context.Background(), request)
+}
+
+// DescribeRIUtilizationDetail
+// 预留实例用量查询
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeRIUtilizationDetailWithContext(ctx context.Context, request *DescribeRIUtilizationDetailRequest) (response *DescribeRIUtilizationDetailResponse, err error) {
+    if request == nil {
+        request = NewDescribeRIUtilizationDetailRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeRIUtilizationDetail require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeRIUtilizationDetailResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeRegionsRequest() (request *DescribeRegionsRequest) {
     request = &DescribeRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -9031,6 +9361,64 @@ func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *Descri
     request.SetContext(ctx)
     
     response = NewDescribeRegionsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeReservedInstancesRequest() (request *DescribeReservedInstancesRequest) {
+    request = &DescribeReservedInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "DescribeReservedInstances")
+    
+    
+    return
+}
+
+func NewDescribeReservedInstancesResponse() (response *DescribeReservedInstancesResponse) {
+    response = &DescribeReservedInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeReservedInstances
+// 查询预留实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeReservedInstances(request *DescribeReservedInstancesRequest) (response *DescribeReservedInstancesResponse, err error) {
+    return c.DescribeReservedInstancesWithContext(context.Background(), request)
+}
+
+// DescribeReservedInstances
+// 查询预留实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXCEPTEDINTERNAL = "InternalError.UnexceptedInternal"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
+func (c *Client) DescribeReservedInstancesWithContext(ctx context.Context, request *DescribeReservedInstancesRequest) (response *DescribeReservedInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeReservedInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeReservedInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeReservedInstancesResponse()
     err = c.Send(request, response)
     return
 }
@@ -10873,6 +11261,7 @@ func NewListClusterInspectionResultsResponse() (response *ListClusterInspectionR
 // 查询指定集群的巡检结果信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
 //  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
@@ -10884,6 +11273,7 @@ func (c *Client) ListClusterInspectionResults(request *ListClusterInspectionResu
 // 查询指定集群的巡检结果信息
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTUNPACK = "FailedOperation.ComponentClientUnpack"
 //  FAILEDOPERATION_KUBERNETESCLIENTBUILDERROR = "FailedOperation.KubernetesClientBuildError"
 //  FAILEDOPERATION_KUBERNETESLISTOPERATIONERROR = "FailedOperation.KubernetesListOperationError"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
@@ -12119,6 +12509,58 @@ func (c *Client) ModifyPrometheusTemplateWithContext(ctx context.Context, reques
     return
 }
 
+func NewModifyReservedInstanceScopeRequest() (request *ModifyReservedInstanceScopeRequest) {
+    request = &ModifyReservedInstanceScopeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "ModifyReservedInstanceScope")
+    
+    
+    return
+}
+
+func NewModifyReservedInstanceScopeResponse() (response *ModifyReservedInstanceScopeResponse) {
+    response = &ModifyReservedInstanceScopeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyReservedInstanceScope
+// 修改预留券的抵扣范围，抵扣范围取值：Region、Zone 和 Node。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) ModifyReservedInstanceScope(request *ModifyReservedInstanceScopeRequest) (response *ModifyReservedInstanceScopeResponse, err error) {
+    return c.ModifyReservedInstanceScopeWithContext(context.Background(), request)
+}
+
+// ModifyReservedInstanceScope
+// 修改预留券的抵扣范围，抵扣范围取值：Region、Zone 和 Node。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+//  RESOURCENOTFOUND_NOTFOUND = "ResourceNotFound.NotFound"
+func (c *Client) ModifyReservedInstanceScopeWithContext(ctx context.Context, request *ModifyReservedInstanceScopeRequest) (response *ModifyReservedInstanceScopeResponse, err error) {
+    if request == nil {
+        request = NewModifyReservedInstanceScopeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyReservedInstanceScope require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyReservedInstanceScopeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRemoveNodeFromNodePoolRequest() (request *RemoveNodeFromNodePoolRequest) {
     request = &RemoveNodeFromNodePoolRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -12169,6 +12611,64 @@ func (c *Client) RemoveNodeFromNodePoolWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewRemoveNodeFromNodePoolResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRenewReservedInstancesRequest() (request *RenewReservedInstancesRequest) {
+    request = &RenewReservedInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tke", APIVersion, "RenewReservedInstances")
+    
+    
+    return
+}
+
+func NewRenewReservedInstancesResponse() (response *RenewReservedInstancesResponse) {
+    response = &RenewReservedInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RenewReservedInstances
+// 续费时请确保账户余额充足。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INSUFFICIENTBALANCE = "InternalError.InsufficientBalance"
+//  INTERNALERROR_NOPAYMENTACCESS = "InternalError.NoPaymentAccess"
+//  INTERNALERROR_NOTVERIFIED = "InternalError.NotVerified"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) RenewReservedInstances(request *RenewReservedInstancesRequest) (response *RenewReservedInstancesResponse, err error) {
+    return c.RenewReservedInstancesWithContext(context.Background(), request)
+}
+
+// RenewReservedInstances
+// 续费时请确保账户余额充足。
+//
+// 可能返回的错误码:
+//  INTERNALERROR_INSUFFICIENTBALANCE = "InternalError.InsufficientBalance"
+//  INTERNALERROR_NOPAYMENTACCESS = "InternalError.NoPaymentAccess"
+//  INTERNALERROR_NOTVERIFIED = "InternalError.NotVerified"
+//  INTERNALERROR_PARAM = "InternalError.Param"
+//  INTERNALERROR_TRADECOMMON = "InternalError.TradeCommon"
+//  INTERNALERROR_UNEXPECTEDINTERNAL = "InternalError.UnexpectedInternal"
+func (c *Client) RenewReservedInstancesWithContext(ctx context.Context, request *RenewReservedInstancesRequest) (response *RenewReservedInstancesResponse, err error) {
+    if request == nil {
+        request = NewRenewReservedInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RenewReservedInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRenewReservedInstancesResponse()
     err = c.Send(request, response)
     return
 }

@@ -403,6 +403,67 @@ type AutoScalingNotification struct {
 }
 
 // Predefined struct for user
+type CancelInstanceRefreshRequestParams struct {
+	// 伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
+
+	// 刷新活动ID。
+	RefreshActivityId *string `json:"RefreshActivityId,omitnil" name:"RefreshActivityId"`
+}
+
+type CancelInstanceRefreshRequest struct {
+	*tchttp.BaseRequest
+	
+	// 伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
+
+	// 刷新活动ID。
+	RefreshActivityId *string `json:"RefreshActivityId,omitnil" name:"RefreshActivityId"`
+}
+
+func (r *CancelInstanceRefreshRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelInstanceRefreshRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoScalingGroupId")
+	delete(f, "RefreshActivityId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CancelInstanceRefreshRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CancelInstanceRefreshResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CancelInstanceRefreshResponse struct {
+	*tchttp.BaseResponse
+	Response *CancelInstanceRefreshResponseParams `json:"Response"`
+}
+
+func (r *CancelInstanceRefreshResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CancelInstanceRefreshResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ClearLaunchConfigurationAttributesRequestParams struct {
 	// 启动配置ID。
 	LaunchConfigurationId *string `json:"LaunchConfigurationId,omitnil" name:"LaunchConfigurationId"`
@@ -2744,6 +2805,97 @@ func (r *DescribeNotificationConfigurationsResponse) FromJsonString(s string) er
 }
 
 // Predefined struct for user
+type DescribeRefreshActivitiesRequestParams struct {
+	// 刷新活动ID列表。ID形如：`asr-5l2ejpfo`。每次请求的上限为100。参数不支持同时指定`RefreshActivityIds`和`Filters`。
+	RefreshActivityIds []*string `json:"RefreshActivityIds,omitnil" name:"RefreshActivityIds"`
+
+	// 过滤条件。
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// <li> refresh-activity-status-code - String - 是否必填：否 -（过滤条件）按照刷新活动状态过滤。（INIT：初始化中 | RUNNING：运行中 | SUCCESSFUL：活动成功 | FAILED_PAUSE：失败暂停 | AUTO_PAUSE：自动暂停 | MANUAL_PAUSE：手动暂停 | CANCELLED：活动取消 | FAILED：活动失败）</li>
+	// <li> refresh-activity-type - String - 是否必填：否 -（过滤条件）按照刷新活动类型过滤。（NORMAL：正常刷新活动 | ROLLBACK：回滚刷新活动）</li>
+	// <li> refresh-activity-id - String - 是否必填：否 -（过滤条件）按照刷新活动ID过滤。</li>
+	// <li> 每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定RefreshActivityIds和Filters。
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+type DescribeRefreshActivitiesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 刷新活动ID列表。ID形如：`asr-5l2ejpfo`。每次请求的上限为100。参数不支持同时指定`RefreshActivityIds`和`Filters`。
+	RefreshActivityIds []*string `json:"RefreshActivityIds,omitnil" name:"RefreshActivityIds"`
+
+	// 过滤条件。
+	// <li> auto-scaling-group-id - String - 是否必填：否 -（过滤条件）按照伸缩组ID过滤。</li>
+	// <li> refresh-activity-status-code - String - 是否必填：否 -（过滤条件）按照刷新活动状态过滤。（INIT：初始化中 | RUNNING：运行中 | SUCCESSFUL：活动成功 | FAILED_PAUSE：失败暂停 | AUTO_PAUSE：自动暂停 | MANUAL_PAUSE：手动暂停 | CANCELLED：活动取消 | FAILED：活动失败）</li>
+	// <li> refresh-activity-type - String - 是否必填：否 -（过滤条件）按照刷新活动类型过滤。（NORMAL：正常刷新活动 | ROLLBACK：回滚刷新活动）</li>
+	// <li> refresh-activity-id - String - 是否必填：否 -（过滤条件）按照刷新活动ID过滤。</li>
+	// <li> 每次请求的Filters的上限为10，Filter.Values的上限为5。参数不支持同时指定RefreshActivityIds和Filters。
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 返回数量，默认为20，最大值为100。关于`Limit`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0。关于`Offset`的更进一步介绍请参考 API [简介](https://cloud.tencent.com/document/api/213/15688)中的相关小节。
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+func (r *DescribeRefreshActivitiesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRefreshActivitiesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RefreshActivityIds")
+	delete(f, "Filters")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRefreshActivitiesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRefreshActivitiesResponseParams struct {
+	// 符合条件的刷新活动数量。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 符合条件的刷新活动信息集合。
+	RefreshActivitySet []*RefreshActivity `json:"RefreshActivitySet,omitnil" name:"RefreshActivitySet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRefreshActivitiesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRefreshActivitiesResponseParams `json:"Response"`
+}
+
+func (r *DescribeRefreshActivitiesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRefreshActivitiesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeScalingPoliciesRequestParams struct {
 	// 按照一个或者多个告警策略ID查询。告警策略ID形如：asp-i9vkg894。每次请求的实例的上限为100。参数不支持同时指定`AutoScalingPolicyIds`和`Filters`。
 	AutoScalingPolicyIds []*string `json:"AutoScalingPolicyIds,omitnil" name:"AutoScalingPolicyIds"`
@@ -3271,6 +3423,71 @@ func (r *ExecuteScalingPolicyResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ExecuteScalingPolicyResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExitStandbyRequestParams struct {
+	// 伸缩组 ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
+
+	// 备用中状态 CVM 实例列表。
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
+}
+
+type ExitStandbyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 伸缩组 ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
+
+	// 备用中状态 CVM 实例列表。
+	InstanceIds []*string `json:"InstanceIds,omitnil" name:"InstanceIds"`
+}
+
+func (r *ExitStandbyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExitStandbyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoScalingGroupId")
+	delete(f, "InstanceIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ExitStandbyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ExitStandbyResponseParams struct {
+	// 伸缩活动ID。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ActivityId *string `json:"ActivityId,omitnil" name:"ActivityId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ExitStandbyResponse struct {
+	*tchttp.BaseResponse
+	Response *ExitStandbyResponseParams `json:"Response"`
+}
+
+func (r *ExitStandbyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ExitStandbyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -4900,6 +5117,94 @@ type NotificationTarget struct {
 	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
 }
 
+type RefreshActivity struct {
+	// 伸缩组 ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
+
+	// 刷新活动 ID。
+	RefreshActivityId *string `json:"RefreshActivityId,omitnil" name:"RefreshActivityId"`
+
+	// 原始刷新活动ID，仅在回滚刷新活动中存在。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OriginRefreshActivityId *string `json:"OriginRefreshActivityId,omitnil" name:"OriginRefreshActivityId"`
+
+	// 刷新批次信息列表。
+	RefreshBatchSet []*RefreshBatch `json:"RefreshBatchSet,omitnil" name:"RefreshBatchSet"`
+
+	// 刷新模式。
+	RefreshMode *string `json:"RefreshMode,omitnil" name:"RefreshMode"`
+
+	// 实例更新设置参数。
+	RefreshSettings *RefreshSettings `json:"RefreshSettings,omitnil" name:"RefreshSettings"`
+
+	// 刷新活动类型。取值如下：<br><li>NORMAL：正常刷新活动</li><li>ROLLBACK：回滚刷新活动
+	ActivityType *string `json:"ActivityType,omitnil" name:"ActivityType"`
+
+	// 刷新活动状态。取值如下：<br><li>INIT：初始化中</li><li>RUNNING：运行中</li><li>SUCCESSFUL：活动成功</li><li>FAILED_PAUSE：因刷新批次失败暂停</li><li>AUTO_PAUSE：因暂停策略自动暂停</li><li>MANUAL_PAUSE：手动暂停</li><li>CANCELLED：活动取消</li><li>FAILED：活动失败
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 当前刷新批次序号。例如，2 表示当前活动正在刷新第二批次的实例。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CurrentRefreshBatchNum *uint64 `json:"CurrentRefreshBatchNum,omitnil" name:"CurrentRefreshBatchNum"`
+
+	// 刷新活动开始时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 刷新活动结束时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 刷新活动创建时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatedTime *string `json:"CreatedTime,omitnil" name:"CreatedTime"`
+}
+
+type RefreshBatch struct {
+	// 刷新批次序号。例如，2 表示当前批次实例会在第二批次进行实例刷新。
+	RefreshBatchNum *uint64 `json:"RefreshBatchNum,omitnil" name:"RefreshBatchNum"`
+
+	// 刷新批次状态。取值如下：<br><li>WAITING：待刷新</li><li>INIT：初始化中</li><li>RUNNING：刷新中</li><li>FAILED:  刷新失败</li><li>PARTIALLY_SUCCESSFUL：批次部分成功</li><li>CANCELLED：已取消</li><li>SUCCESSFUL：刷新成功
+	RefreshBatchStatus *string `json:"RefreshBatchStatus,omitnil" name:"RefreshBatchStatus"`
+
+	// 刷新批次关联实例列表。
+	RefreshBatchRelatedInstanceSet []*RefreshBatchRelatedInstance `json:"RefreshBatchRelatedInstanceSet,omitnil" name:"RefreshBatchRelatedInstanceSet"`
+
+	// 刷新批次开始时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 刷新批次结束时间。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+}
+
+type RefreshBatchRelatedInstance struct {
+	// 实例 ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 刷新实例状态。如果在刷新时实例被移出或销毁，状态会更新为 NOT_FOUND。取值如下：<br><li>WAITING：待刷新</li><li>INIT：初始化中</li><li>RUNNING：刷新中</li><li>FAILED：刷新失败</li><li>CANCELLED：已取消</li><li>SUCCESSFUL：刷新成功</li><li>NOT_FOUND：实例不存在
+	InstanceStatus *string `json:"InstanceStatus,omitnil" name:"InstanceStatus"`
+
+	// 实例刷新中最近一次伸缩活动 ID，可通过 DescribeAutoScalingActivities 接口查询。
+	// 需注意伸缩活动与实例刷新活动不同，一次实例刷新活动可能包括多次伸缩活动。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastActivityId *string `json:"LastActivityId,omitnil" name:"LastActivityId"`
+
+	// 实例刷新状态信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStatusMessage *string `json:"InstanceStatusMessage,omitnil" name:"InstanceStatusMessage"`
+}
+
+type RefreshSettings struct {
+	// 滚动更新设置参数。RefreshMode 为滚动更新该参数必须填写。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RollingUpdateSettings *RollingUpdateSettings `json:"RollingUpdateSettings,omitnil" name:"RollingUpdateSettings"`
+
+	// 实例后端服务健康状态检查，默认为 FALSE。仅针对绑定应用型负载均衡器的伸缩组生效，开启该检查后，如刷新后实例未通过检查，负载均衡器端口权重始终为 0，且标记为刷新失败。取值范围如下：<br><li>TRUE：开启检查</li><li>FALSE：不开启检查
+	CheckInstanceTargetHealth *bool `json:"CheckInstanceTargetHealth,omitnil" name:"CheckInstanceTargetHealth"`
+}
+
 type RelatedInstance struct {
 	// 实例ID。
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -4974,6 +5279,160 @@ func (r *RemoveInstancesResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *RemoveInstancesResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeInstanceRefreshRequestParams struct {
+	// 伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
+
+	// 刷新活动ID。
+	RefreshActivityId *string `json:"RefreshActivityId,omitnil" name:"RefreshActivityId"`
+
+	// 当前批次刷新失败实例的恢复方式，如不存在失败实例，该参数无效。默认值为RETRY，取值范围如下：<br><li>RETRY: 重试当前批次刷新失败实例</li><li>CONTINUE: 跳过当前批次刷新失败实例
+	ResumeMode *string `json:"ResumeMode,omitnil" name:"ResumeMode"`
+}
+
+type ResumeInstanceRefreshRequest struct {
+	*tchttp.BaseRequest
+	
+	// 伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
+
+	// 刷新活动ID。
+	RefreshActivityId *string `json:"RefreshActivityId,omitnil" name:"RefreshActivityId"`
+
+	// 当前批次刷新失败实例的恢复方式，如不存在失败实例，该参数无效。默认值为RETRY，取值范围如下：<br><li>RETRY: 重试当前批次刷新失败实例</li><li>CONTINUE: 跳过当前批次刷新失败实例
+	ResumeMode *string `json:"ResumeMode,omitnil" name:"ResumeMode"`
+}
+
+func (r *ResumeInstanceRefreshRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeInstanceRefreshRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoScalingGroupId")
+	delete(f, "RefreshActivityId")
+	delete(f, "ResumeMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ResumeInstanceRefreshRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ResumeInstanceRefreshResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ResumeInstanceRefreshResponse struct {
+	*tchttp.BaseResponse
+	Response *ResumeInstanceRefreshResponseParams `json:"Response"`
+}
+
+func (r *ResumeInstanceRefreshResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ResumeInstanceRefreshResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RollbackInstanceRefreshRequestParams struct {
+	// 伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
+
+	// 刷新设置。
+	RefreshSettings *RefreshSettings `json:"RefreshSettings,omitnil" name:"RefreshSettings"`
+
+	// 原始刷新活动 ID。
+	OriginRefreshActivityId *string `json:"OriginRefreshActivityId,omitnil" name:"OriginRefreshActivityId"`
+
+	// 刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
+	RefreshMode *string `json:"RefreshMode,omitnil" name:"RefreshMode"`
+}
+
+type RollbackInstanceRefreshRequest struct {
+	*tchttp.BaseRequest
+	
+	// 伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
+
+	// 刷新设置。
+	RefreshSettings *RefreshSettings `json:"RefreshSettings,omitnil" name:"RefreshSettings"`
+
+	// 原始刷新活动 ID。
+	OriginRefreshActivityId *string `json:"OriginRefreshActivityId,omitnil" name:"OriginRefreshActivityId"`
+
+	// 刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
+	RefreshMode *string `json:"RefreshMode,omitnil" name:"RefreshMode"`
+}
+
+func (r *RollbackInstanceRefreshRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollbackInstanceRefreshRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoScalingGroupId")
+	delete(f, "RefreshSettings")
+	delete(f, "OriginRefreshActivityId")
+	delete(f, "RefreshMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackInstanceRefreshRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RollbackInstanceRefreshResponseParams struct {
+	// 刷新活动 ID。
+	RefreshActivityId *string `json:"RefreshActivityId,omitnil" name:"RefreshActivityId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type RollbackInstanceRefreshResponse struct {
+	*tchttp.BaseResponse
+	Response *RollbackInstanceRefreshResponseParams `json:"Response"`
+}
+
+func (r *RollbackInstanceRefreshResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollbackInstanceRefreshResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type RollingUpdateSettings struct {
+	// 批次数量。批次数量为大于 0 的正整数，但不能大于待刷新实例数量。
+	BatchNumber *uint64 `json:"BatchNumber,omitnil" name:"BatchNumber"`
+
+	// 批次间暂停策略。默认值为 Automatic，取值范围如下：<br><li>FIRST_BATCH_PAUSE：第一批次更新完成后暂停</li><li>BATCH_INTERVAL_PAUSE：批次间暂停</li><li>AUTOMATIC：不暂停
+	BatchPause *string `json:"BatchPause,omitnil" name:"BatchPause"`
 }
 
 type RunAutomationServiceEnabled struct {
@@ -5389,6 +5848,77 @@ func (r *StartAutoScalingInstancesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type StartInstanceRefreshRequestParams struct {
+	// 伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
+
+	// 刷新设置。
+	RefreshSettings *RefreshSettings `json:"RefreshSettings,omitnil" name:"RefreshSettings"`
+
+	// 刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
+	RefreshMode *string `json:"RefreshMode,omitnil" name:"RefreshMode"`
+}
+
+type StartInstanceRefreshRequest struct {
+	*tchttp.BaseRequest
+	
+	// 伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
+
+	// 刷新设置。
+	RefreshSettings *RefreshSettings `json:"RefreshSettings,omitnil" name:"RefreshSettings"`
+
+	// 刷新模式，目前仅支持滚动更新，默认值为 ROLLING_UPDATE_RESET。
+	RefreshMode *string `json:"RefreshMode,omitnil" name:"RefreshMode"`
+}
+
+func (r *StartInstanceRefreshRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartInstanceRefreshRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoScalingGroupId")
+	delete(f, "RefreshSettings")
+	delete(f, "RefreshMode")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StartInstanceRefreshRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StartInstanceRefreshResponseParams struct {
+	// 刷新活动 ID。
+	RefreshActivityId *string `json:"RefreshActivityId,omitnil" name:"RefreshActivityId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type StartInstanceRefreshResponse struct {
+	*tchttp.BaseResponse
+	Response *StartInstanceRefreshResponseParams `json:"Response"`
+}
+
+func (r *StartInstanceRefreshResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StartInstanceRefreshResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type StopAutoScalingInstancesRequestParams struct {
 	// 伸缩组ID
 	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
@@ -5462,6 +5992,67 @@ func (r *StopAutoScalingInstancesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *StopAutoScalingInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopInstanceRefreshRequestParams struct {
+	// 伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
+
+	// 刷新活动ID。
+	RefreshActivityId *string `json:"RefreshActivityId,omitnil" name:"RefreshActivityId"`
+}
+
+type StopInstanceRefreshRequest struct {
+	*tchttp.BaseRequest
+	
+	// 伸缩组ID。
+	AutoScalingGroupId *string `json:"AutoScalingGroupId,omitnil" name:"AutoScalingGroupId"`
+
+	// 刷新活动ID。
+	RefreshActivityId *string `json:"RefreshActivityId,omitnil" name:"RefreshActivityId"`
+}
+
+func (r *StopInstanceRefreshRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopInstanceRefreshRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "AutoScalingGroupId")
+	delete(f, "RefreshActivityId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "StopInstanceRefreshRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type StopInstanceRefreshResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type StopInstanceRefreshResponse struct {
+	*tchttp.BaseResponse
+	Response *StopInstanceRefreshResponseParams `json:"Response"`
+}
+
+func (r *StopInstanceRefreshResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *StopInstanceRefreshResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

@@ -4002,7 +4002,7 @@ type LicensePlateInfo struct {
 	// 文本行在原图片中的像素坐标框。
 	Rect *Rect `json:"Rect,omitnil" name:"Rect"`
 
-	// 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”。
+	// 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
 	Color *string `json:"Color,omitnil" name:"Color"`
 }
 
@@ -4070,7 +4070,7 @@ type LicensePlateOCRResponseParams struct {
 	// 文本行在原图片中的像素坐标框。
 	Rect *Rect `json:"Rect,omitnil" name:"Rect"`
 
-	// 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”。
+	// 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
 	Color *string `json:"Color,omitnil" name:"Color"`
 
 	// 全部车牌信息。
