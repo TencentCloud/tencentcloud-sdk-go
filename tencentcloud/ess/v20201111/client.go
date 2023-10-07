@@ -3489,6 +3489,7 @@ func NewCreatePreparedPersonalEsignResponse() (response *CreatePreparedPersonalE
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDMOBILE = "InvalidParameterValue.InvalidMobile"
@@ -3503,6 +3504,7 @@ func (c *Client) CreatePreparedPersonalEsign(request *CreatePreparedPersonalEsig
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
+//  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDMOBILE = "InvalidParameterValue.InvalidMobile"
@@ -4910,6 +4912,7 @@ func NewDescribeFlowInfoResponse() (response *DescribeFlowInfoResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
@@ -4931,6 +4934,7 @@ func (c *Client) DescribeFlowInfo(request *DescribeFlowInfoRequest) (response *D
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR_SYSTEM = "InternalError.System"
 //  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
 //  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
@@ -5263,6 +5267,7 @@ func NewDescribeIntegrationRolesResponse() (response *DescribeIntegrationRolesRe
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeIntegrationRoles(request *DescribeIntegrationRolesRequest) (response *DescribeIntegrationRolesResponse, err error) {
@@ -5285,6 +5290,7 @@ func (c *Client) DescribeIntegrationRoles(request *DescribeIntegrationRolesReque
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  OPERATIONDENIED_SUBORGNOTJOIN = "OperationDenied.SubOrgNotJoin"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSIONFEATURE = "UnauthorizedOperation.NoPermissionFeature"
 func (c *Client) DescribeIntegrationRolesWithContext(ctx context.Context, request *DescribeIntegrationRolesRequest) (response *DescribeIntegrationRolesResponse, err error) {

@@ -338,6 +338,9 @@ const (
 	// 操作不允许。
 	INVALIDPARAMETERVALUE_NOTALLOW = "InvalidParameterValue.NotAllow"
 
+	// 裸金属资源组不支持创建免费存储的Notebook
+	INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATEFREEVOLUMENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateFreeVolumeNotebookWithBareMetalResourceGroup"
+
 	// 裸金属资源组不支持创建Notebook
 	INVALIDPARAMETERVALUE_NOTALLOWEDTOCREATENOTEBOOKWITHBAREMETALRESOURCEGROUP = "InvalidParameterValue.NotAllowedToCreateNotebookWithBareMetalResourceGroup"
 

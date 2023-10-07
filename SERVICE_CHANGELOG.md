@@ -1,40 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 弹性伸缩(as) 版本：2018-04-19
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
-### 第 68 次发布
+### 第 116 次发布
 
-发布时间：2023-09-28 01:06:16
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CancelInstanceRefresh](https://cloud.tencent.com/document/api/377/99176)
-* [DescribeRefreshActivities](https://cloud.tencent.com/document/api/377/99175)
-* [ExitStandby](https://cloud.tencent.com/document/api/377/99177)
-* [ResumeInstanceRefresh](https://cloud.tencent.com/document/api/377/99174)
-* [RollbackInstanceRefresh](https://cloud.tencent.com/document/api/377/99173)
-* [StartInstanceRefresh](https://cloud.tencent.com/document/api/377/99172)
-* [StopInstanceRefresh](https://cloud.tencent.com/document/api/377/99171)
-
-新增数据结构：
-
-* [RefreshActivity](https://cloud.tencent.com/document/api/377/20453#RefreshActivity)
-* [RefreshBatch](https://cloud.tencent.com/document/api/377/20453#RefreshBatch)
-* [RefreshBatchRelatedInstance](https://cloud.tencent.com/document/api/377/20453#RefreshBatchRelatedInstance)
-* [RefreshSettings](https://cloud.tencent.com/document/api/377/20453#RefreshSettings)
-* [RollingUpdateSettings](https://cloud.tencent.com/document/api/377/20453#RollingUpdateSettings)
-
-
-
-## 弹性 MapReduce(emr) 版本：2019-01-03
-
-### 第 51 次发布
-
-发布时间：2023-09-28 01:13:27
+发布时间：2023-10-07 11:30:18
 
 本次发布包含了以下内容：
 
@@ -42,46 +12,12 @@
 
 修改接口：
 
-* [ModifyResourcesTags](https://cloud.tencent.com/document/api/589/96242)
-
-	* 新增出参：ClusterToFlowIdList
-
-
-新增数据结构：
-
-* [ClusterIDToFlowID](https://cloud.tencent.com/document/api/589/33981#ClusterIDToFlowID)
-
-
-
-## 腾讯电子签企业版(ess) 版本：2020-11-11
-
-### 第 123 次发布
-
-发布时间：2023-09-28 01:13:45
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateOrganizationInfoChangeUrl](https://cloud.tencent.com/document/api/1323/99178)
-
-
-
-## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
-
-### 第 115 次发布
-
-发布时间：2023-09-28 01:14:02
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
 * [CreateChannelOrganizationInfoChangeUrl](https://cloud.tencent.com/document/api/1420/99179)
+
+	* 新增入参：Agent, ChangeType
+
+	* 新增出参：Url, ExpiredTime
+
 
 
 
@@ -89,30 +25,11 @@
 
 
 
-## 云直播CSS(live) 版本：2018-08-01
+## Web 应用防火墙(waf) 版本：2018-01-25
 
-### 第 112 次发布
+### 第 59 次发布
 
-发布时间：2023-09-28 01:17:11
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ModifyLivePullStreamTask](https://cloud.tencent.com/document/api/267/56242)
-
-	* 新增入参：ToUrl
-
-
-
-
-## 媒体处理(mps) 版本：2019-06-12
-
-### 第 73 次发布
-
-发布时间：2023-09-28 01:18:13
+发布时间：2023-09-29 01:25:00
 
 本次发布包含了以下内容：
 
@@ -120,154 +37,9 @@
 
 修改数据结构：
 
-* [CreateInput](https://cloud.tencent.com/document/api/862/37615#CreateInput)
+* [GoodsDetailNew](https://cloud.tencent.com/document/api/627/53609#GoodsDetailNew)
 
-	* 新增成员：SecurityGroupIds
-
-* [CreateOutputInfo](https://cloud.tencent.com/document/api/862/37615#CreateOutputInfo)
-
-	* 新增成员：SecurityGroupIds
-
-* [DescribeInput](https://cloud.tencent.com/document/api/862/37615#DescribeInput)
-
-	* 新增成员：SecurityGroupIds
-
-* [DescribeOutput](https://cloud.tencent.com/document/api/862/37615#DescribeOutput)
-
-	* 新增成员：SecurityGroupIds
-
-	* <font color="#dd0000">**修改成员**：</font>MaxConcurrent
-
-* [ModifyInput](https://cloud.tencent.com/document/api/862/37615#ModifyInput)
-
-	* 新增成员：SecurityGroupIds
-
-* [ModifyOutputInfo](https://cloud.tencent.com/document/api/862/37615#ModifyOutputInfo)
-
-	* 新增成员：SecurityGroupIds
-
-
-
-
-## 云开发 CloudBase(tcb) 版本：2018-06-08
-
-### 第 100 次发布
-
-发布时间：2023-09-28 01:21:31
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增数据结构：
-
-* [CustomHeader](https://cloud.tencent.com/document/api/876/34822#CustomHeader)
-* [CustomRequestToAdd](https://cloud.tencent.com/document/api/876/34822#CustomRequestToAdd)
-
-修改数据结构：
-
-* [WxGatewayRountItem](https://cloud.tencent.com/document/api/876/34822#WxGatewayRountItem)
-
-	* 新增成员：CustomHeader
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-09-01
-
-### 第 55 次发布
-
-发布时间：2023-09-28 01:23:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [RuleCondition](https://cloud.tencent.com/document/api/1552/80721#RuleCondition)
-
-
-
-
-## 边缘安全加速平台(teo) 版本：2022-01-06
-
-
-
-## 容器服务(tke) 版本：2018-05-25
-
-### 第 161 次发布
-
-发布时间：2023-09-27 22:00:52
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [CreateReservedInstances](https://cloud.tencent.com/document/api/457/99167)
-* [DeleteReservedInstances](https://cloud.tencent.com/document/api/457/99166)
-* [DescribePodDeductionRate](https://cloud.tencent.com/document/api/457/99165)
-* [DescribePodsBySpec](https://cloud.tencent.com/document/api/457/99164)
-* [DescribePostNodeResources](https://cloud.tencent.com/document/api/457/99168)
-* [DescribeRIUtilizationDetail](https://cloud.tencent.com/document/api/457/99163)
-* [DescribeReservedInstances](https://cloud.tencent.com/document/api/457/99162)
-* [ModifyReservedInstanceScope](https://cloud.tencent.com/document/api/457/99161)
-* [RenewReservedInstances](https://cloud.tencent.com/document/api/457/99158)
-
-修改接口：
-
-* [ModifyClusterNodePool](https://cloud.tencent.com/document/api/457/49431)
-
-	* 新增入参：PreStartUserScript
-
-
-新增数据结构：
-
-* [InstanceChargePrepaid](https://cloud.tencent.com/document/api/457/31866#InstanceChargePrepaid)
-* [PodDeductionRate](https://cloud.tencent.com/document/api/457/31866#PodDeductionRate)
-* [PodNodeInfo](https://cloud.tencent.com/document/api/457/31866#PodNodeInfo)
-* [RIUtilizationDetail](https://cloud.tencent.com/document/api/457/31866#RIUtilizationDetail)
-* [ReservedInstance](https://cloud.tencent.com/document/api/457/31866#ReservedInstance)
-* [ReservedInstanceScope](https://cloud.tencent.com/document/api/457/31866#ReservedInstanceScope)
-* [ReservedInstanceSpec](https://cloud.tencent.com/document/api/457/31866#ReservedInstanceSpec)
-* [SuperNodeResource](https://cloud.tencent.com/document/api/457/31866#SuperNodeResource)
-
-修改数据结构：
-
-* [NodePool](https://cloud.tencent.com/document/api/457/31866#NodePool)
-
-	* 新增成员：ExtraArgs, GPUArgs, DockerGraphPath, DataDisks, Unschedulable, PreStartUserScript
-
-
-
-
-## 私有网络(vpc) 版本：2017-03-12
-
-### 第 174 次发布
-
-发布时间：2023-09-28 01:25:40
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateVpcPeeringConnection](https://cloud.tencent.com/document/api/215/96025)
-
-	* 新增入参：SourceVpcId, PeeringConnectionName, DestinationVpcId, DestinationUin, DestinationRegion, Bandwidth, Type, ChargeType, QosLevel
-
-	* 新增出参：PeeringConnectionId
-
-* [ModifyVpcPeeringConnection](https://cloud.tencent.com/document/api/215/96022)
-
-	* 新增入参：PeeringConnectionId, PeeringConnectionName, Bandwidth, ChargeType
-
-* [RejectVpcPeeringConnection](https://cloud.tencent.com/document/api/215/96021)
-
-	* 新增入参：PeeringConnectionId
+	* 新增成员：ResourceId
 
 
 
@@ -4843,21 +4615,21 @@
 
 新增接口：
 
-* [[CancelInstanceRefresh](https://cloud.tencent.com/document/api/377/99176)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRefreshActivities](https://cloud.tencent.com/document/api/377/99175)](https://cloud.tencent.com/document/api/#/#)
-* [[ExitStandby](https://cloud.tencent.com/document/api/377/99177)](https://cloud.tencent.com/document/api/#/#)
-* [[ResumeInstanceRefresh](https://cloud.tencent.com/document/api/377/99174)](https://cloud.tencent.com/document/api/#/#)
-* [[RollbackInstanceRefresh](https://cloud.tencent.com/document/api/377/99173)](https://cloud.tencent.com/document/api/#/#)
-* [[StartInstanceRefresh](https://cloud.tencent.com/document/api/377/99172)](https://cloud.tencent.com/document/api/#/#)
-* [[StopInstanceRefresh](https://cloud.tencent.com/document/api/377/99171)](https://cloud.tencent.com/document/api/#/#)
+* [CancelInstanceRefresh](https://cloud.tencent.com/document/api/377/99176)
+* [DescribeRefreshActivities](https://cloud.tencent.com/document/api/377/99175)
+* [ExitStandby](https://cloud.tencent.com/document/api/377/99177)
+* [ResumeInstanceRefresh](https://cloud.tencent.com/document/api/377/99174)
+* [RollbackInstanceRefresh](https://cloud.tencent.com/document/api/377/99173)
+* [StartInstanceRefresh](https://cloud.tencent.com/document/api/377/99172)
+* [StopInstanceRefresh](https://cloud.tencent.com/document/api/377/99171)
 
 新增数据结构：
 
-* [[RefreshActivity](https://cloud.tencent.com/document/api/377/20453#RefreshActivity)](https://cloud.tencent.com/document/api/377/20453#[RefreshActivity](https://cloud.tencent.com/document/api/377/20453#RefreshActivity))
-* [[RefreshBatch](https://cloud.tencent.com/document/api/377/20453#RefreshBatch)](https://cloud.tencent.com/document/api/377/20453#[RefreshBatch](https://cloud.tencent.com/document/api/377/20453#RefreshBatch))
-* [[RefreshBatchRelatedInstance](https://cloud.tencent.com/document/api/377/20453#RefreshBatchRelatedInstance)](https://cloud.tencent.com/document/api/377/20453#[RefreshBatchRelatedInstance](https://cloud.tencent.com/document/api/377/20453#RefreshBatchRelatedInstance))
-* [[RefreshSettings](https://cloud.tencent.com/document/api/377/20453#RefreshSettings)](https://cloud.tencent.com/document/api/377/20453#[RefreshSettings](https://cloud.tencent.com/document/api/377/20453#RefreshSettings))
-* [[RollingUpdateSettings](https://cloud.tencent.com/document/api/377/20453#RollingUpdateSettings)](https://cloud.tencent.com/document/api/377/20453#[RollingUpdateSettings](https://cloud.tencent.com/document/api/377/20453#RollingUpdateSettings))
+* [RefreshActivity](https://cloud.tencent.com/document/api/377/20453#RefreshActivity)
+* [RefreshBatch](https://cloud.tencent.com/document/api/377/20453#RefreshBatch)
+* [RefreshBatchRelatedInstance](https://cloud.tencent.com/document/api/377/20453#RefreshBatchRelatedInstance)
+* [RefreshSettings](https://cloud.tencent.com/document/api/377/20453#RefreshSettings)
+* [RollingUpdateSettings](https://cloud.tencent.com/document/api/377/20453#RollingUpdateSettings)
 
 ### 第 67 次发布
 
@@ -51565,7 +51337,7 @@
 
 新增数据结构：
 
-* [[ClusterIDToFlowID](https://cloud.tencent.com/document/api/589/33981#ClusterIDToFlowID)](https://cloud.tencent.com/document/api/589/33981#[ClusterIDToFlowID](https://cloud.tencent.com/document/api/589/33981#ClusterIDToFlowID))
+* [ClusterIDToFlowID](https://cloud.tencent.com/document/api/589/33981#ClusterIDToFlowID)
 
 ### 第 50 次发布
 
@@ -53820,7 +53592,7 @@
 
 新增接口：
 
-* [[CreateOrganizationInfoChangeUrl](https://cloud.tencent.com/document/api/1323/99178)](https://cloud.tencent.com/document/api/#/#)
+* [CreateOrganizationInfoChangeUrl](https://cloud.tencent.com/document/api/1323/99178)
 
 ### 第 122 次发布
 
@@ -56260,6 +56032,23 @@
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
 
+### 第 116 次发布
+
+发布时间：2023-10-07 11:30:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateChannelOrganizationInfoChangeUrl](https://cloud.tencent.com/document/api/1420/99179)
+
+	* 新增入参：Agent, ChangeType
+
+	* 新增出参：Url, ExpiredTime
+
+
 ### 第 115 次发布
 
 发布时间：2023-09-28 01:14:02
@@ -56270,7 +56059,7 @@
 
 新增接口：
 
-* [[CreateChannelOrganizationInfoChangeUrl](https://cloud.tencent.com/document/api/1420/99179)](https://cloud.tencent.com/document/api/#/#)
+* [CreateChannelOrganizationInfoChangeUrl](https://cloud.tencent.com/document/api/1420/99179)
 
 ### 第 114 次发布
 
@@ -98613,8 +98402,8 @@
 
 新增数据结构：
 
-* [[CustomHeader](https://cloud.tencent.com/document/api/876/34822#CustomHeader)](https://cloud.tencent.com/document/api/876/34822#[CustomHeader](https://cloud.tencent.com/document/api/876/34822#CustomHeader))
-* [[CustomRequestToAdd](https://cloud.tencent.com/document/api/876/34822#CustomRequestToAdd)](https://cloud.tencent.com/document/api/876/34822#[CustomRequestToAdd](https://cloud.tencent.com/document/api/876/34822#CustomRequestToAdd))
+* [CustomHeader](https://cloud.tencent.com/document/api/876/34822#CustomHeader)
+* [CustomRequestToAdd](https://cloud.tencent.com/document/api/876/34822#CustomRequestToAdd)
 
 修改数据结构：
 
@@ -114259,15 +114048,15 @@
 
 新增接口：
 
-* [[CreateReservedInstances](https://cloud.tencent.com/document/api/457/99167)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteReservedInstances](https://cloud.tencent.com/document/api/457/99166)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePodDeductionRate](https://cloud.tencent.com/document/api/457/99165)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePodsBySpec](https://cloud.tencent.com/document/api/457/99164)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribePostNodeResources](https://cloud.tencent.com/document/api/457/99168)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRIUtilizationDetail](https://cloud.tencent.com/document/api/457/99163)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeReservedInstances](https://cloud.tencent.com/document/api/457/99162)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyReservedInstanceScope](https://cloud.tencent.com/document/api/457/99161)](https://cloud.tencent.com/document/api/#/#)
-* [[RenewReservedInstances](https://cloud.tencent.com/document/api/457/99158)](https://cloud.tencent.com/document/api/#/#)
+* [CreateReservedInstances](https://cloud.tencent.com/document/api/457/99167)
+* [DeleteReservedInstances](https://cloud.tencent.com/document/api/457/99166)
+* [DescribePodDeductionRate](https://cloud.tencent.com/document/api/457/99165)
+* [DescribePodsBySpec](https://cloud.tencent.com/document/api/457/99164)
+* [DescribePostNodeResources](https://cloud.tencent.com/document/api/457/99168)
+* [DescribeRIUtilizationDetail](https://cloud.tencent.com/document/api/457/99163)
+* [DescribeReservedInstances](https://cloud.tencent.com/document/api/457/99162)
+* [ModifyReservedInstanceScope](https://cloud.tencent.com/document/api/457/99161)
+* [RenewReservedInstances](https://cloud.tencent.com/document/api/457/99158)
 
 修改接口：
 
@@ -114278,14 +114067,14 @@
 
 新增数据结构：
 
-* [[InstanceChargePrepaid](https://cloud.tencent.com/document/api/457/31866#InstanceChargePrepaid)](https://cloud.tencent.com/document/api/457/31866#[InstanceChargePrepaid](https://cloud.tencent.com/document/api/457/31866#InstanceChargePrepaid))
-* [[PodDeductionRate](https://cloud.tencent.com/document/api/457/31866#PodDeductionRate)](https://cloud.tencent.com/document/api/457/31866#[PodDeductionRate](https://cloud.tencent.com/document/api/457/31866#PodDeductionRate))
-* [[PodNodeInfo](https://cloud.tencent.com/document/api/457/31866#PodNodeInfo)](https://cloud.tencent.com/document/api/457/31866#[PodNodeInfo](https://cloud.tencent.com/document/api/457/31866#PodNodeInfo))
-* [[RIUtilizationDetail](https://cloud.tencent.com/document/api/457/31866#RIUtilizationDetail)](https://cloud.tencent.com/document/api/457/31866#[RIUtilizationDetail](https://cloud.tencent.com/document/api/457/31866#RIUtilizationDetail))
-* [[ReservedInstance](https://cloud.tencent.com/document/api/457/31866#ReservedInstance)](https://cloud.tencent.com/document/api/457/31866#[ReservedInstance](https://cloud.tencent.com/document/api/457/31866#ReservedInstance))
-* [[ReservedInstanceScope](https://cloud.tencent.com/document/api/457/31866#ReservedInstanceScope)](https://cloud.tencent.com/document/api/457/31866#[ReservedInstanceScope](https://cloud.tencent.com/document/api/457/31866#ReservedInstanceScope))
-* [[ReservedInstanceSpec](https://cloud.tencent.com/document/api/457/31866#ReservedInstanceSpec)](https://cloud.tencent.com/document/api/457/31866#[ReservedInstanceSpec](https://cloud.tencent.com/document/api/457/31866#ReservedInstanceSpec))
-* [[SuperNodeResource](https://cloud.tencent.com/document/api/457/31866#SuperNodeResource)](https://cloud.tencent.com/document/api/457/31866#[SuperNodeResource](https://cloud.tencent.com/document/api/457/31866#SuperNodeResource))
+* [InstanceChargePrepaid](https://cloud.tencent.com/document/api/457/31866#InstanceChargePrepaid)
+* [PodDeductionRate](https://cloud.tencent.com/document/api/457/31866#PodDeductionRate)
+* [PodNodeInfo](https://cloud.tencent.com/document/api/457/31866#PodNodeInfo)
+* [RIUtilizationDetail](https://cloud.tencent.com/document/api/457/31866#RIUtilizationDetail)
+* [ReservedInstance](https://cloud.tencent.com/document/api/457/31866#ReservedInstance)
+* [ReservedInstanceScope](https://cloud.tencent.com/document/api/457/31866#ReservedInstanceScope)
+* [ReservedInstanceSpec](https://cloud.tencent.com/document/api/457/31866#ReservedInstanceSpec)
+* [SuperNodeResource](https://cloud.tencent.com/document/api/457/31866#SuperNodeResource)
 
 修改数据结构：
 
@@ -132655,6 +132444,21 @@
 
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 59 次发布
+
+发布时间：2023-09-29 01:25:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GoodsDetailNew](https://cloud.tencent.com/document/api/627/53609#GoodsDetailNew)
+
+	* 新增成员：ResourceId
+
 
 ### 第 58 次发布
 

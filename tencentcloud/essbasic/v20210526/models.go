@@ -4346,12 +4346,23 @@ func (r *CreateChannelFlowEvidenceReportResponse) FromJsonString(s string) error
 
 // Predefined struct for user
 type CreateChannelOrganizationInfoChangeUrlRequestParams struct {
+	// 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
+	// 企业信息变更类型，可选类型如下：
+	// <ul><li>**1**：企业超管变更</li><li>**2**：企业基础信息变更</li></ul>
+	ChangeType *uint64 `json:"ChangeType,omitnil" name:"ChangeType"`
 }
 
 type CreateChannelOrganizationInfoChangeUrlRequest struct {
 	*tchttp.BaseRequest
 	
+	// 关于渠道应用的相关信息，包括子客企业及应用编、号等详细内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 企业信息变更类型，可选类型如下：
+	// <ul><li>**1**：企业超管变更</li><li>**2**：企业基础信息变更</li></ul>
+	ChangeType *uint64 `json:"ChangeType,omitnil" name:"ChangeType"`
 }
 
 func (r *CreateChannelOrganizationInfoChangeUrlRequest) ToJsonString() string {
@@ -4366,7 +4377,8 @@ func (r *CreateChannelOrganizationInfoChangeUrlRequest) FromJsonString(s string)
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Agent")
+	delete(f, "ChangeType")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateChannelOrganizationInfoChangeUrlRequest has unknown keys!", "")
 	}
@@ -4375,6 +4387,12 @@ func (r *CreateChannelOrganizationInfoChangeUrlRequest) FromJsonString(s string)
 
 // Predefined struct for user
 type CreateChannelOrganizationInfoChangeUrlResponseParams struct {
+	// 创建的企业信息变更链接。
+	Url *string `json:"Url,omitnil" name:"Url"`
+
+	// 链接过期时间。链接7天有效。
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }

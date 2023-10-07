@@ -83,6 +83,9 @@ const (
 	// 别称域名不支持配置国密证书。
 	INVALIDPARAMETER_ALIASDOMAINNOTSUPPORTSMCERT = "InvalidParameter.AliasDomainNotSupportSMCert"
 
+	// 无效的查询字符串。
+	INVALIDPARAMETER_CACHEKEYQUERYSTRINGREQUIRESFULLURLCACHEOFF = "InvalidParameter.CacheKeyQueryStringRequiresFullUrlCacheOff"
+
 	// 查询字符串规则超过了限制。
 	INVALIDPARAMETER_CACHEKEYQUERYSTRINGTOOMANYVALUE = "InvalidParameter.CacheKeyQueryStringTooManyValue"
 
@@ -266,6 +269,9 @@ const (
 	// 无效的自定义错误页面。
 	INVALIDPARAMETER_INVALIDERRORPAGEREDIRECTURL = "InvalidParameter.InvalidErrorPageRedirectUrl"
 
+	// 无效的强制HTTPS跳转。
+	INVALIDPARAMETER_INVALIDFORCEREDIRECTTYPE = "InvalidParameter.InvalidForceRedirectType"
+
 	// 无效的HTTPS。
 	INVALIDPARAMETER_INVALIDHTTPS = "InvalidParameter.InvalidHttps"
 
@@ -415,6 +421,9 @@ const (
 
 	// 内部错误。
 	INVALIDPARAMETER_TASKSYSTEMERROR = "InvalidParameter.TaskSystemError"
+
+	// 过滤值过多。
+	INVALIDPARAMETER_TOOMANYFILTERVALUES = "InvalidParameter.TooManyFilterValues"
 
 	// 文件上传链接存在问题。
 	INVALIDPARAMETER_UPLOADURL = "InvalidParameter.UploadUrl"

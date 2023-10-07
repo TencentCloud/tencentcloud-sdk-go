@@ -350,6 +350,9 @@ const (
 	// 包名不能为空。
 	MISSINGPARAMETER_PKGNAMENULL = "MissingParameter.PkgNameNull"
 
+	// 镜像仓库服务器不能为空。
+	MISSINGPARAMETER_REPOSERVERNULL = "MissingParameter.RepoServerNull"
+
 	// 弹性规则ID不能为空。
 	MISSINGPARAMETER_SCALERIDNULL = "MissingParameter.ScalerIdNull"
 

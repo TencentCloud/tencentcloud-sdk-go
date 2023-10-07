@@ -1,3 +1,49 @@
+# Release v1.0.760
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 116 次发布
+
+发布时间：2023-10-07 11:30:18
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateChannelOrganizationInfoChangeUrl](https://cloud.tencent.com/document/api/1420/99179)
+
+	* 新增入参：Agent, ChangeType
+
+	* 新增出参：Url, ExpiredTime
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 59 次发布
+
+发布时间：2023-09-29 01:25:00
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [GoodsDetailNew](https://cloud.tencent.com/document/api/627/53609#GoodsDetailNew)
+
+	* 新增成员：ResourceId
+
+
+
+
 # Release v1.0.759
 
 ## 弹性伸缩(as) 版本：2018-04-19

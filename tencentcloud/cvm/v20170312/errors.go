@@ -98,6 +98,9 @@ const (
 	// 实例无法退还。
 	FAILEDOPERATION_UNRETURNABLE = "FailedOperation.Unreturnable"
 
+	// 给定实例所在可用区不相同，请给定相同可用区的实例。
+	FAILEDOPERATION_ZONEINCONSISTENT = "FailedOperation.ZoneInconsistent"
+
 	// 镜像配额超过了限制。
 	IMAGEQUOTALIMITEXCEEDED = "ImageQuotaLimitExceeded"
 
@@ -706,6 +709,9 @@ const (
 
 	// 该可用区已售罄
 	RESOURCEINSUFFICIENT_AVAILABILITYZONESOLDOUT = "ResourceInsufficient.AvailabilityZoneSoldOut"
+
+	// 网段资源不足。
+	RESOURCEINSUFFICIENT_CIDRBLOCK = "ResourceInsufficient.CidrBlock"
 
 	// 指定的云盘规格已售罄
 	RESOURCEINSUFFICIENT_CLOUDDISKSOLDOUT = "ResourceInsufficient.CloudDiskSoldOut"

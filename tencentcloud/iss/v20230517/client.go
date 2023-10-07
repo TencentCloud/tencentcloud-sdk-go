@@ -665,6 +665,7 @@ func NewAddUserDeviceResponse() (response *AddUserDeviceResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
 //  INVALIDPARAMETERVALUE_INVALIDUSERNAME = "InvalidParameterValue.InvalidUsername"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
+//  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_NOTFOUNDCLUSTER = "ResourceNotFound.NotFoundCluster"
 func (c *Client) AddUserDevice(request *AddUserDeviceRequest) (response *AddUserDeviceResponse, err error) {
@@ -683,6 +684,7 @@ func (c *Client) AddUserDevice(request *AddUserDeviceRequest) (response *AddUser
 //  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
 //  INVALIDPARAMETERVALUE_INVALIDUSERNAME = "InvalidParameterValue.InvalidUsername"
 //  INVALIDPARAMETERVALUE_UNSUPPORTEDACCESSTYPE = "InvalidParameterValue.UnSupportedAccessType"
+//  REGIONERROR_RESOURCEUNREACHABLE = "RegionError.ResourceUnreachable"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_NOTFOUNDCLUSTER = "ResourceNotFound.NotFoundCluster"
 func (c *Client) AddUserDeviceWithContext(ctx context.Context, request *AddUserDeviceRequest) (response *AddUserDeviceResponse, err error) {
@@ -3153,6 +3155,7 @@ func NewListDevicesResponse() (response *ListDevicesResponse) {
 // 用于获取对应组织下的设备列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_INVALIDACCESSPROTOCOL = "InvalidParameterValue.InvalidAccessProtocol"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICESTATUS = "InvalidParameterValue.InvalidDeviceStatus"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICETYPE = "InvalidParameterValue.InvalidDeviceType"
@@ -3167,6 +3170,7 @@ func (c *Client) ListDevices(request *ListDevicesRequest) (response *ListDevices
 // 用于获取对应组织下的设备列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE_INVALIDACCESSPROTOCOL = "InvalidParameterValue.InvalidAccessProtocol"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICESTATUS = "InvalidParameterValue.InvalidDeviceStatus"
 //  INVALIDPARAMETERVALUE_INVALIDDEVICETYPE = "InvalidParameterValue.InvalidDeviceType"
@@ -3268,6 +3272,7 @@ func NewListGatewaysResponse() (response *ListGatewaysResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDCLUSTERID = "InvalidParameterValue.InvalidClusterId"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
 func (c *Client) ListGateways(request *ListGatewaysRequest) (response *ListGatewaysResponse, err error) {
     return c.ListGatewaysWithContext(context.Background(), request)
 }
@@ -3279,6 +3284,7 @@ func (c *Client) ListGateways(request *ListGatewaysRequest) (response *ListGatew
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDCLUSTERID = "InvalidParameterValue.InvalidClusterId"
+//  INVALIDPARAMETERVALUE_INVALIDNAME = "InvalidParameterValue.InvalidName"
 func (c *Client) ListGatewaysWithContext(ctx context.Context, request *ListGatewaysRequest) (response *ListGatewaysResponse, err error) {
     if request == nil {
         request = NewListGatewaysRequest()

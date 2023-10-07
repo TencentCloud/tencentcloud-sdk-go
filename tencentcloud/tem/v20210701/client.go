@@ -224,6 +224,7 @@ func NewCreateApplicationServiceResponse() (response *CreateApplicationServiceRe
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INTERNALERROR_DESCRIBESERVICELISTERROR = "InternalError.DescribeServiceListError"
 //  INVALIDPARAMETER_APPLICATIONACCESSSERVICEREACHMAXIMUM = "InvalidParameter.ApplicationAccessServiceReachMaximum"
 //  INVALIDPARAMETER_LBSERVICECANNOTSUPPORTTCPUDPSAMETIME = "InvalidParameter.LBServiceCannotSupportTcpUdpSameTime"
 //  INVALIDPARAMETER_MUSTPROVIDEPORTMAPPINGRULES = "InvalidParameter.MustProvidePortMappingRules"
@@ -253,6 +254,7 @@ func (c *Client) CreateApplicationService(request *CreateApplicationServiceReque
 //
 // 可能返回的错误码:
 //  INTERNALERROR_DEFAULTINTERNALERROR = "InternalError.DefaultInternalError"
+//  INTERNALERROR_DESCRIBESERVICELISTERROR = "InternalError.DescribeServiceListError"
 //  INVALIDPARAMETER_APPLICATIONACCESSSERVICEREACHMAXIMUM = "InvalidParameter.ApplicationAccessServiceReachMaximum"
 //  INVALIDPARAMETER_LBSERVICECANNOTSUPPORTTCPUDPSAMETIME = "InvalidParameter.LBServiceCannotSupportTcpUdpSameTime"
 //  INVALIDPARAMETER_MUSTPROVIDEPORTMAPPINGRULES = "InvalidParameter.MustProvidePortMappingRules"
@@ -929,6 +931,7 @@ func NewDeployApplicationResponse() (response *DeployApplicationResponse) {
 //  MISSINGPARAMETER_IMGREPONULL = "MissingParameter.ImgRepoNull"
 //  MISSINGPARAMETER_LOGSETORTOPICNULL = "MissingParameter.LogsetOrTopicNull"
 //  MISSINGPARAMETER_PKGNAMENULL = "MissingParameter.PkgNameNull"
+//  MISSINGPARAMETER_REPOSERVERNULL = "MissingParameter.RepoServerNull"
 //  MISSINGPARAMETER_SERVICEIDNULL = "MissingParameter.ServiceIdNull"
 //  MISSINGPARAMETER_SVCREPONOTREADY = "MissingParameter.SvcRepoNotReady"
 //  MISSINGPARAMETER_VPCSERVICESUBNETNULL = "MissingParameter.VpcServiceSubnetNull"
@@ -983,6 +986,7 @@ func (c *Client) DeployApplication(request *DeployApplicationRequest) (response 
 //  MISSINGPARAMETER_IMGREPONULL = "MissingParameter.ImgRepoNull"
 //  MISSINGPARAMETER_LOGSETORTOPICNULL = "MissingParameter.LogsetOrTopicNull"
 //  MISSINGPARAMETER_PKGNAMENULL = "MissingParameter.PkgNameNull"
+//  MISSINGPARAMETER_REPOSERVERNULL = "MissingParameter.RepoServerNull"
 //  MISSINGPARAMETER_SERVICEIDNULL = "MissingParameter.ServiceIdNull"
 //  MISSINGPARAMETER_SVCREPONOTREADY = "MissingParameter.SvcRepoNotReady"
 //  MISSINGPARAMETER_VPCSERVICESUBNETNULL = "MissingParameter.VpcServiceSubnetNull"

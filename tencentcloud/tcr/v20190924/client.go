@@ -2851,6 +2851,7 @@ func NewDeleteRepositoryTagsResponse() (response *DeleteRepositoryTagsResponse) 
 // 用于企业版批量删除Repository Tag
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PRECONDITIONFAILED = "FailedOperation.PreconditionFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"
@@ -2870,6 +2871,7 @@ func (c *Client) DeleteRepositoryTags(request *DeleteRepositoryTagsRequest) (res
 // 用于企业版批量删除Repository Tag
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_PRECONDITIONFAILED = "FailedOperation.PreconditionFailed"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ERRORTCRINTERNAL = "InternalError.ErrorTcrInternal"
 //  INTERNALERROR_ERRORTCRINVALIDMEDIATYPE = "InternalError.ErrorTcrInvalidMediaType"

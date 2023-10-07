@@ -104,6 +104,9 @@ const (
 	// 素材人脸ID不存在。
 	FAILEDOPERATION_TEMPLATEFACEIDNOTEXIST = "FailedOperation.TemplateFaceIDNotExist"
 
+	// 未知错误。
+	FAILEDOPERATION_UNKNOWN = "FailedOperation.Unknown"
+
 	// 未查找到活动id。
 	INVALIDPARAMETERVALUE_ACTIVITYIDNOTFOUND = "InvalidParameterValue.ActivityIdNotFound"
 

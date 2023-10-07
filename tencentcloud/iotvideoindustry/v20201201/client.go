@@ -3422,6 +3422,7 @@ func NewDescribeChannelStreamURLResponse() (response *DescribeChannelStreamURLRe
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
+//  INVALIDPARAMETERVALUE_DEVICETYPENOTSUPPORT = "InvalidParameterValue.DeviceTypeNotSupport"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCEUNAVAILABLE_STREAMINFOEXCEPTION = "ResourceUnavailable.StreamInfoException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"
@@ -3437,6 +3438,7 @@ func (c *Client) DescribeChannelStreamURL(request *DescribeChannelStreamURLReque
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETERVALUE_DEVICEOFFLINE = "InvalidParameterValue.DeviceOffline"
+//  INVALIDPARAMETERVALUE_DEVICETYPENOTSUPPORT = "InvalidParameterValue.DeviceTypeNotSupport"
 //  RESOURCENOTFOUND_DEVICENOTEXIST = "ResourceNotFound.DeviceNotExist"
 //  RESOURCEUNAVAILABLE_STREAMINFOEXCEPTION = "ResourceUnavailable.StreamInfoException"
 //  UNSUPPORTEDOPERATION_DEVICESIPCOMMANDFAIL = "UnsupportedOperation.DeviceSipCommandFail"

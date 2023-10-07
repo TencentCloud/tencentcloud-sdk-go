@@ -357,6 +357,7 @@ func NewAddSpartaProtectionResponse() (response *AddSpartaProtectionResponse) {
 //  INVALIDPARAMETER_TLSPARAMETERERR = "InvalidParameter.TLSParameterErr"
 //  INVALIDPARAMETER_UNAUTHORIZEDOPERATIONPARAMETERERR = "InvalidParameter.UnauthorizedOperationParameterErr"
 //  INVALIDPARAMETER_UPSTREAMPARAMETERERR = "InvalidParameter.UpstreamParameterErr"
+//  INVALIDPARAMETER_XFFRESETPARAMETERERR = "InvalidParameter.XFFResetParameterErr"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -388,6 +389,7 @@ func (c *Client) AddSpartaProtection(request *AddSpartaProtectionRequest) (respo
 //  INVALIDPARAMETER_TLSPARAMETERERR = "InvalidParameter.TLSParameterErr"
 //  INVALIDPARAMETER_UNAUTHORIZEDOPERATIONPARAMETERERR = "InvalidParameter.UnauthorizedOperationParameterErr"
 //  INVALIDPARAMETER_UPSTREAMPARAMETERERR = "InvalidParameter.UpstreamParameterErr"
+//  INVALIDPARAMETER_XFFRESETPARAMETERERR = "InvalidParameter.XFFResetParameterErr"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
@@ -682,6 +684,7 @@ func NewDeleteAntiFakeUrlResponse() (response *DeleteAntiFakeUrlResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAntiFakeUrl(request *DeleteAntiFakeUrlRequest) (response *DeleteAntiFakeUrlResponse, err error) {
     return c.DeleteAntiFakeUrlWithContext(context.Background(), request)
@@ -692,6 +695,7 @@ func (c *Client) DeleteAntiFakeUrl(request *DeleteAntiFakeUrlRequest) (response 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteAntiFakeUrlWithContext(ctx context.Context, request *DeleteAntiFakeUrlRequest) (response *DeleteAntiFakeUrlResponse, err error) {
     if request == nil {
@@ -1225,6 +1229,7 @@ func NewDeleteSessionResponse() (response *DeleteSessionResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION_SESSIONINUSED = "FailedOperation.SessionInUsed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteSession(request *DeleteSessionRequest) (response *DeleteSessionResponse, err error) {
     return c.DeleteSessionWithContext(context.Background(), request)
@@ -1236,6 +1241,7 @@ func (c *Client) DeleteSession(request *DeleteSessionRequest) (response *DeleteS
 // 可能返回的错误码:
 //  FAILEDOPERATION_SESSIONINUSED = "FailedOperation.SessionInUsed"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DeleteSessionWithContext(ctx context.Context, request *DeleteSessionRequest) (response *DeleteSessionResponse, err error) {
     if request == nil {
@@ -1838,6 +1844,7 @@ func NewDescribeAntiInfoLeakageRulesResponse() (response *DescribeAntiInfoLeakag
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 func (c *Client) DescribeAntiInfoLeakageRules(request *DescribeAntiInfoLeakageRulesRequest) (response *DescribeAntiInfoLeakageRulesResponse, err error) {
     return c.DescribeAntiInfoLeakageRulesWithContext(context.Background(), request)
 }
@@ -1847,6 +1854,7 @@ func (c *Client) DescribeAntiInfoLeakageRules(request *DescribeAntiInfoLeakageRu
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 func (c *Client) DescribeAntiInfoLeakageRulesWithContext(ctx context.Context, request *DescribeAntiInfoLeakageRulesRequest) (response *DescribeAntiInfoLeakageRulesResponse, err error) {
     if request == nil {
         request = NewDescribeAntiInfoLeakageRulesRequest()
