@@ -151,13 +151,13 @@ func main() {
         // 实例化一个客户端配置对象，可以指定超时时间等配置
         cpf := profile.NewClientProfile()
         // SDK默认使用POST方法。
-        // 如果你一定要使用GET方法，可以在这里设置。GET方法无法处理一些较大的请求。
+        // 如果您一定要使用GET方法，可以在这里设置。GET方法无法处理一些较大的请求。
         // 如非必要请不要修改默认设置。
         cpf.HttpProfile.ReqMethod = "POST"
         // SDK有默认的超时时间，如非必要请不要修改默认设置。
         // 如有需要请在代码中查阅以获取最新的默认值。
         cpf.HttpProfile.ReqTimeout = 30
-        // SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务，
+        // SDK会自动指定域名。通常是不需要特地指定域名的，但是如果您访问的是金融区的服务，
         // 则必须手动指定域名，例如云服务器的上海金融区域名： cvm.ap-shanghai-fsi.tencentcloudapi.com
         cpf.HttpProfile.Endpoint = "cvm.tencentcloudapi.com"
         // SDK默认用TC3-HMAC-SHA256进行签名，它更安全但是会轻微降低性能。
@@ -175,14 +175,14 @@ func main() {
         // 第二个参数是地域信息，可以直接填写字符串ap-guangzhou，或者引用预设的常量
         client, _ := cvm.NewClient(credential, regions.Guangzhou, cpf)
         // 实例化一个请求对象，根据调用的接口和实际情况，可以进一步设置请求参数
-        // 你可以直接查询SDK源码确定DescribeInstancesRequest有哪些属性可以设置，
+        // 您可以直接查询SDK源码确定DescribeInstancesRequest有哪些属性可以设置，
         // 属性可能是基本类型，也可能引用了另一个数据结构。
         // 推荐使用IDE进行开发，可以方便的跳转查阅各个接口和数据结构的文档说明。
         request := cvm.NewDescribeInstancesRequest()
 
         // 基本类型的设置。
         // 此接口允许设置返回的实例数量。此处指定为只返回一个。
-        // SDK采用的是指针风格指定参数，即使对于基本类型你也需要用指针来对参数赋值。
+        // SDK采用的是指针风格指定参数，即使对于基本类型您也需要用指针来对参数赋值。
         // SDK提供对基本类型的指针引用封装函数
         request.Limit = common.Int64Ptr(1)
 
@@ -233,7 +233,7 @@ cpf := profile.NewClientProfile()
 
 ## 请求方式
 
-SDK默认使用POST方法。 如果你一定要使用GET方法，可以在这里设置。**GET方法无法处理一些较大的请求**。
+SDK默认使用POST方法。 如果您一定要使用GET方法，可以在这里设置。**GET方法无法处理一些较大的请求**。
 
 ```go
 cpf.HttpProfile.ReqMethod = "POST"
@@ -251,7 +251,7 @@ cpf.HttpProfile.ReqTimeout = 30
 
 ## 指定域名
 
-SDK会自动指定域名。通常是不需要特地指定域名的，但是如果你访问的是金融区的服务，
+SDK会自动指定域名。通常是不需要特地指定域名的，但是如果您访问的是金融区的服务，
 则必须手动指定域名，例如云服务器的上海金融区域名： cvm.ap-shanghai-fsi.tencentcloudapi.com
 
 ```go
@@ -327,7 +327,7 @@ SDK 会自动将您请求的地域设置为备选地域。
 ## 忽略服务器证书校验
 
 虽然使用 SDK 调用公有云服务时，必须校验服务器证书，以识破他人伪装的服务器，确保请求的安全。
-但是某些极端情况下，例如测试时，你可能会需要忽略自签名的服务器证书。
+但是某些极端情况下，例如测试时，您可能会需要忽略自签名的服务器证书。
 以下是其中一种可能的方法：
 
 ```golang
@@ -341,7 +341,7 @@ import "crypto/tls"
 ...
 ```
 
-**再次强调，除非你知道自己在做什么，并明白由此带来的风险，否则不要尝试关闭服务器证书校验。**
+**再次强调，除非您知道自己在做什么，并明白由此带来的风险，否则不要尝试关闭服务器证书校验。**
 
 # 功能介绍
 
@@ -608,7 +608,7 @@ func main() {
 
 ## 空数组和omitempty
 在 v1.0.738 以及之前的版本, SDK使用`omitempty`标签来序列化请求, 这会导致 nil 数组和 长度为0的空数组 都无法被序列化。
-这在你希望发送一个空数组的时候会造成不便, 在之前你需要使用 CommonClient 来解决这个问题。
+这在您希望发送一个空数组的时候会造成不便, 在之前您需要使用 CommonClient 来解决这个问题。
 
 在 >= v1.0.739 的版本, SDK使用`omitnil`标签来序列化请求, 此时nil数组会被忽略掉, 但是空数组可以被正常发送。
 
