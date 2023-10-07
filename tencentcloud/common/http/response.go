@@ -8,6 +8,7 @@ import (
 	"io"
 	"io/ioutil"
 	"log"
+	"strconv"
 
 	//"log"
 	"net/http"
@@ -31,7 +32,7 @@ type SSEvent struct {
 	Event string
 	Data  []byte
 	Id    string
-	Retry int
+	Retry int64
 	Err   error
 }
 
@@ -211,10 +212,10 @@ func parseFromSSE(hr *http.Response, resp Response) error {
 			idx := bytes.IndexByte(line, ':')
 			if idx == -1 {
 				select {
-				case ch <- SSEvent{Err: fmt.Errorf("SSE.ServerError: received invalid line,%s", line)}:
+				case ch <- SSEvent{Err: fmt.Errorf("SSE.InvalidLine:%s", line)}:
 				default:
 				}
-				break
+				return
 			}
 
 			key := string(line[:idx])
@@ -224,6 +225,18 @@ func parseFromSSE(hr *http.Response, resp Response) error {
 				event.Event = string(val)
 			case "data":
 				event.Data = append(event.Data, val...)
+			case "id":
+				event.Id = string(val)
+			case "retry":
+				retry, err := strconv.ParseInt(string(val), 10, 64)
+				if err != nil {
+					select {
+					case ch <- SSEvent{Err: fmt.Errorf("SSE.InvalidRetry:%s", line)}:
+					default:
+					}
+					return
+				}
+				event.Retry = retry
 			}
 		}
 
