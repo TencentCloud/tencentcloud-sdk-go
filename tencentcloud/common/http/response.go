@@ -8,6 +8,7 @@ import (
 	"io"
 	"io/ioutil"
 	"log"
+
 	//"log"
 	"net/http"
 
@@ -21,8 +22,9 @@ type Response interface {
 type BaseResponse struct {
 }
 
-type StreamResponse interface {
-	streamResponseEmbed()
+type SSEResponse interface {
+	Response
+	setEventsChannel(ch chan SSEvent)
 }
 
 type SSEvent struct {
@@ -30,11 +32,7 @@ type SSEvent struct {
 	Data  []byte
 	Id    string
 	Retry int
-}
-
-type SSEResponse interface {
-	Response
-	setEventsChannel(ch chan SSEvent)
+	Err   error
 }
 
 type BaseSSEResponse struct {
@@ -196,14 +194,26 @@ func parseFromSSE(hr *http.Response, resp Response) error {
 
 			// SSE use empty line to indicate message end
 			if len(line) == 0 {
-				ch <- event
-				event = SSEvent{}
-				continue
+				select {
+				case ch <- event:
+					event = SSEvent{}
+					continue
+				case <-hr.Request.Context().Done():
+					select {
+					case ch <- SSEvent{Err: hr.Request.Context().Err()}:
+					default:
+						log.Println(hr.Request.Context().Err())
+					}
+					return
+				}
 			}
 
 			idx := bytes.IndexByte(line, ':')
 			if idx == -1 {
-				log.Printf("ServerError: SSE received invalid line,%s", line)
+				select {
+				case ch <- SSEvent{Err: fmt.Errorf("SSE.ServerError: received invalid line,%s", line)}:
+				default:
+				}
 				break
 			}
 
@@ -218,7 +228,11 @@ func parseFromSSE(hr *http.Response, resp Response) error {
 		}
 
 		if err := scanner.Err(); err != nil {
-			log.Printf("ClientError: " + err.Error())
+			select {
+			case ch <- SSEvent{Err: err}:
+			default:
+				log.Println(err)
+			}
 		}
 	}()
 
