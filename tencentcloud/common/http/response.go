@@ -209,6 +209,11 @@ func parseFromSSE(hr *http.Response, resp Response) error {
 				}
 			}
 
+			// comment
+			if line[0] == ':' {
+				continue
+			}
+
 			idx := bytes.IndexByte(line, ':')
 			if idx == -1 {
 				select {
