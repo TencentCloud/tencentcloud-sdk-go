@@ -229,6 +229,10 @@ func parseFromSSE(hr *http.Response, resp Response) error {
 			case "event":
 				event.Event = string(val)
 			case "data":
+				// The spec allows for multiple data fields per event, concat them with "\n".
+				if len(event.Data) > 0 {
+					event.Data = append(event.Data, '\n')
+				}
 				event.Data = append(event.Data, val...)
 			case "id":
 				event.Id = string(val)
