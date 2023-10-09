@@ -4411,7 +4411,8 @@ type CreateSchemeUrlRequestParams struct {
 	// 
 	// <ul><li> **0** : 腾讯电子签小程序个人首页 (默认)</li>
 	// <li> **1** : 腾讯电子签小程序流程合同的详情页 (即合同签署页面)</li>
-	// <li> **2** : 腾讯电子签小程序合同列表页</li></ul>
+	// <li> **2** : 腾讯电子签小程序合同列表页</li><li> **3** : 腾讯电子签小程序合同封面页
+	// 注：`生成动态签署人补充链接时，必须指定为封面页`</li></ul>
 	PathType *uint64 `json:"PathType,omitnil" name:"PathType"`
 
 	// 签署完成后是否自动回跳
@@ -4433,7 +4434,9 @@ type CreateSchemeUrlRequestParams struct {
 	// 注:  `字段为数组, 可以传值隐藏多个按钮`
 	Hides []*int64 `json:"Hides,omitnil" name:"Hides"`
 
-	// 签署节点ID，用于生成动态签署人链接完成领取
+	// 签署节点ID，用于生成动态签署人链接完成领取。
+	// 
+	// 注：`生成动态签署人补充链接时必传。`
 	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 }
 
@@ -4472,7 +4475,8 @@ type CreateSchemeUrlRequest struct {
 	// 
 	// <ul><li> **0** : 腾讯电子签小程序个人首页 (默认)</li>
 	// <li> **1** : 腾讯电子签小程序流程合同的详情页 (即合同签署页面)</li>
-	// <li> **2** : 腾讯电子签小程序合同列表页</li></ul>
+	// <li> **2** : 腾讯电子签小程序合同列表页</li><li> **3** : 腾讯电子签小程序合同封面页
+	// 注：`生成动态签署人补充链接时，必须指定为封面页`</li></ul>
 	PathType *uint64 `json:"PathType,omitnil" name:"PathType"`
 
 	// 签署完成后是否自动回跳
@@ -4494,7 +4498,9 @@ type CreateSchemeUrlRequest struct {
 	// 注:  `字段为数组, 可以传值隐藏多个按钮`
 	Hides []*int64 `json:"Hides,omitnil" name:"Hides"`
 
-	// 签署节点ID，用于生成动态签署人链接完成领取
+	// 签署节点ID，用于生成动态签署人链接完成领取。
+	// 
+	// 注：`生成动态签署人补充链接时必传。`
 	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 }
 
@@ -9009,6 +9015,10 @@ type TemplateInfo struct {
 	// false-未发布
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Published *bool `json:"Published,omitnil" name:"Published"`
+
+	// 分享来源的模板ID。用在集团账号子企业模板里
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ShareTemplateId *string `json:"ShareTemplateId,omitnil" name:"ShareTemplateId"`
 
 	// 模板内部指定的印章列表
 	// 注意：此字段可能返回 null，表示取不到有效值。

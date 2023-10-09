@@ -6110,7 +6110,7 @@ func (r *DescribeAddonValuesRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeAddonValuesResponseParams struct {
-	// 参数列表，如果addon已安装，会使用已设置的的参数做渲染，是一个json格式的字符串
+	// 参数列表，如果addon已安装，会使用已设置的参数做渲染，是一个json格式的字符串
 	Values *string `json:"Values,omitnil" name:"Values"`
 
 	// addon支持的参数列表，使用默认值，是一个json格式的字符串

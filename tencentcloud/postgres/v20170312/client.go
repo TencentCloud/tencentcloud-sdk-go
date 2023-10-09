@@ -7228,3 +7228,55 @@ func (c *Client) UpgradeDBInstanceKernelVersionWithContext(ctx context.Context, 
     err = c.Send(request, response)
     return
 }
+
+func NewUpgradeDBInstanceMajorVersionRequest() (request *UpgradeDBInstanceMajorVersionRequest) {
+    request = &UpgradeDBInstanceMajorVersionRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("postgres", APIVersion, "UpgradeDBInstanceMajorVersion")
+    
+    
+    return
+}
+
+func NewUpgradeDBInstanceMajorVersionResponse() (response *UpgradeDBInstanceMajorVersionResponse) {
+    response = &UpgradeDBInstanceMajorVersionResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// UpgradeDBInstanceMajorVersion
+// 本接口（UpgradeDBInstanceMajorVersion）用于升级实例内核大版本，例如从PostgreSQL 12升级到PostgreSQL 15。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) UpgradeDBInstanceMajorVersion(request *UpgradeDBInstanceMajorVersionRequest) (response *UpgradeDBInstanceMajorVersionResponse, err error) {
+    return c.UpgradeDBInstanceMajorVersionWithContext(context.Background(), request)
+}
+
+// UpgradeDBInstanceMajorVersion
+// 本接口（UpgradeDBInstanceMajorVersion）用于升级实例内核大版本，例如从PostgreSQL 12升级到PostgreSQL 15。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
+//  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
+func (c *Client) UpgradeDBInstanceMajorVersionWithContext(ctx context.Context, request *UpgradeDBInstanceMajorVersionRequest) (response *UpgradeDBInstanceMajorVersionResponse, err error) {
+    if request == nil {
+        request = NewUpgradeDBInstanceMajorVersionRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("UpgradeDBInstanceMajorVersion require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewUpgradeDBInstanceMajorVersionResponse()
+    err = c.Send(request, response)
+    return
+}

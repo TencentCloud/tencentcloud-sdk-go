@@ -47,6 +47,9 @@ const (
 	// 创建引擎失败。
 	FAILEDOPERATION_CREATEDATAENGINEFAILED = "FailedOperation.CreateDataEngineFailed"
 
+	// 删除数据引擎失败。
+	FAILEDOPERATION_DELETEDATAENGINEFAILED = "FailedOperation.DeleteDataEngineFailed"
+
 	// 发货失败。
 	FAILEDOPERATION_DELIVERGOODSFAILED = "FailedOperation.DeliverGoodsFailed"
 
@@ -146,8 +149,14 @@ const (
 	// 重复的用户名。
 	INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
 
+	// 实例在其他流程中。
+	INVALIDPARAMETER_INSTANCEINPROCESS = "InvalidParameter.InstanceInProcess"
+
 	// 无效的访问策略。
 	INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
+
+	// 无效的引擎描述信息。
+	INVALIDPARAMETER_INVALIDDATAENGINEDESCRIPTION = "InvalidParameter.InvalidDataEngineDescription"
 
 	// 无效的数据引擎模式。
 	INVALIDPARAMETER_INVALIDDATAENGINEMODE = "InvalidParameter.InvalidDataEngineMode"
@@ -157,6 +166,9 @@ const (
 
 	// 无效的数据引擎规格。
 	INVALIDPARAMETER_INVALIDDATAENGINESPECS = "InvalidParameter.InvalidDataEngineSpecs"
+
+	// 无效的默认数据引擎参数。
+	INVALIDPARAMETER_INVALIDDEFAULTDATAENGINE = "InvalidParameter.InvalidDefaultDataEngine"
 
 	// 无效的描述信息。
 	INVALIDPARAMETER_INVALIDDESCRIPTION = "InvalidParameter.InvalidDescription"
@@ -173,8 +185,14 @@ const (
 	// 无效的工作组Id。
 	INVALIDPARAMETER_INVALIDGROUPID = "InvalidParameter.InvalidGroupId"
 
+	// 请求的消息类型无效。
+	INVALIDPARAMETER_INVALIDINFOTYPE = "InvalidParameter.InvalidInfoType"
+
 	// 无效的最大结果数。
 	INVALIDPARAMETER_INVALIDMAXRESULTS = "InvalidParameter.InvalidMaxResults"
+
+	// 无效的最小集群数量。
+	INVALIDPARAMETER_INVALIDMINCLUSTERS = "InvalidParameter.InvalidMinClusters"
 
 	// 无效的Offset值。
 	INVALIDPARAMETER_INVALIDOFFSET = "InvalidParameter.InvalidOffset"
@@ -242,6 +260,12 @@ const (
 	// 操作被拒绝。
 	OPERATIONDENIED = "OperationDenied"
 
+	// 资源被占用。
+	RESOURCEINUSE = "ResourceInUse"
+
+	// 有SQL任务尚未执行完成。
+	RESOURCEINUSE_UNFINISHEDSQLS = "ResourceInUse.UnfinishedSQLs"
+
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
@@ -290,6 +314,9 @@ const (
 	// 子用户不是管理员，无权创建工作组。
 	UNAUTHORIZEDOPERATION_CREATEWORKGROUP = "UnauthorizedOperation.CreateWorkgroup"
 
+	// 子用户无权删除计算引擎。
+	UNAUTHORIZEDOPERATION_DELETECOMPUTINGENGINE = "UnauthorizedOperation.DeleteComputingEngine"
+
 	// 子用户不是管理员，无权删除用户。
 	UNAUTHORIZEDOPERATION_DELETEUSER = "UnauthorizedOperation.DeleteUser"
 
@@ -302,8 +329,14 @@ const (
 	// 子用户无权授予特定权限。
 	UNAUTHORIZEDOPERATION_GRANTPOLICY = "UnauthorizedOperation.GrantPolicy"
 
+	// 子用户无权修改引擎配置。
+	UNAUTHORIZEDOPERATION_MODIFYCOMPUTINGENGINE = "UnauthorizedOperation.ModifyComputingEngine"
+
 	// 子用户不是管理员，无权修改用户信息。
 	UNAUTHORIZEDOPERATION_MODIFYUSERINFO = "UnauthorizedOperation.ModifyUserInfo"
+
+	// 子用户不是管理员，无权修改用户类型。
+	UNAUTHORIZEDOPERATION_MODIFYUSERTYPE = "UnauthorizedOperation.ModifyUserType"
 
 	// 子用户不是管理员，无权修改工作组信息。
 	UNAUTHORIZEDOPERATION_MODIFYWORKGROUPINFO = "UnauthorizedOperation.ModifyWorkgroupInfo"

@@ -4224,7 +4224,7 @@ func NewGetAlarmLogResponse() (response *GetAlarmLogResponse) {
 }
 
 // GetAlarmLog
-// 本接口用于获取告警任务历史
+// 本接口用于获取告警策略执行详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4249,7 +4249,7 @@ func (c *Client) GetAlarmLog(request *GetAlarmLogRequest) (response *GetAlarmLog
 }
 
 // GetAlarmLog
-// 本接口用于获取告警任务历史
+// 本接口用于获取告警策略执行详情
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

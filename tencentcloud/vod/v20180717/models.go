@@ -12115,10 +12115,10 @@ type EditMediaFileInfo struct {
 	// 视频的 ID。
 	FileId *string `json:"FileId,omitnil" name:"FileId"`
 
-	// 视频剪辑的起始偏移时间偏移，单位：秒。
+	// 视频剪辑起始的偏移时间，单位：秒。
 	StartTimeOffset *float64 `json:"StartTimeOffset,omitnil" name:"StartTimeOffset"`
 
-	// 视频剪辑的起始结束时间偏移，单位：秒。
+	// 视频剪辑结束的偏移时间，单位：秒。
 	EndTimeOffset *float64 `json:"EndTimeOffset,omitnil" name:"EndTimeOffset"`
 }
 

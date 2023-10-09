@@ -773,6 +773,84 @@ func (c *Client) ChannelCreateEmbedWebUrlWithContext(ctx context.Context, reques
     return
 }
 
+func NewChannelCreateFlowApproversRequest() (request *ChannelCreateFlowApproversRequest) {
+    request = &ChannelCreateFlowApproversRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateFlowApprovers")
+    
+    
+    return
+}
+
+func NewChannelCreateFlowApproversResponse() (response *ChannelCreateFlowApproversResponse) {
+    response = &ChannelCreateFlowApproversResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateFlowApprovers
+// 适用场景：
+//
+// 当通过模板或文件发起合同时，若未指定企业签署人信息，则可调用此接口动态补充签署人。同一签署人只允许补充一人，最终实际签署人取决于谁先领取合同完成签署。
+//
+// 
+//
+// 限制条件：
+//
+// 1. 本企业（发起方企业）企业签署人仅支持通过企业名称+姓名+手机号进行补充。
+//
+// 2. 个人签署人仅支持通过姓名+手机号进行补充。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateFlowApprovers(request *ChannelCreateFlowApproversRequest) (response *ChannelCreateFlowApproversResponse, err error) {
+    return c.ChannelCreateFlowApproversWithContext(context.Background(), request)
+}
+
+// ChannelCreateFlowApprovers
+// 适用场景：
+//
+// 当通过模板或文件发起合同时，若未指定企业签署人信息，则可调用此接口动态补充签署人。同一签署人只允许补充一人，最终实际签署人取决于谁先领取合同完成签署。
+//
+// 
+//
+// 限制条件：
+//
+// 1. 本企业（发起方企业）企业签署人仅支持通过企业名称+姓名+手机号进行补充。
+//
+// 2. 个人签署人仅支持通过姓名+手机号进行补充。
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateFlowApproversWithContext(ctx context.Context, request *ChannelCreateFlowApproversRequest) (response *ChannelCreateFlowApproversResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateFlowApproversRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateFlowApprovers require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateFlowApproversResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateFlowByFilesRequest() (request *ChannelCreateFlowByFilesRequest) {
     request = &ChannelCreateFlowByFilesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1553,6 +1631,86 @@ func (c *Client) ChannelCreateMultiFlowSignQRCodeWithContext(ctx context.Context
     request.SetContext(ctx)
     
     response = NewChannelCreateMultiFlowSignQRCodeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewChannelCreateOrganizationBatchSignUrlRequest() (request *ChannelCreateOrganizationBatchSignUrlRequest) {
+    request = &ChannelCreateOrganizationBatchSignUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateOrganizationBatchSignUrl")
+    
+    
+    return
+}
+
+func NewChannelCreateOrganizationBatchSignUrlResponse() (response *ChannelCreateOrganizationBatchSignUrlResponse) {
+    response = &ChannelCreateOrganizationBatchSignUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateOrganizationBatchSignUrl
+// 通过此接口，创建小程序批量签署链接，可以创建企业批量签署链接，员工只需点击链接即可跳转至控制台进行批量签署。
+//
+// 
+//
+// 注：
+//
+// - 员工必须在企业下完成实名认证，且需作为批量签署合同的签署方或者领取方。
+//
+// - 仅支持传入待签署或者待领取的合同，待填写暂不支持。
+//
+// - 员工批量签署，支持多种签名方式，包括手写签名、临摹签名、系统签名、个人印章，暂不支持签批控件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateOrganizationBatchSignUrl(request *ChannelCreateOrganizationBatchSignUrlRequest) (response *ChannelCreateOrganizationBatchSignUrlResponse, err error) {
+    return c.ChannelCreateOrganizationBatchSignUrlWithContext(context.Background(), request)
+}
+
+// ChannelCreateOrganizationBatchSignUrl
+// 通过此接口，创建小程序批量签署链接，可以创建企业批量签署链接，员工只需点击链接即可跳转至控制台进行批量签署。
+//
+// 
+//
+// 注：
+//
+// - 员工必须在企业下完成实名认证，且需作为批量签署合同的签署方或者领取方。
+//
+// - 仅支持传入待签署或者待领取的合同，待填写暂不支持。
+//
+// - 员工批量签署，支持多种签名方式，包括手写签名、临摹签名、系统签名、个人印章，暂不支持签批控件
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_API = "InternalError.Api"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateOrganizationBatchSignUrlWithContext(ctx context.Context, request *ChannelCreateOrganizationBatchSignUrlRequest) (response *ChannelCreateOrganizationBatchSignUrlResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateOrganizationBatchSignUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateOrganizationBatchSignUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateOrganizationBatchSignUrlResponse()
     err = c.Send(request, response)
     return
 }

@@ -95,6 +95,10 @@ type CLS struct {
 
 	// 是否删除
 	NeedDelete *bool `json:"NeedDelete,omitnil" name:"NeedDelete"`
+
+	// cls 主题创建的地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil" name:"Region"`
 }
 
 type Cluster struct {

@@ -6135,6 +6135,10 @@ type InstanceTypeQuotaItem struct {
 
 	// 实例的CPU主频信息
 	Frequency *string `json:"Frequency,omitnil" name:"Frequency"`
+
+	// 描述库存情况。取值范围： <br><li> UnderStock：表示对应库存即将售罄<br><li> NormalStock：表示对应库存供应有保障<br><li> EnoughStock：表示对应库存非常充足<br><li> WithoutStock：表示对应库存已经售罄
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusCategory *string `json:"StatusCategory,omitnil" name:"StatusCategory"`
 }
 
 type InternetAccessible struct {

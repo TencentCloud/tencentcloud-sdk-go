@@ -8725,6 +8725,144 @@ func (r *UpgradeDBInstanceKernelVersionResponse) FromJsonString(s string) error 
 }
 
 // Predefined struct for user
+type UpgradeDBInstanceMajorVersionRequestParams struct {
+	// 实例ID。
+	DBInstanceId *string `json:"DBInstanceId,omitnil" name:"DBInstanceId"`
+
+	// 目标内核版本号，可以通过API DescribeDBVersions获取可以升级的目标内核版本号。
+	TargetDBKernelVersion *string `json:"TargetDBKernelVersion,omitnil" name:"TargetDBKernelVersion"`
+
+	// 是否为校验模式，若UpgradeCheck为True，表示仅进行内核版本兼容性检查，不会进行实质性的升级操作，对原实例无影响。检查结果可以通过升级日志查看。
+	UpgradeCheck *bool `json:"UpgradeCheck,omitnil" name:"UpgradeCheck"`
+
+	// 升级前备份选项。True，表示升级前需要创建全量备份，False，表示升级前不需要创建全量备份。当实例已有备份集可以恢复到升级前的状态时，可选择False，否则需要指定为True。UpgradeCheck为True时，此参数无效。
+	BackupBeforeUpgrade *bool `json:"BackupBeforeUpgrade,omitnil" name:"BackupBeforeUpgrade"`
+
+	// 统计信息收集选项，对主例运行 ANALYZE 以在升级后更新系统统计信息。可选值包括，
+	// 0：不需要收集统计信息；
+	// 1：实例恢复写之前收集统计信息；
+	// 3：实例恢复写之后收集统计信息。
+	// UpgradeCheck为True时，此参数无效。
+	StatisticsRefreshOption *int64 `json:"StatisticsRefreshOption,omitnil" name:"StatisticsRefreshOption"`
+
+	// 插件升级选项，pg_upgrade不会升级任何插件，需要在升级完成后在创建过插件的库上执行"ALTER EXTENSION UPDATE"。发起升级实例大版本时可以指定在实例恢复写前/后是否需要升级任务自动升级插件版本。可选值包括：
+	// 0：不需要自动升级插件；
+	// 1：恢复写之前升级插件；
+	// 2：恢复写之后升级插件。
+	// UpgradeCheck为True时，此参数无效。
+	ExtensionUpgradeOption *int64 `json:"ExtensionUpgradeOption,omitnil" name:"ExtensionUpgradeOption"`
+
+	// 升级时间选项，升级过程中会有一段时间实例只读，并会有一次秒级闪断，发起升级时需要选择这段影响的时间窗。可选值包括：
+	// 0：自动执行，不需要指定时间窗；
+	// 1：指定本次升级任务的时间窗，通过参数UpgradeTimeBegin和UpgradeTimeEnd设置；
+	// 2：在实例运维时间窗内执行。
+	// UpgradeCheck为True时，此参数无效。
+	UpgradeTimeOption *int64 `json:"UpgradeTimeOption,omitnil" name:"UpgradeTimeOption"`
+
+	// 升级时间窗开始时间，时间格式：HH:MM:SS，例如：01:00:00。当UpgradeTimeOption为1时，该参数有效。
+	// UpgradeCheck为True时，此参数无效。
+	UpgradeTimeBegin *string `json:"UpgradeTimeBegin,omitnil" name:"UpgradeTimeBegin"`
+
+	// 升级时间窗截止时间，时间格式：HH:MM:SS，例如：02:00:00。当UpgradeTimeOption为1时，该参数有效。
+	// UpgradeCheck为True时，此参数无效。
+	UpgradeTimeEnd *string `json:"UpgradeTimeEnd,omitnil" name:"UpgradeTimeEnd"`
+}
+
+type UpgradeDBInstanceMajorVersionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	DBInstanceId *string `json:"DBInstanceId,omitnil" name:"DBInstanceId"`
+
+	// 目标内核版本号，可以通过API DescribeDBVersions获取可以升级的目标内核版本号。
+	TargetDBKernelVersion *string `json:"TargetDBKernelVersion,omitnil" name:"TargetDBKernelVersion"`
+
+	// 是否为校验模式，若UpgradeCheck为True，表示仅进行内核版本兼容性检查，不会进行实质性的升级操作，对原实例无影响。检查结果可以通过升级日志查看。
+	UpgradeCheck *bool `json:"UpgradeCheck,omitnil" name:"UpgradeCheck"`
+
+	// 升级前备份选项。True，表示升级前需要创建全量备份，False，表示升级前不需要创建全量备份。当实例已有备份集可以恢复到升级前的状态时，可选择False，否则需要指定为True。UpgradeCheck为True时，此参数无效。
+	BackupBeforeUpgrade *bool `json:"BackupBeforeUpgrade,omitnil" name:"BackupBeforeUpgrade"`
+
+	// 统计信息收集选项，对主例运行 ANALYZE 以在升级后更新系统统计信息。可选值包括，
+	// 0：不需要收集统计信息；
+	// 1：实例恢复写之前收集统计信息；
+	// 3：实例恢复写之后收集统计信息。
+	// UpgradeCheck为True时，此参数无效。
+	StatisticsRefreshOption *int64 `json:"StatisticsRefreshOption,omitnil" name:"StatisticsRefreshOption"`
+
+	// 插件升级选项，pg_upgrade不会升级任何插件，需要在升级完成后在创建过插件的库上执行"ALTER EXTENSION UPDATE"。发起升级实例大版本时可以指定在实例恢复写前/后是否需要升级任务自动升级插件版本。可选值包括：
+	// 0：不需要自动升级插件；
+	// 1：恢复写之前升级插件；
+	// 2：恢复写之后升级插件。
+	// UpgradeCheck为True时，此参数无效。
+	ExtensionUpgradeOption *int64 `json:"ExtensionUpgradeOption,omitnil" name:"ExtensionUpgradeOption"`
+
+	// 升级时间选项，升级过程中会有一段时间实例只读，并会有一次秒级闪断，发起升级时需要选择这段影响的时间窗。可选值包括：
+	// 0：自动执行，不需要指定时间窗；
+	// 1：指定本次升级任务的时间窗，通过参数UpgradeTimeBegin和UpgradeTimeEnd设置；
+	// 2：在实例运维时间窗内执行。
+	// UpgradeCheck为True时，此参数无效。
+	UpgradeTimeOption *int64 `json:"UpgradeTimeOption,omitnil" name:"UpgradeTimeOption"`
+
+	// 升级时间窗开始时间，时间格式：HH:MM:SS，例如：01:00:00。当UpgradeTimeOption为1时，该参数有效。
+	// UpgradeCheck为True时，此参数无效。
+	UpgradeTimeBegin *string `json:"UpgradeTimeBegin,omitnil" name:"UpgradeTimeBegin"`
+
+	// 升级时间窗截止时间，时间格式：HH:MM:SS，例如：02:00:00。当UpgradeTimeOption为1时，该参数有效。
+	// UpgradeCheck为True时，此参数无效。
+	UpgradeTimeEnd *string `json:"UpgradeTimeEnd,omitnil" name:"UpgradeTimeEnd"`
+}
+
+func (r *UpgradeDBInstanceMajorVersionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeDBInstanceMajorVersionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DBInstanceId")
+	delete(f, "TargetDBKernelVersion")
+	delete(f, "UpgradeCheck")
+	delete(f, "BackupBeforeUpgrade")
+	delete(f, "StatisticsRefreshOption")
+	delete(f, "ExtensionUpgradeOption")
+	delete(f, "UpgradeTimeOption")
+	delete(f, "UpgradeTimeBegin")
+	delete(f, "UpgradeTimeEnd")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDBInstanceMajorVersionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeDBInstanceMajorVersionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpgradeDBInstanceMajorVersionResponse struct {
+	*tchttp.BaseResponse
+	Response *UpgradeDBInstanceMajorVersionResponseParams `json:"Response"`
+}
+
+func (r *UpgradeDBInstanceMajorVersionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeDBInstanceMajorVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpgradeDBInstanceRequestParams struct {
 	// 升级后的实例内存大小，单位GB
 	Memory *int64 `json:"Memory,omitnil" name:"Memory"`

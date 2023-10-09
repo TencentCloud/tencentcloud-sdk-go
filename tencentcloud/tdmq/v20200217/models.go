@@ -6527,10 +6527,18 @@ type DescribeRocketMQTopicMsgsRequestParams struct {
 	TaskRequestId *string `json:"TaskRequestId,omitnil" name:"TaskRequestId"`
 
 	// 死信查询时该值为true，只对Rocketmq有效
+	//
+	// Deprecated: QueryDlqMsg is deprecated.
 	QueryDlqMsg *bool `json:"QueryDlqMsg,omitnil" name:"QueryDlqMsg"`
 
 	// 查询最近N条消息 最大不超过1024，默认-1为其他查询条件
 	NumOfLatestMsg *int64 `json:"NumOfLatestMsg,omitnil" name:"NumOfLatestMsg"`
+
+	// TAG表达式
+	Tag *string `json:"Tag,omitnil" name:"Tag"`
+
+	// 死信查询时该值为true，只对Rocketmq有效
+	QueryDeadLetterMessage *bool `json:"QueryDeadLetterMessage,omitnil" name:"QueryDeadLetterMessage"`
 }
 
 type DescribeRocketMQTopicMsgsRequest struct {
@@ -6571,6 +6579,12 @@ type DescribeRocketMQTopicMsgsRequest struct {
 
 	// 查询最近N条消息 最大不超过1024，默认-1为其他查询条件
 	NumOfLatestMsg *int64 `json:"NumOfLatestMsg,omitnil" name:"NumOfLatestMsg"`
+
+	// TAG表达式
+	Tag *string `json:"Tag,omitnil" name:"Tag"`
+
+	// 死信查询时该值为true，只对Rocketmq有效
+	QueryDeadLetterMessage *bool `json:"QueryDeadLetterMessage,omitnil" name:"QueryDeadLetterMessage"`
 }
 
 func (r *DescribeRocketMQTopicMsgsRequest) ToJsonString() string {
@@ -6597,6 +6611,8 @@ func (r *DescribeRocketMQTopicMsgsRequest) FromJsonString(s string) error {
 	delete(f, "TaskRequestId")
 	delete(f, "QueryDlqMsg")
 	delete(f, "NumOfLatestMsg")
+	delete(f, "Tag")
+	delete(f, "QueryDeadLetterMessage")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRocketMQTopicMsgsRequest has unknown keys!", "")
 	}
@@ -10277,6 +10293,73 @@ type RocketMQNamespace struct {
 	InternalEndpoint *string `json:"InternalEndpoint,omitnil" name:"InternalEndpoint"`
 }
 
+type RocketMQSubscription struct {
+	// 主题名称
+	Topic *string `json:"Topic,omitnil" name:"Topic"`
+
+	// 主题类型：
+	// Normal 普通,
+	// GlobalOrder 全局顺序,
+	// PartitionedOrder 局部顺序,
+	// Transaction 事务消息,
+	// DelayScheduled 延时消息,
+	// Retry 重试,
+	// DeadLetter 死信
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 分区数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PartitionNum *int64 `json:"PartitionNum,omitnil" name:"PartitionNum"`
+
+	// 过滤模式，TAG，SQL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpressionType *string `json:"ExpressionType,omitnil" name:"ExpressionType"`
+
+	// 过滤表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubString *string `json:"SubString,omitnil" name:"SubString"`
+
+	// 订阅状态：
+	// 0，订阅关系一致
+	// 1，订阅关系不一致
+	// 2，未知
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 消费堆积数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerLag *int64 `json:"ConsumerLag,omitnil" name:"ConsumerLag"`
+
+	// 实例ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ClusterId *string `json:"ClusterId,omitnil" name:"ClusterId"`
+
+	// 消费组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumerGroup *string `json:"ConsumerGroup,omitnil" name:"ConsumerGroup"`
+
+	// 是否在线
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsOnline *bool `json:"IsOnline,omitnil" name:"IsOnline"`
+
+	// 消费类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsumeType *int64 `json:"ConsumeType,omitnil" name:"ConsumeType"`
+
+	// 订阅一致性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Consistency *int64 `json:"Consistency,omitnil" name:"Consistency"`
+
+	// 最后消费进度更新时间，秒为单位
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *int64 `json:"LastUpdateTime,omitnil" name:"LastUpdateTime"`
+
+	// 最大重试次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MaxRetryTimes *int64 `json:"MaxRetryTimes,omitnil" name:"MaxRetryTimes"`
+}
+
 type RocketMQTopic struct {
 	// 主题名称
 	Name *string `json:"Name,omitnil" name:"Name"`
@@ -10299,6 +10382,18 @@ type RocketMQTopic struct {
 
 	// 创建时间，以毫秒为单位
 	UpdateTime *uint64 `json:"UpdateTime,omitnil" name:"UpdateTime"`
+
+	// 最后写入时间，单位为秒
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LastUpdateTime *int64 `json:"LastUpdateTime,omitnil" name:"LastUpdateTime"`
+
+	// 订阅数量
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscriptionCount *int64 `json:"SubscriptionCount,omitnil" name:"SubscriptionCount"`
+
+	// 订阅关系列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubscriptionData []*RocketMQSubscription `json:"SubscriptionData,omitnil" name:"SubscriptionData"`
 }
 
 type RocketMQTopicDistribution struct {

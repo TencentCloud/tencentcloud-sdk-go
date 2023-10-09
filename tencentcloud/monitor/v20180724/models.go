@@ -13119,6 +13119,10 @@ type PrometheusZoneItem struct {
 
 	// 可用区名（目前为中文）
 	ZoneName *string `json:"ZoneName,omitnil" name:"ZoneName"`
+
+	// 可用区资源状态(0:资源不足，不可使用；1:资源足够)
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneResourceState *int64 `json:"ZoneResourceState,omitnil" name:"ZoneResourceState"`
 }
 
 type ReceiverInfo struct {

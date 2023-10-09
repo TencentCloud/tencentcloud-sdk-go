@@ -951,6 +951,204 @@ func (r *CancelTaskResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CheckDataEngineConfigPairsValidityRequestParams struct {
+	// 引擎小版本ID
+	ChildImageVersionId *string `json:"ChildImageVersionId,omitnil" name:"ChildImageVersionId"`
+
+	// 用户自定义参数
+	DataEngineConfigPairs []*DataEngineConfigPair `json:"DataEngineConfigPairs,omitnil" name:"DataEngineConfigPairs"`
+
+	// 引擎大版本ID，存在小版本ID时仅需传入小版本ID，不存在时会获取当前大版本下最新的小版本ID。
+	ImageVersionId *string `json:"ImageVersionId,omitnil" name:"ImageVersionId"`
+}
+
+type CheckDataEngineConfigPairsValidityRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎小版本ID
+	ChildImageVersionId *string `json:"ChildImageVersionId,omitnil" name:"ChildImageVersionId"`
+
+	// 用户自定义参数
+	DataEngineConfigPairs []*DataEngineConfigPair `json:"DataEngineConfigPairs,omitnil" name:"DataEngineConfigPairs"`
+
+	// 引擎大版本ID，存在小版本ID时仅需传入小版本ID，不存在时会获取当前大版本下最新的小版本ID。
+	ImageVersionId *string `json:"ImageVersionId,omitnil" name:"ImageVersionId"`
+}
+
+func (r *CheckDataEngineConfigPairsValidityRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckDataEngineConfigPairsValidityRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChildImageVersionId")
+	delete(f, "DataEngineConfigPairs")
+	delete(f, "ImageVersionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckDataEngineConfigPairsValidityRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckDataEngineConfigPairsValidityResponseParams struct {
+	// 参数有效性：ture:有效，false:至少存在一个无效参数；
+	IsAvailable *bool `json:"IsAvailable,omitnil" name:"IsAvailable"`
+
+	// 无效参数集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UnavailableConfig []*string `json:"UnavailableConfig,omitnil" name:"UnavailableConfig"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CheckDataEngineConfigPairsValidityResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckDataEngineConfigPairsValidityResponseParams `json:"Response"`
+}
+
+func (r *CheckDataEngineConfigPairsValidityResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckDataEngineConfigPairsValidityResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckDataEngineImageCanBeRollbackRequestParams struct {
+	// 引擎唯一id
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
+}
+
+type CheckDataEngineImageCanBeRollbackRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎唯一id
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
+}
+
+func (r *CheckDataEngineImageCanBeRollbackRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckDataEngineImageCanBeRollbackRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckDataEngineImageCanBeRollbackRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckDataEngineImageCanBeRollbackResponseParams struct {
+	// 回滚后日志记录id
+	ToRecordId *string `json:"ToRecordId,omitnil" name:"ToRecordId"`
+
+	// 回滚前日志记录id
+	FromRecordId *string `json:"FromRecordId,omitnil" name:"FromRecordId"`
+
+	// 是否能够回滚
+	IsRollback *bool `json:"IsRollback,omitnil" name:"IsRollback"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CheckDataEngineImageCanBeRollbackResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckDataEngineImageCanBeRollbackResponseParams `json:"Response"`
+}
+
+func (r *CheckDataEngineImageCanBeRollbackResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckDataEngineImageCanBeRollbackResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckDataEngineImageCanBeUpgradeRequestParams struct {
+	// 集群id
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
+}
+
+type CheckDataEngineImageCanBeUpgradeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群id
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
+}
+
+func (r *CheckDataEngineImageCanBeUpgradeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckDataEngineImageCanBeUpgradeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CheckDataEngineImageCanBeUpgradeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CheckDataEngineImageCanBeUpgradeResponseParams struct {
+	// 当前大版本下，可升级的集群镜像小版本id
+	ChildImageVersionId *string `json:"ChildImageVersionId,omitnil" name:"ChildImageVersionId"`
+
+	// 是否能够升级
+	IsUpgrade *bool `json:"IsUpgrade,omitnil" name:"IsUpgrade"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CheckDataEngineImageCanBeUpgradeResponse struct {
+	*tchttp.BaseResponse
+	Response *CheckDataEngineImageCanBeUpgradeResponseParams `json:"Response"`
+}
+
+func (r *CheckDataEngineImageCanBeUpgradeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CheckDataEngineImageCanBeUpgradeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CheckLockMetaDataRequestParams struct {
 	// 锁ID
 	LockId *int64 `json:"LockId,omitnil" name:"LockId"`
@@ -3593,6 +3791,36 @@ type DataEngineConfigPair struct {
 
 }
 
+type DataEngineImageVersion struct {
+	// 镜像大版本ID
+	ImageVersionId *string `json:"ImageVersionId,omitnil" name:"ImageVersionId"`
+
+	// 镜像大版本名称
+	ImageVersion *string `json:"ImageVersion,omitnil" name:"ImageVersion"`
+
+	// 镜像大版本描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 是否为公共版本：1：公共；2：私有
+	IsPublic *uint64 `json:"IsPublic,omitnil" name:"IsPublic"`
+
+	// 集群类型：SparkSQL/PrestoSQL/SparkBatch
+	EngineType *string `json:"EngineType,omitnil" name:"EngineType"`
+
+	// 版本状态：1：初始化；2：上线；3：下线
+	IsSharedEngine *uint64 `json:"IsSharedEngine,omitnil" name:"IsSharedEngine"`
+
+	// 版本状态：1：初始化；2：上线；3：下线
+	State *uint64 `json:"State,omitnil" name:"State"`
+
+	// 插入时间
+	InsertTime *string `json:"InsertTime,omitnil" name:"InsertTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+}
+
 type DataEngineInfo struct {
 	// DataEngine名称
 	DataEngineName *string `json:"DataEngineName,omitnil" name:"DataEngineName"`
@@ -3995,6 +4223,60 @@ type DatasourceConnectionLocation struct {
 
 	// Subnet的IPv4 CIDR
 	SubnetCidrBlock *string `json:"SubnetCidrBlock,omitnil" name:"SubnetCidrBlock"`
+}
+
+// Predefined struct for user
+type DeleteDataEngineRequestParams struct {
+	// 删除虚拟集群的名称数组
+	DataEngineNames []*string `json:"DataEngineNames,omitnil" name:"DataEngineNames"`
+}
+
+type DeleteDataEngineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 删除虚拟集群的名称数组
+	DataEngineNames []*string `json:"DataEngineNames,omitnil" name:"DataEngineNames"`
+}
+
+func (r *DeleteDataEngineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataEngineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteDataEngineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteDataEngineResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteDataEngineResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteDataEngineResponseParams `json:"Response"`
+}
+
+func (r *DeleteDataEngineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteDataEngineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -4856,6 +5138,180 @@ func (r *DescribeDMSTablesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeDMSTablesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataEngineImageVersionsRequestParams struct {
+	// 引擎类型：SQL、SparkBatch
+	EngineType *string `json:"EngineType,omitnil" name:"EngineType"`
+}
+
+type DescribeDataEngineImageVersionsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 引擎类型：SQL、SparkBatch
+	EngineType *string `json:"EngineType,omitnil" name:"EngineType"`
+}
+
+func (r *DescribeDataEngineImageVersionsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEngineImageVersionsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "EngineType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataEngineImageVersionsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataEngineImageVersionsResponseParams struct {
+	// 集群大版本镜像信息列表
+	ImageParentVersions []*DataEngineImageVersion `json:"ImageParentVersions,omitnil" name:"ImageParentVersions"`
+
+	// 总数
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDataEngineImageVersionsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataEngineImageVersionsResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataEngineImageVersionsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEngineImageVersionsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataEnginePythonSparkImagesRequestParams struct {
+	// 集群镜像小版本ID
+	ChildImageVersionId *string `json:"ChildImageVersionId,omitnil" name:"ChildImageVersionId"`
+}
+
+type DescribeDataEnginePythonSparkImagesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群镜像小版本ID
+	ChildImageVersionId *string `json:"ChildImageVersionId,omitnil" name:"ChildImageVersionId"`
+}
+
+func (r *DescribeDataEnginePythonSparkImagesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEnginePythonSparkImagesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChildImageVersionId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataEnginePythonSparkImagesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataEnginePythonSparkImagesResponseParams struct {
+	// PYSPARK镜像信息列表
+	PythonSparkImages []*PythonSparkImage `json:"PythonSparkImages,omitnil" name:"PythonSparkImages"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDataEnginePythonSparkImagesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataEnginePythonSparkImagesResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataEnginePythonSparkImagesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEnginePythonSparkImagesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataEngineRequestParams struct {
+	// House名称
+	DataEngineName *string `json:"DataEngineName,omitnil" name:"DataEngineName"`
+}
+
+type DescribeDataEngineRequest struct {
+	*tchttp.BaseRequest
+	
+	// House名称
+	DataEngineName *string `json:"DataEngineName,omitnil" name:"DataEngineName"`
+}
+
+func (r *DescribeDataEngineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEngineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataEngineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeDataEngineResponseParams struct {
+	// 数据引擎详细信息
+	DataEngine *DataEngineInfo `json:"DataEngine,omitnil" name:"DataEngine"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeDataEngineResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeDataEngineResponseParams `json:"Response"`
+}
+
+func (r *DescribeDataEngineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeDataEngineResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -6913,6 +7369,205 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeUserDataEngineConfigRequestParams struct {
+
+}
+
+type DescribeUserDataEngineConfigRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *DescribeUserDataEngineConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserDataEngineConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserDataEngineConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserDataEngineConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeUserDataEngineConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserDataEngineConfigResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserDataEngineConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserDataEngineConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserInfoRequestParams struct {
+	// 用户Id
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 查询的过滤条件。
+	// 
+	// 当Type为Group时，支持Key为workgroup-name的模糊搜索；
+	// 
+	// 当Type为DataAuth时，支持key：
+	// 
+	// policy-type：权限类型。
+	// 
+	// policy-source：数据来源。
+	// 
+	// data-name：库表的模糊搜索。
+	// 
+	// 当Type为EngineAuth时，支持key：
+	// 
+	// policy-type：权限类型。
+	// 
+	// policy-source：数据来源。
+	// 
+	// engine-name：库表的模糊搜索。
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段。
+	// 
+	// 当Type为Group时，支持create-time、group-name
+	// 
+	// 当Type为DataAuth时，支持create-time
+	// 
+	// 当Type为EngineAuth时，支持create-time
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为asc
+	Sorting *string `json:"Sorting,omitnil" name:"Sorting"`
+
+	// 返回数量，默认20，最大值100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+type DescribeUserInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户Id
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 查询的信息类型，Group：工作组 DataAuth：数据权限 EngineAuth:引擎权限
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 查询的过滤条件。
+	// 
+	// 当Type为Group时，支持Key为workgroup-name的模糊搜索；
+	// 
+	// 当Type为DataAuth时，支持key：
+	// 
+	// policy-type：权限类型。
+	// 
+	// policy-source：数据来源。
+	// 
+	// data-name：库表的模糊搜索。
+	// 
+	// 当Type为EngineAuth时，支持key：
+	// 
+	// policy-type：权限类型。
+	// 
+	// policy-source：数据来源。
+	// 
+	// engine-name：库表的模糊搜索。
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段。
+	// 
+	// 当Type为Group时，支持create-time、group-name
+	// 
+	// 当Type为DataAuth时，支持create-time
+	// 
+	// 当Type为EngineAuth时，支持create-time
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为asc
+	Sorting *string `json:"Sorting,omitnil" name:"Sorting"`
+
+	// 返回数量，默认20，最大值100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+func (r *DescribeUserInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "Type")
+	delete(f, "Filters")
+	delete(f, "SortBy")
+	delete(f, "Sorting")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserInfoResponseParams struct {
+	// 用户详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserInfo *UserDetailInfo `json:"UserInfo,omitnil" name:"UserInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeUserInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserInfoResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeUserRolesRequestParams struct {
 	// 列举的数量限制
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
@@ -6997,6 +7652,64 @@ func (r *DescribeUserRolesResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserRolesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserTypeRequestParams struct {
+	// 用户ID（UIN），如果不填默认为调用方的子UIN
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+}
+
+type DescribeUserTypeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户ID（UIN），如果不填默认为调用方的子UIN
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+}
+
+func (r *DescribeUserTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeUserTypeResponseParams struct {
+	// 用户类型。ADMIN：管理员 COMMON：普通用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserType *string `json:"UserType,omitnil" name:"UserType"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeUserTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeUserTypeResponseParams `json:"Response"`
+}
+
+func (r *DescribeUserTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeUserTypeResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7212,6 +7925,154 @@ func (r *DescribeViewsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeViewsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkGroupInfoRequestParams struct {
+	// 工作组Id
+	WorkGroupId *int64 `json:"WorkGroupId,omitnil" name:"WorkGroupId"`
+
+	// 查询信息类型：User：用户信息 DataAuth：数据权限 EngineAuth：引擎权限
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 查询的过滤条件。
+	// 
+	// 当Type为User时，支持Key为user-name的模糊搜索；
+	// 
+	// 当Type为DataAuth时，支持key：
+	// 
+	// policy-type：权限类型。
+	// 
+	// policy-source：数据来源。
+	// 
+	// data-name：库表的模糊搜索。
+	// 
+	// 当Type为EngineAuth时，支持key：
+	// 
+	// policy-type：权限类型。
+	// 
+	// policy-source：数据来源。
+	// 
+	// engine-name：库表的模糊搜索。
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段。
+	// 
+	// 当Type为User时，支持create-time、user-name
+	// 
+	// 当Type为DataAuth时，支持create-time
+	// 
+	// 当Type为EngineAuth时，支持create-time
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为asc
+	Sorting *string `json:"Sorting,omitnil" name:"Sorting"`
+
+	// 返回数量，默认20，最大值100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+type DescribeWorkGroupInfoRequest struct {
+	*tchttp.BaseRequest
+	
+	// 工作组Id
+	WorkGroupId *int64 `json:"WorkGroupId,omitnil" name:"WorkGroupId"`
+
+	// 查询信息类型：User：用户信息 DataAuth：数据权限 EngineAuth：引擎权限
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 查询的过滤条件。
+	// 
+	// 当Type为User时，支持Key为user-name的模糊搜索；
+	// 
+	// 当Type为DataAuth时，支持key：
+	// 
+	// policy-type：权限类型。
+	// 
+	// policy-source：数据来源。
+	// 
+	// data-name：库表的模糊搜索。
+	// 
+	// 当Type为EngineAuth时，支持key：
+	// 
+	// policy-type：权限类型。
+	// 
+	// policy-source：数据来源。
+	// 
+	// engine-name：库表的模糊搜索。
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
+
+	// 排序字段。
+	// 
+	// 当Type为User时，支持create-time、user-name
+	// 
+	// 当Type为DataAuth时，支持create-time
+	// 
+	// 当Type为EngineAuth时，支持create-time
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
+
+	// 排序方式，desc表示正序，asc表示反序， 默认为asc
+	Sorting *string `json:"Sorting,omitnil" name:"Sorting"`
+
+	// 返回数量，默认20，最大值100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+}
+
+func (r *DescribeWorkGroupInfoRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkGroupInfoRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "WorkGroupId")
+	delete(f, "Type")
+	delete(f, "Filters")
+	delete(f, "SortBy")
+	delete(f, "Sorting")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeWorkGroupInfoRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeWorkGroupInfoResponseParams struct {
+	// 工作组详细信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkGroupInfo *WorkGroupDetailInfo `json:"WorkGroupInfo,omitnil" name:"WorkGroupInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeWorkGroupInfoResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeWorkGroupInfoResponseParams `json:"Response"`
+}
+
+func (r *DescribeWorkGroupInfoResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeWorkGroupInfoResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8137,6 +8998,67 @@ func (r *LockMetaDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyDataEngineDescriptionRequestParams struct {
+	// 要修改的引擎的名称
+	DataEngineName *string `json:"DataEngineName,omitnil" name:"DataEngineName"`
+
+	// 引擎的描述信息，最大长度为250
+	Message *string `json:"Message,omitnil" name:"Message"`
+}
+
+type ModifyDataEngineDescriptionRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要修改的引擎的名称
+	DataEngineName *string `json:"DataEngineName,omitnil" name:"DataEngineName"`
+
+	// 引擎的描述信息，最大长度为250
+	Message *string `json:"Message,omitnil" name:"Message"`
+}
+
+func (r *ModifyDataEngineDescriptionRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataEngineDescriptionRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineName")
+	delete(f, "Message")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyDataEngineDescriptionRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyDataEngineDescriptionResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyDataEngineDescriptionResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyDataEngineDescriptionResponseParams `json:"Response"`
+}
+
+func (r *ModifyDataEngineDescriptionResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyDataEngineDescriptionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyGovernEventRuleRequestParams struct {
 
 }
@@ -8602,6 +9524,67 @@ func (r *ModifyUserResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyUserTypeRequestParams struct {
+	// 用户ID
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 用户要修改到的类型，ADMIN：管理员，COMMON：一般用户。
+	UserType *string `json:"UserType,omitnil" name:"UserType"`
+}
+
+type ModifyUserTypeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 用户ID
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 用户要修改到的类型，ADMIN：管理员，COMMON：一般用户。
+	UserType *string `json:"UserType,omitnil" name:"UserType"`
+}
+
+func (r *ModifyUserTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "UserId")
+	delete(f, "UserType")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserTypeResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyUserTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserTypeResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyWorkGroupRequestParams struct {
 	// 工作组Id
 	WorkGroupId *int64 `json:"WorkGroupId,omitnil" name:"WorkGroupId"`
@@ -9028,6 +10011,16 @@ type Policy struct {
 	Id *int64 `json:"Id,omitnil" name:"Id"`
 }
 
+type Policys struct {
+	// 策略集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicySet []*Policy `json:"PolicySet,omitnil" name:"PolicySet"`
+
+	// 策略总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+}
+
 type PrestoMonitorMetrics struct {
 	// 	Alluxio本地缓存命中率
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -9044,6 +10037,27 @@ type Property struct {
 
 	// 属性key对应的value。
 	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
+type PythonSparkImage struct {
+	// spark镜像唯一id
+	SparkImageId *string `json:"SparkImageId,omitnil" name:"SparkImageId"`
+
+	// 集群小版本镜像id
+	ChildImageVersionId *string `json:"ChildImageVersionId,omitnil" name:"ChildImageVersionId"`
+
+	// spark镜像名称
+	SparkImageVersion *string `json:"SparkImageVersion,omitnil" name:"SparkImageVersion"`
+
+	// spark镜像描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Description *string `json:"Description,omitnil" name:"Description"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 更新时间
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
 }
 
 // Predefined struct for user
@@ -9121,6 +10135,88 @@ func (r *QueryResultResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type RenewDataEngineRequestParams struct {
+	// CU队列名称
+	DataEngineName *string `json:"DataEngineName,omitnil" name:"DataEngineName"`
+
+	// 续费时长，单位月，最少续费1一个月
+	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+
+	// 付费类型，默认为1，预付费
+	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 单位，默认m，仅能填m
+	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
+
+	// 自动续费标志，0，初始状态，默认不自动续费，若用户有预付费不停服特权，自动续费。1：自动续费。2：明确不自动续费。不传该参数默认为0
+	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+}
+
+type RenewDataEngineRequest struct {
+	*tchttp.BaseRequest
+	
+	// CU队列名称
+	DataEngineName *string `json:"DataEngineName,omitnil" name:"DataEngineName"`
+
+	// 续费时长，单位月，最少续费1一个月
+	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+
+	// 付费类型，默认为1，预付费
+	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 单位，默认m，仅能填m
+	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
+
+	// 自动续费标志，0，初始状态，默认不自动续费，若用户有预付费不停服特权，自动续费。1：自动续费。2：明确不自动续费。不传该参数默认为0
+	RenewFlag *int64 `json:"RenewFlag,omitnil" name:"RenewFlag"`
+}
+
+func (r *RenewDataEngineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewDataEngineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "DataEngineName")
+	delete(f, "TimeSpan")
+	delete(f, "PayMode")
+	delete(f, "TimeUnit")
+	delete(f, "RenewFlag")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RenewDataEngineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RenewDataEngineResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type RenewDataEngineResponse struct {
+	*tchttp.BaseResponse
+	Response *RenewDataEngineResponseParams `json:"Response"`
+}
+
+func (r *RenewDataEngineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RenewDataEngineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ReportHeartbeatMetaDataRequestParams struct {
 	// 数据源名称
 	DatasourceConnectionName *string `json:"DatasourceConnectionName,omitnil" name:"DatasourceConnectionName"`
@@ -9185,6 +10281,108 @@ func (r *ReportHeartbeatMetaDataResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ReportHeartbeatMetaDataResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartDataEngineRequestParams struct {
+
+}
+
+type RestartDataEngineRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *RestartDataEngineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartDataEngineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartDataEngineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RestartDataEngineResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type RestartDataEngineResponse struct {
+	*tchttp.BaseResponse
+	Response *RestartDataEngineResponseParams `json:"Response"`
+}
+
+func (r *RestartDataEngineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RestartDataEngineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RollbackDataEngineImageRequestParams struct {
+
+}
+
+type RollbackDataEngineImageRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *RollbackDataEngineImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollbackDataEngineImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackDataEngineImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RollbackDataEngineImageResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type RollbackDataEngineImageResponse struct {
+	*tchttp.BaseResponse
+	Response *RollbackDataEngineImageResponseParams `json:"Response"`
+}
+
+func (r *RollbackDataEngineImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RollbackDataEngineImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9550,6 +10748,57 @@ func (r *SuspendResumeDataEngineResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *SuspendResumeDataEngineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchDataEngineImageRequestParams struct {
+
+}
+
+type SwitchDataEngineImageRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *SwitchDataEngineImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchDataEngineImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchDataEngineImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SwitchDataEngineImageResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type SwitchDataEngineImageResponse struct {
+	*tchttp.BaseResponse
+	Response *SwitchDataEngineImageResponseParams `json:"Response"`
+}
+
+func (r *SwitchDataEngineImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SwitchDataEngineImageResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10143,6 +11392,209 @@ func (r *UnlockMetaDataResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type UpdateDataEngineConfigRequestParams struct {
+
+}
+
+type UpdateDataEngineConfigRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *UpdateDataEngineConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDataEngineConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDataEngineConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDataEngineConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpdateDataEngineConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateDataEngineConfigResponseParams `json:"Response"`
+}
+
+func (r *UpdateDataEngineConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDataEngineConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDataEngineRequestParams struct {
+	// 资源大小
+	Size *int64 `json:"Size,omitnil" name:"Size"`
+
+	// 最小资源
+	MinClusters *int64 `json:"MinClusters,omitnil" name:"MinClusters"`
+
+	// 最大资源
+	MaxClusters *int64 `json:"MaxClusters,omitnil" name:"MaxClusters"`
+
+	// 开启自动刷新：true：开启、false（默认）：关闭
+	AutoResume *bool `json:"AutoResume,omitnil" name:"AutoResume"`
+
+	// 数据引擎名称
+	DataEngineName *string `json:"DataEngineName,omitnil" name:"DataEngineName"`
+
+	// 相关信息
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 是否自定挂起集群：false（默认）：不自动挂起、true：自动挂起
+	AutoSuspend *bool `json:"AutoSuspend,omitnil" name:"AutoSuspend"`
+
+	// 定时启停集群策略：0（默认）：关闭定时策略、1：开启定时策略（注：定时启停策略与自动挂起策略互斥）
+	CrontabResumeSuspend *int64 `json:"CrontabResumeSuspend,omitnil" name:"CrontabResumeSuspend"`
+
+	// 定时启停策略，复杂类型：包含启停时间、挂起集群策略
+	CrontabResumeSuspendStrategy *CrontabResumeSuspendStrategy `json:"CrontabResumeSuspendStrategy,omitnil" name:"CrontabResumeSuspendStrategy"`
+
+	// 单个集群最大并发任务数，默认5
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil" name:"MaxConcurrency"`
+
+	// 可容忍的排队时间，默认0。当任务排队的时间超过可容忍的时间时可能会触发扩容。如果该参数为0，则表示一旦有任务排队就可能立即触发扩容。
+	TolerableQueueTime *int64 `json:"TolerableQueueTime,omitnil" name:"TolerableQueueTime"`
+
+	// 集群自动挂起时间
+	AutoSuspendTime *int64 `json:"AutoSuspendTime,omitnil" name:"AutoSuspendTime"`
+
+	// spark jar 包年包月集群是否开启弹性
+	ElasticSwitch *bool `json:"ElasticSwitch,omitnil" name:"ElasticSwitch"`
+
+	// spark jar 包年包月集群弹性上限
+	ElasticLimit *int64 `json:"ElasticLimit,omitnil" name:"ElasticLimit"`
+
+	// Spark批作业集群Session资源配置模板
+	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitnil" name:"SessionResourceTemplate"`
+}
+
+type UpdateDataEngineRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源大小
+	Size *int64 `json:"Size,omitnil" name:"Size"`
+
+	// 最小资源
+	MinClusters *int64 `json:"MinClusters,omitnil" name:"MinClusters"`
+
+	// 最大资源
+	MaxClusters *int64 `json:"MaxClusters,omitnil" name:"MaxClusters"`
+
+	// 开启自动刷新：true：开启、false（默认）：关闭
+	AutoResume *bool `json:"AutoResume,omitnil" name:"AutoResume"`
+
+	// 数据引擎名称
+	DataEngineName *string `json:"DataEngineName,omitnil" name:"DataEngineName"`
+
+	// 相关信息
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 是否自定挂起集群：false（默认）：不自动挂起、true：自动挂起
+	AutoSuspend *bool `json:"AutoSuspend,omitnil" name:"AutoSuspend"`
+
+	// 定时启停集群策略：0（默认）：关闭定时策略、1：开启定时策略（注：定时启停策略与自动挂起策略互斥）
+	CrontabResumeSuspend *int64 `json:"CrontabResumeSuspend,omitnil" name:"CrontabResumeSuspend"`
+
+	// 定时启停策略，复杂类型：包含启停时间、挂起集群策略
+	CrontabResumeSuspendStrategy *CrontabResumeSuspendStrategy `json:"CrontabResumeSuspendStrategy,omitnil" name:"CrontabResumeSuspendStrategy"`
+
+	// 单个集群最大并发任务数，默认5
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitnil" name:"MaxConcurrency"`
+
+	// 可容忍的排队时间，默认0。当任务排队的时间超过可容忍的时间时可能会触发扩容。如果该参数为0，则表示一旦有任务排队就可能立即触发扩容。
+	TolerableQueueTime *int64 `json:"TolerableQueueTime,omitnil" name:"TolerableQueueTime"`
+
+	// 集群自动挂起时间
+	AutoSuspendTime *int64 `json:"AutoSuspendTime,omitnil" name:"AutoSuspendTime"`
+
+	// spark jar 包年包月集群是否开启弹性
+	ElasticSwitch *bool `json:"ElasticSwitch,omitnil" name:"ElasticSwitch"`
+
+	// spark jar 包年包月集群弹性上限
+	ElasticLimit *int64 `json:"ElasticLimit,omitnil" name:"ElasticLimit"`
+
+	// Spark批作业集群Session资源配置模板
+	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitnil" name:"SessionResourceTemplate"`
+}
+
+func (r *UpdateDataEngineRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDataEngineRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Size")
+	delete(f, "MinClusters")
+	delete(f, "MaxClusters")
+	delete(f, "AutoResume")
+	delete(f, "DataEngineName")
+	delete(f, "Message")
+	delete(f, "AutoSuspend")
+	delete(f, "CrontabResumeSuspend")
+	delete(f, "CrontabResumeSuspendStrategy")
+	delete(f, "MaxConcurrency")
+	delete(f, "TolerableQueueTime")
+	delete(f, "AutoSuspendTime")
+	delete(f, "ElasticSwitch")
+	delete(f, "ElasticLimit")
+	delete(f, "SessionResourceTemplate")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDataEngineRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateDataEngineResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpdateDataEngineResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateDataEngineResponseParams `json:"Response"`
+}
+
+func (r *UpdateDataEngineResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateDataEngineResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type UpdateRowFilterRequestParams struct {
 	// 行过滤策略的id，此值可以通过DescribeUserInfo或者DescribeWorkGroupInfo接口获取
 	PolicyId *int64 `json:"PolicyId,omitnil" name:"PolicyId"`
@@ -10201,6 +11653,146 @@ func (r *UpdateRowFilterResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *UpdateRowFilterResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateUserDataEngineConfigRequestParams struct {
+
+}
+
+type UpdateUserDataEngineConfigRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *UpdateUserDataEngineConfigRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateUserDataEngineConfigRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserDataEngineConfigRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpdateUserDataEngineConfigResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpdateUserDataEngineConfigResponse struct {
+	*tchttp.BaseResponse
+	Response *UpdateUserDataEngineConfigResponseParams `json:"Response"`
+}
+
+func (r *UpdateUserDataEngineConfigResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpdateUserDataEngineConfigResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeDataEngineImageRequestParams struct {
+
+}
+
+type UpgradeDataEngineImageRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *UpgradeDataEngineImageRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeDataEngineImageRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDataEngineImageRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type UpgradeDataEngineImageResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type UpgradeDataEngineImageResponse struct {
+	*tchttp.BaseResponse
+	Response *UpgradeDataEngineImageResponseParams `json:"Response"`
+}
+
+func (r *UpgradeDataEngineImageResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *UpgradeDataEngineImageResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type UserDetailInfo struct {
+	// 用户Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 返回的信息类型，Group：返回的当前用户的工作组信息；DataAuth：返回的当前用户的数据权限信息；EngineAuth：返回的当前用户的引擎权限信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 用户类型：ADMIN：管理员 COMMON：一般用户
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserType *string `json:"UserType,omitnil" name:"UserType"`
+
+	// 用户描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserDescription *string `json:"UserDescription,omitnil" name:"UserDescription"`
+
+	// 数据权限信息集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataPolicyInfo *Policys `json:"DataPolicyInfo,omitnil" name:"DataPolicyInfo"`
+
+	// 引擎权限集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnginePolicyInfo *Policys `json:"EnginePolicyInfo,omitnil" name:"EnginePolicyInfo"`
+
+	// 绑定到该用户的工作组集合信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkGroupInfo *WorkGroups `json:"WorkGroupInfo,omitnil" name:"WorkGroupInfo"`
+
+	// 用户别名
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserAlias *string `json:"UserAlias,omitnil" name:"UserAlias"`
+
+	// 行过滤集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowFilterInfo *Policys `json:"RowFilterInfo,omitnil" name:"RowFilterInfo"`
 }
 
 type UserIdSetOfWorkGroupId struct {
@@ -10300,6 +11892,16 @@ type UserRole struct {
 	PermissionJson *string `json:"PermissionJson,omitnil" name:"PermissionJson"`
 }
 
+type Users struct {
+	// 用户信息集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserSet []*UserMessage `json:"UserSet,omitnil" name:"UserSet"`
+
+	// 用户总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+}
+
 type ViewBaseInfo struct {
 	// 该视图所属数据库名字
 	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
@@ -10331,6 +11933,40 @@ type ViewResponseInfo struct {
 
 	// 视图更新时间。
 	ModifiedTime *string `json:"ModifiedTime,omitnil" name:"ModifiedTime"`
+}
+
+type WorkGroupDetailInfo struct {
+	// 工作组Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkGroupId *int64 `json:"WorkGroupId,omitnil" name:"WorkGroupId"`
+
+	// 工作组名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkGroupName *string `json:"WorkGroupName,omitnil" name:"WorkGroupName"`
+
+	// 包含的信息类型。User：用户信息；DataAuth：数据权限；EngineAuth:引擎权限
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 工作组上绑定的用户集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserInfo *Users `json:"UserInfo,omitnil" name:"UserInfo"`
+
+	// 数据权限集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataPolicyInfo *Policys `json:"DataPolicyInfo,omitnil" name:"DataPolicyInfo"`
+
+	// 引擎权限集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EnginePolicyInfo *Policys `json:"EnginePolicyInfo,omitnil" name:"EnginePolicyInfo"`
+
+	// 工作组描述信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkGroupDescription *string `json:"WorkGroupDescription,omitnil" name:"WorkGroupDescription"`
+
+	// 行过滤信息集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RowFilterInfo *Policys `json:"RowFilterInfo,omitnil" name:"RowFilterInfo"`
 }
 
 type WorkGroupIdSetOfUserId struct {
@@ -10386,4 +12022,14 @@ type WorkGroupMessage struct {
 
 	// 工作组创建的时间，形如2021-07-28 16:19:32
 	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+}
+
+type WorkGroups struct {
+	// 工作组信息集合
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkGroupSet []*WorkGroupMessage `json:"WorkGroupSet,omitnil" name:"WorkGroupSet"`
+
+	// 工作组总数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 }

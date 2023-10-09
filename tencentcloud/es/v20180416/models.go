@@ -2150,6 +2150,10 @@ type IndexMetaField struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexName *string `json:"IndexName,omitnil" name:"IndexName"`
 
+	// 索引元数据JSON
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexMetaJson *string `json:"IndexMetaJson,omitnil" name:"IndexMetaJson"`
+
 	// 索引状态
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IndexStatus *string `json:"IndexStatus,omitnil" name:"IndexStatus"`

@@ -2754,6 +2754,10 @@ func NewHostCertificateResponse() (response *HostCertificateResponse) {
 }
 
 // HostCertificate
+// 证书托管接口已重构， 旧接口预下线， 近30天无请求
+//
+// 
+//
 // 云资源托管
 //
 // 可能返回的错误码:
@@ -2770,6 +2774,10 @@ func (c *Client) HostCertificate(request *HostCertificateRequest) (response *Hos
 }
 
 // HostCertificate
+// 证书托管接口已重构， 旧接口预下线， 近30天无请求
+//
+// 
+//
 // 云资源托管
 //
 // 可能返回的错误码:

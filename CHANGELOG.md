@@ -1,3 +1,279 @@
+# Release v1.0.761
+
+## 批量计算(batch) 版本：2017-03-12
+
+### 第 51 次发布
+
+发布时间：2023-10-09 01:07:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceTypeQuotaItem](https://cloud.tencent.com/document/api/599/15912#InstanceTypeQuotaItem)
+
+	* 新增成员：StatusCategory
+
+
+
+
+## 云服务器(cvm) 版本：2017-03-12
+
+### 第 117 次发布
+
+发布时间：2023-10-09 01:11:19
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [InstanceTypeQuotaItem](https://cloud.tencent.com/document/api/213/15753#InstanceTypeQuotaItem)
+
+	* 新增成员：StatusCategory
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 63 次发布
+
+发布时间：2023-10-09 01:13:07
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CheckDataEngineConfigPairsValidity](https://cloud.tencent.com/document/api/1342/99277)
+* [CheckDataEngineImageCanBeRollback](https://cloud.tencent.com/document/api/1342/99276)
+* [CheckDataEngineImageCanBeUpgrade](https://cloud.tencent.com/document/api/1342/99275)
+* [DeleteDataEngine](https://cloud.tencent.com/document/api/1342/99279)
+* [DescribeDataEngine](https://cloud.tencent.com/document/api/1342/99274)
+* [DescribeDataEngineImageVersions](https://cloud.tencent.com/document/api/1342/99270)
+* [DescribeDataEnginePythonSparkImages](https://cloud.tencent.com/document/api/1342/99273)
+* [DescribeUserDataEngineConfig](https://cloud.tencent.com/document/api/1342/99278)
+* [DescribeUserInfo](https://cloud.tencent.com/document/api/1342/99262)
+* [DescribeUserType](https://cloud.tencent.com/document/api/1342/99261)
+* [DescribeWorkGroupInfo](https://cloud.tencent.com/document/api/1342/99260)
+* [ModifyDataEngineDescription](https://cloud.tencent.com/document/api/1342/99269)
+* [ModifyUserType](https://cloud.tencent.com/document/api/1342/99259)
+* [RenewDataEngine](https://cloud.tencent.com/document/api/1342/99272)
+* [RestartDataEngine](https://cloud.tencent.com/document/api/1342/99268)
+* [RollbackDataEngineImage](https://cloud.tencent.com/document/api/1342/99267)
+* [SwitchDataEngineImage](https://cloud.tencent.com/document/api/1342/99266)
+* [UpdateDataEngine](https://cloud.tencent.com/document/api/1342/99271)
+* [UpdateDataEngineConfig](https://cloud.tencent.com/document/api/1342/99265)
+* [UpdateUserDataEngineConfig](https://cloud.tencent.com/document/api/1342/99264)
+* [UpgradeDataEngineImage](https://cloud.tencent.com/document/api/1342/99263)
+
+新增数据结构：
+
+* [DataEngineImageVersion](https://cloud.tencent.com/document/api/1342/53778#DataEngineImageVersion)
+* [Policys](https://cloud.tencent.com/document/api/1342/53778#Policys)
+* [PythonSparkImage](https://cloud.tencent.com/document/api/1342/53778#PythonSparkImage)
+* [UserDetailInfo](https://cloud.tencent.com/document/api/1342/53778#UserDetailInfo)
+* [Users](https://cloud.tencent.com/document/api/1342/53778#Users)
+* [WorkGroupDetailInfo](https://cloud.tencent.com/document/api/1342/53778#WorkGroupDetailInfo)
+* [WorkGroups](https://cloud.tencent.com/document/api/1342/53778#WorkGroups)
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 47 次发布
+
+发布时间：2023-10-09 01:15:32
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [IndexMetaField](https://cloud.tencent.com/document/api/845/30634#IndexMetaField)
+
+	* 新增成员：IndexMetaJson
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 124 次发布
+
+发布时间：2023-10-09 01:15:43
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TemplateInfo](https://cloud.tencent.com/document/api/1323/70369#TemplateInfo)
+
+	* 新增成员：ShareTemplateId
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 118 次发布
+
+发布时间：2023-10-09 07:05:45
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateFlowApprovers](https://cloud.tencent.com/document/api/1420/99282)
+
+新增数据结构：
+
+* [FillApproverInfo](https://cloud.tencent.com/document/api/1420/61525#FillApproverInfo)
+
+### 第 117 次发布
+
+发布时间：2023-10-09 00:00:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [ChannelCreateOrganizationBatchSignUrl](https://cloud.tencent.com/document/api/1420/99258)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 95 次发布
+
+发布时间：2023-10-09 01:19:36
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [PrometheusZoneItem](https://cloud.tencent.com/document/api/248/30354#PrometheusZoneItem)
+
+	* 新增成员：ZoneResourceState
+
+
+
+
+## 云数据库 PostgreSQL(postgres) 版本：2017-03-12
+
+### 第 40 次发布
+
+发布时间：2023-10-09 01:20:54
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [UpgradeDBInstanceMajorVersion](https://cloud.tencent.com/document/api/409/99280)
+
+
+
+## SSL 证书(ssl) 版本：2019-12-05
+
+### 第 45 次发布
+
+发布时间：2023-10-09 01:22:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* HostCertificate
+
+
+
+## 服务网格(tcm) 版本：2021-04-13
+
+### 第 21 次发布
+
+发布时间：2023-10-09 01:23:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [CLS](https://cloud.tencent.com/document/api/1261/63843#CLS)
+
+	* 新增成员：Region
+
+
+
+
+## 消息队列 TDMQ(tdmq) 版本：2020-02-17
+
+### 第 78 次发布
+
+发布时间：2023-10-09 01:24:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeRocketMQTopicMsgs](https://cloud.tencent.com/document/api/1179/97761)
+
+	* 新增入参：Tag, QueryDeadLetterMessage
+
+
+新增数据结构：
+
+* [RocketMQSubscription](https://cloud.tencent.com/document/api/1179/46089#RocketMQSubscription)
+
+修改数据结构：
+
+* [RocketMQTopic](https://cloud.tencent.com/document/api/1179/46089#RocketMQTopic)
+
+	* 新增成员：LastUpdateTime, SubscriptionCount, SubscriptionData
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 60 次发布
+
+发布时间：2023-10-09 01:28:10
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeCertificateVerifyResult](https://cloud.tencent.com/document/api/627/99281)
+
+
+
 # Release v1.0.760
 
 ## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26

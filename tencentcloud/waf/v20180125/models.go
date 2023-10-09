@@ -3506,6 +3506,101 @@ func (r *DescribeCCRuleResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCertificateVerifyResultRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 证书类型
+	CertType *int64 `json:"CertType,omitnil" name:"CertType"`
+
+	// 证书公钥
+	Certificate *string `json:"Certificate,omitnil" name:"Certificate"`
+
+	// 证书ID
+	CertID *string `json:"CertID,omitnil" name:"CertID"`
+
+	// 私钥信息
+	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
+}
+
+type DescribeCertificateVerifyResultRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 证书类型
+	CertType *int64 `json:"CertType,omitnil" name:"CertType"`
+
+	// 证书公钥
+	Certificate *string `json:"Certificate,omitnil" name:"Certificate"`
+
+	// 证书ID
+	CertID *string `json:"CertID,omitnil" name:"CertID"`
+
+	// 私钥信息
+	PrivateKey *string `json:"PrivateKey,omitnil" name:"PrivateKey"`
+}
+
+func (r *DescribeCertificateVerifyResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCertificateVerifyResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "CertType")
+	delete(f, "Certificate")
+	delete(f, "CertID")
+	delete(f, "PrivateKey")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCertificateVerifyResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCertificateVerifyResultResponseParams struct {
+	// 状态码
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 错误详情
+	Detail []*string `json:"Detail,omitnil" name:"Detail"`
+
+	// 过期时间
+	NotAfter *string `json:"NotAfter,omitnil" name:"NotAfter"`
+
+	// 证书是否改变:1有改变，0没有改变
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Changed *int64 `json:"Changed,omitnil" name:"Changed"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCertificateVerifyResultResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCertificateVerifyResultResponseParams `json:"Response"`
+}
+
+func (r *DescribeCertificateVerifyResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCertificateVerifyResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCiphersDetailRequestParams struct {
 
 }

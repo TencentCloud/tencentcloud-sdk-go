@@ -6155,50 +6155,56 @@ type FullTextInfo struct {
 
 // Predefined struct for user
 type GetAlarmLogRequestParams struct {
-	// 要查询的日志的起始时间，Unix时间戳，单位ms
+	// 要查询的执行详情的起始时间，Unix时间戳，单位ms
 	From *int64 `json:"From,omitnil" name:"From"`
 
-	// 要查询的日志的结束时间，Unix时间戳，单位ms
+	// 要查询的执行详情的结束时间，Unix时间戳，单位ms
 	To *int64 `json:"To,omitnil" name:"To"`
 
-	// 查询语句，语句长度最大为1024
+	// 查询过滤条件，例如：
+	// - 按告警策略ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971"`
+	// - 按监控对象ID查询：`monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b") `
+	// - 按告警策略ID及监控对象ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971" AND monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b")`
 	Query *string `json:"Query,omitnil" name:"Query"`
 
-	// 单次查询返回的日志条数，最大值为1000
+	// 单次查询返回的执行详情条数，最大值为1000
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容
+	// 加载更多详情时使用，透传上次返回的Context值，获取后续的执行详情
 	Context *string `json:"Context,omitnil" name:"Context"`
 
-	// 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+	// 执行详情是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
 	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
-	// 为true代表使用新检索,响应参数AnalysisRecords和Columns有效， 为false时代表使用老检索方式, AnalysisResults和ColNames有效
+	// 如果Query包含SQL语句，UseNewAnalysis为true时响应参数AnalysisRecords和Columns有效， UseNewAnalysis为false时响应参数AnalysisResults和ColNames有效
 	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil" name:"UseNewAnalysis"`
 }
 
 type GetAlarmLogRequest struct {
 	*tchttp.BaseRequest
 	
-	// 要查询的日志的起始时间，Unix时间戳，单位ms
+	// 要查询的执行详情的起始时间，Unix时间戳，单位ms
 	From *int64 `json:"From,omitnil" name:"From"`
 
-	// 要查询的日志的结束时间，Unix时间戳，单位ms
+	// 要查询的执行详情的结束时间，Unix时间戳，单位ms
 	To *int64 `json:"To,omitnil" name:"To"`
 
-	// 查询语句，语句长度最大为1024
+	// 查询过滤条件，例如：
+	// - 按告警策略ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971"`
+	// - 按监控对象ID查询：`monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b") `
+	// - 按告警策略ID及监控对象ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971" AND monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b")`
 	Query *string `json:"Query,omitnil" name:"Query"`
 
-	// 单次查询返回的日志条数，最大值为1000
+	// 单次查询返回的执行详情条数，最大值为1000
 	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
 
-	// 加载更多日志时使用，透传上次返回的Context值，获取后续的日志内容
+	// 加载更多详情时使用，透传上次返回的Context值，获取后续的执行详情
 	Context *string `json:"Context,omitnil" name:"Context"`
 
-	// 日志接口是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+	// 执行详情是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
 	Sort *string `json:"Sort,omitnil" name:"Sort"`
 
-	// 为true代表使用新检索,响应参数AnalysisRecords和Columns有效， 为false时代表使用老检索方式, AnalysisResults和ColNames有效
+	// 如果Query包含SQL语句，UseNewAnalysis为true时响应参数AnalysisRecords和Columns有效， UseNewAnalysis为false时响应参数AnalysisResults和ColNames有效
 	UseNewAnalysis *bool `json:"UseNewAnalysis,omitnil" name:"UseNewAnalysis"`
 }
 
@@ -6229,32 +6235,32 @@ func (r *GetAlarmLogRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type GetAlarmLogResponseParams struct {
-	// 加载后续内容的Context
+	// 加载后续详情的Context
 	Context *string `json:"Context,omitnil" name:"Context"`
 
-	// 日志查询结果是否全部返回
+	// 指定时间范围内的告警执行详情是否完整返回
 	ListOver *bool `json:"ListOver,omitnil" name:"ListOver"`
 
-	// 返回的是否为分析结果
+	// 返回的结果是否为SQL分析结果
 	Analysis *bool `json:"Analysis,omitnil" name:"Analysis"`
 
 	// 如果Analysis为True，则返回分析结果的列名，否则为空
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ColNames []*string `json:"ColNames,omitnil" name:"ColNames"`
 
-	// 日志查询结果；当Analysis为True时，可能返回为null
+	// 执行详情查询结果；当Analysis为True时，可能返回为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Results []*LogInfo `json:"Results,omitnil" name:"Results"`
 
-	// 日志分析结果；当Analysis为False时，可能返回为null
+	// 执行详情统计分析结果；当Analysis为False时，可能返回为null
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnalysisResults []*LogItems `json:"AnalysisResults,omitnil" name:"AnalysisResults"`
 
-	// 新的日志分析结果; UseNewAnalysis为true有效
+	// 执行详情统计分析结果; UseNewAnalysis为true有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AnalysisRecords []*string `json:"AnalysisRecords,omitnil" name:"AnalysisRecords"`
 
-	// 日志分析的列属性; UseNewAnalysis为true有效
+	// 分析结果的列名， UseNewAnalysis为true有效
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Columns []*Column `json:"Columns,omitnil" name:"Columns"`
 

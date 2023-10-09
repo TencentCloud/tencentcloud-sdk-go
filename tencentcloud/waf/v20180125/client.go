@@ -2161,6 +2161,66 @@ func (c *Client) DescribeCCRuleListWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeCertificateVerifyResultRequest() (request *DescribeCertificateVerifyResultRequest) {
+    request = &DescribeCertificateVerifyResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeCertificateVerifyResult")
+    
+    
+    return
+}
+
+func NewDescribeCertificateVerifyResultResponse() (response *DescribeCertificateVerifyResultResponse) {
+    response = &DescribeCertificateVerifyResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCertificateVerifyResult
+// 获取证书的检查结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeCertificateVerifyResult(request *DescribeCertificateVerifyResultRequest) (response *DescribeCertificateVerifyResultResponse, err error) {
+    return c.DescribeCertificateVerifyResultWithContext(context.Background(), request)
+}
+
+// DescribeCertificateVerifyResult
+// 获取证书的检查结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+func (c *Client) DescribeCertificateVerifyResultWithContext(ctx context.Context, request *DescribeCertificateVerifyResultRequest) (response *DescribeCertificateVerifyResultResponse, err error) {
+    if request == nil {
+        request = NewDescribeCertificateVerifyResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCertificateVerifyResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCertificateVerifyResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCiphersDetailRequest() (request *DescribeCiphersDetailRequest) {
     request = &DescribeCiphersDetailRequest{
         BaseRequest: &tchttp.BaseRequest{},
