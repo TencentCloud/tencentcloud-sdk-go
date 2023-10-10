@@ -8335,7 +8335,7 @@ type ModifyTopicRequestParams struct {
 	// 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
 	HotPeriod *uint64 `json:"HotPeriod,omitnil" name:"HotPeriod"`
 
-	// webtracking开关； false: 关闭 true: 开启
+	// 免鉴权开关； false: 关闭 true: 开启
 	IsWebTracking *bool `json:"IsWebTracking,omitnil" name:"IsWebTracking"`
 }
 
@@ -8370,7 +8370,7 @@ type ModifyTopicRequest struct {
 	// 非0：开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。仅在StorageType为 hot 时生效
 	HotPeriod *uint64 `json:"HotPeriod,omitnil" name:"HotPeriod"`
 
-	// webtracking开关； false: 关闭 true: 开启
+	// 免鉴权开关； false: 关闭 true: 开启
 	IsWebTracking *bool `json:"IsWebTracking,omitnil" name:"IsWebTracking"`
 }
 

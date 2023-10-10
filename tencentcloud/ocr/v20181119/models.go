@@ -9446,6 +9446,9 @@ type TrainTicket struct {
 
 	// 是否仅供报销使用（0：没有，1：有）
 	ReimburseOnlyMark *int64 `json:"ReimburseOnlyMark,omitnil" name:"ReimburseOnlyMark"`
+
+	// 是否有退票费标识（0：没有，1：有）
+	RefundMark *int64 `json:"RefundMark,omitnil" name:"RefundMark"`
 }
 
 // Predefined struct for user

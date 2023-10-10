@@ -8563,6 +8563,24 @@ type Execution struct {
 	SQL *string `json:"SQL,omitnil" name:"SQL"`
 }
 
+type FavorInfo struct {
+	// 优先事项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Priority *int64 `json:"Priority,omitnil" name:"Priority"`
+
+	// Catalog名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Catalog *string `json:"Catalog,omitnil" name:"Catalog"`
+
+	// DataBase名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataBase *string `json:"DataBase,omitnil" name:"DataBase"`
+
+	// Table名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Table *string `json:"Table,omitnil" name:"Table"`
+}
+
 type Filter struct {
 	// 属性名称, 若存在多个Filter时，Filter间的关系为逻辑或（OR）关系。
 	Name *string `json:"Name,omitnil" name:"Name"`
@@ -8653,6 +8671,63 @@ func (r *GenerateCreateMangedTableSqlResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *GenerateCreateMangedTableSqlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetOptimizerPolicyRequestParams struct {
+	// 策略描述
+	SmartPolicy *SmartPolicy `json:"SmartPolicy,omitnil" name:"SmartPolicy"`
+}
+
+type GetOptimizerPolicyRequest struct {
+	*tchttp.BaseRequest
+	
+	// 策略描述
+	SmartPolicy *SmartPolicy `json:"SmartPolicy,omitnil" name:"SmartPolicy"`
+}
+
+func (r *GetOptimizerPolicyRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOptimizerPolicyRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SmartPolicy")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetOptimizerPolicyRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetOptimizerPolicyResponseParams struct {
+	// 智能优化策略
+	SmartOptimizerPolicy *SmartOptimizerPolicy `json:"SmartOptimizerPolicy,omitnil" name:"SmartOptimizerPolicy"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GetOptimizerPolicyResponse struct {
+	*tchttp.BaseResponse
+	Response *GetOptimizerPolicyResponseParams `json:"Response"`
+}
+
+func (r *GetOptimizerPolicyResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetOptimizerPolicyResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -10284,6 +10359,32 @@ func (r *ReportHeartbeatMetaDataResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ResourceInfo struct {
+	// 归属类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AttributionType *string `json:"AttributionType,omitnil" name:"AttributionType"`
+
+	// 资源类型
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceType *string `json:"ResourceType,omitnil" name:"ResourceType"`
+
+	// 引擎名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 如资源类型为spark-sql 取值为Name, 如为spark-batch 取值为session app_name
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Instance *string `json:"Instance,omitnil" name:"Instance"`
+
+	// 亲和性
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Favor []*FavorInfo `json:"Favor,omitnil" name:"Favor"`
+
+	// 状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+}
+
 // Predefined struct for user
 type RestartDataEngineRequestParams struct {
 
@@ -10436,6 +10537,88 @@ type SessionResourceTemplate struct {
 	// 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutorMaxNumbers *uint64 `json:"ExecutorMaxNumbers,omitnil" name:"ExecutorMaxNumbers"`
+}
+
+type SmartOptimizerIndexPolicy struct {
+	// 开启索引
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IndexEnable *string `json:"IndexEnable,omitnil" name:"IndexEnable"`
+}
+
+type SmartOptimizerLifecyclePolicy struct {
+	// 生命周期启用
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LifecycleEnable *string `json:"LifecycleEnable,omitnil" name:"LifecycleEnable"`
+
+	// 过期时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Expiration *int64 `json:"Expiration,omitnil" name:"Expiration"`
+
+	// 是否删表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DropTable *bool `json:"DropTable,omitnil" name:"DropTable"`
+}
+
+type SmartOptimizerPolicy struct {
+	// 是否继承
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Inherit *string `json:"Inherit,omitnil" name:"Inherit"`
+
+	// ResourceInfo
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Resources []*ResourceInfo `json:"Resources,omitnil" name:"Resources"`
+
+	// SmartOptimizerWrittenPolicy
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Written *SmartOptimizerWrittenPolicy `json:"Written,omitnil" name:"Written"`
+
+	// SmartOptimizerLifecyclePolicy
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Lifecycle *SmartOptimizerLifecyclePolicy `json:"Lifecycle,omitnil" name:"Lifecycle"`
+
+	// SmartOptimizerIndexPolicy
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Index *SmartOptimizerIndexPolicy `json:"Index,omitnil" name:"Index"`
+}
+
+type SmartOptimizerWrittenPolicy struct {
+
+}
+
+type SmartPolicy struct {
+	// 基础信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BaseInfo *SmartPolicyBaseInfo `json:"BaseInfo,omitnil" name:"BaseInfo"`
+
+	// 策略描述
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Policy *SmartOptimizerPolicy `json:"Policy,omitnil" name:"Policy"`
+}
+
+type SmartPolicyBaseInfo struct {
+	// 用户uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
+
+	// Catalog/Database/Table
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PolicyType *string `json:"PolicyType,omitnil" name:"PolicyType"`
+
+	// Catalog名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Catalog *string `json:"Catalog,omitnil" name:"Catalog"`
+
+	// 数据库名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Database *string `json:"Database,omitnil" name:"Database"`
+
+	// 表名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Table *string `json:"Table,omitnil" name:"Table"`
+
+	// 用户appid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
 }
 
 type SparkJobInfo struct {
@@ -10944,6 +11127,10 @@ type TableBaseInfo struct {
 	// 库数据治理是否关闭，关闭：true，开启：false
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	DbGovernPolicyIsDisable *string `json:"DbGovernPolicyIsDisable,omitnil" name:"DbGovernPolicyIsDisable"`
+
+	// 智能数据治理配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SmartPolicy *SmartPolicy `json:"SmartPolicy,omitnil" name:"SmartPolicy"`
 }
 
 type TableInfo struct {

@@ -272,6 +272,9 @@ const (
 	// post start 不合法。
 	INVALIDPARAMETERVALUE_POSTSTARTNOTVALID = "InvalidParameterValue.PostStartNotValid"
 
+	// pre stop 不合法。
+	INVALIDPARAMETERVALUE_PRESTOPNOTVALID = "InvalidParameterValue.PreStopNotValid"
+
 	// 公有镜像参数错误。
 	INVALIDPARAMETERVALUE_PUBLICREPOTYPEPARAMETERERROR = "InvalidParameterValue.PublicRepoTypeParameterError"
 

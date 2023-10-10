@@ -165,6 +165,7 @@ func NewDescribeFraudUltimateResponse() (response *DescribeFraudUltimateResponse
 // 查询设备标识及风险（旗舰版）
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeFraudUltimate(request *DescribeFraudUltimateRequest) (response *DescribeFraudUltimateResponse, err error) {
     return c.DescribeFraudUltimateWithContext(context.Background(), request)
@@ -174,6 +175,7 @@ func (c *Client) DescribeFraudUltimate(request *DescribeFraudUltimateRequest) (r
 // 查询设备标识及风险（旗舰版）
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  RESOURCEINSUFFICIENT = "ResourceInsufficient"
 func (c *Client) DescribeFraudUltimateWithContext(ctx context.Context, request *DescribeFraudUltimateRequest) (response *DescribeFraudUltimateResponse, err error) {
     if request == nil {

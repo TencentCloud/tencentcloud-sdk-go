@@ -967,6 +967,60 @@ func (c *Client) DescribeCodeBatchByIdWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeCodeBatchesRequest() (request *DescribeCodeBatchesRequest) {
+    request = &DescribeCodeBatchesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("trp", APIVersion, "DescribeCodeBatches")
+    
+    
+    return
+}
+
+func NewDescribeCodeBatchesResponse() (response *DescribeCodeBatchesResponse) {
+    response = &DescribeCodeBatchesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeCodeBatches
+// 查询批次列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCodeBatches(request *DescribeCodeBatchesRequest) (response *DescribeCodeBatchesResponse, err error) {
+    return c.DescribeCodeBatchesWithContext(context.Background(), request)
+}
+
+// DescribeCodeBatches
+// 查询批次列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
+//  FAILEDOPERATION = "FailedOperation"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeCodeBatchesWithContext(ctx context.Context, request *DescribeCodeBatchesRequest) (response *DescribeCodeBatchesResponse, err error) {
+    if request == nil {
+        request = NewDescribeCodeBatchesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeCodeBatches require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeCodeBatchesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeCodeBatchsRequest() (request *DescribeCodeBatchsRequest) {
     request = &DescribeCodeBatchsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -988,6 +1042,10 @@ func NewDescribeCodeBatchsResponse() (response *DescribeCodeBatchsResponse) {
 // DescribeCodeBatchs
 // 查询批次列表
 //
+// 
+//
+// 旧版接口已经弃用，新业务请使用用新版的接口 DescribeCodeBatches
+//
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  AUTHFAILURE_CORPEXPIRED = "AuthFailure.CorpExpired"
@@ -999,6 +1057,10 @@ func (c *Client) DescribeCodeBatchs(request *DescribeCodeBatchsRequest) (respons
 
 // DescribeCodeBatchs
 // 查询批次列表
+//
+// 
+//
+// 旧版接口已经弃用，新业务请使用用新版的接口 DescribeCodeBatches
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"

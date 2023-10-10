@@ -2811,6 +2811,111 @@ func (r *ChannelCreateUserAutoSignEnableUrlResponse) FromJsonString(s string) er
 }
 
 // Predefined struct for user
+type ChannelCreateUserAutoSignSealUrlRequestParams struct {
+	// 渠道应用相关信息。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 自动签使用的场景值, 可以选择的场景值如下:
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li></ul>
+	// 
+	// 注: `现在仅支持电子处方场景`
+	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+
+	// 自动签开通个人用户信息，包括名字，身份证等。
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
+
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+}
+
+type ChannelCreateUserAutoSignSealUrlRequest struct {
+	*tchttp.BaseRequest
+	
+	// 渠道应用相关信息。
+	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
+
+	// 自动签使用的场景值, 可以选择的场景值如下:
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li></ul>
+	// 
+	// 注: `现在仅支持电子处方场景`
+	SceneKey *string `json:"SceneKey,omitnil" name:"SceneKey"`
+
+	// 自动签开通个人用户信息，包括名字，身份证等。
+	UserInfo *UserThreeFactor `json:"UserInfo,omitnil" name:"UserInfo"`
+
+	// 执行本接口操作的员工信息。
+	// 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+	Operator *UserInfo `json:"Operator,omitnil" name:"Operator"`
+
+	// 链接的过期时间，格式为Unix时间戳，不能早于当前时间，且最大为当前时间往后30天。`如果不传，默认过期时间为当前时间往后7天。`
+	ExpiredTime *int64 `json:"ExpiredTime,omitnil" name:"ExpiredTime"`
+}
+
+func (r *ChannelCreateUserAutoSignSealUrlRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateUserAutoSignSealUrlRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Agent")
+	delete(f, "SceneKey")
+	delete(f, "UserInfo")
+	delete(f, "Operator")
+	delete(f, "ExpiredTime")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ChannelCreateUserAutoSignSealUrlRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ChannelCreateUserAutoSignSealUrlResponseParams struct {
+	// 腾讯电子签小程序的AppId，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
+
+	// 腾讯电子签小程序的原始Id，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+	AppOriginalId *string `json:"AppOriginalId,omitnil" name:"AppOriginalId"`
+
+	// 个人用户自动签的开通链接, 短链形式。过期时间受 `ExpiredTime` 参数控制。
+	Url *string `json:"Url,omitnil" name:"Url"`
+
+	// 腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。
+	Path *string `json:"Path,omitnil" name:"Path"`
+
+	// base64格式的跳转二维码图片，可通过微信扫描后跳转到腾讯电子签小程序的开通界面。
+	QrCode *string `json:"QrCode,omitnil" name:"QrCode"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ChannelCreateUserAutoSignSealUrlResponse struct {
+	*tchttp.BaseResponse
+	Response *ChannelCreateUserAutoSignSealUrlResponseParams `json:"Response"`
+}
+
+func (r *ChannelCreateUserAutoSignSealUrlResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ChannelCreateUserAutoSignSealUrlResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ChannelCreateUserRolesRequestParams struct {
 	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 必填。
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`

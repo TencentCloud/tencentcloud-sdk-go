@@ -74,6 +74,7 @@ func NewChatCompletionResponse() (response *ChatCompletionResponse) {
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChatCompletion(request *ChatCompletionRequest) (response *ChatCompletionResponse, err error) {
     return c.ChatCompletionWithContext(context.Background(), request)
@@ -90,6 +91,7 @@ func (c *Client) ChatCompletion(request *ChatCompletionRequest) (response *ChatC
 //  AUTHFAILURE = "AuthFailure"
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_TGWINVALIDINTERFACE = "InvalidParameter.TgwInvalidInterface"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ChatCompletionWithContext(ctx context.Context, request *ChatCompletionRequest) (response *ChatCompletionResponse, err error) {
     if request == nil {

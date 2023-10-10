@@ -2191,6 +2191,96 @@ func (c *Client) ChannelCreateUserAutoSignEnableUrlWithContext(ctx context.Conte
     return
 }
 
+func NewChannelCreateUserAutoSignSealUrlRequest() (request *ChannelCreateUserAutoSignSealUrlRequest) {
+    request = &ChannelCreateUserAutoSignSealUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("essbasic", APIVersion, "ChannelCreateUserAutoSignSealUrl")
+    
+    
+    return
+}
+
+func NewChannelCreateUserAutoSignSealUrlResponse() (response *ChannelCreateUserAutoSignSealUrlResponse) {
+    response = &ChannelCreateUserAutoSignSealUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ChannelCreateUserAutoSignSealUrl
+// 获取设置自动签印章小程序链接。
+//
+// 
+//
+// 注意：
+//
+// <ul><li>需要<code>企业开通自动签</code>后使用。</li>
+//
+// <li>仅支持<code>已经开通了自动签的个人</code>更换自动签印章。</li>
+//
+// <li>链接有效期默认7天，<code>最多30天</code>。</li>
+//
+// <li>该接口的链接适用于<code>小程序</code>端。</li>
+//
+// <li>该接口不会扣除您的合同套餐，暂不参与计费。</li></ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateUserAutoSignSealUrl(request *ChannelCreateUserAutoSignSealUrlRequest) (response *ChannelCreateUserAutoSignSealUrlResponse, err error) {
+    return c.ChannelCreateUserAutoSignSealUrlWithContext(context.Background(), request)
+}
+
+// ChannelCreateUserAutoSignSealUrl
+// 获取设置自动签印章小程序链接。
+//
+// 
+//
+// 注意：
+//
+// <ul><li>需要<code>企业开通自动签</code>后使用。</li>
+//
+// <li>仅支持<code>已经开通了自动签的个人</code>更换自动签印章。</li>
+//
+// <li>链接有效期默认7天，<code>最多30天</code>。</li>
+//
+// <li>该接口的链接适用于<code>小程序</code>端。</li>
+//
+// <li>该接口不会扣除您的合同套餐，暂不参与计费。</li></ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) ChannelCreateUserAutoSignSealUrlWithContext(ctx context.Context, request *ChannelCreateUserAutoSignSealUrlRequest) (response *ChannelCreateUserAutoSignSealUrlResponse, err error) {
+    if request == nil {
+        request = NewChannelCreateUserAutoSignSealUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ChannelCreateUserAutoSignSealUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewChannelCreateUserAutoSignSealUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewChannelCreateUserRolesRequest() (request *ChannelCreateUserRolesRequest) {
     request = &ChannelCreateUserRolesRequest{
         BaseRequest: &tchttp.BaseRequest{},

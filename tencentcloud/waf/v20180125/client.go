@@ -2671,6 +2671,60 @@ func (c *Client) DescribeDomainDetailsSaasWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeDomainRulesRequest() (request *DescribeDomainRulesRequest) {
+    request = &DescribeDomainRulesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeDomainRules")
+    
+    
+    return
+}
+
+func NewDescribeDomainRulesResponse() (response *DescribeDomainRulesResponse) {
+    response = &DescribeDomainRulesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDomainRules
+// 拉取域名的防护规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) DescribeDomainRules(request *DescribeDomainRulesRequest) (response *DescribeDomainRulesResponse, err error) {
+    return c.DescribeDomainRulesWithContext(context.Background(), request)
+}
+
+// DescribeDomainRules
+// 拉取域名的防护规则列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_MYSQLDBOPERATIONFAILED = "FailedOperation.MysqlDBOperationFailed"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  UNSUPPORTEDOPERATION_INVALIDREQUEST = "UnsupportedOperation.InvalidRequest"
+func (c *Client) DescribeDomainRulesWithContext(ctx context.Context, request *DescribeDomainRulesRequest) (response *DescribeDomainRulesResponse, err error) {
+    if request == nil {
+        request = NewDescribeDomainRulesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDomainRules require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDomainRulesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeDomainVerifyResultRequest() (request *DescribeDomainVerifyResultRequest) {
     request = &DescribeDomainVerifyResultRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4117,6 +4171,92 @@ func (c *Client) DescribeUserDomainInfoWithContext(ctx context.Context, request 
     request.SetContext(ctx)
     
     response = NewDescribeUserDomainInfoResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeUserSignatureRuleRequest() (request *DescribeUserSignatureRuleRequest) {
+    request = &DescribeUserSignatureRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeUserSignatureRule")
+    
+    
+    return
+}
+
+func NewDescribeUserSignatureRuleResponse() (response *DescribeUserSignatureRuleResponse) {
+    response = &DescribeUserSignatureRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeUserSignatureRule
+// 获取用户特征规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserSignatureRule(request *DescribeUserSignatureRuleRequest) (response *DescribeUserSignatureRuleResponse, err error) {
+    return c.DescribeUserSignatureRuleWithContext(context.Background(), request)
+}
+
+// DescribeUserSignatureRule
+// 获取用户特征规则列表
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
+//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeUserSignatureRuleWithContext(ctx context.Context, request *DescribeUserSignatureRuleRequest) (response *DescribeUserSignatureRuleResponse, err error) {
+    if request == nil {
+        request = NewDescribeUserSignatureRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeUserSignatureRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeUserSignatureRuleResponse()
     err = c.Send(request, response)
     return
 }
@@ -6295,6 +6435,54 @@ func (c *Client) ModifyInstanceRenewFlagWithContext(ctx context.Context, request
     return
 }
 
+func NewModifyModuleStatusRequest() (request *ModifyModuleStatusRequest) {
+    request = &ModifyModuleStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyModuleStatus")
+    
+    
+    return
+}
+
+func NewModifyModuleStatusResponse() (response *ModifyModuleStatusResponse) {
+    response = &ModifyModuleStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyModuleStatus
+// 设置某个domain下基础安全模块的开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyModuleStatus(request *ModifyModuleStatusRequest) (response *ModifyModuleStatusResponse, err error) {
+    return c.ModifyModuleStatusWithContext(context.Background(), request)
+}
+
+// ModifyModuleStatus
+// 设置某个domain下基础安全模块的开关
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+func (c *Client) ModifyModuleStatusWithContext(ctx context.Context, request *ModifyModuleStatusRequest) (response *ModifyModuleStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyModuleStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyModuleStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyModuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyProtectionStatusRequest() (request *ModifyProtectionStatusRequest) {
     request = &ModifyProtectionStatusRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6509,6 +6697,132 @@ func (c *Client) ModifySpartaProtectionModeWithContext(ctx context.Context, requ
     return
 }
 
+func NewModifyUserLevelRequest() (request *ModifyUserLevelRequest) {
+    request = &ModifyUserLevelRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyUserLevel")
+    
+    
+    return
+}
+
+func NewModifyUserLevelResponse() (response *ModifyUserLevelResponse) {
+    response = &ModifyUserLevelResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyUserLevel
+// 修改用户防护规则等级
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyUserLevel(request *ModifyUserLevelRequest) (response *ModifyUserLevelResponse, err error) {
+    return c.ModifyUserLevelWithContext(context.Background(), request)
+}
+
+// ModifyUserLevel
+// 修改用户防护规则等级
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyUserLevelWithContext(ctx context.Context, request *ModifyUserLevelRequest) (response *ModifyUserLevelResponse, err error) {
+    if request == nil {
+        request = NewModifyUserLevelRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserLevel require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserLevelResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyUserSignatureRuleRequest() (request *ModifyUserSignatureRuleRequest) {
+    request = &ModifyUserSignatureRuleRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyUserSignatureRule")
+    
+    
+    return
+}
+
+func NewModifyUserSignatureRuleResponse() (response *ModifyUserSignatureRuleResponse) {
+    response = &ModifyUserSignatureRuleResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyUserSignatureRule
+// 修改用户防护规则，开启关闭具体的某条规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyUserSignatureRule(request *ModifyUserSignatureRuleRequest) (response *ModifyUserSignatureRuleResponse, err error) {
+    return c.ModifyUserSignatureRuleWithContext(context.Background(), request)
+}
+
+// ModifyUserSignatureRule
+// 修改用户防护规则，开启关闭具体的某条规则
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  DRYRUNOPERATION = "DryRunOperation"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+func (c *Client) ModifyUserSignatureRuleWithContext(ctx context.Context, request *ModifyUserSignatureRuleRequest) (response *ModifyUserSignatureRuleResponse, err error) {
+    if request == nil {
+        request = NewModifyUserSignatureRuleRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserSignatureRule require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserSignatureRuleResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyWafAutoDenyRulesRequest() (request *ModifyWafAutoDenyRulesRequest) {
     request = &ModifyWafAutoDenyRulesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6663,6 +6977,80 @@ func (c *Client) ModifyWafThreatenIntelligenceWithContext(ctx context.Context, r
     request.SetContext(ctx)
     
     response = NewModifyWafThreatenIntelligenceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyWebshellStatusRequest() (request *ModifyWebshellStatusRequest) {
+    request = &ModifyWebshellStatusRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyWebshellStatus")
+    
+    
+    return
+}
+
+func NewModifyWebshellStatusResponse() (response *ModifyWebshellStatusResponse) {
+    response = &ModifyWebshellStatusResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyWebshellStatus
+// 设置域名的webshell状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyWebshellStatus(request *ModifyWebshellStatusRequest) (response *ModifyWebshellStatusResponse, err error) {
+    return c.ModifyWebshellStatusWithContext(context.Background(), request)
+}
+
+// ModifyWebshellStatus
+// 设置域名的webshell状态。
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEINUSE = "ResourceInUse"
+//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
+//  RESOURCESSOLDOUT = "ResourcesSoldOut"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNKNOWNPARAMETER = "UnknownParameter"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) ModifyWebshellStatusWithContext(ctx context.Context, request *ModifyWebshellStatusRequest) (response *ModifyWebshellStatusResponse, err error) {
+    if request == nil {
+        request = NewModifyWebshellStatusRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyWebshellStatus require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyWebshellStatusResponse()
     err = c.Send(request, response)
     return
 }

@@ -291,7 +291,6 @@ import (
 	yunjingv20180228 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yunjing/v20180228"
 	yunsouv20180504 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yunsou/v20180504"
 	yunsouv20191115 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yunsou/v20191115"
-	zjv20190121 "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/zj/v20190121"
 )
 
 func TestAav20200224Import(t *testing.T) {
@@ -3814,18 +3813,5 @@ func TestYunsouv20191115Import(t *testing.T) {
         profile.NewClientProfile())
     if err != nil || client == nil {
         t.Errorf("fail to init yunsou_v20191115 client: %v", err)
-    }
-}
-
-func TestZjv20190121Import(t *testing.T) {
-    credential := common.NewCredential(
-        os.Getenv("TENCENTCLOUD_SECRET_ID"),
-        os.Getenv("TENCENTCLOUD_SECRET_KEY"))
-    client, err := zjv20190121.NewClient(
-        credential,
-        regions.Guangzhou,
-        profile.NewClientProfile())
-    if err != nil || client == nil {
-        t.Errorf("fail to init zj_v20190121 client: %v", err)
     }
 }

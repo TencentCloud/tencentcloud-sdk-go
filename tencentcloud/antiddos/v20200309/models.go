@@ -443,6 +443,10 @@ type BGPInstance struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Line *uint64 `json:"Line,omitnil" name:"Line"`
 
+	// 不计费的业务带宽
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FreeServiceBandwidth *uint64 `json:"FreeServiceBandwidth,omitnil" name:"FreeServiceBandwidth"`
+
 	// 弹性业务带宽开关
 	ElasticServiceBandwidth *uint64 `json:"ElasticServiceBandwidth,omitnil" name:"ElasticServiceBandwidth"`
 

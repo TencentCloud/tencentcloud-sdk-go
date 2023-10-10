@@ -4113,6 +4113,96 @@ func (c *Client) CreateUserAutoSignEnableUrlWithContext(ctx context.Context, req
     return
 }
 
+func NewCreateUserAutoSignSealUrlRequest() (request *CreateUserAutoSignSealUrlRequest) {
+    request = &CreateUserAutoSignSealUrlRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ess", APIVersion, "CreateUserAutoSignSealUrl")
+    
+    
+    return
+}
+
+func NewCreateUserAutoSignSealUrlResponse() (response *CreateUserAutoSignSealUrlResponse) {
+    response = &CreateUserAutoSignSealUrlResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateUserAutoSignSealUrl
+// 获取设置自动签印章小程序链接。
+//
+// 
+//
+// 注意：
+//
+// <ul><li>需要<code>企业开通自动签</code>后使用。</li>
+//
+// <li>仅支持<code>已经开通了自动签的个人</code>更换自动签印章。</li>
+//
+// <li>链接有效期默认7天，<code>最多30天</code>。</li>
+//
+// <li>该接口的链接适用于<code>小程序</code>端。</li>
+//
+// <li>该接口不会扣除您的合同套餐，暂不参与计费。</li></ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateUserAutoSignSealUrl(request *CreateUserAutoSignSealUrlRequest) (response *CreateUserAutoSignSealUrlResponse, err error) {
+    return c.CreateUserAutoSignSealUrlWithContext(context.Background(), request)
+}
+
+// CreateUserAutoSignSealUrl
+// 获取设置自动签印章小程序链接。
+//
+// 
+//
+// 注意：
+//
+// <ul><li>需要<code>企业开通自动签</code>后使用。</li>
+//
+// <li>仅支持<code>已经开通了自动签的个人</code>更换自动签印章。</li>
+//
+// <li>链接有效期默认7天，<code>最多30天</code>。</li>
+//
+// <li>该接口的链接适用于<code>小程序</code>端。</li>
+//
+// <li>该接口不会扣除您的合同套餐，暂不参与计费。</li></ul>
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DB = "InternalError.Db"
+//  INTERNALERROR_DECRYPTION = "InternalError.Decryption"
+//  INTERNALERROR_DEPENDSAPI = "InternalError.DependsApi"
+//  INTERNALERROR_ENCRYPTION = "InternalError.Encryption"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  OPERATIONDENIED = "OperationDenied"
+func (c *Client) CreateUserAutoSignSealUrlWithContext(ctx context.Context, request *CreateUserAutoSignSealUrlRequest) (response *CreateUserAutoSignSealUrlResponse, err error) {
+    if request == nil {
+        request = NewCreateUserAutoSignSealUrlRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateUserAutoSignSealUrl require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateUserAutoSignSealUrlResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewCreateWebThemeConfigRequest() (request *CreateWebThemeConfigRequest) {
     request = &CreateWebThemeConfigRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4542,6 +4632,7 @@ func NewDescribeFileUrlsResponse() (response *DescribeFileUrlsResponse) {
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_NOTEXISTDOCUMENT = "ResourceNotFound.NotExistDocument"
@@ -4577,6 +4668,7 @@ func (c *Client) DescribeFileUrls(request *DescribeFileUrlsRequest) (response *D
 //  OPERATIONDENIED_FORBID = "OperationDenied.Forbid"
 //  OPERATIONDENIED_NOIDENTITYVERIFY = "OperationDenied.NoIdentityVerify"
 //  OPERATIONDENIED_NOLOGIN = "OperationDenied.NoLogin"
+//  OPERATIONDENIED_ORGANIZATIONNOTACTIVATED = "OperationDenied.OrganizationNotActivated"
 //  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_APPLICATION = "ResourceNotFound.Application"
 //  RESOURCENOTFOUND_NOTEXISTDOCUMENT = "ResourceNotFound.NotExistDocument"

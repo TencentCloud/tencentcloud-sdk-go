@@ -149,6 +149,9 @@ const (
 	// 非法条件。
 	INVALIDPARAMETER_ERRINVALIDCONDITION = "InvalidParameter.ErrInvalidCondition"
 
+	// 修改源站操作仅支持配置一个host匹配类型。
+	INVALIDPARAMETER_ERRINVALIDCONDITIONHOSTTOOMANYWHENMODIFYORIGINACTIONCONFIGURED = "InvalidParameter.ErrInvalidConditionHostTooManyWhenModifyOriginActionConfigured"
+
 	// 非法条件-非法忽略大小写。
 	INVALIDPARAMETER_ERRINVALIDCONDITIONIGNORECASE = "InvalidParameter.ErrInvalidConditionIgnoreCase"
 
@@ -434,6 +437,9 @@ const (
 	// 站点升级中，暂不支持进行变更操作，请稍后再试。
 	INVALIDPARAMETER_ZONEISGRAYPUBLISHING = "InvalidParameter.ZoneIsGrayPublishing"
 
+	// 无域名接入站点切换到CNAME接入类型时站点名称必传。
+	INVALIDPARAMETER_ZONENAMEISREQUIRED = "InvalidParameter.ZoneNameIsRequired"
+
 	// 站点不存在。
 	INVALIDPARAMETER_ZONENOTFOUND = "InvalidParameter.ZoneNotFound"
 
@@ -548,9 +554,6 @@ const (
 	// 存在四层代理实例处于停用中状态，暂不支持停用站点。
 	OPERATIONDENIED_L4PROXYINSTOPPINGSTATUS = "OperationDenied.L4ProxyInStoppingStatus"
 
-	// 绑定4层实例有处于非运行中的状态，禁止操作。
-	OPERATIONDENIED_L4STATUSNOTINONLINE = "OperationDenied.L4StatusNotInOnline"
-
 	// 存在加速域名处于部署中状态，暂不支持停用站点。
 	OPERATIONDENIED_L7HOSTINPROCESSSTATUS = "OperationDenied.L7HostInProcessStatus"
 
@@ -559,6 +562,12 @@ const (
 
 	// NS接入模式不支持域名流量调度功能。
 	OPERATIONDENIED_NSNOTALLOWTRAFFICSTRATEGY = "OperationDenied.NSNotAllowTrafficStrategy"
+
+	// 无域名接入站点仅可以切换到CNAME接入类型。
+	OPERATIONDENIED_NODOMAINACCESSZONEONLYALLOWMODIFIEDTOCNAME = "OperationDenied.NoDomainAccessZoneOnlyAllowModifiedToCNAME"
+
+	// 无域名接入站点不支持除切换为CNAME接入类型以外的任何修改动作。
+	OPERATIONDENIED_NODOMAINACCESSZONEONLYSUPPORTMODIFYTYPE = "OperationDenied.NoDomainAccessZoneOnlySupportModifyType"
 
 	// 套餐不支持变更站点的服务区域。
 	OPERATIONDENIED_PLANNOTSUPPORTMODIFYZONEAREA = "OperationDenied.PlanNotSupportModifyZoneArea"

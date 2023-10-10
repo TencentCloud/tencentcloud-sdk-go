@@ -1925,6 +1925,108 @@ func (r *DescribeCodeBatchByIdResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeCodeBatchesRequestParams struct {
+	// 查询商户ID
+	MerchantId *string `json:"MerchantId,omitnil" name:"MerchantId"`
+
+	// 查询商品ID
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+
+	// 查询关键字
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
+
+	// 条数
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 页数
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 批次类型 0:溯源 1:营销
+	BatchType *string `json:"BatchType,omitnil" name:"BatchType"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitnil" name:"CorpId"`
+}
+
+type DescribeCodeBatchesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询商户ID
+	MerchantId *string `json:"MerchantId,omitnil" name:"MerchantId"`
+
+	// 查询商品ID
+	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`
+
+	// 查询关键字
+	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
+
+	// 条数
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+
+	// 页数
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 批次类型 0:溯源 1:营销
+	BatchType *string `json:"BatchType,omitnil" name:"BatchType"`
+
+	// 企业ID
+	CorpId *uint64 `json:"CorpId,omitnil" name:"CorpId"`
+}
+
+func (r *DescribeCodeBatchesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCodeBatchesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "MerchantId")
+	delete(f, "ProductId")
+	delete(f, "Keyword")
+	delete(f, "PageSize")
+	delete(f, "PageNumber")
+	delete(f, "BatchType")
+	delete(f, "CorpId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeCodeBatchesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeCodeBatchesResponseParams struct {
+	// 批次列表
+	CodeBatches []*CodeBatch `json:"CodeBatches,omitnil" name:"CodeBatches"`
+
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeCodeBatchesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeCodeBatchesResponseParams `json:"Response"`
+}
+
+func (r *DescribeCodeBatchesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeCodeBatchesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeCodeBatchsRequestParams struct {
 	// 查询商户ID
 	MerchantId *string `json:"MerchantId,omitnil" name:"MerchantId"`

@@ -84,6 +84,10 @@ type AIRecognitionTemplateItem struct {
 	// 语音关键词识别控制参数。
 	AsrWordsConfigure *AsrWordsConfigureInfo `json:"AsrWordsConfigure,omitnil" name:"AsrWordsConfigure"`
 
+	// 语音翻译控制参数。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TranslateConfigure *TranslateConfigureInfo `json:"TranslateConfigure,omitnil" name:"TranslateConfigure"`
+
 	// 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
 	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
 

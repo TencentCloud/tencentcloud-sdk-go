@@ -398,9 +398,11 @@ func (r *CallbackStatusStatisticsResponse) FromJsonString(s string) error {
 
 type DeleteSignStatus struct {
 	// 删除状态信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteStatus *string `json:"DeleteStatus,omitnil" name:"DeleteStatus"`
 
 	// 删除时间，UNIX 时间戳（单位：秒）。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	DeleteTime *uint64 `json:"DeleteTime,omitnil" name:"DeleteTime"`
 }
 

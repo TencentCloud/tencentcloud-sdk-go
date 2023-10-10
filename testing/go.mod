@@ -68,7 +68,7 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cme v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cmq v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cms v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.761
+	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.762
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cpdp v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cr v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/csip v0.0.0
@@ -244,7 +244,6 @@ require (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/youmall v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yunjing v0.0.0
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yunsou v0.0.0
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/zj v0.0.0
 
 )
 
@@ -489,6 +488,5 @@ replace (
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/youmall => ../tencentcloud/youmall
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yunjing => ../tencentcloud/yunjing
 	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/yunsou => ../tencentcloud/yunsou
-	github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/zj => ../tencentcloud/zj
 
 )

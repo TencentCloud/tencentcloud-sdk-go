@@ -5911,14 +5911,14 @@ type TkeSecretDetail struct {
 
 // Predefined struct for user
 type UpdateCertificateInstanceRequestParams struct {
-	// 一键更新新证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
-
 	// 一键更新原证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
 
 	// 需要部署的资源类型，参数值可选：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb
 	ResourceTypes []*string `json:"ResourceTypes,omitnil" name:"ResourceTypes"`
+
+	// 一键更新新证书ID
+	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
 
 	// 需要部署的地域列表（废弃）
 	//
@@ -5927,25 +5927,67 @@ type UpdateCertificateInstanceRequestParams struct {
 
 	// 云资源需要部署的地域列表
 	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitnil" name:"ResourceTypesRegions"`
+
+	// 证书公钥， 若上传证书公钥， 则CertificateId不用传
+	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil" name:"CertificatePublicKey"`
+
+	// 证书私钥，若上传证书公钥， 则证书私钥必填
+	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil" name:"CertificatePrivateKey"`
+
+	// 旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知
+	ExpiringNotificationSwitch *uint64 `json:"ExpiringNotificationSwitch,omitnil" name:"ExpiringNotificationSwitch"`
+
+	// 相同的证书是否允许重复上传，若上传证书公钥， 则可以配置该参数
+	Repeatable *bool `json:"Repeatable,omitnil" name:"Repeatable"`
+
+	// 是否允许下载，若上传证书公钥， 则可以配置该参数
+	AllowDownload *bool `json:"AllowDownload,omitnil" name:"AllowDownload"`
+
+	// 标签列表，若上传证书公钥， 则可以配置该参数
+	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+
+	// 项目 ID，若上传证书公钥， 则可以配置该参数
+	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
 type UpdateCertificateInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 一键更新新证书ID
-	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
-
 	// 一键更新原证书ID
 	OldCertificateId *string `json:"OldCertificateId,omitnil" name:"OldCertificateId"`
 
 	// 需要部署的资源类型，参数值可选：clb、cdn、waf、live、ddos、teo、apigateway、vod、tke、tcb
 	ResourceTypes []*string `json:"ResourceTypes,omitnil" name:"ResourceTypes"`
 
+	// 一键更新新证书ID
+	CertificateId *string `json:"CertificateId,omitnil" name:"CertificateId"`
+
 	// 需要部署的地域列表（废弃）
 	Regions []*string `json:"Regions,omitnil" name:"Regions"`
 
 	// 云资源需要部署的地域列表
 	ResourceTypesRegions []*ResourceTypeRegions `json:"ResourceTypesRegions,omitnil" name:"ResourceTypesRegions"`
+
+	// 证书公钥， 若上传证书公钥， 则CertificateId不用传
+	CertificatePublicKey *string `json:"CertificatePublicKey,omitnil" name:"CertificatePublicKey"`
+
+	// 证书私钥，若上传证书公钥， 则证书私钥必填
+	CertificatePrivateKey *string `json:"CertificatePrivateKey,omitnil" name:"CertificatePrivateKey"`
+
+	// 旧证书是否忽略到期提醒  0:不忽略通知。1:忽略通知
+	ExpiringNotificationSwitch *uint64 `json:"ExpiringNotificationSwitch,omitnil" name:"ExpiringNotificationSwitch"`
+
+	// 相同的证书是否允许重复上传，若上传证书公钥， 则可以配置该参数
+	Repeatable *bool `json:"Repeatable,omitnil" name:"Repeatable"`
+
+	// 是否允许下载，若上传证书公钥， 则可以配置该参数
+	AllowDownload *bool `json:"AllowDownload,omitnil" name:"AllowDownload"`
+
+	// 标签列表，若上传证书公钥， 则可以配置该参数
+	Tags []*Tags `json:"Tags,omitnil" name:"Tags"`
+
+	// 项目 ID，若上传证书公钥， 则可以配置该参数
+	ProjectId *uint64 `json:"ProjectId,omitnil" name:"ProjectId"`
 }
 
 func (r *UpdateCertificateInstanceRequest) ToJsonString() string {
@@ -5960,11 +6002,18 @@ func (r *UpdateCertificateInstanceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	delete(f, "CertificateId")
 	delete(f, "OldCertificateId")
 	delete(f, "ResourceTypes")
+	delete(f, "CertificateId")
 	delete(f, "Regions")
 	delete(f, "ResourceTypesRegions")
+	delete(f, "CertificatePublicKey")
+	delete(f, "CertificatePrivateKey")
+	delete(f, "ExpiringNotificationSwitch")
+	delete(f, "Repeatable")
+	delete(f, "AllowDownload")
+	delete(f, "Tags")
+	delete(f, "ProjectId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateCertificateInstanceRequest has unknown keys!", "")
 	}

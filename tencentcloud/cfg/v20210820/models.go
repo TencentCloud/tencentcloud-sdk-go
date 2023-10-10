@@ -28,6 +28,20 @@ type ActionFilter struct {
 	Values []*string `json:"Values,omitnil" name:"Values"`
 }
 
+type ApmServiceInfo struct {
+	// 业务ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceNameList []*string `json:"ServiceNameList,omitnil" name:"ServiceNameList"`
+
+	// 地域ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *int64 `json:"RegionId,omitnil" name:"RegionId"`
+}
+
 // Predefined struct for user
 type CreateTaskFromTemplateRequestParams struct {
 	// 从经验库中查询到的经验模板ID
@@ -260,6 +274,15 @@ type DescribeTaskListRequestParams struct {
 
 	// 筛选条件
 	Filters []*ActionFilter `json:"Filters,omitnil" name:"Filters"`
+
+	// 演练ID
+	TaskId []*uint64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 关联应用ID筛选
+	ApplicationId []*string `json:"ApplicationId,omitnil" name:"ApplicationId"`
+
+	// 关联应用筛选
+	ApplicationName []*string `json:"ApplicationName,omitnil" name:"ApplicationName"`
 }
 
 type DescribeTaskListRequest struct {
@@ -291,6 +314,15 @@ type DescribeTaskListRequest struct {
 
 	// 筛选条件
 	Filters []*ActionFilter `json:"Filters,omitnil" name:"Filters"`
+
+	// 演练ID
+	TaskId []*uint64 `json:"TaskId,omitnil" name:"TaskId"`
+
+	// 关联应用ID筛选
+	ApplicationId []*string `json:"ApplicationId,omitnil" name:"ApplicationId"`
+
+	// 关联应用筛选
+	ApplicationName []*string `json:"ApplicationName,omitnil" name:"ApplicationName"`
 }
 
 func (r *DescribeTaskListRequest) ToJsonString() string {
@@ -314,6 +346,9 @@ func (r *DescribeTaskListRequest) FromJsonString(s string) error {
 	delete(f, "TaskEndTime")
 	delete(f, "Tags")
 	delete(f, "Filters")
+	delete(f, "TaskId")
+	delete(f, "ApplicationId")
+	delete(f, "ApplicationName")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTaskListRequest has unknown keys!", "")
 	}
@@ -897,6 +932,22 @@ type Task struct {
 	// 关联的演练计划名称
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskPlanTitle *string `json:"TaskPlanTitle,omitnil" name:"TaskPlanTitle"`
+
+	// 关联的应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitnil" name:"ApplicationId"`
+
+	// 关联的应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitnil" name:"ApplicationName"`
+
+	// 关联的告警指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmPolicy []*string `json:"AlarmPolicy,omitnil" name:"AlarmPolicy"`
+
+	// 关联的APM服务
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApmServiceList []*ApmServiceInfo `json:"ApmServiceList,omitnil" name:"ApmServiceList"`
 }
 
 type TaskConfig struct {
@@ -1153,6 +1204,14 @@ type TaskListItem struct {
 	// 演练是否符合预期 1-符合预期 2-不符合预期
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TaskExpect *int64 `json:"TaskExpect,omitnil" name:"TaskExpect"`
+
+	// 关联应用ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationId *string `json:"ApplicationId,omitnil" name:"ApplicationId"`
+
+	// 关联应用名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApplicationName *string `json:"ApplicationName,omitnil" name:"ApplicationName"`
 }
 
 type TaskMonitor struct {
@@ -1255,6 +1314,14 @@ type Template struct {
 	// 经验来源 0-自建 1-专家推荐
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	TemplateSource *int64 `json:"TemplateSource,omitnil" name:"TemplateSource"`
+
+	// apm应用信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ApmServiceList []*ApmServiceInfo `json:"ApmServiceList,omitnil" name:"ApmServiceList"`
+
+	// 告警指标
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AlarmPolicy []*string `json:"AlarmPolicy,omitnil" name:"AlarmPolicy"`
 }
 
 type TemplateGroup struct {

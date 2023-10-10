@@ -2051,6 +2051,62 @@ func (c *Client) ModifyResourcesTagsWithContext(ctx context.Context, request *Mo
     return
 }
 
+func NewModifyUserManagerPwdRequest() (request *ModifyUserManagerPwdRequest) {
+    request = &ModifyUserManagerPwdRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "ModifyUserManagerPwd")
+    
+    
+    return
+}
+
+func NewModifyUserManagerPwdResponse() (response *ModifyUserManagerPwdResponse) {
+    response = &ModifyUserManagerPwdResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyUserManagerPwd
+// 修改用户密码（用户管理）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifyUserManagerPwd(request *ModifyUserManagerPwdRequest) (response *ModifyUserManagerPwdResponse, err error) {
+    return c.ModifyUserManagerPwdWithContext(context.Background(), request)
+}
+
+// ModifyUserManagerPwd
+// 修改用户密码（用户管理）
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_CAMCGWERROR = "InternalError.CamCgwError"
+//  RESOURCENOTFOUND_CLUSTERNOTFOUND = "ResourceNotFound.ClusterNotFound"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+//  UNAUTHORIZEDOPERATION_CHECKCAMAUTH = "UnauthorizedOperation.CheckCamAuth"
+func (c *Client) ModifyUserManagerPwdWithContext(ctx context.Context, request *ModifyUserManagerPwdRequest) (response *ModifyUserManagerPwdResponse, err error) {
+    if request == nil {
+        request = NewModifyUserManagerPwdRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyUserManagerPwd require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyUserManagerPwdResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunJobFlowRequest() (request *RunJobFlowRequest) {
     request = &RunJobFlowRequest{
         BaseRequest: &tchttp.BaseRequest{},

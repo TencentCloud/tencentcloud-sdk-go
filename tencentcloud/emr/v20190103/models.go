@@ -3964,6 +3964,74 @@ func (r *ModifyResourcesTagsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+// Predefined struct for user
+type ModifyUserManagerPwdRequestParams struct {
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
+
+	// 密码
+	PassWord *string `json:"PassWord,omitnil" name:"PassWord"`
+}
+
+type ModifyUserManagerPwdRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 用户名
+	UserName *string `json:"UserName,omitnil" name:"UserName"`
+
+	// 密码
+	PassWord *string `json:"PassWord,omitnil" name:"PassWord"`
+}
+
+func (r *ModifyUserManagerPwdRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserManagerPwdRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "UserName")
+	delete(f, "PassWord")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyUserManagerPwdRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyUserManagerPwdResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyUserManagerPwdResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyUserManagerPwdResponseParams `json:"Response"`
+}
+
+func (r *ModifyUserManagerPwdResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyUserManagerPwdResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type MultiDisk struct {
 	// 云盘类型
 	// <li>CLOUD_SSD：表示云SSD。</li>
