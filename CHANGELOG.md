@@ -1,3 +1,248 @@
+# Release v1.0.763
+
+## 云数据仓库 PostgreSQL(cdwpg) 版本：2020-12-30
+
+### 第 2 次发布
+
+发布时间：2023-10-11 01:19:09
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeSimpleInstances](https://cloud.tencent.com/document/api/878/100126)
+
+新增数据结构：
+
+* [InstanceSimpleInfoNew](https://cloud.tencent.com/document/api/878/98895#InstanceSimpleInfoNew)
+
+
+
+## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+
+### 第 17 次发布
+
+发布时间：2023-10-11 01:37:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateResource](https://cloud.tencent.com/document/api/1025/100130)
+* [ModifyResource](https://cloud.tencent.com/document/api/1025/100129)
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 65 次发布
+
+发布时间：2023-10-11 01:40:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeUserDataEngineConfig](https://cloud.tencent.com/document/api/1342/99278)
+
+	* 新增入参：Sorting, Limit, Offset, SortBy, Filters
+
+	* 新增出参：DataEngineConfigInstanceInfos, TotalCount
+
+* [RestartDataEngine](https://cloud.tencent.com/document/api/1342/99268)
+
+	* 新增入参：DataEngineId, ForcedOperation
+
+* [RollbackDataEngineImage](https://cloud.tencent.com/document/api/1342/99267)
+
+	* 新增入参：DataEngineId, FromRecordId, ToRecordId
+
+* [SwitchDataEngineImage](https://cloud.tencent.com/document/api/1342/99266)
+
+	* 新增入参：DataEngineId, NewImageVersionId
+
+* [UpdateDataEngineConfig](https://cloud.tencent.com/document/api/1342/99265)
+
+	* 新增入参：DataEngineIds, DataEngineConfigCommand
+
+* [UpdateUserDataEngineConfig](https://cloud.tencent.com/document/api/1342/99264)
+
+	* 新增入参：DataEngineId, DataEngineConfigPairs, SessionResourceTemplate
+
+* [UpgradeDataEngineImage](https://cloud.tencent.com/document/api/1342/99263)
+
+	* 新增入参：DataEngineId
+
+
+新增数据结构：
+
+* [DataEngineConfigInstanceInfo](https://cloud.tencent.com/document/api/1342/53778#DataEngineConfigInstanceInfo)
+
+修改数据结构：
+
+* [DataEngineConfigPair](https://cloud.tencent.com/document/api/1342/53778#DataEngineConfigPair)
+
+	* 新增成员：ConfigItem, ConfigValue
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 126 次发布
+
+发布时间：2023-10-11 01:48:23
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateFlowApprovers](https://cloud.tencent.com/document/api/1323/80033)
+
+	* 新增出参：FillError
+
+
+新增数据结构：
+
+* [FillError](https://cloud.tencent.com/document/api/1323/70369#FillError)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 120 次发布
+
+发布时间：2023-10-11 01:49:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [ChannelCreateFlowApprovers](https://cloud.tencent.com/document/api/1420/99282)
+
+	* 新增出参：FillError
+
+
+新增数据结构：
+
+* [FillError](https://cloud.tencent.com/document/api/1420/61525#FillError)
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 轻量应用服务器(lighthouse) 版本：2020-03-24
+
+### 第 54 次发布
+
+发布时间：2023-10-11 02:02:31
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateInstances](https://cloud.tencent.com/document/api/1207/69573)
+
+	* 新增入参：Tags
+
+
+
+
+## 媒体处理(mps) 版本：2019-06-12
+
+### 第 75 次发布
+
+发布时间：2023-10-11 02:08:20
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [AiAnalysisTaskDelLogoInput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDelLogoInput)
+* [AiAnalysisTaskDelLogoOutput](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDelLogoOutput)
+* [AiAnalysisTaskDelLogoResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisTaskDelLogoResult)
+
+修改数据结构：
+
+* [AiAnalysisResult](https://cloud.tencent.com/document/api/862/37615#AiAnalysisResult)
+
+	* 新增成员：DeLogoTask
+
+
+
+
+## 自动化助手(tat) 版本：2020-10-28
+
+### 第 21 次发布
+
+发布时间：2023-10-11 02:22:08
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DeleteCommands](https://cloud.tencent.com/document/api/1340/100133)
+* [DescribeQuotas](https://cloud.tencent.com/document/api/1340/100132)
+
+新增数据结构：
+
+* [GeneralResourceQuotaSet](https://cloud.tencent.com/document/api/1340/52687#GeneralResourceQuotaSet)
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-09-01
+
+### 第 57 次发布
+
+发布时间：2023-10-11 02:31:17
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AclUserRule](https://cloud.tencent.com/document/api/1552/80721#AclUserRule)
+
+	* 新增成员：CustomResponseId
+
+* [BotUserRule](https://cloud.tencent.com/document/api/1552/80721#BotUserRule)
+
+	* 新增成员：Name, CustomResponseId, ResponseCode, RedirectUrl
+
+* [DropPageDetail](https://cloud.tencent.com/document/api/1552/80721#DropPageDetail)
+
+	* 新增成员：CustomResponseId
+
+* [RateLimitUserRule](https://cloud.tencent.com/document/api/1552/80721#RateLimitUserRule)
+
+	* 新增成员：Name, CustomResponseId, ResponseCode, RedirectUrl
+
+
+
+
+## 边缘安全加速平台(teo) 版本：2022-01-06
+
+
+
 # Release v1.0.762
 
 ## T-Sec-DDoS防护(Anti-DDoS)(antiddos) 版本：2020-03-09

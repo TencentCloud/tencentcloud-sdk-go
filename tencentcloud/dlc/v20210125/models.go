@@ -3787,8 +3787,26 @@ type DMSTableInfo struct {
 	Asset *Asset `json:"Asset,omitnil" name:"Asset"`
 }
 
-type DataEngineConfigPair struct {
+type DataEngineConfigInstanceInfo struct {
+	// 引擎ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
 
+	// 用户自定义配置项集合
+	DataEngineConfigPairs []*DataEngineConfigPair `json:"DataEngineConfigPairs,omitnil" name:"DataEngineConfigPairs"`
+
+	// 作业集群资源参数配置模版
+	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitnil" name:"SessionResourceTemplate"`
+}
+
+type DataEngineConfigPair struct {
+	// 配置项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigItem *string `json:"ConfigItem,omitnil" name:"ConfigItem"`
+
+	// 配置值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConfigValue *string `json:"ConfigValue,omitnil" name:"ConfigValue"`
 }
 
 type DataEngineImageVersion struct {
@@ -7370,12 +7388,43 @@ func (r *DescribeTasksResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserDataEngineConfigRequestParams struct {
+	// 排序方式，desc表示倒序，asc表示正序
+	Sorting *string `json:"Sorting,omitnil" name:"Sorting"`
 
+	// 返回数量，默认为10，最大值为100。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 排序字段，支持如下字段类型，create-time
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
+
+	// 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,每种过滤参数支持的过滤值不超过5个。
+	// app-id - String - （appid过滤）
+	// engine-id - String - （引擎ID过滤）
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 type DescribeUserDataEngineConfigRequest struct {
 	*tchttp.BaseRequest
 	
+	// 排序方式，desc表示倒序，asc表示正序
+	Sorting *string `json:"Sorting,omitnil" name:"Sorting"`
+
+	// 返回数量，默认为10，最大值为100。
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 偏移量，默认为0。
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 排序字段，支持如下字段类型，create-time
+	SortBy *string `json:"SortBy,omitnil" name:"SortBy"`
+
+	// 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,每种过滤参数支持的过滤值不超过5个。
+	// app-id - String - （appid过滤）
+	// engine-id - String - （引擎ID过滤）
+	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 }
 
 func (r *DescribeUserDataEngineConfigRequest) ToJsonString() string {
@@ -7390,7 +7439,11 @@ func (r *DescribeUserDataEngineConfigRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "Sorting")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "SortBy")
+	delete(f, "Filters")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeUserDataEngineConfigRequest has unknown keys!", "")
 	}
@@ -7399,6 +7452,13 @@ func (r *DescribeUserDataEngineConfigRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeUserDataEngineConfigResponseParams struct {
+	// 用户引擎自定义配置项列表。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DataEngineConfigInstanceInfos []*DataEngineConfigInstanceInfo `json:"DataEngineConfigInstanceInfos,omitnil" name:"DataEngineConfigInstanceInfos"`
+
+	// 配置项总数。
+	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -10387,12 +10447,21 @@ type ResourceInfo struct {
 
 // Predefined struct for user
 type RestartDataEngineRequestParams struct {
+	// 引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
 
+	// 是否强制重启，忽略任务
+	ForcedOperation *bool `json:"ForcedOperation,omitnil" name:"ForcedOperation"`
 }
 
 type RestartDataEngineRequest struct {
 	*tchttp.BaseRequest
 	
+	// 引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
+
+	// 是否强制重启，忽略任务
+	ForcedOperation *bool `json:"ForcedOperation,omitnil" name:"ForcedOperation"`
 }
 
 func (r *RestartDataEngineRequest) ToJsonString() string {
@@ -10407,7 +10476,8 @@ func (r *RestartDataEngineRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DataEngineId")
+	delete(f, "ForcedOperation")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RestartDataEngineRequest has unknown keys!", "")
 	}
@@ -10438,12 +10508,27 @@ func (r *RestartDataEngineResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type RollbackDataEngineImageRequestParams struct {
+	// 引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
 
+	// 检查是否能回滚的接口返回的FromRecordId参数
+	FromRecordId *string `json:"FromRecordId,omitnil" name:"FromRecordId"`
+
+	// 检查是否能回滚的接口返回的ToRecordId参数
+	ToRecordId *string `json:"ToRecordId,omitnil" name:"ToRecordId"`
 }
 
 type RollbackDataEngineImageRequest struct {
 	*tchttp.BaseRequest
 	
+	// 引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
+
+	// 检查是否能回滚的接口返回的FromRecordId参数
+	FromRecordId *string `json:"FromRecordId,omitnil" name:"FromRecordId"`
+
+	// 检查是否能回滚的接口返回的ToRecordId参数
+	ToRecordId *string `json:"ToRecordId,omitnil" name:"ToRecordId"`
 }
 
 func (r *RollbackDataEngineImageRequest) ToJsonString() string {
@@ -10458,7 +10543,9 @@ func (r *RollbackDataEngineImageRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DataEngineId")
+	delete(f, "FromRecordId")
+	delete(f, "ToRecordId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RollbackDataEngineImageRequest has unknown keys!", "")
 	}
@@ -10936,12 +11023,21 @@ func (r *SuspendResumeDataEngineResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type SwitchDataEngineImageRequestParams struct {
+	// 引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
 
+	// 新镜像版本ID
+	NewImageVersionId *string `json:"NewImageVersionId,omitnil" name:"NewImageVersionId"`
 }
 
 type SwitchDataEngineImageRequest struct {
 	*tchttp.BaseRequest
 	
+	// 引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
+
+	// 新镜像版本ID
+	NewImageVersionId *string `json:"NewImageVersionId,omitnil" name:"NewImageVersionId"`
 }
 
 func (r *SwitchDataEngineImageRequest) ToJsonString() string {
@@ -10956,7 +11052,8 @@ func (r *SwitchDataEngineImageRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DataEngineId")
+	delete(f, "NewImageVersionId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SwitchDataEngineImageRequest has unknown keys!", "")
 	}
@@ -11580,12 +11677,21 @@ func (r *UnlockMetaDataResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateDataEngineConfigRequestParams struct {
+	// 引擎ID
+	DataEngineIds []*string `json:"DataEngineIds,omitnil" name:"DataEngineIds"`
 
+	// 引擎配置命令，支持UpdateSparkSQLLakefsPath（更新原生表配置）、UpdateSparkSQLResultPath（更新结果路径配置）
+	DataEngineConfigCommand *string `json:"DataEngineConfigCommand,omitnil" name:"DataEngineConfigCommand"`
 }
 
 type UpdateDataEngineConfigRequest struct {
 	*tchttp.BaseRequest
 	
+	// 引擎ID
+	DataEngineIds []*string `json:"DataEngineIds,omitnil" name:"DataEngineIds"`
+
+	// 引擎配置命令，支持UpdateSparkSQLLakefsPath（更新原生表配置）、UpdateSparkSQLResultPath（更新结果路径配置）
+	DataEngineConfigCommand *string `json:"DataEngineConfigCommand,omitnil" name:"DataEngineConfigCommand"`
 }
 
 func (r *UpdateDataEngineConfigRequest) ToJsonString() string {
@@ -11600,7 +11706,8 @@ func (r *UpdateDataEngineConfigRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DataEngineIds")
+	delete(f, "DataEngineConfigCommand")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateDataEngineConfigRequest has unknown keys!", "")
 	}
@@ -11844,12 +11951,27 @@ func (r *UpdateRowFilterResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpdateUserDataEngineConfigRequestParams struct {
+	// 引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
 
+	// 引擎配置项
+	DataEngineConfigPairs []*DataEngineConfigPair `json:"DataEngineConfigPairs,omitnil" name:"DataEngineConfigPairs"`
+
+	// 作业引擎资源配置模版
+	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitnil" name:"SessionResourceTemplate"`
 }
 
 type UpdateUserDataEngineConfigRequest struct {
 	*tchttp.BaseRequest
 	
+	// 引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
+
+	// 引擎配置项
+	DataEngineConfigPairs []*DataEngineConfigPair `json:"DataEngineConfigPairs,omitnil" name:"DataEngineConfigPairs"`
+
+	// 作业引擎资源配置模版
+	SessionResourceTemplate *SessionResourceTemplate `json:"SessionResourceTemplate,omitnil" name:"SessionResourceTemplate"`
 }
 
 func (r *UpdateUserDataEngineConfigRequest) ToJsonString() string {
@@ -11864,7 +11986,9 @@ func (r *UpdateUserDataEngineConfigRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DataEngineId")
+	delete(f, "DataEngineConfigPairs")
+	delete(f, "SessionResourceTemplate")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpdateUserDataEngineConfigRequest has unknown keys!", "")
 	}
@@ -11895,12 +12019,15 @@ func (r *UpdateUserDataEngineConfigResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type UpgradeDataEngineImageRequestParams struct {
-
+	// 引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
 }
 
 type UpgradeDataEngineImageRequest struct {
 	*tchttp.BaseRequest
 	
+	// 引擎ID
+	DataEngineId *string `json:"DataEngineId,omitnil" name:"DataEngineId"`
 }
 
 func (r *UpgradeDataEngineImageRequest) ToJsonString() string {
@@ -11915,7 +12042,7 @@ func (r *UpgradeDataEngineImageRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
-	
+	delete(f, "DataEngineId")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "UpgradeDataEngineImageRequest has unknown keys!", "")
 	}

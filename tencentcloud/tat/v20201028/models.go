@@ -610,6 +610,60 @@ func (r *DeleteCommandResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteCommandsRequestParams struct {
+	// 待删除命令id
+	CommandIds []*string `json:"CommandIds,omitnil" name:"CommandIds"`
+}
+
+type DeleteCommandsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 待删除命令id
+	CommandIds []*string `json:"CommandIds,omitnil" name:"CommandIds"`
+}
+
+func (r *DeleteCommandsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCommandsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "CommandIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteCommandsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteCommandsResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteCommandsResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteCommandsResponseParams `json:"Response"`
+}
+
+func (r *DeleteCommandsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteCommandsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteInvokerRequestParams struct {
 	// 待删除的执行器ID。
 	InvokerId *string `json:"InvokerId,omitnil" name:"InvokerId"`
@@ -1292,6 +1346,63 @@ func (r *DescribeInvokersResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeQuotasRequestParams struct {
+	// 资源名称，目前有"COMMAND","REGISTER_CODE" 这两个指标
+	ResourceNames []*string `json:"ResourceNames,omitnil" name:"ResourceNames"`
+}
+
+type DescribeQuotasRequest struct {
+	*tchttp.BaseRequest
+	
+	// 资源名称，目前有"COMMAND","REGISTER_CODE" 这两个指标
+	ResourceNames []*string `json:"ResourceNames,omitnil" name:"ResourceNames"`
+}
+
+func (r *DescribeQuotasRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQuotasRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceNames")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeQuotasRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeQuotasResponseParams struct {
+	// 资源额度列表
+	GeneralResourceQuotaSet []*GeneralResourceQuotaSet `json:"GeneralResourceQuotaSet,omitnil" name:"GeneralResourceQuotaSet"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeQuotasResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeQuotasResponseParams `json:"Response"`
+}
+
+func (r *DescribeQuotasResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeQuotasResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRegionsRequestParams struct {
 
 }
@@ -1708,6 +1819,20 @@ type Filter struct {
 
 	// 字段的过滤值。
 	Values []*string `json:"Values,omitnil" name:"Values"`
+}
+
+type GeneralResourceQuotaSet struct {
+	// 资源名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceName *string `json:"ResourceName,omitnil" name:"ResourceName"`
+
+	// 已使用额度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceQuotaUsed *int64 `json:"ResourceQuotaUsed,omitnil" name:"ResourceQuotaUsed"`
+
+	// 总额度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceQuotaTotal *int64 `json:"ResourceQuotaTotal,omitnil" name:"ResourceQuotaTotal"`
 }
 
 type Invocation struct {

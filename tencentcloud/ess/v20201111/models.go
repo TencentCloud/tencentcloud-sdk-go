@@ -1692,6 +1692,12 @@ func (r *CreateFlowApproversRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateFlowApproversResponseParams struct {
+	// 批量补充签署人时，补充失败的报错说明
+	// 
+	// 注:`目前仅补充动态签署人时会返回补充失败的原因`
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FillError []*FillError `json:"FillError,omitnil" name:"FillError"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -7476,6 +7482,16 @@ type FillApproverInfo struct {
 	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
 }
 
+type FillError struct {
+	// 为签署方经办人在签署合同中的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。与入参中补充的签署人角色ID对应，批量补充部分失败返回对应的错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+
+	// 补充失败错误说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMessage *string `json:"ErrMessage,omitnil" name:"ErrMessage"`
+}
+
 type FilledComponent struct {
 	// 控件Id
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -7697,7 +7713,7 @@ type FlowCreateApprover struct {
 
 	// 签署方经办人在模板中配置的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。
 	// 模板发起合同时，该参数为必填项。
-	// 文件发起合同是，该参数无需传值。
+	// 文件发起合同时，该参数无需传值。
 	// 如果开发者后续用合同模板发起合同，建议保存此值，在用合同模板发起合同中需此值绑定对应的签署经办人 。
 	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 

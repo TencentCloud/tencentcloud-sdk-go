@@ -1161,6 +1161,11 @@ func (r *ChannelCreateFlowApproversRequest) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowApproversResponseParams struct {
+	// 批量补充签署人时，补充失败的报错说明 
+	// 注:`目前仅补充动态签署人时会返回补充失败的原因`	
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FillError []*FillError `json:"FillError,omitnil" name:"FillError"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -6072,6 +6077,16 @@ type FillApproverInfo struct {
 
 	// 签署企业非渠道子客，默认为false，即表示同一渠道下的企业；如果为true，则目前表示接收方企业为SaaS企业, 为渠道子客时，organization_open_id+open_id 必传
 	NotChannelOrganization *string `json:"NotChannelOrganization,omitnil" name:"NotChannelOrganization"`
+}
+
+type FillError struct {
+	// 为签署方经办人在签署合同中的参与方ID，与控件绑定，是控件的归属方，ID为32位字符串。与入参中补充的签署人角色ID对应，批量补充部分失败返回对应的错误信息。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
+
+	// 补充失败错误说明
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrMessage *string `json:"ErrMessage,omitnil" name:"ErrMessage"`
 }
 
 type FilledComponent struct {

@@ -431,6 +431,72 @@ func (c *Client) DeleteCommandWithContext(ctx context.Context, request *DeleteCo
     return
 }
 
+func NewDeleteCommandsRequest() (request *DeleteCommandsRequest) {
+    request = &DeleteCommandsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tat", APIVersion, "DeleteCommands")
+    
+    
+    return
+}
+
+func NewDeleteCommandsResponse() (response *DeleteCommandsResponse) {
+    response = &DeleteCommandsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteCommands
+// 批量删除命令接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
+//  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
+//  RESOURCEUNAVAILABLE_COMMANDINEXECUTING = "ResourceUnavailable.CommandInExecuting"
+//  RESOURCEUNAVAILABLE_COMMANDININVOKER = "ResourceUnavailable.CommandInInvoker"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) DeleteCommands(request *DeleteCommandsRequest) (response *DeleteCommandsResponse, err error) {
+    return c.DeleteCommandsWithContext(context.Background(), request)
+}
+
+// DeleteCommands
+// 批量删除命令接口
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_INVALIDCOMMANDID = "InvalidParameterValue.InvalidCommandId"
+//  RESOURCENOTFOUND_COMMANDNOTFOUND = "ResourceNotFound.CommandNotFound"
+//  RESOURCEUNAVAILABLE_COMMANDINEXECUTING = "ResourceUnavailable.CommandInExecuting"
+//  RESOURCEUNAVAILABLE_COMMANDININVOKER = "ResourceUnavailable.CommandInInvoker"
+//  UNAUTHORIZEDOPERATION_CAMAUTHFAILED = "UnauthorizedOperation.CamAuthFailed"
+//  UNAUTHORIZEDOPERATION_INVALIDTOKEN = "UnauthorizedOperation.InvalidToken"
+//  UNAUTHORIZEDOPERATION_MFAEXPIRED = "UnauthorizedOperation.MFAExpired"
+//  UNAUTHORIZEDOPERATION_MFANOTFOUND = "UnauthorizedOperation.MFANotFound"
+func (c *Client) DeleteCommandsWithContext(ctx context.Context, request *DeleteCommandsRequest) (response *DeleteCommandsResponse, err error) {
+    if request == nil {
+        request = NewDeleteCommandsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteCommands require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteCommandsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDeleteInvokerRequest() (request *DeleteInvokerRequest) {
     request = &DeleteInvokerRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -983,6 +1049,56 @@ func (c *Client) DescribeInvokersWithContext(ctx context.Context, request *Descr
     request.SetContext(ctx)
     
     response = NewDescribeInvokersResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeQuotasRequest() (request *DescribeQuotasRequest) {
+    request = &DescribeQuotasRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("tat", APIVersion, "DescribeQuotas")
+    
+    
+    return
+}
+
+func NewDescribeQuotasResponse() (response *DescribeQuotasResponse) {
+    response = &DescribeQuotasResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeQuotas
+// 此接口用于获取配额信息
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_INVALIDRESOURCEQUOTARESOURCECODE = "ResourceUnavailable.InvalidResourceQuotaResourceCode"
+func (c *Client) DescribeQuotas(request *DescribeQuotasRequest) (response *DescribeQuotasResponse, err error) {
+    return c.DescribeQuotasWithContext(context.Background(), request)
+}
+
+// DescribeQuotas
+// 此接口用于获取配额信息
+//
+// 可能返回的错误码:
+//  MISSINGPARAMETER = "MissingParameter"
+//  RESOURCEUNAVAILABLE_INVALIDRESOURCEQUOTARESOURCECODE = "ResourceUnavailable.InvalidResourceQuotaResourceCode"
+func (c *Client) DescribeQuotasWithContext(ctx context.Context, request *DescribeQuotasRequest) (response *DescribeQuotasResponse, err error) {
+    if request == nil {
+        request = NewDescribeQuotasRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeQuotas require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeQuotasResponse()
     err = c.Send(request, response)
     return
 }

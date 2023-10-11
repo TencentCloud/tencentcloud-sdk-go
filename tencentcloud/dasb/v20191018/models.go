@@ -1056,6 +1056,67 @@ func (r *CreateDeviceGroupResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type CreateResourceRequestParams struct {
+	// 部署堡垒机的VpcId
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 部署堡垒机的SubnetId
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+}
+
+type CreateResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 部署堡垒机的VpcId
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 部署堡垒机的SubnetId
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+}
+
+func (r *CreateResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "VpcId")
+	delete(f, "SubnetId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type CreateResourceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type CreateResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *CreateResourceResponseParams `json:"Response"`
+}
+
+func (r *CreateResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *CreateResourceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type CreateUserGroupRequestParams struct {
 	// 用户组名，最大长度32字符
 	Name *string `json:"Name,omitnil" name:"Name"`
@@ -3900,6 +3961,116 @@ func (r *ModifyDeviceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyResourceRequestParams struct {
+	// 需要开通服务的资源ID
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 已废弃
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 已废弃
+	ModuleSet []*string `json:"ModuleSet,omitnil" name:"ModuleSet"`
+
+	// 实例版本
+	ResourceEdition *string `json:"ResourceEdition,omitnil" name:"ResourceEdition"`
+
+	// 资源节点数
+	ResourceNode *int64 `json:"ResourceNode,omitnil" name:"ResourceNode"`
+
+	// 自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// 带宽扩展包个数(4M)
+	PackageBandwidth *int64 `json:"PackageBandwidth,omitnil" name:"PackageBandwidth"`
+
+	// 授权点数扩展包个数(50点)
+	PackageNode *int64 `json:"PackageNode,omitnil" name:"PackageNode"`
+
+	// 日志投递
+	LogDelivery *int64 `json:"LogDelivery,omitnil" name:"LogDelivery"`
+}
+
+type ModifyResourceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要开通服务的资源ID
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 已废弃
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 已废弃
+	ModuleSet []*string `json:"ModuleSet,omitnil" name:"ModuleSet"`
+
+	// 实例版本
+	ResourceEdition *string `json:"ResourceEdition,omitnil" name:"ResourceEdition"`
+
+	// 资源节点数
+	ResourceNode *int64 `json:"ResourceNode,omitnil" name:"ResourceNode"`
+
+	// 自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// 带宽扩展包个数(4M)
+	PackageBandwidth *int64 `json:"PackageBandwidth,omitnil" name:"PackageBandwidth"`
+
+	// 授权点数扩展包个数(50点)
+	PackageNode *int64 `json:"PackageNode,omitnil" name:"PackageNode"`
+
+	// 日志投递
+	LogDelivery *int64 `json:"LogDelivery,omitnil" name:"LogDelivery"`
+}
+
+func (r *ModifyResourceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ResourceId")
+	delete(f, "Status")
+	delete(f, "ModuleSet")
+	delete(f, "ResourceEdition")
+	delete(f, "ResourceNode")
+	delete(f, "AutoRenewFlag")
+	delete(f, "PackageBandwidth")
+	delete(f, "PackageNode")
+	delete(f, "LogDelivery")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyResourceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyResourceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyResourceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyResourceResponseParams `json:"Response"`
+}
+
+func (r *ModifyResourceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyResourceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

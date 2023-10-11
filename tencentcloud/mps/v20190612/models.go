@@ -368,6 +368,10 @@ type AiAnalysisResult struct {
 	// 视频内容分析集锦任务的查询结果，当任务类型为 Highlight时有效。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	HighlightTask *AiAnalysisTaskHighlightResult `json:"HighlightTask,omitnil" name:"HighlightTask"`
+
+	// 视频内容分析去水印任务的查询结果，当任务类型为 DeLogo 时有效。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DeLogoTask *AiAnalysisTaskDelLogoResult `json:"DeLogoTask,omitnil" name:"DeLogoTask"`
 }
 
 type AiAnalysisTaskClassificationInput struct {
@@ -433,6 +437,37 @@ type AiAnalysisTaskCoverResult struct {
 	// 智能封面任务输出。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Output *AiAnalysisTaskCoverOutput `json:"Output,omitnil" name:"Output"`
+}
+
+type AiAnalysisTaskDelLogoInput struct {
+	// 视频智能去水印模板 ID。
+	Definition *uint64 `json:"Definition,omitnil" name:"Definition"`
+}
+
+type AiAnalysisTaskDelLogoOutput struct {
+	// 去水印后文件的路径。
+	Path *string `json:"Path,omitnil" name:"Path"`
+
+	// 去水印后文件的存储位置。
+	OutputStorage *TaskOutputStorage `json:"OutputStorage,omitnil" name:"OutputStorage"`
+}
+
+type AiAnalysisTaskDelLogoResult struct {
+	// 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 错误码，0：成功，其他值：失败。
+	ErrCode *int64 `json:"ErrCode,omitnil" name:"ErrCode"`
+
+	// 错误信息。
+	Message *string `json:"Message,omitnil" name:"Message"`
+
+	// 智能去水印任务输入。
+	Input *AiAnalysisTaskDelLogoInput `json:"Input,omitnil" name:"Input"`
+
+	// 智能去水印任务输出。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Output *AiAnalysisTaskDelLogoOutput `json:"Output,omitnil" name:"Output"`
 }
 
 type AiAnalysisTaskFrameTagInput struct {

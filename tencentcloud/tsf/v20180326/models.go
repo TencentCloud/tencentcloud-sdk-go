@@ -6796,7 +6796,7 @@ type DeployContainerGroupRequestParams struct {
 	// 是否部署 agent 容器。若不指定该参数，则默认不部署 agent 容器。
 	DeployAgent *bool `json:"DeployAgent,omitnil" name:"DeployAgent"`
 
-	// 节点调度策略。若不指定改参数，则默认不使用节点调度策略。
+	// 节点调度策略。若不指定该参数，则默认不使用节点调度策略。
 	SchedulingStrategy *SchedulingStrategy `json:"SchedulingStrategy,omitnil" name:"SchedulingStrategy"`
 
 	// 是否进行增量部署，默认为false，全量更新
@@ -6914,7 +6914,7 @@ type DeployContainerGroupRequest struct {
 	// 是否部署 agent 容器。若不指定该参数，则默认不部署 agent 容器。
 	DeployAgent *bool `json:"DeployAgent,omitnil" name:"DeployAgent"`
 
-	// 节点调度策略。若不指定改参数，则默认不使用节点调度策略。
+	// 节点调度策略。若不指定该参数，则默认不使用节点调度策略。
 	SchedulingStrategy *SchedulingStrategy `json:"SchedulingStrategy,omitnil" name:"SchedulingStrategy"`
 
 	// 是否进行增量部署，默认为false，全量更新

@@ -164,6 +164,100 @@ func (r *CreateInstanceByApiResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeSimpleInstancesRequestParams struct {
+	// 11
+	SearchInstanceId *string `json:"SearchInstanceId,omitnil" name:"SearchInstanceId"`
+
+	// 11
+	SearchInstanceName *string `json:"SearchInstanceName,omitnil" name:"SearchInstanceName"`
+
+	// 11
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 11
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 11
+	SearchTags []*string `json:"SearchTags,omitnil" name:"SearchTags"`
+}
+
+type DescribeSimpleInstancesRequest struct {
+	*tchttp.BaseRequest
+	
+	// 11
+	SearchInstanceId *string `json:"SearchInstanceId,omitnil" name:"SearchInstanceId"`
+
+	// 11
+	SearchInstanceName *string `json:"SearchInstanceName,omitnil" name:"SearchInstanceName"`
+
+	// 11
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 11
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 11
+	SearchTags []*string `json:"SearchTags,omitnil" name:"SearchTags"`
+}
+
+func (r *DescribeSimpleInstancesRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSimpleInstancesRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SearchInstanceId")
+	delete(f, "SearchInstanceName")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "SearchTags")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeSimpleInstancesRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeSimpleInstancesResponseParams struct {
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstancesList []*InstanceSimpleInfoNew `json:"InstancesList,omitnil" name:"InstancesList"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ErrorMsg *string `json:"ErrorMsg,omitnil" name:"ErrorMsg"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeSimpleInstancesResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeSimpleInstancesResponseParams `json:"Response"`
+}
+
+func (r *DescribeSimpleInstancesResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeSimpleInstancesResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DestroyInstanceByApiRequestParams struct {
 	// 实例名称，例如"cdwpg-xxxx"
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -221,6 +315,76 @@ func (r *DestroyInstanceByApiResponse) ToJsonString() string {
 // because it has no param check, nor strict type check
 func (r *DestroyInstanceByApiResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
+}
+
+type InstanceSimpleInfoNew struct {
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *int64 `json:"ID,omitnil" name:"ID"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil" name:"Version"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionId *int64 `json:"RegionId,omitnil" name:"RegionId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionDesc *string `json:"RegionDesc,omitnil" name:"RegionDesc"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneId *int64 `json:"ZoneId,omitnil" name:"ZoneId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneDesc *string `json:"ZoneDesc,omitnil" name:"ZoneDesc"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ExpireTime *string `json:"ExpireTime,omitnil" name:"ExpireTime"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	AccessInfo *string `json:"AccessInfo,omitnil" name:"AccessInfo"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PayMode *string `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RenewFlag *bool `json:"RenewFlag,omitnil" name:"RenewFlag"`
 }
 
 type ResourceSpecNew struct {

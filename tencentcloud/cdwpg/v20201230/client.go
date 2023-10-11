@@ -87,6 +87,54 @@ func (c *Client) CreateInstanceByApiWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewDescribeSimpleInstancesRequest() (request *DescribeSimpleInstancesRequest) {
+    request = &DescribeSimpleInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwpg", APIVersion, "DescribeSimpleInstances")
+    
+    
+    return
+}
+
+func NewDescribeSimpleInstancesResponse() (response *DescribeSimpleInstancesResponse) {
+    response = &DescribeSimpleInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeSimpleInstances
+// 获取集群实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+func (c *Client) DescribeSimpleInstances(request *DescribeSimpleInstancesRequest) (response *DescribeSimpleInstancesResponse, err error) {
+    return c.DescribeSimpleInstancesWithContext(context.Background(), request)
+}
+
+// DescribeSimpleInstances
+// 获取集群实例列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+func (c *Client) DescribeSimpleInstancesWithContext(ctx context.Context, request *DescribeSimpleInstancesRequest) (response *DescribeSimpleInstancesResponse, err error) {
+    if request == nil {
+        request = NewDescribeSimpleInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeSimpleInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeSimpleInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDestroyInstanceByApiRequest() (request *DestroyInstanceByApiRequest) {
     request = &DestroyInstanceByApiRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -107,12 +155,18 @@ func NewDestroyInstanceByApiResponse() (response *DestroyInstanceByApiResponse) 
 
 // DestroyInstanceByApi
 // 销毁集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 func (c *Client) DestroyInstanceByApi(request *DestroyInstanceByApiRequest) (response *DestroyInstanceByApiResponse, err error) {
     return c.DestroyInstanceByApiWithContext(context.Background(), request)
 }
 
 // DestroyInstanceByApi
 // 销毁集群
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 func (c *Client) DestroyInstanceByApiWithContext(ctx context.Context, request *DestroyInstanceByApiRequest) (response *DestroyInstanceByApiResponse, err error) {
     if request == nil {
         request = NewDestroyInstanceByApiRequest()

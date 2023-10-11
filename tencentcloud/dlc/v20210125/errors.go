@@ -95,6 +95,9 @@ const (
 	// 没有操作权限。
 	FAILEDOPERATION_NOPERMISSION = "FailedOperation.NoPermission"
 
+	// 用户没有指定引擎的使用权限
+	FAILEDOPERATION_NOPERMISSIONTOUSETHEDATAENGINE = "FailedOperation.NoPermissionToUseTheDataEngine"
+
 	// 账号未进行实名认证。
 	FAILEDOPERATION_NOREALNAMEAUTHENTICATION = "FailedOperation.NoRealNameAuthentication"
 
@@ -134,8 +137,26 @@ const (
 	// 数据库错误。
 	INTERNALERROR_DBERROR = "InternalError.DBError"
 
+	// 业务系统异常，请重试或提工单联系我们。
+	INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
+
 	// 参数错误。
 	INVALIDPARAMETER = "InvalidParameter"
+
+	// 指定集群参数已存在
+	INVALIDPARAMETER_DATAENGINECONFIGPAIRSDUPLICATE = "InvalidParameter.DataEngineConfigPairsDuplicate"
+
+	// 指定集群传参ExecType不匹配，当前仅支持SQL或BATCH
+	INVALIDPARAMETER_DATAENGINEEXECTYPENOTMATCH = "InvalidParameter.DataEngineExecTypeNotMatch"
+
+	// 指定集群镜像操作不匹配，当前仅支持: InitImage/UpgradeImage/SwitchImage/RollbackImage/ModifyResource
+	INVALIDPARAMETER_DATAENGINEIMAGEOPERATENOTMATCH = "InvalidParameter.DataEngineImageOperateNotMatch"
+
+	// 指定集群付费类型不匹配，当前仅支持: 0: 后付费, 1: 预付费
+	INVALIDPARAMETER_DATAENGINEPAYMODETYPENOTMATCH = "InvalidParameter.DataEnginePayModeTypeNotMatch"
+
+	// 指定集群类型不匹配，当前仅支持: spark/presto
+	INVALIDPARAMETER_DATAENGINETYPENOTMATCH = "InvalidParameter.DataEngineTypeNotMatch"
 
 	// 数据源类型错误。
 	INVALIDPARAMETER_DATASOURCETYPEERROR = "InvalidParameter.DatasourceTypeError"
@@ -149,11 +170,41 @@ const (
 	// 重复的用户名。
 	INVALIDPARAMETER_DUPLICATEUSERNAME = "InvalidParameter.DuplicateUserName"
 
+	// 指定集群镜像Cluster参数格式非JSON
+	INVALIDPARAMETER_IMAGECLUSTERPARAMETERSFORMATNOTJSON = "InvalidParameter.ImageClusterParametersFormatNotJson"
+
+	// 指定引擎类型不匹配，当前仅支持: SparkSQL, PrestoSQL, SparkBatch
+	INVALIDPARAMETER_IMAGEENGINETYPENOTMATCH = "InvalidParameter.ImageEngineTypeNotMatch"
+
+	// 指定isPublic不匹配，当前仅支持: 1:公共, 2:私有
+	INVALIDPARAMETER_IMAGEISPUBLICNOTMATCH = "InvalidParameter.ImageIsPublicNotMatch"
+
+	// 指定集群镜像参数不存在
+	INVALIDPARAMETER_IMAGEPARAMETERNOTFOUND = "InvalidParameter.ImageParameterNotFound"
+
+	// 指定集群镜像ParameterSubmitMethod不匹配，当前仅支持: User, BackGround
+	INVALIDPARAMETER_IMAGEPARAMETERSUBMITMETHODNOTMATCH = "InvalidParameter.ImageParameterSubmitMethodNotMatch"
+
+	// 指定集群镜像ParameterType不匹配，当前仅支持: 1: session , 2: common, 3: cluster
+	INVALIDPARAMETER_IMAGEPARAMETERTYPENOTMATCH = "InvalidParameter.ImageParameterTypeNotMatch"
+
+	// 指定集群镜像Session参数格式非JSON
+	INVALIDPARAMETER_IMAGESESSIONPARAMETERSFORMATNOTJSON = "InvalidParameter.ImageSessionParametersFormatNotJson"
+
+	// 指定state不匹配，当前仅支持: 1:初始化, 2:上线, 3:下线
+	INVALIDPARAMETER_IMAGESTATENOTMATCH = "InvalidParameter.ImageStateNotMatch"
+
+	// 指定集群镜像UserRecords不匹配，当前仅支持: 1: parentVersion, 2: childVersion, 3: pySpark
+	INVALIDPARAMETER_IMAGEUSERRECORDSTYPENOTMATCH = "InvalidParameter.ImageUserRecordsTypeNotMatch"
+
 	// 实例在其他流程中。
 	INVALIDPARAMETER_INSTANCEINPROCESS = "InvalidParameter.InstanceInProcess"
 
 	// 无效的访问策略。
 	INVALIDPARAMETER_INVALIDACCESSPOLICY = "InvalidParameter.InvalidAccessPolicy"
+
+	// 指定集群参数无效，请校验后重试
+	INVALIDPARAMETER_INVALIDDATAENGINECONFIGPAIRS = "InvalidParameter.InvalidDataEngineConfigPairs"
 
 	// 无效的引擎描述信息。
 	INVALIDPARAMETER_INVALIDDATAENGINEDESCRIPTION = "InvalidParameter.InvalidDataEngineDescription"
@@ -239,8 +290,14 @@ const (
 	// 无效的用户类型。
 	INVALIDPARAMETER_INVALIDUSERTYPE = "InvalidParameter.InvalidUserType"
 
+	// 获取白名单错误，请重试，或者提交工单联系我们
+	INVALIDPARAMETER_INVALIDWHITELISTKEY = "InvalidParameter.InvalidWhiteListKey"
+
 	// 无效的工作组名。
 	INVALIDPARAMETER_INVALIDWORKGROUPNAME = "InvalidParameter.InvalidWorkGroupName"
+
+	// 找不到参数或参数为空
+	INVALIDPARAMETER_PARAMETERNOTFOUNDORBENONE = "InvalidParameter.ParameterNotFoundOrBeNone"
 
 	// 任务已经结束，不能取消。
 	INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
@@ -269,11 +326,50 @@ const (
 	// 资源不存在。
 	RESOURCENOTFOUND = "ResourceNotFound"
 
+	// 指定集群配置实例不存在
+	RESOURCENOTFOUND_DATAENGINECONFIGINSTANCENOTFOUND = "ResourceNotFound.DataEngineConfigInstanceNotFound"
+
+	// 指定集群配置实例已存在
+	RESOURCENOTFOUND_DATAENGINECONFIGINSTANCENOTUNIQUE = "ResourceNotFound.DataEngineConfigInstanceNotUnique"
+
+	// 指定集群未处于运行状态
+	RESOURCENOTFOUND_DATAENGINENOTACTIVITY = "ResourceNotFound.DataEngineNotActivity"
+
+	// 指定的引擎不存在
+	RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
+
+	// 指定集群为非多版本类型，不支持该项操作
+	RESOURCENOTFOUND_DATAENGINENOTMULTIVERSION = "ResourceNotFound.DataEngineNotMultiVersion"
+
 	// 指定的引擎未处于运行中
 	RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
 
+	// 指定的引擎已存在
+	RESOURCENOTFOUND_DATAENGINENOTUNIQUE = "ResourceNotFound.DataEngineNotUnique"
+
+	// 指定集群为非Spark批作业类型，不支持该项操作
+	RESOURCENOTFOUND_DATAENGINETYPEONLYSUPPORTBATCH = "ResourceNotFound.DataEngineTypeOnlySupportBatch"
+
 	// 数据源连接不存在，请重试，或者提交工单联系我们
 	RESOURCENOTFOUND_DATASOURCENOTFOUND = "ResourceNotFound.DatasourceNotFound"
+
+	// 找不到默认引擎
+	RESOURCENOTFOUND_DEFAULTDATAENGINENOTFOUND = "ResourceNotFound.DefaultDataEngineNotFound"
+
+	// 指定集群镜像Session配置不存在
+	RESOURCENOTFOUND_IMAGESESSIONCONFIGNOTFOUND = "ResourceNotFound.ImageSessionConfigNotFound"
+
+	// 指定集群镜像Session配置已存在
+	RESOURCENOTFOUND_IMAGESESSIONCONFIGNOTUNIQUE = "ResourceNotFound.ImageSessionConfigNotUnique"
+
+	// 指定集群镜像未激活
+	RESOURCENOTFOUND_IMAGEVERSIONNOTACTIVITY = "ResourceNotFound.ImageVersionNotActivity"
+
+	// 指定集群镜像版本不存在
+	RESOURCENOTFOUND_IMAGEVERSIONNOTFOUND = "ResourceNotFound.ImageVersionNotFound"
+
+	// 指定集群镜像版本已存在
+	RESOURCENOTFOUND_IMAGEVERSIONNOTUNIQUE = "ResourceNotFound.ImageVersionNotUnique"
 
 	// 未找到结果路径。
 	RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = "ResourceNotFound.ResultOutputPathNotFound"

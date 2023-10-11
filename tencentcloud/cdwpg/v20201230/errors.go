@@ -16,4 +16,7 @@ package v20201230
 
 const (
 	// 此产品的特有错误码
+
+	// InternalError.SystemError
+	INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
 )
