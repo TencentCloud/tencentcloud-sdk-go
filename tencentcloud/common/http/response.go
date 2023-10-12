@@ -113,13 +113,17 @@ func TryReadErr(resp *http.Response) (err error) {
 		return nil
 	}
 
-	buf := bytes.NewBuffer(nil)
-	tee := io.TeeReader(resp.Body, buf)
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		msg := fmt.Sprintf("Fail to read http body, because: %s", err)
+		return errors.NewTencentCloudSDKError("ClientError.ParseJsonError", msg, "")
+	}
+	resp.Body.Close()
 
 	errResp := &ErrorResponse{}
-	err = json.NewDecoder(tee).Decode(&errResp)
+	err = json.Unmarshal(body, &errResp)
 	if err != nil {
-		msg := fmt.Sprintf("Fail to parse json content: %s, because: %s", buf.String(), err)
+		msg := fmt.Sprintf("Fail to parse json content: %s, because: %s", string(body), err)
 		return errors.NewTencentCloudSDKError("ClientError.ParseJsonError", msg, "")
 	}
 	if errResp.Response.Error.Code != "" {
@@ -127,14 +131,15 @@ func TryReadErr(resp *http.Response) (err error) {
 	}
 
 	depResp := &DeprecatedAPIErrorResponse{}
-	err = json.NewDecoder(buf).Decode(&depResp)
+	err = json.Unmarshal(body, &depResp)
 	if err != nil {
-		msg := fmt.Sprintf("Fail to parse json content: %s, because: %s", buf.String(), err)
+		msg := fmt.Sprintf("Fail to parse json content: %s, because: %s", string(body), err)
 		return errors.NewTencentCloudSDKError("ClientError.ParseJsonError", msg, "")
 	}
 	if depResp.Code != 0 {
 		return errors.NewTencentCloudSDKError(depResp.CodeDesc, depResp.Message, "")
 	}
+	resp.Body = io.NopCloser(bytes.NewReader(body))
 	return nil
 }
 
