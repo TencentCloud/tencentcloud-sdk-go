@@ -1,12 +1,10 @@
 package common
 
 import (
-	"bytes"
 	"compress/flate"
 	"compress/gzip"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"time"
 
@@ -24,19 +22,18 @@ func (c *Client) sendWithRateLimitRetry(req *http.Request, retryable bool) (resp
 	maxRetries := maxInt(c.profile.RateLimitExceededMaxRetries, 0)
 	durationFunc := safeDurationFunc(c.profile.RateLimitExceededRetryDuration)
 
-	var shadow []byte
 	for idx := 0; idx <= maxRetries; idx++ {
 		resp, err = c.sendWithNetworkFailureRetry(req, retryable)
 		if err != nil {
 			return
 		}
 
-		shadow, err = shadowRead(resp)
+		err = decompressBodyReader(resp)
 		if err != nil {
 			return resp, err
 		}
 
-		err = tchttp.ParseErrorFromHTTPResponse(shadow)
+		err = tchttp.TryReadErr(resp)
 		// should not sleep on last request
 		if err, ok := err.(*errors.TencentCloudSDKError); ok && err.Code == codeLimitExceeded && idx < maxRetries {
 			duration := durationFunc(idx)
@@ -54,40 +51,27 @@ func (c *Client) sendWithRateLimitRetry(req *http.Request, retryable bool) (resp
 	return resp, err
 }
 
-func shadowRead(resp *http.Response) ([]byte, error) {
-	var reader io.ReadCloser
+func decompressBodyReader(resp *http.Response) error {
+	var readCloser io.ReadCloser
 	var err error
-	var val []byte
 
 	enc := resp.Header.Get("Content-Encoding")
 	switch enc {
 	case "":
-		reader = resp.Body
+		readCloser = resp.Body
 	case "deflate":
-		reader = flate.NewReader(resp.Body)
+		readCloser = flate.NewReader(resp.Body)
 	case "gzip":
-		reader, err = gzip.NewReader(resp.Body)
+		readCloser, err = gzip.NewReader(resp.Body)
 		if err != nil {
-			return nil, err
+			return err
 		}
 	default:
-		return nil, fmt.Errorf("Content-Encoding not support: %s", enc)
+		return fmt.Errorf("Content-Encoding not support: %s", enc)
 	}
 
-	val, err = ioutil.ReadAll(reader)
-	if err != nil {
-		return nil, err
-	}
-
-	err = resp.Body.Close()
-	if err != nil {
-		return nil, err
-	}
-
-	resp.Body = ioutil.NopCloser(bytes.NewReader(val))
-
+	resp.Body = readCloser
 	// delete the header in case the caller mistake the body being encoded
 	delete(resp.Header, "Content-Encoding")
-
-	return val, nil
+	return nil
 }
