@@ -611,7 +611,12 @@ type CreateCallOutSessionRequestParams struct {
 	IsForceUseMobile *bool `json:"IsForceUseMobile,omitnil" name:"IsForceUseMobile"`
 
 	// 自定义数据，长度限制 1024 字节
+	//
+	// Deprecated: Uui is deprecated.
 	Uui *string `json:"Uui,omitnil" name:"Uui"`
+
+	// 自定义数据，长度限制 1024 字节
+	UUI *string `json:"UUI,omitnil" name:"UUI"`
 }
 
 type CreateCallOutSessionRequest struct {
@@ -637,6 +642,9 @@ type CreateCallOutSessionRequest struct {
 
 	// 自定义数据，长度限制 1024 字节
 	Uui *string `json:"Uui,omitnil" name:"Uui"`
+
+	// 自定义数据，长度限制 1024 字节
+	UUI *string `json:"UUI,omitnil" name:"UUI"`
 }
 
 func (r *CreateCallOutSessionRequest) ToJsonString() string {
@@ -658,6 +666,7 @@ func (r *CreateCallOutSessionRequest) FromJsonString(s string) error {
 	delete(f, "Callers")
 	delete(f, "IsForceUseMobile")
 	delete(f, "Uui")
+	delete(f, "UUI")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateCallOutSessionRequest has unknown keys!", "")
 	}
@@ -2269,7 +2278,12 @@ type DescribeProtectedTelCdrResponseParams struct {
 	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 话单记录
+	//
+	// Deprecated: TelCdrs is deprecated.
 	TelCdrs []*TelCdrInfo `json:"TelCdrs,omitnil" name:"TelCdrs"`
+
+	// 话单记录
+	TelCdrList []*TelCdrInfo `json:"TelCdrList,omitnil" name:"TelCdrList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -2617,7 +2631,12 @@ type DescribeTelCallInfoResponseParams struct {
 	SeatUsedCount *int64 `json:"SeatUsedCount,omitnil" name:"SeatUsedCount"`
 
 	// 音频套餐包消耗分钟数
+	//
+	// Deprecated: VoipCallInCount is deprecated.
 	VoipCallInCount *int64 `json:"VoipCallInCount,omitnil" name:"VoipCallInCount"`
+
+	// 音频套餐包消耗分钟数
+	VOIPCallInCount *int64 `json:"VOIPCallInCount,omitnil" name:"VOIPCallInCount"`
 
 	// 离线语音转文字套餐包消耗分钟数
 	AsrOfflineCount *int64 `json:"AsrOfflineCount,omitnil" name:"AsrOfflineCount"`
@@ -2654,6 +2673,8 @@ type DescribeTelCdrRequestParams struct {
 	EndTimeStamp *int64 `json:"EndTimeStamp,omitnil" name:"EndTimeStamp"`
 
 	// 实例 ID（废弃）
+	//
+	// Deprecated: InstanceId is deprecated.
 	InstanceId *int64 `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 返回数据条数，上限（废弃）
@@ -2746,7 +2767,12 @@ type DescribeTelCdrResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 话单记录
+	//
+	// Deprecated: TelCdrs is deprecated.
 	TelCdrs []*TelCdrInfo `json:"TelCdrs,omitnil" name:"TelCdrs"`
+
+	// 话单记录
+	TelCdrList []*TelCdrInfo `json:"TelCdrList,omitnil" name:"TelCdrList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
@@ -3292,6 +3318,9 @@ type NumberInfo struct {
 
 	// 绑定的外呼技能组
 	CallOutSkillGroupIds []*uint64 `json:"CallOutSkillGroupIds,omitnil" name:"CallOutSkillGroupIds"`
+
+	// 号码状态，1-正常，2-欠费停用，4-管理员停用，5-违规停用
+	State *int64 `json:"State,omitnil" name:"State"`
 }
 
 type PSTNSession struct {
@@ -4007,7 +4036,13 @@ type TelCdrInfo struct {
 
 	// 客户自定义数据（User-to-User Interface）
 	// 注意：此字段可能返回 null，表示取不到有效值。
+	//
+	// Deprecated: Uui is deprecated.
 	Uui *string `json:"Uui,omitnil" name:"Uui"`
+
+	// 客户自定义数据（User-to-User Interface）
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UUI *string `json:"UUI,omitnil" name:"UUI"`
 
 	// IVR按键信息（e.g. [{"Key":"1","Label":"非常满意"}]）
 	// 注意：此字段可能返回 null，表示取不到有效值。

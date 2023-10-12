@@ -1322,6 +1322,53 @@ type ClbHostsParams struct {
 	DomainId *string `json:"DomainId,omitnil" name:"DomainId"`
 }
 
+type ClbObject struct {
+	// 对象ID
+	ObjectId *string `json:"ObjectId,omitnil" name:"ObjectId"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// 精准域名列表
+	PreciseDomains []*string `json:"PreciseDomains,omitnil" name:"PreciseDomains"`
+
+	// WAF功能开关状态，0关闭1开启
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// WAF日志开关状态，0关闭1开启
+	ClsStatus *int64 `json:"ClsStatus,omitnil" name:"ClsStatus"`
+
+	// CLB对象对应的虚拟域名
+	VirtualDomain *string `json:"VirtualDomain,omitnil" name:"VirtualDomain"`
+
+	// 对象名称
+	ObjectName *string `json:"ObjectName,omitnil" name:"ObjectName"`
+
+	// 公网地址
+	PublicIp []*string `json:"PublicIp,omitnil" name:"PublicIp"`
+
+	// 内网地址
+	PrivateIp []*string `json:"PrivateIp,omitnil" name:"PrivateIp"`
+
+	// VPC名称
+	VpcName *string `json:"VpcName,omitnil" name:"VpcName"`
+
+	// VPC ID
+	Vpc *string `json:"Vpc,omitnil" name:"Vpc"`
+
+	// waf实例等级，如果未绑定实例为0
+	InstanceLevel *int64 `json:"InstanceLevel,omitnil" name:"InstanceLevel"`
+
+	// clb投递开关
+	PostCLSStatus *int64 `json:"PostCLSStatus,omitnil" name:"PostCLSStatus"`
+
+	// kafka投递开关
+	PostCKafkaStatus *int64 `json:"PostCKafkaStatus,omitnil" name:"PostCKafkaStatus"`
+}
+
 // Predefined struct for user
 type CreateAccessExportRequestParams struct {
 	// 客户要查询的日志主题ID，每个客户都有对应的一个主题
@@ -5129,6 +5176,75 @@ func (r *DescribeIpHitItemsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeIpHitItemsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeObjectsRequestParams struct {
+	// 支持的过滤器:
+	// 	ObjectId: clb实例ID
+	// 	VIP: clb实例的公网IP
+	// 	InstanceId: waf实例ID
+	// 	Domain: 精准域名
+	// 	Status: waf防护开关状态: 0关闭，1开启
+	// 	ClsStatus: waf日志开关: 0关闭，1开启
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
+}
+
+type DescribeObjectsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 支持的过滤器:
+	// 	ObjectId: clb实例ID
+	// 	VIP: clb实例的公网IP
+	// 	InstanceId: waf实例ID
+	// 	Domain: 精准域名
+	// 	Status: waf防护开关状态: 0关闭，1开启
+	// 	ClsStatus: waf日志开关: 0关闭，1开启
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
+}
+
+func (r *DescribeObjectsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeObjectsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeObjectsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeObjectsResponseParams struct {
+	// 对象列表
+	ClbObjects []*ClbObject `json:"ClbObjects,omitnil" name:"ClbObjects"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeObjectsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeObjectsResponseParams `json:"Response"`
+}
+
+func (r *DescribeObjectsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeObjectsResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -9418,6 +9534,81 @@ func (r *ModifyModuleStatusResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *ModifyModuleStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyObjectRequestParams struct {
+	// 修改对象标识
+	ObjectId *string `json:"ObjectId,omitnil" name:"ObjectId"`
+
+	// 改动作类型:Status修改开关，InstanceId绑定实例
+	OpType *string `json:"OpType,omitnil" name:"OpType"`
+
+	// 新的Waf开关状态，如果和已有状态相同认为修改成功
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 新的实例ID，如果和已绑定的实例相同认为修改成功
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type ModifyObjectRequest struct {
+	*tchttp.BaseRequest
+	
+	// 修改对象标识
+	ObjectId *string `json:"ObjectId,omitnil" name:"ObjectId"`
+
+	// 改动作类型:Status修改开关，InstanceId绑定实例
+	OpType *string `json:"OpType,omitnil" name:"OpType"`
+
+	// 新的Waf开关状态，如果和已有状态相同认为修改成功
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 新的实例ID，如果和已绑定的实例相同认为修改成功
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *ModifyObjectRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyObjectRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ObjectId")
+	delete(f, "OpType")
+	delete(f, "Status")
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyObjectRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyObjectResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyObjectResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyObjectResponseParams `json:"Response"`
+}
+
+func (r *ModifyObjectResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyObjectResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

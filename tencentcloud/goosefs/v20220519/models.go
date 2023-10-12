@@ -1254,7 +1254,7 @@ type GooseFSxAttribute struct {
 	// GooseFSx的型号
 	Model *string `json:"Model,omitnil" name:"Model"`
 
-	// 容量单位是GB, 比如4608(4.5TB)
+	// 容量单位是GB, 例如4608(4.5TB)
 	Capacity *uint64 `json:"Capacity,omitnil" name:"Capacity"`
 
 	// 要关联映射的bucket列表
@@ -1268,7 +1268,7 @@ type GooseFSxBuildElement struct {
 	// GooseFSx的型号
 	Model *string `json:"Model,omitnil" name:"Model"`
 
-	// 容量单位是GB, 比如4608(4.5TB)
+	// 容量单位是GB, 例如4608(4.5TB)
 	Capacity *uint64 `json:"Capacity,omitnil" name:"Capacity"`
 
 	// 要关联映射的bucket列表

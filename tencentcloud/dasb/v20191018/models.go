@@ -1057,21 +1057,69 @@ func (r *CreateDeviceGroupResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type CreateResourceRequestParams struct {
+	// 部署region
+	DeployRegion *string `json:"DeployRegion,omitnil" name:"DeployRegion"`
+
 	// 部署堡垒机的VpcId
 	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 部署堡垒机的SubnetId
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+
+	// 资源类型。取值:standard/pro
+	ResourceEdition *string `json:"ResourceEdition,omitnil" name:"ResourceEdition"`
+
+	// 资源节点数
+	ResourceNode *int64 `json:"ResourceNode,omitnil" name:"ResourceNode"`
+
+	// 计费周期
+	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
+
+	// 计费时长
+	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+
+	// 计费模式 1预付费
+	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// 部署zone
+	DeployZone *string `json:"DeployZone,omitnil" name:"DeployZone"`
 }
 
 type CreateResourceRequest struct {
 	*tchttp.BaseRequest
 	
+	// 部署region
+	DeployRegion *string `json:"DeployRegion,omitnil" name:"DeployRegion"`
+
 	// 部署堡垒机的VpcId
 	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
 	// 部署堡垒机的SubnetId
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
+
+	// 资源类型。取值:standard/pro
+	ResourceEdition *string `json:"ResourceEdition,omitnil" name:"ResourceEdition"`
+
+	// 资源节点数
+	ResourceNode *int64 `json:"ResourceNode,omitnil" name:"ResourceNode"`
+
+	// 计费周期
+	TimeUnit *string `json:"TimeUnit,omitnil" name:"TimeUnit"`
+
+	// 计费时长
+	TimeSpan *int64 `json:"TimeSpan,omitnil" name:"TimeSpan"`
+
+	// 计费模式 1预付费
+	PayMode *int64 `json:"PayMode,omitnil" name:"PayMode"`
+
+	// 自动续费
+	AutoRenewFlag *int64 `json:"AutoRenewFlag,omitnil" name:"AutoRenewFlag"`
+
+	// 部署zone
+	DeployZone *string `json:"DeployZone,omitnil" name:"DeployZone"`
 }
 
 func (r *CreateResourceRequest) ToJsonString() string {
@@ -1086,8 +1134,16 @@ func (r *CreateResourceRequest) FromJsonString(s string) error {
 	if err := json.Unmarshal([]byte(s), &f); err != nil {
 		return err
 	}
+	delete(f, "DeployRegion")
 	delete(f, "VpcId")
 	delete(f, "SubnetId")
+	delete(f, "ResourceEdition")
+	delete(f, "ResourceNode")
+	delete(f, "TimeUnit")
+	delete(f, "TimeSpan")
+	delete(f, "PayMode")
+	delete(f, "AutoRenewFlag")
+	delete(f, "DeployZone")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateResourceRequest has unknown keys!", "")
 	}

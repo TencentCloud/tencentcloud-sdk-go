@@ -732,6 +732,28 @@ func (r *BindDocumentToRoomResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type ClassScoreItem struct {
+	// 课堂iD
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 用户ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UserId *string `json:"UserId,omitnil" name:"UserId"`
+
+	// 评分时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *uint64 `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 课堂评分
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Score *uint64 `json:"Score,omitnil" name:"Score"`
+
+	// 课堂评价
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ScoreMsg *string `json:"ScoreMsg,omitnil" name:"ScoreMsg"`
+}
+
 // Predefined struct for user
 type CreateDocumentRequestParams struct {
 	// 低代码互动课堂的SdkAppId。
@@ -2945,6 +2967,81 @@ func (r *DescribeRoomStatisticsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRoomStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScoreListRequestParams struct {
+	// 课堂ID
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 分页查询当前页数，从1开始递增
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
+
+	// 默认是10条
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeScoreListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 课堂ID
+	RoomId *uint64 `json:"RoomId,omitnil" name:"RoomId"`
+
+	// 分页查询当前页数，从1开始递增
+	Page *uint64 `json:"Page,omitnil" name:"Page"`
+
+	// 默认是10条
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeScoreListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScoreListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RoomId")
+	delete(f, "Page")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeScoreListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeScoreListResponseParams struct {
+	// 总数
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
+
+	// 课堂评分列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Scores []*ClassScoreItem `json:"Scores,omitnil" name:"Scores"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeScoreListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeScoreListResponseParams `json:"Response"`
+}
+
+func (r *DescribeScoreListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeScoreListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

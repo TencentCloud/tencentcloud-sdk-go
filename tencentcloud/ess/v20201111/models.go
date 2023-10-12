@@ -191,6 +191,9 @@ type ApproverInfo struct {
 	// 
 	// 注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个），他方企业或个人只支持限制控件类型。`
 	AddSignComponentsLimits []*ComponentLimit `json:"AddSignComponentsLimits,omitnil" name:"AddSignComponentsLimits"`
+
+	// 签署须知：支持传入富文本，最长字数：500个中文字符
+	SignInstructionContent *string `json:"SignInstructionContent,omitnil" name:"SignInstructionContent"`
 }
 
 type ApproverItem struct {
@@ -5608,7 +5611,8 @@ type DescribeExtendedServiceAuthInfosRequestParams struct {
 	// <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
 	// <li>MOBILE_CHECK_APPROVER：使用手机号验证签署方身份</li>
 	// <li>PAGING_SEAL：骑缝章</li>
-	// <li>BATCH_SIGN：批量签署</li></ul>
+	// <li>BATCH_SIGN：批量签署</li>
+	// <li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li></ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
 
 	// 代理企业和员工的信息。
@@ -5630,7 +5634,8 @@ type DescribeExtendedServiceAuthInfosRequest struct {
 	// <li>OVERSEA_SIGN：企业与港澳台居民签署合同</li>
 	// <li>MOBILE_CHECK_APPROVER：使用手机号验证签署方身份</li>
 	// <li>PAGING_SEAL：骑缝章</li>
-	// <li>BATCH_SIGN：批量签署</li></ul>
+	// <li>BATCH_SIGN：批量签署</li>
+	// <li>AGE_LIMIT_EXPANSION：拓宽签署方年龄限制</li></ul>
 	ExtendServiceType *string `json:"ExtendServiceType,omitnil" name:"ExtendServiceType"`
 
 	// 代理企业和员工的信息。

@@ -2447,6 +2447,66 @@ func (c *Client) DescribeRoomStatisticsWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeScoreListRequest() (request *DescribeScoreListRequest) {
+    request = &DescribeScoreListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("lcic", APIVersion, "DescribeScoreList")
+    
+    
+    return
+}
+
+func NewDescribeScoreListResponse() (response *DescribeScoreListResponse) {
+    response = &DescribeScoreListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeScoreList
+// 获取课堂评分列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeScoreList(request *DescribeScoreListRequest) (response *DescribeScoreListResponse, err error) {
+    return c.DescribeScoreListWithContext(context.Background(), request)
+}
+
+// DescribeScoreList
+// 获取课堂评分列表
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_REQUESTTIMEDOUT = "FailedOperation.RequestTimedOut"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  MISSINGPARAMETER = "MissingParameter"
+//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeScoreListWithContext(ctx context.Context, request *DescribeScoreListRequest) (response *DescribeScoreListResponse, err error) {
+    if request == nil {
+        request = NewDescribeScoreListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeScoreList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeScoreListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSdkAppIdUsersRequest() (request *DescribeSdkAppIdUsersRequest) {
     request = &DescribeSdkAppIdUsersRequest{
         BaseRequest: &tchttp.BaseRequest{},

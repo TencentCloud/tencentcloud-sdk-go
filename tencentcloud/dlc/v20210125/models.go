@@ -11158,6 +11158,13 @@ type TColumn struct {
 
 	// 字段是否是非空
 	NotNull *bool `json:"NotNull,omitnil" name:"NotNull"`
+
+	// 表示整个 numeric 的长度,取值1-38
+	Precision *int64 `json:"Precision,omitnil" name:"Precision"`
+
+	// 表示小数部分的长度
+	// Scale小于Precision
+	Scale *int64 `json:"Scale,omitnil" name:"Scale"`
 }
 
 type TPartition struct {

@@ -6022,11 +6022,14 @@ type DownloadFlowInfo struct {
 
 type ExtentServiceAuthInfo struct {
 	// 扩展服务类型
-	//   AUTO_SIGN             企业静默签（自动签署）
-	//   OVERSEA_SIGN          企业与港澳台居民*签署合同
-	//   MOBILE_CHECK_APPROVER 使用手机号验证签署方身份
-	//   PAGING_SEAL           骑缝章
-	//   DOWNLOAD_FLOW         授权平台企业下载合同 
+	// <ul>
+	//   <li>AUTO_SIGN             企业静默签（自动签署）</li>
+	// <li>  OVERSEA_SIGN          企业与港澳台居民*签署合同</li>
+	// <li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
+	//  <li> PAGING_SEAL           骑缝章</li>
+	//  <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
+	// <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
+	// </ul>
 	Type *string `json:"Type,omitnil" name:"Type"`
 
 	// 扩展服务名称 
@@ -6572,11 +6575,14 @@ type ModifyExtendedServiceRequestParams struct {
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	//   扩展服务类型
-	//   AUTO_SIGN             企业静默签（自动签署）
-	//   OVERSEA_SIGN          企业与港澳台居民*签署合同
-	//   MOBILE_CHECK_APPROVER 使用手机号验证签署方身份
-	//   PAGING_SEAL           骑缝章
-	//   DOWNLOAD_FLOW         授权渠道下载合同 
+	// <ul>
+	//   <li>AUTO_SIGN             企业自动签（自动签署）</li>
+	// <li>  OVERSEA_SIGN          企业与港澳台居民*签署合同</li>
+	// <li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
+	//  <li> PAGING_SEAL           骑缝章</li>
+	//  <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
+	// <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
+	// </ul>
 	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
 
 	// 操作类型 
@@ -6599,11 +6605,14 @@ type ModifyExtendedServiceRequest struct {
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
 	//   扩展服务类型
-	//   AUTO_SIGN             企业静默签（自动签署）
-	//   OVERSEA_SIGN          企业与港澳台居民*签署合同
-	//   MOBILE_CHECK_APPROVER 使用手机号验证签署方身份
-	//   PAGING_SEAL           骑缝章
-	//   DOWNLOAD_FLOW         授权渠道下载合同 
+	// <ul>
+	//   <li>AUTO_SIGN             企业自动签（自动签署）</li>
+	// <li>  OVERSEA_SIGN          企业与港澳台居民*签署合同</li>
+	// <li>  MOBILE_CHECK_APPROVER 使用手机号验证签署方身份</li>
+	//  <li> PAGING_SEAL           骑缝章</li>
+	//  <li> DOWNLOAD_FLOW         授权渠道下载合同 </li>
+	// <li>AGE_LIMIT_EXPANSION 拓宽签署方年龄限制</li>
+	// </ul>
 	ServiceType *string `json:"ServiceType,omitnil" name:"ServiceType"`
 
 	// 操作类型 

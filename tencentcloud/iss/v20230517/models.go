@@ -1259,6 +1259,16 @@ func (r *BatchOperateDeviceResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type BitRateInfo struct {
+	// 通道Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ChannelId *string `json:"ChannelId,omitnil" name:"ChannelId"`
+
+	// 码率,单位:kbps
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Bitrate *float64 `json:"Bitrate,omitnil" name:"Bitrate"`
+}
+
 type BodyAIResultInfo struct {
 	// 时间字符串
 	Time *string `json:"Time,omitnil" name:"Time"`
@@ -4297,6 +4307,69 @@ func (r *DescribeUserDeviceResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeUserDeviceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type DescribeVideoBitRateList struct {
+	// 通道码率列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BitRates []*BitRateInfo `json:"BitRates,omitnil" name:"BitRates"`
+}
+
+// Predefined struct for user
+type DescribeVideoBitRateRequestParams struct {
+	// 通道ID列表
+	ChannelIds []*string `json:"ChannelIds,omitnil" name:"ChannelIds"`
+}
+
+type DescribeVideoBitRateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 通道ID列表
+	ChannelIds []*string `json:"ChannelIds,omitnil" name:"ChannelIds"`
+}
+
+func (r *DescribeVideoBitRateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoBitRateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ChannelIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeVideoBitRateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeVideoBitRateResponseParams struct {
+	// 无
+	Data *DescribeVideoBitRateList `json:"Data,omitnil" name:"Data"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeVideoBitRateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeVideoBitRateResponseParams `json:"Response"`
+}
+
+func (r *DescribeVideoBitRateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeVideoBitRateResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

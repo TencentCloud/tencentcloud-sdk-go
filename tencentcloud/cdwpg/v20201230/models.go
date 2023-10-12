@@ -164,6 +164,91 @@ func (r *CreateInstanceByApiResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceStateRequestParams struct {
+	// 集群实例名称
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type DescribeInstanceStateRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例名称
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceStateRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceStateRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceStateRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceStateResponseParams struct {
+	// 集群状态，例如：Serving
+	InstanceState *string `json:"InstanceState,omitnil" name:"InstanceState"`
+
+	// 集群操作创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowCreateTime *string `json:"FlowCreateTime,omitnil" name:"FlowCreateTime"`
+
+	// 集群操作名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+
+	// 集群操作进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowProgress *float64 `json:"FlowProgress,omitnil" name:"FlowProgress"`
+
+	// 集群状态描述，例如：运行中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStateDesc *string `json:"InstanceStateDesc,omitnil" name:"InstanceStateDesc"`
+
+	// 集群流程错误信息，例如：“创建失败，资源不足”
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowMsg *string `json:"FlowMsg,omitnil" name:"FlowMsg"`
+
+	// 当前步骤的名称，例如：”购买资源中“
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+
+	// 集群备份任务开启状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupStatus *int64 `json:"BackupStatus,omitnil" name:"BackupStatus"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeInstanceStateResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceStateResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceStateResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceStateResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeSimpleInstancesRequestParams struct {
 	// 11
 	SearchInstanceId *string `json:"SearchInstanceId,omitnil" name:"SearchInstanceId"`
@@ -385,6 +470,67 @@ type InstanceSimpleInfoNew struct {
 	// 1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *bool `json:"RenewFlag,omitnil" name:"RenewFlag"`
+}
+
+// Predefined struct for user
+type ModifyInstanceRequestParams struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 新修改的实例名称
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+}
+
+type ModifyInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 新修改的实例名称
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+}
+
+func (r *ModifyInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "InstanceName")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyInstanceResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyInstanceResponseParams `json:"Response"`
+}
+
+func (r *ModifyInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type ResourceSpecNew struct {

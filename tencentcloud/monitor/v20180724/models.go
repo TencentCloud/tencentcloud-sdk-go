@@ -1490,16 +1490,16 @@ type CreateGrafanaInstanceRequestParams struct {
 	// 实例名
 	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
-	// VPC ID
+	// VPC ID (私有网络 ID)
 	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
-	// 子网 ID 数组
+	// 子网 ID 数组(VPC ID下的子网 ID，只取第一个)
 	SubnetIds []*string `json:"SubnetIds,omitnil" name:"SubnetIds"`
 
 	// 是否启用外网
 	EnableInternet *bool `json:"EnableInternet,omitnil" name:"EnableInternet"`
 
-	// Grafana 初始密码
+	// Grafana 初始密码(国际站用户必填，国内站用户可不填，不填时会生成随机密码并给主账号发送通知)
 	GrafanaInitPassword *string `json:"GrafanaInitPassword,omitnil" name:"GrafanaInitPassword"`
 
 	// 标签
@@ -1512,16 +1512,16 @@ type CreateGrafanaInstanceRequest struct {
 	// 实例名
 	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
 
-	// VPC ID
+	// VPC ID (私有网络 ID)
 	VpcId *string `json:"VpcId,omitnil" name:"VpcId"`
 
-	// 子网 ID 数组
+	// 子网 ID 数组(VPC ID下的子网 ID，只取第一个)
 	SubnetIds []*string `json:"SubnetIds,omitnil" name:"SubnetIds"`
 
 	// 是否启用外网
 	EnableInternet *bool `json:"EnableInternet,omitnil" name:"EnableInternet"`
 
-	// Grafana 初始密码
+	// Grafana 初始密码(国际站用户必填，国内站用户可不填，不填时会生成随机密码并给主账号发送通知)
 	GrafanaInitPassword *string `json:"GrafanaInitPassword,omitnil" name:"GrafanaInitPassword"`
 
 	// 标签
@@ -1582,7 +1582,7 @@ type CreateGrafanaIntegrationRequestParams struct {
 	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 集成类型，可在实例详情-云产品集成-集成列表查看。例如：tencent-cloud-prometheus
+	// 集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)
 	Kind *string `json:"Kind,omitnil" name:"Kind"`
 
 	// 集成配置
@@ -1595,7 +1595,7 @@ type CreateGrafanaIntegrationRequest struct {
 	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 集成类型，可在实例详情-云产品集成-集成列表查看。例如：tencent-cloud-prometheus
+	// 集成类型(接口DescribeGrafanaIntegrationOverviews返回的集成信息中的Code字段)
 	Kind *string `json:"Kind,omitnil" name:"Kind"`
 
 	// 集成配置
@@ -1657,10 +1657,10 @@ type CreateGrafanaNotificationChannelRequestParams struct {
 	// 告警通道名称，例如：test
 	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
-	// 默认为1，已废弃，请使用 OrganizationIds
+	// 默认为1，建议使用 OrganizationIds
 	OrgId *int64 `json:"OrgId,omitnil" name:"OrgId"`
 
-	// 接受告警通道 ID 数组
+	// 接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID 
 	Receivers []*string `json:"Receivers,omitnil" name:"Receivers"`
 
 	// 额外组织 ID 数组，已废弃，请使用 OrganizationIds
@@ -1679,10 +1679,10 @@ type CreateGrafanaNotificationChannelRequest struct {
 	// 告警通道名称，例如：test
 	ChannelName *string `json:"ChannelName,omitnil" name:"ChannelName"`
 
-	// 默认为1，已废弃，请使用 OrganizationIds
+	// 默认为1，建议使用 OrganizationIds
 	OrgId *int64 `json:"OrgId,omitnil" name:"OrgId"`
 
-	// 接受告警通道 ID 数组
+	// 接受告警通道 ID 数组，值为告警管理/基础配置/通知模板中的模板 ID 
 	Receivers []*string `json:"Receivers,omitnil" name:"Receivers"`
 
 	// 额外组织 ID 数组，已废弃，请使用 OrganizationIds
@@ -2649,7 +2649,7 @@ type CreateSSOAccountRequestParams struct {
 	// 用户账号 ID ，例如：10000000
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 权限
+	// 权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)
 	Role []*GrafanaAccountRole `json:"Role,omitnil" name:"Role"`
 
 	// 备注
@@ -2665,7 +2665,7 @@ type CreateSSOAccountRequest struct {
 	// 用户账号 ID ，例如：10000000
 	UserId *string `json:"UserId,omitnil" name:"UserId"`
 
-	// 权限
+	// 权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)
 	Role []*GrafanaAccountRole `json:"Role,omitnil" name:"Role"`
 
 	// 备注
@@ -3103,14 +3103,14 @@ func (r *DeleteExporterIntegrationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteGrafanaInstanceRequestParams struct {
-	// 实例名数组
+	// 实例ID数组
 	InstanceIDs []*string `json:"InstanceIDs,omitnil" name:"InstanceIDs"`
 }
 
 type DeleteGrafanaInstanceRequest struct {
 	*tchttp.BaseRequest
 	
-	// 实例名数组
+	// 实例ID数组
 	InstanceIDs []*string `json:"InstanceIDs,omitnil" name:"InstanceIDs"`
 }
 
@@ -3218,7 +3218,7 @@ func (r *DeleteGrafanaIntegrationResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DeleteGrafanaNotificationChannelRequestParams struct {
-	// 通道 ID 数组。例如：nchannel-abcd1234
+	// 通道 ID 数组。例如：nchannel-abcd1234，通过 DescribeGrafanaChannels 获取
 	ChannelIDs []*string `json:"ChannelIDs,omitnil" name:"ChannelIDs"`
 
 	// Grafana 实例 ID，例如：grafana-abcdefgh
@@ -3228,7 +3228,7 @@ type DeleteGrafanaNotificationChannelRequestParams struct {
 type DeleteGrafanaNotificationChannelRequest struct {
 	*tchttp.BaseRequest
 	
-	// 通道 ID 数组。例如：nchannel-abcd1234
+	// 通道 ID 数组。例如：nchannel-abcd1234，通过 DescribeGrafanaChannels 获取
 	ChannelIDs []*string `json:"ChannelIDs,omitnil" name:"ChannelIDs"`
 
 	// Grafana 实例 ID，例如：grafana-abcdefgh
@@ -6078,7 +6078,7 @@ type DescribeGrafanaChannelsRequestParams struct {
 	// 告警通道 ID，例如：nchannel-abcd1234
 	ChannelIds []*string `json:"ChannelIds,omitnil" name:"ChannelIds"`
 
-	// 告警通道状态
+	// 告警通道状态(不用填写，目前只有可用和删除状态，默认只能查询可用的告警通道)
 	ChannelState *int64 `json:"ChannelState,omitnil" name:"ChannelState"`
 }
 
@@ -6100,7 +6100,7 @@ type DescribeGrafanaChannelsRequest struct {
 	// 告警通道 ID，例如：nchannel-abcd1234
 	ChannelIds []*string `json:"ChannelIds,omitnil" name:"ChannelIds"`
 
-	// 告警通道状态
+	// 告警通道状态(不用填写，目前只有可用和删除状态，默认只能查询可用的告警通道)
 	ChannelState *int64 `json:"ChannelState,omitnil" name:"ChannelState"`
 }
 
@@ -10426,7 +10426,7 @@ type GrafanaAccountRole struct {
 	// 组织
 	Organization *string `json:"Organization,omitnil" name:"Organization"`
 
-	// 权限
+	// 权限(Admin、Editor、Viewer)
 	Role *string `json:"Role,omitnil" name:"Role"`
 }
 
@@ -10572,7 +10572,7 @@ type GrafanaPlugin struct {
 
 // Predefined struct for user
 type InstallPluginsRequestParams struct {
-	// 插件信息
+	// 插件信息(可通过 DescribePluginOverviews 接口获取)
 	Plugins []*GrafanaPlugin `json:"Plugins,omitnil" name:"Plugins"`
 
 	// Grafana 实例 ID，例如：grafana-abcdefgh
@@ -10582,7 +10582,7 @@ type InstallPluginsRequestParams struct {
 type InstallPluginsRequest struct {
 	*tchttp.BaseRequest
 	
-	// 插件信息
+	// 插件信息(可通过 DescribePluginOverviews 接口获取)
 	Plugins []*GrafanaPlugin `json:"Plugins,omitnil" name:"Plugins"`
 
 	// Grafana 实例 ID，例如：grafana-abcdefgh
@@ -14496,7 +14496,7 @@ type UpdateGrafanaConfigRequestParams struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// JSON 编码后的字符串
+	// JSON 编码后的字符串，如 "{"server":{"root_url":"http://custom.domain"}}"
 	Config *string `json:"Config,omitnil" name:"Config"`
 }
 
@@ -14506,7 +14506,7 @@ type UpdateGrafanaConfigRequest struct {
 	// 实例 ID
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// JSON 编码后的字符串
+	// JSON 编码后的字符串，如 "{"server":{"root_url":"http://custom.domain"}}"
 	Config *string `json:"Config,omitnil" name:"Config"`
 }
 
@@ -14557,7 +14557,7 @@ type UpdateGrafanaEnvironmentsRequestParams struct {
 	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 环境变量字符串
+	// JSON 序列化后的环境变量字符串，如 "{\"key1\":\"key2\"}"
 	Envs *string `json:"Envs,omitnil" name:"Envs"`
 }
 
@@ -14567,7 +14567,7 @@ type UpdateGrafanaEnvironmentsRequest struct {
 	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 环境变量字符串
+	// JSON 序列化后的环境变量字符串，如 "{\"key1\":\"key2\"}"
 	Envs *string `json:"Envs,omitnil" name:"Envs"`
 }
 
@@ -14624,7 +14624,7 @@ type UpdateGrafanaIntegrationRequestParams struct {
 	// 集成类型，可在实例详情-云产品集成-集成列表查看。例如：tencent-cloud-prometheus
 	Kind *string `json:"Kind,omitnil" name:"Kind"`
 
-	// 集成内容
+	// 集成内容，请查看示例
 	Content *string `json:"Content,omitnil" name:"Content"`
 }
 
@@ -14640,7 +14640,7 @@ type UpdateGrafanaIntegrationRequest struct {
 	// 集成类型，可在实例详情-云产品集成-集成列表查看。例如：tencent-cloud-prometheus
 	Kind *string `json:"Kind,omitnil" name:"Kind"`
 
-	// 集成内容
+	// 集成内容，请查看示例
 	Content *string `json:"Content,omitnil" name:"Content"`
 }
 
@@ -14782,7 +14782,8 @@ type UpdateGrafanaWhiteListRequestParams struct {
 	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 白名单数组，输入公网域名 IP ，例如：127.0.0.1，可通过接口 DescribeGrafanaWhiteList 查看
+	// 白名单数组，输入白名单 IP 或 CIDR，如：127.0.0.1或127.0.0.1/24
+	// 如有多个 IP 可换行输入
 	Whitelist []*string `json:"Whitelist,omitnil" name:"Whitelist"`
 }
 
@@ -14792,7 +14793,8 @@ type UpdateGrafanaWhiteListRequest struct {
 	// Grafana 实例 ID，例如：grafana-abcdefgh
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 白名单数组，输入公网域名 IP ，例如：127.0.0.1，可通过接口 DescribeGrafanaWhiteList 查看
+	// 白名单数组，输入白名单 IP 或 CIDR，如：127.0.0.1或127.0.0.1/24
+	// 如有多个 IP 可换行输入
 	Whitelist []*string `json:"Whitelist,omitnil" name:"Whitelist"`
 }
 
@@ -15347,7 +15349,7 @@ type UpgradeGrafanaInstanceRequestParams struct {
 	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 版本别名，例如：v7.4.2
+	// 版本别名，目前固定为 v9.1.5
 	Alias *string `json:"Alias,omitnil" name:"Alias"`
 }
 
@@ -15357,7 +15359,7 @@ type UpgradeGrafanaInstanceRequest struct {
 	// Grafana 实例 ID，例如：grafana-12345678
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 
-	// 版本别名，例如：v7.4.2
+	// 版本别名，目前固定为 v9.1.5
 	Alias *string `json:"Alias,omitnil" name:"Alias"`
 }
 

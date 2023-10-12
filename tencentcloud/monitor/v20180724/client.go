@@ -652,7 +652,7 @@ func NewCreateGrafanaIntegrationResponse() (response *CreateGrafanaIntegrationRe
 }
 
 // CreateGrafanaIntegration
-// 创建 Grafana 集成配置
+// 创建 Grafana 集成配置，其中 Prometheus 集成不通过该接口创建，可参考 BindPrometheusManagedGrafana 接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -661,7 +661,7 @@ func (c *Client) CreateGrafanaIntegration(request *CreateGrafanaIntegrationReque
 }
 
 // CreateGrafanaIntegration
-// 创建 Grafana 集成配置
+// 创建 Grafana 集成配置，其中 Prometheus 集成不通过该接口创建，可参考 BindPrometheusManagedGrafana 接口
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

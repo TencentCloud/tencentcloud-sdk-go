@@ -268,6 +268,10 @@ type Cluster struct {
 	// 订单信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Orders []*Order `json:"Orders,omitnil" name:"Orders"`
+
+	// Gateway信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SqlGateways []*SqlGatewayItem `json:"SqlGateways,omitnil" name:"SqlGateways"`
 }
 
 type ClusterGroupSetItem struct {
@@ -2470,6 +2474,24 @@ type Filter struct {
 	Values []*string `json:"Values,omitnil" name:"Values"`
 }
 
+type GatewayRefItem struct {
+	// 空间唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	WorkspaceId *string `json:"WorkspaceId,omitnil" name:"WorkspaceId"`
+
+	// 资源唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 版本号
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *int64 `json:"Version,omitnil" name:"Version"`
+
+	// 引用类型，0:用户资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
+}
+
 type JobConfig struct {
 	// 作业Id
 	JobId *string `json:"JobId,omitnil" name:"JobId"`
@@ -3293,6 +3315,44 @@ type SlotSharingGroupSpec struct {
 	// 默认为b, 支持单位有 b, kb, mb, gb
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ManagedMemory *string `json:"ManagedMemory,omitnil" name:"ManagedMemory"`
+}
+
+type SqlGatewayItem struct {
+	// 唯一标识
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	SerialId *string `json:"SerialId,omitnil" name:"SerialId"`
+
+	// Flink内核版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlinkVersion *string `json:"FlinkVersion,omitnil" name:"FlinkVersion"`
+
+	// 状态，1.停止 2. 开启中 3. 开启 4. 开启失败 5. 停止中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 创建人
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatorUin *string `json:"CreatorUin,omitnil" name:"CreatorUin"`
+
+	// 引用资源
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceRefs []*GatewayRefItem `json:"ResourceRefs,omitnil" name:"ResourceRefs"`
+
+	// Cu规格
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CuSpec *float64 `json:"CuSpec,omitnil" name:"CuSpec"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 更新时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	UpdateTime *string `json:"UpdateTime,omitnil" name:"UpdateTime"`
+
+	// 配置参数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Properties []*Property `json:"Properties,omitnil" name:"Properties"`
 }
 
 type StopJobDescription struct {

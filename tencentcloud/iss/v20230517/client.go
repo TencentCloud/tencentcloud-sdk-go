@@ -3007,6 +3007,62 @@ func (c *Client) DescribeUserDeviceWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeVideoBitRateRequest() (request *DescribeVideoBitRateRequest) {
+    request = &DescribeVideoBitRateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iss", APIVersion, "DescribeVideoBitRate")
+    
+    
+    return
+}
+
+func NewDescribeVideoBitRateResponse() (response *DescribeVideoBitRateResponse) {
+    response = &DescribeVideoBitRateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeVideoBitRate
+// 用于获取视频通道的码率信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDCHANNELID = "InvalidParameterValue.ContainInvalidChannelId"
+//  LIMITEXCEEDED_CHANNELNUMEXCEEDED = "LimitExceeded.ChannelNumExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVideoBitRate(request *DescribeVideoBitRateRequest) (response *DescribeVideoBitRateResponse, err error) {
+    return c.DescribeVideoBitRateWithContext(context.Background(), request)
+}
+
+// DescribeVideoBitRate
+// 用于获取视频通道的码率信息
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  INVALIDPARAMETERVALUE_CONTAININVALIDCHANNELID = "InvalidParameterValue.ContainInvalidChannelId"
+//  LIMITEXCEEDED_CHANNELNUMEXCEEDED = "LimitExceeded.ChannelNumExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) DescribeVideoBitRateWithContext(ctx context.Context, request *DescribeVideoBitRateRequest) (response *DescribeVideoBitRateResponse, err error) {
+    if request == nil {
+        request = NewDescribeVideoBitRateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeVideoBitRate require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeVideoBitRateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeVideoDownloadUrlRequest() (request *DescribeVideoDownloadUrlRequest) {
     request = &DescribeVideoDownloadUrlRequest{
         BaseRequest: &tchttp.BaseRequest{},

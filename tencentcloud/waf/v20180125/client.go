@@ -3473,6 +3473,58 @@ func (c *Client) DescribeIpHitItemsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeObjectsRequest() (request *DescribeObjectsRequest) {
+    request = &DescribeObjectsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeObjects")
+    
+    
+    return
+}
+
+func NewDescribeObjectsResponse() (response *DescribeObjectsResponse) {
+    response = &DescribeObjectsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeObjects
+// 查看防护对象列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeObjects(request *DescribeObjectsRequest) (response *DescribeObjectsResponse, err error) {
+    return c.DescribeObjectsWithContext(context.Background(), request)
+}
+
+// DescribeObjects
+// 查看防护对象列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+func (c *Client) DescribeObjectsWithContext(ctx context.Context, request *DescribeObjectsRequest) (response *DescribeObjectsResponse, err error) {
+    if request == nil {
+        request = NewDescribeObjectsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeObjects require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeObjectsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribePeakPointsRequest() (request *DescribePeakPointsRequest) {
     request = &DescribePeakPointsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -6479,6 +6531,60 @@ func (c *Client) ModifyModuleStatusWithContext(ctx context.Context, request *Mod
     request.SetContext(ctx)
     
     response = NewModifyModuleStatusResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyObjectRequest() (request *ModifyObjectRequest) {
+    request = &ModifyObjectRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "ModifyObject")
+    
+    
+    return
+}
+
+func NewModifyObjectResponse() (response *ModifyObjectResponse) {
+    response = &ModifyObjectResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyObject
+// 修改防护对象
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyObject(request *ModifyObjectRequest) (response *ModifyObjectResponse, err error) {
+    return c.ModifyObjectWithContext(context.Background(), request)
+}
+
+// ModifyObject
+// 修改防护对象
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
+//  LIMITEXCEEDED = "LimitExceeded"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) ModifyObjectWithContext(ctx context.Context, request *ModifyObjectRequest) (response *ModifyObjectResponse, err error) {
+    if request == nil {
+        request = NewModifyObjectRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyObject require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyObjectResponse()
     err = c.Send(request, response)
     return
 }

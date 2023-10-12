@@ -87,6 +87,48 @@ func (c *Client) CreateInstanceByApiWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewDescribeInstanceStateRequest() (request *DescribeInstanceStateRequest) {
+    request = &DescribeInstanceStateRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwpg", APIVersion, "DescribeInstanceState")
+    
+    
+    return
+}
+
+func NewDescribeInstanceStateResponse() (response *DescribeInstanceStateResponse) {
+    response = &DescribeInstanceStateResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstanceState
+// 集群详情页中显示集群状态、流程进度等
+func (c *Client) DescribeInstanceState(request *DescribeInstanceStateRequest) (response *DescribeInstanceStateResponse, err error) {
+    return c.DescribeInstanceStateWithContext(context.Background(), request)
+}
+
+// DescribeInstanceState
+// 集群详情页中显示集群状态、流程进度等
+func (c *Client) DescribeInstanceStateWithContext(ctx context.Context, request *DescribeInstanceStateRequest) (response *DescribeInstanceStateResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceStateRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstanceState require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceStateResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeSimpleInstancesRequest() (request *DescribeSimpleInstancesRequest) {
     request = &DescribeSimpleInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -179,6 +221,54 @@ func (c *Client) DestroyInstanceByApiWithContext(ctx context.Context, request *D
     request.SetContext(ctx)
     
     response = NewDestroyInstanceByApiResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyInstanceRequest() (request *ModifyInstanceRequest) {
+    request = &ModifyInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwpg", APIVersion, "ModifyInstance")
+    
+    
+    return
+}
+
+func NewModifyInstanceResponse() (response *ModifyInstanceResponse) {
+    response = &ModifyInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyInstance
+// 修改实例信息，目前为实例名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+func (c *Client) ModifyInstance(request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
+    return c.ModifyInstanceWithContext(context.Background(), request)
+}
+
+// ModifyInstance
+// 修改实例信息，目前为实例名称
+//
+// 可能返回的错误码:
+//  INTERNALERROR_SYSTEMERROR = "InternalError.SystemError"
+func (c *Client) ModifyInstanceWithContext(ctx context.Context, request *ModifyInstanceRequest) (response *ModifyInstanceResponse, err error) {
+    if request == nil {
+        request = NewModifyInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyInstanceResponse()
     err = c.Send(request, response)
     return
 }

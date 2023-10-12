@@ -4540,7 +4540,7 @@ func NewDescribeExtendedServiceAuthInfosResponse() (response *DescribeExtendedSe
 // DescribeExtendedServiceAuthInfos
 // 查询企业扩展服务的开通和授权情况，当前支持查询以下内容：
 //
-// 1. 企业静默签
+// 1. 企业自动签
 //
 // 2. 企业与港澳台居民签署合同
 //
@@ -4549,6 +4549,8 @@ func NewDescribeExtendedServiceAuthInfosResponse() (response *DescribeExtendedSe
 // 4. 骑缝章
 //
 // 5. 批量签署能力
+//
+// 6. 拓宽签署方年龄限制
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -4561,7 +4563,7 @@ func (c *Client) DescribeExtendedServiceAuthInfos(request *DescribeExtendedServi
 // DescribeExtendedServiceAuthInfos
 // 查询企业扩展服务的开通和授权情况，当前支持查询以下内容：
 //
-// 1. 企业静默签
+// 1. 企业自动签
 //
 // 2. 企业与港澳台居民签署合同
 //
@@ -4570,6 +4572,8 @@ func (c *Client) DescribeExtendedServiceAuthInfos(request *DescribeExtendedServi
 // 4. 骑缝章
 //
 // 5. 批量签署能力
+//
+// 6. 拓宽签署方年龄限制
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"

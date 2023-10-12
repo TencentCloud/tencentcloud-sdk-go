@@ -1,3 +1,281 @@
+# Release v1.0.764
+
+## API 网关(apigateway) 版本：2018-08-08
+
+### 第 45 次发布
+
+发布时间：2023-10-12 01:07:58
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateApi](https://cloud.tencent.com/document/api/628/45243)
+
+	* 新增入参：ServiceScfEventIsAsyncCall
+
+* [ModifyApi](https://cloud.tencent.com/document/api/628/45238)
+
+	* 新增入参：ServiceScfEventIsAsyncCall
+
+
+修改数据结构：
+
+* [ApiInfo](https://cloud.tencent.com/document/api/628/45244#ApiInfo)
+
+	* 新增成员：ServiceScfEventIsAsyncCall
+
+
+
+
+## 云联络中心(ccc) 版本：2020-02-10
+
+### 第 56 次发布
+
+发布时间：2023-10-12 01:16:25
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateCallOutSession](https://cloud.tencent.com/document/api/679/68726)
+
+	* 新增入参：UUI
+
+* [DescribeProtectedTelCdr](https://cloud.tencent.com/document/api/679/72597)
+
+	* 新增出参：TelCdrList
+
+* [DescribeTelCallInfo](https://cloud.tencent.com/document/api/679/50168)
+
+	* 新增出参：VOIPCallInCount
+
+* [DescribeTelCdr](https://cloud.tencent.com/document/api/679/47714)
+
+	* 新增出参：TelCdrList
+
+
+修改数据结构：
+
+* [NumberInfo](https://cloud.tencent.com/document/api/679/47715#NumberInfo)
+
+	* 新增成员：State
+
+	* <font color="#dd0000">**修改成员**：</font>Number, CallOutSkillGroupIds
+
+* [TelCdrInfo](https://cloud.tencent.com/document/api/679/47715#TelCdrInfo)
+
+	* 新增成员：UUI
+
+
+
+
+## 云数据仓库 PostgreSQL(cdwpg) 版本：2020-12-30
+
+### 第 3 次发布
+
+发布时间：2023-10-12 01:20:34
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeInstanceState](https://cloud.tencent.com/document/api/878/100160)
+* [ModifyInstance](https://cloud.tencent.com/document/api/878/100159)
+
+
+
+## T-Sec-堡垒机（BH）(dasb) 版本：2019-10-18
+
+### 第 18 次发布
+
+发布时间：2023-10-12 01:46:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateResource](https://cloud.tencent.com/document/api/1025/100130)
+
+	* 新增入参：DeployRegion, ResourceEdition, ResourceNode, TimeUnit, TimeSpan, PayMode, AutoRenewFlag, DeployZone
+
+
+
+
+## 数据湖计算 DLC(dlc) 版本：2021-01-25
+
+### 第 66 次发布
+
+发布时间：2023-10-12 01:49:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [TColumn](https://cloud.tencent.com/document/api/1342/53778#TColumn)
+
+	* 新增成员：Precision, Scale
+
+
+
+
+## Elasticsearch Service(es) 版本：2018-04-16
+
+### 第 48 次发布
+
+发布时间：2023-10-12 01:57:01
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [NodeView](https://cloud.tencent.com/document/api/845/30634#NodeView)
+
+	* 新增成员：IsCoordinationNode
+
+
+
+
+## 腾讯电子签企业版(ess) 版本：2020-11-11
+
+### 第 127 次发布
+
+发布时间：2023-10-12 01:57:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ApproverInfo](https://cloud.tencent.com/document/api/1323/70369#ApproverInfo)
+
+	* 新增成员：SignInstructionContent
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2021-05-26
+
+### 第 121 次发布
+
+发布时间：2023-10-12 01:58:40
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [ExtentServiceAuthInfo](https://cloud.tencent.com/document/api/1420/61525#ExtentServiceAuthInfo)
+
+	* <font color="#dd0000">**修改成员**：</font>Type, Name, Status, OperatorOpenId, OperateOn
+
+
+
+
+## 腾讯电子签（基础版）(essbasic) 版本：2020-12-22
+
+
+
+## 智能视图计算平台(iss) 版本：2023-05-17
+
+### 第 8 次发布
+
+发布时间：2023-10-12 02:09:16
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeVideoBitRate](https://cloud.tencent.com/document/api/1344/100162)
+
+新增数据结构：
+
+* [BitRateInfo](https://cloud.tencent.com/document/api/1344/95952#BitRateInfo)
+* [DescribeVideoBitRateList](https://cloud.tencent.com/document/api/1344/95952#DescribeVideoBitRateList)
+
+
+
+## 低代码互动课堂(lcic) 版本：2022-08-17
+
+### 第 43 次发布
+
+发布时间：2023-10-12 02:11:22
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeScoreList](https://cloud.tencent.com/document/api/1639/100163)
+
+新增数据结构：
+
+* [ClassScoreItem](https://cloud.tencent.com/document/api/1639/81423#ClassScoreItem)
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 39 次发布
+
+发布时间：2023-10-12 02:20:57
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增数据结构：
+
+* [GatewayRefItem](https://cloud.tencent.com/document/api/849/52010#GatewayRefItem)
+* [SqlGatewayItem](https://cloud.tencent.com/document/api/849/52010#SqlGatewayItem)
+
+修改数据结构：
+
+* [Cluster](https://cloud.tencent.com/document/api/849/52010#Cluster)
+
+	* 新增成员：SqlGateways
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 62 次发布
+
+发布时间：2023-10-12 02:58:37
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeObjects](https://cloud.tencent.com/document/api/627/100165)
+* [ModifyObject](https://cloud.tencent.com/document/api/627/100164)
+
+新增数据结构：
+
+* [ClbObject](https://cloud.tencent.com/document/api/627/53609#ClbObject)
+
+
+
 # Release v1.0.763
 
 ## 云数据仓库 PostgreSQL(cdwpg) 版本：2020-12-30

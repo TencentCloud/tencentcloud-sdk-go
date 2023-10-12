@@ -466,6 +466,10 @@ type ApiInfo struct {
 	// Header触发规则，总规则数量不超过10。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Base64EncodedTriggerRules []*Base64EncodedTriggerRule `json:"Base64EncodedTriggerRules,omitnil" name:"Base64EncodedTriggerRules"`
+
+	// 是否开启SCF Event异步调用。
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ServiceScfEventIsAsyncCall *bool `json:"ServiceScfEventIsAsyncCall,omitnil" name:"ServiceScfEventIsAsyncCall"`
 }
 
 type ApiInfoSummary struct {
@@ -1686,6 +1690,9 @@ type CreateApiRequestParams struct {
 	// scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
 	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitnil" name:"ServiceScfFunctionType"`
 
+	// 是否开启SCF Event异步调用。
+	ServiceScfEventIsAsyncCall *bool `json:"ServiceScfEventIsAsyncCall,omitnil" name:"ServiceScfEventIsAsyncCall"`
+
 	// EIAM应用类型。
 	EIAMAppType *string `json:"EIAMAppType,omitnil" name:"EIAMAppType"`
 
@@ -1849,6 +1856,9 @@ type CreateApiRequest struct {
 	// scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
 	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitnil" name:"ServiceScfFunctionType"`
 
+	// 是否开启SCF Event异步调用。
+	ServiceScfEventIsAsyncCall *bool `json:"ServiceScfEventIsAsyncCall,omitnil" name:"ServiceScfEventIsAsyncCall"`
+
 	// EIAM应用类型。
 	EIAMAppType *string `json:"EIAMAppType,omitnil" name:"EIAMAppType"`
 
@@ -1925,6 +1935,7 @@ func (r *CreateApiRequest) FromJsonString(s string) error {
 	delete(f, "IsBase64Encoded")
 	delete(f, "EventBusId")
 	delete(f, "ServiceScfFunctionType")
+	delete(f, "ServiceScfEventIsAsyncCall")
 	delete(f, "EIAMAppType")
 	delete(f, "EIAMAuthType")
 	delete(f, "TokenTimeout")
@@ -7775,6 +7786,9 @@ type ModifyApiRequestParams struct {
 	// scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
 	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitnil" name:"ServiceScfFunctionType"`
 
+	// 是否开启SCF Event异步调用。
+	ServiceScfEventIsAsyncCall *bool `json:"ServiceScfEventIsAsyncCall,omitnil" name:"ServiceScfEventIsAsyncCall"`
+
 	// EIAM应用类型。
 	EIAMAppType *string `json:"EIAMAppType,omitnil" name:"EIAMAppType"`
 
@@ -7941,6 +7955,9 @@ type ModifyApiRequest struct {
 	// scf函数类型。当后端类型是SCF时生效。支持事件触发(EVENT)，http直通云函数(HTTP)。
 	ServiceScfFunctionType *string `json:"ServiceScfFunctionType,omitnil" name:"ServiceScfFunctionType"`
 
+	// 是否开启SCF Event异步调用。
+	ServiceScfEventIsAsyncCall *bool `json:"ServiceScfEventIsAsyncCall,omitnil" name:"ServiceScfEventIsAsyncCall"`
+
 	// EIAM应用类型。
 	EIAMAppType *string `json:"EIAMAppType,omitnil" name:"EIAMAppType"`
 
@@ -8016,6 +8033,7 @@ func (r *ModifyApiRequest) FromJsonString(s string) error {
 	delete(f, "Base64EncodedTriggerRules")
 	delete(f, "EventBusId")
 	delete(f, "ServiceScfFunctionType")
+	delete(f, "ServiceScfEventIsAsyncCall")
 	delete(f, "EIAMAppType")
 	delete(f, "EIAMAuthType")
 	delete(f, "EIAMAppId")

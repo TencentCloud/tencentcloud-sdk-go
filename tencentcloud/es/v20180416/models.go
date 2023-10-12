@@ -3043,6 +3043,9 @@ type NodeView struct {
 
 	// 是否为隐藏可用区
 	Hidden *bool `json:"Hidden,omitnil" name:"Hidden"`
+
+	// 是否充当协调节点的角色
+	IsCoordinationNode *bool `json:"IsCoordinationNode,omitnil" name:"IsCoordinationNode"`
 }
 
 type Operation struct {
