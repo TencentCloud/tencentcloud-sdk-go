@@ -8,6 +8,7 @@ import (
 	"net/http/httputil"
 	"net/url"
 	"os"
+	"reflect"
 	"regexp"
 	"strconv"
 	"strings"
@@ -219,10 +220,11 @@ func (c *Client) sendWithoutSignature(request tchttp.Request, response tchttp.Re
 	if canonicalQueryString != "" {
 		url = url + "?" + canonicalQueryString
 	}
-	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpRequestMethod, url, strings.NewReader(requestPayload))
+	httpRequest, err := http.NewRequest(httpRequestMethod, url, strings.NewReader(requestPayload))
 	if err != nil {
 		return err
 	}
+	httpRequest = httpRequest.WithContext(request.GetContext())
 	for k, v := range headers {
 		httpRequest.Header[k] = []string{v}
 	}
@@ -245,10 +247,11 @@ func (c *Client) sendWithSignatureV1(request tchttp.Request, response tchttp.Res
 	if err != nil {
 		return err
 	}
-	httpRequest, err := http.NewRequestWithContext(request.GetContext(), request.GetHttpMethod(), request.GetUrl(), request.GetBodyReader())
+	httpRequest, err := http.NewRequest(request.GetHttpMethod(), request.GetUrl(), request.GetBodyReader())
 	if err != nil {
 		return err
 	}
+	httpRequest = httpRequest.WithContext(request.GetContext())
 	if request.GetHttpMethod() == "POST" {
 		httpRequest.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	}
@@ -415,10 +418,11 @@ func (c *Client) sendWithSignatureV3(request tchttp.Request, response tchttp.Res
 	if canonicalQueryString != "" {
 		url = url + "?" + canonicalQueryString
 	}
-	httpRequest, err := http.NewRequestWithContext(request.GetContext(), httpRequestMethod, url, strings.NewReader(requestPayload))
+	httpRequest, err := http.NewRequest(httpRequestMethod, url, strings.NewReader(requestPayload))
 	if err != nil {
 		return err
 	}
+	httpRequest = httpRequest.WithContext(request.GetContext())
 	for k, v := range headers {
 		httpRequest.Header[k] = []string{v}
 	}
@@ -471,8 +475,11 @@ func (c *Client) Init(region string) *Client {
 		// try not to modify http.DefaultTransport if possible
 		// since we could possibly modify Transport.Proxy
 		transport := http.DefaultTransport
-		if ht, ok := transport.(*http.Transport); ok {
-			transport = ht.Clone()
+		if _, ok := transport.(*http.Transport); ok {
+			// http.Transport.Clone is only available after go1.12
+			if cloneMethod, hasClone := reflect.TypeOf(transport).MethodByName("Clone"); hasClone {
+				transport = cloneMethod.Func.Call([]reflect.Value{reflect.ValueOf(transport)})[0].Interface().(http.RoundTripper)
+			}
 		}
 
 		c.httpClient = &http.Client{Transport: transport}
