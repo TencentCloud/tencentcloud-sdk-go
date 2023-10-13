@@ -2323,6 +2323,75 @@ func (r *DescribeRiskCenterAssetViewWeakPasswordRiskListResponse) FromJsonString
 }
 
 // Predefined struct for user
+type DescribeRiskCenterPortViewPortRiskListRequestParams struct {
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+}
+
+type DescribeRiskCenterPortViewPortRiskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+}
+
+func (r *DescribeRiskCenterPortViewPortRiskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskCenterPortViewPortRiskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskCenterPortViewPortRiskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRiskCenterPortViewPortRiskListResponseParams struct {
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 资产视角的端口风险列表
+	Data []*PortViewPortRisk `json:"Data,omitnil" name:"Data"`
+
+	// 危险等级列表
+	LevelLists []*FilterDataObject `json:"LevelLists,omitnil" name:"LevelLists"`
+
+	// 处置建议列表
+	SuggestionLists []*FilterDataObject `json:"SuggestionLists,omitnil" name:"SuggestionLists"`
+
+	// 来源列表
+	FromLists []*FilterDataObject `json:"FromLists,omitnil" name:"FromLists"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRiskCenterPortViewPortRiskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRiskCenterPortViewPortRiskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeRiskCenterPortViewPortRiskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskCenterPortViewPortRiskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeRiskCenterServerRiskListRequestParams struct {
 	// 过滤内容
 	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
@@ -2382,6 +2451,75 @@ func (r *DescribeRiskCenterServerRiskListResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeRiskCenterServerRiskListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRiskCenterVULViewVULRiskListRequestParams struct {
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+}
+
+type DescribeRiskCenterVULViewVULRiskListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 过滤内容
+	Filter *Filter `json:"Filter,omitnil" name:"Filter"`
+}
+
+func (r *DescribeRiskCenterVULViewVULRiskListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskCenterVULViewVULRiskListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Filter")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeRiskCenterVULViewVULRiskListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeRiskCenterVULViewVULRiskListResponseParams struct {
+	// 总条数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 漏洞产视角的漏洞风险列表
+	Data []*VULViewVULRisk `json:"Data,omitnil" name:"Data"`
+
+	// 危险等级列表
+	LevelLists []*FilterDataObject `json:"LevelLists,omitnil" name:"LevelLists"`
+
+	// 来源列表
+	FromLists []*FilterDataObject `json:"FromLists,omitnil" name:"FromLists"`
+
+	// 漏洞类型列表
+	VULTypeLists []*FilterDataObject `json:"VULTypeLists,omitnil" name:"VULTypeLists"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeRiskCenterVULViewVULRiskListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeRiskCenterVULViewVULRiskListResponseParams `json:"Response"`
+}
+
+func (r *DescribeRiskCenterVULViewVULRiskListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeRiskCenterVULViewVULRiskListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -3265,6 +3403,126 @@ type IpAssetListVO struct {
 	VerifyStatus *int64 `json:"VerifyStatus,omitnil" name:"VerifyStatus"`
 }
 
+// Predefined struct for user
+type ModifyRiskCenterRiskStatusRequestParams struct {
+	// 风险资产相关数据
+	RiskStatusKeys []*RiskCenterStatusKey `json:"RiskStatusKeys,omitnil" name:"RiskStatusKeys"`
+
+	// 处置状态，1为已处置、2为已忽略，3为取消已处置，4为取消已忽略
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 风险类型，0-端口风险， 1-漏洞风险，2-弱口令风险， 3-网站内容风险，4-配置风险，5-风险服务暴露
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
+}
+
+type ModifyRiskCenterRiskStatusRequest struct {
+	*tchttp.BaseRequest
+	
+	// 风险资产相关数据
+	RiskStatusKeys []*RiskCenterStatusKey `json:"RiskStatusKeys,omitnil" name:"RiskStatusKeys"`
+
+	// 处置状态，1为已处置、2为已忽略，3为取消已处置，4为取消已忽略
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 风险类型，0-端口风险， 1-漏洞风险，2-弱口令风险， 3-网站内容风险，4-配置风险，5-风险服务暴露
+	Type *uint64 `json:"Type,omitnil" name:"Type"`
+}
+
+func (r *ModifyRiskCenterRiskStatusRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRiskCenterRiskStatusRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RiskStatusKeys")
+	delete(f, "Status")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyRiskCenterRiskStatusRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyRiskCenterRiskStatusResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyRiskCenterRiskStatusResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyRiskCenterRiskStatusResponseParams `json:"Response"`
+}
+
+func (r *ModifyRiskCenterRiskStatusResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyRiskCenterRiskStatusResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+type PortViewPortRisk struct {
+	// 影响资产
+	NoHandleCount *int64 `json:"NoHandleCount,omitnil" name:"NoHandleCount"`
+
+	// 风险等级
+	Level *string `json:"Level,omitnil" name:"Level"`
+
+	// 协议
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+
+	// 组件
+	Component *string `json:"Component,omitnil" name:"Component"`
+
+	// 端口
+	Port *int64 `json:"Port,omitnil" name:"Port"`
+
+	// 最近识别时间
+	RecentTime *string `json:"RecentTime,omitnil" name:"RecentTime"`
+
+	// 首次识别时间
+	FirstTime *string `json:"FirstTime,omitnil" name:"FirstTime"`
+
+	// 处置建议,0保持现状、1限制访问、2封禁端口
+	Suggestion *uint64 `json:"Suggestion,omitnil" name:"Suggestion"`
+
+	// 状态，0未处理、1已处置、2已忽略
+	AffectAssetCount *string `json:"AffectAssetCount,omitnil" name:"AffectAssetCount"`
+
+	// 资产唯一id
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 资产子类型
+	From *string `json:"From,omitnil" name:"From"`
+
+	// 前端索引
+	Index *string `json:"Index,omitnil" name:"Index"`
+
+	// 用户appid
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
+
+	// 用户昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nick *string `json:"Nick,omitnil" name:"Nick"`
+
+	// 用户uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
+
+	// 服务
+	Service *string `json:"Service,omitnil" name:"Service"`
+}
+
 type PublicIpDomainListKey struct {
 	// 资产值
 	Asset *string `json:"Asset,omitnil" name:"Asset"`
@@ -3273,6 +3531,20 @@ type PublicIpDomainListKey struct {
 type ReportItemKey struct {
 	// 日志Id列表
 	TaskLogList []*string `json:"TaskLogList,omitnil" name:"TaskLogList"`
+}
+
+type RiskCenterStatusKey struct {
+	// 风险ID
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// APP ID
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
+
+	// 公网IP/域名
+	PublicIPDomain *string `json:"PublicIPDomain,omitnil" name:"PublicIPDomain"`
+
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
 }
 
 type ScanTaskInfo struct {
@@ -3844,6 +4116,84 @@ type TaskLogURL struct {
 	// APP ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AppId *string `json:"AppId,omitnil" name:"AppId"`
+}
+
+type VULViewVULRisk struct {
+	// 端口
+	Port *string `json:"Port,omitnil" name:"Port"`
+
+	// 影响资产
+	NoHandleCount *int64 `json:"NoHandleCount,omitnil" name:"NoHandleCount"`
+
+	// 风险等级
+	Level *string `json:"Level,omitnil" name:"Level"`
+
+	// 组件
+	Component *string `json:"Component,omitnil" name:"Component"`
+
+	// 最近识别时间
+	RecentTime *string `json:"RecentTime,omitnil" name:"RecentTime"`
+
+	// 首次识别时间
+	FirstTime *string `json:"FirstTime,omitnil" name:"FirstTime"`
+
+	// 状态，0未处理、1已处置、2已忽略
+	AffectAssetCount *uint64 `json:"AffectAssetCount,omitnil" name:"AffectAssetCount"`
+
+	// 资产唯一id
+	Id *string `json:"Id,omitnil" name:"Id"`
+
+	// 资产子类型
+	From *string `json:"From,omitnil" name:"From"`
+
+	// 前端索引
+	Index *string `json:"Index,omitnil" name:"Index"`
+
+	// 漏洞类型
+	VULType *string `json:"VULType,omitnil" name:"VULType"`
+
+	// 漏洞名
+	VULName *string `json:"VULName,omitnil" name:"VULName"`
+
+	// cve
+	CVE *string `json:"CVE,omitnil" name:"CVE"`
+
+	// 描述
+	Describe *string `json:"Describe,omitnil" name:"Describe"`
+
+	// 负载
+	Payload *string `json:"Payload,omitnil" name:"Payload"`
+
+	// 版本名
+	AppName *string `json:"AppName,omitnil" name:"AppName"`
+
+	// 相关引用
+	References *string `json:"References,omitnil" name:"References"`
+
+	// 版本
+	AppVersion *string `json:"AppVersion,omitnil" name:"AppVersion"`
+
+	// 漏洞链接
+	VULURL *string `json:"VULURL,omitnil" name:"VULURL"`
+
+	// 用户昵称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Nick *string `json:"Nick,omitnil" name:"Nick"`
+
+	// 用户appid
+	AppId *string `json:"AppId,omitnil" name:"AppId"`
+
+	// 用户uin
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Uin *string `json:"Uin,omitnil" name:"Uin"`
+
+	// 修复建议
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Fix *string `json:"Fix,omitnil" name:"Fix"`
+
+	// 应急漏洞类型，1-应急漏洞，0-非应急漏洞
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EMGCVulType *int64 `json:"EMGCVulType,omitnil" name:"EMGCVulType"`
 }
 
 type Vpc struct {

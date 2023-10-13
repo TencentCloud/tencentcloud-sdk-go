@@ -320,6 +320,91 @@ func (r *AddAntiInfoLeakRulesResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type AddAttackWhiteRuleRequestParams struct {
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 规则Id
+	SignatureId *string `json:"SignatureId,omitnil" name:"SignatureId"`
+
+	// 规则状态
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 匹配规则项列表
+	Rules []*UserWhiteRuleItem `json:"Rules,omitnil" name:"Rules"`
+
+	// 规则序号
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
+}
+
+type AddAttackWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 规则Id
+	SignatureId *string `json:"SignatureId,omitnil" name:"SignatureId"`
+
+	// 规则状态
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 匹配规则项列表
+	Rules []*UserWhiteRuleItem `json:"Rules,omitnil" name:"Rules"`
+
+	// 规则序号
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
+}
+
+func (r *AddAttackWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddAttackWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "SignatureId")
+	delete(f, "Status")
+	delete(f, "Rules")
+	delete(f, "RuleId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "AddAttackWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type AddAttackWhiteRuleResponseParams struct {
+	// 规则总数
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type AddAttackWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *AddAttackWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *AddAttackWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *AddAttackWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type AddCustomRuleRequestParams struct {
 	// 规则名称
 	Name *string `json:"Name,omitnil" name:"Name"`
@@ -1778,6 +1863,71 @@ func (r *DeleteAttackDownloadRecordResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DeleteAttackWhiteRuleRequestParams struct {
+	// 规则序号组
+	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+
+	// 用户域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+type DeleteAttackWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则序号组
+	Ids []*uint64 `json:"Ids,omitnil" name:"Ids"`
+
+	// 用户域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+func (r *DeleteAttackWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAttackWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Ids")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DeleteAttackWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DeleteAttackWhiteRuleResponseParams struct {
+	// 删除失败的规则序号组
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FailIds []*uint64 `json:"FailIds,omitnil" name:"FailIds"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DeleteAttackWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DeleteAttackWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *DeleteAttackWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DeleteAttackWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DeleteCCRuleRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
@@ -3192,6 +3342,102 @@ func (r *DescribeAttackOverviewResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeAttackOverviewResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAttackWhiteRuleRequestParams struct {
+	// 需要查询的域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 每页容量
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序字段，支持user_id, signature_id, modify_time
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 筛选条件，支持SignatureId, MatchContent
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
+}
+
+type DescribeAttackWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要查询的域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 分页
+	Offset *uint64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 每页容量
+	Limit *uint64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 排序字段，支持user_id, signature_id, modify_time
+	By *string `json:"By,omitnil" name:"By"`
+
+	// 排序方式
+	Order *string `json:"Order,omitnil" name:"Order"`
+
+	// 筛选条件，支持SignatureId, MatchContent
+	Filters []*FiltersItemNew `json:"Filters,omitnil" name:"Filters"`
+}
+
+func (r *DescribeAttackWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAttackWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Domain")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	delete(f, "By")
+	delete(f, "Order")
+	delete(f, "Filters")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAttackWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAttackWhiteRuleResponseParams struct {
+	// 规则总数
+	Total *uint64 `json:"Total,omitnil" name:"Total"`
+
+	// 规则白名单列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	List []*UserWhiteRule `json:"List,omitnil" name:"List"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAttackWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAttackWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *DescribeAttackWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAttackWhiteRuleResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -8245,6 +8491,91 @@ func (r *ModifyAreaBanStatusResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type ModifyAttackWhiteRuleRequestParams struct {
+	// 规则序号
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 规则Id
+	SignatureId *string `json:"SignatureId,omitnil" name:"SignatureId"`
+
+	// 规则状态
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 匹配规则项列表
+	Rules []*UserWhiteRuleItem `json:"Rules,omitnil" name:"Rules"`
+}
+
+type ModifyAttackWhiteRuleRequest struct {
+	*tchttp.BaseRequest
+	
+	// 规则序号
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
+
+	// 域名
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+
+	// 规则Id
+	SignatureId *string `json:"SignatureId,omitnil" name:"SignatureId"`
+
+	// 规则状态
+	Status *uint64 `json:"Status,omitnil" name:"Status"`
+
+	// 匹配规则项列表
+	Rules []*UserWhiteRuleItem `json:"Rules,omitnil" name:"Rules"`
+}
+
+func (r *ModifyAttackWhiteRuleRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAttackWhiteRuleRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "RuleId")
+	delete(f, "Domain")
+	delete(f, "SignatureId")
+	delete(f, "Status")
+	delete(f, "Rules")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "ModifyAttackWhiteRuleRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type ModifyAttackWhiteRuleResponseParams struct {
+	// 规则总数
+	RuleId *uint64 `json:"RuleId,omitnil" name:"RuleId"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type ModifyAttackWhiteRuleResponse struct {
+	*tchttp.BaseResponse
+	Response *ModifyAttackWhiteRuleResponseParams `json:"Response"`
+}
+
+func (r *ModifyAttackWhiteRuleResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *ModifyAttackWhiteRuleResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type ModifyBotStatusRequestParams struct {
 	// 域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
@@ -11817,6 +12148,43 @@ type UserSignatureRule struct {
 
 	// 0/1
 	Reason *int64 `json:"Reason,omitnil" name:"Reason"`
+}
+
+type UserWhiteRule struct {
+	// 白名单的id
+	WhiteRuleId *uint64 `json:"WhiteRuleId,omitnil" name:"WhiteRuleId"`
+
+	// 规则id
+	SignatureId *string `json:"SignatureId,omitnil" name:"SignatureId"`
+
+	// 状态
+	Status *int64 `json:"Status,omitnil" name:"Status"`
+
+	// 匹配域
+	MatchField *string `json:"MatchField,omitnil" name:"MatchField"`
+
+	// 匹配方法
+	MatchMethod *string `json:"MatchMethod,omitnil" name:"MatchMethod"`
+
+	// 匹配内容
+	MatchContent *string `json:"MatchContent,omitnil" name:"MatchContent"`
+
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// 修改时间
+	ModifyTime *string `json:"ModifyTime,omitnil" name:"ModifyTime"`
+}
+
+type UserWhiteRuleItem struct {
+	// 匹配域
+	MatchField *string `json:"MatchField,omitnil" name:"MatchField"`
+
+	// 匹配方法
+	MatchMethod *string `json:"MatchMethod,omitnil" name:"MatchMethod"`
+
+	// 匹配内容
+	MatchContent *string `json:"MatchContent,omitnil" name:"MatchContent"`
 }
 
 type VipInfo struct {

@@ -164,6 +164,63 @@ func (r *CreateInstanceByApiResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeInstanceRequestParams struct {
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+type DescribeInstanceRequest struct {
+	*tchttp.BaseRequest
+	
+	// 集群实例ID
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+func (r *DescribeInstanceRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeInstanceRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeInstanceResponseParams struct {
+	// 实例描述信息
+	InstanceInfo *InstanceInfo `json:"InstanceInfo,omitnil" name:"InstanceInfo"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeInstanceResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeInstanceResponseParams `json:"Response"`
+}
+
+func (r *DescribeInstanceResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeInstanceResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeInstanceStateRequestParams struct {
 	// 集群实例名称
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
@@ -402,6 +459,96 @@ func (r *DestroyInstanceByApiResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
+type InstanceInfo struct {
+	// ID值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ID *int64 `json:"ID,omitnil" name:"ID"`
+
+	// cdwpg-cn或者其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceType *string `json:"InstanceType,omitnil" name:"InstanceType"`
+
+	// cdwpg-cn或者其他
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceName *string `json:"InstanceName,omitnil" name:"InstanceName"`
+
+	// Running
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Status *string `json:"Status,omitnil" name:"Status"`
+
+	// 运行中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StatusDesc *string `json:"StatusDesc,omitnil" name:"StatusDesc"`
+
+	// 无
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStateInfo *InstanceStateInfo `json:"InstanceStateInfo,omitnil" name:"InstanceStateInfo"`
+
+	// -
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+
+	// 2022-09-05 20:00:01
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreateTime *string `json:"CreateTime,omitnil" name:"CreateTime"`
+
+	// ap-chongqing
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Region *string `json:"Region,omitnil" name:"Region"`
+
+	// ap
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Zone *string `json:"Zone,omitnil" name:"Zone"`
+
+	// region
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RegionDesc *string `json:"RegionDesc,omitnil" name:"RegionDesc"`
+
+	// zone
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ZoneDesc *string `json:"ZoneDesc,omitnil" name:"ZoneDesc"`
+
+	// 标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// v3
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Version *string `json:"Version,omitnil" name:"Version"`
+
+	// 字符集
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Charset *string `json:"Charset,omitnil" name:"Charset"`
+
+	// 引擎版本
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EngineVersion *string `json:"EngineVersion,omitnil" name:"EngineVersion"`
+
+	// GTM节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	GTMNodes []*InstanceNodeGroup `json:"GTMNodes,omitnil" name:"GTMNodes"`
+
+	// CN节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CNNodes []*InstanceNodeGroup `json:"CNNodes,omitnil" name:"CNNodes"`
+
+	// DN节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	DNNodes []*InstanceNodeGroup `json:"DNNodes,omitnil" name:"DNNodes"`
+
+	// 备份存储
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupStorage []*InstanceNodeGroup `json:"BackupStorage,omitnil" name:"BackupStorage"`
+
+	// FN节点列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FNNodes []*InstanceNodeGroup `json:"FNNodes,omitnil" name:"FNNodes"`
+}
+
+type InstanceNodeGroup struct {
+
+}
+
 type InstanceSimpleInfoNew struct {
 	// 1
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -470,6 +617,48 @@ type InstanceSimpleInfoNew struct {
 	// 1
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	RenewFlag *bool `json:"RenewFlag,omitnil" name:"RenewFlag"`
+}
+
+type InstanceStateInfo struct {
+	// 集群状态，例如：Serving
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceState *string `json:"InstanceState,omitnil" name:"InstanceState"`
+
+	// 集群操作创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowCreateTime *string `json:"FlowCreateTime,omitnil" name:"FlowCreateTime"`
+
+	// 集群操作名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
+
+	// 集群操作进度
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowProgress *int64 `json:"FlowProgress,omitnil" name:"FlowProgress"`
+
+	// 集群状态描述，例如：运行中
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceStateDesc *string `json:"InstanceStateDesc,omitnil" name:"InstanceStateDesc"`
+
+	// 集群流程错误信息，例如：“创建失败，资源不足”
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	FlowMsg *string `json:"FlowMsg,omitnil" name:"FlowMsg"`
+
+	// 当前步骤的名称，例如：”购买资源中“
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ProcessName *string `json:"ProcessName,omitnil" name:"ProcessName"`
+
+	// 集群是否有备份中任务，有为1,无为0
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupStatus *int64 `json:"BackupStatus,omitnil" name:"BackupStatus"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+
+	// 1
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BackupOpenStatus *int64 `json:"BackupOpenStatus,omitnil" name:"BackupOpenStatus"`
 }
 
 // Predefined struct for user

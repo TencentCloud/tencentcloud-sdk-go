@@ -1447,6 +1447,12 @@ type CreateLivePullStreamTaskRequestParams struct {
 	// 示例: ignore_region  用于忽略传入地域, 内部按负载分配。
 	ExtraCmd *string `json:"ExtraCmd,omitnil" name:"ExtraCmd"`
 
+	// 自定义任务 ID。
+	// 注：
+	// 1. 该自定义 ID 为可选参数，如果传入，请确保该账号下传入的 ID 唯一。
+	// 2. 该自定义 ID 用于防止重复发起请求时产生重复任务。后面也可以用 SpecifyTaskId 来修改或删除任务。
+	SpecifyTaskId *string `json:"SpecifyTaskId,omitnil" name:"SpecifyTaskId"`
+
 	// 任务描述，限制 512 字节。
 	Comment *string `json:"Comment,omitnil" name:"Comment"`
 
@@ -1587,6 +1593,12 @@ type CreateLivePullStreamTaskRequest struct {
 	// 示例: ignore_region  用于忽略传入地域, 内部按负载分配。
 	ExtraCmd *string `json:"ExtraCmd,omitnil" name:"ExtraCmd"`
 
+	// 自定义任务 ID。
+	// 注：
+	// 1. 该自定义 ID 为可选参数，如果传入，请确保该账号下传入的 ID 唯一。
+	// 2. 该自定义 ID 用于防止重复发起请求时产生重复任务。后面也可以用 SpecifyTaskId 来修改或删除任务。
+	SpecifyTaskId *string `json:"SpecifyTaskId,omitnil" name:"SpecifyTaskId"`
+
 	// 任务描述，限制 512 字节。
 	Comment *string `json:"Comment,omitnil" name:"Comment"`
 
@@ -1655,6 +1667,7 @@ func (r *CreateLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "VodRefreshType")
 	delete(f, "CallbackUrl")
 	delete(f, "ExtraCmd")
+	delete(f, "SpecifyTaskId")
 	delete(f, "Comment")
 	delete(f, "ToUrl")
 	delete(f, "BackupSourceType")
@@ -12485,6 +12498,11 @@ type ModifyLivePullStreamTaskRequestParams struct {
 	// 1. 单位：秒，配合FileIndex使用。
 	OffsetTime *int64 `json:"OffsetTime,omitnil" name:"OffsetTime"`
 
+	// 指定任务 ID 修改任务。
+	// 
+	// 注意：该自定义任务 ID 只有在创建任务时指定了，才可在此处修改时使用。否则请使用系统返回的任务 ID。
+	SpecifyTaskId *string `json:"SpecifyTaskId,omitnil" name:"SpecifyTaskId"`
+
 	// 目标 Url。
 	// 换目标地址，会断流重推到新地址。
 	ToUrl *string `json:"ToUrl,omitnil" name:"ToUrl"`
@@ -12592,6 +12610,11 @@ type ModifyLivePullStreamTaskRequest struct {
 	// 1. 单位：秒，配合FileIndex使用。
 	OffsetTime *int64 `json:"OffsetTime,omitnil" name:"OffsetTime"`
 
+	// 指定任务 ID 修改任务。
+	// 
+	// 注意：该自定义任务 ID 只有在创建任务时指定了，才可在此处修改时使用。否则请使用系统返回的任务 ID。
+	SpecifyTaskId *string `json:"SpecifyTaskId,omitnil" name:"SpecifyTaskId"`
+
 	// 目标 Url。
 	// 换目标地址，会断流重推到新地址。
 	ToUrl *string `json:"ToUrl,omitnil" name:"ToUrl"`
@@ -12655,6 +12678,7 @@ func (r *ModifyLivePullStreamTaskRequest) FromJsonString(s string) error {
 	delete(f, "CallbackUrl")
 	delete(f, "FileIndex")
 	delete(f, "OffsetTime")
+	delete(f, "SpecifyTaskId")
 	delete(f, "ToUrl")
 	delete(f, "Comment")
 	delete(f, "BackupSourceType")

@@ -3611,7 +3611,7 @@ type DescribeDataPvUrlStatisticsRequestParams struct {
 	// 机型
 	Device *string `json:"Device,omitnil" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外
 	IsAbroad *string `json:"IsAbroad,omitnil" name:"IsAbroad"`
 
 	// 操作系统
@@ -3626,6 +3626,9 @@ type DescribeDataPvUrlStatisticsRequestParams struct {
 	// group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
 	//  5:1d
 	GroupByType *int64 `json:"GroupByType,omitnil" name:"GroupByType"`
+
+	// 无需关注，是否查询zhiyan
+	IsNewData *int64 `json:"IsNewData,omitnil" name:"IsNewData"`
 }
 
 type DescribeDataPvUrlStatisticsRequest struct {
@@ -3682,7 +3685,7 @@ type DescribeDataPvUrlStatisticsRequest struct {
 	// 机型
 	Device *string `json:"Device,omitnil" name:"Device"`
 
-	// 是否海外
+	// 显示是否海外
 	IsAbroad *string `json:"IsAbroad,omitnil" name:"IsAbroad"`
 
 	// 操作系统
@@ -3697,6 +3700,9 @@ type DescribeDataPvUrlStatisticsRequest struct {
 	// group by 参数值枚举1:1m  2:5m  3:30m  4:1h 
 	//  5:1d
 	GroupByType *int64 `json:"GroupByType,omitnil" name:"GroupByType"`
+
+	// 无需关注，是否查询zhiyan
+	IsNewData *int64 `json:"IsNewData,omitnil" name:"IsNewData"`
 }
 
 func (r *DescribeDataPvUrlStatisticsRequest) ToJsonString() string {
@@ -3733,6 +3739,7 @@ func (r *DescribeDataPvUrlStatisticsRequest) FromJsonString(s string) error {
 	delete(f, "Browser")
 	delete(f, "Env")
 	delete(f, "GroupByType")
+	delete(f, "IsNewData")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeDataPvUrlStatisticsRequest has unknown keys!", "")
 	}

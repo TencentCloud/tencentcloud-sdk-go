@@ -1691,6 +1691,8 @@ func (r *DescribeCarrierPrivilegeNumberApplicantsResponse) FromJsonString(s stri
 // Predefined struct for user
 type DescribeChatMessagesRequestParams struct {
 	// 实例 ID（废弃）
+	//
+	// Deprecated: InstanceId is deprecated.
 	InstanceId *int64 `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
@@ -1963,6 +1965,102 @@ func (r *DescribeExtensionsResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeIMCdrListRequestParams struct {
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 起始时间（必填），Unix 秒级时间戳
+	StartTimestamp *int64 `json:"StartTimestamp,omitnil" name:"StartTimestamp"`
+
+	// 结束时间（必填），Unix 秒级时间戳
+	EndTimestamp *int64 `json:"EndTimestamp,omitnil" name:"EndTimestamp"`
+
+	// 返回记录条数，最大为100默认20
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 返回记录偏移，默认为 0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 1为全媒体，2为文本客服，不填则查询全部
+	Type *int64 `json:"Type,omitnil" name:"Type"`
+}
+
+type DescribeIMCdrListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+	SdkAppId *int64 `json:"SdkAppId,omitnil" name:"SdkAppId"`
+
+	// 起始时间（必填），Unix 秒级时间戳
+	StartTimestamp *int64 `json:"StartTimestamp,omitnil" name:"StartTimestamp"`
+
+	// 结束时间（必填），Unix 秒级时间戳
+	EndTimestamp *int64 `json:"EndTimestamp,omitnil" name:"EndTimestamp"`
+
+	// 返回记录条数，最大为100默认20
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+
+	// 返回记录偏移，默认为 0
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 1为全媒体，2为文本客服，不填则查询全部
+	Type *int64 `json:"Type,omitnil" name:"Type"`
+}
+
+func (r *DescribeIMCdrListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIMCdrListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "SdkAppId")
+	delete(f, "StartTimestamp")
+	delete(f, "EndTimestamp")
+	delete(f, "Limit")
+	delete(f, "Offset")
+	delete(f, "Type")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeIMCdrListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeIMCdrListResponseParams struct {
+	// 总记录数
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 服务记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IMCdrList []*IMCdrInfo `json:"IMCdrList,omitnil" name:"IMCdrList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeIMCdrListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeIMCdrListResponseParams `json:"Response"`
+}
+
+func (r *DescribeIMCdrListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeIMCdrListResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeIMCdrsRequestParams struct {
 	// 起始时间（必填），Unix 秒级时间戳
 	StartTimestamp *int64 `json:"StartTimestamp,omitnil" name:"StartTimestamp"`
@@ -1971,6 +2069,8 @@ type DescribeIMCdrsRequestParams struct {
 	EndTimestamp *int64 `json:"EndTimestamp,omitnil" name:"EndTimestamp"`
 
 	// 实例 ID（废弃）
+	//
+	// Deprecated: InstanceId is deprecated.
 	InstanceId *int64 `json:"InstanceId,omitnil" name:"InstanceId"`
 
 	// 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
@@ -2042,7 +2142,13 @@ type DescribeIMCdrsResponseParams struct {
 	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
 
 	// 服务记录列表
+	//
+	// Deprecated: IMCdrs is deprecated.
 	IMCdrs []*IMCdrInfo `json:"IMCdrs,omitnil" name:"IMCdrs"`
+
+	// 服务记录列表
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IMCdrList []*IMCdrInfo `json:"IMCdrList,omitnil" name:"IMCdrList"`
 
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`

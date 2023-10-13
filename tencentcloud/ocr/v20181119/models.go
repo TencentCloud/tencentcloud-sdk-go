@@ -8379,6 +8379,7 @@ type SmartStructuralOCRV2RequestParams struct {
 	// RideHailingTransportLicense -- 网约车运输证
 	// WayBill -- 快递运单
 	// AccountOpeningPermit -- 银行开户许可证
+	// InvoiceEng -- 海外发票模版
 	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
 }
 
@@ -8421,6 +8422,7 @@ type SmartStructuralOCRV2Request struct {
 	// RideHailingTransportLicense -- 网约车运输证
 	// WayBill -- 快递运单
 	// AccountOpeningPermit -- 银行开户许可证
+	// InvoiceEng -- 海外发票模版
 	ConfigId *string `json:"ConfigId,omitnil" name:"ConfigId"`
 }
 
@@ -10450,7 +10452,7 @@ type VatInvoiceVerifyNewRequestParams struct {
 	// 广东:4400，浙江:3300
 	RegionCode *string `json:"RegionCode,omitnil" name:"RegionCode"`
 
-	// 销方税号，通用机打电子发票必填
+	// 销方税号，通用机打电子发票必填，区块链发票时必填
 	SellerTaxCode *string `json:"SellerTaxCode,omitnil" name:"SellerTaxCode"`
 
 	// 是否开启通用机打电子发票，默认为关闭。
@@ -10483,7 +10485,7 @@ type VatInvoiceVerifyNewRequest struct {
 	// 广东:4400，浙江:3300
 	RegionCode *string `json:"RegionCode,omitnil" name:"RegionCode"`
 
-	// 销方税号，通用机打电子发票必填
+	// 销方税号，通用机打电子发票必填，区块链发票时必填
 	SellerTaxCode *string `json:"SellerTaxCode,omitnil" name:"SellerTaxCode"`
 
 	// 是否开启通用机打电子发票，默认为关闭。
@@ -10823,10 +10825,10 @@ type VehicleInvoiceInfo struct {
 	// 税率
 	MotorTaxRate *string `json:"MotorTaxRate,omitnil" name:"MotorTaxRate"`
 
-	// 开户行
+	// 银行账号
 	MotorBankName *string `json:"MotorBankName,omitnil" name:"MotorBankName"`
 
-	// 账号
+	// 开户行
 	MotorBankAccount *string `json:"MotorBankAccount,omitnil" name:"MotorBankAccount"`
 
 	// 销售地址

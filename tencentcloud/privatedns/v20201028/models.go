@@ -547,7 +547,7 @@ type DeletePrivateZoneRecordRequestParams struct {
 	// 私有域ID
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 记录ID
+	// 记录ID（调用DescribePrivateZoneRecordList可获取到RecordId）
 	RecordId *string `json:"RecordId,omitnil" name:"RecordId"`
 
 	// 记录ID数组，RecordId 优先
@@ -560,7 +560,7 @@ type DeletePrivateZoneRecordRequest struct {
 	// 私有域ID
 	ZoneId *string `json:"ZoneId,omitnil" name:"ZoneId"`
 
-	// 记录ID
+	// 记录ID（调用DescribePrivateZoneRecordList可获取到RecordId）
 	RecordId *string `json:"RecordId,omitnil" name:"RecordId"`
 
 	// 记录ID数组，RecordId 优先

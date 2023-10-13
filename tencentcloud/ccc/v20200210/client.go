@@ -1257,6 +1257,60 @@ func (c *Client) DescribeExtensionsWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeIMCdrListRequest() (request *DescribeIMCdrListRequest) {
+    request = &DescribeIMCdrListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("ccc", APIVersion, "DescribeIMCdrList")
+    
+    
+    return
+}
+
+func NewDescribeIMCdrListResponse() (response *DescribeIMCdrListResponse) {
+    response = &DescribeIMCdrListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeIMCdrList
+// 获取包括全媒体和文本会话两种类型的服务记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeIMCdrList(request *DescribeIMCdrListRequest) (response *DescribeIMCdrListResponse, err error) {
+    return c.DescribeIMCdrListWithContext(context.Background(), request)
+}
+
+// DescribeIMCdrList
+// 获取包括全媒体和文本会话两种类型的服务记录。
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_INSTANCENOTEXIST = "InvalidParameterValue.InstanceNotExist"
+func (c *Client) DescribeIMCdrListWithContext(ctx context.Context, request *DescribeIMCdrListRequest) (response *DescribeIMCdrListResponse, err error) {
+    if request == nil {
+        request = NewDescribeIMCdrListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeIMCdrList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeIMCdrListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeIMCdrsRequest() (request *DescribeIMCdrsRequest) {
     request = &DescribeIMCdrsRequest{
         BaseRequest: &tchttp.BaseRequest{},

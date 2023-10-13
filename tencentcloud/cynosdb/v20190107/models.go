@@ -619,7 +619,7 @@ type AuditRuleTemplateInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	AlarmPolicy *uint64 `json:"AlarmPolicy,omitnil" name:"AlarmPolicy"`
 
-	// 模版状态。0-无任务 ，1-修改中。
+	// 模板状态。0-无任务 ，1-修改中。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Status *uint64 `json:"Status,omitnil" name:"Status"`
 
@@ -8045,7 +8045,7 @@ type InstanceNetInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanDomain *string `json:"WanDomain,omitnil" name:"WanDomain"`
 
-	// 外网Ip
+	// 外网IP
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	WanIP *string `json:"WanIP,omitnil" name:"WanIP"`
 

@@ -87,6 +87,48 @@ func (c *Client) CreateInstanceByApiWithContext(ctx context.Context, request *Cr
     return
 }
 
+func NewDescribeInstanceRequest() (request *DescribeInstanceRequest) {
+    request = &DescribeInstanceRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("cdwpg", APIVersion, "DescribeInstance")
+    
+    
+    return
+}
+
+func NewDescribeInstanceResponse() (response *DescribeInstanceResponse) {
+    response = &DescribeInstanceResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeInstance
+// 根据实例ID查询某个实例的具体信息
+func (c *Client) DescribeInstance(request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
+    return c.DescribeInstanceWithContext(context.Background(), request)
+}
+
+// DescribeInstance
+// 根据实例ID查询某个实例的具体信息
+func (c *Client) DescribeInstanceWithContext(ctx context.Context, request *DescribeInstanceRequest) (response *DescribeInstanceResponse, err error) {
+    if request == nil {
+        request = NewDescribeInstanceRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeInstance require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeInstanceResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeInstanceStateRequest() (request *DescribeInstanceStateRequest) {
     request = &DescribeInstanceStateRequest{
         BaseRequest: &tchttp.BaseRequest{},
