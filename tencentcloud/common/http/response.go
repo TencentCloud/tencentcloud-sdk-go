@@ -5,7 +5,6 @@ import (
 	"bytes"
 	"fmt"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/json"
-	"io"
 	"io/ioutil"
 	"log"
 	"strconv"
@@ -139,7 +138,7 @@ func TryReadErr(resp *http.Response) (err error) {
 	if depResp.Code != 0 {
 		return errors.NewTencentCloudSDKError(depResp.CodeDesc, depResp.Message, "")
 	}
-	resp.Body = io.NopCloser(bytes.NewReader(body))
+	resp.Body = ioutil.NopCloser(bytes.NewReader(body))
 	return nil
 }
 
