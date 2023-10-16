@@ -1,35 +1,29 @@
 # 本版本更新包含以下内容：
 
-## 云联络中心(ccc) 版本：2020-02-10
+## 云安全一体化平台(csip) 版本：2022-11-21
 
-### 第 57 次发布
+### 第 16 次发布
 
-发布时间：2023-10-13 01:09:06
+发布时间：2023-10-16 01:11:35
 
 本次发布包含了以下内容：
 
 改善已有的文档。
-
-新增接口：
-
-* [DescribeIMCdrList](https://cloud.tencent.com/document/api/679/89012)
 
 修改接口：
 
-* [DescribeChatMessages](https://cloud.tencent.com/document/api/679/49676)
+* [CreateRiskCenterScanTask](https://cloud.tencent.com/document/api/664/94177)
 
-* [DescribeIMCdrs](https://cloud.tencent.com/document/api/679/49675)
-
-	* 新增出参：IMCdrList
+	* 新增入参：ScanFrom
 
 
 
 
-## 云数据仓库 PostgreSQL(cdwpg) 版本：2020-12-30
+## 弹性 MapReduce(emr) 版本：2019-01-03
 
-### 第 4 次发布
+### 第 53 次发布
 
-发布时间：2023-10-13 01:10:05
+发布时间：2023-10-16 01:15:50
 
 本次发布包含了以下内容：
 
@@ -37,64 +31,36 @@
 
 新增接口：
 
-* [DescribeInstance](https://cloud.tencent.com/document/api/878/100195)
+* [DescribeAutoScaleRecords](https://cloud.tencent.com/document/api/589/100248)
 
 新增数据结构：
 
-* [InstanceInfo](https://cloud.tencent.com/document/api/878/98895#InstanceInfo)
-* [InstanceNodeGroup](https://cloud.tencent.com/document/api/878/98895#InstanceNodeGroup)
-* [InstanceStateInfo](https://cloud.tencent.com/document/api/878/98895#InstanceStateInfo)
+* [AutoScaleRecord](https://cloud.tencent.com/document/api/589/33981#AutoScaleRecord)
+* [KeyValue](https://cloud.tencent.com/document/api/589/33981#KeyValue)
 
 
 
-## 云安全一体化平台(csip) 版本：2022-11-21
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 54 次发布
+
+发布时间：2023-10-16 01:17:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetDeviceSumStatistics](https://cloud.tencent.com/document/api/1081/100249)
+
+
+
+## 智聆口语评测(soe) 版本：2018-07-24
 
 ### 第 15 次发布
 
-发布时间：2023-10-13 01:12:24
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [DescribeRiskCenterPortViewPortRiskList](https://cloud.tencent.com/document/api/664/100198)
-* [DescribeRiskCenterVULViewVULRiskList](https://cloud.tencent.com/document/api/664/100197)
-* [ModifyRiskCenterRiskStatus](https://cloud.tencent.com/document/api/664/100196)
-
-新增数据结构：
-
-* [PortViewPortRisk](https://cloud.tencent.com/document/api/664/90825#PortViewPortRisk)
-* [RiskCenterStatusKey](https://cloud.tencent.com/document/api/664/90825#RiskCenterStatusKey)
-* [VULViewVULRisk](https://cloud.tencent.com/document/api/664/90825#VULViewVULRisk)
-
-
-
-## TDSQL-C MySQL 版(cynosdb) 版本：2019-01-07
-
-### 第 72 次发布
-
-发布时间：2023-10-13 01:13:55
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改数据结构：
-
-* [InstanceNetInfo](https://cloud.tencent.com/document/api/1003/48097#InstanceNetInfo)
-
-	* <font color="#dd0000">**修改成员**：</font>InstanceGroupType, InstanceGroupId, VpcId, SubnetId, NetType, Vip, Vport, WanDomain, WanIP, WanPort, WanStatus
-
-
-
-
-## 云直播CSS(live) 版本：2018-08-01
-
-### 第 113 次发布
-
-发布时间：2023-10-13 01:19:37
+发布时间：2023-10-16 01:23:02
 
 本次发布包含了以下内容：
 
@@ -102,92 +68,26 @@
 
 修改接口：
 
-* [CreateLivePullStreamTask](https://cloud.tencent.com/document/api/267/56245)
+* [TransmitOralProcessWithInit](https://cloud.tencent.com/document/api/884/32605)
 
-	* 新增入参：SpecifyTaskId
-
-* [ModifyLivePullStreamTask](https://cloud.tencent.com/document/api/267/56242)
-
-	* 新增入参：SpecifyTaskId
+	* 新增入参：COSBucketURL
 
 
 
 
-## 前端性能监控(rum) 版本：2021-06-22
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
-### 第 29 次发布
+### 第 48 次发布
 
-发布时间：2023-10-13 01:22:31
+发布时间：2023-10-16 01:29:53
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-修改接口：
+<font color="#dd0000">**预下线接口**：</font>
 
-* [DescribeDataPvUrlStatistics](https://cloud.tencent.com/document/api/1464/65768)
-
-	* 新增入参：IsNewData
-
-
-
-
-## 消息队列 TDMQ(tdmq) 版本：2020-02-17
-
-### 第 79 次发布
-
-发布时间：2023-10-13 01:25:14
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [ResetMsgSubOffsetByTimestamp](https://cloud.tencent.com/document/api/1179/46083)
-
-	* <font color="#dd0000">**修改入参**：</font>ClusterId
-
-
-
-
-## 微服务引擎 TSE(tse) 版本：2020-12-07
-
-### 第 47 次发布
-
-发布时间：2023-10-13 01:27:15
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [ModifyCloudNativeAPIGatewayCertificate](https://cloud.tencent.com/document/api/1364/100199)
-
-
-
-## Web 应用防火墙(waf) 版本：2018-01-25
-
-### 第 63 次发布
-
-发布时间：2023-10-13 01:29:06
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [AddAttackWhiteRule](https://cloud.tencent.com/document/api/627/100203)
-* [DeleteAttackWhiteRule](https://cloud.tencent.com/document/api/627/100202)
-* [DescribeAttackWhiteRule](https://cloud.tencent.com/document/api/627/100201)
-* [ModifyAttackWhiteRule](https://cloud.tencent.com/document/api/627/100200)
-
-新增数据结构：
-
-* [UserWhiteRule](https://cloud.tencent.com/document/api/627/53609#UserWhiteRule)
-* [UserWhiteRuleItem](https://cloud.tencent.com/document/api/627/53609#UserWhiteRuleItem)
+* DescribeKafkaTopicInfo
 
 
 
@@ -14032,7 +13932,7 @@
 
 新增接口：
 
-* [[DescribeIMCdrList](https://cloud.tencent.com/document/api/679/89012)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeIMCdrList](https://cloud.tencent.com/document/api/679/89012)
 
 修改接口：
 
@@ -21258,13 +21158,13 @@
 
 新增接口：
 
-* [[DescribeInstance](https://cloud.tencent.com/document/api/878/100195)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeInstance](https://cloud.tencent.com/document/api/878/100195)
 
 新增数据结构：
 
-* [[InstanceInfo](https://cloud.tencent.com/document/api/878/98895#InstanceInfo)](https://cloud.tencent.com/document/api/878/98895#[InstanceInfo](https://cloud.tencent.com/document/api/878/98895#InstanceInfo))
-* [[InstanceNodeGroup](https://cloud.tencent.com/document/api/878/98895#InstanceNodeGroup)](https://cloud.tencent.com/document/api/878/98895#[InstanceNodeGroup](https://cloud.tencent.com/document/api/878/98895#InstanceNodeGroup))
-* [[InstanceStateInfo](https://cloud.tencent.com/document/api/878/98895#InstanceStateInfo)](https://cloud.tencent.com/document/api/878/98895#[InstanceStateInfo](https://cloud.tencent.com/document/api/878/98895#InstanceStateInfo))
+* [InstanceInfo](https://cloud.tencent.com/document/api/878/98895#InstanceInfo)
+* [InstanceNodeGroup](https://cloud.tencent.com/document/api/878/98895#InstanceNodeGroup)
+* [InstanceStateInfo](https://cloud.tencent.com/document/api/878/98895#InstanceStateInfo)
 
 ### 第 3 次发布
 
@@ -34500,6 +34400,21 @@
 
 ## 云安全一体化平台(csip) 版本：2022-11-21
 
+### 第 16 次发布
+
+发布时间：2023-10-16 01:11:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRiskCenterScanTask](https://cloud.tencent.com/document/api/664/94177)
+
+	* 新增入参：ScanFrom
+
+
 ### 第 15 次发布
 
 发布时间：2023-10-13 01:12:24
@@ -34510,15 +34425,15 @@
 
 新增接口：
 
-* [[DescribeRiskCenterPortViewPortRiskList](https://cloud.tencent.com/document/api/664/100198)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeRiskCenterVULViewVULRiskList](https://cloud.tencent.com/document/api/664/100197)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyRiskCenterRiskStatus](https://cloud.tencent.com/document/api/664/100196)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeRiskCenterPortViewPortRiskList](https://cloud.tencent.com/document/api/664/100198)
+* [DescribeRiskCenterVULViewVULRiskList](https://cloud.tencent.com/document/api/664/100197)
+* [ModifyRiskCenterRiskStatus](https://cloud.tencent.com/document/api/664/100196)
 
 新增数据结构：
 
-* [[PortViewPortRisk](https://cloud.tencent.com/document/api/664/90825#PortViewPortRisk)](https://cloud.tencent.com/document/api/664/90825#[PortViewPortRisk](https://cloud.tencent.com/document/api/664/90825#PortViewPortRisk))
-* [[RiskCenterStatusKey](https://cloud.tencent.com/document/api/664/90825#RiskCenterStatusKey)](https://cloud.tencent.com/document/api/664/90825#[RiskCenterStatusKey](https://cloud.tencent.com/document/api/664/90825#RiskCenterStatusKey))
-* [[VULViewVULRisk](https://cloud.tencent.com/document/api/664/90825#VULViewVULRisk)](https://cloud.tencent.com/document/api/664/90825#[VULViewVULRisk](https://cloud.tencent.com/document/api/664/90825#VULViewVULRisk))
+* [PortViewPortRisk](https://cloud.tencent.com/document/api/664/90825#PortViewPortRisk)
+* [RiskCenterStatusKey](https://cloud.tencent.com/document/api/664/90825#RiskCenterStatusKey)
+* [VULViewVULRisk](https://cloud.tencent.com/document/api/664/90825#VULViewVULRisk)
 
 ### 第 14 次发布
 
@@ -52268,6 +52183,23 @@
 
 ## 弹性 MapReduce(emr) 版本：2019-01-03
 
+### 第 53 次发布
+
+发布时间：2023-10-16 01:15:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAutoScaleRecords](https://cloud.tencent.com/document/api/589/100248)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[AutoScaleRecord](https://cloud.tencent.com/document/api/589/33981#AutoScaleRecord)](https://cloud.tencent.com/document/api/589/33981#[AutoScaleRecord](https://cloud.tencent.com/document/api/589/33981#AutoScaleRecord))
+* [[KeyValue](https://cloud.tencent.com/document/api/589/33981#KeyValue)](https://cloud.tencent.com/document/api/589/33981#[KeyValue](https://cloud.tencent.com/document/api/589/33981#KeyValue))
+
 ### 第 52 次发布
 
 发布时间：2023-10-10 01:37:17
@@ -67117,6 +67049,18 @@
 
 
 ## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 54 次发布
+
+发布时间：2023-10-16 01:17:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[GetDeviceSumStatistics](https://cloud.tencent.com/document/api/1081/100249)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 53 次发布
 
@@ -94059,6 +94003,21 @@
 
 
 ## 智聆口语评测(soe) 版本：2018-07-24
+
+### 第 15 次发布
+
+发布时间：2023-10-16 01:23:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TransmitOralProcessWithInit](https://cloud.tencent.com/document/api/884/32605)
+
+	* 新增入参：COSBucketURL
+
 
 ### 第 14 次发布
 
@@ -121081,7 +121040,7 @@
 
 新增接口：
 
-* [[ModifyCloudNativeAPIGatewayCertificate](https://cloud.tencent.com/document/api/1364/100199)](https://cloud.tencent.com/document/api/#/#)
+* [ModifyCloudNativeAPIGatewayCertificate](https://cloud.tencent.com/document/api/1364/100199)
 
 ### 第 46 次发布
 
@@ -133929,15 +133888,15 @@
 
 新增接口：
 
-* [[AddAttackWhiteRule](https://cloud.tencent.com/document/api/627/100203)](https://cloud.tencent.com/document/api/#/#)
-* [[DeleteAttackWhiteRule](https://cloud.tencent.com/document/api/627/100202)](https://cloud.tencent.com/document/api/#/#)
-* [[DescribeAttackWhiteRule](https://cloud.tencent.com/document/api/627/100201)](https://cloud.tencent.com/document/api/#/#)
-* [[ModifyAttackWhiteRule](https://cloud.tencent.com/document/api/627/100200)](https://cloud.tencent.com/document/api/#/#)
+* [AddAttackWhiteRule](https://cloud.tencent.com/document/api/627/100203)
+* [DeleteAttackWhiteRule](https://cloud.tencent.com/document/api/627/100202)
+* [DescribeAttackWhiteRule](https://cloud.tencent.com/document/api/627/100201)
+* [ModifyAttackWhiteRule](https://cloud.tencent.com/document/api/627/100200)
 
 新增数据结构：
 
-* [[UserWhiteRule](https://cloud.tencent.com/document/api/627/53609#UserWhiteRule)](https://cloud.tencent.com/document/api/627/53609#[UserWhiteRule](https://cloud.tencent.com/document/api/627/53609#UserWhiteRule))
-* [[UserWhiteRuleItem](https://cloud.tencent.com/document/api/627/53609#UserWhiteRuleItem)](https://cloud.tencent.com/document/api/627/53609#[UserWhiteRuleItem](https://cloud.tencent.com/document/api/627/53609#UserWhiteRuleItem))
+* [UserWhiteRule](https://cloud.tencent.com/document/api/627/53609#UserWhiteRule)
+* [UserWhiteRuleItem](https://cloud.tencent.com/document/api/627/53609#UserWhiteRuleItem)
 
 ### 第 62 次发布
 
@@ -135618,6 +135577,78 @@
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 48 次发布
+
+发布时间：2023-10-16 01:29:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeKafkaTopicInfo
+
+### 第 47 次发布
+
+发布时间：2023-10-13 11:16:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [CreateDsFolder](https://cloud.tencent.com/document/api/1267/100214)
+* [DeleteDsFolder](https://cloud.tencent.com/document/api/1267/100213)
+* [DescribeDsFolderTree](https://cloud.tencent.com/document/api/1267/100212)
+* [DescribeDsParentFolderTree](https://cloud.tencent.com/document/api/1267/100211)
+* [FindAllFolder](https://cloud.tencent.com/document/api/1267/100209)
+* [ModifyDsFolder](https://cloud.tencent.com/document/api/1267/100210)
+* [RunForceSucScheduleInstances](https://cloud.tencent.com/document/api/1267/100208)
+* [RunRerunScheduleInstances](https://cloud.tencent.com/document/api/1267/100207)
+
+修改接口：
+
+* [DescribeOperateOpsTasks](https://cloud.tencent.com/document/api/1267/95254)
+
+	* 新增入参：ExecutorGroupIdList
+
+* [DescribeStreamTaskLogList](https://cloud.tencent.com/document/api/1267/82487)
+
+	* 新增入参：Keyword
+
+
+新增数据结构：
+
+* [FolderDsDto](https://cloud.tencent.com/document/api/1267/76336#FolderDsDto)
+* [PathNodeDsVO](https://cloud.tencent.com/document/api/1267/76336#PathNodeDsVO)
+
+修改数据结构：
+
+* [AlarmEventInfo](https://cloud.tencent.com/document/api/1267/76336#AlarmEventInfo)
+
+	* 新增成员：AlarmRecipientName, TaskType, SendResult
+
+* [InLongAgentDetail](https://cloud.tencent.com/document/api/1267/76336#InLongAgentDetail)
+
+	* 新增成员：ClusterId, AgentRegion
+
+	* <font color="#dd0000">**修改成员**：</font>LifeDays
+
+* [InstanceApiOpsRequest](https://cloud.tencent.com/document/api/1267/76336#InstanceApiOpsRequest)
+
+	* 新增成员：ExecutorGroupIdList
+
+* [InstanceOpsDto](https://cloud.tencent.com/document/api/1267/76336#InstanceOpsDto)
+
+	* 新增成员：ExecutorGroupId, ExecutorGroupName
+
+* [TaskOpsDto](https://cloud.tencent.com/document/api/1267/76336#TaskOpsDto)
+
+	* 新增成员：ExecutorGroupId, ExecutorGroupName
+
 
 ### 第 46 次发布
 

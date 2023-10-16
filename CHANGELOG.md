@@ -1,3 +1,96 @@
+# Release v1.0.766
+
+## 云安全一体化平台(csip) 版本：2022-11-21
+
+### 第 16 次发布
+
+发布时间：2023-10-16 01:11:35
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateRiskCenterScanTask](https://cloud.tencent.com/document/api/664/94177)
+
+	* 新增入参：ScanFrom
+
+
+
+
+## 弹性 MapReduce(emr) 版本：2019-01-03
+
+### 第 53 次发布
+
+发布时间：2023-10-16 01:15:50
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAutoScaleRecords](https://cloud.tencent.com/document/api/589/100248)
+
+新增数据结构：
+
+* [AutoScaleRecord](https://cloud.tencent.com/document/api/589/33981#AutoScaleRecord)
+* [KeyValue](https://cloud.tencent.com/document/api/589/33981#KeyValue)
+
+
+
+## 物联网开发平台(iotexplorer) 版本：2019-04-23
+
+### 第 54 次发布
+
+发布时间：2023-10-16 01:17:51
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [GetDeviceSumStatistics](https://cloud.tencent.com/document/api/1081/100249)
+
+
+
+## 智聆口语评测(soe) 版本：2018-07-24
+
+### 第 15 次发布
+
+发布时间：2023-10-16 01:23:02
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [TransmitOralProcessWithInit](https://cloud.tencent.com/document/api/884/32605)
+
+	* 新增入参：COSBucketURL
+
+
+
+
+## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 48 次发布
+
+发布时间：2023-10-16 01:29:53
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+<font color="#dd0000">**预下线接口**：</font>
+
+* DescribeKafkaTopicInfo
+
+
+
 # Release v1.0.765
 
 ## 云联络中心(ccc) 版本：2020-02-10

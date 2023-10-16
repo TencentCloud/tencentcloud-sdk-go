@@ -449,6 +449,58 @@ func (c *Client) DeleteUserManagerUserListWithContext(ctx context.Context, reque
     return
 }
 
+func NewDescribeAutoScaleRecordsRequest() (request *DescribeAutoScaleRecordsRequest) {
+    request = &DescribeAutoScaleRecordsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("emr", APIVersion, "DescribeAutoScaleRecords")
+    
+    
+    return
+}
+
+func NewDescribeAutoScaleRecordsResponse() (response *DescribeAutoScaleRecordsResponse) {
+    response = &DescribeAutoScaleRecordsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAutoScaleRecords
+// 获取集群的自动扩缩容的详细记录
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERKEY = "InvalidParameter.InvalidFilterKey"
+//  INVALIDPARAMETER_INVALIDSTARTTIMEORENDTIME = "InvalidParameter.InvalidStartTimeOrEndTime"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeAutoScaleRecords(request *DescribeAutoScaleRecordsRequest) (response *DescribeAutoScaleRecordsResponse, err error) {
+    return c.DescribeAutoScaleRecordsWithContext(context.Background(), request)
+}
+
+// DescribeAutoScaleRecords
+// 获取集群的自动扩缩容的详细记录
+//
+// 可能返回的错误码:
+//  INVALIDPARAMETER_INVALIDFILTERKEY = "InvalidParameter.InvalidFilterKey"
+//  INVALIDPARAMETER_INVALIDSTARTTIMEORENDTIME = "InvalidParameter.InvalidStartTimeOrEndTime"
+//  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
+func (c *Client) DescribeAutoScaleRecordsWithContext(ctx context.Context, request *DescribeAutoScaleRecordsRequest) (response *DescribeAutoScaleRecordsResponse, err error) {
+    if request == nil {
+        request = NewDescribeAutoScaleRecordsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAutoScaleRecords require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAutoScaleRecordsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeClusterNodesRequest() (request *DescribeClusterNodesRequest) {
     request = &DescribeClusterNodesRequest{
         BaseRequest: &tchttp.BaseRequest{},

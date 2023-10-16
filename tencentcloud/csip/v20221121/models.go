@@ -1029,6 +1029,9 @@ type CreateRiskCenterScanTaskRequestParams struct {
 	// ip/域名/url数组
 	SelfDefiningAssets []*string `json:"SelfDefiningAssets,omitnil" name:"SelfDefiningAssets"`
 
+	// 请求发起源，默认为vss表示漏洞扫描服务，云安全中心的用户请填充csip
+	ScanFrom *string `json:"ScanFrom,omitnil" name:"ScanFrom"`
+
 	// 高级配置
 	TaskAdvanceCFG *TaskAdvanceCFG `json:"TaskAdvanceCFG,omitnil" name:"TaskAdvanceCFG"`
 
@@ -1060,6 +1063,9 @@ type CreateRiskCenterScanTaskRequest struct {
 	// ip/域名/url数组
 	SelfDefiningAssets []*string `json:"SelfDefiningAssets,omitnil" name:"SelfDefiningAssets"`
 
+	// 请求发起源，默认为vss表示漏洞扫描服务，云安全中心的用户请填充csip
+	ScanFrom *string `json:"ScanFrom,omitnil" name:"ScanFrom"`
+
 	// 高级配置
 	TaskAdvanceCFG *TaskAdvanceCFG `json:"TaskAdvanceCFG,omitnil" name:"TaskAdvanceCFG"`
 
@@ -1086,6 +1092,7 @@ func (r *CreateRiskCenterScanTaskRequest) FromJsonString(s string) error {
 	delete(f, "Assets")
 	delete(f, "ScanPlanContent")
 	delete(f, "SelfDefiningAssets")
+	delete(f, "ScanFrom")
 	delete(f, "TaskAdvanceCFG")
 	delete(f, "TaskMode")
 	if len(f) > 0 {

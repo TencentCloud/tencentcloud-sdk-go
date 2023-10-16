@@ -149,6 +149,43 @@ type ApplicationStatics struct {
 	CountApps *int64 `json:"CountApps,omitnil" name:"CountApps"`
 }
 
+type AutoScaleRecord struct {
+	// 扩缩容规则名。
+	StrategyName *string `json:"StrategyName,omitnil" name:"StrategyName"`
+
+	// "SCALE_OUT"和"SCALE_IN"，分别表示扩容和缩容。
+	ScaleAction *string `json:"ScaleAction,omitnil" name:"ScaleAction"`
+
+	// 取值为"SUCCESS","FAILED","PART_SUCCESS","IN_PROCESS"，分别表示成功、失败、部分成功和流程中。
+	ActionStatus *string `json:"ActionStatus,omitnil" name:"ActionStatus"`
+
+	// 流程触发时间。
+	ActionTime *string `json:"ActionTime,omitnil" name:"ActionTime"`
+
+	// 扩缩容相关描述信息。
+	ScaleInfo *string `json:"ScaleInfo,omitnil" name:"ScaleInfo"`
+
+	// 只在ScaleAction为SCALE_OUT时有效。
+	ExpectScaleNum *int64 `json:"ExpectScaleNum,omitnil" name:"ExpectScaleNum"`
+
+	// 流程结束时间。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 策略类型，按负载或者按时间，1表示负载伸缩，2表示时间伸缩
+	StrategyType *int64 `json:"StrategyType,omitnil" name:"StrategyType"`
+
+	// 扩容时所使用规格信息。
+	SpecInfo *string `json:"SpecInfo,omitnil" name:"SpecInfo"`
+
+	// 补偿扩容，0表示不开启，1表示开启
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompensateFlag *int64 `json:"CompensateFlag,omitnil" name:"CompensateFlag"`
+
+	// 补偿次数
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CompensateCount *int64 `json:"CompensateCount,omitnil" name:"CompensateCount"`
+}
+
 type BootstrapAction struct {
 	// 脚本位置，支持cos上的文件，且只支持https协议。
 	Path *string `json:"Path,omitnil" name:"Path"`
@@ -1230,6 +1267,87 @@ type DependService struct {
 
 	// 共用组件集群
 	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+}
+
+// Predefined struct for user
+type DescribeAutoScaleRecordsRequestParams struct {
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 记录过滤参数，目前仅能为“StartTime”,“EndTime”和“StrategyName”。StartTime和EndTime支持2006-01-02 15:04:05 或者2006/01/02 15:04:05的时间格式
+	Filters []*KeyValue `json:"Filters,omitnil" name:"Filters"`
+
+	// 分页参数。
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页参数。最大支持100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+type DescribeAutoScaleRecordsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 实例ID。
+	InstanceId *string `json:"InstanceId,omitnil" name:"InstanceId"`
+
+	// 记录过滤参数，目前仅能为“StartTime”,“EndTime”和“StrategyName”。StartTime和EndTime支持2006-01-02 15:04:05 或者2006/01/02 15:04:05的时间格式
+	Filters []*KeyValue `json:"Filters,omitnil" name:"Filters"`
+
+	// 分页参数。
+	Offset *int64 `json:"Offset,omitnil" name:"Offset"`
+
+	// 分页参数。最大支持100
+	Limit *int64 `json:"Limit,omitnil" name:"Limit"`
+}
+
+func (r *DescribeAutoScaleRecordsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoScaleRecordsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "InstanceId")
+	delete(f, "Filters")
+	delete(f, "Offset")
+	delete(f, "Limit")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAutoScaleRecordsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAutoScaleRecordsResponseParams struct {
+	// 总扩缩容记录数。
+	TotalCount *int64 `json:"TotalCount,omitnil" name:"TotalCount"`
+
+	// 记录列表。
+	RecordList []*AutoScaleRecord `json:"RecordList,omitnil" name:"RecordList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAutoScaleRecordsResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAutoScaleRecordsResponseParams `json:"Response"`
+}
+
+func (r *DescribeAutoScaleRecordsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAutoScaleRecordsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 // Predefined struct for user
@@ -3621,6 +3739,16 @@ type JobResult struct {
 	// YARN任务ID
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ApplicationId *string `json:"ApplicationId,omitnil" name:"ApplicationId"`
+}
+
+type KeyValue struct {
+	// 键
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// 值
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
 type LoginSettings struct {

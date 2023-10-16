@@ -3492,6 +3492,7 @@ func NewCreatePreparedPersonalEsignResponse() (response *CreatePreparedPersonalE
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_IDCARDNUMBERCHECKFAILED = "FailedOperation.IdCardNumberCheckFailed"
 //  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
 //  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
@@ -3507,6 +3508,7 @@ func (c *Client) CreatePreparedPersonalEsign(request *CreatePreparedPersonalEsig
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_IDCARDNUMBERCHECKFAILED = "FailedOperation.IdCardNumberCheckFailed"
 //  FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
 //  INVALIDPARAMETER_CARDNUMBER = "InvalidParameter.CardNumber"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"

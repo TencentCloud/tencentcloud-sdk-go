@@ -3839,6 +3839,60 @@ func (c *Client) GetDeviceLocationHistoryWithContext(ctx context.Context, reques
     return
 }
 
+func NewGetDeviceSumStatisticsRequest() (request *GetDeviceSumStatisticsRequest) {
+    request = &GetDeviceSumStatisticsRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("iotexplorer", APIVersion, "GetDeviceSumStatistics")
+    
+    
+    return
+}
+
+func NewGetDeviceSumStatisticsResponse() (response *GetDeviceSumStatisticsResponse) {
+    response = &GetDeviceSumStatisticsResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// GetDeviceSumStatistics
+// 拉取设备统计汇总数据 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
+func (c *Client) GetDeviceSumStatistics(request *GetDeviceSumStatisticsRequest) (response *GetDeviceSumStatisticsResponse, err error) {
+    return c.GetDeviceSumStatisticsWithContext(context.Background(), request)
+}
+
+// GetDeviceSumStatistics
+// 拉取设备统计汇总数据 
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  RESOURCENOTFOUND_PROJECTNOTEXIST = "ResourceNotFound.ProjectNotExist"
+//  UNAUTHORIZEDOPERATION_NOPERMISSIONTOPROJECT = "UnauthorizedOperation.NoPermissionToProject"
+func (c *Client) GetDeviceSumStatisticsWithContext(ctx context.Context, request *GetDeviceSumStatisticsRequest) (response *GetDeviceSumStatisticsResponse, err error) {
+    if request == nil {
+        request = NewGetDeviceSumStatisticsRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("GetDeviceSumStatistics require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewGetDeviceSumStatisticsResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewGetFamilyDeviceUserListRequest() (request *GetFamilyDeviceUserListRequest) {
     request = &GetFamilyDeviceUserListRequest{
         BaseRequest: &tchttp.BaseRequest{},

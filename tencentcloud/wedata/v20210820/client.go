@@ -557,6 +557,7 @@ func NewBatchRerunIntegrationTaskInstancesResponse() (response *BatchRerunIntegr
 // 批量重跑集成任务实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) BatchRerunIntegrationTaskInstances(request *BatchRerunIntegrationTaskInstancesRequest) (response *BatchRerunIntegrationTaskInstancesResponse, err error) {
     return c.BatchRerunIntegrationTaskInstancesWithContext(context.Background(), request)
@@ -566,6 +567,7 @@ func (c *Client) BatchRerunIntegrationTaskInstances(request *BatchRerunIntegrati
 // 批量重跑集成任务实例
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) BatchRerunIntegrationTaskInstancesWithContext(ctx context.Context, request *BatchRerunIntegrationTaskInstancesRequest) (response *BatchRerunIntegrationTaskInstancesResponse, err error) {
     if request == nil {
@@ -605,6 +607,7 @@ func NewBatchResumeIntegrationTasksResponse() (response *BatchResumeIntegrationT
 // 批量继续执行集成实时任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) BatchResumeIntegrationTasks(request *BatchResumeIntegrationTasksRequest) (response *BatchResumeIntegrationTasksResponse, err error) {
     return c.BatchResumeIntegrationTasksWithContext(context.Background(), request)
@@ -614,6 +617,7 @@ func (c *Client) BatchResumeIntegrationTasks(request *BatchResumeIntegrationTask
 // 批量继续执行集成实时任务
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 func (c *Client) BatchResumeIntegrationTasksWithContext(ctx context.Context, request *BatchResumeIntegrationTasksRequest) (response *BatchResumeIntegrationTasksResponse, err error) {
     if request == nil {
@@ -1698,7 +1702,7 @@ func NewCreateCustomFunctionResponse() (response *CreateCustomFunctionResponse) 
 }
 
 // CreateCustomFunction
-//  创建用户自定义函数
+// 创建用户自定义函数
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1707,7 +1711,7 @@ func (c *Client) CreateCustomFunction(request *CreateCustomFunctionRequest) (res
 }
 
 // CreateCustomFunction
-//  创建用户自定义函数
+// 创建用户自定义函数
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
@@ -1775,6 +1779,54 @@ func (c *Client) CreateDataSourceWithContext(ctx context.Context, request *Creat
     request.SetContext(ctx)
     
     response = NewCreateDataSourceResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewCreateDsFolderRequest() (request *CreateDsFolderRequest) {
+    request = &CreateDsFolderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "CreateDsFolder")
+    
+    
+    return
+}
+
+func NewCreateDsFolderResponse() (response *CreateDsFolderResponse) {
+    response = &CreateDsFolderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// CreateDsFolder
+// 编排空间-创建文件夹
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateDsFolder(request *CreateDsFolderRequest) (response *CreateDsFolderResponse, err error) {
+    return c.CreateDsFolderWithContext(context.Background(), request)
+}
+
+// CreateDsFolder
+// 编排空间-创建文件夹
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) CreateDsFolderWithContext(ctx context.Context, request *CreateDsFolderRequest) (response *CreateDsFolderResponse, err error) {
+    if request == nil {
+        request = NewCreateDsFolderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("CreateDsFolder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewCreateDsFolderResponse()
     err = c.Send(request, response)
     return
 }
@@ -2779,6 +2831,54 @@ func (c *Client) DeleteDataSourcesWithContext(ctx context.Context, request *Dele
     request.SetContext(ctx)
     
     response = NewDeleteDataSourcesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDeleteDsFolderRequest() (request *DeleteDsFolderRequest) {
+    request = &DeleteDsFolderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DeleteDsFolder")
+    
+    
+    return
+}
+
+func NewDeleteDsFolderResponse() (response *DeleteDsFolderResponse) {
+    response = &DeleteDsFolderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DeleteDsFolder
+// 编排空间-删除文件夹
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteDsFolder(request *DeleteDsFolderRequest) (response *DeleteDsFolderResponse, err error) {
+    return c.DeleteDsFolderWithContext(context.Background(), request)
+}
+
+// DeleteDsFolder
+// 编排空间-删除文件夹
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DeleteDsFolderWithContext(ctx context.Context, request *DeleteDsFolderRequest) (response *DeleteDsFolderResponse, err error) {
+    if request == nil {
+        request = NewDeleteDsFolderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DeleteDsFolder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDeleteDsFolderResponse()
     err = c.Send(request, response)
     return
 }
@@ -5517,6 +5617,102 @@ func (c *Client) DescribeDrSonInstanceWithContext(ctx context.Context, request *
     return
 }
 
+func NewDescribeDsFolderTreeRequest() (request *DescribeDsFolderTreeRequest) {
+    request = &DescribeDsFolderTreeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDsFolderTree")
+    
+    
+    return
+}
+
+func NewDescribeDsFolderTreeResponse() (response *DescribeDsFolderTreeResponse) {
+    response = &DescribeDsFolderTreeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDsFolderTree
+// 查询目录树
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDsFolderTree(request *DescribeDsFolderTreeRequest) (response *DescribeDsFolderTreeResponse, err error) {
+    return c.DescribeDsFolderTreeWithContext(context.Background(), request)
+}
+
+// DescribeDsFolderTree
+// 查询目录树
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDsFolderTreeWithContext(ctx context.Context, request *DescribeDsFolderTreeRequest) (response *DescribeDsFolderTreeResponse, err error) {
+    if request == nil {
+        request = NewDescribeDsFolderTreeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDsFolderTree require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDsFolderTreeResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeDsParentFolderTreeRequest() (request *DescribeDsParentFolderTreeRequest) {
+    request = &DescribeDsParentFolderTreeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "DescribeDsParentFolderTree")
+    
+    
+    return
+}
+
+func NewDescribeDsParentFolderTreeResponse() (response *DescribeDsParentFolderTreeResponse) {
+    response = &DescribeDsParentFolderTreeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeDsParentFolderTree
+// 查询父目录树，用于工作流、任务定位
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDsParentFolderTree(request *DescribeDsParentFolderTreeRequest) (response *DescribeDsParentFolderTreeResponse, err error) {
+    return c.DescribeDsParentFolderTreeWithContext(context.Background(), request)
+}
+
+// DescribeDsParentFolderTree
+// 查询父目录树，用于工作流、任务定位
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) DescribeDsParentFolderTreeWithContext(ctx context.Context, request *DescribeDsParentFolderTreeRequest) (response *DescribeDsParentFolderTreeResponse, err error) {
+    if request == nil {
+        request = NewDescribeDsParentFolderTreeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeDsParentFolderTree require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeDsParentFolderTreeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeEventRequest() (request *DescribeEventRequest) {
     request = &DescribeEventRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -5930,9 +6126,6 @@ func NewDescribeFathersResponse() (response *DescribeFathersResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeFathers(request *DescribeFathersRequest) (response *DescribeFathersResponse, err error) {
     return c.DescribeFathersWithContext(context.Background(), request)
 }
@@ -5942,9 +6135,6 @@ func (c *Client) DescribeFathers(request *DescribeFathersRequest) (response *Des
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  UNAUTHORIZEDOPERATION_USERNOTINPROJECT = "UnauthorizedOperation.UserNotInProject"
 func (c *Client) DescribeFathersWithContext(ctx context.Context, request *DescribeFathersRequest) (response *DescribeFathersResponse, err error) {
     if request == nil {
         request = NewDescribeFathersRequest()
@@ -7524,6 +7714,10 @@ func NewDescribeKafkaTopicInfoResponse() (response *DescribeKafkaTopicInfoRespon
 }
 
 // DescribeKafkaTopicInfo
+// 没用到
+//
+// 
+//
 // 获取kafka的topic信息
 //
 // 可能返回的错误码:
@@ -7549,6 +7743,10 @@ func (c *Client) DescribeKafkaTopicInfo(request *DescribeKafkaTopicInfoRequest) 
 }
 
 // DescribeKafkaTopicInfo
+// 没用到
+//
+// 
+//
 // 获取kafka的topic信息
 //
 // 可能返回的错误码:
@@ -12119,6 +12317,66 @@ func (c *Client) EditBaselineWithContext(ctx context.Context, request *EditBasel
     return
 }
 
+func NewFindAllFolderRequest() (request *FindAllFolderRequest) {
+    request = &FindAllFolderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "FindAllFolder")
+    
+    
+    return
+}
+
+func NewFindAllFolderResponse() (response *FindAllFolderResponse) {
+    response = &FindAllFolderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// FindAllFolder
+// 查找全部的文件夹
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) FindAllFolder(request *FindAllFolderRequest) (response *FindAllFolderResponse, err error) {
+    return c.FindAllFolderWithContext(context.Background(), request)
+}
+
+// FindAllFolder
+// 查找全部的文件夹
+//
+// 可能返回的错误码:
+//  AUTHFAILURE = "AuthFailure"
+//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
+//  RESOURCENOTFOUND = "ResourceNotFound"
+func (c *Client) FindAllFolderWithContext(ctx context.Context, request *FindAllFolderRequest) (response *FindAllFolderResponse, err error) {
+    if request == nil {
+        request = NewFindAllFolderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FindAllFolder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFindAllFolderResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewForceSucInstancesRequest() (request *ForceSucInstancesRequest) {
     request = &ForceSucInstancesRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -13357,6 +13615,54 @@ func (c *Client) ModifyDimensionWeightWithContext(ctx context.Context, request *
     request.SetContext(ctx)
     
     response = NewModifyDimensionWeightResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewModifyDsFolderRequest() (request *ModifyDsFolderRequest) {
+    request = &ModifyDsFolderRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "ModifyDsFolder")
+    
+    
+    return
+}
+
+func NewModifyDsFolderResponse() (response *ModifyDsFolderResponse) {
+    response = &ModifyDsFolderResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// ModifyDsFolder
+// 数据开发模块-文件夹更新
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyDsFolder(request *ModifyDsFolderRequest) (response *ModifyDsFolderResponse, err error) {
+    return c.ModifyDsFolderWithContext(context.Background(), request)
+}
+
+// ModifyDsFolder
+// 数据开发模块-文件夹更新
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) ModifyDsFolderWithContext(ctx context.Context, request *ModifyDsFolderRequest) (response *ModifyDsFolderResponse, err error) {
+    if request == nil {
+        request = NewModifyDsFolderRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("ModifyDsFolder require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewModifyDsFolderResponse()
     err = c.Send(request, response)
     return
 }
@@ -14681,6 +14987,102 @@ func (c *Client) RobAndLockIntegrationTaskWithContext(ctx context.Context, reque
     return
 }
 
+func NewRunForceSucScheduleInstancesRequest() (request *RunForceSucScheduleInstancesRequest) {
+    request = &RunForceSucScheduleInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "RunForceSucScheduleInstances")
+    
+    
+    return
+}
+
+func NewRunForceSucScheduleInstancesResponse() (response *RunForceSucScheduleInstancesResponse) {
+    response = &RunForceSucScheduleInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RunForceSucScheduleInstances
+// 实例强制成功
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RunForceSucScheduleInstances(request *RunForceSucScheduleInstancesRequest) (response *RunForceSucScheduleInstancesResponse, err error) {
+    return c.RunForceSucScheduleInstancesWithContext(context.Background(), request)
+}
+
+// RunForceSucScheduleInstances
+// 实例强制成功
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RunForceSucScheduleInstancesWithContext(ctx context.Context, request *RunForceSucScheduleInstancesRequest) (response *RunForceSucScheduleInstancesResponse, err error) {
+    if request == nil {
+        request = NewRunForceSucScheduleInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunForceSucScheduleInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRunForceSucScheduleInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRunRerunScheduleInstancesRequest() (request *RunRerunScheduleInstancesRequest) {
+    request = &RunRerunScheduleInstancesRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("wedata", APIVersion, "RunRerunScheduleInstances")
+    
+    
+    return
+}
+
+func NewRunRerunScheduleInstancesResponse() (response *RunRerunScheduleInstancesResponse) {
+    response = &RunRerunScheduleInstancesResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RunRerunScheduleInstances
+// 实例批量重跑
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RunRerunScheduleInstances(request *RunRerunScheduleInstancesRequest) (response *RunRerunScheduleInstancesResponse, err error) {
+    return c.RunRerunScheduleInstancesWithContext(context.Background(), request)
+}
+
+// RunRerunScheduleInstances
+// 实例批量重跑
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+func (c *Client) RunRerunScheduleInstancesWithContext(ctx context.Context, request *RunRerunScheduleInstancesRequest) (response *RunRerunScheduleInstancesResponse, err error) {
+    if request == nil {
+        request = NewRunRerunScheduleInstancesRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunRerunScheduleInstances require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRunRerunScheduleInstancesResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewRunTaskRequest() (request *RunTaskRequest) {
     request = &RunTaskRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -14706,7 +15108,6 @@ func NewRunTaskResponse() (response *RunTaskResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) RunTask(request *RunTaskRequest) (response *RunTaskResponse, err error) {
     return c.RunTaskWithContext(context.Background(), request)
 }
@@ -14718,7 +15119,6 @@ func (c *Client) RunTask(request *RunTaskRequest) (response *RunTaskResponse, er
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) RunTaskWithContext(ctx context.Context, request *RunTaskRequest) (response *RunTaskResponse, err error) {
     if request == nil {
         request = NewRunTaskRequest()

@@ -698,6 +698,8 @@ type TransmitOralProcessWithInitRequestParams struct {
 
 	// 音频存储模式，此参数已废弃，无需设置，设置与否都默认为0不存储；
 	// 注：有存储需求的用户建议自行存储至腾讯云COS[对象存储](https://cloud.tencent.com/product/cos)使用。
+	//
+	// Deprecated: StorageMode is deprecated.
 	StorageMode *int64 `json:"StorageMode,omitnil" name:"StorageMode"`
 
 	// 输出断句中间结果标识
@@ -727,6 +729,9 @@ type TransmitOralProcessWithInitRequestParams struct {
 
 	// 主题词和关键词
 	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
+
+	// 音频存储路径，支持通过子路径指定文件夹名称
+	COSBucketURL *string `json:"COSBucketURL,omitnil" name:"COSBucketURL"`
 }
 
 type TransmitOralProcessWithInitRequest struct {
@@ -825,6 +830,9 @@ type TransmitOralProcessWithInitRequest struct {
 
 	// 主题词和关键词
 	Keyword *string `json:"Keyword,omitnil" name:"Keyword"`
+
+	// 音频存储路径，支持通过子路径指定文件夹名称
+	COSBucketURL *string `json:"COSBucketURL,omitnil" name:"COSBucketURL"`
 }
 
 func (r *TransmitOralProcessWithInitRequest) ToJsonString() string {
@@ -857,6 +865,7 @@ func (r *TransmitOralProcessWithInitRequest) FromJsonString(s string) error {
 	delete(f, "IsQuery")
 	delete(f, "TextMode")
 	delete(f, "Keyword")
+	delete(f, "COSBucketURL")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "TransmitOralProcessWithInitRequest has unknown keys!", "")
 	}
@@ -881,6 +890,8 @@ type TransmitOralProcessWithInitResponseParams struct {
 	SessionId *string `json:"SessionId,omitnil" name:"SessionId"`
 
 	// 已废弃，不再保存语音音频文件下载地址
+	//
+	// Deprecated: AudioUrl is deprecated.
 	AudioUrl *string `json:"AudioUrl,omitnil" name:"AudioUrl"`
 
 	// 断句中间结果，中间结果是局部最优而非全局最优的结果，所以中间结果有可能和最终整体结果对应部分不一致；中间结果的输出便于客户端UI更新；待用户发音完全结束后，系统会给出一个综合所有句子的整体结果。

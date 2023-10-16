@@ -4841,6 +4841,91 @@ func (r *GetDeviceLocationHistoryResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type GetDeviceSumStatisticsRequestParams struct {
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 产品id列表，长度为0则拉取项目内全部产品
+	ProductIds []*string `json:"ProductIds,omitnil" name:"ProductIds"`
+}
+
+type GetDeviceSumStatisticsRequest struct {
+	*tchttp.BaseRequest
+	
+	// 项目id
+	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
+
+	// 产品id列表，长度为0则拉取项目内全部产品
+	ProductIds []*string `json:"ProductIds,omitnil" name:"ProductIds"`
+}
+
+func (r *GetDeviceSumStatisticsRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDeviceSumStatisticsRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "ProjectId")
+	delete(f, "ProductIds")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "GetDeviceSumStatisticsRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type GetDeviceSumStatisticsResponseParams struct {
+	// 激活设备总数
+	ActivationCount *int64 `json:"ActivationCount,omitnil" name:"ActivationCount"`
+
+	// 在线设备总数
+	OnlineCount *int64 `json:"OnlineCount,omitnil" name:"OnlineCount"`
+
+	// 前一天激活设备数
+	ActivationBeforeDay *int64 `json:"ActivationBeforeDay,omitnil" name:"ActivationBeforeDay"`
+
+	// 前一天活跃设备数
+	ActiveBeforeDay *int64 `json:"ActiveBeforeDay,omitnil" name:"ActiveBeforeDay"`
+
+	// 前一周激活设备数
+	ActivationWeekDayCount *int64 `json:"ActivationWeekDayCount,omitnil" name:"ActivationWeekDayCount"`
+
+	// 前一周活跃设备数
+	ActiveWeekDayCount *int64 `json:"ActiveWeekDayCount,omitnil" name:"ActiveWeekDayCount"`
+
+	// 上一周激活设备数
+	ActivationBeforeWeekDayCount *int64 `json:"ActivationBeforeWeekDayCount,omitnil" name:"ActivationBeforeWeekDayCount"`
+
+	// 上一周活跃设备数
+	ActiveBeforeWeekDayCount *int64 `json:"ActiveBeforeWeekDayCount,omitnil" name:"ActiveBeforeWeekDayCount"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type GetDeviceSumStatisticsResponse struct {
+	*tchttp.BaseResponse
+	Response *GetDeviceSumStatisticsResponseParams `json:"Response"`
+}
+
+func (r *GetDeviceSumStatisticsResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *GetDeviceSumStatisticsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type GetFamilyDeviceUserListRequestParams struct {
 	// 产品ID
 	ProductId *string `json:"ProductId,omitnil" name:"ProductId"`

@@ -32,6 +32,9 @@ const (
 	// 流程未找到关联的电子文件信息，请检查操作步骤，检查参数，并在修改后重试。
 	FAILEDOPERATION_FLOWHASNODOCUMENT = "FailedOperation.FlowHasNoDocument"
 
+	// 身份信息校验不通过，请确认后重试。
+	FAILEDOPERATION_IDCARDNUMBERCHECKFAILED = "FailedOperation.IdCardNumberCheckFailed"
+
 	// 当前无可用的许可
 	FAILEDOPERATION_LICENSENOQUOTA = "FailedOperation.LicenseNoQuota"
 

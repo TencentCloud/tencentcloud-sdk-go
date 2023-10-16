@@ -1440,9 +1440,9 @@ type DataDisk struct {
 	SnapshotId *string `json:"SnapshotId,omitnil" name:"SnapshotId"`
 
 	// 数据盘是加密。取值范围：
-	// <li>TRUE：加密
-	// <li>FALSE：不加密<br>
-	// 默认取值：FALSE<br>
+	// <li>true：加密
+	// <li>false：不加密<br>
+	// 默认取值：false<br>
 	// 该参数目前仅用于 `RunInstances` 接口。
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Encrypt *bool `json:"Encrypt,omitnil" name:"Encrypt"`
@@ -8875,7 +8875,7 @@ func (r *ResizeInstanceDisksResponse) FromJsonString(s string) error {
 }
 
 type RunAutomationServiceEnabled struct {
-	// 是否开启云自动化助手。取值范围：<br><li>TRUE：表示开启云自动化助手服务<br><li>FALSE：表示不开启云自动化助手服务<br><br>默认取值：FALSE。
+	// 是否开启云自动化助手。取值范围：<br><li>true：表示开启云自动化助手服务<br><li>false：表示不开启云自动化助手服务<br><br>默认取值：false。
 	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
 }
 
@@ -9140,7 +9140,8 @@ func (r *RunInstancesResponse) FromJsonString(s string) error {
 }
 
 type RunMonitorServiceEnabled struct {
-	// 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>TRUE：表示开启云监控服务<br><li>FALSE：表示不开启云监控服务<br><br>默认取值：TRUE。
+	// 是否开启[云监控](/document/product/248)服务。取值范围：<br><li>true：表示开启云监控服务<br><li>false：表示不开启云监控服务<br><br>默认取值：true。
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	Enabled *bool `json:"Enabled,omitnil" name:"Enabled"`
 }
 
@@ -9534,7 +9535,7 @@ type VirtualPrivateCloud struct {
 	// 私有网络子网ID，形如`subnet-xxx`。有效的私有网络子网ID可通过登录[控制台](https://console.cloud.tencent.com/vpc/subnet?rid=1)查询；也可以调用接口  [DescribeSubnets](/document/api/215/15784) ，从接口返回中的`unSubnetId`字段获取。若在创建子机时SubnetId与VpcId同时传入`DEFAULT`，则强制使用默认vpc网络。
 	SubnetId *string `json:"SubnetId,omitnil" name:"SubnetId"`
 
-	// 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<br><li>TRUE：表示用作公网网关<br><li>FALSE：表示不作为公网网关<br><br>默认取值：FALSE。
+	// 是否用作公网网关。公网网关只有在实例拥有公网IP以及处于私有网络下时才能正常使用。取值范围：<br><li>true：表示用作公网网关<br><li>false：表示不作为公网网关<br><br>默认取值：false。
 	AsVpcGateway *bool `json:"AsVpcGateway,omitnil" name:"AsVpcGateway"`
 
 	// 私有网络子网 IP 数组，在创建实例、修改实例vpc属性操作中可使用此参数。当前仅批量创建多台实例时支持传入相同子网的多个 IP。

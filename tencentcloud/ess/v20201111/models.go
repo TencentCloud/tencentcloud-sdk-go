@@ -736,6 +736,20 @@ type Component struct {
 
 	// 扩展参数：
 	// 为JSON格式。
+	// 不同类型的控件会有部分非通用参数
+	// 
+	// ComponentType为TEXT、MULTI_LINE_TEXT时，支持以下参数：
+	// 1 Font：目前只支持黑体、宋体
+	// 2 FontSize： 范围12-72
+	// 3 FontAlign： Left/Right/Center，左对齐/居中/右对齐
+	// 4 FontColor：字符串类型，格式为RGB颜色数字
+	// 参数样例：    "ComponentExtra": "{\"FontColor\":\"255,0,0\",\"FontSize\":12}"
+	// 
+	// TEXT/MULTI_LINE_TEXT控件可以指定
+	// 1 Font：目前只支持黑体、宋体
+	// 2 FontSize： 范围12-72
+	// 3 FontAlign： Left/Right/Center，左对齐/居中/右对齐
+	// 例如：{"FontSize":12}
 	// 
 	// ComponentType为FILL_IMAGE时，支持以下参数：
 	// NotMakeImageCenter：bool。是否设置图片居中。false：居中（默认）。 true: 不居中
@@ -758,11 +772,11 @@ type Component struct {
 	// 5 Gaps:： 字符串类型，仅在Format为“yyyy m d”时起作用，格式为用逗号分开的两个整数，例如”2,2”，两个数字分别是日期格式的前后两个空隙中的空格个数
 	// 如果extra参数为空，默认为”yyyy年m月d日”格式的居中日期
 	// 特别地，如果extra中Format字段为空或无法被识别，则extra参数会被当作默认值处理（Font，FontSize，Gaps和FontAlign都不会起效）
-	// 参数样例：    "ComponentExtra": "{\"Format\":“yyyy m d”,\"FontSize\":12,\"Gaps\":\"2,2\", \"FontAlign\":\"Right\"}"
+	// 参数样例： "ComponentExtra": "{"Format":“yyyy m d”,"FontSize":12,"Gaps":"2,2", "FontAlign":"Right"}"
 	// 
 	// ComponentType为SIGN_SEAL类型时，支持以下参数：
 	// 1.PageRanges：PageRange的数组，通过PageRanges属性设置该印章在PDF所有页面上盖章（适用于标书在所有页面盖章的情况）
-	// 参数样例："ComponentExtra":"{\"PageRanges\":[{\"BeginPage\":1,\"EndPage\":-1}]}"
+	// 参数样例： "ComponentExtra":"{"PageRange":[{"BeginPage":1,"EndPage":-1}]}"
 	ComponentExtra *string `json:"ComponentExtra,omitnil" name:"ComponentExtra"`
 
 	// 是否是表单域类型，默认false-不是
