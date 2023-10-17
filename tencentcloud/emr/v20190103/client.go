@@ -926,6 +926,7 @@ func NewDescribeInstancesResponse() (response *DescribeInstancesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBERESOURCETAGSFAILED = "FailedOperation.DescribeResourceTagsFailed"
 //  FAILEDOPERATION_GETCAMROLEFAILED = "FailedOperation.GetCamRoleFailed"
 //  FAILEDOPERATION_GETCAMSERVERFAILED = "FailedOperation.GetCamServerFailed"
 //  INTERNALERROR = "InternalError"
@@ -964,6 +965,7 @@ func (c *Client) DescribeInstances(request *DescribeInstancesRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_DESCRIBERESOURCETAGSFAILED = "FailedOperation.DescribeResourceTagsFailed"
 //  FAILEDOPERATION_GETCAMROLEFAILED = "FailedOperation.GetCamRoleFailed"
 //  FAILEDOPERATION_GETCAMSERVERFAILED = "FailedOperation.GetCamServerFailed"
 //  INTERNALERROR = "InternalError"
@@ -1708,6 +1710,7 @@ func NewInquiryPriceScaleOutInstanceResponse() (response *InquiryPriceScaleOutIn
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
 //  INVALIDPARAMETER_INVALIDCOUNTNUM = "InvalidParameter.InvalidCountNum"
+//  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
 //  INVALIDPARAMETER_INVALIDMODIFYSPEC = "InvalidParameter.InvalidModifySpec"
 //  INVALIDPARAMETER_INVALIDPAYMODE = "InvalidParameter.InvalidPaymode"
 //  INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"
@@ -1748,6 +1751,7 @@ func (c *Client) InquiryPriceScaleOutInstance(request *InquiryPriceScaleOutInsta
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDCORECOUNT = "InvalidParameter.InvalidCoreCount"
 //  INVALIDPARAMETER_INVALIDCOUNTNUM = "InvalidParameter.InvalidCountNum"
+//  INVALIDPARAMETER_INVALIDINSTANCETYPE = "InvalidParameter.InvalidInstanceType"
 //  INVALIDPARAMETER_INVALIDMODIFYSPEC = "InvalidParameter.InvalidModifySpec"
 //  INVALIDPARAMETER_INVALIDPAYMODE = "InvalidParameter.InvalidPaymode"
 //  INVALIDPARAMETER_INVALIDRESOURCESPEC = "InvalidParameter.InvalidResourceSpec"

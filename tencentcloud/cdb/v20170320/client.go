@@ -692,6 +692,7 @@ func NewCreateAuditLogFileResponse() (response *CreateAuditLogFileResponse) {
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INTERNALERROR_TRANSACTIONBEGINERROR = "InternalError.TransactionBeginError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
@@ -717,6 +718,7 @@ func (c *Client) CreateAuditLogFile(request *CreateAuditLogFileRequest) (respons
 //  INTERNALERROR_INTERNALHTTPSERVERERROR = "InternalError.InternalHttpServerError"
 //  INTERNALERROR_SERVERERROR = "InternalError.ServerError"
 //  INTERNALERROR_TRANSACTIONBEGINERROR = "InternalError.TransactionBeginError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDPARAMETERERROR = "InvalidParameter.InvalidParameterError"
 //  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
@@ -5030,6 +5032,7 @@ func NewDescribeParamTemplatesResponse() (response *DescribeParamTemplatesRespon
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) (response *DescribeParamTemplatesResponse, err error) {
     return c.DescribeParamTemplatesWithContext(context.Background(), request)
 }
@@ -5043,6 +5046,7 @@ func (c *Client) DescribeParamTemplates(request *DescribeParamTemplatesRequest) 
 //  INTERNALERROR_PARAMERROR = "InternalError.ParamError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE_DATACONVERTERROR = "InvalidParameterValue.DataConvertError"
 func (c *Client) DescribeParamTemplatesWithContext(ctx context.Context, request *DescribeParamTemplatesRequest) (response *DescribeParamTemplatesResponse, err error) {
     if request == nil {
         request = NewDescribeParamTemplatesRequest()
@@ -5781,6 +5785,7 @@ func NewDescribeTablesResponse() (response *DescribeTablesResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_EXESQLERROR = "InternalError.ExeSqlError"
+//  INTERNALERROR_JSONERROR = "InternalError.JSONError"
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -5797,6 +5802,7 @@ func (c *Client) DescribeTables(request *DescribeTablesRequest) (response *Descr
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
 //  INTERNALERROR_EXESQLERROR = "InternalError.ExeSqlError"
+//  INTERNALERROR_JSONERROR = "InternalError.JSONError"
 //  INTERNALERROR_NETWORKERROR = "InternalError.NetworkError"
 //  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
@@ -8596,6 +8602,7 @@ func NewReleaseIsolatedDBInstancesResponse() (response *ReleaseIsolatedDBInstanc
 //  FAILEDOPERATION_OPERATIONINCONFLICTERR = "FailedOperation.OperationInConflictErr"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"
@@ -8614,6 +8621,7 @@ func (c *Client) ReleaseIsolatedDBInstances(request *ReleaseIsolatedDBInstancesR
 //  FAILEDOPERATION_OPERATIONINCONFLICTERR = "FailedOperation.OperationInConflictErr"
 //  INTERNALERROR_DATABASEACCESSERROR = "InternalError.DatabaseAccessError"
 //  INTERNALERROR_HTTPERROR = "InternalError.HttpError"
+//  INTERNALERROR_UNKNOWNERROR = "InternalError.UnknownError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCENOTFOUND = "InvalidParameter.InstanceNotFound"
 //  OPERATIONDENIED = "OperationDenied"

@@ -99,6 +99,60 @@ func (c *Client) DescribeKBComponentWithContext(ctx context.Context, request *De
     return
 }
 
+func NewDescribeKBComponentVersionListRequest() (request *DescribeKBComponentVersionListRequest) {
+    request = &DescribeKBComponentVersionListRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bsca", APIVersion, "DescribeKBComponentVersionList")
+    
+    
+    return
+}
+
+func NewDescribeKBComponentVersionListResponse() (response *DescribeKBComponentVersionListResponse) {
+    response = &DescribeKBComponentVersionListResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeKBComponentVersionList
+// 查询特定组件的版本列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeKBComponentVersionList(request *DescribeKBComponentVersionListRequest) (response *DescribeKBComponentVersionListResponse, err error) {
+    return c.DescribeKBComponentVersionListWithContext(context.Background(), request)
+}
+
+// DescribeKBComponentVersionList
+// 查询特定组件的版本列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeKBComponentVersionListWithContext(ctx context.Context, request *DescribeKBComponentVersionListRequest) (response *DescribeKBComponentVersionListResponse, err error) {
+    if request == nil {
+        request = NewDescribeKBComponentVersionListRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeKBComponentVersionList require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeKBComponentVersionListResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeKBComponentVulnerabilityRequest() (request *DescribeKBComponentVulnerabilityRequest) {
     request = &DescribeKBComponentVulnerabilityRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -321,6 +375,60 @@ func (c *Client) MatchKBPURLListWithContext(ctx context.Context, request *MatchK
     request.SetContext(ctx)
     
     response = NewMatchKBPURLListResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewSearchKBComponentRequest() (request *SearchKBComponentRequest) {
+    request = &SearchKBComponentRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("bsca", APIVersion, "SearchKBComponent")
+    
+    
+    return
+}
+
+func NewSearchKBComponentResponse() (response *SearchKBComponentResponse) {
+    response = &SearchKBComponentResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// SearchKBComponent
+// 根据输入的组件名、组件类型搜索相应的组件，返回符合条件的组件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) SearchKBComponent(request *SearchKBComponentRequest) (response *SearchKBComponentResponse, err error) {
+    return c.SearchKBComponentWithContext(context.Background(), request)
+}
+
+// SearchKBComponent
+// 根据输入的组件名、组件类型搜索相应的组件，返回符合条件的组件列表
+//
+// 可能返回的错误码:
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) SearchKBComponentWithContext(ctx context.Context, request *SearchKBComponentRequest) (response *SearchKBComponentResponse, err error) {
+    if request == nil {
+        request = NewSearchKBComponentRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("SearchKBComponent require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewSearchKBComponentResponse()
     err = c.Send(request, response)
     return
 }

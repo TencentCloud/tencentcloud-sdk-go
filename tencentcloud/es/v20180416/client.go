@@ -1288,6 +1288,7 @@ func NewDescribeViewsResponse() (response *DescribeViewsResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
@@ -1302,6 +1303,7 @@ func (c *Client) DescribeViews(request *DescribeViewsRequest) (response *Describ
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDINSTANCEID = "InvalidParameter.InvalidInstanceId"
+//  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND_DBINFONOTFOUND = "ResourceNotFound.DBInfoNotFound"
 //  UNSUPPORTEDOPERATION_INSTANCETYPEERROR = "UnsupportedOperation.InstanceTypeError"
 //  UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = "UnsupportedOperation.StatusNotSupport"
@@ -1527,6 +1529,7 @@ func NewRestartInstanceResponse() (response *RestartInstanceResponse) {
 // 重启ES集群实例(用于系统版本更新等操作)
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"
@@ -1547,6 +1550,7 @@ func (c *Client) RestartInstance(request *RestartInstanceRequest) (response *Res
 // 重启ES集群实例(用于系统版本更新等操作)
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_ERRORCLUSTERSTATE = "FailedOperation.ErrorClusterState"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDAPPID = "InvalidParameter.InvalidAppId"
 //  INVALIDPARAMETER_INVALIDESVERSION = "InvalidParameter.InvalidEsVersion"

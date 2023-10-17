@@ -23,6 +23,9 @@ const (
 	// 操作失败。
 	FAILEDOPERATION_CHECKIFSUPPORTPODSTRETCH = "FailedOperation.CheckIfSupportPodStretch"
 
+	// 拉取资源标签失败
+	FAILEDOPERATION_DESCRIBERESOURCETAGSFAILED = "FailedOperation.DescribeResourceTagsFailed"
+
 	// 重复的订单，请检查emr控制台。
 	FAILEDOPERATION_DUPLICATEORDERNOTALLOWED = "FailedOperation.DuplicateOrderNotAllowed"
 

@@ -329,6 +329,8 @@ type AssignIpv6AddressesRequestParams struct {
 	SkipAllocateBandwidth *bool `json:"SkipAllocateBandwidth,omitnil" name:"SkipAllocateBandwidth"`
 
 	// 该字段没有使用（已过期）。
+	//
+	// Deprecated: Ipv6ISP is deprecated.
 	Ipv6ISP *string `json:"Ipv6ISP,omitnil" name:"Ipv6ISP"`
 }
 

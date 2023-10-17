@@ -20,8 +20,14 @@ const (
 	// 未找到此应用该api授权信息
 	AUTHFAILURE_APIAUTHORIZATIONNOTFOUND = "AuthFailure.ApiAuthorizationNotFound"
 
+	// 未找到该token信息
+	AUTHFAILURE_TOKENNOTFOUND = "AuthFailure.TokenNotFound"
+
 	// 内部错误。
 	INTERNALERROR = "InternalError"
+
+	// API网关内部错误
+	INTERNALERROR_APIGATEWAYINTERNALERROR = "InternalError.ApiGatewayInternalError"
 
 	// 该应用未关联该项目空间数据，无法获取该项目空间数据
 	INTERNALERROR_APPAPINOSPACEPERMISSION = "InternalError.AppApiNoSpacePermission"

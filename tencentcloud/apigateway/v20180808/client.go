@@ -1738,6 +1738,7 @@ func NewDeletePluginResponse() (response *DeletePluginResponse) {
 //
 // 可能返回的错误码:
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INTERNALERROR_RETURNABLEEXCEPTION = "InternalError.ReturnableException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
@@ -1752,6 +1753,7 @@ func (c *Client) DeletePlugin(request *DeletePluginRequest) (response *DeletePlu
 //
 // 可能返回的错误码:
 //  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
+//  INTERNALERROR_RETURNABLEEXCEPTION = "InternalError.ReturnableException"
 //  INVALIDPARAMETER_FORMATERROR = "InvalidParameter.FormatError"
 //  RESOURCENOTFOUND_INVALIDPLUGIN = "ResourceNotFound.InvalidPlugin"
 //  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
@@ -2856,6 +2858,7 @@ func NewDescribeApisStatusResponse() (response *DescribeApisStatusResponse) {
 //  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_REQUESTPOSTERROR = "UnsupportedOperation.RequestPostError"
 func (c *Client) DescribeApisStatus(request *DescribeApisStatusRequest) (response *DescribeApisStatusResponse, err error) {
@@ -2871,6 +2874,7 @@ func (c *Client) DescribeApisStatus(request *DescribeApisStatusRequest) (respons
 //  INVALIDPARAMETERVALUE_INVALIDFILTERNOTSUPPORTEDNAME = "InvalidParameterValue.InvalidFilterNotSupportedName"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
+//  UNAUTHORIZEDOPERATION_ACCESSRESOURCE = "UnauthorizedOperation.AccessResource"
 //  UNSUPPORTEDOPERATION_INVALIDACTION = "UnsupportedOperation.InvalidAction"
 //  UNSUPPORTEDOPERATION_REQUESTPOSTERROR = "UnsupportedOperation.RequestPostError"
 func (c *Client) DescribeApisStatusWithContext(ctx context.Context, request *DescribeApisStatusRequest) (response *DescribeApisStatusResponse, err error) {
@@ -3275,6 +3279,7 @@ func NewDescribeLogSearchResponse() (response *DescribeLogSearchResponse) {
 // 本接口DescribeLogSearch用于搜索日志
 //
 // 可能返回的错误码:
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_CLSSEARCHTIME = "UnsupportedOperation.ClsSearchTime"
@@ -3287,6 +3292,7 @@ func (c *Client) DescribeLogSearch(request *DescribeLogSearchRequest) (response 
 // 本接口DescribeLogSearch用于搜索日志
 //
 // 可能返回的错误码:
+//  INTERNALERROR_OSSEXCEPTION = "InternalError.OssException"
 //  INVALIDPARAMETERVALUE_INVALIDREGION = "InvalidParameterValue.InvalidRegion"
 //  RESOURCENOTFOUND_INVALIDSERVICE = "ResourceNotFound.InvalidService"
 //  UNSUPPORTEDOPERATION_CLSSEARCHTIME = "UnsupportedOperation.ClsSearchTime"

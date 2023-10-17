@@ -4293,6 +4293,7 @@ func NewModifyModelServicePartialConfigResponse() (response *ModifyModelServiceP
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyModelServicePartialConfig(request *ModifyModelServicePartialConfigRequest) (response *ModifyModelServicePartialConfigResponse, err error) {
     return c.ModifyModelServicePartialConfigWithContext(context.Background(), request)
@@ -4310,6 +4311,7 @@ func (c *Client) ModifyModelServicePartialConfig(request *ModifyModelServicePart
 //  LIMITEXCEEDED = "LimitExceeded"
 //  MISSINGPARAMETER = "MissingParameter"
 //  OPERATIONDENIED = "OperationDenied"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) ModifyModelServicePartialConfigWithContext(ctx context.Context, request *ModifyModelServicePartialConfigRequest) (response *ModifyModelServicePartialConfigResponse, err error) {
     if request == nil {

@@ -349,6 +349,10 @@ type AlarmPolicy struct {
 	// 策略标签
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	Tags []*Tag `json:"Tags,omitnil" name:"Tags"`
+
+	// 是否支持告警标签
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	IsSupportAlarmTag *int64 `json:"IsSupportAlarmTag,omitnil" name:"IsSupportAlarmTag"`
 }
 
 type AlarmPolicyCondition struct {

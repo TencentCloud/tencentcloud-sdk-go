@@ -3333,6 +3333,7 @@ func NewUpdateCertificateInstanceResponse() (response *UpdateCertificateInstance
 //  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
 //  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINSTANCEHUGELIMIT = "FailedOperation.CertificateHostResourceInstanceHugeLimit"
 //  FAILEDOPERATION_CERTIFICATEHOSTRESOURCETYPEINVALID = "FailedOperation.CertificateHostResourceTypeInvalid"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
 //  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
 //  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
 //  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
@@ -3341,6 +3342,7 @@ func NewUpdateCertificateInstanceResponse() (response *UpdateCertificateInstance
 //  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
 //  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
 //  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) UpdateCertificateInstance(request *UpdateCertificateInstanceRequest) (response *UpdateCertificateInstanceResponse, err error) {
     return c.UpdateCertificateInstanceWithContext(context.Background(), request)
@@ -3358,6 +3360,7 @@ func (c *Client) UpdateCertificateInstance(request *UpdateCertificateInstanceReq
 //  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINNERINTERRUPT = "FailedOperation.CertificateHostResourceInnerInterrupt"
 //  FAILEDOPERATION_CERTIFICATEHOSTRESOURCEINSTANCEHUGELIMIT = "FailedOperation.CertificateHostResourceInstanceHugeLimit"
 //  FAILEDOPERATION_CERTIFICATEHOSTRESOURCETYPEINVALID = "FailedOperation.CertificateHostResourceTypeInvalid"
+//  FAILEDOPERATION_CERTIFICATEINVALID = "FailedOperation.CertificateInvalid"
 //  FAILEDOPERATION_CERTIFICATENOTAVAILABLE = "FailedOperation.CertificateNotAvailable"
 //  FAILEDOPERATION_CERTIFICATENOTDEPLOYINSTANCE = "FailedOperation.CertificateNotDeployInstance"
 //  FAILEDOPERATION_CERTIFICATENOTFOUND = "FailedOperation.CertificateNotFound"
@@ -3366,6 +3369,7 @@ func (c *Client) UpdateCertificateInstance(request *UpdateCertificateInstanceReq
 //  FAILEDOPERATION_NOREALNAMEAUTH = "FailedOperation.NoRealNameAuth"
 //  FAILEDOPERATION_ROLENOTFOUNDAUTHORIZATION = "FailedOperation.RoleNotFoundAuthorization"
 //  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER_WITHDETAILREASON = "InvalidParameter.WithDetailReason"
 //  LIMITEXCEEDED_RATELIMITEXCEEDED = "LimitExceeded.RateLimitExceeded"
 func (c *Client) UpdateCertificateInstanceWithContext(ctx context.Context, request *UpdateCertificateInstanceRequest) (response *UpdateCertificateInstanceResponse, err error) {
     if request == nil {

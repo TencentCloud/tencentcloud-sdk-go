@@ -20,6 +20,9 @@ const (
 	// CAM签名/鉴权错误。
 	AUTHFAILURE = "AuthFailure"
 
+	// 当前实例未购买api安全套餐
+	AUTHFAILURE_ERRCODENOPURCHASED = "AuthFailure.ErrCodeNoPurchased"
+
 	// DryRun 操作，代表请求将会是成功的，只是多传了 DryRun 参数。
 	DRYRUNOPERATION = "DryRunOperation"
 

@@ -57,6 +57,8 @@ type ApproverComponentLimitType struct {
 
 type ApproverItem struct {
 	// 签署方唯一编号
+	// 
+	// 在动态签署人场景下，可以用此编号确定参与方
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SignId *string `json:"SignId,omitnil" name:"SignId"`
 
@@ -1188,50 +1190,92 @@ func (r *ChannelCreateFlowApproversResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type ChannelCreateFlowByFilesRequestParams struct {
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 均必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 签署流程名称，长度不超过200个字符
+	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
 
-	// 签署流程的描述，长度不超过1000个字符
+	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
 	FlowDescription *string `json:"FlowDescription,omitnil" name:"FlowDescription"`
 
-	// 签署流程签约方列表，最多不超过50个参与方
+	// 合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverinfo" target="_blank">FlowApproverInfo结构体</a>。
+	// 
+	// 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。
 	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil" name:"FlowApprovers"`
 
-	// 签署文件资源Id列表，目前仅支持单个文件
+	// 本合同流程需包含的PDF文件资源编号列表，通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">UploadFiles</a>接口获取PDF文件资源编号。
+	// 
+	// 注: `目前，此接口仅支持单个文件发起。`
 	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
 
-	// 签署文件中的发起方的填写控件，需要在发起的时候进行填充
+	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
+	// <ul><li>单行文本控件</li>
+	// <li>多行文本控件</li>
+	// <li>勾选框控件</li>
+	// <li>数字控件</li>
+	// <li>图片控件</li>
+	// <li>数据表格等填写控件</li></ul>
 	Components []*Component `json:"Components,omitnil" name:"Components"`
 
-	// 签署流程的签署截止时间。
-	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
-	// 不能早于当前时间
+	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
+	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
 	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
 
-	// 签署流程回调地址，长度不超过255个字符
-	// 如果不传递回调地址， 则默认是配置应用号时候使用的回调地址
+	// 执行结果的回调URL，长度不超过255个字符，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性。
+	// 腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。
+	// 回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_data_types" target="_blank">回调通知</a>模块。
+	// 
+	// 注:
+	// `如果不传递回调地址， 则默认是配置应用号时候使用的回调地址`
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
-	// 合同签署顺序类型
-	// true - 无序签,
-	// false - 顺序签，
-	// 默认为false，即有序签署。
-	// 有序签署时以传入FlowApprovers数组的顺序作为签署顺序
+	// 合同流程的签署顺序类型：
+	// <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
+	// <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
+	// 
+	// 注
+	// `有序签署时以传入FlowApprovers数组的顺序作为签署顺序`
 	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
 
-	// 签署流程的类型，长度不超过255个字符
+	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为255个字符，仅限中文、字母、数字和下划线组成。
 	FlowType *string `json:"FlowType,omitnil" name:"FlowType"`
 
-	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
+	// 您可以自定义腾讯电子签小程序合同列表页展示的合同内容模板，模板中支持以下变量：
+	// <ul><li>{合同名称}   </li>
+	// <li>{发起方企业} </li>
+	// <li>{发起方姓名} </li>
+	// <li>{签署方N企业}</li>
+	// <li>{签署方N姓名}</li></ul>
+	// 其中，N表示签署方的编号，从1开始，不能超过签署人的数量。
+	// 
+	// 例如，如果是腾讯公司张三发给李四名称为“租房合同”的合同，您可以将此字段设置为：`合同名称:{合同名称};发起方: {发起方企业}({发起方姓名});签署方:{签署方1姓名}`，则小程序中列表页展示此合同为以下样子
+	// 
+	// 合同名称：租房合同 
+	// 发起方：腾讯公司(张三) 
+	// 签署方：李四
+	// 
 	CustomShowMap *string `json:"CustomShowMap,omitnil" name:"CustomShowMap"`
 
-	// 业务信息，最大长度1000个字符。
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1000长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_types_contracts_sign" target="_blank">回调通知</a>模块。
 	CustomerData *string `json:"CustomerData,omitnil" name:"CustomerData"`
 
-	// 发起方企业的签署人进行签署操作是否需要企业内部审批。 若设置为true,审核结果需通过接口 ChannelCreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。  注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
+	// <ul><li> **false**：（默认）不需要审批，直接签署。</li>
+	// <li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
+	// 企业可以通过ChannelCreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
+	// <ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
+	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
+	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
 	NeedSignReview *bool `json:"NeedSignReview,omitnil" name:"NeedSignReview"`
 
 	// 签署人校验方式
@@ -1240,21 +1284,25 @@ type ChannelCreateFlowByFilesRequestParams struct {
 	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil" name:"ApproverVerifyType"`
 
-	// 标识是否允许发起后添加控件。
-	// 0为不允许
-	// 1为允许。
-	// 如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+	// 签署方签署控件（印章/签名等）的生成方式：
+	// <ul><li> **0**：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。</li>
+	// <li> **1**：签署方在签署时自行添加签署控件，可以拖动位置和控制数量。</li></ul>
+	// 
+	// 注:
+	// `发起后添加控件功能不支持添加签批控件`
 	SignBeanTag *int64 `json:"SignBeanTag,omitnil" name:"SignBeanTag"`
 
-	// 被抄送人信息列表
+	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
 	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
 
-	// 给关注人发送短信通知的类型，
-	// 0-合同发起时通知 
-	// 1-签署完成后通知
+	// 可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
+	// <ul><li> **0**：合同发起时通知（默认值）</li>
+	// <li> **1**：签署完成后通知</li></ul>
 	CcNotifyType *int64 `json:"CcNotifyType,omitnil" name:"CcNotifyType"`
 
-	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：处方单（医疗自动签）  </li></ul>
+	// 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
 	AutoSignScene *string `json:"AutoSignScene,omitnil" name:"AutoSignScene"`
 
 	// 操作者的信息，不用传
@@ -1266,50 +1314,92 @@ type ChannelCreateFlowByFilesRequestParams struct {
 type ChannelCreateFlowByFilesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 应用相关信息。 此接口Agent.ProxyOrganizationOpenId、Agent. ProxyOperator.OpenId、Agent.AppId 均必填。
+	// 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
+	// 
+	// 此接口下面信息必填。
+	// <ul>
+	// <li>渠道应用标识:  Agent.ProxyOrganizationOpenId</li>
+	// <li>第三方平台子客企业标识: Agent. ProxyOperator.OpenId</li>
+	// <li>第三方平台子客企业中的员工标识: Agent.AppId</li>
+	// </ul>
 	Agent *Agent `json:"Agent,omitnil" name:"Agent"`
 
-	// 签署流程名称，长度不超过200个字符
+	// 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
 	FlowName *string `json:"FlowName,omitnil" name:"FlowName"`
 
-	// 签署流程的描述，长度不超过1000个字符
+	// 合同流程描述信息(可自定义此描述)，最大长度1000个字符。
 	FlowDescription *string `json:"FlowDescription,omitnil" name:"FlowDescription"`
 
-	// 签署流程签约方列表，最多不超过50个参与方
+	// 合同流程的参与方列表, 最多可支持50个参与方，可在列表中指定企业B端签署方和个人C端签署方的联系和认证方式等信息，具体定义可以参考开发者中心的<a href="https://qian.tencent.com/developers/partnerApis/dataTypes/#flowapproverinfo" target="_blank">FlowApproverInfo结构体</a>。
+	// 
+	// 如果合同流程是有序签署，Approvers列表中参与人的顺序就是默认的签署顺序, 请确保列表中参与人的顺序符合实际签署顺序。
 	FlowApprovers []*FlowApproverInfo `json:"FlowApprovers,omitnil" name:"FlowApprovers"`
 
-	// 签署文件资源Id列表，目前仅支持单个文件
+	// 本合同流程需包含的PDF文件资源编号列表，通过<a href="https://qian.tencent.com/developers/partnerApis/files/UploadFiles" target="_blank">UploadFiles</a>接口获取PDF文件资源编号。
+	// 
+	// 注: `目前，此接口仅支持单个文件发起。`
 	FileIds []*string `json:"FileIds,omitnil" name:"FileIds"`
 
-	// 签署文件中的发起方的填写控件，需要在发起的时候进行填充
+	// 模板或者合同中的填写控件列表，列表中可支持下列多种填写控件，控件的详细定义参考开发者中心的Component结构体
+	// <ul><li>单行文本控件</li>
+	// <li>多行文本控件</li>
+	// <li>勾选框控件</li>
+	// <li>数字控件</li>
+	// <li>图片控件</li>
+	// <li>数据表格等填写控件</li></ul>
 	Components []*Component `json:"Components,omitnil" name:"Components"`
 
-	// 签署流程的签署截止时间。
-	// 值为unix时间戳,精确到秒,不传默认为当前时间一年后
-	// 不能早于当前时间
+	// 合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
+	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
 	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
 
-	// 签署流程回调地址，长度不超过255个字符
-	// 如果不传递回调地址， 则默认是配置应用号时候使用的回调地址
+	// 执行结果的回调URL，长度不超过255个字符，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性。
+	// 腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。
+	// 回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_data_types" target="_blank">回调通知</a>模块。
+	// 
+	// 注:
+	// `如果不传递回调地址， 则默认是配置应用号时候使用的回调地址`
 	CallbackUrl *string `json:"CallbackUrl,omitnil" name:"CallbackUrl"`
 
-	// 合同签署顺序类型
-	// true - 无序签,
-	// false - 顺序签，
-	// 默认为false，即有序签署。
-	// 有序签署时以传入FlowApprovers数组的顺序作为签署顺序
+	// 合同流程的签署顺序类型：
+	// <ul><li> **false**：(默认)有序签署, 本合同多个参与人需要依次签署 </li>
+	// <li> **true**：无序签署, 本合同多个参与人没有先后签署限制</li></ul>
+	// 
+	// 注
+	// `有序签署时以传入FlowApprovers数组的顺序作为签署顺序`
 	Unordered *bool `json:"Unordered,omitnil" name:"Unordered"`
 
-	// 签署流程的类型，长度不超过255个字符
+	// 合同流程的类别分类（可自定义名称，如销售合同/入职合同等），最大长度为255个字符，仅限中文、字母、数字和下划线组成。
 	FlowType *string `json:"FlowType,omitnil" name:"FlowType"`
 
-	// 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
+	// 您可以自定义腾讯电子签小程序合同列表页展示的合同内容模板，模板中支持以下变量：
+	// <ul><li>{合同名称}   </li>
+	// <li>{发起方企业} </li>
+	// <li>{发起方姓名} </li>
+	// <li>{签署方N企业}</li>
+	// <li>{签署方N姓名}</li></ul>
+	// 其中，N表示签署方的编号，从1开始，不能超过签署人的数量。
+	// 
+	// 例如，如果是腾讯公司张三发给李四名称为“租房合同”的合同，您可以将此字段设置为：`合同名称:{合同名称};发起方: {发起方企业}({发起方姓名});签署方:{签署方1姓名}`，则小程序中列表页展示此合同为以下样子
+	// 
+	// 合同名称：租房合同 
+	// 发起方：腾讯公司(张三) 
+	// 签署方：李四
+	// 
 	CustomShowMap *string `json:"CustomShowMap,omitnil" name:"CustomShowMap"`
 
-	// 业务信息，最大长度1000个字符。
+	// 调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1000长度。
+	// 
+	// 在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_types_contracts_sign" target="_blank">回调通知</a>模块。
 	CustomerData *string `json:"CustomerData,omitnil" name:"CustomerData"`
 
-	// 发起方企业的签署人进行签署操作是否需要企业内部审批。 若设置为true,审核结果需通过接口 ChannelCreateFlowSignReview 通知电子签，审核通过后，发起方企业签署人方可进行签署操作，否则会阻塞其签署操作。  注：企业可以通过此功能与企业内部的审批流程进行关联，支持手动、静默签署合同。
+	// 发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：
+	// <ul><li> **false**：（默认）不需要审批，直接签署。</li>
+	// <li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>
+	// 企业可以通过ChannelCreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果
+	// <ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li>
+	// <li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>
+	// 注：`此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同`
 	NeedSignReview *bool `json:"NeedSignReview,omitnil" name:"NeedSignReview"`
 
 	// 签署人校验方式
@@ -1318,21 +1408,25 @@ type ChannelCreateFlowByFilesRequest struct {
 	// 参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
 	ApproverVerifyType *string `json:"ApproverVerifyType,omitnil" name:"ApproverVerifyType"`
 
-	// 标识是否允许发起后添加控件。
-	// 0为不允许
-	// 1为允许。
-	// 如果为1，创建的时候不能有签署控件，只能创建后添加。注意发起后添加控件功能不支持添加骑缝章和签批控件
+	// 签署方签署控件（印章/签名等）的生成方式：
+	// <ul><li> **0**：在合同流程发起时，由发起人指定签署方的签署控件的位置和数量。</li>
+	// <li> **1**：签署方在签署时自行添加签署控件，可以拖动位置和控制数量。</li></ul>
+	// 
+	// 注:
+	// `发起后添加控件功能不支持添加签批控件`
 	SignBeanTag *int64 `json:"SignBeanTag,omitnil" name:"SignBeanTag"`
 
-	// 被抄送人信息列表
+	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
 	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
 
-	// 给关注人发送短信通知的类型，
-	// 0-合同发起时通知 
-	// 1-签署完成后通知
+	// 可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
+	// <ul><li> **0**：合同发起时通知（默认值）</li>
+	// <li> **1**：签署完成后通知</li></ul>
 	CcNotifyType *int64 `json:"CcNotifyType,omitnil" name:"CcNotifyType"`
 
-	// 个人自动签场景。发起自动签署时，需设置对应自动签署场景，目前仅支持场景：处方单-E_PRESCRIPTION_AUTO_SIGN
+	// 个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：
+	// <ul><li> **E_PRESCRIPTION_AUTO_SIGN**：处方单（医疗自动签）  </li></ul>
+	// 注: `个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。`
 	AutoSignScene *string `json:"AutoSignScene,omitnil" name:"AutoSignScene"`
 
 	// 操作者的信息，不用传
@@ -4370,13 +4464,7 @@ type Component struct {
 	// 2 FontSize： 范围12-72
 	// 3 FontAlign： Left/Right/Center，左对齐/居中/右对齐
 	// 4 FontColor：字符串类型，格式为RGB颜色数字
-	// 参数样例：    "ComponentExtra": "{\"FontColor\":\"255,0,0\",\"FontSize\":12}"
-	// 
-	// TEXT/MULTI_LINE_TEXT控件可以指定
-	// 1 Font：目前只支持黑体、宋体
-	// 2 FontSize： 范围12-72
-	// 3 FontAlign： Left/Right/Center，左对齐/居中/右对齐
-	// 例如：{"FontSize":12}
+	// 参数样例：{\"FontColor\":\"255,0,0\",\"FontSize\":12}
 	// 
 	// ComponentType为FILL_IMAGE时，支持以下参数：
 	// NotMakeImageCenter：bool。是否设置图片居中。false：居中（默认）。 true: 不居中
@@ -6189,53 +6277,68 @@ type FlowApproverDetail struct {
 }
 
 type FlowApproverInfo struct {
-	// 签署人姓名，最大长度50个字符
+	// 签署方经办人的姓名。
+	// 经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
 	Name *string `json:"Name,omitnil" name:"Name"`
 
-	// 签署人的证件类型
-	// 1.ID_CARD 居民身份证
-	// 2.HONGKONG_MACAO_AND_TAIWAN 港澳台居民居住证
-	// 3.HONGKONG_AND_MACAO 港澳居民来往内地通行证
-	// 4.OTHER_CARD_TYPE 其他（需要使用该类型请先联系运营经理）
+	// 签署方经办人的证件类型，支持以下类型
+	// <ul><li>ID_CARD : 居民身份证  (默认值)</li>
+	// <li>HONGKONG_AND_MACAO : 港澳居民来往内地通行证</li>
+	// <li>HONGKONG_MACAO_AND_TAIWAN : 港澳台居民居住证(格式同居民身份证)</li>
+	// <li>OTHER_CARD_TYPE : 其他证件</li></ul>
+	// 
+	// 注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
 	IdCardType *string `json:"IdCardType,omitnil" name:"IdCardType"`
 
-	// 签署人证件号（长度不超过18位）
+	// 签署方经办人的证件号码，应符合以下规则
+	// <ul><li>居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
+	// <li>港澳居民来往内地通行证号码应为9位字符串，第1位为“C”，第2位为英文字母（但“I”、“O”除外），后7位为阿拉伯数字。</li>
+	// <li>港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
 	IdCardNumber *string `json:"IdCardNumber,omitnil" name:"IdCardNumber"`
 
-	// 签署人手机号，脱敏显示。大陆手机号为11位，暂不支持海外手机号。
+	// 签署方经办人手机号码， 支持国内手机号11位数字(无需加+86前缀或其他字符)， 不支持海外手机号。
+	// 请确认手机号所有方为此合同签署方。
 	Mobile *string `json:"Mobile,omitnil" name:"Mobile"`
 
-	// 企业签署方工商营业执照上的企业名称，签署方为非发起方企业场景下必传，最大长度64个字符；
+	// 组织机构名称。
+	// 请确认该名称与企业营业执照中注册的名称一致。
+	// 如果名称中包含英文括号()，请使用中文括号（）代替。
 	OrganizationName *string `json:"OrganizationName,omitnil" name:"OrganizationName"`
 
-	// 指定签署人非第三方平台子客企业下员工，在ApproverType为ORGANIZATION时指定。
-	// 默认为false，即签署人位于同一个第三方平台应用号下；默认为false，即签署人位于同一个第三方应用号下；
+	// 指定签署人非第三方平台子客企业下员工还是SaaS平台企业，在ApproverType为ORGANIZATION时指定。
+	// <ul>
+	// <li>false: 默认值，第三方平台子客企业下员工</li>
+	// <li>true: SaaS平台企业下的员工</li>
+	// </ul>
 	NotChannelOrganization *bool `json:"NotChannelOrganization,omitnil" name:"NotChannelOrganization"`
 
-	// 用户侧第三方id，最大长度64个字符
+	// 第三方平台子客企业员工的唯一标识，长度不能超过64，只能由字母和数字组成
+	// 
 	// 当签署方为同一第三方平台下的员工时，该字段若不指定，则发起【待领取】的流程
 	OpenId *string `json:"OpenId,omitnil" name:"OpenId"`
 
-	// 企业签署方在同一第三方平台应用下的其他合作企业OpenId，签署方为非发起方企业场景下必传，最大长度64个字符；
+	// 同应用下第三方平台子客企业的唯一标识，定义Agent中的ProxyOrganizationOpenId一样，签署方为非发起方企业场景下必传，最大长度64个字符
 	OrganizationOpenId *string `json:"OrganizationOpenId,omitnil" name:"OrganizationOpenId"`
 
-	// 签署人类型
-	// PERSON-个人/自然人；
-	// PERSON_AUTO_SIGN-个人自动签署，适用于个人自动签场景
-	// 注: 个人自动签场景为白名单功能, 使用前请联系对接的客户经理沟通。
-	// ORGANIZATION-企业（企业签署方或模板发起时的企业静默签）；
-	// ENTERPRISESERVER-企业自动签（他方企业自动签署或文件发起时的本方企业自动签）
+	// 在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:
+	// <ul><li> **PERSON** :个人/自然人</li>
+	// <li> **PERSON_AUTO_SIGN** :个人/自然人自动签署，适用于个人自动签场景</li>
+	// <li> **ORGANIZATION** :企业/企业员工（企业签署方或模板发起时的企业静默签）</li>
+	// <li> **ENTERPRISESERVER** :企业/企业员自动签（他方企业自动签署或文件发起时的本方企业自动签）</li></ul>
 	// 
-	// 若要实现他方企业（同一应用下）自动签，需要满足3个条件：
-	// 条件1：ApproverType 设置为ENTERPRISESERVER
-	// 条件2：子客之间完成授权
-	// 条件3：联系对接的客户经理沟通
+	// 注:  
+	// `1. 个人自动签场景(PERSON_AUTO_SIGN)为白名单功能, 使用前请联系对接的客户经理沟通。`
+	// `2. 若要实现他方企业（同一应用下）自动签，需要满足3个条件：`
+	// <ul><li>条件1：ApproverType 设置为ENTERPRISESERVER</li>
+	// <li>条件2：子客之间完成授权</li>
+	// <li>条件3：联系对接的客户经理沟通如何使用</li></ul>
 	ApproverType *string `json:"ApproverType,omitnil" name:"ApproverType"`
 
 	// 签署流程签署人在模板中对应的签署人Id；在非单方签署、以及非B2C签署的场景下必传，用于指定当前签署方在签署流程中的位置；
 	RecipientId *string `json:"RecipientId,omitnil" name:"RecipientId"`
 
-	// 签署截止时间戳，默认一年
+	// 本签署人在此合同流程的签署截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为合同流程创建后的365天时截止。
+	// 如果在签署截止时间前未完成签署，则合同状态会变为已过期，导致合同作废。
 	Deadline *int64 `json:"Deadline,omitnil" name:"Deadline"`
 
 	// 签署完回调url，最大长度1000个字符
@@ -6253,13 +6356,21 @@ type FlowApproverInfo struct {
 	// 	SYSTEM_ESIGN -- 系统签名（该类型可以在用户签署时根据用户姓名一键生成一个签名来进行签署）
 	ComponentLimitType []*string `json:"ComponentLimitType,omitnil" name:"ComponentLimitType"`
 
-	// 合同的强制预览时间：3~300s，未指定则按合同页数计算
+	// 签署方在签署合同之前，需要强制阅读合同的时长，可指定为3秒至300秒之间的任意值。
+	// 
+	// 若未指定阅读时间，则会按照合同页数大小计算阅读时间，计算规则如下：
+	// <ul>
+	// <li>合同页数少于等于2页，阅读时间为3秒；</li>
+	// <li>合同页数为3到5页，阅读时间为5秒；</li>
+	// <li>合同页数大于等于6页，阅读时间为10秒。</li>
+	// </ul>
 	PreReadTime *int64 `json:"PreReadTime,omitnil" name:"PreReadTime"`
 
 	// 签署完前端跳转的url，此字段的用法场景请联系客户经理确认
 	JumpUrl *string `json:"JumpUrl,omitnil" name:"JumpUrl"`
 
-	// 签署人个性化能力值
+	// 可以控制签署方在签署合同时能否进行某些操作，例如拒签、转交他人等。
+	// 详细操作可以参考开发者中心的ApproverOption结构体。
 	ApproverOption *ApproverOption `json:"ApproverOption,omitnil" name:"ApproverOption"`
 
 	// 当前签署方进行签署操作是否需要企业内部审批，true 则为需要
@@ -6279,8 +6390,11 @@ type FlowApproverInfo struct {
 	// - 创建签署链接时，可以通过查询详情接口获得签署人的SignId，然后可传入此值为该签署人创建签署链接，无需再传姓名、手机号、证件号等其他信息
 	SignId *string `json:"SignId,omitnil" name:"SignId"`
 
-	// SMS: 短信(需确保“电子签短信通知签署方”功能是开启状态才能生效); NONE: 不发信息
-	// 默认为SMS(签署方为子客时该字段不生效)
+	// 通知签署方经办人的方式, 有以下途径:
+	// <ul><li> **SMS** :(默认)短信</li>
+	// <li> **NONE** : 不通知</li></ul>
+	// 
+	// 注: `签署方为第三方子客企业时会被置为NONE,   不会发短信通知`
 	NotifyType *string `json:"NotifyType,omitnil" name:"NotifyType"`
 
 	// [通过文件创建签署流程](https://qian.tencent.com/developers/partnerApis/startFlows/ChannelCreateFlowByFiles)时,如果设置了外层参数SignBeanTag=1(允许签署过程中添加签署控件),则可通过此参数明确规定合同所使用的签署控件类型（骑缝章、普通章法人章等）和具体的印章（印章ID）或签名方式。
@@ -6288,7 +6402,7 @@ type FlowApproverInfo struct {
 	// 注：`限制印章控件或骑缝章控件情况下,仅本企业签署方可以指定具体印章（通过传递ComponentValue,支持多个），他方企业或个人只支持限制控件类型。`
 	AddSignComponentsLimits []*ComponentLimit `json:"AddSignComponentsLimits,omitnil" name:"AddSignComponentsLimits"`
 
-	// 自定义签署方角色名称
+	// 自定义签署人角色名，如收款人、开具人、见证人等
 	ApproverRoleName *string `json:"ApproverRoleName,omitnil" name:"ApproverRoleName"`
 }
 

@@ -2466,6 +2466,57 @@ type ExpertModeConfiguration struct {
 	SlotSharingGroups []*SlotSharingGroup `json:"SlotSharingGroups,omitnil" name:"SlotSharingGroups"`
 }
 
+// Predefined struct for user
+type FetchSqlGatewayStatementResultRequestParams struct {
+
+}
+
+type FetchSqlGatewayStatementResultRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *FetchSqlGatewayStatementResultRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchSqlGatewayStatementResultRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "FetchSqlGatewayStatementResultRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type FetchSqlGatewayStatementResultResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type FetchSqlGatewayStatementResultResponse struct {
+	*tchttp.BaseResponse
+	Response *FetchSqlGatewayStatementResultResponseParams `json:"Response"`
+}
+
+func (r *FetchSqlGatewayStatementResultResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *FetchSqlGatewayStatementResultResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
 type Filter struct {
 	// 要过滤的字段
 	Name *string `json:"Name,omitnil" name:"Name"`
@@ -3224,6 +3275,57 @@ func (r *RunJobsResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *RunJobsResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunSqlGatewayStatementRequestParams struct {
+
+}
+
+type RunSqlGatewayStatementRequest struct {
+	*tchttp.BaseRequest
+	
+}
+
+func (r *RunSqlGatewayStatementRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunSqlGatewayStatementRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "RunSqlGatewayStatementRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type RunSqlGatewayStatementResponseParams struct {
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type RunSqlGatewayStatementResponse struct {
+	*tchttp.BaseResponse
+	Response *RunSqlGatewayStatementResponseParams `json:"Response"`
+}
+
+func (r *RunSqlGatewayStatementResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *RunSqlGatewayStatementResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 

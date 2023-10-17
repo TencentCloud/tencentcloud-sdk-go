@@ -10953,16 +10953,7 @@ func NewDescribeTaskByCycleResponse() (response *DescribeTaskByCycleResponse) {
 // 根据周期类型 查询所有任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTaskByCycle(request *DescribeTaskByCycleRequest) (response *DescribeTaskByCycleResponse, err error) {
     return c.DescribeTaskByCycleWithContext(context.Background(), request)
 }
@@ -10971,16 +10962,7 @@ func (c *Client) DescribeTaskByCycle(request *DescribeTaskByCycleRequest) (respo
 // 根据周期类型 查询所有任务
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  MISSINGPARAMETER = "MissingParameter"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeTaskByCycleWithContext(ctx context.Context, request *DescribeTaskByCycleRequest) (response *DescribeTaskByCycleResponse, err error) {
     if request == nil {
         request = NewDescribeTaskByCycleRequest()
@@ -12339,13 +12321,7 @@ func NewFindAllFolderResponse() (response *FindAllFolderResponse) {
 // 查找全部的文件夹
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) FindAllFolder(request *FindAllFolderRequest) (response *FindAllFolderResponse, err error) {
     return c.FindAllFolderWithContext(context.Background(), request)
 }
@@ -12354,13 +12330,7 @@ func (c *Client) FindAllFolder(request *FindAllFolderRequest) (response *FindAll
 // 查找全部的文件夹
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) FindAllFolderWithContext(ctx context.Context, request *FindAllFolderRequest) (response *FindAllFolderResponse, err error) {
     if request == nil {
         request = NewFindAllFolderRequest()
@@ -12401,13 +12371,7 @@ func NewForceSucInstancesResponse() (response *ForceSucInstancesResponse) {
 // 实例批量置成功
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ForceSucInstances(request *ForceSucInstancesRequest) (response *ForceSucInstancesResponse, err error) {
     return c.ForceSucInstancesWithContext(context.Background(), request)
 }
@@ -12418,13 +12382,7 @@ func (c *Client) ForceSucInstances(request *ForceSucInstancesRequest) (response 
 // 实例批量置成功
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  AUTHFAILURE_SIGNATUREEXPIRE = "AuthFailure.SignatureExpire"
 //  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  OPERATIONDENIED_USERNOTINWHITELISTERROR = "OperationDenied.UserNotInWhitelistError"
-//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) ForceSucInstancesWithContext(ctx context.Context, request *ForceSucInstancesRequest) (response *ForceSucInstancesResponse, err error) {
     if request == nil {
         request = NewForceSucInstancesRequest()

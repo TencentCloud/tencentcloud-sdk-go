@@ -95,6 +95,24 @@ type BoundK8SInfo struct {
 	// 服务同步模式，all为全量同步，demand为按需同步
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SyncMode *string `json:"SyncMode,omitnil" name:"SyncMode"`
+
+	// 绑定的kubernetes集群所在地域
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	BindRegion *string `json:"BindRegion,omitnil" name:"BindRegion"`
+}
+
+type CLBMultiRegion struct {
+	// 是否启用多可用区
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLBMultiZoneFlag *bool `json:"CLBMultiZoneFlag,omitnil" name:"CLBMultiZoneFlag"`
+
+	// 主可用区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLBMasterZone *string `json:"CLBMasterZone,omitnil" name:"CLBMasterZone"`
+
+	// 备可用区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLBSlaveZone *string `json:"CLBSlaveZone,omitnil" name:"CLBSlaveZone"`
 }
 
 type CertificateInfo struct {
@@ -3261,13 +3279,29 @@ type DescribeInstanceRegionInfo struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	SpecId *string `json:"SpecId,omitnil" name:"SpecId"`
 
-	// 内网的网络信息
+	// 客户端内网的网络信息
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	IntranetVpcInfos []*VpcInfo `json:"IntranetVpcInfos,omitnil" name:"IntranetVpcInfos"`
+
+	// 控制台内网的网络信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ConsoleIntranetVpcInfos []*VpcInfo `json:"ConsoleIntranetVpcInfos,omitnil" name:"ConsoleIntranetVpcInfos"`
 
 	// 是否开公网
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableClientInternet *bool `json:"EnableClientInternet,omitnil" name:"EnableClientInternet"`
+
+	// 限流客户端内网的网络信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LimiterIntranetVpcInfos []*VpcInfo `json:"LimiterIntranetVpcInfos,omitnil" name:"LimiterIntranetVpcInfos"`
+
+	// 是否为主地域，仅在服务治理中心多地域有效
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	MainRegion *bool `json:"MainRegion,omitnil" name:"MainRegion"`
+
+	// 该地域所在的EKS集群
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EKSClusterID *string `json:"EKSClusterID,omitnil" name:"EKSClusterID"`
 }
 
 // Predefined struct for user
@@ -3652,6 +3686,10 @@ type DescribeSREInstanceAccessAddressResponseParams struct {
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	LimiterAddressInfos []*PolarisLimiterAddress `json:"LimiterAddressInfos,omitnil" name:"LimiterAddressInfos"`
 
+	// InternetAddress 的公网 CLB 多可用区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLBMultiRegion *CLBMultiRegion `json:"CLBMultiRegion,omitnil" name:"CLBMultiRegion"`
+
 	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
 	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
 }
@@ -3929,6 +3967,12 @@ type EngineRegionInfo struct {
 
 	// 集群网络信息
 	VpcInfos []*VpcInfo `json:"VpcInfos,omitnil" name:"VpcInfos"`
+
+	// 是否为主地域
+	MainRegion *bool `json:"MainRegion,omitnil" name:"MainRegion"`
+
+	// 引擎规格ID
+	SpecId *string `json:"SpecId,omitnil" name:"SpecId"`
 }
 
 type EnvAddressInfo struct {
@@ -3952,6 +3996,10 @@ type EnvAddressInfo struct {
 	// 客户端公网带宽
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	InternetBandWidth *int64 `json:"InternetBandWidth,omitnil" name:"InternetBandWidth"`
+
+	// 客户端公网CLB多可用区信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLBMultiRegion *CLBMultiRegion `json:"CLBMultiRegion,omitnil" name:"CLBMultiRegion"`
 }
 
 type EnvInfo struct {
@@ -5347,6 +5395,24 @@ type NetworkAccessControl struct {
 	CidrBlackList []*string `json:"CidrBlackList,omitnil" name:"CidrBlackList"`
 }
 
+type PolarisCLSTopicInfo struct {
+	// 日志集ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogSetId *string `json:"LogSetId,omitnil" name:"LogSetId"`
+
+	// 日志集名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LogSetName *string `json:"LogSetName,omitnil" name:"LogSetName"`
+
+	// 日志主题ID
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicId *string `json:"TopicId,omitnil" name:"TopicId"`
+
+	// 日志主题名称
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TopicName *string `json:"TopicName,omitnil" name:"TopicName"`
+}
+
 type PolarisLimiterAddress struct {
 	// VPC接入IP列表
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -5499,6 +5565,10 @@ type SREInstance struct {
 	// 引擎实例是否开启客户端内网访问地址
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	EnableClientIntranet *bool `json:"EnableClientIntranet,omitnil" name:"EnableClientIntranet"`
+
+	// 存储额外配置选项
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StorageOption []*StorageOption `json:"StorageOption,omitnil" name:"StorageOption"`
 }
 
 type ServiceGovernanceInfo struct {
@@ -5525,6 +5595,24 @@ type ServiceGovernanceInfo struct {
 
 	// 服务治理限流server引擎绑定的网络信息
 	LimiterVpcInfos []*VpcInfo `json:"LimiterVpcInfos,omitnil" name:"LimiterVpcInfos"`
+
+	// 引擎关联CLS日志主题信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CLSTopics []*PolarisCLSTopicInfo `json:"CLSTopics,omitnil" name:"CLSTopics"`
+}
+
+type StorageOption struct {
+	// 存储对象，分为snap和txn两种
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Name *string `json:"Name,omitnil" name:"Name"`
+
+	// 存储类型，分为三类CLOUD_PREMIUM/CLOUD_SSD/CLOUD_SSD_PLUS，分别对应高性能云硬盘、SSD云硬盘、增强型SSD云硬盘
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 存储容量，[50, 3200]的范围
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	Capacity *uint64 `json:"Capacity,omitnil" name:"Capacity"`
 }
 
 // Predefined struct for user

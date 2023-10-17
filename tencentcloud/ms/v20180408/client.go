@@ -64,7 +64,7 @@ func NewCancelEncryptTaskResponse() (response *CancelEncryptTaskResponse) {
 }
 
 // CancelEncryptTask
-// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，取消渠道合作加固中的任务。
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，取消渠道合作加固中的任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
@@ -80,7 +80,7 @@ func (c *Client) CancelEncryptTask(request *CancelEncryptTaskRequest) (response 
 }
 
 // CancelEncryptTask
-// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，取消渠道合作加固中的任务。
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，取消渠道合作加固中的任务
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_INVALIDAUTHORIZATION = "AuthFailure.InvalidAuthorization"
@@ -722,7 +722,7 @@ func NewDescribeEncryptInstancesResponse() (response *DescribeEncryptInstancesRe
 }
 
 // DescribeEncryptInstances
-// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于查询加固任务，入参中的条件过滤字段均为精准匹配。支持功能点：1. 多任务分页查询  2.根据任务Id唯一值查询单记录
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于查询加固任务，入参中的条件过滤字段均为精准匹配。支持功能点: 1. 多任务分页查询  2.根据任务Id唯一值查询单记录
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -737,7 +737,7 @@ func (c *Client) DescribeEncryptInstances(request *DescribeEncryptInstancesReque
 }
 
 // DescribeEncryptInstances
-// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于查询加固任务，入参中的条件过滤字段均为精准匹配。支持功能点：1. 多任务分页查询  2.根据任务Id唯一值查询单记录
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制，用于查询加固任务，入参中的条件过滤字段均为精准匹配。支持功能点: 1. 多任务分页查询  2.根据任务Id唯一值查询单记录
 //
 // 可能返回的错误码:
 //  AUTHFAILURE = "AuthFailure"
@@ -842,7 +842,7 @@ func NewDescribeOrderInstancesResponse() (response *DescribeOrderInstancesRespon
 }
 
 // DescribeOrderInstances
-// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。 接口返回的结果为：创建订单后，订单审批状态信息，以及与订单关联的资源状态等信息，入参中的条件过滤字段均为精准匹配。
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。 接口返回的结果为：创建订单后，订单审批状态信息，以及与订单关联的资源状态等信息，入参中的条件过滤字段均为精准匹配.
 //
 // 接口功能点：
 //
@@ -863,7 +863,7 @@ func (c *Client) DescribeOrderInstances(request *DescribeOrderInstancesRequest) 
 }
 
 // DescribeOrderInstances
-// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。 接口返回的结果为：创建订单后，订单审批状态信息，以及与订单关联的资源状态等信息，入参中的条件过滤字段均为精准匹配。
+// 该接口供渠道合作应用加固使用，接口调用有白名单用户限制。 接口返回的结果为：创建订单后，订单审批状态信息，以及与订单关联的资源状态等信息，入参中的条件过滤字段均为精准匹配.
 //
 // 接口功能点：
 //

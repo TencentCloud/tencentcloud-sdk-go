@@ -1159,6 +1159,7 @@ func NewCreateDisksResponse() (response *CreateDisksResponse) {
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_DATAOPERATIONFAILED = "FailedOperation.DataOperationFailed"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
 //  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INVALIDPARAMETER_DISKCONFIGNOTSUPPORTED = "InvalidParameter.DiskConfigNotSupported"
 //  INVALIDPARAMETER_PROJECTIDNOTEXIST = "InvalidParameter.ProjectIdNotExist"
@@ -1187,6 +1188,7 @@ func (c *Client) CreateDisks(request *CreateDisksRequest) (response *CreateDisks
 // 可能返回的错误码:
 //  AUTHFAILURE_UNAUTHORIZEDOPERATION = "AuthFailure.UnauthorizedOperation"
 //  FAILEDOPERATION_DATAOPERATIONFAILED = "FailedOperation.DataOperationFailed"
+//  FAILEDOPERATION_OPERATIONNOTALLOW = "FailedOperation.OperationNotAllow"
 //  INTERNALERROR_COMPONENTERROR = "InternalError.ComponentError"
 //  INVALIDPARAMETER_DISKCONFIGNOTSUPPORTED = "InvalidParameter.DiskConfigNotSupported"
 //  INVALIDPARAMETER_PROJECTIDNOTEXIST = "InvalidParameter.ProjectIdNotExist"

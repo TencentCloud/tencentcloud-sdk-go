@@ -748,6 +748,7 @@ func NewDeleteRuleResponse() (response *DeleteRuleResponse) {
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
 //  RESOURCEINUSE_RULE = "ResourceInUse.Rule"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 //  RESOURCENOTFOUND_TAG = "ResourceNotFound.Tag"
@@ -764,6 +765,7 @@ func (c *Client) DeleteRule(request *DeleteRuleRequest) (response *DeleteRuleRes
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
 //  RESOURCEINUSE_RULE = "ResourceInUse.Rule"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_EVENTBUS = "ResourceNotFound.EventBus"
 //  RESOURCENOTFOUND_RULE = "ResourceNotFound.Rule"
 //  RESOURCENOTFOUND_TAG = "ResourceNotFound.Tag"
@@ -1150,6 +1152,7 @@ func NewGetTransformationResponse() (response *GetTransformationResponse) {
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
 //  INVALIDPARAMETERVALUE_TRANSFORMATIONID = "InvalidParameterValue.TransformationID"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TRANSFORMATION = "ResourceNotFound.Transformation"
 func (c *Client) GetTransformation(request *GetTransformationRequest) (response *GetTransformationResponse, err error) {
     return c.GetTransformationWithContext(context.Background(), request)
@@ -1162,6 +1165,7 @@ func (c *Client) GetTransformation(request *GetTransformationRequest) (response 
 //  INVALIDPARAMETERVALUE_EVENTBUSID = "InvalidParameterValue.EventBusId"
 //  INVALIDPARAMETERVALUE_RULEID = "InvalidParameterValue.RuleId"
 //  INVALIDPARAMETERVALUE_TRANSFORMATIONID = "InvalidParameterValue.TransformationID"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  RESOURCENOTFOUND_TRANSFORMATION = "ResourceNotFound.Transformation"
 func (c *Client) GetTransformationWithContext(ctx context.Context, request *GetTransformationRequest) (response *GetTransformationResponse, err error) {
     if request == nil {

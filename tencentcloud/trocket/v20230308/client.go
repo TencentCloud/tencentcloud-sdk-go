@@ -69,6 +69,7 @@ func NewCreateConsumerGroupResponse() (response *CreateConsumerGroupResponse) {
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
 func (c *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (response *CreateConsumerGroupResponse, err error) {
     return c.CreateConsumerGroupWithContext(context.Background(), request)
@@ -80,6 +81,7 @@ func (c *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (respo
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  UNSUPPORTEDOPERATION_RESOURCEALREADYEXISTS = "UnsupportedOperation.ResourceAlreadyExists"
 func (c *Client) CreateConsumerGroupWithContext(ctx context.Context, request *CreateConsumerGroupRequest) (response *CreateConsumerGroupResponse, err error) {
     if request == nil {
@@ -384,6 +386,7 @@ func NewDeleteRoleResponse() (response *DeleteRoleResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) DeleteRole(request *DeleteRoleRequest) (response *DeleteRoleResponse, err error) {
     return c.DeleteRoleWithContext(context.Background(), request)
@@ -394,6 +397,7 @@ func (c *Client) DeleteRole(request *DeleteRoleRequest) (response *DeleteRoleRes
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  RESOURCENOTFOUND_INSTANCE = "ResourceNotFound.Instance"
 //  RESOURCENOTFOUND_ROLE = "ResourceNotFound.Role"
 func (c *Client) DeleteRoleWithContext(ctx context.Context, request *DeleteRoleRequest) (response *DeleteRoleResponse, err error) {
     if request == nil {

@@ -5361,6 +5361,7 @@ func NewModifyBaseBackupExpireTimeResponse() (response *ModifyBaseBackupExpireTi
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) ModifyBaseBackupExpireTime(request *ModifyBaseBackupExpireTimeRequest) (response *ModifyBaseBackupExpireTimeResponse, err error) {
     return c.ModifyBaseBackupExpireTimeWithContext(context.Background(), request)
@@ -5372,6 +5373,7 @@ func (c *Client) ModifyBaseBackupExpireTime(request *ModifyBaseBackupExpireTimeR
 // 可能返回的错误码:
 //  FAILEDOPERATION_FAILEDOPERATIONERROR = "FailedOperation.FailedOperationError"
 //  INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = "InvalidParameterValue.InvalidParameterValueError"
+//  OPERATIONDENIED_CAMDENIEDERROR = "OperationDenied.CamDeniedError"
 //  RESOURCENOTFOUND_INSTANCENOTFOUNDERROR = "ResourceNotFound.InstanceNotFoundError"
 func (c *Client) ModifyBaseBackupExpireTimeWithContext(ctx context.Context, request *ModifyBaseBackupExpireTimeRequest) (response *ModifyBaseBackupExpireTimeResponse, err error) {
     if request == nil {

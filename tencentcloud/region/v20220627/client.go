@@ -110,6 +110,7 @@ func NewDescribeRegionsResponse() (response *DescribeRegionsResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
     return c.DescribeRegionsWithContext(context.Background(), request)
@@ -120,6 +121,7 @@ func (c *Client) DescribeRegions(request *DescribeRegionsRequest) (response *Des
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
 func (c *Client) DescribeRegionsWithContext(ctx context.Context, request *DescribeRegionsRequest) (response *DescribeRegionsResponse, err error) {
     if request == nil {
@@ -160,6 +162,7 @@ func NewDescribeZonesResponse() (response *DescribeZonesResponse) {
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
     return c.DescribeZonesWithContext(context.Background(), request)
@@ -170,6 +173,7 @@ func (c *Client) DescribeZones(request *DescribeZonesRequest) (response *Describ
 //
 // 可能返回的错误码:
 //  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETER_PARAMETERERROR = "InvalidParameter.ParameterError"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeZonesWithContext(ctx context.Context, request *DescribeZonesRequest) (response *DescribeZonesResponse, err error) {
     if request == nil {

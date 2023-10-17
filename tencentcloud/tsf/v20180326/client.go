@@ -7545,6 +7545,7 @@ func NewDescribeInvocationMetricDataCurveResponse() (response *DescribeInvocatio
 // 查询调用指标数据变化曲线
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"
@@ -7556,6 +7557,7 @@ func (c *Client) DescribeInvocationMetricDataCurve(request *DescribeInvocationMe
 // 查询调用指标数据变化曲线
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_TSFPRIVILEGEERROR = "FailedOperation.TsfPrivilegeError"
 //  INVALIDPARAMETER_PARAMERROR = "InvalidParameter.ParamError"
 //  INVALIDPARAMETER_TSFAPMSTATSSEARCHREQUESTPARAMERROR = "InvalidParameter.TsfApmStatsSearchRequestParamError"
 //  RESOURCENOTFOUND_MICROSERVICEOFFLINE = "ResourceNotFound.MicroserviceOffline"

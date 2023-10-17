@@ -68,7 +68,9 @@ func NewDescribeApplicationListResponse() (response *DescribeApplicationListResp
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_APIAUTHORIZATIONNOTFOUND = "AuthFailure.ApiAuthorizationNotFound"
+//  AUTHFAILURE_TOKENNOTFOUND = "AuthFailure.TokenNotFound"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_APIGATEWAYINTERNALERROR = "InternalError.ApiGatewayInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONID = "InvalidParameterValue.InvalidApplicationId"
@@ -81,7 +83,9 @@ func (c *Client) DescribeApplicationList(request *DescribeApplicationListRequest
 //
 // 可能返回的错误码:
 //  AUTHFAILURE_APIAUTHORIZATIONNOTFOUND = "AuthFailure.ApiAuthorizationNotFound"
+//  AUTHFAILURE_TOKENNOTFOUND = "AuthFailure.TokenNotFound"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_APIGATEWAYINTERNALERROR = "InternalError.ApiGatewayInternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETERVALUE = "InvalidParameterValue"
 //  INVALIDPARAMETERVALUE_INVALIDAPPLICATIONID = "InvalidParameterValue.InvalidApplicationId"

@@ -696,6 +696,9 @@ type CreateEncryptInstanceRequestParams struct {
 
 	// 小程序加固信息
 	AppletInfo *AppletInfo `json:"AppletInfo,omitnil" name:"AppletInfo"`
+
+	// iOS混淆信息
+	IOSInfo *IOSInfo `json:"IOSInfo,omitnil" name:"IOSInfo"`
 }
 
 type CreateEncryptInstanceRequest struct {
@@ -721,6 +724,9 @@ type CreateEncryptInstanceRequest struct {
 
 	// 小程序加固信息
 	AppletInfo *AppletInfo `json:"AppletInfo,omitnil" name:"AppletInfo"`
+
+	// iOS混淆信息
+	IOSInfo *IOSInfo `json:"IOSInfo,omitnil" name:"IOSInfo"`
 }
 
 func (r *CreateEncryptInstanceRequest) ToJsonString() string {
@@ -742,6 +748,7 @@ func (r *CreateEncryptInstanceRequest) FromJsonString(s string) error {
 	delete(f, "AndroidAppInfo")
 	delete(f, "AndroidPlan")
 	delete(f, "AppletInfo")
+	delete(f, "IOSInfo")
 	if len(f) > 0 {
 		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "CreateEncryptInstanceRequest has unknown keys!", "")
 	}
@@ -2152,6 +2159,20 @@ type Filter struct {
 	Value *string `json:"Value,omitnil" name:"Value"`
 }
 
+type IOSInfo struct {
+	// info.plist的url，必须保证不用权限校验就可以下载
+	InfoPListUrl *string `json:"InfoPListUrl,omitnil" name:"InfoPListUrl"`
+
+	// info.plist文件的大小
+	InfoPListSize *int64 `json:"InfoPListSize,omitnil" name:"InfoPListSize"`
+
+	// info.plist文件的md5
+	InfoPListMd5 *string `json:"InfoPListMd5,omitnil" name:"InfoPListMd5"`
+
+	// release: 需要INFO-PLIST文件，会生成工具部署安装包，并带有license文件，绑定机器；nobind不需要INFO-PLIST文件，不绑定机器
+	BuildType *string `json:"BuildType,omitnil" name:"BuildType"`
+}
+
 type IOSPlan struct {
 	// 策略id
 	PlanId *int64 `json:"PlanId,omitnil" name:"PlanId"`
@@ -2159,7 +2180,52 @@ type IOSPlan struct {
 
 type IOSResult struct {
 	// 加固任务结果Id
+	// 注意：此字段可能返回 null，表示取不到有效值。
 	ResultId *string `json:"ResultId,omitnil" name:"ResultId"`
+
+	// 用户uid
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	OpUin *int64 `json:"OpUin,omitnil" name:"OpUin"`
+
+	// 加固类型，这里为ios
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptType *string `json:"EncryptType,omitnil" name:"EncryptType"`
+
+	// 资源id
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	ResourceId *string `json:"ResourceId,omitnil" name:"ResourceId"`
+
+	// 加固状态
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptState *int64 `json:"EncryptState,omitnil" name:"EncryptState"`
+
+	// 业务错误码
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptErrno *int64 `json:"EncryptErrno,omitnil" name:"EncryptErrno"`
+
+	// 业务错误信息
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptErrDesc *string `json:"EncryptErrDesc,omitnil" name:"EncryptErrDesc"`
+
+	// 创建时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CreatTime *string `json:"CreatTime,omitnil" name:"CreatTime"`
+
+	// 开始时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	StartTime *string `json:"StartTime,omitnil" name:"StartTime"`
+
+	// 结束时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EndTime *string `json:"EndTime,omitnil" name:"EndTime"`
+
+	// 消耗时间
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	CostTime *int64 `json:"CostTime,omitnil" name:"CostTime"`
+
+	// 加固（混淆）包结果url
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	EncryptPkgUrl *string `json:"EncryptPkgUrl,omitnil" name:"EncryptPkgUrl"`
 }
 
 type OptPluginListItem struct {

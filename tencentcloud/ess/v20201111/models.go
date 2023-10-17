@@ -743,13 +743,7 @@ type Component struct {
 	// 2 FontSize： 范围12-72
 	// 3 FontAlign： Left/Right/Center，左对齐/居中/右对齐
 	// 4 FontColor：字符串类型，格式为RGB颜色数字
-	// 参数样例：    "ComponentExtra": "{\"FontColor\":\"255,0,0\",\"FontSize\":12}"
-	// 
-	// TEXT/MULTI_LINE_TEXT控件可以指定
-	// 1 Font：目前只支持黑体、宋体
-	// 2 FontSize： 范围12-72
-	// 3 FontAlign： Left/Right/Center，左对齐/居中/右对齐
-	// 例如：{"FontSize":12}
+	// 参数样例：{\"FontColor\":\"255,0,0\",\"FontSize\":12}
 	// 
 	// ComponentType为FILL_IMAGE时，支持以下参数：
 	// NotMakeImageCenter：bool。是否设置图片居中。false：居中（默认）。 true: 不居中
@@ -1774,8 +1768,6 @@ type CreateFlowByFilesRequestParams struct {
 	Components []*Component `json:"Components,omitnil" name:"Components"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
-	// 
-	// 注:`此功能为白名单功能，使用前请联系对接的客户经理沟通。`
 	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
 
 	// 可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：
@@ -1898,8 +1890,6 @@ type CreateFlowByFilesRequest struct {
 	Components []*Component `json:"Components,omitnil" name:"Components"`
 
 	// 合同流程的抄送人列表，最多可支持50个抄送人，抄送人可查看合同内容及签署进度，但无需参与合同签署。
-	// 
-	// 注:`此功能为白名单功能，使用前请联系对接的客户经理沟通。`
 	CcInfos []*CcInfo `json:"CcInfos,omitnil" name:"CcInfos"`
 
 	// 可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：

@@ -1,29 +1,10 @@
 # 本版本更新包含以下内容：
 
-## 云安全一体化平台(csip) 版本：2022-11-21
+## 二进制软件成分分析(bsca) 版本：2021-08-11
 
-### 第 16 次发布
+### 第 4 次发布
 
-发布时间：2023-10-16 01:11:35
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-修改接口：
-
-* [CreateRiskCenterScanTask](https://cloud.tencent.com/document/api/664/94177)
-
-	* 新增入参：ScanFrom
-
-
-
-
-## 弹性 MapReduce(emr) 版本：2019-01-03
-
-### 第 53 次发布
-
-发布时间：2023-10-16 01:15:50
+发布时间：2023-10-17 01:08:28
 
 本次发布包含了以下内容：
 
@@ -31,36 +12,20 @@
 
 新增接口：
 
-* [DescribeAutoScaleRecords](https://cloud.tencent.com/document/api/589/100248)
+* [DescribeKBComponentVersionList](https://cloud.tencent.com/document/api/1483/100319)
+* [SearchKBComponent](https://cloud.tencent.com/document/api/1483/100318)
 
 新增数据结构：
 
-* [AutoScaleRecord](https://cloud.tencent.com/document/api/589/33981#AutoScaleRecord)
-* [KeyValue](https://cloud.tencent.com/document/api/589/33981#KeyValue)
+* [ComponentVersion](https://cloud.tencent.com/document/api/1483/72074#ComponentVersion)
 
 
 
-## 物联网开发平台(iotexplorer) 版本：2019-04-23
+## 边缘计算机器(ecm) 版本：2019-07-19
 
-### 第 54 次发布
+### 第 71 次发布
 
-发布时间：2023-10-16 01:17:51
-
-本次发布包含了以下内容：
-
-改善已有的文档。
-
-新增接口：
-
-* [GetDeviceSumStatistics](https://cloud.tencent.com/document/api/1081/100249)
-
-
-
-## 智聆口语评测(soe) 版本：2018-07-24
-
-### 第 15 次发布
-
-发布时间：2023-10-16 01:23:02
+发布时间：2023-10-17 01:16:27
 
 本次发布包含了以下内容：
 
@@ -68,26 +33,172 @@
 
 修改接口：
 
-* [TransmitOralProcessWithInit](https://cloud.tencent.com/document/api/884/32605)
+* [AssignIpv6Addresses](https://cloud.tencent.com/document/api/1108/51094)
 
-	* 新增入参：COSBucketURL
 
+
+
+## 腾讯云可观测平台(monitor) 版本：2018-07-24
+
+### 第 96 次发布
+
+发布时间：2023-10-17 01:21:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
+
+	* 新增成员：IsSupportAlarmTag
+
+
+
+
+## 移动应用安全(ms) 版本：2018-04-08
+
+### 第 18 次发布
+
+发布时间：2023-10-17 01:22:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEncryptInstance](https://cloud.tencent.com/document/api/283/95528)
+
+	* 新增入参：IOSInfo
+
+
+新增数据结构：
+
+* [IOSInfo](https://cloud.tencent.com/document/api/283/17759#IOSInfo)
+
+修改数据结构：
+
+* [IOSResult](https://cloud.tencent.com/document/api/283/17759#IOSResult)
+
+	* 新增成员：OpUin, EncryptType, ResourceId, EncryptState, EncryptErrno, EncryptErrDesc, CreatTime, StartTime, EndTime, CostTime, EncryptPkgUrl
+
+	* <font color="#dd0000">**修改成员**：</font>ResultId
+
+
+
+
+## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 40 次发布
+
+发布时间：2023-10-17 01:22:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [FetchSqlGatewayStatementResult](https://cloud.tencent.com/document/api/849/100321)
+* [RunSqlGatewayStatement](https://cloud.tencent.com/document/api/849/100320)
+
+
+
+## 微服务引擎 TSE(tse) 版本：2020-12-07
+
+### 第 48 次发布
+
+发布时间：2023-10-17 01:29:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSREInstanceAccessAddress](https://cloud.tencent.com/document/api/1364/54941)
+
+	* 新增出参：CLBMultiRegion
+
+
+新增数据结构：
+
+* [CLBMultiRegion](https://cloud.tencent.com/document/api/1364/54942#CLBMultiRegion)
+* [PolarisCLSTopicInfo](https://cloud.tencent.com/document/api/1364/54942#PolarisCLSTopicInfo)
+* [StorageOption](https://cloud.tencent.com/document/api/1364/54942#StorageOption)
+
+修改数据结构：
+
+* [BoundK8SInfo](https://cloud.tencent.com/document/api/1364/54942#BoundK8SInfo)
+
+	* 新增成员：BindRegion
+
+* [DescribeInstanceRegionInfo](https://cloud.tencent.com/document/api/1364/54942#DescribeInstanceRegionInfo)
+
+	* 新增成员：ConsoleIntranetVpcInfos, LimiterIntranetVpcInfos, MainRegion, EKSClusterID
+
+* [EngineRegionInfo](https://cloud.tencent.com/document/api/1364/54942#EngineRegionInfo)
+
+	* 新增成员：MainRegion, SpecId
+
+* [EnvAddressInfo](https://cloud.tencent.com/document/api/1364/54942#EnvAddressInfo)
+
+	* 新增成员：CLBMultiRegion
+
+	* <font color="#dd0000">**修改成员**：</font>EnableConfigIntranet, InternetBandWidth
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：StorageOption
+
+* [ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo)
+
+	* 新增成员：CLSTopics
+
+
+
+
+## Web 应用防火墙(waf) 版本：2018-01-25
+
+### 第 64 次发布
+
+发布时间：2023-10-17 01:32:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [DescribeAttackType](https://cloud.tencent.com/document/api/627/100324)
+* [DescribeHistogram](https://cloud.tencent.com/document/api/627/100323)
+* [DescribeTopAttackDomain](https://cloud.tencent.com/document/api/627/100322)
+
+新增数据结构：
+
+* [KVInt](https://cloud.tencent.com/document/api/627/53609#KVInt)
+* [PiechartItem](https://cloud.tencent.com/document/api/627/53609#PiechartItem)
 
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
 
-### 第 48 次发布
+### 第 49 次发布
 
-发布时间：2023-10-16 01:29:53
+发布时间：2023-10-17 01:32:55
 
 本次发布包含了以下内容：
 
 改善已有的文档。
 
-<font color="#dd0000">**预下线接口**：</font>
+修改数据结构：
 
-* DescribeKafkaTopicInfo
+* [OfflineTaskAddParam](https://cloud.tencent.com/document/api/1267/76336#OfflineTaskAddParam)
+
+	* 新增成员：TaskAutoSubmit, InstanceInitStrategy
+
 
 
 
@@ -10969,6 +11080,23 @@
 
 
 ## 二进制软件成分分析(bsca) 版本：2021-08-11
+
+### 第 4 次发布
+
+发布时间：2023-10-17 01:08:28
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeKBComponentVersionList](https://cloud.tencent.com/document/api/1483/100319)](https://cloud.tencent.com/document/api/#/#)
+* [[SearchKBComponent](https://cloud.tencent.com/document/api/1483/100318)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[ComponentVersion](https://cloud.tencent.com/document/api/1483/72074#ComponentVersion)](https://cloud.tencent.com/document/api/1483/72074#[ComponentVersion](https://cloud.tencent.com/document/api/1483/72074#ComponentVersion))
 
 ### 第 3 次发布
 
@@ -48077,7 +48205,7 @@
 
 
 
-## 数据安全中心(dsgc) 版本：2019-07-23
+## 数据安全治理中心(dsgc) 版本：2019-07-23
 
 ### 第 4 次发布
 
@@ -50044,6 +50172,19 @@
 
 
 ## 边缘计算机器(ecm) 版本：2019-07-19
+
+### 第 71 次发布
+
+发布时间：2023-10-17 01:16:27
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [AssignIpv6Addresses](https://cloud.tencent.com/document/api/1108/51094)
+
 
 ### 第 70 次发布
 
@@ -52193,12 +52334,12 @@
 
 新增接口：
 
-* [[DescribeAutoScaleRecords](https://cloud.tencent.com/document/api/589/100248)](https://cloud.tencent.com/document/api/#/#)
+* [DescribeAutoScaleRecords](https://cloud.tencent.com/document/api/589/100248)
 
 新增数据结构：
 
-* [[AutoScaleRecord](https://cloud.tencent.com/document/api/589/33981#AutoScaleRecord)](https://cloud.tencent.com/document/api/589/33981#[AutoScaleRecord](https://cloud.tencent.com/document/api/589/33981#AutoScaleRecord))
-* [[KeyValue](https://cloud.tencent.com/document/api/589/33981#KeyValue)](https://cloud.tencent.com/document/api/589/33981#[KeyValue](https://cloud.tencent.com/document/api/589/33981#KeyValue))
+* [AutoScaleRecord](https://cloud.tencent.com/document/api/589/33981#AutoScaleRecord)
+* [KeyValue](https://cloud.tencent.com/document/api/589/33981#KeyValue)
 
 ### 第 52 次发布
 
@@ -67060,7 +67201,7 @@
 
 新增接口：
 
-* [[GetDeviceSumStatistics](https://cloud.tencent.com/document/api/1081/100249)](https://cloud.tencent.com/document/api/#/#)
+* [GetDeviceSumStatistics](https://cloud.tencent.com/document/api/1081/100249)
 
 ### 第 53 次发布
 
@@ -78103,6 +78244,21 @@
 
 ## 腾讯云可观测平台(monitor) 版本：2018-07-24
 
+### 第 96 次发布
+
+发布时间：2023-10-17 01:21:47
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [AlarmPolicy](https://cloud.tencent.com/document/api/248/30354#AlarmPolicy)
+
+	* 新增成员：IsSupportAlarmTag
+
+
 ### 第 95 次发布
 
 发布时间：2023-10-09 01:19:36
@@ -83226,6 +83382,34 @@
 
 ## 移动应用安全(ms) 版本：2018-04-08
 
+### 第 18 次发布
+
+发布时间：2023-10-17 01:22:38
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [CreateEncryptInstance](https://cloud.tencent.com/document/api/283/95528)
+
+	* 新增入参：IOSInfo
+
+
+新增数据结构：
+
+* [[IOSInfo](https://cloud.tencent.com/document/api/283/17759#IOSInfo)](https://cloud.tencent.com/document/api/283/17759#[IOSInfo](https://cloud.tencent.com/document/api/283/17759#IOSInfo))
+
+修改数据结构：
+
+* [IOSResult](https://cloud.tencent.com/document/api/283/17759#IOSResult)
+
+	* 新增成员：OpUin, EncryptType, ResourceId, EncryptState, EncryptErrno, EncryptErrDesc, CreatTime, StartTime, EndTime, CostTime, EncryptPkgUrl
+
+	* <font color="#dd0000">**修改成员**：</font>ResultId
+
+
 ### 第 17 次发布
 
 发布时间：2023-08-17 04:17:58
@@ -84177,6 +84361,19 @@
 
 
 ## 流计算 Oceanus(oceanus) 版本：2019-04-22
+
+### 第 40 次发布
+
+发布时间：2023-10-17 01:22:49
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[FetchSqlGatewayStatementResult](https://cloud.tencent.com/document/api/849/100321)](https://cloud.tencent.com/document/api/#/#)
+* [[RunSqlGatewayStatement](https://cloud.tencent.com/document/api/849/100320)](https://cloud.tencent.com/document/api/#/#)
 
 ### 第 39 次发布
 
@@ -121030,6 +121227,56 @@
 
 ## 微服务引擎 TSE(tse) 版本：2020-12-07
 
+### 第 48 次发布
+
+发布时间：2023-10-17 01:29:39
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改接口：
+
+* [DescribeSREInstanceAccessAddress](https://cloud.tencent.com/document/api/1364/54941)
+
+	* 新增出参：CLBMultiRegion
+
+
+新增数据结构：
+
+* [[CLBMultiRegion](https://cloud.tencent.com/document/api/1364/54942#CLBMultiRegion)](https://cloud.tencent.com/document/api/1364/54942#[CLBMultiRegion](https://cloud.tencent.com/document/api/1364/54942#CLBMultiRegion))
+* [[PolarisCLSTopicInfo](https://cloud.tencent.com/document/api/1364/54942#PolarisCLSTopicInfo)](https://cloud.tencent.com/document/api/1364/54942#[PolarisCLSTopicInfo](https://cloud.tencent.com/document/api/1364/54942#PolarisCLSTopicInfo))
+* [[StorageOption](https://cloud.tencent.com/document/api/1364/54942#StorageOption)](https://cloud.tencent.com/document/api/1364/54942#[StorageOption](https://cloud.tencent.com/document/api/1364/54942#StorageOption))
+
+修改数据结构：
+
+* [BoundK8SInfo](https://cloud.tencent.com/document/api/1364/54942#BoundK8SInfo)
+
+	* 新增成员：BindRegion
+
+* [DescribeInstanceRegionInfo](https://cloud.tencent.com/document/api/1364/54942#DescribeInstanceRegionInfo)
+
+	* 新增成员：ConsoleIntranetVpcInfos, LimiterIntranetVpcInfos, MainRegion, EKSClusterID
+
+* [EngineRegionInfo](https://cloud.tencent.com/document/api/1364/54942#EngineRegionInfo)
+
+	* 新增成员：MainRegion, SpecId
+
+* [EnvAddressInfo](https://cloud.tencent.com/document/api/1364/54942#EnvAddressInfo)
+
+	* 新增成员：CLBMultiRegion
+
+	* <font color="#dd0000">**修改成员**：</font>EnableConfigIntranet, InternetBandWidth
+
+* [SREInstance](https://cloud.tencent.com/document/api/1364/54942#SREInstance)
+
+	* 新增成员：StorageOption
+
+* [ServiceGovernanceInfo](https://cloud.tencent.com/document/api/1364/54942#ServiceGovernanceInfo)
+
+	* 新增成员：CLSTopics
+
+
 ### 第 47 次发布
 
 发布时间：2023-10-13 01:27:15
@@ -133878,6 +134125,25 @@
 
 ## Web 应用防火墙(waf) 版本：2018-01-25
 
+### 第 64 次发布
+
+发布时间：2023-10-17 01:32:14
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+新增接口：
+
+* [[DescribeAttackType](https://cloud.tencent.com/document/api/627/100324)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeHistogram](https://cloud.tencent.com/document/api/627/100323)](https://cloud.tencent.com/document/api/#/#)
+* [[DescribeTopAttackDomain](https://cloud.tencent.com/document/api/627/100322)](https://cloud.tencent.com/document/api/#/#)
+
+新增数据结构：
+
+* [[KVInt](https://cloud.tencent.com/document/api/627/53609#KVInt)](https://cloud.tencent.com/document/api/627/53609#[KVInt](https://cloud.tencent.com/document/api/627/53609#KVInt))
+* [[PiechartItem](https://cloud.tencent.com/document/api/627/53609#PiechartItem)](https://cloud.tencent.com/document/api/627/53609#[PiechartItem](https://cloud.tencent.com/document/api/627/53609#PiechartItem))
+
 ### 第 63 次发布
 
 发布时间：2023-10-13 01:29:06
@@ -135577,6 +135843,21 @@
 
 
 ## 数据开发治理平台 WeData(wedata) 版本：2021-08-20
+
+### 第 49 次发布
+
+发布时间：2023-10-17 01:32:55
+
+本次发布包含了以下内容：
+
+改善已有的文档。
+
+修改数据结构：
+
+* [OfflineTaskAddParam](https://cloud.tencent.com/document/api/1267/76336#OfflineTaskAddParam)
+
+	* 新增成员：TaskAutoSubmit, InstanceInitStrategy
+
 
 ### 第 48 次发布
 

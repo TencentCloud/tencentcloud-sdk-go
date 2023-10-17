@@ -723,6 +723,7 @@ func NewCreateDisksResponse() (response *CreateDisksResponse) {
 // 本接口(CreateDisks)用于创建一个或多个云硬盘。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATEDISKSFAILED = "FailedOperation.CreateDisksFailed"
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  INVALIDPARAMETERVALUE_DISKINSTANCEZONENOTMATCH = "InvalidParameterValue.DiskInstanceZoneNotMatch"
@@ -744,6 +745,7 @@ func (c *Client) CreateDisks(request *CreateDisksRequest) (response *CreateDisks
 // 本接口(CreateDisks)用于创建一个或多个云硬盘。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_CREATEDISKSFAILED = "FailedOperation.CreateDisksFailed"
 //  FAILEDOPERATION_INSUFFICIENTBALANCE = "FailedOperation.InsufficientBalance"
 //  INVALIDPARAMETERVALUE_DISKINSTANCEZONENOTMATCH = "InvalidParameterValue.DiskInstanceZoneNotMatch"
@@ -1893,6 +1895,7 @@ func NewDescribeBlueprintsResponse() (response *DescribeBlueprintsResponse) {
 //  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
 //  RESOURCENOTFOUND_SCENEIDNOTFOUND = "ResourceNotFound.SceneIdNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
 func (c *Client) DescribeBlueprints(request *DescribeBlueprintsRequest) (response *DescribeBlueprintsResponse, err error) {
     return c.DescribeBlueprintsWithContext(context.Background(), request)
 }
@@ -1923,6 +1926,7 @@ func (c *Client) DescribeBlueprints(request *DescribeBlueprintsRequest) (respons
 //  RESOURCENOTFOUND_ROLENOTFOUND = "ResourceNotFound.RoleNotFound"
 //  RESOURCENOTFOUND_SCENEIDNOTFOUND = "ResourceNotFound.SceneIdNotFound"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
+//  UNAUTHORIZEDOPERATION_TOKENINVALID = "UnauthorizedOperation.TokenInvalid"
 func (c *Client) DescribeBlueprintsWithContext(ctx context.Context, request *DescribeBlueprintsRequest) (response *DescribeBlueprintsResponse, err error) {
     if request == nil {
         request = NewDescribeBlueprintsRequest()
@@ -2971,6 +2975,7 @@ func NewDescribeFirewallRulesTemplateResponse() (response *DescribeFirewallRules
 // 本接口（DescribeFirewallRulesTemplate）用于查询防火墙规则模板。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeFirewallRulesTemplate(request *DescribeFirewallRulesTemplateRequest) (response *DescribeFirewallRulesTemplateResponse, err error) {
     return c.DescribeFirewallRulesTemplateWithContext(context.Background(), request)
@@ -2980,6 +2985,7 @@ func (c *Client) DescribeFirewallRulesTemplate(request *DescribeFirewallRulesTem
 // 本接口（DescribeFirewallRulesTemplate）用于查询防火墙规则模板。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  UNAUTHORIZEDOPERATION_NOPERMISSION = "UnauthorizedOperation.NoPermission"
 func (c *Client) DescribeFirewallRulesTemplateWithContext(ctx context.Context, request *DescribeFirewallRulesTemplateRequest) (response *DescribeFirewallRulesTemplateResponse, err error) {
     if request == nil {
@@ -3401,6 +3407,7 @@ func NewDescribeInstanceVncUrlResponse() (response *DescribeInstanceVncUrlRespon
 // ```
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
@@ -3444,6 +3451,7 @@ func (c *Client) DescribeInstanceVncUrl(request *DescribeInstanceVncUrlRequest) 
 // ```
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
@@ -3925,6 +3933,7 @@ func NewDescribeModifyInstanceBundlesResponse() (response *DescribeModifyInstanc
 // 本接口（DescribeModifyInstanceBundles）用于查询实例可变更套餐列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  FAILEDOPERATION_DESCRIBEINSTANCESMODIFICATIONERROR = "FailedOperation.DescribeInstancesModificationError"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
@@ -3962,6 +3971,7 @@ func (c *Client) DescribeModifyInstanceBundles(request *DescribeModifyInstanceBu
 // 本接口（DescribeModifyInstanceBundles）用于查询实例可变更套餐列表。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  FAILEDOPERATION_DESCRIBEINSTANCESMODIFICATIONERROR = "FailedOperation.DescribeInstancesModificationError"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
@@ -4703,6 +4713,7 @@ func NewInquirePriceCreateBlueprintResponse() (response *InquirePriceCreateBluep
 // 本接口 (InquirePriceCreateBlueprint) 用于创建镜像询价。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 //  FAILEDOPERATION_TRADEGETPRICEFAILED = "FailedOperation.TradeGetPriceFailed"
 //  INTERNALERROR = "InternalError"
@@ -4717,6 +4728,7 @@ func (c *Client) InquirePriceCreateBlueprint(request *InquirePriceCreateBlueprin
 // 本接口 (InquirePriceCreateBlueprint) 用于创建镜像询价。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_REQUESTERROR = "FailedOperation.RequestError"
 //  FAILEDOPERATION_TRADEGETPRICEFAILED = "FailedOperation.TradeGetPriceFailed"
 //  INTERNALERROR = "InternalError"
@@ -6189,6 +6201,7 @@ func NewRebootInstancesResponse() (response *RebootInstancesResponse) {
 // * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
@@ -6222,6 +6235,7 @@ func (c *Client) RebootInstances(request *RebootInstancesRequest) (response *Reb
 // * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
@@ -6839,6 +6853,7 @@ func NewResetInstanceResponse() (response *ResetInstanceResponse) {
 // * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
@@ -6884,6 +6899,7 @@ func (c *Client) ResetInstance(request *ResetInstanceRequest) (response *ResetIn
 // * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
@@ -7443,6 +7459,7 @@ func NewStopInstancesResponse() (response *StopInstancesResponse) {
 // * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"
@@ -7473,6 +7490,7 @@ func (c *Client) StopInstances(request *StopInstancesRequest) (response *StopIns
 // * 本接口为异步接口，请求发送成功后会返回一个 RequestId，此时操作并未立即完成。实例操作结果可以通过调用 DescribeInstances 接口查询，如果实例的最新操作状态（LatestOperationState）为“SUCCESS”，则代表操作成功。
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
 //  FAILEDOPERATION_DESCRIBEINSTANCESTATUS = "FailedOperation.DescribeInstanceStatus"
 //  FAILEDOPERATION_INSTANCEOPERATIONFAILED = "FailedOperation.InstanceOperationFailed"
 //  INTERNALERROR_DESCRIBEINSTANCESTATUS = "InternalError.DescribeInstanceStatus"

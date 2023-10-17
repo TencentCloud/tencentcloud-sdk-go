@@ -834,6 +834,7 @@ func NewDescribeClustersResponse() (response *DescribeClustersResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_CLUSTERIDS = "InvalidParameterValue.ClusterIds"
 //  INVALIDPARAMETERVALUE_ORDERTYPE = "InvalidParameterValue.OrderType"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
@@ -851,6 +852,7 @@ func (c *Client) DescribeClusters(request *DescribeClustersRequest) (response *D
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETERVALUE_CLUSTERIDS = "InvalidParameterValue.ClusterIds"
 //  INVALIDPARAMETERVALUE_ORDERTYPE = "InvalidParameterValue.OrderType"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 //  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
 //  UNSUPPORTEDOPERATION_NOPERMISSIONACCESS = "UnsupportedOperation.NoPermissionAccess"
 func (c *Client) DescribeClustersWithContext(ctx context.Context, request *DescribeClustersRequest) (response *DescribeClustersResponse, err error) {
@@ -1561,6 +1563,54 @@ func (c *Client) DescribeWorkSpacesWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewFetchSqlGatewayStatementResultRequest() (request *FetchSqlGatewayStatementResultRequest) {
+    request = &FetchSqlGatewayStatementResultRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "FetchSqlGatewayStatementResult")
+    
+    
+    return
+}
+
+func NewFetchSqlGatewayStatementResultResponse() (response *FetchSqlGatewayStatementResultResponse) {
+    response = &FetchSqlGatewayStatementResultResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// FetchSqlGatewayStatementResult
+// 查询Sql Gateway的Statement执行结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONCODE_FETCHSQLGATEWAYSTATEMENT = "FailedOperation.FailedOperationCode_FetchSqlGatewayStatement"
+func (c *Client) FetchSqlGatewayStatementResult(request *FetchSqlGatewayStatementResultRequest) (response *FetchSqlGatewayStatementResultResponse, err error) {
+    return c.FetchSqlGatewayStatementResultWithContext(context.Background(), request)
+}
+
+// FetchSqlGatewayStatementResult
+// 查询Sql Gateway的Statement执行结果
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONCODE_FETCHSQLGATEWAYSTATEMENT = "FailedOperation.FailedOperationCode_FetchSqlGatewayStatement"
+func (c *Client) FetchSqlGatewayStatementResultWithContext(ctx context.Context, request *FetchSqlGatewayStatementResultRequest) (response *FetchSqlGatewayStatementResultResponse, err error) {
+    if request == nil {
+        request = NewFetchSqlGatewayStatementResultRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("FetchSqlGatewayStatementResult require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewFetchSqlGatewayStatementResultResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewModifyJobRequest() (request *ModifyJobRequest) {
     request = &ModifyJobRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -1755,6 +1805,54 @@ func (c *Client) RunJobsWithContext(ctx context.Context, request *RunJobsRequest
     request.SetContext(ctx)
     
     response = NewRunJobsResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewRunSqlGatewayStatementRequest() (request *RunSqlGatewayStatementRequest) {
+    request = &RunSqlGatewayStatementRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("oceanus", APIVersion, "RunSqlGatewayStatement")
+    
+    
+    return
+}
+
+func NewRunSqlGatewayStatementResponse() (response *RunSqlGatewayStatementResponse) {
+    response = &RunSqlGatewayStatementResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// RunSqlGatewayStatement
+// 通过Sql gateway执行satement
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONCODE_RUNSQLGATEWAY = "FailedOperation.FailedOperationCode_RunSqlGateway"
+func (c *Client) RunSqlGatewayStatement(request *RunSqlGatewayStatementRequest) (response *RunSqlGatewayStatementResponse, err error) {
+    return c.RunSqlGatewayStatementWithContext(context.Background(), request)
+}
+
+// RunSqlGatewayStatement
+// 通过Sql gateway执行satement
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION_FAILEDOPERATIONCODE_RUNSQLGATEWAY = "FailedOperation.FailedOperationCode_RunSqlGateway"
+func (c *Client) RunSqlGatewayStatementWithContext(ctx context.Context, request *RunSqlGatewayStatementRequest) (response *RunSqlGatewayStatementResponse, err error) {
+    if request == nil {
+        request = NewRunSqlGatewayStatementRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("RunSqlGatewayStatement require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewRunSqlGatewayStatementResponse()
     err = c.Send(request, response)
     return
 }

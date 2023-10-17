@@ -2497,6 +2497,7 @@ func NewDescribeCloudNativeAPIGatewaysResponse() (response *DescribeCloudNativeA
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudNativeAPIGateways(request *DescribeCloudNativeAPIGatewaysRequest) (response *DescribeCloudNativeAPIGatewaysResponse, err error) {
     return c.DescribeCloudNativeAPIGatewaysWithContext(context.Background(), request)
 }
@@ -2523,6 +2524,7 @@ func (c *Client) DescribeCloudNativeAPIGateways(request *DescribeCloudNativeAPIG
 //  RESOURCENOTFOUND_INSTANCENOTFOUND = "ResourceNotFound.InstanceNotFound"
 //  RESOURCENOTFOUND_RESOURCENOTFOUND = "ResourceNotFound.ResourceNotFound"
 //  UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCloudNativeAPIGatewaysWithContext(ctx context.Context, request *DescribeCloudNativeAPIGatewaysRequest) (response *DescribeCloudNativeAPIGatewaysResponse, err error) {
     if request == nil {
         request = NewDescribeCloudNativeAPIGatewaysRequest()

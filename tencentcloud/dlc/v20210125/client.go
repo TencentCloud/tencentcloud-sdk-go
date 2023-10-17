@@ -705,6 +705,7 @@ func NewCancelTaskResponse() (response *CancelTaskResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 //  INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
+//  RESOURCENOTFOUND_TASKALREADYFAILED = "ResourceNotFound.TaskAlreadyFailed"
 func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
     return c.CancelTaskWithContext(context.Background(), request)
 }
@@ -719,6 +720,7 @@ func (c *Client) CancelTask(request *CancelTaskRequest) (response *CancelTaskRes
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER_INVALIDTASKID = "InvalidParameter.InvalidTaskId"
 //  INVALIDPARAMETER_TASKALREADYFINISHED = "InvalidParameter.TaskAlreadyFinished"
+//  RESOURCENOTFOUND_TASKALREADYFAILED = "ResourceNotFound.TaskAlreadyFailed"
 func (c *Client) CancelTaskWithContext(ctx context.Context, request *CancelTaskRequest) (response *CancelTaskResponse, err error) {
     if request == nil {
         request = NewCancelTaskRequest()
@@ -1760,6 +1762,7 @@ func NewCreateSparkAppTaskResponse() (response *CreateSparkAppTaskResponse) {
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDROLEARN = "InvalidParameter.InvalidRoleArn"
 //  INVALIDPARAMETER_INVALIDSPARKAPPPARAM = "InvalidParameter.InvalidSparkAppParam"
+//  RESOURCENOTFOUND_DATAENGINENOTACTIVITY = "ResourceNotFound.DataEngineNotActivity"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = "UnauthorizedOperation.UseComputingEngine"
 func (c *Client) CreateSparkAppTask(request *CreateSparkAppTaskRequest) (response *CreateSparkAppTaskResponse, err error) {
@@ -1773,6 +1776,7 @@ func (c *Client) CreateSparkAppTask(request *CreateSparkAppTaskRequest) (respons
 //  FAILEDOPERATION = "FailedOperation"
 //  INVALIDPARAMETER_INVALIDROLEARN = "InvalidParameter.InvalidRoleArn"
 //  INVALIDPARAMETER_INVALIDSPARKAPPPARAM = "InvalidParameter.InvalidSparkAppParam"
+//  RESOURCENOTFOUND_DATAENGINENOTACTIVITY = "ResourceNotFound.DataEngineNotActivity"
 //  RESOURCEUNAVAILABLE = "ResourceUnavailable"
 //  UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = "UnauthorizedOperation.UseComputingEngine"
 func (c *Client) CreateSparkAppTaskWithContext(ctx context.Context, request *CreateSparkAppTaskRequest) (response *CreateSparkAppTaskResponse, err error) {
@@ -1818,6 +1822,7 @@ func NewCreateSparkSessionBatchSQLResponse() (response *CreateSparkSessionBatchS
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
 //  RESOURCENOTFOUND_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.SessionInsufficientResources"
 //  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
 //  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
@@ -1834,6 +1839,7 @@ func (c *Client) CreateSparkSessionBatchSQL(request *CreateSparkSessionBatchSQLR
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
 //  RESOURCENOTFOUND_SESSIONINSUFFICIENTRESOURCES = "ResourceNotFound.SessionInsufficientResources"
 //  RESOURCENOTFOUND_SESSIONNOTFOUND = "ResourceNotFound.SessionNotFound"
 //  RESOURCENOTFOUND_SESSIONSTATEDEAD = "ResourceNotFound.SessionStateDead"
@@ -1987,6 +1993,7 @@ func NewCreateTaskResponse() (response *CreateTaskResponse) {
 //  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
 //  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
 //  RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = "ResourceNotFound.ResultOutputPathNotFound"
 //  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
 //  UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = "UnauthorizedOperation.UseComputingEngine"
@@ -2006,6 +2013,7 @@ func (c *Client) CreateTask(request *CreateTaskRequest) (response *CreateTaskRes
 //  INVALIDPARAMETER_INVALIDSQLNUM = "InvalidParameter.InvalidSQLNum"
 //  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
 //  RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = "ResourceNotFound.ResultOutputPathNotFound"
 //  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
 //  UNAUTHORIZEDOPERATION_USECOMPUTINGENGINE = "UnauthorizedOperation.UseComputingEngine"
@@ -2049,6 +2057,7 @@ func NewCreateTasksResponse() (response *CreateTasksResponse) {
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
@@ -2057,6 +2066,7 @@ func NewCreateTasksResponse() (response *CreateTasksResponse) {
 //  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
 //  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
 //  RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = "ResourceNotFound.ResultOutputPathNotFound"
 //  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
@@ -2071,6 +2081,7 @@ func (c *Client) CreateTasks(request *CreateTasksRequest) (response *CreateTasks
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_DBERROR = "InternalError.DBError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  INVALIDPARAMETER_INVALIDFAILURETOLERANCE = "InvalidParameter.InvalidFailureTolerance"
@@ -2079,6 +2090,7 @@ func (c *Client) CreateTasks(request *CreateTasksRequest) (response *CreateTasks
 //  INVALIDPARAMETER_INVALIDSTORELOCATION = "InvalidParameter.InvalidStoreLocation"
 //  INVALIDPARAMETER_INVALIDTASKTYPE = "InvalidParameter.InvalidTaskType"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  RESOURCENOTFOUND_DATAENGINENOTRUNNING = "ResourceNotFound.DataEngineNotRunning"
 //  RESOURCENOTFOUND_RESULTOUTPUTPATHNOTFOUND = "ResourceNotFound.ResultOutputPathNotFound"
 //  RESOURCEUNAVAILABLE_BALANCEINSUFFICIENT = "ResourceUnavailable.BalanceInsufficient"
@@ -2340,6 +2352,7 @@ func NewDeleteDataEngineResponse() (response *DeleteDataEngineResponse) {
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  UNAUTHORIZEDOPERATION_DELETECOMPUTINGENGINE = "UnauthorizedOperation.DeleteComputingEngine"
 //  UNAUTHORIZEDOPERATION_NOPAYMENTAUTHORITY = "UnauthorizedOperation.NoPaymentAuthority"
 func (c *Client) DeleteDataEngine(request *DeleteDataEngineRequest) (response *DeleteDataEngineResponse, err error) {
@@ -2371,6 +2384,7 @@ func (c *Client) DeleteDataEngine(request *DeleteDataEngineRequest) (response *D
 //  INVALIDPARAMETER_INVALIDDATAENGINENAME = "InvalidParameter.InvalidDataEngineName"
 //  RESOURCEINUSE = "ResourceInUse"
 //  RESOURCENOTFOUND = "ResourceNotFound"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  UNAUTHORIZEDOPERATION_DELETECOMPUTINGENGINE = "UnauthorizedOperation.DeleteComputingEngine"
 //  UNAUTHORIZEDOPERATION_NOPAYMENTAUTHORITY = "UnauthorizedOperation.NoPaymentAuthority"
 func (c *Client) DeleteDataEngineWithContext(ctx context.Context, request *DeleteDataEngineRequest) (response *DeleteDataEngineResponse, err error) {
@@ -3182,6 +3196,7 @@ func NewDescribeDatabasesResponse() (response *DescribeDatabasesResponse) {
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_METASTOREERROR = "FailedOperation.MetastoreError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -3195,6 +3210,7 @@ func (c *Client) DescribeDatabases(request *DescribeDatabasesRequest) (response 
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_METASTOREERROR = "FailedOperation.MetastoreError"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  RESOURCENOTFOUND = "ResourceNotFound"
@@ -5333,12 +5349,7 @@ func NewGetOptimizerPolicyResponse() (response *GetOptimizerPolicyResponse) {
 // GetOptimizerPolicy
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetOptimizerPolicy(request *GetOptimizerPolicyRequest) (response *GetOptimizerPolicyResponse, err error) {
     return c.GetOptimizerPolicyWithContext(context.Background(), request)
 }
@@ -5347,12 +5358,7 @@ func (c *Client) GetOptimizerPolicy(request *GetOptimizerPolicyRequest) (respons
 // GetOptimizerPolicy
 //
 // 可能返回的错误码:
-//  FAILEDOPERATION = "FailedOperation"
-//  INTERNALERROR = "InternalError"
-//  INVALIDPARAMETER = "InvalidParameter"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNSUPPORTEDOPERATION = "UnsupportedOperation"
+//  RESOURCENOTFOUND = "ResourceNotFound"
 func (c *Client) GetOptimizerPolicyWithContext(ctx context.Context, request *GetOptimizerPolicyRequest) (response *GetOptimizerPolicyResponse, err error) {
     if request == nil {
         request = NewGetOptimizerPolicyRequest()
@@ -6202,6 +6208,7 @@ func NewSuspendResumeDataEngineResponse() (response *SuspendResumeDataEngineResp
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"
 func (c *Client) SuspendResumeDataEngine(request *SuspendResumeDataEngineRequest) (response *SuspendResumeDataEngineResponse, err error) {
     return c.SuspendResumeDataEngineWithContext(context.Background(), request)
@@ -6214,6 +6221,7 @@ func (c *Client) SuspendResumeDataEngine(request *SuspendResumeDataEngineRequest
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"
 func (c *Client) SuspendResumeDataEngineWithContext(ctx context.Context, request *SuspendResumeDataEngineRequest) (response *SuspendResumeDataEngineResponse, err error) {
     if request == nil {
@@ -6256,6 +6264,7 @@ func NewSwitchDataEngineResponse() (response *SwitchDataEngineResponse) {
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"
 func (c *Client) SwitchDataEngine(request *SwitchDataEngineRequest) (response *SwitchDataEngineResponse, err error) {
     return c.SwitchDataEngineWithContext(context.Background(), request)
@@ -6268,6 +6277,7 @@ func (c *Client) SwitchDataEngine(request *SwitchDataEngineRequest) (response *S
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INVALIDSQL = "InvalidParameter.InvalidSQL"
+//  RESOURCENOTFOUND_DATAENGINENOTFOUND = "ResourceNotFound.DataEngineNotFound"
 //  UNAUTHORIZEDOPERATION_OPERATECOMPUTINGENGINE = "UnauthorizedOperation.OperateComputingEngine"
 func (c *Client) SwitchDataEngineWithContext(ctx context.Context, request *SwitchDataEngineRequest) (response *SwitchDataEngineResponse, err error) {
     if request == nil {
@@ -6513,6 +6523,7 @@ func NewUpdateDataEngineResponse() (response *UpdateDataEngineResponse) {
 //  FAILEDOPERATION_REFUNDDEPOSITFAILED = "FailedOperation.RefundDepositFailed"
 //  FAILEDOPERATION_TOOMANYRESOURCES = "FailedOperation.TooManyResources"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCEINPROCESS = "InvalidParameter.InstanceInProcess"
 //  INVALIDPARAMETER_INVALIDDATAENGINEDESCRIPTION = "InvalidParameter.InvalidDataEngineDescription"
@@ -6549,6 +6560,7 @@ func (c *Client) UpdateDataEngine(request *UpdateDataEngineRequest) (response *U
 //  FAILEDOPERATION_REFUNDDEPOSITFAILED = "FailedOperation.RefundDepositFailed"
 //  FAILEDOPERATION_TOOMANYRESOURCES = "FailedOperation.TooManyResources"
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_INTERNALSYSTEMEXCEPTION = "InternalError.InternalSystemException"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_INSTANCEINPROCESS = "InvalidParameter.InstanceInProcess"
 //  INVALIDPARAMETER_INVALIDDATAENGINEDESCRIPTION = "InvalidParameter.InvalidDataEngineDescription"

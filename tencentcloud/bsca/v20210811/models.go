@@ -148,6 +148,16 @@ type Component struct {
 	LicenseExpression *string `json:"LicenseExpression,omitnil" name:"LicenseExpression"`
 }
 
+type ComponentVersion struct {
+	// 该组件的PURL
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	PURL *PURL `json:"PURL,omitnil" name:"PURL"`
+
+	// 该组件版本的许可证表达式
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	LicenseExpression *string `json:"LicenseExpression,omitnil" name:"LicenseExpression"`
+}
+
 type ComponentVulnerabilitySummary struct {
 	// 用于匹配漏洞的PURL
 	// 注意：此字段可能返回 null，表示取不到有效值。
@@ -235,6 +245,63 @@ func (r *DescribeKBComponentResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeKBComponentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKBComponentVersionListRequestParams struct {
+	// 要查询的组件 PURL
+	PURL *PURL `json:"PURL,omitnil" name:"PURL"`
+}
+
+type DescribeKBComponentVersionListRequest struct {
+	*tchttp.BaseRequest
+	
+	// 要查询的组件 PURL
+	PURL *PURL `json:"PURL,omitnil" name:"PURL"`
+}
+
+func (r *DescribeKBComponentVersionListRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKBComponentVersionListRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "PURL")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeKBComponentVersionListRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeKBComponentVersionListResponseParams struct {
+	// 该组件的版本列表信息
+	VersionList []*ComponentVersion `json:"VersionList,omitnil" name:"VersionList"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeKBComponentVersionListResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeKBComponentVersionListResponseParams `json:"Response"`
+}
+
+func (r *DescribeKBComponentVersionListResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeKBComponentVersionListResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -563,6 +630,87 @@ type Qualifier struct {
 
 	// 额外属性的值。
 	Value *string `json:"Value,omitnil" name:"Value"`
+}
+
+// Predefined struct for user
+type SearchKBComponentRequestParams struct {
+	// 需要搜索的组件名
+	Query *string `json:"Query,omitnil" name:"Query"`
+
+	// 需要搜索的组件类型
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+
+	// 分页参数，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 分页参数，设置每页返回的结果数量
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+}
+
+type SearchKBComponentRequest struct {
+	*tchttp.BaseRequest
+	
+	// 需要搜索的组件名
+	Query *string `json:"Query,omitnil" name:"Query"`
+
+	// 需要搜索的组件类型
+	Protocol *string `json:"Protocol,omitnil" name:"Protocol"`
+
+	// 分页参数，从 0 开始
+	PageNumber *int64 `json:"PageNumber,omitnil" name:"PageNumber"`
+
+	// 分页参数，设置每页返回的结果数量
+	PageSize *int64 `json:"PageSize,omitnil" name:"PageSize"`
+}
+
+func (r *SearchKBComponentRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchKBComponentRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "Query")
+	delete(f, "Protocol")
+	delete(f, "PageNumber")
+	delete(f, "PageSize")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "SearchKBComponentRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type SearchKBComponentResponseParams struct {
+	// 满足搜索条件的组件列表
+	ComponentList []*Component `json:"ComponentList,omitnil" name:"ComponentList"`
+
+	// 满足搜索条件的总个数
+	Total *int64 `json:"Total,omitnil" name:"Total"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type SearchKBComponentResponse struct {
+	*tchttp.BaseResponse
+	Response *SearchKBComponentResponseParams `json:"Response"`
+}
+
+func (r *SearchKBComponentResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *SearchKBComponentResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
 }
 
 type VulnerabilityDetail struct {

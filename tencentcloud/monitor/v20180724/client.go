@@ -5423,6 +5423,7 @@ func NewDescribePrometheusInstanceDetailResponse() (response *DescribePrometheus
 // 获取TMP实例详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
@@ -5436,6 +5437,7 @@ func (c *Client) DescribePrometheusInstanceDetail(request *DescribePrometheusIns
 // 获取TMP实例详情
 //
 // 可能返回的错误码:
+//  FAILEDOPERATION_COMPONENTCLIENTCOMMON = "FailedOperation.ComponentClientCommon"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  INVALIDPARAMETER_PARAM = "InvalidParameter.Param"
@@ -8682,6 +8684,7 @@ func NewUninstallGrafanaPluginsResponse() (response *UninstallGrafanaPluginsResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 func (c *Client) UninstallGrafanaPlugins(request *UninstallGrafanaPluginsRequest) (response *UninstallGrafanaPluginsResponse, err error) {
     return c.UninstallGrafanaPluginsWithContext(context.Background(), request)
 }
@@ -8691,6 +8694,7 @@ func (c *Client) UninstallGrafanaPlugins(request *UninstallGrafanaPluginsRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_RESOURCENOTFOUND = "FailedOperation.ResourceNotFound"
 func (c *Client) UninstallGrafanaPluginsWithContext(ctx context.Context, request *UninstallGrafanaPluginsRequest) (response *UninstallGrafanaPluginsResponse, err error) {
     if request == nil {
         request = NewUninstallGrafanaPluginsRequest()

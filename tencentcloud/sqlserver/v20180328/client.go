@@ -2586,6 +2586,7 @@ func NewDescribeDBInstancesResponse() (response *DescribeDBInstancesResponse) {
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
 //  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCEUNAVAILABLE_VPCNOTEXIST = "ResourceUnavailable.VpcNotExist"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (response *DescribeDBInstancesResponse, err error) {
     return c.DescribeDBInstancesWithContext(context.Background(), request)
@@ -2604,6 +2605,7 @@ func (c *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (respo
 //  INVALIDPARAMETER_INPUTILLEGAL = "InvalidParameter.InputIllegal"
 //  INVALIDPARAMETER_PARAMSASSERTFAILED = "InvalidParameter.ParamsAssertFailed"
 //  RESOURCENOTFOUND_VPCNOTEXIST = "ResourceNotFound.VpcNotExist"
+//  RESOURCEUNAVAILABLE_VPCNOTEXIST = "ResourceUnavailable.VpcNotExist"
 //  UNAUTHORIZEDOPERATION_PERMISSIONDENIED = "UnauthorizedOperation.PermissionDenied"
 func (c *Client) DescribeDBInstancesWithContext(ctx context.Context, request *DescribeDBInstancesRequest) (response *DescribeDBInstancesResponse, err error) {
     if request == nil {

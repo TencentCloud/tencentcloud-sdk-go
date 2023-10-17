@@ -936,6 +936,7 @@ func NewCreateRocketMQNamespaceResponse() (response *CreateRocketMQNamespaceResp
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"
@@ -955,6 +956,7 @@ func (c *Client) CreateRocketMQNamespace(request *CreateRocketMQNamespaceRequest
 //
 // 可能返回的错误码:
 //  FAILEDOPERATION = "FailedOperation"
+//  FAILEDOPERATION_INSTANCENOTREADY = "FailedOperation.InstanceNotReady"
 //  FAILEDOPERATION_SETTTL = "FailedOperation.SetTTL"
 //  INTERNALERROR = "InternalError"
 //  INTERNALERROR_ILLEGALMESSAGE = "InternalError.IllegalMessage"

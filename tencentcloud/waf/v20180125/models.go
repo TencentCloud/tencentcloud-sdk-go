@@ -3346,6 +3346,98 @@ func (r *DescribeAttackOverviewResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeAttackTypeRequestParams struct {
+	// 起始时间
+	FromTime *string `json:"FromTime,omitnil" name:"FromTime"`
+
+	// 结束时间
+	ToTime *string `json:"ToTime,omitnil" name:"ToTime"`
+
+	// 兼容Host，逐步淘汰Host字段
+	Host *string `json:"Host,omitnil" name:"Host"`
+
+	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// WAF实例ID，不传则不过滤
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+
+	// 域名过滤，不传则不过滤，用于替代Host字段，逐步淘汰Host
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+type DescribeAttackTypeRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始时间
+	FromTime *string `json:"FromTime,omitnil" name:"FromTime"`
+
+	// 结束时间
+	ToTime *string `json:"ToTime,omitnil" name:"ToTime"`
+
+	// 兼容Host，逐步淘汰Host字段
+	Host *string `json:"Host,omitnil" name:"Host"`
+
+	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// WAF实例ID，不传则不过滤
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+
+	// 域名过滤，不传则不过滤，用于替代Host字段，逐步淘汰Host
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+func (r *DescribeAttackTypeRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAttackTypeRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FromTime")
+	delete(f, "ToTime")
+	delete(f, "Host")
+	delete(f, "Edition")
+	delete(f, "InstanceID")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeAttackTypeRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeAttackTypeResponseParams struct {
+	// 数量
+	Piechart []*PiechartItem `json:"Piechart,omitnil" name:"Piechart"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeAttackTypeResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeAttackTypeResponseParams `json:"Response"`
+}
+
+func (r *DescribeAttackTypeResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeAttackTypeResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeAttackWhiteRuleRequestParams struct {
 	// 需要查询的域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
@@ -4843,6 +4935,112 @@ func (r *DescribeFlowTrendResponse) FromJsonString(s string) error {
 }
 
 // Predefined struct for user
+type DescribeHistogramRequestParams struct {
+	// 起始时间
+	FromTime *string `json:"FromTime,omitnil" name:"FromTime"`
+
+	// 结束时间
+	ToTime *string `json:"ToTime,omitnil" name:"ToTime"`
+
+	// 聚类字段，ip为ip聚合，art为响应耗时聚合，url为url聚合，local为ip转化的城市聚合
+	QueryField *string `json:"QueryField,omitnil" name:"QueryField"`
+
+	// 条件，access为访问日志，attack为攻击日志
+	Source *string `json:"Source,omitnil" name:"Source"`
+
+	// 兼容Host，逐步淘汰Host字段
+	Host *string `json:"Host,omitnil" name:"Host"`
+
+	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// WAF实例ID，不传则不过滤
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+
+	// 域名过滤，不传则不过滤，用于替代Host字段，逐步淘汰Host
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+type DescribeHistogramRequest struct {
+	*tchttp.BaseRequest
+	
+	// 起始时间
+	FromTime *string `json:"FromTime,omitnil" name:"FromTime"`
+
+	// 结束时间
+	ToTime *string `json:"ToTime,omitnil" name:"ToTime"`
+
+	// 聚类字段，ip为ip聚合，art为响应耗时聚合，url为url聚合，local为ip转化的城市聚合
+	QueryField *string `json:"QueryField,omitnil" name:"QueryField"`
+
+	// 条件，access为访问日志，attack为攻击日志
+	Source *string `json:"Source,omitnil" name:"Source"`
+
+	// 兼容Host，逐步淘汰Host字段
+	Host *string `json:"Host,omitnil" name:"Host"`
+
+	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// WAF实例ID，不传则不过滤
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+
+	// 域名过滤，不传则不过滤，用于替代Host字段，逐步淘汰Host
+	Domain *string `json:"Domain,omitnil" name:"Domain"`
+}
+
+func (r *DescribeHistogramRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHistogramRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FromTime")
+	delete(f, "ToTime")
+	delete(f, "QueryField")
+	delete(f, "Source")
+	delete(f, "Host")
+	delete(f, "Edition")
+	delete(f, "InstanceID")
+	delete(f, "Domain")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeHistogramRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeHistogramResponseParams struct {
+	// 统计数据
+	Histogram []*string `json:"Histogram,omitnil" name:"Histogram"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeHistogramResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeHistogramResponseParams `json:"Response"`
+}
+
+func (r *DescribeHistogramResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeHistogramResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
 type DescribeHostLimitRequestParams struct {
 	// 添加的域名
 	Domain *string `json:"Domain,omitnil" name:"Domain"`
@@ -6036,6 +6234,94 @@ func (r *DescribeTlsVersionResponse) ToJsonString() string {
 // FromJsonString It is highly **NOT** recommended to use this function
 // because it has no param check, nor strict type check
 func (r *DescribeTlsVersionResponse) FromJsonString(s string) error {
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopAttackDomainRequestParams struct {
+	// 查询起始时间
+	FromTime *string `json:"FromTime,omitnil" name:"FromTime"`
+
+	// 查询结束时间
+	ToTime *string `json:"ToTime,omitnil" name:"ToTime"`
+
+	// TOP N,可从0-10选择，默认是10
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
+
+	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// WAF实例ID，不传则不过滤
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+}
+
+type DescribeTopAttackDomainRequest struct {
+	*tchttp.BaseRequest
+	
+	// 查询起始时间
+	FromTime *string `json:"FromTime,omitnil" name:"FromTime"`
+
+	// 查询结束时间
+	ToTime *string `json:"ToTime,omitnil" name:"ToTime"`
+
+	// TOP N,可从0-10选择，默认是10
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
+
+	// 只有两个值有效，sparta-waf，clb-waf，不传则不过滤
+	Edition *string `json:"Edition,omitnil" name:"Edition"`
+
+	// WAF实例ID，不传则不过滤
+	InstanceID *string `json:"InstanceID,omitnil" name:"InstanceID"`
+}
+
+func (r *DescribeTopAttackDomainRequest) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopAttackDomainRequest) FromJsonString(s string) error {
+	f := make(map[string]interface{})
+	if err := json.Unmarshal([]byte(s), &f); err != nil {
+		return err
+	}
+	delete(f, "FromTime")
+	delete(f, "ToTime")
+	delete(f, "Count")
+	delete(f, "Edition")
+	delete(f, "InstanceID")
+	if len(f) > 0 {
+		return tcerr.NewTencentCloudSDKError("ClientError.BuildRequestError", "DescribeTopAttackDomainRequest has unknown keys!", "")
+	}
+	return json.Unmarshal([]byte(s), &r)
+}
+
+// Predefined struct for user
+type DescribeTopAttackDomainResponseParams struct {
+	// CC攻击域名列表
+	CC []*KVInt `json:"CC,omitnil" name:"CC"`
+
+	// Web攻击域名列表
+	Web []*KVInt `json:"Web,omitnil" name:"Web"`
+
+	// 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
+	RequestId *string `json:"RequestId,omitnil" name:"RequestId"`
+}
+
+type DescribeTopAttackDomainResponse struct {
+	*tchttp.BaseResponse
+	Response *DescribeTopAttackDomainResponseParams `json:"Response"`
+}
+
+func (r *DescribeTopAttackDomainResponse) ToJsonString() string {
+    b, _ := json.Marshal(r)
+    return string(b)
+}
+
+// FromJsonString It is highly **NOT** recommended to use this function
+// because it has no param check, nor strict type check
+func (r *DescribeTopAttackDomainResponse) FromJsonString(s string) error {
 	return json.Unmarshal([]byte(s), &r)
 }
 
@@ -7842,6 +8128,14 @@ type IpHitItemsData struct {
 
 	// 总数目
 	TotalCount *uint64 `json:"TotalCount,omitnil" name:"TotalCount"`
+}
+
+type KVInt struct {
+	// Key
+	Key *string `json:"Key,omitnil" name:"Key"`
+
+	// Value
+	Value *uint64 `json:"Value,omitnil" name:"Value"`
 }
 
 type LoadBalancer struct {
@@ -10833,6 +11127,14 @@ type PeakPointsItem struct {
 	// 访问控制 
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ACL *uint64 `json:"ACL,omitnil" name:"ACL"`
+}
+
+type PiechartItem struct {
+	// 类型
+	Type *string `json:"Type,omitnil" name:"Type"`
+
+	// 数量
+	Count *uint64 `json:"Count,omitnil" name:"Count"`
 }
 
 type PortInfo struct {

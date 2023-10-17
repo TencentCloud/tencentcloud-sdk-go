@@ -1589,7 +1589,7 @@ type BatchResumeIntegrationTasksRequestParams struct {
 	// 任务id
 	TaskIds []*string `json:"TaskIds,omitnil" name:"TaskIds"`
 
-	// 任务类型
+	// 任务类型, 201为实时任务，202为离线任务
 	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
 
 	// 项目id
@@ -1602,7 +1602,7 @@ type BatchResumeIntegrationTasksRequest struct {
 	// 任务id
 	TaskIds []*string `json:"TaskIds,omitnil" name:"TaskIds"`
 
-	// 任务类型
+	// 任务类型, 201为实时任务，202为离线任务
 	TaskType *int64 `json:"TaskType,omitnil" name:"TaskType"`
 
 	// 项目id
@@ -9512,7 +9512,7 @@ func (r *DescribeDataSourceWithoutInfoResponse) FromJsonString(s string) error {
 
 // Predefined struct for user
 type DescribeDataTypesRequestParams struct {
-	// 数据源类型，MYSQL|KAFKA等
+	// 数据源类型，MYSQL|HIVE|KAFKA|POSTGRE|CDW|ORACLE|SQLSERVER|FTP|HDFS|ICEBERG|HBASE|TDSQL|TDSQLC|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DORIS|CKAFKA|MONGODB|FTP_FILE|HDFS_FILE|DTS_KAFKA|REST_API|FILE|TIDB|SYBASE|TCHOUSE_X 等
 	DatasourceType *string `json:"DatasourceType,omitnil" name:"DatasourceType"`
 
 	// 项目ID。
@@ -9522,7 +9522,7 @@ type DescribeDataTypesRequestParams struct {
 type DescribeDataTypesRequest struct {
 	*tchttp.BaseRequest
 	
-	// 数据源类型，MYSQL|KAFKA等
+	// 数据源类型，MYSQL|HIVE|KAFKA|POSTGRE|CDW|ORACLE|SQLSERVER|FTP|HDFS|ICEBERG|HBASE|TDSQL|TDSQLC|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DORIS|CKAFKA|MONGODB|FTP_FILE|HDFS_FILE|DTS_KAFKA|REST_API|FILE|TIDB|SYBASE|TCHOUSE_X 等
 	DatasourceType *string `json:"DatasourceType,omitnil" name:"DatasourceType"`
 
 	// 项目ID。
@@ -9579,7 +9579,7 @@ type DescribeDatabaseInfoListRequestParams struct {
 	// 过滤参数
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
-	// 如果是hive这里写rpc，如果是其他类型不传
+	// 连接类型
 	ConnectionType *string `json:"ConnectionType,omitnil" name:"ConnectionType"`
 }
 
@@ -9589,7 +9589,7 @@ type DescribeDatabaseInfoListRequest struct {
 	// 过滤参数
 	Filters []*Filter `json:"Filters,omitnil" name:"Filters"`
 
-	// 如果是hive这里写rpc，如果是其他类型不传
+	// 连接类型
 	ConnectionType *string `json:"ConnectionType,omitnil" name:"ConnectionType"`
 }
 
@@ -13695,7 +13695,7 @@ type DescribeIntegrationTaskRequestParams struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 任务类型：201. stream,   202. offline
+	// 任务类型，201: 实时集成任务,   202：离线集成任务，不传默认值为201 实时任务类型
 	TaskType *uint64 `json:"TaskType,omitnil" name:"TaskType"`
 
 	// 提交版本号
@@ -13711,7 +13711,7 @@ type DescribeIntegrationTaskRequest struct {
 	// 项目id
 	ProjectId *string `json:"ProjectId,omitnil" name:"ProjectId"`
 
-	// 任务类型：201. stream,   202. offline
+	// 任务类型，201: 实时集成任务,   202：离线集成任务，不传默认值为201 实时任务类型
 	TaskType *uint64 `json:"TaskType,omitnil" name:"TaskType"`
 
 	// 提交版本号
@@ -19226,13 +19226,13 @@ type DescribeTableSchemaInfoRequestParams struct {
 	// 数据库名称
 	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
 
-	// 表类型
+	// 数据源的类型（例如MYSQL、HIVE、KAFKA等）
 	MsType *string `json:"MsType,omitnil" name:"MsType"`
 
 	// 数据源id
 	DatasourceId *string `json:"DatasourceId,omitnil" name:"DatasourceId"`
 
-	// HIVE传rpc
+	// 连接类型（示例值rpc）
 	ConnectionType *string `json:"ConnectionType,omitnil" name:"ConnectionType"`
 
 	// 元数据Database下的Schema名称
@@ -19248,13 +19248,13 @@ type DescribeTableSchemaInfoRequest struct {
 	// 数据库名称
 	DatabaseName *string `json:"DatabaseName,omitnil" name:"DatabaseName"`
 
-	// 表类型
+	// 数据源的类型（例如MYSQL、HIVE、KAFKA等）
 	MsType *string `json:"MsType,omitnil" name:"MsType"`
 
 	// 数据源id
 	DatasourceId *string `json:"DatasourceId,omitnil" name:"DatasourceId"`
 
-	// HIVE传rpc
+	// 连接类型（示例值rpc）
 	ConnectionType *string `json:"ConnectionType,omitnil" name:"ConnectionType"`
 
 	// 元数据Database下的Schema名称
@@ -28184,6 +28184,14 @@ type OfflineTaskAddParam struct {
 	// 调度执行开始时间
 	// 注意：此字段可能返回 null，表示取不到有效值。
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitnil" name:"ExecutionStartTime"`
+
+	// 是否自动提交
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	TaskAutoSubmit *bool `json:"TaskAutoSubmit,omitnil" name:"TaskAutoSubmit"`
+
+	// 实例初始化策略
+	// 注意：此字段可能返回 null，表示取不到有效值。
+	InstanceInitStrategy *string `json:"InstanceInitStrategy,omitnil" name:"InstanceInitStrategy"`
 }
 
 type OperateResult struct {

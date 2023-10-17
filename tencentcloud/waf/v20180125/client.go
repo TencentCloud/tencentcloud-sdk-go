@@ -2129,6 +2129,62 @@ func (c *Client) DescribeAttackOverviewWithContext(ctx context.Context, request 
     return
 }
 
+func NewDescribeAttackTypeRequest() (request *DescribeAttackTypeRequest) {
+    request = &DescribeAttackTypeRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeAttackType")
+    
+    
+    return
+}
+
+func NewDescribeAttackTypeResponse() (response *DescribeAttackTypeResponse) {
+    response = &DescribeAttackTypeResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeAttackType
+// 查询指定域名TOP N攻击类型
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAttackType(request *DescribeAttackTypeRequest) (response *DescribeAttackTypeResponse, err error) {
+    return c.DescribeAttackTypeWithContext(context.Background(), request)
+}
+
+// DescribeAttackType
+// 查询指定域名TOP N攻击类型
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeAttackTypeWithContext(ctx context.Context, request *DescribeAttackTypeRequest) (response *DescribeAttackTypeResponse, err error) {
+    if request == nil {
+        request = NewDescribeAttackTypeRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeAttackType require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeAttackTypeResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeAttackWhiteRuleRequest() (request *DescribeAttackWhiteRuleRequest) {
     request = &DescribeAttackWhiteRuleRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -2588,6 +2644,7 @@ func NewDescribeCustomRuleListResponse() (response *DescribeCustomRuleListRespon
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCustomRuleList(request *DescribeCustomRuleListRequest) (response *DescribeCustomRuleListResponse, err error) {
@@ -2599,6 +2656,7 @@ func (c *Client) DescribeCustomRuleList(request *DescribeCustomRuleListRequest) 
 //
 // 可能返回的错误码:
 //  INTERNALERROR = "InternalError"
+//  INTERNALERROR_DBERR = "InternalError.DBErr"
 //  INVALIDPARAMETER = "InvalidParameter"
 //  UNSUPPORTEDOPERATION = "UnsupportedOperation"
 func (c *Client) DescribeCustomRuleListWithContext(ctx context.Context, request *DescribeCustomRuleListRequest) (response *DescribeCustomRuleListResponse, err error) {
@@ -3323,6 +3381,62 @@ func (c *Client) DescribeFlowTrendWithContext(ctx context.Context, request *Desc
     request.SetContext(ctx)
     
     response = NewDescribeFlowTrendResponse()
+    err = c.Send(request, response)
+    return
+}
+
+func NewDescribeHistogramRequest() (request *DescribeHistogramRequest) {
+    request = &DescribeHistogramRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeHistogram")
+    
+    
+    return
+}
+
+func NewDescribeHistogramResponse() (response *DescribeHistogramResponse) {
+    response = &DescribeHistogramResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeHistogram
+// 查询多种条件的聚类分析
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeHistogram(request *DescribeHistogramRequest) (response *DescribeHistogramResponse, err error) {
+    return c.DescribeHistogramWithContext(context.Background(), request)
+}
+
+// DescribeHistogram
+// 查询多种条件的聚类分析
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
+//  MISSINGPARAMETER = "MissingParameter"
+func (c *Client) DescribeHistogramWithContext(ctx context.Context, request *DescribeHistogramRequest) (response *DescribeHistogramResponse, err error) {
+    if request == nil {
+        request = NewDescribeHistogramRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeHistogram require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeHistogramResponse()
     err = c.Send(request, response)
     return
 }
@@ -4239,6 +4353,58 @@ func (c *Client) DescribeTlsVersionWithContext(ctx context.Context, request *Des
     return
 }
 
+func NewDescribeTopAttackDomainRequest() (request *DescribeTopAttackDomainRequest) {
+    request = &DescribeTopAttackDomainRequest{
+        BaseRequest: &tchttp.BaseRequest{},
+    }
+    
+    request.Init().WithApiInfo("waf", APIVersion, "DescribeTopAttackDomain")
+    
+    
+    return
+}
+
+func NewDescribeTopAttackDomainResponse() (response *DescribeTopAttackDomainResponse) {
+    response = &DescribeTopAttackDomainResponse{
+        BaseResponse: &tchttp.BaseResponse{},
+    }
+    return
+}
+
+// DescribeTopAttackDomain
+// 查询Top5的攻击域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTopAttackDomain(request *DescribeTopAttackDomainRequest) (response *DescribeTopAttackDomainResponse, err error) {
+    return c.DescribeTopAttackDomainWithContext(context.Background(), request)
+}
+
+// DescribeTopAttackDomain
+// 查询Top5的攻击域名
+//
+// 可能返回的错误码:
+//  FAILEDOPERATION = "FailedOperation"
+//  INTERNALERROR = "InternalError"
+//  INVALIDPARAMETER = "InvalidParameter"
+func (c *Client) DescribeTopAttackDomainWithContext(ctx context.Context, request *DescribeTopAttackDomainRequest) (response *DescribeTopAttackDomainResponse, err error) {
+    if request == nil {
+        request = NewDescribeTopAttackDomainRequest()
+    }
+    
+    if c.GetCredential() == nil {
+        return nil, errors.New("DescribeTopAttackDomain require credential")
+    }
+
+    request.SetContext(ctx)
+    
+    response = NewDescribeTopAttackDomainResponse()
+    err = c.Send(request, response)
+    return
+}
+
 func NewDescribeUserCdcClbWafRegionsRequest() (request *DescribeUserCdcClbWafRegionsRequest) {
     request = &DescribeUserCdcClbWafRegionsRequest{
         BaseRequest: &tchttp.BaseRequest{},
@@ -4261,25 +4427,9 @@ func NewDescribeUserCdcClbWafRegionsResponse() (response *DescribeUserCdcClbWafR
 // 在CDC场景下，负载均衡型WAF的添加、编辑域名配置的时候，需要展示CDC负载均衡型WAF（cdc-clb-waf)支持的地域列表，通过DescribeUserCdcClbWafRegions既可以获得当前对客户已经开放的地域列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
-//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeUserCdcClbWafRegions(request *DescribeUserCdcClbWafRegionsRequest) (response *DescribeUserCdcClbWafRegionsResponse, err error) {
     return c.DescribeUserCdcClbWafRegionsWithContext(context.Background(), request)
 }
@@ -4288,25 +4438,9 @@ func (c *Client) DescribeUserCdcClbWafRegions(request *DescribeUserCdcClbWafRegi
 // 在CDC场景下，负载均衡型WAF的添加、编辑域名配置的时候，需要展示CDC负载均衡型WAF（cdc-clb-waf)支持的地域列表，通过DescribeUserCdcClbWafRegions既可以获得当前对客户已经开放的地域列表
 //
 // 可能返回的错误码:
-//  AUTHFAILURE = "AuthFailure"
-//  DRYRUNOPERATION = "DryRunOperation"
 //  FAILEDOPERATION = "FailedOperation"
 //  INTERNALERROR = "InternalError"
 //  INVALIDPARAMETER = "InvalidParameter"
-//  INVALIDPARAMETER_INVALIDCERTIFICATE = "InvalidParameter.InvalidCertificate"
-//  INVALIDPARAMETER_QUERYCERTBYSSLIDFAILED = "InvalidParameter.QueryCertBySSLIDFailed"
-//  INVALIDPARAMETERVALUE = "InvalidParameterValue"
-//  LIMITEXCEEDED = "LimitExceeded"
-//  MISSINGPARAMETER = "MissingParameter"
-//  OPERATIONDENIED = "OperationDenied"
-//  REQUESTLIMITEXCEEDED = "RequestLimitExceeded"
-//  RESOURCEINUSE = "ResourceInUse"
-//  RESOURCEINSUFFICIENT = "ResourceInsufficient"
-//  RESOURCENOTFOUND = "ResourceNotFound"
-//  RESOURCEUNAVAILABLE = "ResourceUnavailable"
-//  RESOURCESSOLDOUT = "ResourcesSoldOut"
-//  UNAUTHORIZEDOPERATION = "UnauthorizedOperation"
-//  UNKNOWNPARAMETER = "UnknownParameter"
 func (c *Client) DescribeUserCdcClbWafRegionsWithContext(ctx context.Context, request *DescribeUserCdcClbWafRegionsRequest) (response *DescribeUserCdcClbWafRegionsResponse, err error) {
     if request == nil {
         request = NewDescribeUserCdcClbWafRegionsRequest()
@@ -5755,6 +5889,7 @@ func NewModifyBotStatusResponse() (response *ModifyBotStatusResponse) {
 // Bot_V2 bot总开关更新
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_ERRCODENOPURCHASED = "AuthFailure.ErrCodeNoPurchased"
 //  INTERNALERROR = "InternalError"
 func (c *Client) ModifyBotStatus(request *ModifyBotStatusRequest) (response *ModifyBotStatusResponse, err error) {
     return c.ModifyBotStatusWithContext(context.Background(), request)
@@ -5764,6 +5899,7 @@ func (c *Client) ModifyBotStatus(request *ModifyBotStatusRequest) (response *Mod
 // Bot_V2 bot总开关更新
 //
 // 可能返回的错误码:
+//  AUTHFAILURE_ERRCODENOPURCHASED = "AuthFailure.ErrCodeNoPurchased"
 //  INTERNALERROR = "InternalError"
 func (c *Client) ModifyBotStatusWithContext(ctx context.Context, request *ModifyBotStatusRequest) (response *ModifyBotStatusResponse, err error) {
     if request == nil {

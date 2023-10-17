@@ -184,4 +184,7 @@ const (
 
 	// 未授权的操作。
 	UNAUTHORIZEDOPERATION_UNAUTHORIZEDOPERATION = "UnauthorizedOperation.UnauthorizedOperation"
+
+	// 操作不支持。
+	UNSUPPORTEDOPERATION = "UnsupportedOperation"
 )
